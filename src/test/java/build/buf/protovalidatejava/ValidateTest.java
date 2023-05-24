@@ -6,8 +6,10 @@ import org.junit.Test;
 public class ValidateTest {
     @Test
     public void asdf() {
-        new Simple.newBuilder();
-
+        Simple simple = Simple.newBuilder()
+                .setX(2)
+                .build();
+        Validate validate = new Validate();
+        validate.validate(simple);
     }
-
 }
