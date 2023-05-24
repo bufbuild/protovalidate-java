@@ -1,0 +1,25 @@
+[versions]
+assertj = "3.24.2"
+cel = "0.3.21"
+junit = "4.13.2"
+protobuf = "3.23.4"
+
+[libraries]
+assertj = { module = "org.assertj:assertj-core", version.ref = "assertj" }
+cel = { module = "org.projectnessie.cel:cel-bom", version.ref = "cel" }
+cel-core = { module = "org.projectnessie.cel:cel-core" }
+errorprone = { module = "com.google.errorprone:error_prone_core", version = "2.20.0" }
+guava = { module = "com.google.guava:guava", version = "32.1.1-jre" }
+jakarta-mail-api = { module = "jakarta.mail:jakarta.mail-api", version = "2.1.2" }
+junit = { module = "junit:junit", version.ref = "junit" }
+maven-plugin = { module = "com.vanniktech:gradle-maven-publish-plugin", version = "0.25.3" }
+mail = { module = "javax.mail:mail", version = "1.4.7"}
+nullaway = { module = "com.uber.nullaway:nullaway", version = "0.10.11" }
+protobuf-java = { module = "com.google.protobuf:protobuf-java", version.ref = "protobuf" }
+protobuf-java-util = { module = "com.google.protobuf:protobuf-java-util", version.ref = "protobuf" }
+protovalidate = { module = "build.buf.gen:bufbuild_protovalidate_protocolbuffers_java", version = "23.4.0.1.20230711201221.890d7e3584ce" }
+protovalidate-testing = { module = "build.buf.gen:bufbuild_protovalidate-testing_protocolbuffers_java", version = "23.4.0.1.20230712231734.03815480f905" }
+spotless = { module = "com.diffplug.spotless:spotless-plugin-gradle", version = "6.20.0" }
+
+[plugins]
+errorprone-plugin = { id = "net.ltgt.errorprone", version = "3.1.0" }
