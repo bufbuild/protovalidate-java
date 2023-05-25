@@ -1,0 +1,8 @@
+version: v1
+managed:
+  enabled: true
+  java_package_prefix:
+    default: build
+plugins:
+  - plugin: buf.build/protocolbuffers/java
+    out: src/main/java/

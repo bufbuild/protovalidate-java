@@ -1,0 +1,20 @@
+syntax = "proto3";
+package buf.validate.python;
+
+import "buf/validate/validate.proto";
+
+message Simple {
+    int32 x = 1 [
+    (buf.validate.field).cel = {
+      id: "x_even",
+      message: "x must be even",
+      expression: "this % 2 == 0"
+    },
+    (buf.validate.field).cel = {
+      id: "x_coprime_3",
+      expression:
+        "this % 3 != 0 ? ''"
+        ": 'x must not be divisible by 3'",
+    }
+  ];
+}
