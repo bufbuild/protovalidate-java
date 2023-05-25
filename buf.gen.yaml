@@ -5,4 +5,4 @@ managed:
     default: build
 plugins:
   - plugin: buf.build/protocolbuffers/java
-    out: src/main/java/
+    out: src/main/java

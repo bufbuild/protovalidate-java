@@ -1,6 +1,8 @@
 version: v1
 deps:
   - buf.build/bufbuild/protovalidate
+  - buf.build/bufbuild/protovalidate-testing
+  - buf.build/envoyproxy/protoc-gen-validate
 breaking:
   use:
     - FILE
