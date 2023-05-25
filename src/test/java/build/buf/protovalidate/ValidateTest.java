@@ -14,14 +14,14 @@
 
 package build.buf.protovalidate;
 
-import build.buf.validate.example.Simple;
+import build.tests.example.v1.Person;
 import org.junit.Test;
 
 public class ValidateTest {
     @Test
     public void asdf() {
-        Simple simple = Simple.newBuilder()
-                .setX(2)
+        Person simple = Person.newBuilder()
+                .setName("asdf")
                 .build();
         Validate validate = new Validate();
         validate.validate(simple);
