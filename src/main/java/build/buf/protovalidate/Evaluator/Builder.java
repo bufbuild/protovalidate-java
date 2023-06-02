@@ -41,10 +41,10 @@ public class Builder {
     private final Map<Descriptor, MessageEvaluator> cache = new HashMap<>();
     private final CelRuntimeBuilder env;
     private final Cache constraints;
-    private final StandardConstraintResolver resolver;
+    private final ConstraintResolver resolver;
     private Loader load;
 
-    public Builder(CelRuntimeBuilder env, boolean disableLazy, StandardConstraintResolver res, List<Descriptor> seedDesc) {
+    public Builder(CelRuntimeBuilder env, boolean disableLazy, ConstraintResolver res, List<Descriptor> seedDesc) {
         this.env = env;
         this.constraints = new Cache();
         this.resolver = res;
