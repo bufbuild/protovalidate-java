@@ -23,7 +23,6 @@ import com.google.protobuf.Any;
 import com.google.protobuf.DescriptorProtos;
 import com.google.protobuf.DynamicMessage;
 import com.google.protobuf.Descriptors;
-import com.google.protobuf.Message;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -67,7 +66,7 @@ public class Main {
                 );
                 fileDescriptors.add(fileDescriptor);
             }
-            Validator validator = new Validator();
+            Validator validator = new Validator(new Validator.Config());
             TestConformanceResponse.Builder responseBuilder = TestConformanceResponse.newBuilder();
             Map<String, TestResult> resultsMap = new HashMap<>();
             for (Map.Entry<String, Any> entry : request.getCasesMap().entrySet()) {

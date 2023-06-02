@@ -66,7 +66,7 @@ public class TestMain {
             for (int i = 0; i < fdSet.getFileCount(); i++) {
                 fileDescriptors[i] = Descriptors.FileDescriptor.buildFrom(fdSet.getFile(i), new Descriptors.FileDescriptor[]{});
             }
-            Validator validator = new Validator();
+            Validator validator = new Validator(new Validator.Config());
             TestConformanceResponse.Builder responseBuilder = TestConformanceResponse.newBuilder();
             Map<String, TestResult> resultsMap = new HashMap<>();
             for (Map.Entry<String, Any> entry : request.getCasesMap().entrySet()) {

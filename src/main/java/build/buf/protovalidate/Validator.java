@@ -26,27 +26,19 @@ import com.google.protobuf.MessageOrBuilder;
 import com.google.protobuf.Descriptors.Descriptor;
 import com.google.protobuf.Descriptors.FieldDescriptor;
 import com.google.protobuf.Descriptors.OneofDescriptor;
-import dev.cel.runtime.CelRuntime;
 import dev.cel.runtime.CelRuntimeBuilder;
 
+import java.util.Collections;
 import java.util.List;
-import java.util.ArrayList;
-import java.util.Arrays;
 
 public class Validator {
     private final Builder builder;
     private final boolean failFast;
 
-    public Validator(ValidatorOption... options) throws Exception {
-        Config cfg = new Config();
-        for (ValidatorOption option : options) {
-            option.apply(cfg);
-        }
-
-        CelRuntimeBuilder env = CelExt.defaultCelRuntime(cfg.useUTC);
-
-        this.builder = new Builder(env, cfg.disableLazy, cfg.resolver, cfg.desc);
-        this.failFast = cfg.failFast;
+    public Validator(Config config) {
+        CelRuntimeBuilder env = CelExt.defaultCelRuntime(config.useUTC);
+        this.builder = new Builder(env, config.disableLazy, config.resolver, config.desc);
+        this.failFast = config.failFast;
     }
 
     public void validate(MessageOrBuilder msg) throws Exception {
@@ -59,15 +51,23 @@ public class Validator {
         evaluator.evaluateMessage(msg, failFast);
     }
 
-    private static class Config {
-        private boolean failFast = false;
-        private boolean useUTC = false;
-        private boolean disableLazy = false;
-        private List<Descriptor> desc = new ArrayList<>();
-        private StandardConstraintResolver resolver = new DefaultStandardConstraintResolver();
+    public static class Config {
+        private final boolean failFast ;
+        private final boolean useUTC ;
+        private final boolean disableLazy ;
+        private final List<Descriptor> desc;
+        private final StandardConstraintResolver resolver;
 
-        private void apply(ValidatorOption option) throws Exception {
-            option.apply(this);
+        public Config(boolean failFast, boolean useUTC, boolean disableLazy, List<Descriptor> desc, StandardConstraintResolver resolver) {
+            this.failFast = failFast;
+            this.useUTC = useUTC;
+            this.disableLazy = disableLazy;
+            this.desc = desc;
+            this.resolver = resolver;
+        }
+
+        public Config() {
+            this(false, true, true, Collections.emptyList(), new DefaultStandardConstraintResolver());
         }
     }
 
@@ -87,31 +87,6 @@ public class Validator {
             return FieldConstraints.newBuilder().build();
         }
     }
-
-    public interface ValidatorOption {
-        void apply(Config config) throws Exception;
-    }
-
-    public static ValidatorOption withUTC(boolean useUTC) {
-        return config -> config.useUTC = useUTC;
-    }
-
-    public static ValidatorOption withFailFast(boolean failFast) {
-        return config -> config.failFast = failFast;
-    }
-
-    public static ValidatorOption withMessages(Message... messages) {
-        return config -> config.desc.addAll(Arrays.asList(getDescriptors(messages)));
-    }
-
-    public static ValidatorOption withDescriptors(Descriptor... descriptors) {
-        return config -> config.desc.addAll(Arrays.asList(descriptors));
-    }
-
-    public static ValidatorOption withDisableLazy(boolean disable) {
-        return config -> config.disableLazy = disable;
-    }
-
     private static Descriptor[] getDescriptors(Message... messages) {
         Descriptor[] descriptors = new Descriptor[messages.length];
         for (int i = 0; i < messages.length; i++) {
