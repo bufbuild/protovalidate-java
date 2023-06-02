@@ -59,6 +59,11 @@ public final class CustomConstraintsProto {
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_buf_validate_conformance_cases_custom_constraints_DynRuntimeError_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_buf_validate_conformance_cases_custom_constraints_NowEqualsNow_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_buf_validate_conformance_cases_custom_constraints_NowEqualsNow_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -115,16 +120,18 @@ public final class CustomConstraintsProto {
       "th(\'foo\')\"~\n\017DynRuntimeError\022\014\n\001a\030\001 \001(\005R" +
       "\001a:]\372\367\030Y\032W\n\017dyn_runtime_err\022.dynamic typ" +
       "e tries to use a non-existent field\032\024dyn" +
-      "(this).b == \'foo\'**\n\004Enum\022\024\n\020ENUM_UNSPEC" +
-      "IFIED\020\000\022\014\n\010ENUM_ONE\020\001B\267\002\n7build.buf.vali" +
-      "date.conformance.cases.custom_constraint" +
-      "sB\026CustomConstraintsProtoP\001\242\002\005BVCCC\252\0020Bu" +
-      "f.Validate.Conformance.Cases.CustomConst" +
-      "raints\312\0020Buf\\Validate\\Conformance\\Cases\\" +
-      "CustomConstraints\342\002<Buf\\Validate\\Conform" +
-      "ance\\Cases\\CustomConstraints\\GPBMetadata" +
-      "\352\0024Buf::Validate::Conformance::Cases::Cu" +
-      "stomConstraintsb\006proto3"
+      "(this).b == \'foo\'\"]\n\014NowEqualsNow:M\372\367\030I\032" +
+      "G\n\016now_equals_now\022)now should equal now " +
+      "within an expression\032\nnow == now**\n\004Enum" +
+      "\022\024\n\020ENUM_UNSPECIFIED\020\000\022\014\n\010ENUM_ONE\020\001B\267\002\n" +
+      "7build.buf.validate.conformance.cases.cu" +
+      "stom_constraintsB\026CustomConstraintsProto" +
+      "P\001\242\002\005BVCCC\252\0020Buf.Validate.Conformance.Ca" +
+      "ses.CustomConstraints\312\0020Buf\\Validate\\Con" +
+      "formance\\Cases\\CustomConstraints\342\002<Buf\\V" +
+      "alidate\\Conformance\\Cases\\CustomConstrai" +
+      "nts\\GPBMetadata\352\0024Buf::Validate::Conform" +
+      "ance::Cases::CustomConstraintsb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -185,6 +192,12 @@ public final class CustomConstraintsProto {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_custom_constraints_DynRuntimeError_descriptor,
         new java.lang.String[] { "A", });
+    internal_static_buf_validate_conformance_cases_custom_constraints_NowEqualsNow_descriptor =
+      getDescriptor().getMessageTypes().get(6);
+    internal_static_buf_validate_conformance_cases_custom_constraints_NowEqualsNow_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_buf_validate_conformance_cases_custom_constraints_NowEqualsNow_descriptor,
+        new java.lang.String[] { });
     com.google.protobuf.ExtensionRegistry registry =
         com.google.protobuf.ExtensionRegistry.newInstance();
     registry.add(build.buf.validate.ValidateProto.field);

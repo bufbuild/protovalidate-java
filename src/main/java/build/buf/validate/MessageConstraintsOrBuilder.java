@@ -46,7 +46,7 @@ public interface MessageConstraintsOrBuilder extends
    * <pre>
    * cel is a repeated field of type Constraint. Each Constraint specifies a validation rule to be applied to this message.
    * These constraints are written in Common Expression Language (CEL) syntax. For more information on
-   * CEL, [see our documentation](https://github.com/bufbuild/protovalidate-api/blob/main/docs/cel.md).
+   * CEL, [see our documentation](https://github.com/bufbuild/protovalidate/blob/main/docs/cel.md).
    *
    *
    *```proto
@@ -70,7 +70,7 @@ public interface MessageConstraintsOrBuilder extends
    * <pre>
    * cel is a repeated field of type Constraint. Each Constraint specifies a validation rule to be applied to this message.
    * These constraints are written in Common Expression Language (CEL) syntax. For more information on
-   * CEL, [see our documentation](https://github.com/bufbuild/protovalidate-api/blob/main/docs/cel.md).
+   * CEL, [see our documentation](https://github.com/bufbuild/protovalidate/blob/main/docs/cel.md).
    *
    *
    *```proto
@@ -93,7 +93,7 @@ public interface MessageConstraintsOrBuilder extends
    * <pre>
    * cel is a repeated field of type Constraint. Each Constraint specifies a validation rule to be applied to this message.
    * These constraints are written in Common Expression Language (CEL) syntax. For more information on
-   * CEL, [see our documentation](https://github.com/bufbuild/protovalidate-api/blob/main/docs/cel.md).
+   * CEL, [see our documentation](https://github.com/bufbuild/protovalidate/blob/main/docs/cel.md).
    *
    *
    *```proto
@@ -116,7 +116,7 @@ public interface MessageConstraintsOrBuilder extends
    * <pre>
    * cel is a repeated field of type Constraint. Each Constraint specifies a validation rule to be applied to this message.
    * These constraints are written in Common Expression Language (CEL) syntax. For more information on
-   * CEL, [see our documentation](https://github.com/bufbuild/protovalidate-api/blob/main/docs/cel.md).
+   * CEL, [see our documentation](https://github.com/bufbuild/protovalidate/blob/main/docs/cel.md).
    *
    *
    *```proto
@@ -140,7 +140,7 @@ public interface MessageConstraintsOrBuilder extends
    * <pre>
    * cel is a repeated field of type Constraint. Each Constraint specifies a validation rule to be applied to this message.
    * These constraints are written in Common Expression Language (CEL) syntax. For more information on
-   * CEL, [see our documentation](https://github.com/bufbuild/protovalidate-api/blob/main/docs/cel.md).
+   * CEL, [see our documentation](https://github.com/bufbuild/protovalidate/blob/main/docs/cel.md).
    *
    *
    *```proto

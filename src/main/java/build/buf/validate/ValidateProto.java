@@ -1306,7 +1306,7 @@ public final class ValidateProto {
       "not_in\032Qthis in rules.not_in ? \'value mu" +
       "st not be in list %s\'.format([rules.not_" +
       "in]) : \'\'R\005notInB\010\n\006_constB\005\n\003_ltB\006\n\004_lt" +
-      "eB\005\n\003_gtB\006\n\004_gte\"\203\030\n\016TimestampRules\022\226\001\n\005" +
+      "eB\005\n\003_gtB\006\n\004_gte\"\373\027\n\016TimestampRules\022\226\001\n\005" +
       "const\030\002 \001(\0132\032.google.protobuf.TimestampB" +
       "_\202\370\030[\nY\n\017timestamp.const\032Fthis != rules." +
       "const ? \'value must equal %s\'.format([ru" +
@@ -1371,34 +1371,33 @@ public final class ValidateProto {
       "gte)? \'value must be greater than or equ" +
       "al to %s or less than or equal to %s\'.fo" +
       "rmat([rules.gte, rules.lte]) : \'\'H\004R\003gte" +
-      "\210\001\001\022g\n\006lt_now\030\007 \001(\010BK\202\370\030G\nE\n\020timestamp.l" +
-      "t_now\0321this > now() ? \'value must be les" +
-      "s than now\' : \'\'H\005R\005ltNow\210\001\001\022j\n\006gt_now\030\010" +
-      " \001(\010BN\202\370\030J\nH\n\020timestamp.gt_now\0324this < n" +
-      "ow() ? \'value must be greater than now\' " +
-      ": \'\'H\006R\005gtNow\210\001\001\022\312\001\n\006within\030\t \001(\0132\031.goog" +
-      "le.protobuf.DurationB\221\001\202\370\030\214\001\n\211\001\n\020timesta" +
-      "mp.within\032uthis < now()-rules.within || " +
-      "this > now()+rules.within ? \'value must " +
-      "be within %s of now\'.format([rules.withi" +
-      "n]) : \'\'H\007R\006within\210\001\001B\010\n\006_constB\005\n\003_ltB\006" +
-      "\n\004_lteB\005\n\003_gtB\006\n\004_gteB\t\n\007_lt_nowB\t\n\007_gt_" +
-      "nowB\t\n\007_within*n\n\nKnownRegex\022\033\n\027KNOWN_RE" +
-      "GEX_UNSPECIFIED\020\000\022 \n\034KNOWN_REGEX_HTTP_HE" +
-      "ADER_NAME\020\001\022!\n\035KNOWN_REGEX_HTTP_HEADER_V" +
-      "ALUE\020\002:`\n\007message\022\037.google.protobuf.Mess" +
-      "ageOptions\030\377\216\003 \001(\0132 .buf.validate.Messag" +
-      "eConstraintsR\007message\210\001\001:X\n\005oneof\022\035.goog" +
-      "le.protobuf.OneofOptions\030\377\216\003 \001(\0132\036.buf.v" +
-      "alidate.OneofConstraintsR\005oneof\210\001\001:X\n\005fi" +
-      "eld\022\035.google.protobuf.FieldOptions\030\377\216\003 \001" +
-      "(\0132\036.buf.validate.FieldConstraintsR\005fiel" +
-      "d\210\001\001B\275\001\n\022build.buf.validateB\rValidatePro",
-      "toP\001ZGbuf.build/gen/go/bufbuild/protoval" +
-      "idate/protocolbuffers/go/buf/validate\242\002\003" +
-      "BVX\252\002\014Buf.Validate\312\002\014Buf\\Validate\342\002\030Buf\\" +
-      "Validate\\GPBMetadata\352\002\rBuf::Validateb\006pr" +
-      "oto3"
+      "\210\001\001\022e\n\006lt_now\030\007 \001(\010BI\202\370\030E\nC\n\020timestamp.l" +
+      "t_now\032/this > now ? \'value must be less " +
+      "than now\' : \'\'H\005R\005ltNow\210\001\001\022h\n\006gt_now\030\010 \001" +
+      "(\010BL\202\370\030H\nF\n\020timestamp.gt_now\0322this < now" +
+      " ? \'value must be greater than now\' : \'\'" +
+      "H\006R\005gtNow\210\001\001\022\306\001\n\006within\030\t \001(\0132\031.google.p" +
+      "rotobuf.DurationB\215\001\202\370\030\210\001\n\205\001\n\020timestamp.w" +
+      "ithin\032qthis < now-rules.within || this >" +
+      " now+rules.within ? \'value must be withi" +
+      "n %s of now\'.format([rules.within]) : \'\'" +
+      "H\007R\006within\210\001\001B\010\n\006_constB\005\n\003_ltB\006\n\004_lteB\005" +
+      "\n\003_gtB\006\n\004_gteB\t\n\007_lt_nowB\t\n\007_gt_nowB\t\n\007_" +
+      "within*n\n\nKnownRegex\022\033\n\027KNOWN_REGEX_UNSP" +
+      "ECIFIED\020\000\022 \n\034KNOWN_REGEX_HTTP_HEADER_NAM" +
+      "E\020\001\022!\n\035KNOWN_REGEX_HTTP_HEADER_VALUE\020\002:`" +
+      "\n\007message\022\037.google.protobuf.MessageOptio" +
+      "ns\030\377\216\003 \001(\0132 .buf.validate.MessageConstra" +
+      "intsR\007message\210\001\001:X\n\005oneof\022\035.google.proto" +
+      "buf.OneofOptions\030\377\216\003 \001(\0132\036.buf.validate." +
+      "OneofConstraintsR\005oneof\210\001\001:X\n\005field\022\035.go" +
+      "ogle.protobuf.FieldOptions\030\377\216\003 \001(\0132\036.buf" +
+      ".validate.FieldConstraintsR\005field\210\001\001B\275\001\n" +
+      "\022build.buf.validateB\rValidateProtoP\001ZGbu",
+      "f.build/gen/go/bufbuild/protovalidate/pr" +
+      "otocolbuffers/go/buf/validate\242\002\003BVX\252\002\014Bu" +
+      "f.Validate\312\002\014Buf\\Validate\342\002\030Buf\\Validate" +
+      "\\GPBMetadata\352\002\rBuf::Validateb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,

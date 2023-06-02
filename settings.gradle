@@ -1,2 +1,3 @@
-rootProject.name = 'protovalidate-java'
+rootProject.name = 'protovalidate'
+include 'conformance'
 

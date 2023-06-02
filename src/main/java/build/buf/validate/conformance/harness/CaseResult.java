@@ -141,6 +141,32 @@ private static final long serialVersionUID = 0L;
     return got_ == null ? build.buf.validate.conformance.harness.TestResult.getDefaultInstance() : got_;
   }
 
+  public static final int INPUT_FIELD_NUMBER = 5;
+  private com.google.protobuf.Any input_;
+  /**
+   * <code>.google.protobuf.Any input = 5 [json_name = "input"];</code>
+   * @return Whether the input field is set.
+   */
+  @java.lang.Override
+  public boolean hasInput() {
+    return input_ != null;
+  }
+  /**
+   * <code>.google.protobuf.Any input = 5 [json_name = "input"];</code>
+   * @return The input.
+   */
+  @java.lang.Override
+  public com.google.protobuf.Any getInput() {
+    return input_ == null ? com.google.protobuf.Any.getDefaultInstance() : input_;
+  }
+  /**
+   * <code>.google.protobuf.Any input = 5 [json_name = "input"];</code>
+   */
+  @java.lang.Override
+  public com.google.protobuf.AnyOrBuilder getInputOrBuilder() {
+    return input_ == null ? com.google.protobuf.Any.getDefaultInstance() : input_;
+  }
+
   private byte memoizedIsInitialized = -1;
   @java.lang.Override
   public final boolean isInitialized() {
@@ -167,6 +193,9 @@ private static final long serialVersionUID = 0L;
     if (got_ != null) {
       output.writeMessage(4, getGot());
     }
+    if (input_ != null) {
+      output.writeMessage(5, getInput());
+    }
     getUnknownFields().writeTo(output);
   }
 
@@ -190,6 +219,10 @@ private static final long serialVersionUID = 0L;
     if (got_ != null) {
       size += com.google.protobuf.CodedOutputStream
         .computeMessageSize(4, getGot());
+    }
+    if (input_ != null) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeMessageSize(5, getInput());
     }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
@@ -220,6 +253,11 @@ private static final long serialVersionUID = 0L;
       if (!getGot()
           .equals(other.getGot())) return false;
     }
+    if (hasInput() != other.hasInput()) return false;
+    if (hasInput()) {
+      if (!getInput()
+          .equals(other.getInput())) return false;
+    }
     if (!getUnknownFields().equals(other.getUnknownFields())) return false;
     return true;
   }
@@ -243,6 +281,10 @@ private static final long serialVersionUID = 0L;
     if (hasGot()) {
       hash = (37 * hash) + GOT_FIELD_NUMBER;
       hash = (53 * hash) + getGot().hashCode();
+    }
+    if (hasInput()) {
+      hash = (37 * hash) + INPUT_FIELD_NUMBER;
+      hash = (53 * hash) + getInput().hashCode();
     }
     hash = (29 * hash) + getUnknownFields().hashCode();
     memoizedHashCode = hash;
@@ -387,6 +429,11 @@ private static final long serialVersionUID = 0L;
         gotBuilder_.dispose();
         gotBuilder_ = null;
       }
+      input_ = null;
+      if (inputBuilder_ != null) {
+        inputBuilder_.dispose();
+        inputBuilder_ = null;
+      }
       return this;
     }
 
@@ -436,8 +483,45 @@ private static final long serialVersionUID = 0L;
             ? got_
             : gotBuilder_.build();
       }
+      if (((from_bitField0_ & 0x00000010) != 0)) {
+        result.input_ = inputBuilder_ == null
+            ? input_
+            : inputBuilder_.build();
+      }
     }
 
+    @java.lang.Override
+    public Builder clone() {
+      return super.clone();
+    }
+    @java.lang.Override
+    public Builder setField(
+        com.google.protobuf.Descriptors.FieldDescriptor field,
+        java.lang.Object value) {
+      return super.setField(field, value);
+    }
+    @java.lang.Override
+    public Builder clearField(
+        com.google.protobuf.Descriptors.FieldDescriptor field) {
+      return super.clearField(field);
+    }
+    @java.lang.Override
+    public Builder clearOneof(
+        com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+      return super.clearOneof(oneof);
+    }
+    @java.lang.Override
+    public Builder setRepeatedField(
+        com.google.protobuf.Descriptors.FieldDescriptor field,
+        int index, java.lang.Object value) {
+      return super.setRepeatedField(field, index, value);
+    }
+    @java.lang.Override
+    public Builder addRepeatedField(
+        com.google.protobuf.Descriptors.FieldDescriptor field,
+        java.lang.Object value) {
+      return super.addRepeatedField(field, value);
+    }
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
       if (other instanceof build.buf.validate.conformance.harness.CaseResult) {
@@ -463,6 +547,9 @@ private static final long serialVersionUID = 0L;
       }
       if (other.hasGot()) {
         mergeGot(other.getGot());
+      }
+      if (other.hasInput()) {
+        mergeInput(other.getInput());
       }
       this.mergeUnknownFields(other.getUnknownFields());
       onChanged();
@@ -514,6 +601,13 @@ private static final long serialVersionUID = 0L;
               bitField0_ |= 0x00000008;
               break;
             } // case 34
+            case 42: {
+              input.readMessage(
+                  getInputFieldBuilder().getBuilder(),
+                  extensionRegistry);
+              bitField0_ |= 0x00000010;
+              break;
+            } // case 42
             default: {
               if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                 done = true; // was an endgroup tag
@@ -871,6 +965,125 @@ private static final long serialVersionUID = 0L;
         got_ = null;
       }
       return gotBuilder_;
+    }
+
+    private com.google.protobuf.Any input_;
+    private com.google.protobuf.SingleFieldBuilderV3<
+        com.google.protobuf.Any, com.google.protobuf.Any.Builder, com.google.protobuf.AnyOrBuilder> inputBuilder_;
+    /**
+     * <code>.google.protobuf.Any input = 5 [json_name = "input"];</code>
+     * @return Whether the input field is set.
+     */
+    public boolean hasInput() {
+      return ((bitField0_ & 0x00000010) != 0);
+    }
+    /**
+     * <code>.google.protobuf.Any input = 5 [json_name = "input"];</code>
+     * @return The input.
+     */
+    public com.google.protobuf.Any getInput() {
+      if (inputBuilder_ == null) {
+        return input_ == null ? com.google.protobuf.Any.getDefaultInstance() : input_;
+      } else {
+        return inputBuilder_.getMessage();
+      }
+    }
+    /**
+     * <code>.google.protobuf.Any input = 5 [json_name = "input"];</code>
+     */
+    public Builder setInput(com.google.protobuf.Any value) {
+      if (inputBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        input_ = value;
+      } else {
+        inputBuilder_.setMessage(value);
+      }
+      bitField0_ |= 0x00000010;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>.google.protobuf.Any input = 5 [json_name = "input"];</code>
+     */
+    public Builder setInput(
+        com.google.protobuf.Any.Builder builderForValue) {
+      if (inputBuilder_ == null) {
+        input_ = builderForValue.build();
+      } else {
+        inputBuilder_.setMessage(builderForValue.build());
+      }
+      bitField0_ |= 0x00000010;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>.google.protobuf.Any input = 5 [json_name = "input"];</code>
+     */
+    public Builder mergeInput(com.google.protobuf.Any value) {
+      if (inputBuilder_ == null) {
+        if (((bitField0_ & 0x00000010) != 0) &&
+          input_ != null &&
+          input_ != com.google.protobuf.Any.getDefaultInstance()) {
+          getInputBuilder().mergeFrom(value);
+        } else {
+          input_ = value;
+        }
+      } else {
+        inputBuilder_.mergeFrom(value);
+      }
+      bitField0_ |= 0x00000010;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>.google.protobuf.Any input = 5 [json_name = "input"];</code>
+     */
+    public Builder clearInput() {
+      bitField0_ = (bitField0_ & ~0x00000010);
+      input_ = null;
+      if (inputBuilder_ != null) {
+        inputBuilder_.dispose();
+        inputBuilder_ = null;
+      }
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>.google.protobuf.Any input = 5 [json_name = "input"];</code>
+     */
+    public com.google.protobuf.Any.Builder getInputBuilder() {
+      bitField0_ |= 0x00000010;
+      onChanged();
+      return getInputFieldBuilder().getBuilder();
+    }
+    /**
+     * <code>.google.protobuf.Any input = 5 [json_name = "input"];</code>
+     */
+    public com.google.protobuf.AnyOrBuilder getInputOrBuilder() {
+      if (inputBuilder_ != null) {
+        return inputBuilder_.getMessageOrBuilder();
+      } else {
+        return input_ == null ?
+            com.google.protobuf.Any.getDefaultInstance() : input_;
+      }
+    }
+    /**
+     * <code>.google.protobuf.Any input = 5 [json_name = "input"];</code>
+     */
+    private com.google.protobuf.SingleFieldBuilderV3<
+        com.google.protobuf.Any, com.google.protobuf.Any.Builder, com.google.protobuf.AnyOrBuilder> 
+        getInputFieldBuilder() {
+      if (inputBuilder_ == null) {
+        inputBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+            com.google.protobuf.Any, com.google.protobuf.Any.Builder, com.google.protobuf.AnyOrBuilder>(
+                getInput(),
+                getParentForChildren(),
+                isClean());
+        input_ = null;
+      }
+      return inputBuilder_;
     }
     @java.lang.Override
     public final Builder setUnknownFields(

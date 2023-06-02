@@ -41,33 +41,36 @@ public final class ResultsProto {
       "\n.buf/validate/conformance/harness/resul" +
       "ts.proto\022 buf.validate.conformance.harne" +
       "ss\032.buf/validate/conformance/harness/har" +
-      "ness.proto\"\203\002\n\tResultSet\022\034\n\tsuccesses\030\001 " +
-      "\001(\005R\tsuccesses\022\032\n\010failures\030\002 \001(\005R\010failur" +
-      "es\022F\n\006suites\030\003 \003(\0132..buf.validate.confor" +
-      "mance.harness.SuiteResultsR\006suites\022!\n\014su" +
-      "ite_filter\030\004 \001(\tR\013suiteFilter\022\037\n\013case_fi" +
-      "lter\030\005 \001(\tR\ncaseFilter\022\030\n\007verbose\030\006 \001(\010R" +
-      "\007verbose\022\026\n\006strict\030\007 \001(\010R\006strict\"\240\001\n\014Sui" +
-      "teResults\022\022\n\004name\030\001 \001(\tR\004name\022\034\n\tsuccess" +
-      "es\030\002 \001(\005R\tsuccesses\022\032\n\010failures\030\003 \001(\005R\010f" +
-      "ailures\022B\n\005cases\030\004 \003(\0132,.buf.validate.co" +
-      "nformance.harness.CaseResultR\005cases\"\300\001\n\n" +
-      "CaseResult\022\022\n\004name\030\001 \001(\tR\004name\022\030\n\007succes" +
-      "s\030\002 \001(\010R\007success\022D\n\006wanted\030\003 \001(\0132,.buf.v" +
-      "alidate.conformance.harness.TestResultR\006" +
-      "wanted\022>\n\003got\030\004 \001(\0132,.buf.validate.confo" +
-      "rmance.harness.TestResultR\003gotB\332\001\n&build" +
-      ".buf.validate.conformance.harnessB\014Resul" +
-      "tsProtoP\001\242\002\004BVCH\252\002 Buf.Validate.Conforma" +
-      "nce.Harness\312\002 Buf\\Validate\\Conformance\\H" +
-      "arness\342\002,Buf\\Validate\\Conformance\\Harnes" +
-      "s\\GPBMetadata\352\002#Buf::Validate::Conforman" +
-      "ce::Harnessb\006proto3"
+      "ness.proto\032\031google/protobuf/any.proto\"\203\002" +
+      "\n\tResultSet\022\034\n\tsuccesses\030\001 \001(\005R\tsuccesse" +
+      "s\022\032\n\010failures\030\002 \001(\005R\010failures\022F\n\006suites\030" +
+      "\003 \003(\0132..buf.validate.conformance.harness" +
+      ".SuiteResultsR\006suites\022!\n\014suite_filter\030\004 " +
+      "\001(\tR\013suiteFilter\022\037\n\013case_filter\030\005 \001(\tR\nc" +
+      "aseFilter\022\030\n\007verbose\030\006 \001(\010R\007verbose\022\026\n\006s" +
+      "trict\030\007 \001(\010R\006strict\"\240\001\n\014SuiteResults\022\022\n\004" +
+      "name\030\001 \001(\tR\004name\022\034\n\tsuccesses\030\002 \001(\005R\tsuc" +
+      "cesses\022\032\n\010failures\030\003 \001(\005R\010failures\022B\n\005ca" +
+      "ses\030\004 \003(\0132,.buf.validate.conformance.har" +
+      "ness.CaseResultR\005cases\"\354\001\n\nCaseResult\022\022\n" +
+      "\004name\030\001 \001(\tR\004name\022\030\n\007success\030\002 \001(\010R\007succ" +
+      "ess\022D\n\006wanted\030\003 \001(\0132,.buf.validate.confo" +
+      "rmance.harness.TestResultR\006wanted\022>\n\003got" +
+      "\030\004 \001(\0132,.buf.validate.conformance.harnes" +
+      "s.TestResultR\003got\022*\n\005input\030\005 \001(\0132\024.googl" +
+      "e.protobuf.AnyR\005inputB\332\001\n&build.buf.vali" +
+      "date.conformance.harnessB\014ResultsProtoP\001" +
+      "\242\002\004BVCH\252\002 Buf.Validate.Conformance.Harne" +
+      "ss\312\002 Buf\\Validate\\Conformance\\Harness\342\002," +
+      "Buf\\Validate\\Conformance\\Harness\\GPBMeta" +
+      "data\352\002#Buf::Validate::Conformance::Harne" +
+      "ssb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
           build.buf.validate.conformance.harness.HarnessProto.getDescriptor(),
+          com.google.protobuf.AnyProto.getDescriptor(),
         });
     internal_static_buf_validate_conformance_harness_ResultSet_descriptor =
       getDescriptor().getMessageTypes().get(0);
@@ -86,8 +89,9 @@ public final class ResultsProto {
     internal_static_buf_validate_conformance_harness_CaseResult_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_buf_validate_conformance_harness_CaseResult_descriptor,
-        new java.lang.String[] { "Name", "Success", "Wanted", "Got", });
+        new java.lang.String[] { "Name", "Success", "Wanted", "Got", "Input", });
     build.buf.validate.conformance.harness.HarnessProto.getDescriptor();
+    com.google.protobuf.AnyProto.getDescriptor();
   }
 
   // @@protoc_insertion_point(outer_class_scope)

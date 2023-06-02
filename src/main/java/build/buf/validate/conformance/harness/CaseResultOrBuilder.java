@@ -54,4 +54,19 @@ public interface CaseResultOrBuilder extends
    * <code>.buf.validate.conformance.harness.TestResult got = 4 [json_name = "got"];</code>
    */
   build.buf.validate.conformance.harness.TestResultOrBuilder getGotOrBuilder();
+
+  /**
+   * <code>.google.protobuf.Any input = 5 [json_name = "input"];</code>
+   * @return Whether the input field is set.
+   */
+  boolean hasInput();
+  /**
+   * <code>.google.protobuf.Any input = 5 [json_name = "input"];</code>
+   * @return The input.
+   */
+  com.google.protobuf.Any getInput();
+  /**
+   * <code>.google.protobuf.Any input = 5 [json_name = "input"];</code>
+   */
+  com.google.protobuf.AnyOrBuilder getInputOrBuilder();
 }

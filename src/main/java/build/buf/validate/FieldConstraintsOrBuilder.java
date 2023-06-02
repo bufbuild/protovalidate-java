@@ -11,7 +11,7 @@ public interface FieldConstraintsOrBuilder extends
    * <pre>
    * `Constraint` is a repeated field used to represent a textual expression
    * in the Common Expression Language (CEL) syntax. For more information on
-   * CEL, [see our documentation](https://github.com/bufbuild/protovalidate-api/blob/main/docs/cel.md).
+   * CEL, [see our documentation](https://github.com/bufbuild/protovalidate/blob/main/docs/cel.md).
    *
    *```proto
    *message MyMessage {
@@ -33,7 +33,7 @@ public interface FieldConstraintsOrBuilder extends
    * <pre>
    * `Constraint` is a repeated field used to represent a textual expression
    * in the Common Expression Language (CEL) syntax. For more information on
-   * CEL, [see our documentation](https://github.com/bufbuild/protovalidate-api/blob/main/docs/cel.md).
+   * CEL, [see our documentation](https://github.com/bufbuild/protovalidate/blob/main/docs/cel.md).
    *
    *```proto
    *message MyMessage {
@@ -54,7 +54,7 @@ public interface FieldConstraintsOrBuilder extends
    * <pre>
    * `Constraint` is a repeated field used to represent a textual expression
    * in the Common Expression Language (CEL) syntax. For more information on
-   * CEL, [see our documentation](https://github.com/bufbuild/protovalidate-api/blob/main/docs/cel.md).
+   * CEL, [see our documentation](https://github.com/bufbuild/protovalidate/blob/main/docs/cel.md).
    *
    *```proto
    *message MyMessage {
@@ -75,7 +75,7 @@ public interface FieldConstraintsOrBuilder extends
    * <pre>
    * `Constraint` is a repeated field used to represent a textual expression
    * in the Common Expression Language (CEL) syntax. For more information on
-   * CEL, [see our documentation](https://github.com/bufbuild/protovalidate-api/blob/main/docs/cel.md).
+   * CEL, [see our documentation](https://github.com/bufbuild/protovalidate/blob/main/docs/cel.md).
    *
    *```proto
    *message MyMessage {
@@ -97,7 +97,7 @@ public interface FieldConstraintsOrBuilder extends
    * <pre>
    * `Constraint` is a repeated field used to represent a textual expression
    * in the Common Expression Language (CEL) syntax. For more information on
-   * CEL, [see our documentation](https://github.com/bufbuild/protovalidate-api/blob/main/docs/cel.md).
+   * CEL, [see our documentation](https://github.com/bufbuild/protovalidate/blob/main/docs/cel.md).
    *
    *```proto
    *message MyMessage {

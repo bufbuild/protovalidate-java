@@ -1,15 +1,27 @@
 plugins {
     java
+    application
 }
+
+group = "build.buf"
+version = "1.0.0-dev-1"
 
 repositories {
     mavenCentral()
 }
 
 dependencies {
+    compileOnly("org.projectlombok:lombok:1.18.28")
+    annotationProcessor("org.projectlombok:lombok:1.18.28")
     implementation(libs.protobuf.java)
     implementation(libs.protobuf.java.util)
+    implementation("dev.cel:runtime:0.1.0")
+
+    testCompileOnly("org.projectlombok:lombok:1.18.28")
+    testAnnotationProcessor("org.projectlombok:lombok:1.18.28")
     testImplementation(libs.junit)
     testRuntimeOnly(libs.mockito)
     testRuntimeOnly(libs.assertj)
+    testImplementation(libs.protobuf.java)
+    testImplementation(libs.protobuf.java.util)
 }
