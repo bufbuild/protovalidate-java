@@ -9,8 +9,6 @@ MAKEFLAGS += --no-print-directory
 BIN := .tmp/bin
 COPYRIGHT_YEARS := 2023
 LICENSE_IGNORE := -e build/buf/validate -e build/tests
-# Set to use a different compiler. For example, `GO=go1.18rc1 make test`.
-GO ?= go
 ARGS ?=
 JAVA_VERSION = 20
 JAVAC = javac
@@ -38,6 +36,10 @@ clean:  ## Delete intermediate build artifacts
 .PHONY: build
 build: ## Build the entire project.
 	./gradlew build
+
+.PHONY: test
+test: ## Run all tests.
+	./gradlew test
 
 .PHONY: conformance
 conformance: build $(BIN)/protovalidate-conformance
