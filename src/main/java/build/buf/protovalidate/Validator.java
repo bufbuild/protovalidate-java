@@ -17,7 +17,7 @@ package build.buf.protovalidate;
 import build.buf.protovalidate.CelExt.CelExt;
 import build.buf.protovalidate.Evaluator.Builder;
 import build.buf.protovalidate.Evaluator.MessageEvaluator;
-import build.buf.protovalidate.Evaluator.StandardConstraintResolver;
+import build.buf.protovalidate.Evaluator.ConstraintResolver;
 import build.buf.validate.FieldConstraints;
 import build.buf.validate.MessageConstraints;
 import build.buf.validate.OneofConstraints;
@@ -56,9 +56,9 @@ public class Validator {
         private final boolean useUTC ;
         private final boolean disableLazy ;
         private final List<Descriptor> desc;
-        private final StandardConstraintResolver resolver;
+        private final ConstraintResolver resolver;
 
-        public Config(boolean failFast, boolean useUTC, boolean disableLazy, List<Descriptor> desc, StandardConstraintResolver resolver) {
+        public Config(boolean failFast, boolean useUTC, boolean disableLazy, List<Descriptor> desc, ConstraintResolver resolver) {
             this.failFast = failFast;
             this.useUTC = useUTC;
             this.disableLazy = disableLazy;
@@ -71,7 +71,7 @@ public class Validator {
         }
     }
 
-    private static class DefaultStandardConstraintResolver implements StandardConstraintResolver {
+    private static class DefaultStandardConstraintResolver implements ConstraintResolver {
         @Override
         public MessageConstraints resolveMessageConstraints(Descriptor desc) {
             return MessageConstraints.newBuilder().build();

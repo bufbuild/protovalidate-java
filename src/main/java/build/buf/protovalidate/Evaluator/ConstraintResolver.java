@@ -17,29 +17,13 @@ package build.buf.protovalidate.Evaluator;
 import build.buf.validate.FieldConstraints;
 import build.buf.validate.MessageConstraints;
 import build.buf.validate.OneofConstraints;
-import com.google.protobuf.Descriptors;
-import com.google.protobuf.Extension;
-import com.google.protobuf.GeneratedMessageV3.ExtendableMessage;
-import com.google.protobuf.Message;
+import com.google.protobuf.Descriptors.FieldDescriptor;
+import com.google.protobuf.Descriptors.Descriptor;
+import com.google.protobuf.Descriptors.OneofDescriptor;
 
-public class DefaultResolver implements StandardConstraintResolver {
-
-    @Override
-    public MessageConstraints resolveMessageConstraints(Descriptors.Descriptor desc) {
-        return null;
-    }
-
-    @Override
-    public OneofConstraints resolveOneofConstraints(Descriptors.OneofDescriptor desc) {
-        return null;
-    }
-
-    @Override
-    public FieldConstraints resolveFieldConstraints(Descriptors.FieldDescriptor desc) {
-        return null;
-    }
-
-    private <D extends ExtendableMessage, C extends Message> C resolveExtension(D desc, Extension<D, C> extType) {
-        return null;
-    }
+public interface ConstraintResolver {
+    MessageConstraints resolveMessageConstraints(Descriptor desc);
+    OneofConstraints resolveOneofConstraints(OneofDescriptor desc);
+    FieldConstraints resolveFieldConstraints(FieldDescriptor desc);
 }
+
