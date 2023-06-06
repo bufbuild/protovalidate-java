@@ -14,20 +14,17 @@
 
 package build.buf.protovalidate.Expression;
 
-import dev.cel.common.CelAbstractSyntaxTree;
-import dev.cel.common.CelOptions;
-import dev.cel.runtime.CelRuntime;
 
 public class CompiledAst {
-    private CelAbstractSyntaxTree ast;
-    private Expression source;
-
-    public CompiledAst(CelAbstractSyntaxTree ast, Expression source) {
-        this.ast = ast;
-        this.source = source;
-    }
-
-    public CompiledProgram toProgram(CelRuntime env, CelOptions... opts) throws Exception {
-        return null;
-    }
+//    private CelAbstractSyntaxTree ast;
+//    private Expression source;
+//
+//    public CompiledAst(CelAbstractSyntaxTree ast, Expression source) {
+//        this.ast = ast;
+//        this.source = source;
+//    }
+//
+//    public CompiledProgram toProgram(CelRuntime env, CelOptions... opts) throws Exception {
+//        return null;
+//    }
 }

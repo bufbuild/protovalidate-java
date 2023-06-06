@@ -14,13 +14,10 @@
 
 package build.buf.protovalidate.CelExt;
 
-import dev.cel.runtime.CelRuntime;
-import dev.cel.runtime.CelRuntimeBuilder;
-import dev.cel.runtime.CelRuntimeFactory;
 
 public class CelExt {
-    public static CelRuntimeBuilder defaultCelRuntime(boolean useUtc) {
-        return CelRuntimeFactory.standardCelRuntimeBuilder()
-                .addLibraries(new Lib(useUtc));
-    }
+//    public static CelRuntimeBuilder defaultCelRuntime(boolean useUtc) {
+//        return CelRuntimeFactory.standardCelRuntimeBuilder()
+//                .addLibraries(new Lib(useUtc));
+//    }
 }

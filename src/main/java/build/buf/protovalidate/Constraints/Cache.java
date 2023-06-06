@@ -19,8 +19,6 @@ import build.buf.protovalidate.Expression.ProgramSet;
 import build.buf.validate.FieldConstraints;
 import com.google.protobuf.Descriptors.FieldDescriptor;
 import com.google.protobuf.Message;
-import dev.cel.common.types.CelType;
-import dev.cel.runtime.CelRuntime;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -37,28 +35,28 @@ public class Cache {
         return null;
     }
 
-    public CelRuntime prepareEnvironment(CelRuntime env, FieldDescriptor fieldDesc, Message rules, Boolean forItems) {
-        // TODO: implement me
-        return null;
-    }
+//    public CelRuntime prepareEnvironment(CelRuntime env, FieldDescriptor fieldDesc, Message rules, Boolean forItems) {
+//        // TODO: implement me
+//        return null;
+//    }
 
-    public AstSet loadOrCompileStandardConstraint(CelRuntime env, FieldDescriptor constraintFieldDesc) {
-        // TODO: implement me
-        return null;
-    }
+//    public AstSet loadOrCompileStandardConstraint(CelRuntime env, FieldDescriptor constraintFieldDesc) {
+//        // TODO: implement me
+//        return null;
+//    }
 
     public FieldDescriptor getExpectedConstraintDescriptor(FieldDescriptor targetFieldDesc, Boolean forItems) {
         // TODO: implement me
         return null;
     }
 
-    public CelType getCELType(FieldDescriptor fieldDesc, Boolean forItems) {
-        // TODO: implement me
-        return null;
-    }
-
-    public ProgramSet Build(CelRuntime env, FieldDescriptor fieldDesc, FieldConstraints fieldConstraints, Boolean forItems) {
-        // TODO: implement me
-        return null;
-    }
+//    public CelType getCELType(FieldDescriptor fieldDesc, Boolean forItems) {
+//        // TODO: implement me
+//        return null;
+//    }
+//
+//    public ProgramSet Build(CelRuntime env, FieldDescriptor fieldDesc, FieldConstraints fieldConstraints, Boolean forItems) {
+//        // TODO: implement me
+//        return null;
+//    }
 }

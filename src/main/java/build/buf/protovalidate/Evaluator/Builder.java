@@ -14,7 +14,6 @@
 
 package build.buf.protovalidate.Evaluator;
 
-import build.buf.protovalidate.Constraints.Cache;
 import build.buf.protovalidate.Expression.ProgramSet;
 import build.buf.validate.Constraint;
 import build.buf.validate.FieldConstraints;
@@ -25,13 +24,11 @@ import com.google.protobuf.Descriptors.Descriptor;
 import com.google.protobuf.Descriptors.FieldDescriptor;
 import com.google.protobuf.DynamicMessage;
 import com.google.protobuf.Message;
-import dev.cel.runtime.CelRuntimeBuilder;
 
 import java.util.*;
 import java.util.concurrent.locks.ReadWriteLock;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 
-import static build.buf.protovalidate.Expression.Compiler.compile;
 
 public class Builder {
     // TODO: (TCN-1708) based on benchmarks, about 50% of CPU time is spent obtaining a read
@@ -39,14 +36,12 @@ public class Builder {
     //  minimizing the need to obtain a lock.
     private final ReadWriteLock lock = new ReentrantReadWriteLock();
     private final Map<Descriptor, MessageEvaluator> cache = new HashMap<>();
-    private final CelRuntimeBuilder env;
-    private final Cache constraints;
+//    private final Cache constraints;
     private final ConstraintResolver resolver;
     private Loader load;
 
-    public Builder(CelRuntimeBuilder env, boolean disableLazy, ConstraintResolver res, List<Descriptor> seedDesc) {
-        this.env = env;
-        this.constraints = new Cache();
+    public Builder(boolean disableLazy, ConstraintResolver res, List<Descriptor> seedDesc) {
+//        this.constraints = new Cache();
         this.resolver = res;
 
         if (disableLazy) {
@@ -131,12 +126,12 @@ public class Builder {
 
     private void processMessageExpressions(Descriptor desc, MessageConstraints msgConstraints, MessageEvaluatorImpl msgEval) {
         try {
-            env.addMessageTypes(desc);
+//            env.addMessageTypes(desc);
             // TODO: "this" not assigned
             // cel.variable("this", cel.objectType(String.valueOf(desc.fullName())
-            env.setTypeFactory(descriptor -> DynamicMessage.newBuilder(desc));
-            ProgramSet compiledExpression = compile(msgConstraints.getCelList(), env);
-            msgEval.append(new CelPrograms(compiledExpression));
+//            env.setTypeFactory(descriptor -> DynamicMessage.newBuilder(desc));
+//            ProgramSet compiledExpression = compile(msgConstraints.getCelList(), env);
+//            msgEval.append(new CelPrograms(compiledExpression));
         } catch (Exception e) {
             msgEval.setErr(e);
         }
@@ -230,10 +225,10 @@ public class Builder {
         }
 
         if (fieldDescriptor.getType() == FieldDescriptor.Type.MESSAGE) {
-            env.addFileTypes(fieldDescriptor.getFile());
+//            env.addFileTypes(fieldDescriptor.getFile());
             // TODO: "this" not assigned
             // constraints.Variable("this", constraints.ObjectType(String.valueOf(fieldDescriptor.getMessageType().getFullName())))
-            env.setTypeFactory(descriptor -> DynamicMessage.newBuilder(fieldConstraints));
+//            env.setTypeFactory(descriptor -> DynamicMessage.newBuilder(fieldConstraints));
         } else {
             // TODO: "this" not assigned
             // ProtoKindToCELType(fieldDescriptor.getType())
@@ -241,7 +236,7 @@ public class Builder {
 
         ProgramSet compiledExpressions;
         try {
-            compiledExpressions = compile(constraints, env);
+//            compiledExpressions = compile(constraints, env);
         } catch (Exception e) {
             throw e;
         }

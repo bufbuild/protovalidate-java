@@ -111,9 +111,9 @@ public class TestMain {
                 return TestResult.newBuilder()
                         .setSuccess(true)
                         .build();
-            } catch (ValidationError e) {
+            } catch (Exception e) {
                 return TestResult.newBuilder()
-                        .setValidationError(e.toProto())
+//                        .setValidationError(e.toProto())
                         .build();
             }
         } catch (Exception e) {

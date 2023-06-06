@@ -17,23 +17,16 @@ package build.buf.protovalidate.Expression;
 import build.buf.validate.Violation;
 import com.google.protobuf.MessageOrBuilder;
 import com.google.protobuf.Value;
-import dev.cel.common.ast.CelReference;
-import dev.cel.expr.Expr;
-import dev.cel.expr.ExprValue;
-import dev.cel.runtime.Activation;
-import dev.cel.runtime.CelRuntime;
-import dev.cel.runtime.Interpreter;
-
 class CompiledProgram {
-    private CelRuntime.Program program;
+//    private CelRuntime.Program program;
     private Expression source;
 
-    public CompiledProgram(CelRuntime.Program program, Expression source) {
-        this.program = program;
-        this.source = source;
-    }
-
-    public Violation eval(Activation bindings) throws Exception {
-        return null;
-    }
+//    public CompiledProgram(CelRuntime.Program program, Expression source) {
+//        this.program = program;
+//        this.source = source;
+//    }
+//
+//    public Violation eval(Activation bindings) throws Exception {
+//        return null;
+//    }
 }

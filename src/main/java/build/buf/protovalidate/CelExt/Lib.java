@@ -14,70 +14,65 @@
 
 package build.buf.protovalidate.CelExt;
 
-import dev.cel.common.CelOptions;
-import dev.cel.common.ast.CelReference;
-import dev.cel.common.types.CelType;
-import dev.cel.common.types.ListType;
-import dev.cel.runtime.*;
 
 import java.time.Clock;
 
-public class Lib implements CelRuntimeLibrary {
-    private Boolean useUtc;
-
-    public Lib(boolean useUtc) {
-        // TODO: Implement me
-        this.useUtc = useUtc;
-    }
-
-    public Clock now() {
-        // TODO: Implement me
-        return null;
-    }
-
-    public Registrar.Function uniqueMemberOverload(CelType itemType, CelRuntime.CelFunctionBinding overload) {
-        // TODO: Implement me
-        return null;
-    }
-
-    public CelReference uniqueScalar(ListType list) {
-        // TODO: Implement me
-        return null;
-    }
-
-    public CelReference uniqueBytes(ListType list) {
-        // TODO: Implement me
-        return null;
-    }
-
-    public Boolean validateEmail(String addr) {
-        // TODO: Implement me
-        return null;
-    }
-
-    public Boolean validateHostname(String host) {
-        // TODO: Implement me
-        return null;
-    }
-
-    public Boolean validateIP(String addr, int ver) {
-        // TODO: Implement me
-        return null;
-    }
-
-    public CelOptions CompileOptions() {
-        // TODO: Implement me
-        return null;
-    }
-
-    public CelOptions ProgramOptions() {
-        // TODO: Implement me
-        return null;
-    }
-
-    @Override
-    public void setRuntimeOptions(CelRuntimeBuilder runtimeBuilder) {
-        // TODO: Implement me
-
-    }
-}
+//public class Lib implements CelRuntimeLibrary {
+//    private Boolean useUtc;
+//
+//    public Lib(boolean useUtc) {
+//        // TODO: Implement me
+//        this.useUtc = useUtc;
+//    }
+//
+//    public Clock now() {
+//        // TODO: Implement me
+//        return null;
+//    }
+//
+//    public Registrar.Function uniqueMemberOverload(CelType itemType, CelRuntime.CelFunctionBinding overload) {
+//        // TODO: Implement me
+//        return null;
+//    }
+//
+//    public CelReference uniqueScalar(ListType list) {
+//        // TODO: Implement me
+//        return null;
+//    }
+//
+//    public CelReference uniqueBytes(ListType list) {
+//        // TODO: Implement me
+//        return null;
+//    }
+//
+//    public Boolean validateEmail(String addr) {
+//        // TODO: Implement me
+//        return null;
+//    }
+//
+//    public Boolean validateHostname(String host) {
+//        // TODO: Implement me
+//        return null;
+//    }
+//
+//    public Boolean validateIP(String addr, int ver) {
+//        // TODO: Implement me
+//        return null;
+//    }
+//
+//    public CelOptions CompileOptions() {
+//        // TODO: Implement me
+//        return null;
+//    }
+//
+//    public CelOptions ProgramOptions() {
+//        // TODO: Implement me
+//        return null;
+//    }
+//
+//    @Override
+//    public void setRuntimeOptions(CelRuntimeBuilder runtimeBuilder) {
+//        // TODO: Implement me
+//
+//    }
+//}

@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package buf.validate.java;
+
+import "buf/validate/validate.proto";
+
+message Simple {
+  option (buf.validate.message).cel = {
+    id: "simple.a",
+    message: "simple.a is non-zero",
+    expression: "this.a != 0"
+  };
+  int32 a = 1;
+}

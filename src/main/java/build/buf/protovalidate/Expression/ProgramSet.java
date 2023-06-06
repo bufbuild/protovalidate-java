@@ -15,7 +15,6 @@
 package build.buf.protovalidate.Expression;
 
 import build.buf.protovalidate.Errors.ValidationError;
-import dev.cel.runtime.Activation;
 
 import java.util.*;
 
@@ -37,7 +36,4 @@ public class ProgramSet {
         return null;
     }
 
-    private Activation bindThis(Object val) {
-        return null;
-    }
 }

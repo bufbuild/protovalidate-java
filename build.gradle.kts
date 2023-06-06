@@ -1,5 +1,5 @@
 plugins {
-    id("com.diffplug.spotless") version "6.19.0"
+    id("com.diffplug.spotless") version "6.13.0"
     java
     application
 }
@@ -16,7 +16,9 @@ dependencies {
     annotationProcessor("org.projectlombok:lombok:1.18.28")
     implementation(libs.protobuf.java)
     implementation(libs.protobuf.java.util)
-    implementation("dev.cel:runtime:0.1.0")
+//    implementation("dev.cel:runtime:0.1.0")
+    implementation(enforcedPlatform("org.projectnessie.cel:cel-bom:0.3.17"))
+    implementation("org.projectnessie.cel:cel-tools")
 
     testCompileOnly("org.projectlombok:lombok:1.18.28")
     testAnnotationProcessor("org.projectlombok:lombok:1.18.28")

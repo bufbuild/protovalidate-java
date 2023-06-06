@@ -12,23 +12,21 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package build.buf.protovalidate.Expression;
+package build.buf.protovalidatejava.build.buf;
 
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.locks.ReentrantLock;
+import build.buf.protovalidate.Errors.ValidationError;
+import build.buf.protovalidate.Validator;
+import build.buf.validate.conformance.cases.StringConst;
+import build.buf.validate.java.Simple;
+import org.junit.Test;
+import org.projectnessie.cel.tools.ScriptCreateException;
+import org.projectnessie.cel.tools.ScriptException;
 
-public class VariablePool {
-    private ReentrantLock lock;
+public class ValidationTest {
 
-    public VariablePool() {
-        this.lock = new ReentrantLock();
+    @Test
+    public void test() {
+        Validator validator = new Validator(new Validator.Config());
+        validator.validate(Simple.newBuilder().setA(100).build());
     }
-
-//    public void put(Variable v) {
-//    }
-//
-//    public Variable get() {
-//        return null;
-//    }
 }

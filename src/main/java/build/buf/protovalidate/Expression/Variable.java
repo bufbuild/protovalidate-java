@@ -14,29 +14,27 @@
 
 package build.buf.protovalidate.Expression;
 
-import dev.cel.runtime.Activation;
-import org.jspecify.nullness.Nullable;
 
-public class Variable extends Activation {
-    private String name;
-    private Object val;
-
-    public Variable(String name, Object val) {
-        this.name = name;
-        this.val = val;
-    }
-
-    public Object resolveName(String name) {
-        return (name.equals(this.name)) ? this.val : null;
-    }
-
-    public Activation parent() {
-        return null;
-    }
-
-    @Override
-    public @Nullable Object resolve(String name) {
-        return null;
-    }
-}
-
+//public class Variable extends Activation {
+//    private String name;
+//    private Object val;
+//
+//    public Variable(String name, Object val) {
+//        this.name = name;
+//        this.val = val;
+//    }
+//
+//    public Object resolveName(String name) {
+//        return (name.equals(this.name)) ? this.val : null;
+//    }
+//
+//    public Activation parent() {
+//        return null;
+//    }
+//
+//    @Override
+//    public @Nullable Object resolve(String name) {
+//        return null;
+//    }
+//}
+//
