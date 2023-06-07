@@ -14,7 +14,7 @@ JAVA_VERSION = 20
 JAVAC = javac
 JAVA = java
 GO ?= go
-
+ARGS ?=
 JAVA_COMPILE_OPTIONS = --enable-preview --release $(JAVA_VERSION)
 JAVA_OPTIONS = --enable-preview
 
@@ -45,7 +45,7 @@ test: ## Run all tests.
 .PHONY: conformance
 conformance: build $(BIN)/protovalidate-conformance
 	./gradlew conformance:jar
-	protovalidate-conformance ./conformance.sh --case message_expression
+	protovalidate-conformance $(ARGS) ./conformance.sh --case message_expression
 
 .PHONY: lint
 lint: lint-java  ## Lint code

@@ -15,16 +15,20 @@
 package build.buf.protovalidate.expression;
 
 
+import org.projectnessie.cel.Ast;
+import org.projectnessie.cel.Env;
+import org.projectnessie.cel.ProgramOption;
+
 public class CompiledAst {
-//    private CelAbstractSyntaxTree ast;
-//    private Expression source;
-//
-//    public CompiledAst(CelAbstractSyntaxTree ast, Expression source) {
-//        this.ast = ast;
-//        this.source = source;
-//    }
-//
-//    public CompiledProgram toProgram(CelRuntime env, CelOptions... opts) throws Exception {
-//        return null;
-//    }
+    private Ast ast;
+    private Expression source;
+
+    public CompiledAst(Ast ast, Expression source) {
+        this.ast = ast;
+        this.source = source;
+    }
+
+    public CompiledProgram toProgram(Env env, ProgramOption... opts) throws Exception {
+        return null;
+    }
 }

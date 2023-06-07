@@ -14,18 +14,19 @@
 
 package build.buf.protovalidate.evaluator;
 
-import build.buf.protovalidate.expression.ProgramSet;
-import build.buf.validate.Constraint;
+import build.buf.protovalidate.constraints.Cache;
 import build.buf.validate.FieldConstraints;
 import build.buf.validate.MessageConstraints;
 import build.buf.validate.OneofConstraints;
 import com.google.protobuf.Descriptors;
 import com.google.protobuf.Descriptors.Descriptor;
 import com.google.protobuf.Descriptors.FieldDescriptor;
-import com.google.protobuf.DynamicMessage;
-import com.google.protobuf.Message;
+import org.projectnessie.cel.Env;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.concurrent.locks.ReadWriteLock;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 
@@ -36,12 +37,14 @@ public class Builder {
     //  minimizing the need to obtain a lock.
     private final ReadWriteLock lock = new ReentrantReadWriteLock();
     private final Map<Descriptor, MessageEvaluator> cache = new HashMap<>();
-//    private final Cache constraints;
+    private final Env env;
+    private final Cache constraints;
     private final ConstraintResolver resolver;
     private Loader load;
 
-    public Builder(boolean disableLazy, ConstraintResolver res, List<Descriptor> seedDesc) {
-//        this.constraints = new Cache();
+    public Builder(Env env, boolean disableLazy, ConstraintResolver res, List<Descriptor> seedDesc) {
+        this.env = env;
+        this.constraints = new Cache();
         this.resolver = res;
 
         if (disableLazy) {
@@ -125,16 +128,7 @@ public class Builder {
     }
 
     private void processMessageExpressions(Descriptor desc, MessageConstraints msgConstraints, MessageEvaluatorImpl msgEval) {
-        try {
-//            env.addMessageTypes(desc);
-            // TODO: "this" not assigned
-            // cel.variable("this", cel.objectType(String.valueOf(desc.fullName())
-//            env.setTypeFactory(descriptor -> DynamicMessage.newBuilder(desc));
-//            ProgramSet compiledExpression = compile(msgConstraints.getCelList(), env);
-//            msgEval.append(new CelPrograms(compiledExpression));
-        } catch (Exception e) {
-            msgEval.setErr(e);
-        }
+        // TODO: implement me!
     }
 
     private void processOneofConstraints(Descriptor desc, MessageConstraints msgConstraints, MessageEvaluatorImpl msgEval) {
@@ -208,42 +202,11 @@ public class Builder {
     }
 
     public void processZeroValue(FieldDescriptor fieldDescriptor, FieldConstraints fieldConstraints, Boolean forItems, Value valueEval) throws Exception {
-        valueEval.setZero((Message) fieldDescriptor.getDefaultValue());
-        if (forItems && fieldDescriptor.isRepeated()) {
-            DynamicMessage.Builder msgBuilder = DynamicMessage.newBuilder(fieldDescriptor.getContainingType());
-            DynamicMessage msg = msgBuilder.build();
-            // val.Zero = msg.Get(fdesc).List().NewElement()
-            Message field = (Message) msg.getField(fieldDescriptor);
-//            valueEval.setZero();
-        }
+        // TODO: implement me!
     }
 
     public void processFieldExpressions(FieldDescriptor fieldDescriptor, FieldConstraints fieldConstraints, Boolean forItems, Value valueEval) throws Exception {
-        List<Constraint> constraints = fieldConstraints.getCelList();
-        if (constraints.isEmpty()) {
-            return;
-        }
-
-        if (fieldDescriptor.getType() == FieldDescriptor.Type.MESSAGE) {
-//            env.addFileTypes(fieldDescriptor.getFile());
-            // TODO: "this" not assigned
-            // constraints.Variable("this", constraints.ObjectType(String.valueOf(fieldDescriptor.getMessageType().getFullName())))
-//            env.setTypeFactory(descriptor -> DynamicMessage.newBuilder(fieldConstraints));
-        } else {
-            // TODO: "this" not assigned
-            // ProtoKindToCELType(fieldDescriptor.getType())
-        }
-
-        ProgramSet compiledExpressions;
-        try {
-//            compiledExpressions = compile(constraints, env);
-        } catch (Exception e) {
-            throw e;
-        }
-
-//        if (!compiledExpressions.isEmpty()) {
-//            valueEval.getConstraints().add(new CelPrograms(compiledExpressions));
-//        }
+        // TODO: implement me!
     }
 
     public void processEmbeddedMessage(FieldDescriptor fieldDescriptor, FieldConstraints fieldConstraints, Boolean forItems, Value valueEval) throws Exception {
@@ -272,18 +235,23 @@ public class Builder {
     }
 
     public void processStandardConstraints(FieldDescriptor fieldDescriptor, FieldConstraints fieldConstraints, Boolean forItems, Value valueEval) throws Exception {
+        // TODO: implement me!
     }
 
     public void processAnyConstraints(FieldDescriptor fieldDescriptor, FieldConstraints fieldConstraints, Boolean forItems, Value valueEval) throws Exception {
+        // TODO: implement me!
     }
 
     public void processEnumConstraints(FieldDescriptor fieldDescriptor, FieldConstraints fieldConstraints, Boolean forItems, Value valueEval) throws Exception {
+        // TODO: implement me!
     }
 
     public void processMapConstraints(FieldDescriptor fieldDescriptor, FieldConstraints fieldConstraints, Boolean forItems, Value valueEval) throws Exception {
+        // TODO: implement me!
     }
 
     public void processRepeatedConstraints(FieldDescriptor fieldDescriptor, FieldConstraints fieldConstraints, Boolean forItems, Value valueEval) throws Exception {
+        // TODO: implement me!
     }
 
     // Each step in 'steps' list above is a FieldProcessor

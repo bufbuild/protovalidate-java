@@ -15,26 +15,29 @@
 package build.buf.protovalidate.expression;
 
 
-//public class Variable extends Activation {
-//    private String name;
-//    private Object val;
-//
-//    public Variable(String name, Object val) {
-//        this.name = name;
-//        this.val = val;
-//    }
-//
-//    public Object resolveName(String name) {
-//        return (name.equals(this.name)) ? this.val : null;
-//    }
-//
-//    public Activation parent() {
-//        return null;
-//    }
-//
-//    @Override
-//    public @Nullable Object resolve(String name) {
-//        return null;
-//    }
-//}
-//
+import org.projectnessie.cel.interpreter.Activation;
+import org.projectnessie.cel.interpreter.ResolvedValue;
+
+/**
+ * Variable implements interpreter.Activation, providing a lightweight named
+ * variable to cel.Program executions.
+ */
+public class Variable implements Activation {
+    private String name;
+    private Object val;
+
+    public Variable(String name, Object val) {
+        this.name = name;
+        this.val = val;
+    }
+
+    @Override
+    public ResolvedValue resolveName(String name) {
+        return null;
+    }
+
+    @Override
+    public Activation parent() {
+        return null;
+    }
+}

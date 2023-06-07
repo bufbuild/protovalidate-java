@@ -23,10 +23,10 @@ public class VariablePool {
         this.lock = new ReentrantLock();
     }
 
-//    public void put(Variable v) {
-//    }
-//
-//    public Variable get() {
-//        return null;
-//    }
+    public void put(Variable v) {
+    }
+
+    public Variable get() {
+        return null;
+    }
 }

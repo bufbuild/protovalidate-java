@@ -14,16 +14,20 @@
 
 package build.buf.protovalidate.expression;
 
+import build.buf.validate.Violation;
+import org.projectnessie.cel.Program;
+import org.projectnessie.cel.interpreter.Activation;
+
 class CompiledProgram {
-//    private CelRuntime.Program program;
+    private Program program;
     private Expression source;
 
-//    public CompiledProgram(CelRuntime.Program program, Expression source) {
-//        this.program = program;
-//        this.source = source;
-//    }
-//
-//    public Violation eval(Activation bindings) throws Exception {
-//        return null;
-//    }
+    public CompiledProgram(Program program, Expression source) {
+        this.program = program;
+        this.source = source;
+    }
+
+    public Violation eval(Activation bindings) throws Exception {
+        return null;
+    }
 }

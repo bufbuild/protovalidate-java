@@ -18,6 +18,7 @@ dependencies {
     implementation(libs.protobuf.java.util)
     implementation(enforcedPlatform("org.projectnessie.cel:cel-bom:0.3.17"))
     implementation("org.projectnessie.cel:cel-tools")
+    implementation("javax.mail:mail:1.4.7")
 
     testCompileOnly("org.projectlombok:lombok:1.18.28")
     testAnnotationProcessor("org.projectlombok:lombok:1.18.28")

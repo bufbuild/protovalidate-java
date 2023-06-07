@@ -15,9 +15,11 @@
 package build.buf.protovalidate.celext;
 
 
+import org.projectnessie.cel.Env;
+import org.projectnessie.cel.Library;
+
 public class CelExt {
-//    public static CelRuntimeBuilder defaultCelRuntime(boolean useUtc) {
-//        return CelRuntimeFactory.standardCelRuntimeBuilder()
-//                .addLibraries(new Lib(useUtc));
-//    }
+    public static Env defaultCelRuntime(boolean useUtc) {
+        return Env.newEnv(Library.Lib(new Lib(useUtc)));
+    }
 }

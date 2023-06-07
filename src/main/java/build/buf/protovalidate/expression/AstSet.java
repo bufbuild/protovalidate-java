@@ -14,16 +14,20 @@
 
 package build.buf.protovalidate.expression;
 
+import org.projectnessie.cel.Env;
+import org.projectnessie.cel.ProgramOption;
+
 import java.util.List;
 
 // AstSet represents a collection of CompiledAst and their associated CelRuntime.
 public class AstSet {
     private List<CompiledAst> asts;
+    private final Env env;
 
-//    public AstSet(CelRuntime env, List<CompiledAst> asts) {
-//        this.env = env;
-//        this.asts = asts;
-//    }
+    public AstSet(Env env, List<CompiledAst> asts) {
+        this.env = env;
+        this.asts = asts;
+    }
 
     // Merge combines a set with another, producing a new AstSet.
     public AstSet merge(AstSet other) {
@@ -35,12 +39,12 @@ public class AstSet {
     // either a true or empty string constant result, no CompiledProgram is
     // generated for it. The main usage of this is to elide tautological expressions
     // from the final result.
-//    public ProgramSet reduceResiduals(CelOptions... opts) throws Exception {
-//        return null;
-//    }
-//
-//    // ToProgramSet generates a ProgramSet from the specified ASTs.
-//    public ProgramSet toProgramSet(CelOptions... opts) throws Exception {
-//       return null;
-//    }
+    public ProgramSet reduceResiduals(ProgramOption... opts) throws Exception {
+        return null;
+    }
+
+    // ToProgramSet generates a ProgramSet from the specified ASTs.
+    public ProgramSet toProgramSet(ProgramOption... opts) throws Exception {
+       return null;
+    }
 }

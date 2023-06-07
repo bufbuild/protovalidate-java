@@ -20,21 +20,25 @@ import build.buf.protovalidate.evaluator.ConstraintResolver;
 import build.buf.validate.FieldConstraints;
 import build.buf.validate.MessageConstraints;
 import build.buf.validate.OneofConstraints;
-import com.google.protobuf.Message;
 import com.google.protobuf.Descriptors.Descriptor;
 import com.google.protobuf.Descriptors.FieldDescriptor;
 import com.google.protobuf.Descriptors.OneofDescriptor;
+import com.google.protobuf.Message;
+import org.projectnessie.cel.Env;
 import org.projectnessie.cel.tools.ScriptHost;
 
 import java.util.Collections;
 import java.util.List;
+
+import static build.buf.protovalidate.celext.CelExt.defaultCelRuntime;
 
 public class Validator {
     private final Builder builder;
     private final boolean failFast;
 
     public Validator(Config config) {
-        this.builder = new Builder(config.disableLazy, config.resolver, config.desc);
+        Env env = defaultCelRuntime(config.useUTC);
+        this.builder = new Builder(env, config.disableLazy, config.resolver, config.desc);
         this.failFast = config.failFast;
     }
 
