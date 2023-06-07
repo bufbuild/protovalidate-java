@@ -16,7 +16,6 @@ dependencies {
     annotationProcessor("org.projectlombok:lombok:1.18.28")
     implementation(libs.protobuf.java)
     implementation(libs.protobuf.java.util)
-//    implementation("dev.cel:runtime:0.1.0")
     implementation(enforcedPlatform("org.projectnessie.cel:cel-bom:0.3.17"))
     implementation("org.projectnessie.cel:cel-tools")
 
@@ -24,7 +23,7 @@ dependencies {
     testAnnotationProcessor("org.projectlombok:lombok:1.18.28")
     testImplementation(libs.junit)
     testRuntimeOnly(libs.mockito)
-    testRuntimeOnly(libs.assertj)
+    testImplementation(libs.assertj)
     testImplementation(libs.protobuf.java)
     testImplementation(libs.protobuf.java.util)
 }

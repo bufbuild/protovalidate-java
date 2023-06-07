@@ -17,15 +17,20 @@ package build.buf.protovalidate.Errors;
 import build.buf.validate.Violation;
 import build.buf.validate.Violations;
 
+import java.util.Collections;
 import java.util.List;
 
-public class ValidationError extends Exception {
+public class ValidationError extends RuntimeException {
 
     private List<Violation> violations;
 
     public ValidationError(List<Violation> violations) {
         super("Validation error:");
         this.violations = violations;
+    }
+
+    public ValidationError() {
+        this.violations = Collections.emptyList();
     }
 
     @Override

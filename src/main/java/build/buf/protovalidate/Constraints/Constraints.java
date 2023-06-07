@@ -14,6 +14,7 @@
 
 package build.buf.protovalidate.Constraints;
 
+import build.buf.protovalidate.Errors.ValidationError;
 import build.buf.validate.Constraint;
 import build.buf.validate.FieldConstraints;
 import build.buf.validate.MessageConstraints;
@@ -184,7 +185,7 @@ public class Constraints implements ConstraintRules {
                     return script.execute(Boolean.class, finalActivation);
                 }
             } catch (Exception e) {
-                throw new RuntimeException(e);
+                throw new ValidationError();
             }
             return false;
         }

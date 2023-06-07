@@ -20,11 +20,9 @@ import build.buf.validate.conformance.harness.TestConformanceRequest;
 import build.buf.validate.conformance.harness.TestConformanceResponse;
 import build.buf.validate.conformance.harness.TestResult;
 import com.google.protobuf.Any;
-import com.google.protobuf.DescriptorProtos;
 import com.google.protobuf.DynamicMessage;
 import com.google.protobuf.Descriptors;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -42,35 +40,12 @@ public class Main {
 
     public static TestConformanceResponse testConformance(TestConformanceRequest request) {
         try {
-            // TODO: Something for JH: Is this the right way to create field descriptors from a file descriptor proto?
-            List<Descriptors.FileDescriptor> descriptorPool = new ArrayList<>();
-            for (DescriptorProtos.FileDescriptorProto fileDescriptorProto : request.getFdset().getFileList()) {
-                try {
-                    Descriptors.FileDescriptor fileDescriptor = Descriptors.FileDescriptor.buildFrom(
-                            fileDescriptorProto,
-                            new Descriptors.FileDescriptor[]{},
-                            true
-                    );
-                    descriptorPool.add(fileDescriptor);
-                } catch (Exception e) {
-                    // noop
-                }
-            }
-            List<Descriptors.FileDescriptor> fileDescriptors = new ArrayList<>();
-            Descriptors.FileDescriptor[] dependencies = descriptorPool.toArray(new Descriptors.FileDescriptor[0]);
-            for (DescriptorProtos.FileDescriptorProto fileDescriptorProto : request.getFdset().getFileList()) {
-                Descriptors.FileDescriptor fileDescriptor = Descriptors.FileDescriptor.buildFrom(
-                        fileDescriptorProto,
-                        dependencies,
-                        true
-                );
-                fileDescriptors.add(fileDescriptor);
-            }
+            Map<String, Descriptors.Descriptor> descriptorMap = FileDescriptorUtil.parse(request.getFdset());
             Validator validator = new Validator(new Validator.Config());
             TestConformanceResponse.Builder responseBuilder = TestConformanceResponse.newBuilder();
             Map<String, TestResult> resultsMap = new HashMap<>();
             for (Map.Entry<String, Any> entry : request.getCasesMap().entrySet()) {
-                TestResult testResult = testCase(validator, fileDescriptors, entry.getValue());
+                TestResult testResult = testCase(validator, descriptorMap, entry.getValue());
                 resultsMap.put(entry.getKey(), testResult);
             }
             responseBuilder.putAllResults(resultsMap);
@@ -80,21 +55,21 @@ public class Main {
         }
     }
 
-    public static TestResult testCase(Validator validator, List<Descriptors.FileDescriptor> fileDescriptors, Any testCase) {
+    public static TestResult testCase(Validator validator, Map<String, Descriptors.Descriptor> fileDescriptors, Any testCase) {
         try {
             String[] urlParts = testCase.getTypeUrl().split("/");
             String fullName = urlParts[urlParts.length - 1];
-            Descriptors.Descriptor descriptor = getDescriptor(fileDescriptors, fullName);
+            Descriptors.Descriptor descriptor = fileDescriptors.get(fullName);
             if (descriptor == null) {
                 return unexpectedErrorResult("Unable to find descriptor: " + fullName);
             }
             try {
                 // run test case:
-                validator.validate(DynamicMessage.newBuilder(descriptor)
+                boolean result = validator.validate(DynamicMessage.newBuilder(descriptor)
                         .mergeFrom(testCase.getValue())
                         .build());
                 return TestResult.newBuilder()
-                        .setSuccess(true)
+                        .setSuccess(result)
                         .build();
             } catch (ValidationError e) {
                 return TestResult.newBuilder()
