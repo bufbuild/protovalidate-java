@@ -14,17 +14,13 @@
 
 package build.buf.protovalidatejava.build.buf;
 
-import build.buf.protovalidate.Errors.ValidationError;
 import build.buf.protovalidate.Validator;
-import build.buf.validate.conformance.cases.StringConst;
 import build.buf.validate.conformance.cases.custom_constraints.Enum;
 import build.buf.validate.conformance.cases.custom_constraints.MessageExpressions;
 import build.buf.validate.java.Simple;
 import com.google.protobuf.DynamicMessage;
 import com.google.protobuf.InvalidProtocolBufferException;
 import org.junit.Test;
-import org.projectnessie.cel.tools.ScriptCreateException;
-import org.projectnessie.cel.tools.ScriptException;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

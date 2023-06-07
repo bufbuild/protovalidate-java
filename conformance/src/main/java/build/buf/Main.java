@@ -14,7 +14,7 @@
 
 package build.buf;
 
-import build.buf.protovalidate.Errors.ValidationError;
+import build.buf.protovalidate.errors.ValidationError;
 import build.buf.protovalidate.Validator;
 import build.buf.validate.conformance.harness.TestConformanceRequest;
 import build.buf.validate.conformance.harness.TestConformanceResponse;

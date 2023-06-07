@@ -14,9 +14,9 @@
 
 package build.buf.protovalidate;
 
-import build.buf.protovalidate.Constraints.Constraints;
-import build.buf.protovalidate.Evaluator.Builder;
-import build.buf.protovalidate.Evaluator.ConstraintResolver;
+import build.buf.protovalidate.constraints.Constraints;
+import build.buf.protovalidate.evaluator.Builder;
+import build.buf.protovalidate.evaluator.ConstraintResolver;
 import build.buf.validate.FieldConstraints;
 import build.buf.validate.MessageConstraints;
 import build.buf.validate.OneofConstraints;
