@@ -17,21 +17,20 @@ package build.buf.protovalidate.evaluator;
 import build.buf.protovalidate.errors.ValidationError;
 import com.google.protobuf.Descriptors.Descriptor;
 import com.google.protobuf.DynamicMessage;
-import com.google.protobuf.MessageOrBuilder;
+import com.google.protobuf.Message;
 
 // unknownMessage is a MessageEvaluator for an unknown descriptor. This is
 // returned only if lazy-building of evaluators has been disabled and an unknown
 // descriptor is encountered.
 public class UnknownMessage implements MessageEvaluator {
-    private Descriptor desc;
+    private final Descriptor desc;
 
     public UnknownMessage(Descriptor desc) {
         this.desc = desc;
     }
 
-    public Exception err() {
-        return new Exception(
-                String.format("no evaluator available for %s", this.desc.getFullName()));
+    public ValidationError err() {
+        throw new ValidationError("No evaluator available for " + desc.getFullName());
     }
 
     @Override
@@ -41,11 +40,11 @@ public class UnknownMessage implements MessageEvaluator {
 
     @Override
     public void evaluate(DynamicMessage val, boolean failFast) throws ValidationError {
-
+        throw this.err();
     }
 
     @Override
-    public void evaluateMessage(MessageOrBuilder val, boolean failFast) throws ValidationError {
-
+    public void evaluateMessage(Message val, boolean failFast) throws ValidationError {
+        throw this.err();
     }
 }

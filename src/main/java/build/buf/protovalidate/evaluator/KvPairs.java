@@ -16,8 +16,9 @@ package build.buf.protovalidate.evaluator;
 
 import build.buf.protovalidate.errors.ValidationError;
 import com.google.protobuf.DynamicMessage;
-import com.google.protobuf.Value;
+import lombok.Data;
 
+@Data
 public class KvPairs implements Evaluator {
 
     // KeyConstraints are checked on the map keys
@@ -25,6 +26,9 @@ public class KvPairs implements Evaluator {
     // ValueConstraints are checked on the map values
     private Value ValueConstraints;
 
+    public KvPairs() {
+        new KvPairs(new Value(), new Value());
+    }
     public KvPairs(Value KeyConstraints, Value ValueConstraints) {
         this.KeyConstraints = KeyConstraints;
         this.ValueConstraints = ValueConstraints;
@@ -39,5 +43,10 @@ public class KvPairs implements Evaluator {
     @Override
     public void evaluate(DynamicMessage val, boolean failFast) throws ValidationError {
 
+    }
+
+    @Override
+    public void append(Evaluator eval) {
+        throw new UnsupportedOperationException("append not supported for KvPairs");
     }
 }

@@ -33,6 +33,13 @@ public class ValidationError extends RuntimeException {
         this.violations = Collections.emptyList();
     }
 
+    public ValidationError(String s) {
+        super("Validation error:");
+        Violation violation = Violation.newBuilder().setMessage(s).build();
+        ValidationError err = new ValidationError();
+        err.addViolation(violation);
+    }
+
     @Override
     public String getMessage() {
         StringBuilder bldr = new StringBuilder();
@@ -53,4 +60,12 @@ public class ValidationError extends RuntimeException {
     }
 
     public void prefixFieldPaths(String format, Object... args) {}
+
+    public void addViolation(Violation violation) {
+        this.violations.add(violation);
+    }
+
+    public int getViolationsCount() {
+        return this.violations.size();
+    }
 }

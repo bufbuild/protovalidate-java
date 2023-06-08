@@ -20,9 +20,10 @@ import build.buf.validate.Constraint;
 import build.buf.validate.FieldConstraints;
 import build.buf.validate.MessageConstraints;
 import build.buf.validate.ValidateProto;
+import com.google.api.expr.v1alpha1.Type;
 import com.google.protobuf.Descriptors.Descriptor;
-import com.google.protobuf.Descriptors.OneofDescriptor;
 import com.google.protobuf.Descriptors.FieldDescriptor;
+import com.google.protobuf.Descriptors.OneofDescriptor;
 import com.google.protobuf.Message;
 import org.projectnessie.cel.Env;
 import org.projectnessie.cel.checker.Decls;
@@ -35,12 +36,12 @@ import java.util.List;
 import java.util.Map;
 
 public class Constraints implements ConstraintRules {
-    private static final Descriptor FIELD_CONSTRAINTS_DESC = FieldConstraints.getDescriptor();
-    private static final OneofDescriptor FIELD_CONSTRAINTS_ONEOF_DESC = FIELD_CONSTRAINTS_DESC.getOneofs().get(0);
-    private static final FieldDescriptor MAP_FIELD_CONSTRAINTS_DESC = FIELD_CONSTRAINTS_DESC.findFieldByName("map");
-    private static final FieldDescriptor REPEATED_FIELD_CONSTRAINTS_DESC = FIELD_CONSTRAINTS_DESC.findFieldByName("repeated");
-    private static final Map<FieldDescriptor.Type, FieldDescriptor> EXPECTED_STANDARD_CONSTRAINTS = new HashMap<>();
-    private static final Map<String, FieldDescriptor> EXPECTED_WKT_CONSTRAINTS = new HashMap<>();
+    public static final Descriptor FIELD_CONSTRAINTS_DESC = FieldConstraints.getDescriptor();
+    public static final OneofDescriptor FIELD_CONSTRAINTS_ONEOF_DESC = FIELD_CONSTRAINTS_DESC.getOneofs().get(0);
+    public static final FieldDescriptor MAP_FIELD_CONSTRAINTS_DESC = FIELD_CONSTRAINTS_DESC.findFieldByName("map");
+    public static final FieldDescriptor REPEATED_FIELD_CONSTRAINTS_DESC = FIELD_CONSTRAINTS_DESC.findFieldByName("repeated");
+    public static final Map<FieldDescriptor.Type, FieldDescriptor> EXPECTED_STANDARD_CONSTRAINTS = new HashMap<>();
+    public static final Map<String, FieldDescriptor> EXPECTED_WKT_CONSTRAINTS = new HashMap<>();
 
     static {
         EXPECTED_STANDARD_CONSTRAINTS.put(FieldDescriptor.Type.FLOAT, FIELD_CONSTRAINTS_DESC.findFieldByName("float"));
@@ -90,53 +91,55 @@ public class Constraints implements ConstraintRules {
         }
     }
 
-//    public static Type ProtoKindToCELType(FieldDescriptor.Type kind) {
-//        switch (kind) {
-//            case FLOAT:
-//            case DOUBLE:
+    // TODO: work this out
+    public static Type protoKindToCELType(FieldDescriptor.Type kind) {
+        switch (kind) {
+            case FLOAT:
+            case DOUBLE:
 //                return Type.newBuilder()
 //                        .setPrimitive(Type.PrimitiveType.DOUBLE)
 //                        .build();
-//            case INT32:
-//            case INT64:
-//            case SINT32:
-//            case SINT64:
-//            case SFIXED32:
-//            case SFIXED64:
-//            case ENUM:
+            case INT32:
+            case INT64:
+            case SINT32:
+            case SINT64:
+            case SFIXED32:
+            case SFIXED64:
+            case ENUM:
 //                return Type.newBuilder()
 //                        .setPrimitive(Type.PrimitiveType.INT64)
 //                        .build();
-//            case UINT32:
-//            case UINT64:
-//            case FIXED32:
-//            case FIXED64:
+            case UINT32:
+            case UINT64:
+            case FIXED32:
+            case FIXED64:
 //                return Type.newBuilder()
 //                        .setPrimitive(Type.PrimitiveType.UINT64)
 //                        .build();
-//            case BOOL:
+            case BOOL:
 //                return Type.newBuilder()
 //                        .setPrimitive(Type.PrimitiveType.BOOL)
 //                        .build();
-//            case STRING:
+            case STRING:
 //                return Type.newBuilder()
 //                        .setPrimitive(Type.PrimitiveType.STRING)
 //                        .build();
-//            case BYTES:
+            case BYTES:
 //                return Type.newBuilder()
 //                        .setPrimitive(Type.PrimitiveType.BYTES)
 //                        .build();
-//            case MESSAGE:
-//            case GROUP:
+            case MESSAGE:
+            case GROUP:
 //                return Type.newBuilder()
 //                        .setMessageType(kind.getJavaType().name())
 //                        .build();
-//            default:
+            default:
 //                return Type.newBuilder()
 //                        .setPrimitive(Type.PrimitiveType.PRIMITIVE_TYPE_UNSPECIFIED)
 //                        .build();
-//        }
-//    }
+                return null;
+        }
+    }
 
     private final ScriptHost scriptHost;
     private final Descriptor descriptor;

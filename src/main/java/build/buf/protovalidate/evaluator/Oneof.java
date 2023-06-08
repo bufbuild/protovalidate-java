@@ -15,16 +15,17 @@
 package build.buf.protovalidate.evaluator;
 
 import build.buf.protovalidate.errors.ValidationError;
+import build.buf.validate.Violation;
 import com.google.protobuf.Descriptors.OneofDescriptor;
 import com.google.protobuf.DynamicMessage;
-import com.google.protobuf.MessageOrBuilder;
+import com.google.protobuf.Message;
 
 public class Oneof implements MessageEvaluator {
 
     // Descriptor is the OneofDescriptor targeted by this evaluator
-    private OneofDescriptor descriptor;
+    private final OneofDescriptor descriptor;
     // Required indicates that a member of the oneof must be set
-    private boolean required;
+    private final boolean required;
 
     public Oneof(OneofDescriptor descriptor, boolean required) {
         this.descriptor = descriptor;
@@ -33,16 +34,25 @@ public class Oneof implements MessageEvaluator {
 
     @Override
     public boolean tautology() {
-        return false;
+        return !required;
     }
 
     @Override
     public void evaluate(DynamicMessage val, boolean failFast) throws ValidationError {
-
+        evaluateMessage(val, failFast);
     }
 
     @Override
-    public void evaluateMessage(MessageOrBuilder val, boolean failFast) throws ValidationError {
-
+    public void evaluateMessage(Message message, boolean failFast) throws ValidationError {
+        if (required && !message.hasOneof(descriptor)) {
+            ValidationError err = new ValidationError();
+            Violation violation = Violation.newBuilder()
+                    .setFieldPath(descriptor.getName())
+                    .setConstraintId("required")
+                    .setMessage("exactly one field is required in oneof")
+                    .build();
+            err.addViolation(violation);
+            throw err;
+        }
     }
 }

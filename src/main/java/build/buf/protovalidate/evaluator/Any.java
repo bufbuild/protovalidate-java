@@ -15,31 +15,73 @@
 package build.buf.protovalidate.evaluator;
 
 import build.buf.protovalidate.errors.ValidationError;
+import build.buf.validate.Violation;
 import com.google.protobuf.Descriptors;
 import com.google.protobuf.DynamicMessage;
 
-import java.util.Set;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Any implements Evaluator {
-    private Descriptors.FieldDescriptor typeURLDescriptor;
-    private Set<String> in;
-    private Set<String> notIn;
+    private final Descriptors.FieldDescriptor typeURLDescriptor;
+    private final Map<String, Object> in;
+    private final Map<String, Object> notIn;
 
-
-    public Any(Descriptors.FieldDescriptor typeURLDescriptor, Set<String> in, Set<String> notIn) {
+    public Any(Descriptors.FieldDescriptor typeURLDescriptor, String[] in, String[] notIn) {
         this.typeURLDescriptor = typeURLDescriptor;
-        this.in = in;
-        this.notIn = notIn;
+        this.in = stringsToMap(in);
+        this.notIn = stringsToMap(notIn);
+    }
+
+    private static Map<String, Object> stringsToMap(String[] strings) {
+        if (strings == null || strings.length == 0) {
+            return null;
+        }
+        Map<String, Object> map = new HashMap<>();
+        for (String s : strings) {
+            map.put(s, new Object());
+        }
+        return map;
     }
 
     @Override
-    public void evaluate(DynamicMessage val, boolean failFast) throws ValidationError {}
+    public void evaluate(DynamicMessage val, boolean failFast) throws ValidationError {
+        String typeURL = (String) val.getField(typeURLDescriptor);
 
-    public boolean tautology() {
-        return in.size() == 0 && notIn.size() == 0;
+        ValidationError validationError = new ValidationError();
+        if (in != null && in.size() > 0) {
+            if (!in.containsKey(typeURL)) {
+                Violation.Builder violation = Violation.newBuilder();
+                violation.setConstraintId("any.in");
+                violation.setMessage("type URL must be in the allow list");
+                validationError.addViolation(violation.build());
+                if (failFast) {
+                    throw validationError;
+                }
+            }
+        }
+
+        if (notIn != null && notIn.size() > 0) {
+            if (notIn.containsKey(typeURL)) {
+                Violation.Builder violation = Violation.newBuilder();
+                violation.setConstraintId("any.not_in");
+                violation.setMessage("type URL must not be in the block list");
+                validationError.addViolation(violation.build());
+            }
+        }
+
+        if (validationError.getViolationsCount() > 0) {
+            throw validationError;
+        }
     }
 
-    public static Set<String> stringsToSet(String[] ss) {
-        return null;
+    @Override
+    public void append(Evaluator eval) {
+        throw new UnsupportedOperationException("append not supported for Any");
+    }
+
+    @Override
+    public boolean tautology() {
+        return (in == null || in.size() == 0) && (notIn == null || notIn.size() == 0);
     }
 }

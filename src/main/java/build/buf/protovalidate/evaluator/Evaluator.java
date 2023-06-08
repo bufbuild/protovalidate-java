@@ -21,6 +21,8 @@ public interface Evaluator {
     boolean tautology();
 
     void evaluate(DynamicMessage val, boolean failFast) throws ValidationError;
+
+    void append(Evaluator eval);
 }
 
 

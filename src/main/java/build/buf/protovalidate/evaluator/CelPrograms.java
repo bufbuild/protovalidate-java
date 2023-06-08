@@ -17,10 +17,10 @@ package build.buf.protovalidate.evaluator;
 import build.buf.protovalidate.errors.ValidationError;
 import build.buf.protovalidate.expression.ProgramSet;
 import com.google.protobuf.DynamicMessage;
-import com.google.protobuf.MessageOrBuilder;
+import com.google.protobuf.Message;
 
 public class CelPrograms implements Evaluator, MessageEvaluator {
-    private ProgramSet programSet;
+    private final ProgramSet programSet;
 
     // assuming the equivalent of the Go `expression.ProgramSet` in Java is a List of some sort
     public CelPrograms(ProgramSet programSet) {
@@ -28,16 +28,26 @@ public class CelPrograms implements Evaluator, MessageEvaluator {
     }
 
     public boolean tautology() {
-        return false;
+        return programSet.getProgramsSize() == 0;
     }
 
     @Override
     public void evaluate(DynamicMessage val, boolean failFast) throws ValidationError {
-
+        programSet.eval(val, failFast);
     }
 
     @Override
-    public void evaluateMessage(MessageOrBuilder val, boolean failFast) throws ValidationError {
+    public void append(Evaluator eval) {
+        throw new UnsupportedOperationException("append not supported for CelPrograms");
+    }
 
+    @Override
+    public void evaluateMessage(Message val, boolean failFast) throws ValidationError {
+        programSet.eval(val, failFast);
+    }
+
+    @Override
+    public void append(MessageEvaluator eval) {
+        throw new UnsupportedOperationException("append not supported for CelPrograms");
     }
 }

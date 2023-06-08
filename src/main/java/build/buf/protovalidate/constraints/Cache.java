@@ -15,6 +15,7 @@
 package build.buf.protovalidate.constraints;
 
 import build.buf.protovalidate.expression.AstSet;
+import build.buf.protovalidate.expression.ProgramSet;
 import build.buf.validate.FieldConstraints;
 import com.google.protobuf.Descriptors.FieldDescriptor;
 import com.google.protobuf.Message;
@@ -55,8 +56,8 @@ public class Cache {
 //        return null;
 //    }
 //
-//    public ProgramSet Build(CelRuntime env, FieldDescriptor fieldDesc, FieldConstraints fieldConstraints, Boolean forItems) {
-//        // TODO: implement me
-//        return null;
-//    }
+    public ProgramSet Build(Env env, FieldDescriptor fieldDesc, FieldConstraints fieldConstraints, Boolean forItems) {
+        // TODO: implement me
+        return null;
+    }
 }

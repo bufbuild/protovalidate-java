@@ -15,8 +15,9 @@
 package build.buf.protovalidate.evaluator;
 
 import build.buf.protovalidate.errors.ValidationError;
-import com.google.protobuf.MessageOrBuilder;
+import com.google.protobuf.Message;
 
 public interface MessageEvaluator extends Evaluator {
-    void evaluateMessage(MessageOrBuilder val, boolean failFast) throws ValidationError;
+    void evaluateMessage(Message val, boolean failFast) throws ValidationError;
+    void append(MessageEvaluator eval);
 }

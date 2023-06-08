@@ -20,7 +20,7 @@ import com.google.protobuf.DynamicMessage;
 import java.util.List;
 
 class Evaluators implements Evaluator {
-    private List<Evaluator> evaluators;
+    final List<Evaluator> evaluators;
 
     public Evaluators(List<Evaluator> evaluators) {
         this.evaluators = evaluators;
@@ -38,6 +38,17 @@ class Evaluators implements Evaluator {
 
     @Override
     public void evaluate(DynamicMessage val, boolean failFast) throws ValidationError {
+        for (Evaluator evaluator : evaluators) {
+            evaluator.evaluate(val, failFast);
+            // TODO: handle failFast condition
+        }
+    }
+
+    @Override
+    public void append(Evaluator eval) {
+        if (eval != null && !eval.tautology()) {
+            this.evaluators.add(eval);
+        }
     }
 
     public void append(MessageEvaluator eval) {
@@ -45,5 +56,4 @@ class Evaluators implements Evaluator {
             this.evaluators.add(eval);
         }
     }
-
 }

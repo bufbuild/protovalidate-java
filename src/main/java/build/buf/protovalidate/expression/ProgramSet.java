@@ -16,7 +16,9 @@ package build.buf.protovalidate.expression;
 
 import build.buf.protovalidate.errors.ValidationError;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 // ProgramSet is a list of compiledProgram expressions that are evaluated
 // together with the same input value. All expressions in a ProgramSet may refer
@@ -32,8 +34,14 @@ public class ProgramSet {
         this.programs.set(index, program);
     }
 
-    public ValidationError eval(Object val, boolean failFast) throws Exception {
-        return null;
+    public void eval(Object val, boolean failFast) throws ValidationError {
     }
 
+    public int getProgramsSize() {
+        return this.programs.size();
+    }
+
+    public boolean isEmpty() {
+        return getProgramsSize() > 0;
+    }
 }

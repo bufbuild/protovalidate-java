@@ -22,14 +22,17 @@ import lombok.Data;
 public class Value implements Evaluator {
     // Zero is the default or zero-value for this value's type
     // TODO: not a message
-    private Object zero;
+    private com.google.protobuf.Value zero;
     // Constraints are the individual evaluators applied to a value
     private Evaluators constraints;
     // IgnoreEmpty indicates that the Constraints should not be applied if the
     // field is unset or the default (typically zero) value.
     private boolean ignoreEmpty;
 
-    public Value(Object zero, boolean ignoreEmpty) {
+    public Value() {
+        new Value(null, false);
+    }
+    public Value(com.google.protobuf.Value zero, boolean ignoreEmpty) {
         this.zero = zero;
         this.ignoreEmpty = ignoreEmpty;
         this.constraints = new Evaluators(null);
@@ -37,15 +40,20 @@ public class Value implements Evaluator {
 
     @Override
     public boolean tautology() {
-        return false;
+        return constraints.evaluators.isEmpty();
     }
 
     @Override
     public void evaluate(DynamicMessage val, boolean failFast) throws ValidationError {
-
+        if (ignoreEmpty && val.equals(zero)) {
+            return;
+        }
+        for (Evaluator constraint : constraints.evaluators) {
+            constraint.evaluate(val, failFast);
+        }
     }
 
-    public void append(MessageEvaluator eval) {
+    public void append(Evaluator eval) {
         if (eval != null && !eval.tautology()) {
             this.constraints.append(eval);
         }

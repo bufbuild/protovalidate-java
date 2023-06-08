@@ -15,6 +15,7 @@
 package build.buf.protovalidate.celext;
 
 import org.projectnessie.cel.EnvOption;
+import org.projectnessie.cel.EvalOption;
 import org.projectnessie.cel.Library;
 import org.projectnessie.cel.ProgramOption;
 import org.projectnessie.cel.common.types.*;
@@ -52,6 +53,9 @@ public class Lib implements Library {
     @Override
     public List<ProgramOption> getProgramOptions() {
         List<ProgramOption> opts = new ArrayList<>();
+        opts.add(ProgramOption.evalOptions(
+                EvalOption.OptOptimize
+        ));
         ProgramOption functions =
                 ProgramOption.functions(
                         unary("unique", uniqueMemberOverload(BoolT.BoolType, this::uniqueScalar)),

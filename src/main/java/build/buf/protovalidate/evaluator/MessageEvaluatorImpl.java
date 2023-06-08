@@ -16,9 +16,10 @@ package build.buf.protovalidate.evaluator;
 
 import build.buf.protovalidate.errors.ValidationError;
 import com.google.protobuf.DynamicMessage;
-import com.google.protobuf.MessageOrBuilder;
+import com.google.protobuf.Message;
 import lombok.Data;
 
+import java.util.Collections;
 import java.util.List;
 
 @Data
@@ -31,6 +32,9 @@ public class MessageEvaluatorImpl implements MessageEvaluator {
     // evaluators are the individual evaluators that are applied to a message.
     private MessageEvaluators evaluators;
 
+    public MessageEvaluatorImpl() {
+        this.evaluators = new MessageEvaluators(Collections.emptyList());
+    }
     public MessageEvaluatorImpl(List<MessageEvaluator> messageEvaluators) {
         this.evaluators = new MessageEvaluators(messageEvaluators);
     }
@@ -42,12 +46,12 @@ public class MessageEvaluatorImpl implements MessageEvaluator {
 
     @Override
     public void evaluate(DynamicMessage val, boolean failFast) throws ValidationError {
-
+        evaluateMessage(val, failFast);
     }
 
     @Override
-    public void evaluateMessage(MessageOrBuilder val, boolean failFast) throws ValidationError {
-
+    public void evaluateMessage(Message val, boolean failFast) throws ValidationError {
+        this.evaluators.evaluateMessage(val, failFast);
     }
 
     public void append(MessageEvaluator eval) {
@@ -56,4 +60,3 @@ public class MessageEvaluatorImpl implements MessageEvaluator {
         }
     }
 }
-

@@ -16,12 +16,12 @@ package build.buf.protovalidate.evaluator;
 
 import build.buf.protovalidate.errors.ValidationError;
 import com.google.protobuf.DynamicMessage;
-import com.google.protobuf.MessageOrBuilder;
+import com.google.protobuf.Message;
 
 import java.util.List;
 
 class MessageEvaluators implements MessageEvaluator {
-    private List<MessageEvaluator> messageEvaluators;
+    private final List<MessageEvaluator> messageEvaluators;
 
     public MessageEvaluators(List<MessageEvaluator> messageEvaluators) {
         this.messageEvaluators = messageEvaluators;
@@ -43,7 +43,11 @@ class MessageEvaluators implements MessageEvaluator {
     }
 
     @Override
-    public void evaluateMessage(MessageOrBuilder val, boolean failFast) throws ValidationError {
+    public void evaluateMessage(Message val, boolean failFast) throws ValidationError {
+        for (MessageEvaluator evaluator : messageEvaluators) {
+            evaluator.evaluateMessage(val, failFast);
+            // TODO: handle failFast condition
+        }
     }
 
     public void append(MessageEvaluator eval) {
