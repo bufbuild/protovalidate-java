@@ -15,6 +15,9 @@
 package build.buf.protovalidate.expression;
 
 import build.buf.protovalidate.errors.ValidationError;
+import build.buf.validate.Violation;
+import com.google.protobuf.MapEntry;
+import com.google.protobuf.Message;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -24,24 +27,50 @@ import java.util.List;
 // together with the same input value. All expressions in a ProgramSet may refer
 // to a `this` variable.
 public class ProgramSet {
-    private List<CompiledProgram> programs;
+    public final List<CompiledProgram> programs;
+    private final VariablePool pool = new VariablePool();
 
-    public ProgramSet(int size) {
-        this.programs = new ArrayList<>(Collections.nCopies(size, null));
+    public ProgramSet(List<CompiledProgram> programs) {
+        this.programs = programs;
     }
 
     public void set(int index, CompiledProgram program) {
         this.programs.set(index, program);
     }
 
-    public void eval(Object val, boolean failFast) throws ValidationError {
+    public ValidationError eval(Object val, boolean failFast) {
+        Variable variable = bind(val, failFast);
+        try {
+            List<Violation> violations = new ArrayList<>();
+            for (CompiledProgram program : programs) {
+                Violation violation = program.eval(variable);
+                if (violation != null) {
+                    violations.add(violation);
+                    if (failFast) {
+                        break;
+                    }
+                }
+            }
+            if (!violations.isEmpty()) {
+                return new ValidationError(violations);
+            }
+            return null;
+        } finally {
+            pool.put(variable);
+        }
+
     }
 
-    public int getProgramsSize() {
-        return this.programs.size();
-    }
-
-    public boolean isEmpty() {
-        return getProgramsSize() > 0;
+    private Variable bind(Object val, boolean failFast){
+        Variable variable = pool.get();
+        variable.setName("this");
+        if (val instanceof Message) {
+            variable.setObject(((Message) val).getDefaultInstanceForType());
+        } else if (val instanceof MapEntry) {
+            // TODO: com.google.protobuf.MapEntry is not the right type
+        } else {
+            variable.setObject(val);
+        }
+        return variable;
     }
 }

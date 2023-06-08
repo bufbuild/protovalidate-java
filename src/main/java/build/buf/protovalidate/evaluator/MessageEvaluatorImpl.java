@@ -50,6 +50,11 @@ public class MessageEvaluatorImpl implements MessageEvaluator {
     }
 
     @Override
+    public void append(Evaluator eval) {
+
+    }
+
+    @Override
     public void evaluateMessage(Message val, boolean failFast) throws ValidationError {
         this.evaluators.evaluateMessage(val, failFast);
     }

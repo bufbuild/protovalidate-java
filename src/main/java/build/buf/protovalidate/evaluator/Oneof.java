@@ -43,6 +43,11 @@ public class Oneof implements MessageEvaluator {
     }
 
     @Override
+    public void append(Evaluator eval) {
+
+    }
+
+    @Override
     public void evaluateMessage(Message message, boolean failFast) throws ValidationError {
         if (required && !message.hasOneof(descriptor)) {
             ValidationError err = new ValidationError();
@@ -54,5 +59,10 @@ public class Oneof implements MessageEvaluator {
             err.addViolation(violation);
             throw err;
         }
+    }
+
+    @Override
+    public void append(MessageEvaluator eval) {
+
     }
 }

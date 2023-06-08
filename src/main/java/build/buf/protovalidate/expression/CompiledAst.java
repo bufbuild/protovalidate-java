@@ -20,15 +20,15 @@ import org.projectnessie.cel.Env;
 import org.projectnessie.cel.ProgramOption;
 
 public class CompiledAst {
-    private Ast ast;
-    private Expression source;
+    public final Ast ast;
+    public final Expression source;
 
     public CompiledAst(Ast ast, Expression source) {
         this.ast = ast;
         this.source = source;
     }
 
-    public CompiledProgram toProgram(Env env, ProgramOption... opts) throws Exception {
+    public CompiledProgram toProgram(Env env, ProgramOption... opts) {
         return null;
     }
 }

@@ -27,7 +27,7 @@ class CompiledProgram {
         this.source = source;
     }
 
-    public Violation eval(Activation bindings) throws Exception {
+    public Violation eval(Activation bindings) {
         return null;
     }
 }

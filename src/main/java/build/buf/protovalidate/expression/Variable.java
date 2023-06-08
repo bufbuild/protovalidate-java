@@ -15,6 +15,7 @@
 package build.buf.protovalidate.expression;
 
 
+import com.google.protobuf.Message;
 import org.projectnessie.cel.interpreter.Activation;
 import org.projectnessie.cel.interpreter.ResolvedValue;
 
@@ -39,5 +40,13 @@ public class Variable implements Activation {
     @Override
     public Activation parent() {
         return null;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setObject(Object o) {
+        this.val = o;
     }
 }

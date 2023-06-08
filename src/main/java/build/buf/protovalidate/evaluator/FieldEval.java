@@ -52,6 +52,11 @@ public class FieldEval implements MessageEvaluator {
     }
 
     @Override
+    public void append(Evaluator eval) {
+
+    }
+
+    @Override
     public void evaluateMessage(Message message, boolean failFast) throws ValidationError {
         if (required && !message.hasField(descriptor)) {
             ValidationError err = new ValidationError();

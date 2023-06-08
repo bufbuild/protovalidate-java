@@ -44,7 +44,17 @@ public class UnknownMessage implements MessageEvaluator {
     }
 
     @Override
+    public void append(Evaluator eval) {
+
+    }
+
+    @Override
     public void evaluateMessage(Message val, boolean failFast) throws ValidationError {
         throw this.err();
+    }
+
+    @Override
+    public void append(MessageEvaluator eval) {
+
     }
 }

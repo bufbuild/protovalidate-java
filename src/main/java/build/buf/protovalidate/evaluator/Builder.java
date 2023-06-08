@@ -16,6 +16,7 @@ package build.buf.protovalidate.evaluator;
 
 import build.buf.protovalidate.constraints.Cache;
 import build.buf.protovalidate.constraints.Constraints;
+import build.buf.protovalidate.constraints.Lookups;
 import build.buf.protovalidate.expression.Compiler;
 import build.buf.protovalidate.expression.ProgramSet;
 import build.buf.validate.Constraint;
@@ -229,12 +230,12 @@ public class Builder {
             );
         } else {
             opts = Collections.singletonList(
-                    EnvOption.declarations(Decls.newVar("this", Constraints.protoKindToCELType(fieldDescriptor.getType())))
+                    EnvOption.declarations(Decls.newVar("this", Lookups.protoKindToCELType(fieldDescriptor.getType())))
             );
         }
 
         ProgramSet compiledExpressions = Compiler.compile(exprs, env, opts.toArray(new EnvOption[0]));
-        if (!compiledExpressions.isEmpty()) {
+        if (!compiledExpressions.programs.isEmpty()) {
             valueEval.getConstraints().append(new CelPrograms(compiledExpressions));
         }
     }
@@ -256,7 +257,7 @@ public class Builder {
                 fieldDescriptor.isMapField() || (fieldDescriptor.isRepeated() && !forItems)) {
             return;
         }
-        FieldDescriptor expectedWrapperDescriptor = Constraints.expectedWrapperConstraints(fieldDescriptor.getMessageType().getFullName());
+        FieldDescriptor expectedWrapperDescriptor = Lookups.expectedWrapperConstraints(fieldDescriptor.getMessageType().getFullName());
         if (expectedWrapperDescriptor == null || !fieldConstraints.hasField(expectedWrapperDescriptor)) {
             return;
         }
@@ -276,7 +277,7 @@ public class Builder {
     }
 
     public void processStandardConstraints(FieldDescriptor fieldDescriptor, FieldConstraints fieldConstraints, Boolean forItems, Value valueEval) throws Exception {
-        ProgramSet stdConstraints = constraints.Build(env, fieldDescriptor, fieldConstraints, forItems);
+        ProgramSet stdConstraints = constraints.buildProgram(env, fieldDescriptor, fieldConstraints, forItems);
         valueEval.append(new CelPrograms(stdConstraints));
     }
 
