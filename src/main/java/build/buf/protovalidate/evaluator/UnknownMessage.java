@@ -14,6 +14,7 @@
 
 package build.buf.protovalidate.evaluator;
 
+import build.buf.protovalidate.ValidationResult;
 import build.buf.protovalidate.errors.ValidationError;
 import com.google.protobuf.Descriptors.Descriptor;
 import com.google.protobuf.DynamicMessage;
@@ -39,7 +40,7 @@ public class UnknownMessage implements MessageEvaluator {
     }
 
     @Override
-    public void evaluate(DynamicMessage val, boolean failFast) throws ValidationError {
+    public ValidationResult evaluate(DynamicMessage val, boolean failFast) {
         throw this.err();
     }
 
@@ -49,8 +50,8 @@ public class UnknownMessage implements MessageEvaluator {
     }
 
     @Override
-    public void evaluateMessage(Message val, boolean failFast) throws ValidationError {
-        throw this.err();
+    public ValidationResult evaluateMessage(Message val, boolean failFast) {
+        return new ValidationResult(err());
     }
 
     @Override

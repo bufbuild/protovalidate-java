@@ -14,12 +14,13 @@
 
 package build.buf.protovalidate.evaluator;
 
+import build.buf.protovalidate.ValidationResult;
 import build.buf.protovalidate.errors.ValidationError;
 import com.google.protobuf.DynamicMessage;
 import com.google.protobuf.Message;
 import lombok.Data;
 
-import java.util.Collections;
+import java.util.ArrayList;
 import java.util.List;
 
 @Data
@@ -30,38 +31,51 @@ public class MessageEvaluatorImpl implements MessageEvaluator {
     private Exception err;
 
     // evaluators are the individual evaluators that are applied to a message.
-    private MessageEvaluators evaluators;
+    private List<MessageEvaluator> evaluators = new ArrayList<>();
 
     public MessageEvaluatorImpl() {
-        this.evaluators = new MessageEvaluators(Collections.emptyList());
-    }
-    public MessageEvaluatorImpl(List<MessageEvaluator> messageEvaluators) {
-        this.evaluators = new MessageEvaluators(messageEvaluators);
     }
 
     @Override
     public boolean tautology() {
-        return this.err == null && this.evaluators.tautology();
+        if (err != null) {
+            return false;
+        }
+        for (MessageEvaluator evaluator : evaluators) {
+            if (!evaluator.tautology()) {
+                return false;
+            }
+        }
+        return true;
     }
 
     @Override
-    public void evaluate(DynamicMessage val, boolean failFast) throws ValidationError {
-        evaluateMessage(val, failFast);
+    public ValidationResult evaluate(DynamicMessage val, boolean failFast) {
+        return evaluateMessage(val, failFast);
     }
 
     @Override
     public void append(Evaluator eval) {
-
+        if (eval instanceof MessageEvaluator) {
+            append((MessageEvaluator) eval);
+        }
     }
 
     @Override
-    public void evaluateMessage(Message val, boolean failFast) throws ValidationError {
-        this.evaluators.evaluateMessage(val, failFast);
+    public void append(MessageEvaluator eval) {
+        if (!eval.tautology()) {
+            evaluators.add(eval);
+        }
     }
 
-    public void append(MessageEvaluator eval) {
-        if (eval != null && !eval.tautology()) {
-            this.evaluators.append(eval);
+    @Override
+    public ValidationResult evaluateMessage(Message val, boolean failFast) throws ValidationError {
+        for (MessageEvaluator evaluator : evaluators) {
+            ValidationResult validationResult = evaluator.evaluateMessage(val, failFast);
+            if (validationResult.isFailure()) {
+                return validationResult;
+            }
         }
+        return new ValidationResult(null);
     }
 }

@@ -14,6 +14,8 @@
 
 package build.buf.protovalidatejava.build.buf;
 
+import build.buf.protovalidate.Config;
+import build.buf.protovalidate.ValidationResult;
 import build.buf.protovalidate.Validator;
 import build.buf.validate.conformance.cases.custom_constraints.Enum;
 import build.buf.validate.conformance.cases.custom_constraints.MessageExpressions;
@@ -28,19 +30,19 @@ public class ValidationTest {
 
     @Test
     public void testSuccess() {
-        Validator validator = new Validator(new Validator.Config());
-        assertThat(validator.validate(Simple.newBuilder().setA(100).build())).isTrue();
+        Validator validator = new Validator(new Config());
+        assertThat(validator.validateOrThrow(Simple.newBuilder().setA(100).build())).isTrue();
     }
 
     @Test
     public void testFailure() {
-        Validator validator = new Validator(new Validator.Config());
-        assertThat(validator.validate(Simple.newBuilder().setA(0).build())).isFalse();
+        Validator validator = new Validator(new Config());
+        assertThat(validator.validate(Simple.newBuilder().setA(0).build()).isFailure()).isTrue();
     }
 
     @Test
-    public void testMessageExpressions() throws InvalidProtocolBufferException {
-        Validator validator = new Validator(new Validator.Config());
+    public void testValidMessageExpressions() throws InvalidProtocolBufferException {
+        Validator validator = new Validator(new Config());
         MessageExpressions msg = MessageExpressions.newBuilder()
                 .setA(3)
                 .setB(4)
@@ -49,6 +51,16 @@ public class ValidationTest {
                 .setF(MessageExpressions.Nested.newBuilder().setA(4).setB(2).build())
                 .build();
         DynamicMessage message = DynamicMessage.newBuilder(msg.getDescriptorForType()).mergeFrom(msg.toByteArray()).build();
-        assertThat(validator.validate(message)).isTrue();
+        assertThat(validator.validate(message).isSuccess()).isTrue();
+    }
+
+    @Test
+    public void testInvalidMessageExpressions() throws InvalidProtocolBufferException {
+        Validator validator = new Validator(new Config());
+        MessageExpressions msg = MessageExpressions.newBuilder()
+                .build();
+        DynamicMessage message = DynamicMessage.newBuilder(msg.getDescriptorForType()).mergeFrom(msg.toByteArray()).build();
+        ValidationResult validationResult = validator.validate(message);
+        assertThat(validationResult.error().getViolationsCount()).isEqualTo(2);
     }
 }

@@ -14,7 +14,7 @@
 
 package build.buf.protovalidate.evaluator;
 
-import build.buf.protovalidate.errors.ValidationError;
+import build.buf.protovalidate.ValidationResult;
 import com.google.protobuf.DynamicMessage;
 import lombok.Data;
 
@@ -41,8 +41,8 @@ public class KvPairs implements Evaluator {
     }
 
     @Override
-    public void evaluate(DynamicMessage val, boolean failFast) throws ValidationError {
-
+    public ValidationResult evaluate(DynamicMessage val, boolean failFast) {
+        return new ValidationResult(null);
     }
 
     @Override

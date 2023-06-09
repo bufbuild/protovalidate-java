@@ -14,15 +14,25 @@
 
 package build.buf;
 
+import build.buf.protovalidate.Config;
 import build.buf.protovalidate.errors.ValidationError;
 import build.buf.protovalidate.Validator;
+import build.buf.validate.ValidateProto;
+import build.buf.validate.conformance.cases.custom_constraints.MessageExpressions;
 import build.buf.validate.conformance.harness.TestConformanceRequest;
 import build.buf.validate.conformance.harness.TestConformanceResponse;
 import build.buf.validate.conformance.harness.TestResult;
 import com.google.protobuf.Any;
+import com.google.protobuf.ByteString;
 import com.google.protobuf.DynamicMessage;
 import com.google.protobuf.Descriptors;
+import com.google.protobuf.ExtensionRegistry;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.util.Base64;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -30,7 +40,12 @@ import java.util.Map;
 public class Main {
     public static void main(String[] args) {
         try {
-            TestConformanceRequest request = TestConformanceRequest.parseFrom(System.in);
+            ExtensionRegistry extensionRegistry = ExtensionRegistry.newInstance();
+            extensionRegistry.add(ValidateProto.message);
+            extensionRegistry.add(ValidateProto.field);
+            extensionRegistry.add(ValidateProto.oneof);
+            // add file to extension registry for
+            TestConformanceRequest request = TestConformanceRequest.parseFrom(System.in, extensionRegistry);
             TestConformanceResponse response = testConformance(request);
             response.writeTo(System.out);
         } catch (Exception e) {
@@ -41,7 +56,7 @@ public class Main {
     public static TestConformanceResponse testConformance(TestConformanceRequest request) {
         try {
             Map<String, Descriptors.Descriptor> descriptorMap = FileDescriptorUtil.parse(request.getFdset());
-            Validator validator = new Validator(new Validator.Config());
+            Validator validator = new Validator(new Config());
             TestConformanceResponse.Builder responseBuilder = TestConformanceResponse.newBuilder();
             Map<String, TestResult> resultsMap = new HashMap<>();
             for (Map.Entry<String, Any> entry : request.getCasesMap().entrySet()) {
@@ -64,10 +79,13 @@ public class Main {
                 return unexpectedErrorResult("Unable to find descriptor: " + fullName);
             }
             try {
+                Descriptors.Descriptor msgeDescriptor = MessageExpressions.getDescriptor();
                 // run test case:
-                boolean result = validator.validate(DynamicMessage.newBuilder(descriptor)
-                        .mergeFrom(testCase.getValue())
-                        .build());
+                ByteString value = testCase.getValue();
+                DynamicMessage build = DynamicMessage.newBuilder(descriptor)
+                        .mergeFrom(value)
+                        .build();
+                boolean result = validator.validateOrThrow(build);
                 return TestResult.newBuilder()
                         .setSuccess(result)
                         .build();
@@ -79,17 +97,6 @@ public class Main {
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
-    }
-
-    private static Descriptors.Descriptor getDescriptor(List<Descriptors.FileDescriptor> fileDescriptors, String fullName) {
-        Descriptors.Descriptor descriptor = null;
-        for (Descriptors.FileDescriptor fileDescriptor : fileDescriptors) {
-            descriptor = fileDescriptor.findMessageTypeByName(fullName);
-            if (descriptor != null) {
-                break;
-            }
-        }
-        return descriptor;
     }
 
     public static TestResult unexpectedErrorResult(String format, Object... args) {

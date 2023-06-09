@@ -16,6 +16,7 @@ package build.buf.protovalidate.expression;
 
 import build.buf.validate.Violation;
 import org.projectnessie.cel.Program;
+import org.projectnessie.cel.common.types.ref.Val;
 import org.projectnessie.cel.interpreter.Activation;
 
 class CompiledProgram {
@@ -28,6 +29,27 @@ class CompiledProgram {
     }
 
     public Violation eval(Activation bindings) {
-        return null;
+        Program.EvalResult evalResult = this.program.eval(bindings);
+        Val val = evalResult.getVal();
+        Object value = val.value();
+        if (value instanceof String) {
+            if ("".equals(value)) {
+                return null;
+            }
+            return Violation.newBuilder()
+                    .setConstraintId(this.source.id)
+                    .setMessage(value.toString())
+                    .build();
+        } else if (value instanceof Boolean) {
+            if (val.booleanValue()) {
+                return null;
+            }
+            return Violation.newBuilder()
+                    .setConstraintId(this.source.id)
+                    .setMessage(this.source.message)
+                    .build();
+        } else {
+            throw new RuntimeException("resolved to an unexpected type " + val);
+        }
     }
 }

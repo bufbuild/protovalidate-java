@@ -14,6 +14,7 @@
 
 package build.buf.protovalidate.evaluator;
 
+import build.buf.protovalidate.ValidationResult;
 import build.buf.protovalidate.errors.ValidationError;
 import build.buf.validate.Violation;
 import com.google.protobuf.Descriptors.FieldDescriptor;
@@ -47,8 +48,8 @@ public class FieldEval implements MessageEvaluator {
     }
 
     @Override
-    public void evaluate(DynamicMessage val, boolean failFast) throws ValidationError {
-        evaluateMessage(val, failFast);
+    public ValidationResult evaluate(DynamicMessage val, boolean failFast) {
+        return evaluateMessage(val, failFast);
     }
 
     @Override
@@ -57,7 +58,7 @@ public class FieldEval implements MessageEvaluator {
     }
 
     @Override
-    public void evaluateMessage(Message message, boolean failFast) throws ValidationError {
+    public ValidationResult evaluateMessage(Message message, boolean failFast) throws ValidationError {
         if (required && !message.hasField(descriptor)) {
             ValidationError err = new ValidationError();
             err.addViolation(Violation.newBuilder()
@@ -65,15 +66,15 @@ public class FieldEval implements MessageEvaluator {
                     .setConstraintId("required")
                     .setMessage("value is required")
                     .build());
-            throw err;
+            return new ValidationResult(err);
         }
 
         if ((optional || value.isIgnoreEmpty()) && !message.hasField(descriptor)) {
-            return;
+            return new ValidationResult(null);
         }
 
         Object fieldValue = message.getField(descriptor);
-        value.evaluate((DynamicMessage) fieldValue, failFast);
+        return value.evaluate((DynamicMessage) fieldValue, failFast);
     }
 
     @Override

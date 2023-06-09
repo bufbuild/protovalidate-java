@@ -14,7 +14,7 @@
 
 package build.buf.protovalidate.evaluator;
 
-import build.buf.protovalidate.errors.ValidationError;
+import build.buf.protovalidate.ValidationResult;
 import com.google.protobuf.DynamicMessage;
 import lombok.Data;
 
@@ -44,13 +44,17 @@ public class Value implements Evaluator {
     }
 
     @Override
-    public void evaluate(DynamicMessage val, boolean failFast) throws ValidationError {
+    public ValidationResult evaluate(DynamicMessage val, boolean failFast) {
         if (ignoreEmpty && val.equals(zero)) {
-            return;
+            return new ValidationResult(null);
         }
         for (Evaluator constraint : constraints.evaluators) {
-            constraint.evaluate(val, failFast);
+            ValidationResult validationResult = constraint.evaluate(val, failFast);
+            if (validationResult.isFailure()) {
+                return validationResult;
+            }
         }
+        return new ValidationResult(null);
     }
 
     public void append(Evaluator eval) {

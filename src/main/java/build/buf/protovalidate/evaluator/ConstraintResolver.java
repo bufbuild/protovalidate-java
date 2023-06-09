@@ -17,13 +17,48 @@ package build.buf.protovalidate.evaluator;
 import build.buf.validate.FieldConstraints;
 import build.buf.validate.MessageConstraints;
 import build.buf.validate.OneofConstraints;
+import build.buf.validate.ValidateProto;
+import com.google.protobuf.DescriptorProtos;
 import com.google.protobuf.Descriptors.FieldDescriptor;
 import com.google.protobuf.Descriptors.Descriptor;
 import com.google.protobuf.Descriptors.OneofDescriptor;
 
-public interface ConstraintResolver {
-    MessageConstraints resolveMessageConstraints(Descriptor desc);
-    OneofConstraints resolveOneofConstraints(OneofDescriptor desc);
-    FieldConstraints resolveFieldConstraints(FieldDescriptor desc);
+// TODO: potential for non registered classes to be read here maybe:
+// https://github.com/bufbuild/protovalidate-go/blob/main/internal/evaluator/resolver.go#L43-L47
+public class ConstraintResolver {
+
+    public MessageConstraints resolveMessageConstraints(Descriptor desc) {
+        DescriptorProtos.MessageOptions options = desc.getOptions();
+        if (!options.hasExtension(ValidateProto.message)) {
+            return MessageConstraints.newBuilder()
+                    .build();
+        }
+
+        MessageConstraints constraints = options.getExtension(ValidateProto.message);
+        boolean disabled = constraints.getDisabled();
+        if (disabled) {
+            return MessageConstraints.newBuilder()
+                    .setDisabled(true)
+                    .build();
+        }
+        return constraints;
+    }
+
+    public OneofConstraints resolveOneofConstraints(OneofDescriptor desc) {
+        DescriptorProtos.OneofOptions options = desc.getOptions();
+        if (!options.hasExtension(ValidateProto.oneof)) {
+            return OneofConstraints.newBuilder()
+                    .build();
+        }
+        return options.getExtension(ValidateProto.oneof);
+    }
+
+    public FieldConstraints resolveFieldConstraints(FieldDescriptor desc) {
+        DescriptorProtos.FieldOptions options = desc.getOptions();
+        if (!options.hasExtension(ValidateProto.field)) {
+            return FieldConstraints.newBuilder().build();
+        }
+        return options.getExtension(ValidateProto.field);
+    }
 }
 

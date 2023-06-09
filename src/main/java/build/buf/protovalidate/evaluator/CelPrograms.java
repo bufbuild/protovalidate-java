@@ -14,6 +14,7 @@
 
 package build.buf.protovalidate.evaluator;
 
+import build.buf.protovalidate.ValidationResult;
 import build.buf.protovalidate.errors.ValidationError;
 import build.buf.protovalidate.expression.ProgramSet;
 import com.google.protobuf.DynamicMessage;
@@ -32,8 +33,9 @@ public class CelPrograms implements Evaluator, MessageEvaluator {
     }
 
     @Override
-    public void evaluate(DynamicMessage val, boolean failFast) throws ValidationError {
-        programSet.eval(val, failFast);
+    public ValidationResult evaluate(DynamicMessage val, boolean failFast) {
+        ValidationError error = programSet.eval(val, failFast);
+        return new ValidationResult(error);
     }
 
     @Override
@@ -42,8 +44,12 @@ public class CelPrograms implements Evaluator, MessageEvaluator {
     }
 
     @Override
-    public void evaluateMessage(Message val, boolean failFast) throws ValidationError {
-        programSet.eval(val, failFast);
+    public ValidationResult evaluateMessage(Message val, boolean failFast) throws ValidationError {
+        ValidationError eval = programSet.eval(val, failFast);
+        if (eval != null) {
+            return new ValidationResult(eval);
+        }
+        return new ValidationResult(null);
     }
 
     @Override

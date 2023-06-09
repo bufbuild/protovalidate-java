@@ -16,19 +16,16 @@ package build.buf.protovalidate.expression;
 
 import build.buf.protovalidate.errors.ValidationError;
 import build.buf.validate.Violation;
-import com.google.protobuf.MapEntry;
-import com.google.protobuf.Message;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicReference;
 
 // ProgramSet is a list of compiledProgram expressions that are evaluated
 // together with the same input value. All expressions in a ProgramSet may refer
 // to a `this` variable.
 public class ProgramSet {
     public final List<CompiledProgram> programs;
-    private final VariablePool pool = new VariablePool();
 
     public ProgramSet(List<CompiledProgram> programs) {
         this.programs = programs;
@@ -39,38 +36,30 @@ public class ProgramSet {
     }
 
     public ValidationError eval(Object val, boolean failFast) {
-        Variable variable = bind(val, failFast);
-        try {
-            List<Violation> violations = new ArrayList<>();
-            for (CompiledProgram program : programs) {
-                Violation violation = program.eval(variable);
-                if (violation != null) {
-                    violations.add(violation);
-                    if (failFast) {
-                        break;
-                    }
+        Variable variable = new Variable();
+        variable.setName("this");
+//        if (val instanceof Message) {
+//            variable.setObject(((Message) val).getDefaultInstanceForType());
+//        } else if (val instanceof MapEntry) {
+//            // TODO: com.google.protobuf.MapEntry is not the right type
+//        } else {
+//
+//        }
+        variable.setObject(val);
+        List<Violation> violations = new ArrayList<>();
+        for (CompiledProgram program : programs) {
+            Violation violation = program.eval(variable);
+            if (violation != null) {
+                violations.add(violation);
+                if (failFast) {
+                    break;
                 }
             }
-            if (!violations.isEmpty()) {
-                return new ValidationError(violations);
-            }
-            return null;
-        } finally {
-            pool.put(variable);
         }
-
-    }
-
-    private Variable bind(Object val, boolean failFast){
-        Variable variable = pool.get();
-        variable.setName("this");
-        if (val instanceof Message) {
-            variable.setObject(((Message) val).getDefaultInstanceForType());
-        } else if (val instanceof MapEntry) {
-            // TODO: com.google.protobuf.MapEntry is not the right type
-        } else {
-            variable.setObject(val);
+        if (!violations.isEmpty()) {
+            return new ValidationError(violations);
         }
-        return variable;
-    }
+        return null;
+}
+
 }

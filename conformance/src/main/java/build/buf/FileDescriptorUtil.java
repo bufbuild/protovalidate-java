@@ -10,6 +10,7 @@ import java.util.Map;
 
 public class FileDescriptorUtil {
 
+
     public static Map<String, Descriptors.Descriptor> parse(DescriptorProtos.FileDescriptorSet fileDescriptorSet) throws Descriptors.DescriptorValidationException {
         Map<String, Descriptors.Descriptor> descriptorMap = new HashMap<>();
         Map<String, Descriptors.FileDescriptor> fileDescriptorMap = parseFileDescriptors(fileDescriptorSet);
@@ -17,15 +18,17 @@ public class FileDescriptorUtil {
             for (Descriptors.Descriptor messageType : fileDescriptor.getMessageTypes()) {
                 descriptorMap.put(messageType.getFullName(), messageType);
             }
-            for (Descriptors.EnumDescriptor enumType : fileDescriptor.getEnumTypes()) {
-
-            }
+            // Need to recurse.
         }
         return descriptorMap;
     }
+
     public static Map<String, Descriptors.FileDescriptor> parseFileDescriptors(DescriptorProtos.FileDescriptorSet fileDescriptorSet) throws Descriptors.DescriptorValidationException {
         Map<String, DescriptorProtos.FileDescriptorProto> fileDescriptorProtoMap = new HashMap<>();
         for (DescriptorProtos.FileDescriptorProto fileDescriptorProto : fileDescriptorSet.getFileList()) {
+            if (fileDescriptorProtoMap.containsKey(fileDescriptorProto.getName())) {
+                throw new RuntimeException("duplicate files found.");
+            }
             fileDescriptorProtoMap.put(fileDescriptorProto.getName(), fileDescriptorProto);
         }
         Map<String, Descriptors.FileDescriptor> fileDescriptorMap = new HashMap<>();

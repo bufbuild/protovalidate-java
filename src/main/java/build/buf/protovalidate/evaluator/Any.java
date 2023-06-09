@@ -14,6 +14,7 @@
 
 package build.buf.protovalidate.evaluator;
 
+import build.buf.protovalidate.ValidationResult;
 import build.buf.protovalidate.errors.ValidationError;
 import build.buf.validate.Violation;
 import com.google.protobuf.Descriptors;
@@ -45,7 +46,7 @@ public class Any implements Evaluator {
     }
 
     @Override
-    public void evaluate(DynamicMessage val, boolean failFast) throws ValidationError {
+    public ValidationResult evaluate(DynamicMessage val, boolean failFast) {
         String typeURL = (String) val.getField(typeURLDescriptor);
 
         ValidationError validationError = new ValidationError();
@@ -56,7 +57,7 @@ public class Any implements Evaluator {
                 violation.setMessage("type URL must be in the allow list");
                 validationError.addViolation(violation.build());
                 if (failFast) {
-                    throw validationError;
+                    return new ValidationResult(validationError);
                 }
             }
         }
@@ -69,10 +70,7 @@ public class Any implements Evaluator {
                 validationError.addViolation(violation.build());
             }
         }
-
-        if (validationError.getViolationsCount() > 0) {
-            throw validationError;
-        }
+        return new ValidationResult(validationError);
     }
 
     @Override

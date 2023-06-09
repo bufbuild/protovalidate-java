@@ -14,10 +14,11 @@
 
 package build.buf.protovalidate.evaluator;
 
-import build.buf.protovalidate.errors.ValidationError;
+import build.buf.protovalidate.ValidationResult;
 import com.google.protobuf.DynamicMessage;
 import lombok.Data;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Data
@@ -39,22 +40,21 @@ public class ListItems implements Evaluator {
     }
 
     @Override
-    public void evaluate(DynamicMessage val, boolean failFast) throws ValidationError {
-        List<DynamicMessage> list = val.getAllFields().values().stream()
-                .filter(value -> value instanceof List)
-                .map(value -> (List<DynamicMessage>) value)
-                .flatMap(List::stream)
-                .toList();
-
-        for (int i = 0; i < list.size(); i++) {
-            DynamicMessage item = list.get(i);
-            try {
-                itemConstraints.evaluate(item, failFast);
-            } catch (ValidationError e) {
-                // TODO: merge errors
-                throw e;
+    public ValidationResult evaluate(DynamicMessage val, boolean failFast) {
+        List<DynamicMessage> list = new ArrayList<>();
+        for (Object value : val.getAllFields().values()) {
+            if (value instanceof List) {
+                list.addAll((List<DynamicMessage>) value);
             }
         }
+        for (int i = 0; i < list.size(); i++) {
+            DynamicMessage item = list.get(i);
+            ValidationResult evaluate = itemConstraints.evaluate(item, failFast);
+            if (evaluate.isFailure()) {
+                return evaluate;
+            }
+        }
+        return new ValidationResult(null);
     }
 
     @Override

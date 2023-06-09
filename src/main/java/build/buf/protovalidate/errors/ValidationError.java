@@ -17,46 +17,49 @@ package build.buf.protovalidate.errors;
 import build.buf.validate.Violation;
 import build.buf.validate.Violations;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 public class ValidationError extends RuntimeException {
 
-    private List<Violation> violations;
+    public final List<Violation> violations;
 
     public ValidationError(List<Violation> violations) {
-        super("Validation error:");
         this.violations = violations;
     }
 
     public ValidationError() {
-        this.violations = Collections.emptyList();
+        this.violations = new ArrayList<>();
     }
 
     public ValidationError(String s) {
-        super("Validation error:");
+        this.violations = new ArrayList<>();
         Violation violation = Violation.newBuilder().setMessage(s).build();
         ValidationError err = new ValidationError();
         err.addViolation(violation);
+        this.violations.add(violation);
     }
 
     @Override
     public String getMessage() {
         StringBuilder bldr = new StringBuilder();
-        bldr.append(super.getMessage());
+        bldr.append("Validation error:");
         for (Violation violation : violations) {
-            bldr.append("\n - ");
             if (!violation.getFieldPath().isEmpty()) {
                 bldr.append(violation.getFieldPath());
                 bldr.append(": ");
             }
             bldr.append(String.format("%s [%s]", violation.getMessage(), violation.getConstraintId()));
+            bldr.append("\n - ");
         }
         return bldr.toString();
     }
 
     public Violations toProto() {
-        return null;
+        return Violations.newBuilder()
+                .addAllViolations(violations)
+                .build();
     }
 
     public void prefixFieldPaths(String format, Object... args) {}

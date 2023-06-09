@@ -14,21 +14,12 @@
 
 package build.buf.protovalidate;
 
-import build.buf.protovalidate.constraints.Constraints;
+import build.buf.protovalidate.errors.ValidationError;
 import build.buf.protovalidate.evaluator.Builder;
-import build.buf.protovalidate.evaluator.ConstraintResolver;
-import build.buf.validate.FieldConstraints;
-import build.buf.validate.MessageConstraints;
-import build.buf.validate.OneofConstraints;
+import build.buf.protovalidate.evaluator.MessageEvaluator;
 import com.google.protobuf.Descriptors.Descriptor;
-import com.google.protobuf.Descriptors.FieldDescriptor;
-import com.google.protobuf.Descriptors.OneofDescriptor;
 import com.google.protobuf.Message;
 import org.projectnessie.cel.Env;
-import org.projectnessie.cel.tools.ScriptHost;
-
-import java.util.Collections;
-import java.util.List;
 
 import static build.buf.protovalidate.celext.CelExt.defaultCelRuntime;
 
@@ -42,47 +33,22 @@ public class Validator {
         this.failFast = config.failFast;
     }
 
-    public boolean validate(Message msg) {
-        ScriptHost scriptHost = ScriptHost.newBuilder().build();
-        Constraints constraints = new Constraints(scriptHost, msg.getDescriptorForType());
-        return constraints.validate("", msg);
+    public boolean validateOrThrow(Message msg) {
+        ValidationResult validationResult = validate(msg);
+        if (validationResult.error() != null) {
+            throw validationResult.error();
+        }
+        return validationResult.isSuccess();
     }
 
-    public static class Config {
-        private final boolean failFast;
-        private final boolean useUTC;
-        private final boolean disableLazy;
-        private final List<Descriptor> desc;
-        private final ConstraintResolver resolver;
-
-        public Config(boolean failFast, boolean useUTC, boolean disableLazy, List<Descriptor> desc, ConstraintResolver resolver) {
-            this.failFast = failFast;
-            this.useUTC = useUTC;
-            this.disableLazy = disableLazy;
-            this.desc = desc;
-            this.resolver = resolver;
+    public ValidationResult validate(Message msg) {
+        if (msg == null) {
+            // TODO: what should be here?
+            return new ValidationResult(new ValidationError());
         }
-
-        public Config() {
-            this(false, true, true, Collections.emptyList(), new DefaultStandardConstraintResolver());
-        }
-    }
-
-    private static class DefaultStandardConstraintResolver implements ConstraintResolver {
-        @Override
-        public MessageConstraints resolveMessageConstraints(Descriptor desc) {
-            return MessageConstraints.newBuilder().build();
-        }
-
-        @Override
-        public OneofConstraints resolveOneofConstraints(OneofDescriptor desc) {
-            return OneofConstraints.newBuilder().build();
-        }
-
-        @Override
-        public FieldConstraints resolveFieldConstraints(FieldDescriptor desc) {
-            return FieldConstraints.newBuilder().build();
-        }
+        Descriptor descriptor = msg.getDescriptorForType();
+        MessageEvaluator evaluator = builder.loadOrBuild(descriptor);
+        return evaluator.evaluateMessage(msg, failFast);
     }
 }
 

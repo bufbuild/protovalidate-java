@@ -61,7 +61,7 @@ public class AstSet {
         options.addAll(Arrays.asList(opts));
         List<CompiledAst> residuals = new ArrayList<>();
         for (CompiledAst ast : asts) {
-            CompiledProgram compiledProgram = ast.toProgram(env, options.toArray(new ProgramOption[0]));
+            CompiledProgram compiledProgram = ast.toCompiledProgram(env, options.toArray(new ProgramOption[0]));
             if (compiledProgram == null) {
                 residuals.add(ast);
                 continue;
@@ -93,7 +93,7 @@ public class AstSet {
         }
         List<CompiledProgram> programs = new ArrayList<>();
         for (CompiledAst ast : asts) {
-            CompiledProgram compiledProgram = ast.toProgram(env, opts);
+            CompiledProgram compiledProgram = ast.toCompiledProgram(env, opts);
             programs.add(compiledProgram);
         }
         return new ProgramSet(programs);

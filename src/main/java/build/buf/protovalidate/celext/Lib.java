@@ -21,6 +21,7 @@ import org.projectnessie.cel.ProgramOption;
 import org.projectnessie.cel.common.types.*;
 import org.projectnessie.cel.common.types.ref.*;
 import org.projectnessie.cel.common.types.traits.*;
+import org.projectnessie.cel.interpreter.Activation;
 import org.projectnessie.cel.interpreter.functions.*;
 
 import javax.mail.internet.AddressException;
@@ -53,16 +54,19 @@ public class Lib implements Library {
     @Override
     public List<ProgramOption> getProgramOptions() {
         List<ProgramOption> opts = new ArrayList<>();
+        Map<String, Object> activation = new HashMap<>();
+        activation.put("now", null); // TODO:
         opts.add(ProgramOption.evalOptions(
                 EvalOption.OptOptimize
         ));
+        opts.add(ProgramOption.globals(activation));
         ProgramOption functions =
                 ProgramOption.functions(
-                        unary("unique", uniqueMemberOverload(BoolT.BoolType, this::uniqueScalar)),
-                        unary("unique", uniqueMemberOverload(IntT.IntType, this::uniqueScalar)),
-                        unary("unique", uniqueMemberOverload(UintT.UintType, this::uniqueScalar)),
-                        unary("unique", uniqueMemberOverload(DoubleT.DoubleType, this::uniqueScalar)),
-                        unary("unique", uniqueMemberOverload(StringT.StringType, this::uniqueScalar)),
+//                        unary("unique", uniqueMemberOverload(BoolT.BoolType, this::uniqueScalar)),
+//                        unary("unique", uniqueMemberOverload(IntT.IntType, this::uniqueScalar)),
+//                        unary("unique", uniqueMemberOverload(UintT.UintType, this::uniqueScalar)),
+//                        unary("unique", uniqueMemberOverload(DoubleT.DoubleType, this::uniqueScalar)),
+//                        unary("unique", uniqueMemberOverload(StringT.StringType, this::uniqueScalar)),
                         unary("unique", uniqueMemberOverload(BytesT.BytesType, this::uniqueBytes)),
                         function("isHostname", values -> {
                             String host = ((String) values[0].value());
@@ -159,7 +163,7 @@ public class Lib implements Library {
      * Val's implementations may specialize the behavior of the value through the
      * addition of traits.
      */
-    public Val uniqueBytes(Lister list) {
+    private Val uniqueBytes(Lister list) {
         // TODO: dont like the use of map here but it works
         Map<Object, Boolean> exist = new HashMap<>();
         for (int i = 0; i < list.size().intValue(); i++) {
@@ -175,7 +179,7 @@ public class Lib implements Library {
         return BoolT.True;
     }
 
-    public boolean validateEmail(String addr) {
+    private boolean validateEmail(String addr) {
         try {
             InternetAddress emailAddr = new InternetAddress(addr);
             emailAddr.validate();
@@ -195,8 +199,7 @@ public class Lib implements Library {
         }
     }
 
-
-    public boolean validateHostname(String host) {
+    private boolean validateHostname(String host) {
         if (host.length() > 253) {
             return false;
         }
@@ -220,7 +223,7 @@ public class Lib implements Library {
         return true;
     }
 
-    public boolean validateIP(String addr, int ver) {
+    private boolean validateIP(String addr, int ver) {
         InetAddress address = null;
         try {
             address = InetAddress.getByName(addr);
@@ -228,11 +231,19 @@ public class Lib implements Library {
             return false;
         }
 
-        return switch (ver) {
-            case 0 -> true;
-            case 4 -> address instanceof Inet4Address;
-            case 6 -> address instanceof Inet6Address;
-            default -> false;
-        };
+//        return switch (ver) {
+//            case 0 -> true;
+//            case 4 -> address instanceof Inet4Address;
+//            case 6 -> address instanceof Inet6Address;
+//            default -> false;
+//        };
+        // TODO:
+        return false;
+    }
+
+    private void now() {
+        if (useUtc) {
+
+        }
     }
 }

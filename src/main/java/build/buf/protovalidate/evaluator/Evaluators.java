@@ -14,7 +14,7 @@
 
 package build.buf.protovalidate.evaluator;
 
-import build.buf.protovalidate.errors.ValidationError;
+import build.buf.protovalidate.ValidationResult;
 import com.google.protobuf.DynamicMessage;
 
 import java.util.List;
@@ -37,11 +37,15 @@ class Evaluators implements Evaluator {
     }
 
     @Override
-    public void evaluate(DynamicMessage val, boolean failFast) throws ValidationError {
+    public ValidationResult evaluate(DynamicMessage val, boolean failFast) {
         for (Evaluator evaluator : evaluators) {
-            evaluator.evaluate(val, failFast);
-            // TODO: handle failFast condition
+            ValidationResult evaluate = evaluator.evaluate(val, failFast);
+            // TODO: handle non-fail fast scenarios. failing fast always here.
+            if (evaluate.isFailure()) {
+                return evaluate;
+            }
         }
+        return new ValidationResult(null);
     }
 
     @Override

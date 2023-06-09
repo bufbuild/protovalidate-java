@@ -45,7 +45,7 @@ test: ## Run all tests.
 .PHONY: conformance
 conformance: build $(BIN)/protovalidate-conformance
 	./gradlew conformance:jar
-	protovalidate-conformance $(ARGS) ./conformance.sh --case message_expression
+	$(BIN)/protovalidate-conformance $(ARGS) ./conformance.sh
 
 .PHONY: lint
 lint: lint-java  ## Lint code

@@ -15,15 +15,17 @@
 package build.buf.protovalidate.expression;
 
 
-import com.google.protobuf.Message;
 import org.projectnessie.cel.interpreter.Activation;
 import org.projectnessie.cel.interpreter.ResolvedValue;
+
+import static org.projectnessie.cel.interpreter.ResolvedValue.ABSENT;
 
 /**
  * Variable implements interpreter.Activation, providing a lightweight named
  * variable to cel.Program executions.
  */
 public class Variable implements Activation {
+    private Activation next;
     private String name;
     private Object val;
 
@@ -32,9 +34,17 @@ public class Variable implements Activation {
         this.val = val;
     }
 
+    public Variable() {
+    }
+
     @Override
     public ResolvedValue resolveName(String name) {
-        return null;
+        if (this.name.equals(name)) {
+            return ResolvedValue.resolvedValue(val);
+        } else if (next != null) {
+            return next.resolveName(name);
+        }
+        return ABSENT;
     }
 
     @Override

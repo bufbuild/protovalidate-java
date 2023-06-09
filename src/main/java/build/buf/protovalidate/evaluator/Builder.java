@@ -23,41 +23,34 @@ import build.buf.validate.Constraint;
 import build.buf.validate.FieldConstraints;
 import build.buf.validate.MessageConstraints;
 import build.buf.validate.OneofConstraints;
+import build.buf.validate.ValidateProto;
 import com.google.protobuf.Descriptors;
 import com.google.protobuf.Descriptors.Descriptor;
 import com.google.protobuf.Descriptors.FieldDescriptor;
+import com.google.protobuf.DynamicMessage;
+import com.google.protobuf.ExtensionRegistry;
 import org.projectnessie.cel.Env;
 import org.projectnessie.cel.EnvOption;
 import org.projectnessie.cel.checker.Decls;
 
+import java.io.ByteArrayInputStream;
 import java.util.*;
-import java.util.concurrent.locks.ReadWriteLock;
-import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 
 public class Builder {
-    // TODO: (TCN-1708) based on benchmarks, about 50% of CPU time is spent obtaining a read
-    //  lock on this mutex. Ideally, this can be reworked to be thread-safe while
-    //  minimizing the need to obtain a lock.
-    private final ReadWriteLock lock = new ReentrantReadWriteLock();
+    // TODO: apparently go has some concurrency issues?
+
     private final Map<Descriptor, MessageEvaluator> cache = new HashMap<>();
     private final Env env;
     private final Cache constraints;
     private final ConstraintResolver resolver;
-    // TODO: this doesnt work
-    private final Loader load;
 
     public Builder(Env env, boolean disableLazy, ConstraintResolver res, List<Descriptor> seedDesc) {
         this.env = env;
         this.constraints = new Cache();
         this.resolver = res;
 
-        if (disableLazy) {
-            this.load = this::load;
-        } else {
-            this.load = this::loadOrBuild;
-        }
-
+        // TODO: do disableLazy
         for (Descriptor desc : seedDesc) {
             build(desc);
         }
@@ -79,23 +72,12 @@ public class Builder {
         return evaluator;
     }
 
-    private MessageEvaluator loadOrBuild(Descriptor desc) {
-        lock.readLock().lock();
-        try {
-            MessageEvaluator eval = cache.get(desc);
-            if (eval != null) {
-                return eval;
-            }
-        } finally {
-            lock.readLock().unlock();
+    public MessageEvaluator loadOrBuild(Descriptor desc) {
+        MessageEvaluator eval = cache.get(desc);
+        if (eval != null) {
+            return eval;
         }
-
-        lock.writeLock().lock();
-        try {
-            return build(desc);
-        } finally {
-            lock.writeLock().unlock();
-        }
+        return build(desc);
     }
 
     private MessageEvaluator build(Descriptor desc) {
@@ -103,43 +85,43 @@ public class Builder {
         if (eval != null) {
             return eval;
         }
-
         MessageEvaluatorImpl msgEval = new MessageEvaluatorImpl();
         cache.put(desc, msgEval);
-
-        buildMessage(desc, msgEval);
+        MessageConstraints msgConstraints = resolver.resolveMessageConstraints(desc);
+        if (msgConstraints.getDisabled()) {
+            return msgEval;
+        }
+        try {
+            processMessageExpressions(desc, msgConstraints, msgEval);
+//            processOneofConstraints(desc, msgConstraints, msgEval);
+//            processFields(desc, msgConstraints, msgEval);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
         return msgEval;
     }
 
-    private void buildMessage(Descriptor desc, MessageEvaluator msgEval) {
-        MessageConstraints msgConstraints = resolver.resolveMessageConstraints(desc);
-        if (msgConstraints.getDisabled()) {
+    private void processMessageExpressions(Descriptor desc, MessageConstraints msgConstraints, MessageEvaluator msgEval) {
+        List<Constraint> celList = msgConstraints.getCelList();
+        if (celList.isEmpty()) {
             return;
         }
-
-        List<Processor> steps = Arrays.asList(
-                this::processMessageExpressions,
-                this::processOneofConstraints,
-                this::processFields);
-
-        for (Processor step : steps) {
-            try {
-                step.process(desc, msgConstraints, msgEval);
-            } catch (Exception e) {
-                throw new RuntimeException(e);
-            }
-        }
-    }
-
-    private void processMessageExpressions(Descriptor desc, MessageConstraints msgConstraints, MessageEvaluator msgEval) {
-        // TODO: implement me!
         try {
+            ExtensionRegistry extensionRegistry = ExtensionRegistry.newInstance();
+            extensionRegistry.add(ValidateProto.message);
+            extensionRegistry.add(ValidateProto.field);
+            extensionRegistry.add(ValidateProto.oneof);
+            DynamicMessage defaultInstance = DynamicMessage.parseFrom(desc, new byte[0], extensionRegistry);
+
             ProgramSet compiledExpressions = Compiler.compile(
-                    msgConstraints.getCelList(),
+                    celList,
                     this.env,
-                    EnvOption.types(desc),
+                    EnvOption.types(defaultInstance),
                     EnvOption.declarations(Decls.newVar("this", Decls.newObjectType(desc.getFullName())))
             );
+            if (compiledExpressions == null) {
+                throw new RuntimeException("compile returned null");
+            }
             msgEval.append(new CelPrograms(compiledExpressions));
         } catch (Exception e) {
             throw new RuntimeException(e);
@@ -204,11 +186,7 @@ public class Builder {
         );
 
         for (FieldProcessor step : steps) {
-            try {
-                step.process(fieldDescriptor, fieldConstraints, forItems, valueEval);
-            } catch (Exception e) {
-                throw e;
-            }
+            step.process(fieldDescriptor, fieldConstraints, forItems, valueEval);
         }
     }
 

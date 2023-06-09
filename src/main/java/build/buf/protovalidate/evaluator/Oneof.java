@@ -14,6 +14,7 @@
 
 package build.buf.protovalidate.evaluator;
 
+import build.buf.protovalidate.ValidationResult;
 import build.buf.protovalidate.errors.ValidationError;
 import build.buf.validate.Violation;
 import com.google.protobuf.Descriptors.OneofDescriptor;
@@ -38,8 +39,8 @@ public class Oneof implements MessageEvaluator {
     }
 
     @Override
-    public void evaluate(DynamicMessage val, boolean failFast) throws ValidationError {
-        evaluateMessage(val, failFast);
+    public ValidationResult evaluate(DynamicMessage val, boolean failFast) {
+        return evaluateMessage(val, failFast);
     }
 
     @Override
@@ -48,7 +49,7 @@ public class Oneof implements MessageEvaluator {
     }
 
     @Override
-    public void evaluateMessage(Message message, boolean failFast) throws ValidationError {
+    public ValidationResult evaluateMessage(Message message, boolean failFast) {
         if (required && !message.hasOneof(descriptor)) {
             ValidationError err = new ValidationError();
             Violation violation = Violation.newBuilder()
@@ -57,8 +58,9 @@ public class Oneof implements MessageEvaluator {
                     .setMessage("exactly one field is required in oneof")
                     .build();
             err.addViolation(violation);
-            throw err;
+            return new ValidationResult(err);
         }
+        return new ValidationResult(null);
     }
 
     @Override

@@ -14,13 +14,13 @@
 
 package build.buf.protovalidate.evaluator;
 
-import build.buf.protovalidate.errors.ValidationError;
+import build.buf.protovalidate.ValidationResult;
 import com.google.protobuf.DynamicMessage;
 
 public interface Evaluator {
     boolean tautology();
 
-    void evaluate(DynamicMessage val, boolean failFast) throws ValidationError;
+    ValidationResult evaluate(DynamicMessage val, boolean failFast);
 
     void append(Evaluator eval);
 }

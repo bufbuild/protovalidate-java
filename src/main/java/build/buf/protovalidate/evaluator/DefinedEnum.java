@@ -14,19 +14,21 @@
 
 package build.buf.protovalidate.evaluator;
 
+import build.buf.protovalidate.ValidationResult;
 import build.buf.protovalidate.errors.ValidationError;
 import build.buf.validate.Violation;
 import com.google.protobuf.Descriptors;
 import com.google.protobuf.DynamicMessage;
 import com.google.protobuf.ProtocolMessageEnum;
 
+import java.util.Arrays;
 import java.util.List;
 
 public class DefinedEnum implements Evaluator {
     private final List<Descriptors.EnumValueDescriptor> valueDescriptors;
 
     public DefinedEnum(Descriptors.EnumValueDescriptor... valueDescriptors) {
-        this.valueDescriptors = List.of(valueDescriptors);
+        this.valueDescriptors = Arrays.asList(valueDescriptors);
     }
 
     public boolean tautology() {
@@ -34,7 +36,7 @@ public class DefinedEnum implements Evaluator {
     }
 
     @Override
-    public void evaluate(DynamicMessage val, boolean failFast) throws ValidationError {
+    public ValidationResult evaluate(DynamicMessage val, boolean failFast) {
         ProtocolMessageEnum enumValue = (ProtocolMessageEnum) val.getField(val.getDescriptorForType().findFieldByName("enum"));
         if (!isValueValid(enumValue)) {
             ValidationError err = new ValidationError();
@@ -42,8 +44,9 @@ public class DefinedEnum implements Evaluator {
                     .setConstraintId("enum.defined_only")
                     .setMessage("value must be one of the defined enum values")
                     .build());
-            throw err;
+            return new ValidationResult(err);
         }
+        return new ValidationResult(null);
     }
 
     @Override
