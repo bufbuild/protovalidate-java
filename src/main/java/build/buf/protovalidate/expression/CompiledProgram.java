@@ -14,11 +14,14 @@
 
 package build.buf.protovalidate.expression;
 
+import build.buf.protovalidate.errors.RuntimeError;
 import build.buf.validate.Violation;
+import lombok.Data;
 import org.projectnessie.cel.Program;
 import org.projectnessie.cel.common.types.ref.Val;
 import org.projectnessie.cel.interpreter.Activation;
 
+@Data
 class CompiledProgram {
     private Program program;
     private Expression source;
@@ -29,6 +32,10 @@ class CompiledProgram {
     }
 
     public Violation eval(Activation bindings) {
+        // TODO: work out what to do here
+        // now := nowPool.Get()
+        // defer nowPool.Put(now)
+        // bindings.Next = now
         Program.EvalResult evalResult = this.program.eval(bindings);
         Val val = evalResult.getVal();
         Object value = val.value();

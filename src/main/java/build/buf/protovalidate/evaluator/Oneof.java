@@ -45,7 +45,7 @@ public class Oneof implements MessageEvaluator {
 
     @Override
     public void append(Evaluator eval) {
-
+        throw new UnsupportedOperationException("append not supported for Oneof");
     }
 
     @Override
@@ -65,6 +65,6 @@ public class Oneof implements MessageEvaluator {
 
     @Override
     public void append(MessageEvaluator eval) {
-
+        throw new UnsupportedOperationException("append not supported for Oneof");
     }
 }

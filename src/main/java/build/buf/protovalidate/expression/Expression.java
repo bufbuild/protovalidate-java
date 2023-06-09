@@ -16,8 +16,6 @@ package build.buf.protovalidate.expression;
 
 import build.buf.validate.Constraint;
 
-// Expression is the read-only interface of either validate.Constraint or
-// private.Constraint which can be the source of a CEL expression.
 public class Expression {
     public final String id;
     public final String message;

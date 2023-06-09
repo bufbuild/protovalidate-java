@@ -49,7 +49,7 @@ public class Variable implements Activation {
 
     @Override
     public Activation parent() {
-        return null;
+        return next;
     }
 
     public void setName(String name) {

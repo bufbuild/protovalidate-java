@@ -29,7 +29,7 @@ public class CelPrograms implements Evaluator, MessageEvaluator {
     }
 
     public boolean tautology() {
-        return programSet.programs.isEmpty();
+        return programSet.isEmpty();
     }
 
     @Override

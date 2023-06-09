@@ -15,7 +15,6 @@
 package build.buf.protovalidate.evaluator;
 
 import build.buf.protovalidate.constraints.Cache;
-import build.buf.protovalidate.constraints.Constraints;
 import build.buf.protovalidate.constraints.Lookups;
 import build.buf.protovalidate.expression.Compiler;
 import build.buf.protovalidate.expression.ProgramSet;
@@ -36,7 +35,6 @@ import org.projectnessie.cel.checker.Decls;
 import java.io.ByteArrayInputStream;
 import java.util.*;
 
-
 public class Builder {
     // TODO: apparently go has some concurrency issues?
 
@@ -44,15 +42,22 @@ public class Builder {
     private final Env env;
     private final Cache constraints;
     private final ConstraintResolver resolver;
+    // TODO: this doesnt work
+    private final Loader loader;
 
     public Builder(Env env, boolean disableLazy, ConstraintResolver res, List<Descriptor> seedDesc) {
         this.env = env;
         this.constraints = new Cache();
         this.resolver = res;
 
-        // TODO: do disableLazy
+        if (disableLazy) {
+            this.loader = this::load;
+        } else {
+            this.loader = this::loadOrBuild;
+        }
+
         for (Descriptor desc : seedDesc) {
-            build(desc);
+            this.loader.load(desc);
         }
     }
 
@@ -63,7 +68,7 @@ public class Builder {
      * the descriptor is unknown, returns an evaluator that always resolves to an
      * errors.CompilationError.
      */
-    public MessageEvaluator load(Descriptor desc) {
+    private MessageEvaluator load(Descriptor desc) {
         MessageEvaluator evaluator = cache.get(desc);
         if (evaluator == null) {
             return new UnknownMessage(desc);
@@ -213,7 +218,7 @@ public class Builder {
         }
 
         ProgramSet compiledExpressions = Compiler.compile(exprs, env, opts.toArray(new EnvOption[0]));
-        if (!compiledExpressions.programs.isEmpty()) {
+        if (!compiledExpressions.isEmpty()) {
             valueEval.getConstraints().append(new CelPrograms(compiledExpressions));
         }
     }
@@ -255,7 +260,7 @@ public class Builder {
     }
 
     public void processStandardConstraints(FieldDescriptor fieldDescriptor, FieldConstraints fieldConstraints, Boolean forItems, Value valueEval) throws Exception {
-        ProgramSet stdConstraints = constraints.buildProgram(env, fieldDescriptor, fieldConstraints, forItems);
+        ProgramSet stdConstraints = constraints.build(env, fieldDescriptor, fieldConstraints, forItems);
         valueEval.append(new CelPrograms(stdConstraints));
     }
 
@@ -348,7 +353,7 @@ public class Builder {
     }
 
     @FunctionalInterface
-    private interface Loader {
+    public interface Loader {
         MessageEvaluator load(Descriptor desc);
     }
 

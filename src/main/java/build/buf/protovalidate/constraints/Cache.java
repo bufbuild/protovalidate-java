@@ -14,14 +14,11 @@
 
 package build.buf.protovalidate.constraints;
 
-import build.buf.protovalidate.expression.AstSet;
-import build.buf.protovalidate.expression.CompiledAst;
-import build.buf.protovalidate.expression.Expression;
-import build.buf.protovalidate.expression.ProgramSet;
-import build.buf.protovalidate.expression.Variable;
+import build.buf.protovalidate.expression.*;
 import build.buf.validate.Constraint;
 import build.buf.validate.FieldConstraints;
 import build.buf.validate.ValidateProto;
+import com.google.api.expr.v1alpha1.Type;
 import com.google.protobuf.Descriptors.FieldDescriptor;
 import com.google.protobuf.Message;
 import org.projectnessie.cel.Ast;
@@ -29,15 +26,10 @@ import org.projectnessie.cel.Env;
 import org.projectnessie.cel.EnvOption;
 import org.projectnessie.cel.ProgramOption;
 import org.projectnessie.cel.checker.Decls;
-import org.projectnessie.cel.common.types.TypeT;
-import org.projectnessie.cel.common.types.ref.Type;
+import org.projectnessie.cel.interpreter.ResolvedValue;
 import org.projectnessie.cel.tools.ScriptCreateException;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class Cache {
     private final Map<FieldDescriptor, AstSet> cache;
@@ -46,89 +38,42 @@ public class Cache {
         this.cache = new HashMap<>();
     }
 
-    public ProgramSet buildProgram(Env env, FieldDescriptor fieldDesc, FieldConstraints fieldConstraints, Boolean forItems) {
-        Message message = resolveConstraints(fieldDesc, fieldConstraints);
-        if (message == null) {
-            // TODO: there's a doneness check from go but we'll ignore it for now.
+    private Message resolveConstraints(FieldDescriptor fieldDescriptor, FieldConstraints fieldConstraints, Boolean forItems) {
+        boolean ok = true;
+        FieldDescriptor oneofFieldDescriptor = fieldConstraints.getOneofFieldDescriptor(Lookups.FIELD_CONSTRAINTS_ONEOF_DESC);
+        if (oneofFieldDescriptor == null) {
+            // TODO: throw exception? or just return null?
             return null;
         }
-        Env prepareEnvironment = prepareEnvironment(env, fieldDesc, message);
-        if (prepareEnvironment == null) {
-            // TODO: go actually has this fail sometimes.
+        FieldDescriptor expectedConstraintDescriptor = getExpectedConstraintDescriptor(fieldDescriptor, forItems);
+        if (expectedConstraintDescriptor == null) {
+            // TODO: throw exception? or just return null?
+            ok = false;
+        }
+
+        if (ok && !oneofFieldDescriptor.getFullName().equals(expectedConstraintDescriptor.getFullName())) {
+            // TODO: throw exception
+        }
+
+        if (!ok || !fieldConstraints.hasField(oneofFieldDescriptor)) {
+            // TODO: work out what to do here
             return null;
         }
-        AstSet completeSet = new AstSet(env, Collections.emptyList());
-        for (FieldDescriptor field : message.getDescriptorForType().getFields()) {
-            AstSet precomputedAst = loadOrCompileStandardConstraint(env, field);
-            completeSet.merge(precomputedAst);
-        }
-        return completeSet.reduceResiduals(ProgramOption.globals(new Variable("rules", message.getDefaultInstanceForType())));
+        return (Message) fieldConstraints.getField(oneofFieldDescriptor);
     }
 
-    private Message resolveConstraints(FieldDescriptor fieldDescriptor, FieldConstraints constraints) {
-        FieldDescriptor expectedConstraintDescriptor = getExpectedConstraintDescriptor(fieldDescriptor);
-        if (expectedConstraintDescriptor != null) {
-            switch (constraints.getTypeCase()) {
-                case FLOAT:
-                    return constraints.getFloat().getDefaultInstanceForType();
-                case DOUBLE:
-                    return constraints.getDouble().getDefaultInstanceForType();
-                case INT32:
-                    return constraints.getInt32().getDefaultInstanceForType();
-                case INT64:
-                    return constraints.getInt64().getDefaultInstanceForType();
-                case UINT32:
-                    return constraints.getUint32().getDefaultInstanceForType();
-                case UINT64:
-                    return constraints.getUint64().getDefaultInstanceForType();
-                case SINT32:
-                    return constraints.getSint32().getDefaultInstanceForType();
-                case SINT64:
-                    return constraints.getSint64().getDefaultInstanceForType();
-                case FIXED32:
-                    return constraints.getFixed32().getDefaultInstanceForType();
-                case FIXED64:
-                    return constraints.getFixed64().getDefaultInstanceForType();
-                case SFIXED32:
-                    return constraints.getSfixed32().getDefaultInstanceForType();
-                case SFIXED64:
-                    return constraints.getSfixed64().getDefaultInstanceForType();
-                case BOOL:
-                    return constraints.getBool().getDefaultInstanceForType();
-                case STRING:
-                    return constraints.getString().getDefaultInstanceForType();
-                case BYTES:
-                    return constraints.getBytes().getDefaultInstanceForType();
-                case ENUM:
-                    return constraints.getEnum().getDefaultInstanceForType();
-                case REPEATED:
-                    return constraints.getRepeated().getDefaultInstanceForType();
-                case MAP:
-                    return constraints.getMap().getDefaultInstanceForType();
-                case ANY:
-                    return constraints.getAny().getDefaultInstanceForType();
-                case DURATION:
-                    return constraints.getDuration().getDefaultInstanceForType();
-                case TIMESTAMP:
-                    return constraints.getTimestamp().getDefaultInstanceForType();
-                default:
-                    break;
-            }
-        }
-        return null;
-    }
-
-    private Env prepareEnvironment(Env env, FieldDescriptor fieldDesc, Message rules) {
+    private Env prepareEnvironment(Env env, FieldDescriptor fieldDesc, Message rules, Boolean forItems) {
         env.extend(
                 EnvOption.types(rules.getDefaultInstanceForType()),
                 EnvOption.declarations(
-                        Decls.newVar("this", Decls.newObjectType(rules.getDescriptorForType().getFullName()))
+                        Decls.newVar("this", getCELType(fieldDesc, forItems)),
+                        Decls.newVar("rules", Decls.newObjectType(rules.getDescriptorForType().getFullName()))
                 )
         );
         return env;
     }
 
-    public AstSet loadOrCompileStandardConstraint(Env env, FieldDescriptor constraintFieldDesc) {
+    private AstSet loadOrCompileStandardConstraint(Env env, FieldDescriptor constraintFieldDesc) {
         if (cache.get(constraintFieldDesc) != null) {
             return cache.get(constraintFieldDesc);
         }
@@ -151,30 +96,67 @@ public class Cache {
         return astSet;
     }
 
-    private FieldDescriptor getExpectedConstraintDescriptor(FieldDescriptor targetFieldDesc) {
-        if (targetFieldDesc.isMapField()) {
+    private FieldDescriptor getExpectedConstraintDescriptor(FieldDescriptor fieldDescriptor, Boolean forItems) {
+        if (fieldDescriptor.isMapField()) {
             return Lookups.MAP_FIELD_CONSTRAINTS_DESC;
-        } else if (targetFieldDesc.isRepeated()) {
+        } else if (fieldDescriptor.isRepeated() && !forItems) {
             return Lookups.REPEATED_FIELD_CONSTRAINTS_DESC;
-        } else if (targetFieldDesc.getType() == FieldDescriptor.Type.MESSAGE) {
-            return Lookups.EXPECTED_WKT_CONSTRAINTS.get(targetFieldDesc.getMessageType().getFullName());
+        } else if (fieldDescriptor.getJavaType() == FieldDescriptor.JavaType.MESSAGE) {
+            Message message = (Message) fieldDescriptor.getDefaultValue();
+            return Lookups.EXPECTED_WKT_CONSTRAINTS.get(message.getDescriptorForType().getFullName());
+        } else {
+            return Lookups.EXPECTED_STANDARD_CONSTRAINTS.get(fieldDescriptor.getType());
         }
-        return Lookups.EXPECTED_STANDARD_CONSTRAINTS.get(targetFieldDesc.getType());
     }
 
-    public Type getCELType(FieldDescriptor fieldDescriptor, Boolean forItems) {
-        if (fieldDescriptor.getType() == FieldDescriptor.Type.MESSAGE) {
-            String fullName = fieldDescriptor.getMessageType().getFullName();
-            switch (fullName) {
-                case "google.protobuf.Any":
-                case "google.protobuf.Duration":
-                case "google.protobuf.Timestamp":
-                    // TODO
-                    throw new RuntimeException("todo needs to be implemented");
-                default:
-                    return TypeT.newObjectTypeValue(fullName);
+    private Type getCELType(FieldDescriptor fieldDescriptor, Boolean forItems) {
+        if (!forItems) {
+            if (fieldDescriptor.isMapField()) {
+                return Decls.newMapType(
+                        getCELType(fieldDescriptor.getMessageType().findFieldByNumber(1), true),
+                        getCELType(fieldDescriptor.getMessageType().findFieldByNumber(2), true)
+                );
+            } else if (fieldDescriptor.isRepeated()) {
+                // TODO: find correct return type
+                return null;
             }
         }
-        return null;
+
+        if (fieldDescriptor.getType() == FieldDescriptor.Type.MESSAGE) {
+            String fqn = fieldDescriptor.getMessageType().getFullName();
+            switch (fqn) {
+                case "google.protobuf.Any":
+                    // TODO: find correct return type
+                    return Decls.newWellKnownType(Type.WellKnownType.ANY);
+                case "google.protobuf.Duration":
+                    return Decls.newWellKnownType(Type.WellKnownType.DURATION);
+                case "google.protobuf.Timestamp":
+                    return Decls.newWellKnownType(Type.WellKnownType.TIMESTAMP);
+                default:
+                    return Decls.newObjectType(fieldDescriptor.getFullName());
+            }
+        }
+
+        return Lookups.protoKindToCELType(fieldDescriptor.getType());
+    }
+
+    public ProgramSet build(Env env, FieldDescriptor fieldDescriptor, FieldConstraints fieldConstraints, Boolean forItems) {
+        Message message = resolveConstraints(fieldDescriptor, fieldConstraints, forItems);
+        if (message == null) {
+            // TODO: there's a doneness check from go but we'll ignore it for now.
+            return null;
+        }
+        Env prepareEnvironment = prepareEnvironment(env, fieldDescriptor, message, forItems);
+        if (prepareEnvironment == null) {
+            // TODO: go actually has this fail sometimes.
+            return null;
+        }
+        AstSet completeSet = new AstSet(env, Collections.emptyList());
+        for (FieldDescriptor field : message.getDescriptorForType().getFields()) {
+            AstSet precomputedAst = loadOrCompileStandardConstraint(env, field);
+            completeSet.merge(precomputedAst);
+        }
+        Variable rules = new Variable("rules", message.getDefaultInstanceForType());
+        return completeSet.reduceResiduals(ProgramOption.globals(rules));
     }
 }

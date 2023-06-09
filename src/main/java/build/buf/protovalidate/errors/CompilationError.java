@@ -14,7 +14,7 @@
 
 package build.buf.protovalidate.errors;
 
-public class CompilationError extends Exception {
+public class CompilationError extends RuntimeException {
 
     private final Exception cause;
 

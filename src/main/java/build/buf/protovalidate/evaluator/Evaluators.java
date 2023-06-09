@@ -54,10 +54,4 @@ class Evaluators implements Evaluator {
             this.evaluators.add(eval);
         }
     }
-
-    public void append(MessageEvaluator eval) {
-        if (eval != null && !eval.tautology()) {
-            this.evaluators.add(eval);
-        }
-    }
 }

@@ -15,12 +15,17 @@
 package build.buf.protovalidate.expression;
 
 import build.buf.validate.Constraint;
+import com.google.api.expr.v1alpha1.Type;
+import org.projectnessie.cel.Ast;
 import org.projectnessie.cel.Env;
 import org.projectnessie.cel.EnvOption;
 import org.projectnessie.cel.tools.ScriptCreateException;
+import org.projectnessie.cel.Issues;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static build.buf.protovalidate.errors.CompilationError.newCompilationError;
 
 // Compile produces a ProgramSet from the provided expressions in the given
 // environment. If the generated cel.Program require cel.ProgramOption params,
@@ -53,7 +58,23 @@ public class Compiler  {
     // cel.ProgramOption args need to be provided or residuals do not need to be
     // computed.
     public static <T extends Constraint> AstSet compileASTs(List<T> expressions, Env env, EnvOption... envOpts) throws Exception {
-        return null;
+        AstSet set = new AstSet(env, expressions.size());
+        if (expressions.size() == 0) {
+            return null;
+        }
+
+        if (envOpts.length > 0) {
+            Env newenv = env.extend(envOpts);
+            set.setEnv(newenv);
+        }
+
+        for (int i = 0; i < expressions.size(); i++) {
+            Constraint expr = expressions.get(i);
+            CompiledAst compiledAst = compileAST(set.getEnv(), expr);
+            set.set(i, compiledAst);
+        }
+
+        return set;
     }
 
     private static CompiledAst compileAST(Env env, Constraint expr) {
@@ -61,6 +82,14 @@ public class Compiler  {
         if (astIssuesTuple.hasIssues()) {
             throw new RuntimeException(new ScriptCreateException("ast error", astIssuesTuple.getIssues()));
         }
-        return new CompiledAst(astIssuesTuple.getAst(), expr);
+        Ast ast = astIssuesTuple.getAst();
+        Type outType = ast.getResultType();
+        boolean ok = !(outType.equals(Type.PrimitiveType.BOOL) || outType.equals(Type.PrimitiveType.STRING));
+        if (!ok) {
+            throw newCompilationError(
+                    "expression outputs, wanted either bool or string", expr.getId(), outType.toString());
+        }
+
+        return new CompiledAst(ast, new Expression(expr));
     }
 }

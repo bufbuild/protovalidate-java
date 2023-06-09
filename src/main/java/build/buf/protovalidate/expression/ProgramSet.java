@@ -16,8 +16,10 @@ package build.buf.protovalidate.expression;
 
 import build.buf.protovalidate.errors.ValidationError;
 import build.buf.validate.Violation;
+import org.projectnessie.cel.interpreter.ResolvedValue;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicReference;
 
@@ -29,6 +31,10 @@ public class ProgramSet {
 
     public ProgramSet(List<CompiledProgram> programs) {
         this.programs = programs;
+    }
+
+    public ProgramSet(int size) {
+        this.programs = new ArrayList<>(Collections.nCopies(size, null));
     }
 
     public void set(int index, CompiledProgram program) {
@@ -48,7 +54,7 @@ public class ProgramSet {
         variable.setObject(val);
         List<Violation> violations = new ArrayList<>();
         for (CompiledProgram program : programs) {
-            Violation violation = program.eval(variable);
+            Violation violation = program.eval(new Variable("this", val));
             if (violation != null) {
                 violations.add(violation);
                 if (failFast) {
@@ -62,4 +68,7 @@ public class ProgramSet {
         return null;
 }
 
+    public boolean isEmpty() {
+        return programs.isEmpty();
+    }
 }

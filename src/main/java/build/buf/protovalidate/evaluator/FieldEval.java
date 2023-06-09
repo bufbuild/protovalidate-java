@@ -30,10 +30,7 @@ public class FieldEval implements MessageEvaluator {
     private boolean optional;
 
     public FieldEval(FieldDescriptor descriptor, boolean required, boolean optional) {
-        this.value = new Value();
-        this.descriptor = descriptor;
-        this.required = required;
-        this.optional = optional;
+        new FieldEval(new Value(), descriptor, required, optional);
     }
 
     public FieldEval(Value value, FieldDescriptor descriptor, boolean required, boolean optional) {
@@ -50,11 +47,6 @@ public class FieldEval implements MessageEvaluator {
     @Override
     public ValidationResult evaluate(DynamicMessage val, boolean failFast) {
         return evaluateMessage(val, failFast);
-    }
-
-    @Override
-    public void append(Evaluator eval) {
-
     }
 
     @Override
@@ -79,6 +71,11 @@ public class FieldEval implements MessageEvaluator {
 
     @Override
     public void append(MessageEvaluator eval) {
+        throw new UnsupportedOperationException("append not supported for FieldEval");
+    }
 
+    @Override
+    public void append(Evaluator eval) {
+        throw new UnsupportedOperationException("append not supported for FieldEval");
     }
 }

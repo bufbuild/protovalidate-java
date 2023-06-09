@@ -46,7 +46,7 @@ public class UnknownMessage implements MessageEvaluator {
 
     @Override
     public void append(Evaluator eval) {
-
+        throw new UnsupportedOperationException("append not supported for unknown message");
     }
 
     @Override
@@ -56,6 +56,6 @@ public class UnknownMessage implements MessageEvaluator {
 
     @Override
     public void append(MessageEvaluator eval) {
-
+        throw new UnsupportedOperationException("append not supported for unknown message");
     }
 }

@@ -15,33 +15,44 @@
 package build.buf.protovalidate.expression;
 
 import build.buf.validate.Violation;
-import org.projectnessie.cel.Ast;
-import org.projectnessie.cel.Env;
-import org.projectnessie.cel.EvalDetails;
-import org.projectnessie.cel.EvalOption;
-import org.projectnessie.cel.ProgramOption;
+import lombok.Data;
+import org.projectnessie.cel.*;
+import org.projectnessie.cel.common.types.ref.Val;
 import org.projectnessie.cel.interpreter.Activation;
-import org.projectnessie.cel.interpreter.EvalState;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 // AstSet represents a collection of CompiledAst and their associated CelRuntime.
+@Data
 public class AstSet {
-    private final Env env;
     private List<CompiledAst> asts;
+    private Env env;
+
+    public AstSet(Env env, int size) {
+        new AstSet(env, new ArrayList<>(size));
+    }
 
     public AstSet(Env env, List<CompiledAst> asts) {
         this.env = env;
         this.asts = asts;
     }
 
+    public void set(int index, CompiledAst ast) {
+        asts.add(index, ast);
+    }
+
     // Merge combines a set with another, producing a new AstSet.
     public AstSet merge(AstSet other) {
-        List<CompiledAst> mergedList = new ArrayList<>(asts);
-        mergedList.addAll(other.asts);
-        return new AstSet(env, mergedList);
+        List<CompiledAst> compiledAsts = Arrays.asList(new CompiledAst[this.asts.size() + other.asts.size()]);
+        AstSet out = new AstSet(env, compiledAsts);
+        if (out.env == null) {
+            out.env = other.env;
+        }
+        out.asts.addAll(asts);
+        out.asts.addAll(other.asts);
+        return out;
     }
 
     // ReduceResiduals generates a ProgramSet, performing a partial evaluation of
@@ -50,16 +61,15 @@ public class AstSet {
     // generated for it. The main usage of this is to elide tautological expressions
     // from the final result.
     public ProgramSet reduceResiduals(ProgramOption... opts) {
-        ProgramOption programOption = ProgramOption.evalOptions(
+        List<CompiledAst> residuals = new ArrayList<>();
+        List<ProgramOption> options = new ArrayList<ProgramOption>(){};
+        options.addAll(Arrays.asList(opts));
+        options.add(ProgramOption.evalOptions(
                 EvalOption.OptTrackState,
                 EvalOption.OptExhaustiveEval,
                 EvalOption.OptOptimize,
                 EvalOption.OptPartialEval
-        );
-        List<ProgramOption> options = new ArrayList<>();
-        options.add(programOption);
-        options.addAll(Arrays.asList(opts));
-        List<CompiledAst> residuals = new ArrayList<>();
+        ));
         for (CompiledAst ast : asts) {
             CompiledProgram compiledProgram = ast.toCompiledProgram(env, options.toArray(new ProgramOption[0]));
             if (compiledProgram == null) {
@@ -71,19 +81,25 @@ public class AstSet {
                 // TODO
                 continue;
             }
-            // TODO: get the eval state from the eval method.
-            Ast residualAst = env.residualAst(ast.ast, new EvalDetails(EvalState.newEvalState()));
-            if (residualAst == null) {
-                // TODO:
-                residuals.add(ast);
-                continue;
+            Program.EvalResult evalResult = compiledProgram.getProgram().eval(Activation.emptyActivation());
+            Val value = evalResult.getVal();
+            if (value != null) {
+                // TODO: i dont think this is right
+                if (value.booleanValue()) {
+                    continue;
+                }
+                if (value.toString() != null && value.toString().equals("")) {
+                    continue;
+                }
             }
-            residuals.add(new CompiledAst(residualAst, ast.source));
+            Ast residual = env.residualAst(ast.ast, evalResult.getEvalDetails());
+            if (residual.getSource() != null) {
+                residuals.add(new CompiledAst(residual, ast.source));
+            } else {
+                residuals.add(ast);
+            }
         }
-        return new AstSet(
-                env,
-                residuals
-        ).toProgramSet(opts);
+        return new AstSet(env, residuals).toProgramSet(opts);
     }
 
     // ToProgramSet generates a ProgramSet from the specified ASTs.
