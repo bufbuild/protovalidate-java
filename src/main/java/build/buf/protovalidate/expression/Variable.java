@@ -33,10 +33,6 @@ public class Variable implements Activation {
         this.name = name;
         this.val = val;
     }
-
-    public Variable() {
-    }
-
     @Override
     public ResolvedValue resolveName(String name) {
         if (this.name.equals(name)) {
@@ -50,13 +46,5 @@ public class Variable implements Activation {
     @Override
     public Activation parent() {
         return next;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setObject(Object o) {
-        this.val = o;
     }
 }

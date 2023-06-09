@@ -57,7 +57,7 @@ public class Compiler  {
     // AstSet.ToProgramSet or AstSet.ReduceResiduals. Use Compile instead if no
     // cel.ProgramOption args need to be provided or residuals do not need to be
     // computed.
-    public static <T extends Constraint> AstSet compileASTs(List<T> expressions, Env env, EnvOption... envOpts) throws Exception {
+    public static <T extends Constraint> AstSet compileASTs(List<T> expressions, Env env, EnvOption... envOpts) {
         AstSet set = new AstSet(env, expressions.size());
         if (expressions.size() == 0) {
             return null;
@@ -65,12 +65,12 @@ public class Compiler  {
 
         if (envOpts.length > 0) {
             Env newenv = env.extend(envOpts);
-            set.setEnv(newenv);
+            set = new AstSet(newenv, set.asts);
         }
 
         for (int i = 0; i < expressions.size(); i++) {
             Constraint expr = expressions.get(i);
-            CompiledAst compiledAst = compileAST(set.getEnv(), expr);
+            CompiledAst compiledAst = compileAST(set.env, expr);
             set.set(i, compiledAst);
         }
 

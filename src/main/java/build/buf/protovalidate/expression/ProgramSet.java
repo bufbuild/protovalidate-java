@@ -42,8 +42,6 @@ public class ProgramSet {
     }
 
     public ValidationError eval(Object val, boolean failFast) {
-        Variable variable = new Variable();
-        variable.setName("this");
 //        if (val instanceof Message) {
 //            variable.setObject(((Message) val).getDefaultInstanceForType());
 //        } else if (val instanceof MapEntry) {
@@ -51,7 +49,6 @@ public class ProgramSet {
 //        } else {
 //
 //        }
-        variable.setObject(val);
         List<Violation> violations = new ArrayList<>();
         for (CompiledProgram program : programs) {
             Violation violation = program.eval(new Variable("this", val));
