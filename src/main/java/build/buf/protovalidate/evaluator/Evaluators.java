@@ -45,7 +45,7 @@ class Evaluators implements Evaluator {
                 return evaluate;
             }
         }
-        return new ValidationResult(null);
+        return ValidationResult.success();
     }
 
     @Override

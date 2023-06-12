@@ -60,7 +60,7 @@ public class Oneof implements MessageEvaluator {
             err.addViolation(violation);
             return new ValidationResult(err);
         }
-        return new ValidationResult(null);
+        return ValidationResult.success();
     }
 
     @Override

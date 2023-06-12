@@ -54,7 +54,7 @@ public class ListItems implements Evaluator {
                 return evaluate;
             }
         }
-        return new ValidationResult(null);
+        return ValidationResult.success();
     }
 
     @Override

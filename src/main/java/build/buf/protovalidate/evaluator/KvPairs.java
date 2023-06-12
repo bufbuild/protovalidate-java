@@ -42,7 +42,7 @@ public class KvPairs implements Evaluator {
 
     @Override
     public ValidationResult evaluate(DynamicMessage val, boolean failFast) {
-        return new ValidationResult(null);
+        return ValidationResult.success();
     }
 
     @Override

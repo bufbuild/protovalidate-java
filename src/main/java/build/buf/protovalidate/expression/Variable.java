@@ -25,14 +25,22 @@ import static org.projectnessie.cel.interpreter.ResolvedValue.ABSENT;
  * variable to cel.Program executions.
  */
 public class Variable implements Activation {
-    private Activation next;
-    private String name;
-    private Object val;
+    private final Activation next;
+    private final String name;
+    private final Object val;
 
     public Variable(String name, Object val) {
+        this.next = null;
         this.name = name;
         this.val = val;
     }
+
+    public Variable(Activation activation, String name, Object val) {
+        this.next = activation;
+        this.name = name;
+        this.val = val;
+    }
+
     @Override
     public ResolvedValue resolveName(String name) {
         if (this.name.equals(name)) {

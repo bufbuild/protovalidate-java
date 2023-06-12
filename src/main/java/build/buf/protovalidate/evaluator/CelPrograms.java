@@ -49,7 +49,7 @@ public class CelPrograms implements Evaluator, MessageEvaluator {
         if (eval != null) {
             return new ValidationResult(eval);
         }
-        return new ValidationResult(null);
+        return ValidationResult.success();
     }
 
     @Override

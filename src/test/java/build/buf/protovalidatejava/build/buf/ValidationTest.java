@@ -19,6 +19,8 @@ import build.buf.protovalidate.ValidationResult;
 import build.buf.protovalidate.Validator;
 import build.buf.validate.conformance.cases.custom_constraints.Enum;
 import build.buf.validate.conformance.cases.custom_constraints.MessageExpressions;
+import build.buf.validate.conformance.cases.custom_constraints.MissingField;
+import build.buf.validate.conformance.cases.custom_constraints.NowEqualsNow;
 import build.buf.validate.java.Simple;
 import com.google.protobuf.DynamicMessage;
 import com.google.protobuf.InvalidProtocolBufferException;
@@ -62,5 +64,23 @@ public class ValidationTest {
         DynamicMessage message = DynamicMessage.newBuilder(msg.getDescriptorForType()).mergeFrom(msg.toByteArray()).build();
         ValidationResult validationResult = validator.validate(message);
         assertThat(validationResult.error().getViolationsCount()).isEqualTo(2);
+    }
+
+    @Test
+    public void testMissingField() throws InvalidProtocolBufferException {
+        Validator validator = new Validator(new Config());
+        MissingField msg = MissingField.newBuilder()
+                .build();
+        DynamicMessage message = DynamicMessage.newBuilder(msg.getDescriptorForType()).mergeFrom(msg.toByteArray()).build();
+        ValidationResult validationResult = validator.validate(message);
+        assertThat(validationResult.isSuccess()).isFalse();
+    }
+
+    @Test
+    public void testNowIsNow() {
+        Validator validator = new Validator(new Config());
+        NowEqualsNow now = NowEqualsNow.newBuilder().build();
+        ValidationResult validate = validator.validate(now);
+        assertThat(validate.isSuccess()).isTrue();
     }
 }

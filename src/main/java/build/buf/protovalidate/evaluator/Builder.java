@@ -16,6 +16,7 @@ package build.buf.protovalidate.evaluator;
 
 import build.buf.protovalidate.constraints.Cache;
 import build.buf.protovalidate.constraints.Lookups;
+import build.buf.protovalidate.errors.CompilationError;
 import build.buf.protovalidate.expression.Compiler;
 import build.buf.protovalidate.expression.ProgramSet;
 import build.buf.validate.Constraint;
@@ -28,12 +29,17 @@ import com.google.protobuf.Descriptors.Descriptor;
 import com.google.protobuf.Descriptors.FieldDescriptor;
 import com.google.protobuf.DynamicMessage;
 import com.google.protobuf.ExtensionRegistry;
+import com.google.protobuf.InvalidProtocolBufferException;
 import org.projectnessie.cel.Env;
 import org.projectnessie.cel.EnvOption;
 import org.projectnessie.cel.checker.Decls;
+import org.projectnessie.cel.common.types.TimestampT;
 
-import java.io.ByteArrayInputStream;
-import java.util.*;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class Builder {
     // TODO: apparently go has some concurrency issues?
@@ -42,23 +48,11 @@ public class Builder {
     private final Env env;
     private final Cache constraints;
     private final ConstraintResolver resolver;
-    // TODO: this doesnt work
-    private final Loader loader;
 
     public Builder(Env env, boolean disableLazy, ConstraintResolver res, List<Descriptor> seedDesc) {
         this.env = env;
         this.constraints = new Cache();
         this.resolver = res;
-
-        if (disableLazy) {
-            this.loader = this::load;
-        } else {
-            this.loader = this::loadOrBuild;
-        }
-
-        for (Descriptor desc : seedDesc) {
-            this.loader.load(desc);
-        }
     }
 
     /**
@@ -77,7 +71,7 @@ public class Builder {
         return evaluator;
     }
 
-    public MessageEvaluator loadOrBuild(Descriptor desc) {
+    public MessageEvaluator loadOrBuild(Descriptor desc) throws CompilationError {
         MessageEvaluator eval = cache.get(desc);
         if (eval != null) {
             return eval;
@@ -85,7 +79,7 @@ public class Builder {
         return build(desc);
     }
 
-    private MessageEvaluator build(Descriptor desc) {
+    private MessageEvaluator build(Descriptor desc) throws CompilationError {
         MessageEvaluator eval = cache.get(desc);
         if (eval != null) {
             return eval;
@@ -96,17 +90,13 @@ public class Builder {
         if (msgConstraints.getDisabled()) {
             return msgEval;
         }
-        try {
-            processMessageExpressions(desc, msgConstraints, msgEval);
-//            processOneofConstraints(desc, msgConstraints, msgEval);
-//            processFields(desc, msgConstraints, msgEval);
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
+        processMessageExpressions(desc, msgConstraints, msgEval);
+        processOneofConstraints(desc, msgConstraints, msgEval);
+        processFields(desc, msgConstraints, msgEval);
         return msgEval;
     }
 
-    private void processMessageExpressions(Descriptor desc, MessageConstraints msgConstraints, MessageEvaluator msgEval) {
+    private void processMessageExpressions(Descriptor desc, MessageConstraints msgConstraints, MessageEvaluator msgEval) throws CompilationError {
         List<Constraint> celList = msgConstraints.getCelList();
         if (celList.isEmpty()) {
             return;
@@ -117,18 +107,20 @@ public class Builder {
             extensionRegistry.add(ValidateProto.field);
             extensionRegistry.add(ValidateProto.oneof);
             DynamicMessage defaultInstance = DynamicMessage.parseFrom(desc, new byte[0], extensionRegistry);
-
             ProgramSet compiledExpressions = Compiler.compile(
                     celList,
-                    this.env,
+                    env,
                     EnvOption.types(defaultInstance),
-                    EnvOption.declarations(Decls.newVar("this", Decls.newObjectType(desc.getFullName())))
+                    EnvOption.declarations(
+                            Decls.newVar("this", Decls.newObjectType(desc.getFullName())),
+                            Decls.newVar("now", Decls.newObjectType(TimestampT.TimestampType.typeName()))
+                    )
             );
             if (compiledExpressions == null) {
                 throw new RuntimeException("compile returned null");
             }
             msgEval.append(new CelPrograms(compiledExpressions));
-        } catch (Exception e) {
+        } catch (InvalidProtocolBufferException e) {
             throw new RuntimeException(e);
         }
     }
@@ -195,11 +187,11 @@ public class Builder {
         }
     }
 
-    public void processZeroValue(FieldDescriptor fieldDescriptor, FieldConstraints fieldConstraints, Boolean forItems, Value valueEval) throws Exception {
+    private void processZeroValue(FieldDescriptor fieldDescriptor, FieldConstraints fieldConstraints, Boolean forItems, Value valueEval) throws Exception {
         // TODO: implement me!
     }
 
-    public void processFieldExpressions(FieldDescriptor fieldDescriptor, FieldConstraints fieldConstraints, Boolean forItems, Value valueEval) throws Exception {
+    private void processFieldExpressions(FieldDescriptor fieldDescriptor, FieldConstraints fieldConstraints, Boolean forItems, Value valueEval) throws Exception {
         List<Constraint> exprs = fieldConstraints.getCelList();
         if (exprs.isEmpty()) {
             return;
@@ -223,7 +215,7 @@ public class Builder {
         }
     }
 
-    public void processEmbeddedMessage(FieldDescriptor fieldDescriptor, FieldConstraints fieldConstraints, Boolean forItems, Value valueEval) throws Exception {
+    private void processEmbeddedMessage(FieldDescriptor fieldDescriptor, FieldConstraints fieldConstraints, Boolean forItems, Value valueEval) throws Exception {
         if (fieldDescriptor.getType() != FieldDescriptor.Type.MESSAGE ||
                 fieldConstraints.getSkipped() ||
                 fieldDescriptor.isMapField() || (fieldDescriptor.isRepeated() && !forItems)) {
@@ -234,7 +226,7 @@ public class Builder {
         valueEval.append(embedEval);
     }
 
-    public void processWrapperConstraints(FieldDescriptor fieldDescriptor, FieldConstraints fieldConstraints, Boolean forItems, Value valueEval) throws Exception {
+    private void processWrapperConstraints(FieldDescriptor fieldDescriptor, FieldConstraints fieldConstraints, Boolean forItems, Value valueEval) throws Exception {
         if (fieldDescriptor.getType() != FieldDescriptor.Type.MESSAGE ||
                 fieldConstraints.getSkipped() ||
                 fieldDescriptor.isMapField() || (fieldDescriptor.isRepeated() && !forItems)) {
@@ -259,12 +251,12 @@ public class Builder {
         valueEval.append(unwrapped.getConstraints());
     }
 
-    public void processStandardConstraints(FieldDescriptor fieldDescriptor, FieldConstraints fieldConstraints, Boolean forItems, Value valueEval) throws Exception {
+    private void processStandardConstraints(FieldDescriptor fieldDescriptor, FieldConstraints fieldConstraints, Boolean forItems, Value valueEval) throws Exception {
         ProgramSet stdConstraints = constraints.build(env, fieldDescriptor, fieldConstraints, forItems);
         valueEval.append(new CelPrograms(stdConstraints));
     }
 
-    public void processAnyConstraints(FieldDescriptor fieldDescriptor, FieldConstraints fieldConstraints, Boolean forItems, Value valueEval) throws Exception {
+    private void processAnyConstraints(FieldDescriptor fieldDescriptor, FieldConstraints fieldConstraints, Boolean forItems, Value valueEval) throws Exception {
         if ((fieldDescriptor.isRepeated() && !forItems) ||
                 fieldDescriptor.getType() != FieldDescriptor.Type.MESSAGE ||
                 !fieldDescriptor.getMessageType().getFullName().equals("google.protobuf.Any")) {
@@ -279,7 +271,7 @@ public class Builder {
         valueEval.append(anyEval);
     }
 
-    public void processEnumConstraints(FieldDescriptor fieldDescriptor, FieldConstraints fieldConstraints, Boolean forItems, Value valueEval) throws Exception {
+    private void processEnumConstraints(FieldDescriptor fieldDescriptor, FieldConstraints fieldConstraints, Boolean forItems, Value valueEval) throws Exception {
         // TODO: implement me!
         if (fieldDescriptor.getJavaType() != FieldDescriptor.JavaType.ENUM) {
             return;
@@ -291,7 +283,7 @@ public class Builder {
         }
     }
 
-    public void processMapConstraints(FieldDescriptor fieldDescriptor, FieldConstraints fieldConstraints, Boolean forItems, Value valueEval) throws Exception {
+    private void processMapConstraints(FieldDescriptor fieldDescriptor, FieldConstraints fieldConstraints, Boolean forItems, Value valueEval) throws Exception {
         if (!fieldDescriptor.isMapField()) {
             return;
         }
@@ -324,7 +316,7 @@ public class Builder {
         valueEval.append(mapEval);
     }
 
-    public void processRepeatedConstraints(FieldDescriptor fieldDescriptor, FieldConstraints fieldConstraints, Boolean forItems, Value valueEval) throws Exception {
+    private void processRepeatedConstraints(FieldDescriptor fieldDescriptor, FieldConstraints fieldConstraints, Boolean forItems, Value valueEval) throws Exception {
         if (!fieldDescriptor.isRepeated() || forItems) {
             return;
         }
@@ -353,11 +345,11 @@ public class Builder {
     }
 
     @FunctionalInterface
-    public interface Loader {
+    private interface Loader {
         MessageEvaluator load(Descriptor desc);
     }
 
-    public class LoaderImpl implements Loader {
+    private class LoaderImpl implements Loader {
         @Override
         public MessageEvaluator load(Descriptor desc) {
             return null;

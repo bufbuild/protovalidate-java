@@ -46,7 +46,7 @@ public class Value implements Evaluator {
     @Override
     public ValidationResult evaluate(DynamicMessage val, boolean failFast) {
         if (ignoreEmpty && val.equals(zero)) {
-            return new ValidationResult(null);
+            return ValidationResult.success();
         }
         for (Evaluator constraint : constraints.evaluators) {
             ValidationResult validationResult = constraint.evaluate(val, failFast);
@@ -54,7 +54,7 @@ public class Value implements Evaluator {
                 return validationResult;
             }
         }
-        return new ValidationResult(null);
+        return ValidationResult.success();
     }
 
     public void append(Evaluator eval) {

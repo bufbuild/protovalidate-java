@@ -62,7 +62,7 @@ public class FieldEval implements MessageEvaluator {
         }
 
         if ((optional || value.isIgnoreEmpty()) && !message.hasField(descriptor)) {
-            return new ValidationResult(null);
+            return ValidationResult.success();
         }
 
         Object fieldValue = message.getField(descriptor);

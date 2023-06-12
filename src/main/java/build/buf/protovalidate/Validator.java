@@ -14,6 +14,7 @@
 
 package build.buf.protovalidate;
 
+import build.buf.protovalidate.errors.CompilationError;
 import build.buf.protovalidate.errors.ValidationError;
 import build.buf.protovalidate.evaluator.Builder;
 import build.buf.protovalidate.evaluator.MessageEvaluator;
@@ -47,8 +48,12 @@ public class Validator {
             return new ValidationResult(new ValidationError());
         }
         Descriptor descriptor = msg.getDescriptorForType();
-        MessageEvaluator evaluator = builder.loadOrBuild(descriptor);
-        return evaluator.evaluateMessage(msg, failFast);
+        try {
+            MessageEvaluator evaluator = builder.loadOrBuild(descriptor);
+            return evaluator.evaluateMessage(msg, failFast);
+        } catch (CompilationError e) {
+            return new ValidationResult(e);
+        }
     }
 }
 

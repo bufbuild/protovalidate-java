@@ -76,6 +76,6 @@ public class MessageEvaluatorImpl implements MessageEvaluator {
                 return validationResult;
             }
         }
-        return new ValidationResult(null);
+        return ValidationResult.success();
     }
 }

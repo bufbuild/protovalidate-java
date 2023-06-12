@@ -1,5 +1,6 @@
 package build.buf.protovalidate;
 
+import build.buf.protovalidate.errors.CompilationError;
 import build.buf.protovalidate.errors.ValidationError;
 import build.buf.validate.Violation;
 
@@ -11,16 +12,20 @@ import java.util.List;
 // value field so far has been null -> success
 public class ValidationResult {
     private final ValidationError exception;
-    public List<Violation> violations;
+    public boolean isValid;
 
     // How does go handle the validation collection
     public ValidationResult(ValidationError validationError) {
         this.exception = validationError;
-        this.violations = validationError != null ? validationError.violations : Collections.emptyList();
+        this.isValid = validationError == null || validationError.violations.isEmpty();
+    }
+
+    public ValidationResult(CompilationError e) {
+        this.exception = new ValidationError();
     }
 
     public boolean isSuccess() {
-        return violations.isEmpty();
+        return isValid;
     }
 
     public boolean isFailure() {
@@ -29,5 +34,9 @@ public class ValidationResult {
 
     public ValidationError error() {
         return exception;
+    }
+
+    public static ValidationResult success() {
+        return new ValidationResult((ValidationError) null);
     }
 }

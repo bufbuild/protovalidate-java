@@ -46,7 +46,7 @@ public class DefinedEnum implements Evaluator {
                     .build());
             return new ValidationResult(err);
         }
-        return new ValidationResult(null);
+        return ValidationResult.success();
     }
 
     @Override

@@ -49,9 +49,10 @@ public class ProgramSet {
 //        } else {
 //
 //        }
+        Variable activation = new Variable(new NowVariable(), "this", val);
         List<Violation> violations = new ArrayList<>();
         for (CompiledProgram program : programs) {
-            Violation violation = program.eval(new Variable("this", val));
+            Violation violation = program.eval(activation);
             if (violation != null) {
                 violations.add(violation);
                 if (failFast) {

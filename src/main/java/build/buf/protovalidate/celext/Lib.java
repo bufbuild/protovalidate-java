@@ -14,24 +14,27 @@
 
 package build.buf.protovalidate.celext;
 
+import build.buf.protovalidate.expression.NowVariable;
 import org.projectnessie.cel.EnvOption;
 import org.projectnessie.cel.EvalOption;
 import org.projectnessie.cel.Library;
 import org.projectnessie.cel.ProgramOption;
-import org.projectnessie.cel.common.types.*;
-import org.projectnessie.cel.common.types.ref.*;
-import org.projectnessie.cel.common.types.traits.*;
-import org.projectnessie.cel.interpreter.Activation;
-import org.projectnessie.cel.interpreter.functions.*;
+import org.projectnessie.cel.common.types.BoolT;
+import org.projectnessie.cel.common.types.BytesT;
+import org.projectnessie.cel.common.types.Err;
+import org.projectnessie.cel.common.types.Types;
+import org.projectnessie.cel.common.types.ref.Val;
+import org.projectnessie.cel.common.types.traits.Lister;
+import org.projectnessie.cel.interpreter.functions.UnaryOp;
 
 import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
 import java.net.*;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
+import java.util.Set;
 
 import static org.projectnessie.cel.common.types.IntT.intOf;
 import static org.projectnessie.cel.interpreter.functions.Overload.function;
@@ -54,20 +57,17 @@ public class Lib implements Library {
     @Override
     public List<ProgramOption> getProgramOptions() {
         List<ProgramOption> opts = new ArrayList<>();
-        Map<String, Object> activation = new HashMap<>();
-        activation.put("now", null); // TODO:
         opts.add(ProgramOption.evalOptions(
                 EvalOption.OptOptimize
         ));
-        opts.add(ProgramOption.globals(activation));
+        opts.add(ProgramOption.globals(new NowVariable()));
         ProgramOption functions =
                 ProgramOption.functions(
-//                        unary("unique", uniqueMemberOverload(BoolT.BoolType, this::uniqueScalar)),
-//                        unary("unique", uniqueMemberOverload(IntT.IntType, this::uniqueScalar)),
-//                        unary("unique", uniqueMemberOverload(UintT.UintType, this::uniqueScalar)),
-//                        unary("unique", uniqueMemberOverload(DoubleT.DoubleType, this::uniqueScalar)),
-//                        unary("unique", uniqueMemberOverload(StringT.StringType, this::uniqueScalar)),
                         unary("unique", uniqueMemberOverload(BytesT.BytesType, this::uniqueBytes)),
+                        function("startsWith", values -> {
+                            // TODO:
+                           return BoolT.False;
+                        }),
                         function("isHostname", values -> {
                             String host = ((String) values[0].value());
                             if (!host.isEmpty()) {
@@ -139,19 +139,6 @@ public class Lib implements Library {
         Val invoke(Lister list);
     }
 
-    public Val uniqueScalar(Lister list) {
-        // TODO: dont like the use of map here but it works
-        Map<Val, Boolean> exist = new HashMap<>();
-        for (int i = 0; i < list.size().intValue(); i++) {
-            Val val = list.get(intOf(i));
-            if (exist.containsKey(val)) {
-                return BoolT.False;
-            }
-            exist.put(val, Boolean.TRUE);
-        }
-        return BoolT.True;
-    }
-
     /**
      * uniqueBytes is an overload implementation of the unique function that
      * compares bytes type CEL values. This function is used instead of uniqueScalar
@@ -164,17 +151,16 @@ public class Lib implements Library {
      * addition of traits.
      */
     private Val uniqueBytes(Lister list) {
-        // TODO: dont like the use of map here but it works
-        Map<Object, Boolean> exist = new HashMap<>();
+        Set<Object> exist = new HashSet<>();
         for (int i = 0; i < list.size().intValue(); i++) {
             Object val = list.get(intOf(i)).value();
             if (val instanceof byte[]) {
                 val = new String((byte[]) val, StandardCharsets.UTF_8);
             }
-            if (exist.containsKey(val)) {
+            if (exist.contains(val)) {
                 return BoolT.False;
             }
-            exist.put(val.toString(), Boolean.TRUE);
+            exist.add(val.toString());
         }
         return BoolT.True;
     }
@@ -239,11 +225,5 @@ public class Lib implements Library {
 //        };
         // TODO:
         return false;
-    }
-
-    private void now() {
-        if (useUtc) {
-
-        }
     }
 }
