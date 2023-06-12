@@ -33,7 +33,6 @@ import com.google.protobuf.InvalidProtocolBufferException;
 import org.projectnessie.cel.Env;
 import org.projectnessie.cel.EnvOption;
 import org.projectnessie.cel.checker.Decls;
-import org.projectnessie.cel.common.types.TimestampT;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -48,11 +47,25 @@ public class Builder {
     private final Env env;
     private final Cache constraints;
     private final ConstraintResolver resolver;
+    private final Loader loader;
 
     public Builder(Env env, boolean disableLazy, ConstraintResolver res, List<Descriptor> seedDesc) {
         this.env = env;
         this.constraints = new Cache();
         this.resolver = res;
+        if (disableLazy) {
+            this.loader = this::load;
+        } else {
+            this.loader = this::loadOrBuild;
+        }
+
+        for (Descriptor desc : seedDesc) {
+            try {
+                this.loader.load(desc);
+            } catch (CompilationError e) {
+                throw new RuntimeException(e);
+            }
+        }
     }
 
     /**
@@ -62,7 +75,7 @@ public class Builder {
      * the descriptor is unknown, returns an evaluator that always resolves to an
      * errors.CompilationError.
      */
-    private MessageEvaluator load(Descriptor desc) {
+    private MessageEvaluator load(Descriptor desc) throws CompilationError {
         MessageEvaluator evaluator = cache.get(desc);
         if (evaluator == null) {
             return new UnknownMessage(desc);
@@ -84,16 +97,21 @@ public class Builder {
         if (eval != null) {
             return eval;
         }
-        MessageEvaluatorImpl msgEval = new MessageEvaluatorImpl();
+        MessageEvaluator msgEval = new MessageEvaluatorImpl();
         cache.put(desc, msgEval);
+
+        buildMessage(desc, msgEval);
+        return msgEval;
+    }
+
+    private void buildMessage(Descriptor desc, MessageEvaluator msgEval) throws CompilationError {
         MessageConstraints msgConstraints = resolver.resolveMessageConstraints(desc);
         if (msgConstraints.getDisabled()) {
-            return msgEval;
+            return;
         }
         processMessageExpressions(desc, msgConstraints, msgEval);
         processOneofConstraints(desc, msgConstraints, msgEval);
         processFields(desc, msgConstraints, msgEval);
-        return msgEval;
     }
 
     private void processMessageExpressions(Descriptor desc, MessageConstraints msgConstraints, MessageEvaluator msgEval) throws CompilationError {
@@ -112,8 +130,7 @@ public class Builder {
                     env,
                     EnvOption.types(defaultInstance),
                     EnvOption.declarations(
-                            Decls.newVar("this", Decls.newObjectType(desc.getFullName())),
-                            Decls.newVar("now", Decls.newObjectType(TimestampT.TimestampType.typeName()))
+                            Decls.newVar("this", Decls.newObjectType(desc.getFullName()))
                     )
             );
             if (compiledExpressions == null) {
@@ -136,34 +153,32 @@ public class Builder {
 
     private void processFields(Descriptor desc, MessageConstraints msgConstraints, MessageEvaluator msgEval) {
         List<FieldDescriptor> fields = desc.getFields();
-        for (FieldDescriptor fdesc : fields) {
-            FieldConstraints fieldConstraints = resolver.resolveFieldConstraints(fdesc);
-            FieldEval fldEval;
+        for (FieldDescriptor fieldDescriptor : fields) {
             try {
-                fldEval = buildField(fdesc, fieldConstraints);
+                FieldConstraints fieldConstraints = resolver.resolveFieldConstraints(fieldDescriptor);
+                FieldEval fldEval = buildField(fieldDescriptor, fieldConstraints);
+                msgEval.append(fldEval);
             } catch (Exception e) {
                 return;
             }
-            msgEval.append(fldEval);
         }
     }
 
     private FieldEval buildField(FieldDescriptor fieldDescriptor, FieldConstraints fieldConstraints) throws Exception {
+        Value valueEval = new Value();
         FieldEval fieldEval = new FieldEval(
+                valueEval,
                 fieldDescriptor,
                 fieldConstraints.getRequired(),
                 fieldDescriptor.hasPresence()
         );
-        try {
-            buildValue(
-                    fieldDescriptor,
-                    fieldConstraints,
-                    false,
-                    fieldEval.getValue()
-            );
-        } catch (Exception e) {
-            throw e;
-        }
+
+        buildValue(
+                fieldDescriptor,
+                fieldConstraints,
+                false,
+                fieldEval.getValue()
+        );
         return fieldEval;
     }
 
@@ -238,15 +253,11 @@ public class Builder {
         }
 
         Value unwrapped = new Value();
-        try {
-            buildValue(
-                    fieldDescriptor.getMessageType().findFieldByName("value"),
-                    fieldConstraints,
-                    true,
-                    unwrapped);
-        } catch (Exception e) {
-            return;
-        }
+        buildValue(
+                fieldDescriptor.getMessageType().findFieldByName("value"),
+                fieldConstraints,
+                true,
+                unwrapped);
 
         valueEval.append(unwrapped.getConstraints());
     }
@@ -272,7 +283,6 @@ public class Builder {
     }
 
     private void processEnumConstraints(FieldDescriptor fieldDescriptor, FieldConstraints fieldConstraints, Boolean forItems, Value valueEval) throws Exception {
-        // TODO: implement me!
         if (fieldDescriptor.getJavaType() != FieldDescriptor.JavaType.ENUM) {
             return;
         }
@@ -289,30 +299,17 @@ public class Builder {
         }
 
         KvPairs mapEval = new KvPairs();
-        try {
-            buildValue(
-                    fieldDescriptor.getMessageType().findFieldByNumber(1),
-                    fieldConstraints.getMap().getKeys(),
-                    true,
-                    mapEval.getKeyConstraints()
-            );
-        } catch (Exception e) {
-            // TODO: something with the exception
-            return;
-        }
-
-        try {
-            buildValue(
-                    fieldDescriptor.getMessageType().findFieldByNumber(2),
-                    fieldConstraints,
-                    false,
-                    mapEval.getValueConstraints()
-            );
-        } catch (Exception e) {
-            // TODO: something with the exception
-            return;
-        }
-
+        buildValue(
+                fieldDescriptor.getMessageType().findFieldByNumber(1),
+                fieldConstraints.getMap().getKeys(),
+                true,
+                mapEval.getKeyConstraints()
+        );
+        buildValue(
+                fieldDescriptor.getMessageType().findFieldByNumber(2),
+                fieldConstraints,
+                false,
+                mapEval.getValueConstraints());
         valueEval.append(mapEval);
     }
 
@@ -338,21 +335,17 @@ public class Builder {
         void process(FieldDescriptor fieldDescriptor, FieldConstraints fieldConstraints, Boolean forItems, Value valueEval) throws Exception;
     }
 
-    // Each step in 'steps' list above is a Processor
     @FunctionalInterface
     private interface Processor {
-        void process(Descriptor desc, MessageConstraints msgConstraints, MessageEvaluator msgEval) throws Exception;
+        void process(Descriptor desc, MessageConstraints msgConstraints, MessageEvaluator msgEval) throws CompilationError;
+    }
+
+    public Loader getLoader() {
+        return loader;
     }
 
     @FunctionalInterface
-    private interface Loader {
-        MessageEvaluator load(Descriptor desc);
-    }
-
-    private class LoaderImpl implements Loader {
-        @Override
-        public MessageEvaluator load(Descriptor desc) {
-            return null;
-        }
+    public interface Loader {
+        MessageEvaluator load(Descriptor desc) throws CompilationError;
     }
 }

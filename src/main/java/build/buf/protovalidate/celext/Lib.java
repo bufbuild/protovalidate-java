@@ -19,10 +19,8 @@ import org.projectnessie.cel.EnvOption;
 import org.projectnessie.cel.EvalOption;
 import org.projectnessie.cel.Library;
 import org.projectnessie.cel.ProgramOption;
-import org.projectnessie.cel.common.types.BoolT;
-import org.projectnessie.cel.common.types.BytesT;
-import org.projectnessie.cel.common.types.Err;
-import org.projectnessie.cel.common.types.Types;
+import org.projectnessie.cel.checker.Decls;
+import org.projectnessie.cel.common.types.*;
 import org.projectnessie.cel.common.types.ref.Val;
 import org.projectnessie.cel.common.types.traits.Lister;
 import org.projectnessie.cel.interpreter.functions.UnaryOp;
@@ -51,6 +49,10 @@ public class Lib implements Library {
     @Override
     public List<EnvOption> getCompileOptions() {
         List<EnvOption> opts = new ArrayList<>();
+        opts.add(EnvOption.declarations(
+                Decls.newVar("now", Decls.newObjectType(TimestampT.TimestampType.typeName()))
+        ));
+
         return opts;
     }
 

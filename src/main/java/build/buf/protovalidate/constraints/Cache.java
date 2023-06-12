@@ -126,7 +126,6 @@ public class Cache {
             String fqn = fieldDescriptor.getMessageType().getFullName();
             switch (fqn) {
                 case "google.protobuf.Any":
-                    // TODO: find correct return type
                     return Decls.newWellKnownType(Type.WellKnownType.ANY);
                 case "google.protobuf.Duration":
                     return Decls.newWellKnownType(Type.WellKnownType.DURATION);

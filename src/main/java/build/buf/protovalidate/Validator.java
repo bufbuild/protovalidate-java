@@ -49,7 +49,7 @@ public class Validator {
         }
         Descriptor descriptor = msg.getDescriptorForType();
         try {
-            MessageEvaluator evaluator = builder.loadOrBuild(descriptor);
+            MessageEvaluator evaluator = builder.getLoader().load(descriptor);
             return evaluator.evaluateMessage(msg, failFast);
         } catch (CompilationError e) {
             return new ValidationResult(e);

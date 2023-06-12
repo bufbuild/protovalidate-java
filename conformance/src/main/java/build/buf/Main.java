@@ -28,13 +28,7 @@ import com.google.protobuf.DynamicMessage;
 import com.google.protobuf.Descriptors;
 import com.google.protobuf.ExtensionRegistry;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.util.Base64;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class Main {

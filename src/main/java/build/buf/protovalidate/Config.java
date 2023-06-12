@@ -22,6 +22,6 @@ public class Config {
     }
 
     public Config() {
-        this(false, true, true, Collections.emptyList(), new ConstraintResolver());
+        this(false, true, false, Collections.emptyList(), new ConstraintResolver());
     }
 }

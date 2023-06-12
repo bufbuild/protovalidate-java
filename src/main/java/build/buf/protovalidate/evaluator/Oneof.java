@@ -17,6 +17,7 @@ package build.buf.protovalidate.evaluator;
 import build.buf.protovalidate.ValidationResult;
 import build.buf.protovalidate.errors.ValidationError;
 import build.buf.validate.Violation;
+import com.google.protobuf.Descriptors;
 import com.google.protobuf.Descriptors.OneofDescriptor;
 import com.google.protobuf.DynamicMessage;
 import com.google.protobuf.Message;
@@ -50,7 +51,7 @@ public class Oneof implements MessageEvaluator {
 
     @Override
     public ValidationResult evaluateMessage(Message message, boolean failFast) {
-        if (required && !message.hasOneof(descriptor)) {
+        if (required && (message.getOneofFieldDescriptor(descriptor) == null)) {
             ValidationError err = new ValidationError();
             Violation violation = Violation.newBuilder()
                     .setFieldPath(descriptor.getName())

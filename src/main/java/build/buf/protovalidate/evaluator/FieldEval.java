@@ -20,9 +20,7 @@ import build.buf.validate.Violation;
 import com.google.protobuf.Descriptors.FieldDescriptor;
 import com.google.protobuf.DynamicMessage;
 import com.google.protobuf.Message;
-import lombok.Data;
 
-@Data
 public class FieldEval implements MessageEvaluator {
     private Value value;
     private FieldDescriptor descriptor;
@@ -77,5 +75,9 @@ public class FieldEval implements MessageEvaluator {
     @Override
     public void append(Evaluator eval) {
         throw new UnsupportedOperationException("append not supported for FieldEval");
+    }
+
+    public Value getValue() {
+        return value;
     }
 }

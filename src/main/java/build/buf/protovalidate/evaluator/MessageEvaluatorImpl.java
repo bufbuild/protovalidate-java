@@ -63,9 +63,7 @@ public class MessageEvaluatorImpl implements MessageEvaluator {
 
     @Override
     public void append(MessageEvaluator eval) {
-        if (!eval.tautology()) {
-            evaluators.add(eval);
-        }
+        evaluators.add(eval);
     }
 
     @Override
