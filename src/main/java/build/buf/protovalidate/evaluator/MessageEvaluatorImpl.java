@@ -18,12 +18,10 @@ import build.buf.protovalidate.ValidationResult;
 import build.buf.protovalidate.errors.ValidationError;
 import com.google.protobuf.DynamicMessage;
 import com.google.protobuf.Message;
-import lombok.Data;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@Data
 public class MessageEvaluatorImpl implements MessageEvaluator {
 
     // Err stores if there was a compilation error constructing this evaluator.

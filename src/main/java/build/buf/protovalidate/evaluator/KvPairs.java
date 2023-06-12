@@ -16,24 +16,21 @@ package build.buf.protovalidate.evaluator;
 
 import build.buf.protovalidate.ValidationResult;
 import com.google.protobuf.DynamicMessage;
-import lombok.Data;
 
-@Data
 public class KvPairs implements Evaluator {
 
     // KeyConstraints are checked on the map keys
-    private Value KeyConstraints;
+    public final Value keyConstraints;
     // ValueConstraints are checked on the map values
-    private Value ValueConstraints;
+    public final Value valueConstraints;
 
     public KvPairs() {
-        new KvPairs(new Value(), new Value());
+        this(new Value(), new Value());
     }
-    public KvPairs(Value KeyConstraints, Value ValueConstraints) {
-        this.KeyConstraints = KeyConstraints;
-        this.ValueConstraints = ValueConstraints;
+    public KvPairs(Value keyConstraints, Value valueConstraints) {
+        this.keyConstraints = keyConstraints;
+        this.valueConstraints = valueConstraints;
     }
-
 
     @Override
     public boolean tautology() {

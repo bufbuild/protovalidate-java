@@ -16,21 +16,19 @@ package build.buf.protovalidate.evaluator;
 
 import build.buf.protovalidate.ValidationResult;
 import com.google.protobuf.DynamicMessage;
-import lombok.Data;
 
-@Data
 public class Value implements Evaluator {
     // Zero is the default or zero-value for this value's type
     // TODO: not a message
-    private com.google.protobuf.Value zero;
+    public final com.google.protobuf.Value zero;
     // Constraints are the individual evaluators applied to a value
-    private Evaluators constraints;
+    public final Evaluators constraints;
     // IgnoreEmpty indicates that the Constraints should not be applied if the
     // field is unset or the default (typically zero) value.
-    private boolean ignoreEmpty;
+    public final boolean ignoreEmpty;
 
     public Value() {
-        new Value(null, false);
+        this(null, false);
     }
     public Value(com.google.protobuf.Value zero, boolean ignoreEmpty) {
         this.zero = zero;

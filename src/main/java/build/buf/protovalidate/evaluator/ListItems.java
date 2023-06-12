@@ -16,19 +16,17 @@ package build.buf.protovalidate.evaluator;
 
 import build.buf.protovalidate.ValidationResult;
 import com.google.protobuf.DynamicMessage;
-import lombok.Data;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@Data
 public class ListItems implements Evaluator {
 
     // ItemConstraints are checked on every item of the list
-    private Value itemConstraints;
+    public final Value itemConstraints;
 
     public ListItems() {
-        new ListItems(new Value());
+        this(new Value());
     }
     public ListItems(Value itemConstraints) {
         this.itemConstraints = itemConstraints;
@@ -44,11 +42,17 @@ public class ListItems implements Evaluator {
         List<DynamicMessage> list = new ArrayList<>();
         for (Object value : val.getAllFields().values()) {
             if (value instanceof List) {
-                list.addAll((List<DynamicMessage>) value);
+                List fieldValueList = (List) value;
+                if (fieldValueList.isEmpty()) {
+                    continue;
+                }
+                Object elm = fieldValueList.get(0);
+                if (elm instanceof DynamicMessage) {
+                    list.addAll((List<DynamicMessage>) value);
+                }
             }
         }
-        for (int i = 0; i < list.size(); i++) {
-            DynamicMessage item = list.get(i);
+        for (DynamicMessage item : list) {
             ValidationResult evaluate = itemConstraints.evaluate(item, failFast);
             if (evaluate.isFailure()) {
                 return evaluate;

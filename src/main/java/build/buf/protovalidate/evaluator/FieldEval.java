@@ -22,13 +22,13 @@ import com.google.protobuf.DynamicMessage;
 import com.google.protobuf.Message;
 
 public class FieldEval implements MessageEvaluator {
-    private Value value;
-    private FieldDescriptor descriptor;
-    private boolean required;
-    private boolean optional;
+    public final Value value;
+    private final FieldDescriptor descriptor;
+    private final boolean required;
+    private final boolean optional;
 
     public FieldEval(FieldDescriptor descriptor, boolean required, boolean optional) {
-        new FieldEval(new Value(), descriptor, required, optional);
+        this(new Value(), descriptor, required, optional);
     }
 
     public FieldEval(Value value, FieldDescriptor descriptor, boolean required, boolean optional) {
@@ -59,7 +59,7 @@ public class FieldEval implements MessageEvaluator {
             return new ValidationResult(err);
         }
 
-        if ((optional || value.isIgnoreEmpty()) && !message.hasField(descriptor)) {
+        if ((optional || value.ignoreEmpty) && !message.hasField(descriptor)) {
             return ValidationResult.success();
         }
 

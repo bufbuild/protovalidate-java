@@ -177,14 +177,14 @@ public class Builder {
                 fieldDescriptor,
                 fieldConstraints,
                 false,
-                fieldEval.getValue()
+                fieldEval.value
         );
         return fieldEval;
     }
 
 
     private void buildValue(FieldDescriptor fieldDescriptor, FieldConstraints fieldConstraints, boolean forItems, Value valueEval) throws Exception {
-        valueEval.setIgnoreEmpty(fieldConstraints.getIgnoreEmpty());
+        Value newValue = new Value(valueEval.zero, fieldConstraints.getIgnoreEmpty());
         List<FieldProcessor> steps = Arrays.asList(
                 this::processZeroValue,
                 this::processFieldExpressions,
@@ -198,7 +198,7 @@ public class Builder {
         );
 
         for (FieldProcessor step : steps) {
-            step.process(fieldDescriptor, fieldConstraints, forItems, valueEval);
+            step.process(fieldDescriptor, fieldConstraints, forItems, newValue);
         }
     }
 
@@ -226,7 +226,7 @@ public class Builder {
 
         ProgramSet compiledExpressions = Compiler.compile(exprs, env, opts.toArray(new EnvOption[0]));
         if (!compiledExpressions.isEmpty()) {
-            valueEval.getConstraints().append(new CelPrograms(compiledExpressions));
+            valueEval.constraints.append(new CelPrograms(compiledExpressions));
         }
     }
 
@@ -259,7 +259,7 @@ public class Builder {
                 true,
                 unwrapped);
 
-        valueEval.append(unwrapped.getConstraints());
+        valueEval.append(unwrapped.constraints);
     }
 
     private void processStandardConstraints(FieldDescriptor fieldDescriptor, FieldConstraints fieldConstraints, Boolean forItems, Value valueEval) throws Exception {
@@ -303,13 +303,13 @@ public class Builder {
                 fieldDescriptor.getMessageType().findFieldByNumber(1),
                 fieldConstraints.getMap().getKeys(),
                 true,
-                mapEval.getKeyConstraints()
+                mapEval.keyConstraints
         );
         buildValue(
                 fieldDescriptor.getMessageType().findFieldByNumber(2),
                 fieldConstraints,
                 false,
-                mapEval.getValueConstraints());
+                mapEval.valueConstraints);
         valueEval.append(mapEval);
     }
 
@@ -320,7 +320,7 @@ public class Builder {
 
         ListItems listEval = new ListItems();
         try {
-            buildValue(fieldDescriptor, fieldConstraints.getRepeated().getItems(), true, listEval.getItemConstraints());
+            buildValue(fieldDescriptor, fieldConstraints.getRepeated().getItems(), true, listEval.itemConstraints);
         } catch (Exception e) {
             // TODO: something with the exception
             return;

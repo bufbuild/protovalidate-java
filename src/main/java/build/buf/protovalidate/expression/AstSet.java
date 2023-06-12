@@ -74,7 +74,7 @@ public class AstSet {
                 // TODO
                 continue;
             }
-            Program.EvalResult evalResult = compiledProgram.getProgram().eval(Activation.emptyActivation());
+            Program.EvalResult evalResult = compiledProgram.program.eval(Activation.emptyActivation());
             Val value = evalResult.getVal();
             if (value != null) {
                 // TODO: i dont think this is right

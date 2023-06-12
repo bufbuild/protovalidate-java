@@ -14,17 +14,14 @@
 
 package build.buf.protovalidate.expression;
 
-import build.buf.protovalidate.errors.RuntimeError;
 import build.buf.validate.Violation;
-import lombok.Data;
 import org.projectnessie.cel.Program;
 import org.projectnessie.cel.common.types.ref.Val;
 import org.projectnessie.cel.interpreter.Activation;
 
-@Data
 class CompiledProgram {
-    private Program program;
-    private Expression source;
+    public final Program program;
+    private final Expression source;
 
     public CompiledProgram(Program program, Expression source) {
         this.program = program;
