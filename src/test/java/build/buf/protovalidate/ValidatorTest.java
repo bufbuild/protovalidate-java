@@ -98,8 +98,8 @@ public class ValidatorTest {
     }
 
     @Test
-    public void strlen() {
-        SFixed32NotIn invalid = SFixed32NotIn.newBuilder().setVal(0).build();
+    public void sFixed32NotIn() {
+        SFixed32NotIn invalid = SFixed32NotIn.newBuilder().setVal(1).build();
         ValidationResult validate = validator.validate(invalid);
         assertThat(validate.isSuccess()).isTrue();
     }

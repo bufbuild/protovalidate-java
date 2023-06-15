@@ -141,7 +141,6 @@ public class Cache {
             AstSet precomputedAst = loadOrCompileStandardConstraint(prepareEnvironment, entry.getKey());
             completeSet.merge(precomputedAst);
         }
-        Variable rules = new Variable("rules", message.getDefaultInstanceForType());
-        return completeSet.reduceResiduals(globals(rules));
+        return completeSet.reduceResiduals(globals(new Variable("rules", message)));
     }
 }
