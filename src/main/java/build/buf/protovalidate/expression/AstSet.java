@@ -14,8 +14,11 @@
 
 package build.buf.protovalidate.expression;
 
-import build.buf.validate.Violation;
-import org.projectnessie.cel.*;
+import org.projectnessie.cel.Ast;
+import org.projectnessie.cel.Env;
+import org.projectnessie.cel.EvalOption;
+import org.projectnessie.cel.Program;
+import org.projectnessie.cel.ProgramOption;
 import org.projectnessie.cel.common.types.ref.Val;
 import org.projectnessie.cel.interpreter.Activation;
 
@@ -75,7 +78,7 @@ public class AstSet {
                 if (val instanceof Boolean && value.booleanValue()) {
                     continue;
                 }
-                if (val instanceof String && val.toString().equals("")) {
+                if (val instanceof String && val.equals("")) {
                     continue;
                 }
             }

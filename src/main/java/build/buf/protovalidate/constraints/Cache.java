@@ -88,8 +88,7 @@ public class Cache {
         } else if (fieldDescriptor.isRepeated() && !forItems) {
             return Lookups.REPEATED_FIELD_CONSTRAINTS_DESC;
         } else if (fieldDescriptor.getJavaType() == FieldDescriptor.JavaType.MESSAGE) {
-            Message message = (Message) fieldDescriptor.getDefaultValue();
-            return Lookups.EXPECTED_WKT_CONSTRAINTS.get(message.getDescriptorForType().getFullName());
+            return Lookups.EXPECTED_WKT_CONSTRAINTS.get(fieldDescriptor.getMessageType().getFullName());
         } else {
             return Lookups.EXPECTED_STANDARD_CONSTRAINTS.get(fieldDescriptor.getType());
         }

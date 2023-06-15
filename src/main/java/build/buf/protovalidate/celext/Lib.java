@@ -16,7 +16,6 @@ package build.buf.protovalidate.celext;
 
 import build.buf.protovalidate.expression.NowVariable;
 import com.google.api.expr.v1alpha1.Decl;
-import com.google.common.base.Strings;
 import org.projectnessie.cel.EnvOption;
 import org.projectnessie.cel.EvalOption;
 import org.projectnessie.cel.Library;
@@ -63,12 +62,12 @@ public class Lib implements Library {
         // TODO: Iterate exhaustively
         for (com.google.api.expr.v1alpha1.Type type : Arrays.asList(Decls.String, Decls.Int, Decls.Uint, Decls.Double, Decls.Bytes)) {
             formatOverloads.add(Decls.newInstanceOverload(
-                    Strings.lenientFormat("format_%s", type.toString().toLowerCase(Locale.US)),
+                    String.format("format_%s", org.projectnessie.cel.checker.Types.formatCheckedType(type).toLowerCase(Locale.US)),
                     Arrays.asList(Decls.String, Decls.newListType(type)),
                     Decls.String
             ));
             formatOverloads.add(Decls.newInstanceOverload(
-                    Strings.lenientFormat("format_%s", type.toString().toLowerCase(Locale.US)),
+                    String.format("format_list_%s", org.projectnessie.cel.checker.Types.formatCheckedType(type).toLowerCase(Locale.US)),
                     Arrays.asList(Decls.String, Decls.newListType(Decls.newListType(type))),
                     Decls.String
             ));
@@ -143,17 +142,18 @@ public class Lib implements Library {
         opts.add(ProgramOption.globals(new NowVariable()));
         ProgramOption functions =
                 ProgramOption.functions(
-                        binary("format", (rhs, lhs) -> {
-                            // TODO: actually format
-                            return rhs;
+                        binary("format", (lhs, rhs) -> {
+                            String format = String.format(Locale.US, lhs.toString(), (Object[]) rhs.value());
+                            return StringT.stringOf(format);
                         }),
                         unary("unique", uniqueMemberOverload(BytesT.BytesType, this::uniqueBytes)),
-                        binary("startsWith", (rhs, lhs) -> {
-                            return BoolT.False;
+                        binary("startsWith", (lhs, rhs) -> {
+                            String str = lhs.value().toString();
+                            return str.startsWith(rhs.value().toString()) ? BoolT.True : BoolT.False;
                         }),
                         unary("isHostname", value -> {
                             String host = value.value().toString();
-                            if (!host.isEmpty()) {
+                            if (host.isEmpty()) {
                                 return BoolT.False;
                             }
                             return Types.boolOf(validateHostname(host));
@@ -170,23 +170,23 @@ public class Lib implements Library {
                                 null,
                                 value -> {
                                     String addr = value.value().toString();
-                                    if (!addr.isEmpty()) {
+                                    if (addr.isEmpty()) {
                                         return BoolT.False;
                                     }
-                                    return Types.boolOf(validateIP(addr, 0));
+                                    return Types.boolOf(validateIP(addr, 0L));
                                 },
                                 (lhs, rhs) -> {
-                                    String addr = lhs.value().toString();
-                                    if (!addr.isEmpty()) {
+                                    String address = lhs.value().toString();
+                                    if (address.isEmpty()) {
                                         return BoolT.False;
                                     }
-                                    return Types.boolOf(validateIP(addr, (int) rhs.value()));
+                                    return Types.boolOf(validateIP(address, rhs.intValue()));
                                 },
                                 null
                         ),
                         unary("isUri", value -> {
                             String addr = value.value().toString();
-                            if (!addr.isEmpty()) {
+                            if (addr.isEmpty()) {
                                 return BoolT.False;
                             }
                             try {
@@ -197,12 +197,14 @@ public class Lib implements Library {
                         }),
                         unary("isUriRef", value -> {
                             String addr = value.value().toString();
-                            if (!addr.isEmpty()) {
+                            if (addr.isEmpty()) {
                                 return BoolT.False;
                             }
                             try {
-                                new URL(addr);
-                                return BoolT.True;
+                                // TODO: The URL api requires a host or it always fails.
+                                String host = "http://protovalidate.buf.build";
+                                URL url = new URL(host + addr);
+                                return url.getPath() != null && !url.getPath().isEmpty() ? BoolT.True : BoolT.False;
                             } catch (MalformedURLException e) {
                                 return BoolT.False;
                             }
@@ -270,7 +272,7 @@ public class Lib implements Library {
             }
 
             String[] parts = addr.split("@", 2);
-            return parts[0].length() < 64 || !validateHostname(parts[1]);
+            return parts[0].length() < 64 && validateHostname(parts[1]);
         } catch (AddressException ex) {
             return false;
         }
@@ -300,22 +302,20 @@ public class Lib implements Library {
         return true;
     }
 
-    private boolean validateIP(String addr, int ver) {
+    private boolean validateIP(String addr, long ver) {
         InetAddress address;
         try {
             address = InetAddress.getByName(addr);
         } catch (Exception e) {
             return false;
         }
-        switch (ver) {
-            case 0:
-                return true;
-            case 4:
-                return address instanceof Inet4Address;
-            case 6:
-                return address instanceof Inet6Address;
-            default:
-                return false;
+        if (ver == 0L) {
+            return true;
+        } else if (ver == 4L) {
+            return address instanceof Inet4Address;
+        } else if (ver == 6L) {
+            return address instanceof Inet6Address;
         }
+        return false;
     }
 }

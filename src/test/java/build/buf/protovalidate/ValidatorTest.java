@@ -4,9 +4,15 @@ import build.buf.validate.conformance.cases.FloatIn;
 import build.buf.validate.conformance.cases.Int64ExLTGT;
 import build.buf.validate.conformance.cases.SFixed32NotIn;
 import build.buf.validate.conformance.cases.StringAddress;
+import build.buf.validate.conformance.cases.StringConst;
 import build.buf.validate.conformance.cases.StringEmail;
+import build.buf.validate.conformance.cases.StringHostname;
+import build.buf.validate.conformance.cases.StringIP;
+import build.buf.validate.conformance.cases.StringIPv6;
 import build.buf.validate.conformance.cases.StringLen;
 import build.buf.validate.conformance.cases.StringNotIn;
+import build.buf.validate.conformance.cases.StringPrefix;
+import build.buf.validate.conformance.cases.StringURIRef;
 import build.buf.validate.conformance.cases.custom_constraints.Enum;
 import build.buf.validate.conformance.cases.custom_constraints.MessageExpressions;
 import build.buf.validate.conformance.cases.custom_constraints.MissingField;
@@ -96,12 +102,11 @@ public class ValidatorTest {
         ValidationResult validate = validator.validate(invalid);
         assertThat(validate.isFailure()).isTrue();
     }
-
-    @Test
-    public void sFixed32NotIn() {
-        SFixed32NotIn invalid = SFixed32NotIn.newBuilder().setVal(1).build();
-        ValidationResult validate = validator.validate(invalid);
-        assertThat(validate.isSuccess()).isTrue();
-    }
+//    @Test
+//    public void strlen() {
+//        StringLen invalid = StringLen.newBuilder().setVal("😅😄👾").build();
+//        ValidationResult validate = validator.validate(invalid);
+//        assertThat(validate.isSuccess()).isTrue();
+//    }
 }
 

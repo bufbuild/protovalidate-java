@@ -44,7 +44,7 @@ public class Builder {
     // TODO: apparently go has some concurrency issues?
 
     private final Map<Descriptor, MessageEvaluator> cache = new HashMap<>();
-    private Env env;
+    private final Env env;
     private final Cache constraints;
     private final ConstraintResolver resolver;
     private final Loader loader;
@@ -151,22 +151,17 @@ public class Builder {
         }
     }
 
-    private void processFields(Descriptor desc, MessageEvaluator msgEval) {
+    private void processFields(Descriptor desc, MessageEvaluator msgEval) throws CompilationError {
         List<FieldDescriptor> fields = desc.getFields();
         for (FieldDescriptor fieldDescriptor : fields) {
             FieldDescriptor descriptor = desc.findFieldByName(fieldDescriptor.getName());
-            try {
-                FieldConstraints fieldConstraints = resolver.resolveFieldConstraints(descriptor);
-                FieldEval fldEval = buildField(descriptor, fieldConstraints);
-                msgEval.append(fldEval);
-            } catch (Exception e) {
-                // TODO: remove potentially
-                throw new RuntimeException(e);
-            }
+            FieldConstraints fieldConstraints = resolver.resolveFieldConstraints(descriptor);
+            FieldEval fldEval = buildField(descriptor, fieldConstraints);
+            msgEval.append(fldEval);
         }
     }
 
-    private FieldEval buildField(FieldDescriptor fieldDescriptor, FieldConstraints fieldConstraints) throws Exception {
+    private FieldEval buildField(FieldDescriptor fieldDescriptor, FieldConstraints fieldConstraints) throws CompilationError {
         Value valueEval = new Value();
         FieldEval fieldEval = new FieldEval(
                 valueEval,
@@ -185,7 +180,7 @@ public class Builder {
     }
 
 
-    private void buildValue(FieldDescriptor fieldDescriptor, FieldConstraints fieldConstraints, boolean forItems, Value valueEval) throws Exception {
+    private void buildValue(FieldDescriptor fieldDescriptor, FieldConstraints fieldConstraints, boolean forItems, Value valueEval) throws CompilationError {
         valueEval.ignoreEmpty = fieldConstraints.getIgnoreEmpty();
         List<FieldProcessor> steps = Arrays.asList(
                 this::processZeroValue,
@@ -214,7 +209,7 @@ public class Builder {
         }
     }
 
-    private void processFieldExpressions(FieldDescriptor fieldDescriptor, FieldConstraints fieldConstraints, Boolean forItems, Value valueEval) throws Exception {
+    private void processFieldExpressions(FieldDescriptor fieldDescriptor, FieldConstraints fieldConstraints, Boolean forItems, Value valueEval) throws CompilationError {
         List<Constraint> constraintsCelList = fieldConstraints.getCelList();
         if (constraintsCelList.isEmpty()) {
             return;
@@ -232,14 +227,13 @@ public class Builder {
             );
         }
         // TODO: check if this is correct, may be double handled
-        env = env.extend(opts);
-        ProgramSet compiledExpressions = Compiler.compileConstraints(constraintsCelList, env, opts.toArray(new EnvOption[0]));
+        ProgramSet compiledExpressions = Compiler.compileConstraints(constraintsCelList, env.extend(opts), opts.toArray(new EnvOption[0]));
         if (!compiledExpressions.isEmpty()) {
             valueEval.constraints.append(new CelPrograms(compiledExpressions));
         }
     }
 
-    private void processEmbeddedMessage(FieldDescriptor fieldDescriptor, FieldConstraints fieldConstraints, Boolean forItems, Value valueEval) throws Exception {
+    private void processEmbeddedMessage(FieldDescriptor fieldDescriptor, FieldConstraints fieldConstraints, Boolean forItems, Value valueEval) throws CompilationError {
         if (fieldDescriptor.getType() != FieldDescriptor.Type.MESSAGE ||
                 fieldConstraints.getSkipped() ||
                 fieldDescriptor.isMapField() || (fieldDescriptor.isRepeated() && !forItems)) {
@@ -250,7 +244,7 @@ public class Builder {
         valueEval.append(embedEval);
     }
 
-    private void processWrapperConstraints(FieldDescriptor fieldDescriptor, FieldConstraints fieldConstraints, Boolean forItems, Value valueEval) throws Exception {
+    private void processWrapperConstraints(FieldDescriptor fieldDescriptor, FieldConstraints fieldConstraints, Boolean forItems, Value valueEval) throws CompilationError {
         if (fieldDescriptor.getType() != FieldDescriptor.Type.MESSAGE ||
                 fieldConstraints.getSkipped() ||
                 fieldDescriptor.isMapField() || (fieldDescriptor.isRepeated() && !forItems)) {
@@ -271,7 +265,7 @@ public class Builder {
         valueEval.append(unwrapped.constraints);
     }
 
-    private void processStandardConstraints(FieldDescriptor fieldDescriptor, FieldConstraints fieldConstraints, Boolean forItems, Value valueEval) throws Exception {
+    private void processStandardConstraints(FieldDescriptor fieldDescriptor, FieldConstraints fieldConstraints, Boolean forItems, Value valueEval) throws CompilationError {
         ProgramSet stdConstraints = constraints.build(env, fieldDescriptor, fieldConstraints, forItems);
         // TODO: verify null check error handling, it may not need to be handled when there are no constraints
         if (stdConstraints == null) {
@@ -281,7 +275,7 @@ public class Builder {
         valueEval.append(eval);
     }
 
-    private void processAnyConstraints(FieldDescriptor fieldDescriptor, FieldConstraints fieldConstraints, Boolean forItems, Value valueEval) throws Exception {
+    private void processAnyConstraints(FieldDescriptor fieldDescriptor, FieldConstraints fieldConstraints, Boolean forItems, Value valueEval) throws CompilationError {
         if ((fieldDescriptor.isRepeated() && !forItems) ||
                 fieldDescriptor.getType() != FieldDescriptor.Type.MESSAGE ||
                 !fieldDescriptor.getMessageType().getFullName().equals("google.protobuf.Any")) {
@@ -296,7 +290,7 @@ public class Builder {
         valueEval.append(anyEval);
     }
 
-    private void processEnumConstraints(FieldDescriptor fieldDescriptor, FieldConstraints fieldConstraints, Boolean forItems, Value valueEval) throws Exception {
+    private void processEnumConstraints(FieldDescriptor fieldDescriptor, FieldConstraints fieldConstraints, Boolean forItems, Value valueEval) throws CompilationError {
         if (fieldDescriptor.getJavaType() != FieldDescriptor.JavaType.ENUM) {
             return;
         }
@@ -307,7 +301,7 @@ public class Builder {
         }
     }
 
-    private void processMapConstraints(FieldDescriptor fieldDescriptor, FieldConstraints fieldConstraints, Boolean forItems, Value valueEval) throws Exception {
+    private void processMapConstraints(FieldDescriptor fieldDescriptor, FieldConstraints fieldConstraints, Boolean forItems, Value valueEval) throws CompilationError {
         if (!fieldDescriptor.isMapField()) {
             return;
         }
@@ -327,7 +321,7 @@ public class Builder {
         valueEval.append(mapEval);
     }
 
-    private void processRepeatedConstraints(FieldDescriptor fieldDescriptor, FieldConstraints fieldConstraints, Boolean forItems, Value valueEval) throws Exception {
+    private void processRepeatedConstraints(FieldDescriptor fieldDescriptor, FieldConstraints fieldConstraints, Boolean forItems, Value valueEval) throws CompilationError {
         if (!fieldDescriptor.isRepeated() || forItems) {
             return;
         }
@@ -346,7 +340,7 @@ public class Builder {
     // Each step in 'steps' list above is a FieldProcessor
     @FunctionalInterface
     private interface FieldProcessor {
-        void process(FieldDescriptor fieldDescriptor, FieldConstraints fieldConstraints, Boolean forItems, Value valueEval) throws Exception;
+        void process(FieldDescriptor fieldDescriptor, FieldConstraints fieldConstraints, Boolean forItems, Value valueEval) throws CompilationError;
     }
 
     @FunctionalInterface
