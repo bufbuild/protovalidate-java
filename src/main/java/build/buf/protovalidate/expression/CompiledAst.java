@@ -15,7 +15,6 @@
 package build.buf.protovalidate.expression;
 
 
-import build.buf.validate.Constraint;
 import org.projectnessie.cel.Ast;
 import org.projectnessie.cel.Env;
 import org.projectnessie.cel.Program;
@@ -28,15 +27,6 @@ public class CompiledAst {
     public CompiledAst(Ast ast, Expression source) {
         this.ast = ast;
         this.source = source;
-    }
-
-    public CompiledAst(Ast ast, Constraint source) {
-        this.ast = ast;
-        this.source = new Expression(
-                source.getId(),
-                source.getMessage(),
-                source.getExpression()
-        );
     }
 
     public CompiledProgram toCompiledProgram(Env env, ProgramOption... opts) {

@@ -30,4 +30,8 @@ public class Expression {
     public Expression(Constraint constraint) {
         this(constraint.getId(), constraint.getMessage(), constraint.getExpression());
     }
+
+    public Expression(build.buf.validate.priv.Constraint constraint) {
+        this(constraint.getId(), constraint.getMessage(), constraint.getExpression());
+    }
 }

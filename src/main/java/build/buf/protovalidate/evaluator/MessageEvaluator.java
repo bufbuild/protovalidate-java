@@ -17,6 +17,10 @@ package build.buf.protovalidate.evaluator;
 import build.buf.protovalidate.ValidationResult;
 import com.google.protobuf.Message;
 
+/**
+ * TODO: This will need to be revisited for importance.
+ * Feels like this is something that we can remove.
+ */
 public interface MessageEvaluator extends Evaluator {
     ValidationResult evaluateMessage(Message val, boolean failFast);
     void append(MessageEvaluator eval);

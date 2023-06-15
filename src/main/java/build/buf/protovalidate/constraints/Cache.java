@@ -14,22 +14,21 @@
 
 package build.buf.protovalidate.constraints;
 
+import build.buf.protovalidate.errors.CompilationError;
 import build.buf.protovalidate.expression.*;
-import build.buf.validate.Constraint;
+import build.buf.protovalidate.expression.Compiler;
 import build.buf.validate.FieldConstraints;
-import build.buf.validate.ValidateProto;
+import build.buf.validate.priv.PrivateProto;
 import com.google.api.expr.v1alpha1.Type;
 import com.google.protobuf.Descriptors.FieldDescriptor;
 import com.google.protobuf.Message;
-import org.projectnessie.cel.Ast;
 import org.projectnessie.cel.Env;
 import org.projectnessie.cel.EnvOption;
-import org.projectnessie.cel.ProgramOption;
 import org.projectnessie.cel.checker.Decls;
-import org.projectnessie.cel.interpreter.ResolvedValue;
-import org.projectnessie.cel.tools.ScriptCreateException;
 
 import java.util.*;
+
+import static org.projectnessie.cel.ProgramOption.globals;
 
 public class Cache {
     private final Map<FieldDescriptor, AstSet> cache;
@@ -63,35 +62,22 @@ public class Cache {
     }
 
     private Env prepareEnvironment(Env env, FieldDescriptor fieldDesc, Message rules, Boolean forItems) {
-        env.extend(
+        return env.extend(
                 EnvOption.types(rules.getDefaultInstanceForType()),
                 EnvOption.declarations(
                         Decls.newVar("this", getCELType(fieldDesc, forItems)),
                         Decls.newVar("rules", Decls.newObjectType(rules.getDescriptorForType().getFullName()))
                 )
         );
-        return env;
+
     }
 
-    private AstSet loadOrCompileStandardConstraint(Env env, FieldDescriptor constraintFieldDesc) {
-        if (cache.get(constraintFieldDesc) != null) {
+    private AstSet loadOrCompileStandardConstraint(Env env, FieldDescriptor constraintFieldDesc) throws CompilationError {
+        if (cache.containsKey(constraintFieldDesc)) {
             return cache.get(constraintFieldDesc);
         }
-        FieldConstraints constraints = constraintFieldDesc.getOptions().getExtension(ValidateProto.field);
-        List<CompiledAst> asts = new ArrayList<>();
-        for (Constraint constraint : constraints.getCelList()) {
-            Env.AstIssuesTuple astIssuesTuple = env.parse(constraint.getExpression());
-            if (astIssuesTuple.hasIssues()) {
-                throw new RuntimeException(new ScriptCreateException("unable to parse constraint for ast.", astIssuesTuple.getIssues()));
-            }
-            Ast ast = astIssuesTuple.getAst();
-            Env.AstIssuesTuple check = env.check(ast);
-            if (check.hasIssues()) {
-                throw new RuntimeException(new ScriptCreateException("unable to parse constraint for ast.", check.getIssues()));
-            }
-            asts.add(new CompiledAst(ast, new Expression(constraint)));
-        }
-        AstSet astSet = new AstSet(env, asts);
+        build.buf.validate.priv.FieldConstraints constraints = constraintFieldDesc.getOptions().getExtension(PrivateProto.field);
+        AstSet astSet = Compiler.compileASTs(constraints.getCelList(), env);
         cache.put(constraintFieldDesc, astSet);
         return astSet;
     }
@@ -139,7 +125,7 @@ public class Cache {
         return Lookups.protoKindToCELType(fieldDescriptor.getType());
     }
 
-    public ProgramSet build(Env env, FieldDescriptor fieldDescriptor, FieldConstraints fieldConstraints, Boolean forItems) {
+    public ProgramSet build(Env env, FieldDescriptor fieldDescriptor, FieldConstraints fieldConstraints, Boolean forItems) throws CompilationError {
         Message message = resolveConstraints(fieldDescriptor, fieldConstraints, forItems);
         if (message == null) {
             // TODO: there's a doneness check from go but we'll ignore it for now.
@@ -150,12 +136,12 @@ public class Cache {
             // TODO: go actually has this fail sometimes.
             return null;
         }
-        AstSet completeSet = new AstSet(env, Collections.emptyList());
-        for (FieldDescriptor field : message.getDescriptorForType().getFields()) {
-            AstSet precomputedAst = loadOrCompileStandardConstraint(env, field);
+        AstSet completeSet = new AstSet(prepareEnvironment, new ArrayList<>());
+        for (Map.Entry<FieldDescriptor, Object> entry : message.getAllFields().entrySet()) {
+            AstSet precomputedAst = loadOrCompileStandardConstraint(prepareEnvironment, entry.getKey());
             completeSet.merge(precomputedAst);
         }
         Variable rules = new Variable("rules", message.getDefaultInstanceForType());
-        return completeSet.reduceResiduals(ProgramOption.globals(rules));
+        return completeSet.reduceResiduals(globals(rules));
     }
 }

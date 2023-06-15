@@ -19,6 +19,7 @@ import build.buf.protovalidate.errors.ValidationError;
 import build.buf.validate.Violation;
 import com.google.protobuf.Descriptors.FieldDescriptor;
 import com.google.protobuf.DynamicMessage;
+import com.google.protobuf.InvalidProtocolBufferException;
 import com.google.protobuf.Message;
 
 public class FieldEval implements MessageEvaluator {
@@ -43,8 +44,8 @@ public class FieldEval implements MessageEvaluator {
     }
 
     @Override
-    public ValidationResult evaluate(DynamicMessage val, boolean failFast) {
-        return evaluateMessage(val, failFast);
+    public ValidationResult evaluate(JavaValue val, boolean failFast) {
+        return evaluateMessage(val.value(), failFast);
     }
 
     @Override
@@ -62,9 +63,8 @@ public class FieldEval implements MessageEvaluator {
         if ((optional || value.ignoreEmpty) && !message.hasField(descriptor)) {
             return ValidationResult.success();
         }
-
         Object fieldValue = message.getField(descriptor);
-        return value.evaluate((DynamicMessage) fieldValue, failFast);
+        return value.evaluate(new JavaValue(descriptor, fieldValue), failFast);
     }
 
     @Override

@@ -28,10 +28,6 @@ public class AstSet {
     public final List<CompiledAst> asts;
     public final Env env;
 
-    public AstSet(Env env, int size) {
-        this(env, new ArrayList<>(size));
-    }
-
     public AstSet(Env env, List<CompiledAst> asts) {
         this.env = env;
         this.asts = asts;
@@ -41,11 +37,8 @@ public class AstSet {
         asts.add(index, ast);
     }
 
-    // Merge combines a set with another, producing a new AstSet.
-    public AstSet merge(AstSet other) {
-        List<CompiledAst> mergedList = new ArrayList<>(asts);
-        mergedList.addAll(other.asts);
-        return new AstSet(env, mergedList);
+    public void merge(AstSet other) {
+        asts.addAll(other.asts);
     }
 
     // ReduceResiduals generates a ProgramSet, performing a partial evaluation of
@@ -54,8 +47,14 @@ public class AstSet {
     // generated for it. The main usage of this is to elide tautological expressions
     // from the final result.
     public ProgramSet reduceResiduals(ProgramOption... opts) {
+        AstSet astSet = reduce(opts);
+        ProgramSet programSet = astSet.toProgramSet(opts);
+        return programSet;
+    }
+
+    private AstSet reduce(ProgramOption... opts) {
         List<CompiledAst> residuals = new ArrayList<>();
-        List<ProgramOption> options = new ArrayList<ProgramOption>(){};
+        List<ProgramOption> options = new ArrayList<>();
         options.addAll(Arrays.asList(opts));
         options.add(ProgramOption.evalOptions(
                 EvalOption.OptTrackState,
@@ -69,30 +68,25 @@ public class AstSet {
                 residuals.add(ast);
                 continue;
             }
-            Violation violation = compiledProgram.eval(Activation.emptyActivation());
-            if (violation != null) {
-                // TODO
-                continue;
-            }
             Program.EvalResult evalResult = compiledProgram.program.eval(Activation.emptyActivation());
             Val value = evalResult.getVal();
             if (value != null) {
-                // TODO: i dont think this is right
-                if (value.booleanValue()) {
+                Object val = value.value();
+                if (val instanceof Boolean && value.booleanValue()) {
                     continue;
                 }
-                if (value.toString() != null && value.toString().equals("")) {
+                if (val instanceof String && val.toString().equals("")) {
                     continue;
                 }
             }
-            Ast residual = env.residualAst(ast.ast, evalResult.getEvalDetails());
-            if (residual.getSource() != null) {
+            try {
+                Ast residual = env.residualAst(ast.ast, evalResult.getEvalDetails());
                 residuals.add(new CompiledAst(residual, ast.source));
-//            } else {
-//                residuals.add(ast);
+            } catch (Exception e) {
+                residuals.add(ast);
             }
         }
-        return new AstSet(env, residuals).toProgramSet(opts);
+        return new AstSet(env, residuals);
     }
 
     // ToProgramSet generates a ProgramSet from the specified ASTs.

@@ -15,7 +15,9 @@
 package build.buf.protovalidate.expression;
 
 import build.buf.protovalidate.errors.ValidationError;
+import build.buf.protovalidate.evaluator.JavaValue;
 import build.buf.validate.Violation;
+import com.google.protobuf.Message;
 import org.projectnessie.cel.interpreter.ResolvedValue;
 
 import java.util.ArrayList;
@@ -33,14 +35,6 @@ public class ProgramSet {
         this.programs = programs;
     }
 
-    public ProgramSet(int size) {
-        this.programs = new ArrayList<>(Collections.nCopies(size, null));
-    }
-
-    public void set(int index, CompiledProgram program) {
-        this.programs.set(index, program);
-    }
-
     public ValidationError eval(Object val, boolean failFast) {
 //        if (val instanceof Message) {
 //            variable.setObject(((Message) val).getDefaultInstanceForType());
@@ -49,7 +43,15 @@ public class ProgramSet {
 //        } else {
 //
 //        }
-        Variable activation = new Variable(new NowVariable(), "this", val);
+        Object value;
+        if (val instanceof JavaValue) {
+            value = ((JavaValue) val).value();
+        } else if (val instanceof Message) {
+            value = val;
+        } else {
+            throw new RuntimeException("unsupported type for " + val.getClass());
+        }
+        Variable activation = new Variable(new NowVariable(), "this", value);
         List<Violation> violations = new ArrayList<>();
         for (CompiledProgram program : programs) {
             Violation violation = program.eval(activation);

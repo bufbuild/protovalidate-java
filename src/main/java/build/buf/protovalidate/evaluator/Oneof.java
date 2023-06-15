@@ -17,9 +17,7 @@ package build.buf.protovalidate.evaluator;
 import build.buf.protovalidate.ValidationResult;
 import build.buf.protovalidate.errors.ValidationError;
 import build.buf.validate.Violation;
-import com.google.protobuf.Descriptors;
 import com.google.protobuf.Descriptors.OneofDescriptor;
-import com.google.protobuf.DynamicMessage;
 import com.google.protobuf.Message;
 
 public class Oneof implements MessageEvaluator {
@@ -40,8 +38,8 @@ public class Oneof implements MessageEvaluator {
     }
 
     @Override
-    public ValidationResult evaluate(DynamicMessage val, boolean failFast) {
-        return evaluateMessage(val, failFast);
+    public ValidationResult evaluate(JavaValue val, boolean failFast) {
+        return evaluateMessage(val.value(), failFast);
     }
 
     @Override

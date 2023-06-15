@@ -18,7 +18,6 @@ import build.buf.protovalidate.ValidationResult;
 import build.buf.protovalidate.errors.ValidationError;
 import build.buf.validate.Violation;
 import com.google.protobuf.Descriptors;
-import com.google.protobuf.DynamicMessage;
 import com.google.protobuf.ProtocolMessageEnum;
 
 import java.util.Arrays;
@@ -36,16 +35,17 @@ public class DefinedEnum implements Evaluator {
     }
 
     @Override
-    public ValidationResult evaluate(DynamicMessage val, boolean failFast) {
-        ProtocolMessageEnum enumValue = (ProtocolMessageEnum) val.getField(val.getDescriptorForType().findFieldByName("enum"));
-        if (!isValueValid(enumValue)) {
-            ValidationError err = new ValidationError();
-            err.addViolation(Violation.newBuilder()
-                    .setConstraintId("enum.defined_only")
-                    .setMessage("value must be one of the defined enum values")
-                    .build());
-            return new ValidationResult(err);
-        }
+    public ValidationResult evaluate(JavaValue val, boolean failFast) {
+        // TODO: fixme
+//        ProtocolMessageEnum enumValue = (ProtocolMessageEnum) val.getField(val.getDescriptorForType().findFieldByName("enum"));
+//        if (!isValueValid(enumValue)) {
+//            ValidationError err = new ValidationError();
+//            err.addViolation(Violation.newBuilder()
+//                    .setConstraintId("enum.defined_only")
+//                    .setMessage("value must be one of the defined enum values")
+//                    .build());
+//            return new ValidationResult(err);
+//        }
         return ValidationResult.success();
     }
 

@@ -16,7 +16,6 @@ package build.buf.protovalidate.evaluator;
 
 import build.buf.protovalidate.ValidationResult;
 import build.buf.protovalidate.errors.ValidationError;
-import com.google.protobuf.DynamicMessage;
 import com.google.protobuf.Message;
 
 import java.util.ArrayList;
@@ -48,8 +47,8 @@ public class MessageEvaluatorImpl implements MessageEvaluator {
     }
 
     @Override
-    public ValidationResult evaluate(DynamicMessage val, boolean failFast) {
-        return evaluateMessage(val, failFast);
+    public ValidationResult evaluate(JavaValue val, boolean failFast) {
+        return evaluateMessage(val.value(), failFast);
     }
 
     @Override

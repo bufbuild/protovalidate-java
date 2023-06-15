@@ -18,7 +18,6 @@ import build.buf.protovalidate.ValidationResult;
 import build.buf.protovalidate.errors.ValidationError;
 import build.buf.validate.Violation;
 import com.google.protobuf.Descriptors;
-import com.google.protobuf.DynamicMessage;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -46,9 +45,9 @@ public class Any implements Evaluator {
     }
 
     @Override
-    public ValidationResult evaluate(DynamicMessage val, boolean failFast) {
-        String typeURL = (String) val.getField(typeURLDescriptor);
-
+    public ValidationResult evaluate(JavaValue val, boolean failFast) {
+        // TODO: Verify that the type url is passed as value.
+        String typeURL = val.value();
         ValidationError validationError = new ValidationError();
         if (in != null && in.size() > 0) {
             if (!in.containsKey(typeURL)) {

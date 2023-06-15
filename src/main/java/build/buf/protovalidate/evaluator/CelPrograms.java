@@ -17,7 +17,6 @@ package build.buf.protovalidate.evaluator;
 import build.buf.protovalidate.ValidationResult;
 import build.buf.protovalidate.errors.ValidationError;
 import build.buf.protovalidate.expression.ProgramSet;
-import com.google.protobuf.DynamicMessage;
 import com.google.protobuf.Message;
 
 public class CelPrograms implements Evaluator, MessageEvaluator {
@@ -25,6 +24,10 @@ public class CelPrograms implements Evaluator, MessageEvaluator {
 
     // assuming the equivalent of the Go `expression.ProgramSet` in Java is a List of some sort
     public CelPrograms(ProgramSet programSet) {
+        // TODO: remove? or keep? used in dev
+        if (programSet == null) {
+            throw new IllegalArgumentException("programSet cannot be null");
+        }
         this.programSet = programSet;
     }
 
@@ -33,7 +36,7 @@ public class CelPrograms implements Evaluator, MessageEvaluator {
     }
 
     @Override
-    public ValidationResult evaluate(DynamicMessage val, boolean failFast) {
+    public ValidationResult evaluate(JavaValue val, boolean failFast) {
         ValidationError error = programSet.eval(val, failFast);
         return new ValidationResult(error);
     }

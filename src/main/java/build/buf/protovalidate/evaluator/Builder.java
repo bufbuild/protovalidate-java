@@ -44,7 +44,7 @@ public class Builder {
     // TODO: apparently go has some concurrency issues?
 
     private final Map<Descriptor, MessageEvaluator> cache = new HashMap<>();
-    private final Env env;
+    private Env env;
     private final Cache constraints;
     private final ConstraintResolver resolver;
     private final Loader loader;
@@ -75,12 +75,11 @@ public class Builder {
      * the descriptor is unknown, returns an evaluator that always resolves to an
      * errors.CompilationError.
      */
-    private MessageEvaluator load(Descriptor desc) throws CompilationError {
+    private MessageEvaluator load(Descriptor desc) {
         MessageEvaluator evaluator = cache.get(desc);
         if (evaluator == null) {
             return new UnknownMessage(desc);
         }
-
         return evaluator;
     }
 
@@ -99,47 +98,48 @@ public class Builder {
         }
         MessageEvaluator msgEval = new MessageEvaluatorImpl();
         cache.put(desc, msgEval);
-
         buildMessage(desc, msgEval);
         return msgEval;
     }
 
     private void buildMessage(Descriptor desc, MessageEvaluator msgEval) throws CompilationError {
-        MessageConstraints msgConstraints = resolver.resolveMessageConstraints(desc);
-        if (msgConstraints.getDisabled()) {
-            return;
+        // TODO clean this up.
+        ExtensionRegistry extensionRegistry = ExtensionRegistry.newInstance();
+        extensionRegistry.add(ValidateProto.message);
+        extensionRegistry.add(ValidateProto.field);
+        extensionRegistry.add(ValidateProto.oneof);
+        try {
+            DynamicMessage defaultInstance = DynamicMessage.parseFrom(desc, new byte[0], extensionRegistry);
+            Descriptor descriptor = defaultInstance.getDescriptorForType();
+            MessageConstraints msgConstraints = resolver.resolveMessageConstraints(descriptor);
+            if (msgConstraints.getDisabled()) {
+                return;
+            }
+            processMessageExpressions(descriptor, msgConstraints, msgEval, defaultInstance);
+            processOneofConstraints(descriptor, msgConstraints, msgEval);
+            processFields(descriptor, msgEval);
+        } catch (InvalidProtocolBufferException e) {
+            throw new RuntimeException(e);
         }
-        processMessageExpressions(desc, msgConstraints, msgEval);
-        processOneofConstraints(desc, msgConstraints, msgEval);
-        processFields(desc, msgConstraints, msgEval);
     }
 
-    private void processMessageExpressions(Descriptor desc, MessageConstraints msgConstraints, MessageEvaluator msgEval) throws CompilationError {
+    private void processMessageExpressions(Descriptor desc, MessageConstraints msgConstraints, MessageEvaluator msgEval, DynamicMessage message) throws CompilationError {
         List<Constraint> celList = msgConstraints.getCelList();
         if (celList.isEmpty()) {
             return;
         }
-        try {
-            ExtensionRegistry extensionRegistry = ExtensionRegistry.newInstance();
-            extensionRegistry.add(ValidateProto.message);
-            extensionRegistry.add(ValidateProto.field);
-            extensionRegistry.add(ValidateProto.oneof);
-            DynamicMessage defaultInstance = DynamicMessage.parseFrom(desc, new byte[0], extensionRegistry);
-            ProgramSet compiledExpressions = Compiler.compile(
-                    celList,
-                    env,
-                    EnvOption.types(defaultInstance),
-                    EnvOption.declarations(
-                            Decls.newVar("this", Decls.newObjectType(desc.getFullName()))
-                    )
-            );
-            if (compiledExpressions == null) {
-                throw new RuntimeException("compile returned null");
-            }
-            msgEval.append(new CelPrograms(compiledExpressions));
-        } catch (InvalidProtocolBufferException e) {
-            throw new RuntimeException(e);
+        ProgramSet compiledExpressions = Compiler.compileConstraints(
+                celList,
+                env,
+                EnvOption.types(message),
+                EnvOption.declarations(
+                        Decls.newVar("this", Decls.newObjectType(desc.getFullName()))
+                )
+        );
+        if (compiledExpressions == null) {
+            throw new RuntimeException("compile returned null");
         }
+        msgEval.append(new CelPrograms(compiledExpressions));
     }
 
     private void processOneofConstraints(Descriptor desc, MessageConstraints msgConstraints, MessageEvaluator msgEval) {
@@ -151,15 +151,17 @@ public class Builder {
         }
     }
 
-    private void processFields(Descriptor desc, MessageConstraints msgConstraints, MessageEvaluator msgEval) {
+    private void processFields(Descriptor desc, MessageEvaluator msgEval) {
         List<FieldDescriptor> fields = desc.getFields();
         for (FieldDescriptor fieldDescriptor : fields) {
+            FieldDescriptor descriptor = desc.findFieldByName(fieldDescriptor.getName());
             try {
-                FieldConstraints fieldConstraints = resolver.resolveFieldConstraints(fieldDescriptor);
-                FieldEval fldEval = buildField(fieldDescriptor, fieldConstraints);
+                FieldConstraints fieldConstraints = resolver.resolveFieldConstraints(descriptor);
+                FieldEval fldEval = buildField(descriptor, fieldConstraints);
                 msgEval.append(fldEval);
             } catch (Exception e) {
-                return;
+                // TODO: remove potentially
+                throw new RuntimeException(e);
             }
         }
     }
@@ -184,7 +186,7 @@ public class Builder {
 
 
     private void buildValue(FieldDescriptor fieldDescriptor, FieldConstraints fieldConstraints, boolean forItems, Value valueEval) throws Exception {
-        Value newValue = new Value(valueEval.zero, fieldConstraints.getIgnoreEmpty());
+        valueEval.ignoreEmpty = fieldConstraints.getIgnoreEmpty();
         List<FieldProcessor> steps = Arrays.asList(
                 this::processZeroValue,
                 this::processFieldExpressions,
@@ -198,7 +200,7 @@ public class Builder {
         );
 
         for (FieldProcessor step : steps) {
-            step.process(fieldDescriptor, fieldConstraints, forItems, newValue);
+            step.process(fieldDescriptor, fieldConstraints, forItems, valueEval);
         }
     }
 
@@ -207,8 +209,8 @@ public class Builder {
     }
 
     private void processFieldExpressions(FieldDescriptor fieldDescriptor, FieldConstraints fieldConstraints, Boolean forItems, Value valueEval) throws Exception {
-        List<Constraint> exprs = fieldConstraints.getCelList();
-        if (exprs.isEmpty()) {
+        List<Constraint> constraintsCelList = fieldConstraints.getCelList();
+        if (constraintsCelList.isEmpty()) {
             return;
         }
 
@@ -223,8 +225,9 @@ public class Builder {
                     EnvOption.declarations(Decls.newVar("this", Lookups.protoKindToCELType(fieldDescriptor.getType())))
             );
         }
-
-        ProgramSet compiledExpressions = Compiler.compile(exprs, env, opts.toArray(new EnvOption[0]));
+        // TODO: check if this is correct, may be double handled
+        env = env.extend(opts);
+        ProgramSet compiledExpressions = Compiler.compileConstraints(constraintsCelList, env, opts.toArray(new EnvOption[0]));
         if (!compiledExpressions.isEmpty()) {
             valueEval.constraints.append(new CelPrograms(compiledExpressions));
         }
@@ -264,7 +267,12 @@ public class Builder {
 
     private void processStandardConstraints(FieldDescriptor fieldDescriptor, FieldConstraints fieldConstraints, Boolean forItems, Value valueEval) throws Exception {
         ProgramSet stdConstraints = constraints.build(env, fieldDescriptor, fieldConstraints, forItems);
-        valueEval.append(new CelPrograms(stdConstraints));
+        // TODO: verify null check error handling, it may not need to be handled when there are no constraints
+        if (stdConstraints == null) {
+            return;
+        }
+        CelPrograms eval = new CelPrograms(stdConstraints);
+        valueEval.append(eval);
     }
 
     private void processAnyConstraints(FieldDescriptor fieldDescriptor, FieldConstraints fieldConstraints, Boolean forItems, Value valueEval) throws Exception {

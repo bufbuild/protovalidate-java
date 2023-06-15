@@ -15,10 +15,10 @@
 package build.buf.protovalidate.evaluator;
 
 import build.buf.protovalidate.ValidationResult;
-import com.google.protobuf.DynamicMessage;
 
 import java.util.List;
 
+// TODO: Extra layer
 class Evaluators implements Evaluator {
     final List<Evaluator> evaluators;
 
@@ -37,7 +37,7 @@ class Evaluators implements Evaluator {
     }
 
     @Override
-    public ValidationResult evaluate(DynamicMessage val, boolean failFast) {
+    public ValidationResult evaluate(JavaValue val, boolean failFast) {
         for (Evaluator evaluator : evaluators) {
             ValidationResult evaluate = evaluator.evaluate(val, failFast);
             // TODO: handle non-fail fast scenarios. failing fast always here.

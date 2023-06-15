@@ -15,7 +15,6 @@
 package build.buf.protovalidate.evaluator;
 
 import build.buf.protovalidate.ValidationResult;
-import com.google.protobuf.DynamicMessage;
 
 public class KvPairs implements Evaluator {
 
@@ -38,7 +37,7 @@ public class KvPairs implements Evaluator {
     }
 
     @Override
-    public ValidationResult evaluate(DynamicMessage val, boolean failFast) {
+    public ValidationResult evaluate(JavaValue val, boolean failFast) {
         return ValidationResult.success();
     }
 

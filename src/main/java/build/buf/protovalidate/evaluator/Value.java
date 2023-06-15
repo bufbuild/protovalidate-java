@@ -15,7 +15,8 @@
 package build.buf.protovalidate.evaluator;
 
 import build.buf.protovalidate.ValidationResult;
-import com.google.protobuf.DynamicMessage;
+
+import java.util.ArrayList;
 
 public class Value implements Evaluator {
     // Zero is the default or zero-value for this value's type
@@ -25,15 +26,16 @@ public class Value implements Evaluator {
     public final Evaluators constraints;
     // IgnoreEmpty indicates that the Constraints should not be applied if the
     // field is unset or the default (typically zero) value.
-    public final boolean ignoreEmpty;
+    public boolean ignoreEmpty;
 
     public Value() {
         this(null, false);
     }
+
     public Value(com.google.protobuf.Value zero, boolean ignoreEmpty) {
         this.zero = zero;
         this.ignoreEmpty = ignoreEmpty;
-        this.constraints = new Evaluators(null);
+        this.constraints = new Evaluators(new ArrayList<>());
     }
 
     @Override
@@ -42,15 +44,13 @@ public class Value implements Evaluator {
     }
 
     @Override
-    public ValidationResult evaluate(DynamicMessage val, boolean failFast) {
+    public ValidationResult evaluate(JavaValue val, boolean failFast) {
         if (ignoreEmpty && val.equals(zero)) {
             return ValidationResult.success();
         }
-        for (Evaluator constraint : constraints.evaluators) {
-            ValidationResult validationResult = constraint.evaluate(val, failFast);
-            if (validationResult.isFailure()) {
-                return validationResult;
-            }
+        ValidationResult validationResult = constraints.evaluate(val, failFast);
+        if (validationResult.isFailure()) {
+            return validationResult;
         }
         return ValidationResult.success();
     }

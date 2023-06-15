@@ -21,7 +21,7 @@ import org.projectnessie.cel.interpreter.ResolvedValue;
 import static org.projectnessie.cel.interpreter.ResolvedValue.ABSENT;
 
 /**
- * Variable implements interpreter.Activation, providing a lightweight named
+ * Variable implements {@link org.projectnessie.cel.interpreter.Activation}, providing a lightweight named
  * variable to cel.Program executions.
  */
 public class Variable implements Activation {

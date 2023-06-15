@@ -33,7 +33,8 @@ class CompiledProgram {
         // now := nowPool.Get()
         // defer nowPool.Put(now)
         // bindings.Next = now
-        Program.EvalResult evalResult = this.program.eval(bindings);
+
+        Program.EvalResult evalResult = program.eval(bindings);
         Val val = evalResult.getVal();
         Object value = val.value();
         if (value instanceof String) {

@@ -15,12 +15,11 @@
 package build.buf.protovalidate.evaluator;
 
 import build.buf.protovalidate.ValidationResult;
-import com.google.protobuf.DynamicMessage;
 
 public interface Evaluator {
     boolean tautology();
 
-    ValidationResult evaluate(DynamicMessage val, boolean failFast);
+    ValidationResult evaluate(JavaValue val, boolean failFast);
 
     void append(Evaluator eval);
 }

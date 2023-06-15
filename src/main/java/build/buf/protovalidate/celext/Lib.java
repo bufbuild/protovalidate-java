@@ -15,6 +15,8 @@
 package build.buf.protovalidate.celext;
 
 import build.buf.protovalidate.expression.NowVariable;
+import com.google.api.expr.v1alpha1.Decl;
+import com.google.common.base.Strings;
 import org.projectnessie.cel.EnvOption;
 import org.projectnessie.cel.EvalOption;
 import org.projectnessie.cel.Library;
@@ -30,12 +32,17 @@ import javax.mail.internet.InternetAddress;
 import java.net.*;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Locale;
 import java.util.Set;
 
 import static org.projectnessie.cel.common.types.IntT.intOf;
+import static org.projectnessie.cel.interpreter.functions.Overload.binary;
 import static org.projectnessie.cel.interpreter.functions.Overload.function;
+import static org.projectnessie.cel.interpreter.functions.Overload.overload;
 import static org.projectnessie.cel.interpreter.functions.Overload.unary;
 
 public class Lib implements Library {
@@ -52,7 +59,78 @@ public class Lib implements Library {
         opts.add(EnvOption.declarations(
                 Decls.newVar("now", Decls.newObjectType(TimestampT.TimestampType.typeName()))
         ));
-
+        List<Decl.FunctionDecl.Overload> formatOverloads = new ArrayList<>();
+        // TODO: Iterate exhaustively
+        for (com.google.api.expr.v1alpha1.Type type : Arrays.asList(Decls.String, Decls.Int, Decls.Uint, Decls.Double, Decls.Bytes)) {
+            formatOverloads.add(Decls.newInstanceOverload(
+                    Strings.lenientFormat("format_%s", type.toString().toLowerCase(Locale.US)),
+                    Arrays.asList(Decls.String, Decls.newListType(type)),
+                    Decls.String
+            ));
+            formatOverloads.add(Decls.newInstanceOverload(
+                    Strings.lenientFormat("format_%s", type.toString().toLowerCase(Locale.US)),
+                    Arrays.asList(Decls.String, Decls.newListType(Decls.newListType(type))),
+                    Decls.String
+            ));
+        }
+        Decl formatFunction = Decls.newFunction("format",
+               formatOverloads
+        );
+        opts.addAll(
+                Arrays.asList(
+                        EnvOption.declarations(
+                                Decls.newFunction(
+                                        "isIp",
+                                        Decls.newInstanceOverload(
+                                                "is_ip",
+                                                Arrays.asList(Decls.String, Decls.Int),
+                                                Decls.Bool
+                                        ),
+                                        Decls.newInstanceOverload(
+                                                "is_ip_unary",
+                                                Collections.singletonList(Decls.String),
+                                                Decls.Bool
+                                        )
+                                ),
+                                Decls.newFunction("isUriRef",
+                                        Decls.newInstanceOverload(
+                                                "is_uri_ref",
+                                                Collections.singletonList(Decls.String),
+                                                Decls.Bool
+                                        )
+                                ),
+                                Decls.newFunction("isUri",
+                                        Decls.newInstanceOverload(
+                                                "is_uri",
+                                                Collections.singletonList(Decls.String),
+                                                Decls.Bool
+                                        )
+                                ),
+                                Decls.newFunction("isEmail",
+                                        Decls.newInstanceOverload(
+                                                "is_email",
+                                                Collections.singletonList(Decls.String),
+                                                Decls.Bool
+                                        )
+                                ),
+                                Decls.newFunction("isHostname",
+                                        Decls.newInstanceOverload(
+                                                "is_hostname",
+                                                Collections.singletonList(Decls.String),
+                                                Decls.Bool
+                                        )
+                                ),
+                                Decls.newFunction("startsWith",
+                                        Decls.newInstanceOverload(
+                                                "starts_with_byts",
+                                                Arrays.asList(Decls.Bytes, Decls.Bytes),
+                                                Decls.Bool
+                                        )
+                                ),
+                                formatFunction
+                        )
+                )
+        );
         return opts;
     }
 
@@ -65,38 +143,49 @@ public class Lib implements Library {
         opts.add(ProgramOption.globals(new NowVariable()));
         ProgramOption functions =
                 ProgramOption.functions(
-                        unary("unique", uniqueMemberOverload(BytesT.BytesType, this::uniqueBytes)),
-                        function("startsWith", values -> {
-                            // TODO:
-                           return BoolT.False;
+                        binary("format", (rhs, lhs) -> {
+                            // TODO: actually format
+                            return rhs;
                         }),
-                        function("isHostname", values -> {
-                            String host = ((String) values[0].value());
+                        unary("unique", uniqueMemberOverload(BytesT.BytesType, this::uniqueBytes)),
+                        binary("startsWith", (rhs, lhs) -> {
+                            return BoolT.False;
+                        }),
+                        unary("isHostname", value -> {
+                            String host = value.value().toString();
                             if (!host.isEmpty()) {
                                 return BoolT.False;
                             }
                             return Types.boolOf(validateHostname(host));
                         }),
-                        function("isEmail", values -> {
-                            String addr = ((String) values[0].value());
-                            if (!addr.isEmpty()) {
+                        unary("isEmail", value -> {
+                            String addr = value.value().toString();
+                            if (addr.isEmpty()) {
                                 return BoolT.False;
                             }
                             return Types.boolOf(validateEmail(addr));
                         }),
-                        function("isIp", values -> {
-                            String addr = ((String) values[0].value());
-                            if (!addr.isEmpty()) {
-                                return BoolT.False;
-                            }
-                            int ver = 0;
-                            if (values.length > 1) {
-                                ver = ((int) values[0].value());
-                            }
-                            return Types.boolOf(validateIP(addr, ver));
-                        }),
-                        function("isUri", values -> {
-                            String addr = ((String) values[0].value());
+                        overload(
+                                "isIp",
+                                null,
+                                value -> {
+                                    String addr = value.value().toString();
+                                    if (!addr.isEmpty()) {
+                                        return BoolT.False;
+                                    }
+                                    return Types.boolOf(validateIP(addr, 0));
+                                },
+                                (lhs, rhs) -> {
+                                    String addr = lhs.value().toString();
+                                    if (!addr.isEmpty()) {
+                                        return BoolT.False;
+                                    }
+                                    return Types.boolOf(validateIP(addr, (int) rhs.value()));
+                                },
+                                null
+                        ),
+                        unary("isUri", value -> {
+                            String addr = value.value().toString();
                             if (!addr.isEmpty()) {
                                 return BoolT.False;
                             }
@@ -106,8 +195,8 @@ public class Lib implements Library {
                                 return BoolT.False;
                             }
                         }),
-                        function("isUriRef", values -> {
-                            String addr = ((String) values[0].value());
+                        unary("isUriRef", value -> {
+                            String addr = value.value().toString();
                             if (!addr.isEmpty()) {
                                 return BoolT.False;
                             }
@@ -181,7 +270,7 @@ public class Lib implements Library {
             }
 
             String[] parts = addr.split("@", 2);
-            return parts[0].length() > 64 || !validateHostname(parts[1]);
+            return parts[0].length() < 64 || !validateHostname(parts[1]);
         } catch (AddressException ex) {
             return false;
         }
@@ -212,20 +301,21 @@ public class Lib implements Library {
     }
 
     private boolean validateIP(String addr, int ver) {
-        InetAddress address = null;
+        InetAddress address;
         try {
             address = InetAddress.getByName(addr);
         } catch (Exception e) {
             return false;
         }
-
-//        return switch (ver) {
-//            case 0 -> true;
-//            case 4 -> address instanceof Inet4Address;
-//            case 6 -> address instanceof Inet6Address;
-//            default -> false;
-//        };
-        // TODO:
-        return false;
+        switch (ver) {
+            case 0:
+                return true;
+            case 4:
+                return address instanceof Inet4Address;
+            case 6:
+                return address instanceof Inet6Address;
+            default:
+                return false;
+        }
     }
 }

@@ -17,7 +17,6 @@ package build.buf.protovalidate.evaluator;
 import build.buf.protovalidate.ValidationResult;
 import build.buf.protovalidate.errors.ValidationError;
 import com.google.protobuf.Descriptors.Descriptor;
-import com.google.protobuf.DynamicMessage;
 import com.google.protobuf.Message;
 
 // unknownMessage is a MessageEvaluator for an unknown descriptor. This is
@@ -40,7 +39,7 @@ public class UnknownMessage implements MessageEvaluator {
     }
 
     @Override
-    public ValidationResult evaluate(DynamicMessage val, boolean failFast) {
+    public ValidationResult evaluate(JavaValue val, boolean failFast) {
         throw this.err();
     }
 
