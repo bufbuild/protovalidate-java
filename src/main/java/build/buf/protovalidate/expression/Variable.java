@@ -30,7 +30,7 @@ public class Variable implements Activation {
     private final Object val;
 
     public Variable(String name, Object val) {
-        this.next = null;
+        this.next = Activation.emptyActivation();
         this.name = name;
         this.val = val;
     }

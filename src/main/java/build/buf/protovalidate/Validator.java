@@ -50,7 +50,8 @@ public class Validator {
         Descriptor descriptor = msg.getDescriptorForType();
         try {
             MessageEvaluator evaluator = builder.getLoader().load(descriptor);
-            return evaluator.evaluateMessage(msg, failFast);
+            ValidationResult validationResult = evaluator.evaluateMessage(msg, failFast);
+            return validationResult;
         } catch (CompilationError e) {
             return new ValidationResult(e);
         }

@@ -13,6 +13,7 @@ import build.buf.validate.conformance.cases.StringLen;
 import build.buf.validate.conformance.cases.StringNotIn;
 import build.buf.validate.conformance.cases.StringPrefix;
 import build.buf.validate.conformance.cases.StringURIRef;
+import build.buf.validate.conformance.cases.*;
 import build.buf.validate.conformance.cases.custom_constraints.Enum;
 import build.buf.validate.conformance.cases.custom_constraints.MessageExpressions;
 import build.buf.validate.conformance.cases.custom_constraints.MissingField;
@@ -102,6 +103,34 @@ public class ValidatorTest {
         ValidationResult validate = validator.validate(invalid);
         assertThat(validate.isFailure()).isTrue();
     }
+
+    @Test
+    public void sFixed32NotInValid() {
+        SFixed32NotIn test = SFixed32NotIn.newBuilder().setVal(1).build();
+        ValidationResult validate = validator.validate(test);
+        assertThat(validate.isSuccess()).isTrue();
+    }
+
+    @Test
+    public void floatConstSuccess() {
+        FloatConst invalid = FloatConst.newBuilder().setVal(1.23f).build();
+        ValidationResult validate = validator.validate(invalid);
+        assertThat(validate.isSuccess()).isTrue();
+    }
+
+    @Test
+    public void floatConstFailure() {
+        FloatConst invalid = FloatConst.newBuilder().setVal(3.21f).build();
+        ValidationResult validate = validator.validate(invalid);
+        assertThat(validate.isFailure()).isTrue();
+    }
+
+//    @Test
+//    public void FloatLT() {
+//        FloatIncorrectType test = FloatIncorrectType.newBuilder().setVal(123).build();
+//        ValidationResult validate = validator.validate(test);
+//        assertThat(validate.isFailure()).isTrue();
+//    }
 //    @Test
 //    public void strlen() {
 //        StringLen invalid = StringLen.newBuilder().setVal("😅😄👾").build();
@@ -109,4 +138,5 @@ public class ValidatorTest {
 //        assertThat(validate.isSuccess()).isTrue();
 //    }
 }
+
 

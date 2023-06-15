@@ -51,6 +51,7 @@ public class ProgramSet {
         } else {
             throw new RuntimeException("unsupported type for " + val.getClass());
         }
+        // todo: weird api
         Variable activation = new Variable(new NowVariable(), "this", value);
         List<Violation> violations = new ArrayList<>();
         for (CompiledProgram program : programs) {

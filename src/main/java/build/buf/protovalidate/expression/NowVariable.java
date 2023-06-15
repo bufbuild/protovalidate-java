@@ -12,7 +12,7 @@ public class NowVariable implements Activation {
     @Override
     public ResolvedValue resolveName(String name) {
         if (!name.equals("now")) {
-            return null;
+            return ResolvedValue.ABSENT;
         } else if (resolvedValue != null) {
             return resolvedValue;
         }
@@ -24,6 +24,6 @@ public class NowVariable implements Activation {
 
     @Override
     public Activation parent() {
-        return null;
+        return Activation.emptyActivation();
     }
 }
