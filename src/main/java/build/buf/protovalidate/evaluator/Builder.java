@@ -204,8 +204,14 @@ public class Builder {
         }
     }
 
-    private void processZeroValue(FieldDescriptor fieldDescriptor, FieldConstraints fieldConstraints, Boolean forItems, Value valueEval) throws Exception {
-        // TODO: implement me!
+    private void processZeroValue(FieldDescriptor fieldDescriptor, FieldConstraints fieldConstraints, Boolean forItems, Value valueEval) {
+        if (fieldDescriptor.hasDefaultValue()) {
+            valueEval.zero = fieldDescriptor.getDefaultValue();
+        }
+        if (forItems && fieldDescriptor.isRepeated()) {
+            DynamicMessage msg = DynamicMessage.getDefaultInstance(fieldDescriptor.getContainingType());
+            valueEval.zero = msg.getField(fieldDescriptor);
+        }
     }
 
     private void processFieldExpressions(FieldDescriptor fieldDescriptor, FieldConstraints fieldConstraints, Boolean forItems, Value valueEval) throws Exception {

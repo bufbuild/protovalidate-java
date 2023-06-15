@@ -20,8 +20,7 @@ import java.util.ArrayList;
 
 public class Value implements Evaluator {
     // Zero is the default or zero-value for this value's type
-    // TODO: not a message
-    public final com.google.protobuf.Value zero;
+    public Object zero;
     // Constraints are the individual evaluators applied to a value
     public final Evaluators constraints;
     // IgnoreEmpty indicates that the Constraints should not be applied if the
@@ -32,7 +31,7 @@ public class Value implements Evaluator {
         this(null, false);
     }
 
-    public Value(com.google.protobuf.Value zero, boolean ignoreEmpty) {
+    public Value(Object zero, boolean ignoreEmpty) {
         this.zero = zero;
         this.ignoreEmpty = ignoreEmpty;
         this.constraints = new Evaluators(new ArrayList<>());
