@@ -61,7 +61,7 @@ public class Lib implements Library {
         ));
         List<Decl.FunctionDecl.Overload> formatOverloads = new ArrayList<>();
         // TODO: Iterate exhaustively
-        for (com.google.api.expr.v1alpha1.Type type : Arrays.asList(Decls.String, Decls.Int, Decls.Uint, Decls.Double, Decls.Bytes, Decls.Bool)) {
+        for (com.google.api.expr.v1alpha1.Type type : Arrays.asList(Decls.String, Decls.Int, Decls.Uint, Decls.Double, Decls.Bytes, Decls.Bool, Decls.Duration, Decls.Timestamp)) {
             formatOverloads.add(Decls.newInstanceOverload(
                     String.format("format_%s", org.projectnessie.cel.checker.Types.formatCheckedType(type).toLowerCase(Locale.US)),
                     Arrays.asList(Decls.String, Decls.newListType(type)),

@@ -37,6 +37,7 @@ import build.buf.validate.java.Simple;
 import com.google.protobuf.ByteString;
 import com.google.protobuf.DynamicMessage;
 import com.google.protobuf.InvalidProtocolBufferException;
+import com.google.protobuf.Timestamp;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -75,6 +76,14 @@ public class SimpleTest {
     @Test
     public void boolconsttrue() throws CompilationError {
         BoolConstTrue invalid = BoolConstTrue.newBuilder().build();
+        ValidationResult validate = validator.validate(invalid);
+        assertThat(validate.error().violations).hasSize(1);
+        assertThat(validate.isFailure()).isTrue();
+    }
+
+    @Test
+    public void timestampwithin() throws CompilationError {
+        TimestampWithin invalid = TimestampWithin.newBuilder().setVal(Timestamp.newBuilder().build()).build();
         ValidationResult validate = validator.validate(invalid);
         assertThat(validate.error().violations).hasSize(1);
         assertThat(validate.isFailure()).isTrue();
