@@ -15,8 +15,10 @@
 package build.buf.protovalidate.constraints;
 
 import build.buf.protovalidate.errors.CompilationError;
-import build.buf.protovalidate.expression.*;
+import build.buf.protovalidate.expression.AstSet;
 import build.buf.protovalidate.expression.Compiler;
+import build.buf.protovalidate.expression.ProgramSet;
+import build.buf.protovalidate.expression.Variable;
 import build.buf.validate.FieldConstraints;
 import build.buf.validate.priv.PrivateProto;
 import com.google.api.expr.v1alpha1.Type;
@@ -26,15 +28,18 @@ import org.projectnessie.cel.Env;
 import org.projectnessie.cel.EnvOption;
 import org.projectnessie.cel.checker.Decls;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentMap;
 
 import static org.projectnessie.cel.ProgramOption.globals;
 
 public class Cache {
-    private final Map<FieldDescriptor, AstSet> cache;
+    private final ConcurrentMap<FieldDescriptor, AstSet> cache;
 
     public Cache() {
-        this.cache = new HashMap<>();
+        this.cache = new ConcurrentHashMap<>();
     }
 
     // This method resolves constraints for a given field based on the provided field descriptor, field constraints, and a flag indicating whether it is for items.
@@ -75,17 +80,16 @@ public class Cache {
                         Decls.newVar("rules", Decls.newObjectType(rules.getDescriptorForType().getFullName()))
                 )
         );
-
     }
 
     private AstSet loadOrCompileStandardConstraint(Env env, FieldDescriptor constraintFieldDesc) throws CompilationError {
-        if (cache.containsKey(constraintFieldDesc)) {
-            return cache.get(constraintFieldDesc);
+        final AstSet cachedValue = cache.get(constraintFieldDesc);
+        if (cachedValue != null) {
+            return cachedValue;
         }
         build.buf.validate.priv.FieldConstraints constraints = constraintFieldDesc.getOptions().getExtension(PrivateProto.field);
         AstSet astSet = Compiler.compileASTs(constraints.getCelList(), env);
-        cache.put(constraintFieldDesc, astSet);
-        return astSet;
+        return cache.putIfAbsent(constraintFieldDesc, astSet);
     }
 
     private FieldDescriptor getExpectedConstraintDescriptor(FieldDescriptor fieldDescriptor, Boolean forItems) {
