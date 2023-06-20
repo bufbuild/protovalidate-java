@@ -15,6 +15,9 @@
 package build.buf;
 
 import build.buf.protovalidate.Config;
+import build.buf.protovalidate.ValidationResult;
+import build.buf.protovalidate.errors.CompilationError;
+import build.buf.protovalidate.errors.RuntimeError;
 import build.buf.protovalidate.errors.ValidationError;
 import build.buf.protovalidate.Validator;
 import build.buf.validate.ValidateProto;
@@ -23,11 +26,7 @@ import build.buf.validate.conformance.cases.custom_constraints.MessageExpression
 import build.buf.validate.conformance.harness.TestConformanceRequest;
 import build.buf.validate.conformance.harness.TestConformanceResponse;
 import build.buf.validate.conformance.harness.TestResult;
-import com.google.protobuf.Any;
-import com.google.protobuf.ByteString;
-import com.google.protobuf.DynamicMessage;
-import com.google.protobuf.Descriptors;
-import com.google.protobuf.ExtensionRegistry;
+import com.google.protobuf.*;
 
 import java.util.Collections;
 import java.util.HashMap;
@@ -49,7 +48,7 @@ public class Main {
         }
     }
 
-    public static TestConformanceResponse testConformance(TestConformanceRequest request) {
+    static TestConformanceResponse testConformance(TestConformanceRequest request) {
         try {
             Map<String, Descriptors.Descriptor> descriptorMap = FileDescriptorUtil.parse(request.getFdset());
             Validator validator = new Validator(new Config());
@@ -66,7 +65,7 @@ public class Main {
         }
     }
 
-    public static TestResult testCase(Validator validator, Map<String, Descriptors.Descriptor> fileDescriptors, Any testCase) {
+    static TestResult testCase(Validator validator, Map<String, Descriptors.Descriptor> fileDescriptors, Any testCase) {
         String[] urlParts = testCase.getTypeUrl().split("/");
         String fullName = urlParts[urlParts.length - 1];
         Descriptors.Descriptor descriptor = fileDescriptors.get(fullName);
@@ -77,28 +76,47 @@ public class Main {
         ByteString testCaseValue = testCase.getValue();
         try {
             try {
-
                 DynamicMessage dynamicMessage = DynamicMessage.newBuilder(descriptor)
                         .mergeFrom(testCaseValue)
                         .build();
-                boolean result = validator.validateOrThrow(dynamicMessage);
+                boolean result = validateOrThrow(validator, dynamicMessage);
                 return TestResult.newBuilder()
                         .setSuccess(result)
                         .build();
-            } catch (ValidationError e) {
-                return TestResult.newBuilder()
-                        .setValidationError(e.toProto())
-                        .build();
+            } catch (Exception e) {
+                if (e instanceof CompilationError ce) {
+                    return TestResult.newBuilder()
+                            .setCompilationError(ce.toProto())
+                            .build();
+                } else if (e instanceof ValidationError ve) {
+                    return TestResult.newBuilder()
+                            .setValidationError(ve.toProto())
+                            .build();
+                } else if (e instanceof RuntimeError re) {
+                    return TestResult.newBuilder()
+                            .setRuntimeError(re.toProto())
+                            .build();
+                } else {
+                    return unexpectedErrorResult("unknown error: %s", e.toString());
+                }
             }
         } catch (Exception e) {
             throw new RuntimeException(fullName, e);
         }
     }
 
-    public static TestResult unexpectedErrorResult(String format, Object... args) {
+    static TestResult unexpectedErrorResult(String format, Object... args) {
         String errorMessage = String.format(format, args);
         return TestResult.newBuilder()
                 .setUnexpectedError(errorMessage)
                 .build();
+    }
+
+    static boolean validateOrThrow(Validator validator, Message msg) throws CompilationError {
+        ValidationResult validationResult = validator.validate(msg);
+        if (validationResult.error() != null) {
+            throw validationResult.error();
+        }
+        return validationResult.isSuccess();
     }
 }

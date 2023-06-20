@@ -37,29 +37,35 @@ public class Cache {
         this.cache = new HashMap<>();
     }
 
-    private Message resolveConstraints(FieldDescriptor fieldDescriptor, FieldConstraints fieldConstraints, Boolean forItems) {
-        boolean ok = true;
+    // This method resolves constraints for a given field based on the provided field descriptor, field constraints, and a flag indicating whether it is for items.
+    private Message resolveConstraints(FieldDescriptor fieldDescriptor, FieldConstraints fieldConstraints, Boolean forItems) throws CompilationError {
+        // Get the oneof field descriptor from the field constraints.
         FieldDescriptor oneofFieldDescriptor = fieldConstraints.getOneofFieldDescriptor(Lookups.FIELD_CONSTRAINTS_ONEOF_DESC);
         if (oneofFieldDescriptor == null) {
-            // TODO: throw exception? or just return null?
+            // If the oneof field descriptor is null there are no constraints to resolve.
             return null;
         }
+
+        // Get the expected constraint descriptor based on the provided field descriptor and the flag indicating whether it is for items.
         FieldDescriptor expectedConstraintDescriptor = getExpectedConstraintDescriptor(fieldDescriptor, forItems);
-        if (expectedConstraintDescriptor == null) {
-            // TODO: throw exception? or just return null?
-            ok = false;
+        if (expectedConstraintDescriptor != null && !oneofFieldDescriptor.getFullName().equals(expectedConstraintDescriptor.getFullName())) {
+            // If the expected constraint does not match the actual oneof constraint, throw a CompilationError.
+            throw CompilationError.newCompilationError("expected constraint %s, got %s on field %s",
+                    expectedConstraintDescriptor.getName(),
+                    oneofFieldDescriptor.getName(),
+                    fieldDescriptor.getName());
         }
 
-        if (ok && !oneofFieldDescriptor.getFullName().equals(expectedConstraintDescriptor.getFullName())) {
-            // TODO: throw exception
-        }
-
-        if (!ok || !fieldConstraints.hasField(oneofFieldDescriptor)) {
-            // TODO: work out what to do here
+        // If the expected constraint descriptor is null or if the field constraints do not have the oneof field descriptor
+        // there are no constraints to resolve, so return null.
+        if (expectedConstraintDescriptor == null || !fieldConstraints.hasField(oneofFieldDescriptor)) {
             return null;
         }
+
+        // Return the field from the field constraints identified by the oneof field descriptor, casted as a Message.
         return (Message) fieldConstraints.getField(oneofFieldDescriptor);
     }
+
 
     private Env prepareEnvironment(Env env, FieldDescriptor fieldDesc, Message rules, Boolean forItems) {
         return env.extend(

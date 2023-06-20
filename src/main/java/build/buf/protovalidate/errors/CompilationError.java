@@ -16,11 +16,11 @@ package build.buf.protovalidate.errors;
 
 public class CompilationError extends Exception {
 
-    private final Exception cause;
+    private final Exception e;
 
-    public CompilationError(Exception cause) {
-        super("compilation error: " + cause.getMessage());
-        this.cause = cause;
+    public CompilationError(Exception e) {
+        super(e.getMessage(), e);
+        this.e = e;
     }
 
     public static CompilationError newCompilationError(Exception cause) {
@@ -33,6 +33,10 @@ public class CompilationError extends Exception {
 
     @Override
     public synchronized Throwable getCause() {
-        return this.cause;
+        return e;
+    }
+
+    public String toProto() {
+        return e.toString();
     }
 }

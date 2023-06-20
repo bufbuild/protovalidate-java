@@ -35,4 +35,8 @@ public class RuntimeError extends Exception {
     public synchronized Throwable getCause() {
         return this.cause;
     }
+
+    public String toProto() {
+        return cause.getCause().toString();
+    }
 }

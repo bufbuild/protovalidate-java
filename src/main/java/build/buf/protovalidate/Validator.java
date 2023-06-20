@@ -34,27 +34,14 @@ public class Validator {
         this.failFast = config.failFast;
     }
 
-    public boolean validateOrThrow(Message msg) {
-        ValidationResult validationResult = validate(msg);
-        if (validationResult.error() != null) {
-            throw validationResult.error();
-        }
-        return validationResult.isSuccess();
-    }
-
-    public ValidationResult validate(Message msg) {
+    public ValidationResult validate(Message msg) throws CompilationError {
         if (msg == null) {
             // TODO: what should be here?
             return new ValidationResult(new ValidationError());
         }
-        try {
-            Descriptor descriptor = msg.getDescriptorForType();
-            MessageEvaluator evaluator = builder.getLoader().load(descriptor);
-            ValidationResult validationResult = evaluator.evaluateMessage(msg, failFast);
-            return validationResult;
-        } catch (CompilationError e) {
-            return new ValidationResult(e);
-        }
+        Descriptor descriptor = msg.getDescriptorForType();
+        MessageEvaluator evaluator = builder.getLoader().load(descriptor);
+        return evaluator.evaluateMessage(msg, failFast);
     }
 }
 
