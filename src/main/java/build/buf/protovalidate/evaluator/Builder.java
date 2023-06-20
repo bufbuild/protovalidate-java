@@ -48,6 +48,7 @@ public class Builder {
     private final Cache constraints;
     private final ConstraintResolver resolver;
     private final Loader loader;
+    private final ExtensionRegistry extensionRegistry = ExtensionRegistry.newInstance();
 
     public Builder(Env env, boolean disableLazy, ConstraintResolver res, List<Descriptor> seedDesc) {
         this.env = env;
@@ -66,6 +67,9 @@ public class Builder {
                 throw new RuntimeException(e);
             }
         }
+        extensionRegistry.add(ValidateProto.message);
+        extensionRegistry.add(ValidateProto.field);
+        extensionRegistry.add(ValidateProto.oneof);
     }
 
     /**
@@ -103,11 +107,6 @@ public class Builder {
     }
 
     private void buildMessage(Descriptor desc, MessageEvaluator msgEval) throws CompilationError {
-        // TODO clean this up.
-        ExtensionRegistry extensionRegistry = ExtensionRegistry.newInstance();
-        extensionRegistry.add(ValidateProto.message);
-        extensionRegistry.add(ValidateProto.field);
-        extensionRegistry.add(ValidateProto.oneof);
         try {
             DynamicMessage defaultInstance = DynamicMessage.parseFrom(desc, new byte[0], extensionRegistry);
             Descriptor descriptor = defaultInstance.getDescriptorForType();
@@ -182,21 +181,15 @@ public class Builder {
 
     private void buildValue(FieldDescriptor fieldDescriptor, FieldConstraints fieldConstraints, boolean forItems, Value valueEval) throws CompilationError {
         valueEval.ignoreEmpty = fieldConstraints.getIgnoreEmpty();
-        List<FieldProcessor> steps = Arrays.asList(
-                this::processZeroValue,
-                this::processFieldExpressions,
-                this::processEmbeddedMessage,
-                this::processWrapperConstraints,
-                this::processStandardConstraints,
-                this::processAnyConstraints,
-                this::processEnumConstraints,
-                this::processMapConstraints,
-                this::processRepeatedConstraints
-        );
-
-        for (FieldProcessor step : steps) {
-            step.process(fieldDescriptor, fieldConstraints, forItems, valueEval);
-        }
+        processZeroValue(fieldDescriptor, fieldConstraints, forItems, valueEval);
+        processFieldExpressions(fieldDescriptor, fieldConstraints, forItems, valueEval);
+        processEmbeddedMessage(fieldDescriptor, fieldConstraints, forItems, valueEval);
+        processWrapperConstraints(fieldDescriptor, fieldConstraints, forItems, valueEval);
+        processStandardConstraints(fieldDescriptor, fieldConstraints, forItems, valueEval);
+        processAnyConstraints(fieldDescriptor, fieldConstraints, forItems, valueEval);
+        processEnumConstraints(fieldDescriptor, fieldConstraints, forItems, valueEval);
+        processMapConstraints(fieldDescriptor, fieldConstraints, forItems, valueEval);
+        processRepeatedConstraints(fieldDescriptor, fieldConstraints, forItems, valueEval);
     }
 
     private void processZeroValue(FieldDescriptor fieldDescriptor, FieldConstraints fieldConstraints, Boolean forItems, Value valueEval) {
@@ -214,20 +207,23 @@ public class Builder {
         if (constraintsCelList.isEmpty()) {
             return;
         }
-
         List<EnvOption> opts;
         if (fieldDescriptor.getType() == FieldDescriptor.Type.MESSAGE) {
-            opts = Arrays.asList(
-                    EnvOption.types(fieldDescriptor.getFile().toProto()),
-                    EnvOption.declarations(Decls.newVar("this", Decls.newObjectType(fieldDescriptor.getMessageType().getFullName())))
-            );
+            try {
+                DynamicMessage defaultInstance = DynamicMessage.parseFrom(fieldDescriptor.getMessageType(), new byte[0], extensionRegistry);
+                opts = Arrays.asList(
+                        EnvOption.types(defaultInstance),
+                        EnvOption.declarations(Decls.newVar("this", Decls.newObjectType(fieldDescriptor.getMessageType().getFullName())))
+                );
+            } catch (InvalidProtocolBufferException e) {
+                throw CompilationError.newCompilationError("field descriptor type is invalid", e);
+            }
         } else {
             opts = Collections.singletonList(
                     EnvOption.declarations(Decls.newVar("this", Lookups.protoKindToCELType(fieldDescriptor.getType())))
             );
         }
-        // TODO: check if this is correct, may be double handled
-        ProgramSet compiledExpressions = Compiler.compileConstraints(constraintsCelList, env.extend(opts), opts.toArray(new EnvOption[0]));
+        ProgramSet compiledExpressions = Compiler.compileConstraints(constraintsCelList, env, opts.toArray(new EnvOption[0]));
         if (!compiledExpressions.isEmpty()) {
             valueEval.constraints.append(new CelPrograms(compiledExpressions));
         }
@@ -311,8 +307,7 @@ public class Builder {
                 fieldDescriptor.getMessageType().findFieldByNumber(1),
                 fieldConstraints.getMap().getKeys(),
                 true,
-                mapEval.keyConstraints
-        );
+                mapEval.keyConstraints);
         buildValue(
                 fieldDescriptor.getMessageType().findFieldByNumber(2),
                 fieldConstraints,
@@ -335,17 +330,6 @@ public class Builder {
         }
 
         valueEval.append(listEval);
-    }
-
-    // Each step in 'steps' list above is a FieldProcessor
-    @FunctionalInterface
-    private interface FieldProcessor {
-        void process(FieldDescriptor fieldDescriptor, FieldConstraints fieldConstraints, Boolean forItems, Value valueEval) throws CompilationError;
-    }
-
-    @FunctionalInterface
-    private interface Processor {
-        void process(Descriptor desc, MessageConstraints msgConstraints, MessageEvaluator msgEval) throws CompilationError;
     }
 
     public Loader getLoader() {
