@@ -17,6 +17,7 @@ package build.buf.protovalidate.celext;
 import build.buf.protovalidate.expression.NowVariable;
 import com.google.api.expr.v1alpha1.Decl;
 import com.google.common.net.InetAddresses;
+import com.google.common.primitives.Bytes;
 import org.projectnessie.cel.EnvOption;
 import org.projectnessie.cel.EvalOption;
 import org.projectnessie.cel.Library;
@@ -181,46 +182,56 @@ public class Lib implements Library {
                         }),
                         unary("unique", uniqueMemberOverload(BytesT.BytesType, this::uniqueBytes)),
                         binary("startsWith", (lhs, rhs) -> {
-                            byte[] receiver = (byte[]) lhs.value();
-                            byte[] param = (byte[]) rhs.value();
-                            for (int i = 0; i < param.length; i++) {
-                                if (param[i] != receiver[i]) {
+                            if (lhs.type() == StringT.StringType && rhs.type() == StringT.StringType) {
+                                String receiver = lhs.value().toString();
+                                String param = rhs.value().toString();
+                                return receiver.startsWith(param) ? BoolT.True : BoolT.False;
+                            } else if (lhs.type() == BytesT.BytesType && rhs.type() == BytesT.BytesType) {
+                                byte[] receiver = (byte[]) lhs.value();
+                                byte[] param = (byte[]) rhs.value();
+                                if (receiver.length < param.length) {
                                     return BoolT.False;
                                 }
+                                for (int i = 0; i < param.length; i++) {
+                                    if (param[i] != receiver[i]) {
+                                        return BoolT.False;
+                                    }
+                                }
+                                return BoolT.True;
                             }
-                            return BoolT.True;
+                            return Err.newErr("using startsWith on a non-byte and non-string type");
                         }),
                         binary("endsWith", (lhs, rhs) -> {
-                            byte[] receiver = (byte[]) lhs.value();
-                            byte[] param = (byte[]) rhs.value();
-                            for (int i = 0; i < param.length; i++) {
-                                if (param[param.length - i - 1] != receiver[receiver.length - i - 1]) {
+                            if (lhs.type() == StringT.StringType && rhs.type() == StringT.StringType) {
+                                String receiver = lhs.value().toString();
+                                String param = rhs.value().toString();
+                                return receiver.endsWith(param) ? BoolT.True : BoolT.False;
+                            } else if (lhs.type() == BytesT.BytesType && rhs.type() == BytesT.BytesType) {
+                                byte[] receiver = (byte[]) lhs.value();
+                                byte[] param = (byte[]) rhs.value();
+                                if (receiver.length < param.length) {
                                     return BoolT.False;
                                 }
-                            }
-                            return BoolT.True;
-                        }),
-                        binary("contains", (lhs, rhs) -> {
-                            byte[] receiver = (byte[]) lhs.value();
-                            byte[] param = (byte[]) rhs.value();
-                            if (param.length == 0) {
-                                return BoolT.True; // An empty param is always considered contained
-                            }
-                            for (int i = 0; i <= receiver.length - param.length; i++) {
-                                if (receiver[i] == param[0]) {
-                                    boolean match = true;
-                                    for (int j = 1; j < param.length; j++) {
-                                        if (receiver[i + j] != param[j]) {
-                                            match = false;
-                                            break;
-                                        }
-                                    }
-                                    if (match) {
-                                        return BoolT.True; // Found a match for param
+                                for (int i = 0; i < param.length; i++) {
+                                    if (param[param.length - i - 1] != receiver[receiver.length - i - 1]) {
+                                        return BoolT.False;
                                     }
                                 }
+                                return BoolT.True;
                             }
-                            return BoolT.False; // param not found in mainArray
+                            return Err.newErr("using endsWith on a non-byte and non-string type");
+                        }),
+                        binary("contains", (lhs, rhs) -> {
+                            if (lhs.type() == StringT.StringType && rhs.type() == StringT.StringType) {
+                                String receiver = lhs.value().toString();
+                                String param = rhs.value().toString();
+                                return receiver.contains(param) ? BoolT.True : BoolT.False;
+                            } else if (lhs.type() == BytesT.BytesType && rhs.type() == BytesT.BytesType) {
+                                byte[] receiver = (byte[]) lhs.value();
+                                byte[] param = (byte[]) rhs.value();
+                                return Bytes.indexOf(receiver, param) == -1 ? BoolT.False : BoolT.True;
+                            }
+                            return Err.newErr("using contains on a non-byte and non-string type");
                         }),
                         unary("isHostname", value -> {
                             String host = value.value().toString();
