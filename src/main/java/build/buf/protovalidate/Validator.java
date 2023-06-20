@@ -47,8 +47,8 @@ public class Validator {
             // TODO: what should be here?
             return new ValidationResult(new ValidationError());
         }
-        Descriptor descriptor = msg.getDescriptorForType();
         try {
+            Descriptor descriptor = msg.getDescriptorForType();
             MessageEvaluator evaluator = builder.getLoader().load(descriptor);
             ValidationResult validationResult = evaluator.evaluateMessage(msg, failFast);
             return validationResult;
