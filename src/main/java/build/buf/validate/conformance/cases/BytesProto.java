@@ -120,22 +120,22 @@ public final class BytesProto {
       "val\")\n\013BytesMaxLen\022\032\n\003val\030\001 \001(\014B\010\372\367\030\004z\002\030" +
       "\005R\003val\".\n\016BytesMinMaxLen\022\034\n\003val\030\001 \001(\014B\n\372" +
       "\367\030\006z\004\020\003\030\005R\003val\"3\n\023BytesEqualMinMaxLen\022\034\n" +
-      "\003val\030\001 \001(\014B\n\372\367\030\006z\004\020\005\030\005R\003val\"2\n\014BytesPatt" +
-      "ern\022\"\n\003val\030\001 \001(\014B\020\372\367\030\014z\n\"\010^[\000-\177]+$R\003val\"" +
-      "*\n\013BytesPrefix\022\033\n\003val\030\001 \001(\014B\t\372\367\030\005z\003*\001\231R\003" +
-      "val\".\n\rBytesContains\022\035\n\003val\030\001 \001(\014B\013\372\367\030\007z" +
-      "\005:\003barR\003val\"-\n\013BytesSuffix\022\036\n\003val\030\001 \001(\014B" +
-      "\014\372\367\030\010z\0062\004buzzR\003val\"%\n\007BytesIP\022\032\n\003val\030\001 \001" +
-      "(\014B\010\372\367\030\004z\002P\001R\003val\"\'\n\tBytesIPv4\022\032\n\003val\030\001 " +
-      "\001(\014B\010\372\367\030\004z\002X\001R\003val\"\'\n\tBytesIPv6\022\032\n\003val\030\001" +
-      " \001(\014B\010\372\367\030\004z\002`\001R\003val\"0\n\017BytesIPv6Ignore\022\035" +
-      "\n\003val\030\001 \001(\014B\013\372\367\030\007z\002`\001\320\001\001R\003valB\316\001\n$build." +
-      "buf.validate.conformance.casesB\nBytesPro" +
-      "toP\001\242\002\004BVCC\252\002\036Buf.Validate.Conformance.C" +
-      "ases\312\002\036Buf\\Validate\\Conformance\\Cases\342\002*" +
-      "Buf\\Validate\\Conformance\\Cases\\GPBMetada" +
-      "ta\352\002!Buf::Validate::Conformance::Casesb\006" +
-      "proto3"
+      "\003val\030\001 \001(\014B\n\372\367\030\006z\004\020\005\030\005R\003val\"8\n\014BytesPatt" +
+      "ern\022(\n\003val\030\001 \001(\014B\026\372\367\030\022z\020\"\016^[\\x00-\\x7F]+$" +
+      "R\003val\"*\n\013BytesPrefix\022\033\n\003val\030\001 \001(\014B\t\372\367\030\005z" +
+      "\003*\001\231R\003val\".\n\rBytesContains\022\035\n\003val\030\001 \001(\014B" +
+      "\013\372\367\030\007z\005:\003barR\003val\"-\n\013BytesSuffix\022\036\n\003val\030" +
+      "\001 \001(\014B\014\372\367\030\010z\0062\004buzzR\003val\"%\n\007BytesIP\022\032\n\003v" +
+      "al\030\001 \001(\014B\010\372\367\030\004z\002P\001R\003val\"\'\n\tBytesIPv4\022\032\n\003" +
+      "val\030\001 \001(\014B\010\372\367\030\004z\002X\001R\003val\"\'\n\tBytesIPv6\022\032\n" +
+      "\003val\030\001 \001(\014B\010\372\367\030\004z\002`\001R\003val\"0\n\017BytesIPv6Ig" +
+      "nore\022\035\n\003val\030\001 \001(\014B\013\372\367\030\007z\002`\001\320\001\001R\003valB\316\001\n$" +
+      "build.buf.validate.conformance.casesB\nBy" +
+      "tesProtoP\001\242\002\004BVCC\252\002\036Buf.Validate.Conform" +
+      "ance.Cases\312\002\036Buf\\Validate\\Conformance\\Ca" +
+      "ses\342\002*Buf\\Validate\\Conformance\\Cases\\GPB" +
+      "Metadata\352\002!Buf::Validate::Conformance::C" +
+      "asesb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,

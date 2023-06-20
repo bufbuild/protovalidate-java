@@ -1,4 +1,5 @@
 plugins {
+    `version-catalog`
     id("com.diffplug.spotless") version "6.13.0"
     java
     application
@@ -22,4 +23,9 @@ dependencies {
     testImplementation(libs.assertj)
     testImplementation(libs.protobuf.java)
     testImplementation(libs.protobuf.java.util)
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
 }

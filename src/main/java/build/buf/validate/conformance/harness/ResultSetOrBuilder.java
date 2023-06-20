@@ -44,38 +44,17 @@ public interface ResultSetOrBuilder extends
       int index);
 
   /**
-   * <code>string suite_filter = 4 [json_name = "suiteFilter"];</code>
-   * @return The suiteFilter.
+   * <code>.buf.validate.conformance.harness.ResultOptions options = 4 [json_name = "options"];</code>
+   * @return Whether the options field is set.
    */
-  java.lang.String getSuiteFilter();
+  boolean hasOptions();
   /**
-   * <code>string suite_filter = 4 [json_name = "suiteFilter"];</code>
-   * @return The bytes for suiteFilter.
+   * <code>.buf.validate.conformance.harness.ResultOptions options = 4 [json_name = "options"];</code>
+   * @return The options.
    */
-  com.google.protobuf.ByteString
-      getSuiteFilterBytes();
-
+  build.buf.validate.conformance.harness.ResultOptions getOptions();
   /**
-   * <code>string case_filter = 5 [json_name = "caseFilter"];</code>
-   * @return The caseFilter.
+   * <code>.buf.validate.conformance.harness.ResultOptions options = 4 [json_name = "options"];</code>
    */
-  java.lang.String getCaseFilter();
-  /**
-   * <code>string case_filter = 5 [json_name = "caseFilter"];</code>
-   * @return The bytes for caseFilter.
-   */
-  com.google.protobuf.ByteString
-      getCaseFilterBytes();
-
-  /**
-   * <code>bool verbose = 6 [json_name = "verbose"];</code>
-   * @return The verbose.
-   */
-  boolean getVerbose();
-
-  /**
-   * <code>bool strict = 7 [json_name = "strict"];</code>
-   * @return The strict.
-   */
-  boolean getStrict();
+  build.buf.validate.conformance.harness.ResultOptionsOrBuilder getOptionsOrBuilder();
 }

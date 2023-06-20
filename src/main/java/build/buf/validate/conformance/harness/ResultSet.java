@@ -17,8 +17,6 @@ private static final long serialVersionUID = 0L;
   }
   private ResultSet() {
     suites_ = java.util.Collections.emptyList();
-    suiteFilter_ = "";
-    caseFilter_ = "";
   }
 
   @java.lang.Override
@@ -104,104 +102,30 @@ private static final long serialVersionUID = 0L;
     return suites_.get(index);
   }
 
-  public static final int SUITE_FILTER_FIELD_NUMBER = 4;
-  @SuppressWarnings("serial")
-  private volatile java.lang.Object suiteFilter_ = "";
+  public static final int OPTIONS_FIELD_NUMBER = 4;
+  private build.buf.validate.conformance.harness.ResultOptions options_;
   /**
-   * <code>string suite_filter = 4 [json_name = "suiteFilter"];</code>
-   * @return The suiteFilter.
+   * <code>.buf.validate.conformance.harness.ResultOptions options = 4 [json_name = "options"];</code>
+   * @return Whether the options field is set.
    */
   @java.lang.Override
-  public java.lang.String getSuiteFilter() {
-    java.lang.Object ref = suiteFilter_;
-    if (ref instanceof java.lang.String) {
-      return (java.lang.String) ref;
-    } else {
-      com.google.protobuf.ByteString bs = 
-          (com.google.protobuf.ByteString) ref;
-      java.lang.String s = bs.toStringUtf8();
-      suiteFilter_ = s;
-      return s;
-    }
+  public boolean hasOptions() {
+    return options_ != null;
   }
   /**
-   * <code>string suite_filter = 4 [json_name = "suiteFilter"];</code>
-   * @return The bytes for suiteFilter.
+   * <code>.buf.validate.conformance.harness.ResultOptions options = 4 [json_name = "options"];</code>
+   * @return The options.
    */
   @java.lang.Override
-  public com.google.protobuf.ByteString
-      getSuiteFilterBytes() {
-    java.lang.Object ref = suiteFilter_;
-    if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b = 
-          com.google.protobuf.ByteString.copyFromUtf8(
-              (java.lang.String) ref);
-      suiteFilter_ = b;
-      return b;
-    } else {
-      return (com.google.protobuf.ByteString) ref;
-    }
-  }
-
-  public static final int CASE_FILTER_FIELD_NUMBER = 5;
-  @SuppressWarnings("serial")
-  private volatile java.lang.Object caseFilter_ = "";
-  /**
-   * <code>string case_filter = 5 [json_name = "caseFilter"];</code>
-   * @return The caseFilter.
-   */
-  @java.lang.Override
-  public java.lang.String getCaseFilter() {
-    java.lang.Object ref = caseFilter_;
-    if (ref instanceof java.lang.String) {
-      return (java.lang.String) ref;
-    } else {
-      com.google.protobuf.ByteString bs = 
-          (com.google.protobuf.ByteString) ref;
-      java.lang.String s = bs.toStringUtf8();
-      caseFilter_ = s;
-      return s;
-    }
+  public build.buf.validate.conformance.harness.ResultOptions getOptions() {
+    return options_ == null ? build.buf.validate.conformance.harness.ResultOptions.getDefaultInstance() : options_;
   }
   /**
-   * <code>string case_filter = 5 [json_name = "caseFilter"];</code>
-   * @return The bytes for caseFilter.
+   * <code>.buf.validate.conformance.harness.ResultOptions options = 4 [json_name = "options"];</code>
    */
   @java.lang.Override
-  public com.google.protobuf.ByteString
-      getCaseFilterBytes() {
-    java.lang.Object ref = caseFilter_;
-    if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b = 
-          com.google.protobuf.ByteString.copyFromUtf8(
-              (java.lang.String) ref);
-      caseFilter_ = b;
-      return b;
-    } else {
-      return (com.google.protobuf.ByteString) ref;
-    }
-  }
-
-  public static final int VERBOSE_FIELD_NUMBER = 6;
-  private boolean verbose_ = false;
-  /**
-   * <code>bool verbose = 6 [json_name = "verbose"];</code>
-   * @return The verbose.
-   */
-  @java.lang.Override
-  public boolean getVerbose() {
-    return verbose_;
-  }
-
-  public static final int STRICT_FIELD_NUMBER = 7;
-  private boolean strict_ = false;
-  /**
-   * <code>bool strict = 7 [json_name = "strict"];</code>
-   * @return The strict.
-   */
-  @java.lang.Override
-  public boolean getStrict() {
-    return strict_;
+  public build.buf.validate.conformance.harness.ResultOptionsOrBuilder getOptionsOrBuilder() {
+    return options_ == null ? build.buf.validate.conformance.harness.ResultOptions.getDefaultInstance() : options_;
   }
 
   private byte memoizedIsInitialized = -1;
@@ -211,6 +135,12 @@ private static final long serialVersionUID = 0L;
     if (isInitialized == 1) return true;
     if (isInitialized == 0) return false;
 
+    for (int i = 0; i < getSuitesCount(); i++) {
+      if (!getSuites(i).isInitialized()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+    }
     memoizedIsInitialized = 1;
     return true;
   }
@@ -227,17 +157,8 @@ private static final long serialVersionUID = 0L;
     for (int i = 0; i < suites_.size(); i++) {
       output.writeMessage(3, suites_.get(i));
     }
-    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(suiteFilter_)) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 4, suiteFilter_);
-    }
-    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(caseFilter_)) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 5, caseFilter_);
-    }
-    if (verbose_ != false) {
-      output.writeBool(6, verbose_);
-    }
-    if (strict_ != false) {
-      output.writeBool(7, strict_);
+    if (options_ != null) {
+      output.writeMessage(4, getOptions());
     }
     getUnknownFields().writeTo(output);
   }
@@ -260,19 +181,9 @@ private static final long serialVersionUID = 0L;
       size += com.google.protobuf.CodedOutputStream
         .computeMessageSize(3, suites_.get(i));
     }
-    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(suiteFilter_)) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, suiteFilter_);
-    }
-    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(caseFilter_)) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(5, caseFilter_);
-    }
-    if (verbose_ != false) {
+    if (options_ != null) {
       size += com.google.protobuf.CodedOutputStream
-        .computeBoolSize(6, verbose_);
-    }
-    if (strict_ != false) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeBoolSize(7, strict_);
+        .computeMessageSize(4, getOptions());
     }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
@@ -295,14 +206,11 @@ private static final long serialVersionUID = 0L;
         != other.getFailures()) return false;
     if (!getSuitesList()
         .equals(other.getSuitesList())) return false;
-    if (!getSuiteFilter()
-        .equals(other.getSuiteFilter())) return false;
-    if (!getCaseFilter()
-        .equals(other.getCaseFilter())) return false;
-    if (getVerbose()
-        != other.getVerbose()) return false;
-    if (getStrict()
-        != other.getStrict()) return false;
+    if (hasOptions() != other.hasOptions()) return false;
+    if (hasOptions()) {
+      if (!getOptions()
+          .equals(other.getOptions())) return false;
+    }
     if (!getUnknownFields().equals(other.getUnknownFields())) return false;
     return true;
   }
@@ -322,16 +230,10 @@ private static final long serialVersionUID = 0L;
       hash = (37 * hash) + SUITES_FIELD_NUMBER;
       hash = (53 * hash) + getSuitesList().hashCode();
     }
-    hash = (37 * hash) + SUITE_FILTER_FIELD_NUMBER;
-    hash = (53 * hash) + getSuiteFilter().hashCode();
-    hash = (37 * hash) + CASE_FILTER_FIELD_NUMBER;
-    hash = (53 * hash) + getCaseFilter().hashCode();
-    hash = (37 * hash) + VERBOSE_FIELD_NUMBER;
-    hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
-        getVerbose());
-    hash = (37 * hash) + STRICT_FIELD_NUMBER;
-    hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
-        getStrict());
+    if (hasOptions()) {
+      hash = (37 * hash) + OPTIONS_FIELD_NUMBER;
+      hash = (53 * hash) + getOptions().hashCode();
+    }
     hash = (29 * hash) + getUnknownFields().hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -472,10 +374,11 @@ private static final long serialVersionUID = 0L;
         suitesBuilder_.clear();
       }
       bitField0_ = (bitField0_ & ~0x00000004);
-      suiteFilter_ = "";
-      caseFilter_ = "";
-      verbose_ = false;
-      strict_ = false;
+      options_ = null;
+      if (optionsBuilder_ != null) {
+        optionsBuilder_.dispose();
+        optionsBuilder_ = null;
+      }
       return this;
     }
 
@@ -529,16 +432,9 @@ private static final long serialVersionUID = 0L;
         result.failures_ = failures_;
       }
       if (((from_bitField0_ & 0x00000008) != 0)) {
-        result.suiteFilter_ = suiteFilter_;
-      }
-      if (((from_bitField0_ & 0x00000010) != 0)) {
-        result.caseFilter_ = caseFilter_;
-      }
-      if (((from_bitField0_ & 0x00000020) != 0)) {
-        result.verbose_ = verbose_;
-      }
-      if (((from_bitField0_ & 0x00000040) != 0)) {
-        result.strict_ = strict_;
+        result.options_ = optionsBuilder_ == null
+            ? options_
+            : optionsBuilder_.build();
       }
     }
 
@@ -618,21 +514,8 @@ private static final long serialVersionUID = 0L;
           }
         }
       }
-      if (!other.getSuiteFilter().isEmpty()) {
-        suiteFilter_ = other.suiteFilter_;
-        bitField0_ |= 0x00000008;
-        onChanged();
-      }
-      if (!other.getCaseFilter().isEmpty()) {
-        caseFilter_ = other.caseFilter_;
-        bitField0_ |= 0x00000010;
-        onChanged();
-      }
-      if (other.getVerbose() != false) {
-        setVerbose(other.getVerbose());
-      }
-      if (other.getStrict() != false) {
-        setStrict(other.getStrict());
+      if (other.hasOptions()) {
+        mergeOptions(other.getOptions());
       }
       this.mergeUnknownFields(other.getUnknownFields());
       onChanged();
@@ -641,6 +524,11 @@ private static final long serialVersionUID = 0L;
 
     @java.lang.Override
     public final boolean isInitialized() {
+      for (int i = 0; i < getSuitesCount(); i++) {
+        if (!getSuites(i).isInitialized()) {
+          return false;
+        }
+      }
       return true;
     }
 
@@ -684,25 +572,12 @@ private static final long serialVersionUID = 0L;
               break;
             } // case 26
             case 34: {
-              suiteFilter_ = input.readStringRequireUtf8();
+              input.readMessage(
+                  getOptionsFieldBuilder().getBuilder(),
+                  extensionRegistry);
               bitField0_ |= 0x00000008;
               break;
             } // case 34
-            case 42: {
-              caseFilter_ = input.readStringRequireUtf8();
-              bitField0_ |= 0x00000010;
-              break;
-            } // case 42
-            case 48: {
-              verbose_ = input.readBool();
-              bitField0_ |= 0x00000020;
-              break;
-            } // case 48
-            case 56: {
-              strict_ = input.readBool();
-              bitField0_ |= 0x00000040;
-              break;
-            } // case 56
             default: {
               if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                 done = true; // was an endgroup tag
@@ -1024,212 +899,123 @@ private static final long serialVersionUID = 0L;
       return suitesBuilder_;
     }
 
-    private java.lang.Object suiteFilter_ = "";
+    private build.buf.validate.conformance.harness.ResultOptions options_;
+    private com.google.protobuf.SingleFieldBuilderV3<
+        build.buf.validate.conformance.harness.ResultOptions, build.buf.validate.conformance.harness.ResultOptions.Builder, build.buf.validate.conformance.harness.ResultOptionsOrBuilder> optionsBuilder_;
     /**
-     * <code>string suite_filter = 4 [json_name = "suiteFilter"];</code>
-     * @return The suiteFilter.
+     * <code>.buf.validate.conformance.harness.ResultOptions options = 4 [json_name = "options"];</code>
+     * @return Whether the options field is set.
      */
-    public java.lang.String getSuiteFilter() {
-      java.lang.Object ref = suiteFilter_;
-      if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs =
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        suiteFilter_ = s;
-        return s;
+    public boolean hasOptions() {
+      return ((bitField0_ & 0x00000008) != 0);
+    }
+    /**
+     * <code>.buf.validate.conformance.harness.ResultOptions options = 4 [json_name = "options"];</code>
+     * @return The options.
+     */
+    public build.buf.validate.conformance.harness.ResultOptions getOptions() {
+      if (optionsBuilder_ == null) {
+        return options_ == null ? build.buf.validate.conformance.harness.ResultOptions.getDefaultInstance() : options_;
       } else {
-        return (java.lang.String) ref;
+        return optionsBuilder_.getMessage();
       }
     }
     /**
-     * <code>string suite_filter = 4 [json_name = "suiteFilter"];</code>
-     * @return The bytes for suiteFilter.
+     * <code>.buf.validate.conformance.harness.ResultOptions options = 4 [json_name = "options"];</code>
      */
-    public com.google.protobuf.ByteString
-        getSuiteFilterBytes() {
-      java.lang.Object ref = suiteFilter_;
-      if (ref instanceof String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        suiteFilter_ = b;
-        return b;
+    public Builder setOptions(build.buf.validate.conformance.harness.ResultOptions value) {
+      if (optionsBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        options_ = value;
       } else {
-        return (com.google.protobuf.ByteString) ref;
+        optionsBuilder_.setMessage(value);
       }
-    }
-    /**
-     * <code>string suite_filter = 4 [json_name = "suiteFilter"];</code>
-     * @param value The suiteFilter to set.
-     * @return This builder for chaining.
-     */
-    public Builder setSuiteFilter(
-        java.lang.String value) {
-      if (value == null) { throw new NullPointerException(); }
-      suiteFilter_ = value;
       bitField0_ |= 0x00000008;
       onChanged();
       return this;
     }
     /**
-     * <code>string suite_filter = 4 [json_name = "suiteFilter"];</code>
-     * @return This builder for chaining.
+     * <code>.buf.validate.conformance.harness.ResultOptions options = 4 [json_name = "options"];</code>
      */
-    public Builder clearSuiteFilter() {
-      suiteFilter_ = getDefaultInstance().getSuiteFilter();
+    public Builder setOptions(
+        build.buf.validate.conformance.harness.ResultOptions.Builder builderForValue) {
+      if (optionsBuilder_ == null) {
+        options_ = builderForValue.build();
+      } else {
+        optionsBuilder_.setMessage(builderForValue.build());
+      }
+      bitField0_ |= 0x00000008;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>.buf.validate.conformance.harness.ResultOptions options = 4 [json_name = "options"];</code>
+     */
+    public Builder mergeOptions(build.buf.validate.conformance.harness.ResultOptions value) {
+      if (optionsBuilder_ == null) {
+        if (((bitField0_ & 0x00000008) != 0) &&
+          options_ != null &&
+          options_ != build.buf.validate.conformance.harness.ResultOptions.getDefaultInstance()) {
+          getOptionsBuilder().mergeFrom(value);
+        } else {
+          options_ = value;
+        }
+      } else {
+        optionsBuilder_.mergeFrom(value);
+      }
+      bitField0_ |= 0x00000008;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>.buf.validate.conformance.harness.ResultOptions options = 4 [json_name = "options"];</code>
+     */
+    public Builder clearOptions() {
       bitField0_ = (bitField0_ & ~0x00000008);
+      options_ = null;
+      if (optionsBuilder_ != null) {
+        optionsBuilder_.dispose();
+        optionsBuilder_ = null;
+      }
       onChanged();
       return this;
     }
     /**
-     * <code>string suite_filter = 4 [json_name = "suiteFilter"];</code>
-     * @param value The bytes for suiteFilter to set.
-     * @return This builder for chaining.
+     * <code>.buf.validate.conformance.harness.ResultOptions options = 4 [json_name = "options"];</code>
      */
-    public Builder setSuiteFilterBytes(
-        com.google.protobuf.ByteString value) {
-      if (value == null) { throw new NullPointerException(); }
-      checkByteStringIsUtf8(value);
-      suiteFilter_ = value;
+    public build.buf.validate.conformance.harness.ResultOptions.Builder getOptionsBuilder() {
       bitField0_ |= 0x00000008;
       onChanged();
-      return this;
+      return getOptionsFieldBuilder().getBuilder();
     }
-
-    private java.lang.Object caseFilter_ = "";
     /**
-     * <code>string case_filter = 5 [json_name = "caseFilter"];</code>
-     * @return The caseFilter.
+     * <code>.buf.validate.conformance.harness.ResultOptions options = 4 [json_name = "options"];</code>
      */
-    public java.lang.String getCaseFilter() {
-      java.lang.Object ref = caseFilter_;
-      if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs =
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        caseFilter_ = s;
-        return s;
+    public build.buf.validate.conformance.harness.ResultOptionsOrBuilder getOptionsOrBuilder() {
+      if (optionsBuilder_ != null) {
+        return optionsBuilder_.getMessageOrBuilder();
       } else {
-        return (java.lang.String) ref;
+        return options_ == null ?
+            build.buf.validate.conformance.harness.ResultOptions.getDefaultInstance() : options_;
       }
     }
     /**
-     * <code>string case_filter = 5 [json_name = "caseFilter"];</code>
-     * @return The bytes for caseFilter.
+     * <code>.buf.validate.conformance.harness.ResultOptions options = 4 [json_name = "options"];</code>
      */
-    public com.google.protobuf.ByteString
-        getCaseFilterBytes() {
-      java.lang.Object ref = caseFilter_;
-      if (ref instanceof String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        caseFilter_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
+    private com.google.protobuf.SingleFieldBuilderV3<
+        build.buf.validate.conformance.harness.ResultOptions, build.buf.validate.conformance.harness.ResultOptions.Builder, build.buf.validate.conformance.harness.ResultOptionsOrBuilder> 
+        getOptionsFieldBuilder() {
+      if (optionsBuilder_ == null) {
+        optionsBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+            build.buf.validate.conformance.harness.ResultOptions, build.buf.validate.conformance.harness.ResultOptions.Builder, build.buf.validate.conformance.harness.ResultOptionsOrBuilder>(
+                getOptions(),
+                getParentForChildren(),
+                isClean());
+        options_ = null;
       }
-    }
-    /**
-     * <code>string case_filter = 5 [json_name = "caseFilter"];</code>
-     * @param value The caseFilter to set.
-     * @return This builder for chaining.
-     */
-    public Builder setCaseFilter(
-        java.lang.String value) {
-      if (value == null) { throw new NullPointerException(); }
-      caseFilter_ = value;
-      bitField0_ |= 0x00000010;
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>string case_filter = 5 [json_name = "caseFilter"];</code>
-     * @return This builder for chaining.
-     */
-    public Builder clearCaseFilter() {
-      caseFilter_ = getDefaultInstance().getCaseFilter();
-      bitField0_ = (bitField0_ & ~0x00000010);
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>string case_filter = 5 [json_name = "caseFilter"];</code>
-     * @param value The bytes for caseFilter to set.
-     * @return This builder for chaining.
-     */
-    public Builder setCaseFilterBytes(
-        com.google.protobuf.ByteString value) {
-      if (value == null) { throw new NullPointerException(); }
-      checkByteStringIsUtf8(value);
-      caseFilter_ = value;
-      bitField0_ |= 0x00000010;
-      onChanged();
-      return this;
-    }
-
-    private boolean verbose_ ;
-    /**
-     * <code>bool verbose = 6 [json_name = "verbose"];</code>
-     * @return The verbose.
-     */
-    @java.lang.Override
-    public boolean getVerbose() {
-      return verbose_;
-    }
-    /**
-     * <code>bool verbose = 6 [json_name = "verbose"];</code>
-     * @param value The verbose to set.
-     * @return This builder for chaining.
-     */
-    public Builder setVerbose(boolean value) {
-
-      verbose_ = value;
-      bitField0_ |= 0x00000020;
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>bool verbose = 6 [json_name = "verbose"];</code>
-     * @return This builder for chaining.
-     */
-    public Builder clearVerbose() {
-      bitField0_ = (bitField0_ & ~0x00000020);
-      verbose_ = false;
-      onChanged();
-      return this;
-    }
-
-    private boolean strict_ ;
-    /**
-     * <code>bool strict = 7 [json_name = "strict"];</code>
-     * @return The strict.
-     */
-    @java.lang.Override
-    public boolean getStrict() {
-      return strict_;
-    }
-    /**
-     * <code>bool strict = 7 [json_name = "strict"];</code>
-     * @param value The strict to set.
-     * @return This builder for chaining.
-     */
-    public Builder setStrict(boolean value) {
-
-      strict_ = value;
-      bitField0_ |= 0x00000040;
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>bool strict = 7 [json_name = "strict"];</code>
-     * @return This builder for chaining.
-     */
-    public Builder clearStrict() {
-      bitField0_ = (bitField0_ & ~0x00000040);
-      strict_ = false;
-      onChanged();
-      return this;
+      return optionsBuilder_;
     }
     @java.lang.Override
     public final Builder setUnknownFields(

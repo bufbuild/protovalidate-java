@@ -54,4 +54,19 @@ public interface SuiteResultsOrBuilder extends
    */
   build.buf.validate.conformance.harness.CaseResultOrBuilder getCasesOrBuilder(
       int index);
+
+  /**
+   * <code>.google.protobuf.FileDescriptorSet fdset = 5 [json_name = "fdset"];</code>
+   * @return Whether the fdset field is set.
+   */
+  boolean hasFdset();
+  /**
+   * <code>.google.protobuf.FileDescriptorSet fdset = 5 [json_name = "fdset"];</code>
+   * @return The fdset.
+   */
+  com.google.protobuf.DescriptorProtos.FileDescriptorSet getFdset();
+  /**
+   * <code>.google.protobuf.FileDescriptorSet fdset = 5 [json_name = "fdset"];</code>
+   */
+  com.google.protobuf.DescriptorProtos.FileDescriptorSetOrBuilder getFdsetOrBuilder();
 }

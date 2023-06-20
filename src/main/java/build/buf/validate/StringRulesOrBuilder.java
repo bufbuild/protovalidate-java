@@ -69,7 +69,7 @@ public interface StringRulesOrBuilder extends
    *
    *```proto
    *message MyString {
-   *  // value must equal 5 runes
+   *  // value length must be 5 characters
    *   string value = 1 [(buf.validate.field).string.len = 5];
    *}
    *```
@@ -88,7 +88,7 @@ public interface StringRulesOrBuilder extends
    *
    *```proto
    *message MyString {
-   *  // value must equal 5 runes
+   *  // value length must be 5 characters
    *   string value = 1 [(buf.validate.field).string.len = 5];
    *}
    *```
@@ -108,7 +108,7 @@ public interface StringRulesOrBuilder extends
    *
    *```proto
    *message MyString {
-   *  // value length must be at least 3 runes
+   *  // value length must be at least 3 characters
    *   string value = 1 [(buf.validate.field).string.min_len = 3];
    *}
    *```
@@ -127,7 +127,7 @@ public interface StringRulesOrBuilder extends
    *
    *```proto
    *message MyString {
-   *  // value length must be at least 3 runes
+   *  // value length must be at least 3 characters
    *   string value = 1 [(buf.validate.field).string.min_len = 3];
    *}
    *```
@@ -147,7 +147,7 @@ public interface StringRulesOrBuilder extends
    *
    *```proto
    *message MyString {
-   *  // value length must be at most 10 runes
+   *  // value length must be at most 10 characters
    *   string value = 1 [(buf.validate.field).string.max_len = 10];
    *}
    *```
@@ -166,7 +166,7 @@ public interface StringRulesOrBuilder extends
    *
    *```proto
    *message MyString {
-   *  // value length must be at most 10 runes
+   *  // value length must be at most 10 characters
    *   string value = 1 [(buf.validate.field).string.max_len = 10];
    *}
    *```

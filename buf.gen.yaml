@@ -3,8 +3,6 @@ managed:
   enabled: true
   java_package_prefix:
     default: build
-    except:
-      - buf.build/envoyproxy/protoc-gen-validate
 plugins:
-  - plugin: buf.build/protocolbuffers/java
-    out: src/main/java
+  - plugin: buf.build/protocolbuffers/java:v23.3
+    out: .

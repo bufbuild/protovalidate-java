@@ -85,7 +85,7 @@ public interface BytesRulesOrBuilder extends
    *
    *```proto
    *message MyBytes {
-   * // value must be at least 2 bytes.
+   * // value length must be at least 2 bytes.
    * optional bytes value = 1 [(buf.validate.field).bytes.min_len = 2];
    *}
    *```
@@ -103,7 +103,7 @@ public interface BytesRulesOrBuilder extends
    *
    *```proto
    *message MyBytes {
-   * // value must be at least 2 bytes.
+   * // value length must be at least 2 bytes.
    * optional bytes value = 1 [(buf.validate.field).bytes.min_len = 2];
    *}
    *```
@@ -161,7 +161,7 @@ public interface BytesRulesOrBuilder extends
    *
    *```proto
    *message MyBytes {
-   * // value must match pattern "^[a-zA-Z0-9]+$".
+   * // value must match regex pattern "^[a-zA-Z0-9]+$".
    * optional bytes value = 1 [(buf.validate.field).bytes.pattern = "^[a-zA-Z0-9]+$"];
    *}
    *```
@@ -181,7 +181,7 @@ public interface BytesRulesOrBuilder extends
    *
    *```proto
    *message MyBytes {
-   * // value must match pattern "^[a-zA-Z0-9]+$".
+   * // value must match regex pattern "^[a-zA-Z0-9]+$".
    * optional bytes value = 1 [(buf.validate.field).bytes.pattern = "^[a-zA-Z0-9]+$"];
    *}
    *```
@@ -201,7 +201,7 @@ public interface BytesRulesOrBuilder extends
    *
    *```proto
    *message MyBytes {
-   * // value must match pattern "^[a-zA-Z0-9]+$".
+   * // value must match regex pattern "^[a-zA-Z0-9]+$".
    * optional bytes value = 1 [(buf.validate.field).bytes.pattern = "^[a-zA-Z0-9]+$"];
    *}
    *```

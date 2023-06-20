@@ -26,6 +26,8 @@ jobs:
           cache: 'gradle'
       - name: Lint
         run: make lint-java
+      - name: Generate
+        run: make checkgenerate
       - name: Build
         run: make build
       - name: Execute tests

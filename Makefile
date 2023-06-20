@@ -63,9 +63,9 @@ generate: generate-proto generate-license ## Regenerate code and license headers
 
 .PHONY: generate-proto
 generate-proto: $(BIN)/buf
-	#$(BIN)/buf generate
-	$(BIN)/buf generate buf.build/bufbuild/protovalidate-testing
-	$(BIN)/buf generate buf.build/bufbuild/protovalidate
+	$(BIN)/buf generate --output src/test/java proto
+	$(BIN)/buf generate --output src/main/java buf.build/bufbuild/protovalidate-testing
+	$(BIN)/buf generate --output src/main/java buf.build/bufbuild/protovalidate
 
 .PHONY: generate-license
 generate-license: $(BIN)/license-header

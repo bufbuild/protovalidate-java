@@ -142,6 +142,32 @@ private static final long serialVersionUID = 0L;
     return cases_.get(index);
   }
 
+  public static final int FDSET_FIELD_NUMBER = 5;
+  private com.google.protobuf.DescriptorProtos.FileDescriptorSet fdset_;
+  /**
+   * <code>.google.protobuf.FileDescriptorSet fdset = 5 [json_name = "fdset"];</code>
+   * @return Whether the fdset field is set.
+   */
+  @java.lang.Override
+  public boolean hasFdset() {
+    return fdset_ != null;
+  }
+  /**
+   * <code>.google.protobuf.FileDescriptorSet fdset = 5 [json_name = "fdset"];</code>
+   * @return The fdset.
+   */
+  @java.lang.Override
+  public com.google.protobuf.DescriptorProtos.FileDescriptorSet getFdset() {
+    return fdset_ == null ? com.google.protobuf.DescriptorProtos.FileDescriptorSet.getDefaultInstance() : fdset_;
+  }
+  /**
+   * <code>.google.protobuf.FileDescriptorSet fdset = 5 [json_name = "fdset"];</code>
+   */
+  @java.lang.Override
+  public com.google.protobuf.DescriptorProtos.FileDescriptorSetOrBuilder getFdsetOrBuilder() {
+    return fdset_ == null ? com.google.protobuf.DescriptorProtos.FileDescriptorSet.getDefaultInstance() : fdset_;
+  }
+
   private byte memoizedIsInitialized = -1;
   @java.lang.Override
   public final boolean isInitialized() {
@@ -149,6 +175,12 @@ private static final long serialVersionUID = 0L;
     if (isInitialized == 1) return true;
     if (isInitialized == 0) return false;
 
+    if (hasFdset()) {
+      if (!getFdset().isInitialized()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+    }
     memoizedIsInitialized = 1;
     return true;
   }
@@ -167,6 +199,9 @@ private static final long serialVersionUID = 0L;
     }
     for (int i = 0; i < cases_.size(); i++) {
       output.writeMessage(4, cases_.get(i));
+    }
+    if (fdset_ != null) {
+      output.writeMessage(5, getFdset());
     }
     getUnknownFields().writeTo(output);
   }
@@ -192,6 +227,10 @@ private static final long serialVersionUID = 0L;
       size += com.google.protobuf.CodedOutputStream
         .computeMessageSize(4, cases_.get(i));
     }
+    if (fdset_ != null) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeMessageSize(5, getFdset());
+    }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
     return size;
@@ -215,6 +254,11 @@ private static final long serialVersionUID = 0L;
         != other.getFailures()) return false;
     if (!getCasesList()
         .equals(other.getCasesList())) return false;
+    if (hasFdset() != other.hasFdset()) return false;
+    if (hasFdset()) {
+      if (!getFdset()
+          .equals(other.getFdset())) return false;
+    }
     if (!getUnknownFields().equals(other.getUnknownFields())) return false;
     return true;
   }
@@ -235,6 +279,10 @@ private static final long serialVersionUID = 0L;
     if (getCasesCount() > 0) {
       hash = (37 * hash) + CASES_FIELD_NUMBER;
       hash = (53 * hash) + getCasesList().hashCode();
+    }
+    if (hasFdset()) {
+      hash = (37 * hash) + FDSET_FIELD_NUMBER;
+      hash = (53 * hash) + getFdset().hashCode();
     }
     hash = (29 * hash) + getUnknownFields().hashCode();
     memoizedHashCode = hash;
@@ -377,6 +425,11 @@ private static final long serialVersionUID = 0L;
         casesBuilder_.clear();
       }
       bitField0_ = (bitField0_ & ~0x00000008);
+      fdset_ = null;
+      if (fdsetBuilder_ != null) {
+        fdsetBuilder_.dispose();
+        fdsetBuilder_ = null;
+      }
       return this;
     }
 
@@ -431,6 +484,11 @@ private static final long serialVersionUID = 0L;
       }
       if (((from_bitField0_ & 0x00000004) != 0)) {
         result.failures_ = failures_;
+      }
+      if (((from_bitField0_ & 0x00000010) != 0)) {
+        result.fdset_ = fdsetBuilder_ == null
+            ? fdset_
+            : fdsetBuilder_.build();
       }
     }
 
@@ -515,6 +573,9 @@ private static final long serialVersionUID = 0L;
           }
         }
       }
+      if (other.hasFdset()) {
+        mergeFdset(other.getFdset());
+      }
       this.mergeUnknownFields(other.getUnknownFields());
       onChanged();
       return this;
@@ -522,6 +583,11 @@ private static final long serialVersionUID = 0L;
 
     @java.lang.Override
     public final boolean isInitialized() {
+      if (hasFdset()) {
+        if (!getFdset().isInitialized()) {
+          return false;
+        }
+      }
       return true;
     }
 
@@ -569,6 +635,13 @@ private static final long serialVersionUID = 0L;
               }
               break;
             } // case 34
+            case 42: {
+              input.readMessage(
+                  getFdsetFieldBuilder().getBuilder(),
+                  extensionRegistry);
+              bitField0_ |= 0x00000010;
+              break;
+            } // case 42
             default: {
               if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                 done = true; // was an endgroup tag
@@ -960,6 +1033,125 @@ private static final long serialVersionUID = 0L;
         cases_ = null;
       }
       return casesBuilder_;
+    }
+
+    private com.google.protobuf.DescriptorProtos.FileDescriptorSet fdset_;
+    private com.google.protobuf.SingleFieldBuilderV3<
+        com.google.protobuf.DescriptorProtos.FileDescriptorSet, com.google.protobuf.DescriptorProtos.FileDescriptorSet.Builder, com.google.protobuf.DescriptorProtos.FileDescriptorSetOrBuilder> fdsetBuilder_;
+    /**
+     * <code>.google.protobuf.FileDescriptorSet fdset = 5 [json_name = "fdset"];</code>
+     * @return Whether the fdset field is set.
+     */
+    public boolean hasFdset() {
+      return ((bitField0_ & 0x00000010) != 0);
+    }
+    /**
+     * <code>.google.protobuf.FileDescriptorSet fdset = 5 [json_name = "fdset"];</code>
+     * @return The fdset.
+     */
+    public com.google.protobuf.DescriptorProtos.FileDescriptorSet getFdset() {
+      if (fdsetBuilder_ == null) {
+        return fdset_ == null ? com.google.protobuf.DescriptorProtos.FileDescriptorSet.getDefaultInstance() : fdset_;
+      } else {
+        return fdsetBuilder_.getMessage();
+      }
+    }
+    /**
+     * <code>.google.protobuf.FileDescriptorSet fdset = 5 [json_name = "fdset"];</code>
+     */
+    public Builder setFdset(com.google.protobuf.DescriptorProtos.FileDescriptorSet value) {
+      if (fdsetBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        fdset_ = value;
+      } else {
+        fdsetBuilder_.setMessage(value);
+      }
+      bitField0_ |= 0x00000010;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>.google.protobuf.FileDescriptorSet fdset = 5 [json_name = "fdset"];</code>
+     */
+    public Builder setFdset(
+        com.google.protobuf.DescriptorProtos.FileDescriptorSet.Builder builderForValue) {
+      if (fdsetBuilder_ == null) {
+        fdset_ = builderForValue.build();
+      } else {
+        fdsetBuilder_.setMessage(builderForValue.build());
+      }
+      bitField0_ |= 0x00000010;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>.google.protobuf.FileDescriptorSet fdset = 5 [json_name = "fdset"];</code>
+     */
+    public Builder mergeFdset(com.google.protobuf.DescriptorProtos.FileDescriptorSet value) {
+      if (fdsetBuilder_ == null) {
+        if (((bitField0_ & 0x00000010) != 0) &&
+          fdset_ != null &&
+          fdset_ != com.google.protobuf.DescriptorProtos.FileDescriptorSet.getDefaultInstance()) {
+          getFdsetBuilder().mergeFrom(value);
+        } else {
+          fdset_ = value;
+        }
+      } else {
+        fdsetBuilder_.mergeFrom(value);
+      }
+      bitField0_ |= 0x00000010;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>.google.protobuf.FileDescriptorSet fdset = 5 [json_name = "fdset"];</code>
+     */
+    public Builder clearFdset() {
+      bitField0_ = (bitField0_ & ~0x00000010);
+      fdset_ = null;
+      if (fdsetBuilder_ != null) {
+        fdsetBuilder_.dispose();
+        fdsetBuilder_ = null;
+      }
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>.google.protobuf.FileDescriptorSet fdset = 5 [json_name = "fdset"];</code>
+     */
+    public com.google.protobuf.DescriptorProtos.FileDescriptorSet.Builder getFdsetBuilder() {
+      bitField0_ |= 0x00000010;
+      onChanged();
+      return getFdsetFieldBuilder().getBuilder();
+    }
+    /**
+     * <code>.google.protobuf.FileDescriptorSet fdset = 5 [json_name = "fdset"];</code>
+     */
+    public com.google.protobuf.DescriptorProtos.FileDescriptorSetOrBuilder getFdsetOrBuilder() {
+      if (fdsetBuilder_ != null) {
+        return fdsetBuilder_.getMessageOrBuilder();
+      } else {
+        return fdset_ == null ?
+            com.google.protobuf.DescriptorProtos.FileDescriptorSet.getDefaultInstance() : fdset_;
+      }
+    }
+    /**
+     * <code>.google.protobuf.FileDescriptorSet fdset = 5 [json_name = "fdset"];</code>
+     */
+    private com.google.protobuf.SingleFieldBuilderV3<
+        com.google.protobuf.DescriptorProtos.FileDescriptorSet, com.google.protobuf.DescriptorProtos.FileDescriptorSet.Builder, com.google.protobuf.DescriptorProtos.FileDescriptorSetOrBuilder> 
+        getFdsetFieldBuilder() {
+      if (fdsetBuilder_ == null) {
+        fdsetBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+            com.google.protobuf.DescriptorProtos.FileDescriptorSet, com.google.protobuf.DescriptorProtos.FileDescriptorSet.Builder, com.google.protobuf.DescriptorProtos.FileDescriptorSetOrBuilder>(
+                getFdset(),
+                getParentForChildren(),
+                isClean());
+        fdset_ = null;
+      }
+      return fdsetBuilder_;
     }
     @java.lang.Override
     public final Builder setUnknownFields(
