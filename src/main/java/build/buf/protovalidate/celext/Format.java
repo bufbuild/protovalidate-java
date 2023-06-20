@@ -35,10 +35,12 @@ import java.util.Locale;
 
 import static org.projectnessie.cel.common.types.IntT.intOf;
 
-public class Format {
+public final class Format {
     private static final char[] HEX_ARRAY = "0123456789ABCDEF".toCharArray();
 
-    public Val format(String fmtString, ListT list) {
+    private Format() {}
+
+    public static Val format(String fmtString, ListT list) {
         StringBuilder builder = new StringBuilder();
         int index = 0;
         int argIndex = 0;
@@ -126,7 +128,7 @@ public class Format {
         return new String(hexChars);
     }
 
-    private Val formatString(StringBuilder builder, Val val) {
+    private static Val formatString(StringBuilder builder, Val val) {
         if (val.type() == StringT.StringType) {
             builder.append(val.value());
         } else if (val.type() == BytesT.BytesType) {
@@ -137,15 +139,14 @@ public class Format {
         return Err.newErr("unimplemented");
     }
 
-    private Val formatStringSafe(StringBuilder builder, Val val) {
+    private static Val formatStringSafe(StringBuilder builder, Val val) {
         Type type = val.type();
         if (type == BoolT.BoolType) {
             builder.append(val.booleanValue());
         } else if (type == IntT.IntType) {
-
-            formatInteger(builder, new Long(val.intValue()).intValue(), 10);
+            formatInteger(builder, Long.valueOf(val.intValue()).intValue(), 10);
         } else if (type == UintT.UintType) {
-            formatUnsigned(builder, new Long(val.intValue()).byteValue(), 10);
+            formatUnsigned(builder, Long.valueOf(val.intValue()).byteValue(), 10);
         } else if (type == DoubleT.DoubleType) {
             builder.append(type.value());
         } else if (type == StringT.StringType) {
@@ -170,7 +171,7 @@ public class Format {
         return val;
     }
 
-    private void formatInteger(StringBuilder builder, int value, int base) {
+    private static void formatInteger(StringBuilder builder, int value, int base) {
         if (value < 0) {
             builder.append("-");
             value = -value;
@@ -178,7 +179,7 @@ public class Format {
         formatUnsigned(builder, (byte) value, base);
     }
 
-    private Val formatHex(StringBuilder builder, Val val, boolean lowerCase) {
+    private static Val formatHex(StringBuilder builder, Val val, boolean lowerCase) {
         String hexString;
         if (val.type() == IntT.IntType || val.type() == UintT.UintType) {
             hexString = Long.toHexString(val.intValue());
@@ -199,10 +200,10 @@ public class Format {
         return NullT.NullType;
     }
 
-    private void formatHexString(StringBuilder builder, String value) {
+    private static void formatHexString(StringBuilder builder, String value) {
         byte[] bytes = value.getBytes(StandardCharsets.UTF_8);
         // Convert each byte to its hexadecimal representation
-        StringBuilder sb = new StringBuilder();
+        StringBuilder sb = new StringBuilder(bytes.length * 2);
         for (byte b : bytes) {
             // Convert the byte to an unsigned integer and format it as a two-digit hexadecimal
             String hex = String.format("%02x", b & 0xFF);
@@ -212,7 +213,7 @@ public class Format {
         builder.append(sb);
     }
 
-    private void formatUnsigned(StringBuilder builder, byte value, int base) {
+    private static void formatUnsigned(StringBuilder builder, byte value, int base) {
         if (value == 0) {
             builder.append("0");
             return;
@@ -226,23 +227,23 @@ public class Format {
         builder.append(Arrays.copyOfRange(buf, index - 1, buf.length - 1));
     }
 
-    private Val formatDecimal(StringBuilder builder, Val arg) {
+    private static Val formatDecimal(StringBuilder builder, Val arg) {
         return Err.newErr("unimplemented");
     }
 
-    private Val formatOctal(StringBuilder builder, Val arg) {
+    private static Val formatOctal(StringBuilder builder, Val arg) {
         return Err.newErr("unimplemented");
     }
 
-    private Val formatBinary(StringBuilder builder, Val arg) {
+    private static Val formatBinary(StringBuilder builder, Val arg) {
         return Err.newErr("unimplemented");
     }
 
-    private Val formatFloating(StringBuilder builder, Val arg, int precision) {
+    private static Val formatFloating(StringBuilder builder, Val arg, int precision) {
         return Err.newErr("unimplemented");
     }
 
-    private Val formatExponent(StringBuilder builder, Val arg, int precision) {
+    private static Val formatExponent(StringBuilder builder, Val arg, int precision) {
         return Err.newErr("unimplemented");
     }
 }

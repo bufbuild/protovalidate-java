@@ -16,6 +16,7 @@ package build.buf.protovalidate.celext;
 
 import build.buf.protovalidate.expression.NowVariable;
 import com.google.api.expr.v1alpha1.Decl;
+import com.google.common.net.InetAddresses;
 import org.projectnessie.cel.EnvOption;
 import org.projectnessie.cel.EvalOption;
 import org.projectnessie.cel.Library;
@@ -46,7 +47,6 @@ import static org.projectnessie.cel.interpreter.functions.Overload.unary;
 
 public class Lib implements Library {
     private boolean useUtc;
-    private Format format = new Format();
 
     public Lib(boolean useUtc) {
         // TODO: Implement me
@@ -173,7 +173,7 @@ public class Lib implements Library {
                             }
                             ListT list = (ListT) rhs.convertToType(ListT.ListType);
                             String formatString = lhs.value().toString();
-                            Val status = format.format(formatString, list);
+                            Val status = Format.format(formatString, list);
                             if (status.type() == Err.ErrType) {
                                 return status;
                             }
@@ -376,7 +376,7 @@ public class Lib implements Library {
     private boolean validateIP(String addr, long ver) {
         InetAddress address;
         try {
-            address = InetAddress.getByName(addr);
+            address = InetAddresses.forString(addr);
         } catch (Exception e) {
             return false;
         }

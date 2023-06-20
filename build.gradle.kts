@@ -18,6 +18,7 @@ dependencies {
     implementation(enforcedPlatform("org.projectnessie.cel:cel-bom:0.3.17"))
     implementation("org.projectnessie.cel:cel-tools")
     implementation("javax.mail:mail:1.4.7")
+    implementation(libs.guava)
 
     testImplementation(libs.junit)
     testImplementation(libs.assertj)

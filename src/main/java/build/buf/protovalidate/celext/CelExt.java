@@ -17,8 +17,10 @@ package build.buf.protovalidate.celext;
 
 import org.projectnessie.cel.Env;
 import org.projectnessie.cel.Library;
+import org.projectnessie.cel.common.CELError;
 
-public class CelExt {
+public final class CelExt {
+    private CelExt() {}
     public static Env defaultCelRuntime(boolean useUtc) {
         return Env.newEnv(Library.Lib(new Lib(useUtc)));
     }
