@@ -71,4 +71,12 @@ public class SimpleTest {
         ValidationResult validate = validator.validate(invalid);
         assertThat(validate.isSuccess()).isTrue();
     }
+
+    @Test
+    public void boolconsttrue() throws CompilationError {
+        BoolConstTrue invalid = BoolConstTrue.newBuilder().build();
+        ValidationResult validate = validator.validate(invalid);
+        assertThat(validate.error().violations).hasSize(1);
+        assertThat(validate.isFailure()).isTrue();
+    }
 }

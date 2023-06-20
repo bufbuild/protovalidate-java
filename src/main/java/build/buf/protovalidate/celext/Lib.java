@@ -42,7 +42,6 @@ import java.util.Set;
 
 import static org.projectnessie.cel.common.types.IntT.intOf;
 import static org.projectnessie.cel.interpreter.functions.Overload.binary;
-import static org.projectnessie.cel.interpreter.functions.Overload.function;
 import static org.projectnessie.cel.interpreter.functions.Overload.overload;
 import static org.projectnessie.cel.interpreter.functions.Overload.unary;
 
@@ -62,7 +61,7 @@ public class Lib implements Library {
         ));
         List<Decl.FunctionDecl.Overload> formatOverloads = new ArrayList<>();
         // TODO: Iterate exhaustively
-        for (com.google.api.expr.v1alpha1.Type type : Arrays.asList(Decls.String, Decls.Int, Decls.Uint, Decls.Double, Decls.Bytes)) {
+        for (com.google.api.expr.v1alpha1.Type type : Arrays.asList(Decls.String, Decls.Int, Decls.Uint, Decls.Double, Decls.Bytes, Decls.Bool)) {
             formatOverloads.add(Decls.newInstanceOverload(
                     String.format("format_%s", org.projectnessie.cel.checker.Types.formatCheckedType(type).toLowerCase(Locale.US)),
                     Arrays.asList(Decls.String, Decls.newListType(type)),
