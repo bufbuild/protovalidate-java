@@ -18,6 +18,7 @@ import build.buf.protovalidate.Config;
 import build.buf.protovalidate.errors.ValidationError;
 import build.buf.protovalidate.Validator;
 import build.buf.validate.ValidateProto;
+import build.buf.validate.Violation;
 import build.buf.validate.conformance.cases.custom_constraints.MessageExpressions;
 import build.buf.validate.conformance.harness.TestConformanceRequest;
 import build.buf.validate.conformance.harness.TestConformanceResponse;
@@ -28,6 +29,7 @@ import com.google.protobuf.DynamicMessage;
 import com.google.protobuf.Descriptors;
 import com.google.protobuf.ExtensionRegistry;
 
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -65,21 +67,21 @@ public class Main {
     }
 
     public static TestResult testCase(Validator validator, Map<String, Descriptors.Descriptor> fileDescriptors, Any testCase) {
+        String[] urlParts = testCase.getTypeUrl().split("/");
+        String fullName = urlParts[urlParts.length - 1];
+        Descriptors.Descriptor descriptor = fileDescriptors.get(fullName);
+        if (descriptor == null) {
+            return unexpectedErrorResult("Unable to find descriptor: " + fullName);
+        }
+        // run test case:
+        ByteString testCaseValue = testCase.getValue();
         try {
-            String[] urlParts = testCase.getTypeUrl().split("/");
-            String fullName = urlParts[urlParts.length - 1];
-            Descriptors.Descriptor descriptor = fileDescriptors.get(fullName);
-            if (descriptor == null) {
-                return unexpectedErrorResult("Unable to find descriptor: " + fullName);
-            }
             try {
-                Descriptors.Descriptor msgeDescriptor = MessageExpressions.getDescriptor();
-                // run test case:
-                ByteString value = testCase.getValue();
-                DynamicMessage build = DynamicMessage.newBuilder(descriptor)
-                        .mergeFrom(value)
+
+                DynamicMessage dynamicMessage = DynamicMessage.newBuilder(descriptor)
+                        .mergeFrom(testCaseValue)
                         .build();
-                boolean result = validator.validateOrThrow(build);
+                boolean result = validator.validateOrThrow(dynamicMessage);
                 return TestResult.newBuilder()
                         .setSuccess(result)
                         .build();
@@ -89,7 +91,7 @@ public class Main {
                         .build();
             }
         } catch (Exception e) {
-            throw new RuntimeException(e);
+            throw new RuntimeException(fullName, e);
         }
     }
 

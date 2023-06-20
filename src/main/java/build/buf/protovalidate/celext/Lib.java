@@ -46,6 +46,7 @@ import static org.projectnessie.cel.interpreter.functions.Overload.unary;
 
 public class Lib implements Library {
     private boolean useUtc;
+    private Format format = new Format();
 
     public Lib(boolean useUtc) {
         // TODO: Implement me
@@ -71,9 +72,19 @@ public class Lib implements Library {
                     Arrays.asList(Decls.String, Decls.newListType(Decls.newListType(type))),
                     Decls.String
             ));
+            formatOverloads.add(Decls.newInstanceOverload(
+                    String.format("format_bytes_%s", org.projectnessie.cel.checker.Types.formatCheckedType(type).toLowerCase(Locale.US)),
+                    Arrays.asList(Decls.Bytes, Decls.newListType(type)),
+                    Decls.Bytes
+            ));
+            formatOverloads.add(Decls.newInstanceOverload(
+                    String.format("format_bytes_list_%s", org.projectnessie.cel.checker.Types.formatCheckedType(type).toLowerCase(Locale.US)),
+                    Arrays.asList(Decls.Bytes, Decls.newListType(Decls.newListType(type))),
+                    Decls.Bytes
+            ));
         }
         Decl formatFunction = Decls.newFunction("format",
-               formatOverloads
+                formatOverloads
         );
         opts.addAll(
                 Arrays.asList(
@@ -121,7 +132,21 @@ public class Lib implements Library {
                                 ),
                                 Decls.newFunction("startsWith",
                                         Decls.newInstanceOverload(
-                                                "starts_with_byts",
+                                                "starts_with_bytes",
+                                                Arrays.asList(Decls.Bytes, Decls.Bytes),
+                                                Decls.Bool
+                                        )
+                                ),
+                                Decls.newFunction("endsWith",
+                                        Decls.newInstanceOverload(
+                                                "ends_with_bytes",
+                                                Arrays.asList(Decls.Bytes, Decls.Bytes),
+                                                Decls.Bool
+                                        )
+                                ),
+                                Decls.newFunction("contains",
+                                        Decls.newInstanceOverload(
+                                                "contains_bytes",
                                                 Arrays.asList(Decls.Bytes, Decls.Bytes),
                                                 Decls.Bool
                                         )
@@ -143,13 +168,59 @@ public class Lib implements Library {
         ProgramOption functions =
                 ProgramOption.functions(
                         binary("format", (lhs, rhs) -> {
-                            String format = String.format(Locale.US, lhs.toString(), (Object[]) rhs.value());
-                            return StringT.stringOf(format);
+                            if (rhs.type() != ListT.ListType) {
+                                return Err.newErr("format: expected list");
+                            }
+                            ListT list = (ListT) rhs.convertToType(ListT.ListType);
+                            String formatString = lhs.value().toString();
+                            Val status = format.format(formatString, list);
+                            if (status.type() == Err.ErrType) {
+                                return status;
+                            }
+                            return StringT.stringOf(status.value().toString());
                         }),
                         unary("unique", uniqueMemberOverload(BytesT.BytesType, this::uniqueBytes)),
                         binary("startsWith", (lhs, rhs) -> {
-                            String str = lhs.value().toString();
-                            return str.startsWith(rhs.value().toString()) ? BoolT.True : BoolT.False;
+                            byte[] receiver = (byte[]) lhs.value();
+                            byte[] param = (byte[]) rhs.value();
+                            for (int i = 0; i < param.length; i++) {
+                                if (param[i] != receiver[i]) {
+                                    return BoolT.False;
+                                }
+                            }
+                            return BoolT.True;
+                        }),
+                        binary("endsWith", (lhs, rhs) -> {
+                            byte[] receiver = (byte[]) lhs.value();
+                            byte[] param = (byte[]) rhs.value();
+                            for (int i = 0; i < param.length; i++) {
+                                if (param[param.length - i - 1] != receiver[receiver.length - i - 1]) {
+                                    return BoolT.False;
+                                }
+                            }
+                            return BoolT.True;
+                        }),
+                        binary("contains", (lhs, rhs) -> {
+                            byte[] receiver = (byte[]) lhs.value();
+                            byte[] param = (byte[]) rhs.value();
+                            if (param.length == 0) {
+                                return BoolT.True; // An empty param is always considered contained
+                            }
+                            for (int i = 0; i <= receiver.length - param.length; i++) {
+                                if (receiver[i] == param[0]) {
+                                    boolean match = true;
+                                    for (int j = 1; j < param.length; j++) {
+                                        if (receiver[i + j] != param[j]) {
+                                            match = false;
+                                            break;
+                                        }
+                                    }
+                                    if (match) {
+                                        return BoolT.True; // Found a match for param
+                                    }
+                                }
+                            }
+                            return BoolT.False; // param not found in mainArray
                         }),
                         unary("isHostname", value -> {
                             String host = value.value().toString();
@@ -218,7 +289,7 @@ public class Lib implements Library {
         return value -> {
             Lister list = (Lister) value;
             if (list == null) {
-                return Err.unsupportedRefValConversionErr(value);
+                return Err.unsupportedRefValConversionErr(list);
             }
             if (list.type() != itemType.type()) {
                 return Err.newTypeConversionError(list.type(), itemType.type());

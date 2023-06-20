@@ -106,6 +106,7 @@ public class Compiler {
         }
         Ast ast = astIssuesTuple.getAst();
         Type outType = ast.getResultType();
+        // TODO: This is false always. Comparing incompatible types.
         if (outType.equals(Type.PrimitiveType.BOOL) || outType.equals(Type.PrimitiveType.STRING)) {
             throw newCompilationError(
                     "expression outputs, wanted either bool or string", expr.id, outType.toString());

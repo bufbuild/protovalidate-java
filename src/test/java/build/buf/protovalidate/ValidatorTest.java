@@ -19,10 +19,13 @@ import build.buf.validate.conformance.cases.custom_constraints.MessageExpression
 import build.buf.validate.conformance.cases.custom_constraints.MissingField;
 import build.buf.validate.conformance.cases.custom_constraints.NowEqualsNow;
 import build.buf.validate.java.Simple;
+import com.google.protobuf.ByteString;
 import com.google.protobuf.DynamicMessage;
 import com.google.protobuf.InvalidProtocolBufferException;
 import org.junit.Before;
 import org.junit.Test;
+
+import java.nio.charset.StandardCharsets;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -133,10 +136,12 @@ public class ValidatorTest {
 //    }
 //    @Test
 //    public void strlen() {
-//        StringLen invalid = StringLen.newBuilder().setVal("😅😄👾").build();
+//        byte[] bytes = new byte[1];
+//        bytes[0] = (byte) 0x99;
+//        StringPrefix invalid = StringPrefix.newBuilder().setVal("foobar").build();
 //        ValidationResult validate = validator.validate(invalid);
+////        assertThat(validate.error().violations).isNotEmpty();
+////        assertThat(validate.isFailure()).isTrue();
 //        assertThat(validate.isSuccess()).isTrue();
 //    }
 }
-
-

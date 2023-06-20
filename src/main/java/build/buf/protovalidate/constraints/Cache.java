@@ -102,8 +102,9 @@ public class Cache {
                         getCELType(fieldDescriptor.getMessageType().findFieldByNumber(2), true)
                 );
             } else if (fieldDescriptor.isRepeated()) {
-                // TODO: find correct return type
-                return null;
+                return Decls.newListType(
+                        getCELType(fieldDescriptor, true)
+                );
             }
         }
 
