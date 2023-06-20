@@ -89,7 +89,8 @@ public class Cache {
         }
         build.buf.validate.priv.FieldConstraints constraints = constraintFieldDesc.getOptions().getExtension(PrivateProto.field);
         AstSet astSet = Compiler.compileASTs(constraints.getCelList(), env);
-        return cache.putIfAbsent(constraintFieldDesc, astSet);
+        cache.put(constraintFieldDesc, astSet);
+        return astSet;
     }
 
     private FieldDescriptor getExpectedConstraintDescriptor(FieldDescriptor fieldDescriptor, Boolean forItems) {
