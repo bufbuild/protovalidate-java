@@ -17,6 +17,9 @@ package build.buf.protovalidate.evaluator;
 import com.google.protobuf.Descriptors;
 import org.projectnessie.cel.common.ULong;
 
+import java.util.List;
+import java.util.Map;
+
 public class JavaValue {
     private final Descriptors.FieldDescriptor fieldDescriptor;
     private final Object value;
@@ -28,10 +31,14 @@ public class JavaValue {
 
     public <T> T value() {
         if (fieldDescriptor.isRepeated()) {
-            // TODO
+            // Handle repeated field
+            List<?> list = (List<?>) value;
+            return (T) list;
         }
         if (fieldDescriptor.isMapField()) {
-            // TODO:
+            // Handle map field
+            Map<?, ?> map = (Map<?, ?>) value;
+            return (T) map;
         }
         Descriptors.FieldDescriptor.Type type = fieldDescriptor.getType();
         if (type == Descriptors.FieldDescriptor.Type.UINT32
