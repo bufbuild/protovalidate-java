@@ -18,6 +18,7 @@ import build.buf.protovalidate.ValidationResult;
 import build.buf.protovalidate.errors.ValidationError;
 import build.buf.validate.Violation;
 import com.google.protobuf.Descriptors;
+import com.google.protobuf.Message;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -47,16 +48,8 @@ public class Any implements Evaluator {
     @Override
     public ValidationResult evaluate(JavaValue val, boolean failFast) {
         ValidationError validationError = new ValidationError();
-        Object o = val.value();
-        if (!(o instanceof String)) {
-            validationError.addViolation(Violation.newBuilder()
-                            .setConstraintId("any.in")
-                            .setMessage("todo: instance is not of string. ")
-                    .build());
-            return new ValidationResult(validationError);
-        }
-        // TODO: Verify that the type url is passed as value.
-        String typeURL = val.value();
+        Message o = val.value();
+        String typeURL = (String) o.getField(typeURLDescriptor);
         if (in != null && in.size() > 0) {
             if (!in.containsKey(typeURL)) {
                 Violation.Builder violation = Violation.newBuilder();
