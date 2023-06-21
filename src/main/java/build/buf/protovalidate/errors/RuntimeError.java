@@ -36,7 +36,8 @@ public class RuntimeError extends Exception {
         return this.cause;
     }
 
-    public String toProto() {
-        return cause.getCause().toString();
+    @Override
+    public String getMessage() {
+        return cause.getCause().getMessage();
     }
 }

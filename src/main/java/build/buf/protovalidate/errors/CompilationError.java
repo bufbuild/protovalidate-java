@@ -23,10 +23,6 @@ public class CompilationError extends Exception {
         this.e = e;
     }
 
-    public static CompilationError newCompilationError(Exception cause) {
-        return new CompilationError(cause);
-    }
-
     public static CompilationError newCompilationError(String format, Object... args) {
         return new CompilationError(new Exception(String.format(format, args)));
     }
@@ -36,7 +32,8 @@ public class CompilationError extends Exception {
         return e;
     }
 
-    public String toProto() {
+    @Override
+    public String getMessage() {
         return e.toString();
     }
 }

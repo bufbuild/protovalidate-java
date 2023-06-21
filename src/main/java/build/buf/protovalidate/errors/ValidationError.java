@@ -56,7 +56,7 @@ public class ValidationError extends RuntimeException {
         return bldr.toString();
     }
 
-    public Violations toProto() {
+    public Violations asViolations() {
         return Violations.newBuilder()
                 .addAllViolations(violations)
                 .build();

@@ -75,33 +75,23 @@ public class Main {
         // run test case:
         ByteString testCaseValue = testCase.getValue();
         try {
-            try {
-                DynamicMessage dynamicMessage = DynamicMessage.newBuilder(descriptor)
-                        .mergeFrom(testCaseValue)
-                        .build();
-                boolean result = validateOrThrow(validator, dynamicMessage);
-                return TestResult.newBuilder()
-                        .setSuccess(result)
-                        .build();
-            } catch (Exception e) {
-                if (e instanceof CompilationError ce) {
-                    return TestResult.newBuilder()
-                            .setCompilationError(ce.toProto())
-                            .build();
-                } else if (e instanceof ValidationError ve) {
-                    return TestResult.newBuilder()
-                            .setValidationError(ve.toProto())
-                            .build();
-                } else if (e instanceof RuntimeError re) {
-                    return TestResult.newBuilder()
-                            .setRuntimeError(re.toProto())
-                            .build();
-                } else {
-                    return unexpectedErrorResult("unknown error: %s", e.toString());
-                }
-            }
+            DynamicMessage dynamicMessage = DynamicMessage.newBuilder(descriptor)
+                    .mergeFrom(testCaseValue)
+                    .build();
+            boolean result = validateOrThrow(validator, dynamicMessage);
+            return TestResult.newBuilder()
+                    .setSuccess(result)
+                    .build();
+        } catch (CompilationError e) {
+            return TestResult.newBuilder()
+                    .setCompilationError(e.getMessage())
+                    .build();
+        } catch (ValidationError e) {
+            return TestResult.newBuilder()
+                    .setValidationError(e.asViolations())
+                    .build();
         } catch (Exception e) {
-            throw new RuntimeException(fullName, e);
+            return unexpectedErrorResult("unknown error: %s", e.toString());
         }
     }
 
