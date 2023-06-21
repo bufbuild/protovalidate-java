@@ -18,7 +18,6 @@ import build.buf.protovalidate.ValidationResult;
 import build.buf.protovalidate.errors.ValidationError;
 import build.buf.validate.Violation;
 import com.google.protobuf.Descriptors;
-import com.google.protobuf.ProtocolMessageEnum;
 
 import java.util.Arrays;
 import java.util.List;
@@ -36,16 +35,15 @@ public class DefinedEnum implements Evaluator {
 
     @Override
     public ValidationResult evaluate(JavaValue val, boolean failFast) {
-        // TODO: fixme
-//        ProtocolMessageEnum enumValue = (ProtocolMessageEnum) val.getField(val.getDescriptorForType().findFieldByName("enum"));
-//        if (!isValueValid(enumValue)) {
-//            ValidationError err = new ValidationError();
-//            err.addViolation(Violation.newBuilder()
-//                    .setConstraintId("enum.defined_only")
-//                    .setMessage("value must be one of the defined enum values")
-//                    .build());
-//            return new ValidationResult(err);
-//        }
+        Descriptors.EnumValueDescriptor enumValue = val.value();
+        if (!isValueValid(enumValue)) {
+            ValidationError err = new ValidationError();
+            err.addViolation(Violation.newBuilder()
+                    .setConstraintId("enum.defined_only")
+                    .setMessage("value must be one of the defined enum values")
+                    .build());
+            return new ValidationResult(err);
+        }
         return ValidationResult.success();
     }
 
@@ -54,7 +52,7 @@ public class DefinedEnum implements Evaluator {
         throw new UnsupportedOperationException("append not supported for DefinedEnum");
     }
 
-    private boolean isValueValid(ProtocolMessageEnum value) {
+    private boolean isValueValid(Descriptors.EnumValueDescriptor value) {
         for (Descriptors.EnumValueDescriptor descriptor : valueDescriptors) {
             if (descriptor.getNumber() == value.getNumber()) {
                 return true;

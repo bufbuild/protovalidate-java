@@ -28,10 +28,6 @@ public class FieldEval implements MessageEvaluator {
     private final boolean required;
     private final boolean optional;
 
-    public FieldEval(FieldDescriptor descriptor, boolean required, boolean optional) {
-        this(new Value(), descriptor, required, optional);
-    }
-
     public FieldEval(Value value, FieldDescriptor descriptor, boolean required, boolean optional) {
         this.value = value;
         this.descriptor = descriptor;

@@ -88,4 +88,26 @@ public class SimpleTest {
         assertThat(validate.error().violations).hasSize(1);
         assertThat(validate.isFailure()).isTrue();
     }
+
+    @Test
+    public void timestampcost() throws CompilationError {
+        TimestampConst invalid = TimestampConst.newBuilder().setVal(Timestamp.newBuilder().setSeconds(3).build()).build();
+        ValidationResult validate = validator.validate(invalid);
+        assertThat(validate.isSuccess()).isTrue();
+    }
+
+    @Test
+    public void OneofIgnoreEmpty() throws CompilationError {
+        OneofIgnoreEmpty invalid = OneofIgnoreEmpty.newBuilder().setY(ByteString.copyFromUtf8("")).build();
+        ValidationResult validate = validator.validate(invalid);
+        assertThat(validate.isSuccess()).isTrue();
+    }
+
+    @Test
+    public void enumdefined() throws CompilationError {
+        EnumDefined invalid = EnumDefined.newBuilder().setValValue(2147483647).build();
+        ValidationResult validate = validator.validate(invalid);
+        assertThat(validate.error().violations).hasSize(1);
+        assertThat(validate.isFailure()).isTrue();
+    }
 }

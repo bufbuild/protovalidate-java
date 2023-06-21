@@ -161,7 +161,7 @@ public class Builder {
     }
 
     private FieldEval buildField(FieldDescriptor fieldDescriptor, FieldConstraints fieldConstraints) throws CompilationError {
-        Value valueEval = new Value();
+        Value valueEval = new Value(fieldConstraints.getIgnoreEmpty());
         FieldEval fieldEval = new FieldEval(
                 valueEval,
                 fieldDescriptor,
@@ -193,7 +193,9 @@ public class Builder {
     }
 
     private void processZeroValue(FieldDescriptor fieldDescriptor, FieldConstraints fieldConstraints, Boolean forItems, Value valueEval) {
-        if (fieldDescriptor.hasDefaultValue()) {
+        if (fieldDescriptor.getType() == FieldDescriptor.Type.MESSAGE) {
+            valueEval.zero = DynamicMessage.getDefaultInstance(fieldDescriptor.getContainingType());
+        } else {
             valueEval.zero = fieldDescriptor.getDefaultValue();
         }
         if (forItems && fieldDescriptor.isRepeated()) {
@@ -322,13 +324,7 @@ public class Builder {
         }
 
         ListItems listEval = new ListItems();
-        try {
-            buildValue(fieldDescriptor, fieldConstraints.getRepeated().getItems(), true, listEval.itemConstraints);
-        } catch (Exception e) {
-            // TODO: something with the exception
-            return;
-        }
-
+        buildValue(fieldDescriptor, fieldConstraints.getRepeated().getItems(), true, listEval.itemConstraints);
         valueEval.append(listEval);
     }
 

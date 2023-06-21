@@ -28,11 +28,11 @@ public class Value implements Evaluator {
     public boolean ignoreEmpty;
 
     public Value() {
-        this(null, false);
+        this(false);
     }
 
-    public Value(Object zero, boolean ignoreEmpty) {
-        this.zero = zero;
+    public Value(boolean ignoreEmpty) {
+        this.zero = null;
         this.ignoreEmpty = ignoreEmpty;
         this.constraints = new Evaluators(new ArrayList<>());
     }
@@ -44,7 +44,7 @@ public class Value implements Evaluator {
 
     @Override
     public ValidationResult evaluate(JavaValue val, boolean failFast) {
-        if (ignoreEmpty && val.equals(zero)) {
+        if (ignoreEmpty && isZero(val)) {
             return ValidationResult.success();
         }
         ValidationResult validationResult = constraints.evaluate(val, failFast);
@@ -52,6 +52,15 @@ public class Value implements Evaluator {
             return validationResult;
         }
         return ValidationResult.success();
+    }
+
+    private boolean isZero(JavaValue val) {
+        if (val == null) {
+            return false;
+        } else if (zero == null) {
+            return val.value() == null;
+        }
+        return zero.equals(val.value());
     }
 
     public void append(Evaluator eval) {
