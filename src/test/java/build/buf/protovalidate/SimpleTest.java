@@ -174,4 +174,11 @@ public class SimpleTest {
         assertThat(validate.isFailure()).isTrue();
         assertThat(validate.error().violations).hasSize(4);
     }
+
+    @Test
+    public void strictRepeatedExactIgnore() throws CompilationError {
+        RepeatedExactIgnore invalid = RepeatedExactIgnore.newBuilder().build();
+        ValidationResult validate = validator.validate(invalid);
+        assertThat(validate.isSuccess()).isTrue();
+    }
 }

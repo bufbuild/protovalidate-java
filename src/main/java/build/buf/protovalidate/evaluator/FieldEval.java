@@ -46,7 +46,14 @@ public class FieldEval implements MessageEvaluator {
 
     @Override
     public ValidationResult evaluateMessage(Message message, boolean failFast) throws ValidationError {
-        if (required && !message.hasField(descriptor)) {
+        boolean hasField;
+        // TODO: how does this behave in other descriptor value types like map?
+        if (descriptor.isRepeated()) {
+            hasField = message.getRepeatedFieldCount(descriptor) != 0;
+        } else {
+            hasField = message.hasField(descriptor);
+        }
+        if (required && !hasField) {
             ValidationError err = new ValidationError();
             err.addViolation(Violation.newBuilder()
                     .setFieldPath(descriptor.getName())
@@ -56,7 +63,7 @@ public class FieldEval implements MessageEvaluator {
             return new ValidationResult(err);
         }
 
-        if ((optional || value.ignoreEmpty) && !message.hasField(descriptor)) {
+        if ((optional || value.ignoreEmpty) && !hasField) {
             return ValidationResult.success();
         }
         Object fieldValue = message.getField(descriptor);
