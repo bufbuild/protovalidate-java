@@ -60,7 +60,11 @@ public class FieldEval implements MessageEvaluator {
             return ValidationResult.success();
         }
         Object fieldValue = message.getField(descriptor);
-        return value.evaluate(new JavaValue(descriptor, fieldValue), failFast);
+        ValidationResult evaluate = value.evaluate(new JavaValue(descriptor, fieldValue), failFast);
+        if (evaluate.isFailure()) {
+            evaluate.prefixErrorPaths(descriptor.getName());
+        }
+        return evaluate;
     }
 
     @Override

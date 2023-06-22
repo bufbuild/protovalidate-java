@@ -110,4 +110,12 @@ public class SimpleTest {
         assertThat(validate.error().violations).hasSize(1);
         assertThat(validate.isFailure()).isTrue();
     }
+
+    @Test
+    public void strictFixed32LT() throws CompilationError {
+        Fixed32LT invalid = Fixed32LT.newBuilder().setVal(5).build();
+        ValidationResult validate = validator.validate(invalid);
+        assertThat(validate.error().violations).hasSize(1);
+        assertThat(validate.isFailure()).isTrue();
+    }
 }

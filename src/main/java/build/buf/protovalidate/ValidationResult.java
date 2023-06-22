@@ -53,4 +53,8 @@ public class ValidationResult {
     public static ValidationResult success() {
         return new ValidationResult((ValidationError) null);
     }
+
+    public void prefixErrorPaths(String fullName) {
+        exception.prefixErrorPaths(fullName);
+    }
 }

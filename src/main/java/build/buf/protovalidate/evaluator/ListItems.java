@@ -56,6 +56,7 @@ public class ListItems implements Evaluator {
 //            // TODO: make this right
 //            return new ValidationResult(new ValidationError(Collections.singletonList(Violation.newBuilder().build())));
 //        }
+        // TODO: add error prefixingg
         return ValidationResult.success();
     }
 

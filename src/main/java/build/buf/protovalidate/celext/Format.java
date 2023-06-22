@@ -37,6 +37,7 @@ import static org.projectnessie.cel.common.types.IntT.intOf;
 
 public final class Format {
     private static final char[] HEX_ARRAY = "0123456789ABCDEF".toCharArray();
+    private static final char[] LOWER_HEX_ARRAY = "0123456789abcdef".toCharArray();
 
     private Format() {}
 
@@ -213,7 +214,12 @@ public final class Format {
         builder.append(sb);
     }
 
+
     private static void formatUnsigned(StringBuilder builder, byte value, int base) {
+        formatUnsigned(builder, value, base, LOWER_HEX_ARRAY);
+    }
+
+    private static void formatUnsigned(StringBuilder builder, byte value, int base, char[] digits) {
         if (value == 0) {
             builder.append("0");
             return;
@@ -221,10 +227,15 @@ public final class Format {
         char[] buf = new char[64];
         int index = 64;
         while (value > 0 && index > 1) {
-            buf[--index] = HEX_ARRAY[value % base];
+            buf[--index] = digits[value % base];
             value /= base;
         }
-        builder.append(Arrays.copyOfRange(buf, index - 1, buf.length - 1));
+        if (index == buf.length) {
+            //
+            return;
+        }
+        char[] str = Arrays.copyOfRange(buf, index, buf.length);
+        builder.append(str);
     }
 
     private static Val formatDecimal(StringBuilder builder, Val arg) {

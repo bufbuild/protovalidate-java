@@ -16,6 +16,7 @@ package build.buf.protovalidate.errors;
 
 import build.buf.validate.Violation;
 import build.buf.validate.Violations;
+import com.google.common.base.Strings;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -23,7 +24,7 @@ import java.util.List;
 
 public class ValidationError extends RuntimeException {
 
-    public final List<Violation> violations;
+    public List<Violation> violations;
 
     public ValidationError(List<Violation> violations) {
         this.violations = violations;
@@ -70,5 +71,22 @@ public class ValidationError extends RuntimeException {
 
     public int getViolationsCount() {
         return this.violations.size();
+    }
+
+    public void prefixErrorPaths(String fullName) {
+        // TODO: not a fan of this approach but it's copying go to make things work.
+        List<Violation> prefixedViolations = new ArrayList<>();
+        for (Violation violation : violations) {
+            Violation prefiexViolation;
+            if (violation.getFieldPath().isEmpty()) {
+                prefiexViolation = violation.toBuilder().setFieldPath(fullName).build();
+            } else if (violation.getFieldPath().charAt(0) == '[') {
+                prefiexViolation = violation.toBuilder().setFieldPath(fullName + violation.getFieldPath()).build();
+            } else {
+                prefiexViolation = violation.toBuilder().setFieldPath(Strings.lenientFormat("%s.%s", fullName, violation.getFieldPath())).build();
+            }
+            prefixedViolations.add(prefiexViolation);
+        }
+        this.violations = prefixedViolations;
     }
 }
