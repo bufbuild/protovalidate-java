@@ -312,8 +312,8 @@ public class Builder {
                 mapEval.keyConstraints);
         buildValue(
                 fieldDescriptor.getMessageType().findFieldByNumber(2),
-                fieldConstraints,
-                false,
+                fieldConstraints.getMap().getValues(),
+                true,
                 mapEval.valueConstraints);
         valueEval.append(mapEval);
     }
