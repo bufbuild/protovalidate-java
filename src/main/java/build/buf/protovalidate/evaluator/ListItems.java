@@ -17,9 +17,9 @@ package build.buf.protovalidate.evaluator;
 import build.buf.protovalidate.ValidationResult;
 import build.buf.protovalidate.errors.ValidationError;
 import build.buf.validate.Violation;
-import com.google.protobuf.ListValue;
 
 import java.util.Collections;
+import java.util.List;
 
 public class ListItems implements Evaluator {
 
@@ -40,23 +40,22 @@ public class ListItems implements Evaluator {
 
     @Override
     public ValidationResult evaluate(JavaValue val, boolean failFast) {
-        // TODO: who passes down this item?
-//        ListValue listValue = val.getListValue();
-//        boolean failed = false;
-//        for (com.google.protobuf.Value value : listValue.getValuesList()) {
-//            ValidationResult evaluate = itemConstraints.evaluate(value, failFast);
-//            // Aggregate errors here. For now we dont.
-//            if (evaluate.isFailure()) {
-//                failed = true;
-//                // TODO: violation string prefix error paths
-//            }
-////            ErrorUtils.merge()
-//        }
-//        if (failed) {
-//            // TODO: make this right
-//            return new ValidationResult(new ValidationError(Collections.singletonList(Violation.newBuilder().build())));
-//        }
-        // TODO: add error prefixingg
+        boolean failed = false;
+        for (JavaValue value : val.repeatedValue()) {
+            ValidationResult evaluate = itemConstraints.evaluate(value, failFast);
+            // Aggregate errors here. For now we dont.
+            if (evaluate.isFailure()) {
+                failed = true;
+                // TODO: violation string prefix error paths
+            }
+//            TODO: merge errors
+//            ErrorUtils.merge()
+        }
+        if (failed) {
+            // TODO: make this right
+            return new ValidationResult(new ValidationError(Collections.singletonList(Violation.newBuilder().build())));
+        }
+
         return ValidationResult.success();
     }
 

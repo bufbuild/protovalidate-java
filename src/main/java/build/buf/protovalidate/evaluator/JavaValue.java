@@ -17,6 +17,7 @@ package build.buf.protovalidate.evaluator;
 import com.google.protobuf.Descriptors;
 import org.projectnessie.cel.common.ULong;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -30,21 +31,11 @@ public class JavaValue {
     }
 
     public <T> T value() {
-        if (fieldDescriptor.isRepeated()) {
-            // Handle repeated field
-            List<?> list = (List<?>) value;
-            return (T) list;
-        }
-        if (fieldDescriptor.isMapField()) {
-            // Handle map field
-            Map<?, ?> map = (Map<?, ?>) value;
-            return (T) map;
-        }
         Descriptors.FieldDescriptor.Type type = fieldDescriptor.getType();
-        if (type == Descriptors.FieldDescriptor.Type.UINT32
+        if (!fieldDescriptor.isRepeated() && (type == Descriptors.FieldDescriptor.Type.UINT32
                 || type == Descriptors.FieldDescriptor.Type.UINT64
                 || type == Descriptors.FieldDescriptor.Type.FIXED32
-                || type == Descriptors.FieldDescriptor.Type.FIXED64) {
+                || type == Descriptors.FieldDescriptor.Type.FIXED64)) {
             /* Java does not have native support for unsigned int/long or uint32/uint64 types.
             To work with CEL's uint type in Java, special handling is required.
             TL;DR: When using uint32/uint64 in your protobuf objects or CEL expressions in Java,
@@ -53,5 +44,16 @@ public class JavaValue {
         }
         // Dynamic programming in a static language.
         return (T) value;
+    }
+
+    public List<JavaValue> repeatedValue() {
+        List<JavaValue> out = new ArrayList<>();
+        if (fieldDescriptor.isRepeated()) {
+            List<?> list = (List<?>) value;
+            for (Object o : list) {
+                out.add(new JavaValue(fieldDescriptor, o));
+            }
+        }
+        return out;
     }
 }

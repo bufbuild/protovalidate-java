@@ -18,12 +18,14 @@ import build.buf.protovalidate.expression.NowVariable;
 import com.google.api.expr.v1alpha1.Decl;
 import com.google.common.net.InetAddresses;
 import com.google.common.primitives.Bytes;
+import com.sun.org.apache.xpath.internal.operations.Bool;
 import org.projectnessie.cel.EnvOption;
 import org.projectnessie.cel.EvalOption;
 import org.projectnessie.cel.Library;
 import org.projectnessie.cel.ProgramOption;
 import org.projectnessie.cel.checker.Decls;
 import org.projectnessie.cel.common.types.*;
+import org.projectnessie.cel.common.types.ref.TypeEnum;
 import org.projectnessie.cel.common.types.ref.Val;
 import org.projectnessie.cel.common.types.traits.Lister;
 import org.projectnessie.cel.interpreter.functions.UnaryOp;
@@ -32,18 +34,10 @@ import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
 import java.net.*;
 import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Locale;
-import java.util.Set;
+import java.util.*;
 
 import static org.projectnessie.cel.common.types.IntT.intOf;
-import static org.projectnessie.cel.interpreter.functions.Overload.binary;
-import static org.projectnessie.cel.interpreter.functions.Overload.overload;
-import static org.projectnessie.cel.interpreter.functions.Overload.unary;
+import static org.projectnessie.cel.interpreter.functions.Overload.*;
 
 public class Lib implements Library {
     private boolean useUtc;
@@ -151,6 +145,32 @@ public class Lib implements Library {
                                                 Decls.Bool
                                         )
                                 ),
+                                Decls.newFunction("unique",
+                                        Decls.newInstanceOverload("unique_bool",
+                                                Collections.singletonList(Decls.Bool),
+                                                Decls.Bool
+                                        ),
+                                        Decls.newInstanceOverload("unique_bytes",
+                                                Collections.singletonList(Decls.Bytes),
+                                                Decls.Bool
+                                        ),
+                                        Decls.newInstanceOverload("unique_double",
+                                                Collections.singletonList(Decls.Double),
+                                                Decls.Bool
+                                        ),
+                                        Decls.newInstanceOverload("unique_int",
+                                                Collections.singletonList(Decls.Int),
+                                                Decls.Bool
+                                        ),
+                                        Decls.newInstanceOverload("unique_string",
+                                                Collections.singletonList(Decls.String),
+                                                Decls.Bool
+                                        ),
+                                        Decls.newInstanceOverload("unique_uint",
+                                                Collections.singletonList(Decls.Uint),
+                                                Decls.Bool
+                                        )
+                                ),
                                 formatFunction
                         )
                 )
@@ -179,7 +199,24 @@ public class Lib implements Library {
                             }
                             return StringT.stringOf(status.value().toString());
                         }),
-                        unary("unique", uniqueMemberOverload(BytesT.BytesType, this::uniqueBytes)),
+                        unary("unique", (val) -> {
+                            switch (val.type().typeEnum()) {
+                                case Bool:
+                                    return uniqueMemberOverload(BoolT.BoolType, this::uniqueScalar).invoke(val);
+                                case Bytes:
+                                    return uniqueMemberOverload(BytesT.BytesType, this::uniqueBytes).invoke(val);
+                                case Double:
+                                    return uniqueMemberOverload(DoubleT.DoubleType, this::uniqueScalar).invoke(val);
+                                case Int:
+                                    return uniqueMemberOverload(IntT.IntType, this::uniqueScalar).invoke(val);
+                                case String:
+                                    return uniqueMemberOverload(StringT.StringType, this::uniqueScalar).invoke(val);
+                                case Uint:
+                                    return uniqueMemberOverload(UintT.UintType, this::uniqueScalar).invoke(val);
+                                default:
+                                    return Err.maybeNoSuchOverloadErr(val);
+                            }
+                        }),
                         binary("startsWith", (lhs, rhs) -> {
                             if (lhs.type() == StringT.StringType && rhs.type() == StringT.StringType) {
                                 String receiver = lhs.value().toString();
@@ -299,7 +336,8 @@ public class Lib implements Library {
         return value -> {
             Lister list = (Lister) value;
             if (list == null) {
-                return Err.unsupportedRefValConversionErr(list);
+                // TODO: find appropriate return error
+                return Err.noMoreElements();
             }
             if (list.type() != itemType.type()) {
                 return Err.newTypeConversionError(list.type(), itemType.type());
@@ -335,6 +373,19 @@ public class Lib implements Library {
                 return BoolT.False;
             }
             exist.add(val.toString());
+        }
+        return BoolT.True;
+    }
+
+    public Val uniqueScalar(Lister list) {
+        // TODO: dont like the use of map here but it works
+        Map<Val, Boolean> exist = new HashMap<>();
+        for (int i = 0; i < list.size().intValue(); i++) {
+            Val val = list.get(intOf(i));
+            if (exist.containsKey(val)) {
+                return BoolT.False;
+            }
+            exist.put(val, Boolean.TRUE);
         }
         return BoolT.True;
     }

@@ -18,12 +18,9 @@ import build.buf.protovalidate.errors.ValidationError;
 import build.buf.protovalidate.evaluator.JavaValue;
 import build.buf.validate.Violation;
 import com.google.protobuf.Message;
-import org.projectnessie.cel.interpreter.ResolvedValue;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
-import java.util.concurrent.atomic.AtomicReference;
 
 // ProgramSet is a list of compiledProgram expressions that are evaluated
 // together with the same input value. All expressions in a ProgramSet may refer
@@ -51,6 +48,7 @@ public class ProgramSet {
         } else {
             throw new RuntimeException("unsupported type for " + val.getClass());
         }
+
         // todo: weird api
         Variable activation = new Variable(new NowVariable(), "this", value);
         List<Violation> violations = new ArrayList<>();

@@ -53,7 +53,8 @@ public class Cache {
 
         // Get the expected constraint descriptor based on the provided field descriptor and the flag indicating whether it is for items.
         FieldDescriptor expectedConstraintDescriptor = getExpectedConstraintDescriptor(fieldDescriptor, forItems);
-        if (expectedConstraintDescriptor != null && !oneofFieldDescriptor.getFullName().equals(expectedConstraintDescriptor.getFullName())) {
+        boolean ok = expectedConstraintDescriptor != null;
+        if (ok && !oneofFieldDescriptor.getFullName().equals(expectedConstraintDescriptor.getFullName())) {
             // If the expected constraint does not match the actual oneof constraint, throw a CompilationError.
             throw CompilationError.newCompilationError("expected constraint %s, got %s on field %s",
                     expectedConstraintDescriptor.getName(),
@@ -63,7 +64,7 @@ public class Cache {
 
         // If the expected constraint descriptor is null or if the field constraints do not have the oneof field descriptor
         // there are no constraints to resolve, so return null.
-        if (expectedConstraintDescriptor == null || !fieldConstraints.hasField(oneofFieldDescriptor)) {
+        if (!ok || !fieldConstraints.hasField(oneofFieldDescriptor)) {
             return null;
         }
 

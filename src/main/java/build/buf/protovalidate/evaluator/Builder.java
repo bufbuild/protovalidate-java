@@ -192,6 +192,7 @@ public class Builder {
         processRepeatedConstraints(fieldDescriptor, fieldConstraints, forItems, valueEval);
     }
 
+    // TODO: this seems off
     private void processZeroValue(FieldDescriptor fieldDescriptor, FieldConstraints fieldConstraints, Boolean forItems, Value valueEval) {
         if (fieldDescriptor.getType() == FieldDescriptor.Type.MESSAGE) {
             valueEval.zero = DynamicMessage.getDefaultInstance(fieldDescriptor.getContainingType());
