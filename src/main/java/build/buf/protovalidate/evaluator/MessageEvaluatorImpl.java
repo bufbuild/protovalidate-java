@@ -16,6 +16,7 @@ package build.buf.protovalidate.evaluator;
 
 import build.buf.protovalidate.ValidationResult;
 import build.buf.protovalidate.errors.ValidationError;
+import build.buf.validate.Violation;
 import com.google.protobuf.Message;
 
 import java.util.ArrayList;
@@ -65,12 +66,19 @@ public class MessageEvaluatorImpl implements MessageEvaluator {
 
     @Override
     public ValidationResult evaluateMessage(Message val, boolean failFast) throws ValidationError {
+        List<Violation> allViolations = new ArrayList<>();
         for (MessageEvaluator evaluator : evaluators) {
             ValidationResult validationResult = evaluator.evaluateMessage(val, failFast);
             if (validationResult.isFailure()) {
-                return validationResult;
+                if (failFast) {
+                    return validationResult;
+                }
+                allViolations.addAll(validationResult.error().violations);
             }
         }
-        return ValidationResult.success();
+        if (allViolations.isEmpty()) {
+            return ValidationResult.success();
+        }
+        return new ValidationResult(new ValidationError(allViolations));
     }
 }

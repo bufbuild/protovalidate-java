@@ -30,17 +30,22 @@ import build.buf.validate.conformance.cases.StringPrefix;
 import build.buf.validate.conformance.cases.StringURIRef;
 import build.buf.validate.conformance.cases.*;
 import build.buf.validate.conformance.cases.custom_constraints.Enum;
+import build.buf.validate.conformance.cases.custom_constraints.FieldExpressions;
 import build.buf.validate.conformance.cases.custom_constraints.MessageExpressions;
 import build.buf.validate.conformance.cases.custom_constraints.MissingField;
 import build.buf.validate.conformance.cases.custom_constraints.NowEqualsNow;
 import build.buf.validate.java.Simple;
 import com.google.protobuf.ByteString;
+import com.google.protobuf.DoubleValue;
+import com.google.protobuf.Duration;
 import com.google.protobuf.DynamicMessage;
 import com.google.protobuf.InvalidProtocolBufferException;
 import com.google.protobuf.Timestamp;
 import org.junit.Before;
 import org.junit.Test;
 
+
+import java.util.Arrays;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -117,5 +122,56 @@ public class SimpleTest {
         ValidationResult validate = validator.validate(invalid);
         assertThat(validate.error().violations).hasSize(1);
         assertThat(validate.isFailure()).isTrue();
+    }
+
+    @Test
+    public void strictWrapperDouble() throws CompilationError {
+        WrapperDouble invalid = WrapperDouble.newBuilder().setVal(DoubleValue.newBuilder().build()).build();
+        ValidationResult validate = validator.validate(invalid);
+        assertThat(validate.error().violations).hasSize(1);
+        assertThat(validate.isFailure()).isTrue();
+    }
+
+    @Test
+    public void strictFieldExpressions() throws CompilationError {
+        FieldExpressions invalid = FieldExpressions.newBuilder().build();
+        ValidationResult validate = validator.validate(invalid);
+        assertThat(validate.error().violations).hasSize(2);
+        assertThat(validate.isFailure()).isTrue();
+    }
+
+    @Test
+    public void strictDurationGTELTE() throws CompilationError {
+        DurationGTELTE invalid = DurationGTELTE.newBuilder().setVal(Duration.newBuilder().setSeconds(3600).setNanos(1).build()).build();
+        ValidationResult validate = validator.validate(invalid);
+        assertThat(validate.error().violations).hasSize(1);
+        assertThat(validate.isFailure()).isTrue();
+    }
+
+    @Test
+    public void strictRepeatedExact() throws CompilationError {
+        RepeatedExact invalid = RepeatedExact.newBuilder().addAllVal(Arrays.asList(1, 2)).build();
+        ValidationResult validate = validator.validate(invalid);
+        assertThat(validate.isFailure()).isTrue();
+        assertThat(validate.error().violations).hasSize(1);
+    }
+
+    @Test
+    public void strictSFixed64In() throws CompilationError {
+        SFixed64In invalid = SFixed64In.newBuilder().setVal(5).build();
+        ValidationResult validate = validator.validate(invalid);
+        assertThat(validate.isFailure()).isTrue();
+        assertThat(validate.error().violations).hasSize(1);
+    }
+
+    @Test
+    public void strictFieldExpressionsNested() throws CompilationError {
+        FieldExpressions invalid = FieldExpressions.newBuilder()
+                .setA(42)
+                .setC(FieldExpressions.Nested.newBuilder().setA(-3).build())
+                .build();
+        ValidationResult validate = validator.validate(invalid);
+        assertThat(validate.isFailure()).isTrue();
+        assertThat(validate.error().violations).hasSize(4);
     }
 }

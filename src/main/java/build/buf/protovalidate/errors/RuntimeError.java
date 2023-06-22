@@ -14,7 +14,7 @@
 
 package build.buf.protovalidate.errors;
 
-public class RuntimeError extends Exception {
+public class RuntimeError extends RuntimeException {
 
     private final Exception cause;
 
@@ -27,8 +27,8 @@ public class RuntimeError extends Exception {
         return new RuntimeError(cause);
     }
 
-    public static RuntimeError newRuntimeErrorf(String format, Object... args) {
-        return new RuntimeError(new Exception(String.format(format, args)));
+    public static RuntimeError newRuntimeErrorf(String message) {
+        return new RuntimeError(new Exception(message));
     }
 
     @Override
