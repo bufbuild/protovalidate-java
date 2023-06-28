@@ -37,7 +37,7 @@ public class CelPrograms implements Evaluator, MessageEvaluator {
 
     @Override
     public ValidationResult evaluate(JavaValue val, boolean failFast) {
-        ValidationError error = programSet.eval(val, failFast);
+        ValidationError error = programSet.evalValue(val, failFast);
         return new ValidationResult(error);
     }
 
@@ -48,7 +48,7 @@ public class CelPrograms implements Evaluator, MessageEvaluator {
 
     @Override
     public ValidationResult evaluateMessage(Message val, boolean failFast) throws ValidationError {
-        ValidationError eval = programSet.eval(val, failFast);
+        ValidationError eval = programSet.evalMessage(val, failFast);
         if (eval != null) {
             return new ValidationResult(eval);
         }

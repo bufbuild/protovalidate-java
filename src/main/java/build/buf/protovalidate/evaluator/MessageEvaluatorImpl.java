@@ -49,7 +49,7 @@ public class MessageEvaluatorImpl implements MessageEvaluator {
 
     @Override
     public ValidationResult evaluate(JavaValue val, boolean failFast) {
-        return evaluateMessage(val.value(), failFast);
+        return evaluateMessage(val.messageValue(), failFast);
     }
 
     @Override

@@ -61,4 +61,3 @@ public class ConstraintResolver {
         return options.getExtension(ValidateProto.field);
     }
 }
-

@@ -16,6 +16,8 @@ package build.buf.protovalidate.evaluator;
 
 import com.google.protobuf.AbstractMessage;
 import com.google.protobuf.Descriptors;
+import com.google.protobuf.DynamicMessage;
+import com.google.protobuf.Message;
 import org.projectnessie.cel.common.ULong;
 
 import java.util.ArrayList;
@@ -32,6 +34,13 @@ public class JavaValue {
     public JavaValue(Descriptors.FieldDescriptor fieldDescriptor, Object value) {
         this.fieldDescriptor = fieldDescriptor;
         this.value = value;
+    }
+
+    public Message messageValue() {
+        if (value instanceof Message) {
+            return (Message) value;
+        }
+        return null;
     }
 
     public <T> T value() {

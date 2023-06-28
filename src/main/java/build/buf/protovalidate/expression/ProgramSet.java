@@ -32,7 +32,11 @@ public class ProgramSet {
         this.programs = programs;
     }
 
-    public ValidationError eval(Object val, boolean failFast) {
+    public ValidationError evalMessage(Message val, boolean failFast) {
+        return getError(failFast, val);
+    }
+
+    public ValidationError evalValue(JavaValue val, boolean failFast) {
 //        if (val instanceof Message) {
 //            variable.setObject(((Message) val).getDefaultInstanceForType());
 //        } else if (val instanceof MapEntry) {
@@ -40,16 +44,10 @@ public class ProgramSet {
 //        } else {
 //
 //        }
-        Object value;
-        if (val instanceof JavaValue) {
-            value = ((JavaValue) val).value();
-        } else if (val instanceof Message) {
-            value = val;
-        } else {
-            throw new RuntimeException("unsupported type for " + val.getClass());
-        }
+        return getError(failFast, val.value());
+    }
 
-        // todo: weird api
+    private ValidationError getError(boolean failFast, Object value) {
         Variable activation = new Variable(new NowVariable(), "this", value);
         List<Violation> violations = new ArrayList<>();
         for (CompiledProgram program : programs) {

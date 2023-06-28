@@ -62,9 +62,6 @@ public class Compiler {
     }
 
     public static ProgramSet compile(List<Expression> expressions, Env env, EnvOption... envOpts) throws CompilationError {
-        if (expressions.isEmpty()) {
-            return null;
-        }
         Env finalEnv = env;
         finalEnv.extend(EnvOption.features(EnvOption.EnvFeature.FeatureDisableDynamicAggregateLiterals));
         if (envOpts.length > 0) {

@@ -44,4 +44,3 @@ public class Validator {
         return evaluator.evaluateMessage(msg, failFast);
     }
 }
-
