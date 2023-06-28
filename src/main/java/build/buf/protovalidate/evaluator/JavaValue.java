@@ -14,12 +14,16 @@
 
 package build.buf.protovalidate.evaluator;
 
+import com.google.protobuf.AbstractMessage;
 import com.google.protobuf.Descriptors;
 import org.projectnessie.cel.common.ULong;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
 
 public class JavaValue {
     private final Descriptors.FieldDescriptor fieldDescriptor;
@@ -56,4 +60,24 @@ public class JavaValue {
         }
         return out;
     }
+
+    public Map<JavaValue, JavaValue> mapValue() {
+        Map<JavaValue, JavaValue> out = new HashMap<>();
+        List<AbstractMessage> input = value instanceof List ? (List<AbstractMessage>) value : Collections.singletonList((AbstractMessage) value);
+
+        Descriptors.FieldDescriptor keyDesc = fieldDescriptor.getMessageType().findFieldByNumber(1);
+        Descriptors.FieldDescriptor valDesc = fieldDescriptor.getMessageType().findFieldByNumber(2);
+        for (AbstractMessage entry : input) {
+            Object keyValue = entry.getField(keyDesc);
+            JavaValue keyJavaValue = new JavaValue(keyDesc, keyValue);
+
+            Object valValue = entry.getField(valDesc);
+            JavaValue valJavaValue = new JavaValue(valDesc, valValue);
+
+            out.put(keyJavaValue, valJavaValue);
+        }
+
+        return out;
+    }
+
 }

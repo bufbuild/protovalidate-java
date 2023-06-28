@@ -19,7 +19,6 @@ import build.buf.validate.Violations;
 import com.google.common.base.Strings;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class ValidationError extends RuntimeException {
@@ -63,8 +62,6 @@ public class ValidationError extends RuntimeException {
                 .build();
     }
 
-    public void prefixFieldPaths(String format, Object... args) {}
-
     public void addViolation(Violation violation) {
         this.violations.add(violation);
     }
@@ -88,5 +85,9 @@ public class ValidationError extends RuntimeException {
             prefixedViolations.add(prefiexViolation);
         }
         this.violations = prefixedViolations;
+    }
+
+    public boolean isEmpty() {
+        return violations.isEmpty();
     }
 }

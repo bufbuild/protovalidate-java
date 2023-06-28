@@ -181,4 +181,11 @@ public class SimpleTest {
         ValidationResult validate = validator.validate(invalid);
         assertThat(validate.isSuccess()).isTrue();
     }
+
+    @Test
+    public void strictMapValuesPattern() throws CompilationError {
+        MapValuesPattern invalid = MapValuesPattern.newBuilder().putVal("a", "A").build();
+        ValidationResult validate = validator.validate(invalid);
+        assertThat(validate.isSuccess()).isTrue();
+    }
 }

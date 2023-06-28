@@ -18,7 +18,12 @@ import build.buf.protovalidate.ValidationResult;
 import build.buf.protovalidate.errors.ValidationError;
 import build.buf.validate.Violation;
 import com.google.protobuf.Descriptors.FieldDescriptor;
+import com.google.protobuf.DynamicMessage;
+import com.google.protobuf.MapEntry;
 import com.google.protobuf.Message;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class FieldEval implements MessageEvaluator {
     public final Value value;

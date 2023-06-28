@@ -65,7 +65,7 @@ public class ProgramSet {
             return new ValidationError(violations);
         }
         return null;
-}
+    }
 
     public boolean isEmpty() {
         return programs.isEmpty();
