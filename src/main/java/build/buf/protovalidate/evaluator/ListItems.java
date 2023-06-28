@@ -18,6 +18,7 @@ import build.buf.protovalidate.ValidationResult;
 import build.buf.protovalidate.errors.ValidationError;
 import build.buf.validate.Violation;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -40,20 +41,26 @@ public class ListItems implements Evaluator {
 
     @Override
     public ValidationResult evaluate(JavaValue val, boolean failFast) {
-        boolean failed = false;
-        for (JavaValue value : val.repeatedValue()) {
+        List<Violation> violations = new ArrayList<>();
+        List<JavaValue> repeatedValues = val.repeatedValue();
+        for (int i = 0; i < repeatedValues.size(); i++) {
+            JavaValue value = repeatedValues.get(i);
             ValidationResult evaluate = itemConstraints.evaluate(value, failFast);
             // Aggregate errors here. For now we dont.
             if (evaluate.isFailure()) {
-                failed = true;
+                evaluate.prefixErrorPaths("[%d]", i);
+                if (failFast) {
+                    return new ValidationResult(new ValidationError(evaluate.error().violations));
+                }
                 // TODO: violation string prefix error paths
+                violations.addAll(evaluate.error().violations);
             }
 //            TODO: merge errors
 //            ErrorUtils.merge()
         }
-        if (failed) {
+        if (!violations.isEmpty()) {
             // TODO: make this right
-            return new ValidationResult(new ValidationError(Collections.singletonList(Violation.newBuilder().build())));
+            return new ValidationResult(new ValidationError(violations));
         }
 
         return ValidationResult.success();

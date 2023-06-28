@@ -64,6 +64,7 @@ public class SimpleTest {
         ValidationResult validate = validator.validate(invalid);
         assertThat(validate.isSuccess()).isTrue();
     }
+
     @Test
     public void bytescontains() throws CompilationError {
         BytesContains invalid = BytesContains.newBuilder().setVal(ByteString.copyFromUtf8("candy bars")).build();
@@ -180,6 +181,30 @@ public class SimpleTest {
         RepeatedExactIgnore invalid = RepeatedExactIgnore.newBuilder().build();
         ValidationResult validate = validator.validate(invalid);
         assertThat(validate.isSuccess()).isTrue();
+    }
+
+    @Test
+    public void strictInt32In() throws CompilationError {
+        Int32In invalid = Int32In.newBuilder().setVal(4).build();
+        ValidationResult validate = validator.validate(invalid);
+        assertThat(validate.isFailure()).isTrue();
+        assertThat(validate.error().violations).hasSize(1);
+    }
+
+    @Test
+    public void strictRepeatedEnumIn() throws CompilationError {
+        RepeatedEnumIn invalid = RepeatedEnumIn.newBuilder().addVal(AnEnum.AN_ENUM_X).build();
+        ValidationResult validate = validator.validate(invalid);
+        assertThat(validate.isFailure()).isTrue();
+        assertThat(validate.error().violations).hasSize(1);
+    }
+
+    @Test
+    public void strictRepeatedMin() throws CompilationError {
+        RepeatedMin invalid = RepeatedMin.newBuilder().addVal(Embed.newBuilder().setVal(1).build()).addVal(Embed.newBuilder().setVal(-1).build()).build();
+        ValidationResult validate = validator.validate(invalid);
+        assertThat(validate.isFailure()).isTrue();
+        assertThat(validate.error().violations).hasSize(1);
     }
 
     @Test

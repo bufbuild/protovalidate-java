@@ -55,6 +55,10 @@ public class ValidationResult {
     }
 
     public void prefixErrorPaths(String fullName) {
-        exception.prefixErrorPaths(fullName);
+        exception.prefixErrorPaths(fullName, null);
+    }
+    
+    public void prefixErrorPaths(String fullName, Integer index) {
+        exception.prefixErrorPaths(fullName, index);
     }
 }

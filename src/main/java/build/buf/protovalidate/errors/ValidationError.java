@@ -70,19 +70,20 @@ public class ValidationError extends RuntimeException {
         return this.violations.size();
     }
 
-    public void prefixErrorPaths(String fullName) {
+    public void prefixErrorPaths(String fullName, Integer index) {
+        String prefix = index == null ? fullName : String.format(fullName, index);
         // TODO: not a fan of this approach but it's copying go to make things work.
         List<Violation> prefixedViolations = new ArrayList<>();
         for (Violation violation : violations) {
-            Violation prefiexViolation;
+            Violation prefixedViolation;
             if (violation.getFieldPath().isEmpty()) {
-                prefiexViolation = violation.toBuilder().setFieldPath(fullName).build();
+                prefixedViolation = violation.toBuilder().setFieldPath(prefix).build();
             } else if (violation.getFieldPath().charAt(0) == '[') {
-                prefiexViolation = violation.toBuilder().setFieldPath(fullName + violation.getFieldPath()).build();
+                prefixedViolation = violation.toBuilder().setFieldPath(prefix + violation.getFieldPath()).build();
             } else {
-                prefiexViolation = violation.toBuilder().setFieldPath(Strings.lenientFormat("%s.%s", fullName, violation.getFieldPath())).build();
+                prefixedViolation = violation.toBuilder().setFieldPath(Strings.lenientFormat("%s.%s", prefix, violation.getFieldPath())).build();
             }
-            prefixedViolations.add(prefiexViolation);
+            prefixedViolations.add(prefixedViolation);
         }
         this.violations = prefixedViolations;
     }
