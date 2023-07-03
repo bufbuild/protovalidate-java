@@ -213,4 +213,26 @@ public class SimpleTest {
         ValidationResult validate = validator.validate(invalid);
         assertThat(validate.isSuccess()).isTrue();
     }
+
+    // Needs : https://github.com/projectnessie/cel-java/pull/419
+//    @Test
+//    public void strictBytesIn() throws CompilationError {
+//        BytesIn invalid = BytesIn.newBuilder().setVal(ByteString.copyFromUtf8("bar")).build();
+//        ValidationResult validate = validator.validate(invalid);
+//        assertThat(validate.isSuccess()).isTrue();
+//    }
+
+    @Test
+    public void strictRepeatedUnique() throws CompilationError {
+        RepeatedUnique invalid = RepeatedUnique.newBuilder().addAllVal(Arrays.asList("foo", "bar", "foo", "baz")).build();
+        ValidationResult validate = validator.validate(invalid);
+        assertThat(validate.isFailure()).isTrue();
+    }
+
+    @Test
+    public void strictRepeatedUniqueFoofoo() throws CompilationError {
+        RepeatedUnique invalid = RepeatedUnique.newBuilder().addAllVal(Arrays.asList("foo", "Foo")).build();
+        ValidationResult validate = validator.validate(invalid);
+        assertThat(validate.isSuccess()).isTrue();
+    }
 }

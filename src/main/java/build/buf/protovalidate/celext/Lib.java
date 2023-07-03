@@ -33,6 +33,7 @@ import org.projectnessie.cel.common.types.StringT;
 import org.projectnessie.cel.common.types.TimestampT;
 import org.projectnessie.cel.common.types.Types;
 import org.projectnessie.cel.common.types.UintT;
+import org.projectnessie.cel.common.types.ref.Type;
 import org.projectnessie.cel.common.types.ref.Val;
 import org.projectnessie.cel.common.types.traits.Lister;
 import org.projectnessie.cel.interpreter.functions.UnaryOp;
@@ -60,8 +61,20 @@ public class Lib implements Library {
         opts.add(EnvOption.declarations(
                 Decls.newVar("now", Decls.newObjectType(TimestampT.TimestampType.typeName()))
         ));
+        List<Decl.FunctionDecl.Overload> uniqueOverloads = new ArrayList<>();
+        for (com.google.api.expr.v1alpha1.Type type : Arrays.asList(Decls.String, Decls.Int, Decls.Uint, Decls.Double, Decls.Bytes, Decls.Bool)) {
+            uniqueOverloads.add(Decls.newInstanceOverload(
+                    String.format("unique_%s", org.projectnessie.cel.checker.Types.formatCheckedType(type).toLowerCase(Locale.US)),
+                    Collections.singletonList(type),
+                    Decls.Bool
+            ));
+            uniqueOverloads.add(Decls.newInstanceOverload(
+                    String.format("unique_list_%s", org.projectnessie.cel.checker.Types.formatCheckedType(type).toLowerCase(Locale.US)),
+                    Collections.singletonList(Decls.newListType(type)),
+                    Decls.Bool
+            ));
+        }
         List<Decl.FunctionDecl.Overload> formatOverloads = new ArrayList<>();
-        // TODO: Iterate exhaustively
         for (com.google.api.expr.v1alpha1.Type type : Arrays.asList(Decls.String, Decls.Int, Decls.Uint, Decls.Double, Decls.Bytes, Decls.Bool, Decls.Duration, Decls.Timestamp)) {
             formatOverloads.add(Decls.newInstanceOverload(
                     String.format("format_%s", org.projectnessie.cel.checker.Types.formatCheckedType(type).toLowerCase(Locale.US)),
@@ -84,9 +97,6 @@ public class Lib implements Library {
                     Decls.Bytes
             ));
         }
-        Decl formatFunction = Decls.newFunction("format",
-                formatOverloads
-        );
         opts.addAll(
                 Arrays.asList(
                         EnvOption.declarations(
@@ -153,32 +163,11 @@ public class Lib implements Library {
                                         )
                                 ),
                                 Decls.newFunction("unique",
-                                        Decls.newInstanceOverload("unique_bool",
-                                                Collections.singletonList(Decls.Bool),
-                                                Decls.Bool
-                                        ),
-                                        Decls.newInstanceOverload("unique_bytes",
-                                                Collections.singletonList(Decls.Bytes),
-                                                Decls.Bool
-                                        ),
-                                        Decls.newInstanceOverload("unique_double",
-                                                Collections.singletonList(Decls.Double),
-                                                Decls.Bool
-                                        ),
-                                        Decls.newInstanceOverload("unique_int",
-                                                Collections.singletonList(Decls.Int),
-                                                Decls.Bool
-                                        ),
-                                        Decls.newInstanceOverload("unique_string",
-                                                Collections.singletonList(Decls.String),
-                                                Decls.Bool
-                                        ),
-                                        Decls.newInstanceOverload("unique_uint",
-                                                Collections.singletonList(Decls.Uint),
-                                                Decls.Bool
-                                        )
+                                        uniqueOverloads
                                 ),
-                                formatFunction
+                                Decls.newFunction("format",
+                                        formatOverloads
+                                )
                         )
                 )
         );
@@ -208,18 +197,21 @@ public class Lib implements Library {
                         }),
                         unary("unique", (val) -> {
                             switch (val.type().typeEnum()) {
+                                case List:
+                                    Lister lister = (Lister) val;
+                                    if (lister.size().intValue() == 0L) {
+                                        // Uniqueness for empty lists are true.
+                                        return BoolT.True;
+                                    }
+                                    Val firstValue = lister.get(intOf(0));
+                                    return unaryOpForPrimitiveVal(firstValue).invoke(lister);
                                 case Bool:
-                                    return uniqueMemberOverload(BoolT.BoolType, this::uniqueScalar).invoke(val);
                                 case Bytes:
-                                    return uniqueMemberOverload(BytesT.BytesType, this::uniqueBytes).invoke(val);
                                 case Double:
-                                    return uniqueMemberOverload(DoubleT.DoubleType, this::uniqueScalar).invoke(val);
                                 case Int:
-                                    return uniqueMemberOverload(IntT.IntType, this::uniqueScalar).invoke(val);
                                 case String:
-                                    return uniqueMemberOverload(StringT.StringType, this::uniqueScalar).invoke(val);
                                 case Uint:
-                                    return uniqueMemberOverload(UintT.UintType, this::uniqueScalar).invoke(val);
+                                    return unaryOpForPrimitiveVal(val).invoke(val);
                                 default:
                                     return Err.maybeNoSuchOverloadErr(val);
                             }
@@ -339,15 +331,35 @@ public class Lib implements Library {
         return opts;
     }
 
+    private UnaryOp unaryOpForPrimitiveVal(Val val) {
+        switch (val.type().typeEnum()) {
+            case Bool:
+                return uniqueMemberOverload(BoolT.BoolType, this::uniqueScalar);
+            case Bytes:
+                return uniqueMemberOverload(BytesT.BytesType, this::uniqueBytes);
+            case Double:
+                return uniqueMemberOverload(DoubleT.DoubleType, this::uniqueScalar);
+            case Int:
+                return uniqueMemberOverload(IntT.IntType, this::uniqueScalar);
+            case String:
+                return uniqueMemberOverload(StringT.StringType, this::uniqueScalar);
+            case Uint:
+                return uniqueMemberOverload(UintT.UintType, this::uniqueScalar);
+            default:
+                return Err::maybeNoSuchOverloadErr;
+        }
+    }
+
     public UnaryOp uniqueMemberOverload(org.projectnessie.cel.common.types.ref.Type itemType, overloadFunc overload) {
         return value -> {
             Lister list = (Lister) value;
-            if (list == null) {
+            if (list == null || list.size().intValue() == 0L) {
                 // TODO: find appropriate return error
                 return Err.noMoreElements();
             }
-            if (list.type() != itemType.type()) {
-                return Err.newTypeConversionError(list.type(), itemType.type());
+            Val firstValue = list.get(IntT.intOf(0));
+            if (firstValue.type() != itemType) {
+                return Err.newTypeConversionError(list.type(), itemType);
             }
             return overload.invoke(list);
         };
