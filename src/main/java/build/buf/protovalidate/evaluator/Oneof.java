@@ -14,8 +14,8 @@
 
 package build.buf.protovalidate.evaluator;
 
-import build.buf.protovalidate.ValidationResult;
-import build.buf.protovalidate.errors.ValidationError;
+import build.buf.protovalidate.results.ExecutionException;
+import build.buf.protovalidate.results.ValidationResult;
 import build.buf.validate.Violation;
 import com.google.protobuf.Descriptors.OneofDescriptor;
 import com.google.protobuf.Message;
@@ -38,7 +38,7 @@ public class Oneof implements MessageEvaluator {
     }
 
     @Override
-    public ValidationResult evaluate(JavaValue val, boolean failFast) {
+    public ValidationResult evaluate(JavaValue val, boolean failFast) throws ExecutionException {
         return evaluateMessage(val.messageValue(), failFast);
     }
 
@@ -48,18 +48,18 @@ public class Oneof implements MessageEvaluator {
     }
 
     @Override
-    public ValidationResult evaluateMessage(Message message, boolean failFast) {
+    public ValidationResult evaluateMessage(Message message, boolean failFast) throws ExecutionException {
         if (required && (message.getOneofFieldDescriptor(descriptor) == null)) {
-            ValidationError err = new ValidationError();
+            ValidationResult evalResult = new ValidationResult();
             Violation violation = Violation.newBuilder()
                     .setFieldPath(descriptor.getName())
                     .setConstraintId("required")
                     .setMessage("exactly one field is required in oneof")
                     .build();
-            err.addViolation(violation);
-            return new ValidationResult(err);
+            evalResult.addViolation(violation);
+            return evalResult;
         }
-        return ValidationResult.success();
+        return new ValidationResult();
     }
 
     @Override

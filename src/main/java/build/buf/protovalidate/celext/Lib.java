@@ -14,6 +14,7 @@
 
 package build.buf.protovalidate.celext;
 
+import build.buf.protovalidate.results.ExecutionException;
 import build.buf.protovalidate.expression.NowVariable;
 import com.google.api.expr.v1alpha1.Decl;
 import com.google.common.net.InetAddresses;

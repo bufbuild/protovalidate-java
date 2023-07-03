@@ -14,12 +14,12 @@
 
 package build.buf.protovalidate.expression;
 
-import build.buf.protovalidate.errors.ValidationError;
+import build.buf.protovalidate.results.ExecutionException;
+import build.buf.protovalidate.results.ValidationResult;
 import build.buf.protovalidate.evaluator.JavaValue;
 import build.buf.validate.Violation;
 import com.google.protobuf.Message;
 
-import java.util.ArrayList;
 import java.util.List;
 
 // ProgramSet is a list of compiledProgram expressions that are evaluated
@@ -32,37 +32,27 @@ public class ProgramSet {
         this.programs = programs;
     }
 
-    public ValidationError evalMessage(Message val, boolean failFast) {
-        return getError(failFast, val);
+    public ValidationResult evalMessage(Message val, boolean failFast) throws ExecutionException {
+        return evaluate(failFast, val);
     }
 
-    public ValidationError evalValue(JavaValue val, boolean failFast) {
-//        if (val instanceof Message) {
-//            variable.setObject(((Message) val).getDefaultInstanceForType());
-//        } else if (val instanceof MapEntry) {
-//            // TODO: com.google.protobuf.MapEntry is not the right type
-//        } else {
-//
-//        }
-        return getError(failFast, val.value());
+    public ValidationResult evalValue(JavaValue val, boolean failFast) throws ExecutionException {
+        return evaluate(failFast, val.value());
     }
 
-    private ValidationError getError(boolean failFast, Object value) {
+    private ValidationResult evaluate(boolean failFast, Object value) throws ExecutionException {
         Variable activation = new Variable(new NowVariable(), "this", value);
-        List<Violation> violations = new ArrayList<>();
+        ValidationResult evalResult = new ValidationResult();
         for (CompiledProgram program : programs) {
             Violation violation = program.eval(activation);
             if (violation != null) {
-                violations.add(violation);
+                evalResult.addViolation(violation);
                 if (failFast) {
                     break;
                 }
             }
         }
-        if (!violations.isEmpty()) {
-            return new ValidationError(violations);
-        }
-        return null;
+        return evalResult;
     }
 
     public boolean isEmpty() {

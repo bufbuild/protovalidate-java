@@ -14,17 +14,13 @@
 
 package build.buf.protovalidate.evaluator;
 
-import build.buf.protovalidate.ValidationResult;
-import build.buf.protovalidate.errors.ExceptionUtils;
-import build.buf.protovalidate.errors.ValidationError;
+import build.buf.protovalidate.results.ExecutionException;
+import build.buf.protovalidate.results.ValidationResult;
 
 import java.util.Map;
 
 public class KvPairs implements Evaluator {
-
-    // KeyConstraints are checked on the map keys
     public final Value keyConstraints;
-    // ValueConstraints are checked on the map values
     public final Value valueConstraints;
 
     public KvPairs() {
@@ -43,52 +39,47 @@ public class KvPairs implements Evaluator {
     }
 
     @Override
-    public ValidationResult evaluate(JavaValue val, boolean failFast) {
-        Map<JavaValue, JavaValue> mapEntries = val.mapValue();
-        ValidationError error = new ValidationError();
-        for (Map.Entry<JavaValue, JavaValue> entry : mapEntries.entrySet()) {
-            Exception evalErr = evalPairs(entry.getKey(), entry.getValue(), failFast);
-            if (evalErr != null) {
-                String keyName = entry.getKey().value().toString();
-                if (entry.getKey().value() instanceof Number) {
-                    ExceptionUtils.prefixErrorPaths(evalErr, "[%s]", keyName);
-                } else {
-                    ExceptionUtils.prefixErrorPaths(evalErr, "[\"%s\"]", keyName);
-                }
-                boolean merged = ExceptionUtils.merge(error, evalErr, failFast);
-                if (!merged) {
-                    return new ValidationResult(error);
-                }
+    public ValidationResult evaluate(JavaValue val, boolean failFast) throws ExecutionException {
+        ValidationResult validationResult = new ValidationResult();
+        Map<JavaValue, JavaValue> mapValue = val.mapValue();
+        for (Map.Entry<JavaValue, JavaValue> entry : mapValue.entrySet()) {
+            ValidationResult evalResult = evalPairs(entry.getKey(), entry.getValue(), failFast);
+            if (!validationResult.merge(evalResult, failFast)) {
+                return validationResult;
             }
         }
-        if (!error.isEmpty()) {
-            return new ValidationResult(error);
-        }
-        return ValidationResult.success();
+        return validationResult;
     }
 
-    private ValidationError evalPairs(JavaValue key, JavaValue value, boolean failFast) {
-        ValidationError error = new ValidationError();
-        ValidationResult keyEvalErr = keyConstraints.evaluate(key, failFast);
-        if (keyEvalErr.isFailure()) {
-            ExceptionUtils.merge(error, keyEvalErr.error(), failFast);
-            if (!error.isEmpty()) {
-                return error;
-            }
-        }
-        ValidationResult valueEvalErr = valueConstraints.evaluate(value, failFast);
-        if (valueEvalErr.isFailure()) {
-            ExceptionUtils.merge(error, valueEvalErr.error(), failFast);
-            if (!error.isEmpty()) {
-                return error;
-            }
-        }
-        if (!error.isEmpty()) {
-            return error;
-        }
-        return null;
-    }
+    private ValidationResult evalPairs(JavaValue key, JavaValue value, boolean failFast) {
+        ValidationResult evalResult = new ValidationResult();
 
+        try {
+            ValidationResult keyEvalResult = keyConstraints.evaluate(key, failFast);
+            if (!evalResult.merge(keyEvalResult, failFast)) {
+                return keyEvalResult;
+            }
+        } catch (ExecutionException e) {
+            throw new RuntimeException(e);
+        }
+
+        try {
+            ValidationResult valueEvalResult = valueConstraints.evaluate(value, failFast);
+            if (!evalResult.merge(valueEvalResult, failFast)) {
+                return valueEvalResult;
+            }
+        } catch (ExecutionException e) {
+            throw new RuntimeException(e);
+        }
+
+        String keyName = key.value().toString();
+        if (key.value() instanceof Number) {
+            evalResult.prefixErrorPaths("[%s]", keyName);
+        } else {
+            evalResult.prefixErrorPaths("[\"%s\"]", keyName);
+        }
+        return evalResult;
+    }
 
     @Override
     public void append(Evaluator eval) {

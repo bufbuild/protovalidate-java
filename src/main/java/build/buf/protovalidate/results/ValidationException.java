@@ -12,19 +12,20 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package build.buf.protovalidate.evaluator;
+package build.buf.protovalidate.results;
 
-import build.buf.protovalidate.results.ExecutionException;
-import build.buf.protovalidate.results.ValidationResult;
+public class ValidationException extends Exception {
 
-public interface Evaluator {
-    boolean tautology();
+    public ValidationException(String message, Throwable cause) {
+        super(message, cause);
+    }
 
-    ValidationResult evaluate(JavaValue val, boolean failFast) throws ExecutionException;
+    public ValidationException(Throwable cause) {
+        super(cause);
+    }
 
-    void append(Evaluator eval);
+    public ValidationException(String message) {
+        super(message);
+    }
+
 }
-
-
-
-

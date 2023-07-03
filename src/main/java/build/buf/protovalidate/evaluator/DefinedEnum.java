@@ -14,8 +14,8 @@
 
 package build.buf.protovalidate.evaluator;
 
-import build.buf.protovalidate.ValidationResult;
-import build.buf.protovalidate.errors.ValidationError;
+import build.buf.protovalidate.results.ExecutionException;
+import build.buf.protovalidate.results.ValidationResult;
 import build.buf.validate.Violation;
 import com.google.protobuf.Descriptors;
 
@@ -34,17 +34,17 @@ public class DefinedEnum implements Evaluator {
     }
 
     @Override
-    public ValidationResult evaluate(JavaValue val, boolean failFast) {
-        Descriptors.EnumValueDescriptor enumValue = val.value();
+    public ValidationResult evaluate(JavaValue val, boolean failFast) throws ExecutionException {
+        Descriptors.EnumValueDescriptor enumValue = (Descriptors.EnumValueDescriptor) val.value();
         if (!isValueValid(enumValue)) {
-            ValidationError err = new ValidationError();
-            err.addViolation(Violation.newBuilder()
+            ValidationResult evalResult = new ValidationResult();
+            evalResult.addViolation(Violation.newBuilder()
                     .setConstraintId("enum.defined_only")
                     .setMessage("value must be one of the defined enum values")
                     .build());
-            return new ValidationResult(err);
+            return evalResult;
         }
-        return ValidationResult.success();
+        return new ValidationResult();
     }
 
     @Override

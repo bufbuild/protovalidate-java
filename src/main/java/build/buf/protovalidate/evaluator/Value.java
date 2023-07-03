@@ -14,7 +14,8 @@
 
 package build.buf.protovalidate.evaluator;
 
-import build.buf.protovalidate.ValidationResult;
+import build.buf.protovalidate.results.ExecutionException;
+import build.buf.protovalidate.results.ValidationResult;
 
 import java.util.ArrayList;
 
@@ -43,15 +44,11 @@ public class Value implements Evaluator {
     }
 
     @Override
-    public ValidationResult evaluate(JavaValue val, boolean failFast) {
+    public ValidationResult evaluate(JavaValue val, boolean failFast) throws ExecutionException {
         if (ignoreEmpty && isZero(val)) {
-            return ValidationResult.success();
+            return new ValidationResult();
         }
-        ValidationResult validationResult = constraints.evaluate(val, failFast);
-        if (validationResult.isFailure()) {
-            return validationResult;
-        }
-        return ValidationResult.success();
+        return constraints.evaluate(val, failFast);
     }
 
     private boolean isZero(JavaValue val) {

@@ -14,7 +14,7 @@
 
 package build.buf.protovalidate.expression;
 
-import build.buf.protovalidate.errors.CompilationError;
+import build.buf.protovalidate.results.CompilationException;
 import build.buf.validate.Constraint;
 import com.google.api.expr.v1alpha1.Type;
 import org.projectnessie.cel.Ast;
@@ -25,11 +25,8 @@ import org.projectnessie.cel.common.Source;
 import java.util.ArrayList;
 import java.util.List;
 
-// Compile produces a ProgramSet from the provided expressions in the given
-// environment. If the generated cel.Program require cel.ProgramOption params,
-// use CompileASTs instead with a subsequent call to AstSet.ToProgramSet.
 public class Compiler {
-    public static AstSet compileASTs(List<build.buf.validate.priv.Constraint> constraints, Env env, EnvOption... envOpts) throws CompilationError {
+    public static AstSet compileASTs(List<build.buf.validate.priv.Constraint> constraints, Env env, EnvOption... envOpts) throws CompilationException {
         List<Expression> expressions = new ArrayList<>();
         for (build.buf.validate.priv.Constraint constraint : constraints) {
             expressions.add(new Expression(constraint.getId(), constraint.getMessage(), constraint.getExpression()));
@@ -45,7 +42,7 @@ public class Compiler {
         return new AstSet(finalEnv, compiledAsts);
     }
 
-    public static ProgramSet compileConstraints(List<Constraint> constraints, Env env, EnvOption... envOpts) throws CompilationError {
+    public static ProgramSet compileConstraints(List<Constraint> constraints, Env env, EnvOption... envOpts) throws CompilationException {
         List<Expression> expressions = new ArrayList<>();
         for (Constraint constraint : constraints) {
             expressions.add(new Expression(constraint.getId(), constraint.getMessage(), constraint.getExpression()));
@@ -53,22 +50,14 @@ public class Compiler {
         return compile(expressions, env, envOpts);
     }
 
-    public static ProgramSet compilePrivateConstraints(List<build.buf.validate.priv.Constraint> constraints, Env env, EnvOption... envOpts) throws CompilationError {
-        List<Expression> expressions = new ArrayList<>();
-        for (build.buf.validate.priv.Constraint constraint : constraints) {
-            expressions.add(new Expression(constraint.getId(), constraint.getMessage(), constraint.getExpression()));
-        }
-        return compile(expressions, env, envOpts);
-    }
-
-    public static ProgramSet compile(List<Expression> expressions, Env env, EnvOption... envOpts) throws CompilationError {
+    public static ProgramSet compile(List<Expression> expressions, Env env, EnvOption... envOpts) throws CompilationException {
         Env finalEnv = env;
         finalEnv.extend(EnvOption.features(EnvOption.EnvFeature.FeatureDisableDynamicAggregateLiterals));
         if (envOpts.length > 0) {
             try {
                 finalEnv = env.extend(envOpts);
             } catch (Exception e) {
-                throw new RuntimeException(e);
+                throw new CompilationException("failed to extend environment: " + e.getMessage());
             }
         }
         List<CompiledProgram> programs = new ArrayList<>();
@@ -80,17 +69,17 @@ public class Compiler {
         return new ProgramSet(programs);
     }
 
-    private static CompiledAst compileAST(Env env, Expression expr) throws CompilationError {
+    private static CompiledAst compileAST(Env env, Expression expr) throws CompilationException {
         env.parseSource(Source.newTextSource(expr.expression));
         Env.AstIssuesTuple astIssuesTuple = env.compile(expr.expression);
         if (astIssuesTuple.hasIssues()) {
-            throw CompilationError.newCompilationError("failed to compile expression %s", expr.id);
+            throw new CompilationException("failed to compile expression " + expr.id);
         }
         Ast ast = astIssuesTuple.getAst();
         Type outType = ast.getResultType();
         // TODO: This is false always. Comparing incompatible types.
         if (outType.equals(Type.PrimitiveType.BOOL) || outType.equals(Type.PrimitiveType.STRING)) {
-            throw CompilationError.newCompilationError("expression outputs, wanted either bool or string", expr.id, outType.toString());
+            throw new CompilationException("expression outputs, wanted either bool or string %s %s", expr.id, outType.toString());
         }
         return new CompiledAst(ast, expr);
     }

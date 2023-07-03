@@ -14,8 +14,8 @@
 
 package build.buf.protovalidate.evaluator;
 
-import build.buf.protovalidate.ValidationResult;
-import build.buf.protovalidate.errors.ValidationError;
+import build.buf.protovalidate.results.ExecutionException;
+import build.buf.protovalidate.results.ValidationResult;
 import build.buf.validate.Violation;
 import com.google.protobuf.Descriptors;
 import com.google.protobuf.Message;
@@ -46,18 +46,18 @@ public class Any implements Evaluator {
     }
 
     @Override
-    public ValidationResult evaluate(JavaValue val, boolean failFast) {
-        ValidationError validationError = new ValidationError();
-        Message o = val.value();
+    public ValidationResult evaluate(JavaValue val, boolean failFast) throws ExecutionException {
+        ValidationResult evalResult = new ValidationResult();
+        Message o = (Message) val.value();
         String typeURL = (String) o.getField(typeURLDescriptor);
         if (in != null && in.size() > 0) {
             if (!in.containsKey(typeURL)) {
                 Violation.Builder violation = Violation.newBuilder();
                 violation.setConstraintId("any.in");
                 violation.setMessage("type URL must be in the allow list");
-                validationError.addViolation(violation.build());
+                evalResult.addViolation(violation.build());
                 if (failFast) {
-                    return new ValidationResult(validationError);
+                    return evalResult;
                 }
             }
         }
@@ -67,10 +67,10 @@ public class Any implements Evaluator {
                 Violation.Builder violation = Violation.newBuilder();
                 violation.setConstraintId("any.not_in");
                 violation.setMessage("type URL must not be in the block list");
-                validationError.addViolation(violation.build());
+                evalResult.addViolation(violation.build());
             }
         }
-        return new ValidationResult(validationError);
+        return evalResult;
     }
 
     @Override

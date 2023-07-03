@@ -14,8 +14,8 @@
 
 package build.buf.protovalidate.evaluator;
 
-import build.buf.protovalidate.ValidationResult;
-import build.buf.protovalidate.errors.ValidationError;
+import build.buf.protovalidate.results.ExecutionException;
+import build.buf.protovalidate.results.ValidationResult;
 import build.buf.protovalidate.expression.ProgramSet;
 import com.google.protobuf.Message;
 
@@ -36,9 +36,8 @@ public class CelPrograms implements Evaluator, MessageEvaluator {
     }
 
     @Override
-    public ValidationResult evaluate(JavaValue val, boolean failFast) {
-        ValidationError error = programSet.evalValue(val, failFast);
-        return new ValidationResult(error);
+    public ValidationResult evaluate(JavaValue val, boolean failFast) throws ExecutionException {
+        return programSet.evalValue(val, failFast);
     }
 
     @Override
@@ -47,12 +46,8 @@ public class CelPrograms implements Evaluator, MessageEvaluator {
     }
 
     @Override
-    public ValidationResult evaluateMessage(Message val, boolean failFast) throws ValidationError {
-        ValidationError eval = programSet.evalMessage(val, failFast);
-        if (eval != null) {
-            return new ValidationResult(eval);
-        }
-        return ValidationResult.success();
+    public ValidationResult evaluateMessage(Message val, boolean failFast) throws ExecutionException {
+        return programSet.evalMessage(val, failFast);
     }
 
     @Override

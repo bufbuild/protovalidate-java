@@ -14,16 +14,11 @@
 
 package build.buf.protovalidate.evaluator;
 
-import build.buf.protovalidate.ValidationResult;
-import build.buf.protovalidate.errors.ValidationError;
+import build.buf.protovalidate.results.ExecutionException;
+import build.buf.protovalidate.results.ValidationResult;
 import build.buf.validate.Violation;
 import com.google.protobuf.Descriptors.FieldDescriptor;
-import com.google.protobuf.DynamicMessage;
-import com.google.protobuf.MapEntry;
 import com.google.protobuf.Message;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class FieldEval implements MessageEvaluator {
     public final Value value;
@@ -43,12 +38,12 @@ public class FieldEval implements MessageEvaluator {
     }
 
     @Override
-    public ValidationResult evaluate(JavaValue val, boolean failFast) {
+    public ValidationResult evaluate(JavaValue val, boolean failFast) throws ExecutionException {
         return evaluateMessage(val.messageValue(), failFast);
     }
 
     @Override
-    public ValidationResult evaluateMessage(Message message, boolean failFast) throws ValidationError {
+    public ValidationResult evaluateMessage(Message message, boolean failFast) throws ExecutionException {
         boolean hasField;
         // TODO: how does this behave in other descriptor value types like map?
         if (descriptor.isRepeated()) {
@@ -57,24 +52,22 @@ public class FieldEval implements MessageEvaluator {
             hasField = message.hasField(descriptor);
         }
         if (required && !hasField) {
-            ValidationError err = new ValidationError();
-            err.addViolation(Violation.newBuilder()
+            ValidationResult evalResult = new ValidationResult();
+            evalResult.addViolation(Violation.newBuilder()
                     .setFieldPath(descriptor.getName())
                     .setConstraintId("required")
                     .setMessage("value is required")
                     .build());
-            return new ValidationResult(err);
+            return evalResult;
         }
 
         if ((optional || value.ignoreEmpty) && !hasField) {
-            return ValidationResult.success();
+            return new ValidationResult();
         }
         Object fieldValue = message.getField(descriptor);
-        ValidationResult evaluate = value.evaluate(new JavaValue(descriptor, fieldValue), failFast);
-        if (evaluate.isFailure()) {
-            evaluate.prefixErrorPaths(descriptor.getName());
-        }
-        return evaluate;
+        ValidationResult evalResult = value.evaluate(new JavaValue(descriptor, fieldValue), failFast);
+        evalResult.prefixErrorPaths("%s", descriptor.getName());
+        return evalResult;
     }
 
     @Override

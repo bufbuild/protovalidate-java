@@ -16,22 +16,20 @@ package build.buf.protovalidate.evaluator;
 
 import com.google.protobuf.AbstractMessage;
 import com.google.protobuf.Descriptors;
-import com.google.protobuf.DynamicMessage;
 import com.google.protobuf.Message;
 import org.projectnessie.cel.common.ULong;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.Map;
 import java.util.List;
+import java.util.Map;
 
-
-public class JavaValue {
+public class JavaValue<T> {
     private final Descriptors.FieldDescriptor fieldDescriptor;
-    private final Object value;
+    private final T value;
 
-    public JavaValue(Descriptors.FieldDescriptor fieldDescriptor, Object value) {
+    public JavaValue(Descriptors.FieldDescriptor fieldDescriptor, T value) {
         this.fieldDescriptor = fieldDescriptor;
         this.value = value;
     }
@@ -43,7 +41,7 @@ public class JavaValue {
         return null;
     }
 
-    public <T> T value() {
+    public T value() {
         Descriptors.FieldDescriptor.Type type = fieldDescriptor.getType();
         if (!fieldDescriptor.isRepeated() && (type == Descriptors.FieldDescriptor.Type.UINT32
                 || type == Descriptors.FieldDescriptor.Type.UINT64
@@ -56,15 +54,15 @@ public class JavaValue {
             return (T) ULong.valueOf(((Number) value).longValue());
         }
         // Dynamic programming in a static language.
-        return (T) value;
+        return value;
     }
 
-    public List<JavaValue> repeatedValue() {
-        List<JavaValue> out = new ArrayList<>();
+    public List<JavaValue<T>> repeatedValue() {
+        List<JavaValue<T>> out = new ArrayList<>();
         if (fieldDescriptor.isRepeated()) {
             List<?> list = (List<?>) value;
             for (Object o : list) {
-                out.add(new JavaValue(fieldDescriptor, o));
+                out.add(new JavaValue<>(fieldDescriptor, (T) o));
             }
         }
         return out;
@@ -88,5 +86,4 @@ public class JavaValue {
 
         return out;
     }
-
 }

@@ -14,8 +14,8 @@
 
 package build.buf.protovalidate.evaluator;
 
-import build.buf.protovalidate.ValidationResult;
-import build.buf.protovalidate.errors.ValidationError;
+import build.buf.protovalidate.results.ExecutionException;
+import build.buf.protovalidate.results.ValidationResult;
 import com.google.protobuf.Descriptors.Descriptor;
 import com.google.protobuf.Message;
 
@@ -29,8 +29,8 @@ public class UnknownMessage implements MessageEvaluator {
         this.desc = desc;
     }
 
-    public ValidationError err() {
-        throw new ValidationError("No evaluator available for " + desc.getFullName());
+    public ValidationResult err() {
+        throw new ValidationResult("No evaluator available for " + desc.getFullName());
     }
 
     @Override
@@ -39,7 +39,7 @@ public class UnknownMessage implements MessageEvaluator {
     }
 
     @Override
-    public ValidationResult evaluate(JavaValue val, boolean failFast) {
+    public ValidationResult evaluate(JavaValue val, boolean failFast) throws ExecutionException {
         throw this.err();
     }
 
@@ -49,8 +49,8 @@ public class UnknownMessage implements MessageEvaluator {
     }
 
     @Override
-    public ValidationResult evaluateMessage(Message val, boolean failFast) {
-        return new ValidationResult(err());
+    public ValidationResult evaluateMessage(Message val, boolean failFast) throws ExecutionException {
+        return err();
     }
 
     @Override

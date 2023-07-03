@@ -16,7 +16,7 @@ package build.buf.protovalidate.evaluator;
 
 import build.buf.protovalidate.constraints.Cache;
 import build.buf.protovalidate.constraints.Lookups;
-import build.buf.protovalidate.errors.CompilationError;
+import build.buf.protovalidate.results.CompilationException;
 import build.buf.protovalidate.expression.Compiler;
 import build.buf.protovalidate.expression.ProgramSet;
 import build.buf.validate.Constraint;
@@ -50,7 +50,7 @@ public class Builder {
     private final Loader loader;
     private final ExtensionRegistry extensionRegistry = ExtensionRegistry.newInstance();
 
-    public Builder(Env env, boolean disableLazy, ConstraintResolver res, List<Descriptor> seedDesc) {
+    public Builder(Env env, boolean disableLazy, ConstraintResolver res) {
         this.env = env;
         this.constraints = new Cache();
         this.resolver = res;
@@ -60,13 +60,6 @@ public class Builder {
             this.loader = this::loadOrBuild;
         }
 
-        for (Descriptor desc : seedDesc) {
-            try {
-                this.loader.load(desc);
-            } catch (CompilationError e) {
-                throw new RuntimeException(e);
-            }
-        }
         extensionRegistry.add(ValidateProto.message);
         extensionRegistry.add(ValidateProto.field);
         extensionRegistry.add(ValidateProto.oneof);
@@ -87,7 +80,7 @@ public class Builder {
         return evaluator;
     }
 
-    public MessageEvaluator loadOrBuild(Descriptor desc) throws CompilationError {
+    public MessageEvaluator loadOrBuild(Descriptor desc) throws CompilationException {
         MessageEvaluator eval = cache.get(desc);
         if (eval != null) {
             return eval;
@@ -95,7 +88,7 @@ public class Builder {
         return build(desc);
     }
 
-    private MessageEvaluator build(Descriptor desc) throws CompilationError {
+    private MessageEvaluator build(Descriptor desc) throws CompilationException {
         MessageEvaluator eval = cache.get(desc);
         if (eval != null) {
             return eval;
@@ -106,7 +99,7 @@ public class Builder {
         return msgEval;
     }
 
-    private void buildMessage(Descriptor desc, MessageEvaluator msgEval) throws CompilationError {
+    private void buildMessage(Descriptor desc, MessageEvaluator msgEval) throws CompilationException {
         try {
             DynamicMessage defaultInstance = DynamicMessage.parseFrom(desc, new byte[0], extensionRegistry);
             Descriptor descriptor = defaultInstance.getDescriptorForType();
@@ -118,11 +111,11 @@ public class Builder {
             processOneofConstraints(descriptor, msgConstraints, msgEval);
             processFields(descriptor, msgEval);
         } catch (InvalidProtocolBufferException e) {
-            throw new RuntimeException(e);
+            throw new CompilationException("failed to parse proto definition: " + desc.getFullName());
         }
     }
 
-    private void processMessageExpressions(Descriptor desc, MessageConstraints msgConstraints, MessageEvaluator msgEval, DynamicMessage message) throws CompilationError {
+    private void processMessageExpressions(Descriptor desc, MessageConstraints msgConstraints, MessageEvaluator msgEval, DynamicMessage message) throws CompilationException {
         List<Constraint> celList = msgConstraints.getCelList();
         if (celList.isEmpty()) {
             return;
@@ -135,8 +128,8 @@ public class Builder {
                         Decls.newVar("this", Decls.newObjectType(desc.getFullName()))
                 )
         );
-        if (compiledExpressions == null) {
-            throw new RuntimeException("compile returned null");
+        if (compiledExpressions.programs.isEmpty()) {
+            throw new CompilationException("compile returned null");
         }
         msgEval.append(new CelPrograms(compiledExpressions));
     }
@@ -150,7 +143,7 @@ public class Builder {
         }
     }
 
-    private void processFields(Descriptor desc, MessageEvaluator msgEval) throws CompilationError {
+    private void processFields(Descriptor desc, MessageEvaluator msgEval) throws CompilationException {
         List<FieldDescriptor> fields = desc.getFields();
         for (FieldDescriptor fieldDescriptor : fields) {
             FieldDescriptor descriptor = desc.findFieldByName(fieldDescriptor.getName());
@@ -160,7 +153,7 @@ public class Builder {
         }
     }
 
-    private FieldEval buildField(FieldDescriptor fieldDescriptor, FieldConstraints fieldConstraints) throws CompilationError {
+    private FieldEval buildField(FieldDescriptor fieldDescriptor, FieldConstraints fieldConstraints) throws CompilationException {
         Value valueEval = new Value(fieldConstraints.getIgnoreEmpty());
         FieldEval fieldEval = new FieldEval(
                 valueEval,
@@ -179,7 +172,7 @@ public class Builder {
     }
 
 
-    private void buildValue(FieldDescriptor fieldDescriptor, FieldConstraints fieldConstraints, boolean forItems, Value valueEval) throws CompilationError {
+    private void buildValue(FieldDescriptor fieldDescriptor, FieldConstraints fieldConstraints, boolean forItems, Value valueEval) throws CompilationException {
         valueEval.ignoreEmpty = fieldConstraints.getIgnoreEmpty();
         processZeroValue(fieldDescriptor, fieldConstraints, forItems, valueEval);
         processFieldExpressions(fieldDescriptor, fieldConstraints, forItems, valueEval);
@@ -205,7 +198,7 @@ public class Builder {
         }
     }
 
-    private void processFieldExpressions(FieldDescriptor fieldDescriptor, FieldConstraints fieldConstraints, Boolean forItems, Value valueEval) throws CompilationError {
+    private void processFieldExpressions(FieldDescriptor fieldDescriptor, FieldConstraints fieldConstraints, Boolean forItems, Value valueEval) throws CompilationException {
         List<Constraint> constraintsCelList = fieldConstraints.getCelList();
         if (constraintsCelList.isEmpty()) {
             return;
@@ -219,7 +212,7 @@ public class Builder {
                         EnvOption.declarations(Decls.newVar("this", Decls.newObjectType(fieldDescriptor.getMessageType().getFullName())))
                 );
             } catch (InvalidProtocolBufferException e) {
-                throw CompilationError.newCompilationError("field descriptor type is invalid", e);
+                throw new CompilationException("field descriptor type is invalid " + e.getMessage());
             }
         } else {
             opts = Collections.singletonList(
@@ -232,7 +225,7 @@ public class Builder {
         }
     }
 
-    private void processEmbeddedMessage(FieldDescriptor fieldDescriptor, FieldConstraints fieldConstraints, Boolean forItems, Value valueEval) throws CompilationError {
+    private void processEmbeddedMessage(FieldDescriptor fieldDescriptor, FieldConstraints fieldConstraints, Boolean forItems, Value valueEval) throws CompilationException {
         if (fieldDescriptor.getType() != FieldDescriptor.Type.MESSAGE ||
                 fieldConstraints.getSkipped() ||
                 fieldDescriptor.isMapField() || (fieldDescriptor.isRepeated() && !forItems)) {
@@ -243,7 +236,7 @@ public class Builder {
         valueEval.append(embedEval);
     }
 
-    private void processWrapperConstraints(FieldDescriptor fieldDescriptor, FieldConstraints fieldConstraints, Boolean forItems, Value valueEval) throws CompilationError {
+    private void processWrapperConstraints(FieldDescriptor fieldDescriptor, FieldConstraints fieldConstraints, Boolean forItems, Value valueEval) throws CompilationException {
         if (fieldDescriptor.getType() != FieldDescriptor.Type.MESSAGE ||
                 fieldConstraints.getSkipped() ||
                 fieldDescriptor.isMapField() || (fieldDescriptor.isRepeated() && !forItems)) {
@@ -264,7 +257,7 @@ public class Builder {
         valueEval.append(unwrapped.constraints);
     }
 
-    private void processStandardConstraints(FieldDescriptor fieldDescriptor, FieldConstraints fieldConstraints, Boolean forItems, Value valueEval) throws CompilationError {
+    private void processStandardConstraints(FieldDescriptor fieldDescriptor, FieldConstraints fieldConstraints, Boolean forItems, Value valueEval) throws CompilationException {
         ProgramSet stdConstraints = constraints.build(env, fieldDescriptor, fieldConstraints, forItems);
         // TODO: verify null check error handling, it may not need to be handled when there are no constraints
         if (stdConstraints == null) {
@@ -274,7 +267,7 @@ public class Builder {
         valueEval.append(eval);
     }
 
-    private void processAnyConstraints(FieldDescriptor fieldDescriptor, FieldConstraints fieldConstraints, Boolean forItems, Value valueEval) throws CompilationError {
+    private void processAnyConstraints(FieldDescriptor fieldDescriptor, FieldConstraints fieldConstraints, Boolean forItems, Value valueEval) throws CompilationException {
         if ((fieldDescriptor.isRepeated() && !forItems) ||
                 fieldDescriptor.getType() != FieldDescriptor.Type.MESSAGE ||
                 !fieldDescriptor.getMessageType().getFullName().equals("google.protobuf.Any")) {
@@ -289,7 +282,7 @@ public class Builder {
         valueEval.append(anyEval);
     }
 
-    private void processEnumConstraints(FieldDescriptor fieldDescriptor, FieldConstraints fieldConstraints, Boolean forItems, Value valueEval) throws CompilationError {
+    private void processEnumConstraints(FieldDescriptor fieldDescriptor, FieldConstraints fieldConstraints, Boolean forItems, Value valueEval) throws CompilationException {
         if (fieldDescriptor.getJavaType() != FieldDescriptor.JavaType.ENUM) {
             return;
         }
@@ -300,7 +293,7 @@ public class Builder {
         }
     }
 
-    private void processMapConstraints(FieldDescriptor fieldDescriptor, FieldConstraints fieldConstraints, Boolean forItems, Value valueEval) throws CompilationError {
+    private void processMapConstraints(FieldDescriptor fieldDescriptor, FieldConstraints fieldConstraints, Boolean forItems, Value valueEval) throws CompilationException {
         if (!fieldDescriptor.isMapField()) {
             return;
         }
@@ -319,7 +312,7 @@ public class Builder {
         valueEval.append(mapEval);
     }
 
-    private void processRepeatedConstraints(FieldDescriptor fieldDescriptor, FieldConstraints fieldConstraints, Boolean forItems, Value valueEval) throws CompilationError {
+    private void processRepeatedConstraints(FieldDescriptor fieldDescriptor, FieldConstraints fieldConstraints, Boolean forItems, Value valueEval) throws CompilationException {
         if (!fieldDescriptor.isRepeated() || forItems) {
             return;
         }
@@ -335,6 +328,6 @@ public class Builder {
 
     @FunctionalInterface
     public interface Loader {
-        MessageEvaluator load(Descriptor desc) throws CompilationError;
+        MessageEvaluator load(Descriptor desc) throws CompilationException;
     }
 }

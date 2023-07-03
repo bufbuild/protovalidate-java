@@ -14,11 +14,9 @@
 
 package build.buf.protovalidate.evaluator;
 
-import build.buf.protovalidate.ValidationResult;
-import build.buf.protovalidate.errors.ValidationError;
-import build.buf.validate.Violation;
+import build.buf.protovalidate.results.ExecutionException;
+import build.buf.protovalidate.results.ValidationResult;
 
-import java.util.ArrayList;
 import java.util.List;
 
 // TODO: Extra layer
@@ -40,22 +38,16 @@ class Evaluators implements Evaluator {
     }
 
     @Override
-    public ValidationResult evaluate(JavaValue val, boolean failFast) {
-        List<Violation> allViolations = new ArrayList<>();
+    public ValidationResult evaluate(JavaValue val, boolean failFast) throws ExecutionException {
+        ValidationResult validationResult = new ValidationResult();
         for (Evaluator evaluator : evaluators) {
-            ValidationResult evaluate = evaluator.evaluate(val, failFast);
-            // TODO: handle non-fail fast scenarios. failing fast always here.
-            if (evaluate.isFailure()) {
-                if (failFast) {
-                    return evaluate;
-                }
-                allViolations.addAll(evaluate.error().violations);
+            ValidationResult evalResult = evaluator.evaluate(val, failFast);
+            if (!validationResult.merge(evalResult, failFast)) {
+                return evalResult;
             }
         }
-        if (allViolations.isEmpty()) {
-            return ValidationResult.success();
-        }
-        return new ValidationResult(new ValidationError(allViolations));
+
+        return validationResult;
     }
 
     @Override

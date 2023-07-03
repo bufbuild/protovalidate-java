@@ -14,12 +14,9 @@
 
 package build.buf.protovalidate.evaluator;
 
-import build.buf.protovalidate.ValidationResult;
-import build.buf.protovalidate.errors.ValidationError;
-import build.buf.validate.Violation;
+import build.buf.protovalidate.results.ExecutionException;
+import build.buf.protovalidate.results.ValidationResult;
 
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class ListItems implements Evaluator {
@@ -30,6 +27,7 @@ public class ListItems implements Evaluator {
     public ListItems() {
         this(new Value());
     }
+
     public ListItems(Value itemConstraints) {
         this.itemConstraints = itemConstraints;
     }
@@ -40,30 +38,18 @@ public class ListItems implements Evaluator {
     }
 
     @Override
-    public ValidationResult evaluate(JavaValue val, boolean failFast) {
-        List<Violation> violations = new ArrayList<>();
+    public ValidationResult evaluate(JavaValue val, boolean failFast) throws ExecutionException {
+        ValidationResult validationResult = new ValidationResult();
+
         List<JavaValue> repeatedValues = val.repeatedValue();
         for (int i = 0; i < repeatedValues.size(); i++) {
-            JavaValue value = repeatedValues.get(i);
-            ValidationResult evaluate = itemConstraints.evaluate(value, failFast);
-            // Aggregate errors here. For now we dont.
-            if (evaluate.isFailure()) {
-                evaluate.prefixErrorPaths("[%d]", i);
-                if (failFast) {
-                    return new ValidationResult(new ValidationError(evaluate.error().violations));
-                }
-                // TODO: violation string prefix error paths
-                violations.addAll(evaluate.error().violations);
+            ValidationResult evalResult = itemConstraints.evaluate(repeatedValues.get(i), failFast);
+            evalResult.prefixErrorPaths("[%d]", i);
+            if (!validationResult.merge(evalResult, failFast)) {
+                return evalResult;
             }
-//            TODO: merge errors
-//            ErrorUtils.merge()
         }
-        if (!violations.isEmpty()) {
-            // TODO: make this right
-            return new ValidationResult(new ValidationError(violations));
-        }
-
-        return ValidationResult.success();
+        return validationResult;
     }
 
     @Override

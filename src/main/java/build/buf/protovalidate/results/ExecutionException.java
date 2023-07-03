@@ -12,28 +12,19 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package build.buf.protovalidate.errors;
+package build.buf.protovalidate.results;
 
-public class CompilationError extends Exception {
+public class ExecutionException extends ValidationException {
 
-    private final Exception e;
-
-    public CompilationError(Exception e) {
-        super(e.getMessage(), e);
-        this.e = e;
+    public ExecutionException(String message, Throwable cause) {
+        super(message, cause);
     }
 
-    public static CompilationError newCompilationError(String format, Object... args) {
-        return new CompilationError(new Exception(String.format(format, args)));
+    public ExecutionException(Throwable cause) {
+        super(cause);
     }
 
-    @Override
-    public synchronized Throwable getCause() {
-        return e;
-    }
-
-    @Override
-    public String getMessage() {
-        return e.toString();
+    public ExecutionException(String format, Object... args) {
+        super(String.format(format, args));
     }
 }

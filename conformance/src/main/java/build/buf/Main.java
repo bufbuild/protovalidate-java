@@ -15,20 +15,16 @@
 package build.buf;
 
 import build.buf.protovalidate.Config;
-import build.buf.protovalidate.ValidationResult;
-import build.buf.protovalidate.errors.CompilationError;
-import build.buf.protovalidate.errors.RuntimeError;
-import build.buf.protovalidate.errors.ValidationError;
+import build.buf.protovalidate.results.CompilationException;
 import build.buf.protovalidate.Validator;
+import build.buf.protovalidate.results.ExecutionException;
+import build.buf.protovalidate.results.ValidationResult;
 import build.buf.validate.ValidateProto;
-import build.buf.validate.Violation;
-import build.buf.validate.conformance.cases.custom_constraints.MessageExpressions;
 import build.buf.validate.conformance.harness.TestConformanceRequest;
 import build.buf.validate.conformance.harness.TestConformanceResponse;
 import build.buf.validate.conformance.harness.TestResult;
 import com.google.protobuf.*;
 
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -65,7 +61,7 @@ public class Main {
         }
     }
 
-    static TestResult testCase(Validator validator, Map<String, Descriptors.Descriptor> fileDescriptors, Any testCase) {
+    static TestResult testCase(Validator validator, Map<String, Descriptors.Descriptor> fileDescriptors, Any testCase) throws InvalidProtocolBufferException {
         String[] urlParts = testCase.getTypeUrl().split("/");
         String fullName = urlParts[urlParts.length - 1];
         Descriptors.Descriptor descriptor = fileDescriptors.get(fullName);
@@ -74,21 +70,31 @@ public class Main {
         }
         // run test case:
         ByteString testCaseValue = testCase.getValue();
+        DynamicMessage dynamicMessage = DynamicMessage.newBuilder(descriptor)
+                .mergeFrom(testCaseValue)
+                .build();
+        return execute(validator, dynamicMessage);
+    }
+
+    private static TestResult execute(Validator validator, DynamicMessage dynamicMessage) {
         try {
-            DynamicMessage dynamicMessage = DynamicMessage.newBuilder(descriptor)
-                    .mergeFrom(testCaseValue)
-                    .build();
-            boolean result = validateOrThrow(validator, dynamicMessage);
-            return TestResult.newBuilder()
-                    .setSuccess(result)
-                    .build();
-        } catch (CompilationError e) {
+            ValidationResult result = validator.validate(dynamicMessage);
+            if (result.isSuccess()) {
+                return TestResult.newBuilder()
+                        .setSuccess(true)
+                        .build();
+            } else {
+                return TestResult.newBuilder()
+                        .setValidationError(result.asViolations())
+                        .build();
+            }
+        } catch (CompilationException e) {
             return TestResult.newBuilder()
                     .setCompilationError(e.getMessage())
                     .build();
-        } catch (ValidationError e) {
+        } catch (ExecutionException e) {
             return TestResult.newBuilder()
-                    .setValidationError(e.asViolations())
+                    .setRuntimeError(e.getMessage())
                     .build();
         } catch (Exception e) {
             return unexpectedErrorResult("unknown error: %s", e.toString());
@@ -100,13 +106,5 @@ public class Main {
         return TestResult.newBuilder()
                 .setUnexpectedError(errorMessage)
                 .build();
-    }
-
-    static boolean validateOrThrow(Validator validator, Message msg) throws CompilationError {
-        ValidationResult validationResult = validator.validate(msg);
-        if (validationResult.error() != null) {
-            throw validationResult.error();
-        }
-        return validationResult.isSuccess();
     }
 }

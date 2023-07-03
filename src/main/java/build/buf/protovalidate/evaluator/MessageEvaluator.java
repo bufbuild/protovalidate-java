@@ -14,7 +14,8 @@
 
 package build.buf.protovalidate.evaluator;
 
-import build.buf.protovalidate.ValidationResult;
+import build.buf.protovalidate.results.ExecutionException;
+import build.buf.protovalidate.results.ValidationResult;
 import com.google.protobuf.Message;
 
 /**
@@ -22,6 +23,6 @@ import com.google.protobuf.Message;
  * Feels like this is something that we can remove.
  */
 public interface MessageEvaluator extends Evaluator {
-    ValidationResult evaluateMessage(Message val, boolean failFast);
+    ValidationResult evaluateMessage(Message val, boolean failFast) throws ExecutionException;
     void append(MessageEvaluator eval);
 }

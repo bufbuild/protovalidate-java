@@ -14,7 +14,7 @@
 
 package build.buf.protovalidate.constraints;
 
-import build.buf.protovalidate.errors.CompilationError;
+import build.buf.protovalidate.results.CompilationException;
 import build.buf.protovalidate.expression.AstSet;
 import build.buf.protovalidate.expression.Compiler;
 import build.buf.protovalidate.expression.ProgramSet;
@@ -43,7 +43,7 @@ public class Cache {
     }
 
     // This method resolves constraints for a given field based on the provided field descriptor, field constraints, and a flag indicating whether it is for items.
-    private Message resolveConstraints(FieldDescriptor fieldDescriptor, FieldConstraints fieldConstraints, Boolean forItems) throws CompilationError {
+    private Message resolveConstraints(FieldDescriptor fieldDescriptor, FieldConstraints fieldConstraints, Boolean forItems) throws CompilationException {
         // Get the oneof field descriptor from the field constraints.
         FieldDescriptor oneofFieldDescriptor = fieldConstraints.getOneofFieldDescriptor(Lookups.FIELD_CONSTRAINTS_ONEOF_DESC);
         if (oneofFieldDescriptor == null) {
@@ -56,7 +56,7 @@ public class Cache {
         boolean ok = expectedConstraintDescriptor != null;
         if (ok && !oneofFieldDescriptor.getFullName().equals(expectedConstraintDescriptor.getFullName())) {
             // If the expected constraint does not match the actual oneof constraint, throw a CompilationError.
-            throw CompilationError.newCompilationError("expected constraint %s, got %s on field %s",
+            throw new CompilationException("expected constraint %s, got %s on field %s",
                     expectedConstraintDescriptor.getName(),
                     oneofFieldDescriptor.getName(),
                     fieldDescriptor.getName());
@@ -83,7 +83,7 @@ public class Cache {
         );
     }
 
-    private AstSet loadOrCompileStandardConstraint(Env env, FieldDescriptor constraintFieldDesc) throws CompilationError {
+    private AstSet loadOrCompileStandardConstraint(Env env, FieldDescriptor constraintFieldDesc) throws CompilationException {
         final AstSet cachedValue = cache.get(constraintFieldDesc);
         if (cachedValue != null) {
             return cachedValue;
@@ -137,7 +137,7 @@ public class Cache {
         return Lookups.protoKindToCELType(fieldDescriptor.getType());
     }
 
-    public ProgramSet build(Env env, FieldDescriptor fieldDescriptor, FieldConstraints fieldConstraints, Boolean forItems) throws CompilationError {
+    public ProgramSet build(Env env, FieldDescriptor fieldDescriptor, FieldConstraints fieldConstraints, Boolean forItems) throws CompilationException {
         Message message = resolveConstraints(fieldDescriptor, fieldConstraints, forItems);
         if (message == null) {
             // TODO: there's a doneness check from go but we'll ignore it for now.

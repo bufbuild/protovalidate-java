@@ -14,9 +14,8 @@
 
 package build.buf.protovalidate.evaluator;
 
-import build.buf.protovalidate.ValidationResult;
-import build.buf.protovalidate.errors.ValidationError;
-import build.buf.validate.Violation;
+import build.buf.protovalidate.results.ExecutionException;
+import build.buf.protovalidate.results.ValidationResult;
 import com.google.protobuf.Message;
 
 import java.util.ArrayList;
@@ -48,7 +47,7 @@ public class MessageEvaluatorImpl implements MessageEvaluator {
     }
 
     @Override
-    public ValidationResult evaluate(JavaValue val, boolean failFast) {
+    public ValidationResult evaluate(JavaValue val, boolean failFast) throws ExecutionException {
         return evaluateMessage(val.messageValue(), failFast);
     }
 
@@ -65,20 +64,14 @@ public class MessageEvaluatorImpl implements MessageEvaluator {
     }
 
     @Override
-    public ValidationResult evaluateMessage(Message val, boolean failFast) throws ValidationError {
-        List<Violation> allViolations = new ArrayList<>();
+    public ValidationResult evaluateMessage(Message val, boolean failFast) throws ExecutionException {
+        ValidationResult validationResult = new ValidationResult();
         for (MessageEvaluator evaluator : evaluators) {
-            ValidationResult validationResult = evaluator.evaluateMessage(val, failFast);
-            if (validationResult.isFailure()) {
-                if (failFast) {
-                    return validationResult;
-                }
-                allViolations.addAll(validationResult.error().violations);
+            ValidationResult evalResult = evaluator.evaluateMessage(val, failFast);
+            if (!validationResult.merge(evalResult, failFast)) {
+                return evalResult;
             }
         }
-        if (allViolations.isEmpty()) {
-            return ValidationResult.success();
-        }
-        return new ValidationResult(new ValidationError(allViolations));
+        return validationResult;
     }
 }

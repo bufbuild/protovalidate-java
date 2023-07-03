@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package build.buf.protovalidate.errors;
+package build.buf.protovalidate.results;
 
 import build.buf.validate.Violation;
 import build.buf.validate.Violations;
@@ -20,25 +20,24 @@ import com.google.common.base.Strings;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
-public class ValidationError extends RuntimeException {
+public class ValidationResult extends RuntimeException {
 
     public List<Violation> violations;
 
-    public ValidationError(List<Violation> violations) {
+    public ValidationResult(List<Violation> violations) {
         this.violations = violations;
     }
 
-    public ValidationError() {
+    public ValidationResult() {
         this.violations = new ArrayList<>();
     }
 
-    public ValidationError(String s) {
-        this.violations = new ArrayList<>();
+    public ValidationResult(String s) {
+        ValidationResult validationResult = new ValidationResult();
         Violation violation = Violation.newBuilder().setMessage(s).build();
-        ValidationError err = new ValidationError();
-        err.addViolation(violation);
-        this.violations.add(violation);
+        validationResult.addViolation(violation);
     }
 
     @Override
@@ -46,12 +45,12 @@ public class ValidationError extends RuntimeException {
         StringBuilder bldr = new StringBuilder();
         bldr.append("Validation error:");
         for (Violation violation : violations) {
+            bldr.append("\n - ");
             if (!violation.getFieldPath().isEmpty()) {
                 bldr.append(violation.getFieldPath());
                 bldr.append(": ");
             }
             bldr.append(String.format("%s [%s]", violation.getMessage(), violation.getConstraintId()));
-            bldr.append("\n - ");
         }
         return bldr.toString();
     }
@@ -63,32 +62,46 @@ public class ValidationError extends RuntimeException {
     }
 
     public void addViolation(Violation violation) {
-        this.violations.add(violation);
-    }
-
-    public int getViolationsCount() {
-        return this.violations.size();
-    }
-
-    public void prefixErrorPaths(String fullName, Integer index) {
-        String prefix = index == null ? fullName : String.format(fullName, index);
-        // TODO: not a fan of this approach but it's copying go to make things work.
-        List<Violation> prefixedViolations = new ArrayList<>();
-        for (Violation violation : violations) {
-            Violation prefixedViolation;
-            if (violation.getFieldPath().isEmpty()) {
-                prefixedViolation = violation.toBuilder().setFieldPath(prefix).build();
-            } else if (violation.getFieldPath().charAt(0) == '[') {
-                prefixedViolation = violation.toBuilder().setFieldPath(prefix + violation.getFieldPath()).build();
-            } else {
-                prefixedViolation = violation.toBuilder().setFieldPath(Strings.lenientFormat("%s.%s", prefix, violation.getFieldPath())).build();
-            }
-            prefixedViolations.add(prefixedViolation);
+        if (violation != null) {
+            violations.add(violation);
         }
-        this.violations = prefixedViolations;
     }
 
-    public boolean isEmpty() {
+    public void prefixErrorPaths(String format, Object... args) {
+        String prefix = String.format(format, args);
+
+        violations = violations.stream()
+                .map(violation -> {
+                    String fieldPath = violation.getFieldPath();
+                    String prefixedFieldPath;
+
+                    if (fieldPath.isEmpty()) {
+                        prefixedFieldPath = prefix;
+                    } else if (fieldPath.charAt(0) == '[') {
+                        prefixedFieldPath = prefix + fieldPath;
+                    } else {
+                        prefixedFieldPath = Strings.lenientFormat("%s.%s", prefix, fieldPath);
+                    }
+
+                    return violation.toBuilder().setFieldPath(prefixedFieldPath).build();
+                })
+                .collect(Collectors.toList());
+    }
+
+    public boolean isSuccess() {
         return violations.isEmpty();
+    }
+
+    public boolean isFailure() {
+        return !isSuccess();
+    }
+
+    public boolean merge(Exception e, boolean failFast) {
+        if (!(e instanceof ValidationResult)) {
+            return false;
+        }
+        ValidationResult source = (ValidationResult) e;
+        violations.addAll(source.violations);
+        return !(failFast && violations.size() > 0);
     }
 }

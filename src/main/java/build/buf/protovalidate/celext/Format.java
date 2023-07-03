@@ -14,8 +14,9 @@
 
 package build.buf.protovalidate.celext;
 
-import build.buf.protovalidate.errors.RuntimeError;
-import com.google.common.base.Strings;
+import build.buf.protovalidate.results.CompilationException;
+import build.buf.protovalidate.results.ExecutionException;
+import build.buf.protovalidate.results.ValidationException;
 import com.google.protobuf.Duration;
 import com.google.protobuf.Timestamp;
 import org.projectnessie.cel.common.types.BoolT;
@@ -31,16 +32,12 @@ import org.projectnessie.cel.common.types.StringT;
 import org.projectnessie.cel.common.types.TimestampT;
 import org.projectnessie.cel.common.types.UintT;
 import org.projectnessie.cel.common.types.pb.Db;
-import org.projectnessie.cel.common.types.pb.DefaultTypeAdapter;
 import org.projectnessie.cel.common.types.ref.Type;
 import org.projectnessie.cel.common.types.ref.Val;
 
 import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Locale;
-import java.util.Objects;
-import java.util.concurrent.TimeUnit;
 
 import static org.projectnessie.cel.common.types.IntT.intOf;
 import static org.projectnessie.cel.common.types.pb.DefaultTypeAdapter.nativeToValue;
@@ -52,7 +49,7 @@ public final class Format {
     private Format() {
     }
 
-    public static Val format(String fmtString, ListT list) {
+    public static Val format(String fmtString, ListT list)  {
         StringBuilder builder = new StringBuilder();
         int index = 0;
         int argIndex = 0;
@@ -153,7 +150,7 @@ public final class Format {
         }
     }
 
-    private static Val formatStringSafe(StringBuilder builder, Val val) {
+    private static Val formatStringSafe(StringBuilder builder, Val val)  {
         Type type = val.type();
         if (type == BoolT.BoolType) {
             builder.append(val.booleanValue());
@@ -194,9 +191,9 @@ public final class Format {
             }
             builder.append(']');
         } else if (type == MapT.MapType) {
-            throw RuntimeError.newRuntimeErrorf("unimplemented stringSafe map type");
+            throw new RuntimeException("unimplemented stringSafe map type");
         } else if (type == NullT.NullType) {
-            throw RuntimeError.newRuntimeErrorf("unimplemented stringSafe null type");
+            throw new RuntimeException("unimplemented stringSafe null type");
         }
         return val;
     }
@@ -209,7 +206,7 @@ public final class Format {
         builder.append(value);
     }
 
-    private static Val formatHex(StringBuilder builder, Val val, char[] digits) {
+    private static Val formatHex(StringBuilder builder, Val val, char[] digits)  {
         String hexString;
         if (val.type() == IntT.IntType || val.type() == UintT.UintType) {
             hexString = Long.toHexString(val.intValue());
@@ -219,7 +216,7 @@ public final class Format {
         } else if (val.type() == StringT.StringType) {
             hexString = val.value().toString();
         } else {
-            throw RuntimeError.newRuntimeErrorf("formatHex: expected int or string");
+            throw new RuntimeException("formatHex: expected int or string");
         }
         builder.append(hexString);
         return NullT.NullType;
@@ -264,18 +261,18 @@ public final class Format {
     }
 
     private static Val formatOctal(StringBuilder builder, Val arg) {
-        throw RuntimeError.newRuntimeErrorf("unimplemented formatOctal");
+        throw new RuntimeException("unimplemented formatOctal");
     }
 
     private static Val formatBinary(StringBuilder builder, Val arg) {
-        throw RuntimeError.newRuntimeErrorf("unimplemented formatBinary");
+        throw new RuntimeException("unimplemented formatBinary");
     }
 
     private static Val formatFloating(StringBuilder builder, Val arg, int precision) {
-        throw RuntimeError.newRuntimeErrorf("unimplemented formatFloating");
+        throw new RuntimeException("unimplemented formatFloating");
     }
 
     private static Val formatExponent(StringBuilder builder, Val arg, int precision) {
-        throw RuntimeError.newRuntimeErrorf("unimplemented formatExponent");
+        throw new RuntimeException("unimplemented formatExponent");
     }
 }
