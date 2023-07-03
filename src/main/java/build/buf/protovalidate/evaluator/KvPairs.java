@@ -49,9 +49,13 @@ public class KvPairs implements Evaluator {
         for (Map.Entry<JavaValue, JavaValue> entry : mapEntries.entrySet()) {
             Exception evalErr = evalPairs(entry.getKey(), entry.getValue(), failFast);
             if (evalErr != null) {
-                ExceptionUtils.prefixErrorPaths(evalErr, "[%b]", entry.getKey());
+                String keyName = entry.getKey().value().toString();
+                if (entry.getKey().value() instanceof Number) {
+                    ExceptionUtils.prefixErrorPaths(evalErr, "[%s]", keyName);
+                } else {
+                    ExceptionUtils.prefixErrorPaths(evalErr, "[\"%s\"]", keyName);
+                }
                 boolean merged = ExceptionUtils.merge(error, evalErr, failFast);
-
                 if (!merged) {
                     return new ValidationResult(error);
                 }

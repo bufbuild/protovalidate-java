@@ -16,6 +16,9 @@ package build.buf.protovalidate.errors;
 
 import build.buf.validate.Violation;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ExceptionUtils {
 
     public static boolean merge(Exception dst, Exception src, boolean failFast) {
@@ -48,6 +51,7 @@ public class ExceptionUtils {
 
     private static void prefixFieldPaths(ValidationError valErr, String format, Object... args) {
         String prefix = String.format(format, args);
+        List<Violation> prefixedViolations = new ArrayList<>();
         for (Violation violation : valErr.violations) {
             Violation.Builder builder = violation.toBuilder();
             if (violation.getFieldPath().isEmpty()) {
@@ -55,10 +59,11 @@ public class ExceptionUtils {
             } else if (violation.getFieldPath().charAt(0) == '[') {
                 builder.setFieldPath(prefix + violation.getFieldPath());
             } else {
-                builder.setFieldPath(prefix + "." + violation.getFieldPath());
+                builder.setFieldPath(String.format("%s.%s", prefix, violation.getFieldPath()));
             }
-            valErr.violations.remove(violation);
-            valErr.violations.add(builder.build());
+            prefixedViolations.add(builder.build());
         }
+        // TODO: This is not ideal
+        valErr.violations = prefixedViolations;
     }
 }
