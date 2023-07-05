@@ -313,7 +313,7 @@ public class Builder {
     }
 
     private void processRepeatedConstraints(FieldDescriptor fieldDescriptor, FieldConstraints fieldConstraints, Boolean forItems, Value valueEval) throws CompilationException {
-        if (!fieldDescriptor.isRepeated() || forItems) {
+        if (fieldDescriptor.isMapField() || !fieldDescriptor.isRepeated() || forItems) {
             return;
         }
 

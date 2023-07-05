@@ -17,7 +17,7 @@ public interface OneofConstraintsOrBuilder extends
    *message MyMessage {
    *  oneof value {
    *    // The field `a` or `b` must be set.
-   *    option [(buf.validate.oneof).required = true]
+   *    option (buf.validate.oneof).required = true;
    *    optional string a = 1;
    *    optional string b = 2;
    *  }
@@ -39,7 +39,7 @@ public interface OneofConstraintsOrBuilder extends
    *message MyMessage {
    *  oneof value {
    *    // The field `a` or `b` must be set.
-   *    option [(buf.validate.oneof).required = true]
+   *    option (buf.validate.oneof).required = true;
    *    optional string a = 1;
    *    optional string b = 2;
    *  }

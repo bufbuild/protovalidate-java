@@ -8,11 +8,19 @@ public interface ResultOptionsOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
+   * <pre>
+   * The suite filter is a regex that matches against the suite name.
+   * </pre>
+   *
    * <code>string suite_filter = 1 [json_name = "suiteFilter"];</code>
    * @return The suiteFilter.
    */
   java.lang.String getSuiteFilter();
   /**
+   * <pre>
+   * The suite filter is a regex that matches against the suite name.
+   * </pre>
+   *
    * <code>string suite_filter = 1 [json_name = "suiteFilter"];</code>
    * @return The bytes for suiteFilter.
    */
@@ -20,11 +28,19 @@ public interface ResultOptionsOrBuilder extends
       getSuiteFilterBytes();
 
   /**
+   * <pre>
+   * The case filter is a regex that matches against the case name.
+   * </pre>
+   *
    * <code>string case_filter = 2 [json_name = "caseFilter"];</code>
    * @return The caseFilter.
    */
   java.lang.String getCaseFilter();
   /**
+   * <pre>
+   * The case filter is a regex that matches against the case name.
+   * </pre>
+   *
    * <code>string case_filter = 2 [json_name = "caseFilter"];</code>
    * @return The bytes for caseFilter.
    */
@@ -32,12 +48,20 @@ public interface ResultOptionsOrBuilder extends
       getCaseFilterBytes();
 
   /**
+   * <pre>
+   * If the test runner should print verbose output.
+   * </pre>
+   *
    * <code>bool verbose = 3 [json_name = "verbose"];</code>
    * @return The verbose.
    */
   boolean getVerbose();
 
   /**
+   * <pre>
+   * If the violation type must be an exact match.
+   * </pre>
+   *
    * <code>bool strict = 4 [json_name = "strict"];</code>
    * @return The strict.
    */
@@ -55,7 +79,7 @@ public interface ResultOptionsOrBuilder extends
 
   /**
    * <pre>
-   * If the distinciton between runtime and compile time errors must be exact.
+   * If the distinction between runtime and compile time errors must be exact.
    * </pre>
    *
    * <code>bool strict_error = 6 [json_name = "strictError"];</code>

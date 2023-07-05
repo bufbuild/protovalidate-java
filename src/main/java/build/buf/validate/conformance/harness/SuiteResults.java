@@ -4,6 +4,10 @@
 package build.buf.validate.conformance.harness;
 
 /**
+ * <pre>
+ * A suite result is a single test suite result.
+ * </pre>
+ *
  * Protobuf type {@code buf.validate.conformance.harness.SuiteResults}
  */
 public final class SuiteResults extends
@@ -44,6 +48,10 @@ private static final long serialVersionUID = 0L;
   @SuppressWarnings("serial")
   private volatile java.lang.Object name_ = "";
   /**
+   * <pre>
+   * The suite name.
+   * </pre>
+   *
    * <code>string name = 1 [json_name = "name"];</code>
    * @return The name.
    */
@@ -61,6 +69,10 @@ private static final long serialVersionUID = 0L;
     }
   }
   /**
+   * <pre>
+   * The suite name.
+   * </pre>
+   *
    * <code>string name = 1 [json_name = "name"];</code>
    * @return The bytes for name.
    */
@@ -82,6 +94,10 @@ private static final long serialVersionUID = 0L;
   public static final int SUCCESSES_FIELD_NUMBER = 2;
   private int successes_ = 0;
   /**
+   * <pre>
+   * Count of successes.
+   * </pre>
+   *
    * <code>int32 successes = 2 [json_name = "successes"];</code>
    * @return The successes.
    */
@@ -93,6 +109,10 @@ private static final long serialVersionUID = 0L;
   public static final int FAILURES_FIELD_NUMBER = 3;
   private int failures_ = 0;
   /**
+   * <pre>
+   * Count of failures.
+   * </pre>
+   *
    * <code>int32 failures = 3 [json_name = "failures"];</code>
    * @return The failures.
    */
@@ -105,6 +125,10 @@ private static final long serialVersionUID = 0L;
   @SuppressWarnings("serial")
   private java.util.List<build.buf.validate.conformance.harness.CaseResult> cases_;
   /**
+   * <pre>
+   * List of case results.
+   * </pre>
+   *
    * <code>repeated .buf.validate.conformance.harness.CaseResult cases = 4 [json_name = "cases"];</code>
    */
   @java.lang.Override
@@ -112,6 +136,10 @@ private static final long serialVersionUID = 0L;
     return cases_;
   }
   /**
+   * <pre>
+   * List of case results.
+   * </pre>
+   *
    * <code>repeated .buf.validate.conformance.harness.CaseResult cases = 4 [json_name = "cases"];</code>
    */
   @java.lang.Override
@@ -120,6 +148,10 @@ private static final long serialVersionUID = 0L;
     return cases_;
   }
   /**
+   * <pre>
+   * List of case results.
+   * </pre>
+   *
    * <code>repeated .buf.validate.conformance.harness.CaseResult cases = 4 [json_name = "cases"];</code>
    */
   @java.lang.Override
@@ -127,6 +159,10 @@ private static final long serialVersionUID = 0L;
     return cases_.size();
   }
   /**
+   * <pre>
+   * List of case results.
+   * </pre>
+   *
    * <code>repeated .buf.validate.conformance.harness.CaseResult cases = 4 [json_name = "cases"];</code>
    */
   @java.lang.Override
@@ -134,6 +170,10 @@ private static final long serialVersionUID = 0L;
     return cases_.get(index);
   }
   /**
+   * <pre>
+   * List of case results.
+   * </pre>
+   *
    * <code>repeated .buf.validate.conformance.harness.CaseResult cases = 4 [json_name = "cases"];</code>
    */
   @java.lang.Override
@@ -145,6 +185,10 @@ private static final long serialVersionUID = 0L;
   public static final int FDSET_FIELD_NUMBER = 5;
   private com.google.protobuf.DescriptorProtos.FileDescriptorSet fdset_;
   /**
+   * <pre>
+   * The file descriptor set used to generate this result.
+   * </pre>
+   *
    * <code>.google.protobuf.FileDescriptorSet fdset = 5 [json_name = "fdset"];</code>
    * @return Whether the fdset field is set.
    */
@@ -153,6 +197,10 @@ private static final long serialVersionUID = 0L;
     return fdset_ != null;
   }
   /**
+   * <pre>
+   * The file descriptor set used to generate this result.
+   * </pre>
+   *
    * <code>.google.protobuf.FileDescriptorSet fdset = 5 [json_name = "fdset"];</code>
    * @return The fdset.
    */
@@ -161,11 +209,30 @@ private static final long serialVersionUID = 0L;
     return fdset_ == null ? com.google.protobuf.DescriptorProtos.FileDescriptorSet.getDefaultInstance() : fdset_;
   }
   /**
+   * <pre>
+   * The file descriptor set used to generate this result.
+   * </pre>
+   *
    * <code>.google.protobuf.FileDescriptorSet fdset = 5 [json_name = "fdset"];</code>
    */
   @java.lang.Override
   public com.google.protobuf.DescriptorProtos.FileDescriptorSetOrBuilder getFdsetOrBuilder() {
     return fdset_ == null ? com.google.protobuf.DescriptorProtos.FileDescriptorSet.getDefaultInstance() : fdset_;
+  }
+
+  public static final int EXPECTED_FAILURES_FIELD_NUMBER = 6;
+  private int expectedFailures_ = 0;
+  /**
+   * <pre>
+   * Count of expected failures.
+   * </pre>
+   *
+   * <code>int32 expected_failures = 6 [json_name = "expectedFailures"];</code>
+   * @return The expectedFailures.
+   */
+  @java.lang.Override
+  public int getExpectedFailures() {
+    return expectedFailures_;
   }
 
   private byte memoizedIsInitialized = -1;
@@ -203,6 +270,9 @@ private static final long serialVersionUID = 0L;
     if (fdset_ != null) {
       output.writeMessage(5, getFdset());
     }
+    if (expectedFailures_ != 0) {
+      output.writeInt32(6, expectedFailures_);
+    }
     getUnknownFields().writeTo(output);
   }
 
@@ -230,6 +300,10 @@ private static final long serialVersionUID = 0L;
     if (fdset_ != null) {
       size += com.google.protobuf.CodedOutputStream
         .computeMessageSize(5, getFdset());
+    }
+    if (expectedFailures_ != 0) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeInt32Size(6, expectedFailures_);
     }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
@@ -259,6 +333,8 @@ private static final long serialVersionUID = 0L;
       if (!getFdset()
           .equals(other.getFdset())) return false;
     }
+    if (getExpectedFailures()
+        != other.getExpectedFailures()) return false;
     if (!getUnknownFields().equals(other.getUnknownFields())) return false;
     return true;
   }
@@ -284,6 +360,8 @@ private static final long serialVersionUID = 0L;
       hash = (37 * hash) + FDSET_FIELD_NUMBER;
       hash = (53 * hash) + getFdset().hashCode();
     }
+    hash = (37 * hash) + EXPECTED_FAILURES_FIELD_NUMBER;
+    hash = (53 * hash) + getExpectedFailures();
     hash = (29 * hash) + getUnknownFields().hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -382,6 +460,10 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
+   * <pre>
+   * A suite result is a single test suite result.
+   * </pre>
+   *
    * Protobuf type {@code buf.validate.conformance.harness.SuiteResults}
    */
   public static final class Builder extends
@@ -430,6 +512,7 @@ private static final long serialVersionUID = 0L;
         fdsetBuilder_.dispose();
         fdsetBuilder_ = null;
       }
+      expectedFailures_ = 0;
       return this;
     }
 
@@ -489,6 +572,9 @@ private static final long serialVersionUID = 0L;
         result.fdset_ = fdsetBuilder_ == null
             ? fdset_
             : fdsetBuilder_.build();
+      }
+      if (((from_bitField0_ & 0x00000020) != 0)) {
+        result.expectedFailures_ = expectedFailures_;
       }
     }
 
@@ -576,6 +662,9 @@ private static final long serialVersionUID = 0L;
       if (other.hasFdset()) {
         mergeFdset(other.getFdset());
       }
+      if (other.getExpectedFailures() != 0) {
+        setExpectedFailures(other.getExpectedFailures());
+      }
       this.mergeUnknownFields(other.getUnknownFields());
       onChanged();
       return this;
@@ -642,6 +731,11 @@ private static final long serialVersionUID = 0L;
               bitField0_ |= 0x00000010;
               break;
             } // case 42
+            case 48: {
+              expectedFailures_ = input.readInt32();
+              bitField0_ |= 0x00000020;
+              break;
+            } // case 48
             default: {
               if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                 done = true; // was an endgroup tag
@@ -661,6 +755,10 @@ private static final long serialVersionUID = 0L;
 
     private java.lang.Object name_ = "";
     /**
+     * <pre>
+     * The suite name.
+     * </pre>
+     *
      * <code>string name = 1 [json_name = "name"];</code>
      * @return The name.
      */
@@ -677,6 +775,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     * The suite name.
+     * </pre>
+     *
      * <code>string name = 1 [json_name = "name"];</code>
      * @return The bytes for name.
      */
@@ -694,6 +796,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     * The suite name.
+     * </pre>
+     *
      * <code>string name = 1 [json_name = "name"];</code>
      * @param value The name to set.
      * @return This builder for chaining.
@@ -707,6 +813,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * The suite name.
+     * </pre>
+     *
      * <code>string name = 1 [json_name = "name"];</code>
      * @return This builder for chaining.
      */
@@ -717,6 +827,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * The suite name.
+     * </pre>
+     *
      * <code>string name = 1 [json_name = "name"];</code>
      * @param value The bytes for name to set.
      * @return This builder for chaining.
@@ -733,6 +847,10 @@ private static final long serialVersionUID = 0L;
 
     private int successes_ ;
     /**
+     * <pre>
+     * Count of successes.
+     * </pre>
+     *
      * <code>int32 successes = 2 [json_name = "successes"];</code>
      * @return The successes.
      */
@@ -741,6 +859,10 @@ private static final long serialVersionUID = 0L;
       return successes_;
     }
     /**
+     * <pre>
+     * Count of successes.
+     * </pre>
+     *
      * <code>int32 successes = 2 [json_name = "successes"];</code>
      * @param value The successes to set.
      * @return This builder for chaining.
@@ -753,6 +875,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * Count of successes.
+     * </pre>
+     *
      * <code>int32 successes = 2 [json_name = "successes"];</code>
      * @return This builder for chaining.
      */
@@ -765,6 +891,10 @@ private static final long serialVersionUID = 0L;
 
     private int failures_ ;
     /**
+     * <pre>
+     * Count of failures.
+     * </pre>
+     *
      * <code>int32 failures = 3 [json_name = "failures"];</code>
      * @return The failures.
      */
@@ -773,6 +903,10 @@ private static final long serialVersionUID = 0L;
       return failures_;
     }
     /**
+     * <pre>
+     * Count of failures.
+     * </pre>
+     *
      * <code>int32 failures = 3 [json_name = "failures"];</code>
      * @param value The failures to set.
      * @return This builder for chaining.
@@ -785,6 +919,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * Count of failures.
+     * </pre>
+     *
      * <code>int32 failures = 3 [json_name = "failures"];</code>
      * @return This builder for chaining.
      */
@@ -808,6 +946,10 @@ private static final long serialVersionUID = 0L;
         build.buf.validate.conformance.harness.CaseResult, build.buf.validate.conformance.harness.CaseResult.Builder, build.buf.validate.conformance.harness.CaseResultOrBuilder> casesBuilder_;
 
     /**
+     * <pre>
+     * List of case results.
+     * </pre>
+     *
      * <code>repeated .buf.validate.conformance.harness.CaseResult cases = 4 [json_name = "cases"];</code>
      */
     public java.util.List<build.buf.validate.conformance.harness.CaseResult> getCasesList() {
@@ -818,6 +960,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     * List of case results.
+     * </pre>
+     *
      * <code>repeated .buf.validate.conformance.harness.CaseResult cases = 4 [json_name = "cases"];</code>
      */
     public int getCasesCount() {
@@ -828,6 +974,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     * List of case results.
+     * </pre>
+     *
      * <code>repeated .buf.validate.conformance.harness.CaseResult cases = 4 [json_name = "cases"];</code>
      */
     public build.buf.validate.conformance.harness.CaseResult getCases(int index) {
@@ -838,6 +988,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     * List of case results.
+     * </pre>
+     *
      * <code>repeated .buf.validate.conformance.harness.CaseResult cases = 4 [json_name = "cases"];</code>
      */
     public Builder setCases(
@@ -855,6 +1009,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * List of case results.
+     * </pre>
+     *
      * <code>repeated .buf.validate.conformance.harness.CaseResult cases = 4 [json_name = "cases"];</code>
      */
     public Builder setCases(
@@ -869,6 +1027,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * List of case results.
+     * </pre>
+     *
      * <code>repeated .buf.validate.conformance.harness.CaseResult cases = 4 [json_name = "cases"];</code>
      */
     public Builder addCases(build.buf.validate.conformance.harness.CaseResult value) {
@@ -885,6 +1047,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * List of case results.
+     * </pre>
+     *
      * <code>repeated .buf.validate.conformance.harness.CaseResult cases = 4 [json_name = "cases"];</code>
      */
     public Builder addCases(
@@ -902,6 +1068,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * List of case results.
+     * </pre>
+     *
      * <code>repeated .buf.validate.conformance.harness.CaseResult cases = 4 [json_name = "cases"];</code>
      */
     public Builder addCases(
@@ -916,6 +1086,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * List of case results.
+     * </pre>
+     *
      * <code>repeated .buf.validate.conformance.harness.CaseResult cases = 4 [json_name = "cases"];</code>
      */
     public Builder addCases(
@@ -930,6 +1104,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * List of case results.
+     * </pre>
+     *
      * <code>repeated .buf.validate.conformance.harness.CaseResult cases = 4 [json_name = "cases"];</code>
      */
     public Builder addAllCases(
@@ -945,6 +1123,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * List of case results.
+     * </pre>
+     *
      * <code>repeated .buf.validate.conformance.harness.CaseResult cases = 4 [json_name = "cases"];</code>
      */
     public Builder clearCases() {
@@ -958,6 +1140,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * List of case results.
+     * </pre>
+     *
      * <code>repeated .buf.validate.conformance.harness.CaseResult cases = 4 [json_name = "cases"];</code>
      */
     public Builder removeCases(int index) {
@@ -971,6 +1157,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * List of case results.
+     * </pre>
+     *
      * <code>repeated .buf.validate.conformance.harness.CaseResult cases = 4 [json_name = "cases"];</code>
      */
     public build.buf.validate.conformance.harness.CaseResult.Builder getCasesBuilder(
@@ -978,6 +1168,10 @@ private static final long serialVersionUID = 0L;
       return getCasesFieldBuilder().getBuilder(index);
     }
     /**
+     * <pre>
+     * List of case results.
+     * </pre>
+     *
      * <code>repeated .buf.validate.conformance.harness.CaseResult cases = 4 [json_name = "cases"];</code>
      */
     public build.buf.validate.conformance.harness.CaseResultOrBuilder getCasesOrBuilder(
@@ -988,6 +1182,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     * List of case results.
+     * </pre>
+     *
      * <code>repeated .buf.validate.conformance.harness.CaseResult cases = 4 [json_name = "cases"];</code>
      */
     public java.util.List<? extends build.buf.validate.conformance.harness.CaseResultOrBuilder> 
@@ -999,6 +1197,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     * List of case results.
+     * </pre>
+     *
      * <code>repeated .buf.validate.conformance.harness.CaseResult cases = 4 [json_name = "cases"];</code>
      */
     public build.buf.validate.conformance.harness.CaseResult.Builder addCasesBuilder() {
@@ -1006,6 +1208,10 @@ private static final long serialVersionUID = 0L;
           build.buf.validate.conformance.harness.CaseResult.getDefaultInstance());
     }
     /**
+     * <pre>
+     * List of case results.
+     * </pre>
+     *
      * <code>repeated .buf.validate.conformance.harness.CaseResult cases = 4 [json_name = "cases"];</code>
      */
     public build.buf.validate.conformance.harness.CaseResult.Builder addCasesBuilder(
@@ -1014,6 +1220,10 @@ private static final long serialVersionUID = 0L;
           index, build.buf.validate.conformance.harness.CaseResult.getDefaultInstance());
     }
     /**
+     * <pre>
+     * List of case results.
+     * </pre>
+     *
      * <code>repeated .buf.validate.conformance.harness.CaseResult cases = 4 [json_name = "cases"];</code>
      */
     public java.util.List<build.buf.validate.conformance.harness.CaseResult.Builder> 
@@ -1039,6 +1249,10 @@ private static final long serialVersionUID = 0L;
     private com.google.protobuf.SingleFieldBuilderV3<
         com.google.protobuf.DescriptorProtos.FileDescriptorSet, com.google.protobuf.DescriptorProtos.FileDescriptorSet.Builder, com.google.protobuf.DescriptorProtos.FileDescriptorSetOrBuilder> fdsetBuilder_;
     /**
+     * <pre>
+     * The file descriptor set used to generate this result.
+     * </pre>
+     *
      * <code>.google.protobuf.FileDescriptorSet fdset = 5 [json_name = "fdset"];</code>
      * @return Whether the fdset field is set.
      */
@@ -1046,6 +1260,10 @@ private static final long serialVersionUID = 0L;
       return ((bitField0_ & 0x00000010) != 0);
     }
     /**
+     * <pre>
+     * The file descriptor set used to generate this result.
+     * </pre>
+     *
      * <code>.google.protobuf.FileDescriptorSet fdset = 5 [json_name = "fdset"];</code>
      * @return The fdset.
      */
@@ -1057,6 +1275,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     * The file descriptor set used to generate this result.
+     * </pre>
+     *
      * <code>.google.protobuf.FileDescriptorSet fdset = 5 [json_name = "fdset"];</code>
      */
     public Builder setFdset(com.google.protobuf.DescriptorProtos.FileDescriptorSet value) {
@@ -1073,6 +1295,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * The file descriptor set used to generate this result.
+     * </pre>
+     *
      * <code>.google.protobuf.FileDescriptorSet fdset = 5 [json_name = "fdset"];</code>
      */
     public Builder setFdset(
@@ -1087,6 +1313,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * The file descriptor set used to generate this result.
+     * </pre>
+     *
      * <code>.google.protobuf.FileDescriptorSet fdset = 5 [json_name = "fdset"];</code>
      */
     public Builder mergeFdset(com.google.protobuf.DescriptorProtos.FileDescriptorSet value) {
@@ -1106,6 +1336,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * The file descriptor set used to generate this result.
+     * </pre>
+     *
      * <code>.google.protobuf.FileDescriptorSet fdset = 5 [json_name = "fdset"];</code>
      */
     public Builder clearFdset() {
@@ -1119,6 +1353,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * The file descriptor set used to generate this result.
+     * </pre>
+     *
      * <code>.google.protobuf.FileDescriptorSet fdset = 5 [json_name = "fdset"];</code>
      */
     public com.google.protobuf.DescriptorProtos.FileDescriptorSet.Builder getFdsetBuilder() {
@@ -1127,6 +1365,10 @@ private static final long serialVersionUID = 0L;
       return getFdsetFieldBuilder().getBuilder();
     }
     /**
+     * <pre>
+     * The file descriptor set used to generate this result.
+     * </pre>
+     *
      * <code>.google.protobuf.FileDescriptorSet fdset = 5 [json_name = "fdset"];</code>
      */
     public com.google.protobuf.DescriptorProtos.FileDescriptorSetOrBuilder getFdsetOrBuilder() {
@@ -1138,6 +1380,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     * The file descriptor set used to generate this result.
+     * </pre>
+     *
      * <code>.google.protobuf.FileDescriptorSet fdset = 5 [json_name = "fdset"];</code>
      */
     private com.google.protobuf.SingleFieldBuilderV3<
@@ -1152,6 +1398,50 @@ private static final long serialVersionUID = 0L;
         fdset_ = null;
       }
       return fdsetBuilder_;
+    }
+
+    private int expectedFailures_ ;
+    /**
+     * <pre>
+     * Count of expected failures.
+     * </pre>
+     *
+     * <code>int32 expected_failures = 6 [json_name = "expectedFailures"];</code>
+     * @return The expectedFailures.
+     */
+    @java.lang.Override
+    public int getExpectedFailures() {
+      return expectedFailures_;
+    }
+    /**
+     * <pre>
+     * Count of expected failures.
+     * </pre>
+     *
+     * <code>int32 expected_failures = 6 [json_name = "expectedFailures"];</code>
+     * @param value The expectedFailures to set.
+     * @return This builder for chaining.
+     */
+    public Builder setExpectedFailures(int value) {
+
+      expectedFailures_ = value;
+      bitField0_ |= 0x00000020;
+      onChanged();
+      return this;
+    }
+    /**
+     * <pre>
+     * Count of expected failures.
+     * </pre>
+     *
+     * <code>int32 expected_failures = 6 [json_name = "expectedFailures"];</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearExpectedFailures() {
+      bitField0_ = (bitField0_ & ~0x00000020);
+      expectedFailures_ = 0;
+      onChanged();
+      return this;
     }
     @java.lang.Override
     public final Builder setUnknownFields(

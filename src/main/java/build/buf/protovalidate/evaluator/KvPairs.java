@@ -72,8 +72,8 @@ public class KvPairs implements Evaluator {
             throw new RuntimeException(e);
         }
 
-        String keyName = key.value().toString();
-        if (key.value() instanceof Number) {
+        Object keyName = key.value();
+        if (keyName instanceof Number) {
             evalResult.prefixErrorPaths("[%s]", keyName);
         } else {
             evalResult.prefixErrorPaths("[\"%s\"]", keyName);

@@ -4,6 +4,10 @@
 package build.buf.validate.conformance.harness;
 
 /**
+ * <pre>
+ * A result is the result of a test run.
+ * </pre>
+ *
  * Protobuf type {@code buf.validate.conformance.harness.ResultSet}
  */
 public final class ResultSet extends
@@ -42,6 +46,10 @@ private static final long serialVersionUID = 0L;
   public static final int SUCCESSES_FIELD_NUMBER = 1;
   private int successes_ = 0;
   /**
+   * <pre>
+   * Count of successes.
+   * </pre>
+   *
    * <code>int32 successes = 1 [json_name = "successes"];</code>
    * @return The successes.
    */
@@ -53,6 +61,10 @@ private static final long serialVersionUID = 0L;
   public static final int FAILURES_FIELD_NUMBER = 2;
   private int failures_ = 0;
   /**
+   * <pre>
+   * Count of failures.
+   * </pre>
+   *
    * <code>int32 failures = 2 [json_name = "failures"];</code>
    * @return The failures.
    */
@@ -65,6 +77,10 @@ private static final long serialVersionUID = 0L;
   @SuppressWarnings("serial")
   private java.util.List<build.buf.validate.conformance.harness.SuiteResults> suites_;
   /**
+   * <pre>
+   * List of suite results.
+   * </pre>
+   *
    * <code>repeated .buf.validate.conformance.harness.SuiteResults suites = 3 [json_name = "suites"];</code>
    */
   @java.lang.Override
@@ -72,6 +88,10 @@ private static final long serialVersionUID = 0L;
     return suites_;
   }
   /**
+   * <pre>
+   * List of suite results.
+   * </pre>
+   *
    * <code>repeated .buf.validate.conformance.harness.SuiteResults suites = 3 [json_name = "suites"];</code>
    */
   @java.lang.Override
@@ -80,6 +100,10 @@ private static final long serialVersionUID = 0L;
     return suites_;
   }
   /**
+   * <pre>
+   * List of suite results.
+   * </pre>
+   *
    * <code>repeated .buf.validate.conformance.harness.SuiteResults suites = 3 [json_name = "suites"];</code>
    */
   @java.lang.Override
@@ -87,6 +111,10 @@ private static final long serialVersionUID = 0L;
     return suites_.size();
   }
   /**
+   * <pre>
+   * List of suite results.
+   * </pre>
+   *
    * <code>repeated .buf.validate.conformance.harness.SuiteResults suites = 3 [json_name = "suites"];</code>
    */
   @java.lang.Override
@@ -94,6 +122,10 @@ private static final long serialVersionUID = 0L;
     return suites_.get(index);
   }
   /**
+   * <pre>
+   * List of suite results.
+   * </pre>
+   *
    * <code>repeated .buf.validate.conformance.harness.SuiteResults suites = 3 [json_name = "suites"];</code>
    */
   @java.lang.Override
@@ -105,6 +137,10 @@ private static final long serialVersionUID = 0L;
   public static final int OPTIONS_FIELD_NUMBER = 4;
   private build.buf.validate.conformance.harness.ResultOptions options_;
   /**
+   * <pre>
+   * Options used to generate this result.
+   * </pre>
+   *
    * <code>.buf.validate.conformance.harness.ResultOptions options = 4 [json_name = "options"];</code>
    * @return Whether the options field is set.
    */
@@ -113,6 +149,10 @@ private static final long serialVersionUID = 0L;
     return options_ != null;
   }
   /**
+   * <pre>
+   * Options used to generate this result.
+   * </pre>
+   *
    * <code>.buf.validate.conformance.harness.ResultOptions options = 4 [json_name = "options"];</code>
    * @return The options.
    */
@@ -121,11 +161,30 @@ private static final long serialVersionUID = 0L;
     return options_ == null ? build.buf.validate.conformance.harness.ResultOptions.getDefaultInstance() : options_;
   }
   /**
+   * <pre>
+   * Options used to generate this result.
+   * </pre>
+   *
    * <code>.buf.validate.conformance.harness.ResultOptions options = 4 [json_name = "options"];</code>
    */
   @java.lang.Override
   public build.buf.validate.conformance.harness.ResultOptionsOrBuilder getOptionsOrBuilder() {
     return options_ == null ? build.buf.validate.conformance.harness.ResultOptions.getDefaultInstance() : options_;
+  }
+
+  public static final int EXPECTED_FAILURES_FIELD_NUMBER = 5;
+  private int expectedFailures_ = 0;
+  /**
+   * <pre>
+   * Count of expected failures.
+   * </pre>
+   *
+   * <code>int32 expected_failures = 5 [json_name = "expectedFailures"];</code>
+   * @return The expectedFailures.
+   */
+  @java.lang.Override
+  public int getExpectedFailures() {
+    return expectedFailures_;
   }
 
   private byte memoizedIsInitialized = -1;
@@ -160,6 +219,9 @@ private static final long serialVersionUID = 0L;
     if (options_ != null) {
       output.writeMessage(4, getOptions());
     }
+    if (expectedFailures_ != 0) {
+      output.writeInt32(5, expectedFailures_);
+    }
     getUnknownFields().writeTo(output);
   }
 
@@ -184,6 +246,10 @@ private static final long serialVersionUID = 0L;
     if (options_ != null) {
       size += com.google.protobuf.CodedOutputStream
         .computeMessageSize(4, getOptions());
+    }
+    if (expectedFailures_ != 0) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeInt32Size(5, expectedFailures_);
     }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
@@ -211,6 +277,8 @@ private static final long serialVersionUID = 0L;
       if (!getOptions()
           .equals(other.getOptions())) return false;
     }
+    if (getExpectedFailures()
+        != other.getExpectedFailures()) return false;
     if (!getUnknownFields().equals(other.getUnknownFields())) return false;
     return true;
   }
@@ -234,6 +302,8 @@ private static final long serialVersionUID = 0L;
       hash = (37 * hash) + OPTIONS_FIELD_NUMBER;
       hash = (53 * hash) + getOptions().hashCode();
     }
+    hash = (37 * hash) + EXPECTED_FAILURES_FIELD_NUMBER;
+    hash = (53 * hash) + getExpectedFailures();
     hash = (29 * hash) + getUnknownFields().hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -332,6 +402,10 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
+   * <pre>
+   * A result is the result of a test run.
+   * </pre>
+   *
    * Protobuf type {@code buf.validate.conformance.harness.ResultSet}
    */
   public static final class Builder extends
@@ -379,6 +453,7 @@ private static final long serialVersionUID = 0L;
         optionsBuilder_.dispose();
         optionsBuilder_ = null;
       }
+      expectedFailures_ = 0;
       return this;
     }
 
@@ -435,6 +510,9 @@ private static final long serialVersionUID = 0L;
         result.options_ = optionsBuilder_ == null
             ? options_
             : optionsBuilder_.build();
+      }
+      if (((from_bitField0_ & 0x00000010) != 0)) {
+        result.expectedFailures_ = expectedFailures_;
       }
     }
 
@@ -517,6 +595,9 @@ private static final long serialVersionUID = 0L;
       if (other.hasOptions()) {
         mergeOptions(other.getOptions());
       }
+      if (other.getExpectedFailures() != 0) {
+        setExpectedFailures(other.getExpectedFailures());
+      }
       this.mergeUnknownFields(other.getUnknownFields());
       onChanged();
       return this;
@@ -578,6 +659,11 @@ private static final long serialVersionUID = 0L;
               bitField0_ |= 0x00000008;
               break;
             } // case 34
+            case 40: {
+              expectedFailures_ = input.readInt32();
+              bitField0_ |= 0x00000010;
+              break;
+            } // case 40
             default: {
               if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                 done = true; // was an endgroup tag
@@ -597,6 +683,10 @@ private static final long serialVersionUID = 0L;
 
     private int successes_ ;
     /**
+     * <pre>
+     * Count of successes.
+     * </pre>
+     *
      * <code>int32 successes = 1 [json_name = "successes"];</code>
      * @return The successes.
      */
@@ -605,6 +695,10 @@ private static final long serialVersionUID = 0L;
       return successes_;
     }
     /**
+     * <pre>
+     * Count of successes.
+     * </pre>
+     *
      * <code>int32 successes = 1 [json_name = "successes"];</code>
      * @param value The successes to set.
      * @return This builder for chaining.
@@ -617,6 +711,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * Count of successes.
+     * </pre>
+     *
      * <code>int32 successes = 1 [json_name = "successes"];</code>
      * @return This builder for chaining.
      */
@@ -629,6 +727,10 @@ private static final long serialVersionUID = 0L;
 
     private int failures_ ;
     /**
+     * <pre>
+     * Count of failures.
+     * </pre>
+     *
      * <code>int32 failures = 2 [json_name = "failures"];</code>
      * @return The failures.
      */
@@ -637,6 +739,10 @@ private static final long serialVersionUID = 0L;
       return failures_;
     }
     /**
+     * <pre>
+     * Count of failures.
+     * </pre>
+     *
      * <code>int32 failures = 2 [json_name = "failures"];</code>
      * @param value The failures to set.
      * @return This builder for chaining.
@@ -649,6 +755,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * Count of failures.
+     * </pre>
+     *
      * <code>int32 failures = 2 [json_name = "failures"];</code>
      * @return This builder for chaining.
      */
@@ -672,6 +782,10 @@ private static final long serialVersionUID = 0L;
         build.buf.validate.conformance.harness.SuiteResults, build.buf.validate.conformance.harness.SuiteResults.Builder, build.buf.validate.conformance.harness.SuiteResultsOrBuilder> suitesBuilder_;
 
     /**
+     * <pre>
+     * List of suite results.
+     * </pre>
+     *
      * <code>repeated .buf.validate.conformance.harness.SuiteResults suites = 3 [json_name = "suites"];</code>
      */
     public java.util.List<build.buf.validate.conformance.harness.SuiteResults> getSuitesList() {
@@ -682,6 +796,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     * List of suite results.
+     * </pre>
+     *
      * <code>repeated .buf.validate.conformance.harness.SuiteResults suites = 3 [json_name = "suites"];</code>
      */
     public int getSuitesCount() {
@@ -692,6 +810,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     * List of suite results.
+     * </pre>
+     *
      * <code>repeated .buf.validate.conformance.harness.SuiteResults suites = 3 [json_name = "suites"];</code>
      */
     public build.buf.validate.conformance.harness.SuiteResults getSuites(int index) {
@@ -702,6 +824,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     * List of suite results.
+     * </pre>
+     *
      * <code>repeated .buf.validate.conformance.harness.SuiteResults suites = 3 [json_name = "suites"];</code>
      */
     public Builder setSuites(
@@ -719,6 +845,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * List of suite results.
+     * </pre>
+     *
      * <code>repeated .buf.validate.conformance.harness.SuiteResults suites = 3 [json_name = "suites"];</code>
      */
     public Builder setSuites(
@@ -733,6 +863,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * List of suite results.
+     * </pre>
+     *
      * <code>repeated .buf.validate.conformance.harness.SuiteResults suites = 3 [json_name = "suites"];</code>
      */
     public Builder addSuites(build.buf.validate.conformance.harness.SuiteResults value) {
@@ -749,6 +883,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * List of suite results.
+     * </pre>
+     *
      * <code>repeated .buf.validate.conformance.harness.SuiteResults suites = 3 [json_name = "suites"];</code>
      */
     public Builder addSuites(
@@ -766,6 +904,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * List of suite results.
+     * </pre>
+     *
      * <code>repeated .buf.validate.conformance.harness.SuiteResults suites = 3 [json_name = "suites"];</code>
      */
     public Builder addSuites(
@@ -780,6 +922,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * List of suite results.
+     * </pre>
+     *
      * <code>repeated .buf.validate.conformance.harness.SuiteResults suites = 3 [json_name = "suites"];</code>
      */
     public Builder addSuites(
@@ -794,6 +940,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * List of suite results.
+     * </pre>
+     *
      * <code>repeated .buf.validate.conformance.harness.SuiteResults suites = 3 [json_name = "suites"];</code>
      */
     public Builder addAllSuites(
@@ -809,6 +959,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * List of suite results.
+     * </pre>
+     *
      * <code>repeated .buf.validate.conformance.harness.SuiteResults suites = 3 [json_name = "suites"];</code>
      */
     public Builder clearSuites() {
@@ -822,6 +976,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * List of suite results.
+     * </pre>
+     *
      * <code>repeated .buf.validate.conformance.harness.SuiteResults suites = 3 [json_name = "suites"];</code>
      */
     public Builder removeSuites(int index) {
@@ -835,6 +993,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * List of suite results.
+     * </pre>
+     *
      * <code>repeated .buf.validate.conformance.harness.SuiteResults suites = 3 [json_name = "suites"];</code>
      */
     public build.buf.validate.conformance.harness.SuiteResults.Builder getSuitesBuilder(
@@ -842,6 +1004,10 @@ private static final long serialVersionUID = 0L;
       return getSuitesFieldBuilder().getBuilder(index);
     }
     /**
+     * <pre>
+     * List of suite results.
+     * </pre>
+     *
      * <code>repeated .buf.validate.conformance.harness.SuiteResults suites = 3 [json_name = "suites"];</code>
      */
     public build.buf.validate.conformance.harness.SuiteResultsOrBuilder getSuitesOrBuilder(
@@ -852,6 +1018,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     * List of suite results.
+     * </pre>
+     *
      * <code>repeated .buf.validate.conformance.harness.SuiteResults suites = 3 [json_name = "suites"];</code>
      */
     public java.util.List<? extends build.buf.validate.conformance.harness.SuiteResultsOrBuilder> 
@@ -863,6 +1033,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     * List of suite results.
+     * </pre>
+     *
      * <code>repeated .buf.validate.conformance.harness.SuiteResults suites = 3 [json_name = "suites"];</code>
      */
     public build.buf.validate.conformance.harness.SuiteResults.Builder addSuitesBuilder() {
@@ -870,6 +1044,10 @@ private static final long serialVersionUID = 0L;
           build.buf.validate.conformance.harness.SuiteResults.getDefaultInstance());
     }
     /**
+     * <pre>
+     * List of suite results.
+     * </pre>
+     *
      * <code>repeated .buf.validate.conformance.harness.SuiteResults suites = 3 [json_name = "suites"];</code>
      */
     public build.buf.validate.conformance.harness.SuiteResults.Builder addSuitesBuilder(
@@ -878,6 +1056,10 @@ private static final long serialVersionUID = 0L;
           index, build.buf.validate.conformance.harness.SuiteResults.getDefaultInstance());
     }
     /**
+     * <pre>
+     * List of suite results.
+     * </pre>
+     *
      * <code>repeated .buf.validate.conformance.harness.SuiteResults suites = 3 [json_name = "suites"];</code>
      */
     public java.util.List<build.buf.validate.conformance.harness.SuiteResults.Builder> 
@@ -903,6 +1085,10 @@ private static final long serialVersionUID = 0L;
     private com.google.protobuf.SingleFieldBuilderV3<
         build.buf.validate.conformance.harness.ResultOptions, build.buf.validate.conformance.harness.ResultOptions.Builder, build.buf.validate.conformance.harness.ResultOptionsOrBuilder> optionsBuilder_;
     /**
+     * <pre>
+     * Options used to generate this result.
+     * </pre>
+     *
      * <code>.buf.validate.conformance.harness.ResultOptions options = 4 [json_name = "options"];</code>
      * @return Whether the options field is set.
      */
@@ -910,6 +1096,10 @@ private static final long serialVersionUID = 0L;
       return ((bitField0_ & 0x00000008) != 0);
     }
     /**
+     * <pre>
+     * Options used to generate this result.
+     * </pre>
+     *
      * <code>.buf.validate.conformance.harness.ResultOptions options = 4 [json_name = "options"];</code>
      * @return The options.
      */
@@ -921,6 +1111,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     * Options used to generate this result.
+     * </pre>
+     *
      * <code>.buf.validate.conformance.harness.ResultOptions options = 4 [json_name = "options"];</code>
      */
     public Builder setOptions(build.buf.validate.conformance.harness.ResultOptions value) {
@@ -937,6 +1131,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * Options used to generate this result.
+     * </pre>
+     *
      * <code>.buf.validate.conformance.harness.ResultOptions options = 4 [json_name = "options"];</code>
      */
     public Builder setOptions(
@@ -951,6 +1149,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * Options used to generate this result.
+     * </pre>
+     *
      * <code>.buf.validate.conformance.harness.ResultOptions options = 4 [json_name = "options"];</code>
      */
     public Builder mergeOptions(build.buf.validate.conformance.harness.ResultOptions value) {
@@ -970,6 +1172,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * Options used to generate this result.
+     * </pre>
+     *
      * <code>.buf.validate.conformance.harness.ResultOptions options = 4 [json_name = "options"];</code>
      */
     public Builder clearOptions() {
@@ -983,6 +1189,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * Options used to generate this result.
+     * </pre>
+     *
      * <code>.buf.validate.conformance.harness.ResultOptions options = 4 [json_name = "options"];</code>
      */
     public build.buf.validate.conformance.harness.ResultOptions.Builder getOptionsBuilder() {
@@ -991,6 +1201,10 @@ private static final long serialVersionUID = 0L;
       return getOptionsFieldBuilder().getBuilder();
     }
     /**
+     * <pre>
+     * Options used to generate this result.
+     * </pre>
+     *
      * <code>.buf.validate.conformance.harness.ResultOptions options = 4 [json_name = "options"];</code>
      */
     public build.buf.validate.conformance.harness.ResultOptionsOrBuilder getOptionsOrBuilder() {
@@ -1002,6 +1216,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     * Options used to generate this result.
+     * </pre>
+     *
      * <code>.buf.validate.conformance.harness.ResultOptions options = 4 [json_name = "options"];</code>
      */
     private com.google.protobuf.SingleFieldBuilderV3<
@@ -1016,6 +1234,50 @@ private static final long serialVersionUID = 0L;
         options_ = null;
       }
       return optionsBuilder_;
+    }
+
+    private int expectedFailures_ ;
+    /**
+     * <pre>
+     * Count of expected failures.
+     * </pre>
+     *
+     * <code>int32 expected_failures = 5 [json_name = "expectedFailures"];</code>
+     * @return The expectedFailures.
+     */
+    @java.lang.Override
+    public int getExpectedFailures() {
+      return expectedFailures_;
+    }
+    /**
+     * <pre>
+     * Count of expected failures.
+     * </pre>
+     *
+     * <code>int32 expected_failures = 5 [json_name = "expectedFailures"];</code>
+     * @param value The expectedFailures to set.
+     * @return This builder for chaining.
+     */
+    public Builder setExpectedFailures(int value) {
+
+      expectedFailures_ = value;
+      bitField0_ |= 0x00000010;
+      onChanged();
+      return this;
+    }
+    /**
+     * <pre>
+     * Count of expected failures.
+     * </pre>
+     *
+     * <code>int32 expected_failures = 5 [json_name = "expectedFailures"];</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearExpectedFailures() {
+      bitField0_ = (bitField0_ & ~0x00000010);
+      expectedFailures_ = 0;
+      onChanged();
+      return this;
     }
     @java.lang.Override
     public final Builder setUnknownFields(

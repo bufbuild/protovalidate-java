@@ -34,12 +34,12 @@ import java.util.Arrays;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class SimpleTest {
+public class ValidatorTest {
 
     private Validator validator;
 
     @Before
-    public void setUp() throws CompilationException {
+    public void setUp() {
         validator = new Validator(new Config());
     }
 
@@ -224,5 +224,13 @@ public class SimpleTest {
         RepeatedUnique invalid = RepeatedUnique.newBuilder().addAllVal(Arrays.asList("foo", "Foo")).build();
         ValidationResult validate = validator.validate(invalid);
         assertThat(validate.isSuccess()).isTrue();
+    }
+
+    @Test
+    public void testRecursiveInvalid() throws ValidationException {
+        MapRecursive test = MapRecursive.newBuilder().putVal(1, MapRecursive.Msg.newBuilder().build()).build();
+        ValidationResult validate = validator.validate(test);
+        assertThat(validate.violations).hasSize(1);
+        assertThat(validate.isFailure()).isTrue();
     }
 }

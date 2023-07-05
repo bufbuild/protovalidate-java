@@ -53,29 +53,33 @@ public final class ResultsProto {
       "\007verbose\030\003 \001(\010R\007verbose\022\026\n\006strict\030\004 \001(\010R" +
       "\006strict\022%\n\016strict_message\030\005 \001(\010R\rstrictM" +
       "essage\022!\n\014strict_error\030\006 \001(\010R\013strictErro" +
-      "r\"\330\001\n\tResultSet\022\034\n\tsuccesses\030\001 \001(\005R\tsucc" +
+      "r\"\205\002\n\tResultSet\022\034\n\tsuccesses\030\001 \001(\005R\tsucc" +
       "esses\022\032\n\010failures\030\002 \001(\005R\010failures\022F\n\006sui" +
       "tes\030\003 \003(\0132..buf.validate.conformance.har" +
       "ness.SuiteResultsR\006suites\022I\n\007options\030\004 \001" +
       "(\0132/.buf.validate.conformance.harness.Re" +
-      "sultOptionsR\007options\"\332\001\n\014SuiteResults\022\022\n" +
-      "\004name\030\001 \001(\tR\004name\022\034\n\tsuccesses\030\002 \001(\005R\tsu" +
-      "ccesses\022\032\n\010failures\030\003 \001(\005R\010failures\022B\n\005c" +
-      "ases\030\004 \003(\0132,.buf.validate.conformance.ha" +
-      "rness.CaseResultR\005cases\0228\n\005fdset\030\005 \001(\0132\"" +
-      ".google.protobuf.FileDescriptorSetR\005fdse" +
-      "t\"\354\001\n\nCaseResult\022\022\n\004name\030\001 \001(\tR\004name\022\030\n\007" +
-      "success\030\002 \001(\010R\007success\022D\n\006wanted\030\003 \001(\0132," +
-      ".buf.validate.conformance.harness.TestRe" +
-      "sultR\006wanted\022>\n\003got\030\004 \001(\0132,.buf.validate" +
-      ".conformance.harness.TestResultR\003got\022*\n\005" +
-      "input\030\005 \001(\0132\024.google.protobuf.AnyR\005input" +
-      "B\332\001\n&build.buf.validate.conformance.harn" +
-      "essB\014ResultsProtoP\001\242\002\004BVCH\252\002 Buf.Validat" +
-      "e.Conformance.Harness\312\002 Buf\\Validate\\Con" +
-      "formance\\Harness\342\002,Buf\\Validate\\Conforma" +
-      "nce\\Harness\\GPBMetadata\352\002#Buf::Validate:" +
-      ":Conformance::Harnessb\006proto3"
+      "sultOptionsR\007options\022+\n\021expected_failure" +
+      "s\030\005 \001(\005R\020expectedFailures\"\207\002\n\014SuiteResul" +
+      "ts\022\022\n\004name\030\001 \001(\tR\004name\022\034\n\tsuccesses\030\002 \001(" +
+      "\005R\tsuccesses\022\032\n\010failures\030\003 \001(\005R\010failures" +
+      "\022B\n\005cases\030\004 \003(\0132,.buf.validate.conforman" +
+      "ce.harness.CaseResultR\005cases\0228\n\005fdset\030\005 " +
+      "\001(\0132\".google.protobuf.FileDescriptorSetR" +
+      "\005fdset\022+\n\021expected_failures\030\006 \001(\005R\020expec" +
+      "tedFailures\"\227\002\n\nCaseResult\022\022\n\004name\030\001 \001(\t" +
+      "R\004name\022\030\n\007success\030\002 \001(\010R\007success\022D\n\006want" +
+      "ed\030\003 \001(\0132,.buf.validate.conformance.harn" +
+      "ess.TestResultR\006wanted\022>\n\003got\030\004 \001(\0132,.bu" +
+      "f.validate.conformance.harness.TestResul" +
+      "tR\003got\022*\n\005input\030\005 \001(\0132\024.google.protobuf." +
+      "AnyR\005input\022)\n\020expected_failure\030\006 \001(\010R\017ex" +
+      "pectedFailureB\332\001\n&build.buf.validate.con" +
+      "formance.harnessB\014ResultsProtoP\001\242\002\004BVCH\252" +
+      "\002 Buf.Validate.Conformance.Harness\312\002 Buf" +
+      "\\Validate\\Conformance\\Harness\342\002,Buf\\Vali" +
+      "date\\Conformance\\Harness\\GPBMetadata\352\002#B" +
+      "uf::Validate::Conformance::Harnessb\006prot" +
+      "o3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -95,19 +99,19 @@ public final class ResultsProto {
     internal_static_buf_validate_conformance_harness_ResultSet_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_buf_validate_conformance_harness_ResultSet_descriptor,
-        new java.lang.String[] { "Successes", "Failures", "Suites", "Options", });
+        new java.lang.String[] { "Successes", "Failures", "Suites", "Options", "ExpectedFailures", });
     internal_static_buf_validate_conformance_harness_SuiteResults_descriptor =
       getDescriptor().getMessageTypes().get(2);
     internal_static_buf_validate_conformance_harness_SuiteResults_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_buf_validate_conformance_harness_SuiteResults_descriptor,
-        new java.lang.String[] { "Name", "Successes", "Failures", "Cases", "Fdset", });
+        new java.lang.String[] { "Name", "Successes", "Failures", "Cases", "Fdset", "ExpectedFailures", });
     internal_static_buf_validate_conformance_harness_CaseResult_descriptor =
       getDescriptor().getMessageTypes().get(3);
     internal_static_buf_validate_conformance_harness_CaseResult_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_buf_validate_conformance_harness_CaseResult_descriptor,
-        new java.lang.String[] { "Name", "Success", "Wanted", "Got", "Input", });
+        new java.lang.String[] { "Name", "Success", "Wanted", "Got", "Input", "ExpectedFailure", });
     build.buf.validate.conformance.harness.HarnessProto.getDescriptor();
     com.google.protobuf.AnyProto.getDescriptor();
     com.google.protobuf.DescriptorProtos.getDescriptor();

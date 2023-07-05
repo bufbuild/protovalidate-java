@@ -4,6 +4,11 @@
 package build.buf.validate.conformance.harness;
 
 /**
+ * <pre>
+ * ResultOptions are the options passed to the test runner to configure the
+ * test run.
+ * </pre>
+ *
  * Protobuf type {@code buf.validate.conformance.harness.ResultOptions}
  */
 public final class ResultOptions extends
@@ -44,6 +49,10 @@ private static final long serialVersionUID = 0L;
   @SuppressWarnings("serial")
   private volatile java.lang.Object suiteFilter_ = "";
   /**
+   * <pre>
+   * The suite filter is a regex that matches against the suite name.
+   * </pre>
+   *
    * <code>string suite_filter = 1 [json_name = "suiteFilter"];</code>
    * @return The suiteFilter.
    */
@@ -61,6 +70,10 @@ private static final long serialVersionUID = 0L;
     }
   }
   /**
+   * <pre>
+   * The suite filter is a regex that matches against the suite name.
+   * </pre>
+   *
    * <code>string suite_filter = 1 [json_name = "suiteFilter"];</code>
    * @return The bytes for suiteFilter.
    */
@@ -83,6 +96,10 @@ private static final long serialVersionUID = 0L;
   @SuppressWarnings("serial")
   private volatile java.lang.Object caseFilter_ = "";
   /**
+   * <pre>
+   * The case filter is a regex that matches against the case name.
+   * </pre>
+   *
    * <code>string case_filter = 2 [json_name = "caseFilter"];</code>
    * @return The caseFilter.
    */
@@ -100,6 +117,10 @@ private static final long serialVersionUID = 0L;
     }
   }
   /**
+   * <pre>
+   * The case filter is a regex that matches against the case name.
+   * </pre>
+   *
    * <code>string case_filter = 2 [json_name = "caseFilter"];</code>
    * @return The bytes for caseFilter.
    */
@@ -121,6 +142,10 @@ private static final long serialVersionUID = 0L;
   public static final int VERBOSE_FIELD_NUMBER = 3;
   private boolean verbose_ = false;
   /**
+   * <pre>
+   * If the test runner should print verbose output.
+   * </pre>
+   *
    * <code>bool verbose = 3 [json_name = "verbose"];</code>
    * @return The verbose.
    */
@@ -132,6 +157,10 @@ private static final long serialVersionUID = 0L;
   public static final int STRICT_FIELD_NUMBER = 4;
   private boolean strict_ = false;
   /**
+   * <pre>
+   * If the violation type must be an exact match.
+   * </pre>
+   *
    * <code>bool strict = 4 [json_name = "strict"];</code>
    * @return The strict.
    */
@@ -159,7 +188,7 @@ private static final long serialVersionUID = 0L;
   private boolean strictError_ = false;
   /**
    * <pre>
-   * If the distinciton between runtime and compile time errors must be exact.
+   * If the distinction between runtime and compile time errors must be exact.
    * </pre>
    *
    * <code>bool strict_error = 6 [json_name = "strictError"];</code>
@@ -385,6 +414,11 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
+   * <pre>
+   * ResultOptions are the options passed to the test runner to configure the
+   * test run.
+   * </pre>
+   *
    * Protobuf type {@code buf.validate.conformance.harness.ResultOptions}
    */
   public static final class Builder extends
@@ -618,6 +652,10 @@ private static final long serialVersionUID = 0L;
 
     private java.lang.Object suiteFilter_ = "";
     /**
+     * <pre>
+     * The suite filter is a regex that matches against the suite name.
+     * </pre>
+     *
      * <code>string suite_filter = 1 [json_name = "suiteFilter"];</code>
      * @return The suiteFilter.
      */
@@ -634,6 +672,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     * The suite filter is a regex that matches against the suite name.
+     * </pre>
+     *
      * <code>string suite_filter = 1 [json_name = "suiteFilter"];</code>
      * @return The bytes for suiteFilter.
      */
@@ -651,6 +693,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     * The suite filter is a regex that matches against the suite name.
+     * </pre>
+     *
      * <code>string suite_filter = 1 [json_name = "suiteFilter"];</code>
      * @param value The suiteFilter to set.
      * @return This builder for chaining.
@@ -664,6 +710,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * The suite filter is a regex that matches against the suite name.
+     * </pre>
+     *
      * <code>string suite_filter = 1 [json_name = "suiteFilter"];</code>
      * @return This builder for chaining.
      */
@@ -674,6 +724,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * The suite filter is a regex that matches against the suite name.
+     * </pre>
+     *
      * <code>string suite_filter = 1 [json_name = "suiteFilter"];</code>
      * @param value The bytes for suiteFilter to set.
      * @return This builder for chaining.
@@ -690,6 +744,10 @@ private static final long serialVersionUID = 0L;
 
     private java.lang.Object caseFilter_ = "";
     /**
+     * <pre>
+     * The case filter is a regex that matches against the case name.
+     * </pre>
+     *
      * <code>string case_filter = 2 [json_name = "caseFilter"];</code>
      * @return The caseFilter.
      */
@@ -706,6 +764,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     * The case filter is a regex that matches against the case name.
+     * </pre>
+     *
      * <code>string case_filter = 2 [json_name = "caseFilter"];</code>
      * @return The bytes for caseFilter.
      */
@@ -723,6 +785,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     * The case filter is a regex that matches against the case name.
+     * </pre>
+     *
      * <code>string case_filter = 2 [json_name = "caseFilter"];</code>
      * @param value The caseFilter to set.
      * @return This builder for chaining.
@@ -736,6 +802,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * The case filter is a regex that matches against the case name.
+     * </pre>
+     *
      * <code>string case_filter = 2 [json_name = "caseFilter"];</code>
      * @return This builder for chaining.
      */
@@ -746,6 +816,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * The case filter is a regex that matches against the case name.
+     * </pre>
+     *
      * <code>string case_filter = 2 [json_name = "caseFilter"];</code>
      * @param value The bytes for caseFilter to set.
      * @return This builder for chaining.
@@ -762,6 +836,10 @@ private static final long serialVersionUID = 0L;
 
     private boolean verbose_ ;
     /**
+     * <pre>
+     * If the test runner should print verbose output.
+     * </pre>
+     *
      * <code>bool verbose = 3 [json_name = "verbose"];</code>
      * @return The verbose.
      */
@@ -770,6 +848,10 @@ private static final long serialVersionUID = 0L;
       return verbose_;
     }
     /**
+     * <pre>
+     * If the test runner should print verbose output.
+     * </pre>
+     *
      * <code>bool verbose = 3 [json_name = "verbose"];</code>
      * @param value The verbose to set.
      * @return This builder for chaining.
@@ -782,6 +864,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * If the test runner should print verbose output.
+     * </pre>
+     *
      * <code>bool verbose = 3 [json_name = "verbose"];</code>
      * @return This builder for chaining.
      */
@@ -794,6 +880,10 @@ private static final long serialVersionUID = 0L;
 
     private boolean strict_ ;
     /**
+     * <pre>
+     * If the violation type must be an exact match.
+     * </pre>
+     *
      * <code>bool strict = 4 [json_name = "strict"];</code>
      * @return The strict.
      */
@@ -802,6 +892,10 @@ private static final long serialVersionUID = 0L;
       return strict_;
     }
     /**
+     * <pre>
+     * If the violation type must be an exact match.
+     * </pre>
+     *
      * <code>bool strict = 4 [json_name = "strict"];</code>
      * @param value The strict to set.
      * @return This builder for chaining.
@@ -814,6 +908,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * If the violation type must be an exact match.
+     * </pre>
+     *
      * <code>bool strict = 4 [json_name = "strict"];</code>
      * @return This builder for chaining.
      */
@@ -871,7 +969,7 @@ private static final long serialVersionUID = 0L;
     private boolean strictError_ ;
     /**
      * <pre>
-     * If the distinciton between runtime and compile time errors must be exact.
+     * If the distinction between runtime and compile time errors must be exact.
      * </pre>
      *
      * <code>bool strict_error = 6 [json_name = "strictError"];</code>
@@ -883,7 +981,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * If the distinciton between runtime and compile time errors must be exact.
+     * If the distinction between runtime and compile time errors must be exact.
      * </pre>
      *
      * <code>bool strict_error = 6 [json_name = "strictError"];</code>
@@ -899,7 +997,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * If the distinciton between runtime and compile time errors must be exact.
+     * If the distinction between runtime and compile time errors must be exact.
      * </pre>
      *
      * <code>bool strict_error = 6 [json_name = "strictError"];</code>
