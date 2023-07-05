@@ -9,7 +9,6 @@ MAKEFLAGS += --no-print-directory
 BIN := .tmp/bin
 COPYRIGHT_YEARS := 2023
 LICENSE_IGNORE := -e build/buf/validate -e build/tests
-ARGS ?=
 JAVA_VERSION = 20
 JAVAC = javac
 JAVA = java

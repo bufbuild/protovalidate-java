@@ -14,9 +14,6 @@
 
 package build.buf.protovalidate.celext;
 
-import build.buf.protovalidate.results.CompilationException;
-import build.buf.protovalidate.results.ExecutionException;
-import build.buf.protovalidate.results.ValidationException;
 import com.google.protobuf.Duration;
 import com.google.protobuf.Timestamp;
 import org.projectnessie.cel.common.types.BoolT;
@@ -36,7 +33,7 @@ import org.projectnessie.cel.common.types.ref.Type;
 import org.projectnessie.cel.common.types.ref.Val;
 
 import java.nio.charset.StandardCharsets;
-import java.util.Arrays;
+import java.text.DecimalFormat;
 import java.util.List;
 
 import static org.projectnessie.cel.common.types.IntT.intOf;
@@ -49,7 +46,7 @@ public final class Format {
     private Format() {
     }
 
-    public static Val format(String fmtString, ListT list)  {
+    public static Val format(String fmtString, ListT list) {
         StringBuilder builder = new StringBuilder();
         int index = 0;
         int argIndex = 0;
@@ -146,56 +143,79 @@ public final class Format {
             builder.append(val.value());
             return NullT.NullValue;
         } else {
-            return formatStringSafe(builder, val);
+            return formatStringSafe(builder, val, false);
         }
     }
 
-    private static Val formatStringSafe(StringBuilder builder, Val val)  {
+    private static Val formatStringSafe(StringBuilder builder, Val val, boolean listType) {
         Type type = val.type();
         if (type == BoolT.BoolType) {
             builder.append(val.booleanValue());
-        } else if (type == IntT.IntType) {
-            formatInteger(builder, Long.valueOf(val.intValue()).intValue());
-        } else if (type == UintT.UintType) {
+        } else if (type == IntT.IntType || type == UintT.UintType) {
             formatInteger(builder, Long.valueOf(val.intValue()).intValue());
         } else if (type == DoubleT.DoubleType) {
-            builder.append(val.value());
+            DecimalFormat format = new DecimalFormat("0.#");
+            builder.append(format.format(val.value()));
         } else if (type == StringT.StringType) {
             builder.append("\"")
                     .append(val.value().toString())
                     .append("\"");
         } else if (type == BytesT.BytesType) {
-            builder.append("\"")
-                    .append(new String((byte[]) val.value(), StandardCharsets.UTF_8))
-                    .append("\"");
+            formatBytes(builder, val);
         } else if (type == DurationT.DurationType) {
-            builder.append("duration(");
-            Duration duration = val.convertToNative(Duration.class);
-            builder.append(duration.getSeconds());
-            builder.append('s');
-            builder.append(")");
+            formatDuration(builder, val, listType);
         } else if (type == TimestampT.TimestampType) {
-            builder.append("timestamp(");
-            Timestamp timestamp = val.convertToNative(Timestamp.class);
-            builder.append(timestamp.toString());
-            builder.append(")");
+            formatTimestamp(builder, val);
         } else if (type == ListT.ListType) {
-            builder.append('[');
-            List list = val.convertToNative(List.class);
-            for (int i = 0; i < list.size(); i++) {
-                Object obj = list.get(i);
-                formatStringSafe(builder, nativeToValue(Db.newDb(), null, obj));
-                if (i != list.size() - 1) {
-                    builder.append(", ");
-                }
-            }
-            builder.append(']');
+            formatList(builder, val);
         } else if (type == MapT.MapType) {
             throw new RuntimeException("unimplemented stringSafe map type");
         } else if (type == NullT.NullType) {
             throw new RuntimeException("unimplemented stringSafe null type");
         }
         return val;
+    }
+
+    private static void formatList(StringBuilder builder, Val val) {
+        builder.append('[');
+        List list = val.convertToNative(List.class);
+        for (int i = 0; i < list.size(); i++) {
+            Object obj = list.get(i);
+            formatStringSafe(builder, nativeToValue(Db.newDb(), null, obj), true);
+            if (i != list.size() - 1) {
+                builder.append(", ");
+            }
+        }
+        builder.append(']');
+    }
+
+    private static void formatTimestamp(StringBuilder builder, Val val) {
+        builder.append("timestamp(");
+        Timestamp timestamp = val.convertToNative(Timestamp.class);
+        builder.append(timestamp.toString());
+        builder.append(")");
+    }
+
+    private static void formatDuration(StringBuilder builder, Val val, boolean listType) {
+        if (listType) {
+            builder.append("duration(\"");
+        }
+        Duration duration = val.convertToNative(Duration.class);
+
+        double totalSeconds = duration.getSeconds() + (duration.getNanos() / 1_000_000_000.0);
+
+        DecimalFormat format = new DecimalFormat("0.#########");
+        builder.append(format.format(totalSeconds));
+        builder.append("s");
+        if (listType) {
+            builder.append("\")");
+        }
+    }
+
+    private static void formatBytes(StringBuilder builder, Val val) {
+        builder.append("\"")
+                .append(new String((byte[]) val.value(), StandardCharsets.UTF_8))
+                .append("\"");
     }
 
     private static void formatInteger(StringBuilder builder, int value) {
@@ -206,7 +226,7 @@ public final class Format {
         builder.append(value);
     }
 
-    private static Val formatHex(StringBuilder builder, Val val, char[] digits)  {
+    private static Val formatHex(StringBuilder builder, Val val, char[] digits) {
         String hexString;
         if (val.type() == IntT.IntType || val.type() == UintT.UintType) {
             hexString = Long.toHexString(val.intValue());
@@ -220,39 +240,6 @@ public final class Format {
         }
         builder.append(hexString);
         return NullT.NullType;
-    }
-
-    private static void formatHexString(StringBuilder builder, String value) {
-        byte[] bytes = value.getBytes(StandardCharsets.UTF_8);
-        // Convert each byte to its hexadecimal representation
-        StringBuilder sb = new StringBuilder(bytes.length * 2);
-        for (byte b : bytes) {
-            // Convert the byte to an unsigned integer and format it as a two-digit hexadecimal
-            String hex = String.format("%02x", b & 0xFF);
-            // Append the hexadecimal representation to the StringBuilder
-            sb.append(hex);
-        }
-        builder.append(sb);
-    }
-
-
-    private static void formatUnsigned(StringBuilder builder, int value, int base) {
-        formatUnsigned(builder, value, base, LOWER_HEX_ARRAY);
-    }
-
-    private static void formatUnsigned(StringBuilder builder, int value, int base, char[] digits) {
-        if (value == 0) {
-            builder.append("0");
-            return;
-        }
-        char[] buf = new char[64];
-        int index = 64;
-        while (value != 0 && index > 1) {
-            buf[--index] = digits[value % base];
-            value /= base;
-        }
-        char[] str = Arrays.copyOfRange(buf, index, buf.length);
-        builder.append(str);
     }
 
     private static Val formatDecimal(StringBuilder builder, Val arg) {
