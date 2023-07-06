@@ -18,29 +18,25 @@ import build.buf.protovalidate.results.ExecutionException;
 import build.buf.protovalidate.results.ValidationResult;
 
 import java.util.ArrayList;
+import java.util.List;
 
-public class Value implements Evaluator {
+public class ValueEvaluator implements Evaluator {
     // Zero is the default or zero-value for this value's type
     public Object zero;
     // Constraints are the individual evaluators applied to a value
-    public final Evaluators constraints;
+    public final List<Evaluator> evaluators = new ArrayList<>();
     // IgnoreEmpty indicates that the Constraints should not be applied if the
     // field is unset or the default (typically zero) value.
     public boolean ignoreEmpty;
 
-    public Value() {
-        this(false);
-    }
-
-    public Value(boolean ignoreEmpty) {
+    public ValueEvaluator() {
         this.zero = null;
-        this.ignoreEmpty = ignoreEmpty;
-        this.constraints = new Evaluators(new ArrayList<>());
+        this.ignoreEmpty = false;
     }
 
     @Override
     public boolean tautology() {
-        return constraints.evaluators.isEmpty();
+        return evaluators.isEmpty();
     }
 
     @Override
@@ -48,7 +44,14 @@ public class Value implements Evaluator {
         if (ignoreEmpty && isZero(val)) {
             return new ValidationResult();
         }
-        return constraints.evaluate(val, failFast);
+        ValidationResult validationResult = new ValidationResult();
+        for (Evaluator evaluator : evaluators) {
+            ValidationResult evalResult = evaluator.evaluate(val, failFast);
+            if (!validationResult.merge(evalResult, failFast)) {
+                return evalResult;
+            }
+        }
+        return validationResult;
     }
 
     private boolean isZero(JavaValue val) {
@@ -62,7 +65,7 @@ public class Value implements Evaluator {
 
     public void append(Evaluator eval) {
         if (eval != null && !eval.tautology()) {
-            this.constraints.append(eval);
+            this.evaluators.add(eval);
         }
     }
 }

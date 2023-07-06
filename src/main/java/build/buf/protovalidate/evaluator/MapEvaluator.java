@@ -19,23 +19,19 @@ import build.buf.protovalidate.results.ValidationResult;
 
 import java.util.Map;
 
-public class KvPairs implements Evaluator {
-    public final Value keyConstraints;
-    public final Value valueConstraints;
+public class MapEvaluator implements Evaluator {
+    public final ValueEvaluator keyConstraints;
+    public final ValueEvaluator valueEvaluatorConstraints;
 
-    public KvPairs() {
-        this(new Value(), new Value());
-    }
-
-    public KvPairs(Value keyConstraints, Value valueConstraints) {
-        this.keyConstraints = keyConstraints;
-        this.valueConstraints = valueConstraints;
+    public MapEvaluator() {
+        this.keyConstraints = new ValueEvaluator();
+        this.valueEvaluatorConstraints = new ValueEvaluator();
     }
 
     @Override
     public boolean tautology() {
         return keyConstraints.tautology() &&
-                valueConstraints.tautology();
+                valueEvaluatorConstraints.tautology();
     }
 
     @Override
@@ -64,7 +60,7 @@ public class KvPairs implements Evaluator {
         }
 
         try {
-            ValidationResult valueEvalResult = valueConstraints.evaluate(value, failFast);
+            ValidationResult valueEvalResult = valueEvaluatorConstraints.evaluate(value, failFast);
             if (!evalResult.merge(valueEvalResult, failFast)) {
                 return valueEvalResult;
             }

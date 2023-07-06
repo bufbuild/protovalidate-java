@@ -25,28 +25,30 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class JavaValue<T> {
+public class JavaValue {
     private final Descriptors.FieldDescriptor fieldDescriptor;
-    private final T value;
+    // Object type since the object type is inferred from the field descriptor.
+    private final Object value;
 
-    public JavaValue(Descriptors.FieldDescriptor fieldDescriptor, T value) {
+    public JavaValue(Descriptors.FieldDescriptor fieldDescriptor, Object value) {
         this.fieldDescriptor = fieldDescriptor;
         this.value = value;
     }
 
     public Message messageValue() {
-        if (value instanceof Message) {
+        if (fieldDescriptor.getType() == Descriptors.FieldDescriptor.Type.MESSAGE) {
             return (Message) value;
         }
         return null;
     }
 
-    public T value() {
+    public <T> T value() {
         Descriptors.FieldDescriptor.Type type = fieldDescriptor.getType();
         if (!fieldDescriptor.isRepeated() && (type == Descriptors.FieldDescriptor.Type.UINT32
                 || type == Descriptors.FieldDescriptor.Type.UINT64
                 || type == Descriptors.FieldDescriptor.Type.FIXED32
                 || type == Descriptors.FieldDescriptor.Type.FIXED64)) {
+            // TODO: fixup comment.
             /* Java does not have native support for unsigned int/long or uint32/uint64 types.
             To work with CEL's uint type in Java, special handling is required.
             TL;DR: When using uint32/uint64 in your protobuf objects or CEL expressions in Java,
@@ -54,15 +56,15 @@ public class JavaValue<T> {
             return (T) ULong.valueOf(((Number) value).longValue());
         }
         // Dynamic programming in a static language.
-        return value;
+        return (T) value;
     }
 
-    public List<JavaValue<T>> repeatedValue() {
-        List<JavaValue<T>> out = new ArrayList<>();
+    public List<JavaValue> repeatedValue() {
+        List<JavaValue> out = new ArrayList<>();
         if (fieldDescriptor.isRepeated()) {
             List<?> list = (List<?>) value;
             for (Object o : list) {
-                out.add(new JavaValue<>(fieldDescriptor, (T) o));
+                out.add(new JavaValue(fieldDescriptor, o));
             }
         }
         return out;

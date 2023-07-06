@@ -14,33 +14,24 @@
 
 package build.buf.protovalidate;
 
-import build.buf.protovalidate.results.CompilationException;
+import build.buf.protovalidate.celext.ValidateLibrary;
 import build.buf.protovalidate.results.ValidationException;
 import build.buf.protovalidate.results.ValidationResult;
-import build.buf.protovalidate.evaluator.Builder;
+import build.buf.protovalidate.evaluator.EvaluatorBuilder;
 import build.buf.protovalidate.evaluator.MessageEvaluator;
 import com.google.protobuf.Descriptors.Descriptor;
 import com.google.protobuf.Message;
 import org.projectnessie.cel.Env;
-
-import java.util.List;
-
-import static build.buf.protovalidate.celext.CelExt.defaultCelRuntime;
+import org.projectnessie.cel.Library;
 
 public class Validator {
-    private final Builder builder;
+    private final EvaluatorBuilder evaluatorBuilder;
     private final boolean failFast;
 
     public Validator(Config config) {
-        Env env = defaultCelRuntime(config.useUTC);
-        this.builder = new Builder(env, config.disableLazy, config.resolver);
+        Env env = Env.newEnv(Library.Lib(new ValidateLibrary(config.useUTC)));
+        this.evaluatorBuilder = new EvaluatorBuilder(env, config.disableLazy, config.resolver);
         this.failFast = config.failFast;
-    }
-
-    public void load(List<Descriptor> seedDesc) throws CompilationException {
-        for(Descriptor desc : seedDesc) {
-            builder.getLoader().load(desc);
-        }
     }
 
     public ValidationResult validate(Message msg) throws ValidationException {
@@ -48,7 +39,7 @@ public class Validator {
             return new ValidationResult();
         }
         Descriptor descriptor = msg.getDescriptorForType();
-        MessageEvaluator evaluator = builder.getLoader().load(descriptor);
+        MessageEvaluator evaluator = evaluatorBuilder.load(descriptor);
         return evaluator.evaluateMessage(msg, failFast);
     }
 }

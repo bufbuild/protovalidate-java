@@ -14,7 +14,6 @@
 
 package build.buf.protovalidate.celext;
 
-import build.buf.protovalidate.results.ExecutionException;
 import build.buf.protovalidate.expression.NowVariable;
 import com.google.api.expr.v1alpha1.Decl;
 import com.google.common.net.InetAddresses;
@@ -34,24 +33,36 @@ import org.projectnessie.cel.common.types.StringT;
 import org.projectnessie.cel.common.types.TimestampT;
 import org.projectnessie.cel.common.types.Types;
 import org.projectnessie.cel.common.types.UintT;
-import org.projectnessie.cel.common.types.ref.Type;
 import org.projectnessie.cel.common.types.ref.Val;
 import org.projectnessie.cel.common.types.traits.Lister;
 import org.projectnessie.cel.interpreter.functions.UnaryOp;
 
 import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
-import java.net.*;
+import java.net.Inet4Address;
+import java.net.Inet6Address;
+import java.net.InetAddress;
+import java.net.MalformedURLException;
+import java.net.URISyntaxException;
+import java.net.URL;
 import java.nio.charset.StandardCharsets;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Locale;
+import java.util.Map;
+import java.util.Set;
 
 import static org.projectnessie.cel.common.types.IntT.intOf;
 import static org.projectnessie.cel.interpreter.functions.Overload.*;
 
-public class Lib implements Library {
+public class ValidateLibrary implements Library {
     private boolean useUtc;
 
-    public Lib(boolean useUtc) {
+    public ValidateLibrary(boolean useUtc) {
         // TODO: Implement me
         this.useUtc = useUtc;
     }
@@ -355,7 +366,6 @@ public class Lib implements Library {
         return value -> {
             Lister list = (Lister) value;
             if (list == null || list.size().intValue() == 0L) {
-                // TODO: find appropriate return error
                 return Err.noMoreElements();
             }
             Val firstValue = list.get(IntT.intOf(0));
@@ -398,14 +408,13 @@ public class Lib implements Library {
     }
 
     public Val uniqueScalar(Lister list) {
-        // TODO: dont like the use of map here but it works
-        Map<Val, Boolean> exist = new HashMap<>();
+        Set<Val> exist = new HashSet<>();
         for (int i = 0; i < list.size().intValue(); i++) {
             Val val = list.get(intOf(i));
-            if (exist.containsKey(val)) {
+            if (exist.contains(val)) {
                 return BoolT.False;
             }
-            exist.put(val, Boolean.TRUE);
+            exist.add(val);
         }
         return BoolT.True;
     }

@@ -24,5 +24,4 @@ import com.google.protobuf.Message;
  */
 public interface MessageEvaluator extends Evaluator {
     ValidationResult evaluateMessage(Message val, boolean failFast) throws ExecutionException;
-    void append(MessageEvaluator eval);
 }

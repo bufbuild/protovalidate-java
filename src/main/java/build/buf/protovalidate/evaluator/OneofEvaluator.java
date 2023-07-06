@@ -20,14 +20,14 @@ import build.buf.validate.Violation;
 import com.google.protobuf.Descriptors.OneofDescriptor;
 import com.google.protobuf.Message;
 
-public class Oneof implements MessageEvaluator {
+public class OneofEvaluator implements MessageEvaluator {
 
     // Descriptor is the OneofDescriptor targeted by this evaluator
     private final OneofDescriptor descriptor;
     // Required indicates that a member of the oneof must be set
     private final boolean required;
 
-    public Oneof(OneofDescriptor descriptor, boolean required) {
+    public OneofEvaluator(OneofDescriptor descriptor, boolean required) {
         this.descriptor = descriptor;
         this.required = required;
     }
@@ -60,10 +60,5 @@ public class Oneof implements MessageEvaluator {
             return evalResult;
         }
         return new ValidationResult();
-    }
-
-    @Override
-    public void append(MessageEvaluator eval) {
-        throw new UnsupportedOperationException("append not supported for Oneof");
     }
 }

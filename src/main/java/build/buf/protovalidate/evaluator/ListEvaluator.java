@@ -19,41 +19,37 @@ import build.buf.protovalidate.results.ValidationResult;
 
 import java.util.List;
 
-// TODO: Extra layer
-class Evaluators implements Evaluator {
-    final List<Evaluator> evaluators;
+public class ListEvaluator implements Evaluator {
 
-    public Evaluators(List<Evaluator> evaluators) {
-        this.evaluators = evaluators;
+    // ItemConstraints are checked on every item of the list
+    public final ValueEvaluator itemConstraints;
+
+    public ListEvaluator() {
+        this.itemConstraints = new ValueEvaluator();
     }
 
     @Override
     public boolean tautology() {
-        for (Evaluator eval : evaluators) {
-            if (!eval.tautology()) {
-                return false;
-            }
-        }
-        return true;
+        return itemConstraints.tautology();
     }
 
     @Override
     public ValidationResult evaluate(JavaValue val, boolean failFast) throws ExecutionException {
         ValidationResult validationResult = new ValidationResult();
-        for (Evaluator evaluator : evaluators) {
-            ValidationResult evalResult = evaluator.evaluate(val, failFast);
+
+        List<JavaValue> repeatedValues = val.repeatedValue();
+        for (int i = 0; i < repeatedValues.size(); i++) {
+            ValidationResult evalResult = itemConstraints.evaluate(repeatedValues.get(i), failFast);
+            evalResult.prefixErrorPaths("[%d]", i);
             if (!validationResult.merge(evalResult, failFast)) {
                 return evalResult;
             }
         }
-
         return validationResult;
     }
 
     @Override
     public void append(Evaluator eval) {
-        if (eval != null && !eval.tautology()) {
-            this.evaluators.add(eval);
-        }
+        throw new UnsupportedOperationException("append not supported for ListItems");
     }
 }

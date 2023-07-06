@@ -16,44 +16,40 @@ package build.buf.protovalidate.evaluator;
 
 import build.buf.protovalidate.results.ExecutionException;
 import build.buf.protovalidate.results.ValidationResult;
+import com.google.protobuf.Descriptors.Descriptor;
+import com.google.protobuf.Message;
 
-import java.util.List;
+// unknownMessage is a MessageEvaluator for an unknown descriptor. This is
+// returned only if lazy-building of evaluators has been disabled and an unknown
+// descriptor is encountered.
+public class UnknownMessageEvaluator implements MessageEvaluator {
+    private final Descriptor desc;
 
-public class ListItems implements Evaluator {
-
-    // ItemConstraints are checked on every item of the list
-    public final Value itemConstraints;
-
-    public ListItems() {
-        this(new Value());
+    public UnknownMessageEvaluator(Descriptor desc) {
+        this.desc = desc;
     }
 
-    public ListItems(Value itemConstraints) {
-        this.itemConstraints = itemConstraints;
+    public ValidationResult err() {
+        throw new ValidationResult("No evaluator available for " + desc.getFullName());
     }
 
     @Override
     public boolean tautology() {
-        return itemConstraints.tautology();
+        return false;
     }
 
     @Override
     public ValidationResult evaluate(JavaValue val, boolean failFast) throws ExecutionException {
-        ValidationResult validationResult = new ValidationResult();
-
-        List<JavaValue> repeatedValues = val.repeatedValue();
-        for (int i = 0; i < repeatedValues.size(); i++) {
-            ValidationResult evalResult = itemConstraints.evaluate(repeatedValues.get(i), failFast);
-            evalResult.prefixErrorPaths("[%d]", i);
-            if (!validationResult.merge(evalResult, failFast)) {
-                return evalResult;
-            }
-        }
-        return validationResult;
+        throw this.err();
     }
 
     @Override
     public void append(Evaluator eval) {
-        throw new UnsupportedOperationException("append not supported for ListItems");
+        throw new UnsupportedOperationException("append not supported for unknown message");
+    }
+
+    @Override
+    public ValidationResult evaluateMessage(Message val, boolean failFast) throws ExecutionException {
+        return err();
     }
 }

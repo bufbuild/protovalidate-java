@@ -23,7 +23,12 @@ import build.buf.validate.ValidateProto;
 import build.buf.validate.conformance.harness.TestConformanceRequest;
 import build.buf.validate.conformance.harness.TestConformanceResponse;
 import build.buf.validate.conformance.harness.TestResult;
-import com.google.protobuf.*;
+import com.google.protobuf.Any;
+import com.google.protobuf.ByteString;
+import com.google.protobuf.Descriptors;
+import com.google.protobuf.DynamicMessage;
+import com.google.protobuf.ExtensionRegistry;
+import com.google.protobuf.InvalidProtocolBufferException;
 
 import java.util.HashMap;
 import java.util.Map;

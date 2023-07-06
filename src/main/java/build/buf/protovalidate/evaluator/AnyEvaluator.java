@@ -23,12 +23,12 @@ import com.google.protobuf.Message;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Any implements Evaluator {
+public class AnyEvaluator implements Evaluator {
     private final Descriptors.FieldDescriptor typeURLDescriptor;
     private final Map<String, Object> in;
     private final Map<String, Object> notIn;
 
-    public Any(Descriptors.FieldDescriptor typeURLDescriptor, String[] in, String[] notIn) {
+    public AnyEvaluator(Descriptors.FieldDescriptor typeURLDescriptor, String[] in, String[] notIn) {
         this.typeURLDescriptor = typeURLDescriptor;
         this.in = stringsToMap(in);
         this.notIn = stringsToMap(notIn);
@@ -48,7 +48,7 @@ public class Any implements Evaluator {
     @Override
     public ValidationResult evaluate(JavaValue val, boolean failFast) throws ExecutionException {
         ValidationResult evalResult = new ValidationResult();
-        Message o = (Message) val.value();
+        Message o = val.messageValue();
         String typeURL = (String) o.getField(typeURLDescriptor);
         if (in != null && in.size() > 0) {
             if (!in.containsKey(typeURL)) {

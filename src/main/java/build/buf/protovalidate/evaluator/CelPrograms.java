@@ -49,9 +49,4 @@ public class CelPrograms implements Evaluator, MessageEvaluator {
     public ValidationResult evaluateMessage(Message val, boolean failFast) throws ExecutionException {
         return programSet.evalMessage(val, failFast);
     }
-
-    @Override
-    public void append(MessageEvaluator eval) {
-        throw new UnsupportedOperationException("append not supported for CelPrograms");
-    }
 }

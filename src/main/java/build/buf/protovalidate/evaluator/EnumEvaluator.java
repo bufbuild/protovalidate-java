@@ -22,10 +22,10 @@ import com.google.protobuf.Descriptors;
 import java.util.Arrays;
 import java.util.List;
 
-public class DefinedEnum implements Evaluator {
+public class EnumEvaluator implements Evaluator {
     private final List<Descriptors.EnumValueDescriptor> valueDescriptors;
 
-    public DefinedEnum(Descriptors.EnumValueDescriptor... valueDescriptors) {
+    public EnumEvaluator(Descriptors.EnumValueDescriptor... valueDescriptors) {
         this.valueDescriptors = Arrays.asList(valueDescriptors);
     }
 

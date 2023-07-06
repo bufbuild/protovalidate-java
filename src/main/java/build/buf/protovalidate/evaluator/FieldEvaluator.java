@@ -20,21 +20,21 @@ import build.buf.validate.Violation;
 import com.google.protobuf.Descriptors.FieldDescriptor;
 import com.google.protobuf.Message;
 
-public class FieldEval implements MessageEvaluator {
-    public final Value value;
+public class FieldEvaluator implements MessageEvaluator {
+    public final ValueEvaluator valueEvaluator;
     private final FieldDescriptor descriptor;
     private final boolean required;
     private final boolean optional;
 
-    public FieldEval(Value value, FieldDescriptor descriptor, boolean required, boolean optional) {
-        this.value = value;
+    public FieldEvaluator(ValueEvaluator valueEvaluator, FieldDescriptor descriptor, boolean required, boolean optional) {
+        this.valueEvaluator = valueEvaluator;
         this.descriptor = descriptor;
         this.required = required;
         this.optional = optional;
     }
 
     public boolean tautology() {
-        return !required && value.tautology();
+        return !required && valueEvaluator.tautology();
     }
 
     @Override
@@ -61,18 +61,13 @@ public class FieldEval implements MessageEvaluator {
             return evalResult;
         }
 
-        if ((optional || value.ignoreEmpty) && !hasField) {
+        if ((optional || valueEvaluator.ignoreEmpty) && !hasField) {
             return new ValidationResult();
         }
         Object fieldValue = message.getField(descriptor);
-        ValidationResult evalResult = value.evaluate(new JavaValue(descriptor, fieldValue), failFast);
+        ValidationResult evalResult = valueEvaluator.evaluate(new JavaValue(descriptor, fieldValue), failFast);
         evalResult.prefixErrorPaths("%s", descriptor.getName());
         return evalResult;
-    }
-
-    @Override
-    public void append(MessageEvaluator eval) {
-        throw new UnsupportedOperationException("append not supported for FieldEval");
     }
 
     @Override
@@ -80,7 +75,7 @@ public class FieldEval implements MessageEvaluator {
         throw new UnsupportedOperationException("append not supported for FieldEval");
     }
 
-    public Value getValue() {
-        return value;
+    public ValueEvaluator getValue() {
+        return valueEvaluator;
     }
 }

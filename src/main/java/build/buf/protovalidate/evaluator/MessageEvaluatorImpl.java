@@ -54,13 +54,8 @@ public class MessageEvaluatorImpl implements MessageEvaluator {
     @Override
     public void append(Evaluator eval) {
         if (eval instanceof MessageEvaluator) {
-            append((MessageEvaluator) eval);
+            evaluators.add((MessageEvaluator) eval);
         }
-    }
-
-    @Override
-    public void append(MessageEvaluator eval) {
-        evaluators.add(eval);
     }
 
     @Override
