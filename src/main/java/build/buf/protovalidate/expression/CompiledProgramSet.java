@@ -26,10 +26,13 @@ import org.projectnessie.cel.EnvOption;
 import java.util.ArrayList;
 import java.util.List;
 
-// ProgramSet is a list of compiledProgram expressions that are evaluated
-// together with the same input value. All expressions in a ProgramSet may refer
-// to a `this` variable.
+/**
+ * CompiledProgramSet is a list of {@link CompiledProgram} expressions that are evaluated
+ * together with the same input value. All expressions in a CompiledProgramSet may refer
+ * to a `this` variable.
+ */
 public class CompiledProgramSet {
+
     public final List<CompiledProgram> programs;
 
     public CompiledProgramSet(List<CompiledProgram> programs) {

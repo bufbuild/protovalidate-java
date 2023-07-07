@@ -14,10 +14,14 @@
 
 package build.buf.protovalidate.expression;
 
+/**
+ * Expression represents a single CEL expression.
+ */
 public class Expression {
     public final String id;
     public final String message;
     public final String expression;
+
 
     private Expression(String id, String message, String expression) {
         this.id = id;
@@ -25,10 +29,16 @@ public class Expression {
         this.expression = expression;
     }
 
+    /**
+     * Expression constructs a new Expression from the given constraint.
+     */
     public Expression(build.buf.gen.buf.validate.Constraint constraint) {
         this(constraint.getId(), constraint.getMessage(), constraint.getExpression());
     }
 
+    /**
+     * Expression constructs a new Expression from the given private constraint.
+     */
     public Expression(build.buf.gen.buf.validate.priv.Constraint constraint) {
         this(constraint.getId(), constraint.getMessage(), constraint.getExpression());
     }

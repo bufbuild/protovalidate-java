@@ -14,6 +14,10 @@
 
 package build.buf.protovalidate.results;
 
+/**
+ * ExecutionException extends {@link ValidationException} is returned when a constraint fails to execute.
+ * This is a fatal error.
+ */
 public class ExecutionException extends ValidationException {
 
     public ExecutionException(String message, Throwable cause) {

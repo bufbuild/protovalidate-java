@@ -23,6 +23,9 @@ import org.projectnessie.cel.Program;
 import org.projectnessie.cel.ProgramOption;
 import org.projectnessie.cel.common.Source;
 
+/**
+ * CompiledAst is a compiled CEL {@link Ast}.
+ */
 public class CompiledAst {
     private final Env env;
     public final Ast ast;
@@ -34,6 +37,9 @@ public class CompiledAst {
         this.source = source;
     }
 
+    /**
+     * Compiles the given expression to a CompiledAst.
+     */
     static CompiledAst compile(Env env, Expression expr) throws CompilationException {
         env.parseSource(Source.newTextSource(expr.expression));
         Env.AstIssuesTuple astIssuesTuple = env.compile(expr.expression);

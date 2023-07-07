@@ -25,11 +25,23 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Value is a wrapper around a protobuf value that provides helper methods for
+ * accessing the value.
+ */
 class Value {
+    /**
+     * FieldDescriptor is the field descriptor for the value.
+     */
     private final Descriptors.FieldDescriptor fieldDescriptor;
-    // Object type since the object type is inferred from the field descriptor.
+    /**
+     * Object type since the object type is inferred from the field descriptor.
+     */
     private final Object value;
 
+    /**
+     * Value constructs a new Value.
+     */
     Value(Descriptors.FieldDescriptor fieldDescriptor, Object value) {
         this.fieldDescriptor = fieldDescriptor;
         this.value = value;

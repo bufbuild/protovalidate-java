@@ -19,9 +19,12 @@ import build.buf.protovalidate.results.ValidationResult;
 import com.google.protobuf.Message;
 
 /**
- * TODO: This will need to be revisited for importance.
- * Feels like this is something that we can remove.
+ * Essentially the same as evaluator, but specialized for
+ * messages as an optimization. See {@link Evaluator} for behavior.
  */
 public interface MessageEvaluator extends Evaluator {
+    /**
+     * Checks that the provided msg is valid. See {@link Evaluator} for behavior
+     */
     ValidationResult evaluateMessage(Message val, boolean failFast) throws ExecutionException;
 }

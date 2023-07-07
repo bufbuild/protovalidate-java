@@ -20,9 +20,14 @@ import org.projectnessie.cel.interpreter.ResolvedValue;
 
 import java.time.Instant;
 
+/**
+ * Now implements {@link Activation}, providing a lazily produced timestamp
+ * for accessing the variable `now` that's constant within an evaluation.
+ */
 public class NowVariable implements Activation {
     private static final String NOW_NAME = "now";
 
+    // resolvedValue is the set value for the `now` variable.
     private ResolvedValue resolvedValue;
 
     @Override

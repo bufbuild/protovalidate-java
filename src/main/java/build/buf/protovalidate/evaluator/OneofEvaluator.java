@@ -20,11 +20,17 @@ import build.buf.gen.buf.validate.Violation;
 import com.google.protobuf.Descriptors.OneofDescriptor;
 import com.google.protobuf.Message;
 
+/**
+ * OneofEvaluator performs validation on a oneof union.
+ */
 public class OneofEvaluator implements MessageEvaluator {
-
-    // Descriptor is the OneofDescriptor targeted by this evaluator
+    /**
+     * Descriptor is the OneofDescriptor targeted by this evaluator
+     */
     private final OneofDescriptor descriptor;
-    // Required indicates that a member of the oneof must be set
+    /**
+     * Required indicates that a member of the oneof must be set
+     */
     private final boolean required;
 
     public OneofEvaluator(OneofDescriptor descriptor, boolean required) {

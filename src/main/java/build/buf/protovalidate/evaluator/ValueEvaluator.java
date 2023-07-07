@@ -20,16 +20,29 @@ import build.buf.protovalidate.results.ValidationResult;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * ValueEvaluator performs validation on any concrete value contained within a singular
+ * field, repeated elements, or the keys/values of a map.
+ */
 class ValueEvaluator implements Evaluator {
-    // Zero is the default or zero-value for this value's type
+    /**
+     * Zero is the default or zero-value for this value's type
+     */
     Object zero;
-    // Constraints are the individual evaluators applied to a value
+    /**
+     * Constraints are the individual evaluators applied to a value
+     */
     private final List<Evaluator> evaluators = new ArrayList<>();
-    // TODO: This gets mutated on the fly. Figure out how to manage this better.
-    // IgnoreEmpty indicates that the Constraints should not be applied if the
-    // field is unset or the default (typically zero) value.
+    /**
+     * TODO: This gets mutated on the fly. Figure out how to manage this better.
+     * IgnoreEmpty indicates that the Constraints should not be applied if the
+     * field is unset or the default (typically zero) value.
+     */
     public boolean ignoreEmpty;
 
+    /**
+     * ValueEvaluator is a constructor for ValueEvaluator.
+     */
     ValueEvaluator() {
         this.zero = null;
         this.ignoreEmpty = false;

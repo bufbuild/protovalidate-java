@@ -40,6 +40,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * A build-through cache of message evaluators keyed off the provided descriptor.
+ */
 public class EvaluatorBuilder {
     // TODO: apparently go has some concurrency issues?
 
@@ -51,6 +54,9 @@ public class EvaluatorBuilder {
     private final boolean disableLazy;
     private final ConstraintCache constraints;
 
+    /**
+     * Constructs a new EvaluatorBuilder.
+     */
     public EvaluatorBuilder(Env env, boolean disableLazy) {
         this.env = env;
         this.disableLazy = disableLazy;
@@ -60,6 +66,10 @@ public class EvaluatorBuilder {
         extensionRegistry.add(ValidateProto.oneof);
     }
 
+    /**
+     * Returns a pre-cached MessageEvaluator for the given descriptor or, if
+     * the descriptor is unknown, returns an evaluator that always throws a {@link CompilationException}.
+     */
     public MessageEvaluator load(Descriptor desc) throws CompilationException {
         if (disableLazy) {
             return loadDescriptor(desc);
@@ -68,6 +78,10 @@ public class EvaluatorBuilder {
         }
     }
 
+    /**
+     * Either returns a memoized MessageEvaluator for the given
+     * descriptor, or lazily constructs a new one.
+     */
     private MessageEvaluator build(Descriptor desc) throws CompilationException {
         MessageEvaluator eval = cache.get(desc);
         if (eval != null) {

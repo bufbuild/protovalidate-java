@@ -34,16 +34,26 @@ import java.util.concurrent.ConcurrentMap;
 
 import static org.projectnessie.cel.ProgramOption.globals;
 
+/**
+ * ConstraintCache is a build-through cache to computed standard constraints.
+ */
 public class ConstraintCache {
     private final ConcurrentMap<FieldDescriptor, CompiledAstSet> cache;
     private final Env env;
 
+    /**
+     * Constructs a new build-through cache for the standard constraints.
+     */
     public ConstraintCache(Env env) {
         this.env = env;
         this.cache = new ConcurrentHashMap<>();
     }
 
-    // This method resolves constraints for a given field based on the provided field descriptor, field constraints, and a flag indicating whether it is for items.
+    /**
+     * Creates the standard constraints for the given field. If forItems is
+     * true, the constraints for repeated list items is built instead of the
+     * constraints on the list itself.
+     */
     public CompiledProgramSet compile(FieldDescriptor fieldDescriptor, FieldConstraints fieldConstraints, Boolean forItems) throws CompilationException {
         Message message = resolveConstraints(fieldDescriptor, fieldConstraints, forItems);
         if (message == null) {
@@ -63,6 +73,12 @@ public class ConstraintCache {
         return completeSet.reduceResiduals(globals(Variable.newRulesVariable(message)));
     }
 
+    /**
+     * Extracts the standard constraints for the specified field. An
+     * exception is thrown if the wrong constraints are applied to a field (typically
+     * if there is a type-mismatch). Null is returned if there are no standard constraints
+     * to apply to this field.
+     */
     private Message resolveConstraints(FieldDescriptor fieldDescriptor, FieldConstraints fieldConstraints, Boolean forItems) throws CompilationException {
         // Get the oneof field descriptor from the field constraints.
         FieldDescriptor oneofFieldDescriptor = fieldConstraints.getOneofFieldDescriptor(Lookups.FIELD_CONSTRAINTS_ONEOF_DESC);
@@ -92,7 +108,9 @@ public class ConstraintCache {
         return (Message) fieldConstraints.getField(oneofFieldDescriptor);
     }
 
-
+    /**
+     * Prepares the environment for compiling standard constraint expressions.
+     */
     private Env prepareEnvironment(FieldDescriptor fieldDesc, Message rules, Boolean forItems) {
         return env.extend(
                 EnvOption.types(rules.getDefaultInstanceForType()),
@@ -103,6 +121,11 @@ public class ConstraintCache {
         );
     }
 
+    /**
+     * Loads the precompiled ASTs for the specified constraint field from the Cache if present or
+     * precomputes them otherwise. The result may be null if the constraint does not have associated
+     * CEL expressions.
+     */
     private CompiledAstSet loadOrCompileStandardConstraint(Env finalEnv, FieldDescriptor constraintFieldDesc) throws CompilationException {
         final CompiledAstSet cachedValue = cache.get(constraintFieldDesc);
         if (cachedValue != null) {
@@ -114,6 +137,11 @@ public class ConstraintCache {
         return compiledAstSet;
     }
 
+    /**
+     * Produces the field descriptor from the build.buf.gen.buf.validate.FieldConstraints 'type' oneof that
+     * matches the provided target field descriptor. If the returned value is null, the field does not
+     * expect any standard constraints.
+     */
     private FieldDescriptor getExpectedConstraintDescriptor(FieldDescriptor fieldDescriptor, Boolean forItems) {
         if (fieldDescriptor.isMapField()) {
             return Lookups.MAP_FIELD_CONSTRAINTS_DESC;
@@ -126,6 +154,11 @@ public class ConstraintCache {
         }
     }
 
+    /**
+     * Resolves the CEL value type for the provided FieldDescriptor. If
+     * forItems is true, the type for the repeated list items is returned instead of
+     * the list type itself.
+     */
     private Type getCELType(FieldDescriptor fieldDescriptor, Boolean forItems) {
         if (!forItems) {
             if (fieldDescriptor.isMapField()) {

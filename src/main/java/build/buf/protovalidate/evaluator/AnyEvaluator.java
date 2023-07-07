@@ -23,11 +23,19 @@ import com.google.protobuf.Message;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * A specialized evaluator for applying {@link build.buf.gen.buf.validate.AnyRules} to an
+ * {@link com.google.protobuf.Any} message. This is handled outside CEL which attempts to hydrate
+ * {@link com.google.protobuf.Any}'s within an expression, breaking evaluation if the type is unknown at runtime.
+ */
 class AnyEvaluator implements Evaluator {
     private final Descriptors.FieldDescriptor typeURLDescriptor;
     private final Map<String, Object> in;
     private final Map<String, Object> notIn;
 
+    /**
+     * Constructs a new evaluator for {@link build.buf.gen.buf.validate.AnyRules} messages.
+     */
     AnyEvaluator(Descriptors.FieldDescriptor typeURLDescriptor, String[] in, String[] notIn) {
         this.typeURLDescriptor = typeURLDescriptor;
         this.in = stringsToMap(in);
@@ -72,6 +80,9 @@ class AnyEvaluator implements Evaluator {
         return (in == null || in.size() == 0) && (notIn == null || notIn.size() == 0);
     }
 
+    /**
+     * stringsToMap converts a string slice to a map for fast lookup.
+     */
     private static Map<String, Object> stringsToMap(String[] strings) {
         if (strings == null || strings.length == 0) {
             return null;

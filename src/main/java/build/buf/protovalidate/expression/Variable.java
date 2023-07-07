@@ -28,10 +28,22 @@ public class Variable implements Activation {
     public static final String THIS_NAME = "this";
     public static final String RULES_NAME = "rules";
 
+    /**
+     * Next is the parent activation
+     */
     private final Activation next;
+    /**
+     * Name is the variable's name
+     */
     private final String name;
+    /**
+     * Val is the value for this variable
+     */
     private final Object val;
 
+    /**
+     * Creates a new variable with the given name and value.
+     */
     private Variable(Activation activation, String name, Object val) {
         this.next = activation;
         this.name = name;

@@ -19,11 +19,17 @@ import build.buf.protovalidate.results.ValidationResult;
 import build.buf.protovalidate.expression.CompiledProgramSet;
 import com.google.protobuf.Message;
 
+/**
+ * Evaluator that executes a {@link build.buf.protovalidate.expression.CompiledProgramSet}.
+ */
 class CelPrograms implements Evaluator, MessageEvaluator {
     private final CompiledProgramSet compiledProgramSet;
 
+    /**
+     * Constructs a new evaluator for a {@link CompiledProgramSet}.
+     */
     CelPrograms(CompiledProgramSet compiledProgramSet) {
-        // TODO: require non null somehow?
+        // TODO: require non null somehow? is this todo complete?
         if (compiledProgramSet == null) {
             throw new IllegalArgumentException("programSet cannot be null");
         }

@@ -14,6 +14,9 @@
 
 package build.buf.protovalidate.results;
 
+/**
+ * ValidationException extends {@link Exception} is the base exception for all validation errors.
+ */
 public class ValidationException extends Exception {
 
     public ValidationException(String message, Throwable cause) {

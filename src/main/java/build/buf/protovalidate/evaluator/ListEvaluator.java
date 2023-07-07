@@ -19,11 +19,19 @@ import build.buf.protovalidate.results.ValidationResult;
 
 import java.util.List;
 
+/**
+ * Performs validation on the elements of a repeated field.
+ */
 class ListEvaluator implements Evaluator {
 
-    // ItemConstraints are checked on every item of the list
+    /**
+     * ItemConstraints are checked on every item of the list
+     */
     final ValueEvaluator itemConstraints;
 
+    /**
+     * Constructs a ListEvaluator
+     */
     ListEvaluator() {
         this.itemConstraints = new ValueEvaluator();
     }

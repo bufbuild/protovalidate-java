@@ -19,10 +19,22 @@ import build.buf.protovalidate.results.ValidationResult;
 
 import java.util.Map;
 
+/**
+ * Performs validation on a map field's KV Pairs.
+ */
 class MapEvaluator implements Evaluator {
+    /**
+     * KeyConstraints are checked on the map keys
+     */
     public final ValueEvaluator keyConstraints;
+    /**
+     * ValueConstraints are checked on the map values
+     */
     public final ValueEvaluator valueEvaluatorConstraints;
 
+    /**
+     * Constructs a MapEvaluator
+     */
     MapEvaluator() {
         this.keyConstraints = new ValueEvaluator();
         this.valueEvaluatorConstraints = new ValueEvaluator();

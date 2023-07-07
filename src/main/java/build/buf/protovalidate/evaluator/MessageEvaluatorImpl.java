@@ -21,7 +21,13 @@ import com.google.protobuf.Message;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Performs validation on a {@link com.google.protobuf.Message}.
+ */
 class MessageEvaluatorImpl implements MessageEvaluator {
+    /**
+     * Evaluators are the individual evaluators that are applied to a message.
+     */
     private final List<MessageEvaluator> evaluators = new ArrayList<>();
 
     @Override

@@ -25,11 +25,29 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Lookups {
+    /**
+     * Provides a {@link Descriptor} for {@link FieldConstraints}.
+     */
     static final Descriptor FIELD_CONSTRAINTS_DESC = FieldConstraints.getDescriptor();
+    /**
+     * Provides the {@link OneofDescriptor} for the type union in {@link FieldConstraints}.
+     */
     static final OneofDescriptor FIELD_CONSTRAINTS_ONEOF_DESC = FIELD_CONSTRAINTS_DESC.getOneofs().get(0);
+    /**
+     * Provides the {@link FieldDescriptor} for the map standard constraints.
+     */
     static final FieldDescriptor MAP_FIELD_CONSTRAINTS_DESC = FIELD_CONSTRAINTS_DESC.findFieldByName("map");
+    /**
+     * Provides the {@link FieldDescriptor} for the repeated standard constraints.
+     */
     static final FieldDescriptor REPEATED_FIELD_CONSTRAINTS_DESC = FIELD_CONSTRAINTS_DESC.findFieldByName("repeated");
+    /**
+     * Maps protocol buffer field kinds to their expected field constraints.
+     */
     static final Map<FieldDescriptor.Type, FieldDescriptor> EXPECTED_STANDARD_CONSTRAINTS = new HashMap<>();
+    /**
+     * Returns the {@link build.buf.gen.buf.validate.FieldConstraints} field that is expected for the given wrapper well-known type's full name. If ok is false, no standard constraints exist for that type.
+     */
     static final Map<String, FieldDescriptor> EXPECTED_WKT_CONSTRAINTS = new HashMap<>();
 
     static {
@@ -55,6 +73,9 @@ public class Lookups {
         EXPECTED_WKT_CONSTRAINTS.put("google.protobuf.Timestamp", FIELD_CONSTRAINTS_DESC.findFieldByName("timestamp"));
     }
 
+    /**
+     * Returns the {@link FieldConstraints} field that is expected for the given protocol buffer field kind.
+     */
     public static FieldDescriptor expectedWrapperConstraints(String fqn) {
         switch (fqn) {
             case "google.protobuf.BoolValue":
@@ -80,7 +101,9 @@ public class Lookups {
         }
     }
 
-    // TODO: work this out
+    /**
+     * Maps a {@link FieldDescriptor.Type} to a compatible {@link com.google.api.expr.v1alpha1.Type}.
+     */
     public static Type protoKindToCELType(FieldDescriptor.Type kind) {
         switch (kind) {
             case FLOAT:
@@ -111,7 +134,6 @@ public class Lookups {
                         .setMessageType(kind.getJavaType().name())
                         .build();
             default:
-                // TODO: this doesnt feel right
                 return Type.newBuilder()
                         .setPrimitive(Type.PrimitiveType.PRIMITIVE_TYPE_UNSPECIFIED)
                         .build();

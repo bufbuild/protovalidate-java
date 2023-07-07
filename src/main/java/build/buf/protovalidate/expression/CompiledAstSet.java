@@ -25,16 +25,24 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-// AstSet represents a collection of CompiledAst and their associated CelRuntime.
+/**
+ * Represents a collection of {@link CompiledAst} and their associated {@link Env}.
+ */
 public class CompiledAstSet {
     public final List<CompiledAst> asts;
     public final Env env;
 
+    /**
+     * The set of compiled ASTs and their associated environment.
+     */
     public CompiledAstSet(Env env, List<CompiledAst> asts) {
         this.env = env;
         this.asts = asts;
     }
 
+    /**
+     * Compiles the given constraints into a CompiledAstSet.
+     */
     public static CompiledAstSet compileAsts(List<build.buf.gen.buf.validate.priv.Constraint> constraints, Env env, EnvOption... envOpts) throws CompilationException {
         List<Expression> expressions = new ArrayList<>();
         for (build.buf.gen.buf.validate.priv.Constraint constraint : constraints) {
@@ -59,17 +67,21 @@ public class CompiledAstSet {
         asts.addAll(other.asts);
     }
 
-    // ReduceResiduals generates a ProgramSet, performing a partial evaluation of
-    // the AstSet to optimize the expression. If the expression is optimized to
-    // either a true or empty string constant result, no CompiledProgram is
-    // generated for it. The main usage of this is to elide tautological expressions
-    // from the final result.
+    /**
+     * Generates a CompiledProgramSet, performing a partial evaluation of
+     * the {@link CompiledAstSet} to optimize the expression. If the expression is optimized to
+     * either a true or empty string constant result, no {@link CompiledProgram} is
+     * generated for it. The main usage of this is to elide tautological expressions
+     * from the final result.
+     */
     public CompiledProgramSet reduceResiduals(ProgramOption... opts) {
         CompiledAstSet compiledAstSet = reduce(opts);
         return compiledAstSet.toProgramSet(opts);
     }
 
-    // ToProgramSet generates a ProgramSet from the specified ASTs.
+    /**
+     * Generates a {@link CompiledProgramSet} from the specified ASTs.
+     */
     public CompiledProgramSet toProgramSet(ProgramOption... opts) {
         if (asts.isEmpty()) {
             return null;

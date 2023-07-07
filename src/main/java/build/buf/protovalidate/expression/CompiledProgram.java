@@ -23,6 +23,9 @@ import org.projectnessie.cel.common.types.Err;
 import org.projectnessie.cel.common.types.ref.Val;
 import org.projectnessie.cel.interpreter.Activation;
 
+/**
+ * CompiledProgram is a parsed and type-checked {@link Program} along with the source {@link Expression}.
+ */
 class CompiledProgram {
     private final Env env;
     private final Program program;
@@ -34,6 +37,9 @@ class CompiledProgram {
         this.source = source;
     }
 
+    /**
+     * Returns a reduced {@link Ast} if the expression is statically known to be true or false.
+     */
     public Ast reduce(Ast ast) {
         Program.EvalResult evalResult = program.eval(Activation.emptyActivation());
         Val value = evalResult.getVal();

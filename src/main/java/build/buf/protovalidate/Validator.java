@@ -29,12 +29,26 @@ public class Validator {
     private final EvaluatorBuilder evaluatorBuilder;
     private final boolean failFast;
 
+    /**
+     * Validator constructs a new Validator.
+     */
     public Validator(Config config) {
         Env env = Env.newEnv(Library.Lib(new ValidateLibrary()));
         this.evaluatorBuilder = new EvaluatorBuilder(env, config.disableLazy);
         this.failFast = config.failFast;
     }
 
+    /**
+     * Checks that message satisfies its constraints. Constraints are
+     * defined within the Protobuf file as options from the buf.validate package.
+     * A {@link ValidationResult} is returned which contains a list of violations. If the
+     * list is empty, the message is valid. If the list is non-empty, the message
+     * is invalid.
+     * An exception is thrown if the message cannot be validated because the
+     * evaluation logic for the message cannot be built ({@link build.buf.protovalidate.results.CompilationException}), or
+     * there is a type error when attempting to evaluate a CEL expression
+     * associated with the message ({@link build.buf.protovalidate.results.ExecutionException}).
+     */
     public ValidationResult validate(Message msg) throws ValidationException {
         if (msg == null) {
             return new ValidationResult();
@@ -45,7 +59,7 @@ public class Validator {
     }
 
     /**
-     * loadMessages allows warming up the Validator with messages that are
+     * Allows warming up the Validator with messages that are
      * expected to be validated. Messages included transitively (i.e., fields with
      * message values) are automatically handled.
      */
@@ -56,7 +70,7 @@ public class Validator {
     }
 
     /**
-     * loadDescriptors allows warming up the Validator with message
+     * Allows warming up the Validator with message
      * descriptors that are expected to be validated. Messages included transitively
      * (i.e. fields with message values) are automatically handled.
      */
