@@ -15,6 +15,7 @@
 package build.buf.protovalidate;
 
 import build.buf.protovalidate.celext.ValidateLibrary;
+import build.buf.protovalidate.results.CompilationException;
 import build.buf.protovalidate.results.ValidationException;
 import build.buf.protovalidate.results.ValidationResult;
 import build.buf.protovalidate.evaluator.EvaluatorBuilder;
@@ -41,5 +42,27 @@ public class Validator {
         Descriptor descriptor = msg.getDescriptorForType();
         MessageEvaluator evaluator = evaluatorBuilder.load(descriptor);
         return evaluator.evaluateMessage(msg, failFast);
+    }
+
+    /**
+     * loadMessages allows warming up the Validator with messages that are
+     * expected to be validated. Messages included transitively (i.e., fields with
+     * message values) are automatically handled.
+     */
+    public void loadMessages(Message... messages) throws CompilationException {
+        for (Message message : messages) {
+            this.evaluatorBuilder.load(message.getDescriptorForType());
+        }
+    }
+
+    /**
+     * loadDescriptors allows warming up the Validator with message
+     * descriptors that are expected to be validated. Messages included transitively
+     * (i.e. fields with message values) are automatically handled.
+     */
+    public void loadDescriptors(Descriptor... descriptors) throws CompilationException {
+        for (Descriptor descriptor : descriptors) {
+            this.evaluatorBuilder.load(descriptor);
+        }
     }
 }
