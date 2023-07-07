@@ -31,7 +31,7 @@ class CompiledProgram {
     private final Program program;
     private final Expression source;
 
-    public CompiledProgram(Env env, Program program, Expression source) {
+    CompiledProgram(Env env, Program program, Expression source) {
         this.env = env;
         this.program = program;
         this.source = source;
@@ -40,7 +40,7 @@ class CompiledProgram {
     /**
      * Returns a reduced {@link Ast} if the expression is statically known to be true or false.
      */
-    public Ast reduce(Ast ast) {
+    Ast reduce(Ast ast) {
         Program.EvalResult evalResult = program.eval(Activation.emptyActivation());
         Val value = evalResult.getVal();
         if (value != null) {
@@ -55,7 +55,7 @@ class CompiledProgram {
         return env.residualAst(ast, evalResult.getEvalDetails());
     }
 
-    public Violation eval(Activation bindings) throws ExecutionException {
+    Violation eval(Activation bindings) throws ExecutionException {
         Program.EvalResult evalResult = program.eval(bindings);
         Val val = evalResult.getVal();
         if (val instanceof Err) {

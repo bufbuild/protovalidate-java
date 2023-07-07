@@ -59,10 +59,6 @@ public class CompiledAstSet {
         return new CompiledAstSet(finalEnv, compiledAsts);
     }
 
-    public void set(int index, CompiledAst ast) {
-        asts.add(index, ast);
-    }
-
     public void merge(CompiledAstSet other) {
         asts.addAll(other.asts);
     }
@@ -82,7 +78,7 @@ public class CompiledAstSet {
     /**
      * Generates a {@link CompiledProgramSet} from the specified ASTs.
      */
-    public CompiledProgramSet toProgramSet(ProgramOption... opts) {
+    CompiledProgramSet toProgramSet(ProgramOption... opts) {
         if (asts.isEmpty()) {
             return null;
         }

@@ -26,12 +26,12 @@ import org.projectnessie.cel.common.Source;
 /**
  * CompiledAst is a compiled CEL {@link Ast}.
  */
-public class CompiledAst {
+class CompiledAst {
     private final Env env;
     public final Ast ast;
     public final Expression source;
 
-    public CompiledAst(Env env, Ast ast, Expression source) {
+    CompiledAst(Env env, Ast ast, Expression source) {
         this.env = env;
         this.ast = ast;
         this.source = source;
@@ -55,7 +55,7 @@ public class CompiledAst {
         return new CompiledAst(env, ast, expr);
     }
 
-    public CompiledProgram toCompiledProgram(ProgramOption... opts) {
+    CompiledProgram toCompiledProgram(ProgramOption... opts) {
         Program program = env.program(ast, opts);
         return new CompiledProgram(
                 env,

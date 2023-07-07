@@ -35,7 +35,7 @@ public class CompiledProgramSet {
 
     public final List<CompiledProgram> programs;
 
-    public CompiledProgramSet(List<CompiledProgram> programs) {
+    CompiledProgramSet(List<CompiledProgram> programs) {
         this.programs = programs;
     }
 
@@ -45,6 +45,25 @@ public class CompiledProgramSet {
             expressions.add(new Expression(constraint));
         }
         return compileExpressions(expressions, env, envOpts);
+    }
+
+    public static CompiledProgramSet compileExpressions(List<Expression> expressions, Env env, EnvOption... envOpts) throws CompilationException {
+        Env finalEnv = env;
+        finalEnv.extend(EnvOption.features(EnvOption.EnvFeature.FeatureDisableDynamicAggregateLiterals));
+        if (envOpts.length > 0) {
+            try {
+                finalEnv = env.extend(envOpts);
+            } catch (Exception e) {
+                throw new CompilationException("failed to extend environment: " + e.getMessage());
+            }
+        }
+        List<CompiledProgram> programs = new ArrayList<>();
+        for (Expression expression : expressions) {
+            CompiledAst compiledAst = CompiledAst.compile(finalEnv, expression);
+            CompiledProgram compiledProgram = compiledAst.toCompiledProgram();
+            programs.add(compiledProgram);
+        }
+        return new CompiledProgramSet(programs);
     }
 
     public ValidationResult evalMessage(Message val, boolean failFast) throws ExecutionException {
@@ -68,24 +87,5 @@ public class CompiledProgramSet {
 
     public boolean isEmpty() {
         return programs.isEmpty();
-    }
-
-    public static CompiledProgramSet compileExpressions(List<Expression> expressions, Env env, EnvOption... envOpts) throws CompilationException {
-        Env finalEnv = env;
-        finalEnv.extend(EnvOption.features(EnvOption.EnvFeature.FeatureDisableDynamicAggregateLiterals));
-        if (envOpts.length > 0) {
-            try {
-                finalEnv = env.extend(envOpts);
-            } catch (Exception e) {
-                throw new CompilationException("failed to extend environment: " + e.getMessage());
-            }
-        }
-        List<CompiledProgram> programs = new ArrayList<>();
-        for (Expression expression : expressions) {
-            CompiledAst compiledAst = CompiledAst.compile(finalEnv, expression);
-            CompiledProgram compiledProgram = compiledAst.toCompiledProgram();
-            programs.add(compiledProgram);
-        }
-        return new CompiledProgramSet(programs);
     }
 }
