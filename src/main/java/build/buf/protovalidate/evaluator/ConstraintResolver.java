@@ -14,10 +14,10 @@
 
 package build.buf.protovalidate.evaluator;
 
-import build.buf.validate.FieldConstraints;
-import build.buf.validate.MessageConstraints;
-import build.buf.validate.OneofConstraints;
-import build.buf.validate.ValidateProto;
+import build.buf.gen.buf.validate.FieldConstraints;
+import build.buf.gen.buf.validate.MessageConstraints;
+import build.buf.gen.buf.validate.OneofConstraints;
+import build.buf.gen.buf.validate.ValidateProto;
 import com.google.protobuf.DescriptorProtos;
 import com.google.protobuf.Descriptors.FieldDescriptor;
 import com.google.protobuf.Descriptors.Descriptor;

@@ -14,12 +14,12 @@
 
 package build.buf.protovalidate.constraints;
 
+import build.buf.gen.buf.validate.FieldConstraints;
+import build.buf.gen.buf.validate.priv.PrivateProto;
 import build.buf.protovalidate.results.CompilationException;
 import build.buf.protovalidate.expression.CompiledAstSet;
 import build.buf.protovalidate.expression.CompiledProgramSet;
 import build.buf.protovalidate.expression.Variable;
-import build.buf.validate.FieldConstraints;
-import build.buf.validate.priv.PrivateProto;
 import com.google.api.expr.v1alpha1.Type;
 import com.google.protobuf.Descriptors.FieldDescriptor;
 import com.google.protobuf.Message;
@@ -108,7 +108,7 @@ public class ConstraintCache {
         if (cachedValue != null) {
             return cachedValue;
         }
-        build.buf.validate.priv.FieldConstraints constraints = constraintFieldDesc.getOptions().getExtension(PrivateProto.field);
+        build.buf.gen.buf.validate.priv.FieldConstraints constraints = constraintFieldDesc.getOptions().getExtension(PrivateProto.field);
         CompiledAstSet compiledAstSet = CompiledAstSet.compileAsts(constraints.getCelList(), finalEnv);
         cache.put(constraintFieldDesc, compiledAstSet);
         return compiledAstSet;

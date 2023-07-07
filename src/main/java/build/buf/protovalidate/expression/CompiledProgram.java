@@ -15,7 +15,7 @@
 package build.buf.protovalidate.expression;
 
 import build.buf.protovalidate.results.ExecutionException;
-import build.buf.validate.Violation;
+import build.buf.gen.buf.validate.Violation;
 import org.projectnessie.cel.Ast;
 import org.projectnessie.cel.Env;
 import org.projectnessie.cel.Program;

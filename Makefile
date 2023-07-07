@@ -8,7 +8,7 @@ MAKEFLAGS += --no-builtin-rules
 MAKEFLAGS += --no-print-directory
 BIN := .tmp/bin
 COPYRIGHT_YEARS := 2023
-LICENSE_IGNORE := -e build/buf/validate -e build/tests
+LICENSE_IGNORE :=
 JAVA_VERSION = 20
 JAVAC = javac
 JAVA = java
@@ -26,7 +26,7 @@ help: ## Describe useful make targets
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "%-15s %s\n", $$1, $$2}'
 
 .PHONY: all
-all: lint build ## Run all tests and lint (default)
+all: lint generate build conformance   ## Run all tests and lint (default)
 
 .PHONY: clean
 clean:  ## Delete intermediate build artifacts
@@ -58,29 +58,14 @@ lintfix: # Applies the lint changes.
 	./gradlew spotlessApply
 
 .PHONY: generate
-generate: generate-proto generate-license ## Regenerate code and license headers
-
-.PHONY: generate-proto
-generate-proto: $(BIN)/buf
-	$(BIN)/buf generate --output src/test/java proto
-	$(BIN)/buf generate --output src/main/java buf.build/bufbuild/protovalidate-testing
-	$(BIN)/buf generate --output src/main/java buf.build/bufbuild/protovalidate
+generate: generate-license ## Regenerate code and license headers
 
 .PHONY: generate-license
 generate-license: $(BIN)/license-header
-	@# We want to operate on a list of modified and new files, excluding
-	@# deleted and ignored files. git-ls-files can't do this alone. comm -23 takes
-	@# two files and prints the union, dropping lines common to both (-3) and
-	@# those only in the second file (-2). We make one git-ls-files call for
-	@# the modified, cached, and new (--others) files, and a second for the
-	@# deleted files.
-	comm -23 \
-		<(git ls-files --cached --modified --others --no-empty-directory --exclude-standard | sort -u | grep -v $(LICENSE_IGNORE) ) \
-		<(git ls-files --deleted | sort -u) | \
-		xargs $(BIN)/license-header \
-			--license-type apache \
-			--copyright-holder "Buf Technologies, Inc." \
-			--year-range "$(COPYRIGHT_YEARS)"
+	$(BIN)/license-header \
+		--license-type apache \
+		--copyright-holder "Buf Technologies, Inc." \
+		--year-range "$(COPYRIGHT_YEARS)" $(LICENSE_IGNORE)
 
 .PHONY: checkgenerate
 checkgenerate: generate
@@ -89,9 +74,6 @@ checkgenerate: generate
 
 $(BIN):
 	@mkdir -p $(BIN)
-
-$(BIN)/buf: $(BIN) Makefile
-	GOBIN=$(abspath $(@D)) $(GO) install github.com/bufbuild/buf/cmd/buf@latest
 
 $(BIN)/license-header: $(BIN) Makefile
 	GOBIN=$(abspath $(@D)) $(GO) install \

@@ -10,6 +10,10 @@ version = "1.0.0-dev-1"
 
 repositories {
     mavenCentral()
+    maven {
+        name = "buf"
+        url = uri("https://buf.build/gen/maven")
+    }
 }
 
 dependencies {
@@ -19,11 +23,13 @@ dependencies {
     implementation("org.projectnessie.cel:cel-tools")
     implementation("javax.mail:mail:1.4.7")
     implementation(libs.guava)
+    implementation("build.buf.gen:bufbuild_protovalidate_protocolbuffers_java:23.3.0.1.20230704214709.336f5dd89681")
 
     testImplementation(libs.junit)
     testImplementation(libs.assertj)
     testImplementation(libs.protobuf.java)
     testImplementation(libs.protobuf.java.util)
+    testImplementation("build.buf.gen:bufbuild_protovalidate-testing_protocolbuffers_java:23.3.0.1.20230704214710.61d5e0152a75")
 }
 
 java {

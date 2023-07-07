@@ -14,8 +14,6 @@
 
 package build.buf.protovalidate.expression;
 
-import build.buf.validate.Constraint;
-
 public class Expression {
     public final String id;
     public final String message;
@@ -27,11 +25,11 @@ public class Expression {
         this.expression = expression;
     }
 
-    public Expression(Constraint constraint) {
+    public Expression(build.buf.gen.buf.validate.Constraint constraint) {
         this(constraint.getId(), constraint.getMessage(), constraint.getExpression());
     }
 
-    public Expression(build.buf.validate.priv.Constraint constraint) {
+    public Expression(build.buf.gen.buf.validate.priv.Constraint constraint) {
         this(constraint.getId(), constraint.getMessage(), constraint.getExpression());
     }
 }

@@ -14,7 +14,7 @@
 
 package build.buf.protovalidate.constraints;
 
-import build.buf.validate.FieldConstraints;
+import build.buf.gen.buf.validate.FieldConstraints;
 import com.google.api.expr.v1alpha1.Type;
 import com.google.protobuf.Descriptors.Descriptor;
 import com.google.protobuf.Descriptors.FieldDescriptor;

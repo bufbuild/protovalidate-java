@@ -35,9 +35,9 @@ public class CompiledAstSet {
         this.asts = asts;
     }
 
-    public static CompiledAstSet compileAsts(List<build.buf.validate.priv.Constraint> constraints, Env env, EnvOption... envOpts) throws CompilationException {
+    public static CompiledAstSet compileAsts(List<build.buf.gen.buf.validate.priv.Constraint> constraints, Env env, EnvOption... envOpts) throws CompilationException {
         List<Expression> expressions = new ArrayList<>();
-        for (build.buf.validate.priv.Constraint constraint : constraints) {
+        for (build.buf.gen.buf.validate.priv.Constraint constraint : constraints) {
             expressions.add(new Expression(constraint));
         }
         Env finalEnv = env;

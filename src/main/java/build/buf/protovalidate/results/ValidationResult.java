@@ -14,7 +14,7 @@
 
 package build.buf.protovalidate.results;
 
-import build.buf.validate.Violation;
+import build.buf.gen.buf.validate.Violation;
 import com.google.common.base.Strings;
 
 import java.util.ArrayList;

@@ -14,32 +14,12 @@
 
 package build.buf.protovalidate;
 
+import build.buf.gen.buf.validate.conformance.cases.*;
+import build.buf.gen.buf.validate.conformance.cases.custom_constraints.DynRuntimeError;
+import build.buf.gen.buf.validate.conformance.cases.custom_constraints.FieldExpressions;
 import build.buf.protovalidate.results.ExecutionException;
 import build.buf.protovalidate.results.ValidationException;
 import build.buf.protovalidate.results.ValidationResult;
-import build.buf.validate.conformance.cases.AnEnum;
-import build.buf.validate.conformance.cases.BoolConstTrue;
-import build.buf.validate.conformance.cases.BytesContains;
-import build.buf.validate.conformance.cases.DurationGTELTE;
-import build.buf.validate.conformance.cases.Embed;
-import build.buf.validate.conformance.cases.EnumDefined;
-import build.buf.validate.conformance.cases.Fixed32LT;
-import build.buf.validate.conformance.cases.Int32In;
-import build.buf.validate.conformance.cases.MapRecursive;
-import build.buf.validate.conformance.cases.OneofIgnoreEmpty;
-import build.buf.validate.conformance.cases.RepeatedEnumIn;
-import build.buf.validate.conformance.cases.RepeatedExact;
-import build.buf.validate.conformance.cases.RepeatedExactIgnore;
-import build.buf.validate.conformance.cases.RepeatedMin;
-import build.buf.validate.conformance.cases.RepeatedUnique;
-import build.buf.validate.conformance.cases.SFixed64In;
-import build.buf.validate.conformance.cases.StringContains;
-import build.buf.validate.conformance.cases.StringPrefix;
-import build.buf.validate.conformance.cases.TimestampConst;
-import build.buf.validate.conformance.cases.TimestampWithin;
-import build.buf.validate.conformance.cases.WrapperDouble;
-import build.buf.validate.conformance.cases.custom_constraints.DynRuntimeError;
-import build.buf.validate.conformance.cases.custom_constraints.FieldExpressions;
 import com.google.protobuf.ByteString;
 import com.google.protobuf.DoubleValue;
 import com.google.protobuf.Duration;
