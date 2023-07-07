@@ -14,16 +14,16 @@
 
 package build.buf.protovalidate.evaluator;
 
+import build.buf.gen.buf.validate.Violation;
 import build.buf.protovalidate.results.ExecutionException;
 import build.buf.protovalidate.results.ValidationResult;
-import build.buf.gen.buf.validate.Violation;
 import com.google.protobuf.Descriptors.OneofDescriptor;
 import com.google.protobuf.Message;
 
 /**
  * OneofEvaluator performs validation on a oneof union.
  */
-public class OneofEvaluator implements MessageEvaluator {
+public class OneofEvaluator implements Evaluator {
     /**
      * Descriptor is the OneofDescriptor targeted by this evaluator
      */
@@ -45,16 +45,7 @@ public class OneofEvaluator implements MessageEvaluator {
 
     @Override
     public ValidationResult evaluate(Value val, boolean failFast) throws ExecutionException {
-        return evaluateMessage(val.messageValue(), failFast);
-    }
-
-    @Override
-    public void append(Evaluator eval) {
-        throw new UnsupportedOperationException("append not supported for Oneof");
-    }
-
-    @Override
-    public ValidationResult evaluateMessage(Message message, boolean failFast) throws ExecutionException {
+        Message message = val.messageValue();
         if (required && (message.getOneofFieldDescriptor(descriptor) == null)) {
             ValidationResult evalResult = new ValidationResult();
             Violation violation = Violation.newBuilder()
@@ -67,4 +58,10 @@ public class OneofEvaluator implements MessageEvaluator {
         }
         return new ValidationResult();
     }
+
+    @Override
+    public void append(Evaluator eval) {
+        throw new UnsupportedOperationException("append not supported for Oneof");
+    }
+
 }

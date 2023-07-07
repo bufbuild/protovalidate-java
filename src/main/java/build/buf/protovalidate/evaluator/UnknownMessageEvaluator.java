@@ -17,14 +17,13 @@ package build.buf.protovalidate.evaluator;
 import build.buf.protovalidate.results.ExecutionException;
 import build.buf.protovalidate.results.ValidationResult;
 import com.google.protobuf.Descriptors.Descriptor;
-import com.google.protobuf.Message;
 
 /**
  * A {@link MessageEvaluator} for an unknown descriptor. This is
  * returned only if lazy-building of evaluators has been disabled and an unknown
  * descriptor is encountered.
  */
-class UnknownMessageEvaluator implements MessageEvaluator {
+class UnknownMessageEvaluator implements Evaluator {
     /**
      * desc is the descriptor targeted by this evaluator
      */
@@ -54,10 +53,5 @@ class UnknownMessageEvaluator implements MessageEvaluator {
     @Override
     public void append(Evaluator eval) {
         throw new UnsupportedOperationException("append not supported for unknown message");
-    }
-
-    @Override
-    public ValidationResult evaluateMessage(Message val, boolean failFast) throws ExecutionException {
-        return err();
     }
 }

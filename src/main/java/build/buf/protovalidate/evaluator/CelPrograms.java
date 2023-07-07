@@ -14,15 +14,14 @@
 
 package build.buf.protovalidate.evaluator;
 
+import build.buf.protovalidate.expression.CompiledProgramSet;
 import build.buf.protovalidate.results.ExecutionException;
 import build.buf.protovalidate.results.ValidationResult;
-import build.buf.protovalidate.expression.CompiledProgramSet;
-import com.google.protobuf.Message;
 
 /**
  * Evaluator that executes a {@link build.buf.protovalidate.expression.CompiledProgramSet}.
  */
-class CelPrograms implements Evaluator, MessageEvaluator {
+class CelPrograms implements Evaluator {
     private final CompiledProgramSet compiledProgramSet;
 
     /**
@@ -48,10 +47,5 @@ class CelPrograms implements Evaluator, MessageEvaluator {
     @Override
     public void append(Evaluator eval) {
         throw new UnsupportedOperationException("append not supported for CelPrograms");
-    }
-
-    @Override
-    public ValidationResult evaluateMessage(Message val, boolean failFast) throws ExecutionException {
-        return compiledProgramSet.evalMessage(val, failFast);
     }
 }

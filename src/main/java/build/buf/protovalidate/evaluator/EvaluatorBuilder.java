@@ -14,16 +14,16 @@
 
 package build.buf.protovalidate.evaluator;
 
-import build.buf.protovalidate.constraints.ConstraintCache;
-import build.buf.protovalidate.constraints.Lookups;
-import build.buf.protovalidate.expression.Variable;
-import build.buf.protovalidate.results.CompilationException;
-import build.buf.protovalidate.expression.CompiledProgramSet;
 import build.buf.gen.buf.validate.Constraint;
 import build.buf.gen.buf.validate.FieldConstraints;
 import build.buf.gen.buf.validate.MessageConstraints;
 import build.buf.gen.buf.validate.OneofConstraints;
 import build.buf.gen.buf.validate.ValidateProto;
+import build.buf.protovalidate.constraints.ConstraintCache;
+import build.buf.protovalidate.constraints.Lookups;
+import build.buf.protovalidate.expression.CompiledProgramSet;
+import build.buf.protovalidate.expression.Variable;
+import build.buf.protovalidate.results.CompilationException;
 import com.google.protobuf.Descriptors;
 import com.google.protobuf.Descriptors.Descriptor;
 import com.google.protobuf.Descriptors.FieldDescriptor;
@@ -46,7 +46,7 @@ import java.util.Map;
 public class EvaluatorBuilder {
     // TODO: apparently go has some concurrency issues?
 
-    private final Map<Descriptor, MessageEvaluator> cache = new HashMap<>();
+    private final Map<Descriptor, Evaluator> cache = new HashMap<>();
     private final ConstraintResolver resolver = new ConstraintResolver();
     private final ExtensionRegistry extensionRegistry = ExtensionRegistry.newInstance();
 
@@ -70,7 +70,7 @@ public class EvaluatorBuilder {
      * Returns a pre-cached MessageEvaluator for the given descriptor or, if
      * the descriptor is unknown, returns an evaluator that always throws a {@link CompilationException}.
      */
-    public MessageEvaluator load(Descriptor desc) throws CompilationException {
+    public Evaluator load(Descriptor desc) throws CompilationException {
         if (disableLazy) {
             return loadDescriptor(desc);
         } else {
@@ -82,18 +82,18 @@ public class EvaluatorBuilder {
      * Either returns a memoized MessageEvaluator for the given
      * descriptor, or lazily constructs a new one.
      */
-    private MessageEvaluator build(Descriptor desc) throws CompilationException {
-        MessageEvaluator eval = cache.get(desc);
+    private Evaluator build(Descriptor desc) throws CompilationException {
+        Evaluator eval = cache.get(desc);
         if (eval != null) {
             return eval;
         }
-        MessageEvaluator msgEval = new MessageEvaluatorImpl();
+        Evaluator msgEval = new MessageEvaluator();
         cache.put(desc, msgEval);
         buildMessage(desc, msgEval);
         return msgEval;
     }
 
-    private void buildMessage(Descriptor desc, MessageEvaluator msgEval) throws CompilationException {
+    private void buildMessage(Descriptor desc, Evaluator msgEval) throws CompilationException {
         try {
             DynamicMessage defaultInstance = DynamicMessage.parseFrom(desc, new byte[0], extensionRegistry);
             Descriptor descriptor = defaultInstance.getDescriptorForType();
@@ -109,7 +109,7 @@ public class EvaluatorBuilder {
         }
     }
 
-    private void processMessageExpressions(Descriptor desc, MessageConstraints msgConstraints, MessageEvaluator msgEval, DynamicMessage message) throws CompilationException {
+    private void processMessageExpressions(Descriptor desc, MessageConstraints msgConstraints, Evaluator msgEval, DynamicMessage message) throws CompilationException {
         List<Constraint> celList = msgConstraints.getCelList();
         if (celList.isEmpty()) {
             return;
@@ -128,7 +128,7 @@ public class EvaluatorBuilder {
         msgEval.append(new CelPrograms(compiledExpressions));
     }
 
-    private void processOneofConstraints(Descriptor desc, MessageEvaluator msgEval) {
+    private void processOneofConstraints(Descriptor desc, Evaluator msgEval) {
         List<Descriptors.OneofDescriptor> oneofs = desc.getOneofs();
         for (Descriptors.OneofDescriptor oneofDesc : oneofs) {
             OneofConstraints oneofConstraints = resolver.resolveOneofConstraints(oneofDesc);
@@ -137,7 +137,7 @@ public class EvaluatorBuilder {
         }
     }
 
-    private void processFields(Descriptor desc, MessageEvaluator msgEval) throws CompilationException {
+    private void processFields(Descriptor desc, Evaluator msgEval) throws CompilationException {
         List<FieldDescriptor> fields = desc.getFields();
         for (FieldDescriptor fieldDescriptor : fields) {
             FieldDescriptor descriptor = desc.findFieldByName(fieldDescriptor.getName());
@@ -226,7 +226,7 @@ public class EvaluatorBuilder {
             return;
         }
 
-        MessageEvaluator embedEval = this.build(fieldDescriptor.getMessageType());
+        Evaluator embedEval = build(fieldDescriptor.getMessageType());
         valueEvaluatorEval.append(embedEval);
     }
 
@@ -316,16 +316,16 @@ public class EvaluatorBuilder {
         valueEvaluatorEval.append(listEval);
     }
 
-    private MessageEvaluator loadDescriptor(Descriptor descriptor) {
-        MessageEvaluator evaluator = cache.get(descriptor);
+    private Evaluator loadDescriptor(Descriptor descriptor) {
+        Evaluator evaluator = cache.get(descriptor);
         if (evaluator == null) {
             return new UnknownMessageEvaluator(descriptor);
         }
         return evaluator;
     }
 
-    private MessageEvaluator loadOrBuildDescriptor(Descriptor descriptor) throws CompilationException {
-        MessageEvaluator eval = cache.get(descriptor);
+    private Evaluator loadOrBuildDescriptor(Descriptor descriptor) throws CompilationException {
+        Evaluator eval = cache.get(descriptor);
         if (eval != null) {
             return eval;
         }

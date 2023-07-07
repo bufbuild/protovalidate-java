@@ -14,12 +14,11 @@
 
 package build.buf.protovalidate.expression;
 
+import build.buf.gen.buf.validate.Constraint;
+import build.buf.gen.buf.validate.Violation;
 import build.buf.protovalidate.results.CompilationException;
 import build.buf.protovalidate.results.ExecutionException;
 import build.buf.protovalidate.results.ValidationResult;
-import build.buf.gen.buf.validate.Constraint;
-import build.buf.gen.buf.validate.Violation;
-import com.google.protobuf.Message;
 import org.projectnessie.cel.Env;
 import org.projectnessie.cel.EnvOption;
 
@@ -64,10 +63,6 @@ public class CompiledProgramSet {
             programs.add(compiledProgram);
         }
         return new CompiledProgramSet(programs);
-    }
-
-    public ValidationResult evalMessage(Message val, boolean failFast) throws ExecutionException {
-        return evalValue(val, failFast);
     }
 
     public ValidationResult evalValue(Object value, boolean failFast) throws ExecutionException {

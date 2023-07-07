@@ -55,7 +55,9 @@ import java.util.Locale;
 import java.util.Set;
 
 import static org.projectnessie.cel.common.types.IntT.intOf;
-import static org.projectnessie.cel.interpreter.functions.Overload.*;
+import static org.projectnessie.cel.interpreter.functions.Overload.binary;
+import static org.projectnessie.cel.interpreter.functions.Overload.overload;
+import static org.projectnessie.cel.interpreter.functions.Overload.unary;
 
 public class ValidateLibrary implements Library {
 

@@ -14,16 +14,16 @@
 
 package build.buf.protovalidate.evaluator;
 
+import build.buf.gen.buf.validate.Violation;
 import build.buf.protovalidate.results.ExecutionException;
 import build.buf.protovalidate.results.ValidationResult;
-import build.buf.gen.buf.validate.Violation;
 import com.google.protobuf.Descriptors.FieldDescriptor;
 import com.google.protobuf.Message;
 
 /**
  * Performs validation on a single message field, defined by its descriptor.
  */
-class FieldEvaluator implements MessageEvaluator {
+class FieldEvaluator implements Evaluator {
     /**
      * valueEvaluator is the {@link ValueEvaluator} to apply to the field's value
      */
@@ -62,11 +62,7 @@ class FieldEvaluator implements MessageEvaluator {
 
     @Override
     public ValidationResult evaluate(Value val, boolean failFast) throws ExecutionException {
-        return evaluateMessage(val.messageValue(), failFast);
-    }
-
-    @Override
-    public ValidationResult evaluateMessage(Message message, boolean failFast) throws ExecutionException {
+        Message message = val.messageValue();
         boolean hasField;
         // TODO: how does this behave in other descriptor value types like map?
         if (descriptor.isRepeated()) {

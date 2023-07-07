@@ -15,11 +15,12 @@
 package build.buf.protovalidate;
 
 import build.buf.protovalidate.celext.ValidateLibrary;
+import build.buf.protovalidate.evaluator.Evaluator;
+import build.buf.protovalidate.evaluator.EvaluatorBuilder;
+import build.buf.protovalidate.evaluator.Value;
 import build.buf.protovalidate.results.CompilationException;
 import build.buf.protovalidate.results.ValidationException;
 import build.buf.protovalidate.results.ValidationResult;
-import build.buf.protovalidate.evaluator.EvaluatorBuilder;
-import build.buf.protovalidate.evaluator.MessageEvaluator;
 import com.google.protobuf.Descriptors.Descriptor;
 import com.google.protobuf.Message;
 import org.projectnessie.cel.Env;
@@ -54,8 +55,8 @@ public class Validator {
             return new ValidationResult();
         }
         Descriptor descriptor = msg.getDescriptorForType();
-        MessageEvaluator evaluator = evaluatorBuilder.load(descriptor);
-        return evaluator.evaluateMessage(msg, failFast);
+        Evaluator evaluator = evaluatorBuilder.load(descriptor);
+        return evaluator.evaluate(new Value.MessageValue(msg), failFast);
     }
 
     /**

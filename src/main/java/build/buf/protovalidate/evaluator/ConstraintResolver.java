@@ -19,8 +19,8 @@ import build.buf.gen.buf.validate.MessageConstraints;
 import build.buf.gen.buf.validate.OneofConstraints;
 import build.buf.gen.buf.validate.ValidateProto;
 import com.google.protobuf.DescriptorProtos;
-import com.google.protobuf.Descriptors.FieldDescriptor;
 import com.google.protobuf.Descriptors.Descriptor;
+import com.google.protobuf.Descriptors.FieldDescriptor;
 import com.google.protobuf.Descriptors.OneofDescriptor;
 
 // TODO: potential for non registered classes to be read here maybe:

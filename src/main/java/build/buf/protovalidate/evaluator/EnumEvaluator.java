@@ -14,9 +14,9 @@
 
 package build.buf.protovalidate.evaluator;
 
+import build.buf.gen.buf.validate.Violation;
 import build.buf.protovalidate.results.ExecutionException;
 import build.buf.protovalidate.results.ValidationResult;
-import build.buf.gen.buf.validate.Violation;
 import com.google.protobuf.Descriptors;
 
 import java.util.Arrays;

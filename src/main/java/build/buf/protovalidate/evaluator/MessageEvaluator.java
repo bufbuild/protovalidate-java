@@ -16,15 +16,43 @@ package build.buf.protovalidate.evaluator;
 
 import build.buf.protovalidate.results.ExecutionException;
 import build.buf.protovalidate.results.ValidationResult;
-import com.google.protobuf.Message;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
- * Essentially the same as evaluator, but specialized for
- * messages as an optimization. See {@link Evaluator} for behavior.
+ * Performs validation on a {@link com.google.protobuf.Message}.
  */
-public interface MessageEvaluator extends Evaluator {
+class MessageEvaluator implements Evaluator {
     /**
-     * Checks that the provided msg is valid. See {@link Evaluator} for behavior
+     * Evaluators are the individual evaluators that are applied to a message.
      */
-    ValidationResult evaluateMessage(Message val, boolean failFast) throws ExecutionException;
+    private final List<Evaluator> evaluators = new ArrayList<>();
+
+    @Override
+    public boolean tautology() {
+        for (Evaluator evaluator : evaluators) {
+            if (!evaluator.tautology()) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    @Override
+    public ValidationResult evaluate(Value val, boolean failFast) throws ExecutionException {
+        ValidationResult validationResult = new ValidationResult();
+        for (Evaluator evaluator : evaluators) {
+            ValidationResult evalResult = evaluator.evaluate(val, failFast);
+            if (!validationResult.merge(evalResult, failFast)) {
+                return evalResult;
+            }
+        }
+        return validationResult;
+    }
+
+    @Override
+    public void append(Evaluator eval) {
+        evaluators.add(eval);
+    }
 }
