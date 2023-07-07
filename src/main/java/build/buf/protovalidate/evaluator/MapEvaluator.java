@@ -19,11 +19,11 @@ import build.buf.protovalidate.results.ValidationResult;
 
 import java.util.Map;
 
-public class MapEvaluator implements Evaluator {
+class MapEvaluator implements Evaluator {
     public final ValueEvaluator keyConstraints;
     public final ValueEvaluator valueEvaluatorConstraints;
 
-    public MapEvaluator() {
+    MapEvaluator() {
         this.keyConstraints = new ValueEvaluator();
         this.valueEvaluatorConstraints = new ValueEvaluator();
     }
@@ -35,10 +35,10 @@ public class MapEvaluator implements Evaluator {
     }
 
     @Override
-    public ValidationResult evaluate(JavaValue val, boolean failFast) throws ExecutionException {
+    public ValidationResult evaluate(Value val, boolean failFast) throws ExecutionException {
         ValidationResult validationResult = new ValidationResult();
-        Map<JavaValue, JavaValue> mapValue = val.mapValue();
-        for (Map.Entry<JavaValue, JavaValue> entry : mapValue.entrySet()) {
+        Map<Value, Value> mapValue = val.mapValue();
+        for (Map.Entry<Value, Value> entry : mapValue.entrySet()) {
             ValidationResult evalResult = evalPairs(entry.getKey(), entry.getValue(), failFast);
             if (!validationResult.merge(evalResult, failFast)) {
                 return validationResult;
@@ -47,7 +47,7 @@ public class MapEvaluator implements Evaluator {
         return validationResult;
     }
 
-    private ValidationResult evalPairs(JavaValue key, JavaValue value, boolean failFast) {
+    private ValidationResult evalPairs(Value key, Value value, boolean failFast) {
         ValidationResult evalResult = new ValidationResult();
 
         try {

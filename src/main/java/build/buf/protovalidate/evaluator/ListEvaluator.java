@@ -19,12 +19,12 @@ import build.buf.protovalidate.results.ValidationResult;
 
 import java.util.List;
 
-public class ListEvaluator implements Evaluator {
+class ListEvaluator implements Evaluator {
 
     // ItemConstraints are checked on every item of the list
-    public final ValueEvaluator itemConstraints;
+    final ValueEvaluator itemConstraints;
 
-    public ListEvaluator() {
+    ListEvaluator() {
         this.itemConstraints = new ValueEvaluator();
     }
 
@@ -34,10 +34,10 @@ public class ListEvaluator implements Evaluator {
     }
 
     @Override
-    public ValidationResult evaluate(JavaValue val, boolean failFast) throws ExecutionException {
+    public ValidationResult evaluate(Value val, boolean failFast) throws ExecutionException {
         ValidationResult validationResult = new ValidationResult();
 
-        List<JavaValue> repeatedValues = val.repeatedValue();
+        List<Value> repeatedValues = val.repeatedValue();
         for (int i = 0; i < repeatedValues.size(); i++) {
             ValidationResult evalResult = itemConstraints.evaluate(repeatedValues.get(i), failFast);
             evalResult.prefixErrorPaths("[%d]", i);

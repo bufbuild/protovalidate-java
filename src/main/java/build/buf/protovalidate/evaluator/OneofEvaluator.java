@@ -38,7 +38,7 @@ public class OneofEvaluator implements MessageEvaluator {
     }
 
     @Override
-    public ValidationResult evaluate(JavaValue val, boolean failFast) throws ExecutionException {
+    public ValidationResult evaluate(Value val, boolean failFast) throws ExecutionException {
         return evaluateMessage(val.messageValue(), failFast);
     }
 

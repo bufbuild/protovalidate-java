@@ -58,7 +58,7 @@ public class ValidatorTest {
 
     @Before
     public void setUp() {
-        validator = new Validator(new Config());
+        validator = new Validator(new Config(false, false));
     }
 
     @Test

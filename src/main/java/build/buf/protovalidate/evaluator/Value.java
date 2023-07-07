@@ -25,24 +25,24 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class JavaValue {
+class Value {
     private final Descriptors.FieldDescriptor fieldDescriptor;
     // Object type since the object type is inferred from the field descriptor.
     private final Object value;
 
-    public JavaValue(Descriptors.FieldDescriptor fieldDescriptor, Object value) {
+    Value(Descriptors.FieldDescriptor fieldDescriptor, Object value) {
         this.fieldDescriptor = fieldDescriptor;
         this.value = value;
     }
 
-    public Message messageValue() {
+    Message messageValue() {
         if (fieldDescriptor.getType() == Descriptors.FieldDescriptor.Type.MESSAGE) {
             return (Message) value;
         }
         return null;
     }
 
-    public <T> T value() {
+    <T> T value() {
         Descriptors.FieldDescriptor.Type type = fieldDescriptor.getType();
         if (!fieldDescriptor.isRepeated() && (type == Descriptors.FieldDescriptor.Type.UINT32
                 || type == Descriptors.FieldDescriptor.Type.UINT64
@@ -59,29 +59,29 @@ public class JavaValue {
         return (T) value;
     }
 
-    public List<JavaValue> repeatedValue() {
-        List<JavaValue> out = new ArrayList<>();
+    List<Value> repeatedValue() {
+        List<Value> out = new ArrayList<>();
         if (fieldDescriptor.isRepeated()) {
             List<?> list = (List<?>) value;
             for (Object o : list) {
-                out.add(new JavaValue(fieldDescriptor, o));
+                out.add(new Value(fieldDescriptor, o));
             }
         }
         return out;
     }
 
-    public Map<JavaValue, JavaValue> mapValue() {
-        Map<JavaValue, JavaValue> out = new HashMap<>();
+    Map<Value, Value> mapValue() {
+        Map<Value, Value> out = new HashMap<>();
         List<AbstractMessage> input = value instanceof List ? (List<AbstractMessage>) value : Collections.singletonList((AbstractMessage) value);
 
         Descriptors.FieldDescriptor keyDesc = fieldDescriptor.getMessageType().findFieldByNumber(1);
         Descriptors.FieldDescriptor valDesc = fieldDescriptor.getMessageType().findFieldByNumber(2);
         for (AbstractMessage entry : input) {
             Object keyValue = entry.getField(keyDesc);
-            JavaValue keyJavaValue = new JavaValue(keyDesc, keyValue);
+            Value keyJavaValue = new Value(keyDesc, keyValue);
 
             Object valValue = entry.getField(valDesc);
-            JavaValue valJavaValue = new JavaValue(valDesc, valValue);
+            Value valJavaValue = new Value(valDesc, valValue);
 
             out.put(keyJavaValue, valJavaValue);
         }

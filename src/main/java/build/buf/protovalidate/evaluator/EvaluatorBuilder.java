@@ -14,11 +14,11 @@
 
 package build.buf.protovalidate.evaluator;
 
-import build.buf.protovalidate.constraints.Cache;
+import build.buf.protovalidate.constraints.ConstraintCache;
 import build.buf.protovalidate.constraints.Lookups;
+import build.buf.protovalidate.expression.Variable;
 import build.buf.protovalidate.results.CompilationException;
-import build.buf.protovalidate.expression.Compiler;
-import build.buf.protovalidate.expression.ProgramSet;
+import build.buf.protovalidate.expression.CompiledProgramSet;
 import build.buf.validate.Constraint;
 import build.buf.validate.FieldConstraints;
 import build.buf.validate.MessageConstraints;
@@ -44,17 +44,17 @@ public class EvaluatorBuilder {
     // TODO: apparently go has some concurrency issues?
 
     private final Map<Descriptor, MessageEvaluator> cache = new HashMap<>();
-    private final Env env;
-    private final Cache constraints;
-    private final ConstraintResolver resolver;
+    private final ConstraintResolver resolver = new ConstraintResolver();
     private final ExtensionRegistry extensionRegistry = ExtensionRegistry.newInstance();
-    private final boolean disableLazy;
 
-    public EvaluatorBuilder(Env env, boolean disableLazy, ConstraintResolver res) {
+    private final Env env;
+    private final boolean disableLazy;
+    private final ConstraintCache constraints;
+
+    public EvaluatorBuilder(Env env, boolean disableLazy) {
         this.env = env;
-        this.constraints = new Cache();
-        this.resolver = res;
         this.disableLazy = disableLazy;
+        this.constraints = new ConstraintCache(env);
         extensionRegistry.add(ValidateProto.message);
         extensionRegistry.add(ValidateProto.field);
         extensionRegistry.add(ValidateProto.oneof);
@@ -100,12 +100,12 @@ public class EvaluatorBuilder {
         if (celList.isEmpty()) {
             return;
         }
-        ProgramSet compiledExpressions = Compiler.compileConstraints(
+        CompiledProgramSet compiledExpressions = CompiledProgramSet.compileConstraints(
                 celList,
                 env,
                 EnvOption.types(message),
                 EnvOption.declarations(
-                        Decls.newVar("this", Decls.newObjectType(desc.getFullName()))
+                        Decls.newVar(Variable.THIS_NAME, Decls.newObjectType(desc.getFullName()))
                 )
         );
         if (compiledExpressions.programs.isEmpty()) {
@@ -166,7 +166,6 @@ public class EvaluatorBuilder {
         processRepeatedConstraints(fieldDescriptor, fieldConstraints, forItems, valueEvaluatorEval);
     }
 
-    // TODO: this seems off
     private void processZeroValue(FieldDescriptor fieldDescriptor, Boolean forItems, ValueEvaluator valueEvaluatorEval) {
         if (fieldDescriptor.getType() == FieldDescriptor.Type.MESSAGE) {
             valueEvaluatorEval.zero = DynamicMessage.getDefaultInstance(fieldDescriptor.getContainingType());
@@ -190,17 +189,17 @@ public class EvaluatorBuilder {
                 DynamicMessage defaultInstance = DynamicMessage.parseFrom(fieldDescriptor.getMessageType(), new byte[0], extensionRegistry);
                 opts = Arrays.asList(
                         EnvOption.types(defaultInstance),
-                        EnvOption.declarations(Decls.newVar("this", Decls.newObjectType(fieldDescriptor.getMessageType().getFullName())))
+                        EnvOption.declarations(Decls.newVar(Variable.THIS_NAME, Decls.newObjectType(fieldDescriptor.getMessageType().getFullName())))
                 );
             } catch (InvalidProtocolBufferException e) {
                 throw new CompilationException("field descriptor type is invalid " + e.getMessage());
             }
         } else {
             opts = Collections.singletonList(
-                    EnvOption.declarations(Decls.newVar("this", Lookups.protoKindToCELType(fieldDescriptor.getType())))
+                    EnvOption.declarations(Decls.newVar(Variable.THIS_NAME, Lookups.protoKindToCELType(fieldDescriptor.getType())))
             );
         }
-        ProgramSet compiledExpressions = Compiler.compileConstraints(constraintsCelList, env, opts.toArray(new EnvOption[0]));
+        CompiledProgramSet compiledExpressions = CompiledProgramSet.compileConstraints(constraintsCelList, env, opts.toArray(new EnvOption[0]));
         if (!compiledExpressions.isEmpty()) {
             valueEvaluatorEval.append(new CelPrograms(compiledExpressions));
         }
@@ -239,7 +238,7 @@ public class EvaluatorBuilder {
     }
 
     private void processStandardConstraints(FieldDescriptor fieldDescriptor, FieldConstraints fieldConstraints, Boolean forItems, ValueEvaluator valueEvaluatorEval) throws CompilationException {
-        ProgramSet stdConstraints = constraints.build(env, fieldDescriptor, fieldConstraints, forItems);
+        CompiledProgramSet stdConstraints = constraints.compile(fieldDescriptor, fieldConstraints, forItems);
         // TODO: verify null check error handling, it may not need to be handled when there are no constraints
         if (stdConstraints == null) {
             return;
@@ -303,13 +302,6 @@ public class EvaluatorBuilder {
         valueEvaluatorEval.append(listEval);
     }
 
-    /**
-     * @param descriptor descriptor of the message to load
-     * @return the evaluator for the message
-     * load returns a pre-cached MessageEvaluator for the given descriptor or, if
-     * the descriptor is unknown, returns an evaluator that always resolves to an
-     * errors.CompilationError.
-     */
     private MessageEvaluator loadDescriptor(Descriptor descriptor) {
         MessageEvaluator evaluator = cache.get(descriptor);
         if (evaluator == null) {

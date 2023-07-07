@@ -20,6 +20,7 @@ import build.buf.protovalidate.Validator;
 import build.buf.protovalidate.results.ExecutionException;
 import build.buf.protovalidate.results.ValidationResult;
 import build.buf.validate.ValidateProto;
+import build.buf.validate.Violations;
 import build.buf.validate.conformance.harness.TestConformanceRequest;
 import build.buf.validate.conformance.harness.TestConformanceResponse;
 import build.buf.validate.conformance.harness.TestResult;
@@ -52,7 +53,7 @@ public class Main {
     static TestConformanceResponse testConformance(TestConformanceRequest request) {
         try {
             Map<String, Descriptors.Descriptor> descriptorMap = FileDescriptorUtil.parse(request.getFdset());
-            Validator validator = new Validator(new Config());
+            Validator validator = new Validator(new Config(false, false));
             TestConformanceResponse.Builder responseBuilder = TestConformanceResponse.newBuilder();
             Map<String, TestResult> resultsMap = new HashMap<>();
             for (Map.Entry<String, Any> entry : request.getCasesMap().entrySet()) {
@@ -90,7 +91,9 @@ public class Main {
                         .build();
             } else {
                 return TestResult.newBuilder()
-                        .setValidationError(result.asViolations())
+                        .setValidationError(Violations.newBuilder()
+                                .addAllViolations(result.violations)
+                                .build())
                         .build();
             }
         } catch (CompilationException e) {

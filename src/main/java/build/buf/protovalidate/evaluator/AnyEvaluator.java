@@ -23,32 +23,21 @@ import com.google.protobuf.Message;
 import java.util.HashMap;
 import java.util.Map;
 
-public class AnyEvaluator implements Evaluator {
+class AnyEvaluator implements Evaluator {
     private final Descriptors.FieldDescriptor typeURLDescriptor;
     private final Map<String, Object> in;
     private final Map<String, Object> notIn;
 
-    public AnyEvaluator(Descriptors.FieldDescriptor typeURLDescriptor, String[] in, String[] notIn) {
+    AnyEvaluator(Descriptors.FieldDescriptor typeURLDescriptor, String[] in, String[] notIn) {
         this.typeURLDescriptor = typeURLDescriptor;
         this.in = stringsToMap(in);
         this.notIn = stringsToMap(notIn);
     }
 
-    private static Map<String, Object> stringsToMap(String[] strings) {
-        if (strings == null || strings.length == 0) {
-            return null;
-        }
-        Map<String, Object> map = new HashMap<>();
-        for (String s : strings) {
-            map.put(s, new Object());
-        }
-        return map;
-    }
-
     @Override
-    public ValidationResult evaluate(JavaValue val, boolean failFast) throws ExecutionException {
-        ValidationResult evalResult = new ValidationResult();
+    public ValidationResult evaluate(Value val, boolean failFast) throws ExecutionException {
         Message o = val.messageValue();
+        ValidationResult evalResult = new ValidationResult();
         String typeURL = (String) o.getField(typeURLDescriptor);
         if (in != null && in.size() > 0) {
             if (!in.containsKey(typeURL)) {
@@ -81,5 +70,16 @@ public class AnyEvaluator implements Evaluator {
     @Override
     public boolean tautology() {
         return (in == null || in.size() == 0) && (notIn == null || notIn.size() == 0);
+    }
+
+    private static Map<String, Object> stringsToMap(String[] strings) {
+        if (strings == null || strings.length == 0) {
+            return null;
+        }
+        Map<String, Object> map = new HashMap<>();
+        for (String s : strings) {
+            map.put(s, new Object());
+        }
+        return map;
     }
 }

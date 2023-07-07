@@ -22,20 +22,21 @@ import com.google.protobuf.Descriptors;
 import java.util.Arrays;
 import java.util.List;
 
-public class EnumEvaluator implements Evaluator {
+class EnumEvaluator implements Evaluator {
     private final List<Descriptors.EnumValueDescriptor> valueDescriptors;
 
-    public EnumEvaluator(Descriptors.EnumValueDescriptor... valueDescriptors) {
+    EnumEvaluator(Descriptors.EnumValueDescriptor... valueDescriptors) {
         this.valueDescriptors = Arrays.asList(valueDescriptors);
     }
 
+    @Override
     public boolean tautology() {
         return false;
     }
 
     @Override
-    public ValidationResult evaluate(JavaValue val, boolean failFast) throws ExecutionException {
-        Descriptors.EnumValueDescriptor enumValue = (Descriptors.EnumValueDescriptor) val.value();
+    public ValidationResult evaluate(Value val, boolean failFast) throws ExecutionException {
+        Descriptors.EnumValueDescriptor enumValue = val.value();
         if (!isValueValid(enumValue)) {
             ValidationResult evalResult = new ValidationResult();
             evalResult.addViolation(Violation.newBuilder()

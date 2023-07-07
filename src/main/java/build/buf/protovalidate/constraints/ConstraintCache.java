@@ -15,9 +15,8 @@
 package build.buf.protovalidate.constraints;
 
 import build.buf.protovalidate.results.CompilationException;
-import build.buf.protovalidate.expression.AstSet;
-import build.buf.protovalidate.expression.Compiler;
-import build.buf.protovalidate.expression.ProgramSet;
+import build.buf.protovalidate.expression.CompiledAstSet;
+import build.buf.protovalidate.expression.CompiledProgramSet;
 import build.buf.protovalidate.expression.Variable;
 import build.buf.validate.FieldConstraints;
 import build.buf.validate.priv.PrivateProto;
@@ -35,14 +34,35 @@ import java.util.concurrent.ConcurrentMap;
 
 import static org.projectnessie.cel.ProgramOption.globals;
 
-public class Cache {
-    private final ConcurrentMap<FieldDescriptor, AstSet> cache;
+public class ConstraintCache {
+    private final ConcurrentMap<FieldDescriptor, CompiledAstSet> cache;
+    private final Env env;
 
-    public Cache() {
+    public ConstraintCache(Env env) {
+        this.env = env;
         this.cache = new ConcurrentHashMap<>();
     }
 
     // This method resolves constraints for a given field based on the provided field descriptor, field constraints, and a flag indicating whether it is for items.
+    public CompiledProgramSet compile(FieldDescriptor fieldDescriptor, FieldConstraints fieldConstraints, Boolean forItems) throws CompilationException {
+        Message message = resolveConstraints(fieldDescriptor, fieldConstraints, forItems);
+        if (message == null) {
+            // TODO: there's a doneness check from go but we'll ignore it for now.
+            return null;
+        }
+        Env prepareEnvironment = prepareEnvironment(fieldDescriptor, message, forItems);
+        if (prepareEnvironment == null) {
+            // TODO: go actually has this fail sometimes.
+            return null;
+        }
+        CompiledAstSet completeSet = new CompiledAstSet(prepareEnvironment, new ArrayList<>());
+        for (Map.Entry<FieldDescriptor, Object> entry : message.getAllFields().entrySet()) {
+            CompiledAstSet precomputedAst = loadOrCompileStandardConstraint(prepareEnvironment, entry.getKey());
+            completeSet.merge(precomputedAst);
+        }
+        return completeSet.reduceResiduals(globals(Variable.newRulesVariable(message)));
+    }
+
     private Message resolveConstraints(FieldDescriptor fieldDescriptor, FieldConstraints fieldConstraints, Boolean forItems) throws CompilationException {
         // Get the oneof field descriptor from the field constraints.
         FieldDescriptor oneofFieldDescriptor = fieldConstraints.getOneofFieldDescriptor(Lookups.FIELD_CONSTRAINTS_ONEOF_DESC);
@@ -73,25 +93,25 @@ public class Cache {
     }
 
 
-    private Env prepareEnvironment(Env env, FieldDescriptor fieldDesc, Message rules, Boolean forItems) {
+    private Env prepareEnvironment(FieldDescriptor fieldDesc, Message rules, Boolean forItems) {
         return env.extend(
                 EnvOption.types(rules.getDefaultInstanceForType()),
                 EnvOption.declarations(
-                        Decls.newVar("this", getCELType(fieldDesc, forItems)),
-                        Decls.newVar("rules", Decls.newObjectType(rules.getDescriptorForType().getFullName()))
+                        Decls.newVar(Variable.THIS_NAME, getCELType(fieldDesc, forItems)),
+                        Decls.newVar(Variable.RULES_NAME, Decls.newObjectType(rules.getDescriptorForType().getFullName()))
                 )
         );
     }
 
-    private AstSet loadOrCompileStandardConstraint(Env env, FieldDescriptor constraintFieldDesc) throws CompilationException {
-        final AstSet cachedValue = cache.get(constraintFieldDesc);
+    private CompiledAstSet loadOrCompileStandardConstraint(Env finalEnv, FieldDescriptor constraintFieldDesc) throws CompilationException {
+        final CompiledAstSet cachedValue = cache.get(constraintFieldDesc);
         if (cachedValue != null) {
             return cachedValue;
         }
         build.buf.validate.priv.FieldConstraints constraints = constraintFieldDesc.getOptions().getExtension(PrivateProto.field);
-        AstSet astSet = Compiler.compileASTs(constraints.getCelList(), env);
-        cache.put(constraintFieldDesc, astSet);
-        return astSet;
+        CompiledAstSet compiledAstSet = CompiledAstSet.compileAsts(constraints.getCelList(), finalEnv);
+        cache.put(constraintFieldDesc, compiledAstSet);
+        return compiledAstSet;
     }
 
     private FieldDescriptor getExpectedConstraintDescriptor(FieldDescriptor fieldDescriptor, Boolean forItems) {
@@ -133,26 +153,6 @@ public class Cache {
                     return Decls.newObjectType(fieldDescriptor.getFullName());
             }
         }
-
         return Lookups.protoKindToCELType(fieldDescriptor.getType());
-    }
-
-    public ProgramSet build(Env env, FieldDescriptor fieldDescriptor, FieldConstraints fieldConstraints, Boolean forItems) throws CompilationException {
-        Message message = resolveConstraints(fieldDescriptor, fieldConstraints, forItems);
-        if (message == null) {
-            // TODO: there's a doneness check from go but we'll ignore it for now.
-            return null;
-        }
-        Env prepareEnvironment = prepareEnvironment(env, fieldDescriptor, message, forItems);
-        if (prepareEnvironment == null) {
-            // TODO: go actually has this fail sometimes.
-            return null;
-        }
-        AstSet completeSet = new AstSet(prepareEnvironment, new ArrayList<>());
-        for (Map.Entry<FieldDescriptor, Object> entry : message.getAllFields().entrySet()) {
-            AstSet precomputedAst = loadOrCompileStandardConstraint(prepareEnvironment, entry.getKey());
-            completeSet.merge(precomputedAst);
-        }
-        return completeSet.reduceResiduals(globals(new Variable("rules", message)));
     }
 }

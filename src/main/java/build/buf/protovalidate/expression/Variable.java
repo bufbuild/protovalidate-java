@@ -25,20 +25,25 @@ import static org.projectnessie.cel.interpreter.ResolvedValue.ABSENT;
  * variable to cel.Program executions.
  */
 public class Variable implements Activation {
+    public static final String THIS_NAME = "this";
+    public static final String RULES_NAME = "rules";
+
     private final Activation next;
     private final String name;
     private final Object val;
 
-    public Variable(String name, Object val) {
-        this.next = Activation.emptyActivation();
+    private Variable(Activation activation, String name, Object val) {
+        this.next = activation;
         this.name = name;
         this.val = val;
     }
 
-    public Variable(Activation activation, String name, Object val) {
-        this.next = activation;
-        this.name = name;
-        this.val = val;
+    public static Variable newThisVariable(Object val) {
+        return new Variable(Activation.emptyActivation(), THIS_NAME, val);
+    }
+
+    public static Variable newRulesVariable(Object val) {
+        return new Variable(new NowVariable(), RULES_NAME, val);
     }
 
     @Override

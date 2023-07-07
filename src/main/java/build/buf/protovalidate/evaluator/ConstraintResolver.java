@@ -25,9 +25,9 @@ import com.google.protobuf.Descriptors.OneofDescriptor;
 
 // TODO: potential for non registered classes to be read here maybe:
 // https://github.com/bufbuild/protovalidate-go/blob/main/internal/evaluator/resolver.go#L43-L47
-public class ConstraintResolver {
+class ConstraintResolver {
 
-    public MessageConstraints resolveMessageConstraints(Descriptor desc) {
+    MessageConstraints resolveMessageConstraints(Descriptor desc) {
         DescriptorProtos.MessageOptions options = desc.getOptions();
         if (!options.hasExtension(ValidateProto.message)) {
             return MessageConstraints.newBuilder()
@@ -44,7 +44,7 @@ public class ConstraintResolver {
         return constraints;
     }
 
-    public OneofConstraints resolveOneofConstraints(OneofDescriptor desc) {
+    OneofConstraints resolveOneofConstraints(OneofDescriptor desc) {
         DescriptorProtos.OneofOptions options = desc.getOptions();
         if (!options.hasExtension(ValidateProto.oneof)) {
             return OneofConstraints.newBuilder()
@@ -53,7 +53,7 @@ public class ConstraintResolver {
         return options.getExtension(ValidateProto.oneof);
     }
 
-    public FieldConstraints resolveFieldConstraints(FieldDescriptor desc) {
+    FieldConstraints resolveFieldConstraints(FieldDescriptor desc) {
         DescriptorProtos.FieldOptions options = desc.getOptions();
         if (!options.hasExtension(ValidateProto.field)) {
             return FieldConstraints.newBuilder().build();

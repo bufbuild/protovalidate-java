@@ -22,14 +22,14 @@ import com.google.protobuf.Message;
 // unknownMessage is a MessageEvaluator for an unknown descriptor. This is
 // returned only if lazy-building of evaluators has been disabled and an unknown
 // descriptor is encountered.
-public class UnknownMessageEvaluator implements MessageEvaluator {
+class UnknownMessageEvaluator implements MessageEvaluator {
     private final Descriptor desc;
 
-    public UnknownMessageEvaluator(Descriptor desc) {
+    UnknownMessageEvaluator(Descriptor desc) {
         this.desc = desc;
     }
 
-    public ValidationResult err() {
+    ValidationResult err() {
         throw new ValidationResult("No evaluator available for " + desc.getFullName());
     }
 
@@ -39,7 +39,7 @@ public class UnknownMessageEvaluator implements MessageEvaluator {
     }
 
     @Override
-    public ValidationResult evaluate(JavaValue val, boolean failFast) throws ExecutionException {
+    public ValidationResult evaluate(Value val, boolean failFast) throws ExecutionException {
         throw this.err();
     }
 

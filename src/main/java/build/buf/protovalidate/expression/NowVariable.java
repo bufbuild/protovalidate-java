@@ -21,16 +21,18 @@ import org.projectnessie.cel.interpreter.ResolvedValue;
 import java.time.Instant;
 
 public class NowVariable implements Activation {
+    private static final String NOW_NAME = "now";
+
     private ResolvedValue resolvedValue;
 
     @Override
     public ResolvedValue resolveName(String name) {
-        if (!name.equals("now")) {
+        if (!name.equals(NOW_NAME)) {
             return ResolvedValue.ABSENT;
         } else if (resolvedValue != null) {
             return resolvedValue;
         }
-        Instant instant = Instant.now();
+        Instant instant = Instant.now(); // UTC.
         TimestampT value = TimestampT.timestampOf(instant);
         resolvedValue = ResolvedValue.resolvedValue(value);
         return resolvedValue;

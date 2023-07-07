@@ -20,7 +20,7 @@ import build.buf.protovalidate.results.ValidationResult;
 public interface Evaluator {
     boolean tautology();
 
-    ValidationResult evaluate(JavaValue val, boolean failFast) throws ExecutionException;
+    ValidationResult evaluate(Value val, boolean failFast) throws ExecutionException;
 
     void append(Evaluator eval);
 }

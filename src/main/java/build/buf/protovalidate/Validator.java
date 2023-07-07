@@ -29,8 +29,8 @@ public class Validator {
     private final boolean failFast;
 
     public Validator(Config config) {
-        Env env = Env.newEnv(Library.Lib(new ValidateLibrary(config.useUTC)));
-        this.evaluatorBuilder = new EvaluatorBuilder(env, config.disableLazy, config.resolver);
+        Env env = Env.newEnv(Library.Lib(new ValidateLibrary()));
+        this.evaluatorBuilder = new EvaluatorBuilder(env, config.disableLazy);
         this.failFast = config.failFast;
     }
 

@@ -14,33 +14,48 @@
 
 package build.buf.protovalidate.expression;
 
+import build.buf.protovalidate.results.CompilationException;
 import org.projectnessie.cel.Ast;
 import org.projectnessie.cel.Env;
+import org.projectnessie.cel.EnvOption;
 import org.projectnessie.cel.EvalOption;
-import org.projectnessie.cel.Program;
 import org.projectnessie.cel.ProgramOption;
-import org.projectnessie.cel.common.types.ref.Val;
-import org.projectnessie.cel.interpreter.Activation;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 // AstSet represents a collection of CompiledAst and their associated CelRuntime.
-public class AstSet {
+public class CompiledAstSet {
     public final List<CompiledAst> asts;
     public final Env env;
 
-    public AstSet(Env env, List<CompiledAst> asts) {
+    public CompiledAstSet(Env env, List<CompiledAst> asts) {
         this.env = env;
         this.asts = asts;
+    }
+
+    public static CompiledAstSet compileAsts(List<build.buf.validate.priv.Constraint> constraints, Env env, EnvOption... envOpts) throws CompilationException {
+        List<Expression> expressions = new ArrayList<>();
+        for (build.buf.validate.priv.Constraint constraint : constraints) {
+            expressions.add(new Expression(constraint));
+        }
+        Env finalEnv = env;
+        if (envOpts.length > 0) {
+            finalEnv = env.extend(envOpts);
+        }
+        List<CompiledAst> compiledAsts = new ArrayList<>();
+        for (Expression expression : expressions) {
+            compiledAsts.add(CompiledAst.compile(env, expression));
+        }
+        return new CompiledAstSet(finalEnv, compiledAsts);
     }
 
     public void set(int index, CompiledAst ast) {
         asts.add(index, ast);
     }
 
-    public void merge(AstSet other) {
+    public void merge(CompiledAstSet other) {
         asts.addAll(other.asts);
     }
 
@@ -49,13 +64,25 @@ public class AstSet {
     // either a true or empty string constant result, no CompiledProgram is
     // generated for it. The main usage of this is to elide tautological expressions
     // from the final result.
-    public ProgramSet reduceResiduals(ProgramOption... opts) {
-        AstSet astSet = reduce(opts);
-        ProgramSet programSet = astSet.toProgramSet(opts);
-        return programSet;
+    public CompiledProgramSet reduceResiduals(ProgramOption... opts) {
+        CompiledAstSet compiledAstSet = reduce(opts);
+        return compiledAstSet.toProgramSet(opts);
     }
 
-    private AstSet reduce(ProgramOption... opts) {
+    // ToProgramSet generates a ProgramSet from the specified ASTs.
+    public CompiledProgramSet toProgramSet(ProgramOption... opts) {
+        if (asts.isEmpty()) {
+            return null;
+        }
+        List<CompiledProgram> programs = new ArrayList<>();
+        for (CompiledAst ast : asts) {
+            CompiledProgram compiledProgram = ast.toCompiledProgram(opts);
+            programs.add(compiledProgram);
+        }
+        return new CompiledProgramSet(programs);
+    }
+
+    private CompiledAstSet reduce(ProgramOption... opts) {
         List<CompiledAst> residuals = new ArrayList<>();
         List<ProgramOption> options = new ArrayList<>();
         options.addAll(Arrays.asList(opts));
@@ -66,42 +93,21 @@ public class AstSet {
                 EvalOption.OptPartialEval
         ));
         for (CompiledAst ast : asts) {
-            CompiledProgram compiledProgram = ast.toCompiledProgram(env, options.toArray(new ProgramOption[0]));
+            CompiledProgram compiledProgram = ast.toCompiledProgram(options.toArray(new ProgramOption[0]));
             if (compiledProgram == null) {
                 residuals.add(ast);
                 continue;
             }
-            Program.EvalResult evalResult = compiledProgram.program.eval(Activation.emptyActivation());
-            Val value = evalResult.getVal();
-            if (value != null) {
-                Object val = value.value();
-                if (val instanceof Boolean && value.booleanValue()) {
-                    continue;
-                }
-                if (val instanceof String && val.equals("")) {
-                    continue;
-                }
-            }
             try {
-                Ast residual = env.residualAst(ast.ast, evalResult.getEvalDetails());
-                residuals.add(new CompiledAst(residual, ast.source));
+                Ast residual = compiledProgram.reduce(ast.ast);
+                if (residual == null) {
+                    continue;
+                }
+                residuals.add(new CompiledAst(env, residual, ast.source));
             } catch (Exception e) {
                 residuals.add(ast);
             }
         }
-        return new AstSet(env, residuals);
-    }
-
-    // ToProgramSet generates a ProgramSet from the specified ASTs.
-    public ProgramSet toProgramSet(ProgramOption... opts) {
-        if (asts.isEmpty()) {
-            return null;
-        }
-        List<CompiledProgram> programs = new ArrayList<>();
-        for (CompiledAst ast : asts) {
-            CompiledProgram compiledProgram = ast.toCompiledProgram(env, opts);
-            programs.add(compiledProgram);
-        }
-        return new ProgramSet(programs);
+        return new CompiledAstSet(env, residuals);
     }
 }

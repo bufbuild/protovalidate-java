@@ -16,26 +16,40 @@ package build.buf.protovalidate.expression;
 
 import build.buf.protovalidate.results.ExecutionException;
 import build.buf.validate.Violation;
+import org.projectnessie.cel.Ast;
+import org.projectnessie.cel.Env;
 import org.projectnessie.cel.Program;
 import org.projectnessie.cel.common.types.Err;
 import org.projectnessie.cel.common.types.ref.Val;
 import org.projectnessie.cel.interpreter.Activation;
 
 class CompiledProgram {
-    public final Program program;
+    private final Env env;
+    private final Program program;
     private final Expression source;
 
-    public CompiledProgram(Program program, Expression source) {
+    public CompiledProgram(Env env, Program program, Expression source) {
+        this.env = env;
         this.program = program;
         this.source = source;
     }
 
-    public Violation eval(Activation bindings) throws ExecutionException {
-        // TODO: work out what to do here
-        // now := nowPool.Get()
-        // defer nowPool.Put(now)
-        // bindings.Next = now
+    public Ast reduce(Ast ast) {
+        Program.EvalResult evalResult = program.eval(Activation.emptyActivation());
+        Val value = evalResult.getVal();
+        if (value != null) {
+            Object val = value.value();
+            if (val instanceof Boolean && value.booleanValue()) {
+                return null;
+            }
+            if (val instanceof String && val.equals("")) {
+                return null;
+            }
+        }
+        return env.residualAst(ast, evalResult.getEvalDetails());
+    }
 
+    public Violation eval(Activation bindings) throws ExecutionException {
         Program.EvalResult evalResult = program.eval(bindings);
         Val val = evalResult.getVal();
         if (val instanceof Err) {

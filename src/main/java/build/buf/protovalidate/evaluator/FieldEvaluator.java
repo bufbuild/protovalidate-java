@@ -20,25 +20,26 @@ import build.buf.validate.Violation;
 import com.google.protobuf.Descriptors.FieldDescriptor;
 import com.google.protobuf.Message;
 
-public class FieldEvaluator implements MessageEvaluator {
+class FieldEvaluator implements MessageEvaluator {
     public final ValueEvaluator valueEvaluator;
     private final FieldDescriptor descriptor;
     private final boolean required;
     private final boolean optional;
 
-    public FieldEvaluator(ValueEvaluator valueEvaluator, FieldDescriptor descriptor, boolean required, boolean optional) {
+    FieldEvaluator(ValueEvaluator valueEvaluator, FieldDescriptor descriptor, boolean required, boolean optional) {
         this.valueEvaluator = valueEvaluator;
         this.descriptor = descriptor;
         this.required = required;
         this.optional = optional;
     }
 
+    @Override
     public boolean tautology() {
         return !required && valueEvaluator.tautology();
     }
 
     @Override
-    public ValidationResult evaluate(JavaValue val, boolean failFast) throws ExecutionException {
+    public ValidationResult evaluate(Value val, boolean failFast) throws ExecutionException {
         return evaluateMessage(val.messageValue(), failFast);
     }
 
@@ -65,7 +66,7 @@ public class FieldEvaluator implements MessageEvaluator {
             return new ValidationResult();
         }
         Object fieldValue = message.getField(descriptor);
-        ValidationResult evalResult = valueEvaluator.evaluate(new JavaValue(descriptor, fieldValue), failFast);
+        ValidationResult evalResult = valueEvaluator.evaluate(new Value(descriptor, fieldValue), failFast);
         evalResult.prefixErrorPaths("%s", descriptor.getName());
         return evalResult;
     }
@@ -73,9 +74,5 @@ public class FieldEvaluator implements MessageEvaluator {
     @Override
     public void append(Evaluator eval) {
         throw new UnsupportedOperationException("append not supported for FieldEval");
-    }
-
-    public ValueEvaluator getValue() {
-        return valueEvaluator;
     }
 }

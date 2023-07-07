@@ -15,23 +15,44 @@
 package build.buf.protovalidate.expression;
 
 
+import build.buf.protovalidate.results.CompilationException;
+import com.google.api.expr.v1alpha1.Type;
 import org.projectnessie.cel.Ast;
 import org.projectnessie.cel.Env;
 import org.projectnessie.cel.Program;
 import org.projectnessie.cel.ProgramOption;
+import org.projectnessie.cel.common.Source;
 
 public class CompiledAst {
+    private final Env env;
     public final Ast ast;
     public final Expression source;
 
-    public CompiledAst(Ast ast, Expression source) {
+    public CompiledAst(Env env, Ast ast, Expression source) {
+        this.env = env;
         this.ast = ast;
         this.source = source;
     }
 
-    public CompiledProgram toCompiledProgram(Env env, ProgramOption... opts) {
+    static CompiledAst compile(Env env, Expression expr) throws CompilationException {
+        env.parseSource(Source.newTextSource(expr.expression));
+        Env.AstIssuesTuple astIssuesTuple = env.compile(expr.expression);
+        if (astIssuesTuple.hasIssues()) {
+            throw new CompilationException("failed to compile expression " + expr.id);
+        }
+        Ast ast = astIssuesTuple.getAst();
+        Type outType = ast.getResultType();
+        // TODO: This is false always. Comparing incompatible types.
+        if (outType.equals(Type.PrimitiveType.BOOL) || outType.equals(Type.PrimitiveType.STRING)) {
+            throw new CompilationException("expression outputs, wanted either bool or string %s %s", expr.id, outType.toString());
+        }
+        return new CompiledAst(env, ast, expr);
+    }
+
+    public CompiledProgram toCompiledProgram(ProgramOption... opts) {
         Program program = env.program(ast, opts);
         return new CompiledProgram(
+                env,
                 program,
                 source
         );

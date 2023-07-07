@@ -49,23 +49,15 @@ import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
-import java.util.Map;
 import java.util.Set;
 
 import static org.projectnessie.cel.common.types.IntT.intOf;
 import static org.projectnessie.cel.interpreter.functions.Overload.*;
 
 public class ValidateLibrary implements Library {
-    private boolean useUtc;
-
-    public ValidateLibrary(boolean useUtc) {
-        // TODO: Implement me
-        this.useUtc = useUtc;
-    }
 
     @Override
     public List<EnvOption> getCompileOptions() {

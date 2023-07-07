@@ -15,7 +15,6 @@
 package build.buf.protovalidate.results;
 
 import build.buf.validate.Violation;
-import build.buf.validate.Violations;
 import com.google.common.base.Strings;
 
 import java.util.ArrayList;
@@ -42,23 +41,25 @@ public class ValidationResult extends RuntimeException {
 
     @Override
     public String getMessage() {
-        StringBuilder bldr = new StringBuilder();
-        bldr.append("Validation error:");
+        StringBuilder builder = new StringBuilder();
+        builder.append("Validation error:");
         for (Violation violation : violations) {
-            bldr.append("\n - ");
+            builder.append("\n - ");
             if (!violation.getFieldPath().isEmpty()) {
-                bldr.append(violation.getFieldPath());
-                bldr.append(": ");
+                builder.append(violation.getFieldPath());
+                builder.append(": ");
             }
-            bldr.append(String.format("%s [%s]", violation.getMessage(), violation.getConstraintId()));
+            builder.append(String.format("%s [%s]", violation.getMessage(), violation.getConstraintId()));
         }
-        return bldr.toString();
+        return builder.toString();
     }
 
-    public Violations asViolations() {
-        return Violations.newBuilder()
-                .addAllViolations(violations)
-                .build();
+    public boolean isSuccess() {
+        return violations.isEmpty();
+    }
+
+    public boolean isFailure() {
+        return !isSuccess();
     }
 
     public void addViolation(Violation violation) {
@@ -86,14 +87,6 @@ public class ValidationResult extends RuntimeException {
                     return violation.toBuilder().setFieldPath(prefixedFieldPath).build();
                 })
                 .collect(Collectors.toList());
-    }
-
-    public boolean isSuccess() {
-        return violations.isEmpty();
-    }
-
-    public boolean isFailure() {
-        return !isSuccess();
     }
 
     public boolean merge(Exception e, boolean failFast) {

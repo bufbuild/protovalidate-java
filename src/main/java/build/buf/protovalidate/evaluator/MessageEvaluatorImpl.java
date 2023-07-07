@@ -21,23 +21,11 @@ import com.google.protobuf.Message;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MessageEvaluatorImpl implements MessageEvaluator {
-
-    // Err stores if there was a compilation error constructing this evaluator.
-    // It is cached here so that it can be stored in the registry's lookup table.
-    private Exception err;
-
-    // evaluators are the individual evaluators that are applied to a message.
-    private List<MessageEvaluator> evaluators = new ArrayList<>();
-
-    public MessageEvaluatorImpl() {
-    }
+class MessageEvaluatorImpl implements MessageEvaluator {
+    private final List<MessageEvaluator> evaluators = new ArrayList<>();
 
     @Override
     public boolean tautology() {
-        if (err != null) {
-            return false;
-        }
         for (MessageEvaluator evaluator : evaluators) {
             if (!evaluator.tautology()) {
                 return false;
@@ -47,7 +35,7 @@ public class MessageEvaluatorImpl implements MessageEvaluator {
     }
 
     @Override
-    public ValidationResult evaluate(JavaValue val, boolean failFast) throws ExecutionException {
+    public ValidationResult evaluate(Value val, boolean failFast) throws ExecutionException {
         return evaluateMessage(val.messageValue(), failFast);
     }
 

@@ -15,16 +15,7 @@
 package build.buf.protovalidate.results;
 
 public class CompilationException extends ValidationException {
-
-    public CompilationException(Throwable cause, String format, Object... args) {
-        super(String.format(format, args), cause);
-    }
-
     public CompilationException(String format, Object... args) {
         super(String.format(format, args));
-    }
-
-    public CompilationException(Throwable cause) {
-        super(cause);
     }
 }

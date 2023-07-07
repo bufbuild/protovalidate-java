@@ -21,7 +21,7 @@ public class Expression {
     public final String message;
     public final String expression;
 
-    public Expression(String id, String message, String expression) {
+    private Expression(String id, String message, String expression) {
         this.id = id;
         this.message = message;
         this.expression = expression;

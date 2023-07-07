@@ -20,16 +20,17 @@ import build.buf.protovalidate.results.ValidationResult;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ValueEvaluator implements Evaluator {
+class ValueEvaluator implements Evaluator {
     // Zero is the default or zero-value for this value's type
-    public Object zero;
+    Object zero;
     // Constraints are the individual evaluators applied to a value
-    public final List<Evaluator> evaluators = new ArrayList<>();
+    private final List<Evaluator> evaluators = new ArrayList<>();
+    // TODO: This gets mutated on the fly. Figure out how to manage this better.
     // IgnoreEmpty indicates that the Constraints should not be applied if the
     // field is unset or the default (typically zero) value.
     public boolean ignoreEmpty;
 
-    public ValueEvaluator() {
+    ValueEvaluator() {
         this.zero = null;
         this.ignoreEmpty = false;
     }
@@ -40,7 +41,7 @@ public class ValueEvaluator implements Evaluator {
     }
 
     @Override
-    public ValidationResult evaluate(JavaValue val, boolean failFast) throws ExecutionException {
+    public ValidationResult evaluate(Value val, boolean failFast) throws ExecutionException {
         if (ignoreEmpty && isZero(val)) {
             return new ValidationResult();
         }
@@ -54,18 +55,19 @@ public class ValueEvaluator implements Evaluator {
         return validationResult;
     }
 
-    private boolean isZero(JavaValue val) {
+    @Override
+    public void append(Evaluator eval) {
+        if (eval != null && !eval.tautology()) {
+            this.evaluators.add(eval);
+        }
+    }
+
+    private boolean isZero(Value val) {
         if (val == null) {
             return false;
         } else if (zero == null) {
             return val.value() == null;
         }
         return zero.equals(val.value());
-    }
-
-    public void append(Evaluator eval) {
-        if (eval != null && !eval.tautology()) {
-            this.evaluators.add(eval);
-        }
     }
 }

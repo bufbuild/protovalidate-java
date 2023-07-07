@@ -16,28 +16,27 @@ package build.buf.protovalidate.evaluator;
 
 import build.buf.protovalidate.results.ExecutionException;
 import build.buf.protovalidate.results.ValidationResult;
-import build.buf.protovalidate.expression.ProgramSet;
+import build.buf.protovalidate.expression.CompiledProgramSet;
 import com.google.protobuf.Message;
 
-public class CelPrograms implements Evaluator, MessageEvaluator {
-    private final ProgramSet programSet;
+class CelPrograms implements Evaluator, MessageEvaluator {
+    private final CompiledProgramSet compiledProgramSet;
 
-    // assuming the equivalent of the Go `expression.ProgramSet` in Java is a List of some sort
-    public CelPrograms(ProgramSet programSet) {
-        // TODO: remove? or keep? used in dev
-        if (programSet == null) {
+    CelPrograms(CompiledProgramSet compiledProgramSet) {
+        // TODO: require non null somehow?
+        if (compiledProgramSet == null) {
             throw new IllegalArgumentException("programSet cannot be null");
         }
-        this.programSet = programSet;
+        this.compiledProgramSet = compiledProgramSet;
     }
 
     public boolean tautology() {
-        return programSet.isEmpty();
+        return compiledProgramSet.isEmpty();
     }
 
     @Override
-    public ValidationResult evaluate(JavaValue val, boolean failFast) throws ExecutionException {
-        return programSet.evalValue(val, failFast);
+    public ValidationResult evaluate(Value val, boolean failFast) throws ExecutionException {
+        return compiledProgramSet.evalValue(val.value(), failFast);
     }
 
     @Override
@@ -47,6 +46,6 @@ public class CelPrograms implements Evaluator, MessageEvaluator {
 
     @Override
     public ValidationResult evaluateMessage(Message val, boolean failFast) throws ExecutionException {
-        return programSet.evalMessage(val, failFast);
+        return compiledProgramSet.evalMessage(val, failFast);
     }
 }

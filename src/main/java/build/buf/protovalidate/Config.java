@@ -14,27 +14,12 @@
 
 package build.buf.protovalidate;
 
-import build.buf.protovalidate.evaluator.ConstraintResolver;
-import com.google.protobuf.Descriptors;
-
-import java.util.Collections;
-import java.util.List;
-
 public class Config {
     public final boolean failFast;
-    // TODO: does nothing
-    public final boolean useUTC;
     public final boolean disableLazy;
-    public final ConstraintResolver resolver;
 
-    public Config(boolean failFast, boolean useUTC, boolean disableLazy, ConstraintResolver resolver) {
+    public Config(boolean failFast, boolean disableLazy) {
         this.failFast = failFast;
-        this.useUTC = useUTC;
         this.disableLazy = disableLazy;
-        this.resolver = resolver;
-    }
-
-    public Config() {
-        this(false, true, false, new ConstraintResolver());
     }
 }
