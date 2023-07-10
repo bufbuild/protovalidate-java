@@ -80,7 +80,7 @@ class FieldEvaluator implements Evaluator {
             return evalResult;
         }
 
-        if ((optional || valueEvaluator.ignoreEmpty) && !hasField) {
+        if ((optional || valueEvaluator.getIgnoreEmpty()) && !hasField) {
             return new ValidationResult();
         }
         Object fieldValue = message.getField(descriptor);

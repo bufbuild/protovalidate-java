@@ -32,7 +32,7 @@ import java.util.List;
  */
 public class CompiledProgramSet {
 
-    public final List<CompiledProgram> programs;
+    private final List<CompiledProgram> programs;
 
     CompiledProgramSet(List<CompiledProgram> programs) {
         this.programs = programs;

@@ -14,8 +14,12 @@
 
 package build.buf.protovalidate.evaluator;
 
+import build.buf.gen.buf.validate.FieldConstraints;
+import build.buf.gen.buf.validate.MapRules;
 import build.buf.protovalidate.results.ExecutionException;
 import build.buf.protovalidate.results.ValidationResult;
+import com.google.protobuf.Descriptors;
+import com.google.protobuf.DynamicMessage;
 
 import java.util.Map;
 
@@ -26,24 +30,33 @@ class MapEvaluator implements Evaluator {
     /**
      * KeyConstraints are checked on the map keys
      */
-    public final ValueEvaluator keyConstraints;
+    private final ValueEvaluator keyEvaluator;
     /**
      * ValueConstraints are checked on the map values
      */
-    public final ValueEvaluator valueEvaluatorConstraints;
+    private final ValueEvaluator valueEvaluator;
 
     /**
      * Constructs a MapEvaluator
      */
-    MapEvaluator() {
-        this.keyConstraints = new ValueEvaluator();
-        this.valueEvaluatorConstraints = new ValueEvaluator();
+    MapEvaluator(FieldConstraints fieldConstraints, Descriptors.FieldDescriptor fieldDescriptor) {
+        MapRules map = fieldConstraints.getMap();
+        this.keyEvaluator = new ValueEvaluator(map.getKeys(), fieldDescriptor.getMessageType().findFieldByNumber(1));
+        this.valueEvaluator = new ValueEvaluator(map.getValues(), fieldDescriptor.getMessageType().findFieldByNumber(2));
+    }
+
+    public ValueEvaluator getKeyEvaluator() {
+        return keyEvaluator;
+    }
+
+    public ValueEvaluator getValueEvaluator() {
+        return valueEvaluator;
     }
 
     @Override
     public boolean tautology() {
-        return keyConstraints.tautology() &&
-                valueEvaluatorConstraints.tautology();
+        return keyEvaluator.tautology() &&
+                valueEvaluator.tautology();
     }
 
     @Override
@@ -63,7 +76,7 @@ class MapEvaluator implements Evaluator {
         ValidationResult evalResult = new ValidationResult();
 
         try {
-            ValidationResult keyEvalResult = keyConstraints.evaluate(key, failFast);
+            ValidationResult keyEvalResult = keyEvaluator.evaluate(key, failFast);
             if (!evalResult.merge(keyEvalResult, failFast)) {
                 return keyEvalResult;
             }
@@ -72,7 +85,7 @@ class MapEvaluator implements Evaluator {
         }
 
         try {
-            ValidationResult valueEvalResult = valueEvaluatorConstraints.evaluate(value, failFast);
+            ValidationResult valueEvalResult = valueEvaluator.evaluate(value, failFast);
             if (!evalResult.merge(valueEvalResult, failFast)) {
                 return valueEvalResult;
             }
@@ -91,6 +104,6 @@ class MapEvaluator implements Evaluator {
 
     @Override
     public void append(Evaluator eval) {
-        throw new UnsupportedOperationException("append not supported for KvPairs");
+        throw new UnsupportedOperationException("append not supported for MapEvaluator");
     }
 }

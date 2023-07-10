@@ -35,6 +35,7 @@ class CelPrograms implements Evaluator {
         this.compiledProgramSet = compiledProgramSet;
     }
 
+    @Override
     public boolean tautology() {
         return compiledProgramSet.isEmpty();
     }

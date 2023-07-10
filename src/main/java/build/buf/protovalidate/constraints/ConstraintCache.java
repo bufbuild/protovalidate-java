@@ -81,7 +81,7 @@ public class ConstraintCache {
      */
     private Message resolveConstraints(FieldDescriptor fieldDescriptor, FieldConstraints fieldConstraints, Boolean forItems) throws CompilationException {
         // Get the oneof field descriptor from the field constraints.
-        FieldDescriptor oneofFieldDescriptor = fieldConstraints.getOneofFieldDescriptor(Lookups.FIELD_CONSTRAINTS_ONEOF_DESC);
+        FieldDescriptor oneofFieldDescriptor = fieldConstraints.getOneofFieldDescriptor(DescriptorMappings.FIELD_CONSTRAINTS_ONEOF_DESC);
         if (oneofFieldDescriptor == null) {
             // If the oneof field descriptor is null there are no constraints to resolve.
             return null;
@@ -144,13 +144,13 @@ public class ConstraintCache {
      */
     private FieldDescriptor getExpectedConstraintDescriptor(FieldDescriptor fieldDescriptor, Boolean forItems) {
         if (fieldDescriptor.isMapField()) {
-            return Lookups.MAP_FIELD_CONSTRAINTS_DESC;
+            return DescriptorMappings.MAP_FIELD_CONSTRAINTS_DESC;
         } else if (fieldDescriptor.isRepeated() && !forItems) {
-            return Lookups.REPEATED_FIELD_CONSTRAINTS_DESC;
+            return DescriptorMappings.REPEATED_FIELD_CONSTRAINTS_DESC;
         } else if (fieldDescriptor.getJavaType() == FieldDescriptor.JavaType.MESSAGE) {
-            return Lookups.EXPECTED_WKT_CONSTRAINTS.get(fieldDescriptor.getMessageType().getFullName());
+            return DescriptorMappings.EXPECTED_WKT_CONSTRAINTS.get(fieldDescriptor.getMessageType().getFullName());
         } else {
-            return Lookups.EXPECTED_STANDARD_CONSTRAINTS.get(fieldDescriptor.getType());
+            return DescriptorMappings.EXPECTED_STANDARD_CONSTRAINTS.get(fieldDescriptor.getType());
         }
     }
 
@@ -186,6 +186,6 @@ public class ConstraintCache {
                     return Decls.newObjectType(fieldDescriptor.getFullName());
             }
         }
-        return Lookups.protoKindToCELType(fieldDescriptor.getType());
+        return DescriptorMappings.protoKindToCELType(fieldDescriptor.getType());
     }
 }

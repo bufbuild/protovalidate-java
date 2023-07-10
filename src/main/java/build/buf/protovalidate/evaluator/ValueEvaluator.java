@@ -14,8 +14,11 @@
 
 package build.buf.protovalidate.evaluator;
 
+import build.buf.gen.buf.validate.FieldConstraints;
 import build.buf.protovalidate.results.ExecutionException;
 import build.buf.protovalidate.results.ValidationResult;
+import com.google.protobuf.Descriptors;
+import com.google.protobuf.DynamicMessage;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,24 +31,32 @@ class ValueEvaluator implements Evaluator {
     /**
      * Zero is the default or zero-value for this value's type
      */
-    Object zero;
+    private final Object zero;
     /**
      * Constraints are the individual evaluators applied to a value
      */
     private final List<Evaluator> evaluators = new ArrayList<>();
     /**
-     * TODO: This gets mutated on the fly. Figure out how to manage this better.
      * IgnoreEmpty indicates that the Constraints should not be applied if the
      * field is unset or the default (typically zero) value.
      */
-    public boolean ignoreEmpty;
+    private final boolean ignoreEmpty;
 
     /**
      * ValueEvaluator is a constructor for ValueEvaluator.
      */
-    ValueEvaluator() {
-        this.zero = null;
-        this.ignoreEmpty = false;
+    ValueEvaluator(FieldConstraints fieldConstraints, Descriptors.FieldDescriptor fieldDescriptor) {
+        if (fieldDescriptor.getType() == Descriptors.FieldDescriptor.Type.MESSAGE) {
+            DynamicMessage message = DynamicMessage.getDefaultInstance(fieldDescriptor.getContainingType());
+            this.zero = message.getField(fieldDescriptor);
+        } else {
+            this.zero = fieldDescriptor.getDefaultValue();
+        }
+        this.ignoreEmpty = fieldConstraints.getIgnoreEmpty();
+    }
+
+    public boolean getIgnoreEmpty() {
+        return ignoreEmpty;
     }
 
     @Override

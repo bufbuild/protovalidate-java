@@ -14,8 +14,11 @@
 
 package build.buf.protovalidate.evaluator;
 
+import build.buf.gen.buf.validate.FieldConstraints;
 import build.buf.protovalidate.results.ExecutionException;
 import build.buf.protovalidate.results.ValidationResult;
+import com.google.protobuf.Descriptors;
+import com.google.protobuf.DynamicMessage;
 
 import java.util.List;
 
@@ -32,8 +35,8 @@ class ListEvaluator implements Evaluator {
     /**
      * Constructs a ListEvaluator
      */
-    ListEvaluator() {
-        this.itemConstraints = new ValueEvaluator();
+    ListEvaluator(FieldConstraints fieldConstraints, Descriptors.FieldDescriptor fieldDescriptor) {
+        this.itemConstraints = new ValueEvaluator(fieldConstraints, fieldDescriptor);
     }
 
     @Override

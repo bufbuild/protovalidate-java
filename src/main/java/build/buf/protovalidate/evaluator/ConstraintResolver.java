@@ -23,8 +23,9 @@ import com.google.protobuf.Descriptors.Descriptor;
 import com.google.protobuf.Descriptors.FieldDescriptor;
 import com.google.protobuf.Descriptors.OneofDescriptor;
 
-// TODO: potential for non registered classes to be read here maybe:
-// https://github.com/bufbuild/protovalidate-go/blob/main/internal/evaluator/resolver.go#L43-L47
+/**
+ * Manages the resolution of protovalidate constraints.
+ */
 class ConstraintResolver {
 
     MessageConstraints resolveMessageConstraints(Descriptor desc) {

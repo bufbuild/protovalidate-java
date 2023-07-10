@@ -103,77 +103,75 @@ public class ValidateLibrary implements Library {
                     Decls.Bytes
             ));
         }
-        opts.addAll(
-                Arrays.asList(
-                        EnvOption.declarations(
-                                Decls.newFunction(
-                                        "isIp",
-                                        Decls.newInstanceOverload(
-                                                "is_ip",
-                                                Arrays.asList(Decls.String, Decls.Int),
-                                                Decls.Bool
-                                        ),
-                                        Decls.newInstanceOverload(
-                                                "is_ip_unary",
-                                                Collections.singletonList(Decls.String),
-                                                Decls.Bool
-                                        )
+        opts.add(
+                EnvOption.declarations(
+                        Decls.newFunction(
+                                "isIp",
+                                Decls.newInstanceOverload(
+                                        "is_ip",
+                                        Arrays.asList(Decls.String, Decls.Int),
+                                        Decls.Bool
                                 ),
-                                Decls.newFunction("isUriRef",
-                                        Decls.newInstanceOverload(
-                                                "is_uri_ref",
-                                                Collections.singletonList(Decls.String),
-                                                Decls.Bool
-                                        )
-                                ),
-                                Decls.newFunction("isUri",
-                                        Decls.newInstanceOverload(
-                                                "is_uri",
-                                                Collections.singletonList(Decls.String),
-                                                Decls.Bool
-                                        )
-                                ),
-                                Decls.newFunction("isEmail",
-                                        Decls.newInstanceOverload(
-                                                "is_email",
-                                                Collections.singletonList(Decls.String),
-                                                Decls.Bool
-                                        )
-                                ),
-                                Decls.newFunction("isHostname",
-                                        Decls.newInstanceOverload(
-                                                "is_hostname",
-                                                Collections.singletonList(Decls.String),
-                                                Decls.Bool
-                                        )
-                                ),
-                                Decls.newFunction("startsWith",
-                                        Decls.newInstanceOverload(
-                                                "starts_with_bytes",
-                                                Arrays.asList(Decls.Bytes, Decls.Bytes),
-                                                Decls.Bool
-                                        )
-                                ),
-                                Decls.newFunction("endsWith",
-                                        Decls.newInstanceOverload(
-                                                "ends_with_bytes",
-                                                Arrays.asList(Decls.Bytes, Decls.Bytes),
-                                                Decls.Bool
-                                        )
-                                ),
-                                Decls.newFunction("contains",
-                                        Decls.newInstanceOverload(
-                                                "contains_bytes",
-                                                Arrays.asList(Decls.Bytes, Decls.Bytes),
-                                                Decls.Bool
-                                        )
-                                ),
-                                Decls.newFunction("unique",
-                                        uniqueOverloads
-                                ),
-                                Decls.newFunction("format",
-                                        formatOverloads
+                                Decls.newInstanceOverload(
+                                        "is_ip_unary",
+                                        Collections.singletonList(Decls.String),
+                                        Decls.Bool
                                 )
+                        ),
+                        Decls.newFunction("isUriRef",
+                                Decls.newInstanceOverload(
+                                        "is_uri_ref",
+                                        Collections.singletonList(Decls.String),
+                                        Decls.Bool
+                                )
+                        ),
+                        Decls.newFunction("isUri",
+                                Decls.newInstanceOverload(
+                                        "is_uri",
+                                        Collections.singletonList(Decls.String),
+                                        Decls.Bool
+                                )
+                        ),
+                        Decls.newFunction("isEmail",
+                                Decls.newInstanceOverload(
+                                        "is_email",
+                                        Collections.singletonList(Decls.String),
+                                        Decls.Bool
+                                )
+                        ),
+                        Decls.newFunction("isHostname",
+                                Decls.newInstanceOverload(
+                                        "is_hostname",
+                                        Collections.singletonList(Decls.String),
+                                        Decls.Bool
+                                )
+                        ),
+                        Decls.newFunction("startsWith",
+                                Decls.newInstanceOverload(
+                                        "starts_with_bytes",
+                                        Arrays.asList(Decls.Bytes, Decls.Bytes),
+                                        Decls.Bool
+                                )
+                        ),
+                        Decls.newFunction("endsWith",
+                                Decls.newInstanceOverload(
+                                        "ends_with_bytes",
+                                        Arrays.asList(Decls.Bytes, Decls.Bytes),
+                                        Decls.Bool
+                                )
+                        ),
+                        Decls.newFunction("contains",
+                                Decls.newInstanceOverload(
+                                        "contains_bytes",
+                                        Arrays.asList(Decls.Bytes, Decls.Bytes),
+                                        Decls.Bool
+                                )
+                        ),
+                        Decls.newFunction("unique",
+                                uniqueOverloads
+                        ),
+                        Decls.newFunction("format",
+                                formatOverloads
                         )
                 )
         );

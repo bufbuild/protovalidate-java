@@ -19,11 +19,11 @@ import build.buf.protovalidate.results.ValidationResult;
 import com.google.protobuf.Descriptors.Descriptor;
 
 /**
- * A {@link MessageEvaluator} for an unknown descriptor. This is
+ * An {@link Evaluator} for an unknown descriptor. This is
  * returned only if lazy-building of evaluators has been disabled and an unknown
  * descriptor is encountered.
  */
-class UnknownMessageEvaluator implements Evaluator {
+class UnknownDescriptorEvaluator implements Evaluator {
     /**
      * desc is the descriptor targeted by this evaluator
      */
@@ -32,7 +32,7 @@ class UnknownMessageEvaluator implements Evaluator {
     /**
      * Constructs a new UnknownMessageEvaluator
      */
-    UnknownMessageEvaluator(Descriptor desc) {
+    UnknownDescriptorEvaluator(Descriptor desc) {
         this.desc = desc;
     }
 

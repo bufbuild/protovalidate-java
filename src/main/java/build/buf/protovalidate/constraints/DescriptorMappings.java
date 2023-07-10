@@ -24,7 +24,7 @@ import org.projectnessie.cel.checker.Decls;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Lookups {
+public class DescriptorMappings {
     /**
      * Provides a {@link Descriptor} for {@link FieldConstraints}.
      */

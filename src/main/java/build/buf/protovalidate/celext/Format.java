@@ -39,14 +39,11 @@ import java.util.List;
 import static org.projectnessie.cel.common.types.IntT.intOf;
 import static org.projectnessie.cel.common.types.pb.DefaultTypeAdapter.nativeToValue;
 
-public final class Format {
+final class Format {
     private static final char[] HEX_ARRAY = "0123456789ABCDEF".toCharArray();
     private static final char[] LOWER_HEX_ARRAY = "0123456789abcdef".toCharArray();
 
-    private Format() {
-    }
-
-    public static Val format(String fmtString, ListT list) {
+    static Val format(String fmtString, ListT list) {
         StringBuilder builder = new StringBuilder();
         int index = 0;
         int argIndex = 0;
@@ -125,7 +122,7 @@ public final class Format {
         return StringT.stringOf(builder.toString());
     }
 
-    public static String bytesToHex(byte[] bytes, char[] digits) {
+    private static String bytesToHex(byte[] bytes, char[] digits) {
         char[] hexChars = new char[bytes.length * 2];
         for (int j = 0; j < bytes.length; j++) {
             int v = bytes[j] & 0xFF;
