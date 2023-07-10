@@ -48,8 +48,7 @@ public class CompiledProgramBuilder {
         }
         Ast ast = astIssuesTuple.getAst();
         Type outType = ast.getResultType();
-        // TODO: This is false always. Comparing incompatible types.
-        if (outType.equals(Type.PrimitiveType.BOOL) || outType.equals(Type.PrimitiveType.STRING)) {
+        if (!outType.getPrimitive().equals(Type.PrimitiveType.BOOL) && !outType.getPrimitive().equals(Type.PrimitiveType.STRING)) {
             throw new CompilationException("expression outputs, wanted either bool or string %s %s", expr.id, outType.toString());
         }
         return new CompiledProgramBuilder(env, ast, expr);
