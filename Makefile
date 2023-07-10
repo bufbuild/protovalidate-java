@@ -72,6 +72,15 @@ checkgenerate: generate
 	@# Used in CI to verify that `make generate` doesn't produce a diff.
 	test -z "$$(git status --porcelain | tee /dev/stderr)"
 
+.PHONY: release
+release: ## Upload artifacts to Sonatype Nexus.
+	./gradlew --info publish --stacktrace --no-daemon --no-parallel
+	./gradlew --info closeAndReleaseRepository
+
+.PHONY: releaselocal
+releaselocal: ## Release artifacts to local maven repository.
+	./gradlew --info publishToMavenLocal
+
 $(BIN):
 	@mkdir -p $(BIN)
 
