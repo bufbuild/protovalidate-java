@@ -21,7 +21,9 @@ import build.buf.gen.buf.validate.OneofConstraints;
 import build.buf.gen.buf.validate.ValidateProto;
 import build.buf.protovalidate.constraints.ConstraintCache;
 import build.buf.protovalidate.constraints.DescriptorMappings;
-import build.buf.protovalidate.expression.CompiledProgramSet;
+import build.buf.protovalidate.expression.CompiledProgram;
+import build.buf.protovalidate.expression.CompiledProgramBuilder;
+import build.buf.protovalidate.expression.Expression;
 import build.buf.protovalidate.expression.Variable;
 import build.buf.protovalidate.results.CompilationException;
 import com.google.protobuf.Descriptors;
@@ -34,6 +36,7 @@ import org.projectnessie.cel.Env;
 import org.projectnessie.cel.EnvOption;
 import org.projectnessie.cel.checker.Decls;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
@@ -46,7 +49,7 @@ import java.util.Map;
 public class EvaluatorBuilder {
     // TODO: apparently go has some concurrency issues?
 
-    private final Map<Descriptor, Evaluator> cache = new HashMap<>();
+    private final Map<Descriptor, Evaluator> evaluatorMap = new HashMap<>();
     private final ConstraintResolver resolver = new ConstraintResolver();
     private final ExtensionRegistry extensionRegistry = ExtensionRegistry.newInstance();
 
@@ -83,12 +86,12 @@ public class EvaluatorBuilder {
      * descriptor, or lazily constructs a new one.
      */
     private Evaluator build(Descriptor desc) throws CompilationException {
-        Evaluator eval = cache.get(desc);
+        Evaluator eval = evaluatorMap.get(desc);
         if (eval != null) {
             return eval;
         }
         Evaluator msgEval = new MessageEvaluator();
-        cache.put(desc, msgEval);
+        evaluatorMap.put(desc, msgEval);
         buildMessage(desc, msgEval);
         return msgEval;
     }
@@ -114,18 +117,17 @@ public class EvaluatorBuilder {
         if (celList.isEmpty()) {
             return;
         }
-        CompiledProgramSet compiledExpressions = CompiledProgramSet.compileConstraints(
-                celList,
-                env,
+        Env finalEnv = env.extend(
                 EnvOption.types(message),
                 EnvOption.declarations(
                         Decls.newVar(Variable.THIS_NAME, Decls.newObjectType(desc.getFullName()))
                 )
         );
-        if (compiledExpressions.isEmpty()) {
+        List<CompiledProgram> compiledPrograms = compileConstraints(celList, finalEnv);
+        if (compiledPrograms.isEmpty()) {
             throw new CompilationException("compile returned null");
         }
-        msgEval.append(new CelPrograms(compiledExpressions));
+        msgEval.append(new CelPrograms(compiledPrograms));
     }
 
     private void processOneofConstraints(Descriptor desc, Evaluator msgEval) {
@@ -196,9 +198,10 @@ public class EvaluatorBuilder {
                     EnvOption.declarations(Decls.newVar(Variable.THIS_NAME, DescriptorMappings.protoKindToCELType(fieldDescriptor.getType())))
             );
         }
-        CompiledProgramSet compiledExpressions = CompiledProgramSet.compileConstraints(constraintsCelList, env, opts.toArray(new EnvOption[0]));
-        if (!compiledExpressions.isEmpty()) {
-            valueEvaluatorEval.append(new CelPrograms(compiledExpressions));
+        Env finalEnv = env.extend(opts.toArray(new EnvOption[0]));
+        List<CompiledProgram> compiledPrograms = compileConstraints(constraintsCelList, finalEnv);
+        if (!compiledPrograms.isEmpty()) {
+            valueEvaluatorEval.append(new CelPrograms(compiledPrograms));
         }
     }
 
@@ -234,12 +237,11 @@ public class EvaluatorBuilder {
     }
 
     private void processStandardConstraints(FieldDescriptor fieldDescriptor, FieldConstraints fieldConstraints, Boolean forItems, ValueEvaluator valueEvaluatorEval) throws CompilationException {
-        CompiledProgramSet stdConstraints = constraints.compile(fieldDescriptor, fieldConstraints, forItems);
-        // TODO: verify null check error handling, it may not need to be handled when there are no constraints
-        if (stdConstraints == null) {
+        List<CompiledProgram> compile = constraints.compile(fieldDescriptor, fieldConstraints, forItems);
+        if (compile == null) {
             return;
         }
-        CelPrograms eval = new CelPrograms(stdConstraints);
+        CelPrograms eval = new CelPrograms(compile);
         valueEvaluatorEval.append(eval);
     }
 
@@ -275,11 +277,6 @@ public class EvaluatorBuilder {
         }
 
         MapEvaluator mapEval = new MapEvaluator(fieldConstraints, fieldDescriptor);
-        if (fieldDescriptor.isRepeated()) {
-//            DynamicMessage msg = DynamicMessage.getDefaultInstance(fieldDescriptor.getContainingType());
-//            valueEvaluatorEval.zero = msg.getField(fieldDescriptor);
-            "".toLowerCase();
-        }
         buildValue(
                 fieldDescriptor.getMessageType().findFieldByNumber(1),
                 fieldConstraints.getMap().getKeys(),
@@ -303,8 +300,18 @@ public class EvaluatorBuilder {
         valueEvaluatorEval.append(listEval);
     }
 
+    private static List<CompiledProgram> compileConstraints(List<Constraint> constraints, Env env) throws CompilationException {
+        List<Expression> expressions = Expression.fromConstraints(constraints);
+        List<CompiledProgram> compiledPrograms = new ArrayList<>();
+        for (Expression expression : expressions) {
+            CompiledProgramBuilder compiledProgramBuilder = CompiledProgramBuilder.newBuilder(env, expression);
+            compiledPrograms.add(compiledProgramBuilder.build());
+        }
+        return compiledPrograms;
+    }
+
     private Evaluator loadDescriptor(Descriptor descriptor) {
-        Evaluator evaluator = cache.get(descriptor);
+        Evaluator evaluator = evaluatorMap.get(descriptor);
         if (evaluator == null) {
             return new UnknownDescriptorEvaluator(descriptor);
         }
@@ -312,7 +319,7 @@ public class EvaluatorBuilder {
     }
 
     private Evaluator loadOrBuildDescriptor(Descriptor descriptor) throws CompilationException {
-        Evaluator eval = cache.get(descriptor);
+        Evaluator eval = evaluatorMap.get(descriptor);
         if (eval != null) {
             return eval;
         }

@@ -14,6 +14,11 @@
 
 package build.buf.protovalidate.expression;
 
+import build.buf.gen.buf.validate.priv.Constraint;
+
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Expression represents a single CEL expression.
  */
@@ -41,5 +46,21 @@ public class Expression {
      */
     public Expression(build.buf.gen.buf.validate.priv.Constraint constraint) {
         this(constraint.getId(), constraint.getMessage(), constraint.getExpression());
+    }
+
+    public static List<Expression> fromPrivConstraints(List<build.buf.gen.buf.validate.priv.Constraint> constraints) {
+        List<Expression> expressions = new ArrayList<>();
+        for (Constraint constraint : constraints) {
+            expressions.add(new Expression(constraint));
+        }
+        return expressions;
+    }
+
+    public static List<Expression> fromConstraints(List<build.buf.gen.buf.validate.Constraint> constraints) {
+        List<Expression> expressions = new ArrayList<>();
+        for (build.buf.gen.buf.validate.Constraint constraint : constraints) {
+            expressions.add(new Expression(constraint));
+        }
+        return expressions;
     }
 }

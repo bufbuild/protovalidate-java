@@ -14,35 +14,43 @@
 
 package build.buf.protovalidate.evaluator;
 
-import build.buf.protovalidate.expression.CompiledProgramSet;
+import build.buf.gen.buf.validate.Violation;
+import build.buf.protovalidate.expression.CompiledProgram;
+import build.buf.protovalidate.expression.Variable;
 import build.buf.protovalidate.results.ExecutionException;
 import build.buf.protovalidate.results.ValidationResult;
 
+import java.util.List;
+
 /**
- * Evaluator that executes a {@link build.buf.protovalidate.expression.CompiledProgramSet}.
+ * Evaluator that executes a {@link build.buf.protovalidate.expression.CompiledProgram}.
  */
 class CelPrograms implements Evaluator {
-    private final CompiledProgramSet compiledProgramSet;
+    private final List<CompiledProgram> programs;
 
-    /**
-     * Constructs a new evaluator for a {@link CompiledProgramSet}.
-     */
-    CelPrograms(CompiledProgramSet compiledProgramSet) {
-        // TODO: require non null somehow? is this todo complete?
-        if (compiledProgramSet == null) {
-            throw new IllegalArgumentException("programSet cannot be null");
-        }
-        this.compiledProgramSet = compiledProgramSet;
+    public CelPrograms(List<CompiledProgram> compiledPrograms) {
+        this.programs = compiledPrograms;
     }
 
     @Override
     public boolean tautology() {
-        return compiledProgramSet.isEmpty();
+        return programs.isEmpty();
     }
 
     @Override
     public ValidationResult evaluate(Value val, boolean failFast) throws ExecutionException {
-        return compiledProgramSet.evalValue(val.value(), failFast);
+        Variable activation = Variable.newThisVariable(val.value());
+        ValidationResult evalResult = new ValidationResult();
+        for (CompiledProgram program : programs) {
+            Violation violation = program.eval(activation);
+            if (violation != null) {
+                evalResult.addViolation(violation);
+                if (failFast) {
+                    break;
+                }
+            }
+        }
+        return evalResult;
     }
 
     @Override

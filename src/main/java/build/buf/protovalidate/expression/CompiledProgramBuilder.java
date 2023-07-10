@@ -26,12 +26,12 @@ import org.projectnessie.cel.common.Source;
 /**
  * CompiledAst is a compiled CEL {@link Ast}.
  */
-class CompiledAst {
+public class CompiledProgramBuilder {
     private final Env env;
     public final Ast ast;
     public final Expression source;
 
-    CompiledAst(Env env, Ast ast, Expression source) {
+    CompiledProgramBuilder(Env env, Ast ast, Expression source) {
         this.env = env;
         this.ast = ast;
         this.source = source;
@@ -40,7 +40,7 @@ class CompiledAst {
     /**
      * Compiles the given expression to a CompiledAst.
      */
-    static CompiledAst compile(Env env, Expression expr) throws CompilationException {
+    public static CompiledProgramBuilder newBuilder(Env env, Expression expr) throws CompilationException {
         env.parseSource(Source.newTextSource(expr.expression));
         Env.AstIssuesTuple astIssuesTuple = env.compile(expr.expression);
         if (astIssuesTuple.hasIssues()) {
@@ -52,10 +52,10 @@ class CompiledAst {
         if (outType.equals(Type.PrimitiveType.BOOL) || outType.equals(Type.PrimitiveType.STRING)) {
             throw new CompilationException("expression outputs, wanted either bool or string %s %s", expr.id, outType.toString());
         }
-        return new CompiledAst(env, ast, expr);
+        return new CompiledProgramBuilder(env, ast, expr);
     }
 
-    CompiledProgram toCompiledProgram(ProgramOption... opts) {
+    public CompiledProgram build(ProgramOption... opts) {
         Program program = env.program(ast, opts);
         return new CompiledProgram(
                 env,

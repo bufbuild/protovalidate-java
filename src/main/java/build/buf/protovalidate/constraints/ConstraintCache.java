@@ -15,9 +15,7 @@
 package build.buf.protovalidate.constraints;
 
 import build.buf.gen.buf.validate.FieldConstraints;
-import build.buf.gen.buf.validate.priv.PrivateProto;
-import build.buf.protovalidate.expression.CompiledAstSet;
-import build.buf.protovalidate.expression.CompiledProgramSet;
+import build.buf.protovalidate.expression.CompiledProgram;
 import build.buf.protovalidate.expression.Variable;
 import build.buf.protovalidate.results.CompilationException;
 import com.google.api.expr.v1alpha1.Type;
@@ -27,18 +25,12 @@ import org.projectnessie.cel.Env;
 import org.projectnessie.cel.EnvOption;
 import org.projectnessie.cel.checker.Decls;
 
-import java.util.ArrayList;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.ConcurrentMap;
-
-import static org.projectnessie.cel.ProgramOption.globals;
+import java.util.List;
 
 /**
  * ConstraintCache is a build-through cache to computed standard constraints.
  */
 public class ConstraintCache {
-    private final ConcurrentMap<FieldDescriptor, CompiledAstSet> cache;
     private final Env env;
 
     /**
@@ -46,7 +38,6 @@ public class ConstraintCache {
      */
     public ConstraintCache(Env env) {
         this.env = env;
-        this.cache = new ConcurrentHashMap<>();
     }
 
     /**
@@ -54,23 +45,14 @@ public class ConstraintCache {
      * true, the constraints for repeated list items is built instead of the
      * constraints on the list itself.
      */
-    public CompiledProgramSet compile(FieldDescriptor fieldDescriptor, FieldConstraints fieldConstraints, Boolean forItems) throws CompilationException {
+    public List<CompiledProgram> compile(FieldDescriptor fieldDescriptor, FieldConstraints fieldConstraints, Boolean forItems) throws CompilationException {
         Message message = resolveConstraints(fieldDescriptor, fieldConstraints, forItems);
         if (message == null) {
-            // TODO: there's a doneness check from go but we'll ignore it for now.
+            // Message null means there were no constraints resolved.
             return null;
         }
         Env prepareEnvironment = prepareEnvironment(fieldDescriptor, message, forItems);
-        if (prepareEnvironment == null) {
-            // TODO: go actually has this fail sometimes.
-            return null;
-        }
-        CompiledAstSet completeSet = new CompiledAstSet(prepareEnvironment, new ArrayList<>());
-        for (Map.Entry<FieldDescriptor, Object> entry : message.getAllFields().entrySet()) {
-            CompiledAstSet precomputedAst = loadOrCompileStandardConstraint(prepareEnvironment, entry.getKey());
-            completeSet.merge(precomputedAst);
-        }
-        return completeSet.reduceResiduals(globals(Variable.newRulesVariable(message)));
+        return CompiledProgram.compile(prepareEnvironment, message);
     }
 
     /**
@@ -119,22 +101,6 @@ public class ConstraintCache {
                         Decls.newVar(Variable.RULES_NAME, Decls.newObjectType(rules.getDescriptorForType().getFullName()))
                 )
         );
-    }
-
-    /**
-     * Loads the precompiled ASTs for the specified constraint field from the Cache if present or
-     * precomputes them otherwise. The result may be null if the constraint does not have associated
-     * CEL expressions.
-     */
-    private CompiledAstSet loadOrCompileStandardConstraint(Env finalEnv, FieldDescriptor constraintFieldDesc) throws CompilationException {
-        final CompiledAstSet cachedValue = cache.get(constraintFieldDesc);
-        if (cachedValue != null) {
-            return cachedValue;
-        }
-        build.buf.gen.buf.validate.priv.FieldConstraints constraints = constraintFieldDesc.getOptions().getExtension(PrivateProto.field);
-        CompiledAstSet compiledAstSet = CompiledAstSet.compileAsts(constraints.getCelList(), finalEnv);
-        cache.put(constraintFieldDesc, compiledAstSet);
-        return compiledAstSet;
     }
 
     /**
