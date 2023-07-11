@@ -4,14 +4,9 @@ kitchen_sink:
   - field/valid
   - field/invalid
   - field/embedded/invalid
-standard_constraints/string:
-  - len/valid/emoji/simple
 standard_constraints/fixed64:
   - not_in/invalid
   - in/valid
-standard_constraints/bytes:
-  - in/valid
-  - not_in/invalid
 standard_constraints/fixed32:
   - in/valid
   - not_in/invalid

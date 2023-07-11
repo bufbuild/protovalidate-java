@@ -231,4 +231,12 @@ public class ValidatorTest {
         assertThat(validate.violations).hasSize(1);
         assertThat(validate.isFailure()).isTrue();
     }
+
+    @Test
+    public void testStringLenEmoji() throws ValidationException {
+        StringLen test = StringLen.newBuilder().setVal("😅😄👾").build();
+        ValidationResult validate = validator.validate(test);
+        assertThat(validate.violations).hasSize(0);
+        assertThat(validate.isSuccess()).isTrue();
+    }
 }
