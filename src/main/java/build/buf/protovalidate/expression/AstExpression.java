@@ -19,28 +19,24 @@ import build.buf.protovalidate.results.CompilationException;
 import com.google.api.expr.v1alpha1.Type;
 import org.projectnessie.cel.Ast;
 import org.projectnessie.cel.Env;
-import org.projectnessie.cel.Program;
-import org.projectnessie.cel.ProgramOption;
 import org.projectnessie.cel.common.Source;
 
 /**
- * CompiledAst is a compiled CEL {@link Ast}.
+ * {@link AstExpression} is a compiled CEL {@link Ast}.
  */
-public class CompiledProgramBuilder {
-    private final Env env;
+public class AstExpression {
     public final Ast ast;
     public final Expression source;
 
-    CompiledProgramBuilder(Env env, Ast ast, Expression source) {
-        this.env = env;
+    public AstExpression(Ast ast, Expression source) {
         this.ast = ast;
         this.source = source;
     }
 
     /**
-     * Compiles the given expression to a CompiledAst.
+     * Compiles the given expression to a {@link AstExpression}.
      */
-    public static CompiledProgramBuilder newBuilder(Env env, Expression expr) throws CompilationException {
+    public static AstExpression newAstExpression(Env env, Expression expr) throws CompilationException {
         env.parseSource(Source.newTextSource(expr.expression));
         Env.AstIssuesTuple astIssuesTuple = env.compile(expr.expression);
         if (astIssuesTuple.hasIssues()) {
@@ -51,15 +47,6 @@ public class CompiledProgramBuilder {
         if (!outType.getPrimitive().equals(Type.PrimitiveType.BOOL) && !outType.getPrimitive().equals(Type.PrimitiveType.STRING)) {
             throw new CompilationException("expression outputs, wanted either bool or string %s %s", expr.id, outType.toString());
         }
-        return new CompiledProgramBuilder(env, ast, expr);
-    }
-
-    public CompiledProgram build(ProgramOption... opts) {
-        Program program = env.program(ast, opts);
-        return new CompiledProgram(
-                env,
-                program,
-                source
-        );
+        return new AstExpression(ast, expr);
     }
 }

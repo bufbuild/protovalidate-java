@@ -18,7 +18,6 @@ import build.buf.gen.buf.validate.FieldConstraints;
 import build.buf.protovalidate.results.ExecutionException;
 import build.buf.protovalidate.results.ValidationResult;
 import com.google.protobuf.Descriptors;
-import com.google.protobuf.DynamicMessage;
 
 import java.util.List;
 

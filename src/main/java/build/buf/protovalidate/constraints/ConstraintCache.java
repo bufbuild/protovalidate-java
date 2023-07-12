@@ -15,22 +15,45 @@
 package build.buf.protovalidate.constraints;
 
 import build.buf.gen.buf.validate.FieldConstraints;
+import build.buf.gen.buf.validate.priv.PrivateProto;
+import build.buf.protovalidate.expression.AstExpression;
 import build.buf.protovalidate.expression.CompiledProgram;
+import build.buf.protovalidate.expression.Expression;
 import build.buf.protovalidate.expression.Variable;
 import build.buf.protovalidate.results.CompilationException;
 import com.google.api.expr.v1alpha1.Type;
 import com.google.protobuf.Descriptors.FieldDescriptor;
 import com.google.protobuf.Message;
+import org.projectnessie.cel.Ast;
 import org.projectnessie.cel.Env;
 import org.projectnessie.cel.EnvOption;
+import org.projectnessie.cel.EvalOption;
+import org.projectnessie.cel.Program;
+import org.projectnessie.cel.ProgramOption;
 import org.projectnessie.cel.checker.Decls;
+import org.projectnessie.cel.common.types.ref.Val;
+import org.projectnessie.cel.interpreter.Activation;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentMap;
+
+import static org.projectnessie.cel.ProgramOption.globals;
 
 /**
  * ConstraintCache is a build-through cache to computed standard constraints.
  */
 public class ConstraintCache {
+    private static final ProgramOption PARTIAL_EVAL_OPTIONS = ProgramOption.evalOptions(
+            EvalOption.OptTrackState,
+            EvalOption.OptExhaustiveEval,
+            EvalOption.OptOptimize,
+            EvalOption.OptPartialEval
+    );
+    private static final ConcurrentMap<FieldDescriptor, List<AstExpression>> descriptorMap = new ConcurrentHashMap<>();
+
     private final Env env;
 
     /**
@@ -51,8 +74,59 @@ public class ConstraintCache {
             // Message null means there were no constraints resolved.
             return null;
         }
-        Env prepareEnvironment = prepareEnvironment(fieldDescriptor, message, forItems);
-        return CompiledProgram.compile(prepareEnvironment, message);
+        Env finalEnv = env.extend(
+                EnvOption.types(message.getDefaultInstanceForType()),
+                EnvOption.declarations(
+                        Decls.newVar(Variable.THIS_NAME, getCELType(fieldDescriptor, forItems)),
+                        Decls.newVar(Variable.RULES_NAME, Decls.newObjectType(message.getDescriptorForType().getFullName()))
+                )
+        );
+        ProgramOption rulesOption = globals(Variable.newRulesVariable(message));
+        List<AstExpression> completeProgramList = new ArrayList<>();
+        for (Map.Entry<FieldDescriptor, Object> entry : message.getAllFields().entrySet()) {
+            FieldDescriptor constraintFieldDesc = entry.getKey();
+            if (!descriptorMap.containsKey(constraintFieldDesc)) {
+                build.buf.gen.buf.validate.priv.FieldConstraints constraints = constraintFieldDesc.getOptions().getExtension(PrivateProto.field);
+                List<Expression> expressions = Expression.fromPrivConstraints(constraints.getCelList());
+                List<AstExpression> astExpressions = new ArrayList<>();
+                for (Expression expression : expressions) {
+                    astExpressions.add(AstExpression.newAstExpression(finalEnv, expression));
+                }
+                descriptorMap.put(constraintFieldDesc, astExpressions);
+            }
+            List<AstExpression> programList = descriptorMap.get(constraintFieldDesc);
+            completeProgramList.addAll(programList);
+        }
+        List<CompiledProgram> programs = new ArrayList<>();
+        for (AstExpression astExpression : completeProgramList) {
+            try {
+                Program program = finalEnv.program(astExpression.ast, rulesOption, PARTIAL_EVAL_OPTIONS);
+                Program.EvalResult evalResult = program.eval(Activation.emptyActivation());
+                Val value = evalResult.getVal();
+                if (value != null) {
+                    Object val = value.value();
+                    if (val instanceof Boolean && value.booleanValue()) {
+                        continue;
+                    }
+                    if (val instanceof String && val.equals("")) {
+                        continue;
+                    }
+                }
+                Ast residual = finalEnv.residualAst(astExpression.ast, evalResult.getEvalDetails());
+                AstExpression residualAstExpression = new AstExpression(residual, astExpression.source);
+
+                programs.add(new CompiledProgram(
+                        finalEnv.program(residualAstExpression.ast, rulesOption),
+                        residualAstExpression.source
+                ));
+            } catch (Exception e) {
+                programs.add(new CompiledProgram(
+                        finalEnv.program(astExpression.ast, rulesOption),
+                        astExpression.source
+                ));
+            }
+        }
+        return programs;
     }
 
     /**
@@ -88,19 +162,6 @@ public class ConstraintCache {
 
         // Return the field from the field constraints identified by the oneof field descriptor, casted as a Message.
         return (Message) fieldConstraints.getField(oneofFieldDescriptor);
-    }
-
-    /**
-     * Prepares the environment for compiling standard constraint expressions.
-     */
-    private Env prepareEnvironment(FieldDescriptor fieldDesc, Message rules, Boolean forItems) {
-        return env.extend(
-                EnvOption.types(rules.getDefaultInstanceForType()),
-                EnvOption.declarations(
-                        Decls.newVar(Variable.THIS_NAME, getCELType(fieldDesc, forItems)),
-                        Decls.newVar(Variable.RULES_NAME, Decls.newObjectType(rules.getDescriptorForType().getFullName()))
-                )
-        );
     }
 
     /**

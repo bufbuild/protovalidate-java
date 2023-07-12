@@ -21,8 +21,8 @@ import build.buf.gen.buf.validate.OneofConstraints;
 import build.buf.gen.buf.validate.ValidateProto;
 import build.buf.protovalidate.constraints.ConstraintCache;
 import build.buf.protovalidate.constraints.DescriptorMappings;
+import build.buf.protovalidate.expression.AstExpression;
 import build.buf.protovalidate.expression.CompiledProgram;
-import build.buf.protovalidate.expression.CompiledProgramBuilder;
 import build.buf.protovalidate.expression.Expression;
 import build.buf.protovalidate.expression.Variable;
 import build.buf.protovalidate.results.CompilationException;
@@ -304,8 +304,12 @@ public class EvaluatorBuilder {
         List<Expression> expressions = Expression.fromConstraints(constraints);
         List<CompiledProgram> compiledPrograms = new ArrayList<>();
         for (Expression expression : expressions) {
-            CompiledProgramBuilder compiledProgramBuilder = CompiledProgramBuilder.newBuilder(env, expression);
-            compiledPrograms.add(compiledProgramBuilder.build());
+            AstExpression astExpression = AstExpression.newAstExpression(env, expression);
+            compiledPrograms.add(new CompiledProgram(
+                            env.program(astExpression.ast),
+                            astExpression.source
+                    )
+            );
         }
         return compiledPrograms;
     }
