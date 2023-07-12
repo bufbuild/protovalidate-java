@@ -16,7 +16,7 @@ GO ?= go
 ARGS ?= --expected_failures=nonconforming.yaml --strict_message
 JAVA_COMPILE_OPTIONS = --enable-preview --release $(JAVA_VERSION)
 JAVA_OPTIONS = --enable-preview
-
+PROTOVALIDATE_VERSION ?= v0.1.15
 JAVA_MAIN_CLASS = build.buf.protovalidate
 JAVA_SOURCES = $(wildcard src/main/java/**/**/**/*.java, src/main/java/**/**/*.java)
 JAVA_CLASSES = $(patsubst src/main/java/%.java, target/classes/%.class, $(JAVA_SOURCES))
@@ -90,5 +90,5 @@ $(BIN)/license-header: $(BIN) Makefile
 
 $(BIN)/protovalidate-conformance: $(BIN) Makefile
 	GOBIN=$(abspath $(BIN)) $(GO) install \
-		github.com/bufbuild/protovalidate/tools/protovalidate-conformance@latest
+		github.com/bufbuild/protovalidate/tools/protovalidate-conformance@$(PROTOVALIDATE_VERSION)
 
