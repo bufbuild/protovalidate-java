@@ -13,7 +13,7 @@ JAVA_VERSION = 20
 JAVAC = javac
 JAVA = java
 GO ?= go
-ARGS ?= --expected_failures=nonconforming.yaml --strict_message
+ARGS ?= --expected_failures=conformance/nonconforming.yaml --strict_message
 JAVA_COMPILE_OPTIONS = --enable-preview --release $(JAVA_VERSION)
 JAVA_OPTIONS = --enable-preview
 PROTOVALIDATE_VERSION ?= v0.1.15
@@ -44,7 +44,7 @@ test: ## Run all tests.
 .PHONY: conformance
 conformance: build $(BIN)/protovalidate-conformance
 	./gradlew conformance:jar
-	$(BIN)/protovalidate-conformance $(ARGS) ./conformance.sh
+	$(BIN)/protovalidate-conformance $(ARGS) ./conformance/conformance.sh
 
 .PHONY: lint
 lint: lint-java  ## Lint code
