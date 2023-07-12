@@ -27,12 +27,12 @@ import java.util.List;
 class ListEvaluator implements Evaluator {
 
     /**
-     * ItemConstraints are checked on every item of the list
+     * Constraint are checked on every item of the list.
      */
     final ValueEvaluator itemConstraints;
 
     /**
-     * Constructs a ListEvaluator
+     * Constructs a {@link ListEvaluator}.
      */
     ListEvaluator(FieldConstraints fieldConstraints, Descriptors.FieldDescriptor fieldDescriptor) {
         this.itemConstraints = new ValueEvaluator(fieldConstraints, fieldDescriptor);

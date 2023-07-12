@@ -25,19 +25,19 @@ import com.google.protobuf.Message;
  */
 class FieldEvaluator implements Evaluator {
     /**
-     * valueEvaluator is the {@link ValueEvaluator} to apply to the field's value
+     * The {@link ValueEvaluator} to apply to the field's value
      */
     public final ValueEvaluator valueEvaluator;
     /**
-     * descriptor is the {@link FieldDescriptor} targeted by this evaluator
+     * The {@link FieldDescriptor} targeted by this evaluator
      */
     private final FieldDescriptor descriptor;
     /**
-     * required indicates that the field must have a set value.
+     * Indicates that the field must have a set value.
      */
     private final boolean required;
     /**
-     * optional indicates that the evaluators should not be applied to this field
+     * Indicates that the evaluators should not be applied to this field
      * if the value is unset. Fields that contain messages, are prefixed with
      * `optional`, or are part of a oneof are considered optional. evaluators
      * will still be applied if the field is set as the zero value.
@@ -64,7 +64,6 @@ class FieldEvaluator implements Evaluator {
     public ValidationResult evaluate(Value val, boolean failFast) throws ExecutionException {
         Message message = val.messageValue();
         boolean hasField;
-        // TODO: how does this behave in other descriptor value types like map?
         if (descriptor.isRepeated()) {
             hasField = message.getRepeatedFieldCount(descriptor) != 0;
         } else {

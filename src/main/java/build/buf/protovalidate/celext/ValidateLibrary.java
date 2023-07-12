@@ -380,8 +380,8 @@ public class ValidateLibrary implements Library {
      * the value to a string.
      *
      * @param list which aggregates the traits of a list.
-     * @return Val interface defines the functions supported by all expression values.
-     * Val's implementations may specialize the behavior of the value through the
+     * @return {@link Val} interface defines the functions supported by all expression values.
+     * {@link Val}'s implementations may specialize the behavior of the value through the
      * addition of traits.
      */
     private Val uniqueBytes(Lister list) {

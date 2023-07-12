@@ -23,18 +23,18 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * Evaluator that checks an enum value being a member of
+ * {@link EnumEvaluator} checks an enum value being a member of
  * the defined values exclusively. This check is handled outside CEL as enums
  * are completely type erased to integers.
  */
 class EnumEvaluator implements Evaluator {
     /**
-     * valueDescriptors captures all the defined values for this enum
+     * Captures all the defined values for this enum
      */
     private final List<Descriptors.EnumValueDescriptor> valueDescriptors;
 
     /**
-     * EnumEvaluator constructs a new evaluator for enum values.
+     * Constructs a new evaluator for enum values.
      */
     EnumEvaluator(Descriptors.EnumValueDescriptor... valueDescriptors) {
         this.valueDescriptors = Arrays.asList(valueDescriptors);

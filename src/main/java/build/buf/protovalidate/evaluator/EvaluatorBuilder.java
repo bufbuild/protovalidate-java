@@ -47,7 +47,6 @@ import java.util.Map;
  * A build-through cache of message evaluators keyed off the provided descriptor.
  */
 public class EvaluatorBuilder {
-    // TODO: apparently go has some concurrency issues?
 
     private final Map<Descriptor, Evaluator> evaluatorMap = new HashMap<>();
     private final ConstraintResolver resolver = new ConstraintResolver();
@@ -58,7 +57,7 @@ public class EvaluatorBuilder {
     private final ConstraintCache constraints;
 
     /**
-     * Constructs a new EvaluatorBuilder.
+     * Constructs a new {@link EvaluatorBuilder}.
      */
     public EvaluatorBuilder(Env env, boolean disableLazy) {
         this.env = env;
@@ -70,7 +69,7 @@ public class EvaluatorBuilder {
     }
 
     /**
-     * Returns a pre-cached MessageEvaluator for the given descriptor or, if
+     * Returns a pre-cached {@link Evaluator} for the given descriptor or, if
      * the descriptor is unknown, returns an evaluator that always throws a {@link CompilationException}.
      */
     public Evaluator load(Descriptor desc) throws CompilationException {
@@ -82,7 +81,7 @@ public class EvaluatorBuilder {
     }
 
     /**
-     * Either returns a memoized MessageEvaluator for the given
+     * Either returns a memoized {@link Evaluator} for the given
      * descriptor, or lazily constructs a new one.
      */
     private Evaluator build(Descriptor desc) throws CompilationException {

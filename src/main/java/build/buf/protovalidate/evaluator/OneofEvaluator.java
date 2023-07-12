@@ -21,18 +21,21 @@ import com.google.protobuf.Descriptors.OneofDescriptor;
 import com.google.protobuf.Message;
 
 /**
- * OneofEvaluator performs validation on a oneof union.
+ * {@link OneofEvaluator} performs validation on a oneof union.
  */
 public class OneofEvaluator implements Evaluator {
     /**
-     * Descriptor is the OneofDescriptor targeted by this evaluator
+     * The {@link OneofDescriptor} targeted by this evaluator.
      */
     private final OneofDescriptor descriptor;
     /**
-     * Required indicates that a member of the oneof must be set
+     * Indicates that a member of the oneof must be set.
      */
     private final boolean required;
 
+    /**
+     * Constructs a {@link OneofEvaluator}.
+     */
     public OneofEvaluator(OneofDescriptor descriptor, boolean required) {
         this.descriptor = descriptor;
         this.required = required;

@@ -25,12 +25,12 @@ import com.google.protobuf.Descriptors.Descriptor;
  */
 class UnknownDescriptorEvaluator implements Evaluator {
     /**
-     * desc is the descriptor targeted by this evaluator
+     * The descriptor targeted by this evaluator.
      */
     private final Descriptor desc;
 
     /**
-     * Constructs a new UnknownMessageEvaluator
+     * Constructs a new {@link UnknownDescriptorEvaluator}.
      */
     UnknownDescriptorEvaluator(Descriptor desc) {
         this.desc = desc;

@@ -43,7 +43,7 @@ import java.util.concurrent.ConcurrentMap;
 import static org.projectnessie.cel.ProgramOption.globals;
 
 /**
- * ConstraintCache is a build-through cache to computed standard constraints.
+ * {@link ConstraintCache} is a build-through cache to computed standard constraints.
  */
 public class ConstraintCache {
     private static final ProgramOption PARTIAL_EVAL_OPTIONS = ProgramOption.evalOptions(
@@ -165,7 +165,7 @@ public class ConstraintCache {
     }
 
     /**
-     * Produces the field descriptor from the build.buf.gen.buf.validate.FieldConstraints 'type' oneof that
+     * Produces the field descriptor from the {@link FieldConstraints} 'type' oneof that
      * matches the provided target field descriptor. If the returned value is null, the field does not
      * expect any standard constraints.
      */
@@ -182,7 +182,7 @@ public class ConstraintCache {
     }
 
     /**
-     * Resolves the CEL value type for the provided FieldDescriptor. If
+     * Resolves the CEL value type for the provided {@link FieldDescriptor}. If
      * forItems is true, the type for the repeated list items is returned instead of
      * the list type itself.
      */

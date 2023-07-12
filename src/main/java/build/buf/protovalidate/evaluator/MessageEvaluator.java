@@ -25,7 +25,7 @@ import java.util.List;
  */
 class MessageEvaluator implements Evaluator {
     /**
-     * Evaluators are the individual evaluators that are applied to a message.
+     * List of {@link Evaluator}s that are applied to a message.
      */
     private final List<Evaluator> evaluators = new ArrayList<>();
 

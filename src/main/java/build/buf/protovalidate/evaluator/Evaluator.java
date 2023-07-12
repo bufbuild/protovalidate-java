@@ -18,7 +18,7 @@ import build.buf.protovalidate.results.ExecutionException;
 import build.buf.protovalidate.results.ValidationResult;
 
 /**
- * Evaluator defines a validation evaluator. evaluator implementations may elide
+ * {@link Evaluator} defines a validation evaluator. evaluator implementations may elide
  * type checking of the passed in value, as the types have been guaranteed
  * during the build phase.
  */

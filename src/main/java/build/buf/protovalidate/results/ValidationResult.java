@@ -22,16 +22,12 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 /**
- * ValidationResult is returned when a constraint is executed. It contains a list of violations.
+ * {@link ValidationResult} is returned when a constraint is executed. It contains a list of violations.
  * This is non-fatal. If there are no violations, the constraint is considered to have passed.
  */
 public class ValidationResult extends RuntimeException {
 
     public List<Violation> violations;
-
-    public ValidationResult(List<Violation> violations) {
-        this.violations = violations;
-    }
 
     public ValidationResult() {
         this.violations = new ArrayList<>();

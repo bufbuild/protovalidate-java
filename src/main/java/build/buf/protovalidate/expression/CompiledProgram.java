@@ -32,6 +32,13 @@ public class CompiledProgram {
         this.source = source;
     }
 
+    /**
+     *  Evaluate the compiled program with a given set of {@link Variable} bindings.
+     *
+     * @param bindings variable bindings used for the evaluation.
+     * @return {@link build.buf.gen.buf.validate.Violation} the violations from the evaluation.
+     * @throws ExecutionException
+     */
     public Violation eval(Variable bindings) throws ExecutionException {
         Program.EvalResult evalResult = program.eval(bindings);
         Val val = evalResult.getVal();

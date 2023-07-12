@@ -27,27 +27,24 @@ public class Expression {
     public final String message;
     public final String expression;
 
-
     private Expression(String id, String message, String expression) {
         this.id = id;
         this.message = message;
         this.expression = expression;
     }
 
-    /**
-     * Expression constructs a new Expression from the given constraint.
-     */
-    public Expression(build.buf.gen.buf.validate.Constraint constraint) {
+    private Expression(build.buf.gen.buf.validate.Constraint constraint) {
         this(constraint.getId(), constraint.getMessage(), constraint.getExpression());
     }
 
-    /**
-     * Expression constructs a new Expression from the given private constraint.
-     */
-    public Expression(build.buf.gen.buf.validate.priv.Constraint constraint) {
+    private Expression(build.buf.gen.buf.validate.priv.Constraint constraint) {
         this(constraint.getId(), constraint.getMessage(), constraint.getExpression());
     }
 
+
+    /**
+     * Constructs a new {@link Expression} from the given private constraint.
+     */
     public static List<Expression> fromPrivConstraints(List<build.buf.gen.buf.validate.priv.Constraint> constraints) {
         List<Expression> expressions = new ArrayList<>();
         for (Constraint constraint : constraints) {
@@ -56,6 +53,9 @@ public class Expression {
         return expressions;
     }
 
+    /**
+     * Constructs a new {@link Expression} from the given constraint.
+     */
     public static List<Expression> fromConstraints(List<build.buf.gen.buf.validate.Constraint> constraints) {
         List<Expression> expressions = new ArrayList<>();
         for (build.buf.gen.buf.validate.Constraint constraint : constraints) {

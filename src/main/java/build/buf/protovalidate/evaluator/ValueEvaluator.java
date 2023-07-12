@@ -24,26 +24,26 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * ValueEvaluator performs validation on any concrete value contained within a singular
+ * {@link ValueEvaluator} performs validation on any concrete value contained within a singular
  * field, repeated elements, or the keys/values of a map.
  */
 class ValueEvaluator implements Evaluator {
     /**
-     * Zero is the default or zero-value for this value's type
+     * The default or zero-value for this value's type.
      */
     private final Object zero;
     /**
-     * Constraints are the individual evaluators applied to a value
+     * The evaluators applied to a value.
      */
     private final List<Evaluator> evaluators = new ArrayList<>();
     /**
-     * IgnoreEmpty indicates that the Constraints should not be applied if the
+     * Indicates that the Constraints should not be applied if the
      * field is unset or the default (typically zero) value.
      */
     private final boolean ignoreEmpty;
 
     /**
-     * ValueEvaluator is a constructor for ValueEvaluator.
+     * Constructs a {@link ValueEvaluator}.
      */
     ValueEvaluator(FieldConstraints fieldConstraints, Descriptors.FieldDescriptor fieldDescriptor) {
         if (fieldDescriptor.getType() == Descriptors.FieldDescriptor.Type.MESSAGE) {

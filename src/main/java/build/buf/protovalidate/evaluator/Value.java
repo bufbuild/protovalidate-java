@@ -26,7 +26,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Value is a wrapper around a protobuf value that provides helper methods for
+ * {@link Value} is a wrapper around a protobuf value that provides helper methods for
  * accessing the value.
  */
 public class Value {
@@ -46,7 +46,7 @@ public class Value {
         }
     }
     /**
-     * FieldDescriptor is the field descriptor for the value.
+     * {@link Descriptors.FieldDescriptor} is the field descriptor for the value.
      */
     private final Descriptors.FieldDescriptor fieldDescriptor;
     /**
@@ -55,7 +55,7 @@ public class Value {
     protected final Object value;
 
     /**
-     * Value constructs a new Value.
+     * Constructs a new {@link Value}.
      */
     Value(Descriptors.FieldDescriptor fieldDescriptor, Object value) {
         this.fieldDescriptor = fieldDescriptor;
@@ -75,14 +75,15 @@ public class Value {
                 || type == Descriptors.FieldDescriptor.Type.UINT64
                 || type == Descriptors.FieldDescriptor.Type.FIXED32
                 || type == Descriptors.FieldDescriptor.Type.FIXED64)) {
-            // TODO: fixup comment.
-            /* Java does not have native support for unsigned int/long or uint32/uint64 types.
-            To work with CEL's uint type in Java, special handling is required.
-            TL;DR: When using uint32/uint64 in your protobuf objects or CEL expressions in Java,
-            wrap them with the org.projectnessie.cel.common.ULong type.*/
+            /*
+            * Java does not have native support for unsigned int/long or uint32/uint64 types.
+            * To work with CEL's uint type in Java, special handling is required.
+            *
+            * When using uint32/uint64 in your protobuf objects or CEL expressions in Java,
+            * wrap them with the org.projectnessie.cel.common.ULong type.
+            */
             return (T) ULong.valueOf(((Number) value).longValue());
         }
-        // Dynamic programming in a static language.
         return (T) value;
     }
 

@@ -27,16 +27,16 @@ import java.util.Map;
  */
 class MapEvaluator implements Evaluator {
     /**
-     * KeyConstraints are checked on the map keys
+     * Constraint for checking the map keys
      */
     private final ValueEvaluator keyEvaluator;
     /**
-     * ValueConstraints are checked on the map values
+     * Constraint for checking the map values
      */
     private final ValueEvaluator valueEvaluator;
 
     /**
-     * Constructs a MapEvaluator
+     * Constructs a {@link MapEvaluator}.
      */
     MapEvaluator(FieldConstraints fieldConstraints, Descriptors.FieldDescriptor fieldDescriptor) {
         MapRules map = fieldConstraints.getMap();

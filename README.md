@@ -77,6 +77,7 @@ In your Java code, create an instance of the `Validator` class and use the `vali
 ```java
 import com.google.protobuf.Timestamp;
 import build.buf.protovalidate.Validator;
+import build.buf.protovalidate.Config;
 import my.package.Transaction;
 
 public class Main {
@@ -98,10 +99,14 @@ public class Main {
 
     Transaction transaction = transactionBuilder.build();
 
-    Validator validator = new Validator();
+    Validator validator = new Validator(new Config(false, false));
     try {
-      validator.validate(transaction);
-      System.out.println("Validation succeeded");
+      ValidationResult result = validator.validate(transaction);
+      if (result.violations.isEmpty()) {
+          System.out.println("Validation succeeded");
+      } else {
+          System.out.println("Validation failed with the following number of violations: " + result.violations.size());
+      }
     } catch (ValidationException e) {
       System.out.println("Validation failed: " + e.getMessage());
     }

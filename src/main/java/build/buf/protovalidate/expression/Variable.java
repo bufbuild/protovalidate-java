@@ -21,7 +21,7 @@ import org.projectnessie.cel.interpreter.ResolvedValue;
 import static org.projectnessie.cel.interpreter.ResolvedValue.ABSENT;
 
 /**
- * Variable implements {@link org.projectnessie.cel.interpreter.Activation}, providing a lightweight named
+ * {@link Variable} implements {@link org.projectnessie.cel.interpreter.Activation}, providing a lightweight named
  * variable to cel.Program executions.
  */
 public class Variable implements Activation {
@@ -29,15 +29,15 @@ public class Variable implements Activation {
     public static final String RULES_NAME = "rules";
 
     /**
-     * Next is the parent activation
+     * The parent activation
      */
     private final Activation next;
     /**
-     * Name is the variable's name
+     * The variable's name
      */
     private final String name;
     /**
-     * Val is the value for this variable
+     * The value for this variable
      */
     private final Object val;
 
@@ -50,10 +50,20 @@ public class Variable implements Activation {
         this.val = val;
     }
 
+    /**
+     * Creates a new "this" variable.
+     * @param val the value.
+     * @return {@link build.buf.protovalidate.expression.Variable}.
+     */
     public static Variable newThisVariable(Object val) {
         return new Variable(Activation.emptyActivation(), THIS_NAME, val);
     }
 
+    /**
+     * Creates a new "rules" variable.
+     * @param val the value.
+     * @return {@link build.buf.protovalidate.expression.Variable}.
+     */
     public static Variable newRulesVariable(Object val) {
         return new Variable(new NowVariable(), RULES_NAME, val);
     }
