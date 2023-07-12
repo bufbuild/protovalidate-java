@@ -19,18 +19,10 @@ tasks {
     }
 }
 
-repositories {
-    mavenCentral()
-    maven {
-        name = "buf"
-        url = uri("https://buf.build/gen/maven")
-    }
-}
-
 dependencies {
+    implementation(project(":"))
     implementation(libs.protobuf.java)
     implementation(libs.protobuf.java.util)
-    implementation(project(":"))
-    implementation("build.buf.gen:bufbuild_protovalidate_protocolbuffers_java:23.3.0.1.20230704214709.336f5dd89681")
-    implementation("build.buf.gen:bufbuild_protovalidate-testing_protocolbuffers_java:23.3.0.1.20230704214710.61d5e0152a75")
+    implementation(libs.protovalidate)
+    implementation(libs.protovalidate.testing)
 }
