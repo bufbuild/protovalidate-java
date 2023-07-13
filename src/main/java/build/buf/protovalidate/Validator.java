@@ -46,9 +46,9 @@ public class Validator {
      * A {@link ValidationResult} is returned which contains a list of violations. If the
      * list is empty, the message is valid. If the list is non-empty, the message
      * is invalid.
-     * An exception is thrown if the message cannot be validated because the
-     * evaluation logic for the message cannot be built ({@link build.buf.protovalidate.results.CompilationException}), or
-     * there is a type error when attempting to evaluate a CEL expression
+     * An exception is thrown if the message cannot be validated because the evaluation
+     * logic for the message cannot be built ({@link build.buf.protovalidate.results.CompilationException}),
+     *  or there is a type error when attempting to evaluate a CEL expression
      * associated with the message ({@link build.buf.protovalidate.results.ExecutionException}).
      *
      * @param msg {@link Message} to be validated

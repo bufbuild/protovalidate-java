@@ -25,7 +25,7 @@ jobs:
           java-version: '17'
           cache: 'gradle'
       - name: Lint
-        run: make lint-java
+        run: make lint
       - name: Generate
         run: make checkgenerate
       - name: Build
