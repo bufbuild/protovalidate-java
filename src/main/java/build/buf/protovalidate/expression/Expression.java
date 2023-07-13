@@ -15,52 +15,46 @@
 package build.buf.protovalidate.expression;
 
 import build.buf.gen.buf.validate.priv.Constraint;
-
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Expression represents a single CEL expression.
- */
+/** Expression represents a single CEL expression. */
 public class Expression {
-    public final String id;
-    public final String message;
-    public final String expression;
+  public final String id;
+  public final String message;
+  public final String expression;
 
-    private Expression(String id, String message, String expression) {
-        this.id = id;
-        this.message = message;
-        this.expression = expression;
+  private Expression(String id, String message, String expression) {
+    this.id = id;
+    this.message = message;
+    this.expression = expression;
+  }
+
+  private Expression(build.buf.gen.buf.validate.Constraint constraint) {
+    this(constraint.getId(), constraint.getMessage(), constraint.getExpression());
+  }
+
+  private Expression(build.buf.gen.buf.validate.priv.Constraint constraint) {
+    this(constraint.getId(), constraint.getMessage(), constraint.getExpression());
+  }
+
+  /** Constructs a new {@link Expression} from the given private constraint. */
+  public static List<Expression> fromPrivConstraints(
+      List<build.buf.gen.buf.validate.priv.Constraint> constraints) {
+    List<Expression> expressions = new ArrayList<>();
+    for (Constraint constraint : constraints) {
+      expressions.add(new Expression(constraint));
     }
+    return expressions;
+  }
 
-    private Expression(build.buf.gen.buf.validate.Constraint constraint) {
-        this(constraint.getId(), constraint.getMessage(), constraint.getExpression());
+  /** Constructs a new {@link Expression} from the given constraint. */
+  public static List<Expression> fromConstraints(
+      List<build.buf.gen.buf.validate.Constraint> constraints) {
+    List<Expression> expressions = new ArrayList<>();
+    for (build.buf.gen.buf.validate.Constraint constraint : constraints) {
+      expressions.add(new Expression(constraint));
     }
-
-    private Expression(build.buf.gen.buf.validate.priv.Constraint constraint) {
-        this(constraint.getId(), constraint.getMessage(), constraint.getExpression());
-    }
-
-
-    /**
-     * Constructs a new {@link Expression} from the given private constraint.
-     */
-    public static List<Expression> fromPrivConstraints(List<build.buf.gen.buf.validate.priv.Constraint> constraints) {
-        List<Expression> expressions = new ArrayList<>();
-        for (Constraint constraint : constraints) {
-            expressions.add(new Expression(constraint));
-        }
-        return expressions;
-    }
-
-    /**
-     * Constructs a new {@link Expression} from the given constraint.
-     */
-    public static List<Expression> fromConstraints(List<build.buf.gen.buf.validate.Constraint> constraints) {
-        List<Expression> expressions = new ArrayList<>();
-        for (build.buf.gen.buf.validate.Constraint constraint : constraints) {
-            expressions.add(new Expression(constraint));
-        }
-        return expressions;
-    }
+    return expressions;
+  }
 }

@@ -23,42 +23,35 @@ import com.google.protobuf.Descriptors.Descriptor;
 import com.google.protobuf.Descriptors.FieldDescriptor;
 import com.google.protobuf.Descriptors.OneofDescriptor;
 
-/**
- * Manages the resolution of protovalidate constraints.
- */
+/** Manages the resolution of protovalidate constraints. */
 class ConstraintResolver {
 
-    MessageConstraints resolveMessageConstraints(Descriptor desc) {
-        DescriptorProtos.MessageOptions options = desc.getOptions();
-        if (!options.hasExtension(ValidateProto.message)) {
-            return MessageConstraints.newBuilder()
-                    .build();
-        }
-
-        MessageConstraints constraints = options.getExtension(ValidateProto.message);
-        boolean disabled = constraints.getDisabled();
-        if (disabled) {
-            return MessageConstraints.newBuilder()
-                    .setDisabled(true)
-                    .build();
-        }
-        return constraints;
+  MessageConstraints resolveMessageConstraints(Descriptor desc) {
+    DescriptorProtos.MessageOptions options = desc.getOptions();
+    if (!options.hasExtension(ValidateProto.message)) {
+      return MessageConstraints.newBuilder().build();
     }
-
-    OneofConstraints resolveOneofConstraints(OneofDescriptor desc) {
-        DescriptorProtos.OneofOptions options = desc.getOptions();
-        if (!options.hasExtension(ValidateProto.oneof)) {
-            return OneofConstraints.newBuilder()
-                    .build();
-        }
-        return options.getExtension(ValidateProto.oneof);
+    MessageConstraints constraints = options.getExtension(ValidateProto.message);
+    boolean disabled = constraints.getDisabled();
+    if (disabled) {
+      return MessageConstraints.newBuilder().setDisabled(true).build();
     }
+    return constraints;
+  }
 
-    FieldConstraints resolveFieldConstraints(FieldDescriptor desc) {
-        DescriptorProtos.FieldOptions options = desc.getOptions();
-        if (!options.hasExtension(ValidateProto.field)) {
-            return FieldConstraints.newBuilder().build();
-        }
-        return options.getExtension(ValidateProto.field);
+  OneofConstraints resolveOneofConstraints(OneofDescriptor desc) {
+    DescriptorProtos.OneofOptions options = desc.getOptions();
+    if (!options.hasExtension(ValidateProto.oneof)) {
+      return OneofConstraints.newBuilder().build();
     }
+    return options.getExtension(ValidateProto.oneof);
+  }
+
+  FieldConstraints resolveFieldConstraints(FieldDescriptor desc) {
+    DescriptorProtos.FieldOptions options = desc.getOptions();
+    if (!options.hasExtension(ValidateProto.field)) {
+      return FieldConstraints.newBuilder().build();
+    }
+    return options.getExtension(ValidateProto.field);
+  }
 }

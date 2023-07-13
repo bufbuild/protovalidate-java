@@ -18,39 +18,37 @@ import build.buf.gen.buf.validate.Violation;
 import build.buf.protovalidate.results.ExecutionException;
 import build.buf.protovalidate.results.ValidationResult;
 import com.google.protobuf.Descriptors.Descriptor;
-
 import java.util.Collections;
 
 /**
- * An {@link Evaluator} for an unknown descriptor. This is
- * returned only if lazy-building of evaluators has been disabled and an unknown
- * descriptor is encountered.
+ * An {@link Evaluator} for an unknown descriptor. This is returned only if lazy-building of
+ * evaluators has been disabled and an unknown descriptor is encountered.
  */
 class UnknownDescriptorEvaluator implements Evaluator {
-    /**
-     * The descriptor targeted by this evaluator.
-     */
-    private final Descriptor desc;
+  /** The descriptor targeted by this evaluator. */
+  private final Descriptor desc;
 
-    /**
-     * Constructs a new {@link UnknownDescriptorEvaluator}.
-     */
-    UnknownDescriptorEvaluator(Descriptor desc) {
-        this.desc = desc;
-    }
+  /** Constructs a new {@link UnknownDescriptorEvaluator}. */
+  UnknownDescriptorEvaluator(Descriptor desc) {
+    this.desc = desc;
+  }
 
-    @Override
-    public boolean tautology() {
-        return false;
-    }
+  @Override
+  public boolean tautology() {
+    return false;
+  }
 
-    @Override
-    public ValidationResult evaluate(Value val, boolean failFast) throws ExecutionException {
-        return new ValidationResult(Collections.singletonList(Violation.newBuilder().setMessage("No evaluator available for " + desc.getFullName()).build()));
-    }
+  @Override
+  public ValidationResult evaluate(Value val, boolean failFast) throws ExecutionException {
+    return new ValidationResult(
+        Collections.singletonList(
+            Violation.newBuilder()
+                .setMessage("No evaluator available for " + desc.getFullName())
+                .build()));
+  }
 
-    @Override
-    public void append(Evaluator eval) {
-        throw new UnsupportedOperationException("append not supported for unknown message");
-    }
+  @Override
+  public void append(Evaluator eval) {
+    throw new UnsupportedOperationException("append not supported for unknown message");
+  }
 }

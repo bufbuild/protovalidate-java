@@ -14,36 +14,35 @@
 
 package build.buf.protovalidate.expression;
 
+import java.time.Instant;
 import org.projectnessie.cel.common.types.TimestampT;
 import org.projectnessie.cel.interpreter.Activation;
 import org.projectnessie.cel.interpreter.ResolvedValue;
 
-import java.time.Instant;
-
 /**
- * {@link NowVariable} implements {@link Activation}, providing a lazily produced timestamp
- * for accessing the variable `now` that's constant within an evaluation.
+ * {@link NowVariable} implements {@link Activation}, providing a lazily produced timestamp for
+ * accessing the variable `now` that's constant within an evaluation.
  */
 public class NowVariable implements Activation {
-    private static final String NOW_NAME = "now";
+  private static final String NOW_NAME = "now";
 
-    private ResolvedValue resolvedValue;
+  private ResolvedValue resolvedValue;
 
-    @Override
-    public ResolvedValue resolveName(String name) {
-        if (!name.equals(NOW_NAME)) {
-            return ResolvedValue.ABSENT;
-        } else if (resolvedValue != null) {
-            return resolvedValue;
-        }
-        Instant instant = Instant.now(); // UTC.
-        TimestampT value = TimestampT.timestampOf(instant);
-        resolvedValue = ResolvedValue.resolvedValue(value);
-        return resolvedValue;
+  @Override
+  public ResolvedValue resolveName(String name) {
+    if (!name.equals(NOW_NAME)) {
+      return ResolvedValue.ABSENT;
+    } else if (resolvedValue != null) {
+      return resolvedValue;
     }
+    Instant instant = Instant.now(); // UTC.
+    TimestampT value = TimestampT.timestampOf(instant);
+    resolvedValue = ResolvedValue.resolvedValue(value);
+    return resolvedValue;
+  }
 
-    @Override
-    public Activation parent() {
-        return Activation.emptyActivation();
-    }
+  @Override
+  public Activation parent() {
+    return Activation.emptyActivation();
+  }
 }

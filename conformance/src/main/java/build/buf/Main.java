@@ -14,105 +14,95 @@
 
 package build.buf;
 
-import build.buf.protovalidate.Config;
-import build.buf.protovalidate.results.CompilationException;
-import build.buf.protovalidate.Validator;
-import build.buf.protovalidate.results.ExecutionException;
-import build.buf.protovalidate.results.ValidationResult;
 import build.buf.gen.buf.validate.ValidateProto;
 import build.buf.gen.buf.validate.Violations;
 import build.buf.gen.buf.validate.conformance.harness.TestConformanceRequest;
 import build.buf.gen.buf.validate.conformance.harness.TestConformanceResponse;
 import build.buf.gen.buf.validate.conformance.harness.TestResult;
+import build.buf.protovalidate.Config;
+import build.buf.protovalidate.Validator;
+import build.buf.protovalidate.results.CompilationException;
+import build.buf.protovalidate.results.ExecutionException;
+import build.buf.protovalidate.results.ValidationResult;
 import com.google.protobuf.Any;
 import com.google.protobuf.ByteString;
 import com.google.protobuf.Descriptors;
 import com.google.protobuf.DynamicMessage;
 import com.google.protobuf.ExtensionRegistry;
 import com.google.protobuf.InvalidProtocolBufferException;
-
 import java.util.HashMap;
 import java.util.Map;
 
 public class Main {
-    public static void main(String[] args) {
-        try {
-            ExtensionRegistry extensionRegistry = ExtensionRegistry.newInstance();
-            extensionRegistry.add(ValidateProto.message);
-            extensionRegistry.add(ValidateProto.field);
-            extensionRegistry.add(ValidateProto.oneof);
-            // add file to extension registry for
-            TestConformanceRequest request = TestConformanceRequest.parseFrom(System.in, extensionRegistry);
-            TestConformanceResponse response = testConformance(request);
-            response.writeTo(System.out);
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
+  public static void main(String[] args) {
+    try {
+      ExtensionRegistry extensionRegistry = ExtensionRegistry.newInstance();
+      extensionRegistry.add(ValidateProto.message);
+      extensionRegistry.add(ValidateProto.field);
+      extensionRegistry.add(ValidateProto.oneof);
+      TestConformanceRequest request =
+          TestConformanceRequest.parseFrom(System.in, extensionRegistry);
+      TestConformanceResponse response = testConformance(request);
+      response.writeTo(System.out);
+    } catch (Exception e) {
+      throw new RuntimeException(e);
     }
+  }
 
-    static TestConformanceResponse testConformance(TestConformanceRequest request) {
-        try {
-            Map<String, Descriptors.Descriptor> descriptorMap = FileDescriptorUtil.parse(request.getFdset());
-            Validator validator = new Validator(new Config(false, false));
-            TestConformanceResponse.Builder responseBuilder = TestConformanceResponse.newBuilder();
-            Map<String, TestResult> resultsMap = new HashMap<>();
-            for (Map.Entry<String, Any> entry : request.getCasesMap().entrySet()) {
-                TestResult testResult = testCase(validator, descriptorMap, entry.getValue());
-                resultsMap.put(entry.getKey(), testResult);
-            }
-            responseBuilder.putAllResults(resultsMap);
-            return responseBuilder.build();
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
+  static TestConformanceResponse testConformance(TestConformanceRequest request) {
+    try {
+      Map<String, Descriptors.Descriptor> descriptorMap =
+          FileDescriptorUtil.parse(request.getFdset());
+      Validator validator = new Validator(new Config(false, false));
+      TestConformanceResponse.Builder responseBuilder = TestConformanceResponse.newBuilder();
+      Map<String, TestResult> resultsMap = new HashMap<>();
+      for (Map.Entry<String, Any> entry : request.getCasesMap().entrySet()) {
+        TestResult testResult = testCase(validator, descriptorMap, entry.getValue());
+        resultsMap.put(entry.getKey(), testResult);
+      }
+      responseBuilder.putAllResults(resultsMap);
+      return responseBuilder.build();
+    } catch (Exception e) {
+      throw new RuntimeException(e);
     }
+  }
 
-    static TestResult testCase(Validator validator, Map<String, Descriptors.Descriptor> fileDescriptors, Any testCase) throws InvalidProtocolBufferException {
-        String[] urlParts = testCase.getTypeUrl().split("/");
-        String fullName = urlParts[urlParts.length - 1];
-        Descriptors.Descriptor descriptor = fileDescriptors.get(fullName);
-        if (descriptor == null) {
-            return unexpectedErrorResult("Unable to find descriptor: " + fullName);
-        }
-        // run test case:
-        ByteString testCaseValue = testCase.getValue();
-        DynamicMessage dynamicMessage = DynamicMessage.newBuilder(descriptor)
-                .mergeFrom(testCaseValue)
-                .build();
-        return execute(validator, dynamicMessage);
+  static TestResult testCase(
+      Validator validator, Map<String, Descriptors.Descriptor> fileDescriptors, Any testCase)
+      throws InvalidProtocolBufferException {
+    String[] urlParts = testCase.getTypeUrl().split("/");
+    String fullName = urlParts[urlParts.length - 1];
+    Descriptors.Descriptor descriptor = fileDescriptors.get(fullName);
+    if (descriptor == null) {
+      return unexpectedErrorResult("Unable to find descriptor: " + fullName);
     }
+    ByteString testCaseValue = testCase.getValue();
+    DynamicMessage dynamicMessage =
+        DynamicMessage.newBuilder(descriptor).mergeFrom(testCaseValue).build();
+    return execute(validator, dynamicMessage);
+  }
 
-    private static TestResult execute(Validator validator, DynamicMessage dynamicMessage) {
-        try {
-            ValidationResult result = validator.validate(dynamicMessage);
-            if (result.isSuccess()) {
-                return TestResult.newBuilder()
-                        .setSuccess(true)
-                        .build();
-            } else {
-                return TestResult.newBuilder()
-                        .setValidationError(Violations.newBuilder()
-                                .addAllViolations(result.violations)
-                                .build())
-                        .build();
-            }
-        } catch (CompilationException e) {
-            return TestResult.newBuilder()
-                    .setCompilationError(e.getMessage())
-                    .build();
-        } catch (ExecutionException e) {
-            return TestResult.newBuilder()
-                    .setRuntimeError(e.getMessage())
-                    .build();
-        } catch (Exception e) {
-            return unexpectedErrorResult("unknown error: %s", e.toString());
-        }
-    }
-
-    static TestResult unexpectedErrorResult(String format, Object... args) {
-        String errorMessage = String.format(format, args);
+  private static TestResult execute(Validator validator, DynamicMessage dynamicMessage) {
+    try {
+      ValidationResult result = validator.validate(dynamicMessage);
+      if (result.isSuccess()) {
+        return TestResult.newBuilder().setSuccess(true).build();
+      } else {
         return TestResult.newBuilder()
-                .setUnexpectedError(errorMessage)
-                .build();
+            .setValidationError(Violations.newBuilder().addAllViolations(result.violations).build())
+            .build();
+      }
+    } catch (CompilationException e) {
+      return TestResult.newBuilder().setCompilationError(e.getMessage()).build();
+    } catch (ExecutionException e) {
+      return TestResult.newBuilder().setRuntimeError(e.getMessage()).build();
+    } catch (Exception e) {
+      return unexpectedErrorResult("unknown error: %s", e.toString());
     }
+  }
+
+  static TestResult unexpectedErrorResult(String format, Object... args) {
+    String errorMessage = String.format(format, args);
+    return TestResult.newBuilder().setUnexpectedError(errorMessage).build();
+  }
 }

@@ -19,43 +19,40 @@ import build.buf.protovalidate.expression.CompiledProgram;
 import build.buf.protovalidate.expression.Variable;
 import build.buf.protovalidate.results.ExecutionException;
 import build.buf.protovalidate.results.ValidationResult;
-
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Evaluator that executes a {@link build.buf.protovalidate.expression.CompiledProgram}.
- */
+/** Evaluator that executes a {@link build.buf.protovalidate.expression.CompiledProgram}. */
 class CelPrograms implements Evaluator {
-    private final List<CompiledProgram> programs;
+  private final List<CompiledProgram> programs;
 
-    public CelPrograms(List<CompiledProgram> compiledPrograms) {
-        this.programs = compiledPrograms;
-    }
+  public CelPrograms(List<CompiledProgram> compiledPrograms) {
+    this.programs = compiledPrograms;
+  }
 
-    @Override
-    public boolean tautology() {
-        return programs.isEmpty();
-    }
+  @Override
+  public boolean tautology() {
+    return programs.isEmpty();
+  }
 
-    @Override
-    public ValidationResult evaluate(Value val, boolean failFast) throws ExecutionException {
-        Variable activation = Variable.newThisVariable(val.value());
-        List<Violation> violationList = new ArrayList<>();
-        for (CompiledProgram program : programs) {
-            Violation violation = program.eval(activation);
-            if (violation != null) {
-                violationList.add(violation);
-                if (failFast) {
-                    break;
-                }
-            }
+  @Override
+  public ValidationResult evaluate(Value val, boolean failFast) throws ExecutionException {
+    Variable activation = Variable.newThisVariable(val.value());
+    List<Violation> violationList = new ArrayList<>();
+    for (CompiledProgram program : programs) {
+      Violation violation = program.eval(activation);
+      if (violation != null) {
+        violationList.add(violation);
+        if (failFast) {
+          break;
         }
-        return new ValidationResult(violationList);
+      }
     }
+    return new ValidationResult(violationList);
+  }
 
-    @Override
-    public void append(Evaluator eval) {
-        throw new UnsupportedOperationException("append not supported for CelPrograms");
-    }
+  @Override
+  public void append(Evaluator eval) {
+    throw new UnsupportedOperationException("append not supported for CelPrograms");
+  }
 }

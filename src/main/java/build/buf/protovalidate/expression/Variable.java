@@ -14,72 +14,65 @@
 
 package build.buf.protovalidate.expression;
 
+import static org.projectnessie.cel.interpreter.ResolvedValue.ABSENT;
 
 import org.projectnessie.cel.interpreter.Activation;
 import org.projectnessie.cel.interpreter.ResolvedValue;
 
-import static org.projectnessie.cel.interpreter.ResolvedValue.ABSENT;
-
 /**
- * {@link Variable} implements {@link org.projectnessie.cel.interpreter.Activation}, providing a lightweight named
- * variable to cel.Program executions.
+ * {@link Variable} implements {@link org.projectnessie.cel.interpreter.Activation}, providing a
+ * lightweight named variable to cel.Program executions.
  */
 public class Variable implements Activation {
-    public static final String THIS_NAME = "this";
-    public static final String RULES_NAME = "rules";
+  public static final String THIS_NAME = "this";
+  public static final String RULES_NAME = "rules";
 
-    /**
-     * The parent activation
-     */
-    private final Activation next;
-    /**
-     * The variable's name
-     */
-    private final String name;
-    /**
-     * The value for this variable
-     */
-    private final Object val;
+  /** The parent activation */
+  private final Activation next;
+  /** The variable's name */
+  private final String name;
+  /** The value for this variable */
+  private final Object val;
 
-    /**
-     * Creates a new variable with the given name and value.
-     */
-    private Variable(Activation activation, String name, Object val) {
-        this.next = activation;
-        this.name = name;
-        this.val = val;
+  /** Creates a new variable with the given name and value. */
+  private Variable(Activation activation, String name, Object val) {
+    this.next = activation;
+    this.name = name;
+    this.val = val;
+  }
+
+  /**
+   * Creates a new "this" variable.
+   *
+   * @param val the value.
+   * @return {@link build.buf.protovalidate.expression.Variable}.
+   */
+  public static Variable newThisVariable(Object val) {
+    return new Variable(Activation.emptyActivation(), THIS_NAME, val);
+  }
+
+  /**
+   * Creates a new "rules" variable.
+   *
+   * @param val the value.
+   * @return {@link build.buf.protovalidate.expression.Variable}.
+   */
+  public static Variable newRulesVariable(Object val) {
+    return new Variable(new NowVariable(), RULES_NAME, val);
+  }
+
+  @Override
+  public ResolvedValue resolveName(String name) {
+    if (this.name.equals(name)) {
+      return ResolvedValue.resolvedValue(val);
+    } else if (next != null) {
+      return next.resolveName(name);
     }
+    return ABSENT;
+  }
 
-    /**
-     * Creates a new "this" variable.
-     * @param val the value.
-     * @return {@link build.buf.protovalidate.expression.Variable}.
-     */
-    public static Variable newThisVariable(Object val) {
-        return new Variable(Activation.emptyActivation(), THIS_NAME, val);
-    }
-
-    /**
-     * Creates a new "rules" variable.
-     * @param val the value.
-     * @return {@link build.buf.protovalidate.expression.Variable}.
-     */
-    public static Variable newRulesVariable(Object val) {
-        return new Variable(new NowVariable(), RULES_NAME, val);
-    }
-
-    @Override
-    public ResolvedValue resolveName(String name) {
-        if (this.name.equals(name)) {
-            return ResolvedValue.resolvedValue(val);
-        } else if (next != null) {
-            return next.resolveName(name);
-        }
-        return ABSENT;
-    }
-
-    @Override
-    public Activation parent() {
-        return next;
-    }
+  @Override
+  public Activation parent() {
+    return next;
+  }
 }

@@ -18,30 +18,21 @@ import build.buf.protovalidate.results.ExecutionException;
 import build.buf.protovalidate.results.ValidationResult;
 
 /**
- * {@link Evaluator} defines a validation evaluator. evaluator implementations may elide
- * type checking of the passed in value, as the types have been guaranteed
- * during the build phase.
+ * {@link Evaluator} defines a validation evaluator. evaluator implementations may elide type
+ * checking of the passed in value, as the types have been guaranteed during the build phase.
  */
 public interface Evaluator {
-    /**
-     * Returns true if the evaluator always succeeds.
-     */
-    boolean tautology();
+  /** Returns true if the evaluator always succeeds. */
+  boolean tautology();
 
-    /**
-     * Checks that the provided val is valid. Unless failFast is true,
-     * evaluation attempts to find all {@link build.buf.gen.buf.validate.Violations} present in val instead of
-     * returning a {@link ValidationResult} on the first {@link build.buf.gen.buf.validate.Violation}.
-     * An {@link ExecutionException} is thrown if evaluation fails to complete.
-     */
-    ValidationResult evaluate(Value val, boolean failFast) throws ExecutionException;
+  /**
+   * Checks that the provided val is valid. Unless failFast is true, evaluation attempts to find all
+   * {@link build.buf.gen.buf.validate.Violations} present in val instead of returning a {@link
+   * ValidationResult} on the first {@link build.buf.gen.buf.validate.Violation}. An {@link
+   * ExecutionException} is thrown if evaluation fails to complete.
+   */
+  ValidationResult evaluate(Value val, boolean failFast) throws ExecutionException;
 
-    /**
-     * Appends the given {@link Evaluator} to this {@link Evaluator}.
-     */
-    void append(Evaluator eval);
+  /** Appends the given {@link Evaluator} to this {@link Evaluator}. */
+  void append(Evaluator eval);
 }
-
-
-
-

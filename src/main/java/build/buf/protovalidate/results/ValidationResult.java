@@ -15,46 +15,46 @@
 package build.buf.protovalidate.results;
 
 import build.buf.gen.buf.validate.Violation;
-
 import java.util.Collections;
 import java.util.List;
 
 /**
- * {@link ValidationResult} is returned when a constraint is executed. It contains a list of violations.
- * This is non-fatal. If there are no violations, the constraint is considered to have passed.
+ * {@link ValidationResult} is returned when a constraint is executed. It contains a list of
+ * violations. This is non-fatal. If there are no violations, the constraint is considered to have
+ * passed.
  */
 public class ValidationResult {
 
-    public final List<Violation> violations;
+  public final List<Violation> violations;
 
-    public ValidationResult() {
-        this.violations = Collections.emptyList();
-    }
+  public ValidationResult() {
+    this.violations = Collections.emptyList();
+  }
 
-    public ValidationResult(List<Violation> violations) {
-        this.violations = violations;
-    }
+  public ValidationResult(List<Violation> violations) {
+    this.violations = violations;
+  }
 
-    public boolean isSuccess() {
-        return violations.isEmpty();
-    }
+  public boolean isSuccess() {
+    return violations.isEmpty();
+  }
 
-    public boolean isFailure() {
-        return !isSuccess();
-    }
+  public boolean isFailure() {
+    return !isSuccess();
+  }
 
-    @Override
-    public String toString() {
-        StringBuilder builder = new StringBuilder();
-        builder.append("Validation error:");
-        for (Violation violation : violations) {
-            builder.append("\n - ");
-            if (!violation.getFieldPath().isEmpty()) {
-                builder.append(violation.getFieldPath());
-                builder.append(": ");
-            }
-            builder.append(String.format("%s [%s]", violation.getMessage(), violation.getConstraintId()));
-        }
-        return builder.toString();
+  @Override
+  public String toString() {
+    StringBuilder builder = new StringBuilder();
+    builder.append("Validation error:");
+    for (Violation violation : violations) {
+      builder.append("\n - ");
+      if (!violation.getFieldPath().isEmpty()) {
+        builder.append(violation.getFieldPath());
+        builder.append(": ");
+      }
+      builder.append(String.format("%s [%s]", violation.getMessage(), violation.getConstraintId()));
     }
+    return builder.toString();
+  }
 }

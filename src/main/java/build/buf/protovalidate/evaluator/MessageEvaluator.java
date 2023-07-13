@@ -17,44 +17,39 @@ package build.buf.protovalidate.evaluator;
 import build.buf.gen.buf.validate.Violation;
 import build.buf.protovalidate.results.ExecutionException;
 import build.buf.protovalidate.results.ValidationResult;
-
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Performs validation on a {@link com.google.protobuf.Message}.
- */
+/** Performs validation on a {@link com.google.protobuf.Message}. */
 class MessageEvaluator implements Evaluator {
-    /**
-     * List of {@link Evaluator}s that are applied to a message.
-     */
-    private final List<Evaluator> evaluators = new ArrayList<>();
+  /** List of {@link Evaluator}s that are applied to a message. */
+  private final List<Evaluator> evaluators = new ArrayList<>();
 
-    @Override
-    public boolean tautology() {
-        for (Evaluator evaluator : evaluators) {
-            if (!evaluator.tautology()) {
-                return false;
-            }
-        }
-        return true;
+  @Override
+  public boolean tautology() {
+    for (Evaluator evaluator : evaluators) {
+      if (!evaluator.tautology()) {
+        return false;
+      }
     }
+    return true;
+  }
 
-    @Override
-    public ValidationResult evaluate(Value val, boolean failFast) throws ExecutionException {
-        List<Violation> violations = new ArrayList<>();
-        for (Evaluator evaluator : evaluators) {
-            ValidationResult evalResult = evaluator.evaluate(val, failFast);
-            if (failFast && !evalResult.violations.isEmpty()) {
-                return evalResult;
-            }
-            violations.addAll(evalResult.violations);
-        }
-        return new ValidationResult(violations);
+  @Override
+  public ValidationResult evaluate(Value val, boolean failFast) throws ExecutionException {
+    List<Violation> violations = new ArrayList<>();
+    for (Evaluator evaluator : evaluators) {
+      ValidationResult evalResult = evaluator.evaluate(val, failFast);
+      if (failFast && !evalResult.violations.isEmpty()) {
+        return evalResult;
+      }
+      violations.addAll(evalResult.violations);
     }
+    return new ValidationResult(violations);
+  }
 
-    @Override
-    public void append(Evaluator eval) {
-        evaluators.add(eval);
-    }
+  @Override
+  public void append(Evaluator eval) {
+    evaluators.add(eval);
+  }
 }

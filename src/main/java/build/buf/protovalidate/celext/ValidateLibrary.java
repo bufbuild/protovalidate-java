@@ -14,32 +14,30 @@
 
 package build.buf.protovalidate.celext;
 
+import static org.projectnessie.cel.EnvOption.declarations;
+import static org.projectnessie.cel.ProgramOption.functions;
+
 import build.buf.protovalidate.expression.NowVariable;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 import org.projectnessie.cel.EnvOption;
 import org.projectnessie.cel.EvalOption;
 import org.projectnessie.cel.Library;
 import org.projectnessie.cel.ProgramOption;
 
-import java.util.Collections;
-import java.util.List;
-
-import static java.util.Arrays.asList;
-import static org.projectnessie.cel.EnvOption.declarations;
-import static org.projectnessie.cel.ProgramOption.functions;
-
 public class ValidateLibrary implements Library {
 
-    @Override
-    public List<EnvOption> getCompileOptions() {
-        return Collections.singletonList(declarations(CustomDecl.make()));
-    }
+  @Override
+  public List<EnvOption> getCompileOptions() {
+    return Collections.singletonList(declarations(CustomDecl.create()));
+  }
 
-    @Override
-    public List<ProgramOption> getProgramOptions() {
-        return asList(
-                ProgramOption.evalOptions(EvalOption.OptOptimize),
-                ProgramOption.globals(new NowVariable()),
-                functions(CustomOverload.make())
-        );
-    }
+  @Override
+  public List<ProgramOption> getProgramOptions() {
+    return Arrays.asList(
+        ProgramOption.evalOptions(EvalOption.OptOptimize),
+        ProgramOption.globals(new NowVariable()),
+        functions(CustomOverload.create()));
+  }
 }

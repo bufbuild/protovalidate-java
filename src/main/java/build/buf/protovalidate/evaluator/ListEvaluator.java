@@ -19,49 +19,43 @@ import build.buf.gen.buf.validate.Violation;
 import build.buf.protovalidate.results.ExecutionException;
 import build.buf.protovalidate.results.ValidationResult;
 import com.google.protobuf.Descriptors;
-
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Performs validation on the elements of a repeated field.
- */
+/** Performs validation on the elements of a repeated field. */
 class ListEvaluator implements Evaluator {
 
-    /**
-     * Constraint are checked on every item of the list.
-     */
-    final ValueEvaluator itemConstraints;
+  /** Constraint are checked on every item of the list. */
+  final ValueEvaluator itemConstraints;
 
-    /**
-     * Constructs a {@link ListEvaluator}.
-     */
-    ListEvaluator(FieldConstraints fieldConstraints, Descriptors.FieldDescriptor fieldDescriptor) {
-        this.itemConstraints = new ValueEvaluator(fieldConstraints, fieldDescriptor);
-    }
+  /** Constructs a {@link ListEvaluator}. */
+  ListEvaluator(FieldConstraints fieldConstraints, Descriptors.FieldDescriptor fieldDescriptor) {
+    this.itemConstraints = new ValueEvaluator(fieldConstraints, fieldDescriptor);
+  }
 
-    @Override
-    public boolean tautology() {
-        return itemConstraints.tautology();
-    }
+  @Override
+  public boolean tautology() {
+    return itemConstraints.tautology();
+  }
 
-    @Override
-    public ValidationResult evaluate(Value val, boolean failFast) throws ExecutionException {
-        List<Violation> allViolations = new ArrayList<>();
-        List<Value> repeatedValues = val.repeatedValue();
-        for (int i = 0; i < repeatedValues.size(); i++) {
-            ValidationResult evalResult = itemConstraints.evaluate(repeatedValues.get(i), failFast);
-            List<Violation> violations = ErrorPathUtils.prefixErrorPaths(evalResult.violations, "[%d]", i);
-            if (failFast && !violations.isEmpty() ) {
-                return evalResult;
-            }
-            allViolations.addAll(violations);
-        }
-        return new ValidationResult(allViolations);
+  @Override
+  public ValidationResult evaluate(Value val, boolean failFast) throws ExecutionException {
+    List<Violation> allViolations = new ArrayList<>();
+    List<Value> repeatedValues = val.repeatedValue();
+    for (int i = 0; i < repeatedValues.size(); i++) {
+      ValidationResult evalResult = itemConstraints.evaluate(repeatedValues.get(i), failFast);
+      List<Violation> violations =
+          ErrorPathUtils.prefixErrorPaths(evalResult.violations, "[%d]", i);
+      if (failFast && !violations.isEmpty()) {
+        return evalResult;
+      }
+      allViolations.addAll(violations);
     }
+    return new ValidationResult(allViolations);
+  }
 
-    @Override
-    public void append(Evaluator eval) {
-        throw new UnsupportedOperationException("append not supported for ListItems");
-    }
+  @Override
+  public void append(Evaluator eval) {
+    throw new UnsupportedOperationException("append not supported for ListItems");
+  }
 }

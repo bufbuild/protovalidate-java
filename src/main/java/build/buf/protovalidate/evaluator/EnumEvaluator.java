@@ -18,58 +18,53 @@ import build.buf.gen.buf.validate.Violation;
 import build.buf.protovalidate.results.ExecutionException;
 import build.buf.protovalidate.results.ValidationResult;
 import com.google.protobuf.Descriptors;
-
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
 /**
- * {@link EnumEvaluator} checks an enum value being a member of
- * the defined values exclusively. This check is handled outside CEL as enums
- * are completely type erased to integers.
+ * {@link EnumEvaluator} checks an enum value being a member of the defined values exclusively. This
+ * check is handled outside CEL as enums are completely type erased to integers.
  */
 class EnumEvaluator implements Evaluator {
-    /**
-     * Captures all the defined values for this enum
-     */
-    private final List<Descriptors.EnumValueDescriptor> valueDescriptors;
+  /** Captures all the defined values for this enum */
+  private final List<Descriptors.EnumValueDescriptor> valueDescriptors;
 
-    /**
-     * Constructs a new evaluator for enum values.
-     */
-    EnumEvaluator(Descriptors.EnumValueDescriptor... valueDescriptors) {
-        this.valueDescriptors = Arrays.asList(valueDescriptors);
+  /** Constructs a new evaluator for enum values. */
+  EnumEvaluator(Descriptors.EnumValueDescriptor... valueDescriptors) {
+    this.valueDescriptors = Arrays.asList(valueDescriptors);
+  }
+
+  @Override
+  public boolean tautology() {
+    return false;
+  }
+
+  @Override
+  public ValidationResult evaluate(Value val, boolean failFast) throws ExecutionException {
+    Descriptors.EnumValueDescriptor enumValue = val.value();
+    if (!isValueValid(enumValue)) {
+      return new ValidationResult(
+          Collections.singletonList(
+              Violation.newBuilder()
+                  .setConstraintId("enum.defined_only")
+                  .setMessage("value must be one of the defined enum values")
+                  .build()));
     }
+    return new ValidationResult();
+  }
 
-    @Override
-    public boolean tautology() {
-        return false;
+  @Override
+  public void append(Evaluator eval) {
+    throw new UnsupportedOperationException("append not supported for DefinedEnum");
+  }
+
+  private boolean isValueValid(Descriptors.EnumValueDescriptor value) {
+    for (Descriptors.EnumValueDescriptor descriptor : valueDescriptors) {
+      if (descriptor.getNumber() == value.getNumber()) {
+        return true;
+      }
     }
-
-    @Override
-    public ValidationResult evaluate(Value val, boolean failFast) throws ExecutionException {
-        Descriptors.EnumValueDescriptor enumValue = val.value();
-        if (!isValueValid(enumValue)) {
-            return new ValidationResult(Collections.singletonList(Violation.newBuilder()
-                    .setConstraintId("enum.defined_only")
-                    .setMessage("value must be one of the defined enum values")
-                    .build()));
-        }
-        return new ValidationResult();
-    }
-
-    @Override
-    public void append(Evaluator eval) {
-        throw new UnsupportedOperationException("append not supported for DefinedEnum");
-    }
-
-    private boolean isValueValid(Descriptors.EnumValueDescriptor value) {
-        for (Descriptors.EnumValueDescriptor descriptor : valueDescriptors) {
-            if (descriptor.getNumber() == value.getNumber()) {
-                return true;
-            }
-        }
-        return false;
-    }
-
+    return false;
+  }
 }

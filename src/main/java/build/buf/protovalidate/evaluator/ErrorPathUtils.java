@@ -16,29 +16,28 @@ package build.buf.protovalidate.evaluator;
 
 import build.buf.gen.buf.validate.Violation;
 import com.google.common.base.Strings;
-
 import java.util.List;
 import java.util.stream.Collectors;
 
 class ErrorPathUtils {
-    public static List<Violation> prefixErrorPaths(List<Violation> violations, String format, Object... args) {
-        String prefix = String.format(format, args);
+  public static List<Violation> prefixErrorPaths(
+      List<Violation> violations, String format, Object... args) {
+    String prefix = String.format(format, args);
+    return violations.stream()
+        .map(
+            violation -> {
+              String fieldPath = violation.getFieldPath();
+              String prefixedFieldPath;
+              if (fieldPath.isEmpty()) {
+                prefixedFieldPath = prefix;
+              } else if (fieldPath.charAt(0) == '[') {
+                prefixedFieldPath = prefix + fieldPath;
+              } else {
+                prefixedFieldPath = Strings.lenientFormat("%s.%s", prefix, fieldPath);
+              }
 
-        return violations.stream()
-                .map(violation -> {
-                    String fieldPath = violation.getFieldPath();
-                    String prefixedFieldPath;
-
-                    if (fieldPath.isEmpty()) {
-                        prefixedFieldPath = prefix;
-                    } else if (fieldPath.charAt(0) == '[') {
-                        prefixedFieldPath = prefix + fieldPath;
-                    } else {
-                        prefixedFieldPath = Strings.lenientFormat("%s.%s", prefix, fieldPath);
-                    }
-
-                    return violation.toBuilder().setFieldPath(prefixedFieldPath).build();
-                })
-                .collect(Collectors.toList());
-    }
+              return violation.toBuilder().setFieldPath(prefixedFieldPath).build();
+            })
+        .collect(Collectors.toList());
+  }
 }

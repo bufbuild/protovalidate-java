@@ -33,6 +33,12 @@ allprojects {
     apply(plugin = "com.diffplug.spotless")
     configure<SpotlessExtension> {
         setEnforceCheck(false) // Disables lint on gradle builds.
+        java {
+            importOrder()
+            removeUnusedImports()
+            googleJavaFormat()
+            endWithNewline()
+        }
     }
 }
 

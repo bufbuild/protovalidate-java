@@ -19,51 +19,43 @@ import build.buf.protovalidate.results.ExecutionException;
 import build.buf.protovalidate.results.ValidationResult;
 import com.google.protobuf.Descriptors.OneofDescriptor;
 import com.google.protobuf.Message;
-
 import java.util.Collections;
 
-/**
- * {@link OneofEvaluator} performs validation on a oneof union.
- */
+/** {@link OneofEvaluator} performs validation on a oneof union. */
 public class OneofEvaluator implements Evaluator {
-    /**
-     * The {@link OneofDescriptor} targeted by this evaluator.
-     */
-    private final OneofDescriptor descriptor;
-    /**
-     * Indicates that a member of the oneof must be set.
-     */
-    private final boolean required;
+  /** The {@link OneofDescriptor} targeted by this evaluator. */
+  private final OneofDescriptor descriptor;
+  /** Indicates that a member of the oneof must be set. */
+  private final boolean required;
 
-    /**
-     * Constructs a {@link OneofEvaluator}.
-     */
-    public OneofEvaluator(OneofDescriptor descriptor, boolean required) {
-        this.descriptor = descriptor;
-        this.required = required;
+  /** Constructs a {@link OneofEvaluator}. */
+  public OneofEvaluator(OneofDescriptor descriptor, boolean required) {
+    this.descriptor = descriptor;
+    this.required = required;
+  }
+
+  @Override
+  public boolean tautology() {
+    return !required;
+  }
+
+  @Override
+  public ValidationResult evaluate(Value val, boolean failFast) throws ExecutionException {
+    Message message = val.messageValue();
+    if (required && (message.getOneofFieldDescriptor(descriptor) == null)) {
+      return new ValidationResult(
+          Collections.singletonList(
+              Violation.newBuilder()
+                  .setFieldPath(descriptor.getName())
+                  .setConstraintId("required")
+                  .setMessage("exactly one field is required in oneof")
+                  .build()));
     }
+    return new ValidationResult();
+  }
 
-    @Override
-    public boolean tautology() {
-        return !required;
-    }
-
-    @Override
-    public ValidationResult evaluate(Value val, boolean failFast) throws ExecutionException {
-        Message message = val.messageValue();
-        if (required && (message.getOneofFieldDescriptor(descriptor) == null)) {
-            return new ValidationResult(Collections.singletonList(Violation.newBuilder()
-                    .setFieldPath(descriptor.getName())
-                    .setConstraintId("required")
-                    .setMessage("exactly one field is required in oneof")
-                    .build()));
-        }
-        return new ValidationResult();
-    }
-
-    @Override
-    public void append(Evaluator eval) {
-        throw new UnsupportedOperationException("append not supported for Oneof");
-    }
-
+  @Override
+  public void append(Evaluator eval) {
+    throw new UnsupportedOperationException("append not supported for Oneof");
+  }
 }

@@ -15,20 +15,11 @@
 package build.buf.protovalidate.results;
 
 /**
- * {@link ExecutionException} extends {@link ValidationException} is returned when a constraint fails to execute.
- * This is a fatal error.
+ * {@link ExecutionException} extends {@link ValidationException} is returned when a constraint
+ * fails to execute. This is a fatal error.
  */
 public class ExecutionException extends ValidationException {
-
-    public ExecutionException(String message, Throwable cause) {
-        super(message, cause);
-    }
-
-    public ExecutionException(Throwable cause) {
-        super(cause);
-    }
-
-    public ExecutionException(String format, Object... args) {
-        super(String.format(format, args));
-    }
+  public ExecutionException(String format, Object... args) {
+    super(String.format(format, args));
+  }
 }

@@ -19,78 +19,72 @@ import build.buf.protovalidate.results.ExecutionException;
 import build.buf.protovalidate.results.ValidationResult;
 import com.google.protobuf.Descriptors.FieldDescriptor;
 import com.google.protobuf.Message;
-
 import java.util.Collections;
 import java.util.List;
 
-/**
- * Performs validation on a single message field, defined by its descriptor.
- */
+/** Performs validation on a single message field, defined by its descriptor. */
 class FieldEvaluator implements Evaluator {
-    /**
-     * The {@link ValueEvaluator} to apply to the field's value
-     */
-    public final ValueEvaluator valueEvaluator;
-    /**
-     * The {@link FieldDescriptor} targeted by this evaluator
-     */
-    private final FieldDescriptor descriptor;
-    /**
-     * Indicates that the field must have a set value.
-     */
-    private final boolean required;
-    /**
-     * Indicates that the evaluators should not be applied to this field
-     * if the value is unset. Fields that contain messages, are prefixed with
-     * `optional`, or are part of a oneof are considered optional. evaluators
-     * will still be applied if the field is set as the zero value.
-     */
-    private final boolean optional;
+  /** The {@link ValueEvaluator} to apply to the field's value */
+  public final ValueEvaluator valueEvaluator;
+  /** The {@link FieldDescriptor} targeted by this evaluator */
+  private final FieldDescriptor descriptor;
+  /** Indicates that the field must have a set value. */
+  private final boolean required;
+  /**
+   * Indicates that the evaluators should not be applied to this field if the value is unset. Fields
+   * that contain messages, are prefixed with `optional`, or are part of a oneof are considered
+   * optional. evaluators will still be applied if the field is set as the zero value.
+   */
+  private final boolean optional;
 
+  /** Constructs a new {@link FieldEvaluator} */
+  FieldEvaluator(
+      ValueEvaluator valueEvaluator,
+      FieldDescriptor descriptor,
+      boolean required,
+      boolean optional) {
+    this.valueEvaluator = valueEvaluator;
+    this.descriptor = descriptor;
+    this.required = required;
+    this.optional = optional;
+  }
 
-    /**
-     * Constructs a new {@link FieldEvaluator}
-     */
-    FieldEvaluator(ValueEvaluator valueEvaluator, FieldDescriptor descriptor, boolean required, boolean optional) {
-        this.valueEvaluator = valueEvaluator;
-        this.descriptor = descriptor;
-        this.required = required;
-        this.optional = optional;
+  @Override
+  public boolean tautology() {
+    return !required && valueEvaluator.tautology();
+  }
+
+  @Override
+  public ValidationResult evaluate(Value val, boolean failFast) throws ExecutionException {
+    Message message = val.messageValue();
+    boolean hasField;
+    if (descriptor.isRepeated()) {
+      hasField = message.getRepeatedFieldCount(descriptor) != 0;
+    } else {
+      hasField = message.hasField(descriptor);
     }
-
-    @Override
-    public boolean tautology() {
-        return !required && valueEvaluator.tautology();
+    if (required && !hasField) {
+      return new ValidationResult(
+          Collections.singletonList(
+              Violation.newBuilder()
+                  .setFieldPath(descriptor.getName())
+                  .setConstraintId("required")
+                  .setMessage("value is required")
+                  .build()));
     }
-
-    @Override
-    public ValidationResult evaluate(Value val, boolean failFast) throws ExecutionException {
-        Message message = val.messageValue();
-        boolean hasField;
-        if (descriptor.isRepeated()) {
-            hasField = message.getRepeatedFieldCount(descriptor) != 0;
-        } else {
-            hasField = message.hasField(descriptor);
-        }
-        if (required && !hasField) {
-            return new ValidationResult(Collections.singletonList(Violation.newBuilder()
-                    .setFieldPath(descriptor.getName())
-                    .setConstraintId("required")
-                    .setMessage("value is required")
-                    .build()));
-        }
-
-        if ((optional || valueEvaluator.getIgnoreEmpty()) && !hasField) {
-            return new ValidationResult();
-        }
-        Object fieldValue = message.getField(descriptor);
-        ValidationResult evalResult = valueEvaluator.evaluate(new Value(descriptor, fieldValue), failFast);
-        List<Violation> violations = ErrorPathUtils.prefixErrorPaths(evalResult.violations, "%s", descriptor.getName());
-        return new ValidationResult(violations);
+    if ((optional || valueEvaluator.getIgnoreEmpty()) && !hasField) {
+      return new ValidationResult();
     }
+    Object fieldValue = message.getField(descriptor);
+    ValidationResult evalResult =
+        valueEvaluator.evaluate(new Value(descriptor, fieldValue), failFast);
+    List<Violation> violations =
+        ErrorPathUtils.prefixErrorPaths(evalResult.violations, "%s", descriptor.getName());
+    return new ValidationResult(violations);
+  }
 
-    @Override
-    public void append(Evaluator eval) {
-        throw new UnsupportedOperationException("append not supported for FieldEval");
-    }
+  @Override
+  public void append(Evaluator eval) {
+    throw new UnsupportedOperationException("append not supported for FieldEval");
+  }
 }

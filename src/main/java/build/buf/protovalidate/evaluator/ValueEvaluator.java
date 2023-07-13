@@ -20,7 +20,6 @@ import build.buf.protovalidate.results.ExecutionException;
 import build.buf.protovalidate.results.ValidationResult;
 import com.google.protobuf.Descriptors;
 import com.google.protobuf.DynamicMessage;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,71 +28,66 @@ import java.util.List;
  * field, repeated elements, or the keys/values of a map.
  */
 class ValueEvaluator implements Evaluator {
-    /**
-     * The default or zero-value for this value's type.
-     */
-    private final Object zero;
-    /**
-     * The evaluators applied to a value.
-     */
-    private final List<Evaluator> evaluators = new ArrayList<>();
-    /**
-     * Indicates that the Constraints should not be applied if the
-     * field is unset or the default (typically zero) value.
-     */
-    private final boolean ignoreEmpty;
+  /** The default or zero-value for this value's type. */
+  private final Object zero;
+  /** The evaluators applied to a value. */
+  private final List<Evaluator> evaluators = new ArrayList<>();
+  /**
+   * Indicates that the Constraints should not be applied if the field is unset or the default
+   * (typically zero) value.
+   */
+  private final boolean ignoreEmpty;
 
-    /**
-     * Constructs a {@link ValueEvaluator}.
-     */
-    ValueEvaluator(FieldConstraints fieldConstraints, Descriptors.FieldDescriptor fieldDescriptor) {
-        if (fieldDescriptor.getType() == Descriptors.FieldDescriptor.Type.MESSAGE) {
-            DynamicMessage message = DynamicMessage.getDefaultInstance(fieldDescriptor.getContainingType());
-            this.zero = message.getField(fieldDescriptor);
-        } else {
-            this.zero = fieldDescriptor.getDefaultValue();
-        }
-        this.ignoreEmpty = fieldConstraints.getIgnoreEmpty();
+  /** Constructs a {@link ValueEvaluator}. */
+  ValueEvaluator(FieldConstraints fieldConstraints, Descriptors.FieldDescriptor fieldDescriptor) {
+    if (fieldDescriptor.getType() == Descriptors.FieldDescriptor.Type.MESSAGE) {
+      DynamicMessage message =
+          DynamicMessage.getDefaultInstance(fieldDescriptor.getContainingType());
+      this.zero = message.getField(fieldDescriptor);
+    } else {
+      this.zero = fieldDescriptor.getDefaultValue();
     }
+    this.ignoreEmpty = fieldConstraints.getIgnoreEmpty();
+  }
 
-    public boolean getIgnoreEmpty() {
-        return ignoreEmpty;
-    }
+  public boolean getIgnoreEmpty() {
+    return ignoreEmpty;
+  }
 
-    @Override
-    public boolean tautology() {
-        return evaluators.isEmpty();
-    }
+  @Override
+  public boolean tautology() {
+    return evaluators.isEmpty();
+  }
 
-    @Override
-    public ValidationResult evaluate(Value val, boolean failFast) throws ExecutionException {
-        if (ignoreEmpty && isZero(val)) {
-            return new ValidationResult();
-        }
-        List<Violation> violations = new ArrayList<>();
-        for (Evaluator evaluator : evaluators) {
-            ValidationResult evalResult = evaluator.evaluate(val, failFast);
-            if (failFast && !evalResult.violations.isEmpty()) {
-                return evalResult;
-            }
-            violations.addAll(evalResult.violations);
-        }
-        return new ValidationResult(violations);
+  @Override
+  public ValidationResult evaluate(Value val, boolean failFast) throws ExecutionException {
+    if (ignoreEmpty && isZero(val)) {
+      return new ValidationResult();
     }
+    List<Violation> violations = new ArrayList<>();
+    for (Evaluator evaluator : evaluators) {
+      ValidationResult evalResult = evaluator.evaluate(val, failFast);
+      if (failFast && !evalResult.violations.isEmpty()) {
+        return evalResult;
+      }
+      violations.addAll(evalResult.violations);
+    }
+    return new ValidationResult(violations);
+  }
 
-    @Override
-    public void append(Evaluator eval) {
-        if (eval != null && !eval.tautology()) {
-            this.evaluators.add(eval);
-        }
+  @Override
+  public void append(Evaluator eval) {
+    if (eval != null && !eval.tautology()) {
+      this.evaluators.add(eval);
     }
+  }
 
-    private boolean isZero(Value val) {
-        if (val == null) {
-            return false;
-        } else if (zero == null) {
-            return val.value() == null;
-        }
-        return zero.equals(val.value());
+  private boolean isZero(Value val) {
+    if (val == null) {
+      return false;
+    } else if (zero == null) {
+      return val.value() == null;
     }
+    return zero.equals(val.value());
+  }
 }

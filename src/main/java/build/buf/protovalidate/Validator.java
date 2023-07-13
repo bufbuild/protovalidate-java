@@ -27,68 +27,62 @@ import org.projectnessie.cel.Env;
 import org.projectnessie.cel.Library;
 
 public class Validator {
-    private final EvaluatorBuilder evaluatorBuilder;
-    private final boolean failFast;
+  private final EvaluatorBuilder evaluatorBuilder;
+  private final boolean failFast;
 
-    /**
-     * Constructs a new {@link Validator}.
-     */
-    public Validator(Config config) {
-        Env env = Env.newEnv(Library.Lib(new ValidateLibrary()));
-        this.evaluatorBuilder = new EvaluatorBuilder(env, config.disableLazy);
-        this.failFast = config.failFast;
-    }
+  /** Constructs a new {@link Validator}. */
+  public Validator(Config config) {
+    Env env = Env.newEnv(Library.Lib(new ValidateLibrary()));
+    this.evaluatorBuilder = new EvaluatorBuilder(env, config.disableLazy);
+    this.failFast = config.failFast;
+  }
 
-    /**
-     *
-     * Checks that message satisfies its constraints. Constraints are
-     * defined within the Protobuf file as options from the buf.validate package.
-     * A {@link ValidationResult} is returned which contains a list of violations. If the
-     * list is empty, the message is valid. If the list is non-empty, the message
-     * is invalid.
-     * An exception is thrown if the message cannot be validated because the evaluation
-     * logic for the message cannot be built ({@link build.buf.protovalidate.results.CompilationException}),
-     *  or there is a type error when attempting to evaluate a CEL expression
-     * associated with the message ({@link build.buf.protovalidate.results.ExecutionException}).
-     *
-     * @param msg {@link Message} to be validated
-     * @return {@link build.buf.protovalidate.results.ValidationResult} from the evaluation.
-     * @throws ValidationException
-     */
-    public ValidationResult validate(Message msg) throws ValidationException {
-        if (msg == null) {
-            return new ValidationResult();
-        }
-        Descriptor descriptor = msg.getDescriptorForType();
-        Evaluator evaluator = evaluatorBuilder.load(descriptor);
-        return evaluator.evaluate(new Value.MessageValue(msg), failFast);
+  /**
+   * Checks that message satisfies its constraints. Constraints are defined within the Protobuf file
+   * as options from the buf.validate package. A {@link ValidationResult} is returned which contains
+   * a list of violations. If the list is empty, the message is valid. If the list is non-empty, the
+   * message is invalid. An exception is thrown if the message cannot be validated because the
+   * evaluation logic for the message cannot be built ({@link
+   * build.buf.protovalidate.results.CompilationException}), or there is a type error when
+   * attempting to evaluate a CEL expression associated with the message ({@link
+   * build.buf.protovalidate.results.ExecutionException}).
+   *
+   * @param msg {@link Message} to be validated
+   * @return {@link build.buf.protovalidate.results.ValidationResult} from the evaluation.
+   * @throws ValidationException
+   */
+  public ValidationResult validate(Message msg) throws ValidationException {
+    if (msg == null) {
+      return new ValidationResult();
     }
+    Descriptor descriptor = msg.getDescriptorForType();
+    Evaluator evaluator = evaluatorBuilder.load(descriptor);
+    return evaluator.evaluate(new Value.MessageValue(msg), failFast);
+  }
 
-    /**
-     * Allows warming up the {@link Validator} with messages that are
-     * expected to be validated. {@link Message} included transitively (i.e., fields with
-     * message values) are automatically handled.
-     *
-     * @param messages the list of {@link Message} to load.
-     * @throws CompilationException
-     */
-    public void loadMessages(Message... messages) throws CompilationException {
-        for (Message message : messages) {
-            this.evaluatorBuilder.load(message.getDescriptorForType());
-        }
+  /**
+   * Allows warming up the {@link Validator} with messages that are expected to be validated. {@link
+   * Message} included transitively (i.e., fields with message values) are automatically handled.
+   *
+   * @param messages the list of {@link Message} to load.
+   * @throws CompilationException
+   */
+  public void loadMessages(Message... messages) throws CompilationException {
+    for (Message message : messages) {
+      this.evaluatorBuilder.load(message.getDescriptorForType());
     }
+  }
 
-    /**
-     * Allows warming up the Validator with message
-     * descriptors that are expected to be validated. Messages included transitively
-     * (i.e. fields with message values) are automatically handled.
-     *
-     * @param descriptors the list of {@link com.google.protobuf.Descriptors.Descriptor} to load.
-     * @throws CompilationException
-     */
-    public void loadDescriptors(Descriptor... descriptors) throws CompilationException {
-        for (Descriptor descriptor : descriptors) {
-            this.evaluatorBuilder.load(descriptor);
-        }
+  /**
+   * Allows warming up the Validator with message descriptors that are expected to be validated.
+   * Messages included transitively (i.e. fields with message values) are automatically handled.
+   *
+   * @param descriptors the list of {@link com.google.protobuf.Descriptors.Descriptor} to load.
+   * @throws CompilationException
+   */
+  public void loadDescriptors(Descriptor... descriptors) throws CompilationException {
+    for (Descriptor descriptor : descriptors) {
+      this.evaluatorBuilder.load(descriptor);
     }
+  }
 }
