@@ -16,7 +16,7 @@ GO ?= go
 ARGS ?= --expected_failures=conformance/nonconforming.yaml --strict_message
 JAVA_COMPILE_OPTIONS = --enable-preview --release $(JAVA_VERSION)
 JAVA_OPTIONS = --enable-preview
-PROTOVALIDATE_VERSION ?= v0.1.15
+PROTOVALIDATE_VERSION ?= v0.2.2
 JAVA_MAIN_CLASS = build.buf.protovalidate
 JAVA_SOURCES = $(wildcard src/main/java/**/**/**/*.java, src/main/java/**/**/*.java)
 JAVA_CLASSES = $(patsubst src/main/java/%.java, target/classes/%.class, $(JAVA_SOURCES))
