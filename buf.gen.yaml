@@ -1,8 +1,0 @@
-version: v1
-managed:
-  enabled: true
-  java_package_prefix:
-    default: build
-plugins:
-  - plugin: buf.build/protocolbuffers/java:v23.3
-    out: .

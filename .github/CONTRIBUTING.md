@@ -12,6 +12,30 @@ our [Code of Conduct](./CODE_OF_CONDUCT.md) before participating.
 
 ## How Can I Contribute?
 
+1. Clone the repository by executing the following command in your terminal:
+
+```
+git clone git@github.com:bufbuild/protovalidate-java.git
+cd protovalidate-java
+```
+
+Then, make any changes you'd like. We use a Makefile to test and lint our code,
+so you'll need a few non-Java tools:
+
+* GNU Make (to use the Makefile): part of the `build-essential` package on
+  Debian-derived Linux distributions (including Ubuntu), and part of
+  `xcode-select --install` on Macs.
+* Go (for the conformance test runner): often available in your system package
+  manager (`apt`, `dnf`, `brew`, etc.), but most reliable when [installed
+  directly from upstream](https://go.dev/doc/install).
+* Ensure that you have Gradle installed on your system. You can download and 
+  install Gradle from the official Gradle website (https://gradle.org/install/).
+
+With Go and GNU Make installed, you can verify that your changes pass tests and
+lint checks by running `make`. If your Java interpreter isn't available as
+`java`, try `JAVA=java make`. For a list of other useful commands, run
+`make help`.
+
 ### Reporting Bugs
 
 Bugs are tracked as GitHub issues. If you discover a problem
@@ -19,7 +43,7 @@ with `protovalidate`, we want to hear about it. Here's how you can report a bug:
 
 1. __Ensure the bug was not already reported__: Before creating a new issue,
    please do a search
-   in [issues](https://github.com/bufbuild/protovalidate/issues) to see if
+   in [issues][issues] to see if
    the problem has already been reported. If it has and the issue is still open,
    add a comment to the existing issue instead of opening a new one.
 
@@ -46,7 +70,7 @@ please read [the section below](#language-support-requirements) first.
 
 1. __Check if the enhancement is already suggested__: Before creating a new
    issue, please do a search
-   in [issues](https://github.com/bufbuild/protovalidate/issues) to see if
+   in [issues][issues] to see if
    the idea or enhancement has already been suggested. If it has and the issue
    is still open, add a comment to the existing issue instead of opening a new
    one.
@@ -85,7 +109,8 @@ adding a new language:
 3. __Custom Function Equivalence__: Ensure that custom functions have equivalent
    behavior across all languages. This uniformity is essential to maintain the
    integrity and consistency of the project. Check out
-   the [Custom Functions](../docs/cel.md#custom-library-in-protovalidate) for more
+   the [Custom Functions](https://github.com/bufbuild/protovalidate/tree/main/docs/cel.md#custom-library-in-protovalidate)
+   for more
 
 If you are interested in adding a new language to `protovalidate`, please open
 an issue to discuss the details and requirements. We will be more than happy to
@@ -146,8 +171,10 @@ contributions!
 Remember, you can reach out to us at any time, and we're looking forward to
 working together to make `protovalidate` the best it can be.
 
-[file-bug]: https://github.com/bufbuild/protovalidate/issues/new?assignees=&labels=Bug&template=bug_report.md&title=%5BBUG%5D
+[issues]: https://github.com/bufbuild/protovalidate-java/issues
 
-[file-feature-request]: https://github.com/bufbuild/protovalidate/issues/new?assignees=&labels=Feature&template=feature_request.md&title=%5BFeature+Request%5D
+[file-bug]: https://github.com/bufbuild/protovalidate-java/issues/new?assignees=&labels=Bug&template=bug_report.md&title=%5BBUG%5D
+
+[file-feature-request]: https://github.com/bufbuild/protovalidate=java/issues/new?assignees=&labels=Feature&template=feature_request.md&title=%5BFeature+Request%5D
 
 [cel-spec]: https://github.com/google/cel-spec

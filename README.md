@@ -19,10 +19,10 @@ Other `protovalidate` runtime implementations include:
 
 - C++: [`protovalidate-cc`](https://github.com/bufbuild/protovalidate-cc)
 - Go: [`protovalidate-go`](https://github.com/bufbuild/protovalidate-go)
+- Python: [`protovalidate-python`](https://github.com/bufbuild/protovalidate-python)
 
 And others coming soon:
 
-- Python: `protovalidate-py`
 - TypeScript: `protovalidate-ts`
 
 ## Installation
