@@ -112,12 +112,8 @@ public class ConstraintCache {
           }
         }
         Ast residual = finalEnv.residualAst(astExpression.ast, evalResult.getEvalDetails());
-        AstExpression residualAstExpression = new AstExpression(residual, astExpression.source);
-
         programs.add(
-            new CompiledProgram(
-                finalEnv.program(residualAstExpression.ast, rulesOption),
-                residualAstExpression.source));
+            new CompiledProgram(finalEnv.program(residual, rulesOption), astExpression.source));
       } catch (Exception e) {
         programs.add(
             new CompiledProgram(

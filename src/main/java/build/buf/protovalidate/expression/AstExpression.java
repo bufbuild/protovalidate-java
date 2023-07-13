@@ -25,7 +25,7 @@ public class AstExpression {
   public final Ast ast;
   public final Expression source;
 
-  public AstExpression(Ast ast, Expression source) {
+  private AstExpression(Ast ast, Expression source) {
     this.ast = ast;
     this.source = source;
   }
