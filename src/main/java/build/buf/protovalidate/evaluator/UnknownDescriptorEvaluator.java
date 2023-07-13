@@ -14,9 +14,12 @@
 
 package build.buf.protovalidate.evaluator;
 
+import build.buf.gen.buf.validate.Violation;
 import build.buf.protovalidate.results.ExecutionException;
 import build.buf.protovalidate.results.ValidationResult;
 import com.google.protobuf.Descriptors.Descriptor;
+
+import java.util.Collections;
 
 /**
  * An {@link Evaluator} for an unknown descriptor. This is
@@ -36,10 +39,6 @@ class UnknownDescriptorEvaluator implements Evaluator {
         this.desc = desc;
     }
 
-    ValidationResult err() {
-        throw new ValidationResult("No evaluator available for " + desc.getFullName());
-    }
-
     @Override
     public boolean tautology() {
         return false;
@@ -47,7 +46,7 @@ class UnknownDescriptorEvaluator implements Evaluator {
 
     @Override
     public ValidationResult evaluate(Value val, boolean failFast) throws ExecutionException {
-        throw this.err();
+        return new ValidationResult(Collections.singletonList(Violation.newBuilder().setMessage("No evaluator available for " + desc.getFullName()).build()));
     }
 
     @Override

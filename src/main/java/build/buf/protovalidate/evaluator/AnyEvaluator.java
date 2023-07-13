@@ -20,7 +20,9 @@ import build.buf.protovalidate.results.ValidationResult;
 import com.google.protobuf.Descriptors;
 import com.google.protobuf.Message;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -45,16 +47,16 @@ class AnyEvaluator implements Evaluator {
     @Override
     public ValidationResult evaluate(Value val, boolean failFast) throws ExecutionException {
         Message o = val.messageValue();
-        ValidationResult evalResult = new ValidationResult();
+        List<Violation> violationList = new ArrayList<>();
         String typeURL = (String) o.getField(typeURLDescriptor);
         if (in != null && in.size() > 0) {
             if (!in.containsKey(typeURL)) {
                 Violation.Builder violation = Violation.newBuilder();
                 violation.setConstraintId("any.in");
                 violation.setMessage("type URL must be in the allow list");
-                evalResult.addViolation(violation.build());
+                violationList.add(violation.build());
                 if (failFast) {
-                    return evalResult;
+                    return new ValidationResult(violationList);
                 }
             }
         }
@@ -64,10 +66,10 @@ class AnyEvaluator implements Evaluator {
                 Violation.Builder violation = Violation.newBuilder();
                 violation.setConstraintId("any.not_in");
                 violation.setMessage("type URL must not be in the block list");
-                evalResult.addViolation(violation.build());
+                violationList.add(violation.build());
             }
         }
-        return evalResult;
+        return new ValidationResult(violationList);
     }
 
     @Override

@@ -20,6 +20,8 @@ import build.buf.protovalidate.results.ValidationResult;
 import com.google.protobuf.Descriptors.OneofDescriptor;
 import com.google.protobuf.Message;
 
+import java.util.Collections;
+
 /**
  * {@link OneofEvaluator} performs validation on a oneof union.
  */
@@ -50,14 +52,11 @@ public class OneofEvaluator implements Evaluator {
     public ValidationResult evaluate(Value val, boolean failFast) throws ExecutionException {
         Message message = val.messageValue();
         if (required && (message.getOneofFieldDescriptor(descriptor) == null)) {
-            ValidationResult evalResult = new ValidationResult();
-            Violation violation = Violation.newBuilder()
+            return new ValidationResult(Collections.singletonList(Violation.newBuilder()
                     .setFieldPath(descriptor.getName())
                     .setConstraintId("required")
                     .setMessage("exactly one field is required in oneof")
-                    .build();
-            evalResult.addViolation(violation);
-            return evalResult;
+                    .build()));
         }
         return new ValidationResult();
     }

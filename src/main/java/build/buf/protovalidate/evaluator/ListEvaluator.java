@@ -15,10 +15,12 @@
 package build.buf.protovalidate.evaluator;
 
 import build.buf.gen.buf.validate.FieldConstraints;
+import build.buf.gen.buf.validate.Violation;
 import build.buf.protovalidate.results.ExecutionException;
 import build.buf.protovalidate.results.ValidationResult;
 import com.google.protobuf.Descriptors;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -45,17 +47,17 @@ class ListEvaluator implements Evaluator {
 
     @Override
     public ValidationResult evaluate(Value val, boolean failFast) throws ExecutionException {
-        ValidationResult validationResult = new ValidationResult();
-
+        List<Violation> allViolations = new ArrayList<>();
         List<Value> repeatedValues = val.repeatedValue();
         for (int i = 0; i < repeatedValues.size(); i++) {
             ValidationResult evalResult = itemConstraints.evaluate(repeatedValues.get(i), failFast);
-            evalResult.prefixErrorPaths("[%d]", i);
-            if (!validationResult.merge(evalResult, failFast)) {
+            List<Violation> violations = ErrorPathUtils.prefixErrorPaths(evalResult.violations, "[%d]", i);
+            if (failFast && !violations.isEmpty() ) {
                 return evalResult;
             }
+            allViolations.addAll(violations);
         }
-        return validationResult;
+        return new ValidationResult(allViolations);
     }
 
     @Override

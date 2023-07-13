@@ -20,6 +20,7 @@ import build.buf.protovalidate.expression.Variable;
 import build.buf.protovalidate.results.ExecutionException;
 import build.buf.protovalidate.results.ValidationResult;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -40,17 +41,17 @@ class CelPrograms implements Evaluator {
     @Override
     public ValidationResult evaluate(Value val, boolean failFast) throws ExecutionException {
         Variable activation = Variable.newThisVariable(val.value());
-        ValidationResult evalResult = new ValidationResult();
+        List<Violation> violationList = new ArrayList<>();
         for (CompiledProgram program : programs) {
             Violation violation = program.eval(activation);
             if (violation != null) {
-                evalResult.addViolation(violation);
+                violationList.add(violation);
                 if (failFast) {
                     break;
                 }
             }
         }
-        return evalResult;
+        return new ValidationResult(violationList);
     }
 
     @Override

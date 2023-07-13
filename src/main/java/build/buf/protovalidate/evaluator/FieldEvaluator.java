@@ -20,6 +20,9 @@ import build.buf.protovalidate.results.ValidationResult;
 import com.google.protobuf.Descriptors.FieldDescriptor;
 import com.google.protobuf.Message;
 
+import java.util.Collections;
+import java.util.List;
+
 /**
  * Performs validation on a single message field, defined by its descriptor.
  */
@@ -70,13 +73,11 @@ class FieldEvaluator implements Evaluator {
             hasField = message.hasField(descriptor);
         }
         if (required && !hasField) {
-            ValidationResult evalResult = new ValidationResult();
-            evalResult.addViolation(Violation.newBuilder()
+            return new ValidationResult(Collections.singletonList(Violation.newBuilder()
                     .setFieldPath(descriptor.getName())
                     .setConstraintId("required")
                     .setMessage("value is required")
-                    .build());
-            return evalResult;
+                    .build()));
         }
 
         if ((optional || valueEvaluator.getIgnoreEmpty()) && !hasField) {
@@ -84,8 +85,8 @@ class FieldEvaluator implements Evaluator {
         }
         Object fieldValue = message.getField(descriptor);
         ValidationResult evalResult = valueEvaluator.evaluate(new Value(descriptor, fieldValue), failFast);
-        evalResult.prefixErrorPaths("%s", descriptor.getName());
-        return evalResult;
+        List<Violation> violations = ErrorPathUtils.prefixErrorPaths(evalResult.violations, "%s", descriptor.getName());
+        return new ValidationResult(violations);
     }
 
     @Override

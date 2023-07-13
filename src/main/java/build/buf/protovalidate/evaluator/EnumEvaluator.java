@@ -20,6 +20,7 @@ import build.buf.protovalidate.results.ValidationResult;
 import com.google.protobuf.Descriptors;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -49,12 +50,10 @@ class EnumEvaluator implements Evaluator {
     public ValidationResult evaluate(Value val, boolean failFast) throws ExecutionException {
         Descriptors.EnumValueDescriptor enumValue = val.value();
         if (!isValueValid(enumValue)) {
-            ValidationResult evalResult = new ValidationResult();
-            evalResult.addViolation(Violation.newBuilder()
+            return new ValidationResult(Collections.singletonList(Violation.newBuilder()
                     .setConstraintId("enum.defined_only")
                     .setMessage("value must be one of the defined enum values")
-                    .build());
-            return evalResult;
+                    .build()));
         }
         return new ValidationResult();
     }

@@ -15,6 +15,7 @@
 package build.buf.protovalidate.evaluator;
 
 import build.buf.gen.buf.validate.FieldConstraints;
+import build.buf.gen.buf.validate.Violation;
 import build.buf.protovalidate.results.ExecutionException;
 import build.buf.protovalidate.results.ValidationResult;
 import com.google.protobuf.Descriptors;
@@ -69,14 +70,15 @@ class ValueEvaluator implements Evaluator {
         if (ignoreEmpty && isZero(val)) {
             return new ValidationResult();
         }
-        ValidationResult validationResult = new ValidationResult();
+        List<Violation> violations = new ArrayList<>();
         for (Evaluator evaluator : evaluators) {
             ValidationResult evalResult = evaluator.evaluate(val, failFast);
-            if (!validationResult.merge(evalResult, failFast)) {
+            if (failFast && !evalResult.violations.isEmpty()) {
                 return evalResult;
             }
+            violations.addAll(evalResult.violations);
         }
-        return validationResult;
+        return new ValidationResult(violations);
     }
 
     @Override

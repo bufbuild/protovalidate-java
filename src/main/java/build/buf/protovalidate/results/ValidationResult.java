@@ -15,32 +15,36 @@
 package build.buf.protovalidate.results;
 
 import build.buf.gen.buf.validate.Violation;
-import com.google.common.base.Strings;
 
-import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * {@link ValidationResult} is returned when a constraint is executed. It contains a list of violations.
  * This is non-fatal. If there are no violations, the constraint is considered to have passed.
  */
-public class ValidationResult extends RuntimeException {
+public class ValidationResult {
 
-    public List<Violation> violations;
+    public final List<Violation> violations;
 
     public ValidationResult() {
-        this.violations = new ArrayList<>();
+        this.violations = Collections.emptyList();
     }
 
-    public ValidationResult(String s) {
-        ValidationResult validationResult = new ValidationResult();
-        Violation violation = Violation.newBuilder().setMessage(s).build();
-        validationResult.addViolation(violation);
+    public ValidationResult(List<Violation> violations) {
+        this.violations = violations;
+    }
+
+    public boolean isSuccess() {
+        return violations.isEmpty();
+    }
+
+    public boolean isFailure() {
+        return !isSuccess();
     }
 
     @Override
-    public String getMessage() {
+    public String toString() {
         StringBuilder builder = new StringBuilder();
         builder.append("Validation error:");
         for (Violation violation : violations) {
@@ -52,49 +56,5 @@ public class ValidationResult extends RuntimeException {
             builder.append(String.format("%s [%s]", violation.getMessage(), violation.getConstraintId()));
         }
         return builder.toString();
-    }
-
-    public boolean isSuccess() {
-        return violations.isEmpty();
-    }
-
-    public boolean isFailure() {
-        return !isSuccess();
-    }
-
-    public void addViolation(Violation violation) {
-        if (violation != null) {
-            violations.add(violation);
-        }
-    }
-
-    public void prefixErrorPaths(String format, Object... args) {
-        String prefix = String.format(format, args);
-
-        violations = violations.stream()
-                .map(violation -> {
-                    String fieldPath = violation.getFieldPath();
-                    String prefixedFieldPath;
-
-                    if (fieldPath.isEmpty()) {
-                        prefixedFieldPath = prefix;
-                    } else if (fieldPath.charAt(0) == '[') {
-                        prefixedFieldPath = prefix + fieldPath;
-                    } else {
-                        prefixedFieldPath = Strings.lenientFormat("%s.%s", prefix, fieldPath);
-                    }
-
-                    return violation.toBuilder().setFieldPath(prefixedFieldPath).build();
-                })
-                .collect(Collectors.toList());
-    }
-
-    public boolean merge(Exception e, boolean failFast) {
-        if (!(e instanceof ValidationResult)) {
-            return false;
-        }
-        ValidationResult source = (ValidationResult) e;
-        violations.addAll(source.violations);
-        return !(failFast && violations.size() > 0);
     }
 }

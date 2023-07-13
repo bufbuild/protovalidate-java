@@ -16,10 +16,13 @@ package build.buf.protovalidate.evaluator;
 
 import build.buf.gen.buf.validate.FieldConstraints;
 import build.buf.gen.buf.validate.MapRules;
+import build.buf.gen.buf.validate.Violation;
 import build.buf.protovalidate.results.ExecutionException;
 import build.buf.protovalidate.results.ValidationResult;
 import com.google.protobuf.Descriptors;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -60,45 +63,48 @@ class MapEvaluator implements Evaluator {
 
     @Override
     public ValidationResult evaluate(Value val, boolean failFast) throws ExecutionException {
-        ValidationResult validationResult = new ValidationResult();
+        List<Violation> violations = new ArrayList<>();
         Map<Value, Value> mapValue = val.mapValue();
         for (Map.Entry<Value, Value> entry : mapValue.entrySet()) {
             ValidationResult evalResult = evalPairs(entry.getKey(), entry.getValue(), failFast);
-            if (!validationResult.merge(evalResult, failFast)) {
-                return validationResult;
+            if (failFast && !evalResult.violations.isEmpty()) {
+                return evalResult;
             }
+            violations.addAll(evalResult.violations);
         }
-        return validationResult;
+        return new ValidationResult(violations);
     }
 
     private ValidationResult evalPairs(Value key, Value value, boolean failFast) {
-        ValidationResult evalResult = new ValidationResult();
-
+        List<Violation> violations = new ArrayList<>();
         try {
             ValidationResult keyEvalResult = keyEvaluator.evaluate(key, failFast);
-            if (!evalResult.merge(keyEvalResult, failFast)) {
+            if (failFast && !keyEvalResult.violations.isEmpty()) {
                 return keyEvalResult;
             }
+            violations.addAll(keyEvalResult.violations);
         } catch (ExecutionException e) {
             throw new RuntimeException(e);
         }
 
         try {
             ValidationResult valueEvalResult = valueEvaluator.evaluate(value, failFast);
-            if (!evalResult.merge(valueEvalResult, failFast)) {
+            if (failFast && !valueEvalResult.violations.isEmpty()) {
                 return valueEvalResult;
             }
+            violations.addAll(valueEvalResult.violations);
         } catch (ExecutionException e) {
             throw new RuntimeException(e);
         }
 
         Object keyName = key.value();
+        List<Violation> prefixedViolations;
         if (keyName instanceof Number) {
-            evalResult.prefixErrorPaths("[%s]", keyName);
+            prefixedViolations = ErrorPathUtils.prefixErrorPaths(violations, "[%s]", keyName);
         } else {
-            evalResult.prefixErrorPaths("[\"%s\"]", keyName);
+            prefixedViolations = ErrorPathUtils.prefixErrorPaths(violations, "[\"%s\"]", keyName);
         }
-        return evalResult;
+        return new ValidationResult(prefixedViolations);
     }
 
     @Override
