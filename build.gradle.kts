@@ -38,6 +38,7 @@ allprojects {
             removeUnusedImports()
             googleJavaFormat()
             endWithNewline()
+            trimTrailingWhitespace()
         }
     }
 }
