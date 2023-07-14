@@ -1,9 +1,3 @@
-kitchen_sink:
-  - field/transitive/invalid
-  - many/all-non-message-fields/invalid
-  - field/valid
-  - field/invalid
-  - field/embedded/invalid
 standard_constraints/fixed64:
   - not_in/invalid
   - in/valid

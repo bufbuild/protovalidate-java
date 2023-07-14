@@ -1,6 +1,6 @@
 [versions]
 assertj = "3.11.0"
-cel = "0.3.19"
+cel = "0.3.20"
 junit = "4.13.2"
 protobuf = "3.23.1"
 
