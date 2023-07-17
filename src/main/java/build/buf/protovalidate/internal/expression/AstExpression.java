@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package build.buf.protovalidate.expression;
+package build.buf.protovalidate.internal.expression;
 
 import build.buf.protovalidate.results.CompilationException;
 import com.google.api.expr.v1alpha1.Type;

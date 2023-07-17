@@ -12,12 +12,12 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package build.buf.protovalidate.celext;
+package build.buf.protovalidate.internal.celext;
 
 import static org.projectnessie.cel.EnvOption.declarations;
 import static org.projectnessie.cel.ProgramOption.functions;
 
-import build.buf.protovalidate.expression.NowVariable;
+import build.buf.protovalidate.internal.expression.NowVariable;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -30,7 +30,7 @@ public class ValidateLibrary implements Library {
 
   @Override
   public List<EnvOption> getCompileOptions() {
-    return Collections.singletonList(declarations(CustomDecl.create()));
+    return Collections.singletonList(declarations(CustomDeclarations.create()));
   }
 
   @Override

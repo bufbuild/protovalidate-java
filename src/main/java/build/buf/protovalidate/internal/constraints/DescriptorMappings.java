@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package build.buf.protovalidate.constraints;
+package build.buf.protovalidate.internal.constraints;
 
 import build.buf.gen.buf.validate.FieldConstraints;
 import com.google.api.expr.v1alpha1.Type;
@@ -151,5 +151,55 @@ public class DescriptorMappings {
             .setPrimitive(Type.PrimitiveType.PRIMITIVE_TYPE_UNSPECIFIED)
             .build();
     }
+  }
+
+  /**
+   * Produces the field descriptor from the {@link FieldConstraints} 'type' oneof that matches the
+   * provided target field descriptor. If the returned value is null, the field does not expect any
+   * standard constraints.
+   */
+  static FieldDescriptor getExpectedConstraintDescriptor(
+      FieldDescriptor fieldDescriptor, Boolean forItems) {
+    if (fieldDescriptor.isMapField()) {
+      return DescriptorMappings.MAP_FIELD_CONSTRAINTS_DESC;
+    } else if (fieldDescriptor.isRepeated() && !forItems) {
+      return DescriptorMappings.REPEATED_FIELD_CONSTRAINTS_DESC;
+    } else if (fieldDescriptor.getJavaType() == FieldDescriptor.JavaType.MESSAGE) {
+      return DescriptorMappings.EXPECTED_WKT_CONSTRAINTS.get(
+          fieldDescriptor.getMessageType().getFullName());
+    } else {
+      return DescriptorMappings.EXPECTED_STANDARD_CONSTRAINTS.get(fieldDescriptor.getType());
+    }
+  }
+
+  /**
+   * Resolves the CEL value type for the provided {@link FieldDescriptor}. If forItems is true, the
+   * type for the repeated list items is returned instead of the list type itself.
+   */
+  static Type getCELType(FieldDescriptor fieldDescriptor, Boolean forItems) {
+    if (!forItems) {
+      if (fieldDescriptor.isMapField()) {
+        return Decls.newMapType(
+            getCELType(fieldDescriptor.getMessageType().findFieldByNumber(1), true),
+            getCELType(fieldDescriptor.getMessageType().findFieldByNumber(2), true));
+      } else if (fieldDescriptor.isRepeated()) {
+        return Decls.newListType(getCELType(fieldDescriptor, true));
+      }
+    }
+
+    if (fieldDescriptor.getType() == FieldDescriptor.Type.MESSAGE) {
+      String fqn = fieldDescriptor.getMessageType().getFullName();
+      switch (fqn) {
+        case "google.protobuf.Any":
+          return Decls.newWellKnownType(Type.WellKnownType.ANY);
+        case "google.protobuf.Duration":
+          return Decls.newWellKnownType(Type.WellKnownType.DURATION);
+        case "google.protobuf.Timestamp":
+          return Decls.newWellKnownType(Type.WellKnownType.TIMESTAMP);
+        default:
+          return Decls.newObjectType(fieldDescriptor.getFullName());
+      }
+    }
+    return DescriptorMappings.protoKindToCELType(fieldDescriptor.getType());
   }
 }

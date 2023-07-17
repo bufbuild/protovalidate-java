@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package build.buf.protovalidate.evaluator;
+package build.buf.protovalidate.internal.evaluator;
 
 import build.buf.gen.buf.validate.Violation;
 import com.google.common.base.Strings;
@@ -20,7 +20,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 class ErrorPathUtils {
-  public static List<Violation> prefixErrorPaths(
+  static List<Violation> prefixErrorPaths(
       List<Violation> violations, String format, Object... args) {
     String prefix = String.format(format, args);
     return violations.stream()

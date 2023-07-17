@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package build.buf.protovalidate.expression;
+package build.buf.protovalidate.internal.expression;
 
 import java.time.Instant;
 import org.projectnessie.cel.common.types.TimestampT;

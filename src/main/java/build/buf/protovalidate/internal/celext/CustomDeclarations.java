@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package build.buf.protovalidate.celext;
+package build.buf.protovalidate.internal.celext;
 
 import com.google.api.expr.v1alpha1.Decl;
 import java.util.ArrayList;
@@ -23,7 +23,8 @@ import java.util.Locale;
 import org.projectnessie.cel.checker.Decls;
 import org.projectnessie.cel.common.types.TimestampT;
 
-final class CustomDecl {
+/** Defines custom declaration functions. */
+final class CustomDeclarations {
   static List<Decl> create() {
     List<Decl> decls = new ArrayList<>();
     decls.add(Decls.newVar("now", Decls.newObjectType(TimestampT.TimestampType.typeName())));

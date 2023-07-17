@@ -14,10 +14,10 @@
 
 package build.buf.protovalidate;
 
-import build.buf.protovalidate.celext.ValidateLibrary;
-import build.buf.protovalidate.evaluator.Evaluator;
-import build.buf.protovalidate.evaluator.EvaluatorBuilder;
-import build.buf.protovalidate.evaluator.Value;
+import build.buf.protovalidate.internal.celext.ValidateLibrary;
+import build.buf.protovalidate.internal.evaluator.Evaluator;
+import build.buf.protovalidate.internal.evaluator.EvaluatorBuilder;
+import build.buf.protovalidate.internal.evaluator.Value;
 import build.buf.protovalidate.results.CompilationException;
 import build.buf.protovalidate.results.ValidationException;
 import build.buf.protovalidate.results.ValidationResult;

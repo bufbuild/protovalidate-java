@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package build.buf.protovalidate.celext;
+package build.buf.protovalidate.internal.celext;
 
 import static org.projectnessie.cel.common.types.IntT.intOf;
 import static org.projectnessie.cel.common.types.pb.DefaultTypeAdapter.nativeToValue;

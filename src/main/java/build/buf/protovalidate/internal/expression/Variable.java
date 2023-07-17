@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package build.buf.protovalidate.expression;
+package build.buf.protovalidate.internal.expression;
 
 import static org.projectnessie.cel.interpreter.ResolvedValue.ABSENT;
 
@@ -45,7 +45,7 @@ public class Variable implements Activation {
    * Creates a new "this" variable.
    *
    * @param val the value.
-   * @return {@link build.buf.protovalidate.expression.Variable}.
+   * @return {@link Variable}.
    */
   public static Variable newThisVariable(Object val) {
     return new Variable(Activation.emptyActivation(), THIS_NAME, val);
@@ -55,7 +55,7 @@ public class Variable implements Activation {
    * Creates a new "rules" variable.
    *
    * @param val the value.
-   * @return {@link build.buf.protovalidate.expression.Variable}.
+   * @return {@link Variable}.
    */
   public static Variable newRulesVariable(Object val) {
     return new Variable(new NowVariable(), RULES_NAME, val);

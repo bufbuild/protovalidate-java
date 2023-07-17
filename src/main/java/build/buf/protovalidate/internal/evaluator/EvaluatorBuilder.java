@@ -12,19 +12,20 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package build.buf.protovalidate.evaluator;
+package build.buf.protovalidate.internal.evaluator;
 
 import build.buf.gen.buf.validate.Constraint;
 import build.buf.gen.buf.validate.FieldConstraints;
 import build.buf.gen.buf.validate.MessageConstraints;
 import build.buf.gen.buf.validate.OneofConstraints;
 import build.buf.gen.buf.validate.ValidateProto;
-import build.buf.protovalidate.constraints.ConstraintCache;
-import build.buf.protovalidate.constraints.DescriptorMappings;
-import build.buf.protovalidate.expression.AstExpression;
-import build.buf.protovalidate.expression.CompiledProgram;
-import build.buf.protovalidate.expression.Expression;
-import build.buf.protovalidate.expression.Variable;
+import build.buf.protovalidate.internal.constraints.ConstraintCache;
+import build.buf.protovalidate.internal.constraints.DescriptorMappings;
+import build.buf.protovalidate.internal.expression.AstExpression;
+import build.buf.protovalidate.internal.expression.CelPrograms;
+import build.buf.protovalidate.internal.expression.CompiledProgram;
+import build.buf.protovalidate.internal.expression.Expression;
+import build.buf.protovalidate.internal.expression.Variable;
 import build.buf.protovalidate.results.CompilationException;
 import com.google.protobuf.Descriptors;
 import com.google.protobuf.Descriptors.Descriptor;

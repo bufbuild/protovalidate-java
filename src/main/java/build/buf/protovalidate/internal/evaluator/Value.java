@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package build.buf.protovalidate.evaluator;
+package build.buf.protovalidate.internal.evaluator;
 
 import com.google.protobuf.AbstractMessage;
 import com.google.protobuf.Descriptors;
@@ -40,7 +40,7 @@ public class Value {
     }
 
     @Override
-    <T> T value() {
+    public <T> T value() {
       return (T) value;
     }
   }
@@ -62,7 +62,7 @@ public class Value {
     return null;
   }
 
-  <T> T value() {
+  public <T> T value() {
     Descriptors.FieldDescriptor.Type type = fieldDescriptor.getType();
     if (!fieldDescriptor.isRepeated()
         && (type == Descriptors.FieldDescriptor.Type.UINT32

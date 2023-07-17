@@ -12,18 +12,17 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package build.buf.protovalidate.constraints;
+package build.buf.protovalidate.internal.constraints;
 
 import static org.projectnessie.cel.ProgramOption.globals;
 
 import build.buf.gen.buf.validate.FieldConstraints;
 import build.buf.gen.buf.validate.priv.PrivateProto;
-import build.buf.protovalidate.expression.AstExpression;
-import build.buf.protovalidate.expression.CompiledProgram;
-import build.buf.protovalidate.expression.Expression;
-import build.buf.protovalidate.expression.Variable;
+import build.buf.protovalidate.internal.expression.AstExpression;
+import build.buf.protovalidate.internal.expression.CompiledProgram;
+import build.buf.protovalidate.internal.expression.Expression;
+import build.buf.protovalidate.internal.expression.Variable;
 import build.buf.protovalidate.results.CompilationException;
-import com.google.api.expr.v1alpha1.Type;
 import com.google.protobuf.Descriptors.FieldDescriptor;
 import com.google.protobuf.Message;
 import java.util.ArrayList;
@@ -75,7 +74,8 @@ public class ConstraintCache {
         env.extend(
             EnvOption.types(message.getDefaultInstanceForType()),
             EnvOption.declarations(
-                Decls.newVar(Variable.THIS_NAME, getCELType(fieldDescriptor, forItems)),
+                Decls.newVar(
+                    Variable.THIS_NAME, DescriptorMappings.getCELType(fieldDescriptor, forItems)),
                 Decls.newVar(
                     Variable.RULES_NAME,
                     Decls.newObjectType(message.getDescriptorForType().getFullName()))));
@@ -142,7 +142,7 @@ public class ConstraintCache {
     // Get the expected constraint descriptor based on the provided field descriptor and the flag
     // indicating whether it is for items.
     FieldDescriptor expectedConstraintDescriptor =
-        getExpectedConstraintDescriptor(fieldDescriptor, forItems);
+        DescriptorMappings.getExpectedConstraintDescriptor(fieldDescriptor, forItems);
     boolean ok = expectedConstraintDescriptor != null;
     if (ok
         && !oneofFieldDescriptor.getFullName().equals(expectedConstraintDescriptor.getFullName())) {
@@ -165,55 +165,5 @@ public class ConstraintCache {
     // Return the field from the field constraints identified by the oneof field descriptor, casted
     // as a Message.
     return (Message) fieldConstraints.getField(oneofFieldDescriptor);
-  }
-
-  /**
-   * Produces the field descriptor from the {@link FieldConstraints} 'type' oneof that matches the
-   * provided target field descriptor. If the returned value is null, the field does not expect any
-   * standard constraints.
-   */
-  private FieldDescriptor getExpectedConstraintDescriptor(
-      FieldDescriptor fieldDescriptor, Boolean forItems) {
-    if (fieldDescriptor.isMapField()) {
-      return DescriptorMappings.MAP_FIELD_CONSTRAINTS_DESC;
-    } else if (fieldDescriptor.isRepeated() && !forItems) {
-      return DescriptorMappings.REPEATED_FIELD_CONSTRAINTS_DESC;
-    } else if (fieldDescriptor.getJavaType() == FieldDescriptor.JavaType.MESSAGE) {
-      return DescriptorMappings.EXPECTED_WKT_CONSTRAINTS.get(
-          fieldDescriptor.getMessageType().getFullName());
-    } else {
-      return DescriptorMappings.EXPECTED_STANDARD_CONSTRAINTS.get(fieldDescriptor.getType());
-    }
-  }
-
-  /**
-   * Resolves the CEL value type for the provided {@link FieldDescriptor}. If forItems is true, the
-   * type for the repeated list items is returned instead of the list type itself.
-   */
-  private Type getCELType(FieldDescriptor fieldDescriptor, Boolean forItems) {
-    if (!forItems) {
-      if (fieldDescriptor.isMapField()) {
-        return Decls.newMapType(
-            getCELType(fieldDescriptor.getMessageType().findFieldByNumber(1), true),
-            getCELType(fieldDescriptor.getMessageType().findFieldByNumber(2), true));
-      } else if (fieldDescriptor.isRepeated()) {
-        return Decls.newListType(getCELType(fieldDescriptor, true));
-      }
-    }
-
-    if (fieldDescriptor.getType() == FieldDescriptor.Type.MESSAGE) {
-      String fqn = fieldDescriptor.getMessageType().getFullName();
-      switch (fqn) {
-        case "google.protobuf.Any":
-          return Decls.newWellKnownType(Type.WellKnownType.ANY);
-        case "google.protobuf.Duration":
-          return Decls.newWellKnownType(Type.WellKnownType.DURATION);
-        case "google.protobuf.Timestamp":
-          return Decls.newWellKnownType(Type.WellKnownType.TIMESTAMP);
-        default:
-          return Decls.newObjectType(fieldDescriptor.getFullName());
-      }
-    }
-    return DescriptorMappings.protoKindToCELType(fieldDescriptor.getType());
   }
 }

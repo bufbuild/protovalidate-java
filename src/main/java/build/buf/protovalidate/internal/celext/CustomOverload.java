@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package build.buf.protovalidate.celext;
+package build.buf.protovalidate.internal.celext;
 
 import static org.projectnessie.cel.common.types.IntT.intOf;
 import static org.projectnessie.cel.interpreter.functions.Overload.binary;
@@ -46,6 +46,7 @@ import org.projectnessie.cel.common.types.traits.Lister;
 import org.projectnessie.cel.interpreter.functions.Overload;
 import org.projectnessie.cel.interpreter.functions.UnaryOp;
 
+/** Defines custom function overloads (the implementation). */
 final class CustomOverload {
   static Overload[] create() {
     return new Overload[] {
