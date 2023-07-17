@@ -49,7 +49,7 @@ public class Validator {
    *
    * @param msg {@link Message} to be validated
    * @return {@link build.buf.protovalidate.results.ValidationResult} from the evaluation.
-   * @throws ValidationException
+   * @throws ValidationException for any compilation or validation execution errors.
    */
   public ValidationResult validate(Message msg) throws ValidationException {
     if (msg == null) {
@@ -65,7 +65,7 @@ public class Validator {
    * Message} included transitively (i.e., fields with message values) are automatically handled.
    *
    * @param messages the list of {@link Message} to load.
-   * @throws CompilationException
+   * @throws CompilationException for any compilation errors during warm up.
    */
   public void loadMessages(Message... messages) throws CompilationException {
     for (Message message : messages) {
@@ -78,7 +78,7 @@ public class Validator {
    * Messages included transitively (i.e. fields with message values) are automatically handled.
    *
    * @param descriptors the list of {@link com.google.protobuf.Descriptors.Descriptor} to load.
-   * @throws CompilationException
+   * @throws CompilationException for any compilation errors during warm up.
    */
   public void loadDescriptors(Descriptor... descriptors) throws CompilationException {
     for (Descriptor descriptor : descriptors) {
