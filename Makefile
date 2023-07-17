@@ -13,7 +13,7 @@ JAVA_VERSION = 20
 JAVAC = javac
 JAVA = java
 GO ?= go
-ARGS ?= --expected_failures=conformance/nonconforming.yaml --strict_message
+ARGS ?= --strict_message
 JAVA_COMPILE_OPTIONS = --enable-preview --release $(JAVA_VERSION)
 JAVA_OPTIONS = --enable-preview
 PROTOVALIDATE_VERSION ?= v0.2.2
