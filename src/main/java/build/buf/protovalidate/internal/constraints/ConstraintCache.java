@@ -18,11 +18,11 @@ import static org.projectnessie.cel.ProgramOption.globals;
 
 import build.buf.gen.buf.validate.FieldConstraints;
 import build.buf.gen.buf.validate.priv.PrivateProto;
+import build.buf.protovalidate.exceptions.CompilationException;
 import build.buf.protovalidate.internal.expression.AstExpression;
 import build.buf.protovalidate.internal.expression.CompiledProgram;
 import build.buf.protovalidate.internal.expression.Expression;
 import build.buf.protovalidate.internal.expression.Variable;
-import build.buf.protovalidate.results.CompilationException;
 import com.google.protobuf.Descriptors.FieldDescriptor;
 import com.google.protobuf.Message;
 import java.util.ArrayList;
@@ -150,10 +150,11 @@ public class ConstraintCache {
       // If the expected constraint does not match the actual oneof constraint, throw a
       // CompilationError.
       throw new CompilationException(
-          "expected constraint %s, got %s on field %s",
-          expectedConstraintDescriptor.getName(),
-          oneofFieldDescriptor.getName(),
-          fieldDescriptor.getName());
+          String.format(
+              "expected constraint %s, got %s on field %s",
+              expectedConstraintDescriptor.getName(),
+              oneofFieldDescriptor.getName(),
+              fieldDescriptor.getName()));
     }
 
     // If the expected constraint descriptor is null or if the field constraints do not have the

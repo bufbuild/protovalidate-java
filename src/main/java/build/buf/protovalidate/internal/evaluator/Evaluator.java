@@ -14,8 +14,8 @@
 
 package build.buf.protovalidate.internal.evaluator;
 
-import build.buf.protovalidate.results.ExecutionException;
-import build.buf.protovalidate.results.ValidationResult;
+import build.buf.protovalidate.ValidationResult;
+import build.buf.protovalidate.exceptions.ExecutionException;
 
 /**
  * {@link Evaluator} defines a validation evaluator. evaluator implementations may elide type

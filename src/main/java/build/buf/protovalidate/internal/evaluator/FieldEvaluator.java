@@ -15,8 +15,8 @@
 package build.buf.protovalidate.internal.evaluator;
 
 import build.buf.gen.buf.validate.Violation;
-import build.buf.protovalidate.results.ExecutionException;
-import build.buf.protovalidate.results.ValidationResult;
+import build.buf.protovalidate.ValidationResult;
+import build.buf.protovalidate.exceptions.ExecutionException;
 import com.google.protobuf.Descriptors.FieldDescriptor;
 import com.google.protobuf.Message;
 import java.util.Collections;
@@ -79,7 +79,7 @@ class FieldEvaluator implements Evaluator {
     ValidationResult evalResult =
         valueEvaluator.evaluate(new Value(descriptor, fieldValue), failFast);
     List<Violation> violations =
-        ErrorPathUtils.prefixErrorPaths(evalResult.violations, "%s", descriptor.getName());
+        ErrorPathUtils.prefixErrorPaths(evalResult.getViolations(), "%s", descriptor.getName());
     return new ValidationResult(violations);
   }
 

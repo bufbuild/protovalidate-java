@@ -15,7 +15,7 @@
 package build.buf.protovalidate.internal.expression;
 
 import build.buf.gen.buf.validate.Violation;
-import build.buf.protovalidate.results.ExecutionException;
+import build.buf.protovalidate.exceptions.ExecutionException;
 import org.projectnessie.cel.Program;
 import org.projectnessie.cel.common.types.Err;
 import org.projectnessie.cel.common.types.ref.Val;
@@ -44,7 +44,7 @@ public class CompiledProgram {
     Program.EvalResult evalResult = program.eval(bindings);
     Val val = evalResult.getVal();
     if (val instanceof Err) {
-      throw new ExecutionException("error evaluating %s: %s", source.id, val.toString());
+      throw new ExecutionException(String.format("error evaluating %s: %s", source.id, val));
     }
     Object value = val.value();
     if (value instanceof String) {
@@ -64,7 +64,7 @@ public class CompiledProgram {
           .setMessage(this.source.message)
           .build();
     } else {
-      throw new ExecutionException("resolved to an unexpected type %s", val);
+      throw new ExecutionException(String.format("resolved to an unexpected type %s", val));
     }
   }
 }

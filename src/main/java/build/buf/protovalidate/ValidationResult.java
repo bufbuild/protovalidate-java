@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package build.buf.protovalidate.results;
+package build.buf.protovalidate;
 
 import build.buf.gen.buf.validate.Violation;
 import java.util.Collections;
@@ -25,7 +25,7 @@ import java.util.List;
  */
 public class ValidationResult {
 
-  public final List<Violation> violations;
+  private final List<Violation> violations;
 
   public ValidationResult() {
     this.violations = Collections.emptyList();
@@ -36,11 +36,11 @@ public class ValidationResult {
   }
 
   public boolean isSuccess() {
-    return violations.isEmpty();
+    return !violations.isEmpty();
   }
 
-  public boolean isFailure() {
-    return !isSuccess();
+  public List<Violation> getViolations() {
+    return violations;
   }
 
   @Override

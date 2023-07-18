@@ -20,10 +20,10 @@ import build.buf.gen.buf.validate.conformance.harness.TestConformanceRequest;
 import build.buf.gen.buf.validate.conformance.harness.TestConformanceResponse;
 import build.buf.gen.buf.validate.conformance.harness.TestResult;
 import build.buf.protovalidate.Config;
+import build.buf.protovalidate.ValidationResult;
 import build.buf.protovalidate.Validator;
-import build.buf.protovalidate.results.CompilationException;
-import build.buf.protovalidate.results.ExecutionException;
-import build.buf.protovalidate.results.ValidationResult;
+import build.buf.protovalidate.exceptions.CompilationException;
+import build.buf.protovalidate.exceptions.ExecutionException;
 import com.google.protobuf.Any;
 import com.google.protobuf.ByteString;
 import com.google.protobuf.Descriptors;
@@ -53,7 +53,7 @@ public class Main {
     try {
       Map<String, Descriptors.Descriptor> descriptorMap =
           FileDescriptorUtil.parse(request.getFdset());
-      Validator validator = new Validator(new Config(false, false));
+      Validator validator = new Validator(Config.builder().build());
       TestConformanceResponse.Builder responseBuilder = TestConformanceResponse.newBuilder();
       Map<String, TestResult> resultsMap = new HashMap<>();
       for (Map.Entry<String, Any> entry : request.getCasesMap().entrySet()) {
@@ -85,11 +85,12 @@ public class Main {
   private static TestResult validate(Validator validator, DynamicMessage dynamicMessage) {
     try {
       ValidationResult result = validator.validate(dynamicMessage);
-      if (result.isSuccess()) {
+      if (result.getViolations().isEmpty()) {
         return TestResult.newBuilder().setSuccess(true).build();
       } else {
         return TestResult.newBuilder()
-            .setValidationError(Violations.newBuilder().addAllViolations(result.violations).build())
+            .setValidationError(
+                Violations.newBuilder().addAllViolations(result.getViolations()).build())
             .build();
       }
     } catch (CompilationException e) {

@@ -17,8 +17,8 @@ package build.buf.protovalidate.internal.evaluator;
 import build.buf.gen.buf.validate.FieldConstraints;
 import build.buf.gen.buf.validate.MapRules;
 import build.buf.gen.buf.validate.Violation;
-import build.buf.protovalidate.results.ExecutionException;
-import build.buf.protovalidate.results.ValidationResult;
+import build.buf.protovalidate.ValidationResult;
+import build.buf.protovalidate.exceptions.ExecutionException;
 import com.google.protobuf.Descriptors;
 import java.util.ArrayList;
 import java.util.List;
@@ -59,10 +59,10 @@ class MapEvaluator implements Evaluator {
     Map<Value, Value> mapValue = val.mapValue();
     for (Map.Entry<Value, Value> entry : mapValue.entrySet()) {
       ValidationResult evalResult = evalPairs(entry.getKey(), entry.getValue(), failFast);
-      if (failFast && !evalResult.violations.isEmpty()) {
+      if (failFast && !evalResult.getViolations().isEmpty()) {
         return evalResult;
       }
-      violations.addAll(evalResult.violations);
+      violations.addAll(evalResult.getViolations());
     }
     return new ValidationResult(violations);
   }
@@ -71,19 +71,19 @@ class MapEvaluator implements Evaluator {
     List<Violation> violations = new ArrayList<>();
     try {
       ValidationResult keyEvalResult = keyEvaluator.evaluate(key, failFast);
-      if (failFast && !keyEvalResult.violations.isEmpty()) {
+      if (failFast && !keyEvalResult.getViolations().isEmpty()) {
         return keyEvalResult;
       }
-      violations.addAll(keyEvalResult.violations);
+      violations.addAll(keyEvalResult.getViolations());
     } catch (ExecutionException e) {
       throw new RuntimeException(e);
     }
     try {
       ValidationResult valueEvalResult = valueEvaluator.evaluate(value, failFast);
-      if (failFast && !valueEvalResult.violations.isEmpty()) {
+      if (failFast && !valueEvalResult.getViolations().isEmpty()) {
         return valueEvalResult;
       }
-      violations.addAll(valueEvalResult.violations);
+      violations.addAll(valueEvalResult.getViolations());
     } catch (ExecutionException e) {
       throw new RuntimeException(e);
     }

@@ -14,7 +14,7 @@
 
 package build.buf.protovalidate.internal.expression;
 
-import build.buf.protovalidate.results.CompilationException;
+import build.buf.protovalidate.exceptions.CompilationException;
 import com.google.api.expr.v1alpha1.Type;
 import org.projectnessie.cel.Ast;
 import org.projectnessie.cel.Env;
@@ -43,7 +43,8 @@ public class AstExpression {
     if (!outType.getPrimitive().equals(Type.PrimitiveType.BOOL)
         && !outType.getPrimitive().equals(Type.PrimitiveType.STRING)) {
       throw new CompilationException(
-          "expression outputs, wanted either bool or string %s %s", expr.id, outType.toString());
+          String.format(
+              "expression outputs, wanted either bool or string %s %s", expr.id, outType));
     }
     return new AstExpression(ast, expr);
   }

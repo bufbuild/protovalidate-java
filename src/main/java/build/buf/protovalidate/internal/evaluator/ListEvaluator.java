@@ -16,8 +16,8 @@ package build.buf.protovalidate.internal.evaluator;
 
 import build.buf.gen.buf.validate.FieldConstraints;
 import build.buf.gen.buf.validate.Violation;
-import build.buf.protovalidate.results.ExecutionException;
-import build.buf.protovalidate.results.ValidationResult;
+import build.buf.protovalidate.ValidationResult;
+import build.buf.protovalidate.exceptions.ExecutionException;
 import com.google.protobuf.Descriptors;
 import java.util.ArrayList;
 import java.util.List;
@@ -45,7 +45,7 @@ class ListEvaluator implements Evaluator {
     for (int i = 0; i < repeatedValues.size(); i++) {
       ValidationResult evalResult = itemConstraints.evaluate(repeatedValues.get(i), failFast);
       List<Violation> violations =
-          ErrorPathUtils.prefixErrorPaths(evalResult.violations, "[%d]", i);
+          ErrorPathUtils.prefixErrorPaths(evalResult.getViolations(), "[%d]", i);
       if (failFast && !violations.isEmpty()) {
         return evalResult;
       }

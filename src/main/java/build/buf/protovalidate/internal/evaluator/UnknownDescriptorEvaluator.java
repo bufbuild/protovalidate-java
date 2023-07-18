@@ -15,8 +15,8 @@
 package build.buf.protovalidate.internal.evaluator;
 
 import build.buf.gen.buf.validate.Violation;
-import build.buf.protovalidate.results.ExecutionException;
-import build.buf.protovalidate.results.ValidationResult;
+import build.buf.protovalidate.ValidationResult;
+import build.buf.protovalidate.exceptions.ExecutionException;
 import com.google.protobuf.Descriptors.Descriptor;
 import java.util.Collections;
 

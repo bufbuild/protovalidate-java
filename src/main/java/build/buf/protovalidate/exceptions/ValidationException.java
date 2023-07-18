@@ -12,14 +12,14 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package build.buf.protovalidate.results;
+package build.buf.protovalidate.exceptions;
 
 /**
- * {@link ExecutionException} extends {@link ValidationException} is returned when a constraint
- * fails to execute. This is a fatal error.
+ * {@link ValidationException} extends {@link Exception} is the base exception for all validation
+ * errors.
  */
-public class ExecutionException extends ValidationException {
-  public ExecutionException(String format, Object... args) {
-    super(String.format(format, args));
+public class ValidationException extends Exception {
+  public ValidationException(String message) {
+    super(message);
   }
 }

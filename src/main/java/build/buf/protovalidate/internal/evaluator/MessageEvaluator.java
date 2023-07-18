@@ -15,8 +15,8 @@
 package build.buf.protovalidate.internal.evaluator;
 
 import build.buf.gen.buf.validate.Violation;
-import build.buf.protovalidate.results.ExecutionException;
-import build.buf.protovalidate.results.ValidationResult;
+import build.buf.protovalidate.ValidationResult;
+import build.buf.protovalidate.exceptions.ExecutionException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -40,10 +40,10 @@ class MessageEvaluator implements Evaluator {
     List<Violation> violations = new ArrayList<>();
     for (Evaluator evaluator : evaluators) {
       ValidationResult evalResult = evaluator.evaluate(val, failFast);
-      if (failFast && !evalResult.violations.isEmpty()) {
+      if (failFast && !evalResult.getViolations().isEmpty()) {
         return evalResult;
       }
-      violations.addAll(evalResult.violations);
+      violations.addAll(evalResult.getViolations());
     }
     return new ValidationResult(violations);
   }
