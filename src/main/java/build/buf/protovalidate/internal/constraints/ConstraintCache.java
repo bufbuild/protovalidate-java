@@ -26,6 +26,7 @@ import build.buf.protovalidate.results.CompilationException;
 import com.google.protobuf.Descriptors.FieldDescriptor;
 import com.google.protobuf.Message;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -68,7 +69,7 @@ public class ConstraintCache {
     Message message = resolveConstraints(fieldDescriptor, fieldConstraints, forItems);
     if (message == null) {
       // Message null means there were no constraints resolved.
-      return null;
+      return Collections.emptyList();
     }
     Env finalEnv =
         env.extend(

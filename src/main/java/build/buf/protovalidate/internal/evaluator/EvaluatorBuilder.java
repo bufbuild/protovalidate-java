@@ -272,11 +272,10 @@ public class EvaluatorBuilder {
       throws CompilationException {
     List<CompiledProgram> compile =
         constraints.compile(fieldDescriptor, fieldConstraints, forItems);
-    if (compile == null) {
+    if (compile.isEmpty()) {
       return;
     }
-    CelPrograms eval = new CelPrograms(compile);
-    valueEvaluatorEval.append(eval);
+    valueEvaluatorEval.append(new CelPrograms(compile));
   }
 
   private void processAnyConstraints(

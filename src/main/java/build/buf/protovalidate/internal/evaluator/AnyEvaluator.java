@@ -20,6 +20,7 @@ import build.buf.protovalidate.results.ValidationResult;
 import com.google.protobuf.Descriptors;
 import com.google.protobuf.Message;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -47,24 +48,20 @@ class AnyEvaluator implements Evaluator {
     Message o = val.messageValue();
     List<Violation> violationList = new ArrayList<>();
     String typeURL = (String) o.getField(typeURLDescriptor);
-    if (in != null && in.size() > 0) {
-      if (!in.containsKey(typeURL)) {
-        Violation.Builder violation = Violation.newBuilder();
-        violation.setConstraintId("any.in");
-        violation.setMessage("type URL must be in the allow list");
-        violationList.add(violation.build());
-        if (failFast) {
-          return new ValidationResult(violationList);
-        }
+    if (!in.isEmpty() && !in.containsKey(typeURL)) {
+      Violation.Builder violation = Violation.newBuilder();
+      violation.setConstraintId("any.in");
+      violation.setMessage("type URL must be in the allow list");
+      violationList.add(violation.build());
+      if (failFast) {
+        return new ValidationResult(violationList);
       }
     }
-    if (notIn != null && notIn.size() > 0) {
-      if (notIn.containsKey(typeURL)) {
-        Violation.Builder violation = Violation.newBuilder();
-        violation.setConstraintId("any.not_in");
-        violation.setMessage("type URL must not be in the block list");
-        violationList.add(violation.build());
-      }
+    if (!notIn.isEmpty() && notIn.containsKey(typeURL)) {
+      Violation.Builder violation = Violation.newBuilder();
+      violation.setConstraintId("any.not_in");
+      violation.setMessage("type URL must not be in the block list");
+      violationList.add(violation.build());
     }
     return new ValidationResult(violationList);
   }
@@ -76,13 +73,13 @@ class AnyEvaluator implements Evaluator {
 
   @Override
   public boolean tautology() {
-    return (in == null || in.size() == 0) && (notIn == null || notIn.size() == 0);
+    return in.isEmpty() && notIn.isEmpty();
   }
 
   /** stringsToMap converts a string slice to a map for fast lookup. */
   private static Map<String, Object> stringsToMap(String[] strings) {
     if (strings == null || strings.length == 0) {
-      return null;
+      return Collections.emptyMap();
     }
     Map<String, Object> map = new HashMap<>();
     for (String s : strings) {

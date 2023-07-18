@@ -77,7 +77,7 @@ class ValueEvaluator implements Evaluator {
 
   @Override
   public void append(Evaluator eval) {
-    if (eval != null && !eval.tautology()) {
+    if (!eval.tautology()) {
       this.evaluators.add(eval);
     }
   }

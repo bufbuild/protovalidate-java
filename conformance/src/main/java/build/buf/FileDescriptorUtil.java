@@ -32,7 +32,6 @@ class FileDescriptorUtil {
       for (Descriptors.Descriptor messageType : fileDescriptor.getMessageTypes()) {
         descriptorMap.put(messageType.getFullName(), messageType);
       }
-      // Need to recurse.
     }
     return descriptorMap;
   }

@@ -79,10 +79,10 @@ public class Main {
     ByteString testCaseValue = testCase.getValue();
     DynamicMessage dynamicMessage =
         DynamicMessage.newBuilder(descriptor).mergeFrom(testCaseValue).build();
-    return execute(validator, dynamicMessage);
+    return validate(validator, dynamicMessage);
   }
 
-  private static TestResult execute(Validator validator, DynamicMessage dynamicMessage) {
+  private static TestResult validate(Validator validator, DynamicMessage dynamicMessage) {
     try {
       ValidationResult result = validator.validate(dynamicMessage);
       if (result.isSuccess()) {
