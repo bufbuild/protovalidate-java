@@ -1,5 +1,8 @@
 plugins {
+    `version-catalog`
+
     java
+    alias(libs.plugins.errorprone.plugin)
 }
 
 tasks {
@@ -25,4 +28,6 @@ dependencies {
     implementation(libs.protobuf.java.util)
     implementation(libs.protovalidate)
     implementation(libs.protovalidate.testing)
+
+    errorprone(libs.errorprone)
 }

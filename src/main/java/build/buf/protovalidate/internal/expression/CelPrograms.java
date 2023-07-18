@@ -37,7 +37,7 @@ public class CelPrograms implements Evaluator {
 
   @Override
   public ValidationResult evaluate(Value val, boolean failFast) throws ExecutionException {
-    Variable activation = Variable.newThisVariable(val.value());
+    Variable activation = Variable.newThisVariable(val.value(Object.class));
     List<Violation> violationList = new ArrayList<>();
     for (CompiledProgram program : programs) {
       Violation violation = program.eval(activation);

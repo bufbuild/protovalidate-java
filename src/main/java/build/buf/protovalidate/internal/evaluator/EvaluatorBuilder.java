@@ -223,7 +223,7 @@ public class EvaluatorBuilder {
   private void processEmbeddedMessage(
       FieldDescriptor fieldDescriptor,
       FieldConstraints fieldConstraints,
-      Boolean forItems,
+      boolean forItems,
       ValueEvaluator valueEvaluatorEval)
       throws CompilationException {
     if (fieldDescriptor.getType() != FieldDescriptor.Type.MESSAGE
@@ -239,7 +239,7 @@ public class EvaluatorBuilder {
   private void processWrapperConstraints(
       FieldDescriptor fieldDescriptor,
       FieldConstraints fieldConstraints,
-      Boolean forItems,
+      boolean forItems,
       ValueEvaluator valueEvaluatorEval)
       throws CompilationException {
     if (fieldDescriptor.getType() != FieldDescriptor.Type.MESSAGE
@@ -267,7 +267,7 @@ public class EvaluatorBuilder {
   private void processStandardConstraints(
       FieldDescriptor fieldDescriptor,
       FieldConstraints fieldConstraints,
-      Boolean forItems,
+      boolean forItems,
       ValueEvaluator valueEvaluatorEval)
       throws CompilationException {
     List<CompiledProgram> compile =
@@ -281,7 +281,7 @@ public class EvaluatorBuilder {
   private void processAnyConstraints(
       FieldDescriptor fieldDescriptor,
       FieldConstraints fieldConstraints,
-      Boolean forItems,
+      boolean forItems,
       ValueEvaluator valueEvaluatorEval) {
     if ((fieldDescriptor.isRepeated() && !forItems)
         || fieldDescriptor.getType() != FieldDescriptor.Type.MESSAGE
@@ -337,7 +337,7 @@ public class EvaluatorBuilder {
   private void processRepeatedConstraints(
       FieldDescriptor fieldDescriptor,
       FieldConstraints fieldConstraints,
-      Boolean forItems,
+      boolean forItems,
       ValueEvaluator valueEvaluatorEval)
       throws CompilationException {
     if (fieldDescriptor.isMapField() || !fieldDescriptor.isRepeated() || forItems) {

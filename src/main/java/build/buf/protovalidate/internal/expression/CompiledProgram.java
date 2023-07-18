@@ -38,7 +38,7 @@ public class CompiledProgram {
    *
    * @param bindings variable bindings used for the evaluation.
    * @return {@link build.buf.gen.buf.validate.Violation} the violations from the evaluation.
-   * @throws ExecutionException
+   * @throws ExecutionException If the evaluation of the CEL program fails with an error.
    */
   public Violation eval(Variable bindings) throws ExecutionException {
     Program.EvalResult evalResult = program.eval(bindings);

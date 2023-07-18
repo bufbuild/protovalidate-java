@@ -19,6 +19,8 @@ import static org.projectnessie.cel.interpreter.functions.Overload.binary;
 import static org.projectnessie.cel.interpreter.functions.Overload.overload;
 import static org.projectnessie.cel.interpreter.functions.Overload.unary;
 
+import com.google.common.base.Ascii;
+import com.google.common.base.Splitter;
 import com.google.common.net.InetAddresses;
 import com.google.common.primitives.Bytes;
 import java.net.Inet4Address;
@@ -344,8 +346,8 @@ final class CustomOverload {
       return false;
     }
 
-    String s = host.toLowerCase().replaceAll("\\.$", "");
-    String[] parts = s.split("\\.");
+    String s = Ascii.toLowerCase(host.endsWith(".") ? host.substring(0, host.length() - 1) : host);
+    Iterable<String> parts = Splitter.on('.').split(s);
 
     for (String part : parts) {
       int l = part.length();
@@ -353,7 +355,8 @@ final class CustomOverload {
         return false;
       }
 
-      for (char ch : part.toCharArray()) {
+      for (int i = 0; i < part.length(); i++) {
+        char ch = part.charAt(i);
         if ((ch < 'a' || ch > 'z') && (ch < '0' || ch > '9') && ch != '-') {
           return false;
         }

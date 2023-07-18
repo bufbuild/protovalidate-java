@@ -68,13 +68,13 @@ class MapEvaluator implements Evaluator {
   }
 
   private ValidationResult evalPairs(Value key, Value value, boolean failFast) {
-    List<Violation> violations = new ArrayList<>();
+    final List<Violation> violations;
     try {
       ValidationResult keyEvalResult = keyEvaluator.evaluate(key, failFast);
       if (failFast && !keyEvalResult.getViolations().isEmpty()) {
         return keyEvalResult;
       }
-      violations.addAll(keyEvalResult.getViolations());
+      violations = new ArrayList<>(keyEvalResult.getViolations());
     } catch (ExecutionException e) {
       throw new RuntimeException(e);
     }
@@ -87,7 +87,7 @@ class MapEvaluator implements Evaluator {
     } catch (ExecutionException e) {
       throw new RuntimeException(e);
     }
-    Object keyName = key.value();
+    Object keyName = key.value(Object.class);
     List<Violation> prefixedViolations;
     if (keyName instanceof Number) {
       prefixedViolations = ErrorPathUtils.prefixErrorPaths(violations, "[%s]", keyName);

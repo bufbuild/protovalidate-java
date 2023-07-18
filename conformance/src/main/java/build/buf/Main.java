@@ -24,6 +24,8 @@ import build.buf.protovalidate.ValidationResult;
 import build.buf.protovalidate.Validator;
 import build.buf.protovalidate.exceptions.CompilationException;
 import build.buf.protovalidate.exceptions.ExecutionException;
+import com.google.common.base.Splitter;
+import com.google.errorprone.annotations.FormatMethod;
 import com.google.protobuf.Any;
 import com.google.protobuf.ByteString;
 import com.google.protobuf.Descriptors;
@@ -31,6 +33,7 @@ import com.google.protobuf.DynamicMessage;
 import com.google.protobuf.ExtensionRegistry;
 import com.google.protobuf.InvalidProtocolBufferException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class Main {
@@ -70,11 +73,11 @@ public class Main {
   static TestResult testCase(
       Validator validator, Map<String, Descriptors.Descriptor> fileDescriptors, Any testCase)
       throws InvalidProtocolBufferException {
-    String[] urlParts = testCase.getTypeUrl().split("/");
-    String fullName = urlParts[urlParts.length - 1];
+    List<String> urlParts = Splitter.on('/').limit(2).splitToList(testCase.getTypeUrl());
+    String fullName = urlParts.get(urlParts.size() - 1);
     Descriptors.Descriptor descriptor = fileDescriptors.get(fullName);
     if (descriptor == null) {
-      return unexpectedErrorResult("Unable to find descriptor: " + fullName);
+      return unexpectedErrorResult("Unable to find descriptor: %s", fullName);
     }
     ByteString testCaseValue = testCase.getValue();
     DynamicMessage dynamicMessage =
@@ -102,6 +105,7 @@ public class Main {
     }
   }
 
+  @FormatMethod
   static TestResult unexpectedErrorResult(String format, Object... args) {
     String errorMessage = String.format(format, args);
     return TestResult.newBuilder().setUnexpectedError(errorMessage).build();

@@ -231,7 +231,7 @@ public class ValidatorTest {
   @Test(expected = ExecutionException.class)
   public void testDynRuntimeError() throws Exception {
     DynRuntimeError invalid = DynRuntimeError.newBuilder().setA(123).build();
-    ValidationResult validate = validator.validate(invalid);
+    validator.validate(invalid);
   }
 
   // Needs : https://github.com/projectnessie/cel-java/pull/419

@@ -42,7 +42,7 @@ class EnumEvaluator implements Evaluator {
 
   @Override
   public ValidationResult evaluate(Value val, boolean failFast) throws ExecutionException {
-    Descriptors.EnumValueDescriptor enumValue = val.value();
+    Descriptors.EnumValueDescriptor enumValue = val.value(Descriptors.EnumValueDescriptor.class);
     if (!isValueValid(enumValue)) {
       return new ValidationResult(
           Collections.singletonList(

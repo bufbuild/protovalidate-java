@@ -40,8 +40,8 @@ public class Value {
     }
 
     @Override
-    public <T> T value() {
-      return (T) value;
+    public <T> T value(Class<T> clazz) {
+      return clazz.cast(value);
     }
   }
   /** {@link Descriptors.FieldDescriptor} is the field descriptor for the value. */
@@ -62,7 +62,7 @@ public class Value {
     return null;
   }
 
-  public <T> T value() {
+  public <T> T value(Class<T> clazz) {
     Descriptors.FieldDescriptor.Type type = fieldDescriptor.getType();
     if (!fieldDescriptor.isRepeated()
         && (type == Descriptors.FieldDescriptor.Type.UINT32
@@ -76,9 +76,9 @@ public class Value {
        * When using uint32/uint64 in your protobuf objects or CEL expressions in Java,
        * wrap them with the org.projectnessie.cel.common.ULong type.
        */
-      return (T) ULong.valueOf(((Number) value).longValue());
+      return clazz.cast(ULong.valueOf(((Number) value).longValue()));
     }
-    return (T) value;
+    return clazz.cast(value);
   }
 
   List<Value> repeatedValue() {
@@ -93,7 +93,6 @@ public class Value {
   }
 
   Map<Value, Value> mapValue() {
-    Map<Value, Value> out = new HashMap<>();
     List<AbstractMessage> input =
         value instanceof List
             ? (List<AbstractMessage>) value
@@ -101,6 +100,7 @@ public class Value {
 
     Descriptors.FieldDescriptor keyDesc = fieldDescriptor.getMessageType().findFieldByNumber(1);
     Descriptors.FieldDescriptor valDesc = fieldDescriptor.getMessageType().findFieldByNumber(2);
+    Map<Value, Value> out = new HashMap<>(input.size());
     for (AbstractMessage entry : input) {
       Object keyValue = entry.getField(keyDesc);
       Value keyJavaValue = new Value(keyDesc, keyValue);

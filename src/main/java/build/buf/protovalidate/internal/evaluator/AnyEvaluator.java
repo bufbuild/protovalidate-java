@@ -20,10 +20,11 @@ import build.buf.protovalidate.exceptions.ExecutionException;
 import com.google.protobuf.Descriptors;
 import com.google.protobuf.Message;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
-import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
+import java.util.Set;
 
 /**
  * A specialized evaluator for applying {@link build.buf.gen.buf.validate.AnyRules} to an {@link
@@ -33,8 +34,8 @@ import java.util.Map;
  */
 class AnyEvaluator implements Evaluator {
   private final Descriptors.FieldDescriptor typeURLDescriptor;
-  private final Map<String, Object> in;
-  private final Map<String, Object> notIn;
+  private final Set<String> in;
+  private final Set<String> notIn;
 
   /** Constructs a new evaluator for {@link build.buf.gen.buf.validate.AnyRules} messages. */
   AnyEvaluator(Descriptors.FieldDescriptor typeURLDescriptor, String[] in, String[] notIn) {
@@ -48,7 +49,7 @@ class AnyEvaluator implements Evaluator {
     Message o = val.messageValue();
     List<Violation> violationList = new ArrayList<>();
     String typeURL = (String) o.getField(typeURLDescriptor);
-    if (!in.isEmpty() && !in.containsKey(typeURL)) {
+    if (!in.isEmpty() && !in.contains(typeURL)) {
       Violation.Builder violation = Violation.newBuilder();
       violation.setConstraintId("any.in");
       violation.setMessage("type URL must be in the allow list");
@@ -57,7 +58,7 @@ class AnyEvaluator implements Evaluator {
         return new ValidationResult(violationList);
       }
     }
-    if (!notIn.isEmpty() && notIn.containsKey(typeURL)) {
+    if (!notIn.isEmpty() && notIn.contains(typeURL)) {
       Violation.Builder violation = Violation.newBuilder();
       violation.setConstraintId("any.not_in");
       violation.setMessage("type URL must not be in the block list");
@@ -76,15 +77,13 @@ class AnyEvaluator implements Evaluator {
     return in.isEmpty() && notIn.isEmpty();
   }
 
-  /** stringsToMap converts a string slice to a map for fast lookup. */
-  private static Map<String, Object> stringsToMap(String[] strings) {
+  /** stringsToMap converts a string slice to a set for fast lookup. */
+  private static Set<String> stringsToMap(String[] strings) {
     if (strings == null || strings.length == 0) {
-      return Collections.emptyMap();
+      return Collections.emptySet();
     }
-    Map<String, Object> map = new HashMap<>();
-    for (String s : strings) {
-      map.put(s, new Object());
-    }
-    return map;
+    Set<String> map = new HashSet<>(strings.length);
+    map.addAll(Arrays.asList(strings));
+    return Collections.unmodifiableSet(map);
   }
 }

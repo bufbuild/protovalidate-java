@@ -3,12 +3,21 @@ import com.vanniktech.maven.publish.SonatypeHost
 import com.diffplug.gradle.spotless.SpotlessExtension
 
 plugins {
+    `version-catalog`
+
     java
+    alias(libs.plugins.errorprone.plugin)
 }
 
 java {
     sourceCompatibility = JavaVersion.VERSION_1_8
     targetCompatibility = JavaVersion.VERSION_1_8
+}
+
+tasks.withType<JavaCompile> {
+    if (JavaVersion.current().isJava9Compatible) doFirst {
+        options.compilerArgs = mutableListOf("--release", "8")
+    }
 }
 
 tasks.withType<GenerateModuleMetadata> {
@@ -93,4 +102,6 @@ dependencies {
     testImplementation(libs.assertj)
     testImplementation(libs.junit)
     testImplementation(libs.protovalidate.testing)
+
+    errorprone(libs.errorprone)
 }

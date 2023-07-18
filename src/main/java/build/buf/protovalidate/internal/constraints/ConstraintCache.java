@@ -64,7 +64,7 @@ public class ConstraintCache {
    * repeated list items is built instead of the constraints on the list itself.
    */
   public List<CompiledProgram> compile(
-      FieldDescriptor fieldDescriptor, FieldConstraints fieldConstraints, Boolean forItems)
+      FieldDescriptor fieldDescriptor, FieldConstraints fieldConstraints, boolean forItems)
       throws CompilationException {
     Message message = resolveConstraints(fieldDescriptor, fieldConstraints, forItems);
     if (message == null) {
@@ -121,7 +121,7 @@ public class ConstraintCache {
                 finalEnv.program(astExpression.ast, rulesOption), astExpression.source));
       }
     }
-    return programs;
+    return Collections.unmodifiableList(programs);
   }
 
   /**
@@ -130,7 +130,7 @@ public class ConstraintCache {
    * there are no standard constraints to apply to this field.
    */
   private Message resolveConstraints(
-      FieldDescriptor fieldDescriptor, FieldConstraints fieldConstraints, Boolean forItems)
+      FieldDescriptor fieldDescriptor, FieldConstraints fieldConstraints, boolean forItems)
       throws CompilationException {
     // Get the oneof field descriptor from the field constraints.
     FieldDescriptor oneofFieldDescriptor =

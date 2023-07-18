@@ -16,12 +16,17 @@ package build.buf.protovalidate.internal.evaluator;
 
 import build.buf.gen.buf.validate.Violation;
 import com.google.common.base.Strings;
+import com.google.errorprone.annotations.FormatMethod;
+import com.google.errorprone.annotations.FormatString;
 import java.util.List;
 import java.util.stream.Collectors;
 
-class ErrorPathUtils {
+final class ErrorPathUtils {
+  private ErrorPathUtils() {}
+
+  @FormatMethod
   static List<Violation> prefixErrorPaths(
-      List<Violation> violations, String format, Object... args) {
+      List<Violation> violations, @FormatString String format, Object... args) {
     String prefix = String.format(format, args);
     return violations.stream()
         .map(

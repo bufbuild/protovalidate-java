@@ -159,7 +159,7 @@ public class DescriptorMappings {
    * standard constraints.
    */
   static FieldDescriptor getExpectedConstraintDescriptor(
-      FieldDescriptor fieldDescriptor, Boolean forItems) {
+      FieldDescriptor fieldDescriptor, boolean forItems) {
     if (fieldDescriptor.isMapField()) {
       return DescriptorMappings.MAP_FIELD_CONSTRAINTS_DESC;
     } else if (fieldDescriptor.isRepeated() && !forItems) {
@@ -176,7 +176,7 @@ public class DescriptorMappings {
    * Resolves the CEL value type for the provided {@link FieldDescriptor}. If forItems is true, the
    * type for the repeated list items is returned instead of the list type itself.
    */
-  static Type getCELType(FieldDescriptor fieldDescriptor, Boolean forItems) {
+  static Type getCELType(FieldDescriptor fieldDescriptor, boolean forItems) {
     if (!forItems) {
       if (fieldDescriptor.isMapField()) {
         return Decls.newMapType(

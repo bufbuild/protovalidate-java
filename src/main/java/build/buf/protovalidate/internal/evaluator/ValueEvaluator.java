@@ -22,12 +22,14 @@ import com.google.protobuf.Descriptors;
 import com.google.protobuf.DynamicMessage;
 import java.util.ArrayList;
 import java.util.List;
+import org.projectnessie.cel.common.ULong;
 
 /**
  * {@link ValueEvaluator} performs validation on any concrete value contained within a singular
  * field, repeated elements, or the keys/values of a map.
  */
 class ValueEvaluator implements Evaluator {
+  private static final ULong ULONG_ZERO = ULong.valueOf(0L);
   /** The default or zero-value for this value's type. */
   private final Object zero;
   /** The evaluators applied to a value. */
@@ -40,12 +42,21 @@ class ValueEvaluator implements Evaluator {
 
   /** Constructs a {@link ValueEvaluator}. */
   ValueEvaluator(FieldConstraints fieldConstraints, Descriptors.FieldDescriptor fieldDescriptor) {
-    if (fieldDescriptor.getType() == Descriptors.FieldDescriptor.Type.MESSAGE) {
+    Descriptors.FieldDescriptor.Type type = fieldDescriptor.getType();
+    if (type == Descriptors.FieldDescriptor.Type.MESSAGE) {
       DynamicMessage message =
           DynamicMessage.getDefaultInstance(fieldDescriptor.getContainingType());
       this.zero = message.getField(fieldDescriptor);
     } else {
-      this.zero = fieldDescriptor.getDefaultValue();
+      if (!fieldDescriptor.isRepeated()
+          && (type == Descriptors.FieldDescriptor.Type.UINT32
+              || type == Descriptors.FieldDescriptor.Type.UINT64
+              || type == Descriptors.FieldDescriptor.Type.FIXED32
+              || type == Descriptors.FieldDescriptor.Type.FIXED64)) {
+        this.zero = ULONG_ZERO;
+      } else {
+        this.zero = fieldDescriptor.getDefaultValue();
+      }
     }
     this.ignoreEmpty = fieldConstraints.getIgnoreEmpty();
   }
@@ -86,8 +97,8 @@ class ValueEvaluator implements Evaluator {
     if (val == null) {
       return false;
     } else if (zero == null) {
-      return val.value() == null;
+      return val.value(Object.class) == null;
     }
-    return zero.equals(val.value());
+    return zero.equals(val.value(zero.getClass()));
   }
 }
