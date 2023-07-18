@@ -1,5 +1,5 @@
 [versions]
-assertj = "3.11.0"
+assertj = "3.24.2"
 cel = "0.3.21"
 junit = "4.13.2"
 protobuf = "3.23.1"
