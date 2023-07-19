@@ -5,7 +5,7 @@ import com.diffplug.gradle.spotless.SpotlessExtension
 plugins {
     `version-catalog`
 
-    java
+    `java-library`
     alias(libs.plugins.errorprone.plugin)
 }
 
@@ -18,6 +18,12 @@ tasks.withType<JavaCompile> {
     if (JavaVersion.current().isJava9Compatible) doFirst {
         options.compilerArgs = mutableListOf("--release", "8")
     }
+}
+
+tasks.withType<Javadoc> {
+    // TODO: Enable when Javadoc changes are final
+//    val stdOptions = options as StandardJavadocDocletOptions
+//    stdOptions.addBooleanOption("Xwerror", true)
 }
 
 tasks.withType<GenerateModuleMetadata> {
@@ -91,13 +97,12 @@ plugins.withId("com.vanniktech.maven.publish.base") {
 }
 
 dependencies {
+    api(libs.protobuf.java)
+    api(libs.protovalidate)
     implementation(enforcedPlatform(libs.cel))
-    implementation(libs.cel.tools)
+    implementation(libs.cel.core)
     implementation(libs.guava)
-    implementation(libs.mail)
-    implementation(libs.protobuf.java)
-    implementation(libs.protobuf.java.util)
-    implementation(libs.protovalidate)
+    implementation(libs.jakarta.mail.api)
 
     testImplementation(libs.assertj)
     testImplementation(libs.junit)

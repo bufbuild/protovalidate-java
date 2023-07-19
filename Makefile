@@ -22,11 +22,15 @@ JAVA_SOURCES = $(wildcard src/main/java/**/**/**/*.java, src/main/java/**/**/*.j
 JAVA_CLASSES = $(patsubst src/main/java/%.java, target/classes/%.class, $(JAVA_SOURCES))
 
 .PHONY: all
-all: lint generate build conformance  ## Run all tests and lint (default)
+all: lint generate build docs conformance  ## Run all tests and lint (default)
 
 .PHONY: build
 build:  ## Build the entire project.
 	./gradlew build
+
+.PHONY: docs
+docs:  ## Build javadocs for the project.
+	./gradlew javadoc
 
 .PHONY: checkgenerate
 checkgenerate: generate  ## Checks if `make generate` produces a diff.

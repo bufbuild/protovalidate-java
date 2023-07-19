@@ -5,6 +5,11 @@ plugins {
     alias(libs.plugins.errorprone.plugin)
 }
 
+// Disable javadoc for conformance tests
+tasks.withType<Javadoc> {
+    enabled = false
+}
+
 tasks {
     jar {
         manifest {
@@ -24,8 +29,8 @@ tasks {
 
 dependencies {
     implementation(project(":"))
+    implementation(libs.guava)
     implementation(libs.protobuf.java)
-    implementation(libs.protobuf.java.util)
     implementation(libs.protovalidate)
     implementation(libs.protovalidate.testing)
 
