@@ -31,7 +31,7 @@ To include `protovalidate-java` in your project, add the following to your build
 
 ```gradle
 dependencies {
-    implementation 'build.buf:protovalidate:1.0.0'
+    implementation 'build.buf:protovalidate:<version>'
 }
 ```
 
