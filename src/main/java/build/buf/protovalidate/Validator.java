@@ -29,8 +29,20 @@ public class Validator {
   private final EvaluatorBuilder evaluatorBuilder;
   private final boolean failFast;
 
-  /** Constructs a new {@link Validator}. */
+  /**
+   * Constructs a new {@link Validator}.
+   *
+   * @param config specified configuration.
+   */
   public Validator(Config config) {
+    Env env = Env.newEnv(Library.Lib(new ValidateLibrary()));
+    this.evaluatorBuilder = new EvaluatorBuilder(env, config.isDisableLazy());
+    this.failFast = config.isFailFast();
+  }
+
+  /** Constructs a new {@link Validator} with a default configuration. */
+  public Validator() {
+    Config config = Config.builder().build();
     Env env = Env.newEnv(Library.Lib(new ValidateLibrary()));
     this.evaluatorBuilder = new EvaluatorBuilder(env, config.isDisableLazy());
     this.failFast = config.isFailFast();

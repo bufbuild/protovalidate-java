@@ -99,7 +99,7 @@ public class Main {
 
     Transaction transaction = transactionBuilder.build();
 
-    Validator validator = new Validator(new Config(false, false));
+    Validator validator = new Validator();
     try {
       ValidationResult result = validator.validate(transaction);
       if (result.violations.isEmpty()) {
