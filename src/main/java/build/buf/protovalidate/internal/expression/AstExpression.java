@@ -18,7 +18,6 @@ import build.buf.protovalidate.exceptions.CompilationException;
 import com.google.api.expr.v1alpha1.Type;
 import org.projectnessie.cel.Ast;
 import org.projectnessie.cel.Env;
-import org.projectnessie.cel.common.Source;
 
 /** {@link AstExpression} is a compiled CEL {@link Ast}. */
 public class AstExpression {
@@ -33,15 +32,14 @@ public class AstExpression {
   /** Compiles the given expression to a {@link AstExpression}. */
   public static AstExpression newAstExpression(Env env, Expression expr)
       throws CompilationException {
-    env.parseSource(Source.newTextSource(expr.expression));
     Env.AstIssuesTuple astIssuesTuple = env.compile(expr.expression);
     if (astIssuesTuple.hasIssues()) {
       throw new CompilationException("failed to compile expression " + expr.id);
     }
     Ast ast = astIssuesTuple.getAst();
     Type outType = ast.getResultType();
-    if (!outType.getPrimitive().equals(Type.PrimitiveType.BOOL)
-        && !outType.getPrimitive().equals(Type.PrimitiveType.STRING)) {
+    if (outType.getPrimitive() != Type.PrimitiveType.BOOL
+        && outType.getPrimitive() != Type.PrimitiveType.STRING) {
       throw new CompilationException(
           String.format(
               "expression outputs, wanted either bool or string %s %s", expr.id, outType));
