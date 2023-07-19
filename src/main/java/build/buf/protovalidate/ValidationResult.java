@@ -27,16 +27,32 @@ public class ValidationResult {
 
   private final List<Violation> violations;
 
+  /** A violation result with an empty violation list. */
   public static final ValidationResult EMPTY = new ValidationResult(Collections.emptyList());
 
+  /**
+   * Creates a violation result from a list of violations.
+   *
+   * @param violations violation list for the result.
+   */
   public ValidationResult(List<Violation> violations) {
     this.violations = violations;
   }
 
+  /**
+   * Check if the result is successful.
+   *
+   * @return if the validation result was a success.
+   */
   public boolean isSuccess() {
     return !violations.isEmpty();
   }
 
+  /**
+   * Get the list of violations in the result.
+   *
+   * @return the violation list.
+   */
   public List<Violation> getViolations() {
     return violations;
   }
