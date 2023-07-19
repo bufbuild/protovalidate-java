@@ -88,13 +88,13 @@ public class EvaluatorBuilder {
     if (eval != null) {
       return eval;
     }
-    Evaluator msgEval = new MessageEvaluator();
+    MessageEvaluator msgEval = new MessageEvaluator();
     evaluatorMap.put(desc, msgEval);
     buildMessage(desc, msgEval);
     return msgEval;
   }
 
-  private void buildMessage(Descriptor desc, Evaluator msgEval) throws CompilationException {
+  private void buildMessage(Descriptor desc, MessageEvaluator msgEval) throws CompilationException {
     try {
       DynamicMessage defaultInstance =
           DynamicMessage.parseFrom(desc, new byte[0], extensionRegistry);
@@ -112,7 +112,10 @@ public class EvaluatorBuilder {
   }
 
   private void processMessageExpressions(
-      Descriptor desc, MessageConstraints msgConstraints, Evaluator msgEval, DynamicMessage message)
+      Descriptor desc,
+      MessageConstraints msgConstraints,
+      MessageEvaluator msgEval,
+      DynamicMessage message)
       throws CompilationException {
     List<Constraint> celList = msgConstraints.getCelList();
     if (celList.isEmpty()) {
@@ -130,7 +133,7 @@ public class EvaluatorBuilder {
     msgEval.append(new CelPrograms(compiledPrograms));
   }
 
-  private void processOneofConstraints(Descriptor desc, Evaluator msgEval) {
+  private void processOneofConstraints(Descriptor desc, MessageEvaluator msgEval) {
     List<Descriptors.OneofDescriptor> oneofs = desc.getOneofs();
     for (Descriptors.OneofDescriptor oneofDesc : oneofs) {
       OneofConstraints oneofConstraints = resolver.resolveOneofConstraints(oneofDesc);
@@ -140,7 +143,8 @@ public class EvaluatorBuilder {
     }
   }
 
-  private void processFields(Descriptor desc, Evaluator msgEval) throws CompilationException {
+  private void processFields(Descriptor desc, MessageEvaluator msgEval)
+      throws CompilationException {
     List<FieldDescriptor> fields = desc.getFields();
     for (FieldDescriptor fieldDescriptor : fields) {
       FieldDescriptor descriptor = desc.findFieldByName(fieldDescriptor.getName());
@@ -292,8 +296,8 @@ public class EvaluatorBuilder {
     AnyEvaluator anyEvaluatorEval =
         new AnyEvaluator(
             typeURLDesc,
-            fieldConstraints.getAny().getInList().toArray(new String[0]),
-            fieldConstraints.getAny().getNotInList().toArray(new String[0]));
+            fieldConstraints.getAny().getInList(),
+            fieldConstraints.getAny().getNotInList());
     valueEvaluatorEval.append(anyEvaluatorEval);
   }
 
@@ -306,9 +310,7 @@ public class EvaluatorBuilder {
     }
     if (fieldConstraints.getEnum().getDefinedOnly()) {
       Descriptors.EnumDescriptor enumDescriptor = fieldDescriptor.getEnumType();
-      Descriptors.EnumValueDescriptor[] values =
-          enumDescriptor.getValues().toArray(new Descriptors.EnumValueDescriptor[0]);
-      valueEvaluatorEval.append(new EnumEvaluator(values));
+      valueEvaluatorEval.append(new EnumEvaluator(enumDescriptor.getValues()));
     }
   }
 

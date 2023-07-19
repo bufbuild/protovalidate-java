@@ -52,11 +52,6 @@ public class OneofEvaluator implements Evaluator {
                   .setMessage("exactly one field is required in oneof")
                   .build()));
     }
-    return new ValidationResult();
-  }
-
-  @Override
-  public void append(Evaluator eval) {
-    throw new UnsupportedOperationException("append not supported for Oneof");
+    return ValidationResult.EMPTY;
   }
 }

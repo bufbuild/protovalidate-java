@@ -18,9 +18,10 @@ import build.buf.gen.buf.validate.Violation;
 import build.buf.protovalidate.ValidationResult;
 import build.buf.protovalidate.exceptions.ExecutionException;
 import com.google.protobuf.Descriptors;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 /**
  * {@link EnumEvaluator} checks an enum value being a member of the defined values exclusively. This
@@ -28,11 +29,18 @@ import java.util.List;
  */
 class EnumEvaluator implements Evaluator {
   /** Captures all the defined values for this enum */
-  private final List<Descriptors.EnumValueDescriptor> valueDescriptors;
+  private final Set<Integer> values;
 
   /** Constructs a new evaluator for enum values. */
-  EnumEvaluator(Descriptors.EnumValueDescriptor... valueDescriptors) {
-    this.valueDescriptors = Arrays.asList(valueDescriptors);
+  EnumEvaluator(List<Descriptors.EnumValueDescriptor> valueDescriptors) {
+    if (valueDescriptors.isEmpty()) {
+      this.values = Collections.emptySet();
+    } else {
+      this.values =
+          valueDescriptors.stream()
+              .map(Descriptors.EnumValueDescriptor::getNumber)
+              .collect(Collectors.toSet());
+    }
   }
 
   @Override
@@ -43,7 +51,7 @@ class EnumEvaluator implements Evaluator {
   @Override
   public ValidationResult evaluate(Value val, boolean failFast) throws ExecutionException {
     Descriptors.EnumValueDescriptor enumValue = val.value(Descriptors.EnumValueDescriptor.class);
-    if (!isValueValid(enumValue)) {
+    if (!values.contains(enumValue.getNumber())) {
       return new ValidationResult(
           Collections.singletonList(
               Violation.newBuilder()
@@ -51,20 +59,6 @@ class EnumEvaluator implements Evaluator {
                   .setMessage("value must be one of the defined enum values")
                   .build()));
     }
-    return new ValidationResult();
-  }
-
-  @Override
-  public void append(Evaluator eval) {
-    throw new UnsupportedOperationException("append not supported for DefinedEnum");
-  }
-
-  private boolean isValueValid(Descriptors.EnumValueDescriptor value) {
-    for (Descriptors.EnumValueDescriptor descriptor : valueDescriptors) {
-      if (descriptor.getNumber() == value.getNumber()) {
-        return true;
-      }
-    }
-    return false;
+    return ValidationResult.EMPTY;
   }
 }

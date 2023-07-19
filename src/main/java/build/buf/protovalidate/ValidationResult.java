@@ -27,9 +27,7 @@ public class ValidationResult {
 
   private final List<Violation> violations;
 
-  public ValidationResult() {
-    this.violations = Collections.emptyList();
-  }
+  public static final ValidationResult EMPTY = new ValidationResult(Collections.emptyList());
 
   public ValidationResult(List<Violation> violations) {
     this.violations = violations;

@@ -40,7 +40,6 @@ final class ErrorPathUtils {
               } else {
                 prefixedFieldPath = Strings.lenientFormat("%s.%s", prefix, fieldPath);
               }
-
               return violation.toBuilder().setFieldPath(prefixedFieldPath).build();
             })
         .collect(Collectors.toList());

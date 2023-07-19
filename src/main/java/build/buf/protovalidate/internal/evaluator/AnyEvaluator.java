@@ -20,7 +20,6 @@ import build.buf.protovalidate.exceptions.ExecutionException;
 import com.google.protobuf.Descriptors;
 import com.google.protobuf.Message;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
@@ -38,7 +37,7 @@ class AnyEvaluator implements Evaluator {
   private final Set<String> notIn;
 
   /** Constructs a new evaluator for {@link build.buf.gen.buf.validate.AnyRules} messages. */
-  AnyEvaluator(Descriptors.FieldDescriptor typeURLDescriptor, String[] in, String[] notIn) {
+  AnyEvaluator(Descriptors.FieldDescriptor typeURLDescriptor, List<String> in, List<String> notIn) {
     this.typeURLDescriptor = typeURLDescriptor;
     this.in = stringsToSet(in);
     this.notIn = stringsToSet(notIn);
@@ -50,26 +49,25 @@ class AnyEvaluator implements Evaluator {
     List<Violation> violationList = new ArrayList<>();
     String typeURL = (String) o.getField(typeURLDescriptor);
     if (!in.isEmpty() && !in.contains(typeURL)) {
-      Violation.Builder violation = Violation.newBuilder();
-      violation.setConstraintId("any.in");
-      violation.setMessage("type URL must be in the allow list");
-      violationList.add(violation.build());
+      Violation violation =
+          Violation.newBuilder()
+              .setConstraintId("any.in")
+              .setMessage("type URL must be in the allow list")
+              .build();
+      violationList.add(violation);
       if (failFast) {
         return new ValidationResult(violationList);
       }
     }
     if (!notIn.isEmpty() && notIn.contains(typeURL)) {
-      Violation.Builder violation = Violation.newBuilder();
-      violation.setConstraintId("any.not_in");
-      violation.setMessage("type URL must not be in the block list");
-      violationList.add(violation.build());
+      Violation violation =
+          Violation.newBuilder()
+              .setConstraintId("any.not_in")
+              .setMessage("type URL must not be in the block list")
+              .build();
+      violationList.add(violation);
     }
     return new ValidationResult(violationList);
-  }
-
-  @Override
-  public void append(Evaluator eval) {
-    throw new UnsupportedOperationException("append not supported for Any");
   }
 
   @Override
@@ -77,13 +75,11 @@ class AnyEvaluator implements Evaluator {
     return in.isEmpty() && notIn.isEmpty();
   }
 
-  /** stringsToMap converts a string slice to a set for fast lookup. */
-  private static Set<String> stringsToSet(String[] strings) {
-    if (strings == null || strings.length == 0) {
+  /** stringsToMap converts a string list to a set for fast lookup. */
+  private static Set<String> stringsToSet(List<String> strings) {
+    if (strings.isEmpty()) {
       return Collections.emptySet();
     }
-    Set<String> map = new HashSet<>(strings.length);
-    map.addAll(Arrays.asList(strings));
-    return Collections.unmodifiableSet(map);
+    return new HashSet<>(strings);
   }
 }

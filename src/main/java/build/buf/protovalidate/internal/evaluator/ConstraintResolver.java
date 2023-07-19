@@ -29,7 +29,7 @@ class ConstraintResolver {
   MessageConstraints resolveMessageConstraints(Descriptor desc) {
     DescriptorProtos.MessageOptions options = desc.getOptions();
     if (!options.hasExtension(ValidateProto.message)) {
-      return MessageConstraints.newBuilder().build();
+      return MessageConstraints.getDefaultInstance();
     }
     MessageConstraints constraints = options.getExtension(ValidateProto.message);
     boolean disabled = constraints.getDisabled();
@@ -42,7 +42,7 @@ class ConstraintResolver {
   OneofConstraints resolveOneofConstraints(OneofDescriptor desc) {
     DescriptorProtos.OneofOptions options = desc.getOptions();
     if (!options.hasExtension(ValidateProto.oneof)) {
-      return OneofConstraints.newBuilder().build();
+      return OneofConstraints.getDefaultInstance();
     }
     return options.getExtension(ValidateProto.oneof);
   }
@@ -50,7 +50,7 @@ class ConstraintResolver {
   FieldConstraints resolveFieldConstraints(FieldDescriptor desc) {
     DescriptorProtos.FieldOptions options = desc.getOptions();
     if (!options.hasExtension(ValidateProto.field)) {
-      return FieldConstraints.newBuilder().build();
+      return FieldConstraints.getDefaultInstance();
     }
     return options.getExtension(ValidateProto.field);
   }

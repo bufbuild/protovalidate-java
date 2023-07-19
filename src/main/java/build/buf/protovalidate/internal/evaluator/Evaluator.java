@@ -32,7 +32,4 @@ public interface Evaluator {
    * ExecutionException} is thrown if evaluation fails to complete.
    */
   ValidationResult evaluate(Value val, boolean failFast) throws ExecutionException;
-
-  /** Appends the given {@link Evaluator} to this {@link Evaluator}. */
-  void append(Evaluator eval);
 }

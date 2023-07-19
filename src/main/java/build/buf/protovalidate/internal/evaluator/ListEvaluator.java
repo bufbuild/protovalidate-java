@@ -44,6 +44,9 @@ class ListEvaluator implements Evaluator {
     List<Value> repeatedValues = val.repeatedValue();
     for (int i = 0; i < repeatedValues.size(); i++) {
       ValidationResult evalResult = itemConstraints.evaluate(repeatedValues.get(i), failFast);
+      if (evalResult.getViolations().isEmpty()) {
+        continue;
+      }
       List<Violation> violations =
           ErrorPathUtils.prefixErrorPaths(evalResult.getViolations(), "[%d]", i);
       if (failFast && !violations.isEmpty()) {
@@ -52,10 +55,5 @@ class ListEvaluator implements Evaluator {
       allViolations.addAll(violations);
     }
     return new ValidationResult(allViolations);
-  }
-
-  @Override
-  public void append(Evaluator eval) {
-    throw new UnsupportedOperationException("append not supported for ListItems");
   }
 }

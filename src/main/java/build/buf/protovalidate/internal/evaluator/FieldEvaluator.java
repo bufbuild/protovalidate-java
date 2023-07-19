@@ -76,7 +76,7 @@ class FieldEvaluator implements Evaluator {
                   .build()));
     }
     if ((optional || valueEvaluator.getIgnoreEmpty()) && !hasField) {
-      return new ValidationResult();
+      return ValidationResult.EMPTY;
     }
     Object fieldValue = message.getField(descriptor);
     ValidationResult evalResult =
@@ -84,10 +84,5 @@ class FieldEvaluator implements Evaluator {
     List<Violation> violations =
         ErrorPathUtils.prefixErrorPaths(evalResult.getViolations(), "%s", descriptor.getName());
     return new ValidationResult(violations);
-  }
-
-  @Override
-  public void append(Evaluator eval) {
-    throw new UnsupportedOperationException("append not supported for FieldEval");
   }
 }

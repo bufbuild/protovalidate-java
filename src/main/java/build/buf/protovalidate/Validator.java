@@ -64,7 +64,7 @@ public class Validator {
    */
   public ValidationResult validate(Message msg) throws ValidationException {
     if (msg == null) {
-      return new ValidationResult();
+      return ValidationResult.EMPTY;
     }
     Descriptor descriptor = msg.getDescriptorForType();
     Evaluator evaluator = evaluatorBuilder.load(descriptor);

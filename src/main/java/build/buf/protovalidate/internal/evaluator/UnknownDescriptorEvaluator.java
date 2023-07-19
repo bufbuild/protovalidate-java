@@ -46,9 +46,4 @@ class UnknownDescriptorEvaluator implements Evaluator {
                 .setMessage("No evaluator available for " + desc.getFullName())
                 .build()));
   }
-
-  @Override
-  public void append(Evaluator eval) {
-    throw new UnsupportedOperationException("append not supported for unknown message");
-  }
 }

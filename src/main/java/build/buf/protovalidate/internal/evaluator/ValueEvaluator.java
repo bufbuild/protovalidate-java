@@ -76,7 +76,7 @@ class ValueEvaluator implements Evaluator {
   @Override
   public ValidationResult evaluate(Value val, boolean failFast) throws ExecutionException {
     if (ignoreEmpty && isZero(val)) {
-      return new ValidationResult();
+      return ValidationResult.EMPTY;
     }
     List<Violation> violations = new ArrayList<>();
     for (Evaluator evaluator : evaluators) {
@@ -86,10 +86,12 @@ class ValueEvaluator implements Evaluator {
       }
       violations.addAll(evalResult.getViolations());
     }
+    if (violations.isEmpty()) {
+      return ValidationResult.EMPTY;
+    }
     return new ValidationResult(violations);
   }
 
-  @Override
   public void append(Evaluator eval) {
     if (!eval.tautology()) {
       this.evaluators.add(eval);
@@ -99,7 +101,8 @@ class ValueEvaluator implements Evaluator {
   private boolean isZero(Value val) {
     if (val == null) {
       return false;
-    } else if (zero == null) {
+    }
+    if (zero == null) {
       return val.value(Object.class) == null;
     }
     return zero.equals(val.value(zero.getClass()));

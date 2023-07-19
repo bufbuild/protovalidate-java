@@ -50,9 +50,4 @@ public class CelPrograms implements Evaluator {
     }
     return new ValidationResult(violationList);
   }
-
-  @Override
-  public void append(Evaluator eval) {
-    throw new UnsupportedOperationException("append not supported for CelPrograms");
-  }
 }

@@ -45,10 +45,12 @@ class MessageEvaluator implements Evaluator {
       }
       violations.addAll(evalResult.getViolations());
     }
+    if (violations.isEmpty()) {
+      return ValidationResult.EMPTY;
+    }
     return new ValidationResult(violations);
   }
 
-  @Override
   public void append(Evaluator eval) {
     evaluators.add(eval);
   }

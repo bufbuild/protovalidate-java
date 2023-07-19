@@ -21,6 +21,7 @@ import build.buf.protovalidate.ValidationResult;
 import build.buf.protovalidate.exceptions.ExecutionException;
 import com.google.protobuf.Descriptors;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
@@ -59,35 +60,35 @@ class MapEvaluator implements Evaluator {
     List<Violation> violations = new ArrayList<>();
     Map<Value, Value> mapValue = val.mapValue();
     for (Map.Entry<Value, Value> entry : mapValue.entrySet()) {
-      ValidationResult evalResult = evalPairs(entry.getKey(), entry.getValue(), failFast);
-      if (failFast && !evalResult.getViolations().isEmpty()) {
-        return evalResult;
+      violations.addAll(evalPairs(entry.getKey(), entry.getValue(), failFast));
+      if (failFast && !violations.isEmpty()) {
+        return new ValidationResult(violations);
       }
-      violations.addAll(evalResult.getViolations());
+    }
+    if (violations.isEmpty()) {
+      return ValidationResult.EMPTY;
     }
     return new ValidationResult(violations);
   }
 
-  private ValidationResult evalPairs(Value key, Value value, boolean failFast) {
-    final List<Violation> violations;
-    try {
-      ValidationResult keyEvalResult = keyEvaluator.evaluate(key, failFast);
-      if (failFast && !keyEvalResult.getViolations().isEmpty()) {
-        return keyEvalResult;
-      }
-      violations = new ArrayList<>(keyEvalResult.getViolations());
-    } catch (ExecutionException e) {
-      throw new RuntimeException(e);
+  private List<Violation> evalPairs(Value key, Value value, boolean failFast)
+      throws ExecutionException {
+    List<Violation> keyViolations = keyEvaluator.evaluate(key, failFast).getViolations();
+    final List<Violation> valueViolations;
+    if (failFast && !keyViolations.isEmpty()) {
+      // Don't evaluate value constraints if failFast is enabled and keys failed validation.
+      // We still need to continue execution to the end to properly prefix violation field paths.
+      valueViolations = Collections.emptyList();
+    } else {
+      valueViolations = valueEvaluator.evaluate(value, failFast).getViolations();
     }
-    try {
-      ValidationResult valueEvalResult = valueEvaluator.evaluate(value, failFast);
-      if (failFast && !valueEvalResult.getViolations().isEmpty()) {
-        return valueEvalResult;
-      }
-      violations.addAll(valueEvalResult.getViolations());
-    } catch (ExecutionException e) {
-      throw new RuntimeException(e);
+    if (keyViolations.isEmpty() && valueViolations.isEmpty()) {
+      return Collections.emptyList();
     }
+    List<Violation> violations = new ArrayList<>(keyViolations.size() + valueViolations.size());
+    violations.addAll(keyViolations);
+    violations.addAll(valueViolations);
+
     Object keyName = key.value(Object.class);
     List<Violation> prefixedViolations;
     if (keyName instanceof Number) {
@@ -95,11 +96,6 @@ class MapEvaluator implements Evaluator {
     } else {
       prefixedViolations = ErrorPathUtils.prefixErrorPaths(violations, "[\"%s\"]", keyName);
     }
-    return new ValidationResult(prefixedViolations);
-  }
-
-  @Override
-  public void append(Evaluator eval) {
-    throw new UnsupportedOperationException("append not supported for MapEvaluator");
+    return prefixedViolations;
   }
 }
