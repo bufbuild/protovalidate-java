@@ -2,7 +2,7 @@
 assertj = "3.24.2"
 cel = "0.3.21"
 junit = "4.13.2"
-protobuf = "3.23.1"
+protobuf = "3.23.4"
 
 [libraries]
 assertj = { module = "org.assertj:assertj-core", version.ref = "assertj" }
