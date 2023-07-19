@@ -25,6 +25,11 @@ import org.projectnessie.cel.common.types.TimestampT;
 
 /** Defines custom declaration functions. */
 final class CustomDeclarations {
+  /**
+   * Create the custom function declaration list.
+   *
+   * @return the list of function declarations.
+   */
   static List<Decl> create() {
     List<Decl> decls = new ArrayList<>();
     decls.add(Decls.newVar("now", Decls.newObjectType(TimestampT.TimestampType.typeName())));

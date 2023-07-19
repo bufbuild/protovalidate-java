@@ -26,6 +26,10 @@ import org.projectnessie.cel.EvalOption;
 import org.projectnessie.cel.Library;
 import org.projectnessie.cel.ProgramOption;
 
+/**
+ * Custom {@link Library} for CEL. Provides all the custom extension function definitions and
+ * overloads.
+ */
 public class ValidateLibrary implements Library {
 
   @Override

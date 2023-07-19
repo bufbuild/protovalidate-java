@@ -50,6 +50,11 @@ import org.projectnessie.cel.interpreter.functions.UnaryOp;
 
 /** Defines custom function overloads (the implementation). */
 final class CustomOverload {
+  /**
+   * Create custom function overload list.
+   *
+   * @return an array of overloaded functions.
+   */
   static Overload[] create() {
     return new Overload[] {
       binaryFormat(),

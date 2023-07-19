@@ -38,10 +38,18 @@ import org.projectnessie.cel.common.types.pb.Db;
 import org.projectnessie.cel.common.types.ref.Type;
 import org.projectnessie.cel.common.types.ref.Val;
 
+/** String formatter for CEL evaluation. */
 final class Format {
   private static final char[] HEX_ARRAY = "0123456789ABCDEF".toCharArray();
   private static final char[] LOWER_HEX_ARRAY = "0123456789abcdef".toCharArray();
 
+  /**
+   * Format string with a {@link ListT}.
+   *
+   * @param fmtString the string to format.
+   * @param list the arguements.
+   * @return formatted string in {@link Val} form.
+   */
   static Val format(String fmtString, ListT list) {
     StringBuilder builder = new StringBuilder();
     int index = 0;
