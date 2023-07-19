@@ -19,7 +19,7 @@ import build.buf.protovalidate.exceptions.ValidationException;
 import build.buf.protovalidate.internal.celext.ValidateLibrary;
 import build.buf.protovalidate.internal.evaluator.Evaluator;
 import build.buf.protovalidate.internal.evaluator.EvaluatorBuilder;
-import build.buf.protovalidate.internal.evaluator.Value;
+import build.buf.protovalidate.internal.evaluator.MessageValue;
 import com.google.protobuf.Descriptors.Descriptor;
 import com.google.protobuf.Message;
 import org.projectnessie.cel.Env;
@@ -68,7 +68,7 @@ public class Validator {
     }
     Descriptor descriptor = msg.getDescriptorForType();
     Evaluator evaluator = evaluatorBuilder.load(descriptor);
-    return evaluator.evaluate(new Value.MessageValue(msg), failFast);
+    return evaluator.evaluate(new MessageValue(msg), failFast);
   }
 
   /**

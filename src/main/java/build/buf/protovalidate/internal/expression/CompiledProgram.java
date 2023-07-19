@@ -16,6 +16,7 @@ package build.buf.protovalidate.internal.expression;
 
 import build.buf.gen.buf.validate.Violation;
 import build.buf.protovalidate.exceptions.ExecutionException;
+import javax.annotation.Nullable;
 import org.projectnessie.cel.Program;
 import org.projectnessie.cel.common.types.Err;
 import org.projectnessie.cel.common.types.ref.Val;
@@ -40,6 +41,7 @@ public class CompiledProgram {
    * @return {@link build.buf.gen.buf.validate.Violation} the violations from the evaluation.
    * @throws ExecutionException If the evaluation of the CEL program fails with an error.
    */
+  @Nullable
   public Violation eval(Variable bindings) throws ExecutionException {
     Program.EvalResult evalResult = program.eval(bindings);
     Val val = evalResult.getVal();

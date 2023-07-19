@@ -90,6 +90,9 @@ class MapEvaluator implements Evaluator {
     violations.addAll(valueViolations);
 
     Object keyName = key.value(Object.class);
+    if (keyName == null) {
+      return Collections.emptyList();
+    }
     List<Violation> prefixedViolations;
     if (keyName instanceof Number) {
       prefixedViolations = ErrorPathUtils.prefixErrorPaths(violations, "[%s]", keyName);

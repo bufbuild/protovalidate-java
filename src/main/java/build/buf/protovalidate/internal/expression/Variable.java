@@ -16,6 +16,7 @@ package build.buf.protovalidate.internal.expression;
 
 import static org.projectnessie.cel.interpreter.ResolvedValue.ABSENT;
 
+import javax.annotation.Nullable;
 import org.projectnessie.cel.interpreter.Activation;
 import org.projectnessie.cel.interpreter.ResolvedValue;
 
@@ -34,10 +35,10 @@ public class Variable implements Activation {
   private final String name;
 
   /** The value for this variable */
-  private final Object val;
+  @Nullable private final Object val;
 
   /** Creates a new variable with the given name and value. */
-  private Variable(Activation activation, String name, Object val) {
+  private Variable(Activation activation, String name, @Nullable Object val) {
     this.next = activation;
     this.name = name;
     this.val = val;
@@ -49,7 +50,7 @@ public class Variable implements Activation {
    * @param val the value.
    * @return {@link Variable}.
    */
-  public static Variable newThisVariable(Object val) {
+  public static Variable newThisVariable(@Nullable Object val) {
     return new Variable(Activation.emptyActivation(), THIS_NAME, val);
   }
 

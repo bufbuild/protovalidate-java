@@ -43,6 +43,9 @@ public class OneofEvaluator implements Evaluator {
   @Override
   public ValidationResult evaluate(Value val, boolean failFast) throws ExecutionException {
     Message message = val.messageValue();
+    if (message == null) {
+      return ValidationResult.EMPTY;
+    }
     if (required && (message.getOneofFieldDescriptor(descriptor) == null)) {
       return new ValidationResult(
           Collections.singletonList(

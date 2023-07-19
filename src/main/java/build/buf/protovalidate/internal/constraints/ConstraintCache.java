@@ -14,8 +14,6 @@
 
 package build.buf.protovalidate.internal.constraints;
 
-import static org.projectnessie.cel.ProgramOption.globals;
-
 import build.buf.gen.buf.validate.FieldConstraints;
 import build.buf.gen.buf.validate.priv.PrivateProto;
 import build.buf.protovalidate.exceptions.CompilationException;
@@ -30,6 +28,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
+import javax.annotation.Nullable;
 import org.projectnessie.cel.Ast;
 import org.projectnessie.cel.Env;
 import org.projectnessie.cel.EnvOption;
@@ -92,7 +91,7 @@ public class ConstraintCache {
                 Decls.newVar(
                     Variable.RULES_NAME,
                     Decls.newObjectType(message.getDescriptorForType().getFullName()))));
-    ProgramOption rulesOption = globals(Variable.newRulesVariable(message));
+    ProgramOption rulesOption = ProgramOption.globals(Variable.newRulesVariable(message));
     List<AstExpression> completeProgramList = new ArrayList<>();
     for (Map.Entry<FieldDescriptor, Object> entry : message.getAllFields().entrySet()) {
       FieldDescriptor constraintFieldDesc = entry.getKey();
@@ -141,6 +140,7 @@ public class ConstraintCache {
    * constraints are applied to a field (typically if there is a type-mismatch). Null is returned if
    * there are no standard constraints to apply to this field.
    */
+  @Nullable
   private Message resolveConstraints(
       FieldDescriptor fieldDescriptor, FieldConstraints fieldConstraints, boolean forItems)
       throws CompilationException {
@@ -156,8 +156,7 @@ public class ConstraintCache {
     // indicating whether it is for items.
     FieldDescriptor expectedConstraintDescriptor =
         DescriptorMappings.getExpectedConstraintDescriptor(fieldDescriptor, forItems);
-    boolean ok = expectedConstraintDescriptor != null;
-    if (ok
+    if (expectedConstraintDescriptor != null
         && !oneofFieldDescriptor.getFullName().equals(expectedConstraintDescriptor.getFullName())) {
       // If the expected constraint does not match the actual oneof constraint, throw a
       // CompilationError.
@@ -172,7 +171,7 @@ public class ConstraintCache {
     // If the expected constraint descriptor is null or if the field constraints do not have the
     // oneof field descriptor
     // there are no constraints to resolve, so return null.
-    if (!ok || !fieldConstraints.hasField(oneofFieldDescriptor)) {
+    if (expectedConstraintDescriptor == null || !fieldConstraints.hasField(oneofFieldDescriptor)) {
       return null;
     }
 

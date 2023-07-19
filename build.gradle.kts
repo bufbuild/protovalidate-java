@@ -1,6 +1,8 @@
 import com.vanniktech.maven.publish.MavenPublishBaseExtension
 import com.vanniktech.maven.publish.SonatypeHost
 import com.diffplug.gradle.spotless.SpotlessExtension
+import net.ltgt.gradle.errorprone.CheckSeverity
+import net.ltgt.gradle.errorprone.errorprone
 
 plugins {
     `version-catalog`
@@ -17,6 +19,12 @@ java {
 tasks.withType<JavaCompile> {
     if (JavaVersion.current().isJava9Compatible) doFirst {
         options.compilerArgs = mutableListOf("--release", "8")
+    }
+    if (!name.lowercase().contains("test")) {
+        options.errorprone {
+            check("NullAway", CheckSeverity.ERROR)
+            option("NullAway:AnnotatedPackages", "build.buf.protovalidate")
+        }
     }
 }
 
@@ -97,6 +105,7 @@ plugins.withId("com.vanniktech.maven.publish.base") {
 }
 
 dependencies {
+    annotationProcessor(libs.nullaway)
     api(libs.protobuf.java)
     api(libs.protovalidate)
     implementation(enforcedPlatform(libs.cel))

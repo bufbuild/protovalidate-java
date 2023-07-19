@@ -14,11 +14,6 @@
 
 package build.buf.protovalidate.internal.celext;
 
-import static org.projectnessie.cel.common.types.IntT.intOf;
-import static org.projectnessie.cel.interpreter.functions.Overload.binary;
-import static org.projectnessie.cel.interpreter.functions.Overload.overload;
-import static org.projectnessie.cel.interpreter.functions.Overload.unary;
-
 import com.google.common.base.Ascii;
 import com.google.common.base.Splitter;
 import com.google.common.net.InetAddresses;
@@ -71,7 +66,7 @@ final class CustomOverload {
   }
 
   private static Overload binaryFormat() {
-    return binary(
+    return Overload.binary(
         "format",
         (lhs, rhs) -> {
           if (rhs.type() != ListT.ListType) {
@@ -88,7 +83,7 @@ final class CustomOverload {
   }
 
   private static Overload unaryUnique() {
-    return unary(
+    return Overload.unary(
         "unique",
         (val) -> {
           switch (val.type().typeEnum()) {
@@ -98,7 +93,7 @@ final class CustomOverload {
                 // Uniqueness for empty lists are true.
                 return BoolT.True;
               }
-              Val firstValue = lister.get(intOf(0));
+              Val firstValue = lister.get(IntT.intOf(0));
               return unaryOpForPrimitiveVal(firstValue).invoke(lister);
             case Bool:
             case Bytes:
@@ -114,7 +109,7 @@ final class CustomOverload {
   }
 
   private static Overload binaryStartsWith() {
-    return binary(
+    return Overload.binary(
         "startsWith",
         (lhs, rhs) -> {
           if (lhs.type() == StringT.StringType && rhs.type() == StringT.StringType) {
@@ -139,7 +134,7 @@ final class CustomOverload {
   }
 
   private static Overload binaryEndsWith() {
-    return binary(
+    return Overload.binary(
         "endsWith",
         (lhs, rhs) -> {
           if (lhs.type() == StringT.StringType && rhs.type() == StringT.StringType) {
@@ -164,7 +159,7 @@ final class CustomOverload {
   }
 
   private static Overload binaryContains() {
-    return binary(
+    return Overload.binary(
         "contains",
         (lhs, rhs) -> {
           if (lhs.type() == StringT.StringType && rhs.type() == StringT.StringType) {
@@ -181,7 +176,7 @@ final class CustomOverload {
   }
 
   private static Overload binaryIsHostname() {
-    return unary(
+    return Overload.unary(
         "isHostname",
         value -> {
           String host = value.value().toString();
@@ -193,7 +188,7 @@ final class CustomOverload {
   }
 
   private static Overload unaryIsEmail() {
-    return unary(
+    return Overload.unary(
         "isEmail",
         value -> {
           String addr = value.value().toString();
@@ -205,7 +200,7 @@ final class CustomOverload {
   }
 
   private static Overload isIp() {
-    return overload(
+    return Overload.overload(
         "isIp",
         null,
         value -> {
@@ -226,7 +221,7 @@ final class CustomOverload {
   }
 
   private static Overload isUri() {
-    return unary(
+    return Overload.unary(
         "isUri",
         value -> {
           String addr = value.value().toString();
@@ -242,7 +237,7 @@ final class CustomOverload {
   }
 
   private static Overload isUriRef() {
-    return unary(
+    return Overload.unary(
         "isUriRef",
         value -> {
           String addr = value.value().toString();
@@ -302,7 +297,7 @@ final class CustomOverload {
   private static Val uniqueBytes(Lister list) {
     Set<Object> exist = new HashSet<>();
     for (int i = 0; i < list.size().intValue(); i++) {
-      Object val = list.get(intOf(i)).value();
+      Object val = list.get(IntT.intOf(i)).value();
       if (val instanceof byte[]) {
         val = new String((byte[]) val, StandardCharsets.UTF_8);
       }
@@ -317,7 +312,7 @@ final class CustomOverload {
   private static Val uniqueScalar(Lister list) {
     Set<Val> exist = new HashSet<>();
     for (int i = 0; i < list.size().intValue(); i++) {
-      Val val = list.get(intOf(i));
+      Val val = list.get(IntT.intOf(i));
       if (exist.contains(val)) {
         return BoolT.False;
       }

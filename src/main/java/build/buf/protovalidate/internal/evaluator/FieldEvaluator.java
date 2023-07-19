@@ -60,6 +60,9 @@ class FieldEvaluator implements Evaluator {
   @Override
   public ValidationResult evaluate(Value val, boolean failFast) throws ExecutionException {
     Message message = val.messageValue();
+    if (message == null) {
+      return ValidationResult.EMPTY;
+    }
     boolean hasField;
     if (descriptor.isRepeated()) {
       hasField = message.getRepeatedFieldCount(descriptor) != 0;
@@ -80,7 +83,7 @@ class FieldEvaluator implements Evaluator {
     }
     Object fieldValue = message.getField(descriptor);
     ValidationResult evalResult =
-        valueEvaluator.evaluate(new Value(descriptor, fieldValue), failFast);
+        valueEvaluator.evaluate(new ObjectValue(descriptor, fieldValue), failFast);
     List<Violation> violations =
         ErrorPathUtils.prefixErrorPaths(evalResult.getViolations(), "%s", descriptor.getName());
     return new ValidationResult(violations);

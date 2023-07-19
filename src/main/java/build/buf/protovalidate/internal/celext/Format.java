@@ -14,9 +14,6 @@
 
 package build.buf.protovalidate.internal.celext;
 
-import static org.projectnessie.cel.common.types.IntT.intOf;
-import static org.projectnessie.cel.common.types.pb.DefaultTypeAdapter.nativeToValue;
-
 import com.google.protobuf.Duration;
 import com.google.protobuf.Timestamp;
 import java.nio.charset.StandardCharsets;
@@ -35,6 +32,7 @@ import org.projectnessie.cel.common.types.StringT;
 import org.projectnessie.cel.common.types.TimestampT;
 import org.projectnessie.cel.common.types.UintT;
 import org.projectnessie.cel.common.types.pb.Db;
+import org.projectnessie.cel.common.types.pb.DefaultTypeAdapter;
 import org.projectnessie.cel.common.types.ref.Type;
 import org.projectnessie.cel.common.types.ref.Val;
 
@@ -78,7 +76,7 @@ final class Format {
       if (argIndex >= list.size().intValue()) {
         return Err.newErr("format: not enough arguments");
       }
-      Val arg = list.get(intOf(argIndex++));
+      Val arg = list.get(IntT.intOf(argIndex++));
       c = fmtString.charAt(index++);
       int precision = 6;
       if (c == '.') {
@@ -177,7 +175,7 @@ final class Format {
     List list = val.convertToNative(List.class);
     for (int i = 0; i < list.size(); i++) {
       Object obj = list.get(i);
-      formatStringSafe(builder, nativeToValue(Db.newDb(), null, obj), true);
+      formatStringSafe(builder, DefaultTypeAdapter.nativeToValue(Db.newDb(), null, obj), true);
       if (i != list.size() - 1) {
         builder.append(", ");
       }

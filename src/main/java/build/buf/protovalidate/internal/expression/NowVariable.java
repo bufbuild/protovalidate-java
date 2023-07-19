@@ -15,6 +15,7 @@
 package build.buf.protovalidate.internal.expression;
 
 import java.time.Instant;
+import javax.annotation.Nullable;
 import org.projectnessie.cel.common.types.TimestampT;
 import org.projectnessie.cel.interpreter.Activation;
 import org.projectnessie.cel.interpreter.ResolvedValue;
@@ -26,7 +27,7 @@ import org.projectnessie.cel.interpreter.ResolvedValue;
 public class NowVariable implements Activation {
   private static final String NOW_NAME = "now";
 
-  private ResolvedValue resolvedValue;
+  @Nullable private ResolvedValue resolvedValue;
 
   @Override
   public ResolvedValue resolveName(String name) {

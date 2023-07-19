@@ -45,9 +45,12 @@ class AnyEvaluator implements Evaluator {
 
   @Override
   public ValidationResult evaluate(Value val, boolean failFast) throws ExecutionException {
-    Message o = val.messageValue();
+    Message anyValue = val.messageValue();
+    if (anyValue == null) {
+      return ValidationResult.EMPTY;
+    }
     List<Violation> violationList = new ArrayList<>();
-    String typeURL = (String) o.getField(typeURLDescriptor);
+    String typeURL = (String) anyValue.getField(typeURLDescriptor);
     if (!in.isEmpty() && !in.contains(typeURL)) {
       Violation violation =
           Violation.newBuilder()

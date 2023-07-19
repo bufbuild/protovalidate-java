@@ -21,6 +21,7 @@ import com.google.protobuf.Descriptors.FieldDescriptor;
 import com.google.protobuf.Descriptors.OneofDescriptor;
 import java.util.HashMap;
 import java.util.Map;
+import javax.annotation.Nullable;
 import org.projectnessie.cel.checker.Decls;
 
 public class DescriptorMappings {
@@ -96,6 +97,7 @@ public class DescriptorMappings {
    * Returns the {@link FieldConstraints} field that is expected for the given protocol buffer field
    * kind.
    */
+  @Nullable
   public static FieldDescriptor expectedWrapperConstraints(String fqn) {
     switch (fqn) {
       case "google.protobuf.BoolValue":
@@ -163,6 +165,7 @@ public class DescriptorMappings {
    * provided target field descriptor. If the returned value is null, the field does not expect any
    * standard constraints.
    */
+  @Nullable
   static FieldDescriptor getExpectedConstraintDescriptor(
       FieldDescriptor fieldDescriptor, boolean forItems) {
     if (fieldDescriptor.isMapField()) {
