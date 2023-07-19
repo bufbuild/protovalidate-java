@@ -26,18 +26,23 @@ import org.projectnessie.cel.checker.Decls;
 public class DescriptorMappings {
   /** Provides a {@link Descriptor} for {@link FieldConstraints}. */
   static final Descriptor FIELD_CONSTRAINTS_DESC = FieldConstraints.getDescriptor();
+
   /** Provides the {@link OneofDescriptor} for the type union in {@link FieldConstraints}. */
   static final OneofDescriptor FIELD_CONSTRAINTS_ONEOF_DESC =
       FIELD_CONSTRAINTS_DESC.getOneofs().get(0);
+
   /** Provides the {@link FieldDescriptor} for the map standard constraints. */
   static final FieldDescriptor MAP_FIELD_CONSTRAINTS_DESC =
       FIELD_CONSTRAINTS_DESC.findFieldByName("map");
+
   /** Provides the {@link FieldDescriptor} for the repeated standard constraints. */
   static final FieldDescriptor REPEATED_FIELD_CONSTRAINTS_DESC =
       FIELD_CONSTRAINTS_DESC.findFieldByName("repeated");
+
   /** Maps protocol buffer field kinds to their expected field constraints. */
   static final Map<FieldDescriptor.Type, FieldDescriptor> EXPECTED_STANDARD_CONSTRAINTS =
       new HashMap<>();
+
   /**
    * Returns the {@link build.buf.gen.buf.validate.FieldConstraints} field that is expected for the
    * given wrapper well-known type's full name. If ok is false, no standard constraints exist for

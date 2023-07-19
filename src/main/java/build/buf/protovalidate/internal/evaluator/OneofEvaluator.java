@@ -25,6 +25,7 @@ import java.util.Collections;
 public class OneofEvaluator implements Evaluator {
   /** The {@link OneofDescriptor} targeted by this evaluator. */
   private final OneofDescriptor descriptor;
+
   /** Indicates that a member of the oneof must be set. */
   private final boolean required;
 

@@ -26,10 +26,13 @@ import java.util.List;
 class FieldEvaluator implements Evaluator {
   /** The {@link ValueEvaluator} to apply to the field's value */
   public final ValueEvaluator valueEvaluator;
+
   /** The {@link FieldDescriptor} targeted by this evaluator */
   private final FieldDescriptor descriptor;
+
   /** Indicates that the field must have a set value. */
   private final boolean required;
+
   /**
    * Indicates that the evaluators should not be applied to this field if the value is unset. Fields
    * that contain messages, are prefixed with `optional`, or are part of a oneof are considered

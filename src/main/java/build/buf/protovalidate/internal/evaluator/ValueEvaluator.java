@@ -30,10 +30,13 @@ import org.projectnessie.cel.common.ULong;
  */
 class ValueEvaluator implements Evaluator {
   private static final ULong ULONG_ZERO = ULong.valueOf(0L);
+
   /** The default or zero-value for this value's type. */
   private final Object zero;
+
   /** The evaluators applied to a value. */
   private final List<Evaluator> evaluators = new ArrayList<>();
+
   /**
    * Indicates that the Constraints should not be applied if the field is unset or the default
    * (typically zero) value.

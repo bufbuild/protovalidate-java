@@ -44,8 +44,10 @@ public class Value {
       return clazz.cast(value);
     }
   }
+
   /** {@link Descriptors.FieldDescriptor} is the field descriptor for the value. */
   private final Descriptors.FieldDescriptor fieldDescriptor;
+
   /** Object type since the object type is inferred from the field descriptor. */
   protected final Object value;
 

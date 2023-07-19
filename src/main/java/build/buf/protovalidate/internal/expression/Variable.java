@@ -29,8 +29,10 @@ public class Variable implements Activation {
 
   /** The parent activation */
   private final Activation next;
+
   /** The variable's name */
   private final String name;
+
   /** The value for this variable */
   private final Object val;
 

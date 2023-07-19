@@ -28,6 +28,7 @@ import java.util.Map;
 class MapEvaluator implements Evaluator {
   /** Constraint for checking the map keys */
   private final ValueEvaluator keyEvaluator;
+
   /** Constraint for checking the map values */
   private final ValueEvaluator valueEvaluator;
 

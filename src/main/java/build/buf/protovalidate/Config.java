@@ -21,6 +21,7 @@ public final class Config {
    * all violations should be accumulated. By default, all violations are accumulated.
    */
   private final boolean failFast;
+
   /**
    * Prevents the Validator from lazily building validation logic for a message it has not
    * encountered before. Disabling lazy logic additionally eliminates any internal locking as the

@@ -40,8 +40,8 @@ class AnyEvaluator implements Evaluator {
   /** Constructs a new evaluator for {@link build.buf.gen.buf.validate.AnyRules} messages. */
   AnyEvaluator(Descriptors.FieldDescriptor typeURLDescriptor, String[] in, String[] notIn) {
     this.typeURLDescriptor = typeURLDescriptor;
-    this.in = stringsToMap(in);
-    this.notIn = stringsToMap(notIn);
+    this.in = stringsToSet(in);
+    this.notIn = stringsToSet(notIn);
   }
 
   @Override
@@ -78,7 +78,7 @@ class AnyEvaluator implements Evaluator {
   }
 
   /** stringsToMap converts a string slice to a set for fast lookup. */
-  private static Set<String> stringsToMap(String[] strings) {
+  private static Set<String> stringsToSet(String[] strings) {
     if (strings == null || strings.length == 0) {
       return Collections.emptySet();
     }
