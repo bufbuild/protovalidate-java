@@ -11,7 +11,7 @@ cel-tools = { module = "org.projectnessie.cel:cel-tools" }
 errorprone = { module = "com.google.errorprone:error_prone_core", version = "2.20.0" }
 guava = { module = "com.google.guava:guava", version = "32.1.1-jre" }
 junit = { module = "junit:junit", version.ref = "junit" }
-maven-plugin = { module = "com.vanniktech:gradle-maven-publish-plugin", version = "0.22.0" }
+maven-plugin = { module = "com.vanniktech:gradle-maven-publish-plugin", version = "0.25.3" }
 mail = { module = "javax.mail:mail", version = "1.4.7"}
 mockito = { module = "org.mockito.kotlin:mockito-kotlin", version = "4.1.0" }
 protobuf-java = { module = "com.google.protobuf:protobuf-java", version.ref = "protobuf" }
