@@ -30,7 +30,6 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.ConcurrentMap;
 import org.projectnessie.cel.Ast;
 import org.projectnessie.cel.Env;
 import org.projectnessie.cel.EnvOption;
@@ -41,17 +40,24 @@ import org.projectnessie.cel.checker.Decls;
 import org.projectnessie.cel.common.types.ref.Val;
 import org.projectnessie.cel.interpreter.Activation;
 
-/** {@link ConstraintCache} is a build-through cache to computed standard constraints. */
+/** A build-through cache for computed standard constraints. */
 public class ConstraintCache {
+  /** Partial eval options for evaluating the constraint's expression. */
   private static final ProgramOption PARTIAL_EVAL_OPTIONS =
       ProgramOption.evalOptions(
           EvalOption.OptTrackState,
           EvalOption.OptExhaustiveEval,
           EvalOption.OptOptimize,
           EvalOption.OptPartialEval);
-  private static final ConcurrentMap<FieldDescriptor, List<AstExpression>> descriptorMap =
+
+  /**
+   * Concurrent map for caching {@link FieldDescriptor} and their associated List of {@link
+   * AstExpression}.
+   */
+  private static final Map<FieldDescriptor, List<AstExpression>> descriptorMap =
       new ConcurrentHashMap<>();
 
+  /** The environment to use for evaluation. */
   private final Env env;
 
   /** Constructs a new build-through cache for the standard constraints. */
@@ -62,6 +68,12 @@ public class ConstraintCache {
   /**
    * Creates the standard constraints for the given field. If forItems is true, the constraints for
    * repeated list items is built instead of the constraints on the list itself.
+   *
+   * @param fieldDescriptor The field descriptor to be validated.
+   * @param fieldConstraints The field constraint that is used for validation.
+   * @param forItems The field is an item list type.
+   * @return The list of compiled programs.
+   * @throws CompilationException
    */
   public List<CompiledProgram> compile(
       FieldDescriptor fieldDescriptor, FieldConstraints fieldConstraints, boolean forItems)
