@@ -25,8 +25,15 @@ import com.google.protobuf.Message;
 import org.projectnessie.cel.Env;
 import org.projectnessie.cel.Library;
 
+/** Performs validation on any proto.Message values. The Validator is safe for concurrent use. */
 public class Validator {
+  /** evaluatorBuilder is the builder used to construct the evaluator for a given message. */
   private final EvaluatorBuilder evaluatorBuilder;
+
+  /**
+   * failFast indicates whether the validator should stop evaluating constraints after the first
+   * violation.
+   */
   private final boolean failFast;
 
   /**

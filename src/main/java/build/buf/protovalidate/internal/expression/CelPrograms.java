@@ -24,8 +24,10 @@ import java.util.List;
 
 /** Evaluator that executes a {@link CompiledProgram}. */
 public class CelPrograms implements Evaluator {
+  /** A list of {@link CompiledProgram} that will be executed against the input message. */
   private final List<CompiledProgram> programs;
 
+  /** Constructs a new CelPrograms. */
   public CelPrograms(List<CompiledProgram> compiledPrograms) {
     this.programs = compiledPrograms;
   }

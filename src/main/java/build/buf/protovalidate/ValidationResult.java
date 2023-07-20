@@ -25,6 +25,9 @@ import java.util.List;
  */
 public class ValidationResult {
 
+  /**
+   * violations is a list of {@link Violation} that occurred during the validations of a message.
+   */
   private final List<Violation> violations;
 
   /** A violation result with an empty violation list. */

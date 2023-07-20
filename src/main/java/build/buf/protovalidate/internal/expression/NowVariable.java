@@ -25,8 +25,10 @@ import org.projectnessie.cel.interpreter.ResolvedValue;
  * accessing the variable `now` that's constant within an evaluation.
  */
 public class NowVariable implements Activation {
+  /** The name of the 'now' variable. */
   private static final String NOW_NAME = "now";
 
+  /** The resolved value of the 'now' variable. */
   @Nullable private ResolvedValue resolvedValue;
 
   @Override

@@ -21,9 +21,13 @@ import org.projectnessie.cel.Env;
 
 /** {@link AstExpression} is a compiled CEL {@link Ast}. */
 public class AstExpression {
+  /** ast is the compiled CEL AST. */
   public final Ast ast;
+
+  /** Contains original expression from the proto file. */
   public final Expression source;
 
+  /** constructs a new AstExpression. */
   private AstExpression(Ast ast, Expression source) {
     this.ast = ast;
     this.source = source;

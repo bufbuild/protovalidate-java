@@ -75,42 +75,55 @@ message Transaction {
 In your Java code, create an instance of the `Validator` class and use the `validate` method to validate your messages.
 
 ```java
+// Import the required packages
+package build.buf;
+
+import build.buf.protovalidate.results.ValidationException;
+import build.buf.protovalidate.results.ValidationResult;
+import com.my.package.Transaction;
 import com.google.protobuf.Timestamp;
+
 import build.buf.protovalidate.Validator;
 import build.buf.protovalidate.Config;
-import my.package.Transaction;
 
 public class Main {
-  public static void main(String[] args) {
-    Transaction.Builder transactionBuilder = Transaction.newBuilder()
-        .setId(1234)
-        .setPrice("$5.67");
 
-    Timestamp purchaseDate = Timestamp.newBuilder()
-        // set time for purchaseDate
-        .build();
-    
-    Timestamp deliveryDate = Timestamp.newBuilder()
-        // set time for deliveryDate
-        .build();
+    // Create timestamps for purchase and delivery date
+    Timestamp purchaseDate = Timestamp.newBuilder().build();
+    Timestamp deliveryDate = Timestamp.newBuilder().build();
 
-    transactionBuilder.setPurchaseDate(purchaseDate);
-    transactionBuilder.setDeliveryDate(deliveryDate);
+    // Create a transaction object using the Builder pattern
+    Transaction transaction =
+            Transaction.newBuilder()
+                    .setId(1234)
+                    .setPrice("$5.67")
+                    .setPurchaseDate(purchaseDate)
+                    .setDeliveryDate(deliveryDate)
+                    .build();
 
-    Transaction transaction = transactionBuilder.build();
+    // Create a Config instance
+    Config config = Config.Builder().build();
+    // Create a validator object with your Config instance
+    Validator validator = new Validator(new Config(false, false));
 
-    Validator validator = new Validator();
-    try {
-      ValidationResult result = validator.validate(transaction);
-      if (result.violations.isEmpty()) {
-          System.out.println("Validation succeeded");
-      } else {
-          System.out.println("Validation failed with the following number of violations: " + result.violations.size());
-      }
-    } catch (ValidationException e) {
-      System.out.println("Validation failed: " + e.getMessage());
+    {
+        // Validate the transaction object using the validator
+        try {
+            ValidationResult result = validator.validate(transaction);
+
+            // Check if there are any validation violations
+            if (result.violations.isEmpty()) {
+                // No violations, validation successful
+                System.out.println("Validation succeeded");
+            } else {
+                // Print the violations if any found
+                System.out.println(result.getMessage());
+            }
+        } catch (ValidationException e) {
+            // Catch and print any ValidationExceptions thrown during the validation process
+            System.out.println("Validation failed: " + e.getMessage());
+        }
     }
-  }
 }
 ```
 

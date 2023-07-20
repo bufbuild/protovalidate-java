@@ -26,7 +26,10 @@ import org.projectnessie.cel.common.types.ref.Val;
  * Expression}.
  */
 public class CompiledProgram {
+  /** A compiled CEL program that can be evaluated against a set of variable bindings. */
   private final Program program;
+
+  /** The original expression that was compiled into the program from the proto file. */
   private final Expression source;
 
   public CompiledProgram(Program program, Expression source) {

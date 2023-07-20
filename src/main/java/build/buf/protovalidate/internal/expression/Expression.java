@@ -20,20 +20,28 @@ import java.util.List;
 
 /** Expression represents a single CEL expression. */
 public class Expression {
+  /** The id of the constraint. */
   public final String id;
+
+  /** The message of the constraint. */
   public final String message;
+
+  /** The expression of the constraint. */
   public final String expression;
 
+  /** constructs a new Expression. */
   private Expression(String id, String message, String expression) {
     this.id = id;
     this.message = message;
     this.expression = expression;
   }
 
+  /** Constructs a new Expression from the given constraint. */
   private Expression(build.buf.gen.buf.validate.Constraint constraint) {
     this(constraint.getId(), constraint.getMessage(), constraint.getExpression());
   }
 
+  /** Constructs a new Expression from the given private constraint. */
   private Expression(build.buf.gen.buf.validate.priv.Constraint constraint) {
     this(constraint.getId(), constraint.getMessage(), constraint.getExpression());
   }
