@@ -102,7 +102,7 @@ public class Main {
                     .build();
 
     // Create a Config instance
-    Config config = Config.Builder().build();
+    Config config = Config.builder().build();
     // Create a validator object with your Config instance
     Validator validator = new Validator(config);
 
