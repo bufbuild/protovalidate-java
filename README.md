@@ -104,7 +104,7 @@ public class Main {
     // Create a Config instance
     Config config = Config.Builder().build();
     // Create a validator object with your Config instance
-    Validator validator = new Validator(new Config(false, false));
+    Validator validator = new Validator(config);
 
     {
         // Validate the transaction object using the validator

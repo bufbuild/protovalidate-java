@@ -32,6 +32,12 @@ public class CompiledProgram {
   /** The original expression that was compiled into the program from the proto file. */
   private final Expression source;
 
+  /**
+   * Constructs a new {@link CompiledProgram}.
+   *
+   * @param program The compiled CEL program.
+   * @param source The original expression that was compiled into the program.
+   */
   public CompiledProgram(Program program, Expression source) {
     this.program = program;
     this.source = source;
@@ -40,8 +46,9 @@ public class CompiledProgram {
   /**
    * Evaluate the compiled program with a given set of {@link Variable} bindings.
    *
-   * @param bindings variable bindings used for the evaluation.
-   * @return {@link build.buf.gen.buf.validate.Violation} the violations from the evaluation.
+   * @param bindings Variable bindings used for the evaluation.
+   * @return The {@link build.buf.gen.buf.validate.Violation} from the evaluation, or null if there
+   *     are no violations.
    * @throws ExecutionException If the evaluation of the CEL program fails with an error.
    */
   @Nullable

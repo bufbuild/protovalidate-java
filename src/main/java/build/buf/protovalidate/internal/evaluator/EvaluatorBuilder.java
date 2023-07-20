@@ -60,7 +60,12 @@ public class EvaluatorBuilder {
   private final boolean disableLazy;
   private final ConstraintCache constraints;
 
-  /** Constructs a new {@link EvaluatorBuilder}. */
+  /**
+   * Constructs a new {@link EvaluatorBuilder}.
+   *
+   * @param env The CEL environment for evaluation.
+   * @param disableLazy Determines whether lazy loading of evaluators is disabled.
+   */
   public EvaluatorBuilder(Env env, boolean disableLazy) {
     this.env = env;
     this.disableLazy = disableLazy;

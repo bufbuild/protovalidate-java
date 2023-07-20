@@ -29,7 +29,12 @@ public class OneofEvaluator implements Evaluator {
   /** Indicates that a member of the oneof must be set. */
   private final boolean required;
 
-  /** Constructs a {@link OneofEvaluator}. */
+  /**
+   * Constructs a {@link OneofEvaluator}.
+   *
+   * @param descriptor The targeted oneof descriptor.
+   * @param required Indicates whether a member of the oneof must be set.
+   */
   public OneofEvaluator(OneofDescriptor descriptor, boolean required) {
     this.descriptor = descriptor;
     this.required = required;

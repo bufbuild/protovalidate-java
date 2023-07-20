@@ -31,7 +31,11 @@ class EnumEvaluator implements Evaluator {
   /** Captures all the defined values for this enum */
   private final Set<Integer> values;
 
-  /** Constructs a new evaluator for enum values. */
+  /**
+   * Constructs a new evaluator for enum values.
+   *
+   * @param valueDescriptors the list of {@link Descriptors.EnumValueDescriptor} for the enum.
+   */
   EnumEvaluator(List<Descriptors.EnumValueDescriptor> valueDescriptors) {
     if (valueDescriptors.isEmpty()) {
       this.values = Collections.emptySet();
@@ -48,6 +52,14 @@ class EnumEvaluator implements Evaluator {
     return false;
   }
 
+  /**
+   * Evaluates an enum value.
+   *
+   * @param val the value to evaluate.
+   * @param failFast indicates if the evaluation should stop on the first violation.
+   * @return the {@link ValidationResult} of the evaluation.
+   * @throws ExecutionException if an error occurs during the evaluation.
+   */
   @Override
   public ValidationResult evaluate(Value val, boolean failFast) throws ExecutionException {
     Descriptors.EnumValueDescriptor enumValue = val.value(Descriptors.EnumValueDescriptor.class);

@@ -24,6 +24,9 @@ import java.util.Map;
 import javax.annotation.Nullable;
 import org.projectnessie.cel.checker.Decls;
 
+/**
+ * DescriptorMappings provides mappings between protocol buffer descriptors and CEL declarations.
+ */
 public class DescriptorMappings {
   /** Provides a {@link Descriptor} for {@link FieldConstraints}. */
   static final Descriptor FIELD_CONSTRAINTS_DESC = FieldConstraints.getDescriptor();

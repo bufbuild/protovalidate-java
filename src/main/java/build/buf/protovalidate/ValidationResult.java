@@ -60,6 +60,11 @@ public class ValidationResult {
     return violations;
   }
 
+  /**
+   * Returns a string representation of the validation result, including all the violations.
+   *
+   * @return a string representation of the validation result.
+   */
   @Override
   public String toString() {
     StringBuilder builder = new StringBuilder();

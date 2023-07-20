@@ -42,19 +42,21 @@ final class Format {
   private static final char[] LOWER_HEX_ARRAY = "0123456789abcdef".toCharArray();
 
   /**
-   * Format string with a {@link ListT}.
+   * Format the string with a {@link ListT}.
    *
    * @param fmtString the string to format.
-   * @param list the arguements.
-   * @return formatted string in {@link Val} form.
+   * @param list the arguments.
+   * @return the formatted string in {@link Val} form.
    */
   static Val format(String fmtString, ListT list) {
+    // StringBuilder to accumulate the formatted string
     StringBuilder builder = new StringBuilder();
     int index = 0;
     int argIndex = 0;
     while (index < fmtString.length()) {
       char c = fmtString.charAt(index++);
       if (c != '%') {
+        // Append non-format characters directly
         builder.append(c);
         // Add the entire character if it's not a UTF-8 character.
         if ((c & 0x80) != 0) {
@@ -69,6 +71,7 @@ final class Format {
         return Err.newErr("format: expected format specifier");
       }
       if (fmtString.charAt(index) == '%') {
+        // Escaped '%', append '%' and move to the next character
         builder.append('%');
         index++;
         continue;
@@ -121,6 +124,13 @@ final class Format {
     return StringT.stringOf(builder.toString());
   }
 
+  /**
+   * Converts a byte array to a hexadecimal string representation.
+   *
+   * @param bytes the byte array to convert.
+   * @param digits the array of hexadecimal digits.
+   * @return the hexadecimal string representation.
+   */
   private static String bytesToHex(byte[] bytes, char[] digits) {
     char[] hexChars = new char[bytes.length * 2];
     for (int j = 0; j < bytes.length; j++) {
@@ -131,6 +141,13 @@ final class Format {
     return new String(hexChars);
   }
 
+  /**
+   * Formats a string value.
+   *
+   * @param builder the StringBuilder to append the formatted string to.
+   * @param val the value to format.
+   * @return the formatted string value.
+   */
   private static Val formatString(StringBuilder builder, Val val) {
     if (val.type() == StringT.StringType) {
       builder.append(val.value());
@@ -143,6 +160,14 @@ final class Format {
     }
   }
 
+  /**
+   * Formats a string value safely for other value types.
+   *
+   * @param builder the StringBuilder to append the formatted string to.
+   * @param val the value to format.
+   * @param listType indicates if the value type is a list.
+   * @return the formatted string value.
+   */
   private static Val formatStringSafe(StringBuilder builder, Val val, boolean listType) {
     Type type = val.type();
     if (type == BoolT.BoolType) {
@@ -170,6 +195,12 @@ final class Format {
     return val;
   }
 
+  /**
+   * Formats a list value.
+   *
+   * @param builder the StringBuilder to append the formatted list value to.
+   * @param val the value to format.
+   */
   private static void formatList(StringBuilder builder, Val val) {
     builder.append('[');
     List list = val.convertToNative(List.class);
@@ -183,6 +214,12 @@ final class Format {
     builder.append(']');
   }
 
+  /**
+   * Formats a timestamp value.
+   *
+   * @param builder the StringBuilder to append the formatted timestamp value to.
+   * @param val the value to format.
+   */
   private static void formatTimestamp(StringBuilder builder, Val val) {
     builder.append("timestamp(");
     Timestamp timestamp = val.convertToNative(Timestamp.class);
@@ -190,6 +227,13 @@ final class Format {
     builder.append(")");
   }
 
+  /**
+   * Formats a duration value.
+   *
+   * @param builder the StringBuilder to append the formatted duration value to.
+   * @param val the value to format.
+   * @param listType indicates if the value type is a list.
+   */
   private static void formatDuration(StringBuilder builder, Val val, boolean listType) {
     if (listType) {
       builder.append("duration(\"");
@@ -206,6 +250,12 @@ final class Format {
     }
   }
 
+  /**
+   * Formats a byte array value.
+   *
+   * @param builder the StringBuilder to append the formatted byte array value to.
+   * @param val the value to format.
+   */
   private static void formatBytes(StringBuilder builder, Val val) {
     builder
         .append("\"")
@@ -213,6 +263,12 @@ final class Format {
         .append("\"");
   }
 
+  /**
+   * Formats an integer value.
+   *
+   * @param builder the StringBuilder to append the formatted integer value to.
+   * @param value the value to format.
+   */
   private static void formatInteger(StringBuilder builder, int value) {
     if (value < 0) {
       builder.append("-");
@@ -221,6 +277,14 @@ final class Format {
     builder.append(value);
   }
 
+  /**
+   * Formats a hexadecimal value.
+   *
+   * @param builder the StringBuilder to append the formatted hexadecimal value to.
+   * @param val the value to format.
+   * @param digits the array of hexadecimal digits.
+   * @return the formatted hexadecimal value.
+   */
   private static Val formatHex(StringBuilder builder, Val val, char[] digits) {
     String hexString;
     if (val.type() == IntT.IntType || val.type() == UintT.UintType) {
@@ -237,6 +301,13 @@ final class Format {
     return NullT.NullType;
   }
 
+  /**
+   * Formats a decimal value.
+   *
+   * @param builder the StringBuilder to append the formatted decimal value to.
+   * @param arg the value to format.
+   * @return the formatted decimal value.
+   */
   private static Val formatDecimal(StringBuilder builder, Val arg) {
     builder.append(arg.value());
     return NullT.NullValue;

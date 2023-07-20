@@ -25,6 +25,7 @@ import org.projectnessie.cel.common.types.TimestampT;
 
 /** Defines custom declaration functions. */
 final class CustomDeclarations {
+
   /**
    * Create the custom function declaration list.
    *
@@ -32,49 +33,68 @@ final class CustomDeclarations {
    */
   static List<Decl> create() {
     List<Decl> decls = new ArrayList<>();
+
+    // Add 'now' variable declaration
     decls.add(Decls.newVar("now", Decls.newObjectType(TimestampT.TimestampType.typeName())));
+
+    // Add 'isIp' function declaration
     decls.add(
         Decls.newFunction(
             "isIp",
             Decls.newInstanceOverload("is_ip", Arrays.asList(Decls.String, Decls.Int), Decls.Bool),
             Decls.newInstanceOverload(
                 "is_ip_unary", Collections.singletonList(Decls.String), Decls.Bool)));
+
+    // Add 'isUriRef' function declaration
     decls.add(
         Decls.newFunction(
             "isUriRef",
             Decls.newInstanceOverload(
                 "is_uri_ref", Collections.singletonList(Decls.String), Decls.Bool)));
+
+    // Add 'isUri' function declaration
     decls.add(
         Decls.newFunction(
             "isUri",
             Decls.newInstanceOverload(
                 "is_uri", Collections.singletonList(Decls.String), Decls.Bool)));
+
+    // Add 'isEmail' function declaration
     decls.add(
         Decls.newFunction(
             "isEmail",
             Decls.newInstanceOverload(
                 "is_email", Collections.singletonList(Decls.String), Decls.Bool)));
+
+    // Add 'isHostname' function declaration
     decls.add(
         Decls.newFunction(
             "isHostname",
             Decls.newInstanceOverload(
                 "is_hostname", Collections.singletonList(Decls.String), Decls.Bool)));
+
+    // Add 'startsWith' function declaration
     decls.add(
         Decls.newFunction(
             "startsWith",
             Decls.newInstanceOverload(
                 "starts_with_bytes", Arrays.asList(Decls.Bytes, Decls.Bytes), Decls.Bool)));
+
+    // Add 'endsWith' function declaration
     decls.add(
         Decls.newFunction(
             "endsWith",
             Decls.newInstanceOverload(
                 "ends_with_bytes", Arrays.asList(Decls.Bytes, Decls.Bytes), Decls.Bool)));
+
+    // Add 'contains' function declaration
     decls.add(
         Decls.newFunction(
             "contains",
             Decls.newInstanceOverload(
                 "contains_bytes", Arrays.asList(Decls.Bytes, Decls.Bytes), Decls.Bool)));
 
+    // Add 'unique' function declaration
     List<Decl.FunctionDecl.Overload> uniqueOverloads = new ArrayList<>();
     for (com.google.api.expr.v1alpha1.Type type :
         Arrays.asList(Decls.String, Decls.Int, Decls.Uint, Decls.Double, Decls.Bytes, Decls.Bool)) {
@@ -97,6 +117,7 @@ final class CustomDeclarations {
     }
     decls.add(Decls.newFunction("unique", uniqueOverloads));
 
+    // Add 'format' function declaration
     List<Decl.FunctionDecl.Overload> formatOverloads = new ArrayList<>();
     for (com.google.api.expr.v1alpha1.Type type :
         Arrays.asList(
@@ -142,6 +163,7 @@ final class CustomDeclarations {
               Decls.Bytes));
     }
     decls.add(Decls.newFunction("format", formatOverloads));
+
     return Collections.unmodifiableList(decls);
   }
 }

@@ -25,7 +25,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
-/** Performs validation on a map field's KV Pairs. */
+/** Performs validation on a map field's key-value pairs. */
 class MapEvaluator implements Evaluator {
   /** Constraint for checking the map keys */
   private final ValueEvaluator keyEvaluator;
@@ -33,7 +33,12 @@ class MapEvaluator implements Evaluator {
   /** Constraint for checking the map values */
   private final ValueEvaluator valueEvaluator;
 
-  /** Constructs a {@link MapEvaluator}. */
+  /**
+   * Constructs a {@link MapEvaluator}.
+   *
+   * @param fieldConstraints The field constraints to apply to the map.
+   * @param fieldDescriptor The descriptor of the map field being evaluated.
+   */
   MapEvaluator(FieldConstraints fieldConstraints, Descriptors.FieldDescriptor fieldDescriptor) {
     MapRules map = fieldConstraints.getMap();
     this.keyEvaluator =
@@ -42,10 +47,20 @@ class MapEvaluator implements Evaluator {
         new ValueEvaluator(map.getValues(), fieldDescriptor.getMessageType().findFieldByNumber(2));
   }
 
+  /**
+   * Gets the key evaluator associated with this map evaluator.
+   *
+   * @return The key evaluator.
+   */
   public ValueEvaluator getKeyEvaluator() {
     return keyEvaluator;
   }
 
+  /**
+   * Gets the value evaluator associated with this map evaluator.
+   *
+   * @return The value evaluator.
+   */
   public ValueEvaluator getValueEvaluator() {
     return valueEvaluator;
   }

@@ -14,8 +14,6 @@
 
 package build.buf.protovalidate.internal.expression;
 
-import static org.projectnessie.cel.interpreter.ResolvedValue.ABSENT;
-
 import javax.annotation.Nullable;
 import org.projectnessie.cel.interpreter.Activation;
 import org.projectnessie.cel.interpreter.ResolvedValue;
@@ -71,7 +69,7 @@ public class Variable implements Activation {
     } else if (next != null) {
       return next.resolveName(name);
     }
-    return ABSENT;
+    return ResolvedValue.ABSENT;
   }
 
   @Override

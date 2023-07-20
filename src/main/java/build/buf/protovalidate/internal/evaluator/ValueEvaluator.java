@@ -64,6 +64,11 @@ class ValueEvaluator implements Evaluator {
     this.ignoreEmpty = fieldConstraints.getIgnoreEmpty();
   }
 
+  /**
+   * Gets the value of the ignoreEmpty property.
+   *
+   * @return true if empty values should be ignored, false otherwise.
+   */
   public boolean getIgnoreEmpty() {
     return ignoreEmpty;
   }
@@ -92,6 +97,11 @@ class ValueEvaluator implements Evaluator {
     return new ValidationResult(violations);
   }
 
+  /**
+   * Appends an evaluator to the list of evaluators.
+   *
+   * @param eval The evaluator to append.
+   */
   public void append(Evaluator eval) {
     if (!eval.tautology()) {
       this.evaluators.add(eval);

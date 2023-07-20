@@ -26,6 +26,12 @@ import com.google.protobuf.Descriptors.OneofDescriptor;
 /** Manages the resolution of protovalidate constraints. */
 class ConstraintResolver {
 
+  /**
+   * Resolves the constraints for a message descriptor.
+   *
+   * @param desc the message descriptor.
+   * @return the resolved {@link MessageConstraints}.
+   */
   MessageConstraints resolveMessageConstraints(Descriptor desc) {
     DescriptorProtos.MessageOptions options = desc.getOptions();
     if (!options.hasExtension(ValidateProto.message)) {
@@ -39,6 +45,12 @@ class ConstraintResolver {
     return constraints;
   }
 
+  /**
+   * Resolves the constraints for a oneof descriptor.
+   *
+   * @param desc the oneof descriptor.
+   * @return the resolved {@link OneofConstraints}.
+   */
   OneofConstraints resolveOneofConstraints(OneofDescriptor desc) {
     DescriptorProtos.OneofOptions options = desc.getOptions();
     if (!options.hasExtension(ValidateProto.oneof)) {
@@ -47,6 +59,12 @@ class ConstraintResolver {
     return options.getExtension(ValidateProto.oneof);
   }
 
+  /**
+   * Resolves the constraints for a field descriptor.
+   *
+   * @param desc the field descriptor.
+   * @return the resolved {@link FieldConstraints}.
+   */
   FieldConstraints resolveFieldConstraints(FieldDescriptor desc) {
     DescriptorProtos.FieldOptions options = desc.getOptions();
     if (!options.hasExtension(ValidateProto.field)) {

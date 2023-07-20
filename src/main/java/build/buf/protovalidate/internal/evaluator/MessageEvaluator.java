@@ -51,6 +51,11 @@ class MessageEvaluator implements Evaluator {
     return new ValidationResult(violations);
   }
 
+  /**
+   * Appends an {@link Evaluator} to the list of evaluators.
+   *
+   * @param eval The evaluator to append.
+   */
   public void append(Evaluator eval) {
     evaluators.add(eval);
   }

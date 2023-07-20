@@ -65,6 +65,11 @@ final class CustomOverload {
     };
   }
 
+  /**
+   * Creates a custom binary function overload for the "format" operation.
+   *
+   * @return The {@link Overload} instance for the "format" operation.
+   */
   private static Overload binaryFormat() {
     return Overload.binary(
         "format",
@@ -82,6 +87,11 @@ final class CustomOverload {
         });
   }
 
+  /**
+   * Creates a custom unary function overload for the "unique" operation.
+   *
+   * @return The {@link Overload} instance for the "unique" operation.
+   */
   private static Overload unaryUnique() {
     return Overload.unary(
         "unique",
@@ -108,6 +118,11 @@ final class CustomOverload {
         });
   }
 
+  /**
+   * Creates a custom binary function overload for the "startsWith" operation.
+   *
+   * @return The {@link Overload} instance for the "startsWith" operation.
+   */
   private static Overload binaryStartsWith() {
     return Overload.binary(
         "startsWith",
@@ -133,6 +148,11 @@ final class CustomOverload {
         });
   }
 
+  /**
+   * Creates a custom binary function overload for the "endsWith" operation.
+   *
+   * @return The {@link Overload} instance for the "endsWith" operation.
+   */
   private static Overload binaryEndsWith() {
     return Overload.binary(
         "endsWith",
@@ -158,6 +178,11 @@ final class CustomOverload {
         });
   }
 
+  /**
+   * Creates a custom binary function overload for the "contains" operation.
+   *
+   * @return The {@link Overload} instance for the "contains" operation.
+   */
   private static Overload binaryContains() {
     return Overload.binary(
         "contains",
@@ -175,6 +200,11 @@ final class CustomOverload {
         });
   }
 
+  /**
+   * Creates a custom binary function overload for the "isHostname" operation.
+   *
+   * @return The {@link Overload} instance for the "isHostname" operation.
+   */
   private static Overload binaryIsHostname() {
     return Overload.unary(
         "isHostname",
@@ -187,6 +217,11 @@ final class CustomOverload {
         });
   }
 
+  /**
+   * Creates a custom unary function overload for the "isEmail" operation.
+   *
+   * @return The {@link Overload} instance for the "isEmail" operation.
+   */
   private static Overload unaryIsEmail() {
     return Overload.unary(
         "isEmail",
@@ -199,6 +234,11 @@ final class CustomOverload {
         });
   }
 
+  /**
+   * Creates a custom function overload for the "isIp" operation.
+   *
+   * @return The {@link Overload} instance for the "isIp" operation.
+   */
   private static Overload isIp() {
     return Overload.overload(
         "isIp",
@@ -220,6 +260,11 @@ final class CustomOverload {
         null);
   }
 
+  /**
+   * Creates a custom unary function overload for the "isUri" operation.
+   *
+   * @return The {@link Overload} instance for the "isUri" operation.
+   */
   private static Overload isUri() {
     return Overload.unary(
         "isUri",
@@ -236,6 +281,11 @@ final class CustomOverload {
         });
   }
 
+  /**
+   * Creates a custom unary function overload for the "isUriRef" operation.
+   *
+   * @return The {@link Overload} instance for the "isUriRef" operation.
+   */
   private static Overload isUriRef() {
     return Overload.unary(
         "isUriRef",
@@ -255,6 +305,15 @@ final class CustomOverload {
         });
   }
 
+  /**
+   * Retrieves the appropriate unary operation for a primitive value based on its type. This method
+   * returns the unary operation that should be applied to the given primitive value.
+   *
+   * @param val The primitive value for which to retrieve the unary operation.
+   * @return The {@link UnaryOp} instance representing the appropriate unary operation for the
+   *     value.
+   * @throws IllegalArgumentException if the value's type is not supported.
+   */
   private static UnaryOp unaryOpForPrimitiveVal(Val val) {
     switch (val.type().typeEnum()) {
       case Bool:
@@ -274,6 +333,14 @@ final class CustomOverload {
     }
   }
 
+  /**
+   * Creates a custom unary operation overload for processing list values with a specific item type.
+   * The overload ensures that the list contains unique values of the specified item type.
+   *
+   * @param itemType The type of items expected in the list.
+   * @param overload The function to be invoked on the unique values.
+   * @return The {@link UnaryOp} instance for the unique member overload.
+   */
   private static UnaryOp uniqueMemberOverload(
       org.projectnessie.cel.common.types.ref.Type itemType, overloadFunc overload) {
     return value -> {
@@ -294,6 +361,14 @@ final class CustomOverload {
     Val invoke(Lister list);
   }
 
+  /**
+   * Determines if the input list of bytes contains unique elements. If the list contains duplicate
+   * byte arrays or strings, it returns false. If the list contains unique byte arrays or strings,
+   * it returns true.
+   *
+   * @param list The input list to check for uniqueness.
+   * @return {@link BoolT}.True if the list contains unique elements, {@link BoolT}.False otherwise.
+   */
   private static Val uniqueBytes(Lister list) {
     Set<Object> exist = new HashSet<>();
     for (int i = 0; i < list.size().intValue(); i++) {
@@ -309,6 +384,15 @@ final class CustomOverload {
     return BoolT.True;
   }
 
+  /**
+   * Determines if the input list contains unique scalar values. If the list contains duplicate
+   * scalar values, it returns {@link BoolT}.False. If the list contains unique scalar values, it
+   * returns {@link BoolT}.True.
+   *
+   * @param list The input list to check for uniqueness.
+   * @return {@link BoolT}.True if the list contains unique scalar values, {@link BoolT}.False
+   *     otherwise.
+   */
   private static Val uniqueScalar(Lister list) {
     Set<Val> exist = new HashSet<>();
     for (int i = 0; i < list.size().intValue(); i++) {
@@ -321,6 +405,12 @@ final class CustomOverload {
     return BoolT.True;
   }
 
+  /**
+   * Validates if the input string is a valid email address.
+   *
+   * @param addr The input string to validate as an email address.
+   * @return {@code true} if the input string is a valid email address, {@code false} otherwise.
+   */
   private static boolean validateEmail(String addr) {
     try {
       InternetAddress emailAddr = new InternetAddress(addr);
@@ -341,6 +431,12 @@ final class CustomOverload {
     }
   }
 
+  /**
+   * Validates if the input string is a valid hostname.
+   *
+   * @param host The input string to validate as a hostname.
+   * @return {@code true} if the input string is a valid hostname, {@code false} otherwise.
+   */
   private static boolean validateHostname(String host) {
     if (host.length() > 253) {
       return false;
@@ -366,6 +462,14 @@ final class CustomOverload {
     return true;
   }
 
+  /**
+   * Validates if the input string is a valid IP address.
+   *
+   * @param addr The input string to validate as an IP address.
+   * @param ver The IP version to validate against (0 for any version, 4 for IPv4, 6 for IPv6).
+   * @return {@code true} if the input string is a valid IP address of the specified version, {@code
+   *     false} otherwise.
+   */
   private static boolean validateIP(String addr, long ver) {
     InetAddress address;
     try {

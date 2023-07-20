@@ -27,7 +27,7 @@ import org.projectnessie.cel.common.ULong;
 
 /**
  * The {@link build.buf.protovalidate.internal.evaluator.Value} type that contains a field
- * descriptor and it's value.
+ * descriptor and its value.
  */
 public final class ObjectValue implements Value {
 
@@ -39,7 +39,12 @@ public final class ObjectValue implements Value {
   /** Object type since the object type is inferred from the field descriptor. */
   private final Object value;
 
-  /** Constructs a new {@link build.buf.protovalidate.internal.evaluator.ObjectValue}. */
+  /**
+   * Constructs a new {@link build.buf.protovalidate.internal.evaluator.ObjectValue}.
+   *
+   * @param fieldDescriptor The field descriptor for the value.
+   * @param value The value associated with the field descriptor.
+   */
   ObjectValue(Descriptors.FieldDescriptor fieldDescriptor, Object value) {
     this.fieldDescriptor = fieldDescriptor;
     this.value = value;

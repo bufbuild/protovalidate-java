@@ -21,24 +21,31 @@ import org.projectnessie.cel.Env;
 
 /** {@link AstExpression} is a compiled CEL {@link Ast}. */
 public class AstExpression {
-  /** ast is the compiled CEL AST. */
+  /** The compiled CEL AST. */
   public final Ast ast;
 
-  /** Contains original expression from the proto file. */
+  /** Contains the original expression from the proto file. */
   public final Expression source;
 
-  /** constructs a new AstExpression. */
+  /** Constructs a new {@link AstExpression}. */
   private AstExpression(Ast ast, Expression source) {
     this.ast = ast;
     this.source = source;
   }
 
-  /** Compiles the given expression to a {@link AstExpression}. */
+  /**
+   * Compiles the given expression to a {@link AstExpression}.
+   *
+   * @param env The CEL environment.
+   * @param expr The expression to compile.
+   * @return The compiled {@link AstExpression}.
+   * @throws CompilationException if the expression compilation fails.
+   */
   public static AstExpression newAstExpression(Env env, Expression expr)
       throws CompilationException {
     Env.AstIssuesTuple astIssuesTuple = env.compile(expr.expression);
     if (astIssuesTuple.hasIssues()) {
-      throw new CompilationException("failed to compile expression " + expr.id);
+      throw new CompilationException("Failed to compile expression " + expr.id);
     }
     Ast ast = astIssuesTuple.getAst();
     Type outType = ast.getResultType();
@@ -46,7 +53,7 @@ public class AstExpression {
         && outType.getPrimitive() != Type.PrimitiveType.STRING) {
       throw new CompilationException(
           String.format(
-              "expression outputs, wanted either bool or string %s %s", expr.id, outType));
+              "Expression outputs, wanted either bool or string: %s %s", expr.id, outType));
     }
     return new AstExpression(ast, expr);
   }

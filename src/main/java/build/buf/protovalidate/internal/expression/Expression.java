@@ -29,24 +29,43 @@ public class Expression {
   /** The expression of the constraint. */
   public final String expression;
 
-  /** constructs a new Expression. */
+  /**
+   * Constructs a new Expression.
+   *
+   * @param id The ID of the constraint.
+   * @param message The message of the constraint.
+   * @param expression The expression of the constraint.
+   */
   private Expression(String id, String message, String expression) {
     this.id = id;
     this.message = message;
     this.expression = expression;
   }
 
-  /** Constructs a new Expression from the given constraint. */
+  /**
+   * Constructs a new Expression from the given constraint.
+   *
+   * @param constraint The constraint to create the expression from.
+   */
   private Expression(build.buf.gen.buf.validate.Constraint constraint) {
     this(constraint.getId(), constraint.getMessage(), constraint.getExpression());
   }
 
-  /** Constructs a new Expression from the given private constraint. */
+  /**
+   * Constructs a new Expression from the given private constraint.
+   *
+   * @param constraint The private constraint to create the expression from.
+   */
   private Expression(build.buf.gen.buf.validate.priv.Constraint constraint) {
     this(constraint.getId(), constraint.getMessage(), constraint.getExpression());
   }
 
-  /** Constructs a new {@link Expression} from the given private constraint. */
+  /**
+   * Constructs a new list of {@link Expression} from the given list of private constraints.
+   *
+   * @param constraints The list of private constraints.
+   * @return The list of expressions.
+   */
   public static List<Expression> fromPrivConstraints(
       List<build.buf.gen.buf.validate.priv.Constraint> constraints) {
     List<Expression> expressions = new ArrayList<>();
@@ -56,7 +75,12 @@ public class Expression {
     return expressions;
   }
 
-  /** Constructs a new {@link Expression} from the given constraint. */
+  /**
+   * Constructs a new list of {@link Expression} from the given list of constraints.
+   *
+   * @param constraints The list of constraints.
+   * @return The list of expressions.
+   */
   public static List<Expression> fromConstraints(
       List<build.buf.gen.buf.validate.Constraint> constraints) {
     List<Expression> expressions = new ArrayList<>();

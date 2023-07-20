@@ -28,6 +28,11 @@ public final class MessageValue implements Value {
   /** Object type since the object type is inferred from the field descriptor. */
   private final Object value;
 
+  /**
+   * Constructs a {@link MessageValue} with the provided message value.
+   *
+   * @param value The message value.
+   */
   public MessageValue(Message value) {
     this.value = value;
   }

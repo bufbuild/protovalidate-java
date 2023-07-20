@@ -14,9 +14,6 @@
 
 package build.buf.protovalidate.internal.celext;
 
-import static org.projectnessie.cel.EnvOption.declarations;
-import static org.projectnessie.cel.ProgramOption.functions;
-
 import build.buf.protovalidate.internal.expression.NowVariable;
 import java.util.Arrays;
 import java.util.Collections;
@@ -32,16 +29,26 @@ import org.projectnessie.cel.ProgramOption;
  */
 public class ValidateLibrary implements Library {
 
+  /**
+   * Returns the compile options for the CEL environment.
+   *
+   * @return the compile options.
+   */
   @Override
   public List<EnvOption> getCompileOptions() {
-    return Collections.singletonList(declarations(CustomDeclarations.create()));
+    return Collections.singletonList(EnvOption.declarations(CustomDeclarations.create()));
   }
 
+  /**
+   * Returns the program options for the CEL program.
+   *
+   * @return the program options.
+   */
   @Override
   public List<ProgramOption> getProgramOptions() {
     return Arrays.asList(
         ProgramOption.evalOptions(EvalOption.OptOptimize),
         ProgramOption.globals(new NowVariable()),
-        functions(CustomOverload.create()));
+        ProgramOption.functions(CustomOverload.create()));
   }
 }

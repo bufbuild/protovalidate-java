@@ -25,10 +25,15 @@ import java.util.List;
 /** Performs validation on the elements of a repeated field. */
 class ListEvaluator implements Evaluator {
 
-  /** Constraint are checked on every item of the list. */
+  /** Constraints are checked on every item of the list. */
   final ValueEvaluator itemConstraints;
 
-  /** Constructs a {@link ListEvaluator}. */
+  /**
+   * Constructs a {@link ListEvaluator}.
+   *
+   * @param fieldConstraints The field constraints to apply to each item in the list.
+   * @param fieldDescriptor The descriptor of the repeated field being evaluated.
+   */
   ListEvaluator(FieldConstraints fieldConstraints, Descriptors.FieldDescriptor fieldDescriptor) {
     this.itemConstraints = new ValueEvaluator(fieldConstraints, fieldDescriptor);
   }

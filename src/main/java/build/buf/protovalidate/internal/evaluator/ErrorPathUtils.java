@@ -21,9 +21,18 @@ import com.google.errorprone.annotations.FormatString;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/** Utility class for manipulating error paths in violations. */
 final class ErrorPathUtils {
   private ErrorPathUtils() {}
 
+  /**
+   * Prefixes the error paths of the given violations with a format string and its arguments.
+   *
+   * @param violations The list of violations to modify.
+   * @param format The format string to use as the prefix.
+   * @param args The arguments to apply to the format string.
+   * @return The modified list of violations with prefixed error paths.
+   */
   @FormatMethod
   static List<Violation> prefixErrorPaths(
       List<Violation> violations, @FormatString String format, Object... args) {

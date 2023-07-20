@@ -60,14 +60,13 @@ public class Validator {
    * as options from the buf.validate package. A {@link ValidationResult} is returned which contains
    * a list of violations. If the list is empty, the message is valid. If the list is non-empty, the
    * message is invalid. An exception is thrown if the message cannot be validated because the
-   * evaluation logic for the message cannot be built ({@link
-   * build.buf.protovalidate.exceptions.CompilationException}), or there is a type error when
+   * evaluation logic for the message cannot be built ({@link CompilationException}), or there is a type error when
    * attempting to evaluate a CEL expression associated with the message ({@link
    * build.buf.protovalidate.exceptions.ExecutionException}).
    *
-   * @param msg {@link Message} to be validated
-   * @return {@link ValidationResult} from the evaluation.
-   * @throws ValidationException for any compilation or validation execution errors.
+   * @param msg the {@link Message} to be validated.
+   * @return the {@link ValidationResult} from the evaluation.
+   * @throws ValidationException if there are any compilation or validation execution errors.
    */
   public ValidationResult validate(Message msg) throws ValidationException {
     if (msg == null) {
@@ -79,11 +78,11 @@ public class Validator {
   }
 
   /**
-   * Allows warming up the {@link Validator} with messages that are expected to be validated. {@link
-   * Message} included transitively (i.e., fields with message values) are automatically handled.
+   * Loads messages that are expected to be validated, allowing the {@link Validator} to warm up.
+   * Messages included transitively (i.e., fields with message values) are automatically handled.
    *
    * @param messages the list of {@link Message} to load.
-   * @throws CompilationException for any compilation errors during warm up.
+   * @throws CompilationException if there are any compilation errors during warm-up.
    */
   public void loadMessages(Message... messages) throws CompilationException {
     for (Message message : messages) {
@@ -92,11 +91,12 @@ public class Validator {
   }
 
   /**
-   * Allows warming up the Validator with message descriptors that are expected to be validated.
-   * Messages included transitively (i.e. fields with message values) are automatically handled.
+   * Loads message descriptors that are expected to be validated, allowing the {@link Validator} to
+   * warm up. Messages included transitively (i.e., fields with message values) are automatically
+   * handled.
    *
    * @param descriptors the list of {@link Descriptor} to load.
-   * @throws CompilationException for any compilation errors during warm up.
+   * @throws CompilationException if there are any compilation errors during warm-up.
    */
   public void loadDescriptors(Descriptor... descriptors) throws CompilationException {
     for (Descriptor descriptor : descriptors) {
