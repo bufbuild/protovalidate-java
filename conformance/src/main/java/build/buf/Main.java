@@ -74,7 +74,7 @@ public class Main {
   public static void main(String[] args) {
     try {
       Service bindableService = new Service();
-      Server server = NettyServerBuilder.forPort(8080)
+      Server server = NettyServerBuilder.forPort(1234)
               .addService(bindableService)
               .build();
       server.start();
