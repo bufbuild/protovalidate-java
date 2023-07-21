@@ -9,6 +9,7 @@ plugins {
 
     `java-library`
     alias(libs.plugins.errorprone.plugin)
+    id("com.vanniktech.maven.publish.base")
 }
 
 java {
