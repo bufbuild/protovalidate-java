@@ -9,7 +9,6 @@ plugins {
 
     `java-library`
     alias(libs.plugins.errorprone.plugin)
-    id("com.vanniktech.maven.publish.base")
 }
 
 java {
@@ -68,39 +67,37 @@ allprojects {
 }
 
 apply(plugin = "com.vanniktech.maven.publish.base")
-plugins.withId("com.vanniktech.maven.publish.base") {
-    configure<MavenPublishBaseExtension> {
-        val isAutoReleased = project.hasProperty("signingInMemoryKey")
-        publishToMavenCentral(SonatypeHost.S01)
-        if (isAutoReleased) {
-            signAllPublications()
+configure<MavenPublishBaseExtension> {
+    val isAutoReleased = project.hasProperty("signingInMemoryKey")
+    publishToMavenCentral(SonatypeHost.S01)
+    if (isAutoReleased) {
+        signAllPublications()
+    }
+    pom {
+        description.set("Protocol Buffer Validation")
+        name.set("protovalidate") // This is overwritten in subprojects.
+        group = "build.buf"
+        val releaseVersion = project.findProperty("releaseVersion") as String? ?: System.getenv("VERSION")
+        // Default to snapshot versioning for local publishing.
+        version = releaseVersion ?: "0.0.0-SNAPSHOT"
+        url.set("https://github.com/bufbuild/protovalidate-java")
+        licenses {
+            license {
+                name.set("The Apache Software License, Version 2.0")
+                url.set("http://www.apache.org/licenses/LICENSE-2.0.txt")
+                distribution.set("repo")
+            }
         }
-        pom {
-            description.set("Protocol Buffer Validation")
-            name.set("protovalidate") // This is overwritten in subprojects.
-            group = "build.buf"
-            val releaseVersion = project.findProperty("releaseVersion") as String? ?: System.getenv("VERSION")
-            // Default to snapshot versioning for local publishing.
-            version = releaseVersion ?: "0.0.0-SNAPSHOT"
+        developers {
+            developer {
+                id.set("bufbuild")
+                name.set("Buf Technologies")
+            }
+        }
+        scm {
             url.set("https://github.com/bufbuild/protovalidate-java")
-            licenses {
-                license {
-                    name.set("The Apache Software License, Version 2.0")
-                    url.set("http://www.apache.org/licenses/LICENSE-2.0.txt")
-                    distribution.set("repo")
-                }
-            }
-            developers {
-                developer {
-                    id.set("bufbuild")
-                    name.set("Buf Technologies")
-                }
-            }
-            scm {
-                url.set("https://github.com/bufbuild/protovalidate-java")
-                connection.set("scm:git:https://github.com/bufbuild/protovalidate-java.git")
-                developerConnection.set("scm:git:ssh://git@github.com/bufbuild/protovalidate-java.git")
-            }
+            connection.set("scm:git:https://github.com/bufbuild/protovalidate-java.git")
+            developerConnection.set("scm:git:ssh://git@github.com/bufbuild/protovalidate-java.git")
         }
     }
 }
