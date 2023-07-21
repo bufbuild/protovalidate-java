@@ -101,10 +101,8 @@ public class Main {
                     .setDeliveryDate(deliveryDate)
                     .build();
 
-    // Create a Config instance
-    Config config = Config.newBuilder().build();
-    // Create a validator object with your Config instance
-    Validator validator = new Validator(config);
+    // Create a validator object with the default Configuration
+    Validator validator = new Validator();
 
     {
         // Validate the transaction object using the validator
