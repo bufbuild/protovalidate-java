@@ -113,7 +113,7 @@ public class Main {
             System.out.println("Validation succeeded");
         } else {
             // Print the violations if any found
-            System.out.println(result.getMessage());
+            System.out.println(result.toString());
         }
     } catch (ValidationException e) {
         // Catch and print any ValidationExceptions thrown during the validation process
