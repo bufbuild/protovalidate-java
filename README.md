@@ -103,24 +103,21 @@ public class Main {
 
     // Create a validator object with the default Configuration
     Validator validator = new Validator();
+    // Validate the transaction object using the validator
+    try {
+        ValidationResult result = validator.validate(transaction);
 
-    {
-        // Validate the transaction object using the validator
-        try {
-            ValidationResult result = validator.validate(transaction);
-
-            // Check if there are any validation violations
-            if (result.violations.isEmpty()) {
-                // No violations, validation successful
-                System.out.println("Validation succeeded");
-            } else {
-                // Print the violations if any found
-                System.out.println(result.getMessage());
-            }
-        } catch (ValidationException e) {
-            // Catch and print any ValidationExceptions thrown during the validation process
-            System.out.println("Validation failed: " + e.getMessage());
+        // Check if there are any validation violations
+        if (result.violations.isEmpty()) {
+            // No violations, validation successful
+            System.out.println("Validation succeeded");
+        } else {
+            // Print the violations if any found
+            System.out.println(result.toString());
         }
+    } catch (ValidationException e) {
+        // Catch and print any ValidationExceptions thrown during the validation process
+        System.out.println("Validation failed: " + e.getMessage());
     }
 }
 ```
