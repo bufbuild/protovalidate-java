@@ -33,6 +33,8 @@ dependencies {
     implementation(libs.protobuf.java)
     implementation(libs.protovalidate)
     implementation(libs.protovalidate.testing)
+    implementation(libs.grpc.netty)
+    implementation("build.buf.gen:bufbuild_protovalidate-testing_grpc_java:1.56.1.1.00000000000000.1a8ebe6a741b")
 
     errorprone(libs.errorprone)
 }

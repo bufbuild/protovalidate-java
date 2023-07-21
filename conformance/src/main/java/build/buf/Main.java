@@ -16,8 +16,9 @@ package build.buf;
 
 import build.buf.gen.buf.validate.ValidateProto;
 import build.buf.gen.buf.validate.Violations;
-import build.buf.gen.buf.validate.conformance.harness.TestConformanceRequest;
-import build.buf.gen.buf.validate.conformance.harness.TestConformanceResponse;
+import build.buf.gen.buf.validate.conformance.harness.ConformanceServiceGrpc;
+import build.buf.gen.buf.validate.conformance.harness.StreamingConformanceRequest;
+import build.buf.gen.buf.validate.conformance.harness.StreamingConformanceResponse;
 import build.buf.gen.buf.validate.conformance.harness.TestResult;
 import build.buf.protovalidate.Config;
 import build.buf.protovalidate.ValidationResult;
@@ -32,32 +33,63 @@ import com.google.protobuf.Descriptors;
 import com.google.protobuf.DynamicMessage;
 import com.google.protobuf.ExtensionRegistry;
 import com.google.protobuf.InvalidProtocolBufferException;
+import io.grpc.Server;
+import io.grpc.netty.shaded.io.grpc.netty.NettyServerBuilder;
+import io.grpc.stub.StreamObserver;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public class Main {
-  public static void main(String[] args) {
-    try {
-      ExtensionRegistry extensionRegistry = ExtensionRegistry.newInstance();
+
+  public static final class Service extends ConformanceServiceGrpc.ConformanceServiceImplBase {
+    static ExtensionRegistry extensionRegistry = ExtensionRegistry.newInstance();
+    static {
       extensionRegistry.add(ValidateProto.message);
       extensionRegistry.add(ValidateProto.field);
       extensionRegistry.add(ValidateProto.oneof);
-      TestConformanceRequest request =
-          TestConformanceRequest.parseFrom(System.in, extensionRegistry);
-      TestConformanceResponse response = testConformance(request);
-      response.writeTo(System.out);
+    }
+    @Override
+    public StreamObserver<StreamingConformanceRequest> streamingConformance(StreamObserver<StreamingConformanceResponse> responseObserver) {
+      return new StreamObserver<>() {
+        @Override
+        public void onNext(StreamingConformanceRequest request) {
+          StreamingConformanceResponse streamingConformanceResponse = testConformance(request);
+          responseObserver.onNext(streamingConformanceResponse);
+        }
+
+        @Override
+        public void onError(Throwable t) {
+          responseObserver.onError(t);
+        }
+
+        @Override
+        public void onCompleted() {
+          responseObserver.onCompleted();
+        }
+      };
+    }
+  }
+  public static void main(String[] args) {
+    try {
+      Service bindableService = new Service();
+      Server server = NettyServerBuilder.forPort(8080)
+              .addService(bindableService)
+              .build();
+      server.start();
+      server.awaitTermination();
     } catch (Exception e) {
       throw new RuntimeException(e);
     }
   }
 
-  static TestConformanceResponse testConformance(TestConformanceRequest request) {
+  static StreamingConformanceResponse testConformance(StreamingConformanceRequest request) {
     try {
       Map<String, Descriptors.Descriptor> descriptorMap =
           FileDescriptorUtil.parse(request.getFdset());
       Validator validator = new Validator(Config.builder().build());
-      TestConformanceResponse.Builder responseBuilder = TestConformanceResponse.newBuilder();
+      StreamingConformanceResponse.Builder responseBuilder = StreamingConformanceResponse.newBuilder();
       Map<String, TestResult> resultsMap = new HashMap<>();
       for (Map.Entry<String, Any> entry : request.getCasesMap().entrySet()) {
         TestResult testResult = testCase(validator, descriptorMap, entry.getValue());
