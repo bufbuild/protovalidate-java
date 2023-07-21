@@ -88,6 +88,11 @@ mavenPublishing {
         )
     )
     pom {
+        name.set("connect-library") // This is overwritten in subprojects.
+        group = "build.buf"
+        val releaseVersion = project.findProperty("releaseVersion") as String?
+        // Default to snapshot versioning for local publishing.
+        version = releaseVersion ?: "0.0.0-SNAPSHOT"
         description.set("Protocol Buffer Validation")
         url.set("https://github.com/bufbuild/protovalidate-java")
         licenses {
