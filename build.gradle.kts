@@ -6,7 +6,6 @@ import net.ltgt.gradle.errorprone.errorprone
 
 plugins {
     `version-catalog`
-
     `java-library`
     alias(libs.plugins.errorprone.plugin)
 }

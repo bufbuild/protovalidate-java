@@ -34,7 +34,11 @@ dependencies {
     implementation(libs.protovalidate)
     implementation(libs.protovalidate.testing)
     implementation(libs.grpc.netty)
-    implementation("build.buf.gen:bufbuild_protovalidate-testing_grpc_java:1.56.1.1.00000000000000.1a8ebe6a741b")
+    implementation("build.buf.gen:bufbuild_protovalidate-testing_grpc_java:1.56.1.1.00000000000000.79e519aab9ca")
+
+    testImplementation(libs.assertj)
+    testImplementation(libs.junit)
+    testImplementation(libs.protovalidate.testing)
 
     errorprone(libs.errorprone)
 }

@@ -19,6 +19,8 @@ import build.buf.gen.buf.validate.Violations;
 import build.buf.gen.buf.validate.conformance.harness.ConformanceServiceGrpc;
 import build.buf.gen.buf.validate.conformance.harness.StreamingConformanceRequest;
 import build.buf.gen.buf.validate.conformance.harness.StreamingConformanceResponse;
+import build.buf.gen.buf.validate.conformance.harness.TestConformanceRequest;
+import build.buf.gen.buf.validate.conformance.harness.TestConformanceResponse;
 import build.buf.gen.buf.validate.conformance.harness.TestResult;
 import build.buf.protovalidate.Config;
 import build.buf.protovalidate.ValidationResult;
@@ -37,7 +39,6 @@ import io.grpc.Server;
 import io.grpc.netty.shaded.io.grpc.netty.NettyServerBuilder;
 import io.grpc.stub.StreamObserver;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -50,13 +51,29 @@ public class Main {
       extensionRegistry.add(ValidateProto.field);
       extensionRegistry.add(ValidateProto.oneof);
     }
+
+    @Override
+    public void testConformance(TestConformanceRequest request, StreamObserver<TestConformanceResponse> responseObserver) {
+      StreamingConformanceResponse streamingConformanceResponse = test(StreamingConformanceRequest.newBuilder()
+              .setFdset(request.getFdset())
+              .putAllCases(request.getCasesMap())
+              .build());
+      responseObserver.onNext(TestConformanceResponse.newBuilder().putAllResults(streamingConformanceResponse.getResultsMap()).build());
+      responseObserver.onCompleted();
+    }
+
     @Override
     public StreamObserver<StreamingConformanceRequest> streamingConformance(StreamObserver<StreamingConformanceResponse> responseObserver) {
       return new StreamObserver<>() {
         @Override
         public void onNext(StreamingConformanceRequest request) {
-          StreamingConformanceResponse streamingConformanceResponse = testConformance(request);
-          responseObserver.onNext(streamingConformanceResponse);
+          try {
+            StreamingConformanceRequest hydratedRequest = StreamingConformanceRequest.parseFrom(request.toByteString(), extensionRegistry);
+            StreamingConformanceResponse streamingConformanceResponse = test(hydratedRequest);
+            responseObserver.onNext(streamingConformanceResponse);
+          } catch (InvalidProtocolBufferException e) {
+            responseObserver.onError(e);
+          }
         }
 
         @Override
@@ -74,7 +91,7 @@ public class Main {
   public static void main(String[] args) {
     try {
       Service bindableService = new Service();
-      Server server = NettyServerBuilder.forPort(1234)
+      Server server = NettyServerBuilder.forPort(1235)
               .addService(bindableService)
               .build();
       server.start();
@@ -84,25 +101,23 @@ public class Main {
     }
   }
 
-  static StreamingConformanceResponse testConformance(StreamingConformanceRequest request) {
+  private static StreamingConformanceResponse test(StreamingConformanceRequest request) {
     try {
       Map<String, Descriptors.Descriptor> descriptorMap =
           FileDescriptorUtil.parse(request.getFdset());
       Validator validator = new Validator(Config.builder().build());
-      StreamingConformanceResponse.Builder responseBuilder = StreamingConformanceResponse.newBuilder();
-      Map<String, TestResult> resultsMap = new HashMap<>();
+      StreamingConformanceResponse.Builder responseBuilder = StreamingConformanceResponse.newBuilder().setSuiteName(request.getSuiteName());
       for (Map.Entry<String, Any> entry : request.getCasesMap().entrySet()) {
         TestResult testResult = testCase(validator, descriptorMap, entry.getValue());
-        resultsMap.put(entry.getKey(), testResult);
+        responseBuilder.putResults(entry.getKey(), testResult);
       }
-      responseBuilder.putAllResults(resultsMap);
       return responseBuilder.build();
     } catch (Exception e) {
       throw new RuntimeException(e);
     }
   }
 
-  static TestResult testCase(
+  private static TestResult testCase(
       Validator validator, Map<String, Descriptors.Descriptor> fileDescriptors, Any testCase)
       throws InvalidProtocolBufferException {
     List<String> urlParts = Splitter.on('/').limit(2).splitToList(testCase.getTypeUrl());
@@ -138,7 +153,7 @@ public class Main {
   }
 
   @FormatMethod
-  static TestResult unexpectedErrorResult(String format, Object... args) {
+  private static TestResult unexpectedErrorResult(String format, Object... args) {
     String errorMessage = String.format(format, args);
     return TestResult.newBuilder().setUnexpectedError(errorMessage).build();
   }

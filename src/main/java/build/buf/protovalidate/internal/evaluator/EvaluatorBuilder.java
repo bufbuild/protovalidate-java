@@ -53,7 +53,7 @@ public class EvaluatorBuilder {
     extensionRegistry.add(ValidateProto.oneof);
   }
 
-  private final Map<Descriptor, Evaluator> evaluatorMap = new HashMap<>();
+  private static final Map<Descriptor, Evaluator> evaluatorMap = new HashMap<>();
   private final ConstraintResolver resolver = new ConstraintResolver();
 
   private final Env env;

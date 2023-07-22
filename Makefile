@@ -13,10 +13,10 @@ JAVA_VERSION = 20
 JAVAC = javac
 JAVA = java
 GO ?= go
-ARGS ?= --strict_message
+ARGS ?= --strict_message --streaming_host="http://localhost:1235"
 JAVA_COMPILE_OPTIONS = --enable-preview --release $(JAVA_VERSION)
 JAVA_OPTIONS = --enable-preview
-PROTOVALIDATE_VERSION ?= v0.2.2
+PROTOVALIDATE_VERSION ?= 7a97b32c49d7e9caec91e2fe104cc414d494f4e8
 JAVA_MAIN_CLASS = build.buf.protovalidate
 JAVA_SOURCES = $(wildcard src/main/java/**/**/**/*.java, src/main/java/**/**/*.java)
 JAVA_CLASSES = $(patsubst src/main/java/%.java, target/classes/%.class, $(JAVA_SOURCES))
@@ -44,8 +44,9 @@ clean:  ## Delete intermediate build artifacts
 
 .PHONY: conformance
 conformance: build $(BIN)/protovalidate-conformance  ## Execute conformance tests.
-	./gradlew conformance:jar
-	$(BIN)/protovalidate-conformance $(ARGS) ./conformance/conformance.sh
+	./conformance/conformance.sh &
+	$(BIN)/protovalidate-conformance $(ARGS)
+	pkill -f "java"
 
 .PHONY: generate-license
 generate-license: $(BIN)/license-header  ## Generates license headers for all source files.
