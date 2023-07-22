@@ -13,9 +13,9 @@ JAVA_VERSION = 20
 JAVAC = javac
 JAVA = java
 GO ?= go
-ARGS ?= --strict_message
+ARGS ?= --strict_message --streaming --benchmark=10
 JAVA_COMPILE_OPTIONS = --enable-preview --release $(JAVA_VERSION)
-JAVA_OPTIONS = --enable-preview --streaming
+JAVA_OPTIONS = --enable-preview
 PROTOVALIDATE_VERSION ?= 736c38d0f8c39bf84a793bb550de036f244b27cb
 JAVA_MAIN_CLASS = build.buf.protovalidate
 JAVA_SOURCES = $(wildcard src/main/java/**/**/**/*.java, src/main/java/**/**/*.java)
