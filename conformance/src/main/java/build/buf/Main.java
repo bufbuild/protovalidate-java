@@ -16,8 +16,8 @@ package build.buf;
 
 import build.buf.gen.buf.validate.ValidateProto;
 import build.buf.gen.buf.validate.Violations;
-import build.buf.gen.buf.validate.conformance.harness.TestConformanceRequest;
-import build.buf.gen.buf.validate.conformance.harness.TestConformanceResponse;
+import build.buf.gen.buf.validate.conformance.harness.StreamingConformanceRequest;
+import build.buf.gen.buf.validate.conformance.harness.StreamingConformanceResponse;
 import build.buf.gen.buf.validate.conformance.harness.TestResult;
 import build.buf.protovalidate.Config;
 import build.buf.protovalidate.ValidationResult;
@@ -32,38 +32,49 @@ import com.google.protobuf.Descriptors;
 import com.google.protobuf.DynamicMessage;
 import com.google.protobuf.ExtensionRegistry;
 import com.google.protobuf.InvalidProtocolBufferException;
-import java.util.HashMap;
+
 import java.util.List;
 import java.util.Map;
 
 public class Main {
+  private static final ExtensionRegistry extensionRegistry = ExtensionRegistry.newInstance();
+  static {
+    extensionRegistry.add(ValidateProto.message);
+    extensionRegistry.add(ValidateProto.field);
+    extensionRegistry.add(ValidateProto.oneof);
+  }
+
   public static void main(String[] args) {
     try {
-      ExtensionRegistry extensionRegistry = ExtensionRegistry.newInstance();
-      extensionRegistry.add(ValidateProto.message);
-      extensionRegistry.add(ValidateProto.field);
-      extensionRegistry.add(ValidateProto.oneof);
-      TestConformanceRequest request =
-          TestConformanceRequest.parseFrom(System.in, extensionRegistry);
-      TestConformanceResponse response = testConformance(request);
-      response.writeTo(System.out);
+      Envelope.EnvelopeReader envelopeReader = new Envelope.EnvelopeReader(System.in);
+      Envelope.EnvelopeWriter envelopeWriter = new Envelope.EnvelopeWriter(System.out);
+      boolean isEndStream = false;
+      while (!isEndStream) {
+        Envelope envelope = envelopeReader.read();
+        isEndStream = envelope.endStream;
+        byte[] input = envelope.bytes;
+        if (input.length > 0) {
+          StreamingConformanceRequest request =
+                  StreamingConformanceRequest.parseFrom(input, extensionRegistry);
+          StreamingConformanceResponse response = testConformance(request);
+          envelopeWriter.write(response.toByteArray(), false);
+        }
+      }
     } catch (Exception e) {
       throw new RuntimeException(e);
     }
   }
 
-  static TestConformanceResponse testConformance(TestConformanceRequest request) {
+  static StreamingConformanceResponse testConformance(StreamingConformanceRequest request) {
     try {
       Map<String, Descriptors.Descriptor> descriptorMap =
           FileDescriptorUtil.parse(request.getFdset());
       Validator validator = new Validator(Config.newBuilder().build());
-      TestConformanceResponse.Builder responseBuilder = TestConformanceResponse.newBuilder();
-      Map<String, TestResult> resultsMap = new HashMap<>();
+      StreamingConformanceResponse.Builder responseBuilder = StreamingConformanceResponse.newBuilder();
       for (Map.Entry<String, Any> entry : request.getCasesMap().entrySet()) {
         TestResult testResult = testCase(validator, descriptorMap, entry.getValue());
-        resultsMap.put(entry.getKey(), testResult);
+        responseBuilder.putResults(entry.getKey(), testResult);
       }
-      responseBuilder.putAllResults(resultsMap);
       return responseBuilder.build();
     } catch (Exception e) {
       throw new RuntimeException(e);
