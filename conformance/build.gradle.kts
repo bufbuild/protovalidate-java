@@ -34,7 +34,6 @@ dependencies {
 
     implementation(libs.assertj)
     implementation(libs.junit)
-    implementation(libs.protovalidate.testing)
 
     errorprone(libs.errorprone)
 }

@@ -127,7 +127,6 @@ dependencies {
 
     testImplementation(libs.assertj)
     testImplementation(libs.junit)
-    testImplementation(libs.protovalidate.testing)
 
     errorprone(libs.errorprone)
 }
