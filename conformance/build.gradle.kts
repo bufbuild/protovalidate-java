@@ -31,7 +31,9 @@ dependencies {
     implementation(project(":"))
     implementation(libs.guava)
     implementation(libs.protobuf.java)
-    implementation(libs.protovalidate)
+
+    implementation(libs.assertj)
+    implementation(libs.junit)
     implementation(libs.protovalidate.testing)
 
     errorprone(libs.errorprone)

@@ -14,10 +14,10 @@
 
 package build.buf.protovalidate.internal.evaluator;
 
-import build.buf.gen.buf.validate.FieldConstraints;
-import build.buf.gen.buf.validate.MessageConstraints;
-import build.buf.gen.buf.validate.OneofConstraints;
-import build.buf.gen.buf.validate.ValidateProto;
+import build.buf.validate.FieldConstraints;
+import build.buf.validate.MessageConstraints;
+import build.buf.validate.OneofConstraints;
+import build.buf.validate.ValidateProto;
 import com.google.protobuf.DescriptorProtos;
 import com.google.protobuf.Descriptors.Descriptor;
 import com.google.protobuf.Descriptors.FieldDescriptor;
@@ -37,6 +37,7 @@ class ConstraintResolver {
     if (!options.hasExtension(ValidateProto.message)) {
       return MessageConstraints.getDefaultInstance();
     }
+
     MessageConstraints constraints = options.getExtension(ValidateProto.message);
     boolean disabled = constraints.getDisabled();
     if (disabled) {

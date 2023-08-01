@@ -14,9 +14,9 @@
 
 package build.buf.protovalidate.internal.evaluator;
 
-import build.buf.gen.buf.validate.FieldConstraints;
-import build.buf.gen.buf.validate.MapRules;
-import build.buf.gen.buf.validate.Violation;
+import build.buf.validate.FieldConstraints;
+import build.buf.validate.MapRules;
+import build.buf.validate.Violation;
 import build.buf.protovalidate.ValidationResult;
 import build.buf.protovalidate.exceptions.ExecutionException;
 import com.google.protobuf.Descriptors;

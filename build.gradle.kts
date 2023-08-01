@@ -107,7 +107,6 @@ plugins.withId("com.vanniktech.maven.publish.base") {
 dependencies {
     annotationProcessor(libs.nullaway)
     api(libs.protobuf.java)
-    api(libs.protovalidate)
     implementation(enforcedPlatform(libs.cel))
     implementation(libs.cel.core)
     implementation(libs.guava)

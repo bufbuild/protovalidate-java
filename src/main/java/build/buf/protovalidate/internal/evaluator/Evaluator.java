@@ -27,8 +27,8 @@ public interface Evaluator {
 
   /**
    * Checks that the provided val is valid. Unless failFast is true, evaluation attempts to find all
-   * {@link build.buf.gen.buf.validate.Violations} present in val instead of returning a {@link
-   * ValidationResult} on the first {@link build.buf.gen.buf.validate.Violation}. An {@link
+   * {@link build.buf.validate.Violations} present in val instead of returning a {@link
+   * ValidationResult} on the first {@link build.buf.validate.Violation}. An {@link
    * ExecutionException} is thrown if evaluation fails to complete.
    */
   ValidationResult evaluate(Value val, boolean failFast) throws ExecutionException;

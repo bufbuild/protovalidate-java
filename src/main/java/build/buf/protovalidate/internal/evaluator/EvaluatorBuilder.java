@@ -14,11 +14,11 @@
 
 package build.buf.protovalidate.internal.evaluator;
 
-import build.buf.gen.buf.validate.Constraint;
-import build.buf.gen.buf.validate.FieldConstraints;
-import build.buf.gen.buf.validate.MessageConstraints;
-import build.buf.gen.buf.validate.OneofConstraints;
-import build.buf.gen.buf.validate.ValidateProto;
+import build.buf.validate.Constraint;
+import build.buf.validate.FieldConstraints;
+import build.buf.validate.MessageConstraints;
+import build.buf.validate.OneofConstraints;
+import build.buf.validate.ValidateProto;
 import build.buf.protovalidate.exceptions.CompilationException;
 import build.buf.protovalidate.internal.constraints.ConstraintCache;
 import build.buf.protovalidate.internal.constraints.DescriptorMappings;

@@ -14,16 +14,17 @@
 
 package build.buf;
 
-import build.buf.gen.buf.validate.ValidateProto;
-import build.buf.gen.buf.validate.Violations;
-import build.buf.gen.buf.validate.conformance.harness.TestConformanceRequest;
-import build.buf.gen.buf.validate.conformance.harness.TestConformanceResponse;
-import build.buf.gen.buf.validate.conformance.harness.TestResult;
+import build.buf.validate.ValidateProto;
+import build.buf.validate.Violations;
+import build.buf.validate.conformance.harness.TestConformanceRequest;
+import build.buf.validate.conformance.harness.TestConformanceResponse;
+import build.buf.validate.conformance.harness.TestResult;
 import build.buf.protovalidate.Config;
 import build.buf.protovalidate.ValidationResult;
 import build.buf.protovalidate.Validator;
 import build.buf.protovalidate.exceptions.CompilationException;
 import build.buf.protovalidate.exceptions.ExecutionException;
+import build.buf.validate.Violation;
 import com.google.common.base.Splitter;
 import com.google.errorprone.annotations.FormatMethod;
 import com.google.protobuf.Any;
@@ -88,12 +89,13 @@ public class Main {
   private static TestResult validate(Validator validator, DynamicMessage dynamicMessage) {
     try {
       ValidationResult result = validator.validate(dynamicMessage);
-      if (result.getViolations().isEmpty()) {
+      List<Violation> violations = result.getViolations();
+      if (violations.isEmpty()) {
         return TestResult.newBuilder().setSuccess(true).build();
       } else {
         return TestResult.newBuilder()
             .setValidationError(
-                Violations.newBuilder().addAllViolations(result.getViolations()).build())
+                Violations.newBuilder().addAllViolations(violations).build())
             .build();
       }
     } catch (CompilationException e) {

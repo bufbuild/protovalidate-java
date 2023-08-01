@@ -14,7 +14,7 @@
 
 package build.buf.protovalidate;
 
-import build.buf.gen.buf.validate.Violation;
+import build.buf.validate.Violation;
 import java.util.Collections;
 import java.util.List;
 
