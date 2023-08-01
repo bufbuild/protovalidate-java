@@ -1,8 +1,6 @@
 version: v1
 managed:
-  enabled: true
-  java_package_prefix: "build"
-  java_multiple_files: true
+  enabled: false
 plugins:
   - plugin: buf.build/protocolbuffers/java:v23.4
     out: src/main/java
