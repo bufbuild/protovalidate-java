@@ -28,9 +28,6 @@ jobs:
       - uses: bufbuild/buf-setup-action@v1
         with:
           github_token: ${{ github.token }}
-      - uses: arduino/setup-protoc@v1
-        with:
-          repo-token: ${{ github.token }}
       - name: Lint
         run: make lint
       - name: Generate
