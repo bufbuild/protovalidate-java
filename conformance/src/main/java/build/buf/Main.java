@@ -92,10 +92,9 @@ public class Main {
       List<Violation> violations = result.getViolations();
       if (violations.isEmpty()) {
         return TestResult.newBuilder().setSuccess(true).build();
-      } else {
-        Violations error = Violations.newBuilder().addAllViolations(violations).build();
-        return TestResult.newBuilder().setValidationError(error).build();
       }
+      Violations error = Violations.newBuilder().addAllViolations(violations).build();
+      return TestResult.newBuilder().setValidationError(error).build();
     } catch (CompilationException e) {
       return TestResult.newBuilder().setCompilationError(e.getMessage()).build();
     } catch (ExecutionException e) {
