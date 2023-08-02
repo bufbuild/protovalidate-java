@@ -3,100 +3,91 @@
 
 package build.buf.validate.conformance.cases.custom_constraints;
 
-/** Protobuf type {@code buf.validate.conformance.cases.custom_constraints.FieldExpressions} */
-public final class FieldExpressions extends com.google.protobuf.GeneratedMessageV3
-    implements
+/**
+ * Protobuf type {@code buf.validate.conformance.cases.custom_constraints.FieldExpressions}
+ */
+public final class FieldExpressions extends
+    com.google.protobuf.GeneratedMessageV3 implements
     // @@protoc_insertion_point(message_implements:buf.validate.conformance.cases.custom_constraints.FieldExpressions)
     FieldExpressionsOrBuilder {
-  private static final long serialVersionUID = 0L;
-
+private static final long serialVersionUID = 0L;
   // Use FieldExpressions.newBuilder() to construct.
   private FieldExpressions(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
-
   private FieldExpressions() {
     b_ = 0;
   }
 
   @java.lang.Override
   @SuppressWarnings({"unused"})
-  protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
+  protected java.lang.Object newInstance(
+      UnusedPrivateParameter unused) {
     return new FieldExpressions();
   }
 
-  public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
-    return build.buf.validate.conformance.cases.custom_constraints.CustomConstraintsProto
-        .internal_static_buf_validate_conformance_cases_custom_constraints_FieldExpressions_descriptor;
+  public static final com.google.protobuf.Descriptors.Descriptor
+      getDescriptor() {
+    return build.buf.validate.conformance.cases.custom_constraints.CustomConstraintsProto.internal_static_buf_validate_conformance_cases_custom_constraints_FieldExpressions_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return build.buf.validate.conformance.cases.custom_constraints.CustomConstraintsProto
-        .internal_static_buf_validate_conformance_cases_custom_constraints_FieldExpressions_fieldAccessorTable
+    return build.buf.validate.conformance.cases.custom_constraints.CustomConstraintsProto.internal_static_buf_validate_conformance_cases_custom_constraints_FieldExpressions_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            build.buf.validate.conformance.cases.custom_constraints.FieldExpressions.class,
-            build.buf.validate.conformance.cases.custom_constraints.FieldExpressions.Builder.class);
+            build.buf.validate.conformance.cases.custom_constraints.FieldExpressions.class, build.buf.validate.conformance.cases.custom_constraints.FieldExpressions.Builder.class);
   }
 
-  public interface NestedOrBuilder
-      extends
+  public interface NestedOrBuilder extends
       // @@protoc_insertion_point(interface_extends:buf.validate.conformance.cases.custom_constraints.FieldExpressions.Nested)
       com.google.protobuf.MessageOrBuilder {
 
     /**
      * <code>int32 a = 1 [json_name = "a", (.buf.validate.field) = { ... }</code>
-     *
      * @return The a.
      */
     int getA();
   }
-
   /**
    * Protobuf type {@code buf.validate.conformance.cases.custom_constraints.FieldExpressions.Nested}
    */
-  public static final class Nested extends com.google.protobuf.GeneratedMessageV3
-      implements
+  public static final class Nested extends
+      com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:buf.validate.conformance.cases.custom_constraints.FieldExpressions.Nested)
       NestedOrBuilder {
-    private static final long serialVersionUID = 0L;
-
+  private static final long serialVersionUID = 0L;
     // Use Nested.newBuilder() to construct.
     private Nested(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
-
-    private Nested() {}
+    private Nested() {
+    }
 
     @java.lang.Override
     @SuppressWarnings({"unused"})
-    protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
       return new Nested();
     }
 
-    public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
-      return build.buf.validate.conformance.cases.custom_constraints.CustomConstraintsProto
-          .internal_static_buf_validate_conformance_cases_custom_constraints_FieldExpressions_Nested_descriptor;
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return build.buf.validate.conformance.cases.custom_constraints.CustomConstraintsProto.internal_static_buf_validate_conformance_cases_custom_constraints_FieldExpressions_Nested_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return build.buf.validate.conformance.cases.custom_constraints.CustomConstraintsProto
-          .internal_static_buf_validate_conformance_cases_custom_constraints_FieldExpressions_Nested_fieldAccessorTable
+      return build.buf.validate.conformance.cases.custom_constraints.CustomConstraintsProto.internal_static_buf_validate_conformance_cases_custom_constraints_FieldExpressions_Nested_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              build.buf.validate.conformance.cases.custom_constraints.FieldExpressions.Nested.class,
-              build.buf.validate.conformance.cases.custom_constraints.FieldExpressions.Nested
-                  .Builder.class);
+              build.buf.validate.conformance.cases.custom_constraints.FieldExpressions.Nested.class, build.buf.validate.conformance.cases.custom_constraints.FieldExpressions.Nested.Builder.class);
     }
 
     public static final int A_FIELD_NUMBER = 1;
     private int a_ = 0;
-
     /**
      * <code>int32 a = 1 [json_name = "a", (.buf.validate.field) = { ... }</code>
-     *
      * @return The a.
      */
     @java.lang.Override
@@ -105,7 +96,6 @@ public final class FieldExpressions extends com.google.protobuf.GeneratedMessage
     }
 
     private byte memoizedIsInitialized = -1;
-
     @java.lang.Override
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -117,7 +107,8 @@ public final class FieldExpressions extends com.google.protobuf.GeneratedMessage
     }
 
     @java.lang.Override
-    public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
       if (a_ != 0) {
         output.writeInt32(1, a_);
       }
@@ -131,7 +122,8 @@ public final class FieldExpressions extends com.google.protobuf.GeneratedMessage
 
       size = 0;
       if (a_ != 0) {
-        size += com.google.protobuf.CodedOutputStream.computeInt32Size(1, a_);
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, a_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
@@ -141,17 +133,15 @@ public final class FieldExpressions extends com.google.protobuf.GeneratedMessage
     @java.lang.Override
     public boolean equals(final java.lang.Object obj) {
       if (obj == this) {
-        return true;
+       return true;
       }
-      if (!(obj
-          instanceof
-          build.buf.validate.conformance.cases.custom_constraints.FieldExpressions.Nested)) {
+      if (!(obj instanceof build.buf.validate.conformance.cases.custom_constraints.FieldExpressions.Nested)) {
         return super.equals(obj);
       }
-      build.buf.validate.conformance.cases.custom_constraints.FieldExpressions.Nested other =
-          (build.buf.validate.conformance.cases.custom_constraints.FieldExpressions.Nested) obj;
+      build.buf.validate.conformance.cases.custom_constraints.FieldExpressions.Nested other = (build.buf.validate.conformance.cases.custom_constraints.FieldExpressions.Nested) obj;
 
-      if (getA() != other.getA()) return false;
+      if (getA()
+          != other.getA()) return false;
       if (!getUnknownFields().equals(other.getUnknownFields())) return false;
       return true;
     }
@@ -170,101 +160,90 @@ public final class FieldExpressions extends com.google.protobuf.GeneratedMessage
       return hash;
     }
 
-    public static build.buf.validate.conformance.cases.custom_constraints.FieldExpressions.Nested
-        parseFrom(java.nio.ByteBuffer data)
-            throws com.google.protobuf.InvalidProtocolBufferException {
+    public static build.buf.validate.conformance.cases.custom_constraints.FieldExpressions.Nested parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-
-    public static build.buf.validate.conformance.cases.custom_constraints.FieldExpressions.Nested
-        parseFrom(
-            java.nio.ByteBuffer data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-            throws com.google.protobuf.InvalidProtocolBufferException {
+    public static build.buf.validate.conformance.cases.custom_constraints.FieldExpressions.Nested parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-
-    public static build.buf.validate.conformance.cases.custom_constraints.FieldExpressions.Nested
-        parseFrom(com.google.protobuf.ByteString data)
-            throws com.google.protobuf.InvalidProtocolBufferException {
+    public static build.buf.validate.conformance.cases.custom_constraints.FieldExpressions.Nested parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-
-    public static build.buf.validate.conformance.cases.custom_constraints.FieldExpressions.Nested
-        parseFrom(
-            com.google.protobuf.ByteString data,
-            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-            throws com.google.protobuf.InvalidProtocolBufferException {
+    public static build.buf.validate.conformance.cases.custom_constraints.FieldExpressions.Nested parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-
-    public static build.buf.validate.conformance.cases.custom_constraints.FieldExpressions.Nested
-        parseFrom(byte[] data) throws com.google.protobuf.InvalidProtocolBufferException {
+    public static build.buf.validate.conformance.cases.custom_constraints.FieldExpressions.Nested parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-
-    public static build.buf.validate.conformance.cases.custom_constraints.FieldExpressions.Nested
-        parseFrom(byte[] data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-            throws com.google.protobuf.InvalidProtocolBufferException {
+    public static build.buf.validate.conformance.cases.custom_constraints.FieldExpressions.Nested parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-
-    public static build.buf.validate.conformance.cases.custom_constraints.FieldExpressions.Nested
-        parseFrom(java.io.InputStream input) throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
+    public static build.buf.validate.conformance.cases.custom_constraints.FieldExpressions.Nested parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static build.buf.validate.conformance.cases.custom_constraints.FieldExpressions.Nested parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
-    public static build.buf.validate.conformance.cases.custom_constraints.FieldExpressions.Nested
-        parseFrom(
-            java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-            throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
-          PARSER, input, extensionRegistry);
+    public static build.buf.validate.conformance.cases.custom_constraints.FieldExpressions.Nested parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
     }
 
-    public static build.buf.validate.conformance.cases.custom_constraints.FieldExpressions.Nested
-        parseDelimitedFrom(java.io.InputStream input) throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input);
+    public static build.buf.validate.conformance.cases.custom_constraints.FieldExpressions.Nested parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-
-    public static build.buf.validate.conformance.cases.custom_constraints.FieldExpressions.Nested
-        parseDelimitedFrom(
-            java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-            throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(
-          PARSER, input, extensionRegistry);
+    public static build.buf.validate.conformance.cases.custom_constraints.FieldExpressions.Nested parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
     }
-
-    public static build.buf.validate.conformance.cases.custom_constraints.FieldExpressions.Nested
-        parseFrom(com.google.protobuf.CodedInputStream input) throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
-    }
-
-    public static build.buf.validate.conformance.cases.custom_constraints.FieldExpressions.Nested
-        parseFrom(
-            com.google.protobuf.CodedInputStream input,
-            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-            throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
-          PARSER, input, extensionRegistry);
+    public static build.buf.validate.conformance.cases.custom_constraints.FieldExpressions.Nested parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
     @java.lang.Override
-    public Builder newBuilderForType() {
-      return newBuilder();
-    }
-
+    public Builder newBuilderForType() { return newBuilder(); }
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-
-    public static Builder newBuilder(
-        build.buf.validate.conformance.cases.custom_constraints.FieldExpressions.Nested prototype) {
+    public static Builder newBuilder(build.buf.validate.conformance.cases.custom_constraints.FieldExpressions.Nested prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
-
     @java.lang.Override
     public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE ? new Builder() : new Builder().mergeFrom(this);
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
     }
 
     @java.lang.Override
@@ -273,41 +252,36 @@ public final class FieldExpressions extends com.google.protobuf.GeneratedMessage
       Builder builder = new Builder(parent);
       return builder;
     }
-
     /**
-     * Protobuf type {@code
-     * buf.validate.conformance.cases.custom_constraints.FieldExpressions.Nested}
+     * Protobuf type {@code buf.validate.conformance.cases.custom_constraints.FieldExpressions.Nested}
      */
-    public static final class Builder
-        extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
-        implements
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:buf.validate.conformance.cases.custom_constraints.FieldExpressions.Nested)
         build.buf.validate.conformance.cases.custom_constraints.FieldExpressions.NestedOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
-        return build.buf.validate.conformance.cases.custom_constraints.CustomConstraintsProto
-            .internal_static_buf_validate_conformance_cases_custom_constraints_FieldExpressions_Nested_descriptor;
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return build.buf.validate.conformance.cases.custom_constraints.CustomConstraintsProto.internal_static_buf_validate_conformance_cases_custom_constraints_FieldExpressions_Nested_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return build.buf.validate.conformance.cases.custom_constraints.CustomConstraintsProto
-            .internal_static_buf_validate_conformance_cases_custom_constraints_FieldExpressions_Nested_fieldAccessorTable
+        return build.buf.validate.conformance.cases.custom_constraints.CustomConstraintsProto.internal_static_buf_validate_conformance_cases_custom_constraints_FieldExpressions_Nested_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                build.buf.validate.conformance.cases.custom_constraints.FieldExpressions.Nested
-                    .class,
-                build.buf.validate.conformance.cases.custom_constraints.FieldExpressions.Nested
-                    .Builder.class);
+                build.buf.validate.conformance.cases.custom_constraints.FieldExpressions.Nested.class, build.buf.validate.conformance.cases.custom_constraints.FieldExpressions.Nested.Builder.class);
       }
 
-      // Construct using
-      // build.buf.validate.conformance.cases.custom_constraints.FieldExpressions.Nested.newBuilder()
-      private Builder() {}
+      // Construct using build.buf.validate.conformance.cases.custom_constraints.FieldExpressions.Nested.newBuilder()
+      private Builder() {
 
-      private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
-      }
 
+      }
       @java.lang.Override
       public Builder clear() {
         super.clear();
@@ -317,23 +291,19 @@ public final class FieldExpressions extends com.google.protobuf.GeneratedMessage
       }
 
       @java.lang.Override
-      public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
-        return build.buf.validate.conformance.cases.custom_constraints.CustomConstraintsProto
-            .internal_static_buf_validate_conformance_cases_custom_constraints_FieldExpressions_Nested_descriptor;
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return build.buf.validate.conformance.cases.custom_constraints.CustomConstraintsProto.internal_static_buf_validate_conformance_cases_custom_constraints_FieldExpressions_Nested_descriptor;
       }
 
       @java.lang.Override
-      public build.buf.validate.conformance.cases.custom_constraints.FieldExpressions.Nested
-          getDefaultInstanceForType() {
-        return build.buf.validate.conformance.cases.custom_constraints.FieldExpressions.Nested
-            .getDefaultInstance();
+      public build.buf.validate.conformance.cases.custom_constraints.FieldExpressions.Nested getDefaultInstanceForType() {
+        return build.buf.validate.conformance.cases.custom_constraints.FieldExpressions.Nested.getDefaultInstance();
       }
 
       @java.lang.Override
-      public build.buf.validate.conformance.cases.custom_constraints.FieldExpressions.Nested
-          build() {
-        build.buf.validate.conformance.cases.custom_constraints.FieldExpressions.Nested result =
-            buildPartial();
+      public build.buf.validate.conformance.cases.custom_constraints.FieldExpressions.Nested build() {
+        build.buf.validate.conformance.cases.custom_constraints.FieldExpressions.Nested result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -341,20 +311,14 @@ public final class FieldExpressions extends com.google.protobuf.GeneratedMessage
       }
 
       @java.lang.Override
-      public build.buf.validate.conformance.cases.custom_constraints.FieldExpressions.Nested
-          buildPartial() {
-        build.buf.validate.conformance.cases.custom_constraints.FieldExpressions.Nested result =
-            new build.buf.validate.conformance.cases.custom_constraints.FieldExpressions.Nested(
-                this);
-        if (bitField0_ != 0) {
-          buildPartial0(result);
-        }
+      public build.buf.validate.conformance.cases.custom_constraints.FieldExpressions.Nested buildPartial() {
+        build.buf.validate.conformance.cases.custom_constraints.FieldExpressions.Nested result = new build.buf.validate.conformance.cases.custom_constraints.FieldExpressions.Nested(this);
+        if (bitField0_ != 0) { buildPartial0(result); }
         onBuilt();
         return result;
       }
 
-      private void buildPartial0(
-          build.buf.validate.conformance.cases.custom_constraints.FieldExpressions.Nested result) {
+      private void buildPartial0(build.buf.validate.conformance.cases.custom_constraints.FieldExpressions.Nested result) {
         int from_bitField0_ = bitField0_;
         if (((from_bitField0_ & 0x00000001) != 0)) {
           result.a_ = a_;
@@ -365,56 +329,46 @@ public final class FieldExpressions extends com.google.protobuf.GeneratedMessage
       public Builder clone() {
         return super.clone();
       }
-
       @java.lang.Override
       public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
         return super.setField(field, value);
       }
-
       @java.lang.Override
-      public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
         return super.clearField(field);
       }
-
       @java.lang.Override
-      public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
         return super.clearOneof(oneof);
       }
-
       @java.lang.Override
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index,
-          java.lang.Object value) {
+          int index, java.lang.Object value) {
         return super.setRepeatedField(field, index, value);
       }
-
       @java.lang.Override
       public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
         return super.addRepeatedField(field, value);
       }
-
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other
-            instanceof
-            build.buf.validate.conformance.cases.custom_constraints.FieldExpressions.Nested) {
-          return mergeFrom(
-              (build.buf.validate.conformance.cases.custom_constraints.FieldExpressions.Nested)
-                  other);
+        if (other instanceof build.buf.validate.conformance.cases.custom_constraints.FieldExpressions.Nested) {
+          return mergeFrom((build.buf.validate.conformance.cases.custom_constraints.FieldExpressions.Nested)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(
-          build.buf.validate.conformance.cases.custom_constraints.FieldExpressions.Nested other) {
-        if (other
-            == build.buf.validate.conformance.cases.custom_constraints.FieldExpressions.Nested
-                .getDefaultInstance()) return this;
+      public Builder mergeFrom(build.buf.validate.conformance.cases.custom_constraints.FieldExpressions.Nested other) {
+        if (other == build.buf.validate.conformance.cases.custom_constraints.FieldExpressions.Nested.getDefaultInstance()) return this;
         if (other.getA() != 0) {
           setA(other.getA());
         }
@@ -444,19 +398,17 @@ public final class FieldExpressions extends com.google.protobuf.GeneratedMessage
               case 0:
                 done = true;
                 break;
-              case 8:
-                {
-                  a_ = input.readInt32();
-                  bitField0_ |= 0x00000001;
-                  break;
-                } // case 8
-              default:
-                {
-                  if (!super.parseUnknownField(input, extensionRegistry, tag)) {
-                    done = true; // was an endgroup tag
-                  }
-                  break;
-                } // default:
+              case 8: {
+                a_ = input.readInt32();
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 8
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
             } // switch (tag)
           } // while (!done)
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -466,24 +418,19 @@ public final class FieldExpressions extends com.google.protobuf.GeneratedMessage
         } // finally
         return this;
       }
-
       private int bitField0_;
 
-      private int a_;
-
+      private int a_ ;
       /**
        * <code>int32 a = 1 [json_name = "a", (.buf.validate.field) = { ... }</code>
-       *
        * @return The a.
        */
       @java.lang.Override
       public int getA() {
         return a_;
       }
-
       /**
        * <code>int32 a = 1 [json_name = "a", (.buf.validate.field) = { ... }</code>
-       *
        * @param value The a to set.
        * @return This builder for chaining.
        */
@@ -494,10 +441,8 @@ public final class FieldExpressions extends com.google.protobuf.GeneratedMessage
         onChanged();
         return this;
       }
-
       /**
        * <code>int32 a = 1 [json_name = "a", (.buf.validate.field) = { ... }</code>
-       *
        * @return This builder for chaining.
        */
       public Builder clearA() {
@@ -506,7 +451,6 @@ public final class FieldExpressions extends com.google.protobuf.GeneratedMessage
         onChanged();
         return this;
       }
-
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -519,46 +463,41 @@ public final class FieldExpressions extends com.google.protobuf.GeneratedMessage
         return super.mergeUnknownFields(unknownFields);
       }
 
+
       // @@protoc_insertion_point(builder_scope:buf.validate.conformance.cases.custom_constraints.FieldExpressions.Nested)
     }
 
     // @@protoc_insertion_point(class_scope:buf.validate.conformance.cases.custom_constraints.FieldExpressions.Nested)
-    private static final build.buf.validate.conformance.cases.custom_constraints.FieldExpressions
-            .Nested
-        DEFAULT_INSTANCE;
-
+    private static final build.buf.validate.conformance.cases.custom_constraints.FieldExpressions.Nested DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE =
-          new build.buf.validate.conformance.cases.custom_constraints.FieldExpressions.Nested();
+      DEFAULT_INSTANCE = new build.buf.validate.conformance.cases.custom_constraints.FieldExpressions.Nested();
     }
 
-    public static build.buf.validate.conformance.cases.custom_constraints.FieldExpressions.Nested
-        getDefaultInstance() {
+    public static build.buf.validate.conformance.cases.custom_constraints.FieldExpressions.Nested getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<Nested> PARSER =
-        new com.google.protobuf.AbstractParser<Nested>() {
-          @java.lang.Override
-          public Nested parsePartialFrom(
-              com.google.protobuf.CodedInputStream input,
-              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-              throws com.google.protobuf.InvalidProtocolBufferException {
-            Builder builder = newBuilder();
-            try {
-              builder.mergeFrom(input, extensionRegistry);
-            } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-              throw e.setUnfinishedMessage(builder.buildPartial());
-            } catch (com.google.protobuf.UninitializedMessageException e) {
-              throw e.asInvalidProtocolBufferException()
-                  .setUnfinishedMessage(builder.buildPartial());
-            } catch (java.io.IOException e) {
-              throw new com.google.protobuf.InvalidProtocolBufferException(e)
-                  .setUnfinishedMessage(builder.buildPartial());
-            }
-            return builder.buildPartial();
-          }
-        };
+    private static final com.google.protobuf.Parser<Nested>
+        PARSER = new com.google.protobuf.AbstractParser<Nested>() {
+      @java.lang.Override
+      public Nested parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
+      }
+    };
 
     public static com.google.protobuf.Parser<Nested> parser() {
       return PARSER;
@@ -570,18 +509,16 @@ public final class FieldExpressions extends com.google.protobuf.GeneratedMessage
     }
 
     @java.lang.Override
-    public build.buf.validate.conformance.cases.custom_constraints.FieldExpressions.Nested
-        getDefaultInstanceForType() {
+    public build.buf.validate.conformance.cases.custom_constraints.FieldExpressions.Nested getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
+
   }
 
   public static final int A_FIELD_NUMBER = 1;
   private int a_ = 0;
-
   /**
    * <code>int32 a = 1 [json_name = "a", (.buf.validate.field) = { ... }</code>
-   *
    * @return The a.
    */
   @java.lang.Override
@@ -591,81 +528,49 @@ public final class FieldExpressions extends com.google.protobuf.GeneratedMessage
 
   public static final int B_FIELD_NUMBER = 2;
   private int b_ = 0;
-
   /**
-   * <code>
-   * .buf.validate.conformance.cases.custom_constraints.Enum b = 2 [json_name = "b", (.buf.validate.field) = { ... }
-   * </code>
-   *
+   * <code>.buf.validate.conformance.cases.custom_constraints.Enum b = 2 [json_name = "b", (.buf.validate.field) = { ... }</code>
    * @return The enum numeric value on the wire for b.
    */
-  @java.lang.Override
-  public int getBValue() {
+  @java.lang.Override public int getBValue() {
     return b_;
   }
-
   /**
-   * <code>
-   * .buf.validate.conformance.cases.custom_constraints.Enum b = 2 [json_name = "b", (.buf.validate.field) = { ... }
-   * </code>
-   *
+   * <code>.buf.validate.conformance.cases.custom_constraints.Enum b = 2 [json_name = "b", (.buf.validate.field) = { ... }</code>
    * @return The b.
    */
-  @java.lang.Override
-  public build.buf.validate.conformance.cases.custom_constraints.Enum getB() {
-    build.buf.validate.conformance.cases.custom_constraints.Enum result =
-        build.buf.validate.conformance.cases.custom_constraints.Enum.forNumber(b_);
-    return result == null
-        ? build.buf.validate.conformance.cases.custom_constraints.Enum.UNRECOGNIZED
-        : result;
+  @java.lang.Override public build.buf.validate.conformance.cases.custom_constraints.Enum getB() {
+    build.buf.validate.conformance.cases.custom_constraints.Enum result = build.buf.validate.conformance.cases.custom_constraints.Enum.forNumber(b_);
+    return result == null ? build.buf.validate.conformance.cases.custom_constraints.Enum.UNRECOGNIZED : result;
   }
 
   public static final int C_FIELD_NUMBER = 3;
   private build.buf.validate.conformance.cases.custom_constraints.FieldExpressions.Nested c_;
-
   /**
-   * <code>
-   * .buf.validate.conformance.cases.custom_constraints.FieldExpressions.Nested c = 3 [json_name = "c", (.buf.validate.field) = { ... }
-   * </code>
-   *
+   * <code>.buf.validate.conformance.cases.custom_constraints.FieldExpressions.Nested c = 3 [json_name = "c", (.buf.validate.field) = { ... }</code>
    * @return Whether the c field is set.
    */
   @java.lang.Override
   public boolean hasC() {
     return c_ != null;
   }
-
   /**
-   * <code>
-   * .buf.validate.conformance.cases.custom_constraints.FieldExpressions.Nested c = 3 [json_name = "c", (.buf.validate.field) = { ... }
-   * </code>
-   *
+   * <code>.buf.validate.conformance.cases.custom_constraints.FieldExpressions.Nested c = 3 [json_name = "c", (.buf.validate.field) = { ... }</code>
    * @return The c.
    */
   @java.lang.Override
   public build.buf.validate.conformance.cases.custom_constraints.FieldExpressions.Nested getC() {
-    return c_ == null
-        ? build.buf.validate.conformance.cases.custom_constraints.FieldExpressions.Nested
-            .getDefaultInstance()
-        : c_;
+    return c_ == null ? build.buf.validate.conformance.cases.custom_constraints.FieldExpressions.Nested.getDefaultInstance() : c_;
   }
-
   /**
-   * <code>
-   * .buf.validate.conformance.cases.custom_constraints.FieldExpressions.Nested c = 3 [json_name = "c", (.buf.validate.field) = { ... }
-   * </code>
+   * <code>.buf.validate.conformance.cases.custom_constraints.FieldExpressions.Nested c = 3 [json_name = "c", (.buf.validate.field) = { ... }</code>
    */
   @java.lang.Override
-  public build.buf.validate.conformance.cases.custom_constraints.FieldExpressions.NestedOrBuilder
-      getCOrBuilder() {
-    return c_ == null
-        ? build.buf.validate.conformance.cases.custom_constraints.FieldExpressions.Nested
-            .getDefaultInstance()
-        : c_;
+  public build.buf.validate.conformance.cases.custom_constraints.FieldExpressions.NestedOrBuilder getCOrBuilder() {
+    return c_ == null ? build.buf.validate.conformance.cases.custom_constraints.FieldExpressions.Nested.getDefaultInstance() : c_;
   }
 
   private byte memoizedIsInitialized = -1;
-
   @java.lang.Override
   public final boolean isInitialized() {
     byte isInitialized = memoizedIsInitialized;
@@ -677,13 +582,12 @@ public final class FieldExpressions extends com.google.protobuf.GeneratedMessage
   }
 
   @java.lang.Override
-  public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
+  public void writeTo(com.google.protobuf.CodedOutputStream output)
+                      throws java.io.IOException {
     if (a_ != 0) {
       output.writeInt32(1, a_);
     }
-    if (b_
-        != build.buf.validate.conformance.cases.custom_constraints.Enum.ENUM_UNSPECIFIED
-            .getNumber()) {
+    if (b_ != build.buf.validate.conformance.cases.custom_constraints.Enum.ENUM_UNSPECIFIED.getNumber()) {
       output.writeEnum(2, b_);
     }
     if (c_ != null) {
@@ -699,15 +603,16 @@ public final class FieldExpressions extends com.google.protobuf.GeneratedMessage
 
     size = 0;
     if (a_ != 0) {
-      size += com.google.protobuf.CodedOutputStream.computeInt32Size(1, a_);
+      size += com.google.protobuf.CodedOutputStream
+        .computeInt32Size(1, a_);
     }
-    if (b_
-        != build.buf.validate.conformance.cases.custom_constraints.Enum.ENUM_UNSPECIFIED
-            .getNumber()) {
-      size += com.google.protobuf.CodedOutputStream.computeEnumSize(2, b_);
+    if (b_ != build.buf.validate.conformance.cases.custom_constraints.Enum.ENUM_UNSPECIFIED.getNumber()) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeEnumSize(2, b_);
     }
     if (c_ != null) {
-      size += com.google.protobuf.CodedOutputStream.computeMessageSize(3, getC());
+      size += com.google.protobuf.CodedOutputStream
+        .computeMessageSize(3, getC());
     }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
@@ -717,20 +622,20 @@ public final class FieldExpressions extends com.google.protobuf.GeneratedMessage
   @java.lang.Override
   public boolean equals(final java.lang.Object obj) {
     if (obj == this) {
-      return true;
+     return true;
     }
-    if (!(obj
-        instanceof build.buf.validate.conformance.cases.custom_constraints.FieldExpressions)) {
+    if (!(obj instanceof build.buf.validate.conformance.cases.custom_constraints.FieldExpressions)) {
       return super.equals(obj);
     }
-    build.buf.validate.conformance.cases.custom_constraints.FieldExpressions other =
-        (build.buf.validate.conformance.cases.custom_constraints.FieldExpressions) obj;
+    build.buf.validate.conformance.cases.custom_constraints.FieldExpressions other = (build.buf.validate.conformance.cases.custom_constraints.FieldExpressions) obj;
 
-    if (getA() != other.getA()) return false;
+    if (getA()
+        != other.getA()) return false;
     if (b_ != other.b_) return false;
     if (hasC() != other.hasC()) return false;
     if (hasC()) {
-      if (!getC().equals(other.getC())) return false;
+      if (!getC()
+          .equals(other.getC())) return false;
     }
     if (!getUnknownFields().equals(other.getUnknownFields())) return false;
     return true;
@@ -757,132 +662,127 @@ public final class FieldExpressions extends com.google.protobuf.GeneratedMessage
   }
 
   public static build.buf.validate.conformance.cases.custom_constraints.FieldExpressions parseFrom(
-      java.nio.ByteBuffer data) throws com.google.protobuf.InvalidProtocolBufferException {
+      java.nio.ByteBuffer data)
+      throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-
   public static build.buf.validate.conformance.cases.custom_constraints.FieldExpressions parseFrom(
-      java.nio.ByteBuffer data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      java.nio.ByteBuffer data,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-
   public static build.buf.validate.conformance.cases.custom_constraints.FieldExpressions parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-
   public static build.buf.validate.conformance.cases.custom_constraints.FieldExpressions parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-
-  public static build.buf.validate.conformance.cases.custom_constraints.FieldExpressions parseFrom(
-      byte[] data) throws com.google.protobuf.InvalidProtocolBufferException {
+  public static build.buf.validate.conformance.cases.custom_constraints.FieldExpressions parseFrom(byte[] data)
+      throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-
   public static build.buf.validate.conformance.cases.custom_constraints.FieldExpressions parseFrom(
-      byte[] data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      byte[] data,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-
-  public static build.buf.validate.conformance.cases.custom_constraints.FieldExpressions parseFrom(
-      java.io.InputStream input) throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
-  }
-
-  public static build.buf.validate.conformance.cases.custom_constraints.FieldExpressions parseFrom(
-      java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+  public static build.buf.validate.conformance.cases.custom_constraints.FieldExpressions parseFrom(java.io.InputStream input)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
-        PARSER, input, extensionRegistry);
+    return com.google.protobuf.GeneratedMessageV3
+        .parseWithIOException(PARSER, input);
   }
-
-  public static build.buf.validate.conformance.cases.custom_constraints.FieldExpressions
-      parseDelimitedFrom(java.io.InputStream input) throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input);
-  }
-
-  public static build.buf.validate.conformance.cases.custom_constraints.FieldExpressions
-      parseDelimitedFrom(
-          java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(
-        PARSER, input, extensionRegistry);
-  }
-
   public static build.buf.validate.conformance.cases.custom_constraints.FieldExpressions parseFrom(
-      com.google.protobuf.CodedInputStream input) throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
+      java.io.InputStream input,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3
+        .parseWithIOException(PARSER, input, extensionRegistry);
   }
 
+  public static build.buf.validate.conformance.cases.custom_constraints.FieldExpressions parseDelimitedFrom(java.io.InputStream input)
+      throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3
+        .parseDelimitedWithIOException(PARSER, input);
+  }
+
+  public static build.buf.validate.conformance.cases.custom_constraints.FieldExpressions parseDelimitedFrom(
+      java.io.InputStream input,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3
+        .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+  }
+  public static build.buf.validate.conformance.cases.custom_constraints.FieldExpressions parseFrom(
+      com.google.protobuf.CodedInputStream input)
+      throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3
+        .parseWithIOException(PARSER, input);
+  }
   public static build.buf.validate.conformance.cases.custom_constraints.FieldExpressions parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
-        PARSER, input, extensionRegistry);
+    return com.google.protobuf.GeneratedMessageV3
+        .parseWithIOException(PARSER, input, extensionRegistry);
   }
 
   @java.lang.Override
-  public Builder newBuilderForType() {
-    return newBuilder();
-  }
-
+  public Builder newBuilderForType() { return newBuilder(); }
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-
-  public static Builder newBuilder(
-      build.buf.validate.conformance.cases.custom_constraints.FieldExpressions prototype) {
+  public static Builder newBuilder(build.buf.validate.conformance.cases.custom_constraints.FieldExpressions prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
-
   @java.lang.Override
   public Builder toBuilder() {
-    return this == DEFAULT_INSTANCE ? new Builder() : new Builder().mergeFrom(this);
+    return this == DEFAULT_INSTANCE
+        ? new Builder() : new Builder().mergeFrom(this);
   }
 
   @java.lang.Override
-  protected Builder newBuilderForType(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+  protected Builder newBuilderForType(
+      com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
     Builder builder = new Builder(parent);
     return builder;
   }
-
-  /** Protobuf type {@code buf.validate.conformance.cases.custom_constraints.FieldExpressions} */
-  public static final class Builder extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
-      implements
+  /**
+   * Protobuf type {@code buf.validate.conformance.cases.custom_constraints.FieldExpressions}
+   */
+  public static final class Builder extends
+      com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
       // @@protoc_insertion_point(builder_implements:buf.validate.conformance.cases.custom_constraints.FieldExpressions)
       build.buf.validate.conformance.cases.custom_constraints.FieldExpressionsOrBuilder {
-    public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
-      return build.buf.validate.conformance.cases.custom_constraints.CustomConstraintsProto
-          .internal_static_buf_validate_conformance_cases_custom_constraints_FieldExpressions_descriptor;
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return build.buf.validate.conformance.cases.custom_constraints.CustomConstraintsProto.internal_static_buf_validate_conformance_cases_custom_constraints_FieldExpressions_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return build.buf.validate.conformance.cases.custom_constraints.CustomConstraintsProto
-          .internal_static_buf_validate_conformance_cases_custom_constraints_FieldExpressions_fieldAccessorTable
+      return build.buf.validate.conformance.cases.custom_constraints.CustomConstraintsProto.internal_static_buf_validate_conformance_cases_custom_constraints_FieldExpressions_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              build.buf.validate.conformance.cases.custom_constraints.FieldExpressions.class,
-              build.buf.validate.conformance.cases.custom_constraints.FieldExpressions.Builder
-                  .class);
+              build.buf.validate.conformance.cases.custom_constraints.FieldExpressions.class, build.buf.validate.conformance.cases.custom_constraints.FieldExpressions.Builder.class);
     }
 
-    // Construct using
-    // build.buf.validate.conformance.cases.custom_constraints.FieldExpressions.newBuilder()
-    private Builder() {}
+    // Construct using build.buf.validate.conformance.cases.custom_constraints.FieldExpressions.newBuilder()
+    private Builder() {
 
-    private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+    }
+
+    private Builder(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
       super(parent);
-    }
 
+    }
     @java.lang.Override
     public Builder clear() {
       super.clear();
@@ -898,22 +798,19 @@ public final class FieldExpressions extends com.google.protobuf.GeneratedMessage
     }
 
     @java.lang.Override
-    public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
-      return build.buf.validate.conformance.cases.custom_constraints.CustomConstraintsProto
-          .internal_static_buf_validate_conformance_cases_custom_constraints_FieldExpressions_descriptor;
+    public com.google.protobuf.Descriptors.Descriptor
+        getDescriptorForType() {
+      return build.buf.validate.conformance.cases.custom_constraints.CustomConstraintsProto.internal_static_buf_validate_conformance_cases_custom_constraints_FieldExpressions_descriptor;
     }
 
     @java.lang.Override
-    public build.buf.validate.conformance.cases.custom_constraints.FieldExpressions
-        getDefaultInstanceForType() {
-      return build.buf.validate.conformance.cases.custom_constraints.FieldExpressions
-          .getDefaultInstance();
+    public build.buf.validate.conformance.cases.custom_constraints.FieldExpressions getDefaultInstanceForType() {
+      return build.buf.validate.conformance.cases.custom_constraints.FieldExpressions.getDefaultInstance();
     }
 
     @java.lang.Override
     public build.buf.validate.conformance.cases.custom_constraints.FieldExpressions build() {
-      build.buf.validate.conformance.cases.custom_constraints.FieldExpressions result =
-          buildPartial();
+      build.buf.validate.conformance.cases.custom_constraints.FieldExpressions result = buildPartial();
       if (!result.isInitialized()) {
         throw newUninitializedMessageException(result);
       }
@@ -922,17 +819,13 @@ public final class FieldExpressions extends com.google.protobuf.GeneratedMessage
 
     @java.lang.Override
     public build.buf.validate.conformance.cases.custom_constraints.FieldExpressions buildPartial() {
-      build.buf.validate.conformance.cases.custom_constraints.FieldExpressions result =
-          new build.buf.validate.conformance.cases.custom_constraints.FieldExpressions(this);
-      if (bitField0_ != 0) {
-        buildPartial0(result);
-      }
+      build.buf.validate.conformance.cases.custom_constraints.FieldExpressions result = new build.buf.validate.conformance.cases.custom_constraints.FieldExpressions(this);
+      if (bitField0_ != 0) { buildPartial0(result); }
       onBuilt();
       return result;
     }
 
-    private void buildPartial0(
-        build.buf.validate.conformance.cases.custom_constraints.FieldExpressions result) {
+    private void buildPartial0(build.buf.validate.conformance.cases.custom_constraints.FieldExpressions result) {
       int from_bitField0_ = bitField0_;
       if (((from_bitField0_ & 0x00000001) != 0)) {
         result.a_ = a_;
@@ -941,7 +834,9 @@ public final class FieldExpressions extends com.google.protobuf.GeneratedMessage
         result.b_ = b_;
       }
       if (((from_bitField0_ & 0x00000004) != 0)) {
-        result.c_ = cBuilder_ == null ? c_ : cBuilder_.build();
+        result.c_ = cBuilder_ == null
+            ? c_
+            : cBuilder_.build();
       }
     }
 
@@ -949,52 +844,46 @@ public final class FieldExpressions extends com.google.protobuf.GeneratedMessage
     public Builder clone() {
       return super.clone();
     }
-
     @java.lang.Override
     public Builder setField(
-        com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field,
+        java.lang.Object value) {
       return super.setField(field, value);
     }
-
     @java.lang.Override
-    public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
+    public Builder clearField(
+        com.google.protobuf.Descriptors.FieldDescriptor field) {
       return super.clearField(field);
     }
-
     @java.lang.Override
-    public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+    public Builder clearOneof(
+        com.google.protobuf.Descriptors.OneofDescriptor oneof) {
       return super.clearOneof(oneof);
     }
-
     @java.lang.Override
     public Builder setRepeatedField(
-        com.google.protobuf.Descriptors.FieldDescriptor field, int index, java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field,
+        int index, java.lang.Object value) {
       return super.setRepeatedField(field, index, value);
     }
-
     @java.lang.Override
     public Builder addRepeatedField(
-        com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field,
+        java.lang.Object value) {
       return super.addRepeatedField(field, value);
     }
-
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
-      if (other
-          instanceof build.buf.validate.conformance.cases.custom_constraints.FieldExpressions) {
-        return mergeFrom(
-            (build.buf.validate.conformance.cases.custom_constraints.FieldExpressions) other);
+      if (other instanceof build.buf.validate.conformance.cases.custom_constraints.FieldExpressions) {
+        return mergeFrom((build.buf.validate.conformance.cases.custom_constraints.FieldExpressions)other);
       } else {
         super.mergeFrom(other);
         return this;
       }
     }
 
-    public Builder mergeFrom(
-        build.buf.validate.conformance.cases.custom_constraints.FieldExpressions other) {
-      if (other
-          == build.buf.validate.conformance.cases.custom_constraints.FieldExpressions
-              .getDefaultInstance()) return this;
+    public Builder mergeFrom(build.buf.validate.conformance.cases.custom_constraints.FieldExpressions other) {
+      if (other == build.buf.validate.conformance.cases.custom_constraints.FieldExpressions.getDefaultInstance()) return this;
       if (other.getA() != 0) {
         setA(other.getA());
       }
@@ -1030,31 +919,29 @@ public final class FieldExpressions extends com.google.protobuf.GeneratedMessage
             case 0:
               done = true;
               break;
-            case 8:
-              {
-                a_ = input.readInt32();
-                bitField0_ |= 0x00000001;
-                break;
-              } // case 8
-            case 16:
-              {
-                b_ = input.readEnum();
-                bitField0_ |= 0x00000002;
-                break;
-              } // case 16
-            case 26:
-              {
-                input.readMessage(getCFieldBuilder().getBuilder(), extensionRegistry);
-                bitField0_ |= 0x00000004;
-                break;
-              } // case 26
-            default:
-              {
-                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
-                  done = true; // was an endgroup tag
-                }
-                break;
-              } // default:
+            case 8: {
+              a_ = input.readInt32();
+              bitField0_ |= 0x00000001;
+              break;
+            } // case 8
+            case 16: {
+              b_ = input.readEnum();
+              bitField0_ |= 0x00000002;
+              break;
+            } // case 16
+            case 26: {
+              input.readMessage(
+                  getCFieldBuilder().getBuilder(),
+                  extensionRegistry);
+              bitField0_ |= 0x00000004;
+              break;
+            } // case 26
+            default: {
+              if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                done = true; // was an endgroup tag
+              }
+              break;
+            } // default:
           } // switch (tag)
         } // while (!done)
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -1064,24 +951,19 @@ public final class FieldExpressions extends com.google.protobuf.GeneratedMessage
       } // finally
       return this;
     }
-
     private int bitField0_;
 
-    private int a_;
-
+    private int a_ ;
     /**
      * <code>int32 a = 1 [json_name = "a", (.buf.validate.field) = { ... }</code>
-     *
      * @return The a.
      */
     @java.lang.Override
     public int getA() {
       return a_;
     }
-
     /**
      * <code>int32 a = 1 [json_name = "a", (.buf.validate.field) = { ... }</code>
-     *
      * @param value The a to set.
      * @return This builder for chaining.
      */
@@ -1092,10 +974,8 @@ public final class FieldExpressions extends com.google.protobuf.GeneratedMessage
       onChanged();
       return this;
     }
-
     /**
      * <code>int32 a = 1 [json_name = "a", (.buf.validate.field) = { ... }</code>
-     *
      * @return This builder for chaining.
      */
     public Builder clearA() {
@@ -1106,24 +986,15 @@ public final class FieldExpressions extends com.google.protobuf.GeneratedMessage
     }
 
     private int b_ = 0;
-
     /**
-     * <code>
-     * .buf.validate.conformance.cases.custom_constraints.Enum b = 2 [json_name = "b", (.buf.validate.field) = { ... }
-     * </code>
-     *
+     * <code>.buf.validate.conformance.cases.custom_constraints.Enum b = 2 [json_name = "b", (.buf.validate.field) = { ... }</code>
      * @return The enum numeric value on the wire for b.
      */
-    @java.lang.Override
-    public int getBValue() {
+    @java.lang.Override public int getBValue() {
       return b_;
     }
-
     /**
-     * <code>
-     * .buf.validate.conformance.cases.custom_constraints.Enum b = 2 [json_name = "b", (.buf.validate.field) = { ... }
-     * </code>
-     *
+     * <code>.buf.validate.conformance.cases.custom_constraints.Enum b = 2 [json_name = "b", (.buf.validate.field) = { ... }</code>
      * @param value The enum numeric value on the wire for b to set.
      * @return This builder for chaining.
      */
@@ -1133,28 +1004,17 @@ public final class FieldExpressions extends com.google.protobuf.GeneratedMessage
       onChanged();
       return this;
     }
-
     /**
-     * <code>
-     * .buf.validate.conformance.cases.custom_constraints.Enum b = 2 [json_name = "b", (.buf.validate.field) = { ... }
-     * </code>
-     *
+     * <code>.buf.validate.conformance.cases.custom_constraints.Enum b = 2 [json_name = "b", (.buf.validate.field) = { ... }</code>
      * @return The b.
      */
     @java.lang.Override
     public build.buf.validate.conformance.cases.custom_constraints.Enum getB() {
-      build.buf.validate.conformance.cases.custom_constraints.Enum result =
-          build.buf.validate.conformance.cases.custom_constraints.Enum.forNumber(b_);
-      return result == null
-          ? build.buf.validate.conformance.cases.custom_constraints.Enum.UNRECOGNIZED
-          : result;
+      build.buf.validate.conformance.cases.custom_constraints.Enum result = build.buf.validate.conformance.cases.custom_constraints.Enum.forNumber(b_);
+      return result == null ? build.buf.validate.conformance.cases.custom_constraints.Enum.UNRECOGNIZED : result;
     }
-
     /**
-     * <code>
-     * .buf.validate.conformance.cases.custom_constraints.Enum b = 2 [json_name = "b", (.buf.validate.field) = { ... }
-     * </code>
-     *
+     * <code>.buf.validate.conformance.cases.custom_constraints.Enum b = 2 [json_name = "b", (.buf.validate.field) = { ... }</code>
      * @param value The b to set.
      * @return This builder for chaining.
      */
@@ -1167,12 +1027,8 @@ public final class FieldExpressions extends com.google.protobuf.GeneratedMessage
       onChanged();
       return this;
     }
-
     /**
-     * <code>
-     * .buf.validate.conformance.cases.custom_constraints.Enum b = 2 [json_name = "b", (.buf.validate.field) = { ... }
-     * </code>
-     *
+     * <code>.buf.validate.conformance.cases.custom_constraints.Enum b = 2 [json_name = "b", (.buf.validate.field) = { ... }</code>
      * @return This builder for chaining.
      */
     public Builder clearB() {
@@ -1184,48 +1040,29 @@ public final class FieldExpressions extends com.google.protobuf.GeneratedMessage
 
     private build.buf.validate.conformance.cases.custom_constraints.FieldExpressions.Nested c_;
     private com.google.protobuf.SingleFieldBuilderV3<
-            build.buf.validate.conformance.cases.custom_constraints.FieldExpressions.Nested,
-            build.buf.validate.conformance.cases.custom_constraints.FieldExpressions.Nested.Builder,
-            build.buf.validate.conformance.cases.custom_constraints.FieldExpressions
-                .NestedOrBuilder>
-        cBuilder_;
-
+        build.buf.validate.conformance.cases.custom_constraints.FieldExpressions.Nested, build.buf.validate.conformance.cases.custom_constraints.FieldExpressions.Nested.Builder, build.buf.validate.conformance.cases.custom_constraints.FieldExpressions.NestedOrBuilder> cBuilder_;
     /**
-     * <code>
-     * .buf.validate.conformance.cases.custom_constraints.FieldExpressions.Nested c = 3 [json_name = "c", (.buf.validate.field) = { ... }
-     * </code>
-     *
+     * <code>.buf.validate.conformance.cases.custom_constraints.FieldExpressions.Nested c = 3 [json_name = "c", (.buf.validate.field) = { ... }</code>
      * @return Whether the c field is set.
      */
     public boolean hasC() {
       return ((bitField0_ & 0x00000004) != 0);
     }
-
     /**
-     * <code>
-     * .buf.validate.conformance.cases.custom_constraints.FieldExpressions.Nested c = 3 [json_name = "c", (.buf.validate.field) = { ... }
-     * </code>
-     *
+     * <code>.buf.validate.conformance.cases.custom_constraints.FieldExpressions.Nested c = 3 [json_name = "c", (.buf.validate.field) = { ... }</code>
      * @return The c.
      */
     public build.buf.validate.conformance.cases.custom_constraints.FieldExpressions.Nested getC() {
       if (cBuilder_ == null) {
-        return c_ == null
-            ? build.buf.validate.conformance.cases.custom_constraints.FieldExpressions.Nested
-                .getDefaultInstance()
-            : c_;
+        return c_ == null ? build.buf.validate.conformance.cases.custom_constraints.FieldExpressions.Nested.getDefaultInstance() : c_;
       } else {
         return cBuilder_.getMessage();
       }
     }
-
     /**
-     * <code>
-     * .buf.validate.conformance.cases.custom_constraints.FieldExpressions.Nested c = 3 [json_name = "c", (.buf.validate.field) = { ... }
-     * </code>
+     * <code>.buf.validate.conformance.cases.custom_constraints.FieldExpressions.Nested c = 3 [json_name = "c", (.buf.validate.field) = { ... }</code>
      */
-    public Builder setC(
-        build.buf.validate.conformance.cases.custom_constraints.FieldExpressions.Nested value) {
+    public Builder setC(build.buf.validate.conformance.cases.custom_constraints.FieldExpressions.Nested value) {
       if (cBuilder_ == null) {
         if (value == null) {
           throw new NullPointerException();
@@ -1238,15 +1075,11 @@ public final class FieldExpressions extends com.google.protobuf.GeneratedMessage
       onChanged();
       return this;
     }
-
     /**
-     * <code>
-     * .buf.validate.conformance.cases.custom_constraints.FieldExpressions.Nested c = 3 [json_name = "c", (.buf.validate.field) = { ... }
-     * </code>
+     * <code>.buf.validate.conformance.cases.custom_constraints.FieldExpressions.Nested c = 3 [json_name = "c", (.buf.validate.field) = { ... }</code>
      */
     public Builder setC(
-        build.buf.validate.conformance.cases.custom_constraints.FieldExpressions.Nested.Builder
-            builderForValue) {
+        build.buf.validate.conformance.cases.custom_constraints.FieldExpressions.Nested.Builder builderForValue) {
       if (cBuilder_ == null) {
         c_ = builderForValue.build();
       } else {
@@ -1256,20 +1089,14 @@ public final class FieldExpressions extends com.google.protobuf.GeneratedMessage
       onChanged();
       return this;
     }
-
     /**
-     * <code>
-     * .buf.validate.conformance.cases.custom_constraints.FieldExpressions.Nested c = 3 [json_name = "c", (.buf.validate.field) = { ... }
-     * </code>
+     * <code>.buf.validate.conformance.cases.custom_constraints.FieldExpressions.Nested c = 3 [json_name = "c", (.buf.validate.field) = { ... }</code>
      */
-    public Builder mergeC(
-        build.buf.validate.conformance.cases.custom_constraints.FieldExpressions.Nested value) {
+    public Builder mergeC(build.buf.validate.conformance.cases.custom_constraints.FieldExpressions.Nested value) {
       if (cBuilder_ == null) {
-        if (((bitField0_ & 0x00000004) != 0)
-            && c_ != null
-            && c_
-                != build.buf.validate.conformance.cases.custom_constraints.FieldExpressions.Nested
-                    .getDefaultInstance()) {
+        if (((bitField0_ & 0x00000004) != 0) &&
+          c_ != null &&
+          c_ != build.buf.validate.conformance.cases.custom_constraints.FieldExpressions.Nested.getDefaultInstance()) {
           getCBuilder().mergeFrom(value);
         } else {
           c_ = value;
@@ -1281,11 +1108,8 @@ public final class FieldExpressions extends com.google.protobuf.GeneratedMessage
       onChanged();
       return this;
     }
-
     /**
-     * <code>
-     * .buf.validate.conformance.cases.custom_constraints.FieldExpressions.Nested c = 3 [json_name = "c", (.buf.validate.field) = { ... }
-     * </code>
+     * <code>.buf.validate.conformance.cases.custom_constraints.FieldExpressions.Nested c = 3 [json_name = "c", (.buf.validate.field) = { ... }</code>
      */
     public Builder clearC() {
       bitField0_ = (bitField0_ & ~0x00000004);
@@ -1297,62 +1121,44 @@ public final class FieldExpressions extends com.google.protobuf.GeneratedMessage
       onChanged();
       return this;
     }
-
     /**
-     * <code>
-     * .buf.validate.conformance.cases.custom_constraints.FieldExpressions.Nested c = 3 [json_name = "c", (.buf.validate.field) = { ... }
-     * </code>
+     * <code>.buf.validate.conformance.cases.custom_constraints.FieldExpressions.Nested c = 3 [json_name = "c", (.buf.validate.field) = { ... }</code>
      */
-    public build.buf.validate.conformance.cases.custom_constraints.FieldExpressions.Nested.Builder
-        getCBuilder() {
+    public build.buf.validate.conformance.cases.custom_constraints.FieldExpressions.Nested.Builder getCBuilder() {
       bitField0_ |= 0x00000004;
       onChanged();
       return getCFieldBuilder().getBuilder();
     }
-
     /**
-     * <code>
-     * .buf.validate.conformance.cases.custom_constraints.FieldExpressions.Nested c = 3 [json_name = "c", (.buf.validate.field) = { ... }
-     * </code>
+     * <code>.buf.validate.conformance.cases.custom_constraints.FieldExpressions.Nested c = 3 [json_name = "c", (.buf.validate.field) = { ... }</code>
      */
-    public build.buf.validate.conformance.cases.custom_constraints.FieldExpressions.NestedOrBuilder
-        getCOrBuilder() {
+    public build.buf.validate.conformance.cases.custom_constraints.FieldExpressions.NestedOrBuilder getCOrBuilder() {
       if (cBuilder_ != null) {
         return cBuilder_.getMessageOrBuilder();
       } else {
-        return c_ == null
-            ? build.buf.validate.conformance.cases.custom_constraints.FieldExpressions.Nested
-                .getDefaultInstance()
-            : c_;
+        return c_ == null ?
+            build.buf.validate.conformance.cases.custom_constraints.FieldExpressions.Nested.getDefaultInstance() : c_;
       }
     }
-
     /**
-     * <code>
-     * .buf.validate.conformance.cases.custom_constraints.FieldExpressions.Nested c = 3 [json_name = "c", (.buf.validate.field) = { ... }
-     * </code>
+     * <code>.buf.validate.conformance.cases.custom_constraints.FieldExpressions.Nested c = 3 [json_name = "c", (.buf.validate.field) = { ... }</code>
      */
     private com.google.protobuf.SingleFieldBuilderV3<
-            build.buf.validate.conformance.cases.custom_constraints.FieldExpressions.Nested,
-            build.buf.validate.conformance.cases.custom_constraints.FieldExpressions.Nested.Builder,
-            build.buf.validate.conformance.cases.custom_constraints.FieldExpressions
-                .NestedOrBuilder>
+        build.buf.validate.conformance.cases.custom_constraints.FieldExpressions.Nested, build.buf.validate.conformance.cases.custom_constraints.FieldExpressions.Nested.Builder, build.buf.validate.conformance.cases.custom_constraints.FieldExpressions.NestedOrBuilder> 
         getCFieldBuilder() {
       if (cBuilder_ == null) {
-        cBuilder_ =
-            new com.google.protobuf.SingleFieldBuilderV3<
-                build.buf.validate.conformance.cases.custom_constraints.FieldExpressions.Nested,
-                build.buf.validate.conformance.cases.custom_constraints.FieldExpressions.Nested
-                    .Builder,
-                build.buf.validate.conformance.cases.custom_constraints.FieldExpressions
-                    .NestedOrBuilder>(getC(), getParentForChildren(), isClean());
+        cBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+            build.buf.validate.conformance.cases.custom_constraints.FieldExpressions.Nested, build.buf.validate.conformance.cases.custom_constraints.FieldExpressions.Nested.Builder, build.buf.validate.conformance.cases.custom_constraints.FieldExpressions.NestedOrBuilder>(
+                getC(),
+                getParentForChildren(),
+                isClean());
         c_ = null;
       }
       return cBuilder_;
     }
-
     @java.lang.Override
-    public final Builder setUnknownFields(final com.google.protobuf.UnknownFieldSet unknownFields) {
+    public final Builder setUnknownFields(
+        final com.google.protobuf.UnknownFieldSet unknownFields) {
       return super.setUnknownFields(unknownFields);
     }
 
@@ -1362,44 +1168,41 @@ public final class FieldExpressions extends com.google.protobuf.GeneratedMessage
       return super.mergeUnknownFields(unknownFields);
     }
 
+
     // @@protoc_insertion_point(builder_scope:buf.validate.conformance.cases.custom_constraints.FieldExpressions)
   }
 
   // @@protoc_insertion_point(class_scope:buf.validate.conformance.cases.custom_constraints.FieldExpressions)
-  private static final build.buf.validate.conformance.cases.custom_constraints.FieldExpressions
-      DEFAULT_INSTANCE;
-
+  private static final build.buf.validate.conformance.cases.custom_constraints.FieldExpressions DEFAULT_INSTANCE;
   static {
-    DEFAULT_INSTANCE =
-        new build.buf.validate.conformance.cases.custom_constraints.FieldExpressions();
+    DEFAULT_INSTANCE = new build.buf.validate.conformance.cases.custom_constraints.FieldExpressions();
   }
 
-  public static build.buf.validate.conformance.cases.custom_constraints.FieldExpressions
-      getDefaultInstance() {
+  public static build.buf.validate.conformance.cases.custom_constraints.FieldExpressions getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<FieldExpressions> PARSER =
-      new com.google.protobuf.AbstractParser<FieldExpressions>() {
-        @java.lang.Override
-        public FieldExpressions parsePartialFrom(
-            com.google.protobuf.CodedInputStream input,
-            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-            throws com.google.protobuf.InvalidProtocolBufferException {
-          Builder builder = newBuilder();
-          try {
-            builder.mergeFrom(input, extensionRegistry);
-          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-            throw e.setUnfinishedMessage(builder.buildPartial());
-          } catch (com.google.protobuf.UninitializedMessageException e) {
-            throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
-          } catch (java.io.IOException e) {
-            throw new com.google.protobuf.InvalidProtocolBufferException(e)
-                .setUnfinishedMessage(builder.buildPartial());
-          }
-          return builder.buildPartial();
-        }
-      };
+  private static final com.google.protobuf.Parser<FieldExpressions>
+      PARSER = new com.google.protobuf.AbstractParser<FieldExpressions>() {
+    @java.lang.Override
+    public FieldExpressions parsePartialFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      Builder builder = newBuilder();
+      try {
+        builder.mergeFrom(input, extensionRegistry);
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(builder.buildPartial());
+      } catch (com.google.protobuf.UninitializedMessageException e) {
+        throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(e)
+            .setUnfinishedMessage(builder.buildPartial());
+      }
+      return builder.buildPartial();
+    }
+  };
 
   public static com.google.protobuf.Parser<FieldExpressions> parser() {
     return PARSER;
@@ -1411,8 +1214,9 @@ public final class FieldExpressions extends com.google.protobuf.GeneratedMessage
   }
 
   @java.lang.Override
-  public build.buf.validate.conformance.cases.custom_constraints.FieldExpressions
-      getDefaultInstanceForType() {
+  public build.buf.validate.conformance.cases.custom_constraints.FieldExpressions getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
+
 }
+

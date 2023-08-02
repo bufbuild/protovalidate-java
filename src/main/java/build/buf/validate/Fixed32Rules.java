@@ -4,25 +4,21 @@
 package build.buf.validate;
 
 /**
- *
- *
  * <pre>
  * Fixed32Rules describes the constraints applied to `fixed32` values.
  * </pre>
  *
  * Protobuf type {@code buf.validate.Fixed32Rules}
  */
-public final class Fixed32Rules extends com.google.protobuf.GeneratedMessageV3
-    implements
+public final class Fixed32Rules extends
+    com.google.protobuf.GeneratedMessageV3 implements
     // @@protoc_insertion_point(message_implements:buf.validate.Fixed32Rules)
     Fixed32RulesOrBuilder {
-  private static final long serialVersionUID = 0L;
-
+private static final long serialVersionUID = 0L;
   // Use Fixed32Rules.newBuilder() to construct.
   private Fixed32Rules(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
-
   private Fixed32Rules() {
     in_ = emptyIntList();
     notIn_ = emptyIntList();
@@ -30,19 +26,20 @@ public final class Fixed32Rules extends com.google.protobuf.GeneratedMessageV3
 
   @java.lang.Override
   @SuppressWarnings({"unused"})
-  protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
+  protected java.lang.Object newInstance(
+      UnusedPrivateParameter unused) {
     return new Fixed32Rules();
   }
 
-  public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+  public static final com.google.protobuf.Descriptors.Descriptor
+      getDescriptor() {
     return build.buf.validate.ValidateProto.internal_static_buf_validate_Fixed32Rules_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return build.buf.validate.ValidateProto
-        .internal_static_buf_validate_Fixed32Rules_fieldAccessorTable
+    return build.buf.validate.ValidateProto.internal_static_buf_validate_Fixed32Rules_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
             build.buf.validate.Fixed32Rules.class, build.buf.validate.Fixed32Rules.Builder.class);
   }
@@ -50,50 +47,40 @@ public final class Fixed32Rules extends com.google.protobuf.GeneratedMessageV3
   private int bitField0_;
   public static final int CONST_FIELD_NUMBER = 1;
   private int const_ = 0;
-
   /**
-   *
-   *
    * <pre>
-   * `const` requires the field value to exactly match the specified value.
+   *`const` requires the field value to exactly match the specified value.
    * If the field value doesn't match, an error message is generated.
    *
-   * ```proto
-   * message MyFixed32 {
+   *```proto
+   *message MyFixed32 {
    *  // value must equal 42
    *   fixed32 value = 1 [(buf.validate.field).fixed32.const = 42];
-   * }
-   * ```
+   *}
+   *```
    * </pre>
    *
-   * <code>optional fixed32 const = 1 [json_name = "const", (.buf.validate.priv.field) = { ... }
-   * </code>
-   *
+   * <code>optional fixed32 const = 1 [json_name = "const", (.buf.validate.priv.field) = { ... }</code>
    * @return Whether the const field is set.
    */
   @java.lang.Override
   public boolean hasConst() {
     return ((bitField0_ & 0x00000001) != 0);
   }
-
   /**
-   *
-   *
    * <pre>
-   * `const` requires the field value to exactly match the specified value.
+   *`const` requires the field value to exactly match the specified value.
    * If the field value doesn't match, an error message is generated.
    *
-   * ```proto
-   * message MyFixed32 {
+   *```proto
+   *message MyFixed32 {
    *  // value must equal 42
    *   fixed32 value = 1 [(buf.validate.field).fixed32.const = 42];
-   * }
-   * ```
+   *}
+   *```
    * </pre>
    *
-   * <code>optional fixed32 const = 1 [json_name = "const", (.buf.validate.priv.field) = { ... }
-   * </code>
-   *
+   * <code>optional fixed32 const = 1 [json_name = "const", (.buf.validate.priv.field) = { ... }</code>
    * @return The const.
    */
   @java.lang.Override
@@ -103,50 +90,42 @@ public final class Fixed32Rules extends com.google.protobuf.GeneratedMessageV3
 
   public static final int LT_FIELD_NUMBER = 2;
   private int lt_ = 0;
-
   /**
-   *
-   *
    * <pre>
-   * `lt` requires the field value to be less than the specified value (field &lt;
+   *`lt` requires the field value to be less than the specified value (field &lt;
    * value). If the field value is equal to or greater than the specified value,
    * an error message is generated.
    *
-   * ```proto
-   * message MyFixed32 {
+   *```proto
+   *message MyFixed32 {
    *  // value must be less than 10
    *   fixed32 value = 1 [(buf.validate.field).fixed32.lt = 10];
-   * }
-   * ```
+   *}
+   *```
    * </pre>
    *
    * <code>optional fixed32 lt = 2 [json_name = "lt", (.buf.validate.priv.field) = { ... }</code>
-   *
    * @return Whether the lt field is set.
    */
   @java.lang.Override
   public boolean hasLt() {
     return ((bitField0_ & 0x00000002) != 0);
   }
-
   /**
-   *
-   *
    * <pre>
-   * `lt` requires the field value to be less than the specified value (field &lt;
+   *`lt` requires the field value to be less than the specified value (field &lt;
    * value). If the field value is equal to or greater than the specified value,
    * an error message is generated.
    *
-   * ```proto
-   * message MyFixed32 {
+   *```proto
+   *message MyFixed32 {
    *  // value must be less than 10
    *   fixed32 value = 1 [(buf.validate.field).fixed32.lt = 10];
-   * }
-   * ```
+   *}
+   *```
    * </pre>
    *
    * <code>optional fixed32 lt = 2 [json_name = "lt", (.buf.validate.priv.field) = { ... }</code>
-   *
    * @return The lt.
    */
   @java.lang.Override
@@ -156,50 +135,42 @@ public final class Fixed32Rules extends com.google.protobuf.GeneratedMessageV3
 
   public static final int LTE_FIELD_NUMBER = 3;
   private int lte_ = 0;
-
   /**
-   *
-   *
    * <pre>
-   * `lte` requires the field value to be less than or equal to the specified
+   *`lte` requires the field value to be less than or equal to the specified
    * value (field &lt;= value). If the field value is greater than the specified
    * value, an error message is generated.
    *
-   * ```proto
-   * message MyFixed32 {
+   *```proto
+   *message MyFixed32 {
    *  // value must be less than or equal to 10
    *   fixed32 value = 1 [(buf.validate.field).fixed32.lte = 10];
-   * }
-   * ```
+   *}
+   *```
    * </pre>
    *
    * <code>optional fixed32 lte = 3 [json_name = "lte", (.buf.validate.priv.field) = { ... }</code>
-   *
    * @return Whether the lte field is set.
    */
   @java.lang.Override
   public boolean hasLte() {
     return ((bitField0_ & 0x00000004) != 0);
   }
-
   /**
-   *
-   *
    * <pre>
-   * `lte` requires the field value to be less than or equal to the specified
+   *`lte` requires the field value to be less than or equal to the specified
    * value (field &lt;= value). If the field value is greater than the specified
    * value, an error message is generated.
    *
-   * ```proto
-   * message MyFixed32 {
+   *```proto
+   *message MyFixed32 {
    *  // value must be less than or equal to 10
    *   fixed32 value = 1 [(buf.validate.field).fixed32.lte = 10];
-   * }
-   * ```
+   *}
+   *```
    * </pre>
    *
    * <code>optional fixed32 lte = 3 [json_name = "lte", (.buf.validate.priv.field) = { ... }</code>
-   *
    * @return The lte.
    */
   @java.lang.Override
@@ -209,19 +180,16 @@ public final class Fixed32Rules extends com.google.protobuf.GeneratedMessageV3
 
   public static final int GT_FIELD_NUMBER = 4;
   private int gt_ = 0;
-
   /**
-   *
-   *
    * <pre>
-   * `gt` requires the field value to be greater than the specified value
+   *`gt` requires the field value to be greater than the specified value
    * (exclusive). If the value of `gt` is larger than a specified `lt` or
    * `lte`, the range is reversed, and the field value must be outside the
    * specified range. If the field value doesn't meet the required conditions,
    * an error message is generated.
    *
-   * ```proto
-   * message MyFixed32 {
+   *```proto
+   *message MyFixed32 {
    *  // value must be greater than 5 [fixed32.gt]
    *  fixed32 value = 1 [(buf.validate.field).fixed32.gt = 5];
    *
@@ -230,31 +198,27 @@ public final class Fixed32Rules extends com.google.protobuf.GeneratedMessageV3
    *
    *  // value must be greater than 10 or less than 5 [fixed32.gt_lt_exclusive]
    *  fixed32 another_value = 3 [(buf.validate.field).fixed32 = { gt: 10, lt: 5 }];
-   * }
-   * ```
+   *}
+   *```
    * </pre>
    *
    * <code>optional fixed32 gt = 4 [json_name = "gt", (.buf.validate.priv.field) = { ... }</code>
-   *
    * @return Whether the gt field is set.
    */
   @java.lang.Override
   public boolean hasGt() {
     return ((bitField0_ & 0x00000008) != 0);
   }
-
   /**
-   *
-   *
    * <pre>
-   * `gt` requires the field value to be greater than the specified value
+   *`gt` requires the field value to be greater than the specified value
    * (exclusive). If the value of `gt` is larger than a specified `lt` or
    * `lte`, the range is reversed, and the field value must be outside the
    * specified range. If the field value doesn't meet the required conditions,
    * an error message is generated.
    *
-   * ```proto
-   * message MyFixed32 {
+   *```proto
+   *message MyFixed32 {
    *  // value must be greater than 5 [fixed32.gt]
    *  fixed32 value = 1 [(buf.validate.field).fixed32.gt = 5];
    *
@@ -263,12 +227,11 @@ public final class Fixed32Rules extends com.google.protobuf.GeneratedMessageV3
    *
    *  // value must be greater than 10 or less than 5 [fixed32.gt_lt_exclusive]
    *  fixed32 another_value = 3 [(buf.validate.field).fixed32 = { gt: 10, lt: 5 }];
-   * }
-   * ```
+   *}
+   *```
    * </pre>
    *
    * <code>optional fixed32 gt = 4 [json_name = "gt", (.buf.validate.priv.field) = { ... }</code>
-   *
    * @return The gt.
    */
   @java.lang.Override
@@ -278,19 +241,16 @@ public final class Fixed32Rules extends com.google.protobuf.GeneratedMessageV3
 
   public static final int GTE_FIELD_NUMBER = 5;
   private int gte_ = 0;
-
   /**
-   *
-   *
    * <pre>
-   * `gte` requires the field value to be greater than or equal to the specified
+   *`gte` requires the field value to be greater than or equal to the specified
    * value (exclusive). If the value of `gte` is larger than a specified `lt`
    * or `lte`, the range is reversed, and the field value must be outside the
    * specified range. If the field value doesn't meet the required conditions,
    * an error message is generated.
    *
-   * ```proto
-   * message MyFixed32 {
+   *```proto
+   *message MyFixed32 {
    *  // value must be greater than or equal to 5 [fixed32.gte]
    *  fixed32 value = 1 [(buf.validate.field).fixed32.gte = 5];
    *
@@ -299,31 +259,27 @@ public final class Fixed32Rules extends com.google.protobuf.GeneratedMessageV3
    *
    *  // value must be greater than or equal to 10 or less than 5 [fixed32.gte_lt_exclusive]
    *  fixed32 another_value = 3 [(buf.validate.field).fixed32 = { gte: 10, lt: 5 }];
-   * }
-   * ```
+   *}
+   *```
    * </pre>
    *
    * <code>optional fixed32 gte = 5 [json_name = "gte", (.buf.validate.priv.field) = { ... }</code>
-   *
    * @return Whether the gte field is set.
    */
   @java.lang.Override
   public boolean hasGte() {
     return ((bitField0_ & 0x00000010) != 0);
   }
-
   /**
-   *
-   *
    * <pre>
-   * `gte` requires the field value to be greater than or equal to the specified
+   *`gte` requires the field value to be greater than or equal to the specified
    * value (exclusive). If the value of `gte` is larger than a specified `lt`
    * or `lte`, the range is reversed, and the field value must be outside the
    * specified range. If the field value doesn't meet the required conditions,
    * an error message is generated.
    *
-   * ```proto
-   * message MyFixed32 {
+   *```proto
+   *message MyFixed32 {
    *  // value must be greater than or equal to 5 [fixed32.gte]
    *  fixed32 value = 1 [(buf.validate.field).fixed32.gte = 5];
    *
@@ -332,12 +288,11 @@ public final class Fixed32Rules extends com.google.protobuf.GeneratedMessageV3
    *
    *  // value must be greater than or equal to 10 or less than 5 [fixed32.gte_lt_exclusive]
    *  fixed32 another_value = 3 [(buf.validate.field).fixed32 = { gte: 10, lt: 5 }];
-   * }
-   * ```
+   *}
+   *```
    * </pre>
    *
    * <code>optional fixed32 gte = 5 [json_name = "gte", (.buf.validate.priv.field) = { ... }</code>
-   *
    * @return The gte.
    */
   @java.lang.Override
@@ -346,172 +301,142 @@ public final class Fixed32Rules extends com.google.protobuf.GeneratedMessageV3
   }
 
   public static final int IN_FIELD_NUMBER = 6;
-
   @SuppressWarnings("serial")
   private com.google.protobuf.Internal.IntList in_;
-
   /**
-   *
-   *
    * <pre>
-   * `in` requires the field value to be equal to one of the specified values.
+   *`in` requires the field value to be equal to one of the specified values.
    * If the field value isn't one of the specified values, an error message
    * is generated.
    *
-   * ```proto
-   * message MyFixed32 {
+   *```proto
+   *message MyFixed32 {
    *  // value must be in list [1, 2, 3]
    *  repeated fixed32 value = 1 (buf.validate.field).fixed32 = { in: [1, 2, 3] };
-   * }
-   * ```
+   *}
+   *```
    * </pre>
    *
    * <code>repeated fixed32 in = 6 [json_name = "in", (.buf.validate.priv.field) = { ... }</code>
-   *
    * @return A list containing the in.
    */
   @java.lang.Override
-  public java.util.List<java.lang.Integer> getInList() {
+  public java.util.List<java.lang.Integer>
+      getInList() {
     return in_;
   }
-
   /**
-   *
-   *
    * <pre>
-   * `in` requires the field value to be equal to one of the specified values.
+   *`in` requires the field value to be equal to one of the specified values.
    * If the field value isn't one of the specified values, an error message
    * is generated.
    *
-   * ```proto
-   * message MyFixed32 {
+   *```proto
+   *message MyFixed32 {
    *  // value must be in list [1, 2, 3]
    *  repeated fixed32 value = 1 (buf.validate.field).fixed32 = { in: [1, 2, 3] };
-   * }
-   * ```
+   *}
+   *```
    * </pre>
    *
    * <code>repeated fixed32 in = 6 [json_name = "in", (.buf.validate.priv.field) = { ... }</code>
-   *
    * @return The count of in.
    */
   public int getInCount() {
     return in_.size();
   }
-
   /**
-   *
-   *
    * <pre>
-   * `in` requires the field value to be equal to one of the specified values.
+   *`in` requires the field value to be equal to one of the specified values.
    * If the field value isn't one of the specified values, an error message
    * is generated.
    *
-   * ```proto
-   * message MyFixed32 {
+   *```proto
+   *message MyFixed32 {
    *  // value must be in list [1, 2, 3]
    *  repeated fixed32 value = 1 (buf.validate.field).fixed32 = { in: [1, 2, 3] };
-   * }
-   * ```
+   *}
+   *```
    * </pre>
    *
    * <code>repeated fixed32 in = 6 [json_name = "in", (.buf.validate.priv.field) = { ... }</code>
-   *
    * @param index The index of the element to return.
    * @return The in at the given index.
    */
   public int getIn(int index) {
     return in_.getInt(index);
   }
-
   private int inMemoizedSerializedSize = -1;
 
   public static final int NOT_IN_FIELD_NUMBER = 7;
-
   @SuppressWarnings("serial")
   private com.google.protobuf.Internal.IntList notIn_;
-
   /**
-   *
-   *
    * <pre>
-   * `not_in` requires the field value to not be equal to any of the specified
+   *`not_in` requires the field value to not be equal to any of the specified
    * values. If the field value is one of the specified values, an error
    * message is generated.
    *
-   * ```proto
-   * message MyFixed32 {
+   *```proto
+   *message MyFixed32 {
    *  // value must not be in list [1, 2, 3]
    *  repeated fixed32 value = 1 (buf.validate.field).fixed32 = { not_in: [1, 2, 3] };
-   * }
-   * ```
+   *}
+   *```
    * </pre>
    *
-   * <code>repeated fixed32 not_in = 7 [json_name = "notIn", (.buf.validate.priv.field) = { ... }
-   * </code>
-   *
+   * <code>repeated fixed32 not_in = 7 [json_name = "notIn", (.buf.validate.priv.field) = { ... }</code>
    * @return A list containing the notIn.
    */
   @java.lang.Override
-  public java.util.List<java.lang.Integer> getNotInList() {
+  public java.util.List<java.lang.Integer>
+      getNotInList() {
     return notIn_;
   }
-
   /**
-   *
-   *
    * <pre>
-   * `not_in` requires the field value to not be equal to any of the specified
+   *`not_in` requires the field value to not be equal to any of the specified
    * values. If the field value is one of the specified values, an error
    * message is generated.
    *
-   * ```proto
-   * message MyFixed32 {
+   *```proto
+   *message MyFixed32 {
    *  // value must not be in list [1, 2, 3]
    *  repeated fixed32 value = 1 (buf.validate.field).fixed32 = { not_in: [1, 2, 3] };
-   * }
-   * ```
+   *}
+   *```
    * </pre>
    *
-   * <code>repeated fixed32 not_in = 7 [json_name = "notIn", (.buf.validate.priv.field) = { ... }
-   * </code>
-   *
+   * <code>repeated fixed32 not_in = 7 [json_name = "notIn", (.buf.validate.priv.field) = { ... }</code>
    * @return The count of notIn.
    */
   public int getNotInCount() {
     return notIn_.size();
   }
-
   /**
-   *
-   *
    * <pre>
-   * `not_in` requires the field value to not be equal to any of the specified
+   *`not_in` requires the field value to not be equal to any of the specified
    * values. If the field value is one of the specified values, an error
    * message is generated.
    *
-   * ```proto
-   * message MyFixed32 {
+   *```proto
+   *message MyFixed32 {
    *  // value must not be in list [1, 2, 3]
    *  repeated fixed32 value = 1 (buf.validate.field).fixed32 = { not_in: [1, 2, 3] };
-   * }
-   * ```
+   *}
+   *```
    * </pre>
    *
-   * <code>repeated fixed32 not_in = 7 [json_name = "notIn", (.buf.validate.priv.field) = { ... }
-   * </code>
-   *
+   * <code>repeated fixed32 not_in = 7 [json_name = "notIn", (.buf.validate.priv.field) = { ... }</code>
    * @param index The index of the element to return.
    * @return The notIn at the given index.
    */
   public int getNotIn(int index) {
     return notIn_.getInt(index);
   }
-
   private int notInMemoizedSerializedSize = -1;
 
   private byte memoizedIsInitialized = -1;
-
   @java.lang.Override
   public final boolean isInitialized() {
     byte isInitialized = memoizedIsInitialized;
@@ -523,7 +448,8 @@ public final class Fixed32Rules extends com.google.protobuf.GeneratedMessageV3
   }
 
   @java.lang.Override
-  public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
+  public void writeTo(com.google.protobuf.CodedOutputStream output)
+                      throws java.io.IOException {
     getSerializedSize();
     if (((bitField0_ & 0x00000001) != 0)) {
       output.writeFixed32(1, const_);
@@ -564,19 +490,24 @@ public final class Fixed32Rules extends com.google.protobuf.GeneratedMessageV3
 
     size = 0;
     if (((bitField0_ & 0x00000001) != 0)) {
-      size += com.google.protobuf.CodedOutputStream.computeFixed32Size(1, const_);
+      size += com.google.protobuf.CodedOutputStream
+        .computeFixed32Size(1, const_);
     }
     if (((bitField0_ & 0x00000002) != 0)) {
-      size += com.google.protobuf.CodedOutputStream.computeFixed32Size(2, lt_);
+      size += com.google.protobuf.CodedOutputStream
+        .computeFixed32Size(2, lt_);
     }
     if (((bitField0_ & 0x00000004) != 0)) {
-      size += com.google.protobuf.CodedOutputStream.computeFixed32Size(3, lte_);
+      size += com.google.protobuf.CodedOutputStream
+        .computeFixed32Size(3, lte_);
     }
     if (((bitField0_ & 0x00000008) != 0)) {
-      size += com.google.protobuf.CodedOutputStream.computeFixed32Size(4, gt_);
+      size += com.google.protobuf.CodedOutputStream
+        .computeFixed32Size(4, gt_);
     }
     if (((bitField0_ & 0x00000010) != 0)) {
-      size += com.google.protobuf.CodedOutputStream.computeFixed32Size(5, gte_);
+      size += com.google.protobuf.CodedOutputStream
+        .computeFixed32Size(5, gte_);
     }
     {
       int dataSize = 0;
@@ -584,7 +515,8 @@ public final class Fixed32Rules extends com.google.protobuf.GeneratedMessageV3
       size += dataSize;
       if (!getInList().isEmpty()) {
         size += 1;
-        size += com.google.protobuf.CodedOutputStream.computeInt32SizeNoTag(dataSize);
+        size += com.google.protobuf.CodedOutputStream
+            .computeInt32SizeNoTag(dataSize);
       }
       inMemoizedSerializedSize = dataSize;
     }
@@ -594,7 +526,8 @@ public final class Fixed32Rules extends com.google.protobuf.GeneratedMessageV3
       size += dataSize;
       if (!getNotInList().isEmpty()) {
         size += 1;
-        size += com.google.protobuf.CodedOutputStream.computeInt32SizeNoTag(dataSize);
+        size += com.google.protobuf.CodedOutputStream
+            .computeInt32SizeNoTag(dataSize);
       }
       notInMemoizedSerializedSize = dataSize;
     }
@@ -606,7 +539,7 @@ public final class Fixed32Rules extends com.google.protobuf.GeneratedMessageV3
   @java.lang.Override
   public boolean equals(final java.lang.Object obj) {
     if (obj == this) {
-      return true;
+     return true;
     }
     if (!(obj instanceof build.buf.validate.Fixed32Rules)) {
       return super.equals(obj);
@@ -615,26 +548,33 @@ public final class Fixed32Rules extends com.google.protobuf.GeneratedMessageV3
 
     if (hasConst() != other.hasConst()) return false;
     if (hasConst()) {
-      if (getConst() != other.getConst()) return false;
+      if (getConst()
+          != other.getConst()) return false;
     }
     if (hasLt() != other.hasLt()) return false;
     if (hasLt()) {
-      if (getLt() != other.getLt()) return false;
+      if (getLt()
+          != other.getLt()) return false;
     }
     if (hasLte() != other.hasLte()) return false;
     if (hasLte()) {
-      if (getLte() != other.getLte()) return false;
+      if (getLte()
+          != other.getLte()) return false;
     }
     if (hasGt() != other.hasGt()) return false;
     if (hasGt()) {
-      if (getGt() != other.getGt()) return false;
+      if (getGt()
+          != other.getGt()) return false;
     }
     if (hasGte() != other.hasGte()) return false;
     if (hasGte()) {
-      if (getGte() != other.getGte()) return false;
+      if (getGte()
+          != other.getGte()) return false;
     }
-    if (!getInList().equals(other.getInList())) return false;
-    if (!getNotInList().equals(other.getNotInList())) return false;
+    if (!getInList()
+        .equals(other.getInList())) return false;
+    if (!getNotInList()
+        .equals(other.getNotInList())) return false;
     if (!getUnknownFields().equals(other.getUnknownFields())) return false;
     return true;
   }
@@ -679,134 +619,132 @@ public final class Fixed32Rules extends com.google.protobuf.GeneratedMessageV3
     return hash;
   }
 
-  public static build.buf.validate.Fixed32Rules parseFrom(java.nio.ByteBuffer data)
+  public static build.buf.validate.Fixed32Rules parseFrom(
+      java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-
   public static build.buf.validate.Fixed32Rules parseFrom(
-      java.nio.ByteBuffer data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      java.nio.ByteBuffer data,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-
-  public static build.buf.validate.Fixed32Rules parseFrom(com.google.protobuf.ByteString data)
+  public static build.buf.validate.Fixed32Rules parseFrom(
+      com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-
   public static build.buf.validate.Fixed32Rules parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-
   public static build.buf.validate.Fixed32Rules parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-
   public static build.buf.validate.Fixed32Rules parseFrom(
-      byte[] data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      byte[] data,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-
   public static build.buf.validate.Fixed32Rules parseFrom(java.io.InputStream input)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
+    return com.google.protobuf.GeneratedMessageV3
+        .parseWithIOException(PARSER, input);
   }
-
   public static build.buf.validate.Fixed32Rules parseFrom(
-      java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      java.io.InputStream input,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
-        PARSER, input, extensionRegistry);
+    return com.google.protobuf.GeneratedMessageV3
+        .parseWithIOException(PARSER, input, extensionRegistry);
   }
 
   public static build.buf.validate.Fixed32Rules parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input);
+    return com.google.protobuf.GeneratedMessageV3
+        .parseDelimitedWithIOException(PARSER, input);
   }
 
   public static build.buf.validate.Fixed32Rules parseDelimitedFrom(
-      java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      java.io.InputStream input,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(
-        PARSER, input, extensionRegistry);
+    return com.google.protobuf.GeneratedMessageV3
+        .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-
   public static build.buf.validate.Fixed32Rules parseFrom(
-      com.google.protobuf.CodedInputStream input) throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
+      com.google.protobuf.CodedInputStream input)
+      throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3
+        .parseWithIOException(PARSER, input);
   }
-
   public static build.buf.validate.Fixed32Rules parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
-        PARSER, input, extensionRegistry);
+    return com.google.protobuf.GeneratedMessageV3
+        .parseWithIOException(PARSER, input, extensionRegistry);
   }
 
   @java.lang.Override
-  public Builder newBuilderForType() {
-    return newBuilder();
-  }
-
+  public Builder newBuilderForType() { return newBuilder(); }
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-
   public static Builder newBuilder(build.buf.validate.Fixed32Rules prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
-
   @java.lang.Override
   public Builder toBuilder() {
-    return this == DEFAULT_INSTANCE ? new Builder() : new Builder().mergeFrom(this);
+    return this == DEFAULT_INSTANCE
+        ? new Builder() : new Builder().mergeFrom(this);
   }
 
   @java.lang.Override
-  protected Builder newBuilderForType(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+  protected Builder newBuilderForType(
+      com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
     Builder builder = new Builder(parent);
     return builder;
   }
-
   /**
-   *
-   *
    * <pre>
    * Fixed32Rules describes the constraints applied to `fixed32` values.
    * </pre>
    *
    * Protobuf type {@code buf.validate.Fixed32Rules}
    */
-  public static final class Builder extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
-      implements
+  public static final class Builder extends
+      com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
       // @@protoc_insertion_point(builder_implements:buf.validate.Fixed32Rules)
       build.buf.validate.Fixed32RulesOrBuilder {
-    public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
       return build.buf.validate.ValidateProto.internal_static_buf_validate_Fixed32Rules_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return build.buf.validate.ValidateProto
-          .internal_static_buf_validate_Fixed32Rules_fieldAccessorTable
+      return build.buf.validate.ValidateProto.internal_static_buf_validate_Fixed32Rules_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
               build.buf.validate.Fixed32Rules.class, build.buf.validate.Fixed32Rules.Builder.class);
     }
 
     // Construct using build.buf.validate.Fixed32Rules.newBuilder()
-    private Builder() {}
+    private Builder() {
 
-    private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-      super(parent);
     }
 
+    private Builder(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      super(parent);
+
+    }
     @java.lang.Override
     public Builder clear() {
       super.clear();
@@ -822,7 +760,8 @@ public final class Fixed32Rules extends com.google.protobuf.GeneratedMessageV3
     }
 
     @java.lang.Override
-    public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
+    public com.google.protobuf.Descriptors.Descriptor
+        getDescriptorForType() {
       return build.buf.validate.ValidateProto.internal_static_buf_validate_Fixed32Rules_descriptor;
     }
 
@@ -844,9 +783,7 @@ public final class Fixed32Rules extends com.google.protobuf.GeneratedMessageV3
     public build.buf.validate.Fixed32Rules buildPartial() {
       build.buf.validate.Fixed32Rules result = new build.buf.validate.Fixed32Rules(this);
       buildPartialRepeatedFields(result);
-      if (bitField0_ != 0) {
-        buildPartial0(result);
-      }
+      if (bitField0_ != 0) { buildPartial0(result); }
       onBuilt();
       return result;
     }
@@ -894,39 +831,38 @@ public final class Fixed32Rules extends com.google.protobuf.GeneratedMessageV3
     public Builder clone() {
       return super.clone();
     }
-
     @java.lang.Override
     public Builder setField(
-        com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field,
+        java.lang.Object value) {
       return super.setField(field, value);
     }
-
     @java.lang.Override
-    public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
+    public Builder clearField(
+        com.google.protobuf.Descriptors.FieldDescriptor field) {
       return super.clearField(field);
     }
-
     @java.lang.Override
-    public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+    public Builder clearOneof(
+        com.google.protobuf.Descriptors.OneofDescriptor oneof) {
       return super.clearOneof(oneof);
     }
-
     @java.lang.Override
     public Builder setRepeatedField(
-        com.google.protobuf.Descriptors.FieldDescriptor field, int index, java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field,
+        int index, java.lang.Object value) {
       return super.setRepeatedField(field, index, value);
     }
-
     @java.lang.Override
     public Builder addRepeatedField(
-        com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field,
+        java.lang.Object value) {
       return super.addRepeatedField(field, value);
     }
-
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
       if (other instanceof build.buf.validate.Fixed32Rules) {
-        return mergeFrom((build.buf.validate.Fixed32Rules) other);
+        return mergeFrom((build.buf.validate.Fixed32Rules)other);
       } else {
         super.mergeFrom(other);
         return this;
@@ -996,79 +932,69 @@ public final class Fixed32Rules extends com.google.protobuf.GeneratedMessageV3
             case 0:
               done = true;
               break;
-            case 13:
-              {
-                const_ = input.readFixed32();
-                bitField0_ |= 0x00000001;
-                break;
-              } // case 13
-            case 21:
-              {
-                lt_ = input.readFixed32();
-                bitField0_ |= 0x00000002;
-                break;
-              } // case 21
-            case 29:
-              {
-                lte_ = input.readFixed32();
-                bitField0_ |= 0x00000004;
-                break;
-              } // case 29
-            case 37:
-              {
-                gt_ = input.readFixed32();
-                bitField0_ |= 0x00000008;
-                break;
-              } // case 37
-            case 45:
-              {
-                gte_ = input.readFixed32();
-                bitField0_ |= 0x00000010;
-                break;
-              } // case 45
-            case 53:
-              {
-                int v = input.readFixed32();
-                ensureInIsMutable();
-                in_.addInt(v);
-                break;
-              } // case 53
-            case 50:
-              {
-                int length = input.readRawVarint32();
-                int limit = input.pushLimit(length);
-                ensureInIsMutable();
-                while (input.getBytesUntilLimit() > 0) {
-                  in_.addInt(input.readFixed32());
-                }
-                input.popLimit(limit);
-                break;
-              } // case 50
-            case 61:
-              {
-                int v = input.readFixed32();
-                ensureNotInIsMutable();
-                notIn_.addInt(v);
-                break;
-              } // case 61
-            case 58:
-              {
-                int length = input.readRawVarint32();
-                int limit = input.pushLimit(length);
-                ensureNotInIsMutable();
-                while (input.getBytesUntilLimit() > 0) {
-                  notIn_.addInt(input.readFixed32());
-                }
-                input.popLimit(limit);
-                break;
-              } // case 58
-            default:
-              {
-                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
-                  done = true; // was an endgroup tag
-                }
-                break;
-              } // default:
+            case 13: {
+              const_ = input.readFixed32();
+              bitField0_ |= 0x00000001;
+              break;
+            } // case 13
+            case 21: {
+              lt_ = input.readFixed32();
+              bitField0_ |= 0x00000002;
+              break;
+            } // case 21
+            case 29: {
+              lte_ = input.readFixed32();
+              bitField0_ |= 0x00000004;
+              break;
+            } // case 29
+            case 37: {
+              gt_ = input.readFixed32();
+              bitField0_ |= 0x00000008;
+              break;
+            } // case 37
+            case 45: {
+              gte_ = input.readFixed32();
+              bitField0_ |= 0x00000010;
+              break;
+            } // case 45
+            case 53: {
+              int v = input.readFixed32();
+              ensureInIsMutable();
+              in_.addInt(v);
+              break;
+            } // case 53
+            case 50: {
+              int length = input.readRawVarint32();
+              int limit = input.pushLimit(length);
+              ensureInIsMutable();
+              while (input.getBytesUntilLimit() > 0) {
+                in_.addInt(input.readFixed32());
+              }
+              input.popLimit(limit);
+              break;
+            } // case 50
+            case 61: {
+              int v = input.readFixed32();
+              ensureNotInIsMutable();
+              notIn_.addInt(v);
+              break;
+            } // case 61
+            case 58: {
+              int length = input.readRawVarint32();
+              int limit = input.pushLimit(length);
+              ensureNotInIsMutable();
+              while (input.getBytesUntilLimit() > 0) {
+                notIn_.addInt(input.readFixed32());
+              }
+              input.popLimit(limit);
+              break;
+            } // case 58
+            default: {
+              if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                done = true; // was an endgroup tag
+              }
+              break;
+            } // default:
           } // switch (tag)
         } // while (!done)
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -1078,79 +1004,63 @@ public final class Fixed32Rules extends com.google.protobuf.GeneratedMessageV3
       } // finally
       return this;
     }
-
     private int bitField0_;
 
-    private int const_;
-
+    private int const_ ;
     /**
-     *
-     *
      * <pre>
-     * `const` requires the field value to exactly match the specified value.
+     *`const` requires the field value to exactly match the specified value.
      * If the field value doesn't match, an error message is generated.
      *
-     * ```proto
-     * message MyFixed32 {
+     *```proto
+     *message MyFixed32 {
      *  // value must equal 42
      *   fixed32 value = 1 [(buf.validate.field).fixed32.const = 42];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>optional fixed32 const = 1 [json_name = "const", (.buf.validate.priv.field) = { ... }
-     * </code>
-     *
+     * <code>optional fixed32 const = 1 [json_name = "const", (.buf.validate.priv.field) = { ... }</code>
      * @return Whether the const field is set.
      */
     @java.lang.Override
     public boolean hasConst() {
       return ((bitField0_ & 0x00000001) != 0);
     }
-
     /**
-     *
-     *
      * <pre>
-     * `const` requires the field value to exactly match the specified value.
+     *`const` requires the field value to exactly match the specified value.
      * If the field value doesn't match, an error message is generated.
      *
-     * ```proto
-     * message MyFixed32 {
+     *```proto
+     *message MyFixed32 {
      *  // value must equal 42
      *   fixed32 value = 1 [(buf.validate.field).fixed32.const = 42];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>optional fixed32 const = 1 [json_name = "const", (.buf.validate.priv.field) = { ... }
-     * </code>
-     *
+     * <code>optional fixed32 const = 1 [json_name = "const", (.buf.validate.priv.field) = { ... }</code>
      * @return The const.
      */
     @java.lang.Override
     public int getConst() {
       return const_;
     }
-
     /**
-     *
-     *
      * <pre>
-     * `const` requires the field value to exactly match the specified value.
+     *`const` requires the field value to exactly match the specified value.
      * If the field value doesn't match, an error message is generated.
      *
-     * ```proto
-     * message MyFixed32 {
+     *```proto
+     *message MyFixed32 {
      *  // value must equal 42
      *   fixed32 value = 1 [(buf.validate.field).fixed32.const = 42];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>optional fixed32 const = 1 [json_name = "const", (.buf.validate.priv.field) = { ... }
-     * </code>
-     *
+     * <code>optional fixed32 const = 1 [json_name = "const", (.buf.validate.priv.field) = { ... }</code>
      * @param value The const to set.
      * @return This builder for chaining.
      */
@@ -1161,25 +1071,20 @@ public final class Fixed32Rules extends com.google.protobuf.GeneratedMessageV3
       onChanged();
       return this;
     }
-
     /**
-     *
-     *
      * <pre>
-     * `const` requires the field value to exactly match the specified value.
+     *`const` requires the field value to exactly match the specified value.
      * If the field value doesn't match, an error message is generated.
      *
-     * ```proto
-     * message MyFixed32 {
+     *```proto
+     *message MyFixed32 {
      *  // value must equal 42
      *   fixed32 value = 1 [(buf.validate.field).fixed32.const = 42];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>optional fixed32 const = 1 [json_name = "const", (.buf.validate.priv.field) = { ... }
-     * </code>
-     *
+     * <code>optional fixed32 const = 1 [json_name = "const", (.buf.validate.priv.field) = { ... }</code>
      * @return This builder for chaining.
      */
     public Builder clearConst() {
@@ -1189,76 +1094,64 @@ public final class Fixed32Rules extends com.google.protobuf.GeneratedMessageV3
       return this;
     }
 
-    private int lt_;
-
+    private int lt_ ;
     /**
-     *
-     *
      * <pre>
-     * `lt` requires the field value to be less than the specified value (field &lt;
+     *`lt` requires the field value to be less than the specified value (field &lt;
      * value). If the field value is equal to or greater than the specified value,
      * an error message is generated.
      *
-     * ```proto
-     * message MyFixed32 {
+     *```proto
+     *message MyFixed32 {
      *  // value must be less than 10
      *   fixed32 value = 1 [(buf.validate.field).fixed32.lt = 10];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
      * <code>optional fixed32 lt = 2 [json_name = "lt", (.buf.validate.priv.field) = { ... }</code>
-     *
      * @return Whether the lt field is set.
      */
     @java.lang.Override
     public boolean hasLt() {
       return ((bitField0_ & 0x00000002) != 0);
     }
-
     /**
-     *
-     *
      * <pre>
-     * `lt` requires the field value to be less than the specified value (field &lt;
+     *`lt` requires the field value to be less than the specified value (field &lt;
      * value). If the field value is equal to or greater than the specified value,
      * an error message is generated.
      *
-     * ```proto
-     * message MyFixed32 {
+     *```proto
+     *message MyFixed32 {
      *  // value must be less than 10
      *   fixed32 value = 1 [(buf.validate.field).fixed32.lt = 10];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
      * <code>optional fixed32 lt = 2 [json_name = "lt", (.buf.validate.priv.field) = { ... }</code>
-     *
      * @return The lt.
      */
     @java.lang.Override
     public int getLt() {
       return lt_;
     }
-
     /**
-     *
-     *
      * <pre>
-     * `lt` requires the field value to be less than the specified value (field &lt;
+     *`lt` requires the field value to be less than the specified value (field &lt;
      * value). If the field value is equal to or greater than the specified value,
      * an error message is generated.
      *
-     * ```proto
-     * message MyFixed32 {
+     *```proto
+     *message MyFixed32 {
      *  // value must be less than 10
      *   fixed32 value = 1 [(buf.validate.field).fixed32.lt = 10];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
      * <code>optional fixed32 lt = 2 [json_name = "lt", (.buf.validate.priv.field) = { ... }</code>
-     *
      * @param value The lt to set.
      * @return This builder for chaining.
      */
@@ -1269,25 +1162,21 @@ public final class Fixed32Rules extends com.google.protobuf.GeneratedMessageV3
       onChanged();
       return this;
     }
-
     /**
-     *
-     *
      * <pre>
-     * `lt` requires the field value to be less than the specified value (field &lt;
+     *`lt` requires the field value to be less than the specified value (field &lt;
      * value). If the field value is equal to or greater than the specified value,
      * an error message is generated.
      *
-     * ```proto
-     * message MyFixed32 {
+     *```proto
+     *message MyFixed32 {
      *  // value must be less than 10
      *   fixed32 value = 1 [(buf.validate.field).fixed32.lt = 10];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
      * <code>optional fixed32 lt = 2 [json_name = "lt", (.buf.validate.priv.field) = { ... }</code>
-     *
      * @return This builder for chaining.
      */
     public Builder clearLt() {
@@ -1297,79 +1186,64 @@ public final class Fixed32Rules extends com.google.protobuf.GeneratedMessageV3
       return this;
     }
 
-    private int lte_;
-
+    private int lte_ ;
     /**
-     *
-     *
      * <pre>
-     * `lte` requires the field value to be less than or equal to the specified
+     *`lte` requires the field value to be less than or equal to the specified
      * value (field &lt;= value). If the field value is greater than the specified
      * value, an error message is generated.
      *
-     * ```proto
-     * message MyFixed32 {
+     *```proto
+     *message MyFixed32 {
      *  // value must be less than or equal to 10
      *   fixed32 value = 1 [(buf.validate.field).fixed32.lte = 10];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>optional fixed32 lte = 3 [json_name = "lte", (.buf.validate.priv.field) = { ... }
-     * </code>
-     *
+     * <code>optional fixed32 lte = 3 [json_name = "lte", (.buf.validate.priv.field) = { ... }</code>
      * @return Whether the lte field is set.
      */
     @java.lang.Override
     public boolean hasLte() {
       return ((bitField0_ & 0x00000004) != 0);
     }
-
     /**
-     *
-     *
      * <pre>
-     * `lte` requires the field value to be less than or equal to the specified
+     *`lte` requires the field value to be less than or equal to the specified
      * value (field &lt;= value). If the field value is greater than the specified
      * value, an error message is generated.
      *
-     * ```proto
-     * message MyFixed32 {
+     *```proto
+     *message MyFixed32 {
      *  // value must be less than or equal to 10
      *   fixed32 value = 1 [(buf.validate.field).fixed32.lte = 10];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>optional fixed32 lte = 3 [json_name = "lte", (.buf.validate.priv.field) = { ... }
-     * </code>
-     *
+     * <code>optional fixed32 lte = 3 [json_name = "lte", (.buf.validate.priv.field) = { ... }</code>
      * @return The lte.
      */
     @java.lang.Override
     public int getLte() {
       return lte_;
     }
-
     /**
-     *
-     *
      * <pre>
-     * `lte` requires the field value to be less than or equal to the specified
+     *`lte` requires the field value to be less than or equal to the specified
      * value (field &lt;= value). If the field value is greater than the specified
      * value, an error message is generated.
      *
-     * ```proto
-     * message MyFixed32 {
+     *```proto
+     *message MyFixed32 {
      *  // value must be less than or equal to 10
      *   fixed32 value = 1 [(buf.validate.field).fixed32.lte = 10];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>optional fixed32 lte = 3 [json_name = "lte", (.buf.validate.priv.field) = { ... }
-     * </code>
-     *
+     * <code>optional fixed32 lte = 3 [json_name = "lte", (.buf.validate.priv.field) = { ... }</code>
      * @param value The lte to set.
      * @return This builder for chaining.
      */
@@ -1380,26 +1254,21 @@ public final class Fixed32Rules extends com.google.protobuf.GeneratedMessageV3
       onChanged();
       return this;
     }
-
     /**
-     *
-     *
      * <pre>
-     * `lte` requires the field value to be less than or equal to the specified
+     *`lte` requires the field value to be less than or equal to the specified
      * value (field &lt;= value). If the field value is greater than the specified
      * value, an error message is generated.
      *
-     * ```proto
-     * message MyFixed32 {
+     *```proto
+     *message MyFixed32 {
      *  // value must be less than or equal to 10
      *   fixed32 value = 1 [(buf.validate.field).fixed32.lte = 10];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>optional fixed32 lte = 3 [json_name = "lte", (.buf.validate.priv.field) = { ... }
-     * </code>
-     *
+     * <code>optional fixed32 lte = 3 [json_name = "lte", (.buf.validate.priv.field) = { ... }</code>
      * @return This builder for chaining.
      */
     public Builder clearLte() {
@@ -1409,20 +1278,17 @@ public final class Fixed32Rules extends com.google.protobuf.GeneratedMessageV3
       return this;
     }
 
-    private int gt_;
-
+    private int gt_ ;
     /**
-     *
-     *
      * <pre>
-     * `gt` requires the field value to be greater than the specified value
+     *`gt` requires the field value to be greater than the specified value
      * (exclusive). If the value of `gt` is larger than a specified `lt` or
      * `lte`, the range is reversed, and the field value must be outside the
      * specified range. If the field value doesn't meet the required conditions,
      * an error message is generated.
      *
-     * ```proto
-     * message MyFixed32 {
+     *```proto
+     *message MyFixed32 {
      *  // value must be greater than 5 [fixed32.gt]
      *  fixed32 value = 1 [(buf.validate.field).fixed32.gt = 5];
      *
@@ -1431,31 +1297,27 @@ public final class Fixed32Rules extends com.google.protobuf.GeneratedMessageV3
      *
      *  // value must be greater than 10 or less than 5 [fixed32.gt_lt_exclusive]
      *  fixed32 another_value = 3 [(buf.validate.field).fixed32 = { gt: 10, lt: 5 }];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
      * <code>optional fixed32 gt = 4 [json_name = "gt", (.buf.validate.priv.field) = { ... }</code>
-     *
      * @return Whether the gt field is set.
      */
     @java.lang.Override
     public boolean hasGt() {
       return ((bitField0_ & 0x00000008) != 0);
     }
-
     /**
-     *
-     *
      * <pre>
-     * `gt` requires the field value to be greater than the specified value
+     *`gt` requires the field value to be greater than the specified value
      * (exclusive). If the value of `gt` is larger than a specified `lt` or
      * `lte`, the range is reversed, and the field value must be outside the
      * specified range. If the field value doesn't meet the required conditions,
      * an error message is generated.
      *
-     * ```proto
-     * message MyFixed32 {
+     *```proto
+     *message MyFixed32 {
      *  // value must be greater than 5 [fixed32.gt]
      *  fixed32 value = 1 [(buf.validate.field).fixed32.gt = 5];
      *
@@ -1464,31 +1326,27 @@ public final class Fixed32Rules extends com.google.protobuf.GeneratedMessageV3
      *
      *  // value must be greater than 10 or less than 5 [fixed32.gt_lt_exclusive]
      *  fixed32 another_value = 3 [(buf.validate.field).fixed32 = { gt: 10, lt: 5 }];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
      * <code>optional fixed32 gt = 4 [json_name = "gt", (.buf.validate.priv.field) = { ... }</code>
-     *
      * @return The gt.
      */
     @java.lang.Override
     public int getGt() {
       return gt_;
     }
-
     /**
-     *
-     *
      * <pre>
-     * `gt` requires the field value to be greater than the specified value
+     *`gt` requires the field value to be greater than the specified value
      * (exclusive). If the value of `gt` is larger than a specified `lt` or
      * `lte`, the range is reversed, and the field value must be outside the
      * specified range. If the field value doesn't meet the required conditions,
      * an error message is generated.
      *
-     * ```proto
-     * message MyFixed32 {
+     *```proto
+     *message MyFixed32 {
      *  // value must be greater than 5 [fixed32.gt]
      *  fixed32 value = 1 [(buf.validate.field).fixed32.gt = 5];
      *
@@ -1497,12 +1355,11 @@ public final class Fixed32Rules extends com.google.protobuf.GeneratedMessageV3
      *
      *  // value must be greater than 10 or less than 5 [fixed32.gt_lt_exclusive]
      *  fixed32 another_value = 3 [(buf.validate.field).fixed32 = { gt: 10, lt: 5 }];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
      * <code>optional fixed32 gt = 4 [json_name = "gt", (.buf.validate.priv.field) = { ... }</code>
-     *
      * @param value The gt to set.
      * @return This builder for chaining.
      */
@@ -1513,19 +1370,16 @@ public final class Fixed32Rules extends com.google.protobuf.GeneratedMessageV3
       onChanged();
       return this;
     }
-
     /**
-     *
-     *
      * <pre>
-     * `gt` requires the field value to be greater than the specified value
+     *`gt` requires the field value to be greater than the specified value
      * (exclusive). If the value of `gt` is larger than a specified `lt` or
      * `lte`, the range is reversed, and the field value must be outside the
      * specified range. If the field value doesn't meet the required conditions,
      * an error message is generated.
      *
-     * ```proto
-     * message MyFixed32 {
+     *```proto
+     *message MyFixed32 {
      *  // value must be greater than 5 [fixed32.gt]
      *  fixed32 value = 1 [(buf.validate.field).fixed32.gt = 5];
      *
@@ -1534,12 +1388,11 @@ public final class Fixed32Rules extends com.google.protobuf.GeneratedMessageV3
      *
      *  // value must be greater than 10 or less than 5 [fixed32.gt_lt_exclusive]
      *  fixed32 another_value = 3 [(buf.validate.field).fixed32 = { gt: 10, lt: 5 }];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
      * <code>optional fixed32 gt = 4 [json_name = "gt", (.buf.validate.priv.field) = { ... }</code>
-     *
      * @return This builder for chaining.
      */
     public Builder clearGt() {
@@ -1549,20 +1402,17 @@ public final class Fixed32Rules extends com.google.protobuf.GeneratedMessageV3
       return this;
     }
 
-    private int gte_;
-
+    private int gte_ ;
     /**
-     *
-     *
      * <pre>
-     * `gte` requires the field value to be greater than or equal to the specified
+     *`gte` requires the field value to be greater than or equal to the specified
      * value (exclusive). If the value of `gte` is larger than a specified `lt`
      * or `lte`, the range is reversed, and the field value must be outside the
      * specified range. If the field value doesn't meet the required conditions,
      * an error message is generated.
      *
-     * ```proto
-     * message MyFixed32 {
+     *```proto
+     *message MyFixed32 {
      *  // value must be greater than or equal to 5 [fixed32.gte]
      *  fixed32 value = 1 [(buf.validate.field).fixed32.gte = 5];
      *
@@ -1571,32 +1421,27 @@ public final class Fixed32Rules extends com.google.protobuf.GeneratedMessageV3
      *
      *  // value must be greater than or equal to 10 or less than 5 [fixed32.gte_lt_exclusive]
      *  fixed32 another_value = 3 [(buf.validate.field).fixed32 = { gte: 10, lt: 5 }];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>optional fixed32 gte = 5 [json_name = "gte", (.buf.validate.priv.field) = { ... }
-     * </code>
-     *
+     * <code>optional fixed32 gte = 5 [json_name = "gte", (.buf.validate.priv.field) = { ... }</code>
      * @return Whether the gte field is set.
      */
     @java.lang.Override
     public boolean hasGte() {
       return ((bitField0_ & 0x00000010) != 0);
     }
-
     /**
-     *
-     *
      * <pre>
-     * `gte` requires the field value to be greater than or equal to the specified
+     *`gte` requires the field value to be greater than or equal to the specified
      * value (exclusive). If the value of `gte` is larger than a specified `lt`
      * or `lte`, the range is reversed, and the field value must be outside the
      * specified range. If the field value doesn't meet the required conditions,
      * an error message is generated.
      *
-     * ```proto
-     * message MyFixed32 {
+     *```proto
+     *message MyFixed32 {
      *  // value must be greater than or equal to 5 [fixed32.gte]
      *  fixed32 value = 1 [(buf.validate.field).fixed32.gte = 5];
      *
@@ -1605,32 +1450,27 @@ public final class Fixed32Rules extends com.google.protobuf.GeneratedMessageV3
      *
      *  // value must be greater than or equal to 10 or less than 5 [fixed32.gte_lt_exclusive]
      *  fixed32 another_value = 3 [(buf.validate.field).fixed32 = { gte: 10, lt: 5 }];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>optional fixed32 gte = 5 [json_name = "gte", (.buf.validate.priv.field) = { ... }
-     * </code>
-     *
+     * <code>optional fixed32 gte = 5 [json_name = "gte", (.buf.validate.priv.field) = { ... }</code>
      * @return The gte.
      */
     @java.lang.Override
     public int getGte() {
       return gte_;
     }
-
     /**
-     *
-     *
      * <pre>
-     * `gte` requires the field value to be greater than or equal to the specified
+     *`gte` requires the field value to be greater than or equal to the specified
      * value (exclusive). If the value of `gte` is larger than a specified `lt`
      * or `lte`, the range is reversed, and the field value must be outside the
      * specified range. If the field value doesn't meet the required conditions,
      * an error message is generated.
      *
-     * ```proto
-     * message MyFixed32 {
+     *```proto
+     *message MyFixed32 {
      *  // value must be greater than or equal to 5 [fixed32.gte]
      *  fixed32 value = 1 [(buf.validate.field).fixed32.gte = 5];
      *
@@ -1639,13 +1479,11 @@ public final class Fixed32Rules extends com.google.protobuf.GeneratedMessageV3
      *
      *  // value must be greater than or equal to 10 or less than 5 [fixed32.gte_lt_exclusive]
      *  fixed32 another_value = 3 [(buf.validate.field).fixed32 = { gte: 10, lt: 5 }];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>optional fixed32 gte = 5 [json_name = "gte", (.buf.validate.priv.field) = { ... }
-     * </code>
-     *
+     * <code>optional fixed32 gte = 5 [json_name = "gte", (.buf.validate.priv.field) = { ... }</code>
      * @param value The gte to set.
      * @return This builder for chaining.
      */
@@ -1656,19 +1494,16 @@ public final class Fixed32Rules extends com.google.protobuf.GeneratedMessageV3
       onChanged();
       return this;
     }
-
     /**
-     *
-     *
      * <pre>
-     * `gte` requires the field value to be greater than or equal to the specified
+     *`gte` requires the field value to be greater than or equal to the specified
      * value (exclusive). If the value of `gte` is larger than a specified `lt`
      * or `lte`, the range is reversed, and the field value must be outside the
      * specified range. If the field value doesn't meet the required conditions,
      * an error message is generated.
      *
-     * ```proto
-     * message MyFixed32 {
+     *```proto
+     *message MyFixed32 {
      *  // value must be greater than or equal to 5 [fixed32.gte]
      *  fixed32 value = 1 [(buf.validate.field).fixed32.gte = 5];
      *
@@ -1677,13 +1512,11 @@ public final class Fixed32Rules extends com.google.protobuf.GeneratedMessageV3
      *
      *  // value must be greater than or equal to 10 or less than 5 [fixed32.gte_lt_exclusive]
      *  fixed32 another_value = 3 [(buf.validate.field).fixed32 = { gte: 10, lt: 5 }];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>optional fixed32 gte = 5 [json_name = "gte", (.buf.validate.priv.field) = { ... }
-     * </code>
-     *
+     * <code>optional fixed32 gte = 5 [json_name = "gte", (.buf.validate.priv.field) = { ... }</code>
      * @return This builder for chaining.
      */
     public Builder clearGte() {
@@ -1694,135 +1527,117 @@ public final class Fixed32Rules extends com.google.protobuf.GeneratedMessageV3
     }
 
     private com.google.protobuf.Internal.IntList in_ = emptyIntList();
-
     private void ensureInIsMutable() {
       if (!((bitField0_ & 0x00000020) != 0)) {
         in_ = mutableCopy(in_);
         bitField0_ |= 0x00000020;
       }
     }
-
     /**
-     *
-     *
      * <pre>
-     * `in` requires the field value to be equal to one of the specified values.
+     *`in` requires the field value to be equal to one of the specified values.
      * If the field value isn't one of the specified values, an error message
      * is generated.
      *
-     * ```proto
-     * message MyFixed32 {
+     *```proto
+     *message MyFixed32 {
      *  // value must be in list [1, 2, 3]
      *  repeated fixed32 value = 1 (buf.validate.field).fixed32 = { in: [1, 2, 3] };
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
      * <code>repeated fixed32 in = 6 [json_name = "in", (.buf.validate.priv.field) = { ... }</code>
-     *
      * @return A list containing the in.
      */
-    public java.util.List<java.lang.Integer> getInList() {
-      return ((bitField0_ & 0x00000020) != 0) ? java.util.Collections.unmodifiableList(in_) : in_;
+    public java.util.List<java.lang.Integer>
+        getInList() {
+      return ((bitField0_ & 0x00000020) != 0) ?
+               java.util.Collections.unmodifiableList(in_) : in_;
     }
-
     /**
-     *
-     *
      * <pre>
-     * `in` requires the field value to be equal to one of the specified values.
+     *`in` requires the field value to be equal to one of the specified values.
      * If the field value isn't one of the specified values, an error message
      * is generated.
      *
-     * ```proto
-     * message MyFixed32 {
+     *```proto
+     *message MyFixed32 {
      *  // value must be in list [1, 2, 3]
      *  repeated fixed32 value = 1 (buf.validate.field).fixed32 = { in: [1, 2, 3] };
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
      * <code>repeated fixed32 in = 6 [json_name = "in", (.buf.validate.priv.field) = { ... }</code>
-     *
      * @return The count of in.
      */
     public int getInCount() {
       return in_.size();
     }
-
     /**
-     *
-     *
      * <pre>
-     * `in` requires the field value to be equal to one of the specified values.
+     *`in` requires the field value to be equal to one of the specified values.
      * If the field value isn't one of the specified values, an error message
      * is generated.
      *
-     * ```proto
-     * message MyFixed32 {
+     *```proto
+     *message MyFixed32 {
      *  // value must be in list [1, 2, 3]
      *  repeated fixed32 value = 1 (buf.validate.field).fixed32 = { in: [1, 2, 3] };
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
      * <code>repeated fixed32 in = 6 [json_name = "in", (.buf.validate.priv.field) = { ... }</code>
-     *
      * @param index The index of the element to return.
      * @return The in at the given index.
      */
     public int getIn(int index) {
       return in_.getInt(index);
     }
-
     /**
-     *
-     *
      * <pre>
-     * `in` requires the field value to be equal to one of the specified values.
+     *`in` requires the field value to be equal to one of the specified values.
      * If the field value isn't one of the specified values, an error message
      * is generated.
      *
-     * ```proto
-     * message MyFixed32 {
+     *```proto
+     *message MyFixed32 {
      *  // value must be in list [1, 2, 3]
      *  repeated fixed32 value = 1 (buf.validate.field).fixed32 = { in: [1, 2, 3] };
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
      * <code>repeated fixed32 in = 6 [json_name = "in", (.buf.validate.priv.field) = { ... }</code>
-     *
      * @param index The index to set the value at.
      * @param value The in to set.
      * @return This builder for chaining.
      */
-    public Builder setIn(int index, int value) {
+    public Builder setIn(
+        int index, int value) {
 
       ensureInIsMutable();
       in_.setInt(index, value);
       onChanged();
       return this;
     }
-
     /**
-     *
-     *
      * <pre>
-     * `in` requires the field value to be equal to one of the specified values.
+     *`in` requires the field value to be equal to one of the specified values.
      * If the field value isn't one of the specified values, an error message
      * is generated.
      *
-     * ```proto
-     * message MyFixed32 {
+     *```proto
+     *message MyFixed32 {
      *  // value must be in list [1, 2, 3]
      *  repeated fixed32 value = 1 (buf.validate.field).fixed32 = { in: [1, 2, 3] };
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
      * <code>repeated fixed32 in = 6 [json_name = "in", (.buf.validate.priv.field) = { ... }</code>
-     *
      * @param value The in to add.
      * @return This builder for chaining.
      */
@@ -1833,53 +1648,47 @@ public final class Fixed32Rules extends com.google.protobuf.GeneratedMessageV3
       onChanged();
       return this;
     }
-
     /**
-     *
-     *
      * <pre>
-     * `in` requires the field value to be equal to one of the specified values.
+     *`in` requires the field value to be equal to one of the specified values.
      * If the field value isn't one of the specified values, an error message
      * is generated.
      *
-     * ```proto
-     * message MyFixed32 {
+     *```proto
+     *message MyFixed32 {
      *  // value must be in list [1, 2, 3]
      *  repeated fixed32 value = 1 (buf.validate.field).fixed32 = { in: [1, 2, 3] };
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
      * <code>repeated fixed32 in = 6 [json_name = "in", (.buf.validate.priv.field) = { ... }</code>
-     *
      * @param values The in to add.
      * @return This builder for chaining.
      */
-    public Builder addAllIn(java.lang.Iterable<? extends java.lang.Integer> values) {
+    public Builder addAllIn(
+        java.lang.Iterable<? extends java.lang.Integer> values) {
       ensureInIsMutable();
-      com.google.protobuf.AbstractMessageLite.Builder.addAll(values, in_);
+      com.google.protobuf.AbstractMessageLite.Builder.addAll(
+          values, in_);
       onChanged();
       return this;
     }
-
     /**
-     *
-     *
      * <pre>
-     * `in` requires the field value to be equal to one of the specified values.
+     *`in` requires the field value to be equal to one of the specified values.
      * If the field value isn't one of the specified values, an error message
      * is generated.
      *
-     * ```proto
-     * message MyFixed32 {
+     *```proto
+     *message MyFixed32 {
      *  // value must be in list [1, 2, 3]
      *  repeated fixed32 value = 1 (buf.validate.field).fixed32 = { in: [1, 2, 3] };
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
      * <code>repeated fixed32 in = 6 [json_name = "in", (.buf.validate.priv.field) = { ... }</code>
-     *
      * @return This builder for chaining.
      */
     public Builder clearIn() {
@@ -1890,142 +1699,117 @@ public final class Fixed32Rules extends com.google.protobuf.GeneratedMessageV3
     }
 
     private com.google.protobuf.Internal.IntList notIn_ = emptyIntList();
-
     private void ensureNotInIsMutable() {
       if (!((bitField0_ & 0x00000040) != 0)) {
         notIn_ = mutableCopy(notIn_);
         bitField0_ |= 0x00000040;
       }
     }
-
     /**
-     *
-     *
      * <pre>
-     * `not_in` requires the field value to not be equal to any of the specified
+     *`not_in` requires the field value to not be equal to any of the specified
      * values. If the field value is one of the specified values, an error
      * message is generated.
      *
-     * ```proto
-     * message MyFixed32 {
+     *```proto
+     *message MyFixed32 {
      *  // value must not be in list [1, 2, 3]
      *  repeated fixed32 value = 1 (buf.validate.field).fixed32 = { not_in: [1, 2, 3] };
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>repeated fixed32 not_in = 7 [json_name = "notIn", (.buf.validate.priv.field) = { ... }
-     * </code>
-     *
+     * <code>repeated fixed32 not_in = 7 [json_name = "notIn", (.buf.validate.priv.field) = { ... }</code>
      * @return A list containing the notIn.
      */
-    public java.util.List<java.lang.Integer> getNotInList() {
-      return ((bitField0_ & 0x00000040) != 0)
-          ? java.util.Collections.unmodifiableList(notIn_)
-          : notIn_;
+    public java.util.List<java.lang.Integer>
+        getNotInList() {
+      return ((bitField0_ & 0x00000040) != 0) ?
+               java.util.Collections.unmodifiableList(notIn_) : notIn_;
     }
-
     /**
-     *
-     *
      * <pre>
-     * `not_in` requires the field value to not be equal to any of the specified
+     *`not_in` requires the field value to not be equal to any of the specified
      * values. If the field value is one of the specified values, an error
      * message is generated.
      *
-     * ```proto
-     * message MyFixed32 {
+     *```proto
+     *message MyFixed32 {
      *  // value must not be in list [1, 2, 3]
      *  repeated fixed32 value = 1 (buf.validate.field).fixed32 = { not_in: [1, 2, 3] };
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>repeated fixed32 not_in = 7 [json_name = "notIn", (.buf.validate.priv.field) = { ... }
-     * </code>
-     *
+     * <code>repeated fixed32 not_in = 7 [json_name = "notIn", (.buf.validate.priv.field) = { ... }</code>
      * @return The count of notIn.
      */
     public int getNotInCount() {
       return notIn_.size();
     }
-
     /**
-     *
-     *
      * <pre>
-     * `not_in` requires the field value to not be equal to any of the specified
+     *`not_in` requires the field value to not be equal to any of the specified
      * values. If the field value is one of the specified values, an error
      * message is generated.
      *
-     * ```proto
-     * message MyFixed32 {
+     *```proto
+     *message MyFixed32 {
      *  // value must not be in list [1, 2, 3]
      *  repeated fixed32 value = 1 (buf.validate.field).fixed32 = { not_in: [1, 2, 3] };
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>repeated fixed32 not_in = 7 [json_name = "notIn", (.buf.validate.priv.field) = { ... }
-     * </code>
-     *
+     * <code>repeated fixed32 not_in = 7 [json_name = "notIn", (.buf.validate.priv.field) = { ... }</code>
      * @param index The index of the element to return.
      * @return The notIn at the given index.
      */
     public int getNotIn(int index) {
       return notIn_.getInt(index);
     }
-
     /**
-     *
-     *
      * <pre>
-     * `not_in` requires the field value to not be equal to any of the specified
+     *`not_in` requires the field value to not be equal to any of the specified
      * values. If the field value is one of the specified values, an error
      * message is generated.
      *
-     * ```proto
-     * message MyFixed32 {
+     *```proto
+     *message MyFixed32 {
      *  // value must not be in list [1, 2, 3]
      *  repeated fixed32 value = 1 (buf.validate.field).fixed32 = { not_in: [1, 2, 3] };
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>repeated fixed32 not_in = 7 [json_name = "notIn", (.buf.validate.priv.field) = { ... }
-     * </code>
-     *
+     * <code>repeated fixed32 not_in = 7 [json_name = "notIn", (.buf.validate.priv.field) = { ... }</code>
      * @param index The index to set the value at.
      * @param value The notIn to set.
      * @return This builder for chaining.
      */
-    public Builder setNotIn(int index, int value) {
+    public Builder setNotIn(
+        int index, int value) {
 
       ensureNotInIsMutable();
       notIn_.setInt(index, value);
       onChanged();
       return this;
     }
-
     /**
-     *
-     *
      * <pre>
-     * `not_in` requires the field value to not be equal to any of the specified
+     *`not_in` requires the field value to not be equal to any of the specified
      * values. If the field value is one of the specified values, an error
      * message is generated.
      *
-     * ```proto
-     * message MyFixed32 {
+     *```proto
+     *message MyFixed32 {
      *  // value must not be in list [1, 2, 3]
      *  repeated fixed32 value = 1 (buf.validate.field).fixed32 = { not_in: [1, 2, 3] };
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>repeated fixed32 not_in = 7 [json_name = "notIn", (.buf.validate.priv.field) = { ... }
-     * </code>
-     *
+     * <code>repeated fixed32 not_in = 7 [json_name = "notIn", (.buf.validate.priv.field) = { ... }</code>
      * @param value The notIn to add.
      * @return This builder for chaining.
      */
@@ -2036,55 +1820,47 @@ public final class Fixed32Rules extends com.google.protobuf.GeneratedMessageV3
       onChanged();
       return this;
     }
-
     /**
-     *
-     *
      * <pre>
-     * `not_in` requires the field value to not be equal to any of the specified
+     *`not_in` requires the field value to not be equal to any of the specified
      * values. If the field value is one of the specified values, an error
      * message is generated.
      *
-     * ```proto
-     * message MyFixed32 {
+     *```proto
+     *message MyFixed32 {
      *  // value must not be in list [1, 2, 3]
      *  repeated fixed32 value = 1 (buf.validate.field).fixed32 = { not_in: [1, 2, 3] };
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>repeated fixed32 not_in = 7 [json_name = "notIn", (.buf.validate.priv.field) = { ... }
-     * </code>
-     *
+     * <code>repeated fixed32 not_in = 7 [json_name = "notIn", (.buf.validate.priv.field) = { ... }</code>
      * @param values The notIn to add.
      * @return This builder for chaining.
      */
-    public Builder addAllNotIn(java.lang.Iterable<? extends java.lang.Integer> values) {
+    public Builder addAllNotIn(
+        java.lang.Iterable<? extends java.lang.Integer> values) {
       ensureNotInIsMutable();
-      com.google.protobuf.AbstractMessageLite.Builder.addAll(values, notIn_);
+      com.google.protobuf.AbstractMessageLite.Builder.addAll(
+          values, notIn_);
       onChanged();
       return this;
     }
-
     /**
-     *
-     *
      * <pre>
-     * `not_in` requires the field value to not be equal to any of the specified
+     *`not_in` requires the field value to not be equal to any of the specified
      * values. If the field value is one of the specified values, an error
      * message is generated.
      *
-     * ```proto
-     * message MyFixed32 {
+     *```proto
+     *message MyFixed32 {
      *  // value must not be in list [1, 2, 3]
      *  repeated fixed32 value = 1 (buf.validate.field).fixed32 = { not_in: [1, 2, 3] };
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>repeated fixed32 not_in = 7 [json_name = "notIn", (.buf.validate.priv.field) = { ... }
-     * </code>
-     *
+     * <code>repeated fixed32 not_in = 7 [json_name = "notIn", (.buf.validate.priv.field) = { ... }</code>
      * @return This builder for chaining.
      */
     public Builder clearNotIn() {
@@ -2093,9 +1869,9 @@ public final class Fixed32Rules extends com.google.protobuf.GeneratedMessageV3
       onChanged();
       return this;
     }
-
     @java.lang.Override
-    public final Builder setUnknownFields(final com.google.protobuf.UnknownFieldSet unknownFields) {
+    public final Builder setUnknownFields(
+        final com.google.protobuf.UnknownFieldSet unknownFields) {
       return super.setUnknownFields(unknownFields);
     }
 
@@ -2105,12 +1881,12 @@ public final class Fixed32Rules extends com.google.protobuf.GeneratedMessageV3
       return super.mergeUnknownFields(unknownFields);
     }
 
+
     // @@protoc_insertion_point(builder_scope:buf.validate.Fixed32Rules)
   }
 
   // @@protoc_insertion_point(class_scope:buf.validate.Fixed32Rules)
   private static final build.buf.validate.Fixed32Rules DEFAULT_INSTANCE;
-
   static {
     DEFAULT_INSTANCE = new build.buf.validate.Fixed32Rules();
   }
@@ -2119,27 +1895,27 @@ public final class Fixed32Rules extends com.google.protobuf.GeneratedMessageV3
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<Fixed32Rules> PARSER =
-      new com.google.protobuf.AbstractParser<Fixed32Rules>() {
-        @java.lang.Override
-        public Fixed32Rules parsePartialFrom(
-            com.google.protobuf.CodedInputStream input,
-            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-            throws com.google.protobuf.InvalidProtocolBufferException {
-          Builder builder = newBuilder();
-          try {
-            builder.mergeFrom(input, extensionRegistry);
-          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-            throw e.setUnfinishedMessage(builder.buildPartial());
-          } catch (com.google.protobuf.UninitializedMessageException e) {
-            throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
-          } catch (java.io.IOException e) {
-            throw new com.google.protobuf.InvalidProtocolBufferException(e)
-                .setUnfinishedMessage(builder.buildPartial());
-          }
-          return builder.buildPartial();
-        }
-      };
+  private static final com.google.protobuf.Parser<Fixed32Rules>
+      PARSER = new com.google.protobuf.AbstractParser<Fixed32Rules>() {
+    @java.lang.Override
+    public Fixed32Rules parsePartialFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      Builder builder = newBuilder();
+      try {
+        builder.mergeFrom(input, extensionRegistry);
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(builder.buildPartial());
+      } catch (com.google.protobuf.UninitializedMessageException e) {
+        throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(e)
+            .setUnfinishedMessage(builder.buildPartial());
+      }
+      return builder.buildPartial();
+    }
+  };
 
   public static com.google.protobuf.Parser<Fixed32Rules> parser() {
     return PARSER;
@@ -2154,4 +1930,6 @@ public final class Fixed32Rules extends com.google.protobuf.GeneratedMessageV3
   public build.buf.validate.Fixed32Rules getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
+
 }
+

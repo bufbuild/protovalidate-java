@@ -3,25 +3,22 @@
 
 package build.buf.validate.conformance.cases;
 
-public interface DurationNoneOrBuilder
-    extends
+public interface DurationNoneOrBuilder extends
     // @@protoc_insertion_point(interface_extends:buf.validate.conformance.cases.DurationNone)
     com.google.protobuf.MessageOrBuilder {
 
   /**
    * <code>.google.protobuf.Duration val = 1 [json_name = "val"];</code>
-   *
    * @return Whether the val field is set.
    */
   boolean hasVal();
-
   /**
    * <code>.google.protobuf.Duration val = 1 [json_name = "val"];</code>
-   *
    * @return The val.
    */
   com.google.protobuf.Duration getVal();
-
-  /** <code>.google.protobuf.Duration val = 1 [json_name = "val"];</code> */
+  /**
+   * <code>.google.protobuf.Duration val = 1 [json_name = "val"];</code>
+   */
   com.google.protobuf.DurationOrBuilder getValOrBuilder();
 }

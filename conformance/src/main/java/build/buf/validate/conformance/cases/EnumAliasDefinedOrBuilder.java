@@ -3,25 +3,17 @@
 
 package build.buf.validate.conformance.cases;
 
-public interface EnumAliasDefinedOrBuilder
-    extends
+public interface EnumAliasDefinedOrBuilder extends
     // @@protoc_insertion_point(interface_extends:buf.validate.conformance.cases.EnumAliasDefined)
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>
-   * .buf.validate.conformance.cases.TestEnumAlias val = 1 [json_name = "val", (.buf.validate.field) = { ... }
-   * </code>
-   *
+   * <code>.buf.validate.conformance.cases.TestEnumAlias val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
    * @return The enum numeric value on the wire for val.
    */
   int getValValue();
-
   /**
-   * <code>
-   * .buf.validate.conformance.cases.TestEnumAlias val = 1 [json_name = "val", (.buf.validate.field) = { ... }
-   * </code>
-   *
+   * <code>.buf.validate.conformance.cases.TestEnumAlias val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
    * @return The val.
    */
   build.buf.validate.conformance.cases.TestEnumAlias getVal();

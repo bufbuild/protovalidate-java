@@ -3,27 +3,39 @@
 
 package build.buf.validate.conformance.cases;
 
-public interface MapNoneOrBuilder
-    extends
+public interface MapNoneOrBuilder extends
     // @@protoc_insertion_point(interface_extends:buf.validate.conformance.cases.MapNone)
     com.google.protobuf.MessageOrBuilder {
 
-  /** <code>map&lt;uint32, bool&gt; val = 1 [json_name = "val"];</code> */
+  /**
+   * <code>map&lt;uint32, bool&gt; val = 1 [json_name = "val"];</code>
+   */
   int getValCount();
-
-  /** <code>map&lt;uint32, bool&gt; val = 1 [json_name = "val"];</code> */
-  boolean containsVal(int key);
-
-  /** Use {@link #getValMap()} instead. */
+  /**
+   * <code>map&lt;uint32, bool&gt; val = 1 [json_name = "val"];</code>
+   */
+  boolean containsVal(
+      int key);
+  /**
+   * Use {@link #getValMap()} instead.
+   */
   @java.lang.Deprecated
-  java.util.Map<java.lang.Integer, java.lang.Boolean> getVal();
-
-  /** <code>map&lt;uint32, bool&gt; val = 1 [json_name = "val"];</code> */
-  java.util.Map<java.lang.Integer, java.lang.Boolean> getValMap();
-
-  /** <code>map&lt;uint32, bool&gt; val = 1 [json_name = "val"];</code> */
-  boolean getValOrDefault(int key, boolean defaultValue);
-
-  /** <code>map&lt;uint32, bool&gt; val = 1 [json_name = "val"];</code> */
-  boolean getValOrThrow(int key);
+  java.util.Map<java.lang.Integer, java.lang.Boolean>
+  getVal();
+  /**
+   * <code>map&lt;uint32, bool&gt; val = 1 [json_name = "val"];</code>
+   */
+  java.util.Map<java.lang.Integer, java.lang.Boolean>
+  getValMap();
+  /**
+   * <code>map&lt;uint32, bool&gt; val = 1 [json_name = "val"];</code>
+   */
+  boolean getValOrDefault(
+      int key,
+      boolean defaultValue);
+  /**
+   * <code>map&lt;uint32, bool&gt; val = 1 [json_name = "val"];</code>
+   */
+  boolean getValOrThrow(
+      int key);
 }

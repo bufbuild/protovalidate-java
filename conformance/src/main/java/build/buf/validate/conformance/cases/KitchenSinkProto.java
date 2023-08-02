@@ -5,138 +5,117 @@ package build.buf.validate.conformance.cases;
 
 public final class KitchenSinkProto {
   private KitchenSinkProto() {}
-
-  public static void registerAllExtensions(com.google.protobuf.ExtensionRegistryLite registry) {}
-
-  public static void registerAllExtensions(com.google.protobuf.ExtensionRegistry registry) {
-    registerAllExtensions((com.google.protobuf.ExtensionRegistryLite) registry);
+  public static void registerAllExtensions(
+      com.google.protobuf.ExtensionRegistryLite registry) {
   }
 
+  public static void registerAllExtensions(
+      com.google.protobuf.ExtensionRegistry registry) {
+    registerAllExtensions(
+        (com.google.protobuf.ExtensionRegistryLite) registry);
+  }
   static final com.google.protobuf.Descriptors.Descriptor
-      internal_static_buf_validate_conformance_cases_ComplexTestMsg_descriptor;
-  static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+    internal_static_buf_validate_conformance_cases_ComplexTestMsg_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_buf_validate_conformance_cases_ComplexTestMsg_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
-      internal_static_buf_validate_conformance_cases_ComplexTestMsg_MapValEntry_descriptor;
-  static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+    internal_static_buf_validate_conformance_cases_ComplexTestMsg_MapValEntry_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_buf_validate_conformance_cases_ComplexTestMsg_MapValEntry_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
-      internal_static_buf_validate_conformance_cases_KitchenSinkMessage_descriptor;
-  static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+    internal_static_buf_validate_conformance_cases_KitchenSinkMessage_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_buf_validate_conformance_cases_KitchenSinkMessage_fieldAccessorTable;
 
-  public static com.google.protobuf.Descriptors.FileDescriptor getDescriptor() {
+  public static com.google.protobuf.Descriptors.FileDescriptor
+      getDescriptor() {
     return descriptor;
   }
-
-  private static com.google.protobuf.Descriptors.FileDescriptor descriptor;
-
+  private static  com.google.protobuf.Descriptors.FileDescriptor
+      descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n1buf/validate/conformance/cases/kitchen"
-          + "_sink.proto\022\036buf.validate.conformance.ca"
-          + "ses\032\033buf/validate/validate.proto\032\031google"
-          + "/protobuf/any.proto\032\036google/protobuf/dur"
-          + "ation.proto\032\037google/protobuf/timestamp.p"
-          + "roto\032\036google/protobuf/wrappers.proto\"\274\010\n"
-          + "\016ComplexTestMsg\022!\n\005const\030\001 \001(\tB\013\272H\010r\006\n\004a"
-          + "bcdR\005const\022F\n\006nested\030\002 \001(\0132..buf.validat"
-          + "e.conformance.cases.ComplexTestMsgR\006nest"
-          + "ed\022$\n\tint_const\030\003 \001(\005B\007\272H\004\032\002\010\005R\010intConst"
-          + "\022&\n\nbool_const\030\004 \001(\010B\007\272H\004j\002\010\000R\tboolConst"
-          + "\022D\n\tfloat_val\030\005 \001(\0132\033.google.protobuf.Fl"
-          + "oatValueB\n\272H\007\n\005%\000\000\000\000R\010floatVal\022A\n\007dur_va"
-          + "l\030\006 \001(\0132\031.google.protobuf.DurationB\r\272H\n\252"
-          + "\001\004\032\002\010\021\310\001\001R\006durVal\022=\n\006ts_val\030\007 \001(\0132\032.goog"
-          + "le.protobuf.TimestampB\n\272H\007\262\001\004*\002\010\007R\005tsVal"
-          + "\022H\n\007another\030\010 \001(\0132..buf.validate.conform"
-          + "ance.cases.ComplexTestMsgR\007another\022+\n\013fl"
-          + "oat_const\030\t \001(\002B\n\272H\007\n\005\025\000\000\000AR\nfloatConst\022"
-          + "4\n\tdouble_in\030\n \001(\001B\027\272H\024\022\0222\020\264\310v\276\237\214|@\000\000\000\000\000"
-          + "\300^@R\010doubleIn\022X\n\nenum_const\030\013 \001(\0162/.buf."
-          + "validate.conformance.cases.ComplexTestEn"
-          + "umB\010\272H\005\202\001\002\010\002R\tenumConst\022c\n\007any_val\030\014 \001(\013"
-          + "2\024.google.protobuf.AnyB4\272H1\242\001.\022,type.goo"
-          + "gleapis.com/google.protobuf.DurationR\006an"
-          + "yVal\022K\n\nrep_ts_val\030\r \003(\0132\032.google.protob"
-          + "uf.TimestampB\021\272H\016\222\001\013\"\t\262\001\0062\004\020\300\204=R\010repTsVa"
-          + "l\022a\n\007map_val\030\016 \003(\0132:.buf.validate.confor"
-          + "mance.cases.ComplexTestMsg.MapValEntryB\014"
-          + "\272H\t\232\001\006\"\004:\002\020\000R\006mapVal\022&\n\tbytes_val\030\017 \001(\014B"
-          + "\t\272H\006z\004\n\002\000\231R\010bytesVal\022\016\n\001x\030\020 \001(\tH\000R\001x\022\016\n\001"
-          + "y\030\021 \001(\005H\000R\001y\0329\n\013MapValEntry\022\020\n\003key\030\001 \001(\021"
-          + "R\003key\022\024\n\005value\030\002 \001(\tR\005value:\0028\001B\n\n\001o\022\005\272H"
-          + "\002\010\001\"V\n\022KitchenSinkMessage\022@\n\003val\030\001 \001(\0132."
-          + ".buf.validate.conformance.cases.ComplexT"
-          + "estMsgR\003val*j\n\017ComplexTestEnum\022!\n\035COMPLE"
-          + "X_TEST_ENUM_UNSPECIFIED\020\000\022\031\n\025COMPLEX_TES"
-          + "T_ENUM_ONE\020\001\022\031\n\025COMPLEX_TEST_ENUM_TWO\020\002B"
-          + "\324\001\n$build.buf.validate.conformance.cases"
-          + "B\020KitchenSinkProtoP\001\242\002\004BVCC\252\002\036Buf.Valida"
-          + "te.Conformance.Cases\312\002\036Buf\\Validate\\Conf"
-          + "ormance\\Cases\342\002*Buf\\Validate\\Conformance"
-          + "\\Cases\\GPBMetadata\352\002!Buf::Validate::Conf"
-          + "ormance::Casesb\006proto3"
+      "\n1buf/validate/conformance/cases/kitchen" +
+      "_sink.proto\022\036buf.validate.conformance.ca" +
+      "ses\032\033buf/validate/validate.proto\032\031google" +
+      "/protobuf/any.proto\032\036google/protobuf/dur" +
+      "ation.proto\032\037google/protobuf/timestamp.p" +
+      "roto\032\036google/protobuf/wrappers.proto\"\274\010\n" +
+      "\016ComplexTestMsg\022!\n\005const\030\001 \001(\tB\013\272H\010r\006\n\004a" +
+      "bcdR\005const\022F\n\006nested\030\002 \001(\0132..buf.validat" +
+      "e.conformance.cases.ComplexTestMsgR\006nest" +
+      "ed\022$\n\tint_const\030\003 \001(\005B\007\272H\004\032\002\010\005R\010intConst" +
+      "\022&\n\nbool_const\030\004 \001(\010B\007\272H\004j\002\010\000R\tboolConst" +
+      "\022D\n\tfloat_val\030\005 \001(\0132\033.google.protobuf.Fl" +
+      "oatValueB\n\272H\007\n\005%\000\000\000\000R\010floatVal\022A\n\007dur_va" +
+      "l\030\006 \001(\0132\031.google.protobuf.DurationB\r\272H\n\252" +
+      "\001\004\032\002\010\021\310\001\001R\006durVal\022=\n\006ts_val\030\007 \001(\0132\032.goog" +
+      "le.protobuf.TimestampB\n\272H\007\262\001\004*\002\010\007R\005tsVal" +
+      "\022H\n\007another\030\010 \001(\0132..buf.validate.conform" +
+      "ance.cases.ComplexTestMsgR\007another\022+\n\013fl" +
+      "oat_const\030\t \001(\002B\n\272H\007\n\005\025\000\000\000AR\nfloatConst\022" +
+      "4\n\tdouble_in\030\n \001(\001B\027\272H\024\022\0222\020\264\310v\276\237\214|@\000\000\000\000\000" +
+      "\300^@R\010doubleIn\022X\n\nenum_const\030\013 \001(\0162/.buf." +
+      "validate.conformance.cases.ComplexTestEn" +
+      "umB\010\272H\005\202\001\002\010\002R\tenumConst\022c\n\007any_val\030\014 \001(\013" +
+      "2\024.google.protobuf.AnyB4\272H1\242\001.\022,type.goo" +
+      "gleapis.com/google.protobuf.DurationR\006an" +
+      "yVal\022K\n\nrep_ts_val\030\r \003(\0132\032.google.protob" +
+      "uf.TimestampB\021\272H\016\222\001\013\"\t\262\001\0062\004\020\300\204=R\010repTsVa" +
+      "l\022a\n\007map_val\030\016 \003(\0132:.buf.validate.confor" +
+      "mance.cases.ComplexTestMsg.MapValEntryB\014" +
+      "\272H\t\232\001\006\"\004:\002\020\000R\006mapVal\022&\n\tbytes_val\030\017 \001(\014B" +
+      "\t\272H\006z\004\n\002\000\231R\010bytesVal\022\016\n\001x\030\020 \001(\tH\000R\001x\022\016\n\001" +
+      "y\030\021 \001(\005H\000R\001y\0329\n\013MapValEntry\022\020\n\003key\030\001 \001(\021" +
+      "R\003key\022\024\n\005value\030\002 \001(\tR\005value:\0028\001B\n\n\001o\022\005\272H" +
+      "\002\010\001\"V\n\022KitchenSinkMessage\022@\n\003val\030\001 \001(\0132." +
+      ".buf.validate.conformance.cases.ComplexT" +
+      "estMsgR\003val*j\n\017ComplexTestEnum\022!\n\035COMPLE" +
+      "X_TEST_ENUM_UNSPECIFIED\020\000\022\031\n\025COMPLEX_TES" +
+      "T_ENUM_ONE\020\001\022\031\n\025COMPLEX_TEST_ENUM_TWO\020\002B" +
+      "\324\001\n$build.buf.validate.conformance.cases" +
+      "B\020KitchenSinkProtoP\001\242\002\004BVCC\252\002\036Buf.Valida" +
+      "te.Conformance.Cases\312\002\036Buf\\Validate\\Conf" +
+      "ormance\\Cases\342\002*Buf\\Validate\\Conformance" +
+      "\\Cases\\GPBMetadata\352\002!Buf::Validate::Conf" +
+      "ormance::Casesb\006proto3"
     };
-    descriptor =
-        com.google.protobuf.Descriptors.FileDescriptor.internalBuildGeneratedFileFrom(
-            descriptorData,
-            new com.google.protobuf.Descriptors.FileDescriptor[] {
-              build.buf.validate.ValidateProto.getDescriptor(),
-              com.google.protobuf.AnyProto.getDescriptor(),
-              com.google.protobuf.DurationProto.getDescriptor(),
-              com.google.protobuf.TimestampProto.getDescriptor(),
-              com.google.protobuf.WrappersProto.getDescriptor(),
-            });
+    descriptor = com.google.protobuf.Descriptors.FileDescriptor
+      .internalBuildGeneratedFileFrom(descriptorData,
+        new com.google.protobuf.Descriptors.FileDescriptor[] {
+          build.buf.validate.ValidateProto.getDescriptor(),
+          com.google.protobuf.AnyProto.getDescriptor(),
+          com.google.protobuf.DurationProto.getDescriptor(),
+          com.google.protobuf.TimestampProto.getDescriptor(),
+          com.google.protobuf.WrappersProto.getDescriptor(),
+        });
     internal_static_buf_validate_conformance_cases_ComplexTestMsg_descriptor =
-        getDescriptor().getMessageTypes().get(0);
-    internal_static_buf_validate_conformance_cases_ComplexTestMsg_fieldAccessorTable =
-        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-            internal_static_buf_validate_conformance_cases_ComplexTestMsg_descriptor,
-            new java.lang.String[] {
-              "Const",
-              "Nested",
-              "IntConst",
-              "BoolConst",
-              "FloatVal",
-              "DurVal",
-              "TsVal",
-              "Another",
-              "FloatConst",
-              "DoubleIn",
-              "EnumConst",
-              "AnyVal",
-              "RepTsVal",
-              "MapVal",
-              "BytesVal",
-              "X",
-              "Y",
-              "O",
-            });
+      getDescriptor().getMessageTypes().get(0);
+    internal_static_buf_validate_conformance_cases_ComplexTestMsg_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_buf_validate_conformance_cases_ComplexTestMsg_descriptor,
+        new java.lang.String[] { "Const", "Nested", "IntConst", "BoolConst", "FloatVal", "DurVal", "TsVal", "Another", "FloatConst", "DoubleIn", "EnumConst", "AnyVal", "RepTsVal", "MapVal", "BytesVal", "X", "Y", "O", });
     internal_static_buf_validate_conformance_cases_ComplexTestMsg_MapValEntry_descriptor =
-        internal_static_buf_validate_conformance_cases_ComplexTestMsg_descriptor
-            .getNestedTypes()
-            .get(0);
-    internal_static_buf_validate_conformance_cases_ComplexTestMsg_MapValEntry_fieldAccessorTable =
-        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-            internal_static_buf_validate_conformance_cases_ComplexTestMsg_MapValEntry_descriptor,
-            new java.lang.String[] {
-              "Key", "Value",
-            });
+      internal_static_buf_validate_conformance_cases_ComplexTestMsg_descriptor.getNestedTypes().get(0);
+    internal_static_buf_validate_conformance_cases_ComplexTestMsg_MapValEntry_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_buf_validate_conformance_cases_ComplexTestMsg_MapValEntry_descriptor,
+        new java.lang.String[] { "Key", "Value", });
     internal_static_buf_validate_conformance_cases_KitchenSinkMessage_descriptor =
-        getDescriptor().getMessageTypes().get(1);
-    internal_static_buf_validate_conformance_cases_KitchenSinkMessage_fieldAccessorTable =
-        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-            internal_static_buf_validate_conformance_cases_KitchenSinkMessage_descriptor,
-            new java.lang.String[] {
-              "Val",
-            });
+      getDescriptor().getMessageTypes().get(1);
+    internal_static_buf_validate_conformance_cases_KitchenSinkMessage_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_buf_validate_conformance_cases_KitchenSinkMessage_descriptor,
+        new java.lang.String[] { "Val", });
     com.google.protobuf.ExtensionRegistry registry =
         com.google.protobuf.ExtensionRegistry.newInstance();
     registry.add(build.buf.validate.ValidateProto.field);
     registry.add(build.buf.validate.ValidateProto.oneof);
-    com.google.protobuf.Descriptors.FileDescriptor.internalUpdateFileDescriptor(
-        descriptor, registry);
+    com.google.protobuf.Descriptors.FileDescriptor
+        .internalUpdateFileDescriptor(descriptor, registry);
     build.buf.validate.ValidateProto.getDescriptor();
     com.google.protobuf.AnyProto.getDescriptor();
     com.google.protobuf.DurationProto.getDescriptor();

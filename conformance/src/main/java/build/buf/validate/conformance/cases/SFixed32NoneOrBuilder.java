@@ -3,14 +3,12 @@
 
 package build.buf.validate.conformance.cases;
 
-public interface SFixed32NoneOrBuilder
-    extends
+public interface SFixed32NoneOrBuilder extends
     // @@protoc_insertion_point(interface_extends:buf.validate.conformance.cases.SFixed32None)
     com.google.protobuf.MessageOrBuilder {
 
   /**
    * <code>sfixed32 val = 1 [json_name = "val"];</code>
-   *
    * @return The val.
    */
   int getVal();

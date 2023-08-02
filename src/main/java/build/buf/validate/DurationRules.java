@@ -4,25 +4,21 @@
 package build.buf.validate;
 
 /**
- *
- *
  * <pre>
  * DurationRules describe the constraints applied exclusively to the `google.protobuf.Duration` well-known type.
  * </pre>
  *
  * Protobuf type {@code buf.validate.DurationRules}
  */
-public final class DurationRules extends com.google.protobuf.GeneratedMessageV3
-    implements
+public final class DurationRules extends
+    com.google.protobuf.GeneratedMessageV3 implements
     // @@protoc_insertion_point(message_implements:buf.validate.DurationRules)
     DurationRulesOrBuilder {
-  private static final long serialVersionUID = 0L;
-
+private static final long serialVersionUID = 0L;
   // Use DurationRules.newBuilder() to construct.
   private DurationRules(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
-
   private DurationRules() {
     in_ = java.util.Collections.emptyList();
     notIn_ = java.util.Collections.emptyList();
@@ -30,19 +26,20 @@ public final class DurationRules extends com.google.protobuf.GeneratedMessageV3
 
   @java.lang.Override
   @SuppressWarnings({"unused"})
-  protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
+  protected java.lang.Object newInstance(
+      UnusedPrivateParameter unused) {
     return new DurationRules();
   }
 
-  public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+  public static final com.google.protobuf.Descriptors.Descriptor
+      getDescriptor() {
     return build.buf.validate.ValidateProto.internal_static_buf_validate_DurationRules_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return build.buf.validate.ValidateProto
-        .internal_static_buf_validate_DurationRules_fieldAccessorTable
+    return build.buf.validate.ValidateProto.internal_static_buf_validate_DurationRules_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
             build.buf.validate.DurationRules.class, build.buf.validate.DurationRules.Builder.class);
   }
@@ -50,80 +47,63 @@ public final class DurationRules extends com.google.protobuf.GeneratedMessageV3
   private int bitField0_;
   public static final int CONST_FIELD_NUMBER = 2;
   private com.google.protobuf.Duration const_;
-
   /**
-   *
-   *
    * <pre>
-   * `const` dictates that the field must match the specified value of the `google.protobuf.Duration` type exactly.
-   * If the field's value deviates from the specified value, an error message
-   * will be generated.
+   *`const` dictates that the field must match the specified value of the `google.protobuf.Duration` type exactly.
+   *If the field's value deviates from the specified value, an error message
+   *will be generated.
    *
-   * ```proto
-   * message MyDuration {
+   *```proto
+   *message MyDuration {
    *  // value must equal 5s
    *   google.protobuf.Duration value = 1 [(buf.validate.field).duration.const = "5s"];
-   * }
-   * ```
+   *}
+   *```
    * </pre>
    *
-   * <code>
-   * optional .google.protobuf.Duration const = 2 [json_name = "const", (.buf.validate.priv.field) = { ... }
-   * </code>
-   *
+   * <code>optional .google.protobuf.Duration const = 2 [json_name = "const", (.buf.validate.priv.field) = { ... }</code>
    * @return Whether the const field is set.
    */
   @java.lang.Override
   public boolean hasConst() {
     return ((bitField0_ & 0x00000001) != 0);
   }
-
   /**
-   *
-   *
    * <pre>
-   * `const` dictates that the field must match the specified value of the `google.protobuf.Duration` type exactly.
-   * If the field's value deviates from the specified value, an error message
-   * will be generated.
+   *`const` dictates that the field must match the specified value of the `google.protobuf.Duration` type exactly.
+   *If the field's value deviates from the specified value, an error message
+   *will be generated.
    *
-   * ```proto
-   * message MyDuration {
+   *```proto
+   *message MyDuration {
    *  // value must equal 5s
    *   google.protobuf.Duration value = 1 [(buf.validate.field).duration.const = "5s"];
-   * }
-   * ```
+   *}
+   *```
    * </pre>
    *
-   * <code>
-   * optional .google.protobuf.Duration const = 2 [json_name = "const", (.buf.validate.priv.field) = { ... }
-   * </code>
-   *
+   * <code>optional .google.protobuf.Duration const = 2 [json_name = "const", (.buf.validate.priv.field) = { ... }</code>
    * @return The const.
    */
   @java.lang.Override
   public com.google.protobuf.Duration getConst() {
     return const_ == null ? com.google.protobuf.Duration.getDefaultInstance() : const_;
   }
-
   /**
-   *
-   *
    * <pre>
-   * `const` dictates that the field must match the specified value of the `google.protobuf.Duration` type exactly.
-   * If the field's value deviates from the specified value, an error message
-   * will be generated.
+   *`const` dictates that the field must match the specified value of the `google.protobuf.Duration` type exactly.
+   *If the field's value deviates from the specified value, an error message
+   *will be generated.
    *
-   * ```proto
-   * message MyDuration {
+   *```proto
+   *message MyDuration {
    *  // value must equal 5s
    *   google.protobuf.Duration value = 1 [(buf.validate.field).duration.const = "5s"];
-   * }
-   * ```
+   *}
+   *```
    * </pre>
    *
-   * <code>
-   * optional .google.protobuf.Duration const = 2 [json_name = "const", (.buf.validate.priv.field) = { ... }
-   * </code>
+   * <code>optional .google.protobuf.Duration const = 2 [json_name = "const", (.buf.validate.priv.field) = { ... }</code>
    */
   @java.lang.Override
   public com.google.protobuf.DurationOrBuilder getConstOrBuilder() {
@@ -132,80 +112,63 @@ public final class DurationRules extends com.google.protobuf.GeneratedMessageV3
 
   public static final int LT_FIELD_NUMBER = 3;
   private com.google.protobuf.Duration lt_;
-
   /**
-   *
-   *
    * <pre>
-   * `lt` stipulates that the field must be less than the specified value of the `google.protobuf.Duration` type,
-   * exclusive. If the field's value is greater than or equal to the specified
-   * value, an error message will be generated.
+   *`lt` stipulates that the field must be less than the specified value of the `google.protobuf.Duration` type,
+   *exclusive. If the field's value is greater than or equal to the specified
+   *value, an error message will be generated.
    *
-   * ```proto
-   * message MyDuration {
+   *```proto
+   *message MyDuration {
    *  // value must be less than 5s
    *   google.protobuf.Duration value = 1 [(buf.validate.field).duration.lt = "5s"];
-   * }
-   * ```
+   *}
+   *```
    * </pre>
    *
-   * <code>
-   * optional .google.protobuf.Duration lt = 3 [json_name = "lt", (.buf.validate.priv.field) = { ... }
-   * </code>
-   *
+   * <code>optional .google.protobuf.Duration lt = 3 [json_name = "lt", (.buf.validate.priv.field) = { ... }</code>
    * @return Whether the lt field is set.
    */
   @java.lang.Override
   public boolean hasLt() {
     return ((bitField0_ & 0x00000002) != 0);
   }
-
   /**
-   *
-   *
    * <pre>
-   * `lt` stipulates that the field must be less than the specified value of the `google.protobuf.Duration` type,
-   * exclusive. If the field's value is greater than or equal to the specified
-   * value, an error message will be generated.
+   *`lt` stipulates that the field must be less than the specified value of the `google.protobuf.Duration` type,
+   *exclusive. If the field's value is greater than or equal to the specified
+   *value, an error message will be generated.
    *
-   * ```proto
-   * message MyDuration {
+   *```proto
+   *message MyDuration {
    *  // value must be less than 5s
    *   google.protobuf.Duration value = 1 [(buf.validate.field).duration.lt = "5s"];
-   * }
-   * ```
+   *}
+   *```
    * </pre>
    *
-   * <code>
-   * optional .google.protobuf.Duration lt = 3 [json_name = "lt", (.buf.validate.priv.field) = { ... }
-   * </code>
-   *
+   * <code>optional .google.protobuf.Duration lt = 3 [json_name = "lt", (.buf.validate.priv.field) = { ... }</code>
    * @return The lt.
    */
   @java.lang.Override
   public com.google.protobuf.Duration getLt() {
     return lt_ == null ? com.google.protobuf.Duration.getDefaultInstance() : lt_;
   }
-
   /**
-   *
-   *
    * <pre>
-   * `lt` stipulates that the field must be less than the specified value of the `google.protobuf.Duration` type,
-   * exclusive. If the field's value is greater than or equal to the specified
-   * value, an error message will be generated.
+   *`lt` stipulates that the field must be less than the specified value of the `google.protobuf.Duration` type,
+   *exclusive. If the field's value is greater than or equal to the specified
+   *value, an error message will be generated.
    *
-   * ```proto
-   * message MyDuration {
+   *```proto
+   *message MyDuration {
    *  // value must be less than 5s
    *   google.protobuf.Duration value = 1 [(buf.validate.field).duration.lt = "5s"];
-   * }
-   * ```
+   *}
+   *```
    * </pre>
    *
-   * <code>
-   * optional .google.protobuf.Duration lt = 3 [json_name = "lt", (.buf.validate.priv.field) = { ... }
-   * </code>
+   * <code>optional .google.protobuf.Duration lt = 3 [json_name = "lt", (.buf.validate.priv.field) = { ... }</code>
    */
   @java.lang.Override
   public com.google.protobuf.DurationOrBuilder getLtOrBuilder() {
@@ -214,80 +177,63 @@ public final class DurationRules extends com.google.protobuf.GeneratedMessageV3
 
   public static final int LTE_FIELD_NUMBER = 4;
   private com.google.protobuf.Duration lte_;
-
   /**
-   *
-   *
    * <pre>
-   * `lte` indicates that the field must be less than or equal to the specified
-   * value of the `google.protobuf.Duration` type, inclusive. If the field's value is greater than the specified value,
-   * an error message will be generated.
+   *`lte` indicates that the field must be less than or equal to the specified
+   *value of the `google.protobuf.Duration` type, inclusive. If the field's value is greater than the specified value,
+   *an error message will be generated.
    *
-   * ```proto
-   * message MyDuration {
+   *```proto
+   *message MyDuration {
    *  // value must be less than or equal to 10s
    *   google.protobuf.Duration value = 1 [(buf.validate.field).duration.lte = "10s"];
-   * }
-   * ```
+   *}
+   *```
    * </pre>
    *
-   * <code>
-   * optional .google.protobuf.Duration lte = 4 [json_name = "lte", (.buf.validate.priv.field) = { ... }
-   * </code>
-   *
+   * <code>optional .google.protobuf.Duration lte = 4 [json_name = "lte", (.buf.validate.priv.field) = { ... }</code>
    * @return Whether the lte field is set.
    */
   @java.lang.Override
   public boolean hasLte() {
     return ((bitField0_ & 0x00000004) != 0);
   }
-
   /**
-   *
-   *
    * <pre>
-   * `lte` indicates that the field must be less than or equal to the specified
-   * value of the `google.protobuf.Duration` type, inclusive. If the field's value is greater than the specified value,
-   * an error message will be generated.
+   *`lte` indicates that the field must be less than or equal to the specified
+   *value of the `google.protobuf.Duration` type, inclusive. If the field's value is greater than the specified value,
+   *an error message will be generated.
    *
-   * ```proto
-   * message MyDuration {
+   *```proto
+   *message MyDuration {
    *  // value must be less than or equal to 10s
    *   google.protobuf.Duration value = 1 [(buf.validate.field).duration.lte = "10s"];
-   * }
-   * ```
+   *}
+   *```
    * </pre>
    *
-   * <code>
-   * optional .google.protobuf.Duration lte = 4 [json_name = "lte", (.buf.validate.priv.field) = { ... }
-   * </code>
-   *
+   * <code>optional .google.protobuf.Duration lte = 4 [json_name = "lte", (.buf.validate.priv.field) = { ... }</code>
    * @return The lte.
    */
   @java.lang.Override
   public com.google.protobuf.Duration getLte() {
     return lte_ == null ? com.google.protobuf.Duration.getDefaultInstance() : lte_;
   }
-
   /**
-   *
-   *
    * <pre>
-   * `lte` indicates that the field must be less than or equal to the specified
-   * value of the `google.protobuf.Duration` type, inclusive. If the field's value is greater than the specified value,
-   * an error message will be generated.
+   *`lte` indicates that the field must be less than or equal to the specified
+   *value of the `google.protobuf.Duration` type, inclusive. If the field's value is greater than the specified value,
+   *an error message will be generated.
    *
-   * ```proto
-   * message MyDuration {
+   *```proto
+   *message MyDuration {
    *  // value must be less than or equal to 10s
    *   google.protobuf.Duration value = 1 [(buf.validate.field).duration.lte = "10s"];
-   * }
-   * ```
+   *}
+   *```
    * </pre>
    *
-   * <code>
-   * optional .google.protobuf.Duration lte = 4 [json_name = "lte", (.buf.validate.priv.field) = { ... }
-   * </code>
+   * <code>optional .google.protobuf.Duration lte = 4 [json_name = "lte", (.buf.validate.priv.field) = { ... }</code>
    */
   @java.lang.Override
   public com.google.protobuf.DurationOrBuilder getLteOrBuilder() {
@@ -296,10 +242,7 @@ public final class DurationRules extends com.google.protobuf.GeneratedMessageV3
 
   public static final int GT_FIELD_NUMBER = 5;
   private com.google.protobuf.Duration gt_;
-
   /**
-   *
-   *
    * <pre>
    * `gt` requires the duration field value to be greater than the specified
    * value (exclusive). If the value of `gt` is larger than a specified `lt`
@@ -307,8 +250,8 @@ public final class DurationRules extends com.google.protobuf.GeneratedMessageV3
    * specified range. If the field value doesn't meet the required conditions,
    * an error message is generated.
    *
-   * ```proto
-   * message MyDuration {
+   *```proto
+   *message MyDuration {
    *  // duration must be greater than 5s [duration.gt]
    *  google.protobuf.Duration value = 1 [(buf.validate.field).duration.gt = { seconds: 5 }];
    *
@@ -317,24 +260,18 @@ public final class DurationRules extends com.google.protobuf.GeneratedMessageV3
    *
    *  // duration must be greater than 10s or less than 5s [duration.gt_lt_exclusive]
    *  google.protobuf.Duration other_value = 3 [(buf.validate.field).duration = { gt: { seconds: 10 }, lt: { seconds: 5 } }];
-   * }
-   * ```
+   *}
+   *```
    * </pre>
    *
-   * <code>
-   * optional .google.protobuf.Duration gt = 5 [json_name = "gt", (.buf.validate.priv.field) = { ... }
-   * </code>
-   *
+   * <code>optional .google.protobuf.Duration gt = 5 [json_name = "gt", (.buf.validate.priv.field) = { ... }</code>
    * @return Whether the gt field is set.
    */
   @java.lang.Override
   public boolean hasGt() {
     return ((bitField0_ & 0x00000008) != 0);
   }
-
   /**
-   *
-   *
    * <pre>
    * `gt` requires the duration field value to be greater than the specified
    * value (exclusive). If the value of `gt` is larger than a specified `lt`
@@ -342,8 +279,8 @@ public final class DurationRules extends com.google.protobuf.GeneratedMessageV3
    * specified range. If the field value doesn't meet the required conditions,
    * an error message is generated.
    *
-   * ```proto
-   * message MyDuration {
+   *```proto
+   *message MyDuration {
    *  // duration must be greater than 5s [duration.gt]
    *  google.protobuf.Duration value = 1 [(buf.validate.field).duration.gt = { seconds: 5 }];
    *
@@ -352,24 +289,18 @@ public final class DurationRules extends com.google.protobuf.GeneratedMessageV3
    *
    *  // duration must be greater than 10s or less than 5s [duration.gt_lt_exclusive]
    *  google.protobuf.Duration other_value = 3 [(buf.validate.field).duration = { gt: { seconds: 10 }, lt: { seconds: 5 } }];
-   * }
-   * ```
+   *}
+   *```
    * </pre>
    *
-   * <code>
-   * optional .google.protobuf.Duration gt = 5 [json_name = "gt", (.buf.validate.priv.field) = { ... }
-   * </code>
-   *
+   * <code>optional .google.protobuf.Duration gt = 5 [json_name = "gt", (.buf.validate.priv.field) = { ... }</code>
    * @return The gt.
    */
   @java.lang.Override
   public com.google.protobuf.Duration getGt() {
     return gt_ == null ? com.google.protobuf.Duration.getDefaultInstance() : gt_;
   }
-
   /**
-   *
-   *
    * <pre>
    * `gt` requires the duration field value to be greater than the specified
    * value (exclusive). If the value of `gt` is larger than a specified `lt`
@@ -377,8 +308,8 @@ public final class DurationRules extends com.google.protobuf.GeneratedMessageV3
    * specified range. If the field value doesn't meet the required conditions,
    * an error message is generated.
    *
-   * ```proto
-   * message MyDuration {
+   *```proto
+   *message MyDuration {
    *  // duration must be greater than 5s [duration.gt]
    *  google.protobuf.Duration value = 1 [(buf.validate.field).duration.gt = { seconds: 5 }];
    *
@@ -387,13 +318,11 @@ public final class DurationRules extends com.google.protobuf.GeneratedMessageV3
    *
    *  // duration must be greater than 10s or less than 5s [duration.gt_lt_exclusive]
    *  google.protobuf.Duration other_value = 3 [(buf.validate.field).duration = { gt: { seconds: 10 }, lt: { seconds: 5 } }];
-   * }
-   * ```
+   *}
+   *```
    * </pre>
    *
-   * <code>
-   * optional .google.protobuf.Duration gt = 5 [json_name = "gt", (.buf.validate.priv.field) = { ... }
-   * </code>
+   * <code>optional .google.protobuf.Duration gt = 5 [json_name = "gt", (.buf.validate.priv.field) = { ... }</code>
    */
   @java.lang.Override
   public com.google.protobuf.DurationOrBuilder getGtOrBuilder() {
@@ -402,10 +331,7 @@ public final class DurationRules extends com.google.protobuf.GeneratedMessageV3
 
   public static final int GTE_FIELD_NUMBER = 6;
   private com.google.protobuf.Duration gte_;
-
   /**
-   *
-   *
    * <pre>
    * `gte` requires the duration field value to be greater than or equal to the
    * specified value (exclusive). If the value of `gte` is larger than a
@@ -413,8 +339,8 @@ public final class DurationRules extends com.google.protobuf.GeneratedMessageV3
    * be outside the specified range. If the field value doesn't meet the
    * required conditions, an error message is generated.
    *
-   * ```proto
-   * message MyDuration {
+   *```proto
+   *message MyDuration {
    *  // duration must be greater than or equal to 5s [duration.gte]
    *  google.protobuf.Duration value = 1 [(buf.validate.field).duration.gte = { seconds: 5 }];
    *
@@ -423,24 +349,18 @@ public final class DurationRules extends com.google.protobuf.GeneratedMessageV3
    *
    *  // duration must be greater than or equal to 10s or less than 5s [duration.gte_lt_exclusive]
    *  google.protobuf.Duration other_value = 3 [(buf.validate.field).duration = { gte: { seconds: 10 }, lt: { seconds: 5 } }];
-   * }
-   * ```
+   *}
+   *```
    * </pre>
    *
-   * <code>
-   * optional .google.protobuf.Duration gte = 6 [json_name = "gte", (.buf.validate.priv.field) = { ... }
-   * </code>
-   *
+   * <code>optional .google.protobuf.Duration gte = 6 [json_name = "gte", (.buf.validate.priv.field) = { ... }</code>
    * @return Whether the gte field is set.
    */
   @java.lang.Override
   public boolean hasGte() {
     return ((bitField0_ & 0x00000010) != 0);
   }
-
   /**
-   *
-   *
    * <pre>
    * `gte` requires the duration field value to be greater than or equal to the
    * specified value (exclusive). If the value of `gte` is larger than a
@@ -448,8 +368,8 @@ public final class DurationRules extends com.google.protobuf.GeneratedMessageV3
    * be outside the specified range. If the field value doesn't meet the
    * required conditions, an error message is generated.
    *
-   * ```proto
-   * message MyDuration {
+   *```proto
+   *message MyDuration {
    *  // duration must be greater than or equal to 5s [duration.gte]
    *  google.protobuf.Duration value = 1 [(buf.validate.field).duration.gte = { seconds: 5 }];
    *
@@ -458,24 +378,18 @@ public final class DurationRules extends com.google.protobuf.GeneratedMessageV3
    *
    *  // duration must be greater than or equal to 10s or less than 5s [duration.gte_lt_exclusive]
    *  google.protobuf.Duration other_value = 3 [(buf.validate.field).duration = { gte: { seconds: 10 }, lt: { seconds: 5 } }];
-   * }
-   * ```
+   *}
+   *```
    * </pre>
    *
-   * <code>
-   * optional .google.protobuf.Duration gte = 6 [json_name = "gte", (.buf.validate.priv.field) = { ... }
-   * </code>
-   *
+   * <code>optional .google.protobuf.Duration gte = 6 [json_name = "gte", (.buf.validate.priv.field) = { ... }</code>
    * @return The gte.
    */
   @java.lang.Override
   public com.google.protobuf.Duration getGte() {
     return gte_ == null ? com.google.protobuf.Duration.getDefaultInstance() : gte_;
   }
-
   /**
-   *
-   *
    * <pre>
    * `gte` requires the duration field value to be greater than or equal to the
    * specified value (exclusive). If the value of `gte` is larger than a
@@ -483,8 +397,8 @@ public final class DurationRules extends com.google.protobuf.GeneratedMessageV3
    * be outside the specified range. If the field value doesn't meet the
    * required conditions, an error message is generated.
    *
-   * ```proto
-   * message MyDuration {
+   *```proto
+   *message MyDuration {
    *  // duration must be greater than or equal to 5s [duration.gte]
    *  google.protobuf.Duration value = 1 [(buf.validate.field).duration.gte = { seconds: 5 }];
    *
@@ -493,13 +407,11 @@ public final class DurationRules extends com.google.protobuf.GeneratedMessageV3
    *
    *  // duration must be greater than or equal to 10s or less than 5s [duration.gte_lt_exclusive]
    *  google.protobuf.Duration other_value = 3 [(buf.validate.field).duration = { gte: { seconds: 10 }, lt: { seconds: 5 } }];
-   * }
-   * ```
+   *}
+   *```
    * </pre>
    *
-   * <code>
-   * optional .google.protobuf.Duration gte = 6 [json_name = "gte", (.buf.validate.priv.field) = { ... }
-   * </code>
+   * <code>optional .google.protobuf.Duration gte = 6 [json_name = "gte", (.buf.validate.priv.field) = { ... }</code>
    */
   @java.lang.Override
   public com.google.protobuf.DurationOrBuilder getGteOrBuilder() {
@@ -507,272 +419,223 @@ public final class DurationRules extends com.google.protobuf.GeneratedMessageV3
   }
 
   public static final int IN_FIELD_NUMBER = 7;
-
   @SuppressWarnings("serial")
   private java.util.List<com.google.protobuf.Duration> in_;
-
   /**
-   *
-   *
    * <pre>
-   * `in` asserts that the field must be equal to one of the specified values of the `google.protobuf.Duration` type.
-   * If the field's value doesn't correspond to any of the specified values,
-   * an error message will be generated.
+   *`in` asserts that the field must be equal to one of the specified values of the `google.protobuf.Duration` type.
+   *If the field's value doesn't correspond to any of the specified values,
+   *an error message will be generated.
    *
-   * ```proto
-   * message MyDuration {
+   *```proto
+   *message MyDuration {
    *  // value must be in list [1s, 2s, 3s]
    *   google.protobuf.Duration value = 1 [(buf.validate.field).duration.in = ["1s", "2s", "3s"]];
-   * }
-   * ```
+   *}
+   *```
    * </pre>
    *
-   * <code>
-   * repeated .google.protobuf.Duration in = 7 [json_name = "in", (.buf.validate.priv.field) = { ... }
-   * </code>
+   * <code>repeated .google.protobuf.Duration in = 7 [json_name = "in", (.buf.validate.priv.field) = { ... }</code>
    */
   @java.lang.Override
   public java.util.List<com.google.protobuf.Duration> getInList() {
     return in_;
   }
-
   /**
-   *
-   *
    * <pre>
-   * `in` asserts that the field must be equal to one of the specified values of the `google.protobuf.Duration` type.
-   * If the field's value doesn't correspond to any of the specified values,
-   * an error message will be generated.
+   *`in` asserts that the field must be equal to one of the specified values of the `google.protobuf.Duration` type.
+   *If the field's value doesn't correspond to any of the specified values,
+   *an error message will be generated.
    *
-   * ```proto
-   * message MyDuration {
+   *```proto
+   *message MyDuration {
    *  // value must be in list [1s, 2s, 3s]
    *   google.protobuf.Duration value = 1 [(buf.validate.field).duration.in = ["1s", "2s", "3s"]];
-   * }
-   * ```
+   *}
+   *```
    * </pre>
    *
-   * <code>
-   * repeated .google.protobuf.Duration in = 7 [json_name = "in", (.buf.validate.priv.field) = { ... }
-   * </code>
+   * <code>repeated .google.protobuf.Duration in = 7 [json_name = "in", (.buf.validate.priv.field) = { ... }</code>
    */
   @java.lang.Override
-  public java.util.List<? extends com.google.protobuf.DurationOrBuilder> getInOrBuilderList() {
+  public java.util.List<? extends com.google.protobuf.DurationOrBuilder> 
+      getInOrBuilderList() {
     return in_;
   }
-
   /**
-   *
-   *
    * <pre>
-   * `in` asserts that the field must be equal to one of the specified values of the `google.protobuf.Duration` type.
-   * If the field's value doesn't correspond to any of the specified values,
-   * an error message will be generated.
+   *`in` asserts that the field must be equal to one of the specified values of the `google.protobuf.Duration` type.
+   *If the field's value doesn't correspond to any of the specified values,
+   *an error message will be generated.
    *
-   * ```proto
-   * message MyDuration {
+   *```proto
+   *message MyDuration {
    *  // value must be in list [1s, 2s, 3s]
    *   google.protobuf.Duration value = 1 [(buf.validate.field).duration.in = ["1s", "2s", "3s"]];
-   * }
-   * ```
+   *}
+   *```
    * </pre>
    *
-   * <code>
-   * repeated .google.protobuf.Duration in = 7 [json_name = "in", (.buf.validate.priv.field) = { ... }
-   * </code>
+   * <code>repeated .google.protobuf.Duration in = 7 [json_name = "in", (.buf.validate.priv.field) = { ... }</code>
    */
   @java.lang.Override
   public int getInCount() {
     return in_.size();
   }
-
   /**
-   *
-   *
    * <pre>
-   * `in` asserts that the field must be equal to one of the specified values of the `google.protobuf.Duration` type.
-   * If the field's value doesn't correspond to any of the specified values,
-   * an error message will be generated.
+   *`in` asserts that the field must be equal to one of the specified values of the `google.protobuf.Duration` type.
+   *If the field's value doesn't correspond to any of the specified values,
+   *an error message will be generated.
    *
-   * ```proto
-   * message MyDuration {
+   *```proto
+   *message MyDuration {
    *  // value must be in list [1s, 2s, 3s]
    *   google.protobuf.Duration value = 1 [(buf.validate.field).duration.in = ["1s", "2s", "3s"]];
-   * }
-   * ```
+   *}
+   *```
    * </pre>
    *
-   * <code>
-   * repeated .google.protobuf.Duration in = 7 [json_name = "in", (.buf.validate.priv.field) = { ... }
-   * </code>
+   * <code>repeated .google.protobuf.Duration in = 7 [json_name = "in", (.buf.validate.priv.field) = { ... }</code>
    */
   @java.lang.Override
   public com.google.protobuf.Duration getIn(int index) {
     return in_.get(index);
   }
-
   /**
-   *
-   *
    * <pre>
-   * `in` asserts that the field must be equal to one of the specified values of the `google.protobuf.Duration` type.
-   * If the field's value doesn't correspond to any of the specified values,
-   * an error message will be generated.
+   *`in` asserts that the field must be equal to one of the specified values of the `google.protobuf.Duration` type.
+   *If the field's value doesn't correspond to any of the specified values,
+   *an error message will be generated.
    *
-   * ```proto
-   * message MyDuration {
+   *```proto
+   *message MyDuration {
    *  // value must be in list [1s, 2s, 3s]
    *   google.protobuf.Duration value = 1 [(buf.validate.field).duration.in = ["1s", "2s", "3s"]];
-   * }
-   * ```
+   *}
+   *```
    * </pre>
    *
-   * <code>
-   * repeated .google.protobuf.Duration in = 7 [json_name = "in", (.buf.validate.priv.field) = { ... }
-   * </code>
+   * <code>repeated .google.protobuf.Duration in = 7 [json_name = "in", (.buf.validate.priv.field) = { ... }</code>
    */
   @java.lang.Override
-  public com.google.protobuf.DurationOrBuilder getInOrBuilder(int index) {
+  public com.google.protobuf.DurationOrBuilder getInOrBuilder(
+      int index) {
     return in_.get(index);
   }
 
   public static final int NOT_IN_FIELD_NUMBER = 8;
-
   @SuppressWarnings("serial")
   private java.util.List<com.google.protobuf.Duration> notIn_;
-
   /**
-   *
-   *
    * <pre>
-   * `not_in` denotes that the field must not be equal to
-   * any of the specified values of the `google.protobuf.Duration` type.
-   * If the field's value matches any of these values, an error message will be
-   * generated.
+   *`not_in` denotes that the field must not be equal to
+   *any of the specified values of the `google.protobuf.Duration` type.
+   *If the field's value matches any of these values, an error message will be
+   *generated.
    *
-   * ```proto
-   * message MyDuration {
+   *```proto
+   *message MyDuration {
    *  // value must not be in list [1s, 2s, 3s]
    *   google.protobuf.Duration value = 1 [(buf.validate.field).duration.not_in = ["1s", "2s", "3s"]];
-   * }
-   * ```
+   *}
+   *```
    * </pre>
    *
-   * <code>
-   * repeated .google.protobuf.Duration not_in = 8 [json_name = "notIn", (.buf.validate.priv.field) = { ... }
-   * </code>
+   * <code>repeated .google.protobuf.Duration not_in = 8 [json_name = "notIn", (.buf.validate.priv.field) = { ... }</code>
    */
   @java.lang.Override
   public java.util.List<com.google.protobuf.Duration> getNotInList() {
     return notIn_;
   }
-
   /**
-   *
-   *
    * <pre>
-   * `not_in` denotes that the field must not be equal to
-   * any of the specified values of the `google.protobuf.Duration` type.
-   * If the field's value matches any of these values, an error message will be
-   * generated.
+   *`not_in` denotes that the field must not be equal to
+   *any of the specified values of the `google.protobuf.Duration` type.
+   *If the field's value matches any of these values, an error message will be
+   *generated.
    *
-   * ```proto
-   * message MyDuration {
+   *```proto
+   *message MyDuration {
    *  // value must not be in list [1s, 2s, 3s]
    *   google.protobuf.Duration value = 1 [(buf.validate.field).duration.not_in = ["1s", "2s", "3s"]];
-   * }
-   * ```
+   *}
+   *```
    * </pre>
    *
-   * <code>
-   * repeated .google.protobuf.Duration not_in = 8 [json_name = "notIn", (.buf.validate.priv.field) = { ... }
-   * </code>
+   * <code>repeated .google.protobuf.Duration not_in = 8 [json_name = "notIn", (.buf.validate.priv.field) = { ... }</code>
    */
   @java.lang.Override
-  public java.util.List<? extends com.google.protobuf.DurationOrBuilder> getNotInOrBuilderList() {
+  public java.util.List<? extends com.google.protobuf.DurationOrBuilder> 
+      getNotInOrBuilderList() {
     return notIn_;
   }
-
   /**
-   *
-   *
    * <pre>
-   * `not_in` denotes that the field must not be equal to
-   * any of the specified values of the `google.protobuf.Duration` type.
-   * If the field's value matches any of these values, an error message will be
-   * generated.
+   *`not_in` denotes that the field must not be equal to
+   *any of the specified values of the `google.protobuf.Duration` type.
+   *If the field's value matches any of these values, an error message will be
+   *generated.
    *
-   * ```proto
-   * message MyDuration {
+   *```proto
+   *message MyDuration {
    *  // value must not be in list [1s, 2s, 3s]
    *   google.protobuf.Duration value = 1 [(buf.validate.field).duration.not_in = ["1s", "2s", "3s"]];
-   * }
-   * ```
+   *}
+   *```
    * </pre>
    *
-   * <code>
-   * repeated .google.protobuf.Duration not_in = 8 [json_name = "notIn", (.buf.validate.priv.field) = { ... }
-   * </code>
+   * <code>repeated .google.protobuf.Duration not_in = 8 [json_name = "notIn", (.buf.validate.priv.field) = { ... }</code>
    */
   @java.lang.Override
   public int getNotInCount() {
     return notIn_.size();
   }
-
   /**
-   *
-   *
    * <pre>
-   * `not_in` denotes that the field must not be equal to
-   * any of the specified values of the `google.protobuf.Duration` type.
-   * If the field's value matches any of these values, an error message will be
-   * generated.
+   *`not_in` denotes that the field must not be equal to
+   *any of the specified values of the `google.protobuf.Duration` type.
+   *If the field's value matches any of these values, an error message will be
+   *generated.
    *
-   * ```proto
-   * message MyDuration {
+   *```proto
+   *message MyDuration {
    *  // value must not be in list [1s, 2s, 3s]
    *   google.protobuf.Duration value = 1 [(buf.validate.field).duration.not_in = ["1s", "2s", "3s"]];
-   * }
-   * ```
+   *}
+   *```
    * </pre>
    *
-   * <code>
-   * repeated .google.protobuf.Duration not_in = 8 [json_name = "notIn", (.buf.validate.priv.field) = { ... }
-   * </code>
+   * <code>repeated .google.protobuf.Duration not_in = 8 [json_name = "notIn", (.buf.validate.priv.field) = { ... }</code>
    */
   @java.lang.Override
   public com.google.protobuf.Duration getNotIn(int index) {
     return notIn_.get(index);
   }
-
   /**
-   *
-   *
    * <pre>
-   * `not_in` denotes that the field must not be equal to
-   * any of the specified values of the `google.protobuf.Duration` type.
-   * If the field's value matches any of these values, an error message will be
-   * generated.
+   *`not_in` denotes that the field must not be equal to
+   *any of the specified values of the `google.protobuf.Duration` type.
+   *If the field's value matches any of these values, an error message will be
+   *generated.
    *
-   * ```proto
-   * message MyDuration {
+   *```proto
+   *message MyDuration {
    *  // value must not be in list [1s, 2s, 3s]
    *   google.protobuf.Duration value = 1 [(buf.validate.field).duration.not_in = ["1s", "2s", "3s"]];
-   * }
-   * ```
+   *}
+   *```
    * </pre>
    *
-   * <code>
-   * repeated .google.protobuf.Duration not_in = 8 [json_name = "notIn", (.buf.validate.priv.field) = { ... }
-   * </code>
+   * <code>repeated .google.protobuf.Duration not_in = 8 [json_name = "notIn", (.buf.validate.priv.field) = { ... }</code>
    */
   @java.lang.Override
-  public com.google.protobuf.DurationOrBuilder getNotInOrBuilder(int index) {
+  public com.google.protobuf.DurationOrBuilder getNotInOrBuilder(
+      int index) {
     return notIn_.get(index);
   }
 
   private byte memoizedIsInitialized = -1;
-
   @java.lang.Override
   public final boolean isInitialized() {
     byte isInitialized = memoizedIsInitialized;
@@ -784,7 +647,8 @@ public final class DurationRules extends com.google.protobuf.GeneratedMessageV3
   }
 
   @java.lang.Override
-  public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
+  public void writeTo(com.google.protobuf.CodedOutputStream output)
+                      throws java.io.IOException {
     if (((bitField0_ & 0x00000001) != 0)) {
       output.writeMessage(2, getConst());
     }
@@ -816,25 +680,32 @@ public final class DurationRules extends com.google.protobuf.GeneratedMessageV3
 
     size = 0;
     if (((bitField0_ & 0x00000001) != 0)) {
-      size += com.google.protobuf.CodedOutputStream.computeMessageSize(2, getConst());
+      size += com.google.protobuf.CodedOutputStream
+        .computeMessageSize(2, getConst());
     }
     if (((bitField0_ & 0x00000002) != 0)) {
-      size += com.google.protobuf.CodedOutputStream.computeMessageSize(3, getLt());
+      size += com.google.protobuf.CodedOutputStream
+        .computeMessageSize(3, getLt());
     }
     if (((bitField0_ & 0x00000004) != 0)) {
-      size += com.google.protobuf.CodedOutputStream.computeMessageSize(4, getLte());
+      size += com.google.protobuf.CodedOutputStream
+        .computeMessageSize(4, getLte());
     }
     if (((bitField0_ & 0x00000008) != 0)) {
-      size += com.google.protobuf.CodedOutputStream.computeMessageSize(5, getGt());
+      size += com.google.protobuf.CodedOutputStream
+        .computeMessageSize(5, getGt());
     }
     if (((bitField0_ & 0x00000010) != 0)) {
-      size += com.google.protobuf.CodedOutputStream.computeMessageSize(6, getGte());
+      size += com.google.protobuf.CodedOutputStream
+        .computeMessageSize(6, getGte());
     }
     for (int i = 0; i < in_.size(); i++) {
-      size += com.google.protobuf.CodedOutputStream.computeMessageSize(7, in_.get(i));
+      size += com.google.protobuf.CodedOutputStream
+        .computeMessageSize(7, in_.get(i));
     }
     for (int i = 0; i < notIn_.size(); i++) {
-      size += com.google.protobuf.CodedOutputStream.computeMessageSize(8, notIn_.get(i));
+      size += com.google.protobuf.CodedOutputStream
+        .computeMessageSize(8, notIn_.get(i));
     }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
@@ -844,7 +715,7 @@ public final class DurationRules extends com.google.protobuf.GeneratedMessageV3
   @java.lang.Override
   public boolean equals(final java.lang.Object obj) {
     if (obj == this) {
-      return true;
+     return true;
     }
     if (!(obj instanceof build.buf.validate.DurationRules)) {
       return super.equals(obj);
@@ -853,26 +724,33 @@ public final class DurationRules extends com.google.protobuf.GeneratedMessageV3
 
     if (hasConst() != other.hasConst()) return false;
     if (hasConst()) {
-      if (!getConst().equals(other.getConst())) return false;
+      if (!getConst()
+          .equals(other.getConst())) return false;
     }
     if (hasLt() != other.hasLt()) return false;
     if (hasLt()) {
-      if (!getLt().equals(other.getLt())) return false;
+      if (!getLt()
+          .equals(other.getLt())) return false;
     }
     if (hasLte() != other.hasLte()) return false;
     if (hasLte()) {
-      if (!getLte().equals(other.getLte())) return false;
+      if (!getLte()
+          .equals(other.getLte())) return false;
     }
     if (hasGt() != other.hasGt()) return false;
     if (hasGt()) {
-      if (!getGt().equals(other.getGt())) return false;
+      if (!getGt()
+          .equals(other.getGt())) return false;
     }
     if (hasGte() != other.hasGte()) return false;
     if (hasGte()) {
-      if (!getGte().equals(other.getGte())) return false;
+      if (!getGte()
+          .equals(other.getGte())) return false;
     }
-    if (!getInList().equals(other.getInList())) return false;
-    if (!getNotInList().equals(other.getNotInList())) return false;
+    if (!getInList()
+        .equals(other.getInList())) return false;
+    if (!getNotInList()
+        .equals(other.getNotInList())) return false;
     if (!getUnknownFields().equals(other.getUnknownFields())) return false;
     return true;
   }
@@ -917,126 +795,120 @@ public final class DurationRules extends com.google.protobuf.GeneratedMessageV3
     return hash;
   }
 
-  public static build.buf.validate.DurationRules parseFrom(java.nio.ByteBuffer data)
+  public static build.buf.validate.DurationRules parseFrom(
+      java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-
   public static build.buf.validate.DurationRules parseFrom(
-      java.nio.ByteBuffer data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      java.nio.ByteBuffer data,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-
-  public static build.buf.validate.DurationRules parseFrom(com.google.protobuf.ByteString data)
+  public static build.buf.validate.DurationRules parseFrom(
+      com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-
   public static build.buf.validate.DurationRules parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-
   public static build.buf.validate.DurationRules parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-
   public static build.buf.validate.DurationRules parseFrom(
-      byte[] data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      byte[] data,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-
   public static build.buf.validate.DurationRules parseFrom(java.io.InputStream input)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
+    return com.google.protobuf.GeneratedMessageV3
+        .parseWithIOException(PARSER, input);
   }
-
   public static build.buf.validate.DurationRules parseFrom(
-      java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      java.io.InputStream input,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
-        PARSER, input, extensionRegistry);
+    return com.google.protobuf.GeneratedMessageV3
+        .parseWithIOException(PARSER, input, extensionRegistry);
   }
 
   public static build.buf.validate.DurationRules parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input);
+    return com.google.protobuf.GeneratedMessageV3
+        .parseDelimitedWithIOException(PARSER, input);
   }
 
   public static build.buf.validate.DurationRules parseDelimitedFrom(
-      java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      java.io.InputStream input,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(
-        PARSER, input, extensionRegistry);
+    return com.google.protobuf.GeneratedMessageV3
+        .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-
   public static build.buf.validate.DurationRules parseFrom(
-      com.google.protobuf.CodedInputStream input) throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
+      com.google.protobuf.CodedInputStream input)
+      throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3
+        .parseWithIOException(PARSER, input);
   }
-
   public static build.buf.validate.DurationRules parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
-        PARSER, input, extensionRegistry);
+    return com.google.protobuf.GeneratedMessageV3
+        .parseWithIOException(PARSER, input, extensionRegistry);
   }
 
   @java.lang.Override
-  public Builder newBuilderForType() {
-    return newBuilder();
-  }
-
+  public Builder newBuilderForType() { return newBuilder(); }
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-
   public static Builder newBuilder(build.buf.validate.DurationRules prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
-
   @java.lang.Override
   public Builder toBuilder() {
-    return this == DEFAULT_INSTANCE ? new Builder() : new Builder().mergeFrom(this);
+    return this == DEFAULT_INSTANCE
+        ? new Builder() : new Builder().mergeFrom(this);
   }
 
   @java.lang.Override
-  protected Builder newBuilderForType(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+  protected Builder newBuilderForType(
+      com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
     Builder builder = new Builder(parent);
     return builder;
   }
-
   /**
-   *
-   *
    * <pre>
    * DurationRules describe the constraints applied exclusively to the `google.protobuf.Duration` well-known type.
    * </pre>
    *
    * Protobuf type {@code buf.validate.DurationRules}
    */
-  public static final class Builder extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
-      implements
+  public static final class Builder extends
+      com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
       // @@protoc_insertion_point(builder_implements:buf.validate.DurationRules)
       build.buf.validate.DurationRulesOrBuilder {
-    public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
       return build.buf.validate.ValidateProto.internal_static_buf_validate_DurationRules_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return build.buf.validate.ValidateProto
-          .internal_static_buf_validate_DurationRules_fieldAccessorTable
+      return build.buf.validate.ValidateProto.internal_static_buf_validate_DurationRules_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              build.buf.validate.DurationRules.class,
-              build.buf.validate.DurationRules.Builder.class);
+              build.buf.validate.DurationRules.class, build.buf.validate.DurationRules.Builder.class);
     }
 
     // Construct using build.buf.validate.DurationRules.newBuilder()
@@ -1044,13 +916,14 @@ public final class DurationRules extends com.google.protobuf.GeneratedMessageV3
       maybeForceBuilderInitialization();
     }
 
-    private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+    private Builder(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
       super(parent);
       maybeForceBuilderInitialization();
     }
-
     private void maybeForceBuilderInitialization() {
-      if (com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders) {
+      if (com.google.protobuf.GeneratedMessageV3
+              .alwaysUseFieldBuilders) {
         getConstFieldBuilder();
         getLtFieldBuilder();
         getLteFieldBuilder();
@@ -1060,7 +933,6 @@ public final class DurationRules extends com.google.protobuf.GeneratedMessageV3
         getNotInFieldBuilder();
       }
     }
-
     @java.lang.Override
     public Builder clear() {
       super.clear();
@@ -1108,7 +980,8 @@ public final class DurationRules extends com.google.protobuf.GeneratedMessageV3
     }
 
     @java.lang.Override
-    public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
+    public com.google.protobuf.Descriptors.Descriptor
+        getDescriptorForType() {
       return build.buf.validate.ValidateProto.internal_static_buf_validate_DurationRules_descriptor;
     }
 
@@ -1130,9 +1003,7 @@ public final class DurationRules extends com.google.protobuf.GeneratedMessageV3
     public build.buf.validate.DurationRules buildPartial() {
       build.buf.validate.DurationRules result = new build.buf.validate.DurationRules(this);
       buildPartialRepeatedFields(result);
-      if (bitField0_ != 0) {
-        buildPartial0(result);
-      }
+      if (bitField0_ != 0) { buildPartial0(result); }
       onBuilt();
       return result;
     }
@@ -1162,23 +1033,33 @@ public final class DurationRules extends com.google.protobuf.GeneratedMessageV3
       int from_bitField0_ = bitField0_;
       int to_bitField0_ = 0;
       if (((from_bitField0_ & 0x00000001) != 0)) {
-        result.const_ = constBuilder_ == null ? const_ : constBuilder_.build();
+        result.const_ = constBuilder_ == null
+            ? const_
+            : constBuilder_.build();
         to_bitField0_ |= 0x00000001;
       }
       if (((from_bitField0_ & 0x00000002) != 0)) {
-        result.lt_ = ltBuilder_ == null ? lt_ : ltBuilder_.build();
+        result.lt_ = ltBuilder_ == null
+            ? lt_
+            : ltBuilder_.build();
         to_bitField0_ |= 0x00000002;
       }
       if (((from_bitField0_ & 0x00000004) != 0)) {
-        result.lte_ = lteBuilder_ == null ? lte_ : lteBuilder_.build();
+        result.lte_ = lteBuilder_ == null
+            ? lte_
+            : lteBuilder_.build();
         to_bitField0_ |= 0x00000004;
       }
       if (((from_bitField0_ & 0x00000008) != 0)) {
-        result.gt_ = gtBuilder_ == null ? gt_ : gtBuilder_.build();
+        result.gt_ = gtBuilder_ == null
+            ? gt_
+            : gtBuilder_.build();
         to_bitField0_ |= 0x00000008;
       }
       if (((from_bitField0_ & 0x00000010) != 0)) {
-        result.gte_ = gteBuilder_ == null ? gte_ : gteBuilder_.build();
+        result.gte_ = gteBuilder_ == null
+            ? gte_
+            : gteBuilder_.build();
         to_bitField0_ |= 0x00000010;
       }
       result.bitField0_ |= to_bitField0_;
@@ -1188,39 +1069,38 @@ public final class DurationRules extends com.google.protobuf.GeneratedMessageV3
     public Builder clone() {
       return super.clone();
     }
-
     @java.lang.Override
     public Builder setField(
-        com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field,
+        java.lang.Object value) {
       return super.setField(field, value);
     }
-
     @java.lang.Override
-    public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
+    public Builder clearField(
+        com.google.protobuf.Descriptors.FieldDescriptor field) {
       return super.clearField(field);
     }
-
     @java.lang.Override
-    public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+    public Builder clearOneof(
+        com.google.protobuf.Descriptors.OneofDescriptor oneof) {
       return super.clearOneof(oneof);
     }
-
     @java.lang.Override
     public Builder setRepeatedField(
-        com.google.protobuf.Descriptors.FieldDescriptor field, int index, java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field,
+        int index, java.lang.Object value) {
       return super.setRepeatedField(field, index, value);
     }
-
     @java.lang.Override
     public Builder addRepeatedField(
-        com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field,
+        java.lang.Object value) {
       return super.addRepeatedField(field, value);
     }
-
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
       if (other instanceof build.buf.validate.DurationRules) {
-        return mergeFrom((build.buf.validate.DurationRules) other);
+        return mergeFrom((build.buf.validate.DurationRules)other);
       } else {
         super.mergeFrom(other);
         return this;
@@ -1262,10 +1142,9 @@ public final class DurationRules extends com.google.protobuf.GeneratedMessageV3
             inBuilder_ = null;
             in_ = other.in_;
             bitField0_ = (bitField0_ & ~0x00000020);
-            inBuilder_ =
-                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders
-                    ? getInFieldBuilder()
-                    : null;
+            inBuilder_ = 
+              com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+                 getInFieldBuilder() : null;
           } else {
             inBuilder_.addAllMessages(other.in_);
           }
@@ -1289,10 +1168,9 @@ public final class DurationRules extends com.google.protobuf.GeneratedMessageV3
             notInBuilder_ = null;
             notIn_ = other.notIn_;
             bitField0_ = (bitField0_ & ~0x00000040);
-            notInBuilder_ =
-                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders
-                    ? getNotInFieldBuilder()
-                    : null;
+            notInBuilder_ = 
+              com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+                 getNotInFieldBuilder() : null;
           } else {
             notInBuilder_.addAllMessages(other.notIn_);
           }
@@ -1324,67 +1202,73 @@ public final class DurationRules extends com.google.protobuf.GeneratedMessageV3
             case 0:
               done = true;
               break;
-            case 18:
-              {
-                input.readMessage(getConstFieldBuilder().getBuilder(), extensionRegistry);
-                bitField0_ |= 0x00000001;
-                break;
-              } // case 18
-            case 26:
-              {
-                input.readMessage(getLtFieldBuilder().getBuilder(), extensionRegistry);
-                bitField0_ |= 0x00000002;
-                break;
-              } // case 26
-            case 34:
-              {
-                input.readMessage(getLteFieldBuilder().getBuilder(), extensionRegistry);
-                bitField0_ |= 0x00000004;
-                break;
-              } // case 34
-            case 42:
-              {
-                input.readMessage(getGtFieldBuilder().getBuilder(), extensionRegistry);
-                bitField0_ |= 0x00000008;
-                break;
-              } // case 42
-            case 50:
-              {
-                input.readMessage(getGteFieldBuilder().getBuilder(), extensionRegistry);
-                bitField0_ |= 0x00000010;
-                break;
-              } // case 50
-            case 58:
-              {
-                com.google.protobuf.Duration m =
-                    input.readMessage(com.google.protobuf.Duration.parser(), extensionRegistry);
-                if (inBuilder_ == null) {
-                  ensureInIsMutable();
-                  in_.add(m);
-                } else {
-                  inBuilder_.addMessage(m);
-                }
-                break;
-              } // case 58
-            case 66:
-              {
-                com.google.protobuf.Duration m =
-                    input.readMessage(com.google.protobuf.Duration.parser(), extensionRegistry);
-                if (notInBuilder_ == null) {
-                  ensureNotInIsMutable();
-                  notIn_.add(m);
-                } else {
-                  notInBuilder_.addMessage(m);
-                }
-                break;
-              } // case 66
-            default:
-              {
-                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
-                  done = true; // was an endgroup tag
-                }
-                break;
-              } // default:
+            case 18: {
+              input.readMessage(
+                  getConstFieldBuilder().getBuilder(),
+                  extensionRegistry);
+              bitField0_ |= 0x00000001;
+              break;
+            } // case 18
+            case 26: {
+              input.readMessage(
+                  getLtFieldBuilder().getBuilder(),
+                  extensionRegistry);
+              bitField0_ |= 0x00000002;
+              break;
+            } // case 26
+            case 34: {
+              input.readMessage(
+                  getLteFieldBuilder().getBuilder(),
+                  extensionRegistry);
+              bitField0_ |= 0x00000004;
+              break;
+            } // case 34
+            case 42: {
+              input.readMessage(
+                  getGtFieldBuilder().getBuilder(),
+                  extensionRegistry);
+              bitField0_ |= 0x00000008;
+              break;
+            } // case 42
+            case 50: {
+              input.readMessage(
+                  getGteFieldBuilder().getBuilder(),
+                  extensionRegistry);
+              bitField0_ |= 0x00000010;
+              break;
+            } // case 50
+            case 58: {
+              com.google.protobuf.Duration m =
+                  input.readMessage(
+                      com.google.protobuf.Duration.parser(),
+                      extensionRegistry);
+              if (inBuilder_ == null) {
+                ensureInIsMutable();
+                in_.add(m);
+              } else {
+                inBuilder_.addMessage(m);
+              }
+              break;
+            } // case 58
+            case 66: {
+              com.google.protobuf.Duration m =
+                  input.readMessage(
+                      com.google.protobuf.Duration.parser(),
+                      extensionRegistry);
+              if (notInBuilder_ == null) {
+                ensureNotInIsMutable();
+                notIn_.add(m);
+              } else {
+                notInBuilder_.addMessage(m);
+              }
+              break;
+            } // case 66
+            default: {
+              if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                done = true; // was an endgroup tag
+              }
+              break;
+            } // default:
           } // switch (tag)
         } // while (!done)
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -1394,62 +1278,46 @@ public final class DurationRules extends com.google.protobuf.GeneratedMessageV3
       } // finally
       return this;
     }
-
     private int bitField0_;
 
     private com.google.protobuf.Duration const_;
     private com.google.protobuf.SingleFieldBuilderV3<
-            com.google.protobuf.Duration,
-            com.google.protobuf.Duration.Builder,
-            com.google.protobuf.DurationOrBuilder>
-        constBuilder_;
-
+        com.google.protobuf.Duration, com.google.protobuf.Duration.Builder, com.google.protobuf.DurationOrBuilder> constBuilder_;
     /**
-     *
-     *
      * <pre>
-     * `const` dictates that the field must match the specified value of the `google.protobuf.Duration` type exactly.
-     * If the field's value deviates from the specified value, an error message
-     * will be generated.
+     *`const` dictates that the field must match the specified value of the `google.protobuf.Duration` type exactly.
+     *If the field's value deviates from the specified value, an error message
+     *will be generated.
      *
-     * ```proto
-     * message MyDuration {
+     *```proto
+     *message MyDuration {
      *  // value must equal 5s
      *   google.protobuf.Duration value = 1 [(buf.validate.field).duration.const = "5s"];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>
-     * optional .google.protobuf.Duration const = 2 [json_name = "const", (.buf.validate.priv.field) = { ... }
-     * </code>
-     *
+     * <code>optional .google.protobuf.Duration const = 2 [json_name = "const", (.buf.validate.priv.field) = { ... }</code>
      * @return Whether the const field is set.
      */
     public boolean hasConst() {
       return ((bitField0_ & 0x00000001) != 0);
     }
-
     /**
-     *
-     *
      * <pre>
-     * `const` dictates that the field must match the specified value of the `google.protobuf.Duration` type exactly.
-     * If the field's value deviates from the specified value, an error message
-     * will be generated.
+     *`const` dictates that the field must match the specified value of the `google.protobuf.Duration` type exactly.
+     *If the field's value deviates from the specified value, an error message
+     *will be generated.
      *
-     * ```proto
-     * message MyDuration {
+     *```proto
+     *message MyDuration {
      *  // value must equal 5s
      *   google.protobuf.Duration value = 1 [(buf.validate.field).duration.const = "5s"];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>
-     * optional .google.protobuf.Duration const = 2 [json_name = "const", (.buf.validate.priv.field) = { ... }
-     * </code>
-     *
+     * <code>optional .google.protobuf.Duration const = 2 [json_name = "const", (.buf.validate.priv.field) = { ... }</code>
      * @return The const.
      */
     public com.google.protobuf.Duration getConst() {
@@ -1459,26 +1327,21 @@ public final class DurationRules extends com.google.protobuf.GeneratedMessageV3
         return constBuilder_.getMessage();
       }
     }
-
     /**
-     *
-     *
      * <pre>
-     * `const` dictates that the field must match the specified value of the `google.protobuf.Duration` type exactly.
-     * If the field's value deviates from the specified value, an error message
-     * will be generated.
+     *`const` dictates that the field must match the specified value of the `google.protobuf.Duration` type exactly.
+     *If the field's value deviates from the specified value, an error message
+     *will be generated.
      *
-     * ```proto
-     * message MyDuration {
+     *```proto
+     *message MyDuration {
      *  // value must equal 5s
      *   google.protobuf.Duration value = 1 [(buf.validate.field).duration.const = "5s"];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>
-     * optional .google.protobuf.Duration const = 2 [json_name = "const", (.buf.validate.priv.field) = { ... }
-     * </code>
+     * <code>optional .google.protobuf.Duration const = 2 [json_name = "const", (.buf.validate.priv.field) = { ... }</code>
      */
     public Builder setConst(com.google.protobuf.Duration value) {
       if (constBuilder_ == null) {
@@ -1493,28 +1356,24 @@ public final class DurationRules extends com.google.protobuf.GeneratedMessageV3
       onChanged();
       return this;
     }
-
     /**
-     *
-     *
      * <pre>
-     * `const` dictates that the field must match the specified value of the `google.protobuf.Duration` type exactly.
-     * If the field's value deviates from the specified value, an error message
-     * will be generated.
+     *`const` dictates that the field must match the specified value of the `google.protobuf.Duration` type exactly.
+     *If the field's value deviates from the specified value, an error message
+     *will be generated.
      *
-     * ```proto
-     * message MyDuration {
+     *```proto
+     *message MyDuration {
      *  // value must equal 5s
      *   google.protobuf.Duration value = 1 [(buf.validate.field).duration.const = "5s"];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>
-     * optional .google.protobuf.Duration const = 2 [json_name = "const", (.buf.validate.priv.field) = { ... }
-     * </code>
+     * <code>optional .google.protobuf.Duration const = 2 [json_name = "const", (.buf.validate.priv.field) = { ... }</code>
      */
-    public Builder setConst(com.google.protobuf.Duration.Builder builderForValue) {
+    public Builder setConst(
+        com.google.protobuf.Duration.Builder builderForValue) {
       if (constBuilder_ == null) {
         const_ = builderForValue.build();
       } else {
@@ -1524,32 +1383,27 @@ public final class DurationRules extends com.google.protobuf.GeneratedMessageV3
       onChanged();
       return this;
     }
-
     /**
-     *
-     *
      * <pre>
-     * `const` dictates that the field must match the specified value of the `google.protobuf.Duration` type exactly.
-     * If the field's value deviates from the specified value, an error message
-     * will be generated.
+     *`const` dictates that the field must match the specified value of the `google.protobuf.Duration` type exactly.
+     *If the field's value deviates from the specified value, an error message
+     *will be generated.
      *
-     * ```proto
-     * message MyDuration {
+     *```proto
+     *message MyDuration {
      *  // value must equal 5s
      *   google.protobuf.Duration value = 1 [(buf.validate.field).duration.const = "5s"];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>
-     * optional .google.protobuf.Duration const = 2 [json_name = "const", (.buf.validate.priv.field) = { ... }
-     * </code>
+     * <code>optional .google.protobuf.Duration const = 2 [json_name = "const", (.buf.validate.priv.field) = { ... }</code>
      */
     public Builder mergeConst(com.google.protobuf.Duration value) {
       if (constBuilder_ == null) {
-        if (((bitField0_ & 0x00000001) != 0)
-            && const_ != null
-            && const_ != com.google.protobuf.Duration.getDefaultInstance()) {
+        if (((bitField0_ & 0x00000001) != 0) &&
+          const_ != null &&
+          const_ != com.google.protobuf.Duration.getDefaultInstance()) {
           getConstBuilder().mergeFrom(value);
         } else {
           const_ = value;
@@ -1561,26 +1415,21 @@ public final class DurationRules extends com.google.protobuf.GeneratedMessageV3
       onChanged();
       return this;
     }
-
     /**
-     *
-     *
      * <pre>
-     * `const` dictates that the field must match the specified value of the `google.protobuf.Duration` type exactly.
-     * If the field's value deviates from the specified value, an error message
-     * will be generated.
+     *`const` dictates that the field must match the specified value of the `google.protobuf.Duration` type exactly.
+     *If the field's value deviates from the specified value, an error message
+     *will be generated.
      *
-     * ```proto
-     * message MyDuration {
+     *```proto
+     *message MyDuration {
      *  // value must equal 5s
      *   google.protobuf.Duration value = 1 [(buf.validate.field).duration.const = "5s"];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>
-     * optional .google.protobuf.Duration const = 2 [json_name = "const", (.buf.validate.priv.field) = { ... }
-     * </code>
+     * <code>optional .google.protobuf.Duration const = 2 [json_name = "const", (.buf.validate.priv.field) = { ... }</code>
      */
     public Builder clearConst() {
       bitField0_ = (bitField0_ & ~0x00000001);
@@ -1592,93 +1441,76 @@ public final class DurationRules extends com.google.protobuf.GeneratedMessageV3
       onChanged();
       return this;
     }
-
     /**
-     *
-     *
      * <pre>
-     * `const` dictates that the field must match the specified value of the `google.protobuf.Duration` type exactly.
-     * If the field's value deviates from the specified value, an error message
-     * will be generated.
+     *`const` dictates that the field must match the specified value of the `google.protobuf.Duration` type exactly.
+     *If the field's value deviates from the specified value, an error message
+     *will be generated.
      *
-     * ```proto
-     * message MyDuration {
+     *```proto
+     *message MyDuration {
      *  // value must equal 5s
      *   google.protobuf.Duration value = 1 [(buf.validate.field).duration.const = "5s"];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>
-     * optional .google.protobuf.Duration const = 2 [json_name = "const", (.buf.validate.priv.field) = { ... }
-     * </code>
+     * <code>optional .google.protobuf.Duration const = 2 [json_name = "const", (.buf.validate.priv.field) = { ... }</code>
      */
     public com.google.protobuf.Duration.Builder getConstBuilder() {
       bitField0_ |= 0x00000001;
       onChanged();
       return getConstFieldBuilder().getBuilder();
     }
-
     /**
-     *
-     *
      * <pre>
-     * `const` dictates that the field must match the specified value of the `google.protobuf.Duration` type exactly.
-     * If the field's value deviates from the specified value, an error message
-     * will be generated.
+     *`const` dictates that the field must match the specified value of the `google.protobuf.Duration` type exactly.
+     *If the field's value deviates from the specified value, an error message
+     *will be generated.
      *
-     * ```proto
-     * message MyDuration {
+     *```proto
+     *message MyDuration {
      *  // value must equal 5s
      *   google.protobuf.Duration value = 1 [(buf.validate.field).duration.const = "5s"];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>
-     * optional .google.protobuf.Duration const = 2 [json_name = "const", (.buf.validate.priv.field) = { ... }
-     * </code>
+     * <code>optional .google.protobuf.Duration const = 2 [json_name = "const", (.buf.validate.priv.field) = { ... }</code>
      */
     public com.google.protobuf.DurationOrBuilder getConstOrBuilder() {
       if (constBuilder_ != null) {
         return constBuilder_.getMessageOrBuilder();
       } else {
-        return const_ == null ? com.google.protobuf.Duration.getDefaultInstance() : const_;
+        return const_ == null ?
+            com.google.protobuf.Duration.getDefaultInstance() : const_;
       }
     }
-
     /**
-     *
-     *
      * <pre>
-     * `const` dictates that the field must match the specified value of the `google.protobuf.Duration` type exactly.
-     * If the field's value deviates from the specified value, an error message
-     * will be generated.
+     *`const` dictates that the field must match the specified value of the `google.protobuf.Duration` type exactly.
+     *If the field's value deviates from the specified value, an error message
+     *will be generated.
      *
-     * ```proto
-     * message MyDuration {
+     *```proto
+     *message MyDuration {
      *  // value must equal 5s
      *   google.protobuf.Duration value = 1 [(buf.validate.field).duration.const = "5s"];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>
-     * optional .google.protobuf.Duration const = 2 [json_name = "const", (.buf.validate.priv.field) = { ... }
-     * </code>
+     * <code>optional .google.protobuf.Duration const = 2 [json_name = "const", (.buf.validate.priv.field) = { ... }</code>
      */
     private com.google.protobuf.SingleFieldBuilderV3<
-            com.google.protobuf.Duration,
-            com.google.protobuf.Duration.Builder,
-            com.google.protobuf.DurationOrBuilder>
+        com.google.protobuf.Duration, com.google.protobuf.Duration.Builder, com.google.protobuf.DurationOrBuilder> 
         getConstFieldBuilder() {
       if (constBuilder_ == null) {
-        constBuilder_ =
-            new com.google.protobuf.SingleFieldBuilderV3<
-                com.google.protobuf.Duration,
-                com.google.protobuf.Duration.Builder,
-                com.google.protobuf.DurationOrBuilder>(
-                getConst(), getParentForChildren(), isClean());
+        constBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+            com.google.protobuf.Duration, com.google.protobuf.Duration.Builder, com.google.protobuf.DurationOrBuilder>(
+                getConst(),
+                getParentForChildren(),
+                isClean());
         const_ = null;
       }
       return constBuilder_;
@@ -1686,57 +1518,42 @@ public final class DurationRules extends com.google.protobuf.GeneratedMessageV3
 
     private com.google.protobuf.Duration lt_;
     private com.google.protobuf.SingleFieldBuilderV3<
-            com.google.protobuf.Duration,
-            com.google.protobuf.Duration.Builder,
-            com.google.protobuf.DurationOrBuilder>
-        ltBuilder_;
-
+        com.google.protobuf.Duration, com.google.protobuf.Duration.Builder, com.google.protobuf.DurationOrBuilder> ltBuilder_;
     /**
-     *
-     *
      * <pre>
-     * `lt` stipulates that the field must be less than the specified value of the `google.protobuf.Duration` type,
-     * exclusive. If the field's value is greater than or equal to the specified
-     * value, an error message will be generated.
+     *`lt` stipulates that the field must be less than the specified value of the `google.protobuf.Duration` type,
+     *exclusive. If the field's value is greater than or equal to the specified
+     *value, an error message will be generated.
      *
-     * ```proto
-     * message MyDuration {
+     *```proto
+     *message MyDuration {
      *  // value must be less than 5s
      *   google.protobuf.Duration value = 1 [(buf.validate.field).duration.lt = "5s"];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>
-     * optional .google.protobuf.Duration lt = 3 [json_name = "lt", (.buf.validate.priv.field) = { ... }
-     * </code>
-     *
+     * <code>optional .google.protobuf.Duration lt = 3 [json_name = "lt", (.buf.validate.priv.field) = { ... }</code>
      * @return Whether the lt field is set.
      */
     public boolean hasLt() {
       return ((bitField0_ & 0x00000002) != 0);
     }
-
     /**
-     *
-     *
      * <pre>
-     * `lt` stipulates that the field must be less than the specified value of the `google.protobuf.Duration` type,
-     * exclusive. If the field's value is greater than or equal to the specified
-     * value, an error message will be generated.
+     *`lt` stipulates that the field must be less than the specified value of the `google.protobuf.Duration` type,
+     *exclusive. If the field's value is greater than or equal to the specified
+     *value, an error message will be generated.
      *
-     * ```proto
-     * message MyDuration {
+     *```proto
+     *message MyDuration {
      *  // value must be less than 5s
      *   google.protobuf.Duration value = 1 [(buf.validate.field).duration.lt = "5s"];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>
-     * optional .google.protobuf.Duration lt = 3 [json_name = "lt", (.buf.validate.priv.field) = { ... }
-     * </code>
-     *
+     * <code>optional .google.protobuf.Duration lt = 3 [json_name = "lt", (.buf.validate.priv.field) = { ... }</code>
      * @return The lt.
      */
     public com.google.protobuf.Duration getLt() {
@@ -1746,26 +1563,21 @@ public final class DurationRules extends com.google.protobuf.GeneratedMessageV3
         return ltBuilder_.getMessage();
       }
     }
-
     /**
-     *
-     *
      * <pre>
-     * `lt` stipulates that the field must be less than the specified value of the `google.protobuf.Duration` type,
-     * exclusive. If the field's value is greater than or equal to the specified
-     * value, an error message will be generated.
+     *`lt` stipulates that the field must be less than the specified value of the `google.protobuf.Duration` type,
+     *exclusive. If the field's value is greater than or equal to the specified
+     *value, an error message will be generated.
      *
-     * ```proto
-     * message MyDuration {
+     *```proto
+     *message MyDuration {
      *  // value must be less than 5s
      *   google.protobuf.Duration value = 1 [(buf.validate.field).duration.lt = "5s"];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>
-     * optional .google.protobuf.Duration lt = 3 [json_name = "lt", (.buf.validate.priv.field) = { ... }
-     * </code>
+     * <code>optional .google.protobuf.Duration lt = 3 [json_name = "lt", (.buf.validate.priv.field) = { ... }</code>
      */
     public Builder setLt(com.google.protobuf.Duration value) {
       if (ltBuilder_ == null) {
@@ -1780,28 +1592,24 @@ public final class DurationRules extends com.google.protobuf.GeneratedMessageV3
       onChanged();
       return this;
     }
-
     /**
-     *
-     *
      * <pre>
-     * `lt` stipulates that the field must be less than the specified value of the `google.protobuf.Duration` type,
-     * exclusive. If the field's value is greater than or equal to the specified
-     * value, an error message will be generated.
+     *`lt` stipulates that the field must be less than the specified value of the `google.protobuf.Duration` type,
+     *exclusive. If the field's value is greater than or equal to the specified
+     *value, an error message will be generated.
      *
-     * ```proto
-     * message MyDuration {
+     *```proto
+     *message MyDuration {
      *  // value must be less than 5s
      *   google.protobuf.Duration value = 1 [(buf.validate.field).duration.lt = "5s"];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>
-     * optional .google.protobuf.Duration lt = 3 [json_name = "lt", (.buf.validate.priv.field) = { ... }
-     * </code>
+     * <code>optional .google.protobuf.Duration lt = 3 [json_name = "lt", (.buf.validate.priv.field) = { ... }</code>
      */
-    public Builder setLt(com.google.protobuf.Duration.Builder builderForValue) {
+    public Builder setLt(
+        com.google.protobuf.Duration.Builder builderForValue) {
       if (ltBuilder_ == null) {
         lt_ = builderForValue.build();
       } else {
@@ -1811,32 +1619,27 @@ public final class DurationRules extends com.google.protobuf.GeneratedMessageV3
       onChanged();
       return this;
     }
-
     /**
-     *
-     *
      * <pre>
-     * `lt` stipulates that the field must be less than the specified value of the `google.protobuf.Duration` type,
-     * exclusive. If the field's value is greater than or equal to the specified
-     * value, an error message will be generated.
+     *`lt` stipulates that the field must be less than the specified value of the `google.protobuf.Duration` type,
+     *exclusive. If the field's value is greater than or equal to the specified
+     *value, an error message will be generated.
      *
-     * ```proto
-     * message MyDuration {
+     *```proto
+     *message MyDuration {
      *  // value must be less than 5s
      *   google.protobuf.Duration value = 1 [(buf.validate.field).duration.lt = "5s"];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>
-     * optional .google.protobuf.Duration lt = 3 [json_name = "lt", (.buf.validate.priv.field) = { ... }
-     * </code>
+     * <code>optional .google.protobuf.Duration lt = 3 [json_name = "lt", (.buf.validate.priv.field) = { ... }</code>
      */
     public Builder mergeLt(com.google.protobuf.Duration value) {
       if (ltBuilder_ == null) {
-        if (((bitField0_ & 0x00000002) != 0)
-            && lt_ != null
-            && lt_ != com.google.protobuf.Duration.getDefaultInstance()) {
+        if (((bitField0_ & 0x00000002) != 0) &&
+          lt_ != null &&
+          lt_ != com.google.protobuf.Duration.getDefaultInstance()) {
           getLtBuilder().mergeFrom(value);
         } else {
           lt_ = value;
@@ -1848,26 +1651,21 @@ public final class DurationRules extends com.google.protobuf.GeneratedMessageV3
       onChanged();
       return this;
     }
-
     /**
-     *
-     *
      * <pre>
-     * `lt` stipulates that the field must be less than the specified value of the `google.protobuf.Duration` type,
-     * exclusive. If the field's value is greater than or equal to the specified
-     * value, an error message will be generated.
+     *`lt` stipulates that the field must be less than the specified value of the `google.protobuf.Duration` type,
+     *exclusive. If the field's value is greater than or equal to the specified
+     *value, an error message will be generated.
      *
-     * ```proto
-     * message MyDuration {
+     *```proto
+     *message MyDuration {
      *  // value must be less than 5s
      *   google.protobuf.Duration value = 1 [(buf.validate.field).duration.lt = "5s"];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>
-     * optional .google.protobuf.Duration lt = 3 [json_name = "lt", (.buf.validate.priv.field) = { ... }
-     * </code>
+     * <code>optional .google.protobuf.Duration lt = 3 [json_name = "lt", (.buf.validate.priv.field) = { ... }</code>
      */
     public Builder clearLt() {
       bitField0_ = (bitField0_ & ~0x00000002);
@@ -1879,92 +1677,76 @@ public final class DurationRules extends com.google.protobuf.GeneratedMessageV3
       onChanged();
       return this;
     }
-
     /**
-     *
-     *
      * <pre>
-     * `lt` stipulates that the field must be less than the specified value of the `google.protobuf.Duration` type,
-     * exclusive. If the field's value is greater than or equal to the specified
-     * value, an error message will be generated.
+     *`lt` stipulates that the field must be less than the specified value of the `google.protobuf.Duration` type,
+     *exclusive. If the field's value is greater than or equal to the specified
+     *value, an error message will be generated.
      *
-     * ```proto
-     * message MyDuration {
+     *```proto
+     *message MyDuration {
      *  // value must be less than 5s
      *   google.protobuf.Duration value = 1 [(buf.validate.field).duration.lt = "5s"];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>
-     * optional .google.protobuf.Duration lt = 3 [json_name = "lt", (.buf.validate.priv.field) = { ... }
-     * </code>
+     * <code>optional .google.protobuf.Duration lt = 3 [json_name = "lt", (.buf.validate.priv.field) = { ... }</code>
      */
     public com.google.protobuf.Duration.Builder getLtBuilder() {
       bitField0_ |= 0x00000002;
       onChanged();
       return getLtFieldBuilder().getBuilder();
     }
-
     /**
-     *
-     *
      * <pre>
-     * `lt` stipulates that the field must be less than the specified value of the `google.protobuf.Duration` type,
-     * exclusive. If the field's value is greater than or equal to the specified
-     * value, an error message will be generated.
+     *`lt` stipulates that the field must be less than the specified value of the `google.protobuf.Duration` type,
+     *exclusive. If the field's value is greater than or equal to the specified
+     *value, an error message will be generated.
      *
-     * ```proto
-     * message MyDuration {
+     *```proto
+     *message MyDuration {
      *  // value must be less than 5s
      *   google.protobuf.Duration value = 1 [(buf.validate.field).duration.lt = "5s"];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>
-     * optional .google.protobuf.Duration lt = 3 [json_name = "lt", (.buf.validate.priv.field) = { ... }
-     * </code>
+     * <code>optional .google.protobuf.Duration lt = 3 [json_name = "lt", (.buf.validate.priv.field) = { ... }</code>
      */
     public com.google.protobuf.DurationOrBuilder getLtOrBuilder() {
       if (ltBuilder_ != null) {
         return ltBuilder_.getMessageOrBuilder();
       } else {
-        return lt_ == null ? com.google.protobuf.Duration.getDefaultInstance() : lt_;
+        return lt_ == null ?
+            com.google.protobuf.Duration.getDefaultInstance() : lt_;
       }
     }
-
     /**
-     *
-     *
      * <pre>
-     * `lt` stipulates that the field must be less than the specified value of the `google.protobuf.Duration` type,
-     * exclusive. If the field's value is greater than or equal to the specified
-     * value, an error message will be generated.
+     *`lt` stipulates that the field must be less than the specified value of the `google.protobuf.Duration` type,
+     *exclusive. If the field's value is greater than or equal to the specified
+     *value, an error message will be generated.
      *
-     * ```proto
-     * message MyDuration {
+     *```proto
+     *message MyDuration {
      *  // value must be less than 5s
      *   google.protobuf.Duration value = 1 [(buf.validate.field).duration.lt = "5s"];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>
-     * optional .google.protobuf.Duration lt = 3 [json_name = "lt", (.buf.validate.priv.field) = { ... }
-     * </code>
+     * <code>optional .google.protobuf.Duration lt = 3 [json_name = "lt", (.buf.validate.priv.field) = { ... }</code>
      */
     private com.google.protobuf.SingleFieldBuilderV3<
-            com.google.protobuf.Duration,
-            com.google.protobuf.Duration.Builder,
-            com.google.protobuf.DurationOrBuilder>
+        com.google.protobuf.Duration, com.google.protobuf.Duration.Builder, com.google.protobuf.DurationOrBuilder> 
         getLtFieldBuilder() {
       if (ltBuilder_ == null) {
-        ltBuilder_ =
-            new com.google.protobuf.SingleFieldBuilderV3<
-                com.google.protobuf.Duration,
-                com.google.protobuf.Duration.Builder,
-                com.google.protobuf.DurationOrBuilder>(getLt(), getParentForChildren(), isClean());
+        ltBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+            com.google.protobuf.Duration, com.google.protobuf.Duration.Builder, com.google.protobuf.DurationOrBuilder>(
+                getLt(),
+                getParentForChildren(),
+                isClean());
         lt_ = null;
       }
       return ltBuilder_;
@@ -1972,57 +1754,42 @@ public final class DurationRules extends com.google.protobuf.GeneratedMessageV3
 
     private com.google.protobuf.Duration lte_;
     private com.google.protobuf.SingleFieldBuilderV3<
-            com.google.protobuf.Duration,
-            com.google.protobuf.Duration.Builder,
-            com.google.protobuf.DurationOrBuilder>
-        lteBuilder_;
-
+        com.google.protobuf.Duration, com.google.protobuf.Duration.Builder, com.google.protobuf.DurationOrBuilder> lteBuilder_;
     /**
-     *
-     *
      * <pre>
-     * `lte` indicates that the field must be less than or equal to the specified
-     * value of the `google.protobuf.Duration` type, inclusive. If the field's value is greater than the specified value,
-     * an error message will be generated.
+     *`lte` indicates that the field must be less than or equal to the specified
+     *value of the `google.protobuf.Duration` type, inclusive. If the field's value is greater than the specified value,
+     *an error message will be generated.
      *
-     * ```proto
-     * message MyDuration {
+     *```proto
+     *message MyDuration {
      *  // value must be less than or equal to 10s
      *   google.protobuf.Duration value = 1 [(buf.validate.field).duration.lte = "10s"];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>
-     * optional .google.protobuf.Duration lte = 4 [json_name = "lte", (.buf.validate.priv.field) = { ... }
-     * </code>
-     *
+     * <code>optional .google.protobuf.Duration lte = 4 [json_name = "lte", (.buf.validate.priv.field) = { ... }</code>
      * @return Whether the lte field is set.
      */
     public boolean hasLte() {
       return ((bitField0_ & 0x00000004) != 0);
     }
-
     /**
-     *
-     *
      * <pre>
-     * `lte` indicates that the field must be less than or equal to the specified
-     * value of the `google.protobuf.Duration` type, inclusive. If the field's value is greater than the specified value,
-     * an error message will be generated.
+     *`lte` indicates that the field must be less than or equal to the specified
+     *value of the `google.protobuf.Duration` type, inclusive. If the field's value is greater than the specified value,
+     *an error message will be generated.
      *
-     * ```proto
-     * message MyDuration {
+     *```proto
+     *message MyDuration {
      *  // value must be less than or equal to 10s
      *   google.protobuf.Duration value = 1 [(buf.validate.field).duration.lte = "10s"];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>
-     * optional .google.protobuf.Duration lte = 4 [json_name = "lte", (.buf.validate.priv.field) = { ... }
-     * </code>
-     *
+     * <code>optional .google.protobuf.Duration lte = 4 [json_name = "lte", (.buf.validate.priv.field) = { ... }</code>
      * @return The lte.
      */
     public com.google.protobuf.Duration getLte() {
@@ -2032,26 +1799,21 @@ public final class DurationRules extends com.google.protobuf.GeneratedMessageV3
         return lteBuilder_.getMessage();
       }
     }
-
     /**
-     *
-     *
      * <pre>
-     * `lte` indicates that the field must be less than or equal to the specified
-     * value of the `google.protobuf.Duration` type, inclusive. If the field's value is greater than the specified value,
-     * an error message will be generated.
+     *`lte` indicates that the field must be less than or equal to the specified
+     *value of the `google.protobuf.Duration` type, inclusive. If the field's value is greater than the specified value,
+     *an error message will be generated.
      *
-     * ```proto
-     * message MyDuration {
+     *```proto
+     *message MyDuration {
      *  // value must be less than or equal to 10s
      *   google.protobuf.Duration value = 1 [(buf.validate.field).duration.lte = "10s"];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>
-     * optional .google.protobuf.Duration lte = 4 [json_name = "lte", (.buf.validate.priv.field) = { ... }
-     * </code>
+     * <code>optional .google.protobuf.Duration lte = 4 [json_name = "lte", (.buf.validate.priv.field) = { ... }</code>
      */
     public Builder setLte(com.google.protobuf.Duration value) {
       if (lteBuilder_ == null) {
@@ -2066,28 +1828,24 @@ public final class DurationRules extends com.google.protobuf.GeneratedMessageV3
       onChanged();
       return this;
     }
-
     /**
-     *
-     *
      * <pre>
-     * `lte` indicates that the field must be less than or equal to the specified
-     * value of the `google.protobuf.Duration` type, inclusive. If the field's value is greater than the specified value,
-     * an error message will be generated.
+     *`lte` indicates that the field must be less than or equal to the specified
+     *value of the `google.protobuf.Duration` type, inclusive. If the field's value is greater than the specified value,
+     *an error message will be generated.
      *
-     * ```proto
-     * message MyDuration {
+     *```proto
+     *message MyDuration {
      *  // value must be less than or equal to 10s
      *   google.protobuf.Duration value = 1 [(buf.validate.field).duration.lte = "10s"];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>
-     * optional .google.protobuf.Duration lte = 4 [json_name = "lte", (.buf.validate.priv.field) = { ... }
-     * </code>
+     * <code>optional .google.protobuf.Duration lte = 4 [json_name = "lte", (.buf.validate.priv.field) = { ... }</code>
      */
-    public Builder setLte(com.google.protobuf.Duration.Builder builderForValue) {
+    public Builder setLte(
+        com.google.protobuf.Duration.Builder builderForValue) {
       if (lteBuilder_ == null) {
         lte_ = builderForValue.build();
       } else {
@@ -2097,32 +1855,27 @@ public final class DurationRules extends com.google.protobuf.GeneratedMessageV3
       onChanged();
       return this;
     }
-
     /**
-     *
-     *
      * <pre>
-     * `lte` indicates that the field must be less than or equal to the specified
-     * value of the `google.protobuf.Duration` type, inclusive. If the field's value is greater than the specified value,
-     * an error message will be generated.
+     *`lte` indicates that the field must be less than or equal to the specified
+     *value of the `google.protobuf.Duration` type, inclusive. If the field's value is greater than the specified value,
+     *an error message will be generated.
      *
-     * ```proto
-     * message MyDuration {
+     *```proto
+     *message MyDuration {
      *  // value must be less than or equal to 10s
      *   google.protobuf.Duration value = 1 [(buf.validate.field).duration.lte = "10s"];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>
-     * optional .google.protobuf.Duration lte = 4 [json_name = "lte", (.buf.validate.priv.field) = { ... }
-     * </code>
+     * <code>optional .google.protobuf.Duration lte = 4 [json_name = "lte", (.buf.validate.priv.field) = { ... }</code>
      */
     public Builder mergeLte(com.google.protobuf.Duration value) {
       if (lteBuilder_ == null) {
-        if (((bitField0_ & 0x00000004) != 0)
-            && lte_ != null
-            && lte_ != com.google.protobuf.Duration.getDefaultInstance()) {
+        if (((bitField0_ & 0x00000004) != 0) &&
+          lte_ != null &&
+          lte_ != com.google.protobuf.Duration.getDefaultInstance()) {
           getLteBuilder().mergeFrom(value);
         } else {
           lte_ = value;
@@ -2134,26 +1887,21 @@ public final class DurationRules extends com.google.protobuf.GeneratedMessageV3
       onChanged();
       return this;
     }
-
     /**
-     *
-     *
      * <pre>
-     * `lte` indicates that the field must be less than or equal to the specified
-     * value of the `google.protobuf.Duration` type, inclusive. If the field's value is greater than the specified value,
-     * an error message will be generated.
+     *`lte` indicates that the field must be less than or equal to the specified
+     *value of the `google.protobuf.Duration` type, inclusive. If the field's value is greater than the specified value,
+     *an error message will be generated.
      *
-     * ```proto
-     * message MyDuration {
+     *```proto
+     *message MyDuration {
      *  // value must be less than or equal to 10s
      *   google.protobuf.Duration value = 1 [(buf.validate.field).duration.lte = "10s"];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>
-     * optional .google.protobuf.Duration lte = 4 [json_name = "lte", (.buf.validate.priv.field) = { ... }
-     * </code>
+     * <code>optional .google.protobuf.Duration lte = 4 [json_name = "lte", (.buf.validate.priv.field) = { ... }</code>
      */
     public Builder clearLte() {
       bitField0_ = (bitField0_ & ~0x00000004);
@@ -2165,92 +1913,76 @@ public final class DurationRules extends com.google.protobuf.GeneratedMessageV3
       onChanged();
       return this;
     }
-
     /**
-     *
-     *
      * <pre>
-     * `lte` indicates that the field must be less than or equal to the specified
-     * value of the `google.protobuf.Duration` type, inclusive. If the field's value is greater than the specified value,
-     * an error message will be generated.
+     *`lte` indicates that the field must be less than or equal to the specified
+     *value of the `google.protobuf.Duration` type, inclusive. If the field's value is greater than the specified value,
+     *an error message will be generated.
      *
-     * ```proto
-     * message MyDuration {
+     *```proto
+     *message MyDuration {
      *  // value must be less than or equal to 10s
      *   google.protobuf.Duration value = 1 [(buf.validate.field).duration.lte = "10s"];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>
-     * optional .google.protobuf.Duration lte = 4 [json_name = "lte", (.buf.validate.priv.field) = { ... }
-     * </code>
+     * <code>optional .google.protobuf.Duration lte = 4 [json_name = "lte", (.buf.validate.priv.field) = { ... }</code>
      */
     public com.google.protobuf.Duration.Builder getLteBuilder() {
       bitField0_ |= 0x00000004;
       onChanged();
       return getLteFieldBuilder().getBuilder();
     }
-
     /**
-     *
-     *
      * <pre>
-     * `lte` indicates that the field must be less than or equal to the specified
-     * value of the `google.protobuf.Duration` type, inclusive. If the field's value is greater than the specified value,
-     * an error message will be generated.
+     *`lte` indicates that the field must be less than or equal to the specified
+     *value of the `google.protobuf.Duration` type, inclusive. If the field's value is greater than the specified value,
+     *an error message will be generated.
      *
-     * ```proto
-     * message MyDuration {
+     *```proto
+     *message MyDuration {
      *  // value must be less than or equal to 10s
      *   google.protobuf.Duration value = 1 [(buf.validate.field).duration.lte = "10s"];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>
-     * optional .google.protobuf.Duration lte = 4 [json_name = "lte", (.buf.validate.priv.field) = { ... }
-     * </code>
+     * <code>optional .google.protobuf.Duration lte = 4 [json_name = "lte", (.buf.validate.priv.field) = { ... }</code>
      */
     public com.google.protobuf.DurationOrBuilder getLteOrBuilder() {
       if (lteBuilder_ != null) {
         return lteBuilder_.getMessageOrBuilder();
       } else {
-        return lte_ == null ? com.google.protobuf.Duration.getDefaultInstance() : lte_;
+        return lte_ == null ?
+            com.google.protobuf.Duration.getDefaultInstance() : lte_;
       }
     }
-
     /**
-     *
-     *
      * <pre>
-     * `lte` indicates that the field must be less than or equal to the specified
-     * value of the `google.protobuf.Duration` type, inclusive. If the field's value is greater than the specified value,
-     * an error message will be generated.
+     *`lte` indicates that the field must be less than or equal to the specified
+     *value of the `google.protobuf.Duration` type, inclusive. If the field's value is greater than the specified value,
+     *an error message will be generated.
      *
-     * ```proto
-     * message MyDuration {
+     *```proto
+     *message MyDuration {
      *  // value must be less than or equal to 10s
      *   google.protobuf.Duration value = 1 [(buf.validate.field).duration.lte = "10s"];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>
-     * optional .google.protobuf.Duration lte = 4 [json_name = "lte", (.buf.validate.priv.field) = { ... }
-     * </code>
+     * <code>optional .google.protobuf.Duration lte = 4 [json_name = "lte", (.buf.validate.priv.field) = { ... }</code>
      */
     private com.google.protobuf.SingleFieldBuilderV3<
-            com.google.protobuf.Duration,
-            com.google.protobuf.Duration.Builder,
-            com.google.protobuf.DurationOrBuilder>
+        com.google.protobuf.Duration, com.google.protobuf.Duration.Builder, com.google.protobuf.DurationOrBuilder> 
         getLteFieldBuilder() {
       if (lteBuilder_ == null) {
-        lteBuilder_ =
-            new com.google.protobuf.SingleFieldBuilderV3<
-                com.google.protobuf.Duration,
-                com.google.protobuf.Duration.Builder,
-                com.google.protobuf.DurationOrBuilder>(getLte(), getParentForChildren(), isClean());
+        lteBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+            com.google.protobuf.Duration, com.google.protobuf.Duration.Builder, com.google.protobuf.DurationOrBuilder>(
+                getLte(),
+                getParentForChildren(),
+                isClean());
         lte_ = null;
       }
       return lteBuilder_;
@@ -2258,14 +1990,8 @@ public final class DurationRules extends com.google.protobuf.GeneratedMessageV3
 
     private com.google.protobuf.Duration gt_;
     private com.google.protobuf.SingleFieldBuilderV3<
-            com.google.protobuf.Duration,
-            com.google.protobuf.Duration.Builder,
-            com.google.protobuf.DurationOrBuilder>
-        gtBuilder_;
-
+        com.google.protobuf.Duration, com.google.protobuf.Duration.Builder, com.google.protobuf.DurationOrBuilder> gtBuilder_;
     /**
-     *
-     *
      * <pre>
      * `gt` requires the duration field value to be greater than the specified
      * value (exclusive). If the value of `gt` is larger than a specified `lt`
@@ -2273,8 +1999,8 @@ public final class DurationRules extends com.google.protobuf.GeneratedMessageV3
      * specified range. If the field value doesn't meet the required conditions,
      * an error message is generated.
      *
-     * ```proto
-     * message MyDuration {
+     *```proto
+     *message MyDuration {
      *  // duration must be greater than 5s [duration.gt]
      *  google.protobuf.Duration value = 1 [(buf.validate.field).duration.gt = { seconds: 5 }];
      *
@@ -2283,23 +2009,17 @@ public final class DurationRules extends com.google.protobuf.GeneratedMessageV3
      *
      *  // duration must be greater than 10s or less than 5s [duration.gt_lt_exclusive]
      *  google.protobuf.Duration other_value = 3 [(buf.validate.field).duration = { gt: { seconds: 10 }, lt: { seconds: 5 } }];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>
-     * optional .google.protobuf.Duration gt = 5 [json_name = "gt", (.buf.validate.priv.field) = { ... }
-     * </code>
-     *
+     * <code>optional .google.protobuf.Duration gt = 5 [json_name = "gt", (.buf.validate.priv.field) = { ... }</code>
      * @return Whether the gt field is set.
      */
     public boolean hasGt() {
       return ((bitField0_ & 0x00000008) != 0);
     }
-
     /**
-     *
-     *
      * <pre>
      * `gt` requires the duration field value to be greater than the specified
      * value (exclusive). If the value of `gt` is larger than a specified `lt`
@@ -2307,8 +2027,8 @@ public final class DurationRules extends com.google.protobuf.GeneratedMessageV3
      * specified range. If the field value doesn't meet the required conditions,
      * an error message is generated.
      *
-     * ```proto
-     * message MyDuration {
+     *```proto
+     *message MyDuration {
      *  // duration must be greater than 5s [duration.gt]
      *  google.protobuf.Duration value = 1 [(buf.validate.field).duration.gt = { seconds: 5 }];
      *
@@ -2317,14 +2037,11 @@ public final class DurationRules extends com.google.protobuf.GeneratedMessageV3
      *
      *  // duration must be greater than 10s or less than 5s [duration.gt_lt_exclusive]
      *  google.protobuf.Duration other_value = 3 [(buf.validate.field).duration = { gt: { seconds: 10 }, lt: { seconds: 5 } }];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>
-     * optional .google.protobuf.Duration gt = 5 [json_name = "gt", (.buf.validate.priv.field) = { ... }
-     * </code>
-     *
+     * <code>optional .google.protobuf.Duration gt = 5 [json_name = "gt", (.buf.validate.priv.field) = { ... }</code>
      * @return The gt.
      */
     public com.google.protobuf.Duration getGt() {
@@ -2334,10 +2051,7 @@ public final class DurationRules extends com.google.protobuf.GeneratedMessageV3
         return gtBuilder_.getMessage();
       }
     }
-
     /**
-     *
-     *
      * <pre>
      * `gt` requires the duration field value to be greater than the specified
      * value (exclusive). If the value of `gt` is larger than a specified `lt`
@@ -2345,8 +2059,8 @@ public final class DurationRules extends com.google.protobuf.GeneratedMessageV3
      * specified range. If the field value doesn't meet the required conditions,
      * an error message is generated.
      *
-     * ```proto
-     * message MyDuration {
+     *```proto
+     *message MyDuration {
      *  // duration must be greater than 5s [duration.gt]
      *  google.protobuf.Duration value = 1 [(buf.validate.field).duration.gt = { seconds: 5 }];
      *
@@ -2355,13 +2069,11 @@ public final class DurationRules extends com.google.protobuf.GeneratedMessageV3
      *
      *  // duration must be greater than 10s or less than 5s [duration.gt_lt_exclusive]
      *  google.protobuf.Duration other_value = 3 [(buf.validate.field).duration = { gt: { seconds: 10 }, lt: { seconds: 5 } }];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>
-     * optional .google.protobuf.Duration gt = 5 [json_name = "gt", (.buf.validate.priv.field) = { ... }
-     * </code>
+     * <code>optional .google.protobuf.Duration gt = 5 [json_name = "gt", (.buf.validate.priv.field) = { ... }</code>
      */
     public Builder setGt(com.google.protobuf.Duration value) {
       if (gtBuilder_ == null) {
@@ -2376,10 +2088,7 @@ public final class DurationRules extends com.google.protobuf.GeneratedMessageV3
       onChanged();
       return this;
     }
-
     /**
-     *
-     *
      * <pre>
      * `gt` requires the duration field value to be greater than the specified
      * value (exclusive). If the value of `gt` is larger than a specified `lt`
@@ -2387,8 +2096,8 @@ public final class DurationRules extends com.google.protobuf.GeneratedMessageV3
      * specified range. If the field value doesn't meet the required conditions,
      * an error message is generated.
      *
-     * ```proto
-     * message MyDuration {
+     *```proto
+     *message MyDuration {
      *  // duration must be greater than 5s [duration.gt]
      *  google.protobuf.Duration value = 1 [(buf.validate.field).duration.gt = { seconds: 5 }];
      *
@@ -2397,15 +2106,14 @@ public final class DurationRules extends com.google.protobuf.GeneratedMessageV3
      *
      *  // duration must be greater than 10s or less than 5s [duration.gt_lt_exclusive]
      *  google.protobuf.Duration other_value = 3 [(buf.validate.field).duration = { gt: { seconds: 10 }, lt: { seconds: 5 } }];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>
-     * optional .google.protobuf.Duration gt = 5 [json_name = "gt", (.buf.validate.priv.field) = { ... }
-     * </code>
+     * <code>optional .google.protobuf.Duration gt = 5 [json_name = "gt", (.buf.validate.priv.field) = { ... }</code>
      */
-    public Builder setGt(com.google.protobuf.Duration.Builder builderForValue) {
+    public Builder setGt(
+        com.google.protobuf.Duration.Builder builderForValue) {
       if (gtBuilder_ == null) {
         gt_ = builderForValue.build();
       } else {
@@ -2415,10 +2123,7 @@ public final class DurationRules extends com.google.protobuf.GeneratedMessageV3
       onChanged();
       return this;
     }
-
     /**
-     *
-     *
      * <pre>
      * `gt` requires the duration field value to be greater than the specified
      * value (exclusive). If the value of `gt` is larger than a specified `lt`
@@ -2426,8 +2131,8 @@ public final class DurationRules extends com.google.protobuf.GeneratedMessageV3
      * specified range. If the field value doesn't meet the required conditions,
      * an error message is generated.
      *
-     * ```proto
-     * message MyDuration {
+     *```proto
+     *message MyDuration {
      *  // duration must be greater than 5s [duration.gt]
      *  google.protobuf.Duration value = 1 [(buf.validate.field).duration.gt = { seconds: 5 }];
      *
@@ -2436,19 +2141,17 @@ public final class DurationRules extends com.google.protobuf.GeneratedMessageV3
      *
      *  // duration must be greater than 10s or less than 5s [duration.gt_lt_exclusive]
      *  google.protobuf.Duration other_value = 3 [(buf.validate.field).duration = { gt: { seconds: 10 }, lt: { seconds: 5 } }];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>
-     * optional .google.protobuf.Duration gt = 5 [json_name = "gt", (.buf.validate.priv.field) = { ... }
-     * </code>
+     * <code>optional .google.protobuf.Duration gt = 5 [json_name = "gt", (.buf.validate.priv.field) = { ... }</code>
      */
     public Builder mergeGt(com.google.protobuf.Duration value) {
       if (gtBuilder_ == null) {
-        if (((bitField0_ & 0x00000008) != 0)
-            && gt_ != null
-            && gt_ != com.google.protobuf.Duration.getDefaultInstance()) {
+        if (((bitField0_ & 0x00000008) != 0) &&
+          gt_ != null &&
+          gt_ != com.google.protobuf.Duration.getDefaultInstance()) {
           getGtBuilder().mergeFrom(value);
         } else {
           gt_ = value;
@@ -2460,10 +2163,7 @@ public final class DurationRules extends com.google.protobuf.GeneratedMessageV3
       onChanged();
       return this;
     }
-
     /**
-     *
-     *
      * <pre>
      * `gt` requires the duration field value to be greater than the specified
      * value (exclusive). If the value of `gt` is larger than a specified `lt`
@@ -2471,8 +2171,8 @@ public final class DurationRules extends com.google.protobuf.GeneratedMessageV3
      * specified range. If the field value doesn't meet the required conditions,
      * an error message is generated.
      *
-     * ```proto
-     * message MyDuration {
+     *```proto
+     *message MyDuration {
      *  // duration must be greater than 5s [duration.gt]
      *  google.protobuf.Duration value = 1 [(buf.validate.field).duration.gt = { seconds: 5 }];
      *
@@ -2481,13 +2181,11 @@ public final class DurationRules extends com.google.protobuf.GeneratedMessageV3
      *
      *  // duration must be greater than 10s or less than 5s [duration.gt_lt_exclusive]
      *  google.protobuf.Duration other_value = 3 [(buf.validate.field).duration = { gt: { seconds: 10 }, lt: { seconds: 5 } }];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>
-     * optional .google.protobuf.Duration gt = 5 [json_name = "gt", (.buf.validate.priv.field) = { ... }
-     * </code>
+     * <code>optional .google.protobuf.Duration gt = 5 [json_name = "gt", (.buf.validate.priv.field) = { ... }</code>
      */
     public Builder clearGt() {
       bitField0_ = (bitField0_ & ~0x00000008);
@@ -2499,10 +2197,7 @@ public final class DurationRules extends com.google.protobuf.GeneratedMessageV3
       onChanged();
       return this;
     }
-
     /**
-     *
-     *
      * <pre>
      * `gt` requires the duration field value to be greater than the specified
      * value (exclusive). If the value of `gt` is larger than a specified `lt`
@@ -2510,8 +2205,8 @@ public final class DurationRules extends com.google.protobuf.GeneratedMessageV3
      * specified range. If the field value doesn't meet the required conditions,
      * an error message is generated.
      *
-     * ```proto
-     * message MyDuration {
+     *```proto
+     *message MyDuration {
      *  // duration must be greater than 5s [duration.gt]
      *  google.protobuf.Duration value = 1 [(buf.validate.field).duration.gt = { seconds: 5 }];
      *
@@ -2520,23 +2215,18 @@ public final class DurationRules extends com.google.protobuf.GeneratedMessageV3
      *
      *  // duration must be greater than 10s or less than 5s [duration.gt_lt_exclusive]
      *  google.protobuf.Duration other_value = 3 [(buf.validate.field).duration = { gt: { seconds: 10 }, lt: { seconds: 5 } }];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>
-     * optional .google.protobuf.Duration gt = 5 [json_name = "gt", (.buf.validate.priv.field) = { ... }
-     * </code>
+     * <code>optional .google.protobuf.Duration gt = 5 [json_name = "gt", (.buf.validate.priv.field) = { ... }</code>
      */
     public com.google.protobuf.Duration.Builder getGtBuilder() {
       bitField0_ |= 0x00000008;
       onChanged();
       return getGtFieldBuilder().getBuilder();
     }
-
     /**
-     *
-     *
      * <pre>
      * `gt` requires the duration field value to be greater than the specified
      * value (exclusive). If the value of `gt` is larger than a specified `lt`
@@ -2544,8 +2234,8 @@ public final class DurationRules extends com.google.protobuf.GeneratedMessageV3
      * specified range. If the field value doesn't meet the required conditions,
      * an error message is generated.
      *
-     * ```proto
-     * message MyDuration {
+     *```proto
+     *message MyDuration {
      *  // duration must be greater than 5s [duration.gt]
      *  google.protobuf.Duration value = 1 [(buf.validate.field).duration.gt = { seconds: 5 }];
      *
@@ -2554,25 +2244,21 @@ public final class DurationRules extends com.google.protobuf.GeneratedMessageV3
      *
      *  // duration must be greater than 10s or less than 5s [duration.gt_lt_exclusive]
      *  google.protobuf.Duration other_value = 3 [(buf.validate.field).duration = { gt: { seconds: 10 }, lt: { seconds: 5 } }];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>
-     * optional .google.protobuf.Duration gt = 5 [json_name = "gt", (.buf.validate.priv.field) = { ... }
-     * </code>
+     * <code>optional .google.protobuf.Duration gt = 5 [json_name = "gt", (.buf.validate.priv.field) = { ... }</code>
      */
     public com.google.protobuf.DurationOrBuilder getGtOrBuilder() {
       if (gtBuilder_ != null) {
         return gtBuilder_.getMessageOrBuilder();
       } else {
-        return gt_ == null ? com.google.protobuf.Duration.getDefaultInstance() : gt_;
+        return gt_ == null ?
+            com.google.protobuf.Duration.getDefaultInstance() : gt_;
       }
     }
-
     /**
-     *
-     *
      * <pre>
      * `gt` requires the duration field value to be greater than the specified
      * value (exclusive). If the value of `gt` is larger than a specified `lt`
@@ -2580,8 +2266,8 @@ public final class DurationRules extends com.google.protobuf.GeneratedMessageV3
      * specified range. If the field value doesn't meet the required conditions,
      * an error message is generated.
      *
-     * ```proto
-     * message MyDuration {
+     *```proto
+     *message MyDuration {
      *  // duration must be greater than 5s [duration.gt]
      *  google.protobuf.Duration value = 1 [(buf.validate.field).duration.gt = { seconds: 5 }];
      *
@@ -2590,25 +2276,21 @@ public final class DurationRules extends com.google.protobuf.GeneratedMessageV3
      *
      *  // duration must be greater than 10s or less than 5s [duration.gt_lt_exclusive]
      *  google.protobuf.Duration other_value = 3 [(buf.validate.field).duration = { gt: { seconds: 10 }, lt: { seconds: 5 } }];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>
-     * optional .google.protobuf.Duration gt = 5 [json_name = "gt", (.buf.validate.priv.field) = { ... }
-     * </code>
+     * <code>optional .google.protobuf.Duration gt = 5 [json_name = "gt", (.buf.validate.priv.field) = { ... }</code>
      */
     private com.google.protobuf.SingleFieldBuilderV3<
-            com.google.protobuf.Duration,
-            com.google.protobuf.Duration.Builder,
-            com.google.protobuf.DurationOrBuilder>
+        com.google.protobuf.Duration, com.google.protobuf.Duration.Builder, com.google.protobuf.DurationOrBuilder> 
         getGtFieldBuilder() {
       if (gtBuilder_ == null) {
-        gtBuilder_ =
-            new com.google.protobuf.SingleFieldBuilderV3<
-                com.google.protobuf.Duration,
-                com.google.protobuf.Duration.Builder,
-                com.google.protobuf.DurationOrBuilder>(getGt(), getParentForChildren(), isClean());
+        gtBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+            com.google.protobuf.Duration, com.google.protobuf.Duration.Builder, com.google.protobuf.DurationOrBuilder>(
+                getGt(),
+                getParentForChildren(),
+                isClean());
         gt_ = null;
       }
       return gtBuilder_;
@@ -2616,14 +2298,8 @@ public final class DurationRules extends com.google.protobuf.GeneratedMessageV3
 
     private com.google.protobuf.Duration gte_;
     private com.google.protobuf.SingleFieldBuilderV3<
-            com.google.protobuf.Duration,
-            com.google.protobuf.Duration.Builder,
-            com.google.protobuf.DurationOrBuilder>
-        gteBuilder_;
-
+        com.google.protobuf.Duration, com.google.protobuf.Duration.Builder, com.google.protobuf.DurationOrBuilder> gteBuilder_;
     /**
-     *
-     *
      * <pre>
      * `gte` requires the duration field value to be greater than or equal to the
      * specified value (exclusive). If the value of `gte` is larger than a
@@ -2631,8 +2307,8 @@ public final class DurationRules extends com.google.protobuf.GeneratedMessageV3
      * be outside the specified range. If the field value doesn't meet the
      * required conditions, an error message is generated.
      *
-     * ```proto
-     * message MyDuration {
+     *```proto
+     *message MyDuration {
      *  // duration must be greater than or equal to 5s [duration.gte]
      *  google.protobuf.Duration value = 1 [(buf.validate.field).duration.gte = { seconds: 5 }];
      *
@@ -2641,23 +2317,17 @@ public final class DurationRules extends com.google.protobuf.GeneratedMessageV3
      *
      *  // duration must be greater than or equal to 10s or less than 5s [duration.gte_lt_exclusive]
      *  google.protobuf.Duration other_value = 3 [(buf.validate.field).duration = { gte: { seconds: 10 }, lt: { seconds: 5 } }];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>
-     * optional .google.protobuf.Duration gte = 6 [json_name = "gte", (.buf.validate.priv.field) = { ... }
-     * </code>
-     *
+     * <code>optional .google.protobuf.Duration gte = 6 [json_name = "gte", (.buf.validate.priv.field) = { ... }</code>
      * @return Whether the gte field is set.
      */
     public boolean hasGte() {
       return ((bitField0_ & 0x00000010) != 0);
     }
-
     /**
-     *
-     *
      * <pre>
      * `gte` requires the duration field value to be greater than or equal to the
      * specified value (exclusive). If the value of `gte` is larger than a
@@ -2665,8 +2335,8 @@ public final class DurationRules extends com.google.protobuf.GeneratedMessageV3
      * be outside the specified range. If the field value doesn't meet the
      * required conditions, an error message is generated.
      *
-     * ```proto
-     * message MyDuration {
+     *```proto
+     *message MyDuration {
      *  // duration must be greater than or equal to 5s [duration.gte]
      *  google.protobuf.Duration value = 1 [(buf.validate.field).duration.gte = { seconds: 5 }];
      *
@@ -2675,14 +2345,11 @@ public final class DurationRules extends com.google.protobuf.GeneratedMessageV3
      *
      *  // duration must be greater than or equal to 10s or less than 5s [duration.gte_lt_exclusive]
      *  google.protobuf.Duration other_value = 3 [(buf.validate.field).duration = { gte: { seconds: 10 }, lt: { seconds: 5 } }];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>
-     * optional .google.protobuf.Duration gte = 6 [json_name = "gte", (.buf.validate.priv.field) = { ... }
-     * </code>
-     *
+     * <code>optional .google.protobuf.Duration gte = 6 [json_name = "gte", (.buf.validate.priv.field) = { ... }</code>
      * @return The gte.
      */
     public com.google.protobuf.Duration getGte() {
@@ -2692,10 +2359,7 @@ public final class DurationRules extends com.google.protobuf.GeneratedMessageV3
         return gteBuilder_.getMessage();
       }
     }
-
     /**
-     *
-     *
      * <pre>
      * `gte` requires the duration field value to be greater than or equal to the
      * specified value (exclusive). If the value of `gte` is larger than a
@@ -2703,8 +2367,8 @@ public final class DurationRules extends com.google.protobuf.GeneratedMessageV3
      * be outside the specified range. If the field value doesn't meet the
      * required conditions, an error message is generated.
      *
-     * ```proto
-     * message MyDuration {
+     *```proto
+     *message MyDuration {
      *  // duration must be greater than or equal to 5s [duration.gte]
      *  google.protobuf.Duration value = 1 [(buf.validate.field).duration.gte = { seconds: 5 }];
      *
@@ -2713,13 +2377,11 @@ public final class DurationRules extends com.google.protobuf.GeneratedMessageV3
      *
      *  // duration must be greater than or equal to 10s or less than 5s [duration.gte_lt_exclusive]
      *  google.protobuf.Duration other_value = 3 [(buf.validate.field).duration = { gte: { seconds: 10 }, lt: { seconds: 5 } }];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>
-     * optional .google.protobuf.Duration gte = 6 [json_name = "gte", (.buf.validate.priv.field) = { ... }
-     * </code>
+     * <code>optional .google.protobuf.Duration gte = 6 [json_name = "gte", (.buf.validate.priv.field) = { ... }</code>
      */
     public Builder setGte(com.google.protobuf.Duration value) {
       if (gteBuilder_ == null) {
@@ -2734,10 +2396,7 @@ public final class DurationRules extends com.google.protobuf.GeneratedMessageV3
       onChanged();
       return this;
     }
-
     /**
-     *
-     *
      * <pre>
      * `gte` requires the duration field value to be greater than or equal to the
      * specified value (exclusive). If the value of `gte` is larger than a
@@ -2745,8 +2404,8 @@ public final class DurationRules extends com.google.protobuf.GeneratedMessageV3
      * be outside the specified range. If the field value doesn't meet the
      * required conditions, an error message is generated.
      *
-     * ```proto
-     * message MyDuration {
+     *```proto
+     *message MyDuration {
      *  // duration must be greater than or equal to 5s [duration.gte]
      *  google.protobuf.Duration value = 1 [(buf.validate.field).duration.gte = { seconds: 5 }];
      *
@@ -2755,15 +2414,14 @@ public final class DurationRules extends com.google.protobuf.GeneratedMessageV3
      *
      *  // duration must be greater than or equal to 10s or less than 5s [duration.gte_lt_exclusive]
      *  google.protobuf.Duration other_value = 3 [(buf.validate.field).duration = { gte: { seconds: 10 }, lt: { seconds: 5 } }];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>
-     * optional .google.protobuf.Duration gte = 6 [json_name = "gte", (.buf.validate.priv.field) = { ... }
-     * </code>
+     * <code>optional .google.protobuf.Duration gte = 6 [json_name = "gte", (.buf.validate.priv.field) = { ... }</code>
      */
-    public Builder setGte(com.google.protobuf.Duration.Builder builderForValue) {
+    public Builder setGte(
+        com.google.protobuf.Duration.Builder builderForValue) {
       if (gteBuilder_ == null) {
         gte_ = builderForValue.build();
       } else {
@@ -2773,10 +2431,7 @@ public final class DurationRules extends com.google.protobuf.GeneratedMessageV3
       onChanged();
       return this;
     }
-
     /**
-     *
-     *
      * <pre>
      * `gte` requires the duration field value to be greater than or equal to the
      * specified value (exclusive). If the value of `gte` is larger than a
@@ -2784,8 +2439,8 @@ public final class DurationRules extends com.google.protobuf.GeneratedMessageV3
      * be outside the specified range. If the field value doesn't meet the
      * required conditions, an error message is generated.
      *
-     * ```proto
-     * message MyDuration {
+     *```proto
+     *message MyDuration {
      *  // duration must be greater than or equal to 5s [duration.gte]
      *  google.protobuf.Duration value = 1 [(buf.validate.field).duration.gte = { seconds: 5 }];
      *
@@ -2794,19 +2449,17 @@ public final class DurationRules extends com.google.protobuf.GeneratedMessageV3
      *
      *  // duration must be greater than or equal to 10s or less than 5s [duration.gte_lt_exclusive]
      *  google.protobuf.Duration other_value = 3 [(buf.validate.field).duration = { gte: { seconds: 10 }, lt: { seconds: 5 } }];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>
-     * optional .google.protobuf.Duration gte = 6 [json_name = "gte", (.buf.validate.priv.field) = { ... }
-     * </code>
+     * <code>optional .google.protobuf.Duration gte = 6 [json_name = "gte", (.buf.validate.priv.field) = { ... }</code>
      */
     public Builder mergeGte(com.google.protobuf.Duration value) {
       if (gteBuilder_ == null) {
-        if (((bitField0_ & 0x00000010) != 0)
-            && gte_ != null
-            && gte_ != com.google.protobuf.Duration.getDefaultInstance()) {
+        if (((bitField0_ & 0x00000010) != 0) &&
+          gte_ != null &&
+          gte_ != com.google.protobuf.Duration.getDefaultInstance()) {
           getGteBuilder().mergeFrom(value);
         } else {
           gte_ = value;
@@ -2818,10 +2471,7 @@ public final class DurationRules extends com.google.protobuf.GeneratedMessageV3
       onChanged();
       return this;
     }
-
     /**
-     *
-     *
      * <pre>
      * `gte` requires the duration field value to be greater than or equal to the
      * specified value (exclusive). If the value of `gte` is larger than a
@@ -2829,8 +2479,8 @@ public final class DurationRules extends com.google.protobuf.GeneratedMessageV3
      * be outside the specified range. If the field value doesn't meet the
      * required conditions, an error message is generated.
      *
-     * ```proto
-     * message MyDuration {
+     *```proto
+     *message MyDuration {
      *  // duration must be greater than or equal to 5s [duration.gte]
      *  google.protobuf.Duration value = 1 [(buf.validate.field).duration.gte = { seconds: 5 }];
      *
@@ -2839,13 +2489,11 @@ public final class DurationRules extends com.google.protobuf.GeneratedMessageV3
      *
      *  // duration must be greater than or equal to 10s or less than 5s [duration.gte_lt_exclusive]
      *  google.protobuf.Duration other_value = 3 [(buf.validate.field).duration = { gte: { seconds: 10 }, lt: { seconds: 5 } }];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>
-     * optional .google.protobuf.Duration gte = 6 [json_name = "gte", (.buf.validate.priv.field) = { ... }
-     * </code>
+     * <code>optional .google.protobuf.Duration gte = 6 [json_name = "gte", (.buf.validate.priv.field) = { ... }</code>
      */
     public Builder clearGte() {
       bitField0_ = (bitField0_ & ~0x00000010);
@@ -2857,10 +2505,7 @@ public final class DurationRules extends com.google.protobuf.GeneratedMessageV3
       onChanged();
       return this;
     }
-
     /**
-     *
-     *
      * <pre>
      * `gte` requires the duration field value to be greater than or equal to the
      * specified value (exclusive). If the value of `gte` is larger than a
@@ -2868,8 +2513,8 @@ public final class DurationRules extends com.google.protobuf.GeneratedMessageV3
      * be outside the specified range. If the field value doesn't meet the
      * required conditions, an error message is generated.
      *
-     * ```proto
-     * message MyDuration {
+     *```proto
+     *message MyDuration {
      *  // duration must be greater than or equal to 5s [duration.gte]
      *  google.protobuf.Duration value = 1 [(buf.validate.field).duration.gte = { seconds: 5 }];
      *
@@ -2878,23 +2523,18 @@ public final class DurationRules extends com.google.protobuf.GeneratedMessageV3
      *
      *  // duration must be greater than or equal to 10s or less than 5s [duration.gte_lt_exclusive]
      *  google.protobuf.Duration other_value = 3 [(buf.validate.field).duration = { gte: { seconds: 10 }, lt: { seconds: 5 } }];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>
-     * optional .google.protobuf.Duration gte = 6 [json_name = "gte", (.buf.validate.priv.field) = { ... }
-     * </code>
+     * <code>optional .google.protobuf.Duration gte = 6 [json_name = "gte", (.buf.validate.priv.field) = { ... }</code>
      */
     public com.google.protobuf.Duration.Builder getGteBuilder() {
       bitField0_ |= 0x00000010;
       onChanged();
       return getGteFieldBuilder().getBuilder();
     }
-
     /**
-     *
-     *
      * <pre>
      * `gte` requires the duration field value to be greater than or equal to the
      * specified value (exclusive). If the value of `gte` is larger than a
@@ -2902,8 +2542,8 @@ public final class DurationRules extends com.google.protobuf.GeneratedMessageV3
      * be outside the specified range. If the field value doesn't meet the
      * required conditions, an error message is generated.
      *
-     * ```proto
-     * message MyDuration {
+     *```proto
+     *message MyDuration {
      *  // duration must be greater than or equal to 5s [duration.gte]
      *  google.protobuf.Duration value = 1 [(buf.validate.field).duration.gte = { seconds: 5 }];
      *
@@ -2912,25 +2552,21 @@ public final class DurationRules extends com.google.protobuf.GeneratedMessageV3
      *
      *  // duration must be greater than or equal to 10s or less than 5s [duration.gte_lt_exclusive]
      *  google.protobuf.Duration other_value = 3 [(buf.validate.field).duration = { gte: { seconds: 10 }, lt: { seconds: 5 } }];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>
-     * optional .google.protobuf.Duration gte = 6 [json_name = "gte", (.buf.validate.priv.field) = { ... }
-     * </code>
+     * <code>optional .google.protobuf.Duration gte = 6 [json_name = "gte", (.buf.validate.priv.field) = { ... }</code>
      */
     public com.google.protobuf.DurationOrBuilder getGteOrBuilder() {
       if (gteBuilder_ != null) {
         return gteBuilder_.getMessageOrBuilder();
       } else {
-        return gte_ == null ? com.google.protobuf.Duration.getDefaultInstance() : gte_;
+        return gte_ == null ?
+            com.google.protobuf.Duration.getDefaultInstance() : gte_;
       }
     }
-
     /**
-     *
-     *
      * <pre>
      * `gte` requires the duration field value to be greater than or equal to the
      * specified value (exclusive). If the value of `gte` is larger than a
@@ -2938,8 +2574,8 @@ public final class DurationRules extends com.google.protobuf.GeneratedMessageV3
      * be outside the specified range. If the field value doesn't meet the
      * required conditions, an error message is generated.
      *
-     * ```proto
-     * message MyDuration {
+     *```proto
+     *message MyDuration {
      *  // duration must be greater than or equal to 5s [duration.gte]
      *  google.protobuf.Duration value = 1 [(buf.validate.field).duration.gte = { seconds: 5 }];
      *
@@ -2948,64 +2584,53 @@ public final class DurationRules extends com.google.protobuf.GeneratedMessageV3
      *
      *  // duration must be greater than or equal to 10s or less than 5s [duration.gte_lt_exclusive]
      *  google.protobuf.Duration other_value = 3 [(buf.validate.field).duration = { gte: { seconds: 10 }, lt: { seconds: 5 } }];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>
-     * optional .google.protobuf.Duration gte = 6 [json_name = "gte", (.buf.validate.priv.field) = { ... }
-     * </code>
+     * <code>optional .google.protobuf.Duration gte = 6 [json_name = "gte", (.buf.validate.priv.field) = { ... }</code>
      */
     private com.google.protobuf.SingleFieldBuilderV3<
-            com.google.protobuf.Duration,
-            com.google.protobuf.Duration.Builder,
-            com.google.protobuf.DurationOrBuilder>
+        com.google.protobuf.Duration, com.google.protobuf.Duration.Builder, com.google.protobuf.DurationOrBuilder> 
         getGteFieldBuilder() {
       if (gteBuilder_ == null) {
-        gteBuilder_ =
-            new com.google.protobuf.SingleFieldBuilderV3<
-                com.google.protobuf.Duration,
-                com.google.protobuf.Duration.Builder,
-                com.google.protobuf.DurationOrBuilder>(getGte(), getParentForChildren(), isClean());
+        gteBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+            com.google.protobuf.Duration, com.google.protobuf.Duration.Builder, com.google.protobuf.DurationOrBuilder>(
+                getGte(),
+                getParentForChildren(),
+                isClean());
         gte_ = null;
       }
       return gteBuilder_;
     }
 
-    private java.util.List<com.google.protobuf.Duration> in_ = java.util.Collections.emptyList();
-
+    private java.util.List<com.google.protobuf.Duration> in_ =
+      java.util.Collections.emptyList();
     private void ensureInIsMutable() {
       if (!((bitField0_ & 0x00000020) != 0)) {
         in_ = new java.util.ArrayList<com.google.protobuf.Duration>(in_);
         bitField0_ |= 0x00000020;
-      }
+       }
     }
 
     private com.google.protobuf.RepeatedFieldBuilderV3<
-            com.google.protobuf.Duration,
-            com.google.protobuf.Duration.Builder,
-            com.google.protobuf.DurationOrBuilder>
-        inBuilder_;
+        com.google.protobuf.Duration, com.google.protobuf.Duration.Builder, com.google.protobuf.DurationOrBuilder> inBuilder_;
 
     /**
-     *
-     *
      * <pre>
-     * `in` asserts that the field must be equal to one of the specified values of the `google.protobuf.Duration` type.
-     * If the field's value doesn't correspond to any of the specified values,
-     * an error message will be generated.
+     *`in` asserts that the field must be equal to one of the specified values of the `google.protobuf.Duration` type.
+     *If the field's value doesn't correspond to any of the specified values,
+     *an error message will be generated.
      *
-     * ```proto
-     * message MyDuration {
+     *```proto
+     *message MyDuration {
      *  // value must be in list [1s, 2s, 3s]
      *   google.protobuf.Duration value = 1 [(buf.validate.field).duration.in = ["1s", "2s", "3s"]];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>
-     * repeated .google.protobuf.Duration in = 7 [json_name = "in", (.buf.validate.priv.field) = { ... }
-     * </code>
+     * <code>repeated .google.protobuf.Duration in = 7 [json_name = "in", (.buf.validate.priv.field) = { ... }</code>
      */
     public java.util.List<com.google.protobuf.Duration> getInList() {
       if (inBuilder_ == null) {
@@ -3014,26 +2639,21 @@ public final class DurationRules extends com.google.protobuf.GeneratedMessageV3
         return inBuilder_.getMessageList();
       }
     }
-
     /**
-     *
-     *
      * <pre>
-     * `in` asserts that the field must be equal to one of the specified values of the `google.protobuf.Duration` type.
-     * If the field's value doesn't correspond to any of the specified values,
-     * an error message will be generated.
+     *`in` asserts that the field must be equal to one of the specified values of the `google.protobuf.Duration` type.
+     *If the field's value doesn't correspond to any of the specified values,
+     *an error message will be generated.
      *
-     * ```proto
-     * message MyDuration {
+     *```proto
+     *message MyDuration {
      *  // value must be in list [1s, 2s, 3s]
      *   google.protobuf.Duration value = 1 [(buf.validate.field).duration.in = ["1s", "2s", "3s"]];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>
-     * repeated .google.protobuf.Duration in = 7 [json_name = "in", (.buf.validate.priv.field) = { ... }
-     * </code>
+     * <code>repeated .google.protobuf.Duration in = 7 [json_name = "in", (.buf.validate.priv.field) = { ... }</code>
      */
     public int getInCount() {
       if (inBuilder_ == null) {
@@ -3042,26 +2662,21 @@ public final class DurationRules extends com.google.protobuf.GeneratedMessageV3
         return inBuilder_.getCount();
       }
     }
-
     /**
-     *
-     *
      * <pre>
-     * `in` asserts that the field must be equal to one of the specified values of the `google.protobuf.Duration` type.
-     * If the field's value doesn't correspond to any of the specified values,
-     * an error message will be generated.
+     *`in` asserts that the field must be equal to one of the specified values of the `google.protobuf.Duration` type.
+     *If the field's value doesn't correspond to any of the specified values,
+     *an error message will be generated.
      *
-     * ```proto
-     * message MyDuration {
+     *```proto
+     *message MyDuration {
      *  // value must be in list [1s, 2s, 3s]
      *   google.protobuf.Duration value = 1 [(buf.validate.field).duration.in = ["1s", "2s", "3s"]];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>
-     * repeated .google.protobuf.Duration in = 7 [json_name = "in", (.buf.validate.priv.field) = { ... }
-     * </code>
+     * <code>repeated .google.protobuf.Duration in = 7 [json_name = "in", (.buf.validate.priv.field) = { ... }</code>
      */
     public com.google.protobuf.Duration getIn(int index) {
       if (inBuilder_ == null) {
@@ -3070,28 +2685,24 @@ public final class DurationRules extends com.google.protobuf.GeneratedMessageV3
         return inBuilder_.getMessage(index);
       }
     }
-
     /**
-     *
-     *
      * <pre>
-     * `in` asserts that the field must be equal to one of the specified values of the `google.protobuf.Duration` type.
-     * If the field's value doesn't correspond to any of the specified values,
-     * an error message will be generated.
+     *`in` asserts that the field must be equal to one of the specified values of the `google.protobuf.Duration` type.
+     *If the field's value doesn't correspond to any of the specified values,
+     *an error message will be generated.
      *
-     * ```proto
-     * message MyDuration {
+     *```proto
+     *message MyDuration {
      *  // value must be in list [1s, 2s, 3s]
      *   google.protobuf.Duration value = 1 [(buf.validate.field).duration.in = ["1s", "2s", "3s"]];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>
-     * repeated .google.protobuf.Duration in = 7 [json_name = "in", (.buf.validate.priv.field) = { ... }
-     * </code>
+     * <code>repeated .google.protobuf.Duration in = 7 [json_name = "in", (.buf.validate.priv.field) = { ... }</code>
      */
-    public Builder setIn(int index, com.google.protobuf.Duration value) {
+    public Builder setIn(
+        int index, com.google.protobuf.Duration value) {
       if (inBuilder_ == null) {
         if (value == null) {
           throw new NullPointerException();
@@ -3104,28 +2715,24 @@ public final class DurationRules extends com.google.protobuf.GeneratedMessageV3
       }
       return this;
     }
-
     /**
-     *
-     *
      * <pre>
-     * `in` asserts that the field must be equal to one of the specified values of the `google.protobuf.Duration` type.
-     * If the field's value doesn't correspond to any of the specified values,
-     * an error message will be generated.
+     *`in` asserts that the field must be equal to one of the specified values of the `google.protobuf.Duration` type.
+     *If the field's value doesn't correspond to any of the specified values,
+     *an error message will be generated.
      *
-     * ```proto
-     * message MyDuration {
+     *```proto
+     *message MyDuration {
      *  // value must be in list [1s, 2s, 3s]
      *   google.protobuf.Duration value = 1 [(buf.validate.field).duration.in = ["1s", "2s", "3s"]];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>
-     * repeated .google.protobuf.Duration in = 7 [json_name = "in", (.buf.validate.priv.field) = { ... }
-     * </code>
+     * <code>repeated .google.protobuf.Duration in = 7 [json_name = "in", (.buf.validate.priv.field) = { ... }</code>
      */
-    public Builder setIn(int index, com.google.protobuf.Duration.Builder builderForValue) {
+    public Builder setIn(
+        int index, com.google.protobuf.Duration.Builder builderForValue) {
       if (inBuilder_ == null) {
         ensureInIsMutable();
         in_.set(index, builderForValue.build());
@@ -3135,26 +2742,21 @@ public final class DurationRules extends com.google.protobuf.GeneratedMessageV3
       }
       return this;
     }
-
     /**
-     *
-     *
      * <pre>
-     * `in` asserts that the field must be equal to one of the specified values of the `google.protobuf.Duration` type.
-     * If the field's value doesn't correspond to any of the specified values,
-     * an error message will be generated.
+     *`in` asserts that the field must be equal to one of the specified values of the `google.protobuf.Duration` type.
+     *If the field's value doesn't correspond to any of the specified values,
+     *an error message will be generated.
      *
-     * ```proto
-     * message MyDuration {
+     *```proto
+     *message MyDuration {
      *  // value must be in list [1s, 2s, 3s]
      *   google.protobuf.Duration value = 1 [(buf.validate.field).duration.in = ["1s", "2s", "3s"]];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>
-     * repeated .google.protobuf.Duration in = 7 [json_name = "in", (.buf.validate.priv.field) = { ... }
-     * </code>
+     * <code>repeated .google.protobuf.Duration in = 7 [json_name = "in", (.buf.validate.priv.field) = { ... }</code>
      */
     public Builder addIn(com.google.protobuf.Duration value) {
       if (inBuilder_ == null) {
@@ -3169,28 +2771,24 @@ public final class DurationRules extends com.google.protobuf.GeneratedMessageV3
       }
       return this;
     }
-
     /**
-     *
-     *
      * <pre>
-     * `in` asserts that the field must be equal to one of the specified values of the `google.protobuf.Duration` type.
-     * If the field's value doesn't correspond to any of the specified values,
-     * an error message will be generated.
+     *`in` asserts that the field must be equal to one of the specified values of the `google.protobuf.Duration` type.
+     *If the field's value doesn't correspond to any of the specified values,
+     *an error message will be generated.
      *
-     * ```proto
-     * message MyDuration {
+     *```proto
+     *message MyDuration {
      *  // value must be in list [1s, 2s, 3s]
      *   google.protobuf.Duration value = 1 [(buf.validate.field).duration.in = ["1s", "2s", "3s"]];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>
-     * repeated .google.protobuf.Duration in = 7 [json_name = "in", (.buf.validate.priv.field) = { ... }
-     * </code>
+     * <code>repeated .google.protobuf.Duration in = 7 [json_name = "in", (.buf.validate.priv.field) = { ... }</code>
      */
-    public Builder addIn(int index, com.google.protobuf.Duration value) {
+    public Builder addIn(
+        int index, com.google.protobuf.Duration value) {
       if (inBuilder_ == null) {
         if (value == null) {
           throw new NullPointerException();
@@ -3203,28 +2801,24 @@ public final class DurationRules extends com.google.protobuf.GeneratedMessageV3
       }
       return this;
     }
-
     /**
-     *
-     *
      * <pre>
-     * `in` asserts that the field must be equal to one of the specified values of the `google.protobuf.Duration` type.
-     * If the field's value doesn't correspond to any of the specified values,
-     * an error message will be generated.
+     *`in` asserts that the field must be equal to one of the specified values of the `google.protobuf.Duration` type.
+     *If the field's value doesn't correspond to any of the specified values,
+     *an error message will be generated.
      *
-     * ```proto
-     * message MyDuration {
+     *```proto
+     *message MyDuration {
      *  // value must be in list [1s, 2s, 3s]
      *   google.protobuf.Duration value = 1 [(buf.validate.field).duration.in = ["1s", "2s", "3s"]];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>
-     * repeated .google.protobuf.Duration in = 7 [json_name = "in", (.buf.validate.priv.field) = { ... }
-     * </code>
+     * <code>repeated .google.protobuf.Duration in = 7 [json_name = "in", (.buf.validate.priv.field) = { ... }</code>
      */
-    public Builder addIn(com.google.protobuf.Duration.Builder builderForValue) {
+    public Builder addIn(
+        com.google.protobuf.Duration.Builder builderForValue) {
       if (inBuilder_ == null) {
         ensureInIsMutable();
         in_.add(builderForValue.build());
@@ -3234,28 +2828,24 @@ public final class DurationRules extends com.google.protobuf.GeneratedMessageV3
       }
       return this;
     }
-
     /**
-     *
-     *
      * <pre>
-     * `in` asserts that the field must be equal to one of the specified values of the `google.protobuf.Duration` type.
-     * If the field's value doesn't correspond to any of the specified values,
-     * an error message will be generated.
+     *`in` asserts that the field must be equal to one of the specified values of the `google.protobuf.Duration` type.
+     *If the field's value doesn't correspond to any of the specified values,
+     *an error message will be generated.
      *
-     * ```proto
-     * message MyDuration {
+     *```proto
+     *message MyDuration {
      *  // value must be in list [1s, 2s, 3s]
      *   google.protobuf.Duration value = 1 [(buf.validate.field).duration.in = ["1s", "2s", "3s"]];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>
-     * repeated .google.protobuf.Duration in = 7 [json_name = "in", (.buf.validate.priv.field) = { ... }
-     * </code>
+     * <code>repeated .google.protobuf.Duration in = 7 [json_name = "in", (.buf.validate.priv.field) = { ... }</code>
      */
-    public Builder addIn(int index, com.google.protobuf.Duration.Builder builderForValue) {
+    public Builder addIn(
+        int index, com.google.protobuf.Duration.Builder builderForValue) {
       if (inBuilder_ == null) {
         ensureInIsMutable();
         in_.add(index, builderForValue.build());
@@ -3265,57 +2855,49 @@ public final class DurationRules extends com.google.protobuf.GeneratedMessageV3
       }
       return this;
     }
-
     /**
-     *
-     *
      * <pre>
-     * `in` asserts that the field must be equal to one of the specified values of the `google.protobuf.Duration` type.
-     * If the field's value doesn't correspond to any of the specified values,
-     * an error message will be generated.
+     *`in` asserts that the field must be equal to one of the specified values of the `google.protobuf.Duration` type.
+     *If the field's value doesn't correspond to any of the specified values,
+     *an error message will be generated.
      *
-     * ```proto
-     * message MyDuration {
+     *```proto
+     *message MyDuration {
      *  // value must be in list [1s, 2s, 3s]
      *   google.protobuf.Duration value = 1 [(buf.validate.field).duration.in = ["1s", "2s", "3s"]];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>
-     * repeated .google.protobuf.Duration in = 7 [json_name = "in", (.buf.validate.priv.field) = { ... }
-     * </code>
+     * <code>repeated .google.protobuf.Duration in = 7 [json_name = "in", (.buf.validate.priv.field) = { ... }</code>
      */
-    public Builder addAllIn(java.lang.Iterable<? extends com.google.protobuf.Duration> values) {
+    public Builder addAllIn(
+        java.lang.Iterable<? extends com.google.protobuf.Duration> values) {
       if (inBuilder_ == null) {
         ensureInIsMutable();
-        com.google.protobuf.AbstractMessageLite.Builder.addAll(values, in_);
+        com.google.protobuf.AbstractMessageLite.Builder.addAll(
+            values, in_);
         onChanged();
       } else {
         inBuilder_.addAllMessages(values);
       }
       return this;
     }
-
     /**
-     *
-     *
      * <pre>
-     * `in` asserts that the field must be equal to one of the specified values of the `google.protobuf.Duration` type.
-     * If the field's value doesn't correspond to any of the specified values,
-     * an error message will be generated.
+     *`in` asserts that the field must be equal to one of the specified values of the `google.protobuf.Duration` type.
+     *If the field's value doesn't correspond to any of the specified values,
+     *an error message will be generated.
      *
-     * ```proto
-     * message MyDuration {
+     *```proto
+     *message MyDuration {
      *  // value must be in list [1s, 2s, 3s]
      *   google.protobuf.Duration value = 1 [(buf.validate.field).duration.in = ["1s", "2s", "3s"]];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>
-     * repeated .google.protobuf.Duration in = 7 [json_name = "in", (.buf.validate.priv.field) = { ... }
-     * </code>
+     * <code>repeated .google.protobuf.Duration in = 7 [json_name = "in", (.buf.validate.priv.field) = { ... }</code>
      */
     public Builder clearIn() {
       if (inBuilder_ == null) {
@@ -3327,26 +2909,21 @@ public final class DurationRules extends com.google.protobuf.GeneratedMessageV3
       }
       return this;
     }
-
     /**
-     *
-     *
      * <pre>
-     * `in` asserts that the field must be equal to one of the specified values of the `google.protobuf.Duration` type.
-     * If the field's value doesn't correspond to any of the specified values,
-     * an error message will be generated.
+     *`in` asserts that the field must be equal to one of the specified values of the `google.protobuf.Duration` type.
+     *If the field's value doesn't correspond to any of the specified values,
+     *an error message will be generated.
      *
-     * ```proto
-     * message MyDuration {
+     *```proto
+     *message MyDuration {
      *  // value must be in list [1s, 2s, 3s]
      *   google.protobuf.Duration value = 1 [(buf.validate.field).duration.in = ["1s", "2s", "3s"]];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>
-     * repeated .google.protobuf.Duration in = 7 [json_name = "in", (.buf.validate.priv.field) = { ... }
-     * </code>
+     * <code>repeated .google.protobuf.Duration in = 7 [json_name = "in", (.buf.validate.priv.field) = { ... }</code>
      */
     public Builder removeIn(int index) {
       if (inBuilder_ == null) {
@@ -3358,212 +2935,177 @@ public final class DurationRules extends com.google.protobuf.GeneratedMessageV3
       }
       return this;
     }
-
     /**
-     *
-     *
      * <pre>
-     * `in` asserts that the field must be equal to one of the specified values of the `google.protobuf.Duration` type.
-     * If the field's value doesn't correspond to any of the specified values,
-     * an error message will be generated.
+     *`in` asserts that the field must be equal to one of the specified values of the `google.protobuf.Duration` type.
+     *If the field's value doesn't correspond to any of the specified values,
+     *an error message will be generated.
      *
-     * ```proto
-     * message MyDuration {
+     *```proto
+     *message MyDuration {
      *  // value must be in list [1s, 2s, 3s]
      *   google.protobuf.Duration value = 1 [(buf.validate.field).duration.in = ["1s", "2s", "3s"]];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>
-     * repeated .google.protobuf.Duration in = 7 [json_name = "in", (.buf.validate.priv.field) = { ... }
-     * </code>
+     * <code>repeated .google.protobuf.Duration in = 7 [json_name = "in", (.buf.validate.priv.field) = { ... }</code>
      */
-    public com.google.protobuf.Duration.Builder getInBuilder(int index) {
+    public com.google.protobuf.Duration.Builder getInBuilder(
+        int index) {
       return getInFieldBuilder().getBuilder(index);
     }
-
     /**
-     *
-     *
      * <pre>
-     * `in` asserts that the field must be equal to one of the specified values of the `google.protobuf.Duration` type.
-     * If the field's value doesn't correspond to any of the specified values,
-     * an error message will be generated.
+     *`in` asserts that the field must be equal to one of the specified values of the `google.protobuf.Duration` type.
+     *If the field's value doesn't correspond to any of the specified values,
+     *an error message will be generated.
      *
-     * ```proto
-     * message MyDuration {
+     *```proto
+     *message MyDuration {
      *  // value must be in list [1s, 2s, 3s]
      *   google.protobuf.Duration value = 1 [(buf.validate.field).duration.in = ["1s", "2s", "3s"]];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>
-     * repeated .google.protobuf.Duration in = 7 [json_name = "in", (.buf.validate.priv.field) = { ... }
-     * </code>
+     * <code>repeated .google.protobuf.Duration in = 7 [json_name = "in", (.buf.validate.priv.field) = { ... }</code>
      */
-    public com.google.protobuf.DurationOrBuilder getInOrBuilder(int index) {
+    public com.google.protobuf.DurationOrBuilder getInOrBuilder(
+        int index) {
       if (inBuilder_ == null) {
-        return in_.get(index);
-      } else {
+        return in_.get(index);  } else {
         return inBuilder_.getMessageOrBuilder(index);
       }
     }
-
     /**
-     *
-     *
      * <pre>
-     * `in` asserts that the field must be equal to one of the specified values of the `google.protobuf.Duration` type.
-     * If the field's value doesn't correspond to any of the specified values,
-     * an error message will be generated.
+     *`in` asserts that the field must be equal to one of the specified values of the `google.protobuf.Duration` type.
+     *If the field's value doesn't correspond to any of the specified values,
+     *an error message will be generated.
      *
-     * ```proto
-     * message MyDuration {
+     *```proto
+     *message MyDuration {
      *  // value must be in list [1s, 2s, 3s]
      *   google.protobuf.Duration value = 1 [(buf.validate.field).duration.in = ["1s", "2s", "3s"]];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>
-     * repeated .google.protobuf.Duration in = 7 [json_name = "in", (.buf.validate.priv.field) = { ... }
-     * </code>
+     * <code>repeated .google.protobuf.Duration in = 7 [json_name = "in", (.buf.validate.priv.field) = { ... }</code>
      */
-    public java.util.List<? extends com.google.protobuf.DurationOrBuilder> getInOrBuilderList() {
+    public java.util.List<? extends com.google.protobuf.DurationOrBuilder> 
+         getInOrBuilderList() {
       if (inBuilder_ != null) {
         return inBuilder_.getMessageOrBuilderList();
       } else {
         return java.util.Collections.unmodifiableList(in_);
       }
     }
-
     /**
-     *
-     *
      * <pre>
-     * `in` asserts that the field must be equal to one of the specified values of the `google.protobuf.Duration` type.
-     * If the field's value doesn't correspond to any of the specified values,
-     * an error message will be generated.
+     *`in` asserts that the field must be equal to one of the specified values of the `google.protobuf.Duration` type.
+     *If the field's value doesn't correspond to any of the specified values,
+     *an error message will be generated.
      *
-     * ```proto
-     * message MyDuration {
+     *```proto
+     *message MyDuration {
      *  // value must be in list [1s, 2s, 3s]
      *   google.protobuf.Duration value = 1 [(buf.validate.field).duration.in = ["1s", "2s", "3s"]];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>
-     * repeated .google.protobuf.Duration in = 7 [json_name = "in", (.buf.validate.priv.field) = { ... }
-     * </code>
+     * <code>repeated .google.protobuf.Duration in = 7 [json_name = "in", (.buf.validate.priv.field) = { ... }</code>
      */
     public com.google.protobuf.Duration.Builder addInBuilder() {
-      return getInFieldBuilder().addBuilder(com.google.protobuf.Duration.getDefaultInstance());
+      return getInFieldBuilder().addBuilder(
+          com.google.protobuf.Duration.getDefaultInstance());
     }
-
     /**
-     *
-     *
      * <pre>
-     * `in` asserts that the field must be equal to one of the specified values of the `google.protobuf.Duration` type.
-     * If the field's value doesn't correspond to any of the specified values,
-     * an error message will be generated.
+     *`in` asserts that the field must be equal to one of the specified values of the `google.protobuf.Duration` type.
+     *If the field's value doesn't correspond to any of the specified values,
+     *an error message will be generated.
      *
-     * ```proto
-     * message MyDuration {
+     *```proto
+     *message MyDuration {
      *  // value must be in list [1s, 2s, 3s]
      *   google.protobuf.Duration value = 1 [(buf.validate.field).duration.in = ["1s", "2s", "3s"]];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>
-     * repeated .google.protobuf.Duration in = 7 [json_name = "in", (.buf.validate.priv.field) = { ... }
-     * </code>
+     * <code>repeated .google.protobuf.Duration in = 7 [json_name = "in", (.buf.validate.priv.field) = { ... }</code>
      */
-    public com.google.protobuf.Duration.Builder addInBuilder(int index) {
-      return getInFieldBuilder()
-          .addBuilder(index, com.google.protobuf.Duration.getDefaultInstance());
+    public com.google.protobuf.Duration.Builder addInBuilder(
+        int index) {
+      return getInFieldBuilder().addBuilder(
+          index, com.google.protobuf.Duration.getDefaultInstance());
     }
-
     /**
-     *
-     *
      * <pre>
-     * `in` asserts that the field must be equal to one of the specified values of the `google.protobuf.Duration` type.
-     * If the field's value doesn't correspond to any of the specified values,
-     * an error message will be generated.
+     *`in` asserts that the field must be equal to one of the specified values of the `google.protobuf.Duration` type.
+     *If the field's value doesn't correspond to any of the specified values,
+     *an error message will be generated.
      *
-     * ```proto
-     * message MyDuration {
+     *```proto
+     *message MyDuration {
      *  // value must be in list [1s, 2s, 3s]
      *   google.protobuf.Duration value = 1 [(buf.validate.field).duration.in = ["1s", "2s", "3s"]];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>
-     * repeated .google.protobuf.Duration in = 7 [json_name = "in", (.buf.validate.priv.field) = { ... }
-     * </code>
+     * <code>repeated .google.protobuf.Duration in = 7 [json_name = "in", (.buf.validate.priv.field) = { ... }</code>
      */
-    public java.util.List<com.google.protobuf.Duration.Builder> getInBuilderList() {
+    public java.util.List<com.google.protobuf.Duration.Builder> 
+         getInBuilderList() {
       return getInFieldBuilder().getBuilderList();
     }
-
     private com.google.protobuf.RepeatedFieldBuilderV3<
-            com.google.protobuf.Duration,
-            com.google.protobuf.Duration.Builder,
-            com.google.protobuf.DurationOrBuilder>
+        com.google.protobuf.Duration, com.google.protobuf.Duration.Builder, com.google.protobuf.DurationOrBuilder> 
         getInFieldBuilder() {
       if (inBuilder_ == null) {
-        inBuilder_ =
-            new com.google.protobuf.RepeatedFieldBuilderV3<
-                com.google.protobuf.Duration,
-                com.google.protobuf.Duration.Builder,
-                com.google.protobuf.DurationOrBuilder>(
-                in_, ((bitField0_ & 0x00000020) != 0), getParentForChildren(), isClean());
+        inBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+            com.google.protobuf.Duration, com.google.protobuf.Duration.Builder, com.google.protobuf.DurationOrBuilder>(
+                in_,
+                ((bitField0_ & 0x00000020) != 0),
+                getParentForChildren(),
+                isClean());
         in_ = null;
       }
       return inBuilder_;
     }
 
-    private java.util.List<com.google.protobuf.Duration> notIn_ = java.util.Collections.emptyList();
-
+    private java.util.List<com.google.protobuf.Duration> notIn_ =
+      java.util.Collections.emptyList();
     private void ensureNotInIsMutable() {
       if (!((bitField0_ & 0x00000040) != 0)) {
         notIn_ = new java.util.ArrayList<com.google.protobuf.Duration>(notIn_);
         bitField0_ |= 0x00000040;
-      }
+       }
     }
 
     private com.google.protobuf.RepeatedFieldBuilderV3<
-            com.google.protobuf.Duration,
-            com.google.protobuf.Duration.Builder,
-            com.google.protobuf.DurationOrBuilder>
-        notInBuilder_;
+        com.google.protobuf.Duration, com.google.protobuf.Duration.Builder, com.google.protobuf.DurationOrBuilder> notInBuilder_;
 
     /**
-     *
-     *
      * <pre>
-     * `not_in` denotes that the field must not be equal to
-     * any of the specified values of the `google.protobuf.Duration` type.
-     * If the field's value matches any of these values, an error message will be
-     * generated.
+     *`not_in` denotes that the field must not be equal to
+     *any of the specified values of the `google.protobuf.Duration` type.
+     *If the field's value matches any of these values, an error message will be
+     *generated.
      *
-     * ```proto
-     * message MyDuration {
+     *```proto
+     *message MyDuration {
      *  // value must not be in list [1s, 2s, 3s]
      *   google.protobuf.Duration value = 1 [(buf.validate.field).duration.not_in = ["1s", "2s", "3s"]];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>
-     * repeated .google.protobuf.Duration not_in = 8 [json_name = "notIn", (.buf.validate.priv.field) = { ... }
-     * </code>
+     * <code>repeated .google.protobuf.Duration not_in = 8 [json_name = "notIn", (.buf.validate.priv.field) = { ... }</code>
      */
     public java.util.List<com.google.protobuf.Duration> getNotInList() {
       if (notInBuilder_ == null) {
@@ -3572,27 +3114,22 @@ public final class DurationRules extends com.google.protobuf.GeneratedMessageV3
         return notInBuilder_.getMessageList();
       }
     }
-
     /**
-     *
-     *
      * <pre>
-     * `not_in` denotes that the field must not be equal to
-     * any of the specified values of the `google.protobuf.Duration` type.
-     * If the field's value matches any of these values, an error message will be
-     * generated.
+     *`not_in` denotes that the field must not be equal to
+     *any of the specified values of the `google.protobuf.Duration` type.
+     *If the field's value matches any of these values, an error message will be
+     *generated.
      *
-     * ```proto
-     * message MyDuration {
+     *```proto
+     *message MyDuration {
      *  // value must not be in list [1s, 2s, 3s]
      *   google.protobuf.Duration value = 1 [(buf.validate.field).duration.not_in = ["1s", "2s", "3s"]];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>
-     * repeated .google.protobuf.Duration not_in = 8 [json_name = "notIn", (.buf.validate.priv.field) = { ... }
-     * </code>
+     * <code>repeated .google.protobuf.Duration not_in = 8 [json_name = "notIn", (.buf.validate.priv.field) = { ... }</code>
      */
     public int getNotInCount() {
       if (notInBuilder_ == null) {
@@ -3601,27 +3138,22 @@ public final class DurationRules extends com.google.protobuf.GeneratedMessageV3
         return notInBuilder_.getCount();
       }
     }
-
     /**
-     *
-     *
      * <pre>
-     * `not_in` denotes that the field must not be equal to
-     * any of the specified values of the `google.protobuf.Duration` type.
-     * If the field's value matches any of these values, an error message will be
-     * generated.
+     *`not_in` denotes that the field must not be equal to
+     *any of the specified values of the `google.protobuf.Duration` type.
+     *If the field's value matches any of these values, an error message will be
+     *generated.
      *
-     * ```proto
-     * message MyDuration {
+     *```proto
+     *message MyDuration {
      *  // value must not be in list [1s, 2s, 3s]
      *   google.protobuf.Duration value = 1 [(buf.validate.field).duration.not_in = ["1s", "2s", "3s"]];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>
-     * repeated .google.protobuf.Duration not_in = 8 [json_name = "notIn", (.buf.validate.priv.field) = { ... }
-     * </code>
+     * <code>repeated .google.protobuf.Duration not_in = 8 [json_name = "notIn", (.buf.validate.priv.field) = { ... }</code>
      */
     public com.google.protobuf.Duration getNotIn(int index) {
       if (notInBuilder_ == null) {
@@ -3630,29 +3162,25 @@ public final class DurationRules extends com.google.protobuf.GeneratedMessageV3
         return notInBuilder_.getMessage(index);
       }
     }
-
     /**
-     *
-     *
      * <pre>
-     * `not_in` denotes that the field must not be equal to
-     * any of the specified values of the `google.protobuf.Duration` type.
-     * If the field's value matches any of these values, an error message will be
-     * generated.
+     *`not_in` denotes that the field must not be equal to
+     *any of the specified values of the `google.protobuf.Duration` type.
+     *If the field's value matches any of these values, an error message will be
+     *generated.
      *
-     * ```proto
-     * message MyDuration {
+     *```proto
+     *message MyDuration {
      *  // value must not be in list [1s, 2s, 3s]
      *   google.protobuf.Duration value = 1 [(buf.validate.field).duration.not_in = ["1s", "2s", "3s"]];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>
-     * repeated .google.protobuf.Duration not_in = 8 [json_name = "notIn", (.buf.validate.priv.field) = { ... }
-     * </code>
+     * <code>repeated .google.protobuf.Duration not_in = 8 [json_name = "notIn", (.buf.validate.priv.field) = { ... }</code>
      */
-    public Builder setNotIn(int index, com.google.protobuf.Duration value) {
+    public Builder setNotIn(
+        int index, com.google.protobuf.Duration value) {
       if (notInBuilder_ == null) {
         if (value == null) {
           throw new NullPointerException();
@@ -3665,29 +3193,25 @@ public final class DurationRules extends com.google.protobuf.GeneratedMessageV3
       }
       return this;
     }
-
     /**
-     *
-     *
      * <pre>
-     * `not_in` denotes that the field must not be equal to
-     * any of the specified values of the `google.protobuf.Duration` type.
-     * If the field's value matches any of these values, an error message will be
-     * generated.
+     *`not_in` denotes that the field must not be equal to
+     *any of the specified values of the `google.protobuf.Duration` type.
+     *If the field's value matches any of these values, an error message will be
+     *generated.
      *
-     * ```proto
-     * message MyDuration {
+     *```proto
+     *message MyDuration {
      *  // value must not be in list [1s, 2s, 3s]
      *   google.protobuf.Duration value = 1 [(buf.validate.field).duration.not_in = ["1s", "2s", "3s"]];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>
-     * repeated .google.protobuf.Duration not_in = 8 [json_name = "notIn", (.buf.validate.priv.field) = { ... }
-     * </code>
+     * <code>repeated .google.protobuf.Duration not_in = 8 [json_name = "notIn", (.buf.validate.priv.field) = { ... }</code>
      */
-    public Builder setNotIn(int index, com.google.protobuf.Duration.Builder builderForValue) {
+    public Builder setNotIn(
+        int index, com.google.protobuf.Duration.Builder builderForValue) {
       if (notInBuilder_ == null) {
         ensureNotInIsMutable();
         notIn_.set(index, builderForValue.build());
@@ -3697,27 +3221,22 @@ public final class DurationRules extends com.google.protobuf.GeneratedMessageV3
       }
       return this;
     }
-
     /**
-     *
-     *
      * <pre>
-     * `not_in` denotes that the field must not be equal to
-     * any of the specified values of the `google.protobuf.Duration` type.
-     * If the field's value matches any of these values, an error message will be
-     * generated.
+     *`not_in` denotes that the field must not be equal to
+     *any of the specified values of the `google.protobuf.Duration` type.
+     *If the field's value matches any of these values, an error message will be
+     *generated.
      *
-     * ```proto
-     * message MyDuration {
+     *```proto
+     *message MyDuration {
      *  // value must not be in list [1s, 2s, 3s]
      *   google.protobuf.Duration value = 1 [(buf.validate.field).duration.not_in = ["1s", "2s", "3s"]];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>
-     * repeated .google.protobuf.Duration not_in = 8 [json_name = "notIn", (.buf.validate.priv.field) = { ... }
-     * </code>
+     * <code>repeated .google.protobuf.Duration not_in = 8 [json_name = "notIn", (.buf.validate.priv.field) = { ... }</code>
      */
     public Builder addNotIn(com.google.protobuf.Duration value) {
       if (notInBuilder_ == null) {
@@ -3732,29 +3251,25 @@ public final class DurationRules extends com.google.protobuf.GeneratedMessageV3
       }
       return this;
     }
-
     /**
-     *
-     *
      * <pre>
-     * `not_in` denotes that the field must not be equal to
-     * any of the specified values of the `google.protobuf.Duration` type.
-     * If the field's value matches any of these values, an error message will be
-     * generated.
+     *`not_in` denotes that the field must not be equal to
+     *any of the specified values of the `google.protobuf.Duration` type.
+     *If the field's value matches any of these values, an error message will be
+     *generated.
      *
-     * ```proto
-     * message MyDuration {
+     *```proto
+     *message MyDuration {
      *  // value must not be in list [1s, 2s, 3s]
      *   google.protobuf.Duration value = 1 [(buf.validate.field).duration.not_in = ["1s", "2s", "3s"]];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>
-     * repeated .google.protobuf.Duration not_in = 8 [json_name = "notIn", (.buf.validate.priv.field) = { ... }
-     * </code>
+     * <code>repeated .google.protobuf.Duration not_in = 8 [json_name = "notIn", (.buf.validate.priv.field) = { ... }</code>
      */
-    public Builder addNotIn(int index, com.google.protobuf.Duration value) {
+    public Builder addNotIn(
+        int index, com.google.protobuf.Duration value) {
       if (notInBuilder_ == null) {
         if (value == null) {
           throw new NullPointerException();
@@ -3767,29 +3282,25 @@ public final class DurationRules extends com.google.protobuf.GeneratedMessageV3
       }
       return this;
     }
-
     /**
-     *
-     *
      * <pre>
-     * `not_in` denotes that the field must not be equal to
-     * any of the specified values of the `google.protobuf.Duration` type.
-     * If the field's value matches any of these values, an error message will be
-     * generated.
+     *`not_in` denotes that the field must not be equal to
+     *any of the specified values of the `google.protobuf.Duration` type.
+     *If the field's value matches any of these values, an error message will be
+     *generated.
      *
-     * ```proto
-     * message MyDuration {
+     *```proto
+     *message MyDuration {
      *  // value must not be in list [1s, 2s, 3s]
      *   google.protobuf.Duration value = 1 [(buf.validate.field).duration.not_in = ["1s", "2s", "3s"]];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>
-     * repeated .google.protobuf.Duration not_in = 8 [json_name = "notIn", (.buf.validate.priv.field) = { ... }
-     * </code>
+     * <code>repeated .google.protobuf.Duration not_in = 8 [json_name = "notIn", (.buf.validate.priv.field) = { ... }</code>
      */
-    public Builder addNotIn(com.google.protobuf.Duration.Builder builderForValue) {
+    public Builder addNotIn(
+        com.google.protobuf.Duration.Builder builderForValue) {
       if (notInBuilder_ == null) {
         ensureNotInIsMutable();
         notIn_.add(builderForValue.build());
@@ -3799,29 +3310,25 @@ public final class DurationRules extends com.google.protobuf.GeneratedMessageV3
       }
       return this;
     }
-
     /**
-     *
-     *
      * <pre>
-     * `not_in` denotes that the field must not be equal to
-     * any of the specified values of the `google.protobuf.Duration` type.
-     * If the field's value matches any of these values, an error message will be
-     * generated.
+     *`not_in` denotes that the field must not be equal to
+     *any of the specified values of the `google.protobuf.Duration` type.
+     *If the field's value matches any of these values, an error message will be
+     *generated.
      *
-     * ```proto
-     * message MyDuration {
+     *```proto
+     *message MyDuration {
      *  // value must not be in list [1s, 2s, 3s]
      *   google.protobuf.Duration value = 1 [(buf.validate.field).duration.not_in = ["1s", "2s", "3s"]];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>
-     * repeated .google.protobuf.Duration not_in = 8 [json_name = "notIn", (.buf.validate.priv.field) = { ... }
-     * </code>
+     * <code>repeated .google.protobuf.Duration not_in = 8 [json_name = "notIn", (.buf.validate.priv.field) = { ... }</code>
      */
-    public Builder addNotIn(int index, com.google.protobuf.Duration.Builder builderForValue) {
+    public Builder addNotIn(
+        int index, com.google.protobuf.Duration.Builder builderForValue) {
       if (notInBuilder_ == null) {
         ensureNotInIsMutable();
         notIn_.add(index, builderForValue.build());
@@ -3831,59 +3338,51 @@ public final class DurationRules extends com.google.protobuf.GeneratedMessageV3
       }
       return this;
     }
-
     /**
-     *
-     *
      * <pre>
-     * `not_in` denotes that the field must not be equal to
-     * any of the specified values of the `google.protobuf.Duration` type.
-     * If the field's value matches any of these values, an error message will be
-     * generated.
+     *`not_in` denotes that the field must not be equal to
+     *any of the specified values of the `google.protobuf.Duration` type.
+     *If the field's value matches any of these values, an error message will be
+     *generated.
      *
-     * ```proto
-     * message MyDuration {
+     *```proto
+     *message MyDuration {
      *  // value must not be in list [1s, 2s, 3s]
      *   google.protobuf.Duration value = 1 [(buf.validate.field).duration.not_in = ["1s", "2s", "3s"]];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>
-     * repeated .google.protobuf.Duration not_in = 8 [json_name = "notIn", (.buf.validate.priv.field) = { ... }
-     * </code>
+     * <code>repeated .google.protobuf.Duration not_in = 8 [json_name = "notIn", (.buf.validate.priv.field) = { ... }</code>
      */
-    public Builder addAllNotIn(java.lang.Iterable<? extends com.google.protobuf.Duration> values) {
+    public Builder addAllNotIn(
+        java.lang.Iterable<? extends com.google.protobuf.Duration> values) {
       if (notInBuilder_ == null) {
         ensureNotInIsMutable();
-        com.google.protobuf.AbstractMessageLite.Builder.addAll(values, notIn_);
+        com.google.protobuf.AbstractMessageLite.Builder.addAll(
+            values, notIn_);
         onChanged();
       } else {
         notInBuilder_.addAllMessages(values);
       }
       return this;
     }
-
     /**
-     *
-     *
      * <pre>
-     * `not_in` denotes that the field must not be equal to
-     * any of the specified values of the `google.protobuf.Duration` type.
-     * If the field's value matches any of these values, an error message will be
-     * generated.
+     *`not_in` denotes that the field must not be equal to
+     *any of the specified values of the `google.protobuf.Duration` type.
+     *If the field's value matches any of these values, an error message will be
+     *generated.
      *
-     * ```proto
-     * message MyDuration {
+     *```proto
+     *message MyDuration {
      *  // value must not be in list [1s, 2s, 3s]
      *   google.protobuf.Duration value = 1 [(buf.validate.field).duration.not_in = ["1s", "2s", "3s"]];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>
-     * repeated .google.protobuf.Duration not_in = 8 [json_name = "notIn", (.buf.validate.priv.field) = { ... }
-     * </code>
+     * <code>repeated .google.protobuf.Duration not_in = 8 [json_name = "notIn", (.buf.validate.priv.field) = { ... }</code>
      */
     public Builder clearNotIn() {
       if (notInBuilder_ == null) {
@@ -3895,27 +3394,22 @@ public final class DurationRules extends com.google.protobuf.GeneratedMessageV3
       }
       return this;
     }
-
     /**
-     *
-     *
      * <pre>
-     * `not_in` denotes that the field must not be equal to
-     * any of the specified values of the `google.protobuf.Duration` type.
-     * If the field's value matches any of these values, an error message will be
-     * generated.
+     *`not_in` denotes that the field must not be equal to
+     *any of the specified values of the `google.protobuf.Duration` type.
+     *If the field's value matches any of these values, an error message will be
+     *generated.
      *
-     * ```proto
-     * message MyDuration {
+     *```proto
+     *message MyDuration {
      *  // value must not be in list [1s, 2s, 3s]
      *   google.protobuf.Duration value = 1 [(buf.validate.field).duration.not_in = ["1s", "2s", "3s"]];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>
-     * repeated .google.protobuf.Duration not_in = 8 [json_name = "notIn", (.buf.validate.priv.field) = { ... }
-     * </code>
+     * <code>repeated .google.protobuf.Duration not_in = 8 [json_name = "notIn", (.buf.validate.priv.field) = { ... }</code>
      */
     public Builder removeNotIn(int index) {
       if (notInBuilder_ == null) {
@@ -3927,185 +3421,157 @@ public final class DurationRules extends com.google.protobuf.GeneratedMessageV3
       }
       return this;
     }
-
     /**
-     *
-     *
      * <pre>
-     * `not_in` denotes that the field must not be equal to
-     * any of the specified values of the `google.protobuf.Duration` type.
-     * If the field's value matches any of these values, an error message will be
-     * generated.
+     *`not_in` denotes that the field must not be equal to
+     *any of the specified values of the `google.protobuf.Duration` type.
+     *If the field's value matches any of these values, an error message will be
+     *generated.
      *
-     * ```proto
-     * message MyDuration {
+     *```proto
+     *message MyDuration {
      *  // value must not be in list [1s, 2s, 3s]
      *   google.protobuf.Duration value = 1 [(buf.validate.field).duration.not_in = ["1s", "2s", "3s"]];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>
-     * repeated .google.protobuf.Duration not_in = 8 [json_name = "notIn", (.buf.validate.priv.field) = { ... }
-     * </code>
+     * <code>repeated .google.protobuf.Duration not_in = 8 [json_name = "notIn", (.buf.validate.priv.field) = { ... }</code>
      */
-    public com.google.protobuf.Duration.Builder getNotInBuilder(int index) {
+    public com.google.protobuf.Duration.Builder getNotInBuilder(
+        int index) {
       return getNotInFieldBuilder().getBuilder(index);
     }
-
     /**
-     *
-     *
      * <pre>
-     * `not_in` denotes that the field must not be equal to
-     * any of the specified values of the `google.protobuf.Duration` type.
-     * If the field's value matches any of these values, an error message will be
-     * generated.
+     *`not_in` denotes that the field must not be equal to
+     *any of the specified values of the `google.protobuf.Duration` type.
+     *If the field's value matches any of these values, an error message will be
+     *generated.
      *
-     * ```proto
-     * message MyDuration {
+     *```proto
+     *message MyDuration {
      *  // value must not be in list [1s, 2s, 3s]
      *   google.protobuf.Duration value = 1 [(buf.validate.field).duration.not_in = ["1s", "2s", "3s"]];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>
-     * repeated .google.protobuf.Duration not_in = 8 [json_name = "notIn", (.buf.validate.priv.field) = { ... }
-     * </code>
+     * <code>repeated .google.protobuf.Duration not_in = 8 [json_name = "notIn", (.buf.validate.priv.field) = { ... }</code>
      */
-    public com.google.protobuf.DurationOrBuilder getNotInOrBuilder(int index) {
+    public com.google.protobuf.DurationOrBuilder getNotInOrBuilder(
+        int index) {
       if (notInBuilder_ == null) {
-        return notIn_.get(index);
-      } else {
+        return notIn_.get(index);  } else {
         return notInBuilder_.getMessageOrBuilder(index);
       }
     }
-
     /**
-     *
-     *
      * <pre>
-     * `not_in` denotes that the field must not be equal to
-     * any of the specified values of the `google.protobuf.Duration` type.
-     * If the field's value matches any of these values, an error message will be
-     * generated.
+     *`not_in` denotes that the field must not be equal to
+     *any of the specified values of the `google.protobuf.Duration` type.
+     *If the field's value matches any of these values, an error message will be
+     *generated.
      *
-     * ```proto
-     * message MyDuration {
+     *```proto
+     *message MyDuration {
      *  // value must not be in list [1s, 2s, 3s]
      *   google.protobuf.Duration value = 1 [(buf.validate.field).duration.not_in = ["1s", "2s", "3s"]];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>
-     * repeated .google.protobuf.Duration not_in = 8 [json_name = "notIn", (.buf.validate.priv.field) = { ... }
-     * </code>
+     * <code>repeated .google.protobuf.Duration not_in = 8 [json_name = "notIn", (.buf.validate.priv.field) = { ... }</code>
      */
-    public java.util.List<? extends com.google.protobuf.DurationOrBuilder> getNotInOrBuilderList() {
+    public java.util.List<? extends com.google.protobuf.DurationOrBuilder> 
+         getNotInOrBuilderList() {
       if (notInBuilder_ != null) {
         return notInBuilder_.getMessageOrBuilderList();
       } else {
         return java.util.Collections.unmodifiableList(notIn_);
       }
     }
-
     /**
-     *
-     *
      * <pre>
-     * `not_in` denotes that the field must not be equal to
-     * any of the specified values of the `google.protobuf.Duration` type.
-     * If the field's value matches any of these values, an error message will be
-     * generated.
+     *`not_in` denotes that the field must not be equal to
+     *any of the specified values of the `google.protobuf.Duration` type.
+     *If the field's value matches any of these values, an error message will be
+     *generated.
      *
-     * ```proto
-     * message MyDuration {
+     *```proto
+     *message MyDuration {
      *  // value must not be in list [1s, 2s, 3s]
      *   google.protobuf.Duration value = 1 [(buf.validate.field).duration.not_in = ["1s", "2s", "3s"]];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>
-     * repeated .google.protobuf.Duration not_in = 8 [json_name = "notIn", (.buf.validate.priv.field) = { ... }
-     * </code>
+     * <code>repeated .google.protobuf.Duration not_in = 8 [json_name = "notIn", (.buf.validate.priv.field) = { ... }</code>
      */
     public com.google.protobuf.Duration.Builder addNotInBuilder() {
-      return getNotInFieldBuilder().addBuilder(com.google.protobuf.Duration.getDefaultInstance());
+      return getNotInFieldBuilder().addBuilder(
+          com.google.protobuf.Duration.getDefaultInstance());
     }
-
     /**
-     *
-     *
      * <pre>
-     * `not_in` denotes that the field must not be equal to
-     * any of the specified values of the `google.protobuf.Duration` type.
-     * If the field's value matches any of these values, an error message will be
-     * generated.
+     *`not_in` denotes that the field must not be equal to
+     *any of the specified values of the `google.protobuf.Duration` type.
+     *If the field's value matches any of these values, an error message will be
+     *generated.
      *
-     * ```proto
-     * message MyDuration {
+     *```proto
+     *message MyDuration {
      *  // value must not be in list [1s, 2s, 3s]
      *   google.protobuf.Duration value = 1 [(buf.validate.field).duration.not_in = ["1s", "2s", "3s"]];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>
-     * repeated .google.protobuf.Duration not_in = 8 [json_name = "notIn", (.buf.validate.priv.field) = { ... }
-     * </code>
+     * <code>repeated .google.protobuf.Duration not_in = 8 [json_name = "notIn", (.buf.validate.priv.field) = { ... }</code>
      */
-    public com.google.protobuf.Duration.Builder addNotInBuilder(int index) {
-      return getNotInFieldBuilder()
-          .addBuilder(index, com.google.protobuf.Duration.getDefaultInstance());
+    public com.google.protobuf.Duration.Builder addNotInBuilder(
+        int index) {
+      return getNotInFieldBuilder().addBuilder(
+          index, com.google.protobuf.Duration.getDefaultInstance());
     }
-
     /**
-     *
-     *
      * <pre>
-     * `not_in` denotes that the field must not be equal to
-     * any of the specified values of the `google.protobuf.Duration` type.
-     * If the field's value matches any of these values, an error message will be
-     * generated.
+     *`not_in` denotes that the field must not be equal to
+     *any of the specified values of the `google.protobuf.Duration` type.
+     *If the field's value matches any of these values, an error message will be
+     *generated.
      *
-     * ```proto
-     * message MyDuration {
+     *```proto
+     *message MyDuration {
      *  // value must not be in list [1s, 2s, 3s]
      *   google.protobuf.Duration value = 1 [(buf.validate.field).duration.not_in = ["1s", "2s", "3s"]];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>
-     * repeated .google.protobuf.Duration not_in = 8 [json_name = "notIn", (.buf.validate.priv.field) = { ... }
-     * </code>
+     * <code>repeated .google.protobuf.Duration not_in = 8 [json_name = "notIn", (.buf.validate.priv.field) = { ... }</code>
      */
-    public java.util.List<com.google.protobuf.Duration.Builder> getNotInBuilderList() {
+    public java.util.List<com.google.protobuf.Duration.Builder> 
+         getNotInBuilderList() {
       return getNotInFieldBuilder().getBuilderList();
     }
-
     private com.google.protobuf.RepeatedFieldBuilderV3<
-            com.google.protobuf.Duration,
-            com.google.protobuf.Duration.Builder,
-            com.google.protobuf.DurationOrBuilder>
+        com.google.protobuf.Duration, com.google.protobuf.Duration.Builder, com.google.protobuf.DurationOrBuilder> 
         getNotInFieldBuilder() {
       if (notInBuilder_ == null) {
-        notInBuilder_ =
-            new com.google.protobuf.RepeatedFieldBuilderV3<
-                com.google.protobuf.Duration,
-                com.google.protobuf.Duration.Builder,
-                com.google.protobuf.DurationOrBuilder>(
-                notIn_, ((bitField0_ & 0x00000040) != 0), getParentForChildren(), isClean());
+        notInBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+            com.google.protobuf.Duration, com.google.protobuf.Duration.Builder, com.google.protobuf.DurationOrBuilder>(
+                notIn_,
+                ((bitField0_ & 0x00000040) != 0),
+                getParentForChildren(),
+                isClean());
         notIn_ = null;
       }
       return notInBuilder_;
     }
-
     @java.lang.Override
-    public final Builder setUnknownFields(final com.google.protobuf.UnknownFieldSet unknownFields) {
+    public final Builder setUnknownFields(
+        final com.google.protobuf.UnknownFieldSet unknownFields) {
       return super.setUnknownFields(unknownFields);
     }
 
@@ -4115,12 +3581,12 @@ public final class DurationRules extends com.google.protobuf.GeneratedMessageV3
       return super.mergeUnknownFields(unknownFields);
     }
 
+
     // @@protoc_insertion_point(builder_scope:buf.validate.DurationRules)
   }
 
   // @@protoc_insertion_point(class_scope:buf.validate.DurationRules)
   private static final build.buf.validate.DurationRules DEFAULT_INSTANCE;
-
   static {
     DEFAULT_INSTANCE = new build.buf.validate.DurationRules();
   }
@@ -4129,27 +3595,27 @@ public final class DurationRules extends com.google.protobuf.GeneratedMessageV3
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<DurationRules> PARSER =
-      new com.google.protobuf.AbstractParser<DurationRules>() {
-        @java.lang.Override
-        public DurationRules parsePartialFrom(
-            com.google.protobuf.CodedInputStream input,
-            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-            throws com.google.protobuf.InvalidProtocolBufferException {
-          Builder builder = newBuilder();
-          try {
-            builder.mergeFrom(input, extensionRegistry);
-          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-            throw e.setUnfinishedMessage(builder.buildPartial());
-          } catch (com.google.protobuf.UninitializedMessageException e) {
-            throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
-          } catch (java.io.IOException e) {
-            throw new com.google.protobuf.InvalidProtocolBufferException(e)
-                .setUnfinishedMessage(builder.buildPartial());
-          }
-          return builder.buildPartial();
-        }
-      };
+  private static final com.google.protobuf.Parser<DurationRules>
+      PARSER = new com.google.protobuf.AbstractParser<DurationRules>() {
+    @java.lang.Override
+    public DurationRules parsePartialFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      Builder builder = newBuilder();
+      try {
+        builder.mergeFrom(input, extensionRegistry);
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(builder.buildPartial());
+      } catch (com.google.protobuf.UninitializedMessageException e) {
+        throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(e)
+            .setUnfinishedMessage(builder.buildPartial());
+      }
+      return builder.buildPartial();
+    }
+  };
 
   public static com.google.protobuf.Parser<DurationRules> parser() {
     return PARSER;
@@ -4164,4 +3630,6 @@ public final class DurationRules extends com.google.protobuf.GeneratedMessageV3
   public build.buf.validate.DurationRules getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
+
 }
+

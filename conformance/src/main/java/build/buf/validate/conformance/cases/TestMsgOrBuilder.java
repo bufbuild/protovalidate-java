@@ -3,39 +3,34 @@
 
 package build.buf.validate.conformance.cases;
 
-public interface TestMsgOrBuilder
-    extends
+public interface TestMsgOrBuilder extends
     // @@protoc_insertion_point(interface_extends:buf.validate.conformance.cases.TestMsg)
     com.google.protobuf.MessageOrBuilder {
 
   /**
    * <code>string const = 1 [json_name = "const", (.buf.validate.field) = { ... }</code>
-   *
    * @return The const.
    */
   java.lang.String getConst();
-
   /**
    * <code>string const = 1 [json_name = "const", (.buf.validate.field) = { ... }</code>
-   *
    * @return The bytes for const.
    */
-  com.google.protobuf.ByteString getConstBytes();
+  com.google.protobuf.ByteString
+      getConstBytes();
 
   /**
    * <code>.buf.validate.conformance.cases.TestMsg nested = 2 [json_name = "nested"];</code>
-   *
    * @return Whether the nested field is set.
    */
   boolean hasNested();
-
   /**
    * <code>.buf.validate.conformance.cases.TestMsg nested = 2 [json_name = "nested"];</code>
-   *
    * @return The nested.
    */
   build.buf.validate.conformance.cases.TestMsg getNested();
-
-  /** <code>.buf.validate.conformance.cases.TestMsg nested = 2 [json_name = "nested"];</code> */
+  /**
+   * <code>.buf.validate.conformance.cases.TestMsg nested = 2 [json_name = "nested"];</code>
+   */
   build.buf.validate.conformance.cases.TestMsgOrBuilder getNestedOrBuilder();
 }

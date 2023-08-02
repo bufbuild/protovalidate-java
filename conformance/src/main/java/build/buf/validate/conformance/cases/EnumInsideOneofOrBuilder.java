@@ -3,61 +3,38 @@
 
 package build.buf.validate.conformance.cases;
 
-public interface EnumInsideOneofOrBuilder
-    extends
+public interface EnumInsideOneofOrBuilder extends
     // @@protoc_insertion_point(interface_extends:buf.validate.conformance.cases.EnumInsideOneof)
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>
-   * .buf.validate.conformance.cases.TestEnum val = 1 [json_name = "val", (.buf.validate.field) = { ... }
-   * </code>
-   *
+   * <code>.buf.validate.conformance.cases.TestEnum val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
    * @return Whether the val field is set.
    */
   boolean hasVal();
-
   /**
-   * <code>
-   * .buf.validate.conformance.cases.TestEnum val = 1 [json_name = "val", (.buf.validate.field) = { ... }
-   * </code>
-   *
+   * <code>.buf.validate.conformance.cases.TestEnum val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
    * @return The enum numeric value on the wire for val.
    */
   int getValValue();
-
   /**
-   * <code>
-   * .buf.validate.conformance.cases.TestEnum val = 1 [json_name = "val", (.buf.validate.field) = { ... }
-   * </code>
-   *
+   * <code>.buf.validate.conformance.cases.TestEnum val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
    * @return The val.
    */
   build.buf.validate.conformance.cases.TestEnum getVal();
 
   /**
-   * <code>
-   * .buf.validate.conformance.cases.TestEnum val2 = 2 [json_name = "val2", (.buf.validate.field) = { ... }
-   * </code>
-   *
+   * <code>.buf.validate.conformance.cases.TestEnum val2 = 2 [json_name = "val2", (.buf.validate.field) = { ... }</code>
    * @return Whether the val2 field is set.
    */
   boolean hasVal2();
-
   /**
-   * <code>
-   * .buf.validate.conformance.cases.TestEnum val2 = 2 [json_name = "val2", (.buf.validate.field) = { ... }
-   * </code>
-   *
+   * <code>.buf.validate.conformance.cases.TestEnum val2 = 2 [json_name = "val2", (.buf.validate.field) = { ... }</code>
    * @return The enum numeric value on the wire for val2.
    */
   int getVal2Value();
-
   /**
-   * <code>
-   * .buf.validate.conformance.cases.TestEnum val2 = 2 [json_name = "val2", (.buf.validate.field) = { ... }
-   * </code>
-   *
+   * <code>.buf.validate.conformance.cases.TestEnum val2 = 2 [json_name = "val2", (.buf.validate.field) = { ... }</code>
    * @return The val2.
    */
   build.buf.validate.conformance.cases.TestEnum getVal2();

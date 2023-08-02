@@ -4,8 +4,6 @@
 package build.buf.validate;
 
 /**
- *
- *
  * <pre>
  * StringRules describes the constraints applied to `string` values These
  * rules may also be applied to the `google.protobuf.StringValue` Well-Known-Type.
@@ -13,17 +11,15 @@ package build.buf.validate;
  *
  * Protobuf type {@code buf.validate.StringRules}
  */
-public final class StringRules extends com.google.protobuf.GeneratedMessageV3
-    implements
+public final class StringRules extends
+    com.google.protobuf.GeneratedMessageV3 implements
     // @@protoc_insertion_point(message_implements:buf.validate.StringRules)
     StringRulesOrBuilder {
-  private static final long serialVersionUID = 0L;
-
+private static final long serialVersionUID = 0L;
   // Use StringRules.newBuilder() to construct.
   private StringRules(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
-
   private StringRules() {
     const_ = "";
     pattern_ = "";
@@ -31,38 +27,38 @@ public final class StringRules extends com.google.protobuf.GeneratedMessageV3
     suffix_ = "";
     contains_ = "";
     notContains_ = "";
-    in_ = com.google.protobuf.LazyStringArrayList.emptyList();
-    notIn_ = com.google.protobuf.LazyStringArrayList.emptyList();
+    in_ =
+        com.google.protobuf.LazyStringArrayList.emptyList();
+    notIn_ =
+        com.google.protobuf.LazyStringArrayList.emptyList();
   }
 
   @java.lang.Override
   @SuppressWarnings({"unused"})
-  protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
+  protected java.lang.Object newInstance(
+      UnusedPrivateParameter unused) {
     return new StringRules();
   }
 
-  public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+  public static final com.google.protobuf.Descriptors.Descriptor
+      getDescriptor() {
     return build.buf.validate.ValidateProto.internal_static_buf_validate_StringRules_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return build.buf.validate.ValidateProto
-        .internal_static_buf_validate_StringRules_fieldAccessorTable
+    return build.buf.validate.ValidateProto.internal_static_buf_validate_StringRules_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
             build.buf.validate.StringRules.class, build.buf.validate.StringRules.Builder.class);
   }
 
   private int bitField0_;
   private int wellKnownCase_ = 0;
-
   @SuppressWarnings("serial")
   private java.lang.Object wellKnown_;
-
   public enum WellKnownCase
-      implements
-          com.google.protobuf.Internal.EnumLite,
+      implements com.google.protobuf.Internal.EnumLite,
           com.google.protobuf.AbstractMessage.InternalOneOfEnum {
     EMAIL(12),
     HOSTNAME(13),
@@ -76,11 +72,9 @@ public final class StringRules extends com.google.protobuf.GeneratedMessageV3
     WELL_KNOWN_REGEX(24),
     WELLKNOWN_NOT_SET(0);
     private final int value;
-
     private WellKnownCase(int value) {
       this.value = value;
     }
-
     /**
      * @param value The number of the enum to look for.
      * @return The enum associated with the given number.
@@ -93,90 +87,68 @@ public final class StringRules extends com.google.protobuf.GeneratedMessageV3
 
     public static WellKnownCase forNumber(int value) {
       switch (value) {
-        case 12:
-          return EMAIL;
-        case 13:
-          return HOSTNAME;
-        case 14:
-          return IP;
-        case 15:
-          return IPV4;
-        case 16:
-          return IPV6;
-        case 17:
-          return URI;
-        case 18:
-          return URI_REF;
-        case 21:
-          return ADDRESS;
-        case 22:
-          return UUID;
-        case 24:
-          return WELL_KNOWN_REGEX;
-        case 0:
-          return WELLKNOWN_NOT_SET;
-        default:
-          return null;
+        case 12: return EMAIL;
+        case 13: return HOSTNAME;
+        case 14: return IP;
+        case 15: return IPV4;
+        case 16: return IPV6;
+        case 17: return URI;
+        case 18: return URI_REF;
+        case 21: return ADDRESS;
+        case 22: return UUID;
+        case 24: return WELL_KNOWN_REGEX;
+        case 0: return WELLKNOWN_NOT_SET;
+        default: return null;
       }
     }
-
     public int getNumber() {
       return this.value;
     }
   };
 
-  public WellKnownCase getWellKnownCase() {
-    return WellKnownCase.forNumber(wellKnownCase_);
+  public WellKnownCase
+  getWellKnownCase() {
+    return WellKnownCase.forNumber(
+        wellKnownCase_);
   }
 
   public static final int CONST_FIELD_NUMBER = 1;
-
   @SuppressWarnings("serial")
   private volatile java.lang.Object const_ = "";
-
   /**
-   *
-   *
    * <pre>
-   * `const` requires the field value to exactly match the specified value. If
-   * the field value doesn't match, an error message is generated.
+   *`const` requires the field value to exactly match the specified value. If
+   *the field value doesn't match, an error message is generated.
    *
-   * ```proto
-   * message MyString {
+   *```proto
+   *message MyString {
    *  // value must equal `hello`
    *   string value = 1 [(buf.validate.field).string.const = "hello"];
-   * }
-   * ```
+   *}
+   *```
    * </pre>
    *
-   * <code>optional string const = 1 [json_name = "const", (.buf.validate.priv.field) = { ... }
-   * </code>
-   *
+   * <code>optional string const = 1 [json_name = "const", (.buf.validate.priv.field) = { ... }</code>
    * @return Whether the const field is set.
    */
   @java.lang.Override
   public boolean hasConst() {
     return ((bitField0_ & 0x00000001) != 0);
   }
-
   /**
-   *
-   *
    * <pre>
-   * `const` requires the field value to exactly match the specified value. If
-   * the field value doesn't match, an error message is generated.
+   *`const` requires the field value to exactly match the specified value. If
+   *the field value doesn't match, an error message is generated.
    *
-   * ```proto
-   * message MyString {
+   *```proto
+   *message MyString {
    *  // value must equal `hello`
    *   string value = 1 [(buf.validate.field).string.const = "hello"];
-   * }
-   * ```
+   *}
+   *```
    * </pre>
    *
-   * <code>optional string const = 1 [json_name = "const", (.buf.validate.priv.field) = { ... }
-   * </code>
-   *
+   * <code>optional string const = 1 [json_name = "const", (.buf.validate.priv.field) = { ... }</code>
    * @return The const.
    */
   @java.lang.Override
@@ -185,39 +157,37 @@ public final class StringRules extends com.google.protobuf.GeneratedMessageV3
     if (ref instanceof java.lang.String) {
       return (java.lang.String) ref;
     } else {
-      com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
       const_ = s;
       return s;
     }
   }
-
   /**
-   *
-   *
    * <pre>
-   * `const` requires the field value to exactly match the specified value. If
-   * the field value doesn't match, an error message is generated.
+   *`const` requires the field value to exactly match the specified value. If
+   *the field value doesn't match, an error message is generated.
    *
-   * ```proto
-   * message MyString {
+   *```proto
+   *message MyString {
    *  // value must equal `hello`
    *   string value = 1 [(buf.validate.field).string.const = "hello"];
-   * }
-   * ```
+   *}
+   *```
    * </pre>
    *
-   * <code>optional string const = 1 [json_name = "const", (.buf.validate.priv.field) = { ... }
-   * </code>
-   *
+   * <code>optional string const = 1 [json_name = "const", (.buf.validate.priv.field) = { ... }</code>
    * @return The bytes for const.
    */
   @java.lang.Override
-  public com.google.protobuf.ByteString getConstBytes() {
+  public com.google.protobuf.ByteString
+      getConstBytes() {
     java.lang.Object ref = const_;
     if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b =
-          com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
       const_ = b;
       return b;
     } else {
@@ -227,52 +197,44 @@ public final class StringRules extends com.google.protobuf.GeneratedMessageV3
 
   public static final int LEN_FIELD_NUMBER = 19;
   private long len_ = 0L;
-
   /**
-   *
-   *
    * <pre>
-   * `len` dictates that the field value must have the specified
-   * number of characters (Unicode code points), which may differ from the number
-   * of bytes in the string. If the field value does not meet the specified
-   * length, an error message will be generated.
+   *`len` dictates that the field value must have the specified
+   *number of characters (Unicode code points), which may differ from the number
+   *of bytes in the string. If the field value does not meet the specified
+   *length, an error message will be generated.
    *
-   * ```proto
-   * message MyString {
+   *```proto
+   *message MyString {
    *  // value length must be 5 characters
    *   string value = 1 [(buf.validate.field).string.len = 5];
-   * }
-   * ```
+   *}
+   *```
    * </pre>
    *
    * <code>optional uint64 len = 19 [json_name = "len", (.buf.validate.priv.field) = { ... }</code>
-   *
    * @return Whether the len field is set.
    */
   @java.lang.Override
   public boolean hasLen() {
     return ((bitField0_ & 0x00000002) != 0);
   }
-
   /**
-   *
-   *
    * <pre>
-   * `len` dictates that the field value must have the specified
-   * number of characters (Unicode code points), which may differ from the number
-   * of bytes in the string. If the field value does not meet the specified
-   * length, an error message will be generated.
+   *`len` dictates that the field value must have the specified
+   *number of characters (Unicode code points), which may differ from the number
+   *of bytes in the string. If the field value does not meet the specified
+   *length, an error message will be generated.
    *
-   * ```proto
-   * message MyString {
+   *```proto
+   *message MyString {
    *  // value length must be 5 characters
    *   string value = 1 [(buf.validate.field).string.len = 5];
-   * }
-   * ```
+   *}
+   *```
    * </pre>
    *
    * <code>optional uint64 len = 19 [json_name = "len", (.buf.validate.priv.field) = { ... }</code>
-   *
    * @return The len.
    */
   @java.lang.Override
@@ -282,54 +244,44 @@ public final class StringRules extends com.google.protobuf.GeneratedMessageV3
 
   public static final int MIN_LEN_FIELD_NUMBER = 2;
   private long minLen_ = 0L;
-
   /**
-   *
-   *
    * <pre>
-   * `min_len` specifies that the field value must have at least the specified
-   * number of characters (Unicode code points), which may differ from the number
-   * of bytes in the string. If the field value contains fewer characters, an error
-   * message will be generated.
+   *`min_len` specifies that the field value must have at least the specified
+   *number of characters (Unicode code points), which may differ from the number
+   *of bytes in the string. If the field value contains fewer characters, an error
+   *message will be generated.
    *
-   * ```proto
-   * message MyString {
+   *```proto
+   *message MyString {
    *  // value length must be at least 3 characters
    *   string value = 1 [(buf.validate.field).string.min_len = 3];
-   * }
-   * ```
+   *}
+   *```
    * </pre>
    *
-   * <code>optional uint64 min_len = 2 [json_name = "minLen", (.buf.validate.priv.field) = { ... }
-   * </code>
-   *
+   * <code>optional uint64 min_len = 2 [json_name = "minLen", (.buf.validate.priv.field) = { ... }</code>
    * @return Whether the minLen field is set.
    */
   @java.lang.Override
   public boolean hasMinLen() {
     return ((bitField0_ & 0x00000004) != 0);
   }
-
   /**
-   *
-   *
    * <pre>
-   * `min_len` specifies that the field value must have at least the specified
-   * number of characters (Unicode code points), which may differ from the number
-   * of bytes in the string. If the field value contains fewer characters, an error
-   * message will be generated.
+   *`min_len` specifies that the field value must have at least the specified
+   *number of characters (Unicode code points), which may differ from the number
+   *of bytes in the string. If the field value contains fewer characters, an error
+   *message will be generated.
    *
-   * ```proto
-   * message MyString {
+   *```proto
+   *message MyString {
    *  // value length must be at least 3 characters
    *   string value = 1 [(buf.validate.field).string.min_len = 3];
-   * }
-   * ```
+   *}
+   *```
    * </pre>
    *
-   * <code>optional uint64 min_len = 2 [json_name = "minLen", (.buf.validate.priv.field) = { ... }
-   * </code>
-   *
+   * <code>optional uint64 min_len = 2 [json_name = "minLen", (.buf.validate.priv.field) = { ... }</code>
    * @return The minLen.
    */
   @java.lang.Override
@@ -339,54 +291,44 @@ public final class StringRules extends com.google.protobuf.GeneratedMessageV3
 
   public static final int MAX_LEN_FIELD_NUMBER = 3;
   private long maxLen_ = 0L;
-
   /**
-   *
-   *
    * <pre>
-   * `max_len` specifies that the field value must have no more than the specified
-   * number of characters (Unicode code points), which may differ from the
-   * number of bytes in the string. If the field value contains more characters,
-   * an error message will be generated.
+   *`max_len` specifies that the field value must have no more than the specified
+   *number of characters (Unicode code points), which may differ from the
+   *number of bytes in the string. If the field value contains more characters,
+   *an error message will be generated.
    *
-   * ```proto
-   * message MyString {
+   *```proto
+   *message MyString {
    *  // value length must be at most 10 characters
    *   string value = 1 [(buf.validate.field).string.max_len = 10];
-   * }
-   * ```
+   *}
+   *```
    * </pre>
    *
-   * <code>optional uint64 max_len = 3 [json_name = "maxLen", (.buf.validate.priv.field) = { ... }
-   * </code>
-   *
+   * <code>optional uint64 max_len = 3 [json_name = "maxLen", (.buf.validate.priv.field) = { ... }</code>
    * @return Whether the maxLen field is set.
    */
   @java.lang.Override
   public boolean hasMaxLen() {
     return ((bitField0_ & 0x00000008) != 0);
   }
-
   /**
-   *
-   *
    * <pre>
-   * `max_len` specifies that the field value must have no more than the specified
-   * number of characters (Unicode code points), which may differ from the
-   * number of bytes in the string. If the field value contains more characters,
-   * an error message will be generated.
+   *`max_len` specifies that the field value must have no more than the specified
+   *number of characters (Unicode code points), which may differ from the
+   *number of bytes in the string. If the field value contains more characters,
+   *an error message will be generated.
    *
-   * ```proto
-   * message MyString {
+   *```proto
+   *message MyString {
    *  // value length must be at most 10 characters
    *   string value = 1 [(buf.validate.field).string.max_len = 10];
-   * }
-   * ```
+   *}
+   *```
    * </pre>
    *
-   * <code>optional uint64 max_len = 3 [json_name = "maxLen", (.buf.validate.priv.field) = { ... }
-   * </code>
-   *
+   * <code>optional uint64 max_len = 3 [json_name = "maxLen", (.buf.validate.priv.field) = { ... }</code>
    * @return The maxLen.
    */
   @java.lang.Override
@@ -396,54 +338,42 @@ public final class StringRules extends com.google.protobuf.GeneratedMessageV3
 
   public static final int LEN_BYTES_FIELD_NUMBER = 20;
   private long lenBytes_ = 0L;
-
   /**
-   *
-   *
    * <pre>
-   * `len_bytes` dictates that the field value must have the specified number of
-   * bytes. If the field value does not match the specified length in bytes,
-   * an error message will be generated.
+   *`len_bytes` dictates that the field value must have the specified number of
+   *bytes. If the field value does not match the specified length in bytes,
+   *an error message will be generated.
    *
-   * ```proto
-   * message MyString {
+   *```proto
+   *message MyString {
    *  // value length must be 6 bytes
    *   string value = 1 [(buf.validate.field).string.len_bytes = 6];
-   * }
-   * ```
+   *}
+   *```
    * </pre>
    *
-   * <code>
-   * optional uint64 len_bytes = 20 [json_name = "lenBytes", (.buf.validate.priv.field) = { ... }
-   * </code>
-   *
+   * <code>optional uint64 len_bytes = 20 [json_name = "lenBytes", (.buf.validate.priv.field) = { ... }</code>
    * @return Whether the lenBytes field is set.
    */
   @java.lang.Override
   public boolean hasLenBytes() {
     return ((bitField0_ & 0x00000010) != 0);
   }
-
   /**
-   *
-   *
    * <pre>
-   * `len_bytes` dictates that the field value must have the specified number of
-   * bytes. If the field value does not match the specified length in bytes,
-   * an error message will be generated.
+   *`len_bytes` dictates that the field value must have the specified number of
+   *bytes. If the field value does not match the specified length in bytes,
+   *an error message will be generated.
    *
-   * ```proto
-   * message MyString {
+   *```proto
+   *message MyString {
    *  // value length must be 6 bytes
    *   string value = 1 [(buf.validate.field).string.len_bytes = 6];
-   * }
-   * ```
+   *}
+   *```
    * </pre>
    *
-   * <code>
-   * optional uint64 len_bytes = 20 [json_name = "lenBytes", (.buf.validate.priv.field) = { ... }
-   * </code>
-   *
+   * <code>optional uint64 len_bytes = 20 [json_name = "lenBytes", (.buf.validate.priv.field) = { ... }</code>
    * @return The lenBytes.
    */
   @java.lang.Override
@@ -453,56 +383,44 @@ public final class StringRules extends com.google.protobuf.GeneratedMessageV3
 
   public static final int MIN_BYTES_FIELD_NUMBER = 4;
   private long minBytes_ = 0L;
-
   /**
-   *
-   *
    * <pre>
-   * `min_bytes` specifies that the field value must have at least the specified
-   * number of bytes. If the field value contains fewer bytes, an error message
-   * will be generated.
+   *`min_bytes` specifies that the field value must have at least the specified
+   *number of bytes. If the field value contains fewer bytes, an error message
+   *will be generated.
    *
-   * ```proto
-   * message MyString {
+   *```proto
+   *message MyString {
    *  // value length must be at least 4 bytes
    *   string value = 1 [(buf.validate.field).string.min_bytes = 4];
-   * }
+   *}
    *
-   * ```
+   *```
    * </pre>
    *
-   * <code>
-   * optional uint64 min_bytes = 4 [json_name = "minBytes", (.buf.validate.priv.field) = { ... }
-   * </code>
-   *
+   * <code>optional uint64 min_bytes = 4 [json_name = "minBytes", (.buf.validate.priv.field) = { ... }</code>
    * @return Whether the minBytes field is set.
    */
   @java.lang.Override
   public boolean hasMinBytes() {
     return ((bitField0_ & 0x00000020) != 0);
   }
-
   /**
-   *
-   *
    * <pre>
-   * `min_bytes` specifies that the field value must have at least the specified
-   * number of bytes. If the field value contains fewer bytes, an error message
-   * will be generated.
+   *`min_bytes` specifies that the field value must have at least the specified
+   *number of bytes. If the field value contains fewer bytes, an error message
+   *will be generated.
    *
-   * ```proto
-   * message MyString {
+   *```proto
+   *message MyString {
    *  // value length must be at least 4 bytes
    *   string value = 1 [(buf.validate.field).string.min_bytes = 4];
-   * }
+   *}
    *
-   * ```
+   *```
    * </pre>
    *
-   * <code>
-   * optional uint64 min_bytes = 4 [json_name = "minBytes", (.buf.validate.priv.field) = { ... }
-   * </code>
-   *
+   * <code>optional uint64 min_bytes = 4 [json_name = "minBytes", (.buf.validate.priv.field) = { ... }</code>
    * @return The minBytes.
    */
   @java.lang.Override
@@ -512,54 +430,42 @@ public final class StringRules extends com.google.protobuf.GeneratedMessageV3
 
   public static final int MAX_BYTES_FIELD_NUMBER = 5;
   private long maxBytes_ = 0L;
-
   /**
-   *
-   *
    * <pre>
-   * `max_bytes` specifies that the field value must have no more than the
-   * specified number of bytes. If the field value contains more bytes, an
-   * error message will be generated.
+   *`max_bytes` specifies that the field value must have no more than the
+   *specified number of bytes. If the field value contains more bytes, an
+   *error message will be generated.
    *
-   * ```proto
-   * message MyString {
+   *```proto
+   *message MyString {
    *  // value length must be at most 8 bytes
    *   string value = 1 [(buf.validate.field).string.max_bytes = 8];
-   * }
-   * ```
+   *}
+   *```
    * </pre>
    *
-   * <code>
-   * optional uint64 max_bytes = 5 [json_name = "maxBytes", (.buf.validate.priv.field) = { ... }
-   * </code>
-   *
+   * <code>optional uint64 max_bytes = 5 [json_name = "maxBytes", (.buf.validate.priv.field) = { ... }</code>
    * @return Whether the maxBytes field is set.
    */
   @java.lang.Override
   public boolean hasMaxBytes() {
     return ((bitField0_ & 0x00000040) != 0);
   }
-
   /**
-   *
-   *
    * <pre>
-   * `max_bytes` specifies that the field value must have no more than the
-   * specified number of bytes. If the field value contains more bytes, an
-   * error message will be generated.
+   *`max_bytes` specifies that the field value must have no more than the
+   *specified number of bytes. If the field value contains more bytes, an
+   *error message will be generated.
    *
-   * ```proto
-   * message MyString {
+   *```proto
+   *message MyString {
    *  // value length must be at most 8 bytes
    *   string value = 1 [(buf.validate.field).string.max_bytes = 8];
-   * }
-   * ```
+   *}
+   *```
    * </pre>
    *
-   * <code>
-   * optional uint64 max_bytes = 5 [json_name = "maxBytes", (.buf.validate.priv.field) = { ... }
-   * </code>
-   *
+   * <code>optional uint64 max_bytes = 5 [json_name = "maxBytes", (.buf.validate.priv.field) = { ... }</code>
    * @return The maxBytes.
    */
   @java.lang.Override
@@ -568,57 +474,46 @@ public final class StringRules extends com.google.protobuf.GeneratedMessageV3
   }
 
   public static final int PATTERN_FIELD_NUMBER = 6;
-
   @SuppressWarnings("serial")
   private volatile java.lang.Object pattern_ = "";
-
   /**
-   *
-   *
    * <pre>
-   * `pattern` specifies that the field value must match the specified
-   * regular expression (RE2 syntax), with the expression provided without any
-   * delimiters. If the field value doesn't match the regular expression, an
-   * error message will be generated.
+   *`pattern` specifies that the field value must match the specified
+   *regular expression (RE2 syntax), with the expression provided without any
+   *delimiters. If the field value doesn't match the regular expression, an
+   *error message will be generated.
    *
-   * ```proto
-   * message MyString {
+   *```proto
+   *message MyString {
    *  // value does not match regex pattern `^[a-zA-Z]//$`
    *   string value = 1 [(buf.validate.field).string.pattern = "^[a-zA-Z]//$"];
-   * }
-   * ```
+   *}
+   *```
    * </pre>
    *
-   * <code>optional string pattern = 6 [json_name = "pattern", (.buf.validate.priv.field) = { ... }
-   * </code>
-   *
+   * <code>optional string pattern = 6 [json_name = "pattern", (.buf.validate.priv.field) = { ... }</code>
    * @return Whether the pattern field is set.
    */
   @java.lang.Override
   public boolean hasPattern() {
     return ((bitField0_ & 0x00000080) != 0);
   }
-
   /**
-   *
-   *
    * <pre>
-   * `pattern` specifies that the field value must match the specified
-   * regular expression (RE2 syntax), with the expression provided without any
-   * delimiters. If the field value doesn't match the regular expression, an
-   * error message will be generated.
+   *`pattern` specifies that the field value must match the specified
+   *regular expression (RE2 syntax), with the expression provided without any
+   *delimiters. If the field value doesn't match the regular expression, an
+   *error message will be generated.
    *
-   * ```proto
-   * message MyString {
+   *```proto
+   *message MyString {
    *  // value does not match regex pattern `^[a-zA-Z]//$`
    *   string value = 1 [(buf.validate.field).string.pattern = "^[a-zA-Z]//$"];
-   * }
-   * ```
+   *}
+   *```
    * </pre>
    *
-   * <code>optional string pattern = 6 [json_name = "pattern", (.buf.validate.priv.field) = { ... }
-   * </code>
-   *
+   * <code>optional string pattern = 6 [json_name = "pattern", (.buf.validate.priv.field) = { ... }</code>
    * @return The pattern.
    */
   @java.lang.Override
@@ -627,41 +522,39 @@ public final class StringRules extends com.google.protobuf.GeneratedMessageV3
     if (ref instanceof java.lang.String) {
       return (java.lang.String) ref;
     } else {
-      com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
       pattern_ = s;
       return s;
     }
   }
-
   /**
-   *
-   *
    * <pre>
-   * `pattern` specifies that the field value must match the specified
-   * regular expression (RE2 syntax), with the expression provided without any
-   * delimiters. If the field value doesn't match the regular expression, an
-   * error message will be generated.
+   *`pattern` specifies that the field value must match the specified
+   *regular expression (RE2 syntax), with the expression provided without any
+   *delimiters. If the field value doesn't match the regular expression, an
+   *error message will be generated.
    *
-   * ```proto
-   * message MyString {
+   *```proto
+   *message MyString {
    *  // value does not match regex pattern `^[a-zA-Z]//$`
    *   string value = 1 [(buf.validate.field).string.pattern = "^[a-zA-Z]//$"];
-   * }
-   * ```
+   *}
+   *```
    * </pre>
    *
-   * <code>optional string pattern = 6 [json_name = "pattern", (.buf.validate.priv.field) = { ... }
-   * </code>
-   *
+   * <code>optional string pattern = 6 [json_name = "pattern", (.buf.validate.priv.field) = { ... }</code>
    * @return The bytes for pattern.
    */
   @java.lang.Override
-  public com.google.protobuf.ByteString getPatternBytes() {
+  public com.google.protobuf.ByteString
+      getPatternBytes() {
     java.lang.Object ref = pattern_;
     if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b =
-          com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
       pattern_ = b;
       return b;
     } else {
@@ -670,57 +563,46 @@ public final class StringRules extends com.google.protobuf.GeneratedMessageV3
   }
 
   public static final int PREFIX_FIELD_NUMBER = 7;
-
   @SuppressWarnings("serial")
   private volatile java.lang.Object prefix_ = "";
-
   /**
-   *
-   *
    * <pre>
-   * `prefix` specifies that the field value must have the
-   * specified substring at the beginning of the string. If the field value
-   * doesn't start with the specified prefix, an error message will be
-   * generated.
+   *`prefix` specifies that the field value must have the
+   *specified substring at the beginning of the string. If the field value
+   *doesn't start with the specified prefix, an error message will be
+   *generated.
    *
-   * ```proto
-   * message MyString {
+   *```proto
+   *message MyString {
    *  // value does not have prefix `pre`
    *   string value = 1 [(buf.validate.field).string.prefix = "pre"];
-   * }
-   * ```
+   *}
+   *```
    * </pre>
    *
-   * <code>optional string prefix = 7 [json_name = "prefix", (.buf.validate.priv.field) = { ... }
-   * </code>
-   *
+   * <code>optional string prefix = 7 [json_name = "prefix", (.buf.validate.priv.field) = { ... }</code>
    * @return Whether the prefix field is set.
    */
   @java.lang.Override
   public boolean hasPrefix() {
     return ((bitField0_ & 0x00000100) != 0);
   }
-
   /**
-   *
-   *
    * <pre>
-   * `prefix` specifies that the field value must have the
-   * specified substring at the beginning of the string. If the field value
-   * doesn't start with the specified prefix, an error message will be
-   * generated.
+   *`prefix` specifies that the field value must have the
+   *specified substring at the beginning of the string. If the field value
+   *doesn't start with the specified prefix, an error message will be
+   *generated.
    *
-   * ```proto
-   * message MyString {
+   *```proto
+   *message MyString {
    *  // value does not have prefix `pre`
    *   string value = 1 [(buf.validate.field).string.prefix = "pre"];
-   * }
-   * ```
+   *}
+   *```
    * </pre>
    *
-   * <code>optional string prefix = 7 [json_name = "prefix", (.buf.validate.priv.field) = { ... }
-   * </code>
-   *
+   * <code>optional string prefix = 7 [json_name = "prefix", (.buf.validate.priv.field) = { ... }</code>
    * @return The prefix.
    */
   @java.lang.Override
@@ -729,41 +611,39 @@ public final class StringRules extends com.google.protobuf.GeneratedMessageV3
     if (ref instanceof java.lang.String) {
       return (java.lang.String) ref;
     } else {
-      com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
       prefix_ = s;
       return s;
     }
   }
-
   /**
-   *
-   *
    * <pre>
-   * `prefix` specifies that the field value must have the
-   * specified substring at the beginning of the string. If the field value
-   * doesn't start with the specified prefix, an error message will be
-   * generated.
+   *`prefix` specifies that the field value must have the
+   *specified substring at the beginning of the string. If the field value
+   *doesn't start with the specified prefix, an error message will be
+   *generated.
    *
-   * ```proto
-   * message MyString {
+   *```proto
+   *message MyString {
    *  // value does not have prefix `pre`
    *   string value = 1 [(buf.validate.field).string.prefix = "pre"];
-   * }
-   * ```
+   *}
+   *```
    * </pre>
    *
-   * <code>optional string prefix = 7 [json_name = "prefix", (.buf.validate.priv.field) = { ... }
-   * </code>
-   *
+   * <code>optional string prefix = 7 [json_name = "prefix", (.buf.validate.priv.field) = { ... }</code>
    * @return The bytes for prefix.
    */
   @java.lang.Override
-  public com.google.protobuf.ByteString getPrefixBytes() {
+  public com.google.protobuf.ByteString
+      getPrefixBytes() {
     java.lang.Object ref = prefix_;
     if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b =
-          com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
       prefix_ = b;
       return b;
     } else {
@@ -772,55 +652,44 @@ public final class StringRules extends com.google.protobuf.GeneratedMessageV3
   }
 
   public static final int SUFFIX_FIELD_NUMBER = 8;
-
   @SuppressWarnings("serial")
   private volatile java.lang.Object suffix_ = "";
-
   /**
-   *
-   *
    * <pre>
-   * `suffix` specifies that the field value must have the
-   * specified substring at the end of the string. If the field value doesn't
-   * end with the specified suffix, an error message will be generated.
+   *`suffix` specifies that the field value must have the
+   *specified substring at the end of the string. If the field value doesn't
+   *end with the specified suffix, an error message will be generated.
    *
-   * ```proto
-   * message MyString {
+   *```proto
+   *message MyString {
    *  // value does not have suffix `post`
    *   string value = 1 [(buf.validate.field).string.suffix = "post"];
-   * }
-   * ```
+   *}
+   *```
    * </pre>
    *
-   * <code>optional string suffix = 8 [json_name = "suffix", (.buf.validate.priv.field) = { ... }
-   * </code>
-   *
+   * <code>optional string suffix = 8 [json_name = "suffix", (.buf.validate.priv.field) = { ... }</code>
    * @return Whether the suffix field is set.
    */
   @java.lang.Override
   public boolean hasSuffix() {
     return ((bitField0_ & 0x00000200) != 0);
   }
-
   /**
-   *
-   *
    * <pre>
-   * `suffix` specifies that the field value must have the
-   * specified substring at the end of the string. If the field value doesn't
-   * end with the specified suffix, an error message will be generated.
+   *`suffix` specifies that the field value must have the
+   *specified substring at the end of the string. If the field value doesn't
+   *end with the specified suffix, an error message will be generated.
    *
-   * ```proto
-   * message MyString {
+   *```proto
+   *message MyString {
    *  // value does not have suffix `post`
    *   string value = 1 [(buf.validate.field).string.suffix = "post"];
-   * }
-   * ```
+   *}
+   *```
    * </pre>
    *
-   * <code>optional string suffix = 8 [json_name = "suffix", (.buf.validate.priv.field) = { ... }
-   * </code>
-   *
+   * <code>optional string suffix = 8 [json_name = "suffix", (.buf.validate.priv.field) = { ... }</code>
    * @return The suffix.
    */
   @java.lang.Override
@@ -829,40 +698,38 @@ public final class StringRules extends com.google.protobuf.GeneratedMessageV3
     if (ref instanceof java.lang.String) {
       return (java.lang.String) ref;
     } else {
-      com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
       suffix_ = s;
       return s;
     }
   }
-
   /**
-   *
-   *
    * <pre>
-   * `suffix` specifies that the field value must have the
-   * specified substring at the end of the string. If the field value doesn't
-   * end with the specified suffix, an error message will be generated.
+   *`suffix` specifies that the field value must have the
+   *specified substring at the end of the string. If the field value doesn't
+   *end with the specified suffix, an error message will be generated.
    *
-   * ```proto
-   * message MyString {
+   *```proto
+   *message MyString {
    *  // value does not have suffix `post`
    *   string value = 1 [(buf.validate.field).string.suffix = "post"];
-   * }
-   * ```
+   *}
+   *```
    * </pre>
    *
-   * <code>optional string suffix = 8 [json_name = "suffix", (.buf.validate.priv.field) = { ... }
-   * </code>
-   *
+   * <code>optional string suffix = 8 [json_name = "suffix", (.buf.validate.priv.field) = { ... }</code>
    * @return The bytes for suffix.
    */
   @java.lang.Override
-  public com.google.protobuf.ByteString getSuffixBytes() {
+  public com.google.protobuf.ByteString
+      getSuffixBytes() {
     java.lang.Object ref = suffix_;
     if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b =
-          com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
       suffix_ = b;
       return b;
     } else {
@@ -871,57 +738,44 @@ public final class StringRules extends com.google.protobuf.GeneratedMessageV3
   }
 
   public static final int CONTAINS_FIELD_NUMBER = 9;
-
   @SuppressWarnings("serial")
   private volatile java.lang.Object contains_ = "";
-
   /**
-   *
-   *
    * <pre>
-   * `contains` specifies that the field value must have the
-   * specified substring anywhere in the string. If the field value doesn't
-   * contain the specified substring, an error message will be generated.
+   *`contains` specifies that the field value must have the
+   *specified substring anywhere in the string. If the field value doesn't
+   *contain the specified substring, an error message will be generated.
    *
-   * ```proto
-   * message MyString {
+   *```proto
+   *message MyString {
    *  // value does not contain substring `inside`.
    *   string value = 1 [(buf.validate.field).string.contains = "inside"];
-   * }
-   * ```
+   *}
+   *```
    * </pre>
    *
-   * <code>
-   * optional string contains = 9 [json_name = "contains", (.buf.validate.priv.field) = { ... }
-   * </code>
-   *
+   * <code>optional string contains = 9 [json_name = "contains", (.buf.validate.priv.field) = { ... }</code>
    * @return Whether the contains field is set.
    */
   @java.lang.Override
   public boolean hasContains() {
     return ((bitField0_ & 0x00000400) != 0);
   }
-
   /**
-   *
-   *
    * <pre>
-   * `contains` specifies that the field value must have the
-   * specified substring anywhere in the string. If the field value doesn't
-   * contain the specified substring, an error message will be generated.
+   *`contains` specifies that the field value must have the
+   *specified substring anywhere in the string. If the field value doesn't
+   *contain the specified substring, an error message will be generated.
    *
-   * ```proto
-   * message MyString {
+   *```proto
+   *message MyString {
    *  // value does not contain substring `inside`.
    *   string value = 1 [(buf.validate.field).string.contains = "inside"];
-   * }
-   * ```
+   *}
+   *```
    * </pre>
    *
-   * <code>
-   * optional string contains = 9 [json_name = "contains", (.buf.validate.priv.field) = { ... }
-   * </code>
-   *
+   * <code>optional string contains = 9 [json_name = "contains", (.buf.validate.priv.field) = { ... }</code>
    * @return The contains.
    */
   @java.lang.Override
@@ -930,41 +784,38 @@ public final class StringRules extends com.google.protobuf.GeneratedMessageV3
     if (ref instanceof java.lang.String) {
       return (java.lang.String) ref;
     } else {
-      com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
       contains_ = s;
       return s;
     }
   }
-
   /**
-   *
-   *
    * <pre>
-   * `contains` specifies that the field value must have the
-   * specified substring anywhere in the string. If the field value doesn't
-   * contain the specified substring, an error message will be generated.
+   *`contains` specifies that the field value must have the
+   *specified substring anywhere in the string. If the field value doesn't
+   *contain the specified substring, an error message will be generated.
    *
-   * ```proto
-   * message MyString {
+   *```proto
+   *message MyString {
    *  // value does not contain substring `inside`.
    *   string value = 1 [(buf.validate.field).string.contains = "inside"];
-   * }
-   * ```
+   *}
+   *```
    * </pre>
    *
-   * <code>
-   * optional string contains = 9 [json_name = "contains", (.buf.validate.priv.field) = { ... }
-   * </code>
-   *
+   * <code>optional string contains = 9 [json_name = "contains", (.buf.validate.priv.field) = { ... }</code>
    * @return The bytes for contains.
    */
   @java.lang.Override
-  public com.google.protobuf.ByteString getContainsBytes() {
+  public com.google.protobuf.ByteString
+      getContainsBytes() {
     java.lang.Object ref = contains_;
     if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b =
-          com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
       contains_ = b;
       return b;
     } else {
@@ -973,57 +824,44 @@ public final class StringRules extends com.google.protobuf.GeneratedMessageV3
   }
 
   public static final int NOT_CONTAINS_FIELD_NUMBER = 23;
-
   @SuppressWarnings("serial")
   private volatile java.lang.Object notContains_ = "";
-
   /**
-   *
-   *
    * <pre>
-   * `not_contains` specifies that the field value must not have the
-   * specified substring anywhere in the string. If the field value contains
-   * the specified substring, an error message will be generated.
+   *`not_contains` specifies that the field value must not have the
+   *specified substring anywhere in the string. If the field value contains
+   *the specified substring, an error message will be generated.
    *
-   * ```proto
-   * message MyString {
+   *```proto
+   *message MyString {
    *  // value contains substring `inside`.
    *   string value = 1 [(buf.validate.field).string.not_contains = "inside"];
-   * }
-   * ```
+   *}
+   *```
    * </pre>
    *
-   * <code>
-   * optional string not_contains = 23 [json_name = "notContains", (.buf.validate.priv.field) = { ... }
-   * </code>
-   *
+   * <code>optional string not_contains = 23 [json_name = "notContains", (.buf.validate.priv.field) = { ... }</code>
    * @return Whether the notContains field is set.
    */
   @java.lang.Override
   public boolean hasNotContains() {
     return ((bitField0_ & 0x00000800) != 0);
   }
-
   /**
-   *
-   *
    * <pre>
-   * `not_contains` specifies that the field value must not have the
-   * specified substring anywhere in the string. If the field value contains
-   * the specified substring, an error message will be generated.
+   *`not_contains` specifies that the field value must not have the
+   *specified substring anywhere in the string. If the field value contains
+   *the specified substring, an error message will be generated.
    *
-   * ```proto
-   * message MyString {
+   *```proto
+   *message MyString {
    *  // value contains substring `inside`.
    *   string value = 1 [(buf.validate.field).string.not_contains = "inside"];
-   * }
-   * ```
+   *}
+   *```
    * </pre>
    *
-   * <code>
-   * optional string not_contains = 23 [json_name = "notContains", (.buf.validate.priv.field) = { ... }
-   * </code>
-   *
+   * <code>optional string not_contains = 23 [json_name = "notContains", (.buf.validate.priv.field) = { ... }</code>
    * @return The notContains.
    */
   @java.lang.Override
@@ -1032,41 +870,38 @@ public final class StringRules extends com.google.protobuf.GeneratedMessageV3
     if (ref instanceof java.lang.String) {
       return (java.lang.String) ref;
     } else {
-      com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
       notContains_ = s;
       return s;
     }
   }
-
   /**
-   *
-   *
    * <pre>
-   * `not_contains` specifies that the field value must not have the
-   * specified substring anywhere in the string. If the field value contains
-   * the specified substring, an error message will be generated.
+   *`not_contains` specifies that the field value must not have the
+   *specified substring anywhere in the string. If the field value contains
+   *the specified substring, an error message will be generated.
    *
-   * ```proto
-   * message MyString {
+   *```proto
+   *message MyString {
    *  // value contains substring `inside`.
    *   string value = 1 [(buf.validate.field).string.not_contains = "inside"];
-   * }
-   * ```
+   *}
+   *```
    * </pre>
    *
-   * <code>
-   * optional string not_contains = 23 [json_name = "notContains", (.buf.validate.priv.field) = { ... }
-   * </code>
-   *
+   * <code>optional string not_contains = 23 [json_name = "notContains", (.buf.validate.priv.field) = { ... }</code>
    * @return The bytes for notContains.
    */
   @java.lang.Override
-  public com.google.protobuf.ByteString getNotContainsBytes() {
+  public com.google.protobuf.ByteString
+      getNotContainsBytes() {
     java.lang.Object ref = notContains_;
     if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b =
-          com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
       notContains_ = b;
       return b;
     } else {
@@ -1075,258 +910,216 @@ public final class StringRules extends com.google.protobuf.GeneratedMessageV3
   }
 
   public static final int IN_FIELD_NUMBER = 10;
-
   @SuppressWarnings("serial")
   private com.google.protobuf.LazyStringArrayList in_ =
       com.google.protobuf.LazyStringArrayList.emptyList();
-
   /**
-   *
-   *
    * <pre>
-   * `in` specifies that the field value must be equal to one of the specified
-   * values. If the field value isn't one of the specified values, an error
-   * message will be generated.
+   *`in` specifies that the field value must be equal to one of the specified
+   *values. If the field value isn't one of the specified values, an error
+   *message will be generated.
    *
-   * ```proto
-   * message MyString {
+   *```proto
+   *message MyString {
    *  // value must be in list ["apple", "banana"]
    *  repeated string value = 1 [(buf.validate.field).string.in = "apple", (buf.validate.field).string.in = "banana"];
-   * }
-   * ```
+   *}
+   *```
    * </pre>
    *
    * <code>repeated string in = 10 [json_name = "in", (.buf.validate.priv.field) = { ... }</code>
-   *
    * @return A list containing the in.
    */
-  public com.google.protobuf.ProtocolStringList getInList() {
+  public com.google.protobuf.ProtocolStringList
+      getInList() {
     return in_;
   }
-
   /**
-   *
-   *
    * <pre>
-   * `in` specifies that the field value must be equal to one of the specified
-   * values. If the field value isn't one of the specified values, an error
-   * message will be generated.
+   *`in` specifies that the field value must be equal to one of the specified
+   *values. If the field value isn't one of the specified values, an error
+   *message will be generated.
    *
-   * ```proto
-   * message MyString {
+   *```proto
+   *message MyString {
    *  // value must be in list ["apple", "banana"]
    *  repeated string value = 1 [(buf.validate.field).string.in = "apple", (buf.validate.field).string.in = "banana"];
-   * }
-   * ```
+   *}
+   *```
    * </pre>
    *
    * <code>repeated string in = 10 [json_name = "in", (.buf.validate.priv.field) = { ... }</code>
-   *
    * @return The count of in.
    */
   public int getInCount() {
     return in_.size();
   }
-
   /**
-   *
-   *
    * <pre>
-   * `in` specifies that the field value must be equal to one of the specified
-   * values. If the field value isn't one of the specified values, an error
-   * message will be generated.
+   *`in` specifies that the field value must be equal to one of the specified
+   *values. If the field value isn't one of the specified values, an error
+   *message will be generated.
    *
-   * ```proto
-   * message MyString {
+   *```proto
+   *message MyString {
    *  // value must be in list ["apple", "banana"]
    *  repeated string value = 1 [(buf.validate.field).string.in = "apple", (buf.validate.field).string.in = "banana"];
-   * }
-   * ```
+   *}
+   *```
    * </pre>
    *
    * <code>repeated string in = 10 [json_name = "in", (.buf.validate.priv.field) = { ... }</code>
-   *
    * @param index The index of the element to return.
    * @return The in at the given index.
    */
   public java.lang.String getIn(int index) {
     return in_.get(index);
   }
-
   /**
-   *
-   *
    * <pre>
-   * `in` specifies that the field value must be equal to one of the specified
-   * values. If the field value isn't one of the specified values, an error
-   * message will be generated.
+   *`in` specifies that the field value must be equal to one of the specified
+   *values. If the field value isn't one of the specified values, an error
+   *message will be generated.
    *
-   * ```proto
-   * message MyString {
+   *```proto
+   *message MyString {
    *  // value must be in list ["apple", "banana"]
    *  repeated string value = 1 [(buf.validate.field).string.in = "apple", (buf.validate.field).string.in = "banana"];
-   * }
-   * ```
+   *}
+   *```
    * </pre>
    *
    * <code>repeated string in = 10 [json_name = "in", (.buf.validate.priv.field) = { ... }</code>
-   *
    * @param index The index of the value to return.
    * @return The bytes of the in at the given index.
    */
-  public com.google.protobuf.ByteString getInBytes(int index) {
+  public com.google.protobuf.ByteString
+      getInBytes(int index) {
     return in_.getByteString(index);
   }
 
   public static final int NOT_IN_FIELD_NUMBER = 11;
-
   @SuppressWarnings("serial")
   private com.google.protobuf.LazyStringArrayList notIn_ =
       com.google.protobuf.LazyStringArrayList.emptyList();
-
   /**
-   *
-   *
    * <pre>
-   * `not_in` specifies that the field value cannot be equal to any
-   * of the specified values. If the field value is one of the specified values,
-   * an error message will be generated.
-   * ```proto
-   * message MyString {
+   *`not_in` specifies that the field value cannot be equal to any
+   *of the specified values. If the field value is one of the specified values,
+   *an error message will be generated.
+   *```proto
+   *message MyString {
    *  // value must not be in list ["orange", "grape"]
    *  repeated string value = 1 [(buf.validate.field).string.not_in = "orange", (buf.validate.field).string.not_in = "grape"];
-   * }
-   * ```
+   *}
+   *```
    * </pre>
    *
-   * <code>repeated string not_in = 11 [json_name = "notIn", (.buf.validate.priv.field) = { ... }
-   * </code>
-   *
+   * <code>repeated string not_in = 11 [json_name = "notIn", (.buf.validate.priv.field) = { ... }</code>
    * @return A list containing the notIn.
    */
-  public com.google.protobuf.ProtocolStringList getNotInList() {
+  public com.google.protobuf.ProtocolStringList
+      getNotInList() {
     return notIn_;
   }
-
   /**
-   *
-   *
    * <pre>
-   * `not_in` specifies that the field value cannot be equal to any
-   * of the specified values. If the field value is one of the specified values,
-   * an error message will be generated.
-   * ```proto
-   * message MyString {
+   *`not_in` specifies that the field value cannot be equal to any
+   *of the specified values. If the field value is one of the specified values,
+   *an error message will be generated.
+   *```proto
+   *message MyString {
    *  // value must not be in list ["orange", "grape"]
    *  repeated string value = 1 [(buf.validate.field).string.not_in = "orange", (buf.validate.field).string.not_in = "grape"];
-   * }
-   * ```
+   *}
+   *```
    * </pre>
    *
-   * <code>repeated string not_in = 11 [json_name = "notIn", (.buf.validate.priv.field) = { ... }
-   * </code>
-   *
+   * <code>repeated string not_in = 11 [json_name = "notIn", (.buf.validate.priv.field) = { ... }</code>
    * @return The count of notIn.
    */
   public int getNotInCount() {
     return notIn_.size();
   }
-
   /**
-   *
-   *
    * <pre>
-   * `not_in` specifies that the field value cannot be equal to any
-   * of the specified values. If the field value is one of the specified values,
-   * an error message will be generated.
-   * ```proto
-   * message MyString {
+   *`not_in` specifies that the field value cannot be equal to any
+   *of the specified values. If the field value is one of the specified values,
+   *an error message will be generated.
+   *```proto
+   *message MyString {
    *  // value must not be in list ["orange", "grape"]
    *  repeated string value = 1 [(buf.validate.field).string.not_in = "orange", (buf.validate.field).string.not_in = "grape"];
-   * }
-   * ```
+   *}
+   *```
    * </pre>
    *
-   * <code>repeated string not_in = 11 [json_name = "notIn", (.buf.validate.priv.field) = { ... }
-   * </code>
-   *
+   * <code>repeated string not_in = 11 [json_name = "notIn", (.buf.validate.priv.field) = { ... }</code>
    * @param index The index of the element to return.
    * @return The notIn at the given index.
    */
   public java.lang.String getNotIn(int index) {
     return notIn_.get(index);
   }
-
   /**
-   *
-   *
    * <pre>
-   * `not_in` specifies that the field value cannot be equal to any
-   * of the specified values. If the field value is one of the specified values,
-   * an error message will be generated.
-   * ```proto
-   * message MyString {
+   *`not_in` specifies that the field value cannot be equal to any
+   *of the specified values. If the field value is one of the specified values,
+   *an error message will be generated.
+   *```proto
+   *message MyString {
    *  // value must not be in list ["orange", "grape"]
    *  repeated string value = 1 [(buf.validate.field).string.not_in = "orange", (buf.validate.field).string.not_in = "grape"];
-   * }
-   * ```
+   *}
+   *```
    * </pre>
    *
-   * <code>repeated string not_in = 11 [json_name = "notIn", (.buf.validate.priv.field) = { ... }
-   * </code>
-   *
+   * <code>repeated string not_in = 11 [json_name = "notIn", (.buf.validate.priv.field) = { ... }</code>
    * @param index The index of the value to return.
    * @return The bytes of the notIn at the given index.
    */
-  public com.google.protobuf.ByteString getNotInBytes(int index) {
+  public com.google.protobuf.ByteString
+      getNotInBytes(int index) {
     return notIn_.getByteString(index);
   }
 
   public static final int EMAIL_FIELD_NUMBER = 12;
-
   /**
-   *
-   *
    * <pre>
-   * `email` specifies that the field value must be a valid email address
-   * (addr-spec only) as defined by [RFC 5322](https://tools.ietf.org/html/rfc5322#section-3.4.1).
-   * If the field value isn't a valid email address, an error message will be generated.
+   *`email` specifies that the field value must be a valid email address
+   *(addr-spec only) as defined by [RFC 5322](https://tools.ietf.org/html/rfc5322#section-3.4.1).
+   *If the field value isn't a valid email address, an error message will be generated.
    *
-   * ```proto
-   * message MyString {
+   *```proto
+   *message MyString {
    *  // value must be a valid email address
    *   string value = 1 [(buf.validate.field).string.email = true];
-   * }
-   * ```
+   *}
+   *```
    * </pre>
    *
    * <code>bool email = 12 [json_name = "email", (.buf.validate.priv.field) = { ... }</code>
-   *
    * @return Whether the email field is set.
    */
   @java.lang.Override
   public boolean hasEmail() {
     return wellKnownCase_ == 12;
   }
-
   /**
-   *
-   *
    * <pre>
-   * `email` specifies that the field value must be a valid email address
-   * (addr-spec only) as defined by [RFC 5322](https://tools.ietf.org/html/rfc5322#section-3.4.1).
-   * If the field value isn't a valid email address, an error message will be generated.
+   *`email` specifies that the field value must be a valid email address
+   *(addr-spec only) as defined by [RFC 5322](https://tools.ietf.org/html/rfc5322#section-3.4.1).
+   *If the field value isn't a valid email address, an error message will be generated.
    *
-   * ```proto
-   * message MyString {
+   *```proto
+   *message MyString {
    *  // value must be a valid email address
    *   string value = 1 [(buf.validate.field).string.email = true];
-   * }
-   * ```
+   *}
+   *```
    * </pre>
    *
    * <code>bool email = 12 [json_name = "email", (.buf.validate.priv.field) = { ... }</code>
-   *
    * @return The email.
    */
   @java.lang.Override
@@ -1338,52 +1131,44 @@ public final class StringRules extends com.google.protobuf.GeneratedMessageV3
   }
 
   public static final int HOSTNAME_FIELD_NUMBER = 13;
-
   /**
-   *
-   *
    * <pre>
-   * `hostname` specifies that the field value must be a valid
-   * hostname as defined by [RFC 1034](https://tools.ietf.org/html/rfc1034#section-3.5). This constraint doesn't support
-   * internationalized domain names (IDNs). If the field value isn't a
-   * valid hostname, an error message will be generated.
+   *`hostname` specifies that the field value must be a valid
+   *hostname as defined by [RFC 1034](https://tools.ietf.org/html/rfc1034#section-3.5). This constraint doesn't support
+   *internationalized domain names (IDNs). If the field value isn't a
+   *valid hostname, an error message will be generated.
    *
-   * ```proto
-   * message MyString {
+   *```proto
+   *message MyString {
    *  // value must be a valid hostname
    *   string value = 1 [(buf.validate.field).string.hostname = true];
-   * }
-   * ```
+   *}
+   *```
    * </pre>
    *
    * <code>bool hostname = 13 [json_name = "hostname", (.buf.validate.priv.field) = { ... }</code>
-   *
    * @return Whether the hostname field is set.
    */
   @java.lang.Override
   public boolean hasHostname() {
     return wellKnownCase_ == 13;
   }
-
   /**
-   *
-   *
    * <pre>
-   * `hostname` specifies that the field value must be a valid
-   * hostname as defined by [RFC 1034](https://tools.ietf.org/html/rfc1034#section-3.5). This constraint doesn't support
-   * internationalized domain names (IDNs). If the field value isn't a
-   * valid hostname, an error message will be generated.
+   *`hostname` specifies that the field value must be a valid
+   *hostname as defined by [RFC 1034](https://tools.ietf.org/html/rfc1034#section-3.5). This constraint doesn't support
+   *internationalized domain names (IDNs). If the field value isn't a
+   *valid hostname, an error message will be generated.
    *
-   * ```proto
-   * message MyString {
+   *```proto
+   *message MyString {
    *  // value must be a valid hostname
    *   string value = 1 [(buf.validate.field).string.hostname = true];
-   * }
-   * ```
+   *}
+   *```
    * </pre>
    *
    * <code>bool hostname = 13 [json_name = "hostname", (.buf.validate.priv.field) = { ... }</code>
-   *
    * @return The hostname.
    */
   @java.lang.Override
@@ -1395,52 +1180,44 @@ public final class StringRules extends com.google.protobuf.GeneratedMessageV3
   }
 
   public static final int IP_FIELD_NUMBER = 14;
-
   /**
-   *
-   *
    * <pre>
-   * `ip` specifies that the field value must be a valid IP
-   * (v4 or v6) address, without surrounding square brackets for IPv6 addresses.
-   * If the field value isn't a valid IP address, an error message will be
-   * generated.
+   *`ip` specifies that the field value must be a valid IP
+   *(v4 or v6) address, without surrounding square brackets for IPv6 addresses.
+   *If the field value isn't a valid IP address, an error message will be
+   *generated.
    *
-   * ```proto
-   * message MyString {
+   *```proto
+   *message MyString {
    *  // value must be a valid IP address
    *   string value = 1 [(buf.validate.field).string.ip = true];
-   * }
-   * ```
+   *}
+   *```
    * </pre>
    *
    * <code>bool ip = 14 [json_name = "ip", (.buf.validate.priv.field) = { ... }</code>
-   *
    * @return Whether the ip field is set.
    */
   @java.lang.Override
   public boolean hasIp() {
     return wellKnownCase_ == 14;
   }
-
   /**
-   *
-   *
    * <pre>
-   * `ip` specifies that the field value must be a valid IP
-   * (v4 or v6) address, without surrounding square brackets for IPv6 addresses.
-   * If the field value isn't a valid IP address, an error message will be
-   * generated.
+   *`ip` specifies that the field value must be a valid IP
+   *(v4 or v6) address, without surrounding square brackets for IPv6 addresses.
+   *If the field value isn't a valid IP address, an error message will be
+   *generated.
    *
-   * ```proto
-   * message MyString {
+   *```proto
+   *message MyString {
    *  // value must be a valid IP address
    *   string value = 1 [(buf.validate.field).string.ip = true];
-   * }
-   * ```
+   *}
+   *```
    * </pre>
    *
    * <code>bool ip = 14 [json_name = "ip", (.buf.validate.priv.field) = { ... }</code>
-   *
    * @return The ip.
    */
   @java.lang.Override
@@ -1452,50 +1229,42 @@ public final class StringRules extends com.google.protobuf.GeneratedMessageV3
   }
 
   public static final int IPV4_FIELD_NUMBER = 15;
-
   /**
-   *
-   *
    * <pre>
-   * `ipv4` specifies that the field value must be a valid IPv4
-   * address. If the field value isn't a valid IPv4 address, an error message
-   * will be generated.
+   *`ipv4` specifies that the field value must be a valid IPv4
+   *address. If the field value isn't a valid IPv4 address, an error message
+   *will be generated.
    *
-   * ```proto
-   * message MyString {
+   *```proto
+   *message MyString {
    *  // value must be a valid IPv4 address
    *   string value = 1 [(buf.validate.field).string.ipv4 = true];
-   * }
-   * ```
+   *}
+   *```
    * </pre>
    *
    * <code>bool ipv4 = 15 [json_name = "ipv4", (.buf.validate.priv.field) = { ... }</code>
-   *
    * @return Whether the ipv4 field is set.
    */
   @java.lang.Override
   public boolean hasIpv4() {
     return wellKnownCase_ == 15;
   }
-
   /**
-   *
-   *
    * <pre>
-   * `ipv4` specifies that the field value must be a valid IPv4
-   * address. If the field value isn't a valid IPv4 address, an error message
-   * will be generated.
+   *`ipv4` specifies that the field value must be a valid IPv4
+   *address. If the field value isn't a valid IPv4 address, an error message
+   *will be generated.
    *
-   * ```proto
-   * message MyString {
+   *```proto
+   *message MyString {
    *  // value must be a valid IPv4 address
    *   string value = 1 [(buf.validate.field).string.ipv4 = true];
-   * }
-   * ```
+   *}
+   *```
    * </pre>
    *
    * <code>bool ipv4 = 15 [json_name = "ipv4", (.buf.validate.priv.field) = { ... }</code>
-   *
    * @return The ipv4.
    */
   @java.lang.Override
@@ -1507,50 +1276,42 @@ public final class StringRules extends com.google.protobuf.GeneratedMessageV3
   }
 
   public static final int IPV6_FIELD_NUMBER = 16;
-
   /**
-   *
-   *
    * <pre>
-   * `ipv6` specifies that the field value must be a valid
-   * IPv6 address, without surrounding square brackets. If the field value is
-   * not a valid IPv6 address, an error message will be generated.
+   *`ipv6` specifies that the field value must be a valid
+   *IPv6 address, without surrounding square brackets. If the field value is
+   *not a valid IPv6 address, an error message will be generated.
    *
-   * ```proto
-   * message MyString {
+   *```proto
+   *message MyString {
    *  // value must be a valid IPv6 address
    *   string value = 1 [(buf.validate.field).string.ipv6 = true];
-   * }
-   * ```
+   *}
+   *```
    * </pre>
    *
    * <code>bool ipv6 = 16 [json_name = "ipv6", (.buf.validate.priv.field) = { ... }</code>
-   *
    * @return Whether the ipv6 field is set.
    */
   @java.lang.Override
   public boolean hasIpv6() {
     return wellKnownCase_ == 16;
   }
-
   /**
-   *
-   *
    * <pre>
-   * `ipv6` specifies that the field value must be a valid
-   * IPv6 address, without surrounding square brackets. If the field value is
-   * not a valid IPv6 address, an error message will be generated.
+   *`ipv6` specifies that the field value must be a valid
+   *IPv6 address, without surrounding square brackets. If the field value is
+   *not a valid IPv6 address, an error message will be generated.
    *
-   * ```proto
-   * message MyString {
+   *```proto
+   *message MyString {
    *  // value must be a valid IPv6 address
    *   string value = 1 [(buf.validate.field).string.ipv6 = true];
-   * }
-   * ```
+   *}
+   *```
    * </pre>
    *
    * <code>bool ipv6 = 16 [json_name = "ipv6", (.buf.validate.priv.field) = { ... }</code>
-   *
    * @return The ipv6.
    */
   @java.lang.Override
@@ -1562,50 +1323,42 @@ public final class StringRules extends com.google.protobuf.GeneratedMessageV3
   }
 
   public static final int URI_FIELD_NUMBER = 17;
-
   /**
-   *
-   *
    * <pre>
-   * `uri` specifies that the field value must be a valid,
-   * absolute URI as defined by [RFC 3986](https://tools.ietf.org/html/rfc3986#section-3). If the field value isn't a valid,
-   * absolute URI, an error message will be generated.
+   *`uri` specifies that the field value must be a valid,
+   *absolute URI as defined by [RFC 3986](https://tools.ietf.org/html/rfc3986#section-3). If the field value isn't a valid,
+   *absolute URI, an error message will be generated.
    *
-   * ```proto
-   * message MyString {
+   *```proto
+   *message MyString {
    *  // value must be a valid URI
    *   string value = 1 [(buf.validate.field).string.uri = true];
-   * }
-   * ```
+   *}
+   *```
    * </pre>
    *
    * <code>bool uri = 17 [json_name = "uri", (.buf.validate.priv.field) = { ... }</code>
-   *
    * @return Whether the uri field is set.
    */
   @java.lang.Override
   public boolean hasUri() {
     return wellKnownCase_ == 17;
   }
-
   /**
-   *
-   *
    * <pre>
-   * `uri` specifies that the field value must be a valid,
-   * absolute URI as defined by [RFC 3986](https://tools.ietf.org/html/rfc3986#section-3). If the field value isn't a valid,
-   * absolute URI, an error message will be generated.
+   *`uri` specifies that the field value must be a valid,
+   *absolute URI as defined by [RFC 3986](https://tools.ietf.org/html/rfc3986#section-3). If the field value isn't a valid,
+   *absolute URI, an error message will be generated.
    *
-   * ```proto
-   * message MyString {
+   *```proto
+   *message MyString {
    *  // value must be a valid URI
    *   string value = 1 [(buf.validate.field).string.uri = true];
-   * }
-   * ```
+   *}
+   *```
    * </pre>
    *
    * <code>bool uri = 17 [json_name = "uri", (.buf.validate.priv.field) = { ... }</code>
-   *
    * @return The uri.
    */
   @java.lang.Override
@@ -1617,50 +1370,42 @@ public final class StringRules extends com.google.protobuf.GeneratedMessageV3
   }
 
   public static final int URI_REF_FIELD_NUMBER = 18;
-
   /**
-   *
-   *
    * <pre>
-   * `uri_ref` specifies that the field value must be a valid URI
-   * as defined by [RFC 3986](https://tools.ietf.org/html/rfc3986#section-3) and may be either relative or absolute. If the
-   * field value isn't a valid URI, an error message will be generated.
+   *`uri_ref` specifies that the field value must be a valid URI
+   *as defined by [RFC 3986](https://tools.ietf.org/html/rfc3986#section-3) and may be either relative or absolute. If the
+   *field value isn't a valid URI, an error message will be generated.
    *
-   * ```proto
-   * message MyString {
+   *```proto
+   *message MyString {
    *  // value must be a valid URI
    *   string value = 1 [(buf.validate.field).string.uri_ref = true];
-   * }
-   * ```
+   *}
+   *```
    * </pre>
    *
    * <code>bool uri_ref = 18 [json_name = "uriRef", (.buf.validate.priv.field) = { ... }</code>
-   *
    * @return Whether the uriRef field is set.
    */
   @java.lang.Override
   public boolean hasUriRef() {
     return wellKnownCase_ == 18;
   }
-
   /**
-   *
-   *
    * <pre>
-   * `uri_ref` specifies that the field value must be a valid URI
-   * as defined by [RFC 3986](https://tools.ietf.org/html/rfc3986#section-3) and may be either relative or absolute. If the
-   * field value isn't a valid URI, an error message will be generated.
+   *`uri_ref` specifies that the field value must be a valid URI
+   *as defined by [RFC 3986](https://tools.ietf.org/html/rfc3986#section-3) and may be either relative or absolute. If the
+   *field value isn't a valid URI, an error message will be generated.
    *
-   * ```proto
-   * message MyString {
+   *```proto
+   *message MyString {
    *  // value must be a valid URI
    *   string value = 1 [(buf.validate.field).string.uri_ref = true];
-   * }
-   * ```
+   *}
+   *```
    * </pre>
    *
    * <code>bool uri_ref = 18 [json_name = "uriRef", (.buf.validate.priv.field) = { ... }</code>
-   *
    * @return The uriRef.
    */
   @java.lang.Override
@@ -1672,54 +1417,46 @@ public final class StringRules extends com.google.protobuf.GeneratedMessageV3
   }
 
   public static final int ADDRESS_FIELD_NUMBER = 21;
-
   /**
-   *
-   *
    * <pre>
-   * `address` specifies that the field value must be either a valid hostname
-   * as defined by [RFC 1034](https://tools.ietf.org/html/rfc1034#section-3.5)
-   * (which doesn't support internationalized domain names or IDNs) or a valid
-   * IP (v4 or v6). If the field value isn't a valid hostname or IP, an error
-   * message will be generated.
+   *`address` specifies that the field value must be either a valid hostname
+   *as defined by [RFC 1034](https://tools.ietf.org/html/rfc1034#section-3.5)
+   *(which doesn't support internationalized domain names or IDNs) or a valid
+   *IP (v4 or v6). If the field value isn't a valid hostname or IP, an error
+   *message will be generated.
    *
-   * ```proto
-   * message MyString {
+   *```proto
+   *message MyString {
    *  // value must be a valid hostname, or ip address
    *   string value = 1 [(buf.validate.field).string.address = true];
-   * }
-   * ```
+   *}
+   *```
    * </pre>
    *
    * <code>bool address = 21 [json_name = "address", (.buf.validate.priv.field) = { ... }</code>
-   *
    * @return Whether the address field is set.
    */
   @java.lang.Override
   public boolean hasAddress() {
     return wellKnownCase_ == 21;
   }
-
   /**
-   *
-   *
    * <pre>
-   * `address` specifies that the field value must be either a valid hostname
-   * as defined by [RFC 1034](https://tools.ietf.org/html/rfc1034#section-3.5)
-   * (which doesn't support internationalized domain names or IDNs) or a valid
-   * IP (v4 or v6). If the field value isn't a valid hostname or IP, an error
-   * message will be generated.
+   *`address` specifies that the field value must be either a valid hostname
+   *as defined by [RFC 1034](https://tools.ietf.org/html/rfc1034#section-3.5)
+   *(which doesn't support internationalized domain names or IDNs) or a valid
+   *IP (v4 or v6). If the field value isn't a valid hostname or IP, an error
+   *message will be generated.
    *
-   * ```proto
-   * message MyString {
+   *```proto
+   *message MyString {
    *  // value must be a valid hostname, or ip address
    *   string value = 1 [(buf.validate.field).string.address = true];
-   * }
-   * ```
+   *}
+   *```
    * </pre>
    *
    * <code>bool address = 21 [json_name = "address", (.buf.validate.priv.field) = { ... }</code>
-   *
    * @return The address.
    */
   @java.lang.Override
@@ -1731,50 +1468,42 @@ public final class StringRules extends com.google.protobuf.GeneratedMessageV3
   }
 
   public static final int UUID_FIELD_NUMBER = 22;
-
   /**
-   *
-   *
    * <pre>
-   * `uuid` specifies that the field value must be a valid UUID as defined by
-   * [RFC 4122](https://tools.ietf.org/html/rfc4122#section-4.1.2). If the
-   * field value isn't a valid UUID, an error message will be generated.
+   *`uuid` specifies that the field value must be a valid UUID as defined by
+   *[RFC 4122](https://tools.ietf.org/html/rfc4122#section-4.1.2). If the
+   *field value isn't a valid UUID, an error message will be generated.
    *
-   * ```proto
-   * message MyString {
+   *```proto
+   *message MyString {
    *  // value must be a valid UUID
    *   string value = 1 [(buf.validate.field).string.uuid = true];
-   * }
-   * ```
+   *}
+   *```
    * </pre>
    *
    * <code>bool uuid = 22 [json_name = "uuid", (.buf.validate.priv.field) = { ... }</code>
-   *
    * @return Whether the uuid field is set.
    */
   @java.lang.Override
   public boolean hasUuid() {
     return wellKnownCase_ == 22;
   }
-
   /**
-   *
-   *
    * <pre>
-   * `uuid` specifies that the field value must be a valid UUID as defined by
-   * [RFC 4122](https://tools.ietf.org/html/rfc4122#section-4.1.2). If the
-   * field value isn't a valid UUID, an error message will be generated.
+   *`uuid` specifies that the field value must be a valid UUID as defined by
+   *[RFC 4122](https://tools.ietf.org/html/rfc4122#section-4.1.2). If the
+   *field value isn't a valid UUID, an error message will be generated.
    *
-   * ```proto
-   * message MyString {
+   *```proto
+   *message MyString {
    *  // value must be a valid UUID
    *   string value = 1 [(buf.validate.field).string.uuid = true];
-   * }
-   * ```
+   *}
+   *```
    * </pre>
    *
    * <code>bool uuid = 22 [json_name = "uuid", (.buf.validate.priv.field) = { ... }</code>
-   *
    * @return The uuid.
    */
   @java.lang.Override
@@ -1786,73 +1515,61 @@ public final class StringRules extends com.google.protobuf.GeneratedMessageV3
   }
 
   public static final int WELL_KNOWN_REGEX_FIELD_NUMBER = 24;
-
   /**
-   *
-   *
    * <pre>
-   * `well_known_regex` specifies a common well-known pattern
-   * defined as a regex. If the field value doesn't match the well-known
-   * regex, an error message will be generated.
+   *`well_known_regex` specifies a common well-known pattern
+   *defined as a regex. If the field value doesn't match the well-known
+   *regex, an error message will be generated.
    *
-   * ```proto
-   * message MyString {
+   *```proto
+   *message MyString {
    *  // value must be a valid HTTP header value
    *   string value = 1 [(buf.validate.field).string.well_known_regex = 2];
-   * }
-   * ```
+   *}
+   *```
    *
-   * #### KnownRegex
+   *#### KnownRegex
    *
-   * `well_known_regex` contains some well-known patterns.
+   *`well_known_regex` contains some well-known patterns.
    *
-   * | Name                          | Number | Description                               |
-   * |-------------------------------|--------|-------------------------------------------|
-   * | KNOWN_REGEX_UNSPECIFIED       | 0      |                                           |
-   * | KNOWN_REGEX_HTTP_HEADER_NAME  | 1      | HTTP header name as defined by [RFC 7230](https://tools.ietf.org/html/rfc7230#section-3.2)  |
-   * | KNOWN_REGEX_HTTP_HEADER_VALUE | 2      | HTTP header value as defined by [RFC 7230](https://tools.ietf.org/html/rfc7230#section-3.2.4) |
+   *| Name                          | Number | Description                               |
+   *|-------------------------------|--------|-------------------------------------------|
+   *| KNOWN_REGEX_UNSPECIFIED       | 0      |                                           |
+   *| KNOWN_REGEX_HTTP_HEADER_NAME  | 1      | HTTP header name as defined by [RFC 7230](https://tools.ietf.org/html/rfc7230#section-3.2)  |
+   *| KNOWN_REGEX_HTTP_HEADER_VALUE | 2      | HTTP header value as defined by [RFC 7230](https://tools.ietf.org/html/rfc7230#section-3.2.4) |
    * </pre>
    *
-   * <code>
-   * .buf.validate.KnownRegex well_known_regex = 24 [json_name = "wellKnownRegex", (.buf.validate.priv.field) = { ... }
-   * </code>
-   *
+   * <code>.buf.validate.KnownRegex well_known_regex = 24 [json_name = "wellKnownRegex", (.buf.validate.priv.field) = { ... }</code>
    * @return Whether the wellKnownRegex field is set.
    */
   public boolean hasWellKnownRegex() {
     return wellKnownCase_ == 24;
   }
-
   /**
-   *
-   *
    * <pre>
-   * `well_known_regex` specifies a common well-known pattern
-   * defined as a regex. If the field value doesn't match the well-known
-   * regex, an error message will be generated.
+   *`well_known_regex` specifies a common well-known pattern
+   *defined as a regex. If the field value doesn't match the well-known
+   *regex, an error message will be generated.
    *
-   * ```proto
-   * message MyString {
+   *```proto
+   *message MyString {
    *  // value must be a valid HTTP header value
    *   string value = 1 [(buf.validate.field).string.well_known_regex = 2];
-   * }
-   * ```
+   *}
+   *```
    *
-   * #### KnownRegex
+   *#### KnownRegex
    *
-   * `well_known_regex` contains some well-known patterns.
+   *`well_known_regex` contains some well-known patterns.
    *
-   * | Name                          | Number | Description                               |
-   * |-------------------------------|--------|-------------------------------------------|
-   * | KNOWN_REGEX_UNSPECIFIED       | 0      |                                           |
-   * | KNOWN_REGEX_HTTP_HEADER_NAME  | 1      | HTTP header name as defined by [RFC 7230](https://tools.ietf.org/html/rfc7230#section-3.2)  |
-   * | KNOWN_REGEX_HTTP_HEADER_VALUE | 2      | HTTP header value as defined by [RFC 7230](https://tools.ietf.org/html/rfc7230#section-3.2.4) |
+   *| Name                          | Number | Description                               |
+   *|-------------------------------|--------|-------------------------------------------|
+   *| KNOWN_REGEX_UNSPECIFIED       | 0      |                                           |
+   *| KNOWN_REGEX_HTTP_HEADER_NAME  | 1      | HTTP header name as defined by [RFC 7230](https://tools.ietf.org/html/rfc7230#section-3.2)  |
+   *| KNOWN_REGEX_HTTP_HEADER_VALUE | 2      | HTTP header value as defined by [RFC 7230](https://tools.ietf.org/html/rfc7230#section-3.2.4) |
    * </pre>
    *
-   * <code>
-   * .buf.validate.KnownRegex well_known_regex = 24 [json_name = "wellKnownRegex", (.buf.validate.priv.field) = { ... }
-   * </code>
-   *
+   * <code>.buf.validate.KnownRegex well_known_regex = 24 [json_name = "wellKnownRegex", (.buf.validate.priv.field) = { ... }</code>
    * @return The enum numeric value on the wire for wellKnownRegex.
    */
   public int getWellKnownRegexValue() {
@@ -1861,43 +1578,37 @@ public final class StringRules extends com.google.protobuf.GeneratedMessageV3
     }
     return 0;
   }
-
   /**
-   *
-   *
    * <pre>
-   * `well_known_regex` specifies a common well-known pattern
-   * defined as a regex. If the field value doesn't match the well-known
-   * regex, an error message will be generated.
+   *`well_known_regex` specifies a common well-known pattern
+   *defined as a regex. If the field value doesn't match the well-known
+   *regex, an error message will be generated.
    *
-   * ```proto
-   * message MyString {
+   *```proto
+   *message MyString {
    *  // value must be a valid HTTP header value
    *   string value = 1 [(buf.validate.field).string.well_known_regex = 2];
-   * }
-   * ```
+   *}
+   *```
    *
-   * #### KnownRegex
+   *#### KnownRegex
    *
-   * `well_known_regex` contains some well-known patterns.
+   *`well_known_regex` contains some well-known patterns.
    *
-   * | Name                          | Number | Description                               |
-   * |-------------------------------|--------|-------------------------------------------|
-   * | KNOWN_REGEX_UNSPECIFIED       | 0      |                                           |
-   * | KNOWN_REGEX_HTTP_HEADER_NAME  | 1      | HTTP header name as defined by [RFC 7230](https://tools.ietf.org/html/rfc7230#section-3.2)  |
-   * | KNOWN_REGEX_HTTP_HEADER_VALUE | 2      | HTTP header value as defined by [RFC 7230](https://tools.ietf.org/html/rfc7230#section-3.2.4) |
+   *| Name                          | Number | Description                               |
+   *|-------------------------------|--------|-------------------------------------------|
+   *| KNOWN_REGEX_UNSPECIFIED       | 0      |                                           |
+   *| KNOWN_REGEX_HTTP_HEADER_NAME  | 1      | HTTP header name as defined by [RFC 7230](https://tools.ietf.org/html/rfc7230#section-3.2)  |
+   *| KNOWN_REGEX_HTTP_HEADER_VALUE | 2      | HTTP header value as defined by [RFC 7230](https://tools.ietf.org/html/rfc7230#section-3.2.4) |
    * </pre>
    *
-   * <code>
-   * .buf.validate.KnownRegex well_known_regex = 24 [json_name = "wellKnownRegex", (.buf.validate.priv.field) = { ... }
-   * </code>
-   *
+   * <code>.buf.validate.KnownRegex well_known_regex = 24 [json_name = "wellKnownRegex", (.buf.validate.priv.field) = { ... }</code>
    * @return The wellKnownRegex.
    */
   public build.buf.validate.KnownRegex getWellKnownRegex() {
     if (wellKnownCase_ == 24) {
-      build.buf.validate.KnownRegex result =
-          build.buf.validate.KnownRegex.forNumber((java.lang.Integer) wellKnown_);
+      build.buf.validate.KnownRegex result = build.buf.validate.KnownRegex.forNumber(
+          (java.lang.Integer) wellKnown_);
       return result == null ? build.buf.validate.KnownRegex.UNRECOGNIZED : result;
     }
     return build.buf.validate.KnownRegex.KNOWN_REGEX_UNSPECIFIED;
@@ -1905,54 +1616,46 @@ public final class StringRules extends com.google.protobuf.GeneratedMessageV3
 
   public static final int STRICT_FIELD_NUMBER = 25;
   private boolean strict_ = false;
-
   /**
-   *
-   *
    * <pre>
-   * This applies to regexes `HTTP_HEADER_NAME` and `HTTP_HEADER_VALUE` to
-   * enable strict header validation. By default, this is true, and HTTP header
-   * validations are [RFC-compliant](https://tools.ietf.org/html/rfc7230#section-3). Setting to false will enable looser
-   * validations that only disallow `&#92;r&#92;n&#92;0` characters, which can be used to
-   * bypass header matching rules.
+   *This applies to regexes `HTTP_HEADER_NAME` and `HTTP_HEADER_VALUE` to
+   *enable strict header validation. By default, this is true, and HTTP header
+   *validations are [RFC-compliant](https://tools.ietf.org/html/rfc7230#section-3). Setting to false will enable looser
+   *validations that only disallow `&#92;r&#92;n&#92;0` characters, which can be used to
+   *bypass header matching rules.
    *
-   * ```proto
-   * message MyString {
+   *```proto
+   *message MyString {
    *   // The field `value` must have be a valid HTTP headers, but not enforced with strict rules.
    *   string value = 1 [(buf.validate.field).string.strict = false];
-   * }
-   * ```
+   *}
+   *```
    * </pre>
    *
    * <code>optional bool strict = 25 [json_name = "strict"];</code>
-   *
    * @return Whether the strict field is set.
    */
   @java.lang.Override
   public boolean hasStrict() {
     return ((bitField0_ & 0x00001000) != 0);
   }
-
   /**
-   *
-   *
    * <pre>
-   * This applies to regexes `HTTP_HEADER_NAME` and `HTTP_HEADER_VALUE` to
-   * enable strict header validation. By default, this is true, and HTTP header
-   * validations are [RFC-compliant](https://tools.ietf.org/html/rfc7230#section-3). Setting to false will enable looser
-   * validations that only disallow `&#92;r&#92;n&#92;0` characters, which can be used to
-   * bypass header matching rules.
+   *This applies to regexes `HTTP_HEADER_NAME` and `HTTP_HEADER_VALUE` to
+   *enable strict header validation. By default, this is true, and HTTP header
+   *validations are [RFC-compliant](https://tools.ietf.org/html/rfc7230#section-3). Setting to false will enable looser
+   *validations that only disallow `&#92;r&#92;n&#92;0` characters, which can be used to
+   *bypass header matching rules.
    *
-   * ```proto
-   * message MyString {
+   *```proto
+   *message MyString {
    *   // The field `value` must have be a valid HTTP headers, but not enforced with strict rules.
    *   string value = 1 [(buf.validate.field).string.strict = false];
-   * }
-   * ```
+   *}
+   *```
    * </pre>
    *
    * <code>optional bool strict = 25 [json_name = "strict"];</code>
-   *
    * @return The strict.
    */
   @java.lang.Override
@@ -1961,7 +1664,6 @@ public final class StringRules extends com.google.protobuf.GeneratedMessageV3
   }
 
   private byte memoizedIsInitialized = -1;
-
   @java.lang.Override
   public final boolean isInitialized() {
     byte isInitialized = memoizedIsInitialized;
@@ -1973,7 +1675,8 @@ public final class StringRules extends com.google.protobuf.GeneratedMessageV3
   }
 
   @java.lang.Override
-  public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
+  public void writeTo(com.google.protobuf.CodedOutputStream output)
+                      throws java.io.IOException {
     if (((bitField0_ & 0x00000001) != 0)) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 1, const_);
     }
@@ -2008,25 +1711,32 @@ public final class StringRules extends com.google.protobuf.GeneratedMessageV3
       com.google.protobuf.GeneratedMessageV3.writeString(output, 11, notIn_.getRaw(i));
     }
     if (wellKnownCase_ == 12) {
-      output.writeBool(12, (boolean) ((java.lang.Boolean) wellKnown_));
+      output.writeBool(
+          12, (boolean)((java.lang.Boolean) wellKnown_));
     }
     if (wellKnownCase_ == 13) {
-      output.writeBool(13, (boolean) ((java.lang.Boolean) wellKnown_));
+      output.writeBool(
+          13, (boolean)((java.lang.Boolean) wellKnown_));
     }
     if (wellKnownCase_ == 14) {
-      output.writeBool(14, (boolean) ((java.lang.Boolean) wellKnown_));
+      output.writeBool(
+          14, (boolean)((java.lang.Boolean) wellKnown_));
     }
     if (wellKnownCase_ == 15) {
-      output.writeBool(15, (boolean) ((java.lang.Boolean) wellKnown_));
+      output.writeBool(
+          15, (boolean)((java.lang.Boolean) wellKnown_));
     }
     if (wellKnownCase_ == 16) {
-      output.writeBool(16, (boolean) ((java.lang.Boolean) wellKnown_));
+      output.writeBool(
+          16, (boolean)((java.lang.Boolean) wellKnown_));
     }
     if (wellKnownCase_ == 17) {
-      output.writeBool(17, (boolean) ((java.lang.Boolean) wellKnown_));
+      output.writeBool(
+          17, (boolean)((java.lang.Boolean) wellKnown_));
     }
     if (wellKnownCase_ == 18) {
-      output.writeBool(18, (boolean) ((java.lang.Boolean) wellKnown_));
+      output.writeBool(
+          18, (boolean)((java.lang.Boolean) wellKnown_));
     }
     if (((bitField0_ & 0x00000002) != 0)) {
       output.writeUInt64(19, len_);
@@ -2035,10 +1745,12 @@ public final class StringRules extends com.google.protobuf.GeneratedMessageV3
       output.writeUInt64(20, lenBytes_);
     }
     if (wellKnownCase_ == 21) {
-      output.writeBool(21, (boolean) ((java.lang.Boolean) wellKnown_));
+      output.writeBool(
+          21, (boolean)((java.lang.Boolean) wellKnown_));
     }
     if (wellKnownCase_ == 22) {
-      output.writeBool(22, (boolean) ((java.lang.Boolean) wellKnown_));
+      output.writeBool(
+          22, (boolean)((java.lang.Boolean) wellKnown_));
     }
     if (((bitField0_ & 0x00000800) != 0)) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 23, notContains_);
@@ -2062,16 +1774,20 @@ public final class StringRules extends com.google.protobuf.GeneratedMessageV3
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, const_);
     }
     if (((bitField0_ & 0x00000004) != 0)) {
-      size += com.google.protobuf.CodedOutputStream.computeUInt64Size(2, minLen_);
+      size += com.google.protobuf.CodedOutputStream
+        .computeUInt64Size(2, minLen_);
     }
     if (((bitField0_ & 0x00000008) != 0)) {
-      size += com.google.protobuf.CodedOutputStream.computeUInt64Size(3, maxLen_);
+      size += com.google.protobuf.CodedOutputStream
+        .computeUInt64Size(3, maxLen_);
     }
     if (((bitField0_ & 0x00000020) != 0)) {
-      size += com.google.protobuf.CodedOutputStream.computeUInt64Size(4, minBytes_);
+      size += com.google.protobuf.CodedOutputStream
+        .computeUInt64Size(4, minBytes_);
     }
     if (((bitField0_ & 0x00000040) != 0)) {
-      size += com.google.protobuf.CodedOutputStream.computeUInt64Size(5, maxBytes_);
+      size += com.google.protobuf.CodedOutputStream
+        .computeUInt64Size(5, maxBytes_);
     }
     if (((bitField0_ & 0x00000080) != 0)) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(6, pattern_);
@@ -2102,66 +1818,68 @@ public final class StringRules extends com.google.protobuf.GeneratedMessageV3
       size += 1 * getNotInList().size();
     }
     if (wellKnownCase_ == 12) {
-      size +=
-          com.google.protobuf.CodedOutputStream.computeBoolSize(
-              12, (boolean) ((java.lang.Boolean) wellKnown_));
+      size += com.google.protobuf.CodedOutputStream
+        .computeBoolSize(
+            12, (boolean)((java.lang.Boolean) wellKnown_));
     }
     if (wellKnownCase_ == 13) {
-      size +=
-          com.google.protobuf.CodedOutputStream.computeBoolSize(
-              13, (boolean) ((java.lang.Boolean) wellKnown_));
+      size += com.google.protobuf.CodedOutputStream
+        .computeBoolSize(
+            13, (boolean)((java.lang.Boolean) wellKnown_));
     }
     if (wellKnownCase_ == 14) {
-      size +=
-          com.google.protobuf.CodedOutputStream.computeBoolSize(
-              14, (boolean) ((java.lang.Boolean) wellKnown_));
+      size += com.google.protobuf.CodedOutputStream
+        .computeBoolSize(
+            14, (boolean)((java.lang.Boolean) wellKnown_));
     }
     if (wellKnownCase_ == 15) {
-      size +=
-          com.google.protobuf.CodedOutputStream.computeBoolSize(
-              15, (boolean) ((java.lang.Boolean) wellKnown_));
+      size += com.google.protobuf.CodedOutputStream
+        .computeBoolSize(
+            15, (boolean)((java.lang.Boolean) wellKnown_));
     }
     if (wellKnownCase_ == 16) {
-      size +=
-          com.google.protobuf.CodedOutputStream.computeBoolSize(
-              16, (boolean) ((java.lang.Boolean) wellKnown_));
+      size += com.google.protobuf.CodedOutputStream
+        .computeBoolSize(
+            16, (boolean)((java.lang.Boolean) wellKnown_));
     }
     if (wellKnownCase_ == 17) {
-      size +=
-          com.google.protobuf.CodedOutputStream.computeBoolSize(
-              17, (boolean) ((java.lang.Boolean) wellKnown_));
+      size += com.google.protobuf.CodedOutputStream
+        .computeBoolSize(
+            17, (boolean)((java.lang.Boolean) wellKnown_));
     }
     if (wellKnownCase_ == 18) {
-      size +=
-          com.google.protobuf.CodedOutputStream.computeBoolSize(
-              18, (boolean) ((java.lang.Boolean) wellKnown_));
+      size += com.google.protobuf.CodedOutputStream
+        .computeBoolSize(
+            18, (boolean)((java.lang.Boolean) wellKnown_));
     }
     if (((bitField0_ & 0x00000002) != 0)) {
-      size += com.google.protobuf.CodedOutputStream.computeUInt64Size(19, len_);
+      size += com.google.protobuf.CodedOutputStream
+        .computeUInt64Size(19, len_);
     }
     if (((bitField0_ & 0x00000010) != 0)) {
-      size += com.google.protobuf.CodedOutputStream.computeUInt64Size(20, lenBytes_);
+      size += com.google.protobuf.CodedOutputStream
+        .computeUInt64Size(20, lenBytes_);
     }
     if (wellKnownCase_ == 21) {
-      size +=
-          com.google.protobuf.CodedOutputStream.computeBoolSize(
-              21, (boolean) ((java.lang.Boolean) wellKnown_));
+      size += com.google.protobuf.CodedOutputStream
+        .computeBoolSize(
+            21, (boolean)((java.lang.Boolean) wellKnown_));
     }
     if (wellKnownCase_ == 22) {
-      size +=
-          com.google.protobuf.CodedOutputStream.computeBoolSize(
-              22, (boolean) ((java.lang.Boolean) wellKnown_));
+      size += com.google.protobuf.CodedOutputStream
+        .computeBoolSize(
+            22, (boolean)((java.lang.Boolean) wellKnown_));
     }
     if (((bitField0_ & 0x00000800) != 0)) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(23, notContains_);
     }
     if (wellKnownCase_ == 24) {
-      size +=
-          com.google.protobuf.CodedOutputStream.computeEnumSize(
-              24, ((java.lang.Integer) wellKnown_));
+      size += com.google.protobuf.CodedOutputStream
+        .computeEnumSize(24, ((java.lang.Integer) wellKnown_));
     }
     if (((bitField0_ & 0x00001000) != 0)) {
-      size += com.google.protobuf.CodedOutputStream.computeBoolSize(25, strict_);
+      size += com.google.protobuf.CodedOutputStream
+        .computeBoolSize(25, strict_);
     }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
@@ -2171,7 +1889,7 @@ public final class StringRules extends com.google.protobuf.GeneratedMessageV3
   @java.lang.Override
   public boolean equals(final java.lang.Object obj) {
     if (obj == this) {
-      return true;
+     return true;
     }
     if (!(obj instanceof build.buf.validate.StringRules)) {
       return super.equals(obj);
@@ -2180,89 +1898,114 @@ public final class StringRules extends com.google.protobuf.GeneratedMessageV3
 
     if (hasConst() != other.hasConst()) return false;
     if (hasConst()) {
-      if (!getConst().equals(other.getConst())) return false;
+      if (!getConst()
+          .equals(other.getConst())) return false;
     }
     if (hasLen() != other.hasLen()) return false;
     if (hasLen()) {
-      if (getLen() != other.getLen()) return false;
+      if (getLen()
+          != other.getLen()) return false;
     }
     if (hasMinLen() != other.hasMinLen()) return false;
     if (hasMinLen()) {
-      if (getMinLen() != other.getMinLen()) return false;
+      if (getMinLen()
+          != other.getMinLen()) return false;
     }
     if (hasMaxLen() != other.hasMaxLen()) return false;
     if (hasMaxLen()) {
-      if (getMaxLen() != other.getMaxLen()) return false;
+      if (getMaxLen()
+          != other.getMaxLen()) return false;
     }
     if (hasLenBytes() != other.hasLenBytes()) return false;
     if (hasLenBytes()) {
-      if (getLenBytes() != other.getLenBytes()) return false;
+      if (getLenBytes()
+          != other.getLenBytes()) return false;
     }
     if (hasMinBytes() != other.hasMinBytes()) return false;
     if (hasMinBytes()) {
-      if (getMinBytes() != other.getMinBytes()) return false;
+      if (getMinBytes()
+          != other.getMinBytes()) return false;
     }
     if (hasMaxBytes() != other.hasMaxBytes()) return false;
     if (hasMaxBytes()) {
-      if (getMaxBytes() != other.getMaxBytes()) return false;
+      if (getMaxBytes()
+          != other.getMaxBytes()) return false;
     }
     if (hasPattern() != other.hasPattern()) return false;
     if (hasPattern()) {
-      if (!getPattern().equals(other.getPattern())) return false;
+      if (!getPattern()
+          .equals(other.getPattern())) return false;
     }
     if (hasPrefix() != other.hasPrefix()) return false;
     if (hasPrefix()) {
-      if (!getPrefix().equals(other.getPrefix())) return false;
+      if (!getPrefix()
+          .equals(other.getPrefix())) return false;
     }
     if (hasSuffix() != other.hasSuffix()) return false;
     if (hasSuffix()) {
-      if (!getSuffix().equals(other.getSuffix())) return false;
+      if (!getSuffix()
+          .equals(other.getSuffix())) return false;
     }
     if (hasContains() != other.hasContains()) return false;
     if (hasContains()) {
-      if (!getContains().equals(other.getContains())) return false;
+      if (!getContains()
+          .equals(other.getContains())) return false;
     }
     if (hasNotContains() != other.hasNotContains()) return false;
     if (hasNotContains()) {
-      if (!getNotContains().equals(other.getNotContains())) return false;
+      if (!getNotContains()
+          .equals(other.getNotContains())) return false;
     }
-    if (!getInList().equals(other.getInList())) return false;
-    if (!getNotInList().equals(other.getNotInList())) return false;
+    if (!getInList()
+        .equals(other.getInList())) return false;
+    if (!getNotInList()
+        .equals(other.getNotInList())) return false;
     if (hasStrict() != other.hasStrict()) return false;
     if (hasStrict()) {
-      if (getStrict() != other.getStrict()) return false;
+      if (getStrict()
+          != other.getStrict()) return false;
     }
     if (!getWellKnownCase().equals(other.getWellKnownCase())) return false;
     switch (wellKnownCase_) {
       case 12:
-        if (getEmail() != other.getEmail()) return false;
+        if (getEmail()
+            != other.getEmail()) return false;
         break;
       case 13:
-        if (getHostname() != other.getHostname()) return false;
+        if (getHostname()
+            != other.getHostname()) return false;
         break;
       case 14:
-        if (getIp() != other.getIp()) return false;
+        if (getIp()
+            != other.getIp()) return false;
         break;
       case 15:
-        if (getIpv4() != other.getIpv4()) return false;
+        if (getIpv4()
+            != other.getIpv4()) return false;
         break;
       case 16:
-        if (getIpv6() != other.getIpv6()) return false;
+        if (getIpv6()
+            != other.getIpv6()) return false;
         break;
       case 17:
-        if (getUri() != other.getUri()) return false;
+        if (getUri()
+            != other.getUri()) return false;
         break;
       case 18:
-        if (getUriRef() != other.getUriRef()) return false;
+        if (getUriRef()
+            != other.getUriRef()) return false;
         break;
       case 21:
-        if (getAddress() != other.getAddress()) return false;
+        if (getAddress()
+            != other.getAddress()) return false;
         break;
       case 22:
-        if (getUuid() != other.getUuid()) return false;
+        if (getUuid()
+            != other.getUuid()) return false;
         break;
       case 24:
-        if (getWellKnownRegexValue() != other.getWellKnownRegexValue()) return false;
+        if (getWellKnownRegexValue()
+            != other.getWellKnownRegexValue()) return false;
         break;
       case 0:
       default:
@@ -2284,27 +2027,33 @@ public final class StringRules extends com.google.protobuf.GeneratedMessageV3
     }
     if (hasLen()) {
       hash = (37 * hash) + LEN_FIELD_NUMBER;
-      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(getLen());
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getLen());
     }
     if (hasMinLen()) {
       hash = (37 * hash) + MIN_LEN_FIELD_NUMBER;
-      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(getMinLen());
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getMinLen());
     }
     if (hasMaxLen()) {
       hash = (37 * hash) + MAX_LEN_FIELD_NUMBER;
-      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(getMaxLen());
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getMaxLen());
     }
     if (hasLenBytes()) {
       hash = (37 * hash) + LEN_BYTES_FIELD_NUMBER;
-      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(getLenBytes());
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getLenBytes());
     }
     if (hasMinBytes()) {
       hash = (37 * hash) + MIN_BYTES_FIELD_NUMBER;
-      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(getMinBytes());
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getMinBytes());
     }
     if (hasMaxBytes()) {
       hash = (37 * hash) + MAX_BYTES_FIELD_NUMBER;
-      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(getMaxBytes());
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getMaxBytes());
     }
     if (hasPattern()) {
       hash = (37 * hash) + PATTERN_FIELD_NUMBER;
@@ -2336,44 +2085,54 @@ public final class StringRules extends com.google.protobuf.GeneratedMessageV3
     }
     if (hasStrict()) {
       hash = (37 * hash) + STRICT_FIELD_NUMBER;
-      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(getStrict());
+      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+          getStrict());
     }
     switch (wellKnownCase_) {
       case 12:
         hash = (37 * hash) + EMAIL_FIELD_NUMBER;
-        hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(getEmail());
+        hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+            getEmail());
         break;
       case 13:
         hash = (37 * hash) + HOSTNAME_FIELD_NUMBER;
-        hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(getHostname());
+        hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+            getHostname());
         break;
       case 14:
         hash = (37 * hash) + IP_FIELD_NUMBER;
-        hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(getIp());
+        hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+            getIp());
         break;
       case 15:
         hash = (37 * hash) + IPV4_FIELD_NUMBER;
-        hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(getIpv4());
+        hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+            getIpv4());
         break;
       case 16:
         hash = (37 * hash) + IPV6_FIELD_NUMBER;
-        hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(getIpv6());
+        hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+            getIpv6());
         break;
       case 17:
         hash = (37 * hash) + URI_FIELD_NUMBER;
-        hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(getUri());
+        hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+            getUri());
         break;
       case 18:
         hash = (37 * hash) + URI_REF_FIELD_NUMBER;
-        hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(getUriRef());
+        hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+            getUriRef());
         break;
       case 21:
         hash = (37 * hash) + ADDRESS_FIELD_NUMBER;
-        hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(getAddress());
+        hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+            getAddress());
         break;
       case 22:
         hash = (37 * hash) + UUID_FIELD_NUMBER;
-        hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(getUuid());
+        hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+            getUuid());
         break;
       case 24:
         hash = (37 * hash) + WELL_KNOWN_REGEX_FIELD_NUMBER;
@@ -2387,104 +2146,99 @@ public final class StringRules extends com.google.protobuf.GeneratedMessageV3
     return hash;
   }
 
-  public static build.buf.validate.StringRules parseFrom(java.nio.ByteBuffer data)
+  public static build.buf.validate.StringRules parseFrom(
+      java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-
   public static build.buf.validate.StringRules parseFrom(
-      java.nio.ByteBuffer data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      java.nio.ByteBuffer data,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-
-  public static build.buf.validate.StringRules parseFrom(com.google.protobuf.ByteString data)
+  public static build.buf.validate.StringRules parseFrom(
+      com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-
   public static build.buf.validate.StringRules parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-
   public static build.buf.validate.StringRules parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-
   public static build.buf.validate.StringRules parseFrom(
-      byte[] data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      byte[] data,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-
   public static build.buf.validate.StringRules parseFrom(java.io.InputStream input)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
+    return com.google.protobuf.GeneratedMessageV3
+        .parseWithIOException(PARSER, input);
   }
-
   public static build.buf.validate.StringRules parseFrom(
-      java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      java.io.InputStream input,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
-        PARSER, input, extensionRegistry);
+    return com.google.protobuf.GeneratedMessageV3
+        .parseWithIOException(PARSER, input, extensionRegistry);
   }
 
   public static build.buf.validate.StringRules parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input);
+    return com.google.protobuf.GeneratedMessageV3
+        .parseDelimitedWithIOException(PARSER, input);
   }
 
   public static build.buf.validate.StringRules parseDelimitedFrom(
-      java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      java.io.InputStream input,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(
-        PARSER, input, extensionRegistry);
+    return com.google.protobuf.GeneratedMessageV3
+        .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-
-  public static build.buf.validate.StringRules parseFrom(com.google.protobuf.CodedInputStream input)
+  public static build.buf.validate.StringRules parseFrom(
+      com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
+    return com.google.protobuf.GeneratedMessageV3
+        .parseWithIOException(PARSER, input);
   }
-
   public static build.buf.validate.StringRules parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
-        PARSER, input, extensionRegistry);
+    return com.google.protobuf.GeneratedMessageV3
+        .parseWithIOException(PARSER, input, extensionRegistry);
   }
 
   @java.lang.Override
-  public Builder newBuilderForType() {
-    return newBuilder();
-  }
-
+  public Builder newBuilderForType() { return newBuilder(); }
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-
   public static Builder newBuilder(build.buf.validate.StringRules prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
-
   @java.lang.Override
   public Builder toBuilder() {
-    return this == DEFAULT_INSTANCE ? new Builder() : new Builder().mergeFrom(this);
+    return this == DEFAULT_INSTANCE
+        ? new Builder() : new Builder().mergeFrom(this);
   }
 
   @java.lang.Override
-  protected Builder newBuilderForType(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+  protected Builder newBuilderForType(
+      com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
     Builder builder = new Builder(parent);
     return builder;
   }
-
   /**
-   *
-   *
    * <pre>
    * StringRules describes the constraints applied to `string` values These
    * rules may also be applied to the `google.protobuf.StringValue` Well-Known-Type.
@@ -2492,30 +2246,33 @@ public final class StringRules extends com.google.protobuf.GeneratedMessageV3
    *
    * Protobuf type {@code buf.validate.StringRules}
    */
-  public static final class Builder extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
-      implements
+  public static final class Builder extends
+      com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
       // @@protoc_insertion_point(builder_implements:buf.validate.StringRules)
       build.buf.validate.StringRulesOrBuilder {
-    public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
       return build.buf.validate.ValidateProto.internal_static_buf_validate_StringRules_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return build.buf.validate.ValidateProto
-          .internal_static_buf_validate_StringRules_fieldAccessorTable
+      return build.buf.validate.ValidateProto.internal_static_buf_validate_StringRules_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
               build.buf.validate.StringRules.class, build.buf.validate.StringRules.Builder.class);
     }
 
     // Construct using build.buf.validate.StringRules.newBuilder()
-    private Builder() {}
+    private Builder() {
 
-    private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-      super(parent);
     }
 
+    private Builder(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      super(parent);
+
+    }
     @java.lang.Override
     public Builder clear() {
       super.clear();
@@ -2532,8 +2289,10 @@ public final class StringRules extends com.google.protobuf.GeneratedMessageV3
       suffix_ = "";
       contains_ = "";
       notContains_ = "";
-      in_ = com.google.protobuf.LazyStringArrayList.emptyList();
-      notIn_ = com.google.protobuf.LazyStringArrayList.emptyList();
+      in_ =
+          com.google.protobuf.LazyStringArrayList.emptyList();
+      notIn_ =
+          com.google.protobuf.LazyStringArrayList.emptyList();
       strict_ = false;
       wellKnownCase_ = 0;
       wellKnown_ = null;
@@ -2541,7 +2300,8 @@ public final class StringRules extends com.google.protobuf.GeneratedMessageV3
     }
 
     @java.lang.Override
-    public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
+    public com.google.protobuf.Descriptors.Descriptor
+        getDescriptorForType() {
       return build.buf.validate.ValidateProto.internal_static_buf_validate_StringRules_descriptor;
     }
 
@@ -2562,9 +2322,7 @@ public final class StringRules extends com.google.protobuf.GeneratedMessageV3
     @java.lang.Override
     public build.buf.validate.StringRules buildPartial() {
       build.buf.validate.StringRules result = new build.buf.validate.StringRules(this);
-      if (bitField0_ != 0) {
-        buildPartial0(result);
-      }
+      if (bitField0_ != 0) { buildPartial0(result); }
       buildPartialOneofs(result);
       onBuilt();
       return result;
@@ -2645,39 +2403,38 @@ public final class StringRules extends com.google.protobuf.GeneratedMessageV3
     public Builder clone() {
       return super.clone();
     }
-
     @java.lang.Override
     public Builder setField(
-        com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field,
+        java.lang.Object value) {
       return super.setField(field, value);
     }
-
     @java.lang.Override
-    public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
+    public Builder clearField(
+        com.google.protobuf.Descriptors.FieldDescriptor field) {
       return super.clearField(field);
     }
-
     @java.lang.Override
-    public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+    public Builder clearOneof(
+        com.google.protobuf.Descriptors.OneofDescriptor oneof) {
       return super.clearOneof(oneof);
     }
-
     @java.lang.Override
     public Builder setRepeatedField(
-        com.google.protobuf.Descriptors.FieldDescriptor field, int index, java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field,
+        int index, java.lang.Object value) {
       return super.setRepeatedField(field, index, value);
     }
-
     @java.lang.Override
     public Builder addRepeatedField(
-        com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field,
+        java.lang.Object value) {
       return super.addRepeatedField(field, value);
     }
-
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
       if (other instanceof build.buf.validate.StringRules) {
-        return mergeFrom((build.buf.validate.StringRules) other);
+        return mergeFrom((build.buf.validate.StringRules)other);
       } else {
         super.mergeFrom(other);
         return this;
@@ -2758,60 +2515,49 @@ public final class StringRules extends com.google.protobuf.GeneratedMessageV3
         setStrict(other.getStrict());
       }
       switch (other.getWellKnownCase()) {
-        case EMAIL:
-          {
-            setEmail(other.getEmail());
-            break;
-          }
-        case HOSTNAME:
-          {
-            setHostname(other.getHostname());
-            break;
-          }
-        case IP:
-          {
-            setIp(other.getIp());
-            break;
-          }
-        case IPV4:
-          {
-            setIpv4(other.getIpv4());
-            break;
-          }
-        case IPV6:
-          {
-            setIpv6(other.getIpv6());
-            break;
-          }
-        case URI:
-          {
-            setUri(other.getUri());
-            break;
-          }
-        case URI_REF:
-          {
-            setUriRef(other.getUriRef());
-            break;
-          }
-        case ADDRESS:
-          {
-            setAddress(other.getAddress());
-            break;
-          }
-        case UUID:
-          {
-            setUuid(other.getUuid());
-            break;
-          }
-        case WELL_KNOWN_REGEX:
-          {
-            setWellKnownRegexValue(other.getWellKnownRegexValue());
-            break;
-          }
-        case WELLKNOWN_NOT_SET:
-          {
-            break;
-          }
+        case EMAIL: {
+          setEmail(other.getEmail());
+          break;
+        }
+        case HOSTNAME: {
+          setHostname(other.getHostname());
+          break;
+        }
+        case IP: {
+          setIp(other.getIp());
+          break;
+        }
+        case IPV4: {
+          setIpv4(other.getIpv4());
+          break;
+        }
+        case IPV6: {
+          setIpv6(other.getIpv6());
+          break;
+        }
+        case URI: {
+          setUri(other.getUri());
+          break;
+        }
+        case URI_REF: {
+          setUriRef(other.getUriRef());
+          break;
+        }
+        case ADDRESS: {
+          setAddress(other.getAddress());
+          break;
+        }
+        case UUID: {
+          setUuid(other.getUuid());
+          break;
+        }
+        case WELL_KNOWN_REGEX: {
+          setWellKnownRegexValue(other.getWellKnownRegexValue());
+          break;
+        }
+        case WELLKNOWN_NOT_SET: {
+          break;
+        }
       }
       this.mergeUnknownFields(other.getUnknownFields());
       onChanged();
@@ -2839,166 +2585,140 @@ public final class StringRules extends com.google.protobuf.GeneratedMessageV3
             case 0:
               done = true;
               break;
-            case 10:
-              {
-                const_ = input.readStringRequireUtf8();
-                bitField0_ |= 0x00000001;
-                break;
-              } // case 10
-            case 16:
-              {
-                minLen_ = input.readUInt64();
-                bitField0_ |= 0x00000004;
-                break;
-              } // case 16
-            case 24:
-              {
-                maxLen_ = input.readUInt64();
-                bitField0_ |= 0x00000008;
-                break;
-              } // case 24
-            case 32:
-              {
-                minBytes_ = input.readUInt64();
-                bitField0_ |= 0x00000020;
-                break;
-              } // case 32
-            case 40:
-              {
-                maxBytes_ = input.readUInt64();
-                bitField0_ |= 0x00000040;
-                break;
-              } // case 40
-            case 50:
-              {
-                pattern_ = input.readStringRequireUtf8();
-                bitField0_ |= 0x00000080;
-                break;
-              } // case 50
-            case 58:
-              {
-                prefix_ = input.readStringRequireUtf8();
-                bitField0_ |= 0x00000100;
-                break;
-              } // case 58
-            case 66:
-              {
-                suffix_ = input.readStringRequireUtf8();
-                bitField0_ |= 0x00000200;
-                break;
-              } // case 66
-            case 74:
-              {
-                contains_ = input.readStringRequireUtf8();
-                bitField0_ |= 0x00000400;
-                break;
-              } // case 74
-            case 82:
-              {
-                java.lang.String s = input.readStringRequireUtf8();
-                ensureInIsMutable();
-                in_.add(s);
-                break;
-              } // case 82
-            case 90:
-              {
-                java.lang.String s = input.readStringRequireUtf8();
-                ensureNotInIsMutable();
-                notIn_.add(s);
-                break;
-              } // case 90
-            case 96:
-              {
-                wellKnown_ = input.readBool();
-                wellKnownCase_ = 12;
-                break;
-              } // case 96
-            case 104:
-              {
-                wellKnown_ = input.readBool();
-                wellKnownCase_ = 13;
-                break;
-              } // case 104
-            case 112:
-              {
-                wellKnown_ = input.readBool();
-                wellKnownCase_ = 14;
-                break;
-              } // case 112
-            case 120:
-              {
-                wellKnown_ = input.readBool();
-                wellKnownCase_ = 15;
-                break;
-              } // case 120
-            case 128:
-              {
-                wellKnown_ = input.readBool();
-                wellKnownCase_ = 16;
-                break;
-              } // case 128
-            case 136:
-              {
-                wellKnown_ = input.readBool();
-                wellKnownCase_ = 17;
-                break;
-              } // case 136
-            case 144:
-              {
-                wellKnown_ = input.readBool();
-                wellKnownCase_ = 18;
-                break;
-              } // case 144
-            case 152:
-              {
-                len_ = input.readUInt64();
-                bitField0_ |= 0x00000002;
-                break;
-              } // case 152
-            case 160:
-              {
-                lenBytes_ = input.readUInt64();
-                bitField0_ |= 0x00000010;
-                break;
-              } // case 160
-            case 168:
-              {
-                wellKnown_ = input.readBool();
-                wellKnownCase_ = 21;
-                break;
-              } // case 168
-            case 176:
-              {
-                wellKnown_ = input.readBool();
-                wellKnownCase_ = 22;
-                break;
-              } // case 176
-            case 186:
-              {
-                notContains_ = input.readStringRequireUtf8();
-                bitField0_ |= 0x00000800;
-                break;
-              } // case 186
-            case 192:
-              {
-                int rawValue = input.readEnum();
-                wellKnownCase_ = 24;
-                wellKnown_ = rawValue;
-                break;
-              } // case 192
-            case 200:
-              {
-                strict_ = input.readBool();
-                bitField0_ |= 0x01000000;
-                break;
-              } // case 200
-            default:
-              {
-                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
-                  done = true; // was an endgroup tag
-                }
-                break;
-              } // default:
+            case 10: {
+              const_ = input.readStringRequireUtf8();
+              bitField0_ |= 0x00000001;
+              break;
+            } // case 10
+            case 16: {
+              minLen_ = input.readUInt64();
+              bitField0_ |= 0x00000004;
+              break;
+            } // case 16
+            case 24: {
+              maxLen_ = input.readUInt64();
+              bitField0_ |= 0x00000008;
+              break;
+            } // case 24
+            case 32: {
+              minBytes_ = input.readUInt64();
+              bitField0_ |= 0x00000020;
+              break;
+            } // case 32
+            case 40: {
+              maxBytes_ = input.readUInt64();
+              bitField0_ |= 0x00000040;
+              break;
+            } // case 40
+            case 50: {
+              pattern_ = input.readStringRequireUtf8();
+              bitField0_ |= 0x00000080;
+              break;
+            } // case 50
+            case 58: {
+              prefix_ = input.readStringRequireUtf8();
+              bitField0_ |= 0x00000100;
+              break;
+            } // case 58
+            case 66: {
+              suffix_ = input.readStringRequireUtf8();
+              bitField0_ |= 0x00000200;
+              break;
+            } // case 66
+            case 74: {
+              contains_ = input.readStringRequireUtf8();
+              bitField0_ |= 0x00000400;
+              break;
+            } // case 74
+            case 82: {
+              java.lang.String s = input.readStringRequireUtf8();
+              ensureInIsMutable();
+              in_.add(s);
+              break;
+            } // case 82
+            case 90: {
+              java.lang.String s = input.readStringRequireUtf8();
+              ensureNotInIsMutable();
+              notIn_.add(s);
+              break;
+            } // case 90
+            case 96: {
+              wellKnown_ = input.readBool();
+              wellKnownCase_ = 12;
+              break;
+            } // case 96
+            case 104: {
+              wellKnown_ = input.readBool();
+              wellKnownCase_ = 13;
+              break;
+            } // case 104
+            case 112: {
+              wellKnown_ = input.readBool();
+              wellKnownCase_ = 14;
+              break;
+            } // case 112
+            case 120: {
+              wellKnown_ = input.readBool();
+              wellKnownCase_ = 15;
+              break;
+            } // case 120
+            case 128: {
+              wellKnown_ = input.readBool();
+              wellKnownCase_ = 16;
+              break;
+            } // case 128
+            case 136: {
+              wellKnown_ = input.readBool();
+              wellKnownCase_ = 17;
+              break;
+            } // case 136
+            case 144: {
+              wellKnown_ = input.readBool();
+              wellKnownCase_ = 18;
+              break;
+            } // case 144
+            case 152: {
+              len_ = input.readUInt64();
+              bitField0_ |= 0x00000002;
+              break;
+            } // case 152
+            case 160: {
+              lenBytes_ = input.readUInt64();
+              bitField0_ |= 0x00000010;
+              break;
+            } // case 160
+            case 168: {
+              wellKnown_ = input.readBool();
+              wellKnownCase_ = 21;
+              break;
+            } // case 168
+            case 176: {
+              wellKnown_ = input.readBool();
+              wellKnownCase_ = 22;
+              break;
+            } // case 176
+            case 186: {
+              notContains_ = input.readStringRequireUtf8();
+              bitField0_ |= 0x00000800;
+              break;
+            } // case 186
+            case 192: {
+              int rawValue = input.readEnum();
+              wellKnownCase_ = 24;
+              wellKnown_ = rawValue;
+              break;
+            } // case 192
+            case 200: {
+              strict_ = input.readBool();
+              bitField0_ |= 0x01000000;
+              break;
+            } // case 200
+            default: {
+              if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                done = true; // was an endgroup tag
+              }
+              break;
+            } // default:
           } // switch (tag)
         } // while (!done)
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -3008,12 +2728,12 @@ public final class StringRules extends com.google.protobuf.GeneratedMessageV3
       } // finally
       return this;
     }
-
     private int wellKnownCase_ = 0;
     private java.lang.Object wellKnown_;
-
-    public WellKnownCase getWellKnownCase() {
-      return WellKnownCase.forNumber(wellKnownCase_);
+    public WellKnownCase
+        getWellKnownCase() {
+      return WellKnownCase.forNumber(
+          wellKnownCase_);
     }
 
     public Builder clearWellKnown() {
@@ -3026,55 +2746,46 @@ public final class StringRules extends com.google.protobuf.GeneratedMessageV3
     private int bitField0_;
 
     private java.lang.Object const_ = "";
-
     /**
-     *
-     *
      * <pre>
-     * `const` requires the field value to exactly match the specified value. If
-     * the field value doesn't match, an error message is generated.
+     *`const` requires the field value to exactly match the specified value. If
+     *the field value doesn't match, an error message is generated.
      *
-     * ```proto
-     * message MyString {
+     *```proto
+     *message MyString {
      *  // value must equal `hello`
      *   string value = 1 [(buf.validate.field).string.const = "hello"];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>optional string const = 1 [json_name = "const", (.buf.validate.priv.field) = { ... }
-     * </code>
-     *
+     * <code>optional string const = 1 [json_name = "const", (.buf.validate.priv.field) = { ... }</code>
      * @return Whether the const field is set.
      */
     public boolean hasConst() {
       return ((bitField0_ & 0x00000001) != 0);
     }
-
     /**
-     *
-     *
      * <pre>
-     * `const` requires the field value to exactly match the specified value. If
-     * the field value doesn't match, an error message is generated.
+     *`const` requires the field value to exactly match the specified value. If
+     *the field value doesn't match, an error message is generated.
      *
-     * ```proto
-     * message MyString {
+     *```proto
+     *message MyString {
      *  // value must equal `hello`
      *   string value = 1 [(buf.validate.field).string.const = "hello"];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>optional string const = 1 [json_name = "const", (.buf.validate.priv.field) = { ... }
-     * </code>
-     *
+     * <code>optional string const = 1 [json_name = "const", (.buf.validate.priv.field) = { ... }</code>
      * @return The const.
      */
     public java.lang.String getConst() {
       java.lang.Object ref = const_;
       if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         const_ = s;
         return s;
@@ -3082,88 +2793,74 @@ public final class StringRules extends com.google.protobuf.GeneratedMessageV3
         return (java.lang.String) ref;
       }
     }
-
     /**
-     *
-     *
      * <pre>
-     * `const` requires the field value to exactly match the specified value. If
-     * the field value doesn't match, an error message is generated.
+     *`const` requires the field value to exactly match the specified value. If
+     *the field value doesn't match, an error message is generated.
      *
-     * ```proto
-     * message MyString {
+     *```proto
+     *message MyString {
      *  // value must equal `hello`
      *   string value = 1 [(buf.validate.field).string.const = "hello"];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>optional string const = 1 [json_name = "const", (.buf.validate.priv.field) = { ... }
-     * </code>
-     *
+     * <code>optional string const = 1 [json_name = "const", (.buf.validate.priv.field) = { ... }</code>
      * @return The bytes for const.
      */
-    public com.google.protobuf.ByteString getConstBytes() {
+    public com.google.protobuf.ByteString
+        getConstBytes() {
       java.lang.Object ref = const_;
       if (ref instanceof String) {
-        com.google.protobuf.ByteString b =
-            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
         const_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
     }
-
     /**
-     *
-     *
      * <pre>
-     * `const` requires the field value to exactly match the specified value. If
-     * the field value doesn't match, an error message is generated.
+     *`const` requires the field value to exactly match the specified value. If
+     *the field value doesn't match, an error message is generated.
      *
-     * ```proto
-     * message MyString {
+     *```proto
+     *message MyString {
      *  // value must equal `hello`
      *   string value = 1 [(buf.validate.field).string.const = "hello"];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>optional string const = 1 [json_name = "const", (.buf.validate.priv.field) = { ... }
-     * </code>
-     *
+     * <code>optional string const = 1 [json_name = "const", (.buf.validate.priv.field) = { ... }</code>
      * @param value The const to set.
      * @return This builder for chaining.
      */
-    public Builder setConst(java.lang.String value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
+    public Builder setConst(
+        java.lang.String value) {
+      if (value == null) { throw new NullPointerException(); }
       const_ = value;
       bitField0_ |= 0x00000001;
       onChanged();
       return this;
     }
-
     /**
-     *
-     *
      * <pre>
-     * `const` requires the field value to exactly match the specified value. If
-     * the field value doesn't match, an error message is generated.
+     *`const` requires the field value to exactly match the specified value. If
+     *the field value doesn't match, an error message is generated.
      *
-     * ```proto
-     * message MyString {
+     *```proto
+     *message MyString {
      *  // value must equal `hello`
      *   string value = 1 [(buf.validate.field).string.const = "hello"];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>optional string const = 1 [json_name = "const", (.buf.validate.priv.field) = { ... }
-     * </code>
-     *
+     * <code>optional string const = 1 [json_name = "const", (.buf.validate.priv.field) = { ... }</code>
      * @return This builder for chaining.
      */
     public Builder clearConst() {
@@ -3172,32 +2869,26 @@ public final class StringRules extends com.google.protobuf.GeneratedMessageV3
       onChanged();
       return this;
     }
-
     /**
-     *
-     *
      * <pre>
-     * `const` requires the field value to exactly match the specified value. If
-     * the field value doesn't match, an error message is generated.
+     *`const` requires the field value to exactly match the specified value. If
+     *the field value doesn't match, an error message is generated.
      *
-     * ```proto
-     * message MyString {
+     *```proto
+     *message MyString {
      *  // value must equal `hello`
      *   string value = 1 [(buf.validate.field).string.const = "hello"];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>optional string const = 1 [json_name = "const", (.buf.validate.priv.field) = { ... }
-     * </code>
-     *
+     * <code>optional string const = 1 [json_name = "const", (.buf.validate.priv.field) = { ... }</code>
      * @param value The bytes for const to set.
      * @return This builder for chaining.
      */
-    public Builder setConstBytes(com.google.protobuf.ByteString value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
+    public Builder setConstBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) { throw new NullPointerException(); }
       checkByteStringIsUtf8(value);
       const_ = value;
       bitField0_ |= 0x00000001;
@@ -3205,82 +2896,67 @@ public final class StringRules extends com.google.protobuf.GeneratedMessageV3
       return this;
     }
 
-    private long len_;
-
+    private long len_ ;
     /**
-     *
-     *
      * <pre>
-     * `len` dictates that the field value must have the specified
-     * number of characters (Unicode code points), which may differ from the number
-     * of bytes in the string. If the field value does not meet the specified
-     * length, an error message will be generated.
+     *`len` dictates that the field value must have the specified
+     *number of characters (Unicode code points), which may differ from the number
+     *of bytes in the string. If the field value does not meet the specified
+     *length, an error message will be generated.
      *
-     * ```proto
-     * message MyString {
+     *```proto
+     *message MyString {
      *  // value length must be 5 characters
      *   string value = 1 [(buf.validate.field).string.len = 5];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>optional uint64 len = 19 [json_name = "len", (.buf.validate.priv.field) = { ... }
-     * </code>
-     *
+     * <code>optional uint64 len = 19 [json_name = "len", (.buf.validate.priv.field) = { ... }</code>
      * @return Whether the len field is set.
      */
     @java.lang.Override
     public boolean hasLen() {
       return ((bitField0_ & 0x00000002) != 0);
     }
-
     /**
-     *
-     *
      * <pre>
-     * `len` dictates that the field value must have the specified
-     * number of characters (Unicode code points), which may differ from the number
-     * of bytes in the string. If the field value does not meet the specified
-     * length, an error message will be generated.
+     *`len` dictates that the field value must have the specified
+     *number of characters (Unicode code points), which may differ from the number
+     *of bytes in the string. If the field value does not meet the specified
+     *length, an error message will be generated.
      *
-     * ```proto
-     * message MyString {
+     *```proto
+     *message MyString {
      *  // value length must be 5 characters
      *   string value = 1 [(buf.validate.field).string.len = 5];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>optional uint64 len = 19 [json_name = "len", (.buf.validate.priv.field) = { ... }
-     * </code>
-     *
+     * <code>optional uint64 len = 19 [json_name = "len", (.buf.validate.priv.field) = { ... }</code>
      * @return The len.
      */
     @java.lang.Override
     public long getLen() {
       return len_;
     }
-
     /**
-     *
-     *
      * <pre>
-     * `len` dictates that the field value must have the specified
-     * number of characters (Unicode code points), which may differ from the number
-     * of bytes in the string. If the field value does not meet the specified
-     * length, an error message will be generated.
+     *`len` dictates that the field value must have the specified
+     *number of characters (Unicode code points), which may differ from the number
+     *of bytes in the string. If the field value does not meet the specified
+     *length, an error message will be generated.
      *
-     * ```proto
-     * message MyString {
+     *```proto
+     *message MyString {
      *  // value length must be 5 characters
      *   string value = 1 [(buf.validate.field).string.len = 5];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>optional uint64 len = 19 [json_name = "len", (.buf.validate.priv.field) = { ... }
-     * </code>
-     *
+     * <code>optional uint64 len = 19 [json_name = "len", (.buf.validate.priv.field) = { ... }</code>
      * @param value The len to set.
      * @return This builder for chaining.
      */
@@ -3291,27 +2967,22 @@ public final class StringRules extends com.google.protobuf.GeneratedMessageV3
       onChanged();
       return this;
     }
-
     /**
-     *
-     *
      * <pre>
-     * `len` dictates that the field value must have the specified
-     * number of characters (Unicode code points), which may differ from the number
-     * of bytes in the string. If the field value does not meet the specified
-     * length, an error message will be generated.
+     *`len` dictates that the field value must have the specified
+     *number of characters (Unicode code points), which may differ from the number
+     *of bytes in the string. If the field value does not meet the specified
+     *length, an error message will be generated.
      *
-     * ```proto
-     * message MyString {
+     *```proto
+     *message MyString {
      *  // value length must be 5 characters
      *   string value = 1 [(buf.validate.field).string.len = 5];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>optional uint64 len = 19 [json_name = "len", (.buf.validate.priv.field) = { ... }
-     * </code>
-     *
+     * <code>optional uint64 len = 19 [json_name = "len", (.buf.validate.priv.field) = { ... }</code>
      * @return This builder for chaining.
      */
     public Builder clearLen() {
@@ -3321,82 +2992,67 @@ public final class StringRules extends com.google.protobuf.GeneratedMessageV3
       return this;
     }
 
-    private long minLen_;
-
+    private long minLen_ ;
     /**
-     *
-     *
      * <pre>
-     * `min_len` specifies that the field value must have at least the specified
-     * number of characters (Unicode code points), which may differ from the number
-     * of bytes in the string. If the field value contains fewer characters, an error
-     * message will be generated.
+     *`min_len` specifies that the field value must have at least the specified
+     *number of characters (Unicode code points), which may differ from the number
+     *of bytes in the string. If the field value contains fewer characters, an error
+     *message will be generated.
      *
-     * ```proto
-     * message MyString {
+     *```proto
+     *message MyString {
      *  // value length must be at least 3 characters
      *   string value = 1 [(buf.validate.field).string.min_len = 3];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>optional uint64 min_len = 2 [json_name = "minLen", (.buf.validate.priv.field) = { ... }
-     * </code>
-     *
+     * <code>optional uint64 min_len = 2 [json_name = "minLen", (.buf.validate.priv.field) = { ... }</code>
      * @return Whether the minLen field is set.
      */
     @java.lang.Override
     public boolean hasMinLen() {
       return ((bitField0_ & 0x00000004) != 0);
     }
-
     /**
-     *
-     *
      * <pre>
-     * `min_len` specifies that the field value must have at least the specified
-     * number of characters (Unicode code points), which may differ from the number
-     * of bytes in the string. If the field value contains fewer characters, an error
-     * message will be generated.
+     *`min_len` specifies that the field value must have at least the specified
+     *number of characters (Unicode code points), which may differ from the number
+     *of bytes in the string. If the field value contains fewer characters, an error
+     *message will be generated.
      *
-     * ```proto
-     * message MyString {
+     *```proto
+     *message MyString {
      *  // value length must be at least 3 characters
      *   string value = 1 [(buf.validate.field).string.min_len = 3];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>optional uint64 min_len = 2 [json_name = "minLen", (.buf.validate.priv.field) = { ... }
-     * </code>
-     *
+     * <code>optional uint64 min_len = 2 [json_name = "minLen", (.buf.validate.priv.field) = { ... }</code>
      * @return The minLen.
      */
     @java.lang.Override
     public long getMinLen() {
       return minLen_;
     }
-
     /**
-     *
-     *
      * <pre>
-     * `min_len` specifies that the field value must have at least the specified
-     * number of characters (Unicode code points), which may differ from the number
-     * of bytes in the string. If the field value contains fewer characters, an error
-     * message will be generated.
+     *`min_len` specifies that the field value must have at least the specified
+     *number of characters (Unicode code points), which may differ from the number
+     *of bytes in the string. If the field value contains fewer characters, an error
+     *message will be generated.
      *
-     * ```proto
-     * message MyString {
+     *```proto
+     *message MyString {
      *  // value length must be at least 3 characters
      *   string value = 1 [(buf.validate.field).string.min_len = 3];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>optional uint64 min_len = 2 [json_name = "minLen", (.buf.validate.priv.field) = { ... }
-     * </code>
-     *
+     * <code>optional uint64 min_len = 2 [json_name = "minLen", (.buf.validate.priv.field) = { ... }</code>
      * @param value The minLen to set.
      * @return This builder for chaining.
      */
@@ -3407,27 +3063,22 @@ public final class StringRules extends com.google.protobuf.GeneratedMessageV3
       onChanged();
       return this;
     }
-
     /**
-     *
-     *
      * <pre>
-     * `min_len` specifies that the field value must have at least the specified
-     * number of characters (Unicode code points), which may differ from the number
-     * of bytes in the string. If the field value contains fewer characters, an error
-     * message will be generated.
+     *`min_len` specifies that the field value must have at least the specified
+     *number of characters (Unicode code points), which may differ from the number
+     *of bytes in the string. If the field value contains fewer characters, an error
+     *message will be generated.
      *
-     * ```proto
-     * message MyString {
+     *```proto
+     *message MyString {
      *  // value length must be at least 3 characters
      *   string value = 1 [(buf.validate.field).string.min_len = 3];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>optional uint64 min_len = 2 [json_name = "minLen", (.buf.validate.priv.field) = { ... }
-     * </code>
-     *
+     * <code>optional uint64 min_len = 2 [json_name = "minLen", (.buf.validate.priv.field) = { ... }</code>
      * @return This builder for chaining.
      */
     public Builder clearMinLen() {
@@ -3437,82 +3088,67 @@ public final class StringRules extends com.google.protobuf.GeneratedMessageV3
       return this;
     }
 
-    private long maxLen_;
-
+    private long maxLen_ ;
     /**
-     *
-     *
      * <pre>
-     * `max_len` specifies that the field value must have no more than the specified
-     * number of characters (Unicode code points), which may differ from the
-     * number of bytes in the string. If the field value contains more characters,
-     * an error message will be generated.
+     *`max_len` specifies that the field value must have no more than the specified
+     *number of characters (Unicode code points), which may differ from the
+     *number of bytes in the string. If the field value contains more characters,
+     *an error message will be generated.
      *
-     * ```proto
-     * message MyString {
+     *```proto
+     *message MyString {
      *  // value length must be at most 10 characters
      *   string value = 1 [(buf.validate.field).string.max_len = 10];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>optional uint64 max_len = 3 [json_name = "maxLen", (.buf.validate.priv.field) = { ... }
-     * </code>
-     *
+     * <code>optional uint64 max_len = 3 [json_name = "maxLen", (.buf.validate.priv.field) = { ... }</code>
      * @return Whether the maxLen field is set.
      */
     @java.lang.Override
     public boolean hasMaxLen() {
       return ((bitField0_ & 0x00000008) != 0);
     }
-
     /**
-     *
-     *
      * <pre>
-     * `max_len` specifies that the field value must have no more than the specified
-     * number of characters (Unicode code points), which may differ from the
-     * number of bytes in the string. If the field value contains more characters,
-     * an error message will be generated.
+     *`max_len` specifies that the field value must have no more than the specified
+     *number of characters (Unicode code points), which may differ from the
+     *number of bytes in the string. If the field value contains more characters,
+     *an error message will be generated.
      *
-     * ```proto
-     * message MyString {
+     *```proto
+     *message MyString {
      *  // value length must be at most 10 characters
      *   string value = 1 [(buf.validate.field).string.max_len = 10];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>optional uint64 max_len = 3 [json_name = "maxLen", (.buf.validate.priv.field) = { ... }
-     * </code>
-     *
+     * <code>optional uint64 max_len = 3 [json_name = "maxLen", (.buf.validate.priv.field) = { ... }</code>
      * @return The maxLen.
      */
     @java.lang.Override
     public long getMaxLen() {
       return maxLen_;
     }
-
     /**
-     *
-     *
      * <pre>
-     * `max_len` specifies that the field value must have no more than the specified
-     * number of characters (Unicode code points), which may differ from the
-     * number of bytes in the string. If the field value contains more characters,
-     * an error message will be generated.
+     *`max_len` specifies that the field value must have no more than the specified
+     *number of characters (Unicode code points), which may differ from the
+     *number of bytes in the string. If the field value contains more characters,
+     *an error message will be generated.
      *
-     * ```proto
-     * message MyString {
+     *```proto
+     *message MyString {
      *  // value length must be at most 10 characters
      *   string value = 1 [(buf.validate.field).string.max_len = 10];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>optional uint64 max_len = 3 [json_name = "maxLen", (.buf.validate.priv.field) = { ... }
-     * </code>
-     *
+     * <code>optional uint64 max_len = 3 [json_name = "maxLen", (.buf.validate.priv.field) = { ... }</code>
      * @param value The maxLen to set.
      * @return This builder for chaining.
      */
@@ -3523,27 +3159,22 @@ public final class StringRules extends com.google.protobuf.GeneratedMessageV3
       onChanged();
       return this;
     }
-
     /**
-     *
-     *
      * <pre>
-     * `max_len` specifies that the field value must have no more than the specified
-     * number of characters (Unicode code points), which may differ from the
-     * number of bytes in the string. If the field value contains more characters,
-     * an error message will be generated.
+     *`max_len` specifies that the field value must have no more than the specified
+     *number of characters (Unicode code points), which may differ from the
+     *number of bytes in the string. If the field value contains more characters,
+     *an error message will be generated.
      *
-     * ```proto
-     * message MyString {
+     *```proto
+     *message MyString {
      *  // value length must be at most 10 characters
      *   string value = 1 [(buf.validate.field).string.max_len = 10];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>optional uint64 max_len = 3 [json_name = "maxLen", (.buf.validate.priv.field) = { ... }
-     * </code>
-     *
+     * <code>optional uint64 max_len = 3 [json_name = "maxLen", (.buf.validate.priv.field) = { ... }</code>
      * @return This builder for chaining.
      */
     public Builder clearMaxLen() {
@@ -3553,82 +3184,64 @@ public final class StringRules extends com.google.protobuf.GeneratedMessageV3
       return this;
     }
 
-    private long lenBytes_;
-
+    private long lenBytes_ ;
     /**
-     *
-     *
      * <pre>
-     * `len_bytes` dictates that the field value must have the specified number of
-     * bytes. If the field value does not match the specified length in bytes,
-     * an error message will be generated.
+     *`len_bytes` dictates that the field value must have the specified number of
+     *bytes. If the field value does not match the specified length in bytes,
+     *an error message will be generated.
      *
-     * ```proto
-     * message MyString {
+     *```proto
+     *message MyString {
      *  // value length must be 6 bytes
      *   string value = 1 [(buf.validate.field).string.len_bytes = 6];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>
-     * optional uint64 len_bytes = 20 [json_name = "lenBytes", (.buf.validate.priv.field) = { ... }
-     * </code>
-     *
+     * <code>optional uint64 len_bytes = 20 [json_name = "lenBytes", (.buf.validate.priv.field) = { ... }</code>
      * @return Whether the lenBytes field is set.
      */
     @java.lang.Override
     public boolean hasLenBytes() {
       return ((bitField0_ & 0x00000010) != 0);
     }
-
     /**
-     *
-     *
      * <pre>
-     * `len_bytes` dictates that the field value must have the specified number of
-     * bytes. If the field value does not match the specified length in bytes,
-     * an error message will be generated.
+     *`len_bytes` dictates that the field value must have the specified number of
+     *bytes. If the field value does not match the specified length in bytes,
+     *an error message will be generated.
      *
-     * ```proto
-     * message MyString {
+     *```proto
+     *message MyString {
      *  // value length must be 6 bytes
      *   string value = 1 [(buf.validate.field).string.len_bytes = 6];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>
-     * optional uint64 len_bytes = 20 [json_name = "lenBytes", (.buf.validate.priv.field) = { ... }
-     * </code>
-     *
+     * <code>optional uint64 len_bytes = 20 [json_name = "lenBytes", (.buf.validate.priv.field) = { ... }</code>
      * @return The lenBytes.
      */
     @java.lang.Override
     public long getLenBytes() {
       return lenBytes_;
     }
-
     /**
-     *
-     *
      * <pre>
-     * `len_bytes` dictates that the field value must have the specified number of
-     * bytes. If the field value does not match the specified length in bytes,
-     * an error message will be generated.
+     *`len_bytes` dictates that the field value must have the specified number of
+     *bytes. If the field value does not match the specified length in bytes,
+     *an error message will be generated.
      *
-     * ```proto
-     * message MyString {
+     *```proto
+     *message MyString {
      *  // value length must be 6 bytes
      *   string value = 1 [(buf.validate.field).string.len_bytes = 6];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>
-     * optional uint64 len_bytes = 20 [json_name = "lenBytes", (.buf.validate.priv.field) = { ... }
-     * </code>
-     *
+     * <code>optional uint64 len_bytes = 20 [json_name = "lenBytes", (.buf.validate.priv.field) = { ... }</code>
      * @param value The lenBytes to set.
      * @return This builder for chaining.
      */
@@ -3639,27 +3252,21 @@ public final class StringRules extends com.google.protobuf.GeneratedMessageV3
       onChanged();
       return this;
     }
-
     /**
-     *
-     *
      * <pre>
-     * `len_bytes` dictates that the field value must have the specified number of
-     * bytes. If the field value does not match the specified length in bytes,
-     * an error message will be generated.
+     *`len_bytes` dictates that the field value must have the specified number of
+     *bytes. If the field value does not match the specified length in bytes,
+     *an error message will be generated.
      *
-     * ```proto
-     * message MyString {
+     *```proto
+     *message MyString {
      *  // value length must be 6 bytes
      *   string value = 1 [(buf.validate.field).string.len_bytes = 6];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>
-     * optional uint64 len_bytes = 20 [json_name = "lenBytes", (.buf.validate.priv.field) = { ... }
-     * </code>
-     *
+     * <code>optional uint64 len_bytes = 20 [json_name = "lenBytes", (.buf.validate.priv.field) = { ... }</code>
      * @return This builder for chaining.
      */
     public Builder clearLenBytes() {
@@ -3669,85 +3276,67 @@ public final class StringRules extends com.google.protobuf.GeneratedMessageV3
       return this;
     }
 
-    private long minBytes_;
-
+    private long minBytes_ ;
     /**
-     *
-     *
      * <pre>
-     * `min_bytes` specifies that the field value must have at least the specified
-     * number of bytes. If the field value contains fewer bytes, an error message
-     * will be generated.
+     *`min_bytes` specifies that the field value must have at least the specified
+     *number of bytes. If the field value contains fewer bytes, an error message
+     *will be generated.
      *
-     * ```proto
-     * message MyString {
+     *```proto
+     *message MyString {
      *  // value length must be at least 4 bytes
      *   string value = 1 [(buf.validate.field).string.min_bytes = 4];
-     * }
+     *}
      *
-     * ```
+     *```
      * </pre>
      *
-     * <code>
-     * optional uint64 min_bytes = 4 [json_name = "minBytes", (.buf.validate.priv.field) = { ... }
-     * </code>
-     *
+     * <code>optional uint64 min_bytes = 4 [json_name = "minBytes", (.buf.validate.priv.field) = { ... }</code>
      * @return Whether the minBytes field is set.
      */
     @java.lang.Override
     public boolean hasMinBytes() {
       return ((bitField0_ & 0x00000020) != 0);
     }
-
     /**
-     *
-     *
      * <pre>
-     * `min_bytes` specifies that the field value must have at least the specified
-     * number of bytes. If the field value contains fewer bytes, an error message
-     * will be generated.
+     *`min_bytes` specifies that the field value must have at least the specified
+     *number of bytes. If the field value contains fewer bytes, an error message
+     *will be generated.
      *
-     * ```proto
-     * message MyString {
+     *```proto
+     *message MyString {
      *  // value length must be at least 4 bytes
      *   string value = 1 [(buf.validate.field).string.min_bytes = 4];
-     * }
+     *}
      *
-     * ```
+     *```
      * </pre>
      *
-     * <code>
-     * optional uint64 min_bytes = 4 [json_name = "minBytes", (.buf.validate.priv.field) = { ... }
-     * </code>
-     *
+     * <code>optional uint64 min_bytes = 4 [json_name = "minBytes", (.buf.validate.priv.field) = { ... }</code>
      * @return The minBytes.
      */
     @java.lang.Override
     public long getMinBytes() {
       return minBytes_;
     }
-
     /**
-     *
-     *
      * <pre>
-     * `min_bytes` specifies that the field value must have at least the specified
-     * number of bytes. If the field value contains fewer bytes, an error message
-     * will be generated.
+     *`min_bytes` specifies that the field value must have at least the specified
+     *number of bytes. If the field value contains fewer bytes, an error message
+     *will be generated.
      *
-     * ```proto
-     * message MyString {
+     *```proto
+     *message MyString {
      *  // value length must be at least 4 bytes
      *   string value = 1 [(buf.validate.field).string.min_bytes = 4];
-     * }
+     *}
      *
-     * ```
+     *```
      * </pre>
      *
-     * <code>
-     * optional uint64 min_bytes = 4 [json_name = "minBytes", (.buf.validate.priv.field) = { ... }
-     * </code>
-     *
+     * <code>optional uint64 min_bytes = 4 [json_name = "minBytes", (.buf.validate.priv.field) = { ... }</code>
      * @param value The minBytes to set.
      * @return This builder for chaining.
      */
@@ -3758,28 +3347,22 @@ public final class StringRules extends com.google.protobuf.GeneratedMessageV3
       onChanged();
       return this;
     }
-
     /**
-     *
-     *
      * <pre>
-     * `min_bytes` specifies that the field value must have at least the specified
-     * number of bytes. If the field value contains fewer bytes, an error message
-     * will be generated.
+     *`min_bytes` specifies that the field value must have at least the specified
+     *number of bytes. If the field value contains fewer bytes, an error message
+     *will be generated.
      *
-     * ```proto
-     * message MyString {
+     *```proto
+     *message MyString {
      *  // value length must be at least 4 bytes
      *   string value = 1 [(buf.validate.field).string.min_bytes = 4];
-     * }
+     *}
      *
-     * ```
+     *```
      * </pre>
      *
-     * <code>
-     * optional uint64 min_bytes = 4 [json_name = "minBytes", (.buf.validate.priv.field) = { ... }
-     * </code>
-     *
+     * <code>optional uint64 min_bytes = 4 [json_name = "minBytes", (.buf.validate.priv.field) = { ... }</code>
      * @return This builder for chaining.
      */
     public Builder clearMinBytes() {
@@ -3789,82 +3372,64 @@ public final class StringRules extends com.google.protobuf.GeneratedMessageV3
       return this;
     }
 
-    private long maxBytes_;
-
+    private long maxBytes_ ;
     /**
-     *
-     *
      * <pre>
-     * `max_bytes` specifies that the field value must have no more than the
-     * specified number of bytes. If the field value contains more bytes, an
-     * error message will be generated.
+     *`max_bytes` specifies that the field value must have no more than the
+     *specified number of bytes. If the field value contains more bytes, an
+     *error message will be generated.
      *
-     * ```proto
-     * message MyString {
+     *```proto
+     *message MyString {
      *  // value length must be at most 8 bytes
      *   string value = 1 [(buf.validate.field).string.max_bytes = 8];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>
-     * optional uint64 max_bytes = 5 [json_name = "maxBytes", (.buf.validate.priv.field) = { ... }
-     * </code>
-     *
+     * <code>optional uint64 max_bytes = 5 [json_name = "maxBytes", (.buf.validate.priv.field) = { ... }</code>
      * @return Whether the maxBytes field is set.
      */
     @java.lang.Override
     public boolean hasMaxBytes() {
       return ((bitField0_ & 0x00000040) != 0);
     }
-
     /**
-     *
-     *
      * <pre>
-     * `max_bytes` specifies that the field value must have no more than the
-     * specified number of bytes. If the field value contains more bytes, an
-     * error message will be generated.
+     *`max_bytes` specifies that the field value must have no more than the
+     *specified number of bytes. If the field value contains more bytes, an
+     *error message will be generated.
      *
-     * ```proto
-     * message MyString {
+     *```proto
+     *message MyString {
      *  // value length must be at most 8 bytes
      *   string value = 1 [(buf.validate.field).string.max_bytes = 8];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>
-     * optional uint64 max_bytes = 5 [json_name = "maxBytes", (.buf.validate.priv.field) = { ... }
-     * </code>
-     *
+     * <code>optional uint64 max_bytes = 5 [json_name = "maxBytes", (.buf.validate.priv.field) = { ... }</code>
      * @return The maxBytes.
      */
     @java.lang.Override
     public long getMaxBytes() {
       return maxBytes_;
     }
-
     /**
-     *
-     *
      * <pre>
-     * `max_bytes` specifies that the field value must have no more than the
-     * specified number of bytes. If the field value contains more bytes, an
-     * error message will be generated.
+     *`max_bytes` specifies that the field value must have no more than the
+     *specified number of bytes. If the field value contains more bytes, an
+     *error message will be generated.
      *
-     * ```proto
-     * message MyString {
+     *```proto
+     *message MyString {
      *  // value length must be at most 8 bytes
      *   string value = 1 [(buf.validate.field).string.max_bytes = 8];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>
-     * optional uint64 max_bytes = 5 [json_name = "maxBytes", (.buf.validate.priv.field) = { ... }
-     * </code>
-     *
+     * <code>optional uint64 max_bytes = 5 [json_name = "maxBytes", (.buf.validate.priv.field) = { ... }</code>
      * @param value The maxBytes to set.
      * @return This builder for chaining.
      */
@@ -3875,27 +3440,21 @@ public final class StringRules extends com.google.protobuf.GeneratedMessageV3
       onChanged();
       return this;
     }
-
     /**
-     *
-     *
      * <pre>
-     * `max_bytes` specifies that the field value must have no more than the
-     * specified number of bytes. If the field value contains more bytes, an
-     * error message will be generated.
+     *`max_bytes` specifies that the field value must have no more than the
+     *specified number of bytes. If the field value contains more bytes, an
+     *error message will be generated.
      *
-     * ```proto
-     * message MyString {
+     *```proto
+     *message MyString {
      *  // value length must be at most 8 bytes
      *   string value = 1 [(buf.validate.field).string.max_bytes = 8];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>
-     * optional uint64 max_bytes = 5 [json_name = "maxBytes", (.buf.validate.priv.field) = { ... }
-     * </code>
-     *
+     * <code>optional uint64 max_bytes = 5 [json_name = "maxBytes", (.buf.validate.priv.field) = { ... }</code>
      * @return This builder for chaining.
      */
     public Builder clearMaxBytes() {
@@ -3906,61 +3465,50 @@ public final class StringRules extends com.google.protobuf.GeneratedMessageV3
     }
 
     private java.lang.Object pattern_ = "";
-
     /**
-     *
-     *
      * <pre>
-     * `pattern` specifies that the field value must match the specified
-     * regular expression (RE2 syntax), with the expression provided without any
-     * delimiters. If the field value doesn't match the regular expression, an
-     * error message will be generated.
+     *`pattern` specifies that the field value must match the specified
+     *regular expression (RE2 syntax), with the expression provided without any
+     *delimiters. If the field value doesn't match the regular expression, an
+     *error message will be generated.
      *
-     * ```proto
-     * message MyString {
+     *```proto
+     *message MyString {
      *  // value does not match regex pattern `^[a-zA-Z]//$`
      *   string value = 1 [(buf.validate.field).string.pattern = "^[a-zA-Z]//$"];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>
-     * optional string pattern = 6 [json_name = "pattern", (.buf.validate.priv.field) = { ... }
-     * </code>
-     *
+     * <code>optional string pattern = 6 [json_name = "pattern", (.buf.validate.priv.field) = { ... }</code>
      * @return Whether the pattern field is set.
      */
     public boolean hasPattern() {
       return ((bitField0_ & 0x00000080) != 0);
     }
-
     /**
-     *
-     *
      * <pre>
-     * `pattern` specifies that the field value must match the specified
-     * regular expression (RE2 syntax), with the expression provided without any
-     * delimiters. If the field value doesn't match the regular expression, an
-     * error message will be generated.
+     *`pattern` specifies that the field value must match the specified
+     *regular expression (RE2 syntax), with the expression provided without any
+     *delimiters. If the field value doesn't match the regular expression, an
+     *error message will be generated.
      *
-     * ```proto
-     * message MyString {
+     *```proto
+     *message MyString {
      *  // value does not match regex pattern `^[a-zA-Z]//$`
      *   string value = 1 [(buf.validate.field).string.pattern = "^[a-zA-Z]//$"];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>
-     * optional string pattern = 6 [json_name = "pattern", (.buf.validate.priv.field) = { ... }
-     * </code>
-     *
+     * <code>optional string pattern = 6 [json_name = "pattern", (.buf.validate.priv.field) = { ... }</code>
      * @return The pattern.
      */
     public java.lang.String getPattern() {
       java.lang.Object ref = pattern_;
       if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         pattern_ = s;
         return s;
@@ -3968,97 +3516,80 @@ public final class StringRules extends com.google.protobuf.GeneratedMessageV3
         return (java.lang.String) ref;
       }
     }
-
     /**
-     *
-     *
      * <pre>
-     * `pattern` specifies that the field value must match the specified
-     * regular expression (RE2 syntax), with the expression provided without any
-     * delimiters. If the field value doesn't match the regular expression, an
-     * error message will be generated.
+     *`pattern` specifies that the field value must match the specified
+     *regular expression (RE2 syntax), with the expression provided without any
+     *delimiters. If the field value doesn't match the regular expression, an
+     *error message will be generated.
      *
-     * ```proto
-     * message MyString {
+     *```proto
+     *message MyString {
      *  // value does not match regex pattern `^[a-zA-Z]//$`
      *   string value = 1 [(buf.validate.field).string.pattern = "^[a-zA-Z]//$"];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>
-     * optional string pattern = 6 [json_name = "pattern", (.buf.validate.priv.field) = { ... }
-     * </code>
-     *
+     * <code>optional string pattern = 6 [json_name = "pattern", (.buf.validate.priv.field) = { ... }</code>
      * @return The bytes for pattern.
      */
-    public com.google.protobuf.ByteString getPatternBytes() {
+    public com.google.protobuf.ByteString
+        getPatternBytes() {
       java.lang.Object ref = pattern_;
       if (ref instanceof String) {
-        com.google.protobuf.ByteString b =
-            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
         pattern_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
     }
-
     /**
-     *
-     *
      * <pre>
-     * `pattern` specifies that the field value must match the specified
-     * regular expression (RE2 syntax), with the expression provided without any
-     * delimiters. If the field value doesn't match the regular expression, an
-     * error message will be generated.
+     *`pattern` specifies that the field value must match the specified
+     *regular expression (RE2 syntax), with the expression provided without any
+     *delimiters. If the field value doesn't match the regular expression, an
+     *error message will be generated.
      *
-     * ```proto
-     * message MyString {
+     *```proto
+     *message MyString {
      *  // value does not match regex pattern `^[a-zA-Z]//$`
      *   string value = 1 [(buf.validate.field).string.pattern = "^[a-zA-Z]//$"];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>
-     * optional string pattern = 6 [json_name = "pattern", (.buf.validate.priv.field) = { ... }
-     * </code>
-     *
+     * <code>optional string pattern = 6 [json_name = "pattern", (.buf.validate.priv.field) = { ... }</code>
      * @param value The pattern to set.
      * @return This builder for chaining.
      */
-    public Builder setPattern(java.lang.String value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
+    public Builder setPattern(
+        java.lang.String value) {
+      if (value == null) { throw new NullPointerException(); }
       pattern_ = value;
       bitField0_ |= 0x00000080;
       onChanged();
       return this;
     }
-
     /**
-     *
-     *
      * <pre>
-     * `pattern` specifies that the field value must match the specified
-     * regular expression (RE2 syntax), with the expression provided without any
-     * delimiters. If the field value doesn't match the regular expression, an
-     * error message will be generated.
+     *`pattern` specifies that the field value must match the specified
+     *regular expression (RE2 syntax), with the expression provided without any
+     *delimiters. If the field value doesn't match the regular expression, an
+     *error message will be generated.
      *
-     * ```proto
-     * message MyString {
+     *```proto
+     *message MyString {
      *  // value does not match regex pattern `^[a-zA-Z]//$`
      *   string value = 1 [(buf.validate.field).string.pattern = "^[a-zA-Z]//$"];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>
-     * optional string pattern = 6 [json_name = "pattern", (.buf.validate.priv.field) = { ... }
-     * </code>
-     *
+     * <code>optional string pattern = 6 [json_name = "pattern", (.buf.validate.priv.field) = { ... }</code>
      * @return This builder for chaining.
      */
     public Builder clearPattern() {
@@ -4067,35 +3598,28 @@ public final class StringRules extends com.google.protobuf.GeneratedMessageV3
       onChanged();
       return this;
     }
-
     /**
-     *
-     *
      * <pre>
-     * `pattern` specifies that the field value must match the specified
-     * regular expression (RE2 syntax), with the expression provided without any
-     * delimiters. If the field value doesn't match the regular expression, an
-     * error message will be generated.
+     *`pattern` specifies that the field value must match the specified
+     *regular expression (RE2 syntax), with the expression provided without any
+     *delimiters. If the field value doesn't match the regular expression, an
+     *error message will be generated.
      *
-     * ```proto
-     * message MyString {
+     *```proto
+     *message MyString {
      *  // value does not match regex pattern `^[a-zA-Z]//$`
      *   string value = 1 [(buf.validate.field).string.pattern = "^[a-zA-Z]//$"];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>
-     * optional string pattern = 6 [json_name = "pattern", (.buf.validate.priv.field) = { ... }
-     * </code>
-     *
+     * <code>optional string pattern = 6 [json_name = "pattern", (.buf.validate.priv.field) = { ... }</code>
      * @param value The bytes for pattern to set.
      * @return This builder for chaining.
      */
-    public Builder setPatternBytes(com.google.protobuf.ByteString value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
+    public Builder setPatternBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) { throw new NullPointerException(); }
       checkByteStringIsUtf8(value);
       pattern_ = value;
       bitField0_ |= 0x00000080;
@@ -4104,59 +3628,50 @@ public final class StringRules extends com.google.protobuf.GeneratedMessageV3
     }
 
     private java.lang.Object prefix_ = "";
-
     /**
-     *
-     *
      * <pre>
-     * `prefix` specifies that the field value must have the
-     * specified substring at the beginning of the string. If the field value
-     * doesn't start with the specified prefix, an error message will be
-     * generated.
+     *`prefix` specifies that the field value must have the
+     *specified substring at the beginning of the string. If the field value
+     *doesn't start with the specified prefix, an error message will be
+     *generated.
      *
-     * ```proto
-     * message MyString {
+     *```proto
+     *message MyString {
      *  // value does not have prefix `pre`
      *   string value = 1 [(buf.validate.field).string.prefix = "pre"];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>optional string prefix = 7 [json_name = "prefix", (.buf.validate.priv.field) = { ... }
-     * </code>
-     *
+     * <code>optional string prefix = 7 [json_name = "prefix", (.buf.validate.priv.field) = { ... }</code>
      * @return Whether the prefix field is set.
      */
     public boolean hasPrefix() {
       return ((bitField0_ & 0x00000100) != 0);
     }
-
     /**
-     *
-     *
      * <pre>
-     * `prefix` specifies that the field value must have the
-     * specified substring at the beginning of the string. If the field value
-     * doesn't start with the specified prefix, an error message will be
-     * generated.
+     *`prefix` specifies that the field value must have the
+     *specified substring at the beginning of the string. If the field value
+     *doesn't start with the specified prefix, an error message will be
+     *generated.
      *
-     * ```proto
-     * message MyString {
+     *```proto
+     *message MyString {
      *  // value does not have prefix `pre`
      *   string value = 1 [(buf.validate.field).string.prefix = "pre"];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>optional string prefix = 7 [json_name = "prefix", (.buf.validate.priv.field) = { ... }
-     * </code>
-     *
+     * <code>optional string prefix = 7 [json_name = "prefix", (.buf.validate.priv.field) = { ... }</code>
      * @return The prefix.
      */
     public java.lang.String getPrefix() {
       java.lang.Object ref = prefix_;
       if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         prefix_ = s;
         return s;
@@ -4164,94 +3679,80 @@ public final class StringRules extends com.google.protobuf.GeneratedMessageV3
         return (java.lang.String) ref;
       }
     }
-
     /**
-     *
-     *
      * <pre>
-     * `prefix` specifies that the field value must have the
-     * specified substring at the beginning of the string. If the field value
-     * doesn't start with the specified prefix, an error message will be
-     * generated.
+     *`prefix` specifies that the field value must have the
+     *specified substring at the beginning of the string. If the field value
+     *doesn't start with the specified prefix, an error message will be
+     *generated.
      *
-     * ```proto
-     * message MyString {
+     *```proto
+     *message MyString {
      *  // value does not have prefix `pre`
      *   string value = 1 [(buf.validate.field).string.prefix = "pre"];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>optional string prefix = 7 [json_name = "prefix", (.buf.validate.priv.field) = { ... }
-     * </code>
-     *
+     * <code>optional string prefix = 7 [json_name = "prefix", (.buf.validate.priv.field) = { ... }</code>
      * @return The bytes for prefix.
      */
-    public com.google.protobuf.ByteString getPrefixBytes() {
+    public com.google.protobuf.ByteString
+        getPrefixBytes() {
       java.lang.Object ref = prefix_;
       if (ref instanceof String) {
-        com.google.protobuf.ByteString b =
-            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
         prefix_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
     }
-
     /**
-     *
-     *
      * <pre>
-     * `prefix` specifies that the field value must have the
-     * specified substring at the beginning of the string. If the field value
-     * doesn't start with the specified prefix, an error message will be
-     * generated.
+     *`prefix` specifies that the field value must have the
+     *specified substring at the beginning of the string. If the field value
+     *doesn't start with the specified prefix, an error message will be
+     *generated.
      *
-     * ```proto
-     * message MyString {
+     *```proto
+     *message MyString {
      *  // value does not have prefix `pre`
      *   string value = 1 [(buf.validate.field).string.prefix = "pre"];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>optional string prefix = 7 [json_name = "prefix", (.buf.validate.priv.field) = { ... }
-     * </code>
-     *
+     * <code>optional string prefix = 7 [json_name = "prefix", (.buf.validate.priv.field) = { ... }</code>
      * @param value The prefix to set.
      * @return This builder for chaining.
      */
-    public Builder setPrefix(java.lang.String value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
+    public Builder setPrefix(
+        java.lang.String value) {
+      if (value == null) { throw new NullPointerException(); }
       prefix_ = value;
       bitField0_ |= 0x00000100;
       onChanged();
       return this;
     }
-
     /**
-     *
-     *
      * <pre>
-     * `prefix` specifies that the field value must have the
-     * specified substring at the beginning of the string. If the field value
-     * doesn't start with the specified prefix, an error message will be
-     * generated.
+     *`prefix` specifies that the field value must have the
+     *specified substring at the beginning of the string. If the field value
+     *doesn't start with the specified prefix, an error message will be
+     *generated.
      *
-     * ```proto
-     * message MyString {
+     *```proto
+     *message MyString {
      *  // value does not have prefix `pre`
      *   string value = 1 [(buf.validate.field).string.prefix = "pre"];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>optional string prefix = 7 [json_name = "prefix", (.buf.validate.priv.field) = { ... }
-     * </code>
-     *
+     * <code>optional string prefix = 7 [json_name = "prefix", (.buf.validate.priv.field) = { ... }</code>
      * @return This builder for chaining.
      */
     public Builder clearPrefix() {
@@ -4260,34 +3761,28 @@ public final class StringRules extends com.google.protobuf.GeneratedMessageV3
       onChanged();
       return this;
     }
-
     /**
-     *
-     *
      * <pre>
-     * `prefix` specifies that the field value must have the
-     * specified substring at the beginning of the string. If the field value
-     * doesn't start with the specified prefix, an error message will be
-     * generated.
+     *`prefix` specifies that the field value must have the
+     *specified substring at the beginning of the string. If the field value
+     *doesn't start with the specified prefix, an error message will be
+     *generated.
      *
-     * ```proto
-     * message MyString {
+     *```proto
+     *message MyString {
      *  // value does not have prefix `pre`
      *   string value = 1 [(buf.validate.field).string.prefix = "pre"];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>optional string prefix = 7 [json_name = "prefix", (.buf.validate.priv.field) = { ... }
-     * </code>
-     *
+     * <code>optional string prefix = 7 [json_name = "prefix", (.buf.validate.priv.field) = { ... }</code>
      * @param value The bytes for prefix to set.
      * @return This builder for chaining.
      */
-    public Builder setPrefixBytes(com.google.protobuf.ByteString value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
+    public Builder setPrefixBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) { throw new NullPointerException(); }
       checkByteStringIsUtf8(value);
       prefix_ = value;
       bitField0_ |= 0x00000100;
@@ -4296,57 +3791,48 @@ public final class StringRules extends com.google.protobuf.GeneratedMessageV3
     }
 
     private java.lang.Object suffix_ = "";
-
     /**
-     *
-     *
      * <pre>
-     * `suffix` specifies that the field value must have the
-     * specified substring at the end of the string. If the field value doesn't
-     * end with the specified suffix, an error message will be generated.
+     *`suffix` specifies that the field value must have the
+     *specified substring at the end of the string. If the field value doesn't
+     *end with the specified suffix, an error message will be generated.
      *
-     * ```proto
-     * message MyString {
+     *```proto
+     *message MyString {
      *  // value does not have suffix `post`
      *   string value = 1 [(buf.validate.field).string.suffix = "post"];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>optional string suffix = 8 [json_name = "suffix", (.buf.validate.priv.field) = { ... }
-     * </code>
-     *
+     * <code>optional string suffix = 8 [json_name = "suffix", (.buf.validate.priv.field) = { ... }</code>
      * @return Whether the suffix field is set.
      */
     public boolean hasSuffix() {
       return ((bitField0_ & 0x00000200) != 0);
     }
-
     /**
-     *
-     *
      * <pre>
-     * `suffix` specifies that the field value must have the
-     * specified substring at the end of the string. If the field value doesn't
-     * end with the specified suffix, an error message will be generated.
+     *`suffix` specifies that the field value must have the
+     *specified substring at the end of the string. If the field value doesn't
+     *end with the specified suffix, an error message will be generated.
      *
-     * ```proto
-     * message MyString {
+     *```proto
+     *message MyString {
      *  // value does not have suffix `post`
      *   string value = 1 [(buf.validate.field).string.suffix = "post"];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>optional string suffix = 8 [json_name = "suffix", (.buf.validate.priv.field) = { ... }
-     * </code>
-     *
+     * <code>optional string suffix = 8 [json_name = "suffix", (.buf.validate.priv.field) = { ... }</code>
      * @return The suffix.
      */
     public java.lang.String getSuffix() {
       java.lang.Object ref = suffix_;
       if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         suffix_ = s;
         return s;
@@ -4354,91 +3840,77 @@ public final class StringRules extends com.google.protobuf.GeneratedMessageV3
         return (java.lang.String) ref;
       }
     }
-
     /**
-     *
-     *
      * <pre>
-     * `suffix` specifies that the field value must have the
-     * specified substring at the end of the string. If the field value doesn't
-     * end with the specified suffix, an error message will be generated.
+     *`suffix` specifies that the field value must have the
+     *specified substring at the end of the string. If the field value doesn't
+     *end with the specified suffix, an error message will be generated.
      *
-     * ```proto
-     * message MyString {
+     *```proto
+     *message MyString {
      *  // value does not have suffix `post`
      *   string value = 1 [(buf.validate.field).string.suffix = "post"];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>optional string suffix = 8 [json_name = "suffix", (.buf.validate.priv.field) = { ... }
-     * </code>
-     *
+     * <code>optional string suffix = 8 [json_name = "suffix", (.buf.validate.priv.field) = { ... }</code>
      * @return The bytes for suffix.
      */
-    public com.google.protobuf.ByteString getSuffixBytes() {
+    public com.google.protobuf.ByteString
+        getSuffixBytes() {
       java.lang.Object ref = suffix_;
       if (ref instanceof String) {
-        com.google.protobuf.ByteString b =
-            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
         suffix_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
     }
-
     /**
-     *
-     *
      * <pre>
-     * `suffix` specifies that the field value must have the
-     * specified substring at the end of the string. If the field value doesn't
-     * end with the specified suffix, an error message will be generated.
+     *`suffix` specifies that the field value must have the
+     *specified substring at the end of the string. If the field value doesn't
+     *end with the specified suffix, an error message will be generated.
      *
-     * ```proto
-     * message MyString {
+     *```proto
+     *message MyString {
      *  // value does not have suffix `post`
      *   string value = 1 [(buf.validate.field).string.suffix = "post"];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>optional string suffix = 8 [json_name = "suffix", (.buf.validate.priv.field) = { ... }
-     * </code>
-     *
+     * <code>optional string suffix = 8 [json_name = "suffix", (.buf.validate.priv.field) = { ... }</code>
      * @param value The suffix to set.
      * @return This builder for chaining.
      */
-    public Builder setSuffix(java.lang.String value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
+    public Builder setSuffix(
+        java.lang.String value) {
+      if (value == null) { throw new NullPointerException(); }
       suffix_ = value;
       bitField0_ |= 0x00000200;
       onChanged();
       return this;
     }
-
     /**
-     *
-     *
      * <pre>
-     * `suffix` specifies that the field value must have the
-     * specified substring at the end of the string. If the field value doesn't
-     * end with the specified suffix, an error message will be generated.
+     *`suffix` specifies that the field value must have the
+     *specified substring at the end of the string. If the field value doesn't
+     *end with the specified suffix, an error message will be generated.
      *
-     * ```proto
-     * message MyString {
+     *```proto
+     *message MyString {
      *  // value does not have suffix `post`
      *   string value = 1 [(buf.validate.field).string.suffix = "post"];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>optional string suffix = 8 [json_name = "suffix", (.buf.validate.priv.field) = { ... }
-     * </code>
-     *
+     * <code>optional string suffix = 8 [json_name = "suffix", (.buf.validate.priv.field) = { ... }</code>
      * @return This builder for chaining.
      */
     public Builder clearSuffix() {
@@ -4447,33 +3919,27 @@ public final class StringRules extends com.google.protobuf.GeneratedMessageV3
       onChanged();
       return this;
     }
-
     /**
-     *
-     *
      * <pre>
-     * `suffix` specifies that the field value must have the
-     * specified substring at the end of the string. If the field value doesn't
-     * end with the specified suffix, an error message will be generated.
+     *`suffix` specifies that the field value must have the
+     *specified substring at the end of the string. If the field value doesn't
+     *end with the specified suffix, an error message will be generated.
      *
-     * ```proto
-     * message MyString {
+     *```proto
+     *message MyString {
      *  // value does not have suffix `post`
      *   string value = 1 [(buf.validate.field).string.suffix = "post"];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>optional string suffix = 8 [json_name = "suffix", (.buf.validate.priv.field) = { ... }
-     * </code>
-     *
+     * <code>optional string suffix = 8 [json_name = "suffix", (.buf.validate.priv.field) = { ... }</code>
      * @param value The bytes for suffix to set.
      * @return This builder for chaining.
      */
-    public Builder setSuffixBytes(com.google.protobuf.ByteString value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
+    public Builder setSuffixBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) { throw new NullPointerException(); }
       checkByteStringIsUtf8(value);
       suffix_ = value;
       bitField0_ |= 0x00000200;
@@ -4482,59 +3948,48 @@ public final class StringRules extends com.google.protobuf.GeneratedMessageV3
     }
 
     private java.lang.Object contains_ = "";
-
     /**
-     *
-     *
      * <pre>
-     * `contains` specifies that the field value must have the
-     * specified substring anywhere in the string. If the field value doesn't
-     * contain the specified substring, an error message will be generated.
+     *`contains` specifies that the field value must have the
+     *specified substring anywhere in the string. If the field value doesn't
+     *contain the specified substring, an error message will be generated.
      *
-     * ```proto
-     * message MyString {
+     *```proto
+     *message MyString {
      *  // value does not contain substring `inside`.
      *   string value = 1 [(buf.validate.field).string.contains = "inside"];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>
-     * optional string contains = 9 [json_name = "contains", (.buf.validate.priv.field) = { ... }
-     * </code>
-     *
+     * <code>optional string contains = 9 [json_name = "contains", (.buf.validate.priv.field) = { ... }</code>
      * @return Whether the contains field is set.
      */
     public boolean hasContains() {
       return ((bitField0_ & 0x00000400) != 0);
     }
-
     /**
-     *
-     *
      * <pre>
-     * `contains` specifies that the field value must have the
-     * specified substring anywhere in the string. If the field value doesn't
-     * contain the specified substring, an error message will be generated.
+     *`contains` specifies that the field value must have the
+     *specified substring anywhere in the string. If the field value doesn't
+     *contain the specified substring, an error message will be generated.
      *
-     * ```proto
-     * message MyString {
+     *```proto
+     *message MyString {
      *  // value does not contain substring `inside`.
      *   string value = 1 [(buf.validate.field).string.contains = "inside"];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>
-     * optional string contains = 9 [json_name = "contains", (.buf.validate.priv.field) = { ... }
-     * </code>
-     *
+     * <code>optional string contains = 9 [json_name = "contains", (.buf.validate.priv.field) = { ... }</code>
      * @return The contains.
      */
     public java.lang.String getContains() {
       java.lang.Object ref = contains_;
       if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         contains_ = s;
         return s;
@@ -4542,94 +3997,77 @@ public final class StringRules extends com.google.protobuf.GeneratedMessageV3
         return (java.lang.String) ref;
       }
     }
-
     /**
-     *
-     *
      * <pre>
-     * `contains` specifies that the field value must have the
-     * specified substring anywhere in the string. If the field value doesn't
-     * contain the specified substring, an error message will be generated.
+     *`contains` specifies that the field value must have the
+     *specified substring anywhere in the string. If the field value doesn't
+     *contain the specified substring, an error message will be generated.
      *
-     * ```proto
-     * message MyString {
+     *```proto
+     *message MyString {
      *  // value does not contain substring `inside`.
      *   string value = 1 [(buf.validate.field).string.contains = "inside"];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>
-     * optional string contains = 9 [json_name = "contains", (.buf.validate.priv.field) = { ... }
-     * </code>
-     *
+     * <code>optional string contains = 9 [json_name = "contains", (.buf.validate.priv.field) = { ... }</code>
      * @return The bytes for contains.
      */
-    public com.google.protobuf.ByteString getContainsBytes() {
+    public com.google.protobuf.ByteString
+        getContainsBytes() {
       java.lang.Object ref = contains_;
       if (ref instanceof String) {
-        com.google.protobuf.ByteString b =
-            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
         contains_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
     }
-
     /**
-     *
-     *
      * <pre>
-     * `contains` specifies that the field value must have the
-     * specified substring anywhere in the string. If the field value doesn't
-     * contain the specified substring, an error message will be generated.
+     *`contains` specifies that the field value must have the
+     *specified substring anywhere in the string. If the field value doesn't
+     *contain the specified substring, an error message will be generated.
      *
-     * ```proto
-     * message MyString {
+     *```proto
+     *message MyString {
      *  // value does not contain substring `inside`.
      *   string value = 1 [(buf.validate.field).string.contains = "inside"];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>
-     * optional string contains = 9 [json_name = "contains", (.buf.validate.priv.field) = { ... }
-     * </code>
-     *
+     * <code>optional string contains = 9 [json_name = "contains", (.buf.validate.priv.field) = { ... }</code>
      * @param value The contains to set.
      * @return This builder for chaining.
      */
-    public Builder setContains(java.lang.String value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
+    public Builder setContains(
+        java.lang.String value) {
+      if (value == null) { throw new NullPointerException(); }
       contains_ = value;
       bitField0_ |= 0x00000400;
       onChanged();
       return this;
     }
-
     /**
-     *
-     *
      * <pre>
-     * `contains` specifies that the field value must have the
-     * specified substring anywhere in the string. If the field value doesn't
-     * contain the specified substring, an error message will be generated.
+     *`contains` specifies that the field value must have the
+     *specified substring anywhere in the string. If the field value doesn't
+     *contain the specified substring, an error message will be generated.
      *
-     * ```proto
-     * message MyString {
+     *```proto
+     *message MyString {
      *  // value does not contain substring `inside`.
      *   string value = 1 [(buf.validate.field).string.contains = "inside"];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>
-     * optional string contains = 9 [json_name = "contains", (.buf.validate.priv.field) = { ... }
-     * </code>
-     *
+     * <code>optional string contains = 9 [json_name = "contains", (.buf.validate.priv.field) = { ... }</code>
      * @return This builder for chaining.
      */
     public Builder clearContains() {
@@ -4638,34 +4076,27 @@ public final class StringRules extends com.google.protobuf.GeneratedMessageV3
       onChanged();
       return this;
     }
-
     /**
-     *
-     *
      * <pre>
-     * `contains` specifies that the field value must have the
-     * specified substring anywhere in the string. If the field value doesn't
-     * contain the specified substring, an error message will be generated.
+     *`contains` specifies that the field value must have the
+     *specified substring anywhere in the string. If the field value doesn't
+     *contain the specified substring, an error message will be generated.
      *
-     * ```proto
-     * message MyString {
+     *```proto
+     *message MyString {
      *  // value does not contain substring `inside`.
      *   string value = 1 [(buf.validate.field).string.contains = "inside"];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>
-     * optional string contains = 9 [json_name = "contains", (.buf.validate.priv.field) = { ... }
-     * </code>
-     *
+     * <code>optional string contains = 9 [json_name = "contains", (.buf.validate.priv.field) = { ... }</code>
      * @param value The bytes for contains to set.
      * @return This builder for chaining.
      */
-    public Builder setContainsBytes(com.google.protobuf.ByteString value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
+    public Builder setContainsBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) { throw new NullPointerException(); }
       checkByteStringIsUtf8(value);
       contains_ = value;
       bitField0_ |= 0x00000400;
@@ -4674,59 +4105,48 @@ public final class StringRules extends com.google.protobuf.GeneratedMessageV3
     }
 
     private java.lang.Object notContains_ = "";
-
     /**
-     *
-     *
      * <pre>
-     * `not_contains` specifies that the field value must not have the
-     * specified substring anywhere in the string. If the field value contains
-     * the specified substring, an error message will be generated.
+     *`not_contains` specifies that the field value must not have the
+     *specified substring anywhere in the string. If the field value contains
+     *the specified substring, an error message will be generated.
      *
-     * ```proto
-     * message MyString {
+     *```proto
+     *message MyString {
      *  // value contains substring `inside`.
      *   string value = 1 [(buf.validate.field).string.not_contains = "inside"];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>
-     * optional string not_contains = 23 [json_name = "notContains", (.buf.validate.priv.field) = { ... }
-     * </code>
-     *
+     * <code>optional string not_contains = 23 [json_name = "notContains", (.buf.validate.priv.field) = { ... }</code>
      * @return Whether the notContains field is set.
      */
     public boolean hasNotContains() {
       return ((bitField0_ & 0x00000800) != 0);
     }
-
     /**
-     *
-     *
      * <pre>
-     * `not_contains` specifies that the field value must not have the
-     * specified substring anywhere in the string. If the field value contains
-     * the specified substring, an error message will be generated.
+     *`not_contains` specifies that the field value must not have the
+     *specified substring anywhere in the string. If the field value contains
+     *the specified substring, an error message will be generated.
      *
-     * ```proto
-     * message MyString {
+     *```proto
+     *message MyString {
      *  // value contains substring `inside`.
      *   string value = 1 [(buf.validate.field).string.not_contains = "inside"];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>
-     * optional string not_contains = 23 [json_name = "notContains", (.buf.validate.priv.field) = { ... }
-     * </code>
-     *
+     * <code>optional string not_contains = 23 [json_name = "notContains", (.buf.validate.priv.field) = { ... }</code>
      * @return The notContains.
      */
     public java.lang.String getNotContains() {
       java.lang.Object ref = notContains_;
       if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         notContains_ = s;
         return s;
@@ -4734,94 +4154,77 @@ public final class StringRules extends com.google.protobuf.GeneratedMessageV3
         return (java.lang.String) ref;
       }
     }
-
     /**
-     *
-     *
      * <pre>
-     * `not_contains` specifies that the field value must not have the
-     * specified substring anywhere in the string. If the field value contains
-     * the specified substring, an error message will be generated.
+     *`not_contains` specifies that the field value must not have the
+     *specified substring anywhere in the string. If the field value contains
+     *the specified substring, an error message will be generated.
      *
-     * ```proto
-     * message MyString {
+     *```proto
+     *message MyString {
      *  // value contains substring `inside`.
      *   string value = 1 [(buf.validate.field).string.not_contains = "inside"];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>
-     * optional string not_contains = 23 [json_name = "notContains", (.buf.validate.priv.field) = { ... }
-     * </code>
-     *
+     * <code>optional string not_contains = 23 [json_name = "notContains", (.buf.validate.priv.field) = { ... }</code>
      * @return The bytes for notContains.
      */
-    public com.google.protobuf.ByteString getNotContainsBytes() {
+    public com.google.protobuf.ByteString
+        getNotContainsBytes() {
       java.lang.Object ref = notContains_;
       if (ref instanceof String) {
-        com.google.protobuf.ByteString b =
-            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
         notContains_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
     }
-
     /**
-     *
-     *
      * <pre>
-     * `not_contains` specifies that the field value must not have the
-     * specified substring anywhere in the string. If the field value contains
-     * the specified substring, an error message will be generated.
+     *`not_contains` specifies that the field value must not have the
+     *specified substring anywhere in the string. If the field value contains
+     *the specified substring, an error message will be generated.
      *
-     * ```proto
-     * message MyString {
+     *```proto
+     *message MyString {
      *  // value contains substring `inside`.
      *   string value = 1 [(buf.validate.field).string.not_contains = "inside"];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>
-     * optional string not_contains = 23 [json_name = "notContains", (.buf.validate.priv.field) = { ... }
-     * </code>
-     *
+     * <code>optional string not_contains = 23 [json_name = "notContains", (.buf.validate.priv.field) = { ... }</code>
      * @param value The notContains to set.
      * @return This builder for chaining.
      */
-    public Builder setNotContains(java.lang.String value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
+    public Builder setNotContains(
+        java.lang.String value) {
+      if (value == null) { throw new NullPointerException(); }
       notContains_ = value;
       bitField0_ |= 0x00000800;
       onChanged();
       return this;
     }
-
     /**
-     *
-     *
      * <pre>
-     * `not_contains` specifies that the field value must not have the
-     * specified substring anywhere in the string. If the field value contains
-     * the specified substring, an error message will be generated.
+     *`not_contains` specifies that the field value must not have the
+     *specified substring anywhere in the string. If the field value contains
+     *the specified substring, an error message will be generated.
      *
-     * ```proto
-     * message MyString {
+     *```proto
+     *message MyString {
      *  // value contains substring `inside`.
      *   string value = 1 [(buf.validate.field).string.not_contains = "inside"];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>
-     * optional string not_contains = 23 [json_name = "notContains", (.buf.validate.priv.field) = { ... }
-     * </code>
-     *
+     * <code>optional string not_contains = 23 [json_name = "notContains", (.buf.validate.priv.field) = { ... }</code>
      * @return This builder for chaining.
      */
     public Builder clearNotContains() {
@@ -4830,34 +4233,27 @@ public final class StringRules extends com.google.protobuf.GeneratedMessageV3
       onChanged();
       return this;
     }
-
     /**
-     *
-     *
      * <pre>
-     * `not_contains` specifies that the field value must not have the
-     * specified substring anywhere in the string. If the field value contains
-     * the specified substring, an error message will be generated.
+     *`not_contains` specifies that the field value must not have the
+     *specified substring anywhere in the string. If the field value contains
+     *the specified substring, an error message will be generated.
      *
-     * ```proto
-     * message MyString {
+     *```proto
+     *message MyString {
      *  // value contains substring `inside`.
      *   string value = 1 [(buf.validate.field).string.not_contains = "inside"];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>
-     * optional string not_contains = 23 [json_name = "notContains", (.buf.validate.priv.field) = { ... }
-     * </code>
-     *
+     * <code>optional string not_contains = 23 [json_name = "notContains", (.buf.validate.priv.field) = { ... }</code>
      * @param value The bytes for notContains to set.
      * @return This builder for chaining.
      */
-    public Builder setNotContainsBytes(com.google.protobuf.ByteString value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
+    public Builder setNotContainsBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) { throw new NullPointerException(); }
       checkByteStringIsUtf8(value);
       notContains_ = value;
       bitField0_ |= 0x00000800;
@@ -4867,260 +4263,224 @@ public final class StringRules extends com.google.protobuf.GeneratedMessageV3
 
     private com.google.protobuf.LazyStringArrayList in_ =
         com.google.protobuf.LazyStringArrayList.emptyList();
-
     private void ensureInIsMutable() {
       if (!in_.isModifiable()) {
         in_ = new com.google.protobuf.LazyStringArrayList(in_);
       }
       bitField0_ |= 0x00001000;
     }
-
     /**
-     *
-     *
      * <pre>
-     * `in` specifies that the field value must be equal to one of the specified
-     * values. If the field value isn't one of the specified values, an error
-     * message will be generated.
+     *`in` specifies that the field value must be equal to one of the specified
+     *values. If the field value isn't one of the specified values, an error
+     *message will be generated.
      *
-     * ```proto
-     * message MyString {
+     *```proto
+     *message MyString {
      *  // value must be in list ["apple", "banana"]
      *  repeated string value = 1 [(buf.validate.field).string.in = "apple", (buf.validate.field).string.in = "banana"];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
      * <code>repeated string in = 10 [json_name = "in", (.buf.validate.priv.field) = { ... }</code>
-     *
      * @return A list containing the in.
      */
-    public com.google.protobuf.ProtocolStringList getInList() {
+    public com.google.protobuf.ProtocolStringList
+        getInList() {
       in_.makeImmutable();
       return in_;
     }
-
     /**
-     *
-     *
      * <pre>
-     * `in` specifies that the field value must be equal to one of the specified
-     * values. If the field value isn't one of the specified values, an error
-     * message will be generated.
+     *`in` specifies that the field value must be equal to one of the specified
+     *values. If the field value isn't one of the specified values, an error
+     *message will be generated.
      *
-     * ```proto
-     * message MyString {
+     *```proto
+     *message MyString {
      *  // value must be in list ["apple", "banana"]
      *  repeated string value = 1 [(buf.validate.field).string.in = "apple", (buf.validate.field).string.in = "banana"];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
      * <code>repeated string in = 10 [json_name = "in", (.buf.validate.priv.field) = { ... }</code>
-     *
      * @return The count of in.
      */
     public int getInCount() {
       return in_.size();
     }
-
     /**
-     *
-     *
      * <pre>
-     * `in` specifies that the field value must be equal to one of the specified
-     * values. If the field value isn't one of the specified values, an error
-     * message will be generated.
+     *`in` specifies that the field value must be equal to one of the specified
+     *values. If the field value isn't one of the specified values, an error
+     *message will be generated.
      *
-     * ```proto
-     * message MyString {
+     *```proto
+     *message MyString {
      *  // value must be in list ["apple", "banana"]
      *  repeated string value = 1 [(buf.validate.field).string.in = "apple", (buf.validate.field).string.in = "banana"];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
      * <code>repeated string in = 10 [json_name = "in", (.buf.validate.priv.field) = { ... }</code>
-     *
      * @param index The index of the element to return.
      * @return The in at the given index.
      */
     public java.lang.String getIn(int index) {
       return in_.get(index);
     }
-
     /**
-     *
-     *
      * <pre>
-     * `in` specifies that the field value must be equal to one of the specified
-     * values. If the field value isn't one of the specified values, an error
-     * message will be generated.
+     *`in` specifies that the field value must be equal to one of the specified
+     *values. If the field value isn't one of the specified values, an error
+     *message will be generated.
      *
-     * ```proto
-     * message MyString {
+     *```proto
+     *message MyString {
      *  // value must be in list ["apple", "banana"]
      *  repeated string value = 1 [(buf.validate.field).string.in = "apple", (buf.validate.field).string.in = "banana"];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
      * <code>repeated string in = 10 [json_name = "in", (.buf.validate.priv.field) = { ... }</code>
-     *
      * @param index The index of the value to return.
      * @return The bytes of the in at the given index.
      */
-    public com.google.protobuf.ByteString getInBytes(int index) {
+    public com.google.protobuf.ByteString
+        getInBytes(int index) {
       return in_.getByteString(index);
     }
-
     /**
-     *
-     *
      * <pre>
-     * `in` specifies that the field value must be equal to one of the specified
-     * values. If the field value isn't one of the specified values, an error
-     * message will be generated.
+     *`in` specifies that the field value must be equal to one of the specified
+     *values. If the field value isn't one of the specified values, an error
+     *message will be generated.
      *
-     * ```proto
-     * message MyString {
+     *```proto
+     *message MyString {
      *  // value must be in list ["apple", "banana"]
      *  repeated string value = 1 [(buf.validate.field).string.in = "apple", (buf.validate.field).string.in = "banana"];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
      * <code>repeated string in = 10 [json_name = "in", (.buf.validate.priv.field) = { ... }</code>
-     *
      * @param index The index to set the value at.
      * @param value The in to set.
      * @return This builder for chaining.
      */
-    public Builder setIn(int index, java.lang.String value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
+    public Builder setIn(
+        int index, java.lang.String value) {
+      if (value == null) { throw new NullPointerException(); }
       ensureInIsMutable();
       in_.set(index, value);
       bitField0_ |= 0x00001000;
       onChanged();
       return this;
     }
-
     /**
-     *
-     *
      * <pre>
-     * `in` specifies that the field value must be equal to one of the specified
-     * values. If the field value isn't one of the specified values, an error
-     * message will be generated.
+     *`in` specifies that the field value must be equal to one of the specified
+     *values. If the field value isn't one of the specified values, an error
+     *message will be generated.
      *
-     * ```proto
-     * message MyString {
+     *```proto
+     *message MyString {
      *  // value must be in list ["apple", "banana"]
      *  repeated string value = 1 [(buf.validate.field).string.in = "apple", (buf.validate.field).string.in = "banana"];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
      * <code>repeated string in = 10 [json_name = "in", (.buf.validate.priv.field) = { ... }</code>
-     *
      * @param value The in to add.
      * @return This builder for chaining.
      */
-    public Builder addIn(java.lang.String value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
+    public Builder addIn(
+        java.lang.String value) {
+      if (value == null) { throw new NullPointerException(); }
       ensureInIsMutable();
       in_.add(value);
       bitField0_ |= 0x00001000;
       onChanged();
       return this;
     }
-
     /**
-     *
-     *
      * <pre>
-     * `in` specifies that the field value must be equal to one of the specified
-     * values. If the field value isn't one of the specified values, an error
-     * message will be generated.
+     *`in` specifies that the field value must be equal to one of the specified
+     *values. If the field value isn't one of the specified values, an error
+     *message will be generated.
      *
-     * ```proto
-     * message MyString {
+     *```proto
+     *message MyString {
      *  // value must be in list ["apple", "banana"]
      *  repeated string value = 1 [(buf.validate.field).string.in = "apple", (buf.validate.field).string.in = "banana"];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
      * <code>repeated string in = 10 [json_name = "in", (.buf.validate.priv.field) = { ... }</code>
-     *
      * @param values The in to add.
      * @return This builder for chaining.
      */
-    public Builder addAllIn(java.lang.Iterable<java.lang.String> values) {
+    public Builder addAllIn(
+        java.lang.Iterable<java.lang.String> values) {
       ensureInIsMutable();
-      com.google.protobuf.AbstractMessageLite.Builder.addAll(values, in_);
+      com.google.protobuf.AbstractMessageLite.Builder.addAll(
+          values, in_);
       bitField0_ |= 0x00001000;
       onChanged();
       return this;
     }
-
     /**
-     *
-     *
      * <pre>
-     * `in` specifies that the field value must be equal to one of the specified
-     * values. If the field value isn't one of the specified values, an error
-     * message will be generated.
+     *`in` specifies that the field value must be equal to one of the specified
+     *values. If the field value isn't one of the specified values, an error
+     *message will be generated.
      *
-     * ```proto
-     * message MyString {
+     *```proto
+     *message MyString {
      *  // value must be in list ["apple", "banana"]
      *  repeated string value = 1 [(buf.validate.field).string.in = "apple", (buf.validate.field).string.in = "banana"];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
      * <code>repeated string in = 10 [json_name = "in", (.buf.validate.priv.field) = { ... }</code>
-     *
      * @return This builder for chaining.
      */
     public Builder clearIn() {
-      in_ = com.google.protobuf.LazyStringArrayList.emptyList();
-      bitField0_ = (bitField0_ & ~0x00001000);
-      ;
+      in_ =
+        com.google.protobuf.LazyStringArrayList.emptyList();
+      bitField0_ = (bitField0_ & ~0x00001000);;
       onChanged();
       return this;
     }
-
     /**
-     *
-     *
      * <pre>
-     * `in` specifies that the field value must be equal to one of the specified
-     * values. If the field value isn't one of the specified values, an error
-     * message will be generated.
+     *`in` specifies that the field value must be equal to one of the specified
+     *values. If the field value isn't one of the specified values, an error
+     *message will be generated.
      *
-     * ```proto
-     * message MyString {
+     *```proto
+     *message MyString {
      *  // value must be in list ["apple", "banana"]
      *  repeated string value = 1 [(buf.validate.field).string.in = "apple", (buf.validate.field).string.in = "banana"];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
      * <code>repeated string in = 10 [json_name = "in", (.buf.validate.priv.field) = { ... }</code>
-     *
      * @param value The bytes of the in to add.
      * @return This builder for chaining.
      */
-    public Builder addInBytes(com.google.protobuf.ByteString value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
+    public Builder addInBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) { throw new NullPointerException(); }
       checkByteStringIsUtf8(value);
       ensureInIsMutable();
       in_.add(value);
@@ -5131,260 +4491,215 @@ public final class StringRules extends com.google.protobuf.GeneratedMessageV3
 
     private com.google.protobuf.LazyStringArrayList notIn_ =
         com.google.protobuf.LazyStringArrayList.emptyList();
-
     private void ensureNotInIsMutable() {
       if (!notIn_.isModifiable()) {
         notIn_ = new com.google.protobuf.LazyStringArrayList(notIn_);
       }
       bitField0_ |= 0x00002000;
     }
-
     /**
-     *
-     *
      * <pre>
-     * `not_in` specifies that the field value cannot be equal to any
-     * of the specified values. If the field value is one of the specified values,
-     * an error message will be generated.
-     * ```proto
-     * message MyString {
+     *`not_in` specifies that the field value cannot be equal to any
+     *of the specified values. If the field value is one of the specified values,
+     *an error message will be generated.
+     *```proto
+     *message MyString {
      *  // value must not be in list ["orange", "grape"]
      *  repeated string value = 1 [(buf.validate.field).string.not_in = "orange", (buf.validate.field).string.not_in = "grape"];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>repeated string not_in = 11 [json_name = "notIn", (.buf.validate.priv.field) = { ... }
-     * </code>
-     *
+     * <code>repeated string not_in = 11 [json_name = "notIn", (.buf.validate.priv.field) = { ... }</code>
      * @return A list containing the notIn.
      */
-    public com.google.protobuf.ProtocolStringList getNotInList() {
+    public com.google.protobuf.ProtocolStringList
+        getNotInList() {
       notIn_.makeImmutable();
       return notIn_;
     }
-
     /**
-     *
-     *
      * <pre>
-     * `not_in` specifies that the field value cannot be equal to any
-     * of the specified values. If the field value is one of the specified values,
-     * an error message will be generated.
-     * ```proto
-     * message MyString {
+     *`not_in` specifies that the field value cannot be equal to any
+     *of the specified values. If the field value is one of the specified values,
+     *an error message will be generated.
+     *```proto
+     *message MyString {
      *  // value must not be in list ["orange", "grape"]
      *  repeated string value = 1 [(buf.validate.field).string.not_in = "orange", (buf.validate.field).string.not_in = "grape"];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>repeated string not_in = 11 [json_name = "notIn", (.buf.validate.priv.field) = { ... }
-     * </code>
-     *
+     * <code>repeated string not_in = 11 [json_name = "notIn", (.buf.validate.priv.field) = { ... }</code>
      * @return The count of notIn.
      */
     public int getNotInCount() {
       return notIn_.size();
     }
-
     /**
-     *
-     *
      * <pre>
-     * `not_in` specifies that the field value cannot be equal to any
-     * of the specified values. If the field value is one of the specified values,
-     * an error message will be generated.
-     * ```proto
-     * message MyString {
+     *`not_in` specifies that the field value cannot be equal to any
+     *of the specified values. If the field value is one of the specified values,
+     *an error message will be generated.
+     *```proto
+     *message MyString {
      *  // value must not be in list ["orange", "grape"]
      *  repeated string value = 1 [(buf.validate.field).string.not_in = "orange", (buf.validate.field).string.not_in = "grape"];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>repeated string not_in = 11 [json_name = "notIn", (.buf.validate.priv.field) = { ... }
-     * </code>
-     *
+     * <code>repeated string not_in = 11 [json_name = "notIn", (.buf.validate.priv.field) = { ... }</code>
      * @param index The index of the element to return.
      * @return The notIn at the given index.
      */
     public java.lang.String getNotIn(int index) {
       return notIn_.get(index);
     }
-
     /**
-     *
-     *
      * <pre>
-     * `not_in` specifies that the field value cannot be equal to any
-     * of the specified values. If the field value is one of the specified values,
-     * an error message will be generated.
-     * ```proto
-     * message MyString {
+     *`not_in` specifies that the field value cannot be equal to any
+     *of the specified values. If the field value is one of the specified values,
+     *an error message will be generated.
+     *```proto
+     *message MyString {
      *  // value must not be in list ["orange", "grape"]
      *  repeated string value = 1 [(buf.validate.field).string.not_in = "orange", (buf.validate.field).string.not_in = "grape"];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>repeated string not_in = 11 [json_name = "notIn", (.buf.validate.priv.field) = { ... }
-     * </code>
-     *
+     * <code>repeated string not_in = 11 [json_name = "notIn", (.buf.validate.priv.field) = { ... }</code>
      * @param index The index of the value to return.
      * @return The bytes of the notIn at the given index.
      */
-    public com.google.protobuf.ByteString getNotInBytes(int index) {
+    public com.google.protobuf.ByteString
+        getNotInBytes(int index) {
       return notIn_.getByteString(index);
     }
-
     /**
-     *
-     *
      * <pre>
-     * `not_in` specifies that the field value cannot be equal to any
-     * of the specified values. If the field value is one of the specified values,
-     * an error message will be generated.
-     * ```proto
-     * message MyString {
+     *`not_in` specifies that the field value cannot be equal to any
+     *of the specified values. If the field value is one of the specified values,
+     *an error message will be generated.
+     *```proto
+     *message MyString {
      *  // value must not be in list ["orange", "grape"]
      *  repeated string value = 1 [(buf.validate.field).string.not_in = "orange", (buf.validate.field).string.not_in = "grape"];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>repeated string not_in = 11 [json_name = "notIn", (.buf.validate.priv.field) = { ... }
-     * </code>
-     *
+     * <code>repeated string not_in = 11 [json_name = "notIn", (.buf.validate.priv.field) = { ... }</code>
      * @param index The index to set the value at.
      * @param value The notIn to set.
      * @return This builder for chaining.
      */
-    public Builder setNotIn(int index, java.lang.String value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
+    public Builder setNotIn(
+        int index, java.lang.String value) {
+      if (value == null) { throw new NullPointerException(); }
       ensureNotInIsMutable();
       notIn_.set(index, value);
       bitField0_ |= 0x00002000;
       onChanged();
       return this;
     }
-
     /**
-     *
-     *
      * <pre>
-     * `not_in` specifies that the field value cannot be equal to any
-     * of the specified values. If the field value is one of the specified values,
-     * an error message will be generated.
-     * ```proto
-     * message MyString {
+     *`not_in` specifies that the field value cannot be equal to any
+     *of the specified values. If the field value is one of the specified values,
+     *an error message will be generated.
+     *```proto
+     *message MyString {
      *  // value must not be in list ["orange", "grape"]
      *  repeated string value = 1 [(buf.validate.field).string.not_in = "orange", (buf.validate.field).string.not_in = "grape"];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>repeated string not_in = 11 [json_name = "notIn", (.buf.validate.priv.field) = { ... }
-     * </code>
-     *
+     * <code>repeated string not_in = 11 [json_name = "notIn", (.buf.validate.priv.field) = { ... }</code>
      * @param value The notIn to add.
      * @return This builder for chaining.
      */
-    public Builder addNotIn(java.lang.String value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
+    public Builder addNotIn(
+        java.lang.String value) {
+      if (value == null) { throw new NullPointerException(); }
       ensureNotInIsMutable();
       notIn_.add(value);
       bitField0_ |= 0x00002000;
       onChanged();
       return this;
     }
-
     /**
-     *
-     *
      * <pre>
-     * `not_in` specifies that the field value cannot be equal to any
-     * of the specified values. If the field value is one of the specified values,
-     * an error message will be generated.
-     * ```proto
-     * message MyString {
+     *`not_in` specifies that the field value cannot be equal to any
+     *of the specified values. If the field value is one of the specified values,
+     *an error message will be generated.
+     *```proto
+     *message MyString {
      *  // value must not be in list ["orange", "grape"]
      *  repeated string value = 1 [(buf.validate.field).string.not_in = "orange", (buf.validate.field).string.not_in = "grape"];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>repeated string not_in = 11 [json_name = "notIn", (.buf.validate.priv.field) = { ... }
-     * </code>
-     *
+     * <code>repeated string not_in = 11 [json_name = "notIn", (.buf.validate.priv.field) = { ... }</code>
      * @param values The notIn to add.
      * @return This builder for chaining.
      */
-    public Builder addAllNotIn(java.lang.Iterable<java.lang.String> values) {
+    public Builder addAllNotIn(
+        java.lang.Iterable<java.lang.String> values) {
       ensureNotInIsMutable();
-      com.google.protobuf.AbstractMessageLite.Builder.addAll(values, notIn_);
+      com.google.protobuf.AbstractMessageLite.Builder.addAll(
+          values, notIn_);
       bitField0_ |= 0x00002000;
       onChanged();
       return this;
     }
-
     /**
-     *
-     *
      * <pre>
-     * `not_in` specifies that the field value cannot be equal to any
-     * of the specified values. If the field value is one of the specified values,
-     * an error message will be generated.
-     * ```proto
-     * message MyString {
+     *`not_in` specifies that the field value cannot be equal to any
+     *of the specified values. If the field value is one of the specified values,
+     *an error message will be generated.
+     *```proto
+     *message MyString {
      *  // value must not be in list ["orange", "grape"]
      *  repeated string value = 1 [(buf.validate.field).string.not_in = "orange", (buf.validate.field).string.not_in = "grape"];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>repeated string not_in = 11 [json_name = "notIn", (.buf.validate.priv.field) = { ... }
-     * </code>
-     *
+     * <code>repeated string not_in = 11 [json_name = "notIn", (.buf.validate.priv.field) = { ... }</code>
      * @return This builder for chaining.
      */
     public Builder clearNotIn() {
-      notIn_ = com.google.protobuf.LazyStringArrayList.emptyList();
-      bitField0_ = (bitField0_ & ~0x00002000);
-      ;
+      notIn_ =
+        com.google.protobuf.LazyStringArrayList.emptyList();
+      bitField0_ = (bitField0_ & ~0x00002000);;
       onChanged();
       return this;
     }
-
     /**
-     *
-     *
      * <pre>
-     * `not_in` specifies that the field value cannot be equal to any
-     * of the specified values. If the field value is one of the specified values,
-     * an error message will be generated.
-     * ```proto
-     * message MyString {
+     *`not_in` specifies that the field value cannot be equal to any
+     *of the specified values. If the field value is one of the specified values,
+     *an error message will be generated.
+     *```proto
+     *message MyString {
      *  // value must not be in list ["orange", "grape"]
      *  repeated string value = 1 [(buf.validate.field).string.not_in = "orange", (buf.validate.field).string.not_in = "grape"];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>repeated string not_in = 11 [json_name = "notIn", (.buf.validate.priv.field) = { ... }
-     * </code>
-     *
+     * <code>repeated string not_in = 11 [json_name = "notIn", (.buf.validate.priv.field) = { ... }</code>
      * @param value The bytes of the notIn to add.
      * @return This builder for chaining.
      */
-    public Builder addNotInBytes(com.google.protobuf.ByteString value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
+    public Builder addNotInBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) { throw new NullPointerException(); }
       checkByteStringIsUtf8(value);
       ensureNotInIsMutable();
       notIn_.add(value);
@@ -5394,47 +4709,40 @@ public final class StringRules extends com.google.protobuf.GeneratedMessageV3
     }
 
     /**
-     *
-     *
      * <pre>
-     * `email` specifies that the field value must be a valid email address
-     * (addr-spec only) as defined by [RFC 5322](https://tools.ietf.org/html/rfc5322#section-3.4.1).
-     * If the field value isn't a valid email address, an error message will be generated.
+     *`email` specifies that the field value must be a valid email address
+     *(addr-spec only) as defined by [RFC 5322](https://tools.ietf.org/html/rfc5322#section-3.4.1).
+     *If the field value isn't a valid email address, an error message will be generated.
      *
-     * ```proto
-     * message MyString {
+     *```proto
+     *message MyString {
      *  // value must be a valid email address
      *   string value = 1 [(buf.validate.field).string.email = true];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
      * <code>bool email = 12 [json_name = "email", (.buf.validate.priv.field) = { ... }</code>
-     *
      * @return Whether the email field is set.
      */
     public boolean hasEmail() {
       return wellKnownCase_ == 12;
     }
-
     /**
-     *
-     *
      * <pre>
-     * `email` specifies that the field value must be a valid email address
-     * (addr-spec only) as defined by [RFC 5322](https://tools.ietf.org/html/rfc5322#section-3.4.1).
-     * If the field value isn't a valid email address, an error message will be generated.
+     *`email` specifies that the field value must be a valid email address
+     *(addr-spec only) as defined by [RFC 5322](https://tools.ietf.org/html/rfc5322#section-3.4.1).
+     *If the field value isn't a valid email address, an error message will be generated.
      *
-     * ```proto
-     * message MyString {
+     *```proto
+     *message MyString {
      *  // value must be a valid email address
      *   string value = 1 [(buf.validate.field).string.email = true];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
      * <code>bool email = 12 [json_name = "email", (.buf.validate.priv.field) = { ... }</code>
-     *
      * @return The email.
      */
     public boolean getEmail() {
@@ -5443,25 +4751,21 @@ public final class StringRules extends com.google.protobuf.GeneratedMessageV3
       }
       return false;
     }
-
     /**
-     *
-     *
      * <pre>
-     * `email` specifies that the field value must be a valid email address
-     * (addr-spec only) as defined by [RFC 5322](https://tools.ietf.org/html/rfc5322#section-3.4.1).
-     * If the field value isn't a valid email address, an error message will be generated.
+     *`email` specifies that the field value must be a valid email address
+     *(addr-spec only) as defined by [RFC 5322](https://tools.ietf.org/html/rfc5322#section-3.4.1).
+     *If the field value isn't a valid email address, an error message will be generated.
      *
-     * ```proto
-     * message MyString {
+     *```proto
+     *message MyString {
      *  // value must be a valid email address
      *   string value = 1 [(buf.validate.field).string.email = true];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
      * <code>bool email = 12 [json_name = "email", (.buf.validate.priv.field) = { ... }</code>
-     *
      * @param value The email to set.
      * @return This builder for chaining.
      */
@@ -5472,25 +4776,21 @@ public final class StringRules extends com.google.protobuf.GeneratedMessageV3
       onChanged();
       return this;
     }
-
     /**
-     *
-     *
      * <pre>
-     * `email` specifies that the field value must be a valid email address
-     * (addr-spec only) as defined by [RFC 5322](https://tools.ietf.org/html/rfc5322#section-3.4.1).
-     * If the field value isn't a valid email address, an error message will be generated.
+     *`email` specifies that the field value must be a valid email address
+     *(addr-spec only) as defined by [RFC 5322](https://tools.ietf.org/html/rfc5322#section-3.4.1).
+     *If the field value isn't a valid email address, an error message will be generated.
      *
-     * ```proto
-     * message MyString {
+     *```proto
+     *message MyString {
      *  // value must be a valid email address
      *   string value = 1 [(buf.validate.field).string.email = true];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
      * <code>bool email = 12 [json_name = "email", (.buf.validate.priv.field) = { ... }</code>
-     *
      * @return This builder for chaining.
      */
     public Builder clearEmail() {
@@ -5503,49 +4803,42 @@ public final class StringRules extends com.google.protobuf.GeneratedMessageV3
     }
 
     /**
-     *
-     *
      * <pre>
-     * `hostname` specifies that the field value must be a valid
-     * hostname as defined by [RFC 1034](https://tools.ietf.org/html/rfc1034#section-3.5). This constraint doesn't support
-     * internationalized domain names (IDNs). If the field value isn't a
-     * valid hostname, an error message will be generated.
+     *`hostname` specifies that the field value must be a valid
+     *hostname as defined by [RFC 1034](https://tools.ietf.org/html/rfc1034#section-3.5). This constraint doesn't support
+     *internationalized domain names (IDNs). If the field value isn't a
+     *valid hostname, an error message will be generated.
      *
-     * ```proto
-     * message MyString {
+     *```proto
+     *message MyString {
      *  // value must be a valid hostname
      *   string value = 1 [(buf.validate.field).string.hostname = true];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
      * <code>bool hostname = 13 [json_name = "hostname", (.buf.validate.priv.field) = { ... }</code>
-     *
      * @return Whether the hostname field is set.
      */
     public boolean hasHostname() {
       return wellKnownCase_ == 13;
     }
-
     /**
-     *
-     *
      * <pre>
-     * `hostname` specifies that the field value must be a valid
-     * hostname as defined by [RFC 1034](https://tools.ietf.org/html/rfc1034#section-3.5). This constraint doesn't support
-     * internationalized domain names (IDNs). If the field value isn't a
-     * valid hostname, an error message will be generated.
+     *`hostname` specifies that the field value must be a valid
+     *hostname as defined by [RFC 1034](https://tools.ietf.org/html/rfc1034#section-3.5). This constraint doesn't support
+     *internationalized domain names (IDNs). If the field value isn't a
+     *valid hostname, an error message will be generated.
      *
-     * ```proto
-     * message MyString {
+     *```proto
+     *message MyString {
      *  // value must be a valid hostname
      *   string value = 1 [(buf.validate.field).string.hostname = true];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
      * <code>bool hostname = 13 [json_name = "hostname", (.buf.validate.priv.field) = { ... }</code>
-     *
      * @return The hostname.
      */
     public boolean getHostname() {
@@ -5554,26 +4847,22 @@ public final class StringRules extends com.google.protobuf.GeneratedMessageV3
       }
       return false;
     }
-
     /**
-     *
-     *
      * <pre>
-     * `hostname` specifies that the field value must be a valid
-     * hostname as defined by [RFC 1034](https://tools.ietf.org/html/rfc1034#section-3.5). This constraint doesn't support
-     * internationalized domain names (IDNs). If the field value isn't a
-     * valid hostname, an error message will be generated.
+     *`hostname` specifies that the field value must be a valid
+     *hostname as defined by [RFC 1034](https://tools.ietf.org/html/rfc1034#section-3.5). This constraint doesn't support
+     *internationalized domain names (IDNs). If the field value isn't a
+     *valid hostname, an error message will be generated.
      *
-     * ```proto
-     * message MyString {
+     *```proto
+     *message MyString {
      *  // value must be a valid hostname
      *   string value = 1 [(buf.validate.field).string.hostname = true];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
      * <code>bool hostname = 13 [json_name = "hostname", (.buf.validate.priv.field) = { ... }</code>
-     *
      * @param value The hostname to set.
      * @return This builder for chaining.
      */
@@ -5584,26 +4873,22 @@ public final class StringRules extends com.google.protobuf.GeneratedMessageV3
       onChanged();
       return this;
     }
-
     /**
-     *
-     *
      * <pre>
-     * `hostname` specifies that the field value must be a valid
-     * hostname as defined by [RFC 1034](https://tools.ietf.org/html/rfc1034#section-3.5). This constraint doesn't support
-     * internationalized domain names (IDNs). If the field value isn't a
-     * valid hostname, an error message will be generated.
+     *`hostname` specifies that the field value must be a valid
+     *hostname as defined by [RFC 1034](https://tools.ietf.org/html/rfc1034#section-3.5). This constraint doesn't support
+     *internationalized domain names (IDNs). If the field value isn't a
+     *valid hostname, an error message will be generated.
      *
-     * ```proto
-     * message MyString {
+     *```proto
+     *message MyString {
      *  // value must be a valid hostname
      *   string value = 1 [(buf.validate.field).string.hostname = true];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
      * <code>bool hostname = 13 [json_name = "hostname", (.buf.validate.priv.field) = { ... }</code>
-     *
      * @return This builder for chaining.
      */
     public Builder clearHostname() {
@@ -5616,49 +4901,42 @@ public final class StringRules extends com.google.protobuf.GeneratedMessageV3
     }
 
     /**
-     *
-     *
      * <pre>
-     * `ip` specifies that the field value must be a valid IP
-     * (v4 or v6) address, without surrounding square brackets for IPv6 addresses.
-     * If the field value isn't a valid IP address, an error message will be
-     * generated.
+     *`ip` specifies that the field value must be a valid IP
+     *(v4 or v6) address, without surrounding square brackets for IPv6 addresses.
+     *If the field value isn't a valid IP address, an error message will be
+     *generated.
      *
-     * ```proto
-     * message MyString {
+     *```proto
+     *message MyString {
      *  // value must be a valid IP address
      *   string value = 1 [(buf.validate.field).string.ip = true];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
      * <code>bool ip = 14 [json_name = "ip", (.buf.validate.priv.field) = { ... }</code>
-     *
      * @return Whether the ip field is set.
      */
     public boolean hasIp() {
       return wellKnownCase_ == 14;
     }
-
     /**
-     *
-     *
      * <pre>
-     * `ip` specifies that the field value must be a valid IP
-     * (v4 or v6) address, without surrounding square brackets for IPv6 addresses.
-     * If the field value isn't a valid IP address, an error message will be
-     * generated.
+     *`ip` specifies that the field value must be a valid IP
+     *(v4 or v6) address, without surrounding square brackets for IPv6 addresses.
+     *If the field value isn't a valid IP address, an error message will be
+     *generated.
      *
-     * ```proto
-     * message MyString {
+     *```proto
+     *message MyString {
      *  // value must be a valid IP address
      *   string value = 1 [(buf.validate.field).string.ip = true];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
      * <code>bool ip = 14 [json_name = "ip", (.buf.validate.priv.field) = { ... }</code>
-     *
      * @return The ip.
      */
     public boolean getIp() {
@@ -5667,26 +4945,22 @@ public final class StringRules extends com.google.protobuf.GeneratedMessageV3
       }
       return false;
     }
-
     /**
-     *
-     *
      * <pre>
-     * `ip` specifies that the field value must be a valid IP
-     * (v4 or v6) address, without surrounding square brackets for IPv6 addresses.
-     * If the field value isn't a valid IP address, an error message will be
-     * generated.
+     *`ip` specifies that the field value must be a valid IP
+     *(v4 or v6) address, without surrounding square brackets for IPv6 addresses.
+     *If the field value isn't a valid IP address, an error message will be
+     *generated.
      *
-     * ```proto
-     * message MyString {
+     *```proto
+     *message MyString {
      *  // value must be a valid IP address
      *   string value = 1 [(buf.validate.field).string.ip = true];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
      * <code>bool ip = 14 [json_name = "ip", (.buf.validate.priv.field) = { ... }</code>
-     *
      * @param value The ip to set.
      * @return This builder for chaining.
      */
@@ -5697,26 +4971,22 @@ public final class StringRules extends com.google.protobuf.GeneratedMessageV3
       onChanged();
       return this;
     }
-
     /**
-     *
-     *
      * <pre>
-     * `ip` specifies that the field value must be a valid IP
-     * (v4 or v6) address, without surrounding square brackets for IPv6 addresses.
-     * If the field value isn't a valid IP address, an error message will be
-     * generated.
+     *`ip` specifies that the field value must be a valid IP
+     *(v4 or v6) address, without surrounding square brackets for IPv6 addresses.
+     *If the field value isn't a valid IP address, an error message will be
+     *generated.
      *
-     * ```proto
-     * message MyString {
+     *```proto
+     *message MyString {
      *  // value must be a valid IP address
      *   string value = 1 [(buf.validate.field).string.ip = true];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
      * <code>bool ip = 14 [json_name = "ip", (.buf.validate.priv.field) = { ... }</code>
-     *
      * @return This builder for chaining.
      */
     public Builder clearIp() {
@@ -5729,47 +4999,40 @@ public final class StringRules extends com.google.protobuf.GeneratedMessageV3
     }
 
     /**
-     *
-     *
      * <pre>
-     * `ipv4` specifies that the field value must be a valid IPv4
-     * address. If the field value isn't a valid IPv4 address, an error message
-     * will be generated.
+     *`ipv4` specifies that the field value must be a valid IPv4
+     *address. If the field value isn't a valid IPv4 address, an error message
+     *will be generated.
      *
-     * ```proto
-     * message MyString {
+     *```proto
+     *message MyString {
      *  // value must be a valid IPv4 address
      *   string value = 1 [(buf.validate.field).string.ipv4 = true];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
      * <code>bool ipv4 = 15 [json_name = "ipv4", (.buf.validate.priv.field) = { ... }</code>
-     *
      * @return Whether the ipv4 field is set.
      */
     public boolean hasIpv4() {
       return wellKnownCase_ == 15;
     }
-
     /**
-     *
-     *
      * <pre>
-     * `ipv4` specifies that the field value must be a valid IPv4
-     * address. If the field value isn't a valid IPv4 address, an error message
-     * will be generated.
+     *`ipv4` specifies that the field value must be a valid IPv4
+     *address. If the field value isn't a valid IPv4 address, an error message
+     *will be generated.
      *
-     * ```proto
-     * message MyString {
+     *```proto
+     *message MyString {
      *  // value must be a valid IPv4 address
      *   string value = 1 [(buf.validate.field).string.ipv4 = true];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
      * <code>bool ipv4 = 15 [json_name = "ipv4", (.buf.validate.priv.field) = { ... }</code>
-     *
      * @return The ipv4.
      */
     public boolean getIpv4() {
@@ -5778,25 +5041,21 @@ public final class StringRules extends com.google.protobuf.GeneratedMessageV3
       }
       return false;
     }
-
     /**
-     *
-     *
      * <pre>
-     * `ipv4` specifies that the field value must be a valid IPv4
-     * address. If the field value isn't a valid IPv4 address, an error message
-     * will be generated.
+     *`ipv4` specifies that the field value must be a valid IPv4
+     *address. If the field value isn't a valid IPv4 address, an error message
+     *will be generated.
      *
-     * ```proto
-     * message MyString {
+     *```proto
+     *message MyString {
      *  // value must be a valid IPv4 address
      *   string value = 1 [(buf.validate.field).string.ipv4 = true];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
      * <code>bool ipv4 = 15 [json_name = "ipv4", (.buf.validate.priv.field) = { ... }</code>
-     *
      * @param value The ipv4 to set.
      * @return This builder for chaining.
      */
@@ -5807,25 +5066,21 @@ public final class StringRules extends com.google.protobuf.GeneratedMessageV3
       onChanged();
       return this;
     }
-
     /**
-     *
-     *
      * <pre>
-     * `ipv4` specifies that the field value must be a valid IPv4
-     * address. If the field value isn't a valid IPv4 address, an error message
-     * will be generated.
+     *`ipv4` specifies that the field value must be a valid IPv4
+     *address. If the field value isn't a valid IPv4 address, an error message
+     *will be generated.
      *
-     * ```proto
-     * message MyString {
+     *```proto
+     *message MyString {
      *  // value must be a valid IPv4 address
      *   string value = 1 [(buf.validate.field).string.ipv4 = true];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
      * <code>bool ipv4 = 15 [json_name = "ipv4", (.buf.validate.priv.field) = { ... }</code>
-     *
      * @return This builder for chaining.
      */
     public Builder clearIpv4() {
@@ -5838,47 +5093,40 @@ public final class StringRules extends com.google.protobuf.GeneratedMessageV3
     }
 
     /**
-     *
-     *
      * <pre>
-     * `ipv6` specifies that the field value must be a valid
-     * IPv6 address, without surrounding square brackets. If the field value is
-     * not a valid IPv6 address, an error message will be generated.
+     *`ipv6` specifies that the field value must be a valid
+     *IPv6 address, without surrounding square brackets. If the field value is
+     *not a valid IPv6 address, an error message will be generated.
      *
-     * ```proto
-     * message MyString {
+     *```proto
+     *message MyString {
      *  // value must be a valid IPv6 address
      *   string value = 1 [(buf.validate.field).string.ipv6 = true];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
      * <code>bool ipv6 = 16 [json_name = "ipv6", (.buf.validate.priv.field) = { ... }</code>
-     *
      * @return Whether the ipv6 field is set.
      */
     public boolean hasIpv6() {
       return wellKnownCase_ == 16;
     }
-
     /**
-     *
-     *
      * <pre>
-     * `ipv6` specifies that the field value must be a valid
-     * IPv6 address, without surrounding square brackets. If the field value is
-     * not a valid IPv6 address, an error message will be generated.
+     *`ipv6` specifies that the field value must be a valid
+     *IPv6 address, without surrounding square brackets. If the field value is
+     *not a valid IPv6 address, an error message will be generated.
      *
-     * ```proto
-     * message MyString {
+     *```proto
+     *message MyString {
      *  // value must be a valid IPv6 address
      *   string value = 1 [(buf.validate.field).string.ipv6 = true];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
      * <code>bool ipv6 = 16 [json_name = "ipv6", (.buf.validate.priv.field) = { ... }</code>
-     *
      * @return The ipv6.
      */
     public boolean getIpv6() {
@@ -5887,25 +5135,21 @@ public final class StringRules extends com.google.protobuf.GeneratedMessageV3
       }
       return false;
     }
-
     /**
-     *
-     *
      * <pre>
-     * `ipv6` specifies that the field value must be a valid
-     * IPv6 address, without surrounding square brackets. If the field value is
-     * not a valid IPv6 address, an error message will be generated.
+     *`ipv6` specifies that the field value must be a valid
+     *IPv6 address, without surrounding square brackets. If the field value is
+     *not a valid IPv6 address, an error message will be generated.
      *
-     * ```proto
-     * message MyString {
+     *```proto
+     *message MyString {
      *  // value must be a valid IPv6 address
      *   string value = 1 [(buf.validate.field).string.ipv6 = true];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
      * <code>bool ipv6 = 16 [json_name = "ipv6", (.buf.validate.priv.field) = { ... }</code>
-     *
      * @param value The ipv6 to set.
      * @return This builder for chaining.
      */
@@ -5916,25 +5160,21 @@ public final class StringRules extends com.google.protobuf.GeneratedMessageV3
       onChanged();
       return this;
     }
-
     /**
-     *
-     *
      * <pre>
-     * `ipv6` specifies that the field value must be a valid
-     * IPv6 address, without surrounding square brackets. If the field value is
-     * not a valid IPv6 address, an error message will be generated.
+     *`ipv6` specifies that the field value must be a valid
+     *IPv6 address, without surrounding square brackets. If the field value is
+     *not a valid IPv6 address, an error message will be generated.
      *
-     * ```proto
-     * message MyString {
+     *```proto
+     *message MyString {
      *  // value must be a valid IPv6 address
      *   string value = 1 [(buf.validate.field).string.ipv6 = true];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
      * <code>bool ipv6 = 16 [json_name = "ipv6", (.buf.validate.priv.field) = { ... }</code>
-     *
      * @return This builder for chaining.
      */
     public Builder clearIpv6() {
@@ -5947,47 +5187,40 @@ public final class StringRules extends com.google.protobuf.GeneratedMessageV3
     }
 
     /**
-     *
-     *
      * <pre>
-     * `uri` specifies that the field value must be a valid,
-     * absolute URI as defined by [RFC 3986](https://tools.ietf.org/html/rfc3986#section-3). If the field value isn't a valid,
-     * absolute URI, an error message will be generated.
+     *`uri` specifies that the field value must be a valid,
+     *absolute URI as defined by [RFC 3986](https://tools.ietf.org/html/rfc3986#section-3). If the field value isn't a valid,
+     *absolute URI, an error message will be generated.
      *
-     * ```proto
-     * message MyString {
+     *```proto
+     *message MyString {
      *  // value must be a valid URI
      *   string value = 1 [(buf.validate.field).string.uri = true];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
      * <code>bool uri = 17 [json_name = "uri", (.buf.validate.priv.field) = { ... }</code>
-     *
      * @return Whether the uri field is set.
      */
     public boolean hasUri() {
       return wellKnownCase_ == 17;
     }
-
     /**
-     *
-     *
      * <pre>
-     * `uri` specifies that the field value must be a valid,
-     * absolute URI as defined by [RFC 3986](https://tools.ietf.org/html/rfc3986#section-3). If the field value isn't a valid,
-     * absolute URI, an error message will be generated.
+     *`uri` specifies that the field value must be a valid,
+     *absolute URI as defined by [RFC 3986](https://tools.ietf.org/html/rfc3986#section-3). If the field value isn't a valid,
+     *absolute URI, an error message will be generated.
      *
-     * ```proto
-     * message MyString {
+     *```proto
+     *message MyString {
      *  // value must be a valid URI
      *   string value = 1 [(buf.validate.field).string.uri = true];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
      * <code>bool uri = 17 [json_name = "uri", (.buf.validate.priv.field) = { ... }</code>
-     *
      * @return The uri.
      */
     public boolean getUri() {
@@ -5996,25 +5229,21 @@ public final class StringRules extends com.google.protobuf.GeneratedMessageV3
       }
       return false;
     }
-
     /**
-     *
-     *
      * <pre>
-     * `uri` specifies that the field value must be a valid,
-     * absolute URI as defined by [RFC 3986](https://tools.ietf.org/html/rfc3986#section-3). If the field value isn't a valid,
-     * absolute URI, an error message will be generated.
+     *`uri` specifies that the field value must be a valid,
+     *absolute URI as defined by [RFC 3986](https://tools.ietf.org/html/rfc3986#section-3). If the field value isn't a valid,
+     *absolute URI, an error message will be generated.
      *
-     * ```proto
-     * message MyString {
+     *```proto
+     *message MyString {
      *  // value must be a valid URI
      *   string value = 1 [(buf.validate.field).string.uri = true];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
      * <code>bool uri = 17 [json_name = "uri", (.buf.validate.priv.field) = { ... }</code>
-     *
      * @param value The uri to set.
      * @return This builder for chaining.
      */
@@ -6025,25 +5254,21 @@ public final class StringRules extends com.google.protobuf.GeneratedMessageV3
       onChanged();
       return this;
     }
-
     /**
-     *
-     *
      * <pre>
-     * `uri` specifies that the field value must be a valid,
-     * absolute URI as defined by [RFC 3986](https://tools.ietf.org/html/rfc3986#section-3). If the field value isn't a valid,
-     * absolute URI, an error message will be generated.
+     *`uri` specifies that the field value must be a valid,
+     *absolute URI as defined by [RFC 3986](https://tools.ietf.org/html/rfc3986#section-3). If the field value isn't a valid,
+     *absolute URI, an error message will be generated.
      *
-     * ```proto
-     * message MyString {
+     *```proto
+     *message MyString {
      *  // value must be a valid URI
      *   string value = 1 [(buf.validate.field).string.uri = true];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
      * <code>bool uri = 17 [json_name = "uri", (.buf.validate.priv.field) = { ... }</code>
-     *
      * @return This builder for chaining.
      */
     public Builder clearUri() {
@@ -6056,47 +5281,40 @@ public final class StringRules extends com.google.protobuf.GeneratedMessageV3
     }
 
     /**
-     *
-     *
      * <pre>
-     * `uri_ref` specifies that the field value must be a valid URI
-     * as defined by [RFC 3986](https://tools.ietf.org/html/rfc3986#section-3) and may be either relative or absolute. If the
-     * field value isn't a valid URI, an error message will be generated.
+     *`uri_ref` specifies that the field value must be a valid URI
+     *as defined by [RFC 3986](https://tools.ietf.org/html/rfc3986#section-3) and may be either relative or absolute. If the
+     *field value isn't a valid URI, an error message will be generated.
      *
-     * ```proto
-     * message MyString {
+     *```proto
+     *message MyString {
      *  // value must be a valid URI
      *   string value = 1 [(buf.validate.field).string.uri_ref = true];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
      * <code>bool uri_ref = 18 [json_name = "uriRef", (.buf.validate.priv.field) = { ... }</code>
-     *
      * @return Whether the uriRef field is set.
      */
     public boolean hasUriRef() {
       return wellKnownCase_ == 18;
     }
-
     /**
-     *
-     *
      * <pre>
-     * `uri_ref` specifies that the field value must be a valid URI
-     * as defined by [RFC 3986](https://tools.ietf.org/html/rfc3986#section-3) and may be either relative or absolute. If the
-     * field value isn't a valid URI, an error message will be generated.
+     *`uri_ref` specifies that the field value must be a valid URI
+     *as defined by [RFC 3986](https://tools.ietf.org/html/rfc3986#section-3) and may be either relative or absolute. If the
+     *field value isn't a valid URI, an error message will be generated.
      *
-     * ```proto
-     * message MyString {
+     *```proto
+     *message MyString {
      *  // value must be a valid URI
      *   string value = 1 [(buf.validate.field).string.uri_ref = true];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
      * <code>bool uri_ref = 18 [json_name = "uriRef", (.buf.validate.priv.field) = { ... }</code>
-     *
      * @return The uriRef.
      */
     public boolean getUriRef() {
@@ -6105,25 +5323,21 @@ public final class StringRules extends com.google.protobuf.GeneratedMessageV3
       }
       return false;
     }
-
     /**
-     *
-     *
      * <pre>
-     * `uri_ref` specifies that the field value must be a valid URI
-     * as defined by [RFC 3986](https://tools.ietf.org/html/rfc3986#section-3) and may be either relative or absolute. If the
-     * field value isn't a valid URI, an error message will be generated.
+     *`uri_ref` specifies that the field value must be a valid URI
+     *as defined by [RFC 3986](https://tools.ietf.org/html/rfc3986#section-3) and may be either relative or absolute. If the
+     *field value isn't a valid URI, an error message will be generated.
      *
-     * ```proto
-     * message MyString {
+     *```proto
+     *message MyString {
      *  // value must be a valid URI
      *   string value = 1 [(buf.validate.field).string.uri_ref = true];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
      * <code>bool uri_ref = 18 [json_name = "uriRef", (.buf.validate.priv.field) = { ... }</code>
-     *
      * @param value The uriRef to set.
      * @return This builder for chaining.
      */
@@ -6134,25 +5348,21 @@ public final class StringRules extends com.google.protobuf.GeneratedMessageV3
       onChanged();
       return this;
     }
-
     /**
-     *
-     *
      * <pre>
-     * `uri_ref` specifies that the field value must be a valid URI
-     * as defined by [RFC 3986](https://tools.ietf.org/html/rfc3986#section-3) and may be either relative or absolute. If the
-     * field value isn't a valid URI, an error message will be generated.
+     *`uri_ref` specifies that the field value must be a valid URI
+     *as defined by [RFC 3986](https://tools.ietf.org/html/rfc3986#section-3) and may be either relative or absolute. If the
+     *field value isn't a valid URI, an error message will be generated.
      *
-     * ```proto
-     * message MyString {
+     *```proto
+     *message MyString {
      *  // value must be a valid URI
      *   string value = 1 [(buf.validate.field).string.uri_ref = true];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
      * <code>bool uri_ref = 18 [json_name = "uriRef", (.buf.validate.priv.field) = { ... }</code>
-     *
      * @return This builder for chaining.
      */
     public Builder clearUriRef() {
@@ -6165,51 +5375,44 @@ public final class StringRules extends com.google.protobuf.GeneratedMessageV3
     }
 
     /**
-     *
-     *
      * <pre>
-     * `address` specifies that the field value must be either a valid hostname
-     * as defined by [RFC 1034](https://tools.ietf.org/html/rfc1034#section-3.5)
-     * (which doesn't support internationalized domain names or IDNs) or a valid
-     * IP (v4 or v6). If the field value isn't a valid hostname or IP, an error
-     * message will be generated.
+     *`address` specifies that the field value must be either a valid hostname
+     *as defined by [RFC 1034](https://tools.ietf.org/html/rfc1034#section-3.5)
+     *(which doesn't support internationalized domain names or IDNs) or a valid
+     *IP (v4 or v6). If the field value isn't a valid hostname or IP, an error
+     *message will be generated.
      *
-     * ```proto
-     * message MyString {
+     *```proto
+     *message MyString {
      *  // value must be a valid hostname, or ip address
      *   string value = 1 [(buf.validate.field).string.address = true];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
      * <code>bool address = 21 [json_name = "address", (.buf.validate.priv.field) = { ... }</code>
-     *
      * @return Whether the address field is set.
      */
     public boolean hasAddress() {
       return wellKnownCase_ == 21;
     }
-
     /**
-     *
-     *
      * <pre>
-     * `address` specifies that the field value must be either a valid hostname
-     * as defined by [RFC 1034](https://tools.ietf.org/html/rfc1034#section-3.5)
-     * (which doesn't support internationalized domain names or IDNs) or a valid
-     * IP (v4 or v6). If the field value isn't a valid hostname or IP, an error
-     * message will be generated.
+     *`address` specifies that the field value must be either a valid hostname
+     *as defined by [RFC 1034](https://tools.ietf.org/html/rfc1034#section-3.5)
+     *(which doesn't support internationalized domain names or IDNs) or a valid
+     *IP (v4 or v6). If the field value isn't a valid hostname or IP, an error
+     *message will be generated.
      *
-     * ```proto
-     * message MyString {
+     *```proto
+     *message MyString {
      *  // value must be a valid hostname, or ip address
      *   string value = 1 [(buf.validate.field).string.address = true];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
      * <code>bool address = 21 [json_name = "address", (.buf.validate.priv.field) = { ... }</code>
-     *
      * @return The address.
      */
     public boolean getAddress() {
@@ -6218,27 +5421,23 @@ public final class StringRules extends com.google.protobuf.GeneratedMessageV3
       }
       return false;
     }
-
     /**
-     *
-     *
      * <pre>
-     * `address` specifies that the field value must be either a valid hostname
-     * as defined by [RFC 1034](https://tools.ietf.org/html/rfc1034#section-3.5)
-     * (which doesn't support internationalized domain names or IDNs) or a valid
-     * IP (v4 or v6). If the field value isn't a valid hostname or IP, an error
-     * message will be generated.
+     *`address` specifies that the field value must be either a valid hostname
+     *as defined by [RFC 1034](https://tools.ietf.org/html/rfc1034#section-3.5)
+     *(which doesn't support internationalized domain names or IDNs) or a valid
+     *IP (v4 or v6). If the field value isn't a valid hostname or IP, an error
+     *message will be generated.
      *
-     * ```proto
-     * message MyString {
+     *```proto
+     *message MyString {
      *  // value must be a valid hostname, or ip address
      *   string value = 1 [(buf.validate.field).string.address = true];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
      * <code>bool address = 21 [json_name = "address", (.buf.validate.priv.field) = { ... }</code>
-     *
      * @param value The address to set.
      * @return This builder for chaining.
      */
@@ -6249,27 +5448,23 @@ public final class StringRules extends com.google.protobuf.GeneratedMessageV3
       onChanged();
       return this;
     }
-
     /**
-     *
-     *
      * <pre>
-     * `address` specifies that the field value must be either a valid hostname
-     * as defined by [RFC 1034](https://tools.ietf.org/html/rfc1034#section-3.5)
-     * (which doesn't support internationalized domain names or IDNs) or a valid
-     * IP (v4 or v6). If the field value isn't a valid hostname or IP, an error
-     * message will be generated.
+     *`address` specifies that the field value must be either a valid hostname
+     *as defined by [RFC 1034](https://tools.ietf.org/html/rfc1034#section-3.5)
+     *(which doesn't support internationalized domain names or IDNs) or a valid
+     *IP (v4 or v6). If the field value isn't a valid hostname or IP, an error
+     *message will be generated.
      *
-     * ```proto
-     * message MyString {
+     *```proto
+     *message MyString {
      *  // value must be a valid hostname, or ip address
      *   string value = 1 [(buf.validate.field).string.address = true];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
      * <code>bool address = 21 [json_name = "address", (.buf.validate.priv.field) = { ... }</code>
-     *
      * @return This builder for chaining.
      */
     public Builder clearAddress() {
@@ -6282,47 +5477,40 @@ public final class StringRules extends com.google.protobuf.GeneratedMessageV3
     }
 
     /**
-     *
-     *
      * <pre>
-     * `uuid` specifies that the field value must be a valid UUID as defined by
-     * [RFC 4122](https://tools.ietf.org/html/rfc4122#section-4.1.2). If the
-     * field value isn't a valid UUID, an error message will be generated.
+     *`uuid` specifies that the field value must be a valid UUID as defined by
+     *[RFC 4122](https://tools.ietf.org/html/rfc4122#section-4.1.2). If the
+     *field value isn't a valid UUID, an error message will be generated.
      *
-     * ```proto
-     * message MyString {
+     *```proto
+     *message MyString {
      *  // value must be a valid UUID
      *   string value = 1 [(buf.validate.field).string.uuid = true];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
      * <code>bool uuid = 22 [json_name = "uuid", (.buf.validate.priv.field) = { ... }</code>
-     *
      * @return Whether the uuid field is set.
      */
     public boolean hasUuid() {
       return wellKnownCase_ == 22;
     }
-
     /**
-     *
-     *
      * <pre>
-     * `uuid` specifies that the field value must be a valid UUID as defined by
-     * [RFC 4122](https://tools.ietf.org/html/rfc4122#section-4.1.2). If the
-     * field value isn't a valid UUID, an error message will be generated.
+     *`uuid` specifies that the field value must be a valid UUID as defined by
+     *[RFC 4122](https://tools.ietf.org/html/rfc4122#section-4.1.2). If the
+     *field value isn't a valid UUID, an error message will be generated.
      *
-     * ```proto
-     * message MyString {
+     *```proto
+     *message MyString {
      *  // value must be a valid UUID
      *   string value = 1 [(buf.validate.field).string.uuid = true];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
      * <code>bool uuid = 22 [json_name = "uuid", (.buf.validate.priv.field) = { ... }</code>
-     *
      * @return The uuid.
      */
     public boolean getUuid() {
@@ -6331,25 +5519,21 @@ public final class StringRules extends com.google.protobuf.GeneratedMessageV3
       }
       return false;
     }
-
     /**
-     *
-     *
      * <pre>
-     * `uuid` specifies that the field value must be a valid UUID as defined by
-     * [RFC 4122](https://tools.ietf.org/html/rfc4122#section-4.1.2). If the
-     * field value isn't a valid UUID, an error message will be generated.
+     *`uuid` specifies that the field value must be a valid UUID as defined by
+     *[RFC 4122](https://tools.ietf.org/html/rfc4122#section-4.1.2). If the
+     *field value isn't a valid UUID, an error message will be generated.
      *
-     * ```proto
-     * message MyString {
+     *```proto
+     *message MyString {
      *  // value must be a valid UUID
      *   string value = 1 [(buf.validate.field).string.uuid = true];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
      * <code>bool uuid = 22 [json_name = "uuid", (.buf.validate.priv.field) = { ... }</code>
-     *
      * @param value The uuid to set.
      * @return This builder for chaining.
      */
@@ -6360,25 +5544,21 @@ public final class StringRules extends com.google.protobuf.GeneratedMessageV3
       onChanged();
       return this;
     }
-
     /**
-     *
-     *
      * <pre>
-     * `uuid` specifies that the field value must be a valid UUID as defined by
-     * [RFC 4122](https://tools.ietf.org/html/rfc4122#section-4.1.2). If the
-     * field value isn't a valid UUID, an error message will be generated.
+     *`uuid` specifies that the field value must be a valid UUID as defined by
+     *[RFC 4122](https://tools.ietf.org/html/rfc4122#section-4.1.2). If the
+     *field value isn't a valid UUID, an error message will be generated.
      *
-     * ```proto
-     * message MyString {
+     *```proto
+     *message MyString {
      *  // value must be a valid UUID
      *   string value = 1 [(buf.validate.field).string.uuid = true];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
      * <code>bool uuid = 22 [json_name = "uuid", (.buf.validate.priv.field) = { ... }</code>
-     *
      * @return This builder for chaining.
      */
     public Builder clearUuid() {
@@ -6391,72 +5571,61 @@ public final class StringRules extends com.google.protobuf.GeneratedMessageV3
     }
 
     /**
-     *
-     *
      * <pre>
-     * `well_known_regex` specifies a common well-known pattern
-     * defined as a regex. If the field value doesn't match the well-known
-     * regex, an error message will be generated.
+     *`well_known_regex` specifies a common well-known pattern
+     *defined as a regex. If the field value doesn't match the well-known
+     *regex, an error message will be generated.
      *
-     * ```proto
-     * message MyString {
+     *```proto
+     *message MyString {
      *  // value must be a valid HTTP header value
      *   string value = 1 [(buf.validate.field).string.well_known_regex = 2];
-     * }
-     * ```
+     *}
+     *```
      *
-     * #### KnownRegex
+     *#### KnownRegex
      *
-     * `well_known_regex` contains some well-known patterns.
+     *`well_known_regex` contains some well-known patterns.
      *
-     * | Name                          | Number | Description                               |
-     * |-------------------------------|--------|-------------------------------------------|
-     * | KNOWN_REGEX_UNSPECIFIED       | 0      |                                           |
-     * | KNOWN_REGEX_HTTP_HEADER_NAME  | 1      | HTTP header name as defined by [RFC 7230](https://tools.ietf.org/html/rfc7230#section-3.2)  |
-     * | KNOWN_REGEX_HTTP_HEADER_VALUE | 2      | HTTP header value as defined by [RFC 7230](https://tools.ietf.org/html/rfc7230#section-3.2.4) |
+     *| Name                          | Number | Description                               |
+     *|-------------------------------|--------|-------------------------------------------|
+     *| KNOWN_REGEX_UNSPECIFIED       | 0      |                                           |
+     *| KNOWN_REGEX_HTTP_HEADER_NAME  | 1      | HTTP header name as defined by [RFC 7230](https://tools.ietf.org/html/rfc7230#section-3.2)  |
+     *| KNOWN_REGEX_HTTP_HEADER_VALUE | 2      | HTTP header value as defined by [RFC 7230](https://tools.ietf.org/html/rfc7230#section-3.2.4) |
      * </pre>
      *
-     * <code>
-     * .buf.validate.KnownRegex well_known_regex = 24 [json_name = "wellKnownRegex", (.buf.validate.priv.field) = { ... }
-     * </code>
-     *
+     * <code>.buf.validate.KnownRegex well_known_regex = 24 [json_name = "wellKnownRegex", (.buf.validate.priv.field) = { ... }</code>
      * @return Whether the wellKnownRegex field is set.
      */
     @java.lang.Override
     public boolean hasWellKnownRegex() {
       return wellKnownCase_ == 24;
     }
-
     /**
-     *
-     *
      * <pre>
-     * `well_known_regex` specifies a common well-known pattern
-     * defined as a regex. If the field value doesn't match the well-known
-     * regex, an error message will be generated.
+     *`well_known_regex` specifies a common well-known pattern
+     *defined as a regex. If the field value doesn't match the well-known
+     *regex, an error message will be generated.
      *
-     * ```proto
-     * message MyString {
+     *```proto
+     *message MyString {
      *  // value must be a valid HTTP header value
      *   string value = 1 [(buf.validate.field).string.well_known_regex = 2];
-     * }
-     * ```
+     *}
+     *```
      *
-     * #### KnownRegex
+     *#### KnownRegex
      *
-     * `well_known_regex` contains some well-known patterns.
+     *`well_known_regex` contains some well-known patterns.
      *
-     * | Name                          | Number | Description                               |
-     * |-------------------------------|--------|-------------------------------------------|
-     * | KNOWN_REGEX_UNSPECIFIED       | 0      |                                           |
-     * | KNOWN_REGEX_HTTP_HEADER_NAME  | 1      | HTTP header name as defined by [RFC 7230](https://tools.ietf.org/html/rfc7230#section-3.2)  |
-     * | KNOWN_REGEX_HTTP_HEADER_VALUE | 2      | HTTP header value as defined by [RFC 7230](https://tools.ietf.org/html/rfc7230#section-3.2.4) |
+     *| Name                          | Number | Description                               |
+     *|-------------------------------|--------|-------------------------------------------|
+     *| KNOWN_REGEX_UNSPECIFIED       | 0      |                                           |
+     *| KNOWN_REGEX_HTTP_HEADER_NAME  | 1      | HTTP header name as defined by [RFC 7230](https://tools.ietf.org/html/rfc7230#section-3.2)  |
+     *| KNOWN_REGEX_HTTP_HEADER_VALUE | 2      | HTTP header value as defined by [RFC 7230](https://tools.ietf.org/html/rfc7230#section-3.2.4) |
      * </pre>
      *
-     * <code>
-     * .buf.validate.KnownRegex well_known_regex = 24 [json_name = "wellKnownRegex", (.buf.validate.priv.field) = { ... }
-     * </code>
-     *
+     * <code>.buf.validate.KnownRegex well_known_regex = 24 [json_name = "wellKnownRegex", (.buf.validate.priv.field) = { ... }</code>
      * @return The enum numeric value on the wire for wellKnownRegex.
      */
     @java.lang.Override
@@ -6466,37 +5635,31 @@ public final class StringRules extends com.google.protobuf.GeneratedMessageV3
       }
       return 0;
     }
-
     /**
-     *
-     *
      * <pre>
-     * `well_known_regex` specifies a common well-known pattern
-     * defined as a regex. If the field value doesn't match the well-known
-     * regex, an error message will be generated.
+     *`well_known_regex` specifies a common well-known pattern
+     *defined as a regex. If the field value doesn't match the well-known
+     *regex, an error message will be generated.
      *
-     * ```proto
-     * message MyString {
+     *```proto
+     *message MyString {
      *  // value must be a valid HTTP header value
      *   string value = 1 [(buf.validate.field).string.well_known_regex = 2];
-     * }
-     * ```
+     *}
+     *```
      *
-     * #### KnownRegex
+     *#### KnownRegex
      *
-     * `well_known_regex` contains some well-known patterns.
+     *`well_known_regex` contains some well-known patterns.
      *
-     * | Name                          | Number | Description                               |
-     * |-------------------------------|--------|-------------------------------------------|
-     * | KNOWN_REGEX_UNSPECIFIED       | 0      |                                           |
-     * | KNOWN_REGEX_HTTP_HEADER_NAME  | 1      | HTTP header name as defined by [RFC 7230](https://tools.ietf.org/html/rfc7230#section-3.2)  |
-     * | KNOWN_REGEX_HTTP_HEADER_VALUE | 2      | HTTP header value as defined by [RFC 7230](https://tools.ietf.org/html/rfc7230#section-3.2.4) |
+     *| Name                          | Number | Description                               |
+     *|-------------------------------|--------|-------------------------------------------|
+     *| KNOWN_REGEX_UNSPECIFIED       | 0      |                                           |
+     *| KNOWN_REGEX_HTTP_HEADER_NAME  | 1      | HTTP header name as defined by [RFC 7230](https://tools.ietf.org/html/rfc7230#section-3.2)  |
+     *| KNOWN_REGEX_HTTP_HEADER_VALUE | 2      | HTTP header value as defined by [RFC 7230](https://tools.ietf.org/html/rfc7230#section-3.2.4) |
      * </pre>
      *
-     * <code>
-     * .buf.validate.KnownRegex well_known_regex = 24 [json_name = "wellKnownRegex", (.buf.validate.priv.field) = { ... }
-     * </code>
-     *
+     * <code>.buf.validate.KnownRegex well_known_regex = 24 [json_name = "wellKnownRegex", (.buf.validate.priv.field) = { ... }</code>
      * @param value The enum numeric value on the wire for wellKnownRegex to set.
      * @return This builder for chaining.
      */
@@ -6506,79 +5669,67 @@ public final class StringRules extends com.google.protobuf.GeneratedMessageV3
       onChanged();
       return this;
     }
-
     /**
-     *
-     *
      * <pre>
-     * `well_known_regex` specifies a common well-known pattern
-     * defined as a regex. If the field value doesn't match the well-known
-     * regex, an error message will be generated.
+     *`well_known_regex` specifies a common well-known pattern
+     *defined as a regex. If the field value doesn't match the well-known
+     *regex, an error message will be generated.
      *
-     * ```proto
-     * message MyString {
+     *```proto
+     *message MyString {
      *  // value must be a valid HTTP header value
      *   string value = 1 [(buf.validate.field).string.well_known_regex = 2];
-     * }
-     * ```
+     *}
+     *```
      *
-     * #### KnownRegex
+     *#### KnownRegex
      *
-     * `well_known_regex` contains some well-known patterns.
+     *`well_known_regex` contains some well-known patterns.
      *
-     * | Name                          | Number | Description                               |
-     * |-------------------------------|--------|-------------------------------------------|
-     * | KNOWN_REGEX_UNSPECIFIED       | 0      |                                           |
-     * | KNOWN_REGEX_HTTP_HEADER_NAME  | 1      | HTTP header name as defined by [RFC 7230](https://tools.ietf.org/html/rfc7230#section-3.2)  |
-     * | KNOWN_REGEX_HTTP_HEADER_VALUE | 2      | HTTP header value as defined by [RFC 7230](https://tools.ietf.org/html/rfc7230#section-3.2.4) |
+     *| Name                          | Number | Description                               |
+     *|-------------------------------|--------|-------------------------------------------|
+     *| KNOWN_REGEX_UNSPECIFIED       | 0      |                                           |
+     *| KNOWN_REGEX_HTTP_HEADER_NAME  | 1      | HTTP header name as defined by [RFC 7230](https://tools.ietf.org/html/rfc7230#section-3.2)  |
+     *| KNOWN_REGEX_HTTP_HEADER_VALUE | 2      | HTTP header value as defined by [RFC 7230](https://tools.ietf.org/html/rfc7230#section-3.2.4) |
      * </pre>
      *
-     * <code>
-     * .buf.validate.KnownRegex well_known_regex = 24 [json_name = "wellKnownRegex", (.buf.validate.priv.field) = { ... }
-     * </code>
-     *
+     * <code>.buf.validate.KnownRegex well_known_regex = 24 [json_name = "wellKnownRegex", (.buf.validate.priv.field) = { ... }</code>
      * @return The wellKnownRegex.
      */
     @java.lang.Override
     public build.buf.validate.KnownRegex getWellKnownRegex() {
       if (wellKnownCase_ == 24) {
-        build.buf.validate.KnownRegex result =
-            build.buf.validate.KnownRegex.forNumber((java.lang.Integer) wellKnown_);
+        build.buf.validate.KnownRegex result = build.buf.validate.KnownRegex.forNumber(
+            (java.lang.Integer) wellKnown_);
         return result == null ? build.buf.validate.KnownRegex.UNRECOGNIZED : result;
       }
       return build.buf.validate.KnownRegex.KNOWN_REGEX_UNSPECIFIED;
     }
-
     /**
-     *
-     *
      * <pre>
-     * `well_known_regex` specifies a common well-known pattern
-     * defined as a regex. If the field value doesn't match the well-known
-     * regex, an error message will be generated.
+     *`well_known_regex` specifies a common well-known pattern
+     *defined as a regex. If the field value doesn't match the well-known
+     *regex, an error message will be generated.
      *
-     * ```proto
-     * message MyString {
+     *```proto
+     *message MyString {
      *  // value must be a valid HTTP header value
      *   string value = 1 [(buf.validate.field).string.well_known_regex = 2];
-     * }
-     * ```
+     *}
+     *```
      *
-     * #### KnownRegex
+     *#### KnownRegex
      *
-     * `well_known_regex` contains some well-known patterns.
+     *`well_known_regex` contains some well-known patterns.
      *
-     * | Name                          | Number | Description                               |
-     * |-------------------------------|--------|-------------------------------------------|
-     * | KNOWN_REGEX_UNSPECIFIED       | 0      |                                           |
-     * | KNOWN_REGEX_HTTP_HEADER_NAME  | 1      | HTTP header name as defined by [RFC 7230](https://tools.ietf.org/html/rfc7230#section-3.2)  |
-     * | KNOWN_REGEX_HTTP_HEADER_VALUE | 2      | HTTP header value as defined by [RFC 7230](https://tools.ietf.org/html/rfc7230#section-3.2.4) |
+     *| Name                          | Number | Description                               |
+     *|-------------------------------|--------|-------------------------------------------|
+     *| KNOWN_REGEX_UNSPECIFIED       | 0      |                                           |
+     *| KNOWN_REGEX_HTTP_HEADER_NAME  | 1      | HTTP header name as defined by [RFC 7230](https://tools.ietf.org/html/rfc7230#section-3.2)  |
+     *| KNOWN_REGEX_HTTP_HEADER_VALUE | 2      | HTTP header value as defined by [RFC 7230](https://tools.ietf.org/html/rfc7230#section-3.2.4) |
      * </pre>
      *
-     * <code>
-     * .buf.validate.KnownRegex well_known_regex = 24 [json_name = "wellKnownRegex", (.buf.validate.priv.field) = { ... }
-     * </code>
-     *
+     * <code>.buf.validate.KnownRegex well_known_regex = 24 [json_name = "wellKnownRegex", (.buf.validate.priv.field) = { ... }</code>
      * @param value The wellKnownRegex to set.
      * @return This builder for chaining.
      */
@@ -6591,37 +5742,31 @@ public final class StringRules extends com.google.protobuf.GeneratedMessageV3
       onChanged();
       return this;
     }
-
     /**
-     *
-     *
      * <pre>
-     * `well_known_regex` specifies a common well-known pattern
-     * defined as a regex. If the field value doesn't match the well-known
-     * regex, an error message will be generated.
+     *`well_known_regex` specifies a common well-known pattern
+     *defined as a regex. If the field value doesn't match the well-known
+     *regex, an error message will be generated.
      *
-     * ```proto
-     * message MyString {
+     *```proto
+     *message MyString {
      *  // value must be a valid HTTP header value
      *   string value = 1 [(buf.validate.field).string.well_known_regex = 2];
-     * }
-     * ```
+     *}
+     *```
      *
-     * #### KnownRegex
+     *#### KnownRegex
      *
-     * `well_known_regex` contains some well-known patterns.
+     *`well_known_regex` contains some well-known patterns.
      *
-     * | Name                          | Number | Description                               |
-     * |-------------------------------|--------|-------------------------------------------|
-     * | KNOWN_REGEX_UNSPECIFIED       | 0      |                                           |
-     * | KNOWN_REGEX_HTTP_HEADER_NAME  | 1      | HTTP header name as defined by [RFC 7230](https://tools.ietf.org/html/rfc7230#section-3.2)  |
-     * | KNOWN_REGEX_HTTP_HEADER_VALUE | 2      | HTTP header value as defined by [RFC 7230](https://tools.ietf.org/html/rfc7230#section-3.2.4) |
+     *| Name                          | Number | Description                               |
+     *|-------------------------------|--------|-------------------------------------------|
+     *| KNOWN_REGEX_UNSPECIFIED       | 0      |                                           |
+     *| KNOWN_REGEX_HTTP_HEADER_NAME  | 1      | HTTP header name as defined by [RFC 7230](https://tools.ietf.org/html/rfc7230#section-3.2)  |
+     *| KNOWN_REGEX_HTTP_HEADER_VALUE | 2      | HTTP header value as defined by [RFC 7230](https://tools.ietf.org/html/rfc7230#section-3.2.4) |
      * </pre>
      *
-     * <code>
-     * .buf.validate.KnownRegex well_known_regex = 24 [json_name = "wellKnownRegex", (.buf.validate.priv.field) = { ... }
-     * </code>
-     *
+     * <code>.buf.validate.KnownRegex well_known_regex = 24 [json_name = "wellKnownRegex", (.buf.validate.priv.field) = { ... }</code>
      * @return This builder for chaining.
      */
     public Builder clearWellKnownRegex() {
@@ -6633,82 +5778,70 @@ public final class StringRules extends com.google.protobuf.GeneratedMessageV3
       return this;
     }
 
-    private boolean strict_;
-
+    private boolean strict_ ;
     /**
-     *
-     *
      * <pre>
-     * This applies to regexes `HTTP_HEADER_NAME` and `HTTP_HEADER_VALUE` to
-     * enable strict header validation. By default, this is true, and HTTP header
-     * validations are [RFC-compliant](https://tools.ietf.org/html/rfc7230#section-3). Setting to false will enable looser
-     * validations that only disallow `&#92;r&#92;n&#92;0` characters, which can be used to
-     * bypass header matching rules.
+     *This applies to regexes `HTTP_HEADER_NAME` and `HTTP_HEADER_VALUE` to
+     *enable strict header validation. By default, this is true, and HTTP header
+     *validations are [RFC-compliant](https://tools.ietf.org/html/rfc7230#section-3). Setting to false will enable looser
+     *validations that only disallow `&#92;r&#92;n&#92;0` characters, which can be used to
+     *bypass header matching rules.
      *
-     * ```proto
-     * message MyString {
+     *```proto
+     *message MyString {
      *   // The field `value` must have be a valid HTTP headers, but not enforced with strict rules.
      *   string value = 1 [(buf.validate.field).string.strict = false];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
      * <code>optional bool strict = 25 [json_name = "strict"];</code>
-     *
      * @return Whether the strict field is set.
      */
     @java.lang.Override
     public boolean hasStrict() {
       return ((bitField0_ & 0x01000000) != 0);
     }
-
     /**
-     *
-     *
      * <pre>
-     * This applies to regexes `HTTP_HEADER_NAME` and `HTTP_HEADER_VALUE` to
-     * enable strict header validation. By default, this is true, and HTTP header
-     * validations are [RFC-compliant](https://tools.ietf.org/html/rfc7230#section-3). Setting to false will enable looser
-     * validations that only disallow `&#92;r&#92;n&#92;0` characters, which can be used to
-     * bypass header matching rules.
+     *This applies to regexes `HTTP_HEADER_NAME` and `HTTP_HEADER_VALUE` to
+     *enable strict header validation. By default, this is true, and HTTP header
+     *validations are [RFC-compliant](https://tools.ietf.org/html/rfc7230#section-3). Setting to false will enable looser
+     *validations that only disallow `&#92;r&#92;n&#92;0` characters, which can be used to
+     *bypass header matching rules.
      *
-     * ```proto
-     * message MyString {
+     *```proto
+     *message MyString {
      *   // The field `value` must have be a valid HTTP headers, but not enforced with strict rules.
      *   string value = 1 [(buf.validate.field).string.strict = false];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
      * <code>optional bool strict = 25 [json_name = "strict"];</code>
-     *
      * @return The strict.
      */
     @java.lang.Override
     public boolean getStrict() {
       return strict_;
     }
-
     /**
-     *
-     *
      * <pre>
-     * This applies to regexes `HTTP_HEADER_NAME` and `HTTP_HEADER_VALUE` to
-     * enable strict header validation. By default, this is true, and HTTP header
-     * validations are [RFC-compliant](https://tools.ietf.org/html/rfc7230#section-3). Setting to false will enable looser
-     * validations that only disallow `&#92;r&#92;n&#92;0` characters, which can be used to
-     * bypass header matching rules.
+     *This applies to regexes `HTTP_HEADER_NAME` and `HTTP_HEADER_VALUE` to
+     *enable strict header validation. By default, this is true, and HTTP header
+     *validations are [RFC-compliant](https://tools.ietf.org/html/rfc7230#section-3). Setting to false will enable looser
+     *validations that only disallow `&#92;r&#92;n&#92;0` characters, which can be used to
+     *bypass header matching rules.
      *
-     * ```proto
-     * message MyString {
+     *```proto
+     *message MyString {
      *   // The field `value` must have be a valid HTTP headers, but not enforced with strict rules.
      *   string value = 1 [(buf.validate.field).string.strict = false];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
      * <code>optional bool strict = 25 [json_name = "strict"];</code>
-     *
      * @param value The strict to set.
      * @return This builder for chaining.
      */
@@ -6719,27 +5852,23 @@ public final class StringRules extends com.google.protobuf.GeneratedMessageV3
       onChanged();
       return this;
     }
-
     /**
-     *
-     *
      * <pre>
-     * This applies to regexes `HTTP_HEADER_NAME` and `HTTP_HEADER_VALUE` to
-     * enable strict header validation. By default, this is true, and HTTP header
-     * validations are [RFC-compliant](https://tools.ietf.org/html/rfc7230#section-3). Setting to false will enable looser
-     * validations that only disallow `&#92;r&#92;n&#92;0` characters, which can be used to
-     * bypass header matching rules.
+     *This applies to regexes `HTTP_HEADER_NAME` and `HTTP_HEADER_VALUE` to
+     *enable strict header validation. By default, this is true, and HTTP header
+     *validations are [RFC-compliant](https://tools.ietf.org/html/rfc7230#section-3). Setting to false will enable looser
+     *validations that only disallow `&#92;r&#92;n&#92;0` characters, which can be used to
+     *bypass header matching rules.
      *
-     * ```proto
-     * message MyString {
+     *```proto
+     *message MyString {
      *   // The field `value` must have be a valid HTTP headers, but not enforced with strict rules.
      *   string value = 1 [(buf.validate.field).string.strict = false];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
      * <code>optional bool strict = 25 [json_name = "strict"];</code>
-     *
      * @return This builder for chaining.
      */
     public Builder clearStrict() {
@@ -6748,9 +5877,9 @@ public final class StringRules extends com.google.protobuf.GeneratedMessageV3
       onChanged();
       return this;
     }
-
     @java.lang.Override
-    public final Builder setUnknownFields(final com.google.protobuf.UnknownFieldSet unknownFields) {
+    public final Builder setUnknownFields(
+        final com.google.protobuf.UnknownFieldSet unknownFields) {
       return super.setUnknownFields(unknownFields);
     }
 
@@ -6760,12 +5889,12 @@ public final class StringRules extends com.google.protobuf.GeneratedMessageV3
       return super.mergeUnknownFields(unknownFields);
     }
 
+
     // @@protoc_insertion_point(builder_scope:buf.validate.StringRules)
   }
 
   // @@protoc_insertion_point(class_scope:buf.validate.StringRules)
   private static final build.buf.validate.StringRules DEFAULT_INSTANCE;
-
   static {
     DEFAULT_INSTANCE = new build.buf.validate.StringRules();
   }
@@ -6774,27 +5903,27 @@ public final class StringRules extends com.google.protobuf.GeneratedMessageV3
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<StringRules> PARSER =
-      new com.google.protobuf.AbstractParser<StringRules>() {
-        @java.lang.Override
-        public StringRules parsePartialFrom(
-            com.google.protobuf.CodedInputStream input,
-            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-            throws com.google.protobuf.InvalidProtocolBufferException {
-          Builder builder = newBuilder();
-          try {
-            builder.mergeFrom(input, extensionRegistry);
-          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-            throw e.setUnfinishedMessage(builder.buildPartial());
-          } catch (com.google.protobuf.UninitializedMessageException e) {
-            throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
-          } catch (java.io.IOException e) {
-            throw new com.google.protobuf.InvalidProtocolBufferException(e)
-                .setUnfinishedMessage(builder.buildPartial());
-          }
-          return builder.buildPartial();
-        }
-      };
+  private static final com.google.protobuf.Parser<StringRules>
+      PARSER = new com.google.protobuf.AbstractParser<StringRules>() {
+    @java.lang.Override
+    public StringRules parsePartialFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      Builder builder = newBuilder();
+      try {
+        builder.mergeFrom(input, extensionRegistry);
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(builder.buildPartial());
+      } catch (com.google.protobuf.UninitializedMessageException e) {
+        throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(e)
+            .setUnfinishedMessage(builder.buildPartial());
+      }
+      return builder.buildPartial();
+    }
+  };
 
   public static com.google.protobuf.Parser<StringRules> parser() {
     return PARSER;
@@ -6809,4 +5938,6 @@ public final class StringRules extends com.google.protobuf.GeneratedMessageV3
   public build.buf.validate.StringRules getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
+
 }
+

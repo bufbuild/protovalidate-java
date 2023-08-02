@@ -4,42 +4,40 @@
 package build.buf.validate;
 
 /**
- *
- *
  * <pre>
  * RepeatedRules describe the constraints applied to `repeated` values.
  * </pre>
  *
  * Protobuf type {@code buf.validate.RepeatedRules}
  */
-public final class RepeatedRules extends com.google.protobuf.GeneratedMessageV3
-    implements
+public final class RepeatedRules extends
+    com.google.protobuf.GeneratedMessageV3 implements
     // @@protoc_insertion_point(message_implements:buf.validate.RepeatedRules)
     RepeatedRulesOrBuilder {
-  private static final long serialVersionUID = 0L;
-
+private static final long serialVersionUID = 0L;
   // Use RepeatedRules.newBuilder() to construct.
   private RepeatedRules(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
-
-  private RepeatedRules() {}
+  private RepeatedRules() {
+  }
 
   @java.lang.Override
   @SuppressWarnings({"unused"})
-  protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
+  protected java.lang.Object newInstance(
+      UnusedPrivateParameter unused) {
     return new RepeatedRules();
   }
 
-  public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+  public static final com.google.protobuf.Descriptors.Descriptor
+      getDescriptor() {
     return build.buf.validate.ValidateProto.internal_static_buf_validate_RepeatedRules_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return build.buf.validate.ValidateProto
-        .internal_static_buf_validate_RepeatedRules_fieldAccessorTable
+    return build.buf.validate.ValidateProto.internal_static_buf_validate_RepeatedRules_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
             build.buf.validate.RepeatedRules.class, build.buf.validate.RepeatedRules.Builder.class);
   }
@@ -47,52 +45,40 @@ public final class RepeatedRules extends com.google.protobuf.GeneratedMessageV3
   private int bitField0_;
   public static final int MIN_ITEMS_FIELD_NUMBER = 1;
   private long minItems_ = 0L;
-
   /**
-   *
-   *
    * <pre>
-   * `min_items` requires that this field must contain at least the specified
-   * minimum number of items.
+   *`min_items` requires that this field must contain at least the specified
+   *minimum number of items.
    *
-   * ```proto
-   * message MyRepeated {
+   *```proto
+   *message MyRepeated {
    *  // value must contain at least  2 items
    *  repeated string value = 1 [(buf.validate.field).repeated.min_items = 2];
-   * }
-   * ```
+   *}
+   *```
    * </pre>
    *
-   * <code>
-   * optional uint64 min_items = 1 [json_name = "minItems", (.buf.validate.priv.field) = { ... }
-   * </code>
-   *
+   * <code>optional uint64 min_items = 1 [json_name = "minItems", (.buf.validate.priv.field) = { ... }</code>
    * @return Whether the minItems field is set.
    */
   @java.lang.Override
   public boolean hasMinItems() {
     return ((bitField0_ & 0x00000001) != 0);
   }
-
   /**
-   *
-   *
    * <pre>
-   * `min_items` requires that this field must contain at least the specified
-   * minimum number of items.
+   *`min_items` requires that this field must contain at least the specified
+   *minimum number of items.
    *
-   * ```proto
-   * message MyRepeated {
+   *```proto
+   *message MyRepeated {
    *  // value must contain at least  2 items
    *  repeated string value = 1 [(buf.validate.field).repeated.min_items = 2];
-   * }
-   * ```
+   *}
+   *```
    * </pre>
    *
-   * <code>
-   * optional uint64 min_items = 1 [json_name = "minItems", (.buf.validate.priv.field) = { ... }
-   * </code>
-   *
+   * <code>optional uint64 min_items = 1 [json_name = "minItems", (.buf.validate.priv.field) = { ... }</code>
    * @return The minItems.
    */
   @java.lang.Override
@@ -102,56 +88,44 @@ public final class RepeatedRules extends com.google.protobuf.GeneratedMessageV3
 
   public static final int MAX_ITEMS_FIELD_NUMBER = 2;
   private long maxItems_ = 0L;
-
   /**
-   *
-   *
    * <pre>
-   * `max_items` denotes that this field must not exceed a
-   * certain number of items as the upper limit. If the field contains more
-   * items than specified, an error message will be generated, requiring the
-   * field to maintain no more than the specified number of items.
+   *`max_items` denotes that this field must not exceed a
+   *certain number of items as the upper limit. If the field contains more
+   *items than specified, an error message will be generated, requiring the
+   *field to maintain no more than the specified number of items.
    *
-   * ```proto
-   * message MyRepeated {
+   *```proto
+   *message MyRepeated {
    *  // value must contain no more than 3 item(s)
    *  repeated string value = 1 [(buf.validate.field).repeated.max_items = 3];
-   * }
-   * ```
+   *}
+   *```
    * </pre>
    *
-   * <code>
-   * optional uint64 max_items = 2 [json_name = "maxItems", (.buf.validate.priv.field) = { ... }
-   * </code>
-   *
+   * <code>optional uint64 max_items = 2 [json_name = "maxItems", (.buf.validate.priv.field) = { ... }</code>
    * @return Whether the maxItems field is set.
    */
   @java.lang.Override
   public boolean hasMaxItems() {
     return ((bitField0_ & 0x00000002) != 0);
   }
-
   /**
-   *
-   *
    * <pre>
-   * `max_items` denotes that this field must not exceed a
-   * certain number of items as the upper limit. If the field contains more
-   * items than specified, an error message will be generated, requiring the
-   * field to maintain no more than the specified number of items.
+   *`max_items` denotes that this field must not exceed a
+   *certain number of items as the upper limit. If the field contains more
+   *items than specified, an error message will be generated, requiring the
+   *field to maintain no more than the specified number of items.
    *
-   * ```proto
-   * message MyRepeated {
+   *```proto
+   *message MyRepeated {
    *  // value must contain no more than 3 item(s)
    *  repeated string value = 1 [(buf.validate.field).repeated.max_items = 3];
-   * }
-   * ```
+   *}
+   *```
    * </pre>
    *
-   * <code>
-   * optional uint64 max_items = 2 [json_name = "maxItems", (.buf.validate.priv.field) = { ... }
-   * </code>
-   *
+   * <code>optional uint64 max_items = 2 [json_name = "maxItems", (.buf.validate.priv.field) = { ... }</code>
    * @return The maxItems.
    */
   @java.lang.Override
@@ -161,52 +135,42 @@ public final class RepeatedRules extends com.google.protobuf.GeneratedMessageV3
 
   public static final int UNIQUE_FIELD_NUMBER = 3;
   private boolean unique_ = false;
-
   /**
-   *
-   *
    * <pre>
-   * `unique` indicates that all elements in this field must
-   * be unique. This constraint is strictly applicable to scalar and enum
-   * types, with message types not being supported.
+   *`unique` indicates that all elements in this field must
+   *be unique. This constraint is strictly applicable to scalar and enum
+   *types, with message types not being supported.
    *
-   * ```proto
-   * message MyRepeated {
+   *```proto
+   *message MyRepeated {
    * // repeated value must contain unique items
    * repeated string value = 1 [(buf.validate.field).repeated.unique = true];
-   * }
-   * ```
+   *}
+   *```
    * </pre>
    *
-   * <code>optional bool unique = 3 [json_name = "unique", (.buf.validate.priv.field) = { ... }
-   * </code>
-   *
+   * <code>optional bool unique = 3 [json_name = "unique", (.buf.validate.priv.field) = { ... }</code>
    * @return Whether the unique field is set.
    */
   @java.lang.Override
   public boolean hasUnique() {
     return ((bitField0_ & 0x00000004) != 0);
   }
-
   /**
-   *
-   *
    * <pre>
-   * `unique` indicates that all elements in this field must
-   * be unique. This constraint is strictly applicable to scalar and enum
-   * types, with message types not being supported.
+   *`unique` indicates that all elements in this field must
+   *be unique. This constraint is strictly applicable to scalar and enum
+   *types, with message types not being supported.
    *
-   * ```proto
-   * message MyRepeated {
+   *```proto
+   *message MyRepeated {
    * // repeated value must contain unique items
    * repeated string value = 1 [(buf.validate.field).repeated.unique = true];
-   * }
-   * ```
+   *}
+   *```
    * </pre>
    *
-   * <code>optional bool unique = 3 [json_name = "unique", (.buf.validate.priv.field) = { ... }
-   * </code>
-   *
+   * <code>optional bool unique = 3 [json_name = "unique", (.buf.validate.priv.field) = { ... }</code>
    * @return The unique.
    */
   @java.lang.Override
@@ -216,17 +180,14 @@ public final class RepeatedRules extends com.google.protobuf.GeneratedMessageV3
 
   public static final int ITEMS_FIELD_NUMBER = 4;
   private build.buf.validate.FieldConstraints items_;
-
   /**
-   *
-   *
    * <pre>
-   * `items` details the constraints to be applied to each item
-   * in the field. Even for repeated message fields, validation is executed
-   * against each item unless skip is explicitly specified.
+   *`items` details the constraints to be applied to each item
+   *in the field. Even for repeated message fields, validation is executed
+   *against each item unless skip is explicitly specified.
    *
-   * ```proto
-   * message MyRepeated {
+   *```proto
+   *message MyRepeated {
    *  // The items in the field `value` must follow the specified constraints.
    *  repeated string value = 1 [(buf.validate.field).repeated.items = {
    *    string: {
@@ -234,28 +195,24 @@ public final class RepeatedRules extends com.google.protobuf.GeneratedMessageV3
    *      max_len: 10
    *    }
    *  }];
-   * }
+   *}
    * </pre>
    *
    * <code>optional .buf.validate.FieldConstraints items = 4 [json_name = "items"];</code>
-   *
    * @return Whether the items field is set.
    */
   @java.lang.Override
   public boolean hasItems() {
     return ((bitField0_ & 0x00000008) != 0);
   }
-
   /**
-   *
-   *
    * <pre>
-   * `items` details the constraints to be applied to each item
-   * in the field. Even for repeated message fields, validation is executed
-   * against each item unless skip is explicitly specified.
+   *`items` details the constraints to be applied to each item
+   *in the field. Even for repeated message fields, validation is executed
+   *against each item unless skip is explicitly specified.
    *
-   * ```proto
-   * message MyRepeated {
+   *```proto
+   *message MyRepeated {
    *  // The items in the field `value` must follow the specified constraints.
    *  repeated string value = 1 [(buf.validate.field).repeated.items = {
    *    string: {
@@ -263,28 +220,24 @@ public final class RepeatedRules extends com.google.protobuf.GeneratedMessageV3
    *      max_len: 10
    *    }
    *  }];
-   * }
+   *}
    * </pre>
    *
    * <code>optional .buf.validate.FieldConstraints items = 4 [json_name = "items"];</code>
-   *
    * @return The items.
    */
   @java.lang.Override
   public build.buf.validate.FieldConstraints getItems() {
     return items_ == null ? build.buf.validate.FieldConstraints.getDefaultInstance() : items_;
   }
-
   /**
-   *
-   *
    * <pre>
-   * `items` details the constraints to be applied to each item
-   * in the field. Even for repeated message fields, validation is executed
-   * against each item unless skip is explicitly specified.
+   *`items` details the constraints to be applied to each item
+   *in the field. Even for repeated message fields, validation is executed
+   *against each item unless skip is explicitly specified.
    *
-   * ```proto
-   * message MyRepeated {
+   *```proto
+   *message MyRepeated {
    *  // The items in the field `value` must follow the specified constraints.
    *  repeated string value = 1 [(buf.validate.field).repeated.items = {
    *    string: {
@@ -292,7 +245,7 @@ public final class RepeatedRules extends com.google.protobuf.GeneratedMessageV3
    *      max_len: 10
    *    }
    *  }];
-   * }
+   *}
    * </pre>
    *
    * <code>optional .buf.validate.FieldConstraints items = 4 [json_name = "items"];</code>
@@ -303,7 +256,6 @@ public final class RepeatedRules extends com.google.protobuf.GeneratedMessageV3
   }
 
   private byte memoizedIsInitialized = -1;
-
   @java.lang.Override
   public final boolean isInitialized() {
     byte isInitialized = memoizedIsInitialized;
@@ -315,7 +267,8 @@ public final class RepeatedRules extends com.google.protobuf.GeneratedMessageV3
   }
 
   @java.lang.Override
-  public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
+  public void writeTo(com.google.protobuf.CodedOutputStream output)
+                      throws java.io.IOException {
     if (((bitField0_ & 0x00000001) != 0)) {
       output.writeUInt64(1, minItems_);
     }
@@ -338,16 +291,20 @@ public final class RepeatedRules extends com.google.protobuf.GeneratedMessageV3
 
     size = 0;
     if (((bitField0_ & 0x00000001) != 0)) {
-      size += com.google.protobuf.CodedOutputStream.computeUInt64Size(1, minItems_);
+      size += com.google.protobuf.CodedOutputStream
+        .computeUInt64Size(1, minItems_);
     }
     if (((bitField0_ & 0x00000002) != 0)) {
-      size += com.google.protobuf.CodedOutputStream.computeUInt64Size(2, maxItems_);
+      size += com.google.protobuf.CodedOutputStream
+        .computeUInt64Size(2, maxItems_);
     }
     if (((bitField0_ & 0x00000004) != 0)) {
-      size += com.google.protobuf.CodedOutputStream.computeBoolSize(3, unique_);
+      size += com.google.protobuf.CodedOutputStream
+        .computeBoolSize(3, unique_);
     }
     if (((bitField0_ & 0x00000008) != 0)) {
-      size += com.google.protobuf.CodedOutputStream.computeMessageSize(4, getItems());
+      size += com.google.protobuf.CodedOutputStream
+        .computeMessageSize(4, getItems());
     }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
@@ -357,7 +314,7 @@ public final class RepeatedRules extends com.google.protobuf.GeneratedMessageV3
   @java.lang.Override
   public boolean equals(final java.lang.Object obj) {
     if (obj == this) {
-      return true;
+     return true;
     }
     if (!(obj instanceof build.buf.validate.RepeatedRules)) {
       return super.equals(obj);
@@ -366,19 +323,23 @@ public final class RepeatedRules extends com.google.protobuf.GeneratedMessageV3
 
     if (hasMinItems() != other.hasMinItems()) return false;
     if (hasMinItems()) {
-      if (getMinItems() != other.getMinItems()) return false;
+      if (getMinItems()
+          != other.getMinItems()) return false;
     }
     if (hasMaxItems() != other.hasMaxItems()) return false;
     if (hasMaxItems()) {
-      if (getMaxItems() != other.getMaxItems()) return false;
+      if (getMaxItems()
+          != other.getMaxItems()) return false;
     }
     if (hasUnique() != other.hasUnique()) return false;
     if (hasUnique()) {
-      if (getUnique() != other.getUnique()) return false;
+      if (getUnique()
+          != other.getUnique()) return false;
     }
     if (hasItems() != other.hasItems()) return false;
     if (hasItems()) {
-      if (!getItems().equals(other.getItems())) return false;
+      if (!getItems()
+          .equals(other.getItems())) return false;
     }
     if (!getUnknownFields().equals(other.getUnknownFields())) return false;
     return true;
@@ -393,15 +354,18 @@ public final class RepeatedRules extends com.google.protobuf.GeneratedMessageV3
     hash = (19 * hash) + getDescriptor().hashCode();
     if (hasMinItems()) {
       hash = (37 * hash) + MIN_ITEMS_FIELD_NUMBER;
-      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(getMinItems());
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getMinItems());
     }
     if (hasMaxItems()) {
       hash = (37 * hash) + MAX_ITEMS_FIELD_NUMBER;
-      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(getMaxItems());
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getMaxItems());
     }
     if (hasUnique()) {
       hash = (37 * hash) + UNIQUE_FIELD_NUMBER;
-      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(getUnique());
+      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+          getUnique());
     }
     if (hasItems()) {
       hash = (37 * hash) + ITEMS_FIELD_NUMBER;
@@ -412,126 +376,120 @@ public final class RepeatedRules extends com.google.protobuf.GeneratedMessageV3
     return hash;
   }
 
-  public static build.buf.validate.RepeatedRules parseFrom(java.nio.ByteBuffer data)
+  public static build.buf.validate.RepeatedRules parseFrom(
+      java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-
   public static build.buf.validate.RepeatedRules parseFrom(
-      java.nio.ByteBuffer data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      java.nio.ByteBuffer data,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-
-  public static build.buf.validate.RepeatedRules parseFrom(com.google.protobuf.ByteString data)
+  public static build.buf.validate.RepeatedRules parseFrom(
+      com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-
   public static build.buf.validate.RepeatedRules parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-
   public static build.buf.validate.RepeatedRules parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-
   public static build.buf.validate.RepeatedRules parseFrom(
-      byte[] data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      byte[] data,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-
   public static build.buf.validate.RepeatedRules parseFrom(java.io.InputStream input)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
+    return com.google.protobuf.GeneratedMessageV3
+        .parseWithIOException(PARSER, input);
   }
-
   public static build.buf.validate.RepeatedRules parseFrom(
-      java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      java.io.InputStream input,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
-        PARSER, input, extensionRegistry);
+    return com.google.protobuf.GeneratedMessageV3
+        .parseWithIOException(PARSER, input, extensionRegistry);
   }
 
   public static build.buf.validate.RepeatedRules parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input);
+    return com.google.protobuf.GeneratedMessageV3
+        .parseDelimitedWithIOException(PARSER, input);
   }
 
   public static build.buf.validate.RepeatedRules parseDelimitedFrom(
-      java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      java.io.InputStream input,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(
-        PARSER, input, extensionRegistry);
+    return com.google.protobuf.GeneratedMessageV3
+        .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-
   public static build.buf.validate.RepeatedRules parseFrom(
-      com.google.protobuf.CodedInputStream input) throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
+      com.google.protobuf.CodedInputStream input)
+      throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3
+        .parseWithIOException(PARSER, input);
   }
-
   public static build.buf.validate.RepeatedRules parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
-        PARSER, input, extensionRegistry);
+    return com.google.protobuf.GeneratedMessageV3
+        .parseWithIOException(PARSER, input, extensionRegistry);
   }
 
   @java.lang.Override
-  public Builder newBuilderForType() {
-    return newBuilder();
-  }
-
+  public Builder newBuilderForType() { return newBuilder(); }
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-
   public static Builder newBuilder(build.buf.validate.RepeatedRules prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
-
   @java.lang.Override
   public Builder toBuilder() {
-    return this == DEFAULT_INSTANCE ? new Builder() : new Builder().mergeFrom(this);
+    return this == DEFAULT_INSTANCE
+        ? new Builder() : new Builder().mergeFrom(this);
   }
 
   @java.lang.Override
-  protected Builder newBuilderForType(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+  protected Builder newBuilderForType(
+      com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
     Builder builder = new Builder(parent);
     return builder;
   }
-
   /**
-   *
-   *
    * <pre>
    * RepeatedRules describe the constraints applied to `repeated` values.
    * </pre>
    *
    * Protobuf type {@code buf.validate.RepeatedRules}
    */
-  public static final class Builder extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
-      implements
+  public static final class Builder extends
+      com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
       // @@protoc_insertion_point(builder_implements:buf.validate.RepeatedRules)
       build.buf.validate.RepeatedRulesOrBuilder {
-    public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
       return build.buf.validate.ValidateProto.internal_static_buf_validate_RepeatedRules_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return build.buf.validate.ValidateProto
-          .internal_static_buf_validate_RepeatedRules_fieldAccessorTable
+      return build.buf.validate.ValidateProto.internal_static_buf_validate_RepeatedRules_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              build.buf.validate.RepeatedRules.class,
-              build.buf.validate.RepeatedRules.Builder.class);
+              build.buf.validate.RepeatedRules.class, build.buf.validate.RepeatedRules.Builder.class);
     }
 
     // Construct using build.buf.validate.RepeatedRules.newBuilder()
@@ -539,17 +497,17 @@ public final class RepeatedRules extends com.google.protobuf.GeneratedMessageV3
       maybeForceBuilderInitialization();
     }
 
-    private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+    private Builder(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
       super(parent);
       maybeForceBuilderInitialization();
     }
-
     private void maybeForceBuilderInitialization() {
-      if (com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders) {
+      if (com.google.protobuf.GeneratedMessageV3
+              .alwaysUseFieldBuilders) {
         getItemsFieldBuilder();
       }
     }
-
     @java.lang.Override
     public Builder clear() {
       super.clear();
@@ -566,7 +524,8 @@ public final class RepeatedRules extends com.google.protobuf.GeneratedMessageV3
     }
 
     @java.lang.Override
-    public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
+    public com.google.protobuf.Descriptors.Descriptor
+        getDescriptorForType() {
       return build.buf.validate.ValidateProto.internal_static_buf_validate_RepeatedRules_descriptor;
     }
 
@@ -587,9 +546,7 @@ public final class RepeatedRules extends com.google.protobuf.GeneratedMessageV3
     @java.lang.Override
     public build.buf.validate.RepeatedRules buildPartial() {
       build.buf.validate.RepeatedRules result = new build.buf.validate.RepeatedRules(this);
-      if (bitField0_ != 0) {
-        buildPartial0(result);
-      }
+      if (bitField0_ != 0) { buildPartial0(result); }
       onBuilt();
       return result;
     }
@@ -610,7 +567,9 @@ public final class RepeatedRules extends com.google.protobuf.GeneratedMessageV3
         to_bitField0_ |= 0x00000004;
       }
       if (((from_bitField0_ & 0x00000008) != 0)) {
-        result.items_ = itemsBuilder_ == null ? items_ : itemsBuilder_.build();
+        result.items_ = itemsBuilder_ == null
+            ? items_
+            : itemsBuilder_.build();
         to_bitField0_ |= 0x00000008;
       }
       result.bitField0_ |= to_bitField0_;
@@ -620,39 +579,38 @@ public final class RepeatedRules extends com.google.protobuf.GeneratedMessageV3
     public Builder clone() {
       return super.clone();
     }
-
     @java.lang.Override
     public Builder setField(
-        com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field,
+        java.lang.Object value) {
       return super.setField(field, value);
     }
-
     @java.lang.Override
-    public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
+    public Builder clearField(
+        com.google.protobuf.Descriptors.FieldDescriptor field) {
       return super.clearField(field);
     }
-
     @java.lang.Override
-    public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+    public Builder clearOneof(
+        com.google.protobuf.Descriptors.OneofDescriptor oneof) {
       return super.clearOneof(oneof);
     }
-
     @java.lang.Override
     public Builder setRepeatedField(
-        com.google.protobuf.Descriptors.FieldDescriptor field, int index, java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field,
+        int index, java.lang.Object value) {
       return super.setRepeatedField(field, index, value);
     }
-
     @java.lang.Override
     public Builder addRepeatedField(
-        com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field,
+        java.lang.Object value) {
       return super.addRepeatedField(field, value);
     }
-
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
       if (other instanceof build.buf.validate.RepeatedRules) {
-        return mergeFrom((build.buf.validate.RepeatedRules) other);
+        return mergeFrom((build.buf.validate.RepeatedRules)other);
       } else {
         super.mergeFrom(other);
         return this;
@@ -699,37 +657,34 @@ public final class RepeatedRules extends com.google.protobuf.GeneratedMessageV3
             case 0:
               done = true;
               break;
-            case 8:
-              {
-                minItems_ = input.readUInt64();
-                bitField0_ |= 0x00000001;
-                break;
-              } // case 8
-            case 16:
-              {
-                maxItems_ = input.readUInt64();
-                bitField0_ |= 0x00000002;
-                break;
-              } // case 16
-            case 24:
-              {
-                unique_ = input.readBool();
-                bitField0_ |= 0x00000004;
-                break;
-              } // case 24
-            case 34:
-              {
-                input.readMessage(getItemsFieldBuilder().getBuilder(), extensionRegistry);
-                bitField0_ |= 0x00000008;
-                break;
-              } // case 34
-            default:
-              {
-                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
-                  done = true; // was an endgroup tag
-                }
-                break;
-              } // default:
+            case 8: {
+              minItems_ = input.readUInt64();
+              bitField0_ |= 0x00000001;
+              break;
+            } // case 8
+            case 16: {
+              maxItems_ = input.readUInt64();
+              bitField0_ |= 0x00000002;
+              break;
+            } // case 16
+            case 24: {
+              unique_ = input.readBool();
+              bitField0_ |= 0x00000004;
+              break;
+            } // case 24
+            case 34: {
+              input.readMessage(
+                  getItemsFieldBuilder().getBuilder(),
+                  extensionRegistry);
+              bitField0_ |= 0x00000008;
+              break;
+            } // case 34
+            default: {
+              if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                done = true; // was an endgroup tag
+              }
+              break;
+            } // default:
           } // switch (tag)
         } // while (!done)
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -739,82 +694,63 @@ public final class RepeatedRules extends com.google.protobuf.GeneratedMessageV3
       } // finally
       return this;
     }
-
     private int bitField0_;
 
-    private long minItems_;
-
+    private long minItems_ ;
     /**
-     *
-     *
      * <pre>
-     * `min_items` requires that this field must contain at least the specified
-     * minimum number of items.
+     *`min_items` requires that this field must contain at least the specified
+     *minimum number of items.
      *
-     * ```proto
-     * message MyRepeated {
+     *```proto
+     *message MyRepeated {
      *  // value must contain at least  2 items
      *  repeated string value = 1 [(buf.validate.field).repeated.min_items = 2];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>
-     * optional uint64 min_items = 1 [json_name = "minItems", (.buf.validate.priv.field) = { ... }
-     * </code>
-     *
+     * <code>optional uint64 min_items = 1 [json_name = "minItems", (.buf.validate.priv.field) = { ... }</code>
      * @return Whether the minItems field is set.
      */
     @java.lang.Override
     public boolean hasMinItems() {
       return ((bitField0_ & 0x00000001) != 0);
     }
-
     /**
-     *
-     *
      * <pre>
-     * `min_items` requires that this field must contain at least the specified
-     * minimum number of items.
+     *`min_items` requires that this field must contain at least the specified
+     *minimum number of items.
      *
-     * ```proto
-     * message MyRepeated {
+     *```proto
+     *message MyRepeated {
      *  // value must contain at least  2 items
      *  repeated string value = 1 [(buf.validate.field).repeated.min_items = 2];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>
-     * optional uint64 min_items = 1 [json_name = "minItems", (.buf.validate.priv.field) = { ... }
-     * </code>
-     *
+     * <code>optional uint64 min_items = 1 [json_name = "minItems", (.buf.validate.priv.field) = { ... }</code>
      * @return The minItems.
      */
     @java.lang.Override
     public long getMinItems() {
       return minItems_;
     }
-
     /**
-     *
-     *
      * <pre>
-     * `min_items` requires that this field must contain at least the specified
-     * minimum number of items.
+     *`min_items` requires that this field must contain at least the specified
+     *minimum number of items.
      *
-     * ```proto
-     * message MyRepeated {
+     *```proto
+     *message MyRepeated {
      *  // value must contain at least  2 items
      *  repeated string value = 1 [(buf.validate.field).repeated.min_items = 2];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>
-     * optional uint64 min_items = 1 [json_name = "minItems", (.buf.validate.priv.field) = { ... }
-     * </code>
-     *
+     * <code>optional uint64 min_items = 1 [json_name = "minItems", (.buf.validate.priv.field) = { ... }</code>
      * @param value The minItems to set.
      * @return This builder for chaining.
      */
@@ -825,26 +761,20 @@ public final class RepeatedRules extends com.google.protobuf.GeneratedMessageV3
       onChanged();
       return this;
     }
-
     /**
-     *
-     *
      * <pre>
-     * `min_items` requires that this field must contain at least the specified
-     * minimum number of items.
+     *`min_items` requires that this field must contain at least the specified
+     *minimum number of items.
      *
-     * ```proto
-     * message MyRepeated {
+     *```proto
+     *message MyRepeated {
      *  // value must contain at least  2 items
      *  repeated string value = 1 [(buf.validate.field).repeated.min_items = 2];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>
-     * optional uint64 min_items = 1 [json_name = "minItems", (.buf.validate.priv.field) = { ... }
-     * </code>
-     *
+     * <code>optional uint64 min_items = 1 [json_name = "minItems", (.buf.validate.priv.field) = { ... }</code>
      * @return This builder for chaining.
      */
     public Builder clearMinItems() {
@@ -854,85 +784,67 @@ public final class RepeatedRules extends com.google.protobuf.GeneratedMessageV3
       return this;
     }
 
-    private long maxItems_;
-
+    private long maxItems_ ;
     /**
-     *
-     *
      * <pre>
-     * `max_items` denotes that this field must not exceed a
-     * certain number of items as the upper limit. If the field contains more
-     * items than specified, an error message will be generated, requiring the
-     * field to maintain no more than the specified number of items.
+     *`max_items` denotes that this field must not exceed a
+     *certain number of items as the upper limit. If the field contains more
+     *items than specified, an error message will be generated, requiring the
+     *field to maintain no more than the specified number of items.
      *
-     * ```proto
-     * message MyRepeated {
+     *```proto
+     *message MyRepeated {
      *  // value must contain no more than 3 item(s)
      *  repeated string value = 1 [(buf.validate.field).repeated.max_items = 3];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>
-     * optional uint64 max_items = 2 [json_name = "maxItems", (.buf.validate.priv.field) = { ... }
-     * </code>
-     *
+     * <code>optional uint64 max_items = 2 [json_name = "maxItems", (.buf.validate.priv.field) = { ... }</code>
      * @return Whether the maxItems field is set.
      */
     @java.lang.Override
     public boolean hasMaxItems() {
       return ((bitField0_ & 0x00000002) != 0);
     }
-
     /**
-     *
-     *
      * <pre>
-     * `max_items` denotes that this field must not exceed a
-     * certain number of items as the upper limit. If the field contains more
-     * items than specified, an error message will be generated, requiring the
-     * field to maintain no more than the specified number of items.
+     *`max_items` denotes that this field must not exceed a
+     *certain number of items as the upper limit. If the field contains more
+     *items than specified, an error message will be generated, requiring the
+     *field to maintain no more than the specified number of items.
      *
-     * ```proto
-     * message MyRepeated {
+     *```proto
+     *message MyRepeated {
      *  // value must contain no more than 3 item(s)
      *  repeated string value = 1 [(buf.validate.field).repeated.max_items = 3];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>
-     * optional uint64 max_items = 2 [json_name = "maxItems", (.buf.validate.priv.field) = { ... }
-     * </code>
-     *
+     * <code>optional uint64 max_items = 2 [json_name = "maxItems", (.buf.validate.priv.field) = { ... }</code>
      * @return The maxItems.
      */
     @java.lang.Override
     public long getMaxItems() {
       return maxItems_;
     }
-
     /**
-     *
-     *
      * <pre>
-     * `max_items` denotes that this field must not exceed a
-     * certain number of items as the upper limit. If the field contains more
-     * items than specified, an error message will be generated, requiring the
-     * field to maintain no more than the specified number of items.
+     *`max_items` denotes that this field must not exceed a
+     *certain number of items as the upper limit. If the field contains more
+     *items than specified, an error message will be generated, requiring the
+     *field to maintain no more than the specified number of items.
      *
-     * ```proto
-     * message MyRepeated {
+     *```proto
+     *message MyRepeated {
      *  // value must contain no more than 3 item(s)
      *  repeated string value = 1 [(buf.validate.field).repeated.max_items = 3];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>
-     * optional uint64 max_items = 2 [json_name = "maxItems", (.buf.validate.priv.field) = { ... }
-     * </code>
-     *
+     * <code>optional uint64 max_items = 2 [json_name = "maxItems", (.buf.validate.priv.field) = { ... }</code>
      * @param value The maxItems to set.
      * @return This builder for chaining.
      */
@@ -943,28 +855,22 @@ public final class RepeatedRules extends com.google.protobuf.GeneratedMessageV3
       onChanged();
       return this;
     }
-
     /**
-     *
-     *
      * <pre>
-     * `max_items` denotes that this field must not exceed a
-     * certain number of items as the upper limit. If the field contains more
-     * items than specified, an error message will be generated, requiring the
-     * field to maintain no more than the specified number of items.
+     *`max_items` denotes that this field must not exceed a
+     *certain number of items as the upper limit. If the field contains more
+     *items than specified, an error message will be generated, requiring the
+     *field to maintain no more than the specified number of items.
      *
-     * ```proto
-     * message MyRepeated {
+     *```proto
+     *message MyRepeated {
      *  // value must contain no more than 3 item(s)
      *  repeated string value = 1 [(buf.validate.field).repeated.max_items = 3];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>
-     * optional uint64 max_items = 2 [json_name = "maxItems", (.buf.validate.priv.field) = { ... }
-     * </code>
-     *
+     * <code>optional uint64 max_items = 2 [json_name = "maxItems", (.buf.validate.priv.field) = { ... }</code>
      * @return This builder for chaining.
      */
     public Builder clearMaxItems() {
@@ -974,79 +880,64 @@ public final class RepeatedRules extends com.google.protobuf.GeneratedMessageV3
       return this;
     }
 
-    private boolean unique_;
-
+    private boolean unique_ ;
     /**
-     *
-     *
      * <pre>
-     * `unique` indicates that all elements in this field must
-     * be unique. This constraint is strictly applicable to scalar and enum
-     * types, with message types not being supported.
+     *`unique` indicates that all elements in this field must
+     *be unique. This constraint is strictly applicable to scalar and enum
+     *types, with message types not being supported.
      *
-     * ```proto
-     * message MyRepeated {
+     *```proto
+     *message MyRepeated {
      * // repeated value must contain unique items
      * repeated string value = 1 [(buf.validate.field).repeated.unique = true];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>optional bool unique = 3 [json_name = "unique", (.buf.validate.priv.field) = { ... }
-     * </code>
-     *
+     * <code>optional bool unique = 3 [json_name = "unique", (.buf.validate.priv.field) = { ... }</code>
      * @return Whether the unique field is set.
      */
     @java.lang.Override
     public boolean hasUnique() {
       return ((bitField0_ & 0x00000004) != 0);
     }
-
     /**
-     *
-     *
      * <pre>
-     * `unique` indicates that all elements in this field must
-     * be unique. This constraint is strictly applicable to scalar and enum
-     * types, with message types not being supported.
+     *`unique` indicates that all elements in this field must
+     *be unique. This constraint is strictly applicable to scalar and enum
+     *types, with message types not being supported.
      *
-     * ```proto
-     * message MyRepeated {
+     *```proto
+     *message MyRepeated {
      * // repeated value must contain unique items
      * repeated string value = 1 [(buf.validate.field).repeated.unique = true];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>optional bool unique = 3 [json_name = "unique", (.buf.validate.priv.field) = { ... }
-     * </code>
-     *
+     * <code>optional bool unique = 3 [json_name = "unique", (.buf.validate.priv.field) = { ... }</code>
      * @return The unique.
      */
     @java.lang.Override
     public boolean getUnique() {
       return unique_;
     }
-
     /**
-     *
-     *
      * <pre>
-     * `unique` indicates that all elements in this field must
-     * be unique. This constraint is strictly applicable to scalar and enum
-     * types, with message types not being supported.
+     *`unique` indicates that all elements in this field must
+     *be unique. This constraint is strictly applicable to scalar and enum
+     *types, with message types not being supported.
      *
-     * ```proto
-     * message MyRepeated {
+     *```proto
+     *message MyRepeated {
      * // repeated value must contain unique items
      * repeated string value = 1 [(buf.validate.field).repeated.unique = true];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>optional bool unique = 3 [json_name = "unique", (.buf.validate.priv.field) = { ... }
-     * </code>
-     *
+     * <code>optional bool unique = 3 [json_name = "unique", (.buf.validate.priv.field) = { ... }</code>
      * @param value The unique to set.
      * @return This builder for chaining.
      */
@@ -1057,26 +948,21 @@ public final class RepeatedRules extends com.google.protobuf.GeneratedMessageV3
       onChanged();
       return this;
     }
-
     /**
-     *
-     *
      * <pre>
-     * `unique` indicates that all elements in this field must
-     * be unique. This constraint is strictly applicable to scalar and enum
-     * types, with message types not being supported.
+     *`unique` indicates that all elements in this field must
+     *be unique. This constraint is strictly applicable to scalar and enum
+     *types, with message types not being supported.
      *
-     * ```proto
-     * message MyRepeated {
+     *```proto
+     *message MyRepeated {
      * // repeated value must contain unique items
      * repeated string value = 1 [(buf.validate.field).repeated.unique = true];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>optional bool unique = 3 [json_name = "unique", (.buf.validate.priv.field) = { ... }
-     * </code>
-     *
+     * <code>optional bool unique = 3 [json_name = "unique", (.buf.validate.priv.field) = { ... }</code>
      * @return This builder for chaining.
      */
     public Builder clearUnique() {
@@ -1088,21 +974,15 @@ public final class RepeatedRules extends com.google.protobuf.GeneratedMessageV3
 
     private build.buf.validate.FieldConstraints items_;
     private com.google.protobuf.SingleFieldBuilderV3<
-            build.buf.validate.FieldConstraints,
-            build.buf.validate.FieldConstraints.Builder,
-            build.buf.validate.FieldConstraintsOrBuilder>
-        itemsBuilder_;
-
+        build.buf.validate.FieldConstraints, build.buf.validate.FieldConstraints.Builder, build.buf.validate.FieldConstraintsOrBuilder> itemsBuilder_;
     /**
-     *
-     *
      * <pre>
-     * `items` details the constraints to be applied to each item
-     * in the field. Even for repeated message fields, validation is executed
-     * against each item unless skip is explicitly specified.
+     *`items` details the constraints to be applied to each item
+     *in the field. Even for repeated message fields, validation is executed
+     *against each item unless skip is explicitly specified.
      *
-     * ```proto
-     * message MyRepeated {
+     *```proto
+     *message MyRepeated {
      *  // The items in the field `value` must follow the specified constraints.
      *  repeated string value = 1 [(buf.validate.field).repeated.items = {
      *    string: {
@@ -1110,27 +990,23 @@ public final class RepeatedRules extends com.google.protobuf.GeneratedMessageV3
      *      max_len: 10
      *    }
      *  }];
-     * }
+     *}
      * </pre>
      *
      * <code>optional .buf.validate.FieldConstraints items = 4 [json_name = "items"];</code>
-     *
      * @return Whether the items field is set.
      */
     public boolean hasItems() {
       return ((bitField0_ & 0x00000008) != 0);
     }
-
     /**
-     *
-     *
      * <pre>
-     * `items` details the constraints to be applied to each item
-     * in the field. Even for repeated message fields, validation is executed
-     * against each item unless skip is explicitly specified.
+     *`items` details the constraints to be applied to each item
+     *in the field. Even for repeated message fields, validation is executed
+     *against each item unless skip is explicitly specified.
      *
-     * ```proto
-     * message MyRepeated {
+     *```proto
+     *message MyRepeated {
      *  // The items in the field `value` must follow the specified constraints.
      *  repeated string value = 1 [(buf.validate.field).repeated.items = {
      *    string: {
@@ -1138,11 +1014,10 @@ public final class RepeatedRules extends com.google.protobuf.GeneratedMessageV3
      *      max_len: 10
      *    }
      *  }];
-     * }
+     *}
      * </pre>
      *
      * <code>optional .buf.validate.FieldConstraints items = 4 [json_name = "items"];</code>
-     *
      * @return The items.
      */
     public build.buf.validate.FieldConstraints getItems() {
@@ -1152,17 +1027,14 @@ public final class RepeatedRules extends com.google.protobuf.GeneratedMessageV3
         return itemsBuilder_.getMessage();
       }
     }
-
     /**
-     *
-     *
      * <pre>
-     * `items` details the constraints to be applied to each item
-     * in the field. Even for repeated message fields, validation is executed
-     * against each item unless skip is explicitly specified.
+     *`items` details the constraints to be applied to each item
+     *in the field. Even for repeated message fields, validation is executed
+     *against each item unless skip is explicitly specified.
      *
-     * ```proto
-     * message MyRepeated {
+     *```proto
+     *message MyRepeated {
      *  // The items in the field `value` must follow the specified constraints.
      *  repeated string value = 1 [(buf.validate.field).repeated.items = {
      *    string: {
@@ -1170,7 +1042,7 @@ public final class RepeatedRules extends com.google.protobuf.GeneratedMessageV3
      *      max_len: 10
      *    }
      *  }];
-     * }
+     *}
      * </pre>
      *
      * <code>optional .buf.validate.FieldConstraints items = 4 [json_name = "items"];</code>
@@ -1188,17 +1060,14 @@ public final class RepeatedRules extends com.google.protobuf.GeneratedMessageV3
       onChanged();
       return this;
     }
-
     /**
-     *
-     *
      * <pre>
-     * `items` details the constraints to be applied to each item
-     * in the field. Even for repeated message fields, validation is executed
-     * against each item unless skip is explicitly specified.
+     *`items` details the constraints to be applied to each item
+     *in the field. Even for repeated message fields, validation is executed
+     *against each item unless skip is explicitly specified.
      *
-     * ```proto
-     * message MyRepeated {
+     *```proto
+     *message MyRepeated {
      *  // The items in the field `value` must follow the specified constraints.
      *  repeated string value = 1 [(buf.validate.field).repeated.items = {
      *    string: {
@@ -1206,12 +1075,13 @@ public final class RepeatedRules extends com.google.protobuf.GeneratedMessageV3
      *      max_len: 10
      *    }
      *  }];
-     * }
+     *}
      * </pre>
      *
      * <code>optional .buf.validate.FieldConstraints items = 4 [json_name = "items"];</code>
      */
-    public Builder setItems(build.buf.validate.FieldConstraints.Builder builderForValue) {
+    public Builder setItems(
+        build.buf.validate.FieldConstraints.Builder builderForValue) {
       if (itemsBuilder_ == null) {
         items_ = builderForValue.build();
       } else {
@@ -1221,17 +1091,14 @@ public final class RepeatedRules extends com.google.protobuf.GeneratedMessageV3
       onChanged();
       return this;
     }
-
     /**
-     *
-     *
      * <pre>
-     * `items` details the constraints to be applied to each item
-     * in the field. Even for repeated message fields, validation is executed
-     * against each item unless skip is explicitly specified.
+     *`items` details the constraints to be applied to each item
+     *in the field. Even for repeated message fields, validation is executed
+     *against each item unless skip is explicitly specified.
      *
-     * ```proto
-     * message MyRepeated {
+     *```proto
+     *message MyRepeated {
      *  // The items in the field `value` must follow the specified constraints.
      *  repeated string value = 1 [(buf.validate.field).repeated.items = {
      *    string: {
@@ -1239,16 +1106,16 @@ public final class RepeatedRules extends com.google.protobuf.GeneratedMessageV3
      *      max_len: 10
      *    }
      *  }];
-     * }
+     *}
      * </pre>
      *
      * <code>optional .buf.validate.FieldConstraints items = 4 [json_name = "items"];</code>
      */
     public Builder mergeItems(build.buf.validate.FieldConstraints value) {
       if (itemsBuilder_ == null) {
-        if (((bitField0_ & 0x00000008) != 0)
-            && items_ != null
-            && items_ != build.buf.validate.FieldConstraints.getDefaultInstance()) {
+        if (((bitField0_ & 0x00000008) != 0) &&
+          items_ != null &&
+          items_ != build.buf.validate.FieldConstraints.getDefaultInstance()) {
           getItemsBuilder().mergeFrom(value);
         } else {
           items_ = value;
@@ -1260,17 +1127,14 @@ public final class RepeatedRules extends com.google.protobuf.GeneratedMessageV3
       onChanged();
       return this;
     }
-
     /**
-     *
-     *
      * <pre>
-     * `items` details the constraints to be applied to each item
-     * in the field. Even for repeated message fields, validation is executed
-     * against each item unless skip is explicitly specified.
+     *`items` details the constraints to be applied to each item
+     *in the field. Even for repeated message fields, validation is executed
+     *against each item unless skip is explicitly specified.
      *
-     * ```proto
-     * message MyRepeated {
+     *```proto
+     *message MyRepeated {
      *  // The items in the field `value` must follow the specified constraints.
      *  repeated string value = 1 [(buf.validate.field).repeated.items = {
      *    string: {
@@ -1278,7 +1142,7 @@ public final class RepeatedRules extends com.google.protobuf.GeneratedMessageV3
      *      max_len: 10
      *    }
      *  }];
-     * }
+     *}
      * </pre>
      *
      * <code>optional .buf.validate.FieldConstraints items = 4 [json_name = "items"];</code>
@@ -1293,17 +1157,14 @@ public final class RepeatedRules extends com.google.protobuf.GeneratedMessageV3
       onChanged();
       return this;
     }
-
     /**
-     *
-     *
      * <pre>
-     * `items` details the constraints to be applied to each item
-     * in the field. Even for repeated message fields, validation is executed
-     * against each item unless skip is explicitly specified.
+     *`items` details the constraints to be applied to each item
+     *in the field. Even for repeated message fields, validation is executed
+     *against each item unless skip is explicitly specified.
      *
-     * ```proto
-     * message MyRepeated {
+     *```proto
+     *message MyRepeated {
      *  // The items in the field `value` must follow the specified constraints.
      *  repeated string value = 1 [(buf.validate.field).repeated.items = {
      *    string: {
@@ -1311,7 +1172,7 @@ public final class RepeatedRules extends com.google.protobuf.GeneratedMessageV3
      *      max_len: 10
      *    }
      *  }];
-     * }
+     *}
      * </pre>
      *
      * <code>optional .buf.validate.FieldConstraints items = 4 [json_name = "items"];</code>
@@ -1321,17 +1182,14 @@ public final class RepeatedRules extends com.google.protobuf.GeneratedMessageV3
       onChanged();
       return getItemsFieldBuilder().getBuilder();
     }
-
     /**
-     *
-     *
      * <pre>
-     * `items` details the constraints to be applied to each item
-     * in the field. Even for repeated message fields, validation is executed
-     * against each item unless skip is explicitly specified.
+     *`items` details the constraints to be applied to each item
+     *in the field. Even for repeated message fields, validation is executed
+     *against each item unless skip is explicitly specified.
      *
-     * ```proto
-     * message MyRepeated {
+     *```proto
+     *message MyRepeated {
      *  // The items in the field `value` must follow the specified constraints.
      *  repeated string value = 1 [(buf.validate.field).repeated.items = {
      *    string: {
@@ -1339,7 +1197,7 @@ public final class RepeatedRules extends com.google.protobuf.GeneratedMessageV3
      *      max_len: 10
      *    }
      *  }];
-     * }
+     *}
      * </pre>
      *
      * <code>optional .buf.validate.FieldConstraints items = 4 [json_name = "items"];</code>
@@ -1348,20 +1206,18 @@ public final class RepeatedRules extends com.google.protobuf.GeneratedMessageV3
       if (itemsBuilder_ != null) {
         return itemsBuilder_.getMessageOrBuilder();
       } else {
-        return items_ == null ? build.buf.validate.FieldConstraints.getDefaultInstance() : items_;
+        return items_ == null ?
+            build.buf.validate.FieldConstraints.getDefaultInstance() : items_;
       }
     }
-
     /**
-     *
-     *
      * <pre>
-     * `items` details the constraints to be applied to each item
-     * in the field. Even for repeated message fields, validation is executed
-     * against each item unless skip is explicitly specified.
+     *`items` details the constraints to be applied to each item
+     *in the field. Even for repeated message fields, validation is executed
+     *against each item unless skip is explicitly specified.
      *
-     * ```proto
-     * message MyRepeated {
+     *```proto
+     *message MyRepeated {
      *  // The items in the field `value` must follow the specified constraints.
      *  repeated string value = 1 [(buf.validate.field).repeated.items = {
      *    string: {
@@ -1369,30 +1225,27 @@ public final class RepeatedRules extends com.google.protobuf.GeneratedMessageV3
      *      max_len: 10
      *    }
      *  }];
-     * }
+     *}
      * </pre>
      *
      * <code>optional .buf.validate.FieldConstraints items = 4 [json_name = "items"];</code>
      */
     private com.google.protobuf.SingleFieldBuilderV3<
-            build.buf.validate.FieldConstraints,
-            build.buf.validate.FieldConstraints.Builder,
-            build.buf.validate.FieldConstraintsOrBuilder>
+        build.buf.validate.FieldConstraints, build.buf.validate.FieldConstraints.Builder, build.buf.validate.FieldConstraintsOrBuilder> 
         getItemsFieldBuilder() {
       if (itemsBuilder_ == null) {
-        itemsBuilder_ =
-            new com.google.protobuf.SingleFieldBuilderV3<
-                build.buf.validate.FieldConstraints,
-                build.buf.validate.FieldConstraints.Builder,
-                build.buf.validate.FieldConstraintsOrBuilder>(
-                getItems(), getParentForChildren(), isClean());
+        itemsBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+            build.buf.validate.FieldConstraints, build.buf.validate.FieldConstraints.Builder, build.buf.validate.FieldConstraintsOrBuilder>(
+                getItems(),
+                getParentForChildren(),
+                isClean());
         items_ = null;
       }
       return itemsBuilder_;
     }
-
     @java.lang.Override
-    public final Builder setUnknownFields(final com.google.protobuf.UnknownFieldSet unknownFields) {
+    public final Builder setUnknownFields(
+        final com.google.protobuf.UnknownFieldSet unknownFields) {
       return super.setUnknownFields(unknownFields);
     }
 
@@ -1402,12 +1255,12 @@ public final class RepeatedRules extends com.google.protobuf.GeneratedMessageV3
       return super.mergeUnknownFields(unknownFields);
     }
 
+
     // @@protoc_insertion_point(builder_scope:buf.validate.RepeatedRules)
   }
 
   // @@protoc_insertion_point(class_scope:buf.validate.RepeatedRules)
   private static final build.buf.validate.RepeatedRules DEFAULT_INSTANCE;
-
   static {
     DEFAULT_INSTANCE = new build.buf.validate.RepeatedRules();
   }
@@ -1416,27 +1269,27 @@ public final class RepeatedRules extends com.google.protobuf.GeneratedMessageV3
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<RepeatedRules> PARSER =
-      new com.google.protobuf.AbstractParser<RepeatedRules>() {
-        @java.lang.Override
-        public RepeatedRules parsePartialFrom(
-            com.google.protobuf.CodedInputStream input,
-            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-            throws com.google.protobuf.InvalidProtocolBufferException {
-          Builder builder = newBuilder();
-          try {
-            builder.mergeFrom(input, extensionRegistry);
-          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-            throw e.setUnfinishedMessage(builder.buildPartial());
-          } catch (com.google.protobuf.UninitializedMessageException e) {
-            throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
-          } catch (java.io.IOException e) {
-            throw new com.google.protobuf.InvalidProtocolBufferException(e)
-                .setUnfinishedMessage(builder.buildPartial());
-          }
-          return builder.buildPartial();
-        }
-      };
+  private static final com.google.protobuf.Parser<RepeatedRules>
+      PARSER = new com.google.protobuf.AbstractParser<RepeatedRules>() {
+    @java.lang.Override
+    public RepeatedRules parsePartialFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      Builder builder = newBuilder();
+      try {
+        builder.mergeFrom(input, extensionRegistry);
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(builder.buildPartial());
+      } catch (com.google.protobuf.UninitializedMessageException e) {
+        throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(e)
+            .setUnfinishedMessage(builder.buildPartial());
+      }
+      return builder.buildPartial();
+    }
+  };
 
   public static com.google.protobuf.Parser<RepeatedRules> parser() {
     return PARSER;
@@ -1451,4 +1304,6 @@ public final class RepeatedRules extends com.google.protobuf.GeneratedMessageV3
   public build.buf.validate.RepeatedRules getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
+
 }
+

@@ -3,67 +3,56 @@
 
 package build.buf.validate.conformance.cases;
 
-/** Protobuf type {@code buf.validate.conformance.cases.RepeatedEnumNotIn} */
-public final class RepeatedEnumNotIn extends com.google.protobuf.GeneratedMessageV3
-    implements
+/**
+ * Protobuf type {@code buf.validate.conformance.cases.RepeatedEnumNotIn}
+ */
+public final class RepeatedEnumNotIn extends
+    com.google.protobuf.GeneratedMessageV3 implements
     // @@protoc_insertion_point(message_implements:buf.validate.conformance.cases.RepeatedEnumNotIn)
     RepeatedEnumNotInOrBuilder {
-  private static final long serialVersionUID = 0L;
-
+private static final long serialVersionUID = 0L;
   // Use RepeatedEnumNotIn.newBuilder() to construct.
   private RepeatedEnumNotIn(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
-
   private RepeatedEnumNotIn() {
     val_ = java.util.Collections.emptyList();
   }
 
   @java.lang.Override
   @SuppressWarnings({"unused"})
-  protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
+  protected java.lang.Object newInstance(
+      UnusedPrivateParameter unused) {
     return new RepeatedEnumNotIn();
   }
 
-  public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
-    return build.buf.validate.conformance.cases.RepeatedProto
-        .internal_static_buf_validate_conformance_cases_RepeatedEnumNotIn_descriptor;
+  public static final com.google.protobuf.Descriptors.Descriptor
+      getDescriptor() {
+    return build.buf.validate.conformance.cases.RepeatedProto.internal_static_buf_validate_conformance_cases_RepeatedEnumNotIn_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return build.buf.validate.conformance.cases.RepeatedProto
-        .internal_static_buf_validate_conformance_cases_RepeatedEnumNotIn_fieldAccessorTable
+    return build.buf.validate.conformance.cases.RepeatedProto.internal_static_buf_validate_conformance_cases_RepeatedEnumNotIn_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            build.buf.validate.conformance.cases.RepeatedEnumNotIn.class,
-            build.buf.validate.conformance.cases.RepeatedEnumNotIn.Builder.class);
+            build.buf.validate.conformance.cases.RepeatedEnumNotIn.class, build.buf.validate.conformance.cases.RepeatedEnumNotIn.Builder.class);
   }
 
   public static final int VAL_FIELD_NUMBER = 1;
-
   @SuppressWarnings("serial")
   private java.util.List<java.lang.Integer> val_;
-
   private static final com.google.protobuf.Internal.ListAdapter.Converter<
-          java.lang.Integer, build.buf.validate.conformance.cases.AnEnum>
-      val_converter_ =
+      java.lang.Integer, build.buf.validate.conformance.cases.AnEnum> val_converter_ =
           new com.google.protobuf.Internal.ListAdapter.Converter<
               java.lang.Integer, build.buf.validate.conformance.cases.AnEnum>() {
             public build.buf.validate.conformance.cases.AnEnum convert(java.lang.Integer from) {
-              build.buf.validate.conformance.cases.AnEnum result =
-                  build.buf.validate.conformance.cases.AnEnum.forNumber(from);
-              return result == null
-                  ? build.buf.validate.conformance.cases.AnEnum.UNRECOGNIZED
-                  : result;
+              build.buf.validate.conformance.cases.AnEnum result = build.buf.validate.conformance.cases.AnEnum.forNumber(from);
+              return result == null ? build.buf.validate.conformance.cases.AnEnum.UNRECOGNIZED : result;
             }
           };
-
   /**
-   * <code>
-   * repeated .buf.validate.conformance.cases.AnEnum val = 1 [json_name = "val", (.buf.validate.field) = { ... }
-   * </code>
-   *
+   * <code>repeated .buf.validate.conformance.cases.AnEnum val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
    * @return A list containing the val.
    */
   @java.lang.Override
@@ -71,24 +60,16 @@ public final class RepeatedEnumNotIn extends com.google.protobuf.GeneratedMessag
     return new com.google.protobuf.Internal.ListAdapter<
         java.lang.Integer, build.buf.validate.conformance.cases.AnEnum>(val_, val_converter_);
   }
-
   /**
-   * <code>
-   * repeated .buf.validate.conformance.cases.AnEnum val = 1 [json_name = "val", (.buf.validate.field) = { ... }
-   * </code>
-   *
+   * <code>repeated .buf.validate.conformance.cases.AnEnum val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
    * @return The count of val.
    */
   @java.lang.Override
   public int getValCount() {
     return val_.size();
   }
-
   /**
-   * <code>
-   * repeated .buf.validate.conformance.cases.AnEnum val = 1 [json_name = "val", (.buf.validate.field) = { ... }
-   * </code>
-   *
+   * <code>repeated .buf.validate.conformance.cases.AnEnum val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
    * @param index The index of the element to return.
    * @return The val at the given index.
    */
@@ -96,24 +77,17 @@ public final class RepeatedEnumNotIn extends com.google.protobuf.GeneratedMessag
   public build.buf.validate.conformance.cases.AnEnum getVal(int index) {
     return val_converter_.convert(val_.get(index));
   }
-
   /**
-   * <code>
-   * repeated .buf.validate.conformance.cases.AnEnum val = 1 [json_name = "val", (.buf.validate.field) = { ... }
-   * </code>
-   *
+   * <code>repeated .buf.validate.conformance.cases.AnEnum val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
    * @return A list containing the enum numeric values on the wire for val.
    */
   @java.lang.Override
-  public java.util.List<java.lang.Integer> getValValueList() {
+  public java.util.List<java.lang.Integer>
+  getValValueList() {
     return val_;
   }
-
   /**
-   * <code>
-   * repeated .buf.validate.conformance.cases.AnEnum val = 1 [json_name = "val", (.buf.validate.field) = { ... }
-   * </code>
-   *
+   * <code>repeated .buf.validate.conformance.cases.AnEnum val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
    * @param index The index of the value to return.
    * @return The enum numeric value on the wire of val at the given index.
    */
@@ -121,11 +95,9 @@ public final class RepeatedEnumNotIn extends com.google.protobuf.GeneratedMessag
   public int getValValue(int index) {
     return val_.get(index);
   }
-
   private int valMemoizedSerializedSize;
 
   private byte memoizedIsInitialized = -1;
-
   @java.lang.Override
   public final boolean isInitialized() {
     byte isInitialized = memoizedIsInitialized;
@@ -137,7 +109,8 @@ public final class RepeatedEnumNotIn extends com.google.protobuf.GeneratedMessag
   }
 
   @java.lang.Override
-  public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
+  public void writeTo(com.google.protobuf.CodedOutputStream output)
+                      throws java.io.IOException {
     getSerializedSize();
     if (getValList().size() > 0) {
       output.writeUInt32NoTag(10);
@@ -158,14 +131,14 @@ public final class RepeatedEnumNotIn extends com.google.protobuf.GeneratedMessag
     {
       int dataSize = 0;
       for (int i = 0; i < val_.size(); i++) {
-        dataSize += com.google.protobuf.CodedOutputStream.computeEnumSizeNoTag(val_.get(i));
+        dataSize += com.google.protobuf.CodedOutputStream
+          .computeEnumSizeNoTag(val_.get(i));
       }
       size += dataSize;
-      if (!getValList().isEmpty()) {
-        size += 1;
-        size += com.google.protobuf.CodedOutputStream.computeUInt32SizeNoTag(dataSize);
-      }
-      valMemoizedSerializedSize = dataSize;
+      if (!getValList().isEmpty()) {  size += 1;
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32SizeNoTag(dataSize);
+      }valMemoizedSerializedSize = dataSize;
     }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
@@ -175,13 +148,12 @@ public final class RepeatedEnumNotIn extends com.google.protobuf.GeneratedMessag
   @java.lang.Override
   public boolean equals(final java.lang.Object obj) {
     if (obj == this) {
-      return true;
+     return true;
     }
     if (!(obj instanceof build.buf.validate.conformance.cases.RepeatedEnumNotIn)) {
       return super.equals(obj);
     }
-    build.buf.validate.conformance.cases.RepeatedEnumNotIn other =
-        (build.buf.validate.conformance.cases.RepeatedEnumNotIn) obj;
+    build.buf.validate.conformance.cases.RepeatedEnumNotIn other = (build.buf.validate.conformance.cases.RepeatedEnumNotIn) obj;
 
     if (!val_.equals(other.val_)) return false;
     if (!getUnknownFields().equals(other.getUnknownFields())) return false;
@@ -205,129 +177,127 @@ public final class RepeatedEnumNotIn extends com.google.protobuf.GeneratedMessag
   }
 
   public static build.buf.validate.conformance.cases.RepeatedEnumNotIn parseFrom(
-      java.nio.ByteBuffer data) throws com.google.protobuf.InvalidProtocolBufferException {
+      java.nio.ByteBuffer data)
+      throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-
   public static build.buf.validate.conformance.cases.RepeatedEnumNotIn parseFrom(
-      java.nio.ByteBuffer data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      java.nio.ByteBuffer data,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-
   public static build.buf.validate.conformance.cases.RepeatedEnumNotIn parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-
   public static build.buf.validate.conformance.cases.RepeatedEnumNotIn parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-
   public static build.buf.validate.conformance.cases.RepeatedEnumNotIn parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-
   public static build.buf.validate.conformance.cases.RepeatedEnumNotIn parseFrom(
-      byte[] data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      byte[] data,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-
+  public static build.buf.validate.conformance.cases.RepeatedEnumNotIn parseFrom(java.io.InputStream input)
+      throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3
+        .parseWithIOException(PARSER, input);
+  }
   public static build.buf.validate.conformance.cases.RepeatedEnumNotIn parseFrom(
-      java.io.InputStream input) throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
+      java.io.InputStream input,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3
+        .parseWithIOException(PARSER, input, extensionRegistry);
   }
 
-  public static build.buf.validate.conformance.cases.RepeatedEnumNotIn parseFrom(
-      java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+  public static build.buf.validate.conformance.cases.RepeatedEnumNotIn parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
-        PARSER, input, extensionRegistry);
+    return com.google.protobuf.GeneratedMessageV3
+        .parseDelimitedWithIOException(PARSER, input);
   }
 
   public static build.buf.validate.conformance.cases.RepeatedEnumNotIn parseDelimitedFrom(
-      java.io.InputStream input) throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input);
-  }
-
-  public static build.buf.validate.conformance.cases.RepeatedEnumNotIn parseDelimitedFrom(
-      java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      java.io.InputStream input,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(
-        PARSER, input, extensionRegistry);
+    return com.google.protobuf.GeneratedMessageV3
+        .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-
   public static build.buf.validate.conformance.cases.RepeatedEnumNotIn parseFrom(
-      com.google.protobuf.CodedInputStream input) throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
+      com.google.protobuf.CodedInputStream input)
+      throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3
+        .parseWithIOException(PARSER, input);
   }
-
   public static build.buf.validate.conformance.cases.RepeatedEnumNotIn parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
-        PARSER, input, extensionRegistry);
+    return com.google.protobuf.GeneratedMessageV3
+        .parseWithIOException(PARSER, input, extensionRegistry);
   }
 
   @java.lang.Override
-  public Builder newBuilderForType() {
-    return newBuilder();
-  }
-
+  public Builder newBuilderForType() { return newBuilder(); }
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-
-  public static Builder newBuilder(
-      build.buf.validate.conformance.cases.RepeatedEnumNotIn prototype) {
+  public static Builder newBuilder(build.buf.validate.conformance.cases.RepeatedEnumNotIn prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
-
   @java.lang.Override
   public Builder toBuilder() {
-    return this == DEFAULT_INSTANCE ? new Builder() : new Builder().mergeFrom(this);
+    return this == DEFAULT_INSTANCE
+        ? new Builder() : new Builder().mergeFrom(this);
   }
 
   @java.lang.Override
-  protected Builder newBuilderForType(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+  protected Builder newBuilderForType(
+      com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
     Builder builder = new Builder(parent);
     return builder;
   }
-
-  /** Protobuf type {@code buf.validate.conformance.cases.RepeatedEnumNotIn} */
-  public static final class Builder extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
-      implements
+  /**
+   * Protobuf type {@code buf.validate.conformance.cases.RepeatedEnumNotIn}
+   */
+  public static final class Builder extends
+      com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
       // @@protoc_insertion_point(builder_implements:buf.validate.conformance.cases.RepeatedEnumNotIn)
       build.buf.validate.conformance.cases.RepeatedEnumNotInOrBuilder {
-    public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
-      return build.buf.validate.conformance.cases.RepeatedProto
-          .internal_static_buf_validate_conformance_cases_RepeatedEnumNotIn_descriptor;
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return build.buf.validate.conformance.cases.RepeatedProto.internal_static_buf_validate_conformance_cases_RepeatedEnumNotIn_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return build.buf.validate.conformance.cases.RepeatedProto
-          .internal_static_buf_validate_conformance_cases_RepeatedEnumNotIn_fieldAccessorTable
+      return build.buf.validate.conformance.cases.RepeatedProto.internal_static_buf_validate_conformance_cases_RepeatedEnumNotIn_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              build.buf.validate.conformance.cases.RepeatedEnumNotIn.class,
-              build.buf.validate.conformance.cases.RepeatedEnumNotIn.Builder.class);
+              build.buf.validate.conformance.cases.RepeatedEnumNotIn.class, build.buf.validate.conformance.cases.RepeatedEnumNotIn.Builder.class);
     }
 
     // Construct using build.buf.validate.conformance.cases.RepeatedEnumNotIn.newBuilder()
-    private Builder() {}
+    private Builder() {
 
-    private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-      super(parent);
     }
 
+    private Builder(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      super(parent);
+
+    }
     @java.lang.Override
     public Builder clear() {
       super.clear();
@@ -338,9 +308,9 @@ public final class RepeatedEnumNotIn extends com.google.protobuf.GeneratedMessag
     }
 
     @java.lang.Override
-    public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
-      return build.buf.validate.conformance.cases.RepeatedProto
-          .internal_static_buf_validate_conformance_cases_RepeatedEnumNotIn_descriptor;
+    public com.google.protobuf.Descriptors.Descriptor
+        getDescriptorForType() {
+      return build.buf.validate.conformance.cases.RepeatedProto.internal_static_buf_validate_conformance_cases_RepeatedEnumNotIn_descriptor;
     }
 
     @java.lang.Override
@@ -359,18 +329,14 @@ public final class RepeatedEnumNotIn extends com.google.protobuf.GeneratedMessag
 
     @java.lang.Override
     public build.buf.validate.conformance.cases.RepeatedEnumNotIn buildPartial() {
-      build.buf.validate.conformance.cases.RepeatedEnumNotIn result =
-          new build.buf.validate.conformance.cases.RepeatedEnumNotIn(this);
+      build.buf.validate.conformance.cases.RepeatedEnumNotIn result = new build.buf.validate.conformance.cases.RepeatedEnumNotIn(this);
       buildPartialRepeatedFields(result);
-      if (bitField0_ != 0) {
-        buildPartial0(result);
-      }
+      if (bitField0_ != 0) { buildPartial0(result); }
       onBuilt();
       return result;
     }
 
-    private void buildPartialRepeatedFields(
-        build.buf.validate.conformance.cases.RepeatedEnumNotIn result) {
+    private void buildPartialRepeatedFields(build.buf.validate.conformance.cases.RepeatedEnumNotIn result) {
       if (((bitField0_ & 0x00000001) != 0)) {
         val_ = java.util.Collections.unmodifiableList(val_);
         bitField0_ = (bitField0_ & ~0x00000001);
@@ -386,39 +352,38 @@ public final class RepeatedEnumNotIn extends com.google.protobuf.GeneratedMessag
     public Builder clone() {
       return super.clone();
     }
-
     @java.lang.Override
     public Builder setField(
-        com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field,
+        java.lang.Object value) {
       return super.setField(field, value);
     }
-
     @java.lang.Override
-    public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
+    public Builder clearField(
+        com.google.protobuf.Descriptors.FieldDescriptor field) {
       return super.clearField(field);
     }
-
     @java.lang.Override
-    public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+    public Builder clearOneof(
+        com.google.protobuf.Descriptors.OneofDescriptor oneof) {
       return super.clearOneof(oneof);
     }
-
     @java.lang.Override
     public Builder setRepeatedField(
-        com.google.protobuf.Descriptors.FieldDescriptor field, int index, java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field,
+        int index, java.lang.Object value) {
       return super.setRepeatedField(field, index, value);
     }
-
     @java.lang.Override
     public Builder addRepeatedField(
-        com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field,
+        java.lang.Object value) {
       return super.addRepeatedField(field, value);
     }
-
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
       if (other instanceof build.buf.validate.conformance.cases.RepeatedEnumNotIn) {
-        return mergeFrom((build.buf.validate.conformance.cases.RepeatedEnumNotIn) other);
+        return mergeFrom((build.buf.validate.conformance.cases.RepeatedEnumNotIn)other);
       } else {
         super.mergeFrom(other);
         return this;
@@ -426,8 +391,7 @@ public final class RepeatedEnumNotIn extends com.google.protobuf.GeneratedMessag
     }
 
     public Builder mergeFrom(build.buf.validate.conformance.cases.RepeatedEnumNotIn other) {
-      if (other == build.buf.validate.conformance.cases.RepeatedEnumNotIn.getDefaultInstance())
-        return this;
+      if (other == build.buf.validate.conformance.cases.RepeatedEnumNotIn.getDefaultInstance()) return this;
       if (!other.val_.isEmpty()) {
         if (val_.isEmpty()) {
           val_ = other.val_;
@@ -464,32 +428,29 @@ public final class RepeatedEnumNotIn extends com.google.protobuf.GeneratedMessag
             case 0:
               done = true;
               break;
-            case 8:
-              {
+            case 8: {
+              int tmpRaw = input.readEnum();
+              ensureValIsMutable();
+              val_.add(tmpRaw);
+              break;
+            } // case 8
+            case 10: {
+              int length = input.readRawVarint32();
+              int oldLimit = input.pushLimit(length);
+              while(input.getBytesUntilLimit() > 0) {
                 int tmpRaw = input.readEnum();
                 ensureValIsMutable();
                 val_.add(tmpRaw);
-                break;
-              } // case 8
-            case 10:
-              {
-                int length = input.readRawVarint32();
-                int oldLimit = input.pushLimit(length);
-                while (input.getBytesUntilLimit() > 0) {
-                  int tmpRaw = input.readEnum();
-                  ensureValIsMutable();
-                  val_.add(tmpRaw);
-                }
-                input.popLimit(oldLimit);
-                break;
-              } // case 10
-            default:
-              {
-                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
-                  done = true; // was an endgroup tag
-                }
-                break;
-              } // default:
+              }
+              input.popLimit(oldLimit);
+              break;
+            } // case 10
+            default: {
+              if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                done = true; // was an endgroup tag
+              }
+              break;
+            } // default:
           } // switch (tag)
         } // while (!done)
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -499,63 +460,47 @@ public final class RepeatedEnumNotIn extends com.google.protobuf.GeneratedMessag
       } // finally
       return this;
     }
-
     private int bitField0_;
 
-    private java.util.List<java.lang.Integer> val_ = java.util.Collections.emptyList();
-
+    private java.util.List<java.lang.Integer> val_ =
+      java.util.Collections.emptyList();
     private void ensureValIsMutable() {
       if (!((bitField0_ & 0x00000001) != 0)) {
         val_ = new java.util.ArrayList<java.lang.Integer>(val_);
         bitField0_ |= 0x00000001;
       }
     }
-
     /**
-     * <code>
-     * repeated .buf.validate.conformance.cases.AnEnum val = 1 [json_name = "val", (.buf.validate.field) = { ... }
-     * </code>
-     *
+     * <code>repeated .buf.validate.conformance.cases.AnEnum val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
      * @return A list containing the val.
      */
     public java.util.List<build.buf.validate.conformance.cases.AnEnum> getValList() {
       return new com.google.protobuf.Internal.ListAdapter<
           java.lang.Integer, build.buf.validate.conformance.cases.AnEnum>(val_, val_converter_);
     }
-
     /**
-     * <code>
-     * repeated .buf.validate.conformance.cases.AnEnum val = 1 [json_name = "val", (.buf.validate.field) = { ... }
-     * </code>
-     *
+     * <code>repeated .buf.validate.conformance.cases.AnEnum val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
      * @return The count of val.
      */
     public int getValCount() {
       return val_.size();
     }
-
     /**
-     * <code>
-     * repeated .buf.validate.conformance.cases.AnEnum val = 1 [json_name = "val", (.buf.validate.field) = { ... }
-     * </code>
-     *
+     * <code>repeated .buf.validate.conformance.cases.AnEnum val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
      * @param index The index of the element to return.
      * @return The val at the given index.
      */
     public build.buf.validate.conformance.cases.AnEnum getVal(int index) {
       return val_converter_.convert(val_.get(index));
     }
-
     /**
-     * <code>
-     * repeated .buf.validate.conformance.cases.AnEnum val = 1 [json_name = "val", (.buf.validate.field) = { ... }
-     * </code>
-     *
+     * <code>repeated .buf.validate.conformance.cases.AnEnum val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
      * @param index The index to set the value at.
      * @param value The val to set.
      * @return This builder for chaining.
      */
-    public Builder setVal(int index, build.buf.validate.conformance.cases.AnEnum value) {
+    public Builder setVal(
+        int index, build.buf.validate.conformance.cases.AnEnum value) {
       if (value == null) {
         throw new NullPointerException();
       }
@@ -564,12 +509,8 @@ public final class RepeatedEnumNotIn extends com.google.protobuf.GeneratedMessag
       onChanged();
       return this;
     }
-
     /**
-     * <code>
-     * repeated .buf.validate.conformance.cases.AnEnum val = 1 [json_name = "val", (.buf.validate.field) = { ... }
-     * </code>
-     *
+     * <code>repeated .buf.validate.conformance.cases.AnEnum val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
      * @param value The val to add.
      * @return This builder for chaining.
      */
@@ -582,12 +523,8 @@ public final class RepeatedEnumNotIn extends com.google.protobuf.GeneratedMessag
       onChanged();
       return this;
     }
-
     /**
-     * <code>
-     * repeated .buf.validate.conformance.cases.AnEnum val = 1 [json_name = "val", (.buf.validate.field) = { ... }
-     * </code>
-     *
+     * <code>repeated .buf.validate.conformance.cases.AnEnum val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
      * @param values The val to add.
      * @return This builder for chaining.
      */
@@ -600,12 +537,8 @@ public final class RepeatedEnumNotIn extends com.google.protobuf.GeneratedMessag
       onChanged();
       return this;
     }
-
     /**
-     * <code>
-     * repeated .buf.validate.conformance.cases.AnEnum val = 1 [json_name = "val", (.buf.validate.field) = { ... }
-     * </code>
-     *
+     * <code>repeated .buf.validate.conformance.cases.AnEnum val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
      * @return This builder for chaining.
      */
     public Builder clearVal() {
@@ -614,51 +547,37 @@ public final class RepeatedEnumNotIn extends com.google.protobuf.GeneratedMessag
       onChanged();
       return this;
     }
-
     /**
-     * <code>
-     * repeated .buf.validate.conformance.cases.AnEnum val = 1 [json_name = "val", (.buf.validate.field) = { ... }
-     * </code>
-     *
+     * <code>repeated .buf.validate.conformance.cases.AnEnum val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
      * @return A list containing the enum numeric values on the wire for val.
      */
-    public java.util.List<java.lang.Integer> getValValueList() {
+    public java.util.List<java.lang.Integer>
+    getValValueList() {
       return java.util.Collections.unmodifiableList(val_);
     }
-
     /**
-     * <code>
-     * repeated .buf.validate.conformance.cases.AnEnum val = 1 [json_name = "val", (.buf.validate.field) = { ... }
-     * </code>
-     *
+     * <code>repeated .buf.validate.conformance.cases.AnEnum val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
      * @param index The index of the value to return.
      * @return The enum numeric value on the wire of val at the given index.
      */
     public int getValValue(int index) {
       return val_.get(index);
     }
-
     /**
-     * <code>
-     * repeated .buf.validate.conformance.cases.AnEnum val = 1 [json_name = "val", (.buf.validate.field) = { ... }
-     * </code>
-     *
+     * <code>repeated .buf.validate.conformance.cases.AnEnum val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
      * @param index The index to set the value at.
      * @param value The enum numeric value on the wire for val to set.
      * @return This builder for chaining.
      */
-    public Builder setValValue(int index, int value) {
+    public Builder setValValue(
+        int index, int value) {
       ensureValIsMutable();
       val_.set(index, value);
       onChanged();
       return this;
     }
-
     /**
-     * <code>
-     * repeated .buf.validate.conformance.cases.AnEnum val = 1 [json_name = "val", (.buf.validate.field) = { ... }
-     * </code>
-     *
+     * <code>repeated .buf.validate.conformance.cases.AnEnum val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
      * @param value The enum numeric value on the wire for val to add.
      * @return This builder for chaining.
      */
@@ -668,16 +587,13 @@ public final class RepeatedEnumNotIn extends com.google.protobuf.GeneratedMessag
       onChanged();
       return this;
     }
-
     /**
-     * <code>
-     * repeated .buf.validate.conformance.cases.AnEnum val = 1 [json_name = "val", (.buf.validate.field) = { ... }
-     * </code>
-     *
+     * <code>repeated .buf.validate.conformance.cases.AnEnum val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
      * @param values The enum numeric values on the wire for val to add.
      * @return This builder for chaining.
      */
-    public Builder addAllValValue(java.lang.Iterable<java.lang.Integer> values) {
+    public Builder addAllValValue(
+        java.lang.Iterable<java.lang.Integer> values) {
       ensureValIsMutable();
       for (int value : values) {
         val_.add(value);
@@ -685,9 +601,9 @@ public final class RepeatedEnumNotIn extends com.google.protobuf.GeneratedMessag
       onChanged();
       return this;
     }
-
     @java.lang.Override
-    public final Builder setUnknownFields(final com.google.protobuf.UnknownFieldSet unknownFields) {
+    public final Builder setUnknownFields(
+        final com.google.protobuf.UnknownFieldSet unknownFields) {
       return super.setUnknownFields(unknownFields);
     }
 
@@ -697,12 +613,12 @@ public final class RepeatedEnumNotIn extends com.google.protobuf.GeneratedMessag
       return super.mergeUnknownFields(unknownFields);
     }
 
+
     // @@protoc_insertion_point(builder_scope:buf.validate.conformance.cases.RepeatedEnumNotIn)
   }
 
   // @@protoc_insertion_point(class_scope:buf.validate.conformance.cases.RepeatedEnumNotIn)
   private static final build.buf.validate.conformance.cases.RepeatedEnumNotIn DEFAULT_INSTANCE;
-
   static {
     DEFAULT_INSTANCE = new build.buf.validate.conformance.cases.RepeatedEnumNotIn();
   }
@@ -711,27 +627,27 @@ public final class RepeatedEnumNotIn extends com.google.protobuf.GeneratedMessag
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<RepeatedEnumNotIn> PARSER =
-      new com.google.protobuf.AbstractParser<RepeatedEnumNotIn>() {
-        @java.lang.Override
-        public RepeatedEnumNotIn parsePartialFrom(
-            com.google.protobuf.CodedInputStream input,
-            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-            throws com.google.protobuf.InvalidProtocolBufferException {
-          Builder builder = newBuilder();
-          try {
-            builder.mergeFrom(input, extensionRegistry);
-          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-            throw e.setUnfinishedMessage(builder.buildPartial());
-          } catch (com.google.protobuf.UninitializedMessageException e) {
-            throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
-          } catch (java.io.IOException e) {
-            throw new com.google.protobuf.InvalidProtocolBufferException(e)
-                .setUnfinishedMessage(builder.buildPartial());
-          }
-          return builder.buildPartial();
-        }
-      };
+  private static final com.google.protobuf.Parser<RepeatedEnumNotIn>
+      PARSER = new com.google.protobuf.AbstractParser<RepeatedEnumNotIn>() {
+    @java.lang.Override
+    public RepeatedEnumNotIn parsePartialFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      Builder builder = newBuilder();
+      try {
+        builder.mergeFrom(input, extensionRegistry);
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(builder.buildPartial());
+      } catch (com.google.protobuf.UninitializedMessageException e) {
+        throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(e)
+            .setUnfinishedMessage(builder.buildPartial());
+      }
+      return builder.buildPartial();
+    }
+  };
 
   public static com.google.protobuf.Parser<RepeatedEnumNotIn> parser() {
     return PARSER;
@@ -746,4 +662,6 @@ public final class RepeatedEnumNotIn extends com.google.protobuf.GeneratedMessag
   public build.buf.validate.conformance.cases.RepeatedEnumNotIn getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
+
 }
+

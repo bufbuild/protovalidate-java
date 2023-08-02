@@ -3,21 +3,17 @@
 
 package build.buf.validate.conformance.cases;
 
-public interface Int64LTEOptionalOrBuilder
-    extends
+public interface Int64LTEOptionalOrBuilder extends
     // @@protoc_insertion_point(interface_extends:buf.validate.conformance.cases.Int64LTEOptional)
     com.google.protobuf.MessageOrBuilder {
 
   /**
    * <code>optional int64 val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
-   *
    * @return Whether the val field is set.
    */
   boolean hasVal();
-
   /**
    * <code>optional int64 val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
-   *
    * @return The val.
    */
   long getVal();

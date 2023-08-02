@@ -3,14 +3,12 @@
 
 package build.buf.validate.conformance.cases;
 
-public interface DoubleGTOrBuilder
-    extends
+public interface DoubleGTOrBuilder extends
     // @@protoc_insertion_point(interface_extends:buf.validate.conformance.cases.DoubleGT)
     com.google.protobuf.MessageOrBuilder {
 
   /**
    * <code>double val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
-   *
    * @return The val.
    */
   double getVal();

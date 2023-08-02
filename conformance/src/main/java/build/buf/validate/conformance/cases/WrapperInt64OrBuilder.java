@@ -3,30 +3,22 @@
 
 package build.buf.validate.conformance.cases;
 
-public interface WrapperInt64OrBuilder
-    extends
+public interface WrapperInt64OrBuilder extends
     // @@protoc_insertion_point(interface_extends:buf.validate.conformance.cases.WrapperInt64)
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>.google.protobuf.Int64Value val = 1 [json_name = "val", (.buf.validate.field) = { ... }
-   * </code>
-   *
+   * <code>.google.protobuf.Int64Value val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
    * @return Whether the val field is set.
    */
   boolean hasVal();
-
   /**
-   * <code>.google.protobuf.Int64Value val = 1 [json_name = "val", (.buf.validate.field) = { ... }
-   * </code>
-   *
+   * <code>.google.protobuf.Int64Value val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
    * @return The val.
    */
   com.google.protobuf.Int64Value getVal();
-
   /**
-   * <code>.google.protobuf.Int64Value val = 1 [json_name = "val", (.buf.validate.field) = { ... }
-   * </code>
+   * <code>.google.protobuf.Int64Value val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
    */
   com.google.protobuf.Int64ValueOrBuilder getValOrBuilder();
 }

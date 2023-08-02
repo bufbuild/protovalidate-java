@@ -3,14 +3,12 @@
 
 package build.buf.validate.conformance.cases.custom_constraints;
 
-public interface DynRuntimeErrorOrBuilder
-    extends
+public interface DynRuntimeErrorOrBuilder extends
     // @@protoc_insertion_point(interface_extends:buf.validate.conformance.cases.custom_constraints.DynRuntimeError)
     com.google.protobuf.MessageOrBuilder {
 
   /**
    * <code>int32 a = 1 [json_name = "a"];</code>
-   *
    * @return The a.
    */
   int getA();

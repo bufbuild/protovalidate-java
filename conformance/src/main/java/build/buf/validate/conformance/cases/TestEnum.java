@@ -3,25 +3,39 @@
 
 package build.buf.validate.conformance.cases;
 
-/** Protobuf enum {@code buf.validate.conformance.cases.TestEnum} */
-public enum TestEnum implements com.google.protobuf.ProtocolMessageEnum {
-  /** <code>TEST_ENUM_UNSPECIFIED = 0;</code> */
+/**
+ * Protobuf enum {@code buf.validate.conformance.cases.TestEnum}
+ */
+public enum TestEnum
+    implements com.google.protobuf.ProtocolMessageEnum {
+  /**
+   * <code>TEST_ENUM_UNSPECIFIED = 0;</code>
+   */
   TEST_ENUM_UNSPECIFIED(0),
-  /** <code>TEST_ENUM_ONE = 1;</code> */
+  /**
+   * <code>TEST_ENUM_ONE = 1;</code>
+   */
   TEST_ENUM_ONE(1),
-  /** <code>TEST_ENUM_TWO = 2;</code> */
+  /**
+   * <code>TEST_ENUM_TWO = 2;</code>
+   */
   TEST_ENUM_TWO(2),
   UNRECOGNIZED(-1),
   ;
 
-  /** <code>TEST_ENUM_UNSPECIFIED = 0;</code> */
+  /**
+   * <code>TEST_ENUM_UNSPECIFIED = 0;</code>
+   */
   public static final int TEST_ENUM_UNSPECIFIED_VALUE = 0;
-
-  /** <code>TEST_ENUM_ONE = 1;</code> */
+  /**
+   * <code>TEST_ENUM_ONE = 1;</code>
+   */
   public static final int TEST_ENUM_ONE_VALUE = 1;
-
-  /** <code>TEST_ENUM_TWO = 2;</code> */
+  /**
+   * <code>TEST_ENUM_TWO = 2;</code>
+   */
   public static final int TEST_ENUM_TWO_VALUE = 2;
+
 
   public final int getNumber() {
     if (this == UNRECOGNIZED) {
@@ -47,49 +61,49 @@ public enum TestEnum implements com.google.protobuf.ProtocolMessageEnum {
    */
   public static TestEnum forNumber(int value) {
     switch (value) {
-      case 0:
-        return TEST_ENUM_UNSPECIFIED;
-      case 1:
-        return TEST_ENUM_ONE;
-      case 2:
-        return TEST_ENUM_TWO;
-      default:
-        return null;
+      case 0: return TEST_ENUM_UNSPECIFIED;
+      case 1: return TEST_ENUM_ONE;
+      case 2: return TEST_ENUM_TWO;
+      default: return null;
     }
   }
 
-  public static com.google.protobuf.Internal.EnumLiteMap<TestEnum> internalGetValueMap() {
+  public static com.google.protobuf.Internal.EnumLiteMap<TestEnum>
+      internalGetValueMap() {
     return internalValueMap;
   }
+  private static final com.google.protobuf.Internal.EnumLiteMap<
+      TestEnum> internalValueMap =
+        new com.google.protobuf.Internal.EnumLiteMap<TestEnum>() {
+          public TestEnum findValueByNumber(int number) {
+            return TestEnum.forNumber(number);
+          }
+        };
 
-  private static final com.google.protobuf.Internal.EnumLiteMap<TestEnum> internalValueMap =
-      new com.google.protobuf.Internal.EnumLiteMap<TestEnum>() {
-        public TestEnum findValueByNumber(int number) {
-          return TestEnum.forNumber(number);
-        }
-      };
-
-  public final com.google.protobuf.Descriptors.EnumValueDescriptor getValueDescriptor() {
+  public final com.google.protobuf.Descriptors.EnumValueDescriptor
+      getValueDescriptor() {
     if (this == UNRECOGNIZED) {
       throw new java.lang.IllegalStateException(
           "Can't get the descriptor of an unrecognized enum value.");
     }
     return getDescriptor().getValues().get(ordinal());
   }
-
-  public final com.google.protobuf.Descriptors.EnumDescriptor getDescriptorForType() {
+  public final com.google.protobuf.Descriptors.EnumDescriptor
+      getDescriptorForType() {
     return getDescriptor();
   }
-
-  public static final com.google.protobuf.Descriptors.EnumDescriptor getDescriptor() {
+  public static final com.google.protobuf.Descriptors.EnumDescriptor
+      getDescriptor() {
     return build.buf.validate.conformance.cases.EnumsProto.getDescriptor().getEnumTypes().get(0);
   }
 
   private static final TestEnum[] VALUES = values();
 
-  public static TestEnum valueOf(com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+  public static TestEnum valueOf(
+      com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
     if (desc.getType() != getDescriptor()) {
-      throw new java.lang.IllegalArgumentException("EnumValueDescriptor is not for this type.");
+      throw new java.lang.IllegalArgumentException(
+        "EnumValueDescriptor is not for this type.");
     }
     if (desc.getIndex() == -1) {
       return UNRECOGNIZED;
@@ -105,3 +119,4 @@ public enum TestEnum implements com.google.protobuf.ProtocolMessageEnum {
 
   // @@protoc_insertion_point(enum_scope:buf.validate.conformance.cases.TestEnum)
 }
+

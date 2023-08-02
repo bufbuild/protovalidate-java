@@ -3,42 +3,39 @@
 
 package build.buf.validate.conformance.cases;
 
-public interface MapMinMaxOrBuilder
-    extends
+public interface MapMinMaxOrBuilder extends
     // @@protoc_insertion_point(interface_extends:buf.validate.conformance.cases.MapMinMax)
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>map&lt;string, bool&gt; val = 1 [json_name = "val", (.buf.validate.field) = { ... }
-   * </code>
+   * <code>map&lt;string, bool&gt; val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
    */
   int getValCount();
-
   /**
-   * <code>map&lt;string, bool&gt; val = 1 [json_name = "val", (.buf.validate.field) = { ... }
-   * </code>
+   * <code>map&lt;string, bool&gt; val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
    */
-  boolean containsVal(java.lang.String key);
-
-  /** Use {@link #getValMap()} instead. */
+  boolean containsVal(
+      java.lang.String key);
+  /**
+   * Use {@link #getValMap()} instead.
+   */
   @java.lang.Deprecated
-  java.util.Map<java.lang.String, java.lang.Boolean> getVal();
-
+  java.util.Map<java.lang.String, java.lang.Boolean>
+  getVal();
   /**
-   * <code>map&lt;string, bool&gt; val = 1 [json_name = "val", (.buf.validate.field) = { ... }
-   * </code>
+   * <code>map&lt;string, bool&gt; val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
    */
-  java.util.Map<java.lang.String, java.lang.Boolean> getValMap();
-
+  java.util.Map<java.lang.String, java.lang.Boolean>
+  getValMap();
   /**
-   * <code>map&lt;string, bool&gt; val = 1 [json_name = "val", (.buf.validate.field) = { ... }
-   * </code>
+   * <code>map&lt;string, bool&gt; val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
    */
-  boolean getValOrDefault(java.lang.String key, boolean defaultValue);
-
+  boolean getValOrDefault(
+      java.lang.String key,
+      boolean defaultValue);
   /**
-   * <code>map&lt;string, bool&gt; val = 1 [json_name = "val", (.buf.validate.field) = { ... }
-   * </code>
+   * <code>map&lt;string, bool&gt; val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
    */
-  boolean getValOrThrow(java.lang.String key);
+  boolean getValOrThrow(
+      java.lang.String key);
 }

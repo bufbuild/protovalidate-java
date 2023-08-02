@@ -4,8 +4,6 @@
 package build.buf.validate;
 
 /**
- *
- *
  * <pre>
  * DoubleRules describes the constraints applied to `double` values. These
  * rules may also be applied to the `google.protobuf.DoubleValue` Well-Known-Type.
@@ -13,17 +11,15 @@ package build.buf.validate;
  *
  * Protobuf type {@code buf.validate.DoubleRules}
  */
-public final class DoubleRules extends com.google.protobuf.GeneratedMessageV3
-    implements
+public final class DoubleRules extends
+    com.google.protobuf.GeneratedMessageV3 implements
     // @@protoc_insertion_point(message_implements:buf.validate.DoubleRules)
     DoubleRulesOrBuilder {
-  private static final long serialVersionUID = 0L;
-
+private static final long serialVersionUID = 0L;
   // Use DoubleRules.newBuilder() to construct.
   private DoubleRules(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
-
   private DoubleRules() {
     in_ = emptyDoubleList();
     notIn_ = emptyDoubleList();
@@ -31,19 +27,20 @@ public final class DoubleRules extends com.google.protobuf.GeneratedMessageV3
 
   @java.lang.Override
   @SuppressWarnings({"unused"})
-  protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
+  protected java.lang.Object newInstance(
+      UnusedPrivateParameter unused) {
     return new DoubleRules();
   }
 
-  public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+  public static final com.google.protobuf.Descriptors.Descriptor
+      getDescriptor() {
     return build.buf.validate.ValidateProto.internal_static_buf_validate_DoubleRules_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return build.buf.validate.ValidateProto
-        .internal_static_buf_validate_DoubleRules_fieldAccessorTable
+    return build.buf.validate.ValidateProto.internal_static_buf_validate_DoubleRules_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
             build.buf.validate.DoubleRules.class, build.buf.validate.DoubleRules.Builder.class);
   }
@@ -51,50 +48,40 @@ public final class DoubleRules extends com.google.protobuf.GeneratedMessageV3
   private int bitField0_;
   public static final int CONST_FIELD_NUMBER = 1;
   private double const_ = 0D;
-
   /**
-   *
-   *
    * <pre>
-   * `const` requires the field value to exactly match the specified value. If
+   *`const` requires the field value to exactly match the specified value. If
    * the field value doesn't match, an error message is generated.
    *
-   * ```proto
-   * message MyDouble {
+   *```proto
+   *message MyDouble {
    *  // value must equal 42.0
    *   double value = 1 [(buf.validate.field).double.const = 42.0];
-   * }
-   * ```
+   *}
+   *```
    * </pre>
    *
-   * <code>optional double const = 1 [json_name = "const", (.buf.validate.priv.field) = { ... }
-   * </code>
-   *
+   * <code>optional double const = 1 [json_name = "const", (.buf.validate.priv.field) = { ... }</code>
    * @return Whether the const field is set.
    */
   @java.lang.Override
   public boolean hasConst() {
     return ((bitField0_ & 0x00000001) != 0);
   }
-
   /**
-   *
-   *
    * <pre>
-   * `const` requires the field value to exactly match the specified value. If
+   *`const` requires the field value to exactly match the specified value. If
    * the field value doesn't match, an error message is generated.
    *
-   * ```proto
-   * message MyDouble {
+   *```proto
+   *message MyDouble {
    *  // value must equal 42.0
    *   double value = 1 [(buf.validate.field).double.const = 42.0];
-   * }
-   * ```
+   *}
+   *```
    * </pre>
    *
-   * <code>optional double const = 1 [json_name = "const", (.buf.validate.priv.field) = { ... }
-   * </code>
-   *
+   * <code>optional double const = 1 [json_name = "const", (.buf.validate.priv.field) = { ... }</code>
    * @return The const.
    */
   @java.lang.Override
@@ -104,50 +91,42 @@ public final class DoubleRules extends com.google.protobuf.GeneratedMessageV3
 
   public static final int LT_FIELD_NUMBER = 2;
   private double lt_ = 0D;
-
   /**
-   *
-   *
    * <pre>
    * `lt` requires the field value to be less than the specified value (field &lt;
    * value). If the field value is equal to or greater than the specified
    * value, an error message is generated.
    *
-   * ```proto
-   * message MyDouble {
+   *```proto
+   *message MyDouble {
    *  // value must be less than 10.0
    *   double value = 1 [(buf.validate.field).double.lt = 10.0];
-   * }
-   * ```
+   *}
+   *```
    * </pre>
    *
    * <code>optional double lt = 2 [json_name = "lt", (.buf.validate.priv.field) = { ... }</code>
-   *
    * @return Whether the lt field is set.
    */
   @java.lang.Override
   public boolean hasLt() {
     return ((bitField0_ & 0x00000002) != 0);
   }
-
   /**
-   *
-   *
    * <pre>
    * `lt` requires the field value to be less than the specified value (field &lt;
    * value). If the field value is equal to or greater than the specified
    * value, an error message is generated.
    *
-   * ```proto
-   * message MyDouble {
+   *```proto
+   *message MyDouble {
    *  // value must be less than 10.0
    *   double value = 1 [(buf.validate.field).double.lt = 10.0];
-   * }
-   * ```
+   *}
+   *```
    * </pre>
    *
    * <code>optional double lt = 2 [json_name = "lt", (.buf.validate.priv.field) = { ... }</code>
-   *
    * @return The lt.
    */
   @java.lang.Override
@@ -157,50 +136,42 @@ public final class DoubleRules extends com.google.protobuf.GeneratedMessageV3
 
   public static final int LTE_FIELD_NUMBER = 3;
   private double lte_ = 0D;
-
   /**
-   *
-   *
    * <pre>
-   * `lte` requires the field value to be less than or equal to the specified value
+   *`lte` requires the field value to be less than or equal to the specified value
    * (field &lt;= value). If the field value is greater than the specified value,
    * an error message is generated.
    *
-   * ```proto
-   * message MyDouble {
+   *```proto
+   *message MyDouble {
    *  // value must be less than or equal to 10.0
    *   double value = 1 [(buf.validate.field).double.lte = 10.0];
-   * }
-   * ```
+   *}
+   *```
    * </pre>
    *
    * <code>optional double lte = 3 [json_name = "lte", (.buf.validate.priv.field) = { ... }</code>
-   *
    * @return Whether the lte field is set.
    */
   @java.lang.Override
   public boolean hasLte() {
     return ((bitField0_ & 0x00000004) != 0);
   }
-
   /**
-   *
-   *
    * <pre>
-   * `lte` requires the field value to be less than or equal to the specified value
+   *`lte` requires the field value to be less than or equal to the specified value
    * (field &lt;= value). If the field value is greater than the specified value,
    * an error message is generated.
    *
-   * ```proto
-   * message MyDouble {
+   *```proto
+   *message MyDouble {
    *  // value must be less than or equal to 10.0
    *   double value = 1 [(buf.validate.field).double.lte = 10.0];
-   * }
-   * ```
+   *}
+   *```
    * </pre>
    *
    * <code>optional double lte = 3 [json_name = "lte", (.buf.validate.priv.field) = { ... }</code>
-   *
    * @return The lte.
    */
   @java.lang.Override
@@ -210,10 +181,7 @@ public final class DoubleRules extends com.google.protobuf.GeneratedMessageV3
 
   public static final int GT_FIELD_NUMBER = 4;
   private double gt_ = 0D;
-
   /**
-   *
-   *
    * <pre>
    * `gt` requires the field value to be greater than the specified value
    * (exclusive). If the value of `gt` is larger than a specified `lt` or `lte`,
@@ -221,8 +189,8 @@ public final class DoubleRules extends com.google.protobuf.GeneratedMessageV3
    * range. If the field value doesn't meet the required conditions, an error
    * message is generated.
    *
-   * ```proto
-   * message MyDouble {
+   *```proto
+   *message MyDouble {
    *  // value must be greater than 5.0 [double.gt]
    *  double value = 1 [(buf.validate.field).double.gt = 5.0];
    *
@@ -231,22 +199,18 @@ public final class DoubleRules extends com.google.protobuf.GeneratedMessageV3
    *
    *  // value must be greater than 10 or less than 5.0 [double.gt_lt_exclusive]
    *  double another_value = 3 [(buf.validate.field).double = { gt: 10.0, lt: 5.0 }];
-   * }
-   * ```
+   *}
+   *```
    * </pre>
    *
    * <code>optional double gt = 4 [json_name = "gt", (.buf.validate.priv.field) = { ... }</code>
-   *
    * @return Whether the gt field is set.
    */
   @java.lang.Override
   public boolean hasGt() {
     return ((bitField0_ & 0x00000008) != 0);
   }
-
   /**
-   *
-   *
    * <pre>
    * `gt` requires the field value to be greater than the specified value
    * (exclusive). If the value of `gt` is larger than a specified `lt` or `lte`,
@@ -254,8 +218,8 @@ public final class DoubleRules extends com.google.protobuf.GeneratedMessageV3
    * range. If the field value doesn't meet the required conditions, an error
    * message is generated.
    *
-   * ```proto
-   * message MyDouble {
+   *```proto
+   *message MyDouble {
    *  // value must be greater than 5.0 [double.gt]
    *  double value = 1 [(buf.validate.field).double.gt = 5.0];
    *
@@ -264,12 +228,11 @@ public final class DoubleRules extends com.google.protobuf.GeneratedMessageV3
    *
    *  // value must be greater than 10 or less than 5.0 [double.gt_lt_exclusive]
    *  double another_value = 3 [(buf.validate.field).double = { gt: 10.0, lt: 5.0 }];
-   * }
-   * ```
+   *}
+   *```
    * </pre>
    *
    * <code>optional double gt = 4 [json_name = "gt", (.buf.validate.priv.field) = { ... }</code>
-   *
    * @return The gt.
    */
   @java.lang.Override
@@ -279,10 +242,7 @@ public final class DoubleRules extends com.google.protobuf.GeneratedMessageV3
 
   public static final int GTE_FIELD_NUMBER = 5;
   private double gte_ = 0D;
-
   /**
-   *
-   *
    * <pre>
    * `gte` requires the field value to be greater than or equal to the specified
    * value (exclusive). If the value of `gte` is larger than a specified `lt` or
@@ -290,8 +250,8 @@ public final class DoubleRules extends com.google.protobuf.GeneratedMessageV3
    * specified range. If the field value doesn't meet the required conditions,
    * an error message is generated.
    *
-   * ```proto
-   * message MyDouble {
+   *```proto
+   *message MyDouble {
    *  // value must be greater than or equal to 5.0 [double.gte]
    *  double value = 1 [(buf.validate.field).double.gte = 5.0];
    *
@@ -300,22 +260,18 @@ public final class DoubleRules extends com.google.protobuf.GeneratedMessageV3
    *
    *  // value must be greater than or equal to 10.0 or less than 5.0 [double.gte_lt_exclusive]
    *  double another_value = 3 [(buf.validate.field).double = { gte: 10.0, lt: 5.0 }];
-   * }
-   * ```
+   *}
+   *```
    * </pre>
    *
    * <code>optional double gte = 5 [json_name = "gte", (.buf.validate.priv.field) = { ... }</code>
-   *
    * @return Whether the gte field is set.
    */
   @java.lang.Override
   public boolean hasGte() {
     return ((bitField0_ & 0x00000010) != 0);
   }
-
   /**
-   *
-   *
    * <pre>
    * `gte` requires the field value to be greater than or equal to the specified
    * value (exclusive). If the value of `gte` is larger than a specified `lt` or
@@ -323,8 +279,8 @@ public final class DoubleRules extends com.google.protobuf.GeneratedMessageV3
    * specified range. If the field value doesn't meet the required conditions,
    * an error message is generated.
    *
-   * ```proto
-   * message MyDouble {
+   *```proto
+   *message MyDouble {
    *  // value must be greater than or equal to 5.0 [double.gte]
    *  double value = 1 [(buf.validate.field).double.gte = 5.0];
    *
@@ -333,12 +289,11 @@ public final class DoubleRules extends com.google.protobuf.GeneratedMessageV3
    *
    *  // value must be greater than or equal to 10.0 or less than 5.0 [double.gte_lt_exclusive]
    *  double another_value = 3 [(buf.validate.field).double = { gte: 10.0, lt: 5.0 }];
-   * }
-   * ```
+   *}
+   *```
    * </pre>
    *
    * <code>optional double gte = 5 [json_name = "gte", (.buf.validate.priv.field) = { ... }</code>
-   *
    * @return The gte.
    */
   @java.lang.Override
@@ -347,183 +302,150 @@ public final class DoubleRules extends com.google.protobuf.GeneratedMessageV3
   }
 
   public static final int IN_FIELD_NUMBER = 6;
-
   @SuppressWarnings("serial")
   private com.google.protobuf.Internal.DoubleList in_;
-
   /**
-   *
-   *
    * <pre>
    * `in` requires the field value to be equal to one of the specified values.
    * If the field value isn't one of the specified values, an error message is
    * generated.
    *
-   * ```proto
-   * message MyDouble {
+   *```proto
+   *message MyDouble {
    *  // value must be in list [1.0, 2.0, 3.0]
    *  repeated double value = 1 (buf.validate.field).double = { in: [1.0, 2.0, 3.0] };
-   * }
-   * ```
+   *}
+   *```
    * </pre>
    *
    * <code>repeated double in = 6 [json_name = "in", (.buf.validate.priv.field) = { ... }</code>
-   *
    * @return A list containing the in.
    */
   @java.lang.Override
-  public java.util.List<java.lang.Double> getInList() {
+  public java.util.List<java.lang.Double>
+      getInList() {
     return in_;
   }
-
   /**
-   *
-   *
    * <pre>
    * `in` requires the field value to be equal to one of the specified values.
    * If the field value isn't one of the specified values, an error message is
    * generated.
    *
-   * ```proto
-   * message MyDouble {
+   *```proto
+   *message MyDouble {
    *  // value must be in list [1.0, 2.0, 3.0]
    *  repeated double value = 1 (buf.validate.field).double = { in: [1.0, 2.0, 3.0] };
-   * }
-   * ```
+   *}
+   *```
    * </pre>
    *
    * <code>repeated double in = 6 [json_name = "in", (.buf.validate.priv.field) = { ... }</code>
-   *
    * @return The count of in.
    */
   public int getInCount() {
     return in_.size();
   }
-
   /**
-   *
-   *
    * <pre>
    * `in` requires the field value to be equal to one of the specified values.
    * If the field value isn't one of the specified values, an error message is
    * generated.
    *
-   * ```proto
-   * message MyDouble {
+   *```proto
+   *message MyDouble {
    *  // value must be in list [1.0, 2.0, 3.0]
    *  repeated double value = 1 (buf.validate.field).double = { in: [1.0, 2.0, 3.0] };
-   * }
-   * ```
+   *}
+   *```
    * </pre>
    *
    * <code>repeated double in = 6 [json_name = "in", (.buf.validate.priv.field) = { ... }</code>
-   *
    * @param index The index of the element to return.
    * @return The in at the given index.
    */
   public double getIn(int index) {
     return in_.getDouble(index);
   }
-
   private int inMemoizedSerializedSize = -1;
 
   public static final int NOT_IN_FIELD_NUMBER = 7;
-
   @SuppressWarnings("serial")
   private com.google.protobuf.Internal.DoubleList notIn_;
-
   /**
-   *
-   *
    * <pre>
-   * `not_in` requires the field value to not be equal to any of the specified
+   *`not_in` requires the field value to not be equal to any of the specified
    * values. If the field value is one of the specified values, an error
    * message is generated.
    *
-   * ```proto
-   * message MyDouble {
+   *```proto
+   *message MyDouble {
    *  // value must not be in list [1.0, 2.0, 3.0]
    *  repeated double value = 1 (buf.validate.field).double = { not_in: [1.0, 2.0, 3.0] };
-   * }
-   * ```
+   *}
+   *```
    * </pre>
    *
-   * <code>repeated double not_in = 7 [json_name = "notIn", (.buf.validate.priv.field) = { ... }
-   * </code>
-   *
+   * <code>repeated double not_in = 7 [json_name = "notIn", (.buf.validate.priv.field) = { ... }</code>
    * @return A list containing the notIn.
    */
   @java.lang.Override
-  public java.util.List<java.lang.Double> getNotInList() {
+  public java.util.List<java.lang.Double>
+      getNotInList() {
     return notIn_;
   }
-
   /**
-   *
-   *
    * <pre>
-   * `not_in` requires the field value to not be equal to any of the specified
+   *`not_in` requires the field value to not be equal to any of the specified
    * values. If the field value is one of the specified values, an error
    * message is generated.
    *
-   * ```proto
-   * message MyDouble {
+   *```proto
+   *message MyDouble {
    *  // value must not be in list [1.0, 2.0, 3.0]
    *  repeated double value = 1 (buf.validate.field).double = { not_in: [1.0, 2.0, 3.0] };
-   * }
-   * ```
+   *}
+   *```
    * </pre>
    *
-   * <code>repeated double not_in = 7 [json_name = "notIn", (.buf.validate.priv.field) = { ... }
-   * </code>
-   *
+   * <code>repeated double not_in = 7 [json_name = "notIn", (.buf.validate.priv.field) = { ... }</code>
    * @return The count of notIn.
    */
   public int getNotInCount() {
     return notIn_.size();
   }
-
   /**
-   *
-   *
    * <pre>
-   * `not_in` requires the field value to not be equal to any of the specified
+   *`not_in` requires the field value to not be equal to any of the specified
    * values. If the field value is one of the specified values, an error
    * message is generated.
    *
-   * ```proto
-   * message MyDouble {
+   *```proto
+   *message MyDouble {
    *  // value must not be in list [1.0, 2.0, 3.0]
    *  repeated double value = 1 (buf.validate.field).double = { not_in: [1.0, 2.0, 3.0] };
-   * }
-   * ```
+   *}
+   *```
    * </pre>
    *
-   * <code>repeated double not_in = 7 [json_name = "notIn", (.buf.validate.priv.field) = { ... }
-   * </code>
-   *
+   * <code>repeated double not_in = 7 [json_name = "notIn", (.buf.validate.priv.field) = { ... }</code>
    * @param index The index of the element to return.
    * @return The notIn at the given index.
    */
   public double getNotIn(int index) {
     return notIn_.getDouble(index);
   }
-
   private int notInMemoizedSerializedSize = -1;
 
   public static final int FINITE_FIELD_NUMBER = 8;
   private boolean finite_ = false;
-
   /**
-   *
-   *
    * <pre>
-   * `finite` requires the field value to be finite. If the field value is
+   *`finite` requires the field value to be finite. If the field value is
    * infinite or NaN, an error message is generated.
    * </pre>
    *
    * <code>bool finite = 8 [json_name = "finite", (.buf.validate.priv.field) = { ... }</code>
-   *
    * @return The finite.
    */
   @java.lang.Override
@@ -532,7 +454,6 @@ public final class DoubleRules extends com.google.protobuf.GeneratedMessageV3
   }
 
   private byte memoizedIsInitialized = -1;
-
   @java.lang.Override
   public final boolean isInitialized() {
     byte isInitialized = memoizedIsInitialized;
@@ -544,7 +465,8 @@ public final class DoubleRules extends com.google.protobuf.GeneratedMessageV3
   }
 
   @java.lang.Override
-  public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
+  public void writeTo(com.google.protobuf.CodedOutputStream output)
+                      throws java.io.IOException {
     getSerializedSize();
     if (((bitField0_ & 0x00000001) != 0)) {
       output.writeDouble(1, const_);
@@ -588,19 +510,24 @@ public final class DoubleRules extends com.google.protobuf.GeneratedMessageV3
 
     size = 0;
     if (((bitField0_ & 0x00000001) != 0)) {
-      size += com.google.protobuf.CodedOutputStream.computeDoubleSize(1, const_);
+      size += com.google.protobuf.CodedOutputStream
+        .computeDoubleSize(1, const_);
     }
     if (((bitField0_ & 0x00000002) != 0)) {
-      size += com.google.protobuf.CodedOutputStream.computeDoubleSize(2, lt_);
+      size += com.google.protobuf.CodedOutputStream
+        .computeDoubleSize(2, lt_);
     }
     if (((bitField0_ & 0x00000004) != 0)) {
-      size += com.google.protobuf.CodedOutputStream.computeDoubleSize(3, lte_);
+      size += com.google.protobuf.CodedOutputStream
+        .computeDoubleSize(3, lte_);
     }
     if (((bitField0_ & 0x00000008) != 0)) {
-      size += com.google.protobuf.CodedOutputStream.computeDoubleSize(4, gt_);
+      size += com.google.protobuf.CodedOutputStream
+        .computeDoubleSize(4, gt_);
     }
     if (((bitField0_ & 0x00000010) != 0)) {
-      size += com.google.protobuf.CodedOutputStream.computeDoubleSize(5, gte_);
+      size += com.google.protobuf.CodedOutputStream
+        .computeDoubleSize(5, gte_);
     }
     {
       int dataSize = 0;
@@ -608,7 +535,8 @@ public final class DoubleRules extends com.google.protobuf.GeneratedMessageV3
       size += dataSize;
       if (!getInList().isEmpty()) {
         size += 1;
-        size += com.google.protobuf.CodedOutputStream.computeInt32SizeNoTag(dataSize);
+        size += com.google.protobuf.CodedOutputStream
+            .computeInt32SizeNoTag(dataSize);
       }
       inMemoizedSerializedSize = dataSize;
     }
@@ -618,12 +546,14 @@ public final class DoubleRules extends com.google.protobuf.GeneratedMessageV3
       size += dataSize;
       if (!getNotInList().isEmpty()) {
         size += 1;
-        size += com.google.protobuf.CodedOutputStream.computeInt32SizeNoTag(dataSize);
+        size += com.google.protobuf.CodedOutputStream
+            .computeInt32SizeNoTag(dataSize);
       }
       notInMemoizedSerializedSize = dataSize;
     }
     if (finite_ != false) {
-      size += com.google.protobuf.CodedOutputStream.computeBoolSize(8, finite_);
+      size += com.google.protobuf.CodedOutputStream
+        .computeBoolSize(8, finite_);
     }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
@@ -633,7 +563,7 @@ public final class DoubleRules extends com.google.protobuf.GeneratedMessageV3
   @java.lang.Override
   public boolean equals(final java.lang.Object obj) {
     if (obj == this) {
-      return true;
+     return true;
     }
     if (!(obj instanceof build.buf.validate.DoubleRules)) {
       return super.equals(obj);
@@ -643,31 +573,39 @@ public final class DoubleRules extends com.google.protobuf.GeneratedMessageV3
     if (hasConst() != other.hasConst()) return false;
     if (hasConst()) {
       if (java.lang.Double.doubleToLongBits(getConst())
-          != java.lang.Double.doubleToLongBits(other.getConst())) return false;
+          != java.lang.Double.doubleToLongBits(
+              other.getConst())) return false;
     }
     if (hasLt() != other.hasLt()) return false;
     if (hasLt()) {
       if (java.lang.Double.doubleToLongBits(getLt())
-          != java.lang.Double.doubleToLongBits(other.getLt())) return false;
+          != java.lang.Double.doubleToLongBits(
+              other.getLt())) return false;
     }
     if (hasLte() != other.hasLte()) return false;
     if (hasLte()) {
       if (java.lang.Double.doubleToLongBits(getLte())
-          != java.lang.Double.doubleToLongBits(other.getLte())) return false;
+          != java.lang.Double.doubleToLongBits(
+              other.getLte())) return false;
     }
     if (hasGt() != other.hasGt()) return false;
     if (hasGt()) {
       if (java.lang.Double.doubleToLongBits(getGt())
-          != java.lang.Double.doubleToLongBits(other.getGt())) return false;
+          != java.lang.Double.doubleToLongBits(
+              other.getGt())) return false;
     }
     if (hasGte() != other.hasGte()) return false;
     if (hasGte()) {
       if (java.lang.Double.doubleToLongBits(getGte())
-          != java.lang.Double.doubleToLongBits(other.getGte())) return false;
+          != java.lang.Double.doubleToLongBits(
+              other.getGte())) return false;
     }
-    if (!getInList().equals(other.getInList())) return false;
-    if (!getNotInList().equals(other.getNotInList())) return false;
-    if (getFinite() != other.getFinite()) return false;
+    if (!getInList()
+        .equals(other.getInList())) return false;
+    if (!getNotInList()
+        .equals(other.getNotInList())) return false;
+    if (getFinite()
+        != other.getFinite()) return false;
     if (!getUnknownFields().equals(other.getUnknownFields())) return false;
     return true;
   }
@@ -681,34 +619,28 @@ public final class DoubleRules extends com.google.protobuf.GeneratedMessageV3
     hash = (19 * hash) + getDescriptor().hashCode();
     if (hasConst()) {
       hash = (37 * hash) + CONST_FIELD_NUMBER;
-      hash =
-          (53 * hash)
-              + com.google.protobuf.Internal.hashLong(
-                  java.lang.Double.doubleToLongBits(getConst()));
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          java.lang.Double.doubleToLongBits(getConst()));
     }
     if (hasLt()) {
       hash = (37 * hash) + LT_FIELD_NUMBER;
-      hash =
-          (53 * hash)
-              + com.google.protobuf.Internal.hashLong(java.lang.Double.doubleToLongBits(getLt()));
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          java.lang.Double.doubleToLongBits(getLt()));
     }
     if (hasLte()) {
       hash = (37 * hash) + LTE_FIELD_NUMBER;
-      hash =
-          (53 * hash)
-              + com.google.protobuf.Internal.hashLong(java.lang.Double.doubleToLongBits(getLte()));
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          java.lang.Double.doubleToLongBits(getLte()));
     }
     if (hasGt()) {
       hash = (37 * hash) + GT_FIELD_NUMBER;
-      hash =
-          (53 * hash)
-              + com.google.protobuf.Internal.hashLong(java.lang.Double.doubleToLongBits(getGt()));
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          java.lang.Double.doubleToLongBits(getGt()));
     }
     if (hasGte()) {
       hash = (37 * hash) + GTE_FIELD_NUMBER;
-      hash =
-          (53 * hash)
-              + com.google.protobuf.Internal.hashLong(java.lang.Double.doubleToLongBits(getGte()));
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          java.lang.Double.doubleToLongBits(getGte()));
     }
     if (getInCount() > 0) {
       hash = (37 * hash) + IN_FIELD_NUMBER;
@@ -719,110 +651,106 @@ public final class DoubleRules extends com.google.protobuf.GeneratedMessageV3
       hash = (53 * hash) + getNotInList().hashCode();
     }
     hash = (37 * hash) + FINITE_FIELD_NUMBER;
-    hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(getFinite());
+    hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+        getFinite());
     hash = (29 * hash) + getUnknownFields().hashCode();
     memoizedHashCode = hash;
     return hash;
   }
 
-  public static build.buf.validate.DoubleRules parseFrom(java.nio.ByteBuffer data)
+  public static build.buf.validate.DoubleRules parseFrom(
+      java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-
   public static build.buf.validate.DoubleRules parseFrom(
-      java.nio.ByteBuffer data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      java.nio.ByteBuffer data,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-
-  public static build.buf.validate.DoubleRules parseFrom(com.google.protobuf.ByteString data)
+  public static build.buf.validate.DoubleRules parseFrom(
+      com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-
   public static build.buf.validate.DoubleRules parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-
   public static build.buf.validate.DoubleRules parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-
   public static build.buf.validate.DoubleRules parseFrom(
-      byte[] data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      byte[] data,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-
   public static build.buf.validate.DoubleRules parseFrom(java.io.InputStream input)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
+    return com.google.protobuf.GeneratedMessageV3
+        .parseWithIOException(PARSER, input);
   }
-
   public static build.buf.validate.DoubleRules parseFrom(
-      java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      java.io.InputStream input,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
-        PARSER, input, extensionRegistry);
+    return com.google.protobuf.GeneratedMessageV3
+        .parseWithIOException(PARSER, input, extensionRegistry);
   }
 
   public static build.buf.validate.DoubleRules parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input);
+    return com.google.protobuf.GeneratedMessageV3
+        .parseDelimitedWithIOException(PARSER, input);
   }
 
   public static build.buf.validate.DoubleRules parseDelimitedFrom(
-      java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      java.io.InputStream input,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(
-        PARSER, input, extensionRegistry);
+    return com.google.protobuf.GeneratedMessageV3
+        .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-
-  public static build.buf.validate.DoubleRules parseFrom(com.google.protobuf.CodedInputStream input)
+  public static build.buf.validate.DoubleRules parseFrom(
+      com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
+    return com.google.protobuf.GeneratedMessageV3
+        .parseWithIOException(PARSER, input);
   }
-
   public static build.buf.validate.DoubleRules parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
-        PARSER, input, extensionRegistry);
+    return com.google.protobuf.GeneratedMessageV3
+        .parseWithIOException(PARSER, input, extensionRegistry);
   }
 
   @java.lang.Override
-  public Builder newBuilderForType() {
-    return newBuilder();
-  }
-
+  public Builder newBuilderForType() { return newBuilder(); }
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-
   public static Builder newBuilder(build.buf.validate.DoubleRules prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
-
   @java.lang.Override
   public Builder toBuilder() {
-    return this == DEFAULT_INSTANCE ? new Builder() : new Builder().mergeFrom(this);
+    return this == DEFAULT_INSTANCE
+        ? new Builder() : new Builder().mergeFrom(this);
   }
 
   @java.lang.Override
-  protected Builder newBuilderForType(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+  protected Builder newBuilderForType(
+      com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
     Builder builder = new Builder(parent);
     return builder;
   }
-
   /**
-   *
-   *
    * <pre>
    * DoubleRules describes the constraints applied to `double` values. These
    * rules may also be applied to the `google.protobuf.DoubleValue` Well-Known-Type.
@@ -830,30 +758,33 @@ public final class DoubleRules extends com.google.protobuf.GeneratedMessageV3
    *
    * Protobuf type {@code buf.validate.DoubleRules}
    */
-  public static final class Builder extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
-      implements
+  public static final class Builder extends
+      com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
       // @@protoc_insertion_point(builder_implements:buf.validate.DoubleRules)
       build.buf.validate.DoubleRulesOrBuilder {
-    public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
       return build.buf.validate.ValidateProto.internal_static_buf_validate_DoubleRules_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return build.buf.validate.ValidateProto
-          .internal_static_buf_validate_DoubleRules_fieldAccessorTable
+      return build.buf.validate.ValidateProto.internal_static_buf_validate_DoubleRules_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
               build.buf.validate.DoubleRules.class, build.buf.validate.DoubleRules.Builder.class);
     }
 
     // Construct using build.buf.validate.DoubleRules.newBuilder()
-    private Builder() {}
+    private Builder() {
 
-    private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-      super(parent);
     }
 
+    private Builder(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      super(parent);
+
+    }
     @java.lang.Override
     public Builder clear() {
       super.clear();
@@ -870,7 +801,8 @@ public final class DoubleRules extends com.google.protobuf.GeneratedMessageV3
     }
 
     @java.lang.Override
-    public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
+    public com.google.protobuf.Descriptors.Descriptor
+        getDescriptorForType() {
       return build.buf.validate.ValidateProto.internal_static_buf_validate_DoubleRules_descriptor;
     }
 
@@ -892,9 +824,7 @@ public final class DoubleRules extends com.google.protobuf.GeneratedMessageV3
     public build.buf.validate.DoubleRules buildPartial() {
       build.buf.validate.DoubleRules result = new build.buf.validate.DoubleRules(this);
       buildPartialRepeatedFields(result);
-      if (bitField0_ != 0) {
-        buildPartial0(result);
-      }
+      if (bitField0_ != 0) { buildPartial0(result); }
       onBuilt();
       return result;
     }
@@ -945,39 +875,38 @@ public final class DoubleRules extends com.google.protobuf.GeneratedMessageV3
     public Builder clone() {
       return super.clone();
     }
-
     @java.lang.Override
     public Builder setField(
-        com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field,
+        java.lang.Object value) {
       return super.setField(field, value);
     }
-
     @java.lang.Override
-    public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
+    public Builder clearField(
+        com.google.protobuf.Descriptors.FieldDescriptor field) {
       return super.clearField(field);
     }
-
     @java.lang.Override
-    public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+    public Builder clearOneof(
+        com.google.protobuf.Descriptors.OneofDescriptor oneof) {
       return super.clearOneof(oneof);
     }
-
     @java.lang.Override
     public Builder setRepeatedField(
-        com.google.protobuf.Descriptors.FieldDescriptor field, int index, java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field,
+        int index, java.lang.Object value) {
       return super.setRepeatedField(field, index, value);
     }
-
     @java.lang.Override
     public Builder addRepeatedField(
-        com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field,
+        java.lang.Object value) {
       return super.addRepeatedField(field, value);
     }
-
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
       if (other instanceof build.buf.validate.DoubleRules) {
-        return mergeFrom((build.buf.validate.DoubleRules) other);
+        return mergeFrom((build.buf.validate.DoubleRules)other);
       } else {
         super.mergeFrom(other);
         return this;
@@ -1050,85 +979,74 @@ public final class DoubleRules extends com.google.protobuf.GeneratedMessageV3
             case 0:
               done = true;
               break;
-            case 9:
-              {
-                const_ = input.readDouble();
-                bitField0_ |= 0x00000001;
-                break;
-              } // case 9
-            case 17:
-              {
-                lt_ = input.readDouble();
-                bitField0_ |= 0x00000002;
-                break;
-              } // case 17
-            case 25:
-              {
-                lte_ = input.readDouble();
-                bitField0_ |= 0x00000004;
-                break;
-              } // case 25
-            case 33:
-              {
-                gt_ = input.readDouble();
-                bitField0_ |= 0x00000008;
-                break;
-              } // case 33
-            case 41:
-              {
-                gte_ = input.readDouble();
-                bitField0_ |= 0x00000010;
-                break;
-              } // case 41
-            case 49:
-              {
-                double v = input.readDouble();
-                ensureInIsMutable();
-                in_.addDouble(v);
-                break;
-              } // case 49
-            case 50:
-              {
-                int length = input.readRawVarint32();
-                int limit = input.pushLimit(length);
-                ensureInIsMutable();
-                while (input.getBytesUntilLimit() > 0) {
-                  in_.addDouble(input.readDouble());
-                }
-                input.popLimit(limit);
-                break;
-              } // case 50
-            case 57:
-              {
-                double v = input.readDouble();
-                ensureNotInIsMutable();
-                notIn_.addDouble(v);
-                break;
-              } // case 57
-            case 58:
-              {
-                int length = input.readRawVarint32();
-                int limit = input.pushLimit(length);
-                ensureNotInIsMutable();
-                while (input.getBytesUntilLimit() > 0) {
-                  notIn_.addDouble(input.readDouble());
-                }
-                input.popLimit(limit);
-                break;
-              } // case 58
-            case 64:
-              {
-                finite_ = input.readBool();
-                bitField0_ |= 0x00000080;
-                break;
-              } // case 64
-            default:
-              {
-                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
-                  done = true; // was an endgroup tag
-                }
-                break;
-              } // default:
+            case 9: {
+              const_ = input.readDouble();
+              bitField0_ |= 0x00000001;
+              break;
+            } // case 9
+            case 17: {
+              lt_ = input.readDouble();
+              bitField0_ |= 0x00000002;
+              break;
+            } // case 17
+            case 25: {
+              lte_ = input.readDouble();
+              bitField0_ |= 0x00000004;
+              break;
+            } // case 25
+            case 33: {
+              gt_ = input.readDouble();
+              bitField0_ |= 0x00000008;
+              break;
+            } // case 33
+            case 41: {
+              gte_ = input.readDouble();
+              bitField0_ |= 0x00000010;
+              break;
+            } // case 41
+            case 49: {
+              double v = input.readDouble();
+              ensureInIsMutable();
+              in_.addDouble(v);
+              break;
+            } // case 49
+            case 50: {
+              int length = input.readRawVarint32();
+              int limit = input.pushLimit(length);
+              ensureInIsMutable();
+              while (input.getBytesUntilLimit() > 0) {
+                in_.addDouble(input.readDouble());
+              }
+              input.popLimit(limit);
+              break;
+            } // case 50
+            case 57: {
+              double v = input.readDouble();
+              ensureNotInIsMutable();
+              notIn_.addDouble(v);
+              break;
+            } // case 57
+            case 58: {
+              int length = input.readRawVarint32();
+              int limit = input.pushLimit(length);
+              ensureNotInIsMutable();
+              while (input.getBytesUntilLimit() > 0) {
+                notIn_.addDouble(input.readDouble());
+              }
+              input.popLimit(limit);
+              break;
+            } // case 58
+            case 64: {
+              finite_ = input.readBool();
+              bitField0_ |= 0x00000080;
+              break;
+            } // case 64
+            default: {
+              if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                done = true; // was an endgroup tag
+              }
+              break;
+            } // default:
           } // switch (tag)
         } // while (!done)
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -1138,79 +1056,63 @@ public final class DoubleRules extends com.google.protobuf.GeneratedMessageV3
       } // finally
       return this;
     }
-
     private int bitField0_;
 
-    private double const_;
-
+    private double const_ ;
     /**
-     *
-     *
      * <pre>
-     * `const` requires the field value to exactly match the specified value. If
+     *`const` requires the field value to exactly match the specified value. If
      * the field value doesn't match, an error message is generated.
      *
-     * ```proto
-     * message MyDouble {
+     *```proto
+     *message MyDouble {
      *  // value must equal 42.0
      *   double value = 1 [(buf.validate.field).double.const = 42.0];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>optional double const = 1 [json_name = "const", (.buf.validate.priv.field) = { ... }
-     * </code>
-     *
+     * <code>optional double const = 1 [json_name = "const", (.buf.validate.priv.field) = { ... }</code>
      * @return Whether the const field is set.
      */
     @java.lang.Override
     public boolean hasConst() {
       return ((bitField0_ & 0x00000001) != 0);
     }
-
     /**
-     *
-     *
      * <pre>
-     * `const` requires the field value to exactly match the specified value. If
+     *`const` requires the field value to exactly match the specified value. If
      * the field value doesn't match, an error message is generated.
      *
-     * ```proto
-     * message MyDouble {
+     *```proto
+     *message MyDouble {
      *  // value must equal 42.0
      *   double value = 1 [(buf.validate.field).double.const = 42.0];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>optional double const = 1 [json_name = "const", (.buf.validate.priv.field) = { ... }
-     * </code>
-     *
+     * <code>optional double const = 1 [json_name = "const", (.buf.validate.priv.field) = { ... }</code>
      * @return The const.
      */
     @java.lang.Override
     public double getConst() {
       return const_;
     }
-
     /**
-     *
-     *
      * <pre>
-     * `const` requires the field value to exactly match the specified value. If
+     *`const` requires the field value to exactly match the specified value. If
      * the field value doesn't match, an error message is generated.
      *
-     * ```proto
-     * message MyDouble {
+     *```proto
+     *message MyDouble {
      *  // value must equal 42.0
      *   double value = 1 [(buf.validate.field).double.const = 42.0];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>optional double const = 1 [json_name = "const", (.buf.validate.priv.field) = { ... }
-     * </code>
-     *
+     * <code>optional double const = 1 [json_name = "const", (.buf.validate.priv.field) = { ... }</code>
      * @param value The const to set.
      * @return This builder for chaining.
      */
@@ -1221,25 +1123,20 @@ public final class DoubleRules extends com.google.protobuf.GeneratedMessageV3
       onChanged();
       return this;
     }
-
     /**
-     *
-     *
      * <pre>
-     * `const` requires the field value to exactly match the specified value. If
+     *`const` requires the field value to exactly match the specified value. If
      * the field value doesn't match, an error message is generated.
      *
-     * ```proto
-     * message MyDouble {
+     *```proto
+     *message MyDouble {
      *  // value must equal 42.0
      *   double value = 1 [(buf.validate.field).double.const = 42.0];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>optional double const = 1 [json_name = "const", (.buf.validate.priv.field) = { ... }
-     * </code>
-     *
+     * <code>optional double const = 1 [json_name = "const", (.buf.validate.priv.field) = { ... }</code>
      * @return This builder for chaining.
      */
     public Builder clearConst() {
@@ -1249,76 +1146,64 @@ public final class DoubleRules extends com.google.protobuf.GeneratedMessageV3
       return this;
     }
 
-    private double lt_;
-
+    private double lt_ ;
     /**
-     *
-     *
      * <pre>
      * `lt` requires the field value to be less than the specified value (field &lt;
      * value). If the field value is equal to or greater than the specified
      * value, an error message is generated.
      *
-     * ```proto
-     * message MyDouble {
+     *```proto
+     *message MyDouble {
      *  // value must be less than 10.0
      *   double value = 1 [(buf.validate.field).double.lt = 10.0];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
      * <code>optional double lt = 2 [json_name = "lt", (.buf.validate.priv.field) = { ... }</code>
-     *
      * @return Whether the lt field is set.
      */
     @java.lang.Override
     public boolean hasLt() {
       return ((bitField0_ & 0x00000002) != 0);
     }
-
     /**
-     *
-     *
      * <pre>
      * `lt` requires the field value to be less than the specified value (field &lt;
      * value). If the field value is equal to or greater than the specified
      * value, an error message is generated.
      *
-     * ```proto
-     * message MyDouble {
+     *```proto
+     *message MyDouble {
      *  // value must be less than 10.0
      *   double value = 1 [(buf.validate.field).double.lt = 10.0];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
      * <code>optional double lt = 2 [json_name = "lt", (.buf.validate.priv.field) = { ... }</code>
-     *
      * @return The lt.
      */
     @java.lang.Override
     public double getLt() {
       return lt_;
     }
-
     /**
-     *
-     *
      * <pre>
      * `lt` requires the field value to be less than the specified value (field &lt;
      * value). If the field value is equal to or greater than the specified
      * value, an error message is generated.
      *
-     * ```proto
-     * message MyDouble {
+     *```proto
+     *message MyDouble {
      *  // value must be less than 10.0
      *   double value = 1 [(buf.validate.field).double.lt = 10.0];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
      * <code>optional double lt = 2 [json_name = "lt", (.buf.validate.priv.field) = { ... }</code>
-     *
      * @param value The lt to set.
      * @return This builder for chaining.
      */
@@ -1329,25 +1214,21 @@ public final class DoubleRules extends com.google.protobuf.GeneratedMessageV3
       onChanged();
       return this;
     }
-
     /**
-     *
-     *
      * <pre>
      * `lt` requires the field value to be less than the specified value (field &lt;
      * value). If the field value is equal to or greater than the specified
      * value, an error message is generated.
      *
-     * ```proto
-     * message MyDouble {
+     *```proto
+     *message MyDouble {
      *  // value must be less than 10.0
      *   double value = 1 [(buf.validate.field).double.lt = 10.0];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
      * <code>optional double lt = 2 [json_name = "lt", (.buf.validate.priv.field) = { ... }</code>
-     *
      * @return This builder for chaining.
      */
     public Builder clearLt() {
@@ -1357,76 +1238,64 @@ public final class DoubleRules extends com.google.protobuf.GeneratedMessageV3
       return this;
     }
 
-    private double lte_;
-
+    private double lte_ ;
     /**
-     *
-     *
      * <pre>
-     * `lte` requires the field value to be less than or equal to the specified value
+     *`lte` requires the field value to be less than or equal to the specified value
      * (field &lt;= value). If the field value is greater than the specified value,
      * an error message is generated.
      *
-     * ```proto
-     * message MyDouble {
+     *```proto
+     *message MyDouble {
      *  // value must be less than or equal to 10.0
      *   double value = 1 [(buf.validate.field).double.lte = 10.0];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
      * <code>optional double lte = 3 [json_name = "lte", (.buf.validate.priv.field) = { ... }</code>
-     *
      * @return Whether the lte field is set.
      */
     @java.lang.Override
     public boolean hasLte() {
       return ((bitField0_ & 0x00000004) != 0);
     }
-
     /**
-     *
-     *
      * <pre>
-     * `lte` requires the field value to be less than or equal to the specified value
+     *`lte` requires the field value to be less than or equal to the specified value
      * (field &lt;= value). If the field value is greater than the specified value,
      * an error message is generated.
      *
-     * ```proto
-     * message MyDouble {
+     *```proto
+     *message MyDouble {
      *  // value must be less than or equal to 10.0
      *   double value = 1 [(buf.validate.field).double.lte = 10.0];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
      * <code>optional double lte = 3 [json_name = "lte", (.buf.validate.priv.field) = { ... }</code>
-     *
      * @return The lte.
      */
     @java.lang.Override
     public double getLte() {
       return lte_;
     }
-
     /**
-     *
-     *
      * <pre>
-     * `lte` requires the field value to be less than or equal to the specified value
+     *`lte` requires the field value to be less than or equal to the specified value
      * (field &lt;= value). If the field value is greater than the specified value,
      * an error message is generated.
      *
-     * ```proto
-     * message MyDouble {
+     *```proto
+     *message MyDouble {
      *  // value must be less than or equal to 10.0
      *   double value = 1 [(buf.validate.field).double.lte = 10.0];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
      * <code>optional double lte = 3 [json_name = "lte", (.buf.validate.priv.field) = { ... }</code>
-     *
      * @param value The lte to set.
      * @return This builder for chaining.
      */
@@ -1437,25 +1306,21 @@ public final class DoubleRules extends com.google.protobuf.GeneratedMessageV3
       onChanged();
       return this;
     }
-
     /**
-     *
-     *
      * <pre>
-     * `lte` requires the field value to be less than or equal to the specified value
+     *`lte` requires the field value to be less than or equal to the specified value
      * (field &lt;= value). If the field value is greater than the specified value,
      * an error message is generated.
      *
-     * ```proto
-     * message MyDouble {
+     *```proto
+     *message MyDouble {
      *  // value must be less than or equal to 10.0
      *   double value = 1 [(buf.validate.field).double.lte = 10.0];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
      * <code>optional double lte = 3 [json_name = "lte", (.buf.validate.priv.field) = { ... }</code>
-     *
      * @return This builder for chaining.
      */
     public Builder clearLte() {
@@ -1465,11 +1330,8 @@ public final class DoubleRules extends com.google.protobuf.GeneratedMessageV3
       return this;
     }
 
-    private double gt_;
-
+    private double gt_ ;
     /**
-     *
-     *
      * <pre>
      * `gt` requires the field value to be greater than the specified value
      * (exclusive). If the value of `gt` is larger than a specified `lt` or `lte`,
@@ -1477,8 +1339,8 @@ public final class DoubleRules extends com.google.protobuf.GeneratedMessageV3
      * range. If the field value doesn't meet the required conditions, an error
      * message is generated.
      *
-     * ```proto
-     * message MyDouble {
+     *```proto
+     *message MyDouble {
      *  // value must be greater than 5.0 [double.gt]
      *  double value = 1 [(buf.validate.field).double.gt = 5.0];
      *
@@ -1487,22 +1349,18 @@ public final class DoubleRules extends com.google.protobuf.GeneratedMessageV3
      *
      *  // value must be greater than 10 or less than 5.0 [double.gt_lt_exclusive]
      *  double another_value = 3 [(buf.validate.field).double = { gt: 10.0, lt: 5.0 }];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
      * <code>optional double gt = 4 [json_name = "gt", (.buf.validate.priv.field) = { ... }</code>
-     *
      * @return Whether the gt field is set.
      */
     @java.lang.Override
     public boolean hasGt() {
       return ((bitField0_ & 0x00000008) != 0);
     }
-
     /**
-     *
-     *
      * <pre>
      * `gt` requires the field value to be greater than the specified value
      * (exclusive). If the value of `gt` is larger than a specified `lt` or `lte`,
@@ -1510,8 +1368,8 @@ public final class DoubleRules extends com.google.protobuf.GeneratedMessageV3
      * range. If the field value doesn't meet the required conditions, an error
      * message is generated.
      *
-     * ```proto
-     * message MyDouble {
+     *```proto
+     *message MyDouble {
      *  // value must be greater than 5.0 [double.gt]
      *  double value = 1 [(buf.validate.field).double.gt = 5.0];
      *
@@ -1520,22 +1378,18 @@ public final class DoubleRules extends com.google.protobuf.GeneratedMessageV3
      *
      *  // value must be greater than 10 or less than 5.0 [double.gt_lt_exclusive]
      *  double another_value = 3 [(buf.validate.field).double = { gt: 10.0, lt: 5.0 }];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
      * <code>optional double gt = 4 [json_name = "gt", (.buf.validate.priv.field) = { ... }</code>
-     *
      * @return The gt.
      */
     @java.lang.Override
     public double getGt() {
       return gt_;
     }
-
     /**
-     *
-     *
      * <pre>
      * `gt` requires the field value to be greater than the specified value
      * (exclusive). If the value of `gt` is larger than a specified `lt` or `lte`,
@@ -1543,8 +1397,8 @@ public final class DoubleRules extends com.google.protobuf.GeneratedMessageV3
      * range. If the field value doesn't meet the required conditions, an error
      * message is generated.
      *
-     * ```proto
-     * message MyDouble {
+     *```proto
+     *message MyDouble {
      *  // value must be greater than 5.0 [double.gt]
      *  double value = 1 [(buf.validate.field).double.gt = 5.0];
      *
@@ -1553,12 +1407,11 @@ public final class DoubleRules extends com.google.protobuf.GeneratedMessageV3
      *
      *  // value must be greater than 10 or less than 5.0 [double.gt_lt_exclusive]
      *  double another_value = 3 [(buf.validate.field).double = { gt: 10.0, lt: 5.0 }];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
      * <code>optional double gt = 4 [json_name = "gt", (.buf.validate.priv.field) = { ... }</code>
-     *
      * @param value The gt to set.
      * @return This builder for chaining.
      */
@@ -1569,10 +1422,7 @@ public final class DoubleRules extends com.google.protobuf.GeneratedMessageV3
       onChanged();
       return this;
     }
-
     /**
-     *
-     *
      * <pre>
      * `gt` requires the field value to be greater than the specified value
      * (exclusive). If the value of `gt` is larger than a specified `lt` or `lte`,
@@ -1580,8 +1430,8 @@ public final class DoubleRules extends com.google.protobuf.GeneratedMessageV3
      * range. If the field value doesn't meet the required conditions, an error
      * message is generated.
      *
-     * ```proto
-     * message MyDouble {
+     *```proto
+     *message MyDouble {
      *  // value must be greater than 5.0 [double.gt]
      *  double value = 1 [(buf.validate.field).double.gt = 5.0];
      *
@@ -1590,12 +1440,11 @@ public final class DoubleRules extends com.google.protobuf.GeneratedMessageV3
      *
      *  // value must be greater than 10 or less than 5.0 [double.gt_lt_exclusive]
      *  double another_value = 3 [(buf.validate.field).double = { gt: 10.0, lt: 5.0 }];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
      * <code>optional double gt = 4 [json_name = "gt", (.buf.validate.priv.field) = { ... }</code>
-     *
      * @return This builder for chaining.
      */
     public Builder clearGt() {
@@ -1605,11 +1454,8 @@ public final class DoubleRules extends com.google.protobuf.GeneratedMessageV3
       return this;
     }
 
-    private double gte_;
-
+    private double gte_ ;
     /**
-     *
-     *
      * <pre>
      * `gte` requires the field value to be greater than or equal to the specified
      * value (exclusive). If the value of `gte` is larger than a specified `lt` or
@@ -1617,8 +1463,8 @@ public final class DoubleRules extends com.google.protobuf.GeneratedMessageV3
      * specified range. If the field value doesn't meet the required conditions,
      * an error message is generated.
      *
-     * ```proto
-     * message MyDouble {
+     *```proto
+     *message MyDouble {
      *  // value must be greater than or equal to 5.0 [double.gte]
      *  double value = 1 [(buf.validate.field).double.gte = 5.0];
      *
@@ -1627,22 +1473,18 @@ public final class DoubleRules extends com.google.protobuf.GeneratedMessageV3
      *
      *  // value must be greater than or equal to 10.0 or less than 5.0 [double.gte_lt_exclusive]
      *  double another_value = 3 [(buf.validate.field).double = { gte: 10.0, lt: 5.0 }];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
      * <code>optional double gte = 5 [json_name = "gte", (.buf.validate.priv.field) = { ... }</code>
-     *
      * @return Whether the gte field is set.
      */
     @java.lang.Override
     public boolean hasGte() {
       return ((bitField0_ & 0x00000010) != 0);
     }
-
     /**
-     *
-     *
      * <pre>
      * `gte` requires the field value to be greater than or equal to the specified
      * value (exclusive). If the value of `gte` is larger than a specified `lt` or
@@ -1650,8 +1492,8 @@ public final class DoubleRules extends com.google.protobuf.GeneratedMessageV3
      * specified range. If the field value doesn't meet the required conditions,
      * an error message is generated.
      *
-     * ```proto
-     * message MyDouble {
+     *```proto
+     *message MyDouble {
      *  // value must be greater than or equal to 5.0 [double.gte]
      *  double value = 1 [(buf.validate.field).double.gte = 5.0];
      *
@@ -1660,22 +1502,18 @@ public final class DoubleRules extends com.google.protobuf.GeneratedMessageV3
      *
      *  // value must be greater than or equal to 10.0 or less than 5.0 [double.gte_lt_exclusive]
      *  double another_value = 3 [(buf.validate.field).double = { gte: 10.0, lt: 5.0 }];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
      * <code>optional double gte = 5 [json_name = "gte", (.buf.validate.priv.field) = { ... }</code>
-     *
      * @return The gte.
      */
     @java.lang.Override
     public double getGte() {
       return gte_;
     }
-
     /**
-     *
-     *
      * <pre>
      * `gte` requires the field value to be greater than or equal to the specified
      * value (exclusive). If the value of `gte` is larger than a specified `lt` or
@@ -1683,8 +1521,8 @@ public final class DoubleRules extends com.google.protobuf.GeneratedMessageV3
      * specified range. If the field value doesn't meet the required conditions,
      * an error message is generated.
      *
-     * ```proto
-     * message MyDouble {
+     *```proto
+     *message MyDouble {
      *  // value must be greater than or equal to 5.0 [double.gte]
      *  double value = 1 [(buf.validate.field).double.gte = 5.0];
      *
@@ -1693,12 +1531,11 @@ public final class DoubleRules extends com.google.protobuf.GeneratedMessageV3
      *
      *  // value must be greater than or equal to 10.0 or less than 5.0 [double.gte_lt_exclusive]
      *  double another_value = 3 [(buf.validate.field).double = { gte: 10.0, lt: 5.0 }];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
      * <code>optional double gte = 5 [json_name = "gte", (.buf.validate.priv.field) = { ... }</code>
-     *
      * @param value The gte to set.
      * @return This builder for chaining.
      */
@@ -1709,10 +1546,7 @@ public final class DoubleRules extends com.google.protobuf.GeneratedMessageV3
       onChanged();
       return this;
     }
-
     /**
-     *
-     *
      * <pre>
      * `gte` requires the field value to be greater than or equal to the specified
      * value (exclusive). If the value of `gte` is larger than a specified `lt` or
@@ -1720,8 +1554,8 @@ public final class DoubleRules extends com.google.protobuf.GeneratedMessageV3
      * specified range. If the field value doesn't meet the required conditions,
      * an error message is generated.
      *
-     * ```proto
-     * message MyDouble {
+     *```proto
+     *message MyDouble {
      *  // value must be greater than or equal to 5.0 [double.gte]
      *  double value = 1 [(buf.validate.field).double.gte = 5.0];
      *
@@ -1730,12 +1564,11 @@ public final class DoubleRules extends com.google.protobuf.GeneratedMessageV3
      *
      *  // value must be greater than or equal to 10.0 or less than 5.0 [double.gte_lt_exclusive]
      *  double another_value = 3 [(buf.validate.field).double = { gte: 10.0, lt: 5.0 }];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
      * <code>optional double gte = 5 [json_name = "gte", (.buf.validate.priv.field) = { ... }</code>
-     *
      * @return This builder for chaining.
      */
     public Builder clearGte() {
@@ -1746,135 +1579,117 @@ public final class DoubleRules extends com.google.protobuf.GeneratedMessageV3
     }
 
     private com.google.protobuf.Internal.DoubleList in_ = emptyDoubleList();
-
     private void ensureInIsMutable() {
       if (!((bitField0_ & 0x00000020) != 0)) {
         in_ = mutableCopy(in_);
         bitField0_ |= 0x00000020;
       }
     }
-
     /**
-     *
-     *
      * <pre>
      * `in` requires the field value to be equal to one of the specified values.
      * If the field value isn't one of the specified values, an error message is
      * generated.
      *
-     * ```proto
-     * message MyDouble {
+     *```proto
+     *message MyDouble {
      *  // value must be in list [1.0, 2.0, 3.0]
      *  repeated double value = 1 (buf.validate.field).double = { in: [1.0, 2.0, 3.0] };
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
      * <code>repeated double in = 6 [json_name = "in", (.buf.validate.priv.field) = { ... }</code>
-     *
      * @return A list containing the in.
      */
-    public java.util.List<java.lang.Double> getInList() {
-      return ((bitField0_ & 0x00000020) != 0) ? java.util.Collections.unmodifiableList(in_) : in_;
+    public java.util.List<java.lang.Double>
+        getInList() {
+      return ((bitField0_ & 0x00000020) != 0) ?
+               java.util.Collections.unmodifiableList(in_) : in_;
     }
-
     /**
-     *
-     *
      * <pre>
      * `in` requires the field value to be equal to one of the specified values.
      * If the field value isn't one of the specified values, an error message is
      * generated.
      *
-     * ```proto
-     * message MyDouble {
+     *```proto
+     *message MyDouble {
      *  // value must be in list [1.0, 2.0, 3.0]
      *  repeated double value = 1 (buf.validate.field).double = { in: [1.0, 2.0, 3.0] };
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
      * <code>repeated double in = 6 [json_name = "in", (.buf.validate.priv.field) = { ... }</code>
-     *
      * @return The count of in.
      */
     public int getInCount() {
       return in_.size();
     }
-
     /**
-     *
-     *
      * <pre>
      * `in` requires the field value to be equal to one of the specified values.
      * If the field value isn't one of the specified values, an error message is
      * generated.
      *
-     * ```proto
-     * message MyDouble {
+     *```proto
+     *message MyDouble {
      *  // value must be in list [1.0, 2.0, 3.0]
      *  repeated double value = 1 (buf.validate.field).double = { in: [1.0, 2.0, 3.0] };
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
      * <code>repeated double in = 6 [json_name = "in", (.buf.validate.priv.field) = { ... }</code>
-     *
      * @param index The index of the element to return.
      * @return The in at the given index.
      */
     public double getIn(int index) {
       return in_.getDouble(index);
     }
-
     /**
-     *
-     *
      * <pre>
      * `in` requires the field value to be equal to one of the specified values.
      * If the field value isn't one of the specified values, an error message is
      * generated.
      *
-     * ```proto
-     * message MyDouble {
+     *```proto
+     *message MyDouble {
      *  // value must be in list [1.0, 2.0, 3.0]
      *  repeated double value = 1 (buf.validate.field).double = { in: [1.0, 2.0, 3.0] };
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
      * <code>repeated double in = 6 [json_name = "in", (.buf.validate.priv.field) = { ... }</code>
-     *
      * @param index The index to set the value at.
      * @param value The in to set.
      * @return This builder for chaining.
      */
-    public Builder setIn(int index, double value) {
+    public Builder setIn(
+        int index, double value) {
 
       ensureInIsMutable();
       in_.setDouble(index, value);
       onChanged();
       return this;
     }
-
     /**
-     *
-     *
      * <pre>
      * `in` requires the field value to be equal to one of the specified values.
      * If the field value isn't one of the specified values, an error message is
      * generated.
      *
-     * ```proto
-     * message MyDouble {
+     *```proto
+     *message MyDouble {
      *  // value must be in list [1.0, 2.0, 3.0]
      *  repeated double value = 1 (buf.validate.field).double = { in: [1.0, 2.0, 3.0] };
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
      * <code>repeated double in = 6 [json_name = "in", (.buf.validate.priv.field) = { ... }</code>
-     *
      * @param value The in to add.
      * @return This builder for chaining.
      */
@@ -1885,53 +1700,47 @@ public final class DoubleRules extends com.google.protobuf.GeneratedMessageV3
       onChanged();
       return this;
     }
-
     /**
-     *
-     *
      * <pre>
      * `in` requires the field value to be equal to one of the specified values.
      * If the field value isn't one of the specified values, an error message is
      * generated.
      *
-     * ```proto
-     * message MyDouble {
+     *```proto
+     *message MyDouble {
      *  // value must be in list [1.0, 2.0, 3.0]
      *  repeated double value = 1 (buf.validate.field).double = { in: [1.0, 2.0, 3.0] };
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
      * <code>repeated double in = 6 [json_name = "in", (.buf.validate.priv.field) = { ... }</code>
-     *
      * @param values The in to add.
      * @return This builder for chaining.
      */
-    public Builder addAllIn(java.lang.Iterable<? extends java.lang.Double> values) {
+    public Builder addAllIn(
+        java.lang.Iterable<? extends java.lang.Double> values) {
       ensureInIsMutable();
-      com.google.protobuf.AbstractMessageLite.Builder.addAll(values, in_);
+      com.google.protobuf.AbstractMessageLite.Builder.addAll(
+          values, in_);
       onChanged();
       return this;
     }
-
     /**
-     *
-     *
      * <pre>
      * `in` requires the field value to be equal to one of the specified values.
      * If the field value isn't one of the specified values, an error message is
      * generated.
      *
-     * ```proto
-     * message MyDouble {
+     *```proto
+     *message MyDouble {
      *  // value must be in list [1.0, 2.0, 3.0]
      *  repeated double value = 1 (buf.validate.field).double = { in: [1.0, 2.0, 3.0] };
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
      * <code>repeated double in = 6 [json_name = "in", (.buf.validate.priv.field) = { ... }</code>
-     *
      * @return This builder for chaining.
      */
     public Builder clearIn() {
@@ -1942,142 +1751,117 @@ public final class DoubleRules extends com.google.protobuf.GeneratedMessageV3
     }
 
     private com.google.protobuf.Internal.DoubleList notIn_ = emptyDoubleList();
-
     private void ensureNotInIsMutable() {
       if (!((bitField0_ & 0x00000040) != 0)) {
         notIn_ = mutableCopy(notIn_);
         bitField0_ |= 0x00000040;
       }
     }
-
     /**
-     *
-     *
      * <pre>
-     * `not_in` requires the field value to not be equal to any of the specified
+     *`not_in` requires the field value to not be equal to any of the specified
      * values. If the field value is one of the specified values, an error
      * message is generated.
      *
-     * ```proto
-     * message MyDouble {
+     *```proto
+     *message MyDouble {
      *  // value must not be in list [1.0, 2.0, 3.0]
      *  repeated double value = 1 (buf.validate.field).double = { not_in: [1.0, 2.0, 3.0] };
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>repeated double not_in = 7 [json_name = "notIn", (.buf.validate.priv.field) = { ... }
-     * </code>
-     *
+     * <code>repeated double not_in = 7 [json_name = "notIn", (.buf.validate.priv.field) = { ... }</code>
      * @return A list containing the notIn.
      */
-    public java.util.List<java.lang.Double> getNotInList() {
-      return ((bitField0_ & 0x00000040) != 0)
-          ? java.util.Collections.unmodifiableList(notIn_)
-          : notIn_;
+    public java.util.List<java.lang.Double>
+        getNotInList() {
+      return ((bitField0_ & 0x00000040) != 0) ?
+               java.util.Collections.unmodifiableList(notIn_) : notIn_;
     }
-
     /**
-     *
-     *
      * <pre>
-     * `not_in` requires the field value to not be equal to any of the specified
+     *`not_in` requires the field value to not be equal to any of the specified
      * values. If the field value is one of the specified values, an error
      * message is generated.
      *
-     * ```proto
-     * message MyDouble {
+     *```proto
+     *message MyDouble {
      *  // value must not be in list [1.0, 2.0, 3.0]
      *  repeated double value = 1 (buf.validate.field).double = { not_in: [1.0, 2.0, 3.0] };
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>repeated double not_in = 7 [json_name = "notIn", (.buf.validate.priv.field) = { ... }
-     * </code>
-     *
+     * <code>repeated double not_in = 7 [json_name = "notIn", (.buf.validate.priv.field) = { ... }</code>
      * @return The count of notIn.
      */
     public int getNotInCount() {
       return notIn_.size();
     }
-
     /**
-     *
-     *
      * <pre>
-     * `not_in` requires the field value to not be equal to any of the specified
+     *`not_in` requires the field value to not be equal to any of the specified
      * values. If the field value is one of the specified values, an error
      * message is generated.
      *
-     * ```proto
-     * message MyDouble {
+     *```proto
+     *message MyDouble {
      *  // value must not be in list [1.0, 2.0, 3.0]
      *  repeated double value = 1 (buf.validate.field).double = { not_in: [1.0, 2.0, 3.0] };
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>repeated double not_in = 7 [json_name = "notIn", (.buf.validate.priv.field) = { ... }
-     * </code>
-     *
+     * <code>repeated double not_in = 7 [json_name = "notIn", (.buf.validate.priv.field) = { ... }</code>
      * @param index The index of the element to return.
      * @return The notIn at the given index.
      */
     public double getNotIn(int index) {
       return notIn_.getDouble(index);
     }
-
     /**
-     *
-     *
      * <pre>
-     * `not_in` requires the field value to not be equal to any of the specified
+     *`not_in` requires the field value to not be equal to any of the specified
      * values. If the field value is one of the specified values, an error
      * message is generated.
      *
-     * ```proto
-     * message MyDouble {
+     *```proto
+     *message MyDouble {
      *  // value must not be in list [1.0, 2.0, 3.0]
      *  repeated double value = 1 (buf.validate.field).double = { not_in: [1.0, 2.0, 3.0] };
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>repeated double not_in = 7 [json_name = "notIn", (.buf.validate.priv.field) = { ... }
-     * </code>
-     *
+     * <code>repeated double not_in = 7 [json_name = "notIn", (.buf.validate.priv.field) = { ... }</code>
      * @param index The index to set the value at.
      * @param value The notIn to set.
      * @return This builder for chaining.
      */
-    public Builder setNotIn(int index, double value) {
+    public Builder setNotIn(
+        int index, double value) {
 
       ensureNotInIsMutable();
       notIn_.setDouble(index, value);
       onChanged();
       return this;
     }
-
     /**
-     *
-     *
      * <pre>
-     * `not_in` requires the field value to not be equal to any of the specified
+     *`not_in` requires the field value to not be equal to any of the specified
      * values. If the field value is one of the specified values, an error
      * message is generated.
      *
-     * ```proto
-     * message MyDouble {
+     *```proto
+     *message MyDouble {
      *  // value must not be in list [1.0, 2.0, 3.0]
      *  repeated double value = 1 (buf.validate.field).double = { not_in: [1.0, 2.0, 3.0] };
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>repeated double not_in = 7 [json_name = "notIn", (.buf.validate.priv.field) = { ... }
-     * </code>
-     *
+     * <code>repeated double not_in = 7 [json_name = "notIn", (.buf.validate.priv.field) = { ... }</code>
      * @param value The notIn to add.
      * @return This builder for chaining.
      */
@@ -2088,55 +1872,47 @@ public final class DoubleRules extends com.google.protobuf.GeneratedMessageV3
       onChanged();
       return this;
     }
-
     /**
-     *
-     *
      * <pre>
-     * `not_in` requires the field value to not be equal to any of the specified
+     *`not_in` requires the field value to not be equal to any of the specified
      * values. If the field value is one of the specified values, an error
      * message is generated.
      *
-     * ```proto
-     * message MyDouble {
+     *```proto
+     *message MyDouble {
      *  // value must not be in list [1.0, 2.0, 3.0]
      *  repeated double value = 1 (buf.validate.field).double = { not_in: [1.0, 2.0, 3.0] };
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>repeated double not_in = 7 [json_name = "notIn", (.buf.validate.priv.field) = { ... }
-     * </code>
-     *
+     * <code>repeated double not_in = 7 [json_name = "notIn", (.buf.validate.priv.field) = { ... }</code>
      * @param values The notIn to add.
      * @return This builder for chaining.
      */
-    public Builder addAllNotIn(java.lang.Iterable<? extends java.lang.Double> values) {
+    public Builder addAllNotIn(
+        java.lang.Iterable<? extends java.lang.Double> values) {
       ensureNotInIsMutable();
-      com.google.protobuf.AbstractMessageLite.Builder.addAll(values, notIn_);
+      com.google.protobuf.AbstractMessageLite.Builder.addAll(
+          values, notIn_);
       onChanged();
       return this;
     }
-
     /**
-     *
-     *
      * <pre>
-     * `not_in` requires the field value to not be equal to any of the specified
+     *`not_in` requires the field value to not be equal to any of the specified
      * values. If the field value is one of the specified values, an error
      * message is generated.
      *
-     * ```proto
-     * message MyDouble {
+     *```proto
+     *message MyDouble {
      *  // value must not be in list [1.0, 2.0, 3.0]
      *  repeated double value = 1 (buf.validate.field).double = { not_in: [1.0, 2.0, 3.0] };
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>repeated double not_in = 7 [json_name = "notIn", (.buf.validate.priv.field) = { ... }
-     * </code>
-     *
+     * <code>repeated double not_in = 7 [json_name = "notIn", (.buf.validate.priv.field) = { ... }</code>
      * @return This builder for chaining.
      */
     public Builder clearNotIn() {
@@ -2146,35 +1922,27 @@ public final class DoubleRules extends com.google.protobuf.GeneratedMessageV3
       return this;
     }
 
-    private boolean finite_;
-
+    private boolean finite_ ;
     /**
-     *
-     *
      * <pre>
-     * `finite` requires the field value to be finite. If the field value is
+     *`finite` requires the field value to be finite. If the field value is
      * infinite or NaN, an error message is generated.
      * </pre>
      *
      * <code>bool finite = 8 [json_name = "finite", (.buf.validate.priv.field) = { ... }</code>
-     *
      * @return The finite.
      */
     @java.lang.Override
     public boolean getFinite() {
       return finite_;
     }
-
     /**
-     *
-     *
      * <pre>
-     * `finite` requires the field value to be finite. If the field value is
+     *`finite` requires the field value to be finite. If the field value is
      * infinite or NaN, an error message is generated.
      * </pre>
      *
      * <code>bool finite = 8 [json_name = "finite", (.buf.validate.priv.field) = { ... }</code>
-     *
      * @param value The finite to set.
      * @return This builder for chaining.
      */
@@ -2185,17 +1953,13 @@ public final class DoubleRules extends com.google.protobuf.GeneratedMessageV3
       onChanged();
       return this;
     }
-
     /**
-     *
-     *
      * <pre>
-     * `finite` requires the field value to be finite. If the field value is
+     *`finite` requires the field value to be finite. If the field value is
      * infinite or NaN, an error message is generated.
      * </pre>
      *
      * <code>bool finite = 8 [json_name = "finite", (.buf.validate.priv.field) = { ... }</code>
-     *
      * @return This builder for chaining.
      */
     public Builder clearFinite() {
@@ -2204,9 +1968,9 @@ public final class DoubleRules extends com.google.protobuf.GeneratedMessageV3
       onChanged();
       return this;
     }
-
     @java.lang.Override
-    public final Builder setUnknownFields(final com.google.protobuf.UnknownFieldSet unknownFields) {
+    public final Builder setUnknownFields(
+        final com.google.protobuf.UnknownFieldSet unknownFields) {
       return super.setUnknownFields(unknownFields);
     }
 
@@ -2216,12 +1980,12 @@ public final class DoubleRules extends com.google.protobuf.GeneratedMessageV3
       return super.mergeUnknownFields(unknownFields);
     }
 
+
     // @@protoc_insertion_point(builder_scope:buf.validate.DoubleRules)
   }
 
   // @@protoc_insertion_point(class_scope:buf.validate.DoubleRules)
   private static final build.buf.validate.DoubleRules DEFAULT_INSTANCE;
-
   static {
     DEFAULT_INSTANCE = new build.buf.validate.DoubleRules();
   }
@@ -2230,27 +1994,27 @@ public final class DoubleRules extends com.google.protobuf.GeneratedMessageV3
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<DoubleRules> PARSER =
-      new com.google.protobuf.AbstractParser<DoubleRules>() {
-        @java.lang.Override
-        public DoubleRules parsePartialFrom(
-            com.google.protobuf.CodedInputStream input,
-            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-            throws com.google.protobuf.InvalidProtocolBufferException {
-          Builder builder = newBuilder();
-          try {
-            builder.mergeFrom(input, extensionRegistry);
-          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-            throw e.setUnfinishedMessage(builder.buildPartial());
-          } catch (com.google.protobuf.UninitializedMessageException e) {
-            throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
-          } catch (java.io.IOException e) {
-            throw new com.google.protobuf.InvalidProtocolBufferException(e)
-                .setUnfinishedMessage(builder.buildPartial());
-          }
-          return builder.buildPartial();
-        }
-      };
+  private static final com.google.protobuf.Parser<DoubleRules>
+      PARSER = new com.google.protobuf.AbstractParser<DoubleRules>() {
+    @java.lang.Override
+    public DoubleRules parsePartialFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      Builder builder = newBuilder();
+      try {
+        builder.mergeFrom(input, extensionRegistry);
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(builder.buildPartial());
+      } catch (com.google.protobuf.UninitializedMessageException e) {
+        throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(e)
+            .setUnfinishedMessage(builder.buildPartial());
+      }
+      return builder.buildPartial();
+    }
+  };
 
   public static com.google.protobuf.Parser<DoubleRules> parser() {
     return PARSER;
@@ -2265,4 +2029,6 @@ public final class DoubleRules extends com.google.protobuf.GeneratedMessageV3
   public build.buf.validate.DoubleRules getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
+
 }
+

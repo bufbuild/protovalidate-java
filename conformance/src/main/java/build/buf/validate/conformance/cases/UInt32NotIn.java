@@ -3,47 +3,45 @@
 
 package build.buf.validate.conformance.cases;
 
-/** Protobuf type {@code buf.validate.conformance.cases.UInt32NotIn} */
-public final class UInt32NotIn extends com.google.protobuf.GeneratedMessageV3
-    implements
+/**
+ * Protobuf type {@code buf.validate.conformance.cases.UInt32NotIn}
+ */
+public final class UInt32NotIn extends
+    com.google.protobuf.GeneratedMessageV3 implements
     // @@protoc_insertion_point(message_implements:buf.validate.conformance.cases.UInt32NotIn)
     UInt32NotInOrBuilder {
-  private static final long serialVersionUID = 0L;
-
+private static final long serialVersionUID = 0L;
   // Use UInt32NotIn.newBuilder() to construct.
   private UInt32NotIn(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
-
-  private UInt32NotIn() {}
+  private UInt32NotIn() {
+  }
 
   @java.lang.Override
   @SuppressWarnings({"unused"})
-  protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
+  protected java.lang.Object newInstance(
+      UnusedPrivateParameter unused) {
     return new UInt32NotIn();
   }
 
-  public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
-    return build.buf.validate.conformance.cases.NumbersProto
-        .internal_static_buf_validate_conformance_cases_UInt32NotIn_descriptor;
+  public static final com.google.protobuf.Descriptors.Descriptor
+      getDescriptor() {
+    return build.buf.validate.conformance.cases.NumbersProto.internal_static_buf_validate_conformance_cases_UInt32NotIn_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return build.buf.validate.conformance.cases.NumbersProto
-        .internal_static_buf_validate_conformance_cases_UInt32NotIn_fieldAccessorTable
+    return build.buf.validate.conformance.cases.NumbersProto.internal_static_buf_validate_conformance_cases_UInt32NotIn_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            build.buf.validate.conformance.cases.UInt32NotIn.class,
-            build.buf.validate.conformance.cases.UInt32NotIn.Builder.class);
+            build.buf.validate.conformance.cases.UInt32NotIn.class, build.buf.validate.conformance.cases.UInt32NotIn.Builder.class);
   }
 
   public static final int VAL_FIELD_NUMBER = 1;
   private int val_ = 0;
-
   /**
    * <code>uint32 val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
-   *
    * @return The val.
    */
   @java.lang.Override
@@ -52,7 +50,6 @@ public final class UInt32NotIn extends com.google.protobuf.GeneratedMessageV3
   }
 
   private byte memoizedIsInitialized = -1;
-
   @java.lang.Override
   public final boolean isInitialized() {
     byte isInitialized = memoizedIsInitialized;
@@ -64,7 +61,8 @@ public final class UInt32NotIn extends com.google.protobuf.GeneratedMessageV3
   }
 
   @java.lang.Override
-  public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
+  public void writeTo(com.google.protobuf.CodedOutputStream output)
+                      throws java.io.IOException {
     if (val_ != 0) {
       output.writeUInt32(1, val_);
     }
@@ -78,7 +76,8 @@ public final class UInt32NotIn extends com.google.protobuf.GeneratedMessageV3
 
     size = 0;
     if (val_ != 0) {
-      size += com.google.protobuf.CodedOutputStream.computeUInt32Size(1, val_);
+      size += com.google.protobuf.CodedOutputStream
+        .computeUInt32Size(1, val_);
     }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
@@ -88,15 +87,15 @@ public final class UInt32NotIn extends com.google.protobuf.GeneratedMessageV3
   @java.lang.Override
   public boolean equals(final java.lang.Object obj) {
     if (obj == this) {
-      return true;
+     return true;
     }
     if (!(obj instanceof build.buf.validate.conformance.cases.UInt32NotIn)) {
       return super.equals(obj);
     }
-    build.buf.validate.conformance.cases.UInt32NotIn other =
-        (build.buf.validate.conformance.cases.UInt32NotIn) obj;
+    build.buf.validate.conformance.cases.UInt32NotIn other = (build.buf.validate.conformance.cases.UInt32NotIn) obj;
 
-    if (getVal() != other.getVal()) return false;
+    if (getVal()
+        != other.getVal()) return false;
     if (!getUnknownFields().equals(other.getUnknownFields())) return false;
     return true;
   }
@@ -115,129 +114,128 @@ public final class UInt32NotIn extends com.google.protobuf.GeneratedMessageV3
     return hash;
   }
 
-  public static build.buf.validate.conformance.cases.UInt32NotIn parseFrom(java.nio.ByteBuffer data)
+  public static build.buf.validate.conformance.cases.UInt32NotIn parseFrom(
+      java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-
   public static build.buf.validate.conformance.cases.UInt32NotIn parseFrom(
-      java.nio.ByteBuffer data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      java.nio.ByteBuffer data,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-
   public static build.buf.validate.conformance.cases.UInt32NotIn parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-
   public static build.buf.validate.conformance.cases.UInt32NotIn parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-
   public static build.buf.validate.conformance.cases.UInt32NotIn parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-
   public static build.buf.validate.conformance.cases.UInt32NotIn parseFrom(
-      byte[] data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      byte[] data,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-
+  public static build.buf.validate.conformance.cases.UInt32NotIn parseFrom(java.io.InputStream input)
+      throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3
+        .parseWithIOException(PARSER, input);
+  }
   public static build.buf.validate.conformance.cases.UInt32NotIn parseFrom(
-      java.io.InputStream input) throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
+      java.io.InputStream input,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3
+        .parseWithIOException(PARSER, input, extensionRegistry);
   }
 
-  public static build.buf.validate.conformance.cases.UInt32NotIn parseFrom(
-      java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+  public static build.buf.validate.conformance.cases.UInt32NotIn parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
-        PARSER, input, extensionRegistry);
+    return com.google.protobuf.GeneratedMessageV3
+        .parseDelimitedWithIOException(PARSER, input);
   }
 
   public static build.buf.validate.conformance.cases.UInt32NotIn parseDelimitedFrom(
-      java.io.InputStream input) throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input);
-  }
-
-  public static build.buf.validate.conformance.cases.UInt32NotIn parseDelimitedFrom(
-      java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      java.io.InputStream input,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(
-        PARSER, input, extensionRegistry);
+    return com.google.protobuf.GeneratedMessageV3
+        .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-
   public static build.buf.validate.conformance.cases.UInt32NotIn parseFrom(
-      com.google.protobuf.CodedInputStream input) throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
+      com.google.protobuf.CodedInputStream input)
+      throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3
+        .parseWithIOException(PARSER, input);
   }
-
   public static build.buf.validate.conformance.cases.UInt32NotIn parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
-        PARSER, input, extensionRegistry);
+    return com.google.protobuf.GeneratedMessageV3
+        .parseWithIOException(PARSER, input, extensionRegistry);
   }
 
   @java.lang.Override
-  public Builder newBuilderForType() {
-    return newBuilder();
-  }
-
+  public Builder newBuilderForType() { return newBuilder(); }
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-
   public static Builder newBuilder(build.buf.validate.conformance.cases.UInt32NotIn prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
-
   @java.lang.Override
   public Builder toBuilder() {
-    return this == DEFAULT_INSTANCE ? new Builder() : new Builder().mergeFrom(this);
+    return this == DEFAULT_INSTANCE
+        ? new Builder() : new Builder().mergeFrom(this);
   }
 
   @java.lang.Override
-  protected Builder newBuilderForType(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+  protected Builder newBuilderForType(
+      com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
     Builder builder = new Builder(parent);
     return builder;
   }
-
-  /** Protobuf type {@code buf.validate.conformance.cases.UInt32NotIn} */
-  public static final class Builder extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
-      implements
+  /**
+   * Protobuf type {@code buf.validate.conformance.cases.UInt32NotIn}
+   */
+  public static final class Builder extends
+      com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
       // @@protoc_insertion_point(builder_implements:buf.validate.conformance.cases.UInt32NotIn)
       build.buf.validate.conformance.cases.UInt32NotInOrBuilder {
-    public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
-      return build.buf.validate.conformance.cases.NumbersProto
-          .internal_static_buf_validate_conformance_cases_UInt32NotIn_descriptor;
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return build.buf.validate.conformance.cases.NumbersProto.internal_static_buf_validate_conformance_cases_UInt32NotIn_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return build.buf.validate.conformance.cases.NumbersProto
-          .internal_static_buf_validate_conformance_cases_UInt32NotIn_fieldAccessorTable
+      return build.buf.validate.conformance.cases.NumbersProto.internal_static_buf_validate_conformance_cases_UInt32NotIn_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              build.buf.validate.conformance.cases.UInt32NotIn.class,
-              build.buf.validate.conformance.cases.UInt32NotIn.Builder.class);
+              build.buf.validate.conformance.cases.UInt32NotIn.class, build.buf.validate.conformance.cases.UInt32NotIn.Builder.class);
     }
 
     // Construct using build.buf.validate.conformance.cases.UInt32NotIn.newBuilder()
-    private Builder() {}
+    private Builder() {
 
-    private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-      super(parent);
     }
 
+    private Builder(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      super(parent);
+
+    }
     @java.lang.Override
     public Builder clear() {
       super.clear();
@@ -247,9 +245,9 @@ public final class UInt32NotIn extends com.google.protobuf.GeneratedMessageV3
     }
 
     @java.lang.Override
-    public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
-      return build.buf.validate.conformance.cases.NumbersProto
-          .internal_static_buf_validate_conformance_cases_UInt32NotIn_descriptor;
+    public com.google.protobuf.Descriptors.Descriptor
+        getDescriptorForType() {
+      return build.buf.validate.conformance.cases.NumbersProto.internal_static_buf_validate_conformance_cases_UInt32NotIn_descriptor;
     }
 
     @java.lang.Override
@@ -268,11 +266,8 @@ public final class UInt32NotIn extends com.google.protobuf.GeneratedMessageV3
 
     @java.lang.Override
     public build.buf.validate.conformance.cases.UInt32NotIn buildPartial() {
-      build.buf.validate.conformance.cases.UInt32NotIn result =
-          new build.buf.validate.conformance.cases.UInt32NotIn(this);
-      if (bitField0_ != 0) {
-        buildPartial0(result);
-      }
+      build.buf.validate.conformance.cases.UInt32NotIn result = new build.buf.validate.conformance.cases.UInt32NotIn(this);
+      if (bitField0_ != 0) { buildPartial0(result); }
       onBuilt();
       return result;
     }
@@ -288,39 +283,38 @@ public final class UInt32NotIn extends com.google.protobuf.GeneratedMessageV3
     public Builder clone() {
       return super.clone();
     }
-
     @java.lang.Override
     public Builder setField(
-        com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field,
+        java.lang.Object value) {
       return super.setField(field, value);
     }
-
     @java.lang.Override
-    public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
+    public Builder clearField(
+        com.google.protobuf.Descriptors.FieldDescriptor field) {
       return super.clearField(field);
     }
-
     @java.lang.Override
-    public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+    public Builder clearOneof(
+        com.google.protobuf.Descriptors.OneofDescriptor oneof) {
       return super.clearOneof(oneof);
     }
-
     @java.lang.Override
     public Builder setRepeatedField(
-        com.google.protobuf.Descriptors.FieldDescriptor field, int index, java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field,
+        int index, java.lang.Object value) {
       return super.setRepeatedField(field, index, value);
     }
-
     @java.lang.Override
     public Builder addRepeatedField(
-        com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field,
+        java.lang.Object value) {
       return super.addRepeatedField(field, value);
     }
-
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
       if (other instanceof build.buf.validate.conformance.cases.UInt32NotIn) {
-        return mergeFrom((build.buf.validate.conformance.cases.UInt32NotIn) other);
+        return mergeFrom((build.buf.validate.conformance.cases.UInt32NotIn)other);
       } else {
         super.mergeFrom(other);
         return this;
@@ -328,8 +322,7 @@ public final class UInt32NotIn extends com.google.protobuf.GeneratedMessageV3
     }
 
     public Builder mergeFrom(build.buf.validate.conformance.cases.UInt32NotIn other) {
-      if (other == build.buf.validate.conformance.cases.UInt32NotIn.getDefaultInstance())
-        return this;
+      if (other == build.buf.validate.conformance.cases.UInt32NotIn.getDefaultInstance()) return this;
       if (other.getVal() != 0) {
         setVal(other.getVal());
       }
@@ -359,19 +352,17 @@ public final class UInt32NotIn extends com.google.protobuf.GeneratedMessageV3
             case 0:
               done = true;
               break;
-            case 8:
-              {
-                val_ = input.readUInt32();
-                bitField0_ |= 0x00000001;
-                break;
-              } // case 8
-            default:
-              {
-                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
-                  done = true; // was an endgroup tag
-                }
-                break;
-              } // default:
+            case 8: {
+              val_ = input.readUInt32();
+              bitField0_ |= 0x00000001;
+              break;
+            } // case 8
+            default: {
+              if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                done = true; // was an endgroup tag
+              }
+              break;
+            } // default:
           } // switch (tag)
         } // while (!done)
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -381,24 +372,19 @@ public final class UInt32NotIn extends com.google.protobuf.GeneratedMessageV3
       } // finally
       return this;
     }
-
     private int bitField0_;
 
-    private int val_;
-
+    private int val_ ;
     /**
      * <code>uint32 val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
-     *
      * @return The val.
      */
     @java.lang.Override
     public int getVal() {
       return val_;
     }
-
     /**
      * <code>uint32 val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
-     *
      * @param value The val to set.
      * @return This builder for chaining.
      */
@@ -409,10 +395,8 @@ public final class UInt32NotIn extends com.google.protobuf.GeneratedMessageV3
       onChanged();
       return this;
     }
-
     /**
      * <code>uint32 val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
-     *
      * @return This builder for chaining.
      */
     public Builder clearVal() {
@@ -421,9 +405,9 @@ public final class UInt32NotIn extends com.google.protobuf.GeneratedMessageV3
       onChanged();
       return this;
     }
-
     @java.lang.Override
-    public final Builder setUnknownFields(final com.google.protobuf.UnknownFieldSet unknownFields) {
+    public final Builder setUnknownFields(
+        final com.google.protobuf.UnknownFieldSet unknownFields) {
       return super.setUnknownFields(unknownFields);
     }
 
@@ -433,12 +417,12 @@ public final class UInt32NotIn extends com.google.protobuf.GeneratedMessageV3
       return super.mergeUnknownFields(unknownFields);
     }
 
+
     // @@protoc_insertion_point(builder_scope:buf.validate.conformance.cases.UInt32NotIn)
   }
 
   // @@protoc_insertion_point(class_scope:buf.validate.conformance.cases.UInt32NotIn)
   private static final build.buf.validate.conformance.cases.UInt32NotIn DEFAULT_INSTANCE;
-
   static {
     DEFAULT_INSTANCE = new build.buf.validate.conformance.cases.UInt32NotIn();
   }
@@ -447,27 +431,27 @@ public final class UInt32NotIn extends com.google.protobuf.GeneratedMessageV3
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<UInt32NotIn> PARSER =
-      new com.google.protobuf.AbstractParser<UInt32NotIn>() {
-        @java.lang.Override
-        public UInt32NotIn parsePartialFrom(
-            com.google.protobuf.CodedInputStream input,
-            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-            throws com.google.protobuf.InvalidProtocolBufferException {
-          Builder builder = newBuilder();
-          try {
-            builder.mergeFrom(input, extensionRegistry);
-          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-            throw e.setUnfinishedMessage(builder.buildPartial());
-          } catch (com.google.protobuf.UninitializedMessageException e) {
-            throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
-          } catch (java.io.IOException e) {
-            throw new com.google.protobuf.InvalidProtocolBufferException(e)
-                .setUnfinishedMessage(builder.buildPartial());
-          }
-          return builder.buildPartial();
-        }
-      };
+  private static final com.google.protobuf.Parser<UInt32NotIn>
+      PARSER = new com.google.protobuf.AbstractParser<UInt32NotIn>() {
+    @java.lang.Override
+    public UInt32NotIn parsePartialFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      Builder builder = newBuilder();
+      try {
+        builder.mergeFrom(input, extensionRegistry);
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(builder.buildPartial());
+      } catch (com.google.protobuf.UninitializedMessageException e) {
+        throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(e)
+            .setUnfinishedMessage(builder.buildPartial());
+      }
+      return builder.buildPartial();
+    }
+  };
 
   public static com.google.protobuf.Parser<UInt32NotIn> parser() {
     return PARSER;
@@ -482,4 +466,6 @@ public final class UInt32NotIn extends com.google.protobuf.GeneratedMessageV3
   public build.buf.validate.conformance.cases.UInt32NotIn getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
+
 }
+

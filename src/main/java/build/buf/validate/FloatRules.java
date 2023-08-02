@@ -4,8 +4,6 @@
 package build.buf.validate;
 
 /**
- *
- *
  * <pre>
  * FloatRules describes the constraints applied to `float` values. These
  * rules may also be applied to the `google.protobuf.FloatValue` Well-Known-Type.
@@ -13,17 +11,15 @@ package build.buf.validate;
  *
  * Protobuf type {@code buf.validate.FloatRules}
  */
-public final class FloatRules extends com.google.protobuf.GeneratedMessageV3
-    implements
+public final class FloatRules extends
+    com.google.protobuf.GeneratedMessageV3 implements
     // @@protoc_insertion_point(message_implements:buf.validate.FloatRules)
     FloatRulesOrBuilder {
-  private static final long serialVersionUID = 0L;
-
+private static final long serialVersionUID = 0L;
   // Use FloatRules.newBuilder() to construct.
   private FloatRules(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
-
   private FloatRules() {
     in_ = emptyFloatList();
     notIn_ = emptyFloatList();
@@ -31,19 +27,20 @@ public final class FloatRules extends com.google.protobuf.GeneratedMessageV3
 
   @java.lang.Override
   @SuppressWarnings({"unused"})
-  protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
+  protected java.lang.Object newInstance(
+      UnusedPrivateParameter unused) {
     return new FloatRules();
   }
 
-  public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+  public static final com.google.protobuf.Descriptors.Descriptor
+      getDescriptor() {
     return build.buf.validate.ValidateProto.internal_static_buf_validate_FloatRules_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return build.buf.validate.ValidateProto
-        .internal_static_buf_validate_FloatRules_fieldAccessorTable
+    return build.buf.validate.ValidateProto.internal_static_buf_validate_FloatRules_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
             build.buf.validate.FloatRules.class, build.buf.validate.FloatRules.Builder.class);
   }
@@ -51,50 +48,40 @@ public final class FloatRules extends com.google.protobuf.GeneratedMessageV3
   private int bitField0_;
   public static final int CONST_FIELD_NUMBER = 1;
   private float const_ = 0F;
-
   /**
-   *
-   *
    * <pre>
-   * `const` requires the field value to exactly match the specified value. If
+   *`const` requires the field value to exactly match the specified value. If
    * the field value doesn't match, an error message is generated.
    *
-   * ```proto
-   * message MyFloat {
+   *```proto
+   *message MyFloat {
    *  // value must equal 42.0
    *   float value = 1 [(buf.validate.field).float.const = 42.0];
-   * }
-   * ```
+   *}
+   *```
    * </pre>
    *
-   * <code>optional float const = 1 [json_name = "const", (.buf.validate.priv.field) = { ... }
-   * </code>
-   *
+   * <code>optional float const = 1 [json_name = "const", (.buf.validate.priv.field) = { ... }</code>
    * @return Whether the const field is set.
    */
   @java.lang.Override
   public boolean hasConst() {
     return ((bitField0_ & 0x00000001) != 0);
   }
-
   /**
-   *
-   *
    * <pre>
-   * `const` requires the field value to exactly match the specified value. If
+   *`const` requires the field value to exactly match the specified value. If
    * the field value doesn't match, an error message is generated.
    *
-   * ```proto
-   * message MyFloat {
+   *```proto
+   *message MyFloat {
    *  // value must equal 42.0
    *   float value = 1 [(buf.validate.field).float.const = 42.0];
-   * }
-   * ```
+   *}
+   *```
    * </pre>
    *
-   * <code>optional float const = 1 [json_name = "const", (.buf.validate.priv.field) = { ... }
-   * </code>
-   *
+   * <code>optional float const = 1 [json_name = "const", (.buf.validate.priv.field) = { ... }</code>
    * @return The const.
    */
   @java.lang.Override
@@ -104,50 +91,42 @@ public final class FloatRules extends com.google.protobuf.GeneratedMessageV3
 
   public static final int LT_FIELD_NUMBER = 2;
   private float lt_ = 0F;
-
   /**
-   *
-   *
    * <pre>
-   * `lt` requires the field value to be less than the specified value (field &lt;
+   *`lt` requires the field value to be less than the specified value (field &lt;
    * value). If the field value is equal to or greater than the specified value,
    * an error message is generated.
    *
-   * ```proto
-   * message MyFloat {
+   *```proto
+   *message MyFloat {
    *  // value must be less than 10.0
    *   float value = 1 [(buf.validate.field).float.lt = 10.0];
-   * }
-   * ```
+   *}
+   *```
    * </pre>
    *
    * <code>optional float lt = 2 [json_name = "lt", (.buf.validate.priv.field) = { ... }</code>
-   *
    * @return Whether the lt field is set.
    */
   @java.lang.Override
   public boolean hasLt() {
     return ((bitField0_ & 0x00000002) != 0);
   }
-
   /**
-   *
-   *
    * <pre>
-   * `lt` requires the field value to be less than the specified value (field &lt;
+   *`lt` requires the field value to be less than the specified value (field &lt;
    * value). If the field value is equal to or greater than the specified value,
    * an error message is generated.
    *
-   * ```proto
-   * message MyFloat {
+   *```proto
+   *message MyFloat {
    *  // value must be less than 10.0
    *   float value = 1 [(buf.validate.field).float.lt = 10.0];
-   * }
-   * ```
+   *}
+   *```
    * </pre>
    *
    * <code>optional float lt = 2 [json_name = "lt", (.buf.validate.priv.field) = { ... }</code>
-   *
    * @return The lt.
    */
   @java.lang.Override
@@ -157,50 +136,42 @@ public final class FloatRules extends com.google.protobuf.GeneratedMessageV3
 
   public static final int LTE_FIELD_NUMBER = 3;
   private float lte_ = 0F;
-
   /**
-   *
-   *
    * <pre>
-   * `lte` requires the field value to be less than or equal to the specified
+   *`lte` requires the field value to be less than or equal to the specified
    * value (field &lt;= value). If the field value is greater than the specified
    * value, an error message is generated.
    *
-   * ```proto
-   * message MyFloat {
+   *```proto
+   *message MyFloat {
    *  // value must be less than or equal to 10.0
    *   float value = 1 [(buf.validate.field).float.lte = 10.0];
-   * }
-   * ```
+   *}
+   *```
    * </pre>
    *
    * <code>optional float lte = 3 [json_name = "lte", (.buf.validate.priv.field) = { ... }</code>
-   *
    * @return Whether the lte field is set.
    */
   @java.lang.Override
   public boolean hasLte() {
     return ((bitField0_ & 0x00000004) != 0);
   }
-
   /**
-   *
-   *
    * <pre>
-   * `lte` requires the field value to be less than or equal to the specified
+   *`lte` requires the field value to be less than or equal to the specified
    * value (field &lt;= value). If the field value is greater than the specified
    * value, an error message is generated.
    *
-   * ```proto
-   * message MyFloat {
+   *```proto
+   *message MyFloat {
    *  // value must be less than or equal to 10.0
    *   float value = 1 [(buf.validate.field).float.lte = 10.0];
-   * }
-   * ```
+   *}
+   *```
    * </pre>
    *
    * <code>optional float lte = 3 [json_name = "lte", (.buf.validate.priv.field) = { ... }</code>
-   *
    * @return The lte.
    */
   @java.lang.Override
@@ -210,19 +181,16 @@ public final class FloatRules extends com.google.protobuf.GeneratedMessageV3
 
   public static final int GT_FIELD_NUMBER = 4;
   private float gt_ = 0F;
-
   /**
-   *
-   *
    * <pre>
-   * `gt` requires the field value to be greater than the specified value
+   *`gt` requires the field value to be greater than the specified value
    * (exclusive). If the value of `gt` is larger than a specified `lt` or
    * `lte`, the range is reversed, and the field value must be outside the
    * specified range. If the field value doesn't meet the required conditions,
    * an error message is generated.
    *
-   * ```proto
-   * message MyFloat {
+   *```proto
+   *message MyFloat {
    *  // value must be greater than 5.0 [float.gt]
    *  float value = 1 [(buf.validate.field).float.gt = 5.0];
    *
@@ -231,31 +199,27 @@ public final class FloatRules extends com.google.protobuf.GeneratedMessageV3
    *
    *  // value must be greater than 10 or less than 5.0 [float.gt_lt_exclusive]
    *  float another_value = 3 [(buf.validate.field).float = { gt: 10.0, lt: 5.0 }];
-   * }
-   * ```
+   *}
+   *```
    * </pre>
    *
    * <code>optional float gt = 4 [json_name = "gt", (.buf.validate.priv.field) = { ... }</code>
-   *
    * @return Whether the gt field is set.
    */
   @java.lang.Override
   public boolean hasGt() {
     return ((bitField0_ & 0x00000008) != 0);
   }
-
   /**
-   *
-   *
    * <pre>
-   * `gt` requires the field value to be greater than the specified value
+   *`gt` requires the field value to be greater than the specified value
    * (exclusive). If the value of `gt` is larger than a specified `lt` or
    * `lte`, the range is reversed, and the field value must be outside the
    * specified range. If the field value doesn't meet the required conditions,
    * an error message is generated.
    *
-   * ```proto
-   * message MyFloat {
+   *```proto
+   *message MyFloat {
    *  // value must be greater than 5.0 [float.gt]
    *  float value = 1 [(buf.validate.field).float.gt = 5.0];
    *
@@ -264,12 +228,11 @@ public final class FloatRules extends com.google.protobuf.GeneratedMessageV3
    *
    *  // value must be greater than 10 or less than 5.0 [float.gt_lt_exclusive]
    *  float another_value = 3 [(buf.validate.field).float = { gt: 10.0, lt: 5.0 }];
-   * }
-   * ```
+   *}
+   *```
    * </pre>
    *
    * <code>optional float gt = 4 [json_name = "gt", (.buf.validate.priv.field) = { ... }</code>
-   *
    * @return The gt.
    */
   @java.lang.Override
@@ -279,19 +242,16 @@ public final class FloatRules extends com.google.protobuf.GeneratedMessageV3
 
   public static final int GTE_FIELD_NUMBER = 5;
   private float gte_ = 0F;
-
   /**
-   *
-   *
    * <pre>
-   * `gte` requires the field value to be greater than or equal to the specified
+   *`gte` requires the field value to be greater than or equal to the specified
    * value (exclusive). If the value of `gte` is larger than a specified `lt`
    * or `lte`, the range is reversed, and the field value must be outside the
    * specified range. If the field value doesn't meet the required conditions,
    * an error message is generated.
    *
-   * ```proto
-   * message MyFloat {
+   *```proto
+   *message MyFloat {
    *  // value must be greater than or equal to 5.0 [float.gte]
    *  float value = 1 [(buf.validate.field).float.gte = 5.0];
    *
@@ -300,31 +260,27 @@ public final class FloatRules extends com.google.protobuf.GeneratedMessageV3
    *
    *  // value must be greater than or equal to 10.0 or less than 5.0 [float.gte_lt_exclusive]
    *  float another_value = 3 [(buf.validate.field).float = { gte: 10.0, lt: 5.0 }];
-   * }
-   * ```
+   *}
+   *```
    * </pre>
    *
    * <code>optional float gte = 5 [json_name = "gte", (.buf.validate.priv.field) = { ... }</code>
-   *
    * @return Whether the gte field is set.
    */
   @java.lang.Override
   public boolean hasGte() {
     return ((bitField0_ & 0x00000010) != 0);
   }
-
   /**
-   *
-   *
    * <pre>
-   * `gte` requires the field value to be greater than or equal to the specified
+   *`gte` requires the field value to be greater than or equal to the specified
    * value (exclusive). If the value of `gte` is larger than a specified `lt`
    * or `lte`, the range is reversed, and the field value must be outside the
    * specified range. If the field value doesn't meet the required conditions,
    * an error message is generated.
    *
-   * ```proto
-   * message MyFloat {
+   *```proto
+   *message MyFloat {
    *  // value must be greater than or equal to 5.0 [float.gte]
    *  float value = 1 [(buf.validate.field).float.gte = 5.0];
    *
@@ -333,12 +289,11 @@ public final class FloatRules extends com.google.protobuf.GeneratedMessageV3
    *
    *  // value must be greater than or equal to 10.0 or less than 5.0 [float.gte_lt_exclusive]
    *  float another_value = 3 [(buf.validate.field).float = { gte: 10.0, lt: 5.0 }];
-   * }
-   * ```
+   *}
+   *```
    * </pre>
    *
    * <code>optional float gte = 5 [json_name = "gte", (.buf.validate.priv.field) = { ... }</code>
-   *
    * @return The gte.
    */
   @java.lang.Override
@@ -347,183 +302,150 @@ public final class FloatRules extends com.google.protobuf.GeneratedMessageV3
   }
 
   public static final int IN_FIELD_NUMBER = 6;
-
   @SuppressWarnings("serial")
   private com.google.protobuf.Internal.FloatList in_;
-
   /**
-   *
-   *
    * <pre>
-   * `in` requires the field value to be equal to one of the specified values.
+   *`in` requires the field value to be equal to one of the specified values.
    * If the field value isn't one of the specified values, an error message
    * is generated.
    *
-   * ```proto
-   * message MyFloat {
+   *```proto
+   *message MyFloat {
    *  // value must be in list [1.0, 2.0, 3.0]
    *  repeated float value = 1 (buf.validate.field).float = { in: [1.0, 2.0, 3.0] };
-   * }
-   * ```
+   *}
+   *```
    * </pre>
    *
    * <code>repeated float in = 6 [json_name = "in", (.buf.validate.priv.field) = { ... }</code>
-   *
    * @return A list containing the in.
    */
   @java.lang.Override
-  public java.util.List<java.lang.Float> getInList() {
+  public java.util.List<java.lang.Float>
+      getInList() {
     return in_;
   }
-
   /**
-   *
-   *
    * <pre>
-   * `in` requires the field value to be equal to one of the specified values.
+   *`in` requires the field value to be equal to one of the specified values.
    * If the field value isn't one of the specified values, an error message
    * is generated.
    *
-   * ```proto
-   * message MyFloat {
+   *```proto
+   *message MyFloat {
    *  // value must be in list [1.0, 2.0, 3.0]
    *  repeated float value = 1 (buf.validate.field).float = { in: [1.0, 2.0, 3.0] };
-   * }
-   * ```
+   *}
+   *```
    * </pre>
    *
    * <code>repeated float in = 6 [json_name = "in", (.buf.validate.priv.field) = { ... }</code>
-   *
    * @return The count of in.
    */
   public int getInCount() {
     return in_.size();
   }
-
   /**
-   *
-   *
    * <pre>
-   * `in` requires the field value to be equal to one of the specified values.
+   *`in` requires the field value to be equal to one of the specified values.
    * If the field value isn't one of the specified values, an error message
    * is generated.
    *
-   * ```proto
-   * message MyFloat {
+   *```proto
+   *message MyFloat {
    *  // value must be in list [1.0, 2.0, 3.0]
    *  repeated float value = 1 (buf.validate.field).float = { in: [1.0, 2.0, 3.0] };
-   * }
-   * ```
+   *}
+   *```
    * </pre>
    *
    * <code>repeated float in = 6 [json_name = "in", (.buf.validate.priv.field) = { ... }</code>
-   *
    * @param index The index of the element to return.
    * @return The in at the given index.
    */
   public float getIn(int index) {
     return in_.getFloat(index);
   }
-
   private int inMemoizedSerializedSize = -1;
 
   public static final int NOT_IN_FIELD_NUMBER = 7;
-
   @SuppressWarnings("serial")
   private com.google.protobuf.Internal.FloatList notIn_;
-
   /**
-   *
-   *
    * <pre>
-   * `in` requires the field value to not be equal to any of the specified
+   *`in` requires the field value to not be equal to any of the specified
    * values. If the field value is one of the specified values, an error
    * message is generated.
    *
-   * ```proto
-   * message MyFloat {
+   *```proto
+   *message MyFloat {
    *  // value must not be in list [1.0, 2.0, 3.0]
    *  repeated float value = 1 (buf.validate.field).float = { not_in: [1.0, 2.0, 3.0] };
-   * }
-   * ```
+   *}
+   *```
    * </pre>
    *
-   * <code>repeated float not_in = 7 [json_name = "notIn", (.buf.validate.priv.field) = { ... }
-   * </code>
-   *
+   * <code>repeated float not_in = 7 [json_name = "notIn", (.buf.validate.priv.field) = { ... }</code>
    * @return A list containing the notIn.
    */
   @java.lang.Override
-  public java.util.List<java.lang.Float> getNotInList() {
+  public java.util.List<java.lang.Float>
+      getNotInList() {
     return notIn_;
   }
-
   /**
-   *
-   *
    * <pre>
-   * `in` requires the field value to not be equal to any of the specified
+   *`in` requires the field value to not be equal to any of the specified
    * values. If the field value is one of the specified values, an error
    * message is generated.
    *
-   * ```proto
-   * message MyFloat {
+   *```proto
+   *message MyFloat {
    *  // value must not be in list [1.0, 2.0, 3.0]
    *  repeated float value = 1 (buf.validate.field).float = { not_in: [1.0, 2.0, 3.0] };
-   * }
-   * ```
+   *}
+   *```
    * </pre>
    *
-   * <code>repeated float not_in = 7 [json_name = "notIn", (.buf.validate.priv.field) = { ... }
-   * </code>
-   *
+   * <code>repeated float not_in = 7 [json_name = "notIn", (.buf.validate.priv.field) = { ... }</code>
    * @return The count of notIn.
    */
   public int getNotInCount() {
     return notIn_.size();
   }
-
   /**
-   *
-   *
    * <pre>
-   * `in` requires the field value to not be equal to any of the specified
+   *`in` requires the field value to not be equal to any of the specified
    * values. If the field value is one of the specified values, an error
    * message is generated.
    *
-   * ```proto
-   * message MyFloat {
+   *```proto
+   *message MyFloat {
    *  // value must not be in list [1.0, 2.0, 3.0]
    *  repeated float value = 1 (buf.validate.field).float = { not_in: [1.0, 2.0, 3.0] };
-   * }
-   * ```
+   *}
+   *```
    * </pre>
    *
-   * <code>repeated float not_in = 7 [json_name = "notIn", (.buf.validate.priv.field) = { ... }
-   * </code>
-   *
+   * <code>repeated float not_in = 7 [json_name = "notIn", (.buf.validate.priv.field) = { ... }</code>
    * @param index The index of the element to return.
    * @return The notIn at the given index.
    */
   public float getNotIn(int index) {
     return notIn_.getFloat(index);
   }
-
   private int notInMemoizedSerializedSize = -1;
 
   public static final int FINITE_FIELD_NUMBER = 8;
   private boolean finite_ = false;
-
   /**
-   *
-   *
    * <pre>
-   * `finite` requires the field value to be finite. If the field value is
+   *`finite` requires the field value to be finite. If the field value is
    * infinite or NaN, an error message is generated.
    * </pre>
    *
    * <code>bool finite = 8 [json_name = "finite", (.buf.validate.priv.field) = { ... }</code>
-   *
    * @return The finite.
    */
   @java.lang.Override
@@ -532,7 +454,6 @@ public final class FloatRules extends com.google.protobuf.GeneratedMessageV3
   }
 
   private byte memoizedIsInitialized = -1;
-
   @java.lang.Override
   public final boolean isInitialized() {
     byte isInitialized = memoizedIsInitialized;
@@ -544,7 +465,8 @@ public final class FloatRules extends com.google.protobuf.GeneratedMessageV3
   }
 
   @java.lang.Override
-  public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
+  public void writeTo(com.google.protobuf.CodedOutputStream output)
+                      throws java.io.IOException {
     getSerializedSize();
     if (((bitField0_ & 0x00000001) != 0)) {
       output.writeFloat(1, const_);
@@ -588,19 +510,24 @@ public final class FloatRules extends com.google.protobuf.GeneratedMessageV3
 
     size = 0;
     if (((bitField0_ & 0x00000001) != 0)) {
-      size += com.google.protobuf.CodedOutputStream.computeFloatSize(1, const_);
+      size += com.google.protobuf.CodedOutputStream
+        .computeFloatSize(1, const_);
     }
     if (((bitField0_ & 0x00000002) != 0)) {
-      size += com.google.protobuf.CodedOutputStream.computeFloatSize(2, lt_);
+      size += com.google.protobuf.CodedOutputStream
+        .computeFloatSize(2, lt_);
     }
     if (((bitField0_ & 0x00000004) != 0)) {
-      size += com.google.protobuf.CodedOutputStream.computeFloatSize(3, lte_);
+      size += com.google.protobuf.CodedOutputStream
+        .computeFloatSize(3, lte_);
     }
     if (((bitField0_ & 0x00000008) != 0)) {
-      size += com.google.protobuf.CodedOutputStream.computeFloatSize(4, gt_);
+      size += com.google.protobuf.CodedOutputStream
+        .computeFloatSize(4, gt_);
     }
     if (((bitField0_ & 0x00000010) != 0)) {
-      size += com.google.protobuf.CodedOutputStream.computeFloatSize(5, gte_);
+      size += com.google.protobuf.CodedOutputStream
+        .computeFloatSize(5, gte_);
     }
     {
       int dataSize = 0;
@@ -608,7 +535,8 @@ public final class FloatRules extends com.google.protobuf.GeneratedMessageV3
       size += dataSize;
       if (!getInList().isEmpty()) {
         size += 1;
-        size += com.google.protobuf.CodedOutputStream.computeInt32SizeNoTag(dataSize);
+        size += com.google.protobuf.CodedOutputStream
+            .computeInt32SizeNoTag(dataSize);
       }
       inMemoizedSerializedSize = dataSize;
     }
@@ -618,12 +546,14 @@ public final class FloatRules extends com.google.protobuf.GeneratedMessageV3
       size += dataSize;
       if (!getNotInList().isEmpty()) {
         size += 1;
-        size += com.google.protobuf.CodedOutputStream.computeInt32SizeNoTag(dataSize);
+        size += com.google.protobuf.CodedOutputStream
+            .computeInt32SizeNoTag(dataSize);
       }
       notInMemoizedSerializedSize = dataSize;
     }
     if (finite_ != false) {
-      size += com.google.protobuf.CodedOutputStream.computeBoolSize(8, finite_);
+      size += com.google.protobuf.CodedOutputStream
+        .computeBoolSize(8, finite_);
     }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
@@ -633,7 +563,7 @@ public final class FloatRules extends com.google.protobuf.GeneratedMessageV3
   @java.lang.Override
   public boolean equals(final java.lang.Object obj) {
     if (obj == this) {
-      return true;
+     return true;
     }
     if (!(obj instanceof build.buf.validate.FloatRules)) {
       return super.equals(obj);
@@ -643,31 +573,39 @@ public final class FloatRules extends com.google.protobuf.GeneratedMessageV3
     if (hasConst() != other.hasConst()) return false;
     if (hasConst()) {
       if (java.lang.Float.floatToIntBits(getConst())
-          != java.lang.Float.floatToIntBits(other.getConst())) return false;
+          != java.lang.Float.floatToIntBits(
+              other.getConst())) return false;
     }
     if (hasLt() != other.hasLt()) return false;
     if (hasLt()) {
-      if (java.lang.Float.floatToIntBits(getLt()) != java.lang.Float.floatToIntBits(other.getLt()))
-        return false;
+      if (java.lang.Float.floatToIntBits(getLt())
+          != java.lang.Float.floatToIntBits(
+              other.getLt())) return false;
     }
     if (hasLte() != other.hasLte()) return false;
     if (hasLte()) {
       if (java.lang.Float.floatToIntBits(getLte())
-          != java.lang.Float.floatToIntBits(other.getLte())) return false;
+          != java.lang.Float.floatToIntBits(
+              other.getLte())) return false;
     }
     if (hasGt() != other.hasGt()) return false;
     if (hasGt()) {
-      if (java.lang.Float.floatToIntBits(getGt()) != java.lang.Float.floatToIntBits(other.getGt()))
-        return false;
+      if (java.lang.Float.floatToIntBits(getGt())
+          != java.lang.Float.floatToIntBits(
+              other.getGt())) return false;
     }
     if (hasGte() != other.hasGte()) return false;
     if (hasGte()) {
       if (java.lang.Float.floatToIntBits(getGte())
-          != java.lang.Float.floatToIntBits(other.getGte())) return false;
+          != java.lang.Float.floatToIntBits(
+              other.getGte())) return false;
     }
-    if (!getInList().equals(other.getInList())) return false;
-    if (!getNotInList().equals(other.getNotInList())) return false;
-    if (getFinite() != other.getFinite()) return false;
+    if (!getInList()
+        .equals(other.getInList())) return false;
+    if (!getNotInList()
+        .equals(other.getNotInList())) return false;
+    if (getFinite()
+        != other.getFinite()) return false;
     if (!getUnknownFields().equals(other.getUnknownFields())) return false;
     return true;
   }
@@ -681,23 +619,28 @@ public final class FloatRules extends com.google.protobuf.GeneratedMessageV3
     hash = (19 * hash) + getDescriptor().hashCode();
     if (hasConst()) {
       hash = (37 * hash) + CONST_FIELD_NUMBER;
-      hash = (53 * hash) + java.lang.Float.floatToIntBits(getConst());
+      hash = (53 * hash) + java.lang.Float.floatToIntBits(
+          getConst());
     }
     if (hasLt()) {
       hash = (37 * hash) + LT_FIELD_NUMBER;
-      hash = (53 * hash) + java.lang.Float.floatToIntBits(getLt());
+      hash = (53 * hash) + java.lang.Float.floatToIntBits(
+          getLt());
     }
     if (hasLte()) {
       hash = (37 * hash) + LTE_FIELD_NUMBER;
-      hash = (53 * hash) + java.lang.Float.floatToIntBits(getLte());
+      hash = (53 * hash) + java.lang.Float.floatToIntBits(
+          getLte());
     }
     if (hasGt()) {
       hash = (37 * hash) + GT_FIELD_NUMBER;
-      hash = (53 * hash) + java.lang.Float.floatToIntBits(getGt());
+      hash = (53 * hash) + java.lang.Float.floatToIntBits(
+          getGt());
     }
     if (hasGte()) {
       hash = (37 * hash) + GTE_FIELD_NUMBER;
-      hash = (53 * hash) + java.lang.Float.floatToIntBits(getGte());
+      hash = (53 * hash) + java.lang.Float.floatToIntBits(
+          getGte());
     }
     if (getInCount() > 0) {
       hash = (37 * hash) + IN_FIELD_NUMBER;
@@ -708,110 +651,106 @@ public final class FloatRules extends com.google.protobuf.GeneratedMessageV3
       hash = (53 * hash) + getNotInList().hashCode();
     }
     hash = (37 * hash) + FINITE_FIELD_NUMBER;
-    hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(getFinite());
+    hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+        getFinite());
     hash = (29 * hash) + getUnknownFields().hashCode();
     memoizedHashCode = hash;
     return hash;
   }
 
-  public static build.buf.validate.FloatRules parseFrom(java.nio.ByteBuffer data)
+  public static build.buf.validate.FloatRules parseFrom(
+      java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-
   public static build.buf.validate.FloatRules parseFrom(
-      java.nio.ByteBuffer data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      java.nio.ByteBuffer data,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-
-  public static build.buf.validate.FloatRules parseFrom(com.google.protobuf.ByteString data)
+  public static build.buf.validate.FloatRules parseFrom(
+      com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-
   public static build.buf.validate.FloatRules parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-
   public static build.buf.validate.FloatRules parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-
   public static build.buf.validate.FloatRules parseFrom(
-      byte[] data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      byte[] data,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-
   public static build.buf.validate.FloatRules parseFrom(java.io.InputStream input)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
+    return com.google.protobuf.GeneratedMessageV3
+        .parseWithIOException(PARSER, input);
   }
-
   public static build.buf.validate.FloatRules parseFrom(
-      java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      java.io.InputStream input,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
-        PARSER, input, extensionRegistry);
+    return com.google.protobuf.GeneratedMessageV3
+        .parseWithIOException(PARSER, input, extensionRegistry);
   }
 
   public static build.buf.validate.FloatRules parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input);
+    return com.google.protobuf.GeneratedMessageV3
+        .parseDelimitedWithIOException(PARSER, input);
   }
 
   public static build.buf.validate.FloatRules parseDelimitedFrom(
-      java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      java.io.InputStream input,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(
-        PARSER, input, extensionRegistry);
+    return com.google.protobuf.GeneratedMessageV3
+        .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-
-  public static build.buf.validate.FloatRules parseFrom(com.google.protobuf.CodedInputStream input)
+  public static build.buf.validate.FloatRules parseFrom(
+      com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
+    return com.google.protobuf.GeneratedMessageV3
+        .parseWithIOException(PARSER, input);
   }
-
   public static build.buf.validate.FloatRules parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
-        PARSER, input, extensionRegistry);
+    return com.google.protobuf.GeneratedMessageV3
+        .parseWithIOException(PARSER, input, extensionRegistry);
   }
 
   @java.lang.Override
-  public Builder newBuilderForType() {
-    return newBuilder();
-  }
-
+  public Builder newBuilderForType() { return newBuilder(); }
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-
   public static Builder newBuilder(build.buf.validate.FloatRules prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
-
   @java.lang.Override
   public Builder toBuilder() {
-    return this == DEFAULT_INSTANCE ? new Builder() : new Builder().mergeFrom(this);
+    return this == DEFAULT_INSTANCE
+        ? new Builder() : new Builder().mergeFrom(this);
   }
 
   @java.lang.Override
-  protected Builder newBuilderForType(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+  protected Builder newBuilderForType(
+      com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
     Builder builder = new Builder(parent);
     return builder;
   }
-
   /**
-   *
-   *
    * <pre>
    * FloatRules describes the constraints applied to `float` values. These
    * rules may also be applied to the `google.protobuf.FloatValue` Well-Known-Type.
@@ -819,30 +758,33 @@ public final class FloatRules extends com.google.protobuf.GeneratedMessageV3
    *
    * Protobuf type {@code buf.validate.FloatRules}
    */
-  public static final class Builder extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
-      implements
+  public static final class Builder extends
+      com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
       // @@protoc_insertion_point(builder_implements:buf.validate.FloatRules)
       build.buf.validate.FloatRulesOrBuilder {
-    public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
       return build.buf.validate.ValidateProto.internal_static_buf_validate_FloatRules_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return build.buf.validate.ValidateProto
-          .internal_static_buf_validate_FloatRules_fieldAccessorTable
+      return build.buf.validate.ValidateProto.internal_static_buf_validate_FloatRules_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
               build.buf.validate.FloatRules.class, build.buf.validate.FloatRules.Builder.class);
     }
 
     // Construct using build.buf.validate.FloatRules.newBuilder()
-    private Builder() {}
+    private Builder() {
 
-    private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-      super(parent);
     }
 
+    private Builder(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      super(parent);
+
+    }
     @java.lang.Override
     public Builder clear() {
       super.clear();
@@ -859,7 +801,8 @@ public final class FloatRules extends com.google.protobuf.GeneratedMessageV3
     }
 
     @java.lang.Override
-    public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
+    public com.google.protobuf.Descriptors.Descriptor
+        getDescriptorForType() {
       return build.buf.validate.ValidateProto.internal_static_buf_validate_FloatRules_descriptor;
     }
 
@@ -881,9 +824,7 @@ public final class FloatRules extends com.google.protobuf.GeneratedMessageV3
     public build.buf.validate.FloatRules buildPartial() {
       build.buf.validate.FloatRules result = new build.buf.validate.FloatRules(this);
       buildPartialRepeatedFields(result);
-      if (bitField0_ != 0) {
-        buildPartial0(result);
-      }
+      if (bitField0_ != 0) { buildPartial0(result); }
       onBuilt();
       return result;
     }
@@ -934,39 +875,38 @@ public final class FloatRules extends com.google.protobuf.GeneratedMessageV3
     public Builder clone() {
       return super.clone();
     }
-
     @java.lang.Override
     public Builder setField(
-        com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field,
+        java.lang.Object value) {
       return super.setField(field, value);
     }
-
     @java.lang.Override
-    public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
+    public Builder clearField(
+        com.google.protobuf.Descriptors.FieldDescriptor field) {
       return super.clearField(field);
     }
-
     @java.lang.Override
-    public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+    public Builder clearOneof(
+        com.google.protobuf.Descriptors.OneofDescriptor oneof) {
       return super.clearOneof(oneof);
     }
-
     @java.lang.Override
     public Builder setRepeatedField(
-        com.google.protobuf.Descriptors.FieldDescriptor field, int index, java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field,
+        int index, java.lang.Object value) {
       return super.setRepeatedField(field, index, value);
     }
-
     @java.lang.Override
     public Builder addRepeatedField(
-        com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field,
+        java.lang.Object value) {
       return super.addRepeatedField(field, value);
     }
-
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
       if (other instanceof build.buf.validate.FloatRules) {
-        return mergeFrom((build.buf.validate.FloatRules) other);
+        return mergeFrom((build.buf.validate.FloatRules)other);
       } else {
         super.mergeFrom(other);
         return this;
@@ -1039,85 +979,74 @@ public final class FloatRules extends com.google.protobuf.GeneratedMessageV3
             case 0:
               done = true;
               break;
-            case 13:
-              {
-                const_ = input.readFloat();
-                bitField0_ |= 0x00000001;
-                break;
-              } // case 13
-            case 21:
-              {
-                lt_ = input.readFloat();
-                bitField0_ |= 0x00000002;
-                break;
-              } // case 21
-            case 29:
-              {
-                lte_ = input.readFloat();
-                bitField0_ |= 0x00000004;
-                break;
-              } // case 29
-            case 37:
-              {
-                gt_ = input.readFloat();
-                bitField0_ |= 0x00000008;
-                break;
-              } // case 37
-            case 45:
-              {
-                gte_ = input.readFloat();
-                bitField0_ |= 0x00000010;
-                break;
-              } // case 45
-            case 53:
-              {
-                float v = input.readFloat();
-                ensureInIsMutable();
-                in_.addFloat(v);
-                break;
-              } // case 53
-            case 50:
-              {
-                int length = input.readRawVarint32();
-                int limit = input.pushLimit(length);
-                ensureInIsMutable();
-                while (input.getBytesUntilLimit() > 0) {
-                  in_.addFloat(input.readFloat());
-                }
-                input.popLimit(limit);
-                break;
-              } // case 50
-            case 61:
-              {
-                float v = input.readFloat();
-                ensureNotInIsMutable();
-                notIn_.addFloat(v);
-                break;
-              } // case 61
-            case 58:
-              {
-                int length = input.readRawVarint32();
-                int limit = input.pushLimit(length);
-                ensureNotInIsMutable();
-                while (input.getBytesUntilLimit() > 0) {
-                  notIn_.addFloat(input.readFloat());
-                }
-                input.popLimit(limit);
-                break;
-              } // case 58
-            case 64:
-              {
-                finite_ = input.readBool();
-                bitField0_ |= 0x00000080;
-                break;
-              } // case 64
-            default:
-              {
-                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
-                  done = true; // was an endgroup tag
-                }
-                break;
-              } // default:
+            case 13: {
+              const_ = input.readFloat();
+              bitField0_ |= 0x00000001;
+              break;
+            } // case 13
+            case 21: {
+              lt_ = input.readFloat();
+              bitField0_ |= 0x00000002;
+              break;
+            } // case 21
+            case 29: {
+              lte_ = input.readFloat();
+              bitField0_ |= 0x00000004;
+              break;
+            } // case 29
+            case 37: {
+              gt_ = input.readFloat();
+              bitField0_ |= 0x00000008;
+              break;
+            } // case 37
+            case 45: {
+              gte_ = input.readFloat();
+              bitField0_ |= 0x00000010;
+              break;
+            } // case 45
+            case 53: {
+              float v = input.readFloat();
+              ensureInIsMutable();
+              in_.addFloat(v);
+              break;
+            } // case 53
+            case 50: {
+              int length = input.readRawVarint32();
+              int limit = input.pushLimit(length);
+              ensureInIsMutable();
+              while (input.getBytesUntilLimit() > 0) {
+                in_.addFloat(input.readFloat());
+              }
+              input.popLimit(limit);
+              break;
+            } // case 50
+            case 61: {
+              float v = input.readFloat();
+              ensureNotInIsMutable();
+              notIn_.addFloat(v);
+              break;
+            } // case 61
+            case 58: {
+              int length = input.readRawVarint32();
+              int limit = input.pushLimit(length);
+              ensureNotInIsMutable();
+              while (input.getBytesUntilLimit() > 0) {
+                notIn_.addFloat(input.readFloat());
+              }
+              input.popLimit(limit);
+              break;
+            } // case 58
+            case 64: {
+              finite_ = input.readBool();
+              bitField0_ |= 0x00000080;
+              break;
+            } // case 64
+            default: {
+              if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                done = true; // was an endgroup tag
+              }
+              break;
+            } // default:
           } // switch (tag)
         } // while (!done)
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -1127,79 +1056,63 @@ public final class FloatRules extends com.google.protobuf.GeneratedMessageV3
       } // finally
       return this;
     }
-
     private int bitField0_;
 
-    private float const_;
-
+    private float const_ ;
     /**
-     *
-     *
      * <pre>
-     * `const` requires the field value to exactly match the specified value. If
+     *`const` requires the field value to exactly match the specified value. If
      * the field value doesn't match, an error message is generated.
      *
-     * ```proto
-     * message MyFloat {
+     *```proto
+     *message MyFloat {
      *  // value must equal 42.0
      *   float value = 1 [(buf.validate.field).float.const = 42.0];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>optional float const = 1 [json_name = "const", (.buf.validate.priv.field) = { ... }
-     * </code>
-     *
+     * <code>optional float const = 1 [json_name = "const", (.buf.validate.priv.field) = { ... }</code>
      * @return Whether the const field is set.
      */
     @java.lang.Override
     public boolean hasConst() {
       return ((bitField0_ & 0x00000001) != 0);
     }
-
     /**
-     *
-     *
      * <pre>
-     * `const` requires the field value to exactly match the specified value. If
+     *`const` requires the field value to exactly match the specified value. If
      * the field value doesn't match, an error message is generated.
      *
-     * ```proto
-     * message MyFloat {
+     *```proto
+     *message MyFloat {
      *  // value must equal 42.0
      *   float value = 1 [(buf.validate.field).float.const = 42.0];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>optional float const = 1 [json_name = "const", (.buf.validate.priv.field) = { ... }
-     * </code>
-     *
+     * <code>optional float const = 1 [json_name = "const", (.buf.validate.priv.field) = { ... }</code>
      * @return The const.
      */
     @java.lang.Override
     public float getConst() {
       return const_;
     }
-
     /**
-     *
-     *
      * <pre>
-     * `const` requires the field value to exactly match the specified value. If
+     *`const` requires the field value to exactly match the specified value. If
      * the field value doesn't match, an error message is generated.
      *
-     * ```proto
-     * message MyFloat {
+     *```proto
+     *message MyFloat {
      *  // value must equal 42.0
      *   float value = 1 [(buf.validate.field).float.const = 42.0];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>optional float const = 1 [json_name = "const", (.buf.validate.priv.field) = { ... }
-     * </code>
-     *
+     * <code>optional float const = 1 [json_name = "const", (.buf.validate.priv.field) = { ... }</code>
      * @param value The const to set.
      * @return This builder for chaining.
      */
@@ -1210,25 +1123,20 @@ public final class FloatRules extends com.google.protobuf.GeneratedMessageV3
       onChanged();
       return this;
     }
-
     /**
-     *
-     *
      * <pre>
-     * `const` requires the field value to exactly match the specified value. If
+     *`const` requires the field value to exactly match the specified value. If
      * the field value doesn't match, an error message is generated.
      *
-     * ```proto
-     * message MyFloat {
+     *```proto
+     *message MyFloat {
      *  // value must equal 42.0
      *   float value = 1 [(buf.validate.field).float.const = 42.0];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>optional float const = 1 [json_name = "const", (.buf.validate.priv.field) = { ... }
-     * </code>
-     *
+     * <code>optional float const = 1 [json_name = "const", (.buf.validate.priv.field) = { ... }</code>
      * @return This builder for chaining.
      */
     public Builder clearConst() {
@@ -1238,76 +1146,64 @@ public final class FloatRules extends com.google.protobuf.GeneratedMessageV3
       return this;
     }
 
-    private float lt_;
-
+    private float lt_ ;
     /**
-     *
-     *
      * <pre>
-     * `lt` requires the field value to be less than the specified value (field &lt;
+     *`lt` requires the field value to be less than the specified value (field &lt;
      * value). If the field value is equal to or greater than the specified value,
      * an error message is generated.
      *
-     * ```proto
-     * message MyFloat {
+     *```proto
+     *message MyFloat {
      *  // value must be less than 10.0
      *   float value = 1 [(buf.validate.field).float.lt = 10.0];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
      * <code>optional float lt = 2 [json_name = "lt", (.buf.validate.priv.field) = { ... }</code>
-     *
      * @return Whether the lt field is set.
      */
     @java.lang.Override
     public boolean hasLt() {
       return ((bitField0_ & 0x00000002) != 0);
     }
-
     /**
-     *
-     *
      * <pre>
-     * `lt` requires the field value to be less than the specified value (field &lt;
+     *`lt` requires the field value to be less than the specified value (field &lt;
      * value). If the field value is equal to or greater than the specified value,
      * an error message is generated.
      *
-     * ```proto
-     * message MyFloat {
+     *```proto
+     *message MyFloat {
      *  // value must be less than 10.0
      *   float value = 1 [(buf.validate.field).float.lt = 10.0];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
      * <code>optional float lt = 2 [json_name = "lt", (.buf.validate.priv.field) = { ... }</code>
-     *
      * @return The lt.
      */
     @java.lang.Override
     public float getLt() {
       return lt_;
     }
-
     /**
-     *
-     *
      * <pre>
-     * `lt` requires the field value to be less than the specified value (field &lt;
+     *`lt` requires the field value to be less than the specified value (field &lt;
      * value). If the field value is equal to or greater than the specified value,
      * an error message is generated.
      *
-     * ```proto
-     * message MyFloat {
+     *```proto
+     *message MyFloat {
      *  // value must be less than 10.0
      *   float value = 1 [(buf.validate.field).float.lt = 10.0];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
      * <code>optional float lt = 2 [json_name = "lt", (.buf.validate.priv.field) = { ... }</code>
-     *
      * @param value The lt to set.
      * @return This builder for chaining.
      */
@@ -1318,25 +1214,21 @@ public final class FloatRules extends com.google.protobuf.GeneratedMessageV3
       onChanged();
       return this;
     }
-
     /**
-     *
-     *
      * <pre>
-     * `lt` requires the field value to be less than the specified value (field &lt;
+     *`lt` requires the field value to be less than the specified value (field &lt;
      * value). If the field value is equal to or greater than the specified value,
      * an error message is generated.
      *
-     * ```proto
-     * message MyFloat {
+     *```proto
+     *message MyFloat {
      *  // value must be less than 10.0
      *   float value = 1 [(buf.validate.field).float.lt = 10.0];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
      * <code>optional float lt = 2 [json_name = "lt", (.buf.validate.priv.field) = { ... }</code>
-     *
      * @return This builder for chaining.
      */
     public Builder clearLt() {
@@ -1346,76 +1238,64 @@ public final class FloatRules extends com.google.protobuf.GeneratedMessageV3
       return this;
     }
 
-    private float lte_;
-
+    private float lte_ ;
     /**
-     *
-     *
      * <pre>
-     * `lte` requires the field value to be less than or equal to the specified
+     *`lte` requires the field value to be less than or equal to the specified
      * value (field &lt;= value). If the field value is greater than the specified
      * value, an error message is generated.
      *
-     * ```proto
-     * message MyFloat {
+     *```proto
+     *message MyFloat {
      *  // value must be less than or equal to 10.0
      *   float value = 1 [(buf.validate.field).float.lte = 10.0];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
      * <code>optional float lte = 3 [json_name = "lte", (.buf.validate.priv.field) = { ... }</code>
-     *
      * @return Whether the lte field is set.
      */
     @java.lang.Override
     public boolean hasLte() {
       return ((bitField0_ & 0x00000004) != 0);
     }
-
     /**
-     *
-     *
      * <pre>
-     * `lte` requires the field value to be less than or equal to the specified
+     *`lte` requires the field value to be less than or equal to the specified
      * value (field &lt;= value). If the field value is greater than the specified
      * value, an error message is generated.
      *
-     * ```proto
-     * message MyFloat {
+     *```proto
+     *message MyFloat {
      *  // value must be less than or equal to 10.0
      *   float value = 1 [(buf.validate.field).float.lte = 10.0];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
      * <code>optional float lte = 3 [json_name = "lte", (.buf.validate.priv.field) = { ... }</code>
-     *
      * @return The lte.
      */
     @java.lang.Override
     public float getLte() {
       return lte_;
     }
-
     /**
-     *
-     *
      * <pre>
-     * `lte` requires the field value to be less than or equal to the specified
+     *`lte` requires the field value to be less than or equal to the specified
      * value (field &lt;= value). If the field value is greater than the specified
      * value, an error message is generated.
      *
-     * ```proto
-     * message MyFloat {
+     *```proto
+     *message MyFloat {
      *  // value must be less than or equal to 10.0
      *   float value = 1 [(buf.validate.field).float.lte = 10.0];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
      * <code>optional float lte = 3 [json_name = "lte", (.buf.validate.priv.field) = { ... }</code>
-     *
      * @param value The lte to set.
      * @return This builder for chaining.
      */
@@ -1426,25 +1306,21 @@ public final class FloatRules extends com.google.protobuf.GeneratedMessageV3
       onChanged();
       return this;
     }
-
     /**
-     *
-     *
      * <pre>
-     * `lte` requires the field value to be less than or equal to the specified
+     *`lte` requires the field value to be less than or equal to the specified
      * value (field &lt;= value). If the field value is greater than the specified
      * value, an error message is generated.
      *
-     * ```proto
-     * message MyFloat {
+     *```proto
+     *message MyFloat {
      *  // value must be less than or equal to 10.0
      *   float value = 1 [(buf.validate.field).float.lte = 10.0];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
      * <code>optional float lte = 3 [json_name = "lte", (.buf.validate.priv.field) = { ... }</code>
-     *
      * @return This builder for chaining.
      */
     public Builder clearLte() {
@@ -1454,20 +1330,17 @@ public final class FloatRules extends com.google.protobuf.GeneratedMessageV3
       return this;
     }
 
-    private float gt_;
-
+    private float gt_ ;
     /**
-     *
-     *
      * <pre>
-     * `gt` requires the field value to be greater than the specified value
+     *`gt` requires the field value to be greater than the specified value
      * (exclusive). If the value of `gt` is larger than a specified `lt` or
      * `lte`, the range is reversed, and the field value must be outside the
      * specified range. If the field value doesn't meet the required conditions,
      * an error message is generated.
      *
-     * ```proto
-     * message MyFloat {
+     *```proto
+     *message MyFloat {
      *  // value must be greater than 5.0 [float.gt]
      *  float value = 1 [(buf.validate.field).float.gt = 5.0];
      *
@@ -1476,31 +1349,27 @@ public final class FloatRules extends com.google.protobuf.GeneratedMessageV3
      *
      *  // value must be greater than 10 or less than 5.0 [float.gt_lt_exclusive]
      *  float another_value = 3 [(buf.validate.field).float = { gt: 10.0, lt: 5.0 }];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
      * <code>optional float gt = 4 [json_name = "gt", (.buf.validate.priv.field) = { ... }</code>
-     *
      * @return Whether the gt field is set.
      */
     @java.lang.Override
     public boolean hasGt() {
       return ((bitField0_ & 0x00000008) != 0);
     }
-
     /**
-     *
-     *
      * <pre>
-     * `gt` requires the field value to be greater than the specified value
+     *`gt` requires the field value to be greater than the specified value
      * (exclusive). If the value of `gt` is larger than a specified `lt` or
      * `lte`, the range is reversed, and the field value must be outside the
      * specified range. If the field value doesn't meet the required conditions,
      * an error message is generated.
      *
-     * ```proto
-     * message MyFloat {
+     *```proto
+     *message MyFloat {
      *  // value must be greater than 5.0 [float.gt]
      *  float value = 1 [(buf.validate.field).float.gt = 5.0];
      *
@@ -1509,31 +1378,27 @@ public final class FloatRules extends com.google.protobuf.GeneratedMessageV3
      *
      *  // value must be greater than 10 or less than 5.0 [float.gt_lt_exclusive]
      *  float another_value = 3 [(buf.validate.field).float = { gt: 10.0, lt: 5.0 }];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
      * <code>optional float gt = 4 [json_name = "gt", (.buf.validate.priv.field) = { ... }</code>
-     *
      * @return The gt.
      */
     @java.lang.Override
     public float getGt() {
       return gt_;
     }
-
     /**
-     *
-     *
      * <pre>
-     * `gt` requires the field value to be greater than the specified value
+     *`gt` requires the field value to be greater than the specified value
      * (exclusive). If the value of `gt` is larger than a specified `lt` or
      * `lte`, the range is reversed, and the field value must be outside the
      * specified range. If the field value doesn't meet the required conditions,
      * an error message is generated.
      *
-     * ```proto
-     * message MyFloat {
+     *```proto
+     *message MyFloat {
      *  // value must be greater than 5.0 [float.gt]
      *  float value = 1 [(buf.validate.field).float.gt = 5.0];
      *
@@ -1542,12 +1407,11 @@ public final class FloatRules extends com.google.protobuf.GeneratedMessageV3
      *
      *  // value must be greater than 10 or less than 5.0 [float.gt_lt_exclusive]
      *  float another_value = 3 [(buf.validate.field).float = { gt: 10.0, lt: 5.0 }];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
      * <code>optional float gt = 4 [json_name = "gt", (.buf.validate.priv.field) = { ... }</code>
-     *
      * @param value The gt to set.
      * @return This builder for chaining.
      */
@@ -1558,19 +1422,16 @@ public final class FloatRules extends com.google.protobuf.GeneratedMessageV3
       onChanged();
       return this;
     }
-
     /**
-     *
-     *
      * <pre>
-     * `gt` requires the field value to be greater than the specified value
+     *`gt` requires the field value to be greater than the specified value
      * (exclusive). If the value of `gt` is larger than a specified `lt` or
      * `lte`, the range is reversed, and the field value must be outside the
      * specified range. If the field value doesn't meet the required conditions,
      * an error message is generated.
      *
-     * ```proto
-     * message MyFloat {
+     *```proto
+     *message MyFloat {
      *  // value must be greater than 5.0 [float.gt]
      *  float value = 1 [(buf.validate.field).float.gt = 5.0];
      *
@@ -1579,12 +1440,11 @@ public final class FloatRules extends com.google.protobuf.GeneratedMessageV3
      *
      *  // value must be greater than 10 or less than 5.0 [float.gt_lt_exclusive]
      *  float another_value = 3 [(buf.validate.field).float = { gt: 10.0, lt: 5.0 }];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
      * <code>optional float gt = 4 [json_name = "gt", (.buf.validate.priv.field) = { ... }</code>
-     *
      * @return This builder for chaining.
      */
     public Builder clearGt() {
@@ -1594,20 +1454,17 @@ public final class FloatRules extends com.google.protobuf.GeneratedMessageV3
       return this;
     }
 
-    private float gte_;
-
+    private float gte_ ;
     /**
-     *
-     *
      * <pre>
-     * `gte` requires the field value to be greater than or equal to the specified
+     *`gte` requires the field value to be greater than or equal to the specified
      * value (exclusive). If the value of `gte` is larger than a specified `lt`
      * or `lte`, the range is reversed, and the field value must be outside the
      * specified range. If the field value doesn't meet the required conditions,
      * an error message is generated.
      *
-     * ```proto
-     * message MyFloat {
+     *```proto
+     *message MyFloat {
      *  // value must be greater than or equal to 5.0 [float.gte]
      *  float value = 1 [(buf.validate.field).float.gte = 5.0];
      *
@@ -1616,31 +1473,27 @@ public final class FloatRules extends com.google.protobuf.GeneratedMessageV3
      *
      *  // value must be greater than or equal to 10.0 or less than 5.0 [float.gte_lt_exclusive]
      *  float another_value = 3 [(buf.validate.field).float = { gte: 10.0, lt: 5.0 }];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
      * <code>optional float gte = 5 [json_name = "gte", (.buf.validate.priv.field) = { ... }</code>
-     *
      * @return Whether the gte field is set.
      */
     @java.lang.Override
     public boolean hasGte() {
       return ((bitField0_ & 0x00000010) != 0);
     }
-
     /**
-     *
-     *
      * <pre>
-     * `gte` requires the field value to be greater than or equal to the specified
+     *`gte` requires the field value to be greater than or equal to the specified
      * value (exclusive). If the value of `gte` is larger than a specified `lt`
      * or `lte`, the range is reversed, and the field value must be outside the
      * specified range. If the field value doesn't meet the required conditions,
      * an error message is generated.
      *
-     * ```proto
-     * message MyFloat {
+     *```proto
+     *message MyFloat {
      *  // value must be greater than or equal to 5.0 [float.gte]
      *  float value = 1 [(buf.validate.field).float.gte = 5.0];
      *
@@ -1649,31 +1502,27 @@ public final class FloatRules extends com.google.protobuf.GeneratedMessageV3
      *
      *  // value must be greater than or equal to 10.0 or less than 5.0 [float.gte_lt_exclusive]
      *  float another_value = 3 [(buf.validate.field).float = { gte: 10.0, lt: 5.0 }];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
      * <code>optional float gte = 5 [json_name = "gte", (.buf.validate.priv.field) = { ... }</code>
-     *
      * @return The gte.
      */
     @java.lang.Override
     public float getGte() {
       return gte_;
     }
-
     /**
-     *
-     *
      * <pre>
-     * `gte` requires the field value to be greater than or equal to the specified
+     *`gte` requires the field value to be greater than or equal to the specified
      * value (exclusive). If the value of `gte` is larger than a specified `lt`
      * or `lte`, the range is reversed, and the field value must be outside the
      * specified range. If the field value doesn't meet the required conditions,
      * an error message is generated.
      *
-     * ```proto
-     * message MyFloat {
+     *```proto
+     *message MyFloat {
      *  // value must be greater than or equal to 5.0 [float.gte]
      *  float value = 1 [(buf.validate.field).float.gte = 5.0];
      *
@@ -1682,12 +1531,11 @@ public final class FloatRules extends com.google.protobuf.GeneratedMessageV3
      *
      *  // value must be greater than or equal to 10.0 or less than 5.0 [float.gte_lt_exclusive]
      *  float another_value = 3 [(buf.validate.field).float = { gte: 10.0, lt: 5.0 }];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
      * <code>optional float gte = 5 [json_name = "gte", (.buf.validate.priv.field) = { ... }</code>
-     *
      * @param value The gte to set.
      * @return This builder for chaining.
      */
@@ -1698,19 +1546,16 @@ public final class FloatRules extends com.google.protobuf.GeneratedMessageV3
       onChanged();
       return this;
     }
-
     /**
-     *
-     *
      * <pre>
-     * `gte` requires the field value to be greater than or equal to the specified
+     *`gte` requires the field value to be greater than or equal to the specified
      * value (exclusive). If the value of `gte` is larger than a specified `lt`
      * or `lte`, the range is reversed, and the field value must be outside the
      * specified range. If the field value doesn't meet the required conditions,
      * an error message is generated.
      *
-     * ```proto
-     * message MyFloat {
+     *```proto
+     *message MyFloat {
      *  // value must be greater than or equal to 5.0 [float.gte]
      *  float value = 1 [(buf.validate.field).float.gte = 5.0];
      *
@@ -1719,12 +1564,11 @@ public final class FloatRules extends com.google.protobuf.GeneratedMessageV3
      *
      *  // value must be greater than or equal to 10.0 or less than 5.0 [float.gte_lt_exclusive]
      *  float another_value = 3 [(buf.validate.field).float = { gte: 10.0, lt: 5.0 }];
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
      * <code>optional float gte = 5 [json_name = "gte", (.buf.validate.priv.field) = { ... }</code>
-     *
      * @return This builder for chaining.
      */
     public Builder clearGte() {
@@ -1735,135 +1579,117 @@ public final class FloatRules extends com.google.protobuf.GeneratedMessageV3
     }
 
     private com.google.protobuf.Internal.FloatList in_ = emptyFloatList();
-
     private void ensureInIsMutable() {
       if (!((bitField0_ & 0x00000020) != 0)) {
         in_ = mutableCopy(in_);
         bitField0_ |= 0x00000020;
       }
     }
-
     /**
-     *
-     *
      * <pre>
-     * `in` requires the field value to be equal to one of the specified values.
+     *`in` requires the field value to be equal to one of the specified values.
      * If the field value isn't one of the specified values, an error message
      * is generated.
      *
-     * ```proto
-     * message MyFloat {
+     *```proto
+     *message MyFloat {
      *  // value must be in list [1.0, 2.0, 3.0]
      *  repeated float value = 1 (buf.validate.field).float = { in: [1.0, 2.0, 3.0] };
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
      * <code>repeated float in = 6 [json_name = "in", (.buf.validate.priv.field) = { ... }</code>
-     *
      * @return A list containing the in.
      */
-    public java.util.List<java.lang.Float> getInList() {
-      return ((bitField0_ & 0x00000020) != 0) ? java.util.Collections.unmodifiableList(in_) : in_;
+    public java.util.List<java.lang.Float>
+        getInList() {
+      return ((bitField0_ & 0x00000020) != 0) ?
+               java.util.Collections.unmodifiableList(in_) : in_;
     }
-
     /**
-     *
-     *
      * <pre>
-     * `in` requires the field value to be equal to one of the specified values.
+     *`in` requires the field value to be equal to one of the specified values.
      * If the field value isn't one of the specified values, an error message
      * is generated.
      *
-     * ```proto
-     * message MyFloat {
+     *```proto
+     *message MyFloat {
      *  // value must be in list [1.0, 2.0, 3.0]
      *  repeated float value = 1 (buf.validate.field).float = { in: [1.0, 2.0, 3.0] };
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
      * <code>repeated float in = 6 [json_name = "in", (.buf.validate.priv.field) = { ... }</code>
-     *
      * @return The count of in.
      */
     public int getInCount() {
       return in_.size();
     }
-
     /**
-     *
-     *
      * <pre>
-     * `in` requires the field value to be equal to one of the specified values.
+     *`in` requires the field value to be equal to one of the specified values.
      * If the field value isn't one of the specified values, an error message
      * is generated.
      *
-     * ```proto
-     * message MyFloat {
+     *```proto
+     *message MyFloat {
      *  // value must be in list [1.0, 2.0, 3.0]
      *  repeated float value = 1 (buf.validate.field).float = { in: [1.0, 2.0, 3.0] };
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
      * <code>repeated float in = 6 [json_name = "in", (.buf.validate.priv.field) = { ... }</code>
-     *
      * @param index The index of the element to return.
      * @return The in at the given index.
      */
     public float getIn(int index) {
       return in_.getFloat(index);
     }
-
     /**
-     *
-     *
      * <pre>
-     * `in` requires the field value to be equal to one of the specified values.
+     *`in` requires the field value to be equal to one of the specified values.
      * If the field value isn't one of the specified values, an error message
      * is generated.
      *
-     * ```proto
-     * message MyFloat {
+     *```proto
+     *message MyFloat {
      *  // value must be in list [1.0, 2.0, 3.0]
      *  repeated float value = 1 (buf.validate.field).float = { in: [1.0, 2.0, 3.0] };
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
      * <code>repeated float in = 6 [json_name = "in", (.buf.validate.priv.field) = { ... }</code>
-     *
      * @param index The index to set the value at.
      * @param value The in to set.
      * @return This builder for chaining.
      */
-    public Builder setIn(int index, float value) {
+    public Builder setIn(
+        int index, float value) {
 
       ensureInIsMutable();
       in_.setFloat(index, value);
       onChanged();
       return this;
     }
-
     /**
-     *
-     *
      * <pre>
-     * `in` requires the field value to be equal to one of the specified values.
+     *`in` requires the field value to be equal to one of the specified values.
      * If the field value isn't one of the specified values, an error message
      * is generated.
      *
-     * ```proto
-     * message MyFloat {
+     *```proto
+     *message MyFloat {
      *  // value must be in list [1.0, 2.0, 3.0]
      *  repeated float value = 1 (buf.validate.field).float = { in: [1.0, 2.0, 3.0] };
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
      * <code>repeated float in = 6 [json_name = "in", (.buf.validate.priv.field) = { ... }</code>
-     *
      * @param value The in to add.
      * @return This builder for chaining.
      */
@@ -1874,53 +1700,47 @@ public final class FloatRules extends com.google.protobuf.GeneratedMessageV3
       onChanged();
       return this;
     }
-
     /**
-     *
-     *
      * <pre>
-     * `in` requires the field value to be equal to one of the specified values.
+     *`in` requires the field value to be equal to one of the specified values.
      * If the field value isn't one of the specified values, an error message
      * is generated.
      *
-     * ```proto
-     * message MyFloat {
+     *```proto
+     *message MyFloat {
      *  // value must be in list [1.0, 2.0, 3.0]
      *  repeated float value = 1 (buf.validate.field).float = { in: [1.0, 2.0, 3.0] };
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
      * <code>repeated float in = 6 [json_name = "in", (.buf.validate.priv.field) = { ... }</code>
-     *
      * @param values The in to add.
      * @return This builder for chaining.
      */
-    public Builder addAllIn(java.lang.Iterable<? extends java.lang.Float> values) {
+    public Builder addAllIn(
+        java.lang.Iterable<? extends java.lang.Float> values) {
       ensureInIsMutable();
-      com.google.protobuf.AbstractMessageLite.Builder.addAll(values, in_);
+      com.google.protobuf.AbstractMessageLite.Builder.addAll(
+          values, in_);
       onChanged();
       return this;
     }
-
     /**
-     *
-     *
      * <pre>
-     * `in` requires the field value to be equal to one of the specified values.
+     *`in` requires the field value to be equal to one of the specified values.
      * If the field value isn't one of the specified values, an error message
      * is generated.
      *
-     * ```proto
-     * message MyFloat {
+     *```proto
+     *message MyFloat {
      *  // value must be in list [1.0, 2.0, 3.0]
      *  repeated float value = 1 (buf.validate.field).float = { in: [1.0, 2.0, 3.0] };
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
      * <code>repeated float in = 6 [json_name = "in", (.buf.validate.priv.field) = { ... }</code>
-     *
      * @return This builder for chaining.
      */
     public Builder clearIn() {
@@ -1931,142 +1751,117 @@ public final class FloatRules extends com.google.protobuf.GeneratedMessageV3
     }
 
     private com.google.protobuf.Internal.FloatList notIn_ = emptyFloatList();
-
     private void ensureNotInIsMutable() {
       if (!((bitField0_ & 0x00000040) != 0)) {
         notIn_ = mutableCopy(notIn_);
         bitField0_ |= 0x00000040;
       }
     }
-
     /**
-     *
-     *
      * <pre>
-     * `in` requires the field value to not be equal to any of the specified
+     *`in` requires the field value to not be equal to any of the specified
      * values. If the field value is one of the specified values, an error
      * message is generated.
      *
-     * ```proto
-     * message MyFloat {
+     *```proto
+     *message MyFloat {
      *  // value must not be in list [1.0, 2.0, 3.0]
      *  repeated float value = 1 (buf.validate.field).float = { not_in: [1.0, 2.0, 3.0] };
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>repeated float not_in = 7 [json_name = "notIn", (.buf.validate.priv.field) = { ... }
-     * </code>
-     *
+     * <code>repeated float not_in = 7 [json_name = "notIn", (.buf.validate.priv.field) = { ... }</code>
      * @return A list containing the notIn.
      */
-    public java.util.List<java.lang.Float> getNotInList() {
-      return ((bitField0_ & 0x00000040) != 0)
-          ? java.util.Collections.unmodifiableList(notIn_)
-          : notIn_;
+    public java.util.List<java.lang.Float>
+        getNotInList() {
+      return ((bitField0_ & 0x00000040) != 0) ?
+               java.util.Collections.unmodifiableList(notIn_) : notIn_;
     }
-
     /**
-     *
-     *
      * <pre>
-     * `in` requires the field value to not be equal to any of the specified
+     *`in` requires the field value to not be equal to any of the specified
      * values. If the field value is one of the specified values, an error
      * message is generated.
      *
-     * ```proto
-     * message MyFloat {
+     *```proto
+     *message MyFloat {
      *  // value must not be in list [1.0, 2.0, 3.0]
      *  repeated float value = 1 (buf.validate.field).float = { not_in: [1.0, 2.0, 3.0] };
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>repeated float not_in = 7 [json_name = "notIn", (.buf.validate.priv.field) = { ... }
-     * </code>
-     *
+     * <code>repeated float not_in = 7 [json_name = "notIn", (.buf.validate.priv.field) = { ... }</code>
      * @return The count of notIn.
      */
     public int getNotInCount() {
       return notIn_.size();
     }
-
     /**
-     *
-     *
      * <pre>
-     * `in` requires the field value to not be equal to any of the specified
+     *`in` requires the field value to not be equal to any of the specified
      * values. If the field value is one of the specified values, an error
      * message is generated.
      *
-     * ```proto
-     * message MyFloat {
+     *```proto
+     *message MyFloat {
      *  // value must not be in list [1.0, 2.0, 3.0]
      *  repeated float value = 1 (buf.validate.field).float = { not_in: [1.0, 2.0, 3.0] };
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>repeated float not_in = 7 [json_name = "notIn", (.buf.validate.priv.field) = { ... }
-     * </code>
-     *
+     * <code>repeated float not_in = 7 [json_name = "notIn", (.buf.validate.priv.field) = { ... }</code>
      * @param index The index of the element to return.
      * @return The notIn at the given index.
      */
     public float getNotIn(int index) {
       return notIn_.getFloat(index);
     }
-
     /**
-     *
-     *
      * <pre>
-     * `in` requires the field value to not be equal to any of the specified
+     *`in` requires the field value to not be equal to any of the specified
      * values. If the field value is one of the specified values, an error
      * message is generated.
      *
-     * ```proto
-     * message MyFloat {
+     *```proto
+     *message MyFloat {
      *  // value must not be in list [1.0, 2.0, 3.0]
      *  repeated float value = 1 (buf.validate.field).float = { not_in: [1.0, 2.0, 3.0] };
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>repeated float not_in = 7 [json_name = "notIn", (.buf.validate.priv.field) = { ... }
-     * </code>
-     *
+     * <code>repeated float not_in = 7 [json_name = "notIn", (.buf.validate.priv.field) = { ... }</code>
      * @param index The index to set the value at.
      * @param value The notIn to set.
      * @return This builder for chaining.
      */
-    public Builder setNotIn(int index, float value) {
+    public Builder setNotIn(
+        int index, float value) {
 
       ensureNotInIsMutable();
       notIn_.setFloat(index, value);
       onChanged();
       return this;
     }
-
     /**
-     *
-     *
      * <pre>
-     * `in` requires the field value to not be equal to any of the specified
+     *`in` requires the field value to not be equal to any of the specified
      * values. If the field value is one of the specified values, an error
      * message is generated.
      *
-     * ```proto
-     * message MyFloat {
+     *```proto
+     *message MyFloat {
      *  // value must not be in list [1.0, 2.0, 3.0]
      *  repeated float value = 1 (buf.validate.field).float = { not_in: [1.0, 2.0, 3.0] };
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>repeated float not_in = 7 [json_name = "notIn", (.buf.validate.priv.field) = { ... }
-     * </code>
-     *
+     * <code>repeated float not_in = 7 [json_name = "notIn", (.buf.validate.priv.field) = { ... }</code>
      * @param value The notIn to add.
      * @return This builder for chaining.
      */
@@ -2077,55 +1872,47 @@ public final class FloatRules extends com.google.protobuf.GeneratedMessageV3
       onChanged();
       return this;
     }
-
     /**
-     *
-     *
      * <pre>
-     * `in` requires the field value to not be equal to any of the specified
+     *`in` requires the field value to not be equal to any of the specified
      * values. If the field value is one of the specified values, an error
      * message is generated.
      *
-     * ```proto
-     * message MyFloat {
+     *```proto
+     *message MyFloat {
      *  // value must not be in list [1.0, 2.0, 3.0]
      *  repeated float value = 1 (buf.validate.field).float = { not_in: [1.0, 2.0, 3.0] };
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>repeated float not_in = 7 [json_name = "notIn", (.buf.validate.priv.field) = { ... }
-     * </code>
-     *
+     * <code>repeated float not_in = 7 [json_name = "notIn", (.buf.validate.priv.field) = { ... }</code>
      * @param values The notIn to add.
      * @return This builder for chaining.
      */
-    public Builder addAllNotIn(java.lang.Iterable<? extends java.lang.Float> values) {
+    public Builder addAllNotIn(
+        java.lang.Iterable<? extends java.lang.Float> values) {
       ensureNotInIsMutable();
-      com.google.protobuf.AbstractMessageLite.Builder.addAll(values, notIn_);
+      com.google.protobuf.AbstractMessageLite.Builder.addAll(
+          values, notIn_);
       onChanged();
       return this;
     }
-
     /**
-     *
-     *
      * <pre>
-     * `in` requires the field value to not be equal to any of the specified
+     *`in` requires the field value to not be equal to any of the specified
      * values. If the field value is one of the specified values, an error
      * message is generated.
      *
-     * ```proto
-     * message MyFloat {
+     *```proto
+     *message MyFloat {
      *  // value must not be in list [1.0, 2.0, 3.0]
      *  repeated float value = 1 (buf.validate.field).float = { not_in: [1.0, 2.0, 3.0] };
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
-     * <code>repeated float not_in = 7 [json_name = "notIn", (.buf.validate.priv.field) = { ... }
-     * </code>
-     *
+     * <code>repeated float not_in = 7 [json_name = "notIn", (.buf.validate.priv.field) = { ... }</code>
      * @return This builder for chaining.
      */
     public Builder clearNotIn() {
@@ -2135,35 +1922,27 @@ public final class FloatRules extends com.google.protobuf.GeneratedMessageV3
       return this;
     }
 
-    private boolean finite_;
-
+    private boolean finite_ ;
     /**
-     *
-     *
      * <pre>
-     * `finite` requires the field value to be finite. If the field value is
+     *`finite` requires the field value to be finite. If the field value is
      * infinite or NaN, an error message is generated.
      * </pre>
      *
      * <code>bool finite = 8 [json_name = "finite", (.buf.validate.priv.field) = { ... }</code>
-     *
      * @return The finite.
      */
     @java.lang.Override
     public boolean getFinite() {
       return finite_;
     }
-
     /**
-     *
-     *
      * <pre>
-     * `finite` requires the field value to be finite. If the field value is
+     *`finite` requires the field value to be finite. If the field value is
      * infinite or NaN, an error message is generated.
      * </pre>
      *
      * <code>bool finite = 8 [json_name = "finite", (.buf.validate.priv.field) = { ... }</code>
-     *
      * @param value The finite to set.
      * @return This builder for chaining.
      */
@@ -2174,17 +1953,13 @@ public final class FloatRules extends com.google.protobuf.GeneratedMessageV3
       onChanged();
       return this;
     }
-
     /**
-     *
-     *
      * <pre>
-     * `finite` requires the field value to be finite. If the field value is
+     *`finite` requires the field value to be finite. If the field value is
      * infinite or NaN, an error message is generated.
      * </pre>
      *
      * <code>bool finite = 8 [json_name = "finite", (.buf.validate.priv.field) = { ... }</code>
-     *
      * @return This builder for chaining.
      */
     public Builder clearFinite() {
@@ -2193,9 +1968,9 @@ public final class FloatRules extends com.google.protobuf.GeneratedMessageV3
       onChanged();
       return this;
     }
-
     @java.lang.Override
-    public final Builder setUnknownFields(final com.google.protobuf.UnknownFieldSet unknownFields) {
+    public final Builder setUnknownFields(
+        final com.google.protobuf.UnknownFieldSet unknownFields) {
       return super.setUnknownFields(unknownFields);
     }
 
@@ -2205,12 +1980,12 @@ public final class FloatRules extends com.google.protobuf.GeneratedMessageV3
       return super.mergeUnknownFields(unknownFields);
     }
 
+
     // @@protoc_insertion_point(builder_scope:buf.validate.FloatRules)
   }
 
   // @@protoc_insertion_point(class_scope:buf.validate.FloatRules)
   private static final build.buf.validate.FloatRules DEFAULT_INSTANCE;
-
   static {
     DEFAULT_INSTANCE = new build.buf.validate.FloatRules();
   }
@@ -2219,27 +1994,27 @@ public final class FloatRules extends com.google.protobuf.GeneratedMessageV3
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<FloatRules> PARSER =
-      new com.google.protobuf.AbstractParser<FloatRules>() {
-        @java.lang.Override
-        public FloatRules parsePartialFrom(
-            com.google.protobuf.CodedInputStream input,
-            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-            throws com.google.protobuf.InvalidProtocolBufferException {
-          Builder builder = newBuilder();
-          try {
-            builder.mergeFrom(input, extensionRegistry);
-          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-            throw e.setUnfinishedMessage(builder.buildPartial());
-          } catch (com.google.protobuf.UninitializedMessageException e) {
-            throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
-          } catch (java.io.IOException e) {
-            throw new com.google.protobuf.InvalidProtocolBufferException(e)
-                .setUnfinishedMessage(builder.buildPartial());
-          }
-          return builder.buildPartial();
-        }
-      };
+  private static final com.google.protobuf.Parser<FloatRules>
+      PARSER = new com.google.protobuf.AbstractParser<FloatRules>() {
+    @java.lang.Override
+    public FloatRules parsePartialFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      Builder builder = newBuilder();
+      try {
+        builder.mergeFrom(input, extensionRegistry);
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(builder.buildPartial());
+      } catch (com.google.protobuf.UninitializedMessageException e) {
+        throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(e)
+            .setUnfinishedMessage(builder.buildPartial());
+      }
+      return builder.buildPartial();
+    }
+  };
 
   public static com.google.protobuf.Parser<FloatRules> parser() {
     return PARSER;
@@ -2254,4 +2029,6 @@ public final class FloatRules extends com.google.protobuf.GeneratedMessageV3
   public build.buf.validate.FloatRules getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
+
 }
+

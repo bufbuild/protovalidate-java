@@ -3,30 +3,22 @@
 
 package build.buf.validate.conformance.cases;
 
-public interface TimestampLTEOrBuilder
-    extends
+public interface TimestampLTEOrBuilder extends
     // @@protoc_insertion_point(interface_extends:buf.validate.conformance.cases.TimestampLTE)
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>.google.protobuf.Timestamp val = 1 [json_name = "val", (.buf.validate.field) = { ... }
-   * </code>
-   *
+   * <code>.google.protobuf.Timestamp val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
    * @return Whether the val field is set.
    */
   boolean hasVal();
-
   /**
-   * <code>.google.protobuf.Timestamp val = 1 [json_name = "val", (.buf.validate.field) = { ... }
-   * </code>
-   *
+   * <code>.google.protobuf.Timestamp val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
    * @return The val.
    */
   com.google.protobuf.Timestamp getVal();
-
   /**
-   * <code>.google.protobuf.Timestamp val = 1 [json_name = "val", (.buf.validate.field) = { ... }
-   * </code>
+   * <code>.google.protobuf.Timestamp val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
    */
   com.google.protobuf.TimestampOrBuilder getValOrBuilder();
 }

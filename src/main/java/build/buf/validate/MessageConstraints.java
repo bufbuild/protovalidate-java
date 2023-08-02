@@ -4,8 +4,6 @@
 package build.buf.validate;
 
 /**
- *
- *
  * <pre>
  * MessageConstraints represents validation rules that are applied to the entire message.
  * It includes disabling options and a list of Constraint messages representing Common Expression Language (CEL) validation rules.
@@ -13,49 +11,43 @@ package build.buf.validate;
  *
  * Protobuf type {@code buf.validate.MessageConstraints}
  */
-public final class MessageConstraints extends com.google.protobuf.GeneratedMessageV3
-    implements
+public final class MessageConstraints extends
+    com.google.protobuf.GeneratedMessageV3 implements
     // @@protoc_insertion_point(message_implements:buf.validate.MessageConstraints)
     MessageConstraintsOrBuilder {
-  private static final long serialVersionUID = 0L;
-
+private static final long serialVersionUID = 0L;
   // Use MessageConstraints.newBuilder() to construct.
   private MessageConstraints(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
-
   private MessageConstraints() {
     cel_ = java.util.Collections.emptyList();
   }
 
   @java.lang.Override
   @SuppressWarnings({"unused"})
-  protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
+  protected java.lang.Object newInstance(
+      UnusedPrivateParameter unused) {
     return new MessageConstraints();
   }
 
-  public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
-    return build.buf.validate.ValidateProto
-        .internal_static_buf_validate_MessageConstraints_descriptor;
+  public static final com.google.protobuf.Descriptors.Descriptor
+      getDescriptor() {
+    return build.buf.validate.ValidateProto.internal_static_buf_validate_MessageConstraints_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return build.buf.validate.ValidateProto
-        .internal_static_buf_validate_MessageConstraints_fieldAccessorTable
+    return build.buf.validate.ValidateProto.internal_static_buf_validate_MessageConstraints_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            build.buf.validate.MessageConstraints.class,
-            build.buf.validate.MessageConstraints.Builder.class);
+            build.buf.validate.MessageConstraints.class, build.buf.validate.MessageConstraints.Builder.class);
   }
 
   private int bitField0_;
   public static final int DISABLED_FIELD_NUMBER = 1;
   private boolean disabled_ = false;
-
   /**
-   *
-   *
    * <pre>
    * disabled is a boolean flag that, when set to true, nullifies any validation rules for this message.
    * This includes any fields within the message that would otherwise support validation.
@@ -69,17 +61,13 @@ public final class MessageConstraints extends com.google.protobuf.GeneratedMessa
    * </pre>
    *
    * <code>optional bool disabled = 1 [json_name = "disabled"];</code>
-   *
    * @return Whether the disabled field is set.
    */
   @java.lang.Override
   public boolean hasDisabled() {
     return ((bitField0_ & 0x00000001) != 0);
   }
-
   /**
-   *
-   *
    * <pre>
    * disabled is a boolean flag that, when set to true, nullifies any validation rules for this message.
    * This includes any fields within the message that would otherwise support validation.
@@ -93,7 +81,6 @@ public final class MessageConstraints extends com.google.protobuf.GeneratedMessa
    * </pre>
    *
    * <code>optional bool disabled = 1 [json_name = "disabled"];</code>
-   *
    * @return The disabled.
    */
   @java.lang.Override
@@ -102,21 +89,17 @@ public final class MessageConstraints extends com.google.protobuf.GeneratedMessa
   }
 
   public static final int CEL_FIELD_NUMBER = 3;
-
   @SuppressWarnings("serial")
   private java.util.List<build.buf.validate.Constraint> cel_;
-
   /**
-   *
-   *
    * <pre>
    * cel is a repeated field of type Constraint. Each Constraint specifies a validation rule to be applied to this message.
    * These constraints are written in Common Expression Language (CEL) syntax. For more information on
    * CEL, [see our documentation](https://github.com/bufbuild/protovalidate/blob/main/docs/cel.md).
    *
    *
-   * ```proto
-   * message MyMessage {
+   *```proto
+   *message MyMessage {
    *  // The field `foo` must be greater than 42.
    *  option (buf.validate.message).cel = {
    *    id: "my_message.value",
@@ -124,8 +107,8 @@ public final class MessageConstraints extends com.google.protobuf.GeneratedMessa
    *    expression: "this.foo &gt; 42",
    *  };
    *  optional int32 foo = 1;
-   * }
-   * ```
+   *}
+   *```
    * </pre>
    *
    * <code>repeated .buf.validate.Constraint cel = 3 [json_name = "cel"];</code>
@@ -134,18 +117,15 @@ public final class MessageConstraints extends com.google.protobuf.GeneratedMessa
   public java.util.List<build.buf.validate.Constraint> getCelList() {
     return cel_;
   }
-
   /**
-   *
-   *
    * <pre>
    * cel is a repeated field of type Constraint. Each Constraint specifies a validation rule to be applied to this message.
    * These constraints are written in Common Expression Language (CEL) syntax. For more information on
    * CEL, [see our documentation](https://github.com/bufbuild/protovalidate/blob/main/docs/cel.md).
    *
    *
-   * ```proto
-   * message MyMessage {
+   *```proto
+   *message MyMessage {
    *  // The field `foo` must be greater than 42.
    *  option (buf.validate.message).cel = {
    *    id: "my_message.value",
@@ -153,28 +133,26 @@ public final class MessageConstraints extends com.google.protobuf.GeneratedMessa
    *    expression: "this.foo &gt; 42",
    *  };
    *  optional int32 foo = 1;
-   * }
-   * ```
+   *}
+   *```
    * </pre>
    *
    * <code>repeated .buf.validate.Constraint cel = 3 [json_name = "cel"];</code>
    */
   @java.lang.Override
-  public java.util.List<? extends build.buf.validate.ConstraintOrBuilder> getCelOrBuilderList() {
+  public java.util.List<? extends build.buf.validate.ConstraintOrBuilder> 
+      getCelOrBuilderList() {
     return cel_;
   }
-
   /**
-   *
-   *
    * <pre>
    * cel is a repeated field of type Constraint. Each Constraint specifies a validation rule to be applied to this message.
    * These constraints are written in Common Expression Language (CEL) syntax. For more information on
    * CEL, [see our documentation](https://github.com/bufbuild/protovalidate/blob/main/docs/cel.md).
    *
    *
-   * ```proto
-   * message MyMessage {
+   *```proto
+   *message MyMessage {
    *  // The field `foo` must be greater than 42.
    *  option (buf.validate.message).cel = {
    *    id: "my_message.value",
@@ -182,8 +160,8 @@ public final class MessageConstraints extends com.google.protobuf.GeneratedMessa
    *    expression: "this.foo &gt; 42",
    *  };
    *  optional int32 foo = 1;
-   * }
-   * ```
+   *}
+   *```
    * </pre>
    *
    * <code>repeated .buf.validate.Constraint cel = 3 [json_name = "cel"];</code>
@@ -192,18 +170,15 @@ public final class MessageConstraints extends com.google.protobuf.GeneratedMessa
   public int getCelCount() {
     return cel_.size();
   }
-
   /**
-   *
-   *
    * <pre>
    * cel is a repeated field of type Constraint. Each Constraint specifies a validation rule to be applied to this message.
    * These constraints are written in Common Expression Language (CEL) syntax. For more information on
    * CEL, [see our documentation](https://github.com/bufbuild/protovalidate/blob/main/docs/cel.md).
    *
    *
-   * ```proto
-   * message MyMessage {
+   *```proto
+   *message MyMessage {
    *  // The field `foo` must be greater than 42.
    *  option (buf.validate.message).cel = {
    *    id: "my_message.value",
@@ -211,8 +186,8 @@ public final class MessageConstraints extends com.google.protobuf.GeneratedMessa
    *    expression: "this.foo &gt; 42",
    *  };
    *  optional int32 foo = 1;
-   * }
-   * ```
+   *}
+   *```
    * </pre>
    *
    * <code>repeated .buf.validate.Constraint cel = 3 [json_name = "cel"];</code>
@@ -221,18 +196,15 @@ public final class MessageConstraints extends com.google.protobuf.GeneratedMessa
   public build.buf.validate.Constraint getCel(int index) {
     return cel_.get(index);
   }
-
   /**
-   *
-   *
    * <pre>
    * cel is a repeated field of type Constraint. Each Constraint specifies a validation rule to be applied to this message.
    * These constraints are written in Common Expression Language (CEL) syntax. For more information on
    * CEL, [see our documentation](https://github.com/bufbuild/protovalidate/blob/main/docs/cel.md).
    *
    *
-   * ```proto
-   * message MyMessage {
+   *```proto
+   *message MyMessage {
    *  // The field `foo` must be greater than 42.
    *  option (buf.validate.message).cel = {
    *    id: "my_message.value",
@@ -240,19 +212,19 @@ public final class MessageConstraints extends com.google.protobuf.GeneratedMessa
    *    expression: "this.foo &gt; 42",
    *  };
    *  optional int32 foo = 1;
-   * }
-   * ```
+   *}
+   *```
    * </pre>
    *
    * <code>repeated .buf.validate.Constraint cel = 3 [json_name = "cel"];</code>
    */
   @java.lang.Override
-  public build.buf.validate.ConstraintOrBuilder getCelOrBuilder(int index) {
+  public build.buf.validate.ConstraintOrBuilder getCelOrBuilder(
+      int index) {
     return cel_.get(index);
   }
 
   private byte memoizedIsInitialized = -1;
-
   @java.lang.Override
   public final boolean isInitialized() {
     byte isInitialized = memoizedIsInitialized;
@@ -264,7 +236,8 @@ public final class MessageConstraints extends com.google.protobuf.GeneratedMessa
   }
 
   @java.lang.Override
-  public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
+  public void writeTo(com.google.protobuf.CodedOutputStream output)
+                      throws java.io.IOException {
     if (((bitField0_ & 0x00000001) != 0)) {
       output.writeBool(1, disabled_);
     }
@@ -281,10 +254,12 @@ public final class MessageConstraints extends com.google.protobuf.GeneratedMessa
 
     size = 0;
     if (((bitField0_ & 0x00000001) != 0)) {
-      size += com.google.protobuf.CodedOutputStream.computeBoolSize(1, disabled_);
+      size += com.google.protobuf.CodedOutputStream
+        .computeBoolSize(1, disabled_);
     }
     for (int i = 0; i < cel_.size(); i++) {
-      size += com.google.protobuf.CodedOutputStream.computeMessageSize(3, cel_.get(i));
+      size += com.google.protobuf.CodedOutputStream
+        .computeMessageSize(3, cel_.get(i));
     }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
@@ -294,7 +269,7 @@ public final class MessageConstraints extends com.google.protobuf.GeneratedMessa
   @java.lang.Override
   public boolean equals(final java.lang.Object obj) {
     if (obj == this) {
-      return true;
+     return true;
     }
     if (!(obj instanceof build.buf.validate.MessageConstraints)) {
       return super.equals(obj);
@@ -303,9 +278,11 @@ public final class MessageConstraints extends com.google.protobuf.GeneratedMessa
 
     if (hasDisabled() != other.hasDisabled()) return false;
     if (hasDisabled()) {
-      if (getDisabled() != other.getDisabled()) return false;
+      if (getDisabled()
+          != other.getDisabled()) return false;
     }
-    if (!getCelList().equals(other.getCelList())) return false;
+    if (!getCelList()
+        .equals(other.getCelList())) return false;
     if (!getUnknownFields().equals(other.getUnknownFields())) return false;
     return true;
   }
@@ -319,7 +296,8 @@ public final class MessageConstraints extends com.google.protobuf.GeneratedMessa
     hash = (19 * hash) + getDescriptor().hashCode();
     if (hasDisabled()) {
       hash = (37 * hash) + DISABLED_FIELD_NUMBER;
-      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(getDisabled());
+      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+          getDisabled());
     }
     if (getCelCount() > 0) {
       hash = (37 * hash) + CEL_FIELD_NUMBER;
@@ -330,104 +308,99 @@ public final class MessageConstraints extends com.google.protobuf.GeneratedMessa
     return hash;
   }
 
-  public static build.buf.validate.MessageConstraints parseFrom(java.nio.ByteBuffer data)
+  public static build.buf.validate.MessageConstraints parseFrom(
+      java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-
   public static build.buf.validate.MessageConstraints parseFrom(
-      java.nio.ByteBuffer data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      java.nio.ByteBuffer data,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-
-  public static build.buf.validate.MessageConstraints parseFrom(com.google.protobuf.ByteString data)
+  public static build.buf.validate.MessageConstraints parseFrom(
+      com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-
   public static build.buf.validate.MessageConstraints parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-
   public static build.buf.validate.MessageConstraints parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-
   public static build.buf.validate.MessageConstraints parseFrom(
-      byte[] data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      byte[] data,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-
   public static build.buf.validate.MessageConstraints parseFrom(java.io.InputStream input)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
+    return com.google.protobuf.GeneratedMessageV3
+        .parseWithIOException(PARSER, input);
   }
-
   public static build.buf.validate.MessageConstraints parseFrom(
-      java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      java.io.InputStream input,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
-        PARSER, input, extensionRegistry);
+    return com.google.protobuf.GeneratedMessageV3
+        .parseWithIOException(PARSER, input, extensionRegistry);
   }
 
   public static build.buf.validate.MessageConstraints parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input);
+    return com.google.protobuf.GeneratedMessageV3
+        .parseDelimitedWithIOException(PARSER, input);
   }
 
   public static build.buf.validate.MessageConstraints parseDelimitedFrom(
-      java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      java.io.InputStream input,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(
-        PARSER, input, extensionRegistry);
+    return com.google.protobuf.GeneratedMessageV3
+        .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-
   public static build.buf.validate.MessageConstraints parseFrom(
-      com.google.protobuf.CodedInputStream input) throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
+      com.google.protobuf.CodedInputStream input)
+      throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3
+        .parseWithIOException(PARSER, input);
   }
-
   public static build.buf.validate.MessageConstraints parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
-        PARSER, input, extensionRegistry);
+    return com.google.protobuf.GeneratedMessageV3
+        .parseWithIOException(PARSER, input, extensionRegistry);
   }
 
   @java.lang.Override
-  public Builder newBuilderForType() {
-    return newBuilder();
-  }
-
+  public Builder newBuilderForType() { return newBuilder(); }
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-
   public static Builder newBuilder(build.buf.validate.MessageConstraints prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
-
   @java.lang.Override
   public Builder toBuilder() {
-    return this == DEFAULT_INSTANCE ? new Builder() : new Builder().mergeFrom(this);
+    return this == DEFAULT_INSTANCE
+        ? new Builder() : new Builder().mergeFrom(this);
   }
 
   @java.lang.Override
-  protected Builder newBuilderForType(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+  protected Builder newBuilderForType(
+      com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
     Builder builder = new Builder(parent);
     return builder;
   }
-
   /**
-   *
-   *
    * <pre>
    * MessageConstraints represents validation rules that are applied to the entire message.
    * It includes disabling options and a list of Constraint messages representing Common Expression Language (CEL) validation rules.
@@ -435,32 +408,33 @@ public final class MessageConstraints extends com.google.protobuf.GeneratedMessa
    *
    * Protobuf type {@code buf.validate.MessageConstraints}
    */
-  public static final class Builder extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
-      implements
+  public static final class Builder extends
+      com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
       // @@protoc_insertion_point(builder_implements:buf.validate.MessageConstraints)
       build.buf.validate.MessageConstraintsOrBuilder {
-    public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
-      return build.buf.validate.ValidateProto
-          .internal_static_buf_validate_MessageConstraints_descriptor;
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return build.buf.validate.ValidateProto.internal_static_buf_validate_MessageConstraints_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return build.buf.validate.ValidateProto
-          .internal_static_buf_validate_MessageConstraints_fieldAccessorTable
+      return build.buf.validate.ValidateProto.internal_static_buf_validate_MessageConstraints_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              build.buf.validate.MessageConstraints.class,
-              build.buf.validate.MessageConstraints.Builder.class);
+              build.buf.validate.MessageConstraints.class, build.buf.validate.MessageConstraints.Builder.class);
     }
 
     // Construct using build.buf.validate.MessageConstraints.newBuilder()
-    private Builder() {}
+    private Builder() {
 
-    private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-      super(parent);
     }
 
+    private Builder(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      super(parent);
+
+    }
     @java.lang.Override
     public Builder clear() {
       super.clear();
@@ -477,9 +451,9 @@ public final class MessageConstraints extends com.google.protobuf.GeneratedMessa
     }
 
     @java.lang.Override
-    public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
-      return build.buf.validate.ValidateProto
-          .internal_static_buf_validate_MessageConstraints_descriptor;
+    public com.google.protobuf.Descriptors.Descriptor
+        getDescriptorForType() {
+      return build.buf.validate.ValidateProto.internal_static_buf_validate_MessageConstraints_descriptor;
     }
 
     @java.lang.Override
@@ -498,12 +472,9 @@ public final class MessageConstraints extends com.google.protobuf.GeneratedMessa
 
     @java.lang.Override
     public build.buf.validate.MessageConstraints buildPartial() {
-      build.buf.validate.MessageConstraints result =
-          new build.buf.validate.MessageConstraints(this);
+      build.buf.validate.MessageConstraints result = new build.buf.validate.MessageConstraints(this);
       buildPartialRepeatedFields(result);
-      if (bitField0_ != 0) {
-        buildPartial0(result);
-      }
+      if (bitField0_ != 0) { buildPartial0(result); }
       onBuilt();
       return result;
     }
@@ -534,39 +505,38 @@ public final class MessageConstraints extends com.google.protobuf.GeneratedMessa
     public Builder clone() {
       return super.clone();
     }
-
     @java.lang.Override
     public Builder setField(
-        com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field,
+        java.lang.Object value) {
       return super.setField(field, value);
     }
-
     @java.lang.Override
-    public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
+    public Builder clearField(
+        com.google.protobuf.Descriptors.FieldDescriptor field) {
       return super.clearField(field);
     }
-
     @java.lang.Override
-    public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+    public Builder clearOneof(
+        com.google.protobuf.Descriptors.OneofDescriptor oneof) {
       return super.clearOneof(oneof);
     }
-
     @java.lang.Override
     public Builder setRepeatedField(
-        com.google.protobuf.Descriptors.FieldDescriptor field, int index, java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field,
+        int index, java.lang.Object value) {
       return super.setRepeatedField(field, index, value);
     }
-
     @java.lang.Override
     public Builder addRepeatedField(
-        com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field,
+        java.lang.Object value) {
       return super.addRepeatedField(field, value);
     }
-
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
       if (other instanceof build.buf.validate.MessageConstraints) {
-        return mergeFrom((build.buf.validate.MessageConstraints) other);
+        return mergeFrom((build.buf.validate.MessageConstraints)other);
       } else {
         super.mergeFrom(other);
         return this;
@@ -596,10 +566,9 @@ public final class MessageConstraints extends com.google.protobuf.GeneratedMessa
             celBuilder_ = null;
             cel_ = other.cel_;
             bitField0_ = (bitField0_ & ~0x00000002);
-            celBuilder_ =
-                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders
-                    ? getCelFieldBuilder()
-                    : null;
+            celBuilder_ = 
+              com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+                 getCelFieldBuilder() : null;
           } else {
             celBuilder_.addAllMessages(other.cel_);
           }
@@ -631,31 +600,30 @@ public final class MessageConstraints extends com.google.protobuf.GeneratedMessa
             case 0:
               done = true;
               break;
-            case 8:
-              {
-                disabled_ = input.readBool();
-                bitField0_ |= 0x00000001;
-                break;
-              } // case 8
-            case 26:
-              {
-                build.buf.validate.Constraint m =
-                    input.readMessage(build.buf.validate.Constraint.parser(), extensionRegistry);
-                if (celBuilder_ == null) {
-                  ensureCelIsMutable();
-                  cel_.add(m);
-                } else {
-                  celBuilder_.addMessage(m);
-                }
-                break;
-              } // case 26
-            default:
-              {
-                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
-                  done = true; // was an endgroup tag
-                }
-                break;
-              } // default:
+            case 8: {
+              disabled_ = input.readBool();
+              bitField0_ |= 0x00000001;
+              break;
+            } // case 8
+            case 26: {
+              build.buf.validate.Constraint m =
+                  input.readMessage(
+                      build.buf.validate.Constraint.parser(),
+                      extensionRegistry);
+              if (celBuilder_ == null) {
+                ensureCelIsMutable();
+                cel_.add(m);
+              } else {
+                celBuilder_.addMessage(m);
+              }
+              break;
+            } // case 26
+            default: {
+              if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                done = true; // was an endgroup tag
+              }
+              break;
+            } // default:
           } // switch (tag)
         } // while (!done)
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -665,14 +633,10 @@ public final class MessageConstraints extends com.google.protobuf.GeneratedMessa
       } // finally
       return this;
     }
-
     private int bitField0_;
 
-    private boolean disabled_;
-
+    private boolean disabled_ ;
     /**
-     *
-     *
      * <pre>
      * disabled is a boolean flag that, when set to true, nullifies any validation rules for this message.
      * This includes any fields within the message that would otherwise support validation.
@@ -686,17 +650,13 @@ public final class MessageConstraints extends com.google.protobuf.GeneratedMessa
      * </pre>
      *
      * <code>optional bool disabled = 1 [json_name = "disabled"];</code>
-     *
      * @return Whether the disabled field is set.
      */
     @java.lang.Override
     public boolean hasDisabled() {
       return ((bitField0_ & 0x00000001) != 0);
     }
-
     /**
-     *
-     *
      * <pre>
      * disabled is a boolean flag that, when set to true, nullifies any validation rules for this message.
      * This includes any fields within the message that would otherwise support validation.
@@ -710,17 +670,13 @@ public final class MessageConstraints extends com.google.protobuf.GeneratedMessa
      * </pre>
      *
      * <code>optional bool disabled = 1 [json_name = "disabled"];</code>
-     *
      * @return The disabled.
      */
     @java.lang.Override
     public boolean getDisabled() {
       return disabled_;
     }
-
     /**
-     *
-     *
      * <pre>
      * disabled is a boolean flag that, when set to true, nullifies any validation rules for this message.
      * This includes any fields within the message that would otherwise support validation.
@@ -734,7 +690,6 @@ public final class MessageConstraints extends com.google.protobuf.GeneratedMessa
      * </pre>
      *
      * <code>optional bool disabled = 1 [json_name = "disabled"];</code>
-     *
      * @param value The disabled to set.
      * @return This builder for chaining.
      */
@@ -745,10 +700,7 @@ public final class MessageConstraints extends com.google.protobuf.GeneratedMessa
       onChanged();
       return this;
     }
-
     /**
-     *
-     *
      * <pre>
      * disabled is a boolean flag that, when set to true, nullifies any validation rules for this message.
      * This includes any fields within the message that would otherwise support validation.
@@ -762,7 +714,6 @@ public final class MessageConstraints extends com.google.protobuf.GeneratedMessa
      * </pre>
      *
      * <code>optional bool disabled = 1 [json_name = "disabled"];</code>
-     *
      * @return This builder for chaining.
      */
     public Builder clearDisabled() {
@@ -772,32 +723,27 @@ public final class MessageConstraints extends com.google.protobuf.GeneratedMessa
       return this;
     }
 
-    private java.util.List<build.buf.validate.Constraint> cel_ = java.util.Collections.emptyList();
-
+    private java.util.List<build.buf.validate.Constraint> cel_ =
+      java.util.Collections.emptyList();
     private void ensureCelIsMutable() {
       if (!((bitField0_ & 0x00000002) != 0)) {
         cel_ = new java.util.ArrayList<build.buf.validate.Constraint>(cel_);
         bitField0_ |= 0x00000002;
-      }
+       }
     }
 
     private com.google.protobuf.RepeatedFieldBuilderV3<
-            build.buf.validate.Constraint,
-            build.buf.validate.Constraint.Builder,
-            build.buf.validate.ConstraintOrBuilder>
-        celBuilder_;
+        build.buf.validate.Constraint, build.buf.validate.Constraint.Builder, build.buf.validate.ConstraintOrBuilder> celBuilder_;
 
     /**
-     *
-     *
      * <pre>
      * cel is a repeated field of type Constraint. Each Constraint specifies a validation rule to be applied to this message.
      * These constraints are written in Common Expression Language (CEL) syntax. For more information on
      * CEL, [see our documentation](https://github.com/bufbuild/protovalidate/blob/main/docs/cel.md).
      *
      *
-     * ```proto
-     * message MyMessage {
+     *```proto
+     *message MyMessage {
      *  // The field `foo` must be greater than 42.
      *  option (buf.validate.message).cel = {
      *    id: "my_message.value",
@@ -805,8 +751,8 @@ public final class MessageConstraints extends com.google.protobuf.GeneratedMessa
      *    expression: "this.foo &gt; 42",
      *  };
      *  optional int32 foo = 1;
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
      * <code>repeated .buf.validate.Constraint cel = 3 [json_name = "cel"];</code>
@@ -818,18 +764,15 @@ public final class MessageConstraints extends com.google.protobuf.GeneratedMessa
         return celBuilder_.getMessageList();
       }
     }
-
     /**
-     *
-     *
      * <pre>
      * cel is a repeated field of type Constraint. Each Constraint specifies a validation rule to be applied to this message.
      * These constraints are written in Common Expression Language (CEL) syntax. For more information on
      * CEL, [see our documentation](https://github.com/bufbuild/protovalidate/blob/main/docs/cel.md).
      *
      *
-     * ```proto
-     * message MyMessage {
+     *```proto
+     *message MyMessage {
      *  // The field `foo` must be greater than 42.
      *  option (buf.validate.message).cel = {
      *    id: "my_message.value",
@@ -837,8 +780,8 @@ public final class MessageConstraints extends com.google.protobuf.GeneratedMessa
      *    expression: "this.foo &gt; 42",
      *  };
      *  optional int32 foo = 1;
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
      * <code>repeated .buf.validate.Constraint cel = 3 [json_name = "cel"];</code>
@@ -850,18 +793,15 @@ public final class MessageConstraints extends com.google.protobuf.GeneratedMessa
         return celBuilder_.getCount();
       }
     }
-
     /**
-     *
-     *
      * <pre>
      * cel is a repeated field of type Constraint. Each Constraint specifies a validation rule to be applied to this message.
      * These constraints are written in Common Expression Language (CEL) syntax. For more information on
      * CEL, [see our documentation](https://github.com/bufbuild/protovalidate/blob/main/docs/cel.md).
      *
      *
-     * ```proto
-     * message MyMessage {
+     *```proto
+     *message MyMessage {
      *  // The field `foo` must be greater than 42.
      *  option (buf.validate.message).cel = {
      *    id: "my_message.value",
@@ -869,8 +809,8 @@ public final class MessageConstraints extends com.google.protobuf.GeneratedMessa
      *    expression: "this.foo &gt; 42",
      *  };
      *  optional int32 foo = 1;
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
      * <code>repeated .buf.validate.Constraint cel = 3 [json_name = "cel"];</code>
@@ -882,18 +822,15 @@ public final class MessageConstraints extends com.google.protobuf.GeneratedMessa
         return celBuilder_.getMessage(index);
       }
     }
-
     /**
-     *
-     *
      * <pre>
      * cel is a repeated field of type Constraint. Each Constraint specifies a validation rule to be applied to this message.
      * These constraints are written in Common Expression Language (CEL) syntax. For more information on
      * CEL, [see our documentation](https://github.com/bufbuild/protovalidate/blob/main/docs/cel.md).
      *
      *
-     * ```proto
-     * message MyMessage {
+     *```proto
+     *message MyMessage {
      *  // The field `foo` must be greater than 42.
      *  option (buf.validate.message).cel = {
      *    id: "my_message.value",
@@ -901,13 +838,14 @@ public final class MessageConstraints extends com.google.protobuf.GeneratedMessa
      *    expression: "this.foo &gt; 42",
      *  };
      *  optional int32 foo = 1;
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
      * <code>repeated .buf.validate.Constraint cel = 3 [json_name = "cel"];</code>
      */
-    public Builder setCel(int index, build.buf.validate.Constraint value) {
+    public Builder setCel(
+        int index, build.buf.validate.Constraint value) {
       if (celBuilder_ == null) {
         if (value == null) {
           throw new NullPointerException();
@@ -920,18 +858,15 @@ public final class MessageConstraints extends com.google.protobuf.GeneratedMessa
       }
       return this;
     }
-
     /**
-     *
-     *
      * <pre>
      * cel is a repeated field of type Constraint. Each Constraint specifies a validation rule to be applied to this message.
      * These constraints are written in Common Expression Language (CEL) syntax. For more information on
      * CEL, [see our documentation](https://github.com/bufbuild/protovalidate/blob/main/docs/cel.md).
      *
      *
-     * ```proto
-     * message MyMessage {
+     *```proto
+     *message MyMessage {
      *  // The field `foo` must be greater than 42.
      *  option (buf.validate.message).cel = {
      *    id: "my_message.value",
@@ -939,13 +874,14 @@ public final class MessageConstraints extends com.google.protobuf.GeneratedMessa
      *    expression: "this.foo &gt; 42",
      *  };
      *  optional int32 foo = 1;
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
      * <code>repeated .buf.validate.Constraint cel = 3 [json_name = "cel"];</code>
      */
-    public Builder setCel(int index, build.buf.validate.Constraint.Builder builderForValue) {
+    public Builder setCel(
+        int index, build.buf.validate.Constraint.Builder builderForValue) {
       if (celBuilder_ == null) {
         ensureCelIsMutable();
         cel_.set(index, builderForValue.build());
@@ -955,18 +891,15 @@ public final class MessageConstraints extends com.google.protobuf.GeneratedMessa
       }
       return this;
     }
-
     /**
-     *
-     *
      * <pre>
      * cel is a repeated field of type Constraint. Each Constraint specifies a validation rule to be applied to this message.
      * These constraints are written in Common Expression Language (CEL) syntax. For more information on
      * CEL, [see our documentation](https://github.com/bufbuild/protovalidate/blob/main/docs/cel.md).
      *
      *
-     * ```proto
-     * message MyMessage {
+     *```proto
+     *message MyMessage {
      *  // The field `foo` must be greater than 42.
      *  option (buf.validate.message).cel = {
      *    id: "my_message.value",
@@ -974,8 +907,8 @@ public final class MessageConstraints extends com.google.protobuf.GeneratedMessa
      *    expression: "this.foo &gt; 42",
      *  };
      *  optional int32 foo = 1;
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
      * <code>repeated .buf.validate.Constraint cel = 3 [json_name = "cel"];</code>
@@ -993,18 +926,15 @@ public final class MessageConstraints extends com.google.protobuf.GeneratedMessa
       }
       return this;
     }
-
     /**
-     *
-     *
      * <pre>
      * cel is a repeated field of type Constraint. Each Constraint specifies a validation rule to be applied to this message.
      * These constraints are written in Common Expression Language (CEL) syntax. For more information on
      * CEL, [see our documentation](https://github.com/bufbuild/protovalidate/blob/main/docs/cel.md).
      *
      *
-     * ```proto
-     * message MyMessage {
+     *```proto
+     *message MyMessage {
      *  // The field `foo` must be greater than 42.
      *  option (buf.validate.message).cel = {
      *    id: "my_message.value",
@@ -1012,13 +942,14 @@ public final class MessageConstraints extends com.google.protobuf.GeneratedMessa
      *    expression: "this.foo &gt; 42",
      *  };
      *  optional int32 foo = 1;
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
      * <code>repeated .buf.validate.Constraint cel = 3 [json_name = "cel"];</code>
      */
-    public Builder addCel(int index, build.buf.validate.Constraint value) {
+    public Builder addCel(
+        int index, build.buf.validate.Constraint value) {
       if (celBuilder_ == null) {
         if (value == null) {
           throw new NullPointerException();
@@ -1031,18 +962,15 @@ public final class MessageConstraints extends com.google.protobuf.GeneratedMessa
       }
       return this;
     }
-
     /**
-     *
-     *
      * <pre>
      * cel is a repeated field of type Constraint. Each Constraint specifies a validation rule to be applied to this message.
      * These constraints are written in Common Expression Language (CEL) syntax. For more information on
      * CEL, [see our documentation](https://github.com/bufbuild/protovalidate/blob/main/docs/cel.md).
      *
      *
-     * ```proto
-     * message MyMessage {
+     *```proto
+     *message MyMessage {
      *  // The field `foo` must be greater than 42.
      *  option (buf.validate.message).cel = {
      *    id: "my_message.value",
@@ -1050,13 +978,14 @@ public final class MessageConstraints extends com.google.protobuf.GeneratedMessa
      *    expression: "this.foo &gt; 42",
      *  };
      *  optional int32 foo = 1;
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
      * <code>repeated .buf.validate.Constraint cel = 3 [json_name = "cel"];</code>
      */
-    public Builder addCel(build.buf.validate.Constraint.Builder builderForValue) {
+    public Builder addCel(
+        build.buf.validate.Constraint.Builder builderForValue) {
       if (celBuilder_ == null) {
         ensureCelIsMutable();
         cel_.add(builderForValue.build());
@@ -1066,18 +995,15 @@ public final class MessageConstraints extends com.google.protobuf.GeneratedMessa
       }
       return this;
     }
-
     /**
-     *
-     *
      * <pre>
      * cel is a repeated field of type Constraint. Each Constraint specifies a validation rule to be applied to this message.
      * These constraints are written in Common Expression Language (CEL) syntax. For more information on
      * CEL, [see our documentation](https://github.com/bufbuild/protovalidate/blob/main/docs/cel.md).
      *
      *
-     * ```proto
-     * message MyMessage {
+     *```proto
+     *message MyMessage {
      *  // The field `foo` must be greater than 42.
      *  option (buf.validate.message).cel = {
      *    id: "my_message.value",
@@ -1085,13 +1011,14 @@ public final class MessageConstraints extends com.google.protobuf.GeneratedMessa
      *    expression: "this.foo &gt; 42",
      *  };
      *  optional int32 foo = 1;
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
      * <code>repeated .buf.validate.Constraint cel = 3 [json_name = "cel"];</code>
      */
-    public Builder addCel(int index, build.buf.validate.Constraint.Builder builderForValue) {
+    public Builder addCel(
+        int index, build.buf.validate.Constraint.Builder builderForValue) {
       if (celBuilder_ == null) {
         ensureCelIsMutable();
         cel_.add(index, builderForValue.build());
@@ -1101,18 +1028,15 @@ public final class MessageConstraints extends com.google.protobuf.GeneratedMessa
       }
       return this;
     }
-
     /**
-     *
-     *
      * <pre>
      * cel is a repeated field of type Constraint. Each Constraint specifies a validation rule to be applied to this message.
      * These constraints are written in Common Expression Language (CEL) syntax. For more information on
      * CEL, [see our documentation](https://github.com/bufbuild/protovalidate/blob/main/docs/cel.md).
      *
      *
-     * ```proto
-     * message MyMessage {
+     *```proto
+     *message MyMessage {
      *  // The field `foo` must be greater than 42.
      *  option (buf.validate.message).cel = {
      *    id: "my_message.value",
@@ -1120,34 +1044,33 @@ public final class MessageConstraints extends com.google.protobuf.GeneratedMessa
      *    expression: "this.foo &gt; 42",
      *  };
      *  optional int32 foo = 1;
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
      * <code>repeated .buf.validate.Constraint cel = 3 [json_name = "cel"];</code>
      */
-    public Builder addAllCel(java.lang.Iterable<? extends build.buf.validate.Constraint> values) {
+    public Builder addAllCel(
+        java.lang.Iterable<? extends build.buf.validate.Constraint> values) {
       if (celBuilder_ == null) {
         ensureCelIsMutable();
-        com.google.protobuf.AbstractMessageLite.Builder.addAll(values, cel_);
+        com.google.protobuf.AbstractMessageLite.Builder.addAll(
+            values, cel_);
         onChanged();
       } else {
         celBuilder_.addAllMessages(values);
       }
       return this;
     }
-
     /**
-     *
-     *
      * <pre>
      * cel is a repeated field of type Constraint. Each Constraint specifies a validation rule to be applied to this message.
      * These constraints are written in Common Expression Language (CEL) syntax. For more information on
      * CEL, [see our documentation](https://github.com/bufbuild/protovalidate/blob/main/docs/cel.md).
      *
      *
-     * ```proto
-     * message MyMessage {
+     *```proto
+     *message MyMessage {
      *  // The field `foo` must be greater than 42.
      *  option (buf.validate.message).cel = {
      *    id: "my_message.value",
@@ -1155,8 +1078,8 @@ public final class MessageConstraints extends com.google.protobuf.GeneratedMessa
      *    expression: "this.foo &gt; 42",
      *  };
      *  optional int32 foo = 1;
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
      * <code>repeated .buf.validate.Constraint cel = 3 [json_name = "cel"];</code>
@@ -1171,18 +1094,15 @@ public final class MessageConstraints extends com.google.protobuf.GeneratedMessa
       }
       return this;
     }
-
     /**
-     *
-     *
      * <pre>
      * cel is a repeated field of type Constraint. Each Constraint specifies a validation rule to be applied to this message.
      * These constraints are written in Common Expression Language (CEL) syntax. For more information on
      * CEL, [see our documentation](https://github.com/bufbuild/protovalidate/blob/main/docs/cel.md).
      *
      *
-     * ```proto
-     * message MyMessage {
+     *```proto
+     *message MyMessage {
      *  // The field `foo` must be greater than 42.
      *  option (buf.validate.message).cel = {
      *    id: "my_message.value",
@@ -1190,8 +1110,8 @@ public final class MessageConstraints extends com.google.protobuf.GeneratedMessa
      *    expression: "this.foo &gt; 42",
      *  };
      *  optional int32 foo = 1;
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
      * <code>repeated .buf.validate.Constraint cel = 3 [json_name = "cel"];</code>
@@ -1206,18 +1126,15 @@ public final class MessageConstraints extends com.google.protobuf.GeneratedMessa
       }
       return this;
     }
-
     /**
-     *
-     *
      * <pre>
      * cel is a repeated field of type Constraint. Each Constraint specifies a validation rule to be applied to this message.
      * These constraints are written in Common Expression Language (CEL) syntax. For more information on
      * CEL, [see our documentation](https://github.com/bufbuild/protovalidate/blob/main/docs/cel.md).
      *
      *
-     * ```proto
-     * message MyMessage {
+     *```proto
+     *message MyMessage {
      *  // The field `foo` must be greater than 42.
      *  option (buf.validate.message).cel = {
      *    id: "my_message.value",
@@ -1225,27 +1142,25 @@ public final class MessageConstraints extends com.google.protobuf.GeneratedMessa
      *    expression: "this.foo &gt; 42",
      *  };
      *  optional int32 foo = 1;
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
      * <code>repeated .buf.validate.Constraint cel = 3 [json_name = "cel"];</code>
      */
-    public build.buf.validate.Constraint.Builder getCelBuilder(int index) {
+    public build.buf.validate.Constraint.Builder getCelBuilder(
+        int index) {
       return getCelFieldBuilder().getBuilder(index);
     }
-
     /**
-     *
-     *
      * <pre>
      * cel is a repeated field of type Constraint. Each Constraint specifies a validation rule to be applied to this message.
      * These constraints are written in Common Expression Language (CEL) syntax. For more information on
      * CEL, [see our documentation](https://github.com/bufbuild/protovalidate/blob/main/docs/cel.md).
      *
      *
-     * ```proto
-     * message MyMessage {
+     *```proto
+     *message MyMessage {
      *  // The field `foo` must be greater than 42.
      *  option (buf.validate.message).cel = {
      *    id: "my_message.value",
@@ -1253,31 +1168,28 @@ public final class MessageConstraints extends com.google.protobuf.GeneratedMessa
      *    expression: "this.foo &gt; 42",
      *  };
      *  optional int32 foo = 1;
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
      * <code>repeated .buf.validate.Constraint cel = 3 [json_name = "cel"];</code>
      */
-    public build.buf.validate.ConstraintOrBuilder getCelOrBuilder(int index) {
+    public build.buf.validate.ConstraintOrBuilder getCelOrBuilder(
+        int index) {
       if (celBuilder_ == null) {
-        return cel_.get(index);
-      } else {
+        return cel_.get(index);  } else {
         return celBuilder_.getMessageOrBuilder(index);
       }
     }
-
     /**
-     *
-     *
      * <pre>
      * cel is a repeated field of type Constraint. Each Constraint specifies a validation rule to be applied to this message.
      * These constraints are written in Common Expression Language (CEL) syntax. For more information on
      * CEL, [see our documentation](https://github.com/bufbuild/protovalidate/blob/main/docs/cel.md).
      *
      *
-     * ```proto
-     * message MyMessage {
+     *```proto
+     *message MyMessage {
      *  // The field `foo` must be greater than 42.
      *  option (buf.validate.message).cel = {
      *    id: "my_message.value",
@@ -1285,31 +1197,29 @@ public final class MessageConstraints extends com.google.protobuf.GeneratedMessa
      *    expression: "this.foo &gt; 42",
      *  };
      *  optional int32 foo = 1;
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
      * <code>repeated .buf.validate.Constraint cel = 3 [json_name = "cel"];</code>
      */
-    public java.util.List<? extends build.buf.validate.ConstraintOrBuilder> getCelOrBuilderList() {
+    public java.util.List<? extends build.buf.validate.ConstraintOrBuilder> 
+         getCelOrBuilderList() {
       if (celBuilder_ != null) {
         return celBuilder_.getMessageOrBuilderList();
       } else {
         return java.util.Collections.unmodifiableList(cel_);
       }
     }
-
     /**
-     *
-     *
      * <pre>
      * cel is a repeated field of type Constraint. Each Constraint specifies a validation rule to be applied to this message.
      * These constraints are written in Common Expression Language (CEL) syntax. For more information on
      * CEL, [see our documentation](https://github.com/bufbuild/protovalidate/blob/main/docs/cel.md).
      *
      *
-     * ```proto
-     * message MyMessage {
+     *```proto
+     *message MyMessage {
      *  // The field `foo` must be greater than 42.
      *  option (buf.validate.message).cel = {
      *    id: "my_message.value",
@@ -1317,27 +1227,25 @@ public final class MessageConstraints extends com.google.protobuf.GeneratedMessa
      *    expression: "this.foo &gt; 42",
      *  };
      *  optional int32 foo = 1;
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
      * <code>repeated .buf.validate.Constraint cel = 3 [json_name = "cel"];</code>
      */
     public build.buf.validate.Constraint.Builder addCelBuilder() {
-      return getCelFieldBuilder().addBuilder(build.buf.validate.Constraint.getDefaultInstance());
+      return getCelFieldBuilder().addBuilder(
+          build.buf.validate.Constraint.getDefaultInstance());
     }
-
     /**
-     *
-     *
      * <pre>
      * cel is a repeated field of type Constraint. Each Constraint specifies a validation rule to be applied to this message.
      * These constraints are written in Common Expression Language (CEL) syntax. For more information on
      * CEL, [see our documentation](https://github.com/bufbuild/protovalidate/blob/main/docs/cel.md).
      *
      *
-     * ```proto
-     * message MyMessage {
+     *```proto
+     *message MyMessage {
      *  // The field `foo` must be greater than 42.
      *  option (buf.validate.message).cel = {
      *    id: "my_message.value",
@@ -1345,28 +1253,26 @@ public final class MessageConstraints extends com.google.protobuf.GeneratedMessa
      *    expression: "this.foo &gt; 42",
      *  };
      *  optional int32 foo = 1;
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
      * <code>repeated .buf.validate.Constraint cel = 3 [json_name = "cel"];</code>
      */
-    public build.buf.validate.Constraint.Builder addCelBuilder(int index) {
-      return getCelFieldBuilder()
-          .addBuilder(index, build.buf.validate.Constraint.getDefaultInstance());
+    public build.buf.validate.Constraint.Builder addCelBuilder(
+        int index) {
+      return getCelFieldBuilder().addBuilder(
+          index, build.buf.validate.Constraint.getDefaultInstance());
     }
-
     /**
-     *
-     *
      * <pre>
      * cel is a repeated field of type Constraint. Each Constraint specifies a validation rule to be applied to this message.
      * These constraints are written in Common Expression Language (CEL) syntax. For more information on
      * CEL, [see our documentation](https://github.com/bufbuild/protovalidate/blob/main/docs/cel.md).
      *
      *
-     * ```proto
-     * message MyMessage {
+     *```proto
+     *message MyMessage {
      *  // The field `foo` must be greater than 42.
      *  option (buf.validate.message).cel = {
      *    id: "my_message.value",
@@ -1374,35 +1280,33 @@ public final class MessageConstraints extends com.google.protobuf.GeneratedMessa
      *    expression: "this.foo &gt; 42",
      *  };
      *  optional int32 foo = 1;
-     * }
-     * ```
+     *}
+     *```
      * </pre>
      *
      * <code>repeated .buf.validate.Constraint cel = 3 [json_name = "cel"];</code>
      */
-    public java.util.List<build.buf.validate.Constraint.Builder> getCelBuilderList() {
+    public java.util.List<build.buf.validate.Constraint.Builder> 
+         getCelBuilderList() {
       return getCelFieldBuilder().getBuilderList();
     }
-
     private com.google.protobuf.RepeatedFieldBuilderV3<
-            build.buf.validate.Constraint,
-            build.buf.validate.Constraint.Builder,
-            build.buf.validate.ConstraintOrBuilder>
+        build.buf.validate.Constraint, build.buf.validate.Constraint.Builder, build.buf.validate.ConstraintOrBuilder> 
         getCelFieldBuilder() {
       if (celBuilder_ == null) {
-        celBuilder_ =
-            new com.google.protobuf.RepeatedFieldBuilderV3<
-                build.buf.validate.Constraint,
-                build.buf.validate.Constraint.Builder,
-                build.buf.validate.ConstraintOrBuilder>(
-                cel_, ((bitField0_ & 0x00000002) != 0), getParentForChildren(), isClean());
+        celBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+            build.buf.validate.Constraint, build.buf.validate.Constraint.Builder, build.buf.validate.ConstraintOrBuilder>(
+                cel_,
+                ((bitField0_ & 0x00000002) != 0),
+                getParentForChildren(),
+                isClean());
         cel_ = null;
       }
       return celBuilder_;
     }
-
     @java.lang.Override
-    public final Builder setUnknownFields(final com.google.protobuf.UnknownFieldSet unknownFields) {
+    public final Builder setUnknownFields(
+        final com.google.protobuf.UnknownFieldSet unknownFields) {
       return super.setUnknownFields(unknownFields);
     }
 
@@ -1412,12 +1316,12 @@ public final class MessageConstraints extends com.google.protobuf.GeneratedMessa
       return super.mergeUnknownFields(unknownFields);
     }
 
+
     // @@protoc_insertion_point(builder_scope:buf.validate.MessageConstraints)
   }
 
   // @@protoc_insertion_point(class_scope:buf.validate.MessageConstraints)
   private static final build.buf.validate.MessageConstraints DEFAULT_INSTANCE;
-
   static {
     DEFAULT_INSTANCE = new build.buf.validate.MessageConstraints();
   }
@@ -1426,27 +1330,27 @@ public final class MessageConstraints extends com.google.protobuf.GeneratedMessa
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<MessageConstraints> PARSER =
-      new com.google.protobuf.AbstractParser<MessageConstraints>() {
-        @java.lang.Override
-        public MessageConstraints parsePartialFrom(
-            com.google.protobuf.CodedInputStream input,
-            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-            throws com.google.protobuf.InvalidProtocolBufferException {
-          Builder builder = newBuilder();
-          try {
-            builder.mergeFrom(input, extensionRegistry);
-          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-            throw e.setUnfinishedMessage(builder.buildPartial());
-          } catch (com.google.protobuf.UninitializedMessageException e) {
-            throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
-          } catch (java.io.IOException e) {
-            throw new com.google.protobuf.InvalidProtocolBufferException(e)
-                .setUnfinishedMessage(builder.buildPartial());
-          }
-          return builder.buildPartial();
-        }
-      };
+  private static final com.google.protobuf.Parser<MessageConstraints>
+      PARSER = new com.google.protobuf.AbstractParser<MessageConstraints>() {
+    @java.lang.Override
+    public MessageConstraints parsePartialFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      Builder builder = newBuilder();
+      try {
+        builder.mergeFrom(input, extensionRegistry);
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(builder.buildPartial());
+      } catch (com.google.protobuf.UninitializedMessageException e) {
+        throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(e)
+            .setUnfinishedMessage(builder.buildPartial());
+      }
+      return builder.buildPartial();
+    }
+  };
 
   public static com.google.protobuf.Parser<MessageConstraints> parser() {
     return PARSER;
@@ -1461,4 +1365,6 @@ public final class MessageConstraints extends com.google.protobuf.GeneratedMessa
   public build.buf.validate.MessageConstraints getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
+
 }
+

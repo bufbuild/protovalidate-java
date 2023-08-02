@@ -3,69 +3,61 @@
 
 package build.buf.validate.conformance.cases;
 
-/** Protobuf type {@code buf.validate.conformance.cases.DurationRequired} */
-public final class DurationRequired extends com.google.protobuf.GeneratedMessageV3
-    implements
+/**
+ * Protobuf type {@code buf.validate.conformance.cases.DurationRequired}
+ */
+public final class DurationRequired extends
+    com.google.protobuf.GeneratedMessageV3 implements
     // @@protoc_insertion_point(message_implements:buf.validate.conformance.cases.DurationRequired)
     DurationRequiredOrBuilder {
-  private static final long serialVersionUID = 0L;
-
+private static final long serialVersionUID = 0L;
   // Use DurationRequired.newBuilder() to construct.
   private DurationRequired(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
-
-  private DurationRequired() {}
+  private DurationRequired() {
+  }
 
   @java.lang.Override
   @SuppressWarnings({"unused"})
-  protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
+  protected java.lang.Object newInstance(
+      UnusedPrivateParameter unused) {
     return new DurationRequired();
   }
 
-  public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
-    return build.buf.validate.conformance.cases.WktDurationProto
-        .internal_static_buf_validate_conformance_cases_DurationRequired_descriptor;
+  public static final com.google.protobuf.Descriptors.Descriptor
+      getDescriptor() {
+    return build.buf.validate.conformance.cases.WktDurationProto.internal_static_buf_validate_conformance_cases_DurationRequired_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return build.buf.validate.conformance.cases.WktDurationProto
-        .internal_static_buf_validate_conformance_cases_DurationRequired_fieldAccessorTable
+    return build.buf.validate.conformance.cases.WktDurationProto.internal_static_buf_validate_conformance_cases_DurationRequired_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            build.buf.validate.conformance.cases.DurationRequired.class,
-            build.buf.validate.conformance.cases.DurationRequired.Builder.class);
+            build.buf.validate.conformance.cases.DurationRequired.class, build.buf.validate.conformance.cases.DurationRequired.Builder.class);
   }
 
   public static final int VAL_FIELD_NUMBER = 1;
   private com.google.protobuf.Duration val_;
-
   /**
-   * <code>.google.protobuf.Duration val = 1 [json_name = "val", (.buf.validate.field) = { ... }
-   * </code>
-   *
+   * <code>.google.protobuf.Duration val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
    * @return Whether the val field is set.
    */
   @java.lang.Override
   public boolean hasVal() {
     return val_ != null;
   }
-
   /**
-   * <code>.google.protobuf.Duration val = 1 [json_name = "val", (.buf.validate.field) = { ... }
-   * </code>
-   *
+   * <code>.google.protobuf.Duration val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
    * @return The val.
    */
   @java.lang.Override
   public com.google.protobuf.Duration getVal() {
     return val_ == null ? com.google.protobuf.Duration.getDefaultInstance() : val_;
   }
-
   /**
-   * <code>.google.protobuf.Duration val = 1 [json_name = "val", (.buf.validate.field) = { ... }
-   * </code>
+   * <code>.google.protobuf.Duration val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
    */
   @java.lang.Override
   public com.google.protobuf.DurationOrBuilder getValOrBuilder() {
@@ -73,7 +65,6 @@ public final class DurationRequired extends com.google.protobuf.GeneratedMessage
   }
 
   private byte memoizedIsInitialized = -1;
-
   @java.lang.Override
   public final boolean isInitialized() {
     byte isInitialized = memoizedIsInitialized;
@@ -85,7 +76,8 @@ public final class DurationRequired extends com.google.protobuf.GeneratedMessage
   }
 
   @java.lang.Override
-  public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
+  public void writeTo(com.google.protobuf.CodedOutputStream output)
+                      throws java.io.IOException {
     if (val_ != null) {
       output.writeMessage(1, getVal());
     }
@@ -99,7 +91,8 @@ public final class DurationRequired extends com.google.protobuf.GeneratedMessage
 
     size = 0;
     if (val_ != null) {
-      size += com.google.protobuf.CodedOutputStream.computeMessageSize(1, getVal());
+      size += com.google.protobuf.CodedOutputStream
+        .computeMessageSize(1, getVal());
     }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
@@ -109,17 +102,17 @@ public final class DurationRequired extends com.google.protobuf.GeneratedMessage
   @java.lang.Override
   public boolean equals(final java.lang.Object obj) {
     if (obj == this) {
-      return true;
+     return true;
     }
     if (!(obj instanceof build.buf.validate.conformance.cases.DurationRequired)) {
       return super.equals(obj);
     }
-    build.buf.validate.conformance.cases.DurationRequired other =
-        (build.buf.validate.conformance.cases.DurationRequired) obj;
+    build.buf.validate.conformance.cases.DurationRequired other = (build.buf.validate.conformance.cases.DurationRequired) obj;
 
     if (hasVal() != other.hasVal()) return false;
     if (hasVal()) {
-      if (!getVal().equals(other.getVal())) return false;
+      if (!getVal()
+          .equals(other.getVal())) return false;
     }
     if (!getUnknownFields().equals(other.getUnknownFields())) return false;
     return true;
@@ -142,129 +135,127 @@ public final class DurationRequired extends com.google.protobuf.GeneratedMessage
   }
 
   public static build.buf.validate.conformance.cases.DurationRequired parseFrom(
-      java.nio.ByteBuffer data) throws com.google.protobuf.InvalidProtocolBufferException {
+      java.nio.ByteBuffer data)
+      throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-
   public static build.buf.validate.conformance.cases.DurationRequired parseFrom(
-      java.nio.ByteBuffer data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      java.nio.ByteBuffer data,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-
   public static build.buf.validate.conformance.cases.DurationRequired parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-
   public static build.buf.validate.conformance.cases.DurationRequired parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-
   public static build.buf.validate.conformance.cases.DurationRequired parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-
   public static build.buf.validate.conformance.cases.DurationRequired parseFrom(
-      byte[] data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      byte[] data,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-
+  public static build.buf.validate.conformance.cases.DurationRequired parseFrom(java.io.InputStream input)
+      throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3
+        .parseWithIOException(PARSER, input);
+  }
   public static build.buf.validate.conformance.cases.DurationRequired parseFrom(
-      java.io.InputStream input) throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
+      java.io.InputStream input,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3
+        .parseWithIOException(PARSER, input, extensionRegistry);
   }
 
-  public static build.buf.validate.conformance.cases.DurationRequired parseFrom(
-      java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+  public static build.buf.validate.conformance.cases.DurationRequired parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
-        PARSER, input, extensionRegistry);
+    return com.google.protobuf.GeneratedMessageV3
+        .parseDelimitedWithIOException(PARSER, input);
   }
 
   public static build.buf.validate.conformance.cases.DurationRequired parseDelimitedFrom(
-      java.io.InputStream input) throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input);
-  }
-
-  public static build.buf.validate.conformance.cases.DurationRequired parseDelimitedFrom(
-      java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      java.io.InputStream input,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(
-        PARSER, input, extensionRegistry);
+    return com.google.protobuf.GeneratedMessageV3
+        .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-
   public static build.buf.validate.conformance.cases.DurationRequired parseFrom(
-      com.google.protobuf.CodedInputStream input) throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
+      com.google.protobuf.CodedInputStream input)
+      throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3
+        .parseWithIOException(PARSER, input);
   }
-
   public static build.buf.validate.conformance.cases.DurationRequired parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
-        PARSER, input, extensionRegistry);
+    return com.google.protobuf.GeneratedMessageV3
+        .parseWithIOException(PARSER, input, extensionRegistry);
   }
 
   @java.lang.Override
-  public Builder newBuilderForType() {
-    return newBuilder();
-  }
-
+  public Builder newBuilderForType() { return newBuilder(); }
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-
-  public static Builder newBuilder(
-      build.buf.validate.conformance.cases.DurationRequired prototype) {
+  public static Builder newBuilder(build.buf.validate.conformance.cases.DurationRequired prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
-
   @java.lang.Override
   public Builder toBuilder() {
-    return this == DEFAULT_INSTANCE ? new Builder() : new Builder().mergeFrom(this);
+    return this == DEFAULT_INSTANCE
+        ? new Builder() : new Builder().mergeFrom(this);
   }
 
   @java.lang.Override
-  protected Builder newBuilderForType(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+  protected Builder newBuilderForType(
+      com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
     Builder builder = new Builder(parent);
     return builder;
   }
-
-  /** Protobuf type {@code buf.validate.conformance.cases.DurationRequired} */
-  public static final class Builder extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
-      implements
+  /**
+   * Protobuf type {@code buf.validate.conformance.cases.DurationRequired}
+   */
+  public static final class Builder extends
+      com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
       // @@protoc_insertion_point(builder_implements:buf.validate.conformance.cases.DurationRequired)
       build.buf.validate.conformance.cases.DurationRequiredOrBuilder {
-    public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
-      return build.buf.validate.conformance.cases.WktDurationProto
-          .internal_static_buf_validate_conformance_cases_DurationRequired_descriptor;
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return build.buf.validate.conformance.cases.WktDurationProto.internal_static_buf_validate_conformance_cases_DurationRequired_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return build.buf.validate.conformance.cases.WktDurationProto
-          .internal_static_buf_validate_conformance_cases_DurationRequired_fieldAccessorTable
+      return build.buf.validate.conformance.cases.WktDurationProto.internal_static_buf_validate_conformance_cases_DurationRequired_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              build.buf.validate.conformance.cases.DurationRequired.class,
-              build.buf.validate.conformance.cases.DurationRequired.Builder.class);
+              build.buf.validate.conformance.cases.DurationRequired.class, build.buf.validate.conformance.cases.DurationRequired.Builder.class);
     }
 
     // Construct using build.buf.validate.conformance.cases.DurationRequired.newBuilder()
-    private Builder() {}
+    private Builder() {
 
-    private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-      super(parent);
     }
 
+    private Builder(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      super(parent);
+
+    }
     @java.lang.Override
     public Builder clear() {
       super.clear();
@@ -278,9 +269,9 @@ public final class DurationRequired extends com.google.protobuf.GeneratedMessage
     }
 
     @java.lang.Override
-    public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
-      return build.buf.validate.conformance.cases.WktDurationProto
-          .internal_static_buf_validate_conformance_cases_DurationRequired_descriptor;
+    public com.google.protobuf.Descriptors.Descriptor
+        getDescriptorForType() {
+      return build.buf.validate.conformance.cases.WktDurationProto.internal_static_buf_validate_conformance_cases_DurationRequired_descriptor;
     }
 
     @java.lang.Override
@@ -299,11 +290,8 @@ public final class DurationRequired extends com.google.protobuf.GeneratedMessage
 
     @java.lang.Override
     public build.buf.validate.conformance.cases.DurationRequired buildPartial() {
-      build.buf.validate.conformance.cases.DurationRequired result =
-          new build.buf.validate.conformance.cases.DurationRequired(this);
-      if (bitField0_ != 0) {
-        buildPartial0(result);
-      }
+      build.buf.validate.conformance.cases.DurationRequired result = new build.buf.validate.conformance.cases.DurationRequired(this);
+      if (bitField0_ != 0) { buildPartial0(result); }
       onBuilt();
       return result;
     }
@@ -311,7 +299,9 @@ public final class DurationRequired extends com.google.protobuf.GeneratedMessage
     private void buildPartial0(build.buf.validate.conformance.cases.DurationRequired result) {
       int from_bitField0_ = bitField0_;
       if (((from_bitField0_ & 0x00000001) != 0)) {
-        result.val_ = valBuilder_ == null ? val_ : valBuilder_.build();
+        result.val_ = valBuilder_ == null
+            ? val_
+            : valBuilder_.build();
       }
     }
 
@@ -319,39 +309,38 @@ public final class DurationRequired extends com.google.protobuf.GeneratedMessage
     public Builder clone() {
       return super.clone();
     }
-
     @java.lang.Override
     public Builder setField(
-        com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field,
+        java.lang.Object value) {
       return super.setField(field, value);
     }
-
     @java.lang.Override
-    public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
+    public Builder clearField(
+        com.google.protobuf.Descriptors.FieldDescriptor field) {
       return super.clearField(field);
     }
-
     @java.lang.Override
-    public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+    public Builder clearOneof(
+        com.google.protobuf.Descriptors.OneofDescriptor oneof) {
       return super.clearOneof(oneof);
     }
-
     @java.lang.Override
     public Builder setRepeatedField(
-        com.google.protobuf.Descriptors.FieldDescriptor field, int index, java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field,
+        int index, java.lang.Object value) {
       return super.setRepeatedField(field, index, value);
     }
-
     @java.lang.Override
     public Builder addRepeatedField(
-        com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field,
+        java.lang.Object value) {
       return super.addRepeatedField(field, value);
     }
-
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
       if (other instanceof build.buf.validate.conformance.cases.DurationRequired) {
-        return mergeFrom((build.buf.validate.conformance.cases.DurationRequired) other);
+        return mergeFrom((build.buf.validate.conformance.cases.DurationRequired)other);
       } else {
         super.mergeFrom(other);
         return this;
@@ -359,8 +348,7 @@ public final class DurationRequired extends com.google.protobuf.GeneratedMessage
     }
 
     public Builder mergeFrom(build.buf.validate.conformance.cases.DurationRequired other) {
-      if (other == build.buf.validate.conformance.cases.DurationRequired.getDefaultInstance())
-        return this;
+      if (other == build.buf.validate.conformance.cases.DurationRequired.getDefaultInstance()) return this;
       if (other.hasVal()) {
         mergeVal(other.getVal());
       }
@@ -390,19 +378,19 @@ public final class DurationRequired extends com.google.protobuf.GeneratedMessage
             case 0:
               done = true;
               break;
-            case 10:
-              {
-                input.readMessage(getValFieldBuilder().getBuilder(), extensionRegistry);
-                bitField0_ |= 0x00000001;
-                break;
-              } // case 10
-            default:
-              {
-                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
-                  done = true; // was an endgroup tag
-                }
-                break;
-              } // default:
+            case 10: {
+              input.readMessage(
+                  getValFieldBuilder().getBuilder(),
+                  extensionRegistry);
+              bitField0_ |= 0x00000001;
+              break;
+            } // case 10
+            default: {
+              if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                done = true; // was an endgroup tag
+              }
+              break;
+            } // default:
           } // switch (tag)
         } // while (!done)
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -412,30 +400,20 @@ public final class DurationRequired extends com.google.protobuf.GeneratedMessage
       } // finally
       return this;
     }
-
     private int bitField0_;
 
     private com.google.protobuf.Duration val_;
     private com.google.protobuf.SingleFieldBuilderV3<
-            com.google.protobuf.Duration,
-            com.google.protobuf.Duration.Builder,
-            com.google.protobuf.DurationOrBuilder>
-        valBuilder_;
-
+        com.google.protobuf.Duration, com.google.protobuf.Duration.Builder, com.google.protobuf.DurationOrBuilder> valBuilder_;
     /**
-     * <code>.google.protobuf.Duration val = 1 [json_name = "val", (.buf.validate.field) = { ... }
-     * </code>
-     *
+     * <code>.google.protobuf.Duration val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
      * @return Whether the val field is set.
      */
     public boolean hasVal() {
       return ((bitField0_ & 0x00000001) != 0);
     }
-
     /**
-     * <code>.google.protobuf.Duration val = 1 [json_name = "val", (.buf.validate.field) = { ... }
-     * </code>
-     *
+     * <code>.google.protobuf.Duration val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
      * @return The val.
      */
     public com.google.protobuf.Duration getVal() {
@@ -445,10 +423,8 @@ public final class DurationRequired extends com.google.protobuf.GeneratedMessage
         return valBuilder_.getMessage();
       }
     }
-
     /**
-     * <code>.google.protobuf.Duration val = 1 [json_name = "val", (.buf.validate.field) = { ... }
-     * </code>
+     * <code>.google.protobuf.Duration val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
      */
     public Builder setVal(com.google.protobuf.Duration value) {
       if (valBuilder_ == null) {
@@ -463,12 +439,11 @@ public final class DurationRequired extends com.google.protobuf.GeneratedMessage
       onChanged();
       return this;
     }
-
     /**
-     * <code>.google.protobuf.Duration val = 1 [json_name = "val", (.buf.validate.field) = { ... }
-     * </code>
+     * <code>.google.protobuf.Duration val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
      */
-    public Builder setVal(com.google.protobuf.Duration.Builder builderForValue) {
+    public Builder setVal(
+        com.google.protobuf.Duration.Builder builderForValue) {
       if (valBuilder_ == null) {
         val_ = builderForValue.build();
       } else {
@@ -478,16 +453,14 @@ public final class DurationRequired extends com.google.protobuf.GeneratedMessage
       onChanged();
       return this;
     }
-
     /**
-     * <code>.google.protobuf.Duration val = 1 [json_name = "val", (.buf.validate.field) = { ... }
-     * </code>
+     * <code>.google.protobuf.Duration val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
      */
     public Builder mergeVal(com.google.protobuf.Duration value) {
       if (valBuilder_ == null) {
-        if (((bitField0_ & 0x00000001) != 0)
-            && val_ != null
-            && val_ != com.google.protobuf.Duration.getDefaultInstance()) {
+        if (((bitField0_ & 0x00000001) != 0) &&
+          val_ != null &&
+          val_ != com.google.protobuf.Duration.getDefaultInstance()) {
           getValBuilder().mergeFrom(value);
         } else {
           val_ = value;
@@ -499,10 +472,8 @@ public final class DurationRequired extends com.google.protobuf.GeneratedMessage
       onChanged();
       return this;
     }
-
     /**
-     * <code>.google.protobuf.Duration val = 1 [json_name = "val", (.buf.validate.field) = { ... }
-     * </code>
+     * <code>.google.protobuf.Duration val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
      */
     public Builder clearVal() {
       bitField0_ = (bitField0_ & ~0x00000001);
@@ -514,51 +485,44 @@ public final class DurationRequired extends com.google.protobuf.GeneratedMessage
       onChanged();
       return this;
     }
-
     /**
-     * <code>.google.protobuf.Duration val = 1 [json_name = "val", (.buf.validate.field) = { ... }
-     * </code>
+     * <code>.google.protobuf.Duration val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
      */
     public com.google.protobuf.Duration.Builder getValBuilder() {
       bitField0_ |= 0x00000001;
       onChanged();
       return getValFieldBuilder().getBuilder();
     }
-
     /**
-     * <code>.google.protobuf.Duration val = 1 [json_name = "val", (.buf.validate.field) = { ... }
-     * </code>
+     * <code>.google.protobuf.Duration val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
      */
     public com.google.protobuf.DurationOrBuilder getValOrBuilder() {
       if (valBuilder_ != null) {
         return valBuilder_.getMessageOrBuilder();
       } else {
-        return val_ == null ? com.google.protobuf.Duration.getDefaultInstance() : val_;
+        return val_ == null ?
+            com.google.protobuf.Duration.getDefaultInstance() : val_;
       }
     }
-
     /**
-     * <code>.google.protobuf.Duration val = 1 [json_name = "val", (.buf.validate.field) = { ... }
-     * </code>
+     * <code>.google.protobuf.Duration val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
      */
     private com.google.protobuf.SingleFieldBuilderV3<
-            com.google.protobuf.Duration,
-            com.google.protobuf.Duration.Builder,
-            com.google.protobuf.DurationOrBuilder>
+        com.google.protobuf.Duration, com.google.protobuf.Duration.Builder, com.google.protobuf.DurationOrBuilder> 
         getValFieldBuilder() {
       if (valBuilder_ == null) {
-        valBuilder_ =
-            new com.google.protobuf.SingleFieldBuilderV3<
-                com.google.protobuf.Duration,
-                com.google.protobuf.Duration.Builder,
-                com.google.protobuf.DurationOrBuilder>(getVal(), getParentForChildren(), isClean());
+        valBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+            com.google.protobuf.Duration, com.google.protobuf.Duration.Builder, com.google.protobuf.DurationOrBuilder>(
+                getVal(),
+                getParentForChildren(),
+                isClean());
         val_ = null;
       }
       return valBuilder_;
     }
-
     @java.lang.Override
-    public final Builder setUnknownFields(final com.google.protobuf.UnknownFieldSet unknownFields) {
+    public final Builder setUnknownFields(
+        final com.google.protobuf.UnknownFieldSet unknownFields) {
       return super.setUnknownFields(unknownFields);
     }
 
@@ -568,12 +532,12 @@ public final class DurationRequired extends com.google.protobuf.GeneratedMessage
       return super.mergeUnknownFields(unknownFields);
     }
 
+
     // @@protoc_insertion_point(builder_scope:buf.validate.conformance.cases.DurationRequired)
   }
 
   // @@protoc_insertion_point(class_scope:buf.validate.conformance.cases.DurationRequired)
   private static final build.buf.validate.conformance.cases.DurationRequired DEFAULT_INSTANCE;
-
   static {
     DEFAULT_INSTANCE = new build.buf.validate.conformance.cases.DurationRequired();
   }
@@ -582,27 +546,27 @@ public final class DurationRequired extends com.google.protobuf.GeneratedMessage
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<DurationRequired> PARSER =
-      new com.google.protobuf.AbstractParser<DurationRequired>() {
-        @java.lang.Override
-        public DurationRequired parsePartialFrom(
-            com.google.protobuf.CodedInputStream input,
-            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-            throws com.google.protobuf.InvalidProtocolBufferException {
-          Builder builder = newBuilder();
-          try {
-            builder.mergeFrom(input, extensionRegistry);
-          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-            throw e.setUnfinishedMessage(builder.buildPartial());
-          } catch (com.google.protobuf.UninitializedMessageException e) {
-            throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
-          } catch (java.io.IOException e) {
-            throw new com.google.protobuf.InvalidProtocolBufferException(e)
-                .setUnfinishedMessage(builder.buildPartial());
-          }
-          return builder.buildPartial();
-        }
-      };
+  private static final com.google.protobuf.Parser<DurationRequired>
+      PARSER = new com.google.protobuf.AbstractParser<DurationRequired>() {
+    @java.lang.Override
+    public DurationRequired parsePartialFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      Builder builder = newBuilder();
+      try {
+        builder.mergeFrom(input, extensionRegistry);
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(builder.buildPartial());
+      } catch (com.google.protobuf.UninitializedMessageException e) {
+        throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(e)
+            .setUnfinishedMessage(builder.buildPartial());
+      }
+      return builder.buildPartial();
+    }
+  };
 
   public static com.google.protobuf.Parser<DurationRequired> parser() {
     return PARSER;
@@ -617,4 +581,6 @@ public final class DurationRequired extends com.google.protobuf.GeneratedMessage
   public build.buf.validate.conformance.cases.DurationRequired getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
+
 }
+

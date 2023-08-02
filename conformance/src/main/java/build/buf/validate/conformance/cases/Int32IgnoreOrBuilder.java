@@ -3,14 +3,12 @@
 
 package build.buf.validate.conformance.cases;
 
-public interface Int32IgnoreOrBuilder
-    extends
+public interface Int32IgnoreOrBuilder extends
     // @@protoc_insertion_point(interface_extends:buf.validate.conformance.cases.Int32Ignore)
     com.google.protobuf.MessageOrBuilder {
 
   /**
    * <code>int32 val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
-   *
    * @return The val.
    */
   int getVal();

@@ -3,72 +3,68 @@
 
 package build.buf.validate.conformance.cases;
 
-/** Protobuf type {@code buf.validate.conformance.cases.WrapperNone} */
-public final class WrapperNone extends com.google.protobuf.GeneratedMessageV3
-    implements
+/**
+ * Protobuf type {@code buf.validate.conformance.cases.WrapperNone}
+ */
+public final class WrapperNone extends
+    com.google.protobuf.GeneratedMessageV3 implements
     // @@protoc_insertion_point(message_implements:buf.validate.conformance.cases.WrapperNone)
     WrapperNoneOrBuilder {
-  private static final long serialVersionUID = 0L;
-
+private static final long serialVersionUID = 0L;
   // Use WrapperNone.newBuilder() to construct.
   private WrapperNone(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
-
-  private WrapperNone() {}
+  private WrapperNone() {
+  }
 
   @java.lang.Override
   @SuppressWarnings({"unused"})
-  protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
+  protected java.lang.Object newInstance(
+      UnusedPrivateParameter unused) {
     return new WrapperNone();
   }
 
-  public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
-    return build.buf.validate.conformance.cases.WktWrappersProto
-        .internal_static_buf_validate_conformance_cases_WrapperNone_descriptor;
+  public static final com.google.protobuf.Descriptors.Descriptor
+      getDescriptor() {
+    return build.buf.validate.conformance.cases.WktWrappersProto.internal_static_buf_validate_conformance_cases_WrapperNone_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return build.buf.validate.conformance.cases.WktWrappersProto
-        .internal_static_buf_validate_conformance_cases_WrapperNone_fieldAccessorTable
+    return build.buf.validate.conformance.cases.WktWrappersProto.internal_static_buf_validate_conformance_cases_WrapperNone_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            build.buf.validate.conformance.cases.WrapperNone.class,
-            build.buf.validate.conformance.cases.WrapperNone.Builder.class);
+            build.buf.validate.conformance.cases.WrapperNone.class, build.buf.validate.conformance.cases.WrapperNone.Builder.class);
   }
 
   public static final int VAL_FIELD_NUMBER = 1;
   private com.google.protobuf.Int32Value val_;
-
   /**
    * <code>.google.protobuf.Int32Value val = 1 [json_name = "val"];</code>
-   *
    * @return Whether the val field is set.
    */
   @java.lang.Override
   public boolean hasVal() {
     return val_ != null;
   }
-
   /**
    * <code>.google.protobuf.Int32Value val = 1 [json_name = "val"];</code>
-   *
    * @return The val.
    */
   @java.lang.Override
   public com.google.protobuf.Int32Value getVal() {
     return val_ == null ? com.google.protobuf.Int32Value.getDefaultInstance() : val_;
   }
-
-  /** <code>.google.protobuf.Int32Value val = 1 [json_name = "val"];</code> */
+  /**
+   * <code>.google.protobuf.Int32Value val = 1 [json_name = "val"];</code>
+   */
   @java.lang.Override
   public com.google.protobuf.Int32ValueOrBuilder getValOrBuilder() {
     return val_ == null ? com.google.protobuf.Int32Value.getDefaultInstance() : val_;
   }
 
   private byte memoizedIsInitialized = -1;
-
   @java.lang.Override
   public final boolean isInitialized() {
     byte isInitialized = memoizedIsInitialized;
@@ -80,7 +76,8 @@ public final class WrapperNone extends com.google.protobuf.GeneratedMessageV3
   }
 
   @java.lang.Override
-  public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
+  public void writeTo(com.google.protobuf.CodedOutputStream output)
+                      throws java.io.IOException {
     if (val_ != null) {
       output.writeMessage(1, getVal());
     }
@@ -94,7 +91,8 @@ public final class WrapperNone extends com.google.protobuf.GeneratedMessageV3
 
     size = 0;
     if (val_ != null) {
-      size += com.google.protobuf.CodedOutputStream.computeMessageSize(1, getVal());
+      size += com.google.protobuf.CodedOutputStream
+        .computeMessageSize(1, getVal());
     }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
@@ -104,17 +102,17 @@ public final class WrapperNone extends com.google.protobuf.GeneratedMessageV3
   @java.lang.Override
   public boolean equals(final java.lang.Object obj) {
     if (obj == this) {
-      return true;
+     return true;
     }
     if (!(obj instanceof build.buf.validate.conformance.cases.WrapperNone)) {
       return super.equals(obj);
     }
-    build.buf.validate.conformance.cases.WrapperNone other =
-        (build.buf.validate.conformance.cases.WrapperNone) obj;
+    build.buf.validate.conformance.cases.WrapperNone other = (build.buf.validate.conformance.cases.WrapperNone) obj;
 
     if (hasVal() != other.hasVal()) return false;
     if (hasVal()) {
-      if (!getVal().equals(other.getVal())) return false;
+      if (!getVal()
+          .equals(other.getVal())) return false;
     }
     if (!getUnknownFields().equals(other.getUnknownFields())) return false;
     return true;
@@ -136,129 +134,128 @@ public final class WrapperNone extends com.google.protobuf.GeneratedMessageV3
     return hash;
   }
 
-  public static build.buf.validate.conformance.cases.WrapperNone parseFrom(java.nio.ByteBuffer data)
+  public static build.buf.validate.conformance.cases.WrapperNone parseFrom(
+      java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-
   public static build.buf.validate.conformance.cases.WrapperNone parseFrom(
-      java.nio.ByteBuffer data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      java.nio.ByteBuffer data,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-
   public static build.buf.validate.conformance.cases.WrapperNone parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-
   public static build.buf.validate.conformance.cases.WrapperNone parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-
   public static build.buf.validate.conformance.cases.WrapperNone parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-
   public static build.buf.validate.conformance.cases.WrapperNone parseFrom(
-      byte[] data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      byte[] data,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-
+  public static build.buf.validate.conformance.cases.WrapperNone parseFrom(java.io.InputStream input)
+      throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3
+        .parseWithIOException(PARSER, input);
+  }
   public static build.buf.validate.conformance.cases.WrapperNone parseFrom(
-      java.io.InputStream input) throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
+      java.io.InputStream input,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3
+        .parseWithIOException(PARSER, input, extensionRegistry);
   }
 
-  public static build.buf.validate.conformance.cases.WrapperNone parseFrom(
-      java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+  public static build.buf.validate.conformance.cases.WrapperNone parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
-        PARSER, input, extensionRegistry);
+    return com.google.protobuf.GeneratedMessageV3
+        .parseDelimitedWithIOException(PARSER, input);
   }
 
   public static build.buf.validate.conformance.cases.WrapperNone parseDelimitedFrom(
-      java.io.InputStream input) throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input);
-  }
-
-  public static build.buf.validate.conformance.cases.WrapperNone parseDelimitedFrom(
-      java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      java.io.InputStream input,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(
-        PARSER, input, extensionRegistry);
+    return com.google.protobuf.GeneratedMessageV3
+        .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-
   public static build.buf.validate.conformance.cases.WrapperNone parseFrom(
-      com.google.protobuf.CodedInputStream input) throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
+      com.google.protobuf.CodedInputStream input)
+      throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3
+        .parseWithIOException(PARSER, input);
   }
-
   public static build.buf.validate.conformance.cases.WrapperNone parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
-        PARSER, input, extensionRegistry);
+    return com.google.protobuf.GeneratedMessageV3
+        .parseWithIOException(PARSER, input, extensionRegistry);
   }
 
   @java.lang.Override
-  public Builder newBuilderForType() {
-    return newBuilder();
-  }
-
+  public Builder newBuilderForType() { return newBuilder(); }
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-
   public static Builder newBuilder(build.buf.validate.conformance.cases.WrapperNone prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
-
   @java.lang.Override
   public Builder toBuilder() {
-    return this == DEFAULT_INSTANCE ? new Builder() : new Builder().mergeFrom(this);
+    return this == DEFAULT_INSTANCE
+        ? new Builder() : new Builder().mergeFrom(this);
   }
 
   @java.lang.Override
-  protected Builder newBuilderForType(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+  protected Builder newBuilderForType(
+      com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
     Builder builder = new Builder(parent);
     return builder;
   }
-
-  /** Protobuf type {@code buf.validate.conformance.cases.WrapperNone} */
-  public static final class Builder extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
-      implements
+  /**
+   * Protobuf type {@code buf.validate.conformance.cases.WrapperNone}
+   */
+  public static final class Builder extends
+      com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
       // @@protoc_insertion_point(builder_implements:buf.validate.conformance.cases.WrapperNone)
       build.buf.validate.conformance.cases.WrapperNoneOrBuilder {
-    public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
-      return build.buf.validate.conformance.cases.WktWrappersProto
-          .internal_static_buf_validate_conformance_cases_WrapperNone_descriptor;
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return build.buf.validate.conformance.cases.WktWrappersProto.internal_static_buf_validate_conformance_cases_WrapperNone_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return build.buf.validate.conformance.cases.WktWrappersProto
-          .internal_static_buf_validate_conformance_cases_WrapperNone_fieldAccessorTable
+      return build.buf.validate.conformance.cases.WktWrappersProto.internal_static_buf_validate_conformance_cases_WrapperNone_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              build.buf.validate.conformance.cases.WrapperNone.class,
-              build.buf.validate.conformance.cases.WrapperNone.Builder.class);
+              build.buf.validate.conformance.cases.WrapperNone.class, build.buf.validate.conformance.cases.WrapperNone.Builder.class);
     }
 
     // Construct using build.buf.validate.conformance.cases.WrapperNone.newBuilder()
-    private Builder() {}
+    private Builder() {
 
-    private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-      super(parent);
     }
 
+    private Builder(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      super(parent);
+
+    }
     @java.lang.Override
     public Builder clear() {
       super.clear();
@@ -272,9 +269,9 @@ public final class WrapperNone extends com.google.protobuf.GeneratedMessageV3
     }
 
     @java.lang.Override
-    public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
-      return build.buf.validate.conformance.cases.WktWrappersProto
-          .internal_static_buf_validate_conformance_cases_WrapperNone_descriptor;
+    public com.google.protobuf.Descriptors.Descriptor
+        getDescriptorForType() {
+      return build.buf.validate.conformance.cases.WktWrappersProto.internal_static_buf_validate_conformance_cases_WrapperNone_descriptor;
     }
 
     @java.lang.Override
@@ -293,11 +290,8 @@ public final class WrapperNone extends com.google.protobuf.GeneratedMessageV3
 
     @java.lang.Override
     public build.buf.validate.conformance.cases.WrapperNone buildPartial() {
-      build.buf.validate.conformance.cases.WrapperNone result =
-          new build.buf.validate.conformance.cases.WrapperNone(this);
-      if (bitField0_ != 0) {
-        buildPartial0(result);
-      }
+      build.buf.validate.conformance.cases.WrapperNone result = new build.buf.validate.conformance.cases.WrapperNone(this);
+      if (bitField0_ != 0) { buildPartial0(result); }
       onBuilt();
       return result;
     }
@@ -305,7 +299,9 @@ public final class WrapperNone extends com.google.protobuf.GeneratedMessageV3
     private void buildPartial0(build.buf.validate.conformance.cases.WrapperNone result) {
       int from_bitField0_ = bitField0_;
       if (((from_bitField0_ & 0x00000001) != 0)) {
-        result.val_ = valBuilder_ == null ? val_ : valBuilder_.build();
+        result.val_ = valBuilder_ == null
+            ? val_
+            : valBuilder_.build();
       }
     }
 
@@ -313,39 +309,38 @@ public final class WrapperNone extends com.google.protobuf.GeneratedMessageV3
     public Builder clone() {
       return super.clone();
     }
-
     @java.lang.Override
     public Builder setField(
-        com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field,
+        java.lang.Object value) {
       return super.setField(field, value);
     }
-
     @java.lang.Override
-    public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
+    public Builder clearField(
+        com.google.protobuf.Descriptors.FieldDescriptor field) {
       return super.clearField(field);
     }
-
     @java.lang.Override
-    public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+    public Builder clearOneof(
+        com.google.protobuf.Descriptors.OneofDescriptor oneof) {
       return super.clearOneof(oneof);
     }
-
     @java.lang.Override
     public Builder setRepeatedField(
-        com.google.protobuf.Descriptors.FieldDescriptor field, int index, java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field,
+        int index, java.lang.Object value) {
       return super.setRepeatedField(field, index, value);
     }
-
     @java.lang.Override
     public Builder addRepeatedField(
-        com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field,
+        java.lang.Object value) {
       return super.addRepeatedField(field, value);
     }
-
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
       if (other instanceof build.buf.validate.conformance.cases.WrapperNone) {
-        return mergeFrom((build.buf.validate.conformance.cases.WrapperNone) other);
+        return mergeFrom((build.buf.validate.conformance.cases.WrapperNone)other);
       } else {
         super.mergeFrom(other);
         return this;
@@ -353,8 +348,7 @@ public final class WrapperNone extends com.google.protobuf.GeneratedMessageV3
     }
 
     public Builder mergeFrom(build.buf.validate.conformance.cases.WrapperNone other) {
-      if (other == build.buf.validate.conformance.cases.WrapperNone.getDefaultInstance())
-        return this;
+      if (other == build.buf.validate.conformance.cases.WrapperNone.getDefaultInstance()) return this;
       if (other.hasVal()) {
         mergeVal(other.getVal());
       }
@@ -384,19 +378,19 @@ public final class WrapperNone extends com.google.protobuf.GeneratedMessageV3
             case 0:
               done = true;
               break;
-            case 10:
-              {
-                input.readMessage(getValFieldBuilder().getBuilder(), extensionRegistry);
-                bitField0_ |= 0x00000001;
-                break;
-              } // case 10
-            default:
-              {
-                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
-                  done = true; // was an endgroup tag
-                }
-                break;
-              } // default:
+            case 10: {
+              input.readMessage(
+                  getValFieldBuilder().getBuilder(),
+                  extensionRegistry);
+              bitField0_ |= 0x00000001;
+              break;
+            } // case 10
+            default: {
+              if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                done = true; // was an endgroup tag
+              }
+              break;
+            } // default:
           } // switch (tag)
         } // while (!done)
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -406,28 +400,20 @@ public final class WrapperNone extends com.google.protobuf.GeneratedMessageV3
       } // finally
       return this;
     }
-
     private int bitField0_;
 
     private com.google.protobuf.Int32Value val_;
     private com.google.protobuf.SingleFieldBuilderV3<
-            com.google.protobuf.Int32Value,
-            com.google.protobuf.Int32Value.Builder,
-            com.google.protobuf.Int32ValueOrBuilder>
-        valBuilder_;
-
+        com.google.protobuf.Int32Value, com.google.protobuf.Int32Value.Builder, com.google.protobuf.Int32ValueOrBuilder> valBuilder_;
     /**
      * <code>.google.protobuf.Int32Value val = 1 [json_name = "val"];</code>
-     *
      * @return Whether the val field is set.
      */
     public boolean hasVal() {
       return ((bitField0_ & 0x00000001) != 0);
     }
-
     /**
      * <code>.google.protobuf.Int32Value val = 1 [json_name = "val"];</code>
-     *
      * @return The val.
      */
     public com.google.protobuf.Int32Value getVal() {
@@ -437,8 +423,9 @@ public final class WrapperNone extends com.google.protobuf.GeneratedMessageV3
         return valBuilder_.getMessage();
       }
     }
-
-    /** <code>.google.protobuf.Int32Value val = 1 [json_name = "val"];</code> */
+    /**
+     * <code>.google.protobuf.Int32Value val = 1 [json_name = "val"];</code>
+     */
     public Builder setVal(com.google.protobuf.Int32Value value) {
       if (valBuilder_ == null) {
         if (value == null) {
@@ -452,9 +439,11 @@ public final class WrapperNone extends com.google.protobuf.GeneratedMessageV3
       onChanged();
       return this;
     }
-
-    /** <code>.google.protobuf.Int32Value val = 1 [json_name = "val"];</code> */
-    public Builder setVal(com.google.protobuf.Int32Value.Builder builderForValue) {
+    /**
+     * <code>.google.protobuf.Int32Value val = 1 [json_name = "val"];</code>
+     */
+    public Builder setVal(
+        com.google.protobuf.Int32Value.Builder builderForValue) {
       if (valBuilder_ == null) {
         val_ = builderForValue.build();
       } else {
@@ -464,13 +453,14 @@ public final class WrapperNone extends com.google.protobuf.GeneratedMessageV3
       onChanged();
       return this;
     }
-
-    /** <code>.google.protobuf.Int32Value val = 1 [json_name = "val"];</code> */
+    /**
+     * <code>.google.protobuf.Int32Value val = 1 [json_name = "val"];</code>
+     */
     public Builder mergeVal(com.google.protobuf.Int32Value value) {
       if (valBuilder_ == null) {
-        if (((bitField0_ & 0x00000001) != 0)
-            && val_ != null
-            && val_ != com.google.protobuf.Int32Value.getDefaultInstance()) {
+        if (((bitField0_ & 0x00000001) != 0) &&
+          val_ != null &&
+          val_ != com.google.protobuf.Int32Value.getDefaultInstance()) {
           getValBuilder().mergeFrom(value);
         } else {
           val_ = value;
@@ -482,8 +472,9 @@ public final class WrapperNone extends com.google.protobuf.GeneratedMessageV3
       onChanged();
       return this;
     }
-
-    /** <code>.google.protobuf.Int32Value val = 1 [json_name = "val"];</code> */
+    /**
+     * <code>.google.protobuf.Int32Value val = 1 [json_name = "val"];</code>
+     */
     public Builder clearVal() {
       bitField0_ = (bitField0_ & ~0x00000001);
       val_ = null;
@@ -494,43 +485,44 @@ public final class WrapperNone extends com.google.protobuf.GeneratedMessageV3
       onChanged();
       return this;
     }
-
-    /** <code>.google.protobuf.Int32Value val = 1 [json_name = "val"];</code> */
+    /**
+     * <code>.google.protobuf.Int32Value val = 1 [json_name = "val"];</code>
+     */
     public com.google.protobuf.Int32Value.Builder getValBuilder() {
       bitField0_ |= 0x00000001;
       onChanged();
       return getValFieldBuilder().getBuilder();
     }
-
-    /** <code>.google.protobuf.Int32Value val = 1 [json_name = "val"];</code> */
+    /**
+     * <code>.google.protobuf.Int32Value val = 1 [json_name = "val"];</code>
+     */
     public com.google.protobuf.Int32ValueOrBuilder getValOrBuilder() {
       if (valBuilder_ != null) {
         return valBuilder_.getMessageOrBuilder();
       } else {
-        return val_ == null ? com.google.protobuf.Int32Value.getDefaultInstance() : val_;
+        return val_ == null ?
+            com.google.protobuf.Int32Value.getDefaultInstance() : val_;
       }
     }
-
-    /** <code>.google.protobuf.Int32Value val = 1 [json_name = "val"];</code> */
+    /**
+     * <code>.google.protobuf.Int32Value val = 1 [json_name = "val"];</code>
+     */
     private com.google.protobuf.SingleFieldBuilderV3<
-            com.google.protobuf.Int32Value,
-            com.google.protobuf.Int32Value.Builder,
-            com.google.protobuf.Int32ValueOrBuilder>
+        com.google.protobuf.Int32Value, com.google.protobuf.Int32Value.Builder, com.google.protobuf.Int32ValueOrBuilder> 
         getValFieldBuilder() {
       if (valBuilder_ == null) {
-        valBuilder_ =
-            new com.google.protobuf.SingleFieldBuilderV3<
-                com.google.protobuf.Int32Value,
-                com.google.protobuf.Int32Value.Builder,
-                com.google.protobuf.Int32ValueOrBuilder>(
-                getVal(), getParentForChildren(), isClean());
+        valBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+            com.google.protobuf.Int32Value, com.google.protobuf.Int32Value.Builder, com.google.protobuf.Int32ValueOrBuilder>(
+                getVal(),
+                getParentForChildren(),
+                isClean());
         val_ = null;
       }
       return valBuilder_;
     }
-
     @java.lang.Override
-    public final Builder setUnknownFields(final com.google.protobuf.UnknownFieldSet unknownFields) {
+    public final Builder setUnknownFields(
+        final com.google.protobuf.UnknownFieldSet unknownFields) {
       return super.setUnknownFields(unknownFields);
     }
 
@@ -540,12 +532,12 @@ public final class WrapperNone extends com.google.protobuf.GeneratedMessageV3
       return super.mergeUnknownFields(unknownFields);
     }
 
+
     // @@protoc_insertion_point(builder_scope:buf.validate.conformance.cases.WrapperNone)
   }
 
   // @@protoc_insertion_point(class_scope:buf.validate.conformance.cases.WrapperNone)
   private static final build.buf.validate.conformance.cases.WrapperNone DEFAULT_INSTANCE;
-
   static {
     DEFAULT_INSTANCE = new build.buf.validate.conformance.cases.WrapperNone();
   }
@@ -554,27 +546,27 @@ public final class WrapperNone extends com.google.protobuf.GeneratedMessageV3
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<WrapperNone> PARSER =
-      new com.google.protobuf.AbstractParser<WrapperNone>() {
-        @java.lang.Override
-        public WrapperNone parsePartialFrom(
-            com.google.protobuf.CodedInputStream input,
-            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-            throws com.google.protobuf.InvalidProtocolBufferException {
-          Builder builder = newBuilder();
-          try {
-            builder.mergeFrom(input, extensionRegistry);
-          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-            throw e.setUnfinishedMessage(builder.buildPartial());
-          } catch (com.google.protobuf.UninitializedMessageException e) {
-            throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
-          } catch (java.io.IOException e) {
-            throw new com.google.protobuf.InvalidProtocolBufferException(e)
-                .setUnfinishedMessage(builder.buildPartial());
-          }
-          return builder.buildPartial();
-        }
-      };
+  private static final com.google.protobuf.Parser<WrapperNone>
+      PARSER = new com.google.protobuf.AbstractParser<WrapperNone>() {
+    @java.lang.Override
+    public WrapperNone parsePartialFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      Builder builder = newBuilder();
+      try {
+        builder.mergeFrom(input, extensionRegistry);
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(builder.buildPartial());
+      } catch (com.google.protobuf.UninitializedMessageException e) {
+        throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(e)
+            .setUnfinishedMessage(builder.buildPartial());
+      }
+      return builder.buildPartial();
+    }
+  };
 
   public static com.google.protobuf.Parser<WrapperNone> parser() {
     return PARSER;
@@ -589,4 +581,6 @@ public final class WrapperNone extends com.google.protobuf.GeneratedMessageV3
   public build.buf.validate.conformance.cases.WrapperNone getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
+
 }
+

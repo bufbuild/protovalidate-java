@@ -3,33 +3,22 @@
 
 package build.buf.validate.conformance.cases;
 
-public interface WktLevelOneOrBuilder
-    extends
+public interface WktLevelOneOrBuilder extends
     // @@protoc_insertion_point(interface_extends:buf.validate.conformance.cases.WktLevelOne)
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>
-   * .buf.validate.conformance.cases.WktLevelOne.WktLevelTwo two = 1 [json_name = "two", (.buf.validate.field) = { ... }
-   * </code>
-   *
+   * <code>.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo two = 1 [json_name = "two", (.buf.validate.field) = { ... }</code>
    * @return Whether the two field is set.
    */
   boolean hasTwo();
-
   /**
-   * <code>
-   * .buf.validate.conformance.cases.WktLevelOne.WktLevelTwo two = 1 [json_name = "two", (.buf.validate.field) = { ... }
-   * </code>
-   *
+   * <code>.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo two = 1 [json_name = "two", (.buf.validate.field) = { ... }</code>
    * @return The two.
    */
   build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo getTwo();
-
   /**
-   * <code>
-   * .buf.validate.conformance.cases.WktLevelOne.WktLevelTwo two = 1 [json_name = "two", (.buf.validate.field) = { ... }
-   * </code>
+   * <code>.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo two = 1 [json_name = "two", (.buf.validate.field) = { ... }</code>
    */
   build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwoOrBuilder getTwoOrBuilder();
 }

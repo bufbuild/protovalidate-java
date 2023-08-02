@@ -3,33 +3,22 @@
 
 package build.buf.validate.conformance.cases;
 
-public interface MessageSkipOrBuilder
-    extends
+public interface MessageSkipOrBuilder extends
     // @@protoc_insertion_point(interface_extends:buf.validate.conformance.cases.MessageSkip)
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>
-   * .buf.validate.conformance.cases.TestMsg val = 1 [json_name = "val", (.buf.validate.field) = { ... }
-   * </code>
-   *
+   * <code>.buf.validate.conformance.cases.TestMsg val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
    * @return Whether the val field is set.
    */
   boolean hasVal();
-
   /**
-   * <code>
-   * .buf.validate.conformance.cases.TestMsg val = 1 [json_name = "val", (.buf.validate.field) = { ... }
-   * </code>
-   *
+   * <code>.buf.validate.conformance.cases.TestMsg val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
    * @return The val.
    */
   build.buf.validate.conformance.cases.TestMsg getVal();
-
   /**
-   * <code>
-   * .buf.validate.conformance.cases.TestMsg val = 1 [json_name = "val", (.buf.validate.field) = { ... }
-   * </code>
+   * <code>.buf.validate.conformance.cases.TestMsg val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
    */
   build.buf.validate.conformance.cases.TestMsgOrBuilder getValOrBuilder();
 }

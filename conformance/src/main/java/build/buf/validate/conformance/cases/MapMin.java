@@ -3,124 +3,124 @@
 
 package build.buf.validate.conformance.cases;
 
-/** Protobuf type {@code buf.validate.conformance.cases.MapMin} */
-public final class MapMin extends com.google.protobuf.GeneratedMessageV3
-    implements
+/**
+ * Protobuf type {@code buf.validate.conformance.cases.MapMin}
+ */
+public final class MapMin extends
+    com.google.protobuf.GeneratedMessageV3 implements
     // @@protoc_insertion_point(message_implements:buf.validate.conformance.cases.MapMin)
     MapMinOrBuilder {
-  private static final long serialVersionUID = 0L;
-
+private static final long serialVersionUID = 0L;
   // Use MapMin.newBuilder() to construct.
   private MapMin(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
-
-  private MapMin() {}
+  private MapMin() {
+  }
 
   @java.lang.Override
   @SuppressWarnings({"unused"})
-  protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
+  protected java.lang.Object newInstance(
+      UnusedPrivateParameter unused) {
     return new MapMin();
   }
 
-  public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
-    return build.buf.validate.conformance.cases.MapsProto
-        .internal_static_buf_validate_conformance_cases_MapMin_descriptor;
+  public static final com.google.protobuf.Descriptors.Descriptor
+      getDescriptor() {
+    return build.buf.validate.conformance.cases.MapsProto.internal_static_buf_validate_conformance_cases_MapMin_descriptor;
   }
 
   @SuppressWarnings({"rawtypes"})
   @java.lang.Override
-  protected com.google.protobuf.MapField internalGetMapField(int number) {
+  protected com.google.protobuf.MapField internalGetMapField(
+      int number) {
     switch (number) {
       case 1:
         return internalGetVal();
       default:
-        throw new RuntimeException("Invalid map field number: " + number);
+        throw new RuntimeException(
+            "Invalid map field number: " + number);
     }
   }
-
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return build.buf.validate.conformance.cases.MapsProto
-        .internal_static_buf_validate_conformance_cases_MapMin_fieldAccessorTable
+    return build.buf.validate.conformance.cases.MapsProto.internal_static_buf_validate_conformance_cases_MapMin_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            build.buf.validate.conformance.cases.MapMin.class,
-            build.buf.validate.conformance.cases.MapMin.Builder.class);
+            build.buf.validate.conformance.cases.MapMin.class, build.buf.validate.conformance.cases.MapMin.Builder.class);
   }
 
   public static final int VAL_FIELD_NUMBER = 1;
-
   private static final class ValDefaultEntryHolder {
-    static final com.google.protobuf.MapEntry<java.lang.Integer, java.lang.Float> defaultEntry =
-        com.google.protobuf.MapEntry.<java.lang.Integer, java.lang.Float>newDefaultInstance(
-            build.buf.validate.conformance.cases.MapsProto
-                .internal_static_buf_validate_conformance_cases_MapMin_ValEntry_descriptor,
-            com.google.protobuf.WireFormat.FieldType.INT32,
-            0,
-            com.google.protobuf.WireFormat.FieldType.FLOAT,
-            0F);
+    static final com.google.protobuf.MapEntry<
+        java.lang.Integer, java.lang.Float> defaultEntry =
+            com.google.protobuf.MapEntry
+            .<java.lang.Integer, java.lang.Float>newDefaultInstance(
+                build.buf.validate.conformance.cases.MapsProto.internal_static_buf_validate_conformance_cases_MapMin_ValEntry_descriptor, 
+                com.google.protobuf.WireFormat.FieldType.INT32,
+                0,
+                com.google.protobuf.WireFormat.FieldType.FLOAT,
+                0F);
   }
-
   @SuppressWarnings("serial")
-  private com.google.protobuf.MapField<java.lang.Integer, java.lang.Float> val_;
-
-  private com.google.protobuf.MapField<java.lang.Integer, java.lang.Float> internalGetVal() {
+  private com.google.protobuf.MapField<
+      java.lang.Integer, java.lang.Float> val_;
+  private com.google.protobuf.MapField<java.lang.Integer, java.lang.Float>
+  internalGetVal() {
     if (val_ == null) {
-      return com.google.protobuf.MapField.emptyMapField(ValDefaultEntryHolder.defaultEntry);
+      return com.google.protobuf.MapField.emptyMapField(
+          ValDefaultEntryHolder.defaultEntry);
     }
     return val_;
   }
-
   public int getValCount() {
     return internalGetVal().getMap().size();
   }
-
   /**
-   * <code>map&lt;int32, float&gt; val = 1 [json_name = "val", (.buf.validate.field) = { ... }
-   * </code>
+   * <code>map&lt;int32, float&gt; val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
    */
   @java.lang.Override
-  public boolean containsVal(int key) {
+  public boolean containsVal(
+      int key) {
 
     return internalGetVal().getMap().containsKey(key);
   }
-
-  /** Use {@link #getValMap()} instead. */
+  /**
+   * Use {@link #getValMap()} instead.
+   */
   @java.lang.Override
   @java.lang.Deprecated
   public java.util.Map<java.lang.Integer, java.lang.Float> getVal() {
     return getValMap();
   }
-
   /**
-   * <code>map&lt;int32, float&gt; val = 1 [json_name = "val", (.buf.validate.field) = { ... }
-   * </code>
+   * <code>map&lt;int32, float&gt; val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
    */
   @java.lang.Override
   public java.util.Map<java.lang.Integer, java.lang.Float> getValMap() {
     return internalGetVal().getMap();
   }
-
   /**
-   * <code>map&lt;int32, float&gt; val = 1 [json_name = "val", (.buf.validate.field) = { ... }
-   * </code>
+   * <code>map&lt;int32, float&gt; val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
    */
   @java.lang.Override
-  public float getValOrDefault(int key, float defaultValue) {
+  public float getValOrDefault(
+      int key,
+      float defaultValue) {
 
-    java.util.Map<java.lang.Integer, java.lang.Float> map = internalGetVal().getMap();
+    java.util.Map<java.lang.Integer, java.lang.Float> map =
+        internalGetVal().getMap();
     return map.containsKey(key) ? map.get(key) : defaultValue;
   }
-
   /**
-   * <code>map&lt;int32, float&gt; val = 1 [json_name = "val", (.buf.validate.field) = { ... }
-   * </code>
+   * <code>map&lt;int32, float&gt; val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
    */
   @java.lang.Override
-  public float getValOrThrow(int key) {
+  public float getValOrThrow(
+      int key) {
 
-    java.util.Map<java.lang.Integer, java.lang.Float> map = internalGetVal().getMap();
+    java.util.Map<java.lang.Integer, java.lang.Float> map =
+        internalGetVal().getMap();
     if (!map.containsKey(key)) {
       throw new java.lang.IllegalArgumentException();
     }
@@ -128,7 +128,6 @@ public final class MapMin extends com.google.protobuf.GeneratedMessageV3
   }
 
   private byte memoizedIsInitialized = -1;
-
   @java.lang.Override
   public final boolean isInitialized() {
     byte isInitialized = memoizedIsInitialized;
@@ -140,9 +139,14 @@ public final class MapMin extends com.google.protobuf.GeneratedMessageV3
   }
 
   @java.lang.Override
-  public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
-    com.google.protobuf.GeneratedMessageV3.serializeIntegerMapTo(
-        output, internalGetVal(), ValDefaultEntryHolder.defaultEntry, 1);
+  public void writeTo(com.google.protobuf.CodedOutputStream output)
+                      throws java.io.IOException {
+    com.google.protobuf.GeneratedMessageV3
+      .serializeIntegerMapTo(
+        output,
+        internalGetVal(),
+        ValDefaultEntryHolder.defaultEntry,
+        1);
     getUnknownFields().writeTo(output);
   }
 
@@ -152,15 +156,15 @@ public final class MapMin extends com.google.protobuf.GeneratedMessageV3
     if (size != -1) return size;
 
     size = 0;
-    for (java.util.Map.Entry<java.lang.Integer, java.lang.Float> entry :
-        internalGetVal().getMap().entrySet()) {
-      com.google.protobuf.MapEntry<java.lang.Integer, java.lang.Float> val__ =
-          ValDefaultEntryHolder.defaultEntry
-              .newBuilderForType()
-              .setKey(entry.getKey())
-              .setValue(entry.getValue())
-              .build();
-      size += com.google.protobuf.CodedOutputStream.computeMessageSize(1, val__);
+    for (java.util.Map.Entry<java.lang.Integer, java.lang.Float> entry
+         : internalGetVal().getMap().entrySet()) {
+      com.google.protobuf.MapEntry<java.lang.Integer, java.lang.Float>
+      val__ = ValDefaultEntryHolder.defaultEntry.newBuilderForType()
+          .setKey(entry.getKey())
+          .setValue(entry.getValue())
+          .build();
+      size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(1, val__);
     }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
@@ -170,15 +174,15 @@ public final class MapMin extends com.google.protobuf.GeneratedMessageV3
   @java.lang.Override
   public boolean equals(final java.lang.Object obj) {
     if (obj == this) {
-      return true;
+     return true;
     }
     if (!(obj instanceof build.buf.validate.conformance.cases.MapMin)) {
       return super.equals(obj);
     }
-    build.buf.validate.conformance.cases.MapMin other =
-        (build.buf.validate.conformance.cases.MapMin) obj;
+    build.buf.validate.conformance.cases.MapMin other = (build.buf.validate.conformance.cases.MapMin) obj;
 
-    if (!internalGetVal().equals(other.internalGetVal())) return false;
+    if (!internalGetVal().equals(
+        other.internalGetVal())) return false;
     if (!getUnknownFields().equals(other.getUnknownFields())) return false;
     return true;
   }
@@ -199,149 +203,150 @@ public final class MapMin extends com.google.protobuf.GeneratedMessageV3
     return hash;
   }
 
-  public static build.buf.validate.conformance.cases.MapMin parseFrom(java.nio.ByteBuffer data)
+  public static build.buf.validate.conformance.cases.MapMin parseFrom(
+      java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-
   public static build.buf.validate.conformance.cases.MapMin parseFrom(
-      java.nio.ByteBuffer data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      java.nio.ByteBuffer data,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-
   public static build.buf.validate.conformance.cases.MapMin parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-
   public static build.buf.validate.conformance.cases.MapMin parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-
   public static build.buf.validate.conformance.cases.MapMin parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-
   public static build.buf.validate.conformance.cases.MapMin parseFrom(
-      byte[] data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      byte[] data,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-
   public static build.buf.validate.conformance.cases.MapMin parseFrom(java.io.InputStream input)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
+    return com.google.protobuf.GeneratedMessageV3
+        .parseWithIOException(PARSER, input);
+  }
+  public static build.buf.validate.conformance.cases.MapMin parseFrom(
+      java.io.InputStream input,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3
+        .parseWithIOException(PARSER, input, extensionRegistry);
   }
 
-  public static build.buf.validate.conformance.cases.MapMin parseFrom(
-      java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+  public static build.buf.validate.conformance.cases.MapMin parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
-        PARSER, input, extensionRegistry);
+    return com.google.protobuf.GeneratedMessageV3
+        .parseDelimitedWithIOException(PARSER, input);
   }
 
   public static build.buf.validate.conformance.cases.MapMin parseDelimitedFrom(
-      java.io.InputStream input) throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input);
-  }
-
-  public static build.buf.validate.conformance.cases.MapMin parseDelimitedFrom(
-      java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      java.io.InputStream input,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(
-        PARSER, input, extensionRegistry);
+    return com.google.protobuf.GeneratedMessageV3
+        .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-
   public static build.buf.validate.conformance.cases.MapMin parseFrom(
-      com.google.protobuf.CodedInputStream input) throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
+      com.google.protobuf.CodedInputStream input)
+      throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3
+        .parseWithIOException(PARSER, input);
   }
-
   public static build.buf.validate.conformance.cases.MapMin parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
-        PARSER, input, extensionRegistry);
+    return com.google.protobuf.GeneratedMessageV3
+        .parseWithIOException(PARSER, input, extensionRegistry);
   }
 
   @java.lang.Override
-  public Builder newBuilderForType() {
-    return newBuilder();
-  }
-
+  public Builder newBuilderForType() { return newBuilder(); }
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-
   public static Builder newBuilder(build.buf.validate.conformance.cases.MapMin prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
-
   @java.lang.Override
   public Builder toBuilder() {
-    return this == DEFAULT_INSTANCE ? new Builder() : new Builder().mergeFrom(this);
+    return this == DEFAULT_INSTANCE
+        ? new Builder() : new Builder().mergeFrom(this);
   }
 
   @java.lang.Override
-  protected Builder newBuilderForType(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+  protected Builder newBuilderForType(
+      com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
     Builder builder = new Builder(parent);
     return builder;
   }
-
-  /** Protobuf type {@code buf.validate.conformance.cases.MapMin} */
-  public static final class Builder extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
-      implements
+  /**
+   * Protobuf type {@code buf.validate.conformance.cases.MapMin}
+   */
+  public static final class Builder extends
+      com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
       // @@protoc_insertion_point(builder_implements:buf.validate.conformance.cases.MapMin)
       build.buf.validate.conformance.cases.MapMinOrBuilder {
-    public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
-      return build.buf.validate.conformance.cases.MapsProto
-          .internal_static_buf_validate_conformance_cases_MapMin_descriptor;
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return build.buf.validate.conformance.cases.MapsProto.internal_static_buf_validate_conformance_cases_MapMin_descriptor;
     }
 
     @SuppressWarnings({"rawtypes"})
-    protected com.google.protobuf.MapField internalGetMapField(int number) {
+    protected com.google.protobuf.MapField internalGetMapField(
+        int number) {
       switch (number) {
         case 1:
           return internalGetVal();
         default:
-          throw new RuntimeException("Invalid map field number: " + number);
+          throw new RuntimeException(
+              "Invalid map field number: " + number);
       }
     }
-
     @SuppressWarnings({"rawtypes"})
-    protected com.google.protobuf.MapField internalGetMutableMapField(int number) {
+    protected com.google.protobuf.MapField internalGetMutableMapField(
+        int number) {
       switch (number) {
         case 1:
           return internalGetMutableVal();
         default:
-          throw new RuntimeException("Invalid map field number: " + number);
+          throw new RuntimeException(
+              "Invalid map field number: " + number);
       }
     }
-
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return build.buf.validate.conformance.cases.MapsProto
-          .internal_static_buf_validate_conformance_cases_MapMin_fieldAccessorTable
+      return build.buf.validate.conformance.cases.MapsProto.internal_static_buf_validate_conformance_cases_MapMin_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              build.buf.validate.conformance.cases.MapMin.class,
-              build.buf.validate.conformance.cases.MapMin.Builder.class);
+              build.buf.validate.conformance.cases.MapMin.class, build.buf.validate.conformance.cases.MapMin.Builder.class);
     }
 
     // Construct using build.buf.validate.conformance.cases.MapMin.newBuilder()
-    private Builder() {}
+    private Builder() {
 
-    private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-      super(parent);
     }
 
+    private Builder(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      super(parent);
+
+    }
     @java.lang.Override
     public Builder clear() {
       super.clear();
@@ -351,9 +356,9 @@ public final class MapMin extends com.google.protobuf.GeneratedMessageV3
     }
 
     @java.lang.Override
-    public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
-      return build.buf.validate.conformance.cases.MapsProto
-          .internal_static_buf_validate_conformance_cases_MapMin_descriptor;
+    public com.google.protobuf.Descriptors.Descriptor
+        getDescriptorForType() {
+      return build.buf.validate.conformance.cases.MapsProto.internal_static_buf_validate_conformance_cases_MapMin_descriptor;
     }
 
     @java.lang.Override
@@ -372,11 +377,8 @@ public final class MapMin extends com.google.protobuf.GeneratedMessageV3
 
     @java.lang.Override
     public build.buf.validate.conformance.cases.MapMin buildPartial() {
-      build.buf.validate.conformance.cases.MapMin result =
-          new build.buf.validate.conformance.cases.MapMin(this);
-      if (bitField0_ != 0) {
-        buildPartial0(result);
-      }
+      build.buf.validate.conformance.cases.MapMin result = new build.buf.validate.conformance.cases.MapMin(this);
+      if (bitField0_ != 0) { buildPartial0(result); }
       onBuilt();
       return result;
     }
@@ -393,39 +395,38 @@ public final class MapMin extends com.google.protobuf.GeneratedMessageV3
     public Builder clone() {
       return super.clone();
     }
-
     @java.lang.Override
     public Builder setField(
-        com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field,
+        java.lang.Object value) {
       return super.setField(field, value);
     }
-
     @java.lang.Override
-    public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
+    public Builder clearField(
+        com.google.protobuf.Descriptors.FieldDescriptor field) {
       return super.clearField(field);
     }
-
     @java.lang.Override
-    public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+    public Builder clearOneof(
+        com.google.protobuf.Descriptors.OneofDescriptor oneof) {
       return super.clearOneof(oneof);
     }
-
     @java.lang.Override
     public Builder setRepeatedField(
-        com.google.protobuf.Descriptors.FieldDescriptor field, int index, java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field,
+        int index, java.lang.Object value) {
       return super.setRepeatedField(field, index, value);
     }
-
     @java.lang.Override
     public Builder addRepeatedField(
-        com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field,
+        java.lang.Object value) {
       return super.addRepeatedField(field, value);
     }
-
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
       if (other instanceof build.buf.validate.conformance.cases.MapMin) {
-        return mergeFrom((build.buf.validate.conformance.cases.MapMin) other);
+        return mergeFrom((build.buf.validate.conformance.cases.MapMin)other);
       } else {
         super.mergeFrom(other);
         return this;
@@ -434,7 +435,8 @@ public final class MapMin extends com.google.protobuf.GeneratedMessageV3
 
     public Builder mergeFrom(build.buf.validate.conformance.cases.MapMin other) {
       if (other == build.buf.validate.conformance.cases.MapMin.getDefaultInstance()) return this;
-      internalGetMutableVal().mergeFrom(other.internalGetVal());
+      internalGetMutableVal().mergeFrom(
+          other.internalGetVal());
       bitField0_ |= 0x00000001;
       this.mergeUnknownFields(other.getUnknownFields());
       onChanged();
@@ -462,22 +464,21 @@ public final class MapMin extends com.google.protobuf.GeneratedMessageV3
             case 0:
               done = true;
               break;
-            case 10:
-              {
-                com.google.protobuf.MapEntry<java.lang.Integer, java.lang.Float> val__ =
-                    input.readMessage(
-                        ValDefaultEntryHolder.defaultEntry.getParserForType(), extensionRegistry);
-                internalGetMutableVal().getMutableMap().put(val__.getKey(), val__.getValue());
-                bitField0_ |= 0x00000001;
-                break;
-              } // case 10
-            default:
-              {
-                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
-                  done = true; // was an endgroup tag
-                }
-                break;
-              } // default:
+            case 10: {
+              com.google.protobuf.MapEntry<java.lang.Integer, java.lang.Float>
+              val__ = input.readMessage(
+                  ValDefaultEntryHolder.defaultEntry.getParserForType(), extensionRegistry);
+              internalGetMutableVal().getMutableMap().put(
+                  val__.getKey(), val__.getValue());
+              bitField0_ |= 0x00000001;
+              break;
+            } // case 10
+            default: {
+              if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                done = true; // was an endgroup tag
+              }
+              break;
+            } // default:
           } // switch (tag)
         } // while (!done)
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -487,22 +488,23 @@ public final class MapMin extends com.google.protobuf.GeneratedMessageV3
       } // finally
       return this;
     }
-
     private int bitField0_;
 
-    private com.google.protobuf.MapField<java.lang.Integer, java.lang.Float> val_;
-
-    private com.google.protobuf.MapField<java.lang.Integer, java.lang.Float> internalGetVal() {
+    private com.google.protobuf.MapField<
+        java.lang.Integer, java.lang.Float> val_;
+    private com.google.protobuf.MapField<java.lang.Integer, java.lang.Float>
+        internalGetVal() {
       if (val_ == null) {
-        return com.google.protobuf.MapField.emptyMapField(ValDefaultEntryHolder.defaultEntry);
+        return com.google.protobuf.MapField.emptyMapField(
+            ValDefaultEntryHolder.defaultEntry);
       }
       return val_;
     }
-
     private com.google.protobuf.MapField<java.lang.Integer, java.lang.Float>
         internalGetMutableVal() {
       if (val_ == null) {
-        val_ = com.google.protobuf.MapField.newMapField(ValDefaultEntryHolder.defaultEntry);
+        val_ = com.google.protobuf.MapField.newMapField(
+            ValDefaultEntryHolder.defaultEntry);
       }
       if (!val_.isMutable()) {
         val_ = val_.copy();
@@ -511,108 +513,110 @@ public final class MapMin extends com.google.protobuf.GeneratedMessageV3
       onChanged();
       return val_;
     }
-
     public int getValCount() {
       return internalGetVal().getMap().size();
     }
-
     /**
-     * <code>map&lt;int32, float&gt; val = 1 [json_name = "val", (.buf.validate.field) = { ... }
-     * </code>
+     * <code>map&lt;int32, float&gt; val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
      */
     @java.lang.Override
-    public boolean containsVal(int key) {
+    public boolean containsVal(
+        int key) {
 
       return internalGetVal().getMap().containsKey(key);
     }
-
-    /** Use {@link #getValMap()} instead. */
+    /**
+     * Use {@link #getValMap()} instead.
+     */
     @java.lang.Override
     @java.lang.Deprecated
     public java.util.Map<java.lang.Integer, java.lang.Float> getVal() {
       return getValMap();
     }
-
     /**
-     * <code>map&lt;int32, float&gt; val = 1 [json_name = "val", (.buf.validate.field) = { ... }
-     * </code>
+     * <code>map&lt;int32, float&gt; val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
      */
     @java.lang.Override
     public java.util.Map<java.lang.Integer, java.lang.Float> getValMap() {
       return internalGetVal().getMap();
     }
-
     /**
-     * <code>map&lt;int32, float&gt; val = 1 [json_name = "val", (.buf.validate.field) = { ... }
-     * </code>
+     * <code>map&lt;int32, float&gt; val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
      */
     @java.lang.Override
-    public float getValOrDefault(int key, float defaultValue) {
+    public float getValOrDefault(
+        int key,
+        float defaultValue) {
 
-      java.util.Map<java.lang.Integer, java.lang.Float> map = internalGetVal().getMap();
+      java.util.Map<java.lang.Integer, java.lang.Float> map =
+          internalGetVal().getMap();
       return map.containsKey(key) ? map.get(key) : defaultValue;
     }
-
     /**
-     * <code>map&lt;int32, float&gt; val = 1 [json_name = "val", (.buf.validate.field) = { ... }
-     * </code>
+     * <code>map&lt;int32, float&gt; val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
      */
     @java.lang.Override
-    public float getValOrThrow(int key) {
+    public float getValOrThrow(
+        int key) {
 
-      java.util.Map<java.lang.Integer, java.lang.Float> map = internalGetVal().getMap();
+      java.util.Map<java.lang.Integer, java.lang.Float> map =
+          internalGetVal().getMap();
       if (!map.containsKey(key)) {
         throw new java.lang.IllegalArgumentException();
       }
       return map.get(key);
     }
-
     public Builder clearVal() {
       bitField0_ = (bitField0_ & ~0x00000001);
-      internalGetMutableVal().getMutableMap().clear();
+      internalGetMutableVal().getMutableMap()
+          .clear();
       return this;
     }
-
     /**
-     * <code>map&lt;int32, float&gt; val = 1 [json_name = "val", (.buf.validate.field) = { ... }
-     * </code>
+     * <code>map&lt;int32, float&gt; val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
      */
-    public Builder removeVal(int key) {
+    public Builder removeVal(
+        int key) {
 
-      internalGetMutableVal().getMutableMap().remove(key);
+      internalGetMutableVal().getMutableMap()
+          .remove(key);
       return this;
     }
-
-    /** Use alternate mutation accessors instead. */
+    /**
+     * Use alternate mutation accessors instead.
+     */
     @java.lang.Deprecated
-    public java.util.Map<java.lang.Integer, java.lang.Float> getMutableVal() {
+    public java.util.Map<java.lang.Integer, java.lang.Float>
+        getMutableVal() {
       bitField0_ |= 0x00000001;
       return internalGetMutableVal().getMutableMap();
     }
-
     /**
-     * <code>map&lt;int32, float&gt; val = 1 [json_name = "val", (.buf.validate.field) = { ... }
-     * </code>
+     * <code>map&lt;int32, float&gt; val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
      */
-    public Builder putVal(int key, float value) {
+    public Builder putVal(
+        int key,
+        float value) {
 
-      internalGetMutableVal().getMutableMap().put(key, value);
+
+      internalGetMutableVal().getMutableMap()
+          .put(key, value);
       bitField0_ |= 0x00000001;
       return this;
     }
-
     /**
-     * <code>map&lt;int32, float&gt; val = 1 [json_name = "val", (.buf.validate.field) = { ... }
-     * </code>
+     * <code>map&lt;int32, float&gt; val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
      */
-    public Builder putAllVal(java.util.Map<java.lang.Integer, java.lang.Float> values) {
-      internalGetMutableVal().getMutableMap().putAll(values);
+    public Builder putAllVal(
+        java.util.Map<java.lang.Integer, java.lang.Float> values) {
+      internalGetMutableVal().getMutableMap()
+          .putAll(values);
       bitField0_ |= 0x00000001;
       return this;
     }
-
     @java.lang.Override
-    public final Builder setUnknownFields(final com.google.protobuf.UnknownFieldSet unknownFields) {
+    public final Builder setUnknownFields(
+        final com.google.protobuf.UnknownFieldSet unknownFields) {
       return super.setUnknownFields(unknownFields);
     }
 
@@ -622,12 +626,12 @@ public final class MapMin extends com.google.protobuf.GeneratedMessageV3
       return super.mergeUnknownFields(unknownFields);
     }
 
+
     // @@protoc_insertion_point(builder_scope:buf.validate.conformance.cases.MapMin)
   }
 
   // @@protoc_insertion_point(class_scope:buf.validate.conformance.cases.MapMin)
   private static final build.buf.validate.conformance.cases.MapMin DEFAULT_INSTANCE;
-
   static {
     DEFAULT_INSTANCE = new build.buf.validate.conformance.cases.MapMin();
   }
@@ -636,27 +640,27 @@ public final class MapMin extends com.google.protobuf.GeneratedMessageV3
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<MapMin> PARSER =
-      new com.google.protobuf.AbstractParser<MapMin>() {
-        @java.lang.Override
-        public MapMin parsePartialFrom(
-            com.google.protobuf.CodedInputStream input,
-            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-            throws com.google.protobuf.InvalidProtocolBufferException {
-          Builder builder = newBuilder();
-          try {
-            builder.mergeFrom(input, extensionRegistry);
-          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-            throw e.setUnfinishedMessage(builder.buildPartial());
-          } catch (com.google.protobuf.UninitializedMessageException e) {
-            throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
-          } catch (java.io.IOException e) {
-            throw new com.google.protobuf.InvalidProtocolBufferException(e)
-                .setUnfinishedMessage(builder.buildPartial());
-          }
-          return builder.buildPartial();
-        }
-      };
+  private static final com.google.protobuf.Parser<MapMin>
+      PARSER = new com.google.protobuf.AbstractParser<MapMin>() {
+    @java.lang.Override
+    public MapMin parsePartialFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      Builder builder = newBuilder();
+      try {
+        builder.mergeFrom(input, extensionRegistry);
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(builder.buildPartial());
+      } catch (com.google.protobuf.UninitializedMessageException e) {
+        throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(e)
+            .setUnfinishedMessage(builder.buildPartial());
+      }
+      return builder.buildPartial();
+    }
+  };
 
   public static com.google.protobuf.Parser<MapMin> parser() {
     return PARSER;
@@ -671,4 +675,6 @@ public final class MapMin extends com.google.protobuf.GeneratedMessageV3
   public build.buf.validate.conformance.cases.MapMin getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
+
 }
+

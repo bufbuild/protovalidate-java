@@ -4,62 +4,53 @@
 package build.buf.validate.conformance.harness;
 
 /**
- *
- *
  * <pre>
  * A result is the result of a test run.
  * </pre>
  *
  * Protobuf type {@code buf.validate.conformance.harness.ResultSet}
  */
-public final class ResultSet extends com.google.protobuf.GeneratedMessageV3
-    implements
+public final class ResultSet extends
+    com.google.protobuf.GeneratedMessageV3 implements
     // @@protoc_insertion_point(message_implements:buf.validate.conformance.harness.ResultSet)
     ResultSetOrBuilder {
-  private static final long serialVersionUID = 0L;
-
+private static final long serialVersionUID = 0L;
   // Use ResultSet.newBuilder() to construct.
   private ResultSet(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
-
   private ResultSet() {
     suites_ = java.util.Collections.emptyList();
   }
 
   @java.lang.Override
   @SuppressWarnings({"unused"})
-  protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
+  protected java.lang.Object newInstance(
+      UnusedPrivateParameter unused) {
     return new ResultSet();
   }
 
-  public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
-    return build.buf.validate.conformance.harness.ResultsProto
-        .internal_static_buf_validate_conformance_harness_ResultSet_descriptor;
+  public static final com.google.protobuf.Descriptors.Descriptor
+      getDescriptor() {
+    return build.buf.validate.conformance.harness.ResultsProto.internal_static_buf_validate_conformance_harness_ResultSet_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return build.buf.validate.conformance.harness.ResultsProto
-        .internal_static_buf_validate_conformance_harness_ResultSet_fieldAccessorTable
+    return build.buf.validate.conformance.harness.ResultsProto.internal_static_buf_validate_conformance_harness_ResultSet_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            build.buf.validate.conformance.harness.ResultSet.class,
-            build.buf.validate.conformance.harness.ResultSet.Builder.class);
+            build.buf.validate.conformance.harness.ResultSet.class, build.buf.validate.conformance.harness.ResultSet.Builder.class);
   }
 
   public static final int SUCCESSES_FIELD_NUMBER = 1;
   private int successes_ = 0;
-
   /**
-   *
-   *
    * <pre>
    * Count of successes.
    * </pre>
    *
    * <code>int32 successes = 1 [json_name = "successes"];</code>
-   *
    * @return The successes.
    */
   @java.lang.Override
@@ -69,16 +60,12 @@ public final class ResultSet extends com.google.protobuf.GeneratedMessageV3
 
   public static final int FAILURES_FIELD_NUMBER = 2;
   private int failures_ = 0;
-
   /**
-   *
-   *
    * <pre>
    * Count of failures.
    * </pre>
    *
    * <code>int32 failures = 2 [json_name = "failures"];</code>
-   *
    * @return The failures.
    */
   @java.lang.Override
@@ -87,85 +74,59 @@ public final class ResultSet extends com.google.protobuf.GeneratedMessageV3
   }
 
   public static final int SUITES_FIELD_NUMBER = 3;
-
   @SuppressWarnings("serial")
   private java.util.List<build.buf.validate.conformance.harness.SuiteResults> suites_;
-
   /**
-   *
-   *
    * <pre>
    * List of suite results.
    * </pre>
    *
-   * <code>
-   * repeated .buf.validate.conformance.harness.SuiteResults suites = 3 [json_name = "suites"];
-   * </code>
+   * <code>repeated .buf.validate.conformance.harness.SuiteResults suites = 3 [json_name = "suites"];</code>
    */
   @java.lang.Override
   public java.util.List<build.buf.validate.conformance.harness.SuiteResults> getSuitesList() {
     return suites_;
   }
-
   /**
-   *
-   *
    * <pre>
    * List of suite results.
    * </pre>
    *
-   * <code>
-   * repeated .buf.validate.conformance.harness.SuiteResults suites = 3 [json_name = "suites"];
-   * </code>
+   * <code>repeated .buf.validate.conformance.harness.SuiteResults suites = 3 [json_name = "suites"];</code>
    */
   @java.lang.Override
-  public java.util.List<? extends build.buf.validate.conformance.harness.SuiteResultsOrBuilder>
+  public java.util.List<? extends build.buf.validate.conformance.harness.SuiteResultsOrBuilder> 
       getSuitesOrBuilderList() {
     return suites_;
   }
-
   /**
-   *
-   *
    * <pre>
    * List of suite results.
    * </pre>
    *
-   * <code>
-   * repeated .buf.validate.conformance.harness.SuiteResults suites = 3 [json_name = "suites"];
-   * </code>
+   * <code>repeated .buf.validate.conformance.harness.SuiteResults suites = 3 [json_name = "suites"];</code>
    */
   @java.lang.Override
   public int getSuitesCount() {
     return suites_.size();
   }
-
   /**
-   *
-   *
    * <pre>
    * List of suite results.
    * </pre>
    *
-   * <code>
-   * repeated .buf.validate.conformance.harness.SuiteResults suites = 3 [json_name = "suites"];
-   * </code>
+   * <code>repeated .buf.validate.conformance.harness.SuiteResults suites = 3 [json_name = "suites"];</code>
    */
   @java.lang.Override
   public build.buf.validate.conformance.harness.SuiteResults getSuites(int index) {
     return suites_.get(index);
   }
-
   /**
-   *
-   *
    * <pre>
    * List of suite results.
    * </pre>
    *
-   * <code>
-   * repeated .buf.validate.conformance.harness.SuiteResults suites = 3 [json_name = "suites"];
-   * </code>
+   * <code>repeated .buf.validate.conformance.harness.SuiteResults suites = 3 [json_name = "suites"];</code>
    */
   @java.lang.Override
   public build.buf.validate.conformance.harness.SuiteResultsOrBuilder getSuitesOrBuilder(
@@ -175,72 +136,50 @@ public final class ResultSet extends com.google.protobuf.GeneratedMessageV3
 
   public static final int OPTIONS_FIELD_NUMBER = 4;
   private build.buf.validate.conformance.harness.ResultOptions options_;
-
   /**
-   *
-   *
    * <pre>
    * Options used to generate this result.
    * </pre>
    *
-   * <code>.buf.validate.conformance.harness.ResultOptions options = 4 [json_name = "options"];
-   * </code>
-   *
+   * <code>.buf.validate.conformance.harness.ResultOptions options = 4 [json_name = "options"];</code>
    * @return Whether the options field is set.
    */
   @java.lang.Override
   public boolean hasOptions() {
     return options_ != null;
   }
-
   /**
-   *
-   *
    * <pre>
    * Options used to generate this result.
    * </pre>
    *
-   * <code>.buf.validate.conformance.harness.ResultOptions options = 4 [json_name = "options"];
-   * </code>
-   *
+   * <code>.buf.validate.conformance.harness.ResultOptions options = 4 [json_name = "options"];</code>
    * @return The options.
    */
   @java.lang.Override
   public build.buf.validate.conformance.harness.ResultOptions getOptions() {
-    return options_ == null
-        ? build.buf.validate.conformance.harness.ResultOptions.getDefaultInstance()
-        : options_;
+    return options_ == null ? build.buf.validate.conformance.harness.ResultOptions.getDefaultInstance() : options_;
   }
-
   /**
-   *
-   *
    * <pre>
    * Options used to generate this result.
    * </pre>
    *
-   * <code>.buf.validate.conformance.harness.ResultOptions options = 4 [json_name = "options"];
-   * </code>
+   * <code>.buf.validate.conformance.harness.ResultOptions options = 4 [json_name = "options"];</code>
    */
   @java.lang.Override
   public build.buf.validate.conformance.harness.ResultOptionsOrBuilder getOptionsOrBuilder() {
-    return options_ == null
-        ? build.buf.validate.conformance.harness.ResultOptions.getDefaultInstance()
-        : options_;
+    return options_ == null ? build.buf.validate.conformance.harness.ResultOptions.getDefaultInstance() : options_;
   }
 
   public static final int EXPECTED_FAILURES_FIELD_NUMBER = 5;
   private int expectedFailures_ = 0;
-
   /**
-   *
-   *
    * <pre>
    * Count of expected failures.
    * </pre>
    *
    * <code>int32 expected_failures = 5 [json_name = "expectedFailures"];</code>
-   *
    * @return The expectedFailures.
    */
   @java.lang.Override
@@ -249,7 +188,6 @@ public final class ResultSet extends com.google.protobuf.GeneratedMessageV3
   }
 
   private byte memoizedIsInitialized = -1;
-
   @java.lang.Override
   public final boolean isInitialized() {
     byte isInitialized = memoizedIsInitialized;
@@ -267,7 +205,8 @@ public final class ResultSet extends com.google.protobuf.GeneratedMessageV3
   }
 
   @java.lang.Override
-  public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
+  public void writeTo(com.google.protobuf.CodedOutputStream output)
+                      throws java.io.IOException {
     if (successes_ != 0) {
       output.writeInt32(1, successes_);
     }
@@ -293,19 +232,24 @@ public final class ResultSet extends com.google.protobuf.GeneratedMessageV3
 
     size = 0;
     if (successes_ != 0) {
-      size += com.google.protobuf.CodedOutputStream.computeInt32Size(1, successes_);
+      size += com.google.protobuf.CodedOutputStream
+        .computeInt32Size(1, successes_);
     }
     if (failures_ != 0) {
-      size += com.google.protobuf.CodedOutputStream.computeInt32Size(2, failures_);
+      size += com.google.protobuf.CodedOutputStream
+        .computeInt32Size(2, failures_);
     }
     for (int i = 0; i < suites_.size(); i++) {
-      size += com.google.protobuf.CodedOutputStream.computeMessageSize(3, suites_.get(i));
+      size += com.google.protobuf.CodedOutputStream
+        .computeMessageSize(3, suites_.get(i));
     }
     if (options_ != null) {
-      size += com.google.protobuf.CodedOutputStream.computeMessageSize(4, getOptions());
+      size += com.google.protobuf.CodedOutputStream
+        .computeMessageSize(4, getOptions());
     }
     if (expectedFailures_ != 0) {
-      size += com.google.protobuf.CodedOutputStream.computeInt32Size(5, expectedFailures_);
+      size += com.google.protobuf.CodedOutputStream
+        .computeInt32Size(5, expectedFailures_);
     }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
@@ -315,22 +259,26 @@ public final class ResultSet extends com.google.protobuf.GeneratedMessageV3
   @java.lang.Override
   public boolean equals(final java.lang.Object obj) {
     if (obj == this) {
-      return true;
+     return true;
     }
     if (!(obj instanceof build.buf.validate.conformance.harness.ResultSet)) {
       return super.equals(obj);
     }
-    build.buf.validate.conformance.harness.ResultSet other =
-        (build.buf.validate.conformance.harness.ResultSet) obj;
+    build.buf.validate.conformance.harness.ResultSet other = (build.buf.validate.conformance.harness.ResultSet) obj;
 
-    if (getSuccesses() != other.getSuccesses()) return false;
-    if (getFailures() != other.getFailures()) return false;
-    if (!getSuitesList().equals(other.getSuitesList())) return false;
+    if (getSuccesses()
+        != other.getSuccesses()) return false;
+    if (getFailures()
+        != other.getFailures()) return false;
+    if (!getSuitesList()
+        .equals(other.getSuitesList())) return false;
     if (hasOptions() != other.hasOptions()) return false;
     if (hasOptions()) {
-      if (!getOptions().equals(other.getOptions())) return false;
+      if (!getOptions()
+          .equals(other.getOptions())) return false;
     }
-    if (getExpectedFailures() != other.getExpectedFailures()) return false;
+    if (getExpectedFailures()
+        != other.getExpectedFailures()) return false;
     if (!getUnknownFields().equals(other.getUnknownFields())) return false;
     return true;
   }
@@ -361,137 +309,132 @@ public final class ResultSet extends com.google.protobuf.GeneratedMessageV3
     return hash;
   }
 
-  public static build.buf.validate.conformance.harness.ResultSet parseFrom(java.nio.ByteBuffer data)
+  public static build.buf.validate.conformance.harness.ResultSet parseFrom(
+      java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-
   public static build.buf.validate.conformance.harness.ResultSet parseFrom(
-      java.nio.ByteBuffer data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      java.nio.ByteBuffer data,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-
   public static build.buf.validate.conformance.harness.ResultSet parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-
   public static build.buf.validate.conformance.harness.ResultSet parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-
   public static build.buf.validate.conformance.harness.ResultSet parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-
   public static build.buf.validate.conformance.harness.ResultSet parseFrom(
-      byte[] data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      byte[] data,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-
+  public static build.buf.validate.conformance.harness.ResultSet parseFrom(java.io.InputStream input)
+      throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3
+        .parseWithIOException(PARSER, input);
+  }
   public static build.buf.validate.conformance.harness.ResultSet parseFrom(
-      java.io.InputStream input) throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
+      java.io.InputStream input,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3
+        .parseWithIOException(PARSER, input, extensionRegistry);
   }
 
-  public static build.buf.validate.conformance.harness.ResultSet parseFrom(
-      java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+  public static build.buf.validate.conformance.harness.ResultSet parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
-        PARSER, input, extensionRegistry);
+    return com.google.protobuf.GeneratedMessageV3
+        .parseDelimitedWithIOException(PARSER, input);
   }
 
   public static build.buf.validate.conformance.harness.ResultSet parseDelimitedFrom(
-      java.io.InputStream input) throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input);
-  }
-
-  public static build.buf.validate.conformance.harness.ResultSet parseDelimitedFrom(
-      java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      java.io.InputStream input,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(
-        PARSER, input, extensionRegistry);
+    return com.google.protobuf.GeneratedMessageV3
+        .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-
   public static build.buf.validate.conformance.harness.ResultSet parseFrom(
-      com.google.protobuf.CodedInputStream input) throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
+      com.google.protobuf.CodedInputStream input)
+      throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3
+        .parseWithIOException(PARSER, input);
   }
-
   public static build.buf.validate.conformance.harness.ResultSet parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
-        PARSER, input, extensionRegistry);
+    return com.google.protobuf.GeneratedMessageV3
+        .parseWithIOException(PARSER, input, extensionRegistry);
   }
 
   @java.lang.Override
-  public Builder newBuilderForType() {
-    return newBuilder();
-  }
-
+  public Builder newBuilderForType() { return newBuilder(); }
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-
   public static Builder newBuilder(build.buf.validate.conformance.harness.ResultSet prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
-
   @java.lang.Override
   public Builder toBuilder() {
-    return this == DEFAULT_INSTANCE ? new Builder() : new Builder().mergeFrom(this);
+    return this == DEFAULT_INSTANCE
+        ? new Builder() : new Builder().mergeFrom(this);
   }
 
   @java.lang.Override
-  protected Builder newBuilderForType(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+  protected Builder newBuilderForType(
+      com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
     Builder builder = new Builder(parent);
     return builder;
   }
-
   /**
-   *
-   *
    * <pre>
    * A result is the result of a test run.
    * </pre>
    *
    * Protobuf type {@code buf.validate.conformance.harness.ResultSet}
    */
-  public static final class Builder extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
-      implements
+  public static final class Builder extends
+      com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
       // @@protoc_insertion_point(builder_implements:buf.validate.conformance.harness.ResultSet)
       build.buf.validate.conformance.harness.ResultSetOrBuilder {
-    public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
-      return build.buf.validate.conformance.harness.ResultsProto
-          .internal_static_buf_validate_conformance_harness_ResultSet_descriptor;
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return build.buf.validate.conformance.harness.ResultsProto.internal_static_buf_validate_conformance_harness_ResultSet_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return build.buf.validate.conformance.harness.ResultsProto
-          .internal_static_buf_validate_conformance_harness_ResultSet_fieldAccessorTable
+      return build.buf.validate.conformance.harness.ResultsProto.internal_static_buf_validate_conformance_harness_ResultSet_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              build.buf.validate.conformance.harness.ResultSet.class,
-              build.buf.validate.conformance.harness.ResultSet.Builder.class);
+              build.buf.validate.conformance.harness.ResultSet.class, build.buf.validate.conformance.harness.ResultSet.Builder.class);
     }
 
     // Construct using build.buf.validate.conformance.harness.ResultSet.newBuilder()
-    private Builder() {}
+    private Builder() {
 
-    private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-      super(parent);
     }
 
+    private Builder(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      super(parent);
+
+    }
     @java.lang.Override
     public Builder clear() {
       super.clear();
@@ -515,9 +458,9 @@ public final class ResultSet extends com.google.protobuf.GeneratedMessageV3
     }
 
     @java.lang.Override
-    public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
-      return build.buf.validate.conformance.harness.ResultsProto
-          .internal_static_buf_validate_conformance_harness_ResultSet_descriptor;
+    public com.google.protobuf.Descriptors.Descriptor
+        getDescriptorForType() {
+      return build.buf.validate.conformance.harness.ResultsProto.internal_static_buf_validate_conformance_harness_ResultSet_descriptor;
     }
 
     @java.lang.Override
@@ -536,18 +479,14 @@ public final class ResultSet extends com.google.protobuf.GeneratedMessageV3
 
     @java.lang.Override
     public build.buf.validate.conformance.harness.ResultSet buildPartial() {
-      build.buf.validate.conformance.harness.ResultSet result =
-          new build.buf.validate.conformance.harness.ResultSet(this);
+      build.buf.validate.conformance.harness.ResultSet result = new build.buf.validate.conformance.harness.ResultSet(this);
       buildPartialRepeatedFields(result);
-      if (bitField0_ != 0) {
-        buildPartial0(result);
-      }
+      if (bitField0_ != 0) { buildPartial0(result); }
       onBuilt();
       return result;
     }
 
-    private void buildPartialRepeatedFields(
-        build.buf.validate.conformance.harness.ResultSet result) {
+    private void buildPartialRepeatedFields(build.buf.validate.conformance.harness.ResultSet result) {
       if (suitesBuilder_ == null) {
         if (((bitField0_ & 0x00000004) != 0)) {
           suites_ = java.util.Collections.unmodifiableList(suites_);
@@ -568,7 +507,9 @@ public final class ResultSet extends com.google.protobuf.GeneratedMessageV3
         result.failures_ = failures_;
       }
       if (((from_bitField0_ & 0x00000008) != 0)) {
-        result.options_ = optionsBuilder_ == null ? options_ : optionsBuilder_.build();
+        result.options_ = optionsBuilder_ == null
+            ? options_
+            : optionsBuilder_.build();
       }
       if (((from_bitField0_ & 0x00000010) != 0)) {
         result.expectedFailures_ = expectedFailures_;
@@ -579,39 +520,38 @@ public final class ResultSet extends com.google.protobuf.GeneratedMessageV3
     public Builder clone() {
       return super.clone();
     }
-
     @java.lang.Override
     public Builder setField(
-        com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field,
+        java.lang.Object value) {
       return super.setField(field, value);
     }
-
     @java.lang.Override
-    public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
+    public Builder clearField(
+        com.google.protobuf.Descriptors.FieldDescriptor field) {
       return super.clearField(field);
     }
-
     @java.lang.Override
-    public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+    public Builder clearOneof(
+        com.google.protobuf.Descriptors.OneofDescriptor oneof) {
       return super.clearOneof(oneof);
     }
-
     @java.lang.Override
     public Builder setRepeatedField(
-        com.google.protobuf.Descriptors.FieldDescriptor field, int index, java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field,
+        int index, java.lang.Object value) {
       return super.setRepeatedField(field, index, value);
     }
-
     @java.lang.Override
     public Builder addRepeatedField(
-        com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field,
+        java.lang.Object value) {
       return super.addRepeatedField(field, value);
     }
-
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
       if (other instanceof build.buf.validate.conformance.harness.ResultSet) {
-        return mergeFrom((build.buf.validate.conformance.harness.ResultSet) other);
+        return mergeFrom((build.buf.validate.conformance.harness.ResultSet)other);
       } else {
         super.mergeFrom(other);
         return this;
@@ -619,8 +559,7 @@ public final class ResultSet extends com.google.protobuf.GeneratedMessageV3
     }
 
     public Builder mergeFrom(build.buf.validate.conformance.harness.ResultSet other) {
-      if (other == build.buf.validate.conformance.harness.ResultSet.getDefaultInstance())
-        return this;
+      if (other == build.buf.validate.conformance.harness.ResultSet.getDefaultInstance()) return this;
       if (other.getSuccesses() != 0) {
         setSuccesses(other.getSuccesses());
       }
@@ -645,10 +584,9 @@ public final class ResultSet extends com.google.protobuf.GeneratedMessageV3
             suitesBuilder_ = null;
             suites_ = other.suites_;
             bitField0_ = (bitField0_ & ~0x00000004);
-            suitesBuilder_ =
-                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders
-                    ? getSuitesFieldBuilder()
-                    : null;
+            suitesBuilder_ = 
+              com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+                 getSuitesFieldBuilder() : null;
           } else {
             suitesBuilder_.addAllMessages(other.suites_);
           }
@@ -691,51 +629,47 @@ public final class ResultSet extends com.google.protobuf.GeneratedMessageV3
             case 0:
               done = true;
               break;
-            case 8:
-              {
-                successes_ = input.readInt32();
-                bitField0_ |= 0x00000001;
-                break;
-              } // case 8
-            case 16:
-              {
-                failures_ = input.readInt32();
-                bitField0_ |= 0x00000002;
-                break;
-              } // case 16
-            case 26:
-              {
-                build.buf.validate.conformance.harness.SuiteResults m =
-                    input.readMessage(
-                        build.buf.validate.conformance.harness.SuiteResults.parser(),
-                        extensionRegistry);
-                if (suitesBuilder_ == null) {
-                  ensureSuitesIsMutable();
-                  suites_.add(m);
-                } else {
-                  suitesBuilder_.addMessage(m);
-                }
-                break;
-              } // case 26
-            case 34:
-              {
-                input.readMessage(getOptionsFieldBuilder().getBuilder(), extensionRegistry);
-                bitField0_ |= 0x00000008;
-                break;
-              } // case 34
-            case 40:
-              {
-                expectedFailures_ = input.readInt32();
-                bitField0_ |= 0x00000010;
-                break;
-              } // case 40
-            default:
-              {
-                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
-                  done = true; // was an endgroup tag
-                }
-                break;
-              } // default:
+            case 8: {
+              successes_ = input.readInt32();
+              bitField0_ |= 0x00000001;
+              break;
+            } // case 8
+            case 16: {
+              failures_ = input.readInt32();
+              bitField0_ |= 0x00000002;
+              break;
+            } // case 16
+            case 26: {
+              build.buf.validate.conformance.harness.SuiteResults m =
+                  input.readMessage(
+                      build.buf.validate.conformance.harness.SuiteResults.parser(),
+                      extensionRegistry);
+              if (suitesBuilder_ == null) {
+                ensureSuitesIsMutable();
+                suites_.add(m);
+              } else {
+                suitesBuilder_.addMessage(m);
+              }
+              break;
+            } // case 26
+            case 34: {
+              input.readMessage(
+                  getOptionsFieldBuilder().getBuilder(),
+                  extensionRegistry);
+              bitField0_ |= 0x00000008;
+              break;
+            } // case 34
+            case 40: {
+              expectedFailures_ = input.readInt32();
+              bitField0_ |= 0x00000010;
+              break;
+            } // case 40
+            default: {
+              if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                done = true; // was an endgroup tag
+              }
+              break;
+            } // default:
           } // switch (tag)
         } // while (!done)
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -745,36 +679,27 @@ public final class ResultSet extends com.google.protobuf.GeneratedMessageV3
       } // finally
       return this;
     }
-
     private int bitField0_;
 
-    private int successes_;
-
+    private int successes_ ;
     /**
-     *
-     *
      * <pre>
      * Count of successes.
      * </pre>
      *
      * <code>int32 successes = 1 [json_name = "successes"];</code>
-     *
      * @return The successes.
      */
     @java.lang.Override
     public int getSuccesses() {
       return successes_;
     }
-
     /**
-     *
-     *
      * <pre>
      * Count of successes.
      * </pre>
      *
      * <code>int32 successes = 1 [json_name = "successes"];</code>
-     *
      * @param value The successes to set.
      * @return This builder for chaining.
      */
@@ -785,16 +710,12 @@ public final class ResultSet extends com.google.protobuf.GeneratedMessageV3
       onChanged();
       return this;
     }
-
     /**
-     *
-     *
      * <pre>
      * Count of successes.
      * </pre>
      *
      * <code>int32 successes = 1 [json_name = "successes"];</code>
-     *
      * @return This builder for chaining.
      */
     public Builder clearSuccesses() {
@@ -804,33 +725,25 @@ public final class ResultSet extends com.google.protobuf.GeneratedMessageV3
       return this;
     }
 
-    private int failures_;
-
+    private int failures_ ;
     /**
-     *
-     *
      * <pre>
      * Count of failures.
      * </pre>
      *
      * <code>int32 failures = 2 [json_name = "failures"];</code>
-     *
      * @return The failures.
      */
     @java.lang.Override
     public int getFailures() {
       return failures_;
     }
-
     /**
-     *
-     *
      * <pre>
      * Count of failures.
      * </pre>
      *
      * <code>int32 failures = 2 [json_name = "failures"];</code>
-     *
      * @param value The failures to set.
      * @return This builder for chaining.
      */
@@ -841,16 +754,12 @@ public final class ResultSet extends com.google.protobuf.GeneratedMessageV3
       onChanged();
       return this;
     }
-
     /**
-     *
-     *
      * <pre>
      * Count of failures.
      * </pre>
      *
      * <code>int32 failures = 2 [json_name = "failures"];</code>
-     *
      * @return This builder for chaining.
      */
     public Builder clearFailures() {
@@ -861,32 +770,23 @@ public final class ResultSet extends com.google.protobuf.GeneratedMessageV3
     }
 
     private java.util.List<build.buf.validate.conformance.harness.SuiteResults> suites_ =
-        java.util.Collections.emptyList();
-
+      java.util.Collections.emptyList();
     private void ensureSuitesIsMutable() {
       if (!((bitField0_ & 0x00000004) != 0)) {
-        suites_ =
-            new java.util.ArrayList<build.buf.validate.conformance.harness.SuiteResults>(suites_);
+        suites_ = new java.util.ArrayList<build.buf.validate.conformance.harness.SuiteResults>(suites_);
         bitField0_ |= 0x00000004;
-      }
+       }
     }
 
     private com.google.protobuf.RepeatedFieldBuilderV3<
-            build.buf.validate.conformance.harness.SuiteResults,
-            build.buf.validate.conformance.harness.SuiteResults.Builder,
-            build.buf.validate.conformance.harness.SuiteResultsOrBuilder>
-        suitesBuilder_;
+        build.buf.validate.conformance.harness.SuiteResults, build.buf.validate.conformance.harness.SuiteResults.Builder, build.buf.validate.conformance.harness.SuiteResultsOrBuilder> suitesBuilder_;
 
     /**
-     *
-     *
      * <pre>
      * List of suite results.
      * </pre>
      *
-     * <code>
-     * repeated .buf.validate.conformance.harness.SuiteResults suites = 3 [json_name = "suites"];
-     * </code>
+     * <code>repeated .buf.validate.conformance.harness.SuiteResults suites = 3 [json_name = "suites"];</code>
      */
     public java.util.List<build.buf.validate.conformance.harness.SuiteResults> getSuitesList() {
       if (suitesBuilder_ == null) {
@@ -895,17 +795,12 @@ public final class ResultSet extends com.google.protobuf.GeneratedMessageV3
         return suitesBuilder_.getMessageList();
       }
     }
-
     /**
-     *
-     *
      * <pre>
      * List of suite results.
      * </pre>
      *
-     * <code>
-     * repeated .buf.validate.conformance.harness.SuiteResults suites = 3 [json_name = "suites"];
-     * </code>
+     * <code>repeated .buf.validate.conformance.harness.SuiteResults suites = 3 [json_name = "suites"];</code>
      */
     public int getSuitesCount() {
       if (suitesBuilder_ == null) {
@@ -914,17 +809,12 @@ public final class ResultSet extends com.google.protobuf.GeneratedMessageV3
         return suitesBuilder_.getCount();
       }
     }
-
     /**
-     *
-     *
      * <pre>
      * List of suite results.
      * </pre>
      *
-     * <code>
-     * repeated .buf.validate.conformance.harness.SuiteResults suites = 3 [json_name = "suites"];
-     * </code>
+     * <code>repeated .buf.validate.conformance.harness.SuiteResults suites = 3 [json_name = "suites"];</code>
      */
     public build.buf.validate.conformance.harness.SuiteResults getSuites(int index) {
       if (suitesBuilder_ == null) {
@@ -933,19 +823,15 @@ public final class ResultSet extends com.google.protobuf.GeneratedMessageV3
         return suitesBuilder_.getMessage(index);
       }
     }
-
     /**
-     *
-     *
      * <pre>
      * List of suite results.
      * </pre>
      *
-     * <code>
-     * repeated .buf.validate.conformance.harness.SuiteResults suites = 3 [json_name = "suites"];
-     * </code>
+     * <code>repeated .buf.validate.conformance.harness.SuiteResults suites = 3 [json_name = "suites"];</code>
      */
-    public Builder setSuites(int index, build.buf.validate.conformance.harness.SuiteResults value) {
+    public Builder setSuites(
+        int index, build.buf.validate.conformance.harness.SuiteResults value) {
       if (suitesBuilder_ == null) {
         if (value == null) {
           throw new NullPointerException();
@@ -958,17 +844,12 @@ public final class ResultSet extends com.google.protobuf.GeneratedMessageV3
       }
       return this;
     }
-
     /**
-     *
-     *
      * <pre>
      * List of suite results.
      * </pre>
      *
-     * <code>
-     * repeated .buf.validate.conformance.harness.SuiteResults suites = 3 [json_name = "suites"];
-     * </code>
+     * <code>repeated .buf.validate.conformance.harness.SuiteResults suites = 3 [json_name = "suites"];</code>
      */
     public Builder setSuites(
         int index, build.buf.validate.conformance.harness.SuiteResults.Builder builderForValue) {
@@ -981,17 +862,12 @@ public final class ResultSet extends com.google.protobuf.GeneratedMessageV3
       }
       return this;
     }
-
     /**
-     *
-     *
      * <pre>
      * List of suite results.
      * </pre>
      *
-     * <code>
-     * repeated .buf.validate.conformance.harness.SuiteResults suites = 3 [json_name = "suites"];
-     * </code>
+     * <code>repeated .buf.validate.conformance.harness.SuiteResults suites = 3 [json_name = "suites"];</code>
      */
     public Builder addSuites(build.buf.validate.conformance.harness.SuiteResults value) {
       if (suitesBuilder_ == null) {
@@ -1006,19 +882,15 @@ public final class ResultSet extends com.google.protobuf.GeneratedMessageV3
       }
       return this;
     }
-
     /**
-     *
-     *
      * <pre>
      * List of suite results.
      * </pre>
      *
-     * <code>
-     * repeated .buf.validate.conformance.harness.SuiteResults suites = 3 [json_name = "suites"];
-     * </code>
+     * <code>repeated .buf.validate.conformance.harness.SuiteResults suites = 3 [json_name = "suites"];</code>
      */
-    public Builder addSuites(int index, build.buf.validate.conformance.harness.SuiteResults value) {
+    public Builder addSuites(
+        int index, build.buf.validate.conformance.harness.SuiteResults value) {
       if (suitesBuilder_ == null) {
         if (value == null) {
           throw new NullPointerException();
@@ -1031,17 +903,12 @@ public final class ResultSet extends com.google.protobuf.GeneratedMessageV3
       }
       return this;
     }
-
     /**
-     *
-     *
      * <pre>
      * List of suite results.
      * </pre>
      *
-     * <code>
-     * repeated .buf.validate.conformance.harness.SuiteResults suites = 3 [json_name = "suites"];
-     * </code>
+     * <code>repeated .buf.validate.conformance.harness.SuiteResults suites = 3 [json_name = "suites"];</code>
      */
     public Builder addSuites(
         build.buf.validate.conformance.harness.SuiteResults.Builder builderForValue) {
@@ -1054,17 +921,12 @@ public final class ResultSet extends com.google.protobuf.GeneratedMessageV3
       }
       return this;
     }
-
     /**
-     *
-     *
      * <pre>
      * List of suite results.
      * </pre>
      *
-     * <code>
-     * repeated .buf.validate.conformance.harness.SuiteResults suites = 3 [json_name = "suites"];
-     * </code>
+     * <code>repeated .buf.validate.conformance.harness.SuiteResults suites = 3 [json_name = "suites"];</code>
      */
     public Builder addSuites(
         int index, build.buf.validate.conformance.harness.SuiteResults.Builder builderForValue) {
@@ -1077,40 +939,31 @@ public final class ResultSet extends com.google.protobuf.GeneratedMessageV3
       }
       return this;
     }
-
     /**
-     *
-     *
      * <pre>
      * List of suite results.
      * </pre>
      *
-     * <code>
-     * repeated .buf.validate.conformance.harness.SuiteResults suites = 3 [json_name = "suites"];
-     * </code>
+     * <code>repeated .buf.validate.conformance.harness.SuiteResults suites = 3 [json_name = "suites"];</code>
      */
     public Builder addAllSuites(
         java.lang.Iterable<? extends build.buf.validate.conformance.harness.SuiteResults> values) {
       if (suitesBuilder_ == null) {
         ensureSuitesIsMutable();
-        com.google.protobuf.AbstractMessageLite.Builder.addAll(values, suites_);
+        com.google.protobuf.AbstractMessageLite.Builder.addAll(
+            values, suites_);
         onChanged();
       } else {
         suitesBuilder_.addAllMessages(values);
       }
       return this;
     }
-
     /**
-     *
-     *
      * <pre>
      * List of suite results.
      * </pre>
      *
-     * <code>
-     * repeated .buf.validate.conformance.harness.SuiteResults suites = 3 [json_name = "suites"];
-     * </code>
+     * <code>repeated .buf.validate.conformance.harness.SuiteResults suites = 3 [json_name = "suites"];</code>
      */
     public Builder clearSuites() {
       if (suitesBuilder_ == null) {
@@ -1122,17 +975,12 @@ public final class ResultSet extends com.google.protobuf.GeneratedMessageV3
       }
       return this;
     }
-
     /**
-     *
-     *
      * <pre>
      * List of suite results.
      * </pre>
      *
-     * <code>
-     * repeated .buf.validate.conformance.harness.SuiteResults suites = 3 [json_name = "suites"];
-     * </code>
+     * <code>repeated .buf.validate.conformance.harness.SuiteResults suites = 3 [json_name = "suites"];</code>
      */
     public Builder removeSuites(int index) {
       if (suitesBuilder_ == null) {
@@ -1144,123 +992,90 @@ public final class ResultSet extends com.google.protobuf.GeneratedMessageV3
       }
       return this;
     }
-
     /**
-     *
-     *
      * <pre>
      * List of suite results.
      * </pre>
      *
-     * <code>
-     * repeated .buf.validate.conformance.harness.SuiteResults suites = 3 [json_name = "suites"];
-     * </code>
+     * <code>repeated .buf.validate.conformance.harness.SuiteResults suites = 3 [json_name = "suites"];</code>
      */
-    public build.buf.validate.conformance.harness.SuiteResults.Builder getSuitesBuilder(int index) {
+    public build.buf.validate.conformance.harness.SuiteResults.Builder getSuitesBuilder(
+        int index) {
       return getSuitesFieldBuilder().getBuilder(index);
     }
-
     /**
-     *
-     *
      * <pre>
      * List of suite results.
      * </pre>
      *
-     * <code>
-     * repeated .buf.validate.conformance.harness.SuiteResults suites = 3 [json_name = "suites"];
-     * </code>
+     * <code>repeated .buf.validate.conformance.harness.SuiteResults suites = 3 [json_name = "suites"];</code>
      */
     public build.buf.validate.conformance.harness.SuiteResultsOrBuilder getSuitesOrBuilder(
         int index) {
       if (suitesBuilder_ == null) {
-        return suites_.get(index);
-      } else {
+        return suites_.get(index);  } else {
         return suitesBuilder_.getMessageOrBuilder(index);
       }
     }
-
     /**
-     *
-     *
      * <pre>
      * List of suite results.
      * </pre>
      *
-     * <code>
-     * repeated .buf.validate.conformance.harness.SuiteResults suites = 3 [json_name = "suites"];
-     * </code>
+     * <code>repeated .buf.validate.conformance.harness.SuiteResults suites = 3 [json_name = "suites"];</code>
      */
-    public java.util.List<? extends build.buf.validate.conformance.harness.SuiteResultsOrBuilder>
-        getSuitesOrBuilderList() {
+    public java.util.List<? extends build.buf.validate.conformance.harness.SuiteResultsOrBuilder> 
+         getSuitesOrBuilderList() {
       if (suitesBuilder_ != null) {
         return suitesBuilder_.getMessageOrBuilderList();
       } else {
         return java.util.Collections.unmodifiableList(suites_);
       }
     }
-
     /**
-     *
-     *
      * <pre>
      * List of suite results.
      * </pre>
      *
-     * <code>
-     * repeated .buf.validate.conformance.harness.SuiteResults suites = 3 [json_name = "suites"];
-     * </code>
+     * <code>repeated .buf.validate.conformance.harness.SuiteResults suites = 3 [json_name = "suites"];</code>
      */
     public build.buf.validate.conformance.harness.SuiteResults.Builder addSuitesBuilder() {
-      return getSuitesFieldBuilder()
-          .addBuilder(build.buf.validate.conformance.harness.SuiteResults.getDefaultInstance());
+      return getSuitesFieldBuilder().addBuilder(
+          build.buf.validate.conformance.harness.SuiteResults.getDefaultInstance());
     }
-
     /**
-     *
-     *
      * <pre>
      * List of suite results.
      * </pre>
      *
-     * <code>
-     * repeated .buf.validate.conformance.harness.SuiteResults suites = 3 [json_name = "suites"];
-     * </code>
+     * <code>repeated .buf.validate.conformance.harness.SuiteResults suites = 3 [json_name = "suites"];</code>
      */
-    public build.buf.validate.conformance.harness.SuiteResults.Builder addSuitesBuilder(int index) {
-      return getSuitesFieldBuilder()
-          .addBuilder(
-              index, build.buf.validate.conformance.harness.SuiteResults.getDefaultInstance());
+    public build.buf.validate.conformance.harness.SuiteResults.Builder addSuitesBuilder(
+        int index) {
+      return getSuitesFieldBuilder().addBuilder(
+          index, build.buf.validate.conformance.harness.SuiteResults.getDefaultInstance());
     }
-
     /**
-     *
-     *
      * <pre>
      * List of suite results.
      * </pre>
      *
-     * <code>
-     * repeated .buf.validate.conformance.harness.SuiteResults suites = 3 [json_name = "suites"];
-     * </code>
+     * <code>repeated .buf.validate.conformance.harness.SuiteResults suites = 3 [json_name = "suites"];</code>
      */
-    public java.util.List<build.buf.validate.conformance.harness.SuiteResults.Builder>
-        getSuitesBuilderList() {
+    public java.util.List<build.buf.validate.conformance.harness.SuiteResults.Builder> 
+         getSuitesBuilderList() {
       return getSuitesFieldBuilder().getBuilderList();
     }
-
     private com.google.protobuf.RepeatedFieldBuilderV3<
-            build.buf.validate.conformance.harness.SuiteResults,
-            build.buf.validate.conformance.harness.SuiteResults.Builder,
-            build.buf.validate.conformance.harness.SuiteResultsOrBuilder>
+        build.buf.validate.conformance.harness.SuiteResults, build.buf.validate.conformance.harness.SuiteResults.Builder, build.buf.validate.conformance.harness.SuiteResultsOrBuilder> 
         getSuitesFieldBuilder() {
       if (suitesBuilder_ == null) {
-        suitesBuilder_ =
-            new com.google.protobuf.RepeatedFieldBuilderV3<
-                build.buf.validate.conformance.harness.SuiteResults,
-                build.buf.validate.conformance.harness.SuiteResults.Builder,
-                build.buf.validate.conformance.harness.SuiteResultsOrBuilder>(
-                suites_, ((bitField0_ & 0x00000004) != 0), getParentForChildren(), isClean());
+        suitesBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+            build.buf.validate.conformance.harness.SuiteResults, build.buf.validate.conformance.harness.SuiteResults.Builder, build.buf.validate.conformance.harness.SuiteResultsOrBuilder>(
+                suites_,
+                ((bitField0_ & 0x00000004) != 0),
+                getParentForChildren(),
+                isClean());
         suites_ = null;
       }
       return suitesBuilder_;
@@ -1268,58 +1083,39 @@ public final class ResultSet extends com.google.protobuf.GeneratedMessageV3
 
     private build.buf.validate.conformance.harness.ResultOptions options_;
     private com.google.protobuf.SingleFieldBuilderV3<
-            build.buf.validate.conformance.harness.ResultOptions,
-            build.buf.validate.conformance.harness.ResultOptions.Builder,
-            build.buf.validate.conformance.harness.ResultOptionsOrBuilder>
-        optionsBuilder_;
-
+        build.buf.validate.conformance.harness.ResultOptions, build.buf.validate.conformance.harness.ResultOptions.Builder, build.buf.validate.conformance.harness.ResultOptionsOrBuilder> optionsBuilder_;
     /**
-     *
-     *
      * <pre>
      * Options used to generate this result.
      * </pre>
      *
-     * <code>.buf.validate.conformance.harness.ResultOptions options = 4 [json_name = "options"];
-     * </code>
-     *
+     * <code>.buf.validate.conformance.harness.ResultOptions options = 4 [json_name = "options"];</code>
      * @return Whether the options field is set.
      */
     public boolean hasOptions() {
       return ((bitField0_ & 0x00000008) != 0);
     }
-
     /**
-     *
-     *
      * <pre>
      * Options used to generate this result.
      * </pre>
      *
-     * <code>.buf.validate.conformance.harness.ResultOptions options = 4 [json_name = "options"];
-     * </code>
-     *
+     * <code>.buf.validate.conformance.harness.ResultOptions options = 4 [json_name = "options"];</code>
      * @return The options.
      */
     public build.buf.validate.conformance.harness.ResultOptions getOptions() {
       if (optionsBuilder_ == null) {
-        return options_ == null
-            ? build.buf.validate.conformance.harness.ResultOptions.getDefaultInstance()
-            : options_;
+        return options_ == null ? build.buf.validate.conformance.harness.ResultOptions.getDefaultInstance() : options_;
       } else {
         return optionsBuilder_.getMessage();
       }
     }
-
     /**
-     *
-     *
      * <pre>
      * Options used to generate this result.
      * </pre>
      *
-     * <code>.buf.validate.conformance.harness.ResultOptions options = 4 [json_name = "options"];
-     * </code>
+     * <code>.buf.validate.conformance.harness.ResultOptions options = 4 [json_name = "options"];</code>
      */
     public Builder setOptions(build.buf.validate.conformance.harness.ResultOptions value) {
       if (optionsBuilder_ == null) {
@@ -1334,16 +1130,12 @@ public final class ResultSet extends com.google.protobuf.GeneratedMessageV3
       onChanged();
       return this;
     }
-
     /**
-     *
-     *
      * <pre>
      * Options used to generate this result.
      * </pre>
      *
-     * <code>.buf.validate.conformance.harness.ResultOptions options = 4 [json_name = "options"];
-     * </code>
+     * <code>.buf.validate.conformance.harness.ResultOptions options = 4 [json_name = "options"];</code>
      */
     public Builder setOptions(
         build.buf.validate.conformance.harness.ResultOptions.Builder builderForValue) {
@@ -1356,23 +1148,18 @@ public final class ResultSet extends com.google.protobuf.GeneratedMessageV3
       onChanged();
       return this;
     }
-
     /**
-     *
-     *
      * <pre>
      * Options used to generate this result.
      * </pre>
      *
-     * <code>.buf.validate.conformance.harness.ResultOptions options = 4 [json_name = "options"];
-     * </code>
+     * <code>.buf.validate.conformance.harness.ResultOptions options = 4 [json_name = "options"];</code>
      */
     public Builder mergeOptions(build.buf.validate.conformance.harness.ResultOptions value) {
       if (optionsBuilder_ == null) {
-        if (((bitField0_ & 0x00000008) != 0)
-            && options_ != null
-            && options_
-                != build.buf.validate.conformance.harness.ResultOptions.getDefaultInstance()) {
+        if (((bitField0_ & 0x00000008) != 0) &&
+          options_ != null &&
+          options_ != build.buf.validate.conformance.harness.ResultOptions.getDefaultInstance()) {
           getOptionsBuilder().mergeFrom(value);
         } else {
           options_ = value;
@@ -1384,16 +1171,12 @@ public final class ResultSet extends com.google.protobuf.GeneratedMessageV3
       onChanged();
       return this;
     }
-
     /**
-     *
-     *
      * <pre>
      * Options used to generate this result.
      * </pre>
      *
-     * <code>.buf.validate.conformance.harness.ResultOptions options = 4 [json_name = "options"];
-     * </code>
+     * <code>.buf.validate.conformance.harness.ResultOptions options = 4 [json_name = "options"];</code>
      */
     public Builder clearOptions() {
       bitField0_ = (bitField0_ & ~0x00000008);
@@ -1405,97 +1188,73 @@ public final class ResultSet extends com.google.protobuf.GeneratedMessageV3
       onChanged();
       return this;
     }
-
     /**
-     *
-     *
      * <pre>
      * Options used to generate this result.
      * </pre>
      *
-     * <code>.buf.validate.conformance.harness.ResultOptions options = 4 [json_name = "options"];
-     * </code>
+     * <code>.buf.validate.conformance.harness.ResultOptions options = 4 [json_name = "options"];</code>
      */
     public build.buf.validate.conformance.harness.ResultOptions.Builder getOptionsBuilder() {
       bitField0_ |= 0x00000008;
       onChanged();
       return getOptionsFieldBuilder().getBuilder();
     }
-
     /**
-     *
-     *
      * <pre>
      * Options used to generate this result.
      * </pre>
      *
-     * <code>.buf.validate.conformance.harness.ResultOptions options = 4 [json_name = "options"];
-     * </code>
+     * <code>.buf.validate.conformance.harness.ResultOptions options = 4 [json_name = "options"];</code>
      */
     public build.buf.validate.conformance.harness.ResultOptionsOrBuilder getOptionsOrBuilder() {
       if (optionsBuilder_ != null) {
         return optionsBuilder_.getMessageOrBuilder();
       } else {
-        return options_ == null
-            ? build.buf.validate.conformance.harness.ResultOptions.getDefaultInstance()
-            : options_;
+        return options_ == null ?
+            build.buf.validate.conformance.harness.ResultOptions.getDefaultInstance() : options_;
       }
     }
-
     /**
-     *
-     *
      * <pre>
      * Options used to generate this result.
      * </pre>
      *
-     * <code>.buf.validate.conformance.harness.ResultOptions options = 4 [json_name = "options"];
-     * </code>
+     * <code>.buf.validate.conformance.harness.ResultOptions options = 4 [json_name = "options"];</code>
      */
     private com.google.protobuf.SingleFieldBuilderV3<
-            build.buf.validate.conformance.harness.ResultOptions,
-            build.buf.validate.conformance.harness.ResultOptions.Builder,
-            build.buf.validate.conformance.harness.ResultOptionsOrBuilder>
+        build.buf.validate.conformance.harness.ResultOptions, build.buf.validate.conformance.harness.ResultOptions.Builder, build.buf.validate.conformance.harness.ResultOptionsOrBuilder> 
         getOptionsFieldBuilder() {
       if (optionsBuilder_ == null) {
-        optionsBuilder_ =
-            new com.google.protobuf.SingleFieldBuilderV3<
-                build.buf.validate.conformance.harness.ResultOptions,
-                build.buf.validate.conformance.harness.ResultOptions.Builder,
-                build.buf.validate.conformance.harness.ResultOptionsOrBuilder>(
-                getOptions(), getParentForChildren(), isClean());
+        optionsBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+            build.buf.validate.conformance.harness.ResultOptions, build.buf.validate.conformance.harness.ResultOptions.Builder, build.buf.validate.conformance.harness.ResultOptionsOrBuilder>(
+                getOptions(),
+                getParentForChildren(),
+                isClean());
         options_ = null;
       }
       return optionsBuilder_;
     }
 
-    private int expectedFailures_;
-
+    private int expectedFailures_ ;
     /**
-     *
-     *
      * <pre>
      * Count of expected failures.
      * </pre>
      *
      * <code>int32 expected_failures = 5 [json_name = "expectedFailures"];</code>
-     *
      * @return The expectedFailures.
      */
     @java.lang.Override
     public int getExpectedFailures() {
       return expectedFailures_;
     }
-
     /**
-     *
-     *
      * <pre>
      * Count of expected failures.
      * </pre>
      *
      * <code>int32 expected_failures = 5 [json_name = "expectedFailures"];</code>
-     *
      * @param value The expectedFailures to set.
      * @return This builder for chaining.
      */
@@ -1506,16 +1265,12 @@ public final class ResultSet extends com.google.protobuf.GeneratedMessageV3
       onChanged();
       return this;
     }
-
     /**
-     *
-     *
      * <pre>
      * Count of expected failures.
      * </pre>
      *
      * <code>int32 expected_failures = 5 [json_name = "expectedFailures"];</code>
-     *
      * @return This builder for chaining.
      */
     public Builder clearExpectedFailures() {
@@ -1524,9 +1279,9 @@ public final class ResultSet extends com.google.protobuf.GeneratedMessageV3
       onChanged();
       return this;
     }
-
     @java.lang.Override
-    public final Builder setUnknownFields(final com.google.protobuf.UnknownFieldSet unknownFields) {
+    public final Builder setUnknownFields(
+        final com.google.protobuf.UnknownFieldSet unknownFields) {
       return super.setUnknownFields(unknownFields);
     }
 
@@ -1536,12 +1291,12 @@ public final class ResultSet extends com.google.protobuf.GeneratedMessageV3
       return super.mergeUnknownFields(unknownFields);
     }
 
+
     // @@protoc_insertion_point(builder_scope:buf.validate.conformance.harness.ResultSet)
   }
 
   // @@protoc_insertion_point(class_scope:buf.validate.conformance.harness.ResultSet)
   private static final build.buf.validate.conformance.harness.ResultSet DEFAULT_INSTANCE;
-
   static {
     DEFAULT_INSTANCE = new build.buf.validate.conformance.harness.ResultSet();
   }
@@ -1550,27 +1305,27 @@ public final class ResultSet extends com.google.protobuf.GeneratedMessageV3
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<ResultSet> PARSER =
-      new com.google.protobuf.AbstractParser<ResultSet>() {
-        @java.lang.Override
-        public ResultSet parsePartialFrom(
-            com.google.protobuf.CodedInputStream input,
-            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-            throws com.google.protobuf.InvalidProtocolBufferException {
-          Builder builder = newBuilder();
-          try {
-            builder.mergeFrom(input, extensionRegistry);
-          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-            throw e.setUnfinishedMessage(builder.buildPartial());
-          } catch (com.google.protobuf.UninitializedMessageException e) {
-            throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
-          } catch (java.io.IOException e) {
-            throw new com.google.protobuf.InvalidProtocolBufferException(e)
-                .setUnfinishedMessage(builder.buildPartial());
-          }
-          return builder.buildPartial();
-        }
-      };
+  private static final com.google.protobuf.Parser<ResultSet>
+      PARSER = new com.google.protobuf.AbstractParser<ResultSet>() {
+    @java.lang.Override
+    public ResultSet parsePartialFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      Builder builder = newBuilder();
+      try {
+        builder.mergeFrom(input, extensionRegistry);
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(builder.buildPartial());
+      } catch (com.google.protobuf.UninitializedMessageException e) {
+        throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(e)
+            .setUnfinishedMessage(builder.buildPartial());
+      }
+      return builder.buildPartial();
+    }
+  };
 
   public static com.google.protobuf.Parser<ResultSet> parser() {
     return PARSER;
@@ -1585,4 +1340,6 @@ public final class ResultSet extends com.google.protobuf.GeneratedMessageV3
   public build.buf.validate.conformance.harness.ResultSet getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
+
 }
+

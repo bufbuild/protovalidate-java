@@ -3,23 +3,31 @@
 
 package build.buf.validate.priv;
 
-public interface FieldConstraintsOrBuilder
-    extends
+public interface FieldConstraintsOrBuilder extends
     // @@protoc_insertion_point(interface_extends:buf.validate.priv.FieldConstraints)
     com.google.protobuf.MessageOrBuilder {
 
-  /** <code>repeated .buf.validate.priv.Constraint cel = 1 [json_name = "cel"];</code> */
-  java.util.List<build.buf.validate.priv.Constraint> getCelList();
-
-  /** <code>repeated .buf.validate.priv.Constraint cel = 1 [json_name = "cel"];</code> */
+  /**
+   * <code>repeated .buf.validate.priv.Constraint cel = 1 [json_name = "cel"];</code>
+   */
+  java.util.List<build.buf.validate.priv.Constraint> 
+      getCelList();
+  /**
+   * <code>repeated .buf.validate.priv.Constraint cel = 1 [json_name = "cel"];</code>
+   */
   build.buf.validate.priv.Constraint getCel(int index);
-
-  /** <code>repeated .buf.validate.priv.Constraint cel = 1 [json_name = "cel"];</code> */
+  /**
+   * <code>repeated .buf.validate.priv.Constraint cel = 1 [json_name = "cel"];</code>
+   */
   int getCelCount();
-
-  /** <code>repeated .buf.validate.priv.Constraint cel = 1 [json_name = "cel"];</code> */
-  java.util.List<? extends build.buf.validate.priv.ConstraintOrBuilder> getCelOrBuilderList();
-
-  /** <code>repeated .buf.validate.priv.Constraint cel = 1 [json_name = "cel"];</code> */
-  build.buf.validate.priv.ConstraintOrBuilder getCelOrBuilder(int index);
+  /**
+   * <code>repeated .buf.validate.priv.Constraint cel = 1 [json_name = "cel"];</code>
+   */
+  java.util.List<? extends build.buf.validate.priv.ConstraintOrBuilder> 
+      getCelOrBuilderList();
+  /**
+   * <code>repeated .buf.validate.priv.Constraint cel = 1 [json_name = "cel"];</code>
+   */
+  build.buf.validate.priv.ConstraintOrBuilder getCelOrBuilder(
+      int index);
 }

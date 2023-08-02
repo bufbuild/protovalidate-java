@@ -3,58 +3,53 @@
 
 package build.buf.validate.conformance.cases;
 
-/** Protobuf type {@code buf.validate.conformance.cases.MessageRequiredOneof} */
-public final class MessageRequiredOneof extends com.google.protobuf.GeneratedMessageV3
-    implements
+/**
+ * Protobuf type {@code buf.validate.conformance.cases.MessageRequiredOneof}
+ */
+public final class MessageRequiredOneof extends
+    com.google.protobuf.GeneratedMessageV3 implements
     // @@protoc_insertion_point(message_implements:buf.validate.conformance.cases.MessageRequiredOneof)
     MessageRequiredOneofOrBuilder {
-  private static final long serialVersionUID = 0L;
-
+private static final long serialVersionUID = 0L;
   // Use MessageRequiredOneof.newBuilder() to construct.
   private MessageRequiredOneof(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
-
-  private MessageRequiredOneof() {}
+  private MessageRequiredOneof() {
+  }
 
   @java.lang.Override
   @SuppressWarnings({"unused"})
-  protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
+  protected java.lang.Object newInstance(
+      UnusedPrivateParameter unused) {
     return new MessageRequiredOneof();
   }
 
-  public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
-    return build.buf.validate.conformance.cases.MessagesProto
-        .internal_static_buf_validate_conformance_cases_MessageRequiredOneof_descriptor;
+  public static final com.google.protobuf.Descriptors.Descriptor
+      getDescriptor() {
+    return build.buf.validate.conformance.cases.MessagesProto.internal_static_buf_validate_conformance_cases_MessageRequiredOneof_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return build.buf.validate.conformance.cases.MessagesProto
-        .internal_static_buf_validate_conformance_cases_MessageRequiredOneof_fieldAccessorTable
+    return build.buf.validate.conformance.cases.MessagesProto.internal_static_buf_validate_conformance_cases_MessageRequiredOneof_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            build.buf.validate.conformance.cases.MessageRequiredOneof.class,
-            build.buf.validate.conformance.cases.MessageRequiredOneof.Builder.class);
+            build.buf.validate.conformance.cases.MessageRequiredOneof.class, build.buf.validate.conformance.cases.MessageRequiredOneof.Builder.class);
   }
 
   private int oneCase_ = 0;
-
   @SuppressWarnings("serial")
   private java.lang.Object one_;
-
   public enum OneCase
-      implements
-          com.google.protobuf.Internal.EnumLite,
+      implements com.google.protobuf.Internal.EnumLite,
           com.google.protobuf.AbstractMessage.InternalOneOfEnum {
     VAL(1),
     ONE_NOT_SET(0);
     private final int value;
-
     private OneCase(int value) {
       this.value = value;
     }
-
     /**
      * @param value The number of the enum to look for.
      * @return The enum associated with the given number.
@@ -67,68 +62,54 @@ public final class MessageRequiredOneof extends com.google.protobuf.GeneratedMes
 
     public static OneCase forNumber(int value) {
       switch (value) {
-        case 1:
-          return VAL;
-        case 0:
-          return ONE_NOT_SET;
-        default:
-          return null;
+        case 1: return VAL;
+        case 0: return ONE_NOT_SET;
+        default: return null;
       }
     }
-
     public int getNumber() {
       return this.value;
     }
   };
 
-  public OneCase getOneCase() {
-    return OneCase.forNumber(oneCase_);
+  public OneCase
+  getOneCase() {
+    return OneCase.forNumber(
+        oneCase_);
   }
 
   public static final int VAL_FIELD_NUMBER = 1;
-
   /**
-   * <code>
-   * .buf.validate.conformance.cases.TestMsg val = 1 [json_name = "val", (.buf.validate.field) = { ... }
-   * </code>
-   *
+   * <code>.buf.validate.conformance.cases.TestMsg val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
    * @return Whether the val field is set.
    */
   @java.lang.Override
   public boolean hasVal() {
     return oneCase_ == 1;
   }
-
   /**
-   * <code>
-   * .buf.validate.conformance.cases.TestMsg val = 1 [json_name = "val", (.buf.validate.field) = { ... }
-   * </code>
-   *
+   * <code>.buf.validate.conformance.cases.TestMsg val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
    * @return The val.
    */
   @java.lang.Override
   public build.buf.validate.conformance.cases.TestMsg getVal() {
     if (oneCase_ == 1) {
-      return (build.buf.validate.conformance.cases.TestMsg) one_;
+       return (build.buf.validate.conformance.cases.TestMsg) one_;
     }
     return build.buf.validate.conformance.cases.TestMsg.getDefaultInstance();
   }
-
   /**
-   * <code>
-   * .buf.validate.conformance.cases.TestMsg val = 1 [json_name = "val", (.buf.validate.field) = { ... }
-   * </code>
+   * <code>.buf.validate.conformance.cases.TestMsg val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
    */
   @java.lang.Override
   public build.buf.validate.conformance.cases.TestMsgOrBuilder getValOrBuilder() {
     if (oneCase_ == 1) {
-      return (build.buf.validate.conformance.cases.TestMsg) one_;
+       return (build.buf.validate.conformance.cases.TestMsg) one_;
     }
     return build.buf.validate.conformance.cases.TestMsg.getDefaultInstance();
   }
 
   private byte memoizedIsInitialized = -1;
-
   @java.lang.Override
   public final boolean isInitialized() {
     byte isInitialized = memoizedIsInitialized;
@@ -140,7 +121,8 @@ public final class MessageRequiredOneof extends com.google.protobuf.GeneratedMes
   }
 
   @java.lang.Override
-  public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
+  public void writeTo(com.google.protobuf.CodedOutputStream output)
+                      throws java.io.IOException {
     if (oneCase_ == 1) {
       output.writeMessage(1, (build.buf.validate.conformance.cases.TestMsg) one_);
     }
@@ -154,9 +136,8 @@ public final class MessageRequiredOneof extends com.google.protobuf.GeneratedMes
 
     size = 0;
     if (oneCase_ == 1) {
-      size +=
-          com.google.protobuf.CodedOutputStream.computeMessageSize(
-              1, (build.buf.validate.conformance.cases.TestMsg) one_);
+      size += com.google.protobuf.CodedOutputStream
+        .computeMessageSize(1, (build.buf.validate.conformance.cases.TestMsg) one_);
     }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
@@ -166,18 +147,18 @@ public final class MessageRequiredOneof extends com.google.protobuf.GeneratedMes
   @java.lang.Override
   public boolean equals(final java.lang.Object obj) {
     if (obj == this) {
-      return true;
+     return true;
     }
     if (!(obj instanceof build.buf.validate.conformance.cases.MessageRequiredOneof)) {
       return super.equals(obj);
     }
-    build.buf.validate.conformance.cases.MessageRequiredOneof other =
-        (build.buf.validate.conformance.cases.MessageRequiredOneof) obj;
+    build.buf.validate.conformance.cases.MessageRequiredOneof other = (build.buf.validate.conformance.cases.MessageRequiredOneof) obj;
 
     if (!getOneCase().equals(other.getOneCase())) return false;
     switch (oneCase_) {
       case 1:
-        if (!getVal().equals(other.getVal())) return false;
+        if (!getVal()
+            .equals(other.getVal())) return false;
         break;
       case 0:
       default:
@@ -207,129 +188,127 @@ public final class MessageRequiredOneof extends com.google.protobuf.GeneratedMes
   }
 
   public static build.buf.validate.conformance.cases.MessageRequiredOneof parseFrom(
-      java.nio.ByteBuffer data) throws com.google.protobuf.InvalidProtocolBufferException {
+      java.nio.ByteBuffer data)
+      throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-
   public static build.buf.validate.conformance.cases.MessageRequiredOneof parseFrom(
-      java.nio.ByteBuffer data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      java.nio.ByteBuffer data,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-
   public static build.buf.validate.conformance.cases.MessageRequiredOneof parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-
   public static build.buf.validate.conformance.cases.MessageRequiredOneof parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-
   public static build.buf.validate.conformance.cases.MessageRequiredOneof parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-
   public static build.buf.validate.conformance.cases.MessageRequiredOneof parseFrom(
-      byte[] data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      byte[] data,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-
+  public static build.buf.validate.conformance.cases.MessageRequiredOneof parseFrom(java.io.InputStream input)
+      throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3
+        .parseWithIOException(PARSER, input);
+  }
   public static build.buf.validate.conformance.cases.MessageRequiredOneof parseFrom(
-      java.io.InputStream input) throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
+      java.io.InputStream input,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3
+        .parseWithIOException(PARSER, input, extensionRegistry);
   }
 
-  public static build.buf.validate.conformance.cases.MessageRequiredOneof parseFrom(
-      java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+  public static build.buf.validate.conformance.cases.MessageRequiredOneof parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
-        PARSER, input, extensionRegistry);
+    return com.google.protobuf.GeneratedMessageV3
+        .parseDelimitedWithIOException(PARSER, input);
   }
 
   public static build.buf.validate.conformance.cases.MessageRequiredOneof parseDelimitedFrom(
-      java.io.InputStream input) throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input);
-  }
-
-  public static build.buf.validate.conformance.cases.MessageRequiredOneof parseDelimitedFrom(
-      java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      java.io.InputStream input,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(
-        PARSER, input, extensionRegistry);
+    return com.google.protobuf.GeneratedMessageV3
+        .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-
   public static build.buf.validate.conformance.cases.MessageRequiredOneof parseFrom(
-      com.google.protobuf.CodedInputStream input) throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
+      com.google.protobuf.CodedInputStream input)
+      throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3
+        .parseWithIOException(PARSER, input);
   }
-
   public static build.buf.validate.conformance.cases.MessageRequiredOneof parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
-        PARSER, input, extensionRegistry);
+    return com.google.protobuf.GeneratedMessageV3
+        .parseWithIOException(PARSER, input, extensionRegistry);
   }
 
   @java.lang.Override
-  public Builder newBuilderForType() {
-    return newBuilder();
-  }
-
+  public Builder newBuilderForType() { return newBuilder(); }
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-
-  public static Builder newBuilder(
-      build.buf.validate.conformance.cases.MessageRequiredOneof prototype) {
+  public static Builder newBuilder(build.buf.validate.conformance.cases.MessageRequiredOneof prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
-
   @java.lang.Override
   public Builder toBuilder() {
-    return this == DEFAULT_INSTANCE ? new Builder() : new Builder().mergeFrom(this);
+    return this == DEFAULT_INSTANCE
+        ? new Builder() : new Builder().mergeFrom(this);
   }
 
   @java.lang.Override
-  protected Builder newBuilderForType(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+  protected Builder newBuilderForType(
+      com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
     Builder builder = new Builder(parent);
     return builder;
   }
-
-  /** Protobuf type {@code buf.validate.conformance.cases.MessageRequiredOneof} */
-  public static final class Builder extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
-      implements
+  /**
+   * Protobuf type {@code buf.validate.conformance.cases.MessageRequiredOneof}
+   */
+  public static final class Builder extends
+      com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
       // @@protoc_insertion_point(builder_implements:buf.validate.conformance.cases.MessageRequiredOneof)
       build.buf.validate.conformance.cases.MessageRequiredOneofOrBuilder {
-    public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
-      return build.buf.validate.conformance.cases.MessagesProto
-          .internal_static_buf_validate_conformance_cases_MessageRequiredOneof_descriptor;
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return build.buf.validate.conformance.cases.MessagesProto.internal_static_buf_validate_conformance_cases_MessageRequiredOneof_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return build.buf.validate.conformance.cases.MessagesProto
-          .internal_static_buf_validate_conformance_cases_MessageRequiredOneof_fieldAccessorTable
+      return build.buf.validate.conformance.cases.MessagesProto.internal_static_buf_validate_conformance_cases_MessageRequiredOneof_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              build.buf.validate.conformance.cases.MessageRequiredOneof.class,
-              build.buf.validate.conformance.cases.MessageRequiredOneof.Builder.class);
+              build.buf.validate.conformance.cases.MessageRequiredOneof.class, build.buf.validate.conformance.cases.MessageRequiredOneof.Builder.class);
     }
 
     // Construct using build.buf.validate.conformance.cases.MessageRequiredOneof.newBuilder()
-    private Builder() {}
+    private Builder() {
 
-    private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-      super(parent);
     }
 
+    private Builder(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      super(parent);
+
+    }
     @java.lang.Override
     public Builder clear() {
       super.clear();
@@ -343,9 +322,9 @@ public final class MessageRequiredOneof extends com.google.protobuf.GeneratedMes
     }
 
     @java.lang.Override
-    public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
-      return build.buf.validate.conformance.cases.MessagesProto
-          .internal_static_buf_validate_conformance_cases_MessageRequiredOneof_descriptor;
+    public com.google.protobuf.Descriptors.Descriptor
+        getDescriptorForType() {
+      return build.buf.validate.conformance.cases.MessagesProto.internal_static_buf_validate_conformance_cases_MessageRequiredOneof_descriptor;
     }
 
     @java.lang.Override
@@ -364,11 +343,8 @@ public final class MessageRequiredOneof extends com.google.protobuf.GeneratedMes
 
     @java.lang.Override
     public build.buf.validate.conformance.cases.MessageRequiredOneof buildPartial() {
-      build.buf.validate.conformance.cases.MessageRequiredOneof result =
-          new build.buf.validate.conformance.cases.MessageRequiredOneof(this);
-      if (bitField0_ != 0) {
-        buildPartial0(result);
-      }
+      build.buf.validate.conformance.cases.MessageRequiredOneof result = new build.buf.validate.conformance.cases.MessageRequiredOneof(this);
+      if (bitField0_ != 0) { buildPartial0(result); }
       buildPartialOneofs(result);
       onBuilt();
       return result;
@@ -378,11 +354,11 @@ public final class MessageRequiredOneof extends com.google.protobuf.GeneratedMes
       int from_bitField0_ = bitField0_;
     }
 
-    private void buildPartialOneofs(
-        build.buf.validate.conformance.cases.MessageRequiredOneof result) {
+    private void buildPartialOneofs(build.buf.validate.conformance.cases.MessageRequiredOneof result) {
       result.oneCase_ = oneCase_;
       result.one_ = this.one_;
-      if (oneCase_ == 1 && valBuilder_ != null) {
+      if (oneCase_ == 1 &&
+          valBuilder_ != null) {
         result.one_ = valBuilder_.build();
       }
     }
@@ -391,39 +367,38 @@ public final class MessageRequiredOneof extends com.google.protobuf.GeneratedMes
     public Builder clone() {
       return super.clone();
     }
-
     @java.lang.Override
     public Builder setField(
-        com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field,
+        java.lang.Object value) {
       return super.setField(field, value);
     }
-
     @java.lang.Override
-    public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
+    public Builder clearField(
+        com.google.protobuf.Descriptors.FieldDescriptor field) {
       return super.clearField(field);
     }
-
     @java.lang.Override
-    public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+    public Builder clearOneof(
+        com.google.protobuf.Descriptors.OneofDescriptor oneof) {
       return super.clearOneof(oneof);
     }
-
     @java.lang.Override
     public Builder setRepeatedField(
-        com.google.protobuf.Descriptors.FieldDescriptor field, int index, java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field,
+        int index, java.lang.Object value) {
       return super.setRepeatedField(field, index, value);
     }
-
     @java.lang.Override
     public Builder addRepeatedField(
-        com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field,
+        java.lang.Object value) {
       return super.addRepeatedField(field, value);
     }
-
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
       if (other instanceof build.buf.validate.conformance.cases.MessageRequiredOneof) {
-        return mergeFrom((build.buf.validate.conformance.cases.MessageRequiredOneof) other);
+        return mergeFrom((build.buf.validate.conformance.cases.MessageRequiredOneof)other);
       } else {
         super.mergeFrom(other);
         return this;
@@ -431,18 +406,15 @@ public final class MessageRequiredOneof extends com.google.protobuf.GeneratedMes
     }
 
     public Builder mergeFrom(build.buf.validate.conformance.cases.MessageRequiredOneof other) {
-      if (other == build.buf.validate.conformance.cases.MessageRequiredOneof.getDefaultInstance())
-        return this;
+      if (other == build.buf.validate.conformance.cases.MessageRequiredOneof.getDefaultInstance()) return this;
       switch (other.getOneCase()) {
-        case VAL:
-          {
-            mergeVal(other.getVal());
-            break;
-          }
-        case ONE_NOT_SET:
-          {
-            break;
-          }
+        case VAL: {
+          mergeVal(other.getVal());
+          break;
+        }
+        case ONE_NOT_SET: {
+          break;
+        }
       }
       this.mergeUnknownFields(other.getUnknownFields());
       onChanged();
@@ -470,19 +442,19 @@ public final class MessageRequiredOneof extends com.google.protobuf.GeneratedMes
             case 0:
               done = true;
               break;
-            case 10:
-              {
-                input.readMessage(getValFieldBuilder().getBuilder(), extensionRegistry);
-                oneCase_ = 1;
-                break;
-              } // case 10
-            default:
-              {
-                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
-                  done = true; // was an endgroup tag
-                }
-                break;
-              } // default:
+            case 10: {
+              input.readMessage(
+                  getValFieldBuilder().getBuilder(),
+                  extensionRegistry);
+              oneCase_ = 1;
+              break;
+            } // case 10
+            default: {
+              if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                done = true; // was an endgroup tag
+              }
+              break;
+            } // default:
           } // switch (tag)
         } // while (!done)
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -492,12 +464,12 @@ public final class MessageRequiredOneof extends com.google.protobuf.GeneratedMes
       } // finally
       return this;
     }
-
     private int oneCase_ = 0;
     private java.lang.Object one_;
-
-    public OneCase getOneCase() {
-      return OneCase.forNumber(oneCase_);
+    public OneCase
+        getOneCase() {
+      return OneCase.forNumber(
+          oneCase_);
     }
 
     public Builder clearOne() {
@@ -510,28 +482,17 @@ public final class MessageRequiredOneof extends com.google.protobuf.GeneratedMes
     private int bitField0_;
 
     private com.google.protobuf.SingleFieldBuilderV3<
-            build.buf.validate.conformance.cases.TestMsg,
-            build.buf.validate.conformance.cases.TestMsg.Builder,
-            build.buf.validate.conformance.cases.TestMsgOrBuilder>
-        valBuilder_;
-
+        build.buf.validate.conformance.cases.TestMsg, build.buf.validate.conformance.cases.TestMsg.Builder, build.buf.validate.conformance.cases.TestMsgOrBuilder> valBuilder_;
     /**
-     * <code>
-     * .buf.validate.conformance.cases.TestMsg val = 1 [json_name = "val", (.buf.validate.field) = { ... }
-     * </code>
-     *
+     * <code>.buf.validate.conformance.cases.TestMsg val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
      * @return Whether the val field is set.
      */
     @java.lang.Override
     public boolean hasVal() {
       return oneCase_ == 1;
     }
-
     /**
-     * <code>
-     * .buf.validate.conformance.cases.TestMsg val = 1 [json_name = "val", (.buf.validate.field) = { ... }
-     * </code>
-     *
+     * <code>.buf.validate.conformance.cases.TestMsg val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
      * @return The val.
      */
     @java.lang.Override
@@ -548,11 +509,8 @@ public final class MessageRequiredOneof extends com.google.protobuf.GeneratedMes
         return build.buf.validate.conformance.cases.TestMsg.getDefaultInstance();
       }
     }
-
     /**
-     * <code>
-     * .buf.validate.conformance.cases.TestMsg val = 1 [json_name = "val", (.buf.validate.field) = { ... }
-     * </code>
+     * <code>.buf.validate.conformance.cases.TestMsg val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
      */
     public Builder setVal(build.buf.validate.conformance.cases.TestMsg value) {
       if (valBuilder_ == null) {
@@ -567,13 +525,11 @@ public final class MessageRequiredOneof extends com.google.protobuf.GeneratedMes
       oneCase_ = 1;
       return this;
     }
-
     /**
-     * <code>
-     * .buf.validate.conformance.cases.TestMsg val = 1 [json_name = "val", (.buf.validate.field) = { ... }
-     * </code>
+     * <code>.buf.validate.conformance.cases.TestMsg val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
      */
-    public Builder setVal(build.buf.validate.conformance.cases.TestMsg.Builder builderForValue) {
+    public Builder setVal(
+        build.buf.validate.conformance.cases.TestMsg.Builder builderForValue) {
       if (valBuilder_ == null) {
         one_ = builderForValue.build();
         onChanged();
@@ -583,21 +539,15 @@ public final class MessageRequiredOneof extends com.google.protobuf.GeneratedMes
       oneCase_ = 1;
       return this;
     }
-
     /**
-     * <code>
-     * .buf.validate.conformance.cases.TestMsg val = 1 [json_name = "val", (.buf.validate.field) = { ... }
-     * </code>
+     * <code>.buf.validate.conformance.cases.TestMsg val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
      */
     public Builder mergeVal(build.buf.validate.conformance.cases.TestMsg value) {
       if (valBuilder_ == null) {
-        if (oneCase_ == 1
-            && one_ != build.buf.validate.conformance.cases.TestMsg.getDefaultInstance()) {
-          one_ =
-              build.buf.validate.conformance.cases.TestMsg.newBuilder(
-                      (build.buf.validate.conformance.cases.TestMsg) one_)
-                  .mergeFrom(value)
-                  .buildPartial();
+        if (oneCase_ == 1 &&
+            one_ != build.buf.validate.conformance.cases.TestMsg.getDefaultInstance()) {
+          one_ = build.buf.validate.conformance.cases.TestMsg.newBuilder((build.buf.validate.conformance.cases.TestMsg) one_)
+              .mergeFrom(value).buildPartial();
         } else {
           one_ = value;
         }
@@ -612,11 +562,8 @@ public final class MessageRequiredOneof extends com.google.protobuf.GeneratedMes
       oneCase_ = 1;
       return this;
     }
-
     /**
-     * <code>
-     * .buf.validate.conformance.cases.TestMsg val = 1 [json_name = "val", (.buf.validate.field) = { ... }
-     * </code>
+     * <code>.buf.validate.conformance.cases.TestMsg val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
      */
     public Builder clearVal() {
       if (valBuilder_ == null) {
@@ -634,20 +581,14 @@ public final class MessageRequiredOneof extends com.google.protobuf.GeneratedMes
       }
       return this;
     }
-
     /**
-     * <code>
-     * .buf.validate.conformance.cases.TestMsg val = 1 [json_name = "val", (.buf.validate.field) = { ... }
-     * </code>
+     * <code>.buf.validate.conformance.cases.TestMsg val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
      */
     public build.buf.validate.conformance.cases.TestMsg.Builder getValBuilder() {
       return getValFieldBuilder().getBuilder();
     }
-
     /**
-     * <code>
-     * .buf.validate.conformance.cases.TestMsg val = 1 [json_name = "val", (.buf.validate.field) = { ... }
-     * </code>
+     * <code>.buf.validate.conformance.cases.TestMsg val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
      */
     @java.lang.Override
     public build.buf.validate.conformance.cases.TestMsgOrBuilder getValOrBuilder() {
@@ -660,26 +601,18 @@ public final class MessageRequiredOneof extends com.google.protobuf.GeneratedMes
         return build.buf.validate.conformance.cases.TestMsg.getDefaultInstance();
       }
     }
-
     /**
-     * <code>
-     * .buf.validate.conformance.cases.TestMsg val = 1 [json_name = "val", (.buf.validate.field) = { ... }
-     * </code>
+     * <code>.buf.validate.conformance.cases.TestMsg val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
      */
     private com.google.protobuf.SingleFieldBuilderV3<
-            build.buf.validate.conformance.cases.TestMsg,
-            build.buf.validate.conformance.cases.TestMsg.Builder,
-            build.buf.validate.conformance.cases.TestMsgOrBuilder>
+        build.buf.validate.conformance.cases.TestMsg, build.buf.validate.conformance.cases.TestMsg.Builder, build.buf.validate.conformance.cases.TestMsgOrBuilder> 
         getValFieldBuilder() {
       if (valBuilder_ == null) {
         if (!(oneCase_ == 1)) {
           one_ = build.buf.validate.conformance.cases.TestMsg.getDefaultInstance();
         }
-        valBuilder_ =
-            new com.google.protobuf.SingleFieldBuilderV3<
-                build.buf.validate.conformance.cases.TestMsg,
-                build.buf.validate.conformance.cases.TestMsg.Builder,
-                build.buf.validate.conformance.cases.TestMsgOrBuilder>(
+        valBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+            build.buf.validate.conformance.cases.TestMsg, build.buf.validate.conformance.cases.TestMsg.Builder, build.buf.validate.conformance.cases.TestMsgOrBuilder>(
                 (build.buf.validate.conformance.cases.TestMsg) one_,
                 getParentForChildren(),
                 isClean());
@@ -689,9 +622,9 @@ public final class MessageRequiredOneof extends com.google.protobuf.GeneratedMes
       onChanged();
       return valBuilder_;
     }
-
     @java.lang.Override
-    public final Builder setUnknownFields(final com.google.protobuf.UnknownFieldSet unknownFields) {
+    public final Builder setUnknownFields(
+        final com.google.protobuf.UnknownFieldSet unknownFields) {
       return super.setUnknownFields(unknownFields);
     }
 
@@ -701,12 +634,12 @@ public final class MessageRequiredOneof extends com.google.protobuf.GeneratedMes
       return super.mergeUnknownFields(unknownFields);
     }
 
+
     // @@protoc_insertion_point(builder_scope:buf.validate.conformance.cases.MessageRequiredOneof)
   }
 
   // @@protoc_insertion_point(class_scope:buf.validate.conformance.cases.MessageRequiredOneof)
   private static final build.buf.validate.conformance.cases.MessageRequiredOneof DEFAULT_INSTANCE;
-
   static {
     DEFAULT_INSTANCE = new build.buf.validate.conformance.cases.MessageRequiredOneof();
   }
@@ -715,27 +648,27 @@ public final class MessageRequiredOneof extends com.google.protobuf.GeneratedMes
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<MessageRequiredOneof> PARSER =
-      new com.google.protobuf.AbstractParser<MessageRequiredOneof>() {
-        @java.lang.Override
-        public MessageRequiredOneof parsePartialFrom(
-            com.google.protobuf.CodedInputStream input,
-            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-            throws com.google.protobuf.InvalidProtocolBufferException {
-          Builder builder = newBuilder();
-          try {
-            builder.mergeFrom(input, extensionRegistry);
-          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-            throw e.setUnfinishedMessage(builder.buildPartial());
-          } catch (com.google.protobuf.UninitializedMessageException e) {
-            throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
-          } catch (java.io.IOException e) {
-            throw new com.google.protobuf.InvalidProtocolBufferException(e)
-                .setUnfinishedMessage(builder.buildPartial());
-          }
-          return builder.buildPartial();
-        }
-      };
+  private static final com.google.protobuf.Parser<MessageRequiredOneof>
+      PARSER = new com.google.protobuf.AbstractParser<MessageRequiredOneof>() {
+    @java.lang.Override
+    public MessageRequiredOneof parsePartialFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      Builder builder = newBuilder();
+      try {
+        builder.mergeFrom(input, extensionRegistry);
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(builder.buildPartial());
+      } catch (com.google.protobuf.UninitializedMessageException e) {
+        throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(e)
+            .setUnfinishedMessage(builder.buildPartial());
+      }
+      return builder.buildPartial();
+    }
+  };
 
   public static com.google.protobuf.Parser<MessageRequiredOneof> parser() {
     return PARSER;
@@ -750,4 +683,6 @@ public final class MessageRequiredOneof extends com.google.protobuf.GeneratedMes
   public build.buf.validate.conformance.cases.MessageRequiredOneof getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
+
 }
+

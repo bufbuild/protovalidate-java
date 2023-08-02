@@ -5,37 +5,39 @@ package build.buf.validate.conformance.cases;
 
 public final class FilenameWithDashProto {
   private FilenameWithDashProto() {}
-
-  public static void registerAllExtensions(com.google.protobuf.ExtensionRegistryLite registry) {}
-
-  public static void registerAllExtensions(com.google.protobuf.ExtensionRegistry registry) {
-    registerAllExtensions((com.google.protobuf.ExtensionRegistryLite) registry);
+  public static void registerAllExtensions(
+      com.google.protobuf.ExtensionRegistryLite registry) {
   }
 
-  public static com.google.protobuf.Descriptors.FileDescriptor getDescriptor() {
+  public static void registerAllExtensions(
+      com.google.protobuf.ExtensionRegistry registry) {
+    registerAllExtensions(
+        (com.google.protobuf.ExtensionRegistryLite) registry);
+  }
+
+  public static com.google.protobuf.Descriptors.FileDescriptor
+      getDescriptor() {
     return descriptor;
   }
-
-  private static com.google.protobuf.Descriptors.FileDescriptor descriptor;
-
+  private static  com.google.protobuf.Descriptors.FileDescriptor
+      descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n7buf/validate/conformance/cases/filenam"
-          + "e-with-dash.proto\022\036buf.validate.conforma"
-          + "nce.cases\032\033buf/validate/validate.protoB\331"
-          + "\001\n$build.buf.validate.conformance.casesB"
-          + "\025FilenameWithDashProtoP\001\242\002\004BVCC\252\002\036Buf.Va"
-          + "lidate.Conformance.Cases\312\002\036Buf\\Validate\\"
-          + "Conformance\\Cases\342\002*Buf\\Validate\\Conform"
-          + "ance\\Cases\\GPBMetadata\352\002!Buf::Validate::"
-          + "Conformance::Casesb\006proto3"
+      "\n7buf/validate/conformance/cases/filenam" +
+      "e-with-dash.proto\022\036buf.validate.conforma" +
+      "nce.cases\032\033buf/validate/validate.protoB\331" +
+      "\001\n$build.buf.validate.conformance.casesB" +
+      "\025FilenameWithDashProtoP\001\242\002\004BVCC\252\002\036Buf.Va" +
+      "lidate.Conformance.Cases\312\002\036Buf\\Validate\\" +
+      "Conformance\\Cases\342\002*Buf\\Validate\\Conform" +
+      "ance\\Cases\\GPBMetadata\352\002!Buf::Validate::" +
+      "Conformance::Casesb\006proto3"
     };
-    descriptor =
-        com.google.protobuf.Descriptors.FileDescriptor.internalBuildGeneratedFileFrom(
-            descriptorData,
-            new com.google.protobuf.Descriptors.FileDescriptor[] {
-              build.buf.validate.ValidateProto.getDescriptor(),
-            });
+    descriptor = com.google.protobuf.Descriptors.FileDescriptor
+      .internalBuildGeneratedFileFrom(descriptorData,
+        new com.google.protobuf.Descriptors.FileDescriptor[] {
+          build.buf.validate.ValidateProto.getDescriptor(),
+        });
     build.buf.validate.ValidateProto.getDescriptor();
   }
 

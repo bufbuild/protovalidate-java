@@ -3,14 +3,12 @@
 
 package build.buf.validate.conformance.cases;
 
-public interface DoubleGTELTEOrBuilder
-    extends
+public interface DoubleGTELTEOrBuilder extends
     // @@protoc_insertion_point(interface_extends:buf.validate.conformance.cases.DoubleGTELTE)
     com.google.protobuf.MessageOrBuilder {
 
   /**
    * <code>double val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
-   *
    * @return The val.
    */
   double getVal();

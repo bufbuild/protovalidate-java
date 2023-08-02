@@ -4,62 +4,69 @@
 package build.buf.validate.conformance.cases.other_package;
 
 /**
- *
- *
  * <pre>
  * Validate message embedding across packages.
  * </pre>
  *
  * Protobuf type {@code buf.validate.conformance.cases.other_package.Embed}
  */
-public final class Embed extends com.google.protobuf.GeneratedMessageV3
-    implements
+public final class Embed extends
+    com.google.protobuf.GeneratedMessageV3 implements
     // @@protoc_insertion_point(message_implements:buf.validate.conformance.cases.other_package.Embed)
     EmbedOrBuilder {
-  private static final long serialVersionUID = 0L;
-
+private static final long serialVersionUID = 0L;
   // Use Embed.newBuilder() to construct.
   private Embed(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
-
-  private Embed() {}
+  private Embed() {
+  }
 
   @java.lang.Override
   @SuppressWarnings({"unused"})
-  protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
+  protected java.lang.Object newInstance(
+      UnusedPrivateParameter unused) {
     return new Embed();
   }
 
-  public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
-    return build.buf.validate.conformance.cases.other_package.EmbedProto
-        .internal_static_buf_validate_conformance_cases_other_package_Embed_descriptor;
+  public static final com.google.protobuf.Descriptors.Descriptor
+      getDescriptor() {
+    return build.buf.validate.conformance.cases.other_package.EmbedProto.internal_static_buf_validate_conformance_cases_other_package_Embed_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return build.buf.validate.conformance.cases.other_package.EmbedProto
-        .internal_static_buf_validate_conformance_cases_other_package_Embed_fieldAccessorTable
+    return build.buf.validate.conformance.cases.other_package.EmbedProto.internal_static_buf_validate_conformance_cases_other_package_Embed_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            build.buf.validate.conformance.cases.other_package.Embed.class,
-            build.buf.validate.conformance.cases.other_package.Embed.Builder.class);
+            build.buf.validate.conformance.cases.other_package.Embed.class, build.buf.validate.conformance.cases.other_package.Embed.Builder.class);
   }
 
-  /** Protobuf enum {@code buf.validate.conformance.cases.other_package.Embed.Enumerated} */
-  public enum Enumerated implements com.google.protobuf.ProtocolMessageEnum {
-    /** <code>ENUMERATED_UNSPECIFIED = 0;</code> */
+  /**
+   * Protobuf enum {@code buf.validate.conformance.cases.other_package.Embed.Enumerated}
+   */
+  public enum Enumerated
+      implements com.google.protobuf.ProtocolMessageEnum {
+    /**
+     * <code>ENUMERATED_UNSPECIFIED = 0;</code>
+     */
     ENUMERATED_UNSPECIFIED(0),
-    /** <code>ENUMERATED_VALUE = 1;</code> */
+    /**
+     * <code>ENUMERATED_VALUE = 1;</code>
+     */
     ENUMERATED_VALUE(1),
     UNRECOGNIZED(-1),
     ;
 
-    /** <code>ENUMERATED_UNSPECIFIED = 0;</code> */
+    /**
+     * <code>ENUMERATED_UNSPECIFIED = 0;</code>
+     */
     public static final int ENUMERATED_UNSPECIFIED_VALUE = 0;
-
-    /** <code>ENUMERATED_VALUE = 1;</code> */
+    /**
+     * <code>ENUMERATED_VALUE = 1;</code>
+     */
     public static final int ENUMERATED_VALUE_VALUE = 1;
+
 
     public final int getNumber() {
       if (this == UNRECOGNIZED) {
@@ -85,49 +92,48 @@ public final class Embed extends com.google.protobuf.GeneratedMessageV3
      */
     public static Enumerated forNumber(int value) {
       switch (value) {
-        case 0:
-          return ENUMERATED_UNSPECIFIED;
-        case 1:
-          return ENUMERATED_VALUE;
-        default:
-          return null;
+        case 0: return ENUMERATED_UNSPECIFIED;
+        case 1: return ENUMERATED_VALUE;
+        default: return null;
       }
     }
 
-    public static com.google.protobuf.Internal.EnumLiteMap<Enumerated> internalGetValueMap() {
+    public static com.google.protobuf.Internal.EnumLiteMap<Enumerated>
+        internalGetValueMap() {
       return internalValueMap;
     }
+    private static final com.google.protobuf.Internal.EnumLiteMap<
+        Enumerated> internalValueMap =
+          new com.google.protobuf.Internal.EnumLiteMap<Enumerated>() {
+            public Enumerated findValueByNumber(int number) {
+              return Enumerated.forNumber(number);
+            }
+          };
 
-    private static final com.google.protobuf.Internal.EnumLiteMap<Enumerated> internalValueMap =
-        new com.google.protobuf.Internal.EnumLiteMap<Enumerated>() {
-          public Enumerated findValueByNumber(int number) {
-            return Enumerated.forNumber(number);
-          }
-        };
-
-    public final com.google.protobuf.Descriptors.EnumValueDescriptor getValueDescriptor() {
+    public final com.google.protobuf.Descriptors.EnumValueDescriptor
+        getValueDescriptor() {
       if (this == UNRECOGNIZED) {
         throw new java.lang.IllegalStateException(
             "Can't get the descriptor of an unrecognized enum value.");
       }
       return getDescriptor().getValues().get(ordinal());
     }
-
-    public final com.google.protobuf.Descriptors.EnumDescriptor getDescriptorForType() {
+    public final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptorForType() {
       return getDescriptor();
     }
-
-    public static final com.google.protobuf.Descriptors.EnumDescriptor getDescriptor() {
-      return build.buf.validate.conformance.cases.other_package.Embed.getDescriptor()
-          .getEnumTypes()
-          .get(0);
+    public static final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptor() {
+      return build.buf.validate.conformance.cases.other_package.Embed.getDescriptor().getEnumTypes().get(0);
     }
 
     private static final Enumerated[] VALUES = values();
 
-    public static Enumerated valueOf(com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+    public static Enumerated valueOf(
+        com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
       if (desc.getType() != getDescriptor()) {
-        throw new java.lang.IllegalArgumentException("EnumValueDescriptor is not for this type.");
+        throw new java.lang.IllegalArgumentException(
+          "EnumValueDescriptor is not for this type.");
       }
       if (desc.getIndex() == -1) {
         return UNRECOGNIZED;
@@ -144,63 +150,70 @@ public final class Embed extends com.google.protobuf.GeneratedMessageV3
     // @@protoc_insertion_point(enum_scope:buf.validate.conformance.cases.other_package.Embed.Enumerated)
   }
 
-  public interface DoubleEmbedOrBuilder
-      extends
+  public interface DoubleEmbedOrBuilder extends
       // @@protoc_insertion_point(interface_extends:buf.validate.conformance.cases.other_package.Embed.DoubleEmbed)
-      com.google.protobuf.MessageOrBuilder {}
-
-  /** Protobuf type {@code buf.validate.conformance.cases.other_package.Embed.DoubleEmbed} */
-  public static final class DoubleEmbed extends com.google.protobuf.GeneratedMessageV3
-      implements
+      com.google.protobuf.MessageOrBuilder {
+  }
+  /**
+   * Protobuf type {@code buf.validate.conformance.cases.other_package.Embed.DoubleEmbed}
+   */
+  public static final class DoubleEmbed extends
+      com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:buf.validate.conformance.cases.other_package.Embed.DoubleEmbed)
       DoubleEmbedOrBuilder {
-    private static final long serialVersionUID = 0L;
-
+  private static final long serialVersionUID = 0L;
     // Use DoubleEmbed.newBuilder() to construct.
     private DoubleEmbed(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
-
-    private DoubleEmbed() {}
+    private DoubleEmbed() {
+    }
 
     @java.lang.Override
     @SuppressWarnings({"unused"})
-    protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
       return new DoubleEmbed();
     }
 
-    public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
-      return build.buf.validate.conformance.cases.other_package.EmbedProto
-          .internal_static_buf_validate_conformance_cases_other_package_Embed_DoubleEmbed_descriptor;
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return build.buf.validate.conformance.cases.other_package.EmbedProto.internal_static_buf_validate_conformance_cases_other_package_Embed_DoubleEmbed_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return build.buf.validate.conformance.cases.other_package.EmbedProto
-          .internal_static_buf_validate_conformance_cases_other_package_Embed_DoubleEmbed_fieldAccessorTable
+      return build.buf.validate.conformance.cases.other_package.EmbedProto.internal_static_buf_validate_conformance_cases_other_package_Embed_DoubleEmbed_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              build.buf.validate.conformance.cases.other_package.Embed.DoubleEmbed.class,
-              build.buf.validate.conformance.cases.other_package.Embed.DoubleEmbed.Builder.class);
+              build.buf.validate.conformance.cases.other_package.Embed.DoubleEmbed.class, build.buf.validate.conformance.cases.other_package.Embed.DoubleEmbed.Builder.class);
     }
 
     /**
-     * Protobuf enum {@code
-     * buf.validate.conformance.cases.other_package.Embed.DoubleEmbed.DoubleEnumerated}
+     * Protobuf enum {@code buf.validate.conformance.cases.other_package.Embed.DoubleEmbed.DoubleEnumerated}
      */
-    public enum DoubleEnumerated implements com.google.protobuf.ProtocolMessageEnum {
-      /** <code>DOUBLE_ENUMERATED_UNSPECIFIED = 0;</code> */
+    public enum DoubleEnumerated
+        implements com.google.protobuf.ProtocolMessageEnum {
+      /**
+       * <code>DOUBLE_ENUMERATED_UNSPECIFIED = 0;</code>
+       */
       DOUBLE_ENUMERATED_UNSPECIFIED(0),
-      /** <code>DOUBLE_ENUMERATED_VALUE = 1;</code> */
+      /**
+       * <code>DOUBLE_ENUMERATED_VALUE = 1;</code>
+       */
       DOUBLE_ENUMERATED_VALUE(1),
       UNRECOGNIZED(-1),
       ;
 
-      /** <code>DOUBLE_ENUMERATED_UNSPECIFIED = 0;</code> */
+      /**
+       * <code>DOUBLE_ENUMERATED_UNSPECIFIED = 0;</code>
+       */
       public static final int DOUBLE_ENUMERATED_UNSPECIFIED_VALUE = 0;
-
-      /** <code>DOUBLE_ENUMERATED_VALUE = 1;</code> */
+      /**
+       * <code>DOUBLE_ENUMERATED_VALUE = 1;</code>
+       */
       public static final int DOUBLE_ENUMERATED_VALUE_VALUE = 1;
+
 
       public final int getNumber() {
         if (this == UNRECOGNIZED) {
@@ -226,12 +239,9 @@ public final class Embed extends com.google.protobuf.GeneratedMessageV3
        */
       public static DoubleEnumerated forNumber(int value) {
         switch (value) {
-          case 0:
-            return DOUBLE_ENUMERATED_UNSPECIFIED;
-          case 1:
-            return DOUBLE_ENUMERATED_VALUE;
-          default:
-            return null;
+          case 0: return DOUBLE_ENUMERATED_UNSPECIFIED;
+          case 1: return DOUBLE_ENUMERATED_VALUE;
+          default: return null;
         }
       }
 
@@ -239,31 +249,29 @@ public final class Embed extends com.google.protobuf.GeneratedMessageV3
           internalGetValueMap() {
         return internalValueMap;
       }
+      private static final com.google.protobuf.Internal.EnumLiteMap<
+          DoubleEnumerated> internalValueMap =
+            new com.google.protobuf.Internal.EnumLiteMap<DoubleEnumerated>() {
+              public DoubleEnumerated findValueByNumber(int number) {
+                return DoubleEnumerated.forNumber(number);
+              }
+            };
 
-      private static final com.google.protobuf.Internal.EnumLiteMap<DoubleEnumerated>
-          internalValueMap =
-              new com.google.protobuf.Internal.EnumLiteMap<DoubleEnumerated>() {
-                public DoubleEnumerated findValueByNumber(int number) {
-                  return DoubleEnumerated.forNumber(number);
-                }
-              };
-
-      public final com.google.protobuf.Descriptors.EnumValueDescriptor getValueDescriptor() {
+      public final com.google.protobuf.Descriptors.EnumValueDescriptor
+          getValueDescriptor() {
         if (this == UNRECOGNIZED) {
           throw new java.lang.IllegalStateException(
               "Can't get the descriptor of an unrecognized enum value.");
         }
         return getDescriptor().getValues().get(ordinal());
       }
-
-      public final com.google.protobuf.Descriptors.EnumDescriptor getDescriptorForType() {
+      public final com.google.protobuf.Descriptors.EnumDescriptor
+          getDescriptorForType() {
         return getDescriptor();
       }
-
-      public static final com.google.protobuf.Descriptors.EnumDescriptor getDescriptor() {
-        return build.buf.validate.conformance.cases.other_package.Embed.DoubleEmbed.getDescriptor()
-            .getEnumTypes()
-            .get(0);
+      public static final com.google.protobuf.Descriptors.EnumDescriptor
+          getDescriptor() {
+        return build.buf.validate.conformance.cases.other_package.Embed.DoubleEmbed.getDescriptor().getEnumTypes().get(0);
       }
 
       private static final DoubleEnumerated[] VALUES = values();
@@ -271,7 +279,8 @@ public final class Embed extends com.google.protobuf.GeneratedMessageV3
       public static DoubleEnumerated valueOf(
           com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
         if (desc.getType() != getDescriptor()) {
-          throw new java.lang.IllegalArgumentException("EnumValueDescriptor is not for this type.");
+          throw new java.lang.IllegalArgumentException(
+            "EnumValueDescriptor is not for this type.");
         }
         if (desc.getIndex() == -1) {
           return UNRECOGNIZED;
@@ -289,7 +298,6 @@ public final class Embed extends com.google.protobuf.GeneratedMessageV3
     }
 
     private byte memoizedIsInitialized = -1;
-
     @java.lang.Override
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -301,7 +309,8 @@ public final class Embed extends com.google.protobuf.GeneratedMessageV3
     }
 
     @java.lang.Override
-    public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
       getUnknownFields().writeTo(output);
     }
 
@@ -319,13 +328,12 @@ public final class Embed extends com.google.protobuf.GeneratedMessageV3
     @java.lang.Override
     public boolean equals(final java.lang.Object obj) {
       if (obj == this) {
-        return true;
+       return true;
       }
       if (!(obj instanceof build.buf.validate.conformance.cases.other_package.Embed.DoubleEmbed)) {
         return super.equals(obj);
       }
-      build.buf.validate.conformance.cases.other_package.Embed.DoubleEmbed other =
-          (build.buf.validate.conformance.cases.other_package.Embed.DoubleEmbed) obj;
+      build.buf.validate.conformance.cases.other_package.Embed.DoubleEmbed other = (build.buf.validate.conformance.cases.other_package.Embed.DoubleEmbed) obj;
 
       if (!getUnknownFields().equals(other.getUnknownFields())) return false;
       return true;
@@ -344,95 +352,89 @@ public final class Embed extends com.google.protobuf.GeneratedMessageV3
     }
 
     public static build.buf.validate.conformance.cases.other_package.Embed.DoubleEmbed parseFrom(
-        java.nio.ByteBuffer data) throws com.google.protobuf.InvalidProtocolBufferException {
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-
     public static build.buf.validate.conformance.cases.other_package.Embed.DoubleEmbed parseFrom(
-        java.nio.ByteBuffer data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-
     public static build.buf.validate.conformance.cases.other_package.Embed.DoubleEmbed parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-
     public static build.buf.validate.conformance.cases.other_package.Embed.DoubleEmbed parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-
-    public static build.buf.validate.conformance.cases.other_package.Embed.DoubleEmbed parseFrom(
-        byte[] data) throws com.google.protobuf.InvalidProtocolBufferException {
+    public static build.buf.validate.conformance.cases.other_package.Embed.DoubleEmbed parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-
     public static build.buf.validate.conformance.cases.other_package.Embed.DoubleEmbed parseFrom(
-        byte[] data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-
-    public static build.buf.validate.conformance.cases.other_package.Embed.DoubleEmbed parseFrom(
-        java.io.InputStream input) throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
-    }
-
-    public static build.buf.validate.conformance.cases.other_package.Embed.DoubleEmbed parseFrom(
-        java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+    public static build.buf.validate.conformance.cases.other_package.Embed.DoubleEmbed parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
-          PARSER, input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
     }
-
-    public static build.buf.validate.conformance.cases.other_package.Embed.DoubleEmbed
-        parseDelimitedFrom(java.io.InputStream input) throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input);
-    }
-
-    public static build.buf.validate.conformance.cases.other_package.Embed.DoubleEmbed
-        parseDelimitedFrom(
-            java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-            throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(
-          PARSER, input, extensionRegistry);
-    }
-
     public static build.buf.validate.conformance.cases.other_package.Embed.DoubleEmbed parseFrom(
-        com.google.protobuf.CodedInputStream input) throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
+    public static build.buf.validate.conformance.cases.other_package.Embed.DoubleEmbed parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+
+    public static build.buf.validate.conformance.cases.other_package.Embed.DoubleEmbed parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static build.buf.validate.conformance.cases.other_package.Embed.DoubleEmbed parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
     public static build.buf.validate.conformance.cases.other_package.Embed.DoubleEmbed parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
-          PARSER, input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
     @java.lang.Override
-    public Builder newBuilderForType() {
-      return newBuilder();
-    }
-
+    public Builder newBuilderForType() { return newBuilder(); }
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-
-    public static Builder newBuilder(
-        build.buf.validate.conformance.cases.other_package.Embed.DoubleEmbed prototype) {
+    public static Builder newBuilder(build.buf.validate.conformance.cases.other_package.Embed.DoubleEmbed prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
-
     @java.lang.Override
     public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE ? new Builder() : new Builder().mergeFrom(this);
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
     }
 
     @java.lang.Override
@@ -441,36 +443,36 @@ public final class Embed extends com.google.protobuf.GeneratedMessageV3
       Builder builder = new Builder(parent);
       return builder;
     }
-
-    /** Protobuf type {@code buf.validate.conformance.cases.other_package.Embed.DoubleEmbed} */
-    public static final class Builder
-        extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
-        implements
+    /**
+     * Protobuf type {@code buf.validate.conformance.cases.other_package.Embed.DoubleEmbed}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:buf.validate.conformance.cases.other_package.Embed.DoubleEmbed)
         build.buf.validate.conformance.cases.other_package.Embed.DoubleEmbedOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
-        return build.buf.validate.conformance.cases.other_package.EmbedProto
-            .internal_static_buf_validate_conformance_cases_other_package_Embed_DoubleEmbed_descriptor;
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return build.buf.validate.conformance.cases.other_package.EmbedProto.internal_static_buf_validate_conformance_cases_other_package_Embed_DoubleEmbed_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return build.buf.validate.conformance.cases.other_package.EmbedProto
-            .internal_static_buf_validate_conformance_cases_other_package_Embed_DoubleEmbed_fieldAccessorTable
+        return build.buf.validate.conformance.cases.other_package.EmbedProto.internal_static_buf_validate_conformance_cases_other_package_Embed_DoubleEmbed_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                build.buf.validate.conformance.cases.other_package.Embed.DoubleEmbed.class,
-                build.buf.validate.conformance.cases.other_package.Embed.DoubleEmbed.Builder.class);
+                build.buf.validate.conformance.cases.other_package.Embed.DoubleEmbed.class, build.buf.validate.conformance.cases.other_package.Embed.DoubleEmbed.Builder.class);
       }
 
-      // Construct using
-      // build.buf.validate.conformance.cases.other_package.Embed.DoubleEmbed.newBuilder()
-      private Builder() {}
+      // Construct using build.buf.validate.conformance.cases.other_package.Embed.DoubleEmbed.newBuilder()
+      private Builder() {
 
-      private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
-      }
 
+      }
       @java.lang.Override
       public Builder clear() {
         super.clear();
@@ -478,22 +480,19 @@ public final class Embed extends com.google.protobuf.GeneratedMessageV3
       }
 
       @java.lang.Override
-      public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
-        return build.buf.validate.conformance.cases.other_package.EmbedProto
-            .internal_static_buf_validate_conformance_cases_other_package_Embed_DoubleEmbed_descriptor;
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return build.buf.validate.conformance.cases.other_package.EmbedProto.internal_static_buf_validate_conformance_cases_other_package_Embed_DoubleEmbed_descriptor;
       }
 
       @java.lang.Override
-      public build.buf.validate.conformance.cases.other_package.Embed.DoubleEmbed
-          getDefaultInstanceForType() {
-        return build.buf.validate.conformance.cases.other_package.Embed.DoubleEmbed
-            .getDefaultInstance();
+      public build.buf.validate.conformance.cases.other_package.Embed.DoubleEmbed getDefaultInstanceForType() {
+        return build.buf.validate.conformance.cases.other_package.Embed.DoubleEmbed.getDefaultInstance();
       }
 
       @java.lang.Override
       public build.buf.validate.conformance.cases.other_package.Embed.DoubleEmbed build() {
-        build.buf.validate.conformance.cases.other_package.Embed.DoubleEmbed result =
-            buildPartial();
+        build.buf.validate.conformance.cases.other_package.Embed.DoubleEmbed result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -502,8 +501,7 @@ public final class Embed extends com.google.protobuf.GeneratedMessageV3
 
       @java.lang.Override
       public build.buf.validate.conformance.cases.other_package.Embed.DoubleEmbed buildPartial() {
-        build.buf.validate.conformance.cases.other_package.Embed.DoubleEmbed result =
-            new build.buf.validate.conformance.cases.other_package.Embed.DoubleEmbed(this);
+        build.buf.validate.conformance.cases.other_package.Embed.DoubleEmbed result = new build.buf.validate.conformance.cases.other_package.Embed.DoubleEmbed(this);
         onBuilt();
         return result;
       }
@@ -512,53 +510,46 @@ public final class Embed extends com.google.protobuf.GeneratedMessageV3
       public Builder clone() {
         return super.clone();
       }
-
       @java.lang.Override
       public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
         return super.setField(field, value);
       }
-
       @java.lang.Override
-      public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
         return super.clearField(field);
       }
-
       @java.lang.Override
-      public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
         return super.clearOneof(oneof);
       }
-
       @java.lang.Override
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index,
-          java.lang.Object value) {
+          int index, java.lang.Object value) {
         return super.setRepeatedField(field, index, value);
       }
-
       @java.lang.Override
       public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
         return super.addRepeatedField(field, value);
       }
-
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof build.buf.validate.conformance.cases.other_package.Embed.DoubleEmbed) {
-          return mergeFrom(
-              (build.buf.validate.conformance.cases.other_package.Embed.DoubleEmbed) other);
+          return mergeFrom((build.buf.validate.conformance.cases.other_package.Embed.DoubleEmbed)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(
-          build.buf.validate.conformance.cases.other_package.Embed.DoubleEmbed other) {
-        if (other
-            == build.buf.validate.conformance.cases.other_package.Embed.DoubleEmbed
-                .getDefaultInstance()) return this;
+      public Builder mergeFrom(build.buf.validate.conformance.cases.other_package.Embed.DoubleEmbed other) {
+        if (other == build.buf.validate.conformance.cases.other_package.Embed.DoubleEmbed.getDefaultInstance()) return this;
         this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
         return this;
@@ -585,13 +576,12 @@ public final class Embed extends com.google.protobuf.GeneratedMessageV3
               case 0:
                 done = true;
                 break;
-              default:
-                {
-                  if (!super.parseUnknownField(input, extensionRegistry, tag)) {
-                    done = true; // was an endgroup tag
-                  }
-                  break;
-                } // default:
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
             } // switch (tag)
           } // while (!done)
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -601,7 +591,6 @@ public final class Embed extends com.google.protobuf.GeneratedMessageV3
         } // finally
         return this;
       }
-
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -614,44 +603,41 @@ public final class Embed extends com.google.protobuf.GeneratedMessageV3
         return super.mergeUnknownFields(unknownFields);
       }
 
+
       // @@protoc_insertion_point(builder_scope:buf.validate.conformance.cases.other_package.Embed.DoubleEmbed)
     }
 
     // @@protoc_insertion_point(class_scope:buf.validate.conformance.cases.other_package.Embed.DoubleEmbed)
-    private static final build.buf.validate.conformance.cases.other_package.Embed.DoubleEmbed
-        DEFAULT_INSTANCE;
-
+    private static final build.buf.validate.conformance.cases.other_package.Embed.DoubleEmbed DEFAULT_INSTANCE;
     static {
       DEFAULT_INSTANCE = new build.buf.validate.conformance.cases.other_package.Embed.DoubleEmbed();
     }
 
-    public static build.buf.validate.conformance.cases.other_package.Embed.DoubleEmbed
-        getDefaultInstance() {
+    public static build.buf.validate.conformance.cases.other_package.Embed.DoubleEmbed getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<DoubleEmbed> PARSER =
-        new com.google.protobuf.AbstractParser<DoubleEmbed>() {
-          @java.lang.Override
-          public DoubleEmbed parsePartialFrom(
-              com.google.protobuf.CodedInputStream input,
-              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-              throws com.google.protobuf.InvalidProtocolBufferException {
-            Builder builder = newBuilder();
-            try {
-              builder.mergeFrom(input, extensionRegistry);
-            } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-              throw e.setUnfinishedMessage(builder.buildPartial());
-            } catch (com.google.protobuf.UninitializedMessageException e) {
-              throw e.asInvalidProtocolBufferException()
-                  .setUnfinishedMessage(builder.buildPartial());
-            } catch (java.io.IOException e) {
-              throw new com.google.protobuf.InvalidProtocolBufferException(e)
-                  .setUnfinishedMessage(builder.buildPartial());
-            }
-            return builder.buildPartial();
-          }
-        };
+    private static final com.google.protobuf.Parser<DoubleEmbed>
+        PARSER = new com.google.protobuf.AbstractParser<DoubleEmbed>() {
+      @java.lang.Override
+      public DoubleEmbed parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
+      }
+    };
 
     public static com.google.protobuf.Parser<DoubleEmbed> parser() {
       return PARSER;
@@ -663,18 +649,16 @@ public final class Embed extends com.google.protobuf.GeneratedMessageV3
     }
 
     @java.lang.Override
-    public build.buf.validate.conformance.cases.other_package.Embed.DoubleEmbed
-        getDefaultInstanceForType() {
+    public build.buf.validate.conformance.cases.other_package.Embed.DoubleEmbed getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
+
   }
 
   public static final int VAL_FIELD_NUMBER = 1;
   private long val_ = 0L;
-
   /**
    * <code>int64 val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
-   *
    * @return The val.
    */
   @java.lang.Override
@@ -683,7 +667,6 @@ public final class Embed extends com.google.protobuf.GeneratedMessageV3
   }
 
   private byte memoizedIsInitialized = -1;
-
   @java.lang.Override
   public final boolean isInitialized() {
     byte isInitialized = memoizedIsInitialized;
@@ -695,7 +678,8 @@ public final class Embed extends com.google.protobuf.GeneratedMessageV3
   }
 
   @java.lang.Override
-  public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
+  public void writeTo(com.google.protobuf.CodedOutputStream output)
+                      throws java.io.IOException {
     if (val_ != 0L) {
       output.writeInt64(1, val_);
     }
@@ -709,7 +693,8 @@ public final class Embed extends com.google.protobuf.GeneratedMessageV3
 
     size = 0;
     if (val_ != 0L) {
-      size += com.google.protobuf.CodedOutputStream.computeInt64Size(1, val_);
+      size += com.google.protobuf.CodedOutputStream
+        .computeInt64Size(1, val_);
     }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
@@ -719,15 +704,15 @@ public final class Embed extends com.google.protobuf.GeneratedMessageV3
   @java.lang.Override
   public boolean equals(final java.lang.Object obj) {
     if (obj == this) {
-      return true;
+     return true;
     }
     if (!(obj instanceof build.buf.validate.conformance.cases.other_package.Embed)) {
       return super.equals(obj);
     }
-    build.buf.validate.conformance.cases.other_package.Embed other =
-        (build.buf.validate.conformance.cases.other_package.Embed) obj;
+    build.buf.validate.conformance.cases.other_package.Embed other = (build.buf.validate.conformance.cases.other_package.Embed) obj;
 
-    if (getVal() != other.getVal()) return false;
+    if (getVal()
+        != other.getVal()) return false;
     if (!getUnknownFields().equals(other.getUnknownFields())) return false;
     return true;
   }
@@ -740,144 +725,139 @@ public final class Embed extends com.google.protobuf.GeneratedMessageV3
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
     hash = (37 * hash) + VAL_FIELD_NUMBER;
-    hash = (53 * hash) + com.google.protobuf.Internal.hashLong(getVal());
+    hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+        getVal());
     hash = (29 * hash) + getUnknownFields().hashCode();
     memoizedHashCode = hash;
     return hash;
   }
 
   public static build.buf.validate.conformance.cases.other_package.Embed parseFrom(
-      java.nio.ByteBuffer data) throws com.google.protobuf.InvalidProtocolBufferException {
+      java.nio.ByteBuffer data)
+      throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-
   public static build.buf.validate.conformance.cases.other_package.Embed parseFrom(
-      java.nio.ByteBuffer data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      java.nio.ByteBuffer data,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-
   public static build.buf.validate.conformance.cases.other_package.Embed parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-
   public static build.buf.validate.conformance.cases.other_package.Embed parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-
   public static build.buf.validate.conformance.cases.other_package.Embed parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-
   public static build.buf.validate.conformance.cases.other_package.Embed parseFrom(
-      byte[] data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      byte[] data,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-
+  public static build.buf.validate.conformance.cases.other_package.Embed parseFrom(java.io.InputStream input)
+      throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3
+        .parseWithIOException(PARSER, input);
+  }
   public static build.buf.validate.conformance.cases.other_package.Embed parseFrom(
-      java.io.InputStream input) throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
+      java.io.InputStream input,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3
+        .parseWithIOException(PARSER, input, extensionRegistry);
   }
 
-  public static build.buf.validate.conformance.cases.other_package.Embed parseFrom(
-      java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+  public static build.buf.validate.conformance.cases.other_package.Embed parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
-        PARSER, input, extensionRegistry);
+    return com.google.protobuf.GeneratedMessageV3
+        .parseDelimitedWithIOException(PARSER, input);
   }
 
   public static build.buf.validate.conformance.cases.other_package.Embed parseDelimitedFrom(
-      java.io.InputStream input) throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input);
-  }
-
-  public static build.buf.validate.conformance.cases.other_package.Embed parseDelimitedFrom(
-      java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      java.io.InputStream input,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(
-        PARSER, input, extensionRegistry);
+    return com.google.protobuf.GeneratedMessageV3
+        .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-
   public static build.buf.validate.conformance.cases.other_package.Embed parseFrom(
-      com.google.protobuf.CodedInputStream input) throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
+      com.google.protobuf.CodedInputStream input)
+      throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3
+        .parseWithIOException(PARSER, input);
   }
-
   public static build.buf.validate.conformance.cases.other_package.Embed parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
-        PARSER, input, extensionRegistry);
+    return com.google.protobuf.GeneratedMessageV3
+        .parseWithIOException(PARSER, input, extensionRegistry);
   }
 
   @java.lang.Override
-  public Builder newBuilderForType() {
-    return newBuilder();
-  }
-
+  public Builder newBuilderForType() { return newBuilder(); }
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-
-  public static Builder newBuilder(
-      build.buf.validate.conformance.cases.other_package.Embed prototype) {
+  public static Builder newBuilder(build.buf.validate.conformance.cases.other_package.Embed prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
-
   @java.lang.Override
   public Builder toBuilder() {
-    return this == DEFAULT_INSTANCE ? new Builder() : new Builder().mergeFrom(this);
+    return this == DEFAULT_INSTANCE
+        ? new Builder() : new Builder().mergeFrom(this);
   }
 
   @java.lang.Override
-  protected Builder newBuilderForType(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+  protected Builder newBuilderForType(
+      com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
     Builder builder = new Builder(parent);
     return builder;
   }
-
   /**
-   *
-   *
    * <pre>
    * Validate message embedding across packages.
    * </pre>
    *
    * Protobuf type {@code buf.validate.conformance.cases.other_package.Embed}
    */
-  public static final class Builder extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
-      implements
+  public static final class Builder extends
+      com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
       // @@protoc_insertion_point(builder_implements:buf.validate.conformance.cases.other_package.Embed)
       build.buf.validate.conformance.cases.other_package.EmbedOrBuilder {
-    public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
-      return build.buf.validate.conformance.cases.other_package.EmbedProto
-          .internal_static_buf_validate_conformance_cases_other_package_Embed_descriptor;
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return build.buf.validate.conformance.cases.other_package.EmbedProto.internal_static_buf_validate_conformance_cases_other_package_Embed_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return build.buf.validate.conformance.cases.other_package.EmbedProto
-          .internal_static_buf_validate_conformance_cases_other_package_Embed_fieldAccessorTable
+      return build.buf.validate.conformance.cases.other_package.EmbedProto.internal_static_buf_validate_conformance_cases_other_package_Embed_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              build.buf.validate.conformance.cases.other_package.Embed.class,
-              build.buf.validate.conformance.cases.other_package.Embed.Builder.class);
+              build.buf.validate.conformance.cases.other_package.Embed.class, build.buf.validate.conformance.cases.other_package.Embed.Builder.class);
     }
 
     // Construct using build.buf.validate.conformance.cases.other_package.Embed.newBuilder()
-    private Builder() {}
+    private Builder() {
 
-    private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-      super(parent);
     }
 
+    private Builder(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      super(parent);
+
+    }
     @java.lang.Override
     public Builder clear() {
       super.clear();
@@ -887,9 +867,9 @@ public final class Embed extends com.google.protobuf.GeneratedMessageV3
     }
 
     @java.lang.Override
-    public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
-      return build.buf.validate.conformance.cases.other_package.EmbedProto
-          .internal_static_buf_validate_conformance_cases_other_package_Embed_descriptor;
+    public com.google.protobuf.Descriptors.Descriptor
+        getDescriptorForType() {
+      return build.buf.validate.conformance.cases.other_package.EmbedProto.internal_static_buf_validate_conformance_cases_other_package_Embed_descriptor;
     }
 
     @java.lang.Override
@@ -908,11 +888,8 @@ public final class Embed extends com.google.protobuf.GeneratedMessageV3
 
     @java.lang.Override
     public build.buf.validate.conformance.cases.other_package.Embed buildPartial() {
-      build.buf.validate.conformance.cases.other_package.Embed result =
-          new build.buf.validate.conformance.cases.other_package.Embed(this);
-      if (bitField0_ != 0) {
-        buildPartial0(result);
-      }
+      build.buf.validate.conformance.cases.other_package.Embed result = new build.buf.validate.conformance.cases.other_package.Embed(this);
+      if (bitField0_ != 0) { buildPartial0(result); }
       onBuilt();
       return result;
     }
@@ -928,39 +905,38 @@ public final class Embed extends com.google.protobuf.GeneratedMessageV3
     public Builder clone() {
       return super.clone();
     }
-
     @java.lang.Override
     public Builder setField(
-        com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field,
+        java.lang.Object value) {
       return super.setField(field, value);
     }
-
     @java.lang.Override
-    public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
+    public Builder clearField(
+        com.google.protobuf.Descriptors.FieldDescriptor field) {
       return super.clearField(field);
     }
-
     @java.lang.Override
-    public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+    public Builder clearOneof(
+        com.google.protobuf.Descriptors.OneofDescriptor oneof) {
       return super.clearOneof(oneof);
     }
-
     @java.lang.Override
     public Builder setRepeatedField(
-        com.google.protobuf.Descriptors.FieldDescriptor field, int index, java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field,
+        int index, java.lang.Object value) {
       return super.setRepeatedField(field, index, value);
     }
-
     @java.lang.Override
     public Builder addRepeatedField(
-        com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field,
+        java.lang.Object value) {
       return super.addRepeatedField(field, value);
     }
-
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
       if (other instanceof build.buf.validate.conformance.cases.other_package.Embed) {
-        return mergeFrom((build.buf.validate.conformance.cases.other_package.Embed) other);
+        return mergeFrom((build.buf.validate.conformance.cases.other_package.Embed)other);
       } else {
         super.mergeFrom(other);
         return this;
@@ -968,8 +944,7 @@ public final class Embed extends com.google.protobuf.GeneratedMessageV3
     }
 
     public Builder mergeFrom(build.buf.validate.conformance.cases.other_package.Embed other) {
-      if (other == build.buf.validate.conformance.cases.other_package.Embed.getDefaultInstance())
-        return this;
+      if (other == build.buf.validate.conformance.cases.other_package.Embed.getDefaultInstance()) return this;
       if (other.getVal() != 0L) {
         setVal(other.getVal());
       }
@@ -999,19 +974,17 @@ public final class Embed extends com.google.protobuf.GeneratedMessageV3
             case 0:
               done = true;
               break;
-            case 8:
-              {
-                val_ = input.readInt64();
-                bitField0_ |= 0x00000001;
-                break;
-              } // case 8
-            default:
-              {
-                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
-                  done = true; // was an endgroup tag
-                }
-                break;
-              } // default:
+            case 8: {
+              val_ = input.readInt64();
+              bitField0_ |= 0x00000001;
+              break;
+            } // case 8
+            default: {
+              if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                done = true; // was an endgroup tag
+              }
+              break;
+            } // default:
           } // switch (tag)
         } // while (!done)
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -1021,24 +994,19 @@ public final class Embed extends com.google.protobuf.GeneratedMessageV3
       } // finally
       return this;
     }
-
     private int bitField0_;
 
-    private long val_;
-
+    private long val_ ;
     /**
      * <code>int64 val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
-     *
      * @return The val.
      */
     @java.lang.Override
     public long getVal() {
       return val_;
     }
-
     /**
      * <code>int64 val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
-     *
      * @param value The val to set.
      * @return This builder for chaining.
      */
@@ -1049,10 +1017,8 @@ public final class Embed extends com.google.protobuf.GeneratedMessageV3
       onChanged();
       return this;
     }
-
     /**
      * <code>int64 val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
-     *
      * @return This builder for chaining.
      */
     public Builder clearVal() {
@@ -1061,9 +1027,9 @@ public final class Embed extends com.google.protobuf.GeneratedMessageV3
       onChanged();
       return this;
     }
-
     @java.lang.Override
-    public final Builder setUnknownFields(final com.google.protobuf.UnknownFieldSet unknownFields) {
+    public final Builder setUnknownFields(
+        final com.google.protobuf.UnknownFieldSet unknownFields) {
       return super.setUnknownFields(unknownFields);
     }
 
@@ -1073,12 +1039,12 @@ public final class Embed extends com.google.protobuf.GeneratedMessageV3
       return super.mergeUnknownFields(unknownFields);
     }
 
+
     // @@protoc_insertion_point(builder_scope:buf.validate.conformance.cases.other_package.Embed)
   }
 
   // @@protoc_insertion_point(class_scope:buf.validate.conformance.cases.other_package.Embed)
   private static final build.buf.validate.conformance.cases.other_package.Embed DEFAULT_INSTANCE;
-
   static {
     DEFAULT_INSTANCE = new build.buf.validate.conformance.cases.other_package.Embed();
   }
@@ -1087,27 +1053,27 @@ public final class Embed extends com.google.protobuf.GeneratedMessageV3
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<Embed> PARSER =
-      new com.google.protobuf.AbstractParser<Embed>() {
-        @java.lang.Override
-        public Embed parsePartialFrom(
-            com.google.protobuf.CodedInputStream input,
-            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-            throws com.google.protobuf.InvalidProtocolBufferException {
-          Builder builder = newBuilder();
-          try {
-            builder.mergeFrom(input, extensionRegistry);
-          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-            throw e.setUnfinishedMessage(builder.buildPartial());
-          } catch (com.google.protobuf.UninitializedMessageException e) {
-            throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
-          } catch (java.io.IOException e) {
-            throw new com.google.protobuf.InvalidProtocolBufferException(e)
-                .setUnfinishedMessage(builder.buildPartial());
-          }
-          return builder.buildPartial();
-        }
-      };
+  private static final com.google.protobuf.Parser<Embed>
+      PARSER = new com.google.protobuf.AbstractParser<Embed>() {
+    @java.lang.Override
+    public Embed parsePartialFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      Builder builder = newBuilder();
+      try {
+        builder.mergeFrom(input, extensionRegistry);
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(builder.buildPartial());
+      } catch (com.google.protobuf.UninitializedMessageException e) {
+        throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(e)
+            .setUnfinishedMessage(builder.buildPartial());
+      }
+      return builder.buildPartial();
+    }
+  };
 
   public static com.google.protobuf.Parser<Embed> parser() {
     return PARSER;
@@ -1122,4 +1088,6 @@ public final class Embed extends com.google.protobuf.GeneratedMessageV3
   public build.buf.validate.conformance.cases.other_package.Embed getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
+
 }
+

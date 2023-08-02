@@ -3,101 +3,84 @@
 
 package build.buf.validate.conformance.cases;
 
-/** Protobuf type {@code buf.validate.conformance.cases.RepeatedEmbedSkip} */
-public final class RepeatedEmbedSkip extends com.google.protobuf.GeneratedMessageV3
-    implements
+/**
+ * Protobuf type {@code buf.validate.conformance.cases.RepeatedEmbedSkip}
+ */
+public final class RepeatedEmbedSkip extends
+    com.google.protobuf.GeneratedMessageV3 implements
     // @@protoc_insertion_point(message_implements:buf.validate.conformance.cases.RepeatedEmbedSkip)
     RepeatedEmbedSkipOrBuilder {
-  private static final long serialVersionUID = 0L;
-
+private static final long serialVersionUID = 0L;
   // Use RepeatedEmbedSkip.newBuilder() to construct.
   private RepeatedEmbedSkip(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
-
   private RepeatedEmbedSkip() {
     val_ = java.util.Collections.emptyList();
   }
 
   @java.lang.Override
   @SuppressWarnings({"unused"})
-  protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
+  protected java.lang.Object newInstance(
+      UnusedPrivateParameter unused) {
     return new RepeatedEmbedSkip();
   }
 
-  public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
-    return build.buf.validate.conformance.cases.RepeatedProto
-        .internal_static_buf_validate_conformance_cases_RepeatedEmbedSkip_descriptor;
+  public static final com.google.protobuf.Descriptors.Descriptor
+      getDescriptor() {
+    return build.buf.validate.conformance.cases.RepeatedProto.internal_static_buf_validate_conformance_cases_RepeatedEmbedSkip_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return build.buf.validate.conformance.cases.RepeatedProto
-        .internal_static_buf_validate_conformance_cases_RepeatedEmbedSkip_fieldAccessorTable
+    return build.buf.validate.conformance.cases.RepeatedProto.internal_static_buf_validate_conformance_cases_RepeatedEmbedSkip_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            build.buf.validate.conformance.cases.RepeatedEmbedSkip.class,
-            build.buf.validate.conformance.cases.RepeatedEmbedSkip.Builder.class);
+            build.buf.validate.conformance.cases.RepeatedEmbedSkip.class, build.buf.validate.conformance.cases.RepeatedEmbedSkip.Builder.class);
   }
 
   public static final int VAL_FIELD_NUMBER = 1;
-
   @SuppressWarnings("serial")
   private java.util.List<build.buf.validate.conformance.cases.Embed> val_;
-
   /**
-   * <code>
-   * repeated .buf.validate.conformance.cases.Embed val = 1 [json_name = "val", (.buf.validate.field) = { ... }
-   * </code>
+   * <code>repeated .buf.validate.conformance.cases.Embed val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
    */
   @java.lang.Override
   public java.util.List<build.buf.validate.conformance.cases.Embed> getValList() {
     return val_;
   }
-
   /**
-   * <code>
-   * repeated .buf.validate.conformance.cases.Embed val = 1 [json_name = "val", (.buf.validate.field) = { ... }
-   * </code>
+   * <code>repeated .buf.validate.conformance.cases.Embed val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
    */
   @java.lang.Override
-  public java.util.List<? extends build.buf.validate.conformance.cases.EmbedOrBuilder>
+  public java.util.List<? extends build.buf.validate.conformance.cases.EmbedOrBuilder> 
       getValOrBuilderList() {
     return val_;
   }
-
   /**
-   * <code>
-   * repeated .buf.validate.conformance.cases.Embed val = 1 [json_name = "val", (.buf.validate.field) = { ... }
-   * </code>
+   * <code>repeated .buf.validate.conformance.cases.Embed val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
    */
   @java.lang.Override
   public int getValCount() {
     return val_.size();
   }
-
   /**
-   * <code>
-   * repeated .buf.validate.conformance.cases.Embed val = 1 [json_name = "val", (.buf.validate.field) = { ... }
-   * </code>
+   * <code>repeated .buf.validate.conformance.cases.Embed val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
    */
   @java.lang.Override
   public build.buf.validate.conformance.cases.Embed getVal(int index) {
     return val_.get(index);
   }
-
   /**
-   * <code>
-   * repeated .buf.validate.conformance.cases.Embed val = 1 [json_name = "val", (.buf.validate.field) = { ... }
-   * </code>
+   * <code>repeated .buf.validate.conformance.cases.Embed val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
    */
   @java.lang.Override
-  public build.buf.validate.conformance.cases.EmbedOrBuilder getValOrBuilder(int index) {
+  public build.buf.validate.conformance.cases.EmbedOrBuilder getValOrBuilder(
+      int index) {
     return val_.get(index);
   }
 
   private byte memoizedIsInitialized = -1;
-
   @java.lang.Override
   public final boolean isInitialized() {
     byte isInitialized = memoizedIsInitialized;
@@ -109,7 +92,8 @@ public final class RepeatedEmbedSkip extends com.google.protobuf.GeneratedMessag
   }
 
   @java.lang.Override
-  public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
+  public void writeTo(com.google.protobuf.CodedOutputStream output)
+                      throws java.io.IOException {
     for (int i = 0; i < val_.size(); i++) {
       output.writeMessage(1, val_.get(i));
     }
@@ -123,7 +107,8 @@ public final class RepeatedEmbedSkip extends com.google.protobuf.GeneratedMessag
 
     size = 0;
     for (int i = 0; i < val_.size(); i++) {
-      size += com.google.protobuf.CodedOutputStream.computeMessageSize(1, val_.get(i));
+      size += com.google.protobuf.CodedOutputStream
+        .computeMessageSize(1, val_.get(i));
     }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
@@ -133,15 +118,15 @@ public final class RepeatedEmbedSkip extends com.google.protobuf.GeneratedMessag
   @java.lang.Override
   public boolean equals(final java.lang.Object obj) {
     if (obj == this) {
-      return true;
+     return true;
     }
     if (!(obj instanceof build.buf.validate.conformance.cases.RepeatedEmbedSkip)) {
       return super.equals(obj);
     }
-    build.buf.validate.conformance.cases.RepeatedEmbedSkip other =
-        (build.buf.validate.conformance.cases.RepeatedEmbedSkip) obj;
+    build.buf.validate.conformance.cases.RepeatedEmbedSkip other = (build.buf.validate.conformance.cases.RepeatedEmbedSkip) obj;
 
-    if (!getValList().equals(other.getValList())) return false;
+    if (!getValList()
+        .equals(other.getValList())) return false;
     if (!getUnknownFields().equals(other.getUnknownFields())) return false;
     return true;
   }
@@ -163,129 +148,127 @@ public final class RepeatedEmbedSkip extends com.google.protobuf.GeneratedMessag
   }
 
   public static build.buf.validate.conformance.cases.RepeatedEmbedSkip parseFrom(
-      java.nio.ByteBuffer data) throws com.google.protobuf.InvalidProtocolBufferException {
+      java.nio.ByteBuffer data)
+      throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-
   public static build.buf.validate.conformance.cases.RepeatedEmbedSkip parseFrom(
-      java.nio.ByteBuffer data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      java.nio.ByteBuffer data,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-
   public static build.buf.validate.conformance.cases.RepeatedEmbedSkip parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-
   public static build.buf.validate.conformance.cases.RepeatedEmbedSkip parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-
   public static build.buf.validate.conformance.cases.RepeatedEmbedSkip parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-
   public static build.buf.validate.conformance.cases.RepeatedEmbedSkip parseFrom(
-      byte[] data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      byte[] data,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-
+  public static build.buf.validate.conformance.cases.RepeatedEmbedSkip parseFrom(java.io.InputStream input)
+      throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3
+        .parseWithIOException(PARSER, input);
+  }
   public static build.buf.validate.conformance.cases.RepeatedEmbedSkip parseFrom(
-      java.io.InputStream input) throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
+      java.io.InputStream input,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3
+        .parseWithIOException(PARSER, input, extensionRegistry);
   }
 
-  public static build.buf.validate.conformance.cases.RepeatedEmbedSkip parseFrom(
-      java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+  public static build.buf.validate.conformance.cases.RepeatedEmbedSkip parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
-        PARSER, input, extensionRegistry);
+    return com.google.protobuf.GeneratedMessageV3
+        .parseDelimitedWithIOException(PARSER, input);
   }
 
   public static build.buf.validate.conformance.cases.RepeatedEmbedSkip parseDelimitedFrom(
-      java.io.InputStream input) throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input);
-  }
-
-  public static build.buf.validate.conformance.cases.RepeatedEmbedSkip parseDelimitedFrom(
-      java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      java.io.InputStream input,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(
-        PARSER, input, extensionRegistry);
+    return com.google.protobuf.GeneratedMessageV3
+        .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-
   public static build.buf.validate.conformance.cases.RepeatedEmbedSkip parseFrom(
-      com.google.protobuf.CodedInputStream input) throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
+      com.google.protobuf.CodedInputStream input)
+      throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3
+        .parseWithIOException(PARSER, input);
   }
-
   public static build.buf.validate.conformance.cases.RepeatedEmbedSkip parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
-        PARSER, input, extensionRegistry);
+    return com.google.protobuf.GeneratedMessageV3
+        .parseWithIOException(PARSER, input, extensionRegistry);
   }
 
   @java.lang.Override
-  public Builder newBuilderForType() {
-    return newBuilder();
-  }
-
+  public Builder newBuilderForType() { return newBuilder(); }
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-
-  public static Builder newBuilder(
-      build.buf.validate.conformance.cases.RepeatedEmbedSkip prototype) {
+  public static Builder newBuilder(build.buf.validate.conformance.cases.RepeatedEmbedSkip prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
-
   @java.lang.Override
   public Builder toBuilder() {
-    return this == DEFAULT_INSTANCE ? new Builder() : new Builder().mergeFrom(this);
+    return this == DEFAULT_INSTANCE
+        ? new Builder() : new Builder().mergeFrom(this);
   }
 
   @java.lang.Override
-  protected Builder newBuilderForType(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+  protected Builder newBuilderForType(
+      com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
     Builder builder = new Builder(parent);
     return builder;
   }
-
-  /** Protobuf type {@code buf.validate.conformance.cases.RepeatedEmbedSkip} */
-  public static final class Builder extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
-      implements
+  /**
+   * Protobuf type {@code buf.validate.conformance.cases.RepeatedEmbedSkip}
+   */
+  public static final class Builder extends
+      com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
       // @@protoc_insertion_point(builder_implements:buf.validate.conformance.cases.RepeatedEmbedSkip)
       build.buf.validate.conformance.cases.RepeatedEmbedSkipOrBuilder {
-    public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
-      return build.buf.validate.conformance.cases.RepeatedProto
-          .internal_static_buf_validate_conformance_cases_RepeatedEmbedSkip_descriptor;
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return build.buf.validate.conformance.cases.RepeatedProto.internal_static_buf_validate_conformance_cases_RepeatedEmbedSkip_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return build.buf.validate.conformance.cases.RepeatedProto
-          .internal_static_buf_validate_conformance_cases_RepeatedEmbedSkip_fieldAccessorTable
+      return build.buf.validate.conformance.cases.RepeatedProto.internal_static_buf_validate_conformance_cases_RepeatedEmbedSkip_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              build.buf.validate.conformance.cases.RepeatedEmbedSkip.class,
-              build.buf.validate.conformance.cases.RepeatedEmbedSkip.Builder.class);
+              build.buf.validate.conformance.cases.RepeatedEmbedSkip.class, build.buf.validate.conformance.cases.RepeatedEmbedSkip.Builder.class);
     }
 
     // Construct using build.buf.validate.conformance.cases.RepeatedEmbedSkip.newBuilder()
-    private Builder() {}
+    private Builder() {
 
-    private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-      super(parent);
     }
 
+    private Builder(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      super(parent);
+
+    }
     @java.lang.Override
     public Builder clear() {
       super.clear();
@@ -301,9 +284,9 @@ public final class RepeatedEmbedSkip extends com.google.protobuf.GeneratedMessag
     }
 
     @java.lang.Override
-    public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
-      return build.buf.validate.conformance.cases.RepeatedProto
-          .internal_static_buf_validate_conformance_cases_RepeatedEmbedSkip_descriptor;
+    public com.google.protobuf.Descriptors.Descriptor
+        getDescriptorForType() {
+      return build.buf.validate.conformance.cases.RepeatedProto.internal_static_buf_validate_conformance_cases_RepeatedEmbedSkip_descriptor;
     }
 
     @java.lang.Override
@@ -322,18 +305,14 @@ public final class RepeatedEmbedSkip extends com.google.protobuf.GeneratedMessag
 
     @java.lang.Override
     public build.buf.validate.conformance.cases.RepeatedEmbedSkip buildPartial() {
-      build.buf.validate.conformance.cases.RepeatedEmbedSkip result =
-          new build.buf.validate.conformance.cases.RepeatedEmbedSkip(this);
+      build.buf.validate.conformance.cases.RepeatedEmbedSkip result = new build.buf.validate.conformance.cases.RepeatedEmbedSkip(this);
       buildPartialRepeatedFields(result);
-      if (bitField0_ != 0) {
-        buildPartial0(result);
-      }
+      if (bitField0_ != 0) { buildPartial0(result); }
       onBuilt();
       return result;
     }
 
-    private void buildPartialRepeatedFields(
-        build.buf.validate.conformance.cases.RepeatedEmbedSkip result) {
+    private void buildPartialRepeatedFields(build.buf.validate.conformance.cases.RepeatedEmbedSkip result) {
       if (valBuilder_ == null) {
         if (((bitField0_ & 0x00000001) != 0)) {
           val_ = java.util.Collections.unmodifiableList(val_);
@@ -353,39 +332,38 @@ public final class RepeatedEmbedSkip extends com.google.protobuf.GeneratedMessag
     public Builder clone() {
       return super.clone();
     }
-
     @java.lang.Override
     public Builder setField(
-        com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field,
+        java.lang.Object value) {
       return super.setField(field, value);
     }
-
     @java.lang.Override
-    public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
+    public Builder clearField(
+        com.google.protobuf.Descriptors.FieldDescriptor field) {
       return super.clearField(field);
     }
-
     @java.lang.Override
-    public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+    public Builder clearOneof(
+        com.google.protobuf.Descriptors.OneofDescriptor oneof) {
       return super.clearOneof(oneof);
     }
-
     @java.lang.Override
     public Builder setRepeatedField(
-        com.google.protobuf.Descriptors.FieldDescriptor field, int index, java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field,
+        int index, java.lang.Object value) {
       return super.setRepeatedField(field, index, value);
     }
-
     @java.lang.Override
     public Builder addRepeatedField(
-        com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field,
+        java.lang.Object value) {
       return super.addRepeatedField(field, value);
     }
-
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
       if (other instanceof build.buf.validate.conformance.cases.RepeatedEmbedSkip) {
-        return mergeFrom((build.buf.validate.conformance.cases.RepeatedEmbedSkip) other);
+        return mergeFrom((build.buf.validate.conformance.cases.RepeatedEmbedSkip)other);
       } else {
         super.mergeFrom(other);
         return this;
@@ -393,8 +371,7 @@ public final class RepeatedEmbedSkip extends com.google.protobuf.GeneratedMessag
     }
 
     public Builder mergeFrom(build.buf.validate.conformance.cases.RepeatedEmbedSkip other) {
-      if (other == build.buf.validate.conformance.cases.RepeatedEmbedSkip.getDefaultInstance())
-        return this;
+      if (other == build.buf.validate.conformance.cases.RepeatedEmbedSkip.getDefaultInstance()) return this;
       if (valBuilder_ == null) {
         if (!other.val_.isEmpty()) {
           if (val_.isEmpty()) {
@@ -413,10 +390,9 @@ public final class RepeatedEmbedSkip extends com.google.protobuf.GeneratedMessag
             valBuilder_ = null;
             val_ = other.val_;
             bitField0_ = (bitField0_ & ~0x00000001);
-            valBuilder_ =
-                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders
-                    ? getValFieldBuilder()
-                    : null;
+            valBuilder_ = 
+              com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+                 getValFieldBuilder() : null;
           } else {
             valBuilder_.addAllMessages(other.val_);
           }
@@ -448,26 +424,25 @@ public final class RepeatedEmbedSkip extends com.google.protobuf.GeneratedMessag
             case 0:
               done = true;
               break;
-            case 10:
-              {
-                build.buf.validate.conformance.cases.Embed m =
-                    input.readMessage(
-                        build.buf.validate.conformance.cases.Embed.parser(), extensionRegistry);
-                if (valBuilder_ == null) {
-                  ensureValIsMutable();
-                  val_.add(m);
-                } else {
-                  valBuilder_.addMessage(m);
-                }
-                break;
-              } // case 10
-            default:
-              {
-                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
-                  done = true; // was an endgroup tag
-                }
-                break;
-              } // default:
+            case 10: {
+              build.buf.validate.conformance.cases.Embed m =
+                  input.readMessage(
+                      build.buf.validate.conformance.cases.Embed.parser(),
+                      extensionRegistry);
+              if (valBuilder_ == null) {
+                ensureValIsMutable();
+                val_.add(m);
+              } else {
+                valBuilder_.addMessage(m);
+              }
+              break;
+            } // case 10
+            default: {
+              if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                done = true; // was an endgroup tag
+              }
+              break;
+            } // default:
           } // switch (tag)
         } // while (!done)
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -477,29 +452,22 @@ public final class RepeatedEmbedSkip extends com.google.protobuf.GeneratedMessag
       } // finally
       return this;
     }
-
     private int bitField0_;
 
     private java.util.List<build.buf.validate.conformance.cases.Embed> val_ =
-        java.util.Collections.emptyList();
-
+      java.util.Collections.emptyList();
     private void ensureValIsMutable() {
       if (!((bitField0_ & 0x00000001) != 0)) {
         val_ = new java.util.ArrayList<build.buf.validate.conformance.cases.Embed>(val_);
         bitField0_ |= 0x00000001;
-      }
+       }
     }
 
     private com.google.protobuf.RepeatedFieldBuilderV3<
-            build.buf.validate.conformance.cases.Embed,
-            build.buf.validate.conformance.cases.Embed.Builder,
-            build.buf.validate.conformance.cases.EmbedOrBuilder>
-        valBuilder_;
+        build.buf.validate.conformance.cases.Embed, build.buf.validate.conformance.cases.Embed.Builder, build.buf.validate.conformance.cases.EmbedOrBuilder> valBuilder_;
 
     /**
-     * <code>
-     * repeated .buf.validate.conformance.cases.Embed val = 1 [json_name = "val", (.buf.validate.field) = { ... }
-     * </code>
+     * <code>repeated .buf.validate.conformance.cases.Embed val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
      */
     public java.util.List<build.buf.validate.conformance.cases.Embed> getValList() {
       if (valBuilder_ == null) {
@@ -508,11 +476,8 @@ public final class RepeatedEmbedSkip extends com.google.protobuf.GeneratedMessag
         return valBuilder_.getMessageList();
       }
     }
-
     /**
-     * <code>
-     * repeated .buf.validate.conformance.cases.Embed val = 1 [json_name = "val", (.buf.validate.field) = { ... }
-     * </code>
+     * <code>repeated .buf.validate.conformance.cases.Embed val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
      */
     public int getValCount() {
       if (valBuilder_ == null) {
@@ -521,11 +486,8 @@ public final class RepeatedEmbedSkip extends com.google.protobuf.GeneratedMessag
         return valBuilder_.getCount();
       }
     }
-
     /**
-     * <code>
-     * repeated .buf.validate.conformance.cases.Embed val = 1 [json_name = "val", (.buf.validate.field) = { ... }
-     * </code>
+     * <code>repeated .buf.validate.conformance.cases.Embed val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
      */
     public build.buf.validate.conformance.cases.Embed getVal(int index) {
       if (valBuilder_ == null) {
@@ -534,13 +496,11 @@ public final class RepeatedEmbedSkip extends com.google.protobuf.GeneratedMessag
         return valBuilder_.getMessage(index);
       }
     }
-
     /**
-     * <code>
-     * repeated .buf.validate.conformance.cases.Embed val = 1 [json_name = "val", (.buf.validate.field) = { ... }
-     * </code>
+     * <code>repeated .buf.validate.conformance.cases.Embed val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
      */
-    public Builder setVal(int index, build.buf.validate.conformance.cases.Embed value) {
+    public Builder setVal(
+        int index, build.buf.validate.conformance.cases.Embed value) {
       if (valBuilder_ == null) {
         if (value == null) {
           throw new NullPointerException();
@@ -553,11 +513,8 @@ public final class RepeatedEmbedSkip extends com.google.protobuf.GeneratedMessag
       }
       return this;
     }
-
     /**
-     * <code>
-     * repeated .buf.validate.conformance.cases.Embed val = 1 [json_name = "val", (.buf.validate.field) = { ... }
-     * </code>
+     * <code>repeated .buf.validate.conformance.cases.Embed val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
      */
     public Builder setVal(
         int index, build.buf.validate.conformance.cases.Embed.Builder builderForValue) {
@@ -570,11 +527,8 @@ public final class RepeatedEmbedSkip extends com.google.protobuf.GeneratedMessag
       }
       return this;
     }
-
     /**
-     * <code>
-     * repeated .buf.validate.conformance.cases.Embed val = 1 [json_name = "val", (.buf.validate.field) = { ... }
-     * </code>
+     * <code>repeated .buf.validate.conformance.cases.Embed val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
      */
     public Builder addVal(build.buf.validate.conformance.cases.Embed value) {
       if (valBuilder_ == null) {
@@ -589,13 +543,11 @@ public final class RepeatedEmbedSkip extends com.google.protobuf.GeneratedMessag
       }
       return this;
     }
-
     /**
-     * <code>
-     * repeated .buf.validate.conformance.cases.Embed val = 1 [json_name = "val", (.buf.validate.field) = { ... }
-     * </code>
+     * <code>repeated .buf.validate.conformance.cases.Embed val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
      */
-    public Builder addVal(int index, build.buf.validate.conformance.cases.Embed value) {
+    public Builder addVal(
+        int index, build.buf.validate.conformance.cases.Embed value) {
       if (valBuilder_ == null) {
         if (value == null) {
           throw new NullPointerException();
@@ -608,13 +560,11 @@ public final class RepeatedEmbedSkip extends com.google.protobuf.GeneratedMessag
       }
       return this;
     }
-
     /**
-     * <code>
-     * repeated .buf.validate.conformance.cases.Embed val = 1 [json_name = "val", (.buf.validate.field) = { ... }
-     * </code>
+     * <code>repeated .buf.validate.conformance.cases.Embed val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
      */
-    public Builder addVal(build.buf.validate.conformance.cases.Embed.Builder builderForValue) {
+    public Builder addVal(
+        build.buf.validate.conformance.cases.Embed.Builder builderForValue) {
       if (valBuilder_ == null) {
         ensureValIsMutable();
         val_.add(builderForValue.build());
@@ -624,11 +574,8 @@ public final class RepeatedEmbedSkip extends com.google.protobuf.GeneratedMessag
       }
       return this;
     }
-
     /**
-     * <code>
-     * repeated .buf.validate.conformance.cases.Embed val = 1 [json_name = "val", (.buf.validate.field) = { ... }
-     * </code>
+     * <code>repeated .buf.validate.conformance.cases.Embed val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
      */
     public Builder addVal(
         int index, build.buf.validate.conformance.cases.Embed.Builder builderForValue) {
@@ -641,28 +588,23 @@ public final class RepeatedEmbedSkip extends com.google.protobuf.GeneratedMessag
       }
       return this;
     }
-
     /**
-     * <code>
-     * repeated .buf.validate.conformance.cases.Embed val = 1 [json_name = "val", (.buf.validate.field) = { ... }
-     * </code>
+     * <code>repeated .buf.validate.conformance.cases.Embed val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
      */
     public Builder addAllVal(
         java.lang.Iterable<? extends build.buf.validate.conformance.cases.Embed> values) {
       if (valBuilder_ == null) {
         ensureValIsMutable();
-        com.google.protobuf.AbstractMessageLite.Builder.addAll(values, val_);
+        com.google.protobuf.AbstractMessageLite.Builder.addAll(
+            values, val_);
         onChanged();
       } else {
         valBuilder_.addAllMessages(values);
       }
       return this;
     }
-
     /**
-     * <code>
-     * repeated .buf.validate.conformance.cases.Embed val = 1 [json_name = "val", (.buf.validate.field) = { ... }
-     * </code>
+     * <code>repeated .buf.validate.conformance.cases.Embed val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
      */
     public Builder clearVal() {
       if (valBuilder_ == null) {
@@ -674,11 +616,8 @@ public final class RepeatedEmbedSkip extends com.google.protobuf.GeneratedMessag
       }
       return this;
     }
-
     /**
-     * <code>
-     * repeated .buf.validate.conformance.cases.Embed val = 1 [json_name = "val", (.buf.validate.field) = { ... }
-     * </code>
+     * <code>repeated .buf.validate.conformance.cases.Embed val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
      */
     public Builder removeVal(int index) {
       if (valBuilder_ == null) {
@@ -690,91 +629,73 @@ public final class RepeatedEmbedSkip extends com.google.protobuf.GeneratedMessag
       }
       return this;
     }
-
     /**
-     * <code>
-     * repeated .buf.validate.conformance.cases.Embed val = 1 [json_name = "val", (.buf.validate.field) = { ... }
-     * </code>
+     * <code>repeated .buf.validate.conformance.cases.Embed val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
      */
-    public build.buf.validate.conformance.cases.Embed.Builder getValBuilder(int index) {
+    public build.buf.validate.conformance.cases.Embed.Builder getValBuilder(
+        int index) {
       return getValFieldBuilder().getBuilder(index);
     }
-
     /**
-     * <code>
-     * repeated .buf.validate.conformance.cases.Embed val = 1 [json_name = "val", (.buf.validate.field) = { ... }
-     * </code>
+     * <code>repeated .buf.validate.conformance.cases.Embed val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
      */
-    public build.buf.validate.conformance.cases.EmbedOrBuilder getValOrBuilder(int index) {
+    public build.buf.validate.conformance.cases.EmbedOrBuilder getValOrBuilder(
+        int index) {
       if (valBuilder_ == null) {
-        return val_.get(index);
-      } else {
+        return val_.get(index);  } else {
         return valBuilder_.getMessageOrBuilder(index);
       }
     }
-
     /**
-     * <code>
-     * repeated .buf.validate.conformance.cases.Embed val = 1 [json_name = "val", (.buf.validate.field) = { ... }
-     * </code>
+     * <code>repeated .buf.validate.conformance.cases.Embed val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
      */
-    public java.util.List<? extends build.buf.validate.conformance.cases.EmbedOrBuilder>
-        getValOrBuilderList() {
+    public java.util.List<? extends build.buf.validate.conformance.cases.EmbedOrBuilder> 
+         getValOrBuilderList() {
       if (valBuilder_ != null) {
         return valBuilder_.getMessageOrBuilderList();
       } else {
         return java.util.Collections.unmodifiableList(val_);
       }
     }
-
     /**
-     * <code>
-     * repeated .buf.validate.conformance.cases.Embed val = 1 [json_name = "val", (.buf.validate.field) = { ... }
-     * </code>
+     * <code>repeated .buf.validate.conformance.cases.Embed val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
      */
     public build.buf.validate.conformance.cases.Embed.Builder addValBuilder() {
-      return getValFieldBuilder()
-          .addBuilder(build.buf.validate.conformance.cases.Embed.getDefaultInstance());
+      return getValFieldBuilder().addBuilder(
+          build.buf.validate.conformance.cases.Embed.getDefaultInstance());
     }
-
     /**
-     * <code>
-     * repeated .buf.validate.conformance.cases.Embed val = 1 [json_name = "val", (.buf.validate.field) = { ... }
-     * </code>
+     * <code>repeated .buf.validate.conformance.cases.Embed val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
      */
-    public build.buf.validate.conformance.cases.Embed.Builder addValBuilder(int index) {
-      return getValFieldBuilder()
-          .addBuilder(index, build.buf.validate.conformance.cases.Embed.getDefaultInstance());
+    public build.buf.validate.conformance.cases.Embed.Builder addValBuilder(
+        int index) {
+      return getValFieldBuilder().addBuilder(
+          index, build.buf.validate.conformance.cases.Embed.getDefaultInstance());
     }
-
     /**
-     * <code>
-     * repeated .buf.validate.conformance.cases.Embed val = 1 [json_name = "val", (.buf.validate.field) = { ... }
-     * </code>
+     * <code>repeated .buf.validate.conformance.cases.Embed val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
      */
-    public java.util.List<build.buf.validate.conformance.cases.Embed.Builder> getValBuilderList() {
+    public java.util.List<build.buf.validate.conformance.cases.Embed.Builder> 
+         getValBuilderList() {
       return getValFieldBuilder().getBuilderList();
     }
-
     private com.google.protobuf.RepeatedFieldBuilderV3<
-            build.buf.validate.conformance.cases.Embed,
-            build.buf.validate.conformance.cases.Embed.Builder,
-            build.buf.validate.conformance.cases.EmbedOrBuilder>
+        build.buf.validate.conformance.cases.Embed, build.buf.validate.conformance.cases.Embed.Builder, build.buf.validate.conformance.cases.EmbedOrBuilder> 
         getValFieldBuilder() {
       if (valBuilder_ == null) {
-        valBuilder_ =
-            new com.google.protobuf.RepeatedFieldBuilderV3<
-                build.buf.validate.conformance.cases.Embed,
-                build.buf.validate.conformance.cases.Embed.Builder,
-                build.buf.validate.conformance.cases.EmbedOrBuilder>(
-                val_, ((bitField0_ & 0x00000001) != 0), getParentForChildren(), isClean());
+        valBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+            build.buf.validate.conformance.cases.Embed, build.buf.validate.conformance.cases.Embed.Builder, build.buf.validate.conformance.cases.EmbedOrBuilder>(
+                val_,
+                ((bitField0_ & 0x00000001) != 0),
+                getParentForChildren(),
+                isClean());
         val_ = null;
       }
       return valBuilder_;
     }
-
     @java.lang.Override
-    public final Builder setUnknownFields(final com.google.protobuf.UnknownFieldSet unknownFields) {
+    public final Builder setUnknownFields(
+        final com.google.protobuf.UnknownFieldSet unknownFields) {
       return super.setUnknownFields(unknownFields);
     }
 
@@ -784,12 +705,12 @@ public final class RepeatedEmbedSkip extends com.google.protobuf.GeneratedMessag
       return super.mergeUnknownFields(unknownFields);
     }
 
+
     // @@protoc_insertion_point(builder_scope:buf.validate.conformance.cases.RepeatedEmbedSkip)
   }
 
   // @@protoc_insertion_point(class_scope:buf.validate.conformance.cases.RepeatedEmbedSkip)
   private static final build.buf.validate.conformance.cases.RepeatedEmbedSkip DEFAULT_INSTANCE;
-
   static {
     DEFAULT_INSTANCE = new build.buf.validate.conformance.cases.RepeatedEmbedSkip();
   }
@@ -798,27 +719,27 @@ public final class RepeatedEmbedSkip extends com.google.protobuf.GeneratedMessag
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<RepeatedEmbedSkip> PARSER =
-      new com.google.protobuf.AbstractParser<RepeatedEmbedSkip>() {
-        @java.lang.Override
-        public RepeatedEmbedSkip parsePartialFrom(
-            com.google.protobuf.CodedInputStream input,
-            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-            throws com.google.protobuf.InvalidProtocolBufferException {
-          Builder builder = newBuilder();
-          try {
-            builder.mergeFrom(input, extensionRegistry);
-          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-            throw e.setUnfinishedMessage(builder.buildPartial());
-          } catch (com.google.protobuf.UninitializedMessageException e) {
-            throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
-          } catch (java.io.IOException e) {
-            throw new com.google.protobuf.InvalidProtocolBufferException(e)
-                .setUnfinishedMessage(builder.buildPartial());
-          }
-          return builder.buildPartial();
-        }
-      };
+  private static final com.google.protobuf.Parser<RepeatedEmbedSkip>
+      PARSER = new com.google.protobuf.AbstractParser<RepeatedEmbedSkip>() {
+    @java.lang.Override
+    public RepeatedEmbedSkip parsePartialFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      Builder builder = newBuilder();
+      try {
+        builder.mergeFrom(input, extensionRegistry);
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(builder.buildPartial());
+      } catch (com.google.protobuf.UninitializedMessageException e) {
+        throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(e)
+            .setUnfinishedMessage(builder.buildPartial());
+      }
+      return builder.buildPartial();
+    }
+  };
 
   public static com.google.protobuf.Parser<RepeatedEmbedSkip> parser() {
     return PARSER;
@@ -833,4 +754,6 @@ public final class RepeatedEmbedSkip extends com.google.protobuf.GeneratedMessag
   public build.buf.validate.conformance.cases.RepeatedEmbedSkip getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
+
 }
+

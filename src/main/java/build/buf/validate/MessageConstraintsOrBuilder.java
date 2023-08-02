@@ -3,14 +3,11 @@
 
 package build.buf.validate;
 
-public interface MessageConstraintsOrBuilder
-    extends
+public interface MessageConstraintsOrBuilder extends
     // @@protoc_insertion_point(interface_extends:buf.validate.MessageConstraints)
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   *
-   *
    * <pre>
    * disabled is a boolean flag that, when set to true, nullifies any validation rules for this message.
    * This includes any fields within the message that would otherwise support validation.
@@ -24,14 +21,10 @@ public interface MessageConstraintsOrBuilder
    * </pre>
    *
    * <code>optional bool disabled = 1 [json_name = "disabled"];</code>
-   *
    * @return Whether the disabled field is set.
    */
   boolean hasDisabled();
-
   /**
-   *
-   *
    * <pre>
    * disabled is a boolean flag that, when set to true, nullifies any validation rules for this message.
    * This includes any fields within the message that would otherwise support validation.
@@ -45,22 +38,19 @@ public interface MessageConstraintsOrBuilder
    * </pre>
    *
    * <code>optional bool disabled = 1 [json_name = "disabled"];</code>
-   *
    * @return The disabled.
    */
   boolean getDisabled();
 
   /**
-   *
-   *
    * <pre>
    * cel is a repeated field of type Constraint. Each Constraint specifies a validation rule to be applied to this message.
    * These constraints are written in Common Expression Language (CEL) syntax. For more information on
    * CEL, [see our documentation](https://github.com/bufbuild/protovalidate/blob/main/docs/cel.md).
    *
    *
-   * ```proto
-   * message MyMessage {
+   *```proto
+   *message MyMessage {
    *  // The field `foo` must be greater than 42.
    *  option (buf.validate.message).cel = {
    *    id: "my_message.value",
@@ -68,25 +58,23 @@ public interface MessageConstraintsOrBuilder
    *    expression: "this.foo &gt; 42",
    *  };
    *  optional int32 foo = 1;
-   * }
-   * ```
+   *}
+   *```
    * </pre>
    *
    * <code>repeated .buf.validate.Constraint cel = 3 [json_name = "cel"];</code>
    */
-  java.util.List<build.buf.validate.Constraint> getCelList();
-
+  java.util.List<build.buf.validate.Constraint> 
+      getCelList();
   /**
-   *
-   *
    * <pre>
    * cel is a repeated field of type Constraint. Each Constraint specifies a validation rule to be applied to this message.
    * These constraints are written in Common Expression Language (CEL) syntax. For more information on
    * CEL, [see our documentation](https://github.com/bufbuild/protovalidate/blob/main/docs/cel.md).
    *
    *
-   * ```proto
-   * message MyMessage {
+   *```proto
+   *message MyMessage {
    *  // The field `foo` must be greater than 42.
    *  option (buf.validate.message).cel = {
    *    id: "my_message.value",
@@ -94,25 +82,22 @@ public interface MessageConstraintsOrBuilder
    *    expression: "this.foo &gt; 42",
    *  };
    *  optional int32 foo = 1;
-   * }
-   * ```
+   *}
+   *```
    * </pre>
    *
    * <code>repeated .buf.validate.Constraint cel = 3 [json_name = "cel"];</code>
    */
   build.buf.validate.Constraint getCel(int index);
-
   /**
-   *
-   *
    * <pre>
    * cel is a repeated field of type Constraint. Each Constraint specifies a validation rule to be applied to this message.
    * These constraints are written in Common Expression Language (CEL) syntax. For more information on
    * CEL, [see our documentation](https://github.com/bufbuild/protovalidate/blob/main/docs/cel.md).
    *
    *
-   * ```proto
-   * message MyMessage {
+   *```proto
+   *message MyMessage {
    *  // The field `foo` must be greater than 42.
    *  option (buf.validate.message).cel = {
    *    id: "my_message.value",
@@ -120,25 +105,22 @@ public interface MessageConstraintsOrBuilder
    *    expression: "this.foo &gt; 42",
    *  };
    *  optional int32 foo = 1;
-   * }
-   * ```
+   *}
+   *```
    * </pre>
    *
    * <code>repeated .buf.validate.Constraint cel = 3 [json_name = "cel"];</code>
    */
   int getCelCount();
-
   /**
-   *
-   *
    * <pre>
    * cel is a repeated field of type Constraint. Each Constraint specifies a validation rule to be applied to this message.
    * These constraints are written in Common Expression Language (CEL) syntax. For more information on
    * CEL, [see our documentation](https://github.com/bufbuild/protovalidate/blob/main/docs/cel.md).
    *
    *
-   * ```proto
-   * message MyMessage {
+   *```proto
+   *message MyMessage {
    *  // The field `foo` must be greater than 42.
    *  option (buf.validate.message).cel = {
    *    id: "my_message.value",
@@ -146,25 +128,23 @@ public interface MessageConstraintsOrBuilder
    *    expression: "this.foo &gt; 42",
    *  };
    *  optional int32 foo = 1;
-   * }
-   * ```
+   *}
+   *```
    * </pre>
    *
    * <code>repeated .buf.validate.Constraint cel = 3 [json_name = "cel"];</code>
    */
-  java.util.List<? extends build.buf.validate.ConstraintOrBuilder> getCelOrBuilderList();
-
+  java.util.List<? extends build.buf.validate.ConstraintOrBuilder> 
+      getCelOrBuilderList();
   /**
-   *
-   *
    * <pre>
    * cel is a repeated field of type Constraint. Each Constraint specifies a validation rule to be applied to this message.
    * These constraints are written in Common Expression Language (CEL) syntax. For more information on
    * CEL, [see our documentation](https://github.com/bufbuild/protovalidate/blob/main/docs/cel.md).
    *
    *
-   * ```proto
-   * message MyMessage {
+   *```proto
+   *message MyMessage {
    *  // The field `foo` must be greater than 42.
    *  option (buf.validate.message).cel = {
    *    id: "my_message.value",
@@ -172,11 +152,12 @@ public interface MessageConstraintsOrBuilder
    *    expression: "this.foo &gt; 42",
    *  };
    *  optional int32 foo = 1;
-   * }
-   * ```
+   *}
+   *```
    * </pre>
    *
    * <code>repeated .buf.validate.Constraint cel = 3 [json_name = "cel"];</code>
    */
-  build.buf.validate.ConstraintOrBuilder getCelOrBuilder(int index);
+  build.buf.validate.ConstraintOrBuilder getCelOrBuilder(
+      int index);
 }

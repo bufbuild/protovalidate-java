@@ -3,14 +3,12 @@
 
 package build.buf.validate.conformance.cases;
 
-public interface FloatLTEOrBuilder
-    extends
+public interface FloatLTEOrBuilder extends
     // @@protoc_insertion_point(interface_extends:buf.validate.conformance.cases.FloatLTE)
     com.google.protobuf.MessageOrBuilder {
 
   /**
    * <code>float val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
-   *
    * @return The val.
    */
   float getVal();

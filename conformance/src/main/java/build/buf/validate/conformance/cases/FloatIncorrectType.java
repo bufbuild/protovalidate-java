@@ -3,47 +3,45 @@
 
 package build.buf.validate.conformance.cases;
 
-/** Protobuf type {@code buf.validate.conformance.cases.FloatIncorrectType} */
-public final class FloatIncorrectType extends com.google.protobuf.GeneratedMessageV3
-    implements
+/**
+ * Protobuf type {@code buf.validate.conformance.cases.FloatIncorrectType}
+ */
+public final class FloatIncorrectType extends
+    com.google.protobuf.GeneratedMessageV3 implements
     // @@protoc_insertion_point(message_implements:buf.validate.conformance.cases.FloatIncorrectType)
     FloatIncorrectTypeOrBuilder {
-  private static final long serialVersionUID = 0L;
-
+private static final long serialVersionUID = 0L;
   // Use FloatIncorrectType.newBuilder() to construct.
   private FloatIncorrectType(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
-
-  private FloatIncorrectType() {}
+  private FloatIncorrectType() {
+  }
 
   @java.lang.Override
   @SuppressWarnings({"unused"})
-  protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
+  protected java.lang.Object newInstance(
+      UnusedPrivateParameter unused) {
     return new FloatIncorrectType();
   }
 
-  public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
-    return build.buf.validate.conformance.cases.NumbersProto
-        .internal_static_buf_validate_conformance_cases_FloatIncorrectType_descriptor;
+  public static final com.google.protobuf.Descriptors.Descriptor
+      getDescriptor() {
+    return build.buf.validate.conformance.cases.NumbersProto.internal_static_buf_validate_conformance_cases_FloatIncorrectType_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return build.buf.validate.conformance.cases.NumbersProto
-        .internal_static_buf_validate_conformance_cases_FloatIncorrectType_fieldAccessorTable
+    return build.buf.validate.conformance.cases.NumbersProto.internal_static_buf_validate_conformance_cases_FloatIncorrectType_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            build.buf.validate.conformance.cases.FloatIncorrectType.class,
-            build.buf.validate.conformance.cases.FloatIncorrectType.Builder.class);
+            build.buf.validate.conformance.cases.FloatIncorrectType.class, build.buf.validate.conformance.cases.FloatIncorrectType.Builder.class);
   }
 
   public static final int VAL_FIELD_NUMBER = 1;
   private float val_ = 0F;
-
   /**
    * <code>float val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
-   *
    * @return The val.
    */
   @java.lang.Override
@@ -52,7 +50,6 @@ public final class FloatIncorrectType extends com.google.protobuf.GeneratedMessa
   }
 
   private byte memoizedIsInitialized = -1;
-
   @java.lang.Override
   public final boolean isInitialized() {
     byte isInitialized = memoizedIsInitialized;
@@ -64,7 +61,8 @@ public final class FloatIncorrectType extends com.google.protobuf.GeneratedMessa
   }
 
   @java.lang.Override
-  public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
+  public void writeTo(com.google.protobuf.CodedOutputStream output)
+                      throws java.io.IOException {
     if (java.lang.Float.floatToRawIntBits(val_) != 0) {
       output.writeFloat(1, val_);
     }
@@ -78,7 +76,8 @@ public final class FloatIncorrectType extends com.google.protobuf.GeneratedMessa
 
     size = 0;
     if (java.lang.Float.floatToRawIntBits(val_) != 0) {
-      size += com.google.protobuf.CodedOutputStream.computeFloatSize(1, val_);
+      size += com.google.protobuf.CodedOutputStream
+        .computeFloatSize(1, val_);
     }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
@@ -88,16 +87,16 @@ public final class FloatIncorrectType extends com.google.protobuf.GeneratedMessa
   @java.lang.Override
   public boolean equals(final java.lang.Object obj) {
     if (obj == this) {
-      return true;
+     return true;
     }
     if (!(obj instanceof build.buf.validate.conformance.cases.FloatIncorrectType)) {
       return super.equals(obj);
     }
-    build.buf.validate.conformance.cases.FloatIncorrectType other =
-        (build.buf.validate.conformance.cases.FloatIncorrectType) obj;
+    build.buf.validate.conformance.cases.FloatIncorrectType other = (build.buf.validate.conformance.cases.FloatIncorrectType) obj;
 
-    if (java.lang.Float.floatToIntBits(getVal()) != java.lang.Float.floatToIntBits(other.getVal()))
-      return false;
+    if (java.lang.Float.floatToIntBits(getVal())
+        != java.lang.Float.floatToIntBits(
+            other.getVal())) return false;
     if (!getUnknownFields().equals(other.getUnknownFields())) return false;
     return true;
   }
@@ -110,136 +109,135 @@ public final class FloatIncorrectType extends com.google.protobuf.GeneratedMessa
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
     hash = (37 * hash) + VAL_FIELD_NUMBER;
-    hash = (53 * hash) + java.lang.Float.floatToIntBits(getVal());
+    hash = (53 * hash) + java.lang.Float.floatToIntBits(
+        getVal());
     hash = (29 * hash) + getUnknownFields().hashCode();
     memoizedHashCode = hash;
     return hash;
   }
 
   public static build.buf.validate.conformance.cases.FloatIncorrectType parseFrom(
-      java.nio.ByteBuffer data) throws com.google.protobuf.InvalidProtocolBufferException {
+      java.nio.ByteBuffer data)
+      throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-
   public static build.buf.validate.conformance.cases.FloatIncorrectType parseFrom(
-      java.nio.ByteBuffer data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      java.nio.ByteBuffer data,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-
   public static build.buf.validate.conformance.cases.FloatIncorrectType parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-
   public static build.buf.validate.conformance.cases.FloatIncorrectType parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-
   public static build.buf.validate.conformance.cases.FloatIncorrectType parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-
   public static build.buf.validate.conformance.cases.FloatIncorrectType parseFrom(
-      byte[] data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      byte[] data,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-
+  public static build.buf.validate.conformance.cases.FloatIncorrectType parseFrom(java.io.InputStream input)
+      throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3
+        .parseWithIOException(PARSER, input);
+  }
   public static build.buf.validate.conformance.cases.FloatIncorrectType parseFrom(
-      java.io.InputStream input) throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
+      java.io.InputStream input,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3
+        .parseWithIOException(PARSER, input, extensionRegistry);
   }
 
-  public static build.buf.validate.conformance.cases.FloatIncorrectType parseFrom(
-      java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+  public static build.buf.validate.conformance.cases.FloatIncorrectType parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
-        PARSER, input, extensionRegistry);
+    return com.google.protobuf.GeneratedMessageV3
+        .parseDelimitedWithIOException(PARSER, input);
   }
 
   public static build.buf.validate.conformance.cases.FloatIncorrectType parseDelimitedFrom(
-      java.io.InputStream input) throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input);
-  }
-
-  public static build.buf.validate.conformance.cases.FloatIncorrectType parseDelimitedFrom(
-      java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      java.io.InputStream input,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(
-        PARSER, input, extensionRegistry);
+    return com.google.protobuf.GeneratedMessageV3
+        .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-
   public static build.buf.validate.conformance.cases.FloatIncorrectType parseFrom(
-      com.google.protobuf.CodedInputStream input) throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
+      com.google.protobuf.CodedInputStream input)
+      throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3
+        .parseWithIOException(PARSER, input);
   }
-
   public static build.buf.validate.conformance.cases.FloatIncorrectType parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
-        PARSER, input, extensionRegistry);
+    return com.google.protobuf.GeneratedMessageV3
+        .parseWithIOException(PARSER, input, extensionRegistry);
   }
 
   @java.lang.Override
-  public Builder newBuilderForType() {
-    return newBuilder();
-  }
-
+  public Builder newBuilderForType() { return newBuilder(); }
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-
-  public static Builder newBuilder(
-      build.buf.validate.conformance.cases.FloatIncorrectType prototype) {
+  public static Builder newBuilder(build.buf.validate.conformance.cases.FloatIncorrectType prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
-
   @java.lang.Override
   public Builder toBuilder() {
-    return this == DEFAULT_INSTANCE ? new Builder() : new Builder().mergeFrom(this);
+    return this == DEFAULT_INSTANCE
+        ? new Builder() : new Builder().mergeFrom(this);
   }
 
   @java.lang.Override
-  protected Builder newBuilderForType(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+  protected Builder newBuilderForType(
+      com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
     Builder builder = new Builder(parent);
     return builder;
   }
-
-  /** Protobuf type {@code buf.validate.conformance.cases.FloatIncorrectType} */
-  public static final class Builder extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
-      implements
+  /**
+   * Protobuf type {@code buf.validate.conformance.cases.FloatIncorrectType}
+   */
+  public static final class Builder extends
+      com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
       // @@protoc_insertion_point(builder_implements:buf.validate.conformance.cases.FloatIncorrectType)
       build.buf.validate.conformance.cases.FloatIncorrectTypeOrBuilder {
-    public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
-      return build.buf.validate.conformance.cases.NumbersProto
-          .internal_static_buf_validate_conformance_cases_FloatIncorrectType_descriptor;
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return build.buf.validate.conformance.cases.NumbersProto.internal_static_buf_validate_conformance_cases_FloatIncorrectType_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return build.buf.validate.conformance.cases.NumbersProto
-          .internal_static_buf_validate_conformance_cases_FloatIncorrectType_fieldAccessorTable
+      return build.buf.validate.conformance.cases.NumbersProto.internal_static_buf_validate_conformance_cases_FloatIncorrectType_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              build.buf.validate.conformance.cases.FloatIncorrectType.class,
-              build.buf.validate.conformance.cases.FloatIncorrectType.Builder.class);
+              build.buf.validate.conformance.cases.FloatIncorrectType.class, build.buf.validate.conformance.cases.FloatIncorrectType.Builder.class);
     }
 
     // Construct using build.buf.validate.conformance.cases.FloatIncorrectType.newBuilder()
-    private Builder() {}
+    private Builder() {
 
-    private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-      super(parent);
     }
 
+    private Builder(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      super(parent);
+
+    }
     @java.lang.Override
     public Builder clear() {
       super.clear();
@@ -249,9 +247,9 @@ public final class FloatIncorrectType extends com.google.protobuf.GeneratedMessa
     }
 
     @java.lang.Override
-    public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
-      return build.buf.validate.conformance.cases.NumbersProto
-          .internal_static_buf_validate_conformance_cases_FloatIncorrectType_descriptor;
+    public com.google.protobuf.Descriptors.Descriptor
+        getDescriptorForType() {
+      return build.buf.validate.conformance.cases.NumbersProto.internal_static_buf_validate_conformance_cases_FloatIncorrectType_descriptor;
     }
 
     @java.lang.Override
@@ -270,11 +268,8 @@ public final class FloatIncorrectType extends com.google.protobuf.GeneratedMessa
 
     @java.lang.Override
     public build.buf.validate.conformance.cases.FloatIncorrectType buildPartial() {
-      build.buf.validate.conformance.cases.FloatIncorrectType result =
-          new build.buf.validate.conformance.cases.FloatIncorrectType(this);
-      if (bitField0_ != 0) {
-        buildPartial0(result);
-      }
+      build.buf.validate.conformance.cases.FloatIncorrectType result = new build.buf.validate.conformance.cases.FloatIncorrectType(this);
+      if (bitField0_ != 0) { buildPartial0(result); }
       onBuilt();
       return result;
     }
@@ -290,39 +285,38 @@ public final class FloatIncorrectType extends com.google.protobuf.GeneratedMessa
     public Builder clone() {
       return super.clone();
     }
-
     @java.lang.Override
     public Builder setField(
-        com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field,
+        java.lang.Object value) {
       return super.setField(field, value);
     }
-
     @java.lang.Override
-    public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
+    public Builder clearField(
+        com.google.protobuf.Descriptors.FieldDescriptor field) {
       return super.clearField(field);
     }
-
     @java.lang.Override
-    public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+    public Builder clearOneof(
+        com.google.protobuf.Descriptors.OneofDescriptor oneof) {
       return super.clearOneof(oneof);
     }
-
     @java.lang.Override
     public Builder setRepeatedField(
-        com.google.protobuf.Descriptors.FieldDescriptor field, int index, java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field,
+        int index, java.lang.Object value) {
       return super.setRepeatedField(field, index, value);
     }
-
     @java.lang.Override
     public Builder addRepeatedField(
-        com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field,
+        java.lang.Object value) {
       return super.addRepeatedField(field, value);
     }
-
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
       if (other instanceof build.buf.validate.conformance.cases.FloatIncorrectType) {
-        return mergeFrom((build.buf.validate.conformance.cases.FloatIncorrectType) other);
+        return mergeFrom((build.buf.validate.conformance.cases.FloatIncorrectType)other);
       } else {
         super.mergeFrom(other);
         return this;
@@ -330,8 +324,7 @@ public final class FloatIncorrectType extends com.google.protobuf.GeneratedMessa
     }
 
     public Builder mergeFrom(build.buf.validate.conformance.cases.FloatIncorrectType other) {
-      if (other == build.buf.validate.conformance.cases.FloatIncorrectType.getDefaultInstance())
-        return this;
+      if (other == build.buf.validate.conformance.cases.FloatIncorrectType.getDefaultInstance()) return this;
       if (other.getVal() != 0F) {
         setVal(other.getVal());
       }
@@ -361,19 +354,17 @@ public final class FloatIncorrectType extends com.google.protobuf.GeneratedMessa
             case 0:
               done = true;
               break;
-            case 13:
-              {
-                val_ = input.readFloat();
-                bitField0_ |= 0x00000001;
-                break;
-              } // case 13
-            default:
-              {
-                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
-                  done = true; // was an endgroup tag
-                }
-                break;
-              } // default:
+            case 13: {
+              val_ = input.readFloat();
+              bitField0_ |= 0x00000001;
+              break;
+            } // case 13
+            default: {
+              if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                done = true; // was an endgroup tag
+              }
+              break;
+            } // default:
           } // switch (tag)
         } // while (!done)
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -383,24 +374,19 @@ public final class FloatIncorrectType extends com.google.protobuf.GeneratedMessa
       } // finally
       return this;
     }
-
     private int bitField0_;
 
-    private float val_;
-
+    private float val_ ;
     /**
      * <code>float val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
-     *
      * @return The val.
      */
     @java.lang.Override
     public float getVal() {
       return val_;
     }
-
     /**
      * <code>float val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
-     *
      * @param value The val to set.
      * @return This builder for chaining.
      */
@@ -411,10 +397,8 @@ public final class FloatIncorrectType extends com.google.protobuf.GeneratedMessa
       onChanged();
       return this;
     }
-
     /**
      * <code>float val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
-     *
      * @return This builder for chaining.
      */
     public Builder clearVal() {
@@ -423,9 +407,9 @@ public final class FloatIncorrectType extends com.google.protobuf.GeneratedMessa
       onChanged();
       return this;
     }
-
     @java.lang.Override
-    public final Builder setUnknownFields(final com.google.protobuf.UnknownFieldSet unknownFields) {
+    public final Builder setUnknownFields(
+        final com.google.protobuf.UnknownFieldSet unknownFields) {
       return super.setUnknownFields(unknownFields);
     }
 
@@ -435,12 +419,12 @@ public final class FloatIncorrectType extends com.google.protobuf.GeneratedMessa
       return super.mergeUnknownFields(unknownFields);
     }
 
+
     // @@protoc_insertion_point(builder_scope:buf.validate.conformance.cases.FloatIncorrectType)
   }
 
   // @@protoc_insertion_point(class_scope:buf.validate.conformance.cases.FloatIncorrectType)
   private static final build.buf.validate.conformance.cases.FloatIncorrectType DEFAULT_INSTANCE;
-
   static {
     DEFAULT_INSTANCE = new build.buf.validate.conformance.cases.FloatIncorrectType();
   }
@@ -449,27 +433,27 @@ public final class FloatIncorrectType extends com.google.protobuf.GeneratedMessa
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<FloatIncorrectType> PARSER =
-      new com.google.protobuf.AbstractParser<FloatIncorrectType>() {
-        @java.lang.Override
-        public FloatIncorrectType parsePartialFrom(
-            com.google.protobuf.CodedInputStream input,
-            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-            throws com.google.protobuf.InvalidProtocolBufferException {
-          Builder builder = newBuilder();
-          try {
-            builder.mergeFrom(input, extensionRegistry);
-          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-            throw e.setUnfinishedMessage(builder.buildPartial());
-          } catch (com.google.protobuf.UninitializedMessageException e) {
-            throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
-          } catch (java.io.IOException e) {
-            throw new com.google.protobuf.InvalidProtocolBufferException(e)
-                .setUnfinishedMessage(builder.buildPartial());
-          }
-          return builder.buildPartial();
-        }
-      };
+  private static final com.google.protobuf.Parser<FloatIncorrectType>
+      PARSER = new com.google.protobuf.AbstractParser<FloatIncorrectType>() {
+    @java.lang.Override
+    public FloatIncorrectType parsePartialFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      Builder builder = newBuilder();
+      try {
+        builder.mergeFrom(input, extensionRegistry);
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(builder.buildPartial());
+      } catch (com.google.protobuf.UninitializedMessageException e) {
+        throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(e)
+            .setUnfinishedMessage(builder.buildPartial());
+      }
+      return builder.buildPartial();
+    }
+  };
 
   public static com.google.protobuf.Parser<FloatIncorrectType> parser() {
     return PARSER;
@@ -484,4 +468,6 @@ public final class FloatIncorrectType extends com.google.protobuf.GeneratedMessa
   public build.buf.validate.conformance.cases.FloatIncorrectType getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
+
 }
+
