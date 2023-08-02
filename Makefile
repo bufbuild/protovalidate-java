@@ -62,7 +62,6 @@ help:  ## Describe useful make targets
 generate: generate-license  ## Regenerate code and license headers
 	buf generate --template buf.gen.yaml buf.build/bufbuild/protovalidate
 	buf generate --template conformance/buf.gen.yaml -o conformance/ buf.build/bufbuild/protovalidate-testing
-	./gradlew spotlessApply
 
 .PHONY: lint
 lint: ## Lint code
