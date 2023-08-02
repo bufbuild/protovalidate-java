@@ -14,7 +14,7 @@
 
 package build.buf.protovalidate.internal.constraints;
 
-import build.buf.gen.buf.validate.FieldConstraints;
+import build.buf.validate.FieldConstraints;
 import com.google.api.expr.v1alpha1.Type;
 import com.google.protobuf.Descriptors.Descriptor;
 import com.google.protobuf.Descriptors.FieldDescriptor;
@@ -48,9 +48,9 @@ public class DescriptorMappings {
       new HashMap<>();
 
   /**
-   * Returns the {@link build.buf.gen.buf.validate.FieldConstraints} field that is expected for the
-   * given wrapper well-known type's full name. If ok is false, no standard constraints exist for
-   * that type.
+   * Returns the {@link build.buf.validate.FieldConstraints} field that is expected for the given
+   * wrapper well-known type's full name. If ok is false, no standard constraints exist for that
+   * type.
    */
   static final Map<String, FieldDescriptor> EXPECTED_WKT_CONSTRAINTS = new HashMap<>();
 

@@ -1,0 +1,6 @@
+version: v1
+managed:
+  enabled: false
+plugins:
+  - plugin: buf.build/protocolbuffers/java:v23.4
+    out: src/main/java

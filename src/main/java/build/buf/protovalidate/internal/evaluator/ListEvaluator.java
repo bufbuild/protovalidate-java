@@ -14,10 +14,10 @@
 
 package build.buf.protovalidate.internal.evaluator;
 
-import build.buf.gen.buf.validate.FieldConstraints;
-import build.buf.gen.buf.validate.Violation;
 import build.buf.protovalidate.ValidationResult;
 import build.buf.protovalidate.exceptions.ExecutionException;
+import build.buf.validate.FieldConstraints;
+import build.buf.validate.Violation;
 import com.google.protobuf.Descriptors;
 import java.util.ArrayList;
 import java.util.List;

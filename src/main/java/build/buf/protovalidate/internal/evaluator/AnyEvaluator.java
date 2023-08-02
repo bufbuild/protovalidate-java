@@ -14,9 +14,9 @@
 
 package build.buf.protovalidate.internal.evaluator;
 
-import build.buf.gen.buf.validate.Violation;
 import build.buf.protovalidate.ValidationResult;
 import build.buf.protovalidate.exceptions.ExecutionException;
+import build.buf.validate.Violation;
 import com.google.protobuf.Descriptors;
 import com.google.protobuf.Message;
 import java.util.ArrayList;
@@ -26,7 +26,7 @@ import java.util.List;
 import java.util.Set;
 
 /**
- * A specialized evaluator for applying {@link build.buf.gen.buf.validate.AnyRules} to an {@link
+ * A specialized evaluator for applying {@link build.buf.validate.AnyRules} to an {@link
  * com.google.protobuf.Any} message. This is handled outside CEL which attempts to hydrate {@link
  * com.google.protobuf.Any}'s within an expression, breaking evaluation if the type is unknown at
  * runtime.
@@ -36,7 +36,7 @@ class AnyEvaluator implements Evaluator {
   private final Set<String> in;
   private final Set<String> notIn;
 
-  /** Constructs a new evaluator for {@link build.buf.gen.buf.validate.AnyRules} messages. */
+  /** Constructs a new evaluator for {@link build.buf.validate.AnyRules} messages. */
   AnyEvaluator(Descriptors.FieldDescriptor typeURLDescriptor, List<String> in, List<String> notIn) {
     this.typeURLDescriptor = typeURLDescriptor;
     this.in = stringsToSet(in);

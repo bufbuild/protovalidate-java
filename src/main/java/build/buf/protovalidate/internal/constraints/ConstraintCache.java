@@ -14,13 +14,13 @@
 
 package build.buf.protovalidate.internal.constraints;
 
-import build.buf.gen.buf.validate.FieldConstraints;
-import build.buf.gen.buf.validate.priv.PrivateProto;
 import build.buf.protovalidate.exceptions.CompilationException;
 import build.buf.protovalidate.internal.expression.AstExpression;
 import build.buf.protovalidate.internal.expression.CompiledProgram;
 import build.buf.protovalidate.internal.expression.Expression;
 import build.buf.protovalidate.internal.expression.Variable;
+import build.buf.validate.FieldConstraints;
+import build.buf.validate.priv.PrivateProto;
 import com.google.protobuf.Descriptors.FieldDescriptor;
 import com.google.protobuf.Message;
 import java.util.ArrayList;
@@ -96,7 +96,7 @@ public class ConstraintCache {
     for (Map.Entry<FieldDescriptor, Object> entry : message.getAllFields().entrySet()) {
       FieldDescriptor constraintFieldDesc = entry.getKey();
       if (!descriptorMap.containsKey(constraintFieldDesc)) {
-        build.buf.gen.buf.validate.priv.FieldConstraints constraints =
+        build.buf.validate.priv.FieldConstraints constraints =
             constraintFieldDesc.getOptions().getExtension(PrivateProto.field);
         List<Expression> expressions = Expression.fromPrivConstraints(constraints.getCelList());
         List<AstExpression> astExpressions = new ArrayList<>();

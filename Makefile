@@ -60,6 +60,8 @@ help:  ## Describe useful make targets
 
 .PHONY: generate
 generate: generate-license  ## Regenerate code and license headers
+	buf generate --template buf.gen.yaml buf.build/bufbuild/protovalidate
+	buf generate --template conformance/buf.gen.yaml -o conformance/ buf.build/bufbuild/protovalidate-testing
 
 .PHONY: lint
 lint: ## Lint code

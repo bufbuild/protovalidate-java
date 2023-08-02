@@ -47,6 +47,13 @@ buildscript {
     }
 }
 
+apply(plugin = "com.diffplug.spotless")
+configure<SpotlessExtension> {
+    java {
+        targetExclude("src/main/java/build/buf/validate/**/*.java")
+    }
+}
+
 allprojects {
     repositories {
         mavenCentral()
@@ -120,7 +127,6 @@ mavenPublishing {
 dependencies {
     annotationProcessor(libs.nullaway)
     api(libs.protobuf.java)
-    api(libs.protovalidate)
     implementation(enforcedPlatform(libs.cel))
     implementation(libs.cel.core)
     implementation(libs.guava)
@@ -128,7 +134,6 @@ dependencies {
 
     testImplementation(libs.assertj)
     testImplementation(libs.junit)
-    testImplementation(libs.protovalidate.testing)
 
     errorprone(libs.errorprone)
 }

@@ -1,3 +1,5 @@
+import com.diffplug.gradle.spotless.SpotlessExtension
+
 plugins {
     `version-catalog`
 
@@ -27,12 +29,20 @@ tasks {
     }
 }
 
+apply(plugin = "com.diffplug.spotless")
+configure<SpotlessExtension> {
+    java {
+        targetExclude("src/main/java/build/buf/validate/**/*.java")
+    }
+}
+
 dependencies {
     implementation(project(":"))
     implementation(libs.guava)
     implementation(libs.protobuf.java)
-    implementation(libs.protovalidate)
-    implementation(libs.protovalidate.testing)
+
+    implementation(libs.assertj)
+    implementation(libs.junit)
 
     errorprone(libs.errorprone)
 }

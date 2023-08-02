@@ -14,11 +14,6 @@
 
 package build.buf.protovalidate.internal.evaluator;
 
-import build.buf.gen.buf.validate.Constraint;
-import build.buf.gen.buf.validate.FieldConstraints;
-import build.buf.gen.buf.validate.MessageConstraints;
-import build.buf.gen.buf.validate.OneofConstraints;
-import build.buf.gen.buf.validate.ValidateProto;
 import build.buf.protovalidate.exceptions.CompilationException;
 import build.buf.protovalidate.internal.constraints.ConstraintCache;
 import build.buf.protovalidate.internal.constraints.DescriptorMappings;
@@ -27,6 +22,11 @@ import build.buf.protovalidate.internal.expression.CelPrograms;
 import build.buf.protovalidate.internal.expression.CompiledProgram;
 import build.buf.protovalidate.internal.expression.Expression;
 import build.buf.protovalidate.internal.expression.Variable;
+import build.buf.validate.Constraint;
+import build.buf.validate.FieldConstraints;
+import build.buf.validate.MessageConstraints;
+import build.buf.validate.OneofConstraints;
+import build.buf.validate.ValidateProto;
 import com.google.protobuf.Descriptors;
 import com.google.protobuf.Descriptors.Descriptor;
 import com.google.protobuf.Descriptors.FieldDescriptor;
