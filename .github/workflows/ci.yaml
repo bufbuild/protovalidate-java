@@ -24,6 +24,13 @@ jobs:
           distribution: 'temurin'
           java-version: '17'
           cache: 'gradle'
+      - uses: actions/checkout@v3
+      - uses: bufbuild/buf-setup-action@v1.24.0
+        with:
+          github_token: ${{ github.token }}
+      - uses: arduino/setup-protoc@v1
+        with:
+          repo-token: ${{ github.token }}
       - name: Lint
         run: make lint
       - name: Generate
