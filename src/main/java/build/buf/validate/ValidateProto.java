@@ -1398,11 +1398,9 @@ public final class ValidateProto {
       "validate.OneofConstraintsR\005oneof\210\001\001:W\n\005f" +
       "ield\022\035.google.protobuf.FieldOptions\030\207\t \001" +
       "(\0132\036.buf.validate.FieldConstraintsR\005fiel" +
-      "d\210\001\001B\275\001\n\022build.buf.validateB\rValidatePro" +
-      "toP\001ZGbuf.build/gen/go/bufbuild/protoval" +
-      "idate/protocolbuffers/go/buf/validate\242\002\003" +
-      "BVX\252\002\014Buf.Validate\312\002\014Buf\\Validate\342\002\030Buf\\" +
-      "Validate\\GPBMetadata\352\002\rBuf::Validateb\006pr" +
+      "d\210\001\001Bn\n\022build.buf.validateB\rValidateProt" +
+      "oP\001ZGbuf.build/gen/go/bufbuild/protovali" +
+      "date/protocolbuffers/go/buf/validateb\006pr" +
       "oto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor

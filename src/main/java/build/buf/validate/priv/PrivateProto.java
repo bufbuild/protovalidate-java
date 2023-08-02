@@ -57,13 +57,10 @@ public final class PrivateProto {
       "(\tR\007message\022\036\n\nexpression\030\003 \001(\tR\nexpress" +
       "ion:\\\n\005field\022\035.google.protobuf.FieldOpti" +
       "ons\030\210\t \001(\0132#.buf.validate.priv.FieldCons" +
-      "traintsR\005field\210\001\001B\333\001\n\027build.buf.validate" +
-      ".privB\014PrivateProtoP\001ZLbuf.build/gen/go/" +
-      "bufbuild/protovalidate/protocolbuffers/g" +
-      "o/buf/validate/priv\242\002\003BVP\252\002\021Buf.Validate" +
-      ".Priv\312\002\021Buf\\Validate\\Priv\342\002\035Buf\\Validate" +
-      "\\Priv\\GPBMetadata\352\002\023Buf::Validate::Privb" +
-      "\006proto3"
+      "traintsR\005field\210\001\001Bw\n\027build.buf.validate." +
+      "privB\014PrivateProtoP\001ZLbuf.build/gen/go/b" +
+      "ufbuild/protovalidate/protocolbuffers/go" +
+      "/buf/validate/privb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,

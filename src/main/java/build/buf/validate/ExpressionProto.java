@@ -46,12 +46,10 @@ public final class ExpressionProto {
       "ions\"\202\001\n\tViolation\022\035\n\nfield_path\030\001 \001(\tR\t" +
       "fieldPath\022#\n\rconstraint_id\030\002 \001(\tR\014constr" +
       "aintId\022\030\n\007message\030\003 \001(\tR\007message\022\027\n\007for_" +
-      "key\030\004 \001(\010R\006forKeyB\277\001\n\022build.buf.validate" +
-      "B\017ExpressionProtoP\001ZGbuf.build/gen/go/bu" +
-      "fbuild/protovalidate/protocolbuffers/go/" +
-      "buf/validate\242\002\003BVX\252\002\014Buf.Validate\312\002\014Buf\\" +
-      "Validate\342\002\030Buf\\Validate\\GPBMetadata\352\002\rBu" +
-      "f::Validateb\006proto3"
+      "key\030\004 \001(\010R\006forKeyBp\n\022build.buf.validateB" +
+      "\017ExpressionProtoP\001ZGbuf.build/gen/go/buf" +
+      "build/protovalidate/protocolbuffers/go/b" +
+      "uf/validateb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,

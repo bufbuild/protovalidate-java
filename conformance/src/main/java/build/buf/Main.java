@@ -14,17 +14,17 @@
 
 package build.buf;
 
-import build.buf.validate.ValidateProto;
-import build.buf.validate.Violations;
-import build.buf.validate.conformance.harness.TestConformanceRequest;
-import build.buf.validate.conformance.harness.TestConformanceResponse;
-import build.buf.validate.conformance.harness.TestResult;
 import build.buf.protovalidate.Config;
 import build.buf.protovalidate.ValidationResult;
 import build.buf.protovalidate.Validator;
 import build.buf.protovalidate.exceptions.CompilationException;
 import build.buf.protovalidate.exceptions.ExecutionException;
+import build.buf.validate.ValidateProto;
 import build.buf.validate.Violation;
+import build.buf.validate.Violations;
+import build.buf.validate.conformance.harness.TestConformanceRequest;
+import build.buf.validate.conformance.harness.TestConformanceResponse;
+import build.buf.validate.conformance.harness.TestResult;
 import com.google.common.base.Splitter;
 import com.google.errorprone.annotations.FormatMethod;
 import com.google.protobuf.Any;
@@ -93,9 +93,9 @@ public class Main {
       if (violations.isEmpty()) {
         return TestResult.newBuilder().setSuccess(true).build();
       } else {
+        Violations error = Violations.newBuilder().addAllViolations(violations).build();
         return TestResult.newBuilder()
-            .setValidationError(
-                Violations.newBuilder().addAllViolations(violations).build())
+            .setValidationError(error)
             .build();
       }
     } catch (CompilationException e) {
