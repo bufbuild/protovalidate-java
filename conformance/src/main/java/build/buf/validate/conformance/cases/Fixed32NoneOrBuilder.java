@@ -3,12 +3,14 @@
 
 package build.buf.validate.conformance.cases;
 
-public interface Fixed32NoneOrBuilder extends
+public interface Fixed32NoneOrBuilder
+    extends
     // @@protoc_insertion_point(interface_extends:buf.validate.conformance.cases.Fixed32None)
     com.google.protobuf.MessageOrBuilder {
 
   /**
    * <code>fixed32 val = 1 [json_name = "val"];</code>
+   *
    * @return The val.
    */
   int getVal();

@@ -3,45 +3,56 @@
 
 package build.buf.validate.conformance.cases;
 
-public interface OneofIgnoreEmptyOrBuilder extends
+public interface OneofIgnoreEmptyOrBuilder
+    extends
     // @@protoc_insertion_point(interface_extends:buf.validate.conformance.cases.OneofIgnoreEmpty)
     com.google.protobuf.MessageOrBuilder {
 
   /**
    * <code>string x = 1 [json_name = "x", (.buf.validate.field) = { ... }</code>
+   *
    * @return Whether the x field is set.
    */
   boolean hasX();
+
   /**
    * <code>string x = 1 [json_name = "x", (.buf.validate.field) = { ... }</code>
+   *
    * @return The x.
    */
   java.lang.String getX();
+
   /**
    * <code>string x = 1 [json_name = "x", (.buf.validate.field) = { ... }</code>
+   *
    * @return The bytes for x.
    */
-  com.google.protobuf.ByteString
-      getXBytes();
+  com.google.protobuf.ByteString getXBytes();
 
   /**
    * <code>bytes y = 2 [json_name = "y", (.buf.validate.field) = { ... }</code>
+   *
    * @return Whether the y field is set.
    */
   boolean hasY();
+
   /**
    * <code>bytes y = 2 [json_name = "y", (.buf.validate.field) = { ... }</code>
+   *
    * @return The y.
    */
   com.google.protobuf.ByteString getY();
 
   /**
    * <code>int32 z = 3 [json_name = "z", (.buf.validate.field) = { ... }</code>
+   *
    * @return Whether the z field is set.
    */
   boolean hasZ();
+
   /**
    * <code>int32 z = 3 [json_name = "z", (.buf.validate.field) = { ... }</code>
+   *
    * @return The z.
    */
   int getZ();

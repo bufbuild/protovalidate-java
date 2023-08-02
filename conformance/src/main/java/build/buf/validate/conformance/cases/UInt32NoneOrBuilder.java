@@ -3,12 +3,14 @@
 
 package build.buf.validate.conformance.cases;
 
-public interface UInt32NoneOrBuilder extends
+public interface UInt32NoneOrBuilder
+    extends
     // @@protoc_insertion_point(interface_extends:buf.validate.conformance.cases.UInt32None)
     com.google.protobuf.MessageOrBuilder {
 
   /**
    * <code>uint32 val = 1 [json_name = "val"];</code>
+   *
    * @return The val.
    */
   int getVal();

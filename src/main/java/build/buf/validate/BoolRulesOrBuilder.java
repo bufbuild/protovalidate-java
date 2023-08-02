@@ -3,41 +3,49 @@
 
 package build.buf.validate;
 
-public interface BoolRulesOrBuilder extends
+public interface BoolRulesOrBuilder
+    extends
     // @@protoc_insertion_point(interface_extends:buf.validate.BoolRules)
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <pre>
-   *`const` requires the field value to exactly match the specified boolean value.
-   *If the field value doesn't match, an error message is generated.
    *
-   *```proto
-   *message MyBool {
+   *
+   * <pre>
+   * `const` requires the field value to exactly match the specified boolean value.
+   * If the field value doesn't match, an error message is generated.
+   *
+   * ```proto
+   * message MyBool {
    *  // value must equal true
    *   bool value = 1 [(buf.validate.field).bool.const = true];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
    * <code>optional bool const = 1 [json_name = "const", (.buf.validate.priv.field) = { ... }</code>
+   *
    * @return Whether the const field is set.
    */
   boolean hasConst();
+
   /**
-   * <pre>
-   *`const` requires the field value to exactly match the specified boolean value.
-   *If the field value doesn't match, an error message is generated.
    *
-   *```proto
-   *message MyBool {
+   *
+   * <pre>
+   * `const` requires the field value to exactly match the specified boolean value.
+   * If the field value doesn't match, an error message is generated.
+   *
+   * ```proto
+   * message MyBool {
    *  // value must equal true
    *   bool value = 1 [(buf.validate.field).bool.const = true];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
    * <code>optional bool const = 1 [json_name = "const", (.buf.validate.priv.field) = { ... }</code>
+   *
    * @return The const.
    */
   boolean getConst();

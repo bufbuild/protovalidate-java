@@ -3,12 +3,14 @@
 
 package build.buf.validate.conformance.cases;
 
-public interface BoolConstFalseOrBuilder extends
+public interface BoolConstFalseOrBuilder
+    extends
     // @@protoc_insertion_point(interface_extends:buf.validate.conformance.cases.BoolConstFalse)
     com.google.protobuf.MessageOrBuilder {
 
   /**
    * <code>bool val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
+   *
    * @return The val.
    */
   boolean getVal();

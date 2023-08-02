@@ -16,6 +16,8 @@ package build.buf.protovalidate;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import build.buf.protovalidate.exceptions.ExecutionException;
+import build.buf.protovalidate.exceptions.ValidationException;
 import build.buf.validate.conformance.cases.AnEnum;
 import build.buf.validate.conformance.cases.BoolConstTrue;
 import build.buf.validate.conformance.cases.BytesContains;
@@ -40,8 +42,6 @@ import build.buf.validate.conformance.cases.TimestampWithin;
 import build.buf.validate.conformance.cases.WrapperDouble;
 import build.buf.validate.conformance.cases.custom_constraints.DynRuntimeError;
 import build.buf.validate.conformance.cases.custom_constraints.FieldExpressions;
-import build.buf.protovalidate.exceptions.ExecutionException;
-import build.buf.protovalidate.exceptions.ValidationException;
 import com.google.protobuf.ByteString;
 import com.google.protobuf.DoubleValue;
 import com.google.protobuf.Duration;

@@ -4,6 +4,8 @@
 package build.buf.validate;
 
 /**
+ *
+ *
  * <pre>
  * FieldRules encapsulates the rules for each type of field. Depending on the
  * field, the correct set should be used to ensure proper validations.
@@ -11,44 +13,50 @@ package build.buf.validate;
  *
  * Protobuf type {@code buf.validate.FieldConstraints}
  */
-public final class FieldConstraints extends
-    com.google.protobuf.GeneratedMessageV3 implements
+public final class FieldConstraints extends com.google.protobuf.GeneratedMessageV3
+    implements
     // @@protoc_insertion_point(message_implements:buf.validate.FieldConstraints)
     FieldConstraintsOrBuilder {
-private static final long serialVersionUID = 0L;
+  private static final long serialVersionUID = 0L;
+
   // Use FieldConstraints.newBuilder() to construct.
   private FieldConstraints(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
+
   private FieldConstraints() {
     cel_ = java.util.Collections.emptyList();
   }
 
   @java.lang.Override
   @SuppressWarnings({"unused"})
-  protected java.lang.Object newInstance(
-      UnusedPrivateParameter unused) {
+  protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
     return new FieldConstraints();
   }
 
-  public static final com.google.protobuf.Descriptors.Descriptor
-      getDescriptor() {
-    return build.buf.validate.ValidateProto.internal_static_buf_validate_FieldConstraints_descriptor;
+  public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+    return build.buf.validate.ValidateProto
+        .internal_static_buf_validate_FieldConstraints_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return build.buf.validate.ValidateProto.internal_static_buf_validate_FieldConstraints_fieldAccessorTable
+    return build.buf.validate.ValidateProto
+        .internal_static_buf_validate_FieldConstraints_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            build.buf.validate.FieldConstraints.class, build.buf.validate.FieldConstraints.Builder.class);
+            build.buf.validate.FieldConstraints.class,
+            build.buf.validate.FieldConstraints.Builder.class);
   }
 
   private int typeCase_ = 0;
+
   @SuppressWarnings("serial")
   private java.lang.Object type_;
+
   public enum TypeCase
-      implements com.google.protobuf.Internal.EnumLite,
+      implements
+          com.google.protobuf.Internal.EnumLite,
           com.google.protobuf.AbstractMessage.InternalOneOfEnum {
     FLOAT(1),
     DOUBLE(2),
@@ -73,9 +81,11 @@ private static final long serialVersionUID = 0L;
     TIMESTAMP(22),
     TYPE_NOT_SET(0);
     private final int value;
+
     private TypeCase(int value) {
       this.value = value;
     }
+
     /**
      * @param value The number of the enum to look for.
      * @return The enum associated with the given number.
@@ -88,61 +98,87 @@ private static final long serialVersionUID = 0L;
 
     public static TypeCase forNumber(int value) {
       switch (value) {
-        case 1: return FLOAT;
-        case 2: return DOUBLE;
-        case 3: return INT32;
-        case 4: return INT64;
-        case 5: return UINT32;
-        case 6: return UINT64;
-        case 7: return SINT32;
-        case 8: return SINT64;
-        case 9: return FIXED32;
-        case 10: return FIXED64;
-        case 11: return SFIXED32;
-        case 12: return SFIXED64;
-        case 13: return BOOL;
-        case 14: return STRING;
-        case 15: return BYTES;
-        case 16: return ENUM;
-        case 18: return REPEATED;
-        case 19: return MAP;
-        case 20: return ANY;
-        case 21: return DURATION;
-        case 22: return TIMESTAMP;
-        case 0: return TYPE_NOT_SET;
-        default: return null;
+        case 1:
+          return FLOAT;
+        case 2:
+          return DOUBLE;
+        case 3:
+          return INT32;
+        case 4:
+          return INT64;
+        case 5:
+          return UINT32;
+        case 6:
+          return UINT64;
+        case 7:
+          return SINT32;
+        case 8:
+          return SINT64;
+        case 9:
+          return FIXED32;
+        case 10:
+          return FIXED64;
+        case 11:
+          return SFIXED32;
+        case 12:
+          return SFIXED64;
+        case 13:
+          return BOOL;
+        case 14:
+          return STRING;
+        case 15:
+          return BYTES;
+        case 16:
+          return ENUM;
+        case 18:
+          return REPEATED;
+        case 19:
+          return MAP;
+        case 20:
+          return ANY;
+        case 21:
+          return DURATION;
+        case 22:
+          return TIMESTAMP;
+        case 0:
+          return TYPE_NOT_SET;
+        default:
+          return null;
       }
     }
+
     public int getNumber() {
       return this.value;
     }
   };
 
-  public TypeCase
-  getTypeCase() {
-    return TypeCase.forNumber(
-        typeCase_);
+  public TypeCase getTypeCase() {
+    return TypeCase.forNumber(typeCase_);
   }
 
   public static final int CEL_FIELD_NUMBER = 23;
+
   @SuppressWarnings("serial")
   private java.util.List<build.buf.validate.Constraint> cel_;
+
   /**
+   *
+   *
    * <pre>
    * `Constraint` is a repeated field used to represent a textual expression
    * in the Common Expression Language (CEL) syntax. For more information on
    * CEL, [see our documentation](https://github.com/bufbuild/protovalidate/blob/main/docs/cel.md).
    *
-   *```proto
-   *message MyMessage {
+   * ```proto
+   * message MyMessage {
    *  // The field `value` must be greater than 42.
    *  optional int32 value = 1 [(buf.validate.field).cel = {
    *    id: "my_message.value",
    *    message: "value must be greater than 42",
    *    expression: "this &gt; 42",
    *  }];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
    * <code>repeated .buf.validate.Constraint cel = 23 [json_name = "cel"];</code>
@@ -151,47 +187,52 @@ private static final long serialVersionUID = 0L;
   public java.util.List<build.buf.validate.Constraint> getCelList() {
     return cel_;
   }
+
   /**
+   *
+   *
    * <pre>
    * `Constraint` is a repeated field used to represent a textual expression
    * in the Common Expression Language (CEL) syntax. For more information on
    * CEL, [see our documentation](https://github.com/bufbuild/protovalidate/blob/main/docs/cel.md).
    *
-   *```proto
-   *message MyMessage {
+   * ```proto
+   * message MyMessage {
    *  // The field `value` must be greater than 42.
    *  optional int32 value = 1 [(buf.validate.field).cel = {
    *    id: "my_message.value",
    *    message: "value must be greater than 42",
    *    expression: "this &gt; 42",
    *  }];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
    * <code>repeated .buf.validate.Constraint cel = 23 [json_name = "cel"];</code>
    */
   @java.lang.Override
-  public java.util.List<? extends build.buf.validate.ConstraintOrBuilder> 
-      getCelOrBuilderList() {
+  public java.util.List<? extends build.buf.validate.ConstraintOrBuilder> getCelOrBuilderList() {
     return cel_;
   }
+
   /**
+   *
+   *
    * <pre>
    * `Constraint` is a repeated field used to represent a textual expression
    * in the Common Expression Language (CEL) syntax. For more information on
    * CEL, [see our documentation](https://github.com/bufbuild/protovalidate/blob/main/docs/cel.md).
    *
-   *```proto
-   *message MyMessage {
+   * ```proto
+   * message MyMessage {
    *  // The field `value` must be greater than 42.
    *  optional int32 value = 1 [(buf.validate.field).cel = {
    *    id: "my_message.value",
    *    message: "value must be greater than 42",
    *    expression: "this &gt; 42",
    *  }];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
    * <code>repeated .buf.validate.Constraint cel = 23 [json_name = "cel"];</code>
@@ -200,22 +241,25 @@ private static final long serialVersionUID = 0L;
   public int getCelCount() {
     return cel_.size();
   }
+
   /**
+   *
+   *
    * <pre>
    * `Constraint` is a repeated field used to represent a textual expression
    * in the Common Expression Language (CEL) syntax. For more information on
    * CEL, [see our documentation](https://github.com/bufbuild/protovalidate/blob/main/docs/cel.md).
    *
-   *```proto
-   *message MyMessage {
+   * ```proto
+   * message MyMessage {
    *  // The field `value` must be greater than 42.
    *  optional int32 value = 1 [(buf.validate.field).cel = {
    *    id: "my_message.value",
    *    message: "value must be greater than 42",
    *    expression: "this &gt; 42",
    *  }];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
    * <code>repeated .buf.validate.Constraint cel = 23 [json_name = "cel"];</code>
@@ -224,49 +268,55 @@ private static final long serialVersionUID = 0L;
   public build.buf.validate.Constraint getCel(int index) {
     return cel_.get(index);
   }
+
   /**
+   *
+   *
    * <pre>
    * `Constraint` is a repeated field used to represent a textual expression
    * in the Common Expression Language (CEL) syntax. For more information on
    * CEL, [see our documentation](https://github.com/bufbuild/protovalidate/blob/main/docs/cel.md).
    *
-   *```proto
-   *message MyMessage {
+   * ```proto
+   * message MyMessage {
    *  // The field `value` must be greater than 42.
    *  optional int32 value = 1 [(buf.validate.field).cel = {
    *    id: "my_message.value",
    *    message: "value must be greater than 42",
    *    expression: "this &gt; 42",
    *  }];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
    * <code>repeated .buf.validate.Constraint cel = 23 [json_name = "cel"];</code>
    */
   @java.lang.Override
-  public build.buf.validate.ConstraintOrBuilder getCelOrBuilder(
-      int index) {
+  public build.buf.validate.ConstraintOrBuilder getCelOrBuilder(int index) {
     return cel_.get(index);
   }
 
   public static final int SKIPPED_FIELD_NUMBER = 24;
   private boolean skipped_ = false;
+
   /**
-   * <pre>
-   *`skipped` is an optional boolean attribute that specifies that the
-   *validation rules of this field should not be evaluated. If skipped is set to
-   *true, any validation rules set for the field will be ignored.
    *
-   *```proto
-   *message MyMessage {
+   *
+   * <pre>
+   * `skipped` is an optional boolean attribute that specifies that the
+   * validation rules of this field should not be evaluated. If skipped is set to
+   * true, any validation rules set for the field will be ignored.
+   *
+   * ```proto
+   * message MyMessage {
    *  // The field `value` must not be set.
    *  optional MyOtherMessage value = 1 [(buf.validate.field).skipped = true];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
    * <code>bool skipped = 24 [json_name = "skipped"];</code>
+   *
    * @return The skipped.
    */
   @java.lang.Override
@@ -276,21 +326,25 @@ private static final long serialVersionUID = 0L;
 
   public static final int REQUIRED_FIELD_NUMBER = 25;
   private boolean required_ = false;
+
   /**
-   * <pre>
-   *`required` is an optional boolean attribute that specifies that
-   *this field must be set. If required is set to true, the field value must
-   *not be empty; otherwise, an error message will be generated.
    *
-   *```proto
-   *message MyMessage {
+   *
+   * <pre>
+   * `required` is an optional boolean attribute that specifies that
+   * this field must be set. If required is set to true, the field value must
+   * not be empty; otherwise, an error message will be generated.
+   *
+   * ```proto
+   * message MyMessage {
    *  // The field `value` must be set.
    *  optional MyOtherMessage value = 1 [(buf.validate.field).required = true];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
    * <code>bool required = 25 [json_name = "required"];</code>
+   *
    * @return The required.
    */
   @java.lang.Override
@@ -300,21 +354,25 @@ private static final long serialVersionUID = 0L;
 
   public static final int IGNORE_EMPTY_FIELD_NUMBER = 26;
   private boolean ignoreEmpty_ = false;
+
   /**
-   * <pre>
-   *`ignore_empty` specifies that the validation rules of this field should be
-   *evaluated only if the field isn't empty. If the field is empty, no validation
-   *rules are applied.
    *
-   *```proto
-   *message MyRepeated {
+   *
+   * <pre>
+   * `ignore_empty` specifies that the validation rules of this field should be
+   * evaluated only if the field isn't empty. If the field is empty, no validation
+   * rules are applied.
+   *
+   * ```proto
+   * message MyRepeated {
    *  // The field `value` validation rules should be evaluated only if the field isn't empty.
    *  repeated string value = 1 [(buf.validate.field).ignore_empty = true];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
    * <code>bool ignore_empty = 26 [json_name = "ignoreEmpty"];</code>
+   *
    * @return The ignoreEmpty.
    */
   @java.lang.Override
@@ -323,34 +381,45 @@ private static final long serialVersionUID = 0L;
   }
 
   public static final int FLOAT_FIELD_NUMBER = 1;
+
   /**
+   *
+   *
    * <pre>
    * Scalar Field Types
    * </pre>
    *
    * <code>.buf.validate.FloatRules float = 1 [json_name = "float"];</code>
+   *
    * @return Whether the float field is set.
    */
   @java.lang.Override
   public boolean hasFloat() {
     return typeCase_ == 1;
   }
+
   /**
+   *
+   *
    * <pre>
    * Scalar Field Types
    * </pre>
    *
    * <code>.buf.validate.FloatRules float = 1 [json_name = "float"];</code>
+   *
    * @return The float.
    */
   @java.lang.Override
   public build.buf.validate.FloatRules getFloat() {
     if (typeCase_ == 1) {
-       return (build.buf.validate.FloatRules) type_;
+      return (build.buf.validate.FloatRules) type_;
     }
     return build.buf.validate.FloatRules.getDefaultInstance();
   }
+
   /**
+   *
+   *
    * <pre>
    * Scalar Field Types
    * </pre>
@@ -360,474 +429,527 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public build.buf.validate.FloatRulesOrBuilder getFloatOrBuilder() {
     if (typeCase_ == 1) {
-       return (build.buf.validate.FloatRules) type_;
+      return (build.buf.validate.FloatRules) type_;
     }
     return build.buf.validate.FloatRules.getDefaultInstance();
   }
 
   public static final int DOUBLE_FIELD_NUMBER = 2;
+
   /**
    * <code>.buf.validate.DoubleRules double = 2 [json_name = "double"];</code>
+   *
    * @return Whether the double field is set.
    */
   @java.lang.Override
   public boolean hasDouble() {
     return typeCase_ == 2;
   }
+
   /**
    * <code>.buf.validate.DoubleRules double = 2 [json_name = "double"];</code>
+   *
    * @return The double.
    */
   @java.lang.Override
   public build.buf.validate.DoubleRules getDouble() {
     if (typeCase_ == 2) {
-       return (build.buf.validate.DoubleRules) type_;
+      return (build.buf.validate.DoubleRules) type_;
     }
     return build.buf.validate.DoubleRules.getDefaultInstance();
   }
-  /**
-   * <code>.buf.validate.DoubleRules double = 2 [json_name = "double"];</code>
-   */
+
+  /** <code>.buf.validate.DoubleRules double = 2 [json_name = "double"];</code> */
   @java.lang.Override
   public build.buf.validate.DoubleRulesOrBuilder getDoubleOrBuilder() {
     if (typeCase_ == 2) {
-       return (build.buf.validate.DoubleRules) type_;
+      return (build.buf.validate.DoubleRules) type_;
     }
     return build.buf.validate.DoubleRules.getDefaultInstance();
   }
 
   public static final int INT32_FIELD_NUMBER = 3;
+
   /**
    * <code>.buf.validate.Int32Rules int32 = 3 [json_name = "int32"];</code>
+   *
    * @return Whether the int32 field is set.
    */
   @java.lang.Override
   public boolean hasInt32() {
     return typeCase_ == 3;
   }
+
   /**
    * <code>.buf.validate.Int32Rules int32 = 3 [json_name = "int32"];</code>
+   *
    * @return The int32.
    */
   @java.lang.Override
   public build.buf.validate.Int32Rules getInt32() {
     if (typeCase_ == 3) {
-       return (build.buf.validate.Int32Rules) type_;
+      return (build.buf.validate.Int32Rules) type_;
     }
     return build.buf.validate.Int32Rules.getDefaultInstance();
   }
-  /**
-   * <code>.buf.validate.Int32Rules int32 = 3 [json_name = "int32"];</code>
-   */
+
+  /** <code>.buf.validate.Int32Rules int32 = 3 [json_name = "int32"];</code> */
   @java.lang.Override
   public build.buf.validate.Int32RulesOrBuilder getInt32OrBuilder() {
     if (typeCase_ == 3) {
-       return (build.buf.validate.Int32Rules) type_;
+      return (build.buf.validate.Int32Rules) type_;
     }
     return build.buf.validate.Int32Rules.getDefaultInstance();
   }
 
   public static final int INT64_FIELD_NUMBER = 4;
+
   /**
    * <code>.buf.validate.Int64Rules int64 = 4 [json_name = "int64"];</code>
+   *
    * @return Whether the int64 field is set.
    */
   @java.lang.Override
   public boolean hasInt64() {
     return typeCase_ == 4;
   }
+
   /**
    * <code>.buf.validate.Int64Rules int64 = 4 [json_name = "int64"];</code>
+   *
    * @return The int64.
    */
   @java.lang.Override
   public build.buf.validate.Int64Rules getInt64() {
     if (typeCase_ == 4) {
-       return (build.buf.validate.Int64Rules) type_;
+      return (build.buf.validate.Int64Rules) type_;
     }
     return build.buf.validate.Int64Rules.getDefaultInstance();
   }
-  /**
-   * <code>.buf.validate.Int64Rules int64 = 4 [json_name = "int64"];</code>
-   */
+
+  /** <code>.buf.validate.Int64Rules int64 = 4 [json_name = "int64"];</code> */
   @java.lang.Override
   public build.buf.validate.Int64RulesOrBuilder getInt64OrBuilder() {
     if (typeCase_ == 4) {
-       return (build.buf.validate.Int64Rules) type_;
+      return (build.buf.validate.Int64Rules) type_;
     }
     return build.buf.validate.Int64Rules.getDefaultInstance();
   }
 
   public static final int UINT32_FIELD_NUMBER = 5;
+
   /**
    * <code>.buf.validate.UInt32Rules uint32 = 5 [json_name = "uint32"];</code>
+   *
    * @return Whether the uint32 field is set.
    */
   @java.lang.Override
   public boolean hasUint32() {
     return typeCase_ == 5;
   }
+
   /**
    * <code>.buf.validate.UInt32Rules uint32 = 5 [json_name = "uint32"];</code>
+   *
    * @return The uint32.
    */
   @java.lang.Override
   public build.buf.validate.UInt32Rules getUint32() {
     if (typeCase_ == 5) {
-       return (build.buf.validate.UInt32Rules) type_;
+      return (build.buf.validate.UInt32Rules) type_;
     }
     return build.buf.validate.UInt32Rules.getDefaultInstance();
   }
-  /**
-   * <code>.buf.validate.UInt32Rules uint32 = 5 [json_name = "uint32"];</code>
-   */
+
+  /** <code>.buf.validate.UInt32Rules uint32 = 5 [json_name = "uint32"];</code> */
   @java.lang.Override
   public build.buf.validate.UInt32RulesOrBuilder getUint32OrBuilder() {
     if (typeCase_ == 5) {
-       return (build.buf.validate.UInt32Rules) type_;
+      return (build.buf.validate.UInt32Rules) type_;
     }
     return build.buf.validate.UInt32Rules.getDefaultInstance();
   }
 
   public static final int UINT64_FIELD_NUMBER = 6;
+
   /**
    * <code>.buf.validate.UInt64Rules uint64 = 6 [json_name = "uint64"];</code>
+   *
    * @return Whether the uint64 field is set.
    */
   @java.lang.Override
   public boolean hasUint64() {
     return typeCase_ == 6;
   }
+
   /**
    * <code>.buf.validate.UInt64Rules uint64 = 6 [json_name = "uint64"];</code>
+   *
    * @return The uint64.
    */
   @java.lang.Override
   public build.buf.validate.UInt64Rules getUint64() {
     if (typeCase_ == 6) {
-       return (build.buf.validate.UInt64Rules) type_;
+      return (build.buf.validate.UInt64Rules) type_;
     }
     return build.buf.validate.UInt64Rules.getDefaultInstance();
   }
-  /**
-   * <code>.buf.validate.UInt64Rules uint64 = 6 [json_name = "uint64"];</code>
-   */
+
+  /** <code>.buf.validate.UInt64Rules uint64 = 6 [json_name = "uint64"];</code> */
   @java.lang.Override
   public build.buf.validate.UInt64RulesOrBuilder getUint64OrBuilder() {
     if (typeCase_ == 6) {
-       return (build.buf.validate.UInt64Rules) type_;
+      return (build.buf.validate.UInt64Rules) type_;
     }
     return build.buf.validate.UInt64Rules.getDefaultInstance();
   }
 
   public static final int SINT32_FIELD_NUMBER = 7;
+
   /**
    * <code>.buf.validate.SInt32Rules sint32 = 7 [json_name = "sint32"];</code>
+   *
    * @return Whether the sint32 field is set.
    */
   @java.lang.Override
   public boolean hasSint32() {
     return typeCase_ == 7;
   }
+
   /**
    * <code>.buf.validate.SInt32Rules sint32 = 7 [json_name = "sint32"];</code>
+   *
    * @return The sint32.
    */
   @java.lang.Override
   public build.buf.validate.SInt32Rules getSint32() {
     if (typeCase_ == 7) {
-       return (build.buf.validate.SInt32Rules) type_;
+      return (build.buf.validate.SInt32Rules) type_;
     }
     return build.buf.validate.SInt32Rules.getDefaultInstance();
   }
-  /**
-   * <code>.buf.validate.SInt32Rules sint32 = 7 [json_name = "sint32"];</code>
-   */
+
+  /** <code>.buf.validate.SInt32Rules sint32 = 7 [json_name = "sint32"];</code> */
   @java.lang.Override
   public build.buf.validate.SInt32RulesOrBuilder getSint32OrBuilder() {
     if (typeCase_ == 7) {
-       return (build.buf.validate.SInt32Rules) type_;
+      return (build.buf.validate.SInt32Rules) type_;
     }
     return build.buf.validate.SInt32Rules.getDefaultInstance();
   }
 
   public static final int SINT64_FIELD_NUMBER = 8;
+
   /**
    * <code>.buf.validate.SInt64Rules sint64 = 8 [json_name = "sint64"];</code>
+   *
    * @return Whether the sint64 field is set.
    */
   @java.lang.Override
   public boolean hasSint64() {
     return typeCase_ == 8;
   }
+
   /**
    * <code>.buf.validate.SInt64Rules sint64 = 8 [json_name = "sint64"];</code>
+   *
    * @return The sint64.
    */
   @java.lang.Override
   public build.buf.validate.SInt64Rules getSint64() {
     if (typeCase_ == 8) {
-       return (build.buf.validate.SInt64Rules) type_;
+      return (build.buf.validate.SInt64Rules) type_;
     }
     return build.buf.validate.SInt64Rules.getDefaultInstance();
   }
-  /**
-   * <code>.buf.validate.SInt64Rules sint64 = 8 [json_name = "sint64"];</code>
-   */
+
+  /** <code>.buf.validate.SInt64Rules sint64 = 8 [json_name = "sint64"];</code> */
   @java.lang.Override
   public build.buf.validate.SInt64RulesOrBuilder getSint64OrBuilder() {
     if (typeCase_ == 8) {
-       return (build.buf.validate.SInt64Rules) type_;
+      return (build.buf.validate.SInt64Rules) type_;
     }
     return build.buf.validate.SInt64Rules.getDefaultInstance();
   }
 
   public static final int FIXED32_FIELD_NUMBER = 9;
+
   /**
    * <code>.buf.validate.Fixed32Rules fixed32 = 9 [json_name = "fixed32"];</code>
+   *
    * @return Whether the fixed32 field is set.
    */
   @java.lang.Override
   public boolean hasFixed32() {
     return typeCase_ == 9;
   }
+
   /**
    * <code>.buf.validate.Fixed32Rules fixed32 = 9 [json_name = "fixed32"];</code>
+   *
    * @return The fixed32.
    */
   @java.lang.Override
   public build.buf.validate.Fixed32Rules getFixed32() {
     if (typeCase_ == 9) {
-       return (build.buf.validate.Fixed32Rules) type_;
+      return (build.buf.validate.Fixed32Rules) type_;
     }
     return build.buf.validate.Fixed32Rules.getDefaultInstance();
   }
-  /**
-   * <code>.buf.validate.Fixed32Rules fixed32 = 9 [json_name = "fixed32"];</code>
-   */
+
+  /** <code>.buf.validate.Fixed32Rules fixed32 = 9 [json_name = "fixed32"];</code> */
   @java.lang.Override
   public build.buf.validate.Fixed32RulesOrBuilder getFixed32OrBuilder() {
     if (typeCase_ == 9) {
-       return (build.buf.validate.Fixed32Rules) type_;
+      return (build.buf.validate.Fixed32Rules) type_;
     }
     return build.buf.validate.Fixed32Rules.getDefaultInstance();
   }
 
   public static final int FIXED64_FIELD_NUMBER = 10;
+
   /**
    * <code>.buf.validate.Fixed64Rules fixed64 = 10 [json_name = "fixed64"];</code>
+   *
    * @return Whether the fixed64 field is set.
    */
   @java.lang.Override
   public boolean hasFixed64() {
     return typeCase_ == 10;
   }
+
   /**
    * <code>.buf.validate.Fixed64Rules fixed64 = 10 [json_name = "fixed64"];</code>
+   *
    * @return The fixed64.
    */
   @java.lang.Override
   public build.buf.validate.Fixed64Rules getFixed64() {
     if (typeCase_ == 10) {
-       return (build.buf.validate.Fixed64Rules) type_;
+      return (build.buf.validate.Fixed64Rules) type_;
     }
     return build.buf.validate.Fixed64Rules.getDefaultInstance();
   }
-  /**
-   * <code>.buf.validate.Fixed64Rules fixed64 = 10 [json_name = "fixed64"];</code>
-   */
+
+  /** <code>.buf.validate.Fixed64Rules fixed64 = 10 [json_name = "fixed64"];</code> */
   @java.lang.Override
   public build.buf.validate.Fixed64RulesOrBuilder getFixed64OrBuilder() {
     if (typeCase_ == 10) {
-       return (build.buf.validate.Fixed64Rules) type_;
+      return (build.buf.validate.Fixed64Rules) type_;
     }
     return build.buf.validate.Fixed64Rules.getDefaultInstance();
   }
 
   public static final int SFIXED32_FIELD_NUMBER = 11;
+
   /**
    * <code>.buf.validate.SFixed32Rules sfixed32 = 11 [json_name = "sfixed32"];</code>
+   *
    * @return Whether the sfixed32 field is set.
    */
   @java.lang.Override
   public boolean hasSfixed32() {
     return typeCase_ == 11;
   }
+
   /**
    * <code>.buf.validate.SFixed32Rules sfixed32 = 11 [json_name = "sfixed32"];</code>
+   *
    * @return The sfixed32.
    */
   @java.lang.Override
   public build.buf.validate.SFixed32Rules getSfixed32() {
     if (typeCase_ == 11) {
-       return (build.buf.validate.SFixed32Rules) type_;
+      return (build.buf.validate.SFixed32Rules) type_;
     }
     return build.buf.validate.SFixed32Rules.getDefaultInstance();
   }
-  /**
-   * <code>.buf.validate.SFixed32Rules sfixed32 = 11 [json_name = "sfixed32"];</code>
-   */
+
+  /** <code>.buf.validate.SFixed32Rules sfixed32 = 11 [json_name = "sfixed32"];</code> */
   @java.lang.Override
   public build.buf.validate.SFixed32RulesOrBuilder getSfixed32OrBuilder() {
     if (typeCase_ == 11) {
-       return (build.buf.validate.SFixed32Rules) type_;
+      return (build.buf.validate.SFixed32Rules) type_;
     }
     return build.buf.validate.SFixed32Rules.getDefaultInstance();
   }
 
   public static final int SFIXED64_FIELD_NUMBER = 12;
+
   /**
    * <code>.buf.validate.SFixed64Rules sfixed64 = 12 [json_name = "sfixed64"];</code>
+   *
    * @return Whether the sfixed64 field is set.
    */
   @java.lang.Override
   public boolean hasSfixed64() {
     return typeCase_ == 12;
   }
+
   /**
    * <code>.buf.validate.SFixed64Rules sfixed64 = 12 [json_name = "sfixed64"];</code>
+   *
    * @return The sfixed64.
    */
   @java.lang.Override
   public build.buf.validate.SFixed64Rules getSfixed64() {
     if (typeCase_ == 12) {
-       return (build.buf.validate.SFixed64Rules) type_;
+      return (build.buf.validate.SFixed64Rules) type_;
     }
     return build.buf.validate.SFixed64Rules.getDefaultInstance();
   }
-  /**
-   * <code>.buf.validate.SFixed64Rules sfixed64 = 12 [json_name = "sfixed64"];</code>
-   */
+
+  /** <code>.buf.validate.SFixed64Rules sfixed64 = 12 [json_name = "sfixed64"];</code> */
   @java.lang.Override
   public build.buf.validate.SFixed64RulesOrBuilder getSfixed64OrBuilder() {
     if (typeCase_ == 12) {
-       return (build.buf.validate.SFixed64Rules) type_;
+      return (build.buf.validate.SFixed64Rules) type_;
     }
     return build.buf.validate.SFixed64Rules.getDefaultInstance();
   }
 
   public static final int BOOL_FIELD_NUMBER = 13;
+
   /**
    * <code>.buf.validate.BoolRules bool = 13 [json_name = "bool"];</code>
+   *
    * @return Whether the bool field is set.
    */
   @java.lang.Override
   public boolean hasBool() {
     return typeCase_ == 13;
   }
+
   /**
    * <code>.buf.validate.BoolRules bool = 13 [json_name = "bool"];</code>
+   *
    * @return The bool.
    */
   @java.lang.Override
   public build.buf.validate.BoolRules getBool() {
     if (typeCase_ == 13) {
-       return (build.buf.validate.BoolRules) type_;
+      return (build.buf.validate.BoolRules) type_;
     }
     return build.buf.validate.BoolRules.getDefaultInstance();
   }
-  /**
-   * <code>.buf.validate.BoolRules bool = 13 [json_name = "bool"];</code>
-   */
+
+  /** <code>.buf.validate.BoolRules bool = 13 [json_name = "bool"];</code> */
   @java.lang.Override
   public build.buf.validate.BoolRulesOrBuilder getBoolOrBuilder() {
     if (typeCase_ == 13) {
-       return (build.buf.validate.BoolRules) type_;
+      return (build.buf.validate.BoolRules) type_;
     }
     return build.buf.validate.BoolRules.getDefaultInstance();
   }
 
   public static final int STRING_FIELD_NUMBER = 14;
+
   /**
    * <code>.buf.validate.StringRules string = 14 [json_name = "string"];</code>
+   *
    * @return Whether the string field is set.
    */
   @java.lang.Override
   public boolean hasString() {
     return typeCase_ == 14;
   }
+
   /**
    * <code>.buf.validate.StringRules string = 14 [json_name = "string"];</code>
+   *
    * @return The string.
    */
   @java.lang.Override
   public build.buf.validate.StringRules getString() {
     if (typeCase_ == 14) {
-       return (build.buf.validate.StringRules) type_;
+      return (build.buf.validate.StringRules) type_;
     }
     return build.buf.validate.StringRules.getDefaultInstance();
   }
-  /**
-   * <code>.buf.validate.StringRules string = 14 [json_name = "string"];</code>
-   */
+
+  /** <code>.buf.validate.StringRules string = 14 [json_name = "string"];</code> */
   @java.lang.Override
   public build.buf.validate.StringRulesOrBuilder getStringOrBuilder() {
     if (typeCase_ == 14) {
-       return (build.buf.validate.StringRules) type_;
+      return (build.buf.validate.StringRules) type_;
     }
     return build.buf.validate.StringRules.getDefaultInstance();
   }
 
   public static final int BYTES_FIELD_NUMBER = 15;
+
   /**
    * <code>.buf.validate.BytesRules bytes = 15 [json_name = "bytes"];</code>
+   *
    * @return Whether the bytes field is set.
    */
   @java.lang.Override
   public boolean hasBytes() {
     return typeCase_ == 15;
   }
+
   /**
    * <code>.buf.validate.BytesRules bytes = 15 [json_name = "bytes"];</code>
+   *
    * @return The bytes.
    */
   @java.lang.Override
   public build.buf.validate.BytesRules getBytes() {
     if (typeCase_ == 15) {
-       return (build.buf.validate.BytesRules) type_;
+      return (build.buf.validate.BytesRules) type_;
     }
     return build.buf.validate.BytesRules.getDefaultInstance();
   }
-  /**
-   * <code>.buf.validate.BytesRules bytes = 15 [json_name = "bytes"];</code>
-   */
+
+  /** <code>.buf.validate.BytesRules bytes = 15 [json_name = "bytes"];</code> */
   @java.lang.Override
   public build.buf.validate.BytesRulesOrBuilder getBytesOrBuilder() {
     if (typeCase_ == 15) {
-       return (build.buf.validate.BytesRules) type_;
+      return (build.buf.validate.BytesRules) type_;
     }
     return build.buf.validate.BytesRules.getDefaultInstance();
   }
 
   public static final int ENUM_FIELD_NUMBER = 16;
+
   /**
+   *
+   *
    * <pre>
    * Complex Field Types
    * </pre>
    *
    * <code>.buf.validate.EnumRules enum = 16 [json_name = "enum"];</code>
+   *
    * @return Whether the enum field is set.
    */
   @java.lang.Override
   public boolean hasEnum() {
     return typeCase_ == 16;
   }
+
   /**
+   *
+   *
    * <pre>
    * Complex Field Types
    * </pre>
    *
    * <code>.buf.validate.EnumRules enum = 16 [json_name = "enum"];</code>
+   *
    * @return The enum.
    */
   @java.lang.Override
   public build.buf.validate.EnumRules getEnum() {
     if (typeCase_ == 16) {
-       return (build.buf.validate.EnumRules) type_;
+      return (build.buf.validate.EnumRules) type_;
     }
     return build.buf.validate.EnumRules.getDefaultInstance();
   }
+
   /**
+   *
+   *
    * <pre>
    * Complex Field Types
    * </pre>
@@ -837,102 +959,119 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public build.buf.validate.EnumRulesOrBuilder getEnumOrBuilder() {
     if (typeCase_ == 16) {
-       return (build.buf.validate.EnumRules) type_;
+      return (build.buf.validate.EnumRules) type_;
     }
     return build.buf.validate.EnumRules.getDefaultInstance();
   }
 
   public static final int REPEATED_FIELD_NUMBER = 18;
+
   /**
    * <code>.buf.validate.RepeatedRules repeated = 18 [json_name = "repeated"];</code>
+   *
    * @return Whether the repeated field is set.
    */
   @java.lang.Override
   public boolean hasRepeated() {
     return typeCase_ == 18;
   }
+
   /**
    * <code>.buf.validate.RepeatedRules repeated = 18 [json_name = "repeated"];</code>
+   *
    * @return The repeated.
    */
   @java.lang.Override
   public build.buf.validate.RepeatedRules getRepeated() {
     if (typeCase_ == 18) {
-       return (build.buf.validate.RepeatedRules) type_;
+      return (build.buf.validate.RepeatedRules) type_;
     }
     return build.buf.validate.RepeatedRules.getDefaultInstance();
   }
-  /**
-   * <code>.buf.validate.RepeatedRules repeated = 18 [json_name = "repeated"];</code>
-   */
+
+  /** <code>.buf.validate.RepeatedRules repeated = 18 [json_name = "repeated"];</code> */
   @java.lang.Override
   public build.buf.validate.RepeatedRulesOrBuilder getRepeatedOrBuilder() {
     if (typeCase_ == 18) {
-       return (build.buf.validate.RepeatedRules) type_;
+      return (build.buf.validate.RepeatedRules) type_;
     }
     return build.buf.validate.RepeatedRules.getDefaultInstance();
   }
 
   public static final int MAP_FIELD_NUMBER = 19;
+
   /**
    * <code>.buf.validate.MapRules map = 19 [json_name = "map"];</code>
+   *
    * @return Whether the map field is set.
    */
   @java.lang.Override
   public boolean hasMap() {
     return typeCase_ == 19;
   }
+
   /**
    * <code>.buf.validate.MapRules map = 19 [json_name = "map"];</code>
+   *
    * @return The map.
    */
   @java.lang.Override
   public build.buf.validate.MapRules getMap() {
     if (typeCase_ == 19) {
-       return (build.buf.validate.MapRules) type_;
+      return (build.buf.validate.MapRules) type_;
     }
     return build.buf.validate.MapRules.getDefaultInstance();
   }
-  /**
-   * <code>.buf.validate.MapRules map = 19 [json_name = "map"];</code>
-   */
+
+  /** <code>.buf.validate.MapRules map = 19 [json_name = "map"];</code> */
   @java.lang.Override
   public build.buf.validate.MapRulesOrBuilder getMapOrBuilder() {
     if (typeCase_ == 19) {
-       return (build.buf.validate.MapRules) type_;
+      return (build.buf.validate.MapRules) type_;
     }
     return build.buf.validate.MapRules.getDefaultInstance();
   }
 
   public static final int ANY_FIELD_NUMBER = 20;
+
   /**
+   *
+   *
    * <pre>
    * Well-Known Field Types
    * </pre>
    *
    * <code>.buf.validate.AnyRules any = 20 [json_name = "any"];</code>
+   *
    * @return Whether the any field is set.
    */
   @java.lang.Override
   public boolean hasAny() {
     return typeCase_ == 20;
   }
+
   /**
+   *
+   *
    * <pre>
    * Well-Known Field Types
    * </pre>
    *
    * <code>.buf.validate.AnyRules any = 20 [json_name = "any"];</code>
+   *
    * @return The any.
    */
   @java.lang.Override
   public build.buf.validate.AnyRules getAny() {
     if (typeCase_ == 20) {
-       return (build.buf.validate.AnyRules) type_;
+      return (build.buf.validate.AnyRules) type_;
     }
     return build.buf.validate.AnyRules.getDefaultInstance();
   }
+
   /**
+   *
+   *
    * <pre>
    * Well-Known Field Types
    * </pre>
@@ -942,74 +1081,81 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public build.buf.validate.AnyRulesOrBuilder getAnyOrBuilder() {
     if (typeCase_ == 20) {
-       return (build.buf.validate.AnyRules) type_;
+      return (build.buf.validate.AnyRules) type_;
     }
     return build.buf.validate.AnyRules.getDefaultInstance();
   }
 
   public static final int DURATION_FIELD_NUMBER = 21;
+
   /**
    * <code>.buf.validate.DurationRules duration = 21 [json_name = "duration"];</code>
+   *
    * @return Whether the duration field is set.
    */
   @java.lang.Override
   public boolean hasDuration() {
     return typeCase_ == 21;
   }
+
   /**
    * <code>.buf.validate.DurationRules duration = 21 [json_name = "duration"];</code>
+   *
    * @return The duration.
    */
   @java.lang.Override
   public build.buf.validate.DurationRules getDuration() {
     if (typeCase_ == 21) {
-       return (build.buf.validate.DurationRules) type_;
+      return (build.buf.validate.DurationRules) type_;
     }
     return build.buf.validate.DurationRules.getDefaultInstance();
   }
-  /**
-   * <code>.buf.validate.DurationRules duration = 21 [json_name = "duration"];</code>
-   */
+
+  /** <code>.buf.validate.DurationRules duration = 21 [json_name = "duration"];</code> */
   @java.lang.Override
   public build.buf.validate.DurationRulesOrBuilder getDurationOrBuilder() {
     if (typeCase_ == 21) {
-       return (build.buf.validate.DurationRules) type_;
+      return (build.buf.validate.DurationRules) type_;
     }
     return build.buf.validate.DurationRules.getDefaultInstance();
   }
 
   public static final int TIMESTAMP_FIELD_NUMBER = 22;
+
   /**
    * <code>.buf.validate.TimestampRules timestamp = 22 [json_name = "timestamp"];</code>
+   *
    * @return Whether the timestamp field is set.
    */
   @java.lang.Override
   public boolean hasTimestamp() {
     return typeCase_ == 22;
   }
+
   /**
    * <code>.buf.validate.TimestampRules timestamp = 22 [json_name = "timestamp"];</code>
+   *
    * @return The timestamp.
    */
   @java.lang.Override
   public build.buf.validate.TimestampRules getTimestamp() {
     if (typeCase_ == 22) {
-       return (build.buf.validate.TimestampRules) type_;
+      return (build.buf.validate.TimestampRules) type_;
     }
     return build.buf.validate.TimestampRules.getDefaultInstance();
   }
-  /**
-   * <code>.buf.validate.TimestampRules timestamp = 22 [json_name = "timestamp"];</code>
-   */
+
+  /** <code>.buf.validate.TimestampRules timestamp = 22 [json_name = "timestamp"];</code> */
   @java.lang.Override
   public build.buf.validate.TimestampRulesOrBuilder getTimestampOrBuilder() {
     if (typeCase_ == 22) {
-       return (build.buf.validate.TimestampRules) type_;
+      return (build.buf.validate.TimestampRules) type_;
     }
     return build.buf.validate.TimestampRules.getDefaultInstance();
   }
 
   private byte memoizedIsInitialized = -1;
+
   @java.lang.Override
   public final boolean isInitialized() {
     byte isInitialized = memoizedIsInitialized;
@@ -1021,8 +1167,7 @@ private static final long serialVersionUID = 0L;
   }
 
   @java.lang.Override
-  public void writeTo(com.google.protobuf.CodedOutputStream output)
-                      throws java.io.IOException {
+  public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
     if (typeCase_ == 1) {
       output.writeMessage(1, (build.buf.validate.FloatRules) type_);
     }
@@ -1108,104 +1253,121 @@ private static final long serialVersionUID = 0L;
 
     size = 0;
     if (typeCase_ == 1) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(1, (build.buf.validate.FloatRules) type_);
+      size +=
+          com.google.protobuf.CodedOutputStream.computeMessageSize(
+              1, (build.buf.validate.FloatRules) type_);
     }
     if (typeCase_ == 2) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(2, (build.buf.validate.DoubleRules) type_);
+      size +=
+          com.google.protobuf.CodedOutputStream.computeMessageSize(
+              2, (build.buf.validate.DoubleRules) type_);
     }
     if (typeCase_ == 3) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(3, (build.buf.validate.Int32Rules) type_);
+      size +=
+          com.google.protobuf.CodedOutputStream.computeMessageSize(
+              3, (build.buf.validate.Int32Rules) type_);
     }
     if (typeCase_ == 4) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(4, (build.buf.validate.Int64Rules) type_);
+      size +=
+          com.google.protobuf.CodedOutputStream.computeMessageSize(
+              4, (build.buf.validate.Int64Rules) type_);
     }
     if (typeCase_ == 5) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(5, (build.buf.validate.UInt32Rules) type_);
+      size +=
+          com.google.protobuf.CodedOutputStream.computeMessageSize(
+              5, (build.buf.validate.UInt32Rules) type_);
     }
     if (typeCase_ == 6) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(6, (build.buf.validate.UInt64Rules) type_);
+      size +=
+          com.google.protobuf.CodedOutputStream.computeMessageSize(
+              6, (build.buf.validate.UInt64Rules) type_);
     }
     if (typeCase_ == 7) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(7, (build.buf.validate.SInt32Rules) type_);
+      size +=
+          com.google.protobuf.CodedOutputStream.computeMessageSize(
+              7, (build.buf.validate.SInt32Rules) type_);
     }
     if (typeCase_ == 8) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(8, (build.buf.validate.SInt64Rules) type_);
+      size +=
+          com.google.protobuf.CodedOutputStream.computeMessageSize(
+              8, (build.buf.validate.SInt64Rules) type_);
     }
     if (typeCase_ == 9) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(9, (build.buf.validate.Fixed32Rules) type_);
+      size +=
+          com.google.protobuf.CodedOutputStream.computeMessageSize(
+              9, (build.buf.validate.Fixed32Rules) type_);
     }
     if (typeCase_ == 10) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(10, (build.buf.validate.Fixed64Rules) type_);
+      size +=
+          com.google.protobuf.CodedOutputStream.computeMessageSize(
+              10, (build.buf.validate.Fixed64Rules) type_);
     }
     if (typeCase_ == 11) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(11, (build.buf.validate.SFixed32Rules) type_);
+      size +=
+          com.google.protobuf.CodedOutputStream.computeMessageSize(
+              11, (build.buf.validate.SFixed32Rules) type_);
     }
     if (typeCase_ == 12) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(12, (build.buf.validate.SFixed64Rules) type_);
+      size +=
+          com.google.protobuf.CodedOutputStream.computeMessageSize(
+              12, (build.buf.validate.SFixed64Rules) type_);
     }
     if (typeCase_ == 13) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(13, (build.buf.validate.BoolRules) type_);
+      size +=
+          com.google.protobuf.CodedOutputStream.computeMessageSize(
+              13, (build.buf.validate.BoolRules) type_);
     }
     if (typeCase_ == 14) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(14, (build.buf.validate.StringRules) type_);
+      size +=
+          com.google.protobuf.CodedOutputStream.computeMessageSize(
+              14, (build.buf.validate.StringRules) type_);
     }
     if (typeCase_ == 15) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(15, (build.buf.validate.BytesRules) type_);
+      size +=
+          com.google.protobuf.CodedOutputStream.computeMessageSize(
+              15, (build.buf.validate.BytesRules) type_);
     }
     if (typeCase_ == 16) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(16, (build.buf.validate.EnumRules) type_);
+      size +=
+          com.google.protobuf.CodedOutputStream.computeMessageSize(
+              16, (build.buf.validate.EnumRules) type_);
     }
     if (typeCase_ == 18) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(18, (build.buf.validate.RepeatedRules) type_);
+      size +=
+          com.google.protobuf.CodedOutputStream.computeMessageSize(
+              18, (build.buf.validate.RepeatedRules) type_);
     }
     if (typeCase_ == 19) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(19, (build.buf.validate.MapRules) type_);
+      size +=
+          com.google.protobuf.CodedOutputStream.computeMessageSize(
+              19, (build.buf.validate.MapRules) type_);
     }
     if (typeCase_ == 20) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(20, (build.buf.validate.AnyRules) type_);
+      size +=
+          com.google.protobuf.CodedOutputStream.computeMessageSize(
+              20, (build.buf.validate.AnyRules) type_);
     }
     if (typeCase_ == 21) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(21, (build.buf.validate.DurationRules) type_);
+      size +=
+          com.google.protobuf.CodedOutputStream.computeMessageSize(
+              21, (build.buf.validate.DurationRules) type_);
     }
     if (typeCase_ == 22) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(22, (build.buf.validate.TimestampRules) type_);
+      size +=
+          com.google.protobuf.CodedOutputStream.computeMessageSize(
+              22, (build.buf.validate.TimestampRules) type_);
     }
     for (int i = 0; i < cel_.size(); i++) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(23, cel_.get(i));
+      size += com.google.protobuf.CodedOutputStream.computeMessageSize(23, cel_.get(i));
     }
     if (skipped_ != false) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeBoolSize(24, skipped_);
+      size += com.google.protobuf.CodedOutputStream.computeBoolSize(24, skipped_);
     }
     if (required_ != false) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeBoolSize(25, required_);
+      size += com.google.protobuf.CodedOutputStream.computeBoolSize(25, required_);
     }
     if (ignoreEmpty_ != false) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeBoolSize(26, ignoreEmpty_);
+      size += com.google.protobuf.CodedOutputStream.computeBoolSize(26, ignoreEmpty_);
     }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
@@ -1215,106 +1377,81 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public boolean equals(final java.lang.Object obj) {
     if (obj == this) {
-     return true;
+      return true;
     }
     if (!(obj instanceof build.buf.validate.FieldConstraints)) {
       return super.equals(obj);
     }
     build.buf.validate.FieldConstraints other = (build.buf.validate.FieldConstraints) obj;
 
-    if (!getCelList()
-        .equals(other.getCelList())) return false;
-    if (getSkipped()
-        != other.getSkipped()) return false;
-    if (getRequired()
-        != other.getRequired()) return false;
-    if (getIgnoreEmpty()
-        != other.getIgnoreEmpty()) return false;
+    if (!getCelList().equals(other.getCelList())) return false;
+    if (getSkipped() != other.getSkipped()) return false;
+    if (getRequired() != other.getRequired()) return false;
+    if (getIgnoreEmpty() != other.getIgnoreEmpty()) return false;
     if (!getTypeCase().equals(other.getTypeCase())) return false;
     switch (typeCase_) {
       case 1:
-        if (!getFloat()
-            .equals(other.getFloat())) return false;
+        if (!getFloat().equals(other.getFloat())) return false;
         break;
       case 2:
-        if (!getDouble()
-            .equals(other.getDouble())) return false;
+        if (!getDouble().equals(other.getDouble())) return false;
         break;
       case 3:
-        if (!getInt32()
-            .equals(other.getInt32())) return false;
+        if (!getInt32().equals(other.getInt32())) return false;
         break;
       case 4:
-        if (!getInt64()
-            .equals(other.getInt64())) return false;
+        if (!getInt64().equals(other.getInt64())) return false;
         break;
       case 5:
-        if (!getUint32()
-            .equals(other.getUint32())) return false;
+        if (!getUint32().equals(other.getUint32())) return false;
         break;
       case 6:
-        if (!getUint64()
-            .equals(other.getUint64())) return false;
+        if (!getUint64().equals(other.getUint64())) return false;
         break;
       case 7:
-        if (!getSint32()
-            .equals(other.getSint32())) return false;
+        if (!getSint32().equals(other.getSint32())) return false;
         break;
       case 8:
-        if (!getSint64()
-            .equals(other.getSint64())) return false;
+        if (!getSint64().equals(other.getSint64())) return false;
         break;
       case 9:
-        if (!getFixed32()
-            .equals(other.getFixed32())) return false;
+        if (!getFixed32().equals(other.getFixed32())) return false;
         break;
       case 10:
-        if (!getFixed64()
-            .equals(other.getFixed64())) return false;
+        if (!getFixed64().equals(other.getFixed64())) return false;
         break;
       case 11:
-        if (!getSfixed32()
-            .equals(other.getSfixed32())) return false;
+        if (!getSfixed32().equals(other.getSfixed32())) return false;
         break;
       case 12:
-        if (!getSfixed64()
-            .equals(other.getSfixed64())) return false;
+        if (!getSfixed64().equals(other.getSfixed64())) return false;
         break;
       case 13:
-        if (!getBool()
-            .equals(other.getBool())) return false;
+        if (!getBool().equals(other.getBool())) return false;
         break;
       case 14:
-        if (!getString()
-            .equals(other.getString())) return false;
+        if (!getString().equals(other.getString())) return false;
         break;
       case 15:
-        if (!getBytes()
-            .equals(other.getBytes())) return false;
+        if (!getBytes().equals(other.getBytes())) return false;
         break;
       case 16:
-        if (!getEnum()
-            .equals(other.getEnum())) return false;
+        if (!getEnum().equals(other.getEnum())) return false;
         break;
       case 18:
-        if (!getRepeated()
-            .equals(other.getRepeated())) return false;
+        if (!getRepeated().equals(other.getRepeated())) return false;
         break;
       case 19:
-        if (!getMap()
-            .equals(other.getMap())) return false;
+        if (!getMap().equals(other.getMap())) return false;
         break;
       case 20:
-        if (!getAny()
-            .equals(other.getAny())) return false;
+        if (!getAny().equals(other.getAny())) return false;
         break;
       case 21:
-        if (!getDuration()
-            .equals(other.getDuration())) return false;
+        if (!getDuration().equals(other.getDuration())) return false;
         break;
       case 22:
-        if (!getTimestamp()
-            .equals(other.getTimestamp())) return false;
+        if (!getTimestamp().equals(other.getTimestamp())) return false;
         break;
       case 0:
       default:
@@ -1335,14 +1472,11 @@ private static final long serialVersionUID = 0L;
       hash = (53 * hash) + getCelList().hashCode();
     }
     hash = (37 * hash) + SKIPPED_FIELD_NUMBER;
-    hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
-        getSkipped());
+    hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(getSkipped());
     hash = (37 * hash) + REQUIRED_FIELD_NUMBER;
-    hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
-        getRequired());
+    hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(getRequired());
     hash = (37 * hash) + IGNORE_EMPTY_FIELD_NUMBER;
-    hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
-        getIgnoreEmpty());
+    hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(getIgnoreEmpty());
     switch (typeCase_) {
       case 1:
         hash = (37 * hash) + FLOAT_FIELD_NUMBER;
@@ -1436,99 +1570,104 @@ private static final long serialVersionUID = 0L;
     return hash;
   }
 
-  public static build.buf.validate.FieldConstraints parseFrom(
-      java.nio.ByteBuffer data)
+  public static build.buf.validate.FieldConstraints parseFrom(java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
+
   public static build.buf.validate.FieldConstraints parseFrom(
-      java.nio.ByteBuffer data,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      java.nio.ByteBuffer data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static build.buf.validate.FieldConstraints parseFrom(
-      com.google.protobuf.ByteString data)
+
+  public static build.buf.validate.FieldConstraints parseFrom(com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
+
   public static build.buf.validate.FieldConstraints parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
+
   public static build.buf.validate.FieldConstraints parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
+
   public static build.buf.validate.FieldConstraints parseFrom(
-      byte[] data,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      byte[] data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
+
   public static build.buf.validate.FieldConstraints parseFrom(java.io.InputStream input)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input);
+    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
   }
+
   public static build.buf.validate.FieldConstraints parseFrom(
-      java.io.InputStream input,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input, extensionRegistry);
+    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+        PARSER, input, extensionRegistry);
   }
 
   public static build.buf.validate.FieldConstraints parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseDelimitedWithIOException(PARSER, input);
+    return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input);
   }
 
   public static build.buf.validate.FieldConstraints parseDelimitedFrom(
-      java.io.InputStream input,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(
+        PARSER, input, extensionRegistry);
   }
+
   public static build.buf.validate.FieldConstraints parseFrom(
-      com.google.protobuf.CodedInputStream input)
-      throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input);
+      com.google.protobuf.CodedInputStream input) throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
   }
+
   public static build.buf.validate.FieldConstraints parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input, extensionRegistry);
+    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+        PARSER, input, extensionRegistry);
   }
 
   @java.lang.Override
-  public Builder newBuilderForType() { return newBuilder(); }
+  public Builder newBuilderForType() {
+    return newBuilder();
+  }
+
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
+
   public static Builder newBuilder(build.buf.validate.FieldConstraints prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
+
   @java.lang.Override
   public Builder toBuilder() {
-    return this == DEFAULT_INSTANCE
-        ? new Builder() : new Builder().mergeFrom(this);
+    return this == DEFAULT_INSTANCE ? new Builder() : new Builder().mergeFrom(this);
   }
 
   @java.lang.Override
-  protected Builder newBuilderForType(
-      com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+  protected Builder newBuilderForType(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
     Builder builder = new Builder(parent);
     return builder;
   }
+
   /**
+   *
+   *
    * <pre>
    * FieldRules encapsulates the rules for each type of field. Depending on the
    * field, the correct set should be used to ensure proper validations.
@@ -1536,33 +1675,32 @@ private static final long serialVersionUID = 0L;
    *
    * Protobuf type {@code buf.validate.FieldConstraints}
    */
-  public static final class Builder extends
-      com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+  public static final class Builder extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
+      implements
       // @@protoc_insertion_point(builder_implements:buf.validate.FieldConstraints)
       build.buf.validate.FieldConstraintsOrBuilder {
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return build.buf.validate.ValidateProto.internal_static_buf_validate_FieldConstraints_descriptor;
+    public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+      return build.buf.validate.ValidateProto
+          .internal_static_buf_validate_FieldConstraints_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return build.buf.validate.ValidateProto.internal_static_buf_validate_FieldConstraints_fieldAccessorTable
+      return build.buf.validate.ValidateProto
+          .internal_static_buf_validate_FieldConstraints_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              build.buf.validate.FieldConstraints.class, build.buf.validate.FieldConstraints.Builder.class);
+              build.buf.validate.FieldConstraints.class,
+              build.buf.validate.FieldConstraints.Builder.class);
     }
 
     // Construct using build.buf.validate.FieldConstraints.newBuilder()
-    private Builder() {
+    private Builder() {}
 
-    }
-
-    private Builder(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+    private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
       super(parent);
-
     }
+
     @java.lang.Override
     public Builder clear() {
       super.clear();
@@ -1646,9 +1784,9 @@ private static final long serialVersionUID = 0L;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Descriptors.Descriptor
-        getDescriptorForType() {
-      return build.buf.validate.ValidateProto.internal_static_buf_validate_FieldConstraints_descriptor;
+    public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
+      return build.buf.validate.ValidateProto
+          .internal_static_buf_validate_FieldConstraints_descriptor;
     }
 
     @java.lang.Override
@@ -1669,7 +1807,9 @@ private static final long serialVersionUID = 0L;
     public build.buf.validate.FieldConstraints buildPartial() {
       build.buf.validate.FieldConstraints result = new build.buf.validate.FieldConstraints(this);
       buildPartialRepeatedFields(result);
-      if (bitField0_ != 0) { buildPartial0(result); }
+      if (bitField0_ != 0) {
+        buildPartial0(result);
+      }
       buildPartialOneofs(result);
       onBuilt();
       return result;
@@ -1703,88 +1843,67 @@ private static final long serialVersionUID = 0L;
     private void buildPartialOneofs(build.buf.validate.FieldConstraints result) {
       result.typeCase_ = typeCase_;
       result.type_ = this.type_;
-      if (typeCase_ == 1 &&
-          floatBuilder_ != null) {
+      if (typeCase_ == 1 && floatBuilder_ != null) {
         result.type_ = floatBuilder_.build();
       }
-      if (typeCase_ == 2 &&
-          doubleBuilder_ != null) {
+      if (typeCase_ == 2 && doubleBuilder_ != null) {
         result.type_ = doubleBuilder_.build();
       }
-      if (typeCase_ == 3 &&
-          int32Builder_ != null) {
+      if (typeCase_ == 3 && int32Builder_ != null) {
         result.type_ = int32Builder_.build();
       }
-      if (typeCase_ == 4 &&
-          int64Builder_ != null) {
+      if (typeCase_ == 4 && int64Builder_ != null) {
         result.type_ = int64Builder_.build();
       }
-      if (typeCase_ == 5 &&
-          uint32Builder_ != null) {
+      if (typeCase_ == 5 && uint32Builder_ != null) {
         result.type_ = uint32Builder_.build();
       }
-      if (typeCase_ == 6 &&
-          uint64Builder_ != null) {
+      if (typeCase_ == 6 && uint64Builder_ != null) {
         result.type_ = uint64Builder_.build();
       }
-      if (typeCase_ == 7 &&
-          sint32Builder_ != null) {
+      if (typeCase_ == 7 && sint32Builder_ != null) {
         result.type_ = sint32Builder_.build();
       }
-      if (typeCase_ == 8 &&
-          sint64Builder_ != null) {
+      if (typeCase_ == 8 && sint64Builder_ != null) {
         result.type_ = sint64Builder_.build();
       }
-      if (typeCase_ == 9 &&
-          fixed32Builder_ != null) {
+      if (typeCase_ == 9 && fixed32Builder_ != null) {
         result.type_ = fixed32Builder_.build();
       }
-      if (typeCase_ == 10 &&
-          fixed64Builder_ != null) {
+      if (typeCase_ == 10 && fixed64Builder_ != null) {
         result.type_ = fixed64Builder_.build();
       }
-      if (typeCase_ == 11 &&
-          sfixed32Builder_ != null) {
+      if (typeCase_ == 11 && sfixed32Builder_ != null) {
         result.type_ = sfixed32Builder_.build();
       }
-      if (typeCase_ == 12 &&
-          sfixed64Builder_ != null) {
+      if (typeCase_ == 12 && sfixed64Builder_ != null) {
         result.type_ = sfixed64Builder_.build();
       }
-      if (typeCase_ == 13 &&
-          boolBuilder_ != null) {
+      if (typeCase_ == 13 && boolBuilder_ != null) {
         result.type_ = boolBuilder_.build();
       }
-      if (typeCase_ == 14 &&
-          stringBuilder_ != null) {
+      if (typeCase_ == 14 && stringBuilder_ != null) {
         result.type_ = stringBuilder_.build();
       }
-      if (typeCase_ == 15 &&
-          bytesBuilder_ != null) {
+      if (typeCase_ == 15 && bytesBuilder_ != null) {
         result.type_ = bytesBuilder_.build();
       }
-      if (typeCase_ == 16 &&
-          enumBuilder_ != null) {
+      if (typeCase_ == 16 && enumBuilder_ != null) {
         result.type_ = enumBuilder_.build();
       }
-      if (typeCase_ == 18 &&
-          repeatedBuilder_ != null) {
+      if (typeCase_ == 18 && repeatedBuilder_ != null) {
         result.type_ = repeatedBuilder_.build();
       }
-      if (typeCase_ == 19 &&
-          mapBuilder_ != null) {
+      if (typeCase_ == 19 && mapBuilder_ != null) {
         result.type_ = mapBuilder_.build();
       }
-      if (typeCase_ == 20 &&
-          anyBuilder_ != null) {
+      if (typeCase_ == 20 && anyBuilder_ != null) {
         result.type_ = anyBuilder_.build();
       }
-      if (typeCase_ == 21 &&
-          durationBuilder_ != null) {
+      if (typeCase_ == 21 && durationBuilder_ != null) {
         result.type_ = durationBuilder_.build();
       }
-      if (typeCase_ == 22 &&
-          timestampBuilder_ != null) {
+      if (typeCase_ == 22 && timestampBuilder_ != null) {
         result.type_ = timestampBuilder_.build();
       }
     }
@@ -1793,38 +1912,39 @@ private static final long serialVersionUID = 0L;
     public Builder clone() {
       return super.clone();
     }
+
     @java.lang.Override
     public Builder setField(
-        com.google.protobuf.Descriptors.FieldDescriptor field,
-        java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
       return super.setField(field, value);
     }
+
     @java.lang.Override
-    public Builder clearField(
-        com.google.protobuf.Descriptors.FieldDescriptor field) {
+    public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
       return super.clearField(field);
     }
+
     @java.lang.Override
-    public Builder clearOneof(
-        com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+    public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
       return super.clearOneof(oneof);
     }
+
     @java.lang.Override
     public Builder setRepeatedField(
-        com.google.protobuf.Descriptors.FieldDescriptor field,
-        int index, java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field, int index, java.lang.Object value) {
       return super.setRepeatedField(field, index, value);
     }
+
     @java.lang.Override
     public Builder addRepeatedField(
-        com.google.protobuf.Descriptors.FieldDescriptor field,
-        java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
       return super.addRepeatedField(field, value);
     }
+
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
       if (other instanceof build.buf.validate.FieldConstraints) {
-        return mergeFrom((build.buf.validate.FieldConstraints)other);
+        return mergeFrom((build.buf.validate.FieldConstraints) other);
       } else {
         super.mergeFrom(other);
         return this;
@@ -1851,9 +1971,10 @@ private static final long serialVersionUID = 0L;
             celBuilder_ = null;
             cel_ = other.cel_;
             bitField0_ = (bitField0_ & ~0x00000001);
-            celBuilder_ = 
-              com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
-                 getCelFieldBuilder() : null;
+            celBuilder_ =
+                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders
+                    ? getCelFieldBuilder()
+                    : null;
           } else {
             celBuilder_.addAllMessages(other.cel_);
           }
@@ -1869,93 +1990,115 @@ private static final long serialVersionUID = 0L;
         setIgnoreEmpty(other.getIgnoreEmpty());
       }
       switch (other.getTypeCase()) {
-        case FLOAT: {
-          mergeFloat(other.getFloat());
-          break;
-        }
-        case DOUBLE: {
-          mergeDouble(other.getDouble());
-          break;
-        }
-        case INT32: {
-          mergeInt32(other.getInt32());
-          break;
-        }
-        case INT64: {
-          mergeInt64(other.getInt64());
-          break;
-        }
-        case UINT32: {
-          mergeUint32(other.getUint32());
-          break;
-        }
-        case UINT64: {
-          mergeUint64(other.getUint64());
-          break;
-        }
-        case SINT32: {
-          mergeSint32(other.getSint32());
-          break;
-        }
-        case SINT64: {
-          mergeSint64(other.getSint64());
-          break;
-        }
-        case FIXED32: {
-          mergeFixed32(other.getFixed32());
-          break;
-        }
-        case FIXED64: {
-          mergeFixed64(other.getFixed64());
-          break;
-        }
-        case SFIXED32: {
-          mergeSfixed32(other.getSfixed32());
-          break;
-        }
-        case SFIXED64: {
-          mergeSfixed64(other.getSfixed64());
-          break;
-        }
-        case BOOL: {
-          mergeBool(other.getBool());
-          break;
-        }
-        case STRING: {
-          mergeString(other.getString());
-          break;
-        }
-        case BYTES: {
-          mergeBytes(other.getBytes());
-          break;
-        }
-        case ENUM: {
-          mergeEnum(other.getEnum());
-          break;
-        }
-        case REPEATED: {
-          mergeRepeated(other.getRepeated());
-          break;
-        }
-        case MAP: {
-          mergeMap(other.getMap());
-          break;
-        }
-        case ANY: {
-          mergeAny(other.getAny());
-          break;
-        }
-        case DURATION: {
-          mergeDuration(other.getDuration());
-          break;
-        }
-        case TIMESTAMP: {
-          mergeTimestamp(other.getTimestamp());
-          break;
-        }
-        case TYPE_NOT_SET: {
-          break;
-        }
+        case FLOAT:
+          {
+            mergeFloat(other.getFloat());
+            break;
+          }
+        case DOUBLE:
+          {
+            mergeDouble(other.getDouble());
+            break;
+          }
+        case INT32:
+          {
+            mergeInt32(other.getInt32());
+            break;
+          }
+        case INT64:
+          {
+            mergeInt64(other.getInt64());
+            break;
+          }
+        case UINT32:
+          {
+            mergeUint32(other.getUint32());
+            break;
+          }
+        case UINT64:
+          {
+            mergeUint64(other.getUint64());
+            break;
+          }
+        case SINT32:
+          {
+            mergeSint32(other.getSint32());
+            break;
+          }
+        case SINT64:
+          {
+            mergeSint64(other.getSint64());
+            break;
+          }
+        case FIXED32:
+          {
+            mergeFixed32(other.getFixed32());
+            break;
+          }
+        case FIXED64:
+          {
+            mergeFixed64(other.getFixed64());
+            break;
+          }
+        case SFIXED32:
+          {
+            mergeSfixed32(other.getSfixed32());
+            break;
+          }
+        case SFIXED64:
+          {
+            mergeSfixed64(other.getSfixed64());
+            break;
+          }
+        case BOOL:
+          {
+            mergeBool(other.getBool());
+            break;
+          }
+        case STRING:
+          {
+            mergeString(other.getString());
+            break;
+          }
+        case BYTES:
+          {
+            mergeBytes(other.getBytes());
+            break;
+          }
+        case ENUM:
+          {
+            mergeEnum(other.getEnum());
+            break;
+          }
+        case REPEATED:
+          {
+            mergeRepeated(other.getRepeated());
+            break;
+          }
+        case MAP:
+          {
+            mergeMap(other.getMap());
+            break;
+          }
+        case ANY:
+          {
+            mergeAny(other.getAny());
+            break;
+          }
+        case DURATION:
+          {
+            mergeDuration(other.getDuration());
+            break;
+          }
+        case TIMESTAMP:
+          {
+            mergeTimestamp(other.getTimestamp());
+            break;
+          }
+        case TYPE_NOT_SET:
+          {
+            break;
+          }
       }
       this.mergeUnknownFields(other.getUnknownFields());
       onChanged();
@@ -1983,187 +2126,169 @@ private static final long serialVersionUID = 0L;
             case 0:
               done = true;
               break;
-            case 10: {
-              input.readMessage(
-                  getFloatFieldBuilder().getBuilder(),
-                  extensionRegistry);
-              typeCase_ = 1;
-              break;
-            } // case 10
-            case 18: {
-              input.readMessage(
-                  getDoubleFieldBuilder().getBuilder(),
-                  extensionRegistry);
-              typeCase_ = 2;
-              break;
-            } // case 18
-            case 26: {
-              input.readMessage(
-                  getInt32FieldBuilder().getBuilder(),
-                  extensionRegistry);
-              typeCase_ = 3;
-              break;
-            } // case 26
-            case 34: {
-              input.readMessage(
-                  getInt64FieldBuilder().getBuilder(),
-                  extensionRegistry);
-              typeCase_ = 4;
-              break;
-            } // case 34
-            case 42: {
-              input.readMessage(
-                  getUint32FieldBuilder().getBuilder(),
-                  extensionRegistry);
-              typeCase_ = 5;
-              break;
-            } // case 42
-            case 50: {
-              input.readMessage(
-                  getUint64FieldBuilder().getBuilder(),
-                  extensionRegistry);
-              typeCase_ = 6;
-              break;
-            } // case 50
-            case 58: {
-              input.readMessage(
-                  getSint32FieldBuilder().getBuilder(),
-                  extensionRegistry);
-              typeCase_ = 7;
-              break;
-            } // case 58
-            case 66: {
-              input.readMessage(
-                  getSint64FieldBuilder().getBuilder(),
-                  extensionRegistry);
-              typeCase_ = 8;
-              break;
-            } // case 66
-            case 74: {
-              input.readMessage(
-                  getFixed32FieldBuilder().getBuilder(),
-                  extensionRegistry);
-              typeCase_ = 9;
-              break;
-            } // case 74
-            case 82: {
-              input.readMessage(
-                  getFixed64FieldBuilder().getBuilder(),
-                  extensionRegistry);
-              typeCase_ = 10;
-              break;
-            } // case 82
-            case 90: {
-              input.readMessage(
-                  getSfixed32FieldBuilder().getBuilder(),
-                  extensionRegistry);
-              typeCase_ = 11;
-              break;
-            } // case 90
-            case 98: {
-              input.readMessage(
-                  getSfixed64FieldBuilder().getBuilder(),
-                  extensionRegistry);
-              typeCase_ = 12;
-              break;
-            } // case 98
-            case 106: {
-              input.readMessage(
-                  getBoolFieldBuilder().getBuilder(),
-                  extensionRegistry);
-              typeCase_ = 13;
-              break;
-            } // case 106
-            case 114: {
-              input.readMessage(
-                  getStringFieldBuilder().getBuilder(),
-                  extensionRegistry);
-              typeCase_ = 14;
-              break;
-            } // case 114
-            case 122: {
-              input.readMessage(
-                  getBytesFieldBuilder().getBuilder(),
-                  extensionRegistry);
-              typeCase_ = 15;
-              break;
-            } // case 122
-            case 130: {
-              input.readMessage(
-                  getEnumFieldBuilder().getBuilder(),
-                  extensionRegistry);
-              typeCase_ = 16;
-              break;
-            } // case 130
-            case 146: {
-              input.readMessage(
-                  getRepeatedFieldBuilder().getBuilder(),
-                  extensionRegistry);
-              typeCase_ = 18;
-              break;
-            } // case 146
-            case 154: {
-              input.readMessage(
-                  getMapFieldBuilder().getBuilder(),
-                  extensionRegistry);
-              typeCase_ = 19;
-              break;
-            } // case 154
-            case 162: {
-              input.readMessage(
-                  getAnyFieldBuilder().getBuilder(),
-                  extensionRegistry);
-              typeCase_ = 20;
-              break;
-            } // case 162
-            case 170: {
-              input.readMessage(
-                  getDurationFieldBuilder().getBuilder(),
-                  extensionRegistry);
-              typeCase_ = 21;
-              break;
-            } // case 170
-            case 178: {
-              input.readMessage(
-                  getTimestampFieldBuilder().getBuilder(),
-                  extensionRegistry);
-              typeCase_ = 22;
-              break;
-            } // case 178
-            case 186: {
-              build.buf.validate.Constraint m =
-                  input.readMessage(
-                      build.buf.validate.Constraint.parser(),
-                      extensionRegistry);
-              if (celBuilder_ == null) {
-                ensureCelIsMutable();
-                cel_.add(m);
-              } else {
-                celBuilder_.addMessage(m);
-              }
-              break;
-            } // case 186
-            case 192: {
-              skipped_ = input.readBool();
-              bitField0_ |= 0x00000002;
-              break;
-            } // case 192
-            case 200: {
-              required_ = input.readBool();
-              bitField0_ |= 0x00000004;
-              break;
-            } // case 200
-            case 208: {
-              ignoreEmpty_ = input.readBool();
-              bitField0_ |= 0x00000008;
-              break;
-            } // case 208
-            default: {
-              if (!super.parseUnknownField(input, extensionRegistry, tag)) {
-                done = true; // was an endgroup tag
-              }
-              break;
-            } // default:
+            case 10:
+              {
+                input.readMessage(getFloatFieldBuilder().getBuilder(), extensionRegistry);
+                typeCase_ = 1;
+                break;
+              } // case 10
+            case 18:
+              {
+                input.readMessage(getDoubleFieldBuilder().getBuilder(), extensionRegistry);
+                typeCase_ = 2;
+                break;
+              } // case 18
+            case 26:
+              {
+                input.readMessage(getInt32FieldBuilder().getBuilder(), extensionRegistry);
+                typeCase_ = 3;
+                break;
+              } // case 26
+            case 34:
+              {
+                input.readMessage(getInt64FieldBuilder().getBuilder(), extensionRegistry);
+                typeCase_ = 4;
+                break;
+              } // case 34
+            case 42:
+              {
+                input.readMessage(getUint32FieldBuilder().getBuilder(), extensionRegistry);
+                typeCase_ = 5;
+                break;
+              } // case 42
+            case 50:
+              {
+                input.readMessage(getUint64FieldBuilder().getBuilder(), extensionRegistry);
+                typeCase_ = 6;
+                break;
+              } // case 50
+            case 58:
+              {
+                input.readMessage(getSint32FieldBuilder().getBuilder(), extensionRegistry);
+                typeCase_ = 7;
+                break;
+              } // case 58
+            case 66:
+              {
+                input.readMessage(getSint64FieldBuilder().getBuilder(), extensionRegistry);
+                typeCase_ = 8;
+                break;
+              } // case 66
+            case 74:
+              {
+                input.readMessage(getFixed32FieldBuilder().getBuilder(), extensionRegistry);
+                typeCase_ = 9;
+                break;
+              } // case 74
+            case 82:
+              {
+                input.readMessage(getFixed64FieldBuilder().getBuilder(), extensionRegistry);
+                typeCase_ = 10;
+                break;
+              } // case 82
+            case 90:
+              {
+                input.readMessage(getSfixed32FieldBuilder().getBuilder(), extensionRegistry);
+                typeCase_ = 11;
+                break;
+              } // case 90
+            case 98:
+              {
+                input.readMessage(getSfixed64FieldBuilder().getBuilder(), extensionRegistry);
+                typeCase_ = 12;
+                break;
+              } // case 98
+            case 106:
+              {
+                input.readMessage(getBoolFieldBuilder().getBuilder(), extensionRegistry);
+                typeCase_ = 13;
+                break;
+              } // case 106
+            case 114:
+              {
+                input.readMessage(getStringFieldBuilder().getBuilder(), extensionRegistry);
+                typeCase_ = 14;
+                break;
+              } // case 114
+            case 122:
+              {
+                input.readMessage(getBytesFieldBuilder().getBuilder(), extensionRegistry);
+                typeCase_ = 15;
+                break;
+              } // case 122
+            case 130:
+              {
+                input.readMessage(getEnumFieldBuilder().getBuilder(), extensionRegistry);
+                typeCase_ = 16;
+                break;
+              } // case 130
+            case 146:
+              {
+                input.readMessage(getRepeatedFieldBuilder().getBuilder(), extensionRegistry);
+                typeCase_ = 18;
+                break;
+              } // case 146
+            case 154:
+              {
+                input.readMessage(getMapFieldBuilder().getBuilder(), extensionRegistry);
+                typeCase_ = 19;
+                break;
+              } // case 154
+            case 162:
+              {
+                input.readMessage(getAnyFieldBuilder().getBuilder(), extensionRegistry);
+                typeCase_ = 20;
+                break;
+              } // case 162
+            case 170:
+              {
+                input.readMessage(getDurationFieldBuilder().getBuilder(), extensionRegistry);
+                typeCase_ = 21;
+                break;
+              } // case 170
+            case 178:
+              {
+                input.readMessage(getTimestampFieldBuilder().getBuilder(), extensionRegistry);
+                typeCase_ = 22;
+                break;
+              } // case 178
+            case 186:
+              {
+                build.buf.validate.Constraint m =
+                    input.readMessage(build.buf.validate.Constraint.parser(), extensionRegistry);
+                if (celBuilder_ == null) {
+                  ensureCelIsMutable();
+                  cel_.add(m);
+                } else {
+                  celBuilder_.addMessage(m);
+                }
+                break;
+              } // case 186
+            case 192:
+              {
+                skipped_ = input.readBool();
+                bitField0_ |= 0x00000002;
+                break;
+              } // case 192
+            case 200:
+              {
+                required_ = input.readBool();
+                bitField0_ |= 0x00000004;
+                break;
+              } // case 200
+            case 208:
+              {
+                ignoreEmpty_ = input.readBool();
+                bitField0_ |= 0x00000008;
+                break;
+              } // case 208
+            default:
+              {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
           } // switch (tag)
         } // while (!done)
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -2173,12 +2298,12 @@ private static final long serialVersionUID = 0L;
       } // finally
       return this;
     }
+
     private int typeCase_ = 0;
     private java.lang.Object type_;
-    public TypeCase
-        getTypeCase() {
-      return TypeCase.forNumber(
-          typeCase_);
+
+    public TypeCase getTypeCase() {
+      return TypeCase.forNumber(typeCase_);
     }
 
     public Builder clearType() {
@@ -2190,34 +2315,39 @@ private static final long serialVersionUID = 0L;
 
     private int bitField0_;
 
-    private java.util.List<build.buf.validate.Constraint> cel_ =
-      java.util.Collections.emptyList();
+    private java.util.List<build.buf.validate.Constraint> cel_ = java.util.Collections.emptyList();
+
     private void ensureCelIsMutable() {
       if (!((bitField0_ & 0x00000001) != 0)) {
         cel_ = new java.util.ArrayList<build.buf.validate.Constraint>(cel_);
         bitField0_ |= 0x00000001;
-       }
+      }
     }
 
     private com.google.protobuf.RepeatedFieldBuilderV3<
-        build.buf.validate.Constraint, build.buf.validate.Constraint.Builder, build.buf.validate.ConstraintOrBuilder> celBuilder_;
+            build.buf.validate.Constraint,
+            build.buf.validate.Constraint.Builder,
+            build.buf.validate.ConstraintOrBuilder>
+        celBuilder_;
 
     /**
+     *
+     *
      * <pre>
      * `Constraint` is a repeated field used to represent a textual expression
      * in the Common Expression Language (CEL) syntax. For more information on
      * CEL, [see our documentation](https://github.com/bufbuild/protovalidate/blob/main/docs/cel.md).
      *
-     *```proto
-     *message MyMessage {
+     * ```proto
+     * message MyMessage {
      *  // The field `value` must be greater than 42.
      *  optional int32 value = 1 [(buf.validate.field).cel = {
      *    id: "my_message.value",
      *    message: "value must be greater than 42",
      *    expression: "this &gt; 42",
      *  }];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>repeated .buf.validate.Constraint cel = 23 [json_name = "cel"];</code>
@@ -2229,22 +2359,25 @@ private static final long serialVersionUID = 0L;
         return celBuilder_.getMessageList();
       }
     }
+
     /**
+     *
+     *
      * <pre>
      * `Constraint` is a repeated field used to represent a textual expression
      * in the Common Expression Language (CEL) syntax. For more information on
      * CEL, [see our documentation](https://github.com/bufbuild/protovalidate/blob/main/docs/cel.md).
      *
-     *```proto
-     *message MyMessage {
+     * ```proto
+     * message MyMessage {
      *  // The field `value` must be greater than 42.
      *  optional int32 value = 1 [(buf.validate.field).cel = {
      *    id: "my_message.value",
      *    message: "value must be greater than 42",
      *    expression: "this &gt; 42",
      *  }];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>repeated .buf.validate.Constraint cel = 23 [json_name = "cel"];</code>
@@ -2256,22 +2389,25 @@ private static final long serialVersionUID = 0L;
         return celBuilder_.getCount();
       }
     }
+
     /**
+     *
+     *
      * <pre>
      * `Constraint` is a repeated field used to represent a textual expression
      * in the Common Expression Language (CEL) syntax. For more information on
      * CEL, [see our documentation](https://github.com/bufbuild/protovalidate/blob/main/docs/cel.md).
      *
-     *```proto
-     *message MyMessage {
+     * ```proto
+     * message MyMessage {
      *  // The field `value` must be greater than 42.
      *  optional int32 value = 1 [(buf.validate.field).cel = {
      *    id: "my_message.value",
      *    message: "value must be greater than 42",
      *    expression: "this &gt; 42",
      *  }];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>repeated .buf.validate.Constraint cel = 23 [json_name = "cel"];</code>
@@ -2283,28 +2419,30 @@ private static final long serialVersionUID = 0L;
         return celBuilder_.getMessage(index);
       }
     }
+
     /**
+     *
+     *
      * <pre>
      * `Constraint` is a repeated field used to represent a textual expression
      * in the Common Expression Language (CEL) syntax. For more information on
      * CEL, [see our documentation](https://github.com/bufbuild/protovalidate/blob/main/docs/cel.md).
      *
-     *```proto
-     *message MyMessage {
+     * ```proto
+     * message MyMessage {
      *  // The field `value` must be greater than 42.
      *  optional int32 value = 1 [(buf.validate.field).cel = {
      *    id: "my_message.value",
      *    message: "value must be greater than 42",
      *    expression: "this &gt; 42",
      *  }];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>repeated .buf.validate.Constraint cel = 23 [json_name = "cel"];</code>
      */
-    public Builder setCel(
-        int index, build.buf.validate.Constraint value) {
+    public Builder setCel(int index, build.buf.validate.Constraint value) {
       if (celBuilder_ == null) {
         if (value == null) {
           throw new NullPointerException();
@@ -2317,28 +2455,30 @@ private static final long serialVersionUID = 0L;
       }
       return this;
     }
+
     /**
+     *
+     *
      * <pre>
      * `Constraint` is a repeated field used to represent a textual expression
      * in the Common Expression Language (CEL) syntax. For more information on
      * CEL, [see our documentation](https://github.com/bufbuild/protovalidate/blob/main/docs/cel.md).
      *
-     *```proto
-     *message MyMessage {
+     * ```proto
+     * message MyMessage {
      *  // The field `value` must be greater than 42.
      *  optional int32 value = 1 [(buf.validate.field).cel = {
      *    id: "my_message.value",
      *    message: "value must be greater than 42",
      *    expression: "this &gt; 42",
      *  }];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>repeated .buf.validate.Constraint cel = 23 [json_name = "cel"];</code>
      */
-    public Builder setCel(
-        int index, build.buf.validate.Constraint.Builder builderForValue) {
+    public Builder setCel(int index, build.buf.validate.Constraint.Builder builderForValue) {
       if (celBuilder_ == null) {
         ensureCelIsMutable();
         cel_.set(index, builderForValue.build());
@@ -2348,22 +2488,25 @@ private static final long serialVersionUID = 0L;
       }
       return this;
     }
+
     /**
+     *
+     *
      * <pre>
      * `Constraint` is a repeated field used to represent a textual expression
      * in the Common Expression Language (CEL) syntax. For more information on
      * CEL, [see our documentation](https://github.com/bufbuild/protovalidate/blob/main/docs/cel.md).
      *
-     *```proto
-     *message MyMessage {
+     * ```proto
+     * message MyMessage {
      *  // The field `value` must be greater than 42.
      *  optional int32 value = 1 [(buf.validate.field).cel = {
      *    id: "my_message.value",
      *    message: "value must be greater than 42",
      *    expression: "this &gt; 42",
      *  }];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>repeated .buf.validate.Constraint cel = 23 [json_name = "cel"];</code>
@@ -2381,28 +2524,30 @@ private static final long serialVersionUID = 0L;
       }
       return this;
     }
+
     /**
+     *
+     *
      * <pre>
      * `Constraint` is a repeated field used to represent a textual expression
      * in the Common Expression Language (CEL) syntax. For more information on
      * CEL, [see our documentation](https://github.com/bufbuild/protovalidate/blob/main/docs/cel.md).
      *
-     *```proto
-     *message MyMessage {
+     * ```proto
+     * message MyMessage {
      *  // The field `value` must be greater than 42.
      *  optional int32 value = 1 [(buf.validate.field).cel = {
      *    id: "my_message.value",
      *    message: "value must be greater than 42",
      *    expression: "this &gt; 42",
      *  }];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>repeated .buf.validate.Constraint cel = 23 [json_name = "cel"];</code>
      */
-    public Builder addCel(
-        int index, build.buf.validate.Constraint value) {
+    public Builder addCel(int index, build.buf.validate.Constraint value) {
       if (celBuilder_ == null) {
         if (value == null) {
           throw new NullPointerException();
@@ -2415,28 +2560,30 @@ private static final long serialVersionUID = 0L;
       }
       return this;
     }
+
     /**
+     *
+     *
      * <pre>
      * `Constraint` is a repeated field used to represent a textual expression
      * in the Common Expression Language (CEL) syntax. For more information on
      * CEL, [see our documentation](https://github.com/bufbuild/protovalidate/blob/main/docs/cel.md).
      *
-     *```proto
-     *message MyMessage {
+     * ```proto
+     * message MyMessage {
      *  // The field `value` must be greater than 42.
      *  optional int32 value = 1 [(buf.validate.field).cel = {
      *    id: "my_message.value",
      *    message: "value must be greater than 42",
      *    expression: "this &gt; 42",
      *  }];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>repeated .buf.validate.Constraint cel = 23 [json_name = "cel"];</code>
      */
-    public Builder addCel(
-        build.buf.validate.Constraint.Builder builderForValue) {
+    public Builder addCel(build.buf.validate.Constraint.Builder builderForValue) {
       if (celBuilder_ == null) {
         ensureCelIsMutable();
         cel_.add(builderForValue.build());
@@ -2446,28 +2593,30 @@ private static final long serialVersionUID = 0L;
       }
       return this;
     }
+
     /**
+     *
+     *
      * <pre>
      * `Constraint` is a repeated field used to represent a textual expression
      * in the Common Expression Language (CEL) syntax. For more information on
      * CEL, [see our documentation](https://github.com/bufbuild/protovalidate/blob/main/docs/cel.md).
      *
-     *```proto
-     *message MyMessage {
+     * ```proto
+     * message MyMessage {
      *  // The field `value` must be greater than 42.
      *  optional int32 value = 1 [(buf.validate.field).cel = {
      *    id: "my_message.value",
      *    message: "value must be greater than 42",
      *    expression: "this &gt; 42",
      *  }];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>repeated .buf.validate.Constraint cel = 23 [json_name = "cel"];</code>
      */
-    public Builder addCel(
-        int index, build.buf.validate.Constraint.Builder builderForValue) {
+    public Builder addCel(int index, build.buf.validate.Constraint.Builder builderForValue) {
       if (celBuilder_ == null) {
         ensureCelIsMutable();
         cel_.add(index, builderForValue.build());
@@ -2477,54 +2626,58 @@ private static final long serialVersionUID = 0L;
       }
       return this;
     }
+
     /**
+     *
+     *
      * <pre>
      * `Constraint` is a repeated field used to represent a textual expression
      * in the Common Expression Language (CEL) syntax. For more information on
      * CEL, [see our documentation](https://github.com/bufbuild/protovalidate/blob/main/docs/cel.md).
      *
-     *```proto
-     *message MyMessage {
+     * ```proto
+     * message MyMessage {
      *  // The field `value` must be greater than 42.
      *  optional int32 value = 1 [(buf.validate.field).cel = {
      *    id: "my_message.value",
      *    message: "value must be greater than 42",
      *    expression: "this &gt; 42",
      *  }];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>repeated .buf.validate.Constraint cel = 23 [json_name = "cel"];</code>
      */
-    public Builder addAllCel(
-        java.lang.Iterable<? extends build.buf.validate.Constraint> values) {
+    public Builder addAllCel(java.lang.Iterable<? extends build.buf.validate.Constraint> values) {
       if (celBuilder_ == null) {
         ensureCelIsMutable();
-        com.google.protobuf.AbstractMessageLite.Builder.addAll(
-            values, cel_);
+        com.google.protobuf.AbstractMessageLite.Builder.addAll(values, cel_);
         onChanged();
       } else {
         celBuilder_.addAllMessages(values);
       }
       return this;
     }
+
     /**
+     *
+     *
      * <pre>
      * `Constraint` is a repeated field used to represent a textual expression
      * in the Common Expression Language (CEL) syntax. For more information on
      * CEL, [see our documentation](https://github.com/bufbuild/protovalidate/blob/main/docs/cel.md).
      *
-     *```proto
-     *message MyMessage {
+     * ```proto
+     * message MyMessage {
      *  // The field `value` must be greater than 42.
      *  optional int32 value = 1 [(buf.validate.field).cel = {
      *    id: "my_message.value",
      *    message: "value must be greater than 42",
      *    expression: "this &gt; 42",
      *  }];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>repeated .buf.validate.Constraint cel = 23 [json_name = "cel"];</code>
@@ -2539,22 +2692,25 @@ private static final long serialVersionUID = 0L;
       }
       return this;
     }
+
     /**
+     *
+     *
      * <pre>
      * `Constraint` is a repeated field used to represent a textual expression
      * in the Common Expression Language (CEL) syntax. For more information on
      * CEL, [see our documentation](https://github.com/bufbuild/protovalidate/blob/main/docs/cel.md).
      *
-     *```proto
-     *message MyMessage {
+     * ```proto
+     * message MyMessage {
      *  // The field `value` must be greater than 42.
      *  optional int32 value = 1 [(buf.validate.field).cel = {
      *    id: "my_message.value",
      *    message: "value must be greater than 42",
      *    expression: "this &gt; 42",
      *  }];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>repeated .buf.validate.Constraint cel = 23 [json_name = "cel"];</code>
@@ -2569,210 +2725,234 @@ private static final long serialVersionUID = 0L;
       }
       return this;
     }
+
     /**
+     *
+     *
      * <pre>
      * `Constraint` is a repeated field used to represent a textual expression
      * in the Common Expression Language (CEL) syntax. For more information on
      * CEL, [see our documentation](https://github.com/bufbuild/protovalidate/blob/main/docs/cel.md).
      *
-     *```proto
-     *message MyMessage {
+     * ```proto
+     * message MyMessage {
      *  // The field `value` must be greater than 42.
      *  optional int32 value = 1 [(buf.validate.field).cel = {
      *    id: "my_message.value",
      *    message: "value must be greater than 42",
      *    expression: "this &gt; 42",
      *  }];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>repeated .buf.validate.Constraint cel = 23 [json_name = "cel"];</code>
      */
-    public build.buf.validate.Constraint.Builder getCelBuilder(
-        int index) {
+    public build.buf.validate.Constraint.Builder getCelBuilder(int index) {
       return getCelFieldBuilder().getBuilder(index);
     }
+
     /**
+     *
+     *
      * <pre>
      * `Constraint` is a repeated field used to represent a textual expression
      * in the Common Expression Language (CEL) syntax. For more information on
      * CEL, [see our documentation](https://github.com/bufbuild/protovalidate/blob/main/docs/cel.md).
      *
-     *```proto
-     *message MyMessage {
+     * ```proto
+     * message MyMessage {
      *  // The field `value` must be greater than 42.
      *  optional int32 value = 1 [(buf.validate.field).cel = {
      *    id: "my_message.value",
      *    message: "value must be greater than 42",
      *    expression: "this &gt; 42",
      *  }];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>repeated .buf.validate.Constraint cel = 23 [json_name = "cel"];</code>
      */
-    public build.buf.validate.ConstraintOrBuilder getCelOrBuilder(
-        int index) {
+    public build.buf.validate.ConstraintOrBuilder getCelOrBuilder(int index) {
       if (celBuilder_ == null) {
-        return cel_.get(index);  } else {
+        return cel_.get(index);
+      } else {
         return celBuilder_.getMessageOrBuilder(index);
       }
     }
+
     /**
+     *
+     *
      * <pre>
      * `Constraint` is a repeated field used to represent a textual expression
      * in the Common Expression Language (CEL) syntax. For more information on
      * CEL, [see our documentation](https://github.com/bufbuild/protovalidate/blob/main/docs/cel.md).
      *
-     *```proto
-     *message MyMessage {
+     * ```proto
+     * message MyMessage {
      *  // The field `value` must be greater than 42.
      *  optional int32 value = 1 [(buf.validate.field).cel = {
      *    id: "my_message.value",
      *    message: "value must be greater than 42",
      *    expression: "this &gt; 42",
      *  }];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>repeated .buf.validate.Constraint cel = 23 [json_name = "cel"];</code>
      */
-    public java.util.List<? extends build.buf.validate.ConstraintOrBuilder> 
-         getCelOrBuilderList() {
+    public java.util.List<? extends build.buf.validate.ConstraintOrBuilder> getCelOrBuilderList() {
       if (celBuilder_ != null) {
         return celBuilder_.getMessageOrBuilderList();
       } else {
         return java.util.Collections.unmodifiableList(cel_);
       }
     }
+
     /**
+     *
+     *
      * <pre>
      * `Constraint` is a repeated field used to represent a textual expression
      * in the Common Expression Language (CEL) syntax. For more information on
      * CEL, [see our documentation](https://github.com/bufbuild/protovalidate/blob/main/docs/cel.md).
      *
-     *```proto
-     *message MyMessage {
+     * ```proto
+     * message MyMessage {
      *  // The field `value` must be greater than 42.
      *  optional int32 value = 1 [(buf.validate.field).cel = {
      *    id: "my_message.value",
      *    message: "value must be greater than 42",
      *    expression: "this &gt; 42",
      *  }];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>repeated .buf.validate.Constraint cel = 23 [json_name = "cel"];</code>
      */
     public build.buf.validate.Constraint.Builder addCelBuilder() {
-      return getCelFieldBuilder().addBuilder(
-          build.buf.validate.Constraint.getDefaultInstance());
+      return getCelFieldBuilder().addBuilder(build.buf.validate.Constraint.getDefaultInstance());
     }
+
     /**
+     *
+     *
      * <pre>
      * `Constraint` is a repeated field used to represent a textual expression
      * in the Common Expression Language (CEL) syntax. For more information on
      * CEL, [see our documentation](https://github.com/bufbuild/protovalidate/blob/main/docs/cel.md).
      *
-     *```proto
-     *message MyMessage {
+     * ```proto
+     * message MyMessage {
      *  // The field `value` must be greater than 42.
      *  optional int32 value = 1 [(buf.validate.field).cel = {
      *    id: "my_message.value",
      *    message: "value must be greater than 42",
      *    expression: "this &gt; 42",
      *  }];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>repeated .buf.validate.Constraint cel = 23 [json_name = "cel"];</code>
      */
-    public build.buf.validate.Constraint.Builder addCelBuilder(
-        int index) {
-      return getCelFieldBuilder().addBuilder(
-          index, build.buf.validate.Constraint.getDefaultInstance());
+    public build.buf.validate.Constraint.Builder addCelBuilder(int index) {
+      return getCelFieldBuilder()
+          .addBuilder(index, build.buf.validate.Constraint.getDefaultInstance());
     }
+
     /**
+     *
+     *
      * <pre>
      * `Constraint` is a repeated field used to represent a textual expression
      * in the Common Expression Language (CEL) syntax. For more information on
      * CEL, [see our documentation](https://github.com/bufbuild/protovalidate/blob/main/docs/cel.md).
      *
-     *```proto
-     *message MyMessage {
+     * ```proto
+     * message MyMessage {
      *  // The field `value` must be greater than 42.
      *  optional int32 value = 1 [(buf.validate.field).cel = {
      *    id: "my_message.value",
      *    message: "value must be greater than 42",
      *    expression: "this &gt; 42",
      *  }];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>repeated .buf.validate.Constraint cel = 23 [json_name = "cel"];</code>
      */
-    public java.util.List<build.buf.validate.Constraint.Builder> 
-         getCelBuilderList() {
+    public java.util.List<build.buf.validate.Constraint.Builder> getCelBuilderList() {
       return getCelFieldBuilder().getBuilderList();
     }
+
     private com.google.protobuf.RepeatedFieldBuilderV3<
-        build.buf.validate.Constraint, build.buf.validate.Constraint.Builder, build.buf.validate.ConstraintOrBuilder> 
+            build.buf.validate.Constraint,
+            build.buf.validate.Constraint.Builder,
+            build.buf.validate.ConstraintOrBuilder>
         getCelFieldBuilder() {
       if (celBuilder_ == null) {
-        celBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
-            build.buf.validate.Constraint, build.buf.validate.Constraint.Builder, build.buf.validate.ConstraintOrBuilder>(
-                cel_,
-                ((bitField0_ & 0x00000001) != 0),
-                getParentForChildren(),
-                isClean());
+        celBuilder_ =
+            new com.google.protobuf.RepeatedFieldBuilderV3<
+                build.buf.validate.Constraint,
+                build.buf.validate.Constraint.Builder,
+                build.buf.validate.ConstraintOrBuilder>(
+                cel_, ((bitField0_ & 0x00000001) != 0), getParentForChildren(), isClean());
         cel_ = null;
       }
       return celBuilder_;
     }
 
-    private boolean skipped_ ;
+    private boolean skipped_;
+
     /**
-     * <pre>
-     *`skipped` is an optional boolean attribute that specifies that the
-     *validation rules of this field should not be evaluated. If skipped is set to
-     *true, any validation rules set for the field will be ignored.
      *
-     *```proto
-     *message MyMessage {
+     *
+     * <pre>
+     * `skipped` is an optional boolean attribute that specifies that the
+     * validation rules of this field should not be evaluated. If skipped is set to
+     * true, any validation rules set for the field will be ignored.
+     *
+     * ```proto
+     * message MyMessage {
      *  // The field `value` must not be set.
      *  optional MyOtherMessage value = 1 [(buf.validate.field).skipped = true];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>bool skipped = 24 [json_name = "skipped"];</code>
+     *
      * @return The skipped.
      */
     @java.lang.Override
     public boolean getSkipped() {
       return skipped_;
     }
+
     /**
-     * <pre>
-     *`skipped` is an optional boolean attribute that specifies that the
-     *validation rules of this field should not be evaluated. If skipped is set to
-     *true, any validation rules set for the field will be ignored.
      *
-     *```proto
-     *message MyMessage {
+     *
+     * <pre>
+     * `skipped` is an optional boolean attribute that specifies that the
+     * validation rules of this field should not be evaluated. If skipped is set to
+     * true, any validation rules set for the field will be ignored.
+     *
+     * ```proto
+     * message MyMessage {
      *  // The field `value` must not be set.
      *  optional MyOtherMessage value = 1 [(buf.validate.field).skipped = true];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>bool skipped = 24 [json_name = "skipped"];</code>
+     *
      * @param value The skipped to set.
      * @return This builder for chaining.
      */
@@ -2783,21 +2963,25 @@ private static final long serialVersionUID = 0L;
       onChanged();
       return this;
     }
+
     /**
-     * <pre>
-     *`skipped` is an optional boolean attribute that specifies that the
-     *validation rules of this field should not be evaluated. If skipped is set to
-     *true, any validation rules set for the field will be ignored.
      *
-     *```proto
-     *message MyMessage {
+     *
+     * <pre>
+     * `skipped` is an optional boolean attribute that specifies that the
+     * validation rules of this field should not be evaluated. If skipped is set to
+     * true, any validation rules set for the field will be ignored.
+     *
+     * ```proto
+     * message MyMessage {
      *  // The field `value` must not be set.
      *  optional MyOtherMessage value = 1 [(buf.validate.field).skipped = true];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>bool skipped = 24 [json_name = "skipped"];</code>
+     *
      * @return This builder for chaining.
      */
     public Builder clearSkipped() {
@@ -2807,43 +2991,51 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private boolean required_ ;
+    private boolean required_;
+
     /**
-     * <pre>
-     *`required` is an optional boolean attribute that specifies that
-     *this field must be set. If required is set to true, the field value must
-     *not be empty; otherwise, an error message will be generated.
      *
-     *```proto
-     *message MyMessage {
+     *
+     * <pre>
+     * `required` is an optional boolean attribute that specifies that
+     * this field must be set. If required is set to true, the field value must
+     * not be empty; otherwise, an error message will be generated.
+     *
+     * ```proto
+     * message MyMessage {
      *  // The field `value` must be set.
      *  optional MyOtherMessage value = 1 [(buf.validate.field).required = true];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>bool required = 25 [json_name = "required"];</code>
+     *
      * @return The required.
      */
     @java.lang.Override
     public boolean getRequired() {
       return required_;
     }
+
     /**
-     * <pre>
-     *`required` is an optional boolean attribute that specifies that
-     *this field must be set. If required is set to true, the field value must
-     *not be empty; otherwise, an error message will be generated.
      *
-     *```proto
-     *message MyMessage {
+     *
+     * <pre>
+     * `required` is an optional boolean attribute that specifies that
+     * this field must be set. If required is set to true, the field value must
+     * not be empty; otherwise, an error message will be generated.
+     *
+     * ```proto
+     * message MyMessage {
      *  // The field `value` must be set.
      *  optional MyOtherMessage value = 1 [(buf.validate.field).required = true];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>bool required = 25 [json_name = "required"];</code>
+     *
      * @param value The required to set.
      * @return This builder for chaining.
      */
@@ -2854,21 +3046,25 @@ private static final long serialVersionUID = 0L;
       onChanged();
       return this;
     }
+
     /**
-     * <pre>
-     *`required` is an optional boolean attribute that specifies that
-     *this field must be set. If required is set to true, the field value must
-     *not be empty; otherwise, an error message will be generated.
      *
-     *```proto
-     *message MyMessage {
+     *
+     * <pre>
+     * `required` is an optional boolean attribute that specifies that
+     * this field must be set. If required is set to true, the field value must
+     * not be empty; otherwise, an error message will be generated.
+     *
+     * ```proto
+     * message MyMessage {
      *  // The field `value` must be set.
      *  optional MyOtherMessage value = 1 [(buf.validate.field).required = true];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>bool required = 25 [json_name = "required"];</code>
+     *
      * @return This builder for chaining.
      */
     public Builder clearRequired() {
@@ -2878,43 +3074,51 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private boolean ignoreEmpty_ ;
+    private boolean ignoreEmpty_;
+
     /**
-     * <pre>
-     *`ignore_empty` specifies that the validation rules of this field should be
-     *evaluated only if the field isn't empty. If the field is empty, no validation
-     *rules are applied.
      *
-     *```proto
-     *message MyRepeated {
+     *
+     * <pre>
+     * `ignore_empty` specifies that the validation rules of this field should be
+     * evaluated only if the field isn't empty. If the field is empty, no validation
+     * rules are applied.
+     *
+     * ```proto
+     * message MyRepeated {
      *  // The field `value` validation rules should be evaluated only if the field isn't empty.
      *  repeated string value = 1 [(buf.validate.field).ignore_empty = true];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>bool ignore_empty = 26 [json_name = "ignoreEmpty"];</code>
+     *
      * @return The ignoreEmpty.
      */
     @java.lang.Override
     public boolean getIgnoreEmpty() {
       return ignoreEmpty_;
     }
+
     /**
-     * <pre>
-     *`ignore_empty` specifies that the validation rules of this field should be
-     *evaluated only if the field isn't empty. If the field is empty, no validation
-     *rules are applied.
      *
-     *```proto
-     *message MyRepeated {
+     *
+     * <pre>
+     * `ignore_empty` specifies that the validation rules of this field should be
+     * evaluated only if the field isn't empty. If the field is empty, no validation
+     * rules are applied.
+     *
+     * ```proto
+     * message MyRepeated {
      *  // The field `value` validation rules should be evaluated only if the field isn't empty.
      *  repeated string value = 1 [(buf.validate.field).ignore_empty = true];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>bool ignore_empty = 26 [json_name = "ignoreEmpty"];</code>
+     *
      * @param value The ignoreEmpty to set.
      * @return This builder for chaining.
      */
@@ -2925,21 +3129,25 @@ private static final long serialVersionUID = 0L;
       onChanged();
       return this;
     }
+
     /**
-     * <pre>
-     *`ignore_empty` specifies that the validation rules of this field should be
-     *evaluated only if the field isn't empty. If the field is empty, no validation
-     *rules are applied.
      *
-     *```proto
-     *message MyRepeated {
+     *
+     * <pre>
+     * `ignore_empty` specifies that the validation rules of this field should be
+     * evaluated only if the field isn't empty. If the field is empty, no validation
+     * rules are applied.
+     *
+     * ```proto
+     * message MyRepeated {
      *  // The field `value` validation rules should be evaluated only if the field isn't empty.
      *  repeated string value = 1 [(buf.validate.field).ignore_empty = true];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>bool ignore_empty = 26 [json_name = "ignoreEmpty"];</code>
+     *
      * @return This builder for chaining.
      */
     public Builder clearIgnoreEmpty() {
@@ -2950,25 +3158,36 @@ private static final long serialVersionUID = 0L;
     }
 
     private com.google.protobuf.SingleFieldBuilderV3<
-        build.buf.validate.FloatRules, build.buf.validate.FloatRules.Builder, build.buf.validate.FloatRulesOrBuilder> floatBuilder_;
+            build.buf.validate.FloatRules,
+            build.buf.validate.FloatRules.Builder,
+            build.buf.validate.FloatRulesOrBuilder>
+        floatBuilder_;
+
     /**
+     *
+     *
      * <pre>
      * Scalar Field Types
      * </pre>
      *
      * <code>.buf.validate.FloatRules float = 1 [json_name = "float"];</code>
+     *
      * @return Whether the float field is set.
      */
     @java.lang.Override
     public boolean hasFloat() {
       return typeCase_ == 1;
     }
+
     /**
+     *
+     *
      * <pre>
      * Scalar Field Types
      * </pre>
      *
      * <code>.buf.validate.FloatRules float = 1 [json_name = "float"];</code>
+     *
      * @return The float.
      */
     @java.lang.Override
@@ -2985,7 +3204,10 @@ private static final long serialVersionUID = 0L;
         return build.buf.validate.FloatRules.getDefaultInstance();
       }
     }
+
     /**
+     *
+     *
      * <pre>
      * Scalar Field Types
      * </pre>
@@ -3005,15 +3227,17 @@ private static final long serialVersionUID = 0L;
       typeCase_ = 1;
       return this;
     }
+
     /**
+     *
+     *
      * <pre>
      * Scalar Field Types
      * </pre>
      *
      * <code>.buf.validate.FloatRules float = 1 [json_name = "float"];</code>
      */
-    public Builder setFloat(
-        build.buf.validate.FloatRules.Builder builderForValue) {
+    public Builder setFloat(build.buf.validate.FloatRules.Builder builderForValue) {
       if (floatBuilder_ == null) {
         type_ = builderForValue.build();
         onChanged();
@@ -3023,7 +3247,10 @@ private static final long serialVersionUID = 0L;
       typeCase_ = 1;
       return this;
     }
+
     /**
+     *
+     *
      * <pre>
      * Scalar Field Types
      * </pre>
@@ -3032,10 +3259,11 @@ private static final long serialVersionUID = 0L;
      */
     public Builder mergeFloat(build.buf.validate.FloatRules value) {
       if (floatBuilder_ == null) {
-        if (typeCase_ == 1 &&
-            type_ != build.buf.validate.FloatRules.getDefaultInstance()) {
-          type_ = build.buf.validate.FloatRules.newBuilder((build.buf.validate.FloatRules) type_)
-              .mergeFrom(value).buildPartial();
+        if (typeCase_ == 1 && type_ != build.buf.validate.FloatRules.getDefaultInstance()) {
+          type_ =
+              build.buf.validate.FloatRules.newBuilder((build.buf.validate.FloatRules) type_)
+                  .mergeFrom(value)
+                  .buildPartial();
         } else {
           type_ = value;
         }
@@ -3050,7 +3278,10 @@ private static final long serialVersionUID = 0L;
       typeCase_ = 1;
       return this;
     }
+
     /**
+     *
+     *
      * <pre>
      * Scalar Field Types
      * </pre>
@@ -3073,7 +3304,10 @@ private static final long serialVersionUID = 0L;
       }
       return this;
     }
+
     /**
+     *
+     *
      * <pre>
      * Scalar Field Types
      * </pre>
@@ -3083,7 +3317,10 @@ private static final long serialVersionUID = 0L;
     public build.buf.validate.FloatRules.Builder getFloatBuilder() {
       return getFloatFieldBuilder().getBuilder();
     }
+
     /**
+     *
+     *
      * <pre>
      * Scalar Field Types
      * </pre>
@@ -3101,7 +3338,10 @@ private static final long serialVersionUID = 0L;
         return build.buf.validate.FloatRules.getDefaultInstance();
       }
     }
+
     /**
+     *
+     *
      * <pre>
      * Scalar Field Types
      * </pre>
@@ -3109,17 +3349,20 @@ private static final long serialVersionUID = 0L;
      * <code>.buf.validate.FloatRules float = 1 [json_name = "float"];</code>
      */
     private com.google.protobuf.SingleFieldBuilderV3<
-        build.buf.validate.FloatRules, build.buf.validate.FloatRules.Builder, build.buf.validate.FloatRulesOrBuilder> 
+            build.buf.validate.FloatRules,
+            build.buf.validate.FloatRules.Builder,
+            build.buf.validate.FloatRulesOrBuilder>
         getFloatFieldBuilder() {
       if (floatBuilder_ == null) {
         if (!(typeCase_ == 1)) {
           type_ = build.buf.validate.FloatRules.getDefaultInstance();
         }
-        floatBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-            build.buf.validate.FloatRules, build.buf.validate.FloatRules.Builder, build.buf.validate.FloatRulesOrBuilder>(
-                (build.buf.validate.FloatRules) type_,
-                getParentForChildren(),
-                isClean());
+        floatBuilder_ =
+            new com.google.protobuf.SingleFieldBuilderV3<
+                build.buf.validate.FloatRules,
+                build.buf.validate.FloatRules.Builder,
+                build.buf.validate.FloatRulesOrBuilder>(
+                (build.buf.validate.FloatRules) type_, getParentForChildren(), isClean());
         type_ = null;
       }
       typeCase_ = 1;
@@ -3128,17 +3371,24 @@ private static final long serialVersionUID = 0L;
     }
 
     private com.google.protobuf.SingleFieldBuilderV3<
-        build.buf.validate.DoubleRules, build.buf.validate.DoubleRules.Builder, build.buf.validate.DoubleRulesOrBuilder> doubleBuilder_;
+            build.buf.validate.DoubleRules,
+            build.buf.validate.DoubleRules.Builder,
+            build.buf.validate.DoubleRulesOrBuilder>
+        doubleBuilder_;
+
     /**
      * <code>.buf.validate.DoubleRules double = 2 [json_name = "double"];</code>
+     *
      * @return Whether the double field is set.
      */
     @java.lang.Override
     public boolean hasDouble() {
       return typeCase_ == 2;
     }
+
     /**
      * <code>.buf.validate.DoubleRules double = 2 [json_name = "double"];</code>
+     *
      * @return The double.
      */
     @java.lang.Override
@@ -3155,9 +3405,8 @@ private static final long serialVersionUID = 0L;
         return build.buf.validate.DoubleRules.getDefaultInstance();
       }
     }
-    /**
-     * <code>.buf.validate.DoubleRules double = 2 [json_name = "double"];</code>
-     */
+
+    /** <code>.buf.validate.DoubleRules double = 2 [json_name = "double"];</code> */
     public Builder setDouble(build.buf.validate.DoubleRules value) {
       if (doubleBuilder_ == null) {
         if (value == null) {
@@ -3171,11 +3420,9 @@ private static final long serialVersionUID = 0L;
       typeCase_ = 2;
       return this;
     }
-    /**
-     * <code>.buf.validate.DoubleRules double = 2 [json_name = "double"];</code>
-     */
-    public Builder setDouble(
-        build.buf.validate.DoubleRules.Builder builderForValue) {
+
+    /** <code>.buf.validate.DoubleRules double = 2 [json_name = "double"];</code> */
+    public Builder setDouble(build.buf.validate.DoubleRules.Builder builderForValue) {
       if (doubleBuilder_ == null) {
         type_ = builderForValue.build();
         onChanged();
@@ -3185,15 +3432,15 @@ private static final long serialVersionUID = 0L;
       typeCase_ = 2;
       return this;
     }
-    /**
-     * <code>.buf.validate.DoubleRules double = 2 [json_name = "double"];</code>
-     */
+
+    /** <code>.buf.validate.DoubleRules double = 2 [json_name = "double"];</code> */
     public Builder mergeDouble(build.buf.validate.DoubleRules value) {
       if (doubleBuilder_ == null) {
-        if (typeCase_ == 2 &&
-            type_ != build.buf.validate.DoubleRules.getDefaultInstance()) {
-          type_ = build.buf.validate.DoubleRules.newBuilder((build.buf.validate.DoubleRules) type_)
-              .mergeFrom(value).buildPartial();
+        if (typeCase_ == 2 && type_ != build.buf.validate.DoubleRules.getDefaultInstance()) {
+          type_ =
+              build.buf.validate.DoubleRules.newBuilder((build.buf.validate.DoubleRules) type_)
+                  .mergeFrom(value)
+                  .buildPartial();
         } else {
           type_ = value;
         }
@@ -3208,9 +3455,8 @@ private static final long serialVersionUID = 0L;
       typeCase_ = 2;
       return this;
     }
-    /**
-     * <code>.buf.validate.DoubleRules double = 2 [json_name = "double"];</code>
-     */
+
+    /** <code>.buf.validate.DoubleRules double = 2 [json_name = "double"];</code> */
     public Builder clearDouble() {
       if (doubleBuilder_ == null) {
         if (typeCase_ == 2) {
@@ -3227,15 +3473,13 @@ private static final long serialVersionUID = 0L;
       }
       return this;
     }
-    /**
-     * <code>.buf.validate.DoubleRules double = 2 [json_name = "double"];</code>
-     */
+
+    /** <code>.buf.validate.DoubleRules double = 2 [json_name = "double"];</code> */
     public build.buf.validate.DoubleRules.Builder getDoubleBuilder() {
       return getDoubleFieldBuilder().getBuilder();
     }
-    /**
-     * <code>.buf.validate.DoubleRules double = 2 [json_name = "double"];</code>
-     */
+
+    /** <code>.buf.validate.DoubleRules double = 2 [json_name = "double"];</code> */
     @java.lang.Override
     public build.buf.validate.DoubleRulesOrBuilder getDoubleOrBuilder() {
       if ((typeCase_ == 2) && (doubleBuilder_ != null)) {
@@ -3247,21 +3491,23 @@ private static final long serialVersionUID = 0L;
         return build.buf.validate.DoubleRules.getDefaultInstance();
       }
     }
-    /**
-     * <code>.buf.validate.DoubleRules double = 2 [json_name = "double"];</code>
-     */
+
+    /** <code>.buf.validate.DoubleRules double = 2 [json_name = "double"];</code> */
     private com.google.protobuf.SingleFieldBuilderV3<
-        build.buf.validate.DoubleRules, build.buf.validate.DoubleRules.Builder, build.buf.validate.DoubleRulesOrBuilder> 
+            build.buf.validate.DoubleRules,
+            build.buf.validate.DoubleRules.Builder,
+            build.buf.validate.DoubleRulesOrBuilder>
         getDoubleFieldBuilder() {
       if (doubleBuilder_ == null) {
         if (!(typeCase_ == 2)) {
           type_ = build.buf.validate.DoubleRules.getDefaultInstance();
         }
-        doubleBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-            build.buf.validate.DoubleRules, build.buf.validate.DoubleRules.Builder, build.buf.validate.DoubleRulesOrBuilder>(
-                (build.buf.validate.DoubleRules) type_,
-                getParentForChildren(),
-                isClean());
+        doubleBuilder_ =
+            new com.google.protobuf.SingleFieldBuilderV3<
+                build.buf.validate.DoubleRules,
+                build.buf.validate.DoubleRules.Builder,
+                build.buf.validate.DoubleRulesOrBuilder>(
+                (build.buf.validate.DoubleRules) type_, getParentForChildren(), isClean());
         type_ = null;
       }
       typeCase_ = 2;
@@ -3270,17 +3516,24 @@ private static final long serialVersionUID = 0L;
     }
 
     private com.google.protobuf.SingleFieldBuilderV3<
-        build.buf.validate.Int32Rules, build.buf.validate.Int32Rules.Builder, build.buf.validate.Int32RulesOrBuilder> int32Builder_;
+            build.buf.validate.Int32Rules,
+            build.buf.validate.Int32Rules.Builder,
+            build.buf.validate.Int32RulesOrBuilder>
+        int32Builder_;
+
     /**
      * <code>.buf.validate.Int32Rules int32 = 3 [json_name = "int32"];</code>
+     *
      * @return Whether the int32 field is set.
      */
     @java.lang.Override
     public boolean hasInt32() {
       return typeCase_ == 3;
     }
+
     /**
      * <code>.buf.validate.Int32Rules int32 = 3 [json_name = "int32"];</code>
+     *
      * @return The int32.
      */
     @java.lang.Override
@@ -3297,9 +3550,8 @@ private static final long serialVersionUID = 0L;
         return build.buf.validate.Int32Rules.getDefaultInstance();
       }
     }
-    /**
-     * <code>.buf.validate.Int32Rules int32 = 3 [json_name = "int32"];</code>
-     */
+
+    /** <code>.buf.validate.Int32Rules int32 = 3 [json_name = "int32"];</code> */
     public Builder setInt32(build.buf.validate.Int32Rules value) {
       if (int32Builder_ == null) {
         if (value == null) {
@@ -3313,11 +3565,9 @@ private static final long serialVersionUID = 0L;
       typeCase_ = 3;
       return this;
     }
-    /**
-     * <code>.buf.validate.Int32Rules int32 = 3 [json_name = "int32"];</code>
-     */
-    public Builder setInt32(
-        build.buf.validate.Int32Rules.Builder builderForValue) {
+
+    /** <code>.buf.validate.Int32Rules int32 = 3 [json_name = "int32"];</code> */
+    public Builder setInt32(build.buf.validate.Int32Rules.Builder builderForValue) {
       if (int32Builder_ == null) {
         type_ = builderForValue.build();
         onChanged();
@@ -3327,15 +3577,15 @@ private static final long serialVersionUID = 0L;
       typeCase_ = 3;
       return this;
     }
-    /**
-     * <code>.buf.validate.Int32Rules int32 = 3 [json_name = "int32"];</code>
-     */
+
+    /** <code>.buf.validate.Int32Rules int32 = 3 [json_name = "int32"];</code> */
     public Builder mergeInt32(build.buf.validate.Int32Rules value) {
       if (int32Builder_ == null) {
-        if (typeCase_ == 3 &&
-            type_ != build.buf.validate.Int32Rules.getDefaultInstance()) {
-          type_ = build.buf.validate.Int32Rules.newBuilder((build.buf.validate.Int32Rules) type_)
-              .mergeFrom(value).buildPartial();
+        if (typeCase_ == 3 && type_ != build.buf.validate.Int32Rules.getDefaultInstance()) {
+          type_ =
+              build.buf.validate.Int32Rules.newBuilder((build.buf.validate.Int32Rules) type_)
+                  .mergeFrom(value)
+                  .buildPartial();
         } else {
           type_ = value;
         }
@@ -3350,9 +3600,8 @@ private static final long serialVersionUID = 0L;
       typeCase_ = 3;
       return this;
     }
-    /**
-     * <code>.buf.validate.Int32Rules int32 = 3 [json_name = "int32"];</code>
-     */
+
+    /** <code>.buf.validate.Int32Rules int32 = 3 [json_name = "int32"];</code> */
     public Builder clearInt32() {
       if (int32Builder_ == null) {
         if (typeCase_ == 3) {
@@ -3369,15 +3618,13 @@ private static final long serialVersionUID = 0L;
       }
       return this;
     }
-    /**
-     * <code>.buf.validate.Int32Rules int32 = 3 [json_name = "int32"];</code>
-     */
+
+    /** <code>.buf.validate.Int32Rules int32 = 3 [json_name = "int32"];</code> */
     public build.buf.validate.Int32Rules.Builder getInt32Builder() {
       return getInt32FieldBuilder().getBuilder();
     }
-    /**
-     * <code>.buf.validate.Int32Rules int32 = 3 [json_name = "int32"];</code>
-     */
+
+    /** <code>.buf.validate.Int32Rules int32 = 3 [json_name = "int32"];</code> */
     @java.lang.Override
     public build.buf.validate.Int32RulesOrBuilder getInt32OrBuilder() {
       if ((typeCase_ == 3) && (int32Builder_ != null)) {
@@ -3389,21 +3636,23 @@ private static final long serialVersionUID = 0L;
         return build.buf.validate.Int32Rules.getDefaultInstance();
       }
     }
-    /**
-     * <code>.buf.validate.Int32Rules int32 = 3 [json_name = "int32"];</code>
-     */
+
+    /** <code>.buf.validate.Int32Rules int32 = 3 [json_name = "int32"];</code> */
     private com.google.protobuf.SingleFieldBuilderV3<
-        build.buf.validate.Int32Rules, build.buf.validate.Int32Rules.Builder, build.buf.validate.Int32RulesOrBuilder> 
+            build.buf.validate.Int32Rules,
+            build.buf.validate.Int32Rules.Builder,
+            build.buf.validate.Int32RulesOrBuilder>
         getInt32FieldBuilder() {
       if (int32Builder_ == null) {
         if (!(typeCase_ == 3)) {
           type_ = build.buf.validate.Int32Rules.getDefaultInstance();
         }
-        int32Builder_ = new com.google.protobuf.SingleFieldBuilderV3<
-            build.buf.validate.Int32Rules, build.buf.validate.Int32Rules.Builder, build.buf.validate.Int32RulesOrBuilder>(
-                (build.buf.validate.Int32Rules) type_,
-                getParentForChildren(),
-                isClean());
+        int32Builder_ =
+            new com.google.protobuf.SingleFieldBuilderV3<
+                build.buf.validate.Int32Rules,
+                build.buf.validate.Int32Rules.Builder,
+                build.buf.validate.Int32RulesOrBuilder>(
+                (build.buf.validate.Int32Rules) type_, getParentForChildren(), isClean());
         type_ = null;
       }
       typeCase_ = 3;
@@ -3412,17 +3661,24 @@ private static final long serialVersionUID = 0L;
     }
 
     private com.google.protobuf.SingleFieldBuilderV3<
-        build.buf.validate.Int64Rules, build.buf.validate.Int64Rules.Builder, build.buf.validate.Int64RulesOrBuilder> int64Builder_;
+            build.buf.validate.Int64Rules,
+            build.buf.validate.Int64Rules.Builder,
+            build.buf.validate.Int64RulesOrBuilder>
+        int64Builder_;
+
     /**
      * <code>.buf.validate.Int64Rules int64 = 4 [json_name = "int64"];</code>
+     *
      * @return Whether the int64 field is set.
      */
     @java.lang.Override
     public boolean hasInt64() {
       return typeCase_ == 4;
     }
+
     /**
      * <code>.buf.validate.Int64Rules int64 = 4 [json_name = "int64"];</code>
+     *
      * @return The int64.
      */
     @java.lang.Override
@@ -3439,9 +3695,8 @@ private static final long serialVersionUID = 0L;
         return build.buf.validate.Int64Rules.getDefaultInstance();
       }
     }
-    /**
-     * <code>.buf.validate.Int64Rules int64 = 4 [json_name = "int64"];</code>
-     */
+
+    /** <code>.buf.validate.Int64Rules int64 = 4 [json_name = "int64"];</code> */
     public Builder setInt64(build.buf.validate.Int64Rules value) {
       if (int64Builder_ == null) {
         if (value == null) {
@@ -3455,11 +3710,9 @@ private static final long serialVersionUID = 0L;
       typeCase_ = 4;
       return this;
     }
-    /**
-     * <code>.buf.validate.Int64Rules int64 = 4 [json_name = "int64"];</code>
-     */
-    public Builder setInt64(
-        build.buf.validate.Int64Rules.Builder builderForValue) {
+
+    /** <code>.buf.validate.Int64Rules int64 = 4 [json_name = "int64"];</code> */
+    public Builder setInt64(build.buf.validate.Int64Rules.Builder builderForValue) {
       if (int64Builder_ == null) {
         type_ = builderForValue.build();
         onChanged();
@@ -3469,15 +3722,15 @@ private static final long serialVersionUID = 0L;
       typeCase_ = 4;
       return this;
     }
-    /**
-     * <code>.buf.validate.Int64Rules int64 = 4 [json_name = "int64"];</code>
-     */
+
+    /** <code>.buf.validate.Int64Rules int64 = 4 [json_name = "int64"];</code> */
     public Builder mergeInt64(build.buf.validate.Int64Rules value) {
       if (int64Builder_ == null) {
-        if (typeCase_ == 4 &&
-            type_ != build.buf.validate.Int64Rules.getDefaultInstance()) {
-          type_ = build.buf.validate.Int64Rules.newBuilder((build.buf.validate.Int64Rules) type_)
-              .mergeFrom(value).buildPartial();
+        if (typeCase_ == 4 && type_ != build.buf.validate.Int64Rules.getDefaultInstance()) {
+          type_ =
+              build.buf.validate.Int64Rules.newBuilder((build.buf.validate.Int64Rules) type_)
+                  .mergeFrom(value)
+                  .buildPartial();
         } else {
           type_ = value;
         }
@@ -3492,9 +3745,8 @@ private static final long serialVersionUID = 0L;
       typeCase_ = 4;
       return this;
     }
-    /**
-     * <code>.buf.validate.Int64Rules int64 = 4 [json_name = "int64"];</code>
-     */
+
+    /** <code>.buf.validate.Int64Rules int64 = 4 [json_name = "int64"];</code> */
     public Builder clearInt64() {
       if (int64Builder_ == null) {
         if (typeCase_ == 4) {
@@ -3511,15 +3763,13 @@ private static final long serialVersionUID = 0L;
       }
       return this;
     }
-    /**
-     * <code>.buf.validate.Int64Rules int64 = 4 [json_name = "int64"];</code>
-     */
+
+    /** <code>.buf.validate.Int64Rules int64 = 4 [json_name = "int64"];</code> */
     public build.buf.validate.Int64Rules.Builder getInt64Builder() {
       return getInt64FieldBuilder().getBuilder();
     }
-    /**
-     * <code>.buf.validate.Int64Rules int64 = 4 [json_name = "int64"];</code>
-     */
+
+    /** <code>.buf.validate.Int64Rules int64 = 4 [json_name = "int64"];</code> */
     @java.lang.Override
     public build.buf.validate.Int64RulesOrBuilder getInt64OrBuilder() {
       if ((typeCase_ == 4) && (int64Builder_ != null)) {
@@ -3531,21 +3781,23 @@ private static final long serialVersionUID = 0L;
         return build.buf.validate.Int64Rules.getDefaultInstance();
       }
     }
-    /**
-     * <code>.buf.validate.Int64Rules int64 = 4 [json_name = "int64"];</code>
-     */
+
+    /** <code>.buf.validate.Int64Rules int64 = 4 [json_name = "int64"];</code> */
     private com.google.protobuf.SingleFieldBuilderV3<
-        build.buf.validate.Int64Rules, build.buf.validate.Int64Rules.Builder, build.buf.validate.Int64RulesOrBuilder> 
+            build.buf.validate.Int64Rules,
+            build.buf.validate.Int64Rules.Builder,
+            build.buf.validate.Int64RulesOrBuilder>
         getInt64FieldBuilder() {
       if (int64Builder_ == null) {
         if (!(typeCase_ == 4)) {
           type_ = build.buf.validate.Int64Rules.getDefaultInstance();
         }
-        int64Builder_ = new com.google.protobuf.SingleFieldBuilderV3<
-            build.buf.validate.Int64Rules, build.buf.validate.Int64Rules.Builder, build.buf.validate.Int64RulesOrBuilder>(
-                (build.buf.validate.Int64Rules) type_,
-                getParentForChildren(),
-                isClean());
+        int64Builder_ =
+            new com.google.protobuf.SingleFieldBuilderV3<
+                build.buf.validate.Int64Rules,
+                build.buf.validate.Int64Rules.Builder,
+                build.buf.validate.Int64RulesOrBuilder>(
+                (build.buf.validate.Int64Rules) type_, getParentForChildren(), isClean());
         type_ = null;
       }
       typeCase_ = 4;
@@ -3554,17 +3806,24 @@ private static final long serialVersionUID = 0L;
     }
 
     private com.google.protobuf.SingleFieldBuilderV3<
-        build.buf.validate.UInt32Rules, build.buf.validate.UInt32Rules.Builder, build.buf.validate.UInt32RulesOrBuilder> uint32Builder_;
+            build.buf.validate.UInt32Rules,
+            build.buf.validate.UInt32Rules.Builder,
+            build.buf.validate.UInt32RulesOrBuilder>
+        uint32Builder_;
+
     /**
      * <code>.buf.validate.UInt32Rules uint32 = 5 [json_name = "uint32"];</code>
+     *
      * @return Whether the uint32 field is set.
      */
     @java.lang.Override
     public boolean hasUint32() {
       return typeCase_ == 5;
     }
+
     /**
      * <code>.buf.validate.UInt32Rules uint32 = 5 [json_name = "uint32"];</code>
+     *
      * @return The uint32.
      */
     @java.lang.Override
@@ -3581,9 +3840,8 @@ private static final long serialVersionUID = 0L;
         return build.buf.validate.UInt32Rules.getDefaultInstance();
       }
     }
-    /**
-     * <code>.buf.validate.UInt32Rules uint32 = 5 [json_name = "uint32"];</code>
-     */
+
+    /** <code>.buf.validate.UInt32Rules uint32 = 5 [json_name = "uint32"];</code> */
     public Builder setUint32(build.buf.validate.UInt32Rules value) {
       if (uint32Builder_ == null) {
         if (value == null) {
@@ -3597,11 +3855,9 @@ private static final long serialVersionUID = 0L;
       typeCase_ = 5;
       return this;
     }
-    /**
-     * <code>.buf.validate.UInt32Rules uint32 = 5 [json_name = "uint32"];</code>
-     */
-    public Builder setUint32(
-        build.buf.validate.UInt32Rules.Builder builderForValue) {
+
+    /** <code>.buf.validate.UInt32Rules uint32 = 5 [json_name = "uint32"];</code> */
+    public Builder setUint32(build.buf.validate.UInt32Rules.Builder builderForValue) {
       if (uint32Builder_ == null) {
         type_ = builderForValue.build();
         onChanged();
@@ -3611,15 +3867,15 @@ private static final long serialVersionUID = 0L;
       typeCase_ = 5;
       return this;
     }
-    /**
-     * <code>.buf.validate.UInt32Rules uint32 = 5 [json_name = "uint32"];</code>
-     */
+
+    /** <code>.buf.validate.UInt32Rules uint32 = 5 [json_name = "uint32"];</code> */
     public Builder mergeUint32(build.buf.validate.UInt32Rules value) {
       if (uint32Builder_ == null) {
-        if (typeCase_ == 5 &&
-            type_ != build.buf.validate.UInt32Rules.getDefaultInstance()) {
-          type_ = build.buf.validate.UInt32Rules.newBuilder((build.buf.validate.UInt32Rules) type_)
-              .mergeFrom(value).buildPartial();
+        if (typeCase_ == 5 && type_ != build.buf.validate.UInt32Rules.getDefaultInstance()) {
+          type_ =
+              build.buf.validate.UInt32Rules.newBuilder((build.buf.validate.UInt32Rules) type_)
+                  .mergeFrom(value)
+                  .buildPartial();
         } else {
           type_ = value;
         }
@@ -3634,9 +3890,8 @@ private static final long serialVersionUID = 0L;
       typeCase_ = 5;
       return this;
     }
-    /**
-     * <code>.buf.validate.UInt32Rules uint32 = 5 [json_name = "uint32"];</code>
-     */
+
+    /** <code>.buf.validate.UInt32Rules uint32 = 5 [json_name = "uint32"];</code> */
     public Builder clearUint32() {
       if (uint32Builder_ == null) {
         if (typeCase_ == 5) {
@@ -3653,15 +3908,13 @@ private static final long serialVersionUID = 0L;
       }
       return this;
     }
-    /**
-     * <code>.buf.validate.UInt32Rules uint32 = 5 [json_name = "uint32"];</code>
-     */
+
+    /** <code>.buf.validate.UInt32Rules uint32 = 5 [json_name = "uint32"];</code> */
     public build.buf.validate.UInt32Rules.Builder getUint32Builder() {
       return getUint32FieldBuilder().getBuilder();
     }
-    /**
-     * <code>.buf.validate.UInt32Rules uint32 = 5 [json_name = "uint32"];</code>
-     */
+
+    /** <code>.buf.validate.UInt32Rules uint32 = 5 [json_name = "uint32"];</code> */
     @java.lang.Override
     public build.buf.validate.UInt32RulesOrBuilder getUint32OrBuilder() {
       if ((typeCase_ == 5) && (uint32Builder_ != null)) {
@@ -3673,21 +3926,23 @@ private static final long serialVersionUID = 0L;
         return build.buf.validate.UInt32Rules.getDefaultInstance();
       }
     }
-    /**
-     * <code>.buf.validate.UInt32Rules uint32 = 5 [json_name = "uint32"];</code>
-     */
+
+    /** <code>.buf.validate.UInt32Rules uint32 = 5 [json_name = "uint32"];</code> */
     private com.google.protobuf.SingleFieldBuilderV3<
-        build.buf.validate.UInt32Rules, build.buf.validate.UInt32Rules.Builder, build.buf.validate.UInt32RulesOrBuilder> 
+            build.buf.validate.UInt32Rules,
+            build.buf.validate.UInt32Rules.Builder,
+            build.buf.validate.UInt32RulesOrBuilder>
         getUint32FieldBuilder() {
       if (uint32Builder_ == null) {
         if (!(typeCase_ == 5)) {
           type_ = build.buf.validate.UInt32Rules.getDefaultInstance();
         }
-        uint32Builder_ = new com.google.protobuf.SingleFieldBuilderV3<
-            build.buf.validate.UInt32Rules, build.buf.validate.UInt32Rules.Builder, build.buf.validate.UInt32RulesOrBuilder>(
-                (build.buf.validate.UInt32Rules) type_,
-                getParentForChildren(),
-                isClean());
+        uint32Builder_ =
+            new com.google.protobuf.SingleFieldBuilderV3<
+                build.buf.validate.UInt32Rules,
+                build.buf.validate.UInt32Rules.Builder,
+                build.buf.validate.UInt32RulesOrBuilder>(
+                (build.buf.validate.UInt32Rules) type_, getParentForChildren(), isClean());
         type_ = null;
       }
       typeCase_ = 5;
@@ -3696,17 +3951,24 @@ private static final long serialVersionUID = 0L;
     }
 
     private com.google.protobuf.SingleFieldBuilderV3<
-        build.buf.validate.UInt64Rules, build.buf.validate.UInt64Rules.Builder, build.buf.validate.UInt64RulesOrBuilder> uint64Builder_;
+            build.buf.validate.UInt64Rules,
+            build.buf.validate.UInt64Rules.Builder,
+            build.buf.validate.UInt64RulesOrBuilder>
+        uint64Builder_;
+
     /**
      * <code>.buf.validate.UInt64Rules uint64 = 6 [json_name = "uint64"];</code>
+     *
      * @return Whether the uint64 field is set.
      */
     @java.lang.Override
     public boolean hasUint64() {
       return typeCase_ == 6;
     }
+
     /**
      * <code>.buf.validate.UInt64Rules uint64 = 6 [json_name = "uint64"];</code>
+     *
      * @return The uint64.
      */
     @java.lang.Override
@@ -3723,9 +3985,8 @@ private static final long serialVersionUID = 0L;
         return build.buf.validate.UInt64Rules.getDefaultInstance();
       }
     }
-    /**
-     * <code>.buf.validate.UInt64Rules uint64 = 6 [json_name = "uint64"];</code>
-     */
+
+    /** <code>.buf.validate.UInt64Rules uint64 = 6 [json_name = "uint64"];</code> */
     public Builder setUint64(build.buf.validate.UInt64Rules value) {
       if (uint64Builder_ == null) {
         if (value == null) {
@@ -3739,11 +4000,9 @@ private static final long serialVersionUID = 0L;
       typeCase_ = 6;
       return this;
     }
-    /**
-     * <code>.buf.validate.UInt64Rules uint64 = 6 [json_name = "uint64"];</code>
-     */
-    public Builder setUint64(
-        build.buf.validate.UInt64Rules.Builder builderForValue) {
+
+    /** <code>.buf.validate.UInt64Rules uint64 = 6 [json_name = "uint64"];</code> */
+    public Builder setUint64(build.buf.validate.UInt64Rules.Builder builderForValue) {
       if (uint64Builder_ == null) {
         type_ = builderForValue.build();
         onChanged();
@@ -3753,15 +4012,15 @@ private static final long serialVersionUID = 0L;
       typeCase_ = 6;
       return this;
     }
-    /**
-     * <code>.buf.validate.UInt64Rules uint64 = 6 [json_name = "uint64"];</code>
-     */
+
+    /** <code>.buf.validate.UInt64Rules uint64 = 6 [json_name = "uint64"];</code> */
     public Builder mergeUint64(build.buf.validate.UInt64Rules value) {
       if (uint64Builder_ == null) {
-        if (typeCase_ == 6 &&
-            type_ != build.buf.validate.UInt64Rules.getDefaultInstance()) {
-          type_ = build.buf.validate.UInt64Rules.newBuilder((build.buf.validate.UInt64Rules) type_)
-              .mergeFrom(value).buildPartial();
+        if (typeCase_ == 6 && type_ != build.buf.validate.UInt64Rules.getDefaultInstance()) {
+          type_ =
+              build.buf.validate.UInt64Rules.newBuilder((build.buf.validate.UInt64Rules) type_)
+                  .mergeFrom(value)
+                  .buildPartial();
         } else {
           type_ = value;
         }
@@ -3776,9 +4035,8 @@ private static final long serialVersionUID = 0L;
       typeCase_ = 6;
       return this;
     }
-    /**
-     * <code>.buf.validate.UInt64Rules uint64 = 6 [json_name = "uint64"];</code>
-     */
+
+    /** <code>.buf.validate.UInt64Rules uint64 = 6 [json_name = "uint64"];</code> */
     public Builder clearUint64() {
       if (uint64Builder_ == null) {
         if (typeCase_ == 6) {
@@ -3795,15 +4053,13 @@ private static final long serialVersionUID = 0L;
       }
       return this;
     }
-    /**
-     * <code>.buf.validate.UInt64Rules uint64 = 6 [json_name = "uint64"];</code>
-     */
+
+    /** <code>.buf.validate.UInt64Rules uint64 = 6 [json_name = "uint64"];</code> */
     public build.buf.validate.UInt64Rules.Builder getUint64Builder() {
       return getUint64FieldBuilder().getBuilder();
     }
-    /**
-     * <code>.buf.validate.UInt64Rules uint64 = 6 [json_name = "uint64"];</code>
-     */
+
+    /** <code>.buf.validate.UInt64Rules uint64 = 6 [json_name = "uint64"];</code> */
     @java.lang.Override
     public build.buf.validate.UInt64RulesOrBuilder getUint64OrBuilder() {
       if ((typeCase_ == 6) && (uint64Builder_ != null)) {
@@ -3815,21 +4071,23 @@ private static final long serialVersionUID = 0L;
         return build.buf.validate.UInt64Rules.getDefaultInstance();
       }
     }
-    /**
-     * <code>.buf.validate.UInt64Rules uint64 = 6 [json_name = "uint64"];</code>
-     */
+
+    /** <code>.buf.validate.UInt64Rules uint64 = 6 [json_name = "uint64"];</code> */
     private com.google.protobuf.SingleFieldBuilderV3<
-        build.buf.validate.UInt64Rules, build.buf.validate.UInt64Rules.Builder, build.buf.validate.UInt64RulesOrBuilder> 
+            build.buf.validate.UInt64Rules,
+            build.buf.validate.UInt64Rules.Builder,
+            build.buf.validate.UInt64RulesOrBuilder>
         getUint64FieldBuilder() {
       if (uint64Builder_ == null) {
         if (!(typeCase_ == 6)) {
           type_ = build.buf.validate.UInt64Rules.getDefaultInstance();
         }
-        uint64Builder_ = new com.google.protobuf.SingleFieldBuilderV3<
-            build.buf.validate.UInt64Rules, build.buf.validate.UInt64Rules.Builder, build.buf.validate.UInt64RulesOrBuilder>(
-                (build.buf.validate.UInt64Rules) type_,
-                getParentForChildren(),
-                isClean());
+        uint64Builder_ =
+            new com.google.protobuf.SingleFieldBuilderV3<
+                build.buf.validate.UInt64Rules,
+                build.buf.validate.UInt64Rules.Builder,
+                build.buf.validate.UInt64RulesOrBuilder>(
+                (build.buf.validate.UInt64Rules) type_, getParentForChildren(), isClean());
         type_ = null;
       }
       typeCase_ = 6;
@@ -3838,17 +4096,24 @@ private static final long serialVersionUID = 0L;
     }
 
     private com.google.protobuf.SingleFieldBuilderV3<
-        build.buf.validate.SInt32Rules, build.buf.validate.SInt32Rules.Builder, build.buf.validate.SInt32RulesOrBuilder> sint32Builder_;
+            build.buf.validate.SInt32Rules,
+            build.buf.validate.SInt32Rules.Builder,
+            build.buf.validate.SInt32RulesOrBuilder>
+        sint32Builder_;
+
     /**
      * <code>.buf.validate.SInt32Rules sint32 = 7 [json_name = "sint32"];</code>
+     *
      * @return Whether the sint32 field is set.
      */
     @java.lang.Override
     public boolean hasSint32() {
       return typeCase_ == 7;
     }
+
     /**
      * <code>.buf.validate.SInt32Rules sint32 = 7 [json_name = "sint32"];</code>
+     *
      * @return The sint32.
      */
     @java.lang.Override
@@ -3865,9 +4130,8 @@ private static final long serialVersionUID = 0L;
         return build.buf.validate.SInt32Rules.getDefaultInstance();
       }
     }
-    /**
-     * <code>.buf.validate.SInt32Rules sint32 = 7 [json_name = "sint32"];</code>
-     */
+
+    /** <code>.buf.validate.SInt32Rules sint32 = 7 [json_name = "sint32"];</code> */
     public Builder setSint32(build.buf.validate.SInt32Rules value) {
       if (sint32Builder_ == null) {
         if (value == null) {
@@ -3881,11 +4145,9 @@ private static final long serialVersionUID = 0L;
       typeCase_ = 7;
       return this;
     }
-    /**
-     * <code>.buf.validate.SInt32Rules sint32 = 7 [json_name = "sint32"];</code>
-     */
-    public Builder setSint32(
-        build.buf.validate.SInt32Rules.Builder builderForValue) {
+
+    /** <code>.buf.validate.SInt32Rules sint32 = 7 [json_name = "sint32"];</code> */
+    public Builder setSint32(build.buf.validate.SInt32Rules.Builder builderForValue) {
       if (sint32Builder_ == null) {
         type_ = builderForValue.build();
         onChanged();
@@ -3895,15 +4157,15 @@ private static final long serialVersionUID = 0L;
       typeCase_ = 7;
       return this;
     }
-    /**
-     * <code>.buf.validate.SInt32Rules sint32 = 7 [json_name = "sint32"];</code>
-     */
+
+    /** <code>.buf.validate.SInt32Rules sint32 = 7 [json_name = "sint32"];</code> */
     public Builder mergeSint32(build.buf.validate.SInt32Rules value) {
       if (sint32Builder_ == null) {
-        if (typeCase_ == 7 &&
-            type_ != build.buf.validate.SInt32Rules.getDefaultInstance()) {
-          type_ = build.buf.validate.SInt32Rules.newBuilder((build.buf.validate.SInt32Rules) type_)
-              .mergeFrom(value).buildPartial();
+        if (typeCase_ == 7 && type_ != build.buf.validate.SInt32Rules.getDefaultInstance()) {
+          type_ =
+              build.buf.validate.SInt32Rules.newBuilder((build.buf.validate.SInt32Rules) type_)
+                  .mergeFrom(value)
+                  .buildPartial();
         } else {
           type_ = value;
         }
@@ -3918,9 +4180,8 @@ private static final long serialVersionUID = 0L;
       typeCase_ = 7;
       return this;
     }
-    /**
-     * <code>.buf.validate.SInt32Rules sint32 = 7 [json_name = "sint32"];</code>
-     */
+
+    /** <code>.buf.validate.SInt32Rules sint32 = 7 [json_name = "sint32"];</code> */
     public Builder clearSint32() {
       if (sint32Builder_ == null) {
         if (typeCase_ == 7) {
@@ -3937,15 +4198,13 @@ private static final long serialVersionUID = 0L;
       }
       return this;
     }
-    /**
-     * <code>.buf.validate.SInt32Rules sint32 = 7 [json_name = "sint32"];</code>
-     */
+
+    /** <code>.buf.validate.SInt32Rules sint32 = 7 [json_name = "sint32"];</code> */
     public build.buf.validate.SInt32Rules.Builder getSint32Builder() {
       return getSint32FieldBuilder().getBuilder();
     }
-    /**
-     * <code>.buf.validate.SInt32Rules sint32 = 7 [json_name = "sint32"];</code>
-     */
+
+    /** <code>.buf.validate.SInt32Rules sint32 = 7 [json_name = "sint32"];</code> */
     @java.lang.Override
     public build.buf.validate.SInt32RulesOrBuilder getSint32OrBuilder() {
       if ((typeCase_ == 7) && (sint32Builder_ != null)) {
@@ -3957,21 +4216,23 @@ private static final long serialVersionUID = 0L;
         return build.buf.validate.SInt32Rules.getDefaultInstance();
       }
     }
-    /**
-     * <code>.buf.validate.SInt32Rules sint32 = 7 [json_name = "sint32"];</code>
-     */
+
+    /** <code>.buf.validate.SInt32Rules sint32 = 7 [json_name = "sint32"];</code> */
     private com.google.protobuf.SingleFieldBuilderV3<
-        build.buf.validate.SInt32Rules, build.buf.validate.SInt32Rules.Builder, build.buf.validate.SInt32RulesOrBuilder> 
+            build.buf.validate.SInt32Rules,
+            build.buf.validate.SInt32Rules.Builder,
+            build.buf.validate.SInt32RulesOrBuilder>
         getSint32FieldBuilder() {
       if (sint32Builder_ == null) {
         if (!(typeCase_ == 7)) {
           type_ = build.buf.validate.SInt32Rules.getDefaultInstance();
         }
-        sint32Builder_ = new com.google.protobuf.SingleFieldBuilderV3<
-            build.buf.validate.SInt32Rules, build.buf.validate.SInt32Rules.Builder, build.buf.validate.SInt32RulesOrBuilder>(
-                (build.buf.validate.SInt32Rules) type_,
-                getParentForChildren(),
-                isClean());
+        sint32Builder_ =
+            new com.google.protobuf.SingleFieldBuilderV3<
+                build.buf.validate.SInt32Rules,
+                build.buf.validate.SInt32Rules.Builder,
+                build.buf.validate.SInt32RulesOrBuilder>(
+                (build.buf.validate.SInt32Rules) type_, getParentForChildren(), isClean());
         type_ = null;
       }
       typeCase_ = 7;
@@ -3980,17 +4241,24 @@ private static final long serialVersionUID = 0L;
     }
 
     private com.google.protobuf.SingleFieldBuilderV3<
-        build.buf.validate.SInt64Rules, build.buf.validate.SInt64Rules.Builder, build.buf.validate.SInt64RulesOrBuilder> sint64Builder_;
+            build.buf.validate.SInt64Rules,
+            build.buf.validate.SInt64Rules.Builder,
+            build.buf.validate.SInt64RulesOrBuilder>
+        sint64Builder_;
+
     /**
      * <code>.buf.validate.SInt64Rules sint64 = 8 [json_name = "sint64"];</code>
+     *
      * @return Whether the sint64 field is set.
      */
     @java.lang.Override
     public boolean hasSint64() {
       return typeCase_ == 8;
     }
+
     /**
      * <code>.buf.validate.SInt64Rules sint64 = 8 [json_name = "sint64"];</code>
+     *
      * @return The sint64.
      */
     @java.lang.Override
@@ -4007,9 +4275,8 @@ private static final long serialVersionUID = 0L;
         return build.buf.validate.SInt64Rules.getDefaultInstance();
       }
     }
-    /**
-     * <code>.buf.validate.SInt64Rules sint64 = 8 [json_name = "sint64"];</code>
-     */
+
+    /** <code>.buf.validate.SInt64Rules sint64 = 8 [json_name = "sint64"];</code> */
     public Builder setSint64(build.buf.validate.SInt64Rules value) {
       if (sint64Builder_ == null) {
         if (value == null) {
@@ -4023,11 +4290,9 @@ private static final long serialVersionUID = 0L;
       typeCase_ = 8;
       return this;
     }
-    /**
-     * <code>.buf.validate.SInt64Rules sint64 = 8 [json_name = "sint64"];</code>
-     */
-    public Builder setSint64(
-        build.buf.validate.SInt64Rules.Builder builderForValue) {
+
+    /** <code>.buf.validate.SInt64Rules sint64 = 8 [json_name = "sint64"];</code> */
+    public Builder setSint64(build.buf.validate.SInt64Rules.Builder builderForValue) {
       if (sint64Builder_ == null) {
         type_ = builderForValue.build();
         onChanged();
@@ -4037,15 +4302,15 @@ private static final long serialVersionUID = 0L;
       typeCase_ = 8;
       return this;
     }
-    /**
-     * <code>.buf.validate.SInt64Rules sint64 = 8 [json_name = "sint64"];</code>
-     */
+
+    /** <code>.buf.validate.SInt64Rules sint64 = 8 [json_name = "sint64"];</code> */
     public Builder mergeSint64(build.buf.validate.SInt64Rules value) {
       if (sint64Builder_ == null) {
-        if (typeCase_ == 8 &&
-            type_ != build.buf.validate.SInt64Rules.getDefaultInstance()) {
-          type_ = build.buf.validate.SInt64Rules.newBuilder((build.buf.validate.SInt64Rules) type_)
-              .mergeFrom(value).buildPartial();
+        if (typeCase_ == 8 && type_ != build.buf.validate.SInt64Rules.getDefaultInstance()) {
+          type_ =
+              build.buf.validate.SInt64Rules.newBuilder((build.buf.validate.SInt64Rules) type_)
+                  .mergeFrom(value)
+                  .buildPartial();
         } else {
           type_ = value;
         }
@@ -4060,9 +4325,8 @@ private static final long serialVersionUID = 0L;
       typeCase_ = 8;
       return this;
     }
-    /**
-     * <code>.buf.validate.SInt64Rules sint64 = 8 [json_name = "sint64"];</code>
-     */
+
+    /** <code>.buf.validate.SInt64Rules sint64 = 8 [json_name = "sint64"];</code> */
     public Builder clearSint64() {
       if (sint64Builder_ == null) {
         if (typeCase_ == 8) {
@@ -4079,15 +4343,13 @@ private static final long serialVersionUID = 0L;
       }
       return this;
     }
-    /**
-     * <code>.buf.validate.SInt64Rules sint64 = 8 [json_name = "sint64"];</code>
-     */
+
+    /** <code>.buf.validate.SInt64Rules sint64 = 8 [json_name = "sint64"];</code> */
     public build.buf.validate.SInt64Rules.Builder getSint64Builder() {
       return getSint64FieldBuilder().getBuilder();
     }
-    /**
-     * <code>.buf.validate.SInt64Rules sint64 = 8 [json_name = "sint64"];</code>
-     */
+
+    /** <code>.buf.validate.SInt64Rules sint64 = 8 [json_name = "sint64"];</code> */
     @java.lang.Override
     public build.buf.validate.SInt64RulesOrBuilder getSint64OrBuilder() {
       if ((typeCase_ == 8) && (sint64Builder_ != null)) {
@@ -4099,21 +4361,23 @@ private static final long serialVersionUID = 0L;
         return build.buf.validate.SInt64Rules.getDefaultInstance();
       }
     }
-    /**
-     * <code>.buf.validate.SInt64Rules sint64 = 8 [json_name = "sint64"];</code>
-     */
+
+    /** <code>.buf.validate.SInt64Rules sint64 = 8 [json_name = "sint64"];</code> */
     private com.google.protobuf.SingleFieldBuilderV3<
-        build.buf.validate.SInt64Rules, build.buf.validate.SInt64Rules.Builder, build.buf.validate.SInt64RulesOrBuilder> 
+            build.buf.validate.SInt64Rules,
+            build.buf.validate.SInt64Rules.Builder,
+            build.buf.validate.SInt64RulesOrBuilder>
         getSint64FieldBuilder() {
       if (sint64Builder_ == null) {
         if (!(typeCase_ == 8)) {
           type_ = build.buf.validate.SInt64Rules.getDefaultInstance();
         }
-        sint64Builder_ = new com.google.protobuf.SingleFieldBuilderV3<
-            build.buf.validate.SInt64Rules, build.buf.validate.SInt64Rules.Builder, build.buf.validate.SInt64RulesOrBuilder>(
-                (build.buf.validate.SInt64Rules) type_,
-                getParentForChildren(),
-                isClean());
+        sint64Builder_ =
+            new com.google.protobuf.SingleFieldBuilderV3<
+                build.buf.validate.SInt64Rules,
+                build.buf.validate.SInt64Rules.Builder,
+                build.buf.validate.SInt64RulesOrBuilder>(
+                (build.buf.validate.SInt64Rules) type_, getParentForChildren(), isClean());
         type_ = null;
       }
       typeCase_ = 8;
@@ -4122,17 +4386,24 @@ private static final long serialVersionUID = 0L;
     }
 
     private com.google.protobuf.SingleFieldBuilderV3<
-        build.buf.validate.Fixed32Rules, build.buf.validate.Fixed32Rules.Builder, build.buf.validate.Fixed32RulesOrBuilder> fixed32Builder_;
+            build.buf.validate.Fixed32Rules,
+            build.buf.validate.Fixed32Rules.Builder,
+            build.buf.validate.Fixed32RulesOrBuilder>
+        fixed32Builder_;
+
     /**
      * <code>.buf.validate.Fixed32Rules fixed32 = 9 [json_name = "fixed32"];</code>
+     *
      * @return Whether the fixed32 field is set.
      */
     @java.lang.Override
     public boolean hasFixed32() {
       return typeCase_ == 9;
     }
+
     /**
      * <code>.buf.validate.Fixed32Rules fixed32 = 9 [json_name = "fixed32"];</code>
+     *
      * @return The fixed32.
      */
     @java.lang.Override
@@ -4149,9 +4420,8 @@ private static final long serialVersionUID = 0L;
         return build.buf.validate.Fixed32Rules.getDefaultInstance();
       }
     }
-    /**
-     * <code>.buf.validate.Fixed32Rules fixed32 = 9 [json_name = "fixed32"];</code>
-     */
+
+    /** <code>.buf.validate.Fixed32Rules fixed32 = 9 [json_name = "fixed32"];</code> */
     public Builder setFixed32(build.buf.validate.Fixed32Rules value) {
       if (fixed32Builder_ == null) {
         if (value == null) {
@@ -4165,11 +4435,9 @@ private static final long serialVersionUID = 0L;
       typeCase_ = 9;
       return this;
     }
-    /**
-     * <code>.buf.validate.Fixed32Rules fixed32 = 9 [json_name = "fixed32"];</code>
-     */
-    public Builder setFixed32(
-        build.buf.validate.Fixed32Rules.Builder builderForValue) {
+
+    /** <code>.buf.validate.Fixed32Rules fixed32 = 9 [json_name = "fixed32"];</code> */
+    public Builder setFixed32(build.buf.validate.Fixed32Rules.Builder builderForValue) {
       if (fixed32Builder_ == null) {
         type_ = builderForValue.build();
         onChanged();
@@ -4179,15 +4447,15 @@ private static final long serialVersionUID = 0L;
       typeCase_ = 9;
       return this;
     }
-    /**
-     * <code>.buf.validate.Fixed32Rules fixed32 = 9 [json_name = "fixed32"];</code>
-     */
+
+    /** <code>.buf.validate.Fixed32Rules fixed32 = 9 [json_name = "fixed32"];</code> */
     public Builder mergeFixed32(build.buf.validate.Fixed32Rules value) {
       if (fixed32Builder_ == null) {
-        if (typeCase_ == 9 &&
-            type_ != build.buf.validate.Fixed32Rules.getDefaultInstance()) {
-          type_ = build.buf.validate.Fixed32Rules.newBuilder((build.buf.validate.Fixed32Rules) type_)
-              .mergeFrom(value).buildPartial();
+        if (typeCase_ == 9 && type_ != build.buf.validate.Fixed32Rules.getDefaultInstance()) {
+          type_ =
+              build.buf.validate.Fixed32Rules.newBuilder((build.buf.validate.Fixed32Rules) type_)
+                  .mergeFrom(value)
+                  .buildPartial();
         } else {
           type_ = value;
         }
@@ -4202,9 +4470,8 @@ private static final long serialVersionUID = 0L;
       typeCase_ = 9;
       return this;
     }
-    /**
-     * <code>.buf.validate.Fixed32Rules fixed32 = 9 [json_name = "fixed32"];</code>
-     */
+
+    /** <code>.buf.validate.Fixed32Rules fixed32 = 9 [json_name = "fixed32"];</code> */
     public Builder clearFixed32() {
       if (fixed32Builder_ == null) {
         if (typeCase_ == 9) {
@@ -4221,15 +4488,13 @@ private static final long serialVersionUID = 0L;
       }
       return this;
     }
-    /**
-     * <code>.buf.validate.Fixed32Rules fixed32 = 9 [json_name = "fixed32"];</code>
-     */
+
+    /** <code>.buf.validate.Fixed32Rules fixed32 = 9 [json_name = "fixed32"];</code> */
     public build.buf.validate.Fixed32Rules.Builder getFixed32Builder() {
       return getFixed32FieldBuilder().getBuilder();
     }
-    /**
-     * <code>.buf.validate.Fixed32Rules fixed32 = 9 [json_name = "fixed32"];</code>
-     */
+
+    /** <code>.buf.validate.Fixed32Rules fixed32 = 9 [json_name = "fixed32"];</code> */
     @java.lang.Override
     public build.buf.validate.Fixed32RulesOrBuilder getFixed32OrBuilder() {
       if ((typeCase_ == 9) && (fixed32Builder_ != null)) {
@@ -4241,21 +4506,23 @@ private static final long serialVersionUID = 0L;
         return build.buf.validate.Fixed32Rules.getDefaultInstance();
       }
     }
-    /**
-     * <code>.buf.validate.Fixed32Rules fixed32 = 9 [json_name = "fixed32"];</code>
-     */
+
+    /** <code>.buf.validate.Fixed32Rules fixed32 = 9 [json_name = "fixed32"];</code> */
     private com.google.protobuf.SingleFieldBuilderV3<
-        build.buf.validate.Fixed32Rules, build.buf.validate.Fixed32Rules.Builder, build.buf.validate.Fixed32RulesOrBuilder> 
+            build.buf.validate.Fixed32Rules,
+            build.buf.validate.Fixed32Rules.Builder,
+            build.buf.validate.Fixed32RulesOrBuilder>
         getFixed32FieldBuilder() {
       if (fixed32Builder_ == null) {
         if (!(typeCase_ == 9)) {
           type_ = build.buf.validate.Fixed32Rules.getDefaultInstance();
         }
-        fixed32Builder_ = new com.google.protobuf.SingleFieldBuilderV3<
-            build.buf.validate.Fixed32Rules, build.buf.validate.Fixed32Rules.Builder, build.buf.validate.Fixed32RulesOrBuilder>(
-                (build.buf.validate.Fixed32Rules) type_,
-                getParentForChildren(),
-                isClean());
+        fixed32Builder_ =
+            new com.google.protobuf.SingleFieldBuilderV3<
+                build.buf.validate.Fixed32Rules,
+                build.buf.validate.Fixed32Rules.Builder,
+                build.buf.validate.Fixed32RulesOrBuilder>(
+                (build.buf.validate.Fixed32Rules) type_, getParentForChildren(), isClean());
         type_ = null;
       }
       typeCase_ = 9;
@@ -4264,17 +4531,24 @@ private static final long serialVersionUID = 0L;
     }
 
     private com.google.protobuf.SingleFieldBuilderV3<
-        build.buf.validate.Fixed64Rules, build.buf.validate.Fixed64Rules.Builder, build.buf.validate.Fixed64RulesOrBuilder> fixed64Builder_;
+            build.buf.validate.Fixed64Rules,
+            build.buf.validate.Fixed64Rules.Builder,
+            build.buf.validate.Fixed64RulesOrBuilder>
+        fixed64Builder_;
+
     /**
      * <code>.buf.validate.Fixed64Rules fixed64 = 10 [json_name = "fixed64"];</code>
+     *
      * @return Whether the fixed64 field is set.
      */
     @java.lang.Override
     public boolean hasFixed64() {
       return typeCase_ == 10;
     }
+
     /**
      * <code>.buf.validate.Fixed64Rules fixed64 = 10 [json_name = "fixed64"];</code>
+     *
      * @return The fixed64.
      */
     @java.lang.Override
@@ -4291,9 +4565,8 @@ private static final long serialVersionUID = 0L;
         return build.buf.validate.Fixed64Rules.getDefaultInstance();
       }
     }
-    /**
-     * <code>.buf.validate.Fixed64Rules fixed64 = 10 [json_name = "fixed64"];</code>
-     */
+
+    /** <code>.buf.validate.Fixed64Rules fixed64 = 10 [json_name = "fixed64"];</code> */
     public Builder setFixed64(build.buf.validate.Fixed64Rules value) {
       if (fixed64Builder_ == null) {
         if (value == null) {
@@ -4307,11 +4580,9 @@ private static final long serialVersionUID = 0L;
       typeCase_ = 10;
       return this;
     }
-    /**
-     * <code>.buf.validate.Fixed64Rules fixed64 = 10 [json_name = "fixed64"];</code>
-     */
-    public Builder setFixed64(
-        build.buf.validate.Fixed64Rules.Builder builderForValue) {
+
+    /** <code>.buf.validate.Fixed64Rules fixed64 = 10 [json_name = "fixed64"];</code> */
+    public Builder setFixed64(build.buf.validate.Fixed64Rules.Builder builderForValue) {
       if (fixed64Builder_ == null) {
         type_ = builderForValue.build();
         onChanged();
@@ -4321,15 +4592,15 @@ private static final long serialVersionUID = 0L;
       typeCase_ = 10;
       return this;
     }
-    /**
-     * <code>.buf.validate.Fixed64Rules fixed64 = 10 [json_name = "fixed64"];</code>
-     */
+
+    /** <code>.buf.validate.Fixed64Rules fixed64 = 10 [json_name = "fixed64"];</code> */
     public Builder mergeFixed64(build.buf.validate.Fixed64Rules value) {
       if (fixed64Builder_ == null) {
-        if (typeCase_ == 10 &&
-            type_ != build.buf.validate.Fixed64Rules.getDefaultInstance()) {
-          type_ = build.buf.validate.Fixed64Rules.newBuilder((build.buf.validate.Fixed64Rules) type_)
-              .mergeFrom(value).buildPartial();
+        if (typeCase_ == 10 && type_ != build.buf.validate.Fixed64Rules.getDefaultInstance()) {
+          type_ =
+              build.buf.validate.Fixed64Rules.newBuilder((build.buf.validate.Fixed64Rules) type_)
+                  .mergeFrom(value)
+                  .buildPartial();
         } else {
           type_ = value;
         }
@@ -4344,9 +4615,8 @@ private static final long serialVersionUID = 0L;
       typeCase_ = 10;
       return this;
     }
-    /**
-     * <code>.buf.validate.Fixed64Rules fixed64 = 10 [json_name = "fixed64"];</code>
-     */
+
+    /** <code>.buf.validate.Fixed64Rules fixed64 = 10 [json_name = "fixed64"];</code> */
     public Builder clearFixed64() {
       if (fixed64Builder_ == null) {
         if (typeCase_ == 10) {
@@ -4363,15 +4633,13 @@ private static final long serialVersionUID = 0L;
       }
       return this;
     }
-    /**
-     * <code>.buf.validate.Fixed64Rules fixed64 = 10 [json_name = "fixed64"];</code>
-     */
+
+    /** <code>.buf.validate.Fixed64Rules fixed64 = 10 [json_name = "fixed64"];</code> */
     public build.buf.validate.Fixed64Rules.Builder getFixed64Builder() {
       return getFixed64FieldBuilder().getBuilder();
     }
-    /**
-     * <code>.buf.validate.Fixed64Rules fixed64 = 10 [json_name = "fixed64"];</code>
-     */
+
+    /** <code>.buf.validate.Fixed64Rules fixed64 = 10 [json_name = "fixed64"];</code> */
     @java.lang.Override
     public build.buf.validate.Fixed64RulesOrBuilder getFixed64OrBuilder() {
       if ((typeCase_ == 10) && (fixed64Builder_ != null)) {
@@ -4383,21 +4651,23 @@ private static final long serialVersionUID = 0L;
         return build.buf.validate.Fixed64Rules.getDefaultInstance();
       }
     }
-    /**
-     * <code>.buf.validate.Fixed64Rules fixed64 = 10 [json_name = "fixed64"];</code>
-     */
+
+    /** <code>.buf.validate.Fixed64Rules fixed64 = 10 [json_name = "fixed64"];</code> */
     private com.google.protobuf.SingleFieldBuilderV3<
-        build.buf.validate.Fixed64Rules, build.buf.validate.Fixed64Rules.Builder, build.buf.validate.Fixed64RulesOrBuilder> 
+            build.buf.validate.Fixed64Rules,
+            build.buf.validate.Fixed64Rules.Builder,
+            build.buf.validate.Fixed64RulesOrBuilder>
         getFixed64FieldBuilder() {
       if (fixed64Builder_ == null) {
         if (!(typeCase_ == 10)) {
           type_ = build.buf.validate.Fixed64Rules.getDefaultInstance();
         }
-        fixed64Builder_ = new com.google.protobuf.SingleFieldBuilderV3<
-            build.buf.validate.Fixed64Rules, build.buf.validate.Fixed64Rules.Builder, build.buf.validate.Fixed64RulesOrBuilder>(
-                (build.buf.validate.Fixed64Rules) type_,
-                getParentForChildren(),
-                isClean());
+        fixed64Builder_ =
+            new com.google.protobuf.SingleFieldBuilderV3<
+                build.buf.validate.Fixed64Rules,
+                build.buf.validate.Fixed64Rules.Builder,
+                build.buf.validate.Fixed64RulesOrBuilder>(
+                (build.buf.validate.Fixed64Rules) type_, getParentForChildren(), isClean());
         type_ = null;
       }
       typeCase_ = 10;
@@ -4406,17 +4676,24 @@ private static final long serialVersionUID = 0L;
     }
 
     private com.google.protobuf.SingleFieldBuilderV3<
-        build.buf.validate.SFixed32Rules, build.buf.validate.SFixed32Rules.Builder, build.buf.validate.SFixed32RulesOrBuilder> sfixed32Builder_;
+            build.buf.validate.SFixed32Rules,
+            build.buf.validate.SFixed32Rules.Builder,
+            build.buf.validate.SFixed32RulesOrBuilder>
+        sfixed32Builder_;
+
     /**
      * <code>.buf.validate.SFixed32Rules sfixed32 = 11 [json_name = "sfixed32"];</code>
+     *
      * @return Whether the sfixed32 field is set.
      */
     @java.lang.Override
     public boolean hasSfixed32() {
       return typeCase_ == 11;
     }
+
     /**
      * <code>.buf.validate.SFixed32Rules sfixed32 = 11 [json_name = "sfixed32"];</code>
+     *
      * @return The sfixed32.
      */
     @java.lang.Override
@@ -4433,9 +4710,8 @@ private static final long serialVersionUID = 0L;
         return build.buf.validate.SFixed32Rules.getDefaultInstance();
       }
     }
-    /**
-     * <code>.buf.validate.SFixed32Rules sfixed32 = 11 [json_name = "sfixed32"];</code>
-     */
+
+    /** <code>.buf.validate.SFixed32Rules sfixed32 = 11 [json_name = "sfixed32"];</code> */
     public Builder setSfixed32(build.buf.validate.SFixed32Rules value) {
       if (sfixed32Builder_ == null) {
         if (value == null) {
@@ -4449,11 +4725,9 @@ private static final long serialVersionUID = 0L;
       typeCase_ = 11;
       return this;
     }
-    /**
-     * <code>.buf.validate.SFixed32Rules sfixed32 = 11 [json_name = "sfixed32"];</code>
-     */
-    public Builder setSfixed32(
-        build.buf.validate.SFixed32Rules.Builder builderForValue) {
+
+    /** <code>.buf.validate.SFixed32Rules sfixed32 = 11 [json_name = "sfixed32"];</code> */
+    public Builder setSfixed32(build.buf.validate.SFixed32Rules.Builder builderForValue) {
       if (sfixed32Builder_ == null) {
         type_ = builderForValue.build();
         onChanged();
@@ -4463,15 +4737,15 @@ private static final long serialVersionUID = 0L;
       typeCase_ = 11;
       return this;
     }
-    /**
-     * <code>.buf.validate.SFixed32Rules sfixed32 = 11 [json_name = "sfixed32"];</code>
-     */
+
+    /** <code>.buf.validate.SFixed32Rules sfixed32 = 11 [json_name = "sfixed32"];</code> */
     public Builder mergeSfixed32(build.buf.validate.SFixed32Rules value) {
       if (sfixed32Builder_ == null) {
-        if (typeCase_ == 11 &&
-            type_ != build.buf.validate.SFixed32Rules.getDefaultInstance()) {
-          type_ = build.buf.validate.SFixed32Rules.newBuilder((build.buf.validate.SFixed32Rules) type_)
-              .mergeFrom(value).buildPartial();
+        if (typeCase_ == 11 && type_ != build.buf.validate.SFixed32Rules.getDefaultInstance()) {
+          type_ =
+              build.buf.validate.SFixed32Rules.newBuilder((build.buf.validate.SFixed32Rules) type_)
+                  .mergeFrom(value)
+                  .buildPartial();
         } else {
           type_ = value;
         }
@@ -4486,9 +4760,8 @@ private static final long serialVersionUID = 0L;
       typeCase_ = 11;
       return this;
     }
-    /**
-     * <code>.buf.validate.SFixed32Rules sfixed32 = 11 [json_name = "sfixed32"];</code>
-     */
+
+    /** <code>.buf.validate.SFixed32Rules sfixed32 = 11 [json_name = "sfixed32"];</code> */
     public Builder clearSfixed32() {
       if (sfixed32Builder_ == null) {
         if (typeCase_ == 11) {
@@ -4505,15 +4778,13 @@ private static final long serialVersionUID = 0L;
       }
       return this;
     }
-    /**
-     * <code>.buf.validate.SFixed32Rules sfixed32 = 11 [json_name = "sfixed32"];</code>
-     */
+
+    /** <code>.buf.validate.SFixed32Rules sfixed32 = 11 [json_name = "sfixed32"];</code> */
     public build.buf.validate.SFixed32Rules.Builder getSfixed32Builder() {
       return getSfixed32FieldBuilder().getBuilder();
     }
-    /**
-     * <code>.buf.validate.SFixed32Rules sfixed32 = 11 [json_name = "sfixed32"];</code>
-     */
+
+    /** <code>.buf.validate.SFixed32Rules sfixed32 = 11 [json_name = "sfixed32"];</code> */
     @java.lang.Override
     public build.buf.validate.SFixed32RulesOrBuilder getSfixed32OrBuilder() {
       if ((typeCase_ == 11) && (sfixed32Builder_ != null)) {
@@ -4525,21 +4796,23 @@ private static final long serialVersionUID = 0L;
         return build.buf.validate.SFixed32Rules.getDefaultInstance();
       }
     }
-    /**
-     * <code>.buf.validate.SFixed32Rules sfixed32 = 11 [json_name = "sfixed32"];</code>
-     */
+
+    /** <code>.buf.validate.SFixed32Rules sfixed32 = 11 [json_name = "sfixed32"];</code> */
     private com.google.protobuf.SingleFieldBuilderV3<
-        build.buf.validate.SFixed32Rules, build.buf.validate.SFixed32Rules.Builder, build.buf.validate.SFixed32RulesOrBuilder> 
+            build.buf.validate.SFixed32Rules,
+            build.buf.validate.SFixed32Rules.Builder,
+            build.buf.validate.SFixed32RulesOrBuilder>
         getSfixed32FieldBuilder() {
       if (sfixed32Builder_ == null) {
         if (!(typeCase_ == 11)) {
           type_ = build.buf.validate.SFixed32Rules.getDefaultInstance();
         }
-        sfixed32Builder_ = new com.google.protobuf.SingleFieldBuilderV3<
-            build.buf.validate.SFixed32Rules, build.buf.validate.SFixed32Rules.Builder, build.buf.validate.SFixed32RulesOrBuilder>(
-                (build.buf.validate.SFixed32Rules) type_,
-                getParentForChildren(),
-                isClean());
+        sfixed32Builder_ =
+            new com.google.protobuf.SingleFieldBuilderV3<
+                build.buf.validate.SFixed32Rules,
+                build.buf.validate.SFixed32Rules.Builder,
+                build.buf.validate.SFixed32RulesOrBuilder>(
+                (build.buf.validate.SFixed32Rules) type_, getParentForChildren(), isClean());
         type_ = null;
       }
       typeCase_ = 11;
@@ -4548,17 +4821,24 @@ private static final long serialVersionUID = 0L;
     }
 
     private com.google.protobuf.SingleFieldBuilderV3<
-        build.buf.validate.SFixed64Rules, build.buf.validate.SFixed64Rules.Builder, build.buf.validate.SFixed64RulesOrBuilder> sfixed64Builder_;
+            build.buf.validate.SFixed64Rules,
+            build.buf.validate.SFixed64Rules.Builder,
+            build.buf.validate.SFixed64RulesOrBuilder>
+        sfixed64Builder_;
+
     /**
      * <code>.buf.validate.SFixed64Rules sfixed64 = 12 [json_name = "sfixed64"];</code>
+     *
      * @return Whether the sfixed64 field is set.
      */
     @java.lang.Override
     public boolean hasSfixed64() {
       return typeCase_ == 12;
     }
+
     /**
      * <code>.buf.validate.SFixed64Rules sfixed64 = 12 [json_name = "sfixed64"];</code>
+     *
      * @return The sfixed64.
      */
     @java.lang.Override
@@ -4575,9 +4855,8 @@ private static final long serialVersionUID = 0L;
         return build.buf.validate.SFixed64Rules.getDefaultInstance();
       }
     }
-    /**
-     * <code>.buf.validate.SFixed64Rules sfixed64 = 12 [json_name = "sfixed64"];</code>
-     */
+
+    /** <code>.buf.validate.SFixed64Rules sfixed64 = 12 [json_name = "sfixed64"];</code> */
     public Builder setSfixed64(build.buf.validate.SFixed64Rules value) {
       if (sfixed64Builder_ == null) {
         if (value == null) {
@@ -4591,11 +4870,9 @@ private static final long serialVersionUID = 0L;
       typeCase_ = 12;
       return this;
     }
-    /**
-     * <code>.buf.validate.SFixed64Rules sfixed64 = 12 [json_name = "sfixed64"];</code>
-     */
-    public Builder setSfixed64(
-        build.buf.validate.SFixed64Rules.Builder builderForValue) {
+
+    /** <code>.buf.validate.SFixed64Rules sfixed64 = 12 [json_name = "sfixed64"];</code> */
+    public Builder setSfixed64(build.buf.validate.SFixed64Rules.Builder builderForValue) {
       if (sfixed64Builder_ == null) {
         type_ = builderForValue.build();
         onChanged();
@@ -4605,15 +4882,15 @@ private static final long serialVersionUID = 0L;
       typeCase_ = 12;
       return this;
     }
-    /**
-     * <code>.buf.validate.SFixed64Rules sfixed64 = 12 [json_name = "sfixed64"];</code>
-     */
+
+    /** <code>.buf.validate.SFixed64Rules sfixed64 = 12 [json_name = "sfixed64"];</code> */
     public Builder mergeSfixed64(build.buf.validate.SFixed64Rules value) {
       if (sfixed64Builder_ == null) {
-        if (typeCase_ == 12 &&
-            type_ != build.buf.validate.SFixed64Rules.getDefaultInstance()) {
-          type_ = build.buf.validate.SFixed64Rules.newBuilder((build.buf.validate.SFixed64Rules) type_)
-              .mergeFrom(value).buildPartial();
+        if (typeCase_ == 12 && type_ != build.buf.validate.SFixed64Rules.getDefaultInstance()) {
+          type_ =
+              build.buf.validate.SFixed64Rules.newBuilder((build.buf.validate.SFixed64Rules) type_)
+                  .mergeFrom(value)
+                  .buildPartial();
         } else {
           type_ = value;
         }
@@ -4628,9 +4905,8 @@ private static final long serialVersionUID = 0L;
       typeCase_ = 12;
       return this;
     }
-    /**
-     * <code>.buf.validate.SFixed64Rules sfixed64 = 12 [json_name = "sfixed64"];</code>
-     */
+
+    /** <code>.buf.validate.SFixed64Rules sfixed64 = 12 [json_name = "sfixed64"];</code> */
     public Builder clearSfixed64() {
       if (sfixed64Builder_ == null) {
         if (typeCase_ == 12) {
@@ -4647,15 +4923,13 @@ private static final long serialVersionUID = 0L;
       }
       return this;
     }
-    /**
-     * <code>.buf.validate.SFixed64Rules sfixed64 = 12 [json_name = "sfixed64"];</code>
-     */
+
+    /** <code>.buf.validate.SFixed64Rules sfixed64 = 12 [json_name = "sfixed64"];</code> */
     public build.buf.validate.SFixed64Rules.Builder getSfixed64Builder() {
       return getSfixed64FieldBuilder().getBuilder();
     }
-    /**
-     * <code>.buf.validate.SFixed64Rules sfixed64 = 12 [json_name = "sfixed64"];</code>
-     */
+
+    /** <code>.buf.validate.SFixed64Rules sfixed64 = 12 [json_name = "sfixed64"];</code> */
     @java.lang.Override
     public build.buf.validate.SFixed64RulesOrBuilder getSfixed64OrBuilder() {
       if ((typeCase_ == 12) && (sfixed64Builder_ != null)) {
@@ -4667,21 +4941,23 @@ private static final long serialVersionUID = 0L;
         return build.buf.validate.SFixed64Rules.getDefaultInstance();
       }
     }
-    /**
-     * <code>.buf.validate.SFixed64Rules sfixed64 = 12 [json_name = "sfixed64"];</code>
-     */
+
+    /** <code>.buf.validate.SFixed64Rules sfixed64 = 12 [json_name = "sfixed64"];</code> */
     private com.google.protobuf.SingleFieldBuilderV3<
-        build.buf.validate.SFixed64Rules, build.buf.validate.SFixed64Rules.Builder, build.buf.validate.SFixed64RulesOrBuilder> 
+            build.buf.validate.SFixed64Rules,
+            build.buf.validate.SFixed64Rules.Builder,
+            build.buf.validate.SFixed64RulesOrBuilder>
         getSfixed64FieldBuilder() {
       if (sfixed64Builder_ == null) {
         if (!(typeCase_ == 12)) {
           type_ = build.buf.validate.SFixed64Rules.getDefaultInstance();
         }
-        sfixed64Builder_ = new com.google.protobuf.SingleFieldBuilderV3<
-            build.buf.validate.SFixed64Rules, build.buf.validate.SFixed64Rules.Builder, build.buf.validate.SFixed64RulesOrBuilder>(
-                (build.buf.validate.SFixed64Rules) type_,
-                getParentForChildren(),
-                isClean());
+        sfixed64Builder_ =
+            new com.google.protobuf.SingleFieldBuilderV3<
+                build.buf.validate.SFixed64Rules,
+                build.buf.validate.SFixed64Rules.Builder,
+                build.buf.validate.SFixed64RulesOrBuilder>(
+                (build.buf.validate.SFixed64Rules) type_, getParentForChildren(), isClean());
         type_ = null;
       }
       typeCase_ = 12;
@@ -4690,17 +4966,24 @@ private static final long serialVersionUID = 0L;
     }
 
     private com.google.protobuf.SingleFieldBuilderV3<
-        build.buf.validate.BoolRules, build.buf.validate.BoolRules.Builder, build.buf.validate.BoolRulesOrBuilder> boolBuilder_;
+            build.buf.validate.BoolRules,
+            build.buf.validate.BoolRules.Builder,
+            build.buf.validate.BoolRulesOrBuilder>
+        boolBuilder_;
+
     /**
      * <code>.buf.validate.BoolRules bool = 13 [json_name = "bool"];</code>
+     *
      * @return Whether the bool field is set.
      */
     @java.lang.Override
     public boolean hasBool() {
       return typeCase_ == 13;
     }
+
     /**
      * <code>.buf.validate.BoolRules bool = 13 [json_name = "bool"];</code>
+     *
      * @return The bool.
      */
     @java.lang.Override
@@ -4717,9 +5000,8 @@ private static final long serialVersionUID = 0L;
         return build.buf.validate.BoolRules.getDefaultInstance();
       }
     }
-    /**
-     * <code>.buf.validate.BoolRules bool = 13 [json_name = "bool"];</code>
-     */
+
+    /** <code>.buf.validate.BoolRules bool = 13 [json_name = "bool"];</code> */
     public Builder setBool(build.buf.validate.BoolRules value) {
       if (boolBuilder_ == null) {
         if (value == null) {
@@ -4733,11 +5015,9 @@ private static final long serialVersionUID = 0L;
       typeCase_ = 13;
       return this;
     }
-    /**
-     * <code>.buf.validate.BoolRules bool = 13 [json_name = "bool"];</code>
-     */
-    public Builder setBool(
-        build.buf.validate.BoolRules.Builder builderForValue) {
+
+    /** <code>.buf.validate.BoolRules bool = 13 [json_name = "bool"];</code> */
+    public Builder setBool(build.buf.validate.BoolRules.Builder builderForValue) {
       if (boolBuilder_ == null) {
         type_ = builderForValue.build();
         onChanged();
@@ -4747,15 +5027,15 @@ private static final long serialVersionUID = 0L;
       typeCase_ = 13;
       return this;
     }
-    /**
-     * <code>.buf.validate.BoolRules bool = 13 [json_name = "bool"];</code>
-     */
+
+    /** <code>.buf.validate.BoolRules bool = 13 [json_name = "bool"];</code> */
     public Builder mergeBool(build.buf.validate.BoolRules value) {
       if (boolBuilder_ == null) {
-        if (typeCase_ == 13 &&
-            type_ != build.buf.validate.BoolRules.getDefaultInstance()) {
-          type_ = build.buf.validate.BoolRules.newBuilder((build.buf.validate.BoolRules) type_)
-              .mergeFrom(value).buildPartial();
+        if (typeCase_ == 13 && type_ != build.buf.validate.BoolRules.getDefaultInstance()) {
+          type_ =
+              build.buf.validate.BoolRules.newBuilder((build.buf.validate.BoolRules) type_)
+                  .mergeFrom(value)
+                  .buildPartial();
         } else {
           type_ = value;
         }
@@ -4770,9 +5050,8 @@ private static final long serialVersionUID = 0L;
       typeCase_ = 13;
       return this;
     }
-    /**
-     * <code>.buf.validate.BoolRules bool = 13 [json_name = "bool"];</code>
-     */
+
+    /** <code>.buf.validate.BoolRules bool = 13 [json_name = "bool"];</code> */
     public Builder clearBool() {
       if (boolBuilder_ == null) {
         if (typeCase_ == 13) {
@@ -4789,15 +5068,13 @@ private static final long serialVersionUID = 0L;
       }
       return this;
     }
-    /**
-     * <code>.buf.validate.BoolRules bool = 13 [json_name = "bool"];</code>
-     */
+
+    /** <code>.buf.validate.BoolRules bool = 13 [json_name = "bool"];</code> */
     public build.buf.validate.BoolRules.Builder getBoolBuilder() {
       return getBoolFieldBuilder().getBuilder();
     }
-    /**
-     * <code>.buf.validate.BoolRules bool = 13 [json_name = "bool"];</code>
-     */
+
+    /** <code>.buf.validate.BoolRules bool = 13 [json_name = "bool"];</code> */
     @java.lang.Override
     public build.buf.validate.BoolRulesOrBuilder getBoolOrBuilder() {
       if ((typeCase_ == 13) && (boolBuilder_ != null)) {
@@ -4809,21 +5086,23 @@ private static final long serialVersionUID = 0L;
         return build.buf.validate.BoolRules.getDefaultInstance();
       }
     }
-    /**
-     * <code>.buf.validate.BoolRules bool = 13 [json_name = "bool"];</code>
-     */
+
+    /** <code>.buf.validate.BoolRules bool = 13 [json_name = "bool"];</code> */
     private com.google.protobuf.SingleFieldBuilderV3<
-        build.buf.validate.BoolRules, build.buf.validate.BoolRules.Builder, build.buf.validate.BoolRulesOrBuilder> 
+            build.buf.validate.BoolRules,
+            build.buf.validate.BoolRules.Builder,
+            build.buf.validate.BoolRulesOrBuilder>
         getBoolFieldBuilder() {
       if (boolBuilder_ == null) {
         if (!(typeCase_ == 13)) {
           type_ = build.buf.validate.BoolRules.getDefaultInstance();
         }
-        boolBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-            build.buf.validate.BoolRules, build.buf.validate.BoolRules.Builder, build.buf.validate.BoolRulesOrBuilder>(
-                (build.buf.validate.BoolRules) type_,
-                getParentForChildren(),
-                isClean());
+        boolBuilder_ =
+            new com.google.protobuf.SingleFieldBuilderV3<
+                build.buf.validate.BoolRules,
+                build.buf.validate.BoolRules.Builder,
+                build.buf.validate.BoolRulesOrBuilder>(
+                (build.buf.validate.BoolRules) type_, getParentForChildren(), isClean());
         type_ = null;
       }
       typeCase_ = 13;
@@ -4832,17 +5111,24 @@ private static final long serialVersionUID = 0L;
     }
 
     private com.google.protobuf.SingleFieldBuilderV3<
-        build.buf.validate.StringRules, build.buf.validate.StringRules.Builder, build.buf.validate.StringRulesOrBuilder> stringBuilder_;
+            build.buf.validate.StringRules,
+            build.buf.validate.StringRules.Builder,
+            build.buf.validate.StringRulesOrBuilder>
+        stringBuilder_;
+
     /**
      * <code>.buf.validate.StringRules string = 14 [json_name = "string"];</code>
+     *
      * @return Whether the string field is set.
      */
     @java.lang.Override
     public boolean hasString() {
       return typeCase_ == 14;
     }
+
     /**
      * <code>.buf.validate.StringRules string = 14 [json_name = "string"];</code>
+     *
      * @return The string.
      */
     @java.lang.Override
@@ -4859,9 +5145,8 @@ private static final long serialVersionUID = 0L;
         return build.buf.validate.StringRules.getDefaultInstance();
       }
     }
-    /**
-     * <code>.buf.validate.StringRules string = 14 [json_name = "string"];</code>
-     */
+
+    /** <code>.buf.validate.StringRules string = 14 [json_name = "string"];</code> */
     public Builder setString(build.buf.validate.StringRules value) {
       if (stringBuilder_ == null) {
         if (value == null) {
@@ -4875,11 +5160,9 @@ private static final long serialVersionUID = 0L;
       typeCase_ = 14;
       return this;
     }
-    /**
-     * <code>.buf.validate.StringRules string = 14 [json_name = "string"];</code>
-     */
-    public Builder setString(
-        build.buf.validate.StringRules.Builder builderForValue) {
+
+    /** <code>.buf.validate.StringRules string = 14 [json_name = "string"];</code> */
+    public Builder setString(build.buf.validate.StringRules.Builder builderForValue) {
       if (stringBuilder_ == null) {
         type_ = builderForValue.build();
         onChanged();
@@ -4889,15 +5172,15 @@ private static final long serialVersionUID = 0L;
       typeCase_ = 14;
       return this;
     }
-    /**
-     * <code>.buf.validate.StringRules string = 14 [json_name = "string"];</code>
-     */
+
+    /** <code>.buf.validate.StringRules string = 14 [json_name = "string"];</code> */
     public Builder mergeString(build.buf.validate.StringRules value) {
       if (stringBuilder_ == null) {
-        if (typeCase_ == 14 &&
-            type_ != build.buf.validate.StringRules.getDefaultInstance()) {
-          type_ = build.buf.validate.StringRules.newBuilder((build.buf.validate.StringRules) type_)
-              .mergeFrom(value).buildPartial();
+        if (typeCase_ == 14 && type_ != build.buf.validate.StringRules.getDefaultInstance()) {
+          type_ =
+              build.buf.validate.StringRules.newBuilder((build.buf.validate.StringRules) type_)
+                  .mergeFrom(value)
+                  .buildPartial();
         } else {
           type_ = value;
         }
@@ -4912,9 +5195,8 @@ private static final long serialVersionUID = 0L;
       typeCase_ = 14;
       return this;
     }
-    /**
-     * <code>.buf.validate.StringRules string = 14 [json_name = "string"];</code>
-     */
+
+    /** <code>.buf.validate.StringRules string = 14 [json_name = "string"];</code> */
     public Builder clearString() {
       if (stringBuilder_ == null) {
         if (typeCase_ == 14) {
@@ -4931,15 +5213,13 @@ private static final long serialVersionUID = 0L;
       }
       return this;
     }
-    /**
-     * <code>.buf.validate.StringRules string = 14 [json_name = "string"];</code>
-     */
+
+    /** <code>.buf.validate.StringRules string = 14 [json_name = "string"];</code> */
     public build.buf.validate.StringRules.Builder getStringBuilder() {
       return getStringFieldBuilder().getBuilder();
     }
-    /**
-     * <code>.buf.validate.StringRules string = 14 [json_name = "string"];</code>
-     */
+
+    /** <code>.buf.validate.StringRules string = 14 [json_name = "string"];</code> */
     @java.lang.Override
     public build.buf.validate.StringRulesOrBuilder getStringOrBuilder() {
       if ((typeCase_ == 14) && (stringBuilder_ != null)) {
@@ -4951,21 +5231,23 @@ private static final long serialVersionUID = 0L;
         return build.buf.validate.StringRules.getDefaultInstance();
       }
     }
-    /**
-     * <code>.buf.validate.StringRules string = 14 [json_name = "string"];</code>
-     */
+
+    /** <code>.buf.validate.StringRules string = 14 [json_name = "string"];</code> */
     private com.google.protobuf.SingleFieldBuilderV3<
-        build.buf.validate.StringRules, build.buf.validate.StringRules.Builder, build.buf.validate.StringRulesOrBuilder> 
+            build.buf.validate.StringRules,
+            build.buf.validate.StringRules.Builder,
+            build.buf.validate.StringRulesOrBuilder>
         getStringFieldBuilder() {
       if (stringBuilder_ == null) {
         if (!(typeCase_ == 14)) {
           type_ = build.buf.validate.StringRules.getDefaultInstance();
         }
-        stringBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-            build.buf.validate.StringRules, build.buf.validate.StringRules.Builder, build.buf.validate.StringRulesOrBuilder>(
-                (build.buf.validate.StringRules) type_,
-                getParentForChildren(),
-                isClean());
+        stringBuilder_ =
+            new com.google.protobuf.SingleFieldBuilderV3<
+                build.buf.validate.StringRules,
+                build.buf.validate.StringRules.Builder,
+                build.buf.validate.StringRulesOrBuilder>(
+                (build.buf.validate.StringRules) type_, getParentForChildren(), isClean());
         type_ = null;
       }
       typeCase_ = 14;
@@ -4974,17 +5256,24 @@ private static final long serialVersionUID = 0L;
     }
 
     private com.google.protobuf.SingleFieldBuilderV3<
-        build.buf.validate.BytesRules, build.buf.validate.BytesRules.Builder, build.buf.validate.BytesRulesOrBuilder> bytesBuilder_;
+            build.buf.validate.BytesRules,
+            build.buf.validate.BytesRules.Builder,
+            build.buf.validate.BytesRulesOrBuilder>
+        bytesBuilder_;
+
     /**
      * <code>.buf.validate.BytesRules bytes = 15 [json_name = "bytes"];</code>
+     *
      * @return Whether the bytes field is set.
      */
     @java.lang.Override
     public boolean hasBytes() {
       return typeCase_ == 15;
     }
+
     /**
      * <code>.buf.validate.BytesRules bytes = 15 [json_name = "bytes"];</code>
+     *
      * @return The bytes.
      */
     @java.lang.Override
@@ -5001,9 +5290,8 @@ private static final long serialVersionUID = 0L;
         return build.buf.validate.BytesRules.getDefaultInstance();
       }
     }
-    /**
-     * <code>.buf.validate.BytesRules bytes = 15 [json_name = "bytes"];</code>
-     */
+
+    /** <code>.buf.validate.BytesRules bytes = 15 [json_name = "bytes"];</code> */
     public Builder setBytes(build.buf.validate.BytesRules value) {
       if (bytesBuilder_ == null) {
         if (value == null) {
@@ -5017,11 +5305,9 @@ private static final long serialVersionUID = 0L;
       typeCase_ = 15;
       return this;
     }
-    /**
-     * <code>.buf.validate.BytesRules bytes = 15 [json_name = "bytes"];</code>
-     */
-    public Builder setBytes(
-        build.buf.validate.BytesRules.Builder builderForValue) {
+
+    /** <code>.buf.validate.BytesRules bytes = 15 [json_name = "bytes"];</code> */
+    public Builder setBytes(build.buf.validate.BytesRules.Builder builderForValue) {
       if (bytesBuilder_ == null) {
         type_ = builderForValue.build();
         onChanged();
@@ -5031,15 +5317,15 @@ private static final long serialVersionUID = 0L;
       typeCase_ = 15;
       return this;
     }
-    /**
-     * <code>.buf.validate.BytesRules bytes = 15 [json_name = "bytes"];</code>
-     */
+
+    /** <code>.buf.validate.BytesRules bytes = 15 [json_name = "bytes"];</code> */
     public Builder mergeBytes(build.buf.validate.BytesRules value) {
       if (bytesBuilder_ == null) {
-        if (typeCase_ == 15 &&
-            type_ != build.buf.validate.BytesRules.getDefaultInstance()) {
-          type_ = build.buf.validate.BytesRules.newBuilder((build.buf.validate.BytesRules) type_)
-              .mergeFrom(value).buildPartial();
+        if (typeCase_ == 15 && type_ != build.buf.validate.BytesRules.getDefaultInstance()) {
+          type_ =
+              build.buf.validate.BytesRules.newBuilder((build.buf.validate.BytesRules) type_)
+                  .mergeFrom(value)
+                  .buildPartial();
         } else {
           type_ = value;
         }
@@ -5054,9 +5340,8 @@ private static final long serialVersionUID = 0L;
       typeCase_ = 15;
       return this;
     }
-    /**
-     * <code>.buf.validate.BytesRules bytes = 15 [json_name = "bytes"];</code>
-     */
+
+    /** <code>.buf.validate.BytesRules bytes = 15 [json_name = "bytes"];</code> */
     public Builder clearBytes() {
       if (bytesBuilder_ == null) {
         if (typeCase_ == 15) {
@@ -5073,15 +5358,13 @@ private static final long serialVersionUID = 0L;
       }
       return this;
     }
-    /**
-     * <code>.buf.validate.BytesRules bytes = 15 [json_name = "bytes"];</code>
-     */
+
+    /** <code>.buf.validate.BytesRules bytes = 15 [json_name = "bytes"];</code> */
     public build.buf.validate.BytesRules.Builder getBytesBuilder() {
       return getBytesFieldBuilder().getBuilder();
     }
-    /**
-     * <code>.buf.validate.BytesRules bytes = 15 [json_name = "bytes"];</code>
-     */
+
+    /** <code>.buf.validate.BytesRules bytes = 15 [json_name = "bytes"];</code> */
     @java.lang.Override
     public build.buf.validate.BytesRulesOrBuilder getBytesOrBuilder() {
       if ((typeCase_ == 15) && (bytesBuilder_ != null)) {
@@ -5093,21 +5376,23 @@ private static final long serialVersionUID = 0L;
         return build.buf.validate.BytesRules.getDefaultInstance();
       }
     }
-    /**
-     * <code>.buf.validate.BytesRules bytes = 15 [json_name = "bytes"];</code>
-     */
+
+    /** <code>.buf.validate.BytesRules bytes = 15 [json_name = "bytes"];</code> */
     private com.google.protobuf.SingleFieldBuilderV3<
-        build.buf.validate.BytesRules, build.buf.validate.BytesRules.Builder, build.buf.validate.BytesRulesOrBuilder> 
+            build.buf.validate.BytesRules,
+            build.buf.validate.BytesRules.Builder,
+            build.buf.validate.BytesRulesOrBuilder>
         getBytesFieldBuilder() {
       if (bytesBuilder_ == null) {
         if (!(typeCase_ == 15)) {
           type_ = build.buf.validate.BytesRules.getDefaultInstance();
         }
-        bytesBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-            build.buf.validate.BytesRules, build.buf.validate.BytesRules.Builder, build.buf.validate.BytesRulesOrBuilder>(
-                (build.buf.validate.BytesRules) type_,
-                getParentForChildren(),
-                isClean());
+        bytesBuilder_ =
+            new com.google.protobuf.SingleFieldBuilderV3<
+                build.buf.validate.BytesRules,
+                build.buf.validate.BytesRules.Builder,
+                build.buf.validate.BytesRulesOrBuilder>(
+                (build.buf.validate.BytesRules) type_, getParentForChildren(), isClean());
         type_ = null;
       }
       typeCase_ = 15;
@@ -5116,25 +5401,36 @@ private static final long serialVersionUID = 0L;
     }
 
     private com.google.protobuf.SingleFieldBuilderV3<
-        build.buf.validate.EnumRules, build.buf.validate.EnumRules.Builder, build.buf.validate.EnumRulesOrBuilder> enumBuilder_;
+            build.buf.validate.EnumRules,
+            build.buf.validate.EnumRules.Builder,
+            build.buf.validate.EnumRulesOrBuilder>
+        enumBuilder_;
+
     /**
+     *
+     *
      * <pre>
      * Complex Field Types
      * </pre>
      *
      * <code>.buf.validate.EnumRules enum = 16 [json_name = "enum"];</code>
+     *
      * @return Whether the enum field is set.
      */
     @java.lang.Override
     public boolean hasEnum() {
       return typeCase_ == 16;
     }
+
     /**
+     *
+     *
      * <pre>
      * Complex Field Types
      * </pre>
      *
      * <code>.buf.validate.EnumRules enum = 16 [json_name = "enum"];</code>
+     *
      * @return The enum.
      */
     @java.lang.Override
@@ -5151,7 +5447,10 @@ private static final long serialVersionUID = 0L;
         return build.buf.validate.EnumRules.getDefaultInstance();
       }
     }
+
     /**
+     *
+     *
      * <pre>
      * Complex Field Types
      * </pre>
@@ -5171,15 +5470,17 @@ private static final long serialVersionUID = 0L;
       typeCase_ = 16;
       return this;
     }
+
     /**
+     *
+     *
      * <pre>
      * Complex Field Types
      * </pre>
      *
      * <code>.buf.validate.EnumRules enum = 16 [json_name = "enum"];</code>
      */
-    public Builder setEnum(
-        build.buf.validate.EnumRules.Builder builderForValue) {
+    public Builder setEnum(build.buf.validate.EnumRules.Builder builderForValue) {
       if (enumBuilder_ == null) {
         type_ = builderForValue.build();
         onChanged();
@@ -5189,7 +5490,10 @@ private static final long serialVersionUID = 0L;
       typeCase_ = 16;
       return this;
     }
+
     /**
+     *
+     *
      * <pre>
      * Complex Field Types
      * </pre>
@@ -5198,10 +5502,11 @@ private static final long serialVersionUID = 0L;
      */
     public Builder mergeEnum(build.buf.validate.EnumRules value) {
       if (enumBuilder_ == null) {
-        if (typeCase_ == 16 &&
-            type_ != build.buf.validate.EnumRules.getDefaultInstance()) {
-          type_ = build.buf.validate.EnumRules.newBuilder((build.buf.validate.EnumRules) type_)
-              .mergeFrom(value).buildPartial();
+        if (typeCase_ == 16 && type_ != build.buf.validate.EnumRules.getDefaultInstance()) {
+          type_ =
+              build.buf.validate.EnumRules.newBuilder((build.buf.validate.EnumRules) type_)
+                  .mergeFrom(value)
+                  .buildPartial();
         } else {
           type_ = value;
         }
@@ -5216,7 +5521,10 @@ private static final long serialVersionUID = 0L;
       typeCase_ = 16;
       return this;
     }
+
     /**
+     *
+     *
      * <pre>
      * Complex Field Types
      * </pre>
@@ -5239,7 +5547,10 @@ private static final long serialVersionUID = 0L;
       }
       return this;
     }
+
     /**
+     *
+     *
      * <pre>
      * Complex Field Types
      * </pre>
@@ -5249,7 +5560,10 @@ private static final long serialVersionUID = 0L;
     public build.buf.validate.EnumRules.Builder getEnumBuilder() {
       return getEnumFieldBuilder().getBuilder();
     }
+
     /**
+     *
+     *
      * <pre>
      * Complex Field Types
      * </pre>
@@ -5267,7 +5581,10 @@ private static final long serialVersionUID = 0L;
         return build.buf.validate.EnumRules.getDefaultInstance();
       }
     }
+
     /**
+     *
+     *
      * <pre>
      * Complex Field Types
      * </pre>
@@ -5275,17 +5592,20 @@ private static final long serialVersionUID = 0L;
      * <code>.buf.validate.EnumRules enum = 16 [json_name = "enum"];</code>
      */
     private com.google.protobuf.SingleFieldBuilderV3<
-        build.buf.validate.EnumRules, build.buf.validate.EnumRules.Builder, build.buf.validate.EnumRulesOrBuilder> 
+            build.buf.validate.EnumRules,
+            build.buf.validate.EnumRules.Builder,
+            build.buf.validate.EnumRulesOrBuilder>
         getEnumFieldBuilder() {
       if (enumBuilder_ == null) {
         if (!(typeCase_ == 16)) {
           type_ = build.buf.validate.EnumRules.getDefaultInstance();
         }
-        enumBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-            build.buf.validate.EnumRules, build.buf.validate.EnumRules.Builder, build.buf.validate.EnumRulesOrBuilder>(
-                (build.buf.validate.EnumRules) type_,
-                getParentForChildren(),
-                isClean());
+        enumBuilder_ =
+            new com.google.protobuf.SingleFieldBuilderV3<
+                build.buf.validate.EnumRules,
+                build.buf.validate.EnumRules.Builder,
+                build.buf.validate.EnumRulesOrBuilder>(
+                (build.buf.validate.EnumRules) type_, getParentForChildren(), isClean());
         type_ = null;
       }
       typeCase_ = 16;
@@ -5294,17 +5614,24 @@ private static final long serialVersionUID = 0L;
     }
 
     private com.google.protobuf.SingleFieldBuilderV3<
-        build.buf.validate.RepeatedRules, build.buf.validate.RepeatedRules.Builder, build.buf.validate.RepeatedRulesOrBuilder> repeatedBuilder_;
+            build.buf.validate.RepeatedRules,
+            build.buf.validate.RepeatedRules.Builder,
+            build.buf.validate.RepeatedRulesOrBuilder>
+        repeatedBuilder_;
+
     /**
      * <code>.buf.validate.RepeatedRules repeated = 18 [json_name = "repeated"];</code>
+     *
      * @return Whether the repeated field is set.
      */
     @java.lang.Override
     public boolean hasRepeated() {
       return typeCase_ == 18;
     }
+
     /**
      * <code>.buf.validate.RepeatedRules repeated = 18 [json_name = "repeated"];</code>
+     *
      * @return The repeated.
      */
     @java.lang.Override
@@ -5321,9 +5648,8 @@ private static final long serialVersionUID = 0L;
         return build.buf.validate.RepeatedRules.getDefaultInstance();
       }
     }
-    /**
-     * <code>.buf.validate.RepeatedRules repeated = 18 [json_name = "repeated"];</code>
-     */
+
+    /** <code>.buf.validate.RepeatedRules repeated = 18 [json_name = "repeated"];</code> */
     public Builder setRepeated(build.buf.validate.RepeatedRules value) {
       if (repeatedBuilder_ == null) {
         if (value == null) {
@@ -5337,11 +5663,9 @@ private static final long serialVersionUID = 0L;
       typeCase_ = 18;
       return this;
     }
-    /**
-     * <code>.buf.validate.RepeatedRules repeated = 18 [json_name = "repeated"];</code>
-     */
-    public Builder setRepeated(
-        build.buf.validate.RepeatedRules.Builder builderForValue) {
+
+    /** <code>.buf.validate.RepeatedRules repeated = 18 [json_name = "repeated"];</code> */
+    public Builder setRepeated(build.buf.validate.RepeatedRules.Builder builderForValue) {
       if (repeatedBuilder_ == null) {
         type_ = builderForValue.build();
         onChanged();
@@ -5351,15 +5675,15 @@ private static final long serialVersionUID = 0L;
       typeCase_ = 18;
       return this;
     }
-    /**
-     * <code>.buf.validate.RepeatedRules repeated = 18 [json_name = "repeated"];</code>
-     */
+
+    /** <code>.buf.validate.RepeatedRules repeated = 18 [json_name = "repeated"];</code> */
     public Builder mergeRepeated(build.buf.validate.RepeatedRules value) {
       if (repeatedBuilder_ == null) {
-        if (typeCase_ == 18 &&
-            type_ != build.buf.validate.RepeatedRules.getDefaultInstance()) {
-          type_ = build.buf.validate.RepeatedRules.newBuilder((build.buf.validate.RepeatedRules) type_)
-              .mergeFrom(value).buildPartial();
+        if (typeCase_ == 18 && type_ != build.buf.validate.RepeatedRules.getDefaultInstance()) {
+          type_ =
+              build.buf.validate.RepeatedRules.newBuilder((build.buf.validate.RepeatedRules) type_)
+                  .mergeFrom(value)
+                  .buildPartial();
         } else {
           type_ = value;
         }
@@ -5374,9 +5698,8 @@ private static final long serialVersionUID = 0L;
       typeCase_ = 18;
       return this;
     }
-    /**
-     * <code>.buf.validate.RepeatedRules repeated = 18 [json_name = "repeated"];</code>
-     */
+
+    /** <code>.buf.validate.RepeatedRules repeated = 18 [json_name = "repeated"];</code> */
     public Builder clearRepeated() {
       if (repeatedBuilder_ == null) {
         if (typeCase_ == 18) {
@@ -5393,15 +5716,13 @@ private static final long serialVersionUID = 0L;
       }
       return this;
     }
-    /**
-     * <code>.buf.validate.RepeatedRules repeated = 18 [json_name = "repeated"];</code>
-     */
+
+    /** <code>.buf.validate.RepeatedRules repeated = 18 [json_name = "repeated"];</code> */
     public build.buf.validate.RepeatedRules.Builder getRepeatedBuilder() {
       return getRepeatedFieldBuilder().getBuilder();
     }
-    /**
-     * <code>.buf.validate.RepeatedRules repeated = 18 [json_name = "repeated"];</code>
-     */
+
+    /** <code>.buf.validate.RepeatedRules repeated = 18 [json_name = "repeated"];</code> */
     @java.lang.Override
     public build.buf.validate.RepeatedRulesOrBuilder getRepeatedOrBuilder() {
       if ((typeCase_ == 18) && (repeatedBuilder_ != null)) {
@@ -5413,21 +5734,23 @@ private static final long serialVersionUID = 0L;
         return build.buf.validate.RepeatedRules.getDefaultInstance();
       }
     }
-    /**
-     * <code>.buf.validate.RepeatedRules repeated = 18 [json_name = "repeated"];</code>
-     */
+
+    /** <code>.buf.validate.RepeatedRules repeated = 18 [json_name = "repeated"];</code> */
     private com.google.protobuf.SingleFieldBuilderV3<
-        build.buf.validate.RepeatedRules, build.buf.validate.RepeatedRules.Builder, build.buf.validate.RepeatedRulesOrBuilder> 
+            build.buf.validate.RepeatedRules,
+            build.buf.validate.RepeatedRules.Builder,
+            build.buf.validate.RepeatedRulesOrBuilder>
         getRepeatedFieldBuilder() {
       if (repeatedBuilder_ == null) {
         if (!(typeCase_ == 18)) {
           type_ = build.buf.validate.RepeatedRules.getDefaultInstance();
         }
-        repeatedBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-            build.buf.validate.RepeatedRules, build.buf.validate.RepeatedRules.Builder, build.buf.validate.RepeatedRulesOrBuilder>(
-                (build.buf.validate.RepeatedRules) type_,
-                getParentForChildren(),
-                isClean());
+        repeatedBuilder_ =
+            new com.google.protobuf.SingleFieldBuilderV3<
+                build.buf.validate.RepeatedRules,
+                build.buf.validate.RepeatedRules.Builder,
+                build.buf.validate.RepeatedRulesOrBuilder>(
+                (build.buf.validate.RepeatedRules) type_, getParentForChildren(), isClean());
         type_ = null;
       }
       typeCase_ = 18;
@@ -5436,17 +5759,24 @@ private static final long serialVersionUID = 0L;
     }
 
     private com.google.protobuf.SingleFieldBuilderV3<
-        build.buf.validate.MapRules, build.buf.validate.MapRules.Builder, build.buf.validate.MapRulesOrBuilder> mapBuilder_;
+            build.buf.validate.MapRules,
+            build.buf.validate.MapRules.Builder,
+            build.buf.validate.MapRulesOrBuilder>
+        mapBuilder_;
+
     /**
      * <code>.buf.validate.MapRules map = 19 [json_name = "map"];</code>
+     *
      * @return Whether the map field is set.
      */
     @java.lang.Override
     public boolean hasMap() {
       return typeCase_ == 19;
     }
+
     /**
      * <code>.buf.validate.MapRules map = 19 [json_name = "map"];</code>
+     *
      * @return The map.
      */
     @java.lang.Override
@@ -5463,9 +5793,8 @@ private static final long serialVersionUID = 0L;
         return build.buf.validate.MapRules.getDefaultInstance();
       }
     }
-    /**
-     * <code>.buf.validate.MapRules map = 19 [json_name = "map"];</code>
-     */
+
+    /** <code>.buf.validate.MapRules map = 19 [json_name = "map"];</code> */
     public Builder setMap(build.buf.validate.MapRules value) {
       if (mapBuilder_ == null) {
         if (value == null) {
@@ -5479,11 +5808,9 @@ private static final long serialVersionUID = 0L;
       typeCase_ = 19;
       return this;
     }
-    /**
-     * <code>.buf.validate.MapRules map = 19 [json_name = "map"];</code>
-     */
-    public Builder setMap(
-        build.buf.validate.MapRules.Builder builderForValue) {
+
+    /** <code>.buf.validate.MapRules map = 19 [json_name = "map"];</code> */
+    public Builder setMap(build.buf.validate.MapRules.Builder builderForValue) {
       if (mapBuilder_ == null) {
         type_ = builderForValue.build();
         onChanged();
@@ -5493,15 +5820,15 @@ private static final long serialVersionUID = 0L;
       typeCase_ = 19;
       return this;
     }
-    /**
-     * <code>.buf.validate.MapRules map = 19 [json_name = "map"];</code>
-     */
+
+    /** <code>.buf.validate.MapRules map = 19 [json_name = "map"];</code> */
     public Builder mergeMap(build.buf.validate.MapRules value) {
       if (mapBuilder_ == null) {
-        if (typeCase_ == 19 &&
-            type_ != build.buf.validate.MapRules.getDefaultInstance()) {
-          type_ = build.buf.validate.MapRules.newBuilder((build.buf.validate.MapRules) type_)
-              .mergeFrom(value).buildPartial();
+        if (typeCase_ == 19 && type_ != build.buf.validate.MapRules.getDefaultInstance()) {
+          type_ =
+              build.buf.validate.MapRules.newBuilder((build.buf.validate.MapRules) type_)
+                  .mergeFrom(value)
+                  .buildPartial();
         } else {
           type_ = value;
         }
@@ -5516,9 +5843,8 @@ private static final long serialVersionUID = 0L;
       typeCase_ = 19;
       return this;
     }
-    /**
-     * <code>.buf.validate.MapRules map = 19 [json_name = "map"];</code>
-     */
+
+    /** <code>.buf.validate.MapRules map = 19 [json_name = "map"];</code> */
     public Builder clearMap() {
       if (mapBuilder_ == null) {
         if (typeCase_ == 19) {
@@ -5535,15 +5861,13 @@ private static final long serialVersionUID = 0L;
       }
       return this;
     }
-    /**
-     * <code>.buf.validate.MapRules map = 19 [json_name = "map"];</code>
-     */
+
+    /** <code>.buf.validate.MapRules map = 19 [json_name = "map"];</code> */
     public build.buf.validate.MapRules.Builder getMapBuilder() {
       return getMapFieldBuilder().getBuilder();
     }
-    /**
-     * <code>.buf.validate.MapRules map = 19 [json_name = "map"];</code>
-     */
+
+    /** <code>.buf.validate.MapRules map = 19 [json_name = "map"];</code> */
     @java.lang.Override
     public build.buf.validate.MapRulesOrBuilder getMapOrBuilder() {
       if ((typeCase_ == 19) && (mapBuilder_ != null)) {
@@ -5555,21 +5879,23 @@ private static final long serialVersionUID = 0L;
         return build.buf.validate.MapRules.getDefaultInstance();
       }
     }
-    /**
-     * <code>.buf.validate.MapRules map = 19 [json_name = "map"];</code>
-     */
+
+    /** <code>.buf.validate.MapRules map = 19 [json_name = "map"];</code> */
     private com.google.protobuf.SingleFieldBuilderV3<
-        build.buf.validate.MapRules, build.buf.validate.MapRules.Builder, build.buf.validate.MapRulesOrBuilder> 
+            build.buf.validate.MapRules,
+            build.buf.validate.MapRules.Builder,
+            build.buf.validate.MapRulesOrBuilder>
         getMapFieldBuilder() {
       if (mapBuilder_ == null) {
         if (!(typeCase_ == 19)) {
           type_ = build.buf.validate.MapRules.getDefaultInstance();
         }
-        mapBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-            build.buf.validate.MapRules, build.buf.validate.MapRules.Builder, build.buf.validate.MapRulesOrBuilder>(
-                (build.buf.validate.MapRules) type_,
-                getParentForChildren(),
-                isClean());
+        mapBuilder_ =
+            new com.google.protobuf.SingleFieldBuilderV3<
+                build.buf.validate.MapRules,
+                build.buf.validate.MapRules.Builder,
+                build.buf.validate.MapRulesOrBuilder>(
+                (build.buf.validate.MapRules) type_, getParentForChildren(), isClean());
         type_ = null;
       }
       typeCase_ = 19;
@@ -5578,25 +5904,36 @@ private static final long serialVersionUID = 0L;
     }
 
     private com.google.protobuf.SingleFieldBuilderV3<
-        build.buf.validate.AnyRules, build.buf.validate.AnyRules.Builder, build.buf.validate.AnyRulesOrBuilder> anyBuilder_;
+            build.buf.validate.AnyRules,
+            build.buf.validate.AnyRules.Builder,
+            build.buf.validate.AnyRulesOrBuilder>
+        anyBuilder_;
+
     /**
+     *
+     *
      * <pre>
      * Well-Known Field Types
      * </pre>
      *
      * <code>.buf.validate.AnyRules any = 20 [json_name = "any"];</code>
+     *
      * @return Whether the any field is set.
      */
     @java.lang.Override
     public boolean hasAny() {
       return typeCase_ == 20;
     }
+
     /**
+     *
+     *
      * <pre>
      * Well-Known Field Types
      * </pre>
      *
      * <code>.buf.validate.AnyRules any = 20 [json_name = "any"];</code>
+     *
      * @return The any.
      */
     @java.lang.Override
@@ -5613,7 +5950,10 @@ private static final long serialVersionUID = 0L;
         return build.buf.validate.AnyRules.getDefaultInstance();
       }
     }
+
     /**
+     *
+     *
      * <pre>
      * Well-Known Field Types
      * </pre>
@@ -5633,15 +5973,17 @@ private static final long serialVersionUID = 0L;
       typeCase_ = 20;
       return this;
     }
+
     /**
+     *
+     *
      * <pre>
      * Well-Known Field Types
      * </pre>
      *
      * <code>.buf.validate.AnyRules any = 20 [json_name = "any"];</code>
      */
-    public Builder setAny(
-        build.buf.validate.AnyRules.Builder builderForValue) {
+    public Builder setAny(build.buf.validate.AnyRules.Builder builderForValue) {
       if (anyBuilder_ == null) {
         type_ = builderForValue.build();
         onChanged();
@@ -5651,7 +5993,10 @@ private static final long serialVersionUID = 0L;
       typeCase_ = 20;
       return this;
     }
+
     /**
+     *
+     *
      * <pre>
      * Well-Known Field Types
      * </pre>
@@ -5660,10 +6005,11 @@ private static final long serialVersionUID = 0L;
      */
     public Builder mergeAny(build.buf.validate.AnyRules value) {
       if (anyBuilder_ == null) {
-        if (typeCase_ == 20 &&
-            type_ != build.buf.validate.AnyRules.getDefaultInstance()) {
-          type_ = build.buf.validate.AnyRules.newBuilder((build.buf.validate.AnyRules) type_)
-              .mergeFrom(value).buildPartial();
+        if (typeCase_ == 20 && type_ != build.buf.validate.AnyRules.getDefaultInstance()) {
+          type_ =
+              build.buf.validate.AnyRules.newBuilder((build.buf.validate.AnyRules) type_)
+                  .mergeFrom(value)
+                  .buildPartial();
         } else {
           type_ = value;
         }
@@ -5678,7 +6024,10 @@ private static final long serialVersionUID = 0L;
       typeCase_ = 20;
       return this;
     }
+
     /**
+     *
+     *
      * <pre>
      * Well-Known Field Types
      * </pre>
@@ -5701,7 +6050,10 @@ private static final long serialVersionUID = 0L;
       }
       return this;
     }
+
     /**
+     *
+     *
      * <pre>
      * Well-Known Field Types
      * </pre>
@@ -5711,7 +6063,10 @@ private static final long serialVersionUID = 0L;
     public build.buf.validate.AnyRules.Builder getAnyBuilder() {
       return getAnyFieldBuilder().getBuilder();
     }
+
     /**
+     *
+     *
      * <pre>
      * Well-Known Field Types
      * </pre>
@@ -5729,7 +6084,10 @@ private static final long serialVersionUID = 0L;
         return build.buf.validate.AnyRules.getDefaultInstance();
       }
     }
+
     /**
+     *
+     *
      * <pre>
      * Well-Known Field Types
      * </pre>
@@ -5737,17 +6095,20 @@ private static final long serialVersionUID = 0L;
      * <code>.buf.validate.AnyRules any = 20 [json_name = "any"];</code>
      */
     private com.google.protobuf.SingleFieldBuilderV3<
-        build.buf.validate.AnyRules, build.buf.validate.AnyRules.Builder, build.buf.validate.AnyRulesOrBuilder> 
+            build.buf.validate.AnyRules,
+            build.buf.validate.AnyRules.Builder,
+            build.buf.validate.AnyRulesOrBuilder>
         getAnyFieldBuilder() {
       if (anyBuilder_ == null) {
         if (!(typeCase_ == 20)) {
           type_ = build.buf.validate.AnyRules.getDefaultInstance();
         }
-        anyBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-            build.buf.validate.AnyRules, build.buf.validate.AnyRules.Builder, build.buf.validate.AnyRulesOrBuilder>(
-                (build.buf.validate.AnyRules) type_,
-                getParentForChildren(),
-                isClean());
+        anyBuilder_ =
+            new com.google.protobuf.SingleFieldBuilderV3<
+                build.buf.validate.AnyRules,
+                build.buf.validate.AnyRules.Builder,
+                build.buf.validate.AnyRulesOrBuilder>(
+                (build.buf.validate.AnyRules) type_, getParentForChildren(), isClean());
         type_ = null;
       }
       typeCase_ = 20;
@@ -5756,17 +6117,24 @@ private static final long serialVersionUID = 0L;
     }
 
     private com.google.protobuf.SingleFieldBuilderV3<
-        build.buf.validate.DurationRules, build.buf.validate.DurationRules.Builder, build.buf.validate.DurationRulesOrBuilder> durationBuilder_;
+            build.buf.validate.DurationRules,
+            build.buf.validate.DurationRules.Builder,
+            build.buf.validate.DurationRulesOrBuilder>
+        durationBuilder_;
+
     /**
      * <code>.buf.validate.DurationRules duration = 21 [json_name = "duration"];</code>
+     *
      * @return Whether the duration field is set.
      */
     @java.lang.Override
     public boolean hasDuration() {
       return typeCase_ == 21;
     }
+
     /**
      * <code>.buf.validate.DurationRules duration = 21 [json_name = "duration"];</code>
+     *
      * @return The duration.
      */
     @java.lang.Override
@@ -5783,9 +6151,8 @@ private static final long serialVersionUID = 0L;
         return build.buf.validate.DurationRules.getDefaultInstance();
       }
     }
-    /**
-     * <code>.buf.validate.DurationRules duration = 21 [json_name = "duration"];</code>
-     */
+
+    /** <code>.buf.validate.DurationRules duration = 21 [json_name = "duration"];</code> */
     public Builder setDuration(build.buf.validate.DurationRules value) {
       if (durationBuilder_ == null) {
         if (value == null) {
@@ -5799,11 +6166,9 @@ private static final long serialVersionUID = 0L;
       typeCase_ = 21;
       return this;
     }
-    /**
-     * <code>.buf.validate.DurationRules duration = 21 [json_name = "duration"];</code>
-     */
-    public Builder setDuration(
-        build.buf.validate.DurationRules.Builder builderForValue) {
+
+    /** <code>.buf.validate.DurationRules duration = 21 [json_name = "duration"];</code> */
+    public Builder setDuration(build.buf.validate.DurationRules.Builder builderForValue) {
       if (durationBuilder_ == null) {
         type_ = builderForValue.build();
         onChanged();
@@ -5813,15 +6178,15 @@ private static final long serialVersionUID = 0L;
       typeCase_ = 21;
       return this;
     }
-    /**
-     * <code>.buf.validate.DurationRules duration = 21 [json_name = "duration"];</code>
-     */
+
+    /** <code>.buf.validate.DurationRules duration = 21 [json_name = "duration"];</code> */
     public Builder mergeDuration(build.buf.validate.DurationRules value) {
       if (durationBuilder_ == null) {
-        if (typeCase_ == 21 &&
-            type_ != build.buf.validate.DurationRules.getDefaultInstance()) {
-          type_ = build.buf.validate.DurationRules.newBuilder((build.buf.validate.DurationRules) type_)
-              .mergeFrom(value).buildPartial();
+        if (typeCase_ == 21 && type_ != build.buf.validate.DurationRules.getDefaultInstance()) {
+          type_ =
+              build.buf.validate.DurationRules.newBuilder((build.buf.validate.DurationRules) type_)
+                  .mergeFrom(value)
+                  .buildPartial();
         } else {
           type_ = value;
         }
@@ -5836,9 +6201,8 @@ private static final long serialVersionUID = 0L;
       typeCase_ = 21;
       return this;
     }
-    /**
-     * <code>.buf.validate.DurationRules duration = 21 [json_name = "duration"];</code>
-     */
+
+    /** <code>.buf.validate.DurationRules duration = 21 [json_name = "duration"];</code> */
     public Builder clearDuration() {
       if (durationBuilder_ == null) {
         if (typeCase_ == 21) {
@@ -5855,15 +6219,13 @@ private static final long serialVersionUID = 0L;
       }
       return this;
     }
-    /**
-     * <code>.buf.validate.DurationRules duration = 21 [json_name = "duration"];</code>
-     */
+
+    /** <code>.buf.validate.DurationRules duration = 21 [json_name = "duration"];</code> */
     public build.buf.validate.DurationRules.Builder getDurationBuilder() {
       return getDurationFieldBuilder().getBuilder();
     }
-    /**
-     * <code>.buf.validate.DurationRules duration = 21 [json_name = "duration"];</code>
-     */
+
+    /** <code>.buf.validate.DurationRules duration = 21 [json_name = "duration"];</code> */
     @java.lang.Override
     public build.buf.validate.DurationRulesOrBuilder getDurationOrBuilder() {
       if ((typeCase_ == 21) && (durationBuilder_ != null)) {
@@ -5875,21 +6237,23 @@ private static final long serialVersionUID = 0L;
         return build.buf.validate.DurationRules.getDefaultInstance();
       }
     }
-    /**
-     * <code>.buf.validate.DurationRules duration = 21 [json_name = "duration"];</code>
-     */
+
+    /** <code>.buf.validate.DurationRules duration = 21 [json_name = "duration"];</code> */
     private com.google.protobuf.SingleFieldBuilderV3<
-        build.buf.validate.DurationRules, build.buf.validate.DurationRules.Builder, build.buf.validate.DurationRulesOrBuilder> 
+            build.buf.validate.DurationRules,
+            build.buf.validate.DurationRules.Builder,
+            build.buf.validate.DurationRulesOrBuilder>
         getDurationFieldBuilder() {
       if (durationBuilder_ == null) {
         if (!(typeCase_ == 21)) {
           type_ = build.buf.validate.DurationRules.getDefaultInstance();
         }
-        durationBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-            build.buf.validate.DurationRules, build.buf.validate.DurationRules.Builder, build.buf.validate.DurationRulesOrBuilder>(
-                (build.buf.validate.DurationRules) type_,
-                getParentForChildren(),
-                isClean());
+        durationBuilder_ =
+            new com.google.protobuf.SingleFieldBuilderV3<
+                build.buf.validate.DurationRules,
+                build.buf.validate.DurationRules.Builder,
+                build.buf.validate.DurationRulesOrBuilder>(
+                (build.buf.validate.DurationRules) type_, getParentForChildren(), isClean());
         type_ = null;
       }
       typeCase_ = 21;
@@ -5898,17 +6262,24 @@ private static final long serialVersionUID = 0L;
     }
 
     private com.google.protobuf.SingleFieldBuilderV3<
-        build.buf.validate.TimestampRules, build.buf.validate.TimestampRules.Builder, build.buf.validate.TimestampRulesOrBuilder> timestampBuilder_;
+            build.buf.validate.TimestampRules,
+            build.buf.validate.TimestampRules.Builder,
+            build.buf.validate.TimestampRulesOrBuilder>
+        timestampBuilder_;
+
     /**
      * <code>.buf.validate.TimestampRules timestamp = 22 [json_name = "timestamp"];</code>
+     *
      * @return Whether the timestamp field is set.
      */
     @java.lang.Override
     public boolean hasTimestamp() {
       return typeCase_ == 22;
     }
+
     /**
      * <code>.buf.validate.TimestampRules timestamp = 22 [json_name = "timestamp"];</code>
+     *
      * @return The timestamp.
      */
     @java.lang.Override
@@ -5925,9 +6296,8 @@ private static final long serialVersionUID = 0L;
         return build.buf.validate.TimestampRules.getDefaultInstance();
       }
     }
-    /**
-     * <code>.buf.validate.TimestampRules timestamp = 22 [json_name = "timestamp"];</code>
-     */
+
+    /** <code>.buf.validate.TimestampRules timestamp = 22 [json_name = "timestamp"];</code> */
     public Builder setTimestamp(build.buf.validate.TimestampRules value) {
       if (timestampBuilder_ == null) {
         if (value == null) {
@@ -5941,11 +6311,9 @@ private static final long serialVersionUID = 0L;
       typeCase_ = 22;
       return this;
     }
-    /**
-     * <code>.buf.validate.TimestampRules timestamp = 22 [json_name = "timestamp"];</code>
-     */
-    public Builder setTimestamp(
-        build.buf.validate.TimestampRules.Builder builderForValue) {
+
+    /** <code>.buf.validate.TimestampRules timestamp = 22 [json_name = "timestamp"];</code> */
+    public Builder setTimestamp(build.buf.validate.TimestampRules.Builder builderForValue) {
       if (timestampBuilder_ == null) {
         type_ = builderForValue.build();
         onChanged();
@@ -5955,15 +6323,16 @@ private static final long serialVersionUID = 0L;
       typeCase_ = 22;
       return this;
     }
-    /**
-     * <code>.buf.validate.TimestampRules timestamp = 22 [json_name = "timestamp"];</code>
-     */
+
+    /** <code>.buf.validate.TimestampRules timestamp = 22 [json_name = "timestamp"];</code> */
     public Builder mergeTimestamp(build.buf.validate.TimestampRules value) {
       if (timestampBuilder_ == null) {
-        if (typeCase_ == 22 &&
-            type_ != build.buf.validate.TimestampRules.getDefaultInstance()) {
-          type_ = build.buf.validate.TimestampRules.newBuilder((build.buf.validate.TimestampRules) type_)
-              .mergeFrom(value).buildPartial();
+        if (typeCase_ == 22 && type_ != build.buf.validate.TimestampRules.getDefaultInstance()) {
+          type_ =
+              build.buf.validate.TimestampRules.newBuilder(
+                      (build.buf.validate.TimestampRules) type_)
+                  .mergeFrom(value)
+                  .buildPartial();
         } else {
           type_ = value;
         }
@@ -5978,9 +6347,8 @@ private static final long serialVersionUID = 0L;
       typeCase_ = 22;
       return this;
     }
-    /**
-     * <code>.buf.validate.TimestampRules timestamp = 22 [json_name = "timestamp"];</code>
-     */
+
+    /** <code>.buf.validate.TimestampRules timestamp = 22 [json_name = "timestamp"];</code> */
     public Builder clearTimestamp() {
       if (timestampBuilder_ == null) {
         if (typeCase_ == 22) {
@@ -5997,15 +6365,13 @@ private static final long serialVersionUID = 0L;
       }
       return this;
     }
-    /**
-     * <code>.buf.validate.TimestampRules timestamp = 22 [json_name = "timestamp"];</code>
-     */
+
+    /** <code>.buf.validate.TimestampRules timestamp = 22 [json_name = "timestamp"];</code> */
     public build.buf.validate.TimestampRules.Builder getTimestampBuilder() {
       return getTimestampFieldBuilder().getBuilder();
     }
-    /**
-     * <code>.buf.validate.TimestampRules timestamp = 22 [json_name = "timestamp"];</code>
-     */
+
+    /** <code>.buf.validate.TimestampRules timestamp = 22 [json_name = "timestamp"];</code> */
     @java.lang.Override
     public build.buf.validate.TimestampRulesOrBuilder getTimestampOrBuilder() {
       if ((typeCase_ == 22) && (timestampBuilder_ != null)) {
@@ -6017,30 +6383,32 @@ private static final long serialVersionUID = 0L;
         return build.buf.validate.TimestampRules.getDefaultInstance();
       }
     }
-    /**
-     * <code>.buf.validate.TimestampRules timestamp = 22 [json_name = "timestamp"];</code>
-     */
+
+    /** <code>.buf.validate.TimestampRules timestamp = 22 [json_name = "timestamp"];</code> */
     private com.google.protobuf.SingleFieldBuilderV3<
-        build.buf.validate.TimestampRules, build.buf.validate.TimestampRules.Builder, build.buf.validate.TimestampRulesOrBuilder> 
+            build.buf.validate.TimestampRules,
+            build.buf.validate.TimestampRules.Builder,
+            build.buf.validate.TimestampRulesOrBuilder>
         getTimestampFieldBuilder() {
       if (timestampBuilder_ == null) {
         if (!(typeCase_ == 22)) {
           type_ = build.buf.validate.TimestampRules.getDefaultInstance();
         }
-        timestampBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-            build.buf.validate.TimestampRules, build.buf.validate.TimestampRules.Builder, build.buf.validate.TimestampRulesOrBuilder>(
-                (build.buf.validate.TimestampRules) type_,
-                getParentForChildren(),
-                isClean());
+        timestampBuilder_ =
+            new com.google.protobuf.SingleFieldBuilderV3<
+                build.buf.validate.TimestampRules,
+                build.buf.validate.TimestampRules.Builder,
+                build.buf.validate.TimestampRulesOrBuilder>(
+                (build.buf.validate.TimestampRules) type_, getParentForChildren(), isClean());
         type_ = null;
       }
       typeCase_ = 22;
       onChanged();
       return timestampBuilder_;
     }
+
     @java.lang.Override
-    public final Builder setUnknownFields(
-        final com.google.protobuf.UnknownFieldSet unknownFields) {
+    public final Builder setUnknownFields(final com.google.protobuf.UnknownFieldSet unknownFields) {
       return super.setUnknownFields(unknownFields);
     }
 
@@ -6050,12 +6418,12 @@ private static final long serialVersionUID = 0L;
       return super.mergeUnknownFields(unknownFields);
     }
 
-
     // @@protoc_insertion_point(builder_scope:buf.validate.FieldConstraints)
   }
 
   // @@protoc_insertion_point(class_scope:buf.validate.FieldConstraints)
   private static final build.buf.validate.FieldConstraints DEFAULT_INSTANCE;
+
   static {
     DEFAULT_INSTANCE = new build.buf.validate.FieldConstraints();
   }
@@ -6064,27 +6432,27 @@ private static final long serialVersionUID = 0L;
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<FieldConstraints>
-      PARSER = new com.google.protobuf.AbstractParser<FieldConstraints>() {
-    @java.lang.Override
-    public FieldConstraints parsePartialFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      Builder builder = newBuilder();
-      try {
-        builder.mergeFrom(input, extensionRegistry);
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(builder.buildPartial());
-      } catch (com.google.protobuf.UninitializedMessageException e) {
-        throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(e)
-            .setUnfinishedMessage(builder.buildPartial());
-      }
-      return builder.buildPartial();
-    }
-  };
+  private static final com.google.protobuf.Parser<FieldConstraints> PARSER =
+      new com.google.protobuf.AbstractParser<FieldConstraints>() {
+        @java.lang.Override
+        public FieldConstraints parsePartialFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+          Builder builder = newBuilder();
+          try {
+            builder.mergeFrom(input, extensionRegistry);
+          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+            throw e.setUnfinishedMessage(builder.buildPartial());
+          } catch (com.google.protobuf.UninitializedMessageException e) {
+            throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+          } catch (java.io.IOException e) {
+            throw new com.google.protobuf.InvalidProtocolBufferException(e)
+                .setUnfinishedMessage(builder.buildPartial());
+          }
+          return builder.buildPartial();
+        }
+      };
 
   public static com.google.protobuf.Parser<FieldConstraints> parser() {
     return PARSER;
@@ -6099,6 +6467,4 @@ private static final long serialVersionUID = 0L;
   public build.buf.validate.FieldConstraints getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
-
 }
-

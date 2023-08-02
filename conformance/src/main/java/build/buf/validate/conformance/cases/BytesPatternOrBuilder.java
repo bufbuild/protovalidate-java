@@ -3,12 +3,14 @@
 
 package build.buf.validate.conformance.cases;
 
-public interface BytesPatternOrBuilder extends
+public interface BytesPatternOrBuilder
+    extends
     // @@protoc_insertion_point(interface_extends:buf.validate.conformance.cases.BytesPattern)
     com.google.protobuf.MessageOrBuilder {
 
   /**
    * <code>bytes val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
+   *
    * @return The val.
    */
   com.google.protobuf.ByteString getVal();

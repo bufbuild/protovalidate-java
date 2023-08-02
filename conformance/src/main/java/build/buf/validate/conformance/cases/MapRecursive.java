@@ -3,110 +3,117 @@
 
 package build.buf.validate.conformance.cases;
 
-/**
- * Protobuf type {@code buf.validate.conformance.cases.MapRecursive}
- */
-public final class MapRecursive extends
-    com.google.protobuf.GeneratedMessageV3 implements
+/** Protobuf type {@code buf.validate.conformance.cases.MapRecursive} */
+public final class MapRecursive extends com.google.protobuf.GeneratedMessageV3
+    implements
     // @@protoc_insertion_point(message_implements:buf.validate.conformance.cases.MapRecursive)
     MapRecursiveOrBuilder {
-private static final long serialVersionUID = 0L;
+  private static final long serialVersionUID = 0L;
+
   // Use MapRecursive.newBuilder() to construct.
   private MapRecursive(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
-  private MapRecursive() {
-  }
+
+  private MapRecursive() {}
 
   @java.lang.Override
   @SuppressWarnings({"unused"})
-  protected java.lang.Object newInstance(
-      UnusedPrivateParameter unused) {
+  protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
     return new MapRecursive();
   }
 
-  public static final com.google.protobuf.Descriptors.Descriptor
-      getDescriptor() {
-    return build.buf.validate.conformance.cases.MapsProto.internal_static_buf_validate_conformance_cases_MapRecursive_descriptor;
+  public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+    return build.buf.validate.conformance.cases.MapsProto
+        .internal_static_buf_validate_conformance_cases_MapRecursive_descriptor;
   }
 
   @SuppressWarnings({"rawtypes"})
   @java.lang.Override
-  protected com.google.protobuf.MapField internalGetMapField(
-      int number) {
+  protected com.google.protobuf.MapField internalGetMapField(int number) {
     switch (number) {
       case 1:
         return internalGetVal();
       default:
-        throw new RuntimeException(
-            "Invalid map field number: " + number);
+        throw new RuntimeException("Invalid map field number: " + number);
     }
   }
+
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return build.buf.validate.conformance.cases.MapsProto.internal_static_buf_validate_conformance_cases_MapRecursive_fieldAccessorTable
+    return build.buf.validate.conformance.cases.MapsProto
+        .internal_static_buf_validate_conformance_cases_MapRecursive_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            build.buf.validate.conformance.cases.MapRecursive.class, build.buf.validate.conformance.cases.MapRecursive.Builder.class);
+            build.buf.validate.conformance.cases.MapRecursive.class,
+            build.buf.validate.conformance.cases.MapRecursive.Builder.class);
   }
 
-  public interface MsgOrBuilder extends
+  public interface MsgOrBuilder
+      extends
       // @@protoc_insertion_point(interface_extends:buf.validate.conformance.cases.MapRecursive.Msg)
       com.google.protobuf.MessageOrBuilder {
 
     /**
      * <code>string val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
+     *
      * @return The val.
      */
     java.lang.String getVal();
+
     /**
      * <code>string val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
+     *
      * @return The bytes for val.
      */
-    com.google.protobuf.ByteString
-        getValBytes();
+    com.google.protobuf.ByteString getValBytes();
   }
-  /**
-   * Protobuf type {@code buf.validate.conformance.cases.MapRecursive.Msg}
-   */
-  public static final class Msg extends
-      com.google.protobuf.GeneratedMessageV3 implements
+
+  /** Protobuf type {@code buf.validate.conformance.cases.MapRecursive.Msg} */
+  public static final class Msg extends com.google.protobuf.GeneratedMessageV3
+      implements
       // @@protoc_insertion_point(message_implements:buf.validate.conformance.cases.MapRecursive.Msg)
       MsgOrBuilder {
-  private static final long serialVersionUID = 0L;
+    private static final long serialVersionUID = 0L;
+
     // Use Msg.newBuilder() to construct.
     private Msg(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
+
     private Msg() {
       val_ = "";
     }
 
     @java.lang.Override
     @SuppressWarnings({"unused"})
-    protected java.lang.Object newInstance(
-        UnusedPrivateParameter unused) {
+    protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
       return new Msg();
     }
 
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return build.buf.validate.conformance.cases.MapsProto.internal_static_buf_validate_conformance_cases_MapRecursive_Msg_descriptor;
+    public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+      return build.buf.validate.conformance.cases.MapsProto
+          .internal_static_buf_validate_conformance_cases_MapRecursive_Msg_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return build.buf.validate.conformance.cases.MapsProto.internal_static_buf_validate_conformance_cases_MapRecursive_Msg_fieldAccessorTable
+      return build.buf.validate.conformance.cases.MapsProto
+          .internal_static_buf_validate_conformance_cases_MapRecursive_Msg_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              build.buf.validate.conformance.cases.MapRecursive.Msg.class, build.buf.validate.conformance.cases.MapRecursive.Msg.Builder.class);
+              build.buf.validate.conformance.cases.MapRecursive.Msg.class,
+              build.buf.validate.conformance.cases.MapRecursive.Msg.Builder.class);
     }
 
     public static final int VAL_FIELD_NUMBER = 1;
+
     @SuppressWarnings("serial")
     private volatile java.lang.Object val_ = "";
+
     /**
      * <code>string val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
+     *
      * @return The val.
      */
     @java.lang.Override
@@ -115,25 +122,24 @@ private static final long serialVersionUID = 0L;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
+        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         val_ = s;
         return s;
       }
     }
+
     /**
      * <code>string val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
+     *
      * @return The bytes for val.
      */
     @java.lang.Override
-    public com.google.protobuf.ByteString
-        getValBytes() {
+    public com.google.protobuf.ByteString getValBytes() {
       java.lang.Object ref = val_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
+        com.google.protobuf.ByteString b =
+            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
         val_ = b;
         return b;
       } else {
@@ -142,6 +148,7 @@ private static final long serialVersionUID = 0L;
     }
 
     private byte memoizedIsInitialized = -1;
+
     @java.lang.Override
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -153,8 +160,7 @@ private static final long serialVersionUID = 0L;
     }
 
     @java.lang.Override
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
+    public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
       if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(val_)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 1, val_);
       }
@@ -178,15 +184,15 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public boolean equals(final java.lang.Object obj) {
       if (obj == this) {
-       return true;
+        return true;
       }
       if (!(obj instanceof build.buf.validate.conformance.cases.MapRecursive.Msg)) {
         return super.equals(obj);
       }
-      build.buf.validate.conformance.cases.MapRecursive.Msg other = (build.buf.validate.conformance.cases.MapRecursive.Msg) obj;
+      build.buf.validate.conformance.cases.MapRecursive.Msg other =
+          (build.buf.validate.conformance.cases.MapRecursive.Msg) obj;
 
-      if (!getVal()
-          .equals(other.getVal())) return false;
+      if (!getVal().equals(other.getVal())) return false;
       if (!getUnknownFields().equals(other.getUnknownFields())) return false;
       return true;
     }
@@ -206,89 +212,94 @@ private static final long serialVersionUID = 0L;
     }
 
     public static build.buf.validate.conformance.cases.MapRecursive.Msg parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        java.nio.ByteBuffer data) throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
+
     public static build.buf.validate.conformance.cases.MapRecursive.Msg parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        java.nio.ByteBuffer data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
+
     public static build.buf.validate.conformance.cases.MapRecursive.Msg parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
+
     public static build.buf.validate.conformance.cases.MapRecursive.Msg parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
+
     public static build.buf.validate.conformance.cases.MapRecursive.Msg parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
+
     public static build.buf.validate.conformance.cases.MapRecursive.Msg parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        byte[] data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static build.buf.validate.conformance.cases.MapRecursive.Msg parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
+
     public static build.buf.validate.conformance.cases.MapRecursive.Msg parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+        java.io.InputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
     }
 
-    public static build.buf.validate.conformance.cases.MapRecursive.Msg parseDelimitedFrom(java.io.InputStream input)
+    public static build.buf.validate.conformance.cases.MapRecursive.Msg parseFrom(
+        java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+          PARSER, input, extensionRegistry);
     }
 
     public static build.buf.validate.conformance.cases.MapRecursive.Msg parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+        java.io.InputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input);
     }
+
+    public static build.buf.validate.conformance.cases.MapRecursive.Msg parseDelimitedFrom(
+        java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(
+          PARSER, input, extensionRegistry);
+    }
+
     public static build.buf.validate.conformance.cases.MapRecursive.Msg parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
+        com.google.protobuf.CodedInputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
     }
+
     public static build.buf.validate.conformance.cases.MapRecursive.Msg parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+          PARSER, input, extensionRegistry);
     }
 
     @java.lang.Override
-    public Builder newBuilderForType() { return newBuilder(); }
+    public Builder newBuilderForType() {
+      return newBuilder();
+    }
+
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(build.buf.validate.conformance.cases.MapRecursive.Msg prototype) {
+
+    public static Builder newBuilder(
+        build.buf.validate.conformance.cases.MapRecursive.Msg prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
+
     @java.lang.Override
     public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
+      return this == DEFAULT_INSTANCE ? new Builder() : new Builder().mergeFrom(this);
     }
 
     @java.lang.Override
@@ -297,36 +308,35 @@ private static final long serialVersionUID = 0L;
       Builder builder = new Builder(parent);
       return builder;
     }
-    /**
-     * Protobuf type {@code buf.validate.conformance.cases.MapRecursive.Msg}
-     */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+
+    /** Protobuf type {@code buf.validate.conformance.cases.MapRecursive.Msg} */
+    public static final class Builder
+        extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
+        implements
         // @@protoc_insertion_point(builder_implements:buf.validate.conformance.cases.MapRecursive.Msg)
         build.buf.validate.conformance.cases.MapRecursive.MsgOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return build.buf.validate.conformance.cases.MapsProto.internal_static_buf_validate_conformance_cases_MapRecursive_Msg_descriptor;
+      public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+        return build.buf.validate.conformance.cases.MapsProto
+            .internal_static_buf_validate_conformance_cases_MapRecursive_Msg_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return build.buf.validate.conformance.cases.MapsProto.internal_static_buf_validate_conformance_cases_MapRecursive_Msg_fieldAccessorTable
+        return build.buf.validate.conformance.cases.MapsProto
+            .internal_static_buf_validate_conformance_cases_MapRecursive_Msg_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                build.buf.validate.conformance.cases.MapRecursive.Msg.class, build.buf.validate.conformance.cases.MapRecursive.Msg.Builder.class);
+                build.buf.validate.conformance.cases.MapRecursive.Msg.class,
+                build.buf.validate.conformance.cases.MapRecursive.Msg.Builder.class);
       }
 
       // Construct using build.buf.validate.conformance.cases.MapRecursive.Msg.newBuilder()
-      private Builder() {
+      private Builder() {}
 
-      }
-
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
-
       }
+
       @java.lang.Override
       public Builder clear() {
         super.clear();
@@ -336,9 +346,9 @@ private static final long serialVersionUID = 0L;
       }
 
       @java.lang.Override
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return build.buf.validate.conformance.cases.MapsProto.internal_static_buf_validate_conformance_cases_MapRecursive_Msg_descriptor;
+      public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
+        return build.buf.validate.conformance.cases.MapsProto
+            .internal_static_buf_validate_conformance_cases_MapRecursive_Msg_descriptor;
       }
 
       @java.lang.Override
@@ -357,8 +367,11 @@ private static final long serialVersionUID = 0L;
 
       @java.lang.Override
       public build.buf.validate.conformance.cases.MapRecursive.Msg buildPartial() {
-        build.buf.validate.conformance.cases.MapRecursive.Msg result = new build.buf.validate.conformance.cases.MapRecursive.Msg(this);
-        if (bitField0_ != 0) { buildPartial0(result); }
+        build.buf.validate.conformance.cases.MapRecursive.Msg result =
+            new build.buf.validate.conformance.cases.MapRecursive.Msg(this);
+        if (bitField0_ != 0) {
+          buildPartial0(result);
+        }
         onBuilt();
         return result;
       }
@@ -374,38 +387,41 @@ private static final long serialVersionUID = 0L;
       public Builder clone() {
         return super.clone();
       }
+
       @java.lang.Override
       public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
+          com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
         return super.setField(field, value);
       }
+
       @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
+      public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
         return super.clearField(field);
       }
+
       @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+      public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
         return super.clearOneof(oneof);
       }
+
       @java.lang.Override
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
+          int index,
+          java.lang.Object value) {
         return super.setRepeatedField(field, index, value);
       }
+
       @java.lang.Override
       public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
+          com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
         return super.addRepeatedField(field, value);
       }
+
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof build.buf.validate.conformance.cases.MapRecursive.Msg) {
-          return mergeFrom((build.buf.validate.conformance.cases.MapRecursive.Msg)other);
+          return mergeFrom((build.buf.validate.conformance.cases.MapRecursive.Msg) other);
         } else {
           super.mergeFrom(other);
           return this;
@@ -413,7 +429,8 @@ private static final long serialVersionUID = 0L;
       }
 
       public Builder mergeFrom(build.buf.validate.conformance.cases.MapRecursive.Msg other) {
-        if (other == build.buf.validate.conformance.cases.MapRecursive.Msg.getDefaultInstance()) return this;
+        if (other == build.buf.validate.conformance.cases.MapRecursive.Msg.getDefaultInstance())
+          return this;
         if (!other.getVal().isEmpty()) {
           val_ = other.val_;
           bitField0_ |= 0x00000001;
@@ -445,17 +462,19 @@ private static final long serialVersionUID = 0L;
               case 0:
                 done = true;
                 break;
-              case 10: {
-                val_ = input.readStringRequireUtf8();
-                bitField0_ |= 0x00000001;
-                break;
-              } // case 10
-              default: {
-                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
-                  done = true; // was an endgroup tag
-                }
-                break;
-              } // default:
+              case 10:
+                {
+                  val_ = input.readStringRequireUtf8();
+                  bitField0_ |= 0x00000001;
+                  break;
+                } // case 10
+              default:
+                {
+                  if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                    done = true; // was an endgroup tag
+                  }
+                  break;
+                } // default:
             } // switch (tag)
           } // while (!done)
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -465,18 +484,20 @@ private static final long serialVersionUID = 0L;
         } // finally
         return this;
       }
+
       private int bitField0_;
 
       private java.lang.Object val_ = "";
+
       /**
        * <code>string val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
+       *
        * @return The val.
        */
       public java.lang.String getVal() {
         java.lang.Object ref = val_;
         if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
+          com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
           val_ = s;
           return s;
@@ -484,38 +505,43 @@ private static final long serialVersionUID = 0L;
           return (java.lang.String) ref;
         }
       }
+
       /**
        * <code>string val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
+       *
        * @return The bytes for val.
        */
-      public com.google.protobuf.ByteString
-          getValBytes() {
+      public com.google.protobuf.ByteString getValBytes() {
         java.lang.Object ref = val_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
+          com.google.protobuf.ByteString b =
+              com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
           val_ = b;
           return b;
         } else {
           return (com.google.protobuf.ByteString) ref;
         }
       }
+
       /**
        * <code>string val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
+       *
        * @param value The val to set.
        * @return This builder for chaining.
        */
-      public Builder setVal(
-          java.lang.String value) {
-        if (value == null) { throw new NullPointerException(); }
+      public Builder setVal(java.lang.String value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
         val_ = value;
         bitField0_ |= 0x00000001;
         onChanged();
         return this;
       }
+
       /**
        * <code>string val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
+       *
        * @return This builder for chaining.
        */
       public Builder clearVal() {
@@ -524,20 +550,24 @@ private static final long serialVersionUID = 0L;
         onChanged();
         return this;
       }
+
       /**
        * <code>string val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
+       *
        * @param value The bytes for val to set.
        * @return This builder for chaining.
        */
-      public Builder setValBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) { throw new NullPointerException(); }
+      public Builder setValBytes(com.google.protobuf.ByteString value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
         checkByteStringIsUtf8(value);
         val_ = value;
         bitField0_ |= 0x00000001;
         onChanged();
         return this;
       }
+
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -550,12 +580,12 @@ private static final long serialVersionUID = 0L;
         return super.mergeUnknownFields(unknownFields);
       }
 
-
       // @@protoc_insertion_point(builder_scope:buf.validate.conformance.cases.MapRecursive.Msg)
     }
 
     // @@protoc_insertion_point(class_scope:buf.validate.conformance.cases.MapRecursive.Msg)
     private static final build.buf.validate.conformance.cases.MapRecursive.Msg DEFAULT_INSTANCE;
+
     static {
       DEFAULT_INSTANCE = new build.buf.validate.conformance.cases.MapRecursive.Msg();
     }
@@ -564,27 +594,28 @@ private static final long serialVersionUID = 0L;
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<Msg>
-        PARSER = new com.google.protobuf.AbstractParser<Msg>() {
-      @java.lang.Override
-      public Msg parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        Builder builder = newBuilder();
-        try {
-          builder.mergeFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          throw e.setUnfinishedMessage(builder.buildPartial());
-        } catch (com.google.protobuf.UninitializedMessageException e) {
-          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
-        } catch (java.io.IOException e) {
-          throw new com.google.protobuf.InvalidProtocolBufferException(e)
-              .setUnfinishedMessage(builder.buildPartial());
-        }
-        return builder.buildPartial();
-      }
-    };
+    private static final com.google.protobuf.Parser<Msg> PARSER =
+        new com.google.protobuf.AbstractParser<Msg>() {
+          @java.lang.Override
+          public Msg parsePartialFrom(
+              com.google.protobuf.CodedInputStream input,
+              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+              throws com.google.protobuf.InvalidProtocolBufferException {
+            Builder builder = newBuilder();
+            try {
+              builder.mergeFrom(input, extensionRegistry);
+            } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+              throw e.setUnfinishedMessage(builder.buildPartial());
+            } catch (com.google.protobuf.UninitializedMessageException e) {
+              throw e.asInvalidProtocolBufferException()
+                  .setUnfinishedMessage(builder.buildPartial());
+            } catch (java.io.IOException e) {
+              throw new com.google.protobuf.InvalidProtocolBufferException(e)
+                  .setUnfinishedMessage(builder.buildPartial());
+            }
+            return builder.buildPartial();
+          }
+        };
 
     public static com.google.protobuf.Parser<Msg> parser() {
       return PARSER;
@@ -599,79 +630,96 @@ private static final long serialVersionUID = 0L;
     public build.buf.validate.conformance.cases.MapRecursive.Msg getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
-
   }
 
   public static final int VAL_FIELD_NUMBER = 1;
+
   private static final class ValDefaultEntryHolder {
     static final com.google.protobuf.MapEntry<
-        java.lang.Integer, build.buf.validate.conformance.cases.MapRecursive.Msg> defaultEntry =
+            java.lang.Integer, build.buf.validate.conformance.cases.MapRecursive.Msg>
+        defaultEntry =
             com.google.protobuf.MapEntry
-            .<java.lang.Integer, build.buf.validate.conformance.cases.MapRecursive.Msg>newDefaultInstance(
-                build.buf.validate.conformance.cases.MapsProto.internal_static_buf_validate_conformance_cases_MapRecursive_ValEntry_descriptor, 
-                com.google.protobuf.WireFormat.FieldType.UINT32,
-                0,
-                com.google.protobuf.WireFormat.FieldType.MESSAGE,
-                build.buf.validate.conformance.cases.MapRecursive.Msg.getDefaultInstance());
+                .<java.lang.Integer, build.buf.validate.conformance.cases.MapRecursive.Msg>
+                    newDefaultInstance(
+                        build.buf.validate.conformance.cases.MapsProto
+                            .internal_static_buf_validate_conformance_cases_MapRecursive_ValEntry_descriptor,
+                        com.google.protobuf.WireFormat.FieldType.UINT32,
+                        0,
+                        com.google.protobuf.WireFormat.FieldType.MESSAGE,
+                        build.buf.validate.conformance.cases.MapRecursive.Msg.getDefaultInstance());
   }
+
   @SuppressWarnings("serial")
   private com.google.protobuf.MapField<
-      java.lang.Integer, build.buf.validate.conformance.cases.MapRecursive.Msg> val_;
-  private com.google.protobuf.MapField<java.lang.Integer, build.buf.validate.conformance.cases.MapRecursive.Msg>
-  internalGetVal() {
+          java.lang.Integer, build.buf.validate.conformance.cases.MapRecursive.Msg>
+      val_;
+
+  private com.google.protobuf.MapField<
+          java.lang.Integer, build.buf.validate.conformance.cases.MapRecursive.Msg>
+      internalGetVal() {
     if (val_ == null) {
-      return com.google.protobuf.MapField.emptyMapField(
-          ValDefaultEntryHolder.defaultEntry);
+      return com.google.protobuf.MapField.emptyMapField(ValDefaultEntryHolder.defaultEntry);
     }
     return val_;
   }
+
   public int getValCount() {
     return internalGetVal().getMap().size();
   }
+
   /**
-   * <code>map&lt;uint32, .buf.validate.conformance.cases.MapRecursive.Msg&gt; val = 1 [json_name = "val"];</code>
+   * <code>
+   * map&lt;uint32, .buf.validate.conformance.cases.MapRecursive.Msg&gt; val = 1 [json_name = "val"];
+   * </code>
    */
   @java.lang.Override
-  public boolean containsVal(
-      int key) {
+  public boolean containsVal(int key) {
 
     return internalGetVal().getMap().containsKey(key);
   }
-  /**
-   * Use {@link #getValMap()} instead.
-   */
+
+  /** Use {@link #getValMap()} instead. */
   @java.lang.Override
   @java.lang.Deprecated
-  public java.util.Map<java.lang.Integer, build.buf.validate.conformance.cases.MapRecursive.Msg> getVal() {
+  public java.util.Map<java.lang.Integer, build.buf.validate.conformance.cases.MapRecursive.Msg>
+      getVal() {
     return getValMap();
   }
+
   /**
-   * <code>map&lt;uint32, .buf.validate.conformance.cases.MapRecursive.Msg&gt; val = 1 [json_name = "val"];</code>
+   * <code>
+   * map&lt;uint32, .buf.validate.conformance.cases.MapRecursive.Msg&gt; val = 1 [json_name = "val"];
+   * </code>
    */
   @java.lang.Override
-  public java.util.Map<java.lang.Integer, build.buf.validate.conformance.cases.MapRecursive.Msg> getValMap() {
+  public java.util.Map<java.lang.Integer, build.buf.validate.conformance.cases.MapRecursive.Msg>
+      getValMap() {
     return internalGetVal().getMap();
   }
+
   /**
-   * <code>map&lt;uint32, .buf.validate.conformance.cases.MapRecursive.Msg&gt; val = 1 [json_name = "val"];</code>
+   * <code>
+   * map&lt;uint32, .buf.validate.conformance.cases.MapRecursive.Msg&gt; val = 1 [json_name = "val"];
+   * </code>
    */
   @java.lang.Override
-  public /* nullable */
-build.buf.validate.conformance.cases.MapRecursive.Msg getValOrDefault(
+  public /* nullable */ build.buf.validate.conformance.cases.MapRecursive.Msg getValOrDefault(
       int key,
       /* nullable */
-build.buf.validate.conformance.cases.MapRecursive.Msg defaultValue) {
+      build.buf.validate.conformance.cases.MapRecursive.Msg defaultValue) {
 
     java.util.Map<java.lang.Integer, build.buf.validate.conformance.cases.MapRecursive.Msg> map =
         internalGetVal().getMap();
     return map.containsKey(key) ? map.get(key) : defaultValue;
   }
+
   /**
-   * <code>map&lt;uint32, .buf.validate.conformance.cases.MapRecursive.Msg&gt; val = 1 [json_name = "val"];</code>
+   * <code>
+   * map&lt;uint32, .buf.validate.conformance.cases.MapRecursive.Msg&gt; val = 1 [json_name = "val"];
+   * </code>
    */
   @java.lang.Override
-  public build.buf.validate.conformance.cases.MapRecursive.Msg getValOrThrow(
-      int key) {
+  public build.buf.validate.conformance.cases.MapRecursive.Msg getValOrThrow(int key) {
 
     java.util.Map<java.lang.Integer, build.buf.validate.conformance.cases.MapRecursive.Msg> map =
         internalGetVal().getMap();
@@ -682,6 +730,7 @@ build.buf.validate.conformance.cases.MapRecursive.Msg defaultValue) {
   }
 
   private byte memoizedIsInitialized = -1;
+
   @java.lang.Override
   public final boolean isInitialized() {
     byte isInitialized = memoizedIsInitialized;
@@ -693,14 +742,9 @@ build.buf.validate.conformance.cases.MapRecursive.Msg defaultValue) {
   }
 
   @java.lang.Override
-  public void writeTo(com.google.protobuf.CodedOutputStream output)
-                      throws java.io.IOException {
-    com.google.protobuf.GeneratedMessageV3
-      .serializeIntegerMapTo(
-        output,
-        internalGetVal(),
-        ValDefaultEntryHolder.defaultEntry,
-        1);
+  public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
+    com.google.protobuf.GeneratedMessageV3.serializeIntegerMapTo(
+        output, internalGetVal(), ValDefaultEntryHolder.defaultEntry, 1);
     getUnknownFields().writeTo(output);
   }
 
@@ -710,15 +754,18 @@ build.buf.validate.conformance.cases.MapRecursive.Msg defaultValue) {
     if (size != -1) return size;
 
     size = 0;
-    for (java.util.Map.Entry<java.lang.Integer, build.buf.validate.conformance.cases.MapRecursive.Msg> entry
-         : internalGetVal().getMap().entrySet()) {
-      com.google.protobuf.MapEntry<java.lang.Integer, build.buf.validate.conformance.cases.MapRecursive.Msg>
-      val__ = ValDefaultEntryHolder.defaultEntry.newBuilderForType()
-          .setKey(entry.getKey())
-          .setValue(entry.getValue())
-          .build();
-      size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(1, val__);
+    for (java.util.Map.Entry<
+            java.lang.Integer, build.buf.validate.conformance.cases.MapRecursive.Msg>
+        entry : internalGetVal().getMap().entrySet()) {
+      com.google.protobuf.MapEntry<
+              java.lang.Integer, build.buf.validate.conformance.cases.MapRecursive.Msg>
+          val__ =
+              ValDefaultEntryHolder.defaultEntry
+                  .newBuilderForType()
+                  .setKey(entry.getKey())
+                  .setValue(entry.getValue())
+                  .build();
+      size += com.google.protobuf.CodedOutputStream.computeMessageSize(1, val__);
     }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
@@ -728,15 +775,15 @@ build.buf.validate.conformance.cases.MapRecursive.Msg defaultValue) {
   @java.lang.Override
   public boolean equals(final java.lang.Object obj) {
     if (obj == this) {
-     return true;
+      return true;
     }
     if (!(obj instanceof build.buf.validate.conformance.cases.MapRecursive)) {
       return super.equals(obj);
     }
-    build.buf.validate.conformance.cases.MapRecursive other = (build.buf.validate.conformance.cases.MapRecursive) obj;
+    build.buf.validate.conformance.cases.MapRecursive other =
+        (build.buf.validate.conformance.cases.MapRecursive) obj;
 
-    if (!internalGetVal().equals(
-        other.internalGetVal())) return false;
+    if (!internalGetVal().equals(other.internalGetVal())) return false;
     if (!getUnknownFields().equals(other.getUnknownFields())) return false;
     return true;
   }
@@ -758,149 +805,148 @@ build.buf.validate.conformance.cases.MapRecursive.Msg defaultValue) {
   }
 
   public static build.buf.validate.conformance.cases.MapRecursive parseFrom(
-      java.nio.ByteBuffer data)
-      throws com.google.protobuf.InvalidProtocolBufferException {
+      java.nio.ByteBuffer data) throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
+
   public static build.buf.validate.conformance.cases.MapRecursive parseFrom(
-      java.nio.ByteBuffer data,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      java.nio.ByteBuffer data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
+
   public static build.buf.validate.conformance.cases.MapRecursive parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
+
   public static build.buf.validate.conformance.cases.MapRecursive parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
+
   public static build.buf.validate.conformance.cases.MapRecursive parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
+
   public static build.buf.validate.conformance.cases.MapRecursive parseFrom(
-      byte[] data,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      byte[] data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static build.buf.validate.conformance.cases.MapRecursive parseFrom(java.io.InputStream input)
-      throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input);
-  }
+
   public static build.buf.validate.conformance.cases.MapRecursive parseFrom(
-      java.io.InputStream input,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-      throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input, extensionRegistry);
+      java.io.InputStream input) throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
   }
 
-  public static build.buf.validate.conformance.cases.MapRecursive parseDelimitedFrom(java.io.InputStream input)
+  public static build.buf.validate.conformance.cases.MapRecursive parseFrom(
+      java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseDelimitedWithIOException(PARSER, input);
+    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+        PARSER, input, extensionRegistry);
   }
 
   public static build.buf.validate.conformance.cases.MapRecursive parseDelimitedFrom(
-      java.io.InputStream input,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-      throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+      java.io.InputStream input) throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input);
   }
+
+  public static build.buf.validate.conformance.cases.MapRecursive parseDelimitedFrom(
+      java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(
+        PARSER, input, extensionRegistry);
+  }
+
   public static build.buf.validate.conformance.cases.MapRecursive parseFrom(
-      com.google.protobuf.CodedInputStream input)
-      throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input);
+      com.google.protobuf.CodedInputStream input) throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
   }
+
   public static build.buf.validate.conformance.cases.MapRecursive parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input, extensionRegistry);
+    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+        PARSER, input, extensionRegistry);
   }
 
   @java.lang.Override
-  public Builder newBuilderForType() { return newBuilder(); }
+  public Builder newBuilderForType() {
+    return newBuilder();
+  }
+
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
+
   public static Builder newBuilder(build.buf.validate.conformance.cases.MapRecursive prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
+
   @java.lang.Override
   public Builder toBuilder() {
-    return this == DEFAULT_INSTANCE
-        ? new Builder() : new Builder().mergeFrom(this);
+    return this == DEFAULT_INSTANCE ? new Builder() : new Builder().mergeFrom(this);
   }
 
   @java.lang.Override
-  protected Builder newBuilderForType(
-      com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+  protected Builder newBuilderForType(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
     Builder builder = new Builder(parent);
     return builder;
   }
-  /**
-   * Protobuf type {@code buf.validate.conformance.cases.MapRecursive}
-   */
-  public static final class Builder extends
-      com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+
+  /** Protobuf type {@code buf.validate.conformance.cases.MapRecursive} */
+  public static final class Builder extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
+      implements
       // @@protoc_insertion_point(builder_implements:buf.validate.conformance.cases.MapRecursive)
       build.buf.validate.conformance.cases.MapRecursiveOrBuilder {
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return build.buf.validate.conformance.cases.MapsProto.internal_static_buf_validate_conformance_cases_MapRecursive_descriptor;
+    public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+      return build.buf.validate.conformance.cases.MapsProto
+          .internal_static_buf_validate_conformance_cases_MapRecursive_descriptor;
     }
 
     @SuppressWarnings({"rawtypes"})
-    protected com.google.protobuf.MapField internalGetMapField(
-        int number) {
+    protected com.google.protobuf.MapField internalGetMapField(int number) {
       switch (number) {
         case 1:
           return internalGetVal();
         default:
-          throw new RuntimeException(
-              "Invalid map field number: " + number);
+          throw new RuntimeException("Invalid map field number: " + number);
       }
     }
+
     @SuppressWarnings({"rawtypes"})
-    protected com.google.protobuf.MapField internalGetMutableMapField(
-        int number) {
+    protected com.google.protobuf.MapField internalGetMutableMapField(int number) {
       switch (number) {
         case 1:
           return internalGetMutableVal();
         default:
-          throw new RuntimeException(
-              "Invalid map field number: " + number);
+          throw new RuntimeException("Invalid map field number: " + number);
       }
     }
+
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return build.buf.validate.conformance.cases.MapsProto.internal_static_buf_validate_conformance_cases_MapRecursive_fieldAccessorTable
+      return build.buf.validate.conformance.cases.MapsProto
+          .internal_static_buf_validate_conformance_cases_MapRecursive_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              build.buf.validate.conformance.cases.MapRecursive.class, build.buf.validate.conformance.cases.MapRecursive.Builder.class);
+              build.buf.validate.conformance.cases.MapRecursive.class,
+              build.buf.validate.conformance.cases.MapRecursive.Builder.class);
     }
 
     // Construct using build.buf.validate.conformance.cases.MapRecursive.newBuilder()
-    private Builder() {
+    private Builder() {}
 
-    }
-
-    private Builder(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+    private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
       super(parent);
-
     }
+
     @java.lang.Override
     public Builder clear() {
       super.clear();
@@ -910,9 +956,9 @@ build.buf.validate.conformance.cases.MapRecursive.Msg defaultValue) {
     }
 
     @java.lang.Override
-    public com.google.protobuf.Descriptors.Descriptor
-        getDescriptorForType() {
-      return build.buf.validate.conformance.cases.MapsProto.internal_static_buf_validate_conformance_cases_MapRecursive_descriptor;
+    public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
+      return build.buf.validate.conformance.cases.MapsProto
+          .internal_static_buf_validate_conformance_cases_MapRecursive_descriptor;
     }
 
     @java.lang.Override
@@ -931,8 +977,11 @@ build.buf.validate.conformance.cases.MapRecursive.Msg defaultValue) {
 
     @java.lang.Override
     public build.buf.validate.conformance.cases.MapRecursive buildPartial() {
-      build.buf.validate.conformance.cases.MapRecursive result = new build.buf.validate.conformance.cases.MapRecursive(this);
-      if (bitField0_ != 0) { buildPartial0(result); }
+      build.buf.validate.conformance.cases.MapRecursive result =
+          new build.buf.validate.conformance.cases.MapRecursive(this);
+      if (bitField0_ != 0) {
+        buildPartial0(result);
+      }
       onBuilt();
       return result;
     }
@@ -949,38 +998,39 @@ build.buf.validate.conformance.cases.MapRecursive.Msg defaultValue) {
     public Builder clone() {
       return super.clone();
     }
+
     @java.lang.Override
     public Builder setField(
-        com.google.protobuf.Descriptors.FieldDescriptor field,
-        java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
       return super.setField(field, value);
     }
+
     @java.lang.Override
-    public Builder clearField(
-        com.google.protobuf.Descriptors.FieldDescriptor field) {
+    public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
       return super.clearField(field);
     }
+
     @java.lang.Override
-    public Builder clearOneof(
-        com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+    public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
       return super.clearOneof(oneof);
     }
+
     @java.lang.Override
     public Builder setRepeatedField(
-        com.google.protobuf.Descriptors.FieldDescriptor field,
-        int index, java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field, int index, java.lang.Object value) {
       return super.setRepeatedField(field, index, value);
     }
+
     @java.lang.Override
     public Builder addRepeatedField(
-        com.google.protobuf.Descriptors.FieldDescriptor field,
-        java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
       return super.addRepeatedField(field, value);
     }
+
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
       if (other instanceof build.buf.validate.conformance.cases.MapRecursive) {
-        return mergeFrom((build.buf.validate.conformance.cases.MapRecursive)other);
+        return mergeFrom((build.buf.validate.conformance.cases.MapRecursive) other);
       } else {
         super.mergeFrom(other);
         return this;
@@ -988,9 +1038,9 @@ build.buf.validate.conformance.cases.MapRecursive.Msg defaultValue) {
     }
 
     public Builder mergeFrom(build.buf.validate.conformance.cases.MapRecursive other) {
-      if (other == build.buf.validate.conformance.cases.MapRecursive.getDefaultInstance()) return this;
-      internalGetMutableVal().mergeFrom(
-          other.internalGetVal());
+      if (other == build.buf.validate.conformance.cases.MapRecursive.getDefaultInstance())
+        return this;
+      internalGetMutableVal().mergeFrom(other.internalGetVal());
       bitField0_ |= 0x00000001;
       this.mergeUnknownFields(other.getUnknownFields());
       onChanged();
@@ -1018,21 +1068,25 @@ build.buf.validate.conformance.cases.MapRecursive.Msg defaultValue) {
             case 0:
               done = true;
               break;
-            case 10: {
-              com.google.protobuf.MapEntry<java.lang.Integer, build.buf.validate.conformance.cases.MapRecursive.Msg>
-              val__ = input.readMessage(
-                  ValDefaultEntryHolder.defaultEntry.getParserForType(), extensionRegistry);
-              internalGetMutableVal().getMutableMap().put(
-                  val__.getKey(), val__.getValue());
-              bitField0_ |= 0x00000001;
-              break;
-            } // case 10
-            default: {
-              if (!super.parseUnknownField(input, extensionRegistry, tag)) {
-                done = true; // was an endgroup tag
-              }
-              break;
-            } // default:
+            case 10:
+              {
+                com.google.protobuf.MapEntry<
+                        java.lang.Integer, build.buf.validate.conformance.cases.MapRecursive.Msg>
+                    val__ =
+                        input.readMessage(
+                            ValDefaultEntryHolder.defaultEntry.getParserForType(),
+                            extensionRegistry);
+                internalGetMutableVal().getMutableMap().put(val__.getKey(), val__.getValue());
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 10
+            default:
+              {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
           } // switch (tag)
         } // while (!done)
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -1042,23 +1096,27 @@ build.buf.validate.conformance.cases.MapRecursive.Msg defaultValue) {
       } // finally
       return this;
     }
+
     private int bitField0_;
 
     private com.google.protobuf.MapField<
-        java.lang.Integer, build.buf.validate.conformance.cases.MapRecursive.Msg> val_;
-    private com.google.protobuf.MapField<java.lang.Integer, build.buf.validate.conformance.cases.MapRecursive.Msg>
+            java.lang.Integer, build.buf.validate.conformance.cases.MapRecursive.Msg>
+        val_;
+
+    private com.google.protobuf.MapField<
+            java.lang.Integer, build.buf.validate.conformance.cases.MapRecursive.Msg>
         internalGetVal() {
       if (val_ == null) {
-        return com.google.protobuf.MapField.emptyMapField(
-            ValDefaultEntryHolder.defaultEntry);
+        return com.google.protobuf.MapField.emptyMapField(ValDefaultEntryHolder.defaultEntry);
       }
       return val_;
     }
-    private com.google.protobuf.MapField<java.lang.Integer, build.buf.validate.conformance.cases.MapRecursive.Msg>
+
+    private com.google.protobuf.MapField<
+            java.lang.Integer, build.buf.validate.conformance.cases.MapRecursive.Msg>
         internalGetMutableVal() {
       if (val_ == null) {
-        val_ = com.google.protobuf.MapField.newMapField(
-            ValDefaultEntryHolder.defaultEntry);
+        val_ = com.google.protobuf.MapField.newMapField(ValDefaultEntryHolder.defaultEntry);
       }
       if (!val_.isMutable()) {
         val_ = val_.copy();
@@ -1067,53 +1125,64 @@ build.buf.validate.conformance.cases.MapRecursive.Msg defaultValue) {
       onChanged();
       return val_;
     }
+
     public int getValCount() {
       return internalGetVal().getMap().size();
     }
+
     /**
-     * <code>map&lt;uint32, .buf.validate.conformance.cases.MapRecursive.Msg&gt; val = 1 [json_name = "val"];</code>
+     * <code>
+     * map&lt;uint32, .buf.validate.conformance.cases.MapRecursive.Msg&gt; val = 1 [json_name = "val"];
+     * </code>
      */
     @java.lang.Override
-    public boolean containsVal(
-        int key) {
+    public boolean containsVal(int key) {
 
       return internalGetVal().getMap().containsKey(key);
     }
-    /**
-     * Use {@link #getValMap()} instead.
-     */
+
+    /** Use {@link #getValMap()} instead. */
     @java.lang.Override
     @java.lang.Deprecated
-    public java.util.Map<java.lang.Integer, build.buf.validate.conformance.cases.MapRecursive.Msg> getVal() {
+    public java.util.Map<java.lang.Integer, build.buf.validate.conformance.cases.MapRecursive.Msg>
+        getVal() {
       return getValMap();
     }
+
     /**
-     * <code>map&lt;uint32, .buf.validate.conformance.cases.MapRecursive.Msg&gt; val = 1 [json_name = "val"];</code>
+     * <code>
+     * map&lt;uint32, .buf.validate.conformance.cases.MapRecursive.Msg&gt; val = 1 [json_name = "val"];
+     * </code>
      */
     @java.lang.Override
-    public java.util.Map<java.lang.Integer, build.buf.validate.conformance.cases.MapRecursive.Msg> getValMap() {
+    public java.util.Map<java.lang.Integer, build.buf.validate.conformance.cases.MapRecursive.Msg>
+        getValMap() {
       return internalGetVal().getMap();
     }
+
     /**
-     * <code>map&lt;uint32, .buf.validate.conformance.cases.MapRecursive.Msg&gt; val = 1 [json_name = "val"];</code>
+     * <code>
+     * map&lt;uint32, .buf.validate.conformance.cases.MapRecursive.Msg&gt; val = 1 [json_name = "val"];
+     * </code>
      */
     @java.lang.Override
-    public /* nullable */
-build.buf.validate.conformance.cases.MapRecursive.Msg getValOrDefault(
+    public /* nullable */ build.buf.validate.conformance.cases.MapRecursive.Msg getValOrDefault(
         int key,
         /* nullable */
-build.buf.validate.conformance.cases.MapRecursive.Msg defaultValue) {
+        build.buf.validate.conformance.cases.MapRecursive.Msg defaultValue) {
 
       java.util.Map<java.lang.Integer, build.buf.validate.conformance.cases.MapRecursive.Msg> map =
           internalGetVal().getMap();
       return map.containsKey(key) ? map.get(key) : defaultValue;
     }
+
     /**
-     * <code>map&lt;uint32, .buf.validate.conformance.cases.MapRecursive.Msg&gt; val = 1 [json_name = "val"];</code>
+     * <code>
+     * map&lt;uint32, .buf.validate.conformance.cases.MapRecursive.Msg&gt; val = 1 [json_name = "val"];
+     * </code>
      */
     @java.lang.Override
-    public build.buf.validate.conformance.cases.MapRecursive.Msg getValOrThrow(
-        int key) {
+    public build.buf.validate.conformance.cases.MapRecursive.Msg getValOrThrow(int key) {
 
       java.util.Map<java.lang.Integer, build.buf.validate.conformance.cases.MapRecursive.Msg> map =
           internalGetVal().getMap();
@@ -1122,57 +1191,62 @@ build.buf.validate.conformance.cases.MapRecursive.Msg defaultValue) {
       }
       return map.get(key);
     }
+
     public Builder clearVal() {
       bitField0_ = (bitField0_ & ~0x00000001);
-      internalGetMutableVal().getMutableMap()
-          .clear();
+      internalGetMutableVal().getMutableMap().clear();
       return this;
     }
-    /**
-     * <code>map&lt;uint32, .buf.validate.conformance.cases.MapRecursive.Msg&gt; val = 1 [json_name = "val"];</code>
-     */
-    public Builder removeVal(
-        int key) {
 
-      internalGetMutableVal().getMutableMap()
-          .remove(key);
+    /**
+     * <code>
+     * map&lt;uint32, .buf.validate.conformance.cases.MapRecursive.Msg&gt; val = 1 [json_name = "val"];
+     * </code>
+     */
+    public Builder removeVal(int key) {
+
+      internalGetMutableVal().getMutableMap().remove(key);
       return this;
     }
-    /**
-     * Use alternate mutation accessors instead.
-     */
+
+    /** Use alternate mutation accessors instead. */
     @java.lang.Deprecated
     public java.util.Map<java.lang.Integer, build.buf.validate.conformance.cases.MapRecursive.Msg>
         getMutableVal() {
       bitField0_ |= 0x00000001;
       return internalGetMutableVal().getMutableMap();
     }
-    /**
-     * <code>map&lt;uint32, .buf.validate.conformance.cases.MapRecursive.Msg&gt; val = 1 [json_name = "val"];</code>
-     */
-    public Builder putVal(
-        int key,
-        build.buf.validate.conformance.cases.MapRecursive.Msg value) {
 
-      if (value == null) { throw new NullPointerException("map value"); }
-      internalGetMutableVal().getMutableMap()
-          .put(key, value);
+    /**
+     * <code>
+     * map&lt;uint32, .buf.validate.conformance.cases.MapRecursive.Msg&gt; val = 1 [json_name = "val"];
+     * </code>
+     */
+    public Builder putVal(int key, build.buf.validate.conformance.cases.MapRecursive.Msg value) {
+
+      if (value == null) {
+        throw new NullPointerException("map value");
+      }
+      internalGetMutableVal().getMutableMap().put(key, value);
       bitField0_ |= 0x00000001;
       return this;
     }
+
     /**
-     * <code>map&lt;uint32, .buf.validate.conformance.cases.MapRecursive.Msg&gt; val = 1 [json_name = "val"];</code>
+     * <code>
+     * map&lt;uint32, .buf.validate.conformance.cases.MapRecursive.Msg&gt; val = 1 [json_name = "val"];
+     * </code>
      */
     public Builder putAllVal(
-        java.util.Map<java.lang.Integer, build.buf.validate.conformance.cases.MapRecursive.Msg> values) {
-      internalGetMutableVal().getMutableMap()
-          .putAll(values);
+        java.util.Map<java.lang.Integer, build.buf.validate.conformance.cases.MapRecursive.Msg>
+            values) {
+      internalGetMutableVal().getMutableMap().putAll(values);
       bitField0_ |= 0x00000001;
       return this;
     }
+
     @java.lang.Override
-    public final Builder setUnknownFields(
-        final com.google.protobuf.UnknownFieldSet unknownFields) {
+    public final Builder setUnknownFields(final com.google.protobuf.UnknownFieldSet unknownFields) {
       return super.setUnknownFields(unknownFields);
     }
 
@@ -1182,12 +1256,12 @@ build.buf.validate.conformance.cases.MapRecursive.Msg defaultValue) {
       return super.mergeUnknownFields(unknownFields);
     }
 
-
     // @@protoc_insertion_point(builder_scope:buf.validate.conformance.cases.MapRecursive)
   }
 
   // @@protoc_insertion_point(class_scope:buf.validate.conformance.cases.MapRecursive)
   private static final build.buf.validate.conformance.cases.MapRecursive DEFAULT_INSTANCE;
+
   static {
     DEFAULT_INSTANCE = new build.buf.validate.conformance.cases.MapRecursive();
   }
@@ -1196,27 +1270,27 @@ build.buf.validate.conformance.cases.MapRecursive.Msg defaultValue) {
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<MapRecursive>
-      PARSER = new com.google.protobuf.AbstractParser<MapRecursive>() {
-    @java.lang.Override
-    public MapRecursive parsePartialFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      Builder builder = newBuilder();
-      try {
-        builder.mergeFrom(input, extensionRegistry);
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(builder.buildPartial());
-      } catch (com.google.protobuf.UninitializedMessageException e) {
-        throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(e)
-            .setUnfinishedMessage(builder.buildPartial());
-      }
-      return builder.buildPartial();
-    }
-  };
+  private static final com.google.protobuf.Parser<MapRecursive> PARSER =
+      new com.google.protobuf.AbstractParser<MapRecursive>() {
+        @java.lang.Override
+        public MapRecursive parsePartialFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+          Builder builder = newBuilder();
+          try {
+            builder.mergeFrom(input, extensionRegistry);
+          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+            throw e.setUnfinishedMessage(builder.buildPartial());
+          } catch (com.google.protobuf.UninitializedMessageException e) {
+            throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+          } catch (java.io.IOException e) {
+            throw new com.google.protobuf.InvalidProtocolBufferException(e)
+                .setUnfinishedMessage(builder.buildPartial());
+          }
+          return builder.buildPartial();
+        }
+      };
 
   public static com.google.protobuf.Parser<MapRecursive> parser() {
     return PARSER;
@@ -1231,6 +1305,4 @@ build.buf.validate.conformance.cases.MapRecursive.Msg defaultValue) {
   public build.buf.validate.conformance.cases.MapRecursive getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
-
 }
-

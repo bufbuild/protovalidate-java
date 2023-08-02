@@ -3,41 +3,52 @@
 
 package build.buf.validate.conformance.harness;
 
-public interface TestConformanceResponseOrBuilder extends
+public interface TestConformanceResponseOrBuilder
+    extends
     // @@protoc_insertion_point(interface_extends:buf.validate.conformance.harness.TestConformanceResponse)
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>map&lt;string, .buf.validate.conformance.harness.TestResult&gt; results = 1 [json_name = "results"];</code>
+   * <code>
+   * map&lt;string, .buf.validate.conformance.harness.TestResult&gt; results = 1 [json_name = "results"];
+   * </code>
    */
   int getResultsCount();
+
   /**
-   * <code>map&lt;string, .buf.validate.conformance.harness.TestResult&gt; results = 1 [json_name = "results"];</code>
+   * <code>
+   * map&lt;string, .buf.validate.conformance.harness.TestResult&gt; results = 1 [json_name = "results"];
+   * </code>
    */
-  boolean containsResults(
-      java.lang.String key);
-  /**
-   * Use {@link #getResultsMap()} instead.
-   */
+  boolean containsResults(java.lang.String key);
+
+  /** Use {@link #getResultsMap()} instead. */
   @java.lang.Deprecated
-  java.util.Map<java.lang.String, build.buf.validate.conformance.harness.TestResult>
-  getResults();
+  java.util.Map<java.lang.String, build.buf.validate.conformance.harness.TestResult> getResults();
+
   /**
-   * <code>map&lt;string, .buf.validate.conformance.harness.TestResult&gt; results = 1 [json_name = "results"];</code>
+   * <code>
+   * map&lt;string, .buf.validate.conformance.harness.TestResult&gt; results = 1 [json_name = "results"];
+   * </code>
    */
   java.util.Map<java.lang.String, build.buf.validate.conformance.harness.TestResult>
-  getResultsMap();
+      getResultsMap();
+
   /**
-   * <code>map&lt;string, .buf.validate.conformance.harness.TestResult&gt; results = 1 [json_name = "results"];</code>
+   * <code>
+   * map&lt;string, .buf.validate.conformance.harness.TestResult&gt; results = 1 [json_name = "results"];
+   * </code>
    */
   /* nullable */
-build.buf.validate.conformance.harness.TestResult getResultsOrDefault(
+  build.buf.validate.conformance.harness.TestResult getResultsOrDefault(
       java.lang.String key,
       /* nullable */
-build.buf.validate.conformance.harness.TestResult defaultValue);
+      build.buf.validate.conformance.harness.TestResult defaultValue);
+
   /**
-   * <code>map&lt;string, .buf.validate.conformance.harness.TestResult&gt; results = 1 [json_name = "results"];</code>
+   * <code>
+   * map&lt;string, .buf.validate.conformance.harness.TestResult&gt; results = 1 [json_name = "results"];
+   * </code>
    */
-  build.buf.validate.conformance.harness.TestResult getResultsOrThrow(
-      java.lang.String key);
+  build.buf.validate.conformance.harness.TestResult getResultsOrThrow(java.lang.String key);
 }

@@ -14,8 +14,8 @@
 
 package build.buf.protovalidate.internal.expression;
 
-import build.buf.validate.Violation;
 import build.buf.protovalidate.exceptions.ExecutionException;
+import build.buf.validate.Violation;
 import javax.annotation.Nullable;
 import org.projectnessie.cel.Program;
 import org.projectnessie.cel.common.types.Err;
@@ -47,8 +47,8 @@ public class CompiledProgram {
    * Evaluate the compiled program with a given set of {@link Variable} bindings.
    *
    * @param bindings Variable bindings used for the evaluation.
-   * @return The {@link build.buf.validate.Violation} from the evaluation, or null if there
-   *     are no violations.
+   * @return The {@link build.buf.validate.Violation} from the evaluation, or null if there are no
+   *     violations.
    * @throws ExecutionException If the evaluation of the CEL program fails with an error.
    */
   @Nullable

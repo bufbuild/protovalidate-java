@@ -94,9 +94,7 @@ public class Main {
         return TestResult.newBuilder().setSuccess(true).build();
       } else {
         Violations error = Violations.newBuilder().addAllViolations(violations).build();
-        return TestResult.newBuilder()
-            .setValidationError(error)
-            .build();
+        return TestResult.newBuilder().setValidationError(error).build();
       }
     } catch (CompilationException e) {
       return TestResult.newBuilder().setCompilationError(e.getMessage()).build();

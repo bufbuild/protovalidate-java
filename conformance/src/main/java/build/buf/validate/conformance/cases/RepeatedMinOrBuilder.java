@@ -3,31 +3,44 @@
 
 package build.buf.validate.conformance.cases;
 
-public interface RepeatedMinOrBuilder extends
+public interface RepeatedMinOrBuilder
+    extends
     // @@protoc_insertion_point(interface_extends:buf.validate.conformance.cases.RepeatedMin)
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>repeated .buf.validate.conformance.cases.Embed val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
+   * <code>
+   * repeated .buf.validate.conformance.cases.Embed val = 1 [json_name = "val", (.buf.validate.field) = { ... }
+   * </code>
    */
-  java.util.List<build.buf.validate.conformance.cases.Embed> 
-      getValList();
+  java.util.List<build.buf.validate.conformance.cases.Embed> getValList();
+
   /**
-   * <code>repeated .buf.validate.conformance.cases.Embed val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
+   * <code>
+   * repeated .buf.validate.conformance.cases.Embed val = 1 [json_name = "val", (.buf.validate.field) = { ... }
+   * </code>
    */
   build.buf.validate.conformance.cases.Embed getVal(int index);
+
   /**
-   * <code>repeated .buf.validate.conformance.cases.Embed val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
+   * <code>
+   * repeated .buf.validate.conformance.cases.Embed val = 1 [json_name = "val", (.buf.validate.field) = { ... }
+   * </code>
    */
   int getValCount();
+
   /**
-   * <code>repeated .buf.validate.conformance.cases.Embed val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
+   * <code>
+   * repeated .buf.validate.conformance.cases.Embed val = 1 [json_name = "val", (.buf.validate.field) = { ... }
+   * </code>
    */
-  java.util.List<? extends build.buf.validate.conformance.cases.EmbedOrBuilder> 
+  java.util.List<? extends build.buf.validate.conformance.cases.EmbedOrBuilder>
       getValOrBuilderList();
+
   /**
-   * <code>repeated .buf.validate.conformance.cases.Embed val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
+   * <code>
+   * repeated .buf.validate.conformance.cases.Embed val = 1 [json_name = "val", (.buf.validate.field) = { ... }
+   * </code>
    */
-  build.buf.validate.conformance.cases.EmbedOrBuilder getValOrBuilder(
-      int index);
+  build.buf.validate.conformance.cases.EmbedOrBuilder getValOrBuilder(int index);
 }

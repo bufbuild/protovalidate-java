@@ -3,22 +3,25 @@
 
 package build.buf.validate.conformance.cases;
 
-public interface MessageOrBuilder extends
+public interface MessageOrBuilder
+    extends
     // @@protoc_insertion_point(interface_extends:buf.validate.conformance.cases.Message)
     com.google.protobuf.MessageOrBuilder {
 
   /**
    * <code>.buf.validate.conformance.cases.TestMsg val = 1 [json_name = "val"];</code>
+   *
    * @return Whether the val field is set.
    */
   boolean hasVal();
+
   /**
    * <code>.buf.validate.conformance.cases.TestMsg val = 1 [json_name = "val"];</code>
+   *
    * @return The val.
    */
   build.buf.validate.conformance.cases.TestMsg getVal();
-  /**
-   * <code>.buf.validate.conformance.cases.TestMsg val = 1 [json_name = "val"];</code>
-   */
+
+  /** <code>.buf.validate.conformance.cases.TestMsg val = 1 [json_name = "val"];</code> */
   build.buf.validate.conformance.cases.TestMsgOrBuilder getValOrBuilder();
 }

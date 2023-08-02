@@ -4,33 +4,34 @@
 package build.buf.validate;
 
 /**
+ *
+ *
  * <pre>
  * MapRules describe the constraints applied to `map` values.
  * </pre>
  *
  * Protobuf type {@code buf.validate.MapRules}
  */
-public final class MapRules extends
-    com.google.protobuf.GeneratedMessageV3 implements
+public final class MapRules extends com.google.protobuf.GeneratedMessageV3
+    implements
     // @@protoc_insertion_point(message_implements:buf.validate.MapRules)
     MapRulesOrBuilder {
-private static final long serialVersionUID = 0L;
+  private static final long serialVersionUID = 0L;
+
   // Use MapRules.newBuilder() to construct.
   private MapRules(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
-  private MapRules() {
-  }
+
+  private MapRules() {}
 
   @java.lang.Override
   @SuppressWarnings({"unused"})
-  protected java.lang.Object newInstance(
-      UnusedPrivateParameter unused) {
+  protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
     return new MapRules();
   }
 
-  public static final com.google.protobuf.Descriptors.Descriptor
-      getDescriptor() {
+  public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
     return build.buf.validate.ValidateProto.internal_static_buf_validate_MapRules_descriptor;
   }
 
@@ -45,40 +46,52 @@ private static final long serialVersionUID = 0L;
   private int bitField0_;
   public static final int MIN_PAIRS_FIELD_NUMBER = 1;
   private long minPairs_ = 0L;
+
   /**
-   * <pre>
-   *Specifies the minimum number of key-value pairs allowed. If the field has
-   *fewer key-value pairs than specified, an error message is generated.
    *
-   *```proto
-   *message MyMap {
+   *
+   * <pre>
+   * Specifies the minimum number of key-value pairs allowed. If the field has
+   * fewer key-value pairs than specified, an error message is generated.
+   *
+   * ```proto
+   * message MyMap {
    *  // The field `value` must have at least 2 key-value pairs.
    *  map&lt;string, string&gt; value = 1 [(buf.validate.field).map.min_pairs = 2];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
-   * <code>optional uint64 min_pairs = 1 [json_name = "minPairs", (.buf.validate.priv.field) = { ... }</code>
+   * <code>
+   * optional uint64 min_pairs = 1 [json_name = "minPairs", (.buf.validate.priv.field) = { ... }
+   * </code>
+   *
    * @return Whether the minPairs field is set.
    */
   @java.lang.Override
   public boolean hasMinPairs() {
     return ((bitField0_ & 0x00000001) != 0);
   }
+
   /**
-   * <pre>
-   *Specifies the minimum number of key-value pairs allowed. If the field has
-   *fewer key-value pairs than specified, an error message is generated.
    *
-   *```proto
-   *message MyMap {
+   *
+   * <pre>
+   * Specifies the minimum number of key-value pairs allowed. If the field has
+   * fewer key-value pairs than specified, an error message is generated.
+   *
+   * ```proto
+   * message MyMap {
    *  // The field `value` must have at least 2 key-value pairs.
    *  map&lt;string, string&gt; value = 1 [(buf.validate.field).map.min_pairs = 2];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
-   * <code>optional uint64 min_pairs = 1 [json_name = "minPairs", (.buf.validate.priv.field) = { ... }</code>
+   * <code>
+   * optional uint64 min_pairs = 1 [json_name = "minPairs", (.buf.validate.priv.field) = { ... }
+   * </code>
+   *
    * @return The minPairs.
    */
   @java.lang.Override
@@ -88,40 +101,52 @@ private static final long serialVersionUID = 0L;
 
   public static final int MAX_PAIRS_FIELD_NUMBER = 2;
   private long maxPairs_ = 0L;
+
   /**
-   * <pre>
-   *Specifies the maximum number of key-value pairs allowed. If the field has
-   *more key-value pairs than specified, an error message is generated.
    *
-   *```proto
-   *message MyMap {
+   *
+   * <pre>
+   * Specifies the maximum number of key-value pairs allowed. If the field has
+   * more key-value pairs than specified, an error message is generated.
+   *
+   * ```proto
+   * message MyMap {
    *  // The field `value` must have at most 3 key-value pairs.
    *  map&lt;string, string&gt; value = 1 [(buf.validate.field).map.max_pairs = 3];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
-   * <code>optional uint64 max_pairs = 2 [json_name = "maxPairs", (.buf.validate.priv.field) = { ... }</code>
+   * <code>
+   * optional uint64 max_pairs = 2 [json_name = "maxPairs", (.buf.validate.priv.field) = { ... }
+   * </code>
+   *
    * @return Whether the maxPairs field is set.
    */
   @java.lang.Override
   public boolean hasMaxPairs() {
     return ((bitField0_ & 0x00000002) != 0);
   }
+
   /**
-   * <pre>
-   *Specifies the maximum number of key-value pairs allowed. If the field has
-   *more key-value pairs than specified, an error message is generated.
    *
-   *```proto
-   *message MyMap {
+   *
+   * <pre>
+   * Specifies the maximum number of key-value pairs allowed. If the field has
+   * more key-value pairs than specified, an error message is generated.
+   *
+   * ```proto
+   * message MyMap {
    *  // The field `value` must have at most 3 key-value pairs.
    *  map&lt;string, string&gt; value = 1 [(buf.validate.field).map.max_pairs = 3];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
-   * <code>optional uint64 max_pairs = 2 [json_name = "maxPairs", (.buf.validate.priv.field) = { ... }</code>
+   * <code>
+   * optional uint64 max_pairs = 2 [json_name = "maxPairs", (.buf.validate.priv.field) = { ... }
+   * </code>
+   *
    * @return The maxPairs.
    */
   @java.lang.Override
@@ -131,12 +156,15 @@ private static final long serialVersionUID = 0L;
 
   public static final int KEYS_FIELD_NUMBER = 4;
   private build.buf.validate.FieldConstraints keys_;
+
   /**
-   * <pre>
-   *Specifies the constraints to be applied to each key in the field.
    *
-   *```proto
-   *message MyMap {
+   *
+   * <pre>
+   * Specifies the constraints to be applied to each key in the field.
+   *
+   * ```proto
+   * message MyMap {
    *  // The keys in the field `value` must follow the specified constraints.
    *  map&lt;string, string&gt; value = 1 [(buf.validate.field).map.keys = {
    *    string: {
@@ -144,23 +172,27 @@ private static final long serialVersionUID = 0L;
    *      max_len: 10
    *    }
    *  }];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
    * <code>optional .buf.validate.FieldConstraints keys = 4 [json_name = "keys"];</code>
+   *
    * @return Whether the keys field is set.
    */
   @java.lang.Override
   public boolean hasKeys() {
     return ((bitField0_ & 0x00000004) != 0);
   }
+
   /**
-   * <pre>
-   *Specifies the constraints to be applied to each key in the field.
    *
-   *```proto
-   *message MyMap {
+   *
+   * <pre>
+   * Specifies the constraints to be applied to each key in the field.
+   *
+   * ```proto
+   * message MyMap {
    *  // The keys in the field `value` must follow the specified constraints.
    *  map&lt;string, string&gt; value = 1 [(buf.validate.field).map.keys = {
    *    string: {
@@ -168,23 +200,27 @@ private static final long serialVersionUID = 0L;
    *      max_len: 10
    *    }
    *  }];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
    * <code>optional .buf.validate.FieldConstraints keys = 4 [json_name = "keys"];</code>
+   *
    * @return The keys.
    */
   @java.lang.Override
   public build.buf.validate.FieldConstraints getKeys() {
     return keys_ == null ? build.buf.validate.FieldConstraints.getDefaultInstance() : keys_;
   }
+
   /**
-   * <pre>
-   *Specifies the constraints to be applied to each key in the field.
    *
-   *```proto
-   *message MyMap {
+   *
+   * <pre>
+   * Specifies the constraints to be applied to each key in the field.
+   *
+   * ```proto
+   * message MyMap {
    *  // The keys in the field `value` must follow the specified constraints.
    *  map&lt;string, string&gt; value = 1 [(buf.validate.field).map.keys = {
    *    string: {
@@ -192,8 +228,8 @@ private static final long serialVersionUID = 0L;
    *      max_len: 10
    *    }
    *  }];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
    * <code>optional .buf.validate.FieldConstraints keys = 4 [json_name = "keys"];</code>
@@ -205,14 +241,17 @@ private static final long serialVersionUID = 0L;
 
   public static final int VALUES_FIELD_NUMBER = 5;
   private build.buf.validate.FieldConstraints values_;
+
   /**
-   * <pre>
-   *Specifies the constraints to be applied to the value of each key in the
-   *field. Message values will still have their validations evaluated unless
-   *skip is specified here.
    *
-   *```proto
-   *message MyMap {
+   *
+   * <pre>
+   * Specifies the constraints to be applied to the value of each key in the
+   * field. Message values will still have their validations evaluated unless
+   * skip is specified here.
+   *
+   * ```proto
+   * message MyMap {
    *  // The values in the field `value` must follow the specified constraints.
    *  map&lt;string, string&gt; value = 1 [(buf.validate.field).map.values = {
    *    string: {
@@ -220,25 +259,29 @@ private static final long serialVersionUID = 0L;
    *      max_len: 20
    *    }
    *  }];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
    * <code>optional .buf.validate.FieldConstraints values = 5 [json_name = "values"];</code>
+   *
    * @return Whether the values field is set.
    */
   @java.lang.Override
   public boolean hasValues() {
     return ((bitField0_ & 0x00000008) != 0);
   }
+
   /**
-   * <pre>
-   *Specifies the constraints to be applied to the value of each key in the
-   *field. Message values will still have their validations evaluated unless
-   *skip is specified here.
    *
-   *```proto
-   *message MyMap {
+   *
+   * <pre>
+   * Specifies the constraints to be applied to the value of each key in the
+   * field. Message values will still have their validations evaluated unless
+   * skip is specified here.
+   *
+   * ```proto
+   * message MyMap {
    *  // The values in the field `value` must follow the specified constraints.
    *  map&lt;string, string&gt; value = 1 [(buf.validate.field).map.values = {
    *    string: {
@@ -246,25 +289,29 @@ private static final long serialVersionUID = 0L;
    *      max_len: 20
    *    }
    *  }];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
    * <code>optional .buf.validate.FieldConstraints values = 5 [json_name = "values"];</code>
+   *
    * @return The values.
    */
   @java.lang.Override
   public build.buf.validate.FieldConstraints getValues() {
     return values_ == null ? build.buf.validate.FieldConstraints.getDefaultInstance() : values_;
   }
+
   /**
-   * <pre>
-   *Specifies the constraints to be applied to the value of each key in the
-   *field. Message values will still have their validations evaluated unless
-   *skip is specified here.
    *
-   *```proto
-   *message MyMap {
+   *
+   * <pre>
+   * Specifies the constraints to be applied to the value of each key in the
+   * field. Message values will still have their validations evaluated unless
+   * skip is specified here.
+   *
+   * ```proto
+   * message MyMap {
    *  // The values in the field `value` must follow the specified constraints.
    *  map&lt;string, string&gt; value = 1 [(buf.validate.field).map.values = {
    *    string: {
@@ -272,8 +319,8 @@ private static final long serialVersionUID = 0L;
    *      max_len: 20
    *    }
    *  }];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
    * <code>optional .buf.validate.FieldConstraints values = 5 [json_name = "values"];</code>
@@ -284,6 +331,7 @@ private static final long serialVersionUID = 0L;
   }
 
   private byte memoizedIsInitialized = -1;
+
   @java.lang.Override
   public final boolean isInitialized() {
     byte isInitialized = memoizedIsInitialized;
@@ -295,8 +343,7 @@ private static final long serialVersionUID = 0L;
   }
 
   @java.lang.Override
-  public void writeTo(com.google.protobuf.CodedOutputStream output)
-                      throws java.io.IOException {
+  public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
     if (((bitField0_ & 0x00000001) != 0)) {
       output.writeUInt64(1, minPairs_);
     }
@@ -319,20 +366,16 @@ private static final long serialVersionUID = 0L;
 
     size = 0;
     if (((bitField0_ & 0x00000001) != 0)) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeUInt64Size(1, minPairs_);
+      size += com.google.protobuf.CodedOutputStream.computeUInt64Size(1, minPairs_);
     }
     if (((bitField0_ & 0x00000002) != 0)) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeUInt64Size(2, maxPairs_);
+      size += com.google.protobuf.CodedOutputStream.computeUInt64Size(2, maxPairs_);
     }
     if (((bitField0_ & 0x00000004) != 0)) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(4, getKeys());
+      size += com.google.protobuf.CodedOutputStream.computeMessageSize(4, getKeys());
     }
     if (((bitField0_ & 0x00000008) != 0)) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(5, getValues());
+      size += com.google.protobuf.CodedOutputStream.computeMessageSize(5, getValues());
     }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
@@ -342,7 +385,7 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public boolean equals(final java.lang.Object obj) {
     if (obj == this) {
-     return true;
+      return true;
     }
     if (!(obj instanceof build.buf.validate.MapRules)) {
       return super.equals(obj);
@@ -351,23 +394,19 @@ private static final long serialVersionUID = 0L;
 
     if (hasMinPairs() != other.hasMinPairs()) return false;
     if (hasMinPairs()) {
-      if (getMinPairs()
-          != other.getMinPairs()) return false;
+      if (getMinPairs() != other.getMinPairs()) return false;
     }
     if (hasMaxPairs() != other.hasMaxPairs()) return false;
     if (hasMaxPairs()) {
-      if (getMaxPairs()
-          != other.getMaxPairs()) return false;
+      if (getMaxPairs() != other.getMaxPairs()) return false;
     }
     if (hasKeys() != other.hasKeys()) return false;
     if (hasKeys()) {
-      if (!getKeys()
-          .equals(other.getKeys())) return false;
+      if (!getKeys().equals(other.getKeys())) return false;
     }
     if (hasValues() != other.hasValues()) return false;
     if (hasValues()) {
-      if (!getValues()
-          .equals(other.getValues())) return false;
+      if (!getValues().equals(other.getValues())) return false;
     }
     if (!getUnknownFields().equals(other.getUnknownFields())) return false;
     return true;
@@ -382,13 +421,11 @@ private static final long serialVersionUID = 0L;
     hash = (19 * hash) + getDescriptor().hashCode();
     if (hasMinPairs()) {
       hash = (37 * hash) + MIN_PAIRS_FIELD_NUMBER;
-      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-          getMinPairs());
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(getMinPairs());
     }
     if (hasMaxPairs()) {
       hash = (37 * hash) + MAX_PAIRS_FIELD_NUMBER;
-      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-          getMaxPairs());
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(getMaxPairs());
     }
     if (hasKeys()) {
       hash = (37 * hash) + KEYS_FIELD_NUMBER;
@@ -403,118 +440,123 @@ private static final long serialVersionUID = 0L;
     return hash;
   }
 
-  public static build.buf.validate.MapRules parseFrom(
-      java.nio.ByteBuffer data)
+  public static build.buf.validate.MapRules parseFrom(java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
+
   public static build.buf.validate.MapRules parseFrom(
-      java.nio.ByteBuffer data,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      java.nio.ByteBuffer data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static build.buf.validate.MapRules parseFrom(
-      com.google.protobuf.ByteString data)
+
+  public static build.buf.validate.MapRules parseFrom(com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
+
   public static build.buf.validate.MapRules parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
+
   public static build.buf.validate.MapRules parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
+
   public static build.buf.validate.MapRules parseFrom(
-      byte[] data,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      byte[] data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
+
   public static build.buf.validate.MapRules parseFrom(java.io.InputStream input)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input);
+    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
   }
+
   public static build.buf.validate.MapRules parseFrom(
-      java.io.InputStream input,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input, extensionRegistry);
+    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+        PARSER, input, extensionRegistry);
   }
 
   public static build.buf.validate.MapRules parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseDelimitedWithIOException(PARSER, input);
+    return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input);
   }
 
   public static build.buf.validate.MapRules parseDelimitedFrom(
-      java.io.InputStream input,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(
+        PARSER, input, extensionRegistry);
   }
-  public static build.buf.validate.MapRules parseFrom(
-      com.google.protobuf.CodedInputStream input)
+
+  public static build.buf.validate.MapRules parseFrom(com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input);
+    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
   }
+
   public static build.buf.validate.MapRules parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input, extensionRegistry);
+    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+        PARSER, input, extensionRegistry);
   }
 
   @java.lang.Override
-  public Builder newBuilderForType() { return newBuilder(); }
+  public Builder newBuilderForType() {
+    return newBuilder();
+  }
+
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
+
   public static Builder newBuilder(build.buf.validate.MapRules prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
+
   @java.lang.Override
   public Builder toBuilder() {
-    return this == DEFAULT_INSTANCE
-        ? new Builder() : new Builder().mergeFrom(this);
+    return this == DEFAULT_INSTANCE ? new Builder() : new Builder().mergeFrom(this);
   }
 
   @java.lang.Override
-  protected Builder newBuilderForType(
-      com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+  protected Builder newBuilderForType(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
     Builder builder = new Builder(parent);
     return builder;
   }
+
   /**
+   *
+   *
    * <pre>
    * MapRules describe the constraints applied to `map` values.
    * </pre>
    *
    * Protobuf type {@code buf.validate.MapRules}
    */
-  public static final class Builder extends
-      com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+  public static final class Builder extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
+      implements
       // @@protoc_insertion_point(builder_implements:buf.validate.MapRules)
       build.buf.validate.MapRulesOrBuilder {
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
+    public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
       return build.buf.validate.ValidateProto.internal_static_buf_validate_MapRules_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return build.buf.validate.ValidateProto.internal_static_buf_validate_MapRules_fieldAccessorTable
+      return build.buf.validate.ValidateProto
+          .internal_static_buf_validate_MapRules_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
               build.buf.validate.MapRules.class, build.buf.validate.MapRules.Builder.class);
     }
@@ -524,18 +566,18 @@ private static final long serialVersionUID = 0L;
       maybeForceBuilderInitialization();
     }
 
-    private Builder(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+    private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
       super(parent);
       maybeForceBuilderInitialization();
     }
+
     private void maybeForceBuilderInitialization() {
-      if (com.google.protobuf.GeneratedMessageV3
-              .alwaysUseFieldBuilders) {
+      if (com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders) {
         getKeysFieldBuilder();
         getValuesFieldBuilder();
       }
     }
+
     @java.lang.Override
     public Builder clear() {
       super.clear();
@@ -556,8 +598,7 @@ private static final long serialVersionUID = 0L;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Descriptors.Descriptor
-        getDescriptorForType() {
+    public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
       return build.buf.validate.ValidateProto.internal_static_buf_validate_MapRules_descriptor;
     }
 
@@ -578,7 +619,9 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public build.buf.validate.MapRules buildPartial() {
       build.buf.validate.MapRules result = new build.buf.validate.MapRules(this);
-      if (bitField0_ != 0) { buildPartial0(result); }
+      if (bitField0_ != 0) {
+        buildPartial0(result);
+      }
       onBuilt();
       return result;
     }
@@ -595,15 +638,11 @@ private static final long serialVersionUID = 0L;
         to_bitField0_ |= 0x00000002;
       }
       if (((from_bitField0_ & 0x00000004) != 0)) {
-        result.keys_ = keysBuilder_ == null
-            ? keys_
-            : keysBuilder_.build();
+        result.keys_ = keysBuilder_ == null ? keys_ : keysBuilder_.build();
         to_bitField0_ |= 0x00000004;
       }
       if (((from_bitField0_ & 0x00000008) != 0)) {
-        result.values_ = valuesBuilder_ == null
-            ? values_
-            : valuesBuilder_.build();
+        result.values_ = valuesBuilder_ == null ? values_ : valuesBuilder_.build();
         to_bitField0_ |= 0x00000008;
       }
       result.bitField0_ |= to_bitField0_;
@@ -613,38 +652,39 @@ private static final long serialVersionUID = 0L;
     public Builder clone() {
       return super.clone();
     }
+
     @java.lang.Override
     public Builder setField(
-        com.google.protobuf.Descriptors.FieldDescriptor field,
-        java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
       return super.setField(field, value);
     }
+
     @java.lang.Override
-    public Builder clearField(
-        com.google.protobuf.Descriptors.FieldDescriptor field) {
+    public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
       return super.clearField(field);
     }
+
     @java.lang.Override
-    public Builder clearOneof(
-        com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+    public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
       return super.clearOneof(oneof);
     }
+
     @java.lang.Override
     public Builder setRepeatedField(
-        com.google.protobuf.Descriptors.FieldDescriptor field,
-        int index, java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field, int index, java.lang.Object value) {
       return super.setRepeatedField(field, index, value);
     }
+
     @java.lang.Override
     public Builder addRepeatedField(
-        com.google.protobuf.Descriptors.FieldDescriptor field,
-        java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
       return super.addRepeatedField(field, value);
     }
+
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
       if (other instanceof build.buf.validate.MapRules) {
-        return mergeFrom((build.buf.validate.MapRules)other);
+        return mergeFrom((build.buf.validate.MapRules) other);
       } else {
         super.mergeFrom(other);
         return this;
@@ -691,36 +731,37 @@ private static final long serialVersionUID = 0L;
             case 0:
               done = true;
               break;
-            case 8: {
-              minPairs_ = input.readUInt64();
-              bitField0_ |= 0x00000001;
-              break;
-            } // case 8
-            case 16: {
-              maxPairs_ = input.readUInt64();
-              bitField0_ |= 0x00000002;
-              break;
-            } // case 16
-            case 34: {
-              input.readMessage(
-                  getKeysFieldBuilder().getBuilder(),
-                  extensionRegistry);
-              bitField0_ |= 0x00000004;
-              break;
-            } // case 34
-            case 42: {
-              input.readMessage(
-                  getValuesFieldBuilder().getBuilder(),
-                  extensionRegistry);
-              bitField0_ |= 0x00000008;
-              break;
-            } // case 42
-            default: {
-              if (!super.parseUnknownField(input, extensionRegistry, tag)) {
-                done = true; // was an endgroup tag
-              }
-              break;
-            } // default:
+            case 8:
+              {
+                minPairs_ = input.readUInt64();
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 8
+            case 16:
+              {
+                maxPairs_ = input.readUInt64();
+                bitField0_ |= 0x00000002;
+                break;
+              } // case 16
+            case 34:
+              {
+                input.readMessage(getKeysFieldBuilder().getBuilder(), extensionRegistry);
+                bitField0_ |= 0x00000004;
+                break;
+              } // case 34
+            case 42:
+              {
+                input.readMessage(getValuesFieldBuilder().getBuilder(), extensionRegistry);
+                bitField0_ |= 0x00000008;
+                break;
+              } // case 42
+            default:
+              {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
           } // switch (tag)
         } // while (!done)
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -730,63 +771,82 @@ private static final long serialVersionUID = 0L;
       } // finally
       return this;
     }
+
     private int bitField0_;
 
-    private long minPairs_ ;
+    private long minPairs_;
+
     /**
-     * <pre>
-     *Specifies the minimum number of key-value pairs allowed. If the field has
-     *fewer key-value pairs than specified, an error message is generated.
      *
-     *```proto
-     *message MyMap {
+     *
+     * <pre>
+     * Specifies the minimum number of key-value pairs allowed. If the field has
+     * fewer key-value pairs than specified, an error message is generated.
+     *
+     * ```proto
+     * message MyMap {
      *  // The field `value` must have at least 2 key-value pairs.
      *  map&lt;string, string&gt; value = 1 [(buf.validate.field).map.min_pairs = 2];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
-     * <code>optional uint64 min_pairs = 1 [json_name = "minPairs", (.buf.validate.priv.field) = { ... }</code>
+     * <code>
+     * optional uint64 min_pairs = 1 [json_name = "minPairs", (.buf.validate.priv.field) = { ... }
+     * </code>
+     *
      * @return Whether the minPairs field is set.
      */
     @java.lang.Override
     public boolean hasMinPairs() {
       return ((bitField0_ & 0x00000001) != 0);
     }
+
     /**
-     * <pre>
-     *Specifies the minimum number of key-value pairs allowed. If the field has
-     *fewer key-value pairs than specified, an error message is generated.
      *
-     *```proto
-     *message MyMap {
+     *
+     * <pre>
+     * Specifies the minimum number of key-value pairs allowed. If the field has
+     * fewer key-value pairs than specified, an error message is generated.
+     *
+     * ```proto
+     * message MyMap {
      *  // The field `value` must have at least 2 key-value pairs.
      *  map&lt;string, string&gt; value = 1 [(buf.validate.field).map.min_pairs = 2];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
-     * <code>optional uint64 min_pairs = 1 [json_name = "minPairs", (.buf.validate.priv.field) = { ... }</code>
+     * <code>
+     * optional uint64 min_pairs = 1 [json_name = "minPairs", (.buf.validate.priv.field) = { ... }
+     * </code>
+     *
      * @return The minPairs.
      */
     @java.lang.Override
     public long getMinPairs() {
       return minPairs_;
     }
+
     /**
-     * <pre>
-     *Specifies the minimum number of key-value pairs allowed. If the field has
-     *fewer key-value pairs than specified, an error message is generated.
      *
-     *```proto
-     *message MyMap {
+     *
+     * <pre>
+     * Specifies the minimum number of key-value pairs allowed. If the field has
+     * fewer key-value pairs than specified, an error message is generated.
+     *
+     * ```proto
+     * message MyMap {
      *  // The field `value` must have at least 2 key-value pairs.
      *  map&lt;string, string&gt; value = 1 [(buf.validate.field).map.min_pairs = 2];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
-     * <code>optional uint64 min_pairs = 1 [json_name = "minPairs", (.buf.validate.priv.field) = { ... }</code>
+     * <code>
+     * optional uint64 min_pairs = 1 [json_name = "minPairs", (.buf.validate.priv.field) = { ... }
+     * </code>
+     *
      * @param value The minPairs to set.
      * @return This builder for chaining.
      */
@@ -797,20 +857,26 @@ private static final long serialVersionUID = 0L;
       onChanged();
       return this;
     }
+
     /**
-     * <pre>
-     *Specifies the minimum number of key-value pairs allowed. If the field has
-     *fewer key-value pairs than specified, an error message is generated.
      *
-     *```proto
-     *message MyMap {
+     *
+     * <pre>
+     * Specifies the minimum number of key-value pairs allowed. If the field has
+     * fewer key-value pairs than specified, an error message is generated.
+     *
+     * ```proto
+     * message MyMap {
      *  // The field `value` must have at least 2 key-value pairs.
      *  map&lt;string, string&gt; value = 1 [(buf.validate.field).map.min_pairs = 2];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
-     * <code>optional uint64 min_pairs = 1 [json_name = "minPairs", (.buf.validate.priv.field) = { ... }</code>
+     * <code>
+     * optional uint64 min_pairs = 1 [json_name = "minPairs", (.buf.validate.priv.field) = { ... }
+     * </code>
+     *
      * @return This builder for chaining.
      */
     public Builder clearMinPairs() {
@@ -820,61 +886,79 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private long maxPairs_ ;
+    private long maxPairs_;
+
     /**
-     * <pre>
-     *Specifies the maximum number of key-value pairs allowed. If the field has
-     *more key-value pairs than specified, an error message is generated.
      *
-     *```proto
-     *message MyMap {
+     *
+     * <pre>
+     * Specifies the maximum number of key-value pairs allowed. If the field has
+     * more key-value pairs than specified, an error message is generated.
+     *
+     * ```proto
+     * message MyMap {
      *  // The field `value` must have at most 3 key-value pairs.
      *  map&lt;string, string&gt; value = 1 [(buf.validate.field).map.max_pairs = 3];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
-     * <code>optional uint64 max_pairs = 2 [json_name = "maxPairs", (.buf.validate.priv.field) = { ... }</code>
+     * <code>
+     * optional uint64 max_pairs = 2 [json_name = "maxPairs", (.buf.validate.priv.field) = { ... }
+     * </code>
+     *
      * @return Whether the maxPairs field is set.
      */
     @java.lang.Override
     public boolean hasMaxPairs() {
       return ((bitField0_ & 0x00000002) != 0);
     }
+
     /**
-     * <pre>
-     *Specifies the maximum number of key-value pairs allowed. If the field has
-     *more key-value pairs than specified, an error message is generated.
      *
-     *```proto
-     *message MyMap {
+     *
+     * <pre>
+     * Specifies the maximum number of key-value pairs allowed. If the field has
+     * more key-value pairs than specified, an error message is generated.
+     *
+     * ```proto
+     * message MyMap {
      *  // The field `value` must have at most 3 key-value pairs.
      *  map&lt;string, string&gt; value = 1 [(buf.validate.field).map.max_pairs = 3];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
-     * <code>optional uint64 max_pairs = 2 [json_name = "maxPairs", (.buf.validate.priv.field) = { ... }</code>
+     * <code>
+     * optional uint64 max_pairs = 2 [json_name = "maxPairs", (.buf.validate.priv.field) = { ... }
+     * </code>
+     *
      * @return The maxPairs.
      */
     @java.lang.Override
     public long getMaxPairs() {
       return maxPairs_;
     }
+
     /**
-     * <pre>
-     *Specifies the maximum number of key-value pairs allowed. If the field has
-     *more key-value pairs than specified, an error message is generated.
      *
-     *```proto
-     *message MyMap {
+     *
+     * <pre>
+     * Specifies the maximum number of key-value pairs allowed. If the field has
+     * more key-value pairs than specified, an error message is generated.
+     *
+     * ```proto
+     * message MyMap {
      *  // The field `value` must have at most 3 key-value pairs.
      *  map&lt;string, string&gt; value = 1 [(buf.validate.field).map.max_pairs = 3];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
-     * <code>optional uint64 max_pairs = 2 [json_name = "maxPairs", (.buf.validate.priv.field) = { ... }</code>
+     * <code>
+     * optional uint64 max_pairs = 2 [json_name = "maxPairs", (.buf.validate.priv.field) = { ... }
+     * </code>
+     *
      * @param value The maxPairs to set.
      * @return This builder for chaining.
      */
@@ -885,20 +969,26 @@ private static final long serialVersionUID = 0L;
       onChanged();
       return this;
     }
+
     /**
-     * <pre>
-     *Specifies the maximum number of key-value pairs allowed. If the field has
-     *more key-value pairs than specified, an error message is generated.
      *
-     *```proto
-     *message MyMap {
+     *
+     * <pre>
+     * Specifies the maximum number of key-value pairs allowed. If the field has
+     * more key-value pairs than specified, an error message is generated.
+     *
+     * ```proto
+     * message MyMap {
      *  // The field `value` must have at most 3 key-value pairs.
      *  map&lt;string, string&gt; value = 1 [(buf.validate.field).map.max_pairs = 3];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
-     * <code>optional uint64 max_pairs = 2 [json_name = "maxPairs", (.buf.validate.priv.field) = { ... }</code>
+     * <code>
+     * optional uint64 max_pairs = 2 [json_name = "maxPairs", (.buf.validate.priv.field) = { ... }
+     * </code>
+     *
      * @return This builder for chaining.
      */
     public Builder clearMaxPairs() {
@@ -910,13 +1000,19 @@ private static final long serialVersionUID = 0L;
 
     private build.buf.validate.FieldConstraints keys_;
     private com.google.protobuf.SingleFieldBuilderV3<
-        build.buf.validate.FieldConstraints, build.buf.validate.FieldConstraints.Builder, build.buf.validate.FieldConstraintsOrBuilder> keysBuilder_;
+            build.buf.validate.FieldConstraints,
+            build.buf.validate.FieldConstraints.Builder,
+            build.buf.validate.FieldConstraintsOrBuilder>
+        keysBuilder_;
+
     /**
-     * <pre>
-     *Specifies the constraints to be applied to each key in the field.
      *
-     *```proto
-     *message MyMap {
+     *
+     * <pre>
+     * Specifies the constraints to be applied to each key in the field.
+     *
+     * ```proto
+     * message MyMap {
      *  // The keys in the field `value` must follow the specified constraints.
      *  map&lt;string, string&gt; value = 1 [(buf.validate.field).map.keys = {
      *    string: {
@@ -924,22 +1020,26 @@ private static final long serialVersionUID = 0L;
      *      max_len: 10
      *    }
      *  }];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>optional .buf.validate.FieldConstraints keys = 4 [json_name = "keys"];</code>
+     *
      * @return Whether the keys field is set.
      */
     public boolean hasKeys() {
       return ((bitField0_ & 0x00000004) != 0);
     }
+
     /**
-     * <pre>
-     *Specifies the constraints to be applied to each key in the field.
      *
-     *```proto
-     *message MyMap {
+     *
+     * <pre>
+     * Specifies the constraints to be applied to each key in the field.
+     *
+     * ```proto
+     * message MyMap {
      *  // The keys in the field `value` must follow the specified constraints.
      *  map&lt;string, string&gt; value = 1 [(buf.validate.field).map.keys = {
      *    string: {
@@ -947,11 +1047,12 @@ private static final long serialVersionUID = 0L;
      *      max_len: 10
      *    }
      *  }];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>optional .buf.validate.FieldConstraints keys = 4 [json_name = "keys"];</code>
+     *
      * @return The keys.
      */
     public build.buf.validate.FieldConstraints getKeys() {
@@ -961,12 +1062,15 @@ private static final long serialVersionUID = 0L;
         return keysBuilder_.getMessage();
       }
     }
+
     /**
-     * <pre>
-     *Specifies the constraints to be applied to each key in the field.
      *
-     *```proto
-     *message MyMap {
+     *
+     * <pre>
+     * Specifies the constraints to be applied to each key in the field.
+     *
+     * ```proto
+     * message MyMap {
      *  // The keys in the field `value` must follow the specified constraints.
      *  map&lt;string, string&gt; value = 1 [(buf.validate.field).map.keys = {
      *    string: {
@@ -974,8 +1078,8 @@ private static final long serialVersionUID = 0L;
      *      max_len: 10
      *    }
      *  }];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>optional .buf.validate.FieldConstraints keys = 4 [json_name = "keys"];</code>
@@ -993,12 +1097,15 @@ private static final long serialVersionUID = 0L;
       onChanged();
       return this;
     }
+
     /**
-     * <pre>
-     *Specifies the constraints to be applied to each key in the field.
      *
-     *```proto
-     *message MyMap {
+     *
+     * <pre>
+     * Specifies the constraints to be applied to each key in the field.
+     *
+     * ```proto
+     * message MyMap {
      *  // The keys in the field `value` must follow the specified constraints.
      *  map&lt;string, string&gt; value = 1 [(buf.validate.field).map.keys = {
      *    string: {
@@ -1006,14 +1113,13 @@ private static final long serialVersionUID = 0L;
      *      max_len: 10
      *    }
      *  }];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>optional .buf.validate.FieldConstraints keys = 4 [json_name = "keys"];</code>
      */
-    public Builder setKeys(
-        build.buf.validate.FieldConstraints.Builder builderForValue) {
+    public Builder setKeys(build.buf.validate.FieldConstraints.Builder builderForValue) {
       if (keysBuilder_ == null) {
         keys_ = builderForValue.build();
       } else {
@@ -1023,12 +1129,15 @@ private static final long serialVersionUID = 0L;
       onChanged();
       return this;
     }
+
     /**
-     * <pre>
-     *Specifies the constraints to be applied to each key in the field.
      *
-     *```proto
-     *message MyMap {
+     *
+     * <pre>
+     * Specifies the constraints to be applied to each key in the field.
+     *
+     * ```proto
+     * message MyMap {
      *  // The keys in the field `value` must follow the specified constraints.
      *  map&lt;string, string&gt; value = 1 [(buf.validate.field).map.keys = {
      *    string: {
@@ -1036,17 +1145,17 @@ private static final long serialVersionUID = 0L;
      *      max_len: 10
      *    }
      *  }];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>optional .buf.validate.FieldConstraints keys = 4 [json_name = "keys"];</code>
      */
     public Builder mergeKeys(build.buf.validate.FieldConstraints value) {
       if (keysBuilder_ == null) {
-        if (((bitField0_ & 0x00000004) != 0) &&
-          keys_ != null &&
-          keys_ != build.buf.validate.FieldConstraints.getDefaultInstance()) {
+        if (((bitField0_ & 0x00000004) != 0)
+            && keys_ != null
+            && keys_ != build.buf.validate.FieldConstraints.getDefaultInstance()) {
           getKeysBuilder().mergeFrom(value);
         } else {
           keys_ = value;
@@ -1058,12 +1167,15 @@ private static final long serialVersionUID = 0L;
       onChanged();
       return this;
     }
+
     /**
-     * <pre>
-     *Specifies the constraints to be applied to each key in the field.
      *
-     *```proto
-     *message MyMap {
+     *
+     * <pre>
+     * Specifies the constraints to be applied to each key in the field.
+     *
+     * ```proto
+     * message MyMap {
      *  // The keys in the field `value` must follow the specified constraints.
      *  map&lt;string, string&gt; value = 1 [(buf.validate.field).map.keys = {
      *    string: {
@@ -1071,8 +1183,8 @@ private static final long serialVersionUID = 0L;
      *      max_len: 10
      *    }
      *  }];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>optional .buf.validate.FieldConstraints keys = 4 [json_name = "keys"];</code>
@@ -1087,12 +1199,15 @@ private static final long serialVersionUID = 0L;
       onChanged();
       return this;
     }
+
     /**
-     * <pre>
-     *Specifies the constraints to be applied to each key in the field.
      *
-     *```proto
-     *message MyMap {
+     *
+     * <pre>
+     * Specifies the constraints to be applied to each key in the field.
+     *
+     * ```proto
+     * message MyMap {
      *  // The keys in the field `value` must follow the specified constraints.
      *  map&lt;string, string&gt; value = 1 [(buf.validate.field).map.keys = {
      *    string: {
@@ -1100,8 +1215,8 @@ private static final long serialVersionUID = 0L;
      *      max_len: 10
      *    }
      *  }];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>optional .buf.validate.FieldConstraints keys = 4 [json_name = "keys"];</code>
@@ -1111,12 +1226,15 @@ private static final long serialVersionUID = 0L;
       onChanged();
       return getKeysFieldBuilder().getBuilder();
     }
+
     /**
-     * <pre>
-     *Specifies the constraints to be applied to each key in the field.
      *
-     *```proto
-     *message MyMap {
+     *
+     * <pre>
+     * Specifies the constraints to be applied to each key in the field.
+     *
+     * ```proto
+     * message MyMap {
      *  // The keys in the field `value` must follow the specified constraints.
      *  map&lt;string, string&gt; value = 1 [(buf.validate.field).map.keys = {
      *    string: {
@@ -1124,8 +1242,8 @@ private static final long serialVersionUID = 0L;
      *      max_len: 10
      *    }
      *  }];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>optional .buf.validate.FieldConstraints keys = 4 [json_name = "keys"];</code>
@@ -1134,16 +1252,18 @@ private static final long serialVersionUID = 0L;
       if (keysBuilder_ != null) {
         return keysBuilder_.getMessageOrBuilder();
       } else {
-        return keys_ == null ?
-            build.buf.validate.FieldConstraints.getDefaultInstance() : keys_;
+        return keys_ == null ? build.buf.validate.FieldConstraints.getDefaultInstance() : keys_;
       }
     }
+
     /**
-     * <pre>
-     *Specifies the constraints to be applied to each key in the field.
      *
-     *```proto
-     *message MyMap {
+     *
+     * <pre>
+     * Specifies the constraints to be applied to each key in the field.
+     *
+     * ```proto
+     * message MyMap {
      *  // The keys in the field `value` must follow the specified constraints.
      *  map&lt;string, string&gt; value = 1 [(buf.validate.field).map.keys = {
      *    string: {
@@ -1151,21 +1271,24 @@ private static final long serialVersionUID = 0L;
      *      max_len: 10
      *    }
      *  }];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>optional .buf.validate.FieldConstraints keys = 4 [json_name = "keys"];</code>
      */
     private com.google.protobuf.SingleFieldBuilderV3<
-        build.buf.validate.FieldConstraints, build.buf.validate.FieldConstraints.Builder, build.buf.validate.FieldConstraintsOrBuilder> 
+            build.buf.validate.FieldConstraints,
+            build.buf.validate.FieldConstraints.Builder,
+            build.buf.validate.FieldConstraintsOrBuilder>
         getKeysFieldBuilder() {
       if (keysBuilder_ == null) {
-        keysBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-            build.buf.validate.FieldConstraints, build.buf.validate.FieldConstraints.Builder, build.buf.validate.FieldConstraintsOrBuilder>(
-                getKeys(),
-                getParentForChildren(),
-                isClean());
+        keysBuilder_ =
+            new com.google.protobuf.SingleFieldBuilderV3<
+                build.buf.validate.FieldConstraints,
+                build.buf.validate.FieldConstraints.Builder,
+                build.buf.validate.FieldConstraintsOrBuilder>(
+                getKeys(), getParentForChildren(), isClean());
         keys_ = null;
       }
       return keysBuilder_;
@@ -1173,15 +1296,21 @@ private static final long serialVersionUID = 0L;
 
     private build.buf.validate.FieldConstraints values_;
     private com.google.protobuf.SingleFieldBuilderV3<
-        build.buf.validate.FieldConstraints, build.buf.validate.FieldConstraints.Builder, build.buf.validate.FieldConstraintsOrBuilder> valuesBuilder_;
+            build.buf.validate.FieldConstraints,
+            build.buf.validate.FieldConstraints.Builder,
+            build.buf.validate.FieldConstraintsOrBuilder>
+        valuesBuilder_;
+
     /**
-     * <pre>
-     *Specifies the constraints to be applied to the value of each key in the
-     *field. Message values will still have their validations evaluated unless
-     *skip is specified here.
      *
-     *```proto
-     *message MyMap {
+     *
+     * <pre>
+     * Specifies the constraints to be applied to the value of each key in the
+     * field. Message values will still have their validations evaluated unless
+     * skip is specified here.
+     *
+     * ```proto
+     * message MyMap {
      *  // The values in the field `value` must follow the specified constraints.
      *  map&lt;string, string&gt; value = 1 [(buf.validate.field).map.values = {
      *    string: {
@@ -1189,24 +1318,28 @@ private static final long serialVersionUID = 0L;
      *      max_len: 20
      *    }
      *  }];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>optional .buf.validate.FieldConstraints values = 5 [json_name = "values"];</code>
+     *
      * @return Whether the values field is set.
      */
     public boolean hasValues() {
       return ((bitField0_ & 0x00000008) != 0);
     }
+
     /**
-     * <pre>
-     *Specifies the constraints to be applied to the value of each key in the
-     *field. Message values will still have their validations evaluated unless
-     *skip is specified here.
      *
-     *```proto
-     *message MyMap {
+     *
+     * <pre>
+     * Specifies the constraints to be applied to the value of each key in the
+     * field. Message values will still have their validations evaluated unless
+     * skip is specified here.
+     *
+     * ```proto
+     * message MyMap {
      *  // The values in the field `value` must follow the specified constraints.
      *  map&lt;string, string&gt; value = 1 [(buf.validate.field).map.values = {
      *    string: {
@@ -1214,11 +1347,12 @@ private static final long serialVersionUID = 0L;
      *      max_len: 20
      *    }
      *  }];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>optional .buf.validate.FieldConstraints values = 5 [json_name = "values"];</code>
+     *
      * @return The values.
      */
     public build.buf.validate.FieldConstraints getValues() {
@@ -1228,14 +1362,17 @@ private static final long serialVersionUID = 0L;
         return valuesBuilder_.getMessage();
       }
     }
+
     /**
-     * <pre>
-     *Specifies the constraints to be applied to the value of each key in the
-     *field. Message values will still have their validations evaluated unless
-     *skip is specified here.
      *
-     *```proto
-     *message MyMap {
+     *
+     * <pre>
+     * Specifies the constraints to be applied to the value of each key in the
+     * field. Message values will still have their validations evaluated unless
+     * skip is specified here.
+     *
+     * ```proto
+     * message MyMap {
      *  // The values in the field `value` must follow the specified constraints.
      *  map&lt;string, string&gt; value = 1 [(buf.validate.field).map.values = {
      *    string: {
@@ -1243,8 +1380,8 @@ private static final long serialVersionUID = 0L;
      *      max_len: 20
      *    }
      *  }];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>optional .buf.validate.FieldConstraints values = 5 [json_name = "values"];</code>
@@ -1262,14 +1399,17 @@ private static final long serialVersionUID = 0L;
       onChanged();
       return this;
     }
+
     /**
-     * <pre>
-     *Specifies the constraints to be applied to the value of each key in the
-     *field. Message values will still have their validations evaluated unless
-     *skip is specified here.
      *
-     *```proto
-     *message MyMap {
+     *
+     * <pre>
+     * Specifies the constraints to be applied to the value of each key in the
+     * field. Message values will still have their validations evaluated unless
+     * skip is specified here.
+     *
+     * ```proto
+     * message MyMap {
      *  // The values in the field `value` must follow the specified constraints.
      *  map&lt;string, string&gt; value = 1 [(buf.validate.field).map.values = {
      *    string: {
@@ -1277,14 +1417,13 @@ private static final long serialVersionUID = 0L;
      *      max_len: 20
      *    }
      *  }];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>optional .buf.validate.FieldConstraints values = 5 [json_name = "values"];</code>
      */
-    public Builder setValues(
-        build.buf.validate.FieldConstraints.Builder builderForValue) {
+    public Builder setValues(build.buf.validate.FieldConstraints.Builder builderForValue) {
       if (valuesBuilder_ == null) {
         values_ = builderForValue.build();
       } else {
@@ -1294,14 +1433,17 @@ private static final long serialVersionUID = 0L;
       onChanged();
       return this;
     }
+
     /**
-     * <pre>
-     *Specifies the constraints to be applied to the value of each key in the
-     *field. Message values will still have their validations evaluated unless
-     *skip is specified here.
      *
-     *```proto
-     *message MyMap {
+     *
+     * <pre>
+     * Specifies the constraints to be applied to the value of each key in the
+     * field. Message values will still have their validations evaluated unless
+     * skip is specified here.
+     *
+     * ```proto
+     * message MyMap {
      *  // The values in the field `value` must follow the specified constraints.
      *  map&lt;string, string&gt; value = 1 [(buf.validate.field).map.values = {
      *    string: {
@@ -1309,17 +1451,17 @@ private static final long serialVersionUID = 0L;
      *      max_len: 20
      *    }
      *  }];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>optional .buf.validate.FieldConstraints values = 5 [json_name = "values"];</code>
      */
     public Builder mergeValues(build.buf.validate.FieldConstraints value) {
       if (valuesBuilder_ == null) {
-        if (((bitField0_ & 0x00000008) != 0) &&
-          values_ != null &&
-          values_ != build.buf.validate.FieldConstraints.getDefaultInstance()) {
+        if (((bitField0_ & 0x00000008) != 0)
+            && values_ != null
+            && values_ != build.buf.validate.FieldConstraints.getDefaultInstance()) {
           getValuesBuilder().mergeFrom(value);
         } else {
           values_ = value;
@@ -1331,14 +1473,17 @@ private static final long serialVersionUID = 0L;
       onChanged();
       return this;
     }
+
     /**
-     * <pre>
-     *Specifies the constraints to be applied to the value of each key in the
-     *field. Message values will still have their validations evaluated unless
-     *skip is specified here.
      *
-     *```proto
-     *message MyMap {
+     *
+     * <pre>
+     * Specifies the constraints to be applied to the value of each key in the
+     * field. Message values will still have their validations evaluated unless
+     * skip is specified here.
+     *
+     * ```proto
+     * message MyMap {
      *  // The values in the field `value` must follow the specified constraints.
      *  map&lt;string, string&gt; value = 1 [(buf.validate.field).map.values = {
      *    string: {
@@ -1346,8 +1491,8 @@ private static final long serialVersionUID = 0L;
      *      max_len: 20
      *    }
      *  }];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>optional .buf.validate.FieldConstraints values = 5 [json_name = "values"];</code>
@@ -1362,14 +1507,17 @@ private static final long serialVersionUID = 0L;
       onChanged();
       return this;
     }
+
     /**
-     * <pre>
-     *Specifies the constraints to be applied to the value of each key in the
-     *field. Message values will still have their validations evaluated unless
-     *skip is specified here.
      *
-     *```proto
-     *message MyMap {
+     *
+     * <pre>
+     * Specifies the constraints to be applied to the value of each key in the
+     * field. Message values will still have their validations evaluated unless
+     * skip is specified here.
+     *
+     * ```proto
+     * message MyMap {
      *  // The values in the field `value` must follow the specified constraints.
      *  map&lt;string, string&gt; value = 1 [(buf.validate.field).map.values = {
      *    string: {
@@ -1377,8 +1525,8 @@ private static final long serialVersionUID = 0L;
      *      max_len: 20
      *    }
      *  }];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>optional .buf.validate.FieldConstraints values = 5 [json_name = "values"];</code>
@@ -1388,14 +1536,17 @@ private static final long serialVersionUID = 0L;
       onChanged();
       return getValuesFieldBuilder().getBuilder();
     }
+
     /**
-     * <pre>
-     *Specifies the constraints to be applied to the value of each key in the
-     *field. Message values will still have their validations evaluated unless
-     *skip is specified here.
      *
-     *```proto
-     *message MyMap {
+     *
+     * <pre>
+     * Specifies the constraints to be applied to the value of each key in the
+     * field. Message values will still have their validations evaluated unless
+     * skip is specified here.
+     *
+     * ```proto
+     * message MyMap {
      *  // The values in the field `value` must follow the specified constraints.
      *  map&lt;string, string&gt; value = 1 [(buf.validate.field).map.values = {
      *    string: {
@@ -1403,8 +1554,8 @@ private static final long serialVersionUID = 0L;
      *      max_len: 20
      *    }
      *  }];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>optional .buf.validate.FieldConstraints values = 5 [json_name = "values"];</code>
@@ -1413,18 +1564,20 @@ private static final long serialVersionUID = 0L;
       if (valuesBuilder_ != null) {
         return valuesBuilder_.getMessageOrBuilder();
       } else {
-        return values_ == null ?
-            build.buf.validate.FieldConstraints.getDefaultInstance() : values_;
+        return values_ == null ? build.buf.validate.FieldConstraints.getDefaultInstance() : values_;
       }
     }
+
     /**
-     * <pre>
-     *Specifies the constraints to be applied to the value of each key in the
-     *field. Message values will still have their validations evaluated unless
-     *skip is specified here.
      *
-     *```proto
-     *message MyMap {
+     *
+     * <pre>
+     * Specifies the constraints to be applied to the value of each key in the
+     * field. Message values will still have their validations evaluated unless
+     * skip is specified here.
+     *
+     * ```proto
+     * message MyMap {
      *  // The values in the field `value` must follow the specified constraints.
      *  map&lt;string, string&gt; value = 1 [(buf.validate.field).map.values = {
      *    string: {
@@ -1432,28 +1585,31 @@ private static final long serialVersionUID = 0L;
      *      max_len: 20
      *    }
      *  }];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>optional .buf.validate.FieldConstraints values = 5 [json_name = "values"];</code>
      */
     private com.google.protobuf.SingleFieldBuilderV3<
-        build.buf.validate.FieldConstraints, build.buf.validate.FieldConstraints.Builder, build.buf.validate.FieldConstraintsOrBuilder> 
+            build.buf.validate.FieldConstraints,
+            build.buf.validate.FieldConstraints.Builder,
+            build.buf.validate.FieldConstraintsOrBuilder>
         getValuesFieldBuilder() {
       if (valuesBuilder_ == null) {
-        valuesBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-            build.buf.validate.FieldConstraints, build.buf.validate.FieldConstraints.Builder, build.buf.validate.FieldConstraintsOrBuilder>(
-                getValues(),
-                getParentForChildren(),
-                isClean());
+        valuesBuilder_ =
+            new com.google.protobuf.SingleFieldBuilderV3<
+                build.buf.validate.FieldConstraints,
+                build.buf.validate.FieldConstraints.Builder,
+                build.buf.validate.FieldConstraintsOrBuilder>(
+                getValues(), getParentForChildren(), isClean());
         values_ = null;
       }
       return valuesBuilder_;
     }
+
     @java.lang.Override
-    public final Builder setUnknownFields(
-        final com.google.protobuf.UnknownFieldSet unknownFields) {
+    public final Builder setUnknownFields(final com.google.protobuf.UnknownFieldSet unknownFields) {
       return super.setUnknownFields(unknownFields);
     }
 
@@ -1463,12 +1619,12 @@ private static final long serialVersionUID = 0L;
       return super.mergeUnknownFields(unknownFields);
     }
 
-
     // @@protoc_insertion_point(builder_scope:buf.validate.MapRules)
   }
 
   // @@protoc_insertion_point(class_scope:buf.validate.MapRules)
   private static final build.buf.validate.MapRules DEFAULT_INSTANCE;
+
   static {
     DEFAULT_INSTANCE = new build.buf.validate.MapRules();
   }
@@ -1477,27 +1633,27 @@ private static final long serialVersionUID = 0L;
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<MapRules>
-      PARSER = new com.google.protobuf.AbstractParser<MapRules>() {
-    @java.lang.Override
-    public MapRules parsePartialFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      Builder builder = newBuilder();
-      try {
-        builder.mergeFrom(input, extensionRegistry);
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(builder.buildPartial());
-      } catch (com.google.protobuf.UninitializedMessageException e) {
-        throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(e)
-            .setUnfinishedMessage(builder.buildPartial());
-      }
-      return builder.buildPartial();
-    }
-  };
+  private static final com.google.protobuf.Parser<MapRules> PARSER =
+      new com.google.protobuf.AbstractParser<MapRules>() {
+        @java.lang.Override
+        public MapRules parsePartialFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+          Builder builder = newBuilder();
+          try {
+            builder.mergeFrom(input, extensionRegistry);
+          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+            throw e.setUnfinishedMessage(builder.buildPartial());
+          } catch (com.google.protobuf.UninitializedMessageException e) {
+            throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+          } catch (java.io.IOException e) {
+            throw new com.google.protobuf.InvalidProtocolBufferException(e)
+                .setUnfinishedMessage(builder.buildPartial());
+          }
+          return builder.buildPartial();
+        }
+      };
 
   public static com.google.protobuf.Parser<MapRules> parser() {
     return PARSER;
@@ -1512,6 +1668,4 @@ private static final long serialVersionUID = 0L;
   public build.buf.validate.MapRules getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
-
 }
-

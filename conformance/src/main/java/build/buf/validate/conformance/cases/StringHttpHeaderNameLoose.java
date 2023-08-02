@@ -3,47 +3,51 @@
 
 package build.buf.validate.conformance.cases;
 
-/**
- * Protobuf type {@code buf.validate.conformance.cases.StringHttpHeaderNameLoose}
- */
-public final class StringHttpHeaderNameLoose extends
-    com.google.protobuf.GeneratedMessageV3 implements
+/** Protobuf type {@code buf.validate.conformance.cases.StringHttpHeaderNameLoose} */
+public final class StringHttpHeaderNameLoose extends com.google.protobuf.GeneratedMessageV3
+    implements
     // @@protoc_insertion_point(message_implements:buf.validate.conformance.cases.StringHttpHeaderNameLoose)
     StringHttpHeaderNameLooseOrBuilder {
-private static final long serialVersionUID = 0L;
+  private static final long serialVersionUID = 0L;
+
   // Use StringHttpHeaderNameLoose.newBuilder() to construct.
   private StringHttpHeaderNameLoose(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
+
   private StringHttpHeaderNameLoose() {
     val_ = "";
   }
 
   @java.lang.Override
   @SuppressWarnings({"unused"})
-  protected java.lang.Object newInstance(
-      UnusedPrivateParameter unused) {
+  protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
     return new StringHttpHeaderNameLoose();
   }
 
-  public static final com.google.protobuf.Descriptors.Descriptor
-      getDescriptor() {
-    return build.buf.validate.conformance.cases.StringsProto.internal_static_buf_validate_conformance_cases_StringHttpHeaderNameLoose_descriptor;
+  public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+    return build.buf.validate.conformance.cases.StringsProto
+        .internal_static_buf_validate_conformance_cases_StringHttpHeaderNameLoose_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return build.buf.validate.conformance.cases.StringsProto.internal_static_buf_validate_conformance_cases_StringHttpHeaderNameLoose_fieldAccessorTable
+    return build.buf.validate.conformance.cases.StringsProto
+        .internal_static_buf_validate_conformance_cases_StringHttpHeaderNameLoose_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            build.buf.validate.conformance.cases.StringHttpHeaderNameLoose.class, build.buf.validate.conformance.cases.StringHttpHeaderNameLoose.Builder.class);
+            build.buf.validate.conformance.cases.StringHttpHeaderNameLoose.class,
+            build.buf.validate.conformance.cases.StringHttpHeaderNameLoose.Builder.class);
   }
 
   public static final int VAL_FIELD_NUMBER = 1;
+
   @SuppressWarnings("serial")
   private volatile java.lang.Object val_ = "";
+
   /**
    * <code>string val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
+   *
    * @return The val.
    */
   @java.lang.Override
@@ -52,25 +56,24 @@ private static final long serialVersionUID = 0L;
     if (ref instanceof java.lang.String) {
       return (java.lang.String) ref;
     } else {
-      com.google.protobuf.ByteString bs = 
-          (com.google.protobuf.ByteString) ref;
+      com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
       val_ = s;
       return s;
     }
   }
+
   /**
    * <code>string val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
+   *
    * @return The bytes for val.
    */
   @java.lang.Override
-  public com.google.protobuf.ByteString
-      getValBytes() {
+  public com.google.protobuf.ByteString getValBytes() {
     java.lang.Object ref = val_;
     if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b = 
-          com.google.protobuf.ByteString.copyFromUtf8(
-              (java.lang.String) ref);
+      com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
       val_ = b;
       return b;
     } else {
@@ -79,6 +82,7 @@ private static final long serialVersionUID = 0L;
   }
 
   private byte memoizedIsInitialized = -1;
+
   @java.lang.Override
   public final boolean isInitialized() {
     byte isInitialized = memoizedIsInitialized;
@@ -90,8 +94,7 @@ private static final long serialVersionUID = 0L;
   }
 
   @java.lang.Override
-  public void writeTo(com.google.protobuf.CodedOutputStream output)
-                      throws java.io.IOException {
+  public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(val_)) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 1, val_);
     }
@@ -115,15 +118,15 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public boolean equals(final java.lang.Object obj) {
     if (obj == this) {
-     return true;
+      return true;
     }
     if (!(obj instanceof build.buf.validate.conformance.cases.StringHttpHeaderNameLoose)) {
       return super.equals(obj);
     }
-    build.buf.validate.conformance.cases.StringHttpHeaderNameLoose other = (build.buf.validate.conformance.cases.StringHttpHeaderNameLoose) obj;
+    build.buf.validate.conformance.cases.StringHttpHeaderNameLoose other =
+        (build.buf.validate.conformance.cases.StringHttpHeaderNameLoose) obj;
 
-    if (!getVal()
-        .equals(other.getVal())) return false;
+    if (!getVal().equals(other.getVal())) return false;
     if (!getUnknownFields().equals(other.getUnknownFields())) return false;
     return true;
   }
@@ -143,127 +146,129 @@ private static final long serialVersionUID = 0L;
   }
 
   public static build.buf.validate.conformance.cases.StringHttpHeaderNameLoose parseFrom(
-      java.nio.ByteBuffer data)
-      throws com.google.protobuf.InvalidProtocolBufferException {
+      java.nio.ByteBuffer data) throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
+
   public static build.buf.validate.conformance.cases.StringHttpHeaderNameLoose parseFrom(
-      java.nio.ByteBuffer data,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      java.nio.ByteBuffer data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
+
   public static build.buf.validate.conformance.cases.StringHttpHeaderNameLoose parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
+
   public static build.buf.validate.conformance.cases.StringHttpHeaderNameLoose parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static build.buf.validate.conformance.cases.StringHttpHeaderNameLoose parseFrom(byte[] data)
-      throws com.google.protobuf.InvalidProtocolBufferException {
+
+  public static build.buf.validate.conformance.cases.StringHttpHeaderNameLoose parseFrom(
+      byte[] data) throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
+
   public static build.buf.validate.conformance.cases.StringHttpHeaderNameLoose parseFrom(
-      byte[] data,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      byte[] data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static build.buf.validate.conformance.cases.StringHttpHeaderNameLoose parseFrom(java.io.InputStream input)
-      throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input);
-  }
+
   public static build.buf.validate.conformance.cases.StringHttpHeaderNameLoose parseFrom(
-      java.io.InputStream input,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-      throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input, extensionRegistry);
+      java.io.InputStream input) throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
   }
 
-  public static build.buf.validate.conformance.cases.StringHttpHeaderNameLoose parseDelimitedFrom(java.io.InputStream input)
+  public static build.buf.validate.conformance.cases.StringHttpHeaderNameLoose parseFrom(
+      java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseDelimitedWithIOException(PARSER, input);
+    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+        PARSER, input, extensionRegistry);
   }
 
   public static build.buf.validate.conformance.cases.StringHttpHeaderNameLoose parseDelimitedFrom(
-      java.io.InputStream input,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-      throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+      java.io.InputStream input) throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input);
   }
+
+  public static build.buf.validate.conformance.cases.StringHttpHeaderNameLoose parseDelimitedFrom(
+      java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(
+        PARSER, input, extensionRegistry);
+  }
+
   public static build.buf.validate.conformance.cases.StringHttpHeaderNameLoose parseFrom(
-      com.google.protobuf.CodedInputStream input)
-      throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input);
+      com.google.protobuf.CodedInputStream input) throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
   }
+
   public static build.buf.validate.conformance.cases.StringHttpHeaderNameLoose parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input, extensionRegistry);
+    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+        PARSER, input, extensionRegistry);
   }
 
   @java.lang.Override
-  public Builder newBuilderForType() { return newBuilder(); }
+  public Builder newBuilderForType() {
+    return newBuilder();
+  }
+
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-  public static Builder newBuilder(build.buf.validate.conformance.cases.StringHttpHeaderNameLoose prototype) {
+
+  public static Builder newBuilder(
+      build.buf.validate.conformance.cases.StringHttpHeaderNameLoose prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
-  }
-  @java.lang.Override
-  public Builder toBuilder() {
-    return this == DEFAULT_INSTANCE
-        ? new Builder() : new Builder().mergeFrom(this);
   }
 
   @java.lang.Override
-  protected Builder newBuilderForType(
-      com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+  public Builder toBuilder() {
+    return this == DEFAULT_INSTANCE ? new Builder() : new Builder().mergeFrom(this);
+  }
+
+  @java.lang.Override
+  protected Builder newBuilderForType(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
     Builder builder = new Builder(parent);
     return builder;
   }
-  /**
-   * Protobuf type {@code buf.validate.conformance.cases.StringHttpHeaderNameLoose}
-   */
-  public static final class Builder extends
-      com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+
+  /** Protobuf type {@code buf.validate.conformance.cases.StringHttpHeaderNameLoose} */
+  public static final class Builder extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
+      implements
       // @@protoc_insertion_point(builder_implements:buf.validate.conformance.cases.StringHttpHeaderNameLoose)
       build.buf.validate.conformance.cases.StringHttpHeaderNameLooseOrBuilder {
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return build.buf.validate.conformance.cases.StringsProto.internal_static_buf_validate_conformance_cases_StringHttpHeaderNameLoose_descriptor;
+    public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+      return build.buf.validate.conformance.cases.StringsProto
+          .internal_static_buf_validate_conformance_cases_StringHttpHeaderNameLoose_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return build.buf.validate.conformance.cases.StringsProto.internal_static_buf_validate_conformance_cases_StringHttpHeaderNameLoose_fieldAccessorTable
+      return build.buf.validate.conformance.cases.StringsProto
+          .internal_static_buf_validate_conformance_cases_StringHttpHeaderNameLoose_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              build.buf.validate.conformance.cases.StringHttpHeaderNameLoose.class, build.buf.validate.conformance.cases.StringHttpHeaderNameLoose.Builder.class);
+              build.buf.validate.conformance.cases.StringHttpHeaderNameLoose.class,
+              build.buf.validate.conformance.cases.StringHttpHeaderNameLoose.Builder.class);
     }
 
     // Construct using build.buf.validate.conformance.cases.StringHttpHeaderNameLoose.newBuilder()
-    private Builder() {
+    private Builder() {}
 
-    }
-
-    private Builder(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+    private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
       super(parent);
-
     }
+
     @java.lang.Override
     public Builder clear() {
       super.clear();
@@ -273,13 +278,14 @@ private static final long serialVersionUID = 0L;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Descriptors.Descriptor
-        getDescriptorForType() {
-      return build.buf.validate.conformance.cases.StringsProto.internal_static_buf_validate_conformance_cases_StringHttpHeaderNameLoose_descriptor;
+    public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
+      return build.buf.validate.conformance.cases.StringsProto
+          .internal_static_buf_validate_conformance_cases_StringHttpHeaderNameLoose_descriptor;
     }
 
     @java.lang.Override
-    public build.buf.validate.conformance.cases.StringHttpHeaderNameLoose getDefaultInstanceForType() {
+    public build.buf.validate.conformance.cases.StringHttpHeaderNameLoose
+        getDefaultInstanceForType() {
       return build.buf.validate.conformance.cases.StringHttpHeaderNameLoose.getDefaultInstance();
     }
 
@@ -294,13 +300,17 @@ private static final long serialVersionUID = 0L;
 
     @java.lang.Override
     public build.buf.validate.conformance.cases.StringHttpHeaderNameLoose buildPartial() {
-      build.buf.validate.conformance.cases.StringHttpHeaderNameLoose result = new build.buf.validate.conformance.cases.StringHttpHeaderNameLoose(this);
-      if (bitField0_ != 0) { buildPartial0(result); }
+      build.buf.validate.conformance.cases.StringHttpHeaderNameLoose result =
+          new build.buf.validate.conformance.cases.StringHttpHeaderNameLoose(this);
+      if (bitField0_ != 0) {
+        buildPartial0(result);
+      }
       onBuilt();
       return result;
     }
 
-    private void buildPartial0(build.buf.validate.conformance.cases.StringHttpHeaderNameLoose result) {
+    private void buildPartial0(
+        build.buf.validate.conformance.cases.StringHttpHeaderNameLoose result) {
       int from_bitField0_ = bitField0_;
       if (((from_bitField0_ & 0x00000001) != 0)) {
         result.val_ = val_;
@@ -311,38 +321,39 @@ private static final long serialVersionUID = 0L;
     public Builder clone() {
       return super.clone();
     }
+
     @java.lang.Override
     public Builder setField(
-        com.google.protobuf.Descriptors.FieldDescriptor field,
-        java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
       return super.setField(field, value);
     }
+
     @java.lang.Override
-    public Builder clearField(
-        com.google.protobuf.Descriptors.FieldDescriptor field) {
+    public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
       return super.clearField(field);
     }
+
     @java.lang.Override
-    public Builder clearOneof(
-        com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+    public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
       return super.clearOneof(oneof);
     }
+
     @java.lang.Override
     public Builder setRepeatedField(
-        com.google.protobuf.Descriptors.FieldDescriptor field,
-        int index, java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field, int index, java.lang.Object value) {
       return super.setRepeatedField(field, index, value);
     }
+
     @java.lang.Override
     public Builder addRepeatedField(
-        com.google.protobuf.Descriptors.FieldDescriptor field,
-        java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
       return super.addRepeatedField(field, value);
     }
+
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
       if (other instanceof build.buf.validate.conformance.cases.StringHttpHeaderNameLoose) {
-        return mergeFrom((build.buf.validate.conformance.cases.StringHttpHeaderNameLoose)other);
+        return mergeFrom((build.buf.validate.conformance.cases.StringHttpHeaderNameLoose) other);
       } else {
         super.mergeFrom(other);
         return this;
@@ -350,7 +361,9 @@ private static final long serialVersionUID = 0L;
     }
 
     public Builder mergeFrom(build.buf.validate.conformance.cases.StringHttpHeaderNameLoose other) {
-      if (other == build.buf.validate.conformance.cases.StringHttpHeaderNameLoose.getDefaultInstance()) return this;
+      if (other
+          == build.buf.validate.conformance.cases.StringHttpHeaderNameLoose.getDefaultInstance())
+        return this;
       if (!other.getVal().isEmpty()) {
         val_ = other.val_;
         bitField0_ |= 0x00000001;
@@ -382,17 +395,19 @@ private static final long serialVersionUID = 0L;
             case 0:
               done = true;
               break;
-            case 10: {
-              val_ = input.readStringRequireUtf8();
-              bitField0_ |= 0x00000001;
-              break;
-            } // case 10
-            default: {
-              if (!super.parseUnknownField(input, extensionRegistry, tag)) {
-                done = true; // was an endgroup tag
-              }
-              break;
-            } // default:
+            case 10:
+              {
+                val_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 10
+            default:
+              {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
           } // switch (tag)
         } // while (!done)
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -402,18 +417,20 @@ private static final long serialVersionUID = 0L;
       } // finally
       return this;
     }
+
     private int bitField0_;
 
     private java.lang.Object val_ = "";
+
     /**
      * <code>string val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
+     *
      * @return The val.
      */
     public java.lang.String getVal() {
       java.lang.Object ref = val_;
       if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs =
-            (com.google.protobuf.ByteString) ref;
+        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         val_ = s;
         return s;
@@ -421,38 +438,43 @@ private static final long serialVersionUID = 0L;
         return (java.lang.String) ref;
       }
     }
+
     /**
      * <code>string val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
+     *
      * @return The bytes for val.
      */
-    public com.google.protobuf.ByteString
-        getValBytes() {
+    public com.google.protobuf.ByteString getValBytes() {
       java.lang.Object ref = val_;
       if (ref instanceof String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
+        com.google.protobuf.ByteString b =
+            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
         val_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
     }
+
     /**
      * <code>string val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
+     *
      * @param value The val to set.
      * @return This builder for chaining.
      */
-    public Builder setVal(
-        java.lang.String value) {
-      if (value == null) { throw new NullPointerException(); }
+    public Builder setVal(java.lang.String value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
       val_ = value;
       bitField0_ |= 0x00000001;
       onChanged();
       return this;
     }
+
     /**
      * <code>string val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
+     *
      * @return This builder for chaining.
      */
     public Builder clearVal() {
@@ -461,23 +483,26 @@ private static final long serialVersionUID = 0L;
       onChanged();
       return this;
     }
+
     /**
      * <code>string val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
+     *
      * @param value The bytes for val to set.
      * @return This builder for chaining.
      */
-    public Builder setValBytes(
-        com.google.protobuf.ByteString value) {
-      if (value == null) { throw new NullPointerException(); }
+    public Builder setValBytes(com.google.protobuf.ByteString value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
       checkByteStringIsUtf8(value);
       val_ = value;
       bitField0_ |= 0x00000001;
       onChanged();
       return this;
     }
+
     @java.lang.Override
-    public final Builder setUnknownFields(
-        final com.google.protobuf.UnknownFieldSet unknownFields) {
+    public final Builder setUnknownFields(final com.google.protobuf.UnknownFieldSet unknownFields) {
       return super.setUnknownFields(unknownFields);
     }
 
@@ -487,41 +512,43 @@ private static final long serialVersionUID = 0L;
       return super.mergeUnknownFields(unknownFields);
     }
 
-
     // @@protoc_insertion_point(builder_scope:buf.validate.conformance.cases.StringHttpHeaderNameLoose)
   }
 
   // @@protoc_insertion_point(class_scope:buf.validate.conformance.cases.StringHttpHeaderNameLoose)
-  private static final build.buf.validate.conformance.cases.StringHttpHeaderNameLoose DEFAULT_INSTANCE;
+  private static final build.buf.validate.conformance.cases.StringHttpHeaderNameLoose
+      DEFAULT_INSTANCE;
+
   static {
     DEFAULT_INSTANCE = new build.buf.validate.conformance.cases.StringHttpHeaderNameLoose();
   }
 
-  public static build.buf.validate.conformance.cases.StringHttpHeaderNameLoose getDefaultInstance() {
+  public static build.buf.validate.conformance.cases.StringHttpHeaderNameLoose
+      getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<StringHttpHeaderNameLoose>
-      PARSER = new com.google.protobuf.AbstractParser<StringHttpHeaderNameLoose>() {
-    @java.lang.Override
-    public StringHttpHeaderNameLoose parsePartialFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      Builder builder = newBuilder();
-      try {
-        builder.mergeFrom(input, extensionRegistry);
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(builder.buildPartial());
-      } catch (com.google.protobuf.UninitializedMessageException e) {
-        throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(e)
-            .setUnfinishedMessage(builder.buildPartial());
-      }
-      return builder.buildPartial();
-    }
-  };
+  private static final com.google.protobuf.Parser<StringHttpHeaderNameLoose> PARSER =
+      new com.google.protobuf.AbstractParser<StringHttpHeaderNameLoose>() {
+        @java.lang.Override
+        public StringHttpHeaderNameLoose parsePartialFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+          Builder builder = newBuilder();
+          try {
+            builder.mergeFrom(input, extensionRegistry);
+          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+            throw e.setUnfinishedMessage(builder.buildPartial());
+          } catch (com.google.protobuf.UninitializedMessageException e) {
+            throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+          } catch (java.io.IOException e) {
+            throw new com.google.protobuf.InvalidProtocolBufferException(e)
+                .setUnfinishedMessage(builder.buildPartial());
+          }
+          return builder.buildPartial();
+        }
+      };
 
   public static com.google.protobuf.Parser<StringHttpHeaderNameLoose> parser() {
     return PARSER;
@@ -533,9 +560,8 @@ private static final long serialVersionUID = 0L;
   }
 
   @java.lang.Override
-  public build.buf.validate.conformance.cases.StringHttpHeaderNameLoose getDefaultInstanceForType() {
+  public build.buf.validate.conformance.cases.StringHttpHeaderNameLoose
+      getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
-
 }
-

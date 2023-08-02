@@ -14,13 +14,13 @@
 
 package build.buf.protovalidate.internal.constraints;
 
-import build.buf.validate.FieldConstraints;
-import build.buf.validate.priv.PrivateProto;
 import build.buf.protovalidate.exceptions.CompilationException;
 import build.buf.protovalidate.internal.expression.AstExpression;
 import build.buf.protovalidate.internal.expression.CompiledProgram;
 import build.buf.protovalidate.internal.expression.Expression;
 import build.buf.protovalidate.internal.expression.Variable;
+import build.buf.validate.FieldConstraints;
+import build.buf.validate.priv.PrivateProto;
 import com.google.protobuf.Descriptors.FieldDescriptor;
 import com.google.protobuf.Message;
 import java.util.ArrayList;

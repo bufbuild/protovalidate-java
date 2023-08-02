@@ -3,12 +3,14 @@
 
 package build.buf.validate.conformance.cases;
 
-public interface FloatIncorrectTypeOrBuilder extends
+public interface FloatIncorrectTypeOrBuilder
+    extends
     // @@protoc_insertion_point(interface_extends:buf.validate.conformance.cases.FloatIncorrectType)
     com.google.protobuf.MessageOrBuilder {
 
   /**
    * <code>float val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
+   *
    * @return The val.
    */
   float getVal();

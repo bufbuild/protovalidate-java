@@ -3,12 +3,14 @@
 
 package build.buf.validate.conformance.cases;
 
-public interface FloatExLTGTOrBuilder extends
+public interface FloatExLTGTOrBuilder
+    extends
     // @@protoc_insertion_point(interface_extends:buf.validate.conformance.cases.FloatExLTGT)
     com.google.protobuf.MessageOrBuilder {
 
   /**
    * <code>float val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
+   *
    * @return The val.
    */
   float getVal();

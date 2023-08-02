@@ -3,20 +3,25 @@
 
 package build.buf.validate.conformance.cases;
 
-public interface MessageCrossPackageOrBuilder extends
+public interface MessageCrossPackageOrBuilder
+    extends
     // @@protoc_insertion_point(interface_extends:buf.validate.conformance.cases.MessageCrossPackage)
     com.google.protobuf.MessageOrBuilder {
 
   /**
    * <code>.buf.validate.conformance.cases.other_package.Embed val = 1 [json_name = "val"];</code>
+   *
    * @return Whether the val field is set.
    */
   boolean hasVal();
+
   /**
    * <code>.buf.validate.conformance.cases.other_package.Embed val = 1 [json_name = "val"];</code>
+   *
    * @return The val.
    */
   build.buf.validate.conformance.cases.other_package.Embed getVal();
+
   /**
    * <code>.buf.validate.conformance.cases.other_package.Embed val = 1 [json_name = "val"];</code>
    */

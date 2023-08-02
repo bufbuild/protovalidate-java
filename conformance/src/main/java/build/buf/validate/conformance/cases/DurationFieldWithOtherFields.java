@@ -4,6 +4,8 @@
 package build.buf.validate.conformance.cases;
 
 /**
+ *
+ *
  * <pre>
  * Regression for earlier bug where missing Duration field would short circuit
  * evaluation in C++.
@@ -11,58 +13,71 @@ package build.buf.validate.conformance.cases;
  *
  * Protobuf type {@code buf.validate.conformance.cases.DurationFieldWithOtherFields}
  */
-public final class DurationFieldWithOtherFields extends
-    com.google.protobuf.GeneratedMessageV3 implements
+public final class DurationFieldWithOtherFields extends com.google.protobuf.GeneratedMessageV3
+    implements
     // @@protoc_insertion_point(message_implements:buf.validate.conformance.cases.DurationFieldWithOtherFields)
     DurationFieldWithOtherFieldsOrBuilder {
-private static final long serialVersionUID = 0L;
+  private static final long serialVersionUID = 0L;
+
   // Use DurationFieldWithOtherFields.newBuilder() to construct.
   private DurationFieldWithOtherFields(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
-  private DurationFieldWithOtherFields() {
-  }
+
+  private DurationFieldWithOtherFields() {}
 
   @java.lang.Override
   @SuppressWarnings({"unused"})
-  protected java.lang.Object newInstance(
-      UnusedPrivateParameter unused) {
+  protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
     return new DurationFieldWithOtherFields();
   }
 
-  public static final com.google.protobuf.Descriptors.Descriptor
-      getDescriptor() {
-    return build.buf.validate.conformance.cases.WktDurationProto.internal_static_buf_validate_conformance_cases_DurationFieldWithOtherFields_descriptor;
+  public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+    return build.buf.validate.conformance.cases.WktDurationProto
+        .internal_static_buf_validate_conformance_cases_DurationFieldWithOtherFields_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return build.buf.validate.conformance.cases.WktDurationProto.internal_static_buf_validate_conformance_cases_DurationFieldWithOtherFields_fieldAccessorTable
+    return build.buf.validate.conformance.cases.WktDurationProto
+        .internal_static_buf_validate_conformance_cases_DurationFieldWithOtherFields_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            build.buf.validate.conformance.cases.DurationFieldWithOtherFields.class, build.buf.validate.conformance.cases.DurationFieldWithOtherFields.Builder.class);
+            build.buf.validate.conformance.cases.DurationFieldWithOtherFields.class,
+            build.buf.validate.conformance.cases.DurationFieldWithOtherFields.Builder.class);
   }
 
   public static final int DURATION_VAL_FIELD_NUMBER = 1;
   private com.google.protobuf.Duration durationVal_;
+
   /**
-   * <code>.google.protobuf.Duration duration_val = 1 [json_name = "durationVal", (.buf.validate.field) = { ... }</code>
+   * <code>
+   * .google.protobuf.Duration duration_val = 1 [json_name = "durationVal", (.buf.validate.field) = { ... }
+   * </code>
+   *
    * @return Whether the durationVal field is set.
    */
   @java.lang.Override
   public boolean hasDurationVal() {
     return durationVal_ != null;
   }
+
   /**
-   * <code>.google.protobuf.Duration duration_val = 1 [json_name = "durationVal", (.buf.validate.field) = { ... }</code>
+   * <code>
+   * .google.protobuf.Duration duration_val = 1 [json_name = "durationVal", (.buf.validate.field) = { ... }
+   * </code>
+   *
    * @return The durationVal.
    */
   @java.lang.Override
   public com.google.protobuf.Duration getDurationVal() {
     return durationVal_ == null ? com.google.protobuf.Duration.getDefaultInstance() : durationVal_;
   }
+
   /**
-   * <code>.google.protobuf.Duration duration_val = 1 [json_name = "durationVal", (.buf.validate.field) = { ... }</code>
+   * <code>
+   * .google.protobuf.Duration duration_val = 1 [json_name = "durationVal", (.buf.validate.field) = { ... }
+   * </code>
    */
   @java.lang.Override
   public com.google.protobuf.DurationOrBuilder getDurationValOrBuilder() {
@@ -71,8 +86,10 @@ private static final long serialVersionUID = 0L;
 
   public static final int INT_VAL_FIELD_NUMBER = 2;
   private int intVal_ = 0;
+
   /**
    * <code>int32 int_val = 2 [json_name = "intVal", (.buf.validate.field) = { ... }</code>
+   *
    * @return The intVal.
    */
   @java.lang.Override
@@ -81,6 +98,7 @@ private static final long serialVersionUID = 0L;
   }
 
   private byte memoizedIsInitialized = -1;
+
   @java.lang.Override
   public final boolean isInitialized() {
     byte isInitialized = memoizedIsInitialized;
@@ -92,8 +110,7 @@ private static final long serialVersionUID = 0L;
   }
 
   @java.lang.Override
-  public void writeTo(com.google.protobuf.CodedOutputStream output)
-                      throws java.io.IOException {
+  public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
     if (durationVal_ != null) {
       output.writeMessage(1, getDurationVal());
     }
@@ -110,12 +127,10 @@ private static final long serialVersionUID = 0L;
 
     size = 0;
     if (durationVal_ != null) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(1, getDurationVal());
+      size += com.google.protobuf.CodedOutputStream.computeMessageSize(1, getDurationVal());
     }
     if (intVal_ != 0) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeInt32Size(2, intVal_);
+      size += com.google.protobuf.CodedOutputStream.computeInt32Size(2, intVal_);
     }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
@@ -125,20 +140,19 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public boolean equals(final java.lang.Object obj) {
     if (obj == this) {
-     return true;
+      return true;
     }
     if (!(obj instanceof build.buf.validate.conformance.cases.DurationFieldWithOtherFields)) {
       return super.equals(obj);
     }
-    build.buf.validate.conformance.cases.DurationFieldWithOtherFields other = (build.buf.validate.conformance.cases.DurationFieldWithOtherFields) obj;
+    build.buf.validate.conformance.cases.DurationFieldWithOtherFields other =
+        (build.buf.validate.conformance.cases.DurationFieldWithOtherFields) obj;
 
     if (hasDurationVal() != other.hasDurationVal()) return false;
     if (hasDurationVal()) {
-      if (!getDurationVal()
-          .equals(other.getDurationVal())) return false;
+      if (!getDurationVal().equals(other.getDurationVal())) return false;
     }
-    if (getIntVal()
-        != other.getIntVal()) return false;
+    if (getIntVal() != other.getIntVal()) return false;
     if (!getUnknownFields().equals(other.getUnknownFields())) return false;
     return true;
   }
@@ -162,98 +176,106 @@ private static final long serialVersionUID = 0L;
   }
 
   public static build.buf.validate.conformance.cases.DurationFieldWithOtherFields parseFrom(
-      java.nio.ByteBuffer data)
-      throws com.google.protobuf.InvalidProtocolBufferException {
+      java.nio.ByteBuffer data) throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
+
   public static build.buf.validate.conformance.cases.DurationFieldWithOtherFields parseFrom(
-      java.nio.ByteBuffer data,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      java.nio.ByteBuffer data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
+
   public static build.buf.validate.conformance.cases.DurationFieldWithOtherFields parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
+
   public static build.buf.validate.conformance.cases.DurationFieldWithOtherFields parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static build.buf.validate.conformance.cases.DurationFieldWithOtherFields parseFrom(byte[] data)
-      throws com.google.protobuf.InvalidProtocolBufferException {
+
+  public static build.buf.validate.conformance.cases.DurationFieldWithOtherFields parseFrom(
+      byte[] data) throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
+
   public static build.buf.validate.conformance.cases.DurationFieldWithOtherFields parseFrom(
-      byte[] data,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      byte[] data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static build.buf.validate.conformance.cases.DurationFieldWithOtherFields parseFrom(java.io.InputStream input)
-      throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input);
-  }
+
   public static build.buf.validate.conformance.cases.DurationFieldWithOtherFields parseFrom(
-      java.io.InputStream input,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-      throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input, extensionRegistry);
+      java.io.InputStream input) throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
   }
 
-  public static build.buf.validate.conformance.cases.DurationFieldWithOtherFields parseDelimitedFrom(java.io.InputStream input)
+  public static build.buf.validate.conformance.cases.DurationFieldWithOtherFields parseFrom(
+      java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseDelimitedWithIOException(PARSER, input);
+    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+        PARSER, input, extensionRegistry);
   }
 
-  public static build.buf.validate.conformance.cases.DurationFieldWithOtherFields parseDelimitedFrom(
-      java.io.InputStream input,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-      throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+  public static build.buf.validate.conformance.cases.DurationFieldWithOtherFields
+      parseDelimitedFrom(java.io.InputStream input) throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input);
   }
+
+  public static build.buf.validate.conformance.cases.DurationFieldWithOtherFields
+      parseDelimitedFrom(
+          java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(
+        PARSER, input, extensionRegistry);
+  }
+
   public static build.buf.validate.conformance.cases.DurationFieldWithOtherFields parseFrom(
-      com.google.protobuf.CodedInputStream input)
-      throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input);
+      com.google.protobuf.CodedInputStream input) throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
   }
+
   public static build.buf.validate.conformance.cases.DurationFieldWithOtherFields parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input, extensionRegistry);
+    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+        PARSER, input, extensionRegistry);
   }
 
   @java.lang.Override
-  public Builder newBuilderForType() { return newBuilder(); }
+  public Builder newBuilderForType() {
+    return newBuilder();
+  }
+
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-  public static Builder newBuilder(build.buf.validate.conformance.cases.DurationFieldWithOtherFields prototype) {
+
+  public static Builder newBuilder(
+      build.buf.validate.conformance.cases.DurationFieldWithOtherFields prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
-  }
-  @java.lang.Override
-  public Builder toBuilder() {
-    return this == DEFAULT_INSTANCE
-        ? new Builder() : new Builder().mergeFrom(this);
   }
 
   @java.lang.Override
-  protected Builder newBuilderForType(
-      com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+  public Builder toBuilder() {
+    return this == DEFAULT_INSTANCE ? new Builder() : new Builder().mergeFrom(this);
+  }
+
+  @java.lang.Override
+  protected Builder newBuilderForType(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
     Builder builder = new Builder(parent);
     return builder;
   }
+
   /**
+   *
+   *
    * <pre>
    * Regression for earlier bug where missing Duration field would short circuit
    * evaluation in C++.
@@ -261,33 +283,33 @@ private static final long serialVersionUID = 0L;
    *
    * Protobuf type {@code buf.validate.conformance.cases.DurationFieldWithOtherFields}
    */
-  public static final class Builder extends
-      com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+  public static final class Builder extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
+      implements
       // @@protoc_insertion_point(builder_implements:buf.validate.conformance.cases.DurationFieldWithOtherFields)
       build.buf.validate.conformance.cases.DurationFieldWithOtherFieldsOrBuilder {
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return build.buf.validate.conformance.cases.WktDurationProto.internal_static_buf_validate_conformance_cases_DurationFieldWithOtherFields_descriptor;
+    public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+      return build.buf.validate.conformance.cases.WktDurationProto
+          .internal_static_buf_validate_conformance_cases_DurationFieldWithOtherFields_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return build.buf.validate.conformance.cases.WktDurationProto.internal_static_buf_validate_conformance_cases_DurationFieldWithOtherFields_fieldAccessorTable
+      return build.buf.validate.conformance.cases.WktDurationProto
+          .internal_static_buf_validate_conformance_cases_DurationFieldWithOtherFields_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              build.buf.validate.conformance.cases.DurationFieldWithOtherFields.class, build.buf.validate.conformance.cases.DurationFieldWithOtherFields.Builder.class);
+              build.buf.validate.conformance.cases.DurationFieldWithOtherFields.class,
+              build.buf.validate.conformance.cases.DurationFieldWithOtherFields.Builder.class);
     }
 
-    // Construct using build.buf.validate.conformance.cases.DurationFieldWithOtherFields.newBuilder()
-    private Builder() {
+    // Construct using
+    // build.buf.validate.conformance.cases.DurationFieldWithOtherFields.newBuilder()
+    private Builder() {}
 
-    }
-
-    private Builder(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+    private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
       super(parent);
-
     }
+
     @java.lang.Override
     public Builder clear() {
       super.clear();
@@ -302,13 +324,14 @@ private static final long serialVersionUID = 0L;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Descriptors.Descriptor
-        getDescriptorForType() {
-      return build.buf.validate.conformance.cases.WktDurationProto.internal_static_buf_validate_conformance_cases_DurationFieldWithOtherFields_descriptor;
+    public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
+      return build.buf.validate.conformance.cases.WktDurationProto
+          .internal_static_buf_validate_conformance_cases_DurationFieldWithOtherFields_descriptor;
     }
 
     @java.lang.Override
-    public build.buf.validate.conformance.cases.DurationFieldWithOtherFields getDefaultInstanceForType() {
+    public build.buf.validate.conformance.cases.DurationFieldWithOtherFields
+        getDefaultInstanceForType() {
       return build.buf.validate.conformance.cases.DurationFieldWithOtherFields.getDefaultInstance();
     }
 
@@ -323,18 +346,21 @@ private static final long serialVersionUID = 0L;
 
     @java.lang.Override
     public build.buf.validate.conformance.cases.DurationFieldWithOtherFields buildPartial() {
-      build.buf.validate.conformance.cases.DurationFieldWithOtherFields result = new build.buf.validate.conformance.cases.DurationFieldWithOtherFields(this);
-      if (bitField0_ != 0) { buildPartial0(result); }
+      build.buf.validate.conformance.cases.DurationFieldWithOtherFields result =
+          new build.buf.validate.conformance.cases.DurationFieldWithOtherFields(this);
+      if (bitField0_ != 0) {
+        buildPartial0(result);
+      }
       onBuilt();
       return result;
     }
 
-    private void buildPartial0(build.buf.validate.conformance.cases.DurationFieldWithOtherFields result) {
+    private void buildPartial0(
+        build.buf.validate.conformance.cases.DurationFieldWithOtherFields result) {
       int from_bitField0_ = bitField0_;
       if (((from_bitField0_ & 0x00000001) != 0)) {
-        result.durationVal_ = durationValBuilder_ == null
-            ? durationVal_
-            : durationValBuilder_.build();
+        result.durationVal_ =
+            durationValBuilder_ == null ? durationVal_ : durationValBuilder_.build();
       }
       if (((from_bitField0_ & 0x00000002) != 0)) {
         result.intVal_ = intVal_;
@@ -345,46 +371,50 @@ private static final long serialVersionUID = 0L;
     public Builder clone() {
       return super.clone();
     }
+
     @java.lang.Override
     public Builder setField(
-        com.google.protobuf.Descriptors.FieldDescriptor field,
-        java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
       return super.setField(field, value);
     }
+
     @java.lang.Override
-    public Builder clearField(
-        com.google.protobuf.Descriptors.FieldDescriptor field) {
+    public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
       return super.clearField(field);
     }
+
     @java.lang.Override
-    public Builder clearOneof(
-        com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+    public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
       return super.clearOneof(oneof);
     }
+
     @java.lang.Override
     public Builder setRepeatedField(
-        com.google.protobuf.Descriptors.FieldDescriptor field,
-        int index, java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field, int index, java.lang.Object value) {
       return super.setRepeatedField(field, index, value);
     }
+
     @java.lang.Override
     public Builder addRepeatedField(
-        com.google.protobuf.Descriptors.FieldDescriptor field,
-        java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
       return super.addRepeatedField(field, value);
     }
+
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
       if (other instanceof build.buf.validate.conformance.cases.DurationFieldWithOtherFields) {
-        return mergeFrom((build.buf.validate.conformance.cases.DurationFieldWithOtherFields)other);
+        return mergeFrom((build.buf.validate.conformance.cases.DurationFieldWithOtherFields) other);
       } else {
         super.mergeFrom(other);
         return this;
       }
     }
 
-    public Builder mergeFrom(build.buf.validate.conformance.cases.DurationFieldWithOtherFields other) {
-      if (other == build.buf.validate.conformance.cases.DurationFieldWithOtherFields.getDefaultInstance()) return this;
+    public Builder mergeFrom(
+        build.buf.validate.conformance.cases.DurationFieldWithOtherFields other) {
+      if (other
+          == build.buf.validate.conformance.cases.DurationFieldWithOtherFields.getDefaultInstance())
+        return this;
       if (other.hasDurationVal()) {
         mergeDurationVal(other.getDurationVal());
       }
@@ -417,24 +447,25 @@ private static final long serialVersionUID = 0L;
             case 0:
               done = true;
               break;
-            case 10: {
-              input.readMessage(
-                  getDurationValFieldBuilder().getBuilder(),
-                  extensionRegistry);
-              bitField0_ |= 0x00000001;
-              break;
-            } // case 10
-            case 16: {
-              intVal_ = input.readInt32();
-              bitField0_ |= 0x00000002;
-              break;
-            } // case 16
-            default: {
-              if (!super.parseUnknownField(input, extensionRegistry, tag)) {
-                done = true; // was an endgroup tag
-              }
-              break;
-            } // default:
+            case 10:
+              {
+                input.readMessage(getDurationValFieldBuilder().getBuilder(), extensionRegistry);
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 10
+            case 16:
+              {
+                intVal_ = input.readInt32();
+                bitField0_ |= 0x00000002;
+                break;
+              } // case 16
+            default:
+              {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
           } // switch (tag)
         } // while (!done)
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -444,31 +475,48 @@ private static final long serialVersionUID = 0L;
       } // finally
       return this;
     }
+
     private int bitField0_;
 
     private com.google.protobuf.Duration durationVal_;
     private com.google.protobuf.SingleFieldBuilderV3<
-        com.google.protobuf.Duration, com.google.protobuf.Duration.Builder, com.google.protobuf.DurationOrBuilder> durationValBuilder_;
+            com.google.protobuf.Duration,
+            com.google.protobuf.Duration.Builder,
+            com.google.protobuf.DurationOrBuilder>
+        durationValBuilder_;
+
     /**
-     * <code>.google.protobuf.Duration duration_val = 1 [json_name = "durationVal", (.buf.validate.field) = { ... }</code>
+     * <code>
+     * .google.protobuf.Duration duration_val = 1 [json_name = "durationVal", (.buf.validate.field) = { ... }
+     * </code>
+     *
      * @return Whether the durationVal field is set.
      */
     public boolean hasDurationVal() {
       return ((bitField0_ & 0x00000001) != 0);
     }
+
     /**
-     * <code>.google.protobuf.Duration duration_val = 1 [json_name = "durationVal", (.buf.validate.field) = { ... }</code>
+     * <code>
+     * .google.protobuf.Duration duration_val = 1 [json_name = "durationVal", (.buf.validate.field) = { ... }
+     * </code>
+     *
      * @return The durationVal.
      */
     public com.google.protobuf.Duration getDurationVal() {
       if (durationValBuilder_ == null) {
-        return durationVal_ == null ? com.google.protobuf.Duration.getDefaultInstance() : durationVal_;
+        return durationVal_ == null
+            ? com.google.protobuf.Duration.getDefaultInstance()
+            : durationVal_;
       } else {
         return durationValBuilder_.getMessage();
       }
     }
+
     /**
-     * <code>.google.protobuf.Duration duration_val = 1 [json_name = "durationVal", (.buf.validate.field) = { ... }</code>
+     * <code>
+     * .google.protobuf.Duration duration_val = 1 [json_name = "durationVal", (.buf.validate.field) = { ... }
+     * </code>
      */
     public Builder setDurationVal(com.google.protobuf.Duration value) {
       if (durationValBuilder_ == null) {
@@ -483,11 +531,13 @@ private static final long serialVersionUID = 0L;
       onChanged();
       return this;
     }
+
     /**
-     * <code>.google.protobuf.Duration duration_val = 1 [json_name = "durationVal", (.buf.validate.field) = { ... }</code>
+     * <code>
+     * .google.protobuf.Duration duration_val = 1 [json_name = "durationVal", (.buf.validate.field) = { ... }
+     * </code>
      */
-    public Builder setDurationVal(
-        com.google.protobuf.Duration.Builder builderForValue) {
+    public Builder setDurationVal(com.google.protobuf.Duration.Builder builderForValue) {
       if (durationValBuilder_ == null) {
         durationVal_ = builderForValue.build();
       } else {
@@ -497,14 +547,17 @@ private static final long serialVersionUID = 0L;
       onChanged();
       return this;
     }
+
     /**
-     * <code>.google.protobuf.Duration duration_val = 1 [json_name = "durationVal", (.buf.validate.field) = { ... }</code>
+     * <code>
+     * .google.protobuf.Duration duration_val = 1 [json_name = "durationVal", (.buf.validate.field) = { ... }
+     * </code>
      */
     public Builder mergeDurationVal(com.google.protobuf.Duration value) {
       if (durationValBuilder_ == null) {
-        if (((bitField0_ & 0x00000001) != 0) &&
-          durationVal_ != null &&
-          durationVal_ != com.google.protobuf.Duration.getDefaultInstance()) {
+        if (((bitField0_ & 0x00000001) != 0)
+            && durationVal_ != null
+            && durationVal_ != com.google.protobuf.Duration.getDefaultInstance()) {
           getDurationValBuilder().mergeFrom(value);
         } else {
           durationVal_ = value;
@@ -516,8 +569,11 @@ private static final long serialVersionUID = 0L;
       onChanged();
       return this;
     }
+
     /**
-     * <code>.google.protobuf.Duration duration_val = 1 [json_name = "durationVal", (.buf.validate.field) = { ... }</code>
+     * <code>
+     * .google.protobuf.Duration duration_val = 1 [json_name = "durationVal", (.buf.validate.field) = { ... }
+     * </code>
      */
     public Builder clearDurationVal() {
       bitField0_ = (bitField0_ & ~0x00000001);
@@ -529,53 +585,70 @@ private static final long serialVersionUID = 0L;
       onChanged();
       return this;
     }
+
     /**
-     * <code>.google.protobuf.Duration duration_val = 1 [json_name = "durationVal", (.buf.validate.field) = { ... }</code>
+     * <code>
+     * .google.protobuf.Duration duration_val = 1 [json_name = "durationVal", (.buf.validate.field) = { ... }
+     * </code>
      */
     public com.google.protobuf.Duration.Builder getDurationValBuilder() {
       bitField0_ |= 0x00000001;
       onChanged();
       return getDurationValFieldBuilder().getBuilder();
     }
+
     /**
-     * <code>.google.protobuf.Duration duration_val = 1 [json_name = "durationVal", (.buf.validate.field) = { ... }</code>
+     * <code>
+     * .google.protobuf.Duration duration_val = 1 [json_name = "durationVal", (.buf.validate.field) = { ... }
+     * </code>
      */
     public com.google.protobuf.DurationOrBuilder getDurationValOrBuilder() {
       if (durationValBuilder_ != null) {
         return durationValBuilder_.getMessageOrBuilder();
       } else {
-        return durationVal_ == null ?
-            com.google.protobuf.Duration.getDefaultInstance() : durationVal_;
+        return durationVal_ == null
+            ? com.google.protobuf.Duration.getDefaultInstance()
+            : durationVal_;
       }
     }
+
     /**
-     * <code>.google.protobuf.Duration duration_val = 1 [json_name = "durationVal", (.buf.validate.field) = { ... }</code>
+     * <code>
+     * .google.protobuf.Duration duration_val = 1 [json_name = "durationVal", (.buf.validate.field) = { ... }
+     * </code>
      */
     private com.google.protobuf.SingleFieldBuilderV3<
-        com.google.protobuf.Duration, com.google.protobuf.Duration.Builder, com.google.protobuf.DurationOrBuilder> 
+            com.google.protobuf.Duration,
+            com.google.protobuf.Duration.Builder,
+            com.google.protobuf.DurationOrBuilder>
         getDurationValFieldBuilder() {
       if (durationValBuilder_ == null) {
-        durationValBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-            com.google.protobuf.Duration, com.google.protobuf.Duration.Builder, com.google.protobuf.DurationOrBuilder>(
-                getDurationVal(),
-                getParentForChildren(),
-                isClean());
+        durationValBuilder_ =
+            new com.google.protobuf.SingleFieldBuilderV3<
+                com.google.protobuf.Duration,
+                com.google.protobuf.Duration.Builder,
+                com.google.protobuf.DurationOrBuilder>(
+                getDurationVal(), getParentForChildren(), isClean());
         durationVal_ = null;
       }
       return durationValBuilder_;
     }
 
-    private int intVal_ ;
+    private int intVal_;
+
     /**
      * <code>int32 int_val = 2 [json_name = "intVal", (.buf.validate.field) = { ... }</code>
+     *
      * @return The intVal.
      */
     @java.lang.Override
     public int getIntVal() {
       return intVal_;
     }
+
     /**
      * <code>int32 int_val = 2 [json_name = "intVal", (.buf.validate.field) = { ... }</code>
+     *
      * @param value The intVal to set.
      * @return This builder for chaining.
      */
@@ -586,8 +659,10 @@ private static final long serialVersionUID = 0L;
       onChanged();
       return this;
     }
+
     /**
      * <code>int32 int_val = 2 [json_name = "intVal", (.buf.validate.field) = { ... }</code>
+     *
      * @return This builder for chaining.
      */
     public Builder clearIntVal() {
@@ -596,9 +671,9 @@ private static final long serialVersionUID = 0L;
       onChanged();
       return this;
     }
+
     @java.lang.Override
-    public final Builder setUnknownFields(
-        final com.google.protobuf.UnknownFieldSet unknownFields) {
+    public final Builder setUnknownFields(final com.google.protobuf.UnknownFieldSet unknownFields) {
       return super.setUnknownFields(unknownFields);
     }
 
@@ -608,41 +683,43 @@ private static final long serialVersionUID = 0L;
       return super.mergeUnknownFields(unknownFields);
     }
 
-
     // @@protoc_insertion_point(builder_scope:buf.validate.conformance.cases.DurationFieldWithOtherFields)
   }
 
   // @@protoc_insertion_point(class_scope:buf.validate.conformance.cases.DurationFieldWithOtherFields)
-  private static final build.buf.validate.conformance.cases.DurationFieldWithOtherFields DEFAULT_INSTANCE;
+  private static final build.buf.validate.conformance.cases.DurationFieldWithOtherFields
+      DEFAULT_INSTANCE;
+
   static {
     DEFAULT_INSTANCE = new build.buf.validate.conformance.cases.DurationFieldWithOtherFields();
   }
 
-  public static build.buf.validate.conformance.cases.DurationFieldWithOtherFields getDefaultInstance() {
+  public static build.buf.validate.conformance.cases.DurationFieldWithOtherFields
+      getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<DurationFieldWithOtherFields>
-      PARSER = new com.google.protobuf.AbstractParser<DurationFieldWithOtherFields>() {
-    @java.lang.Override
-    public DurationFieldWithOtherFields parsePartialFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      Builder builder = newBuilder();
-      try {
-        builder.mergeFrom(input, extensionRegistry);
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(builder.buildPartial());
-      } catch (com.google.protobuf.UninitializedMessageException e) {
-        throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(e)
-            .setUnfinishedMessage(builder.buildPartial());
-      }
-      return builder.buildPartial();
-    }
-  };
+  private static final com.google.protobuf.Parser<DurationFieldWithOtherFields> PARSER =
+      new com.google.protobuf.AbstractParser<DurationFieldWithOtherFields>() {
+        @java.lang.Override
+        public DurationFieldWithOtherFields parsePartialFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+          Builder builder = newBuilder();
+          try {
+            builder.mergeFrom(input, extensionRegistry);
+          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+            throw e.setUnfinishedMessage(builder.buildPartial());
+          } catch (com.google.protobuf.UninitializedMessageException e) {
+            throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+          } catch (java.io.IOException e) {
+            throw new com.google.protobuf.InvalidProtocolBufferException(e)
+                .setUnfinishedMessage(builder.buildPartial());
+          }
+          return builder.buildPartial();
+        }
+      };
 
   public static com.google.protobuf.Parser<DurationFieldWithOtherFields> parser() {
     return PARSER;
@@ -654,9 +731,8 @@ private static final long serialVersionUID = 0L;
   }
 
   @java.lang.Override
-  public build.buf.validate.conformance.cases.DurationFieldWithOtherFields getDefaultInstanceForType() {
+  public build.buf.validate.conformance.cases.DurationFieldWithOtherFields
+      getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
-
 }
-

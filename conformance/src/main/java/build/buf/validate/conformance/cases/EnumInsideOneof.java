@@ -3,53 +3,58 @@
 
 package build.buf.validate.conformance.cases;
 
-/**
- * Protobuf type {@code buf.validate.conformance.cases.EnumInsideOneof}
- */
-public final class EnumInsideOneof extends
-    com.google.protobuf.GeneratedMessageV3 implements
+/** Protobuf type {@code buf.validate.conformance.cases.EnumInsideOneof} */
+public final class EnumInsideOneof extends com.google.protobuf.GeneratedMessageV3
+    implements
     // @@protoc_insertion_point(message_implements:buf.validate.conformance.cases.EnumInsideOneof)
     EnumInsideOneofOrBuilder {
-private static final long serialVersionUID = 0L;
+  private static final long serialVersionUID = 0L;
+
   // Use EnumInsideOneof.newBuilder() to construct.
   private EnumInsideOneof(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
-  private EnumInsideOneof() {
-  }
+
+  private EnumInsideOneof() {}
 
   @java.lang.Override
   @SuppressWarnings({"unused"})
-  protected java.lang.Object newInstance(
-      UnusedPrivateParameter unused) {
+  protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
     return new EnumInsideOneof();
   }
 
-  public static final com.google.protobuf.Descriptors.Descriptor
-      getDescriptor() {
-    return build.buf.validate.conformance.cases.EnumsProto.internal_static_buf_validate_conformance_cases_EnumInsideOneof_descriptor;
+  public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+    return build.buf.validate.conformance.cases.EnumsProto
+        .internal_static_buf_validate_conformance_cases_EnumInsideOneof_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return build.buf.validate.conformance.cases.EnumsProto.internal_static_buf_validate_conformance_cases_EnumInsideOneof_fieldAccessorTable
+    return build.buf.validate.conformance.cases.EnumsProto
+        .internal_static_buf_validate_conformance_cases_EnumInsideOneof_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            build.buf.validate.conformance.cases.EnumInsideOneof.class, build.buf.validate.conformance.cases.EnumInsideOneof.Builder.class);
+            build.buf.validate.conformance.cases.EnumInsideOneof.class,
+            build.buf.validate.conformance.cases.EnumInsideOneof.Builder.class);
   }
 
   private int fooCase_ = 0;
+
   @SuppressWarnings("serial")
   private java.lang.Object foo_;
+
   public enum FooCase
-      implements com.google.protobuf.Internal.EnumLite,
+      implements
+          com.google.protobuf.Internal.EnumLite,
           com.google.protobuf.AbstractMessage.InternalOneOfEnum {
     VAL(1),
     FOO_NOT_SET(0);
     private final int value;
+
     private FooCase(int value) {
       this.value = value;
     }
+
     /**
      * @param value The number of the enum to look for.
      * @return The enum associated with the given number.
@@ -62,34 +67,41 @@ private static final long serialVersionUID = 0L;
 
     public static FooCase forNumber(int value) {
       switch (value) {
-        case 1: return VAL;
-        case 0: return FOO_NOT_SET;
-        default: return null;
+        case 1:
+          return VAL;
+        case 0:
+          return FOO_NOT_SET;
+        default:
+          return null;
       }
     }
+
     public int getNumber() {
       return this.value;
     }
   };
 
-  public FooCase
-  getFooCase() {
-    return FooCase.forNumber(
-        fooCase_);
+  public FooCase getFooCase() {
+    return FooCase.forNumber(fooCase_);
   }
 
   private int barCase_ = 0;
+
   @SuppressWarnings("serial")
   private java.lang.Object bar_;
+
   public enum BarCase
-      implements com.google.protobuf.Internal.EnumLite,
+      implements
+          com.google.protobuf.Internal.EnumLite,
           com.google.protobuf.AbstractMessage.InternalOneOfEnum {
     VAL2(2),
     BAR_NOT_SET(0);
     private final int value;
+
     private BarCase(int value) {
       this.value = value;
     }
+
     /**
      * @param value The number of the enum to look for.
      * @return The enum associated with the given number.
@@ -102,32 +114,42 @@ private static final long serialVersionUID = 0L;
 
     public static BarCase forNumber(int value) {
       switch (value) {
-        case 2: return VAL2;
-        case 0: return BAR_NOT_SET;
-        default: return null;
+        case 2:
+          return VAL2;
+        case 0:
+          return BAR_NOT_SET;
+        default:
+          return null;
       }
     }
+
     public int getNumber() {
       return this.value;
     }
   };
 
-  public BarCase
-  getBarCase() {
-    return BarCase.forNumber(
-        barCase_);
+  public BarCase getBarCase() {
+    return BarCase.forNumber(barCase_);
   }
 
   public static final int VAL_FIELD_NUMBER = 1;
+
   /**
-   * <code>.buf.validate.conformance.cases.TestEnum val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
+   * <code>
+   * .buf.validate.conformance.cases.TestEnum val = 1 [json_name = "val", (.buf.validate.field) = { ... }
+   * </code>
+   *
    * @return Whether the val field is set.
    */
   public boolean hasVal() {
     return fooCase_ == 1;
   }
+
   /**
-   * <code>.buf.validate.conformance.cases.TestEnum val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
+   * <code>
+   * .buf.validate.conformance.cases.TestEnum val = 1 [json_name = "val", (.buf.validate.field) = { ... }
+   * </code>
+   *
    * @return The enum numeric value on the wire for val.
    */
   public int getValValue() {
@@ -136,29 +158,41 @@ private static final long serialVersionUID = 0L;
     }
     return 0;
   }
+
   /**
-   * <code>.buf.validate.conformance.cases.TestEnum val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
+   * <code>
+   * .buf.validate.conformance.cases.TestEnum val = 1 [json_name = "val", (.buf.validate.field) = { ... }
+   * </code>
+   *
    * @return The val.
    */
   public build.buf.validate.conformance.cases.TestEnum getVal() {
     if (fooCase_ == 1) {
-      build.buf.validate.conformance.cases.TestEnum result = build.buf.validate.conformance.cases.TestEnum.forNumber(
-          (java.lang.Integer) foo_);
+      build.buf.validate.conformance.cases.TestEnum result =
+          build.buf.validate.conformance.cases.TestEnum.forNumber((java.lang.Integer) foo_);
       return result == null ? build.buf.validate.conformance.cases.TestEnum.UNRECOGNIZED : result;
     }
     return build.buf.validate.conformance.cases.TestEnum.TEST_ENUM_UNSPECIFIED;
   }
 
   public static final int VAL2_FIELD_NUMBER = 2;
+
   /**
-   * <code>.buf.validate.conformance.cases.TestEnum val2 = 2 [json_name = "val2", (.buf.validate.field) = { ... }</code>
+   * <code>
+   * .buf.validate.conformance.cases.TestEnum val2 = 2 [json_name = "val2", (.buf.validate.field) = { ... }
+   * </code>
+   *
    * @return Whether the val2 field is set.
    */
   public boolean hasVal2() {
     return barCase_ == 2;
   }
+
   /**
-   * <code>.buf.validate.conformance.cases.TestEnum val2 = 2 [json_name = "val2", (.buf.validate.field) = { ... }</code>
+   * <code>
+   * .buf.validate.conformance.cases.TestEnum val2 = 2 [json_name = "val2", (.buf.validate.field) = { ... }
+   * </code>
+   *
    * @return The enum numeric value on the wire for val2.
    */
   public int getVal2Value() {
@@ -167,20 +201,25 @@ private static final long serialVersionUID = 0L;
     }
     return 0;
   }
+
   /**
-   * <code>.buf.validate.conformance.cases.TestEnum val2 = 2 [json_name = "val2", (.buf.validate.field) = { ... }</code>
+   * <code>
+   * .buf.validate.conformance.cases.TestEnum val2 = 2 [json_name = "val2", (.buf.validate.field) = { ... }
+   * </code>
+   *
    * @return The val2.
    */
   public build.buf.validate.conformance.cases.TestEnum getVal2() {
     if (barCase_ == 2) {
-      build.buf.validate.conformance.cases.TestEnum result = build.buf.validate.conformance.cases.TestEnum.forNumber(
-          (java.lang.Integer) bar_);
+      build.buf.validate.conformance.cases.TestEnum result =
+          build.buf.validate.conformance.cases.TestEnum.forNumber((java.lang.Integer) bar_);
       return result == null ? build.buf.validate.conformance.cases.TestEnum.UNRECOGNIZED : result;
     }
     return build.buf.validate.conformance.cases.TestEnum.TEST_ENUM_UNSPECIFIED;
   }
 
   private byte memoizedIsInitialized = -1;
+
   @java.lang.Override
   public final boolean isInitialized() {
     byte isInitialized = memoizedIsInitialized;
@@ -192,8 +231,7 @@ private static final long serialVersionUID = 0L;
   }
 
   @java.lang.Override
-  public void writeTo(com.google.protobuf.CodedOutputStream output)
-                      throws java.io.IOException {
+  public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
     if (fooCase_ == 1) {
       output.writeEnum(1, ((java.lang.Integer) foo_));
     }
@@ -210,12 +248,10 @@ private static final long serialVersionUID = 0L;
 
     size = 0;
     if (fooCase_ == 1) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeEnumSize(1, ((java.lang.Integer) foo_));
+      size += com.google.protobuf.CodedOutputStream.computeEnumSize(1, ((java.lang.Integer) foo_));
     }
     if (barCase_ == 2) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeEnumSize(2, ((java.lang.Integer) bar_));
+      size += com.google.protobuf.CodedOutputStream.computeEnumSize(2, ((java.lang.Integer) bar_));
     }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
@@ -225,18 +261,18 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public boolean equals(final java.lang.Object obj) {
     if (obj == this) {
-     return true;
+      return true;
     }
     if (!(obj instanceof build.buf.validate.conformance.cases.EnumInsideOneof)) {
       return super.equals(obj);
     }
-    build.buf.validate.conformance.cases.EnumInsideOneof other = (build.buf.validate.conformance.cases.EnumInsideOneof) obj;
+    build.buf.validate.conformance.cases.EnumInsideOneof other =
+        (build.buf.validate.conformance.cases.EnumInsideOneof) obj;
 
     if (!getFooCase().equals(other.getFooCase())) return false;
     switch (fooCase_) {
       case 1:
-        if (getValValue()
-            != other.getValValue()) return false;
+        if (getValValue() != other.getValValue()) return false;
         break;
       case 0:
       default:
@@ -244,8 +280,7 @@ private static final long serialVersionUID = 0L;
     if (!getBarCase().equals(other.getBarCase())) return false;
     switch (barCase_) {
       case 2:
-        if (getVal2Value()
-            != other.getVal2Value()) return false;
+        if (getVal2Value() != other.getVal2Value()) return false;
         break;
       case 0:
       default:
@@ -283,127 +318,128 @@ private static final long serialVersionUID = 0L;
   }
 
   public static build.buf.validate.conformance.cases.EnumInsideOneof parseFrom(
-      java.nio.ByteBuffer data)
-      throws com.google.protobuf.InvalidProtocolBufferException {
+      java.nio.ByteBuffer data) throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
+
   public static build.buf.validate.conformance.cases.EnumInsideOneof parseFrom(
-      java.nio.ByteBuffer data,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      java.nio.ByteBuffer data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
+
   public static build.buf.validate.conformance.cases.EnumInsideOneof parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
+
   public static build.buf.validate.conformance.cases.EnumInsideOneof parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
+
   public static build.buf.validate.conformance.cases.EnumInsideOneof parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
+
   public static build.buf.validate.conformance.cases.EnumInsideOneof parseFrom(
-      byte[] data,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      byte[] data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static build.buf.validate.conformance.cases.EnumInsideOneof parseFrom(java.io.InputStream input)
-      throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input);
-  }
+
   public static build.buf.validate.conformance.cases.EnumInsideOneof parseFrom(
-      java.io.InputStream input,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-      throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input, extensionRegistry);
+      java.io.InputStream input) throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
   }
 
-  public static build.buf.validate.conformance.cases.EnumInsideOneof parseDelimitedFrom(java.io.InputStream input)
+  public static build.buf.validate.conformance.cases.EnumInsideOneof parseFrom(
+      java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseDelimitedWithIOException(PARSER, input);
+    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+        PARSER, input, extensionRegistry);
   }
 
   public static build.buf.validate.conformance.cases.EnumInsideOneof parseDelimitedFrom(
-      java.io.InputStream input,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-      throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+      java.io.InputStream input) throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input);
   }
+
+  public static build.buf.validate.conformance.cases.EnumInsideOneof parseDelimitedFrom(
+      java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(
+        PARSER, input, extensionRegistry);
+  }
+
   public static build.buf.validate.conformance.cases.EnumInsideOneof parseFrom(
-      com.google.protobuf.CodedInputStream input)
-      throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input);
+      com.google.protobuf.CodedInputStream input) throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
   }
+
   public static build.buf.validate.conformance.cases.EnumInsideOneof parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input, extensionRegistry);
+    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+        PARSER, input, extensionRegistry);
   }
 
   @java.lang.Override
-  public Builder newBuilderForType() { return newBuilder(); }
+  public Builder newBuilderForType() {
+    return newBuilder();
+  }
+
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
+
   public static Builder newBuilder(build.buf.validate.conformance.cases.EnumInsideOneof prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
+
   @java.lang.Override
   public Builder toBuilder() {
-    return this == DEFAULT_INSTANCE
-        ? new Builder() : new Builder().mergeFrom(this);
+    return this == DEFAULT_INSTANCE ? new Builder() : new Builder().mergeFrom(this);
   }
 
   @java.lang.Override
-  protected Builder newBuilderForType(
-      com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+  protected Builder newBuilderForType(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
     Builder builder = new Builder(parent);
     return builder;
   }
-  /**
-   * Protobuf type {@code buf.validate.conformance.cases.EnumInsideOneof}
-   */
-  public static final class Builder extends
-      com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+
+  /** Protobuf type {@code buf.validate.conformance.cases.EnumInsideOneof} */
+  public static final class Builder extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
+      implements
       // @@protoc_insertion_point(builder_implements:buf.validate.conformance.cases.EnumInsideOneof)
       build.buf.validate.conformance.cases.EnumInsideOneofOrBuilder {
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return build.buf.validate.conformance.cases.EnumsProto.internal_static_buf_validate_conformance_cases_EnumInsideOneof_descriptor;
+    public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+      return build.buf.validate.conformance.cases.EnumsProto
+          .internal_static_buf_validate_conformance_cases_EnumInsideOneof_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return build.buf.validate.conformance.cases.EnumsProto.internal_static_buf_validate_conformance_cases_EnumInsideOneof_fieldAccessorTable
+      return build.buf.validate.conformance.cases.EnumsProto
+          .internal_static_buf_validate_conformance_cases_EnumInsideOneof_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              build.buf.validate.conformance.cases.EnumInsideOneof.class, build.buf.validate.conformance.cases.EnumInsideOneof.Builder.class);
+              build.buf.validate.conformance.cases.EnumInsideOneof.class,
+              build.buf.validate.conformance.cases.EnumInsideOneof.Builder.class);
     }
 
     // Construct using build.buf.validate.conformance.cases.EnumInsideOneof.newBuilder()
-    private Builder() {
+    private Builder() {}
 
-    }
-
-    private Builder(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+    private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
       super(parent);
-
     }
+
     @java.lang.Override
     public Builder clear() {
       super.clear();
@@ -416,9 +452,9 @@ private static final long serialVersionUID = 0L;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Descriptors.Descriptor
-        getDescriptorForType() {
-      return build.buf.validate.conformance.cases.EnumsProto.internal_static_buf_validate_conformance_cases_EnumInsideOneof_descriptor;
+    public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
+      return build.buf.validate.conformance.cases.EnumsProto
+          .internal_static_buf_validate_conformance_cases_EnumInsideOneof_descriptor;
     }
 
     @java.lang.Override
@@ -437,8 +473,11 @@ private static final long serialVersionUID = 0L;
 
     @java.lang.Override
     public build.buf.validate.conformance.cases.EnumInsideOneof buildPartial() {
-      build.buf.validate.conformance.cases.EnumInsideOneof result = new build.buf.validate.conformance.cases.EnumInsideOneof(this);
-      if (bitField0_ != 0) { buildPartial0(result); }
+      build.buf.validate.conformance.cases.EnumInsideOneof result =
+          new build.buf.validate.conformance.cases.EnumInsideOneof(this);
+      if (bitField0_ != 0) {
+        buildPartial0(result);
+      }
       buildPartialOneofs(result);
       onBuilt();
       return result;
@@ -459,38 +498,39 @@ private static final long serialVersionUID = 0L;
     public Builder clone() {
       return super.clone();
     }
+
     @java.lang.Override
     public Builder setField(
-        com.google.protobuf.Descriptors.FieldDescriptor field,
-        java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
       return super.setField(field, value);
     }
+
     @java.lang.Override
-    public Builder clearField(
-        com.google.protobuf.Descriptors.FieldDescriptor field) {
+    public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
       return super.clearField(field);
     }
+
     @java.lang.Override
-    public Builder clearOneof(
-        com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+    public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
       return super.clearOneof(oneof);
     }
+
     @java.lang.Override
     public Builder setRepeatedField(
-        com.google.protobuf.Descriptors.FieldDescriptor field,
-        int index, java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field, int index, java.lang.Object value) {
       return super.setRepeatedField(field, index, value);
     }
+
     @java.lang.Override
     public Builder addRepeatedField(
-        com.google.protobuf.Descriptors.FieldDescriptor field,
-        java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
       return super.addRepeatedField(field, value);
     }
+
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
       if (other instanceof build.buf.validate.conformance.cases.EnumInsideOneof) {
-        return mergeFrom((build.buf.validate.conformance.cases.EnumInsideOneof)other);
+        return mergeFrom((build.buf.validate.conformance.cases.EnumInsideOneof) other);
       } else {
         super.mergeFrom(other);
         return this;
@@ -498,24 +538,29 @@ private static final long serialVersionUID = 0L;
     }
 
     public Builder mergeFrom(build.buf.validate.conformance.cases.EnumInsideOneof other) {
-      if (other == build.buf.validate.conformance.cases.EnumInsideOneof.getDefaultInstance()) return this;
+      if (other == build.buf.validate.conformance.cases.EnumInsideOneof.getDefaultInstance())
+        return this;
       switch (other.getFooCase()) {
-        case VAL: {
-          setValValue(other.getValValue());
-          break;
-        }
-        case FOO_NOT_SET: {
-          break;
-        }
+        case VAL:
+          {
+            setValValue(other.getValValue());
+            break;
+          }
+        case FOO_NOT_SET:
+          {
+            break;
+          }
       }
       switch (other.getBarCase()) {
-        case VAL2: {
-          setVal2Value(other.getVal2Value());
-          break;
-        }
-        case BAR_NOT_SET: {
-          break;
-        }
+        case VAL2:
+          {
+            setVal2Value(other.getVal2Value());
+            break;
+          }
+        case BAR_NOT_SET:
+          {
+            break;
+          }
       }
       this.mergeUnknownFields(other.getUnknownFields());
       onChanged();
@@ -543,24 +588,27 @@ private static final long serialVersionUID = 0L;
             case 0:
               done = true;
               break;
-            case 8: {
-              int rawValue = input.readEnum();
-              fooCase_ = 1;
-              foo_ = rawValue;
-              break;
-            } // case 8
-            case 16: {
-              int rawValue = input.readEnum();
-              barCase_ = 2;
-              bar_ = rawValue;
-              break;
-            } // case 16
-            default: {
-              if (!super.parseUnknownField(input, extensionRegistry, tag)) {
-                done = true; // was an endgroup tag
-              }
-              break;
-            } // default:
+            case 8:
+              {
+                int rawValue = input.readEnum();
+                fooCase_ = 1;
+                foo_ = rawValue;
+                break;
+              } // case 8
+            case 16:
+              {
+                int rawValue = input.readEnum();
+                barCase_ = 2;
+                bar_ = rawValue;
+                break;
+              } // case 16
+            default:
+              {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
           } // switch (tag)
         } // while (!done)
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -570,12 +618,12 @@ private static final long serialVersionUID = 0L;
       } // finally
       return this;
     }
+
     private int fooCase_ = 0;
     private java.lang.Object foo_;
-    public FooCase
-        getFooCase() {
-      return FooCase.forNumber(
-          fooCase_);
+
+    public FooCase getFooCase() {
+      return FooCase.forNumber(fooCase_);
     }
 
     public Builder clearFoo() {
@@ -587,10 +635,9 @@ private static final long serialVersionUID = 0L;
 
     private int barCase_ = 0;
     private java.lang.Object bar_;
-    public BarCase
-        getBarCase() {
-      return BarCase.forNumber(
-          barCase_);
+
+    public BarCase getBarCase() {
+      return BarCase.forNumber(barCase_);
     }
 
     public Builder clearBar() {
@@ -603,15 +650,22 @@ private static final long serialVersionUID = 0L;
     private int bitField0_;
 
     /**
-     * <code>.buf.validate.conformance.cases.TestEnum val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
+     * <code>
+     * .buf.validate.conformance.cases.TestEnum val = 1 [json_name = "val", (.buf.validate.field) = { ... }
+     * </code>
+     *
      * @return Whether the val field is set.
      */
     @java.lang.Override
     public boolean hasVal() {
       return fooCase_ == 1;
     }
+
     /**
-     * <code>.buf.validate.conformance.cases.TestEnum val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
+     * <code>
+     * .buf.validate.conformance.cases.TestEnum val = 1 [json_name = "val", (.buf.validate.field) = { ... }
+     * </code>
+     *
      * @return The enum numeric value on the wire for val.
      */
     @java.lang.Override
@@ -621,8 +675,12 @@ private static final long serialVersionUID = 0L;
       }
       return 0;
     }
+
     /**
-     * <code>.buf.validate.conformance.cases.TestEnum val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
+     * <code>
+     * .buf.validate.conformance.cases.TestEnum val = 1 [json_name = "val", (.buf.validate.field) = { ... }
+     * </code>
+     *
      * @param value The enum numeric value on the wire for val to set.
      * @return This builder for chaining.
      */
@@ -632,21 +690,29 @@ private static final long serialVersionUID = 0L;
       onChanged();
       return this;
     }
+
     /**
-     * <code>.buf.validate.conformance.cases.TestEnum val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
+     * <code>
+     * .buf.validate.conformance.cases.TestEnum val = 1 [json_name = "val", (.buf.validate.field) = { ... }
+     * </code>
+     *
      * @return The val.
      */
     @java.lang.Override
     public build.buf.validate.conformance.cases.TestEnum getVal() {
       if (fooCase_ == 1) {
-        build.buf.validate.conformance.cases.TestEnum result = build.buf.validate.conformance.cases.TestEnum.forNumber(
-            (java.lang.Integer) foo_);
+        build.buf.validate.conformance.cases.TestEnum result =
+            build.buf.validate.conformance.cases.TestEnum.forNumber((java.lang.Integer) foo_);
         return result == null ? build.buf.validate.conformance.cases.TestEnum.UNRECOGNIZED : result;
       }
       return build.buf.validate.conformance.cases.TestEnum.TEST_ENUM_UNSPECIFIED;
     }
+
     /**
-     * <code>.buf.validate.conformance.cases.TestEnum val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
+     * <code>
+     * .buf.validate.conformance.cases.TestEnum val = 1 [json_name = "val", (.buf.validate.field) = { ... }
+     * </code>
+     *
      * @param value The val to set.
      * @return This builder for chaining.
      */
@@ -659,8 +725,12 @@ private static final long serialVersionUID = 0L;
       onChanged();
       return this;
     }
+
     /**
-     * <code>.buf.validate.conformance.cases.TestEnum val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
+     * <code>
+     * .buf.validate.conformance.cases.TestEnum val = 1 [json_name = "val", (.buf.validate.field) = { ... }
+     * </code>
+     *
      * @return This builder for chaining.
      */
     public Builder clearVal() {
@@ -673,15 +743,22 @@ private static final long serialVersionUID = 0L;
     }
 
     /**
-     * <code>.buf.validate.conformance.cases.TestEnum val2 = 2 [json_name = "val2", (.buf.validate.field) = { ... }</code>
+     * <code>
+     * .buf.validate.conformance.cases.TestEnum val2 = 2 [json_name = "val2", (.buf.validate.field) = { ... }
+     * </code>
+     *
      * @return Whether the val2 field is set.
      */
     @java.lang.Override
     public boolean hasVal2() {
       return barCase_ == 2;
     }
+
     /**
-     * <code>.buf.validate.conformance.cases.TestEnum val2 = 2 [json_name = "val2", (.buf.validate.field) = { ... }</code>
+     * <code>
+     * .buf.validate.conformance.cases.TestEnum val2 = 2 [json_name = "val2", (.buf.validate.field) = { ... }
+     * </code>
+     *
      * @return The enum numeric value on the wire for val2.
      */
     @java.lang.Override
@@ -691,8 +768,12 @@ private static final long serialVersionUID = 0L;
       }
       return 0;
     }
+
     /**
-     * <code>.buf.validate.conformance.cases.TestEnum val2 = 2 [json_name = "val2", (.buf.validate.field) = { ... }</code>
+     * <code>
+     * .buf.validate.conformance.cases.TestEnum val2 = 2 [json_name = "val2", (.buf.validate.field) = { ... }
+     * </code>
+     *
      * @param value The enum numeric value on the wire for val2 to set.
      * @return This builder for chaining.
      */
@@ -702,21 +783,29 @@ private static final long serialVersionUID = 0L;
       onChanged();
       return this;
     }
+
     /**
-     * <code>.buf.validate.conformance.cases.TestEnum val2 = 2 [json_name = "val2", (.buf.validate.field) = { ... }</code>
+     * <code>
+     * .buf.validate.conformance.cases.TestEnum val2 = 2 [json_name = "val2", (.buf.validate.field) = { ... }
+     * </code>
+     *
      * @return The val2.
      */
     @java.lang.Override
     public build.buf.validate.conformance.cases.TestEnum getVal2() {
       if (barCase_ == 2) {
-        build.buf.validate.conformance.cases.TestEnum result = build.buf.validate.conformance.cases.TestEnum.forNumber(
-            (java.lang.Integer) bar_);
+        build.buf.validate.conformance.cases.TestEnum result =
+            build.buf.validate.conformance.cases.TestEnum.forNumber((java.lang.Integer) bar_);
         return result == null ? build.buf.validate.conformance.cases.TestEnum.UNRECOGNIZED : result;
       }
       return build.buf.validate.conformance.cases.TestEnum.TEST_ENUM_UNSPECIFIED;
     }
+
     /**
-     * <code>.buf.validate.conformance.cases.TestEnum val2 = 2 [json_name = "val2", (.buf.validate.field) = { ... }</code>
+     * <code>
+     * .buf.validate.conformance.cases.TestEnum val2 = 2 [json_name = "val2", (.buf.validate.field) = { ... }
+     * </code>
+     *
      * @param value The val2 to set.
      * @return This builder for chaining.
      */
@@ -729,8 +818,12 @@ private static final long serialVersionUID = 0L;
       onChanged();
       return this;
     }
+
     /**
-     * <code>.buf.validate.conformance.cases.TestEnum val2 = 2 [json_name = "val2", (.buf.validate.field) = { ... }</code>
+     * <code>
+     * .buf.validate.conformance.cases.TestEnum val2 = 2 [json_name = "val2", (.buf.validate.field) = { ... }
+     * </code>
+     *
      * @return This builder for chaining.
      */
     public Builder clearVal2() {
@@ -741,9 +834,9 @@ private static final long serialVersionUID = 0L;
       }
       return this;
     }
+
     @java.lang.Override
-    public final Builder setUnknownFields(
-        final com.google.protobuf.UnknownFieldSet unknownFields) {
+    public final Builder setUnknownFields(final com.google.protobuf.UnknownFieldSet unknownFields) {
       return super.setUnknownFields(unknownFields);
     }
 
@@ -753,12 +846,12 @@ private static final long serialVersionUID = 0L;
       return super.mergeUnknownFields(unknownFields);
     }
 
-
     // @@protoc_insertion_point(builder_scope:buf.validate.conformance.cases.EnumInsideOneof)
   }
 
   // @@protoc_insertion_point(class_scope:buf.validate.conformance.cases.EnumInsideOneof)
   private static final build.buf.validate.conformance.cases.EnumInsideOneof DEFAULT_INSTANCE;
+
   static {
     DEFAULT_INSTANCE = new build.buf.validate.conformance.cases.EnumInsideOneof();
   }
@@ -767,27 +860,27 @@ private static final long serialVersionUID = 0L;
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<EnumInsideOneof>
-      PARSER = new com.google.protobuf.AbstractParser<EnumInsideOneof>() {
-    @java.lang.Override
-    public EnumInsideOneof parsePartialFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      Builder builder = newBuilder();
-      try {
-        builder.mergeFrom(input, extensionRegistry);
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(builder.buildPartial());
-      } catch (com.google.protobuf.UninitializedMessageException e) {
-        throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(e)
-            .setUnfinishedMessage(builder.buildPartial());
-      }
-      return builder.buildPartial();
-    }
-  };
+  private static final com.google.protobuf.Parser<EnumInsideOneof> PARSER =
+      new com.google.protobuf.AbstractParser<EnumInsideOneof>() {
+        @java.lang.Override
+        public EnumInsideOneof parsePartialFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+          Builder builder = newBuilder();
+          try {
+            builder.mergeFrom(input, extensionRegistry);
+          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+            throw e.setUnfinishedMessage(builder.buildPartial());
+          } catch (com.google.protobuf.UninitializedMessageException e) {
+            throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+          } catch (java.io.IOException e) {
+            throw new com.google.protobuf.InvalidProtocolBufferException(e)
+                .setUnfinishedMessage(builder.buildPartial());
+          }
+          return builder.buildPartial();
+        }
+      };
 
   public static com.google.protobuf.Parser<EnumInsideOneof> parser() {
     return PARSER;
@@ -802,6 +895,4 @@ private static final long serialVersionUID = 0L;
   public build.buf.validate.conformance.cases.EnumInsideOneof getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
-
 }
-

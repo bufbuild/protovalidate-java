@@ -3,18 +3,18 @@
 
 package build.buf.validate.conformance.cases;
 
-/**
- * Protobuf type {@code buf.validate.conformance.cases.ComplexTestMsg}
- */
-public final class ComplexTestMsg extends
-    com.google.protobuf.GeneratedMessageV3 implements
+/** Protobuf type {@code buf.validate.conformance.cases.ComplexTestMsg} */
+public final class ComplexTestMsg extends com.google.protobuf.GeneratedMessageV3
+    implements
     // @@protoc_insertion_point(message_implements:buf.validate.conformance.cases.ComplexTestMsg)
     ComplexTestMsgOrBuilder {
-private static final long serialVersionUID = 0L;
+  private static final long serialVersionUID = 0L;
+
   // Use ComplexTestMsg.newBuilder() to construct.
   private ComplexTestMsg(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
+
   private ComplexTestMsg() {
     const_ = "";
     enumConst_ = 0;
@@ -24,49 +24,54 @@ private static final long serialVersionUID = 0L;
 
   @java.lang.Override
   @SuppressWarnings({"unused"})
-  protected java.lang.Object newInstance(
-      UnusedPrivateParameter unused) {
+  protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
     return new ComplexTestMsg();
   }
 
-  public static final com.google.protobuf.Descriptors.Descriptor
-      getDescriptor() {
-    return build.buf.validate.conformance.cases.KitchenSinkProto.internal_static_buf_validate_conformance_cases_ComplexTestMsg_descriptor;
+  public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+    return build.buf.validate.conformance.cases.KitchenSinkProto
+        .internal_static_buf_validate_conformance_cases_ComplexTestMsg_descriptor;
   }
 
   @SuppressWarnings({"rawtypes"})
   @java.lang.Override
-  protected com.google.protobuf.MapField internalGetMapField(
-      int number) {
+  protected com.google.protobuf.MapField internalGetMapField(int number) {
     switch (number) {
       case 14:
         return internalGetMapVal();
       default:
-        throw new RuntimeException(
-            "Invalid map field number: " + number);
+        throw new RuntimeException("Invalid map field number: " + number);
     }
   }
+
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return build.buf.validate.conformance.cases.KitchenSinkProto.internal_static_buf_validate_conformance_cases_ComplexTestMsg_fieldAccessorTable
+    return build.buf.validate.conformance.cases.KitchenSinkProto
+        .internal_static_buf_validate_conformance_cases_ComplexTestMsg_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            build.buf.validate.conformance.cases.ComplexTestMsg.class, build.buf.validate.conformance.cases.ComplexTestMsg.Builder.class);
+            build.buf.validate.conformance.cases.ComplexTestMsg.class,
+            build.buf.validate.conformance.cases.ComplexTestMsg.Builder.class);
   }
 
   private int oCase_ = 0;
+
   @SuppressWarnings("serial")
   private java.lang.Object o_;
+
   public enum OCase
-      implements com.google.protobuf.Internal.EnumLite,
+      implements
+          com.google.protobuf.Internal.EnumLite,
           com.google.protobuf.AbstractMessage.InternalOneOfEnum {
     X(16),
     Y(17),
     O_NOT_SET(0);
     private final int value;
+
     private OCase(int value) {
       this.value = value;
     }
+
     /**
      * @param value The number of the enum to look for.
      * @return The enum associated with the given number.
@@ -79,28 +84,34 @@ private static final long serialVersionUID = 0L;
 
     public static OCase forNumber(int value) {
       switch (value) {
-        case 16: return X;
-        case 17: return Y;
-        case 0: return O_NOT_SET;
-        default: return null;
+        case 16:
+          return X;
+        case 17:
+          return Y;
+        case 0:
+          return O_NOT_SET;
+        default:
+          return null;
       }
     }
+
     public int getNumber() {
       return this.value;
     }
   };
 
-  public OCase
-  getOCase() {
-    return OCase.forNumber(
-        oCase_);
+  public OCase getOCase() {
+    return OCase.forNumber(oCase_);
   }
 
   public static final int CONST_FIELD_NUMBER = 1;
+
   @SuppressWarnings("serial")
   private volatile java.lang.Object const_ = "";
+
   /**
    * <code>string const = 1 [json_name = "const", (.buf.validate.field) = { ... }</code>
+   *
    * @return The const.
    */
   @java.lang.Override
@@ -109,25 +120,24 @@ private static final long serialVersionUID = 0L;
     if (ref instanceof java.lang.String) {
       return (java.lang.String) ref;
     } else {
-      com.google.protobuf.ByteString bs = 
-          (com.google.protobuf.ByteString) ref;
+      com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
       const_ = s;
       return s;
     }
   }
+
   /**
    * <code>string const = 1 [json_name = "const", (.buf.validate.field) = { ... }</code>
+   *
    * @return The bytes for const.
    */
   @java.lang.Override
-  public com.google.protobuf.ByteString
-      getConstBytes() {
+  public com.google.protobuf.ByteString getConstBytes() {
     java.lang.Object ref = const_;
     if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b = 
-          com.google.protobuf.ByteString.copyFromUtf8(
-              (java.lang.String) ref);
+      com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
       const_ = b;
       return b;
     } else {
@@ -137,34 +147,45 @@ private static final long serialVersionUID = 0L;
 
   public static final int NESTED_FIELD_NUMBER = 2;
   private build.buf.validate.conformance.cases.ComplexTestMsg nested_;
+
   /**
    * <code>.buf.validate.conformance.cases.ComplexTestMsg nested = 2 [json_name = "nested"];</code>
+   *
    * @return Whether the nested field is set.
    */
   @java.lang.Override
   public boolean hasNested() {
     return nested_ != null;
   }
+
   /**
    * <code>.buf.validate.conformance.cases.ComplexTestMsg nested = 2 [json_name = "nested"];</code>
+   *
    * @return The nested.
    */
   @java.lang.Override
   public build.buf.validate.conformance.cases.ComplexTestMsg getNested() {
-    return nested_ == null ? build.buf.validate.conformance.cases.ComplexTestMsg.getDefaultInstance() : nested_;
+    return nested_ == null
+        ? build.buf.validate.conformance.cases.ComplexTestMsg.getDefaultInstance()
+        : nested_;
   }
+
   /**
    * <code>.buf.validate.conformance.cases.ComplexTestMsg nested = 2 [json_name = "nested"];</code>
    */
   @java.lang.Override
   public build.buf.validate.conformance.cases.ComplexTestMsgOrBuilder getNestedOrBuilder() {
-    return nested_ == null ? build.buf.validate.conformance.cases.ComplexTestMsg.getDefaultInstance() : nested_;
+    return nested_ == null
+        ? build.buf.validate.conformance.cases.ComplexTestMsg.getDefaultInstance()
+        : nested_;
   }
 
   public static final int INT_CONST_FIELD_NUMBER = 3;
   private int intConst_ = 0;
+
   /**
    * <code>int32 int_const = 3 [json_name = "intConst", (.buf.validate.field) = { ... }</code>
+   *
    * @return The intConst.
    */
   @java.lang.Override
@@ -174,8 +195,10 @@ private static final long serialVersionUID = 0L;
 
   public static final int BOOL_CONST_FIELD_NUMBER = 4;
   private boolean boolConst_ = false;
+
   /**
    * <code>bool bool_const = 4 [json_name = "boolConst", (.buf.validate.field) = { ... }</code>
+   *
    * @return The boolConst.
    */
   @java.lang.Override
@@ -185,24 +208,35 @@ private static final long serialVersionUID = 0L;
 
   public static final int FLOAT_VAL_FIELD_NUMBER = 5;
   private com.google.protobuf.FloatValue floatVal_;
+
   /**
-   * <code>.google.protobuf.FloatValue float_val = 5 [json_name = "floatVal", (.buf.validate.field) = { ... }</code>
+   * <code>
+   * .google.protobuf.FloatValue float_val = 5 [json_name = "floatVal", (.buf.validate.field) = { ... }
+   * </code>
+   *
    * @return Whether the floatVal field is set.
    */
   @java.lang.Override
   public boolean hasFloatVal() {
     return floatVal_ != null;
   }
+
   /**
-   * <code>.google.protobuf.FloatValue float_val = 5 [json_name = "floatVal", (.buf.validate.field) = { ... }</code>
+   * <code>
+   * .google.protobuf.FloatValue float_val = 5 [json_name = "floatVal", (.buf.validate.field) = { ... }
+   * </code>
+   *
    * @return The floatVal.
    */
   @java.lang.Override
   public com.google.protobuf.FloatValue getFloatVal() {
     return floatVal_ == null ? com.google.protobuf.FloatValue.getDefaultInstance() : floatVal_;
   }
+
   /**
-   * <code>.google.protobuf.FloatValue float_val = 5 [json_name = "floatVal", (.buf.validate.field) = { ... }</code>
+   * <code>
+   * .google.protobuf.FloatValue float_val = 5 [json_name = "floatVal", (.buf.validate.field) = { ... }
+   * </code>
    */
   @java.lang.Override
   public com.google.protobuf.FloatValueOrBuilder getFloatValOrBuilder() {
@@ -211,24 +245,35 @@ private static final long serialVersionUID = 0L;
 
   public static final int DUR_VAL_FIELD_NUMBER = 6;
   private com.google.protobuf.Duration durVal_;
+
   /**
-   * <code>.google.protobuf.Duration dur_val = 6 [json_name = "durVal", (.buf.validate.field) = { ... }</code>
+   * <code>
+   * .google.protobuf.Duration dur_val = 6 [json_name = "durVal", (.buf.validate.field) = { ... }
+   * </code>
+   *
    * @return Whether the durVal field is set.
    */
   @java.lang.Override
   public boolean hasDurVal() {
     return durVal_ != null;
   }
+
   /**
-   * <code>.google.protobuf.Duration dur_val = 6 [json_name = "durVal", (.buf.validate.field) = { ... }</code>
+   * <code>
+   * .google.protobuf.Duration dur_val = 6 [json_name = "durVal", (.buf.validate.field) = { ... }
+   * </code>
+   *
    * @return The durVal.
    */
   @java.lang.Override
   public com.google.protobuf.Duration getDurVal() {
     return durVal_ == null ? com.google.protobuf.Duration.getDefaultInstance() : durVal_;
   }
+
   /**
-   * <code>.google.protobuf.Duration dur_val = 6 [json_name = "durVal", (.buf.validate.field) = { ... }</code>
+   * <code>
+   * .google.protobuf.Duration dur_val = 6 [json_name = "durVal", (.buf.validate.field) = { ... }
+   * </code>
    */
   @java.lang.Override
   public com.google.protobuf.DurationOrBuilder getDurValOrBuilder() {
@@ -237,24 +282,35 @@ private static final long serialVersionUID = 0L;
 
   public static final int TS_VAL_FIELD_NUMBER = 7;
   private com.google.protobuf.Timestamp tsVal_;
+
   /**
-   * <code>.google.protobuf.Timestamp ts_val = 7 [json_name = "tsVal", (.buf.validate.field) = { ... }</code>
+   * <code>
+   * .google.protobuf.Timestamp ts_val = 7 [json_name = "tsVal", (.buf.validate.field) = { ... }
+   * </code>
+   *
    * @return Whether the tsVal field is set.
    */
   @java.lang.Override
   public boolean hasTsVal() {
     return tsVal_ != null;
   }
+
   /**
-   * <code>.google.protobuf.Timestamp ts_val = 7 [json_name = "tsVal", (.buf.validate.field) = { ... }</code>
+   * <code>
+   * .google.protobuf.Timestamp ts_val = 7 [json_name = "tsVal", (.buf.validate.field) = { ... }
+   * </code>
+   *
    * @return The tsVal.
    */
   @java.lang.Override
   public com.google.protobuf.Timestamp getTsVal() {
     return tsVal_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : tsVal_;
   }
+
   /**
-   * <code>.google.protobuf.Timestamp ts_val = 7 [json_name = "tsVal", (.buf.validate.field) = { ... }</code>
+   * <code>
+   * .google.protobuf.Timestamp ts_val = 7 [json_name = "tsVal", (.buf.validate.field) = { ... }
+   * </code>
    */
   @java.lang.Override
   public com.google.protobuf.TimestampOrBuilder getTsValOrBuilder() {
@@ -263,34 +319,48 @@ private static final long serialVersionUID = 0L;
 
   public static final int ANOTHER_FIELD_NUMBER = 8;
   private build.buf.validate.conformance.cases.ComplexTestMsg another_;
+
   /**
-   * <code>.buf.validate.conformance.cases.ComplexTestMsg another = 8 [json_name = "another"];</code>
+   * <code>.buf.validate.conformance.cases.ComplexTestMsg another = 8 [json_name = "another"];
+   * </code>
+   *
    * @return Whether the another field is set.
    */
   @java.lang.Override
   public boolean hasAnother() {
     return another_ != null;
   }
+
   /**
-   * <code>.buf.validate.conformance.cases.ComplexTestMsg another = 8 [json_name = "another"];</code>
+   * <code>.buf.validate.conformance.cases.ComplexTestMsg another = 8 [json_name = "another"];
+   * </code>
+   *
    * @return The another.
    */
   @java.lang.Override
   public build.buf.validate.conformance.cases.ComplexTestMsg getAnother() {
-    return another_ == null ? build.buf.validate.conformance.cases.ComplexTestMsg.getDefaultInstance() : another_;
+    return another_ == null
+        ? build.buf.validate.conformance.cases.ComplexTestMsg.getDefaultInstance()
+        : another_;
   }
+
   /**
-   * <code>.buf.validate.conformance.cases.ComplexTestMsg another = 8 [json_name = "another"];</code>
+   * <code>.buf.validate.conformance.cases.ComplexTestMsg another = 8 [json_name = "another"];
+   * </code>
    */
   @java.lang.Override
   public build.buf.validate.conformance.cases.ComplexTestMsgOrBuilder getAnotherOrBuilder() {
-    return another_ == null ? build.buf.validate.conformance.cases.ComplexTestMsg.getDefaultInstance() : another_;
+    return another_ == null
+        ? build.buf.validate.conformance.cases.ComplexTestMsg.getDefaultInstance()
+        : another_;
   }
 
   public static final int FLOAT_CONST_FIELD_NUMBER = 9;
   private float floatConst_ = 0F;
+
   /**
    * <code>float float_const = 9 [json_name = "floatConst", (.buf.validate.field) = { ... }</code>
+   *
    * @return The floatConst.
    */
   @java.lang.Override
@@ -300,8 +370,10 @@ private static final long serialVersionUID = 0L;
 
   public static final int DOUBLE_IN_FIELD_NUMBER = 10;
   private double doubleIn_ = 0D;
+
   /**
    * <code>double double_in = 10 [json_name = "doubleIn", (.buf.validate.field) = { ... }</code>
+   *
    * @return The doubleIn.
    */
   @java.lang.Override
@@ -311,42 +383,63 @@ private static final long serialVersionUID = 0L;
 
   public static final int ENUM_CONST_FIELD_NUMBER = 11;
   private int enumConst_ = 0;
+
   /**
-   * <code>.buf.validate.conformance.cases.ComplexTestEnum enum_const = 11 [json_name = "enumConst", (.buf.validate.field) = { ... }</code>
+   * <code>
+   * .buf.validate.conformance.cases.ComplexTestEnum enum_const = 11 [json_name = "enumConst", (.buf.validate.field) = { ... }
+   * </code>
+   *
    * @return The enum numeric value on the wire for enumConst.
    */
-  @java.lang.Override public int getEnumConstValue() {
+  @java.lang.Override
+  public int getEnumConstValue() {
     return enumConst_;
   }
+
   /**
-   * <code>.buf.validate.conformance.cases.ComplexTestEnum enum_const = 11 [json_name = "enumConst", (.buf.validate.field) = { ... }</code>
+   * <code>
+   * .buf.validate.conformance.cases.ComplexTestEnum enum_const = 11 [json_name = "enumConst", (.buf.validate.field) = { ... }
+   * </code>
+   *
    * @return The enumConst.
    */
-  @java.lang.Override public build.buf.validate.conformance.cases.ComplexTestEnum getEnumConst() {
-    build.buf.validate.conformance.cases.ComplexTestEnum result = build.buf.validate.conformance.cases.ComplexTestEnum.forNumber(enumConst_);
-    return result == null ? build.buf.validate.conformance.cases.ComplexTestEnum.UNRECOGNIZED : result;
+  @java.lang.Override
+  public build.buf.validate.conformance.cases.ComplexTestEnum getEnumConst() {
+    build.buf.validate.conformance.cases.ComplexTestEnum result =
+        build.buf.validate.conformance.cases.ComplexTestEnum.forNumber(enumConst_);
+    return result == null
+        ? build.buf.validate.conformance.cases.ComplexTestEnum.UNRECOGNIZED
+        : result;
   }
 
   public static final int ANY_VAL_FIELD_NUMBER = 12;
   private com.google.protobuf.Any anyVal_;
+
   /**
-   * <code>.google.protobuf.Any any_val = 12 [json_name = "anyVal", (.buf.validate.field) = { ... }</code>
+   * <code>.google.protobuf.Any any_val = 12 [json_name = "anyVal", (.buf.validate.field) = { ... }
+   * </code>
+   *
    * @return Whether the anyVal field is set.
    */
   @java.lang.Override
   public boolean hasAnyVal() {
     return anyVal_ != null;
   }
+
   /**
-   * <code>.google.protobuf.Any any_val = 12 [json_name = "anyVal", (.buf.validate.field) = { ... }</code>
+   * <code>.google.protobuf.Any any_val = 12 [json_name = "anyVal", (.buf.validate.field) = { ... }
+   * </code>
+   *
    * @return The anyVal.
    */
   @java.lang.Override
   public com.google.protobuf.Any getAnyVal() {
     return anyVal_ == null ? com.google.protobuf.Any.getDefaultInstance() : anyVal_;
   }
+
   /**
-   * <code>.google.protobuf.Any any_val = 12 [json_name = "anyVal", (.buf.validate.field) = { ... }</code>
+   * <code>.google.protobuf.Any any_val = 12 [json_name = "anyVal", (.buf.validate.field) = { ... }
+   * </code>
    */
   @java.lang.Override
   public com.google.protobuf.AnyOrBuilder getAnyValOrBuilder() {
@@ -354,119 +447,140 @@ private static final long serialVersionUID = 0L;
   }
 
   public static final int REP_TS_VAL_FIELD_NUMBER = 13;
+
   @SuppressWarnings("serial")
   private java.util.List<com.google.protobuf.Timestamp> repTsVal_;
+
   /**
-   * <code>repeated .google.protobuf.Timestamp rep_ts_val = 13 [json_name = "repTsVal", (.buf.validate.field) = { ... }</code>
+   * <code>
+   * repeated .google.protobuf.Timestamp rep_ts_val = 13 [json_name = "repTsVal", (.buf.validate.field) = { ... }
+   * </code>
    */
   @java.lang.Override
   public java.util.List<com.google.protobuf.Timestamp> getRepTsValList() {
     return repTsVal_;
   }
+
   /**
-   * <code>repeated .google.protobuf.Timestamp rep_ts_val = 13 [json_name = "repTsVal", (.buf.validate.field) = { ... }</code>
+   * <code>
+   * repeated .google.protobuf.Timestamp rep_ts_val = 13 [json_name = "repTsVal", (.buf.validate.field) = { ... }
+   * </code>
    */
   @java.lang.Override
-  public java.util.List<? extends com.google.protobuf.TimestampOrBuilder> 
+  public java.util.List<? extends com.google.protobuf.TimestampOrBuilder>
       getRepTsValOrBuilderList() {
     return repTsVal_;
   }
+
   /**
-   * <code>repeated .google.protobuf.Timestamp rep_ts_val = 13 [json_name = "repTsVal", (.buf.validate.field) = { ... }</code>
+   * <code>
+   * repeated .google.protobuf.Timestamp rep_ts_val = 13 [json_name = "repTsVal", (.buf.validate.field) = { ... }
+   * </code>
    */
   @java.lang.Override
   public int getRepTsValCount() {
     return repTsVal_.size();
   }
+
   /**
-   * <code>repeated .google.protobuf.Timestamp rep_ts_val = 13 [json_name = "repTsVal", (.buf.validate.field) = { ... }</code>
+   * <code>
+   * repeated .google.protobuf.Timestamp rep_ts_val = 13 [json_name = "repTsVal", (.buf.validate.field) = { ... }
+   * </code>
    */
   @java.lang.Override
   public com.google.protobuf.Timestamp getRepTsVal(int index) {
     return repTsVal_.get(index);
   }
+
   /**
-   * <code>repeated .google.protobuf.Timestamp rep_ts_val = 13 [json_name = "repTsVal", (.buf.validate.field) = { ... }</code>
+   * <code>
+   * repeated .google.protobuf.Timestamp rep_ts_val = 13 [json_name = "repTsVal", (.buf.validate.field) = { ... }
+   * </code>
    */
   @java.lang.Override
-  public com.google.protobuf.TimestampOrBuilder getRepTsValOrBuilder(
-      int index) {
+  public com.google.protobuf.TimestampOrBuilder getRepTsValOrBuilder(int index) {
     return repTsVal_.get(index);
   }
 
   public static final int MAP_VAL_FIELD_NUMBER = 14;
+
   private static final class MapValDefaultEntryHolder {
-    static final com.google.protobuf.MapEntry<
-        java.lang.Integer, java.lang.String> defaultEntry =
-            com.google.protobuf.MapEntry
-            .<java.lang.Integer, java.lang.String>newDefaultInstance(
-                build.buf.validate.conformance.cases.KitchenSinkProto.internal_static_buf_validate_conformance_cases_ComplexTestMsg_MapValEntry_descriptor, 
-                com.google.protobuf.WireFormat.FieldType.SINT32,
-                0,
-                com.google.protobuf.WireFormat.FieldType.STRING,
-                "");
+    static final com.google.protobuf.MapEntry<java.lang.Integer, java.lang.String> defaultEntry =
+        com.google.protobuf.MapEntry.<java.lang.Integer, java.lang.String>newDefaultInstance(
+            build.buf.validate.conformance.cases.KitchenSinkProto
+                .internal_static_buf_validate_conformance_cases_ComplexTestMsg_MapValEntry_descriptor,
+            com.google.protobuf.WireFormat.FieldType.SINT32,
+            0,
+            com.google.protobuf.WireFormat.FieldType.STRING,
+            "");
   }
+
   @SuppressWarnings("serial")
-  private com.google.protobuf.MapField<
-      java.lang.Integer, java.lang.String> mapVal_;
-  private com.google.protobuf.MapField<java.lang.Integer, java.lang.String>
-  internalGetMapVal() {
+  private com.google.protobuf.MapField<java.lang.Integer, java.lang.String> mapVal_;
+
+  private com.google.protobuf.MapField<java.lang.Integer, java.lang.String> internalGetMapVal() {
     if (mapVal_ == null) {
-      return com.google.protobuf.MapField.emptyMapField(
-          MapValDefaultEntryHolder.defaultEntry);
+      return com.google.protobuf.MapField.emptyMapField(MapValDefaultEntryHolder.defaultEntry);
     }
     return mapVal_;
   }
+
   public int getMapValCount() {
     return internalGetMapVal().getMap().size();
   }
+
   /**
-   * <code>map&lt;sint32, string&gt; map_val = 14 [json_name = "mapVal", (.buf.validate.field) = { ... }</code>
+   * <code>
+   * map&lt;sint32, string&gt; map_val = 14 [json_name = "mapVal", (.buf.validate.field) = { ... }
+   * </code>
    */
   @java.lang.Override
-  public boolean containsMapVal(
-      int key) {
+  public boolean containsMapVal(int key) {
 
     return internalGetMapVal().getMap().containsKey(key);
   }
-  /**
-   * Use {@link #getMapValMap()} instead.
-   */
+
+  /** Use {@link #getMapValMap()} instead. */
   @java.lang.Override
   @java.lang.Deprecated
   public java.util.Map<java.lang.Integer, java.lang.String> getMapVal() {
     return getMapValMap();
   }
+
   /**
-   * <code>map&lt;sint32, string&gt; map_val = 14 [json_name = "mapVal", (.buf.validate.field) = { ... }</code>
+   * <code>
+   * map&lt;sint32, string&gt; map_val = 14 [json_name = "mapVal", (.buf.validate.field) = { ... }
+   * </code>
    */
   @java.lang.Override
   public java.util.Map<java.lang.Integer, java.lang.String> getMapValMap() {
     return internalGetMapVal().getMap();
   }
+
   /**
-   * <code>map&lt;sint32, string&gt; map_val = 14 [json_name = "mapVal", (.buf.validate.field) = { ... }</code>
+   * <code>
+   * map&lt;sint32, string&gt; map_val = 14 [json_name = "mapVal", (.buf.validate.field) = { ... }
+   * </code>
    */
   @java.lang.Override
-  public /* nullable */
-java.lang.String getMapValOrDefault(
+  public /* nullable */ java.lang.String getMapValOrDefault(
       int key,
       /* nullable */
-java.lang.String defaultValue) {
+      java.lang.String defaultValue) {
 
-    java.util.Map<java.lang.Integer, java.lang.String> map =
-        internalGetMapVal().getMap();
+    java.util.Map<java.lang.Integer, java.lang.String> map = internalGetMapVal().getMap();
     return map.containsKey(key) ? map.get(key) : defaultValue;
   }
+
   /**
-   * <code>map&lt;sint32, string&gt; map_val = 14 [json_name = "mapVal", (.buf.validate.field) = { ... }</code>
+   * <code>
+   * map&lt;sint32, string&gt; map_val = 14 [json_name = "mapVal", (.buf.validate.field) = { ... }
+   * </code>
    */
   @java.lang.Override
-  public java.lang.String getMapValOrThrow(
-      int key) {
+  public java.lang.String getMapValOrThrow(int key) {
 
-    java.util.Map<java.lang.Integer, java.lang.String> map =
-        internalGetMapVal().getMap();
+    java.util.Map<java.lang.Integer, java.lang.String> map = internalGetMapVal().getMap();
     if (!map.containsKey(key)) {
       throw new java.lang.IllegalArgumentException();
     }
@@ -475,8 +589,10 @@ java.lang.String defaultValue) {
 
   public static final int BYTES_VAL_FIELD_NUMBER = 15;
   private com.google.protobuf.ByteString bytesVal_ = com.google.protobuf.ByteString.EMPTY;
+
   /**
    * <code>bytes bytes_val = 15 [json_name = "bytesVal", (.buf.validate.field) = { ... }</code>
+   *
    * @return The bytesVal.
    */
   @java.lang.Override
@@ -485,15 +601,19 @@ java.lang.String defaultValue) {
   }
 
   public static final int X_FIELD_NUMBER = 16;
+
   /**
    * <code>string x = 16 [json_name = "x"];</code>
+   *
    * @return Whether the x field is set.
    */
   public boolean hasX() {
     return oCase_ == 16;
   }
+
   /**
    * <code>string x = 16 [json_name = "x"];</code>
+   *
    * @return The x.
    */
   public java.lang.String getX() {
@@ -504,8 +624,7 @@ java.lang.String defaultValue) {
     if (ref instanceof java.lang.String) {
       return (java.lang.String) ref;
     } else {
-      com.google.protobuf.ByteString bs = 
-          (com.google.protobuf.ByteString) ref;
+      com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
       if (oCase_ == 16) {
         o_ = s;
@@ -513,20 +632,20 @@ java.lang.String defaultValue) {
       return s;
     }
   }
+
   /**
    * <code>string x = 16 [json_name = "x"];</code>
+   *
    * @return The bytes for x.
    */
-  public com.google.protobuf.ByteString
-      getXBytes() {
+  public com.google.protobuf.ByteString getXBytes() {
     java.lang.Object ref = "";
     if (oCase_ == 16) {
       ref = o_;
     }
     if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b = 
-          com.google.protobuf.ByteString.copyFromUtf8(
-              (java.lang.String) ref);
+      com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
       if (oCase_ == 16) {
         o_ = b;
       }
@@ -537,16 +656,20 @@ java.lang.String defaultValue) {
   }
 
   public static final int Y_FIELD_NUMBER = 17;
+
   /**
    * <code>int32 y = 17 [json_name = "y"];</code>
+   *
    * @return Whether the y field is set.
    */
   @java.lang.Override
   public boolean hasY() {
     return oCase_ == 17;
   }
+
   /**
    * <code>int32 y = 17 [json_name = "y"];</code>
+   *
    * @return The y.
    */
   @java.lang.Override
@@ -558,6 +681,7 @@ java.lang.String defaultValue) {
   }
 
   private byte memoizedIsInitialized = -1;
+
   @java.lang.Override
   public final boolean isInitialized() {
     byte isInitialized = memoizedIsInitialized;
@@ -569,8 +693,7 @@ java.lang.String defaultValue) {
   }
 
   @java.lang.Override
-  public void writeTo(com.google.protobuf.CodedOutputStream output)
-                      throws java.io.IOException {
+  public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(const_)) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 1, const_);
     }
@@ -601,7 +724,9 @@ java.lang.String defaultValue) {
     if (java.lang.Double.doubleToRawLongBits(doubleIn_) != 0) {
       output.writeDouble(10, doubleIn_);
     }
-    if (enumConst_ != build.buf.validate.conformance.cases.ComplexTestEnum.COMPLEX_TEST_ENUM_UNSPECIFIED.getNumber()) {
+    if (enumConst_
+        != build.buf.validate.conformance.cases.ComplexTestEnum.COMPLEX_TEST_ENUM_UNSPECIFIED
+            .getNumber()) {
       output.writeEnum(11, enumConst_);
     }
     if (anyVal_ != null) {
@@ -610,12 +735,8 @@ java.lang.String defaultValue) {
     for (int i = 0; i < repTsVal_.size(); i++) {
       output.writeMessage(13, repTsVal_.get(i));
     }
-    com.google.protobuf.GeneratedMessageV3
-      .serializeIntegerMapTo(
-        output,
-        internalGetMapVal(),
-        MapValDefaultEntryHolder.defaultEntry,
-        14);
+    com.google.protobuf.GeneratedMessageV3.serializeIntegerMapTo(
+        output, internalGetMapVal(), MapValDefaultEntryHolder.defaultEntry, 14);
     if (!bytesVal_.isEmpty()) {
       output.writeBytes(15, bytesVal_);
     }
@@ -623,8 +744,7 @@ java.lang.String defaultValue) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 16, o_);
     }
     if (oCase_ == 17) {
-      output.writeInt32(
-          17, (int)((java.lang.Integer) o_));
+      output.writeInt32(17, (int) ((java.lang.Integer) o_));
     }
     getUnknownFields().writeTo(output);
   }
@@ -639,74 +759,63 @@ java.lang.String defaultValue) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, const_);
     }
     if (nested_ != null) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(2, getNested());
+      size += com.google.protobuf.CodedOutputStream.computeMessageSize(2, getNested());
     }
     if (intConst_ != 0) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeInt32Size(3, intConst_);
+      size += com.google.protobuf.CodedOutputStream.computeInt32Size(3, intConst_);
     }
     if (boolConst_ != false) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeBoolSize(4, boolConst_);
+      size += com.google.protobuf.CodedOutputStream.computeBoolSize(4, boolConst_);
     }
     if (floatVal_ != null) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(5, getFloatVal());
+      size += com.google.protobuf.CodedOutputStream.computeMessageSize(5, getFloatVal());
     }
     if (durVal_ != null) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(6, getDurVal());
+      size += com.google.protobuf.CodedOutputStream.computeMessageSize(6, getDurVal());
     }
     if (tsVal_ != null) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(7, getTsVal());
+      size += com.google.protobuf.CodedOutputStream.computeMessageSize(7, getTsVal());
     }
     if (another_ != null) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(8, getAnother());
+      size += com.google.protobuf.CodedOutputStream.computeMessageSize(8, getAnother());
     }
     if (java.lang.Float.floatToRawIntBits(floatConst_) != 0) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeFloatSize(9, floatConst_);
+      size += com.google.protobuf.CodedOutputStream.computeFloatSize(9, floatConst_);
     }
     if (java.lang.Double.doubleToRawLongBits(doubleIn_) != 0) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeDoubleSize(10, doubleIn_);
+      size += com.google.protobuf.CodedOutputStream.computeDoubleSize(10, doubleIn_);
     }
-    if (enumConst_ != build.buf.validate.conformance.cases.ComplexTestEnum.COMPLEX_TEST_ENUM_UNSPECIFIED.getNumber()) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeEnumSize(11, enumConst_);
+    if (enumConst_
+        != build.buf.validate.conformance.cases.ComplexTestEnum.COMPLEX_TEST_ENUM_UNSPECIFIED
+            .getNumber()) {
+      size += com.google.protobuf.CodedOutputStream.computeEnumSize(11, enumConst_);
     }
     if (anyVal_ != null) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(12, getAnyVal());
+      size += com.google.protobuf.CodedOutputStream.computeMessageSize(12, getAnyVal());
     }
     for (int i = 0; i < repTsVal_.size(); i++) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(13, repTsVal_.get(i));
+      size += com.google.protobuf.CodedOutputStream.computeMessageSize(13, repTsVal_.get(i));
     }
-    for (java.util.Map.Entry<java.lang.Integer, java.lang.String> entry
-         : internalGetMapVal().getMap().entrySet()) {
-      com.google.protobuf.MapEntry<java.lang.Integer, java.lang.String>
-      mapVal__ = MapValDefaultEntryHolder.defaultEntry.newBuilderForType()
-          .setKey(entry.getKey())
-          .setValue(entry.getValue())
-          .build();
-      size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(14, mapVal__);
+    for (java.util.Map.Entry<java.lang.Integer, java.lang.String> entry :
+        internalGetMapVal().getMap().entrySet()) {
+      com.google.protobuf.MapEntry<java.lang.Integer, java.lang.String> mapVal__ =
+          MapValDefaultEntryHolder.defaultEntry
+              .newBuilderForType()
+              .setKey(entry.getKey())
+              .setValue(entry.getValue())
+              .build();
+      size += com.google.protobuf.CodedOutputStream.computeMessageSize(14, mapVal__);
     }
     if (!bytesVal_.isEmpty()) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeBytesSize(15, bytesVal_);
+      size += com.google.protobuf.CodedOutputStream.computeBytesSize(15, bytesVal_);
     }
     if (oCase_ == 16) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(16, o_);
     }
     if (oCase_ == 17) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeInt32Size(
-            17, (int)((java.lang.Integer) o_));
+      size +=
+          com.google.protobuf.CodedOutputStream.computeInt32Size(
+              17, (int) ((java.lang.Integer) o_));
     }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
@@ -716,71 +825,56 @@ java.lang.String defaultValue) {
   @java.lang.Override
   public boolean equals(final java.lang.Object obj) {
     if (obj == this) {
-     return true;
+      return true;
     }
     if (!(obj instanceof build.buf.validate.conformance.cases.ComplexTestMsg)) {
       return super.equals(obj);
     }
-    build.buf.validate.conformance.cases.ComplexTestMsg other = (build.buf.validate.conformance.cases.ComplexTestMsg) obj;
+    build.buf.validate.conformance.cases.ComplexTestMsg other =
+        (build.buf.validate.conformance.cases.ComplexTestMsg) obj;
 
-    if (!getConst()
-        .equals(other.getConst())) return false;
+    if (!getConst().equals(other.getConst())) return false;
     if (hasNested() != other.hasNested()) return false;
     if (hasNested()) {
-      if (!getNested()
-          .equals(other.getNested())) return false;
+      if (!getNested().equals(other.getNested())) return false;
     }
-    if (getIntConst()
-        != other.getIntConst()) return false;
-    if (getBoolConst()
-        != other.getBoolConst()) return false;
+    if (getIntConst() != other.getIntConst()) return false;
+    if (getBoolConst() != other.getBoolConst()) return false;
     if (hasFloatVal() != other.hasFloatVal()) return false;
     if (hasFloatVal()) {
-      if (!getFloatVal()
-          .equals(other.getFloatVal())) return false;
+      if (!getFloatVal().equals(other.getFloatVal())) return false;
     }
     if (hasDurVal() != other.hasDurVal()) return false;
     if (hasDurVal()) {
-      if (!getDurVal()
-          .equals(other.getDurVal())) return false;
+      if (!getDurVal().equals(other.getDurVal())) return false;
     }
     if (hasTsVal() != other.hasTsVal()) return false;
     if (hasTsVal()) {
-      if (!getTsVal()
-          .equals(other.getTsVal())) return false;
+      if (!getTsVal().equals(other.getTsVal())) return false;
     }
     if (hasAnother() != other.hasAnother()) return false;
     if (hasAnother()) {
-      if (!getAnother()
-          .equals(other.getAnother())) return false;
+      if (!getAnother().equals(other.getAnother())) return false;
     }
     if (java.lang.Float.floatToIntBits(getFloatConst())
-        != java.lang.Float.floatToIntBits(
-            other.getFloatConst())) return false;
+        != java.lang.Float.floatToIntBits(other.getFloatConst())) return false;
     if (java.lang.Double.doubleToLongBits(getDoubleIn())
-        != java.lang.Double.doubleToLongBits(
-            other.getDoubleIn())) return false;
+        != java.lang.Double.doubleToLongBits(other.getDoubleIn())) return false;
     if (enumConst_ != other.enumConst_) return false;
     if (hasAnyVal() != other.hasAnyVal()) return false;
     if (hasAnyVal()) {
-      if (!getAnyVal()
-          .equals(other.getAnyVal())) return false;
+      if (!getAnyVal().equals(other.getAnyVal())) return false;
     }
-    if (!getRepTsValList()
-        .equals(other.getRepTsValList())) return false;
-    if (!internalGetMapVal().equals(
-        other.internalGetMapVal())) return false;
-    if (!getBytesVal()
-        .equals(other.getBytesVal())) return false;
+    if (!getRepTsValList().equals(other.getRepTsValList())) return false;
+    if (!internalGetMapVal().equals(other.internalGetMapVal())) return false;
+    if (!getBytesVal().equals(other.getBytesVal())) return false;
     if (!getOCase().equals(other.getOCase())) return false;
     switch (oCase_) {
       case 16:
-        if (!getX()
-            .equals(other.getX())) return false;
+        if (!getX().equals(other.getX())) return false;
         break;
       case 17:
-        if (getY()
-            != other.getY()) return false;
+        if (getY() != other.getY()) return false;
         break;
       case 0:
       default:
@@ -805,8 +899,7 @@ java.lang.String defaultValue) {
     hash = (37 * hash) + INT_CONST_FIELD_NUMBER;
     hash = (53 * hash) + getIntConst();
     hash = (37 * hash) + BOOL_CONST_FIELD_NUMBER;
-    hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
-        getBoolConst());
+    hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(getBoolConst());
     if (hasFloatVal()) {
       hash = (37 * hash) + FLOAT_VAL_FIELD_NUMBER;
       hash = (53 * hash) + getFloatVal().hashCode();
@@ -824,11 +917,12 @@ java.lang.String defaultValue) {
       hash = (53 * hash) + getAnother().hashCode();
     }
     hash = (37 * hash) + FLOAT_CONST_FIELD_NUMBER;
-    hash = (53 * hash) + java.lang.Float.floatToIntBits(
-        getFloatConst());
+    hash = (53 * hash) + java.lang.Float.floatToIntBits(getFloatConst());
     hash = (37 * hash) + DOUBLE_IN_FIELD_NUMBER;
-    hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-        java.lang.Double.doubleToLongBits(getDoubleIn()));
+    hash =
+        (53 * hash)
+            + com.google.protobuf.Internal.hashLong(
+                java.lang.Double.doubleToLongBits(getDoubleIn()));
     hash = (37 * hash) + ENUM_CONST_FIELD_NUMBER;
     hash = (53 * hash) + enumConst_;
     if (hasAnyVal()) {
@@ -863,149 +957,148 @@ java.lang.String defaultValue) {
   }
 
   public static build.buf.validate.conformance.cases.ComplexTestMsg parseFrom(
-      java.nio.ByteBuffer data)
-      throws com.google.protobuf.InvalidProtocolBufferException {
+      java.nio.ByteBuffer data) throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
+
   public static build.buf.validate.conformance.cases.ComplexTestMsg parseFrom(
-      java.nio.ByteBuffer data,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      java.nio.ByteBuffer data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
+
   public static build.buf.validate.conformance.cases.ComplexTestMsg parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
+
   public static build.buf.validate.conformance.cases.ComplexTestMsg parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
+
   public static build.buf.validate.conformance.cases.ComplexTestMsg parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
+
   public static build.buf.validate.conformance.cases.ComplexTestMsg parseFrom(
-      byte[] data,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      byte[] data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static build.buf.validate.conformance.cases.ComplexTestMsg parseFrom(java.io.InputStream input)
-      throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input);
-  }
+
   public static build.buf.validate.conformance.cases.ComplexTestMsg parseFrom(
-      java.io.InputStream input,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-      throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input, extensionRegistry);
+      java.io.InputStream input) throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
   }
 
-  public static build.buf.validate.conformance.cases.ComplexTestMsg parseDelimitedFrom(java.io.InputStream input)
+  public static build.buf.validate.conformance.cases.ComplexTestMsg parseFrom(
+      java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseDelimitedWithIOException(PARSER, input);
+    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+        PARSER, input, extensionRegistry);
   }
 
   public static build.buf.validate.conformance.cases.ComplexTestMsg parseDelimitedFrom(
-      java.io.InputStream input,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-      throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+      java.io.InputStream input) throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input);
   }
+
+  public static build.buf.validate.conformance.cases.ComplexTestMsg parseDelimitedFrom(
+      java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(
+        PARSER, input, extensionRegistry);
+  }
+
   public static build.buf.validate.conformance.cases.ComplexTestMsg parseFrom(
-      com.google.protobuf.CodedInputStream input)
-      throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input);
+      com.google.protobuf.CodedInputStream input) throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
   }
+
   public static build.buf.validate.conformance.cases.ComplexTestMsg parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input, extensionRegistry);
+    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+        PARSER, input, extensionRegistry);
   }
 
   @java.lang.Override
-  public Builder newBuilderForType() { return newBuilder(); }
+  public Builder newBuilderForType() {
+    return newBuilder();
+  }
+
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
+
   public static Builder newBuilder(build.buf.validate.conformance.cases.ComplexTestMsg prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
+
   @java.lang.Override
   public Builder toBuilder() {
-    return this == DEFAULT_INSTANCE
-        ? new Builder() : new Builder().mergeFrom(this);
+    return this == DEFAULT_INSTANCE ? new Builder() : new Builder().mergeFrom(this);
   }
 
   @java.lang.Override
-  protected Builder newBuilderForType(
-      com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+  protected Builder newBuilderForType(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
     Builder builder = new Builder(parent);
     return builder;
   }
-  /**
-   * Protobuf type {@code buf.validate.conformance.cases.ComplexTestMsg}
-   */
-  public static final class Builder extends
-      com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+
+  /** Protobuf type {@code buf.validate.conformance.cases.ComplexTestMsg} */
+  public static final class Builder extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
+      implements
       // @@protoc_insertion_point(builder_implements:buf.validate.conformance.cases.ComplexTestMsg)
       build.buf.validate.conformance.cases.ComplexTestMsgOrBuilder {
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return build.buf.validate.conformance.cases.KitchenSinkProto.internal_static_buf_validate_conformance_cases_ComplexTestMsg_descriptor;
+    public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+      return build.buf.validate.conformance.cases.KitchenSinkProto
+          .internal_static_buf_validate_conformance_cases_ComplexTestMsg_descriptor;
     }
 
     @SuppressWarnings({"rawtypes"})
-    protected com.google.protobuf.MapField internalGetMapField(
-        int number) {
+    protected com.google.protobuf.MapField internalGetMapField(int number) {
       switch (number) {
         case 14:
           return internalGetMapVal();
         default:
-          throw new RuntimeException(
-              "Invalid map field number: " + number);
+          throw new RuntimeException("Invalid map field number: " + number);
       }
     }
+
     @SuppressWarnings({"rawtypes"})
-    protected com.google.protobuf.MapField internalGetMutableMapField(
-        int number) {
+    protected com.google.protobuf.MapField internalGetMutableMapField(int number) {
       switch (number) {
         case 14:
           return internalGetMutableMapVal();
         default:
-          throw new RuntimeException(
-              "Invalid map field number: " + number);
+          throw new RuntimeException("Invalid map field number: " + number);
       }
     }
+
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return build.buf.validate.conformance.cases.KitchenSinkProto.internal_static_buf_validate_conformance_cases_ComplexTestMsg_fieldAccessorTable
+      return build.buf.validate.conformance.cases.KitchenSinkProto
+          .internal_static_buf_validate_conformance_cases_ComplexTestMsg_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              build.buf.validate.conformance.cases.ComplexTestMsg.class, build.buf.validate.conformance.cases.ComplexTestMsg.Builder.class);
+              build.buf.validate.conformance.cases.ComplexTestMsg.class,
+              build.buf.validate.conformance.cases.ComplexTestMsg.Builder.class);
     }
 
     // Construct using build.buf.validate.conformance.cases.ComplexTestMsg.newBuilder()
-    private Builder() {
+    private Builder() {}
 
-    }
-
-    private Builder(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+    private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
       super(parent);
-
     }
+
     @java.lang.Override
     public Builder clear() {
       super.clear();
@@ -1061,9 +1154,9 @@ java.lang.String defaultValue) {
     }
 
     @java.lang.Override
-    public com.google.protobuf.Descriptors.Descriptor
-        getDescriptorForType() {
-      return build.buf.validate.conformance.cases.KitchenSinkProto.internal_static_buf_validate_conformance_cases_ComplexTestMsg_descriptor;
+    public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
+      return build.buf.validate.conformance.cases.KitchenSinkProto
+          .internal_static_buf_validate_conformance_cases_ComplexTestMsg_descriptor;
     }
 
     @java.lang.Override
@@ -1082,15 +1175,19 @@ java.lang.String defaultValue) {
 
     @java.lang.Override
     public build.buf.validate.conformance.cases.ComplexTestMsg buildPartial() {
-      build.buf.validate.conformance.cases.ComplexTestMsg result = new build.buf.validate.conformance.cases.ComplexTestMsg(this);
+      build.buf.validate.conformance.cases.ComplexTestMsg result =
+          new build.buf.validate.conformance.cases.ComplexTestMsg(this);
       buildPartialRepeatedFields(result);
-      if (bitField0_ != 0) { buildPartial0(result); }
+      if (bitField0_ != 0) {
+        buildPartial0(result);
+      }
       buildPartialOneofs(result);
       onBuilt();
       return result;
     }
 
-    private void buildPartialRepeatedFields(build.buf.validate.conformance.cases.ComplexTestMsg result) {
+    private void buildPartialRepeatedFields(
+        build.buf.validate.conformance.cases.ComplexTestMsg result) {
       if (repTsValBuilder_ == null) {
         if (((bitField0_ & 0x00001000) != 0)) {
           repTsVal_ = java.util.Collections.unmodifiableList(repTsVal_);
@@ -1108,9 +1205,7 @@ java.lang.String defaultValue) {
         result.const_ = const_;
       }
       if (((from_bitField0_ & 0x00000002) != 0)) {
-        result.nested_ = nestedBuilder_ == null
-            ? nested_
-            : nestedBuilder_.build();
+        result.nested_ = nestedBuilder_ == null ? nested_ : nestedBuilder_.build();
       }
       if (((from_bitField0_ & 0x00000004) != 0)) {
         result.intConst_ = intConst_;
@@ -1119,24 +1214,16 @@ java.lang.String defaultValue) {
         result.boolConst_ = boolConst_;
       }
       if (((from_bitField0_ & 0x00000010) != 0)) {
-        result.floatVal_ = floatValBuilder_ == null
-            ? floatVal_
-            : floatValBuilder_.build();
+        result.floatVal_ = floatValBuilder_ == null ? floatVal_ : floatValBuilder_.build();
       }
       if (((from_bitField0_ & 0x00000020) != 0)) {
-        result.durVal_ = durValBuilder_ == null
-            ? durVal_
-            : durValBuilder_.build();
+        result.durVal_ = durValBuilder_ == null ? durVal_ : durValBuilder_.build();
       }
       if (((from_bitField0_ & 0x00000040) != 0)) {
-        result.tsVal_ = tsValBuilder_ == null
-            ? tsVal_
-            : tsValBuilder_.build();
+        result.tsVal_ = tsValBuilder_ == null ? tsVal_ : tsValBuilder_.build();
       }
       if (((from_bitField0_ & 0x00000080) != 0)) {
-        result.another_ = anotherBuilder_ == null
-            ? another_
-            : anotherBuilder_.build();
+        result.another_ = anotherBuilder_ == null ? another_ : anotherBuilder_.build();
       }
       if (((from_bitField0_ & 0x00000100) != 0)) {
         result.floatConst_ = floatConst_;
@@ -1148,9 +1235,7 @@ java.lang.String defaultValue) {
         result.enumConst_ = enumConst_;
       }
       if (((from_bitField0_ & 0x00000800) != 0)) {
-        result.anyVal_ = anyValBuilder_ == null
-            ? anyVal_
-            : anyValBuilder_.build();
+        result.anyVal_ = anyValBuilder_ == null ? anyVal_ : anyValBuilder_.build();
       }
       if (((from_bitField0_ & 0x00002000) != 0)) {
         result.mapVal_ = internalGetMapVal();
@@ -1170,38 +1255,39 @@ java.lang.String defaultValue) {
     public Builder clone() {
       return super.clone();
     }
+
     @java.lang.Override
     public Builder setField(
-        com.google.protobuf.Descriptors.FieldDescriptor field,
-        java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
       return super.setField(field, value);
     }
+
     @java.lang.Override
-    public Builder clearField(
-        com.google.protobuf.Descriptors.FieldDescriptor field) {
+    public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
       return super.clearField(field);
     }
+
     @java.lang.Override
-    public Builder clearOneof(
-        com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+    public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
       return super.clearOneof(oneof);
     }
+
     @java.lang.Override
     public Builder setRepeatedField(
-        com.google.protobuf.Descriptors.FieldDescriptor field,
-        int index, java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field, int index, java.lang.Object value) {
       return super.setRepeatedField(field, index, value);
     }
+
     @java.lang.Override
     public Builder addRepeatedField(
-        com.google.protobuf.Descriptors.FieldDescriptor field,
-        java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
       return super.addRepeatedField(field, value);
     }
+
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
       if (other instanceof build.buf.validate.conformance.cases.ComplexTestMsg) {
-        return mergeFrom((build.buf.validate.conformance.cases.ComplexTestMsg)other);
+        return mergeFrom((build.buf.validate.conformance.cases.ComplexTestMsg) other);
       } else {
         super.mergeFrom(other);
         return this;
@@ -1209,7 +1295,8 @@ java.lang.String defaultValue) {
     }
 
     public Builder mergeFrom(build.buf.validate.conformance.cases.ComplexTestMsg other) {
-      if (other == build.buf.validate.conformance.cases.ComplexTestMsg.getDefaultInstance()) return this;
+      if (other == build.buf.validate.conformance.cases.ComplexTestMsg.getDefaultInstance())
+        return this;
       if (!other.getConst().isEmpty()) {
         const_ = other.const_;
         bitField0_ |= 0x00000001;
@@ -1266,34 +1353,37 @@ java.lang.String defaultValue) {
             repTsValBuilder_ = null;
             repTsVal_ = other.repTsVal_;
             bitField0_ = (bitField0_ & ~0x00001000);
-            repTsValBuilder_ = 
-              com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
-                 getRepTsValFieldBuilder() : null;
+            repTsValBuilder_ =
+                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders
+                    ? getRepTsValFieldBuilder()
+                    : null;
           } else {
             repTsValBuilder_.addAllMessages(other.repTsVal_);
           }
         }
       }
-      internalGetMutableMapVal().mergeFrom(
-          other.internalGetMapVal());
+      internalGetMutableMapVal().mergeFrom(other.internalGetMapVal());
       bitField0_ |= 0x00002000;
       if (other.getBytesVal() != com.google.protobuf.ByteString.EMPTY) {
         setBytesVal(other.getBytesVal());
       }
       switch (other.getOCase()) {
-        case X: {
-          oCase_ = 16;
-          o_ = other.o_;
-          onChanged();
-          break;
-        }
-        case Y: {
-          setY(other.getY());
-          break;
-        }
-        case O_NOT_SET: {
-          break;
-        }
+        case X:
+          {
+            oCase_ = 16;
+            o_ = other.o_;
+            onChanged();
+            break;
+          }
+        case Y:
+          {
+            setY(other.getY());
+            break;
+          }
+        case O_NOT_SET:
+          {
+            break;
+          }
       }
       this.mergeUnknownFields(other.getUnknownFields());
       onChanged();
@@ -1321,122 +1411,128 @@ java.lang.String defaultValue) {
             case 0:
               done = true;
               break;
-            case 10: {
-              const_ = input.readStringRequireUtf8();
-              bitField0_ |= 0x00000001;
-              break;
-            } // case 10
-            case 18: {
-              input.readMessage(
-                  getNestedFieldBuilder().getBuilder(),
-                  extensionRegistry);
-              bitField0_ |= 0x00000002;
-              break;
-            } // case 18
-            case 24: {
-              intConst_ = input.readInt32();
-              bitField0_ |= 0x00000004;
-              break;
-            } // case 24
-            case 32: {
-              boolConst_ = input.readBool();
-              bitField0_ |= 0x00000008;
-              break;
-            } // case 32
-            case 42: {
-              input.readMessage(
-                  getFloatValFieldBuilder().getBuilder(),
-                  extensionRegistry);
-              bitField0_ |= 0x00000010;
-              break;
-            } // case 42
-            case 50: {
-              input.readMessage(
-                  getDurValFieldBuilder().getBuilder(),
-                  extensionRegistry);
-              bitField0_ |= 0x00000020;
-              break;
-            } // case 50
-            case 58: {
-              input.readMessage(
-                  getTsValFieldBuilder().getBuilder(),
-                  extensionRegistry);
-              bitField0_ |= 0x00000040;
-              break;
-            } // case 58
-            case 66: {
-              input.readMessage(
-                  getAnotherFieldBuilder().getBuilder(),
-                  extensionRegistry);
-              bitField0_ |= 0x00000080;
-              break;
-            } // case 66
-            case 77: {
-              floatConst_ = input.readFloat();
-              bitField0_ |= 0x00000100;
-              break;
-            } // case 77
-            case 81: {
-              doubleIn_ = input.readDouble();
-              bitField0_ |= 0x00000200;
-              break;
-            } // case 81
-            case 88: {
-              enumConst_ = input.readEnum();
-              bitField0_ |= 0x00000400;
-              break;
-            } // case 88
-            case 98: {
-              input.readMessage(
-                  getAnyValFieldBuilder().getBuilder(),
-                  extensionRegistry);
-              bitField0_ |= 0x00000800;
-              break;
-            } // case 98
-            case 106: {
-              com.google.protobuf.Timestamp m =
-                  input.readMessage(
-                      com.google.protobuf.Timestamp.parser(),
-                      extensionRegistry);
-              if (repTsValBuilder_ == null) {
-                ensureRepTsValIsMutable();
-                repTsVal_.add(m);
-              } else {
-                repTsValBuilder_.addMessage(m);
-              }
-              break;
-            } // case 106
-            case 114: {
-              com.google.protobuf.MapEntry<java.lang.Integer, java.lang.String>
-              mapVal__ = input.readMessage(
-                  MapValDefaultEntryHolder.defaultEntry.getParserForType(), extensionRegistry);
-              internalGetMutableMapVal().getMutableMap().put(
-                  mapVal__.getKey(), mapVal__.getValue());
-              bitField0_ |= 0x00002000;
-              break;
-            } // case 114
-            case 122: {
-              bytesVal_ = input.readBytes();
-              bitField0_ |= 0x00004000;
-              break;
-            } // case 122
-            case 130: {
-              java.lang.String s = input.readStringRequireUtf8();
-              oCase_ = 16;
-              o_ = s;
-              break;
-            } // case 130
-            case 136: {
-              o_ = input.readInt32();
-              oCase_ = 17;
-              break;
-            } // case 136
-            default: {
-              if (!super.parseUnknownField(input, extensionRegistry, tag)) {
-                done = true; // was an endgroup tag
-              }
-              break;
-            } // default:
+            case 10:
+              {
+                const_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 10
+            case 18:
+              {
+                input.readMessage(getNestedFieldBuilder().getBuilder(), extensionRegistry);
+                bitField0_ |= 0x00000002;
+                break;
+              } // case 18
+            case 24:
+              {
+                intConst_ = input.readInt32();
+                bitField0_ |= 0x00000004;
+                break;
+              } // case 24
+            case 32:
+              {
+                boolConst_ = input.readBool();
+                bitField0_ |= 0x00000008;
+                break;
+              } // case 32
+            case 42:
+              {
+                input.readMessage(getFloatValFieldBuilder().getBuilder(), extensionRegistry);
+                bitField0_ |= 0x00000010;
+                break;
+              } // case 42
+            case 50:
+              {
+                input.readMessage(getDurValFieldBuilder().getBuilder(), extensionRegistry);
+                bitField0_ |= 0x00000020;
+                break;
+              } // case 50
+            case 58:
+              {
+                input.readMessage(getTsValFieldBuilder().getBuilder(), extensionRegistry);
+                bitField0_ |= 0x00000040;
+                break;
+              } // case 58
+            case 66:
+              {
+                input.readMessage(getAnotherFieldBuilder().getBuilder(), extensionRegistry);
+                bitField0_ |= 0x00000080;
+                break;
+              } // case 66
+            case 77:
+              {
+                floatConst_ = input.readFloat();
+                bitField0_ |= 0x00000100;
+                break;
+              } // case 77
+            case 81:
+              {
+                doubleIn_ = input.readDouble();
+                bitField0_ |= 0x00000200;
+                break;
+              } // case 81
+            case 88:
+              {
+                enumConst_ = input.readEnum();
+                bitField0_ |= 0x00000400;
+                break;
+              } // case 88
+            case 98:
+              {
+                input.readMessage(getAnyValFieldBuilder().getBuilder(), extensionRegistry);
+                bitField0_ |= 0x00000800;
+                break;
+              } // case 98
+            case 106:
+              {
+                com.google.protobuf.Timestamp m =
+                    input.readMessage(com.google.protobuf.Timestamp.parser(), extensionRegistry);
+                if (repTsValBuilder_ == null) {
+                  ensureRepTsValIsMutable();
+                  repTsVal_.add(m);
+                } else {
+                  repTsValBuilder_.addMessage(m);
+                }
+                break;
+              } // case 106
+            case 114:
+              {
+                com.google.protobuf.MapEntry<java.lang.Integer, java.lang.String> mapVal__ =
+                    input.readMessage(
+                        MapValDefaultEntryHolder.defaultEntry.getParserForType(),
+                        extensionRegistry);
+                internalGetMutableMapVal()
+                    .getMutableMap()
+                    .put(mapVal__.getKey(), mapVal__.getValue());
+                bitField0_ |= 0x00002000;
+                break;
+              } // case 114
+            case 122:
+              {
+                bytesVal_ = input.readBytes();
+                bitField0_ |= 0x00004000;
+                break;
+              } // case 122
+            case 130:
+              {
+                java.lang.String s = input.readStringRequireUtf8();
+                oCase_ = 16;
+                o_ = s;
+                break;
+              } // case 130
+            case 136:
+              {
+                o_ = input.readInt32();
+                oCase_ = 17;
+                break;
+              } // case 136
+            default:
+              {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
           } // switch (tag)
         } // while (!done)
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -1446,12 +1542,12 @@ java.lang.String defaultValue) {
       } // finally
       return this;
     }
+
     private int oCase_ = 0;
     private java.lang.Object o_;
-    public OCase
-        getOCase() {
-      return OCase.forNumber(
-          oCase_);
+
+    public OCase getOCase() {
+      return OCase.forNumber(oCase_);
     }
 
     public Builder clearO() {
@@ -1464,15 +1560,16 @@ java.lang.String defaultValue) {
     private int bitField0_;
 
     private java.lang.Object const_ = "";
+
     /**
      * <code>string const = 1 [json_name = "const", (.buf.validate.field) = { ... }</code>
+     *
      * @return The const.
      */
     public java.lang.String getConst() {
       java.lang.Object ref = const_;
       if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs =
-            (com.google.protobuf.ByteString) ref;
+        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         const_ = s;
         return s;
@@ -1480,38 +1577,43 @@ java.lang.String defaultValue) {
         return (java.lang.String) ref;
       }
     }
+
     /**
      * <code>string const = 1 [json_name = "const", (.buf.validate.field) = { ... }</code>
+     *
      * @return The bytes for const.
      */
-    public com.google.protobuf.ByteString
-        getConstBytes() {
+    public com.google.protobuf.ByteString getConstBytes() {
       java.lang.Object ref = const_;
       if (ref instanceof String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
+        com.google.protobuf.ByteString b =
+            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
         const_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
     }
+
     /**
      * <code>string const = 1 [json_name = "const", (.buf.validate.field) = { ... }</code>
+     *
      * @param value The const to set.
      * @return This builder for chaining.
      */
-    public Builder setConst(
-        java.lang.String value) {
-      if (value == null) { throw new NullPointerException(); }
+    public Builder setConst(java.lang.String value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
       const_ = value;
       bitField0_ |= 0x00000001;
       onChanged();
       return this;
     }
+
     /**
      * <code>string const = 1 [json_name = "const", (.buf.validate.field) = { ... }</code>
+     *
      * @return This builder for chaining.
      */
     public Builder clearConst() {
@@ -1520,14 +1622,17 @@ java.lang.String defaultValue) {
       onChanged();
       return this;
     }
+
     /**
      * <code>string const = 1 [json_name = "const", (.buf.validate.field) = { ... }</code>
+     *
      * @param value The bytes for const to set.
      * @return This builder for chaining.
      */
-    public Builder setConstBytes(
-        com.google.protobuf.ByteString value) {
-      if (value == null) { throw new NullPointerException(); }
+    public Builder setConstBytes(com.google.protobuf.ByteString value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
       checkByteStringIsUtf8(value);
       const_ = value;
       bitField0_ |= 0x00000001;
@@ -1537,27 +1642,40 @@ java.lang.String defaultValue) {
 
     private build.buf.validate.conformance.cases.ComplexTestMsg nested_;
     private com.google.protobuf.SingleFieldBuilderV3<
-        build.buf.validate.conformance.cases.ComplexTestMsg, build.buf.validate.conformance.cases.ComplexTestMsg.Builder, build.buf.validate.conformance.cases.ComplexTestMsgOrBuilder> nestedBuilder_;
+            build.buf.validate.conformance.cases.ComplexTestMsg,
+            build.buf.validate.conformance.cases.ComplexTestMsg.Builder,
+            build.buf.validate.conformance.cases.ComplexTestMsgOrBuilder>
+        nestedBuilder_;
+
     /**
-     * <code>.buf.validate.conformance.cases.ComplexTestMsg nested = 2 [json_name = "nested"];</code>
+     * <code>.buf.validate.conformance.cases.ComplexTestMsg nested = 2 [json_name = "nested"];
+     * </code>
+     *
      * @return Whether the nested field is set.
      */
     public boolean hasNested() {
       return ((bitField0_ & 0x00000002) != 0);
     }
+
     /**
-     * <code>.buf.validate.conformance.cases.ComplexTestMsg nested = 2 [json_name = "nested"];</code>
+     * <code>.buf.validate.conformance.cases.ComplexTestMsg nested = 2 [json_name = "nested"];
+     * </code>
+     *
      * @return The nested.
      */
     public build.buf.validate.conformance.cases.ComplexTestMsg getNested() {
       if (nestedBuilder_ == null) {
-        return nested_ == null ? build.buf.validate.conformance.cases.ComplexTestMsg.getDefaultInstance() : nested_;
+        return nested_ == null
+            ? build.buf.validate.conformance.cases.ComplexTestMsg.getDefaultInstance()
+            : nested_;
       } else {
         return nestedBuilder_.getMessage();
       }
     }
+
     /**
-     * <code>.buf.validate.conformance.cases.ComplexTestMsg nested = 2 [json_name = "nested"];</code>
+     * <code>.buf.validate.conformance.cases.ComplexTestMsg nested = 2 [json_name = "nested"];
+     * </code>
      */
     public Builder setNested(build.buf.validate.conformance.cases.ComplexTestMsg value) {
       if (nestedBuilder_ == null) {
@@ -1572,8 +1690,10 @@ java.lang.String defaultValue) {
       onChanged();
       return this;
     }
+
     /**
-     * <code>.buf.validate.conformance.cases.ComplexTestMsg nested = 2 [json_name = "nested"];</code>
+     * <code>.buf.validate.conformance.cases.ComplexTestMsg nested = 2 [json_name = "nested"];
+     * </code>
      */
     public Builder setNested(
         build.buf.validate.conformance.cases.ComplexTestMsg.Builder builderForValue) {
@@ -1586,14 +1706,17 @@ java.lang.String defaultValue) {
       onChanged();
       return this;
     }
+
     /**
-     * <code>.buf.validate.conformance.cases.ComplexTestMsg nested = 2 [json_name = "nested"];</code>
+     * <code>.buf.validate.conformance.cases.ComplexTestMsg nested = 2 [json_name = "nested"];
+     * </code>
      */
     public Builder mergeNested(build.buf.validate.conformance.cases.ComplexTestMsg value) {
       if (nestedBuilder_ == null) {
-        if (((bitField0_ & 0x00000002) != 0) &&
-          nested_ != null &&
-          nested_ != build.buf.validate.conformance.cases.ComplexTestMsg.getDefaultInstance()) {
+        if (((bitField0_ & 0x00000002) != 0)
+            && nested_ != null
+            && nested_
+                != build.buf.validate.conformance.cases.ComplexTestMsg.getDefaultInstance()) {
           getNestedBuilder().mergeFrom(value);
         } else {
           nested_ = value;
@@ -1605,8 +1728,10 @@ java.lang.String defaultValue) {
       onChanged();
       return this;
     }
+
     /**
-     * <code>.buf.validate.conformance.cases.ComplexTestMsg nested = 2 [json_name = "nested"];</code>
+     * <code>.buf.validate.conformance.cases.ComplexTestMsg nested = 2 [json_name = "nested"];
+     * </code>
      */
     public Builder clearNested() {
       bitField0_ = (bitField0_ & ~0x00000002);
@@ -1618,53 +1743,67 @@ java.lang.String defaultValue) {
       onChanged();
       return this;
     }
+
     /**
-     * <code>.buf.validate.conformance.cases.ComplexTestMsg nested = 2 [json_name = "nested"];</code>
+     * <code>.buf.validate.conformance.cases.ComplexTestMsg nested = 2 [json_name = "nested"];
+     * </code>
      */
     public build.buf.validate.conformance.cases.ComplexTestMsg.Builder getNestedBuilder() {
       bitField0_ |= 0x00000002;
       onChanged();
       return getNestedFieldBuilder().getBuilder();
     }
+
     /**
-     * <code>.buf.validate.conformance.cases.ComplexTestMsg nested = 2 [json_name = "nested"];</code>
+     * <code>.buf.validate.conformance.cases.ComplexTestMsg nested = 2 [json_name = "nested"];
+     * </code>
      */
     public build.buf.validate.conformance.cases.ComplexTestMsgOrBuilder getNestedOrBuilder() {
       if (nestedBuilder_ != null) {
         return nestedBuilder_.getMessageOrBuilder();
       } else {
-        return nested_ == null ?
-            build.buf.validate.conformance.cases.ComplexTestMsg.getDefaultInstance() : nested_;
+        return nested_ == null
+            ? build.buf.validate.conformance.cases.ComplexTestMsg.getDefaultInstance()
+            : nested_;
       }
     }
+
     /**
-     * <code>.buf.validate.conformance.cases.ComplexTestMsg nested = 2 [json_name = "nested"];</code>
+     * <code>.buf.validate.conformance.cases.ComplexTestMsg nested = 2 [json_name = "nested"];
+     * </code>
      */
     private com.google.protobuf.SingleFieldBuilderV3<
-        build.buf.validate.conformance.cases.ComplexTestMsg, build.buf.validate.conformance.cases.ComplexTestMsg.Builder, build.buf.validate.conformance.cases.ComplexTestMsgOrBuilder> 
+            build.buf.validate.conformance.cases.ComplexTestMsg,
+            build.buf.validate.conformance.cases.ComplexTestMsg.Builder,
+            build.buf.validate.conformance.cases.ComplexTestMsgOrBuilder>
         getNestedFieldBuilder() {
       if (nestedBuilder_ == null) {
-        nestedBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-            build.buf.validate.conformance.cases.ComplexTestMsg, build.buf.validate.conformance.cases.ComplexTestMsg.Builder, build.buf.validate.conformance.cases.ComplexTestMsgOrBuilder>(
-                getNested(),
-                getParentForChildren(),
-                isClean());
+        nestedBuilder_ =
+            new com.google.protobuf.SingleFieldBuilderV3<
+                build.buf.validate.conformance.cases.ComplexTestMsg,
+                build.buf.validate.conformance.cases.ComplexTestMsg.Builder,
+                build.buf.validate.conformance.cases.ComplexTestMsgOrBuilder>(
+                getNested(), getParentForChildren(), isClean());
         nested_ = null;
       }
       return nestedBuilder_;
     }
 
-    private int intConst_ ;
+    private int intConst_;
+
     /**
      * <code>int32 int_const = 3 [json_name = "intConst", (.buf.validate.field) = { ... }</code>
+     *
      * @return The intConst.
      */
     @java.lang.Override
     public int getIntConst() {
       return intConst_;
     }
+
     /**
      * <code>int32 int_const = 3 [json_name = "intConst", (.buf.validate.field) = { ... }</code>
+     *
      * @param value The intConst to set.
      * @return This builder for chaining.
      */
@@ -1675,8 +1814,10 @@ java.lang.String defaultValue) {
       onChanged();
       return this;
     }
+
     /**
      * <code>int32 int_const = 3 [json_name = "intConst", (.buf.validate.field) = { ... }</code>
+     *
      * @return This builder for chaining.
      */
     public Builder clearIntConst() {
@@ -1686,17 +1827,21 @@ java.lang.String defaultValue) {
       return this;
     }
 
-    private boolean boolConst_ ;
+    private boolean boolConst_;
+
     /**
      * <code>bool bool_const = 4 [json_name = "boolConst", (.buf.validate.field) = { ... }</code>
+     *
      * @return The boolConst.
      */
     @java.lang.Override
     public boolean getBoolConst() {
       return boolConst_;
     }
+
     /**
      * <code>bool bool_const = 4 [json_name = "boolConst", (.buf.validate.field) = { ... }</code>
+     *
      * @param value The boolConst to set.
      * @return This builder for chaining.
      */
@@ -1707,8 +1852,10 @@ java.lang.String defaultValue) {
       onChanged();
       return this;
     }
+
     /**
      * <code>bool bool_const = 4 [json_name = "boolConst", (.buf.validate.field) = { ... }</code>
+     *
      * @return This builder for chaining.
      */
     public Builder clearBoolConst() {
@@ -1720,16 +1867,27 @@ java.lang.String defaultValue) {
 
     private com.google.protobuf.FloatValue floatVal_;
     private com.google.protobuf.SingleFieldBuilderV3<
-        com.google.protobuf.FloatValue, com.google.protobuf.FloatValue.Builder, com.google.protobuf.FloatValueOrBuilder> floatValBuilder_;
+            com.google.protobuf.FloatValue,
+            com.google.protobuf.FloatValue.Builder,
+            com.google.protobuf.FloatValueOrBuilder>
+        floatValBuilder_;
+
     /**
-     * <code>.google.protobuf.FloatValue float_val = 5 [json_name = "floatVal", (.buf.validate.field) = { ... }</code>
+     * <code>
+     * .google.protobuf.FloatValue float_val = 5 [json_name = "floatVal", (.buf.validate.field) = { ... }
+     * </code>
+     *
      * @return Whether the floatVal field is set.
      */
     public boolean hasFloatVal() {
       return ((bitField0_ & 0x00000010) != 0);
     }
+
     /**
-     * <code>.google.protobuf.FloatValue float_val = 5 [json_name = "floatVal", (.buf.validate.field) = { ... }</code>
+     * <code>
+     * .google.protobuf.FloatValue float_val = 5 [json_name = "floatVal", (.buf.validate.field) = { ... }
+     * </code>
+     *
      * @return The floatVal.
      */
     public com.google.protobuf.FloatValue getFloatVal() {
@@ -1739,8 +1897,11 @@ java.lang.String defaultValue) {
         return floatValBuilder_.getMessage();
       }
     }
+
     /**
-     * <code>.google.protobuf.FloatValue float_val = 5 [json_name = "floatVal", (.buf.validate.field) = { ... }</code>
+     * <code>
+     * .google.protobuf.FloatValue float_val = 5 [json_name = "floatVal", (.buf.validate.field) = { ... }
+     * </code>
      */
     public Builder setFloatVal(com.google.protobuf.FloatValue value) {
       if (floatValBuilder_ == null) {
@@ -1755,11 +1916,13 @@ java.lang.String defaultValue) {
       onChanged();
       return this;
     }
+
     /**
-     * <code>.google.protobuf.FloatValue float_val = 5 [json_name = "floatVal", (.buf.validate.field) = { ... }</code>
+     * <code>
+     * .google.protobuf.FloatValue float_val = 5 [json_name = "floatVal", (.buf.validate.field) = { ... }
+     * </code>
      */
-    public Builder setFloatVal(
-        com.google.protobuf.FloatValue.Builder builderForValue) {
+    public Builder setFloatVal(com.google.protobuf.FloatValue.Builder builderForValue) {
       if (floatValBuilder_ == null) {
         floatVal_ = builderForValue.build();
       } else {
@@ -1769,14 +1932,17 @@ java.lang.String defaultValue) {
       onChanged();
       return this;
     }
+
     /**
-     * <code>.google.protobuf.FloatValue float_val = 5 [json_name = "floatVal", (.buf.validate.field) = { ... }</code>
+     * <code>
+     * .google.protobuf.FloatValue float_val = 5 [json_name = "floatVal", (.buf.validate.field) = { ... }
+     * </code>
      */
     public Builder mergeFloatVal(com.google.protobuf.FloatValue value) {
       if (floatValBuilder_ == null) {
-        if (((bitField0_ & 0x00000010) != 0) &&
-          floatVal_ != null &&
-          floatVal_ != com.google.protobuf.FloatValue.getDefaultInstance()) {
+        if (((bitField0_ & 0x00000010) != 0)
+            && floatVal_ != null
+            && floatVal_ != com.google.protobuf.FloatValue.getDefaultInstance()) {
           getFloatValBuilder().mergeFrom(value);
         } else {
           floatVal_ = value;
@@ -1788,8 +1954,11 @@ java.lang.String defaultValue) {
       onChanged();
       return this;
     }
+
     /**
-     * <code>.google.protobuf.FloatValue float_val = 5 [json_name = "floatVal", (.buf.validate.field) = { ... }</code>
+     * <code>
+     * .google.protobuf.FloatValue float_val = 5 [json_name = "floatVal", (.buf.validate.field) = { ... }
+     * </code>
      */
     public Builder clearFloatVal() {
       bitField0_ = (bitField0_ & ~0x00000010);
@@ -1801,37 +1970,48 @@ java.lang.String defaultValue) {
       onChanged();
       return this;
     }
+
     /**
-     * <code>.google.protobuf.FloatValue float_val = 5 [json_name = "floatVal", (.buf.validate.field) = { ... }</code>
+     * <code>
+     * .google.protobuf.FloatValue float_val = 5 [json_name = "floatVal", (.buf.validate.field) = { ... }
+     * </code>
      */
     public com.google.protobuf.FloatValue.Builder getFloatValBuilder() {
       bitField0_ |= 0x00000010;
       onChanged();
       return getFloatValFieldBuilder().getBuilder();
     }
+
     /**
-     * <code>.google.protobuf.FloatValue float_val = 5 [json_name = "floatVal", (.buf.validate.field) = { ... }</code>
+     * <code>
+     * .google.protobuf.FloatValue float_val = 5 [json_name = "floatVal", (.buf.validate.field) = { ... }
+     * </code>
      */
     public com.google.protobuf.FloatValueOrBuilder getFloatValOrBuilder() {
       if (floatValBuilder_ != null) {
         return floatValBuilder_.getMessageOrBuilder();
       } else {
-        return floatVal_ == null ?
-            com.google.protobuf.FloatValue.getDefaultInstance() : floatVal_;
+        return floatVal_ == null ? com.google.protobuf.FloatValue.getDefaultInstance() : floatVal_;
       }
     }
+
     /**
-     * <code>.google.protobuf.FloatValue float_val = 5 [json_name = "floatVal", (.buf.validate.field) = { ... }</code>
+     * <code>
+     * .google.protobuf.FloatValue float_val = 5 [json_name = "floatVal", (.buf.validate.field) = { ... }
+     * </code>
      */
     private com.google.protobuf.SingleFieldBuilderV3<
-        com.google.protobuf.FloatValue, com.google.protobuf.FloatValue.Builder, com.google.protobuf.FloatValueOrBuilder> 
+            com.google.protobuf.FloatValue,
+            com.google.protobuf.FloatValue.Builder,
+            com.google.protobuf.FloatValueOrBuilder>
         getFloatValFieldBuilder() {
       if (floatValBuilder_ == null) {
-        floatValBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-            com.google.protobuf.FloatValue, com.google.protobuf.FloatValue.Builder, com.google.protobuf.FloatValueOrBuilder>(
-                getFloatVal(),
-                getParentForChildren(),
-                isClean());
+        floatValBuilder_ =
+            new com.google.protobuf.SingleFieldBuilderV3<
+                com.google.protobuf.FloatValue,
+                com.google.protobuf.FloatValue.Builder,
+                com.google.protobuf.FloatValueOrBuilder>(
+                getFloatVal(), getParentForChildren(), isClean());
         floatVal_ = null;
       }
       return floatValBuilder_;
@@ -1839,16 +2019,27 @@ java.lang.String defaultValue) {
 
     private com.google.protobuf.Duration durVal_;
     private com.google.protobuf.SingleFieldBuilderV3<
-        com.google.protobuf.Duration, com.google.protobuf.Duration.Builder, com.google.protobuf.DurationOrBuilder> durValBuilder_;
+            com.google.protobuf.Duration,
+            com.google.protobuf.Duration.Builder,
+            com.google.protobuf.DurationOrBuilder>
+        durValBuilder_;
+
     /**
-     * <code>.google.protobuf.Duration dur_val = 6 [json_name = "durVal", (.buf.validate.field) = { ... }</code>
+     * <code>
+     * .google.protobuf.Duration dur_val = 6 [json_name = "durVal", (.buf.validate.field) = { ... }
+     * </code>
+     *
      * @return Whether the durVal field is set.
      */
     public boolean hasDurVal() {
       return ((bitField0_ & 0x00000020) != 0);
     }
+
     /**
-     * <code>.google.protobuf.Duration dur_val = 6 [json_name = "durVal", (.buf.validate.field) = { ... }</code>
+     * <code>
+     * .google.protobuf.Duration dur_val = 6 [json_name = "durVal", (.buf.validate.field) = { ... }
+     * </code>
+     *
      * @return The durVal.
      */
     public com.google.protobuf.Duration getDurVal() {
@@ -1858,8 +2049,11 @@ java.lang.String defaultValue) {
         return durValBuilder_.getMessage();
       }
     }
+
     /**
-     * <code>.google.protobuf.Duration dur_val = 6 [json_name = "durVal", (.buf.validate.field) = { ... }</code>
+     * <code>
+     * .google.protobuf.Duration dur_val = 6 [json_name = "durVal", (.buf.validate.field) = { ... }
+     * </code>
      */
     public Builder setDurVal(com.google.protobuf.Duration value) {
       if (durValBuilder_ == null) {
@@ -1874,11 +2068,13 @@ java.lang.String defaultValue) {
       onChanged();
       return this;
     }
+
     /**
-     * <code>.google.protobuf.Duration dur_val = 6 [json_name = "durVal", (.buf.validate.field) = { ... }</code>
+     * <code>
+     * .google.protobuf.Duration dur_val = 6 [json_name = "durVal", (.buf.validate.field) = { ... }
+     * </code>
      */
-    public Builder setDurVal(
-        com.google.protobuf.Duration.Builder builderForValue) {
+    public Builder setDurVal(com.google.protobuf.Duration.Builder builderForValue) {
       if (durValBuilder_ == null) {
         durVal_ = builderForValue.build();
       } else {
@@ -1888,14 +2084,17 @@ java.lang.String defaultValue) {
       onChanged();
       return this;
     }
+
     /**
-     * <code>.google.protobuf.Duration dur_val = 6 [json_name = "durVal", (.buf.validate.field) = { ... }</code>
+     * <code>
+     * .google.protobuf.Duration dur_val = 6 [json_name = "durVal", (.buf.validate.field) = { ... }
+     * </code>
      */
     public Builder mergeDurVal(com.google.protobuf.Duration value) {
       if (durValBuilder_ == null) {
-        if (((bitField0_ & 0x00000020) != 0) &&
-          durVal_ != null &&
-          durVal_ != com.google.protobuf.Duration.getDefaultInstance()) {
+        if (((bitField0_ & 0x00000020) != 0)
+            && durVal_ != null
+            && durVal_ != com.google.protobuf.Duration.getDefaultInstance()) {
           getDurValBuilder().mergeFrom(value);
         } else {
           durVal_ = value;
@@ -1907,8 +2106,11 @@ java.lang.String defaultValue) {
       onChanged();
       return this;
     }
+
     /**
-     * <code>.google.protobuf.Duration dur_val = 6 [json_name = "durVal", (.buf.validate.field) = { ... }</code>
+     * <code>
+     * .google.protobuf.Duration dur_val = 6 [json_name = "durVal", (.buf.validate.field) = { ... }
+     * </code>
      */
     public Builder clearDurVal() {
       bitField0_ = (bitField0_ & ~0x00000020);
@@ -1920,37 +2122,48 @@ java.lang.String defaultValue) {
       onChanged();
       return this;
     }
+
     /**
-     * <code>.google.protobuf.Duration dur_val = 6 [json_name = "durVal", (.buf.validate.field) = { ... }</code>
+     * <code>
+     * .google.protobuf.Duration dur_val = 6 [json_name = "durVal", (.buf.validate.field) = { ... }
+     * </code>
      */
     public com.google.protobuf.Duration.Builder getDurValBuilder() {
       bitField0_ |= 0x00000020;
       onChanged();
       return getDurValFieldBuilder().getBuilder();
     }
+
     /**
-     * <code>.google.protobuf.Duration dur_val = 6 [json_name = "durVal", (.buf.validate.field) = { ... }</code>
+     * <code>
+     * .google.protobuf.Duration dur_val = 6 [json_name = "durVal", (.buf.validate.field) = { ... }
+     * </code>
      */
     public com.google.protobuf.DurationOrBuilder getDurValOrBuilder() {
       if (durValBuilder_ != null) {
         return durValBuilder_.getMessageOrBuilder();
       } else {
-        return durVal_ == null ?
-            com.google.protobuf.Duration.getDefaultInstance() : durVal_;
+        return durVal_ == null ? com.google.protobuf.Duration.getDefaultInstance() : durVal_;
       }
     }
+
     /**
-     * <code>.google.protobuf.Duration dur_val = 6 [json_name = "durVal", (.buf.validate.field) = { ... }</code>
+     * <code>
+     * .google.protobuf.Duration dur_val = 6 [json_name = "durVal", (.buf.validate.field) = { ... }
+     * </code>
      */
     private com.google.protobuf.SingleFieldBuilderV3<
-        com.google.protobuf.Duration, com.google.protobuf.Duration.Builder, com.google.protobuf.DurationOrBuilder> 
+            com.google.protobuf.Duration,
+            com.google.protobuf.Duration.Builder,
+            com.google.protobuf.DurationOrBuilder>
         getDurValFieldBuilder() {
       if (durValBuilder_ == null) {
-        durValBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-            com.google.protobuf.Duration, com.google.protobuf.Duration.Builder, com.google.protobuf.DurationOrBuilder>(
-                getDurVal(),
-                getParentForChildren(),
-                isClean());
+        durValBuilder_ =
+            new com.google.protobuf.SingleFieldBuilderV3<
+                com.google.protobuf.Duration,
+                com.google.protobuf.Duration.Builder,
+                com.google.protobuf.DurationOrBuilder>(
+                getDurVal(), getParentForChildren(), isClean());
         durVal_ = null;
       }
       return durValBuilder_;
@@ -1958,16 +2171,27 @@ java.lang.String defaultValue) {
 
     private com.google.protobuf.Timestamp tsVal_;
     private com.google.protobuf.SingleFieldBuilderV3<
-        com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder> tsValBuilder_;
+            com.google.protobuf.Timestamp,
+            com.google.protobuf.Timestamp.Builder,
+            com.google.protobuf.TimestampOrBuilder>
+        tsValBuilder_;
+
     /**
-     * <code>.google.protobuf.Timestamp ts_val = 7 [json_name = "tsVal", (.buf.validate.field) = { ... }</code>
+     * <code>
+     * .google.protobuf.Timestamp ts_val = 7 [json_name = "tsVal", (.buf.validate.field) = { ... }
+     * </code>
+     *
      * @return Whether the tsVal field is set.
      */
     public boolean hasTsVal() {
       return ((bitField0_ & 0x00000040) != 0);
     }
+
     /**
-     * <code>.google.protobuf.Timestamp ts_val = 7 [json_name = "tsVal", (.buf.validate.field) = { ... }</code>
+     * <code>
+     * .google.protobuf.Timestamp ts_val = 7 [json_name = "tsVal", (.buf.validate.field) = { ... }
+     * </code>
+     *
      * @return The tsVal.
      */
     public com.google.protobuf.Timestamp getTsVal() {
@@ -1977,8 +2201,11 @@ java.lang.String defaultValue) {
         return tsValBuilder_.getMessage();
       }
     }
+
     /**
-     * <code>.google.protobuf.Timestamp ts_val = 7 [json_name = "tsVal", (.buf.validate.field) = { ... }</code>
+     * <code>
+     * .google.protobuf.Timestamp ts_val = 7 [json_name = "tsVal", (.buf.validate.field) = { ... }
+     * </code>
      */
     public Builder setTsVal(com.google.protobuf.Timestamp value) {
       if (tsValBuilder_ == null) {
@@ -1993,11 +2220,13 @@ java.lang.String defaultValue) {
       onChanged();
       return this;
     }
+
     /**
-     * <code>.google.protobuf.Timestamp ts_val = 7 [json_name = "tsVal", (.buf.validate.field) = { ... }</code>
+     * <code>
+     * .google.protobuf.Timestamp ts_val = 7 [json_name = "tsVal", (.buf.validate.field) = { ... }
+     * </code>
      */
-    public Builder setTsVal(
-        com.google.protobuf.Timestamp.Builder builderForValue) {
+    public Builder setTsVal(com.google.protobuf.Timestamp.Builder builderForValue) {
       if (tsValBuilder_ == null) {
         tsVal_ = builderForValue.build();
       } else {
@@ -2007,14 +2236,17 @@ java.lang.String defaultValue) {
       onChanged();
       return this;
     }
+
     /**
-     * <code>.google.protobuf.Timestamp ts_val = 7 [json_name = "tsVal", (.buf.validate.field) = { ... }</code>
+     * <code>
+     * .google.protobuf.Timestamp ts_val = 7 [json_name = "tsVal", (.buf.validate.field) = { ... }
+     * </code>
      */
     public Builder mergeTsVal(com.google.protobuf.Timestamp value) {
       if (tsValBuilder_ == null) {
-        if (((bitField0_ & 0x00000040) != 0) &&
-          tsVal_ != null &&
-          tsVal_ != com.google.protobuf.Timestamp.getDefaultInstance()) {
+        if (((bitField0_ & 0x00000040) != 0)
+            && tsVal_ != null
+            && tsVal_ != com.google.protobuf.Timestamp.getDefaultInstance()) {
           getTsValBuilder().mergeFrom(value);
         } else {
           tsVal_ = value;
@@ -2026,8 +2258,11 @@ java.lang.String defaultValue) {
       onChanged();
       return this;
     }
+
     /**
-     * <code>.google.protobuf.Timestamp ts_val = 7 [json_name = "tsVal", (.buf.validate.field) = { ... }</code>
+     * <code>
+     * .google.protobuf.Timestamp ts_val = 7 [json_name = "tsVal", (.buf.validate.field) = { ... }
+     * </code>
      */
     public Builder clearTsVal() {
       bitField0_ = (bitField0_ & ~0x00000040);
@@ -2039,37 +2274,48 @@ java.lang.String defaultValue) {
       onChanged();
       return this;
     }
+
     /**
-     * <code>.google.protobuf.Timestamp ts_val = 7 [json_name = "tsVal", (.buf.validate.field) = { ... }</code>
+     * <code>
+     * .google.protobuf.Timestamp ts_val = 7 [json_name = "tsVal", (.buf.validate.field) = { ... }
+     * </code>
      */
     public com.google.protobuf.Timestamp.Builder getTsValBuilder() {
       bitField0_ |= 0x00000040;
       onChanged();
       return getTsValFieldBuilder().getBuilder();
     }
+
     /**
-     * <code>.google.protobuf.Timestamp ts_val = 7 [json_name = "tsVal", (.buf.validate.field) = { ... }</code>
+     * <code>
+     * .google.protobuf.Timestamp ts_val = 7 [json_name = "tsVal", (.buf.validate.field) = { ... }
+     * </code>
      */
     public com.google.protobuf.TimestampOrBuilder getTsValOrBuilder() {
       if (tsValBuilder_ != null) {
         return tsValBuilder_.getMessageOrBuilder();
       } else {
-        return tsVal_ == null ?
-            com.google.protobuf.Timestamp.getDefaultInstance() : tsVal_;
+        return tsVal_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : tsVal_;
       }
     }
+
     /**
-     * <code>.google.protobuf.Timestamp ts_val = 7 [json_name = "tsVal", (.buf.validate.field) = { ... }</code>
+     * <code>
+     * .google.protobuf.Timestamp ts_val = 7 [json_name = "tsVal", (.buf.validate.field) = { ... }
+     * </code>
      */
     private com.google.protobuf.SingleFieldBuilderV3<
-        com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder> 
+            com.google.protobuf.Timestamp,
+            com.google.protobuf.Timestamp.Builder,
+            com.google.protobuf.TimestampOrBuilder>
         getTsValFieldBuilder() {
       if (tsValBuilder_ == null) {
-        tsValBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-            com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder>(
-                getTsVal(),
-                getParentForChildren(),
-                isClean());
+        tsValBuilder_ =
+            new com.google.protobuf.SingleFieldBuilderV3<
+                com.google.protobuf.Timestamp,
+                com.google.protobuf.Timestamp.Builder,
+                com.google.protobuf.TimestampOrBuilder>(
+                getTsVal(), getParentForChildren(), isClean());
         tsVal_ = null;
       }
       return tsValBuilder_;
@@ -2077,27 +2323,40 @@ java.lang.String defaultValue) {
 
     private build.buf.validate.conformance.cases.ComplexTestMsg another_;
     private com.google.protobuf.SingleFieldBuilderV3<
-        build.buf.validate.conformance.cases.ComplexTestMsg, build.buf.validate.conformance.cases.ComplexTestMsg.Builder, build.buf.validate.conformance.cases.ComplexTestMsgOrBuilder> anotherBuilder_;
+            build.buf.validate.conformance.cases.ComplexTestMsg,
+            build.buf.validate.conformance.cases.ComplexTestMsg.Builder,
+            build.buf.validate.conformance.cases.ComplexTestMsgOrBuilder>
+        anotherBuilder_;
+
     /**
-     * <code>.buf.validate.conformance.cases.ComplexTestMsg another = 8 [json_name = "another"];</code>
+     * <code>.buf.validate.conformance.cases.ComplexTestMsg another = 8 [json_name = "another"];
+     * </code>
+     *
      * @return Whether the another field is set.
      */
     public boolean hasAnother() {
       return ((bitField0_ & 0x00000080) != 0);
     }
+
     /**
-     * <code>.buf.validate.conformance.cases.ComplexTestMsg another = 8 [json_name = "another"];</code>
+     * <code>.buf.validate.conformance.cases.ComplexTestMsg another = 8 [json_name = "another"];
+     * </code>
+     *
      * @return The another.
      */
     public build.buf.validate.conformance.cases.ComplexTestMsg getAnother() {
       if (anotherBuilder_ == null) {
-        return another_ == null ? build.buf.validate.conformance.cases.ComplexTestMsg.getDefaultInstance() : another_;
+        return another_ == null
+            ? build.buf.validate.conformance.cases.ComplexTestMsg.getDefaultInstance()
+            : another_;
       } else {
         return anotherBuilder_.getMessage();
       }
     }
+
     /**
-     * <code>.buf.validate.conformance.cases.ComplexTestMsg another = 8 [json_name = "another"];</code>
+     * <code>.buf.validate.conformance.cases.ComplexTestMsg another = 8 [json_name = "another"];
+     * </code>
      */
     public Builder setAnother(build.buf.validate.conformance.cases.ComplexTestMsg value) {
       if (anotherBuilder_ == null) {
@@ -2112,8 +2371,10 @@ java.lang.String defaultValue) {
       onChanged();
       return this;
     }
+
     /**
-     * <code>.buf.validate.conformance.cases.ComplexTestMsg another = 8 [json_name = "another"];</code>
+     * <code>.buf.validate.conformance.cases.ComplexTestMsg another = 8 [json_name = "another"];
+     * </code>
      */
     public Builder setAnother(
         build.buf.validate.conformance.cases.ComplexTestMsg.Builder builderForValue) {
@@ -2126,14 +2387,17 @@ java.lang.String defaultValue) {
       onChanged();
       return this;
     }
+
     /**
-     * <code>.buf.validate.conformance.cases.ComplexTestMsg another = 8 [json_name = "another"];</code>
+     * <code>.buf.validate.conformance.cases.ComplexTestMsg another = 8 [json_name = "another"];
+     * </code>
      */
     public Builder mergeAnother(build.buf.validate.conformance.cases.ComplexTestMsg value) {
       if (anotherBuilder_ == null) {
-        if (((bitField0_ & 0x00000080) != 0) &&
-          another_ != null &&
-          another_ != build.buf.validate.conformance.cases.ComplexTestMsg.getDefaultInstance()) {
+        if (((bitField0_ & 0x00000080) != 0)
+            && another_ != null
+            && another_
+                != build.buf.validate.conformance.cases.ComplexTestMsg.getDefaultInstance()) {
           getAnotherBuilder().mergeFrom(value);
         } else {
           another_ = value;
@@ -2145,8 +2409,10 @@ java.lang.String defaultValue) {
       onChanged();
       return this;
     }
+
     /**
-     * <code>.buf.validate.conformance.cases.ComplexTestMsg another = 8 [json_name = "another"];</code>
+     * <code>.buf.validate.conformance.cases.ComplexTestMsg another = 8 [json_name = "another"];
+     * </code>
      */
     public Builder clearAnother() {
       bitField0_ = (bitField0_ & ~0x00000080);
@@ -2158,53 +2424,67 @@ java.lang.String defaultValue) {
       onChanged();
       return this;
     }
+
     /**
-     * <code>.buf.validate.conformance.cases.ComplexTestMsg another = 8 [json_name = "another"];</code>
+     * <code>.buf.validate.conformance.cases.ComplexTestMsg another = 8 [json_name = "another"];
+     * </code>
      */
     public build.buf.validate.conformance.cases.ComplexTestMsg.Builder getAnotherBuilder() {
       bitField0_ |= 0x00000080;
       onChanged();
       return getAnotherFieldBuilder().getBuilder();
     }
+
     /**
-     * <code>.buf.validate.conformance.cases.ComplexTestMsg another = 8 [json_name = "another"];</code>
+     * <code>.buf.validate.conformance.cases.ComplexTestMsg another = 8 [json_name = "another"];
+     * </code>
      */
     public build.buf.validate.conformance.cases.ComplexTestMsgOrBuilder getAnotherOrBuilder() {
       if (anotherBuilder_ != null) {
         return anotherBuilder_.getMessageOrBuilder();
       } else {
-        return another_ == null ?
-            build.buf.validate.conformance.cases.ComplexTestMsg.getDefaultInstance() : another_;
+        return another_ == null
+            ? build.buf.validate.conformance.cases.ComplexTestMsg.getDefaultInstance()
+            : another_;
       }
     }
+
     /**
-     * <code>.buf.validate.conformance.cases.ComplexTestMsg another = 8 [json_name = "another"];</code>
+     * <code>.buf.validate.conformance.cases.ComplexTestMsg another = 8 [json_name = "another"];
+     * </code>
      */
     private com.google.protobuf.SingleFieldBuilderV3<
-        build.buf.validate.conformance.cases.ComplexTestMsg, build.buf.validate.conformance.cases.ComplexTestMsg.Builder, build.buf.validate.conformance.cases.ComplexTestMsgOrBuilder> 
+            build.buf.validate.conformance.cases.ComplexTestMsg,
+            build.buf.validate.conformance.cases.ComplexTestMsg.Builder,
+            build.buf.validate.conformance.cases.ComplexTestMsgOrBuilder>
         getAnotherFieldBuilder() {
       if (anotherBuilder_ == null) {
-        anotherBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-            build.buf.validate.conformance.cases.ComplexTestMsg, build.buf.validate.conformance.cases.ComplexTestMsg.Builder, build.buf.validate.conformance.cases.ComplexTestMsgOrBuilder>(
-                getAnother(),
-                getParentForChildren(),
-                isClean());
+        anotherBuilder_ =
+            new com.google.protobuf.SingleFieldBuilderV3<
+                build.buf.validate.conformance.cases.ComplexTestMsg,
+                build.buf.validate.conformance.cases.ComplexTestMsg.Builder,
+                build.buf.validate.conformance.cases.ComplexTestMsgOrBuilder>(
+                getAnother(), getParentForChildren(), isClean());
         another_ = null;
       }
       return anotherBuilder_;
     }
 
-    private float floatConst_ ;
+    private float floatConst_;
+
     /**
      * <code>float float_const = 9 [json_name = "floatConst", (.buf.validate.field) = { ... }</code>
+     *
      * @return The floatConst.
      */
     @java.lang.Override
     public float getFloatConst() {
       return floatConst_;
     }
+
     /**
      * <code>float float_const = 9 [json_name = "floatConst", (.buf.validate.field) = { ... }</code>
+     *
      * @param value The floatConst to set.
      * @return This builder for chaining.
      */
@@ -2215,8 +2495,10 @@ java.lang.String defaultValue) {
       onChanged();
       return this;
     }
+
     /**
      * <code>float float_const = 9 [json_name = "floatConst", (.buf.validate.field) = { ... }</code>
+     *
      * @return This builder for chaining.
      */
     public Builder clearFloatConst() {
@@ -2226,17 +2508,21 @@ java.lang.String defaultValue) {
       return this;
     }
 
-    private double doubleIn_ ;
+    private double doubleIn_;
+
     /**
      * <code>double double_in = 10 [json_name = "doubleIn", (.buf.validate.field) = { ... }</code>
+     *
      * @return The doubleIn.
      */
     @java.lang.Override
     public double getDoubleIn() {
       return doubleIn_;
     }
+
     /**
      * <code>double double_in = 10 [json_name = "doubleIn", (.buf.validate.field) = { ... }</code>
+     *
      * @param value The doubleIn to set.
      * @return This builder for chaining.
      */
@@ -2247,8 +2533,10 @@ java.lang.String defaultValue) {
       onChanged();
       return this;
     }
+
     /**
      * <code>double double_in = 10 [json_name = "doubleIn", (.buf.validate.field) = { ... }</code>
+     *
      * @return This builder for chaining.
      */
     public Builder clearDoubleIn() {
@@ -2259,15 +2547,24 @@ java.lang.String defaultValue) {
     }
 
     private int enumConst_ = 0;
+
     /**
-     * <code>.buf.validate.conformance.cases.ComplexTestEnum enum_const = 11 [json_name = "enumConst", (.buf.validate.field) = { ... }</code>
+     * <code>
+     * .buf.validate.conformance.cases.ComplexTestEnum enum_const = 11 [json_name = "enumConst", (.buf.validate.field) = { ... }
+     * </code>
+     *
      * @return The enum numeric value on the wire for enumConst.
      */
-    @java.lang.Override public int getEnumConstValue() {
+    @java.lang.Override
+    public int getEnumConstValue() {
       return enumConst_;
     }
+
     /**
-     * <code>.buf.validate.conformance.cases.ComplexTestEnum enum_const = 11 [json_name = "enumConst", (.buf.validate.field) = { ... }</code>
+     * <code>
+     * .buf.validate.conformance.cases.ComplexTestEnum enum_const = 11 [json_name = "enumConst", (.buf.validate.field) = { ... }
+     * </code>
+     *
      * @param value The enum numeric value on the wire for enumConst to set.
      * @return This builder for chaining.
      */
@@ -2277,17 +2574,28 @@ java.lang.String defaultValue) {
       onChanged();
       return this;
     }
+
     /**
-     * <code>.buf.validate.conformance.cases.ComplexTestEnum enum_const = 11 [json_name = "enumConst", (.buf.validate.field) = { ... }</code>
+     * <code>
+     * .buf.validate.conformance.cases.ComplexTestEnum enum_const = 11 [json_name = "enumConst", (.buf.validate.field) = { ... }
+     * </code>
+     *
      * @return The enumConst.
      */
     @java.lang.Override
     public build.buf.validate.conformance.cases.ComplexTestEnum getEnumConst() {
-      build.buf.validate.conformance.cases.ComplexTestEnum result = build.buf.validate.conformance.cases.ComplexTestEnum.forNumber(enumConst_);
-      return result == null ? build.buf.validate.conformance.cases.ComplexTestEnum.UNRECOGNIZED : result;
+      build.buf.validate.conformance.cases.ComplexTestEnum result =
+          build.buf.validate.conformance.cases.ComplexTestEnum.forNumber(enumConst_);
+      return result == null
+          ? build.buf.validate.conformance.cases.ComplexTestEnum.UNRECOGNIZED
+          : result;
     }
+
     /**
-     * <code>.buf.validate.conformance.cases.ComplexTestEnum enum_const = 11 [json_name = "enumConst", (.buf.validate.field) = { ... }</code>
+     * <code>
+     * .buf.validate.conformance.cases.ComplexTestEnum enum_const = 11 [json_name = "enumConst", (.buf.validate.field) = { ... }
+     * </code>
+     *
      * @param value The enumConst to set.
      * @return This builder for chaining.
      */
@@ -2300,8 +2608,12 @@ java.lang.String defaultValue) {
       onChanged();
       return this;
     }
+
     /**
-     * <code>.buf.validate.conformance.cases.ComplexTestEnum enum_const = 11 [json_name = "enumConst", (.buf.validate.field) = { ... }</code>
+     * <code>
+     * .buf.validate.conformance.cases.ComplexTestEnum enum_const = 11 [json_name = "enumConst", (.buf.validate.field) = { ... }
+     * </code>
+     *
      * @return This builder for chaining.
      */
     public Builder clearEnumConst() {
@@ -2313,16 +2625,27 @@ java.lang.String defaultValue) {
 
     private com.google.protobuf.Any anyVal_;
     private com.google.protobuf.SingleFieldBuilderV3<
-        com.google.protobuf.Any, com.google.protobuf.Any.Builder, com.google.protobuf.AnyOrBuilder> anyValBuilder_;
+            com.google.protobuf.Any,
+            com.google.protobuf.Any.Builder,
+            com.google.protobuf.AnyOrBuilder>
+        anyValBuilder_;
+
     /**
-     * <code>.google.protobuf.Any any_val = 12 [json_name = "anyVal", (.buf.validate.field) = { ... }</code>
+     * <code>
+     * .google.protobuf.Any any_val = 12 [json_name = "anyVal", (.buf.validate.field) = { ... }
+     * </code>
+     *
      * @return Whether the anyVal field is set.
      */
     public boolean hasAnyVal() {
       return ((bitField0_ & 0x00000800) != 0);
     }
+
     /**
-     * <code>.google.protobuf.Any any_val = 12 [json_name = "anyVal", (.buf.validate.field) = { ... }</code>
+     * <code>
+     * .google.protobuf.Any any_val = 12 [json_name = "anyVal", (.buf.validate.field) = { ... }
+     * </code>
+     *
      * @return The anyVal.
      */
     public com.google.protobuf.Any getAnyVal() {
@@ -2332,8 +2655,11 @@ java.lang.String defaultValue) {
         return anyValBuilder_.getMessage();
       }
     }
+
     /**
-     * <code>.google.protobuf.Any any_val = 12 [json_name = "anyVal", (.buf.validate.field) = { ... }</code>
+     * <code>
+     * .google.protobuf.Any any_val = 12 [json_name = "anyVal", (.buf.validate.field) = { ... }
+     * </code>
      */
     public Builder setAnyVal(com.google.protobuf.Any value) {
       if (anyValBuilder_ == null) {
@@ -2348,11 +2674,13 @@ java.lang.String defaultValue) {
       onChanged();
       return this;
     }
+
     /**
-     * <code>.google.protobuf.Any any_val = 12 [json_name = "anyVal", (.buf.validate.field) = { ... }</code>
+     * <code>
+     * .google.protobuf.Any any_val = 12 [json_name = "anyVal", (.buf.validate.field) = { ... }
+     * </code>
      */
-    public Builder setAnyVal(
-        com.google.protobuf.Any.Builder builderForValue) {
+    public Builder setAnyVal(com.google.protobuf.Any.Builder builderForValue) {
       if (anyValBuilder_ == null) {
         anyVal_ = builderForValue.build();
       } else {
@@ -2362,14 +2690,17 @@ java.lang.String defaultValue) {
       onChanged();
       return this;
     }
+
     /**
-     * <code>.google.protobuf.Any any_val = 12 [json_name = "anyVal", (.buf.validate.field) = { ... }</code>
+     * <code>
+     * .google.protobuf.Any any_val = 12 [json_name = "anyVal", (.buf.validate.field) = { ... }
+     * </code>
      */
     public Builder mergeAnyVal(com.google.protobuf.Any value) {
       if (anyValBuilder_ == null) {
-        if (((bitField0_ & 0x00000800) != 0) &&
-          anyVal_ != null &&
-          anyVal_ != com.google.protobuf.Any.getDefaultInstance()) {
+        if (((bitField0_ & 0x00000800) != 0)
+            && anyVal_ != null
+            && anyVal_ != com.google.protobuf.Any.getDefaultInstance()) {
           getAnyValBuilder().mergeFrom(value);
         } else {
           anyVal_ = value;
@@ -2381,8 +2712,11 @@ java.lang.String defaultValue) {
       onChanged();
       return this;
     }
+
     /**
-     * <code>.google.protobuf.Any any_val = 12 [json_name = "anyVal", (.buf.validate.field) = { ... }</code>
+     * <code>
+     * .google.protobuf.Any any_val = 12 [json_name = "anyVal", (.buf.validate.field) = { ... }
+     * </code>
      */
     public Builder clearAnyVal() {
       bitField0_ = (bitField0_ & ~0x00000800);
@@ -2394,56 +2728,72 @@ java.lang.String defaultValue) {
       onChanged();
       return this;
     }
+
     /**
-     * <code>.google.protobuf.Any any_val = 12 [json_name = "anyVal", (.buf.validate.field) = { ... }</code>
+     * <code>
+     * .google.protobuf.Any any_val = 12 [json_name = "anyVal", (.buf.validate.field) = { ... }
+     * </code>
      */
     public com.google.protobuf.Any.Builder getAnyValBuilder() {
       bitField0_ |= 0x00000800;
       onChanged();
       return getAnyValFieldBuilder().getBuilder();
     }
+
     /**
-     * <code>.google.protobuf.Any any_val = 12 [json_name = "anyVal", (.buf.validate.field) = { ... }</code>
+     * <code>
+     * .google.protobuf.Any any_val = 12 [json_name = "anyVal", (.buf.validate.field) = { ... }
+     * </code>
      */
     public com.google.protobuf.AnyOrBuilder getAnyValOrBuilder() {
       if (anyValBuilder_ != null) {
         return anyValBuilder_.getMessageOrBuilder();
       } else {
-        return anyVal_ == null ?
-            com.google.protobuf.Any.getDefaultInstance() : anyVal_;
+        return anyVal_ == null ? com.google.protobuf.Any.getDefaultInstance() : anyVal_;
       }
     }
+
     /**
-     * <code>.google.protobuf.Any any_val = 12 [json_name = "anyVal", (.buf.validate.field) = { ... }</code>
+     * <code>
+     * .google.protobuf.Any any_val = 12 [json_name = "anyVal", (.buf.validate.field) = { ... }
+     * </code>
      */
     private com.google.protobuf.SingleFieldBuilderV3<
-        com.google.protobuf.Any, com.google.protobuf.Any.Builder, com.google.protobuf.AnyOrBuilder> 
+            com.google.protobuf.Any,
+            com.google.protobuf.Any.Builder,
+            com.google.protobuf.AnyOrBuilder>
         getAnyValFieldBuilder() {
       if (anyValBuilder_ == null) {
-        anyValBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-            com.google.protobuf.Any, com.google.protobuf.Any.Builder, com.google.protobuf.AnyOrBuilder>(
-                getAnyVal(),
-                getParentForChildren(),
-                isClean());
+        anyValBuilder_ =
+            new com.google.protobuf.SingleFieldBuilderV3<
+                com.google.protobuf.Any,
+                com.google.protobuf.Any.Builder,
+                com.google.protobuf.AnyOrBuilder>(getAnyVal(), getParentForChildren(), isClean());
         anyVal_ = null;
       }
       return anyValBuilder_;
     }
 
     private java.util.List<com.google.protobuf.Timestamp> repTsVal_ =
-      java.util.Collections.emptyList();
+        java.util.Collections.emptyList();
+
     private void ensureRepTsValIsMutable() {
       if (!((bitField0_ & 0x00001000) != 0)) {
         repTsVal_ = new java.util.ArrayList<com.google.protobuf.Timestamp>(repTsVal_);
         bitField0_ |= 0x00001000;
-       }
+      }
     }
 
     private com.google.protobuf.RepeatedFieldBuilderV3<
-        com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder> repTsValBuilder_;
+            com.google.protobuf.Timestamp,
+            com.google.protobuf.Timestamp.Builder,
+            com.google.protobuf.TimestampOrBuilder>
+        repTsValBuilder_;
 
     /**
-     * <code>repeated .google.protobuf.Timestamp rep_ts_val = 13 [json_name = "repTsVal", (.buf.validate.field) = { ... }</code>
+     * <code>
+     * repeated .google.protobuf.Timestamp rep_ts_val = 13 [json_name = "repTsVal", (.buf.validate.field) = { ... }
+     * </code>
      */
     public java.util.List<com.google.protobuf.Timestamp> getRepTsValList() {
       if (repTsValBuilder_ == null) {
@@ -2452,8 +2802,11 @@ java.lang.String defaultValue) {
         return repTsValBuilder_.getMessageList();
       }
     }
+
     /**
-     * <code>repeated .google.protobuf.Timestamp rep_ts_val = 13 [json_name = "repTsVal", (.buf.validate.field) = { ... }</code>
+     * <code>
+     * repeated .google.protobuf.Timestamp rep_ts_val = 13 [json_name = "repTsVal", (.buf.validate.field) = { ... }
+     * </code>
      */
     public int getRepTsValCount() {
       if (repTsValBuilder_ == null) {
@@ -2462,8 +2815,11 @@ java.lang.String defaultValue) {
         return repTsValBuilder_.getCount();
       }
     }
+
     /**
-     * <code>repeated .google.protobuf.Timestamp rep_ts_val = 13 [json_name = "repTsVal", (.buf.validate.field) = { ... }</code>
+     * <code>
+     * repeated .google.protobuf.Timestamp rep_ts_val = 13 [json_name = "repTsVal", (.buf.validate.field) = { ... }
+     * </code>
      */
     public com.google.protobuf.Timestamp getRepTsVal(int index) {
       if (repTsValBuilder_ == null) {
@@ -2472,11 +2828,13 @@ java.lang.String defaultValue) {
         return repTsValBuilder_.getMessage(index);
       }
     }
+
     /**
-     * <code>repeated .google.protobuf.Timestamp rep_ts_val = 13 [json_name = "repTsVal", (.buf.validate.field) = { ... }</code>
+     * <code>
+     * repeated .google.protobuf.Timestamp rep_ts_val = 13 [json_name = "repTsVal", (.buf.validate.field) = { ... }
+     * </code>
      */
-    public Builder setRepTsVal(
-        int index, com.google.protobuf.Timestamp value) {
+    public Builder setRepTsVal(int index, com.google.protobuf.Timestamp value) {
       if (repTsValBuilder_ == null) {
         if (value == null) {
           throw new NullPointerException();
@@ -2489,11 +2847,13 @@ java.lang.String defaultValue) {
       }
       return this;
     }
+
     /**
-     * <code>repeated .google.protobuf.Timestamp rep_ts_val = 13 [json_name = "repTsVal", (.buf.validate.field) = { ... }</code>
+     * <code>
+     * repeated .google.protobuf.Timestamp rep_ts_val = 13 [json_name = "repTsVal", (.buf.validate.field) = { ... }
+     * </code>
      */
-    public Builder setRepTsVal(
-        int index, com.google.protobuf.Timestamp.Builder builderForValue) {
+    public Builder setRepTsVal(int index, com.google.protobuf.Timestamp.Builder builderForValue) {
       if (repTsValBuilder_ == null) {
         ensureRepTsValIsMutable();
         repTsVal_.set(index, builderForValue.build());
@@ -2503,8 +2863,11 @@ java.lang.String defaultValue) {
       }
       return this;
     }
+
     /**
-     * <code>repeated .google.protobuf.Timestamp rep_ts_val = 13 [json_name = "repTsVal", (.buf.validate.field) = { ... }</code>
+     * <code>
+     * repeated .google.protobuf.Timestamp rep_ts_val = 13 [json_name = "repTsVal", (.buf.validate.field) = { ... }
+     * </code>
      */
     public Builder addRepTsVal(com.google.protobuf.Timestamp value) {
       if (repTsValBuilder_ == null) {
@@ -2519,11 +2882,13 @@ java.lang.String defaultValue) {
       }
       return this;
     }
+
     /**
-     * <code>repeated .google.protobuf.Timestamp rep_ts_val = 13 [json_name = "repTsVal", (.buf.validate.field) = { ... }</code>
+     * <code>
+     * repeated .google.protobuf.Timestamp rep_ts_val = 13 [json_name = "repTsVal", (.buf.validate.field) = { ... }
+     * </code>
      */
-    public Builder addRepTsVal(
-        int index, com.google.protobuf.Timestamp value) {
+    public Builder addRepTsVal(int index, com.google.protobuf.Timestamp value) {
       if (repTsValBuilder_ == null) {
         if (value == null) {
           throw new NullPointerException();
@@ -2536,11 +2901,13 @@ java.lang.String defaultValue) {
       }
       return this;
     }
+
     /**
-     * <code>repeated .google.protobuf.Timestamp rep_ts_val = 13 [json_name = "repTsVal", (.buf.validate.field) = { ... }</code>
+     * <code>
+     * repeated .google.protobuf.Timestamp rep_ts_val = 13 [json_name = "repTsVal", (.buf.validate.field) = { ... }
+     * </code>
      */
-    public Builder addRepTsVal(
-        com.google.protobuf.Timestamp.Builder builderForValue) {
+    public Builder addRepTsVal(com.google.protobuf.Timestamp.Builder builderForValue) {
       if (repTsValBuilder_ == null) {
         ensureRepTsValIsMutable();
         repTsVal_.add(builderForValue.build());
@@ -2550,11 +2917,13 @@ java.lang.String defaultValue) {
       }
       return this;
     }
+
     /**
-     * <code>repeated .google.protobuf.Timestamp rep_ts_val = 13 [json_name = "repTsVal", (.buf.validate.field) = { ... }</code>
+     * <code>
+     * repeated .google.protobuf.Timestamp rep_ts_val = 13 [json_name = "repTsVal", (.buf.validate.field) = { ... }
+     * </code>
      */
-    public Builder addRepTsVal(
-        int index, com.google.protobuf.Timestamp.Builder builderForValue) {
+    public Builder addRepTsVal(int index, com.google.protobuf.Timestamp.Builder builderForValue) {
       if (repTsValBuilder_ == null) {
         ensureRepTsValIsMutable();
         repTsVal_.add(index, builderForValue.build());
@@ -2564,23 +2933,28 @@ java.lang.String defaultValue) {
       }
       return this;
     }
+
     /**
-     * <code>repeated .google.protobuf.Timestamp rep_ts_val = 13 [json_name = "repTsVal", (.buf.validate.field) = { ... }</code>
+     * <code>
+     * repeated .google.protobuf.Timestamp rep_ts_val = 13 [json_name = "repTsVal", (.buf.validate.field) = { ... }
+     * </code>
      */
     public Builder addAllRepTsVal(
         java.lang.Iterable<? extends com.google.protobuf.Timestamp> values) {
       if (repTsValBuilder_ == null) {
         ensureRepTsValIsMutable();
-        com.google.protobuf.AbstractMessageLite.Builder.addAll(
-            values, repTsVal_);
+        com.google.protobuf.AbstractMessageLite.Builder.addAll(values, repTsVal_);
         onChanged();
       } else {
         repTsValBuilder_.addAllMessages(values);
       }
       return this;
     }
+
     /**
-     * <code>repeated .google.protobuf.Timestamp rep_ts_val = 13 [json_name = "repTsVal", (.buf.validate.field) = { ... }</code>
+     * <code>
+     * repeated .google.protobuf.Timestamp rep_ts_val = 13 [json_name = "repTsVal", (.buf.validate.field) = { ... }
+     * </code>
      */
     public Builder clearRepTsVal() {
       if (repTsValBuilder_ == null) {
@@ -2592,8 +2966,11 @@ java.lang.String defaultValue) {
       }
       return this;
     }
+
     /**
-     * <code>repeated .google.protobuf.Timestamp rep_ts_val = 13 [json_name = "repTsVal", (.buf.validate.field) = { ... }</code>
+     * <code>
+     * repeated .google.protobuf.Timestamp rep_ts_val = 13 [json_name = "repTsVal", (.buf.validate.field) = { ... }
+     * </code>
      */
     public Builder removeRepTsVal(int index) {
       if (repTsValBuilder_ == null) {
@@ -2605,86 +2982,102 @@ java.lang.String defaultValue) {
       }
       return this;
     }
+
     /**
-     * <code>repeated .google.protobuf.Timestamp rep_ts_val = 13 [json_name = "repTsVal", (.buf.validate.field) = { ... }</code>
+     * <code>
+     * repeated .google.protobuf.Timestamp rep_ts_val = 13 [json_name = "repTsVal", (.buf.validate.field) = { ... }
+     * </code>
      */
-    public com.google.protobuf.Timestamp.Builder getRepTsValBuilder(
-        int index) {
+    public com.google.protobuf.Timestamp.Builder getRepTsValBuilder(int index) {
       return getRepTsValFieldBuilder().getBuilder(index);
     }
+
     /**
-     * <code>repeated .google.protobuf.Timestamp rep_ts_val = 13 [json_name = "repTsVal", (.buf.validate.field) = { ... }</code>
+     * <code>
+     * repeated .google.protobuf.Timestamp rep_ts_val = 13 [json_name = "repTsVal", (.buf.validate.field) = { ... }
+     * </code>
      */
-    public com.google.protobuf.TimestampOrBuilder getRepTsValOrBuilder(
-        int index) {
+    public com.google.protobuf.TimestampOrBuilder getRepTsValOrBuilder(int index) {
       if (repTsValBuilder_ == null) {
-        return repTsVal_.get(index);  } else {
+        return repTsVal_.get(index);
+      } else {
         return repTsValBuilder_.getMessageOrBuilder(index);
       }
     }
+
     /**
-     * <code>repeated .google.protobuf.Timestamp rep_ts_val = 13 [json_name = "repTsVal", (.buf.validate.field) = { ... }</code>
+     * <code>
+     * repeated .google.protobuf.Timestamp rep_ts_val = 13 [json_name = "repTsVal", (.buf.validate.field) = { ... }
+     * </code>
      */
-    public java.util.List<? extends com.google.protobuf.TimestampOrBuilder> 
-         getRepTsValOrBuilderList() {
+    public java.util.List<? extends com.google.protobuf.TimestampOrBuilder>
+        getRepTsValOrBuilderList() {
       if (repTsValBuilder_ != null) {
         return repTsValBuilder_.getMessageOrBuilderList();
       } else {
         return java.util.Collections.unmodifiableList(repTsVal_);
       }
     }
+
     /**
-     * <code>repeated .google.protobuf.Timestamp rep_ts_val = 13 [json_name = "repTsVal", (.buf.validate.field) = { ... }</code>
+     * <code>
+     * repeated .google.protobuf.Timestamp rep_ts_val = 13 [json_name = "repTsVal", (.buf.validate.field) = { ... }
+     * </code>
      */
     public com.google.protobuf.Timestamp.Builder addRepTsValBuilder() {
-      return getRepTsValFieldBuilder().addBuilder(
-          com.google.protobuf.Timestamp.getDefaultInstance());
+      return getRepTsValFieldBuilder()
+          .addBuilder(com.google.protobuf.Timestamp.getDefaultInstance());
     }
+
     /**
-     * <code>repeated .google.protobuf.Timestamp rep_ts_val = 13 [json_name = "repTsVal", (.buf.validate.field) = { ... }</code>
+     * <code>
+     * repeated .google.protobuf.Timestamp rep_ts_val = 13 [json_name = "repTsVal", (.buf.validate.field) = { ... }
+     * </code>
      */
-    public com.google.protobuf.Timestamp.Builder addRepTsValBuilder(
-        int index) {
-      return getRepTsValFieldBuilder().addBuilder(
-          index, com.google.protobuf.Timestamp.getDefaultInstance());
+    public com.google.protobuf.Timestamp.Builder addRepTsValBuilder(int index) {
+      return getRepTsValFieldBuilder()
+          .addBuilder(index, com.google.protobuf.Timestamp.getDefaultInstance());
     }
+
     /**
-     * <code>repeated .google.protobuf.Timestamp rep_ts_val = 13 [json_name = "repTsVal", (.buf.validate.field) = { ... }</code>
+     * <code>
+     * repeated .google.protobuf.Timestamp rep_ts_val = 13 [json_name = "repTsVal", (.buf.validate.field) = { ... }
+     * </code>
      */
-    public java.util.List<com.google.protobuf.Timestamp.Builder> 
-         getRepTsValBuilderList() {
+    public java.util.List<com.google.protobuf.Timestamp.Builder> getRepTsValBuilderList() {
       return getRepTsValFieldBuilder().getBuilderList();
     }
+
     private com.google.protobuf.RepeatedFieldBuilderV3<
-        com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder> 
+            com.google.protobuf.Timestamp,
+            com.google.protobuf.Timestamp.Builder,
+            com.google.protobuf.TimestampOrBuilder>
         getRepTsValFieldBuilder() {
       if (repTsValBuilder_ == null) {
-        repTsValBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
-            com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder>(
-                repTsVal_,
-                ((bitField0_ & 0x00001000) != 0),
-                getParentForChildren(),
-                isClean());
+        repTsValBuilder_ =
+            new com.google.protobuf.RepeatedFieldBuilderV3<
+                com.google.protobuf.Timestamp,
+                com.google.protobuf.Timestamp.Builder,
+                com.google.protobuf.TimestampOrBuilder>(
+                repTsVal_, ((bitField0_ & 0x00001000) != 0), getParentForChildren(), isClean());
         repTsVal_ = null;
       }
       return repTsValBuilder_;
     }
 
-    private com.google.protobuf.MapField<
-        java.lang.Integer, java.lang.String> mapVal_;
-    private com.google.protobuf.MapField<java.lang.Integer, java.lang.String>
-        internalGetMapVal() {
+    private com.google.protobuf.MapField<java.lang.Integer, java.lang.String> mapVal_;
+
+    private com.google.protobuf.MapField<java.lang.Integer, java.lang.String> internalGetMapVal() {
       if (mapVal_ == null) {
-        return com.google.protobuf.MapField.emptyMapField(
-            MapValDefaultEntryHolder.defaultEntry);
+        return com.google.protobuf.MapField.emptyMapField(MapValDefaultEntryHolder.defaultEntry);
       }
       return mapVal_;
     }
+
     private com.google.protobuf.MapField<java.lang.Integer, java.lang.String>
         internalGetMutableMapVal() {
       if (mapVal_ == null) {
-        mapVal_ = com.google.protobuf.MapField.newMapField(
-            MapValDefaultEntryHolder.defaultEntry);
+        mapVal_ = com.google.protobuf.MapField.newMapField(MapValDefaultEntryHolder.defaultEntry);
       }
       if (!mapVal_.isMutable()) {
         mapVal_ = mapVal_.copy();
@@ -2693,133 +3086,150 @@ java.lang.String defaultValue) {
       onChanged();
       return mapVal_;
     }
+
     public int getMapValCount() {
       return internalGetMapVal().getMap().size();
     }
+
     /**
-     * <code>map&lt;sint32, string&gt; map_val = 14 [json_name = "mapVal", (.buf.validate.field) = { ... }</code>
+     * <code>
+     * map&lt;sint32, string&gt; map_val = 14 [json_name = "mapVal", (.buf.validate.field) = { ... }
+     * </code>
      */
     @java.lang.Override
-    public boolean containsMapVal(
-        int key) {
+    public boolean containsMapVal(int key) {
 
       return internalGetMapVal().getMap().containsKey(key);
     }
-    /**
-     * Use {@link #getMapValMap()} instead.
-     */
+
+    /** Use {@link #getMapValMap()} instead. */
     @java.lang.Override
     @java.lang.Deprecated
     public java.util.Map<java.lang.Integer, java.lang.String> getMapVal() {
       return getMapValMap();
     }
+
     /**
-     * <code>map&lt;sint32, string&gt; map_val = 14 [json_name = "mapVal", (.buf.validate.field) = { ... }</code>
+     * <code>
+     * map&lt;sint32, string&gt; map_val = 14 [json_name = "mapVal", (.buf.validate.field) = { ... }
+     * </code>
      */
     @java.lang.Override
     public java.util.Map<java.lang.Integer, java.lang.String> getMapValMap() {
       return internalGetMapVal().getMap();
     }
+
     /**
-     * <code>map&lt;sint32, string&gt; map_val = 14 [json_name = "mapVal", (.buf.validate.field) = { ... }</code>
+     * <code>
+     * map&lt;sint32, string&gt; map_val = 14 [json_name = "mapVal", (.buf.validate.field) = { ... }
+     * </code>
      */
     @java.lang.Override
-    public /* nullable */
-java.lang.String getMapValOrDefault(
+    public /* nullable */ java.lang.String getMapValOrDefault(
         int key,
         /* nullable */
-java.lang.String defaultValue) {
+        java.lang.String defaultValue) {
 
-      java.util.Map<java.lang.Integer, java.lang.String> map =
-          internalGetMapVal().getMap();
+      java.util.Map<java.lang.Integer, java.lang.String> map = internalGetMapVal().getMap();
       return map.containsKey(key) ? map.get(key) : defaultValue;
     }
+
     /**
-     * <code>map&lt;sint32, string&gt; map_val = 14 [json_name = "mapVal", (.buf.validate.field) = { ... }</code>
+     * <code>
+     * map&lt;sint32, string&gt; map_val = 14 [json_name = "mapVal", (.buf.validate.field) = { ... }
+     * </code>
      */
     @java.lang.Override
-    public java.lang.String getMapValOrThrow(
-        int key) {
+    public java.lang.String getMapValOrThrow(int key) {
 
-      java.util.Map<java.lang.Integer, java.lang.String> map =
-          internalGetMapVal().getMap();
+      java.util.Map<java.lang.Integer, java.lang.String> map = internalGetMapVal().getMap();
       if (!map.containsKey(key)) {
         throw new java.lang.IllegalArgumentException();
       }
       return map.get(key);
     }
+
     public Builder clearMapVal() {
       bitField0_ = (bitField0_ & ~0x00002000);
-      internalGetMutableMapVal().getMutableMap()
-          .clear();
+      internalGetMutableMapVal().getMutableMap().clear();
       return this;
     }
-    /**
-     * <code>map&lt;sint32, string&gt; map_val = 14 [json_name = "mapVal", (.buf.validate.field) = { ... }</code>
-     */
-    public Builder removeMapVal(
-        int key) {
 
-      internalGetMutableMapVal().getMutableMap()
-          .remove(key);
+    /**
+     * <code>
+     * map&lt;sint32, string&gt; map_val = 14 [json_name = "mapVal", (.buf.validate.field) = { ... }
+     * </code>
+     */
+    public Builder removeMapVal(int key) {
+
+      internalGetMutableMapVal().getMutableMap().remove(key);
       return this;
     }
-    /**
-     * Use alternate mutation accessors instead.
-     */
+
+    /** Use alternate mutation accessors instead. */
     @java.lang.Deprecated
-    public java.util.Map<java.lang.Integer, java.lang.String>
-        getMutableMapVal() {
+    public java.util.Map<java.lang.Integer, java.lang.String> getMutableMapVal() {
       bitField0_ |= 0x00002000;
       return internalGetMutableMapVal().getMutableMap();
     }
-    /**
-     * <code>map&lt;sint32, string&gt; map_val = 14 [json_name = "mapVal", (.buf.validate.field) = { ... }</code>
-     */
-    public Builder putMapVal(
-        int key,
-        java.lang.String value) {
 
-      if (value == null) { throw new NullPointerException("map value"); }
-      internalGetMutableMapVal().getMutableMap()
-          .put(key, value);
+    /**
+     * <code>
+     * map&lt;sint32, string&gt; map_val = 14 [json_name = "mapVal", (.buf.validate.field) = { ... }
+     * </code>
+     */
+    public Builder putMapVal(int key, java.lang.String value) {
+
+      if (value == null) {
+        throw new NullPointerException("map value");
+      }
+      internalGetMutableMapVal().getMutableMap().put(key, value);
       bitField0_ |= 0x00002000;
       return this;
     }
+
     /**
-     * <code>map&lt;sint32, string&gt; map_val = 14 [json_name = "mapVal", (.buf.validate.field) = { ... }</code>
+     * <code>
+     * map&lt;sint32, string&gt; map_val = 14 [json_name = "mapVal", (.buf.validate.field) = { ... }
+     * </code>
      */
-    public Builder putAllMapVal(
-        java.util.Map<java.lang.Integer, java.lang.String> values) {
-      internalGetMutableMapVal().getMutableMap()
-          .putAll(values);
+    public Builder putAllMapVal(java.util.Map<java.lang.Integer, java.lang.String> values) {
+      internalGetMutableMapVal().getMutableMap().putAll(values);
       bitField0_ |= 0x00002000;
       return this;
     }
 
     private com.google.protobuf.ByteString bytesVal_ = com.google.protobuf.ByteString.EMPTY;
+
     /**
      * <code>bytes bytes_val = 15 [json_name = "bytesVal", (.buf.validate.field) = { ... }</code>
+     *
      * @return The bytesVal.
      */
     @java.lang.Override
     public com.google.protobuf.ByteString getBytesVal() {
       return bytesVal_;
     }
+
     /**
      * <code>bytes bytes_val = 15 [json_name = "bytesVal", (.buf.validate.field) = { ... }</code>
+     *
      * @param value The bytesVal to set.
      * @return This builder for chaining.
      */
     public Builder setBytesVal(com.google.protobuf.ByteString value) {
-      if (value == null) { throw new NullPointerException(); }
+      if (value == null) {
+        throw new NullPointerException();
+      }
       bytesVal_ = value;
       bitField0_ |= 0x00004000;
       onChanged();
       return this;
     }
+
     /**
      * <code>bytes bytes_val = 15 [json_name = "bytesVal", (.buf.validate.field) = { ... }</code>
+     *
      * @return This builder for chaining.
      */
     public Builder clearBytesVal() {
@@ -2831,14 +3241,17 @@ java.lang.String defaultValue) {
 
     /**
      * <code>string x = 16 [json_name = "x"];</code>
+     *
      * @return Whether the x field is set.
      */
     @java.lang.Override
     public boolean hasX() {
       return oCase_ == 16;
     }
+
     /**
      * <code>string x = 16 [json_name = "x"];</code>
+     *
      * @return The x.
      */
     @java.lang.Override
@@ -2848,8 +3261,7 @@ java.lang.String defaultValue) {
         ref = o_;
       }
       if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs =
-            (com.google.protobuf.ByteString) ref;
+        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         if (oCase_ == 16) {
           o_ = s;
@@ -2859,21 +3271,21 @@ java.lang.String defaultValue) {
         return (java.lang.String) ref;
       }
     }
+
     /**
      * <code>string x = 16 [json_name = "x"];</code>
+     *
      * @return The bytes for x.
      */
     @java.lang.Override
-    public com.google.protobuf.ByteString
-        getXBytes() {
+    public com.google.protobuf.ByteString getXBytes() {
       java.lang.Object ref = "";
       if (oCase_ == 16) {
         ref = o_;
       }
       if (ref instanceof String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
+        com.google.protobuf.ByteString b =
+            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
         if (oCase_ == 16) {
           o_ = b;
         }
@@ -2882,21 +3294,26 @@ java.lang.String defaultValue) {
         return (com.google.protobuf.ByteString) ref;
       }
     }
+
     /**
      * <code>string x = 16 [json_name = "x"];</code>
+     *
      * @param value The x to set.
      * @return This builder for chaining.
      */
-    public Builder setX(
-        java.lang.String value) {
-      if (value == null) { throw new NullPointerException(); }
+    public Builder setX(java.lang.String value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
       oCase_ = 16;
       o_ = value;
       onChanged();
       return this;
     }
+
     /**
      * <code>string x = 16 [json_name = "x"];</code>
+     *
      * @return This builder for chaining.
      */
     public Builder clearX() {
@@ -2907,14 +3324,17 @@ java.lang.String defaultValue) {
       }
       return this;
     }
+
     /**
      * <code>string x = 16 [json_name = "x"];</code>
+     *
      * @param value The bytes for x to set.
      * @return This builder for chaining.
      */
-    public Builder setXBytes(
-        com.google.protobuf.ByteString value) {
-      if (value == null) { throw new NullPointerException(); }
+    public Builder setXBytes(com.google.protobuf.ByteString value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
       checkByteStringIsUtf8(value);
       oCase_ = 16;
       o_ = value;
@@ -2924,13 +3344,16 @@ java.lang.String defaultValue) {
 
     /**
      * <code>int32 y = 17 [json_name = "y"];</code>
+     *
      * @return Whether the y field is set.
      */
     public boolean hasY() {
       return oCase_ == 17;
     }
+
     /**
      * <code>int32 y = 17 [json_name = "y"];</code>
+     *
      * @return The y.
      */
     public int getY() {
@@ -2939,8 +3362,10 @@ java.lang.String defaultValue) {
       }
       return 0;
     }
+
     /**
      * <code>int32 y = 17 [json_name = "y"];</code>
+     *
      * @param value The y to set.
      * @return This builder for chaining.
      */
@@ -2951,8 +3376,10 @@ java.lang.String defaultValue) {
       onChanged();
       return this;
     }
+
     /**
      * <code>int32 y = 17 [json_name = "y"];</code>
+     *
      * @return This builder for chaining.
      */
     public Builder clearY() {
@@ -2963,9 +3390,9 @@ java.lang.String defaultValue) {
       }
       return this;
     }
+
     @java.lang.Override
-    public final Builder setUnknownFields(
-        final com.google.protobuf.UnknownFieldSet unknownFields) {
+    public final Builder setUnknownFields(final com.google.protobuf.UnknownFieldSet unknownFields) {
       return super.setUnknownFields(unknownFields);
     }
 
@@ -2975,12 +3402,12 @@ java.lang.String defaultValue) {
       return super.mergeUnknownFields(unknownFields);
     }
 
-
     // @@protoc_insertion_point(builder_scope:buf.validate.conformance.cases.ComplexTestMsg)
   }
 
   // @@protoc_insertion_point(class_scope:buf.validate.conformance.cases.ComplexTestMsg)
   private static final build.buf.validate.conformance.cases.ComplexTestMsg DEFAULT_INSTANCE;
+
   static {
     DEFAULT_INSTANCE = new build.buf.validate.conformance.cases.ComplexTestMsg();
   }
@@ -2989,27 +3416,27 @@ java.lang.String defaultValue) {
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<ComplexTestMsg>
-      PARSER = new com.google.protobuf.AbstractParser<ComplexTestMsg>() {
-    @java.lang.Override
-    public ComplexTestMsg parsePartialFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      Builder builder = newBuilder();
-      try {
-        builder.mergeFrom(input, extensionRegistry);
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(builder.buildPartial());
-      } catch (com.google.protobuf.UninitializedMessageException e) {
-        throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(e)
-            .setUnfinishedMessage(builder.buildPartial());
-      }
-      return builder.buildPartial();
-    }
-  };
+  private static final com.google.protobuf.Parser<ComplexTestMsg> PARSER =
+      new com.google.protobuf.AbstractParser<ComplexTestMsg>() {
+        @java.lang.Override
+        public ComplexTestMsg parsePartialFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+          Builder builder = newBuilder();
+          try {
+            builder.mergeFrom(input, extensionRegistry);
+          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+            throw e.setUnfinishedMessage(builder.buildPartial());
+          } catch (com.google.protobuf.UninitializedMessageException e) {
+            throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+          } catch (java.io.IOException e) {
+            throw new com.google.protobuf.InvalidProtocolBufferException(e)
+                .setUnfinishedMessage(builder.buildPartial());
+          }
+          return builder.buildPartial();
+        }
+      };
 
   public static com.google.protobuf.Parser<ComplexTestMsg> parser() {
     return PARSER;
@@ -3024,6 +3451,4 @@ java.lang.String defaultValue) {
   public build.buf.validate.conformance.cases.ComplexTestMsg getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
-
 }
-

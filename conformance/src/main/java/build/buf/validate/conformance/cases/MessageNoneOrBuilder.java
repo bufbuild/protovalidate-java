@@ -3,20 +3,25 @@
 
 package build.buf.validate.conformance.cases;
 
-public interface MessageNoneOrBuilder extends
+public interface MessageNoneOrBuilder
+    extends
     // @@protoc_insertion_point(interface_extends:buf.validate.conformance.cases.MessageNone)
     com.google.protobuf.MessageOrBuilder {
 
   /**
    * <code>.buf.validate.conformance.cases.MessageNone.NoneMsg val = 1 [json_name = "val"];</code>
+   *
    * @return Whether the val field is set.
    */
   boolean hasVal();
+
   /**
    * <code>.buf.validate.conformance.cases.MessageNone.NoneMsg val = 1 [json_name = "val"];</code>
+   *
    * @return The val.
    */
   build.buf.validate.conformance.cases.MessageNone.NoneMsg getVal();
+
   /**
    * <code>.buf.validate.conformance.cases.MessageNone.NoneMsg val = 1 [json_name = "val"];</code>
    */

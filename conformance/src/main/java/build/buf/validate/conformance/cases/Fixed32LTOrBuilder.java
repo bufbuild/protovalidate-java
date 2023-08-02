@@ -3,12 +3,14 @@
 
 package build.buf.validate.conformance.cases;
 
-public interface Fixed32LTOrBuilder extends
+public interface Fixed32LTOrBuilder
+    extends
     // @@protoc_insertion_point(interface_extends:buf.validate.conformance.cases.Fixed32LT)
     com.google.protobuf.MessageOrBuilder {
 
   /**
    * <code>fixed32 val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
+   *
    * @return The val.
    */
   int getVal();

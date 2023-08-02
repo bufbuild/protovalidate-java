@@ -3,61 +3,76 @@
 
 package build.buf.validate.conformance.cases;
 
-/**
- * Protobuf type {@code buf.validate.conformance.cases.EnumExternal}
- */
-public final class EnumExternal extends
-    com.google.protobuf.GeneratedMessageV3 implements
+/** Protobuf type {@code buf.validate.conformance.cases.EnumExternal} */
+public final class EnumExternal extends com.google.protobuf.GeneratedMessageV3
+    implements
     // @@protoc_insertion_point(message_implements:buf.validate.conformance.cases.EnumExternal)
     EnumExternalOrBuilder {
-private static final long serialVersionUID = 0L;
+  private static final long serialVersionUID = 0L;
+
   // Use EnumExternal.newBuilder() to construct.
   private EnumExternal(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
+
   private EnumExternal() {
     val_ = 0;
   }
 
   @java.lang.Override
   @SuppressWarnings({"unused"})
-  protected java.lang.Object newInstance(
-      UnusedPrivateParameter unused) {
+  protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
     return new EnumExternal();
   }
 
-  public static final com.google.protobuf.Descriptors.Descriptor
-      getDescriptor() {
-    return build.buf.validate.conformance.cases.EnumsProto.internal_static_buf_validate_conformance_cases_EnumExternal_descriptor;
+  public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+    return build.buf.validate.conformance.cases.EnumsProto
+        .internal_static_buf_validate_conformance_cases_EnumExternal_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return build.buf.validate.conformance.cases.EnumsProto.internal_static_buf_validate_conformance_cases_EnumExternal_fieldAccessorTable
+    return build.buf.validate.conformance.cases.EnumsProto
+        .internal_static_buf_validate_conformance_cases_EnumExternal_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            build.buf.validate.conformance.cases.EnumExternal.class, build.buf.validate.conformance.cases.EnumExternal.Builder.class);
+            build.buf.validate.conformance.cases.EnumExternal.class,
+            build.buf.validate.conformance.cases.EnumExternal.Builder.class);
   }
 
   public static final int VAL_FIELD_NUMBER = 1;
   private int val_ = 0;
+
   /**
-   * <code>.buf.validate.conformance.cases.other_package.Embed.Enumerated val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
+   * <code>
+   * .buf.validate.conformance.cases.other_package.Embed.Enumerated val = 1 [json_name = "val", (.buf.validate.field) = { ... }
+   * </code>
+   *
    * @return The enum numeric value on the wire for val.
    */
-  @java.lang.Override public int getValValue() {
+  @java.lang.Override
+  public int getValValue() {
     return val_;
   }
+
   /**
-   * <code>.buf.validate.conformance.cases.other_package.Embed.Enumerated val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
+   * <code>
+   * .buf.validate.conformance.cases.other_package.Embed.Enumerated val = 1 [json_name = "val", (.buf.validate.field) = { ... }
+   * </code>
+   *
    * @return The val.
    */
-  @java.lang.Override public build.buf.validate.conformance.cases.other_package.Embed.Enumerated getVal() {
-    build.buf.validate.conformance.cases.other_package.Embed.Enumerated result = build.buf.validate.conformance.cases.other_package.Embed.Enumerated.forNumber(val_);
-    return result == null ? build.buf.validate.conformance.cases.other_package.Embed.Enumerated.UNRECOGNIZED : result;
+  @java.lang.Override
+  public build.buf.validate.conformance.cases.other_package.Embed.Enumerated getVal() {
+    build.buf.validate.conformance.cases.other_package.Embed.Enumerated result =
+        build.buf.validate.conformance.cases.other_package.Embed.Enumerated.forNumber(val_);
+    return result == null
+        ? build.buf.validate.conformance.cases.other_package.Embed.Enumerated.UNRECOGNIZED
+        : result;
   }
 
   private byte memoizedIsInitialized = -1;
+
   @java.lang.Override
   public final boolean isInitialized() {
     byte isInitialized = memoizedIsInitialized;
@@ -69,9 +84,11 @@ private static final long serialVersionUID = 0L;
   }
 
   @java.lang.Override
-  public void writeTo(com.google.protobuf.CodedOutputStream output)
-                      throws java.io.IOException {
-    if (val_ != build.buf.validate.conformance.cases.other_package.Embed.Enumerated.ENUMERATED_UNSPECIFIED.getNumber()) {
+  public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
+    if (val_
+        != build.buf.validate.conformance.cases.other_package.Embed.Enumerated
+            .ENUMERATED_UNSPECIFIED
+            .getNumber()) {
       output.writeEnum(1, val_);
     }
     getUnknownFields().writeTo(output);
@@ -83,9 +100,11 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
-    if (val_ != build.buf.validate.conformance.cases.other_package.Embed.Enumerated.ENUMERATED_UNSPECIFIED.getNumber()) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeEnumSize(1, val_);
+    if (val_
+        != build.buf.validate.conformance.cases.other_package.Embed.Enumerated
+            .ENUMERATED_UNSPECIFIED
+            .getNumber()) {
+      size += com.google.protobuf.CodedOutputStream.computeEnumSize(1, val_);
     }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
@@ -95,12 +114,13 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public boolean equals(final java.lang.Object obj) {
     if (obj == this) {
-     return true;
+      return true;
     }
     if (!(obj instanceof build.buf.validate.conformance.cases.EnumExternal)) {
       return super.equals(obj);
     }
-    build.buf.validate.conformance.cases.EnumExternal other = (build.buf.validate.conformance.cases.EnumExternal) obj;
+    build.buf.validate.conformance.cases.EnumExternal other =
+        (build.buf.validate.conformance.cases.EnumExternal) obj;
 
     if (val_ != other.val_) return false;
     if (!getUnknownFields().equals(other.getUnknownFields())) return false;
@@ -122,127 +142,128 @@ private static final long serialVersionUID = 0L;
   }
 
   public static build.buf.validate.conformance.cases.EnumExternal parseFrom(
-      java.nio.ByteBuffer data)
-      throws com.google.protobuf.InvalidProtocolBufferException {
+      java.nio.ByteBuffer data) throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
+
   public static build.buf.validate.conformance.cases.EnumExternal parseFrom(
-      java.nio.ByteBuffer data,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      java.nio.ByteBuffer data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
+
   public static build.buf.validate.conformance.cases.EnumExternal parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
+
   public static build.buf.validate.conformance.cases.EnumExternal parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
+
   public static build.buf.validate.conformance.cases.EnumExternal parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
+
   public static build.buf.validate.conformance.cases.EnumExternal parseFrom(
-      byte[] data,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      byte[] data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static build.buf.validate.conformance.cases.EnumExternal parseFrom(java.io.InputStream input)
-      throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input);
-  }
+
   public static build.buf.validate.conformance.cases.EnumExternal parseFrom(
-      java.io.InputStream input,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-      throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input, extensionRegistry);
+      java.io.InputStream input) throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
   }
 
-  public static build.buf.validate.conformance.cases.EnumExternal parseDelimitedFrom(java.io.InputStream input)
+  public static build.buf.validate.conformance.cases.EnumExternal parseFrom(
+      java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseDelimitedWithIOException(PARSER, input);
+    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+        PARSER, input, extensionRegistry);
   }
 
   public static build.buf.validate.conformance.cases.EnumExternal parseDelimitedFrom(
-      java.io.InputStream input,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-      throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+      java.io.InputStream input) throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input);
   }
+
+  public static build.buf.validate.conformance.cases.EnumExternal parseDelimitedFrom(
+      java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(
+        PARSER, input, extensionRegistry);
+  }
+
   public static build.buf.validate.conformance.cases.EnumExternal parseFrom(
-      com.google.protobuf.CodedInputStream input)
-      throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input);
+      com.google.protobuf.CodedInputStream input) throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
   }
+
   public static build.buf.validate.conformance.cases.EnumExternal parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input, extensionRegistry);
+    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+        PARSER, input, extensionRegistry);
   }
 
   @java.lang.Override
-  public Builder newBuilderForType() { return newBuilder(); }
+  public Builder newBuilderForType() {
+    return newBuilder();
+  }
+
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
+
   public static Builder newBuilder(build.buf.validate.conformance.cases.EnumExternal prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
+
   @java.lang.Override
   public Builder toBuilder() {
-    return this == DEFAULT_INSTANCE
-        ? new Builder() : new Builder().mergeFrom(this);
+    return this == DEFAULT_INSTANCE ? new Builder() : new Builder().mergeFrom(this);
   }
 
   @java.lang.Override
-  protected Builder newBuilderForType(
-      com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+  protected Builder newBuilderForType(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
     Builder builder = new Builder(parent);
     return builder;
   }
-  /**
-   * Protobuf type {@code buf.validate.conformance.cases.EnumExternal}
-   */
-  public static final class Builder extends
-      com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+
+  /** Protobuf type {@code buf.validate.conformance.cases.EnumExternal} */
+  public static final class Builder extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
+      implements
       // @@protoc_insertion_point(builder_implements:buf.validate.conformance.cases.EnumExternal)
       build.buf.validate.conformance.cases.EnumExternalOrBuilder {
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return build.buf.validate.conformance.cases.EnumsProto.internal_static_buf_validate_conformance_cases_EnumExternal_descriptor;
+    public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+      return build.buf.validate.conformance.cases.EnumsProto
+          .internal_static_buf_validate_conformance_cases_EnumExternal_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return build.buf.validate.conformance.cases.EnumsProto.internal_static_buf_validate_conformance_cases_EnumExternal_fieldAccessorTable
+      return build.buf.validate.conformance.cases.EnumsProto
+          .internal_static_buf_validate_conformance_cases_EnumExternal_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              build.buf.validate.conformance.cases.EnumExternal.class, build.buf.validate.conformance.cases.EnumExternal.Builder.class);
+              build.buf.validate.conformance.cases.EnumExternal.class,
+              build.buf.validate.conformance.cases.EnumExternal.Builder.class);
     }
 
     // Construct using build.buf.validate.conformance.cases.EnumExternal.newBuilder()
-    private Builder() {
+    private Builder() {}
 
-    }
-
-    private Builder(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+    private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
       super(parent);
-
     }
+
     @java.lang.Override
     public Builder clear() {
       super.clear();
@@ -252,9 +273,9 @@ private static final long serialVersionUID = 0L;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Descriptors.Descriptor
-        getDescriptorForType() {
-      return build.buf.validate.conformance.cases.EnumsProto.internal_static_buf_validate_conformance_cases_EnumExternal_descriptor;
+    public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
+      return build.buf.validate.conformance.cases.EnumsProto
+          .internal_static_buf_validate_conformance_cases_EnumExternal_descriptor;
     }
 
     @java.lang.Override
@@ -273,8 +294,11 @@ private static final long serialVersionUID = 0L;
 
     @java.lang.Override
     public build.buf.validate.conformance.cases.EnumExternal buildPartial() {
-      build.buf.validate.conformance.cases.EnumExternal result = new build.buf.validate.conformance.cases.EnumExternal(this);
-      if (bitField0_ != 0) { buildPartial0(result); }
+      build.buf.validate.conformance.cases.EnumExternal result =
+          new build.buf.validate.conformance.cases.EnumExternal(this);
+      if (bitField0_ != 0) {
+        buildPartial0(result);
+      }
       onBuilt();
       return result;
     }
@@ -290,38 +314,39 @@ private static final long serialVersionUID = 0L;
     public Builder clone() {
       return super.clone();
     }
+
     @java.lang.Override
     public Builder setField(
-        com.google.protobuf.Descriptors.FieldDescriptor field,
-        java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
       return super.setField(field, value);
     }
+
     @java.lang.Override
-    public Builder clearField(
-        com.google.protobuf.Descriptors.FieldDescriptor field) {
+    public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
       return super.clearField(field);
     }
+
     @java.lang.Override
-    public Builder clearOneof(
-        com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+    public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
       return super.clearOneof(oneof);
     }
+
     @java.lang.Override
     public Builder setRepeatedField(
-        com.google.protobuf.Descriptors.FieldDescriptor field,
-        int index, java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field, int index, java.lang.Object value) {
       return super.setRepeatedField(field, index, value);
     }
+
     @java.lang.Override
     public Builder addRepeatedField(
-        com.google.protobuf.Descriptors.FieldDescriptor field,
-        java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
       return super.addRepeatedField(field, value);
     }
+
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
       if (other instanceof build.buf.validate.conformance.cases.EnumExternal) {
-        return mergeFrom((build.buf.validate.conformance.cases.EnumExternal)other);
+        return mergeFrom((build.buf.validate.conformance.cases.EnumExternal) other);
       } else {
         super.mergeFrom(other);
         return this;
@@ -329,7 +354,8 @@ private static final long serialVersionUID = 0L;
     }
 
     public Builder mergeFrom(build.buf.validate.conformance.cases.EnumExternal other) {
-      if (other == build.buf.validate.conformance.cases.EnumExternal.getDefaultInstance()) return this;
+      if (other == build.buf.validate.conformance.cases.EnumExternal.getDefaultInstance())
+        return this;
       if (other.val_ != 0) {
         setValValue(other.getValValue());
       }
@@ -359,17 +385,19 @@ private static final long serialVersionUID = 0L;
             case 0:
               done = true;
               break;
-            case 8: {
-              val_ = input.readEnum();
-              bitField0_ |= 0x00000001;
-              break;
-            } // case 8
-            default: {
-              if (!super.parseUnknownField(input, extensionRegistry, tag)) {
-                done = true; // was an endgroup tag
-              }
-              break;
-            } // default:
+            case 8:
+              {
+                val_ = input.readEnum();
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 8
+            default:
+              {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
           } // switch (tag)
         } // while (!done)
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -379,18 +407,28 @@ private static final long serialVersionUID = 0L;
       } // finally
       return this;
     }
+
     private int bitField0_;
 
     private int val_ = 0;
+
     /**
-     * <code>.buf.validate.conformance.cases.other_package.Embed.Enumerated val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
+     * <code>
+     * .buf.validate.conformance.cases.other_package.Embed.Enumerated val = 1 [json_name = "val", (.buf.validate.field) = { ... }
+     * </code>
+     *
      * @return The enum numeric value on the wire for val.
      */
-    @java.lang.Override public int getValValue() {
+    @java.lang.Override
+    public int getValValue() {
       return val_;
     }
+
     /**
-     * <code>.buf.validate.conformance.cases.other_package.Embed.Enumerated val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
+     * <code>
+     * .buf.validate.conformance.cases.other_package.Embed.Enumerated val = 1 [json_name = "val", (.buf.validate.field) = { ... }
+     * </code>
+     *
      * @param value The enum numeric value on the wire for val to set.
      * @return This builder for chaining.
      */
@@ -400,21 +438,33 @@ private static final long serialVersionUID = 0L;
       onChanged();
       return this;
     }
+
     /**
-     * <code>.buf.validate.conformance.cases.other_package.Embed.Enumerated val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
+     * <code>
+     * .buf.validate.conformance.cases.other_package.Embed.Enumerated val = 1 [json_name = "val", (.buf.validate.field) = { ... }
+     * </code>
+     *
      * @return The val.
      */
     @java.lang.Override
     public build.buf.validate.conformance.cases.other_package.Embed.Enumerated getVal() {
-      build.buf.validate.conformance.cases.other_package.Embed.Enumerated result = build.buf.validate.conformance.cases.other_package.Embed.Enumerated.forNumber(val_);
-      return result == null ? build.buf.validate.conformance.cases.other_package.Embed.Enumerated.UNRECOGNIZED : result;
+      build.buf.validate.conformance.cases.other_package.Embed.Enumerated result =
+          build.buf.validate.conformance.cases.other_package.Embed.Enumerated.forNumber(val_);
+      return result == null
+          ? build.buf.validate.conformance.cases.other_package.Embed.Enumerated.UNRECOGNIZED
+          : result;
     }
+
     /**
-     * <code>.buf.validate.conformance.cases.other_package.Embed.Enumerated val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
+     * <code>
+     * .buf.validate.conformance.cases.other_package.Embed.Enumerated val = 1 [json_name = "val", (.buf.validate.field) = { ... }
+     * </code>
+     *
      * @param value The val to set.
      * @return This builder for chaining.
      */
-    public Builder setVal(build.buf.validate.conformance.cases.other_package.Embed.Enumerated value) {
+    public Builder setVal(
+        build.buf.validate.conformance.cases.other_package.Embed.Enumerated value) {
       if (value == null) {
         throw new NullPointerException();
       }
@@ -423,8 +473,12 @@ private static final long serialVersionUID = 0L;
       onChanged();
       return this;
     }
+
     /**
-     * <code>.buf.validate.conformance.cases.other_package.Embed.Enumerated val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
+     * <code>
+     * .buf.validate.conformance.cases.other_package.Embed.Enumerated val = 1 [json_name = "val", (.buf.validate.field) = { ... }
+     * </code>
+     *
      * @return This builder for chaining.
      */
     public Builder clearVal() {
@@ -433,9 +487,9 @@ private static final long serialVersionUID = 0L;
       onChanged();
       return this;
     }
+
     @java.lang.Override
-    public final Builder setUnknownFields(
-        final com.google.protobuf.UnknownFieldSet unknownFields) {
+    public final Builder setUnknownFields(final com.google.protobuf.UnknownFieldSet unknownFields) {
       return super.setUnknownFields(unknownFields);
     }
 
@@ -445,12 +499,12 @@ private static final long serialVersionUID = 0L;
       return super.mergeUnknownFields(unknownFields);
     }
 
-
     // @@protoc_insertion_point(builder_scope:buf.validate.conformance.cases.EnumExternal)
   }
 
   // @@protoc_insertion_point(class_scope:buf.validate.conformance.cases.EnumExternal)
   private static final build.buf.validate.conformance.cases.EnumExternal DEFAULT_INSTANCE;
+
   static {
     DEFAULT_INSTANCE = new build.buf.validate.conformance.cases.EnumExternal();
   }
@@ -459,27 +513,27 @@ private static final long serialVersionUID = 0L;
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<EnumExternal>
-      PARSER = new com.google.protobuf.AbstractParser<EnumExternal>() {
-    @java.lang.Override
-    public EnumExternal parsePartialFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      Builder builder = newBuilder();
-      try {
-        builder.mergeFrom(input, extensionRegistry);
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(builder.buildPartial());
-      } catch (com.google.protobuf.UninitializedMessageException e) {
-        throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(e)
-            .setUnfinishedMessage(builder.buildPartial());
-      }
-      return builder.buildPartial();
-    }
-  };
+  private static final com.google.protobuf.Parser<EnumExternal> PARSER =
+      new com.google.protobuf.AbstractParser<EnumExternal>() {
+        @java.lang.Override
+        public EnumExternal parsePartialFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+          Builder builder = newBuilder();
+          try {
+            builder.mergeFrom(input, extensionRegistry);
+          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+            throw e.setUnfinishedMessage(builder.buildPartial());
+          } catch (com.google.protobuf.UninitializedMessageException e) {
+            throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+          } catch (java.io.IOException e) {
+            throw new com.google.protobuf.InvalidProtocolBufferException(e)
+                .setUnfinishedMessage(builder.buildPartial());
+          }
+          return builder.buildPartial();
+        }
+      };
 
   public static com.google.protobuf.Parser<EnumExternal> parser() {
     return PARSER;
@@ -494,6 +548,4 @@ private static final long serialVersionUID = 0L;
   public build.buf.validate.conformance.cases.EnumExternal getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
-
 }
-

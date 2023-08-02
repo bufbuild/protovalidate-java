@@ -3,26 +3,31 @@
 
 package build.buf.validate.conformance.cases;
 
-public interface StringInOneofOrBuilder extends
+public interface StringInOneofOrBuilder
+    extends
     // @@protoc_insertion_point(interface_extends:buf.validate.conformance.cases.StringInOneof)
     com.google.protobuf.MessageOrBuilder {
 
   /**
    * <code>string bar = 1 [json_name = "bar", (.buf.validate.field) = { ... }</code>
+   *
    * @return Whether the bar field is set.
    */
   boolean hasBar();
+
   /**
    * <code>string bar = 1 [json_name = "bar", (.buf.validate.field) = { ... }</code>
+   *
    * @return The bar.
    */
   java.lang.String getBar();
+
   /**
    * <code>string bar = 1 [json_name = "bar", (.buf.validate.field) = { ... }</code>
+   *
    * @return The bytes for bar.
    */
-  com.google.protobuf.ByteString
-      getBarBytes();
+  com.google.protobuf.ByteString getBarBytes();
 
   build.buf.validate.conformance.cases.StringInOneof.FooCase getFooCase();
 }

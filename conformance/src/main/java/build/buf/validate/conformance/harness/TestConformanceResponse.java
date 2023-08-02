@@ -4,6 +4,8 @@
 package build.buf.validate.conformance.harness;
 
 /**
+ *
+ *
  * <pre>
  * TestConformanceResponse is the response for Conformance Tests.
  * The results map is a map of case name to the TestResult.
@@ -11,121 +13,146 @@ package build.buf.validate.conformance.harness;
  *
  * Protobuf type {@code buf.validate.conformance.harness.TestConformanceResponse}
  */
-public final class TestConformanceResponse extends
-    com.google.protobuf.GeneratedMessageV3 implements
+public final class TestConformanceResponse extends com.google.protobuf.GeneratedMessageV3
+    implements
     // @@protoc_insertion_point(message_implements:buf.validate.conformance.harness.TestConformanceResponse)
     TestConformanceResponseOrBuilder {
-private static final long serialVersionUID = 0L;
+  private static final long serialVersionUID = 0L;
+
   // Use TestConformanceResponse.newBuilder() to construct.
   private TestConformanceResponse(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
-  private TestConformanceResponse() {
-  }
+
+  private TestConformanceResponse() {}
 
   @java.lang.Override
   @SuppressWarnings({"unused"})
-  protected java.lang.Object newInstance(
-      UnusedPrivateParameter unused) {
+  protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
     return new TestConformanceResponse();
   }
 
-  public static final com.google.protobuf.Descriptors.Descriptor
-      getDescriptor() {
-    return build.buf.validate.conformance.harness.HarnessProto.internal_static_buf_validate_conformance_harness_TestConformanceResponse_descriptor;
+  public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+    return build.buf.validate.conformance.harness.HarnessProto
+        .internal_static_buf_validate_conformance_harness_TestConformanceResponse_descriptor;
   }
 
   @SuppressWarnings({"rawtypes"})
   @java.lang.Override
-  protected com.google.protobuf.MapField internalGetMapField(
-      int number) {
+  protected com.google.protobuf.MapField internalGetMapField(int number) {
     switch (number) {
       case 1:
         return internalGetResults();
       default:
-        throw new RuntimeException(
-            "Invalid map field number: " + number);
+        throw new RuntimeException("Invalid map field number: " + number);
     }
   }
+
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return build.buf.validate.conformance.harness.HarnessProto.internal_static_buf_validate_conformance_harness_TestConformanceResponse_fieldAccessorTable
+    return build.buf.validate.conformance.harness.HarnessProto
+        .internal_static_buf_validate_conformance_harness_TestConformanceResponse_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            build.buf.validate.conformance.harness.TestConformanceResponse.class, build.buf.validate.conformance.harness.TestConformanceResponse.Builder.class);
+            build.buf.validate.conformance.harness.TestConformanceResponse.class,
+            build.buf.validate.conformance.harness.TestConformanceResponse.Builder.class);
   }
 
   public static final int RESULTS_FIELD_NUMBER = 1;
+
   private static final class ResultsDefaultEntryHolder {
     static final com.google.protobuf.MapEntry<
-        java.lang.String, build.buf.validate.conformance.harness.TestResult> defaultEntry =
+            java.lang.String, build.buf.validate.conformance.harness.TestResult>
+        defaultEntry =
             com.google.protobuf.MapEntry
-            .<java.lang.String, build.buf.validate.conformance.harness.TestResult>newDefaultInstance(
-                build.buf.validate.conformance.harness.HarnessProto.internal_static_buf_validate_conformance_harness_TestConformanceResponse_ResultsEntry_descriptor, 
-                com.google.protobuf.WireFormat.FieldType.STRING,
-                "",
-                com.google.protobuf.WireFormat.FieldType.MESSAGE,
-                build.buf.validate.conformance.harness.TestResult.getDefaultInstance());
+                .<java.lang.String, build.buf.validate.conformance.harness.TestResult>
+                    newDefaultInstance(
+                        build.buf.validate.conformance.harness.HarnessProto
+                            .internal_static_buf_validate_conformance_harness_TestConformanceResponse_ResultsEntry_descriptor,
+                        com.google.protobuf.WireFormat.FieldType.STRING,
+                        "",
+                        com.google.protobuf.WireFormat.FieldType.MESSAGE,
+                        build.buf.validate.conformance.harness.TestResult.getDefaultInstance());
   }
+
   @SuppressWarnings("serial")
   private com.google.protobuf.MapField<
-      java.lang.String, build.buf.validate.conformance.harness.TestResult> results_;
-  private com.google.protobuf.MapField<java.lang.String, build.buf.validate.conformance.harness.TestResult>
-  internalGetResults() {
+          java.lang.String, build.buf.validate.conformance.harness.TestResult>
+      results_;
+
+  private com.google.protobuf.MapField<
+          java.lang.String, build.buf.validate.conformance.harness.TestResult>
+      internalGetResults() {
     if (results_ == null) {
-      return com.google.protobuf.MapField.emptyMapField(
-          ResultsDefaultEntryHolder.defaultEntry);
+      return com.google.protobuf.MapField.emptyMapField(ResultsDefaultEntryHolder.defaultEntry);
     }
     return results_;
   }
+
   public int getResultsCount() {
     return internalGetResults().getMap().size();
   }
+
   /**
-   * <code>map&lt;string, .buf.validate.conformance.harness.TestResult&gt; results = 1 [json_name = "results"];</code>
+   * <code>
+   * map&lt;string, .buf.validate.conformance.harness.TestResult&gt; results = 1 [json_name = "results"];
+   * </code>
    */
   @java.lang.Override
-  public boolean containsResults(
-      java.lang.String key) {
-    if (key == null) { throw new NullPointerException("map key"); }
+  public boolean containsResults(java.lang.String key) {
+    if (key == null) {
+      throw new NullPointerException("map key");
+    }
     return internalGetResults().getMap().containsKey(key);
   }
-  /**
-   * Use {@link #getResultsMap()} instead.
-   */
+
+  /** Use {@link #getResultsMap()} instead. */
   @java.lang.Override
   @java.lang.Deprecated
-  public java.util.Map<java.lang.String, build.buf.validate.conformance.harness.TestResult> getResults() {
+  public java.util.Map<java.lang.String, build.buf.validate.conformance.harness.TestResult>
+      getResults() {
     return getResultsMap();
   }
+
   /**
-   * <code>map&lt;string, .buf.validate.conformance.harness.TestResult&gt; results = 1 [json_name = "results"];</code>
+   * <code>
+   * map&lt;string, .buf.validate.conformance.harness.TestResult&gt; results = 1 [json_name = "results"];
+   * </code>
    */
   @java.lang.Override
-  public java.util.Map<java.lang.String, build.buf.validate.conformance.harness.TestResult> getResultsMap() {
+  public java.util.Map<java.lang.String, build.buf.validate.conformance.harness.TestResult>
+      getResultsMap() {
     return internalGetResults().getMap();
   }
+
   /**
-   * <code>map&lt;string, .buf.validate.conformance.harness.TestResult&gt; results = 1 [json_name = "results"];</code>
+   * <code>
+   * map&lt;string, .buf.validate.conformance.harness.TestResult&gt; results = 1 [json_name = "results"];
+   * </code>
    */
   @java.lang.Override
-  public /* nullable */
-build.buf.validate.conformance.harness.TestResult getResultsOrDefault(
+  public /* nullable */ build.buf.validate.conformance.harness.TestResult getResultsOrDefault(
       java.lang.String key,
       /* nullable */
-build.buf.validate.conformance.harness.TestResult defaultValue) {
-    if (key == null) { throw new NullPointerException("map key"); }
+      build.buf.validate.conformance.harness.TestResult defaultValue) {
+    if (key == null) {
+      throw new NullPointerException("map key");
+    }
     java.util.Map<java.lang.String, build.buf.validate.conformance.harness.TestResult> map =
         internalGetResults().getMap();
     return map.containsKey(key) ? map.get(key) : defaultValue;
   }
+
   /**
-   * <code>map&lt;string, .buf.validate.conformance.harness.TestResult&gt; results = 1 [json_name = "results"];</code>
+   * <code>
+   * map&lt;string, .buf.validate.conformance.harness.TestResult&gt; results = 1 [json_name = "results"];
+   * </code>
    */
   @java.lang.Override
-  public build.buf.validate.conformance.harness.TestResult getResultsOrThrow(
-      java.lang.String key) {
-    if (key == null) { throw new NullPointerException("map key"); }
+  public build.buf.validate.conformance.harness.TestResult getResultsOrThrow(java.lang.String key) {
+    if (key == null) {
+      throw new NullPointerException("map key");
+    }
     java.util.Map<java.lang.String, build.buf.validate.conformance.harness.TestResult> map =
         internalGetResults().getMap();
     if (!map.containsKey(key)) {
@@ -135,6 +162,7 @@ build.buf.validate.conformance.harness.TestResult defaultValue) {
   }
 
   private byte memoizedIsInitialized = -1;
+
   @java.lang.Override
   public final boolean isInitialized() {
     byte isInitialized = memoizedIsInitialized;
@@ -146,14 +174,9 @@ build.buf.validate.conformance.harness.TestResult defaultValue) {
   }
 
   @java.lang.Override
-  public void writeTo(com.google.protobuf.CodedOutputStream output)
-                      throws java.io.IOException {
-    com.google.protobuf.GeneratedMessageV3
-      .serializeStringMapTo(
-        output,
-        internalGetResults(),
-        ResultsDefaultEntryHolder.defaultEntry,
-        1);
+  public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
+    com.google.protobuf.GeneratedMessageV3.serializeStringMapTo(
+        output, internalGetResults(), ResultsDefaultEntryHolder.defaultEntry, 1);
     getUnknownFields().writeTo(output);
   }
 
@@ -163,15 +186,17 @@ build.buf.validate.conformance.harness.TestResult defaultValue) {
     if (size != -1) return size;
 
     size = 0;
-    for (java.util.Map.Entry<java.lang.String, build.buf.validate.conformance.harness.TestResult> entry
-         : internalGetResults().getMap().entrySet()) {
-      com.google.protobuf.MapEntry<java.lang.String, build.buf.validate.conformance.harness.TestResult>
-      results__ = ResultsDefaultEntryHolder.defaultEntry.newBuilderForType()
-          .setKey(entry.getKey())
-          .setValue(entry.getValue())
-          .build();
-      size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(1, results__);
+    for (java.util.Map.Entry<java.lang.String, build.buf.validate.conformance.harness.TestResult>
+        entry : internalGetResults().getMap().entrySet()) {
+      com.google.protobuf.MapEntry<
+              java.lang.String, build.buf.validate.conformance.harness.TestResult>
+          results__ =
+              ResultsDefaultEntryHolder.defaultEntry
+                  .newBuilderForType()
+                  .setKey(entry.getKey())
+                  .setValue(entry.getValue())
+                  .build();
+      size += com.google.protobuf.CodedOutputStream.computeMessageSize(1, results__);
     }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
@@ -181,15 +206,15 @@ build.buf.validate.conformance.harness.TestResult defaultValue) {
   @java.lang.Override
   public boolean equals(final java.lang.Object obj) {
     if (obj == this) {
-     return true;
+      return true;
     }
     if (!(obj instanceof build.buf.validate.conformance.harness.TestConformanceResponse)) {
       return super.equals(obj);
     }
-    build.buf.validate.conformance.harness.TestConformanceResponse other = (build.buf.validate.conformance.harness.TestConformanceResponse) obj;
+    build.buf.validate.conformance.harness.TestConformanceResponse other =
+        (build.buf.validate.conformance.harness.TestConformanceResponse) obj;
 
-    if (!internalGetResults().equals(
-        other.internalGetResults())) return false;
+    if (!internalGetResults().equals(other.internalGetResults())) return false;
     if (!getUnknownFields().equals(other.getUnknownFields())) return false;
     return true;
   }
@@ -211,98 +236,105 @@ build.buf.validate.conformance.harness.TestResult defaultValue) {
   }
 
   public static build.buf.validate.conformance.harness.TestConformanceResponse parseFrom(
-      java.nio.ByteBuffer data)
-      throws com.google.protobuf.InvalidProtocolBufferException {
+      java.nio.ByteBuffer data) throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
+
   public static build.buf.validate.conformance.harness.TestConformanceResponse parseFrom(
-      java.nio.ByteBuffer data,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      java.nio.ByteBuffer data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
+
   public static build.buf.validate.conformance.harness.TestConformanceResponse parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
+
   public static build.buf.validate.conformance.harness.TestConformanceResponse parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static build.buf.validate.conformance.harness.TestConformanceResponse parseFrom(byte[] data)
-      throws com.google.protobuf.InvalidProtocolBufferException {
+
+  public static build.buf.validate.conformance.harness.TestConformanceResponse parseFrom(
+      byte[] data) throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
+
   public static build.buf.validate.conformance.harness.TestConformanceResponse parseFrom(
-      byte[] data,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      byte[] data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static build.buf.validate.conformance.harness.TestConformanceResponse parseFrom(java.io.InputStream input)
-      throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input);
-  }
+
   public static build.buf.validate.conformance.harness.TestConformanceResponse parseFrom(
-      java.io.InputStream input,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-      throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input, extensionRegistry);
+      java.io.InputStream input) throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
   }
 
-  public static build.buf.validate.conformance.harness.TestConformanceResponse parseDelimitedFrom(java.io.InputStream input)
+  public static build.buf.validate.conformance.harness.TestConformanceResponse parseFrom(
+      java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseDelimitedWithIOException(PARSER, input);
+    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+        PARSER, input, extensionRegistry);
   }
 
   public static build.buf.validate.conformance.harness.TestConformanceResponse parseDelimitedFrom(
-      java.io.InputStream input,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-      throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+      java.io.InputStream input) throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input);
   }
+
+  public static build.buf.validate.conformance.harness.TestConformanceResponse parseDelimitedFrom(
+      java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(
+        PARSER, input, extensionRegistry);
+  }
+
   public static build.buf.validate.conformance.harness.TestConformanceResponse parseFrom(
-      com.google.protobuf.CodedInputStream input)
-      throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input);
+      com.google.protobuf.CodedInputStream input) throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
   }
+
   public static build.buf.validate.conformance.harness.TestConformanceResponse parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input, extensionRegistry);
+    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+        PARSER, input, extensionRegistry);
   }
 
   @java.lang.Override
-  public Builder newBuilderForType() { return newBuilder(); }
+  public Builder newBuilderForType() {
+    return newBuilder();
+  }
+
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-  public static Builder newBuilder(build.buf.validate.conformance.harness.TestConformanceResponse prototype) {
+
+  public static Builder newBuilder(
+      build.buf.validate.conformance.harness.TestConformanceResponse prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
-  }
-  @java.lang.Override
-  public Builder toBuilder() {
-    return this == DEFAULT_INSTANCE
-        ? new Builder() : new Builder().mergeFrom(this);
   }
 
   @java.lang.Override
-  protected Builder newBuilderForType(
-      com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+  public Builder toBuilder() {
+    return this == DEFAULT_INSTANCE ? new Builder() : new Builder().mergeFrom(this);
+  }
+
+  @java.lang.Override
+  protected Builder newBuilderForType(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
     Builder builder = new Builder(parent);
     return builder;
   }
+
   /**
+   *
+   *
    * <pre>
    * TestConformanceResponse is the response for Conformance Tests.
    * The results map is a map of case name to the TestResult.
@@ -310,55 +342,52 @@ build.buf.validate.conformance.harness.TestResult defaultValue) {
    *
    * Protobuf type {@code buf.validate.conformance.harness.TestConformanceResponse}
    */
-  public static final class Builder extends
-      com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+  public static final class Builder extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
+      implements
       // @@protoc_insertion_point(builder_implements:buf.validate.conformance.harness.TestConformanceResponse)
       build.buf.validate.conformance.harness.TestConformanceResponseOrBuilder {
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return build.buf.validate.conformance.harness.HarnessProto.internal_static_buf_validate_conformance_harness_TestConformanceResponse_descriptor;
+    public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+      return build.buf.validate.conformance.harness.HarnessProto
+          .internal_static_buf_validate_conformance_harness_TestConformanceResponse_descriptor;
     }
 
     @SuppressWarnings({"rawtypes"})
-    protected com.google.protobuf.MapField internalGetMapField(
-        int number) {
+    protected com.google.protobuf.MapField internalGetMapField(int number) {
       switch (number) {
         case 1:
           return internalGetResults();
         default:
-          throw new RuntimeException(
-              "Invalid map field number: " + number);
+          throw new RuntimeException("Invalid map field number: " + number);
       }
     }
+
     @SuppressWarnings({"rawtypes"})
-    protected com.google.protobuf.MapField internalGetMutableMapField(
-        int number) {
+    protected com.google.protobuf.MapField internalGetMutableMapField(int number) {
       switch (number) {
         case 1:
           return internalGetMutableResults();
         default:
-          throw new RuntimeException(
-              "Invalid map field number: " + number);
+          throw new RuntimeException("Invalid map field number: " + number);
       }
     }
+
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return build.buf.validate.conformance.harness.HarnessProto.internal_static_buf_validate_conformance_harness_TestConformanceResponse_fieldAccessorTable
+      return build.buf.validate.conformance.harness.HarnessProto
+          .internal_static_buf_validate_conformance_harness_TestConformanceResponse_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              build.buf.validate.conformance.harness.TestConformanceResponse.class, build.buf.validate.conformance.harness.TestConformanceResponse.Builder.class);
+              build.buf.validate.conformance.harness.TestConformanceResponse.class,
+              build.buf.validate.conformance.harness.TestConformanceResponse.Builder.class);
     }
 
     // Construct using build.buf.validate.conformance.harness.TestConformanceResponse.newBuilder()
-    private Builder() {
+    private Builder() {}
 
-    }
-
-    private Builder(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+    private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
       super(parent);
-
     }
+
     @java.lang.Override
     public Builder clear() {
       super.clear();
@@ -368,13 +397,14 @@ build.buf.validate.conformance.harness.TestResult defaultValue) {
     }
 
     @java.lang.Override
-    public com.google.protobuf.Descriptors.Descriptor
-        getDescriptorForType() {
-      return build.buf.validate.conformance.harness.HarnessProto.internal_static_buf_validate_conformance_harness_TestConformanceResponse_descriptor;
+    public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
+      return build.buf.validate.conformance.harness.HarnessProto
+          .internal_static_buf_validate_conformance_harness_TestConformanceResponse_descriptor;
     }
 
     @java.lang.Override
-    public build.buf.validate.conformance.harness.TestConformanceResponse getDefaultInstanceForType() {
+    public build.buf.validate.conformance.harness.TestConformanceResponse
+        getDefaultInstanceForType() {
       return build.buf.validate.conformance.harness.TestConformanceResponse.getDefaultInstance();
     }
 
@@ -389,13 +419,17 @@ build.buf.validate.conformance.harness.TestResult defaultValue) {
 
     @java.lang.Override
     public build.buf.validate.conformance.harness.TestConformanceResponse buildPartial() {
-      build.buf.validate.conformance.harness.TestConformanceResponse result = new build.buf.validate.conformance.harness.TestConformanceResponse(this);
-      if (bitField0_ != 0) { buildPartial0(result); }
+      build.buf.validate.conformance.harness.TestConformanceResponse result =
+          new build.buf.validate.conformance.harness.TestConformanceResponse(this);
+      if (bitField0_ != 0) {
+        buildPartial0(result);
+      }
       onBuilt();
       return result;
     }
 
-    private void buildPartial0(build.buf.validate.conformance.harness.TestConformanceResponse result) {
+    private void buildPartial0(
+        build.buf.validate.conformance.harness.TestConformanceResponse result) {
       int from_bitField0_ = bitField0_;
       if (((from_bitField0_ & 0x00000001) != 0)) {
         result.results_ = internalGetResults();
@@ -407,38 +441,39 @@ build.buf.validate.conformance.harness.TestResult defaultValue) {
     public Builder clone() {
       return super.clone();
     }
+
     @java.lang.Override
     public Builder setField(
-        com.google.protobuf.Descriptors.FieldDescriptor field,
-        java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
       return super.setField(field, value);
     }
+
     @java.lang.Override
-    public Builder clearField(
-        com.google.protobuf.Descriptors.FieldDescriptor field) {
+    public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
       return super.clearField(field);
     }
+
     @java.lang.Override
-    public Builder clearOneof(
-        com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+    public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
       return super.clearOneof(oneof);
     }
+
     @java.lang.Override
     public Builder setRepeatedField(
-        com.google.protobuf.Descriptors.FieldDescriptor field,
-        int index, java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field, int index, java.lang.Object value) {
       return super.setRepeatedField(field, index, value);
     }
+
     @java.lang.Override
     public Builder addRepeatedField(
-        com.google.protobuf.Descriptors.FieldDescriptor field,
-        java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
       return super.addRepeatedField(field, value);
     }
+
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
       if (other instanceof build.buf.validate.conformance.harness.TestConformanceResponse) {
-        return mergeFrom((build.buf.validate.conformance.harness.TestConformanceResponse)other);
+        return mergeFrom((build.buf.validate.conformance.harness.TestConformanceResponse) other);
       } else {
         super.mergeFrom(other);
         return this;
@@ -446,9 +481,10 @@ build.buf.validate.conformance.harness.TestResult defaultValue) {
     }
 
     public Builder mergeFrom(build.buf.validate.conformance.harness.TestConformanceResponse other) {
-      if (other == build.buf.validate.conformance.harness.TestConformanceResponse.getDefaultInstance()) return this;
-      internalGetMutableResults().mergeFrom(
-          other.internalGetResults());
+      if (other
+          == build.buf.validate.conformance.harness.TestConformanceResponse.getDefaultInstance())
+        return this;
+      internalGetMutableResults().mergeFrom(other.internalGetResults());
       bitField0_ |= 0x00000001;
       this.mergeUnknownFields(other.getUnknownFields());
       onChanged();
@@ -476,21 +512,27 @@ build.buf.validate.conformance.harness.TestResult defaultValue) {
             case 0:
               done = true;
               break;
-            case 10: {
-              com.google.protobuf.MapEntry<java.lang.String, build.buf.validate.conformance.harness.TestResult>
-              results__ = input.readMessage(
-                  ResultsDefaultEntryHolder.defaultEntry.getParserForType(), extensionRegistry);
-              internalGetMutableResults().getMutableMap().put(
-                  results__.getKey(), results__.getValue());
-              bitField0_ |= 0x00000001;
-              break;
-            } // case 10
-            default: {
-              if (!super.parseUnknownField(input, extensionRegistry, tag)) {
-                done = true; // was an endgroup tag
-              }
-              break;
-            } // default:
+            case 10:
+              {
+                com.google.protobuf.MapEntry<
+                        java.lang.String, build.buf.validate.conformance.harness.TestResult>
+                    results__ =
+                        input.readMessage(
+                            ResultsDefaultEntryHolder.defaultEntry.getParserForType(),
+                            extensionRegistry);
+                internalGetMutableResults()
+                    .getMutableMap()
+                    .put(results__.getKey(), results__.getValue());
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 10
+            default:
+              {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
           } // switch (tag)
         } // while (!done)
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -500,23 +542,27 @@ build.buf.validate.conformance.harness.TestResult defaultValue) {
       } // finally
       return this;
     }
+
     private int bitField0_;
 
     private com.google.protobuf.MapField<
-        java.lang.String, build.buf.validate.conformance.harness.TestResult> results_;
-    private com.google.protobuf.MapField<java.lang.String, build.buf.validate.conformance.harness.TestResult>
+            java.lang.String, build.buf.validate.conformance.harness.TestResult>
+        results_;
+
+    private com.google.protobuf.MapField<
+            java.lang.String, build.buf.validate.conformance.harness.TestResult>
         internalGetResults() {
       if (results_ == null) {
-        return com.google.protobuf.MapField.emptyMapField(
-            ResultsDefaultEntryHolder.defaultEntry);
+        return com.google.protobuf.MapField.emptyMapField(ResultsDefaultEntryHolder.defaultEntry);
       }
       return results_;
     }
-    private com.google.protobuf.MapField<java.lang.String, build.buf.validate.conformance.harness.TestResult>
+
+    private com.google.protobuf.MapField<
+            java.lang.String, build.buf.validate.conformance.harness.TestResult>
         internalGetMutableResults() {
       if (results_ == null) {
-        results_ = com.google.protobuf.MapField.newMapField(
-            ResultsDefaultEntryHolder.defaultEntry);
+        results_ = com.google.protobuf.MapField.newMapField(ResultsDefaultEntryHolder.defaultEntry);
       }
       if (!results_.isMutable()) {
         results_ = results_.copy();
@@ -525,54 +571,72 @@ build.buf.validate.conformance.harness.TestResult defaultValue) {
       onChanged();
       return results_;
     }
+
     public int getResultsCount() {
       return internalGetResults().getMap().size();
     }
+
     /**
-     * <code>map&lt;string, .buf.validate.conformance.harness.TestResult&gt; results = 1 [json_name = "results"];</code>
+     * <code>
+     * map&lt;string, .buf.validate.conformance.harness.TestResult&gt; results = 1 [json_name = "results"];
+     * </code>
      */
     @java.lang.Override
-    public boolean containsResults(
-        java.lang.String key) {
-      if (key == null) { throw new NullPointerException("map key"); }
+    public boolean containsResults(java.lang.String key) {
+      if (key == null) {
+        throw new NullPointerException("map key");
+      }
       return internalGetResults().getMap().containsKey(key);
     }
-    /**
-     * Use {@link #getResultsMap()} instead.
-     */
+
+    /** Use {@link #getResultsMap()} instead. */
     @java.lang.Override
     @java.lang.Deprecated
-    public java.util.Map<java.lang.String, build.buf.validate.conformance.harness.TestResult> getResults() {
+    public java.util.Map<java.lang.String, build.buf.validate.conformance.harness.TestResult>
+        getResults() {
       return getResultsMap();
     }
+
     /**
-     * <code>map&lt;string, .buf.validate.conformance.harness.TestResult&gt; results = 1 [json_name = "results"];</code>
+     * <code>
+     * map&lt;string, .buf.validate.conformance.harness.TestResult&gt; results = 1 [json_name = "results"];
+     * </code>
      */
     @java.lang.Override
-    public java.util.Map<java.lang.String, build.buf.validate.conformance.harness.TestResult> getResultsMap() {
+    public java.util.Map<java.lang.String, build.buf.validate.conformance.harness.TestResult>
+        getResultsMap() {
       return internalGetResults().getMap();
     }
+
     /**
-     * <code>map&lt;string, .buf.validate.conformance.harness.TestResult&gt; results = 1 [json_name = "results"];</code>
+     * <code>
+     * map&lt;string, .buf.validate.conformance.harness.TestResult&gt; results = 1 [json_name = "results"];
+     * </code>
      */
     @java.lang.Override
-    public /* nullable */
-build.buf.validate.conformance.harness.TestResult getResultsOrDefault(
+    public /* nullable */ build.buf.validate.conformance.harness.TestResult getResultsOrDefault(
         java.lang.String key,
         /* nullable */
-build.buf.validate.conformance.harness.TestResult defaultValue) {
-      if (key == null) { throw new NullPointerException("map key"); }
+        build.buf.validate.conformance.harness.TestResult defaultValue) {
+      if (key == null) {
+        throw new NullPointerException("map key");
+      }
       java.util.Map<java.lang.String, build.buf.validate.conformance.harness.TestResult> map =
           internalGetResults().getMap();
       return map.containsKey(key) ? map.get(key) : defaultValue;
     }
+
     /**
-     * <code>map&lt;string, .buf.validate.conformance.harness.TestResult&gt; results = 1 [json_name = "results"];</code>
+     * <code>
+     * map&lt;string, .buf.validate.conformance.harness.TestResult&gt; results = 1 [json_name = "results"];
+     * </code>
      */
     @java.lang.Override
     public build.buf.validate.conformance.harness.TestResult getResultsOrThrow(
         java.lang.String key) {
-      if (key == null) { throw new NullPointerException("map key"); }
+      if (key == null) {
+        throw new NullPointerException("map key");
+      }
       java.util.Map<java.lang.String, build.buf.validate.conformance.harness.TestResult> map =
           internalGetResults().getMap();
       if (!map.containsKey(key)) {
@@ -580,57 +644,66 @@ build.buf.validate.conformance.harness.TestResult defaultValue) {
       }
       return map.get(key);
     }
+
     public Builder clearResults() {
       bitField0_ = (bitField0_ & ~0x00000001);
-      internalGetMutableResults().getMutableMap()
-          .clear();
+      internalGetMutableResults().getMutableMap().clear();
       return this;
     }
+
     /**
-     * <code>map&lt;string, .buf.validate.conformance.harness.TestResult&gt; results = 1 [json_name = "results"];</code>
+     * <code>
+     * map&lt;string, .buf.validate.conformance.harness.TestResult&gt; results = 1 [json_name = "results"];
+     * </code>
      */
-    public Builder removeResults(
-        java.lang.String key) {
-      if (key == null) { throw new NullPointerException("map key"); }
-      internalGetMutableResults().getMutableMap()
-          .remove(key);
+    public Builder removeResults(java.lang.String key) {
+      if (key == null) {
+        throw new NullPointerException("map key");
+      }
+      internalGetMutableResults().getMutableMap().remove(key);
       return this;
     }
-    /**
-     * Use alternate mutation accessors instead.
-     */
+
+    /** Use alternate mutation accessors instead. */
     @java.lang.Deprecated
     public java.util.Map<java.lang.String, build.buf.validate.conformance.harness.TestResult>
         getMutableResults() {
       bitField0_ |= 0x00000001;
       return internalGetMutableResults().getMutableMap();
     }
+
     /**
-     * <code>map&lt;string, .buf.validate.conformance.harness.TestResult&gt; results = 1 [json_name = "results"];</code>
+     * <code>
+     * map&lt;string, .buf.validate.conformance.harness.TestResult&gt; results = 1 [json_name = "results"];
+     * </code>
      */
     public Builder putResults(
-        java.lang.String key,
-        build.buf.validate.conformance.harness.TestResult value) {
-      if (key == null) { throw new NullPointerException("map key"); }
-      if (value == null) { throw new NullPointerException("map value"); }
-      internalGetMutableResults().getMutableMap()
-          .put(key, value);
+        java.lang.String key, build.buf.validate.conformance.harness.TestResult value) {
+      if (key == null) {
+        throw new NullPointerException("map key");
+      }
+      if (value == null) {
+        throw new NullPointerException("map value");
+      }
+      internalGetMutableResults().getMutableMap().put(key, value);
       bitField0_ |= 0x00000001;
       return this;
     }
+
     /**
-     * <code>map&lt;string, .buf.validate.conformance.harness.TestResult&gt; results = 1 [json_name = "results"];</code>
+     * <code>
+     * map&lt;string, .buf.validate.conformance.harness.TestResult&gt; results = 1 [json_name = "results"];
+     * </code>
      */
     public Builder putAllResults(
         java.util.Map<java.lang.String, build.buf.validate.conformance.harness.TestResult> values) {
-      internalGetMutableResults().getMutableMap()
-          .putAll(values);
+      internalGetMutableResults().getMutableMap().putAll(values);
       bitField0_ |= 0x00000001;
       return this;
     }
+
     @java.lang.Override
-    public final Builder setUnknownFields(
-        final com.google.protobuf.UnknownFieldSet unknownFields) {
+    public final Builder setUnknownFields(final com.google.protobuf.UnknownFieldSet unknownFields) {
       return super.setUnknownFields(unknownFields);
     }
 
@@ -640,41 +713,43 @@ build.buf.validate.conformance.harness.TestResult defaultValue) {
       return super.mergeUnknownFields(unknownFields);
     }
 
-
     // @@protoc_insertion_point(builder_scope:buf.validate.conformance.harness.TestConformanceResponse)
   }
 
   // @@protoc_insertion_point(class_scope:buf.validate.conformance.harness.TestConformanceResponse)
-  private static final build.buf.validate.conformance.harness.TestConformanceResponse DEFAULT_INSTANCE;
+  private static final build.buf.validate.conformance.harness.TestConformanceResponse
+      DEFAULT_INSTANCE;
+
   static {
     DEFAULT_INSTANCE = new build.buf.validate.conformance.harness.TestConformanceResponse();
   }
 
-  public static build.buf.validate.conformance.harness.TestConformanceResponse getDefaultInstance() {
+  public static build.buf.validate.conformance.harness.TestConformanceResponse
+      getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<TestConformanceResponse>
-      PARSER = new com.google.protobuf.AbstractParser<TestConformanceResponse>() {
-    @java.lang.Override
-    public TestConformanceResponse parsePartialFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      Builder builder = newBuilder();
-      try {
-        builder.mergeFrom(input, extensionRegistry);
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(builder.buildPartial());
-      } catch (com.google.protobuf.UninitializedMessageException e) {
-        throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(e)
-            .setUnfinishedMessage(builder.buildPartial());
-      }
-      return builder.buildPartial();
-    }
-  };
+  private static final com.google.protobuf.Parser<TestConformanceResponse> PARSER =
+      new com.google.protobuf.AbstractParser<TestConformanceResponse>() {
+        @java.lang.Override
+        public TestConformanceResponse parsePartialFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+          Builder builder = newBuilder();
+          try {
+            builder.mergeFrom(input, extensionRegistry);
+          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+            throw e.setUnfinishedMessage(builder.buildPartial());
+          } catch (com.google.protobuf.UninitializedMessageException e) {
+            throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+          } catch (java.io.IOException e) {
+            throw new com.google.protobuf.InvalidProtocolBufferException(e)
+                .setUnfinishedMessage(builder.buildPartial());
+          }
+          return builder.buildPartial();
+        }
+      };
 
   public static com.google.protobuf.Parser<TestConformanceResponse> parser() {
     return PARSER;
@@ -686,9 +761,8 @@ build.buf.validate.conformance.harness.TestResult defaultValue) {
   }
 
   @java.lang.Override
-  public build.buf.validate.conformance.harness.TestConformanceResponse getDefaultInstanceForType() {
+  public build.buf.validate.conformance.harness.TestConformanceResponse
+      getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
-
 }
-

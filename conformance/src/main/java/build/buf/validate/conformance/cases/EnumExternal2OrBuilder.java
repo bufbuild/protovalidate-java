@@ -3,17 +3,25 @@
 
 package build.buf.validate.conformance.cases;
 
-public interface EnumExternal2OrBuilder extends
+public interface EnumExternal2OrBuilder
+    extends
     // @@protoc_insertion_point(interface_extends:buf.validate.conformance.cases.EnumExternal2)
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>.buf.validate.conformance.cases.other_package.Embed.DoubleEmbed.DoubleEnumerated val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
+   * <code>
+   * .buf.validate.conformance.cases.other_package.Embed.DoubleEmbed.DoubleEnumerated val = 1 [json_name = "val", (.buf.validate.field) = { ... }
+   * </code>
+   *
    * @return The enum numeric value on the wire for val.
    */
   int getValValue();
+
   /**
-   * <code>.buf.validate.conformance.cases.other_package.Embed.DoubleEmbed.DoubleEnumerated val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
+   * <code>
+   * .buf.validate.conformance.cases.other_package.Embed.DoubleEmbed.DoubleEnumerated val = 1 [json_name = "val", (.buf.validate.field) = { ... }
+   * </code>
+   *
    * @return The val.
    */
   build.buf.validate.conformance.cases.other_package.Embed.DoubleEmbed.DoubleEnumerated getVal();

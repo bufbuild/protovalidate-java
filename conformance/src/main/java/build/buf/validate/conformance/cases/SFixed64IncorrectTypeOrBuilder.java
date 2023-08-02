@@ -3,12 +3,14 @@
 
 package build.buf.validate.conformance.cases;
 
-public interface SFixed64IncorrectTypeOrBuilder extends
+public interface SFixed64IncorrectTypeOrBuilder
+    extends
     // @@protoc_insertion_point(interface_extends:buf.validate.conformance.cases.SFixed64IncorrectType)
     com.google.protobuf.MessageOrBuilder {
 
   /**
    * <code>sfixed64 val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
+   *
    * @return The val.
    */
   long getVal();

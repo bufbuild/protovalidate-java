@@ -4,98 +4,118 @@
 package build.buf.validate;
 
 /**
+ *
+ *
  * <pre>
  * TimestampRules describe the constraints applied exclusively to the `google.protobuf.Timestamp` well-known type.
  * </pre>
  *
  * Protobuf type {@code buf.validate.TimestampRules}
  */
-public final class TimestampRules extends
-    com.google.protobuf.GeneratedMessageV3 implements
+public final class TimestampRules extends com.google.protobuf.GeneratedMessageV3
+    implements
     // @@protoc_insertion_point(message_implements:buf.validate.TimestampRules)
     TimestampRulesOrBuilder {
-private static final long serialVersionUID = 0L;
+  private static final long serialVersionUID = 0L;
+
   // Use TimestampRules.newBuilder() to construct.
   private TimestampRules(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
-  private TimestampRules() {
-  }
+
+  private TimestampRules() {}
 
   @java.lang.Override
   @SuppressWarnings({"unused"})
-  protected java.lang.Object newInstance(
-      UnusedPrivateParameter unused) {
+  protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
     return new TimestampRules();
   }
 
-  public static final com.google.protobuf.Descriptors.Descriptor
-      getDescriptor() {
+  public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
     return build.buf.validate.ValidateProto.internal_static_buf_validate_TimestampRules_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return build.buf.validate.ValidateProto.internal_static_buf_validate_TimestampRules_fieldAccessorTable
+    return build.buf.validate.ValidateProto
+        .internal_static_buf_validate_TimestampRules_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            build.buf.validate.TimestampRules.class, build.buf.validate.TimestampRules.Builder.class);
+            build.buf.validate.TimestampRules.class,
+            build.buf.validate.TimestampRules.Builder.class);
   }
 
   private int bitField0_;
   public static final int CONST_FIELD_NUMBER = 2;
   private com.google.protobuf.Timestamp const_;
+
   /**
-   * <pre>
-   *`const` dictates that this field, of the `google.protobuf.Timestamp` type, must exactly match the specified value. If the field value doesn't correspond to the specified timestamp, an error message will be generated.
    *
-   *```proto
-   *message MyTimestamp {
+   *
+   * <pre>
+   * `const` dictates that this field, of the `google.protobuf.Timestamp` type, must exactly match the specified value. If the field value doesn't correspond to the specified timestamp, an error message will be generated.
+   *
+   * ```proto
+   * message MyTimestamp {
    *  // value must equal 2023-05-03T10:00:00Z
    *   google.protobuf.Timestamp created_at = 1 [(buf.validate.field).timestamp.const = {seconds: 1727998800}];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
-   * <code>optional .google.protobuf.Timestamp const = 2 [json_name = "const", (.buf.validate.priv.field) = { ... }</code>
+   * <code>
+   * optional .google.protobuf.Timestamp const = 2 [json_name = "const", (.buf.validate.priv.field) = { ... }
+   * </code>
+   *
    * @return Whether the const field is set.
    */
   @java.lang.Override
   public boolean hasConst() {
     return ((bitField0_ & 0x00000001) != 0);
   }
+
   /**
-   * <pre>
-   *`const` dictates that this field, of the `google.protobuf.Timestamp` type, must exactly match the specified value. If the field value doesn't correspond to the specified timestamp, an error message will be generated.
    *
-   *```proto
-   *message MyTimestamp {
+   *
+   * <pre>
+   * `const` dictates that this field, of the `google.protobuf.Timestamp` type, must exactly match the specified value. If the field value doesn't correspond to the specified timestamp, an error message will be generated.
+   *
+   * ```proto
+   * message MyTimestamp {
    *  // value must equal 2023-05-03T10:00:00Z
    *   google.protobuf.Timestamp created_at = 1 [(buf.validate.field).timestamp.const = {seconds: 1727998800}];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
-   * <code>optional .google.protobuf.Timestamp const = 2 [json_name = "const", (.buf.validate.priv.field) = { ... }</code>
+   * <code>
+   * optional .google.protobuf.Timestamp const = 2 [json_name = "const", (.buf.validate.priv.field) = { ... }
+   * </code>
+   *
    * @return The const.
    */
   @java.lang.Override
   public com.google.protobuf.Timestamp getConst() {
     return const_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : const_;
   }
+
   /**
-   * <pre>
-   *`const` dictates that this field, of the `google.protobuf.Timestamp` type, must exactly match the specified value. If the field value doesn't correspond to the specified timestamp, an error message will be generated.
    *
-   *```proto
-   *message MyTimestamp {
+   *
+   * <pre>
+   * `const` dictates that this field, of the `google.protobuf.Timestamp` type, must exactly match the specified value. If the field value doesn't correspond to the specified timestamp, an error message will be generated.
+   *
+   * ```proto
+   * message MyTimestamp {
    *  // value must equal 2023-05-03T10:00:00Z
    *   google.protobuf.Timestamp created_at = 1 [(buf.validate.field).timestamp.const = {seconds: 1727998800}];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
-   * <code>optional .google.protobuf.Timestamp const = 2 [json_name = "const", (.buf.validate.priv.field) = { ... }</code>
+   * <code>
+   * optional .google.protobuf.Timestamp const = 2 [json_name = "const", (.buf.validate.priv.field) = { ... }
+   * </code>
    */
   @java.lang.Override
   public com.google.protobuf.TimestampOrBuilder getConstOrBuilder() {
@@ -104,7 +124,10 @@ private static final long serialVersionUID = 0L;
 
   public static final int LT_FIELD_NUMBER = 3;
   private com.google.protobuf.Timestamp lt_;
+
   /**
+   *
+   *
    * <pre>
    * requires the duration field value to be less than the specified value (field &lt; value). If the field value doesn't meet the required conditions, an error message is generated.
    *
@@ -116,14 +139,20 @@ private static final long serialVersionUID = 0L;
    * ```
    * </pre>
    *
-   * <code>optional .google.protobuf.Timestamp lt = 3 [json_name = "lt", (.buf.validate.priv.field) = { ... }</code>
+   * <code>
+   * optional .google.protobuf.Timestamp lt = 3 [json_name = "lt", (.buf.validate.priv.field) = { ... }
+   * </code>
+   *
    * @return Whether the lt field is set.
    */
   @java.lang.Override
   public boolean hasLt() {
     return ((bitField0_ & 0x00000002) != 0);
   }
+
   /**
+   *
+   *
    * <pre>
    * requires the duration field value to be less than the specified value (field &lt; value). If the field value doesn't meet the required conditions, an error message is generated.
    *
@@ -135,14 +164,20 @@ private static final long serialVersionUID = 0L;
    * ```
    * </pre>
    *
-   * <code>optional .google.protobuf.Timestamp lt = 3 [json_name = "lt", (.buf.validate.priv.field) = { ... }</code>
+   * <code>
+   * optional .google.protobuf.Timestamp lt = 3 [json_name = "lt", (.buf.validate.priv.field) = { ... }
+   * </code>
+   *
    * @return The lt.
    */
   @java.lang.Override
   public com.google.protobuf.Timestamp getLt() {
     return lt_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : lt_;
   }
+
   /**
+   *
+   *
    * <pre>
    * requires the duration field value to be less than the specified value (field &lt; value). If the field value doesn't meet the required conditions, an error message is generated.
    *
@@ -154,7 +189,9 @@ private static final long serialVersionUID = 0L;
    * ```
    * </pre>
    *
-   * <code>optional .google.protobuf.Timestamp lt = 3 [json_name = "lt", (.buf.validate.priv.field) = { ... }</code>
+   * <code>
+   * optional .google.protobuf.Timestamp lt = 3 [json_name = "lt", (.buf.validate.priv.field) = { ... }
+   * </code>
    */
   @java.lang.Override
   public com.google.protobuf.TimestampOrBuilder getLtOrBuilder() {
@@ -163,7 +200,10 @@ private static final long serialVersionUID = 0L;
 
   public static final int LTE_FIELD_NUMBER = 4;
   private com.google.protobuf.Timestamp lte_;
+
   /**
+   *
+   *
    * <pre>
    * requires the timestamp field value to be less than or equal to the specified value (field &lt;= value). If the field value doesn't meet the required conditions, an error message is generated.
    *
@@ -175,14 +215,20 @@ private static final long serialVersionUID = 0L;
    * ```
    * </pre>
    *
-   * <code>optional .google.protobuf.Timestamp lte = 4 [json_name = "lte", (.buf.validate.priv.field) = { ... }</code>
+   * <code>
+   * optional .google.protobuf.Timestamp lte = 4 [json_name = "lte", (.buf.validate.priv.field) = { ... }
+   * </code>
+   *
    * @return Whether the lte field is set.
    */
   @java.lang.Override
   public boolean hasLte() {
     return ((bitField0_ & 0x00000004) != 0);
   }
+
   /**
+   *
+   *
    * <pre>
    * requires the timestamp field value to be less than or equal to the specified value (field &lt;= value). If the field value doesn't meet the required conditions, an error message is generated.
    *
@@ -194,14 +240,20 @@ private static final long serialVersionUID = 0L;
    * ```
    * </pre>
    *
-   * <code>optional .google.protobuf.Timestamp lte = 4 [json_name = "lte", (.buf.validate.priv.field) = { ... }</code>
+   * <code>
+   * optional .google.protobuf.Timestamp lte = 4 [json_name = "lte", (.buf.validate.priv.field) = { ... }
+   * </code>
+   *
    * @return The lte.
    */
   @java.lang.Override
   public com.google.protobuf.Timestamp getLte() {
     return lte_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : lte_;
   }
+
   /**
+   *
+   *
    * <pre>
    * requires the timestamp field value to be less than or equal to the specified value (field &lt;= value). If the field value doesn't meet the required conditions, an error message is generated.
    *
@@ -213,7 +265,9 @@ private static final long serialVersionUID = 0L;
    * ```
    * </pre>
    *
-   * <code>optional .google.protobuf.Timestamp lte = 4 [json_name = "lte", (.buf.validate.priv.field) = { ... }</code>
+   * <code>
+   * optional .google.protobuf.Timestamp lte = 4 [json_name = "lte", (.buf.validate.priv.field) = { ... }
+   * </code>
    */
   @java.lang.Override
   public com.google.protobuf.TimestampOrBuilder getLteOrBuilder() {
@@ -222,16 +276,19 @@ private static final long serialVersionUID = 0L;
 
   public static final int GT_FIELD_NUMBER = 5;
   private com.google.protobuf.Timestamp gt_;
+
   /**
+   *
+   *
    * <pre>
-   *`gt` requires the timestamp field value to be greater than the specified
+   * `gt` requires the timestamp field value to be greater than the specified
    * value (exclusive). If the value of `gt` is larger than a specified `lt`
    * or `lte`, the range is reversed, and the field value must be outside the
    * specified range. If the field value doesn't meet the required conditions,
    * an error message is generated.
    *
-   *```proto
-   *message MyTimestamp {
+   * ```proto
+   * message MyTimestamp {
    *  // timestamp must be greater than '2023-01-01T00:00:00Z' [timestamp.gt]
    *  google.protobuf.Timestamp value = 1 [(buf.validate.field).timestamp.gt = { seconds: 1672444800 }];
    *
@@ -240,27 +297,33 @@ private static final long serialVersionUID = 0L;
    *
    *  // timestamp must be greater than '2023-01-02T00:00:00Z' or less than '2023-01-01T00:00:00Z' [timestamp.gt_lt_exclusive]
    *  google.protobuf.Timestamp other_value = 3 [(buf.validate.field).timestamp = { gt: { seconds: 1672531200 }, lt: { seconds: 1672444800 } }];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
-   * <code>optional .google.protobuf.Timestamp gt = 5 [json_name = "gt", (.buf.validate.priv.field) = { ... }</code>
+   * <code>
+   * optional .google.protobuf.Timestamp gt = 5 [json_name = "gt", (.buf.validate.priv.field) = { ... }
+   * </code>
+   *
    * @return Whether the gt field is set.
    */
   @java.lang.Override
   public boolean hasGt() {
     return ((bitField0_ & 0x00000008) != 0);
   }
+
   /**
+   *
+   *
    * <pre>
-   *`gt` requires the timestamp field value to be greater than the specified
+   * `gt` requires the timestamp field value to be greater than the specified
    * value (exclusive). If the value of `gt` is larger than a specified `lt`
    * or `lte`, the range is reversed, and the field value must be outside the
    * specified range. If the field value doesn't meet the required conditions,
    * an error message is generated.
    *
-   *```proto
-   *message MyTimestamp {
+   * ```proto
+   * message MyTimestamp {
    *  // timestamp must be greater than '2023-01-01T00:00:00Z' [timestamp.gt]
    *  google.protobuf.Timestamp value = 1 [(buf.validate.field).timestamp.gt = { seconds: 1672444800 }];
    *
@@ -269,27 +332,33 @@ private static final long serialVersionUID = 0L;
    *
    *  // timestamp must be greater than '2023-01-02T00:00:00Z' or less than '2023-01-01T00:00:00Z' [timestamp.gt_lt_exclusive]
    *  google.protobuf.Timestamp other_value = 3 [(buf.validate.field).timestamp = { gt: { seconds: 1672531200 }, lt: { seconds: 1672444800 } }];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
-   * <code>optional .google.protobuf.Timestamp gt = 5 [json_name = "gt", (.buf.validate.priv.field) = { ... }</code>
+   * <code>
+   * optional .google.protobuf.Timestamp gt = 5 [json_name = "gt", (.buf.validate.priv.field) = { ... }
+   * </code>
+   *
    * @return The gt.
    */
   @java.lang.Override
   public com.google.protobuf.Timestamp getGt() {
     return gt_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : gt_;
   }
+
   /**
+   *
+   *
    * <pre>
-   *`gt` requires the timestamp field value to be greater than the specified
+   * `gt` requires the timestamp field value to be greater than the specified
    * value (exclusive). If the value of `gt` is larger than a specified `lt`
    * or `lte`, the range is reversed, and the field value must be outside the
    * specified range. If the field value doesn't meet the required conditions,
    * an error message is generated.
    *
-   *```proto
-   *message MyTimestamp {
+   * ```proto
+   * message MyTimestamp {
    *  // timestamp must be greater than '2023-01-01T00:00:00Z' [timestamp.gt]
    *  google.protobuf.Timestamp value = 1 [(buf.validate.field).timestamp.gt = { seconds: 1672444800 }];
    *
@@ -298,11 +367,13 @@ private static final long serialVersionUID = 0L;
    *
    *  // timestamp must be greater than '2023-01-02T00:00:00Z' or less than '2023-01-01T00:00:00Z' [timestamp.gt_lt_exclusive]
    *  google.protobuf.Timestamp other_value = 3 [(buf.validate.field).timestamp = { gt: { seconds: 1672531200 }, lt: { seconds: 1672444800 } }];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
-   * <code>optional .google.protobuf.Timestamp gt = 5 [json_name = "gt", (.buf.validate.priv.field) = { ... }</code>
+   * <code>
+   * optional .google.protobuf.Timestamp gt = 5 [json_name = "gt", (.buf.validate.priv.field) = { ... }
+   * </code>
    */
   @java.lang.Override
   public com.google.protobuf.TimestampOrBuilder getGtOrBuilder() {
@@ -311,16 +382,19 @@ private static final long serialVersionUID = 0L;
 
   public static final int GTE_FIELD_NUMBER = 6;
   private com.google.protobuf.Timestamp gte_;
+
   /**
+   *
+   *
    * <pre>
-   *`gte` requires the timestamp field value to be greater than or equal to the
+   * `gte` requires the timestamp field value to be greater than or equal to the
    * specified value (exclusive). If the value of `gte` is larger than a
    * specified `lt` or `lte`, the range is reversed, and the field value
    * must be outside the specified range. If the field value doesn't meet
    * the required conditions, an error message is generated.
    *
-   *```proto
-   *message MyTimestamp {
+   * ```proto
+   * message MyTimestamp {
    *  // timestamp must be greater than or equal to '2023-01-01T00:00:00Z' [timestamp.gte]
    *  google.protobuf.Timestamp value = 1 [(buf.validate.field).timestamp.gte = { seconds: 1672444800 }];
    *
@@ -329,27 +403,33 @@ private static final long serialVersionUID = 0L;
    *
    *  // timestamp must be greater than or equal to '2023-01-02T00:00:00Z' or less than '2023-01-01T00:00:00Z' [timestamp.gte_lt_exclusive]
    *  google.protobuf.Timestamp other_value = 3 [(buf.validate.field).timestamp = { gte: { seconds: 1672531200 }, lt: { seconds: 1672444800 } }];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
-   * <code>optional .google.protobuf.Timestamp gte = 6 [json_name = "gte", (.buf.validate.priv.field) = { ... }</code>
+   * <code>
+   * optional .google.protobuf.Timestamp gte = 6 [json_name = "gte", (.buf.validate.priv.field) = { ... }
+   * </code>
+   *
    * @return Whether the gte field is set.
    */
   @java.lang.Override
   public boolean hasGte() {
     return ((bitField0_ & 0x00000010) != 0);
   }
+
   /**
+   *
+   *
    * <pre>
-   *`gte` requires the timestamp field value to be greater than or equal to the
+   * `gte` requires the timestamp field value to be greater than or equal to the
    * specified value (exclusive). If the value of `gte` is larger than a
    * specified `lt` or `lte`, the range is reversed, and the field value
    * must be outside the specified range. If the field value doesn't meet
    * the required conditions, an error message is generated.
    *
-   *```proto
-   *message MyTimestamp {
+   * ```proto
+   * message MyTimestamp {
    *  // timestamp must be greater than or equal to '2023-01-01T00:00:00Z' [timestamp.gte]
    *  google.protobuf.Timestamp value = 1 [(buf.validate.field).timestamp.gte = { seconds: 1672444800 }];
    *
@@ -358,27 +438,33 @@ private static final long serialVersionUID = 0L;
    *
    *  // timestamp must be greater than or equal to '2023-01-02T00:00:00Z' or less than '2023-01-01T00:00:00Z' [timestamp.gte_lt_exclusive]
    *  google.protobuf.Timestamp other_value = 3 [(buf.validate.field).timestamp = { gte: { seconds: 1672531200 }, lt: { seconds: 1672444800 } }];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
-   * <code>optional .google.protobuf.Timestamp gte = 6 [json_name = "gte", (.buf.validate.priv.field) = { ... }</code>
+   * <code>
+   * optional .google.protobuf.Timestamp gte = 6 [json_name = "gte", (.buf.validate.priv.field) = { ... }
+   * </code>
+   *
    * @return The gte.
    */
   @java.lang.Override
   public com.google.protobuf.Timestamp getGte() {
     return gte_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : gte_;
   }
+
   /**
+   *
+   *
    * <pre>
-   *`gte` requires the timestamp field value to be greater than or equal to the
+   * `gte` requires the timestamp field value to be greater than or equal to the
    * specified value (exclusive). If the value of `gte` is larger than a
    * specified `lt` or `lte`, the range is reversed, and the field value
    * must be outside the specified range. If the field value doesn't meet
    * the required conditions, an error message is generated.
    *
-   *```proto
-   *message MyTimestamp {
+   * ```proto
+   * message MyTimestamp {
    *  // timestamp must be greater than or equal to '2023-01-01T00:00:00Z' [timestamp.gte]
    *  google.protobuf.Timestamp value = 1 [(buf.validate.field).timestamp.gte = { seconds: 1672444800 }];
    *
@@ -387,11 +473,13 @@ private static final long serialVersionUID = 0L;
    *
    *  // timestamp must be greater than or equal to '2023-01-02T00:00:00Z' or less than '2023-01-01T00:00:00Z' [timestamp.gte_lt_exclusive]
    *  google.protobuf.Timestamp other_value = 3 [(buf.validate.field).timestamp = { gte: { seconds: 1672531200 }, lt: { seconds: 1672444800 } }];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
-   * <code>optional .google.protobuf.Timestamp gte = 6 [json_name = "gte", (.buf.validate.priv.field) = { ... }</code>
+   * <code>
+   * optional .google.protobuf.Timestamp gte = 6 [json_name = "gte", (.buf.validate.priv.field) = { ... }
+   * </code>
    */
   @java.lang.Override
   public com.google.protobuf.TimestampOrBuilder getGteOrBuilder() {
@@ -400,38 +488,48 @@ private static final long serialVersionUID = 0L;
 
   public static final int LT_NOW_FIELD_NUMBER = 7;
   private boolean ltNow_ = false;
+
   /**
-   * <pre>
-   *`lt_now` specifies that this field, of the `google.protobuf.Timestamp` type, must be less than the current time. `lt_now` can only be used with the `within` rule.
    *
-   *```proto
-   *message MyTimestamp {
+   *
+   * <pre>
+   * `lt_now` specifies that this field, of the `google.protobuf.Timestamp` type, must be less than the current time. `lt_now` can only be used with the `within` rule.
+   *
+   * ```proto
+   * message MyTimestamp {
    *  // value must be less than now
    *   google.protobuf.Timestamp created_at = 1 [(buf.validate.field).timestamp.lt_now = true];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
-   * <code>optional bool lt_now = 7 [json_name = "ltNow", (.buf.validate.priv.field) = { ... }</code>
+   * <code>optional bool lt_now = 7 [json_name = "ltNow", (.buf.validate.priv.field) = { ... }
+   * </code>
+   *
    * @return Whether the ltNow field is set.
    */
   @java.lang.Override
   public boolean hasLtNow() {
     return ((bitField0_ & 0x00000020) != 0);
   }
+
   /**
-   * <pre>
-   *`lt_now` specifies that this field, of the `google.protobuf.Timestamp` type, must be less than the current time. `lt_now` can only be used with the `within` rule.
    *
-   *```proto
-   *message MyTimestamp {
+   *
+   * <pre>
+   * `lt_now` specifies that this field, of the `google.protobuf.Timestamp` type, must be less than the current time. `lt_now` can only be used with the `within` rule.
+   *
+   * ```proto
+   * message MyTimestamp {
    *  // value must be less than now
    *   google.protobuf.Timestamp created_at = 1 [(buf.validate.field).timestamp.lt_now = true];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
-   * <code>optional bool lt_now = 7 [json_name = "ltNow", (.buf.validate.priv.field) = { ... }</code>
+   * <code>optional bool lt_now = 7 [json_name = "ltNow", (.buf.validate.priv.field) = { ... }
+   * </code>
+   *
    * @return The ltNow.
    */
   @java.lang.Override
@@ -441,38 +539,48 @@ private static final long serialVersionUID = 0L;
 
   public static final int GT_NOW_FIELD_NUMBER = 8;
   private boolean gtNow_ = false;
+
   /**
-   * <pre>
-   *`gt_now` specifies that this field, of the `google.protobuf.Timestamp` type, must be greater than the current time. `gt_now` can only be used with the `within` rule.
    *
-   *```proto
-   *message MyTimestamp {
+   *
+   * <pre>
+   * `gt_now` specifies that this field, of the `google.protobuf.Timestamp` type, must be greater than the current time. `gt_now` can only be used with the `within` rule.
+   *
+   * ```proto
+   * message MyTimestamp {
    *  // value must be greater than now
    *   google.protobuf.Timestamp created_at = 1 [(buf.validate.field).timestamp.gt_now = true];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
-   * <code>optional bool gt_now = 8 [json_name = "gtNow", (.buf.validate.priv.field) = { ... }</code>
+   * <code>optional bool gt_now = 8 [json_name = "gtNow", (.buf.validate.priv.field) = { ... }
+   * </code>
+   *
    * @return Whether the gtNow field is set.
    */
   @java.lang.Override
   public boolean hasGtNow() {
     return ((bitField0_ & 0x00000040) != 0);
   }
+
   /**
-   * <pre>
-   *`gt_now` specifies that this field, of the `google.protobuf.Timestamp` type, must be greater than the current time. `gt_now` can only be used with the `within` rule.
    *
-   *```proto
-   *message MyTimestamp {
+   *
+   * <pre>
+   * `gt_now` specifies that this field, of the `google.protobuf.Timestamp` type, must be greater than the current time. `gt_now` can only be used with the `within` rule.
+   *
+   * ```proto
+   * message MyTimestamp {
    *  // value must be greater than now
    *   google.protobuf.Timestamp created_at = 1 [(buf.validate.field).timestamp.gt_now = true];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
-   * <code>optional bool gt_now = 8 [json_name = "gtNow", (.buf.validate.priv.field) = { ... }</code>
+   * <code>optional bool gt_now = 8 [json_name = "gtNow", (.buf.validate.priv.field) = { ... }
+   * </code>
+   *
    * @return The gtNow.
    */
   @java.lang.Override
@@ -482,57 +590,74 @@ private static final long serialVersionUID = 0L;
 
   public static final int WITHIN_FIELD_NUMBER = 9;
   private com.google.protobuf.Duration within_;
+
   /**
+   *
+   *
    * <pre>
    * `within` specifies that this field, of the `google.protobuf.Timestamp` type, must be within the specified duration of the current time. If the field value isn't within the duration, an error message is generated.
    *
-   *```proto
-   *message MyTimestamp {
+   * ```proto
+   * message MyTimestamp {
    *  // value must be within 1 hour of now
    *   google.protobuf.Timestamp created_at = 1 [(buf.validate.field).timestamp.within = {seconds: 3600}];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
-   * <code>optional .google.protobuf.Duration within = 9 [json_name = "within", (.buf.validate.priv.field) = { ... }</code>
+   * <code>
+   * optional .google.protobuf.Duration within = 9 [json_name = "within", (.buf.validate.priv.field) = { ... }
+   * </code>
+   *
    * @return Whether the within field is set.
    */
   @java.lang.Override
   public boolean hasWithin() {
     return ((bitField0_ & 0x00000080) != 0);
   }
+
   /**
+   *
+   *
    * <pre>
    * `within` specifies that this field, of the `google.protobuf.Timestamp` type, must be within the specified duration of the current time. If the field value isn't within the duration, an error message is generated.
    *
-   *```proto
-   *message MyTimestamp {
+   * ```proto
+   * message MyTimestamp {
    *  // value must be within 1 hour of now
    *   google.protobuf.Timestamp created_at = 1 [(buf.validate.field).timestamp.within = {seconds: 3600}];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
-   * <code>optional .google.protobuf.Duration within = 9 [json_name = "within", (.buf.validate.priv.field) = { ... }</code>
+   * <code>
+   * optional .google.protobuf.Duration within = 9 [json_name = "within", (.buf.validate.priv.field) = { ... }
+   * </code>
+   *
    * @return The within.
    */
   @java.lang.Override
   public com.google.protobuf.Duration getWithin() {
     return within_ == null ? com.google.protobuf.Duration.getDefaultInstance() : within_;
   }
+
   /**
+   *
+   *
    * <pre>
    * `within` specifies that this field, of the `google.protobuf.Timestamp` type, must be within the specified duration of the current time. If the field value isn't within the duration, an error message is generated.
    *
-   *```proto
-   *message MyTimestamp {
+   * ```proto
+   * message MyTimestamp {
    *  // value must be within 1 hour of now
    *   google.protobuf.Timestamp created_at = 1 [(buf.validate.field).timestamp.within = {seconds: 3600}];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
-   * <code>optional .google.protobuf.Duration within = 9 [json_name = "within", (.buf.validate.priv.field) = { ... }</code>
+   * <code>
+   * optional .google.protobuf.Duration within = 9 [json_name = "within", (.buf.validate.priv.field) = { ... }
+   * </code>
    */
   @java.lang.Override
   public com.google.protobuf.DurationOrBuilder getWithinOrBuilder() {
@@ -540,6 +665,7 @@ private static final long serialVersionUID = 0L;
   }
 
   private byte memoizedIsInitialized = -1;
+
   @java.lang.Override
   public final boolean isInitialized() {
     byte isInitialized = memoizedIsInitialized;
@@ -551,8 +677,7 @@ private static final long serialVersionUID = 0L;
   }
 
   @java.lang.Override
-  public void writeTo(com.google.protobuf.CodedOutputStream output)
-                      throws java.io.IOException {
+  public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
     if (((bitField0_ & 0x00000001) != 0)) {
       output.writeMessage(2, getConst());
     }
@@ -587,36 +712,28 @@ private static final long serialVersionUID = 0L;
 
     size = 0;
     if (((bitField0_ & 0x00000001) != 0)) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(2, getConst());
+      size += com.google.protobuf.CodedOutputStream.computeMessageSize(2, getConst());
     }
     if (((bitField0_ & 0x00000002) != 0)) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(3, getLt());
+      size += com.google.protobuf.CodedOutputStream.computeMessageSize(3, getLt());
     }
     if (((bitField0_ & 0x00000004) != 0)) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(4, getLte());
+      size += com.google.protobuf.CodedOutputStream.computeMessageSize(4, getLte());
     }
     if (((bitField0_ & 0x00000008) != 0)) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(5, getGt());
+      size += com.google.protobuf.CodedOutputStream.computeMessageSize(5, getGt());
     }
     if (((bitField0_ & 0x00000010) != 0)) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(6, getGte());
+      size += com.google.protobuf.CodedOutputStream.computeMessageSize(6, getGte());
     }
     if (((bitField0_ & 0x00000020) != 0)) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeBoolSize(7, ltNow_);
+      size += com.google.protobuf.CodedOutputStream.computeBoolSize(7, ltNow_);
     }
     if (((bitField0_ & 0x00000040) != 0)) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeBoolSize(8, gtNow_);
+      size += com.google.protobuf.CodedOutputStream.computeBoolSize(8, gtNow_);
     }
     if (((bitField0_ & 0x00000080) != 0)) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(9, getWithin());
+      size += com.google.protobuf.CodedOutputStream.computeMessageSize(9, getWithin());
     }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
@@ -626,7 +743,7 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public boolean equals(final java.lang.Object obj) {
     if (obj == this) {
-     return true;
+      return true;
     }
     if (!(obj instanceof build.buf.validate.TimestampRules)) {
       return super.equals(obj);
@@ -635,43 +752,35 @@ private static final long serialVersionUID = 0L;
 
     if (hasConst() != other.hasConst()) return false;
     if (hasConst()) {
-      if (!getConst()
-          .equals(other.getConst())) return false;
+      if (!getConst().equals(other.getConst())) return false;
     }
     if (hasLt() != other.hasLt()) return false;
     if (hasLt()) {
-      if (!getLt()
-          .equals(other.getLt())) return false;
+      if (!getLt().equals(other.getLt())) return false;
     }
     if (hasLte() != other.hasLte()) return false;
     if (hasLte()) {
-      if (!getLte()
-          .equals(other.getLte())) return false;
+      if (!getLte().equals(other.getLte())) return false;
     }
     if (hasGt() != other.hasGt()) return false;
     if (hasGt()) {
-      if (!getGt()
-          .equals(other.getGt())) return false;
+      if (!getGt().equals(other.getGt())) return false;
     }
     if (hasGte() != other.hasGte()) return false;
     if (hasGte()) {
-      if (!getGte()
-          .equals(other.getGte())) return false;
+      if (!getGte().equals(other.getGte())) return false;
     }
     if (hasLtNow() != other.hasLtNow()) return false;
     if (hasLtNow()) {
-      if (getLtNow()
-          != other.getLtNow()) return false;
+      if (getLtNow() != other.getLtNow()) return false;
     }
     if (hasGtNow() != other.hasGtNow()) return false;
     if (hasGtNow()) {
-      if (getGtNow()
-          != other.getGtNow()) return false;
+      if (getGtNow() != other.getGtNow()) return false;
     }
     if (hasWithin() != other.hasWithin()) return false;
     if (hasWithin()) {
-      if (!getWithin()
-          .equals(other.getWithin())) return false;
+      if (!getWithin().equals(other.getWithin())) return false;
     }
     if (!getUnknownFields().equals(other.getUnknownFields())) return false;
     return true;
@@ -706,13 +815,11 @@ private static final long serialVersionUID = 0L;
     }
     if (hasLtNow()) {
       hash = (37 * hash) + LT_NOW_FIELD_NUMBER;
-      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
-          getLtNow());
+      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(getLtNow());
     }
     if (hasGtNow()) {
       hash = (37 * hash) + GT_NOW_FIELD_NUMBER;
-      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
-          getGtNow());
+      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(getGtNow());
     }
     if (hasWithin()) {
       hash = (37 * hash) + WITHIN_FIELD_NUMBER;
@@ -723,120 +830,127 @@ private static final long serialVersionUID = 0L;
     return hash;
   }
 
-  public static build.buf.validate.TimestampRules parseFrom(
-      java.nio.ByteBuffer data)
+  public static build.buf.validate.TimestampRules parseFrom(java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
+
   public static build.buf.validate.TimestampRules parseFrom(
-      java.nio.ByteBuffer data,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      java.nio.ByteBuffer data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static build.buf.validate.TimestampRules parseFrom(
-      com.google.protobuf.ByteString data)
+
+  public static build.buf.validate.TimestampRules parseFrom(com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
+
   public static build.buf.validate.TimestampRules parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
+
   public static build.buf.validate.TimestampRules parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
+
   public static build.buf.validate.TimestampRules parseFrom(
-      byte[] data,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      byte[] data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
+
   public static build.buf.validate.TimestampRules parseFrom(java.io.InputStream input)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input);
+    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
   }
+
   public static build.buf.validate.TimestampRules parseFrom(
-      java.io.InputStream input,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input, extensionRegistry);
+    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+        PARSER, input, extensionRegistry);
   }
 
   public static build.buf.validate.TimestampRules parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseDelimitedWithIOException(PARSER, input);
+    return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input);
   }
 
   public static build.buf.validate.TimestampRules parseDelimitedFrom(
-      java.io.InputStream input,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(
+        PARSER, input, extensionRegistry);
   }
+
   public static build.buf.validate.TimestampRules parseFrom(
-      com.google.protobuf.CodedInputStream input)
-      throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input);
+      com.google.protobuf.CodedInputStream input) throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
   }
+
   public static build.buf.validate.TimestampRules parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input, extensionRegistry);
+    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+        PARSER, input, extensionRegistry);
   }
 
   @java.lang.Override
-  public Builder newBuilderForType() { return newBuilder(); }
+  public Builder newBuilderForType() {
+    return newBuilder();
+  }
+
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
+
   public static Builder newBuilder(build.buf.validate.TimestampRules prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
+
   @java.lang.Override
   public Builder toBuilder() {
-    return this == DEFAULT_INSTANCE
-        ? new Builder() : new Builder().mergeFrom(this);
+    return this == DEFAULT_INSTANCE ? new Builder() : new Builder().mergeFrom(this);
   }
 
   @java.lang.Override
-  protected Builder newBuilderForType(
-      com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+  protected Builder newBuilderForType(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
     Builder builder = new Builder(parent);
     return builder;
   }
+
   /**
+   *
+   *
    * <pre>
    * TimestampRules describe the constraints applied exclusively to the `google.protobuf.Timestamp` well-known type.
    * </pre>
    *
    * Protobuf type {@code buf.validate.TimestampRules}
    */
-  public static final class Builder extends
-      com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+  public static final class Builder extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
+      implements
       // @@protoc_insertion_point(builder_implements:buf.validate.TimestampRules)
       build.buf.validate.TimestampRulesOrBuilder {
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return build.buf.validate.ValidateProto.internal_static_buf_validate_TimestampRules_descriptor;
+    public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+      return build.buf.validate.ValidateProto
+          .internal_static_buf_validate_TimestampRules_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return build.buf.validate.ValidateProto.internal_static_buf_validate_TimestampRules_fieldAccessorTable
+      return build.buf.validate.ValidateProto
+          .internal_static_buf_validate_TimestampRules_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              build.buf.validate.TimestampRules.class, build.buf.validate.TimestampRules.Builder.class);
+              build.buf.validate.TimestampRules.class,
+              build.buf.validate.TimestampRules.Builder.class);
     }
 
     // Construct using build.buf.validate.TimestampRules.newBuilder()
@@ -844,14 +958,13 @@ private static final long serialVersionUID = 0L;
       maybeForceBuilderInitialization();
     }
 
-    private Builder(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+    private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
       super(parent);
       maybeForceBuilderInitialization();
     }
+
     private void maybeForceBuilderInitialization() {
-      if (com.google.protobuf.GeneratedMessageV3
-              .alwaysUseFieldBuilders) {
+      if (com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders) {
         getConstFieldBuilder();
         getLtFieldBuilder();
         getLteFieldBuilder();
@@ -860,6 +973,7 @@ private static final long serialVersionUID = 0L;
         getWithinFieldBuilder();
       }
     }
+
     @java.lang.Override
     public Builder clear() {
       super.clear();
@@ -900,9 +1014,9 @@ private static final long serialVersionUID = 0L;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Descriptors.Descriptor
-        getDescriptorForType() {
-      return build.buf.validate.ValidateProto.internal_static_buf_validate_TimestampRules_descriptor;
+    public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
+      return build.buf.validate.ValidateProto
+          .internal_static_buf_validate_TimestampRules_descriptor;
     }
 
     @java.lang.Override
@@ -922,7 +1036,9 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public build.buf.validate.TimestampRules buildPartial() {
       build.buf.validate.TimestampRules result = new build.buf.validate.TimestampRules(this);
-      if (bitField0_ != 0) { buildPartial0(result); }
+      if (bitField0_ != 0) {
+        buildPartial0(result);
+      }
       onBuilt();
       return result;
     }
@@ -931,33 +1047,23 @@ private static final long serialVersionUID = 0L;
       int from_bitField0_ = bitField0_;
       int to_bitField0_ = 0;
       if (((from_bitField0_ & 0x00000001) != 0)) {
-        result.const_ = constBuilder_ == null
-            ? const_
-            : constBuilder_.build();
+        result.const_ = constBuilder_ == null ? const_ : constBuilder_.build();
         to_bitField0_ |= 0x00000001;
       }
       if (((from_bitField0_ & 0x00000002) != 0)) {
-        result.lt_ = ltBuilder_ == null
-            ? lt_
-            : ltBuilder_.build();
+        result.lt_ = ltBuilder_ == null ? lt_ : ltBuilder_.build();
         to_bitField0_ |= 0x00000002;
       }
       if (((from_bitField0_ & 0x00000004) != 0)) {
-        result.lte_ = lteBuilder_ == null
-            ? lte_
-            : lteBuilder_.build();
+        result.lte_ = lteBuilder_ == null ? lte_ : lteBuilder_.build();
         to_bitField0_ |= 0x00000004;
       }
       if (((from_bitField0_ & 0x00000008) != 0)) {
-        result.gt_ = gtBuilder_ == null
-            ? gt_
-            : gtBuilder_.build();
+        result.gt_ = gtBuilder_ == null ? gt_ : gtBuilder_.build();
         to_bitField0_ |= 0x00000008;
       }
       if (((from_bitField0_ & 0x00000010) != 0)) {
-        result.gte_ = gteBuilder_ == null
-            ? gte_
-            : gteBuilder_.build();
+        result.gte_ = gteBuilder_ == null ? gte_ : gteBuilder_.build();
         to_bitField0_ |= 0x00000010;
       }
       if (((from_bitField0_ & 0x00000020) != 0)) {
@@ -969,9 +1075,7 @@ private static final long serialVersionUID = 0L;
         to_bitField0_ |= 0x00000040;
       }
       if (((from_bitField0_ & 0x00000080) != 0)) {
-        result.within_ = withinBuilder_ == null
-            ? within_
-            : withinBuilder_.build();
+        result.within_ = withinBuilder_ == null ? within_ : withinBuilder_.build();
         to_bitField0_ |= 0x00000080;
       }
       result.bitField0_ |= to_bitField0_;
@@ -981,38 +1085,39 @@ private static final long serialVersionUID = 0L;
     public Builder clone() {
       return super.clone();
     }
+
     @java.lang.Override
     public Builder setField(
-        com.google.protobuf.Descriptors.FieldDescriptor field,
-        java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
       return super.setField(field, value);
     }
+
     @java.lang.Override
-    public Builder clearField(
-        com.google.protobuf.Descriptors.FieldDescriptor field) {
+    public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
       return super.clearField(field);
     }
+
     @java.lang.Override
-    public Builder clearOneof(
-        com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+    public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
       return super.clearOneof(oneof);
     }
+
     @java.lang.Override
     public Builder setRepeatedField(
-        com.google.protobuf.Descriptors.FieldDescriptor field,
-        int index, java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field, int index, java.lang.Object value) {
       return super.setRepeatedField(field, index, value);
     }
+
     @java.lang.Override
     public Builder addRepeatedField(
-        com.google.protobuf.Descriptors.FieldDescriptor field,
-        java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
       return super.addRepeatedField(field, value);
     }
+
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
       if (other instanceof build.buf.validate.TimestampRules) {
-        return mergeFrom((build.buf.validate.TimestampRules)other);
+        return mergeFrom((build.buf.validate.TimestampRules) other);
       } else {
         super.mergeFrom(other);
         return this;
@@ -1071,64 +1176,61 @@ private static final long serialVersionUID = 0L;
             case 0:
               done = true;
               break;
-            case 18: {
-              input.readMessage(
-                  getConstFieldBuilder().getBuilder(),
-                  extensionRegistry);
-              bitField0_ |= 0x00000001;
-              break;
-            } // case 18
-            case 26: {
-              input.readMessage(
-                  getLtFieldBuilder().getBuilder(),
-                  extensionRegistry);
-              bitField0_ |= 0x00000002;
-              break;
-            } // case 26
-            case 34: {
-              input.readMessage(
-                  getLteFieldBuilder().getBuilder(),
-                  extensionRegistry);
-              bitField0_ |= 0x00000004;
-              break;
-            } // case 34
-            case 42: {
-              input.readMessage(
-                  getGtFieldBuilder().getBuilder(),
-                  extensionRegistry);
-              bitField0_ |= 0x00000008;
-              break;
-            } // case 42
-            case 50: {
-              input.readMessage(
-                  getGteFieldBuilder().getBuilder(),
-                  extensionRegistry);
-              bitField0_ |= 0x00000010;
-              break;
-            } // case 50
-            case 56: {
-              ltNow_ = input.readBool();
-              bitField0_ |= 0x00000020;
-              break;
-            } // case 56
-            case 64: {
-              gtNow_ = input.readBool();
-              bitField0_ |= 0x00000040;
-              break;
-            } // case 64
-            case 74: {
-              input.readMessage(
-                  getWithinFieldBuilder().getBuilder(),
-                  extensionRegistry);
-              bitField0_ |= 0x00000080;
-              break;
-            } // case 74
-            default: {
-              if (!super.parseUnknownField(input, extensionRegistry, tag)) {
-                done = true; // was an endgroup tag
-              }
-              break;
-            } // default:
+            case 18:
+              {
+                input.readMessage(getConstFieldBuilder().getBuilder(), extensionRegistry);
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 18
+            case 26:
+              {
+                input.readMessage(getLtFieldBuilder().getBuilder(), extensionRegistry);
+                bitField0_ |= 0x00000002;
+                break;
+              } // case 26
+            case 34:
+              {
+                input.readMessage(getLteFieldBuilder().getBuilder(), extensionRegistry);
+                bitField0_ |= 0x00000004;
+                break;
+              } // case 34
+            case 42:
+              {
+                input.readMessage(getGtFieldBuilder().getBuilder(), extensionRegistry);
+                bitField0_ |= 0x00000008;
+                break;
+              } // case 42
+            case 50:
+              {
+                input.readMessage(getGteFieldBuilder().getBuilder(), extensionRegistry);
+                bitField0_ |= 0x00000010;
+                break;
+              } // case 50
+            case 56:
+              {
+                ltNow_ = input.readBool();
+                bitField0_ |= 0x00000020;
+                break;
+              } // case 56
+            case 64:
+              {
+                gtNow_ = input.readBool();
+                bitField0_ |= 0x00000040;
+                break;
+              } // case 64
+            case 74:
+              {
+                input.readMessage(getWithinFieldBuilder().getBuilder(), extensionRegistry);
+                bitField0_ |= 0x00000080;
+                break;
+              } // case 74
+            default:
+              {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
           } // switch (tag)
         } // while (!done)
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -1138,42 +1240,58 @@ private static final long serialVersionUID = 0L;
       } // finally
       return this;
     }
+
     private int bitField0_;
 
     private com.google.protobuf.Timestamp const_;
     private com.google.protobuf.SingleFieldBuilderV3<
-        com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder> constBuilder_;
+            com.google.protobuf.Timestamp,
+            com.google.protobuf.Timestamp.Builder,
+            com.google.protobuf.TimestampOrBuilder>
+        constBuilder_;
+
     /**
-     * <pre>
-     *`const` dictates that this field, of the `google.protobuf.Timestamp` type, must exactly match the specified value. If the field value doesn't correspond to the specified timestamp, an error message will be generated.
      *
-     *```proto
-     *message MyTimestamp {
+     *
+     * <pre>
+     * `const` dictates that this field, of the `google.protobuf.Timestamp` type, must exactly match the specified value. If the field value doesn't correspond to the specified timestamp, an error message will be generated.
+     *
+     * ```proto
+     * message MyTimestamp {
      *  // value must equal 2023-05-03T10:00:00Z
      *   google.protobuf.Timestamp created_at = 1 [(buf.validate.field).timestamp.const = {seconds: 1727998800}];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
-     * <code>optional .google.protobuf.Timestamp const = 2 [json_name = "const", (.buf.validate.priv.field) = { ... }</code>
+     * <code>
+     * optional .google.protobuf.Timestamp const = 2 [json_name = "const", (.buf.validate.priv.field) = { ... }
+     * </code>
+     *
      * @return Whether the const field is set.
      */
     public boolean hasConst() {
       return ((bitField0_ & 0x00000001) != 0);
     }
+
     /**
-     * <pre>
-     *`const` dictates that this field, of the `google.protobuf.Timestamp` type, must exactly match the specified value. If the field value doesn't correspond to the specified timestamp, an error message will be generated.
      *
-     *```proto
-     *message MyTimestamp {
+     *
+     * <pre>
+     * `const` dictates that this field, of the `google.protobuf.Timestamp` type, must exactly match the specified value. If the field value doesn't correspond to the specified timestamp, an error message will be generated.
+     *
+     * ```proto
+     * message MyTimestamp {
      *  // value must equal 2023-05-03T10:00:00Z
      *   google.protobuf.Timestamp created_at = 1 [(buf.validate.field).timestamp.const = {seconds: 1727998800}];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
-     * <code>optional .google.protobuf.Timestamp const = 2 [json_name = "const", (.buf.validate.priv.field) = { ... }</code>
+     * <code>
+     * optional .google.protobuf.Timestamp const = 2 [json_name = "const", (.buf.validate.priv.field) = { ... }
+     * </code>
+     *
      * @return The const.
      */
     public com.google.protobuf.Timestamp getConst() {
@@ -1183,19 +1301,24 @@ private static final long serialVersionUID = 0L;
         return constBuilder_.getMessage();
       }
     }
+
     /**
-     * <pre>
-     *`const` dictates that this field, of the `google.protobuf.Timestamp` type, must exactly match the specified value. If the field value doesn't correspond to the specified timestamp, an error message will be generated.
      *
-     *```proto
-     *message MyTimestamp {
+     *
+     * <pre>
+     * `const` dictates that this field, of the `google.protobuf.Timestamp` type, must exactly match the specified value. If the field value doesn't correspond to the specified timestamp, an error message will be generated.
+     *
+     * ```proto
+     * message MyTimestamp {
      *  // value must equal 2023-05-03T10:00:00Z
      *   google.protobuf.Timestamp created_at = 1 [(buf.validate.field).timestamp.const = {seconds: 1727998800}];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
-     * <code>optional .google.protobuf.Timestamp const = 2 [json_name = "const", (.buf.validate.priv.field) = { ... }</code>
+     * <code>
+     * optional .google.protobuf.Timestamp const = 2 [json_name = "const", (.buf.validate.priv.field) = { ... }
+     * </code>
      */
     public Builder setConst(com.google.protobuf.Timestamp value) {
       if (constBuilder_ == null) {
@@ -1210,22 +1333,26 @@ private static final long serialVersionUID = 0L;
       onChanged();
       return this;
     }
+
     /**
-     * <pre>
-     *`const` dictates that this field, of the `google.protobuf.Timestamp` type, must exactly match the specified value. If the field value doesn't correspond to the specified timestamp, an error message will be generated.
      *
-     *```proto
-     *message MyTimestamp {
+     *
+     * <pre>
+     * `const` dictates that this field, of the `google.protobuf.Timestamp` type, must exactly match the specified value. If the field value doesn't correspond to the specified timestamp, an error message will be generated.
+     *
+     * ```proto
+     * message MyTimestamp {
      *  // value must equal 2023-05-03T10:00:00Z
      *   google.protobuf.Timestamp created_at = 1 [(buf.validate.field).timestamp.const = {seconds: 1727998800}];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
-     * <code>optional .google.protobuf.Timestamp const = 2 [json_name = "const", (.buf.validate.priv.field) = { ... }</code>
+     * <code>
+     * optional .google.protobuf.Timestamp const = 2 [json_name = "const", (.buf.validate.priv.field) = { ... }
+     * </code>
      */
-    public Builder setConst(
-        com.google.protobuf.Timestamp.Builder builderForValue) {
+    public Builder setConst(com.google.protobuf.Timestamp.Builder builderForValue) {
       if (constBuilder_ == null) {
         const_ = builderForValue.build();
       } else {
@@ -1235,25 +1362,30 @@ private static final long serialVersionUID = 0L;
       onChanged();
       return this;
     }
+
     /**
-     * <pre>
-     *`const` dictates that this field, of the `google.protobuf.Timestamp` type, must exactly match the specified value. If the field value doesn't correspond to the specified timestamp, an error message will be generated.
      *
-     *```proto
-     *message MyTimestamp {
+     *
+     * <pre>
+     * `const` dictates that this field, of the `google.protobuf.Timestamp` type, must exactly match the specified value. If the field value doesn't correspond to the specified timestamp, an error message will be generated.
+     *
+     * ```proto
+     * message MyTimestamp {
      *  // value must equal 2023-05-03T10:00:00Z
      *   google.protobuf.Timestamp created_at = 1 [(buf.validate.field).timestamp.const = {seconds: 1727998800}];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
-     * <code>optional .google.protobuf.Timestamp const = 2 [json_name = "const", (.buf.validate.priv.field) = { ... }</code>
+     * <code>
+     * optional .google.protobuf.Timestamp const = 2 [json_name = "const", (.buf.validate.priv.field) = { ... }
+     * </code>
      */
     public Builder mergeConst(com.google.protobuf.Timestamp value) {
       if (constBuilder_ == null) {
-        if (((bitField0_ & 0x00000001) != 0) &&
-          const_ != null &&
-          const_ != com.google.protobuf.Timestamp.getDefaultInstance()) {
+        if (((bitField0_ & 0x00000001) != 0)
+            && const_ != null
+            && const_ != com.google.protobuf.Timestamp.getDefaultInstance()) {
           getConstBuilder().mergeFrom(value);
         } else {
           const_ = value;
@@ -1265,19 +1397,24 @@ private static final long serialVersionUID = 0L;
       onChanged();
       return this;
     }
+
     /**
-     * <pre>
-     *`const` dictates that this field, of the `google.protobuf.Timestamp` type, must exactly match the specified value. If the field value doesn't correspond to the specified timestamp, an error message will be generated.
      *
-     *```proto
-     *message MyTimestamp {
+     *
+     * <pre>
+     * `const` dictates that this field, of the `google.protobuf.Timestamp` type, must exactly match the specified value. If the field value doesn't correspond to the specified timestamp, an error message will be generated.
+     *
+     * ```proto
+     * message MyTimestamp {
      *  // value must equal 2023-05-03T10:00:00Z
      *   google.protobuf.Timestamp created_at = 1 [(buf.validate.field).timestamp.const = {seconds: 1727998800}];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
-     * <code>optional .google.protobuf.Timestamp const = 2 [json_name = "const", (.buf.validate.priv.field) = { ... }</code>
+     * <code>
+     * optional .google.protobuf.Timestamp const = 2 [json_name = "const", (.buf.validate.priv.field) = { ... }
+     * </code>
      */
     public Builder clearConst() {
       bitField0_ = (bitField0_ & ~0x00000001);
@@ -1289,70 +1426,87 @@ private static final long serialVersionUID = 0L;
       onChanged();
       return this;
     }
+
     /**
-     * <pre>
-     *`const` dictates that this field, of the `google.protobuf.Timestamp` type, must exactly match the specified value. If the field value doesn't correspond to the specified timestamp, an error message will be generated.
      *
-     *```proto
-     *message MyTimestamp {
+     *
+     * <pre>
+     * `const` dictates that this field, of the `google.protobuf.Timestamp` type, must exactly match the specified value. If the field value doesn't correspond to the specified timestamp, an error message will be generated.
+     *
+     * ```proto
+     * message MyTimestamp {
      *  // value must equal 2023-05-03T10:00:00Z
      *   google.protobuf.Timestamp created_at = 1 [(buf.validate.field).timestamp.const = {seconds: 1727998800}];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
-     * <code>optional .google.protobuf.Timestamp const = 2 [json_name = "const", (.buf.validate.priv.field) = { ... }</code>
+     * <code>
+     * optional .google.protobuf.Timestamp const = 2 [json_name = "const", (.buf.validate.priv.field) = { ... }
+     * </code>
      */
     public com.google.protobuf.Timestamp.Builder getConstBuilder() {
       bitField0_ |= 0x00000001;
       onChanged();
       return getConstFieldBuilder().getBuilder();
     }
+
     /**
-     * <pre>
-     *`const` dictates that this field, of the `google.protobuf.Timestamp` type, must exactly match the specified value. If the field value doesn't correspond to the specified timestamp, an error message will be generated.
      *
-     *```proto
-     *message MyTimestamp {
+     *
+     * <pre>
+     * `const` dictates that this field, of the `google.protobuf.Timestamp` type, must exactly match the specified value. If the field value doesn't correspond to the specified timestamp, an error message will be generated.
+     *
+     * ```proto
+     * message MyTimestamp {
      *  // value must equal 2023-05-03T10:00:00Z
      *   google.protobuf.Timestamp created_at = 1 [(buf.validate.field).timestamp.const = {seconds: 1727998800}];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
-     * <code>optional .google.protobuf.Timestamp const = 2 [json_name = "const", (.buf.validate.priv.field) = { ... }</code>
+     * <code>
+     * optional .google.protobuf.Timestamp const = 2 [json_name = "const", (.buf.validate.priv.field) = { ... }
+     * </code>
      */
     public com.google.protobuf.TimestampOrBuilder getConstOrBuilder() {
       if (constBuilder_ != null) {
         return constBuilder_.getMessageOrBuilder();
       } else {
-        return const_ == null ?
-            com.google.protobuf.Timestamp.getDefaultInstance() : const_;
+        return const_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : const_;
       }
     }
+
     /**
-     * <pre>
-     *`const` dictates that this field, of the `google.protobuf.Timestamp` type, must exactly match the specified value. If the field value doesn't correspond to the specified timestamp, an error message will be generated.
      *
-     *```proto
-     *message MyTimestamp {
+     *
+     * <pre>
+     * `const` dictates that this field, of the `google.protobuf.Timestamp` type, must exactly match the specified value. If the field value doesn't correspond to the specified timestamp, an error message will be generated.
+     *
+     * ```proto
+     * message MyTimestamp {
      *  // value must equal 2023-05-03T10:00:00Z
      *   google.protobuf.Timestamp created_at = 1 [(buf.validate.field).timestamp.const = {seconds: 1727998800}];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
-     * <code>optional .google.protobuf.Timestamp const = 2 [json_name = "const", (.buf.validate.priv.field) = { ... }</code>
+     * <code>
+     * optional .google.protobuf.Timestamp const = 2 [json_name = "const", (.buf.validate.priv.field) = { ... }
+     * </code>
      */
     private com.google.protobuf.SingleFieldBuilderV3<
-        com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder> 
+            com.google.protobuf.Timestamp,
+            com.google.protobuf.Timestamp.Builder,
+            com.google.protobuf.TimestampOrBuilder>
         getConstFieldBuilder() {
       if (constBuilder_ == null) {
-        constBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-            com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder>(
-                getConst(),
-                getParentForChildren(),
-                isClean());
+        constBuilder_ =
+            new com.google.protobuf.SingleFieldBuilderV3<
+                com.google.protobuf.Timestamp,
+                com.google.protobuf.Timestamp.Builder,
+                com.google.protobuf.TimestampOrBuilder>(
+                getConst(), getParentForChildren(), isClean());
         const_ = null;
       }
       return constBuilder_;
@@ -1360,8 +1514,14 @@ private static final long serialVersionUID = 0L;
 
     private com.google.protobuf.Timestamp lt_;
     private com.google.protobuf.SingleFieldBuilderV3<
-        com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder> ltBuilder_;
+            com.google.protobuf.Timestamp,
+            com.google.protobuf.Timestamp.Builder,
+            com.google.protobuf.TimestampOrBuilder>
+        ltBuilder_;
+
     /**
+     *
+     *
      * <pre>
      * requires the duration field value to be less than the specified value (field &lt; value). If the field value doesn't meet the required conditions, an error message is generated.
      *
@@ -1373,13 +1533,19 @@ private static final long serialVersionUID = 0L;
      * ```
      * </pre>
      *
-     * <code>optional .google.protobuf.Timestamp lt = 3 [json_name = "lt", (.buf.validate.priv.field) = { ... }</code>
+     * <code>
+     * optional .google.protobuf.Timestamp lt = 3 [json_name = "lt", (.buf.validate.priv.field) = { ... }
+     * </code>
+     *
      * @return Whether the lt field is set.
      */
     public boolean hasLt() {
       return ((bitField0_ & 0x00000002) != 0);
     }
+
     /**
+     *
+     *
      * <pre>
      * requires the duration field value to be less than the specified value (field &lt; value). If the field value doesn't meet the required conditions, an error message is generated.
      *
@@ -1391,7 +1557,10 @@ private static final long serialVersionUID = 0L;
      * ```
      * </pre>
      *
-     * <code>optional .google.protobuf.Timestamp lt = 3 [json_name = "lt", (.buf.validate.priv.field) = { ... }</code>
+     * <code>
+     * optional .google.protobuf.Timestamp lt = 3 [json_name = "lt", (.buf.validate.priv.field) = { ... }
+     * </code>
+     *
      * @return The lt.
      */
     public com.google.protobuf.Timestamp getLt() {
@@ -1401,7 +1570,10 @@ private static final long serialVersionUID = 0L;
         return ltBuilder_.getMessage();
       }
     }
+
     /**
+     *
+     *
      * <pre>
      * requires the duration field value to be less than the specified value (field &lt; value). If the field value doesn't meet the required conditions, an error message is generated.
      *
@@ -1413,7 +1585,9 @@ private static final long serialVersionUID = 0L;
      * ```
      * </pre>
      *
-     * <code>optional .google.protobuf.Timestamp lt = 3 [json_name = "lt", (.buf.validate.priv.field) = { ... }</code>
+     * <code>
+     * optional .google.protobuf.Timestamp lt = 3 [json_name = "lt", (.buf.validate.priv.field) = { ... }
+     * </code>
      */
     public Builder setLt(com.google.protobuf.Timestamp value) {
       if (ltBuilder_ == null) {
@@ -1428,7 +1602,10 @@ private static final long serialVersionUID = 0L;
       onChanged();
       return this;
     }
+
     /**
+     *
+     *
      * <pre>
      * requires the duration field value to be less than the specified value (field &lt; value). If the field value doesn't meet the required conditions, an error message is generated.
      *
@@ -1440,10 +1617,11 @@ private static final long serialVersionUID = 0L;
      * ```
      * </pre>
      *
-     * <code>optional .google.protobuf.Timestamp lt = 3 [json_name = "lt", (.buf.validate.priv.field) = { ... }</code>
+     * <code>
+     * optional .google.protobuf.Timestamp lt = 3 [json_name = "lt", (.buf.validate.priv.field) = { ... }
+     * </code>
      */
-    public Builder setLt(
-        com.google.protobuf.Timestamp.Builder builderForValue) {
+    public Builder setLt(com.google.protobuf.Timestamp.Builder builderForValue) {
       if (ltBuilder_ == null) {
         lt_ = builderForValue.build();
       } else {
@@ -1453,7 +1631,10 @@ private static final long serialVersionUID = 0L;
       onChanged();
       return this;
     }
+
     /**
+     *
+     *
      * <pre>
      * requires the duration field value to be less than the specified value (field &lt; value). If the field value doesn't meet the required conditions, an error message is generated.
      *
@@ -1465,13 +1646,15 @@ private static final long serialVersionUID = 0L;
      * ```
      * </pre>
      *
-     * <code>optional .google.protobuf.Timestamp lt = 3 [json_name = "lt", (.buf.validate.priv.field) = { ... }</code>
+     * <code>
+     * optional .google.protobuf.Timestamp lt = 3 [json_name = "lt", (.buf.validate.priv.field) = { ... }
+     * </code>
      */
     public Builder mergeLt(com.google.protobuf.Timestamp value) {
       if (ltBuilder_ == null) {
-        if (((bitField0_ & 0x00000002) != 0) &&
-          lt_ != null &&
-          lt_ != com.google.protobuf.Timestamp.getDefaultInstance()) {
+        if (((bitField0_ & 0x00000002) != 0)
+            && lt_ != null
+            && lt_ != com.google.protobuf.Timestamp.getDefaultInstance()) {
           getLtBuilder().mergeFrom(value);
         } else {
           lt_ = value;
@@ -1483,7 +1666,10 @@ private static final long serialVersionUID = 0L;
       onChanged();
       return this;
     }
+
     /**
+     *
+     *
      * <pre>
      * requires the duration field value to be less than the specified value (field &lt; value). If the field value doesn't meet the required conditions, an error message is generated.
      *
@@ -1495,7 +1681,9 @@ private static final long serialVersionUID = 0L;
      * ```
      * </pre>
      *
-     * <code>optional .google.protobuf.Timestamp lt = 3 [json_name = "lt", (.buf.validate.priv.field) = { ... }</code>
+     * <code>
+     * optional .google.protobuf.Timestamp lt = 3 [json_name = "lt", (.buf.validate.priv.field) = { ... }
+     * </code>
      */
     public Builder clearLt() {
       bitField0_ = (bitField0_ & ~0x00000002);
@@ -1507,7 +1695,10 @@ private static final long serialVersionUID = 0L;
       onChanged();
       return this;
     }
+
     /**
+     *
+     *
      * <pre>
      * requires the duration field value to be less than the specified value (field &lt; value). If the field value doesn't meet the required conditions, an error message is generated.
      *
@@ -1519,14 +1710,19 @@ private static final long serialVersionUID = 0L;
      * ```
      * </pre>
      *
-     * <code>optional .google.protobuf.Timestamp lt = 3 [json_name = "lt", (.buf.validate.priv.field) = { ... }</code>
+     * <code>
+     * optional .google.protobuf.Timestamp lt = 3 [json_name = "lt", (.buf.validate.priv.field) = { ... }
+     * </code>
      */
     public com.google.protobuf.Timestamp.Builder getLtBuilder() {
       bitField0_ |= 0x00000002;
       onChanged();
       return getLtFieldBuilder().getBuilder();
     }
+
     /**
+     *
+     *
      * <pre>
      * requires the duration field value to be less than the specified value (field &lt; value). If the field value doesn't meet the required conditions, an error message is generated.
      *
@@ -1538,17 +1734,21 @@ private static final long serialVersionUID = 0L;
      * ```
      * </pre>
      *
-     * <code>optional .google.protobuf.Timestamp lt = 3 [json_name = "lt", (.buf.validate.priv.field) = { ... }</code>
+     * <code>
+     * optional .google.protobuf.Timestamp lt = 3 [json_name = "lt", (.buf.validate.priv.field) = { ... }
+     * </code>
      */
     public com.google.protobuf.TimestampOrBuilder getLtOrBuilder() {
       if (ltBuilder_ != null) {
         return ltBuilder_.getMessageOrBuilder();
       } else {
-        return lt_ == null ?
-            com.google.protobuf.Timestamp.getDefaultInstance() : lt_;
+        return lt_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : lt_;
       }
     }
+
     /**
+     *
+     *
      * <pre>
      * requires the duration field value to be less than the specified value (field &lt; value). If the field value doesn't meet the required conditions, an error message is generated.
      *
@@ -1560,17 +1760,21 @@ private static final long serialVersionUID = 0L;
      * ```
      * </pre>
      *
-     * <code>optional .google.protobuf.Timestamp lt = 3 [json_name = "lt", (.buf.validate.priv.field) = { ... }</code>
+     * <code>
+     * optional .google.protobuf.Timestamp lt = 3 [json_name = "lt", (.buf.validate.priv.field) = { ... }
+     * </code>
      */
     private com.google.protobuf.SingleFieldBuilderV3<
-        com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder> 
+            com.google.protobuf.Timestamp,
+            com.google.protobuf.Timestamp.Builder,
+            com.google.protobuf.TimestampOrBuilder>
         getLtFieldBuilder() {
       if (ltBuilder_ == null) {
-        ltBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-            com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder>(
-                getLt(),
-                getParentForChildren(),
-                isClean());
+        ltBuilder_ =
+            new com.google.protobuf.SingleFieldBuilderV3<
+                com.google.protobuf.Timestamp,
+                com.google.protobuf.Timestamp.Builder,
+                com.google.protobuf.TimestampOrBuilder>(getLt(), getParentForChildren(), isClean());
         lt_ = null;
       }
       return ltBuilder_;
@@ -1578,8 +1782,14 @@ private static final long serialVersionUID = 0L;
 
     private com.google.protobuf.Timestamp lte_;
     private com.google.protobuf.SingleFieldBuilderV3<
-        com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder> lteBuilder_;
+            com.google.protobuf.Timestamp,
+            com.google.protobuf.Timestamp.Builder,
+            com.google.protobuf.TimestampOrBuilder>
+        lteBuilder_;
+
     /**
+     *
+     *
      * <pre>
      * requires the timestamp field value to be less than or equal to the specified value (field &lt;= value). If the field value doesn't meet the required conditions, an error message is generated.
      *
@@ -1591,13 +1801,19 @@ private static final long serialVersionUID = 0L;
      * ```
      * </pre>
      *
-     * <code>optional .google.protobuf.Timestamp lte = 4 [json_name = "lte", (.buf.validate.priv.field) = { ... }</code>
+     * <code>
+     * optional .google.protobuf.Timestamp lte = 4 [json_name = "lte", (.buf.validate.priv.field) = { ... }
+     * </code>
+     *
      * @return Whether the lte field is set.
      */
     public boolean hasLte() {
       return ((bitField0_ & 0x00000004) != 0);
     }
+
     /**
+     *
+     *
      * <pre>
      * requires the timestamp field value to be less than or equal to the specified value (field &lt;= value). If the field value doesn't meet the required conditions, an error message is generated.
      *
@@ -1609,7 +1825,10 @@ private static final long serialVersionUID = 0L;
      * ```
      * </pre>
      *
-     * <code>optional .google.protobuf.Timestamp lte = 4 [json_name = "lte", (.buf.validate.priv.field) = { ... }</code>
+     * <code>
+     * optional .google.protobuf.Timestamp lte = 4 [json_name = "lte", (.buf.validate.priv.field) = { ... }
+     * </code>
+     *
      * @return The lte.
      */
     public com.google.protobuf.Timestamp getLte() {
@@ -1619,7 +1838,10 @@ private static final long serialVersionUID = 0L;
         return lteBuilder_.getMessage();
       }
     }
+
     /**
+     *
+     *
      * <pre>
      * requires the timestamp field value to be less than or equal to the specified value (field &lt;= value). If the field value doesn't meet the required conditions, an error message is generated.
      *
@@ -1631,7 +1853,9 @@ private static final long serialVersionUID = 0L;
      * ```
      * </pre>
      *
-     * <code>optional .google.protobuf.Timestamp lte = 4 [json_name = "lte", (.buf.validate.priv.field) = { ... }</code>
+     * <code>
+     * optional .google.protobuf.Timestamp lte = 4 [json_name = "lte", (.buf.validate.priv.field) = { ... }
+     * </code>
      */
     public Builder setLte(com.google.protobuf.Timestamp value) {
       if (lteBuilder_ == null) {
@@ -1646,7 +1870,10 @@ private static final long serialVersionUID = 0L;
       onChanged();
       return this;
     }
+
     /**
+     *
+     *
      * <pre>
      * requires the timestamp field value to be less than or equal to the specified value (field &lt;= value). If the field value doesn't meet the required conditions, an error message is generated.
      *
@@ -1658,10 +1885,11 @@ private static final long serialVersionUID = 0L;
      * ```
      * </pre>
      *
-     * <code>optional .google.protobuf.Timestamp lte = 4 [json_name = "lte", (.buf.validate.priv.field) = { ... }</code>
+     * <code>
+     * optional .google.protobuf.Timestamp lte = 4 [json_name = "lte", (.buf.validate.priv.field) = { ... }
+     * </code>
      */
-    public Builder setLte(
-        com.google.protobuf.Timestamp.Builder builderForValue) {
+    public Builder setLte(com.google.protobuf.Timestamp.Builder builderForValue) {
       if (lteBuilder_ == null) {
         lte_ = builderForValue.build();
       } else {
@@ -1671,7 +1899,10 @@ private static final long serialVersionUID = 0L;
       onChanged();
       return this;
     }
+
     /**
+     *
+     *
      * <pre>
      * requires the timestamp field value to be less than or equal to the specified value (field &lt;= value). If the field value doesn't meet the required conditions, an error message is generated.
      *
@@ -1683,13 +1914,15 @@ private static final long serialVersionUID = 0L;
      * ```
      * </pre>
      *
-     * <code>optional .google.protobuf.Timestamp lte = 4 [json_name = "lte", (.buf.validate.priv.field) = { ... }</code>
+     * <code>
+     * optional .google.protobuf.Timestamp lte = 4 [json_name = "lte", (.buf.validate.priv.field) = { ... }
+     * </code>
      */
     public Builder mergeLte(com.google.protobuf.Timestamp value) {
       if (lteBuilder_ == null) {
-        if (((bitField0_ & 0x00000004) != 0) &&
-          lte_ != null &&
-          lte_ != com.google.protobuf.Timestamp.getDefaultInstance()) {
+        if (((bitField0_ & 0x00000004) != 0)
+            && lte_ != null
+            && lte_ != com.google.protobuf.Timestamp.getDefaultInstance()) {
           getLteBuilder().mergeFrom(value);
         } else {
           lte_ = value;
@@ -1701,7 +1934,10 @@ private static final long serialVersionUID = 0L;
       onChanged();
       return this;
     }
+
     /**
+     *
+     *
      * <pre>
      * requires the timestamp field value to be less than or equal to the specified value (field &lt;= value). If the field value doesn't meet the required conditions, an error message is generated.
      *
@@ -1713,7 +1949,9 @@ private static final long serialVersionUID = 0L;
      * ```
      * </pre>
      *
-     * <code>optional .google.protobuf.Timestamp lte = 4 [json_name = "lte", (.buf.validate.priv.field) = { ... }</code>
+     * <code>
+     * optional .google.protobuf.Timestamp lte = 4 [json_name = "lte", (.buf.validate.priv.field) = { ... }
+     * </code>
      */
     public Builder clearLte() {
       bitField0_ = (bitField0_ & ~0x00000004);
@@ -1725,7 +1963,10 @@ private static final long serialVersionUID = 0L;
       onChanged();
       return this;
     }
+
     /**
+     *
+     *
      * <pre>
      * requires the timestamp field value to be less than or equal to the specified value (field &lt;= value). If the field value doesn't meet the required conditions, an error message is generated.
      *
@@ -1737,14 +1978,19 @@ private static final long serialVersionUID = 0L;
      * ```
      * </pre>
      *
-     * <code>optional .google.protobuf.Timestamp lte = 4 [json_name = "lte", (.buf.validate.priv.field) = { ... }</code>
+     * <code>
+     * optional .google.protobuf.Timestamp lte = 4 [json_name = "lte", (.buf.validate.priv.field) = { ... }
+     * </code>
      */
     public com.google.protobuf.Timestamp.Builder getLteBuilder() {
       bitField0_ |= 0x00000004;
       onChanged();
       return getLteFieldBuilder().getBuilder();
     }
+
     /**
+     *
+     *
      * <pre>
      * requires the timestamp field value to be less than or equal to the specified value (field &lt;= value). If the field value doesn't meet the required conditions, an error message is generated.
      *
@@ -1756,17 +2002,21 @@ private static final long serialVersionUID = 0L;
      * ```
      * </pre>
      *
-     * <code>optional .google.protobuf.Timestamp lte = 4 [json_name = "lte", (.buf.validate.priv.field) = { ... }</code>
+     * <code>
+     * optional .google.protobuf.Timestamp lte = 4 [json_name = "lte", (.buf.validate.priv.field) = { ... }
+     * </code>
      */
     public com.google.protobuf.TimestampOrBuilder getLteOrBuilder() {
       if (lteBuilder_ != null) {
         return lteBuilder_.getMessageOrBuilder();
       } else {
-        return lte_ == null ?
-            com.google.protobuf.Timestamp.getDefaultInstance() : lte_;
+        return lte_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : lte_;
       }
     }
+
     /**
+     *
+     *
      * <pre>
      * requires the timestamp field value to be less than or equal to the specified value (field &lt;= value). If the field value doesn't meet the required conditions, an error message is generated.
      *
@@ -1778,17 +2028,22 @@ private static final long serialVersionUID = 0L;
      * ```
      * </pre>
      *
-     * <code>optional .google.protobuf.Timestamp lte = 4 [json_name = "lte", (.buf.validate.priv.field) = { ... }</code>
+     * <code>
+     * optional .google.protobuf.Timestamp lte = 4 [json_name = "lte", (.buf.validate.priv.field) = { ... }
+     * </code>
      */
     private com.google.protobuf.SingleFieldBuilderV3<
-        com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder> 
+            com.google.protobuf.Timestamp,
+            com.google.protobuf.Timestamp.Builder,
+            com.google.protobuf.TimestampOrBuilder>
         getLteFieldBuilder() {
       if (lteBuilder_ == null) {
-        lteBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-            com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder>(
-                getLte(),
-                getParentForChildren(),
-                isClean());
+        lteBuilder_ =
+            new com.google.protobuf.SingleFieldBuilderV3<
+                com.google.protobuf.Timestamp,
+                com.google.protobuf.Timestamp.Builder,
+                com.google.protobuf.TimestampOrBuilder>(
+                getLte(), getParentForChildren(), isClean());
         lte_ = null;
       }
       return lteBuilder_;
@@ -1796,17 +2051,23 @@ private static final long serialVersionUID = 0L;
 
     private com.google.protobuf.Timestamp gt_;
     private com.google.protobuf.SingleFieldBuilderV3<
-        com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder> gtBuilder_;
+            com.google.protobuf.Timestamp,
+            com.google.protobuf.Timestamp.Builder,
+            com.google.protobuf.TimestampOrBuilder>
+        gtBuilder_;
+
     /**
+     *
+     *
      * <pre>
-     *`gt` requires the timestamp field value to be greater than the specified
+     * `gt` requires the timestamp field value to be greater than the specified
      * value (exclusive). If the value of `gt` is larger than a specified `lt`
      * or `lte`, the range is reversed, and the field value must be outside the
      * specified range. If the field value doesn't meet the required conditions,
      * an error message is generated.
      *
-     *```proto
-     *message MyTimestamp {
+     * ```proto
+     * message MyTimestamp {
      *  // timestamp must be greater than '2023-01-01T00:00:00Z' [timestamp.gt]
      *  google.protobuf.Timestamp value = 1 [(buf.validate.field).timestamp.gt = { seconds: 1672444800 }];
      *
@@ -1815,26 +2076,32 @@ private static final long serialVersionUID = 0L;
      *
      *  // timestamp must be greater than '2023-01-02T00:00:00Z' or less than '2023-01-01T00:00:00Z' [timestamp.gt_lt_exclusive]
      *  google.protobuf.Timestamp other_value = 3 [(buf.validate.field).timestamp = { gt: { seconds: 1672531200 }, lt: { seconds: 1672444800 } }];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
-     * <code>optional .google.protobuf.Timestamp gt = 5 [json_name = "gt", (.buf.validate.priv.field) = { ... }</code>
+     * <code>
+     * optional .google.protobuf.Timestamp gt = 5 [json_name = "gt", (.buf.validate.priv.field) = { ... }
+     * </code>
+     *
      * @return Whether the gt field is set.
      */
     public boolean hasGt() {
       return ((bitField0_ & 0x00000008) != 0);
     }
+
     /**
+     *
+     *
      * <pre>
-     *`gt` requires the timestamp field value to be greater than the specified
+     * `gt` requires the timestamp field value to be greater than the specified
      * value (exclusive). If the value of `gt` is larger than a specified `lt`
      * or `lte`, the range is reversed, and the field value must be outside the
      * specified range. If the field value doesn't meet the required conditions,
      * an error message is generated.
      *
-     *```proto
-     *message MyTimestamp {
+     * ```proto
+     * message MyTimestamp {
      *  // timestamp must be greater than '2023-01-01T00:00:00Z' [timestamp.gt]
      *  google.protobuf.Timestamp value = 1 [(buf.validate.field).timestamp.gt = { seconds: 1672444800 }];
      *
@@ -1843,11 +2110,14 @@ private static final long serialVersionUID = 0L;
      *
      *  // timestamp must be greater than '2023-01-02T00:00:00Z' or less than '2023-01-01T00:00:00Z' [timestamp.gt_lt_exclusive]
      *  google.protobuf.Timestamp other_value = 3 [(buf.validate.field).timestamp = { gt: { seconds: 1672531200 }, lt: { seconds: 1672444800 } }];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
-     * <code>optional .google.protobuf.Timestamp gt = 5 [json_name = "gt", (.buf.validate.priv.field) = { ... }</code>
+     * <code>
+     * optional .google.protobuf.Timestamp gt = 5 [json_name = "gt", (.buf.validate.priv.field) = { ... }
+     * </code>
+     *
      * @return The gt.
      */
     public com.google.protobuf.Timestamp getGt() {
@@ -1857,16 +2127,19 @@ private static final long serialVersionUID = 0L;
         return gtBuilder_.getMessage();
       }
     }
+
     /**
+     *
+     *
      * <pre>
-     *`gt` requires the timestamp field value to be greater than the specified
+     * `gt` requires the timestamp field value to be greater than the specified
      * value (exclusive). If the value of `gt` is larger than a specified `lt`
      * or `lte`, the range is reversed, and the field value must be outside the
      * specified range. If the field value doesn't meet the required conditions,
      * an error message is generated.
      *
-     *```proto
-     *message MyTimestamp {
+     * ```proto
+     * message MyTimestamp {
      *  // timestamp must be greater than '2023-01-01T00:00:00Z' [timestamp.gt]
      *  google.protobuf.Timestamp value = 1 [(buf.validate.field).timestamp.gt = { seconds: 1672444800 }];
      *
@@ -1875,11 +2148,13 @@ private static final long serialVersionUID = 0L;
      *
      *  // timestamp must be greater than '2023-01-02T00:00:00Z' or less than '2023-01-01T00:00:00Z' [timestamp.gt_lt_exclusive]
      *  google.protobuf.Timestamp other_value = 3 [(buf.validate.field).timestamp = { gt: { seconds: 1672531200 }, lt: { seconds: 1672444800 } }];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
-     * <code>optional .google.protobuf.Timestamp gt = 5 [json_name = "gt", (.buf.validate.priv.field) = { ... }</code>
+     * <code>
+     * optional .google.protobuf.Timestamp gt = 5 [json_name = "gt", (.buf.validate.priv.field) = { ... }
+     * </code>
      */
     public Builder setGt(com.google.protobuf.Timestamp value) {
       if (gtBuilder_ == null) {
@@ -1894,16 +2169,19 @@ private static final long serialVersionUID = 0L;
       onChanged();
       return this;
     }
+
     /**
+     *
+     *
      * <pre>
-     *`gt` requires the timestamp field value to be greater than the specified
+     * `gt` requires the timestamp field value to be greater than the specified
      * value (exclusive). If the value of `gt` is larger than a specified `lt`
      * or `lte`, the range is reversed, and the field value must be outside the
      * specified range. If the field value doesn't meet the required conditions,
      * an error message is generated.
      *
-     *```proto
-     *message MyTimestamp {
+     * ```proto
+     * message MyTimestamp {
      *  // timestamp must be greater than '2023-01-01T00:00:00Z' [timestamp.gt]
      *  google.protobuf.Timestamp value = 1 [(buf.validate.field).timestamp.gt = { seconds: 1672444800 }];
      *
@@ -1912,14 +2190,15 @@ private static final long serialVersionUID = 0L;
      *
      *  // timestamp must be greater than '2023-01-02T00:00:00Z' or less than '2023-01-01T00:00:00Z' [timestamp.gt_lt_exclusive]
      *  google.protobuf.Timestamp other_value = 3 [(buf.validate.field).timestamp = { gt: { seconds: 1672531200 }, lt: { seconds: 1672444800 } }];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
-     * <code>optional .google.protobuf.Timestamp gt = 5 [json_name = "gt", (.buf.validate.priv.field) = { ... }</code>
+     * <code>
+     * optional .google.protobuf.Timestamp gt = 5 [json_name = "gt", (.buf.validate.priv.field) = { ... }
+     * </code>
      */
-    public Builder setGt(
-        com.google.protobuf.Timestamp.Builder builderForValue) {
+    public Builder setGt(com.google.protobuf.Timestamp.Builder builderForValue) {
       if (gtBuilder_ == null) {
         gt_ = builderForValue.build();
       } else {
@@ -1929,16 +2208,19 @@ private static final long serialVersionUID = 0L;
       onChanged();
       return this;
     }
+
     /**
+     *
+     *
      * <pre>
-     *`gt` requires the timestamp field value to be greater than the specified
+     * `gt` requires the timestamp field value to be greater than the specified
      * value (exclusive). If the value of `gt` is larger than a specified `lt`
      * or `lte`, the range is reversed, and the field value must be outside the
      * specified range. If the field value doesn't meet the required conditions,
      * an error message is generated.
      *
-     *```proto
-     *message MyTimestamp {
+     * ```proto
+     * message MyTimestamp {
      *  // timestamp must be greater than '2023-01-01T00:00:00Z' [timestamp.gt]
      *  google.protobuf.Timestamp value = 1 [(buf.validate.field).timestamp.gt = { seconds: 1672444800 }];
      *
@@ -1947,17 +2229,19 @@ private static final long serialVersionUID = 0L;
      *
      *  // timestamp must be greater than '2023-01-02T00:00:00Z' or less than '2023-01-01T00:00:00Z' [timestamp.gt_lt_exclusive]
      *  google.protobuf.Timestamp other_value = 3 [(buf.validate.field).timestamp = { gt: { seconds: 1672531200 }, lt: { seconds: 1672444800 } }];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
-     * <code>optional .google.protobuf.Timestamp gt = 5 [json_name = "gt", (.buf.validate.priv.field) = { ... }</code>
+     * <code>
+     * optional .google.protobuf.Timestamp gt = 5 [json_name = "gt", (.buf.validate.priv.field) = { ... }
+     * </code>
      */
     public Builder mergeGt(com.google.protobuf.Timestamp value) {
       if (gtBuilder_ == null) {
-        if (((bitField0_ & 0x00000008) != 0) &&
-          gt_ != null &&
-          gt_ != com.google.protobuf.Timestamp.getDefaultInstance()) {
+        if (((bitField0_ & 0x00000008) != 0)
+            && gt_ != null
+            && gt_ != com.google.protobuf.Timestamp.getDefaultInstance()) {
           getGtBuilder().mergeFrom(value);
         } else {
           gt_ = value;
@@ -1969,16 +2253,19 @@ private static final long serialVersionUID = 0L;
       onChanged();
       return this;
     }
+
     /**
+     *
+     *
      * <pre>
-     *`gt` requires the timestamp field value to be greater than the specified
+     * `gt` requires the timestamp field value to be greater than the specified
      * value (exclusive). If the value of `gt` is larger than a specified `lt`
      * or `lte`, the range is reversed, and the field value must be outside the
      * specified range. If the field value doesn't meet the required conditions,
      * an error message is generated.
      *
-     *```proto
-     *message MyTimestamp {
+     * ```proto
+     * message MyTimestamp {
      *  // timestamp must be greater than '2023-01-01T00:00:00Z' [timestamp.gt]
      *  google.protobuf.Timestamp value = 1 [(buf.validate.field).timestamp.gt = { seconds: 1672444800 }];
      *
@@ -1987,11 +2274,13 @@ private static final long serialVersionUID = 0L;
      *
      *  // timestamp must be greater than '2023-01-02T00:00:00Z' or less than '2023-01-01T00:00:00Z' [timestamp.gt_lt_exclusive]
      *  google.protobuf.Timestamp other_value = 3 [(buf.validate.field).timestamp = { gt: { seconds: 1672531200 }, lt: { seconds: 1672444800 } }];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
-     * <code>optional .google.protobuf.Timestamp gt = 5 [json_name = "gt", (.buf.validate.priv.field) = { ... }</code>
+     * <code>
+     * optional .google.protobuf.Timestamp gt = 5 [json_name = "gt", (.buf.validate.priv.field) = { ... }
+     * </code>
      */
     public Builder clearGt() {
       bitField0_ = (bitField0_ & ~0x00000008);
@@ -2003,16 +2292,19 @@ private static final long serialVersionUID = 0L;
       onChanged();
       return this;
     }
+
     /**
+     *
+     *
      * <pre>
-     *`gt` requires the timestamp field value to be greater than the specified
+     * `gt` requires the timestamp field value to be greater than the specified
      * value (exclusive). If the value of `gt` is larger than a specified `lt`
      * or `lte`, the range is reversed, and the field value must be outside the
      * specified range. If the field value doesn't meet the required conditions,
      * an error message is generated.
      *
-     *```proto
-     *message MyTimestamp {
+     * ```proto
+     * message MyTimestamp {
      *  // timestamp must be greater than '2023-01-01T00:00:00Z' [timestamp.gt]
      *  google.protobuf.Timestamp value = 1 [(buf.validate.field).timestamp.gt = { seconds: 1672444800 }];
      *
@@ -2021,27 +2313,32 @@ private static final long serialVersionUID = 0L;
      *
      *  // timestamp must be greater than '2023-01-02T00:00:00Z' or less than '2023-01-01T00:00:00Z' [timestamp.gt_lt_exclusive]
      *  google.protobuf.Timestamp other_value = 3 [(buf.validate.field).timestamp = { gt: { seconds: 1672531200 }, lt: { seconds: 1672444800 } }];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
-     * <code>optional .google.protobuf.Timestamp gt = 5 [json_name = "gt", (.buf.validate.priv.field) = { ... }</code>
+     * <code>
+     * optional .google.protobuf.Timestamp gt = 5 [json_name = "gt", (.buf.validate.priv.field) = { ... }
+     * </code>
      */
     public com.google.protobuf.Timestamp.Builder getGtBuilder() {
       bitField0_ |= 0x00000008;
       onChanged();
       return getGtFieldBuilder().getBuilder();
     }
+
     /**
+     *
+     *
      * <pre>
-     *`gt` requires the timestamp field value to be greater than the specified
+     * `gt` requires the timestamp field value to be greater than the specified
      * value (exclusive). If the value of `gt` is larger than a specified `lt`
      * or `lte`, the range is reversed, and the field value must be outside the
      * specified range. If the field value doesn't meet the required conditions,
      * an error message is generated.
      *
-     *```proto
-     *message MyTimestamp {
+     * ```proto
+     * message MyTimestamp {
      *  // timestamp must be greater than '2023-01-01T00:00:00Z' [timestamp.gt]
      *  google.protobuf.Timestamp value = 1 [(buf.validate.field).timestamp.gt = { seconds: 1672444800 }];
      *
@@ -2050,30 +2347,34 @@ private static final long serialVersionUID = 0L;
      *
      *  // timestamp must be greater than '2023-01-02T00:00:00Z' or less than '2023-01-01T00:00:00Z' [timestamp.gt_lt_exclusive]
      *  google.protobuf.Timestamp other_value = 3 [(buf.validate.field).timestamp = { gt: { seconds: 1672531200 }, lt: { seconds: 1672444800 } }];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
-     * <code>optional .google.protobuf.Timestamp gt = 5 [json_name = "gt", (.buf.validate.priv.field) = { ... }</code>
+     * <code>
+     * optional .google.protobuf.Timestamp gt = 5 [json_name = "gt", (.buf.validate.priv.field) = { ... }
+     * </code>
      */
     public com.google.protobuf.TimestampOrBuilder getGtOrBuilder() {
       if (gtBuilder_ != null) {
         return gtBuilder_.getMessageOrBuilder();
       } else {
-        return gt_ == null ?
-            com.google.protobuf.Timestamp.getDefaultInstance() : gt_;
+        return gt_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : gt_;
       }
     }
+
     /**
+     *
+     *
      * <pre>
-     *`gt` requires the timestamp field value to be greater than the specified
+     * `gt` requires the timestamp field value to be greater than the specified
      * value (exclusive). If the value of `gt` is larger than a specified `lt`
      * or `lte`, the range is reversed, and the field value must be outside the
      * specified range. If the field value doesn't meet the required conditions,
      * an error message is generated.
      *
-     *```proto
-     *message MyTimestamp {
+     * ```proto
+     * message MyTimestamp {
      *  // timestamp must be greater than '2023-01-01T00:00:00Z' [timestamp.gt]
      *  google.protobuf.Timestamp value = 1 [(buf.validate.field).timestamp.gt = { seconds: 1672444800 }];
      *
@@ -2082,21 +2383,25 @@ private static final long serialVersionUID = 0L;
      *
      *  // timestamp must be greater than '2023-01-02T00:00:00Z' or less than '2023-01-01T00:00:00Z' [timestamp.gt_lt_exclusive]
      *  google.protobuf.Timestamp other_value = 3 [(buf.validate.field).timestamp = { gt: { seconds: 1672531200 }, lt: { seconds: 1672444800 } }];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
-     * <code>optional .google.protobuf.Timestamp gt = 5 [json_name = "gt", (.buf.validate.priv.field) = { ... }</code>
+     * <code>
+     * optional .google.protobuf.Timestamp gt = 5 [json_name = "gt", (.buf.validate.priv.field) = { ... }
+     * </code>
      */
     private com.google.protobuf.SingleFieldBuilderV3<
-        com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder> 
+            com.google.protobuf.Timestamp,
+            com.google.protobuf.Timestamp.Builder,
+            com.google.protobuf.TimestampOrBuilder>
         getGtFieldBuilder() {
       if (gtBuilder_ == null) {
-        gtBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-            com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder>(
-                getGt(),
-                getParentForChildren(),
-                isClean());
+        gtBuilder_ =
+            new com.google.protobuf.SingleFieldBuilderV3<
+                com.google.protobuf.Timestamp,
+                com.google.protobuf.Timestamp.Builder,
+                com.google.protobuf.TimestampOrBuilder>(getGt(), getParentForChildren(), isClean());
         gt_ = null;
       }
       return gtBuilder_;
@@ -2104,17 +2409,23 @@ private static final long serialVersionUID = 0L;
 
     private com.google.protobuf.Timestamp gte_;
     private com.google.protobuf.SingleFieldBuilderV3<
-        com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder> gteBuilder_;
+            com.google.protobuf.Timestamp,
+            com.google.protobuf.Timestamp.Builder,
+            com.google.protobuf.TimestampOrBuilder>
+        gteBuilder_;
+
     /**
+     *
+     *
      * <pre>
-     *`gte` requires the timestamp field value to be greater than or equal to the
+     * `gte` requires the timestamp field value to be greater than or equal to the
      * specified value (exclusive). If the value of `gte` is larger than a
      * specified `lt` or `lte`, the range is reversed, and the field value
      * must be outside the specified range. If the field value doesn't meet
      * the required conditions, an error message is generated.
      *
-     *```proto
-     *message MyTimestamp {
+     * ```proto
+     * message MyTimestamp {
      *  // timestamp must be greater than or equal to '2023-01-01T00:00:00Z' [timestamp.gte]
      *  google.protobuf.Timestamp value = 1 [(buf.validate.field).timestamp.gte = { seconds: 1672444800 }];
      *
@@ -2123,26 +2434,32 @@ private static final long serialVersionUID = 0L;
      *
      *  // timestamp must be greater than or equal to '2023-01-02T00:00:00Z' or less than '2023-01-01T00:00:00Z' [timestamp.gte_lt_exclusive]
      *  google.protobuf.Timestamp other_value = 3 [(buf.validate.field).timestamp = { gte: { seconds: 1672531200 }, lt: { seconds: 1672444800 } }];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
-     * <code>optional .google.protobuf.Timestamp gte = 6 [json_name = "gte", (.buf.validate.priv.field) = { ... }</code>
+     * <code>
+     * optional .google.protobuf.Timestamp gte = 6 [json_name = "gte", (.buf.validate.priv.field) = { ... }
+     * </code>
+     *
      * @return Whether the gte field is set.
      */
     public boolean hasGte() {
       return ((bitField0_ & 0x00000010) != 0);
     }
+
     /**
+     *
+     *
      * <pre>
-     *`gte` requires the timestamp field value to be greater than or equal to the
+     * `gte` requires the timestamp field value to be greater than or equal to the
      * specified value (exclusive). If the value of `gte` is larger than a
      * specified `lt` or `lte`, the range is reversed, and the field value
      * must be outside the specified range. If the field value doesn't meet
      * the required conditions, an error message is generated.
      *
-     *```proto
-     *message MyTimestamp {
+     * ```proto
+     * message MyTimestamp {
      *  // timestamp must be greater than or equal to '2023-01-01T00:00:00Z' [timestamp.gte]
      *  google.protobuf.Timestamp value = 1 [(buf.validate.field).timestamp.gte = { seconds: 1672444800 }];
      *
@@ -2151,11 +2468,14 @@ private static final long serialVersionUID = 0L;
      *
      *  // timestamp must be greater than or equal to '2023-01-02T00:00:00Z' or less than '2023-01-01T00:00:00Z' [timestamp.gte_lt_exclusive]
      *  google.protobuf.Timestamp other_value = 3 [(buf.validate.field).timestamp = { gte: { seconds: 1672531200 }, lt: { seconds: 1672444800 } }];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
-     * <code>optional .google.protobuf.Timestamp gte = 6 [json_name = "gte", (.buf.validate.priv.field) = { ... }</code>
+     * <code>
+     * optional .google.protobuf.Timestamp gte = 6 [json_name = "gte", (.buf.validate.priv.field) = { ... }
+     * </code>
+     *
      * @return The gte.
      */
     public com.google.protobuf.Timestamp getGte() {
@@ -2165,16 +2485,19 @@ private static final long serialVersionUID = 0L;
         return gteBuilder_.getMessage();
       }
     }
+
     /**
+     *
+     *
      * <pre>
-     *`gte` requires the timestamp field value to be greater than or equal to the
+     * `gte` requires the timestamp field value to be greater than or equal to the
      * specified value (exclusive). If the value of `gte` is larger than a
      * specified `lt` or `lte`, the range is reversed, and the field value
      * must be outside the specified range. If the field value doesn't meet
      * the required conditions, an error message is generated.
      *
-     *```proto
-     *message MyTimestamp {
+     * ```proto
+     * message MyTimestamp {
      *  // timestamp must be greater than or equal to '2023-01-01T00:00:00Z' [timestamp.gte]
      *  google.protobuf.Timestamp value = 1 [(buf.validate.field).timestamp.gte = { seconds: 1672444800 }];
      *
@@ -2183,11 +2506,13 @@ private static final long serialVersionUID = 0L;
      *
      *  // timestamp must be greater than or equal to '2023-01-02T00:00:00Z' or less than '2023-01-01T00:00:00Z' [timestamp.gte_lt_exclusive]
      *  google.protobuf.Timestamp other_value = 3 [(buf.validate.field).timestamp = { gte: { seconds: 1672531200 }, lt: { seconds: 1672444800 } }];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
-     * <code>optional .google.protobuf.Timestamp gte = 6 [json_name = "gte", (.buf.validate.priv.field) = { ... }</code>
+     * <code>
+     * optional .google.protobuf.Timestamp gte = 6 [json_name = "gte", (.buf.validate.priv.field) = { ... }
+     * </code>
      */
     public Builder setGte(com.google.protobuf.Timestamp value) {
       if (gteBuilder_ == null) {
@@ -2202,16 +2527,19 @@ private static final long serialVersionUID = 0L;
       onChanged();
       return this;
     }
+
     /**
+     *
+     *
      * <pre>
-     *`gte` requires the timestamp field value to be greater than or equal to the
+     * `gte` requires the timestamp field value to be greater than or equal to the
      * specified value (exclusive). If the value of `gte` is larger than a
      * specified `lt` or `lte`, the range is reversed, and the field value
      * must be outside the specified range. If the field value doesn't meet
      * the required conditions, an error message is generated.
      *
-     *```proto
-     *message MyTimestamp {
+     * ```proto
+     * message MyTimestamp {
      *  // timestamp must be greater than or equal to '2023-01-01T00:00:00Z' [timestamp.gte]
      *  google.protobuf.Timestamp value = 1 [(buf.validate.field).timestamp.gte = { seconds: 1672444800 }];
      *
@@ -2220,14 +2548,15 @@ private static final long serialVersionUID = 0L;
      *
      *  // timestamp must be greater than or equal to '2023-01-02T00:00:00Z' or less than '2023-01-01T00:00:00Z' [timestamp.gte_lt_exclusive]
      *  google.protobuf.Timestamp other_value = 3 [(buf.validate.field).timestamp = { gte: { seconds: 1672531200 }, lt: { seconds: 1672444800 } }];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
-     * <code>optional .google.protobuf.Timestamp gte = 6 [json_name = "gte", (.buf.validate.priv.field) = { ... }</code>
+     * <code>
+     * optional .google.protobuf.Timestamp gte = 6 [json_name = "gte", (.buf.validate.priv.field) = { ... }
+     * </code>
      */
-    public Builder setGte(
-        com.google.protobuf.Timestamp.Builder builderForValue) {
+    public Builder setGte(com.google.protobuf.Timestamp.Builder builderForValue) {
       if (gteBuilder_ == null) {
         gte_ = builderForValue.build();
       } else {
@@ -2237,16 +2566,19 @@ private static final long serialVersionUID = 0L;
       onChanged();
       return this;
     }
+
     /**
+     *
+     *
      * <pre>
-     *`gte` requires the timestamp field value to be greater than or equal to the
+     * `gte` requires the timestamp field value to be greater than or equal to the
      * specified value (exclusive). If the value of `gte` is larger than a
      * specified `lt` or `lte`, the range is reversed, and the field value
      * must be outside the specified range. If the field value doesn't meet
      * the required conditions, an error message is generated.
      *
-     *```proto
-     *message MyTimestamp {
+     * ```proto
+     * message MyTimestamp {
      *  // timestamp must be greater than or equal to '2023-01-01T00:00:00Z' [timestamp.gte]
      *  google.protobuf.Timestamp value = 1 [(buf.validate.field).timestamp.gte = { seconds: 1672444800 }];
      *
@@ -2255,17 +2587,19 @@ private static final long serialVersionUID = 0L;
      *
      *  // timestamp must be greater than or equal to '2023-01-02T00:00:00Z' or less than '2023-01-01T00:00:00Z' [timestamp.gte_lt_exclusive]
      *  google.protobuf.Timestamp other_value = 3 [(buf.validate.field).timestamp = { gte: { seconds: 1672531200 }, lt: { seconds: 1672444800 } }];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
-     * <code>optional .google.protobuf.Timestamp gte = 6 [json_name = "gte", (.buf.validate.priv.field) = { ... }</code>
+     * <code>
+     * optional .google.protobuf.Timestamp gte = 6 [json_name = "gte", (.buf.validate.priv.field) = { ... }
+     * </code>
      */
     public Builder mergeGte(com.google.protobuf.Timestamp value) {
       if (gteBuilder_ == null) {
-        if (((bitField0_ & 0x00000010) != 0) &&
-          gte_ != null &&
-          gte_ != com.google.protobuf.Timestamp.getDefaultInstance()) {
+        if (((bitField0_ & 0x00000010) != 0)
+            && gte_ != null
+            && gte_ != com.google.protobuf.Timestamp.getDefaultInstance()) {
           getGteBuilder().mergeFrom(value);
         } else {
           gte_ = value;
@@ -2277,16 +2611,19 @@ private static final long serialVersionUID = 0L;
       onChanged();
       return this;
     }
+
     /**
+     *
+     *
      * <pre>
-     *`gte` requires the timestamp field value to be greater than or equal to the
+     * `gte` requires the timestamp field value to be greater than or equal to the
      * specified value (exclusive). If the value of `gte` is larger than a
      * specified `lt` or `lte`, the range is reversed, and the field value
      * must be outside the specified range. If the field value doesn't meet
      * the required conditions, an error message is generated.
      *
-     *```proto
-     *message MyTimestamp {
+     * ```proto
+     * message MyTimestamp {
      *  // timestamp must be greater than or equal to '2023-01-01T00:00:00Z' [timestamp.gte]
      *  google.protobuf.Timestamp value = 1 [(buf.validate.field).timestamp.gte = { seconds: 1672444800 }];
      *
@@ -2295,11 +2632,13 @@ private static final long serialVersionUID = 0L;
      *
      *  // timestamp must be greater than or equal to '2023-01-02T00:00:00Z' or less than '2023-01-01T00:00:00Z' [timestamp.gte_lt_exclusive]
      *  google.protobuf.Timestamp other_value = 3 [(buf.validate.field).timestamp = { gte: { seconds: 1672531200 }, lt: { seconds: 1672444800 } }];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
-     * <code>optional .google.protobuf.Timestamp gte = 6 [json_name = "gte", (.buf.validate.priv.field) = { ... }</code>
+     * <code>
+     * optional .google.protobuf.Timestamp gte = 6 [json_name = "gte", (.buf.validate.priv.field) = { ... }
+     * </code>
      */
     public Builder clearGte() {
       bitField0_ = (bitField0_ & ~0x00000010);
@@ -2311,16 +2650,19 @@ private static final long serialVersionUID = 0L;
       onChanged();
       return this;
     }
+
     /**
+     *
+     *
      * <pre>
-     *`gte` requires the timestamp field value to be greater than or equal to the
+     * `gte` requires the timestamp field value to be greater than or equal to the
      * specified value (exclusive). If the value of `gte` is larger than a
      * specified `lt` or `lte`, the range is reversed, and the field value
      * must be outside the specified range. If the field value doesn't meet
      * the required conditions, an error message is generated.
      *
-     *```proto
-     *message MyTimestamp {
+     * ```proto
+     * message MyTimestamp {
      *  // timestamp must be greater than or equal to '2023-01-01T00:00:00Z' [timestamp.gte]
      *  google.protobuf.Timestamp value = 1 [(buf.validate.field).timestamp.gte = { seconds: 1672444800 }];
      *
@@ -2329,27 +2671,32 @@ private static final long serialVersionUID = 0L;
      *
      *  // timestamp must be greater than or equal to '2023-01-02T00:00:00Z' or less than '2023-01-01T00:00:00Z' [timestamp.gte_lt_exclusive]
      *  google.protobuf.Timestamp other_value = 3 [(buf.validate.field).timestamp = { gte: { seconds: 1672531200 }, lt: { seconds: 1672444800 } }];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
-     * <code>optional .google.protobuf.Timestamp gte = 6 [json_name = "gte", (.buf.validate.priv.field) = { ... }</code>
+     * <code>
+     * optional .google.protobuf.Timestamp gte = 6 [json_name = "gte", (.buf.validate.priv.field) = { ... }
+     * </code>
      */
     public com.google.protobuf.Timestamp.Builder getGteBuilder() {
       bitField0_ |= 0x00000010;
       onChanged();
       return getGteFieldBuilder().getBuilder();
     }
+
     /**
+     *
+     *
      * <pre>
-     *`gte` requires the timestamp field value to be greater than or equal to the
+     * `gte` requires the timestamp field value to be greater than or equal to the
      * specified value (exclusive). If the value of `gte` is larger than a
      * specified `lt` or `lte`, the range is reversed, and the field value
      * must be outside the specified range. If the field value doesn't meet
      * the required conditions, an error message is generated.
      *
-     *```proto
-     *message MyTimestamp {
+     * ```proto
+     * message MyTimestamp {
      *  // timestamp must be greater than or equal to '2023-01-01T00:00:00Z' [timestamp.gte]
      *  google.protobuf.Timestamp value = 1 [(buf.validate.field).timestamp.gte = { seconds: 1672444800 }];
      *
@@ -2358,30 +2705,34 @@ private static final long serialVersionUID = 0L;
      *
      *  // timestamp must be greater than or equal to '2023-01-02T00:00:00Z' or less than '2023-01-01T00:00:00Z' [timestamp.gte_lt_exclusive]
      *  google.protobuf.Timestamp other_value = 3 [(buf.validate.field).timestamp = { gte: { seconds: 1672531200 }, lt: { seconds: 1672444800 } }];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
-     * <code>optional .google.protobuf.Timestamp gte = 6 [json_name = "gte", (.buf.validate.priv.field) = { ... }</code>
+     * <code>
+     * optional .google.protobuf.Timestamp gte = 6 [json_name = "gte", (.buf.validate.priv.field) = { ... }
+     * </code>
      */
     public com.google.protobuf.TimestampOrBuilder getGteOrBuilder() {
       if (gteBuilder_ != null) {
         return gteBuilder_.getMessageOrBuilder();
       } else {
-        return gte_ == null ?
-            com.google.protobuf.Timestamp.getDefaultInstance() : gte_;
+        return gte_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : gte_;
       }
     }
+
     /**
+     *
+     *
      * <pre>
-     *`gte` requires the timestamp field value to be greater than or equal to the
+     * `gte` requires the timestamp field value to be greater than or equal to the
      * specified value (exclusive). If the value of `gte` is larger than a
      * specified `lt` or `lte`, the range is reversed, and the field value
      * must be outside the specified range. If the field value doesn't meet
      * the required conditions, an error message is generated.
      *
-     *```proto
-     *message MyTimestamp {
+     * ```proto
+     * message MyTimestamp {
      *  // timestamp must be greater than or equal to '2023-01-01T00:00:00Z' [timestamp.gte]
      *  google.protobuf.Timestamp value = 1 [(buf.validate.field).timestamp.gte = { seconds: 1672444800 }];
      *
@@ -2390,78 +2741,98 @@ private static final long serialVersionUID = 0L;
      *
      *  // timestamp must be greater than or equal to '2023-01-02T00:00:00Z' or less than '2023-01-01T00:00:00Z' [timestamp.gte_lt_exclusive]
      *  google.protobuf.Timestamp other_value = 3 [(buf.validate.field).timestamp = { gte: { seconds: 1672531200 }, lt: { seconds: 1672444800 } }];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
-     * <code>optional .google.protobuf.Timestamp gte = 6 [json_name = "gte", (.buf.validate.priv.field) = { ... }</code>
+     * <code>
+     * optional .google.protobuf.Timestamp gte = 6 [json_name = "gte", (.buf.validate.priv.field) = { ... }
+     * </code>
      */
     private com.google.protobuf.SingleFieldBuilderV3<
-        com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder> 
+            com.google.protobuf.Timestamp,
+            com.google.protobuf.Timestamp.Builder,
+            com.google.protobuf.TimestampOrBuilder>
         getGteFieldBuilder() {
       if (gteBuilder_ == null) {
-        gteBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-            com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder>(
-                getGte(),
-                getParentForChildren(),
-                isClean());
+        gteBuilder_ =
+            new com.google.protobuf.SingleFieldBuilderV3<
+                com.google.protobuf.Timestamp,
+                com.google.protobuf.Timestamp.Builder,
+                com.google.protobuf.TimestampOrBuilder>(
+                getGte(), getParentForChildren(), isClean());
         gte_ = null;
       }
       return gteBuilder_;
     }
 
-    private boolean ltNow_ ;
+    private boolean ltNow_;
+
     /**
-     * <pre>
-     *`lt_now` specifies that this field, of the `google.protobuf.Timestamp` type, must be less than the current time. `lt_now` can only be used with the `within` rule.
      *
-     *```proto
-     *message MyTimestamp {
+     *
+     * <pre>
+     * `lt_now` specifies that this field, of the `google.protobuf.Timestamp` type, must be less than the current time. `lt_now` can only be used with the `within` rule.
+     *
+     * ```proto
+     * message MyTimestamp {
      *  // value must be less than now
      *   google.protobuf.Timestamp created_at = 1 [(buf.validate.field).timestamp.lt_now = true];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
-     * <code>optional bool lt_now = 7 [json_name = "ltNow", (.buf.validate.priv.field) = { ... }</code>
+     * <code>optional bool lt_now = 7 [json_name = "ltNow", (.buf.validate.priv.field) = { ... }
+     * </code>
+     *
      * @return Whether the ltNow field is set.
      */
     @java.lang.Override
     public boolean hasLtNow() {
       return ((bitField0_ & 0x00000020) != 0);
     }
+
     /**
-     * <pre>
-     *`lt_now` specifies that this field, of the `google.protobuf.Timestamp` type, must be less than the current time. `lt_now` can only be used with the `within` rule.
      *
-     *```proto
-     *message MyTimestamp {
+     *
+     * <pre>
+     * `lt_now` specifies that this field, of the `google.protobuf.Timestamp` type, must be less than the current time. `lt_now` can only be used with the `within` rule.
+     *
+     * ```proto
+     * message MyTimestamp {
      *  // value must be less than now
      *   google.protobuf.Timestamp created_at = 1 [(buf.validate.field).timestamp.lt_now = true];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
-     * <code>optional bool lt_now = 7 [json_name = "ltNow", (.buf.validate.priv.field) = { ... }</code>
+     * <code>optional bool lt_now = 7 [json_name = "ltNow", (.buf.validate.priv.field) = { ... }
+     * </code>
+     *
      * @return The ltNow.
      */
     @java.lang.Override
     public boolean getLtNow() {
       return ltNow_;
     }
+
     /**
-     * <pre>
-     *`lt_now` specifies that this field, of the `google.protobuf.Timestamp` type, must be less than the current time. `lt_now` can only be used with the `within` rule.
      *
-     *```proto
-     *message MyTimestamp {
+     *
+     * <pre>
+     * `lt_now` specifies that this field, of the `google.protobuf.Timestamp` type, must be less than the current time. `lt_now` can only be used with the `within` rule.
+     *
+     * ```proto
+     * message MyTimestamp {
      *  // value must be less than now
      *   google.protobuf.Timestamp created_at = 1 [(buf.validate.field).timestamp.lt_now = true];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
-     * <code>optional bool lt_now = 7 [json_name = "ltNow", (.buf.validate.priv.field) = { ... }</code>
+     * <code>optional bool lt_now = 7 [json_name = "ltNow", (.buf.validate.priv.field) = { ... }
+     * </code>
+     *
      * @param value The ltNow to set.
      * @return This builder for chaining.
      */
@@ -2472,19 +2843,24 @@ private static final long serialVersionUID = 0L;
       onChanged();
       return this;
     }
+
     /**
-     * <pre>
-     *`lt_now` specifies that this field, of the `google.protobuf.Timestamp` type, must be less than the current time. `lt_now` can only be used with the `within` rule.
      *
-     *```proto
-     *message MyTimestamp {
+     *
+     * <pre>
+     * `lt_now` specifies that this field, of the `google.protobuf.Timestamp` type, must be less than the current time. `lt_now` can only be used with the `within` rule.
+     *
+     * ```proto
+     * message MyTimestamp {
      *  // value must be less than now
      *   google.protobuf.Timestamp created_at = 1 [(buf.validate.field).timestamp.lt_now = true];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
-     * <code>optional bool lt_now = 7 [json_name = "ltNow", (.buf.validate.priv.field) = { ... }</code>
+     * <code>optional bool lt_now = 7 [json_name = "ltNow", (.buf.validate.priv.field) = { ... }
+     * </code>
+     *
      * @return This builder for chaining.
      */
     public Builder clearLtNow() {
@@ -2494,58 +2870,73 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private boolean gtNow_ ;
+    private boolean gtNow_;
+
     /**
-     * <pre>
-     *`gt_now` specifies that this field, of the `google.protobuf.Timestamp` type, must be greater than the current time. `gt_now` can only be used with the `within` rule.
      *
-     *```proto
-     *message MyTimestamp {
+     *
+     * <pre>
+     * `gt_now` specifies that this field, of the `google.protobuf.Timestamp` type, must be greater than the current time. `gt_now` can only be used with the `within` rule.
+     *
+     * ```proto
+     * message MyTimestamp {
      *  // value must be greater than now
      *   google.protobuf.Timestamp created_at = 1 [(buf.validate.field).timestamp.gt_now = true];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
-     * <code>optional bool gt_now = 8 [json_name = "gtNow", (.buf.validate.priv.field) = { ... }</code>
+     * <code>optional bool gt_now = 8 [json_name = "gtNow", (.buf.validate.priv.field) = { ... }
+     * </code>
+     *
      * @return Whether the gtNow field is set.
      */
     @java.lang.Override
     public boolean hasGtNow() {
       return ((bitField0_ & 0x00000040) != 0);
     }
+
     /**
-     * <pre>
-     *`gt_now` specifies that this field, of the `google.protobuf.Timestamp` type, must be greater than the current time. `gt_now` can only be used with the `within` rule.
      *
-     *```proto
-     *message MyTimestamp {
+     *
+     * <pre>
+     * `gt_now` specifies that this field, of the `google.protobuf.Timestamp` type, must be greater than the current time. `gt_now` can only be used with the `within` rule.
+     *
+     * ```proto
+     * message MyTimestamp {
      *  // value must be greater than now
      *   google.protobuf.Timestamp created_at = 1 [(buf.validate.field).timestamp.gt_now = true];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
-     * <code>optional bool gt_now = 8 [json_name = "gtNow", (.buf.validate.priv.field) = { ... }</code>
+     * <code>optional bool gt_now = 8 [json_name = "gtNow", (.buf.validate.priv.field) = { ... }
+     * </code>
+     *
      * @return The gtNow.
      */
     @java.lang.Override
     public boolean getGtNow() {
       return gtNow_;
     }
+
     /**
-     * <pre>
-     *`gt_now` specifies that this field, of the `google.protobuf.Timestamp` type, must be greater than the current time. `gt_now` can only be used with the `within` rule.
      *
-     *```proto
-     *message MyTimestamp {
+     *
+     * <pre>
+     * `gt_now` specifies that this field, of the `google.protobuf.Timestamp` type, must be greater than the current time. `gt_now` can only be used with the `within` rule.
+     *
+     * ```proto
+     * message MyTimestamp {
      *  // value must be greater than now
      *   google.protobuf.Timestamp created_at = 1 [(buf.validate.field).timestamp.gt_now = true];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
-     * <code>optional bool gt_now = 8 [json_name = "gtNow", (.buf.validate.priv.field) = { ... }</code>
+     * <code>optional bool gt_now = 8 [json_name = "gtNow", (.buf.validate.priv.field) = { ... }
+     * </code>
+     *
      * @param value The gtNow to set.
      * @return This builder for chaining.
      */
@@ -2556,19 +2947,24 @@ private static final long serialVersionUID = 0L;
       onChanged();
       return this;
     }
+
     /**
-     * <pre>
-     *`gt_now` specifies that this field, of the `google.protobuf.Timestamp` type, must be greater than the current time. `gt_now` can only be used with the `within` rule.
      *
-     *```proto
-     *message MyTimestamp {
+     *
+     * <pre>
+     * `gt_now` specifies that this field, of the `google.protobuf.Timestamp` type, must be greater than the current time. `gt_now` can only be used with the `within` rule.
+     *
+     * ```proto
+     * message MyTimestamp {
      *  // value must be greater than now
      *   google.protobuf.Timestamp created_at = 1 [(buf.validate.field).timestamp.gt_now = true];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
-     * <code>optional bool gt_now = 8 [json_name = "gtNow", (.buf.validate.priv.field) = { ... }</code>
+     * <code>optional bool gt_now = 8 [json_name = "gtNow", (.buf.validate.priv.field) = { ... }
+     * </code>
+     *
      * @return This builder for chaining.
      */
     public Builder clearGtNow() {
@@ -2580,38 +2976,53 @@ private static final long serialVersionUID = 0L;
 
     private com.google.protobuf.Duration within_;
     private com.google.protobuf.SingleFieldBuilderV3<
-        com.google.protobuf.Duration, com.google.protobuf.Duration.Builder, com.google.protobuf.DurationOrBuilder> withinBuilder_;
+            com.google.protobuf.Duration,
+            com.google.protobuf.Duration.Builder,
+            com.google.protobuf.DurationOrBuilder>
+        withinBuilder_;
+
     /**
+     *
+     *
      * <pre>
      * `within` specifies that this field, of the `google.protobuf.Timestamp` type, must be within the specified duration of the current time. If the field value isn't within the duration, an error message is generated.
      *
-     *```proto
-     *message MyTimestamp {
+     * ```proto
+     * message MyTimestamp {
      *  // value must be within 1 hour of now
      *   google.protobuf.Timestamp created_at = 1 [(buf.validate.field).timestamp.within = {seconds: 3600}];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
-     * <code>optional .google.protobuf.Duration within = 9 [json_name = "within", (.buf.validate.priv.field) = { ... }</code>
+     * <code>
+     * optional .google.protobuf.Duration within = 9 [json_name = "within", (.buf.validate.priv.field) = { ... }
+     * </code>
+     *
      * @return Whether the within field is set.
      */
     public boolean hasWithin() {
       return ((bitField0_ & 0x00000080) != 0);
     }
+
     /**
+     *
+     *
      * <pre>
      * `within` specifies that this field, of the `google.protobuf.Timestamp` type, must be within the specified duration of the current time. If the field value isn't within the duration, an error message is generated.
      *
-     *```proto
-     *message MyTimestamp {
+     * ```proto
+     * message MyTimestamp {
      *  // value must be within 1 hour of now
      *   google.protobuf.Timestamp created_at = 1 [(buf.validate.field).timestamp.within = {seconds: 3600}];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
-     * <code>optional .google.protobuf.Duration within = 9 [json_name = "within", (.buf.validate.priv.field) = { ... }</code>
+     * <code>
+     * optional .google.protobuf.Duration within = 9 [json_name = "within", (.buf.validate.priv.field) = { ... }
+     * </code>
+     *
      * @return The within.
      */
     public com.google.protobuf.Duration getWithin() {
@@ -2621,19 +3032,24 @@ private static final long serialVersionUID = 0L;
         return withinBuilder_.getMessage();
       }
     }
+
     /**
+     *
+     *
      * <pre>
      * `within` specifies that this field, of the `google.protobuf.Timestamp` type, must be within the specified duration of the current time. If the field value isn't within the duration, an error message is generated.
      *
-     *```proto
-     *message MyTimestamp {
+     * ```proto
+     * message MyTimestamp {
      *  // value must be within 1 hour of now
      *   google.protobuf.Timestamp created_at = 1 [(buf.validate.field).timestamp.within = {seconds: 3600}];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
-     * <code>optional .google.protobuf.Duration within = 9 [json_name = "within", (.buf.validate.priv.field) = { ... }</code>
+     * <code>
+     * optional .google.protobuf.Duration within = 9 [json_name = "within", (.buf.validate.priv.field) = { ... }
+     * </code>
      */
     public Builder setWithin(com.google.protobuf.Duration value) {
       if (withinBuilder_ == null) {
@@ -2648,22 +3064,26 @@ private static final long serialVersionUID = 0L;
       onChanged();
       return this;
     }
+
     /**
+     *
+     *
      * <pre>
      * `within` specifies that this field, of the `google.protobuf.Timestamp` type, must be within the specified duration of the current time. If the field value isn't within the duration, an error message is generated.
      *
-     *```proto
-     *message MyTimestamp {
+     * ```proto
+     * message MyTimestamp {
      *  // value must be within 1 hour of now
      *   google.protobuf.Timestamp created_at = 1 [(buf.validate.field).timestamp.within = {seconds: 3600}];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
-     * <code>optional .google.protobuf.Duration within = 9 [json_name = "within", (.buf.validate.priv.field) = { ... }</code>
+     * <code>
+     * optional .google.protobuf.Duration within = 9 [json_name = "within", (.buf.validate.priv.field) = { ... }
+     * </code>
      */
-    public Builder setWithin(
-        com.google.protobuf.Duration.Builder builderForValue) {
+    public Builder setWithin(com.google.protobuf.Duration.Builder builderForValue) {
       if (withinBuilder_ == null) {
         within_ = builderForValue.build();
       } else {
@@ -2673,25 +3093,30 @@ private static final long serialVersionUID = 0L;
       onChanged();
       return this;
     }
+
     /**
+     *
+     *
      * <pre>
      * `within` specifies that this field, of the `google.protobuf.Timestamp` type, must be within the specified duration of the current time. If the field value isn't within the duration, an error message is generated.
      *
-     *```proto
-     *message MyTimestamp {
+     * ```proto
+     * message MyTimestamp {
      *  // value must be within 1 hour of now
      *   google.protobuf.Timestamp created_at = 1 [(buf.validate.field).timestamp.within = {seconds: 3600}];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
-     * <code>optional .google.protobuf.Duration within = 9 [json_name = "within", (.buf.validate.priv.field) = { ... }</code>
+     * <code>
+     * optional .google.protobuf.Duration within = 9 [json_name = "within", (.buf.validate.priv.field) = { ... }
+     * </code>
      */
     public Builder mergeWithin(com.google.protobuf.Duration value) {
       if (withinBuilder_ == null) {
-        if (((bitField0_ & 0x00000080) != 0) &&
-          within_ != null &&
-          within_ != com.google.protobuf.Duration.getDefaultInstance()) {
+        if (((bitField0_ & 0x00000080) != 0)
+            && within_ != null
+            && within_ != com.google.protobuf.Duration.getDefaultInstance()) {
           getWithinBuilder().mergeFrom(value);
         } else {
           within_ = value;
@@ -2703,19 +3128,24 @@ private static final long serialVersionUID = 0L;
       onChanged();
       return this;
     }
+
     /**
+     *
+     *
      * <pre>
      * `within` specifies that this field, of the `google.protobuf.Timestamp` type, must be within the specified duration of the current time. If the field value isn't within the duration, an error message is generated.
      *
-     *```proto
-     *message MyTimestamp {
+     * ```proto
+     * message MyTimestamp {
      *  // value must be within 1 hour of now
      *   google.protobuf.Timestamp created_at = 1 [(buf.validate.field).timestamp.within = {seconds: 3600}];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
-     * <code>optional .google.protobuf.Duration within = 9 [json_name = "within", (.buf.validate.priv.field) = { ... }</code>
+     * <code>
+     * optional .google.protobuf.Duration within = 9 [json_name = "within", (.buf.validate.priv.field) = { ... }
+     * </code>
      */
     public Builder clearWithin() {
       bitField0_ = (bitField0_ & ~0x00000080);
@@ -2727,77 +3157,94 @@ private static final long serialVersionUID = 0L;
       onChanged();
       return this;
     }
+
     /**
+     *
+     *
      * <pre>
      * `within` specifies that this field, of the `google.protobuf.Timestamp` type, must be within the specified duration of the current time. If the field value isn't within the duration, an error message is generated.
      *
-     *```proto
-     *message MyTimestamp {
+     * ```proto
+     * message MyTimestamp {
      *  // value must be within 1 hour of now
      *   google.protobuf.Timestamp created_at = 1 [(buf.validate.field).timestamp.within = {seconds: 3600}];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
-     * <code>optional .google.protobuf.Duration within = 9 [json_name = "within", (.buf.validate.priv.field) = { ... }</code>
+     * <code>
+     * optional .google.protobuf.Duration within = 9 [json_name = "within", (.buf.validate.priv.field) = { ... }
+     * </code>
      */
     public com.google.protobuf.Duration.Builder getWithinBuilder() {
       bitField0_ |= 0x00000080;
       onChanged();
       return getWithinFieldBuilder().getBuilder();
     }
+
     /**
+     *
+     *
      * <pre>
      * `within` specifies that this field, of the `google.protobuf.Timestamp` type, must be within the specified duration of the current time. If the field value isn't within the duration, an error message is generated.
      *
-     *```proto
-     *message MyTimestamp {
+     * ```proto
+     * message MyTimestamp {
      *  // value must be within 1 hour of now
      *   google.protobuf.Timestamp created_at = 1 [(buf.validate.field).timestamp.within = {seconds: 3600}];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
-     * <code>optional .google.protobuf.Duration within = 9 [json_name = "within", (.buf.validate.priv.field) = { ... }</code>
+     * <code>
+     * optional .google.protobuf.Duration within = 9 [json_name = "within", (.buf.validate.priv.field) = { ... }
+     * </code>
      */
     public com.google.protobuf.DurationOrBuilder getWithinOrBuilder() {
       if (withinBuilder_ != null) {
         return withinBuilder_.getMessageOrBuilder();
       } else {
-        return within_ == null ?
-            com.google.protobuf.Duration.getDefaultInstance() : within_;
+        return within_ == null ? com.google.protobuf.Duration.getDefaultInstance() : within_;
       }
     }
+
     /**
+     *
+     *
      * <pre>
      * `within` specifies that this field, of the `google.protobuf.Timestamp` type, must be within the specified duration of the current time. If the field value isn't within the duration, an error message is generated.
      *
-     *```proto
-     *message MyTimestamp {
+     * ```proto
+     * message MyTimestamp {
      *  // value must be within 1 hour of now
      *   google.protobuf.Timestamp created_at = 1 [(buf.validate.field).timestamp.within = {seconds: 3600}];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
-     * <code>optional .google.protobuf.Duration within = 9 [json_name = "within", (.buf.validate.priv.field) = { ... }</code>
+     * <code>
+     * optional .google.protobuf.Duration within = 9 [json_name = "within", (.buf.validate.priv.field) = { ... }
+     * </code>
      */
     private com.google.protobuf.SingleFieldBuilderV3<
-        com.google.protobuf.Duration, com.google.protobuf.Duration.Builder, com.google.protobuf.DurationOrBuilder> 
+            com.google.protobuf.Duration,
+            com.google.protobuf.Duration.Builder,
+            com.google.protobuf.DurationOrBuilder>
         getWithinFieldBuilder() {
       if (withinBuilder_ == null) {
-        withinBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-            com.google.protobuf.Duration, com.google.protobuf.Duration.Builder, com.google.protobuf.DurationOrBuilder>(
-                getWithin(),
-                getParentForChildren(),
-                isClean());
+        withinBuilder_ =
+            new com.google.protobuf.SingleFieldBuilderV3<
+                com.google.protobuf.Duration,
+                com.google.protobuf.Duration.Builder,
+                com.google.protobuf.DurationOrBuilder>(
+                getWithin(), getParentForChildren(), isClean());
         within_ = null;
       }
       return withinBuilder_;
     }
+
     @java.lang.Override
-    public final Builder setUnknownFields(
-        final com.google.protobuf.UnknownFieldSet unknownFields) {
+    public final Builder setUnknownFields(final com.google.protobuf.UnknownFieldSet unknownFields) {
       return super.setUnknownFields(unknownFields);
     }
 
@@ -2807,12 +3254,12 @@ private static final long serialVersionUID = 0L;
       return super.mergeUnknownFields(unknownFields);
     }
 
-
     // @@protoc_insertion_point(builder_scope:buf.validate.TimestampRules)
   }
 
   // @@protoc_insertion_point(class_scope:buf.validate.TimestampRules)
   private static final build.buf.validate.TimestampRules DEFAULT_INSTANCE;
+
   static {
     DEFAULT_INSTANCE = new build.buf.validate.TimestampRules();
   }
@@ -2821,27 +3268,27 @@ private static final long serialVersionUID = 0L;
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<TimestampRules>
-      PARSER = new com.google.protobuf.AbstractParser<TimestampRules>() {
-    @java.lang.Override
-    public TimestampRules parsePartialFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      Builder builder = newBuilder();
-      try {
-        builder.mergeFrom(input, extensionRegistry);
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(builder.buildPartial());
-      } catch (com.google.protobuf.UninitializedMessageException e) {
-        throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(e)
-            .setUnfinishedMessage(builder.buildPartial());
-      }
-      return builder.buildPartial();
-    }
-  };
+  private static final com.google.protobuf.Parser<TimestampRules> PARSER =
+      new com.google.protobuf.AbstractParser<TimestampRules>() {
+        @java.lang.Override
+        public TimestampRules parsePartialFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+          Builder builder = newBuilder();
+          try {
+            builder.mergeFrom(input, extensionRegistry);
+          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+            throw e.setUnfinishedMessage(builder.buildPartial());
+          } catch (com.google.protobuf.UninitializedMessageException e) {
+            throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+          } catch (java.io.IOException e) {
+            throw new com.google.protobuf.InvalidProtocolBufferException(e)
+                .setUnfinishedMessage(builder.buildPartial());
+          }
+          return builder.buildPartial();
+        }
+      };
 
   public static com.google.protobuf.Parser<TimestampRules> parser() {
     return PARSER;
@@ -2856,6 +3303,4 @@ private static final long serialVersionUID = 0L;
   public build.buf.validate.TimestampRules getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
-
 }
-

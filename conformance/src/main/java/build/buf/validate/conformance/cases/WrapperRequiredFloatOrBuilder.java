@@ -3,22 +3,30 @@
 
 package build.buf.validate.conformance.cases;
 
-public interface WrapperRequiredFloatOrBuilder extends
+public interface WrapperRequiredFloatOrBuilder
+    extends
     // @@protoc_insertion_point(interface_extends:buf.validate.conformance.cases.WrapperRequiredFloat)
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>.google.protobuf.FloatValue val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
+   * <code>.google.protobuf.FloatValue val = 1 [json_name = "val", (.buf.validate.field) = { ... }
+   * </code>
+   *
    * @return Whether the val field is set.
    */
   boolean hasVal();
+
   /**
-   * <code>.google.protobuf.FloatValue val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
+   * <code>.google.protobuf.FloatValue val = 1 [json_name = "val", (.buf.validate.field) = { ... }
+   * </code>
+   *
    * @return The val.
    */
   com.google.protobuf.FloatValue getVal();
+
   /**
-   * <code>.google.protobuf.FloatValue val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
+   * <code>.google.protobuf.FloatValue val = 1 [json_name = "val", (.buf.validate.field) = { ... }
+   * </code>
    */
   com.google.protobuf.FloatValueOrBuilder getValOrBuilder();
 }

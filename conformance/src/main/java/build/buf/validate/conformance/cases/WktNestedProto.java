@@ -5,83 +5,89 @@ package build.buf.validate.conformance.cases;
 
 public final class WktNestedProto {
   private WktNestedProto() {}
-  public static void registerAllExtensions(
-      com.google.protobuf.ExtensionRegistryLite registry) {
+
+  public static void registerAllExtensions(com.google.protobuf.ExtensionRegistryLite registry) {}
+
+  public static void registerAllExtensions(com.google.protobuf.ExtensionRegistry registry) {
+    registerAllExtensions((com.google.protobuf.ExtensionRegistryLite) registry);
   }
 
-  public static void registerAllExtensions(
-      com.google.protobuf.ExtensionRegistry registry) {
-    registerAllExtensions(
-        (com.google.protobuf.ExtensionRegistryLite) registry);
-  }
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_buf_validate_conformance_cases_WktLevelOne_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_buf_validate_conformance_cases_WktLevelOne_descriptor;
+  static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_buf_validate_conformance_cases_WktLevelOne_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_buf_validate_conformance_cases_WktLevelOne_WktLevelTwo_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_buf_validate_conformance_cases_WktLevelOne_WktLevelTwo_descriptor;
+  static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_buf_validate_conformance_cases_WktLevelOne_WktLevelTwo_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_buf_validate_conformance_cases_WktLevelOne_WktLevelTwo_WktLevelThree_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_buf_validate_conformance_cases_WktLevelOne_WktLevelTwo_WktLevelThree_descriptor;
+  static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_buf_validate_conformance_cases_WktLevelOne_WktLevelTwo_WktLevelThree_fieldAccessorTable;
 
-  public static com.google.protobuf.Descriptors.FileDescriptor
-      getDescriptor() {
+  public static com.google.protobuf.Descriptors.FileDescriptor getDescriptor() {
     return descriptor;
   }
-  private static  com.google.protobuf.Descriptors.FileDescriptor
-      descriptor;
+
+  private static com.google.protobuf.Descriptors.FileDescriptor descriptor;
+
   static {
     java.lang.String[] descriptorData = {
-      "\n/buf/validate/conformance/cases/wkt_nes" +
-      "ted.proto\022\036buf.validate.conformance.case" +
-      "s\032\033buf/validate/validate.proto\"\204\002\n\013WktLe" +
-      "velOne\022Q\n\003two\030\001 \001(\01327.buf.validate.confo" +
-      "rmance.cases.WktLevelOne.WktLevelTwoB\006\272H" +
-      "\003\310\001\001R\003two\032\241\001\n\013WktLevelTwo\022c\n\005three\030\001 \001(\013" +
-      "2E.buf.validate.conformance.cases.WktLev" +
-      "elOne.WktLevelTwo.WktLevelThreeB\006\272H\003\310\001\001R" +
-      "\005three\032-\n\rWktLevelThree\022\034\n\004uuid\030\001 \001(\tB\010\272" +
-      "H\005r\003\260\001\001R\004uuidB\322\001\n$build.buf.validate.con" +
-      "formance.casesB\016WktNestedProtoP\001\242\002\004BVCC\252" +
-      "\002\036Buf.Validate.Conformance.Cases\312\002\036Buf\\V" +
-      "alidate\\Conformance\\Cases\342\002*Buf\\Validate" +
-      "\\Conformance\\Cases\\GPBMetadata\352\002!Buf::Va" +
-      "lidate::Conformance::Casesb\006proto3"
+      "\n/buf/validate/conformance/cases/wkt_nes"
+          + "ted.proto\022\036buf.validate.conformance.case"
+          + "s\032\033buf/validate/validate.proto\"\204\002\n\013WktLe"
+          + "velOne\022Q\n\003two\030\001 \001(\01327.buf.validate.confo"
+          + "rmance.cases.WktLevelOne.WktLevelTwoB\006\272H"
+          + "\003\310\001\001R\003two\032\241\001\n\013WktLevelTwo\022c\n\005three\030\001 \001(\013"
+          + "2E.buf.validate.conformance.cases.WktLev"
+          + "elOne.WktLevelTwo.WktLevelThreeB\006\272H\003\310\001\001R"
+          + "\005three\032-\n\rWktLevelThree\022\034\n\004uuid\030\001 \001(\tB\010\272"
+          + "H\005r\003\260\001\001R\004uuidB\322\001\n$build.buf.validate.con"
+          + "formance.casesB\016WktNestedProtoP\001\242\002\004BVCC\252"
+          + "\002\036Buf.Validate.Conformance.Cases\312\002\036Buf\\V"
+          + "alidate\\Conformance\\Cases\342\002*Buf\\Validate"
+          + "\\Conformance\\Cases\\GPBMetadata\352\002!Buf::Va"
+          + "lidate::Conformance::Casesb\006proto3"
     };
-    descriptor = com.google.protobuf.Descriptors.FileDescriptor
-      .internalBuildGeneratedFileFrom(descriptorData,
-        new com.google.protobuf.Descriptors.FileDescriptor[] {
-          build.buf.validate.ValidateProto.getDescriptor(),
-        });
+    descriptor =
+        com.google.protobuf.Descriptors.FileDescriptor.internalBuildGeneratedFileFrom(
+            descriptorData,
+            new com.google.protobuf.Descriptors.FileDescriptor[] {
+              build.buf.validate.ValidateProto.getDescriptor(),
+            });
     internal_static_buf_validate_conformance_cases_WktLevelOne_descriptor =
-      getDescriptor().getMessageTypes().get(0);
-    internal_static_buf_validate_conformance_cases_WktLevelOne_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_buf_validate_conformance_cases_WktLevelOne_descriptor,
-        new java.lang.String[] { "Two", });
+        getDescriptor().getMessageTypes().get(0);
+    internal_static_buf_validate_conformance_cases_WktLevelOne_fieldAccessorTable =
+        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_buf_validate_conformance_cases_WktLevelOne_descriptor,
+            new java.lang.String[] {
+              "Two",
+            });
     internal_static_buf_validate_conformance_cases_WktLevelOne_WktLevelTwo_descriptor =
-      internal_static_buf_validate_conformance_cases_WktLevelOne_descriptor.getNestedTypes().get(0);
-    internal_static_buf_validate_conformance_cases_WktLevelOne_WktLevelTwo_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_buf_validate_conformance_cases_WktLevelOne_WktLevelTwo_descriptor,
-        new java.lang.String[] { "Three", });
+        internal_static_buf_validate_conformance_cases_WktLevelOne_descriptor
+            .getNestedTypes()
+            .get(0);
+    internal_static_buf_validate_conformance_cases_WktLevelOne_WktLevelTwo_fieldAccessorTable =
+        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_buf_validate_conformance_cases_WktLevelOne_WktLevelTwo_descriptor,
+            new java.lang.String[] {
+              "Three",
+            });
     internal_static_buf_validate_conformance_cases_WktLevelOne_WktLevelTwo_WktLevelThree_descriptor =
-      internal_static_buf_validate_conformance_cases_WktLevelOne_WktLevelTwo_descriptor.getNestedTypes().get(0);
-    internal_static_buf_validate_conformance_cases_WktLevelOne_WktLevelTwo_WktLevelThree_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_buf_validate_conformance_cases_WktLevelOne_WktLevelTwo_WktLevelThree_descriptor,
-        new java.lang.String[] { "Uuid", });
+        internal_static_buf_validate_conformance_cases_WktLevelOne_WktLevelTwo_descriptor
+            .getNestedTypes()
+            .get(0);
+    internal_static_buf_validate_conformance_cases_WktLevelOne_WktLevelTwo_WktLevelThree_fieldAccessorTable =
+        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_buf_validate_conformance_cases_WktLevelOne_WktLevelTwo_WktLevelThree_descriptor,
+            new java.lang.String[] {
+              "Uuid",
+            });
     com.google.protobuf.ExtensionRegistry registry =
         com.google.protobuf.ExtensionRegistry.newInstance();
     registry.add(build.buf.validate.ValidateProto.field);
-    com.google.protobuf.Descriptors.FileDescriptor
-        .internalUpdateFileDescriptor(descriptor, registry);
+    com.google.protobuf.Descriptors.FileDescriptor.internalUpdateFileDescriptor(
+        descriptor, registry);
     build.buf.validate.ValidateProto.getDescriptor();
   }
 

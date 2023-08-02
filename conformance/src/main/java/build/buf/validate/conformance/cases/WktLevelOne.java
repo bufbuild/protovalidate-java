@@ -3,152 +3,176 @@
 
 package build.buf.validate.conformance.cases;
 
-/**
- * Protobuf type {@code buf.validate.conformance.cases.WktLevelOne}
- */
-public final class WktLevelOne extends
-    com.google.protobuf.GeneratedMessageV3 implements
+/** Protobuf type {@code buf.validate.conformance.cases.WktLevelOne} */
+public final class WktLevelOne extends com.google.protobuf.GeneratedMessageV3
+    implements
     // @@protoc_insertion_point(message_implements:buf.validate.conformance.cases.WktLevelOne)
     WktLevelOneOrBuilder {
-private static final long serialVersionUID = 0L;
+  private static final long serialVersionUID = 0L;
+
   // Use WktLevelOne.newBuilder() to construct.
   private WktLevelOne(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
-  private WktLevelOne() {
-  }
+
+  private WktLevelOne() {}
 
   @java.lang.Override
   @SuppressWarnings({"unused"})
-  protected java.lang.Object newInstance(
-      UnusedPrivateParameter unused) {
+  protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
     return new WktLevelOne();
   }
 
-  public static final com.google.protobuf.Descriptors.Descriptor
-      getDescriptor() {
-    return build.buf.validate.conformance.cases.WktNestedProto.internal_static_buf_validate_conformance_cases_WktLevelOne_descriptor;
+  public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+    return build.buf.validate.conformance.cases.WktNestedProto
+        .internal_static_buf_validate_conformance_cases_WktLevelOne_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return build.buf.validate.conformance.cases.WktNestedProto.internal_static_buf_validate_conformance_cases_WktLevelOne_fieldAccessorTable
+    return build.buf.validate.conformance.cases.WktNestedProto
+        .internal_static_buf_validate_conformance_cases_WktLevelOne_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            build.buf.validate.conformance.cases.WktLevelOne.class, build.buf.validate.conformance.cases.WktLevelOne.Builder.class);
+            build.buf.validate.conformance.cases.WktLevelOne.class,
+            build.buf.validate.conformance.cases.WktLevelOne.Builder.class);
   }
 
-  public interface WktLevelTwoOrBuilder extends
+  public interface WktLevelTwoOrBuilder
+      extends
       // @@protoc_insertion_point(interface_extends:buf.validate.conformance.cases.WktLevelOne.WktLevelTwo)
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.WktLevelThree three = 1 [json_name = "three", (.buf.validate.field) = { ... }</code>
+     * <code>
+     * .buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.WktLevelThree three = 1 [json_name = "three", (.buf.validate.field) = { ... }
+     * </code>
+     *
      * @return Whether the three field is set.
      */
     boolean hasThree();
+
     /**
-     * <code>.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.WktLevelThree three = 1 [json_name = "three", (.buf.validate.field) = { ... }</code>
+     * <code>
+     * .buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.WktLevelThree three = 1 [json_name = "three", (.buf.validate.field) = { ... }
+     * </code>
+     *
      * @return The three.
      */
     build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.WktLevelThree getThree();
+
     /**
-     * <code>.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.WktLevelThree three = 1 [json_name = "three", (.buf.validate.field) = { ... }</code>
+     * <code>
+     * .buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.WktLevelThree three = 1 [json_name = "three", (.buf.validate.field) = { ... }
+     * </code>
      */
-    build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.WktLevelThreeOrBuilder getThreeOrBuilder();
+    build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.WktLevelThreeOrBuilder
+        getThreeOrBuilder();
   }
-  /**
-   * Protobuf type {@code buf.validate.conformance.cases.WktLevelOne.WktLevelTwo}
-   */
-  public static final class WktLevelTwo extends
-      com.google.protobuf.GeneratedMessageV3 implements
+
+  /** Protobuf type {@code buf.validate.conformance.cases.WktLevelOne.WktLevelTwo} */
+  public static final class WktLevelTwo extends com.google.protobuf.GeneratedMessageV3
+      implements
       // @@protoc_insertion_point(message_implements:buf.validate.conformance.cases.WktLevelOne.WktLevelTwo)
       WktLevelTwoOrBuilder {
-  private static final long serialVersionUID = 0L;
+    private static final long serialVersionUID = 0L;
+
     // Use WktLevelTwo.newBuilder() to construct.
     private WktLevelTwo(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
-    private WktLevelTwo() {
-    }
+
+    private WktLevelTwo() {}
 
     @java.lang.Override
     @SuppressWarnings({"unused"})
-    protected java.lang.Object newInstance(
-        UnusedPrivateParameter unused) {
+    protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
       return new WktLevelTwo();
     }
 
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return build.buf.validate.conformance.cases.WktNestedProto.internal_static_buf_validate_conformance_cases_WktLevelOne_WktLevelTwo_descriptor;
+    public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+      return build.buf.validate.conformance.cases.WktNestedProto
+          .internal_static_buf_validate_conformance_cases_WktLevelOne_WktLevelTwo_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return build.buf.validate.conformance.cases.WktNestedProto.internal_static_buf_validate_conformance_cases_WktLevelOne_WktLevelTwo_fieldAccessorTable
+      return build.buf.validate.conformance.cases.WktNestedProto
+          .internal_static_buf_validate_conformance_cases_WktLevelOne_WktLevelTwo_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.class, build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.Builder.class);
+              build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.class,
+              build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.Builder.class);
     }
 
-    public interface WktLevelThreeOrBuilder extends
+    public interface WktLevelThreeOrBuilder
+        extends
         // @@protoc_insertion_point(interface_extends:buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.WktLevelThree)
         com.google.protobuf.MessageOrBuilder {
 
       /**
        * <code>string uuid = 1 [json_name = "uuid", (.buf.validate.field) = { ... }</code>
+       *
        * @return The uuid.
        */
       java.lang.String getUuid();
+
       /**
        * <code>string uuid = 1 [json_name = "uuid", (.buf.validate.field) = { ... }</code>
+       *
        * @return The bytes for uuid.
        */
-      com.google.protobuf.ByteString
-          getUuidBytes();
+      com.google.protobuf.ByteString getUuidBytes();
     }
+
     /**
      * Protobuf type {@code buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.WktLevelThree}
      */
-    public static final class WktLevelThree extends
-        com.google.protobuf.GeneratedMessageV3 implements
+    public static final class WktLevelThree extends com.google.protobuf.GeneratedMessageV3
+        implements
         // @@protoc_insertion_point(message_implements:buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.WktLevelThree)
         WktLevelThreeOrBuilder {
-    private static final long serialVersionUID = 0L;
+      private static final long serialVersionUID = 0L;
+
       // Use WktLevelThree.newBuilder() to construct.
       private WktLevelThree(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
         super(builder);
       }
+
       private WktLevelThree() {
         uuid_ = "";
       }
 
       @java.lang.Override
       @SuppressWarnings({"unused"})
-      protected java.lang.Object newInstance(
-          UnusedPrivateParameter unused) {
+      protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
         return new WktLevelThree();
       }
 
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return build.buf.validate.conformance.cases.WktNestedProto.internal_static_buf_validate_conformance_cases_WktLevelOne_WktLevelTwo_WktLevelThree_descriptor;
+      public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+        return build.buf.validate.conformance.cases.WktNestedProto
+            .internal_static_buf_validate_conformance_cases_WktLevelOne_WktLevelTwo_WktLevelThree_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return build.buf.validate.conformance.cases.WktNestedProto.internal_static_buf_validate_conformance_cases_WktLevelOne_WktLevelTwo_WktLevelThree_fieldAccessorTable
+        return build.buf.validate.conformance.cases.WktNestedProto
+            .internal_static_buf_validate_conformance_cases_WktLevelOne_WktLevelTwo_WktLevelThree_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.WktLevelThree.class, build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.WktLevelThree.Builder.class);
+                build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.WktLevelThree.class,
+                build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.WktLevelThree.Builder
+                    .class);
       }
 
       public static final int UUID_FIELD_NUMBER = 1;
+
       @SuppressWarnings("serial")
       private volatile java.lang.Object uuid_ = "";
+
       /**
        * <code>string uuid = 1 [json_name = "uuid", (.buf.validate.field) = { ... }</code>
+       *
        * @return The uuid.
        */
       @java.lang.Override
@@ -157,25 +181,24 @@ private static final long serialVersionUID = 0L;
         if (ref instanceof java.lang.String) {
           return (java.lang.String) ref;
         } else {
-          com.google.protobuf.ByteString bs = 
-              (com.google.protobuf.ByteString) ref;
+          com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
           uuid_ = s;
           return s;
         }
       }
+
       /**
        * <code>string uuid = 1 [json_name = "uuid", (.buf.validate.field) = { ... }</code>
+       *
        * @return The bytes for uuid.
        */
       @java.lang.Override
-      public com.google.protobuf.ByteString
-          getUuidBytes() {
+      public com.google.protobuf.ByteString getUuidBytes() {
         java.lang.Object ref = uuid_;
         if (ref instanceof java.lang.String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
+          com.google.protobuf.ByteString b =
+              com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
           uuid_ = b;
           return b;
         } else {
@@ -184,6 +207,7 @@ private static final long serialVersionUID = 0L;
       }
 
       private byte memoizedIsInitialized = -1;
+
       @java.lang.Override
       public final boolean isInitialized() {
         byte isInitialized = memoizedIsInitialized;
@@ -195,8 +219,7 @@ private static final long serialVersionUID = 0L;
       }
 
       @java.lang.Override
-      public void writeTo(com.google.protobuf.CodedOutputStream output)
-                          throws java.io.IOException {
+      public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
         if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(uuid_)) {
           com.google.protobuf.GeneratedMessageV3.writeString(output, 1, uuid_);
         }
@@ -220,15 +243,17 @@ private static final long serialVersionUID = 0L;
       @java.lang.Override
       public boolean equals(final java.lang.Object obj) {
         if (obj == this) {
-         return true;
+          return true;
         }
-        if (!(obj instanceof build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.WktLevelThree)) {
+        if (!(obj
+            instanceof
+            build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.WktLevelThree)) {
           return super.equals(obj);
         }
-        build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.WktLevelThree other = (build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.WktLevelThree) obj;
+        build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.WktLevelThree other =
+            (build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.WktLevelThree) obj;
 
-        if (!getUuid()
-            .equals(other.getUuid())) return false;
+        if (!getUuid().equals(other.getUuid())) return false;
         if (!getUnknownFields().equals(other.getUnknownFields())) return false;
         return true;
       }
@@ -247,90 +272,103 @@ private static final long serialVersionUID = 0L;
         return hash;
       }
 
-      public static build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.WktLevelThree parseFrom(
-          java.nio.ByteBuffer data)
-          throws com.google.protobuf.InvalidProtocolBufferException {
+      public static build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.WktLevelThree
+          parseFrom(java.nio.ByteBuffer data)
+              throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data);
-      }
-      public static build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.WktLevelThree parseFrom(
-          java.nio.ByteBuffer data,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return PARSER.parseFrom(data, extensionRegistry);
-      }
-      public static build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.WktLevelThree parseFrom(
-          com.google.protobuf.ByteString data)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return PARSER.parseFrom(data);
-      }
-      public static build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.WktLevelThree parseFrom(
-          com.google.protobuf.ByteString data,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return PARSER.parseFrom(data, extensionRegistry);
-      }
-      public static build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.WktLevelThree parseFrom(byte[] data)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return PARSER.parseFrom(data);
-      }
-      public static build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.WktLevelThree parseFrom(
-          byte[] data,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return PARSER.parseFrom(data, extensionRegistry);
-      }
-      public static build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.WktLevelThree parseFrom(java.io.InputStream input)
-          throws java.io.IOException {
-        return com.google.protobuf.GeneratedMessageV3
-            .parseWithIOException(PARSER, input);
-      }
-      public static build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.WktLevelThree parseFrom(
-          java.io.InputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        return com.google.protobuf.GeneratedMessageV3
-            .parseWithIOException(PARSER, input, extensionRegistry);
       }
 
-      public static build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.WktLevelThree parseDelimitedFrom(java.io.InputStream input)
-          throws java.io.IOException {
-        return com.google.protobuf.GeneratedMessageV3
-            .parseDelimitedWithIOException(PARSER, input);
+      public static build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.WktLevelThree
+          parseFrom(
+              java.nio.ByteBuffer data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+              throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data, extensionRegistry);
       }
 
-      public static build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.WktLevelThree parseDelimitedFrom(
-          java.io.InputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        return com.google.protobuf.GeneratedMessageV3
-            .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+      public static build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.WktLevelThree
+          parseFrom(com.google.protobuf.ByteString data)
+              throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data);
       }
-      public static build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.WktLevelThree parseFrom(
-          com.google.protobuf.CodedInputStream input)
-          throws java.io.IOException {
-        return com.google.protobuf.GeneratedMessageV3
-            .parseWithIOException(PARSER, input);
+
+      public static build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.WktLevelThree
+          parseFrom(
+              com.google.protobuf.ByteString data,
+              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+              throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data, extensionRegistry);
       }
-      public static build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.WktLevelThree parseFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        return com.google.protobuf.GeneratedMessageV3
-            .parseWithIOException(PARSER, input, extensionRegistry);
+
+      public static build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.WktLevelThree
+          parseFrom(byte[] data) throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data);
+      }
+
+      public static build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.WktLevelThree
+          parseFrom(byte[] data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+              throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data, extensionRegistry);
+      }
+
+      public static build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.WktLevelThree
+          parseFrom(java.io.InputStream input) throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
+      }
+
+      public static build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.WktLevelThree
+          parseFrom(
+              java.io.InputStream input,
+              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+              throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+            PARSER, input, extensionRegistry);
+      }
+
+      public static build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.WktLevelThree
+          parseDelimitedFrom(java.io.InputStream input) throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input);
+      }
+
+      public static build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.WktLevelThree
+          parseDelimitedFrom(
+              java.io.InputStream input,
+              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+              throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(
+            PARSER, input, extensionRegistry);
+      }
+
+      public static build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.WktLevelThree
+          parseFrom(com.google.protobuf.CodedInputStream input) throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
+      }
+
+      public static build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.WktLevelThree
+          parseFrom(
+              com.google.protobuf.CodedInputStream input,
+              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+              throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+            PARSER, input, extensionRegistry);
       }
 
       @java.lang.Override
-      public Builder newBuilderForType() { return newBuilder(); }
+      public Builder newBuilderForType() {
+        return newBuilder();
+      }
+
       public static Builder newBuilder() {
         return DEFAULT_INSTANCE.toBuilder();
       }
-      public static Builder newBuilder(build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.WktLevelThree prototype) {
+
+      public static Builder newBuilder(
+          build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.WktLevelThree prototype) {
         return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
       }
+
       @java.lang.Override
       public Builder toBuilder() {
-        return this == DEFAULT_INSTANCE
-            ? new Builder() : new Builder().mergeFrom(this);
+        return this == DEFAULT_INSTANCE ? new Builder() : new Builder().mergeFrom(this);
       }
 
       @java.lang.Override
@@ -339,36 +377,39 @@ private static final long serialVersionUID = 0L;
         Builder builder = new Builder(parent);
         return builder;
       }
+
       /**
        * Protobuf type {@code buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.WktLevelThree}
        */
-      public static final class Builder extends
-          com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+      public static final class Builder
+          extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
+          implements
           // @@protoc_insertion_point(builder_implements:buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.WktLevelThree)
           build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.WktLevelThreeOrBuilder {
-        public static final com.google.protobuf.Descriptors.Descriptor
-            getDescriptor() {
-          return build.buf.validate.conformance.cases.WktNestedProto.internal_static_buf_validate_conformance_cases_WktLevelOne_WktLevelTwo_WktLevelThree_descriptor;
+        public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+          return build.buf.validate.conformance.cases.WktNestedProto
+              .internal_static_buf_validate_conformance_cases_WktLevelOne_WktLevelTwo_WktLevelThree_descriptor;
         }
 
         @java.lang.Override
         protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
             internalGetFieldAccessorTable() {
-          return build.buf.validate.conformance.cases.WktNestedProto.internal_static_buf_validate_conformance_cases_WktLevelOne_WktLevelTwo_WktLevelThree_fieldAccessorTable
+          return build.buf.validate.conformance.cases.WktNestedProto
+              .internal_static_buf_validate_conformance_cases_WktLevelOne_WktLevelTwo_WktLevelThree_fieldAccessorTable
               .ensureFieldAccessorsInitialized(
-                  build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.WktLevelThree.class, build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.WktLevelThree.Builder.class);
+                  build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.WktLevelThree.class,
+                  build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.WktLevelThree.Builder
+                      .class);
         }
 
-        // Construct using build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.WktLevelThree.newBuilder()
-        private Builder() {
+        // Construct using
+        // build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.WktLevelThree.newBuilder()
+        private Builder() {}
 
-        }
-
-        private Builder(
-            com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
           super(parent);
-
         }
+
         @java.lang.Override
         public Builder clear() {
           super.clear();
@@ -378,19 +419,22 @@ private static final long serialVersionUID = 0L;
         }
 
         @java.lang.Override
-        public com.google.protobuf.Descriptors.Descriptor
-            getDescriptorForType() {
-          return build.buf.validate.conformance.cases.WktNestedProto.internal_static_buf_validate_conformance_cases_WktLevelOne_WktLevelTwo_WktLevelThree_descriptor;
+        public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
+          return build.buf.validate.conformance.cases.WktNestedProto
+              .internal_static_buf_validate_conformance_cases_WktLevelOne_WktLevelTwo_WktLevelThree_descriptor;
         }
 
         @java.lang.Override
-        public build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.WktLevelThree getDefaultInstanceForType() {
-          return build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.WktLevelThree.getDefaultInstance();
+        public build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.WktLevelThree
+            getDefaultInstanceForType() {
+          return build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.WktLevelThree
+              .getDefaultInstance();
         }
 
         @java.lang.Override
         public build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.WktLevelThree build() {
-          build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.WktLevelThree result = buildPartial();
+          build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.WktLevelThree result =
+              buildPartial();
           if (!result.isInitialized()) {
             throw newUninitializedMessageException(result);
           }
@@ -398,14 +442,19 @@ private static final long serialVersionUID = 0L;
         }
 
         @java.lang.Override
-        public build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.WktLevelThree buildPartial() {
-          build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.WktLevelThree result = new build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.WktLevelThree(this);
-          if (bitField0_ != 0) { buildPartial0(result); }
+        public build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.WktLevelThree
+            buildPartial() {
+          build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.WktLevelThree result =
+              new build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.WktLevelThree(this);
+          if (bitField0_ != 0) {
+            buildPartial0(result);
+          }
           onBuilt();
           return result;
         }
 
-        private void buildPartial0(build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.WktLevelThree result) {
+        private void buildPartial0(
+            build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.WktLevelThree result) {
           int from_bitField0_ = bitField0_;
           if (((from_bitField0_ & 0x00000001) != 0)) {
             result.uuid_ = uuid_;
@@ -416,46 +465,55 @@ private static final long serialVersionUID = 0L;
         public Builder clone() {
           return super.clone();
         }
+
         @java.lang.Override
         public Builder setField(
-            com.google.protobuf.Descriptors.FieldDescriptor field,
-            java.lang.Object value) {
+            com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
           return super.setField(field, value);
         }
+
         @java.lang.Override
-        public Builder clearField(
-            com.google.protobuf.Descriptors.FieldDescriptor field) {
+        public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
           return super.clearField(field);
         }
+
         @java.lang.Override
-        public Builder clearOneof(
-            com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
           return super.clearOneof(oneof);
         }
+
         @java.lang.Override
         public Builder setRepeatedField(
             com.google.protobuf.Descriptors.FieldDescriptor field,
-            int index, java.lang.Object value) {
+            int index,
+            java.lang.Object value) {
           return super.setRepeatedField(field, index, value);
         }
+
         @java.lang.Override
         public Builder addRepeatedField(
-            com.google.protobuf.Descriptors.FieldDescriptor field,
-            java.lang.Object value) {
+            com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
           return super.addRepeatedField(field, value);
         }
+
         @java.lang.Override
         public Builder mergeFrom(com.google.protobuf.Message other) {
-          if (other instanceof build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.WktLevelThree) {
-            return mergeFrom((build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.WktLevelThree)other);
+          if (other
+              instanceof
+              build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.WktLevelThree) {
+            return mergeFrom(
+                (build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.WktLevelThree) other);
           } else {
             super.mergeFrom(other);
             return this;
           }
         }
 
-        public Builder mergeFrom(build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.WktLevelThree other) {
-          if (other == build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.WktLevelThree.getDefaultInstance()) return this;
+        public Builder mergeFrom(
+            build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.WktLevelThree other) {
+          if (other
+              == build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.WktLevelThree
+                  .getDefaultInstance()) return this;
           if (!other.getUuid().isEmpty()) {
             uuid_ = other.uuid_;
             bitField0_ |= 0x00000001;
@@ -487,17 +545,19 @@ private static final long serialVersionUID = 0L;
                 case 0:
                   done = true;
                   break;
-                case 10: {
-                  uuid_ = input.readStringRequireUtf8();
-                  bitField0_ |= 0x00000001;
-                  break;
-                } // case 10
-                default: {
-                  if (!super.parseUnknownField(input, extensionRegistry, tag)) {
-                    done = true; // was an endgroup tag
-                  }
-                  break;
-                } // default:
+                case 10:
+                  {
+                    uuid_ = input.readStringRequireUtf8();
+                    bitField0_ |= 0x00000001;
+                    break;
+                  } // case 10
+                default:
+                  {
+                    if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                      done = true; // was an endgroup tag
+                    }
+                    break;
+                  } // default:
               } // switch (tag)
             } // while (!done)
           } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -507,18 +567,20 @@ private static final long serialVersionUID = 0L;
           } // finally
           return this;
         }
+
         private int bitField0_;
 
         private java.lang.Object uuid_ = "";
+
         /**
          * <code>string uuid = 1 [json_name = "uuid", (.buf.validate.field) = { ... }</code>
+         *
          * @return The uuid.
          */
         public java.lang.String getUuid() {
           java.lang.Object ref = uuid_;
           if (!(ref instanceof java.lang.String)) {
-            com.google.protobuf.ByteString bs =
-                (com.google.protobuf.ByteString) ref;
+            com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
             java.lang.String s = bs.toStringUtf8();
             uuid_ = s;
             return s;
@@ -526,38 +588,43 @@ private static final long serialVersionUID = 0L;
             return (java.lang.String) ref;
           }
         }
+
         /**
          * <code>string uuid = 1 [json_name = "uuid", (.buf.validate.field) = { ... }</code>
+         *
          * @return The bytes for uuid.
          */
-        public com.google.protobuf.ByteString
-            getUuidBytes() {
+        public com.google.protobuf.ByteString getUuidBytes() {
           java.lang.Object ref = uuid_;
           if (ref instanceof String) {
-            com.google.protobuf.ByteString b = 
-                com.google.protobuf.ByteString.copyFromUtf8(
-                    (java.lang.String) ref);
+            com.google.protobuf.ByteString b =
+                com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
             uuid_ = b;
             return b;
           } else {
             return (com.google.protobuf.ByteString) ref;
           }
         }
+
         /**
          * <code>string uuid = 1 [json_name = "uuid", (.buf.validate.field) = { ... }</code>
+         *
          * @param value The uuid to set.
          * @return This builder for chaining.
          */
-        public Builder setUuid(
-            java.lang.String value) {
-          if (value == null) { throw new NullPointerException(); }
+        public Builder setUuid(java.lang.String value) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
           uuid_ = value;
           bitField0_ |= 0x00000001;
           onChanged();
           return this;
         }
+
         /**
          * <code>string uuid = 1 [json_name = "uuid", (.buf.validate.field) = { ... }</code>
+         *
          * @return This builder for chaining.
          */
         public Builder clearUuid() {
@@ -566,20 +633,24 @@ private static final long serialVersionUID = 0L;
           onChanged();
           return this;
         }
+
         /**
          * <code>string uuid = 1 [json_name = "uuid", (.buf.validate.field) = { ... }</code>
+         *
          * @param value The bytes for uuid to set.
          * @return This builder for chaining.
          */
-        public Builder setUuidBytes(
-            com.google.protobuf.ByteString value) {
-          if (value == null) { throw new NullPointerException(); }
+        public Builder setUuidBytes(com.google.protobuf.ByteString value) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
           checkByteStringIsUtf8(value);
           uuid_ = value;
           bitField0_ |= 0x00000001;
           onChanged();
           return this;
         }
+
         @java.lang.Override
         public final Builder setUnknownFields(
             final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -592,41 +663,46 @@ private static final long serialVersionUID = 0L;
           return super.mergeUnknownFields(unknownFields);
         }
 
-
         // @@protoc_insertion_point(builder_scope:buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.WktLevelThree)
       }
 
       // @@protoc_insertion_point(class_scope:buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.WktLevelThree)
-      private static final build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.WktLevelThree DEFAULT_INSTANCE;
+      private static final build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo
+              .WktLevelThree
+          DEFAULT_INSTANCE;
+
       static {
-        DEFAULT_INSTANCE = new build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.WktLevelThree();
+        DEFAULT_INSTANCE =
+            new build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.WktLevelThree();
       }
 
-      public static build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.WktLevelThree getDefaultInstance() {
+      public static build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.WktLevelThree
+          getDefaultInstance() {
         return DEFAULT_INSTANCE;
       }
 
-      private static final com.google.protobuf.Parser<WktLevelThree>
-          PARSER = new com.google.protobuf.AbstractParser<WktLevelThree>() {
-        @java.lang.Override
-        public WktLevelThree parsePartialFrom(
-            com.google.protobuf.CodedInputStream input,
-            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-            throws com.google.protobuf.InvalidProtocolBufferException {
-          Builder builder = newBuilder();
-          try {
-            builder.mergeFrom(input, extensionRegistry);
-          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-            throw e.setUnfinishedMessage(builder.buildPartial());
-          } catch (com.google.protobuf.UninitializedMessageException e) {
-            throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
-          } catch (java.io.IOException e) {
-            throw new com.google.protobuf.InvalidProtocolBufferException(e)
-                .setUnfinishedMessage(builder.buildPartial());
-          }
-          return builder.buildPartial();
-        }
-      };
+      private static final com.google.protobuf.Parser<WktLevelThree> PARSER =
+          new com.google.protobuf.AbstractParser<WktLevelThree>() {
+            @java.lang.Override
+            public WktLevelThree parsePartialFrom(
+                com.google.protobuf.CodedInputStream input,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+              Builder builder = newBuilder();
+              try {
+                builder.mergeFrom(input, extensionRegistry);
+              } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+                throw e.setUnfinishedMessage(builder.buildPartial());
+              } catch (com.google.protobuf.UninitializedMessageException e) {
+                throw e.asInvalidProtocolBufferException()
+                    .setUnfinishedMessage(builder.buildPartial());
+              } catch (java.io.IOException e) {
+                throw new com.google.protobuf.InvalidProtocolBufferException(e)
+                    .setUnfinishedMessage(builder.buildPartial());
+              }
+              return builder.buildPartial();
+            }
+          };
 
       public static com.google.protobuf.Parser<WktLevelThree> parser() {
         return PARSER;
@@ -638,39 +714,58 @@ private static final long serialVersionUID = 0L;
       }
 
       @java.lang.Override
-      public build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.WktLevelThree getDefaultInstanceForType() {
+      public build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.WktLevelThree
+          getDefaultInstanceForType() {
         return DEFAULT_INSTANCE;
       }
-
     }
 
     public static final int THREE_FIELD_NUMBER = 1;
     private build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.WktLevelThree three_;
+
     /**
-     * <code>.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.WktLevelThree three = 1 [json_name = "three", (.buf.validate.field) = { ... }</code>
+     * <code>
+     * .buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.WktLevelThree three = 1 [json_name = "three", (.buf.validate.field) = { ... }
+     * </code>
+     *
      * @return Whether the three field is set.
      */
     @java.lang.Override
     public boolean hasThree() {
       return three_ != null;
     }
+
     /**
-     * <code>.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.WktLevelThree three = 1 [json_name = "three", (.buf.validate.field) = { ... }</code>
+     * <code>
+     * .buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.WktLevelThree three = 1 [json_name = "three", (.buf.validate.field) = { ... }
+     * </code>
+     *
      * @return The three.
      */
     @java.lang.Override
     public build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.WktLevelThree getThree() {
-      return three_ == null ? build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.WktLevelThree.getDefaultInstance() : three_;
+      return three_ == null
+          ? build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.WktLevelThree
+              .getDefaultInstance()
+          : three_;
     }
+
     /**
-     * <code>.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.WktLevelThree three = 1 [json_name = "three", (.buf.validate.field) = { ... }</code>
+     * <code>
+     * .buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.WktLevelThree three = 1 [json_name = "three", (.buf.validate.field) = { ... }
+     * </code>
      */
     @java.lang.Override
-    public build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.WktLevelThreeOrBuilder getThreeOrBuilder() {
-      return three_ == null ? build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.WktLevelThree.getDefaultInstance() : three_;
+    public build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.WktLevelThreeOrBuilder
+        getThreeOrBuilder() {
+      return three_ == null
+          ? build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.WktLevelThree
+              .getDefaultInstance()
+          : three_;
     }
 
     private byte memoizedIsInitialized = -1;
+
     @java.lang.Override
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -682,8 +777,7 @@ private static final long serialVersionUID = 0L;
     }
 
     @java.lang.Override
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
+    public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
       if (three_ != null) {
         output.writeMessage(1, getThree());
       }
@@ -697,8 +791,7 @@ private static final long serialVersionUID = 0L;
 
       size = 0;
       if (three_ != null) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(1, getThree());
+        size += com.google.protobuf.CodedOutputStream.computeMessageSize(1, getThree());
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
@@ -708,17 +801,17 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public boolean equals(final java.lang.Object obj) {
       if (obj == this) {
-       return true;
+        return true;
       }
       if (!(obj instanceof build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo)) {
         return super.equals(obj);
       }
-      build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo other = (build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo) obj;
+      build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo other =
+          (build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo) obj;
 
       if (hasThree() != other.hasThree()) return false;
       if (hasThree()) {
-        if (!getThree()
-            .equals(other.getThree())) return false;
+        if (!getThree().equals(other.getThree())) return false;
       }
       if (!getUnknownFields().equals(other.getUnknownFields())) return false;
       return true;
@@ -741,89 +834,94 @@ private static final long serialVersionUID = 0L;
     }
 
     public static build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        java.nio.ByteBuffer data) throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
+
     public static build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        java.nio.ByteBuffer data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
+
     public static build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
+
     public static build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+
+    public static build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo parseFrom(
+        byte[] data) throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
+
     public static build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        byte[] data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
+
     public static build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+        java.io.InputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
     }
 
-    public static build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo parseDelimitedFrom(java.io.InputStream input)
+    public static build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo parseFrom(
+        java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+          PARSER, input, extensionRegistry);
     }
 
     public static build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+        java.io.InputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input);
     }
+
+    public static build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo parseDelimitedFrom(
+        java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(
+          PARSER, input, extensionRegistry);
+    }
+
     public static build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
+        com.google.protobuf.CodedInputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
     }
+
     public static build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+          PARSER, input, extensionRegistry);
     }
 
     @java.lang.Override
-    public Builder newBuilderForType() { return newBuilder(); }
+    public Builder newBuilderForType() {
+      return newBuilder();
+    }
+
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo prototype) {
+
+    public static Builder newBuilder(
+        build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
+
     @java.lang.Override
     public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
+      return this == DEFAULT_INSTANCE ? new Builder() : new Builder().mergeFrom(this);
     }
 
     @java.lang.Override
@@ -832,36 +930,35 @@ private static final long serialVersionUID = 0L;
       Builder builder = new Builder(parent);
       return builder;
     }
-    /**
-     * Protobuf type {@code buf.validate.conformance.cases.WktLevelOne.WktLevelTwo}
-     */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+
+    /** Protobuf type {@code buf.validate.conformance.cases.WktLevelOne.WktLevelTwo} */
+    public static final class Builder
+        extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
+        implements
         // @@protoc_insertion_point(builder_implements:buf.validate.conformance.cases.WktLevelOne.WktLevelTwo)
         build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwoOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return build.buf.validate.conformance.cases.WktNestedProto.internal_static_buf_validate_conformance_cases_WktLevelOne_WktLevelTwo_descriptor;
+      public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+        return build.buf.validate.conformance.cases.WktNestedProto
+            .internal_static_buf_validate_conformance_cases_WktLevelOne_WktLevelTwo_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return build.buf.validate.conformance.cases.WktNestedProto.internal_static_buf_validate_conformance_cases_WktLevelOne_WktLevelTwo_fieldAccessorTable
+        return build.buf.validate.conformance.cases.WktNestedProto
+            .internal_static_buf_validate_conformance_cases_WktLevelOne_WktLevelTwo_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.class, build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.Builder.class);
+                build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.class,
+                build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.Builder.class);
       }
 
       // Construct using build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.newBuilder()
-      private Builder() {
+      private Builder() {}
 
-      }
-
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
-
       }
+
       @java.lang.Override
       public Builder clear() {
         super.clear();
@@ -875,13 +972,14 @@ private static final long serialVersionUID = 0L;
       }
 
       @java.lang.Override
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return build.buf.validate.conformance.cases.WktNestedProto.internal_static_buf_validate_conformance_cases_WktLevelOne_WktLevelTwo_descriptor;
+      public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
+        return build.buf.validate.conformance.cases.WktNestedProto
+            .internal_static_buf_validate_conformance_cases_WktLevelOne_WktLevelTwo_descriptor;
       }
 
       @java.lang.Override
-      public build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo getDefaultInstanceForType() {
+      public build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo
+          getDefaultInstanceForType() {
         return build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.getDefaultInstance();
       }
 
@@ -896,18 +994,20 @@ private static final long serialVersionUID = 0L;
 
       @java.lang.Override
       public build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo buildPartial() {
-        build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo result = new build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo(this);
-        if (bitField0_ != 0) { buildPartial0(result); }
+        build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo result =
+            new build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo(this);
+        if (bitField0_ != 0) {
+          buildPartial0(result);
+        }
         onBuilt();
         return result;
       }
 
-      private void buildPartial0(build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo result) {
+      private void buildPartial0(
+          build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo result) {
         int from_bitField0_ = bitField0_;
         if (((from_bitField0_ & 0x00000001) != 0)) {
-          result.three_ = threeBuilder_ == null
-              ? three_
-              : threeBuilder_.build();
+          result.three_ = threeBuilder_ == null ? three_ : threeBuilder_.build();
         }
       }
 
@@ -915,38 +1015,41 @@ private static final long serialVersionUID = 0L;
       public Builder clone() {
         return super.clone();
       }
+
       @java.lang.Override
       public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
+          com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
         return super.setField(field, value);
       }
+
       @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
+      public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
         return super.clearField(field);
       }
+
       @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+      public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
         return super.clearOneof(oneof);
       }
+
       @java.lang.Override
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
+          int index,
+          java.lang.Object value) {
         return super.setRepeatedField(field, index, value);
       }
+
       @java.lang.Override
       public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
+          com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
         return super.addRepeatedField(field, value);
       }
+
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo) {
-          return mergeFrom((build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo)other);
+          return mergeFrom((build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo) other);
         } else {
           super.mergeFrom(other);
           return this;
@@ -954,7 +1057,9 @@ private static final long serialVersionUID = 0L;
       }
 
       public Builder mergeFrom(build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo other) {
-        if (other == build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.getDefaultInstance()) return this;
+        if (other
+            == build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.getDefaultInstance())
+          return this;
         if (other.hasThree()) {
           mergeThree(other.getThree());
         }
@@ -984,19 +1089,19 @@ private static final long serialVersionUID = 0L;
               case 0:
                 done = true;
                 break;
-              case 10: {
-                input.readMessage(
-                    getThreeFieldBuilder().getBuilder(),
-                    extensionRegistry);
-                bitField0_ |= 0x00000001;
-                break;
-              } // case 10
-              default: {
-                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
-                  done = true; // was an endgroup tag
-                }
-                break;
-              } // default:
+              case 10:
+                {
+                  input.readMessage(getThreeFieldBuilder().getBuilder(), extensionRegistry);
+                  bitField0_ |= 0x00000001;
+                  break;
+                } // case 10
+              default:
+                {
+                  if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                    done = true; // was an endgroup tag
+                  }
+                  break;
+                } // default:
             } // switch (tag)
           } // while (!done)
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -1006,33 +1111,52 @@ private static final long serialVersionUID = 0L;
         } // finally
         return this;
       }
+
       private int bitField0_;
 
       private build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.WktLevelThree three_;
       private com.google.protobuf.SingleFieldBuilderV3<
-          build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.WktLevelThree, build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.WktLevelThree.Builder, build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.WktLevelThreeOrBuilder> threeBuilder_;
+              build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.WktLevelThree,
+              build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.WktLevelThree.Builder,
+              build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.WktLevelThreeOrBuilder>
+          threeBuilder_;
+
       /**
-       * <code>.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.WktLevelThree three = 1 [json_name = "three", (.buf.validate.field) = { ... }</code>
+       * <code>
+       * .buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.WktLevelThree three = 1 [json_name = "three", (.buf.validate.field) = { ... }
+       * </code>
+       *
        * @return Whether the three field is set.
        */
       public boolean hasThree() {
         return ((bitField0_ & 0x00000001) != 0);
       }
+
       /**
-       * <code>.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.WktLevelThree three = 1 [json_name = "three", (.buf.validate.field) = { ... }</code>
+       * <code>
+       * .buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.WktLevelThree three = 1 [json_name = "three", (.buf.validate.field) = { ... }
+       * </code>
+       *
        * @return The three.
        */
       public build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.WktLevelThree getThree() {
         if (threeBuilder_ == null) {
-          return three_ == null ? build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.WktLevelThree.getDefaultInstance() : three_;
+          return three_ == null
+              ? build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.WktLevelThree
+                  .getDefaultInstance()
+              : three_;
         } else {
           return threeBuilder_.getMessage();
         }
       }
+
       /**
-       * <code>.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.WktLevelThree three = 1 [json_name = "three", (.buf.validate.field) = { ... }</code>
+       * <code>
+       * .buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.WktLevelThree three = 1 [json_name = "three", (.buf.validate.field) = { ... }
+       * </code>
        */
-      public Builder setThree(build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.WktLevelThree value) {
+      public Builder setThree(
+          build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.WktLevelThree value) {
         if (threeBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -1045,11 +1169,15 @@ private static final long serialVersionUID = 0L;
         onChanged();
         return this;
       }
+
       /**
-       * <code>.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.WktLevelThree three = 1 [json_name = "three", (.buf.validate.field) = { ... }</code>
+       * <code>
+       * .buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.WktLevelThree three = 1 [json_name = "three", (.buf.validate.field) = { ... }
+       * </code>
        */
       public Builder setThree(
-          build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.WktLevelThree.Builder builderForValue) {
+          build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.WktLevelThree.Builder
+              builderForValue) {
         if (threeBuilder_ == null) {
           three_ = builderForValue.build();
         } else {
@@ -1059,14 +1187,20 @@ private static final long serialVersionUID = 0L;
         onChanged();
         return this;
       }
+
       /**
-       * <code>.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.WktLevelThree three = 1 [json_name = "three", (.buf.validate.field) = { ... }</code>
+       * <code>
+       * .buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.WktLevelThree three = 1 [json_name = "three", (.buf.validate.field) = { ... }
+       * </code>
        */
-      public Builder mergeThree(build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.WktLevelThree value) {
+      public Builder mergeThree(
+          build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.WktLevelThree value) {
         if (threeBuilder_ == null) {
-          if (((bitField0_ & 0x00000001) != 0) &&
-            three_ != null &&
-            three_ != build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.WktLevelThree.getDefaultInstance()) {
+          if (((bitField0_ & 0x00000001) != 0)
+              && three_ != null
+              && three_
+                  != build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.WktLevelThree
+                      .getDefaultInstance()) {
             getThreeBuilder().mergeFrom(value);
           } else {
             three_ = value;
@@ -1078,8 +1212,11 @@ private static final long serialVersionUID = 0L;
         onChanged();
         return this;
       }
+
       /**
-       * <code>.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.WktLevelThree three = 1 [json_name = "three", (.buf.validate.field) = { ... }</code>
+       * <code>
+       * .buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.WktLevelThree three = 1 [json_name = "three", (.buf.validate.field) = { ... }
+       * </code>
        */
       public Builder clearThree() {
         bitField0_ = (bitField0_ & ~0x00000001);
@@ -1091,41 +1228,59 @@ private static final long serialVersionUID = 0L;
         onChanged();
         return this;
       }
+
       /**
-       * <code>.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.WktLevelThree three = 1 [json_name = "three", (.buf.validate.field) = { ... }</code>
+       * <code>
+       * .buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.WktLevelThree three = 1 [json_name = "three", (.buf.validate.field) = { ... }
+       * </code>
        */
-      public build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.WktLevelThree.Builder getThreeBuilder() {
+      public build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.WktLevelThree.Builder
+          getThreeBuilder() {
         bitField0_ |= 0x00000001;
         onChanged();
         return getThreeFieldBuilder().getBuilder();
       }
+
       /**
-       * <code>.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.WktLevelThree three = 1 [json_name = "three", (.buf.validate.field) = { ... }</code>
+       * <code>
+       * .buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.WktLevelThree three = 1 [json_name = "three", (.buf.validate.field) = { ... }
+       * </code>
        */
-      public build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.WktLevelThreeOrBuilder getThreeOrBuilder() {
+      public build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.WktLevelThreeOrBuilder
+          getThreeOrBuilder() {
         if (threeBuilder_ != null) {
           return threeBuilder_.getMessageOrBuilder();
         } else {
-          return three_ == null ?
-              build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.WktLevelThree.getDefaultInstance() : three_;
+          return three_ == null
+              ? build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.WktLevelThree
+                  .getDefaultInstance()
+              : three_;
         }
       }
+
       /**
-       * <code>.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.WktLevelThree three = 1 [json_name = "three", (.buf.validate.field) = { ... }</code>
+       * <code>
+       * .buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.WktLevelThree three = 1 [json_name = "three", (.buf.validate.field) = { ... }
+       * </code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.WktLevelThree, build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.WktLevelThree.Builder, build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.WktLevelThreeOrBuilder> 
+              build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.WktLevelThree,
+              build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.WktLevelThree.Builder,
+              build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.WktLevelThreeOrBuilder>
           getThreeFieldBuilder() {
         if (threeBuilder_ == null) {
-          threeBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.WktLevelThree, build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.WktLevelThree.Builder, build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.WktLevelThreeOrBuilder>(
-                  getThree(),
-                  getParentForChildren(),
-                  isClean());
+          threeBuilder_ =
+              new com.google.protobuf.SingleFieldBuilderV3<
+                  build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.WktLevelThree,
+                  build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.WktLevelThree
+                      .Builder,
+                  build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo
+                      .WktLevelThreeOrBuilder>(getThree(), getParentForChildren(), isClean());
           three_ = null;
         }
         return threeBuilder_;
       }
+
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -1138,41 +1293,44 @@ private static final long serialVersionUID = 0L;
         return super.mergeUnknownFields(unknownFields);
       }
 
-
       // @@protoc_insertion_point(builder_scope:buf.validate.conformance.cases.WktLevelOne.WktLevelTwo)
     }
 
     // @@protoc_insertion_point(class_scope:buf.validate.conformance.cases.WktLevelOne.WktLevelTwo)
-    private static final build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo DEFAULT_INSTANCE;
+    private static final build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo
+        DEFAULT_INSTANCE;
+
     static {
       DEFAULT_INSTANCE = new build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo();
     }
 
-    public static build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo getDefaultInstance() {
+    public static build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo
+        getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<WktLevelTwo>
-        PARSER = new com.google.protobuf.AbstractParser<WktLevelTwo>() {
-      @java.lang.Override
-      public WktLevelTwo parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        Builder builder = newBuilder();
-        try {
-          builder.mergeFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          throw e.setUnfinishedMessage(builder.buildPartial());
-        } catch (com.google.protobuf.UninitializedMessageException e) {
-          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
-        } catch (java.io.IOException e) {
-          throw new com.google.protobuf.InvalidProtocolBufferException(e)
-              .setUnfinishedMessage(builder.buildPartial());
-        }
-        return builder.buildPartial();
-      }
-    };
+    private static final com.google.protobuf.Parser<WktLevelTwo> PARSER =
+        new com.google.protobuf.AbstractParser<WktLevelTwo>() {
+          @java.lang.Override
+          public WktLevelTwo parsePartialFrom(
+              com.google.protobuf.CodedInputStream input,
+              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+              throws com.google.protobuf.InvalidProtocolBufferException {
+            Builder builder = newBuilder();
+            try {
+              builder.mergeFrom(input, extensionRegistry);
+            } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+              throw e.setUnfinishedMessage(builder.buildPartial());
+            } catch (com.google.protobuf.UninitializedMessageException e) {
+              throw e.asInvalidProtocolBufferException()
+                  .setUnfinishedMessage(builder.buildPartial());
+            } catch (java.io.IOException e) {
+              throw new com.google.protobuf.InvalidProtocolBufferException(e)
+                  .setUnfinishedMessage(builder.buildPartial());
+            }
+            return builder.buildPartial();
+          }
+        };
 
     public static com.google.protobuf.Parser<WktLevelTwo> parser() {
       return PARSER;
@@ -1184,39 +1342,55 @@ private static final long serialVersionUID = 0L;
     }
 
     @java.lang.Override
-    public build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo getDefaultInstanceForType() {
+    public build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo
+        getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
-
   }
 
   public static final int TWO_FIELD_NUMBER = 1;
   private build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo two_;
+
   /**
-   * <code>.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo two = 1 [json_name = "two", (.buf.validate.field) = { ... }</code>
+   * <code>
+   * .buf.validate.conformance.cases.WktLevelOne.WktLevelTwo two = 1 [json_name = "two", (.buf.validate.field) = { ... }
+   * </code>
+   *
    * @return Whether the two field is set.
    */
   @java.lang.Override
   public boolean hasTwo() {
     return two_ != null;
   }
+
   /**
-   * <code>.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo two = 1 [json_name = "two", (.buf.validate.field) = { ... }</code>
+   * <code>
+   * .buf.validate.conformance.cases.WktLevelOne.WktLevelTwo two = 1 [json_name = "two", (.buf.validate.field) = { ... }
+   * </code>
+   *
    * @return The two.
    */
   @java.lang.Override
   public build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo getTwo() {
-    return two_ == null ? build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.getDefaultInstance() : two_;
+    return two_ == null
+        ? build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.getDefaultInstance()
+        : two_;
   }
+
   /**
-   * <code>.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo two = 1 [json_name = "two", (.buf.validate.field) = { ... }</code>
+   * <code>
+   * .buf.validate.conformance.cases.WktLevelOne.WktLevelTwo two = 1 [json_name = "two", (.buf.validate.field) = { ... }
+   * </code>
    */
   @java.lang.Override
   public build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwoOrBuilder getTwoOrBuilder() {
-    return two_ == null ? build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.getDefaultInstance() : two_;
+    return two_ == null
+        ? build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.getDefaultInstance()
+        : two_;
   }
 
   private byte memoizedIsInitialized = -1;
+
   @java.lang.Override
   public final boolean isInitialized() {
     byte isInitialized = memoizedIsInitialized;
@@ -1228,8 +1402,7 @@ private static final long serialVersionUID = 0L;
   }
 
   @java.lang.Override
-  public void writeTo(com.google.protobuf.CodedOutputStream output)
-                      throws java.io.IOException {
+  public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
     if (two_ != null) {
       output.writeMessage(1, getTwo());
     }
@@ -1243,8 +1416,7 @@ private static final long serialVersionUID = 0L;
 
     size = 0;
     if (two_ != null) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(1, getTwo());
+      size += com.google.protobuf.CodedOutputStream.computeMessageSize(1, getTwo());
     }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
@@ -1254,17 +1426,17 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public boolean equals(final java.lang.Object obj) {
     if (obj == this) {
-     return true;
+      return true;
     }
     if (!(obj instanceof build.buf.validate.conformance.cases.WktLevelOne)) {
       return super.equals(obj);
     }
-    build.buf.validate.conformance.cases.WktLevelOne other = (build.buf.validate.conformance.cases.WktLevelOne) obj;
+    build.buf.validate.conformance.cases.WktLevelOne other =
+        (build.buf.validate.conformance.cases.WktLevelOne) obj;
 
     if (hasTwo() != other.hasTwo()) return false;
     if (hasTwo()) {
-      if (!getTwo()
-          .equals(other.getTwo())) return false;
+      if (!getTwo().equals(other.getTwo())) return false;
     }
     if (!getUnknownFields().equals(other.getUnknownFields())) return false;
     return true;
@@ -1286,128 +1458,129 @@ private static final long serialVersionUID = 0L;
     return hash;
   }
 
-  public static build.buf.validate.conformance.cases.WktLevelOne parseFrom(
-      java.nio.ByteBuffer data)
+  public static build.buf.validate.conformance.cases.WktLevelOne parseFrom(java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
+
   public static build.buf.validate.conformance.cases.WktLevelOne parseFrom(
-      java.nio.ByteBuffer data,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      java.nio.ByteBuffer data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
+
   public static build.buf.validate.conformance.cases.WktLevelOne parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
+
   public static build.buf.validate.conformance.cases.WktLevelOne parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
+
   public static build.buf.validate.conformance.cases.WktLevelOne parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
+
   public static build.buf.validate.conformance.cases.WktLevelOne parseFrom(
-      byte[] data,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      byte[] data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static build.buf.validate.conformance.cases.WktLevelOne parseFrom(java.io.InputStream input)
-      throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input);
-  }
+
   public static build.buf.validate.conformance.cases.WktLevelOne parseFrom(
-      java.io.InputStream input,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-      throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input, extensionRegistry);
+      java.io.InputStream input) throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
   }
 
-  public static build.buf.validate.conformance.cases.WktLevelOne parseDelimitedFrom(java.io.InputStream input)
+  public static build.buf.validate.conformance.cases.WktLevelOne parseFrom(
+      java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseDelimitedWithIOException(PARSER, input);
+    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+        PARSER, input, extensionRegistry);
   }
 
   public static build.buf.validate.conformance.cases.WktLevelOne parseDelimitedFrom(
-      java.io.InputStream input,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-      throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+      java.io.InputStream input) throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input);
   }
+
+  public static build.buf.validate.conformance.cases.WktLevelOne parseDelimitedFrom(
+      java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(
+        PARSER, input, extensionRegistry);
+  }
+
   public static build.buf.validate.conformance.cases.WktLevelOne parseFrom(
-      com.google.protobuf.CodedInputStream input)
-      throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input);
+      com.google.protobuf.CodedInputStream input) throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
   }
+
   public static build.buf.validate.conformance.cases.WktLevelOne parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input, extensionRegistry);
+    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+        PARSER, input, extensionRegistry);
   }
 
   @java.lang.Override
-  public Builder newBuilderForType() { return newBuilder(); }
+  public Builder newBuilderForType() {
+    return newBuilder();
+  }
+
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
+
   public static Builder newBuilder(build.buf.validate.conformance.cases.WktLevelOne prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
+
   @java.lang.Override
   public Builder toBuilder() {
-    return this == DEFAULT_INSTANCE
-        ? new Builder() : new Builder().mergeFrom(this);
+    return this == DEFAULT_INSTANCE ? new Builder() : new Builder().mergeFrom(this);
   }
 
   @java.lang.Override
-  protected Builder newBuilderForType(
-      com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+  protected Builder newBuilderForType(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
     Builder builder = new Builder(parent);
     return builder;
   }
-  /**
-   * Protobuf type {@code buf.validate.conformance.cases.WktLevelOne}
-   */
-  public static final class Builder extends
-      com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+
+  /** Protobuf type {@code buf.validate.conformance.cases.WktLevelOne} */
+  public static final class Builder extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
+      implements
       // @@protoc_insertion_point(builder_implements:buf.validate.conformance.cases.WktLevelOne)
       build.buf.validate.conformance.cases.WktLevelOneOrBuilder {
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return build.buf.validate.conformance.cases.WktNestedProto.internal_static_buf_validate_conformance_cases_WktLevelOne_descriptor;
+    public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+      return build.buf.validate.conformance.cases.WktNestedProto
+          .internal_static_buf_validate_conformance_cases_WktLevelOne_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return build.buf.validate.conformance.cases.WktNestedProto.internal_static_buf_validate_conformance_cases_WktLevelOne_fieldAccessorTable
+      return build.buf.validate.conformance.cases.WktNestedProto
+          .internal_static_buf_validate_conformance_cases_WktLevelOne_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              build.buf.validate.conformance.cases.WktLevelOne.class, build.buf.validate.conformance.cases.WktLevelOne.Builder.class);
+              build.buf.validate.conformance.cases.WktLevelOne.class,
+              build.buf.validate.conformance.cases.WktLevelOne.Builder.class);
     }
 
     // Construct using build.buf.validate.conformance.cases.WktLevelOne.newBuilder()
-    private Builder() {
+    private Builder() {}
 
-    }
-
-    private Builder(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+    private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
       super(parent);
-
     }
+
     @java.lang.Override
     public Builder clear() {
       super.clear();
@@ -1421,9 +1594,9 @@ private static final long serialVersionUID = 0L;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Descriptors.Descriptor
-        getDescriptorForType() {
-      return build.buf.validate.conformance.cases.WktNestedProto.internal_static_buf_validate_conformance_cases_WktLevelOne_descriptor;
+    public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
+      return build.buf.validate.conformance.cases.WktNestedProto
+          .internal_static_buf_validate_conformance_cases_WktLevelOne_descriptor;
     }
 
     @java.lang.Override
@@ -1442,8 +1615,11 @@ private static final long serialVersionUID = 0L;
 
     @java.lang.Override
     public build.buf.validate.conformance.cases.WktLevelOne buildPartial() {
-      build.buf.validate.conformance.cases.WktLevelOne result = new build.buf.validate.conformance.cases.WktLevelOne(this);
-      if (bitField0_ != 0) { buildPartial0(result); }
+      build.buf.validate.conformance.cases.WktLevelOne result =
+          new build.buf.validate.conformance.cases.WktLevelOne(this);
+      if (bitField0_ != 0) {
+        buildPartial0(result);
+      }
       onBuilt();
       return result;
     }
@@ -1451,9 +1627,7 @@ private static final long serialVersionUID = 0L;
     private void buildPartial0(build.buf.validate.conformance.cases.WktLevelOne result) {
       int from_bitField0_ = bitField0_;
       if (((from_bitField0_ & 0x00000001) != 0)) {
-        result.two_ = twoBuilder_ == null
-            ? two_
-            : twoBuilder_.build();
+        result.two_ = twoBuilder_ == null ? two_ : twoBuilder_.build();
       }
     }
 
@@ -1461,38 +1635,39 @@ private static final long serialVersionUID = 0L;
     public Builder clone() {
       return super.clone();
     }
+
     @java.lang.Override
     public Builder setField(
-        com.google.protobuf.Descriptors.FieldDescriptor field,
-        java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
       return super.setField(field, value);
     }
+
     @java.lang.Override
-    public Builder clearField(
-        com.google.protobuf.Descriptors.FieldDescriptor field) {
+    public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
       return super.clearField(field);
     }
+
     @java.lang.Override
-    public Builder clearOneof(
-        com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+    public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
       return super.clearOneof(oneof);
     }
+
     @java.lang.Override
     public Builder setRepeatedField(
-        com.google.protobuf.Descriptors.FieldDescriptor field,
-        int index, java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field, int index, java.lang.Object value) {
       return super.setRepeatedField(field, index, value);
     }
+
     @java.lang.Override
     public Builder addRepeatedField(
-        com.google.protobuf.Descriptors.FieldDescriptor field,
-        java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
       return super.addRepeatedField(field, value);
     }
+
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
       if (other instanceof build.buf.validate.conformance.cases.WktLevelOne) {
-        return mergeFrom((build.buf.validate.conformance.cases.WktLevelOne)other);
+        return mergeFrom((build.buf.validate.conformance.cases.WktLevelOne) other);
       } else {
         super.mergeFrom(other);
         return this;
@@ -1500,7 +1675,8 @@ private static final long serialVersionUID = 0L;
     }
 
     public Builder mergeFrom(build.buf.validate.conformance.cases.WktLevelOne other) {
-      if (other == build.buf.validate.conformance.cases.WktLevelOne.getDefaultInstance()) return this;
+      if (other == build.buf.validate.conformance.cases.WktLevelOne.getDefaultInstance())
+        return this;
       if (other.hasTwo()) {
         mergeTwo(other.getTwo());
       }
@@ -1530,19 +1706,19 @@ private static final long serialVersionUID = 0L;
             case 0:
               done = true;
               break;
-            case 10: {
-              input.readMessage(
-                  getTwoFieldBuilder().getBuilder(),
-                  extensionRegistry);
-              bitField0_ |= 0x00000001;
-              break;
-            } // case 10
-            default: {
-              if (!super.parseUnknownField(input, extensionRegistry, tag)) {
-                done = true; // was an endgroup tag
-              }
-              break;
-            } // default:
+            case 10:
+              {
+                input.readMessage(getTwoFieldBuilder().getBuilder(), extensionRegistry);
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 10
+            default:
+              {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
           } // switch (tag)
         } // while (!done)
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -1552,31 +1728,48 @@ private static final long serialVersionUID = 0L;
       } // finally
       return this;
     }
+
     private int bitField0_;
 
     private build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo two_;
     private com.google.protobuf.SingleFieldBuilderV3<
-        build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo, build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.Builder, build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwoOrBuilder> twoBuilder_;
+            build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo,
+            build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.Builder,
+            build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwoOrBuilder>
+        twoBuilder_;
+
     /**
-     * <code>.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo two = 1 [json_name = "two", (.buf.validate.field) = { ... }</code>
+     * <code>
+     * .buf.validate.conformance.cases.WktLevelOne.WktLevelTwo two = 1 [json_name = "two", (.buf.validate.field) = { ... }
+     * </code>
+     *
      * @return Whether the two field is set.
      */
     public boolean hasTwo() {
       return ((bitField0_ & 0x00000001) != 0);
     }
+
     /**
-     * <code>.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo two = 1 [json_name = "two", (.buf.validate.field) = { ... }</code>
+     * <code>
+     * .buf.validate.conformance.cases.WktLevelOne.WktLevelTwo two = 1 [json_name = "two", (.buf.validate.field) = { ... }
+     * </code>
+     *
      * @return The two.
      */
     public build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo getTwo() {
       if (twoBuilder_ == null) {
-        return two_ == null ? build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.getDefaultInstance() : two_;
+        return two_ == null
+            ? build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.getDefaultInstance()
+            : two_;
       } else {
         return twoBuilder_.getMessage();
       }
     }
+
     /**
-     * <code>.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo two = 1 [json_name = "two", (.buf.validate.field) = { ... }</code>
+     * <code>
+     * .buf.validate.conformance.cases.WktLevelOne.WktLevelTwo two = 1 [json_name = "two", (.buf.validate.field) = { ... }
+     * </code>
      */
     public Builder setTwo(build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo value) {
       if (twoBuilder_ == null) {
@@ -1591,8 +1784,11 @@ private static final long serialVersionUID = 0L;
       onChanged();
       return this;
     }
+
     /**
-     * <code>.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo two = 1 [json_name = "two", (.buf.validate.field) = { ... }</code>
+     * <code>
+     * .buf.validate.conformance.cases.WktLevelOne.WktLevelTwo two = 1 [json_name = "two", (.buf.validate.field) = { ... }
+     * </code>
      */
     public Builder setTwo(
         build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.Builder builderForValue) {
@@ -1605,14 +1801,19 @@ private static final long serialVersionUID = 0L;
       onChanged();
       return this;
     }
+
     /**
-     * <code>.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo two = 1 [json_name = "two", (.buf.validate.field) = { ... }</code>
+     * <code>
+     * .buf.validate.conformance.cases.WktLevelOne.WktLevelTwo two = 1 [json_name = "two", (.buf.validate.field) = { ... }
+     * </code>
      */
     public Builder mergeTwo(build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo value) {
       if (twoBuilder_ == null) {
-        if (((bitField0_ & 0x00000001) != 0) &&
-          two_ != null &&
-          two_ != build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.getDefaultInstance()) {
+        if (((bitField0_ & 0x00000001) != 0)
+            && two_ != null
+            && two_
+                != build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo
+                    .getDefaultInstance()) {
           getTwoBuilder().mergeFrom(value);
         } else {
           two_ = value;
@@ -1624,8 +1825,11 @@ private static final long serialVersionUID = 0L;
       onChanged();
       return this;
     }
+
     /**
-     * <code>.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo two = 1 [json_name = "two", (.buf.validate.field) = { ... }</code>
+     * <code>
+     * .buf.validate.conformance.cases.WktLevelOne.WktLevelTwo two = 1 [json_name = "two", (.buf.validate.field) = { ... }
+     * </code>
      */
     public Builder clearTwo() {
       bitField0_ = (bitField0_ & ~0x00000001);
@@ -1637,44 +1841,57 @@ private static final long serialVersionUID = 0L;
       onChanged();
       return this;
     }
+
     /**
-     * <code>.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo two = 1 [json_name = "two", (.buf.validate.field) = { ... }</code>
+     * <code>
+     * .buf.validate.conformance.cases.WktLevelOne.WktLevelTwo two = 1 [json_name = "two", (.buf.validate.field) = { ... }
+     * </code>
      */
     public build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.Builder getTwoBuilder() {
       bitField0_ |= 0x00000001;
       onChanged();
       return getTwoFieldBuilder().getBuilder();
     }
+
     /**
-     * <code>.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo two = 1 [json_name = "two", (.buf.validate.field) = { ... }</code>
+     * <code>
+     * .buf.validate.conformance.cases.WktLevelOne.WktLevelTwo two = 1 [json_name = "two", (.buf.validate.field) = { ... }
+     * </code>
      */
     public build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwoOrBuilder getTwoOrBuilder() {
       if (twoBuilder_ != null) {
         return twoBuilder_.getMessageOrBuilder();
       } else {
-        return two_ == null ?
-            build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.getDefaultInstance() : two_;
+        return two_ == null
+            ? build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.getDefaultInstance()
+            : two_;
       }
     }
+
     /**
-     * <code>.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo two = 1 [json_name = "two", (.buf.validate.field) = { ... }</code>
+     * <code>
+     * .buf.validate.conformance.cases.WktLevelOne.WktLevelTwo two = 1 [json_name = "two", (.buf.validate.field) = { ... }
+     * </code>
      */
     private com.google.protobuf.SingleFieldBuilderV3<
-        build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo, build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.Builder, build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwoOrBuilder> 
+            build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo,
+            build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.Builder,
+            build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwoOrBuilder>
         getTwoFieldBuilder() {
       if (twoBuilder_ == null) {
-        twoBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-            build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo, build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.Builder, build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwoOrBuilder>(
-                getTwo(),
-                getParentForChildren(),
-                isClean());
+        twoBuilder_ =
+            new com.google.protobuf.SingleFieldBuilderV3<
+                build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo,
+                build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.Builder,
+                build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwoOrBuilder>(
+                getTwo(), getParentForChildren(), isClean());
         two_ = null;
       }
       return twoBuilder_;
     }
+
     @java.lang.Override
-    public final Builder setUnknownFields(
-        final com.google.protobuf.UnknownFieldSet unknownFields) {
+    public final Builder setUnknownFields(final com.google.protobuf.UnknownFieldSet unknownFields) {
       return super.setUnknownFields(unknownFields);
     }
 
@@ -1684,12 +1901,12 @@ private static final long serialVersionUID = 0L;
       return super.mergeUnknownFields(unknownFields);
     }
 
-
     // @@protoc_insertion_point(builder_scope:buf.validate.conformance.cases.WktLevelOne)
   }
 
   // @@protoc_insertion_point(class_scope:buf.validate.conformance.cases.WktLevelOne)
   private static final build.buf.validate.conformance.cases.WktLevelOne DEFAULT_INSTANCE;
+
   static {
     DEFAULT_INSTANCE = new build.buf.validate.conformance.cases.WktLevelOne();
   }
@@ -1698,27 +1915,27 @@ private static final long serialVersionUID = 0L;
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<WktLevelOne>
-      PARSER = new com.google.protobuf.AbstractParser<WktLevelOne>() {
-    @java.lang.Override
-    public WktLevelOne parsePartialFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      Builder builder = newBuilder();
-      try {
-        builder.mergeFrom(input, extensionRegistry);
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(builder.buildPartial());
-      } catch (com.google.protobuf.UninitializedMessageException e) {
-        throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(e)
-            .setUnfinishedMessage(builder.buildPartial());
-      }
-      return builder.buildPartial();
-    }
-  };
+  private static final com.google.protobuf.Parser<WktLevelOne> PARSER =
+      new com.google.protobuf.AbstractParser<WktLevelOne>() {
+        @java.lang.Override
+        public WktLevelOne parsePartialFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+          Builder builder = newBuilder();
+          try {
+            builder.mergeFrom(input, extensionRegistry);
+          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+            throw e.setUnfinishedMessage(builder.buildPartial());
+          } catch (com.google.protobuf.UninitializedMessageException e) {
+            throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+          } catch (java.io.IOException e) {
+            throw new com.google.protobuf.InvalidProtocolBufferException(e)
+                .setUnfinishedMessage(builder.buildPartial());
+          }
+          return builder.buildPartial();
+        }
+      };
 
   public static com.google.protobuf.Parser<WktLevelOne> parser() {
     return PARSER;
@@ -1733,6 +1950,4 @@ private static final long serialVersionUID = 0L;
   public build.buf.validate.conformance.cases.WktLevelOne getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
-
 }
-

@@ -3,12 +3,14 @@
 
 package build.buf.validate.conformance.cases;
 
-public interface Int64InOrBuilder extends
+public interface Int64InOrBuilder
+    extends
     // @@protoc_insertion_point(interface_extends:buf.validate.conformance.cases.Int64In)
     com.google.protobuf.MessageOrBuilder {
 
   /**
    * <code>int64 val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
+   *
    * @return The val.
    */
   long getVal();

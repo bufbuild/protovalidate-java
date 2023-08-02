@@ -81,8 +81,7 @@ public class Expression {
    * @param constraints The list of constraints.
    * @return The list of expressions.
    */
-  public static List<Expression> fromConstraints(
-      List<build.buf.validate.Constraint> constraints) {
+  public static List<Expression> fromConstraints(List<build.buf.validate.Constraint> constraints) {
     List<Expression> expressions = new ArrayList<>();
     for (build.buf.validate.Constraint constraint : constraints) {
       expressions.add(new Expression(constraint));

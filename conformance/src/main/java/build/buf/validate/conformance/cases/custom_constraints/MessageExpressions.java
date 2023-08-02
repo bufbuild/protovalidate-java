@@ -4,21 +4,25 @@
 package build.buf.validate.conformance.cases.custom_constraints;
 
 /**
+ *
+ *
  * <pre>
  * A message with message-level custom expressions
  * </pre>
  *
  * Protobuf type {@code buf.validate.conformance.cases.custom_constraints.MessageExpressions}
  */
-public final class MessageExpressions extends
-    com.google.protobuf.GeneratedMessageV3 implements
+public final class MessageExpressions extends com.google.protobuf.GeneratedMessageV3
+    implements
     // @@protoc_insertion_point(message_implements:buf.validate.conformance.cases.custom_constraints.MessageExpressions)
     MessageExpressionsOrBuilder {
-private static final long serialVersionUID = 0L;
+  private static final long serialVersionUID = 0L;
+
   // Use MessageExpressions.newBuilder() to construct.
   private MessageExpressions(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
+
   private MessageExpressions() {
     c_ = 0;
     d_ = 0;
@@ -26,79 +30,92 @@ private static final long serialVersionUID = 0L;
 
   @java.lang.Override
   @SuppressWarnings({"unused"})
-  protected java.lang.Object newInstance(
-      UnusedPrivateParameter unused) {
+  protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
     return new MessageExpressions();
   }
 
-  public static final com.google.protobuf.Descriptors.Descriptor
-      getDescriptor() {
-    return build.buf.validate.conformance.cases.custom_constraints.CustomConstraintsProto.internal_static_buf_validate_conformance_cases_custom_constraints_MessageExpressions_descriptor;
+  public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+    return build.buf.validate.conformance.cases.custom_constraints.CustomConstraintsProto
+        .internal_static_buf_validate_conformance_cases_custom_constraints_MessageExpressions_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return build.buf.validate.conformance.cases.custom_constraints.CustomConstraintsProto.internal_static_buf_validate_conformance_cases_custom_constraints_MessageExpressions_fieldAccessorTable
+    return build.buf.validate.conformance.cases.custom_constraints.CustomConstraintsProto
+        .internal_static_buf_validate_conformance_cases_custom_constraints_MessageExpressions_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            build.buf.validate.conformance.cases.custom_constraints.MessageExpressions.class, build.buf.validate.conformance.cases.custom_constraints.MessageExpressions.Builder.class);
+            build.buf.validate.conformance.cases.custom_constraints.MessageExpressions.class,
+            build.buf.validate.conformance.cases.custom_constraints.MessageExpressions.Builder
+                .class);
   }
 
-  public interface NestedOrBuilder extends
+  public interface NestedOrBuilder
+      extends
       // @@protoc_insertion_point(interface_extends:buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested)
       com.google.protobuf.MessageOrBuilder {
 
     /**
      * <code>int32 a = 1 [json_name = "a"];</code>
+     *
      * @return The a.
      */
     int getA();
 
     /**
      * <code>int32 b = 2 [json_name = "b"];</code>
+     *
      * @return The b.
      */
     int getB();
   }
+
   /**
-   * Protobuf type {@code buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested}
+   * Protobuf type {@code
+   * buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested}
    */
-  public static final class Nested extends
-      com.google.protobuf.GeneratedMessageV3 implements
+  public static final class Nested extends com.google.protobuf.GeneratedMessageV3
+      implements
       // @@protoc_insertion_point(message_implements:buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested)
       NestedOrBuilder {
-  private static final long serialVersionUID = 0L;
+    private static final long serialVersionUID = 0L;
+
     // Use Nested.newBuilder() to construct.
     private Nested(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
-    private Nested() {
-    }
+
+    private Nested() {}
 
     @java.lang.Override
     @SuppressWarnings({"unused"})
-    protected java.lang.Object newInstance(
-        UnusedPrivateParameter unused) {
+    protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
       return new Nested();
     }
 
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return build.buf.validate.conformance.cases.custom_constraints.CustomConstraintsProto.internal_static_buf_validate_conformance_cases_custom_constraints_MessageExpressions_Nested_descriptor;
+    public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+      return build.buf.validate.conformance.cases.custom_constraints.CustomConstraintsProto
+          .internal_static_buf_validate_conformance_cases_custom_constraints_MessageExpressions_Nested_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return build.buf.validate.conformance.cases.custom_constraints.CustomConstraintsProto.internal_static_buf_validate_conformance_cases_custom_constraints_MessageExpressions_Nested_fieldAccessorTable
+      return build.buf.validate.conformance.cases.custom_constraints.CustomConstraintsProto
+          .internal_static_buf_validate_conformance_cases_custom_constraints_MessageExpressions_Nested_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              build.buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested.class, build.buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested.Builder.class);
+              build.buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested
+                  .class,
+              build.buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested
+                  .Builder.class);
     }
 
     public static final int A_FIELD_NUMBER = 1;
     private int a_ = 0;
+
     /**
      * <code>int32 a = 1 [json_name = "a"];</code>
+     *
      * @return The a.
      */
     @java.lang.Override
@@ -108,8 +125,10 @@ private static final long serialVersionUID = 0L;
 
     public static final int B_FIELD_NUMBER = 2;
     private int b_ = 0;
+
     /**
      * <code>int32 b = 2 [json_name = "b"];</code>
+     *
      * @return The b.
      */
     @java.lang.Override
@@ -118,6 +137,7 @@ private static final long serialVersionUID = 0L;
     }
 
     private byte memoizedIsInitialized = -1;
+
     @java.lang.Override
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -129,8 +149,7 @@ private static final long serialVersionUID = 0L;
     }
 
     @java.lang.Override
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
+    public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
       if (a_ != 0) {
         output.writeInt32(1, a_);
       }
@@ -147,12 +166,10 @@ private static final long serialVersionUID = 0L;
 
       size = 0;
       if (a_ != 0) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(1, a_);
+        size += com.google.protobuf.CodedOutputStream.computeInt32Size(1, a_);
       }
       if (b_ != 0) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(2, b_);
+        size += com.google.protobuf.CodedOutputStream.computeInt32Size(2, b_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
@@ -162,17 +179,18 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public boolean equals(final java.lang.Object obj) {
       if (obj == this) {
-       return true;
+        return true;
       }
-      if (!(obj instanceof build.buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested)) {
+      if (!(obj
+          instanceof
+          build.buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested)) {
         return super.equals(obj);
       }
-      build.buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested other = (build.buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested) obj;
+      build.buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested other =
+          (build.buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested) obj;
 
-      if (getA()
-          != other.getA()) return false;
-      if (getB()
-          != other.getB()) return false;
+      if (getA() != other.getA()) return false;
+      if (getB() != other.getB()) return false;
       if (!getUnknownFields().equals(other.getUnknownFields())) return false;
       return true;
     }
@@ -193,90 +211,102 @@ private static final long serialVersionUID = 0L;
       return hash;
     }
 
-    public static build.buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+    public static build.buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested
+        parseFrom(java.nio.ByteBuffer data)
+            throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
-    }
-    public static build.buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static build.buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static build.buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static build.buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static build.buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static build.buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static build.buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
-    public static build.buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
+    public static build.buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested
+        parseFrom(
+            java.nio.ByteBuffer data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
     }
 
-    public static build.buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    public static build.buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested
+        parseFrom(com.google.protobuf.ByteString data)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
     }
-    public static build.buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
+
+    public static build.buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested
+        parseFrom(
+            com.google.protobuf.ByteString data,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static build.buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+
+    public static build.buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested
+        parseFrom(byte[] data) throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+
+    public static build.buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested
+        parseFrom(byte[] data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+
+    public static build.buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested
+        parseFrom(java.io.InputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
+    }
+
+    public static build.buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested
+        parseFrom(
+            java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+          PARSER, input, extensionRegistry);
+    }
+
+    public static build.buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested
+        parseDelimitedFrom(java.io.InputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input);
+    }
+
+    public static build.buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested
+        parseDelimitedFrom(
+            java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(
+          PARSER, input, extensionRegistry);
+    }
+
+    public static build.buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested
+        parseFrom(com.google.protobuf.CodedInputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
+    }
+
+    public static build.buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested
+        parseFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+          PARSER, input, extensionRegistry);
     }
 
     @java.lang.Override
-    public Builder newBuilderForType() { return newBuilder(); }
+    public Builder newBuilderForType() {
+      return newBuilder();
+    }
+
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(build.buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested prototype) {
+
+    public static Builder newBuilder(
+        build.buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested
+            prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
+
     @java.lang.Override
     public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
+      return this == DEFAULT_INSTANCE ? new Builder() : new Builder().mergeFrom(this);
     }
 
     @java.lang.Override
@@ -285,36 +315,41 @@ private static final long serialVersionUID = 0L;
       Builder builder = new Builder(parent);
       return builder;
     }
+
     /**
-     * Protobuf type {@code buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested}
+     * Protobuf type {@code
+     * buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested}
      */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+    public static final class Builder
+        extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
+        implements
         // @@protoc_insertion_point(builder_implements:buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested)
         build.buf.validate.conformance.cases.custom_constraints.MessageExpressions.NestedOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return build.buf.validate.conformance.cases.custom_constraints.CustomConstraintsProto.internal_static_buf_validate_conformance_cases_custom_constraints_MessageExpressions_Nested_descriptor;
+      public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+        return build.buf.validate.conformance.cases.custom_constraints.CustomConstraintsProto
+            .internal_static_buf_validate_conformance_cases_custom_constraints_MessageExpressions_Nested_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return build.buf.validate.conformance.cases.custom_constraints.CustomConstraintsProto.internal_static_buf_validate_conformance_cases_custom_constraints_MessageExpressions_Nested_fieldAccessorTable
+        return build.buf.validate.conformance.cases.custom_constraints.CustomConstraintsProto
+            .internal_static_buf_validate_conformance_cases_custom_constraints_MessageExpressions_Nested_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                build.buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested.class, build.buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested.Builder.class);
+                build.buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested
+                    .class,
+                build.buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested
+                    .Builder.class);
       }
 
-      // Construct using build.buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested.newBuilder()
-      private Builder() {
+      // Construct using
+      // build.buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested.newBuilder()
+      private Builder() {}
 
-      }
-
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
-
       }
+
       @java.lang.Override
       public Builder clear() {
         super.clear();
@@ -325,19 +360,23 @@ private static final long serialVersionUID = 0L;
       }
 
       @java.lang.Override
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return build.buf.validate.conformance.cases.custom_constraints.CustomConstraintsProto.internal_static_buf_validate_conformance_cases_custom_constraints_MessageExpressions_Nested_descriptor;
+      public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
+        return build.buf.validate.conformance.cases.custom_constraints.CustomConstraintsProto
+            .internal_static_buf_validate_conformance_cases_custom_constraints_MessageExpressions_Nested_descriptor;
       }
 
       @java.lang.Override
-      public build.buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested getDefaultInstanceForType() {
-        return build.buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested.getDefaultInstance();
+      public build.buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested
+          getDefaultInstanceForType() {
+        return build.buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested
+            .getDefaultInstance();
       }
 
       @java.lang.Override
-      public build.buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested build() {
-        build.buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested result = buildPartial();
+      public build.buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested
+          build() {
+        build.buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested result =
+            buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -345,14 +384,21 @@ private static final long serialVersionUID = 0L;
       }
 
       @java.lang.Override
-      public build.buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested buildPartial() {
-        build.buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested result = new build.buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested(this);
-        if (bitField0_ != 0) { buildPartial0(result); }
+      public build.buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested
+          buildPartial() {
+        build.buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested result =
+            new build.buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested(
+                this);
+        if (bitField0_ != 0) {
+          buildPartial0(result);
+        }
         onBuilt();
         return result;
       }
 
-      private void buildPartial0(build.buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested result) {
+      private void buildPartial0(
+          build.buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested
+              result) {
         int from_bitField0_ = bitField0_;
         if (((from_bitField0_ & 0x00000001) != 0)) {
           result.a_ = a_;
@@ -366,46 +412,56 @@ private static final long serialVersionUID = 0L;
       public Builder clone() {
         return super.clone();
       }
+
       @java.lang.Override
       public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
+          com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
         return super.setField(field, value);
       }
+
       @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
+      public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
         return super.clearField(field);
       }
+
       @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+      public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
         return super.clearOneof(oneof);
       }
+
       @java.lang.Override
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
+          int index,
+          java.lang.Object value) {
         return super.setRepeatedField(field, index, value);
       }
+
       @java.lang.Override
       public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
+          com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
         return super.addRepeatedField(field, value);
       }
+
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof build.buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested) {
-          return mergeFrom((build.buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested)other);
+        if (other
+            instanceof
+            build.buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested) {
+          return mergeFrom(
+              (build.buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested)
+                  other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(build.buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested other) {
-        if (other == build.buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested.getDefaultInstance()) return this;
+      public Builder mergeFrom(
+          build.buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested other) {
+        if (other
+            == build.buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested
+                .getDefaultInstance()) return this;
         if (other.getA() != 0) {
           setA(other.getA());
         }
@@ -438,22 +494,25 @@ private static final long serialVersionUID = 0L;
               case 0:
                 done = true;
                 break;
-              case 8: {
-                a_ = input.readInt32();
-                bitField0_ |= 0x00000001;
-                break;
-              } // case 8
-              case 16: {
-                b_ = input.readInt32();
-                bitField0_ |= 0x00000002;
-                break;
-              } // case 16
-              default: {
-                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
-                  done = true; // was an endgroup tag
-                }
-                break;
-              } // default:
+              case 8:
+                {
+                  a_ = input.readInt32();
+                  bitField0_ |= 0x00000001;
+                  break;
+                } // case 8
+              case 16:
+                {
+                  b_ = input.readInt32();
+                  bitField0_ |= 0x00000002;
+                  break;
+                } // case 16
+              default:
+                {
+                  if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                    done = true; // was an endgroup tag
+                  }
+                  break;
+                } // default:
             } // switch (tag)
           } // while (!done)
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -463,19 +522,24 @@ private static final long serialVersionUID = 0L;
         } // finally
         return this;
       }
+
       private int bitField0_;
 
-      private int a_ ;
+      private int a_;
+
       /**
        * <code>int32 a = 1 [json_name = "a"];</code>
+       *
        * @return The a.
        */
       @java.lang.Override
       public int getA() {
         return a_;
       }
+
       /**
        * <code>int32 a = 1 [json_name = "a"];</code>
+       *
        * @param value The a to set.
        * @return This builder for chaining.
        */
@@ -486,8 +550,10 @@ private static final long serialVersionUID = 0L;
         onChanged();
         return this;
       }
+
       /**
        * <code>int32 a = 1 [json_name = "a"];</code>
+       *
        * @return This builder for chaining.
        */
       public Builder clearA() {
@@ -497,17 +563,21 @@ private static final long serialVersionUID = 0L;
         return this;
       }
 
-      private int b_ ;
+      private int b_;
+
       /**
        * <code>int32 b = 2 [json_name = "b"];</code>
+       *
        * @return The b.
        */
       @java.lang.Override
       public int getB() {
         return b_;
       }
+
       /**
        * <code>int32 b = 2 [json_name = "b"];</code>
+       *
        * @param value The b to set.
        * @return This builder for chaining.
        */
@@ -518,8 +588,10 @@ private static final long serialVersionUID = 0L;
         onChanged();
         return this;
       }
+
       /**
        * <code>int32 b = 2 [json_name = "b"];</code>
+       *
        * @return This builder for chaining.
        */
       public Builder clearB() {
@@ -528,6 +600,7 @@ private static final long serialVersionUID = 0L;
         onChanged();
         return this;
       }
+
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -540,41 +613,46 @@ private static final long serialVersionUID = 0L;
         return super.mergeUnknownFields(unknownFields);
       }
 
-
       // @@protoc_insertion_point(builder_scope:buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested)
     }
 
     // @@protoc_insertion_point(class_scope:buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested)
-    private static final build.buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested DEFAULT_INSTANCE;
+    private static final build.buf.validate.conformance.cases.custom_constraints.MessageExpressions
+            .Nested
+        DEFAULT_INSTANCE;
+
     static {
-      DEFAULT_INSTANCE = new build.buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested();
+      DEFAULT_INSTANCE =
+          new build.buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested();
     }
 
-    public static build.buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested getDefaultInstance() {
+    public static build.buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested
+        getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<Nested>
-        PARSER = new com.google.protobuf.AbstractParser<Nested>() {
-      @java.lang.Override
-      public Nested parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        Builder builder = newBuilder();
-        try {
-          builder.mergeFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          throw e.setUnfinishedMessage(builder.buildPartial());
-        } catch (com.google.protobuf.UninitializedMessageException e) {
-          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
-        } catch (java.io.IOException e) {
-          throw new com.google.protobuf.InvalidProtocolBufferException(e)
-              .setUnfinishedMessage(builder.buildPartial());
-        }
-        return builder.buildPartial();
-      }
-    };
+    private static final com.google.protobuf.Parser<Nested> PARSER =
+        new com.google.protobuf.AbstractParser<Nested>() {
+          @java.lang.Override
+          public Nested parsePartialFrom(
+              com.google.protobuf.CodedInputStream input,
+              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+              throws com.google.protobuf.InvalidProtocolBufferException {
+            Builder builder = newBuilder();
+            try {
+              builder.mergeFrom(input, extensionRegistry);
+            } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+              throw e.setUnfinishedMessage(builder.buildPartial());
+            } catch (com.google.protobuf.UninitializedMessageException e) {
+              throw e.asInvalidProtocolBufferException()
+                  .setUnfinishedMessage(builder.buildPartial());
+            } catch (java.io.IOException e) {
+              throw new com.google.protobuf.InvalidProtocolBufferException(e)
+                  .setUnfinishedMessage(builder.buildPartial());
+            }
+            return builder.buildPartial();
+          }
+        };
 
     public static com.google.protobuf.Parser<Nested> parser() {
       return PARSER;
@@ -586,16 +664,18 @@ private static final long serialVersionUID = 0L;
     }
 
     @java.lang.Override
-    public build.buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested getDefaultInstanceForType() {
+    public build.buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested
+        getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
-
   }
 
   public static final int A_FIELD_NUMBER = 1;
   private int a_ = 0;
+
   /**
    * <code>int32 a = 1 [json_name = "a"];</code>
+   *
    * @return The a.
    */
   @java.lang.Override
@@ -605,8 +685,10 @@ private static final long serialVersionUID = 0L;
 
   public static final int B_FIELD_NUMBER = 2;
   private int b_ = 0;
+
   /**
    * <code>int32 b = 2 [json_name = "b"];</code>
+   *
    * @return The b.
    */
   @java.lang.Override
@@ -616,93 +698,148 @@ private static final long serialVersionUID = 0L;
 
   public static final int C_FIELD_NUMBER = 3;
   private int c_ = 0;
+
   /**
    * <code>.buf.validate.conformance.cases.custom_constraints.Enum c = 3 [json_name = "c"];</code>
+   *
    * @return The enum numeric value on the wire for c.
    */
-  @java.lang.Override public int getCValue() {
+  @java.lang.Override
+  public int getCValue() {
     return c_;
   }
+
   /**
    * <code>.buf.validate.conformance.cases.custom_constraints.Enum c = 3 [json_name = "c"];</code>
+   *
    * @return The c.
    */
-  @java.lang.Override public build.buf.validate.conformance.cases.custom_constraints.Enum getC() {
-    build.buf.validate.conformance.cases.custom_constraints.Enum result = build.buf.validate.conformance.cases.custom_constraints.Enum.forNumber(c_);
-    return result == null ? build.buf.validate.conformance.cases.custom_constraints.Enum.UNRECOGNIZED : result;
+  @java.lang.Override
+  public build.buf.validate.conformance.cases.custom_constraints.Enum getC() {
+    build.buf.validate.conformance.cases.custom_constraints.Enum result =
+        build.buf.validate.conformance.cases.custom_constraints.Enum.forNumber(c_);
+    return result == null
+        ? build.buf.validate.conformance.cases.custom_constraints.Enum.UNRECOGNIZED
+        : result;
   }
 
   public static final int D_FIELD_NUMBER = 4;
   private int d_ = 0;
+
   /**
    * <code>.buf.validate.conformance.cases.custom_constraints.Enum d = 4 [json_name = "d"];</code>
+   *
    * @return The enum numeric value on the wire for d.
    */
-  @java.lang.Override public int getDValue() {
+  @java.lang.Override
+  public int getDValue() {
     return d_;
   }
+
   /**
    * <code>.buf.validate.conformance.cases.custom_constraints.Enum d = 4 [json_name = "d"];</code>
+   *
    * @return The d.
    */
-  @java.lang.Override public build.buf.validate.conformance.cases.custom_constraints.Enum getD() {
-    build.buf.validate.conformance.cases.custom_constraints.Enum result = build.buf.validate.conformance.cases.custom_constraints.Enum.forNumber(d_);
-    return result == null ? build.buf.validate.conformance.cases.custom_constraints.Enum.UNRECOGNIZED : result;
+  @java.lang.Override
+  public build.buf.validate.conformance.cases.custom_constraints.Enum getD() {
+    build.buf.validate.conformance.cases.custom_constraints.Enum result =
+        build.buf.validate.conformance.cases.custom_constraints.Enum.forNumber(d_);
+    return result == null
+        ? build.buf.validate.conformance.cases.custom_constraints.Enum.UNRECOGNIZED
+        : result;
   }
 
   public static final int E_FIELD_NUMBER = 5;
   private build.buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested e_;
+
   /**
-   * <code>.buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested e = 5 [json_name = "e"];</code>
+   * <code>
+   * .buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested e = 5 [json_name = "e"];
+   * </code>
+   *
    * @return Whether the e field is set.
    */
   @java.lang.Override
   public boolean hasE() {
     return e_ != null;
   }
+
   /**
-   * <code>.buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested e = 5 [json_name = "e"];</code>
+   * <code>
+   * .buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested e = 5 [json_name = "e"];
+   * </code>
+   *
    * @return The e.
    */
   @java.lang.Override
   public build.buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested getE() {
-    return e_ == null ? build.buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested.getDefaultInstance() : e_;
+    return e_ == null
+        ? build.buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested
+            .getDefaultInstance()
+        : e_;
   }
+
   /**
-   * <code>.buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested e = 5 [json_name = "e"];</code>
+   * <code>
+   * .buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested e = 5 [json_name = "e"];
+   * </code>
    */
   @java.lang.Override
-  public build.buf.validate.conformance.cases.custom_constraints.MessageExpressions.NestedOrBuilder getEOrBuilder() {
-    return e_ == null ? build.buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested.getDefaultInstance() : e_;
+  public build.buf.validate.conformance.cases.custom_constraints.MessageExpressions.NestedOrBuilder
+      getEOrBuilder() {
+    return e_ == null
+        ? build.buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested
+            .getDefaultInstance()
+        : e_;
   }
 
   public static final int F_FIELD_NUMBER = 6;
   private build.buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested f_;
+
   /**
-   * <code>.buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested f = 6 [json_name = "f"];</code>
+   * <code>
+   * .buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested f = 6 [json_name = "f"];
+   * </code>
+   *
    * @return Whether the f field is set.
    */
   @java.lang.Override
   public boolean hasF() {
     return f_ != null;
   }
+
   /**
-   * <code>.buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested f = 6 [json_name = "f"];</code>
+   * <code>
+   * .buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested f = 6 [json_name = "f"];
+   * </code>
+   *
    * @return The f.
    */
   @java.lang.Override
   public build.buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested getF() {
-    return f_ == null ? build.buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested.getDefaultInstance() : f_;
+    return f_ == null
+        ? build.buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested
+            .getDefaultInstance()
+        : f_;
   }
+
   /**
-   * <code>.buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested f = 6 [json_name = "f"];</code>
+   * <code>
+   * .buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested f = 6 [json_name = "f"];
+   * </code>
    */
   @java.lang.Override
-  public build.buf.validate.conformance.cases.custom_constraints.MessageExpressions.NestedOrBuilder getFOrBuilder() {
-    return f_ == null ? build.buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested.getDefaultInstance() : f_;
+  public build.buf.validate.conformance.cases.custom_constraints.MessageExpressions.NestedOrBuilder
+      getFOrBuilder() {
+    return f_ == null
+        ? build.buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested
+            .getDefaultInstance()
+        : f_;
   }
 
   private byte memoizedIsInitialized = -1;
+
   @java.lang.Override
   public final boolean isInitialized() {
     byte isInitialized = memoizedIsInitialized;
@@ -714,18 +851,21 @@ private static final long serialVersionUID = 0L;
   }
 
   @java.lang.Override
-  public void writeTo(com.google.protobuf.CodedOutputStream output)
-                      throws java.io.IOException {
+  public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
     if (a_ != 0) {
       output.writeInt32(1, a_);
     }
     if (b_ != 0) {
       output.writeInt32(2, b_);
     }
-    if (c_ != build.buf.validate.conformance.cases.custom_constraints.Enum.ENUM_UNSPECIFIED.getNumber()) {
+    if (c_
+        != build.buf.validate.conformance.cases.custom_constraints.Enum.ENUM_UNSPECIFIED
+            .getNumber()) {
       output.writeEnum(3, c_);
     }
-    if (d_ != build.buf.validate.conformance.cases.custom_constraints.Enum.ENUM_UNSPECIFIED.getNumber()) {
+    if (d_
+        != build.buf.validate.conformance.cases.custom_constraints.Enum.ENUM_UNSPECIFIED
+            .getNumber()) {
       output.writeEnum(4, d_);
     }
     if (e_ != null) {
@@ -744,28 +884,26 @@ private static final long serialVersionUID = 0L;
 
     size = 0;
     if (a_ != 0) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeInt32Size(1, a_);
+      size += com.google.protobuf.CodedOutputStream.computeInt32Size(1, a_);
     }
     if (b_ != 0) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeInt32Size(2, b_);
+      size += com.google.protobuf.CodedOutputStream.computeInt32Size(2, b_);
     }
-    if (c_ != build.buf.validate.conformance.cases.custom_constraints.Enum.ENUM_UNSPECIFIED.getNumber()) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeEnumSize(3, c_);
+    if (c_
+        != build.buf.validate.conformance.cases.custom_constraints.Enum.ENUM_UNSPECIFIED
+            .getNumber()) {
+      size += com.google.protobuf.CodedOutputStream.computeEnumSize(3, c_);
     }
-    if (d_ != build.buf.validate.conformance.cases.custom_constraints.Enum.ENUM_UNSPECIFIED.getNumber()) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeEnumSize(4, d_);
+    if (d_
+        != build.buf.validate.conformance.cases.custom_constraints.Enum.ENUM_UNSPECIFIED
+            .getNumber()) {
+      size += com.google.protobuf.CodedOutputStream.computeEnumSize(4, d_);
     }
     if (e_ != null) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(5, getE());
+      size += com.google.protobuf.CodedOutputStream.computeMessageSize(5, getE());
     }
     if (f_ != null) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(6, getF());
+      size += com.google.protobuf.CodedOutputStream.computeMessageSize(6, getF());
     }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
@@ -775,28 +913,26 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public boolean equals(final java.lang.Object obj) {
     if (obj == this) {
-     return true;
+      return true;
     }
-    if (!(obj instanceof build.buf.validate.conformance.cases.custom_constraints.MessageExpressions)) {
+    if (!(obj
+        instanceof build.buf.validate.conformance.cases.custom_constraints.MessageExpressions)) {
       return super.equals(obj);
     }
-    build.buf.validate.conformance.cases.custom_constraints.MessageExpressions other = (build.buf.validate.conformance.cases.custom_constraints.MessageExpressions) obj;
+    build.buf.validate.conformance.cases.custom_constraints.MessageExpressions other =
+        (build.buf.validate.conformance.cases.custom_constraints.MessageExpressions) obj;
 
-    if (getA()
-        != other.getA()) return false;
-    if (getB()
-        != other.getB()) return false;
+    if (getA() != other.getA()) return false;
+    if (getB() != other.getB()) return false;
     if (c_ != other.c_) return false;
     if (d_ != other.d_) return false;
     if (hasE() != other.hasE()) return false;
     if (hasE()) {
-      if (!getE()
-          .equals(other.getE())) return false;
+      if (!getE().equals(other.getE())) return false;
     }
     if (hasF() != other.hasF()) return false;
     if (hasF()) {
-      if (!getF()
-          .equals(other.getF())) return false;
+      if (!getF().equals(other.getF())) return false;
     }
     if (!getUnknownFields().equals(other.getUnknownFields())) return false;
     return true;
@@ -830,132 +966,146 @@ private static final long serialVersionUID = 0L;
     return hash;
   }
 
-  public static build.buf.validate.conformance.cases.custom_constraints.MessageExpressions parseFrom(
-      java.nio.ByteBuffer data)
-      throws com.google.protobuf.InvalidProtocolBufferException {
+  public static build.buf.validate.conformance.cases.custom_constraints.MessageExpressions
+      parseFrom(java.nio.ByteBuffer data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
-  }
-  public static build.buf.validate.conformance.cases.custom_constraints.MessageExpressions parseFrom(
-      java.nio.ByteBuffer data,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-      throws com.google.protobuf.InvalidProtocolBufferException {
-    return PARSER.parseFrom(data, extensionRegistry);
-  }
-  public static build.buf.validate.conformance.cases.custom_constraints.MessageExpressions parseFrom(
-      com.google.protobuf.ByteString data)
-      throws com.google.protobuf.InvalidProtocolBufferException {
-    return PARSER.parseFrom(data);
-  }
-  public static build.buf.validate.conformance.cases.custom_constraints.MessageExpressions parseFrom(
-      com.google.protobuf.ByteString data,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-      throws com.google.protobuf.InvalidProtocolBufferException {
-    return PARSER.parseFrom(data, extensionRegistry);
-  }
-  public static build.buf.validate.conformance.cases.custom_constraints.MessageExpressions parseFrom(byte[] data)
-      throws com.google.protobuf.InvalidProtocolBufferException {
-    return PARSER.parseFrom(data);
-  }
-  public static build.buf.validate.conformance.cases.custom_constraints.MessageExpressions parseFrom(
-      byte[] data,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-      throws com.google.protobuf.InvalidProtocolBufferException {
-    return PARSER.parseFrom(data, extensionRegistry);
-  }
-  public static build.buf.validate.conformance.cases.custom_constraints.MessageExpressions parseFrom(java.io.InputStream input)
-      throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input);
-  }
-  public static build.buf.validate.conformance.cases.custom_constraints.MessageExpressions parseFrom(
-      java.io.InputStream input,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-      throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input, extensionRegistry);
   }
 
-  public static build.buf.validate.conformance.cases.custom_constraints.MessageExpressions parseDelimitedFrom(java.io.InputStream input)
-      throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseDelimitedWithIOException(PARSER, input);
+  public static build.buf.validate.conformance.cases.custom_constraints.MessageExpressions
+      parseFrom(
+          java.nio.ByteBuffer data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+    return PARSER.parseFrom(data, extensionRegistry);
   }
 
-  public static build.buf.validate.conformance.cases.custom_constraints.MessageExpressions parseDelimitedFrom(
-      java.io.InputStream input,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-      throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+  public static build.buf.validate.conformance.cases.custom_constraints.MessageExpressions
+      parseFrom(com.google.protobuf.ByteString data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+    return PARSER.parseFrom(data);
   }
-  public static build.buf.validate.conformance.cases.custom_constraints.MessageExpressions parseFrom(
-      com.google.protobuf.CodedInputStream input)
-      throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input);
+
+  public static build.buf.validate.conformance.cases.custom_constraints.MessageExpressions
+      parseFrom(
+          com.google.protobuf.ByteString data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+    return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static build.buf.validate.conformance.cases.custom_constraints.MessageExpressions parseFrom(
-      com.google.protobuf.CodedInputStream input,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-      throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input, extensionRegistry);
+
+  public static build.buf.validate.conformance.cases.custom_constraints.MessageExpressions
+      parseFrom(byte[] data) throws com.google.protobuf.InvalidProtocolBufferException {
+    return PARSER.parseFrom(data);
+  }
+
+  public static build.buf.validate.conformance.cases.custom_constraints.MessageExpressions
+      parseFrom(byte[] data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+    return PARSER.parseFrom(data, extensionRegistry);
+  }
+
+  public static build.buf.validate.conformance.cases.custom_constraints.MessageExpressions
+      parseFrom(java.io.InputStream input) throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
+  }
+
+  public static build.buf.validate.conformance.cases.custom_constraints.MessageExpressions
+      parseFrom(
+          java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+        PARSER, input, extensionRegistry);
+  }
+
+  public static build.buf.validate.conformance.cases.custom_constraints.MessageExpressions
+      parseDelimitedFrom(java.io.InputStream input) throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input);
+  }
+
+  public static build.buf.validate.conformance.cases.custom_constraints.MessageExpressions
+      parseDelimitedFrom(
+          java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(
+        PARSER, input, extensionRegistry);
+  }
+
+  public static build.buf.validate.conformance.cases.custom_constraints.MessageExpressions
+      parseFrom(com.google.protobuf.CodedInputStream input) throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
+  }
+
+  public static build.buf.validate.conformance.cases.custom_constraints.MessageExpressions
+      parseFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+        PARSER, input, extensionRegistry);
   }
 
   @java.lang.Override
-  public Builder newBuilderForType() { return newBuilder(); }
+  public Builder newBuilderForType() {
+    return newBuilder();
+  }
+
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-  public static Builder newBuilder(build.buf.validate.conformance.cases.custom_constraints.MessageExpressions prototype) {
+
+  public static Builder newBuilder(
+      build.buf.validate.conformance.cases.custom_constraints.MessageExpressions prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
-  }
-  @java.lang.Override
-  public Builder toBuilder() {
-    return this == DEFAULT_INSTANCE
-        ? new Builder() : new Builder().mergeFrom(this);
   }
 
   @java.lang.Override
-  protected Builder newBuilderForType(
-      com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+  public Builder toBuilder() {
+    return this == DEFAULT_INSTANCE ? new Builder() : new Builder().mergeFrom(this);
+  }
+
+  @java.lang.Override
+  protected Builder newBuilderForType(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
     Builder builder = new Builder(parent);
     return builder;
   }
+
   /**
+   *
+   *
    * <pre>
    * A message with message-level custom expressions
    * </pre>
    *
    * Protobuf type {@code buf.validate.conformance.cases.custom_constraints.MessageExpressions}
    */
-  public static final class Builder extends
-      com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+  public static final class Builder extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
+      implements
       // @@protoc_insertion_point(builder_implements:buf.validate.conformance.cases.custom_constraints.MessageExpressions)
       build.buf.validate.conformance.cases.custom_constraints.MessageExpressionsOrBuilder {
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return build.buf.validate.conformance.cases.custom_constraints.CustomConstraintsProto.internal_static_buf_validate_conformance_cases_custom_constraints_MessageExpressions_descriptor;
+    public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+      return build.buf.validate.conformance.cases.custom_constraints.CustomConstraintsProto
+          .internal_static_buf_validate_conformance_cases_custom_constraints_MessageExpressions_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return build.buf.validate.conformance.cases.custom_constraints.CustomConstraintsProto.internal_static_buf_validate_conformance_cases_custom_constraints_MessageExpressions_fieldAccessorTable
+      return build.buf.validate.conformance.cases.custom_constraints.CustomConstraintsProto
+          .internal_static_buf_validate_conformance_cases_custom_constraints_MessageExpressions_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              build.buf.validate.conformance.cases.custom_constraints.MessageExpressions.class, build.buf.validate.conformance.cases.custom_constraints.MessageExpressions.Builder.class);
+              build.buf.validate.conformance.cases.custom_constraints.MessageExpressions.class,
+              build.buf.validate.conformance.cases.custom_constraints.MessageExpressions.Builder
+                  .class);
     }
 
-    // Construct using build.buf.validate.conformance.cases.custom_constraints.MessageExpressions.newBuilder()
-    private Builder() {
+    // Construct using
+    // build.buf.validate.conformance.cases.custom_constraints.MessageExpressions.newBuilder()
+    private Builder() {}
 
-    }
-
-    private Builder(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+    private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
       super(parent);
-
     }
+
     @java.lang.Override
     public Builder clear() {
       super.clear();
@@ -978,19 +1128,22 @@ private static final long serialVersionUID = 0L;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Descriptors.Descriptor
-        getDescriptorForType() {
-      return build.buf.validate.conformance.cases.custom_constraints.CustomConstraintsProto.internal_static_buf_validate_conformance_cases_custom_constraints_MessageExpressions_descriptor;
+    public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
+      return build.buf.validate.conformance.cases.custom_constraints.CustomConstraintsProto
+          .internal_static_buf_validate_conformance_cases_custom_constraints_MessageExpressions_descriptor;
     }
 
     @java.lang.Override
-    public build.buf.validate.conformance.cases.custom_constraints.MessageExpressions getDefaultInstanceForType() {
-      return build.buf.validate.conformance.cases.custom_constraints.MessageExpressions.getDefaultInstance();
+    public build.buf.validate.conformance.cases.custom_constraints.MessageExpressions
+        getDefaultInstanceForType() {
+      return build.buf.validate.conformance.cases.custom_constraints.MessageExpressions
+          .getDefaultInstance();
     }
 
     @java.lang.Override
     public build.buf.validate.conformance.cases.custom_constraints.MessageExpressions build() {
-      build.buf.validate.conformance.cases.custom_constraints.MessageExpressions result = buildPartial();
+      build.buf.validate.conformance.cases.custom_constraints.MessageExpressions result =
+          buildPartial();
       if (!result.isInitialized()) {
         throw newUninitializedMessageException(result);
       }
@@ -998,14 +1151,19 @@ private static final long serialVersionUID = 0L;
     }
 
     @java.lang.Override
-    public build.buf.validate.conformance.cases.custom_constraints.MessageExpressions buildPartial() {
-      build.buf.validate.conformance.cases.custom_constraints.MessageExpressions result = new build.buf.validate.conformance.cases.custom_constraints.MessageExpressions(this);
-      if (bitField0_ != 0) { buildPartial0(result); }
+    public build.buf.validate.conformance.cases.custom_constraints.MessageExpressions
+        buildPartial() {
+      build.buf.validate.conformance.cases.custom_constraints.MessageExpressions result =
+          new build.buf.validate.conformance.cases.custom_constraints.MessageExpressions(this);
+      if (bitField0_ != 0) {
+        buildPartial0(result);
+      }
       onBuilt();
       return result;
     }
 
-    private void buildPartial0(build.buf.validate.conformance.cases.custom_constraints.MessageExpressions result) {
+    private void buildPartial0(
+        build.buf.validate.conformance.cases.custom_constraints.MessageExpressions result) {
       int from_bitField0_ = bitField0_;
       if (((from_bitField0_ & 0x00000001) != 0)) {
         result.a_ = a_;
@@ -1020,14 +1178,10 @@ private static final long serialVersionUID = 0L;
         result.d_ = d_;
       }
       if (((from_bitField0_ & 0x00000010) != 0)) {
-        result.e_ = eBuilder_ == null
-            ? e_
-            : eBuilder_.build();
+        result.e_ = eBuilder_ == null ? e_ : eBuilder_.build();
       }
       if (((from_bitField0_ & 0x00000020) != 0)) {
-        result.f_ = fBuilder_ == null
-            ? f_
-            : fBuilder_.build();
+        result.f_ = fBuilder_ == null ? f_ : fBuilder_.build();
       }
     }
 
@@ -1035,46 +1189,52 @@ private static final long serialVersionUID = 0L;
     public Builder clone() {
       return super.clone();
     }
+
     @java.lang.Override
     public Builder setField(
-        com.google.protobuf.Descriptors.FieldDescriptor field,
-        java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
       return super.setField(field, value);
     }
+
     @java.lang.Override
-    public Builder clearField(
-        com.google.protobuf.Descriptors.FieldDescriptor field) {
+    public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
       return super.clearField(field);
     }
+
     @java.lang.Override
-    public Builder clearOneof(
-        com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+    public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
       return super.clearOneof(oneof);
     }
+
     @java.lang.Override
     public Builder setRepeatedField(
-        com.google.protobuf.Descriptors.FieldDescriptor field,
-        int index, java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field, int index, java.lang.Object value) {
       return super.setRepeatedField(field, index, value);
     }
+
     @java.lang.Override
     public Builder addRepeatedField(
-        com.google.protobuf.Descriptors.FieldDescriptor field,
-        java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
       return super.addRepeatedField(field, value);
     }
+
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
-      if (other instanceof build.buf.validate.conformance.cases.custom_constraints.MessageExpressions) {
-        return mergeFrom((build.buf.validate.conformance.cases.custom_constraints.MessageExpressions)other);
+      if (other
+          instanceof build.buf.validate.conformance.cases.custom_constraints.MessageExpressions) {
+        return mergeFrom(
+            (build.buf.validate.conformance.cases.custom_constraints.MessageExpressions) other);
       } else {
         super.mergeFrom(other);
         return this;
       }
     }
 
-    public Builder mergeFrom(build.buf.validate.conformance.cases.custom_constraints.MessageExpressions other) {
-      if (other == build.buf.validate.conformance.cases.custom_constraints.MessageExpressions.getDefaultInstance()) return this;
+    public Builder mergeFrom(
+        build.buf.validate.conformance.cases.custom_constraints.MessageExpressions other) {
+      if (other
+          == build.buf.validate.conformance.cases.custom_constraints.MessageExpressions
+              .getDefaultInstance()) return this;
       if (other.getA() != 0) {
         setA(other.getA());
       }
@@ -1119,46 +1279,49 @@ private static final long serialVersionUID = 0L;
             case 0:
               done = true;
               break;
-            case 8: {
-              a_ = input.readInt32();
-              bitField0_ |= 0x00000001;
-              break;
-            } // case 8
-            case 16: {
-              b_ = input.readInt32();
-              bitField0_ |= 0x00000002;
-              break;
-            } // case 16
-            case 24: {
-              c_ = input.readEnum();
-              bitField0_ |= 0x00000004;
-              break;
-            } // case 24
-            case 32: {
-              d_ = input.readEnum();
-              bitField0_ |= 0x00000008;
-              break;
-            } // case 32
-            case 42: {
-              input.readMessage(
-                  getEFieldBuilder().getBuilder(),
-                  extensionRegistry);
-              bitField0_ |= 0x00000010;
-              break;
-            } // case 42
-            case 50: {
-              input.readMessage(
-                  getFFieldBuilder().getBuilder(),
-                  extensionRegistry);
-              bitField0_ |= 0x00000020;
-              break;
-            } // case 50
-            default: {
-              if (!super.parseUnknownField(input, extensionRegistry, tag)) {
-                done = true; // was an endgroup tag
-              }
-              break;
-            } // default:
+            case 8:
+              {
+                a_ = input.readInt32();
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 8
+            case 16:
+              {
+                b_ = input.readInt32();
+                bitField0_ |= 0x00000002;
+                break;
+              } // case 16
+            case 24:
+              {
+                c_ = input.readEnum();
+                bitField0_ |= 0x00000004;
+                break;
+              } // case 24
+            case 32:
+              {
+                d_ = input.readEnum();
+                bitField0_ |= 0x00000008;
+                break;
+              } // case 32
+            case 42:
+              {
+                input.readMessage(getEFieldBuilder().getBuilder(), extensionRegistry);
+                bitField0_ |= 0x00000010;
+                break;
+              } // case 42
+            case 50:
+              {
+                input.readMessage(getFFieldBuilder().getBuilder(), extensionRegistry);
+                bitField0_ |= 0x00000020;
+                break;
+              } // case 50
+            default:
+              {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
           } // switch (tag)
         } // while (!done)
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -1168,19 +1331,24 @@ private static final long serialVersionUID = 0L;
       } // finally
       return this;
     }
+
     private int bitField0_;
 
-    private int a_ ;
+    private int a_;
+
     /**
      * <code>int32 a = 1 [json_name = "a"];</code>
+     *
      * @return The a.
      */
     @java.lang.Override
     public int getA() {
       return a_;
     }
+
     /**
      * <code>int32 a = 1 [json_name = "a"];</code>
+     *
      * @param value The a to set.
      * @return This builder for chaining.
      */
@@ -1191,8 +1359,10 @@ private static final long serialVersionUID = 0L;
       onChanged();
       return this;
     }
+
     /**
      * <code>int32 a = 1 [json_name = "a"];</code>
+     *
      * @return This builder for chaining.
      */
     public Builder clearA() {
@@ -1202,17 +1372,21 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private int b_ ;
+    private int b_;
+
     /**
      * <code>int32 b = 2 [json_name = "b"];</code>
+     *
      * @return The b.
      */
     @java.lang.Override
     public int getB() {
       return b_;
     }
+
     /**
      * <code>int32 b = 2 [json_name = "b"];</code>
+     *
      * @param value The b to set.
      * @return This builder for chaining.
      */
@@ -1223,8 +1397,10 @@ private static final long serialVersionUID = 0L;
       onChanged();
       return this;
     }
+
     /**
      * <code>int32 b = 2 [json_name = "b"];</code>
+     *
      * @return This builder for chaining.
      */
     public Builder clearB() {
@@ -1235,15 +1411,20 @@ private static final long serialVersionUID = 0L;
     }
 
     private int c_ = 0;
+
     /**
      * <code>.buf.validate.conformance.cases.custom_constraints.Enum c = 3 [json_name = "c"];</code>
+     *
      * @return The enum numeric value on the wire for c.
      */
-    @java.lang.Override public int getCValue() {
+    @java.lang.Override
+    public int getCValue() {
       return c_;
     }
+
     /**
      * <code>.buf.validate.conformance.cases.custom_constraints.Enum c = 3 [json_name = "c"];</code>
+     *
      * @param value The enum numeric value on the wire for c to set.
      * @return This builder for chaining.
      */
@@ -1253,17 +1434,24 @@ private static final long serialVersionUID = 0L;
       onChanged();
       return this;
     }
+
     /**
      * <code>.buf.validate.conformance.cases.custom_constraints.Enum c = 3 [json_name = "c"];</code>
+     *
      * @return The c.
      */
     @java.lang.Override
     public build.buf.validate.conformance.cases.custom_constraints.Enum getC() {
-      build.buf.validate.conformance.cases.custom_constraints.Enum result = build.buf.validate.conformance.cases.custom_constraints.Enum.forNumber(c_);
-      return result == null ? build.buf.validate.conformance.cases.custom_constraints.Enum.UNRECOGNIZED : result;
+      build.buf.validate.conformance.cases.custom_constraints.Enum result =
+          build.buf.validate.conformance.cases.custom_constraints.Enum.forNumber(c_);
+      return result == null
+          ? build.buf.validate.conformance.cases.custom_constraints.Enum.UNRECOGNIZED
+          : result;
     }
+
     /**
      * <code>.buf.validate.conformance.cases.custom_constraints.Enum c = 3 [json_name = "c"];</code>
+     *
      * @param value The c to set.
      * @return This builder for chaining.
      */
@@ -1276,8 +1464,10 @@ private static final long serialVersionUID = 0L;
       onChanged();
       return this;
     }
+
     /**
      * <code>.buf.validate.conformance.cases.custom_constraints.Enum c = 3 [json_name = "c"];</code>
+     *
      * @return This builder for chaining.
      */
     public Builder clearC() {
@@ -1288,15 +1478,20 @@ private static final long serialVersionUID = 0L;
     }
 
     private int d_ = 0;
+
     /**
      * <code>.buf.validate.conformance.cases.custom_constraints.Enum d = 4 [json_name = "d"];</code>
+     *
      * @return The enum numeric value on the wire for d.
      */
-    @java.lang.Override public int getDValue() {
+    @java.lang.Override
+    public int getDValue() {
       return d_;
     }
+
     /**
      * <code>.buf.validate.conformance.cases.custom_constraints.Enum d = 4 [json_name = "d"];</code>
+     *
      * @param value The enum numeric value on the wire for d to set.
      * @return This builder for chaining.
      */
@@ -1306,17 +1501,24 @@ private static final long serialVersionUID = 0L;
       onChanged();
       return this;
     }
+
     /**
      * <code>.buf.validate.conformance.cases.custom_constraints.Enum d = 4 [json_name = "d"];</code>
+     *
      * @return The d.
      */
     @java.lang.Override
     public build.buf.validate.conformance.cases.custom_constraints.Enum getD() {
-      build.buf.validate.conformance.cases.custom_constraints.Enum result = build.buf.validate.conformance.cases.custom_constraints.Enum.forNumber(d_);
-      return result == null ? build.buf.validate.conformance.cases.custom_constraints.Enum.UNRECOGNIZED : result;
+      build.buf.validate.conformance.cases.custom_constraints.Enum result =
+          build.buf.validate.conformance.cases.custom_constraints.Enum.forNumber(d_);
+      return result == null
+          ? build.buf.validate.conformance.cases.custom_constraints.Enum.UNRECOGNIZED
+          : result;
     }
+
     /**
      * <code>.buf.validate.conformance.cases.custom_constraints.Enum d = 4 [json_name = "d"];</code>
+     *
      * @param value The d to set.
      * @return This builder for chaining.
      */
@@ -1329,8 +1531,10 @@ private static final long serialVersionUID = 0L;
       onChanged();
       return this;
     }
+
     /**
      * <code>.buf.validate.conformance.cases.custom_constraints.Enum d = 4 [json_name = "d"];</code>
+     *
      * @return This builder for chaining.
      */
     public Builder clearD() {
@@ -1342,29 +1546,50 @@ private static final long serialVersionUID = 0L;
 
     private build.buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested e_;
     private com.google.protobuf.SingleFieldBuilderV3<
-        build.buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested, build.buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested.Builder, build.buf.validate.conformance.cases.custom_constraints.MessageExpressions.NestedOrBuilder> eBuilder_;
+            build.buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested,
+            build.buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested
+                .Builder,
+            build.buf.validate.conformance.cases.custom_constraints.MessageExpressions
+                .NestedOrBuilder>
+        eBuilder_;
+
     /**
-     * <code>.buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested e = 5 [json_name = "e"];</code>
+     * <code>
+     * .buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested e = 5 [json_name = "e"];
+     * </code>
+     *
      * @return Whether the e field is set.
      */
     public boolean hasE() {
       return ((bitField0_ & 0x00000010) != 0);
     }
+
     /**
-     * <code>.buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested e = 5 [json_name = "e"];</code>
+     * <code>
+     * .buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested e = 5 [json_name = "e"];
+     * </code>
+     *
      * @return The e.
      */
-    public build.buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested getE() {
+    public build.buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested
+        getE() {
       if (eBuilder_ == null) {
-        return e_ == null ? build.buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested.getDefaultInstance() : e_;
+        return e_ == null
+            ? build.buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested
+                .getDefaultInstance()
+            : e_;
       } else {
         return eBuilder_.getMessage();
       }
     }
+
     /**
-     * <code>.buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested e = 5 [json_name = "e"];</code>
+     * <code>
+     * .buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested e = 5 [json_name = "e"];
+     * </code>
      */
-    public Builder setE(build.buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested value) {
+    public Builder setE(
+        build.buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested value) {
       if (eBuilder_ == null) {
         if (value == null) {
           throw new NullPointerException();
@@ -1377,11 +1602,15 @@ private static final long serialVersionUID = 0L;
       onChanged();
       return this;
     }
+
     /**
-     * <code>.buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested e = 5 [json_name = "e"];</code>
+     * <code>
+     * .buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested e = 5 [json_name = "e"];
+     * </code>
      */
     public Builder setE(
-        build.buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested.Builder builderForValue) {
+        build.buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested.Builder
+            builderForValue) {
       if (eBuilder_ == null) {
         e_ = builderForValue.build();
       } else {
@@ -1391,14 +1620,20 @@ private static final long serialVersionUID = 0L;
       onChanged();
       return this;
     }
+
     /**
-     * <code>.buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested e = 5 [json_name = "e"];</code>
+     * <code>
+     * .buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested e = 5 [json_name = "e"];
+     * </code>
      */
-    public Builder mergeE(build.buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested value) {
+    public Builder mergeE(
+        build.buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested value) {
       if (eBuilder_ == null) {
-        if (((bitField0_ & 0x00000010) != 0) &&
-          e_ != null &&
-          e_ != build.buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested.getDefaultInstance()) {
+        if (((bitField0_ & 0x00000010) != 0)
+            && e_ != null
+            && e_
+                != build.buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested
+                    .getDefaultInstance()) {
           getEBuilder().mergeFrom(value);
         } else {
           e_ = value;
@@ -1410,8 +1645,11 @@ private static final long serialVersionUID = 0L;
       onChanged();
       return this;
     }
+
     /**
-     * <code>.buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested e = 5 [json_name = "e"];</code>
+     * <code>
+     * .buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested e = 5 [json_name = "e"];
+     * </code>
      */
     public Builder clearE() {
       bitField0_ = (bitField0_ & ~0x00000010);
@@ -1423,37 +1661,57 @@ private static final long serialVersionUID = 0L;
       onChanged();
       return this;
     }
+
     /**
-     * <code>.buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested e = 5 [json_name = "e"];</code>
+     * <code>
+     * .buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested e = 5 [json_name = "e"];
+     * </code>
      */
-    public build.buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested.Builder getEBuilder() {
+    public build.buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested.Builder
+        getEBuilder() {
       bitField0_ |= 0x00000010;
       onChanged();
       return getEFieldBuilder().getBuilder();
     }
+
     /**
-     * <code>.buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested e = 5 [json_name = "e"];</code>
+     * <code>
+     * .buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested e = 5 [json_name = "e"];
+     * </code>
      */
-    public build.buf.validate.conformance.cases.custom_constraints.MessageExpressions.NestedOrBuilder getEOrBuilder() {
+    public build.buf.validate.conformance.cases.custom_constraints.MessageExpressions
+            .NestedOrBuilder
+        getEOrBuilder() {
       if (eBuilder_ != null) {
         return eBuilder_.getMessageOrBuilder();
       } else {
-        return e_ == null ?
-            build.buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested.getDefaultInstance() : e_;
+        return e_ == null
+            ? build.buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested
+                .getDefaultInstance()
+            : e_;
       }
     }
+
     /**
-     * <code>.buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested e = 5 [json_name = "e"];</code>
+     * <code>
+     * .buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested e = 5 [json_name = "e"];
+     * </code>
      */
     private com.google.protobuf.SingleFieldBuilderV3<
-        build.buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested, build.buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested.Builder, build.buf.validate.conformance.cases.custom_constraints.MessageExpressions.NestedOrBuilder> 
+            build.buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested,
+            build.buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested
+                .Builder,
+            build.buf.validate.conformance.cases.custom_constraints.MessageExpressions
+                .NestedOrBuilder>
         getEFieldBuilder() {
       if (eBuilder_ == null) {
-        eBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-            build.buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested, build.buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested.Builder, build.buf.validate.conformance.cases.custom_constraints.MessageExpressions.NestedOrBuilder>(
-                getE(),
-                getParentForChildren(),
-                isClean());
+        eBuilder_ =
+            new com.google.protobuf.SingleFieldBuilderV3<
+                build.buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested,
+                build.buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested
+                    .Builder,
+                build.buf.validate.conformance.cases.custom_constraints.MessageExpressions
+                    .NestedOrBuilder>(getE(), getParentForChildren(), isClean());
         e_ = null;
       }
       return eBuilder_;
@@ -1461,29 +1719,50 @@ private static final long serialVersionUID = 0L;
 
     private build.buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested f_;
     private com.google.protobuf.SingleFieldBuilderV3<
-        build.buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested, build.buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested.Builder, build.buf.validate.conformance.cases.custom_constraints.MessageExpressions.NestedOrBuilder> fBuilder_;
+            build.buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested,
+            build.buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested
+                .Builder,
+            build.buf.validate.conformance.cases.custom_constraints.MessageExpressions
+                .NestedOrBuilder>
+        fBuilder_;
+
     /**
-     * <code>.buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested f = 6 [json_name = "f"];</code>
+     * <code>
+     * .buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested f = 6 [json_name = "f"];
+     * </code>
+     *
      * @return Whether the f field is set.
      */
     public boolean hasF() {
       return ((bitField0_ & 0x00000020) != 0);
     }
+
     /**
-     * <code>.buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested f = 6 [json_name = "f"];</code>
+     * <code>
+     * .buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested f = 6 [json_name = "f"];
+     * </code>
+     *
      * @return The f.
      */
-    public build.buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested getF() {
+    public build.buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested
+        getF() {
       if (fBuilder_ == null) {
-        return f_ == null ? build.buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested.getDefaultInstance() : f_;
+        return f_ == null
+            ? build.buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested
+                .getDefaultInstance()
+            : f_;
       } else {
         return fBuilder_.getMessage();
       }
     }
+
     /**
-     * <code>.buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested f = 6 [json_name = "f"];</code>
+     * <code>
+     * .buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested f = 6 [json_name = "f"];
+     * </code>
      */
-    public Builder setF(build.buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested value) {
+    public Builder setF(
+        build.buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested value) {
       if (fBuilder_ == null) {
         if (value == null) {
           throw new NullPointerException();
@@ -1496,11 +1775,15 @@ private static final long serialVersionUID = 0L;
       onChanged();
       return this;
     }
+
     /**
-     * <code>.buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested f = 6 [json_name = "f"];</code>
+     * <code>
+     * .buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested f = 6 [json_name = "f"];
+     * </code>
      */
     public Builder setF(
-        build.buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested.Builder builderForValue) {
+        build.buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested.Builder
+            builderForValue) {
       if (fBuilder_ == null) {
         f_ = builderForValue.build();
       } else {
@@ -1510,14 +1793,20 @@ private static final long serialVersionUID = 0L;
       onChanged();
       return this;
     }
+
     /**
-     * <code>.buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested f = 6 [json_name = "f"];</code>
+     * <code>
+     * .buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested f = 6 [json_name = "f"];
+     * </code>
      */
-    public Builder mergeF(build.buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested value) {
+    public Builder mergeF(
+        build.buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested value) {
       if (fBuilder_ == null) {
-        if (((bitField0_ & 0x00000020) != 0) &&
-          f_ != null &&
-          f_ != build.buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested.getDefaultInstance()) {
+        if (((bitField0_ & 0x00000020) != 0)
+            && f_ != null
+            && f_
+                != build.buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested
+                    .getDefaultInstance()) {
           getFBuilder().mergeFrom(value);
         } else {
           f_ = value;
@@ -1529,8 +1818,11 @@ private static final long serialVersionUID = 0L;
       onChanged();
       return this;
     }
+
     /**
-     * <code>.buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested f = 6 [json_name = "f"];</code>
+     * <code>
+     * .buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested f = 6 [json_name = "f"];
+     * </code>
      */
     public Builder clearF() {
       bitField0_ = (bitField0_ & ~0x00000020);
@@ -1542,44 +1834,64 @@ private static final long serialVersionUID = 0L;
       onChanged();
       return this;
     }
+
     /**
-     * <code>.buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested f = 6 [json_name = "f"];</code>
+     * <code>
+     * .buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested f = 6 [json_name = "f"];
+     * </code>
      */
-    public build.buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested.Builder getFBuilder() {
+    public build.buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested.Builder
+        getFBuilder() {
       bitField0_ |= 0x00000020;
       onChanged();
       return getFFieldBuilder().getBuilder();
     }
+
     /**
-     * <code>.buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested f = 6 [json_name = "f"];</code>
+     * <code>
+     * .buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested f = 6 [json_name = "f"];
+     * </code>
      */
-    public build.buf.validate.conformance.cases.custom_constraints.MessageExpressions.NestedOrBuilder getFOrBuilder() {
+    public build.buf.validate.conformance.cases.custom_constraints.MessageExpressions
+            .NestedOrBuilder
+        getFOrBuilder() {
       if (fBuilder_ != null) {
         return fBuilder_.getMessageOrBuilder();
       } else {
-        return f_ == null ?
-            build.buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested.getDefaultInstance() : f_;
+        return f_ == null
+            ? build.buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested
+                .getDefaultInstance()
+            : f_;
       }
     }
+
     /**
-     * <code>.buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested f = 6 [json_name = "f"];</code>
+     * <code>
+     * .buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested f = 6 [json_name = "f"];
+     * </code>
      */
     private com.google.protobuf.SingleFieldBuilderV3<
-        build.buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested, build.buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested.Builder, build.buf.validate.conformance.cases.custom_constraints.MessageExpressions.NestedOrBuilder> 
+            build.buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested,
+            build.buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested
+                .Builder,
+            build.buf.validate.conformance.cases.custom_constraints.MessageExpressions
+                .NestedOrBuilder>
         getFFieldBuilder() {
       if (fBuilder_ == null) {
-        fBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-            build.buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested, build.buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested.Builder, build.buf.validate.conformance.cases.custom_constraints.MessageExpressions.NestedOrBuilder>(
-                getF(),
-                getParentForChildren(),
-                isClean());
+        fBuilder_ =
+            new com.google.protobuf.SingleFieldBuilderV3<
+                build.buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested,
+                build.buf.validate.conformance.cases.custom_constraints.MessageExpressions.Nested
+                    .Builder,
+                build.buf.validate.conformance.cases.custom_constraints.MessageExpressions
+                    .NestedOrBuilder>(getF(), getParentForChildren(), isClean());
         f_ = null;
       }
       return fBuilder_;
     }
+
     @java.lang.Override
-    public final Builder setUnknownFields(
-        final com.google.protobuf.UnknownFieldSet unknownFields) {
+    public final Builder setUnknownFields(final com.google.protobuf.UnknownFieldSet unknownFields) {
       return super.setUnknownFields(unknownFields);
     }
 
@@ -1589,41 +1901,44 @@ private static final long serialVersionUID = 0L;
       return super.mergeUnknownFields(unknownFields);
     }
 
-
     // @@protoc_insertion_point(builder_scope:buf.validate.conformance.cases.custom_constraints.MessageExpressions)
   }
 
   // @@protoc_insertion_point(class_scope:buf.validate.conformance.cases.custom_constraints.MessageExpressions)
-  private static final build.buf.validate.conformance.cases.custom_constraints.MessageExpressions DEFAULT_INSTANCE;
+  private static final build.buf.validate.conformance.cases.custom_constraints.MessageExpressions
+      DEFAULT_INSTANCE;
+
   static {
-    DEFAULT_INSTANCE = new build.buf.validate.conformance.cases.custom_constraints.MessageExpressions();
+    DEFAULT_INSTANCE =
+        new build.buf.validate.conformance.cases.custom_constraints.MessageExpressions();
   }
 
-  public static build.buf.validate.conformance.cases.custom_constraints.MessageExpressions getDefaultInstance() {
+  public static build.buf.validate.conformance.cases.custom_constraints.MessageExpressions
+      getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<MessageExpressions>
-      PARSER = new com.google.protobuf.AbstractParser<MessageExpressions>() {
-    @java.lang.Override
-    public MessageExpressions parsePartialFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      Builder builder = newBuilder();
-      try {
-        builder.mergeFrom(input, extensionRegistry);
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(builder.buildPartial());
-      } catch (com.google.protobuf.UninitializedMessageException e) {
-        throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(e)
-            .setUnfinishedMessage(builder.buildPartial());
-      }
-      return builder.buildPartial();
-    }
-  };
+  private static final com.google.protobuf.Parser<MessageExpressions> PARSER =
+      new com.google.protobuf.AbstractParser<MessageExpressions>() {
+        @java.lang.Override
+        public MessageExpressions parsePartialFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+          Builder builder = newBuilder();
+          try {
+            builder.mergeFrom(input, extensionRegistry);
+          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+            throw e.setUnfinishedMessage(builder.buildPartial());
+          } catch (com.google.protobuf.UninitializedMessageException e) {
+            throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+          } catch (java.io.IOException e) {
+            throw new com.google.protobuf.InvalidProtocolBufferException(e)
+                .setUnfinishedMessage(builder.buildPartial());
+          }
+          return builder.buildPartial();
+        }
+      };
 
   public static com.google.protobuf.Parser<MessageExpressions> parser() {
     return PARSER;
@@ -1635,9 +1950,8 @@ private static final long serialVersionUID = 0L;
   }
 
   @java.lang.Override
-  public build.buf.validate.conformance.cases.custom_constraints.MessageExpressions getDefaultInstanceForType() {
+  public build.buf.validate.conformance.cases.custom_constraints.MessageExpressions
+      getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
-
 }
-

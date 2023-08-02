@@ -3,7 +3,7 @@
 
 package build.buf.validate.conformance.cases.custom_constraints;
 
-public interface NowEqualsNowOrBuilder extends
+public interface NowEqualsNowOrBuilder
+    extends
     // @@protoc_insertion_point(interface_extends:buf.validate.conformance.cases.custom_constraints.NowEqualsNow)
-    com.google.protobuf.MessageOrBuilder {
-}
+    com.google.protobuf.MessageOrBuilder {}

@@ -3,55 +3,60 @@
 
 package build.buf.validate.conformance.cases;
 
-/**
- * Protobuf type {@code buf.validate.conformance.cases.OneofIgnoreEmpty}
- */
-public final class OneofIgnoreEmpty extends
-    com.google.protobuf.GeneratedMessageV3 implements
+/** Protobuf type {@code buf.validate.conformance.cases.OneofIgnoreEmpty} */
+public final class OneofIgnoreEmpty extends com.google.protobuf.GeneratedMessageV3
+    implements
     // @@protoc_insertion_point(message_implements:buf.validate.conformance.cases.OneofIgnoreEmpty)
     OneofIgnoreEmptyOrBuilder {
-private static final long serialVersionUID = 0L;
+  private static final long serialVersionUID = 0L;
+
   // Use OneofIgnoreEmpty.newBuilder() to construct.
   private OneofIgnoreEmpty(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
-  private OneofIgnoreEmpty() {
-  }
+
+  private OneofIgnoreEmpty() {}
 
   @java.lang.Override
   @SuppressWarnings({"unused"})
-  protected java.lang.Object newInstance(
-      UnusedPrivateParameter unused) {
+  protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
     return new OneofIgnoreEmpty();
   }
 
-  public static final com.google.protobuf.Descriptors.Descriptor
-      getDescriptor() {
-    return build.buf.validate.conformance.cases.OneofsProto.internal_static_buf_validate_conformance_cases_OneofIgnoreEmpty_descriptor;
+  public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+    return build.buf.validate.conformance.cases.OneofsProto
+        .internal_static_buf_validate_conformance_cases_OneofIgnoreEmpty_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return build.buf.validate.conformance.cases.OneofsProto.internal_static_buf_validate_conformance_cases_OneofIgnoreEmpty_fieldAccessorTable
+    return build.buf.validate.conformance.cases.OneofsProto
+        .internal_static_buf_validate_conformance_cases_OneofIgnoreEmpty_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            build.buf.validate.conformance.cases.OneofIgnoreEmpty.class, build.buf.validate.conformance.cases.OneofIgnoreEmpty.Builder.class);
+            build.buf.validate.conformance.cases.OneofIgnoreEmpty.class,
+            build.buf.validate.conformance.cases.OneofIgnoreEmpty.Builder.class);
   }
 
   private int oCase_ = 0;
+
   @SuppressWarnings("serial")
   private java.lang.Object o_;
+
   public enum OCase
-      implements com.google.protobuf.Internal.EnumLite,
+      implements
+          com.google.protobuf.Internal.EnumLite,
           com.google.protobuf.AbstractMessage.InternalOneOfEnum {
     X(1),
     Y(2),
     Z(3),
     O_NOT_SET(0);
     private final int value;
+
     private OCase(int value) {
       this.value = value;
     }
+
     /**
      * @param value The number of the enum to look for.
      * @return The enum associated with the given number.
@@ -64,34 +69,42 @@ private static final long serialVersionUID = 0L;
 
     public static OCase forNumber(int value) {
       switch (value) {
-        case 1: return X;
-        case 2: return Y;
-        case 3: return Z;
-        case 0: return O_NOT_SET;
-        default: return null;
+        case 1:
+          return X;
+        case 2:
+          return Y;
+        case 3:
+          return Z;
+        case 0:
+          return O_NOT_SET;
+        default:
+          return null;
       }
     }
+
     public int getNumber() {
       return this.value;
     }
   };
 
-  public OCase
-  getOCase() {
-    return OCase.forNumber(
-        oCase_);
+  public OCase getOCase() {
+    return OCase.forNumber(oCase_);
   }
 
   public static final int X_FIELD_NUMBER = 1;
+
   /**
    * <code>string x = 1 [json_name = "x", (.buf.validate.field) = { ... }</code>
+   *
    * @return Whether the x field is set.
    */
   public boolean hasX() {
     return oCase_ == 1;
   }
+
   /**
    * <code>string x = 1 [json_name = "x", (.buf.validate.field) = { ... }</code>
+   *
    * @return The x.
    */
   public java.lang.String getX() {
@@ -102,8 +115,7 @@ private static final long serialVersionUID = 0L;
     if (ref instanceof java.lang.String) {
       return (java.lang.String) ref;
     } else {
-      com.google.protobuf.ByteString bs = 
-          (com.google.protobuf.ByteString) ref;
+      com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
       if (oCase_ == 1) {
         o_ = s;
@@ -111,20 +123,20 @@ private static final long serialVersionUID = 0L;
       return s;
     }
   }
+
   /**
    * <code>string x = 1 [json_name = "x", (.buf.validate.field) = { ... }</code>
+   *
    * @return The bytes for x.
    */
-  public com.google.protobuf.ByteString
-      getXBytes() {
+  public com.google.protobuf.ByteString getXBytes() {
     java.lang.Object ref = "";
     if (oCase_ == 1) {
       ref = o_;
     }
     if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b = 
-          com.google.protobuf.ByteString.copyFromUtf8(
-              (java.lang.String) ref);
+      com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
       if (oCase_ == 1) {
         o_ = b;
       }
@@ -135,16 +147,20 @@ private static final long serialVersionUID = 0L;
   }
 
   public static final int Y_FIELD_NUMBER = 2;
+
   /**
    * <code>bytes y = 2 [json_name = "y", (.buf.validate.field) = { ... }</code>
+   *
    * @return Whether the y field is set.
    */
   @java.lang.Override
   public boolean hasY() {
     return oCase_ == 2;
   }
+
   /**
    * <code>bytes y = 2 [json_name = "y", (.buf.validate.field) = { ... }</code>
+   *
    * @return The y.
    */
   @java.lang.Override
@@ -156,16 +172,20 @@ private static final long serialVersionUID = 0L;
   }
 
   public static final int Z_FIELD_NUMBER = 3;
+
   /**
    * <code>int32 z = 3 [json_name = "z", (.buf.validate.field) = { ... }</code>
+   *
    * @return Whether the z field is set.
    */
   @java.lang.Override
   public boolean hasZ() {
     return oCase_ == 3;
   }
+
   /**
    * <code>int32 z = 3 [json_name = "z", (.buf.validate.field) = { ... }</code>
+   *
    * @return The z.
    */
   @java.lang.Override
@@ -177,6 +197,7 @@ private static final long serialVersionUID = 0L;
   }
 
   private byte memoizedIsInitialized = -1;
+
   @java.lang.Override
   public final boolean isInitialized() {
     byte isInitialized = memoizedIsInitialized;
@@ -188,18 +209,15 @@ private static final long serialVersionUID = 0L;
   }
 
   @java.lang.Override
-  public void writeTo(com.google.protobuf.CodedOutputStream output)
-                      throws java.io.IOException {
+  public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
     if (oCase_ == 1) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 1, o_);
     }
     if (oCase_ == 2) {
-      output.writeBytes(
-          2, (com.google.protobuf.ByteString) o_);
+      output.writeBytes(2, (com.google.protobuf.ByteString) o_);
     }
     if (oCase_ == 3) {
-      output.writeInt32(
-          3, (int)((java.lang.Integer) o_));
+      output.writeInt32(3, (int) ((java.lang.Integer) o_));
     }
     getUnknownFields().writeTo(output);
   }
@@ -214,14 +232,13 @@ private static final long serialVersionUID = 0L;
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, o_);
     }
     if (oCase_ == 2) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeBytesSize(
-            2, (com.google.protobuf.ByteString) o_);
+      size +=
+          com.google.protobuf.CodedOutputStream.computeBytesSize(
+              2, (com.google.protobuf.ByteString) o_);
     }
     if (oCase_ == 3) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeInt32Size(
-            3, (int)((java.lang.Integer) o_));
+      size +=
+          com.google.protobuf.CodedOutputStream.computeInt32Size(3, (int) ((java.lang.Integer) o_));
     }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
@@ -231,26 +248,24 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public boolean equals(final java.lang.Object obj) {
     if (obj == this) {
-     return true;
+      return true;
     }
     if (!(obj instanceof build.buf.validate.conformance.cases.OneofIgnoreEmpty)) {
       return super.equals(obj);
     }
-    build.buf.validate.conformance.cases.OneofIgnoreEmpty other = (build.buf.validate.conformance.cases.OneofIgnoreEmpty) obj;
+    build.buf.validate.conformance.cases.OneofIgnoreEmpty other =
+        (build.buf.validate.conformance.cases.OneofIgnoreEmpty) obj;
 
     if (!getOCase().equals(other.getOCase())) return false;
     switch (oCase_) {
       case 1:
-        if (!getX()
-            .equals(other.getX())) return false;
+        if (!getX().equals(other.getX())) return false;
         break;
       case 2:
-        if (!getY()
-            .equals(other.getY())) return false;
+        if (!getY().equals(other.getY())) return false;
         break;
       case 3:
-        if (getZ()
-            != other.getZ()) return false;
+        if (getZ() != other.getZ()) return false;
         break;
       case 0:
       default:
@@ -288,127 +303,129 @@ private static final long serialVersionUID = 0L;
   }
 
   public static build.buf.validate.conformance.cases.OneofIgnoreEmpty parseFrom(
-      java.nio.ByteBuffer data)
-      throws com.google.protobuf.InvalidProtocolBufferException {
+      java.nio.ByteBuffer data) throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
+
   public static build.buf.validate.conformance.cases.OneofIgnoreEmpty parseFrom(
-      java.nio.ByteBuffer data,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      java.nio.ByteBuffer data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
+
   public static build.buf.validate.conformance.cases.OneofIgnoreEmpty parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
+
   public static build.buf.validate.conformance.cases.OneofIgnoreEmpty parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
+
   public static build.buf.validate.conformance.cases.OneofIgnoreEmpty parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
+
   public static build.buf.validate.conformance.cases.OneofIgnoreEmpty parseFrom(
-      byte[] data,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      byte[] data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static build.buf.validate.conformance.cases.OneofIgnoreEmpty parseFrom(java.io.InputStream input)
-      throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input);
-  }
+
   public static build.buf.validate.conformance.cases.OneofIgnoreEmpty parseFrom(
-      java.io.InputStream input,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-      throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input, extensionRegistry);
+      java.io.InputStream input) throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
   }
 
-  public static build.buf.validate.conformance.cases.OneofIgnoreEmpty parseDelimitedFrom(java.io.InputStream input)
+  public static build.buf.validate.conformance.cases.OneofIgnoreEmpty parseFrom(
+      java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseDelimitedWithIOException(PARSER, input);
+    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+        PARSER, input, extensionRegistry);
   }
 
   public static build.buf.validate.conformance.cases.OneofIgnoreEmpty parseDelimitedFrom(
-      java.io.InputStream input,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-      throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+      java.io.InputStream input) throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input);
   }
+
+  public static build.buf.validate.conformance.cases.OneofIgnoreEmpty parseDelimitedFrom(
+      java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(
+        PARSER, input, extensionRegistry);
+  }
+
   public static build.buf.validate.conformance.cases.OneofIgnoreEmpty parseFrom(
-      com.google.protobuf.CodedInputStream input)
-      throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input);
+      com.google.protobuf.CodedInputStream input) throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
   }
+
   public static build.buf.validate.conformance.cases.OneofIgnoreEmpty parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input, extensionRegistry);
+    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+        PARSER, input, extensionRegistry);
   }
 
   @java.lang.Override
-  public Builder newBuilderForType() { return newBuilder(); }
+  public Builder newBuilderForType() {
+    return newBuilder();
+  }
+
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-  public static Builder newBuilder(build.buf.validate.conformance.cases.OneofIgnoreEmpty prototype) {
+
+  public static Builder newBuilder(
+      build.buf.validate.conformance.cases.OneofIgnoreEmpty prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
-  }
-  @java.lang.Override
-  public Builder toBuilder() {
-    return this == DEFAULT_INSTANCE
-        ? new Builder() : new Builder().mergeFrom(this);
   }
 
   @java.lang.Override
-  protected Builder newBuilderForType(
-      com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+  public Builder toBuilder() {
+    return this == DEFAULT_INSTANCE ? new Builder() : new Builder().mergeFrom(this);
+  }
+
+  @java.lang.Override
+  protected Builder newBuilderForType(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
     Builder builder = new Builder(parent);
     return builder;
   }
-  /**
-   * Protobuf type {@code buf.validate.conformance.cases.OneofIgnoreEmpty}
-   */
-  public static final class Builder extends
-      com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+
+  /** Protobuf type {@code buf.validate.conformance.cases.OneofIgnoreEmpty} */
+  public static final class Builder extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
+      implements
       // @@protoc_insertion_point(builder_implements:buf.validate.conformance.cases.OneofIgnoreEmpty)
       build.buf.validate.conformance.cases.OneofIgnoreEmptyOrBuilder {
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return build.buf.validate.conformance.cases.OneofsProto.internal_static_buf_validate_conformance_cases_OneofIgnoreEmpty_descriptor;
+    public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+      return build.buf.validate.conformance.cases.OneofsProto
+          .internal_static_buf_validate_conformance_cases_OneofIgnoreEmpty_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return build.buf.validate.conformance.cases.OneofsProto.internal_static_buf_validate_conformance_cases_OneofIgnoreEmpty_fieldAccessorTable
+      return build.buf.validate.conformance.cases.OneofsProto
+          .internal_static_buf_validate_conformance_cases_OneofIgnoreEmpty_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              build.buf.validate.conformance.cases.OneofIgnoreEmpty.class, build.buf.validate.conformance.cases.OneofIgnoreEmpty.Builder.class);
+              build.buf.validate.conformance.cases.OneofIgnoreEmpty.class,
+              build.buf.validate.conformance.cases.OneofIgnoreEmpty.Builder.class);
     }
 
     // Construct using build.buf.validate.conformance.cases.OneofIgnoreEmpty.newBuilder()
-    private Builder() {
+    private Builder() {}
 
-    }
-
-    private Builder(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+    private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
       super(parent);
-
     }
+
     @java.lang.Override
     public Builder clear() {
       super.clear();
@@ -419,9 +436,9 @@ private static final long serialVersionUID = 0L;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Descriptors.Descriptor
-        getDescriptorForType() {
-      return build.buf.validate.conformance.cases.OneofsProto.internal_static_buf_validate_conformance_cases_OneofIgnoreEmpty_descriptor;
+    public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
+      return build.buf.validate.conformance.cases.OneofsProto
+          .internal_static_buf_validate_conformance_cases_OneofIgnoreEmpty_descriptor;
     }
 
     @java.lang.Override
@@ -440,8 +457,11 @@ private static final long serialVersionUID = 0L;
 
     @java.lang.Override
     public build.buf.validate.conformance.cases.OneofIgnoreEmpty buildPartial() {
-      build.buf.validate.conformance.cases.OneofIgnoreEmpty result = new build.buf.validate.conformance.cases.OneofIgnoreEmpty(this);
-      if (bitField0_ != 0) { buildPartial0(result); }
+      build.buf.validate.conformance.cases.OneofIgnoreEmpty result =
+          new build.buf.validate.conformance.cases.OneofIgnoreEmpty(this);
+      if (bitField0_ != 0) {
+        buildPartial0(result);
+      }
       buildPartialOneofs(result);
       onBuilt();
       return result;
@@ -460,38 +480,39 @@ private static final long serialVersionUID = 0L;
     public Builder clone() {
       return super.clone();
     }
+
     @java.lang.Override
     public Builder setField(
-        com.google.protobuf.Descriptors.FieldDescriptor field,
-        java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
       return super.setField(field, value);
     }
+
     @java.lang.Override
-    public Builder clearField(
-        com.google.protobuf.Descriptors.FieldDescriptor field) {
+    public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
       return super.clearField(field);
     }
+
     @java.lang.Override
-    public Builder clearOneof(
-        com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+    public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
       return super.clearOneof(oneof);
     }
+
     @java.lang.Override
     public Builder setRepeatedField(
-        com.google.protobuf.Descriptors.FieldDescriptor field,
-        int index, java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field, int index, java.lang.Object value) {
       return super.setRepeatedField(field, index, value);
     }
+
     @java.lang.Override
     public Builder addRepeatedField(
-        com.google.protobuf.Descriptors.FieldDescriptor field,
-        java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
       return super.addRepeatedField(field, value);
     }
+
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
       if (other instanceof build.buf.validate.conformance.cases.OneofIgnoreEmpty) {
-        return mergeFrom((build.buf.validate.conformance.cases.OneofIgnoreEmpty)other);
+        return mergeFrom((build.buf.validate.conformance.cases.OneofIgnoreEmpty) other);
       } else {
         super.mergeFrom(other);
         return this;
@@ -499,25 +520,30 @@ private static final long serialVersionUID = 0L;
     }
 
     public Builder mergeFrom(build.buf.validate.conformance.cases.OneofIgnoreEmpty other) {
-      if (other == build.buf.validate.conformance.cases.OneofIgnoreEmpty.getDefaultInstance()) return this;
+      if (other == build.buf.validate.conformance.cases.OneofIgnoreEmpty.getDefaultInstance())
+        return this;
       switch (other.getOCase()) {
-        case X: {
-          oCase_ = 1;
-          o_ = other.o_;
-          onChanged();
-          break;
-        }
-        case Y: {
-          setY(other.getY());
-          break;
-        }
-        case Z: {
-          setZ(other.getZ());
-          break;
-        }
-        case O_NOT_SET: {
-          break;
-        }
+        case X:
+          {
+            oCase_ = 1;
+            o_ = other.o_;
+            onChanged();
+            break;
+          }
+        case Y:
+          {
+            setY(other.getY());
+            break;
+          }
+        case Z:
+          {
+            setZ(other.getZ());
+            break;
+          }
+        case O_NOT_SET:
+          {
+            break;
+          }
       }
       this.mergeUnknownFields(other.getUnknownFields());
       onChanged();
@@ -545,28 +571,32 @@ private static final long serialVersionUID = 0L;
             case 0:
               done = true;
               break;
-            case 10: {
-              java.lang.String s = input.readStringRequireUtf8();
-              oCase_ = 1;
-              o_ = s;
-              break;
-            } // case 10
-            case 18: {
-              o_ = input.readBytes();
-              oCase_ = 2;
-              break;
-            } // case 18
-            case 24: {
-              o_ = input.readInt32();
-              oCase_ = 3;
-              break;
-            } // case 24
-            default: {
-              if (!super.parseUnknownField(input, extensionRegistry, tag)) {
-                done = true; // was an endgroup tag
-              }
-              break;
-            } // default:
+            case 10:
+              {
+                java.lang.String s = input.readStringRequireUtf8();
+                oCase_ = 1;
+                o_ = s;
+                break;
+              } // case 10
+            case 18:
+              {
+                o_ = input.readBytes();
+                oCase_ = 2;
+                break;
+              } // case 18
+            case 24:
+              {
+                o_ = input.readInt32();
+                oCase_ = 3;
+                break;
+              } // case 24
+            default:
+              {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
           } // switch (tag)
         } // while (!done)
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -576,12 +606,12 @@ private static final long serialVersionUID = 0L;
       } // finally
       return this;
     }
+
     private int oCase_ = 0;
     private java.lang.Object o_;
-    public OCase
-        getOCase() {
-      return OCase.forNumber(
-          oCase_);
+
+    public OCase getOCase() {
+      return OCase.forNumber(oCase_);
     }
 
     public Builder clearO() {
@@ -595,14 +625,17 @@ private static final long serialVersionUID = 0L;
 
     /**
      * <code>string x = 1 [json_name = "x", (.buf.validate.field) = { ... }</code>
+     *
      * @return Whether the x field is set.
      */
     @java.lang.Override
     public boolean hasX() {
       return oCase_ == 1;
     }
+
     /**
      * <code>string x = 1 [json_name = "x", (.buf.validate.field) = { ... }</code>
+     *
      * @return The x.
      */
     @java.lang.Override
@@ -612,8 +645,7 @@ private static final long serialVersionUID = 0L;
         ref = o_;
       }
       if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs =
-            (com.google.protobuf.ByteString) ref;
+        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         if (oCase_ == 1) {
           o_ = s;
@@ -623,21 +655,21 @@ private static final long serialVersionUID = 0L;
         return (java.lang.String) ref;
       }
     }
+
     /**
      * <code>string x = 1 [json_name = "x", (.buf.validate.field) = { ... }</code>
+     *
      * @return The bytes for x.
      */
     @java.lang.Override
-    public com.google.protobuf.ByteString
-        getXBytes() {
+    public com.google.protobuf.ByteString getXBytes() {
       java.lang.Object ref = "";
       if (oCase_ == 1) {
         ref = o_;
       }
       if (ref instanceof String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
+        com.google.protobuf.ByteString b =
+            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
         if (oCase_ == 1) {
           o_ = b;
         }
@@ -646,21 +678,26 @@ private static final long serialVersionUID = 0L;
         return (com.google.protobuf.ByteString) ref;
       }
     }
+
     /**
      * <code>string x = 1 [json_name = "x", (.buf.validate.field) = { ... }</code>
+     *
      * @param value The x to set.
      * @return This builder for chaining.
      */
-    public Builder setX(
-        java.lang.String value) {
-      if (value == null) { throw new NullPointerException(); }
+    public Builder setX(java.lang.String value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
       oCase_ = 1;
       o_ = value;
       onChanged();
       return this;
     }
+
     /**
      * <code>string x = 1 [json_name = "x", (.buf.validate.field) = { ... }</code>
+     *
      * @return This builder for chaining.
      */
     public Builder clearX() {
@@ -671,14 +708,17 @@ private static final long serialVersionUID = 0L;
       }
       return this;
     }
+
     /**
      * <code>string x = 1 [json_name = "x", (.buf.validate.field) = { ... }</code>
+     *
      * @param value The bytes for x to set.
      * @return This builder for chaining.
      */
-    public Builder setXBytes(
-        com.google.protobuf.ByteString value) {
-      if (value == null) { throw new NullPointerException(); }
+    public Builder setXBytes(com.google.protobuf.ByteString value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
       checkByteStringIsUtf8(value);
       oCase_ = 1;
       o_ = value;
@@ -688,13 +728,16 @@ private static final long serialVersionUID = 0L;
 
     /**
      * <code>bytes y = 2 [json_name = "y", (.buf.validate.field) = { ... }</code>
+     *
      * @return Whether the y field is set.
      */
     public boolean hasY() {
       return oCase_ == 2;
     }
+
     /**
      * <code>bytes y = 2 [json_name = "y", (.buf.validate.field) = { ... }</code>
+     *
      * @return The y.
      */
     public com.google.protobuf.ByteString getY() {
@@ -703,20 +746,26 @@ private static final long serialVersionUID = 0L;
       }
       return com.google.protobuf.ByteString.EMPTY;
     }
+
     /**
      * <code>bytes y = 2 [json_name = "y", (.buf.validate.field) = { ... }</code>
+     *
      * @param value The y to set.
      * @return This builder for chaining.
      */
     public Builder setY(com.google.protobuf.ByteString value) {
-      if (value == null) { throw new NullPointerException(); }
+      if (value == null) {
+        throw new NullPointerException();
+      }
       oCase_ = 2;
       o_ = value;
       onChanged();
       return this;
     }
+
     /**
      * <code>bytes y = 2 [json_name = "y", (.buf.validate.field) = { ... }</code>
+     *
      * @return This builder for chaining.
      */
     public Builder clearY() {
@@ -730,13 +779,16 @@ private static final long serialVersionUID = 0L;
 
     /**
      * <code>int32 z = 3 [json_name = "z", (.buf.validate.field) = { ... }</code>
+     *
      * @return Whether the z field is set.
      */
     public boolean hasZ() {
       return oCase_ == 3;
     }
+
     /**
      * <code>int32 z = 3 [json_name = "z", (.buf.validate.field) = { ... }</code>
+     *
      * @return The z.
      */
     public int getZ() {
@@ -745,8 +797,10 @@ private static final long serialVersionUID = 0L;
       }
       return 0;
     }
+
     /**
      * <code>int32 z = 3 [json_name = "z", (.buf.validate.field) = { ... }</code>
+     *
      * @param value The z to set.
      * @return This builder for chaining.
      */
@@ -757,8 +811,10 @@ private static final long serialVersionUID = 0L;
       onChanged();
       return this;
     }
+
     /**
      * <code>int32 z = 3 [json_name = "z", (.buf.validate.field) = { ... }</code>
+     *
      * @return This builder for chaining.
      */
     public Builder clearZ() {
@@ -769,9 +825,9 @@ private static final long serialVersionUID = 0L;
       }
       return this;
     }
+
     @java.lang.Override
-    public final Builder setUnknownFields(
-        final com.google.protobuf.UnknownFieldSet unknownFields) {
+    public final Builder setUnknownFields(final com.google.protobuf.UnknownFieldSet unknownFields) {
       return super.setUnknownFields(unknownFields);
     }
 
@@ -781,12 +837,12 @@ private static final long serialVersionUID = 0L;
       return super.mergeUnknownFields(unknownFields);
     }
 
-
     // @@protoc_insertion_point(builder_scope:buf.validate.conformance.cases.OneofIgnoreEmpty)
   }
 
   // @@protoc_insertion_point(class_scope:buf.validate.conformance.cases.OneofIgnoreEmpty)
   private static final build.buf.validate.conformance.cases.OneofIgnoreEmpty DEFAULT_INSTANCE;
+
   static {
     DEFAULT_INSTANCE = new build.buf.validate.conformance.cases.OneofIgnoreEmpty();
   }
@@ -795,27 +851,27 @@ private static final long serialVersionUID = 0L;
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<OneofIgnoreEmpty>
-      PARSER = new com.google.protobuf.AbstractParser<OneofIgnoreEmpty>() {
-    @java.lang.Override
-    public OneofIgnoreEmpty parsePartialFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      Builder builder = newBuilder();
-      try {
-        builder.mergeFrom(input, extensionRegistry);
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(builder.buildPartial());
-      } catch (com.google.protobuf.UninitializedMessageException e) {
-        throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(e)
-            .setUnfinishedMessage(builder.buildPartial());
-      }
-      return builder.buildPartial();
-    }
-  };
+  private static final com.google.protobuf.Parser<OneofIgnoreEmpty> PARSER =
+      new com.google.protobuf.AbstractParser<OneofIgnoreEmpty>() {
+        @java.lang.Override
+        public OneofIgnoreEmpty parsePartialFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+          Builder builder = newBuilder();
+          try {
+            builder.mergeFrom(input, extensionRegistry);
+          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+            throw e.setUnfinishedMessage(builder.buildPartial());
+          } catch (com.google.protobuf.UninitializedMessageException e) {
+            throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+          } catch (java.io.IOException e) {
+            throw new com.google.protobuf.InvalidProtocolBufferException(e)
+                .setUnfinishedMessage(builder.buildPartial());
+          }
+          return builder.buildPartial();
+        }
+      };
 
   public static com.google.protobuf.Parser<OneofIgnoreEmpty> parser() {
     return PARSER;
@@ -830,6 +886,4 @@ private static final long serialVersionUID = 0L;
   public build.buf.validate.conformance.cases.OneofIgnoreEmpty getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
-
 }
-

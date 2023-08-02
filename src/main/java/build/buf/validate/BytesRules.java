@@ -4,6 +4,8 @@
 package build.buf.validate;
 
 /**
+ *
+ *
  * <pre>
  * BytesRules describe the constraints applied to `bytes` values. These rules
  * may also be applied to the `google.protobuf.BytesValue` Well-Known-Type.
@@ -11,15 +13,17 @@ package build.buf.validate;
  *
  * Protobuf type {@code buf.validate.BytesRules}
  */
-public final class BytesRules extends
-    com.google.protobuf.GeneratedMessageV3 implements
+public final class BytesRules extends com.google.protobuf.GeneratedMessageV3
+    implements
     // @@protoc_insertion_point(message_implements:buf.validate.BytesRules)
     BytesRulesOrBuilder {
-private static final long serialVersionUID = 0L;
+  private static final long serialVersionUID = 0L;
+
   // Use BytesRules.newBuilder() to construct.
   private BytesRules(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
+
   private BytesRules() {
     const_ = com.google.protobuf.ByteString.EMPTY;
     pattern_ = "";
@@ -32,39 +36,43 @@ private static final long serialVersionUID = 0L;
 
   @java.lang.Override
   @SuppressWarnings({"unused"})
-  protected java.lang.Object newInstance(
-      UnusedPrivateParameter unused) {
+  protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
     return new BytesRules();
   }
 
-  public static final com.google.protobuf.Descriptors.Descriptor
-      getDescriptor() {
+  public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
     return build.buf.validate.ValidateProto.internal_static_buf_validate_BytesRules_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return build.buf.validate.ValidateProto.internal_static_buf_validate_BytesRules_fieldAccessorTable
+    return build.buf.validate.ValidateProto
+        .internal_static_buf_validate_BytesRules_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
             build.buf.validate.BytesRules.class, build.buf.validate.BytesRules.Builder.class);
   }
 
   private int bitField0_;
   private int wellKnownCase_ = 0;
+
   @SuppressWarnings("serial")
   private java.lang.Object wellKnown_;
+
   public enum WellKnownCase
-      implements com.google.protobuf.Internal.EnumLite,
+      implements
+          com.google.protobuf.Internal.EnumLite,
           com.google.protobuf.AbstractMessage.InternalOneOfEnum {
     IP(10),
     IPV4(11),
     IPV6(12),
     WELLKNOWN_NOT_SET(0);
     private final int value;
+
     private WellKnownCase(int value) {
       this.value = value;
     }
+
     /**
      * @param value The number of the enum to look for.
      * @return The enum associated with the given number.
@@ -77,60 +85,74 @@ private static final long serialVersionUID = 0L;
 
     public static WellKnownCase forNumber(int value) {
       switch (value) {
-        case 10: return IP;
-        case 11: return IPV4;
-        case 12: return IPV6;
-        case 0: return WELLKNOWN_NOT_SET;
-        default: return null;
+        case 10:
+          return IP;
+        case 11:
+          return IPV4;
+        case 12:
+          return IPV6;
+        case 0:
+          return WELLKNOWN_NOT_SET;
+        default:
+          return null;
       }
     }
+
     public int getNumber() {
       return this.value;
     }
   };
 
-  public WellKnownCase
-  getWellKnownCase() {
-    return WellKnownCase.forNumber(
-        wellKnownCase_);
+  public WellKnownCase getWellKnownCase() {
+    return WellKnownCase.forNumber(wellKnownCase_);
   }
 
   public static final int CONST_FIELD_NUMBER = 1;
   private com.google.protobuf.ByteString const_ = com.google.protobuf.ByteString.EMPTY;
+
   /**
-   * <pre>
-   *`const` requires the field value to exactly match the specified bytes
-   *value. If the field value doesn't match, an error message is generated.
    *
-   *```proto
-   *message MyBytes {
+   *
+   * <pre>
+   * `const` requires the field value to exactly match the specified bytes
+   * value. If the field value doesn't match, an error message is generated.
+   *
+   * ```proto
+   * message MyBytes {
    *  // value must be "&#92;x01&#92;x02&#92;x03&#92;x04"
    *   bytes value = 1 [(buf.validate.field).bytes.const = "&#92;x01&#92;x02&#92;x03&#92;x04"];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
-   * <code>optional bytes const = 1 [json_name = "const", (.buf.validate.priv.field) = { ... }</code>
+   * <code>optional bytes const = 1 [json_name = "const", (.buf.validate.priv.field) = { ... }
+   * </code>
+   *
    * @return Whether the const field is set.
    */
   @java.lang.Override
   public boolean hasConst() {
     return ((bitField0_ & 0x00000001) != 0);
   }
+
   /**
-   * <pre>
-   *`const` requires the field value to exactly match the specified bytes
-   *value. If the field value doesn't match, an error message is generated.
    *
-   *```proto
-   *message MyBytes {
+   *
+   * <pre>
+   * `const` requires the field value to exactly match the specified bytes
+   * value. If the field value doesn't match, an error message is generated.
+   *
+   * ```proto
+   * message MyBytes {
    *  // value must be "&#92;x01&#92;x02&#92;x03&#92;x04"
    *   bytes value = 1 [(buf.validate.field).bytes.const = "&#92;x01&#92;x02&#92;x03&#92;x04"];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
-   * <code>optional bytes const = 1 [json_name = "const", (.buf.validate.priv.field) = { ... }</code>
+   * <code>optional bytes const = 1 [json_name = "const", (.buf.validate.priv.field) = { ... }
+   * </code>
+   *
    * @return The const.
    */
   @java.lang.Override
@@ -140,40 +162,48 @@ private static final long serialVersionUID = 0L;
 
   public static final int LEN_FIELD_NUMBER = 13;
   private long len_ = 0L;
+
   /**
-   * <pre>
-   *`len` requires the field value to have the specified length in bytes.
-   *If the field value doesn't match, an error message is generated.
    *
-   *```proto
-   *message MyBytes {
+   *
+   * <pre>
+   * `len` requires the field value to have the specified length in bytes.
+   * If the field value doesn't match, an error message is generated.
+   *
+   * ```proto
+   * message MyBytes {
    *      // value length must be 4 bytes.
    *      optional bytes value = 1 [(buf.validate.field).bytes.len = 4];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
    * <code>optional uint64 len = 13 [json_name = "len", (.buf.validate.priv.field) = { ... }</code>
+   *
    * @return Whether the len field is set.
    */
   @java.lang.Override
   public boolean hasLen() {
     return ((bitField0_ & 0x00000002) != 0);
   }
+
   /**
-   * <pre>
-   *`len` requires the field value to have the specified length in bytes.
-   *If the field value doesn't match, an error message is generated.
    *
-   *```proto
-   *message MyBytes {
+   *
+   * <pre>
+   * `len` requires the field value to have the specified length in bytes.
+   * If the field value doesn't match, an error message is generated.
+   *
+   * ```proto
+   * message MyBytes {
    *      // value length must be 4 bytes.
    *      optional bytes value = 1 [(buf.validate.field).bytes.len = 4];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
    * <code>optional uint64 len = 13 [json_name = "len", (.buf.validate.priv.field) = { ... }</code>
+   *
    * @return The len.
    */
   @java.lang.Override
@@ -183,42 +213,52 @@ private static final long serialVersionUID = 0L;
 
   public static final int MIN_LEN_FIELD_NUMBER = 2;
   private long minLen_ = 0L;
+
   /**
-   * <pre>
-   *`min_len` requires the field value to have at least the specified minimum
-   *length in bytes.
-   *If the field value doesn't meet the requirement, an error message is generated.
    *
-   *```proto
-   *message MyBytes {
+   *
+   * <pre>
+   * `min_len` requires the field value to have at least the specified minimum
+   * length in bytes.
+   * If the field value doesn't meet the requirement, an error message is generated.
+   *
+   * ```proto
+   * message MyBytes {
    * // value length must be at least 2 bytes.
    * optional bytes value = 1 [(buf.validate.field).bytes.min_len = 2];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
-   * <code>optional uint64 min_len = 2 [json_name = "minLen", (.buf.validate.priv.field) = { ... }</code>
+   * <code>optional uint64 min_len = 2 [json_name = "minLen", (.buf.validate.priv.field) = { ... }
+   * </code>
+   *
    * @return Whether the minLen field is set.
    */
   @java.lang.Override
   public boolean hasMinLen() {
     return ((bitField0_ & 0x00000004) != 0);
   }
+
   /**
-   * <pre>
-   *`min_len` requires the field value to have at least the specified minimum
-   *length in bytes.
-   *If the field value doesn't meet the requirement, an error message is generated.
    *
-   *```proto
-   *message MyBytes {
+   *
+   * <pre>
+   * `min_len` requires the field value to have at least the specified minimum
+   * length in bytes.
+   * If the field value doesn't meet the requirement, an error message is generated.
+   *
+   * ```proto
+   * message MyBytes {
    * // value length must be at least 2 bytes.
    * optional bytes value = 1 [(buf.validate.field).bytes.min_len = 2];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
-   * <code>optional uint64 min_len = 2 [json_name = "minLen", (.buf.validate.priv.field) = { ... }</code>
+   * <code>optional uint64 min_len = 2 [json_name = "minLen", (.buf.validate.priv.field) = { ... }
+   * </code>
+   *
    * @return The minLen.
    */
   @java.lang.Override
@@ -228,42 +268,52 @@ private static final long serialVersionUID = 0L;
 
   public static final int MAX_LEN_FIELD_NUMBER = 3;
   private long maxLen_ = 0L;
+
   /**
-   * <pre>
-   *`max_len` requires the field value to have at most the specified maximum
-   *length in bytes.
-   *If the field value exceeds the requirement, an error message is generated.
    *
-   *```proto
-   *message MyBytes {
+   *
+   * <pre>
+   * `max_len` requires the field value to have at most the specified maximum
+   * length in bytes.
+   * If the field value exceeds the requirement, an error message is generated.
+   *
+   * ```proto
+   * message MyBytes {
    * // value must be at most 6 bytes.
    * optional bytes value = 1 [(buf.validate.field).bytes.max_len = 6];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
-   * <code>optional uint64 max_len = 3 [json_name = "maxLen", (.buf.validate.priv.field) = { ... }</code>
+   * <code>optional uint64 max_len = 3 [json_name = "maxLen", (.buf.validate.priv.field) = { ... }
+   * </code>
+   *
    * @return Whether the maxLen field is set.
    */
   @java.lang.Override
   public boolean hasMaxLen() {
     return ((bitField0_ & 0x00000008) != 0);
   }
+
   /**
-   * <pre>
-   *`max_len` requires the field value to have at most the specified maximum
-   *length in bytes.
-   *If the field value exceeds the requirement, an error message is generated.
    *
-   *```proto
-   *message MyBytes {
+   *
+   * <pre>
+   * `max_len` requires the field value to have at most the specified maximum
+   * length in bytes.
+   * If the field value exceeds the requirement, an error message is generated.
+   *
+   * ```proto
+   * message MyBytes {
    * // value must be at most 6 bytes.
    * optional bytes value = 1 [(buf.validate.field).bytes.max_len = 6];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
-   * <code>optional uint64 max_len = 3 [json_name = "maxLen", (.buf.validate.priv.field) = { ... }</code>
+   * <code>optional uint64 max_len = 3 [json_name = "maxLen", (.buf.validate.priv.field) = { ... }
+   * </code>
+   *
    * @return The maxLen.
    */
   @java.lang.Override
@@ -272,48 +322,59 @@ private static final long serialVersionUID = 0L;
   }
 
   public static final int PATTERN_FIELD_NUMBER = 4;
+
   @SuppressWarnings("serial")
   private volatile java.lang.Object pattern_ = "";
+
   /**
-   * <pre>
-   *`pattern` requires the field value to match the specified regular
-   *expression ([RE2 syntax](https://github.com/google/re2/wiki/Syntax)).
-   *The value of the field must be valid UTF-8 or validation will fail with a
-   *runtime error.
-   *If the field value doesn't match the pattern, an error message is generated.
    *
-   *```proto
-   *message MyBytes {
+   *
+   * <pre>
+   * `pattern` requires the field value to match the specified regular
+   * expression ([RE2 syntax](https://github.com/google/re2/wiki/Syntax)).
+   * The value of the field must be valid UTF-8 or validation will fail with a
+   * runtime error.
+   * If the field value doesn't match the pattern, an error message is generated.
+   *
+   * ```proto
+   * message MyBytes {
    * // value must match regex pattern "^[a-zA-Z0-9]+$".
    * optional bytes value = 1 [(buf.validate.field).bytes.pattern = "^[a-zA-Z0-9]+$"];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
-   * <code>optional string pattern = 4 [json_name = "pattern", (.buf.validate.priv.field) = { ... }</code>
+   * <code>optional string pattern = 4 [json_name = "pattern", (.buf.validate.priv.field) = { ... }
+   * </code>
+   *
    * @return Whether the pattern field is set.
    */
   @java.lang.Override
   public boolean hasPattern() {
     return ((bitField0_ & 0x00000010) != 0);
   }
+
   /**
-   * <pre>
-   *`pattern` requires the field value to match the specified regular
-   *expression ([RE2 syntax](https://github.com/google/re2/wiki/Syntax)).
-   *The value of the field must be valid UTF-8 or validation will fail with a
-   *runtime error.
-   *If the field value doesn't match the pattern, an error message is generated.
    *
-   *```proto
-   *message MyBytes {
+   *
+   * <pre>
+   * `pattern` requires the field value to match the specified regular
+   * expression ([RE2 syntax](https://github.com/google/re2/wiki/Syntax)).
+   * The value of the field must be valid UTF-8 or validation will fail with a
+   * runtime error.
+   * If the field value doesn't match the pattern, an error message is generated.
+   *
+   * ```proto
+   * message MyBytes {
    * // value must match regex pattern "^[a-zA-Z0-9]+$".
    * optional bytes value = 1 [(buf.validate.field).bytes.pattern = "^[a-zA-Z0-9]+$"];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
-   * <code>optional string pattern = 4 [json_name = "pattern", (.buf.validate.priv.field) = { ... }</code>
+   * <code>optional string pattern = 4 [json_name = "pattern", (.buf.validate.priv.field) = { ... }
+   * </code>
+   *
    * @return The pattern.
    */
   @java.lang.Override
@@ -322,40 +383,42 @@ private static final long serialVersionUID = 0L;
     if (ref instanceof java.lang.String) {
       return (java.lang.String) ref;
     } else {
-      com.google.protobuf.ByteString bs = 
-          (com.google.protobuf.ByteString) ref;
+      com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
       pattern_ = s;
       return s;
     }
   }
+
   /**
-   * <pre>
-   *`pattern` requires the field value to match the specified regular
-   *expression ([RE2 syntax](https://github.com/google/re2/wiki/Syntax)).
-   *The value of the field must be valid UTF-8 or validation will fail with a
-   *runtime error.
-   *If the field value doesn't match the pattern, an error message is generated.
    *
-   *```proto
-   *message MyBytes {
+   *
+   * <pre>
+   * `pattern` requires the field value to match the specified regular
+   * expression ([RE2 syntax](https://github.com/google/re2/wiki/Syntax)).
+   * The value of the field must be valid UTF-8 or validation will fail with a
+   * runtime error.
+   * If the field value doesn't match the pattern, an error message is generated.
+   *
+   * ```proto
+   * message MyBytes {
    * // value must match regex pattern "^[a-zA-Z0-9]+$".
    * optional bytes value = 1 [(buf.validate.field).bytes.pattern = "^[a-zA-Z0-9]+$"];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
-   * <code>optional string pattern = 4 [json_name = "pattern", (.buf.validate.priv.field) = { ... }</code>
+   * <code>optional string pattern = 4 [json_name = "pattern", (.buf.validate.priv.field) = { ... }
+   * </code>
+   *
    * @return The bytes for pattern.
    */
   @java.lang.Override
-  public com.google.protobuf.ByteString
-      getPatternBytes() {
+  public com.google.protobuf.ByteString getPatternBytes() {
     java.lang.Object ref = pattern_;
     if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b = 
-          com.google.protobuf.ByteString.copyFromUtf8(
-              (java.lang.String) ref);
+      com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
       pattern_ = b;
       return b;
     } else {
@@ -365,42 +428,52 @@ private static final long serialVersionUID = 0L;
 
   public static final int PREFIX_FIELD_NUMBER = 5;
   private com.google.protobuf.ByteString prefix_ = com.google.protobuf.ByteString.EMPTY;
+
   /**
-   * <pre>
-   *`prefix` requires the field value to have the specified bytes at the
-   *beginning of the string.
-   *If the field value doesn't meet the requirement, an error message is generated.
    *
-   *```proto
-   *message MyBytes {
+   *
+   * <pre>
+   * `prefix` requires the field value to have the specified bytes at the
+   * beginning of the string.
+   * If the field value doesn't meet the requirement, an error message is generated.
+   *
+   * ```proto
+   * message MyBytes {
    * // value does not have prefix &#92;x01&#92;x02
-   *optional bytes value = 1 [(buf.validate.field).bytes.prefix = "&#92;x01&#92;x02"];
-   *}
-   *```
+   * optional bytes value = 1 [(buf.validate.field).bytes.prefix = "&#92;x01&#92;x02"];
+   * }
+   * ```
    * </pre>
    *
-   * <code>optional bytes prefix = 5 [json_name = "prefix", (.buf.validate.priv.field) = { ... }</code>
+   * <code>optional bytes prefix = 5 [json_name = "prefix", (.buf.validate.priv.field) = { ... }
+   * </code>
+   *
    * @return Whether the prefix field is set.
    */
   @java.lang.Override
   public boolean hasPrefix() {
     return ((bitField0_ & 0x00000020) != 0);
   }
+
   /**
-   * <pre>
-   *`prefix` requires the field value to have the specified bytes at the
-   *beginning of the string.
-   *If the field value doesn't meet the requirement, an error message is generated.
    *
-   *```proto
-   *message MyBytes {
+   *
+   * <pre>
+   * `prefix` requires the field value to have the specified bytes at the
+   * beginning of the string.
+   * If the field value doesn't meet the requirement, an error message is generated.
+   *
+   * ```proto
+   * message MyBytes {
    * // value does not have prefix &#92;x01&#92;x02
-   *optional bytes value = 1 [(buf.validate.field).bytes.prefix = "&#92;x01&#92;x02"];
-   *}
-   *```
+   * optional bytes value = 1 [(buf.validate.field).bytes.prefix = "&#92;x01&#92;x02"];
+   * }
+   * ```
    * </pre>
    *
-   * <code>optional bytes prefix = 5 [json_name = "prefix", (.buf.validate.priv.field) = { ... }</code>
+   * <code>optional bytes prefix = 5 [json_name = "prefix", (.buf.validate.priv.field) = { ... }
+   * </code>
+   *
    * @return The prefix.
    */
   @java.lang.Override
@@ -410,42 +483,52 @@ private static final long serialVersionUID = 0L;
 
   public static final int SUFFIX_FIELD_NUMBER = 6;
   private com.google.protobuf.ByteString suffix_ = com.google.protobuf.ByteString.EMPTY;
+
   /**
-   * <pre>
-   *`suffix` requires the field value to have the specified bytes at the end
-   *of the string.
-   *If the field value doesn't meet the requirement, an error message is generated.
    *
-   *```proto
-   *message MyBytes {
+   *
+   * <pre>
+   * `suffix` requires the field value to have the specified bytes at the end
+   * of the string.
+   * If the field value doesn't meet the requirement, an error message is generated.
+   *
+   * ```proto
+   * message MyBytes {
    * // value does not have suffix &#92;x03&#92;x04
    * optional bytes value = 1 [(buf.validate.field).bytes.suffix = "&#92;x03&#92;x04"];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
-   * <code>optional bytes suffix = 6 [json_name = "suffix", (.buf.validate.priv.field) = { ... }</code>
+   * <code>optional bytes suffix = 6 [json_name = "suffix", (.buf.validate.priv.field) = { ... }
+   * </code>
+   *
    * @return Whether the suffix field is set.
    */
   @java.lang.Override
   public boolean hasSuffix() {
     return ((bitField0_ & 0x00000040) != 0);
   }
+
   /**
-   * <pre>
-   *`suffix` requires the field value to have the specified bytes at the end
-   *of the string.
-   *If the field value doesn't meet the requirement, an error message is generated.
    *
-   *```proto
-   *message MyBytes {
+   *
+   * <pre>
+   * `suffix` requires the field value to have the specified bytes at the end
+   * of the string.
+   * If the field value doesn't meet the requirement, an error message is generated.
+   *
+   * ```proto
+   * message MyBytes {
    * // value does not have suffix &#92;x03&#92;x04
    * optional bytes value = 1 [(buf.validate.field).bytes.suffix = "&#92;x03&#92;x04"];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
-   * <code>optional bytes suffix = 6 [json_name = "suffix", (.buf.validate.priv.field) = { ... }</code>
+   * <code>optional bytes suffix = 6 [json_name = "suffix", (.buf.validate.priv.field) = { ... }
+   * </code>
+   *
    * @return The suffix.
    */
   @java.lang.Override
@@ -455,42 +538,52 @@ private static final long serialVersionUID = 0L;
 
   public static final int CONTAINS_FIELD_NUMBER = 7;
   private com.google.protobuf.ByteString contains_ = com.google.protobuf.ByteString.EMPTY;
+
   /**
-   * <pre>
-   *`contains` requires the field value to have the specified bytes anywhere in
-   *the string.
-   *If the field value doesn't meet the requirement, an error message is generated.
    *
-   *```protobuf
-   *message MyBytes {
+   *
+   * <pre>
+   * `contains` requires the field value to have the specified bytes anywhere in
+   * the string.
+   * If the field value doesn't meet the requirement, an error message is generated.
+   *
+   * ```protobuf
+   * message MyBytes {
    * // value does not contain &#92;x02&#92;x03
    * optional bytes value = 1 [(buf.validate.field).bytes.contains = "&#92;x02&#92;x03"];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
-   * <code>optional bytes contains = 7 [json_name = "contains", (.buf.validate.priv.field) = { ... }</code>
+   * <code>optional bytes contains = 7 [json_name = "contains", (.buf.validate.priv.field) = { ... }
+   * </code>
+   *
    * @return Whether the contains field is set.
    */
   @java.lang.Override
   public boolean hasContains() {
     return ((bitField0_ & 0x00000080) != 0);
   }
+
   /**
-   * <pre>
-   *`contains` requires the field value to have the specified bytes anywhere in
-   *the string.
-   *If the field value doesn't meet the requirement, an error message is generated.
    *
-   *```protobuf
-   *message MyBytes {
+   *
+   * <pre>
+   * `contains` requires the field value to have the specified bytes anywhere in
+   * the string.
+   * If the field value doesn't meet the requirement, an error message is generated.
+   *
+   * ```protobuf
+   * message MyBytes {
    * // value does not contain &#92;x02&#92;x03
    * optional bytes value = 1 [(buf.validate.field).bytes.contains = "&#92;x02&#92;x03"];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
-   * <code>optional bytes contains = 7 [json_name = "contains", (.buf.validate.priv.field) = { ... }</code>
+   * <code>optional bytes contains = 7 [json_name = "contains", (.buf.validate.priv.field) = { ... }
+   * </code>
+   *
    * @return The contains.
    */
   @java.lang.Override
@@ -499,65 +592,77 @@ private static final long serialVersionUID = 0L;
   }
 
   public static final int IN_FIELD_NUMBER = 8;
+
   @SuppressWarnings("serial")
   private java.util.List<com.google.protobuf.ByteString> in_;
+
   /**
-   * <pre>
-   *`in` requires the field value to be equal to one of the specified
-   *values. If the field value doesn't match any of the specified values, an
-   *error message is generated.
    *
-   *```protobuf
-   *message MyBytes {
+   *
+   * <pre>
+   * `in` requires the field value to be equal to one of the specified
+   * values. If the field value doesn't match any of the specified values, an
+   * error message is generated.
+   *
+   * ```protobuf
+   * message MyBytes {
    * // value must in ["&#92;x01&#92;x02", "&#92;x02&#92;x03", "&#92;x03&#92;x04"]
    * optional bytes value = 1 [(buf.validate.field).bytes.in = {"&#92;x01&#92;x02", "&#92;x02&#92;x03", "&#92;x03&#92;x04"}];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
    * <code>repeated bytes in = 8 [json_name = "in", (.buf.validate.priv.field) = { ... }</code>
+   *
    * @return A list containing the in.
    */
   @java.lang.Override
-  public java.util.List<com.google.protobuf.ByteString>
-      getInList() {
+  public java.util.List<com.google.protobuf.ByteString> getInList() {
     return in_;
   }
+
   /**
-   * <pre>
-   *`in` requires the field value to be equal to one of the specified
-   *values. If the field value doesn't match any of the specified values, an
-   *error message is generated.
    *
-   *```protobuf
-   *message MyBytes {
+   *
+   * <pre>
+   * `in` requires the field value to be equal to one of the specified
+   * values. If the field value doesn't match any of the specified values, an
+   * error message is generated.
+   *
+   * ```protobuf
+   * message MyBytes {
    * // value must in ["&#92;x01&#92;x02", "&#92;x02&#92;x03", "&#92;x03&#92;x04"]
    * optional bytes value = 1 [(buf.validate.field).bytes.in = {"&#92;x01&#92;x02", "&#92;x02&#92;x03", "&#92;x03&#92;x04"}];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
    * <code>repeated bytes in = 8 [json_name = "in", (.buf.validate.priv.field) = { ... }</code>
+   *
    * @return The count of in.
    */
   public int getInCount() {
     return in_.size();
   }
+
   /**
-   * <pre>
-   *`in` requires the field value to be equal to one of the specified
-   *values. If the field value doesn't match any of the specified values, an
-   *error message is generated.
    *
-   *```protobuf
-   *message MyBytes {
+   *
+   * <pre>
+   * `in` requires the field value to be equal to one of the specified
+   * values. If the field value doesn't match any of the specified values, an
+   * error message is generated.
+   *
+   * ```protobuf
+   * message MyBytes {
    * // value must in ["&#92;x01&#92;x02", "&#92;x02&#92;x03", "&#92;x03&#92;x04"]
    * optional bytes value = 1 [(buf.validate.field).bytes.in = {"&#92;x01&#92;x02", "&#92;x02&#92;x03", "&#92;x03&#92;x04"}];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
    * <code>repeated bytes in = 8 [json_name = "in", (.buf.validate.priv.field) = { ... }</code>
+   *
    * @param index The index of the element to return.
    * @return The in at the given index.
    */
@@ -566,68 +671,83 @@ private static final long serialVersionUID = 0L;
   }
 
   public static final int NOT_IN_FIELD_NUMBER = 9;
+
   @SuppressWarnings("serial")
   private java.util.List<com.google.protobuf.ByteString> notIn_;
+
   /**
-   * <pre>
-   *`not_in` requires the field value to be not equal to any of the specified
-   *values.
-   *If the field value matches any of the specified values, an error message is
-   *generated.
    *
-   *```proto
-   *message MyBytes {
+   *
+   * <pre>
+   * `not_in` requires the field value to be not equal to any of the specified
+   * values.
+   * If the field value matches any of the specified values, an error message is
+   * generated.
+   *
+   * ```proto
+   * message MyBytes {
    * // value must not in ["&#92;x01&#92;x02", "&#92;x02&#92;x03", "&#92;x03&#92;x04"]
    * optional bytes value = 1 [(buf.validate.field).bytes.not_in = {"&#92;x01&#92;x02", "&#92;x02&#92;x03", "&#92;x03&#92;x04"}];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
-   * <code>repeated bytes not_in = 9 [json_name = "notIn", (.buf.validate.priv.field) = { ... }</code>
+   * <code>repeated bytes not_in = 9 [json_name = "notIn", (.buf.validate.priv.field) = { ... }
+   * </code>
+   *
    * @return A list containing the notIn.
    */
   @java.lang.Override
-  public java.util.List<com.google.protobuf.ByteString>
-      getNotInList() {
+  public java.util.List<com.google.protobuf.ByteString> getNotInList() {
     return notIn_;
   }
+
   /**
-   * <pre>
-   *`not_in` requires the field value to be not equal to any of the specified
-   *values.
-   *If the field value matches any of the specified values, an error message is
-   *generated.
    *
-   *```proto
-   *message MyBytes {
+   *
+   * <pre>
+   * `not_in` requires the field value to be not equal to any of the specified
+   * values.
+   * If the field value matches any of the specified values, an error message is
+   * generated.
+   *
+   * ```proto
+   * message MyBytes {
    * // value must not in ["&#92;x01&#92;x02", "&#92;x02&#92;x03", "&#92;x03&#92;x04"]
    * optional bytes value = 1 [(buf.validate.field).bytes.not_in = {"&#92;x01&#92;x02", "&#92;x02&#92;x03", "&#92;x03&#92;x04"}];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
-   * <code>repeated bytes not_in = 9 [json_name = "notIn", (.buf.validate.priv.field) = { ... }</code>
+   * <code>repeated bytes not_in = 9 [json_name = "notIn", (.buf.validate.priv.field) = { ... }
+   * </code>
+   *
    * @return The count of notIn.
    */
   public int getNotInCount() {
     return notIn_.size();
   }
+
   /**
-   * <pre>
-   *`not_in` requires the field value to be not equal to any of the specified
-   *values.
-   *If the field value matches any of the specified values, an error message is
-   *generated.
    *
-   *```proto
-   *message MyBytes {
+   *
+   * <pre>
+   * `not_in` requires the field value to be not equal to any of the specified
+   * values.
+   * If the field value matches any of the specified values, an error message is
+   * generated.
+   *
+   * ```proto
+   * message MyBytes {
    * // value must not in ["&#92;x01&#92;x02", "&#92;x02&#92;x03", "&#92;x03&#92;x04"]
    * optional bytes value = 1 [(buf.validate.field).bytes.not_in = {"&#92;x01&#92;x02", "&#92;x02&#92;x03", "&#92;x03&#92;x04"}];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
-   * <code>repeated bytes not_in = 9 [json_name = "notIn", (.buf.validate.priv.field) = { ... }</code>
+   * <code>repeated bytes not_in = 9 [json_name = "notIn", (.buf.validate.priv.field) = { ... }
+   * </code>
+   *
    * @param index The index of the element to return.
    * @return The notIn at the given index.
    */
@@ -636,40 +756,48 @@ private static final long serialVersionUID = 0L;
   }
 
   public static final int IP_FIELD_NUMBER = 10;
+
   /**
-   * <pre>
-   *`ip` ensures that the field `value` is a valid IP address (v4 or v6) in byte format.
-   *If the field value doesn't meet this constraint, an error message is generated.
    *
-   *```proto
-   *message MyBytes {
+   *
+   * <pre>
+   * `ip` ensures that the field `value` is a valid IP address (v4 or v6) in byte format.
+   * If the field value doesn't meet this constraint, an error message is generated.
+   *
+   * ```proto
+   * message MyBytes {
    * // value must be a valid IP address
    * optional bytes value = 1 [(buf.validate.field).bytes.ip = true];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
    * <code>bool ip = 10 [json_name = "ip", (.buf.validate.priv.field) = { ... }</code>
+   *
    * @return Whether the ip field is set.
    */
   @java.lang.Override
   public boolean hasIp() {
     return wellKnownCase_ == 10;
   }
+
   /**
-   * <pre>
-   *`ip` ensures that the field `value` is a valid IP address (v4 or v6) in byte format.
-   *If the field value doesn't meet this constraint, an error message is generated.
    *
-   *```proto
-   *message MyBytes {
+   *
+   * <pre>
+   * `ip` ensures that the field `value` is a valid IP address (v4 or v6) in byte format.
+   * If the field value doesn't meet this constraint, an error message is generated.
+   *
+   * ```proto
+   * message MyBytes {
    * // value must be a valid IP address
    * optional bytes value = 1 [(buf.validate.field).bytes.ip = true];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
    * <code>bool ip = 10 [json_name = "ip", (.buf.validate.priv.field) = { ... }</code>
+   *
    * @return The ip.
    */
   @java.lang.Override
@@ -681,40 +809,48 @@ private static final long serialVersionUID = 0L;
   }
 
   public static final int IPV4_FIELD_NUMBER = 11;
+
   /**
-   * <pre>
-   *`ipv4` ensures that the field `value` is a valid IPv4 address in byte format.
-   *If the field value doesn't meet this constraint, an error message is generated.
    *
-   *```proto
-   *message MyBytes {
+   *
+   * <pre>
+   * `ipv4` ensures that the field `value` is a valid IPv4 address in byte format.
+   * If the field value doesn't meet this constraint, an error message is generated.
+   *
+   * ```proto
+   * message MyBytes {
    * // value must be a valid IPv4 address
    * optional bytes value = 1 [(buf.validate.field).bytes.ipv4 = true];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
    * <code>bool ipv4 = 11 [json_name = "ipv4", (.buf.validate.priv.field) = { ... }</code>
+   *
    * @return Whether the ipv4 field is set.
    */
   @java.lang.Override
   public boolean hasIpv4() {
     return wellKnownCase_ == 11;
   }
+
   /**
-   * <pre>
-   *`ipv4` ensures that the field `value` is a valid IPv4 address in byte format.
-   *If the field value doesn't meet this constraint, an error message is generated.
    *
-   *```proto
-   *message MyBytes {
+   *
+   * <pre>
+   * `ipv4` ensures that the field `value` is a valid IPv4 address in byte format.
+   * If the field value doesn't meet this constraint, an error message is generated.
+   *
+   * ```proto
+   * message MyBytes {
    * // value must be a valid IPv4 address
    * optional bytes value = 1 [(buf.validate.field).bytes.ipv4 = true];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
    * <code>bool ipv4 = 11 [json_name = "ipv4", (.buf.validate.priv.field) = { ... }</code>
+   *
    * @return The ipv4.
    */
   @java.lang.Override
@@ -726,38 +862,46 @@ private static final long serialVersionUID = 0L;
   }
 
   public static final int IPV6_FIELD_NUMBER = 12;
+
   /**
+   *
+   *
    * <pre>
-   *`ipv6` ensures that the field `value` is a valid IPv6 address in byte format.
-   *If the field value doesn't meet this constraint, an error message is generated.
-   *```proto
-   *message MyBytes {
+   * `ipv6` ensures that the field `value` is a valid IPv6 address in byte format.
+   * If the field value doesn't meet this constraint, an error message is generated.
+   * ```proto
+   * message MyBytes {
    * // value must be a valid IPv6 address
    * optional bytes value = 1 [(buf.validate.field).bytes.ipv6 = true];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
    * <code>bool ipv6 = 12 [json_name = "ipv6", (.buf.validate.priv.field) = { ... }</code>
+   *
    * @return Whether the ipv6 field is set.
    */
   @java.lang.Override
   public boolean hasIpv6() {
     return wellKnownCase_ == 12;
   }
+
   /**
+   *
+   *
    * <pre>
-   *`ipv6` ensures that the field `value` is a valid IPv6 address in byte format.
-   *If the field value doesn't meet this constraint, an error message is generated.
-   *```proto
-   *message MyBytes {
+   * `ipv6` ensures that the field `value` is a valid IPv6 address in byte format.
+   * If the field value doesn't meet this constraint, an error message is generated.
+   * ```proto
+   * message MyBytes {
    * // value must be a valid IPv6 address
    * optional bytes value = 1 [(buf.validate.field).bytes.ipv6 = true];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
    * <code>bool ipv6 = 12 [json_name = "ipv6", (.buf.validate.priv.field) = { ... }</code>
+   *
    * @return The ipv6.
    */
   @java.lang.Override
@@ -769,6 +913,7 @@ private static final long serialVersionUID = 0L;
   }
 
   private byte memoizedIsInitialized = -1;
+
   @java.lang.Override
   public final boolean isInitialized() {
     byte isInitialized = memoizedIsInitialized;
@@ -780,8 +925,7 @@ private static final long serialVersionUID = 0L;
   }
 
   @java.lang.Override
-  public void writeTo(com.google.protobuf.CodedOutputStream output)
-                      throws java.io.IOException {
+  public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
     if (((bitField0_ & 0x00000001) != 0)) {
       output.writeBytes(1, const_);
     }
@@ -810,16 +954,13 @@ private static final long serialVersionUID = 0L;
       output.writeBytes(9, notIn_.get(i));
     }
     if (wellKnownCase_ == 10) {
-      output.writeBool(
-          10, (boolean)((java.lang.Boolean) wellKnown_));
+      output.writeBool(10, (boolean) ((java.lang.Boolean) wellKnown_));
     }
     if (wellKnownCase_ == 11) {
-      output.writeBool(
-          11, (boolean)((java.lang.Boolean) wellKnown_));
+      output.writeBool(11, (boolean) ((java.lang.Boolean) wellKnown_));
     }
     if (wellKnownCase_ == 12) {
-      output.writeBool(
-          12, (boolean)((java.lang.Boolean) wellKnown_));
+      output.writeBool(12, (boolean) ((java.lang.Boolean) wellKnown_));
     }
     if (((bitField0_ & 0x00000002) != 0)) {
       output.writeUInt64(13, len_);
@@ -834,37 +975,30 @@ private static final long serialVersionUID = 0L;
 
     size = 0;
     if (((bitField0_ & 0x00000001) != 0)) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeBytesSize(1, const_);
+      size += com.google.protobuf.CodedOutputStream.computeBytesSize(1, const_);
     }
     if (((bitField0_ & 0x00000004) != 0)) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeUInt64Size(2, minLen_);
+      size += com.google.protobuf.CodedOutputStream.computeUInt64Size(2, minLen_);
     }
     if (((bitField0_ & 0x00000008) != 0)) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeUInt64Size(3, maxLen_);
+      size += com.google.protobuf.CodedOutputStream.computeUInt64Size(3, maxLen_);
     }
     if (((bitField0_ & 0x00000010) != 0)) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, pattern_);
     }
     if (((bitField0_ & 0x00000020) != 0)) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeBytesSize(5, prefix_);
+      size += com.google.protobuf.CodedOutputStream.computeBytesSize(5, prefix_);
     }
     if (((bitField0_ & 0x00000040) != 0)) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeBytesSize(6, suffix_);
+      size += com.google.protobuf.CodedOutputStream.computeBytesSize(6, suffix_);
     }
     if (((bitField0_ & 0x00000080) != 0)) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeBytesSize(7, contains_);
+      size += com.google.protobuf.CodedOutputStream.computeBytesSize(7, contains_);
     }
     {
       int dataSize = 0;
       for (int i = 0; i < in_.size(); i++) {
-        dataSize += com.google.protobuf.CodedOutputStream
-          .computeBytesSizeNoTag(in_.get(i));
+        dataSize += com.google.protobuf.CodedOutputStream.computeBytesSizeNoTag(in_.get(i));
       }
       size += dataSize;
       size += 1 * getInList().size();
@@ -872,30 +1006,28 @@ private static final long serialVersionUID = 0L;
     {
       int dataSize = 0;
       for (int i = 0; i < notIn_.size(); i++) {
-        dataSize += com.google.protobuf.CodedOutputStream
-          .computeBytesSizeNoTag(notIn_.get(i));
+        dataSize += com.google.protobuf.CodedOutputStream.computeBytesSizeNoTag(notIn_.get(i));
       }
       size += dataSize;
       size += 1 * getNotInList().size();
     }
     if (wellKnownCase_ == 10) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeBoolSize(
-            10, (boolean)((java.lang.Boolean) wellKnown_));
+      size +=
+          com.google.protobuf.CodedOutputStream.computeBoolSize(
+              10, (boolean) ((java.lang.Boolean) wellKnown_));
     }
     if (wellKnownCase_ == 11) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeBoolSize(
-            11, (boolean)((java.lang.Boolean) wellKnown_));
+      size +=
+          com.google.protobuf.CodedOutputStream.computeBoolSize(
+              11, (boolean) ((java.lang.Boolean) wellKnown_));
     }
     if (wellKnownCase_ == 12) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeBoolSize(
-            12, (boolean)((java.lang.Boolean) wellKnown_));
+      size +=
+          com.google.protobuf.CodedOutputStream.computeBoolSize(
+              12, (boolean) ((java.lang.Boolean) wellKnown_));
     }
     if (((bitField0_ & 0x00000002) != 0)) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeUInt64Size(13, len_);
+      size += com.google.protobuf.CodedOutputStream.computeUInt64Size(13, len_);
     }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
@@ -905,7 +1037,7 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public boolean equals(final java.lang.Object obj) {
     if (obj == this) {
-     return true;
+      return true;
     }
     if (!(obj instanceof build.buf.validate.BytesRules)) {
       return super.equals(obj);
@@ -914,61 +1046,48 @@ private static final long serialVersionUID = 0L;
 
     if (hasConst() != other.hasConst()) return false;
     if (hasConst()) {
-      if (!getConst()
-          .equals(other.getConst())) return false;
+      if (!getConst().equals(other.getConst())) return false;
     }
     if (hasLen() != other.hasLen()) return false;
     if (hasLen()) {
-      if (getLen()
-          != other.getLen()) return false;
+      if (getLen() != other.getLen()) return false;
     }
     if (hasMinLen() != other.hasMinLen()) return false;
     if (hasMinLen()) {
-      if (getMinLen()
-          != other.getMinLen()) return false;
+      if (getMinLen() != other.getMinLen()) return false;
     }
     if (hasMaxLen() != other.hasMaxLen()) return false;
     if (hasMaxLen()) {
-      if (getMaxLen()
-          != other.getMaxLen()) return false;
+      if (getMaxLen() != other.getMaxLen()) return false;
     }
     if (hasPattern() != other.hasPattern()) return false;
     if (hasPattern()) {
-      if (!getPattern()
-          .equals(other.getPattern())) return false;
+      if (!getPattern().equals(other.getPattern())) return false;
     }
     if (hasPrefix() != other.hasPrefix()) return false;
     if (hasPrefix()) {
-      if (!getPrefix()
-          .equals(other.getPrefix())) return false;
+      if (!getPrefix().equals(other.getPrefix())) return false;
     }
     if (hasSuffix() != other.hasSuffix()) return false;
     if (hasSuffix()) {
-      if (!getSuffix()
-          .equals(other.getSuffix())) return false;
+      if (!getSuffix().equals(other.getSuffix())) return false;
     }
     if (hasContains() != other.hasContains()) return false;
     if (hasContains()) {
-      if (!getContains()
-          .equals(other.getContains())) return false;
+      if (!getContains().equals(other.getContains())) return false;
     }
-    if (!getInList()
-        .equals(other.getInList())) return false;
-    if (!getNotInList()
-        .equals(other.getNotInList())) return false;
+    if (!getInList().equals(other.getInList())) return false;
+    if (!getNotInList().equals(other.getNotInList())) return false;
     if (!getWellKnownCase().equals(other.getWellKnownCase())) return false;
     switch (wellKnownCase_) {
       case 10:
-        if (getIp()
-            != other.getIp()) return false;
+        if (getIp() != other.getIp()) return false;
         break;
       case 11:
-        if (getIpv4()
-            != other.getIpv4()) return false;
+        if (getIpv4() != other.getIpv4()) return false;
         break;
       case 12:
-        if (getIpv6()
-            != other.getIpv6()) return false;
+        if (getIpv6() != other.getIpv6()) return false;
         break;
       case 0:
       default:
@@ -990,18 +1109,15 @@ private static final long serialVersionUID = 0L;
     }
     if (hasLen()) {
       hash = (37 * hash) + LEN_FIELD_NUMBER;
-      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-          getLen());
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(getLen());
     }
     if (hasMinLen()) {
       hash = (37 * hash) + MIN_LEN_FIELD_NUMBER;
-      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-          getMinLen());
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(getMinLen());
     }
     if (hasMaxLen()) {
       hash = (37 * hash) + MAX_LEN_FIELD_NUMBER;
-      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-          getMaxLen());
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(getMaxLen());
     }
     if (hasPattern()) {
       hash = (37 * hash) + PATTERN_FIELD_NUMBER;
@@ -1030,18 +1146,15 @@ private static final long serialVersionUID = 0L;
     switch (wellKnownCase_) {
       case 10:
         hash = (37 * hash) + IP_FIELD_NUMBER;
-        hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
-            getIp());
+        hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(getIp());
         break;
       case 11:
         hash = (37 * hash) + IPV4_FIELD_NUMBER;
-        hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
-            getIpv4());
+        hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(getIpv4());
         break;
       case 12:
         hash = (37 * hash) + IPV6_FIELD_NUMBER;
-        hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
-            getIpv6());
+        hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(getIpv6());
         break;
       case 0:
       default:
@@ -1051,99 +1164,104 @@ private static final long serialVersionUID = 0L;
     return hash;
   }
 
-  public static build.buf.validate.BytesRules parseFrom(
-      java.nio.ByteBuffer data)
+  public static build.buf.validate.BytesRules parseFrom(java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
+
   public static build.buf.validate.BytesRules parseFrom(
-      java.nio.ByteBuffer data,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      java.nio.ByteBuffer data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static build.buf.validate.BytesRules parseFrom(
-      com.google.protobuf.ByteString data)
+
+  public static build.buf.validate.BytesRules parseFrom(com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
+
   public static build.buf.validate.BytesRules parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
+
   public static build.buf.validate.BytesRules parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
+
   public static build.buf.validate.BytesRules parseFrom(
-      byte[] data,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      byte[] data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
+
   public static build.buf.validate.BytesRules parseFrom(java.io.InputStream input)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input);
+    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
   }
+
   public static build.buf.validate.BytesRules parseFrom(
-      java.io.InputStream input,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input, extensionRegistry);
+    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+        PARSER, input, extensionRegistry);
   }
 
   public static build.buf.validate.BytesRules parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseDelimitedWithIOException(PARSER, input);
+    return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input);
   }
 
   public static build.buf.validate.BytesRules parseDelimitedFrom(
-      java.io.InputStream input,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(
+        PARSER, input, extensionRegistry);
   }
-  public static build.buf.validate.BytesRules parseFrom(
-      com.google.protobuf.CodedInputStream input)
+
+  public static build.buf.validate.BytesRules parseFrom(com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input);
+    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
   }
+
   public static build.buf.validate.BytesRules parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input, extensionRegistry);
+    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+        PARSER, input, extensionRegistry);
   }
 
   @java.lang.Override
-  public Builder newBuilderForType() { return newBuilder(); }
+  public Builder newBuilderForType() {
+    return newBuilder();
+  }
+
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
+
   public static Builder newBuilder(build.buf.validate.BytesRules prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
+
   @java.lang.Override
   public Builder toBuilder() {
-    return this == DEFAULT_INSTANCE
-        ? new Builder() : new Builder().mergeFrom(this);
+    return this == DEFAULT_INSTANCE ? new Builder() : new Builder().mergeFrom(this);
   }
 
   @java.lang.Override
-  protected Builder newBuilderForType(
-      com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+  protected Builder newBuilderForType(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
     Builder builder = new Builder(parent);
     return builder;
   }
+
   /**
+   *
+   *
    * <pre>
    * BytesRules describe the constraints applied to `bytes` values. These rules
    * may also be applied to the `google.protobuf.BytesValue` Well-Known-Type.
@@ -1151,33 +1269,30 @@ private static final long serialVersionUID = 0L;
    *
    * Protobuf type {@code buf.validate.BytesRules}
    */
-  public static final class Builder extends
-      com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+  public static final class Builder extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
+      implements
       // @@protoc_insertion_point(builder_implements:buf.validate.BytesRules)
       build.buf.validate.BytesRulesOrBuilder {
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
+    public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
       return build.buf.validate.ValidateProto.internal_static_buf_validate_BytesRules_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return build.buf.validate.ValidateProto.internal_static_buf_validate_BytesRules_fieldAccessorTable
+      return build.buf.validate.ValidateProto
+          .internal_static_buf_validate_BytesRules_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
               build.buf.validate.BytesRules.class, build.buf.validate.BytesRules.Builder.class);
     }
 
     // Construct using build.buf.validate.BytesRules.newBuilder()
-    private Builder() {
+    private Builder() {}
 
-    }
-
-    private Builder(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+    private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
       super(parent);
-
     }
+
     @java.lang.Override
     public Builder clear() {
       super.clear();
@@ -1198,8 +1313,7 @@ private static final long serialVersionUID = 0L;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Descriptors.Descriptor
-        getDescriptorForType() {
+    public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
       return build.buf.validate.ValidateProto.internal_static_buf_validate_BytesRules_descriptor;
     }
 
@@ -1221,7 +1335,9 @@ private static final long serialVersionUID = 0L;
     public build.buf.validate.BytesRules buildPartial() {
       build.buf.validate.BytesRules result = new build.buf.validate.BytesRules(this);
       buildPartialRepeatedFields(result);
-      if (bitField0_ != 0) { buildPartial0(result); }
+      if (bitField0_ != 0) {
+        buildPartial0(result);
+      }
       buildPartialOneofs(result);
       onBuilt();
       return result;
@@ -1287,38 +1403,39 @@ private static final long serialVersionUID = 0L;
     public Builder clone() {
       return super.clone();
     }
+
     @java.lang.Override
     public Builder setField(
-        com.google.protobuf.Descriptors.FieldDescriptor field,
-        java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
       return super.setField(field, value);
     }
+
     @java.lang.Override
-    public Builder clearField(
-        com.google.protobuf.Descriptors.FieldDescriptor field) {
+    public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
       return super.clearField(field);
     }
+
     @java.lang.Override
-    public Builder clearOneof(
-        com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+    public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
       return super.clearOneof(oneof);
     }
+
     @java.lang.Override
     public Builder setRepeatedField(
-        com.google.protobuf.Descriptors.FieldDescriptor field,
-        int index, java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field, int index, java.lang.Object value) {
       return super.setRepeatedField(field, index, value);
     }
+
     @java.lang.Override
     public Builder addRepeatedField(
-        com.google.protobuf.Descriptors.FieldDescriptor field,
-        java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
       return super.addRepeatedField(field, value);
     }
+
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
       if (other instanceof build.buf.validate.BytesRules) {
-        return mergeFrom((build.buf.validate.BytesRules)other);
+        return mergeFrom((build.buf.validate.BytesRules) other);
       } else {
         super.mergeFrom(other);
         return this;
@@ -1374,21 +1491,25 @@ private static final long serialVersionUID = 0L;
         onChanged();
       }
       switch (other.getWellKnownCase()) {
-        case IP: {
-          setIp(other.getIp());
-          break;
-        }
-        case IPV4: {
-          setIpv4(other.getIpv4());
-          break;
-        }
-        case IPV6: {
-          setIpv6(other.getIpv6());
-          break;
-        }
-        case WELLKNOWN_NOT_SET: {
-          break;
-        }
+        case IP:
+          {
+            setIp(other.getIp());
+            break;
+          }
+        case IPV4:
+          {
+            setIpv4(other.getIpv4());
+            break;
+          }
+        case IPV6:
+          {
+            setIpv6(other.getIpv6());
+            break;
+          }
+        case WELLKNOWN_NOT_SET:
+          {
+            break;
+          }
       }
       this.mergeUnknownFields(other.getUnknownFields());
       onChanged();
@@ -1416,79 +1537,93 @@ private static final long serialVersionUID = 0L;
             case 0:
               done = true;
               break;
-            case 10: {
-              const_ = input.readBytes();
-              bitField0_ |= 0x00000001;
-              break;
-            } // case 10
-            case 16: {
-              minLen_ = input.readUInt64();
-              bitField0_ |= 0x00000004;
-              break;
-            } // case 16
-            case 24: {
-              maxLen_ = input.readUInt64();
-              bitField0_ |= 0x00000008;
-              break;
-            } // case 24
-            case 34: {
-              pattern_ = input.readStringRequireUtf8();
-              bitField0_ |= 0x00000010;
-              break;
-            } // case 34
-            case 42: {
-              prefix_ = input.readBytes();
-              bitField0_ |= 0x00000020;
-              break;
-            } // case 42
-            case 50: {
-              suffix_ = input.readBytes();
-              bitField0_ |= 0x00000040;
-              break;
-            } // case 50
-            case 58: {
-              contains_ = input.readBytes();
-              bitField0_ |= 0x00000080;
-              break;
-            } // case 58
-            case 66: {
-              com.google.protobuf.ByteString v = input.readBytes();
-              ensureInIsMutable();
-              in_.add(v);
-              break;
-            } // case 66
-            case 74: {
-              com.google.protobuf.ByteString v = input.readBytes();
-              ensureNotInIsMutable();
-              notIn_.add(v);
-              break;
-            } // case 74
-            case 80: {
-              wellKnown_ = input.readBool();
-              wellKnownCase_ = 10;
-              break;
-            } // case 80
-            case 88: {
-              wellKnown_ = input.readBool();
-              wellKnownCase_ = 11;
-              break;
-            } // case 88
-            case 96: {
-              wellKnown_ = input.readBool();
-              wellKnownCase_ = 12;
-              break;
-            } // case 96
-            case 104: {
-              len_ = input.readUInt64();
-              bitField0_ |= 0x00000002;
-              break;
-            } // case 104
-            default: {
-              if (!super.parseUnknownField(input, extensionRegistry, tag)) {
-                done = true; // was an endgroup tag
-              }
-              break;
-            } // default:
+            case 10:
+              {
+                const_ = input.readBytes();
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 10
+            case 16:
+              {
+                minLen_ = input.readUInt64();
+                bitField0_ |= 0x00000004;
+                break;
+              } // case 16
+            case 24:
+              {
+                maxLen_ = input.readUInt64();
+                bitField0_ |= 0x00000008;
+                break;
+              } // case 24
+            case 34:
+              {
+                pattern_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000010;
+                break;
+              } // case 34
+            case 42:
+              {
+                prefix_ = input.readBytes();
+                bitField0_ |= 0x00000020;
+                break;
+              } // case 42
+            case 50:
+              {
+                suffix_ = input.readBytes();
+                bitField0_ |= 0x00000040;
+                break;
+              } // case 50
+            case 58:
+              {
+                contains_ = input.readBytes();
+                bitField0_ |= 0x00000080;
+                break;
+              } // case 58
+            case 66:
+              {
+                com.google.protobuf.ByteString v = input.readBytes();
+                ensureInIsMutable();
+                in_.add(v);
+                break;
+              } // case 66
+            case 74:
+              {
+                com.google.protobuf.ByteString v = input.readBytes();
+                ensureNotInIsMutable();
+                notIn_.add(v);
+                break;
+              } // case 74
+            case 80:
+              {
+                wellKnown_ = input.readBool();
+                wellKnownCase_ = 10;
+                break;
+              } // case 80
+            case 88:
+              {
+                wellKnown_ = input.readBool();
+                wellKnownCase_ = 11;
+                break;
+              } // case 88
+            case 96:
+              {
+                wellKnown_ = input.readBool();
+                wellKnownCase_ = 12;
+                break;
+              } // case 96
+            case 104:
+              {
+                len_ = input.readUInt64();
+                bitField0_ |= 0x00000002;
+                break;
+              } // case 104
+            default:
+              {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
           } // switch (tag)
         } // while (!done)
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -1498,12 +1633,12 @@ private static final long serialVersionUID = 0L;
       } // finally
       return this;
     }
+
     private int wellKnownCase_ = 0;
     private java.lang.Object wellKnown_;
-    public WellKnownCase
-        getWellKnownCase() {
-      return WellKnownCase.forNumber(
-          wellKnownCase_);
+
+    public WellKnownCase getWellKnownCase() {
+      return WellKnownCase.forNumber(wellKnownCase_);
     }
 
     public Builder clearWellKnown() {
@@ -1516,84 +1651,106 @@ private static final long serialVersionUID = 0L;
     private int bitField0_;
 
     private com.google.protobuf.ByteString const_ = com.google.protobuf.ByteString.EMPTY;
+
     /**
-     * <pre>
-     *`const` requires the field value to exactly match the specified bytes
-     *value. If the field value doesn't match, an error message is generated.
      *
-     *```proto
-     *message MyBytes {
+     *
+     * <pre>
+     * `const` requires the field value to exactly match the specified bytes
+     * value. If the field value doesn't match, an error message is generated.
+     *
+     * ```proto
+     * message MyBytes {
      *  // value must be "&#92;x01&#92;x02&#92;x03&#92;x04"
      *   bytes value = 1 [(buf.validate.field).bytes.const = "&#92;x01&#92;x02&#92;x03&#92;x04"];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
-     * <code>optional bytes const = 1 [json_name = "const", (.buf.validate.priv.field) = { ... }</code>
+     * <code>optional bytes const = 1 [json_name = "const", (.buf.validate.priv.field) = { ... }
+     * </code>
+     *
      * @return Whether the const field is set.
      */
     @java.lang.Override
     public boolean hasConst() {
       return ((bitField0_ & 0x00000001) != 0);
     }
+
     /**
-     * <pre>
-     *`const` requires the field value to exactly match the specified bytes
-     *value. If the field value doesn't match, an error message is generated.
      *
-     *```proto
-     *message MyBytes {
+     *
+     * <pre>
+     * `const` requires the field value to exactly match the specified bytes
+     * value. If the field value doesn't match, an error message is generated.
+     *
+     * ```proto
+     * message MyBytes {
      *  // value must be "&#92;x01&#92;x02&#92;x03&#92;x04"
      *   bytes value = 1 [(buf.validate.field).bytes.const = "&#92;x01&#92;x02&#92;x03&#92;x04"];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
-     * <code>optional bytes const = 1 [json_name = "const", (.buf.validate.priv.field) = { ... }</code>
+     * <code>optional bytes const = 1 [json_name = "const", (.buf.validate.priv.field) = { ... }
+     * </code>
+     *
      * @return The const.
      */
     @java.lang.Override
     public com.google.protobuf.ByteString getConst() {
       return const_;
     }
+
     /**
-     * <pre>
-     *`const` requires the field value to exactly match the specified bytes
-     *value. If the field value doesn't match, an error message is generated.
      *
-     *```proto
-     *message MyBytes {
+     *
+     * <pre>
+     * `const` requires the field value to exactly match the specified bytes
+     * value. If the field value doesn't match, an error message is generated.
+     *
+     * ```proto
+     * message MyBytes {
      *  // value must be "&#92;x01&#92;x02&#92;x03&#92;x04"
      *   bytes value = 1 [(buf.validate.field).bytes.const = "&#92;x01&#92;x02&#92;x03&#92;x04"];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
-     * <code>optional bytes const = 1 [json_name = "const", (.buf.validate.priv.field) = { ... }</code>
+     * <code>optional bytes const = 1 [json_name = "const", (.buf.validate.priv.field) = { ... }
+     * </code>
+     *
      * @param value The const to set.
      * @return This builder for chaining.
      */
     public Builder setConst(com.google.protobuf.ByteString value) {
-      if (value == null) { throw new NullPointerException(); }
+      if (value == null) {
+        throw new NullPointerException();
+      }
       const_ = value;
       bitField0_ |= 0x00000001;
       onChanged();
       return this;
     }
+
     /**
-     * <pre>
-     *`const` requires the field value to exactly match the specified bytes
-     *value. If the field value doesn't match, an error message is generated.
      *
-     *```proto
-     *message MyBytes {
+     *
+     * <pre>
+     * `const` requires the field value to exactly match the specified bytes
+     * value. If the field value doesn't match, an error message is generated.
+     *
+     * ```proto
+     * message MyBytes {
      *  // value must be "&#92;x01&#92;x02&#92;x03&#92;x04"
      *   bytes value = 1 [(buf.validate.field).bytes.const = "&#92;x01&#92;x02&#92;x03&#92;x04"];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
-     * <code>optional bytes const = 1 [json_name = "const", (.buf.validate.priv.field) = { ... }</code>
+     * <code>optional bytes const = 1 [json_name = "const", (.buf.validate.priv.field) = { ... }
+     * </code>
+     *
      * @return This builder for chaining.
      */
     public Builder clearConst() {
@@ -1603,61 +1760,76 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private long len_ ;
+    private long len_;
+
     /**
-     * <pre>
-     *`len` requires the field value to have the specified length in bytes.
-     *If the field value doesn't match, an error message is generated.
      *
-     *```proto
-     *message MyBytes {
+     *
+     * <pre>
+     * `len` requires the field value to have the specified length in bytes.
+     * If the field value doesn't match, an error message is generated.
+     *
+     * ```proto
+     * message MyBytes {
      *      // value length must be 4 bytes.
      *      optional bytes value = 1 [(buf.validate.field).bytes.len = 4];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
-     * <code>optional uint64 len = 13 [json_name = "len", (.buf.validate.priv.field) = { ... }</code>
+     * <code>optional uint64 len = 13 [json_name = "len", (.buf.validate.priv.field) = { ... }
+     * </code>
+     *
      * @return Whether the len field is set.
      */
     @java.lang.Override
     public boolean hasLen() {
       return ((bitField0_ & 0x00000002) != 0);
     }
+
     /**
-     * <pre>
-     *`len` requires the field value to have the specified length in bytes.
-     *If the field value doesn't match, an error message is generated.
      *
-     *```proto
-     *message MyBytes {
+     *
+     * <pre>
+     * `len` requires the field value to have the specified length in bytes.
+     * If the field value doesn't match, an error message is generated.
+     *
+     * ```proto
+     * message MyBytes {
      *      // value length must be 4 bytes.
      *      optional bytes value = 1 [(buf.validate.field).bytes.len = 4];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
-     * <code>optional uint64 len = 13 [json_name = "len", (.buf.validate.priv.field) = { ... }</code>
+     * <code>optional uint64 len = 13 [json_name = "len", (.buf.validate.priv.field) = { ... }
+     * </code>
+     *
      * @return The len.
      */
     @java.lang.Override
     public long getLen() {
       return len_;
     }
+
     /**
-     * <pre>
-     *`len` requires the field value to have the specified length in bytes.
-     *If the field value doesn't match, an error message is generated.
      *
-     *```proto
-     *message MyBytes {
+     *
+     * <pre>
+     * `len` requires the field value to have the specified length in bytes.
+     * If the field value doesn't match, an error message is generated.
+     *
+     * ```proto
+     * message MyBytes {
      *      // value length must be 4 bytes.
      *      optional bytes value = 1 [(buf.validate.field).bytes.len = 4];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
-     * <code>optional uint64 len = 13 [json_name = "len", (.buf.validate.priv.field) = { ... }</code>
+     * <code>optional uint64 len = 13 [json_name = "len", (.buf.validate.priv.field) = { ... }
+     * </code>
+     *
      * @param value The len to set.
      * @return This builder for chaining.
      */
@@ -1668,20 +1840,25 @@ private static final long serialVersionUID = 0L;
       onChanged();
       return this;
     }
+
     /**
-     * <pre>
-     *`len` requires the field value to have the specified length in bytes.
-     *If the field value doesn't match, an error message is generated.
      *
-     *```proto
-     *message MyBytes {
+     *
+     * <pre>
+     * `len` requires the field value to have the specified length in bytes.
+     * If the field value doesn't match, an error message is generated.
+     *
+     * ```proto
+     * message MyBytes {
      *      // value length must be 4 bytes.
      *      optional bytes value = 1 [(buf.validate.field).bytes.len = 4];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
-     * <code>optional uint64 len = 13 [json_name = "len", (.buf.validate.priv.field) = { ... }</code>
+     * <code>optional uint64 len = 13 [json_name = "len", (.buf.validate.priv.field) = { ... }
+     * </code>
+     *
      * @return This builder for chaining.
      */
     public Builder clearLen() {
@@ -1691,64 +1868,79 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private long minLen_ ;
+    private long minLen_;
+
     /**
-     * <pre>
-     *`min_len` requires the field value to have at least the specified minimum
-     *length in bytes.
-     *If the field value doesn't meet the requirement, an error message is generated.
      *
-     *```proto
-     *message MyBytes {
+     *
+     * <pre>
+     * `min_len` requires the field value to have at least the specified minimum
+     * length in bytes.
+     * If the field value doesn't meet the requirement, an error message is generated.
+     *
+     * ```proto
+     * message MyBytes {
      * // value length must be at least 2 bytes.
      * optional bytes value = 1 [(buf.validate.field).bytes.min_len = 2];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
-     * <code>optional uint64 min_len = 2 [json_name = "minLen", (.buf.validate.priv.field) = { ... }</code>
+     * <code>optional uint64 min_len = 2 [json_name = "minLen", (.buf.validate.priv.field) = { ... }
+     * </code>
+     *
      * @return Whether the minLen field is set.
      */
     @java.lang.Override
     public boolean hasMinLen() {
       return ((bitField0_ & 0x00000004) != 0);
     }
+
     /**
-     * <pre>
-     *`min_len` requires the field value to have at least the specified minimum
-     *length in bytes.
-     *If the field value doesn't meet the requirement, an error message is generated.
      *
-     *```proto
-     *message MyBytes {
+     *
+     * <pre>
+     * `min_len` requires the field value to have at least the specified minimum
+     * length in bytes.
+     * If the field value doesn't meet the requirement, an error message is generated.
+     *
+     * ```proto
+     * message MyBytes {
      * // value length must be at least 2 bytes.
      * optional bytes value = 1 [(buf.validate.field).bytes.min_len = 2];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
-     * <code>optional uint64 min_len = 2 [json_name = "minLen", (.buf.validate.priv.field) = { ... }</code>
+     * <code>optional uint64 min_len = 2 [json_name = "minLen", (.buf.validate.priv.field) = { ... }
+     * </code>
+     *
      * @return The minLen.
      */
     @java.lang.Override
     public long getMinLen() {
       return minLen_;
     }
+
     /**
-     * <pre>
-     *`min_len` requires the field value to have at least the specified minimum
-     *length in bytes.
-     *If the field value doesn't meet the requirement, an error message is generated.
      *
-     *```proto
-     *message MyBytes {
+     *
+     * <pre>
+     * `min_len` requires the field value to have at least the specified minimum
+     * length in bytes.
+     * If the field value doesn't meet the requirement, an error message is generated.
+     *
+     * ```proto
+     * message MyBytes {
      * // value length must be at least 2 bytes.
      * optional bytes value = 1 [(buf.validate.field).bytes.min_len = 2];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
-     * <code>optional uint64 min_len = 2 [json_name = "minLen", (.buf.validate.priv.field) = { ... }</code>
+     * <code>optional uint64 min_len = 2 [json_name = "minLen", (.buf.validate.priv.field) = { ... }
+     * </code>
+     *
      * @param value The minLen to set.
      * @return This builder for chaining.
      */
@@ -1759,21 +1951,26 @@ private static final long serialVersionUID = 0L;
       onChanged();
       return this;
     }
+
     /**
-     * <pre>
-     *`min_len` requires the field value to have at least the specified minimum
-     *length in bytes.
-     *If the field value doesn't meet the requirement, an error message is generated.
      *
-     *```proto
-     *message MyBytes {
+     *
+     * <pre>
+     * `min_len` requires the field value to have at least the specified minimum
+     * length in bytes.
+     * If the field value doesn't meet the requirement, an error message is generated.
+     *
+     * ```proto
+     * message MyBytes {
      * // value length must be at least 2 bytes.
      * optional bytes value = 1 [(buf.validate.field).bytes.min_len = 2];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
-     * <code>optional uint64 min_len = 2 [json_name = "minLen", (.buf.validate.priv.field) = { ... }</code>
+     * <code>optional uint64 min_len = 2 [json_name = "minLen", (.buf.validate.priv.field) = { ... }
+     * </code>
+     *
      * @return This builder for chaining.
      */
     public Builder clearMinLen() {
@@ -1783,64 +1980,79 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private long maxLen_ ;
+    private long maxLen_;
+
     /**
-     * <pre>
-     *`max_len` requires the field value to have at most the specified maximum
-     *length in bytes.
-     *If the field value exceeds the requirement, an error message is generated.
      *
-     *```proto
-     *message MyBytes {
+     *
+     * <pre>
+     * `max_len` requires the field value to have at most the specified maximum
+     * length in bytes.
+     * If the field value exceeds the requirement, an error message is generated.
+     *
+     * ```proto
+     * message MyBytes {
      * // value must be at most 6 bytes.
      * optional bytes value = 1 [(buf.validate.field).bytes.max_len = 6];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
-     * <code>optional uint64 max_len = 3 [json_name = "maxLen", (.buf.validate.priv.field) = { ... }</code>
+     * <code>optional uint64 max_len = 3 [json_name = "maxLen", (.buf.validate.priv.field) = { ... }
+     * </code>
+     *
      * @return Whether the maxLen field is set.
      */
     @java.lang.Override
     public boolean hasMaxLen() {
       return ((bitField0_ & 0x00000008) != 0);
     }
+
     /**
-     * <pre>
-     *`max_len` requires the field value to have at most the specified maximum
-     *length in bytes.
-     *If the field value exceeds the requirement, an error message is generated.
      *
-     *```proto
-     *message MyBytes {
+     *
+     * <pre>
+     * `max_len` requires the field value to have at most the specified maximum
+     * length in bytes.
+     * If the field value exceeds the requirement, an error message is generated.
+     *
+     * ```proto
+     * message MyBytes {
      * // value must be at most 6 bytes.
      * optional bytes value = 1 [(buf.validate.field).bytes.max_len = 6];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
-     * <code>optional uint64 max_len = 3 [json_name = "maxLen", (.buf.validate.priv.field) = { ... }</code>
+     * <code>optional uint64 max_len = 3 [json_name = "maxLen", (.buf.validate.priv.field) = { ... }
+     * </code>
+     *
      * @return The maxLen.
      */
     @java.lang.Override
     public long getMaxLen() {
       return maxLen_;
     }
+
     /**
-     * <pre>
-     *`max_len` requires the field value to have at most the specified maximum
-     *length in bytes.
-     *If the field value exceeds the requirement, an error message is generated.
      *
-     *```proto
-     *message MyBytes {
+     *
+     * <pre>
+     * `max_len` requires the field value to have at most the specified maximum
+     * length in bytes.
+     * If the field value exceeds the requirement, an error message is generated.
+     *
+     * ```proto
+     * message MyBytes {
      * // value must be at most 6 bytes.
      * optional bytes value = 1 [(buf.validate.field).bytes.max_len = 6];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
-     * <code>optional uint64 max_len = 3 [json_name = "maxLen", (.buf.validate.priv.field) = { ... }</code>
+     * <code>optional uint64 max_len = 3 [json_name = "maxLen", (.buf.validate.priv.field) = { ... }
+     * </code>
+     *
      * @param value The maxLen to set.
      * @return This builder for chaining.
      */
@@ -1851,21 +2063,26 @@ private static final long serialVersionUID = 0L;
       onChanged();
       return this;
     }
+
     /**
-     * <pre>
-     *`max_len` requires the field value to have at most the specified maximum
-     *length in bytes.
-     *If the field value exceeds the requirement, an error message is generated.
      *
-     *```proto
-     *message MyBytes {
+     *
+     * <pre>
+     * `max_len` requires the field value to have at most the specified maximum
+     * length in bytes.
+     * If the field value exceeds the requirement, an error message is generated.
+     *
+     * ```proto
+     * message MyBytes {
      * // value must be at most 6 bytes.
      * optional bytes value = 1 [(buf.validate.field).bytes.max_len = 6];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
-     * <code>optional uint64 max_len = 3 [json_name = "maxLen", (.buf.validate.priv.field) = { ... }</code>
+     * <code>optional uint64 max_len = 3 [json_name = "maxLen", (.buf.validate.priv.field) = { ... }
+     * </code>
+     *
      * @return This builder for chaining.
      */
     public Builder clearMaxLen() {
@@ -1876,52 +2093,63 @@ private static final long serialVersionUID = 0L;
     }
 
     private java.lang.Object pattern_ = "";
+
     /**
-     * <pre>
-     *`pattern` requires the field value to match the specified regular
-     *expression ([RE2 syntax](https://github.com/google/re2/wiki/Syntax)).
-     *The value of the field must be valid UTF-8 or validation will fail with a
-     *runtime error.
-     *If the field value doesn't match the pattern, an error message is generated.
      *
-     *```proto
-     *message MyBytes {
+     *
+     * <pre>
+     * `pattern` requires the field value to match the specified regular
+     * expression ([RE2 syntax](https://github.com/google/re2/wiki/Syntax)).
+     * The value of the field must be valid UTF-8 or validation will fail with a
+     * runtime error.
+     * If the field value doesn't match the pattern, an error message is generated.
+     *
+     * ```proto
+     * message MyBytes {
      * // value must match regex pattern "^[a-zA-Z0-9]+$".
      * optional bytes value = 1 [(buf.validate.field).bytes.pattern = "^[a-zA-Z0-9]+$"];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
-     * <code>optional string pattern = 4 [json_name = "pattern", (.buf.validate.priv.field) = { ... }</code>
+     * <code>
+     * optional string pattern = 4 [json_name = "pattern", (.buf.validate.priv.field) = { ... }
+     * </code>
+     *
      * @return Whether the pattern field is set.
      */
     public boolean hasPattern() {
       return ((bitField0_ & 0x00000010) != 0);
     }
+
     /**
-     * <pre>
-     *`pattern` requires the field value to match the specified regular
-     *expression ([RE2 syntax](https://github.com/google/re2/wiki/Syntax)).
-     *The value of the field must be valid UTF-8 or validation will fail with a
-     *runtime error.
-     *If the field value doesn't match the pattern, an error message is generated.
      *
-     *```proto
-     *message MyBytes {
+     *
+     * <pre>
+     * `pattern` requires the field value to match the specified regular
+     * expression ([RE2 syntax](https://github.com/google/re2/wiki/Syntax)).
+     * The value of the field must be valid UTF-8 or validation will fail with a
+     * runtime error.
+     * If the field value doesn't match the pattern, an error message is generated.
+     *
+     * ```proto
+     * message MyBytes {
      * // value must match regex pattern "^[a-zA-Z0-9]+$".
      * optional bytes value = 1 [(buf.validate.field).bytes.pattern = "^[a-zA-Z0-9]+$"];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
-     * <code>optional string pattern = 4 [json_name = "pattern", (.buf.validate.priv.field) = { ... }</code>
+     * <code>
+     * optional string pattern = 4 [json_name = "pattern", (.buf.validate.priv.field) = { ... }
+     * </code>
+     *
      * @return The pattern.
      */
     public java.lang.String getPattern() {
       java.lang.Object ref = pattern_;
       if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs =
-            (com.google.protobuf.ByteString) ref;
+        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         pattern_ = s;
         return s;
@@ -1929,83 +2157,100 @@ private static final long serialVersionUID = 0L;
         return (java.lang.String) ref;
       }
     }
+
     /**
-     * <pre>
-     *`pattern` requires the field value to match the specified regular
-     *expression ([RE2 syntax](https://github.com/google/re2/wiki/Syntax)).
-     *The value of the field must be valid UTF-8 or validation will fail with a
-     *runtime error.
-     *If the field value doesn't match the pattern, an error message is generated.
      *
-     *```proto
-     *message MyBytes {
+     *
+     * <pre>
+     * `pattern` requires the field value to match the specified regular
+     * expression ([RE2 syntax](https://github.com/google/re2/wiki/Syntax)).
+     * The value of the field must be valid UTF-8 or validation will fail with a
+     * runtime error.
+     * If the field value doesn't match the pattern, an error message is generated.
+     *
+     * ```proto
+     * message MyBytes {
      * // value must match regex pattern "^[a-zA-Z0-9]+$".
      * optional bytes value = 1 [(buf.validate.field).bytes.pattern = "^[a-zA-Z0-9]+$"];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
-     * <code>optional string pattern = 4 [json_name = "pattern", (.buf.validate.priv.field) = { ... }</code>
+     * <code>
+     * optional string pattern = 4 [json_name = "pattern", (.buf.validate.priv.field) = { ... }
+     * </code>
+     *
      * @return The bytes for pattern.
      */
-    public com.google.protobuf.ByteString
-        getPatternBytes() {
+    public com.google.protobuf.ByteString getPatternBytes() {
       java.lang.Object ref = pattern_;
       if (ref instanceof String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
+        com.google.protobuf.ByteString b =
+            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
         pattern_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
     }
+
     /**
-     * <pre>
-     *`pattern` requires the field value to match the specified regular
-     *expression ([RE2 syntax](https://github.com/google/re2/wiki/Syntax)).
-     *The value of the field must be valid UTF-8 or validation will fail with a
-     *runtime error.
-     *If the field value doesn't match the pattern, an error message is generated.
      *
-     *```proto
-     *message MyBytes {
+     *
+     * <pre>
+     * `pattern` requires the field value to match the specified regular
+     * expression ([RE2 syntax](https://github.com/google/re2/wiki/Syntax)).
+     * The value of the field must be valid UTF-8 or validation will fail with a
+     * runtime error.
+     * If the field value doesn't match the pattern, an error message is generated.
+     *
+     * ```proto
+     * message MyBytes {
      * // value must match regex pattern "^[a-zA-Z0-9]+$".
      * optional bytes value = 1 [(buf.validate.field).bytes.pattern = "^[a-zA-Z0-9]+$"];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
-     * <code>optional string pattern = 4 [json_name = "pattern", (.buf.validate.priv.field) = { ... }</code>
+     * <code>
+     * optional string pattern = 4 [json_name = "pattern", (.buf.validate.priv.field) = { ... }
+     * </code>
+     *
      * @param value The pattern to set.
      * @return This builder for chaining.
      */
-    public Builder setPattern(
-        java.lang.String value) {
-      if (value == null) { throw new NullPointerException(); }
+    public Builder setPattern(java.lang.String value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
       pattern_ = value;
       bitField0_ |= 0x00000010;
       onChanged();
       return this;
     }
+
     /**
-     * <pre>
-     *`pattern` requires the field value to match the specified regular
-     *expression ([RE2 syntax](https://github.com/google/re2/wiki/Syntax)).
-     *The value of the field must be valid UTF-8 or validation will fail with a
-     *runtime error.
-     *If the field value doesn't match the pattern, an error message is generated.
      *
-     *```proto
-     *message MyBytes {
+     *
+     * <pre>
+     * `pattern` requires the field value to match the specified regular
+     * expression ([RE2 syntax](https://github.com/google/re2/wiki/Syntax)).
+     * The value of the field must be valid UTF-8 or validation will fail with a
+     * runtime error.
+     * If the field value doesn't match the pattern, an error message is generated.
+     *
+     * ```proto
+     * message MyBytes {
      * // value must match regex pattern "^[a-zA-Z0-9]+$".
      * optional bytes value = 1 [(buf.validate.field).bytes.pattern = "^[a-zA-Z0-9]+$"];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
-     * <code>optional string pattern = 4 [json_name = "pattern", (.buf.validate.priv.field) = { ... }</code>
+     * <code>
+     * optional string pattern = 4 [json_name = "pattern", (.buf.validate.priv.field) = { ... }
+     * </code>
+     *
      * @return This builder for chaining.
      */
     public Builder clearPattern() {
@@ -2014,29 +2259,36 @@ private static final long serialVersionUID = 0L;
       onChanged();
       return this;
     }
+
     /**
-     * <pre>
-     *`pattern` requires the field value to match the specified regular
-     *expression ([RE2 syntax](https://github.com/google/re2/wiki/Syntax)).
-     *The value of the field must be valid UTF-8 or validation will fail with a
-     *runtime error.
-     *If the field value doesn't match the pattern, an error message is generated.
      *
-     *```proto
-     *message MyBytes {
+     *
+     * <pre>
+     * `pattern` requires the field value to match the specified regular
+     * expression ([RE2 syntax](https://github.com/google/re2/wiki/Syntax)).
+     * The value of the field must be valid UTF-8 or validation will fail with a
+     * runtime error.
+     * If the field value doesn't match the pattern, an error message is generated.
+     *
+     * ```proto
+     * message MyBytes {
      * // value must match regex pattern "^[a-zA-Z0-9]+$".
      * optional bytes value = 1 [(buf.validate.field).bytes.pattern = "^[a-zA-Z0-9]+$"];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
-     * <code>optional string pattern = 4 [json_name = "pattern", (.buf.validate.priv.field) = { ... }</code>
+     * <code>
+     * optional string pattern = 4 [json_name = "pattern", (.buf.validate.priv.field) = { ... }
+     * </code>
+     *
      * @param value The bytes for pattern to set.
      * @return This builder for chaining.
      */
-    public Builder setPatternBytes(
-        com.google.protobuf.ByteString value) {
-      if (value == null) { throw new NullPointerException(); }
+    public Builder setPatternBytes(com.google.protobuf.ByteString value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
       checkByteStringIsUtf8(value);
       pattern_ = value;
       bitField0_ |= 0x00000010;
@@ -2045,88 +2297,110 @@ private static final long serialVersionUID = 0L;
     }
 
     private com.google.protobuf.ByteString prefix_ = com.google.protobuf.ByteString.EMPTY;
+
     /**
-     * <pre>
-     *`prefix` requires the field value to have the specified bytes at the
-     *beginning of the string.
-     *If the field value doesn't meet the requirement, an error message is generated.
      *
-     *```proto
-     *message MyBytes {
+     *
+     * <pre>
+     * `prefix` requires the field value to have the specified bytes at the
+     * beginning of the string.
+     * If the field value doesn't meet the requirement, an error message is generated.
+     *
+     * ```proto
+     * message MyBytes {
      * // value does not have prefix &#92;x01&#92;x02
-     *optional bytes value = 1 [(buf.validate.field).bytes.prefix = "&#92;x01&#92;x02"];
-     *}
-     *```
+     * optional bytes value = 1 [(buf.validate.field).bytes.prefix = "&#92;x01&#92;x02"];
+     * }
+     * ```
      * </pre>
      *
-     * <code>optional bytes prefix = 5 [json_name = "prefix", (.buf.validate.priv.field) = { ... }</code>
+     * <code>optional bytes prefix = 5 [json_name = "prefix", (.buf.validate.priv.field) = { ... }
+     * </code>
+     *
      * @return Whether the prefix field is set.
      */
     @java.lang.Override
     public boolean hasPrefix() {
       return ((bitField0_ & 0x00000020) != 0);
     }
+
     /**
-     * <pre>
-     *`prefix` requires the field value to have the specified bytes at the
-     *beginning of the string.
-     *If the field value doesn't meet the requirement, an error message is generated.
      *
-     *```proto
-     *message MyBytes {
+     *
+     * <pre>
+     * `prefix` requires the field value to have the specified bytes at the
+     * beginning of the string.
+     * If the field value doesn't meet the requirement, an error message is generated.
+     *
+     * ```proto
+     * message MyBytes {
      * // value does not have prefix &#92;x01&#92;x02
-     *optional bytes value = 1 [(buf.validate.field).bytes.prefix = "&#92;x01&#92;x02"];
-     *}
-     *```
+     * optional bytes value = 1 [(buf.validate.field).bytes.prefix = "&#92;x01&#92;x02"];
+     * }
+     * ```
      * </pre>
      *
-     * <code>optional bytes prefix = 5 [json_name = "prefix", (.buf.validate.priv.field) = { ... }</code>
+     * <code>optional bytes prefix = 5 [json_name = "prefix", (.buf.validate.priv.field) = { ... }
+     * </code>
+     *
      * @return The prefix.
      */
     @java.lang.Override
     public com.google.protobuf.ByteString getPrefix() {
       return prefix_;
     }
+
     /**
-     * <pre>
-     *`prefix` requires the field value to have the specified bytes at the
-     *beginning of the string.
-     *If the field value doesn't meet the requirement, an error message is generated.
      *
-     *```proto
-     *message MyBytes {
+     *
+     * <pre>
+     * `prefix` requires the field value to have the specified bytes at the
+     * beginning of the string.
+     * If the field value doesn't meet the requirement, an error message is generated.
+     *
+     * ```proto
+     * message MyBytes {
      * // value does not have prefix &#92;x01&#92;x02
-     *optional bytes value = 1 [(buf.validate.field).bytes.prefix = "&#92;x01&#92;x02"];
-     *}
-     *```
+     * optional bytes value = 1 [(buf.validate.field).bytes.prefix = "&#92;x01&#92;x02"];
+     * }
+     * ```
      * </pre>
      *
-     * <code>optional bytes prefix = 5 [json_name = "prefix", (.buf.validate.priv.field) = { ... }</code>
+     * <code>optional bytes prefix = 5 [json_name = "prefix", (.buf.validate.priv.field) = { ... }
+     * </code>
+     *
      * @param value The prefix to set.
      * @return This builder for chaining.
      */
     public Builder setPrefix(com.google.protobuf.ByteString value) {
-      if (value == null) { throw new NullPointerException(); }
+      if (value == null) {
+        throw new NullPointerException();
+      }
       prefix_ = value;
       bitField0_ |= 0x00000020;
       onChanged();
       return this;
     }
+
     /**
-     * <pre>
-     *`prefix` requires the field value to have the specified bytes at the
-     *beginning of the string.
-     *If the field value doesn't meet the requirement, an error message is generated.
      *
-     *```proto
-     *message MyBytes {
+     *
+     * <pre>
+     * `prefix` requires the field value to have the specified bytes at the
+     * beginning of the string.
+     * If the field value doesn't meet the requirement, an error message is generated.
+     *
+     * ```proto
+     * message MyBytes {
      * // value does not have prefix &#92;x01&#92;x02
-     *optional bytes value = 1 [(buf.validate.field).bytes.prefix = "&#92;x01&#92;x02"];
-     *}
-     *```
+     * optional bytes value = 1 [(buf.validate.field).bytes.prefix = "&#92;x01&#92;x02"];
+     * }
+     * ```
      * </pre>
      *
-     * <code>optional bytes prefix = 5 [json_name = "prefix", (.buf.validate.priv.field) = { ... }</code>
+     * <code>optional bytes prefix = 5 [json_name = "prefix", (.buf.validate.priv.field) = { ... }
+     * </code>
+     *
      * @return This builder for chaining.
      */
     public Builder clearPrefix() {
@@ -2137,88 +2411,110 @@ private static final long serialVersionUID = 0L;
     }
 
     private com.google.protobuf.ByteString suffix_ = com.google.protobuf.ByteString.EMPTY;
+
     /**
-     * <pre>
-     *`suffix` requires the field value to have the specified bytes at the end
-     *of the string.
-     *If the field value doesn't meet the requirement, an error message is generated.
      *
-     *```proto
-     *message MyBytes {
+     *
+     * <pre>
+     * `suffix` requires the field value to have the specified bytes at the end
+     * of the string.
+     * If the field value doesn't meet the requirement, an error message is generated.
+     *
+     * ```proto
+     * message MyBytes {
      * // value does not have suffix &#92;x03&#92;x04
      * optional bytes value = 1 [(buf.validate.field).bytes.suffix = "&#92;x03&#92;x04"];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
-     * <code>optional bytes suffix = 6 [json_name = "suffix", (.buf.validate.priv.field) = { ... }</code>
+     * <code>optional bytes suffix = 6 [json_name = "suffix", (.buf.validate.priv.field) = { ... }
+     * </code>
+     *
      * @return Whether the suffix field is set.
      */
     @java.lang.Override
     public boolean hasSuffix() {
       return ((bitField0_ & 0x00000040) != 0);
     }
+
     /**
-     * <pre>
-     *`suffix` requires the field value to have the specified bytes at the end
-     *of the string.
-     *If the field value doesn't meet the requirement, an error message is generated.
      *
-     *```proto
-     *message MyBytes {
+     *
+     * <pre>
+     * `suffix` requires the field value to have the specified bytes at the end
+     * of the string.
+     * If the field value doesn't meet the requirement, an error message is generated.
+     *
+     * ```proto
+     * message MyBytes {
      * // value does not have suffix &#92;x03&#92;x04
      * optional bytes value = 1 [(buf.validate.field).bytes.suffix = "&#92;x03&#92;x04"];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
-     * <code>optional bytes suffix = 6 [json_name = "suffix", (.buf.validate.priv.field) = { ... }</code>
+     * <code>optional bytes suffix = 6 [json_name = "suffix", (.buf.validate.priv.field) = { ... }
+     * </code>
+     *
      * @return The suffix.
      */
     @java.lang.Override
     public com.google.protobuf.ByteString getSuffix() {
       return suffix_;
     }
+
     /**
-     * <pre>
-     *`suffix` requires the field value to have the specified bytes at the end
-     *of the string.
-     *If the field value doesn't meet the requirement, an error message is generated.
      *
-     *```proto
-     *message MyBytes {
+     *
+     * <pre>
+     * `suffix` requires the field value to have the specified bytes at the end
+     * of the string.
+     * If the field value doesn't meet the requirement, an error message is generated.
+     *
+     * ```proto
+     * message MyBytes {
      * // value does not have suffix &#92;x03&#92;x04
      * optional bytes value = 1 [(buf.validate.field).bytes.suffix = "&#92;x03&#92;x04"];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
-     * <code>optional bytes suffix = 6 [json_name = "suffix", (.buf.validate.priv.field) = { ... }</code>
+     * <code>optional bytes suffix = 6 [json_name = "suffix", (.buf.validate.priv.field) = { ... }
+     * </code>
+     *
      * @param value The suffix to set.
      * @return This builder for chaining.
      */
     public Builder setSuffix(com.google.protobuf.ByteString value) {
-      if (value == null) { throw new NullPointerException(); }
+      if (value == null) {
+        throw new NullPointerException();
+      }
       suffix_ = value;
       bitField0_ |= 0x00000040;
       onChanged();
       return this;
     }
+
     /**
-     * <pre>
-     *`suffix` requires the field value to have the specified bytes at the end
-     *of the string.
-     *If the field value doesn't meet the requirement, an error message is generated.
      *
-     *```proto
-     *message MyBytes {
+     *
+     * <pre>
+     * `suffix` requires the field value to have the specified bytes at the end
+     * of the string.
+     * If the field value doesn't meet the requirement, an error message is generated.
+     *
+     * ```proto
+     * message MyBytes {
      * // value does not have suffix &#92;x03&#92;x04
      * optional bytes value = 1 [(buf.validate.field).bytes.suffix = "&#92;x03&#92;x04"];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
-     * <code>optional bytes suffix = 6 [json_name = "suffix", (.buf.validate.priv.field) = { ... }</code>
+     * <code>optional bytes suffix = 6 [json_name = "suffix", (.buf.validate.priv.field) = { ... }
+     * </code>
+     *
      * @return This builder for chaining.
      */
     public Builder clearSuffix() {
@@ -2229,88 +2525,114 @@ private static final long serialVersionUID = 0L;
     }
 
     private com.google.protobuf.ByteString contains_ = com.google.protobuf.ByteString.EMPTY;
+
     /**
-     * <pre>
-     *`contains` requires the field value to have the specified bytes anywhere in
-     *the string.
-     *If the field value doesn't meet the requirement, an error message is generated.
      *
-     *```protobuf
-     *message MyBytes {
+     *
+     * <pre>
+     * `contains` requires the field value to have the specified bytes anywhere in
+     * the string.
+     * If the field value doesn't meet the requirement, an error message is generated.
+     *
+     * ```protobuf
+     * message MyBytes {
      * // value does not contain &#92;x02&#92;x03
      * optional bytes value = 1 [(buf.validate.field).bytes.contains = "&#92;x02&#92;x03"];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
-     * <code>optional bytes contains = 7 [json_name = "contains", (.buf.validate.priv.field) = { ... }</code>
+     * <code>
+     * optional bytes contains = 7 [json_name = "contains", (.buf.validate.priv.field) = { ... }
+     * </code>
+     *
      * @return Whether the contains field is set.
      */
     @java.lang.Override
     public boolean hasContains() {
       return ((bitField0_ & 0x00000080) != 0);
     }
+
     /**
-     * <pre>
-     *`contains` requires the field value to have the specified bytes anywhere in
-     *the string.
-     *If the field value doesn't meet the requirement, an error message is generated.
      *
-     *```protobuf
-     *message MyBytes {
+     *
+     * <pre>
+     * `contains` requires the field value to have the specified bytes anywhere in
+     * the string.
+     * If the field value doesn't meet the requirement, an error message is generated.
+     *
+     * ```protobuf
+     * message MyBytes {
      * // value does not contain &#92;x02&#92;x03
      * optional bytes value = 1 [(buf.validate.field).bytes.contains = "&#92;x02&#92;x03"];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
-     * <code>optional bytes contains = 7 [json_name = "contains", (.buf.validate.priv.field) = { ... }</code>
+     * <code>
+     * optional bytes contains = 7 [json_name = "contains", (.buf.validate.priv.field) = { ... }
+     * </code>
+     *
      * @return The contains.
      */
     @java.lang.Override
     public com.google.protobuf.ByteString getContains() {
       return contains_;
     }
+
     /**
-     * <pre>
-     *`contains` requires the field value to have the specified bytes anywhere in
-     *the string.
-     *If the field value doesn't meet the requirement, an error message is generated.
      *
-     *```protobuf
-     *message MyBytes {
+     *
+     * <pre>
+     * `contains` requires the field value to have the specified bytes anywhere in
+     * the string.
+     * If the field value doesn't meet the requirement, an error message is generated.
+     *
+     * ```protobuf
+     * message MyBytes {
      * // value does not contain &#92;x02&#92;x03
      * optional bytes value = 1 [(buf.validate.field).bytes.contains = "&#92;x02&#92;x03"];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
-     * <code>optional bytes contains = 7 [json_name = "contains", (.buf.validate.priv.field) = { ... }</code>
+     * <code>
+     * optional bytes contains = 7 [json_name = "contains", (.buf.validate.priv.field) = { ... }
+     * </code>
+     *
      * @param value The contains to set.
      * @return This builder for chaining.
      */
     public Builder setContains(com.google.protobuf.ByteString value) {
-      if (value == null) { throw new NullPointerException(); }
+      if (value == null) {
+        throw new NullPointerException();
+      }
       contains_ = value;
       bitField0_ |= 0x00000080;
       onChanged();
       return this;
     }
+
     /**
-     * <pre>
-     *`contains` requires the field value to have the specified bytes anywhere in
-     *the string.
-     *If the field value doesn't meet the requirement, an error message is generated.
      *
-     *```protobuf
-     *message MyBytes {
+     *
+     * <pre>
+     * `contains` requires the field value to have the specified bytes anywhere in
+     * the string.
+     * If the field value doesn't meet the requirement, an error message is generated.
+     *
+     * ```protobuf
+     * message MyBytes {
      * // value does not contain &#92;x02&#92;x03
      * optional bytes value = 1 [(buf.validate.field).bytes.contains = "&#92;x02&#92;x03"];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
-     * <code>optional bytes contains = 7 [json_name = "contains", (.buf.validate.priv.field) = { ... }</code>
+     * <code>
+     * optional bytes contains = 7 [json_name = "contains", (.buf.validate.priv.field) = { ... }
+     * </code>
+     *
      * @return This builder for chaining.
      */
     public Builder clearContains() {
@@ -2321,168 +2643,196 @@ private static final long serialVersionUID = 0L;
     }
 
     private java.util.List<com.google.protobuf.ByteString> in_ = java.util.Collections.emptyList();
+
     private void ensureInIsMutable() {
       if (!((bitField0_ & 0x00000100) != 0)) {
         in_ = new java.util.ArrayList<com.google.protobuf.ByteString>(in_);
         bitField0_ |= 0x00000100;
       }
     }
+
     /**
-     * <pre>
-     *`in` requires the field value to be equal to one of the specified
-     *values. If the field value doesn't match any of the specified values, an
-     *error message is generated.
      *
-     *```protobuf
-     *message MyBytes {
+     *
+     * <pre>
+     * `in` requires the field value to be equal to one of the specified
+     * values. If the field value doesn't match any of the specified values, an
+     * error message is generated.
+     *
+     * ```protobuf
+     * message MyBytes {
      * // value must in ["&#92;x01&#92;x02", "&#92;x02&#92;x03", "&#92;x03&#92;x04"]
      * optional bytes value = 1 [(buf.validate.field).bytes.in = {"&#92;x01&#92;x02", "&#92;x02&#92;x03", "&#92;x03&#92;x04"}];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>repeated bytes in = 8 [json_name = "in", (.buf.validate.priv.field) = { ... }</code>
+     *
      * @return A list containing the in.
      */
-    public java.util.List<com.google.protobuf.ByteString>
-        getInList() {
-      return ((bitField0_ & 0x00000100) != 0) ?
-               java.util.Collections.unmodifiableList(in_) : in_;
+    public java.util.List<com.google.protobuf.ByteString> getInList() {
+      return ((bitField0_ & 0x00000100) != 0) ? java.util.Collections.unmodifiableList(in_) : in_;
     }
+
     /**
-     * <pre>
-     *`in` requires the field value to be equal to one of the specified
-     *values. If the field value doesn't match any of the specified values, an
-     *error message is generated.
      *
-     *```protobuf
-     *message MyBytes {
+     *
+     * <pre>
+     * `in` requires the field value to be equal to one of the specified
+     * values. If the field value doesn't match any of the specified values, an
+     * error message is generated.
+     *
+     * ```protobuf
+     * message MyBytes {
      * // value must in ["&#92;x01&#92;x02", "&#92;x02&#92;x03", "&#92;x03&#92;x04"]
      * optional bytes value = 1 [(buf.validate.field).bytes.in = {"&#92;x01&#92;x02", "&#92;x02&#92;x03", "&#92;x03&#92;x04"}];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>repeated bytes in = 8 [json_name = "in", (.buf.validate.priv.field) = { ... }</code>
+     *
      * @return The count of in.
      */
     public int getInCount() {
       return in_.size();
     }
+
     /**
-     * <pre>
-     *`in` requires the field value to be equal to one of the specified
-     *values. If the field value doesn't match any of the specified values, an
-     *error message is generated.
      *
-     *```protobuf
-     *message MyBytes {
+     *
+     * <pre>
+     * `in` requires the field value to be equal to one of the specified
+     * values. If the field value doesn't match any of the specified values, an
+     * error message is generated.
+     *
+     * ```protobuf
+     * message MyBytes {
      * // value must in ["&#92;x01&#92;x02", "&#92;x02&#92;x03", "&#92;x03&#92;x04"]
      * optional bytes value = 1 [(buf.validate.field).bytes.in = {"&#92;x01&#92;x02", "&#92;x02&#92;x03", "&#92;x03&#92;x04"}];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>repeated bytes in = 8 [json_name = "in", (.buf.validate.priv.field) = { ... }</code>
+     *
      * @param index The index of the element to return.
      * @return The in at the given index.
      */
     public com.google.protobuf.ByteString getIn(int index) {
       return in_.get(index);
     }
+
     /**
-     * <pre>
-     *`in` requires the field value to be equal to one of the specified
-     *values. If the field value doesn't match any of the specified values, an
-     *error message is generated.
      *
-     *```protobuf
-     *message MyBytes {
+     *
+     * <pre>
+     * `in` requires the field value to be equal to one of the specified
+     * values. If the field value doesn't match any of the specified values, an
+     * error message is generated.
+     *
+     * ```protobuf
+     * message MyBytes {
      * // value must in ["&#92;x01&#92;x02", "&#92;x02&#92;x03", "&#92;x03&#92;x04"]
      * optional bytes value = 1 [(buf.validate.field).bytes.in = {"&#92;x01&#92;x02", "&#92;x02&#92;x03", "&#92;x03&#92;x04"}];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>repeated bytes in = 8 [json_name = "in", (.buf.validate.priv.field) = { ... }</code>
+     *
      * @param index The index to set the value at.
      * @param value The in to set.
      * @return This builder for chaining.
      */
-    public Builder setIn(
-        int index, com.google.protobuf.ByteString value) {
-      if (value == null) { throw new NullPointerException(); }
+    public Builder setIn(int index, com.google.protobuf.ByteString value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
       ensureInIsMutable();
       in_.set(index, value);
       onChanged();
       return this;
     }
+
     /**
-     * <pre>
-     *`in` requires the field value to be equal to one of the specified
-     *values. If the field value doesn't match any of the specified values, an
-     *error message is generated.
      *
-     *```protobuf
-     *message MyBytes {
+     *
+     * <pre>
+     * `in` requires the field value to be equal to one of the specified
+     * values. If the field value doesn't match any of the specified values, an
+     * error message is generated.
+     *
+     * ```protobuf
+     * message MyBytes {
      * // value must in ["&#92;x01&#92;x02", "&#92;x02&#92;x03", "&#92;x03&#92;x04"]
      * optional bytes value = 1 [(buf.validate.field).bytes.in = {"&#92;x01&#92;x02", "&#92;x02&#92;x03", "&#92;x03&#92;x04"}];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>repeated bytes in = 8 [json_name = "in", (.buf.validate.priv.field) = { ... }</code>
+     *
      * @param value The in to add.
      * @return This builder for chaining.
      */
     public Builder addIn(com.google.protobuf.ByteString value) {
-      if (value == null) { throw new NullPointerException(); }
+      if (value == null) {
+        throw new NullPointerException();
+      }
       ensureInIsMutable();
       in_.add(value);
       onChanged();
       return this;
     }
+
     /**
-     * <pre>
-     *`in` requires the field value to be equal to one of the specified
-     *values. If the field value doesn't match any of the specified values, an
-     *error message is generated.
      *
-     *```protobuf
-     *message MyBytes {
+     *
+     * <pre>
+     * `in` requires the field value to be equal to one of the specified
+     * values. If the field value doesn't match any of the specified values, an
+     * error message is generated.
+     *
+     * ```protobuf
+     * message MyBytes {
      * // value must in ["&#92;x01&#92;x02", "&#92;x02&#92;x03", "&#92;x03&#92;x04"]
      * optional bytes value = 1 [(buf.validate.field).bytes.in = {"&#92;x01&#92;x02", "&#92;x02&#92;x03", "&#92;x03&#92;x04"}];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>repeated bytes in = 8 [json_name = "in", (.buf.validate.priv.field) = { ... }</code>
+     *
      * @param values The in to add.
      * @return This builder for chaining.
      */
-    public Builder addAllIn(
-        java.lang.Iterable<? extends com.google.protobuf.ByteString> values) {
+    public Builder addAllIn(java.lang.Iterable<? extends com.google.protobuf.ByteString> values) {
       ensureInIsMutable();
-      com.google.protobuf.AbstractMessageLite.Builder.addAll(
-          values, in_);
+      com.google.protobuf.AbstractMessageLite.Builder.addAll(values, in_);
       onChanged();
       return this;
     }
+
     /**
-     * <pre>
-     *`in` requires the field value to be equal to one of the specified
-     *values. If the field value doesn't match any of the specified values, an
-     *error message is generated.
      *
-     *```protobuf
-     *message MyBytes {
+     *
+     * <pre>
+     * `in` requires the field value to be equal to one of the specified
+     * values. If the field value doesn't match any of the specified values, an
+     * error message is generated.
+     *
+     * ```protobuf
+     * message MyBytes {
      * // value must in ["&#92;x01&#92;x02", "&#92;x02&#92;x03", "&#92;x03&#92;x04"]
      * optional bytes value = 1 [(buf.validate.field).bytes.in = {"&#92;x01&#92;x02", "&#92;x02&#92;x03", "&#92;x03&#92;x04"}];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>repeated bytes in = 8 [json_name = "in", (.buf.validate.priv.field) = { ... }</code>
+     *
      * @return This builder for chaining.
      */
     public Builder clearIn() {
@@ -2492,176 +2842,215 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private java.util.List<com.google.protobuf.ByteString> notIn_ = java.util.Collections.emptyList();
+    private java.util.List<com.google.protobuf.ByteString> notIn_ =
+        java.util.Collections.emptyList();
+
     private void ensureNotInIsMutable() {
       if (!((bitField0_ & 0x00000200) != 0)) {
         notIn_ = new java.util.ArrayList<com.google.protobuf.ByteString>(notIn_);
         bitField0_ |= 0x00000200;
       }
     }
+
     /**
-     * <pre>
-     *`not_in` requires the field value to be not equal to any of the specified
-     *values.
-     *If the field value matches any of the specified values, an error message is
-     *generated.
      *
-     *```proto
-     *message MyBytes {
+     *
+     * <pre>
+     * `not_in` requires the field value to be not equal to any of the specified
+     * values.
+     * If the field value matches any of the specified values, an error message is
+     * generated.
+     *
+     * ```proto
+     * message MyBytes {
      * // value must not in ["&#92;x01&#92;x02", "&#92;x02&#92;x03", "&#92;x03&#92;x04"]
      * optional bytes value = 1 [(buf.validate.field).bytes.not_in = {"&#92;x01&#92;x02", "&#92;x02&#92;x03", "&#92;x03&#92;x04"}];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
-     * <code>repeated bytes not_in = 9 [json_name = "notIn", (.buf.validate.priv.field) = { ... }</code>
+     * <code>repeated bytes not_in = 9 [json_name = "notIn", (.buf.validate.priv.field) = { ... }
+     * </code>
+     *
      * @return A list containing the notIn.
      */
-    public java.util.List<com.google.protobuf.ByteString>
-        getNotInList() {
-      return ((bitField0_ & 0x00000200) != 0) ?
-               java.util.Collections.unmodifiableList(notIn_) : notIn_;
+    public java.util.List<com.google.protobuf.ByteString> getNotInList() {
+      return ((bitField0_ & 0x00000200) != 0)
+          ? java.util.Collections.unmodifiableList(notIn_)
+          : notIn_;
     }
+
     /**
-     * <pre>
-     *`not_in` requires the field value to be not equal to any of the specified
-     *values.
-     *If the field value matches any of the specified values, an error message is
-     *generated.
      *
-     *```proto
-     *message MyBytes {
+     *
+     * <pre>
+     * `not_in` requires the field value to be not equal to any of the specified
+     * values.
+     * If the field value matches any of the specified values, an error message is
+     * generated.
+     *
+     * ```proto
+     * message MyBytes {
      * // value must not in ["&#92;x01&#92;x02", "&#92;x02&#92;x03", "&#92;x03&#92;x04"]
      * optional bytes value = 1 [(buf.validate.field).bytes.not_in = {"&#92;x01&#92;x02", "&#92;x02&#92;x03", "&#92;x03&#92;x04"}];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
-     * <code>repeated bytes not_in = 9 [json_name = "notIn", (.buf.validate.priv.field) = { ... }</code>
+     * <code>repeated bytes not_in = 9 [json_name = "notIn", (.buf.validate.priv.field) = { ... }
+     * </code>
+     *
      * @return The count of notIn.
      */
     public int getNotInCount() {
       return notIn_.size();
     }
+
     /**
-     * <pre>
-     *`not_in` requires the field value to be not equal to any of the specified
-     *values.
-     *If the field value matches any of the specified values, an error message is
-     *generated.
      *
-     *```proto
-     *message MyBytes {
+     *
+     * <pre>
+     * `not_in` requires the field value to be not equal to any of the specified
+     * values.
+     * If the field value matches any of the specified values, an error message is
+     * generated.
+     *
+     * ```proto
+     * message MyBytes {
      * // value must not in ["&#92;x01&#92;x02", "&#92;x02&#92;x03", "&#92;x03&#92;x04"]
      * optional bytes value = 1 [(buf.validate.field).bytes.not_in = {"&#92;x01&#92;x02", "&#92;x02&#92;x03", "&#92;x03&#92;x04"}];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
-     * <code>repeated bytes not_in = 9 [json_name = "notIn", (.buf.validate.priv.field) = { ... }</code>
+     * <code>repeated bytes not_in = 9 [json_name = "notIn", (.buf.validate.priv.field) = { ... }
+     * </code>
+     *
      * @param index The index of the element to return.
      * @return The notIn at the given index.
      */
     public com.google.protobuf.ByteString getNotIn(int index) {
       return notIn_.get(index);
     }
+
     /**
-     * <pre>
-     *`not_in` requires the field value to be not equal to any of the specified
-     *values.
-     *If the field value matches any of the specified values, an error message is
-     *generated.
      *
-     *```proto
-     *message MyBytes {
+     *
+     * <pre>
+     * `not_in` requires the field value to be not equal to any of the specified
+     * values.
+     * If the field value matches any of the specified values, an error message is
+     * generated.
+     *
+     * ```proto
+     * message MyBytes {
      * // value must not in ["&#92;x01&#92;x02", "&#92;x02&#92;x03", "&#92;x03&#92;x04"]
      * optional bytes value = 1 [(buf.validate.field).bytes.not_in = {"&#92;x01&#92;x02", "&#92;x02&#92;x03", "&#92;x03&#92;x04"}];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
-     * <code>repeated bytes not_in = 9 [json_name = "notIn", (.buf.validate.priv.field) = { ... }</code>
+     * <code>repeated bytes not_in = 9 [json_name = "notIn", (.buf.validate.priv.field) = { ... }
+     * </code>
+     *
      * @param index The index to set the value at.
      * @param value The notIn to set.
      * @return This builder for chaining.
      */
-    public Builder setNotIn(
-        int index, com.google.protobuf.ByteString value) {
-      if (value == null) { throw new NullPointerException(); }
+    public Builder setNotIn(int index, com.google.protobuf.ByteString value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
       ensureNotInIsMutable();
       notIn_.set(index, value);
       onChanged();
       return this;
     }
+
     /**
-     * <pre>
-     *`not_in` requires the field value to be not equal to any of the specified
-     *values.
-     *If the field value matches any of the specified values, an error message is
-     *generated.
      *
-     *```proto
-     *message MyBytes {
+     *
+     * <pre>
+     * `not_in` requires the field value to be not equal to any of the specified
+     * values.
+     * If the field value matches any of the specified values, an error message is
+     * generated.
+     *
+     * ```proto
+     * message MyBytes {
      * // value must not in ["&#92;x01&#92;x02", "&#92;x02&#92;x03", "&#92;x03&#92;x04"]
      * optional bytes value = 1 [(buf.validate.field).bytes.not_in = {"&#92;x01&#92;x02", "&#92;x02&#92;x03", "&#92;x03&#92;x04"}];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
-     * <code>repeated bytes not_in = 9 [json_name = "notIn", (.buf.validate.priv.field) = { ... }</code>
+     * <code>repeated bytes not_in = 9 [json_name = "notIn", (.buf.validate.priv.field) = { ... }
+     * </code>
+     *
      * @param value The notIn to add.
      * @return This builder for chaining.
      */
     public Builder addNotIn(com.google.protobuf.ByteString value) {
-      if (value == null) { throw new NullPointerException(); }
+      if (value == null) {
+        throw new NullPointerException();
+      }
       ensureNotInIsMutable();
       notIn_.add(value);
       onChanged();
       return this;
     }
+
     /**
-     * <pre>
-     *`not_in` requires the field value to be not equal to any of the specified
-     *values.
-     *If the field value matches any of the specified values, an error message is
-     *generated.
      *
-     *```proto
-     *message MyBytes {
+     *
+     * <pre>
+     * `not_in` requires the field value to be not equal to any of the specified
+     * values.
+     * If the field value matches any of the specified values, an error message is
+     * generated.
+     *
+     * ```proto
+     * message MyBytes {
      * // value must not in ["&#92;x01&#92;x02", "&#92;x02&#92;x03", "&#92;x03&#92;x04"]
      * optional bytes value = 1 [(buf.validate.field).bytes.not_in = {"&#92;x01&#92;x02", "&#92;x02&#92;x03", "&#92;x03&#92;x04"}];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
-     * <code>repeated bytes not_in = 9 [json_name = "notIn", (.buf.validate.priv.field) = { ... }</code>
+     * <code>repeated bytes not_in = 9 [json_name = "notIn", (.buf.validate.priv.field) = { ... }
+     * </code>
+     *
      * @param values The notIn to add.
      * @return This builder for chaining.
      */
     public Builder addAllNotIn(
         java.lang.Iterable<? extends com.google.protobuf.ByteString> values) {
       ensureNotInIsMutable();
-      com.google.protobuf.AbstractMessageLite.Builder.addAll(
-          values, notIn_);
+      com.google.protobuf.AbstractMessageLite.Builder.addAll(values, notIn_);
       onChanged();
       return this;
     }
+
     /**
-     * <pre>
-     *`not_in` requires the field value to be not equal to any of the specified
-     *values.
-     *If the field value matches any of the specified values, an error message is
-     *generated.
      *
-     *```proto
-     *message MyBytes {
+     *
+     * <pre>
+     * `not_in` requires the field value to be not equal to any of the specified
+     * values.
+     * If the field value matches any of the specified values, an error message is
+     * generated.
+     *
+     * ```proto
+     * message MyBytes {
      * // value must not in ["&#92;x01&#92;x02", "&#92;x02&#92;x03", "&#92;x03&#92;x04"]
      * optional bytes value = 1 [(buf.validate.field).bytes.not_in = {"&#92;x01&#92;x02", "&#92;x02&#92;x03", "&#92;x03&#92;x04"}];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
-     * <code>repeated bytes not_in = 9 [json_name = "notIn", (.buf.validate.priv.field) = { ... }</code>
+     * <code>repeated bytes not_in = 9 [json_name = "notIn", (.buf.validate.priv.field) = { ... }
+     * </code>
+     *
      * @return This builder for chaining.
      */
     public Builder clearNotIn() {
@@ -2672,38 +3061,45 @@ private static final long serialVersionUID = 0L;
     }
 
     /**
-     * <pre>
-     *`ip` ensures that the field `value` is a valid IP address (v4 or v6) in byte format.
-     *If the field value doesn't meet this constraint, an error message is generated.
      *
-     *```proto
-     *message MyBytes {
+     *
+     * <pre>
+     * `ip` ensures that the field `value` is a valid IP address (v4 or v6) in byte format.
+     * If the field value doesn't meet this constraint, an error message is generated.
+     *
+     * ```proto
+     * message MyBytes {
      * // value must be a valid IP address
      * optional bytes value = 1 [(buf.validate.field).bytes.ip = true];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>bool ip = 10 [json_name = "ip", (.buf.validate.priv.field) = { ... }</code>
+     *
      * @return Whether the ip field is set.
      */
     public boolean hasIp() {
       return wellKnownCase_ == 10;
     }
+
     /**
-     * <pre>
-     *`ip` ensures that the field `value` is a valid IP address (v4 or v6) in byte format.
-     *If the field value doesn't meet this constraint, an error message is generated.
      *
-     *```proto
-     *message MyBytes {
+     *
+     * <pre>
+     * `ip` ensures that the field `value` is a valid IP address (v4 or v6) in byte format.
+     * If the field value doesn't meet this constraint, an error message is generated.
+     *
+     * ```proto
+     * message MyBytes {
      * // value must be a valid IP address
      * optional bytes value = 1 [(buf.validate.field).bytes.ip = true];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>bool ip = 10 [json_name = "ip", (.buf.validate.priv.field) = { ... }</code>
+     *
      * @return The ip.
      */
     public boolean getIp() {
@@ -2712,20 +3108,24 @@ private static final long serialVersionUID = 0L;
       }
       return false;
     }
+
     /**
-     * <pre>
-     *`ip` ensures that the field `value` is a valid IP address (v4 or v6) in byte format.
-     *If the field value doesn't meet this constraint, an error message is generated.
      *
-     *```proto
-     *message MyBytes {
+     *
+     * <pre>
+     * `ip` ensures that the field `value` is a valid IP address (v4 or v6) in byte format.
+     * If the field value doesn't meet this constraint, an error message is generated.
+     *
+     * ```proto
+     * message MyBytes {
      * // value must be a valid IP address
      * optional bytes value = 1 [(buf.validate.field).bytes.ip = true];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>bool ip = 10 [json_name = "ip", (.buf.validate.priv.field) = { ... }</code>
+     *
      * @param value The ip to set.
      * @return This builder for chaining.
      */
@@ -2736,20 +3136,24 @@ private static final long serialVersionUID = 0L;
       onChanged();
       return this;
     }
+
     /**
-     * <pre>
-     *`ip` ensures that the field `value` is a valid IP address (v4 or v6) in byte format.
-     *If the field value doesn't meet this constraint, an error message is generated.
      *
-     *```proto
-     *message MyBytes {
+     *
+     * <pre>
+     * `ip` ensures that the field `value` is a valid IP address (v4 or v6) in byte format.
+     * If the field value doesn't meet this constraint, an error message is generated.
+     *
+     * ```proto
+     * message MyBytes {
      * // value must be a valid IP address
      * optional bytes value = 1 [(buf.validate.field).bytes.ip = true];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>bool ip = 10 [json_name = "ip", (.buf.validate.priv.field) = { ... }</code>
+     *
      * @return This builder for chaining.
      */
     public Builder clearIp() {
@@ -2762,38 +3166,45 @@ private static final long serialVersionUID = 0L;
     }
 
     /**
-     * <pre>
-     *`ipv4` ensures that the field `value` is a valid IPv4 address in byte format.
-     *If the field value doesn't meet this constraint, an error message is generated.
      *
-     *```proto
-     *message MyBytes {
+     *
+     * <pre>
+     * `ipv4` ensures that the field `value` is a valid IPv4 address in byte format.
+     * If the field value doesn't meet this constraint, an error message is generated.
+     *
+     * ```proto
+     * message MyBytes {
      * // value must be a valid IPv4 address
      * optional bytes value = 1 [(buf.validate.field).bytes.ipv4 = true];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>bool ipv4 = 11 [json_name = "ipv4", (.buf.validate.priv.field) = { ... }</code>
+     *
      * @return Whether the ipv4 field is set.
      */
     public boolean hasIpv4() {
       return wellKnownCase_ == 11;
     }
+
     /**
-     * <pre>
-     *`ipv4` ensures that the field `value` is a valid IPv4 address in byte format.
-     *If the field value doesn't meet this constraint, an error message is generated.
      *
-     *```proto
-     *message MyBytes {
+     *
+     * <pre>
+     * `ipv4` ensures that the field `value` is a valid IPv4 address in byte format.
+     * If the field value doesn't meet this constraint, an error message is generated.
+     *
+     * ```proto
+     * message MyBytes {
      * // value must be a valid IPv4 address
      * optional bytes value = 1 [(buf.validate.field).bytes.ipv4 = true];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>bool ipv4 = 11 [json_name = "ipv4", (.buf.validate.priv.field) = { ... }</code>
+     *
      * @return The ipv4.
      */
     public boolean getIpv4() {
@@ -2802,20 +3213,24 @@ private static final long serialVersionUID = 0L;
       }
       return false;
     }
+
     /**
-     * <pre>
-     *`ipv4` ensures that the field `value` is a valid IPv4 address in byte format.
-     *If the field value doesn't meet this constraint, an error message is generated.
      *
-     *```proto
-     *message MyBytes {
+     *
+     * <pre>
+     * `ipv4` ensures that the field `value` is a valid IPv4 address in byte format.
+     * If the field value doesn't meet this constraint, an error message is generated.
+     *
+     * ```proto
+     * message MyBytes {
      * // value must be a valid IPv4 address
      * optional bytes value = 1 [(buf.validate.field).bytes.ipv4 = true];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>bool ipv4 = 11 [json_name = "ipv4", (.buf.validate.priv.field) = { ... }</code>
+     *
      * @param value The ipv4 to set.
      * @return This builder for chaining.
      */
@@ -2826,20 +3241,24 @@ private static final long serialVersionUID = 0L;
       onChanged();
       return this;
     }
+
     /**
-     * <pre>
-     *`ipv4` ensures that the field `value` is a valid IPv4 address in byte format.
-     *If the field value doesn't meet this constraint, an error message is generated.
      *
-     *```proto
-     *message MyBytes {
+     *
+     * <pre>
+     * `ipv4` ensures that the field `value` is a valid IPv4 address in byte format.
+     * If the field value doesn't meet this constraint, an error message is generated.
+     *
+     * ```proto
+     * message MyBytes {
      * // value must be a valid IPv4 address
      * optional bytes value = 1 [(buf.validate.field).bytes.ipv4 = true];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>bool ipv4 = 11 [json_name = "ipv4", (.buf.validate.priv.field) = { ... }</code>
+     *
      * @return This builder for chaining.
      */
     public Builder clearIpv4() {
@@ -2852,36 +3271,43 @@ private static final long serialVersionUID = 0L;
     }
 
     /**
+     *
+     *
      * <pre>
-     *`ipv6` ensures that the field `value` is a valid IPv6 address in byte format.
-     *If the field value doesn't meet this constraint, an error message is generated.
-     *```proto
-     *message MyBytes {
+     * `ipv6` ensures that the field `value` is a valid IPv6 address in byte format.
+     * If the field value doesn't meet this constraint, an error message is generated.
+     * ```proto
+     * message MyBytes {
      * // value must be a valid IPv6 address
      * optional bytes value = 1 [(buf.validate.field).bytes.ipv6 = true];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>bool ipv6 = 12 [json_name = "ipv6", (.buf.validate.priv.field) = { ... }</code>
+     *
      * @return Whether the ipv6 field is set.
      */
     public boolean hasIpv6() {
       return wellKnownCase_ == 12;
     }
+
     /**
+     *
+     *
      * <pre>
-     *`ipv6` ensures that the field `value` is a valid IPv6 address in byte format.
-     *If the field value doesn't meet this constraint, an error message is generated.
-     *```proto
-     *message MyBytes {
+     * `ipv6` ensures that the field `value` is a valid IPv6 address in byte format.
+     * If the field value doesn't meet this constraint, an error message is generated.
+     * ```proto
+     * message MyBytes {
      * // value must be a valid IPv6 address
      * optional bytes value = 1 [(buf.validate.field).bytes.ipv6 = true];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>bool ipv6 = 12 [json_name = "ipv6", (.buf.validate.priv.field) = { ... }</code>
+     *
      * @return The ipv6.
      */
     public boolean getIpv6() {
@@ -2890,19 +3316,23 @@ private static final long serialVersionUID = 0L;
       }
       return false;
     }
+
     /**
+     *
+     *
      * <pre>
-     *`ipv6` ensures that the field `value` is a valid IPv6 address in byte format.
-     *If the field value doesn't meet this constraint, an error message is generated.
-     *```proto
-     *message MyBytes {
+     * `ipv6` ensures that the field `value` is a valid IPv6 address in byte format.
+     * If the field value doesn't meet this constraint, an error message is generated.
+     * ```proto
+     * message MyBytes {
      * // value must be a valid IPv6 address
      * optional bytes value = 1 [(buf.validate.field).bytes.ipv6 = true];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>bool ipv6 = 12 [json_name = "ipv6", (.buf.validate.priv.field) = { ... }</code>
+     *
      * @param value The ipv6 to set.
      * @return This builder for chaining.
      */
@@ -2913,19 +3343,23 @@ private static final long serialVersionUID = 0L;
       onChanged();
       return this;
     }
+
     /**
+     *
+     *
      * <pre>
-     *`ipv6` ensures that the field `value` is a valid IPv6 address in byte format.
-     *If the field value doesn't meet this constraint, an error message is generated.
-     *```proto
-     *message MyBytes {
+     * `ipv6` ensures that the field `value` is a valid IPv6 address in byte format.
+     * If the field value doesn't meet this constraint, an error message is generated.
+     * ```proto
+     * message MyBytes {
      * // value must be a valid IPv6 address
      * optional bytes value = 1 [(buf.validate.field).bytes.ipv6 = true];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>bool ipv6 = 12 [json_name = "ipv6", (.buf.validate.priv.field) = { ... }</code>
+     *
      * @return This builder for chaining.
      */
     public Builder clearIpv6() {
@@ -2936,9 +3370,9 @@ private static final long serialVersionUID = 0L;
       }
       return this;
     }
+
     @java.lang.Override
-    public final Builder setUnknownFields(
-        final com.google.protobuf.UnknownFieldSet unknownFields) {
+    public final Builder setUnknownFields(final com.google.protobuf.UnknownFieldSet unknownFields) {
       return super.setUnknownFields(unknownFields);
     }
 
@@ -2948,12 +3382,12 @@ private static final long serialVersionUID = 0L;
       return super.mergeUnknownFields(unknownFields);
     }
 
-
     // @@protoc_insertion_point(builder_scope:buf.validate.BytesRules)
   }
 
   // @@protoc_insertion_point(class_scope:buf.validate.BytesRules)
   private static final build.buf.validate.BytesRules DEFAULT_INSTANCE;
+
   static {
     DEFAULT_INSTANCE = new build.buf.validate.BytesRules();
   }
@@ -2962,27 +3396,27 @@ private static final long serialVersionUID = 0L;
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<BytesRules>
-      PARSER = new com.google.protobuf.AbstractParser<BytesRules>() {
-    @java.lang.Override
-    public BytesRules parsePartialFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      Builder builder = newBuilder();
-      try {
-        builder.mergeFrom(input, extensionRegistry);
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(builder.buildPartial());
-      } catch (com.google.protobuf.UninitializedMessageException e) {
-        throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(e)
-            .setUnfinishedMessage(builder.buildPartial());
-      }
-      return builder.buildPartial();
-    }
-  };
+  private static final com.google.protobuf.Parser<BytesRules> PARSER =
+      new com.google.protobuf.AbstractParser<BytesRules>() {
+        @java.lang.Override
+        public BytesRules parsePartialFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+          Builder builder = newBuilder();
+          try {
+            builder.mergeFrom(input, extensionRegistry);
+          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+            throw e.setUnfinishedMessage(builder.buildPartial());
+          } catch (com.google.protobuf.UninitializedMessageException e) {
+            throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+          } catch (java.io.IOException e) {
+            throw new com.google.protobuf.InvalidProtocolBufferException(e)
+                .setUnfinishedMessage(builder.buildPartial());
+          }
+          return builder.buildPartial();
+        }
+      };
 
   public static com.google.protobuf.Parser<BytesRules> parser() {
     return PARSER;
@@ -2997,6 +3431,4 @@ private static final long serialVersionUID = 0L;
   public build.buf.validate.BytesRules getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
-
 }
-

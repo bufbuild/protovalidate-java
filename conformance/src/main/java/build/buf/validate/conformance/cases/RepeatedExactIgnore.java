@@ -3,72 +3,81 @@
 
 package build.buf.validate.conformance.cases;
 
-/**
- * Protobuf type {@code buf.validate.conformance.cases.RepeatedExactIgnore}
- */
-public final class RepeatedExactIgnore extends
-    com.google.protobuf.GeneratedMessageV3 implements
+/** Protobuf type {@code buf.validate.conformance.cases.RepeatedExactIgnore} */
+public final class RepeatedExactIgnore extends com.google.protobuf.GeneratedMessageV3
+    implements
     // @@protoc_insertion_point(message_implements:buf.validate.conformance.cases.RepeatedExactIgnore)
     RepeatedExactIgnoreOrBuilder {
-private static final long serialVersionUID = 0L;
+  private static final long serialVersionUID = 0L;
+
   // Use RepeatedExactIgnore.newBuilder() to construct.
   private RepeatedExactIgnore(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
+
   private RepeatedExactIgnore() {
     val_ = emptyIntList();
   }
 
   @java.lang.Override
   @SuppressWarnings({"unused"})
-  protected java.lang.Object newInstance(
-      UnusedPrivateParameter unused) {
+  protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
     return new RepeatedExactIgnore();
   }
 
-  public static final com.google.protobuf.Descriptors.Descriptor
-      getDescriptor() {
-    return build.buf.validate.conformance.cases.RepeatedProto.internal_static_buf_validate_conformance_cases_RepeatedExactIgnore_descriptor;
+  public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+    return build.buf.validate.conformance.cases.RepeatedProto
+        .internal_static_buf_validate_conformance_cases_RepeatedExactIgnore_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return build.buf.validate.conformance.cases.RepeatedProto.internal_static_buf_validate_conformance_cases_RepeatedExactIgnore_fieldAccessorTable
+    return build.buf.validate.conformance.cases.RepeatedProto
+        .internal_static_buf_validate_conformance_cases_RepeatedExactIgnore_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            build.buf.validate.conformance.cases.RepeatedExactIgnore.class, build.buf.validate.conformance.cases.RepeatedExactIgnore.Builder.class);
+            build.buf.validate.conformance.cases.RepeatedExactIgnore.class,
+            build.buf.validate.conformance.cases.RepeatedExactIgnore.Builder.class);
   }
 
   public static final int VAL_FIELD_NUMBER = 1;
+
   @SuppressWarnings("serial")
   private com.google.protobuf.Internal.IntList val_;
+
   /**
    * <code>repeated uint32 val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
+   *
    * @return A list containing the val.
    */
   @java.lang.Override
-  public java.util.List<java.lang.Integer>
-      getValList() {
+  public java.util.List<java.lang.Integer> getValList() {
     return val_;
   }
+
   /**
    * <code>repeated uint32 val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
+   *
    * @return The count of val.
    */
   public int getValCount() {
     return val_.size();
   }
+
   /**
    * <code>repeated uint32 val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
+   *
    * @param index The index of the element to return.
    * @return The val at the given index.
    */
   public int getVal(int index) {
     return val_.getInt(index);
   }
+
   private int valMemoizedSerializedSize = -1;
 
   private byte memoizedIsInitialized = -1;
+
   @java.lang.Override
   public final boolean isInitialized() {
     byte isInitialized = memoizedIsInitialized;
@@ -80,8 +89,7 @@ private static final long serialVersionUID = 0L;
   }
 
   @java.lang.Override
-  public void writeTo(com.google.protobuf.CodedOutputStream output)
-                      throws java.io.IOException {
+  public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
     getSerializedSize();
     if (getValList().size() > 0) {
       output.writeUInt32NoTag(10);
@@ -102,14 +110,12 @@ private static final long serialVersionUID = 0L;
     {
       int dataSize = 0;
       for (int i = 0; i < val_.size(); i++) {
-        dataSize += com.google.protobuf.CodedOutputStream
-          .computeUInt32SizeNoTag(val_.getInt(i));
+        dataSize += com.google.protobuf.CodedOutputStream.computeUInt32SizeNoTag(val_.getInt(i));
       }
       size += dataSize;
       if (!getValList().isEmpty()) {
         size += 1;
-        size += com.google.protobuf.CodedOutputStream
-            .computeInt32SizeNoTag(dataSize);
+        size += com.google.protobuf.CodedOutputStream.computeInt32SizeNoTag(dataSize);
       }
       valMemoizedSerializedSize = dataSize;
     }
@@ -121,15 +127,15 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public boolean equals(final java.lang.Object obj) {
     if (obj == this) {
-     return true;
+      return true;
     }
     if (!(obj instanceof build.buf.validate.conformance.cases.RepeatedExactIgnore)) {
       return super.equals(obj);
     }
-    build.buf.validate.conformance.cases.RepeatedExactIgnore other = (build.buf.validate.conformance.cases.RepeatedExactIgnore) obj;
+    build.buf.validate.conformance.cases.RepeatedExactIgnore other =
+        (build.buf.validate.conformance.cases.RepeatedExactIgnore) obj;
 
-    if (!getValList()
-        .equals(other.getValList())) return false;
+    if (!getValList().equals(other.getValList())) return false;
     if (!getUnknownFields().equals(other.getUnknownFields())) return false;
     return true;
   }
@@ -151,127 +157,129 @@ private static final long serialVersionUID = 0L;
   }
 
   public static build.buf.validate.conformance.cases.RepeatedExactIgnore parseFrom(
-      java.nio.ByteBuffer data)
-      throws com.google.protobuf.InvalidProtocolBufferException {
+      java.nio.ByteBuffer data) throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
+
   public static build.buf.validate.conformance.cases.RepeatedExactIgnore parseFrom(
-      java.nio.ByteBuffer data,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      java.nio.ByteBuffer data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
+
   public static build.buf.validate.conformance.cases.RepeatedExactIgnore parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
+
   public static build.buf.validate.conformance.cases.RepeatedExactIgnore parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
+
   public static build.buf.validate.conformance.cases.RepeatedExactIgnore parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
+
   public static build.buf.validate.conformance.cases.RepeatedExactIgnore parseFrom(
-      byte[] data,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      byte[] data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static build.buf.validate.conformance.cases.RepeatedExactIgnore parseFrom(java.io.InputStream input)
-      throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input);
-  }
+
   public static build.buf.validate.conformance.cases.RepeatedExactIgnore parseFrom(
-      java.io.InputStream input,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-      throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input, extensionRegistry);
+      java.io.InputStream input) throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
   }
 
-  public static build.buf.validate.conformance.cases.RepeatedExactIgnore parseDelimitedFrom(java.io.InputStream input)
+  public static build.buf.validate.conformance.cases.RepeatedExactIgnore parseFrom(
+      java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseDelimitedWithIOException(PARSER, input);
+    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+        PARSER, input, extensionRegistry);
   }
 
   public static build.buf.validate.conformance.cases.RepeatedExactIgnore parseDelimitedFrom(
-      java.io.InputStream input,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-      throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+      java.io.InputStream input) throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input);
   }
+
+  public static build.buf.validate.conformance.cases.RepeatedExactIgnore parseDelimitedFrom(
+      java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(
+        PARSER, input, extensionRegistry);
+  }
+
   public static build.buf.validate.conformance.cases.RepeatedExactIgnore parseFrom(
-      com.google.protobuf.CodedInputStream input)
-      throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input);
+      com.google.protobuf.CodedInputStream input) throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
   }
+
   public static build.buf.validate.conformance.cases.RepeatedExactIgnore parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input, extensionRegistry);
+    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+        PARSER, input, extensionRegistry);
   }
 
   @java.lang.Override
-  public Builder newBuilderForType() { return newBuilder(); }
+  public Builder newBuilderForType() {
+    return newBuilder();
+  }
+
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-  public static Builder newBuilder(build.buf.validate.conformance.cases.RepeatedExactIgnore prototype) {
+
+  public static Builder newBuilder(
+      build.buf.validate.conformance.cases.RepeatedExactIgnore prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
-  }
-  @java.lang.Override
-  public Builder toBuilder() {
-    return this == DEFAULT_INSTANCE
-        ? new Builder() : new Builder().mergeFrom(this);
   }
 
   @java.lang.Override
-  protected Builder newBuilderForType(
-      com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+  public Builder toBuilder() {
+    return this == DEFAULT_INSTANCE ? new Builder() : new Builder().mergeFrom(this);
+  }
+
+  @java.lang.Override
+  protected Builder newBuilderForType(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
     Builder builder = new Builder(parent);
     return builder;
   }
-  /**
-   * Protobuf type {@code buf.validate.conformance.cases.RepeatedExactIgnore}
-   */
-  public static final class Builder extends
-      com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+
+  /** Protobuf type {@code buf.validate.conformance.cases.RepeatedExactIgnore} */
+  public static final class Builder extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
+      implements
       // @@protoc_insertion_point(builder_implements:buf.validate.conformance.cases.RepeatedExactIgnore)
       build.buf.validate.conformance.cases.RepeatedExactIgnoreOrBuilder {
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return build.buf.validate.conformance.cases.RepeatedProto.internal_static_buf_validate_conformance_cases_RepeatedExactIgnore_descriptor;
+    public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+      return build.buf.validate.conformance.cases.RepeatedProto
+          .internal_static_buf_validate_conformance_cases_RepeatedExactIgnore_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return build.buf.validate.conformance.cases.RepeatedProto.internal_static_buf_validate_conformance_cases_RepeatedExactIgnore_fieldAccessorTable
+      return build.buf.validate.conformance.cases.RepeatedProto
+          .internal_static_buf_validate_conformance_cases_RepeatedExactIgnore_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              build.buf.validate.conformance.cases.RepeatedExactIgnore.class, build.buf.validate.conformance.cases.RepeatedExactIgnore.Builder.class);
+              build.buf.validate.conformance.cases.RepeatedExactIgnore.class,
+              build.buf.validate.conformance.cases.RepeatedExactIgnore.Builder.class);
     }
 
     // Construct using build.buf.validate.conformance.cases.RepeatedExactIgnore.newBuilder()
-    private Builder() {
+    private Builder() {}
 
-    }
-
-    private Builder(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+    private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
       super(parent);
-
     }
+
     @java.lang.Override
     public Builder clear() {
       super.clear();
@@ -281,9 +289,9 @@ private static final long serialVersionUID = 0L;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Descriptors.Descriptor
-        getDescriptorForType() {
-      return build.buf.validate.conformance.cases.RepeatedProto.internal_static_buf_validate_conformance_cases_RepeatedExactIgnore_descriptor;
+    public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
+      return build.buf.validate.conformance.cases.RepeatedProto
+          .internal_static_buf_validate_conformance_cases_RepeatedExactIgnore_descriptor;
     }
 
     @java.lang.Override
@@ -302,14 +310,18 @@ private static final long serialVersionUID = 0L;
 
     @java.lang.Override
     public build.buf.validate.conformance.cases.RepeatedExactIgnore buildPartial() {
-      build.buf.validate.conformance.cases.RepeatedExactIgnore result = new build.buf.validate.conformance.cases.RepeatedExactIgnore(this);
+      build.buf.validate.conformance.cases.RepeatedExactIgnore result =
+          new build.buf.validate.conformance.cases.RepeatedExactIgnore(this);
       buildPartialRepeatedFields(result);
-      if (bitField0_ != 0) { buildPartial0(result); }
+      if (bitField0_ != 0) {
+        buildPartial0(result);
+      }
       onBuilt();
       return result;
     }
 
-    private void buildPartialRepeatedFields(build.buf.validate.conformance.cases.RepeatedExactIgnore result) {
+    private void buildPartialRepeatedFields(
+        build.buf.validate.conformance.cases.RepeatedExactIgnore result) {
       if (((bitField0_ & 0x00000001) != 0)) {
         val_.makeImmutable();
         bitField0_ = (bitField0_ & ~0x00000001);
@@ -325,38 +337,39 @@ private static final long serialVersionUID = 0L;
     public Builder clone() {
       return super.clone();
     }
+
     @java.lang.Override
     public Builder setField(
-        com.google.protobuf.Descriptors.FieldDescriptor field,
-        java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
       return super.setField(field, value);
     }
+
     @java.lang.Override
-    public Builder clearField(
-        com.google.protobuf.Descriptors.FieldDescriptor field) {
+    public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
       return super.clearField(field);
     }
+
     @java.lang.Override
-    public Builder clearOneof(
-        com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+    public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
       return super.clearOneof(oneof);
     }
+
     @java.lang.Override
     public Builder setRepeatedField(
-        com.google.protobuf.Descriptors.FieldDescriptor field,
-        int index, java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field, int index, java.lang.Object value) {
       return super.setRepeatedField(field, index, value);
     }
+
     @java.lang.Override
     public Builder addRepeatedField(
-        com.google.protobuf.Descriptors.FieldDescriptor field,
-        java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
       return super.addRepeatedField(field, value);
     }
+
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
       if (other instanceof build.buf.validate.conformance.cases.RepeatedExactIgnore) {
-        return mergeFrom((build.buf.validate.conformance.cases.RepeatedExactIgnore)other);
+        return mergeFrom((build.buf.validate.conformance.cases.RepeatedExactIgnore) other);
       } else {
         super.mergeFrom(other);
         return this;
@@ -364,7 +377,8 @@ private static final long serialVersionUID = 0L;
     }
 
     public Builder mergeFrom(build.buf.validate.conformance.cases.RepeatedExactIgnore other) {
-      if (other == build.buf.validate.conformance.cases.RepeatedExactIgnore.getDefaultInstance()) return this;
+      if (other == build.buf.validate.conformance.cases.RepeatedExactIgnore.getDefaultInstance())
+        return this;
       if (!other.val_.isEmpty()) {
         if (val_.isEmpty()) {
           val_ = other.val_;
@@ -401,28 +415,31 @@ private static final long serialVersionUID = 0L;
             case 0:
               done = true;
               break;
-            case 8: {
-              int v = input.readUInt32();
-              ensureValIsMutable();
-              val_.addInt(v);
-              break;
-            } // case 8
-            case 10: {
-              int length = input.readRawVarint32();
-              int limit = input.pushLimit(length);
-              ensureValIsMutable();
-              while (input.getBytesUntilLimit() > 0) {
-                val_.addInt(input.readUInt32());
-              }
-              input.popLimit(limit);
-              break;
-            } // case 10
-            default: {
-              if (!super.parseUnknownField(input, extensionRegistry, tag)) {
-                done = true; // was an endgroup tag
-              }
-              break;
-            } // default:
+            case 8:
+              {
+                int v = input.readUInt32();
+                ensureValIsMutable();
+                val_.addInt(v);
+                break;
+              } // case 8
+            case 10:
+              {
+                int length = input.readRawVarint32();
+                int limit = input.pushLimit(length);
+                ensureValIsMutable();
+                while (input.getBytesUntilLimit() > 0) {
+                  val_.addInt(input.readUInt32());
+                }
+                input.popLimit(limit);
+                break;
+              } // case 10
+            default:
+              {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
           } // switch (tag)
         } // while (!done)
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -432,55 +449,64 @@ private static final long serialVersionUID = 0L;
       } // finally
       return this;
     }
+
     private int bitField0_;
 
     private com.google.protobuf.Internal.IntList val_ = emptyIntList();
+
     private void ensureValIsMutable() {
       if (!((bitField0_ & 0x00000001) != 0)) {
         val_ = mutableCopy(val_);
         bitField0_ |= 0x00000001;
       }
     }
+
     /**
      * <code>repeated uint32 val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
+     *
      * @return A list containing the val.
      */
-    public java.util.List<java.lang.Integer>
-        getValList() {
-      return ((bitField0_ & 0x00000001) != 0) ?
-               java.util.Collections.unmodifiableList(val_) : val_;
+    public java.util.List<java.lang.Integer> getValList() {
+      return ((bitField0_ & 0x00000001) != 0) ? java.util.Collections.unmodifiableList(val_) : val_;
     }
+
     /**
      * <code>repeated uint32 val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
+     *
      * @return The count of val.
      */
     public int getValCount() {
       return val_.size();
     }
+
     /**
      * <code>repeated uint32 val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
+     *
      * @param index The index of the element to return.
      * @return The val at the given index.
      */
     public int getVal(int index) {
       return val_.getInt(index);
     }
+
     /**
      * <code>repeated uint32 val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
+     *
      * @param index The index to set the value at.
      * @param value The val to set.
      * @return This builder for chaining.
      */
-    public Builder setVal(
-        int index, int value) {
+    public Builder setVal(int index, int value) {
 
       ensureValIsMutable();
       val_.setInt(index, value);
       onChanged();
       return this;
     }
+
     /**
      * <code>repeated uint32 val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
+     *
      * @param value The val to add.
      * @return This builder for chaining.
      */
@@ -491,21 +517,23 @@ private static final long serialVersionUID = 0L;
       onChanged();
       return this;
     }
+
     /**
      * <code>repeated uint32 val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
+     *
      * @param values The val to add.
      * @return This builder for chaining.
      */
-    public Builder addAllVal(
-        java.lang.Iterable<? extends java.lang.Integer> values) {
+    public Builder addAllVal(java.lang.Iterable<? extends java.lang.Integer> values) {
       ensureValIsMutable();
-      com.google.protobuf.AbstractMessageLite.Builder.addAll(
-          values, val_);
+      com.google.protobuf.AbstractMessageLite.Builder.addAll(values, val_);
       onChanged();
       return this;
     }
+
     /**
      * <code>repeated uint32 val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
+     *
      * @return This builder for chaining.
      */
     public Builder clearVal() {
@@ -514,9 +542,9 @@ private static final long serialVersionUID = 0L;
       onChanged();
       return this;
     }
+
     @java.lang.Override
-    public final Builder setUnknownFields(
-        final com.google.protobuf.UnknownFieldSet unknownFields) {
+    public final Builder setUnknownFields(final com.google.protobuf.UnknownFieldSet unknownFields) {
       return super.setUnknownFields(unknownFields);
     }
 
@@ -526,12 +554,12 @@ private static final long serialVersionUID = 0L;
       return super.mergeUnknownFields(unknownFields);
     }
 
-
     // @@protoc_insertion_point(builder_scope:buf.validate.conformance.cases.RepeatedExactIgnore)
   }
 
   // @@protoc_insertion_point(class_scope:buf.validate.conformance.cases.RepeatedExactIgnore)
   private static final build.buf.validate.conformance.cases.RepeatedExactIgnore DEFAULT_INSTANCE;
+
   static {
     DEFAULT_INSTANCE = new build.buf.validate.conformance.cases.RepeatedExactIgnore();
   }
@@ -540,27 +568,27 @@ private static final long serialVersionUID = 0L;
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<RepeatedExactIgnore>
-      PARSER = new com.google.protobuf.AbstractParser<RepeatedExactIgnore>() {
-    @java.lang.Override
-    public RepeatedExactIgnore parsePartialFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      Builder builder = newBuilder();
-      try {
-        builder.mergeFrom(input, extensionRegistry);
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(builder.buildPartial());
-      } catch (com.google.protobuf.UninitializedMessageException e) {
-        throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(e)
-            .setUnfinishedMessage(builder.buildPartial());
-      }
-      return builder.buildPartial();
-    }
-  };
+  private static final com.google.protobuf.Parser<RepeatedExactIgnore> PARSER =
+      new com.google.protobuf.AbstractParser<RepeatedExactIgnore>() {
+        @java.lang.Override
+        public RepeatedExactIgnore parsePartialFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+          Builder builder = newBuilder();
+          try {
+            builder.mergeFrom(input, extensionRegistry);
+          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+            throw e.setUnfinishedMessage(builder.buildPartial());
+          } catch (com.google.protobuf.UninitializedMessageException e) {
+            throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+          } catch (java.io.IOException e) {
+            throw new com.google.protobuf.InvalidProtocolBufferException(e)
+                .setUnfinishedMessage(builder.buildPartial());
+          }
+          return builder.buildPartial();
+        }
+      };
 
   public static com.google.protobuf.Parser<RepeatedExactIgnore> parser() {
     return PARSER;
@@ -575,6 +603,4 @@ private static final long serialVersionUID = 0L;
   public build.buf.validate.conformance.cases.RepeatedExactIgnore getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
-
 }
-

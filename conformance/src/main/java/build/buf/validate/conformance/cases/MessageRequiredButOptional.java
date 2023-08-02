@@ -3,62 +3,73 @@
 
 package build.buf.validate.conformance.cases;
 
-/**
- * Protobuf type {@code buf.validate.conformance.cases.MessageRequiredButOptional}
- */
-public final class MessageRequiredButOptional extends
-    com.google.protobuf.GeneratedMessageV3 implements
+/** Protobuf type {@code buf.validate.conformance.cases.MessageRequiredButOptional} */
+public final class MessageRequiredButOptional extends com.google.protobuf.GeneratedMessageV3
+    implements
     // @@protoc_insertion_point(message_implements:buf.validate.conformance.cases.MessageRequiredButOptional)
     MessageRequiredButOptionalOrBuilder {
-private static final long serialVersionUID = 0L;
+  private static final long serialVersionUID = 0L;
+
   // Use MessageRequiredButOptional.newBuilder() to construct.
   private MessageRequiredButOptional(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
-  private MessageRequiredButOptional() {
-  }
+
+  private MessageRequiredButOptional() {}
 
   @java.lang.Override
   @SuppressWarnings({"unused"})
-  protected java.lang.Object newInstance(
-      UnusedPrivateParameter unused) {
+  protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
     return new MessageRequiredButOptional();
   }
 
-  public static final com.google.protobuf.Descriptors.Descriptor
-      getDescriptor() {
-    return build.buf.validate.conformance.cases.MessagesProto.internal_static_buf_validate_conformance_cases_MessageRequiredButOptional_descriptor;
+  public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+    return build.buf.validate.conformance.cases.MessagesProto
+        .internal_static_buf_validate_conformance_cases_MessageRequiredButOptional_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return build.buf.validate.conformance.cases.MessagesProto.internal_static_buf_validate_conformance_cases_MessageRequiredButOptional_fieldAccessorTable
+    return build.buf.validate.conformance.cases.MessagesProto
+        .internal_static_buf_validate_conformance_cases_MessageRequiredButOptional_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            build.buf.validate.conformance.cases.MessageRequiredButOptional.class, build.buf.validate.conformance.cases.MessageRequiredButOptional.Builder.class);
+            build.buf.validate.conformance.cases.MessageRequiredButOptional.class,
+            build.buf.validate.conformance.cases.MessageRequiredButOptional.Builder.class);
   }
 
   private int bitField0_;
   public static final int VAL_FIELD_NUMBER = 1;
   private build.buf.validate.conformance.cases.TestMsg val_;
+
   /**
-   * <code>optional .buf.validate.conformance.cases.TestMsg val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
+   * <code>
+   * optional .buf.validate.conformance.cases.TestMsg val = 1 [json_name = "val", (.buf.validate.field) = { ... }
+   * </code>
+   *
    * @return Whether the val field is set.
    */
   @java.lang.Override
   public boolean hasVal() {
     return ((bitField0_ & 0x00000001) != 0);
   }
+
   /**
-   * <code>optional .buf.validate.conformance.cases.TestMsg val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
+   * <code>
+   * optional .buf.validate.conformance.cases.TestMsg val = 1 [json_name = "val", (.buf.validate.field) = { ... }
+   * </code>
+   *
    * @return The val.
    */
   @java.lang.Override
   public build.buf.validate.conformance.cases.TestMsg getVal() {
     return val_ == null ? build.buf.validate.conformance.cases.TestMsg.getDefaultInstance() : val_;
   }
+
   /**
-   * <code>optional .buf.validate.conformance.cases.TestMsg val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
+   * <code>
+   * optional .buf.validate.conformance.cases.TestMsg val = 1 [json_name = "val", (.buf.validate.field) = { ... }
+   * </code>
    */
   @java.lang.Override
   public build.buf.validate.conformance.cases.TestMsgOrBuilder getValOrBuilder() {
@@ -66,6 +77,7 @@ private static final long serialVersionUID = 0L;
   }
 
   private byte memoizedIsInitialized = -1;
+
   @java.lang.Override
   public final boolean isInitialized() {
     byte isInitialized = memoizedIsInitialized;
@@ -77,8 +89,7 @@ private static final long serialVersionUID = 0L;
   }
 
   @java.lang.Override
-  public void writeTo(com.google.protobuf.CodedOutputStream output)
-                      throws java.io.IOException {
+  public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
     if (((bitField0_ & 0x00000001) != 0)) {
       output.writeMessage(1, getVal());
     }
@@ -92,8 +103,7 @@ private static final long serialVersionUID = 0L;
 
     size = 0;
     if (((bitField0_ & 0x00000001) != 0)) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(1, getVal());
+      size += com.google.protobuf.CodedOutputStream.computeMessageSize(1, getVal());
     }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
@@ -103,17 +113,17 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public boolean equals(final java.lang.Object obj) {
     if (obj == this) {
-     return true;
+      return true;
     }
     if (!(obj instanceof build.buf.validate.conformance.cases.MessageRequiredButOptional)) {
       return super.equals(obj);
     }
-    build.buf.validate.conformance.cases.MessageRequiredButOptional other = (build.buf.validate.conformance.cases.MessageRequiredButOptional) obj;
+    build.buf.validate.conformance.cases.MessageRequiredButOptional other =
+        (build.buf.validate.conformance.cases.MessageRequiredButOptional) obj;
 
     if (hasVal() != other.hasVal()) return false;
     if (hasVal()) {
-      if (!getVal()
-          .equals(other.getVal())) return false;
+      if (!getVal().equals(other.getVal())) return false;
     }
     if (!getUnknownFields().equals(other.getUnknownFields())) return false;
     return true;
@@ -136,115 +146,120 @@ private static final long serialVersionUID = 0L;
   }
 
   public static build.buf.validate.conformance.cases.MessageRequiredButOptional parseFrom(
-      java.nio.ByteBuffer data)
-      throws com.google.protobuf.InvalidProtocolBufferException {
+      java.nio.ByteBuffer data) throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
+
   public static build.buf.validate.conformance.cases.MessageRequiredButOptional parseFrom(
-      java.nio.ByteBuffer data,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      java.nio.ByteBuffer data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
+
   public static build.buf.validate.conformance.cases.MessageRequiredButOptional parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
+
   public static build.buf.validate.conformance.cases.MessageRequiredButOptional parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static build.buf.validate.conformance.cases.MessageRequiredButOptional parseFrom(byte[] data)
-      throws com.google.protobuf.InvalidProtocolBufferException {
+
+  public static build.buf.validate.conformance.cases.MessageRequiredButOptional parseFrom(
+      byte[] data) throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
+
   public static build.buf.validate.conformance.cases.MessageRequiredButOptional parseFrom(
-      byte[] data,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      byte[] data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static build.buf.validate.conformance.cases.MessageRequiredButOptional parseFrom(java.io.InputStream input)
-      throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input);
-  }
+
   public static build.buf.validate.conformance.cases.MessageRequiredButOptional parseFrom(
-      java.io.InputStream input,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-      throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input, extensionRegistry);
+      java.io.InputStream input) throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
   }
 
-  public static build.buf.validate.conformance.cases.MessageRequiredButOptional parseDelimitedFrom(java.io.InputStream input)
+  public static build.buf.validate.conformance.cases.MessageRequiredButOptional parseFrom(
+      java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseDelimitedWithIOException(PARSER, input);
+    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+        PARSER, input, extensionRegistry);
   }
 
   public static build.buf.validate.conformance.cases.MessageRequiredButOptional parseDelimitedFrom(
-      java.io.InputStream input,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-      throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+      java.io.InputStream input) throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input);
   }
+
+  public static build.buf.validate.conformance.cases.MessageRequiredButOptional parseDelimitedFrom(
+      java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(
+        PARSER, input, extensionRegistry);
+  }
+
   public static build.buf.validate.conformance.cases.MessageRequiredButOptional parseFrom(
-      com.google.protobuf.CodedInputStream input)
-      throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input);
+      com.google.protobuf.CodedInputStream input) throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
   }
+
   public static build.buf.validate.conformance.cases.MessageRequiredButOptional parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input, extensionRegistry);
+    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+        PARSER, input, extensionRegistry);
   }
 
   @java.lang.Override
-  public Builder newBuilderForType() { return newBuilder(); }
+  public Builder newBuilderForType() {
+    return newBuilder();
+  }
+
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-  public static Builder newBuilder(build.buf.validate.conformance.cases.MessageRequiredButOptional prototype) {
+
+  public static Builder newBuilder(
+      build.buf.validate.conformance.cases.MessageRequiredButOptional prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
-  }
-  @java.lang.Override
-  public Builder toBuilder() {
-    return this == DEFAULT_INSTANCE
-        ? new Builder() : new Builder().mergeFrom(this);
   }
 
   @java.lang.Override
-  protected Builder newBuilderForType(
-      com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+  public Builder toBuilder() {
+    return this == DEFAULT_INSTANCE ? new Builder() : new Builder().mergeFrom(this);
+  }
+
+  @java.lang.Override
+  protected Builder newBuilderForType(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
     Builder builder = new Builder(parent);
     return builder;
   }
-  /**
-   * Protobuf type {@code buf.validate.conformance.cases.MessageRequiredButOptional}
-   */
-  public static final class Builder extends
-      com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+
+  /** Protobuf type {@code buf.validate.conformance.cases.MessageRequiredButOptional} */
+  public static final class Builder extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
+      implements
       // @@protoc_insertion_point(builder_implements:buf.validate.conformance.cases.MessageRequiredButOptional)
       build.buf.validate.conformance.cases.MessageRequiredButOptionalOrBuilder {
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return build.buf.validate.conformance.cases.MessagesProto.internal_static_buf_validate_conformance_cases_MessageRequiredButOptional_descriptor;
+    public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+      return build.buf.validate.conformance.cases.MessagesProto
+          .internal_static_buf_validate_conformance_cases_MessageRequiredButOptional_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return build.buf.validate.conformance.cases.MessagesProto.internal_static_buf_validate_conformance_cases_MessageRequiredButOptional_fieldAccessorTable
+      return build.buf.validate.conformance.cases.MessagesProto
+          .internal_static_buf_validate_conformance_cases_MessageRequiredButOptional_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              build.buf.validate.conformance.cases.MessageRequiredButOptional.class, build.buf.validate.conformance.cases.MessageRequiredButOptional.Builder.class);
+              build.buf.validate.conformance.cases.MessageRequiredButOptional.class,
+              build.buf.validate.conformance.cases.MessageRequiredButOptional.Builder.class);
     }
 
     // Construct using build.buf.validate.conformance.cases.MessageRequiredButOptional.newBuilder()
@@ -252,17 +267,17 @@ private static final long serialVersionUID = 0L;
       maybeForceBuilderInitialization();
     }
 
-    private Builder(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+    private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
       super(parent);
       maybeForceBuilderInitialization();
     }
+
     private void maybeForceBuilderInitialization() {
-      if (com.google.protobuf.GeneratedMessageV3
-              .alwaysUseFieldBuilders) {
+      if (com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders) {
         getValFieldBuilder();
       }
     }
+
     @java.lang.Override
     public Builder clear() {
       super.clear();
@@ -276,13 +291,14 @@ private static final long serialVersionUID = 0L;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Descriptors.Descriptor
-        getDescriptorForType() {
-      return build.buf.validate.conformance.cases.MessagesProto.internal_static_buf_validate_conformance_cases_MessageRequiredButOptional_descriptor;
+    public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
+      return build.buf.validate.conformance.cases.MessagesProto
+          .internal_static_buf_validate_conformance_cases_MessageRequiredButOptional_descriptor;
     }
 
     @java.lang.Override
-    public build.buf.validate.conformance.cases.MessageRequiredButOptional getDefaultInstanceForType() {
+    public build.buf.validate.conformance.cases.MessageRequiredButOptional
+        getDefaultInstanceForType() {
       return build.buf.validate.conformance.cases.MessageRequiredButOptional.getDefaultInstance();
     }
 
@@ -297,19 +313,21 @@ private static final long serialVersionUID = 0L;
 
     @java.lang.Override
     public build.buf.validate.conformance.cases.MessageRequiredButOptional buildPartial() {
-      build.buf.validate.conformance.cases.MessageRequiredButOptional result = new build.buf.validate.conformance.cases.MessageRequiredButOptional(this);
-      if (bitField0_ != 0) { buildPartial0(result); }
+      build.buf.validate.conformance.cases.MessageRequiredButOptional result =
+          new build.buf.validate.conformance.cases.MessageRequiredButOptional(this);
+      if (bitField0_ != 0) {
+        buildPartial0(result);
+      }
       onBuilt();
       return result;
     }
 
-    private void buildPartial0(build.buf.validate.conformance.cases.MessageRequiredButOptional result) {
+    private void buildPartial0(
+        build.buf.validate.conformance.cases.MessageRequiredButOptional result) {
       int from_bitField0_ = bitField0_;
       int to_bitField0_ = 0;
       if (((from_bitField0_ & 0x00000001) != 0)) {
-        result.val_ = valBuilder_ == null
-            ? val_
-            : valBuilder_.build();
+        result.val_ = valBuilder_ == null ? val_ : valBuilder_.build();
         to_bitField0_ |= 0x00000001;
       }
       result.bitField0_ |= to_bitField0_;
@@ -319,46 +337,50 @@ private static final long serialVersionUID = 0L;
     public Builder clone() {
       return super.clone();
     }
+
     @java.lang.Override
     public Builder setField(
-        com.google.protobuf.Descriptors.FieldDescriptor field,
-        java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
       return super.setField(field, value);
     }
+
     @java.lang.Override
-    public Builder clearField(
-        com.google.protobuf.Descriptors.FieldDescriptor field) {
+    public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
       return super.clearField(field);
     }
+
     @java.lang.Override
-    public Builder clearOneof(
-        com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+    public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
       return super.clearOneof(oneof);
     }
+
     @java.lang.Override
     public Builder setRepeatedField(
-        com.google.protobuf.Descriptors.FieldDescriptor field,
-        int index, java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field, int index, java.lang.Object value) {
       return super.setRepeatedField(field, index, value);
     }
+
     @java.lang.Override
     public Builder addRepeatedField(
-        com.google.protobuf.Descriptors.FieldDescriptor field,
-        java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
       return super.addRepeatedField(field, value);
     }
+
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
       if (other instanceof build.buf.validate.conformance.cases.MessageRequiredButOptional) {
-        return mergeFrom((build.buf.validate.conformance.cases.MessageRequiredButOptional)other);
+        return mergeFrom((build.buf.validate.conformance.cases.MessageRequiredButOptional) other);
       } else {
         super.mergeFrom(other);
         return this;
       }
     }
 
-    public Builder mergeFrom(build.buf.validate.conformance.cases.MessageRequiredButOptional other) {
-      if (other == build.buf.validate.conformance.cases.MessageRequiredButOptional.getDefaultInstance()) return this;
+    public Builder mergeFrom(
+        build.buf.validate.conformance.cases.MessageRequiredButOptional other) {
+      if (other
+          == build.buf.validate.conformance.cases.MessageRequiredButOptional.getDefaultInstance())
+        return this;
       if (other.hasVal()) {
         mergeVal(other.getVal());
       }
@@ -388,19 +410,19 @@ private static final long serialVersionUID = 0L;
             case 0:
               done = true;
               break;
-            case 10: {
-              input.readMessage(
-                  getValFieldBuilder().getBuilder(),
-                  extensionRegistry);
-              bitField0_ |= 0x00000001;
-              break;
-            } // case 10
-            default: {
-              if (!super.parseUnknownField(input, extensionRegistry, tag)) {
-                done = true; // was an endgroup tag
-              }
-              break;
-            } // default:
+            case 10:
+              {
+                input.readMessage(getValFieldBuilder().getBuilder(), extensionRegistry);
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 10
+            default:
+              {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
           } // switch (tag)
         } // while (!done)
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -410,31 +432,48 @@ private static final long serialVersionUID = 0L;
       } // finally
       return this;
     }
+
     private int bitField0_;
 
     private build.buf.validate.conformance.cases.TestMsg val_;
     private com.google.protobuf.SingleFieldBuilderV3<
-        build.buf.validate.conformance.cases.TestMsg, build.buf.validate.conformance.cases.TestMsg.Builder, build.buf.validate.conformance.cases.TestMsgOrBuilder> valBuilder_;
+            build.buf.validate.conformance.cases.TestMsg,
+            build.buf.validate.conformance.cases.TestMsg.Builder,
+            build.buf.validate.conformance.cases.TestMsgOrBuilder>
+        valBuilder_;
+
     /**
-     * <code>optional .buf.validate.conformance.cases.TestMsg val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
+     * <code>
+     * optional .buf.validate.conformance.cases.TestMsg val = 1 [json_name = "val", (.buf.validate.field) = { ... }
+     * </code>
+     *
      * @return Whether the val field is set.
      */
     public boolean hasVal() {
       return ((bitField0_ & 0x00000001) != 0);
     }
+
     /**
-     * <code>optional .buf.validate.conformance.cases.TestMsg val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
+     * <code>
+     * optional .buf.validate.conformance.cases.TestMsg val = 1 [json_name = "val", (.buf.validate.field) = { ... }
+     * </code>
+     *
      * @return The val.
      */
     public build.buf.validate.conformance.cases.TestMsg getVal() {
       if (valBuilder_ == null) {
-        return val_ == null ? build.buf.validate.conformance.cases.TestMsg.getDefaultInstance() : val_;
+        return val_ == null
+            ? build.buf.validate.conformance.cases.TestMsg.getDefaultInstance()
+            : val_;
       } else {
         return valBuilder_.getMessage();
       }
     }
+
     /**
-     * <code>optional .buf.validate.conformance.cases.TestMsg val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
+     * <code>
+     * optional .buf.validate.conformance.cases.TestMsg val = 1 [json_name = "val", (.buf.validate.field) = { ... }
+     * </code>
      */
     public Builder setVal(build.buf.validate.conformance.cases.TestMsg value) {
       if (valBuilder_ == null) {
@@ -449,11 +488,13 @@ private static final long serialVersionUID = 0L;
       onChanged();
       return this;
     }
+
     /**
-     * <code>optional .buf.validate.conformance.cases.TestMsg val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
+     * <code>
+     * optional .buf.validate.conformance.cases.TestMsg val = 1 [json_name = "val", (.buf.validate.field) = { ... }
+     * </code>
      */
-    public Builder setVal(
-        build.buf.validate.conformance.cases.TestMsg.Builder builderForValue) {
+    public Builder setVal(build.buf.validate.conformance.cases.TestMsg.Builder builderForValue) {
       if (valBuilder_ == null) {
         val_ = builderForValue.build();
       } else {
@@ -463,14 +504,17 @@ private static final long serialVersionUID = 0L;
       onChanged();
       return this;
     }
+
     /**
-     * <code>optional .buf.validate.conformance.cases.TestMsg val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
+     * <code>
+     * optional .buf.validate.conformance.cases.TestMsg val = 1 [json_name = "val", (.buf.validate.field) = { ... }
+     * </code>
      */
     public Builder mergeVal(build.buf.validate.conformance.cases.TestMsg value) {
       if (valBuilder_ == null) {
-        if (((bitField0_ & 0x00000001) != 0) &&
-          val_ != null &&
-          val_ != build.buf.validate.conformance.cases.TestMsg.getDefaultInstance()) {
+        if (((bitField0_ & 0x00000001) != 0)
+            && val_ != null
+            && val_ != build.buf.validate.conformance.cases.TestMsg.getDefaultInstance()) {
           getValBuilder().mergeFrom(value);
         } else {
           val_ = value;
@@ -482,8 +526,11 @@ private static final long serialVersionUID = 0L;
       onChanged();
       return this;
     }
+
     /**
-     * <code>optional .buf.validate.conformance.cases.TestMsg val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
+     * <code>
+     * optional .buf.validate.conformance.cases.TestMsg val = 1 [json_name = "val", (.buf.validate.field) = { ... }
+     * </code>
      */
     public Builder clearVal() {
       bitField0_ = (bitField0_ & ~0x00000001);
@@ -495,44 +542,57 @@ private static final long serialVersionUID = 0L;
       onChanged();
       return this;
     }
+
     /**
-     * <code>optional .buf.validate.conformance.cases.TestMsg val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
+     * <code>
+     * optional .buf.validate.conformance.cases.TestMsg val = 1 [json_name = "val", (.buf.validate.field) = { ... }
+     * </code>
      */
     public build.buf.validate.conformance.cases.TestMsg.Builder getValBuilder() {
       bitField0_ |= 0x00000001;
       onChanged();
       return getValFieldBuilder().getBuilder();
     }
+
     /**
-     * <code>optional .buf.validate.conformance.cases.TestMsg val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
+     * <code>
+     * optional .buf.validate.conformance.cases.TestMsg val = 1 [json_name = "val", (.buf.validate.field) = { ... }
+     * </code>
      */
     public build.buf.validate.conformance.cases.TestMsgOrBuilder getValOrBuilder() {
       if (valBuilder_ != null) {
         return valBuilder_.getMessageOrBuilder();
       } else {
-        return val_ == null ?
-            build.buf.validate.conformance.cases.TestMsg.getDefaultInstance() : val_;
+        return val_ == null
+            ? build.buf.validate.conformance.cases.TestMsg.getDefaultInstance()
+            : val_;
       }
     }
+
     /**
-     * <code>optional .buf.validate.conformance.cases.TestMsg val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
+     * <code>
+     * optional .buf.validate.conformance.cases.TestMsg val = 1 [json_name = "val", (.buf.validate.field) = { ... }
+     * </code>
      */
     private com.google.protobuf.SingleFieldBuilderV3<
-        build.buf.validate.conformance.cases.TestMsg, build.buf.validate.conformance.cases.TestMsg.Builder, build.buf.validate.conformance.cases.TestMsgOrBuilder> 
+            build.buf.validate.conformance.cases.TestMsg,
+            build.buf.validate.conformance.cases.TestMsg.Builder,
+            build.buf.validate.conformance.cases.TestMsgOrBuilder>
         getValFieldBuilder() {
       if (valBuilder_ == null) {
-        valBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-            build.buf.validate.conformance.cases.TestMsg, build.buf.validate.conformance.cases.TestMsg.Builder, build.buf.validate.conformance.cases.TestMsgOrBuilder>(
-                getVal(),
-                getParentForChildren(),
-                isClean());
+        valBuilder_ =
+            new com.google.protobuf.SingleFieldBuilderV3<
+                build.buf.validate.conformance.cases.TestMsg,
+                build.buf.validate.conformance.cases.TestMsg.Builder,
+                build.buf.validate.conformance.cases.TestMsgOrBuilder>(
+                getVal(), getParentForChildren(), isClean());
         val_ = null;
       }
       return valBuilder_;
     }
+
     @java.lang.Override
-    public final Builder setUnknownFields(
-        final com.google.protobuf.UnknownFieldSet unknownFields) {
+    public final Builder setUnknownFields(final com.google.protobuf.UnknownFieldSet unknownFields) {
       return super.setUnknownFields(unknownFields);
     }
 
@@ -542,41 +602,43 @@ private static final long serialVersionUID = 0L;
       return super.mergeUnknownFields(unknownFields);
     }
 
-
     // @@protoc_insertion_point(builder_scope:buf.validate.conformance.cases.MessageRequiredButOptional)
   }
 
   // @@protoc_insertion_point(class_scope:buf.validate.conformance.cases.MessageRequiredButOptional)
-  private static final build.buf.validate.conformance.cases.MessageRequiredButOptional DEFAULT_INSTANCE;
+  private static final build.buf.validate.conformance.cases.MessageRequiredButOptional
+      DEFAULT_INSTANCE;
+
   static {
     DEFAULT_INSTANCE = new build.buf.validate.conformance.cases.MessageRequiredButOptional();
   }
 
-  public static build.buf.validate.conformance.cases.MessageRequiredButOptional getDefaultInstance() {
+  public static build.buf.validate.conformance.cases.MessageRequiredButOptional
+      getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<MessageRequiredButOptional>
-      PARSER = new com.google.protobuf.AbstractParser<MessageRequiredButOptional>() {
-    @java.lang.Override
-    public MessageRequiredButOptional parsePartialFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      Builder builder = newBuilder();
-      try {
-        builder.mergeFrom(input, extensionRegistry);
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(builder.buildPartial());
-      } catch (com.google.protobuf.UninitializedMessageException e) {
-        throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(e)
-            .setUnfinishedMessage(builder.buildPartial());
-      }
-      return builder.buildPartial();
-    }
-  };
+  private static final com.google.protobuf.Parser<MessageRequiredButOptional> PARSER =
+      new com.google.protobuf.AbstractParser<MessageRequiredButOptional>() {
+        @java.lang.Override
+        public MessageRequiredButOptional parsePartialFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+          Builder builder = newBuilder();
+          try {
+            builder.mergeFrom(input, extensionRegistry);
+          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+            throw e.setUnfinishedMessage(builder.buildPartial());
+          } catch (com.google.protobuf.UninitializedMessageException e) {
+            throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+          } catch (java.io.IOException e) {
+            throw new com.google.protobuf.InvalidProtocolBufferException(e)
+                .setUnfinishedMessage(builder.buildPartial());
+          }
+          return builder.buildPartial();
+        }
+      };
 
   public static com.google.protobuf.Parser<MessageRequiredButOptional> parser() {
     return PARSER;
@@ -588,9 +650,8 @@ private static final long serialVersionUID = 0L;
   }
 
   @java.lang.Override
-  public build.buf.validate.conformance.cases.MessageRequiredButOptional getDefaultInstanceForType() {
+  public build.buf.validate.conformance.cases.MessageRequiredButOptional
+      getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
-
 }
-

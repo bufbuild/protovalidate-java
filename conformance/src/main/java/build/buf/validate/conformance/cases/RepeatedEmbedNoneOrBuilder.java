@@ -3,31 +3,24 @@
 
 package build.buf.validate.conformance.cases;
 
-public interface RepeatedEmbedNoneOrBuilder extends
+public interface RepeatedEmbedNoneOrBuilder
+    extends
     // @@protoc_insertion_point(interface_extends:buf.validate.conformance.cases.RepeatedEmbedNone)
     com.google.protobuf.MessageOrBuilder {
 
-  /**
-   * <code>repeated .buf.validate.conformance.cases.Embed val = 1 [json_name = "val"];</code>
-   */
-  java.util.List<build.buf.validate.conformance.cases.Embed> 
-      getValList();
-  /**
-   * <code>repeated .buf.validate.conformance.cases.Embed val = 1 [json_name = "val"];</code>
-   */
+  /** <code>repeated .buf.validate.conformance.cases.Embed val = 1 [json_name = "val"];</code> */
+  java.util.List<build.buf.validate.conformance.cases.Embed> getValList();
+
+  /** <code>repeated .buf.validate.conformance.cases.Embed val = 1 [json_name = "val"];</code> */
   build.buf.validate.conformance.cases.Embed getVal(int index);
-  /**
-   * <code>repeated .buf.validate.conformance.cases.Embed val = 1 [json_name = "val"];</code>
-   */
+
+  /** <code>repeated .buf.validate.conformance.cases.Embed val = 1 [json_name = "val"];</code> */
   int getValCount();
-  /**
-   * <code>repeated .buf.validate.conformance.cases.Embed val = 1 [json_name = "val"];</code>
-   */
-  java.util.List<? extends build.buf.validate.conformance.cases.EmbedOrBuilder> 
+
+  /** <code>repeated .buf.validate.conformance.cases.Embed val = 1 [json_name = "val"];</code> */
+  java.util.List<? extends build.buf.validate.conformance.cases.EmbedOrBuilder>
       getValOrBuilderList();
-  /**
-   * <code>repeated .buf.validate.conformance.cases.Embed val = 1 [json_name = "val"];</code>
-   */
-  build.buf.validate.conformance.cases.EmbedOrBuilder getValOrBuilder(
-      int index);
+
+  /** <code>repeated .buf.validate.conformance.cases.Embed val = 1 [json_name = "val"];</code> */
+  build.buf.validate.conformance.cases.EmbedOrBuilder getValOrBuilder(int index);
 }

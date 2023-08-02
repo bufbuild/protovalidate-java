@@ -4,54 +4,64 @@
 package build.buf.validate.conformance.harness;
 
 /**
+ *
+ *
  * <pre>
  * A case result is a single test case result.
  * </pre>
  *
  * Protobuf type {@code buf.validate.conformance.harness.CaseResult}
  */
-public final class CaseResult extends
-    com.google.protobuf.GeneratedMessageV3 implements
+public final class CaseResult extends com.google.protobuf.GeneratedMessageV3
+    implements
     // @@protoc_insertion_point(message_implements:buf.validate.conformance.harness.CaseResult)
     CaseResultOrBuilder {
-private static final long serialVersionUID = 0L;
+  private static final long serialVersionUID = 0L;
+
   // Use CaseResult.newBuilder() to construct.
   private CaseResult(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
+
   private CaseResult() {
     name_ = "";
   }
 
   @java.lang.Override
   @SuppressWarnings({"unused"})
-  protected java.lang.Object newInstance(
-      UnusedPrivateParameter unused) {
+  protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
     return new CaseResult();
   }
 
-  public static final com.google.protobuf.Descriptors.Descriptor
-      getDescriptor() {
-    return build.buf.validate.conformance.harness.ResultsProto.internal_static_buf_validate_conformance_harness_CaseResult_descriptor;
+  public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+    return build.buf.validate.conformance.harness.ResultsProto
+        .internal_static_buf_validate_conformance_harness_CaseResult_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return build.buf.validate.conformance.harness.ResultsProto.internal_static_buf_validate_conformance_harness_CaseResult_fieldAccessorTable
+    return build.buf.validate.conformance.harness.ResultsProto
+        .internal_static_buf_validate_conformance_harness_CaseResult_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            build.buf.validate.conformance.harness.CaseResult.class, build.buf.validate.conformance.harness.CaseResult.Builder.class);
+            build.buf.validate.conformance.harness.CaseResult.class,
+            build.buf.validate.conformance.harness.CaseResult.Builder.class);
   }
 
   public static final int NAME_FIELD_NUMBER = 1;
+
   @SuppressWarnings("serial")
   private volatile java.lang.Object name_ = "";
+
   /**
+   *
+   *
    * <pre>
    * The case name.
    * </pre>
    *
    * <code>string name = 1 [json_name = "name"];</code>
+   *
    * @return The name.
    */
   @java.lang.Override
@@ -60,29 +70,30 @@ private static final long serialVersionUID = 0L;
     if (ref instanceof java.lang.String) {
       return (java.lang.String) ref;
     } else {
-      com.google.protobuf.ByteString bs = 
-          (com.google.protobuf.ByteString) ref;
+      com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
       name_ = s;
       return s;
     }
   }
+
   /**
+   *
+   *
    * <pre>
    * The case name.
    * </pre>
    *
    * <code>string name = 1 [json_name = "name"];</code>
+   *
    * @return The bytes for name.
    */
   @java.lang.Override
-  public com.google.protobuf.ByteString
-      getNameBytes() {
+  public com.google.protobuf.ByteString getNameBytes() {
     java.lang.Object ref = name_;
     if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b = 
-          com.google.protobuf.ByteString.copyFromUtf8(
-              (java.lang.String) ref);
+      com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
       name_ = b;
       return b;
     } else {
@@ -92,12 +103,16 @@ private static final long serialVersionUID = 0L;
 
   public static final int SUCCESS_FIELD_NUMBER = 2;
   private boolean success_ = false;
+
   /**
+   *
+   *
    * <pre>
    * Success state of the test case. True if the test case succeeded.
    * </pre>
    *
    * <code>bool success = 2 [json_name = "success"];</code>
+   *
    * @return The success.
    */
   @java.lang.Override
@@ -107,31 +122,44 @@ private static final long serialVersionUID = 0L;
 
   public static final int WANTED_FIELD_NUMBER = 3;
   private build.buf.validate.conformance.harness.TestResult wanted_;
+
   /**
+   *
+   *
    * <pre>
    * The expected result.
    * </pre>
    *
    * <code>.buf.validate.conformance.harness.TestResult wanted = 3 [json_name = "wanted"];</code>
+   *
    * @return Whether the wanted field is set.
    */
   @java.lang.Override
   public boolean hasWanted() {
     return wanted_ != null;
   }
+
   /**
+   *
+   *
    * <pre>
    * The expected result.
    * </pre>
    *
    * <code>.buf.validate.conformance.harness.TestResult wanted = 3 [json_name = "wanted"];</code>
+   *
    * @return The wanted.
    */
   @java.lang.Override
   public build.buf.validate.conformance.harness.TestResult getWanted() {
-    return wanted_ == null ? build.buf.validate.conformance.harness.TestResult.getDefaultInstance() : wanted_;
+    return wanted_ == null
+        ? build.buf.validate.conformance.harness.TestResult.getDefaultInstance()
+        : wanted_;
   }
+
   /**
+   *
+   *
    * <pre>
    * The expected result.
    * </pre>
@@ -140,36 +168,51 @@ private static final long serialVersionUID = 0L;
    */
   @java.lang.Override
   public build.buf.validate.conformance.harness.TestResultOrBuilder getWantedOrBuilder() {
-    return wanted_ == null ? build.buf.validate.conformance.harness.TestResult.getDefaultInstance() : wanted_;
+    return wanted_ == null
+        ? build.buf.validate.conformance.harness.TestResult.getDefaultInstance()
+        : wanted_;
   }
 
   public static final int GOT_FIELD_NUMBER = 4;
   private build.buf.validate.conformance.harness.TestResult got_;
+
   /**
+   *
+   *
    * <pre>
    * The actual result.
    * </pre>
    *
    * <code>.buf.validate.conformance.harness.TestResult got = 4 [json_name = "got"];</code>
+   *
    * @return Whether the got field is set.
    */
   @java.lang.Override
   public boolean hasGot() {
     return got_ != null;
   }
+
   /**
+   *
+   *
    * <pre>
    * The actual result.
    * </pre>
    *
    * <code>.buf.validate.conformance.harness.TestResult got = 4 [json_name = "got"];</code>
+   *
    * @return The got.
    */
   @java.lang.Override
   public build.buf.validate.conformance.harness.TestResult getGot() {
-    return got_ == null ? build.buf.validate.conformance.harness.TestResult.getDefaultInstance() : got_;
+    return got_ == null
+        ? build.buf.validate.conformance.harness.TestResult.getDefaultInstance()
+        : got_;
   }
+
   /**
+   *
+   *
    * <pre>
    * The actual result.
    * </pre>
@@ -178,36 +221,49 @@ private static final long serialVersionUID = 0L;
    */
   @java.lang.Override
   public build.buf.validate.conformance.harness.TestResultOrBuilder getGotOrBuilder() {
-    return got_ == null ? build.buf.validate.conformance.harness.TestResult.getDefaultInstance() : got_;
+    return got_ == null
+        ? build.buf.validate.conformance.harness.TestResult.getDefaultInstance()
+        : got_;
   }
 
   public static final int INPUT_FIELD_NUMBER = 5;
   private com.google.protobuf.Any input_;
+
   /**
+   *
+   *
    * <pre>
    * The input used to invoke the test case.
    * </pre>
    *
    * <code>.google.protobuf.Any input = 5 [json_name = "input"];</code>
+   *
    * @return Whether the input field is set.
    */
   @java.lang.Override
   public boolean hasInput() {
     return input_ != null;
   }
+
   /**
+   *
+   *
    * <pre>
    * The input used to invoke the test case.
    * </pre>
    *
    * <code>.google.protobuf.Any input = 5 [json_name = "input"];</code>
+   *
    * @return The input.
    */
   @java.lang.Override
   public com.google.protobuf.Any getInput() {
     return input_ == null ? com.google.protobuf.Any.getDefaultInstance() : input_;
   }
+
   /**
+   *
+   *
    * <pre>
    * The input used to invoke the test case.
    * </pre>
@@ -221,12 +277,16 @@ private static final long serialVersionUID = 0L;
 
   public static final int EXPECTED_FAILURE_FIELD_NUMBER = 6;
   private boolean expectedFailure_ = false;
+
   /**
+   *
+   *
    * <pre>
    * Denotes if the test is expected to fail. True, if the test case was expected to fail.
    * </pre>
    *
    * <code>bool expected_failure = 6 [json_name = "expectedFailure"];</code>
+   *
    * @return The expectedFailure.
    */
   @java.lang.Override
@@ -235,6 +295,7 @@ private static final long serialVersionUID = 0L;
   }
 
   private byte memoizedIsInitialized = -1;
+
   @java.lang.Override
   public final boolean isInitialized() {
     byte isInitialized = memoizedIsInitialized;
@@ -246,8 +307,7 @@ private static final long serialVersionUID = 0L;
   }
 
   @java.lang.Override
-  public void writeTo(com.google.protobuf.CodedOutputStream output)
-                      throws java.io.IOException {
+  public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(name_)) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 1, name_);
     }
@@ -279,24 +339,19 @@ private static final long serialVersionUID = 0L;
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, name_);
     }
     if (success_ != false) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeBoolSize(2, success_);
+      size += com.google.protobuf.CodedOutputStream.computeBoolSize(2, success_);
     }
     if (wanted_ != null) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(3, getWanted());
+      size += com.google.protobuf.CodedOutputStream.computeMessageSize(3, getWanted());
     }
     if (got_ != null) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(4, getGot());
+      size += com.google.protobuf.CodedOutputStream.computeMessageSize(4, getGot());
     }
     if (input_ != null) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(5, getInput());
+      size += com.google.protobuf.CodedOutputStream.computeMessageSize(5, getInput());
     }
     if (expectedFailure_ != false) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeBoolSize(6, expectedFailure_);
+      size += com.google.protobuf.CodedOutputStream.computeBoolSize(6, expectedFailure_);
     }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
@@ -306,34 +361,29 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public boolean equals(final java.lang.Object obj) {
     if (obj == this) {
-     return true;
+      return true;
     }
     if (!(obj instanceof build.buf.validate.conformance.harness.CaseResult)) {
       return super.equals(obj);
     }
-    build.buf.validate.conformance.harness.CaseResult other = (build.buf.validate.conformance.harness.CaseResult) obj;
+    build.buf.validate.conformance.harness.CaseResult other =
+        (build.buf.validate.conformance.harness.CaseResult) obj;
 
-    if (!getName()
-        .equals(other.getName())) return false;
-    if (getSuccess()
-        != other.getSuccess()) return false;
+    if (!getName().equals(other.getName())) return false;
+    if (getSuccess() != other.getSuccess()) return false;
     if (hasWanted() != other.hasWanted()) return false;
     if (hasWanted()) {
-      if (!getWanted()
-          .equals(other.getWanted())) return false;
+      if (!getWanted().equals(other.getWanted())) return false;
     }
     if (hasGot() != other.hasGot()) return false;
     if (hasGot()) {
-      if (!getGot()
-          .equals(other.getGot())) return false;
+      if (!getGot().equals(other.getGot())) return false;
     }
     if (hasInput() != other.hasInput()) return false;
     if (hasInput()) {
-      if (!getInput()
-          .equals(other.getInput())) return false;
+      if (!getInput().equals(other.getInput())) return false;
     }
-    if (getExpectedFailure()
-        != other.getExpectedFailure()) return false;
+    if (getExpectedFailure() != other.getExpectedFailure()) return false;
     if (!getUnknownFields().equals(other.getUnknownFields())) return false;
     return true;
   }
@@ -348,8 +398,7 @@ private static final long serialVersionUID = 0L;
     hash = (37 * hash) + NAME_FIELD_NUMBER;
     hash = (53 * hash) + getName().hashCode();
     hash = (37 * hash) + SUCCESS_FIELD_NUMBER;
-    hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
-        getSuccess());
+    hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(getSuccess());
     if (hasWanted()) {
       hash = (37 * hash) + WANTED_FIELD_NUMBER;
       hash = (53 * hash) + getWanted().hashCode();
@@ -363,139 +412,143 @@ private static final long serialVersionUID = 0L;
       hash = (53 * hash) + getInput().hashCode();
     }
     hash = (37 * hash) + EXPECTED_FAILURE_FIELD_NUMBER;
-    hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
-        getExpectedFailure());
+    hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(getExpectedFailure());
     hash = (29 * hash) + getUnknownFields().hashCode();
     memoizedHashCode = hash;
     return hash;
   }
 
   public static build.buf.validate.conformance.harness.CaseResult parseFrom(
-      java.nio.ByteBuffer data)
-      throws com.google.protobuf.InvalidProtocolBufferException {
+      java.nio.ByteBuffer data) throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
+
   public static build.buf.validate.conformance.harness.CaseResult parseFrom(
-      java.nio.ByteBuffer data,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      java.nio.ByteBuffer data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
+
   public static build.buf.validate.conformance.harness.CaseResult parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
+
   public static build.buf.validate.conformance.harness.CaseResult parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
+
   public static build.buf.validate.conformance.harness.CaseResult parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
+
   public static build.buf.validate.conformance.harness.CaseResult parseFrom(
-      byte[] data,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      byte[] data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static build.buf.validate.conformance.harness.CaseResult parseFrom(java.io.InputStream input)
-      throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input);
-  }
+
   public static build.buf.validate.conformance.harness.CaseResult parseFrom(
-      java.io.InputStream input,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-      throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input, extensionRegistry);
+      java.io.InputStream input) throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
   }
 
-  public static build.buf.validate.conformance.harness.CaseResult parseDelimitedFrom(java.io.InputStream input)
+  public static build.buf.validate.conformance.harness.CaseResult parseFrom(
+      java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseDelimitedWithIOException(PARSER, input);
+    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+        PARSER, input, extensionRegistry);
   }
 
   public static build.buf.validate.conformance.harness.CaseResult parseDelimitedFrom(
-      java.io.InputStream input,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-      throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+      java.io.InputStream input) throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input);
   }
+
+  public static build.buf.validate.conformance.harness.CaseResult parseDelimitedFrom(
+      java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(
+        PARSER, input, extensionRegistry);
+  }
+
   public static build.buf.validate.conformance.harness.CaseResult parseFrom(
-      com.google.protobuf.CodedInputStream input)
-      throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input);
+      com.google.protobuf.CodedInputStream input) throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
   }
+
   public static build.buf.validate.conformance.harness.CaseResult parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input, extensionRegistry);
+    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+        PARSER, input, extensionRegistry);
   }
 
   @java.lang.Override
-  public Builder newBuilderForType() { return newBuilder(); }
+  public Builder newBuilderForType() {
+    return newBuilder();
+  }
+
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
+
   public static Builder newBuilder(build.buf.validate.conformance.harness.CaseResult prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
+
   @java.lang.Override
   public Builder toBuilder() {
-    return this == DEFAULT_INSTANCE
-        ? new Builder() : new Builder().mergeFrom(this);
+    return this == DEFAULT_INSTANCE ? new Builder() : new Builder().mergeFrom(this);
   }
 
   @java.lang.Override
-  protected Builder newBuilderForType(
-      com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+  protected Builder newBuilderForType(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
     Builder builder = new Builder(parent);
     return builder;
   }
+
   /**
+   *
+   *
    * <pre>
    * A case result is a single test case result.
    * </pre>
    *
    * Protobuf type {@code buf.validate.conformance.harness.CaseResult}
    */
-  public static final class Builder extends
-      com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+  public static final class Builder extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
+      implements
       // @@protoc_insertion_point(builder_implements:buf.validate.conformance.harness.CaseResult)
       build.buf.validate.conformance.harness.CaseResultOrBuilder {
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return build.buf.validate.conformance.harness.ResultsProto.internal_static_buf_validate_conformance_harness_CaseResult_descriptor;
+    public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+      return build.buf.validate.conformance.harness.ResultsProto
+          .internal_static_buf_validate_conformance_harness_CaseResult_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return build.buf.validate.conformance.harness.ResultsProto.internal_static_buf_validate_conformance_harness_CaseResult_fieldAccessorTable
+      return build.buf.validate.conformance.harness.ResultsProto
+          .internal_static_buf_validate_conformance_harness_CaseResult_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              build.buf.validate.conformance.harness.CaseResult.class, build.buf.validate.conformance.harness.CaseResult.Builder.class);
+              build.buf.validate.conformance.harness.CaseResult.class,
+              build.buf.validate.conformance.harness.CaseResult.Builder.class);
     }
 
     // Construct using build.buf.validate.conformance.harness.CaseResult.newBuilder()
-    private Builder() {
+    private Builder() {}
 
-    }
-
-    private Builder(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+    private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
       super(parent);
-
     }
+
     @java.lang.Override
     public Builder clear() {
       super.clear();
@@ -522,9 +575,9 @@ private static final long serialVersionUID = 0L;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Descriptors.Descriptor
-        getDescriptorForType() {
-      return build.buf.validate.conformance.harness.ResultsProto.internal_static_buf_validate_conformance_harness_CaseResult_descriptor;
+    public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
+      return build.buf.validate.conformance.harness.ResultsProto
+          .internal_static_buf_validate_conformance_harness_CaseResult_descriptor;
     }
 
     @java.lang.Override
@@ -543,8 +596,11 @@ private static final long serialVersionUID = 0L;
 
     @java.lang.Override
     public build.buf.validate.conformance.harness.CaseResult buildPartial() {
-      build.buf.validate.conformance.harness.CaseResult result = new build.buf.validate.conformance.harness.CaseResult(this);
-      if (bitField0_ != 0) { buildPartial0(result); }
+      build.buf.validate.conformance.harness.CaseResult result =
+          new build.buf.validate.conformance.harness.CaseResult(this);
+      if (bitField0_ != 0) {
+        buildPartial0(result);
+      }
       onBuilt();
       return result;
     }
@@ -558,19 +614,13 @@ private static final long serialVersionUID = 0L;
         result.success_ = success_;
       }
       if (((from_bitField0_ & 0x00000004) != 0)) {
-        result.wanted_ = wantedBuilder_ == null
-            ? wanted_
-            : wantedBuilder_.build();
+        result.wanted_ = wantedBuilder_ == null ? wanted_ : wantedBuilder_.build();
       }
       if (((from_bitField0_ & 0x00000008) != 0)) {
-        result.got_ = gotBuilder_ == null
-            ? got_
-            : gotBuilder_.build();
+        result.got_ = gotBuilder_ == null ? got_ : gotBuilder_.build();
       }
       if (((from_bitField0_ & 0x00000010) != 0)) {
-        result.input_ = inputBuilder_ == null
-            ? input_
-            : inputBuilder_.build();
+        result.input_ = inputBuilder_ == null ? input_ : inputBuilder_.build();
       }
       if (((from_bitField0_ & 0x00000020) != 0)) {
         result.expectedFailure_ = expectedFailure_;
@@ -581,38 +631,39 @@ private static final long serialVersionUID = 0L;
     public Builder clone() {
       return super.clone();
     }
+
     @java.lang.Override
     public Builder setField(
-        com.google.protobuf.Descriptors.FieldDescriptor field,
-        java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
       return super.setField(field, value);
     }
+
     @java.lang.Override
-    public Builder clearField(
-        com.google.protobuf.Descriptors.FieldDescriptor field) {
+    public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
       return super.clearField(field);
     }
+
     @java.lang.Override
-    public Builder clearOneof(
-        com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+    public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
       return super.clearOneof(oneof);
     }
+
     @java.lang.Override
     public Builder setRepeatedField(
-        com.google.protobuf.Descriptors.FieldDescriptor field,
-        int index, java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field, int index, java.lang.Object value) {
       return super.setRepeatedField(field, index, value);
     }
+
     @java.lang.Override
     public Builder addRepeatedField(
-        com.google.protobuf.Descriptors.FieldDescriptor field,
-        java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
       return super.addRepeatedField(field, value);
     }
+
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
       if (other instanceof build.buf.validate.conformance.harness.CaseResult) {
-        return mergeFrom((build.buf.validate.conformance.harness.CaseResult)other);
+        return mergeFrom((build.buf.validate.conformance.harness.CaseResult) other);
       } else {
         super.mergeFrom(other);
         return this;
@@ -620,7 +671,8 @@ private static final long serialVersionUID = 0L;
     }
 
     public Builder mergeFrom(build.buf.validate.conformance.harness.CaseResult other) {
-      if (other == build.buf.validate.conformance.harness.CaseResult.getDefaultInstance()) return this;
+      if (other == build.buf.validate.conformance.harness.CaseResult.getDefaultInstance())
+        return this;
       if (!other.getName().isEmpty()) {
         name_ = other.name_;
         bitField0_ |= 0x00000001;
@@ -667,48 +719,49 @@ private static final long serialVersionUID = 0L;
             case 0:
               done = true;
               break;
-            case 10: {
-              name_ = input.readStringRequireUtf8();
-              bitField0_ |= 0x00000001;
-              break;
-            } // case 10
-            case 16: {
-              success_ = input.readBool();
-              bitField0_ |= 0x00000002;
-              break;
-            } // case 16
-            case 26: {
-              input.readMessage(
-                  getWantedFieldBuilder().getBuilder(),
-                  extensionRegistry);
-              bitField0_ |= 0x00000004;
-              break;
-            } // case 26
-            case 34: {
-              input.readMessage(
-                  getGotFieldBuilder().getBuilder(),
-                  extensionRegistry);
-              bitField0_ |= 0x00000008;
-              break;
-            } // case 34
-            case 42: {
-              input.readMessage(
-                  getInputFieldBuilder().getBuilder(),
-                  extensionRegistry);
-              bitField0_ |= 0x00000010;
-              break;
-            } // case 42
-            case 48: {
-              expectedFailure_ = input.readBool();
-              bitField0_ |= 0x00000020;
-              break;
-            } // case 48
-            default: {
-              if (!super.parseUnknownField(input, extensionRegistry, tag)) {
-                done = true; // was an endgroup tag
-              }
-              break;
-            } // default:
+            case 10:
+              {
+                name_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 10
+            case 16:
+              {
+                success_ = input.readBool();
+                bitField0_ |= 0x00000002;
+                break;
+              } // case 16
+            case 26:
+              {
+                input.readMessage(getWantedFieldBuilder().getBuilder(), extensionRegistry);
+                bitField0_ |= 0x00000004;
+                break;
+              } // case 26
+            case 34:
+              {
+                input.readMessage(getGotFieldBuilder().getBuilder(), extensionRegistry);
+                bitField0_ |= 0x00000008;
+                break;
+              } // case 34
+            case 42:
+              {
+                input.readMessage(getInputFieldBuilder().getBuilder(), extensionRegistry);
+                bitField0_ |= 0x00000010;
+                break;
+              } // case 42
+            case 48:
+              {
+                expectedFailure_ = input.readBool();
+                bitField0_ |= 0x00000020;
+                break;
+              } // case 48
+            default:
+              {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
           } // switch (tag)
         } // while (!done)
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -718,22 +771,26 @@ private static final long serialVersionUID = 0L;
       } // finally
       return this;
     }
+
     private int bitField0_;
 
     private java.lang.Object name_ = "";
+
     /**
+     *
+     *
      * <pre>
      * The case name.
      * </pre>
      *
      * <code>string name = 1 [json_name = "name"];</code>
+     *
      * @return The name.
      */
     public java.lang.String getName() {
       java.lang.Object ref = name_;
       if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs =
-            (com.google.protobuf.ByteString) ref;
+        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         name_ = s;
         return s;
@@ -741,50 +798,61 @@ private static final long serialVersionUID = 0L;
         return (java.lang.String) ref;
       }
     }
+
     /**
+     *
+     *
      * <pre>
      * The case name.
      * </pre>
      *
      * <code>string name = 1 [json_name = "name"];</code>
+     *
      * @return The bytes for name.
      */
-    public com.google.protobuf.ByteString
-        getNameBytes() {
+    public com.google.protobuf.ByteString getNameBytes() {
       java.lang.Object ref = name_;
       if (ref instanceof String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
+        com.google.protobuf.ByteString b =
+            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
         name_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
     }
+
     /**
+     *
+     *
      * <pre>
      * The case name.
      * </pre>
      *
      * <code>string name = 1 [json_name = "name"];</code>
+     *
      * @param value The name to set.
      * @return This builder for chaining.
      */
-    public Builder setName(
-        java.lang.String value) {
-      if (value == null) { throw new NullPointerException(); }
+    public Builder setName(java.lang.String value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
       name_ = value;
       bitField0_ |= 0x00000001;
       onChanged();
       return this;
     }
+
     /**
+     *
+     *
      * <pre>
      * The case name.
      * </pre>
      *
      * <code>string name = 1 [json_name = "name"];</code>
+     *
      * @return This builder for chaining.
      */
     public Builder clearName() {
@@ -793,18 +861,23 @@ private static final long serialVersionUID = 0L;
       onChanged();
       return this;
     }
+
     /**
+     *
+     *
      * <pre>
      * The case name.
      * </pre>
      *
      * <code>string name = 1 [json_name = "name"];</code>
+     *
      * @param value The bytes for name to set.
      * @return This builder for chaining.
      */
-    public Builder setNameBytes(
-        com.google.protobuf.ByteString value) {
-      if (value == null) { throw new NullPointerException(); }
+    public Builder setNameBytes(com.google.protobuf.ByteString value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
       checkByteStringIsUtf8(value);
       name_ = value;
       bitField0_ |= 0x00000001;
@@ -812,25 +885,33 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private boolean success_ ;
+    private boolean success_;
+
     /**
+     *
+     *
      * <pre>
      * Success state of the test case. True if the test case succeeded.
      * </pre>
      *
      * <code>bool success = 2 [json_name = "success"];</code>
+     *
      * @return The success.
      */
     @java.lang.Override
     public boolean getSuccess() {
       return success_;
     }
+
     /**
+     *
+     *
      * <pre>
      * Success state of the test case. True if the test case succeeded.
      * </pre>
      *
      * <code>bool success = 2 [json_name = "success"];</code>
+     *
      * @param value The success to set.
      * @return This builder for chaining.
      */
@@ -841,12 +922,16 @@ private static final long serialVersionUID = 0L;
       onChanged();
       return this;
     }
+
     /**
+     *
+     *
      * <pre>
      * Success state of the test case. True if the test case succeeded.
      * </pre>
      *
      * <code>bool success = 2 [json_name = "success"];</code>
+     *
      * @return This builder for chaining.
      */
     public Builder clearSuccess() {
@@ -858,34 +943,50 @@ private static final long serialVersionUID = 0L;
 
     private build.buf.validate.conformance.harness.TestResult wanted_;
     private com.google.protobuf.SingleFieldBuilderV3<
-        build.buf.validate.conformance.harness.TestResult, build.buf.validate.conformance.harness.TestResult.Builder, build.buf.validate.conformance.harness.TestResultOrBuilder> wantedBuilder_;
+            build.buf.validate.conformance.harness.TestResult,
+            build.buf.validate.conformance.harness.TestResult.Builder,
+            build.buf.validate.conformance.harness.TestResultOrBuilder>
+        wantedBuilder_;
+
     /**
+     *
+     *
      * <pre>
      * The expected result.
      * </pre>
      *
      * <code>.buf.validate.conformance.harness.TestResult wanted = 3 [json_name = "wanted"];</code>
+     *
      * @return Whether the wanted field is set.
      */
     public boolean hasWanted() {
       return ((bitField0_ & 0x00000004) != 0);
     }
+
     /**
+     *
+     *
      * <pre>
      * The expected result.
      * </pre>
      *
      * <code>.buf.validate.conformance.harness.TestResult wanted = 3 [json_name = "wanted"];</code>
+     *
      * @return The wanted.
      */
     public build.buf.validate.conformance.harness.TestResult getWanted() {
       if (wantedBuilder_ == null) {
-        return wanted_ == null ? build.buf.validate.conformance.harness.TestResult.getDefaultInstance() : wanted_;
+        return wanted_ == null
+            ? build.buf.validate.conformance.harness.TestResult.getDefaultInstance()
+            : wanted_;
       } else {
         return wantedBuilder_.getMessage();
       }
     }
+
     /**
+     *
+     *
      * <pre>
      * The expected result.
      * </pre>
@@ -905,7 +1006,10 @@ private static final long serialVersionUID = 0L;
       onChanged();
       return this;
     }
+
     /**
+     *
+     *
      * <pre>
      * The expected result.
      * </pre>
@@ -923,7 +1027,10 @@ private static final long serialVersionUID = 0L;
       onChanged();
       return this;
     }
+
     /**
+     *
+     *
      * <pre>
      * The expected result.
      * </pre>
@@ -932,9 +1039,9 @@ private static final long serialVersionUID = 0L;
      */
     public Builder mergeWanted(build.buf.validate.conformance.harness.TestResult value) {
       if (wantedBuilder_ == null) {
-        if (((bitField0_ & 0x00000004) != 0) &&
-          wanted_ != null &&
-          wanted_ != build.buf.validate.conformance.harness.TestResult.getDefaultInstance()) {
+        if (((bitField0_ & 0x00000004) != 0)
+            && wanted_ != null
+            && wanted_ != build.buf.validate.conformance.harness.TestResult.getDefaultInstance()) {
           getWantedBuilder().mergeFrom(value);
         } else {
           wanted_ = value;
@@ -946,7 +1053,10 @@ private static final long serialVersionUID = 0L;
       onChanged();
       return this;
     }
+
     /**
+     *
+     *
      * <pre>
      * The expected result.
      * </pre>
@@ -963,7 +1073,10 @@ private static final long serialVersionUID = 0L;
       onChanged();
       return this;
     }
+
     /**
+     *
+     *
      * <pre>
      * The expected result.
      * </pre>
@@ -975,7 +1088,10 @@ private static final long serialVersionUID = 0L;
       onChanged();
       return getWantedFieldBuilder().getBuilder();
     }
+
     /**
+     *
+     *
      * <pre>
      * The expected result.
      * </pre>
@@ -986,11 +1102,15 @@ private static final long serialVersionUID = 0L;
       if (wantedBuilder_ != null) {
         return wantedBuilder_.getMessageOrBuilder();
       } else {
-        return wanted_ == null ?
-            build.buf.validate.conformance.harness.TestResult.getDefaultInstance() : wanted_;
+        return wanted_ == null
+            ? build.buf.validate.conformance.harness.TestResult.getDefaultInstance()
+            : wanted_;
       }
     }
+
     /**
+     *
+     *
      * <pre>
      * The expected result.
      * </pre>
@@ -998,14 +1118,17 @@ private static final long serialVersionUID = 0L;
      * <code>.buf.validate.conformance.harness.TestResult wanted = 3 [json_name = "wanted"];</code>
      */
     private com.google.protobuf.SingleFieldBuilderV3<
-        build.buf.validate.conformance.harness.TestResult, build.buf.validate.conformance.harness.TestResult.Builder, build.buf.validate.conformance.harness.TestResultOrBuilder> 
+            build.buf.validate.conformance.harness.TestResult,
+            build.buf.validate.conformance.harness.TestResult.Builder,
+            build.buf.validate.conformance.harness.TestResultOrBuilder>
         getWantedFieldBuilder() {
       if (wantedBuilder_ == null) {
-        wantedBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-            build.buf.validate.conformance.harness.TestResult, build.buf.validate.conformance.harness.TestResult.Builder, build.buf.validate.conformance.harness.TestResultOrBuilder>(
-                getWanted(),
-                getParentForChildren(),
-                isClean());
+        wantedBuilder_ =
+            new com.google.protobuf.SingleFieldBuilderV3<
+                build.buf.validate.conformance.harness.TestResult,
+                build.buf.validate.conformance.harness.TestResult.Builder,
+                build.buf.validate.conformance.harness.TestResultOrBuilder>(
+                getWanted(), getParentForChildren(), isClean());
         wanted_ = null;
       }
       return wantedBuilder_;
@@ -1013,34 +1136,50 @@ private static final long serialVersionUID = 0L;
 
     private build.buf.validate.conformance.harness.TestResult got_;
     private com.google.protobuf.SingleFieldBuilderV3<
-        build.buf.validate.conformance.harness.TestResult, build.buf.validate.conformance.harness.TestResult.Builder, build.buf.validate.conformance.harness.TestResultOrBuilder> gotBuilder_;
+            build.buf.validate.conformance.harness.TestResult,
+            build.buf.validate.conformance.harness.TestResult.Builder,
+            build.buf.validate.conformance.harness.TestResultOrBuilder>
+        gotBuilder_;
+
     /**
+     *
+     *
      * <pre>
      * The actual result.
      * </pre>
      *
      * <code>.buf.validate.conformance.harness.TestResult got = 4 [json_name = "got"];</code>
+     *
      * @return Whether the got field is set.
      */
     public boolean hasGot() {
       return ((bitField0_ & 0x00000008) != 0);
     }
+
     /**
+     *
+     *
      * <pre>
      * The actual result.
      * </pre>
      *
      * <code>.buf.validate.conformance.harness.TestResult got = 4 [json_name = "got"];</code>
+     *
      * @return The got.
      */
     public build.buf.validate.conformance.harness.TestResult getGot() {
       if (gotBuilder_ == null) {
-        return got_ == null ? build.buf.validate.conformance.harness.TestResult.getDefaultInstance() : got_;
+        return got_ == null
+            ? build.buf.validate.conformance.harness.TestResult.getDefaultInstance()
+            : got_;
       } else {
         return gotBuilder_.getMessage();
       }
     }
+
     /**
+     *
+     *
      * <pre>
      * The actual result.
      * </pre>
@@ -1060,7 +1199,10 @@ private static final long serialVersionUID = 0L;
       onChanged();
       return this;
     }
+
     /**
+     *
+     *
      * <pre>
      * The actual result.
      * </pre>
@@ -1078,7 +1220,10 @@ private static final long serialVersionUID = 0L;
       onChanged();
       return this;
     }
+
     /**
+     *
+     *
      * <pre>
      * The actual result.
      * </pre>
@@ -1087,9 +1232,9 @@ private static final long serialVersionUID = 0L;
      */
     public Builder mergeGot(build.buf.validate.conformance.harness.TestResult value) {
       if (gotBuilder_ == null) {
-        if (((bitField0_ & 0x00000008) != 0) &&
-          got_ != null &&
-          got_ != build.buf.validate.conformance.harness.TestResult.getDefaultInstance()) {
+        if (((bitField0_ & 0x00000008) != 0)
+            && got_ != null
+            && got_ != build.buf.validate.conformance.harness.TestResult.getDefaultInstance()) {
           getGotBuilder().mergeFrom(value);
         } else {
           got_ = value;
@@ -1101,7 +1246,10 @@ private static final long serialVersionUID = 0L;
       onChanged();
       return this;
     }
+
     /**
+     *
+     *
      * <pre>
      * The actual result.
      * </pre>
@@ -1118,7 +1266,10 @@ private static final long serialVersionUID = 0L;
       onChanged();
       return this;
     }
+
     /**
+     *
+     *
      * <pre>
      * The actual result.
      * </pre>
@@ -1130,7 +1281,10 @@ private static final long serialVersionUID = 0L;
       onChanged();
       return getGotFieldBuilder().getBuilder();
     }
+
     /**
+     *
+     *
      * <pre>
      * The actual result.
      * </pre>
@@ -1141,11 +1295,15 @@ private static final long serialVersionUID = 0L;
       if (gotBuilder_ != null) {
         return gotBuilder_.getMessageOrBuilder();
       } else {
-        return got_ == null ?
-            build.buf.validate.conformance.harness.TestResult.getDefaultInstance() : got_;
+        return got_ == null
+            ? build.buf.validate.conformance.harness.TestResult.getDefaultInstance()
+            : got_;
       }
     }
+
     /**
+     *
+     *
      * <pre>
      * The actual result.
      * </pre>
@@ -1153,14 +1311,17 @@ private static final long serialVersionUID = 0L;
      * <code>.buf.validate.conformance.harness.TestResult got = 4 [json_name = "got"];</code>
      */
     private com.google.protobuf.SingleFieldBuilderV3<
-        build.buf.validate.conformance.harness.TestResult, build.buf.validate.conformance.harness.TestResult.Builder, build.buf.validate.conformance.harness.TestResultOrBuilder> 
+            build.buf.validate.conformance.harness.TestResult,
+            build.buf.validate.conformance.harness.TestResult.Builder,
+            build.buf.validate.conformance.harness.TestResultOrBuilder>
         getGotFieldBuilder() {
       if (gotBuilder_ == null) {
-        gotBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-            build.buf.validate.conformance.harness.TestResult, build.buf.validate.conformance.harness.TestResult.Builder, build.buf.validate.conformance.harness.TestResultOrBuilder>(
-                getGot(),
-                getParentForChildren(),
-                isClean());
+        gotBuilder_ =
+            new com.google.protobuf.SingleFieldBuilderV3<
+                build.buf.validate.conformance.harness.TestResult,
+                build.buf.validate.conformance.harness.TestResult.Builder,
+                build.buf.validate.conformance.harness.TestResultOrBuilder>(
+                getGot(), getParentForChildren(), isClean());
         got_ = null;
       }
       return gotBuilder_;
@@ -1168,24 +1329,35 @@ private static final long serialVersionUID = 0L;
 
     private com.google.protobuf.Any input_;
     private com.google.protobuf.SingleFieldBuilderV3<
-        com.google.protobuf.Any, com.google.protobuf.Any.Builder, com.google.protobuf.AnyOrBuilder> inputBuilder_;
+            com.google.protobuf.Any,
+            com.google.protobuf.Any.Builder,
+            com.google.protobuf.AnyOrBuilder>
+        inputBuilder_;
+
     /**
+     *
+     *
      * <pre>
      * The input used to invoke the test case.
      * </pre>
      *
      * <code>.google.protobuf.Any input = 5 [json_name = "input"];</code>
+     *
      * @return Whether the input field is set.
      */
     public boolean hasInput() {
       return ((bitField0_ & 0x00000010) != 0);
     }
+
     /**
+     *
+     *
      * <pre>
      * The input used to invoke the test case.
      * </pre>
      *
      * <code>.google.protobuf.Any input = 5 [json_name = "input"];</code>
+     *
      * @return The input.
      */
     public com.google.protobuf.Any getInput() {
@@ -1195,7 +1367,10 @@ private static final long serialVersionUID = 0L;
         return inputBuilder_.getMessage();
       }
     }
+
     /**
+     *
+     *
      * <pre>
      * The input used to invoke the test case.
      * </pre>
@@ -1215,15 +1390,17 @@ private static final long serialVersionUID = 0L;
       onChanged();
       return this;
     }
+
     /**
+     *
+     *
      * <pre>
      * The input used to invoke the test case.
      * </pre>
      *
      * <code>.google.protobuf.Any input = 5 [json_name = "input"];</code>
      */
-    public Builder setInput(
-        com.google.protobuf.Any.Builder builderForValue) {
+    public Builder setInput(com.google.protobuf.Any.Builder builderForValue) {
       if (inputBuilder_ == null) {
         input_ = builderForValue.build();
       } else {
@@ -1233,7 +1410,10 @@ private static final long serialVersionUID = 0L;
       onChanged();
       return this;
     }
+
     /**
+     *
+     *
      * <pre>
      * The input used to invoke the test case.
      * </pre>
@@ -1242,9 +1422,9 @@ private static final long serialVersionUID = 0L;
      */
     public Builder mergeInput(com.google.protobuf.Any value) {
       if (inputBuilder_ == null) {
-        if (((bitField0_ & 0x00000010) != 0) &&
-          input_ != null &&
-          input_ != com.google.protobuf.Any.getDefaultInstance()) {
+        if (((bitField0_ & 0x00000010) != 0)
+            && input_ != null
+            && input_ != com.google.protobuf.Any.getDefaultInstance()) {
           getInputBuilder().mergeFrom(value);
         } else {
           input_ = value;
@@ -1256,7 +1436,10 @@ private static final long serialVersionUID = 0L;
       onChanged();
       return this;
     }
+
     /**
+     *
+     *
      * <pre>
      * The input used to invoke the test case.
      * </pre>
@@ -1273,7 +1456,10 @@ private static final long serialVersionUID = 0L;
       onChanged();
       return this;
     }
+
     /**
+     *
+     *
      * <pre>
      * The input used to invoke the test case.
      * </pre>
@@ -1285,7 +1471,10 @@ private static final long serialVersionUID = 0L;
       onChanged();
       return getInputFieldBuilder().getBuilder();
     }
+
     /**
+     *
+     *
      * <pre>
      * The input used to invoke the test case.
      * </pre>
@@ -1296,11 +1485,13 @@ private static final long serialVersionUID = 0L;
       if (inputBuilder_ != null) {
         return inputBuilder_.getMessageOrBuilder();
       } else {
-        return input_ == null ?
-            com.google.protobuf.Any.getDefaultInstance() : input_;
+        return input_ == null ? com.google.protobuf.Any.getDefaultInstance() : input_;
       }
     }
+
     /**
+     *
+     *
      * <pre>
      * The input used to invoke the test case.
      * </pre>
@@ -1308,38 +1499,48 @@ private static final long serialVersionUID = 0L;
      * <code>.google.protobuf.Any input = 5 [json_name = "input"];</code>
      */
     private com.google.protobuf.SingleFieldBuilderV3<
-        com.google.protobuf.Any, com.google.protobuf.Any.Builder, com.google.protobuf.AnyOrBuilder> 
+            com.google.protobuf.Any,
+            com.google.protobuf.Any.Builder,
+            com.google.protobuf.AnyOrBuilder>
         getInputFieldBuilder() {
       if (inputBuilder_ == null) {
-        inputBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-            com.google.protobuf.Any, com.google.protobuf.Any.Builder, com.google.protobuf.AnyOrBuilder>(
-                getInput(),
-                getParentForChildren(),
-                isClean());
+        inputBuilder_ =
+            new com.google.protobuf.SingleFieldBuilderV3<
+                com.google.protobuf.Any,
+                com.google.protobuf.Any.Builder,
+                com.google.protobuf.AnyOrBuilder>(getInput(), getParentForChildren(), isClean());
         input_ = null;
       }
       return inputBuilder_;
     }
 
-    private boolean expectedFailure_ ;
+    private boolean expectedFailure_;
+
     /**
+     *
+     *
      * <pre>
      * Denotes if the test is expected to fail. True, if the test case was expected to fail.
      * </pre>
      *
      * <code>bool expected_failure = 6 [json_name = "expectedFailure"];</code>
+     *
      * @return The expectedFailure.
      */
     @java.lang.Override
     public boolean getExpectedFailure() {
       return expectedFailure_;
     }
+
     /**
+     *
+     *
      * <pre>
      * Denotes if the test is expected to fail. True, if the test case was expected to fail.
      * </pre>
      *
      * <code>bool expected_failure = 6 [json_name = "expectedFailure"];</code>
+     *
      * @param value The expectedFailure to set.
      * @return This builder for chaining.
      */
@@ -1350,12 +1551,16 @@ private static final long serialVersionUID = 0L;
       onChanged();
       return this;
     }
+
     /**
+     *
+     *
      * <pre>
      * Denotes if the test is expected to fail. True, if the test case was expected to fail.
      * </pre>
      *
      * <code>bool expected_failure = 6 [json_name = "expectedFailure"];</code>
+     *
      * @return This builder for chaining.
      */
     public Builder clearExpectedFailure() {
@@ -1364,9 +1569,9 @@ private static final long serialVersionUID = 0L;
       onChanged();
       return this;
     }
+
     @java.lang.Override
-    public final Builder setUnknownFields(
-        final com.google.protobuf.UnknownFieldSet unknownFields) {
+    public final Builder setUnknownFields(final com.google.protobuf.UnknownFieldSet unknownFields) {
       return super.setUnknownFields(unknownFields);
     }
 
@@ -1376,12 +1581,12 @@ private static final long serialVersionUID = 0L;
       return super.mergeUnknownFields(unknownFields);
     }
 
-
     // @@protoc_insertion_point(builder_scope:buf.validate.conformance.harness.CaseResult)
   }
 
   // @@protoc_insertion_point(class_scope:buf.validate.conformance.harness.CaseResult)
   private static final build.buf.validate.conformance.harness.CaseResult DEFAULT_INSTANCE;
+
   static {
     DEFAULT_INSTANCE = new build.buf.validate.conformance.harness.CaseResult();
   }
@@ -1390,27 +1595,27 @@ private static final long serialVersionUID = 0L;
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<CaseResult>
-      PARSER = new com.google.protobuf.AbstractParser<CaseResult>() {
-    @java.lang.Override
-    public CaseResult parsePartialFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      Builder builder = newBuilder();
-      try {
-        builder.mergeFrom(input, extensionRegistry);
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(builder.buildPartial());
-      } catch (com.google.protobuf.UninitializedMessageException e) {
-        throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(e)
-            .setUnfinishedMessage(builder.buildPartial());
-      }
-      return builder.buildPartial();
-    }
-  };
+  private static final com.google.protobuf.Parser<CaseResult> PARSER =
+      new com.google.protobuf.AbstractParser<CaseResult>() {
+        @java.lang.Override
+        public CaseResult parsePartialFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+          Builder builder = newBuilder();
+          try {
+            builder.mergeFrom(input, extensionRegistry);
+          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+            throw e.setUnfinishedMessage(builder.buildPartial());
+          } catch (com.google.protobuf.UninitializedMessageException e) {
+            throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+          } catch (java.io.IOException e) {
+            throw new com.google.protobuf.InvalidProtocolBufferException(e)
+                .setUnfinishedMessage(builder.buildPartial());
+          }
+          return builder.buildPartial();
+        }
+      };
 
   public static com.google.protobuf.Parser<CaseResult> parser() {
     return PARSER;
@@ -1425,6 +1630,4 @@ private static final long serialVersionUID = 0L;
   public build.buf.validate.conformance.harness.CaseResult getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
-
 }
-

@@ -3,12 +3,14 @@
 
 package build.buf.validate.conformance.cases;
 
-public interface DoubleNotInOrBuilder extends
+public interface DoubleNotInOrBuilder
+    extends
     // @@protoc_insertion_point(interface_extends:buf.validate.conformance.cases.DoubleNotIn)
     com.google.protobuf.MessageOrBuilder {
 
   /**
    * <code>double val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
+   *
    * @return The val.
    */
   double getVal();

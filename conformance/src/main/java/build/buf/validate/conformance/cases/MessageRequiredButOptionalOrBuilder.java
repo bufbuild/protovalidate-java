@@ -3,22 +3,33 @@
 
 package build.buf.validate.conformance.cases;
 
-public interface MessageRequiredButOptionalOrBuilder extends
+public interface MessageRequiredButOptionalOrBuilder
+    extends
     // @@protoc_insertion_point(interface_extends:buf.validate.conformance.cases.MessageRequiredButOptional)
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>optional .buf.validate.conformance.cases.TestMsg val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
+   * <code>
+   * optional .buf.validate.conformance.cases.TestMsg val = 1 [json_name = "val", (.buf.validate.field) = { ... }
+   * </code>
+   *
    * @return Whether the val field is set.
    */
   boolean hasVal();
+
   /**
-   * <code>optional .buf.validate.conformance.cases.TestMsg val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
+   * <code>
+   * optional .buf.validate.conformance.cases.TestMsg val = 1 [json_name = "val", (.buf.validate.field) = { ... }
+   * </code>
+   *
    * @return The val.
    */
   build.buf.validate.conformance.cases.TestMsg getVal();
+
   /**
-   * <code>optional .buf.validate.conformance.cases.TestMsg val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
+   * <code>
+   * optional .buf.validate.conformance.cases.TestMsg val = 1 [json_name = "val", (.buf.validate.field) = { ... }
+   * </code>
    */
   build.buf.validate.conformance.cases.TestMsgOrBuilder getValOrBuilder();
 }

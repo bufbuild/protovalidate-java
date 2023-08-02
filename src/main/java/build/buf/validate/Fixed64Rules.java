@@ -4,21 +4,25 @@
 package build.buf.validate;
 
 /**
+ *
+ *
  * <pre>
  * Fixed64Rules describes the constraints applied to `fixed64` values.
  * </pre>
  *
  * Protobuf type {@code buf.validate.Fixed64Rules}
  */
-public final class Fixed64Rules extends
-    com.google.protobuf.GeneratedMessageV3 implements
+public final class Fixed64Rules extends com.google.protobuf.GeneratedMessageV3
+    implements
     // @@protoc_insertion_point(message_implements:buf.validate.Fixed64Rules)
     Fixed64RulesOrBuilder {
-private static final long serialVersionUID = 0L;
+  private static final long serialVersionUID = 0L;
+
   // Use Fixed64Rules.newBuilder() to construct.
   private Fixed64Rules(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
+
   private Fixed64Rules() {
     in_ = emptyLongList();
     notIn_ = emptyLongList();
@@ -26,20 +30,19 @@ private static final long serialVersionUID = 0L;
 
   @java.lang.Override
   @SuppressWarnings({"unused"})
-  protected java.lang.Object newInstance(
-      UnusedPrivateParameter unused) {
+  protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
     return new Fixed64Rules();
   }
 
-  public static final com.google.protobuf.Descriptors.Descriptor
-      getDescriptor() {
+  public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
     return build.buf.validate.ValidateProto.internal_static_buf_validate_Fixed64Rules_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return build.buf.validate.ValidateProto.internal_static_buf_validate_Fixed64Rules_fieldAccessorTable
+    return build.buf.validate.ValidateProto
+        .internal_static_buf_validate_Fixed64Rules_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
             build.buf.validate.Fixed64Rules.class, build.buf.validate.Fixed64Rules.Builder.class);
   }
@@ -47,40 +50,50 @@ private static final long serialVersionUID = 0L;
   private int bitField0_;
   public static final int CONST_FIELD_NUMBER = 1;
   private long const_ = 0L;
+
   /**
+   *
+   *
    * <pre>
-   *`const` requires the field value to exactly match the specified value. If
+   * `const` requires the field value to exactly match the specified value. If
    * the field value doesn't match, an error message is generated.
    *
-   *```proto
-   *message MyFixed64 {
+   * ```proto
+   * message MyFixed64 {
    *  // value must equal 42
    *   fixed64 value = 1 [(buf.validate.field).fixed64.const = 42];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
-   * <code>optional fixed64 const = 1 [json_name = "const", (.buf.validate.priv.field) = { ... }</code>
+   * <code>optional fixed64 const = 1 [json_name = "const", (.buf.validate.priv.field) = { ... }
+   * </code>
+   *
    * @return Whether the const field is set.
    */
   @java.lang.Override
   public boolean hasConst() {
     return ((bitField0_ & 0x00000001) != 0);
   }
+
   /**
+   *
+   *
    * <pre>
-   *`const` requires the field value to exactly match the specified value. If
+   * `const` requires the field value to exactly match the specified value. If
    * the field value doesn't match, an error message is generated.
    *
-   *```proto
-   *message MyFixed64 {
+   * ```proto
+   * message MyFixed64 {
    *  // value must equal 42
    *   fixed64 value = 1 [(buf.validate.field).fixed64.const = 42];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
-   * <code>optional fixed64 const = 1 [json_name = "const", (.buf.validate.priv.field) = { ... }</code>
+   * <code>optional fixed64 const = 1 [json_name = "const", (.buf.validate.priv.field) = { ... }
+   * </code>
+   *
    * @return The const.
    */
   @java.lang.Override
@@ -90,42 +103,50 @@ private static final long serialVersionUID = 0L;
 
   public static final int LT_FIELD_NUMBER = 2;
   private long lt_ = 0L;
+
   /**
+   *
+   *
    * <pre>
-   *`lt` requires the field value to be less than the specified value (field &lt;
+   * `lt` requires the field value to be less than the specified value (field &lt;
    * value). If the field value is equal to or greater than the specified value,
    * an error message is generated.
    *
-   *```proto
-   *message MyFixed64 {
+   * ```proto
+   * message MyFixed64 {
    *  // value must be less than 10
    *   fixed64 value = 1 [(buf.validate.field).fixed64.lt = 10];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
    * <code>optional fixed64 lt = 2 [json_name = "lt", (.buf.validate.priv.field) = { ... }</code>
+   *
    * @return Whether the lt field is set.
    */
   @java.lang.Override
   public boolean hasLt() {
     return ((bitField0_ & 0x00000002) != 0);
   }
+
   /**
+   *
+   *
    * <pre>
-   *`lt` requires the field value to be less than the specified value (field &lt;
+   * `lt` requires the field value to be less than the specified value (field &lt;
    * value). If the field value is equal to or greater than the specified value,
    * an error message is generated.
    *
-   *```proto
-   *message MyFixed64 {
+   * ```proto
+   * message MyFixed64 {
    *  // value must be less than 10
    *   fixed64 value = 1 [(buf.validate.field).fixed64.lt = 10];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
    * <code>optional fixed64 lt = 2 [json_name = "lt", (.buf.validate.priv.field) = { ... }</code>
+   *
    * @return The lt.
    */
   @java.lang.Override
@@ -135,42 +156,50 @@ private static final long serialVersionUID = 0L;
 
   public static final int LTE_FIELD_NUMBER = 3;
   private long lte_ = 0L;
+
   /**
+   *
+   *
    * <pre>
-   *`lte` requires the field value to be less than or equal to the specified
+   * `lte` requires the field value to be less than or equal to the specified
    * value (field &lt;= value). If the field value is greater than the specified
    * value, an error message is generated.
    *
-   *```proto
-   *message MyFixed64 {
+   * ```proto
+   * message MyFixed64 {
    *  // value must be less than or equal to 10
    *   fixed64 value = 1 [(buf.validate.field).fixed64.lte = 10];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
    * <code>optional fixed64 lte = 3 [json_name = "lte", (.buf.validate.priv.field) = { ... }</code>
+   *
    * @return Whether the lte field is set.
    */
   @java.lang.Override
   public boolean hasLte() {
     return ((bitField0_ & 0x00000004) != 0);
   }
+
   /**
+   *
+   *
    * <pre>
-   *`lte` requires the field value to be less than or equal to the specified
+   * `lte` requires the field value to be less than or equal to the specified
    * value (field &lt;= value). If the field value is greater than the specified
    * value, an error message is generated.
    *
-   *```proto
-   *message MyFixed64 {
+   * ```proto
+   * message MyFixed64 {
    *  // value must be less than or equal to 10
    *   fixed64 value = 1 [(buf.validate.field).fixed64.lte = 10];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
    * <code>optional fixed64 lte = 3 [json_name = "lte", (.buf.validate.priv.field) = { ... }</code>
+   *
    * @return The lte.
    */
   @java.lang.Override
@@ -180,16 +209,19 @@ private static final long serialVersionUID = 0L;
 
   public static final int GT_FIELD_NUMBER = 4;
   private long gt_ = 0L;
+
   /**
+   *
+   *
    * <pre>
-   *`gt` requires the field value to be greater than the specified value
+   * `gt` requires the field value to be greater than the specified value
    * (exclusive). If the value of `gt` is larger than a specified `lt` or
    * `lte`, the range is reversed, and the field value must be outside the
    * specified range. If the field value doesn't meet the required conditions,
    * an error message is generated.
    *
-   *```proto
-   *message MyFixed64 {
+   * ```proto
+   * message MyFixed64 {
    *  // value must be greater than 5 [fixed64.gt]
    *  fixed64 value = 1 [(buf.validate.field).fixed64.gt = 5];
    *
@@ -198,27 +230,31 @@ private static final long serialVersionUID = 0L;
    *
    *  // value must be greater than 10 or less than 5 [fixed64.gt_lt_exclusive]
    *  fixed64 another_value = 3 [(buf.validate.field).fixed64 = { gt: 10, lt: 5 }];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
    * <code>optional fixed64 gt = 4 [json_name = "gt", (.buf.validate.priv.field) = { ... }</code>
+   *
    * @return Whether the gt field is set.
    */
   @java.lang.Override
   public boolean hasGt() {
     return ((bitField0_ & 0x00000008) != 0);
   }
+
   /**
+   *
+   *
    * <pre>
-   *`gt` requires the field value to be greater than the specified value
+   * `gt` requires the field value to be greater than the specified value
    * (exclusive). If the value of `gt` is larger than a specified `lt` or
    * `lte`, the range is reversed, and the field value must be outside the
    * specified range. If the field value doesn't meet the required conditions,
    * an error message is generated.
    *
-   *```proto
-   *message MyFixed64 {
+   * ```proto
+   * message MyFixed64 {
    *  // value must be greater than 5 [fixed64.gt]
    *  fixed64 value = 1 [(buf.validate.field).fixed64.gt = 5];
    *
@@ -227,11 +263,12 @@ private static final long serialVersionUID = 0L;
    *
    *  // value must be greater than 10 or less than 5 [fixed64.gt_lt_exclusive]
    *  fixed64 another_value = 3 [(buf.validate.field).fixed64 = { gt: 10, lt: 5 }];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
    * <code>optional fixed64 gt = 4 [json_name = "gt", (.buf.validate.priv.field) = { ... }</code>
+   *
    * @return The gt.
    */
   @java.lang.Override
@@ -241,16 +278,19 @@ private static final long serialVersionUID = 0L;
 
   public static final int GTE_FIELD_NUMBER = 5;
   private long gte_ = 0L;
+
   /**
+   *
+   *
    * <pre>
-   *`gte` requires the field value to be greater than or equal to the specified
+   * `gte` requires the field value to be greater than or equal to the specified
    * value (exclusive). If the value of `gte` is larger than a specified `lt`
    * or `lte`, the range is reversed, and the field value must be outside the
    * specified range. If the field value doesn't meet the required conditions,
    * an error message is generated.
    *
-   *```proto
-   *message MyFixed64 {
+   * ```proto
+   * message MyFixed64 {
    *  // value must be greater than or equal to 5 [fixed64.gte]
    *  fixed64 value = 1 [(buf.validate.field).fixed64.gte = 5];
    *
@@ -259,27 +299,31 @@ private static final long serialVersionUID = 0L;
    *
    *  // value must be greater than or equal to 10 or less than 5 [fixed64.gte_lt_exclusive]
    *  fixed64 another_value = 3 [(buf.validate.field).fixed64 = { gte: 10, lt: 5 }];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
    * <code>optional fixed64 gte = 5 [json_name = "gte", (.buf.validate.priv.field) = { ... }</code>
+   *
    * @return Whether the gte field is set.
    */
   @java.lang.Override
   public boolean hasGte() {
     return ((bitField0_ & 0x00000010) != 0);
   }
+
   /**
+   *
+   *
    * <pre>
-   *`gte` requires the field value to be greater than or equal to the specified
+   * `gte` requires the field value to be greater than or equal to the specified
    * value (exclusive). If the value of `gte` is larger than a specified `lt`
    * or `lte`, the range is reversed, and the field value must be outside the
    * specified range. If the field value doesn't meet the required conditions,
    * an error message is generated.
    *
-   *```proto
-   *message MyFixed64 {
+   * ```proto
+   * message MyFixed64 {
    *  // value must be greater than or equal to 5 [fixed64.gte]
    *  fixed64 value = 1 [(buf.validate.field).fixed64.gte = 5];
    *
@@ -288,11 +332,12 @@ private static final long serialVersionUID = 0L;
    *
    *  // value must be greater than or equal to 10 or less than 5 [fixed64.gte_lt_exclusive]
    *  fixed64 another_value = 3 [(buf.validate.field).fixed64 = { gte: 10, lt: 5 }];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
    * <code>optional fixed64 gte = 5 [json_name = "gte", (.buf.validate.priv.field) = { ... }</code>
+   *
    * @return The gte.
    */
   @java.lang.Override
@@ -301,142 +346,172 @@ private static final long serialVersionUID = 0L;
   }
 
   public static final int IN_FIELD_NUMBER = 6;
+
   @SuppressWarnings("serial")
   private com.google.protobuf.Internal.LongList in_;
+
   /**
+   *
+   *
    * <pre>
-   *`in` requires the field value to be equal to one of the specified values.
+   * `in` requires the field value to be equal to one of the specified values.
    * If the field value isn't one of the specified values, an error message is
    * generated.
    *
-   *```proto
-   *message MyFixed64 {
+   * ```proto
+   * message MyFixed64 {
    *  // value must be in list [1, 2, 3]
    *  repeated fixed64 value = 1 (buf.validate.field).fixed64 = { in: [1, 2, 3] };
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
    * <code>repeated fixed64 in = 6 [json_name = "in", (.buf.validate.priv.field) = { ... }</code>
+   *
    * @return A list containing the in.
    */
   @java.lang.Override
-  public java.util.List<java.lang.Long>
-      getInList() {
+  public java.util.List<java.lang.Long> getInList() {
     return in_;
   }
+
   /**
+   *
+   *
    * <pre>
-   *`in` requires the field value to be equal to one of the specified values.
+   * `in` requires the field value to be equal to one of the specified values.
    * If the field value isn't one of the specified values, an error message is
    * generated.
    *
-   *```proto
-   *message MyFixed64 {
+   * ```proto
+   * message MyFixed64 {
    *  // value must be in list [1, 2, 3]
    *  repeated fixed64 value = 1 (buf.validate.field).fixed64 = { in: [1, 2, 3] };
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
    * <code>repeated fixed64 in = 6 [json_name = "in", (.buf.validate.priv.field) = { ... }</code>
+   *
    * @return The count of in.
    */
   public int getInCount() {
     return in_.size();
   }
+
   /**
+   *
+   *
    * <pre>
-   *`in` requires the field value to be equal to one of the specified values.
+   * `in` requires the field value to be equal to one of the specified values.
    * If the field value isn't one of the specified values, an error message is
    * generated.
    *
-   *```proto
-   *message MyFixed64 {
+   * ```proto
+   * message MyFixed64 {
    *  // value must be in list [1, 2, 3]
    *  repeated fixed64 value = 1 (buf.validate.field).fixed64 = { in: [1, 2, 3] };
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
    * <code>repeated fixed64 in = 6 [json_name = "in", (.buf.validate.priv.field) = { ... }</code>
+   *
    * @param index The index of the element to return.
    * @return The in at the given index.
    */
   public long getIn(int index) {
     return in_.getLong(index);
   }
+
   private int inMemoizedSerializedSize = -1;
 
   public static final int NOT_IN_FIELD_NUMBER = 7;
+
   @SuppressWarnings("serial")
   private com.google.protobuf.Internal.LongList notIn_;
+
   /**
+   *
+   *
    * <pre>
-   *`not_in` requires the field value to not be equal to any of the specified
+   * `not_in` requires the field value to not be equal to any of the specified
    * values. If the field value is one of the specified values, an error
    * message is generated.
    *
-   *```proto
-   *message MyFixed64 {
+   * ```proto
+   * message MyFixed64 {
    *  // value must not be in list [1, 2, 3]
    *  repeated fixed64 value = 1 (buf.validate.field).fixed64 = { not_in: [1, 2, 3] };
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
-   * <code>repeated fixed64 not_in = 7 [json_name = "notIn", (.buf.validate.priv.field) = { ... }</code>
+   * <code>repeated fixed64 not_in = 7 [json_name = "notIn", (.buf.validate.priv.field) = { ... }
+   * </code>
+   *
    * @return A list containing the notIn.
    */
   @java.lang.Override
-  public java.util.List<java.lang.Long>
-      getNotInList() {
+  public java.util.List<java.lang.Long> getNotInList() {
     return notIn_;
   }
+
   /**
+   *
+   *
    * <pre>
-   *`not_in` requires the field value to not be equal to any of the specified
+   * `not_in` requires the field value to not be equal to any of the specified
    * values. If the field value is one of the specified values, an error
    * message is generated.
    *
-   *```proto
-   *message MyFixed64 {
+   * ```proto
+   * message MyFixed64 {
    *  // value must not be in list [1, 2, 3]
    *  repeated fixed64 value = 1 (buf.validate.field).fixed64 = { not_in: [1, 2, 3] };
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
-   * <code>repeated fixed64 not_in = 7 [json_name = "notIn", (.buf.validate.priv.field) = { ... }</code>
+   * <code>repeated fixed64 not_in = 7 [json_name = "notIn", (.buf.validate.priv.field) = { ... }
+   * </code>
+   *
    * @return The count of notIn.
    */
   public int getNotInCount() {
     return notIn_.size();
   }
+
   /**
+   *
+   *
    * <pre>
-   *`not_in` requires the field value to not be equal to any of the specified
+   * `not_in` requires the field value to not be equal to any of the specified
    * values. If the field value is one of the specified values, an error
    * message is generated.
    *
-   *```proto
-   *message MyFixed64 {
+   * ```proto
+   * message MyFixed64 {
    *  // value must not be in list [1, 2, 3]
    *  repeated fixed64 value = 1 (buf.validate.field).fixed64 = { not_in: [1, 2, 3] };
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
-   * <code>repeated fixed64 not_in = 7 [json_name = "notIn", (.buf.validate.priv.field) = { ... }</code>
+   * <code>repeated fixed64 not_in = 7 [json_name = "notIn", (.buf.validate.priv.field) = { ... }
+   * </code>
+   *
    * @param index The index of the element to return.
    * @return The notIn at the given index.
    */
   public long getNotIn(int index) {
     return notIn_.getLong(index);
   }
+
   private int notInMemoizedSerializedSize = -1;
 
   private byte memoizedIsInitialized = -1;
+
   @java.lang.Override
   public final boolean isInitialized() {
     byte isInitialized = memoizedIsInitialized;
@@ -448,8 +523,7 @@ private static final long serialVersionUID = 0L;
   }
 
   @java.lang.Override
-  public void writeTo(com.google.protobuf.CodedOutputStream output)
-                      throws java.io.IOException {
+  public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
     getSerializedSize();
     if (((bitField0_ & 0x00000001) != 0)) {
       output.writeFixed64(1, const_);
@@ -490,24 +564,19 @@ private static final long serialVersionUID = 0L;
 
     size = 0;
     if (((bitField0_ & 0x00000001) != 0)) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeFixed64Size(1, const_);
+      size += com.google.protobuf.CodedOutputStream.computeFixed64Size(1, const_);
     }
     if (((bitField0_ & 0x00000002) != 0)) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeFixed64Size(2, lt_);
+      size += com.google.protobuf.CodedOutputStream.computeFixed64Size(2, lt_);
     }
     if (((bitField0_ & 0x00000004) != 0)) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeFixed64Size(3, lte_);
+      size += com.google.protobuf.CodedOutputStream.computeFixed64Size(3, lte_);
     }
     if (((bitField0_ & 0x00000008) != 0)) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeFixed64Size(4, gt_);
+      size += com.google.protobuf.CodedOutputStream.computeFixed64Size(4, gt_);
     }
     if (((bitField0_ & 0x00000010) != 0)) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeFixed64Size(5, gte_);
+      size += com.google.protobuf.CodedOutputStream.computeFixed64Size(5, gte_);
     }
     {
       int dataSize = 0;
@@ -515,8 +584,7 @@ private static final long serialVersionUID = 0L;
       size += dataSize;
       if (!getInList().isEmpty()) {
         size += 1;
-        size += com.google.protobuf.CodedOutputStream
-            .computeInt32SizeNoTag(dataSize);
+        size += com.google.protobuf.CodedOutputStream.computeInt32SizeNoTag(dataSize);
       }
       inMemoizedSerializedSize = dataSize;
     }
@@ -526,8 +594,7 @@ private static final long serialVersionUID = 0L;
       size += dataSize;
       if (!getNotInList().isEmpty()) {
         size += 1;
-        size += com.google.protobuf.CodedOutputStream
-            .computeInt32SizeNoTag(dataSize);
+        size += com.google.protobuf.CodedOutputStream.computeInt32SizeNoTag(dataSize);
       }
       notInMemoizedSerializedSize = dataSize;
     }
@@ -539,7 +606,7 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public boolean equals(final java.lang.Object obj) {
     if (obj == this) {
-     return true;
+      return true;
     }
     if (!(obj instanceof build.buf.validate.Fixed64Rules)) {
       return super.equals(obj);
@@ -548,33 +615,26 @@ private static final long serialVersionUID = 0L;
 
     if (hasConst() != other.hasConst()) return false;
     if (hasConst()) {
-      if (getConst()
-          != other.getConst()) return false;
+      if (getConst() != other.getConst()) return false;
     }
     if (hasLt() != other.hasLt()) return false;
     if (hasLt()) {
-      if (getLt()
-          != other.getLt()) return false;
+      if (getLt() != other.getLt()) return false;
     }
     if (hasLte() != other.hasLte()) return false;
     if (hasLte()) {
-      if (getLte()
-          != other.getLte()) return false;
+      if (getLte() != other.getLte()) return false;
     }
     if (hasGt() != other.hasGt()) return false;
     if (hasGt()) {
-      if (getGt()
-          != other.getGt()) return false;
+      if (getGt() != other.getGt()) return false;
     }
     if (hasGte() != other.hasGte()) return false;
     if (hasGte()) {
-      if (getGte()
-          != other.getGte()) return false;
+      if (getGte() != other.getGte()) return false;
     }
-    if (!getInList()
-        .equals(other.getInList())) return false;
-    if (!getNotInList()
-        .equals(other.getNotInList())) return false;
+    if (!getInList().equals(other.getInList())) return false;
+    if (!getNotInList().equals(other.getNotInList())) return false;
     if (!getUnknownFields().equals(other.getUnknownFields())) return false;
     return true;
   }
@@ -588,28 +648,23 @@ private static final long serialVersionUID = 0L;
     hash = (19 * hash) + getDescriptor().hashCode();
     if (hasConst()) {
       hash = (37 * hash) + CONST_FIELD_NUMBER;
-      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-          getConst());
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(getConst());
     }
     if (hasLt()) {
       hash = (37 * hash) + LT_FIELD_NUMBER;
-      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-          getLt());
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(getLt());
     }
     if (hasLte()) {
       hash = (37 * hash) + LTE_FIELD_NUMBER;
-      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-          getLte());
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(getLte());
     }
     if (hasGt()) {
       hash = (37 * hash) + GT_FIELD_NUMBER;
-      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-          getGt());
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(getGt());
     }
     if (hasGte()) {
       hash = (37 * hash) + GTE_FIELD_NUMBER;
-      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-          getGte());
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(getGte());
     }
     if (getInCount() > 0) {
       hash = (37 * hash) + IN_FIELD_NUMBER;
@@ -624,132 +679,134 @@ private static final long serialVersionUID = 0L;
     return hash;
   }
 
-  public static build.buf.validate.Fixed64Rules parseFrom(
-      java.nio.ByteBuffer data)
+  public static build.buf.validate.Fixed64Rules parseFrom(java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
+
   public static build.buf.validate.Fixed64Rules parseFrom(
-      java.nio.ByteBuffer data,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      java.nio.ByteBuffer data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static build.buf.validate.Fixed64Rules parseFrom(
-      com.google.protobuf.ByteString data)
+
+  public static build.buf.validate.Fixed64Rules parseFrom(com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
+
   public static build.buf.validate.Fixed64Rules parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
+
   public static build.buf.validate.Fixed64Rules parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
+
   public static build.buf.validate.Fixed64Rules parseFrom(
-      byte[] data,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      byte[] data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
+
   public static build.buf.validate.Fixed64Rules parseFrom(java.io.InputStream input)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input);
+    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
   }
+
   public static build.buf.validate.Fixed64Rules parseFrom(
-      java.io.InputStream input,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input, extensionRegistry);
+    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+        PARSER, input, extensionRegistry);
   }
 
   public static build.buf.validate.Fixed64Rules parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseDelimitedWithIOException(PARSER, input);
+    return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input);
   }
 
   public static build.buf.validate.Fixed64Rules parseDelimitedFrom(
-      java.io.InputStream input,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(
+        PARSER, input, extensionRegistry);
   }
+
   public static build.buf.validate.Fixed64Rules parseFrom(
-      com.google.protobuf.CodedInputStream input)
-      throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input);
+      com.google.protobuf.CodedInputStream input) throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
   }
+
   public static build.buf.validate.Fixed64Rules parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input, extensionRegistry);
+    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+        PARSER, input, extensionRegistry);
   }
 
   @java.lang.Override
-  public Builder newBuilderForType() { return newBuilder(); }
+  public Builder newBuilderForType() {
+    return newBuilder();
+  }
+
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
+
   public static Builder newBuilder(build.buf.validate.Fixed64Rules prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
+
   @java.lang.Override
   public Builder toBuilder() {
-    return this == DEFAULT_INSTANCE
-        ? new Builder() : new Builder().mergeFrom(this);
+    return this == DEFAULT_INSTANCE ? new Builder() : new Builder().mergeFrom(this);
   }
 
   @java.lang.Override
-  protected Builder newBuilderForType(
-      com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+  protected Builder newBuilderForType(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
     Builder builder = new Builder(parent);
     return builder;
   }
+
   /**
+   *
+   *
    * <pre>
    * Fixed64Rules describes the constraints applied to `fixed64` values.
    * </pre>
    *
    * Protobuf type {@code buf.validate.Fixed64Rules}
    */
-  public static final class Builder extends
-      com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+  public static final class Builder extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
+      implements
       // @@protoc_insertion_point(builder_implements:buf.validate.Fixed64Rules)
       build.buf.validate.Fixed64RulesOrBuilder {
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
+    public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
       return build.buf.validate.ValidateProto.internal_static_buf_validate_Fixed64Rules_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return build.buf.validate.ValidateProto.internal_static_buf_validate_Fixed64Rules_fieldAccessorTable
+      return build.buf.validate.ValidateProto
+          .internal_static_buf_validate_Fixed64Rules_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
               build.buf.validate.Fixed64Rules.class, build.buf.validate.Fixed64Rules.Builder.class);
     }
 
     // Construct using build.buf.validate.Fixed64Rules.newBuilder()
-    private Builder() {
+    private Builder() {}
 
-    }
-
-    private Builder(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+    private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
       super(parent);
-
     }
+
     @java.lang.Override
     public Builder clear() {
       super.clear();
@@ -765,8 +822,7 @@ private static final long serialVersionUID = 0L;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Descriptors.Descriptor
-        getDescriptorForType() {
+    public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
       return build.buf.validate.ValidateProto.internal_static_buf_validate_Fixed64Rules_descriptor;
     }
 
@@ -788,7 +844,9 @@ private static final long serialVersionUID = 0L;
     public build.buf.validate.Fixed64Rules buildPartial() {
       build.buf.validate.Fixed64Rules result = new build.buf.validate.Fixed64Rules(this);
       buildPartialRepeatedFields(result);
-      if (bitField0_ != 0) { buildPartial0(result); }
+      if (bitField0_ != 0) {
+        buildPartial0(result);
+      }
       onBuilt();
       return result;
     }
@@ -836,38 +894,39 @@ private static final long serialVersionUID = 0L;
     public Builder clone() {
       return super.clone();
     }
+
     @java.lang.Override
     public Builder setField(
-        com.google.protobuf.Descriptors.FieldDescriptor field,
-        java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
       return super.setField(field, value);
     }
+
     @java.lang.Override
-    public Builder clearField(
-        com.google.protobuf.Descriptors.FieldDescriptor field) {
+    public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
       return super.clearField(field);
     }
+
     @java.lang.Override
-    public Builder clearOneof(
-        com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+    public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
       return super.clearOneof(oneof);
     }
+
     @java.lang.Override
     public Builder setRepeatedField(
-        com.google.protobuf.Descriptors.FieldDescriptor field,
-        int index, java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field, int index, java.lang.Object value) {
       return super.setRepeatedField(field, index, value);
     }
+
     @java.lang.Override
     public Builder addRepeatedField(
-        com.google.protobuf.Descriptors.FieldDescriptor field,
-        java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
       return super.addRepeatedField(field, value);
     }
+
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
       if (other instanceof build.buf.validate.Fixed64Rules) {
-        return mergeFrom((build.buf.validate.Fixed64Rules)other);
+        return mergeFrom((build.buf.validate.Fixed64Rules) other);
       } else {
         super.mergeFrom(other);
         return this;
@@ -937,69 +996,79 @@ private static final long serialVersionUID = 0L;
             case 0:
               done = true;
               break;
-            case 9: {
-              const_ = input.readFixed64();
-              bitField0_ |= 0x00000001;
-              break;
-            } // case 9
-            case 17: {
-              lt_ = input.readFixed64();
-              bitField0_ |= 0x00000002;
-              break;
-            } // case 17
-            case 25: {
-              lte_ = input.readFixed64();
-              bitField0_ |= 0x00000004;
-              break;
-            } // case 25
-            case 33: {
-              gt_ = input.readFixed64();
-              bitField0_ |= 0x00000008;
-              break;
-            } // case 33
-            case 41: {
-              gte_ = input.readFixed64();
-              bitField0_ |= 0x00000010;
-              break;
-            } // case 41
-            case 49: {
-              long v = input.readFixed64();
-              ensureInIsMutable();
-              in_.addLong(v);
-              break;
-            } // case 49
-            case 50: {
-              int length = input.readRawVarint32();
-              int limit = input.pushLimit(length);
-              ensureInIsMutable();
-              while (input.getBytesUntilLimit() > 0) {
-                in_.addLong(input.readFixed64());
-              }
-              input.popLimit(limit);
-              break;
-            } // case 50
-            case 57: {
-              long v = input.readFixed64();
-              ensureNotInIsMutable();
-              notIn_.addLong(v);
-              break;
-            } // case 57
-            case 58: {
-              int length = input.readRawVarint32();
-              int limit = input.pushLimit(length);
-              ensureNotInIsMutable();
-              while (input.getBytesUntilLimit() > 0) {
-                notIn_.addLong(input.readFixed64());
-              }
-              input.popLimit(limit);
-              break;
-            } // case 58
-            default: {
-              if (!super.parseUnknownField(input, extensionRegistry, tag)) {
-                done = true; // was an endgroup tag
-              }
-              break;
-            } // default:
+            case 9:
+              {
+                const_ = input.readFixed64();
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 9
+            case 17:
+              {
+                lt_ = input.readFixed64();
+                bitField0_ |= 0x00000002;
+                break;
+              } // case 17
+            case 25:
+              {
+                lte_ = input.readFixed64();
+                bitField0_ |= 0x00000004;
+                break;
+              } // case 25
+            case 33:
+              {
+                gt_ = input.readFixed64();
+                bitField0_ |= 0x00000008;
+                break;
+              } // case 33
+            case 41:
+              {
+                gte_ = input.readFixed64();
+                bitField0_ |= 0x00000010;
+                break;
+              } // case 41
+            case 49:
+              {
+                long v = input.readFixed64();
+                ensureInIsMutable();
+                in_.addLong(v);
+                break;
+              } // case 49
+            case 50:
+              {
+                int length = input.readRawVarint32();
+                int limit = input.pushLimit(length);
+                ensureInIsMutable();
+                while (input.getBytesUntilLimit() > 0) {
+                  in_.addLong(input.readFixed64());
+                }
+                input.popLimit(limit);
+                break;
+              } // case 50
+            case 57:
+              {
+                long v = input.readFixed64();
+                ensureNotInIsMutable();
+                notIn_.addLong(v);
+                break;
+              } // case 57
+            case 58:
+              {
+                int length = input.readRawVarint32();
+                int limit = input.pushLimit(length);
+                ensureNotInIsMutable();
+                while (input.getBytesUntilLimit() > 0) {
+                  notIn_.addLong(input.readFixed64());
+                }
+                input.popLimit(limit);
+                break;
+              } // case 58
+            default:
+              {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
           } // switch (tag)
         } // while (!done)
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -1009,63 +1078,79 @@ private static final long serialVersionUID = 0L;
       } // finally
       return this;
     }
+
     private int bitField0_;
 
-    private long const_ ;
+    private long const_;
+
     /**
+     *
+     *
      * <pre>
-     *`const` requires the field value to exactly match the specified value. If
+     * `const` requires the field value to exactly match the specified value. If
      * the field value doesn't match, an error message is generated.
      *
-     *```proto
-     *message MyFixed64 {
+     * ```proto
+     * message MyFixed64 {
      *  // value must equal 42
      *   fixed64 value = 1 [(buf.validate.field).fixed64.const = 42];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
-     * <code>optional fixed64 const = 1 [json_name = "const", (.buf.validate.priv.field) = { ... }</code>
+     * <code>optional fixed64 const = 1 [json_name = "const", (.buf.validate.priv.field) = { ... }
+     * </code>
+     *
      * @return Whether the const field is set.
      */
     @java.lang.Override
     public boolean hasConst() {
       return ((bitField0_ & 0x00000001) != 0);
     }
+
     /**
+     *
+     *
      * <pre>
-     *`const` requires the field value to exactly match the specified value. If
+     * `const` requires the field value to exactly match the specified value. If
      * the field value doesn't match, an error message is generated.
      *
-     *```proto
-     *message MyFixed64 {
+     * ```proto
+     * message MyFixed64 {
      *  // value must equal 42
      *   fixed64 value = 1 [(buf.validate.field).fixed64.const = 42];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
-     * <code>optional fixed64 const = 1 [json_name = "const", (.buf.validate.priv.field) = { ... }</code>
+     * <code>optional fixed64 const = 1 [json_name = "const", (.buf.validate.priv.field) = { ... }
+     * </code>
+     *
      * @return The const.
      */
     @java.lang.Override
     public long getConst() {
       return const_;
     }
+
     /**
+     *
+     *
      * <pre>
-     *`const` requires the field value to exactly match the specified value. If
+     * `const` requires the field value to exactly match the specified value. If
      * the field value doesn't match, an error message is generated.
      *
-     *```proto
-     *message MyFixed64 {
+     * ```proto
+     * message MyFixed64 {
      *  // value must equal 42
      *   fixed64 value = 1 [(buf.validate.field).fixed64.const = 42];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
-     * <code>optional fixed64 const = 1 [json_name = "const", (.buf.validate.priv.field) = { ... }</code>
+     * <code>optional fixed64 const = 1 [json_name = "const", (.buf.validate.priv.field) = { ... }
+     * </code>
+     *
      * @param value The const to set.
      * @return This builder for chaining.
      */
@@ -1076,20 +1161,25 @@ private static final long serialVersionUID = 0L;
       onChanged();
       return this;
     }
+
     /**
+     *
+     *
      * <pre>
-     *`const` requires the field value to exactly match the specified value. If
+     * `const` requires the field value to exactly match the specified value. If
      * the field value doesn't match, an error message is generated.
      *
-     *```proto
-     *message MyFixed64 {
+     * ```proto
+     * message MyFixed64 {
      *  // value must equal 42
      *   fixed64 value = 1 [(buf.validate.field).fixed64.const = 42];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
-     * <code>optional fixed64 const = 1 [json_name = "const", (.buf.validate.priv.field) = { ... }</code>
+     * <code>optional fixed64 const = 1 [json_name = "const", (.buf.validate.priv.field) = { ... }
+     * </code>
+     *
      * @return This builder for chaining.
      */
     public Builder clearConst() {
@@ -1099,64 +1189,76 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private long lt_ ;
+    private long lt_;
+
     /**
+     *
+     *
      * <pre>
-     *`lt` requires the field value to be less than the specified value (field &lt;
+     * `lt` requires the field value to be less than the specified value (field &lt;
      * value). If the field value is equal to or greater than the specified value,
      * an error message is generated.
      *
-     *```proto
-     *message MyFixed64 {
+     * ```proto
+     * message MyFixed64 {
      *  // value must be less than 10
      *   fixed64 value = 1 [(buf.validate.field).fixed64.lt = 10];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>optional fixed64 lt = 2 [json_name = "lt", (.buf.validate.priv.field) = { ... }</code>
+     *
      * @return Whether the lt field is set.
      */
     @java.lang.Override
     public boolean hasLt() {
       return ((bitField0_ & 0x00000002) != 0);
     }
+
     /**
+     *
+     *
      * <pre>
-     *`lt` requires the field value to be less than the specified value (field &lt;
+     * `lt` requires the field value to be less than the specified value (field &lt;
      * value). If the field value is equal to or greater than the specified value,
      * an error message is generated.
      *
-     *```proto
-     *message MyFixed64 {
+     * ```proto
+     * message MyFixed64 {
      *  // value must be less than 10
      *   fixed64 value = 1 [(buf.validate.field).fixed64.lt = 10];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>optional fixed64 lt = 2 [json_name = "lt", (.buf.validate.priv.field) = { ... }</code>
+     *
      * @return The lt.
      */
     @java.lang.Override
     public long getLt() {
       return lt_;
     }
+
     /**
+     *
+     *
      * <pre>
-     *`lt` requires the field value to be less than the specified value (field &lt;
+     * `lt` requires the field value to be less than the specified value (field &lt;
      * value). If the field value is equal to or greater than the specified value,
      * an error message is generated.
      *
-     *```proto
-     *message MyFixed64 {
+     * ```proto
+     * message MyFixed64 {
      *  // value must be less than 10
      *   fixed64 value = 1 [(buf.validate.field).fixed64.lt = 10];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>optional fixed64 lt = 2 [json_name = "lt", (.buf.validate.priv.field) = { ... }</code>
+     *
      * @param value The lt to set.
      * @return This builder for chaining.
      */
@@ -1167,21 +1269,25 @@ private static final long serialVersionUID = 0L;
       onChanged();
       return this;
     }
+
     /**
+     *
+     *
      * <pre>
-     *`lt` requires the field value to be less than the specified value (field &lt;
+     * `lt` requires the field value to be less than the specified value (field &lt;
      * value). If the field value is equal to or greater than the specified value,
      * an error message is generated.
      *
-     *```proto
-     *message MyFixed64 {
+     * ```proto
+     * message MyFixed64 {
      *  // value must be less than 10
      *   fixed64 value = 1 [(buf.validate.field).fixed64.lt = 10];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>optional fixed64 lt = 2 [json_name = "lt", (.buf.validate.priv.field) = { ... }</code>
+     *
      * @return This builder for chaining.
      */
     public Builder clearLt() {
@@ -1191,64 +1297,79 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private long lte_ ;
+    private long lte_;
+
     /**
+     *
+     *
      * <pre>
-     *`lte` requires the field value to be less than or equal to the specified
+     * `lte` requires the field value to be less than or equal to the specified
      * value (field &lt;= value). If the field value is greater than the specified
      * value, an error message is generated.
      *
-     *```proto
-     *message MyFixed64 {
+     * ```proto
+     * message MyFixed64 {
      *  // value must be less than or equal to 10
      *   fixed64 value = 1 [(buf.validate.field).fixed64.lte = 10];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
-     * <code>optional fixed64 lte = 3 [json_name = "lte", (.buf.validate.priv.field) = { ... }</code>
+     * <code>optional fixed64 lte = 3 [json_name = "lte", (.buf.validate.priv.field) = { ... }
+     * </code>
+     *
      * @return Whether the lte field is set.
      */
     @java.lang.Override
     public boolean hasLte() {
       return ((bitField0_ & 0x00000004) != 0);
     }
+
     /**
+     *
+     *
      * <pre>
-     *`lte` requires the field value to be less than or equal to the specified
+     * `lte` requires the field value to be less than or equal to the specified
      * value (field &lt;= value). If the field value is greater than the specified
      * value, an error message is generated.
      *
-     *```proto
-     *message MyFixed64 {
+     * ```proto
+     * message MyFixed64 {
      *  // value must be less than or equal to 10
      *   fixed64 value = 1 [(buf.validate.field).fixed64.lte = 10];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
-     * <code>optional fixed64 lte = 3 [json_name = "lte", (.buf.validate.priv.field) = { ... }</code>
+     * <code>optional fixed64 lte = 3 [json_name = "lte", (.buf.validate.priv.field) = { ... }
+     * </code>
+     *
      * @return The lte.
      */
     @java.lang.Override
     public long getLte() {
       return lte_;
     }
+
     /**
+     *
+     *
      * <pre>
-     *`lte` requires the field value to be less than or equal to the specified
+     * `lte` requires the field value to be less than or equal to the specified
      * value (field &lt;= value). If the field value is greater than the specified
      * value, an error message is generated.
      *
-     *```proto
-     *message MyFixed64 {
+     * ```proto
+     * message MyFixed64 {
      *  // value must be less than or equal to 10
      *   fixed64 value = 1 [(buf.validate.field).fixed64.lte = 10];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
-     * <code>optional fixed64 lte = 3 [json_name = "lte", (.buf.validate.priv.field) = { ... }</code>
+     * <code>optional fixed64 lte = 3 [json_name = "lte", (.buf.validate.priv.field) = { ... }
+     * </code>
+     *
      * @param value The lte to set.
      * @return This builder for chaining.
      */
@@ -1259,21 +1380,26 @@ private static final long serialVersionUID = 0L;
       onChanged();
       return this;
     }
+
     /**
+     *
+     *
      * <pre>
-     *`lte` requires the field value to be less than or equal to the specified
+     * `lte` requires the field value to be less than or equal to the specified
      * value (field &lt;= value). If the field value is greater than the specified
      * value, an error message is generated.
      *
-     *```proto
-     *message MyFixed64 {
+     * ```proto
+     * message MyFixed64 {
      *  // value must be less than or equal to 10
      *   fixed64 value = 1 [(buf.validate.field).fixed64.lte = 10];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
-     * <code>optional fixed64 lte = 3 [json_name = "lte", (.buf.validate.priv.field) = { ... }</code>
+     * <code>optional fixed64 lte = 3 [json_name = "lte", (.buf.validate.priv.field) = { ... }
+     * </code>
+     *
      * @return This builder for chaining.
      */
     public Builder clearLte() {
@@ -1283,17 +1409,20 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private long gt_ ;
+    private long gt_;
+
     /**
+     *
+     *
      * <pre>
-     *`gt` requires the field value to be greater than the specified value
+     * `gt` requires the field value to be greater than the specified value
      * (exclusive). If the value of `gt` is larger than a specified `lt` or
      * `lte`, the range is reversed, and the field value must be outside the
      * specified range. If the field value doesn't meet the required conditions,
      * an error message is generated.
      *
-     *```proto
-     *message MyFixed64 {
+     * ```proto
+     * message MyFixed64 {
      *  // value must be greater than 5 [fixed64.gt]
      *  fixed64 value = 1 [(buf.validate.field).fixed64.gt = 5];
      *
@@ -1302,27 +1431,31 @@ private static final long serialVersionUID = 0L;
      *
      *  // value must be greater than 10 or less than 5 [fixed64.gt_lt_exclusive]
      *  fixed64 another_value = 3 [(buf.validate.field).fixed64 = { gt: 10, lt: 5 }];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>optional fixed64 gt = 4 [json_name = "gt", (.buf.validate.priv.field) = { ... }</code>
+     *
      * @return Whether the gt field is set.
      */
     @java.lang.Override
     public boolean hasGt() {
       return ((bitField0_ & 0x00000008) != 0);
     }
+
     /**
+     *
+     *
      * <pre>
-     *`gt` requires the field value to be greater than the specified value
+     * `gt` requires the field value to be greater than the specified value
      * (exclusive). If the value of `gt` is larger than a specified `lt` or
      * `lte`, the range is reversed, and the field value must be outside the
      * specified range. If the field value doesn't meet the required conditions,
      * an error message is generated.
      *
-     *```proto
-     *message MyFixed64 {
+     * ```proto
+     * message MyFixed64 {
      *  // value must be greater than 5 [fixed64.gt]
      *  fixed64 value = 1 [(buf.validate.field).fixed64.gt = 5];
      *
@@ -1331,27 +1464,31 @@ private static final long serialVersionUID = 0L;
      *
      *  // value must be greater than 10 or less than 5 [fixed64.gt_lt_exclusive]
      *  fixed64 another_value = 3 [(buf.validate.field).fixed64 = { gt: 10, lt: 5 }];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>optional fixed64 gt = 4 [json_name = "gt", (.buf.validate.priv.field) = { ... }</code>
+     *
      * @return The gt.
      */
     @java.lang.Override
     public long getGt() {
       return gt_;
     }
+
     /**
+     *
+     *
      * <pre>
-     *`gt` requires the field value to be greater than the specified value
+     * `gt` requires the field value to be greater than the specified value
      * (exclusive). If the value of `gt` is larger than a specified `lt` or
      * `lte`, the range is reversed, and the field value must be outside the
      * specified range. If the field value doesn't meet the required conditions,
      * an error message is generated.
      *
-     *```proto
-     *message MyFixed64 {
+     * ```proto
+     * message MyFixed64 {
      *  // value must be greater than 5 [fixed64.gt]
      *  fixed64 value = 1 [(buf.validate.field).fixed64.gt = 5];
      *
@@ -1360,11 +1497,12 @@ private static final long serialVersionUID = 0L;
      *
      *  // value must be greater than 10 or less than 5 [fixed64.gt_lt_exclusive]
      *  fixed64 another_value = 3 [(buf.validate.field).fixed64 = { gt: 10, lt: 5 }];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>optional fixed64 gt = 4 [json_name = "gt", (.buf.validate.priv.field) = { ... }</code>
+     *
      * @param value The gt to set.
      * @return This builder for chaining.
      */
@@ -1375,16 +1513,19 @@ private static final long serialVersionUID = 0L;
       onChanged();
       return this;
     }
+
     /**
+     *
+     *
      * <pre>
-     *`gt` requires the field value to be greater than the specified value
+     * `gt` requires the field value to be greater than the specified value
      * (exclusive). If the value of `gt` is larger than a specified `lt` or
      * `lte`, the range is reversed, and the field value must be outside the
      * specified range. If the field value doesn't meet the required conditions,
      * an error message is generated.
      *
-     *```proto
-     *message MyFixed64 {
+     * ```proto
+     * message MyFixed64 {
      *  // value must be greater than 5 [fixed64.gt]
      *  fixed64 value = 1 [(buf.validate.field).fixed64.gt = 5];
      *
@@ -1393,11 +1534,12 @@ private static final long serialVersionUID = 0L;
      *
      *  // value must be greater than 10 or less than 5 [fixed64.gt_lt_exclusive]
      *  fixed64 another_value = 3 [(buf.validate.field).fixed64 = { gt: 10, lt: 5 }];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>optional fixed64 gt = 4 [json_name = "gt", (.buf.validate.priv.field) = { ... }</code>
+     *
      * @return This builder for chaining.
      */
     public Builder clearGt() {
@@ -1407,17 +1549,20 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private long gte_ ;
+    private long gte_;
+
     /**
+     *
+     *
      * <pre>
-     *`gte` requires the field value to be greater than or equal to the specified
+     * `gte` requires the field value to be greater than or equal to the specified
      * value (exclusive). If the value of `gte` is larger than a specified `lt`
      * or `lte`, the range is reversed, and the field value must be outside the
      * specified range. If the field value doesn't meet the required conditions,
      * an error message is generated.
      *
-     *```proto
-     *message MyFixed64 {
+     * ```proto
+     * message MyFixed64 {
      *  // value must be greater than or equal to 5 [fixed64.gte]
      *  fixed64 value = 1 [(buf.validate.field).fixed64.gte = 5];
      *
@@ -1426,27 +1571,32 @@ private static final long serialVersionUID = 0L;
      *
      *  // value must be greater than or equal to 10 or less than 5 [fixed64.gte_lt_exclusive]
      *  fixed64 another_value = 3 [(buf.validate.field).fixed64 = { gte: 10, lt: 5 }];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
-     * <code>optional fixed64 gte = 5 [json_name = "gte", (.buf.validate.priv.field) = { ... }</code>
+     * <code>optional fixed64 gte = 5 [json_name = "gte", (.buf.validate.priv.field) = { ... }
+     * </code>
+     *
      * @return Whether the gte field is set.
      */
     @java.lang.Override
     public boolean hasGte() {
       return ((bitField0_ & 0x00000010) != 0);
     }
+
     /**
+     *
+     *
      * <pre>
-     *`gte` requires the field value to be greater than or equal to the specified
+     * `gte` requires the field value to be greater than or equal to the specified
      * value (exclusive). If the value of `gte` is larger than a specified `lt`
      * or `lte`, the range is reversed, and the field value must be outside the
      * specified range. If the field value doesn't meet the required conditions,
      * an error message is generated.
      *
-     *```proto
-     *message MyFixed64 {
+     * ```proto
+     * message MyFixed64 {
      *  // value must be greater than or equal to 5 [fixed64.gte]
      *  fixed64 value = 1 [(buf.validate.field).fixed64.gte = 5];
      *
@@ -1455,27 +1605,32 @@ private static final long serialVersionUID = 0L;
      *
      *  // value must be greater than or equal to 10 or less than 5 [fixed64.gte_lt_exclusive]
      *  fixed64 another_value = 3 [(buf.validate.field).fixed64 = { gte: 10, lt: 5 }];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
-     * <code>optional fixed64 gte = 5 [json_name = "gte", (.buf.validate.priv.field) = { ... }</code>
+     * <code>optional fixed64 gte = 5 [json_name = "gte", (.buf.validate.priv.field) = { ... }
+     * </code>
+     *
      * @return The gte.
      */
     @java.lang.Override
     public long getGte() {
       return gte_;
     }
+
     /**
+     *
+     *
      * <pre>
-     *`gte` requires the field value to be greater than or equal to the specified
+     * `gte` requires the field value to be greater than or equal to the specified
      * value (exclusive). If the value of `gte` is larger than a specified `lt`
      * or `lte`, the range is reversed, and the field value must be outside the
      * specified range. If the field value doesn't meet the required conditions,
      * an error message is generated.
      *
-     *```proto
-     *message MyFixed64 {
+     * ```proto
+     * message MyFixed64 {
      *  // value must be greater than or equal to 5 [fixed64.gte]
      *  fixed64 value = 1 [(buf.validate.field).fixed64.gte = 5];
      *
@@ -1484,11 +1639,13 @@ private static final long serialVersionUID = 0L;
      *
      *  // value must be greater than or equal to 10 or less than 5 [fixed64.gte_lt_exclusive]
      *  fixed64 another_value = 3 [(buf.validate.field).fixed64 = { gte: 10, lt: 5 }];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
-     * <code>optional fixed64 gte = 5 [json_name = "gte", (.buf.validate.priv.field) = { ... }</code>
+     * <code>optional fixed64 gte = 5 [json_name = "gte", (.buf.validate.priv.field) = { ... }
+     * </code>
+     *
      * @param value The gte to set.
      * @return This builder for chaining.
      */
@@ -1499,16 +1656,19 @@ private static final long serialVersionUID = 0L;
       onChanged();
       return this;
     }
+
     /**
+     *
+     *
      * <pre>
-     *`gte` requires the field value to be greater than or equal to the specified
+     * `gte` requires the field value to be greater than or equal to the specified
      * value (exclusive). If the value of `gte` is larger than a specified `lt`
      * or `lte`, the range is reversed, and the field value must be outside the
      * specified range. If the field value doesn't meet the required conditions,
      * an error message is generated.
      *
-     *```proto
-     *message MyFixed64 {
+     * ```proto
+     * message MyFixed64 {
      *  // value must be greater than or equal to 5 [fixed64.gte]
      *  fixed64 value = 1 [(buf.validate.field).fixed64.gte = 5];
      *
@@ -1517,11 +1677,13 @@ private static final long serialVersionUID = 0L;
      *
      *  // value must be greater than or equal to 10 or less than 5 [fixed64.gte_lt_exclusive]
      *  fixed64 another_value = 3 [(buf.validate.field).fixed64 = { gte: 10, lt: 5 }];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
-     * <code>optional fixed64 gte = 5 [json_name = "gte", (.buf.validate.priv.field) = { ... }</code>
+     * <code>optional fixed64 gte = 5 [json_name = "gte", (.buf.validate.priv.field) = { ... }
+     * </code>
+     *
      * @return This builder for chaining.
      */
     public Builder clearGte() {
@@ -1532,117 +1694,135 @@ private static final long serialVersionUID = 0L;
     }
 
     private com.google.protobuf.Internal.LongList in_ = emptyLongList();
+
     private void ensureInIsMutable() {
       if (!((bitField0_ & 0x00000020) != 0)) {
         in_ = mutableCopy(in_);
         bitField0_ |= 0x00000020;
       }
     }
+
     /**
+     *
+     *
      * <pre>
-     *`in` requires the field value to be equal to one of the specified values.
+     * `in` requires the field value to be equal to one of the specified values.
      * If the field value isn't one of the specified values, an error message is
      * generated.
      *
-     *```proto
-     *message MyFixed64 {
+     * ```proto
+     * message MyFixed64 {
      *  // value must be in list [1, 2, 3]
      *  repeated fixed64 value = 1 (buf.validate.field).fixed64 = { in: [1, 2, 3] };
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>repeated fixed64 in = 6 [json_name = "in", (.buf.validate.priv.field) = { ... }</code>
+     *
      * @return A list containing the in.
      */
-    public java.util.List<java.lang.Long>
-        getInList() {
-      return ((bitField0_ & 0x00000020) != 0) ?
-               java.util.Collections.unmodifiableList(in_) : in_;
+    public java.util.List<java.lang.Long> getInList() {
+      return ((bitField0_ & 0x00000020) != 0) ? java.util.Collections.unmodifiableList(in_) : in_;
     }
+
     /**
+     *
+     *
      * <pre>
-     *`in` requires the field value to be equal to one of the specified values.
+     * `in` requires the field value to be equal to one of the specified values.
      * If the field value isn't one of the specified values, an error message is
      * generated.
      *
-     *```proto
-     *message MyFixed64 {
+     * ```proto
+     * message MyFixed64 {
      *  // value must be in list [1, 2, 3]
      *  repeated fixed64 value = 1 (buf.validate.field).fixed64 = { in: [1, 2, 3] };
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>repeated fixed64 in = 6 [json_name = "in", (.buf.validate.priv.field) = { ... }</code>
+     *
      * @return The count of in.
      */
     public int getInCount() {
       return in_.size();
     }
+
     /**
+     *
+     *
      * <pre>
-     *`in` requires the field value to be equal to one of the specified values.
+     * `in` requires the field value to be equal to one of the specified values.
      * If the field value isn't one of the specified values, an error message is
      * generated.
      *
-     *```proto
-     *message MyFixed64 {
+     * ```proto
+     * message MyFixed64 {
      *  // value must be in list [1, 2, 3]
      *  repeated fixed64 value = 1 (buf.validate.field).fixed64 = { in: [1, 2, 3] };
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>repeated fixed64 in = 6 [json_name = "in", (.buf.validate.priv.field) = { ... }</code>
+     *
      * @param index The index of the element to return.
      * @return The in at the given index.
      */
     public long getIn(int index) {
       return in_.getLong(index);
     }
+
     /**
+     *
+     *
      * <pre>
-     *`in` requires the field value to be equal to one of the specified values.
+     * `in` requires the field value to be equal to one of the specified values.
      * If the field value isn't one of the specified values, an error message is
      * generated.
      *
-     *```proto
-     *message MyFixed64 {
+     * ```proto
+     * message MyFixed64 {
      *  // value must be in list [1, 2, 3]
      *  repeated fixed64 value = 1 (buf.validate.field).fixed64 = { in: [1, 2, 3] };
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>repeated fixed64 in = 6 [json_name = "in", (.buf.validate.priv.field) = { ... }</code>
+     *
      * @param index The index to set the value at.
      * @param value The in to set.
      * @return This builder for chaining.
      */
-    public Builder setIn(
-        int index, long value) {
+    public Builder setIn(int index, long value) {
 
       ensureInIsMutable();
       in_.setLong(index, value);
       onChanged();
       return this;
     }
+
     /**
+     *
+     *
      * <pre>
-     *`in` requires the field value to be equal to one of the specified values.
+     * `in` requires the field value to be equal to one of the specified values.
      * If the field value isn't one of the specified values, an error message is
      * generated.
      *
-     *```proto
-     *message MyFixed64 {
+     * ```proto
+     * message MyFixed64 {
      *  // value must be in list [1, 2, 3]
      *  repeated fixed64 value = 1 (buf.validate.field).fixed64 = { in: [1, 2, 3] };
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>repeated fixed64 in = 6 [json_name = "in", (.buf.validate.priv.field) = { ... }</code>
+     *
      * @param value The in to add.
      * @return This builder for chaining.
      */
@@ -1653,47 +1833,53 @@ private static final long serialVersionUID = 0L;
       onChanged();
       return this;
     }
+
     /**
+     *
+     *
      * <pre>
-     *`in` requires the field value to be equal to one of the specified values.
+     * `in` requires the field value to be equal to one of the specified values.
      * If the field value isn't one of the specified values, an error message is
      * generated.
      *
-     *```proto
-     *message MyFixed64 {
+     * ```proto
+     * message MyFixed64 {
      *  // value must be in list [1, 2, 3]
      *  repeated fixed64 value = 1 (buf.validate.field).fixed64 = { in: [1, 2, 3] };
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>repeated fixed64 in = 6 [json_name = "in", (.buf.validate.priv.field) = { ... }</code>
+     *
      * @param values The in to add.
      * @return This builder for chaining.
      */
-    public Builder addAllIn(
-        java.lang.Iterable<? extends java.lang.Long> values) {
+    public Builder addAllIn(java.lang.Iterable<? extends java.lang.Long> values) {
       ensureInIsMutable();
-      com.google.protobuf.AbstractMessageLite.Builder.addAll(
-          values, in_);
+      com.google.protobuf.AbstractMessageLite.Builder.addAll(values, in_);
       onChanged();
       return this;
     }
+
     /**
+     *
+     *
      * <pre>
-     *`in` requires the field value to be equal to one of the specified values.
+     * `in` requires the field value to be equal to one of the specified values.
      * If the field value isn't one of the specified values, an error message is
      * generated.
      *
-     *```proto
-     *message MyFixed64 {
+     * ```proto
+     * message MyFixed64 {
      *  // value must be in list [1, 2, 3]
      *  repeated fixed64 value = 1 (buf.validate.field).fixed64 = { in: [1, 2, 3] };
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>repeated fixed64 in = 6 [json_name = "in", (.buf.validate.priv.field) = { ... }</code>
+     *
      * @return This builder for chaining.
      */
     public Builder clearIn() {
@@ -1704,117 +1890,142 @@ private static final long serialVersionUID = 0L;
     }
 
     private com.google.protobuf.Internal.LongList notIn_ = emptyLongList();
+
     private void ensureNotInIsMutable() {
       if (!((bitField0_ & 0x00000040) != 0)) {
         notIn_ = mutableCopy(notIn_);
         bitField0_ |= 0x00000040;
       }
     }
+
     /**
+     *
+     *
      * <pre>
-     *`not_in` requires the field value to not be equal to any of the specified
+     * `not_in` requires the field value to not be equal to any of the specified
      * values. If the field value is one of the specified values, an error
      * message is generated.
      *
-     *```proto
-     *message MyFixed64 {
+     * ```proto
+     * message MyFixed64 {
      *  // value must not be in list [1, 2, 3]
      *  repeated fixed64 value = 1 (buf.validate.field).fixed64 = { not_in: [1, 2, 3] };
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
-     * <code>repeated fixed64 not_in = 7 [json_name = "notIn", (.buf.validate.priv.field) = { ... }</code>
+     * <code>repeated fixed64 not_in = 7 [json_name = "notIn", (.buf.validate.priv.field) = { ... }
+     * </code>
+     *
      * @return A list containing the notIn.
      */
-    public java.util.List<java.lang.Long>
-        getNotInList() {
-      return ((bitField0_ & 0x00000040) != 0) ?
-               java.util.Collections.unmodifiableList(notIn_) : notIn_;
+    public java.util.List<java.lang.Long> getNotInList() {
+      return ((bitField0_ & 0x00000040) != 0)
+          ? java.util.Collections.unmodifiableList(notIn_)
+          : notIn_;
     }
+
     /**
+     *
+     *
      * <pre>
-     *`not_in` requires the field value to not be equal to any of the specified
+     * `not_in` requires the field value to not be equal to any of the specified
      * values. If the field value is one of the specified values, an error
      * message is generated.
      *
-     *```proto
-     *message MyFixed64 {
+     * ```proto
+     * message MyFixed64 {
      *  // value must not be in list [1, 2, 3]
      *  repeated fixed64 value = 1 (buf.validate.field).fixed64 = { not_in: [1, 2, 3] };
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
-     * <code>repeated fixed64 not_in = 7 [json_name = "notIn", (.buf.validate.priv.field) = { ... }</code>
+     * <code>repeated fixed64 not_in = 7 [json_name = "notIn", (.buf.validate.priv.field) = { ... }
+     * </code>
+     *
      * @return The count of notIn.
      */
     public int getNotInCount() {
       return notIn_.size();
     }
+
     /**
+     *
+     *
      * <pre>
-     *`not_in` requires the field value to not be equal to any of the specified
+     * `not_in` requires the field value to not be equal to any of the specified
      * values. If the field value is one of the specified values, an error
      * message is generated.
      *
-     *```proto
-     *message MyFixed64 {
+     * ```proto
+     * message MyFixed64 {
      *  // value must not be in list [1, 2, 3]
      *  repeated fixed64 value = 1 (buf.validate.field).fixed64 = { not_in: [1, 2, 3] };
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
-     * <code>repeated fixed64 not_in = 7 [json_name = "notIn", (.buf.validate.priv.field) = { ... }</code>
+     * <code>repeated fixed64 not_in = 7 [json_name = "notIn", (.buf.validate.priv.field) = { ... }
+     * </code>
+     *
      * @param index The index of the element to return.
      * @return The notIn at the given index.
      */
     public long getNotIn(int index) {
       return notIn_.getLong(index);
     }
+
     /**
+     *
+     *
      * <pre>
-     *`not_in` requires the field value to not be equal to any of the specified
+     * `not_in` requires the field value to not be equal to any of the specified
      * values. If the field value is one of the specified values, an error
      * message is generated.
      *
-     *```proto
-     *message MyFixed64 {
+     * ```proto
+     * message MyFixed64 {
      *  // value must not be in list [1, 2, 3]
      *  repeated fixed64 value = 1 (buf.validate.field).fixed64 = { not_in: [1, 2, 3] };
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
-     * <code>repeated fixed64 not_in = 7 [json_name = "notIn", (.buf.validate.priv.field) = { ... }</code>
+     * <code>repeated fixed64 not_in = 7 [json_name = "notIn", (.buf.validate.priv.field) = { ... }
+     * </code>
+     *
      * @param index The index to set the value at.
      * @param value The notIn to set.
      * @return This builder for chaining.
      */
-    public Builder setNotIn(
-        int index, long value) {
+    public Builder setNotIn(int index, long value) {
 
       ensureNotInIsMutable();
       notIn_.setLong(index, value);
       onChanged();
       return this;
     }
+
     /**
+     *
+     *
      * <pre>
-     *`not_in` requires the field value to not be equal to any of the specified
+     * `not_in` requires the field value to not be equal to any of the specified
      * values. If the field value is one of the specified values, an error
      * message is generated.
      *
-     *```proto
-     *message MyFixed64 {
+     * ```proto
+     * message MyFixed64 {
      *  // value must not be in list [1, 2, 3]
      *  repeated fixed64 value = 1 (buf.validate.field).fixed64 = { not_in: [1, 2, 3] };
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
-     * <code>repeated fixed64 not_in = 7 [json_name = "notIn", (.buf.validate.priv.field) = { ... }</code>
+     * <code>repeated fixed64 not_in = 7 [json_name = "notIn", (.buf.validate.priv.field) = { ... }
+     * </code>
+     *
      * @param value The notIn to add.
      * @return This builder for chaining.
      */
@@ -1825,47 +2036,55 @@ private static final long serialVersionUID = 0L;
       onChanged();
       return this;
     }
+
     /**
+     *
+     *
      * <pre>
-     *`not_in` requires the field value to not be equal to any of the specified
+     * `not_in` requires the field value to not be equal to any of the specified
      * values. If the field value is one of the specified values, an error
      * message is generated.
      *
-     *```proto
-     *message MyFixed64 {
+     * ```proto
+     * message MyFixed64 {
      *  // value must not be in list [1, 2, 3]
      *  repeated fixed64 value = 1 (buf.validate.field).fixed64 = { not_in: [1, 2, 3] };
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
-     * <code>repeated fixed64 not_in = 7 [json_name = "notIn", (.buf.validate.priv.field) = { ... }</code>
+     * <code>repeated fixed64 not_in = 7 [json_name = "notIn", (.buf.validate.priv.field) = { ... }
+     * </code>
+     *
      * @param values The notIn to add.
      * @return This builder for chaining.
      */
-    public Builder addAllNotIn(
-        java.lang.Iterable<? extends java.lang.Long> values) {
+    public Builder addAllNotIn(java.lang.Iterable<? extends java.lang.Long> values) {
       ensureNotInIsMutable();
-      com.google.protobuf.AbstractMessageLite.Builder.addAll(
-          values, notIn_);
+      com.google.protobuf.AbstractMessageLite.Builder.addAll(values, notIn_);
       onChanged();
       return this;
     }
+
     /**
+     *
+     *
      * <pre>
-     *`not_in` requires the field value to not be equal to any of the specified
+     * `not_in` requires the field value to not be equal to any of the specified
      * values. If the field value is one of the specified values, an error
      * message is generated.
      *
-     *```proto
-     *message MyFixed64 {
+     * ```proto
+     * message MyFixed64 {
      *  // value must not be in list [1, 2, 3]
      *  repeated fixed64 value = 1 (buf.validate.field).fixed64 = { not_in: [1, 2, 3] };
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
-     * <code>repeated fixed64 not_in = 7 [json_name = "notIn", (.buf.validate.priv.field) = { ... }</code>
+     * <code>repeated fixed64 not_in = 7 [json_name = "notIn", (.buf.validate.priv.field) = { ... }
+     * </code>
+     *
      * @return This builder for chaining.
      */
     public Builder clearNotIn() {
@@ -1874,9 +2093,9 @@ private static final long serialVersionUID = 0L;
       onChanged();
       return this;
     }
+
     @java.lang.Override
-    public final Builder setUnknownFields(
-        final com.google.protobuf.UnknownFieldSet unknownFields) {
+    public final Builder setUnknownFields(final com.google.protobuf.UnknownFieldSet unknownFields) {
       return super.setUnknownFields(unknownFields);
     }
 
@@ -1886,12 +2105,12 @@ private static final long serialVersionUID = 0L;
       return super.mergeUnknownFields(unknownFields);
     }
 
-
     // @@protoc_insertion_point(builder_scope:buf.validate.Fixed64Rules)
   }
 
   // @@protoc_insertion_point(class_scope:buf.validate.Fixed64Rules)
   private static final build.buf.validate.Fixed64Rules DEFAULT_INSTANCE;
+
   static {
     DEFAULT_INSTANCE = new build.buf.validate.Fixed64Rules();
   }
@@ -1900,27 +2119,27 @@ private static final long serialVersionUID = 0L;
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<Fixed64Rules>
-      PARSER = new com.google.protobuf.AbstractParser<Fixed64Rules>() {
-    @java.lang.Override
-    public Fixed64Rules parsePartialFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      Builder builder = newBuilder();
-      try {
-        builder.mergeFrom(input, extensionRegistry);
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(builder.buildPartial());
-      } catch (com.google.protobuf.UninitializedMessageException e) {
-        throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(e)
-            .setUnfinishedMessage(builder.buildPartial());
-      }
-      return builder.buildPartial();
-    }
-  };
+  private static final com.google.protobuf.Parser<Fixed64Rules> PARSER =
+      new com.google.protobuf.AbstractParser<Fixed64Rules>() {
+        @java.lang.Override
+        public Fixed64Rules parsePartialFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+          Builder builder = newBuilder();
+          try {
+            builder.mergeFrom(input, extensionRegistry);
+          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+            throw e.setUnfinishedMessage(builder.buildPartial());
+          } catch (com.google.protobuf.UninitializedMessageException e) {
+            throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+          } catch (java.io.IOException e) {
+            throw new com.google.protobuf.InvalidProtocolBufferException(e)
+                .setUnfinishedMessage(builder.buildPartial());
+          }
+          return builder.buildPartial();
+        }
+      };
 
   public static com.google.protobuf.Parser<Fixed64Rules> parser() {
     return PARSER;
@@ -1935,6 +2154,4 @@ private static final long serialVersionUID = 0L;
   public build.buf.validate.Fixed64Rules getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
-
 }
-

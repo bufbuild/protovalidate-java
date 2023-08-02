@@ -3,12 +3,14 @@
 
 package build.buf.validate.conformance.cases;
 
-public interface BytesMaxLenOrBuilder extends
+public interface BytesMaxLenOrBuilder
+    extends
     // @@protoc_insertion_point(interface_extends:buf.validate.conformance.cases.BytesMaxLen)
     com.google.protobuf.MessageOrBuilder {
 
   /**
    * <code>bytes val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
+   *
    * @return The val.
    */
   com.google.protobuf.ByteString getVal();

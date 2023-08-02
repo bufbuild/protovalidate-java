@@ -4,21 +4,25 @@
 package build.buf.validate;
 
 /**
+ *
+ *
  * <pre>
  * EnumRules describe the constraints applied to `enum` values.
  * </pre>
  *
  * Protobuf type {@code buf.validate.EnumRules}
  */
-public final class EnumRules extends
-    com.google.protobuf.GeneratedMessageV3 implements
+public final class EnumRules extends com.google.protobuf.GeneratedMessageV3
+    implements
     // @@protoc_insertion_point(message_implements:buf.validate.EnumRules)
     EnumRulesOrBuilder {
-private static final long serialVersionUID = 0L;
+  private static final long serialVersionUID = 0L;
+
   // Use EnumRules.newBuilder() to construct.
   private EnumRules(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
+
   private EnumRules() {
     in_ = emptyIntList();
     notIn_ = emptyIntList();
@@ -26,20 +30,19 @@ private static final long serialVersionUID = 0L;
 
   @java.lang.Override
   @SuppressWarnings({"unused"})
-  protected java.lang.Object newInstance(
-      UnusedPrivateParameter unused) {
+  protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
     return new EnumRules();
   }
 
-  public static final com.google.protobuf.Descriptors.Descriptor
-      getDescriptor() {
+  public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
     return build.buf.validate.ValidateProto.internal_static_buf_validate_EnumRules_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return build.buf.validate.ValidateProto.internal_static_buf_validate_EnumRules_fieldAccessorTable
+    return build.buf.validate.ValidateProto
+        .internal_static_buf_validate_EnumRules_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
             build.buf.validate.EnumRules.class, build.buf.validate.EnumRules.Builder.class);
   }
@@ -47,52 +50,62 @@ private static final long serialVersionUID = 0L;
   private int bitField0_;
   public static final int CONST_FIELD_NUMBER = 1;
   private int const_ = 0;
+
   /**
-   * <pre>
-   *`const` requires the field value to exactly match the specified enum value.
-   *If the field value doesn't match, an error message is generated.
    *
-   *```proto
-   *enum MyEnum {
+   *
+   * <pre>
+   * `const` requires the field value to exactly match the specified enum value.
+   * If the field value doesn't match, an error message is generated.
+   *
+   * ```proto
+   * enum MyEnum {
    *  MY_ENUM_UNSPECIFIED = 0;
    *  MY_ENUM_VALUE1 = 1;
    *  MY_ENUM_VALUE2 = 2;
-   *}
+   * }
    *
-   *message MyMessage {
+   * message MyMessage {
    *  // The field `value` must be exactly MY_ENUM_VALUE1.
    *   MyEnum value = 1 [(buf.validate.field).enum.const = 1];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
-   * <code>optional int32 const = 1 [json_name = "const", (.buf.validate.priv.field) = { ... }</code>
+   * <code>optional int32 const = 1 [json_name = "const", (.buf.validate.priv.field) = { ... }
+   * </code>
+   *
    * @return Whether the const field is set.
    */
   @java.lang.Override
   public boolean hasConst() {
     return ((bitField0_ & 0x00000001) != 0);
   }
+
   /**
-   * <pre>
-   *`const` requires the field value to exactly match the specified enum value.
-   *If the field value doesn't match, an error message is generated.
    *
-   *```proto
-   *enum MyEnum {
+   *
+   * <pre>
+   * `const` requires the field value to exactly match the specified enum value.
+   * If the field value doesn't match, an error message is generated.
+   *
+   * ```proto
+   * enum MyEnum {
    *  MY_ENUM_UNSPECIFIED = 0;
    *  MY_ENUM_VALUE1 = 1;
    *  MY_ENUM_VALUE2 = 2;
-   *}
+   * }
    *
-   *message MyMessage {
+   * message MyMessage {
    *  // The field `value` must be exactly MY_ENUM_VALUE1.
    *   MyEnum value = 1 [(buf.validate.field).enum.const = 1];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
-   * <code>optional int32 const = 1 [json_name = "const", (.buf.validate.priv.field) = { ... }</code>
+   * <code>optional int32 const = 1 [json_name = "const", (.buf.validate.priv.field) = { ... }
+   * </code>
+   *
    * @return The const.
    */
   @java.lang.Override
@@ -102,52 +115,60 @@ private static final long serialVersionUID = 0L;
 
   public static final int DEFINED_ONLY_FIELD_NUMBER = 2;
   private boolean definedOnly_ = false;
+
   /**
+   *
+   *
    * <pre>
-   *`defined_only` requires the field value to be one of the defined values for
+   * `defined_only` requires the field value to be one of the defined values for
    * this enum, failing on any undefined value.
    *
-   *```proto
-   *enum MyEnum {
+   * ```proto
+   * enum MyEnum {
    *  MY_ENUM_UNSPECIFIED = 0;
    *  MY_ENUM_VALUE1 = 1;
    *  MY_ENUM_VALUE2 = 2;
-   *}
+   * }
    *
-   *message MyMessage {
+   * message MyMessage {
    *  // The field `value` must be a defined value of MyEnum.
    *   MyEnum value = 1 [(buf.validate.field).enum.defined_only = true];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
    * <code>optional bool defined_only = 2 [json_name = "definedOnly"];</code>
+   *
    * @return Whether the definedOnly field is set.
    */
   @java.lang.Override
   public boolean hasDefinedOnly() {
     return ((bitField0_ & 0x00000002) != 0);
   }
+
   /**
+   *
+   *
    * <pre>
-   *`defined_only` requires the field value to be one of the defined values for
+   * `defined_only` requires the field value to be one of the defined values for
    * this enum, failing on any undefined value.
    *
-   *```proto
-   *enum MyEnum {
+   * ```proto
+   * enum MyEnum {
    *  MY_ENUM_UNSPECIFIED = 0;
    *  MY_ENUM_VALUE1 = 1;
    *  MY_ENUM_VALUE2 = 2;
-   *}
+   * }
    *
-   *message MyMessage {
+   * message MyMessage {
    *  // The field `value` must be a defined value of MyEnum.
    *   MyEnum value = 1 [(buf.validate.field).enum.defined_only = true];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
    * <code>optional bool defined_only = 2 [json_name = "definedOnly"];</code>
+   *
    * @return The definedOnly.
    */
   @java.lang.Override
@@ -156,178 +177,208 @@ private static final long serialVersionUID = 0L;
   }
 
   public static final int IN_FIELD_NUMBER = 3;
+
   @SuppressWarnings("serial")
   private com.google.protobuf.Internal.IntList in_;
+
   /**
-   * <pre>
-   *`in` requires the field value to be equal to one of the
-   *specified enum values. If the field value doesn't match any of the
-   *specified values, an error message is generated.
    *
-   *```proto
-   *enum MyEnum {
+   *
+   * <pre>
+   * `in` requires the field value to be equal to one of the
+   * specified enum values. If the field value doesn't match any of the
+   * specified values, an error message is generated.
+   *
+   * ```proto
+   * enum MyEnum {
    *  MY_ENUM_UNSPECIFIED = 0;
    *  MY_ENUM_VALUE1 = 1;
    *  MY_ENUM_VALUE2 = 2;
-   *}
+   * }
    *
-   *message MyMessage {
+   * message MyMessage {
    *  // The field `value` must be equal to one of the specified values.
    *   MyEnum value = 1 [(buf.validate.field).enum.in = {1, 2}];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
    * <code>repeated int32 in = 3 [json_name = "in", (.buf.validate.priv.field) = { ... }</code>
+   *
    * @return A list containing the in.
    */
   @java.lang.Override
-  public java.util.List<java.lang.Integer>
-      getInList() {
+  public java.util.List<java.lang.Integer> getInList() {
     return in_;
   }
+
   /**
-   * <pre>
-   *`in` requires the field value to be equal to one of the
-   *specified enum values. If the field value doesn't match any of the
-   *specified values, an error message is generated.
    *
-   *```proto
-   *enum MyEnum {
+   *
+   * <pre>
+   * `in` requires the field value to be equal to one of the
+   * specified enum values. If the field value doesn't match any of the
+   * specified values, an error message is generated.
+   *
+   * ```proto
+   * enum MyEnum {
    *  MY_ENUM_UNSPECIFIED = 0;
    *  MY_ENUM_VALUE1 = 1;
    *  MY_ENUM_VALUE2 = 2;
-   *}
+   * }
    *
-   *message MyMessage {
+   * message MyMessage {
    *  // The field `value` must be equal to one of the specified values.
    *   MyEnum value = 1 [(buf.validate.field).enum.in = {1, 2}];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
    * <code>repeated int32 in = 3 [json_name = "in", (.buf.validate.priv.field) = { ... }</code>
+   *
    * @return The count of in.
    */
   public int getInCount() {
     return in_.size();
   }
+
   /**
-   * <pre>
-   *`in` requires the field value to be equal to one of the
-   *specified enum values. If the field value doesn't match any of the
-   *specified values, an error message is generated.
    *
-   *```proto
-   *enum MyEnum {
+   *
+   * <pre>
+   * `in` requires the field value to be equal to one of the
+   * specified enum values. If the field value doesn't match any of the
+   * specified values, an error message is generated.
+   *
+   * ```proto
+   * enum MyEnum {
    *  MY_ENUM_UNSPECIFIED = 0;
    *  MY_ENUM_VALUE1 = 1;
    *  MY_ENUM_VALUE2 = 2;
-   *}
+   * }
    *
-   *message MyMessage {
+   * message MyMessage {
    *  // The field `value` must be equal to one of the specified values.
    *   MyEnum value = 1 [(buf.validate.field).enum.in = {1, 2}];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
    * <code>repeated int32 in = 3 [json_name = "in", (.buf.validate.priv.field) = { ... }</code>
+   *
    * @param index The index of the element to return.
    * @return The in at the given index.
    */
   public int getIn(int index) {
     return in_.getInt(index);
   }
+
   private int inMemoizedSerializedSize = -1;
 
   public static final int NOT_IN_FIELD_NUMBER = 4;
+
   @SuppressWarnings("serial")
   private com.google.protobuf.Internal.IntList notIn_;
+
   /**
-   * <pre>
-   *`not_in` requires the field value to be not equal to any of the
-   *specified enum values. If the field value matches one of the specified
-   *values, an error message is generated.
    *
-   *```proto
-   *enum MyEnum {
+   *
+   * <pre>
+   * `not_in` requires the field value to be not equal to any of the
+   * specified enum values. If the field value matches one of the specified
+   * values, an error message is generated.
+   *
+   * ```proto
+   * enum MyEnum {
    *  MY_ENUM_UNSPECIFIED = 0;
    *  MY_ENUM_VALUE1 = 1;
    *  MY_ENUM_VALUE2 = 2;
-   *}
+   * }
    *
-   *message MyMessage {
+   * message MyMessage {
    *  // The field `value` must not be equal to any of the specified values.
    *   MyEnum value = 1 [(buf.validate.field).enum.not_in = {1, 2}];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
-   * <code>repeated int32 not_in = 4 [json_name = "notIn", (.buf.validate.priv.field) = { ... }</code>
+   * <code>repeated int32 not_in = 4 [json_name = "notIn", (.buf.validate.priv.field) = { ... }
+   * </code>
+   *
    * @return A list containing the notIn.
    */
   @java.lang.Override
-  public java.util.List<java.lang.Integer>
-      getNotInList() {
+  public java.util.List<java.lang.Integer> getNotInList() {
     return notIn_;
   }
+
   /**
-   * <pre>
-   *`not_in` requires the field value to be not equal to any of the
-   *specified enum values. If the field value matches one of the specified
-   *values, an error message is generated.
    *
-   *```proto
-   *enum MyEnum {
+   *
+   * <pre>
+   * `not_in` requires the field value to be not equal to any of the
+   * specified enum values. If the field value matches one of the specified
+   * values, an error message is generated.
+   *
+   * ```proto
+   * enum MyEnum {
    *  MY_ENUM_UNSPECIFIED = 0;
    *  MY_ENUM_VALUE1 = 1;
    *  MY_ENUM_VALUE2 = 2;
-   *}
+   * }
    *
-   *message MyMessage {
+   * message MyMessage {
    *  // The field `value` must not be equal to any of the specified values.
    *   MyEnum value = 1 [(buf.validate.field).enum.not_in = {1, 2}];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
-   * <code>repeated int32 not_in = 4 [json_name = "notIn", (.buf.validate.priv.field) = { ... }</code>
+   * <code>repeated int32 not_in = 4 [json_name = "notIn", (.buf.validate.priv.field) = { ... }
+   * </code>
+   *
    * @return The count of notIn.
    */
   public int getNotInCount() {
     return notIn_.size();
   }
+
   /**
-   * <pre>
-   *`not_in` requires the field value to be not equal to any of the
-   *specified enum values. If the field value matches one of the specified
-   *values, an error message is generated.
    *
-   *```proto
-   *enum MyEnum {
+   *
+   * <pre>
+   * `not_in` requires the field value to be not equal to any of the
+   * specified enum values. If the field value matches one of the specified
+   * values, an error message is generated.
+   *
+   * ```proto
+   * enum MyEnum {
    *  MY_ENUM_UNSPECIFIED = 0;
    *  MY_ENUM_VALUE1 = 1;
    *  MY_ENUM_VALUE2 = 2;
-   *}
+   * }
    *
-   *message MyMessage {
+   * message MyMessage {
    *  // The field `value` must not be equal to any of the specified values.
    *   MyEnum value = 1 [(buf.validate.field).enum.not_in = {1, 2}];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
-   * <code>repeated int32 not_in = 4 [json_name = "notIn", (.buf.validate.priv.field) = { ... }</code>
+   * <code>repeated int32 not_in = 4 [json_name = "notIn", (.buf.validate.priv.field) = { ... }
+   * </code>
+   *
    * @param index The index of the element to return.
    * @return The notIn at the given index.
    */
   public int getNotIn(int index) {
     return notIn_.getInt(index);
   }
+
   private int notInMemoizedSerializedSize = -1;
 
   private byte memoizedIsInitialized = -1;
+
   @java.lang.Override
   public final boolean isInitialized() {
     byte isInitialized = memoizedIsInitialized;
@@ -339,8 +390,7 @@ private static final long serialVersionUID = 0L;
   }
 
   @java.lang.Override
-  public void writeTo(com.google.protobuf.CodedOutputStream output)
-                      throws java.io.IOException {
+  public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
     getSerializedSize();
     if (((bitField0_ & 0x00000001) != 0)) {
       output.writeInt32(1, const_);
@@ -372,38 +422,32 @@ private static final long serialVersionUID = 0L;
 
     size = 0;
     if (((bitField0_ & 0x00000001) != 0)) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeInt32Size(1, const_);
+      size += com.google.protobuf.CodedOutputStream.computeInt32Size(1, const_);
     }
     if (((bitField0_ & 0x00000002) != 0)) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeBoolSize(2, definedOnly_);
+      size += com.google.protobuf.CodedOutputStream.computeBoolSize(2, definedOnly_);
     }
     {
       int dataSize = 0;
       for (int i = 0; i < in_.size(); i++) {
-        dataSize += com.google.protobuf.CodedOutputStream
-          .computeInt32SizeNoTag(in_.getInt(i));
+        dataSize += com.google.protobuf.CodedOutputStream.computeInt32SizeNoTag(in_.getInt(i));
       }
       size += dataSize;
       if (!getInList().isEmpty()) {
         size += 1;
-        size += com.google.protobuf.CodedOutputStream
-            .computeInt32SizeNoTag(dataSize);
+        size += com.google.protobuf.CodedOutputStream.computeInt32SizeNoTag(dataSize);
       }
       inMemoizedSerializedSize = dataSize;
     }
     {
       int dataSize = 0;
       for (int i = 0; i < notIn_.size(); i++) {
-        dataSize += com.google.protobuf.CodedOutputStream
-          .computeInt32SizeNoTag(notIn_.getInt(i));
+        dataSize += com.google.protobuf.CodedOutputStream.computeInt32SizeNoTag(notIn_.getInt(i));
       }
       size += dataSize;
       if (!getNotInList().isEmpty()) {
         size += 1;
-        size += com.google.protobuf.CodedOutputStream
-            .computeInt32SizeNoTag(dataSize);
+        size += com.google.protobuf.CodedOutputStream.computeInt32SizeNoTag(dataSize);
       }
       notInMemoizedSerializedSize = dataSize;
     }
@@ -415,7 +459,7 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public boolean equals(final java.lang.Object obj) {
     if (obj == this) {
-     return true;
+      return true;
     }
     if (!(obj instanceof build.buf.validate.EnumRules)) {
       return super.equals(obj);
@@ -424,18 +468,14 @@ private static final long serialVersionUID = 0L;
 
     if (hasConst() != other.hasConst()) return false;
     if (hasConst()) {
-      if (getConst()
-          != other.getConst()) return false;
+      if (getConst() != other.getConst()) return false;
     }
     if (hasDefinedOnly() != other.hasDefinedOnly()) return false;
     if (hasDefinedOnly()) {
-      if (getDefinedOnly()
-          != other.getDefinedOnly()) return false;
+      if (getDefinedOnly() != other.getDefinedOnly()) return false;
     }
-    if (!getInList()
-        .equals(other.getInList())) return false;
-    if (!getNotInList()
-        .equals(other.getNotInList())) return false;
+    if (!getInList().equals(other.getInList())) return false;
+    if (!getNotInList().equals(other.getNotInList())) return false;
     if (!getUnknownFields().equals(other.getUnknownFields())) return false;
     return true;
   }
@@ -453,8 +493,7 @@ private static final long serialVersionUID = 0L;
     }
     if (hasDefinedOnly()) {
       hash = (37 * hash) + DEFINED_ONLY_FIELD_NUMBER;
-      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
-          getDefinedOnly());
+      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(getDefinedOnly());
     }
     if (getInCount() > 0) {
       hash = (37 * hash) + IN_FIELD_NUMBER;
@@ -469,132 +508,134 @@ private static final long serialVersionUID = 0L;
     return hash;
   }
 
-  public static build.buf.validate.EnumRules parseFrom(
-      java.nio.ByteBuffer data)
+  public static build.buf.validate.EnumRules parseFrom(java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
+
   public static build.buf.validate.EnumRules parseFrom(
-      java.nio.ByteBuffer data,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      java.nio.ByteBuffer data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static build.buf.validate.EnumRules parseFrom(
-      com.google.protobuf.ByteString data)
+
+  public static build.buf.validate.EnumRules parseFrom(com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
+
   public static build.buf.validate.EnumRules parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
+
   public static build.buf.validate.EnumRules parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
+
   public static build.buf.validate.EnumRules parseFrom(
-      byte[] data,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      byte[] data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
+
   public static build.buf.validate.EnumRules parseFrom(java.io.InputStream input)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input);
+    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
   }
+
   public static build.buf.validate.EnumRules parseFrom(
-      java.io.InputStream input,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input, extensionRegistry);
+    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+        PARSER, input, extensionRegistry);
   }
 
   public static build.buf.validate.EnumRules parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseDelimitedWithIOException(PARSER, input);
+    return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input);
   }
 
   public static build.buf.validate.EnumRules parseDelimitedFrom(
-      java.io.InputStream input,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(
+        PARSER, input, extensionRegistry);
   }
-  public static build.buf.validate.EnumRules parseFrom(
-      com.google.protobuf.CodedInputStream input)
+
+  public static build.buf.validate.EnumRules parseFrom(com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input);
+    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
   }
+
   public static build.buf.validate.EnumRules parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input, extensionRegistry);
+    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+        PARSER, input, extensionRegistry);
   }
 
   @java.lang.Override
-  public Builder newBuilderForType() { return newBuilder(); }
+  public Builder newBuilderForType() {
+    return newBuilder();
+  }
+
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
+
   public static Builder newBuilder(build.buf.validate.EnumRules prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
+
   @java.lang.Override
   public Builder toBuilder() {
-    return this == DEFAULT_INSTANCE
-        ? new Builder() : new Builder().mergeFrom(this);
+    return this == DEFAULT_INSTANCE ? new Builder() : new Builder().mergeFrom(this);
   }
 
   @java.lang.Override
-  protected Builder newBuilderForType(
-      com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+  protected Builder newBuilderForType(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
     Builder builder = new Builder(parent);
     return builder;
   }
+
   /**
+   *
+   *
    * <pre>
    * EnumRules describe the constraints applied to `enum` values.
    * </pre>
    *
    * Protobuf type {@code buf.validate.EnumRules}
    */
-  public static final class Builder extends
-      com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+  public static final class Builder extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
+      implements
       // @@protoc_insertion_point(builder_implements:buf.validate.EnumRules)
       build.buf.validate.EnumRulesOrBuilder {
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
+    public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
       return build.buf.validate.ValidateProto.internal_static_buf_validate_EnumRules_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return build.buf.validate.ValidateProto.internal_static_buf_validate_EnumRules_fieldAccessorTable
+      return build.buf.validate.ValidateProto
+          .internal_static_buf_validate_EnumRules_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
               build.buf.validate.EnumRules.class, build.buf.validate.EnumRules.Builder.class);
     }
 
     // Construct using build.buf.validate.EnumRules.newBuilder()
-    private Builder() {
+    private Builder() {}
 
-    }
-
-    private Builder(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+    private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
       super(parent);
-
     }
+
     @java.lang.Override
     public Builder clear() {
       super.clear();
@@ -607,8 +648,7 @@ private static final long serialVersionUID = 0L;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Descriptors.Descriptor
-        getDescriptorForType() {
+    public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
       return build.buf.validate.ValidateProto.internal_static_buf_validate_EnumRules_descriptor;
     }
 
@@ -630,7 +670,9 @@ private static final long serialVersionUID = 0L;
     public build.buf.validate.EnumRules buildPartial() {
       build.buf.validate.EnumRules result = new build.buf.validate.EnumRules(this);
       buildPartialRepeatedFields(result);
-      if (bitField0_ != 0) { buildPartial0(result); }
+      if (bitField0_ != 0) {
+        buildPartial0(result);
+      }
       onBuilt();
       return result;
     }
@@ -666,38 +708,39 @@ private static final long serialVersionUID = 0L;
     public Builder clone() {
       return super.clone();
     }
+
     @java.lang.Override
     public Builder setField(
-        com.google.protobuf.Descriptors.FieldDescriptor field,
-        java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
       return super.setField(field, value);
     }
+
     @java.lang.Override
-    public Builder clearField(
-        com.google.protobuf.Descriptors.FieldDescriptor field) {
+    public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
       return super.clearField(field);
     }
+
     @java.lang.Override
-    public Builder clearOneof(
-        com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+    public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
       return super.clearOneof(oneof);
     }
+
     @java.lang.Override
     public Builder setRepeatedField(
-        com.google.protobuf.Descriptors.FieldDescriptor field,
-        int index, java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field, int index, java.lang.Object value) {
       return super.setRepeatedField(field, index, value);
     }
+
     @java.lang.Override
     public Builder addRepeatedField(
-        com.google.protobuf.Descriptors.FieldDescriptor field,
-        java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
       return super.addRepeatedField(field, value);
     }
+
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
       if (other instanceof build.buf.validate.EnumRules) {
-        return mergeFrom((build.buf.validate.EnumRules)other);
+        return mergeFrom((build.buf.validate.EnumRules) other);
       } else {
         super.mergeFrom(other);
         return this;
@@ -758,54 +801,61 @@ private static final long serialVersionUID = 0L;
             case 0:
               done = true;
               break;
-            case 8: {
-              const_ = input.readInt32();
-              bitField0_ |= 0x00000001;
-              break;
-            } // case 8
-            case 16: {
-              definedOnly_ = input.readBool();
-              bitField0_ |= 0x00000002;
-              break;
-            } // case 16
-            case 24: {
-              int v = input.readInt32();
-              ensureInIsMutable();
-              in_.addInt(v);
-              break;
-            } // case 24
-            case 26: {
-              int length = input.readRawVarint32();
-              int limit = input.pushLimit(length);
-              ensureInIsMutable();
-              while (input.getBytesUntilLimit() > 0) {
-                in_.addInt(input.readInt32());
-              }
-              input.popLimit(limit);
-              break;
-            } // case 26
-            case 32: {
-              int v = input.readInt32();
-              ensureNotInIsMutable();
-              notIn_.addInt(v);
-              break;
-            } // case 32
-            case 34: {
-              int length = input.readRawVarint32();
-              int limit = input.pushLimit(length);
-              ensureNotInIsMutable();
-              while (input.getBytesUntilLimit() > 0) {
-                notIn_.addInt(input.readInt32());
-              }
-              input.popLimit(limit);
-              break;
-            } // case 34
-            default: {
-              if (!super.parseUnknownField(input, extensionRegistry, tag)) {
-                done = true; // was an endgroup tag
-              }
-              break;
-            } // default:
+            case 8:
+              {
+                const_ = input.readInt32();
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 8
+            case 16:
+              {
+                definedOnly_ = input.readBool();
+                bitField0_ |= 0x00000002;
+                break;
+              } // case 16
+            case 24:
+              {
+                int v = input.readInt32();
+                ensureInIsMutable();
+                in_.addInt(v);
+                break;
+              } // case 24
+            case 26:
+              {
+                int length = input.readRawVarint32();
+                int limit = input.pushLimit(length);
+                ensureInIsMutable();
+                while (input.getBytesUntilLimit() > 0) {
+                  in_.addInt(input.readInt32());
+                }
+                input.popLimit(limit);
+                break;
+              } // case 26
+            case 32:
+              {
+                int v = input.readInt32();
+                ensureNotInIsMutable();
+                notIn_.addInt(v);
+                break;
+              } // case 32
+            case 34:
+              {
+                int length = input.readRawVarint32();
+                int limit = input.pushLimit(length);
+                ensureNotInIsMutable();
+                while (input.getBytesUntilLimit() > 0) {
+                  notIn_.addInt(input.readInt32());
+                }
+                input.popLimit(limit);
+                break;
+              } // case 34
+            default:
+              {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
           } // switch (tag)
         } // while (!done)
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -815,81 +865,97 @@ private static final long serialVersionUID = 0L;
       } // finally
       return this;
     }
+
     private int bitField0_;
 
-    private int const_ ;
+    private int const_;
+
     /**
-     * <pre>
-     *`const` requires the field value to exactly match the specified enum value.
-     *If the field value doesn't match, an error message is generated.
      *
-     *```proto
-     *enum MyEnum {
+     *
+     * <pre>
+     * `const` requires the field value to exactly match the specified enum value.
+     * If the field value doesn't match, an error message is generated.
+     *
+     * ```proto
+     * enum MyEnum {
      *  MY_ENUM_UNSPECIFIED = 0;
      *  MY_ENUM_VALUE1 = 1;
      *  MY_ENUM_VALUE2 = 2;
-     *}
+     * }
      *
-     *message MyMessage {
+     * message MyMessage {
      *  // The field `value` must be exactly MY_ENUM_VALUE1.
      *   MyEnum value = 1 [(buf.validate.field).enum.const = 1];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
-     * <code>optional int32 const = 1 [json_name = "const", (.buf.validate.priv.field) = { ... }</code>
+     * <code>optional int32 const = 1 [json_name = "const", (.buf.validate.priv.field) = { ... }
+     * </code>
+     *
      * @return Whether the const field is set.
      */
     @java.lang.Override
     public boolean hasConst() {
       return ((bitField0_ & 0x00000001) != 0);
     }
+
     /**
-     * <pre>
-     *`const` requires the field value to exactly match the specified enum value.
-     *If the field value doesn't match, an error message is generated.
      *
-     *```proto
-     *enum MyEnum {
+     *
+     * <pre>
+     * `const` requires the field value to exactly match the specified enum value.
+     * If the field value doesn't match, an error message is generated.
+     *
+     * ```proto
+     * enum MyEnum {
      *  MY_ENUM_UNSPECIFIED = 0;
      *  MY_ENUM_VALUE1 = 1;
      *  MY_ENUM_VALUE2 = 2;
-     *}
+     * }
      *
-     *message MyMessage {
+     * message MyMessage {
      *  // The field `value` must be exactly MY_ENUM_VALUE1.
      *   MyEnum value = 1 [(buf.validate.field).enum.const = 1];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
-     * <code>optional int32 const = 1 [json_name = "const", (.buf.validate.priv.field) = { ... }</code>
+     * <code>optional int32 const = 1 [json_name = "const", (.buf.validate.priv.field) = { ... }
+     * </code>
+     *
      * @return The const.
      */
     @java.lang.Override
     public int getConst() {
       return const_;
     }
+
     /**
-     * <pre>
-     *`const` requires the field value to exactly match the specified enum value.
-     *If the field value doesn't match, an error message is generated.
      *
-     *```proto
-     *enum MyEnum {
+     *
+     * <pre>
+     * `const` requires the field value to exactly match the specified enum value.
+     * If the field value doesn't match, an error message is generated.
+     *
+     * ```proto
+     * enum MyEnum {
      *  MY_ENUM_UNSPECIFIED = 0;
      *  MY_ENUM_VALUE1 = 1;
      *  MY_ENUM_VALUE2 = 2;
-     *}
+     * }
      *
-     *message MyMessage {
+     * message MyMessage {
      *  // The field `value` must be exactly MY_ENUM_VALUE1.
      *   MyEnum value = 1 [(buf.validate.field).enum.const = 1];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
-     * <code>optional int32 const = 1 [json_name = "const", (.buf.validate.priv.field) = { ... }</code>
+     * <code>optional int32 const = 1 [json_name = "const", (.buf.validate.priv.field) = { ... }
+     * </code>
+     *
      * @param value The const to set.
      * @return This builder for chaining.
      */
@@ -900,26 +966,31 @@ private static final long serialVersionUID = 0L;
       onChanged();
       return this;
     }
+
     /**
-     * <pre>
-     *`const` requires the field value to exactly match the specified enum value.
-     *If the field value doesn't match, an error message is generated.
      *
-     *```proto
-     *enum MyEnum {
+     *
+     * <pre>
+     * `const` requires the field value to exactly match the specified enum value.
+     * If the field value doesn't match, an error message is generated.
+     *
+     * ```proto
+     * enum MyEnum {
      *  MY_ENUM_UNSPECIFIED = 0;
      *  MY_ENUM_VALUE1 = 1;
      *  MY_ENUM_VALUE2 = 2;
-     *}
+     * }
      *
-     *message MyMessage {
+     * message MyMessage {
      *  // The field `value` must be exactly MY_ENUM_VALUE1.
      *   MyEnum value = 1 [(buf.validate.field).enum.const = 1];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
-     * <code>optional int32 const = 1 [json_name = "const", (.buf.validate.priv.field) = { ... }</code>
+     * <code>optional int32 const = 1 [json_name = "const", (.buf.validate.priv.field) = { ... }
+     * </code>
+     *
      * @return This builder for chaining.
      */
     public Builder clearConst() {
@@ -929,79 +1000,91 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private boolean definedOnly_ ;
+    private boolean definedOnly_;
+
     /**
+     *
+     *
      * <pre>
-     *`defined_only` requires the field value to be one of the defined values for
+     * `defined_only` requires the field value to be one of the defined values for
      * this enum, failing on any undefined value.
      *
-     *```proto
-     *enum MyEnum {
+     * ```proto
+     * enum MyEnum {
      *  MY_ENUM_UNSPECIFIED = 0;
      *  MY_ENUM_VALUE1 = 1;
      *  MY_ENUM_VALUE2 = 2;
-     *}
+     * }
      *
-     *message MyMessage {
+     * message MyMessage {
      *  // The field `value` must be a defined value of MyEnum.
      *   MyEnum value = 1 [(buf.validate.field).enum.defined_only = true];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>optional bool defined_only = 2 [json_name = "definedOnly"];</code>
+     *
      * @return Whether the definedOnly field is set.
      */
     @java.lang.Override
     public boolean hasDefinedOnly() {
       return ((bitField0_ & 0x00000002) != 0);
     }
+
     /**
+     *
+     *
      * <pre>
-     *`defined_only` requires the field value to be one of the defined values for
+     * `defined_only` requires the field value to be one of the defined values for
      * this enum, failing on any undefined value.
      *
-     *```proto
-     *enum MyEnum {
+     * ```proto
+     * enum MyEnum {
      *  MY_ENUM_UNSPECIFIED = 0;
      *  MY_ENUM_VALUE1 = 1;
      *  MY_ENUM_VALUE2 = 2;
-     *}
+     * }
      *
-     *message MyMessage {
+     * message MyMessage {
      *  // The field `value` must be a defined value of MyEnum.
      *   MyEnum value = 1 [(buf.validate.field).enum.defined_only = true];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>optional bool defined_only = 2 [json_name = "definedOnly"];</code>
+     *
      * @return The definedOnly.
      */
     @java.lang.Override
     public boolean getDefinedOnly() {
       return definedOnly_;
     }
+
     /**
+     *
+     *
      * <pre>
-     *`defined_only` requires the field value to be one of the defined values for
+     * `defined_only` requires the field value to be one of the defined values for
      * this enum, failing on any undefined value.
      *
-     *```proto
-     *enum MyEnum {
+     * ```proto
+     * enum MyEnum {
      *  MY_ENUM_UNSPECIFIED = 0;
      *  MY_ENUM_VALUE1 = 1;
      *  MY_ENUM_VALUE2 = 2;
-     *}
+     * }
      *
-     *message MyMessage {
+     * message MyMessage {
      *  // The field `value` must be a defined value of MyEnum.
      *   MyEnum value = 1 [(buf.validate.field).enum.defined_only = true];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>optional bool defined_only = 2 [json_name = "definedOnly"];</code>
+     *
      * @param value The definedOnly to set.
      * @return This builder for chaining.
      */
@@ -1012,26 +1095,30 @@ private static final long serialVersionUID = 0L;
       onChanged();
       return this;
     }
+
     /**
+     *
+     *
      * <pre>
-     *`defined_only` requires the field value to be one of the defined values for
+     * `defined_only` requires the field value to be one of the defined values for
      * this enum, failing on any undefined value.
      *
-     *```proto
-     *enum MyEnum {
+     * ```proto
+     * enum MyEnum {
      *  MY_ENUM_UNSPECIFIED = 0;
      *  MY_ENUM_VALUE1 = 1;
      *  MY_ENUM_VALUE2 = 2;
-     *}
+     * }
      *
-     *message MyMessage {
+     * message MyMessage {
      *  // The field `value` must be a defined value of MyEnum.
      *   MyEnum value = 1 [(buf.validate.field).enum.defined_only = true];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>optional bool defined_only = 2 [json_name = "definedOnly"];</code>
+     *
      * @return This builder for chaining.
      */
     public Builder clearDefinedOnly() {
@@ -1042,147 +1129,165 @@ private static final long serialVersionUID = 0L;
     }
 
     private com.google.protobuf.Internal.IntList in_ = emptyIntList();
+
     private void ensureInIsMutable() {
       if (!((bitField0_ & 0x00000004) != 0)) {
         in_ = mutableCopy(in_);
         bitField0_ |= 0x00000004;
       }
     }
+
     /**
-     * <pre>
-     *`in` requires the field value to be equal to one of the
-     *specified enum values. If the field value doesn't match any of the
-     *specified values, an error message is generated.
      *
-     *```proto
-     *enum MyEnum {
+     *
+     * <pre>
+     * `in` requires the field value to be equal to one of the
+     * specified enum values. If the field value doesn't match any of the
+     * specified values, an error message is generated.
+     *
+     * ```proto
+     * enum MyEnum {
      *  MY_ENUM_UNSPECIFIED = 0;
      *  MY_ENUM_VALUE1 = 1;
      *  MY_ENUM_VALUE2 = 2;
-     *}
+     * }
      *
-     *message MyMessage {
+     * message MyMessage {
      *  // The field `value` must be equal to one of the specified values.
      *   MyEnum value = 1 [(buf.validate.field).enum.in = {1, 2}];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>repeated int32 in = 3 [json_name = "in", (.buf.validate.priv.field) = { ... }</code>
+     *
      * @return A list containing the in.
      */
-    public java.util.List<java.lang.Integer>
-        getInList() {
-      return ((bitField0_ & 0x00000004) != 0) ?
-               java.util.Collections.unmodifiableList(in_) : in_;
+    public java.util.List<java.lang.Integer> getInList() {
+      return ((bitField0_ & 0x00000004) != 0) ? java.util.Collections.unmodifiableList(in_) : in_;
     }
+
     /**
-     * <pre>
-     *`in` requires the field value to be equal to one of the
-     *specified enum values. If the field value doesn't match any of the
-     *specified values, an error message is generated.
      *
-     *```proto
-     *enum MyEnum {
+     *
+     * <pre>
+     * `in` requires the field value to be equal to one of the
+     * specified enum values. If the field value doesn't match any of the
+     * specified values, an error message is generated.
+     *
+     * ```proto
+     * enum MyEnum {
      *  MY_ENUM_UNSPECIFIED = 0;
      *  MY_ENUM_VALUE1 = 1;
      *  MY_ENUM_VALUE2 = 2;
-     *}
+     * }
      *
-     *message MyMessage {
+     * message MyMessage {
      *  // The field `value` must be equal to one of the specified values.
      *   MyEnum value = 1 [(buf.validate.field).enum.in = {1, 2}];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>repeated int32 in = 3 [json_name = "in", (.buf.validate.priv.field) = { ... }</code>
+     *
      * @return The count of in.
      */
     public int getInCount() {
       return in_.size();
     }
+
     /**
-     * <pre>
-     *`in` requires the field value to be equal to one of the
-     *specified enum values. If the field value doesn't match any of the
-     *specified values, an error message is generated.
      *
-     *```proto
-     *enum MyEnum {
+     *
+     * <pre>
+     * `in` requires the field value to be equal to one of the
+     * specified enum values. If the field value doesn't match any of the
+     * specified values, an error message is generated.
+     *
+     * ```proto
+     * enum MyEnum {
      *  MY_ENUM_UNSPECIFIED = 0;
      *  MY_ENUM_VALUE1 = 1;
      *  MY_ENUM_VALUE2 = 2;
-     *}
+     * }
      *
-     *message MyMessage {
+     * message MyMessage {
      *  // The field `value` must be equal to one of the specified values.
      *   MyEnum value = 1 [(buf.validate.field).enum.in = {1, 2}];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>repeated int32 in = 3 [json_name = "in", (.buf.validate.priv.field) = { ... }</code>
+     *
      * @param index The index of the element to return.
      * @return The in at the given index.
      */
     public int getIn(int index) {
       return in_.getInt(index);
     }
+
     /**
-     * <pre>
-     *`in` requires the field value to be equal to one of the
-     *specified enum values. If the field value doesn't match any of the
-     *specified values, an error message is generated.
      *
-     *```proto
-     *enum MyEnum {
+     *
+     * <pre>
+     * `in` requires the field value to be equal to one of the
+     * specified enum values. If the field value doesn't match any of the
+     * specified values, an error message is generated.
+     *
+     * ```proto
+     * enum MyEnum {
      *  MY_ENUM_UNSPECIFIED = 0;
      *  MY_ENUM_VALUE1 = 1;
      *  MY_ENUM_VALUE2 = 2;
-     *}
+     * }
      *
-     *message MyMessage {
+     * message MyMessage {
      *  // The field `value` must be equal to one of the specified values.
      *   MyEnum value = 1 [(buf.validate.field).enum.in = {1, 2}];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>repeated int32 in = 3 [json_name = "in", (.buf.validate.priv.field) = { ... }</code>
+     *
      * @param index The index to set the value at.
      * @param value The in to set.
      * @return This builder for chaining.
      */
-    public Builder setIn(
-        int index, int value) {
+    public Builder setIn(int index, int value) {
 
       ensureInIsMutable();
       in_.setInt(index, value);
       onChanged();
       return this;
     }
+
     /**
-     * <pre>
-     *`in` requires the field value to be equal to one of the
-     *specified enum values. If the field value doesn't match any of the
-     *specified values, an error message is generated.
      *
-     *```proto
-     *enum MyEnum {
+     *
+     * <pre>
+     * `in` requires the field value to be equal to one of the
+     * specified enum values. If the field value doesn't match any of the
+     * specified values, an error message is generated.
+     *
+     * ```proto
+     * enum MyEnum {
      *  MY_ENUM_UNSPECIFIED = 0;
      *  MY_ENUM_VALUE1 = 1;
      *  MY_ENUM_VALUE2 = 2;
-     *}
+     * }
      *
-     *message MyMessage {
+     * message MyMessage {
      *  // The field `value` must be equal to one of the specified values.
      *   MyEnum value = 1 [(buf.validate.field).enum.in = {1, 2}];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>repeated int32 in = 3 [json_name = "in", (.buf.validate.priv.field) = { ... }</code>
+     *
      * @param value The in to add.
      * @return This builder for chaining.
      */
@@ -1193,59 +1298,65 @@ private static final long serialVersionUID = 0L;
       onChanged();
       return this;
     }
+
     /**
-     * <pre>
-     *`in` requires the field value to be equal to one of the
-     *specified enum values. If the field value doesn't match any of the
-     *specified values, an error message is generated.
      *
-     *```proto
-     *enum MyEnum {
+     *
+     * <pre>
+     * `in` requires the field value to be equal to one of the
+     * specified enum values. If the field value doesn't match any of the
+     * specified values, an error message is generated.
+     *
+     * ```proto
+     * enum MyEnum {
      *  MY_ENUM_UNSPECIFIED = 0;
      *  MY_ENUM_VALUE1 = 1;
      *  MY_ENUM_VALUE2 = 2;
-     *}
+     * }
      *
-     *message MyMessage {
+     * message MyMessage {
      *  // The field `value` must be equal to one of the specified values.
      *   MyEnum value = 1 [(buf.validate.field).enum.in = {1, 2}];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>repeated int32 in = 3 [json_name = "in", (.buf.validate.priv.field) = { ... }</code>
+     *
      * @param values The in to add.
      * @return This builder for chaining.
      */
-    public Builder addAllIn(
-        java.lang.Iterable<? extends java.lang.Integer> values) {
+    public Builder addAllIn(java.lang.Iterable<? extends java.lang.Integer> values) {
       ensureInIsMutable();
-      com.google.protobuf.AbstractMessageLite.Builder.addAll(
-          values, in_);
+      com.google.protobuf.AbstractMessageLite.Builder.addAll(values, in_);
       onChanged();
       return this;
     }
+
     /**
-     * <pre>
-     *`in` requires the field value to be equal to one of the
-     *specified enum values. If the field value doesn't match any of the
-     *specified values, an error message is generated.
      *
-     *```proto
-     *enum MyEnum {
+     *
+     * <pre>
+     * `in` requires the field value to be equal to one of the
+     * specified enum values. If the field value doesn't match any of the
+     * specified values, an error message is generated.
+     *
+     * ```proto
+     * enum MyEnum {
      *  MY_ENUM_UNSPECIFIED = 0;
      *  MY_ENUM_VALUE1 = 1;
      *  MY_ENUM_VALUE2 = 2;
-     *}
+     * }
      *
-     *message MyMessage {
+     * message MyMessage {
      *  // The field `value` must be equal to one of the specified values.
      *   MyEnum value = 1 [(buf.validate.field).enum.in = {1, 2}];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>repeated int32 in = 3 [json_name = "in", (.buf.validate.priv.field) = { ... }</code>
+     *
      * @return This builder for chaining.
      */
     public Builder clearIn() {
@@ -1256,147 +1367,172 @@ private static final long serialVersionUID = 0L;
     }
 
     private com.google.protobuf.Internal.IntList notIn_ = emptyIntList();
+
     private void ensureNotInIsMutable() {
       if (!((bitField0_ & 0x00000008) != 0)) {
         notIn_ = mutableCopy(notIn_);
         bitField0_ |= 0x00000008;
       }
     }
+
     /**
-     * <pre>
-     *`not_in` requires the field value to be not equal to any of the
-     *specified enum values. If the field value matches one of the specified
-     *values, an error message is generated.
      *
-     *```proto
-     *enum MyEnum {
+     *
+     * <pre>
+     * `not_in` requires the field value to be not equal to any of the
+     * specified enum values. If the field value matches one of the specified
+     * values, an error message is generated.
+     *
+     * ```proto
+     * enum MyEnum {
      *  MY_ENUM_UNSPECIFIED = 0;
      *  MY_ENUM_VALUE1 = 1;
      *  MY_ENUM_VALUE2 = 2;
-     *}
+     * }
      *
-     *message MyMessage {
+     * message MyMessage {
      *  // The field `value` must not be equal to any of the specified values.
      *   MyEnum value = 1 [(buf.validate.field).enum.not_in = {1, 2}];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
-     * <code>repeated int32 not_in = 4 [json_name = "notIn", (.buf.validate.priv.field) = { ... }</code>
+     * <code>repeated int32 not_in = 4 [json_name = "notIn", (.buf.validate.priv.field) = { ... }
+     * </code>
+     *
      * @return A list containing the notIn.
      */
-    public java.util.List<java.lang.Integer>
-        getNotInList() {
-      return ((bitField0_ & 0x00000008) != 0) ?
-               java.util.Collections.unmodifiableList(notIn_) : notIn_;
+    public java.util.List<java.lang.Integer> getNotInList() {
+      return ((bitField0_ & 0x00000008) != 0)
+          ? java.util.Collections.unmodifiableList(notIn_)
+          : notIn_;
     }
+
     /**
-     * <pre>
-     *`not_in` requires the field value to be not equal to any of the
-     *specified enum values. If the field value matches one of the specified
-     *values, an error message is generated.
      *
-     *```proto
-     *enum MyEnum {
+     *
+     * <pre>
+     * `not_in` requires the field value to be not equal to any of the
+     * specified enum values. If the field value matches one of the specified
+     * values, an error message is generated.
+     *
+     * ```proto
+     * enum MyEnum {
      *  MY_ENUM_UNSPECIFIED = 0;
      *  MY_ENUM_VALUE1 = 1;
      *  MY_ENUM_VALUE2 = 2;
-     *}
+     * }
      *
-     *message MyMessage {
+     * message MyMessage {
      *  // The field `value` must not be equal to any of the specified values.
      *   MyEnum value = 1 [(buf.validate.field).enum.not_in = {1, 2}];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
-     * <code>repeated int32 not_in = 4 [json_name = "notIn", (.buf.validate.priv.field) = { ... }</code>
+     * <code>repeated int32 not_in = 4 [json_name = "notIn", (.buf.validate.priv.field) = { ... }
+     * </code>
+     *
      * @return The count of notIn.
      */
     public int getNotInCount() {
       return notIn_.size();
     }
+
     /**
-     * <pre>
-     *`not_in` requires the field value to be not equal to any of the
-     *specified enum values. If the field value matches one of the specified
-     *values, an error message is generated.
      *
-     *```proto
-     *enum MyEnum {
+     *
+     * <pre>
+     * `not_in` requires the field value to be not equal to any of the
+     * specified enum values. If the field value matches one of the specified
+     * values, an error message is generated.
+     *
+     * ```proto
+     * enum MyEnum {
      *  MY_ENUM_UNSPECIFIED = 0;
      *  MY_ENUM_VALUE1 = 1;
      *  MY_ENUM_VALUE2 = 2;
-     *}
+     * }
      *
-     *message MyMessage {
+     * message MyMessage {
      *  // The field `value` must not be equal to any of the specified values.
      *   MyEnum value = 1 [(buf.validate.field).enum.not_in = {1, 2}];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
-     * <code>repeated int32 not_in = 4 [json_name = "notIn", (.buf.validate.priv.field) = { ... }</code>
+     * <code>repeated int32 not_in = 4 [json_name = "notIn", (.buf.validate.priv.field) = { ... }
+     * </code>
+     *
      * @param index The index of the element to return.
      * @return The notIn at the given index.
      */
     public int getNotIn(int index) {
       return notIn_.getInt(index);
     }
+
     /**
-     * <pre>
-     *`not_in` requires the field value to be not equal to any of the
-     *specified enum values. If the field value matches one of the specified
-     *values, an error message is generated.
      *
-     *```proto
-     *enum MyEnum {
+     *
+     * <pre>
+     * `not_in` requires the field value to be not equal to any of the
+     * specified enum values. If the field value matches one of the specified
+     * values, an error message is generated.
+     *
+     * ```proto
+     * enum MyEnum {
      *  MY_ENUM_UNSPECIFIED = 0;
      *  MY_ENUM_VALUE1 = 1;
      *  MY_ENUM_VALUE2 = 2;
-     *}
+     * }
      *
-     *message MyMessage {
+     * message MyMessage {
      *  // The field `value` must not be equal to any of the specified values.
      *   MyEnum value = 1 [(buf.validate.field).enum.not_in = {1, 2}];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
-     * <code>repeated int32 not_in = 4 [json_name = "notIn", (.buf.validate.priv.field) = { ... }</code>
+     * <code>repeated int32 not_in = 4 [json_name = "notIn", (.buf.validate.priv.field) = { ... }
+     * </code>
+     *
      * @param index The index to set the value at.
      * @param value The notIn to set.
      * @return This builder for chaining.
      */
-    public Builder setNotIn(
-        int index, int value) {
+    public Builder setNotIn(int index, int value) {
 
       ensureNotInIsMutable();
       notIn_.setInt(index, value);
       onChanged();
       return this;
     }
+
     /**
-     * <pre>
-     *`not_in` requires the field value to be not equal to any of the
-     *specified enum values. If the field value matches one of the specified
-     *values, an error message is generated.
      *
-     *```proto
-     *enum MyEnum {
+     *
+     * <pre>
+     * `not_in` requires the field value to be not equal to any of the
+     * specified enum values. If the field value matches one of the specified
+     * values, an error message is generated.
+     *
+     * ```proto
+     * enum MyEnum {
      *  MY_ENUM_UNSPECIFIED = 0;
      *  MY_ENUM_VALUE1 = 1;
      *  MY_ENUM_VALUE2 = 2;
-     *}
+     * }
      *
-     *message MyMessage {
+     * message MyMessage {
      *  // The field `value` must not be equal to any of the specified values.
      *   MyEnum value = 1 [(buf.validate.field).enum.not_in = {1, 2}];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
-     * <code>repeated int32 not_in = 4 [json_name = "notIn", (.buf.validate.priv.field) = { ... }</code>
+     * <code>repeated int32 not_in = 4 [json_name = "notIn", (.buf.validate.priv.field) = { ... }
+     * </code>
+     *
      * @param value The notIn to add.
      * @return This builder for chaining.
      */
@@ -1407,59 +1543,67 @@ private static final long serialVersionUID = 0L;
       onChanged();
       return this;
     }
+
     /**
-     * <pre>
-     *`not_in` requires the field value to be not equal to any of the
-     *specified enum values. If the field value matches one of the specified
-     *values, an error message is generated.
      *
-     *```proto
-     *enum MyEnum {
+     *
+     * <pre>
+     * `not_in` requires the field value to be not equal to any of the
+     * specified enum values. If the field value matches one of the specified
+     * values, an error message is generated.
+     *
+     * ```proto
+     * enum MyEnum {
      *  MY_ENUM_UNSPECIFIED = 0;
      *  MY_ENUM_VALUE1 = 1;
      *  MY_ENUM_VALUE2 = 2;
-     *}
+     * }
      *
-     *message MyMessage {
+     * message MyMessage {
      *  // The field `value` must not be equal to any of the specified values.
      *   MyEnum value = 1 [(buf.validate.field).enum.not_in = {1, 2}];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
-     * <code>repeated int32 not_in = 4 [json_name = "notIn", (.buf.validate.priv.field) = { ... }</code>
+     * <code>repeated int32 not_in = 4 [json_name = "notIn", (.buf.validate.priv.field) = { ... }
+     * </code>
+     *
      * @param values The notIn to add.
      * @return This builder for chaining.
      */
-    public Builder addAllNotIn(
-        java.lang.Iterable<? extends java.lang.Integer> values) {
+    public Builder addAllNotIn(java.lang.Iterable<? extends java.lang.Integer> values) {
       ensureNotInIsMutable();
-      com.google.protobuf.AbstractMessageLite.Builder.addAll(
-          values, notIn_);
+      com.google.protobuf.AbstractMessageLite.Builder.addAll(values, notIn_);
       onChanged();
       return this;
     }
+
     /**
-     * <pre>
-     *`not_in` requires the field value to be not equal to any of the
-     *specified enum values. If the field value matches one of the specified
-     *values, an error message is generated.
      *
-     *```proto
-     *enum MyEnum {
+     *
+     * <pre>
+     * `not_in` requires the field value to be not equal to any of the
+     * specified enum values. If the field value matches one of the specified
+     * values, an error message is generated.
+     *
+     * ```proto
+     * enum MyEnum {
      *  MY_ENUM_UNSPECIFIED = 0;
      *  MY_ENUM_VALUE1 = 1;
      *  MY_ENUM_VALUE2 = 2;
-     *}
+     * }
      *
-     *message MyMessage {
+     * message MyMessage {
      *  // The field `value` must not be equal to any of the specified values.
      *   MyEnum value = 1 [(buf.validate.field).enum.not_in = {1, 2}];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
-     * <code>repeated int32 not_in = 4 [json_name = "notIn", (.buf.validate.priv.field) = { ... }</code>
+     * <code>repeated int32 not_in = 4 [json_name = "notIn", (.buf.validate.priv.field) = { ... }
+     * </code>
+     *
      * @return This builder for chaining.
      */
     public Builder clearNotIn() {
@@ -1468,9 +1612,9 @@ private static final long serialVersionUID = 0L;
       onChanged();
       return this;
     }
+
     @java.lang.Override
-    public final Builder setUnknownFields(
-        final com.google.protobuf.UnknownFieldSet unknownFields) {
+    public final Builder setUnknownFields(final com.google.protobuf.UnknownFieldSet unknownFields) {
       return super.setUnknownFields(unknownFields);
     }
 
@@ -1480,12 +1624,12 @@ private static final long serialVersionUID = 0L;
       return super.mergeUnknownFields(unknownFields);
     }
 
-
     // @@protoc_insertion_point(builder_scope:buf.validate.EnumRules)
   }
 
   // @@protoc_insertion_point(class_scope:buf.validate.EnumRules)
   private static final build.buf.validate.EnumRules DEFAULT_INSTANCE;
+
   static {
     DEFAULT_INSTANCE = new build.buf.validate.EnumRules();
   }
@@ -1494,27 +1638,27 @@ private static final long serialVersionUID = 0L;
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<EnumRules>
-      PARSER = new com.google.protobuf.AbstractParser<EnumRules>() {
-    @java.lang.Override
-    public EnumRules parsePartialFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      Builder builder = newBuilder();
-      try {
-        builder.mergeFrom(input, extensionRegistry);
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(builder.buildPartial());
-      } catch (com.google.protobuf.UninitializedMessageException e) {
-        throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(e)
-            .setUnfinishedMessage(builder.buildPartial());
-      }
-      return builder.buildPartial();
-    }
-  };
+  private static final com.google.protobuf.Parser<EnumRules> PARSER =
+      new com.google.protobuf.AbstractParser<EnumRules>() {
+        @java.lang.Override
+        public EnumRules parsePartialFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+          Builder builder = newBuilder();
+          try {
+            builder.mergeFrom(input, extensionRegistry);
+          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+            throw e.setUnfinishedMessage(builder.buildPartial());
+          } catch (com.google.protobuf.UninitializedMessageException e) {
+            throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+          } catch (java.io.IOException e) {
+            throw new com.google.protobuf.InvalidProtocolBufferException(e)
+                .setUnfinishedMessage(builder.buildPartial());
+          }
+          return builder.buildPartial();
+        }
+      };
 
   public static com.google.protobuf.Parser<EnumRules> parser() {
     return PARSER;
@@ -1529,6 +1673,4 @@ private static final long serialVersionUID = 0L;
   public build.buf.validate.EnumRules getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
-
 }
-
