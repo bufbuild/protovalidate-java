@@ -49,7 +49,6 @@ buildscript {
 
 apply(plugin = "com.diffplug.spotless")
 configure<SpotlessExtension> {
-    setEnforceCheck(false) // Disables lint on gradle builds.
     java {
         targetExclude("src/main/java/build/buf/validate/**/*.java")
     }
