@@ -35,6 +35,17 @@ dependencies {
 }
 ```
 
+Update your `build.gradle` file to include the Buf Maven repository.
+
+```kotlin
+repositories {
+  mavenCentral()
+  maven {
+    url = uri("https://buf.build/gen/maven")
+  }
+}
+```
+
 Remember to always check for the latest version of `protovalidate-java` on the project's [GitHub releases page](https://github.com/bufbuild/protovalidate-java/releases) to ensure you're using the most up-to-date version.
 
 ## Usage
