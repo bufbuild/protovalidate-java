@@ -22,7 +22,7 @@ JAVA_SOURCES = $(wildcard src/main/java/**/**/**/*.java, src/main/java/**/**/*.j
 JAVA_CLASSES = $(patsubst src/main/java/%.java, target/classes/%.class, $(JAVA_SOURCES))
 
 .PHONY: all
-all: lint generate build docs conformance  ## Run all tests and lint (default)
+all: lint generate export_proto build docs conformance  ## Run all tests and lint (default)
 
 .PHONY: build
 build:  ## Build the entire project.
@@ -62,6 +62,10 @@ help:  ## Describe useful make targets
 generate: $(BIN)/buf generate-license  ## Regenerate code and license headers
 	$(BIN)/buf generate --template buf.gen.yaml buf.build/bufbuild/protovalidate:$(PROTOVALIDATE_VERSION)
 	$(BIN)/buf generate --template conformance/buf.gen.yaml -o conformance/ buf.build/bufbuild/protovalidate-testing:$(PROTOVALIDATE_VERSION)
+
+.PHONY: export_proto
+export_proto:  ## export protovalidate protos for jar packaging
+	buf export buf.build/bufbuild/protovalidate -o src/main/resources
 
 .PHONY: lint
 lint: ## Lint code
