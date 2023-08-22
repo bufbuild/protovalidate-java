@@ -46,6 +46,90 @@ private static final long serialVersionUID = 0L;
   }
 
   private int bitField0_;
+  private int lessThanCase_ = 0;
+  @SuppressWarnings("serial")
+  private java.lang.Object lessThan_;
+  public enum LessThanCase
+      implements com.google.protobuf.Internal.EnumLite,
+          com.google.protobuf.AbstractMessage.InternalOneOfEnum {
+    LT(2),
+    LTE(3),
+    LESSTHAN_NOT_SET(0);
+    private final int value;
+    private LessThanCase(int value) {
+      this.value = value;
+    }
+    /**
+     * @param value The number of the enum to look for.
+     * @return The enum associated with the given number.
+     * @deprecated Use {@link #forNumber(int)} instead.
+     */
+    @java.lang.Deprecated
+    public static LessThanCase valueOf(int value) {
+      return forNumber(value);
+    }
+
+    public static LessThanCase forNumber(int value) {
+      switch (value) {
+        case 2: return LT;
+        case 3: return LTE;
+        case 0: return LESSTHAN_NOT_SET;
+        default: return null;
+      }
+    }
+    public int getNumber() {
+      return this.value;
+    }
+  };
+
+  public LessThanCase
+  getLessThanCase() {
+    return LessThanCase.forNumber(
+        lessThanCase_);
+  }
+
+  private int greaterThanCase_ = 0;
+  @SuppressWarnings("serial")
+  private java.lang.Object greaterThan_;
+  public enum GreaterThanCase
+      implements com.google.protobuf.Internal.EnumLite,
+          com.google.protobuf.AbstractMessage.InternalOneOfEnum {
+    GT(4),
+    GTE(5),
+    GREATERTHAN_NOT_SET(0);
+    private final int value;
+    private GreaterThanCase(int value) {
+      this.value = value;
+    }
+    /**
+     * @param value The number of the enum to look for.
+     * @return The enum associated with the given number.
+     * @deprecated Use {@link #forNumber(int)} instead.
+     */
+    @java.lang.Deprecated
+    public static GreaterThanCase valueOf(int value) {
+      return forNumber(value);
+    }
+
+    public static GreaterThanCase forNumber(int value) {
+      switch (value) {
+        case 4: return GT;
+        case 5: return GTE;
+        case 0: return GREATERTHAN_NOT_SET;
+        default: return null;
+      }
+    }
+    public int getNumber() {
+      return this.value;
+    }
+  };
+
+  public GreaterThanCase
+  getGreaterThanCase() {
+    return GreaterThanCase.forNumber(
+        greaterThanCase_);
+  }
+
   public static final int CONST_FIELD_NUMBER = 1;
   private long const_ = 0L;
   /**
@@ -90,7 +174,6 @@ private static final long serialVersionUID = 0L;
   }
 
   public static final int LT_FIELD_NUMBER = 2;
-  private long lt_ = 0L;
   /**
    * <pre>
    *`lt` requires the field value to be less than the specified value (field &lt;
@@ -105,12 +188,12 @@ private static final long serialVersionUID = 0L;
    *```
    * </pre>
    *
-   * <code>optional int64 lt = 2 [json_name = "lt", (.buf.validate.priv.field) = { ... }</code>
+   * <code>int64 lt = 2 [json_name = "lt", (.buf.validate.priv.field) = { ... }</code>
    * @return Whether the lt field is set.
    */
   @java.lang.Override
   public boolean hasLt() {
-    return ((bitField0_ & 0x00000002) != 0);
+    return lessThanCase_ == 2;
   }
   /**
    * <pre>
@@ -126,16 +209,18 @@ private static final long serialVersionUID = 0L;
    *```
    * </pre>
    *
-   * <code>optional int64 lt = 2 [json_name = "lt", (.buf.validate.priv.field) = { ... }</code>
+   * <code>int64 lt = 2 [json_name = "lt", (.buf.validate.priv.field) = { ... }</code>
    * @return The lt.
    */
   @java.lang.Override
   public long getLt() {
-    return lt_;
+    if (lessThanCase_ == 2) {
+      return (java.lang.Long) lessThan_;
+    }
+    return 0L;
   }
 
   public static final int LTE_FIELD_NUMBER = 3;
-  private long lte_ = 0L;
   /**
    * <pre>
    *`lte` requires the field value to be less than or equal to the specified
@@ -150,12 +235,12 @@ private static final long serialVersionUID = 0L;
    *```
    * </pre>
    *
-   * <code>optional int64 lte = 3 [json_name = "lte", (.buf.validate.priv.field) = { ... }</code>
+   * <code>int64 lte = 3 [json_name = "lte", (.buf.validate.priv.field) = { ... }</code>
    * @return Whether the lte field is set.
    */
   @java.lang.Override
   public boolean hasLte() {
-    return ((bitField0_ & 0x00000004) != 0);
+    return lessThanCase_ == 3;
   }
   /**
    * <pre>
@@ -171,16 +256,18 @@ private static final long serialVersionUID = 0L;
    *```
    * </pre>
    *
-   * <code>optional int64 lte = 3 [json_name = "lte", (.buf.validate.priv.field) = { ... }</code>
+   * <code>int64 lte = 3 [json_name = "lte", (.buf.validate.priv.field) = { ... }</code>
    * @return The lte.
    */
   @java.lang.Override
   public long getLte() {
-    return lte_;
+    if (lessThanCase_ == 3) {
+      return (java.lang.Long) lessThan_;
+    }
+    return 0L;
   }
 
   public static final int GT_FIELD_NUMBER = 4;
-  private long gt_ = 0L;
   /**
    * <pre>
    *`gt` requires the field value to be greater than the specified value
@@ -203,12 +290,12 @@ private static final long serialVersionUID = 0L;
    *```
    * </pre>
    *
-   * <code>optional int64 gt = 4 [json_name = "gt", (.buf.validate.priv.field) = { ... }</code>
+   * <code>int64 gt = 4 [json_name = "gt", (.buf.validate.priv.field) = { ... }</code>
    * @return Whether the gt field is set.
    */
   @java.lang.Override
   public boolean hasGt() {
-    return ((bitField0_ & 0x00000008) != 0);
+    return greaterThanCase_ == 4;
   }
   /**
    * <pre>
@@ -232,16 +319,18 @@ private static final long serialVersionUID = 0L;
    *```
    * </pre>
    *
-   * <code>optional int64 gt = 4 [json_name = "gt", (.buf.validate.priv.field) = { ... }</code>
+   * <code>int64 gt = 4 [json_name = "gt", (.buf.validate.priv.field) = { ... }</code>
    * @return The gt.
    */
   @java.lang.Override
   public long getGt() {
-    return gt_;
+    if (greaterThanCase_ == 4) {
+      return (java.lang.Long) greaterThan_;
+    }
+    return 0L;
   }
 
   public static final int GTE_FIELD_NUMBER = 5;
-  private long gte_ = 0L;
   /**
    * <pre>
    *`gte` requires the field value to be greater than or equal to the specified
@@ -264,12 +353,12 @@ private static final long serialVersionUID = 0L;
    *```
    * </pre>
    *
-   * <code>optional int64 gte = 5 [json_name = "gte", (.buf.validate.priv.field) = { ... }</code>
+   * <code>int64 gte = 5 [json_name = "gte", (.buf.validate.priv.field) = { ... }</code>
    * @return Whether the gte field is set.
    */
   @java.lang.Override
   public boolean hasGte() {
-    return ((bitField0_ & 0x00000010) != 0);
+    return greaterThanCase_ == 5;
   }
   /**
    * <pre>
@@ -293,12 +382,15 @@ private static final long serialVersionUID = 0L;
    *```
    * </pre>
    *
-   * <code>optional int64 gte = 5 [json_name = "gte", (.buf.validate.priv.field) = { ... }</code>
+   * <code>int64 gte = 5 [json_name = "gte", (.buf.validate.priv.field) = { ... }</code>
    * @return The gte.
    */
   @java.lang.Override
   public long getGte() {
-    return gte_;
+    if (greaterThanCase_ == 5) {
+      return (java.lang.Long) greaterThan_;
+    }
+    return 0L;
   }
 
   public static final int IN_FIELD_NUMBER = 6;
@@ -455,17 +547,21 @@ private static final long serialVersionUID = 0L;
     if (((bitField0_ & 0x00000001) != 0)) {
       output.writeInt64(1, const_);
     }
-    if (((bitField0_ & 0x00000002) != 0)) {
-      output.writeInt64(2, lt_);
+    if (lessThanCase_ == 2) {
+      output.writeInt64(
+          2, (long)((java.lang.Long) lessThan_));
     }
-    if (((bitField0_ & 0x00000004) != 0)) {
-      output.writeInt64(3, lte_);
+    if (lessThanCase_ == 3) {
+      output.writeInt64(
+          3, (long)((java.lang.Long) lessThan_));
     }
-    if (((bitField0_ & 0x00000008) != 0)) {
-      output.writeInt64(4, gt_);
+    if (greaterThanCase_ == 4) {
+      output.writeInt64(
+          4, (long)((java.lang.Long) greaterThan_));
     }
-    if (((bitField0_ & 0x00000010) != 0)) {
-      output.writeInt64(5, gte_);
+    if (greaterThanCase_ == 5) {
+      output.writeInt64(
+          5, (long)((java.lang.Long) greaterThan_));
     }
     if (getInList().size() > 0) {
       output.writeUInt32NoTag(50);
@@ -494,21 +590,25 @@ private static final long serialVersionUID = 0L;
       size += com.google.protobuf.CodedOutputStream
         .computeInt64Size(1, const_);
     }
-    if (((bitField0_ & 0x00000002) != 0)) {
+    if (lessThanCase_ == 2) {
       size += com.google.protobuf.CodedOutputStream
-        .computeInt64Size(2, lt_);
+        .computeInt64Size(
+            2, (long)((java.lang.Long) lessThan_));
     }
-    if (((bitField0_ & 0x00000004) != 0)) {
+    if (lessThanCase_ == 3) {
       size += com.google.protobuf.CodedOutputStream
-        .computeInt64Size(3, lte_);
+        .computeInt64Size(
+            3, (long)((java.lang.Long) lessThan_));
     }
-    if (((bitField0_ & 0x00000008) != 0)) {
+    if (greaterThanCase_ == 4) {
       size += com.google.protobuf.CodedOutputStream
-        .computeInt64Size(4, gt_);
+        .computeInt64Size(
+            4, (long)((java.lang.Long) greaterThan_));
     }
-    if (((bitField0_ & 0x00000010) != 0)) {
+    if (greaterThanCase_ == 5) {
       size += com.google.protobuf.CodedOutputStream
-        .computeInt64Size(5, gte_);
+        .computeInt64Size(
+            5, (long)((java.lang.Long) greaterThan_));
     }
     {
       int dataSize = 0;
@@ -558,30 +658,36 @@ private static final long serialVersionUID = 0L;
       if (getConst()
           != other.getConst()) return false;
     }
-    if (hasLt() != other.hasLt()) return false;
-    if (hasLt()) {
-      if (getLt()
-          != other.getLt()) return false;
-    }
-    if (hasLte() != other.hasLte()) return false;
-    if (hasLte()) {
-      if (getLte()
-          != other.getLte()) return false;
-    }
-    if (hasGt() != other.hasGt()) return false;
-    if (hasGt()) {
-      if (getGt()
-          != other.getGt()) return false;
-    }
-    if (hasGte() != other.hasGte()) return false;
-    if (hasGte()) {
-      if (getGte()
-          != other.getGte()) return false;
-    }
     if (!getInList()
         .equals(other.getInList())) return false;
     if (!getNotInList()
         .equals(other.getNotInList())) return false;
+    if (!getLessThanCase().equals(other.getLessThanCase())) return false;
+    switch (lessThanCase_) {
+      case 2:
+        if (getLt()
+            != other.getLt()) return false;
+        break;
+      case 3:
+        if (getLte()
+            != other.getLte()) return false;
+        break;
+      case 0:
+      default:
+    }
+    if (!getGreaterThanCase().equals(other.getGreaterThanCase())) return false;
+    switch (greaterThanCase_) {
+      case 4:
+        if (getGt()
+            != other.getGt()) return false;
+        break;
+      case 5:
+        if (getGte()
+            != other.getGte()) return false;
+        break;
+      case 0:
+      default:
+    }
     if (!getUnknownFields().equals(other.getUnknownFields())) return false;
     return true;
   }
@@ -598,26 +704,6 @@ private static final long serialVersionUID = 0L;
       hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
           getConst());
     }
-    if (hasLt()) {
-      hash = (37 * hash) + LT_FIELD_NUMBER;
-      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-          getLt());
-    }
-    if (hasLte()) {
-      hash = (37 * hash) + LTE_FIELD_NUMBER;
-      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-          getLte());
-    }
-    if (hasGt()) {
-      hash = (37 * hash) + GT_FIELD_NUMBER;
-      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-          getGt());
-    }
-    if (hasGte()) {
-      hash = (37 * hash) + GTE_FIELD_NUMBER;
-      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-          getGte());
-    }
     if (getInCount() > 0) {
       hash = (37 * hash) + IN_FIELD_NUMBER;
       hash = (53 * hash) + getInList().hashCode();
@@ -625,6 +711,34 @@ private static final long serialVersionUID = 0L;
     if (getNotInCount() > 0) {
       hash = (37 * hash) + NOT_IN_FIELD_NUMBER;
       hash = (53 * hash) + getNotInList().hashCode();
+    }
+    switch (lessThanCase_) {
+      case 2:
+        hash = (37 * hash) + LT_FIELD_NUMBER;
+        hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+            getLt());
+        break;
+      case 3:
+        hash = (37 * hash) + LTE_FIELD_NUMBER;
+        hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+            getLte());
+        break;
+      case 0:
+      default:
+    }
+    switch (greaterThanCase_) {
+      case 4:
+        hash = (37 * hash) + GT_FIELD_NUMBER;
+        hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+            getGt());
+        break;
+      case 5:
+        hash = (37 * hash) + GTE_FIELD_NUMBER;
+        hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+            getGte());
+        break;
+      case 0:
+      default:
     }
     hash = (29 * hash) + getUnknownFields().hashCode();
     memoizedHashCode = hash;
@@ -763,12 +877,12 @@ private static final long serialVersionUID = 0L;
       super.clear();
       bitField0_ = 0;
       const_ = 0L;
-      lt_ = 0L;
-      lte_ = 0L;
-      gt_ = 0L;
-      gte_ = 0L;
       in_ = emptyLongList();
       notIn_ = emptyLongList();
+      lessThanCase_ = 0;
+      lessThan_ = null;
+      greaterThanCase_ = 0;
+      greaterThan_ = null;
       return this;
     }
 
@@ -797,6 +911,7 @@ private static final long serialVersionUID = 0L;
       build.buf.validate.Int64Rules result = new build.buf.validate.Int64Rules(this);
       buildPartialRepeatedFields(result);
       if (bitField0_ != 0) { buildPartial0(result); }
+      buildPartialOneofs(result);
       onBuilt();
       return result;
     }
@@ -821,23 +936,14 @@ private static final long serialVersionUID = 0L;
         result.const_ = const_;
         to_bitField0_ |= 0x00000001;
       }
-      if (((from_bitField0_ & 0x00000002) != 0)) {
-        result.lt_ = lt_;
-        to_bitField0_ |= 0x00000002;
-      }
-      if (((from_bitField0_ & 0x00000004) != 0)) {
-        result.lte_ = lte_;
-        to_bitField0_ |= 0x00000004;
-      }
-      if (((from_bitField0_ & 0x00000008) != 0)) {
-        result.gt_ = gt_;
-        to_bitField0_ |= 0x00000008;
-      }
-      if (((from_bitField0_ & 0x00000010) != 0)) {
-        result.gte_ = gte_;
-        to_bitField0_ |= 0x00000010;
-      }
       result.bitField0_ |= to_bitField0_;
+    }
+
+    private void buildPartialOneofs(build.buf.validate.Int64Rules result) {
+      result.lessThanCase_ = lessThanCase_;
+      result.lessThan_ = this.lessThan_;
+      result.greaterThanCase_ = greaterThanCase_;
+      result.greaterThan_ = this.greaterThan_;
     }
 
     @java.lang.Override
@@ -887,18 +993,6 @@ private static final long serialVersionUID = 0L;
       if (other.hasConst()) {
         setConst(other.getConst());
       }
-      if (other.hasLt()) {
-        setLt(other.getLt());
-      }
-      if (other.hasLte()) {
-        setLte(other.getLte());
-      }
-      if (other.hasGt()) {
-        setGt(other.getGt());
-      }
-      if (other.hasGte()) {
-        setGte(other.getGte());
-      }
       if (!other.in_.isEmpty()) {
         if (in_.isEmpty()) {
           in_ = other.in_;
@@ -918,6 +1012,32 @@ private static final long serialVersionUID = 0L;
           notIn_.addAll(other.notIn_);
         }
         onChanged();
+      }
+      switch (other.getLessThanCase()) {
+        case LT: {
+          setLt(other.getLt());
+          break;
+        }
+        case LTE: {
+          setLte(other.getLte());
+          break;
+        }
+        case LESSTHAN_NOT_SET: {
+          break;
+        }
+      }
+      switch (other.getGreaterThanCase()) {
+        case GT: {
+          setGt(other.getGt());
+          break;
+        }
+        case GTE: {
+          setGte(other.getGte());
+          break;
+        }
+        case GREATERTHAN_NOT_SET: {
+          break;
+        }
       }
       this.mergeUnknownFields(other.getUnknownFields());
       onChanged();
@@ -951,23 +1071,23 @@ private static final long serialVersionUID = 0L;
               break;
             } // case 8
             case 16: {
-              lt_ = input.readInt64();
-              bitField0_ |= 0x00000002;
+              lessThan_ = input.readInt64();
+              lessThanCase_ = 2;
               break;
             } // case 16
             case 24: {
-              lte_ = input.readInt64();
-              bitField0_ |= 0x00000004;
+              lessThan_ = input.readInt64();
+              lessThanCase_ = 3;
               break;
             } // case 24
             case 32: {
-              gt_ = input.readInt64();
-              bitField0_ |= 0x00000008;
+              greaterThan_ = input.readInt64();
+              greaterThanCase_ = 4;
               break;
             } // case 32
             case 40: {
-              gte_ = input.readInt64();
-              bitField0_ |= 0x00000010;
+              greaterThan_ = input.readInt64();
+              greaterThanCase_ = 5;
               break;
             } // case 40
             case 48: {
@@ -1017,6 +1137,36 @@ private static final long serialVersionUID = 0L;
       } // finally
       return this;
     }
+    private int lessThanCase_ = 0;
+    private java.lang.Object lessThan_;
+    public LessThanCase
+        getLessThanCase() {
+      return LessThanCase.forNumber(
+          lessThanCase_);
+    }
+
+    public Builder clearLessThan() {
+      lessThanCase_ = 0;
+      lessThan_ = null;
+      onChanged();
+      return this;
+    }
+
+    private int greaterThanCase_ = 0;
+    private java.lang.Object greaterThan_;
+    public GreaterThanCase
+        getGreaterThanCase() {
+      return GreaterThanCase.forNumber(
+          greaterThanCase_);
+    }
+
+    public Builder clearGreaterThan() {
+      greaterThanCase_ = 0;
+      greaterThan_ = null;
+      onChanged();
+      return this;
+    }
+
     private int bitField0_;
 
     private long const_ ;
@@ -1107,7 +1257,6 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private long lt_ ;
     /**
      * <pre>
      *`lt` requires the field value to be less than the specified value (field &lt;
@@ -1122,12 +1271,11 @@ private static final long serialVersionUID = 0L;
      *```
      * </pre>
      *
-     * <code>optional int64 lt = 2 [json_name = "lt", (.buf.validate.priv.field) = { ... }</code>
+     * <code>int64 lt = 2 [json_name = "lt", (.buf.validate.priv.field) = { ... }</code>
      * @return Whether the lt field is set.
      */
-    @java.lang.Override
     public boolean hasLt() {
-      return ((bitField0_ & 0x00000002) != 0);
+      return lessThanCase_ == 2;
     }
     /**
      * <pre>
@@ -1143,12 +1291,14 @@ private static final long serialVersionUID = 0L;
      *```
      * </pre>
      *
-     * <code>optional int64 lt = 2 [json_name = "lt", (.buf.validate.priv.field) = { ... }</code>
+     * <code>int64 lt = 2 [json_name = "lt", (.buf.validate.priv.field) = { ... }</code>
      * @return The lt.
      */
-    @java.lang.Override
     public long getLt() {
-      return lt_;
+      if (lessThanCase_ == 2) {
+        return (java.lang.Long) lessThan_;
+      }
+      return 0L;
     }
     /**
      * <pre>
@@ -1164,14 +1314,14 @@ private static final long serialVersionUID = 0L;
      *```
      * </pre>
      *
-     * <code>optional int64 lt = 2 [json_name = "lt", (.buf.validate.priv.field) = { ... }</code>
+     * <code>int64 lt = 2 [json_name = "lt", (.buf.validate.priv.field) = { ... }</code>
      * @param value The lt to set.
      * @return This builder for chaining.
      */
     public Builder setLt(long value) {
 
-      lt_ = value;
-      bitField0_ |= 0x00000002;
+      lessThanCase_ = 2;
+      lessThan_ = value;
       onChanged();
       return this;
     }
@@ -1189,17 +1339,18 @@ private static final long serialVersionUID = 0L;
      *```
      * </pre>
      *
-     * <code>optional int64 lt = 2 [json_name = "lt", (.buf.validate.priv.field) = { ... }</code>
+     * <code>int64 lt = 2 [json_name = "lt", (.buf.validate.priv.field) = { ... }</code>
      * @return This builder for chaining.
      */
     public Builder clearLt() {
-      bitField0_ = (bitField0_ & ~0x00000002);
-      lt_ = 0L;
-      onChanged();
+      if (lessThanCase_ == 2) {
+        lessThanCase_ = 0;
+        lessThan_ = null;
+        onChanged();
+      }
       return this;
     }
 
-    private long lte_ ;
     /**
      * <pre>
      *`lte` requires the field value to be less than or equal to the specified
@@ -1214,12 +1365,11 @@ private static final long serialVersionUID = 0L;
      *```
      * </pre>
      *
-     * <code>optional int64 lte = 3 [json_name = "lte", (.buf.validate.priv.field) = { ... }</code>
+     * <code>int64 lte = 3 [json_name = "lte", (.buf.validate.priv.field) = { ... }</code>
      * @return Whether the lte field is set.
      */
-    @java.lang.Override
     public boolean hasLte() {
-      return ((bitField0_ & 0x00000004) != 0);
+      return lessThanCase_ == 3;
     }
     /**
      * <pre>
@@ -1235,12 +1385,14 @@ private static final long serialVersionUID = 0L;
      *```
      * </pre>
      *
-     * <code>optional int64 lte = 3 [json_name = "lte", (.buf.validate.priv.field) = { ... }</code>
+     * <code>int64 lte = 3 [json_name = "lte", (.buf.validate.priv.field) = { ... }</code>
      * @return The lte.
      */
-    @java.lang.Override
     public long getLte() {
-      return lte_;
+      if (lessThanCase_ == 3) {
+        return (java.lang.Long) lessThan_;
+      }
+      return 0L;
     }
     /**
      * <pre>
@@ -1256,14 +1408,14 @@ private static final long serialVersionUID = 0L;
      *```
      * </pre>
      *
-     * <code>optional int64 lte = 3 [json_name = "lte", (.buf.validate.priv.field) = { ... }</code>
+     * <code>int64 lte = 3 [json_name = "lte", (.buf.validate.priv.field) = { ... }</code>
      * @param value The lte to set.
      * @return This builder for chaining.
      */
     public Builder setLte(long value) {
 
-      lte_ = value;
-      bitField0_ |= 0x00000004;
+      lessThanCase_ = 3;
+      lessThan_ = value;
       onChanged();
       return this;
     }
@@ -1281,17 +1433,18 @@ private static final long serialVersionUID = 0L;
      *```
      * </pre>
      *
-     * <code>optional int64 lte = 3 [json_name = "lte", (.buf.validate.priv.field) = { ... }</code>
+     * <code>int64 lte = 3 [json_name = "lte", (.buf.validate.priv.field) = { ... }</code>
      * @return This builder for chaining.
      */
     public Builder clearLte() {
-      bitField0_ = (bitField0_ & ~0x00000004);
-      lte_ = 0L;
-      onChanged();
+      if (lessThanCase_ == 3) {
+        lessThanCase_ = 0;
+        lessThan_ = null;
+        onChanged();
+      }
       return this;
     }
 
-    private long gt_ ;
     /**
      * <pre>
      *`gt` requires the field value to be greater than the specified value
@@ -1314,12 +1467,11 @@ private static final long serialVersionUID = 0L;
      *```
      * </pre>
      *
-     * <code>optional int64 gt = 4 [json_name = "gt", (.buf.validate.priv.field) = { ... }</code>
+     * <code>int64 gt = 4 [json_name = "gt", (.buf.validate.priv.field) = { ... }</code>
      * @return Whether the gt field is set.
      */
-    @java.lang.Override
     public boolean hasGt() {
-      return ((bitField0_ & 0x00000008) != 0);
+      return greaterThanCase_ == 4;
     }
     /**
      * <pre>
@@ -1343,12 +1495,14 @@ private static final long serialVersionUID = 0L;
      *```
      * </pre>
      *
-     * <code>optional int64 gt = 4 [json_name = "gt", (.buf.validate.priv.field) = { ... }</code>
+     * <code>int64 gt = 4 [json_name = "gt", (.buf.validate.priv.field) = { ... }</code>
      * @return The gt.
      */
-    @java.lang.Override
     public long getGt() {
-      return gt_;
+      if (greaterThanCase_ == 4) {
+        return (java.lang.Long) greaterThan_;
+      }
+      return 0L;
     }
     /**
      * <pre>
@@ -1372,14 +1526,14 @@ private static final long serialVersionUID = 0L;
      *```
      * </pre>
      *
-     * <code>optional int64 gt = 4 [json_name = "gt", (.buf.validate.priv.field) = { ... }</code>
+     * <code>int64 gt = 4 [json_name = "gt", (.buf.validate.priv.field) = { ... }</code>
      * @param value The gt to set.
      * @return This builder for chaining.
      */
     public Builder setGt(long value) {
 
-      gt_ = value;
-      bitField0_ |= 0x00000008;
+      greaterThanCase_ = 4;
+      greaterThan_ = value;
       onChanged();
       return this;
     }
@@ -1405,17 +1559,18 @@ private static final long serialVersionUID = 0L;
      *```
      * </pre>
      *
-     * <code>optional int64 gt = 4 [json_name = "gt", (.buf.validate.priv.field) = { ... }</code>
+     * <code>int64 gt = 4 [json_name = "gt", (.buf.validate.priv.field) = { ... }</code>
      * @return This builder for chaining.
      */
     public Builder clearGt() {
-      bitField0_ = (bitField0_ & ~0x00000008);
-      gt_ = 0L;
-      onChanged();
+      if (greaterThanCase_ == 4) {
+        greaterThanCase_ = 0;
+        greaterThan_ = null;
+        onChanged();
+      }
       return this;
     }
 
-    private long gte_ ;
     /**
      * <pre>
      *`gte` requires the field value to be greater than or equal to the specified
@@ -1438,12 +1593,11 @@ private static final long serialVersionUID = 0L;
      *```
      * </pre>
      *
-     * <code>optional int64 gte = 5 [json_name = "gte", (.buf.validate.priv.field) = { ... }</code>
+     * <code>int64 gte = 5 [json_name = "gte", (.buf.validate.priv.field) = { ... }</code>
      * @return Whether the gte field is set.
      */
-    @java.lang.Override
     public boolean hasGte() {
-      return ((bitField0_ & 0x00000010) != 0);
+      return greaterThanCase_ == 5;
     }
     /**
      * <pre>
@@ -1467,12 +1621,14 @@ private static final long serialVersionUID = 0L;
      *```
      * </pre>
      *
-     * <code>optional int64 gte = 5 [json_name = "gte", (.buf.validate.priv.field) = { ... }</code>
+     * <code>int64 gte = 5 [json_name = "gte", (.buf.validate.priv.field) = { ... }</code>
      * @return The gte.
      */
-    @java.lang.Override
     public long getGte() {
-      return gte_;
+      if (greaterThanCase_ == 5) {
+        return (java.lang.Long) greaterThan_;
+      }
+      return 0L;
     }
     /**
      * <pre>
@@ -1496,14 +1652,14 @@ private static final long serialVersionUID = 0L;
      *```
      * </pre>
      *
-     * <code>optional int64 gte = 5 [json_name = "gte", (.buf.validate.priv.field) = { ... }</code>
+     * <code>int64 gte = 5 [json_name = "gte", (.buf.validate.priv.field) = { ... }</code>
      * @param value The gte to set.
      * @return This builder for chaining.
      */
     public Builder setGte(long value) {
 
-      gte_ = value;
-      bitField0_ |= 0x00000010;
+      greaterThanCase_ = 5;
+      greaterThan_ = value;
       onChanged();
       return this;
     }
@@ -1529,13 +1685,15 @@ private static final long serialVersionUID = 0L;
      *```
      * </pre>
      *
-     * <code>optional int64 gte = 5 [json_name = "gte", (.buf.validate.priv.field) = { ... }</code>
+     * <code>int64 gte = 5 [json_name = "gte", (.buf.validate.priv.field) = { ... }</code>
      * @return This builder for chaining.
      */
     public Builder clearGte() {
-      bitField0_ = (bitField0_ & ~0x00000010);
-      gte_ = 0L;
-      onChanged();
+      if (greaterThanCase_ == 5) {
+        greaterThanCase_ = 0;
+        greaterThan_ = null;
+        onChanged();
+      }
       return this;
     }
 

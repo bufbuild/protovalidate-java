@@ -56,7 +56,7 @@ public interface UInt32RulesOrBuilder extends
    *```
    * </pre>
    *
-   * <code>optional uint32 lt = 2 [json_name = "lt", (.buf.validate.priv.field) = { ... }</code>
+   * <code>uint32 lt = 2 [json_name = "lt", (.buf.validate.priv.field) = { ... }</code>
    * @return Whether the lt field is set.
    */
   boolean hasLt();
@@ -74,7 +74,7 @@ public interface UInt32RulesOrBuilder extends
    *```
    * </pre>
    *
-   * <code>optional uint32 lt = 2 [json_name = "lt", (.buf.validate.priv.field) = { ... }</code>
+   * <code>uint32 lt = 2 [json_name = "lt", (.buf.validate.priv.field) = { ... }</code>
    * @return The lt.
    */
   int getLt();
@@ -93,7 +93,7 @@ public interface UInt32RulesOrBuilder extends
    *```
    * </pre>
    *
-   * <code>optional uint32 lte = 3 [json_name = "lte", (.buf.validate.priv.field) = { ... }</code>
+   * <code>uint32 lte = 3 [json_name = "lte", (.buf.validate.priv.field) = { ... }</code>
    * @return Whether the lte field is set.
    */
   boolean hasLte();
@@ -111,7 +111,7 @@ public interface UInt32RulesOrBuilder extends
    *```
    * </pre>
    *
-   * <code>optional uint32 lte = 3 [json_name = "lte", (.buf.validate.priv.field) = { ... }</code>
+   * <code>uint32 lte = 3 [json_name = "lte", (.buf.validate.priv.field) = { ... }</code>
    * @return The lte.
    */
   int getLte();
@@ -138,7 +138,7 @@ public interface UInt32RulesOrBuilder extends
    *```
    * </pre>
    *
-   * <code>optional uint32 gt = 4 [json_name = "gt", (.buf.validate.priv.field) = { ... }</code>
+   * <code>uint32 gt = 4 [json_name = "gt", (.buf.validate.priv.field) = { ... }</code>
    * @return Whether the gt field is set.
    */
   boolean hasGt();
@@ -164,7 +164,7 @@ public interface UInt32RulesOrBuilder extends
    *```
    * </pre>
    *
-   * <code>optional uint32 gt = 4 [json_name = "gt", (.buf.validate.priv.field) = { ... }</code>
+   * <code>uint32 gt = 4 [json_name = "gt", (.buf.validate.priv.field) = { ... }</code>
    * @return The gt.
    */
   int getGt();
@@ -191,7 +191,7 @@ public interface UInt32RulesOrBuilder extends
    *```
    * </pre>
    *
-   * <code>optional uint32 gte = 5 [json_name = "gte", (.buf.validate.priv.field) = { ... }</code>
+   * <code>uint32 gte = 5 [json_name = "gte", (.buf.validate.priv.field) = { ... }</code>
    * @return Whether the gte field is set.
    */
   boolean hasGte();
@@ -217,7 +217,7 @@ public interface UInt32RulesOrBuilder extends
    *```
    * </pre>
    *
-   * <code>optional uint32 gte = 5 [json_name = "gte", (.buf.validate.priv.field) = { ... }</code>
+   * <code>uint32 gte = 5 [json_name = "gte", (.buf.validate.priv.field) = { ... }</code>
    * @return The gte.
    */
   int getGte();
@@ -333,4 +333,8 @@ public interface UInt32RulesOrBuilder extends
    * @return The notIn at the given index.
    */
   int getNotIn(int index);
+
+  build.buf.validate.UInt32Rules.LessThanCase getLessThanCase();
+
+  build.buf.validate.UInt32Rules.GreaterThanCase getGreaterThanCase();
 }

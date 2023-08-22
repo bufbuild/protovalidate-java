@@ -56,7 +56,7 @@ public interface DoubleRulesOrBuilder extends
    *```
    * </pre>
    *
-   * <code>optional double lt = 2 [json_name = "lt", (.buf.validate.priv.field) = { ... }</code>
+   * <code>double lt = 2 [json_name = "lt", (.buf.validate.priv.field) = { ... }</code>
    * @return Whether the lt field is set.
    */
   boolean hasLt();
@@ -74,7 +74,7 @@ public interface DoubleRulesOrBuilder extends
    *```
    * </pre>
    *
-   * <code>optional double lt = 2 [json_name = "lt", (.buf.validate.priv.field) = { ... }</code>
+   * <code>double lt = 2 [json_name = "lt", (.buf.validate.priv.field) = { ... }</code>
    * @return The lt.
    */
   double getLt();
@@ -93,7 +93,7 @@ public interface DoubleRulesOrBuilder extends
    *```
    * </pre>
    *
-   * <code>optional double lte = 3 [json_name = "lte", (.buf.validate.priv.field) = { ... }</code>
+   * <code>double lte = 3 [json_name = "lte", (.buf.validate.priv.field) = { ... }</code>
    * @return Whether the lte field is set.
    */
   boolean hasLte();
@@ -111,7 +111,7 @@ public interface DoubleRulesOrBuilder extends
    *```
    * </pre>
    *
-   * <code>optional double lte = 3 [json_name = "lte", (.buf.validate.priv.field) = { ... }</code>
+   * <code>double lte = 3 [json_name = "lte", (.buf.validate.priv.field) = { ... }</code>
    * @return The lte.
    */
   double getLte();
@@ -138,7 +138,7 @@ public interface DoubleRulesOrBuilder extends
    *```
    * </pre>
    *
-   * <code>optional double gt = 4 [json_name = "gt", (.buf.validate.priv.field) = { ... }</code>
+   * <code>double gt = 4 [json_name = "gt", (.buf.validate.priv.field) = { ... }</code>
    * @return Whether the gt field is set.
    */
   boolean hasGt();
@@ -164,7 +164,7 @@ public interface DoubleRulesOrBuilder extends
    *```
    * </pre>
    *
-   * <code>optional double gt = 4 [json_name = "gt", (.buf.validate.priv.field) = { ... }</code>
+   * <code>double gt = 4 [json_name = "gt", (.buf.validate.priv.field) = { ... }</code>
    * @return The gt.
    */
   double getGt();
@@ -191,7 +191,7 @@ public interface DoubleRulesOrBuilder extends
    *```
    * </pre>
    *
-   * <code>optional double gte = 5 [json_name = "gte", (.buf.validate.priv.field) = { ... }</code>
+   * <code>double gte = 5 [json_name = "gte", (.buf.validate.priv.field) = { ... }</code>
    * @return Whether the gte field is set.
    */
   boolean hasGte();
@@ -217,7 +217,7 @@ public interface DoubleRulesOrBuilder extends
    *```
    * </pre>
    *
-   * <code>optional double gte = 5 [json_name = "gte", (.buf.validate.priv.field) = { ... }</code>
+   * <code>double gte = 5 [json_name = "gte", (.buf.validate.priv.field) = { ... }</code>
    * @return The gte.
    */
   double getGte();
@@ -344,4 +344,8 @@ public interface DoubleRulesOrBuilder extends
    * @return The finite.
    */
   boolean getFinite();
+
+  build.buf.validate.DoubleRules.LessThanCase getLessThanCase();
+
+  build.buf.validate.DoubleRules.GreaterThanCase getGreaterThanCase();
 }

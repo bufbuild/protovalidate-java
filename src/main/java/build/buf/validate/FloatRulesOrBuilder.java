@@ -56,7 +56,7 @@ public interface FloatRulesOrBuilder extends
    *```
    * </pre>
    *
-   * <code>optional float lt = 2 [json_name = "lt", (.buf.validate.priv.field) = { ... }</code>
+   * <code>float lt = 2 [json_name = "lt", (.buf.validate.priv.field) = { ... }</code>
    * @return Whether the lt field is set.
    */
   boolean hasLt();
@@ -74,7 +74,7 @@ public interface FloatRulesOrBuilder extends
    *```
    * </pre>
    *
-   * <code>optional float lt = 2 [json_name = "lt", (.buf.validate.priv.field) = { ... }</code>
+   * <code>float lt = 2 [json_name = "lt", (.buf.validate.priv.field) = { ... }</code>
    * @return The lt.
    */
   float getLt();
@@ -93,7 +93,7 @@ public interface FloatRulesOrBuilder extends
    *```
    * </pre>
    *
-   * <code>optional float lte = 3 [json_name = "lte", (.buf.validate.priv.field) = { ... }</code>
+   * <code>float lte = 3 [json_name = "lte", (.buf.validate.priv.field) = { ... }</code>
    * @return Whether the lte field is set.
    */
   boolean hasLte();
@@ -111,7 +111,7 @@ public interface FloatRulesOrBuilder extends
    *```
    * </pre>
    *
-   * <code>optional float lte = 3 [json_name = "lte", (.buf.validate.priv.field) = { ... }</code>
+   * <code>float lte = 3 [json_name = "lte", (.buf.validate.priv.field) = { ... }</code>
    * @return The lte.
    */
   float getLte();
@@ -138,7 +138,7 @@ public interface FloatRulesOrBuilder extends
    *```
    * </pre>
    *
-   * <code>optional float gt = 4 [json_name = "gt", (.buf.validate.priv.field) = { ... }</code>
+   * <code>float gt = 4 [json_name = "gt", (.buf.validate.priv.field) = { ... }</code>
    * @return Whether the gt field is set.
    */
   boolean hasGt();
@@ -164,7 +164,7 @@ public interface FloatRulesOrBuilder extends
    *```
    * </pre>
    *
-   * <code>optional float gt = 4 [json_name = "gt", (.buf.validate.priv.field) = { ... }</code>
+   * <code>float gt = 4 [json_name = "gt", (.buf.validate.priv.field) = { ... }</code>
    * @return The gt.
    */
   float getGt();
@@ -191,7 +191,7 @@ public interface FloatRulesOrBuilder extends
    *```
    * </pre>
    *
-   * <code>optional float gte = 5 [json_name = "gte", (.buf.validate.priv.field) = { ... }</code>
+   * <code>float gte = 5 [json_name = "gte", (.buf.validate.priv.field) = { ... }</code>
    * @return Whether the gte field is set.
    */
   boolean hasGte();
@@ -217,7 +217,7 @@ public interface FloatRulesOrBuilder extends
    *```
    * </pre>
    *
-   * <code>optional float gte = 5 [json_name = "gte", (.buf.validate.priv.field) = { ... }</code>
+   * <code>float gte = 5 [json_name = "gte", (.buf.validate.priv.field) = { ... }</code>
    * @return The gte.
    */
   float getGte();
@@ -344,4 +344,8 @@ public interface FloatRulesOrBuilder extends
    * @return The finite.
    */
   boolean getFinite();
+
+  build.buf.validate.FloatRules.LessThanCase getLessThanCase();
+
+  build.buf.validate.FloatRules.GreaterThanCase getGreaterThanCase();
 }

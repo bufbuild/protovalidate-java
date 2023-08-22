@@ -75,7 +75,7 @@ public interface DurationRulesOrBuilder extends
    *```
    * </pre>
    *
-   * <code>optional .google.protobuf.Duration lt = 3 [json_name = "lt", (.buf.validate.priv.field) = { ... }</code>
+   * <code>.google.protobuf.Duration lt = 3 [json_name = "lt", (.buf.validate.priv.field) = { ... }</code>
    * @return Whether the lt field is set.
    */
   boolean hasLt();
@@ -93,7 +93,7 @@ public interface DurationRulesOrBuilder extends
    *```
    * </pre>
    *
-   * <code>optional .google.protobuf.Duration lt = 3 [json_name = "lt", (.buf.validate.priv.field) = { ... }</code>
+   * <code>.google.protobuf.Duration lt = 3 [json_name = "lt", (.buf.validate.priv.field) = { ... }</code>
    * @return The lt.
    */
   com.google.protobuf.Duration getLt();
@@ -111,7 +111,7 @@ public interface DurationRulesOrBuilder extends
    *```
    * </pre>
    *
-   * <code>optional .google.protobuf.Duration lt = 3 [json_name = "lt", (.buf.validate.priv.field) = { ... }</code>
+   * <code>.google.protobuf.Duration lt = 3 [json_name = "lt", (.buf.validate.priv.field) = { ... }</code>
    */
   com.google.protobuf.DurationOrBuilder getLtOrBuilder();
 
@@ -129,7 +129,7 @@ public interface DurationRulesOrBuilder extends
    *```
    * </pre>
    *
-   * <code>optional .google.protobuf.Duration lte = 4 [json_name = "lte", (.buf.validate.priv.field) = { ... }</code>
+   * <code>.google.protobuf.Duration lte = 4 [json_name = "lte", (.buf.validate.priv.field) = { ... }</code>
    * @return Whether the lte field is set.
    */
   boolean hasLte();
@@ -147,7 +147,7 @@ public interface DurationRulesOrBuilder extends
    *```
    * </pre>
    *
-   * <code>optional .google.protobuf.Duration lte = 4 [json_name = "lte", (.buf.validate.priv.field) = { ... }</code>
+   * <code>.google.protobuf.Duration lte = 4 [json_name = "lte", (.buf.validate.priv.field) = { ... }</code>
    * @return The lte.
    */
   com.google.protobuf.Duration getLte();
@@ -165,7 +165,7 @@ public interface DurationRulesOrBuilder extends
    *```
    * </pre>
    *
-   * <code>optional .google.protobuf.Duration lte = 4 [json_name = "lte", (.buf.validate.priv.field) = { ... }</code>
+   * <code>.google.protobuf.Duration lte = 4 [json_name = "lte", (.buf.validate.priv.field) = { ... }</code>
    */
   com.google.protobuf.DurationOrBuilder getLteOrBuilder();
 
@@ -191,7 +191,7 @@ public interface DurationRulesOrBuilder extends
    *```
    * </pre>
    *
-   * <code>optional .google.protobuf.Duration gt = 5 [json_name = "gt", (.buf.validate.priv.field) = { ... }</code>
+   * <code>.google.protobuf.Duration gt = 5 [json_name = "gt", (.buf.validate.priv.field) = { ... }</code>
    * @return Whether the gt field is set.
    */
   boolean hasGt();
@@ -217,7 +217,7 @@ public interface DurationRulesOrBuilder extends
    *```
    * </pre>
    *
-   * <code>optional .google.protobuf.Duration gt = 5 [json_name = "gt", (.buf.validate.priv.field) = { ... }</code>
+   * <code>.google.protobuf.Duration gt = 5 [json_name = "gt", (.buf.validate.priv.field) = { ... }</code>
    * @return The gt.
    */
   com.google.protobuf.Duration getGt();
@@ -243,7 +243,7 @@ public interface DurationRulesOrBuilder extends
    *```
    * </pre>
    *
-   * <code>optional .google.protobuf.Duration gt = 5 [json_name = "gt", (.buf.validate.priv.field) = { ... }</code>
+   * <code>.google.protobuf.Duration gt = 5 [json_name = "gt", (.buf.validate.priv.field) = { ... }</code>
    */
   com.google.protobuf.DurationOrBuilder getGtOrBuilder();
 
@@ -269,7 +269,7 @@ public interface DurationRulesOrBuilder extends
    *```
    * </pre>
    *
-   * <code>optional .google.protobuf.Duration gte = 6 [json_name = "gte", (.buf.validate.priv.field) = { ... }</code>
+   * <code>.google.protobuf.Duration gte = 6 [json_name = "gte", (.buf.validate.priv.field) = { ... }</code>
    * @return Whether the gte field is set.
    */
   boolean hasGte();
@@ -295,7 +295,7 @@ public interface DurationRulesOrBuilder extends
    *```
    * </pre>
    *
-   * <code>optional .google.protobuf.Duration gte = 6 [json_name = "gte", (.buf.validate.priv.field) = { ... }</code>
+   * <code>.google.protobuf.Duration gte = 6 [json_name = "gte", (.buf.validate.priv.field) = { ... }</code>
    * @return The gte.
    */
   com.google.protobuf.Duration getGte();
@@ -321,7 +321,7 @@ public interface DurationRulesOrBuilder extends
    *```
    * </pre>
    *
-   * <code>optional .google.protobuf.Duration gte = 6 [json_name = "gte", (.buf.validate.priv.field) = { ... }</code>
+   * <code>.google.protobuf.Duration gte = 6 [json_name = "gte", (.buf.validate.priv.field) = { ... }</code>
    */
   com.google.protobuf.DurationOrBuilder getGteOrBuilder();
 
@@ -507,4 +507,8 @@ public interface DurationRulesOrBuilder extends
    */
   com.google.protobuf.DurationOrBuilder getNotInOrBuilder(
       int index);
+
+  build.buf.validate.DurationRules.LessThanCase getLessThanCase();
+
+  build.buf.validate.DurationRules.GreaterThanCase getGreaterThanCase();
 }
