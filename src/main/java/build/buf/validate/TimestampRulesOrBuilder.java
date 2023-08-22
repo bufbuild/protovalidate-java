@@ -67,7 +67,7 @@ public interface TimestampRulesOrBuilder extends
    * ```
    * </pre>
    *
-   * <code>optional .google.protobuf.Timestamp lt = 3 [json_name = "lt", (.buf.validate.priv.field) = { ... }</code>
+   * <code>.google.protobuf.Timestamp lt = 3 [json_name = "lt", (.buf.validate.priv.field) = { ... }</code>
    * @return Whether the lt field is set.
    */
   boolean hasLt();
@@ -83,7 +83,7 @@ public interface TimestampRulesOrBuilder extends
    * ```
    * </pre>
    *
-   * <code>optional .google.protobuf.Timestamp lt = 3 [json_name = "lt", (.buf.validate.priv.field) = { ... }</code>
+   * <code>.google.protobuf.Timestamp lt = 3 [json_name = "lt", (.buf.validate.priv.field) = { ... }</code>
    * @return The lt.
    */
   com.google.protobuf.Timestamp getLt();
@@ -99,7 +99,7 @@ public interface TimestampRulesOrBuilder extends
    * ```
    * </pre>
    *
-   * <code>optional .google.protobuf.Timestamp lt = 3 [json_name = "lt", (.buf.validate.priv.field) = { ... }</code>
+   * <code>.google.protobuf.Timestamp lt = 3 [json_name = "lt", (.buf.validate.priv.field) = { ... }</code>
    */
   com.google.protobuf.TimestampOrBuilder getLtOrBuilder();
 
@@ -115,7 +115,7 @@ public interface TimestampRulesOrBuilder extends
    * ```
    * </pre>
    *
-   * <code>optional .google.protobuf.Timestamp lte = 4 [json_name = "lte", (.buf.validate.priv.field) = { ... }</code>
+   * <code>.google.protobuf.Timestamp lte = 4 [json_name = "lte", (.buf.validate.priv.field) = { ... }</code>
    * @return Whether the lte field is set.
    */
   boolean hasLte();
@@ -131,7 +131,7 @@ public interface TimestampRulesOrBuilder extends
    * ```
    * </pre>
    *
-   * <code>optional .google.protobuf.Timestamp lte = 4 [json_name = "lte", (.buf.validate.priv.field) = { ... }</code>
+   * <code>.google.protobuf.Timestamp lte = 4 [json_name = "lte", (.buf.validate.priv.field) = { ... }</code>
    * @return The lte.
    */
   com.google.protobuf.Timestamp getLte();
@@ -147,9 +147,42 @@ public interface TimestampRulesOrBuilder extends
    * ```
    * </pre>
    *
-   * <code>optional .google.protobuf.Timestamp lte = 4 [json_name = "lte", (.buf.validate.priv.field) = { ... }</code>
+   * <code>.google.protobuf.Timestamp lte = 4 [json_name = "lte", (.buf.validate.priv.field) = { ... }</code>
    */
   com.google.protobuf.TimestampOrBuilder getLteOrBuilder();
+
+  /**
+   * <pre>
+   *`lt_now` specifies that this field, of the `google.protobuf.Timestamp` type, must be less than the current time. `lt_now` can only be used with the `within` rule.
+   *
+   *```proto
+   *message MyTimestamp {
+   *  // value must be less than now
+   *   google.protobuf.Timestamp created_at = 1 [(buf.validate.field).timestamp.lt_now = true];
+   *}
+   *```
+   * </pre>
+   *
+   * <code>bool lt_now = 7 [json_name = "ltNow", (.buf.validate.priv.field) = { ... }</code>
+   * @return Whether the ltNow field is set.
+   */
+  boolean hasLtNow();
+  /**
+   * <pre>
+   *`lt_now` specifies that this field, of the `google.protobuf.Timestamp` type, must be less than the current time. `lt_now` can only be used with the `within` rule.
+   *
+   *```proto
+   *message MyTimestamp {
+   *  // value must be less than now
+   *   google.protobuf.Timestamp created_at = 1 [(buf.validate.field).timestamp.lt_now = true];
+   *}
+   *```
+   * </pre>
+   *
+   * <code>bool lt_now = 7 [json_name = "ltNow", (.buf.validate.priv.field) = { ... }</code>
+   * @return The ltNow.
+   */
+  boolean getLtNow();
 
   /**
    * <pre>
@@ -173,7 +206,7 @@ public interface TimestampRulesOrBuilder extends
    *```
    * </pre>
    *
-   * <code>optional .google.protobuf.Timestamp gt = 5 [json_name = "gt", (.buf.validate.priv.field) = { ... }</code>
+   * <code>.google.protobuf.Timestamp gt = 5 [json_name = "gt", (.buf.validate.priv.field) = { ... }</code>
    * @return Whether the gt field is set.
    */
   boolean hasGt();
@@ -199,7 +232,7 @@ public interface TimestampRulesOrBuilder extends
    *```
    * </pre>
    *
-   * <code>optional .google.protobuf.Timestamp gt = 5 [json_name = "gt", (.buf.validate.priv.field) = { ... }</code>
+   * <code>.google.protobuf.Timestamp gt = 5 [json_name = "gt", (.buf.validate.priv.field) = { ... }</code>
    * @return The gt.
    */
   com.google.protobuf.Timestamp getGt();
@@ -225,7 +258,7 @@ public interface TimestampRulesOrBuilder extends
    *```
    * </pre>
    *
-   * <code>optional .google.protobuf.Timestamp gt = 5 [json_name = "gt", (.buf.validate.priv.field) = { ... }</code>
+   * <code>.google.protobuf.Timestamp gt = 5 [json_name = "gt", (.buf.validate.priv.field) = { ... }</code>
    */
   com.google.protobuf.TimestampOrBuilder getGtOrBuilder();
 
@@ -251,7 +284,7 @@ public interface TimestampRulesOrBuilder extends
    *```
    * </pre>
    *
-   * <code>optional .google.protobuf.Timestamp gte = 6 [json_name = "gte", (.buf.validate.priv.field) = { ... }</code>
+   * <code>.google.protobuf.Timestamp gte = 6 [json_name = "gte", (.buf.validate.priv.field) = { ... }</code>
    * @return Whether the gte field is set.
    */
   boolean hasGte();
@@ -277,7 +310,7 @@ public interface TimestampRulesOrBuilder extends
    *```
    * </pre>
    *
-   * <code>optional .google.protobuf.Timestamp gte = 6 [json_name = "gte", (.buf.validate.priv.field) = { ... }</code>
+   * <code>.google.protobuf.Timestamp gte = 6 [json_name = "gte", (.buf.validate.priv.field) = { ... }</code>
    * @return The gte.
    */
   com.google.protobuf.Timestamp getGte();
@@ -303,42 +336,9 @@ public interface TimestampRulesOrBuilder extends
    *```
    * </pre>
    *
-   * <code>optional .google.protobuf.Timestamp gte = 6 [json_name = "gte", (.buf.validate.priv.field) = { ... }</code>
+   * <code>.google.protobuf.Timestamp gte = 6 [json_name = "gte", (.buf.validate.priv.field) = { ... }</code>
    */
   com.google.protobuf.TimestampOrBuilder getGteOrBuilder();
-
-  /**
-   * <pre>
-   *`lt_now` specifies that this field, of the `google.protobuf.Timestamp` type, must be less than the current time. `lt_now` can only be used with the `within` rule.
-   *
-   *```proto
-   *message MyTimestamp {
-   *  // value must be less than now
-   *   google.protobuf.Timestamp created_at = 1 [(buf.validate.field).timestamp.lt_now = true];
-   *}
-   *```
-   * </pre>
-   *
-   * <code>optional bool lt_now = 7 [json_name = "ltNow", (.buf.validate.priv.field) = { ... }</code>
-   * @return Whether the ltNow field is set.
-   */
-  boolean hasLtNow();
-  /**
-   * <pre>
-   *`lt_now` specifies that this field, of the `google.protobuf.Timestamp` type, must be less than the current time. `lt_now` can only be used with the `within` rule.
-   *
-   *```proto
-   *message MyTimestamp {
-   *  // value must be less than now
-   *   google.protobuf.Timestamp created_at = 1 [(buf.validate.field).timestamp.lt_now = true];
-   *}
-   *```
-   * </pre>
-   *
-   * <code>optional bool lt_now = 7 [json_name = "ltNow", (.buf.validate.priv.field) = { ... }</code>
-   * @return The ltNow.
-   */
-  boolean getLtNow();
 
   /**
    * <pre>
@@ -352,7 +352,7 @@ public interface TimestampRulesOrBuilder extends
    *```
    * </pre>
    *
-   * <code>optional bool gt_now = 8 [json_name = "gtNow", (.buf.validate.priv.field) = { ... }</code>
+   * <code>bool gt_now = 8 [json_name = "gtNow", (.buf.validate.priv.field) = { ... }</code>
    * @return Whether the gtNow field is set.
    */
   boolean hasGtNow();
@@ -368,7 +368,7 @@ public interface TimestampRulesOrBuilder extends
    *```
    * </pre>
    *
-   * <code>optional bool gt_now = 8 [json_name = "gtNow", (.buf.validate.priv.field) = { ... }</code>
+   * <code>bool gt_now = 8 [json_name = "gtNow", (.buf.validate.priv.field) = { ... }</code>
    * @return The gtNow.
    */
   boolean getGtNow();
@@ -420,4 +420,8 @@ public interface TimestampRulesOrBuilder extends
    * <code>optional .google.protobuf.Duration within = 9 [json_name = "within", (.buf.validate.priv.field) = { ... }</code>
    */
   com.google.protobuf.DurationOrBuilder getWithinOrBuilder();
+
+  build.buf.validate.TimestampRules.LessThanCase getLessThanCase();
+
+  build.buf.validate.TimestampRules.GreaterThanCase getGreaterThanCase();
 }

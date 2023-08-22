@@ -45,6 +45,90 @@ private static final long serialVersionUID = 0L;
   }
 
   private int bitField0_;
+  private int lessThanCase_ = 0;
+  @SuppressWarnings("serial")
+  private java.lang.Object lessThan_;
+  public enum LessThanCase
+      implements com.google.protobuf.Internal.EnumLite,
+          com.google.protobuf.AbstractMessage.InternalOneOfEnum {
+    LT(3),
+    LTE(4),
+    LESSTHAN_NOT_SET(0);
+    private final int value;
+    private LessThanCase(int value) {
+      this.value = value;
+    }
+    /**
+     * @param value The number of the enum to look for.
+     * @return The enum associated with the given number.
+     * @deprecated Use {@link #forNumber(int)} instead.
+     */
+    @java.lang.Deprecated
+    public static LessThanCase valueOf(int value) {
+      return forNumber(value);
+    }
+
+    public static LessThanCase forNumber(int value) {
+      switch (value) {
+        case 3: return LT;
+        case 4: return LTE;
+        case 0: return LESSTHAN_NOT_SET;
+        default: return null;
+      }
+    }
+    public int getNumber() {
+      return this.value;
+    }
+  };
+
+  public LessThanCase
+  getLessThanCase() {
+    return LessThanCase.forNumber(
+        lessThanCase_);
+  }
+
+  private int greaterThanCase_ = 0;
+  @SuppressWarnings("serial")
+  private java.lang.Object greaterThan_;
+  public enum GreaterThanCase
+      implements com.google.protobuf.Internal.EnumLite,
+          com.google.protobuf.AbstractMessage.InternalOneOfEnum {
+    GT(5),
+    GTE(6),
+    GREATERTHAN_NOT_SET(0);
+    private final int value;
+    private GreaterThanCase(int value) {
+      this.value = value;
+    }
+    /**
+     * @param value The number of the enum to look for.
+     * @return The enum associated with the given number.
+     * @deprecated Use {@link #forNumber(int)} instead.
+     */
+    @java.lang.Deprecated
+    public static GreaterThanCase valueOf(int value) {
+      return forNumber(value);
+    }
+
+    public static GreaterThanCase forNumber(int value) {
+      switch (value) {
+        case 5: return GT;
+        case 6: return GTE;
+        case 0: return GREATERTHAN_NOT_SET;
+        default: return null;
+      }
+    }
+    public int getNumber() {
+      return this.value;
+    }
+  };
+
+  public GreaterThanCase
+  getGreaterThanCase() {
+    return GreaterThanCase.forNumber(
+        greaterThanCase_);
+  }
+
   public static final int CONST_FIELD_NUMBER = 2;
   private com.google.protobuf.Duration const_;
   /**
@@ -111,7 +195,6 @@ private static final long serialVersionUID = 0L;
   }
 
   public static final int LT_FIELD_NUMBER = 3;
-  private com.google.protobuf.Duration lt_;
   /**
    * <pre>
    *`lt` stipulates that the field must be less than the specified value of the `google.protobuf.Duration` type,
@@ -126,12 +209,12 @@ private static final long serialVersionUID = 0L;
    *```
    * </pre>
    *
-   * <code>optional .google.protobuf.Duration lt = 3 [json_name = "lt", (.buf.validate.priv.field) = { ... }</code>
+   * <code>.google.protobuf.Duration lt = 3 [json_name = "lt", (.buf.validate.priv.field) = { ... }</code>
    * @return Whether the lt field is set.
    */
   @java.lang.Override
   public boolean hasLt() {
-    return ((bitField0_ & 0x00000002) != 0);
+    return lessThanCase_ == 3;
   }
   /**
    * <pre>
@@ -147,12 +230,15 @@ private static final long serialVersionUID = 0L;
    *```
    * </pre>
    *
-   * <code>optional .google.protobuf.Duration lt = 3 [json_name = "lt", (.buf.validate.priv.field) = { ... }</code>
+   * <code>.google.protobuf.Duration lt = 3 [json_name = "lt", (.buf.validate.priv.field) = { ... }</code>
    * @return The lt.
    */
   @java.lang.Override
   public com.google.protobuf.Duration getLt() {
-    return lt_ == null ? com.google.protobuf.Duration.getDefaultInstance() : lt_;
+    if (lessThanCase_ == 3) {
+       return (com.google.protobuf.Duration) lessThan_;
+    }
+    return com.google.protobuf.Duration.getDefaultInstance();
   }
   /**
    * <pre>
@@ -168,15 +254,17 @@ private static final long serialVersionUID = 0L;
    *```
    * </pre>
    *
-   * <code>optional .google.protobuf.Duration lt = 3 [json_name = "lt", (.buf.validate.priv.field) = { ... }</code>
+   * <code>.google.protobuf.Duration lt = 3 [json_name = "lt", (.buf.validate.priv.field) = { ... }</code>
    */
   @java.lang.Override
   public com.google.protobuf.DurationOrBuilder getLtOrBuilder() {
-    return lt_ == null ? com.google.protobuf.Duration.getDefaultInstance() : lt_;
+    if (lessThanCase_ == 3) {
+       return (com.google.protobuf.Duration) lessThan_;
+    }
+    return com.google.protobuf.Duration.getDefaultInstance();
   }
 
   public static final int LTE_FIELD_NUMBER = 4;
-  private com.google.protobuf.Duration lte_;
   /**
    * <pre>
    *`lte` indicates that the field must be less than or equal to the specified
@@ -191,12 +279,12 @@ private static final long serialVersionUID = 0L;
    *```
    * </pre>
    *
-   * <code>optional .google.protobuf.Duration lte = 4 [json_name = "lte", (.buf.validate.priv.field) = { ... }</code>
+   * <code>.google.protobuf.Duration lte = 4 [json_name = "lte", (.buf.validate.priv.field) = { ... }</code>
    * @return Whether the lte field is set.
    */
   @java.lang.Override
   public boolean hasLte() {
-    return ((bitField0_ & 0x00000004) != 0);
+    return lessThanCase_ == 4;
   }
   /**
    * <pre>
@@ -212,12 +300,15 @@ private static final long serialVersionUID = 0L;
    *```
    * </pre>
    *
-   * <code>optional .google.protobuf.Duration lte = 4 [json_name = "lte", (.buf.validate.priv.field) = { ... }</code>
+   * <code>.google.protobuf.Duration lte = 4 [json_name = "lte", (.buf.validate.priv.field) = { ... }</code>
    * @return The lte.
    */
   @java.lang.Override
   public com.google.protobuf.Duration getLte() {
-    return lte_ == null ? com.google.protobuf.Duration.getDefaultInstance() : lte_;
+    if (lessThanCase_ == 4) {
+       return (com.google.protobuf.Duration) lessThan_;
+    }
+    return com.google.protobuf.Duration.getDefaultInstance();
   }
   /**
    * <pre>
@@ -233,15 +324,17 @@ private static final long serialVersionUID = 0L;
    *```
    * </pre>
    *
-   * <code>optional .google.protobuf.Duration lte = 4 [json_name = "lte", (.buf.validate.priv.field) = { ... }</code>
+   * <code>.google.protobuf.Duration lte = 4 [json_name = "lte", (.buf.validate.priv.field) = { ... }</code>
    */
   @java.lang.Override
   public com.google.protobuf.DurationOrBuilder getLteOrBuilder() {
-    return lte_ == null ? com.google.protobuf.Duration.getDefaultInstance() : lte_;
+    if (lessThanCase_ == 4) {
+       return (com.google.protobuf.Duration) lessThan_;
+    }
+    return com.google.protobuf.Duration.getDefaultInstance();
   }
 
   public static final int GT_FIELD_NUMBER = 5;
-  private com.google.protobuf.Duration gt_;
   /**
    * <pre>
    * `gt` requires the duration field value to be greater than the specified
@@ -264,12 +357,12 @@ private static final long serialVersionUID = 0L;
    *```
    * </pre>
    *
-   * <code>optional .google.protobuf.Duration gt = 5 [json_name = "gt", (.buf.validate.priv.field) = { ... }</code>
+   * <code>.google.protobuf.Duration gt = 5 [json_name = "gt", (.buf.validate.priv.field) = { ... }</code>
    * @return Whether the gt field is set.
    */
   @java.lang.Override
   public boolean hasGt() {
-    return ((bitField0_ & 0x00000008) != 0);
+    return greaterThanCase_ == 5;
   }
   /**
    * <pre>
@@ -293,12 +386,15 @@ private static final long serialVersionUID = 0L;
    *```
    * </pre>
    *
-   * <code>optional .google.protobuf.Duration gt = 5 [json_name = "gt", (.buf.validate.priv.field) = { ... }</code>
+   * <code>.google.protobuf.Duration gt = 5 [json_name = "gt", (.buf.validate.priv.field) = { ... }</code>
    * @return The gt.
    */
   @java.lang.Override
   public com.google.protobuf.Duration getGt() {
-    return gt_ == null ? com.google.protobuf.Duration.getDefaultInstance() : gt_;
+    if (greaterThanCase_ == 5) {
+       return (com.google.protobuf.Duration) greaterThan_;
+    }
+    return com.google.protobuf.Duration.getDefaultInstance();
   }
   /**
    * <pre>
@@ -322,15 +418,17 @@ private static final long serialVersionUID = 0L;
    *```
    * </pre>
    *
-   * <code>optional .google.protobuf.Duration gt = 5 [json_name = "gt", (.buf.validate.priv.field) = { ... }</code>
+   * <code>.google.protobuf.Duration gt = 5 [json_name = "gt", (.buf.validate.priv.field) = { ... }</code>
    */
   @java.lang.Override
   public com.google.protobuf.DurationOrBuilder getGtOrBuilder() {
-    return gt_ == null ? com.google.protobuf.Duration.getDefaultInstance() : gt_;
+    if (greaterThanCase_ == 5) {
+       return (com.google.protobuf.Duration) greaterThan_;
+    }
+    return com.google.protobuf.Duration.getDefaultInstance();
   }
 
   public static final int GTE_FIELD_NUMBER = 6;
-  private com.google.protobuf.Duration gte_;
   /**
    * <pre>
    * `gte` requires the duration field value to be greater than or equal to the
@@ -353,12 +451,12 @@ private static final long serialVersionUID = 0L;
    *```
    * </pre>
    *
-   * <code>optional .google.protobuf.Duration gte = 6 [json_name = "gte", (.buf.validate.priv.field) = { ... }</code>
+   * <code>.google.protobuf.Duration gte = 6 [json_name = "gte", (.buf.validate.priv.field) = { ... }</code>
    * @return Whether the gte field is set.
    */
   @java.lang.Override
   public boolean hasGte() {
-    return ((bitField0_ & 0x00000010) != 0);
+    return greaterThanCase_ == 6;
   }
   /**
    * <pre>
@@ -382,12 +480,15 @@ private static final long serialVersionUID = 0L;
    *```
    * </pre>
    *
-   * <code>optional .google.protobuf.Duration gte = 6 [json_name = "gte", (.buf.validate.priv.field) = { ... }</code>
+   * <code>.google.protobuf.Duration gte = 6 [json_name = "gte", (.buf.validate.priv.field) = { ... }</code>
    * @return The gte.
    */
   @java.lang.Override
   public com.google.protobuf.Duration getGte() {
-    return gte_ == null ? com.google.protobuf.Duration.getDefaultInstance() : gte_;
+    if (greaterThanCase_ == 6) {
+       return (com.google.protobuf.Duration) greaterThan_;
+    }
+    return com.google.protobuf.Duration.getDefaultInstance();
   }
   /**
    * <pre>
@@ -411,11 +512,14 @@ private static final long serialVersionUID = 0L;
    *```
    * </pre>
    *
-   * <code>optional .google.protobuf.Duration gte = 6 [json_name = "gte", (.buf.validate.priv.field) = { ... }</code>
+   * <code>.google.protobuf.Duration gte = 6 [json_name = "gte", (.buf.validate.priv.field) = { ... }</code>
    */
   @java.lang.Override
   public com.google.protobuf.DurationOrBuilder getGteOrBuilder() {
-    return gte_ == null ? com.google.protobuf.Duration.getDefaultInstance() : gte_;
+    if (greaterThanCase_ == 6) {
+       return (com.google.protobuf.Duration) greaterThan_;
+    }
+    return com.google.protobuf.Duration.getDefaultInstance();
   }
 
   public static final int IN_FIELD_NUMBER = 7;
@@ -652,17 +756,17 @@ private static final long serialVersionUID = 0L;
     if (((bitField0_ & 0x00000001) != 0)) {
       output.writeMessage(2, getConst());
     }
-    if (((bitField0_ & 0x00000002) != 0)) {
-      output.writeMessage(3, getLt());
+    if (lessThanCase_ == 3) {
+      output.writeMessage(3, (com.google.protobuf.Duration) lessThan_);
     }
-    if (((bitField0_ & 0x00000004) != 0)) {
-      output.writeMessage(4, getLte());
+    if (lessThanCase_ == 4) {
+      output.writeMessage(4, (com.google.protobuf.Duration) lessThan_);
     }
-    if (((bitField0_ & 0x00000008) != 0)) {
-      output.writeMessage(5, getGt());
+    if (greaterThanCase_ == 5) {
+      output.writeMessage(5, (com.google.protobuf.Duration) greaterThan_);
     }
-    if (((bitField0_ & 0x00000010) != 0)) {
-      output.writeMessage(6, getGte());
+    if (greaterThanCase_ == 6) {
+      output.writeMessage(6, (com.google.protobuf.Duration) greaterThan_);
     }
     for (int i = 0; i < in_.size(); i++) {
       output.writeMessage(7, in_.get(i));
@@ -683,21 +787,21 @@ private static final long serialVersionUID = 0L;
       size += com.google.protobuf.CodedOutputStream
         .computeMessageSize(2, getConst());
     }
-    if (((bitField0_ & 0x00000002) != 0)) {
+    if (lessThanCase_ == 3) {
       size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(3, getLt());
+        .computeMessageSize(3, (com.google.protobuf.Duration) lessThan_);
     }
-    if (((bitField0_ & 0x00000004) != 0)) {
+    if (lessThanCase_ == 4) {
       size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(4, getLte());
+        .computeMessageSize(4, (com.google.protobuf.Duration) lessThan_);
     }
-    if (((bitField0_ & 0x00000008) != 0)) {
+    if (greaterThanCase_ == 5) {
       size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(5, getGt());
+        .computeMessageSize(5, (com.google.protobuf.Duration) greaterThan_);
     }
-    if (((bitField0_ & 0x00000010) != 0)) {
+    if (greaterThanCase_ == 6) {
       size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(6, getGte());
+        .computeMessageSize(6, (com.google.protobuf.Duration) greaterThan_);
     }
     for (int i = 0; i < in_.size(); i++) {
       size += com.google.protobuf.CodedOutputStream
@@ -727,30 +831,36 @@ private static final long serialVersionUID = 0L;
       if (!getConst()
           .equals(other.getConst())) return false;
     }
-    if (hasLt() != other.hasLt()) return false;
-    if (hasLt()) {
-      if (!getLt()
-          .equals(other.getLt())) return false;
-    }
-    if (hasLte() != other.hasLte()) return false;
-    if (hasLte()) {
-      if (!getLte()
-          .equals(other.getLte())) return false;
-    }
-    if (hasGt() != other.hasGt()) return false;
-    if (hasGt()) {
-      if (!getGt()
-          .equals(other.getGt())) return false;
-    }
-    if (hasGte() != other.hasGte()) return false;
-    if (hasGte()) {
-      if (!getGte()
-          .equals(other.getGte())) return false;
-    }
     if (!getInList()
         .equals(other.getInList())) return false;
     if (!getNotInList()
         .equals(other.getNotInList())) return false;
+    if (!getLessThanCase().equals(other.getLessThanCase())) return false;
+    switch (lessThanCase_) {
+      case 3:
+        if (!getLt()
+            .equals(other.getLt())) return false;
+        break;
+      case 4:
+        if (!getLte()
+            .equals(other.getLte())) return false;
+        break;
+      case 0:
+      default:
+    }
+    if (!getGreaterThanCase().equals(other.getGreaterThanCase())) return false;
+    switch (greaterThanCase_) {
+      case 5:
+        if (!getGt()
+            .equals(other.getGt())) return false;
+        break;
+      case 6:
+        if (!getGte()
+            .equals(other.getGte())) return false;
+        break;
+      case 0:
+      default:
+    }
     if (!getUnknownFields().equals(other.getUnknownFields())) return false;
     return true;
   }
@@ -766,22 +876,6 @@ private static final long serialVersionUID = 0L;
       hash = (37 * hash) + CONST_FIELD_NUMBER;
       hash = (53 * hash) + getConst().hashCode();
     }
-    if (hasLt()) {
-      hash = (37 * hash) + LT_FIELD_NUMBER;
-      hash = (53 * hash) + getLt().hashCode();
-    }
-    if (hasLte()) {
-      hash = (37 * hash) + LTE_FIELD_NUMBER;
-      hash = (53 * hash) + getLte().hashCode();
-    }
-    if (hasGt()) {
-      hash = (37 * hash) + GT_FIELD_NUMBER;
-      hash = (53 * hash) + getGt().hashCode();
-    }
-    if (hasGte()) {
-      hash = (37 * hash) + GTE_FIELD_NUMBER;
-      hash = (53 * hash) + getGte().hashCode();
-    }
     if (getInCount() > 0) {
       hash = (37 * hash) + IN_FIELD_NUMBER;
       hash = (53 * hash) + getInList().hashCode();
@@ -789,6 +883,30 @@ private static final long serialVersionUID = 0L;
     if (getNotInCount() > 0) {
       hash = (37 * hash) + NOT_IN_FIELD_NUMBER;
       hash = (53 * hash) + getNotInList().hashCode();
+    }
+    switch (lessThanCase_) {
+      case 3:
+        hash = (37 * hash) + LT_FIELD_NUMBER;
+        hash = (53 * hash) + getLt().hashCode();
+        break;
+      case 4:
+        hash = (37 * hash) + LTE_FIELD_NUMBER;
+        hash = (53 * hash) + getLte().hashCode();
+        break;
+      case 0:
+      default:
+    }
+    switch (greaterThanCase_) {
+      case 5:
+        hash = (37 * hash) + GT_FIELD_NUMBER;
+        hash = (53 * hash) + getGt().hashCode();
+        break;
+      case 6:
+        hash = (37 * hash) + GTE_FIELD_NUMBER;
+        hash = (53 * hash) + getGte().hashCode();
+        break;
+      case 0:
+      default:
     }
     hash = (29 * hash) + getUnknownFields().hashCode();
     memoizedHashCode = hash;
@@ -925,10 +1043,6 @@ private static final long serialVersionUID = 0L;
       if (com.google.protobuf.GeneratedMessageV3
               .alwaysUseFieldBuilders) {
         getConstFieldBuilder();
-        getLtFieldBuilder();
-        getLteFieldBuilder();
-        getGtFieldBuilder();
-        getGteFieldBuilder();
         getInFieldBuilder();
         getNotInFieldBuilder();
       }
@@ -942,25 +1056,17 @@ private static final long serialVersionUID = 0L;
         constBuilder_.dispose();
         constBuilder_ = null;
       }
-      lt_ = null;
       if (ltBuilder_ != null) {
-        ltBuilder_.dispose();
-        ltBuilder_ = null;
+        ltBuilder_.clear();
       }
-      lte_ = null;
       if (lteBuilder_ != null) {
-        lteBuilder_.dispose();
-        lteBuilder_ = null;
+        lteBuilder_.clear();
       }
-      gt_ = null;
       if (gtBuilder_ != null) {
-        gtBuilder_.dispose();
-        gtBuilder_ = null;
+        gtBuilder_.clear();
       }
-      gte_ = null;
       if (gteBuilder_ != null) {
-        gteBuilder_.dispose();
-        gteBuilder_ = null;
+        gteBuilder_.clear();
       }
       if (inBuilder_ == null) {
         in_ = java.util.Collections.emptyList();
@@ -976,6 +1082,10 @@ private static final long serialVersionUID = 0L;
         notInBuilder_.clear();
       }
       bitField0_ = (bitField0_ & ~0x00000040);
+      lessThanCase_ = 0;
+      lessThan_ = null;
+      greaterThanCase_ = 0;
+      greaterThan_ = null;
       return this;
     }
 
@@ -1004,6 +1114,7 @@ private static final long serialVersionUID = 0L;
       build.buf.validate.DurationRules result = new build.buf.validate.DurationRules(this);
       buildPartialRepeatedFields(result);
       if (bitField0_ != 0) { buildPartial0(result); }
+      buildPartialOneofs(result);
       onBuilt();
       return result;
     }
@@ -1038,31 +1149,30 @@ private static final long serialVersionUID = 0L;
             : constBuilder_.build();
         to_bitField0_ |= 0x00000001;
       }
-      if (((from_bitField0_ & 0x00000002) != 0)) {
-        result.lt_ = ltBuilder_ == null
-            ? lt_
-            : ltBuilder_.build();
-        to_bitField0_ |= 0x00000002;
-      }
-      if (((from_bitField0_ & 0x00000004) != 0)) {
-        result.lte_ = lteBuilder_ == null
-            ? lte_
-            : lteBuilder_.build();
-        to_bitField0_ |= 0x00000004;
-      }
-      if (((from_bitField0_ & 0x00000008) != 0)) {
-        result.gt_ = gtBuilder_ == null
-            ? gt_
-            : gtBuilder_.build();
-        to_bitField0_ |= 0x00000008;
-      }
-      if (((from_bitField0_ & 0x00000010) != 0)) {
-        result.gte_ = gteBuilder_ == null
-            ? gte_
-            : gteBuilder_.build();
-        to_bitField0_ |= 0x00000010;
-      }
       result.bitField0_ |= to_bitField0_;
+    }
+
+    private void buildPartialOneofs(build.buf.validate.DurationRules result) {
+      result.lessThanCase_ = lessThanCase_;
+      result.lessThan_ = this.lessThan_;
+      if (lessThanCase_ == 3 &&
+          ltBuilder_ != null) {
+        result.lessThan_ = ltBuilder_.build();
+      }
+      if (lessThanCase_ == 4 &&
+          lteBuilder_ != null) {
+        result.lessThan_ = lteBuilder_.build();
+      }
+      result.greaterThanCase_ = greaterThanCase_;
+      result.greaterThan_ = this.greaterThan_;
+      if (greaterThanCase_ == 5 &&
+          gtBuilder_ != null) {
+        result.greaterThan_ = gtBuilder_.build();
+      }
+      if (greaterThanCase_ == 6 &&
+          gteBuilder_ != null) {
+        result.greaterThan_ = gteBuilder_.build();
+      }
     }
 
     @java.lang.Override
@@ -1111,18 +1221,6 @@ private static final long serialVersionUID = 0L;
       if (other == build.buf.validate.DurationRules.getDefaultInstance()) return this;
       if (other.hasConst()) {
         mergeConst(other.getConst());
-      }
-      if (other.hasLt()) {
-        mergeLt(other.getLt());
-      }
-      if (other.hasLte()) {
-        mergeLte(other.getLte());
-      }
-      if (other.hasGt()) {
-        mergeGt(other.getGt());
-      }
-      if (other.hasGte()) {
-        mergeGte(other.getGte());
       }
       if (inBuilder_ == null) {
         if (!other.in_.isEmpty()) {
@@ -1176,6 +1274,32 @@ private static final long serialVersionUID = 0L;
           }
         }
       }
+      switch (other.getLessThanCase()) {
+        case LT: {
+          mergeLt(other.getLt());
+          break;
+        }
+        case LTE: {
+          mergeLte(other.getLte());
+          break;
+        }
+        case LESSTHAN_NOT_SET: {
+          break;
+        }
+      }
+      switch (other.getGreaterThanCase()) {
+        case GT: {
+          mergeGt(other.getGt());
+          break;
+        }
+        case GTE: {
+          mergeGte(other.getGte());
+          break;
+        }
+        case GREATERTHAN_NOT_SET: {
+          break;
+        }
+      }
       this.mergeUnknownFields(other.getUnknownFields());
       onChanged();
       return this;
@@ -1213,28 +1337,28 @@ private static final long serialVersionUID = 0L;
               input.readMessage(
                   getLtFieldBuilder().getBuilder(),
                   extensionRegistry);
-              bitField0_ |= 0x00000002;
+              lessThanCase_ = 3;
               break;
             } // case 26
             case 34: {
               input.readMessage(
                   getLteFieldBuilder().getBuilder(),
                   extensionRegistry);
-              bitField0_ |= 0x00000004;
+              lessThanCase_ = 4;
               break;
             } // case 34
             case 42: {
               input.readMessage(
                   getGtFieldBuilder().getBuilder(),
                   extensionRegistry);
-              bitField0_ |= 0x00000008;
+              greaterThanCase_ = 5;
               break;
             } // case 42
             case 50: {
               input.readMessage(
                   getGteFieldBuilder().getBuilder(),
                   extensionRegistry);
-              bitField0_ |= 0x00000010;
+              greaterThanCase_ = 6;
               break;
             } // case 50
             case 58: {
@@ -1278,6 +1402,36 @@ private static final long serialVersionUID = 0L;
       } // finally
       return this;
     }
+    private int lessThanCase_ = 0;
+    private java.lang.Object lessThan_;
+    public LessThanCase
+        getLessThanCase() {
+      return LessThanCase.forNumber(
+          lessThanCase_);
+    }
+
+    public Builder clearLessThan() {
+      lessThanCase_ = 0;
+      lessThan_ = null;
+      onChanged();
+      return this;
+    }
+
+    private int greaterThanCase_ = 0;
+    private java.lang.Object greaterThan_;
+    public GreaterThanCase
+        getGreaterThanCase() {
+      return GreaterThanCase.forNumber(
+          greaterThanCase_);
+    }
+
+    public Builder clearGreaterThan() {
+      greaterThanCase_ = 0;
+      greaterThan_ = null;
+      onChanged();
+      return this;
+    }
+
     private int bitField0_;
 
     private com.google.protobuf.Duration const_;
@@ -1516,7 +1670,6 @@ private static final long serialVersionUID = 0L;
       return constBuilder_;
     }
 
-    private com.google.protobuf.Duration lt_;
     private com.google.protobuf.SingleFieldBuilderV3<
         com.google.protobuf.Duration, com.google.protobuf.Duration.Builder, com.google.protobuf.DurationOrBuilder> ltBuilder_;
     /**
@@ -1533,11 +1686,12 @@ private static final long serialVersionUID = 0L;
      *```
      * </pre>
      *
-     * <code>optional .google.protobuf.Duration lt = 3 [json_name = "lt", (.buf.validate.priv.field) = { ... }</code>
+     * <code>.google.protobuf.Duration lt = 3 [json_name = "lt", (.buf.validate.priv.field) = { ... }</code>
      * @return Whether the lt field is set.
      */
+    @java.lang.Override
     public boolean hasLt() {
-      return ((bitField0_ & 0x00000002) != 0);
+      return lessThanCase_ == 3;
     }
     /**
      * <pre>
@@ -1553,14 +1707,21 @@ private static final long serialVersionUID = 0L;
      *```
      * </pre>
      *
-     * <code>optional .google.protobuf.Duration lt = 3 [json_name = "lt", (.buf.validate.priv.field) = { ... }</code>
+     * <code>.google.protobuf.Duration lt = 3 [json_name = "lt", (.buf.validate.priv.field) = { ... }</code>
      * @return The lt.
      */
+    @java.lang.Override
     public com.google.protobuf.Duration getLt() {
       if (ltBuilder_ == null) {
-        return lt_ == null ? com.google.protobuf.Duration.getDefaultInstance() : lt_;
+        if (lessThanCase_ == 3) {
+          return (com.google.protobuf.Duration) lessThan_;
+        }
+        return com.google.protobuf.Duration.getDefaultInstance();
       } else {
-        return ltBuilder_.getMessage();
+        if (lessThanCase_ == 3) {
+          return ltBuilder_.getMessage();
+        }
+        return com.google.protobuf.Duration.getDefaultInstance();
       }
     }
     /**
@@ -1577,19 +1738,19 @@ private static final long serialVersionUID = 0L;
      *```
      * </pre>
      *
-     * <code>optional .google.protobuf.Duration lt = 3 [json_name = "lt", (.buf.validate.priv.field) = { ... }</code>
+     * <code>.google.protobuf.Duration lt = 3 [json_name = "lt", (.buf.validate.priv.field) = { ... }</code>
      */
     public Builder setLt(com.google.protobuf.Duration value) {
       if (ltBuilder_ == null) {
         if (value == null) {
           throw new NullPointerException();
         }
-        lt_ = value;
+        lessThan_ = value;
+        onChanged();
       } else {
         ltBuilder_.setMessage(value);
       }
-      bitField0_ |= 0x00000002;
-      onChanged();
+      lessThanCase_ = 3;
       return this;
     }
     /**
@@ -1606,17 +1767,17 @@ private static final long serialVersionUID = 0L;
      *```
      * </pre>
      *
-     * <code>optional .google.protobuf.Duration lt = 3 [json_name = "lt", (.buf.validate.priv.field) = { ... }</code>
+     * <code>.google.protobuf.Duration lt = 3 [json_name = "lt", (.buf.validate.priv.field) = { ... }</code>
      */
     public Builder setLt(
         com.google.protobuf.Duration.Builder builderForValue) {
       if (ltBuilder_ == null) {
-        lt_ = builderForValue.build();
+        lessThan_ = builderForValue.build();
+        onChanged();
       } else {
         ltBuilder_.setMessage(builderForValue.build());
       }
-      bitField0_ |= 0x00000002;
-      onChanged();
+      lessThanCase_ = 3;
       return this;
     }
     /**
@@ -1633,22 +1794,26 @@ private static final long serialVersionUID = 0L;
      *```
      * </pre>
      *
-     * <code>optional .google.protobuf.Duration lt = 3 [json_name = "lt", (.buf.validate.priv.field) = { ... }</code>
+     * <code>.google.protobuf.Duration lt = 3 [json_name = "lt", (.buf.validate.priv.field) = { ... }</code>
      */
     public Builder mergeLt(com.google.protobuf.Duration value) {
       if (ltBuilder_ == null) {
-        if (((bitField0_ & 0x00000002) != 0) &&
-          lt_ != null &&
-          lt_ != com.google.protobuf.Duration.getDefaultInstance()) {
-          getLtBuilder().mergeFrom(value);
+        if (lessThanCase_ == 3 &&
+            lessThan_ != com.google.protobuf.Duration.getDefaultInstance()) {
+          lessThan_ = com.google.protobuf.Duration.newBuilder((com.google.protobuf.Duration) lessThan_)
+              .mergeFrom(value).buildPartial();
         } else {
-          lt_ = value;
+          lessThan_ = value;
         }
+        onChanged();
       } else {
-        ltBuilder_.mergeFrom(value);
+        if (lessThanCase_ == 3) {
+          ltBuilder_.mergeFrom(value);
+        } else {
+          ltBuilder_.setMessage(value);
+        }
       }
-      bitField0_ |= 0x00000002;
-      onChanged();
+      lessThanCase_ = 3;
       return this;
     }
     /**
@@ -1665,16 +1830,22 @@ private static final long serialVersionUID = 0L;
      *```
      * </pre>
      *
-     * <code>optional .google.protobuf.Duration lt = 3 [json_name = "lt", (.buf.validate.priv.field) = { ... }</code>
+     * <code>.google.protobuf.Duration lt = 3 [json_name = "lt", (.buf.validate.priv.field) = { ... }</code>
      */
     public Builder clearLt() {
-      bitField0_ = (bitField0_ & ~0x00000002);
-      lt_ = null;
-      if (ltBuilder_ != null) {
-        ltBuilder_.dispose();
-        ltBuilder_ = null;
+      if (ltBuilder_ == null) {
+        if (lessThanCase_ == 3) {
+          lessThanCase_ = 0;
+          lessThan_ = null;
+          onChanged();
+        }
+      } else {
+        if (lessThanCase_ == 3) {
+          lessThanCase_ = 0;
+          lessThan_ = null;
+        }
+        ltBuilder_.clear();
       }
-      onChanged();
       return this;
     }
     /**
@@ -1691,11 +1862,9 @@ private static final long serialVersionUID = 0L;
      *```
      * </pre>
      *
-     * <code>optional .google.protobuf.Duration lt = 3 [json_name = "lt", (.buf.validate.priv.field) = { ... }</code>
+     * <code>.google.protobuf.Duration lt = 3 [json_name = "lt", (.buf.validate.priv.field) = { ... }</code>
      */
     public com.google.protobuf.Duration.Builder getLtBuilder() {
-      bitField0_ |= 0x00000002;
-      onChanged();
       return getLtFieldBuilder().getBuilder();
     }
     /**
@@ -1712,14 +1881,17 @@ private static final long serialVersionUID = 0L;
      *```
      * </pre>
      *
-     * <code>optional .google.protobuf.Duration lt = 3 [json_name = "lt", (.buf.validate.priv.field) = { ... }</code>
+     * <code>.google.protobuf.Duration lt = 3 [json_name = "lt", (.buf.validate.priv.field) = { ... }</code>
      */
+    @java.lang.Override
     public com.google.protobuf.DurationOrBuilder getLtOrBuilder() {
-      if (ltBuilder_ != null) {
+      if ((lessThanCase_ == 3) && (ltBuilder_ != null)) {
         return ltBuilder_.getMessageOrBuilder();
       } else {
-        return lt_ == null ?
-            com.google.protobuf.Duration.getDefaultInstance() : lt_;
+        if (lessThanCase_ == 3) {
+          return (com.google.protobuf.Duration) lessThan_;
+        }
+        return com.google.protobuf.Duration.getDefaultInstance();
       }
     }
     /**
@@ -1736,23 +1908,27 @@ private static final long serialVersionUID = 0L;
      *```
      * </pre>
      *
-     * <code>optional .google.protobuf.Duration lt = 3 [json_name = "lt", (.buf.validate.priv.field) = { ... }</code>
+     * <code>.google.protobuf.Duration lt = 3 [json_name = "lt", (.buf.validate.priv.field) = { ... }</code>
      */
     private com.google.protobuf.SingleFieldBuilderV3<
         com.google.protobuf.Duration, com.google.protobuf.Duration.Builder, com.google.protobuf.DurationOrBuilder> 
         getLtFieldBuilder() {
       if (ltBuilder_ == null) {
+        if (!(lessThanCase_ == 3)) {
+          lessThan_ = com.google.protobuf.Duration.getDefaultInstance();
+        }
         ltBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
             com.google.protobuf.Duration, com.google.protobuf.Duration.Builder, com.google.protobuf.DurationOrBuilder>(
-                getLt(),
+                (com.google.protobuf.Duration) lessThan_,
                 getParentForChildren(),
                 isClean());
-        lt_ = null;
+        lessThan_ = null;
       }
+      lessThanCase_ = 3;
+      onChanged();
       return ltBuilder_;
     }
 
-    private com.google.protobuf.Duration lte_;
     private com.google.protobuf.SingleFieldBuilderV3<
         com.google.protobuf.Duration, com.google.protobuf.Duration.Builder, com.google.protobuf.DurationOrBuilder> lteBuilder_;
     /**
@@ -1769,11 +1945,12 @@ private static final long serialVersionUID = 0L;
      *```
      * </pre>
      *
-     * <code>optional .google.protobuf.Duration lte = 4 [json_name = "lte", (.buf.validate.priv.field) = { ... }</code>
+     * <code>.google.protobuf.Duration lte = 4 [json_name = "lte", (.buf.validate.priv.field) = { ... }</code>
      * @return Whether the lte field is set.
      */
+    @java.lang.Override
     public boolean hasLte() {
-      return ((bitField0_ & 0x00000004) != 0);
+      return lessThanCase_ == 4;
     }
     /**
      * <pre>
@@ -1789,14 +1966,21 @@ private static final long serialVersionUID = 0L;
      *```
      * </pre>
      *
-     * <code>optional .google.protobuf.Duration lte = 4 [json_name = "lte", (.buf.validate.priv.field) = { ... }</code>
+     * <code>.google.protobuf.Duration lte = 4 [json_name = "lte", (.buf.validate.priv.field) = { ... }</code>
      * @return The lte.
      */
+    @java.lang.Override
     public com.google.protobuf.Duration getLte() {
       if (lteBuilder_ == null) {
-        return lte_ == null ? com.google.protobuf.Duration.getDefaultInstance() : lte_;
+        if (lessThanCase_ == 4) {
+          return (com.google.protobuf.Duration) lessThan_;
+        }
+        return com.google.protobuf.Duration.getDefaultInstance();
       } else {
-        return lteBuilder_.getMessage();
+        if (lessThanCase_ == 4) {
+          return lteBuilder_.getMessage();
+        }
+        return com.google.protobuf.Duration.getDefaultInstance();
       }
     }
     /**
@@ -1813,19 +1997,19 @@ private static final long serialVersionUID = 0L;
      *```
      * </pre>
      *
-     * <code>optional .google.protobuf.Duration lte = 4 [json_name = "lte", (.buf.validate.priv.field) = { ... }</code>
+     * <code>.google.protobuf.Duration lte = 4 [json_name = "lte", (.buf.validate.priv.field) = { ... }</code>
      */
     public Builder setLte(com.google.protobuf.Duration value) {
       if (lteBuilder_ == null) {
         if (value == null) {
           throw new NullPointerException();
         }
-        lte_ = value;
+        lessThan_ = value;
+        onChanged();
       } else {
         lteBuilder_.setMessage(value);
       }
-      bitField0_ |= 0x00000004;
-      onChanged();
+      lessThanCase_ = 4;
       return this;
     }
     /**
@@ -1842,17 +2026,17 @@ private static final long serialVersionUID = 0L;
      *```
      * </pre>
      *
-     * <code>optional .google.protobuf.Duration lte = 4 [json_name = "lte", (.buf.validate.priv.field) = { ... }</code>
+     * <code>.google.protobuf.Duration lte = 4 [json_name = "lte", (.buf.validate.priv.field) = { ... }</code>
      */
     public Builder setLte(
         com.google.protobuf.Duration.Builder builderForValue) {
       if (lteBuilder_ == null) {
-        lte_ = builderForValue.build();
+        lessThan_ = builderForValue.build();
+        onChanged();
       } else {
         lteBuilder_.setMessage(builderForValue.build());
       }
-      bitField0_ |= 0x00000004;
-      onChanged();
+      lessThanCase_ = 4;
       return this;
     }
     /**
@@ -1869,22 +2053,26 @@ private static final long serialVersionUID = 0L;
      *```
      * </pre>
      *
-     * <code>optional .google.protobuf.Duration lte = 4 [json_name = "lte", (.buf.validate.priv.field) = { ... }</code>
+     * <code>.google.protobuf.Duration lte = 4 [json_name = "lte", (.buf.validate.priv.field) = { ... }</code>
      */
     public Builder mergeLte(com.google.protobuf.Duration value) {
       if (lteBuilder_ == null) {
-        if (((bitField0_ & 0x00000004) != 0) &&
-          lte_ != null &&
-          lte_ != com.google.protobuf.Duration.getDefaultInstance()) {
-          getLteBuilder().mergeFrom(value);
+        if (lessThanCase_ == 4 &&
+            lessThan_ != com.google.protobuf.Duration.getDefaultInstance()) {
+          lessThan_ = com.google.protobuf.Duration.newBuilder((com.google.protobuf.Duration) lessThan_)
+              .mergeFrom(value).buildPartial();
         } else {
-          lte_ = value;
+          lessThan_ = value;
         }
+        onChanged();
       } else {
-        lteBuilder_.mergeFrom(value);
+        if (lessThanCase_ == 4) {
+          lteBuilder_.mergeFrom(value);
+        } else {
+          lteBuilder_.setMessage(value);
+        }
       }
-      bitField0_ |= 0x00000004;
-      onChanged();
+      lessThanCase_ = 4;
       return this;
     }
     /**
@@ -1901,16 +2089,22 @@ private static final long serialVersionUID = 0L;
      *```
      * </pre>
      *
-     * <code>optional .google.protobuf.Duration lte = 4 [json_name = "lte", (.buf.validate.priv.field) = { ... }</code>
+     * <code>.google.protobuf.Duration lte = 4 [json_name = "lte", (.buf.validate.priv.field) = { ... }</code>
      */
     public Builder clearLte() {
-      bitField0_ = (bitField0_ & ~0x00000004);
-      lte_ = null;
-      if (lteBuilder_ != null) {
-        lteBuilder_.dispose();
-        lteBuilder_ = null;
+      if (lteBuilder_ == null) {
+        if (lessThanCase_ == 4) {
+          lessThanCase_ = 0;
+          lessThan_ = null;
+          onChanged();
+        }
+      } else {
+        if (lessThanCase_ == 4) {
+          lessThanCase_ = 0;
+          lessThan_ = null;
+        }
+        lteBuilder_.clear();
       }
-      onChanged();
       return this;
     }
     /**
@@ -1927,11 +2121,9 @@ private static final long serialVersionUID = 0L;
      *```
      * </pre>
      *
-     * <code>optional .google.protobuf.Duration lte = 4 [json_name = "lte", (.buf.validate.priv.field) = { ... }</code>
+     * <code>.google.protobuf.Duration lte = 4 [json_name = "lte", (.buf.validate.priv.field) = { ... }</code>
      */
     public com.google.protobuf.Duration.Builder getLteBuilder() {
-      bitField0_ |= 0x00000004;
-      onChanged();
       return getLteFieldBuilder().getBuilder();
     }
     /**
@@ -1948,14 +2140,17 @@ private static final long serialVersionUID = 0L;
      *```
      * </pre>
      *
-     * <code>optional .google.protobuf.Duration lte = 4 [json_name = "lte", (.buf.validate.priv.field) = { ... }</code>
+     * <code>.google.protobuf.Duration lte = 4 [json_name = "lte", (.buf.validate.priv.field) = { ... }</code>
      */
+    @java.lang.Override
     public com.google.protobuf.DurationOrBuilder getLteOrBuilder() {
-      if (lteBuilder_ != null) {
+      if ((lessThanCase_ == 4) && (lteBuilder_ != null)) {
         return lteBuilder_.getMessageOrBuilder();
       } else {
-        return lte_ == null ?
-            com.google.protobuf.Duration.getDefaultInstance() : lte_;
+        if (lessThanCase_ == 4) {
+          return (com.google.protobuf.Duration) lessThan_;
+        }
+        return com.google.protobuf.Duration.getDefaultInstance();
       }
     }
     /**
@@ -1972,23 +2167,27 @@ private static final long serialVersionUID = 0L;
      *```
      * </pre>
      *
-     * <code>optional .google.protobuf.Duration lte = 4 [json_name = "lte", (.buf.validate.priv.field) = { ... }</code>
+     * <code>.google.protobuf.Duration lte = 4 [json_name = "lte", (.buf.validate.priv.field) = { ... }</code>
      */
     private com.google.protobuf.SingleFieldBuilderV3<
         com.google.protobuf.Duration, com.google.protobuf.Duration.Builder, com.google.protobuf.DurationOrBuilder> 
         getLteFieldBuilder() {
       if (lteBuilder_ == null) {
+        if (!(lessThanCase_ == 4)) {
+          lessThan_ = com.google.protobuf.Duration.getDefaultInstance();
+        }
         lteBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
             com.google.protobuf.Duration, com.google.protobuf.Duration.Builder, com.google.protobuf.DurationOrBuilder>(
-                getLte(),
+                (com.google.protobuf.Duration) lessThan_,
                 getParentForChildren(),
                 isClean());
-        lte_ = null;
+        lessThan_ = null;
       }
+      lessThanCase_ = 4;
+      onChanged();
       return lteBuilder_;
     }
 
-    private com.google.protobuf.Duration gt_;
     private com.google.protobuf.SingleFieldBuilderV3<
         com.google.protobuf.Duration, com.google.protobuf.Duration.Builder, com.google.protobuf.DurationOrBuilder> gtBuilder_;
     /**
@@ -2013,11 +2212,12 @@ private static final long serialVersionUID = 0L;
      *```
      * </pre>
      *
-     * <code>optional .google.protobuf.Duration gt = 5 [json_name = "gt", (.buf.validate.priv.field) = { ... }</code>
+     * <code>.google.protobuf.Duration gt = 5 [json_name = "gt", (.buf.validate.priv.field) = { ... }</code>
      * @return Whether the gt field is set.
      */
+    @java.lang.Override
     public boolean hasGt() {
-      return ((bitField0_ & 0x00000008) != 0);
+      return greaterThanCase_ == 5;
     }
     /**
      * <pre>
@@ -2041,14 +2241,21 @@ private static final long serialVersionUID = 0L;
      *```
      * </pre>
      *
-     * <code>optional .google.protobuf.Duration gt = 5 [json_name = "gt", (.buf.validate.priv.field) = { ... }</code>
+     * <code>.google.protobuf.Duration gt = 5 [json_name = "gt", (.buf.validate.priv.field) = { ... }</code>
      * @return The gt.
      */
+    @java.lang.Override
     public com.google.protobuf.Duration getGt() {
       if (gtBuilder_ == null) {
-        return gt_ == null ? com.google.protobuf.Duration.getDefaultInstance() : gt_;
+        if (greaterThanCase_ == 5) {
+          return (com.google.protobuf.Duration) greaterThan_;
+        }
+        return com.google.protobuf.Duration.getDefaultInstance();
       } else {
-        return gtBuilder_.getMessage();
+        if (greaterThanCase_ == 5) {
+          return gtBuilder_.getMessage();
+        }
+        return com.google.protobuf.Duration.getDefaultInstance();
       }
     }
     /**
@@ -2073,19 +2280,19 @@ private static final long serialVersionUID = 0L;
      *```
      * </pre>
      *
-     * <code>optional .google.protobuf.Duration gt = 5 [json_name = "gt", (.buf.validate.priv.field) = { ... }</code>
+     * <code>.google.protobuf.Duration gt = 5 [json_name = "gt", (.buf.validate.priv.field) = { ... }</code>
      */
     public Builder setGt(com.google.protobuf.Duration value) {
       if (gtBuilder_ == null) {
         if (value == null) {
           throw new NullPointerException();
         }
-        gt_ = value;
+        greaterThan_ = value;
+        onChanged();
       } else {
         gtBuilder_.setMessage(value);
       }
-      bitField0_ |= 0x00000008;
-      onChanged();
+      greaterThanCase_ = 5;
       return this;
     }
     /**
@@ -2110,17 +2317,17 @@ private static final long serialVersionUID = 0L;
      *```
      * </pre>
      *
-     * <code>optional .google.protobuf.Duration gt = 5 [json_name = "gt", (.buf.validate.priv.field) = { ... }</code>
+     * <code>.google.protobuf.Duration gt = 5 [json_name = "gt", (.buf.validate.priv.field) = { ... }</code>
      */
     public Builder setGt(
         com.google.protobuf.Duration.Builder builderForValue) {
       if (gtBuilder_ == null) {
-        gt_ = builderForValue.build();
+        greaterThan_ = builderForValue.build();
+        onChanged();
       } else {
         gtBuilder_.setMessage(builderForValue.build());
       }
-      bitField0_ |= 0x00000008;
-      onChanged();
+      greaterThanCase_ = 5;
       return this;
     }
     /**
@@ -2145,22 +2352,26 @@ private static final long serialVersionUID = 0L;
      *```
      * </pre>
      *
-     * <code>optional .google.protobuf.Duration gt = 5 [json_name = "gt", (.buf.validate.priv.field) = { ... }</code>
+     * <code>.google.protobuf.Duration gt = 5 [json_name = "gt", (.buf.validate.priv.field) = { ... }</code>
      */
     public Builder mergeGt(com.google.protobuf.Duration value) {
       if (gtBuilder_ == null) {
-        if (((bitField0_ & 0x00000008) != 0) &&
-          gt_ != null &&
-          gt_ != com.google.protobuf.Duration.getDefaultInstance()) {
-          getGtBuilder().mergeFrom(value);
+        if (greaterThanCase_ == 5 &&
+            greaterThan_ != com.google.protobuf.Duration.getDefaultInstance()) {
+          greaterThan_ = com.google.protobuf.Duration.newBuilder((com.google.protobuf.Duration) greaterThan_)
+              .mergeFrom(value).buildPartial();
         } else {
-          gt_ = value;
+          greaterThan_ = value;
         }
+        onChanged();
       } else {
-        gtBuilder_.mergeFrom(value);
+        if (greaterThanCase_ == 5) {
+          gtBuilder_.mergeFrom(value);
+        } else {
+          gtBuilder_.setMessage(value);
+        }
       }
-      bitField0_ |= 0x00000008;
-      onChanged();
+      greaterThanCase_ = 5;
       return this;
     }
     /**
@@ -2185,16 +2396,22 @@ private static final long serialVersionUID = 0L;
      *```
      * </pre>
      *
-     * <code>optional .google.protobuf.Duration gt = 5 [json_name = "gt", (.buf.validate.priv.field) = { ... }</code>
+     * <code>.google.protobuf.Duration gt = 5 [json_name = "gt", (.buf.validate.priv.field) = { ... }</code>
      */
     public Builder clearGt() {
-      bitField0_ = (bitField0_ & ~0x00000008);
-      gt_ = null;
-      if (gtBuilder_ != null) {
-        gtBuilder_.dispose();
-        gtBuilder_ = null;
+      if (gtBuilder_ == null) {
+        if (greaterThanCase_ == 5) {
+          greaterThanCase_ = 0;
+          greaterThan_ = null;
+          onChanged();
+        }
+      } else {
+        if (greaterThanCase_ == 5) {
+          greaterThanCase_ = 0;
+          greaterThan_ = null;
+        }
+        gtBuilder_.clear();
       }
-      onChanged();
       return this;
     }
     /**
@@ -2219,11 +2436,9 @@ private static final long serialVersionUID = 0L;
      *```
      * </pre>
      *
-     * <code>optional .google.protobuf.Duration gt = 5 [json_name = "gt", (.buf.validate.priv.field) = { ... }</code>
+     * <code>.google.protobuf.Duration gt = 5 [json_name = "gt", (.buf.validate.priv.field) = { ... }</code>
      */
     public com.google.protobuf.Duration.Builder getGtBuilder() {
-      bitField0_ |= 0x00000008;
-      onChanged();
       return getGtFieldBuilder().getBuilder();
     }
     /**
@@ -2248,14 +2463,17 @@ private static final long serialVersionUID = 0L;
      *```
      * </pre>
      *
-     * <code>optional .google.protobuf.Duration gt = 5 [json_name = "gt", (.buf.validate.priv.field) = { ... }</code>
+     * <code>.google.protobuf.Duration gt = 5 [json_name = "gt", (.buf.validate.priv.field) = { ... }</code>
      */
+    @java.lang.Override
     public com.google.protobuf.DurationOrBuilder getGtOrBuilder() {
-      if (gtBuilder_ != null) {
+      if ((greaterThanCase_ == 5) && (gtBuilder_ != null)) {
         return gtBuilder_.getMessageOrBuilder();
       } else {
-        return gt_ == null ?
-            com.google.protobuf.Duration.getDefaultInstance() : gt_;
+        if (greaterThanCase_ == 5) {
+          return (com.google.protobuf.Duration) greaterThan_;
+        }
+        return com.google.protobuf.Duration.getDefaultInstance();
       }
     }
     /**
@@ -2280,23 +2498,27 @@ private static final long serialVersionUID = 0L;
      *```
      * </pre>
      *
-     * <code>optional .google.protobuf.Duration gt = 5 [json_name = "gt", (.buf.validate.priv.field) = { ... }</code>
+     * <code>.google.protobuf.Duration gt = 5 [json_name = "gt", (.buf.validate.priv.field) = { ... }</code>
      */
     private com.google.protobuf.SingleFieldBuilderV3<
         com.google.protobuf.Duration, com.google.protobuf.Duration.Builder, com.google.protobuf.DurationOrBuilder> 
         getGtFieldBuilder() {
       if (gtBuilder_ == null) {
+        if (!(greaterThanCase_ == 5)) {
+          greaterThan_ = com.google.protobuf.Duration.getDefaultInstance();
+        }
         gtBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
             com.google.protobuf.Duration, com.google.protobuf.Duration.Builder, com.google.protobuf.DurationOrBuilder>(
-                getGt(),
+                (com.google.protobuf.Duration) greaterThan_,
                 getParentForChildren(),
                 isClean());
-        gt_ = null;
+        greaterThan_ = null;
       }
+      greaterThanCase_ = 5;
+      onChanged();
       return gtBuilder_;
     }
 
-    private com.google.protobuf.Duration gte_;
     private com.google.protobuf.SingleFieldBuilderV3<
         com.google.protobuf.Duration, com.google.protobuf.Duration.Builder, com.google.protobuf.DurationOrBuilder> gteBuilder_;
     /**
@@ -2321,11 +2543,12 @@ private static final long serialVersionUID = 0L;
      *```
      * </pre>
      *
-     * <code>optional .google.protobuf.Duration gte = 6 [json_name = "gte", (.buf.validate.priv.field) = { ... }</code>
+     * <code>.google.protobuf.Duration gte = 6 [json_name = "gte", (.buf.validate.priv.field) = { ... }</code>
      * @return Whether the gte field is set.
      */
+    @java.lang.Override
     public boolean hasGte() {
-      return ((bitField0_ & 0x00000010) != 0);
+      return greaterThanCase_ == 6;
     }
     /**
      * <pre>
@@ -2349,14 +2572,21 @@ private static final long serialVersionUID = 0L;
      *```
      * </pre>
      *
-     * <code>optional .google.protobuf.Duration gte = 6 [json_name = "gte", (.buf.validate.priv.field) = { ... }</code>
+     * <code>.google.protobuf.Duration gte = 6 [json_name = "gte", (.buf.validate.priv.field) = { ... }</code>
      * @return The gte.
      */
+    @java.lang.Override
     public com.google.protobuf.Duration getGte() {
       if (gteBuilder_ == null) {
-        return gte_ == null ? com.google.protobuf.Duration.getDefaultInstance() : gte_;
+        if (greaterThanCase_ == 6) {
+          return (com.google.protobuf.Duration) greaterThan_;
+        }
+        return com.google.protobuf.Duration.getDefaultInstance();
       } else {
-        return gteBuilder_.getMessage();
+        if (greaterThanCase_ == 6) {
+          return gteBuilder_.getMessage();
+        }
+        return com.google.protobuf.Duration.getDefaultInstance();
       }
     }
     /**
@@ -2381,19 +2611,19 @@ private static final long serialVersionUID = 0L;
      *```
      * </pre>
      *
-     * <code>optional .google.protobuf.Duration gte = 6 [json_name = "gte", (.buf.validate.priv.field) = { ... }</code>
+     * <code>.google.protobuf.Duration gte = 6 [json_name = "gte", (.buf.validate.priv.field) = { ... }</code>
      */
     public Builder setGte(com.google.protobuf.Duration value) {
       if (gteBuilder_ == null) {
         if (value == null) {
           throw new NullPointerException();
         }
-        gte_ = value;
+        greaterThan_ = value;
+        onChanged();
       } else {
         gteBuilder_.setMessage(value);
       }
-      bitField0_ |= 0x00000010;
-      onChanged();
+      greaterThanCase_ = 6;
       return this;
     }
     /**
@@ -2418,17 +2648,17 @@ private static final long serialVersionUID = 0L;
      *```
      * </pre>
      *
-     * <code>optional .google.protobuf.Duration gte = 6 [json_name = "gte", (.buf.validate.priv.field) = { ... }</code>
+     * <code>.google.protobuf.Duration gte = 6 [json_name = "gte", (.buf.validate.priv.field) = { ... }</code>
      */
     public Builder setGte(
         com.google.protobuf.Duration.Builder builderForValue) {
       if (gteBuilder_ == null) {
-        gte_ = builderForValue.build();
+        greaterThan_ = builderForValue.build();
+        onChanged();
       } else {
         gteBuilder_.setMessage(builderForValue.build());
       }
-      bitField0_ |= 0x00000010;
-      onChanged();
+      greaterThanCase_ = 6;
       return this;
     }
     /**
@@ -2453,22 +2683,26 @@ private static final long serialVersionUID = 0L;
      *```
      * </pre>
      *
-     * <code>optional .google.protobuf.Duration gte = 6 [json_name = "gte", (.buf.validate.priv.field) = { ... }</code>
+     * <code>.google.protobuf.Duration gte = 6 [json_name = "gte", (.buf.validate.priv.field) = { ... }</code>
      */
     public Builder mergeGte(com.google.protobuf.Duration value) {
       if (gteBuilder_ == null) {
-        if (((bitField0_ & 0x00000010) != 0) &&
-          gte_ != null &&
-          gte_ != com.google.protobuf.Duration.getDefaultInstance()) {
-          getGteBuilder().mergeFrom(value);
+        if (greaterThanCase_ == 6 &&
+            greaterThan_ != com.google.protobuf.Duration.getDefaultInstance()) {
+          greaterThan_ = com.google.protobuf.Duration.newBuilder((com.google.protobuf.Duration) greaterThan_)
+              .mergeFrom(value).buildPartial();
         } else {
-          gte_ = value;
+          greaterThan_ = value;
         }
+        onChanged();
       } else {
-        gteBuilder_.mergeFrom(value);
+        if (greaterThanCase_ == 6) {
+          gteBuilder_.mergeFrom(value);
+        } else {
+          gteBuilder_.setMessage(value);
+        }
       }
-      bitField0_ |= 0x00000010;
-      onChanged();
+      greaterThanCase_ = 6;
       return this;
     }
     /**
@@ -2493,16 +2727,22 @@ private static final long serialVersionUID = 0L;
      *```
      * </pre>
      *
-     * <code>optional .google.protobuf.Duration gte = 6 [json_name = "gte", (.buf.validate.priv.field) = { ... }</code>
+     * <code>.google.protobuf.Duration gte = 6 [json_name = "gte", (.buf.validate.priv.field) = { ... }</code>
      */
     public Builder clearGte() {
-      bitField0_ = (bitField0_ & ~0x00000010);
-      gte_ = null;
-      if (gteBuilder_ != null) {
-        gteBuilder_.dispose();
-        gteBuilder_ = null;
+      if (gteBuilder_ == null) {
+        if (greaterThanCase_ == 6) {
+          greaterThanCase_ = 0;
+          greaterThan_ = null;
+          onChanged();
+        }
+      } else {
+        if (greaterThanCase_ == 6) {
+          greaterThanCase_ = 0;
+          greaterThan_ = null;
+        }
+        gteBuilder_.clear();
       }
-      onChanged();
       return this;
     }
     /**
@@ -2527,11 +2767,9 @@ private static final long serialVersionUID = 0L;
      *```
      * </pre>
      *
-     * <code>optional .google.protobuf.Duration gte = 6 [json_name = "gte", (.buf.validate.priv.field) = { ... }</code>
+     * <code>.google.protobuf.Duration gte = 6 [json_name = "gte", (.buf.validate.priv.field) = { ... }</code>
      */
     public com.google.protobuf.Duration.Builder getGteBuilder() {
-      bitField0_ |= 0x00000010;
-      onChanged();
       return getGteFieldBuilder().getBuilder();
     }
     /**
@@ -2556,14 +2794,17 @@ private static final long serialVersionUID = 0L;
      *```
      * </pre>
      *
-     * <code>optional .google.protobuf.Duration gte = 6 [json_name = "gte", (.buf.validate.priv.field) = { ... }</code>
+     * <code>.google.protobuf.Duration gte = 6 [json_name = "gte", (.buf.validate.priv.field) = { ... }</code>
      */
+    @java.lang.Override
     public com.google.protobuf.DurationOrBuilder getGteOrBuilder() {
-      if (gteBuilder_ != null) {
+      if ((greaterThanCase_ == 6) && (gteBuilder_ != null)) {
         return gteBuilder_.getMessageOrBuilder();
       } else {
-        return gte_ == null ?
-            com.google.protobuf.Duration.getDefaultInstance() : gte_;
+        if (greaterThanCase_ == 6) {
+          return (com.google.protobuf.Duration) greaterThan_;
+        }
+        return com.google.protobuf.Duration.getDefaultInstance();
       }
     }
     /**
@@ -2588,19 +2829,24 @@ private static final long serialVersionUID = 0L;
      *```
      * </pre>
      *
-     * <code>optional .google.protobuf.Duration gte = 6 [json_name = "gte", (.buf.validate.priv.field) = { ... }</code>
+     * <code>.google.protobuf.Duration gte = 6 [json_name = "gte", (.buf.validate.priv.field) = { ... }</code>
      */
     private com.google.protobuf.SingleFieldBuilderV3<
         com.google.protobuf.Duration, com.google.protobuf.Duration.Builder, com.google.protobuf.DurationOrBuilder> 
         getGteFieldBuilder() {
       if (gteBuilder_ == null) {
+        if (!(greaterThanCase_ == 6)) {
+          greaterThan_ = com.google.protobuf.Duration.getDefaultInstance();
+        }
         gteBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
             com.google.protobuf.Duration, com.google.protobuf.Duration.Builder, com.google.protobuf.DurationOrBuilder>(
-                getGte(),
+                (com.google.protobuf.Duration) greaterThan_,
                 getParentForChildren(),
                 isClean());
-        gte_ = null;
+        greaterThan_ = null;
       }
+      greaterThanCase_ = 6;
+      onChanged();
       return gteBuilder_;
     }
 
