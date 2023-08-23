@@ -95,6 +95,20 @@ final class CustomDeclarations {
             Decls.newInstanceOverload(
                 "contains_bytes", Arrays.asList(Decls.Bytes, Decls.Bytes), Decls.Bool)));
 
+    // Add 'isNan' function declaration
+    decls.add(
+        Decls.newFunction(
+            "isNan",
+            Decls.newInstanceOverload(
+                "is_nan", Collections.singletonList(Decls.Double), Decls.Bool)));
+
+    // Add 'isInf' function declaration
+    decls.add(
+        Decls.newFunction(
+            "isInf",
+            Decls.newInstanceOverload(
+                "is_inf", Collections.singletonList(Decls.Double), Decls.Bool)));
+
     // Add 'unique' function declaration
     List<Decl.FunctionDecl.Overload> uniqueOverloads = new ArrayList<>();
     for (com.google.api.expr.v1alpha1.Type type :
