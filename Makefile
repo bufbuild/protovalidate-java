@@ -16,7 +16,7 @@ GO ?= go
 ARGS ?= --strict_message
 JAVA_COMPILE_OPTIONS = --enable-preview --release $(JAVA_VERSION)
 JAVA_OPTIONS = --enable-preview
-PROTOVALIDATE_VERSION ?= v0.3.1
+PROTOVALIDATE_VERSION ?= v0.4.0
 JAVA_MAIN_CLASS = build.buf.protovalidate
 JAVA_SOURCES = $(wildcard src/main/java/**/**/**/*.java, src/main/java/**/**/*.java)
 JAVA_CLASSES = $(patsubst src/main/java/%.java, target/classes/%.class, $(JAVA_SOURCES))
@@ -59,9 +59,9 @@ help:  ## Describe useful make targets
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "%-15s %s\n", $$1, $$2}'
 
 .PHONY: generate
-generate: generate-license  ## Regenerate code and license headers
-	buf generate --template buf.gen.yaml buf.build/bufbuild/protovalidate
-	buf generate --template conformance/buf.gen.yaml -o conformance/ buf.build/bufbuild/protovalidate-testing
+generate: $(BIN)/buf generate-license  ## Regenerate code and license headers
+	$(BIN)/buf generate --template buf.gen.yaml buf.build/bufbuild/protovalidate:$(PROTOVALIDATE_VERSION)
+	$(BIN)/buf generate --template conformance/buf.gen.yaml -o conformance/ buf.build/bufbuild/protovalidate-testing:$(PROTOVALIDATE_VERSION)
 
 .PHONY: lint
 lint: ## Lint code
@@ -86,6 +86,10 @@ test:  ## Run all tests.
 
 $(BIN):
 	@mkdir -p $(BIN)
+
+$(BIN)/buf: $(BIN) Makefile
+	GOBIN=$(abspath $(@D)) $(GO) install \
+		  github.com/bufbuild/buf/cmd/buf@latest
 
 $(BIN)/license-header: $(BIN) Makefile
 	GOBIN=$(abspath $(@D)) $(GO) install \

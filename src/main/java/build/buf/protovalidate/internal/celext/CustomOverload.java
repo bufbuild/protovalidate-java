@@ -61,7 +61,9 @@ final class CustomOverload {
       unaryIsEmail(),
       isIp(),
       isUri(),
-      isUriRef()
+      isUriRef(),
+      isNan(),
+      isInf(),
     };
   }
 
@@ -303,6 +305,33 @@ final class CustomOverload {
             return BoolT.False;
           }
         });
+  }
+
+  /**
+   * Creates a custom unary function overload for the "isNan" operation.
+   *
+   * @return The {@link Overload} instance for the "isNan" operation.
+   */
+  private static Overload isNan() {
+    return Overload.unary(
+        "isNan", value -> value.convertToNative(Double.TYPE).isNaN() ? BoolT.True : BoolT.False);
+  }
+
+  /**
+   * Creates a custom unary function overload for the "isInf" operation.
+   *
+   * @return The {@link Overload} instance for the "isInf" operation.
+   */
+  private static Overload isInf() {
+    return Overload.overload(
+        "isInf",
+        null,
+        value -> value.convertToNative(Double.TYPE).isInfinite() ? BoolT.True : BoolT.False,
+        (lhs, rhs) -> {
+          Double value = lhs.convertToNative(Double.TYPE);
+          return value.isInfinite(rhs.intValue()) ? BoolT.True : BoolT.False;
+        },
+        null);
   }
 
   /**
