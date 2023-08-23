@@ -63,6 +63,7 @@ final class CustomOverload {
       isUri(),
       isUriRef(),
       isNan(),
+      isInf(),
     };
   }
 
@@ -324,7 +325,7 @@ final class CustomOverload {
    */
   private static Overload isInf() {
     return Overload.unary(
-        "isNan",
+        "isInf",
         value -> value.convertToNative(Double.TYPE).isInfinite() ? BoolT.True : BoolT.False);
   }
 
