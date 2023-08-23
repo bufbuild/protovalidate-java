@@ -107,7 +107,9 @@ final class CustomDeclarations {
         Decls.newFunction(
             "isInf",
             Decls.newInstanceOverload(
-                "is_inf", Collections.singletonList(Decls.Double), Decls.Bool)));
+                "is_inf_unary", Collections.singletonList(Decls.Double), Decls.Bool),
+            Decls.newInstanceOverload(
+                "is_inf_binary", Arrays.asList(Decls.Double, Decls.Int), Decls.Bool)));
 
     // Add 'unique' function declaration
     List<Decl.FunctionDecl.Overload> uniqueOverloads = new ArrayList<>();

@@ -323,9 +323,15 @@ final class CustomOverload {
    * @return The {@link Overload} instance for the "isInf" operation.
    */
   private static Overload isInf() {
-    return Overload.unary(
+    return Overload.overload(
         "isInf",
-        value -> value.convertToNative(Double.TYPE).isInfinite() ? BoolT.True : BoolT.False);
+        null,
+        value -> value.convertToNative(Double.TYPE).isInfinite() ? BoolT.True : BoolT.False,
+        (lhs, rhs) -> {
+          Double value = lhs.convertToNative(Double.TYPE);
+          return value.isInfinite(rhs.intValue()) ? BoolT.True : BoolT.False;
+        },
+        null);
   }
 
   /**
