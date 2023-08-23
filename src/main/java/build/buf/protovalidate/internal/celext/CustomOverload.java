@@ -314,8 +314,7 @@ final class CustomOverload {
    */
   private static Overload isNan() {
     return Overload.unary(
-        "isNan",
-        value -> value.convertToNative(Double.TYPE).isNaN() ? BoolT.True : BoolT.False);
+        "isNan", value -> value.convertToNative(Double.TYPE).isNaN() ? BoolT.True : BoolT.False);
   }
 
   /**
