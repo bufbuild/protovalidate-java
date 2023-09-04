@@ -17,7 +17,7 @@ mail = { module = "javax.mail:mail", version = "1.4.7"}
 nullaway = { module = "com.uber.nullaway:nullaway", version = "0.10.12" }
 protobuf-java = { module = "com.google.protobuf:protobuf-java", version.ref = "protobuf" }
 protobuf-java-util = { module = "com.google.protobuf:protobuf-java-util", version.ref = "protobuf" }
-spotless = { module = "com.diffplug.spotless:spotless-plugin-gradle", version = "6.20.0" }
+spotless = { module = "com.diffplug.spotless:spotless-plugin-gradle", version = "6.21.0" }
 
 [plugins]
 errorprone-plugin = { id = "net.ltgt.errorprone", version = "3.1.0" }
