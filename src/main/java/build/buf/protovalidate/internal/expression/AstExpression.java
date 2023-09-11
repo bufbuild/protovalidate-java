@@ -45,7 +45,8 @@ public class AstExpression {
       throws CompilationException {
     Env.AstIssuesTuple astIssuesTuple = env.compile(expr.expression);
     if (astIssuesTuple.hasIssues()) {
-      throw new CompilationException("Failed to compile expression " + expr.id);
+      throw new CompilationException(
+          "Failed to compile expression " + expr.id + ":\n" + astIssuesTuple.getIssues());
     }
     Ast ast = astIssuesTuple.getAst();
     Type outType = ast.getResultType();
