@@ -329,7 +329,12 @@ final class CustomOverload {
         value -> value.convertToNative(Double.TYPE).isInfinite() ? BoolT.True : BoolT.False,
         (lhs, rhs) -> {
           Double value = lhs.convertToNative(Double.TYPE);
-          return value.isInfinite(rhs.intValue()) ? BoolT.True : BoolT.False;
+          long sign = rhs.intValue();
+          if (sign == 0) {
+            return value.isInfinite() ? BoolT.True : BoolT.False;
+          }
+          double expectedValue = (sign > 0) ? Double.POSITIVE_INFINITY : Double.NEGATIVE_INFINITY;
+          return value == expectedValue ? BoolT.True : BoolT.False;
         },
         null);
   }
