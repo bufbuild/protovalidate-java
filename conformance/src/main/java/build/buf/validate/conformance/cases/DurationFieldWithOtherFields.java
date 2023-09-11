@@ -43,6 +43,7 @@ private static final long serialVersionUID = 0L;
             build.buf.validate.conformance.cases.DurationFieldWithOtherFields.class, build.buf.validate.conformance.cases.DurationFieldWithOtherFields.Builder.class);
   }
 
+  private int bitField0_;
   public static final int DURATION_VAL_FIELD_NUMBER = 1;
   private com.google.protobuf.Duration durationVal_;
   /**
@@ -51,7 +52,7 @@ private static final long serialVersionUID = 0L;
    */
   @java.lang.Override
   public boolean hasDurationVal() {
-    return durationVal_ != null;
+    return ((bitField0_ & 0x00000001) != 0);
   }
   /**
    * <code>.google.protobuf.Duration duration_val = 1 [json_name = "durationVal", (.buf.validate.field) = { ... }</code>
@@ -94,7 +95,7 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    if (durationVal_ != null) {
+    if (((bitField0_ & 0x00000001) != 0)) {
       output.writeMessage(1, getDurationVal());
     }
     if (intVal_ != 0) {
@@ -109,7 +110,7 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
-    if (durationVal_ != null) {
+    if (((bitField0_ & 0x00000001) != 0)) {
       size += com.google.protobuf.CodedOutputStream
         .computeMessageSize(1, getDurationVal());
     }
@@ -280,13 +281,19 @@ private static final long serialVersionUID = 0L;
 
     // Construct using build.buf.validate.conformance.cases.DurationFieldWithOtherFields.newBuilder()
     private Builder() {
-
+      maybeForceBuilderInitialization();
     }
 
     private Builder(
         com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
       super(parent);
-
+      maybeForceBuilderInitialization();
+    }
+    private void maybeForceBuilderInitialization() {
+      if (com.google.protobuf.GeneratedMessageV3
+              .alwaysUseFieldBuilders) {
+        getDurationValFieldBuilder();
+      }
     }
     @java.lang.Override
     public Builder clear() {
@@ -331,14 +338,17 @@ private static final long serialVersionUID = 0L;
 
     private void buildPartial0(build.buf.validate.conformance.cases.DurationFieldWithOtherFields result) {
       int from_bitField0_ = bitField0_;
+      int to_bitField0_ = 0;
       if (((from_bitField0_ & 0x00000001) != 0)) {
         result.durationVal_ = durationValBuilder_ == null
             ? durationVal_
             : durationValBuilder_.build();
+        to_bitField0_ |= 0x00000001;
       }
       if (((from_bitField0_ & 0x00000002) != 0)) {
         result.intVal_ = intVal_;
       }
+      result.bitField0_ |= to_bitField0_;
     }
 
     @java.lang.Override
@@ -512,8 +522,10 @@ private static final long serialVersionUID = 0L;
       } else {
         durationValBuilder_.mergeFrom(value);
       }
-      bitField0_ |= 0x00000001;
-      onChanged();
+      if (durationVal_ != null) {
+        bitField0_ |= 0x00000001;
+        onChanged();
+      }
       return this;
     }
     /**

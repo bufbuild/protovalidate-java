@@ -1123,8 +1123,10 @@ private static final long serialVersionUID = 0L;
       } else {
         itemsBuilder_.mergeFrom(value);
       }
-      bitField0_ |= 0x00000008;
-      onChanged();
+      if (items_ != null) {
+        bitField0_ |= 0x00000008;
+        onChanged();
+      }
       return this;
     }
     /**

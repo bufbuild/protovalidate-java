@@ -26,8 +26,8 @@ private static final long serialVersionUID = 0L;
     prefix_ = com.google.protobuf.ByteString.EMPTY;
     suffix_ = com.google.protobuf.ByteString.EMPTY;
     contains_ = com.google.protobuf.ByteString.EMPTY;
-    in_ = java.util.Collections.emptyList();
-    notIn_ = java.util.Collections.emptyList();
+    in_ = emptyList(com.google.protobuf.ByteString.class);
+    notIn_ = emptyList(com.google.protobuf.ByteString.class);
   }
 
   @java.lang.Override
@@ -500,7 +500,8 @@ private static final long serialVersionUID = 0L;
 
   public static final int IN_FIELD_NUMBER = 8;
   @SuppressWarnings("serial")
-  private java.util.List<com.google.protobuf.ByteString> in_;
+  private com.google.protobuf.Internal.ProtobufList<com.google.protobuf.ByteString> in_ =
+      emptyList(com.google.protobuf.ByteString.class);
   /**
    * <pre>
    *`in` requires the field value to be equal to one of the specified
@@ -567,7 +568,8 @@ private static final long serialVersionUID = 0L;
 
   public static final int NOT_IN_FIELD_NUMBER = 9;
   @SuppressWarnings("serial")
-  private java.util.List<com.google.protobuf.ByteString> notIn_;
+  private com.google.protobuf.Internal.ProtobufList<com.google.protobuf.ByteString> notIn_ =
+      emptyList(com.google.protobuf.ByteString.class);
   /**
    * <pre>
    *`not_in` requires the field value to be not equal to any of the specified
@@ -1190,8 +1192,8 @@ private static final long serialVersionUID = 0L;
       prefix_ = com.google.protobuf.ByteString.EMPTY;
       suffix_ = com.google.protobuf.ByteString.EMPTY;
       contains_ = com.google.protobuf.ByteString.EMPTY;
-      in_ = java.util.Collections.emptyList();
-      notIn_ = java.util.Collections.emptyList();
+      in_ = emptyList(com.google.protobuf.ByteString.class);
+      notIn_ = emptyList(com.google.protobuf.ByteString.class);
       wellKnownCase_ = 0;
       wellKnown_ = null;
       return this;
@@ -1220,24 +1222,10 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public build.buf.validate.BytesRules buildPartial() {
       build.buf.validate.BytesRules result = new build.buf.validate.BytesRules(this);
-      buildPartialRepeatedFields(result);
       if (bitField0_ != 0) { buildPartial0(result); }
       buildPartialOneofs(result);
       onBuilt();
       return result;
-    }
-
-    private void buildPartialRepeatedFields(build.buf.validate.BytesRules result) {
-      if (((bitField0_ & 0x00000100) != 0)) {
-        in_ = java.util.Collections.unmodifiableList(in_);
-        bitField0_ = (bitField0_ & ~0x00000100);
-      }
-      result.in_ = in_;
-      if (((bitField0_ & 0x00000200) != 0)) {
-        notIn_ = java.util.Collections.unmodifiableList(notIn_);
-        bitField0_ = (bitField0_ & ~0x00000200);
-      }
-      result.notIn_ = notIn_;
     }
 
     private void buildPartial0(build.buf.validate.BytesRules result) {
@@ -1274,6 +1262,14 @@ private static final long serialVersionUID = 0L;
       if (((from_bitField0_ & 0x00000080) != 0)) {
         result.contains_ = contains_;
         to_bitField0_ |= 0x00000080;
+      }
+      if (((from_bitField0_ & 0x00000100) != 0)) {
+        in_.makeImmutable();
+        result.in_ = in_;
+      }
+      if (((from_bitField0_ & 0x00000200) != 0)) {
+        notIn_.makeImmutable();
+        result.notIn_ = notIn_;
       }
       result.bitField0_ |= to_bitField0_;
     }
@@ -1356,7 +1352,8 @@ private static final long serialVersionUID = 0L;
       if (!other.in_.isEmpty()) {
         if (in_.isEmpty()) {
           in_ = other.in_;
-          bitField0_ = (bitField0_ & ~0x00000100);
+          in_.makeImmutable();
+          bitField0_ |= 0x00000100;
         } else {
           ensureInIsMutable();
           in_.addAll(other.in_);
@@ -1366,7 +1363,8 @@ private static final long serialVersionUID = 0L;
       if (!other.notIn_.isEmpty()) {
         if (notIn_.isEmpty()) {
           notIn_ = other.notIn_;
-          bitField0_ = (bitField0_ & ~0x00000200);
+          notIn_.makeImmutable();
+          bitField0_ |= 0x00000200;
         } else {
           ensureNotInIsMutable();
           notIn_.addAll(other.notIn_);
@@ -2320,12 +2318,12 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private java.util.List<com.google.protobuf.ByteString> in_ = java.util.Collections.emptyList();
+    private com.google.protobuf.Internal.ProtobufList<com.google.protobuf.ByteString> in_ = emptyList(com.google.protobuf.ByteString.class);
     private void ensureInIsMutable() {
-      if (!((bitField0_ & 0x00000100) != 0)) {
-        in_ = new java.util.ArrayList<com.google.protobuf.ByteString>(in_);
-        bitField0_ |= 0x00000100;
+      if (!in_.isModifiable()) {
+        in_ = makeMutableCopy(in_);
       }
+      bitField0_ |= 0x00000100;
     }
     /**
      * <pre>
@@ -2346,8 +2344,8 @@ private static final long serialVersionUID = 0L;
      */
     public java.util.List<com.google.protobuf.ByteString>
         getInList() {
-      return ((bitField0_ & 0x00000100) != 0) ?
-               java.util.Collections.unmodifiableList(in_) : in_;
+      in_.makeImmutable();
+      return in_;
     }
     /**
      * <pre>
@@ -2414,6 +2412,7 @@ private static final long serialVersionUID = 0L;
       if (value == null) { throw new NullPointerException(); }
       ensureInIsMutable();
       in_.set(index, value);
+      bitField0_ |= 0x00000100;
       onChanged();
       return this;
     }
@@ -2439,6 +2438,7 @@ private static final long serialVersionUID = 0L;
       if (value == null) { throw new NullPointerException(); }
       ensureInIsMutable();
       in_.add(value);
+      bitField0_ |= 0x00000100;
       onChanged();
       return this;
     }
@@ -2465,6 +2465,7 @@ private static final long serialVersionUID = 0L;
       ensureInIsMutable();
       com.google.protobuf.AbstractMessageLite.Builder.addAll(
           values, in_);
+      bitField0_ |= 0x00000100;
       onChanged();
       return this;
     }
@@ -2486,18 +2487,18 @@ private static final long serialVersionUID = 0L;
      * @return This builder for chaining.
      */
     public Builder clearIn() {
-      in_ = java.util.Collections.emptyList();
+      in_ = emptyList(com.google.protobuf.ByteString.class);
       bitField0_ = (bitField0_ & ~0x00000100);
       onChanged();
       return this;
     }
 
-    private java.util.List<com.google.protobuf.ByteString> notIn_ = java.util.Collections.emptyList();
+    private com.google.protobuf.Internal.ProtobufList<com.google.protobuf.ByteString> notIn_ = emptyList(com.google.protobuf.ByteString.class);
     private void ensureNotInIsMutable() {
-      if (!((bitField0_ & 0x00000200) != 0)) {
-        notIn_ = new java.util.ArrayList<com.google.protobuf.ByteString>(notIn_);
-        bitField0_ |= 0x00000200;
+      if (!notIn_.isModifiable()) {
+        notIn_ = makeMutableCopy(notIn_);
       }
+      bitField0_ |= 0x00000200;
     }
     /**
      * <pre>
@@ -2519,8 +2520,8 @@ private static final long serialVersionUID = 0L;
      */
     public java.util.List<com.google.protobuf.ByteString>
         getNotInList() {
-      return ((bitField0_ & 0x00000200) != 0) ?
-               java.util.Collections.unmodifiableList(notIn_) : notIn_;
+      notIn_.makeImmutable();
+      return notIn_;
     }
     /**
      * <pre>
@@ -2590,6 +2591,7 @@ private static final long serialVersionUID = 0L;
       if (value == null) { throw new NullPointerException(); }
       ensureNotInIsMutable();
       notIn_.set(index, value);
+      bitField0_ |= 0x00000200;
       onChanged();
       return this;
     }
@@ -2616,6 +2618,7 @@ private static final long serialVersionUID = 0L;
       if (value == null) { throw new NullPointerException(); }
       ensureNotInIsMutable();
       notIn_.add(value);
+      bitField0_ |= 0x00000200;
       onChanged();
       return this;
     }
@@ -2643,6 +2646,7 @@ private static final long serialVersionUID = 0L;
       ensureNotInIsMutable();
       com.google.protobuf.AbstractMessageLite.Builder.addAll(
           values, notIn_);
+      bitField0_ |= 0x00000200;
       onChanged();
       return this;
     }
@@ -2665,7 +2669,7 @@ private static final long serialVersionUID = 0L;
      * @return This builder for chaining.
      */
     public Builder clearNotIn() {
-      notIn_ = java.util.Collections.emptyList();
+      notIn_ = emptyList(com.google.protobuf.ByteString.class);
       bitField0_ = (bitField0_ & ~0x00000200);
       onChanged();
       return this;
