@@ -9,8 +9,8 @@ plugins {
     `version-catalog`
 
     `java-library`
-    alias(libs.plugins.errorprone.plugin)
-    id("com.vanniktech.maven.publish.base") version "0.25.3"
+    alias(libs.plugins.errorprone)
+    alias(libs.plugins.maven)
 }
 
 java {
@@ -22,6 +22,8 @@ tasks.withType<JavaCompile> {
     if (JavaVersion.current().isJava9Compatible) doFirst {
         options.compilerArgs = mutableListOf("--release", "8")
     }
+    // Disable errorprone on generated code
+    options.errorprone.excludedPaths.set(".*/src/main/java/build/buf/validate/.*")
     if (!name.lowercase().contains("test")) {
         options.errorprone {
             check("NullAway", CheckSeverity.ERROR)
@@ -31,9 +33,8 @@ tasks.withType<JavaCompile> {
 }
 
 tasks.withType<Javadoc> {
-    // TODO: Enable when Javadoc changes are final
-//    val stdOptions = options as StandardJavadocDocletOptions
-//    stdOptions.addBooleanOption("Xwerror", true)
+    val stdOptions = options as StandardJavadocDocletOptions
+    stdOptions.addBooleanOption("Xwerror", true)
 }
 
 tasks.withType<GenerateModuleMetadata> {

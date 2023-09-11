@@ -478,8 +478,10 @@ private static final long serialVersionUID = 0L;
       } else {
         valBuilder_.mergeFrom(value);
       }
-      bitField0_ |= 0x00000001;
-      onChanged();
+      if (val_ != null) {
+        bitField0_ |= 0x00000001;
+        onChanged();
+      }
       return this;
     }
     /**

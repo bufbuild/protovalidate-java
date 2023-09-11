@@ -1,10 +1,19 @@
 import com.diffplug.gradle.spotless.SpotlessExtension
+import net.ltgt.gradle.errorprone.errorprone
 
 plugins {
     `version-catalog`
 
     java
-    alias(libs.plugins.errorprone.plugin)
+    alias(libs.plugins.errorprone)
+}
+
+tasks.withType<JavaCompile> {
+    if (JavaVersion.current().isJava9Compatible) doFirst {
+        options.compilerArgs = mutableListOf("--release", "8")
+    }
+    // Disable errorprone on generated code
+    options.errorprone.excludedPaths.set(".*/src/main/java/build/buf/validate/conformance/.*")
 }
 
 // Disable javadoc for conformance tests

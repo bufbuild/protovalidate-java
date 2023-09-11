@@ -56,6 +56,7 @@ private static final long serialVersionUID = 0L;
             build.buf.validate.conformance.harness.TestConformanceRequest.class, build.buf.validate.conformance.harness.TestConformanceRequest.Builder.class);
   }
 
+  private int bitField0_;
   public static final int FDSET_FIELD_NUMBER = 2;
   private com.google.protobuf.DescriptorProtos.FileDescriptorSet fdset_;
   /**
@@ -64,7 +65,7 @@ private static final long serialVersionUID = 0L;
    */
   @java.lang.Override
   public boolean hasFdset() {
-    return fdset_ != null;
+    return ((bitField0_ & 0x00000001) != 0);
   }
   /**
    * <code>.google.protobuf.FileDescriptorSet fdset = 2 [json_name = "fdset"];</code>
@@ -181,7 +182,7 @@ com.google.protobuf.Any defaultValue) {
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    if (fdset_ != null) {
+    if (((bitField0_ & 0x00000001) != 0)) {
       output.writeMessage(2, getFdset());
     }
     com.google.protobuf.GeneratedMessageV3
@@ -199,7 +200,7 @@ com.google.protobuf.Any defaultValue) {
     if (size != -1) return size;
 
     size = 0;
-    if (fdset_ != null) {
+    if (((bitField0_ & 0x00000001) != 0)) {
       size += com.google.protobuf.CodedOutputStream
         .computeMessageSize(2, getFdset());
     }
@@ -401,13 +402,19 @@ com.google.protobuf.Any defaultValue) {
 
     // Construct using build.buf.validate.conformance.harness.TestConformanceRequest.newBuilder()
     private Builder() {
-
+      maybeForceBuilderInitialization();
     }
 
     private Builder(
         com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
       super(parent);
-
+      maybeForceBuilderInitialization();
+    }
+    private void maybeForceBuilderInitialization() {
+      if (com.google.protobuf.GeneratedMessageV3
+              .alwaysUseFieldBuilders) {
+        getFdsetFieldBuilder();
+      }
     }
     @java.lang.Override
     public Builder clear() {
@@ -452,15 +459,18 @@ com.google.protobuf.Any defaultValue) {
 
     private void buildPartial0(build.buf.validate.conformance.harness.TestConformanceRequest result) {
       int from_bitField0_ = bitField0_;
+      int to_bitField0_ = 0;
       if (((from_bitField0_ & 0x00000001) != 0)) {
         result.fdset_ = fdsetBuilder_ == null
             ? fdset_
             : fdsetBuilder_.build();
+        to_bitField0_ |= 0x00000001;
       }
       if (((from_bitField0_ & 0x00000002) != 0)) {
         result.cases_ = internalGetCases();
         result.cases_.makeImmutable();
       }
+      result.bitField0_ |= to_bitField0_;
     }
 
     @java.lang.Override
@@ -643,8 +653,10 @@ com.google.protobuf.Any defaultValue) {
       } else {
         fdsetBuilder_.mergeFrom(value);
       }
-      bitField0_ |= 0x00000001;
-      onChanged();
+      if (fdset_ != null) {
+        bitField0_ |= 0x00000001;
+        onChanged();
+      }
       return this;
     }
     /**

@@ -38,6 +38,7 @@ private static final long serialVersionUID = 0L;
             build.buf.validate.conformance.cases.TimestampGTNow.class, build.buf.validate.conformance.cases.TimestampGTNow.Builder.class);
   }
 
+  private int bitField0_;
   public static final int VAL_FIELD_NUMBER = 1;
   private com.google.protobuf.Timestamp val_;
   /**
@@ -46,7 +47,7 @@ private static final long serialVersionUID = 0L;
    */
   @java.lang.Override
   public boolean hasVal() {
-    return val_ != null;
+    return ((bitField0_ & 0x00000001) != 0);
   }
   /**
    * <code>.google.protobuf.Timestamp val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
@@ -78,7 +79,7 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    if (val_ != null) {
+    if (((bitField0_ & 0x00000001) != 0)) {
       output.writeMessage(1, getVal());
     }
     getUnknownFields().writeTo(output);
@@ -90,7 +91,7 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
-    if (val_ != null) {
+    if (((bitField0_ & 0x00000001) != 0)) {
       size += com.google.protobuf.CodedOutputStream
         .computeMessageSize(1, getVal());
     }
@@ -248,13 +249,19 @@ private static final long serialVersionUID = 0L;
 
     // Construct using build.buf.validate.conformance.cases.TimestampGTNow.newBuilder()
     private Builder() {
-
+      maybeForceBuilderInitialization();
     }
 
     private Builder(
         com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
       super(parent);
-
+      maybeForceBuilderInitialization();
+    }
+    private void maybeForceBuilderInitialization() {
+      if (com.google.protobuf.GeneratedMessageV3
+              .alwaysUseFieldBuilders) {
+        getValFieldBuilder();
+      }
     }
     @java.lang.Override
     public Builder clear() {
@@ -298,11 +305,14 @@ private static final long serialVersionUID = 0L;
 
     private void buildPartial0(build.buf.validate.conformance.cases.TimestampGTNow result) {
       int from_bitField0_ = bitField0_;
+      int to_bitField0_ = 0;
       if (((from_bitField0_ & 0x00000001) != 0)) {
         result.val_ = valBuilder_ == null
             ? val_
             : valBuilder_.build();
+        to_bitField0_ |= 0x00000001;
       }
+      result.bitField0_ |= to_bitField0_;
     }
 
     @java.lang.Override
@@ -468,8 +478,10 @@ private static final long serialVersionUID = 0L;
       } else {
         valBuilder_.mergeFrom(value);
       }
-      bitField0_ |= 0x00000001;
-      onChanged();
+      if (val_ != null) {
+        bitField0_ |= 0x00000001;
+        onChanged();
+      }
       return this;
     }
     /**

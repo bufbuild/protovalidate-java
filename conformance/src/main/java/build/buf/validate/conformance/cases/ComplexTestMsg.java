@@ -54,6 +54,7 @@ private static final long serialVersionUID = 0L;
             build.buf.validate.conformance.cases.ComplexTestMsg.class, build.buf.validate.conformance.cases.ComplexTestMsg.Builder.class);
   }
 
+  private int bitField0_;
   private int oCase_ = 0;
   @SuppressWarnings("serial")
   private java.lang.Object o_;
@@ -143,7 +144,7 @@ private static final long serialVersionUID = 0L;
    */
   @java.lang.Override
   public boolean hasNested() {
-    return nested_ != null;
+    return ((bitField0_ & 0x00000001) != 0);
   }
   /**
    * <code>.buf.validate.conformance.cases.ComplexTestMsg nested = 2 [json_name = "nested"];</code>
@@ -191,7 +192,7 @@ private static final long serialVersionUID = 0L;
    */
   @java.lang.Override
   public boolean hasFloatVal() {
-    return floatVal_ != null;
+    return ((bitField0_ & 0x00000002) != 0);
   }
   /**
    * <code>.google.protobuf.FloatValue float_val = 5 [json_name = "floatVal", (.buf.validate.field) = { ... }</code>
@@ -217,7 +218,7 @@ private static final long serialVersionUID = 0L;
    */
   @java.lang.Override
   public boolean hasDurVal() {
-    return durVal_ != null;
+    return ((bitField0_ & 0x00000004) != 0);
   }
   /**
    * <code>.google.protobuf.Duration dur_val = 6 [json_name = "durVal", (.buf.validate.field) = { ... }</code>
@@ -243,7 +244,7 @@ private static final long serialVersionUID = 0L;
    */
   @java.lang.Override
   public boolean hasTsVal() {
-    return tsVal_ != null;
+    return ((bitField0_ & 0x00000008) != 0);
   }
   /**
    * <code>.google.protobuf.Timestamp ts_val = 7 [json_name = "tsVal", (.buf.validate.field) = { ... }</code>
@@ -269,7 +270,7 @@ private static final long serialVersionUID = 0L;
    */
   @java.lang.Override
   public boolean hasAnother() {
-    return another_ != null;
+    return ((bitField0_ & 0x00000010) != 0);
   }
   /**
    * <code>.buf.validate.conformance.cases.ComplexTestMsg another = 8 [json_name = "another"];</code>
@@ -335,7 +336,7 @@ private static final long serialVersionUID = 0L;
    */
   @java.lang.Override
   public boolean hasAnyVal() {
-    return anyVal_ != null;
+    return ((bitField0_ & 0x00000020) != 0);
   }
   /**
    * <code>.google.protobuf.Any any_val = 12 [json_name = "anyVal", (.buf.validate.field) = { ... }</code>
@@ -574,7 +575,7 @@ java.lang.String defaultValue) {
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(const_)) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 1, const_);
     }
-    if (nested_ != null) {
+    if (((bitField0_ & 0x00000001) != 0)) {
       output.writeMessage(2, getNested());
     }
     if (intConst_ != 0) {
@@ -583,16 +584,16 @@ java.lang.String defaultValue) {
     if (boolConst_ != false) {
       output.writeBool(4, boolConst_);
     }
-    if (floatVal_ != null) {
+    if (((bitField0_ & 0x00000002) != 0)) {
       output.writeMessage(5, getFloatVal());
     }
-    if (durVal_ != null) {
+    if (((bitField0_ & 0x00000004) != 0)) {
       output.writeMessage(6, getDurVal());
     }
-    if (tsVal_ != null) {
+    if (((bitField0_ & 0x00000008) != 0)) {
       output.writeMessage(7, getTsVal());
     }
-    if (another_ != null) {
+    if (((bitField0_ & 0x00000010) != 0)) {
       output.writeMessage(8, getAnother());
     }
     if (java.lang.Float.floatToRawIntBits(floatConst_) != 0) {
@@ -604,7 +605,7 @@ java.lang.String defaultValue) {
     if (enumConst_ != build.buf.validate.conformance.cases.ComplexTestEnum.COMPLEX_TEST_ENUM_UNSPECIFIED.getNumber()) {
       output.writeEnum(11, enumConst_);
     }
-    if (anyVal_ != null) {
+    if (((bitField0_ & 0x00000020) != 0)) {
       output.writeMessage(12, getAnyVal());
     }
     for (int i = 0; i < repTsVal_.size(); i++) {
@@ -638,7 +639,7 @@ java.lang.String defaultValue) {
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(const_)) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, const_);
     }
-    if (nested_ != null) {
+    if (((bitField0_ & 0x00000001) != 0)) {
       size += com.google.protobuf.CodedOutputStream
         .computeMessageSize(2, getNested());
     }
@@ -650,19 +651,19 @@ java.lang.String defaultValue) {
       size += com.google.protobuf.CodedOutputStream
         .computeBoolSize(4, boolConst_);
     }
-    if (floatVal_ != null) {
+    if (((bitField0_ & 0x00000002) != 0)) {
       size += com.google.protobuf.CodedOutputStream
         .computeMessageSize(5, getFloatVal());
     }
-    if (durVal_ != null) {
+    if (((bitField0_ & 0x00000004) != 0)) {
       size += com.google.protobuf.CodedOutputStream
         .computeMessageSize(6, getDurVal());
     }
-    if (tsVal_ != null) {
+    if (((bitField0_ & 0x00000008) != 0)) {
       size += com.google.protobuf.CodedOutputStream
         .computeMessageSize(7, getTsVal());
     }
-    if (another_ != null) {
+    if (((bitField0_ & 0x00000010) != 0)) {
       size += com.google.protobuf.CodedOutputStream
         .computeMessageSize(8, getAnother());
     }
@@ -678,7 +679,7 @@ java.lang.String defaultValue) {
       size += com.google.protobuf.CodedOutputStream
         .computeEnumSize(11, enumConst_);
     }
-    if (anyVal_ != null) {
+    if (((bitField0_ & 0x00000020) != 0)) {
       size += com.google.protobuf.CodedOutputStream
         .computeMessageSize(12, getAnyVal());
     }
@@ -998,13 +999,25 @@ java.lang.String defaultValue) {
 
     // Construct using build.buf.validate.conformance.cases.ComplexTestMsg.newBuilder()
     private Builder() {
-
+      maybeForceBuilderInitialization();
     }
 
     private Builder(
         com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
       super(parent);
-
+      maybeForceBuilderInitialization();
+    }
+    private void maybeForceBuilderInitialization() {
+      if (com.google.protobuf.GeneratedMessageV3
+              .alwaysUseFieldBuilders) {
+        getNestedFieldBuilder();
+        getFloatValFieldBuilder();
+        getDurValFieldBuilder();
+        getTsValFieldBuilder();
+        getAnotherFieldBuilder();
+        getAnyValFieldBuilder();
+        getRepTsValFieldBuilder();
+      }
     }
     @java.lang.Override
     public Builder clear() {
@@ -1107,10 +1120,12 @@ java.lang.String defaultValue) {
       if (((from_bitField0_ & 0x00000001) != 0)) {
         result.const_ = const_;
       }
+      int to_bitField0_ = 0;
       if (((from_bitField0_ & 0x00000002) != 0)) {
         result.nested_ = nestedBuilder_ == null
             ? nested_
             : nestedBuilder_.build();
+        to_bitField0_ |= 0x00000001;
       }
       if (((from_bitField0_ & 0x00000004) != 0)) {
         result.intConst_ = intConst_;
@@ -1122,21 +1137,25 @@ java.lang.String defaultValue) {
         result.floatVal_ = floatValBuilder_ == null
             ? floatVal_
             : floatValBuilder_.build();
+        to_bitField0_ |= 0x00000002;
       }
       if (((from_bitField0_ & 0x00000020) != 0)) {
         result.durVal_ = durValBuilder_ == null
             ? durVal_
             : durValBuilder_.build();
+        to_bitField0_ |= 0x00000004;
       }
       if (((from_bitField0_ & 0x00000040) != 0)) {
         result.tsVal_ = tsValBuilder_ == null
             ? tsVal_
             : tsValBuilder_.build();
+        to_bitField0_ |= 0x00000008;
       }
       if (((from_bitField0_ & 0x00000080) != 0)) {
         result.another_ = anotherBuilder_ == null
             ? another_
             : anotherBuilder_.build();
+        to_bitField0_ |= 0x00000010;
       }
       if (((from_bitField0_ & 0x00000100) != 0)) {
         result.floatConst_ = floatConst_;
@@ -1151,6 +1170,7 @@ java.lang.String defaultValue) {
         result.anyVal_ = anyValBuilder_ == null
             ? anyVal_
             : anyValBuilder_.build();
+        to_bitField0_ |= 0x00000020;
       }
       if (((from_bitField0_ & 0x00002000) != 0)) {
         result.mapVal_ = internalGetMapVal();
@@ -1159,6 +1179,7 @@ java.lang.String defaultValue) {
       if (((from_bitField0_ & 0x00004000) != 0)) {
         result.bytesVal_ = bytesVal_;
       }
+      result.bitField0_ |= to_bitField0_;
     }
 
     private void buildPartialOneofs(build.buf.validate.conformance.cases.ComplexTestMsg result) {
@@ -1601,8 +1622,10 @@ java.lang.String defaultValue) {
       } else {
         nestedBuilder_.mergeFrom(value);
       }
-      bitField0_ |= 0x00000002;
-      onChanged();
+      if (nested_ != null) {
+        bitField0_ |= 0x00000002;
+        onChanged();
+      }
       return this;
     }
     /**
@@ -1784,8 +1807,10 @@ java.lang.String defaultValue) {
       } else {
         floatValBuilder_.mergeFrom(value);
       }
-      bitField0_ |= 0x00000010;
-      onChanged();
+      if (floatVal_ != null) {
+        bitField0_ |= 0x00000010;
+        onChanged();
+      }
       return this;
     }
     /**
@@ -1903,8 +1928,10 @@ java.lang.String defaultValue) {
       } else {
         durValBuilder_.mergeFrom(value);
       }
-      bitField0_ |= 0x00000020;
-      onChanged();
+      if (durVal_ != null) {
+        bitField0_ |= 0x00000020;
+        onChanged();
+      }
       return this;
     }
     /**
@@ -2022,8 +2049,10 @@ java.lang.String defaultValue) {
       } else {
         tsValBuilder_.mergeFrom(value);
       }
-      bitField0_ |= 0x00000040;
-      onChanged();
+      if (tsVal_ != null) {
+        bitField0_ |= 0x00000040;
+        onChanged();
+      }
       return this;
     }
     /**
@@ -2141,8 +2170,10 @@ java.lang.String defaultValue) {
       } else {
         anotherBuilder_.mergeFrom(value);
       }
-      bitField0_ |= 0x00000080;
-      onChanged();
+      if (another_ != null) {
+        bitField0_ |= 0x00000080;
+        onChanged();
+      }
       return this;
     }
     /**
@@ -2377,8 +2408,10 @@ java.lang.String defaultValue) {
       } else {
         anyValBuilder_.mergeFrom(value);
       }
-      bitField0_ |= 0x00000800;
-      onChanged();
+      if (anyVal_ != null) {
+        bitField0_ |= 0x00000800;
+        onChanged();
+      }
       return this;
     }
     /**

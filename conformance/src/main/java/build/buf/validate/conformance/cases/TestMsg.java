@@ -39,6 +39,7 @@ private static final long serialVersionUID = 0L;
             build.buf.validate.conformance.cases.TestMsg.class, build.buf.validate.conformance.cases.TestMsg.Builder.class);
   }
 
+  private int bitField0_;
   public static final int CONST_FIELD_NUMBER = 1;
   @SuppressWarnings("serial")
   private volatile java.lang.Object const_ = "";
@@ -86,7 +87,7 @@ private static final long serialVersionUID = 0L;
    */
   @java.lang.Override
   public boolean hasNested() {
-    return nested_ != null;
+    return ((bitField0_ & 0x00000001) != 0);
   }
   /**
    * <code>.buf.validate.conformance.cases.TestMsg nested = 2 [json_name = "nested"];</code>
@@ -121,7 +122,7 @@ private static final long serialVersionUID = 0L;
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(const_)) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 1, const_);
     }
-    if (nested_ != null) {
+    if (((bitField0_ & 0x00000001) != 0)) {
       output.writeMessage(2, getNested());
     }
     getUnknownFields().writeTo(output);
@@ -136,7 +137,7 @@ private static final long serialVersionUID = 0L;
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(const_)) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, const_);
     }
-    if (nested_ != null) {
+    if (((bitField0_ & 0x00000001) != 0)) {
       size += com.google.protobuf.CodedOutputStream
         .computeMessageSize(2, getNested());
     }
@@ -298,13 +299,19 @@ private static final long serialVersionUID = 0L;
 
     // Construct using build.buf.validate.conformance.cases.TestMsg.newBuilder()
     private Builder() {
-
+      maybeForceBuilderInitialization();
     }
 
     private Builder(
         com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
       super(parent);
-
+      maybeForceBuilderInitialization();
+    }
+    private void maybeForceBuilderInitialization() {
+      if (com.google.protobuf.GeneratedMessageV3
+              .alwaysUseFieldBuilders) {
+        getNestedFieldBuilder();
+      }
     }
     @java.lang.Override
     public Builder clear() {
@@ -352,11 +359,14 @@ private static final long serialVersionUID = 0L;
       if (((from_bitField0_ & 0x00000001) != 0)) {
         result.const_ = const_;
       }
+      int to_bitField0_ = 0;
       if (((from_bitField0_ & 0x00000002) != 0)) {
         result.nested_ = nestedBuilder_ == null
             ? nested_
             : nestedBuilder_.build();
+        to_bitField0_ |= 0x00000001;
       }
+      result.bitField0_ |= to_bitField0_;
     }
 
     @java.lang.Override
@@ -604,8 +614,10 @@ private static final long serialVersionUID = 0L;
       } else {
         nestedBuilder_.mergeFrom(value);
       }
-      bitField0_ |= 0x00000002;
-      onChanged();
+      if (nested_ != null) {
+        bitField0_ |= 0x00000002;
+        onChanged();
+      }
       return this;
     }
     /**

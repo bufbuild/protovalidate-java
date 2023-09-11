@@ -515,6 +515,7 @@ private static final long serialVersionUID = 0L;
 
   }
 
+  private int bitField0_;
   public static final int A_FIELD_NUMBER = 1;
   private int a_ = 0;
   /**
@@ -552,7 +553,7 @@ private static final long serialVersionUID = 0L;
    */
   @java.lang.Override
   public boolean hasC() {
-    return c_ != null;
+    return ((bitField0_ & 0x00000001) != 0);
   }
   /**
    * <code>.buf.validate.conformance.cases.custom_constraints.FieldExpressions.Nested c = 3 [json_name = "c", (.buf.validate.field) = { ... }</code>
@@ -590,7 +591,7 @@ private static final long serialVersionUID = 0L;
     if (b_ != build.buf.validate.conformance.cases.custom_constraints.Enum.ENUM_UNSPECIFIED.getNumber()) {
       output.writeEnum(2, b_);
     }
-    if (c_ != null) {
+    if (((bitField0_ & 0x00000001) != 0)) {
       output.writeMessage(3, getC());
     }
     getUnknownFields().writeTo(output);
@@ -610,7 +611,7 @@ private static final long serialVersionUID = 0L;
       size += com.google.protobuf.CodedOutputStream
         .computeEnumSize(2, b_);
     }
-    if (c_ != null) {
+    if (((bitField0_ & 0x00000001) != 0)) {
       size += com.google.protobuf.CodedOutputStream
         .computeMessageSize(3, getC());
     }
@@ -775,13 +776,19 @@ private static final long serialVersionUID = 0L;
 
     // Construct using build.buf.validate.conformance.cases.custom_constraints.FieldExpressions.newBuilder()
     private Builder() {
-
+      maybeForceBuilderInitialization();
     }
 
     private Builder(
         com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
       super(parent);
-
+      maybeForceBuilderInitialization();
+    }
+    private void maybeForceBuilderInitialization() {
+      if (com.google.protobuf.GeneratedMessageV3
+              .alwaysUseFieldBuilders) {
+        getCFieldBuilder();
+      }
     }
     @java.lang.Override
     public Builder clear() {
@@ -833,11 +840,14 @@ private static final long serialVersionUID = 0L;
       if (((from_bitField0_ & 0x00000002) != 0)) {
         result.b_ = b_;
       }
+      int to_bitField0_ = 0;
       if (((from_bitField0_ & 0x00000004) != 0)) {
         result.c_ = cBuilder_ == null
             ? c_
             : cBuilder_.build();
+        to_bitField0_ |= 0x00000001;
       }
+      result.bitField0_ |= to_bitField0_;
     }
 
     @java.lang.Override
@@ -1104,8 +1114,10 @@ private static final long serialVersionUID = 0L;
       } else {
         cBuilder_.mergeFrom(value);
       }
-      bitField0_ |= 0x00000004;
-      onChanged();
+      if (c_ != null) {
+        bitField0_ |= 0x00000004;
+        onChanged();
+      }
       return this;
     }
     /**

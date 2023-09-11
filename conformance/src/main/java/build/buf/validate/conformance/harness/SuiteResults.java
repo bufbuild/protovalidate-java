@@ -44,6 +44,7 @@ private static final long serialVersionUID = 0L;
             build.buf.validate.conformance.harness.SuiteResults.class, build.buf.validate.conformance.harness.SuiteResults.Builder.class);
   }
 
+  private int bitField0_;
   public static final int NAME_FIELD_NUMBER = 1;
   @SuppressWarnings("serial")
   private volatile java.lang.Object name_ = "";
@@ -194,7 +195,7 @@ private static final long serialVersionUID = 0L;
    */
   @java.lang.Override
   public boolean hasFdset() {
-    return fdset_ != null;
+    return ((bitField0_ & 0x00000001) != 0);
   }
   /**
    * <pre>
@@ -267,7 +268,7 @@ private static final long serialVersionUID = 0L;
     for (int i = 0; i < cases_.size(); i++) {
       output.writeMessage(4, cases_.get(i));
     }
-    if (fdset_ != null) {
+    if (((bitField0_ & 0x00000001) != 0)) {
       output.writeMessage(5, getFdset());
     }
     if (expectedFailures_ != 0) {
@@ -297,7 +298,7 @@ private static final long serialVersionUID = 0L;
       size += com.google.protobuf.CodedOutputStream
         .computeMessageSize(4, cases_.get(i));
     }
-    if (fdset_ != null) {
+    if (((bitField0_ & 0x00000001) != 0)) {
       size += com.google.protobuf.CodedOutputStream
         .computeMessageSize(5, getFdset());
     }
@@ -485,13 +486,20 @@ private static final long serialVersionUID = 0L;
 
     // Construct using build.buf.validate.conformance.harness.SuiteResults.newBuilder()
     private Builder() {
-
+      maybeForceBuilderInitialization();
     }
 
     private Builder(
         com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
       super(parent);
-
+      maybeForceBuilderInitialization();
+    }
+    private void maybeForceBuilderInitialization() {
+      if (com.google.protobuf.GeneratedMessageV3
+              .alwaysUseFieldBuilders) {
+        getCasesFieldBuilder();
+        getFdsetFieldBuilder();
+      }
     }
     @java.lang.Override
     public Builder clear() {
@@ -568,14 +576,17 @@ private static final long serialVersionUID = 0L;
       if (((from_bitField0_ & 0x00000004) != 0)) {
         result.failures_ = failures_;
       }
+      int to_bitField0_ = 0;
       if (((from_bitField0_ & 0x00000010) != 0)) {
         result.fdset_ = fdsetBuilder_ == null
             ? fdset_
             : fdsetBuilder_.build();
+        to_bitField0_ |= 0x00000001;
       }
       if (((from_bitField0_ & 0x00000020) != 0)) {
         result.expectedFailures_ = expectedFailures_;
       }
+      result.bitField0_ |= to_bitField0_;
     }
 
     @java.lang.Override
@@ -1331,8 +1342,10 @@ private static final long serialVersionUID = 0L;
       } else {
         fdsetBuilder_.mergeFrom(value);
       }
-      bitField0_ |= 0x00000010;
-      onChanged();
+      if (fdset_ != null) {
+        bitField0_ |= 0x00000010;
+        onChanged();
+      }
       return this;
     }
     /**

@@ -644,6 +644,7 @@ private static final long serialVersionUID = 0L;
 
     }
 
+    private int bitField0_;
     public static final int THREE_FIELD_NUMBER = 1;
     private build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.WktLevelThree three_;
     /**
@@ -652,7 +653,7 @@ private static final long serialVersionUID = 0L;
      */
     @java.lang.Override
     public boolean hasThree() {
-      return three_ != null;
+      return ((bitField0_ & 0x00000001) != 0);
     }
     /**
      * <code>.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.WktLevelThree three = 1 [json_name = "three", (.buf.validate.field) = { ... }</code>
@@ -684,7 +685,7 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (three_ != null) {
+      if (((bitField0_ & 0x00000001) != 0)) {
         output.writeMessage(1, getThree());
       }
       getUnknownFields().writeTo(output);
@@ -696,7 +697,7 @@ private static final long serialVersionUID = 0L;
       if (size != -1) return size;
 
       size = 0;
-      if (three_ != null) {
+      if (((bitField0_ & 0x00000001) != 0)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(1, getThree());
       }
@@ -854,13 +855,19 @@ private static final long serialVersionUID = 0L;
 
       // Construct using build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo.newBuilder()
       private Builder() {
-
+        maybeForceBuilderInitialization();
       }
 
       private Builder(
           com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
-
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+          getThreeFieldBuilder();
+        }
       }
       @java.lang.Override
       public Builder clear() {
@@ -904,11 +911,14 @@ private static final long serialVersionUID = 0L;
 
       private void buildPartial0(build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo result) {
         int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
         if (((from_bitField0_ & 0x00000001) != 0)) {
           result.three_ = threeBuilder_ == null
               ? three_
               : threeBuilder_.build();
+          to_bitField0_ |= 0x00000001;
         }
+        result.bitField0_ |= to_bitField0_;
       }
 
       @java.lang.Override
@@ -1074,8 +1084,10 @@ private static final long serialVersionUID = 0L;
         } else {
           threeBuilder_.mergeFrom(value);
         }
-        bitField0_ |= 0x00000001;
-        onChanged();
+        if (three_ != null) {
+          bitField0_ |= 0x00000001;
+          onChanged();
+        }
         return this;
       }
       /**
@@ -1190,6 +1202,7 @@ private static final long serialVersionUID = 0L;
 
   }
 
+  private int bitField0_;
   public static final int TWO_FIELD_NUMBER = 1;
   private build.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo two_;
   /**
@@ -1198,7 +1211,7 @@ private static final long serialVersionUID = 0L;
    */
   @java.lang.Override
   public boolean hasTwo() {
-    return two_ != null;
+    return ((bitField0_ & 0x00000001) != 0);
   }
   /**
    * <code>.buf.validate.conformance.cases.WktLevelOne.WktLevelTwo two = 1 [json_name = "two", (.buf.validate.field) = { ... }</code>
@@ -1230,7 +1243,7 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    if (two_ != null) {
+    if (((bitField0_ & 0x00000001) != 0)) {
       output.writeMessage(1, getTwo());
     }
     getUnknownFields().writeTo(output);
@@ -1242,7 +1255,7 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
-    if (two_ != null) {
+    if (((bitField0_ & 0x00000001) != 0)) {
       size += com.google.protobuf.CodedOutputStream
         .computeMessageSize(1, getTwo());
     }
@@ -1400,13 +1413,19 @@ private static final long serialVersionUID = 0L;
 
     // Construct using build.buf.validate.conformance.cases.WktLevelOne.newBuilder()
     private Builder() {
-
+      maybeForceBuilderInitialization();
     }
 
     private Builder(
         com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
       super(parent);
-
+      maybeForceBuilderInitialization();
+    }
+    private void maybeForceBuilderInitialization() {
+      if (com.google.protobuf.GeneratedMessageV3
+              .alwaysUseFieldBuilders) {
+        getTwoFieldBuilder();
+      }
     }
     @java.lang.Override
     public Builder clear() {
@@ -1450,11 +1469,14 @@ private static final long serialVersionUID = 0L;
 
     private void buildPartial0(build.buf.validate.conformance.cases.WktLevelOne result) {
       int from_bitField0_ = bitField0_;
+      int to_bitField0_ = 0;
       if (((from_bitField0_ & 0x00000001) != 0)) {
         result.two_ = twoBuilder_ == null
             ? two_
             : twoBuilder_.build();
+        to_bitField0_ |= 0x00000001;
       }
+      result.bitField0_ |= to_bitField0_;
     }
 
     @java.lang.Override
@@ -1620,8 +1642,10 @@ private static final long serialVersionUID = 0L;
       } else {
         twoBuilder_.mergeFrom(value);
       }
-      bitField0_ |= 0x00000001;
-      onChanged();
+      if (two_ != null) {
+        bitField0_ |= 0x00000001;
+        onChanged();
+      }
       return this;
     }
     /**

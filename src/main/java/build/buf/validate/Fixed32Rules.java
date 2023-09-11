@@ -394,7 +394,8 @@ private static final long serialVersionUID = 0L;
 
   public static final int IN_FIELD_NUMBER = 6;
   @SuppressWarnings("serial")
-  private com.google.protobuf.Internal.IntList in_;
+  private com.google.protobuf.Internal.IntList in_ =
+      emptyIntList();
   /**
    * <pre>
    *`in` requires the field value to be equal to one of the specified values.
@@ -462,7 +463,8 @@ private static final long serialVersionUID = 0L;
 
   public static final int NOT_IN_FIELD_NUMBER = 7;
   @SuppressWarnings("serial")
-  private com.google.protobuf.Internal.IntList notIn_;
+  private com.google.protobuf.Internal.IntList notIn_ =
+      emptyIntList();
   /**
    * <pre>
    *`not_in` requires the field value to not be equal to any of the specified
@@ -896,24 +898,10 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public build.buf.validate.Fixed32Rules buildPartial() {
       build.buf.validate.Fixed32Rules result = new build.buf.validate.Fixed32Rules(this);
-      buildPartialRepeatedFields(result);
       if (bitField0_ != 0) { buildPartial0(result); }
       buildPartialOneofs(result);
       onBuilt();
       return result;
-    }
-
-    private void buildPartialRepeatedFields(build.buf.validate.Fixed32Rules result) {
-      if (((bitField0_ & 0x00000020) != 0)) {
-        in_.makeImmutable();
-        bitField0_ = (bitField0_ & ~0x00000020);
-      }
-      result.in_ = in_;
-      if (((bitField0_ & 0x00000040) != 0)) {
-        notIn_.makeImmutable();
-        bitField0_ = (bitField0_ & ~0x00000040);
-      }
-      result.notIn_ = notIn_;
     }
 
     private void buildPartial0(build.buf.validate.Fixed32Rules result) {
@@ -922,6 +910,14 @@ private static final long serialVersionUID = 0L;
       if (((from_bitField0_ & 0x00000001) != 0)) {
         result.const_ = const_;
         to_bitField0_ |= 0x00000001;
+      }
+      if (((from_bitField0_ & 0x00000020) != 0)) {
+        in_.makeImmutable();
+        result.in_ = in_;
+      }
+      if (((from_bitField0_ & 0x00000040) != 0)) {
+        notIn_.makeImmutable();
+        result.notIn_ = notIn_;
       }
       result.bitField0_ |= to_bitField0_;
     }
@@ -983,7 +979,8 @@ private static final long serialVersionUID = 0L;
       if (!other.in_.isEmpty()) {
         if (in_.isEmpty()) {
           in_ = other.in_;
-          bitField0_ = (bitField0_ & ~0x00000020);
+          in_.makeImmutable();
+          bitField0_ |= 0x00000020;
         } else {
           ensureInIsMutable();
           in_.addAll(other.in_);
@@ -993,7 +990,8 @@ private static final long serialVersionUID = 0L;
       if (!other.notIn_.isEmpty()) {
         if (notIn_.isEmpty()) {
           notIn_ = other.notIn_;
-          bitField0_ = (bitField0_ & ~0x00000040);
+          notIn_.makeImmutable();
+          bitField0_ |= 0x00000040;
         } else {
           ensureNotInIsMutable();
           notIn_.addAll(other.notIn_);
@@ -1086,7 +1084,8 @@ private static final long serialVersionUID = 0L;
             case 50: {
               int length = input.readRawVarint32();
               int limit = input.pushLimit(length);
-              ensureInIsMutable();
+              int alloc = length > 4096 ? 4096 : length;
+              ensureInIsMutable(alloc / 4);
               while (input.getBytesUntilLimit() > 0) {
                 in_.addInt(input.readFixed32());
               }
@@ -1102,7 +1101,8 @@ private static final long serialVersionUID = 0L;
             case 58: {
               int length = input.readRawVarint32();
               int limit = input.pushLimit(length);
-              ensureNotInIsMutable();
+              int alloc = length > 4096 ? 4096 : length;
+              ensureNotInIsMutable(alloc / 4);
               while (input.getBytesUntilLimit() > 0) {
                 notIn_.addInt(input.readFixed32());
               }
@@ -1686,10 +1686,16 @@ private static final long serialVersionUID = 0L;
 
     private com.google.protobuf.Internal.IntList in_ = emptyIntList();
     private void ensureInIsMutable() {
-      if (!((bitField0_ & 0x00000020) != 0)) {
-        in_ = mutableCopy(in_);
-        bitField0_ |= 0x00000020;
+      if (!in_.isModifiable()) {
+        in_ = makeMutableCopy(in_);
       }
+      bitField0_ |= 0x00000020;
+    }
+    private void ensureInIsMutable(int capacity) {
+      if (!in_.isModifiable()) {
+        in_ = makeMutableCopy(in_, capacity);
+      }
+      bitField0_ |= 0x00000020;
     }
     /**
      * <pre>
@@ -1710,8 +1716,8 @@ private static final long serialVersionUID = 0L;
      */
     public java.util.List<java.lang.Integer>
         getInList() {
-      return ((bitField0_ & 0x00000020) != 0) ?
-               java.util.Collections.unmodifiableList(in_) : in_;
+      in_.makeImmutable();
+      return in_;
     }
     /**
      * <pre>
@@ -1778,6 +1784,7 @@ private static final long serialVersionUID = 0L;
 
       ensureInIsMutable();
       in_.setInt(index, value);
+      bitField0_ |= 0x00000020;
       onChanged();
       return this;
     }
@@ -1803,6 +1810,7 @@ private static final long serialVersionUID = 0L;
 
       ensureInIsMutable();
       in_.addInt(value);
+      bitField0_ |= 0x00000020;
       onChanged();
       return this;
     }
@@ -1829,6 +1837,7 @@ private static final long serialVersionUID = 0L;
       ensureInIsMutable();
       com.google.protobuf.AbstractMessageLite.Builder.addAll(
           values, in_);
+      bitField0_ |= 0x00000020;
       onChanged();
       return this;
     }
@@ -1858,10 +1867,16 @@ private static final long serialVersionUID = 0L;
 
     private com.google.protobuf.Internal.IntList notIn_ = emptyIntList();
     private void ensureNotInIsMutable() {
-      if (!((bitField0_ & 0x00000040) != 0)) {
-        notIn_ = mutableCopy(notIn_);
-        bitField0_ |= 0x00000040;
+      if (!notIn_.isModifiable()) {
+        notIn_ = makeMutableCopy(notIn_);
       }
+      bitField0_ |= 0x00000040;
+    }
+    private void ensureNotInIsMutable(int capacity) {
+      if (!notIn_.isModifiable()) {
+        notIn_ = makeMutableCopy(notIn_, capacity);
+      }
+      bitField0_ |= 0x00000040;
     }
     /**
      * <pre>
@@ -1882,8 +1897,8 @@ private static final long serialVersionUID = 0L;
      */
     public java.util.List<java.lang.Integer>
         getNotInList() {
-      return ((bitField0_ & 0x00000040) != 0) ?
-               java.util.Collections.unmodifiableList(notIn_) : notIn_;
+      notIn_.makeImmutable();
+      return notIn_;
     }
     /**
      * <pre>
@@ -1950,6 +1965,7 @@ private static final long serialVersionUID = 0L;
 
       ensureNotInIsMutable();
       notIn_.setInt(index, value);
+      bitField0_ |= 0x00000040;
       onChanged();
       return this;
     }
@@ -1975,6 +1991,7 @@ private static final long serialVersionUID = 0L;
 
       ensureNotInIsMutable();
       notIn_.addInt(value);
+      bitField0_ |= 0x00000040;
       onChanged();
       return this;
     }
@@ -2001,6 +2018,7 @@ private static final long serialVersionUID = 0L;
       ensureNotInIsMutable();
       com.google.protobuf.AbstractMessageLite.Builder.addAll(
           values, notIn_);
+      bitField0_ |= 0x00000040;
       onChanged();
       return this;
     }

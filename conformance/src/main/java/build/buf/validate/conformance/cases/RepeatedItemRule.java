@@ -41,7 +41,8 @@ private static final long serialVersionUID = 0L;
 
   public static final int VAL_FIELD_NUMBER = 1;
   @SuppressWarnings("serial")
-  private com.google.protobuf.Internal.FloatList val_;
+  private com.google.protobuf.Internal.FloatList val_ =
+      emptyFloatList();
   /**
    * <code>repeated float val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
    * @return A list containing the val.
@@ -300,22 +301,17 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public build.buf.validate.conformance.cases.RepeatedItemRule buildPartial() {
       build.buf.validate.conformance.cases.RepeatedItemRule result = new build.buf.validate.conformance.cases.RepeatedItemRule(this);
-      buildPartialRepeatedFields(result);
       if (bitField0_ != 0) { buildPartial0(result); }
       onBuilt();
       return result;
     }
 
-    private void buildPartialRepeatedFields(build.buf.validate.conformance.cases.RepeatedItemRule result) {
-      if (((bitField0_ & 0x00000001) != 0)) {
-        val_.makeImmutable();
-        bitField0_ = (bitField0_ & ~0x00000001);
-      }
-      result.val_ = val_;
-    }
-
     private void buildPartial0(build.buf.validate.conformance.cases.RepeatedItemRule result) {
       int from_bitField0_ = bitField0_;
+      if (((from_bitField0_ & 0x00000001) != 0)) {
+        val_.makeImmutable();
+        result.val_ = val_;
+      }
     }
 
     @java.lang.Override
@@ -365,7 +361,8 @@ private static final long serialVersionUID = 0L;
       if (!other.val_.isEmpty()) {
         if (val_.isEmpty()) {
           val_ = other.val_;
-          bitField0_ = (bitField0_ & ~0x00000001);
+          val_.makeImmutable();
+          bitField0_ |= 0x00000001;
         } else {
           ensureValIsMutable();
           val_.addAll(other.val_);
@@ -407,7 +404,8 @@ private static final long serialVersionUID = 0L;
             case 10: {
               int length = input.readRawVarint32();
               int limit = input.pushLimit(length);
-              ensureValIsMutable();
+              int alloc = length > 4096 ? 4096 : length;
+              ensureValIsMutable(alloc / 4);
               while (input.getBytesUntilLimit() > 0) {
                 val_.addFloat(input.readFloat());
               }
@@ -433,10 +431,16 @@ private static final long serialVersionUID = 0L;
 
     private com.google.protobuf.Internal.FloatList val_ = emptyFloatList();
     private void ensureValIsMutable() {
-      if (!((bitField0_ & 0x00000001) != 0)) {
-        val_ = mutableCopy(val_);
-        bitField0_ |= 0x00000001;
+      if (!val_.isModifiable()) {
+        val_ = makeMutableCopy(val_);
       }
+      bitField0_ |= 0x00000001;
+    }
+    private void ensureValIsMutable(int capacity) {
+      if (!val_.isModifiable()) {
+        val_ = makeMutableCopy(val_, capacity);
+      }
+      bitField0_ |= 0x00000001;
     }
     /**
      * <code>repeated float val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
@@ -444,8 +448,8 @@ private static final long serialVersionUID = 0L;
      */
     public java.util.List<java.lang.Float>
         getValList() {
-      return ((bitField0_ & 0x00000001) != 0) ?
-               java.util.Collections.unmodifiableList(val_) : val_;
+      val_.makeImmutable();
+      return val_;
     }
     /**
      * <code>repeated float val = 1 [json_name = "val", (.buf.validate.field) = { ... }</code>
@@ -473,6 +477,7 @@ private static final long serialVersionUID = 0L;
 
       ensureValIsMutable();
       val_.setFloat(index, value);
+      bitField0_ |= 0x00000001;
       onChanged();
       return this;
     }
@@ -485,6 +490,7 @@ private static final long serialVersionUID = 0L;
 
       ensureValIsMutable();
       val_.addFloat(value);
+      bitField0_ |= 0x00000001;
       onChanged();
       return this;
     }
@@ -498,6 +504,7 @@ private static final long serialVersionUID = 0L;
       ensureValIsMutable();
       com.google.protobuf.AbstractMessageLite.Builder.addAll(
           values, val_);
+      bitField0_ |= 0x00000001;
       onChanged();
       return this;
     }
