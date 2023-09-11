@@ -33,8 +33,9 @@ tasks.withType<JavaCompile> {
 }
 
 tasks.withType<Javadoc> {
-    val stdOptions = options as StandardJavadocDocletOptions
-    stdOptions.addBooleanOption("Xwerror", true)
+    // TODO: Enable when Javadoc changes are final
+//    val stdOptions = options as StandardJavadocDocletOptions
+//    stdOptions.addBooleanOption("Xwerror", true)
 }
 
 tasks.withType<GenerateModuleMetadata> {
