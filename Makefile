@@ -8,7 +8,7 @@ MAKEFLAGS += --no-builtin-rules
 MAKEFLAGS += --no-print-directory
 BIN := .tmp/bin
 COPYRIGHT_YEARS := 2023
-LICENSE_IGNORE :=
+LICENSE_IGNORE := --ignore src/main/java/build/buf/validate/ --ignore conformance/src/main/java/build/buf/validate/conformance/
 JAVA_VERSION = 20
 JAVAC = javac
 JAVA = java
@@ -60,7 +60,8 @@ help:  ## Describe useful make targets
 
 .PHONY: generate
 generate: $(BIN)/buf generate-license  ## Regenerate code and license headers
-	$(BIN)/buf generate --template buf.gen.yaml buf.build/bufbuild/protovalidate:$(PROTOVALIDATE_VERSION)
+	$(BIN)/buf export buf.build/bufbuild/protovalidate:$(PROTOVALIDATE_VERSION) --output src/main/resources
+	$(BIN)/buf generate --template buf.gen.yaml src/main/resources
 	$(BIN)/buf generate --template conformance/buf.gen.yaml -o conformance/ buf.build/bufbuild/protovalidate-testing:$(PROTOVALIDATE_VERSION)
 
 .PHONY: lint
