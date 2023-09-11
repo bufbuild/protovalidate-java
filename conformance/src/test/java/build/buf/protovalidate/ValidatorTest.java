@@ -21,6 +21,7 @@ import build.buf.protovalidate.exceptions.ValidationException;
 import build.buf.validate.conformance.cases.AnEnum;
 import build.buf.validate.conformance.cases.BoolConstTrue;
 import build.buf.validate.conformance.cases.BytesContains;
+import build.buf.validate.conformance.cases.BytesIn;
 import build.buf.validate.conformance.cases.DurationGTELTE;
 import build.buf.validate.conformance.cases.Embed;
 import build.buf.validate.conformance.cases.EnumDefined;
@@ -64,8 +65,8 @@ public class ValidatorTest {
   public void strprefix() throws Exception {
     StringPrefix invalid = StringPrefix.newBuilder().setVal("foo").build();
     ValidationResult validate = validator.validate(invalid);
-    assertThat(validate.getViolations().isEmpty()).isTrue();
-    assertThat(validate.getViolations()).hasSize(0);
+    assertThat(validate.getViolations()).isEmpty();
+    assertThat(validate.isSuccess()).isTrue();
   }
 
   @Test
@@ -73,16 +74,16 @@ public class ValidatorTest {
     BytesContains invalid =
         BytesContains.newBuilder().setVal(ByteString.copyFromUtf8("candy bars")).build();
     ValidationResult validate = validator.validate(invalid);
-    assertThat(validate.getViolations().isEmpty()).isTrue();
-    assertThat(validate.getViolations()).hasSize(0);
+    assertThat(validate.getViolations()).isEmpty();
+    assertThat(validate.isSuccess()).isTrue();
   }
 
   @Test
   public void strcontains() throws Exception {
     StringContains invalid = StringContains.newBuilder().setVal("foobar").build();
     ValidationResult validate = validator.validate(invalid);
-    assertThat(validate.getViolations().isEmpty()).isTrue();
-    assertThat(validate.getViolations()).hasSize(0);
+    assertThat(validate.getViolations()).isEmpty();
+    assertThat(validate.isSuccess()).isTrue();
   }
 
   @Test
@@ -90,7 +91,7 @@ public class ValidatorTest {
     BoolConstTrue invalid = BoolConstTrue.newBuilder().build();
     ValidationResult validate = validator.validate(invalid);
     assertThat(validate.getViolations()).hasSize(1);
-    assertThat(validate.isSuccess()).isTrue();
+    assertThat(validate.isSuccess()).isFalse();
   }
 
   @Test
@@ -99,7 +100,7 @@ public class ValidatorTest {
         TimestampWithin.newBuilder().setVal(Timestamp.newBuilder().build()).build();
     ValidationResult validate = validator.validate(invalid);
     assertThat(validate.getViolations()).hasSize(1);
-    assertThat(validate.isSuccess()).isTrue();
+    assertThat(validate.isSuccess()).isFalse();
   }
 
   @Test
@@ -107,17 +108,17 @@ public class ValidatorTest {
     TimestampConst invalid =
         TimestampConst.newBuilder().setVal(Timestamp.newBuilder().setSeconds(3).build()).build();
     ValidationResult validate = validator.validate(invalid);
-    assertThat(validate.getViolations().isEmpty()).isTrue();
-    assertThat(validate.getViolations()).hasSize(0);
+    assertThat(validate.getViolations()).isEmpty();
+    assertThat(validate.isSuccess()).isTrue();
   }
 
   @Test
-  public void OneofIgnoreEmpty() throws Exception {
+  public void oneofIgnoreEmpty() throws Exception {
     OneofIgnoreEmpty invalid =
         OneofIgnoreEmpty.newBuilder().setY(ByteString.copyFromUtf8("")).build();
     ValidationResult validate = validator.validate(invalid);
-    assertThat(validate.getViolations().isEmpty()).isTrue();
-    assertThat(validate.getViolations()).hasSize(0);
+    assertThat(validate.getViolations()).isEmpty();
+    assertThat(validate.isSuccess()).isTrue();
   }
 
   @Test
@@ -125,7 +126,7 @@ public class ValidatorTest {
     EnumDefined invalid = EnumDefined.newBuilder().setValValue(2147483647).build();
     ValidationResult validate = validator.validate(invalid);
     assertThat(validate.getViolations()).hasSize(1);
-    assertThat(validate.isSuccess()).isTrue();
+    assertThat(validate.isSuccess()).isFalse();
   }
 
   @Test
@@ -133,7 +134,7 @@ public class ValidatorTest {
     Fixed32LT invalid = Fixed32LT.newBuilder().setVal(5).build();
     ValidationResult validate = validator.validate(invalid);
     assertThat(validate.getViolations()).hasSize(1);
-    assertThat(validate.isSuccess()).isTrue();
+    assertThat(validate.isSuccess()).isFalse();
   }
 
   @Test
@@ -142,7 +143,7 @@ public class ValidatorTest {
         WrapperDouble.newBuilder().setVal(DoubleValue.newBuilder().build()).build();
     ValidationResult validate = validator.validate(invalid);
     assertThat(validate.getViolations()).hasSize(1);
-    assertThat(validate.isSuccess()).isTrue();
+    assertThat(validate.isSuccess()).isFalse();
   }
 
   @Test
@@ -150,7 +151,7 @@ public class ValidatorTest {
     FieldExpressions invalid = FieldExpressions.newBuilder().build();
     ValidationResult validate = validator.validate(invalid);
     assertThat(validate.getViolations()).hasSize(2);
-    assertThat(validate.isSuccess()).isTrue();
+    assertThat(validate.isSuccess()).isFalse();
   }
 
   @Test
@@ -161,14 +162,14 @@ public class ValidatorTest {
             .build();
     ValidationResult validate = validator.validate(invalid);
     assertThat(validate.getViolations()).hasSize(1);
-    assertThat(validate.isSuccess()).isTrue();
+    assertThat(validate.isSuccess()).isFalse();
   }
 
   @Test
   public void strictRepeatedExact() throws Exception {
     RepeatedExact invalid = RepeatedExact.newBuilder().addAllVal(Arrays.asList(1, 2)).build();
     ValidationResult validate = validator.validate(invalid);
-    assertThat(validate.isSuccess()).isTrue();
+    assertThat(validate.isSuccess()).isFalse();
     assertThat(validate.getViolations()).hasSize(1);
   }
 
@@ -176,7 +177,7 @@ public class ValidatorTest {
   public void strictSFixed64In() throws Exception {
     SFixed64In invalid = SFixed64In.newBuilder().setVal(5).build();
     ValidationResult validate = validator.validate(invalid);
-    assertThat(validate.isSuccess()).isTrue();
+    assertThat(validate.isSuccess()).isFalse();
     assertThat(validate.getViolations()).hasSize(1);
   }
 
@@ -188,7 +189,7 @@ public class ValidatorTest {
             .setC(FieldExpressions.Nested.newBuilder().setA(-3).build())
             .build();
     ValidationResult validate = validator.validate(invalid);
-    assertThat(validate.isSuccess()).isTrue();
+    assertThat(validate.isSuccess()).isFalse();
     assertThat(validate.getViolations()).hasSize(4);
   }
 
@@ -196,15 +197,15 @@ public class ValidatorTest {
   public void strictRepeatedExactIgnore() throws Exception {
     RepeatedExactIgnore invalid = RepeatedExactIgnore.newBuilder().build();
     ValidationResult validate = validator.validate(invalid);
-    assertThat(validate.getViolations().isEmpty()).isTrue();
-    assertThat(validate.getViolations()).hasSize(0);
+    assertThat(validate.getViolations()).isEmpty();
+    assertThat(validate.isSuccess()).isTrue();
   }
 
   @Test
   public void strictInt32In() throws Exception {
     Int32In invalid = Int32In.newBuilder().setVal(4).build();
     ValidationResult validate = validator.validate(invalid);
-    assertThat(validate.isSuccess()).isTrue();
+    assertThat(validate.isSuccess()).isFalse();
     assertThat(validate.getViolations()).hasSize(1);
   }
 
@@ -212,7 +213,7 @@ public class ValidatorTest {
   public void strictRepeatedEnumIn() throws Exception {
     RepeatedEnumIn invalid = RepeatedEnumIn.newBuilder().addVal(AnEnum.AN_ENUM_X).build();
     ValidationResult validate = validator.validate(invalid);
-    assertThat(validate.isSuccess()).isTrue();
+    assertThat(validate.isSuccess()).isFalse();
     assertThat(validate.getViolations()).hasSize(1);
   }
 
@@ -224,7 +225,7 @@ public class ValidatorTest {
             .addVal(Embed.newBuilder().setVal(-1).build())
             .build();
     ValidationResult validate = validator.validate(invalid);
-    assertThat(validate.isSuccess()).isTrue();
+    assertThat(validate.isSuccess()).isFalse();
     assertThat(validate.getViolations()).hasSize(1);
   }
 
@@ -234,20 +235,19 @@ public class ValidatorTest {
     validator.validate(invalid);
   }
 
-  // Needs : https://github.com/projectnessie/cel-java/pull/419
-  //    @Test
-  //    public void strictBytesIn() throws ValidationException {
-  //        BytesIn invalid = BytesIn.newBuilder().setVal(ByteString.copyFromUtf8("bar")).build();
-  //        ValidationResult validate = validator.validate(invalid);
-  //        assertThat(validate.isSuccess()).isTrue();
-  //    }
+  @Test
+  public void strictBytesIn() throws ValidationException {
+    BytesIn invalid = BytesIn.newBuilder().setVal(ByteString.copyFromUtf8("bar")).build();
+    ValidationResult validate = validator.validate(invalid);
+    assertThat(validate.isSuccess()).isTrue();
+  }
 
   @Test
   public void strictRepeatedUnique() throws ValidationException {
     RepeatedUnique invalid =
         RepeatedUnique.newBuilder().addAllVal(Arrays.asList("foo", "bar", "foo", "baz")).build();
     ValidationResult validate = validator.validate(invalid);
-    assertThat(validate.isSuccess()).isTrue();
+    assertThat(validate.isSuccess()).isFalse();
   }
 
   @Test
@@ -264,14 +264,14 @@ public class ValidatorTest {
         MapRecursive.newBuilder().putVal(1, MapRecursive.Msg.newBuilder().build()).build();
     ValidationResult validate = validator.validate(test);
     assertThat(validate.getViolations()).hasSize(1);
-    assertThat(validate.isSuccess()).isTrue();
+    assertThat(validate.isSuccess()).isFalse();
   }
 
   @Test
   public void testStringLenEmoji() throws ValidationException {
     StringLen test = StringLen.newBuilder().setVal("😅😄👾").build();
     ValidationResult validate = validator.validate(test);
-    assertThat(validate.getViolations()).hasSize(0);
-    assertThat(validate.getViolations().isEmpty()).isTrue();
+    assertThat(validate.getViolations()).isEmpty();
+    assertThat(validate.isSuccess()).isTrue();
   }
 }
