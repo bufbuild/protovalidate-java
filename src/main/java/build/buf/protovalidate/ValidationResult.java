@@ -48,7 +48,7 @@ public class ValidationResult {
    * @return if the validation result was a success.
    */
   public boolean isSuccess() {
-    return !violations.isEmpty();
+    return violations.isEmpty();
   }
 
   /**
