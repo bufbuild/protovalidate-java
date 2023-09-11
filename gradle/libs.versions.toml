@@ -2,6 +2,7 @@
 assertj = "3.24.2"
 cel = "0.3.21"
 junit = "4.13.2"
+# When updating, make sure to update buf.gen.yaml version to match and regenerate code with 'make generate'.
 protobuf = "3.24.3"
 
 [libraries]
