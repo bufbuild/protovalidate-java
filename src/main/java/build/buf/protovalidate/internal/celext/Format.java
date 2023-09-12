@@ -134,7 +134,6 @@ final class Format {
    *
    * @param builder the StringBuilder to append the formatted string to.
    * @param val the value to format.
-   * @return the formatted string value.
    */
   private static void formatString(StringBuilder builder, Val val) {
     if (val.type().typeEnum() == TypeEnum.String) {
@@ -152,7 +151,6 @@ final class Format {
    * @param builder the StringBuilder to append the formatted string to.
    * @param val the value to format.
    * @param listType indicates if the value type is a list.
-   * @return the formatted string value.
    */
   private static void formatStringSafe(StringBuilder builder, Val val, boolean listType) {
     TypeEnum type = val.type().typeEnum();

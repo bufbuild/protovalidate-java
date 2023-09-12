@@ -72,7 +72,7 @@ public class ConstraintCache {
    * @param fieldConstraints The field constraint that is used for validation.
    * @param forItems The field is an item list type.
    * @return The list of compiled programs.
-   * @throws CompilationException
+   * @throws CompilationException If the constraints fail to compile.
    */
   public List<CompiledProgram> compile(
       FieldDescriptor fieldDescriptor, FieldConstraints fieldConstraints, boolean forItems)
