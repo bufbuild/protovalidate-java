@@ -15,14 +15,19 @@
 package build.buf.protovalidate.internal.celext;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
+import java.util.List;
 import java.util.Map;
 import org.junit.Test;
 import org.projectnessie.cel.Ast;
 import org.projectnessie.cel.Env;
 import org.projectnessie.cel.Library;
 import org.projectnessie.cel.Program;
+import org.projectnessie.cel.common.types.Err;
+import org.projectnessie.cel.common.types.ref.Val;
 import org.projectnessie.cel.interpreter.Activation;
 
 public class CustomOverloadTest {
@@ -50,6 +55,17 @@ public class CustomOverloadTest {
   }
 
   @Test
+  public void testIsInfUnsupported() {
+    List<String> testCases = ImmutableList.of("'abc'.isInf()", "0.0.isInf('abc')");
+    for (String testCase : testCases) {
+      Val val = eval(testCase).getVal();
+      assertThat(Err.isError(val)).isTrue();
+      assertThatThrownBy(() -> val.convertToNative(Exception.class))
+          .isInstanceOf(UnsupportedOperationException.class);
+    }
+  }
+
+  @Test
   public void testIsNan() {
     Map<String, Boolean> testCases =
         ImmutableMap.<String, Boolean>builder()
@@ -60,6 +76,58 @@ public class CustomOverloadTest {
     for (Map.Entry<String, Boolean> testCase : testCases.entrySet()) {
       Program.EvalResult result = eval(testCase.getKey());
       assertThat(result.getVal().booleanValue()).isEqualTo(testCase.getValue());
+    }
+  }
+
+  @Test
+  public void testIsNanUnsupported() {
+    List<String> testCases = ImmutableList.of("'foo'.isNan()");
+    for (String testCase : testCases) {
+      Val val = eval(testCase).getVal();
+      assertThat(Err.isError(val)).isTrue();
+      assertThatThrownBy(() -> val.convertToNative(Exception.class))
+          .isInstanceOf(UnsupportedOperationException.class);
+    }
+  }
+
+  @Test
+  public void testUnique() {
+    Map<String, Boolean> testCases =
+        ImmutableMap.<String, Boolean>builder()
+            .put("[].unique()", true)
+            .put("[true].unique()", true)
+            .put("[true, false].unique()", true)
+            .put("[true, true].unique()", false)
+            .put("[1, 2, 3].unique()", true)
+            .put("[1, 2, 1].unique()", false)
+            .put("[1u, 2u, 3u].unique()", true)
+            .put("[1u, 2u, 2u].unique()", false)
+            .put("[1.0, 2.0, 3.0].unique()", true)
+            .put("[3.0,2.0,3.0].unique()", false)
+            .put("['abc', 'def'].unique()", true)
+            .put("['abc', 'abc'].unique()", false)
+            .put("[b'abc', b'123'].unique()", true)
+            .put("[b'123', b'123'].unique()", false)
+            // Previously, the unique() method returned false here as both bytes were converted
+            // to UTF-8. Since both contain invalid UTF-8, this would lead to them treated as equal
+            // because they'd have the same substitution character.
+            .put("[b'\\xFF', b'\\xFE'].unique()", true)
+            .build();
+    for (Map.Entry<String, Boolean> testCase : testCases.entrySet()) {
+      Program.EvalResult result = eval(testCase.getKey());
+      assertThat(result.getVal().booleanValue()).isEqualTo(testCase.getValue());
+    }
+  }
+
+  @Test
+  public void testUniqueUnsupported() {
+    List<String> testCases = ImmutableList.of("1.unique()");
+    for (String testCase : testCases) {
+      Program.EvalResult result = eval(testCase);
+      Val val = result.getVal();
+      assertThat(Err.isError(val)).isTrue();
+      assertThatThrownBy(() -> val.convertToNative(Exception.class))
+          .isInstanceOf(UnsupportedOperationException.class);
     }
   }
 
