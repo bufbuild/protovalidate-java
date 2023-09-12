@@ -19,21 +19,12 @@ import com.google.protobuf.Timestamp;
 import java.nio.charset.StandardCharsets;
 import java.text.DecimalFormat;
 import java.util.List;
-import org.projectnessie.cel.common.types.BoolT;
-import org.projectnessie.cel.common.types.BytesT;
-import org.projectnessie.cel.common.types.DoubleT;
-import org.projectnessie.cel.common.types.DurationT;
-import org.projectnessie.cel.common.types.Err;
+import org.projectnessie.cel.common.types.Err.ErrException;
 import org.projectnessie.cel.common.types.IntT;
 import org.projectnessie.cel.common.types.ListT;
-import org.projectnessie.cel.common.types.MapT;
-import org.projectnessie.cel.common.types.NullT;
-import org.projectnessie.cel.common.types.StringT;
-import org.projectnessie.cel.common.types.TimestampT;
-import org.projectnessie.cel.common.types.UintT;
 import org.projectnessie.cel.common.types.pb.Db;
 import org.projectnessie.cel.common.types.pb.DefaultTypeAdapter;
-import org.projectnessie.cel.common.types.ref.Type;
+import org.projectnessie.cel.common.types.ref.TypeEnum;
 import org.projectnessie.cel.common.types.ref.Val;
 
 /** String formatter for CEL evaluation. */
@@ -46,9 +37,10 @@ final class Format {
    *
    * @param fmtString the string to format.
    * @param list the arguments.
-   * @return the formatted string in {@link Val} form.
+   * @return the formatted string.
+   * @throws ErrException If an error occurs formatting the string.
    */
-  static Val format(String fmtString, ListT list) {
+  static String format(String fmtString, ListT list) {
     // StringBuilder to accumulate the formatted string
     StringBuilder builder = new StringBuilder();
     int index = 0;
@@ -68,7 +60,7 @@ final class Format {
         continue;
       }
       if (index >= fmtString.length()) {
-        return Err.newErr("format: expected format specifier");
+        throw new ErrException("format: expected format specifier");
       }
       if (fmtString.charAt(index) == '%') {
         // Escaped '%', append '%' and move to the next character
@@ -77,7 +69,7 @@ final class Format {
         continue;
       }
       if (argIndex >= list.size().intValue()) {
-        return Err.newErr("format: not enough arguments");
+        throw new ErrException("format: not enough arguments");
       }
       Val arg = list.get(IntT.intOf(argIndex++));
       c = fmtString.charAt(index++);
@@ -91,37 +83,33 @@ final class Format {
           precision = precision * 10 + (fmtString.charAt(index++) - '0');
         }
         if (index >= fmtString.length()) {
-          return Err.newErr("format: expected format specifier");
+          throw new ErrException("format: expected format specifier");
         }
         c = fmtString.charAt(index++);
       }
 
-      Val status;
       switch (c) {
         case 'd':
-          status = formatDecimal(builder, arg);
+          formatDecimal(builder, arg);
           break;
         case 'x':
-          status = formatHex(builder, arg, LOWER_HEX_ARRAY);
+          formatHex(builder, arg, LOWER_HEX_ARRAY);
           break;
         case 'X':
-          status = formatHex(builder, arg, HEX_ARRAY);
+          formatHex(builder, arg, HEX_ARRAY);
           break;
         case 's':
-          status = formatString(builder, arg);
+          formatString(builder, arg);
           break;
         case 'e':
         case 'f':
         case 'b':
         case 'o':
         default:
-          return Err.newErr("format: unparsable format specifier %s", c);
-      }
-      if (status.type() == Err.ErrType) {
-        return status;
+          throw new ErrException("format: unparsable format specifier %s", c);
       }
     }
-    return StringT.stringOf(builder.toString());
+    return builder.toString();
   }
 
   /**
@@ -146,17 +134,14 @@ final class Format {
    *
    * @param builder the StringBuilder to append the formatted string to.
    * @param val the value to format.
-   * @return the formatted string value.
    */
-  private static Val formatString(StringBuilder builder, Val val) {
-    if (val.type() == StringT.StringType) {
+  private static void formatString(StringBuilder builder, Val val) {
+    if (val.type().typeEnum() == TypeEnum.String) {
       builder.append(val.value());
-      return NullT.NullValue;
-    } else if (val.type() == BytesT.BytesType) {
+    } else if (val.type().typeEnum() == TypeEnum.Bytes) {
       builder.append(val.value());
-      return NullT.NullValue;
     } else {
-      return formatStringSafe(builder, val, false);
+      formatStringSafe(builder, val, false);
     }
   }
 
@@ -166,33 +151,31 @@ final class Format {
    * @param builder the StringBuilder to append the formatted string to.
    * @param val the value to format.
    * @param listType indicates if the value type is a list.
-   * @return the formatted string value.
    */
-  private static Val formatStringSafe(StringBuilder builder, Val val, boolean listType) {
-    Type type = val.type();
-    if (type == BoolT.BoolType) {
+  private static void formatStringSafe(StringBuilder builder, Val val, boolean listType) {
+    TypeEnum type = val.type().typeEnum();
+    if (type == TypeEnum.Bool) {
       builder.append(val.booleanValue());
-    } else if (type == IntT.IntType || type == UintT.UintType) {
+    } else if (type == TypeEnum.Int || type == TypeEnum.Uint) {
       formatInteger(builder, Long.valueOf(val.intValue()).intValue());
-    } else if (type == DoubleT.DoubleType) {
+    } else if (type == TypeEnum.Double) {
       DecimalFormat format = new DecimalFormat("0.#");
       builder.append(format.format(val.value()));
-    } else if (type == StringT.StringType) {
+    } else if (type == TypeEnum.String) {
       builder.append("\"").append(val.value().toString()).append("\"");
-    } else if (type == BytesT.BytesType) {
+    } else if (type == TypeEnum.Bytes) {
       formatBytes(builder, val);
-    } else if (type == DurationT.DurationType) {
+    } else if (type == TypeEnum.Duration) {
       formatDuration(builder, val, listType);
-    } else if (type == TimestampT.TimestampType) {
+    } else if (type == TypeEnum.Timestamp) {
       formatTimestamp(builder, val);
-    } else if (type == ListT.ListType) {
+    } else if (type == TypeEnum.List) {
       formatList(builder, val);
-    } else if (type == MapT.MapType) {
-      throw new RuntimeException("unimplemented stringSafe map type");
-    } else if (type == NullT.NullType) {
-      throw new RuntimeException("unimplemented stringSafe null type");
+    } else if (type == TypeEnum.Map) {
+      throw new ErrException("unimplemented stringSafe map type");
+    } else if (type == TypeEnum.Null) {
+      throw new ErrException("unimplemented stringSafe null type");
     }
-    return val;
   }
 
   /**
@@ -201,6 +184,7 @@ final class Format {
    * @param builder the StringBuilder to append the formatted list value to.
    * @param val the value to format.
    */
+  @SuppressWarnings("rawtypes")
   private static void formatList(StringBuilder builder, Val val) {
     builder.append('[');
     List list = val.convertToNative(List.class);
@@ -283,22 +267,21 @@ final class Format {
    * @param builder the StringBuilder to append the formatted hexadecimal value to.
    * @param val the value to format.
    * @param digits the array of hexadecimal digits.
-   * @return the formatted hexadecimal value.
    */
-  private static Val formatHex(StringBuilder builder, Val val, char[] digits) {
+  private static void formatHex(StringBuilder builder, Val val, char[] digits) {
     String hexString;
-    if (val.type() == IntT.IntType || val.type() == UintT.UintType) {
+    TypeEnum type = val.type().typeEnum();
+    if (type == TypeEnum.Int || type == TypeEnum.Uint) {
       hexString = Long.toHexString(val.intValue());
-    } else if (val.type() == BytesT.BytesType) {
+    } else if (type == TypeEnum.Bytes) {
       byte[] bytes = (byte[]) val.value();
       hexString = bytesToHex(bytes, digits);
-    } else if (val.type() == StringT.StringType) {
+    } else if (type == TypeEnum.String) {
       hexString = val.value().toString();
     } else {
-      throw new RuntimeException("formatHex: expected int or string");
+      throw new ErrException("formatHex: expected int or string");
     }
     builder.append(hexString);
-    return NullT.NullType;
   }
 
   /**
@@ -306,10 +289,8 @@ final class Format {
    *
    * @param builder the StringBuilder to append the formatted decimal value to.
    * @param arg the value to format.
-   * @return the formatted decimal value.
    */
-  private static Val formatDecimal(StringBuilder builder, Val arg) {
+  private static void formatDecimal(StringBuilder builder, Val arg) {
     builder.append(arg.value());
-    return NullT.NullValue;
   }
 }

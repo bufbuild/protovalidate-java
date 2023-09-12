@@ -26,25 +26,35 @@ import java.net.InetAddress;
 import java.net.MalformedURLException;
 import java.net.URISyntaxException;
 import java.net.URL;
-import java.nio.charset.StandardCharsets;
 import java.util.HashSet;
 import java.util.Set;
 import org.projectnessie.cel.common.types.BoolT;
-import org.projectnessie.cel.common.types.BytesT;
-import org.projectnessie.cel.common.types.DoubleT;
 import org.projectnessie.cel.common.types.Err;
 import org.projectnessie.cel.common.types.IntT;
 import org.projectnessie.cel.common.types.ListT;
 import org.projectnessie.cel.common.types.StringT;
 import org.projectnessie.cel.common.types.Types;
-import org.projectnessie.cel.common.types.UintT;
+import org.projectnessie.cel.common.types.ref.TypeEnum;
 import org.projectnessie.cel.common.types.ref.Val;
 import org.projectnessie.cel.common.types.traits.Lister;
 import org.projectnessie.cel.interpreter.functions.Overload;
-import org.projectnessie.cel.interpreter.functions.UnaryOp;
 
 /** Defines custom function overloads (the implementation). */
 final class CustomOverload {
+
+  private static final String OVERLOAD_FORMAT = "format";
+  private static final String OVERLOAD_UNIQUE = "unique";
+  private static final String OVERLOAD_STARTS_WITH = "startsWith";
+  private static final String OVERLOAD_ENDS_WITH = "endsWith";
+  private static final String OVERLOAD_CONTAINS = "contains";
+  private static final String OVERLOAD_IS_HOSTNAME = "isHostname";
+  private static final String OVERLOAD_IS_EMAIL = "isEmail";
+  private static final String OVERLOAD_IS_IP = "isIp";
+  private static final String OVERLOAD_IS_URI = "isUri";
+  private static final String OVERLOAD_IS_URI_REF = "isUriRef";
+  private static final String OVERLOAD_IS_NAN = "isNan";
+  private static final String OVERLOAD_IS_INF = "isInf";
+
   /**
    * Create custom function overload list.
    *
@@ -52,13 +62,13 @@ final class CustomOverload {
    */
   static Overload[] create() {
     return new Overload[] {
-      binaryFormat(),
-      unaryUnique(),
-      binaryStartsWith(),
-      binaryEndsWith(),
-      binaryContains(),
-      binaryIsHostname(),
-      unaryIsEmail(),
+      format(),
+      unique(),
+      startsWith(),
+      endsWith(),
+      contains(),
+      isHostname(),
+      isEmail(),
       isIp(),
       isUri(),
       isUriRef(),
@@ -72,20 +82,20 @@ final class CustomOverload {
    *
    * @return The {@link Overload} instance for the "format" operation.
    */
-  private static Overload binaryFormat() {
+  private static Overload format() {
     return Overload.binary(
-        "format",
+        OVERLOAD_FORMAT,
         (lhs, rhs) -> {
-          if (rhs.type() != ListT.ListType) {
-            return Err.newErr("format: expected list");
+          if (lhs.type().typeEnum() != TypeEnum.String || rhs.type().typeEnum() != TypeEnum.List) {
+            return Err.noSuchOverload(lhs, OVERLOAD_FORMAT, rhs);
           }
           ListT list = (ListT) rhs.convertToType(ListT.ListType);
-          String formatString = lhs.value().toString();
-          Val status = Format.format(formatString, list);
-          if (status.type() == Err.ErrType) {
-            return status;
+          String formatString = (String) lhs.value();
+          try {
+            return StringT.stringOf(Format.format(formatString, list));
+          } catch (Err.ErrException e) {
+            return e.getErr();
           }
-          return StringT.stringOf(status.value().toString());
         });
   }
 
@@ -94,29 +104,14 @@ final class CustomOverload {
    *
    * @return The {@link Overload} instance for the "unique" operation.
    */
-  private static Overload unaryUnique() {
+  private static Overload unique() {
     return Overload.unary(
-        "unique",
+        OVERLOAD_UNIQUE,
         (val) -> {
-          switch (val.type().typeEnum()) {
-            case List:
-              Lister lister = (Lister) val;
-              if (lister.size().intValue() == 0L) {
-                // Uniqueness for empty lists are true.
-                return BoolT.True;
-              }
-              Val firstValue = lister.get(IntT.intOf(0));
-              return unaryOpForPrimitiveVal(firstValue).invoke(lister);
-            case Bool:
-            case Bytes:
-            case Double:
-            case Int:
-            case String:
-            case Uint:
-              return unaryOpForPrimitiveVal(val).invoke(val);
-            default:
-              return Err.maybeNoSuchOverloadErr(val);
+          if (val.type().typeEnum() != TypeEnum.List) {
+            return Err.noSuchOverload(val, OVERLOAD_UNIQUE, null);
           }
+          return uniqueList((Lister) val);
         });
   }
 
@@ -125,15 +120,20 @@ final class CustomOverload {
    *
    * @return The {@link Overload} instance for the "startsWith" operation.
    */
-  private static Overload binaryStartsWith() {
+  private static Overload startsWith() {
     return Overload.binary(
-        "startsWith",
+        OVERLOAD_STARTS_WITH,
         (lhs, rhs) -> {
-          if (lhs.type() == StringT.StringType && rhs.type() == StringT.StringType) {
+          TypeEnum lhsType = lhs.type().typeEnum();
+          if (lhsType != rhs.type().typeEnum()) {
+            return Err.noSuchOverload(lhs, OVERLOAD_STARTS_WITH, rhs);
+          }
+          if (lhsType == TypeEnum.String) {
             String receiver = lhs.value().toString();
             String param = rhs.value().toString();
-            return receiver.startsWith(param) ? BoolT.True : BoolT.False;
-          } else if (lhs.type() == BytesT.BytesType && rhs.type() == BytesT.BytesType) {
+            return Types.boolOf(receiver.startsWith(param));
+          }
+          if (lhsType == TypeEnum.Bytes) {
             byte[] receiver = (byte[]) lhs.value();
             byte[] param = (byte[]) rhs.value();
             if (receiver.length < param.length) {
@@ -146,7 +146,7 @@ final class CustomOverload {
             }
             return BoolT.True;
           }
-          return Err.newErr("using startsWith on a non-byte and non-string type");
+          return Err.noSuchOverload(lhs, OVERLOAD_STARTS_WITH, rhs);
         });
   }
 
@@ -155,15 +155,20 @@ final class CustomOverload {
    *
    * @return The {@link Overload} instance for the "endsWith" operation.
    */
-  private static Overload binaryEndsWith() {
+  private static Overload endsWith() {
     return Overload.binary(
-        "endsWith",
+        OVERLOAD_ENDS_WITH,
         (lhs, rhs) -> {
-          if (lhs.type() == StringT.StringType && rhs.type() == StringT.StringType) {
-            String receiver = lhs.value().toString();
-            String param = rhs.value().toString();
-            return receiver.endsWith(param) ? BoolT.True : BoolT.False;
-          } else if (lhs.type() == BytesT.BytesType && rhs.type() == BytesT.BytesType) {
+          TypeEnum lhsType = lhs.type().typeEnum();
+          if (lhsType != rhs.type().typeEnum()) {
+            return Err.noSuchOverload(lhs, OVERLOAD_ENDS_WITH, rhs);
+          }
+          if (lhsType == TypeEnum.String) {
+            String receiver = (String) lhs.value();
+            String param = (String) rhs.value();
+            return Types.boolOf(receiver.endsWith(param));
+          }
+          if (lhsType == TypeEnum.Bytes) {
             byte[] receiver = (byte[]) lhs.value();
             byte[] param = (byte[]) rhs.value();
             if (receiver.length < param.length) {
@@ -176,7 +181,7 @@ final class CustomOverload {
             }
             return BoolT.True;
           }
-          return Err.newErr("using endsWith on a non-byte and non-string type");
+          return Err.noSuchOverload(lhs, OVERLOAD_ENDS_WITH, rhs);
         });
   }
 
@@ -185,20 +190,25 @@ final class CustomOverload {
    *
    * @return The {@link Overload} instance for the "contains" operation.
    */
-  private static Overload binaryContains() {
+  private static Overload contains() {
     return Overload.binary(
-        "contains",
+        OVERLOAD_CONTAINS,
         (lhs, rhs) -> {
-          if (lhs.type() == StringT.StringType && rhs.type() == StringT.StringType) {
+          TypeEnum lhsType = lhs.type().typeEnum();
+          if (lhsType != rhs.type().typeEnum()) {
+            return Err.noSuchOverload(lhs, OVERLOAD_CONTAINS, rhs);
+          }
+          if (lhsType == TypeEnum.String) {
             String receiver = lhs.value().toString();
             String param = rhs.value().toString();
-            return receiver.contains(param) ? BoolT.True : BoolT.False;
-          } else if (lhs.type() == BytesT.BytesType && rhs.type() == BytesT.BytesType) {
+            return Types.boolOf(receiver.contains(param));
+          }
+          if (lhsType == TypeEnum.Bytes) {
             byte[] receiver = (byte[]) lhs.value();
             byte[] param = (byte[]) rhs.value();
-            return Bytes.indexOf(receiver, param) == -1 ? BoolT.False : BoolT.True;
+            return Types.boolOf(Bytes.indexOf(receiver, param) != -1);
           }
-          return Err.newErr("using contains on a non-byte and non-string type");
+          return Err.noSuchOverload(lhs, OVERLOAD_CONTAINS, rhs);
         });
   }
 
@@ -207,11 +217,14 @@ final class CustomOverload {
    *
    * @return The {@link Overload} instance for the "isHostname" operation.
    */
-  private static Overload binaryIsHostname() {
+  private static Overload isHostname() {
     return Overload.unary(
-        "isHostname",
+        OVERLOAD_IS_HOSTNAME,
         value -> {
-          String host = value.value().toString();
+          if (value.type().typeEnum() != TypeEnum.String) {
+            return Err.noSuchOverload(value, OVERLOAD_IS_HOSTNAME, null);
+          }
+          String host = (String) value.value();
           if (host.isEmpty()) {
             return BoolT.False;
           }
@@ -224,11 +237,14 @@ final class CustomOverload {
    *
    * @return The {@link Overload} instance for the "isEmail" operation.
    */
-  private static Overload unaryIsEmail() {
+  private static Overload isEmail() {
     return Overload.unary(
-        "isEmail",
+        OVERLOAD_IS_EMAIL,
         value -> {
-          String addr = value.value().toString();
+          if (value.type().typeEnum() != TypeEnum.String) {
+            return Err.noSuchOverload(value, OVERLOAD_IS_EMAIL, null);
+          }
+          String addr = (String) value.value();
           if (addr.isEmpty()) {
             return BoolT.False;
           }
@@ -243,17 +259,23 @@ final class CustomOverload {
    */
   private static Overload isIp() {
     return Overload.overload(
-        "isIp",
+        OVERLOAD_IS_IP,
         null,
         value -> {
-          String addr = value.value().toString();
+          if (value.type().typeEnum() != TypeEnum.String) {
+            return Err.noSuchOverload(value, OVERLOAD_IS_IP, null);
+          }
+          String addr = (String) value.value();
           if (addr.isEmpty()) {
             return BoolT.False;
           }
           return Types.boolOf(validateIP(addr, 0L));
         },
         (lhs, rhs) -> {
-          String address = lhs.value().toString();
+          if (lhs.type().typeEnum() != TypeEnum.String || rhs.type().typeEnum() != TypeEnum.Int) {
+            return Err.noSuchOverload(lhs, OVERLOAD_IS_IP, rhs);
+          }
+          String address = (String) lhs.value();
           if (address.isEmpty()) {
             return BoolT.False;
           }
@@ -269,9 +291,12 @@ final class CustomOverload {
    */
   private static Overload isUri() {
     return Overload.unary(
-        "isUri",
+        OVERLOAD_IS_URI,
         value -> {
-          String addr = value.value().toString();
+          if (value.type().typeEnum() != TypeEnum.String) {
+            return Err.noSuchOverload(value, OVERLOAD_IS_URI, null);
+          }
+          String addr = (String) value.value();
           if (addr.isEmpty()) {
             return BoolT.False;
           }
@@ -290,9 +315,12 @@ final class CustomOverload {
    */
   private static Overload isUriRef() {
     return Overload.unary(
-        "isUriRef",
+        OVERLOAD_IS_URI_REF,
         value -> {
-          String addr = value.value().toString();
+          if (value.type().typeEnum() != TypeEnum.String) {
+            return Err.noSuchOverload(value, OVERLOAD_IS_URI_REF, null);
+          }
+          String addr = (String) value.value();
           if (addr.isEmpty()) {
             return BoolT.False;
           }
@@ -300,7 +328,7 @@ final class CustomOverload {
             // TODO: The URL api requires a host or it always fails.
             String host = "http://protovalidate.buf.build";
             URL url = new URL(host + addr);
-            return url.getPath() != null && !url.getPath().isEmpty() ? BoolT.True : BoolT.False;
+            return Types.boolOf(url.getPath() != null && !url.getPath().isEmpty());
           } catch (MalformedURLException e) {
             return BoolT.False;
           }
@@ -314,7 +342,14 @@ final class CustomOverload {
    */
   private static Overload isNan() {
     return Overload.unary(
-        "isNan", value -> value.convertToNative(Double.TYPE).isNaN() ? BoolT.True : BoolT.False);
+        OVERLOAD_IS_NAN,
+        value -> {
+          if (value.type().typeEnum() != TypeEnum.Double) {
+            return Err.noSuchOverload(value, OVERLOAD_IS_NAN, null);
+          }
+          Double doubleVal = (Double) value.value();
+          return Types.boolOf(doubleVal.isNaN());
+        });
   }
 
   /**
@@ -324,118 +359,62 @@ final class CustomOverload {
    */
   private static Overload isInf() {
     return Overload.overload(
-        "isInf",
+        OVERLOAD_IS_INF,
         null,
-        value -> value.convertToNative(Double.TYPE).isInfinite() ? BoolT.True : BoolT.False,
+        value -> {
+          if (value.type().typeEnum() != TypeEnum.Double) {
+            return Err.noSuchOverload(value, OVERLOAD_IS_INF, null);
+          }
+          Double doubleVal = (Double) value.value();
+          return Types.boolOf(doubleVal.isInfinite());
+        },
         (lhs, rhs) -> {
-          Double value = lhs.convertToNative(Double.TYPE);
+          if (lhs.type().typeEnum() != TypeEnum.Double || rhs.type().typeEnum() != TypeEnum.Int) {
+            return Err.noSuchOverload(lhs, OVERLOAD_IS_INF, rhs);
+          }
+          Double value = (Double) lhs.value();
           long sign = rhs.intValue();
           if (sign == 0) {
-            return value.isInfinite() ? BoolT.True : BoolT.False;
+            return Types.boolOf(value.isInfinite());
           }
           double expectedValue = (sign > 0) ? Double.POSITIVE_INFINITY : Double.NEGATIVE_INFINITY;
-          return value == expectedValue ? BoolT.True : BoolT.False;
+          return Types.boolOf(value == expectedValue);
         },
         null);
   }
 
   /**
-   * Retrieves the appropriate unary operation for a primitive value based on its type. This method
-   * returns the unary operation that should be applied to the given primitive value.
-   *
-   * @param val The primitive value for which to retrieve the unary operation.
-   * @return The {@link UnaryOp} instance representing the appropriate unary operation for the
-   *     value.
-   * @throws IllegalArgumentException if the value's type is not supported.
-   */
-  private static UnaryOp unaryOpForPrimitiveVal(Val val) {
-    switch (val.type().typeEnum()) {
-      case Bool:
-        return uniqueMemberOverload(BoolT.BoolType, CustomOverload::uniqueScalar);
-      case Bytes:
-        return uniqueMemberOverload(BytesT.BytesType, CustomOverload::uniqueBytes);
-      case Double:
-        return uniqueMemberOverload(DoubleT.DoubleType, CustomOverload::uniqueScalar);
-      case Int:
-        return uniqueMemberOverload(IntT.IntType, CustomOverload::uniqueScalar);
-      case String:
-        return uniqueMemberOverload(StringT.StringType, CustomOverload::uniqueScalar);
-      case Uint:
-        return uniqueMemberOverload(UintT.UintType, CustomOverload::uniqueScalar);
-      default:
-        return Err::maybeNoSuchOverloadErr;
-    }
-  }
-
-  /**
-   * Creates a custom unary operation overload for processing list values with a specific item type.
-   * The overload ensures that the list contains unique values of the specified item type.
-   *
-   * @param itemType The type of items expected in the list.
-   * @param overload The function to be invoked on the unique values.
-   * @return The {@link UnaryOp} instance for the unique member overload.
-   */
-  private static UnaryOp uniqueMemberOverload(
-      org.projectnessie.cel.common.types.ref.Type itemType, overloadFunc overload) {
-    return value -> {
-      Lister list = (Lister) value;
-      if (list == null || list.size().intValue() == 0L) {
-        return Err.noMoreElements();
-      }
-      Val firstValue = list.get(IntT.intOf(0));
-      if (firstValue.type() != itemType) {
-        return Err.newTypeConversionError(list.type(), itemType);
-      }
-      return overload.invoke(list);
-    };
-  }
-
-  @FunctionalInterface
-  private interface overloadFunc {
-    Val invoke(Lister list);
-  }
-
-  /**
-   * Determines if the input list of bytes contains unique elements. If the list contains duplicate
-   * byte arrays or strings, it returns false. If the list contains unique byte arrays or strings,
-   * it returns true.
+   * Determines if the input list contains unique values. If the list contains duplicate values, it
+   * returns {@link BoolT#False}. If the list contains unique values, it returns {@link BoolT#True}.
    *
    * @param list The input list to check for uniqueness.
-   * @return {@link BoolT}.True if the list contains unique elements, {@link BoolT}.False otherwise.
-   */
-  private static Val uniqueBytes(Lister list) {
-    Set<Object> exist = new HashSet<>();
-    for (int i = 0; i < list.size().intValue(); i++) {
-      Object val = list.get(IntT.intOf(i)).value();
-      if (val instanceof byte[]) {
-        val = new String((byte[]) val, StandardCharsets.UTF_8);
-      }
-      if (exist.contains(val)) {
-        return BoolT.False;
-      }
-      exist.add(val.toString());
-    }
-    return BoolT.True;
-  }
-
-  /**
-   * Determines if the input list contains unique scalar values. If the list contains duplicate
-   * scalar values, it returns {@link BoolT}.False. If the list contains unique scalar values, it
-   * returns {@link BoolT}.True.
-   *
-   * @param list The input list to check for uniqueness.
-   * @return {@link BoolT}.True if the list contains unique scalar values, {@link BoolT}.False
+   * @return {@link BoolT#True} if the list contains unique scalar values, {@link BoolT#False}
    *     otherwise.
    */
-  private static Val uniqueScalar(Lister list) {
-    Set<Val> exist = new HashSet<>();
+  private static Val uniqueList(Lister list) {
     long size = list.size().intValue();
-    for (int i = 0; i < size; i++) {
+    if (size == 0) {
+      return BoolT.True;
+    }
+    Set<Val> exist = new HashSet<>((int) size);
+    Val firstVal = list.get(IntT.intOf(0));
+    switch (firstVal.type().typeEnum()) {
+      case Bool:
+      case Int:
+      case Uint:
+      case Double:
+      case String:
+      case Bytes:
+        break;
+      default:
+        return Err.noSuchOverload(list, OVERLOAD_UNIQUE, null);
+    }
+    exist.add(firstVal);
+    for (int i = 1; i < size; i++) {
       Val val = list.get(IntT.intOf(i));
-      if (exist.contains(val)) {
+      if (!exist.add(val)) {
         return BoolT.False;
       }
-      exist.add(val);
     }
     return BoolT.True;
   }
@@ -453,12 +432,10 @@ final class CustomOverload {
       if (addr.contains("<")) {
         return false;
       }
-
       addr = emailAddr.getAddress();
       if (addr.length() > 254) {
         return false;
       }
-
       String[] parts = addr.split("@", 2);
       return parts[0].length() < 64 && validateHostname(parts[1]);
     } catch (AddressException ex) {
@@ -476,24 +453,20 @@ final class CustomOverload {
     if (host.length() > 253) {
       return false;
     }
-
     String s = Ascii.toLowerCase(host.endsWith(".") ? host.substring(0, host.length() - 1) : host);
     Iterable<String> parts = Splitter.on('.').split(s);
-
     for (String part : parts) {
       int l = part.length();
       if (l == 0 || l > 63 || part.charAt(0) == '-' || part.charAt(l - 1) == '-') {
         return false;
       }
-
-      for (int i = 0; i < part.length(); i++) {
+      for (int i = 0; i < l; i++) {
         char ch = part.charAt(i);
         if ((ch < 'a' || ch > 'z') && (ch < '0' || ch > '9') && ch != '-') {
           return false;
         }
       }
     }
-
     return true;
   }
 
