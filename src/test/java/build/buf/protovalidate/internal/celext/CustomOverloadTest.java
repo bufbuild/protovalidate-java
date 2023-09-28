@@ -131,6 +131,37 @@ public class CustomOverloadTest {
     }
   }
 
+  @Test
+  public void testIsIpPrefix() {
+    Map<String, Boolean> testCases =
+        ImmutableMap.<String, Boolean>builder()
+            .put("'1.2.3.0/24'.isIpPrefix()", true)
+            .put("'1.2.3.4/24'.isIpPrefix()", true)
+            .put("'1.2.3.0/24'.isIpPrefix(true)", true)
+            .put("'1.2.3.4/24'.isIpPrefix(true)", false)
+            .put("'fd7a:115c:a1e0:ab12:4843:cd96:626b:4000/118'.isIpPrefix()", true)
+            .put("'fd7a:115c:a1e0:ab12:4843:cd96:626b:430b/118'.isIpPrefix()", true)
+            .put("'fd7a:115c:a1e0:ab12:4843:cd96:626b:4000/118'.isIpPrefix(true)", true)
+            .put("'fd7a:115c:a1e0:ab12:4843:cd96:626b:430b/118'.isIpPrefix(true)", false)
+            .put("'1.2.3.4'.isIpPrefix()", false)
+            .put("'fd7a:115c:a1e0:ab12:4843:cd96:626b:430b'.isIpPrefix()", false)
+            .put("'1.2.3.0/24'.isIpPrefix(4)", true)
+            .put("'1.2.3.4/24'.isIpPrefix(4)", true)
+            .put("'1.2.3.0/24'.isIpPrefix(4,true)", true)
+            .put("'1.2.3.4/24'.isIpPrefix(4,true)", false)
+            .put("'fd7a:115c:a1e0:ab12:4843:cd96:626b:4000/118'.isIpPrefix(4)", false)
+            .put("'fd7a:115c:a1e0:ab12:4843:cd96:626b:4000/118'.isIpPrefix(6)", true)
+            .put("'fd7a:115c:a1e0:ab12:4843:cd96:626b:430b/118'.isIpPrefix(6)", true)
+            .put("'fd7a:115c:a1e0:ab12:4843:cd96:626b:4000/118'.isIpPrefix(6,true)", true)
+            .put("'fd7a:115c:a1e0:ab12:4843:cd96:626b:430b/118'.isIpPrefix(6,true)", false)
+            .put("'1.2.3.0/24'.isIpPrefix(6)", false)
+            .build();
+    for (Map.Entry<String, Boolean> testCase : testCases.entrySet()) {
+      Program.EvalResult result = eval(testCase.getKey());
+      assertThat(result.getVal().booleanValue()).isEqualTo(testCase.getValue());
+    }
+  }
+
   private Program.EvalResult eval(String source) {
     return eval(source, Activation.emptyActivation());
   }
