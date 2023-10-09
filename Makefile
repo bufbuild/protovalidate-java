@@ -9,17 +9,10 @@ MAKEFLAGS += --no-print-directory
 BIN := .tmp/bin
 COPYRIGHT_YEARS := 2023
 LICENSE_IGNORE := --ignore src/main/java/build/buf/validate/ --ignore conformance/src/main/java/build/buf/validate/conformance/
-JAVA_VERSION = 20
-JAVAC = javac
 JAVA = java
 GO ?= go
 ARGS ?= --strict_message
-JAVA_COMPILE_OPTIONS = --enable-preview --release $(JAVA_VERSION)
-JAVA_OPTIONS = --enable-preview
 PROTOVALIDATE_VERSION ?= v0.4.3
-JAVA_MAIN_CLASS = build.buf.protovalidate
-JAVA_SOURCES = $(wildcard src/main/java/**/**/**/*.java, src/main/java/**/**/*.java)
-JAVA_CLASSES = $(patsubst src/main/java/%.java, target/classes/%.class, $(JAVA_SOURCES))
 
 .PHONY: all
 all: lint generate build docs conformance  ## Run all tests and lint (default)
