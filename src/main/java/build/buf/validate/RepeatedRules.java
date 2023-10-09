@@ -143,8 +143,8 @@ private static final long serialVersionUID = 0L;
    *
    *```proto
    *message MyRepeated {
-   * // repeated value must contain unique items
-   * repeated string value = 1 [(buf.validate.field).repeated.unique = true];
+   *  // repeated value must contain unique items
+   *  repeated string value = 1 [(buf.validate.field).repeated.unique = true];
    *}
    *```
    * </pre>
@@ -164,8 +164,8 @@ private static final long serialVersionUID = 0L;
    *
    *```proto
    *message MyRepeated {
-   * // repeated value must contain unique items
-   * repeated string value = 1 [(buf.validate.field).repeated.unique = true];
+   *  // repeated value must contain unique items
+   *  repeated string value = 1 [(buf.validate.field).repeated.unique = true];
    *}
    *```
    * </pre>
@@ -196,6 +196,7 @@ private static final long serialVersionUID = 0L;
    *    }
    *  }];
    *}
+   *```
    * </pre>
    *
    * <code>optional .buf.validate.FieldConstraints items = 4 [json_name = "items"];</code>
@@ -221,6 +222,7 @@ private static final long serialVersionUID = 0L;
    *    }
    *  }];
    *}
+   *```
    * </pre>
    *
    * <code>optional .buf.validate.FieldConstraints items = 4 [json_name = "items"];</code>
@@ -246,6 +248,7 @@ private static final long serialVersionUID = 0L;
    *    }
    *  }];
    *}
+   *```
    * </pre>
    *
    * <code>optional .buf.validate.FieldConstraints items = 4 [json_name = "items"];</code>
@@ -889,8 +892,8 @@ private static final long serialVersionUID = 0L;
      *
      *```proto
      *message MyRepeated {
-     * // repeated value must contain unique items
-     * repeated string value = 1 [(buf.validate.field).repeated.unique = true];
+     *  // repeated value must contain unique items
+     *  repeated string value = 1 [(buf.validate.field).repeated.unique = true];
      *}
      *```
      * </pre>
@@ -910,8 +913,8 @@ private static final long serialVersionUID = 0L;
      *
      *```proto
      *message MyRepeated {
-     * // repeated value must contain unique items
-     * repeated string value = 1 [(buf.validate.field).repeated.unique = true];
+     *  // repeated value must contain unique items
+     *  repeated string value = 1 [(buf.validate.field).repeated.unique = true];
      *}
      *```
      * </pre>
@@ -931,8 +934,8 @@ private static final long serialVersionUID = 0L;
      *
      *```proto
      *message MyRepeated {
-     * // repeated value must contain unique items
-     * repeated string value = 1 [(buf.validate.field).repeated.unique = true];
+     *  // repeated value must contain unique items
+     *  repeated string value = 1 [(buf.validate.field).repeated.unique = true];
      *}
      *```
      * </pre>
@@ -956,8 +959,8 @@ private static final long serialVersionUID = 0L;
      *
      *```proto
      *message MyRepeated {
-     * // repeated value must contain unique items
-     * repeated string value = 1 [(buf.validate.field).repeated.unique = true];
+     *  // repeated value must contain unique items
+     *  repeated string value = 1 [(buf.validate.field).repeated.unique = true];
      *}
      *```
      * </pre>
@@ -991,6 +994,7 @@ private static final long serialVersionUID = 0L;
      *    }
      *  }];
      *}
+     *```
      * </pre>
      *
      * <code>optional .buf.validate.FieldConstraints items = 4 [json_name = "items"];</code>
@@ -1015,6 +1019,7 @@ private static final long serialVersionUID = 0L;
      *    }
      *  }];
      *}
+     *```
      * </pre>
      *
      * <code>optional .buf.validate.FieldConstraints items = 4 [json_name = "items"];</code>
@@ -1043,6 +1048,7 @@ private static final long serialVersionUID = 0L;
      *    }
      *  }];
      *}
+     *```
      * </pre>
      *
      * <code>optional .buf.validate.FieldConstraints items = 4 [json_name = "items"];</code>
@@ -1076,6 +1082,7 @@ private static final long serialVersionUID = 0L;
      *    }
      *  }];
      *}
+     *```
      * </pre>
      *
      * <code>optional .buf.validate.FieldConstraints items = 4 [json_name = "items"];</code>
@@ -1107,6 +1114,7 @@ private static final long serialVersionUID = 0L;
      *    }
      *  }];
      *}
+     *```
      * </pre>
      *
      * <code>optional .buf.validate.FieldConstraints items = 4 [json_name = "items"];</code>
@@ -1145,6 +1153,7 @@ private static final long serialVersionUID = 0L;
      *    }
      *  }];
      *}
+     *```
      * </pre>
      *
      * <code>optional .buf.validate.FieldConstraints items = 4 [json_name = "items"];</code>
@@ -1175,6 +1184,7 @@ private static final long serialVersionUID = 0L;
      *    }
      *  }];
      *}
+     *```
      * </pre>
      *
      * <code>optional .buf.validate.FieldConstraints items = 4 [json_name = "items"];</code>
@@ -1200,6 +1210,7 @@ private static final long serialVersionUID = 0L;
      *    }
      *  }];
      *}
+     *```
      * </pre>
      *
      * <code>optional .buf.validate.FieldConstraints items = 4 [json_name = "items"];</code>
@@ -1228,6 +1239,7 @@ private static final long serialVersionUID = 0L;
      *    }
      *  }];
      *}
+     *```
      * </pre>
      *
      * <code>optional .buf.validate.FieldConstraints items = 4 [json_name = "items"];</code>

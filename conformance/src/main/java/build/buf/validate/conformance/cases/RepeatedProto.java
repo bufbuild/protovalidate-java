@@ -60,6 +60,11 @@ public final class RepeatedProto {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_buf_validate_conformance_cases_RepeatedUnique_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_buf_validate_conformance_cases_RepeatedMultipleUnique_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_buf_validate_conformance_cases_RepeatedMultipleUnique_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
     internal_static_buf_validate_conformance_cases_RepeatedItemRule_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
@@ -161,52 +166,53 @@ public final class RepeatedProto {
       "al\".\n\016RepeatedMinMax\022\034\n\003val\030\001 \003(\017B\n\272H\007\222\001" +
       "\004\010\002\020\004R\003val\"-\n\rRepeatedExact\022\034\n\003val\030\001 \003(\r" +
       "B\n\272H\007\222\001\004\010\003\020\003R\003val\",\n\016RepeatedUnique\022\032\n\003v" +
-      "al\030\001 \003(\tB\010\272H\005\222\001\002\030\001R\003val\"5\n\020RepeatedItemR" +
-      "ule\022!\n\003val\030\001 \003(\002B\017\272H\014\222\001\t\"\007\n\005%\000\000\000\000R\003val\"D" +
-      "\n\023RepeatedItemPattern\022-\n\003val\030\001 \003(\tB\033\272H\030\222" +
-      "\001\025\"\023r\0212\017(?i)^[a-z0-9]+$R\003val\"Y\n\021Repeated" +
-      "EmbedSkip\022D\n\003val\030\001 \003(\0132%.buf.validate.co" +
-      "nformance.cases.EmbedB\013\272H\010\222\001\005\"\003\300\001\001R\003val\"" +
-      "8\n\016RepeatedItemIn\022&\n\003val\030\001 \003(\tB\024\272H\021\222\001\016\"\014" +
-      "r\nR\003fooR\003barR\003val\";\n\021RepeatedItemNotIn\022&" +
-      "\n\003val\030\001 \003(\tB\024\272H\021\222\001\016\"\014r\nZ\003fooZ\003barR\003val\"Z" +
-      "\n\016RepeatedEnumIn\022H\n\003val\030\001 \003(\0162&.buf.vali" +
-      "date.conformance.cases.AnEnumB\016\272H\013\222\001\010\"\006\202" +
-      "\001\003\032\001\000R\003val\"]\n\021RepeatedEnumNotIn\022H\n\003val\030\001" +
-      " \003(\0162&.buf.validate.conformance.cases.An" +
-      "EnumB\016\272H\013\222\001\010\"\006\202\001\003\"\001\000R\003val\"\340\001\n\026RepeatedEm" +
-      "beddedEnumIn\022f\n\003val\030\001 \003(\0162D.buf.validate" +
-      ".conformance.cases.RepeatedEmbeddedEnumI" +
-      "n.AnotherInEnumB\016\272H\013\222\001\010\"\006\202\001\003\032\001\000R\003val\"^\n\r" +
-      "AnotherInEnum\022\037\n\033ANOTHER_IN_ENUM_UNSPECI" +
-      "FIED\020\000\022\025\n\021ANOTHER_IN_ENUM_A\020\001\022\025\n\021ANOTHER" +
-      "_IN_ENUM_B\020\002\"\370\001\n\031RepeatedEmbeddedEnumNot" +
-      "In\022l\n\003val\030\001 \003(\0162J.buf.validate.conforman" +
-      "ce.cases.RepeatedEmbeddedEnumNotIn.Anoth" +
-      "erNotInEnumB\016\272H\013\222\001\010\"\006\202\001\003\"\001\000R\003val\"m\n\020Anot" +
-      "herNotInEnum\022#\n\037ANOTHER_NOT_IN_ENUM_UNSP" +
-      "ECIFIED\020\000\022\031\n\025ANOTHER_NOT_IN_ENUM_A\020\001\022\031\n\025" +
-      "ANOTHER_NOT_IN_ENUM_B\020\002\"r\n\rRepeatedAnyIn" +
-      "\022a\n\003val\030\001 \003(\0132\024.google.protobuf.AnyB9\272H6" +
-      "\222\0013\"1\242\001.\022,type.googleapis.com/google.pro" +
-      "tobuf.DurationR\003val\"v\n\020RepeatedAnyNotIn\022" +
-      "b\n\003val\030\001 \003(\0132\024.google.protobuf.AnyB:\272H7\222" +
-      "\0014\"2\242\001/\032-type.googleapis.com/google.prot" +
-      "obuf.TimestampR\003val\":\n\025RepeatedMinAndIte" +
-      "mLen\022!\n\003val\030\001 \003(\tB\017\272H\014\222\001\t\010\001\"\005r\003\230\001\003R\003val\"" +
-      "8\n\030RepeatedMinAndMaxItemLen\022\034\n\003val\030\001 \003(\t" +
-      "B\n\272H\007\222\001\004\010\001\020\003R\003val\"R\n\020RepeatedDuration\022>\n" +
-      "\003val\030\001 \003(\0132\031.google.protobuf.DurationB\021\272" +
-      "H\016\222\001\013\"\t\252\001\0062\004\020\300\204=R\003val\"6\n\023RepeatedExactIg" +
-      "nore\022\037\n\003val\030\001 \003(\rB\r\272H\n\222\001\004\010\003\020\003\320\001\001R\003val*?\n" +
-      "\006AnEnum\022\027\n\023AN_ENUM_UNSPECIFIED\020\000\022\r\n\tAN_E" +
-      "NUM_X\020\001\022\r\n\tAN_ENUM_Y\020\002B\321\001\n$build.buf.val" +
-      "idate.conformance.casesB\rRepeatedProtoP\001" +
-      "\242\002\004BVCC\252\002\036Buf.Validate.Conformance.Cases" +
-      "\312\002\036Buf\\Validate\\Conformance\\Cases\342\002*Buf\\" +
-      "Validate\\Conformance\\Cases\\GPBMetadata\352\002" +
-      "!Buf::Validate::Conformance::Casesb\006prot" +
-      "o3"
+      "al\030\001 \003(\tB\010\272H\005\222\001\002\030\001R\003val\"H\n\026RepeatedMulti" +
+      "pleUnique\022\026\n\001a\030\001 \003(\tB\010\272H\005\222\001\002\030\001R\001a\022\026\n\001b\030\002" +
+      " \003(\005B\010\272H\005\222\001\002\030\001R\001b\"5\n\020RepeatedItemRule\022!\n" +
+      "\003val\030\001 \003(\002B\017\272H\014\222\001\t\"\007\n\005%\000\000\000\000R\003val\"D\n\023Repe" +
+      "atedItemPattern\022-\n\003val\030\001 \003(\tB\033\272H\030\222\001\025\"\023r\021" +
+      "2\017(?i)^[a-z0-9]+$R\003val\"Y\n\021RepeatedEmbedS" +
+      "kip\022D\n\003val\030\001 \003(\0132%.buf.validate.conforma" +
+      "nce.cases.EmbedB\013\272H\010\222\001\005\"\003\300\001\001R\003val\"8\n\016Rep" +
+      "eatedItemIn\022&\n\003val\030\001 \003(\tB\024\272H\021\222\001\016\"\014r\nR\003fo" +
+      "oR\003barR\003val\";\n\021RepeatedItemNotIn\022&\n\003val\030" +
+      "\001 \003(\tB\024\272H\021\222\001\016\"\014r\nZ\003fooZ\003barR\003val\"Z\n\016Repe" +
+      "atedEnumIn\022H\n\003val\030\001 \003(\0162&.buf.validate.c" +
+      "onformance.cases.AnEnumB\016\272H\013\222\001\010\"\006\202\001\003\032\001\000R" +
+      "\003val\"]\n\021RepeatedEnumNotIn\022H\n\003val\030\001 \003(\0162&" +
+      ".buf.validate.conformance.cases.AnEnumB\016" +
+      "\272H\013\222\001\010\"\006\202\001\003\"\001\000R\003val\"\340\001\n\026RepeatedEmbedded" +
+      "EnumIn\022f\n\003val\030\001 \003(\0162D.buf.validate.confo" +
+      "rmance.cases.RepeatedEmbeddedEnumIn.Anot" +
+      "herInEnumB\016\272H\013\222\001\010\"\006\202\001\003\032\001\000R\003val\"^\n\rAnothe" +
+      "rInEnum\022\037\n\033ANOTHER_IN_ENUM_UNSPECIFIED\020\000" +
+      "\022\025\n\021ANOTHER_IN_ENUM_A\020\001\022\025\n\021ANOTHER_IN_EN" +
+      "UM_B\020\002\"\370\001\n\031RepeatedEmbeddedEnumNotIn\022l\n\003" +
+      "val\030\001 \003(\0162J.buf.validate.conformance.cas" +
+      "es.RepeatedEmbeddedEnumNotIn.AnotherNotI" +
+      "nEnumB\016\272H\013\222\001\010\"\006\202\001\003\"\001\000R\003val\"m\n\020AnotherNot" +
+      "InEnum\022#\n\037ANOTHER_NOT_IN_ENUM_UNSPECIFIE" +
+      "D\020\000\022\031\n\025ANOTHER_NOT_IN_ENUM_A\020\001\022\031\n\025ANOTHE" +
+      "R_NOT_IN_ENUM_B\020\002\"r\n\rRepeatedAnyIn\022a\n\003va" +
+      "l\030\001 \003(\0132\024.google.protobuf.AnyB9\272H6\222\0013\"1\242" +
+      "\001.\022,type.googleapis.com/google.protobuf." +
+      "DurationR\003val\"v\n\020RepeatedAnyNotIn\022b\n\003val" +
+      "\030\001 \003(\0132\024.google.protobuf.AnyB:\272H7\222\0014\"2\242\001" +
+      "/\032-type.googleapis.com/google.protobuf.T" +
+      "imestampR\003val\":\n\025RepeatedMinAndItemLen\022!" +
+      "\n\003val\030\001 \003(\tB\017\272H\014\222\001\t\010\001\"\005r\003\230\001\003R\003val\"8\n\030Rep" +
+      "eatedMinAndMaxItemLen\022\034\n\003val\030\001 \003(\tB\n\272H\007\222" +
+      "\001\004\010\001\020\003R\003val\"R\n\020RepeatedDuration\022>\n\003val\030\001" +
+      " \003(\0132\031.google.protobuf.DurationB\021\272H\016\222\001\013\"" +
+      "\t\252\001\0062\004\020\300\204=R\003val\"6\n\023RepeatedExactIgnore\022\037" +
+      "\n\003val\030\001 \003(\rB\r\272H\n\222\001\004\010\003\020\003\320\001\001R\003val*?\n\006AnEnu" +
+      "m\022\027\n\023AN_ENUM_UNSPECIFIED\020\000\022\r\n\tAN_ENUM_X\020" +
+      "\001\022\r\n\tAN_ENUM_Y\020\002B\321\001\n$build.buf.validate." +
+      "conformance.casesB\rRepeatedProtoP\001\242\002\004BVC" +
+      "C\252\002\036Buf.Validate.Conformance.Cases\312\002\036Buf" +
+      "\\Validate\\Conformance\\Cases\342\002*Buf\\Valida" +
+      "te\\Conformance\\Cases\\GPBMetadata\352\002!Buf::" +
+      "Validate::Conformance::Casesb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -270,92 +276,98 @@ public final class RepeatedProto {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_RepeatedUnique_descriptor,
         new java.lang.String[] { "Val", });
-    internal_static_buf_validate_conformance_cases_RepeatedItemRule_descriptor =
+    internal_static_buf_validate_conformance_cases_RepeatedMultipleUnique_descriptor =
       getDescriptor().getMessageTypes().get(9);
+    internal_static_buf_validate_conformance_cases_RepeatedMultipleUnique_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_buf_validate_conformance_cases_RepeatedMultipleUnique_descriptor,
+        new java.lang.String[] { "A", "B", });
+    internal_static_buf_validate_conformance_cases_RepeatedItemRule_descriptor =
+      getDescriptor().getMessageTypes().get(10);
     internal_static_buf_validate_conformance_cases_RepeatedItemRule_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_RepeatedItemRule_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_RepeatedItemPattern_descriptor =
-      getDescriptor().getMessageTypes().get(10);
+      getDescriptor().getMessageTypes().get(11);
     internal_static_buf_validate_conformance_cases_RepeatedItemPattern_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_RepeatedItemPattern_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_RepeatedEmbedSkip_descriptor =
-      getDescriptor().getMessageTypes().get(11);
+      getDescriptor().getMessageTypes().get(12);
     internal_static_buf_validate_conformance_cases_RepeatedEmbedSkip_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_RepeatedEmbedSkip_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_RepeatedItemIn_descriptor =
-      getDescriptor().getMessageTypes().get(12);
+      getDescriptor().getMessageTypes().get(13);
     internal_static_buf_validate_conformance_cases_RepeatedItemIn_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_RepeatedItemIn_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_RepeatedItemNotIn_descriptor =
-      getDescriptor().getMessageTypes().get(13);
+      getDescriptor().getMessageTypes().get(14);
     internal_static_buf_validate_conformance_cases_RepeatedItemNotIn_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_RepeatedItemNotIn_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_RepeatedEnumIn_descriptor =
-      getDescriptor().getMessageTypes().get(14);
+      getDescriptor().getMessageTypes().get(15);
     internal_static_buf_validate_conformance_cases_RepeatedEnumIn_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_RepeatedEnumIn_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_RepeatedEnumNotIn_descriptor =
-      getDescriptor().getMessageTypes().get(15);
+      getDescriptor().getMessageTypes().get(16);
     internal_static_buf_validate_conformance_cases_RepeatedEnumNotIn_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_RepeatedEnumNotIn_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_RepeatedEmbeddedEnumIn_descriptor =
-      getDescriptor().getMessageTypes().get(16);
+      getDescriptor().getMessageTypes().get(17);
     internal_static_buf_validate_conformance_cases_RepeatedEmbeddedEnumIn_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_RepeatedEmbeddedEnumIn_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_RepeatedEmbeddedEnumNotIn_descriptor =
-      getDescriptor().getMessageTypes().get(17);
+      getDescriptor().getMessageTypes().get(18);
     internal_static_buf_validate_conformance_cases_RepeatedEmbeddedEnumNotIn_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_RepeatedEmbeddedEnumNotIn_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_RepeatedAnyIn_descriptor =
-      getDescriptor().getMessageTypes().get(18);
+      getDescriptor().getMessageTypes().get(19);
     internal_static_buf_validate_conformance_cases_RepeatedAnyIn_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_RepeatedAnyIn_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_RepeatedAnyNotIn_descriptor =
-      getDescriptor().getMessageTypes().get(19);
+      getDescriptor().getMessageTypes().get(20);
     internal_static_buf_validate_conformance_cases_RepeatedAnyNotIn_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_RepeatedAnyNotIn_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_RepeatedMinAndItemLen_descriptor =
-      getDescriptor().getMessageTypes().get(20);
+      getDescriptor().getMessageTypes().get(21);
     internal_static_buf_validate_conformance_cases_RepeatedMinAndItemLen_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_RepeatedMinAndItemLen_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_RepeatedMinAndMaxItemLen_descriptor =
-      getDescriptor().getMessageTypes().get(21);
+      getDescriptor().getMessageTypes().get(22);
     internal_static_buf_validate_conformance_cases_RepeatedMinAndMaxItemLen_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_RepeatedMinAndMaxItemLen_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_RepeatedDuration_descriptor =
-      getDescriptor().getMessageTypes().get(22);
+      getDescriptor().getMessageTypes().get(23);
     internal_static_buf_validate_conformance_cases_RepeatedDuration_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_RepeatedDuration_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_RepeatedExactIgnore_descriptor =
-      getDescriptor().getMessageTypes().get(23);
+      getDescriptor().getMessageTypes().get(24);
     internal_static_buf_validate_conformance_cases_RepeatedExactIgnore_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_RepeatedExactIgnore_descriptor,
