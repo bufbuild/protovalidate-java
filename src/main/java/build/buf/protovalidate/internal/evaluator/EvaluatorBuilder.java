@@ -139,7 +139,7 @@ public class EvaluatorBuilder {
   }
 
   private void processOneofConstraints(Descriptor desc, MessageEvaluator msgEval)
-      throws InvalidProtocolBufferException {
+      throws InvalidProtocolBufferException, CompilationException {
     List<Descriptors.OneofDescriptor> oneofs = desc.getOneofs();
     for (Descriptors.OneofDescriptor oneofDesc : oneofs) {
       OneofConstraints oneofConstraints = resolver.resolveOneofConstraints(oneofDesc);

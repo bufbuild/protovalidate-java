@@ -14,6 +14,7 @@
 
 package build.buf.protovalidate.internal.evaluator;
 
+import build.buf.protovalidate.exceptions.CompilationException;
 import build.buf.validate.FieldConstraints;
 import build.buf.validate.MessageConstraints;
 import build.buf.validate.OneofConstraints;
@@ -35,7 +36,7 @@ class ConstraintResolver {
    * @return the resolved {@link MessageConstraints}.
    */
   MessageConstraints resolveMessageConstraints(Descriptor desc)
-      throws InvalidProtocolBufferException {
+      throws InvalidProtocolBufferException, CompilationException {
     DescriptorProtos.MessageOptions options = desc.getOptions();
     if (!options.hasExtension(ValidateProto.message)) {
       return MessageConstraints.getDefaultInstance();
@@ -51,7 +52,7 @@ class ConstraintResolver {
       // java_package.
       return MessageConstraints.parseFrom(((MessageLite) value).toByteString());
     }
-    return MessageConstraints.getDefaultInstance();
+    throw new CompilationException("unexpected message constraint option type: " + value);
   }
 
   /**
@@ -61,7 +62,7 @@ class ConstraintResolver {
    * @return the resolved {@link OneofConstraints}.
    */
   OneofConstraints resolveOneofConstraints(OneofDescriptor desc)
-      throws InvalidProtocolBufferException {
+      throws InvalidProtocolBufferException, CompilationException {
     DescriptorProtos.OneofOptions options = desc.getOptions();
     if (!options.hasExtension(ValidateProto.oneof)) {
       return OneofConstraints.getDefaultInstance();
@@ -77,7 +78,7 @@ class ConstraintResolver {
       // java_package.
       return OneofConstraints.parseFrom(((MessageLite) value).toByteString());
     }
-    return OneofConstraints.getDefaultInstance();
+    throw new CompilationException("unexpected oneof constraint option type: " + value);
   }
 
   /**
@@ -87,7 +88,7 @@ class ConstraintResolver {
    * @return the resolved {@link FieldConstraints}.
    */
   FieldConstraints resolveFieldConstraints(FieldDescriptor desc)
-      throws InvalidProtocolBufferException {
+      throws InvalidProtocolBufferException, CompilationException {
     DescriptorProtos.FieldOptions options = desc.getOptions();
     if (!options.hasExtension(ValidateProto.field)) {
       return FieldConstraints.getDefaultInstance();
@@ -103,6 +104,6 @@ class ConstraintResolver {
       // java_package.
       return FieldConstraints.parseFrom(((MessageLite) value).toByteString());
     }
-    return FieldConstraints.getDefaultInstance();
+    throw new CompilationException("unexpected field constraint option type: " + value);
   }
 }
