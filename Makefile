@@ -37,7 +37,7 @@ clean:  ## Delete intermediate build artifacts
 	git clean -Xdf
 
 .PHONY: conformance
-conformance: build $(BIN)/protovalidate-conformance  ## Execute conformance tests.
+conformance: build $(BIN)/protovalidate-conformance generate ## Execute conformance tests.
 	./gradlew conformance:jar
 	$(BIN)/protovalidate-conformance $(ARGS) ./conformance/conformance.sh
 
