@@ -14,6 +14,7 @@
 
 package build.buf.protovalidate.internal.evaluator;
 
+import build.buf.protovalidate.exceptions.CompilationException;
 import build.buf.validate.FieldConstraints;
 import build.buf.validate.MessageConstraints;
 import build.buf.validate.OneofConstraints;
@@ -22,6 +23,8 @@ import com.google.protobuf.DescriptorProtos;
 import com.google.protobuf.Descriptors.Descriptor;
 import com.google.protobuf.Descriptors.FieldDescriptor;
 import com.google.protobuf.Descriptors.OneofDescriptor;
+import com.google.protobuf.InvalidProtocolBufferException;
+import com.google.protobuf.MessageLite;
 
 /** Manages the resolution of protovalidate constraints. */
 class ConstraintResolver {
@@ -32,18 +35,24 @@ class ConstraintResolver {
    * @param desc the message descriptor.
    * @return the resolved {@link MessageConstraints}.
    */
-  MessageConstraints resolveMessageConstraints(Descriptor desc) {
+  MessageConstraints resolveMessageConstraints(Descriptor desc)
+      throws InvalidProtocolBufferException, CompilationException {
     DescriptorProtos.MessageOptions options = desc.getOptions();
     if (!options.hasExtension(ValidateProto.message)) {
       return MessageConstraints.getDefaultInstance();
     }
-
-    MessageConstraints constraints = options.getExtension(ValidateProto.message);
-    boolean disabled = constraints.getDisabled();
-    if (disabled) {
-      return MessageConstraints.newBuilder().setDisabled(true).build();
+    // Don't use getExtension here to avoid exception if descriptor types don't match.
+    // This can occur if the extension is generated to a different Java package.
+    Object value = options.getField(ValidateProto.message.getDescriptor());
+    if (value instanceof MessageConstraints) {
+      return ((MessageConstraints) value);
     }
-    return constraints;
+    if (value instanceof MessageLite) {
+      // Possible that this represents the same constraint type, just generated to a different
+      // java_package.
+      return MessageConstraints.parseFrom(((MessageLite) value).toByteString());
+    }
+    throw new CompilationException("unexpected message constraint option type: " + value);
   }
 
   /**
@@ -52,12 +61,24 @@ class ConstraintResolver {
    * @param desc the oneof descriptor.
    * @return the resolved {@link OneofConstraints}.
    */
-  OneofConstraints resolveOneofConstraints(OneofDescriptor desc) {
+  OneofConstraints resolveOneofConstraints(OneofDescriptor desc)
+      throws InvalidProtocolBufferException, CompilationException {
     DescriptorProtos.OneofOptions options = desc.getOptions();
     if (!options.hasExtension(ValidateProto.oneof)) {
       return OneofConstraints.getDefaultInstance();
     }
-    return options.getExtension(ValidateProto.oneof);
+    // Don't use getExtension here to avoid exception if descriptor types don't match.
+    // This can occur if the extension is generated to a different Java package.
+    Object value = options.getField(ValidateProto.oneof.getDescriptor());
+    if (value instanceof OneofConstraints) {
+      return ((OneofConstraints) value);
+    }
+    if (value instanceof MessageLite) {
+      // Possible that this represents the same constraint type, just generated to a different
+      // java_package.
+      return OneofConstraints.parseFrom(((MessageLite) value).toByteString());
+    }
+    throw new CompilationException("unexpected oneof constraint option type: " + value);
   }
 
   /**
@@ -66,11 +87,23 @@ class ConstraintResolver {
    * @param desc the field descriptor.
    * @return the resolved {@link FieldConstraints}.
    */
-  FieldConstraints resolveFieldConstraints(FieldDescriptor desc) {
+  FieldConstraints resolveFieldConstraints(FieldDescriptor desc)
+      throws InvalidProtocolBufferException, CompilationException {
     DescriptorProtos.FieldOptions options = desc.getOptions();
     if (!options.hasExtension(ValidateProto.field)) {
       return FieldConstraints.getDefaultInstance();
     }
-    return options.getExtension(ValidateProto.field);
+    // Don't use getExtension here to avoid exception if descriptor types don't match.
+    // This can occur if the extension is generated to a different Java package.
+    Object value = options.getField(ValidateProto.field.getDescriptor());
+    if (value instanceof FieldConstraints) {
+      return ((FieldConstraints) value);
+    }
+    if (value instanceof MessageLite) {
+      // Possible that this represents the same constraint type, just generated to a different
+      // java_package.
+      return FieldConstraints.parseFrom(((MessageLite) value).toByteString());
+    }
+    throw new CompilationException("unexpected field constraint option type: " + value);
   }
 }

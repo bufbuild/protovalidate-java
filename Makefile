@@ -12,6 +12,7 @@ LICENSE_IGNORE := --ignore src/main/java/build/buf/validate/ --ignore conformanc
 JAVA = java
 GO ?= go
 ARGS ?= --strict_message
+# When updating, also update src/test/resources/proto/buf.yaml and re-run 'buf mod update'.
 PROTOVALIDATE_VERSION ?= v0.4.3
 
 .PHONY: all
@@ -36,7 +37,7 @@ clean:  ## Delete intermediate build artifacts
 	git clean -Xdf
 
 .PHONY: conformance
-conformance: build $(BIN)/protovalidate-conformance  ## Execute conformance tests.
+conformance: build $(BIN)/protovalidate-conformance generate ## Execute conformance tests.
 	./gradlew conformance:jar
 	$(BIN)/protovalidate-conformance $(ARGS) ./conformance/conformance.sh
 
@@ -56,6 +57,8 @@ generate: $(BIN)/buf generate-license  ## Regenerate code and license headers
 	$(BIN)/buf export buf.build/bufbuild/protovalidate:$(PROTOVALIDATE_VERSION) --output src/main/resources
 	$(BIN)/buf generate --template buf.gen.yaml src/main/resources
 	$(BIN)/buf generate --template conformance/buf.gen.yaml -o conformance/ buf.build/bufbuild/protovalidate-testing:$(PROTOVALIDATE_VERSION)
+	$(BIN)/buf generate --template src/test/resources/proto/buf.gen.imports.yaml src/test/resources/proto --include-imports
+	$(BIN)/buf generate --template src/test/resources/proto/buf.gen.noimports.yaml src/test/resources/proto
 
 .PHONY: lint
 lint: ## Lint code

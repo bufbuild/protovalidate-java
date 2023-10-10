@@ -138,7 +138,8 @@ public class EvaluatorBuilder {
     msgEval.append(new CelPrograms(compiledPrograms));
   }
 
-  private void processOneofConstraints(Descriptor desc, MessageEvaluator msgEval) {
+  private void processOneofConstraints(Descriptor desc, MessageEvaluator msgEval)
+      throws InvalidProtocolBufferException, CompilationException {
     List<Descriptors.OneofDescriptor> oneofs = desc.getOneofs();
     for (Descriptors.OneofDescriptor oneofDesc : oneofs) {
       OneofConstraints oneofConstraints = resolver.resolveOneofConstraints(oneofDesc);
@@ -149,7 +150,7 @@ public class EvaluatorBuilder {
   }
 
   private void processFields(Descriptor desc, MessageEvaluator msgEval)
-      throws CompilationException {
+      throws CompilationException, InvalidProtocolBufferException {
     List<FieldDescriptor> fields = desc.getFields();
     for (FieldDescriptor fieldDescriptor : fields) {
       FieldDescriptor descriptor = desc.findFieldByName(fieldDescriptor.getName());
