@@ -23,7 +23,7 @@ tasks.withType<JavaCompile> {
         options.compilerArgs = mutableListOf("--release", "8")
     }
     // Disable errorprone on generated code
-    options.errorprone.excludedPaths.set(".*/src/main/java/build/buf/validate/.*")
+    options.errorprone.excludedPaths.set("(.*/src/main/java/build/buf/validate/.*|.*/build/generated/.*)")
     if (!name.lowercase().contains("test")) {
         options.errorprone {
             check("NullAway", CheckSeverity.ERROR)
@@ -46,6 +46,14 @@ buildscript {
     dependencies {
         classpath(libs.maven.plugin)
         classpath(libs.spotless)
+    }
+}
+
+sourceSets {
+    test {
+        java {
+            srcDir(layout.buildDirectory.dir("generated/test-sources/bufgen"))
+        }
     }
 }
 
