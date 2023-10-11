@@ -217,9 +217,8 @@ mavenPublishing {
         ),
     )
     pom {
-        name.set("connect-library") // This is overwritten in subprojects.
+        name.set("protovalidate-java")
         group = "build.buf"
-        val releaseVersion = project.findProperty("releaseVersion") as String?
         // Default to snapshot versioning for local publishing.
         version = releaseVersion ?: "0.0.0-SNAPSHOT"
         description.set("Protocol Buffer Validation")
@@ -227,7 +226,7 @@ mavenPublishing {
         licenses {
             license {
                 name.set("The Apache Software License, Version 2.0")
-                url.set("http://www.apache.org/licenses/LICENSE-2.0.txt")
+                url.set("https://www.apache.org/licenses/LICENSE-2.0.txt")
                 distribution.set("repo")
             }
         }
