@@ -100,7 +100,15 @@ tasks.register<Exec>("generateSources") {
 tasks.register<Exec>("generateConformance") {
     dependsOn("installBuf")
     description = "Generates sources for the bufbuild/protovalidate-testing module to conformance/src/main/java."
-    commandLine(bufCLIPath, "generate", "--template", "buf.gen.yaml", "src/main/resources")
+    commandLine(
+        bufCLIPath,
+        "generate",
+        "--template",
+        "conformance/buf.gen.yaml",
+        "-o",
+        "conformance/",
+        "buf.build/bufbuild/protovalidate-testing:${project.findProperty("protovalidate.version")}",
+    )
 }
 
 tasks.register("generate") {
