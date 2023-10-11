@@ -24,7 +24,5 @@ jobs:
           distribution: 'temurin'
           java-version: '17'
           cache: 'gradle'
-      - name: Generate
-        run: make checkgenerate
       - name: Test conformance
         run: make conformance
