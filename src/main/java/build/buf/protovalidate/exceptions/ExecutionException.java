@@ -14,10 +14,7 @@
 
 package build.buf.protovalidate.exceptions;
 
-/**
- * {@link ExecutionException} extends {@link ValidationException} is returned when a constraint
- * fails to execute. This is a fatal error.
- */
+/** ExecutionException is returned when a constraint fails to execute. This is a fatal error. */
 public class ExecutionException extends ValidationException {
   public ExecutionException(String message) {
     super(message);
