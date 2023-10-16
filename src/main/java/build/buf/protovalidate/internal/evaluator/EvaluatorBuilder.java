@@ -45,12 +45,12 @@ import org.projectnessie.cel.checker.Decls;
 
 /** A build-through cache of message evaluators keyed off the provided descriptor. */
 public class EvaluatorBuilder {
-  private static final ExtensionRegistry extensionRegistry = ExtensionRegistry.newInstance();
+  private static final ExtensionRegistry EXTENSION_REGISTRY = ExtensionRegistry.newInstance();
 
   static {
-    extensionRegistry.add(ValidateProto.message);
-    extensionRegistry.add(ValidateProto.field);
-    extensionRegistry.add(ValidateProto.oneof);
+    EXTENSION_REGISTRY.add(ValidateProto.message);
+    EXTENSION_REGISTRY.add(ValidateProto.field);
+    EXTENSION_REGISTRY.add(ValidateProto.oneof);
   }
 
   private final Map<Descriptor, Evaluator> evaluatorMap = new HashMap<>();
@@ -102,9 +102,10 @@ public class EvaluatorBuilder {
   private void buildMessage(Descriptor desc, MessageEvaluator msgEval) throws CompilationException {
     try {
       DynamicMessage defaultInstance =
-          DynamicMessage.parseFrom(desc, new byte[0], extensionRegistry);
+          DynamicMessage.parseFrom(desc, new byte[0], EXTENSION_REGISTRY);
       Descriptor descriptor = defaultInstance.getDescriptorForType();
-      MessageConstraints msgConstraints = resolver.resolveMessageConstraints(descriptor);
+      MessageConstraints msgConstraints =
+          resolver.resolveMessageConstraints(descriptor, EXTENSION_REGISTRY);
       if (msgConstraints.getDisabled()) {
         return;
       }
@@ -112,7 +113,7 @@ public class EvaluatorBuilder {
       processOneofConstraints(descriptor, msgEval);
       processFields(descriptor, msgEval);
     } catch (InvalidProtocolBufferException e) {
-      throw new CompilationException("failed to parse proto definition: " + desc.getFullName());
+      throw new CompilationException("failed to parse proto definition: " + desc.getFullName(), e);
     }
   }
 
@@ -142,7 +143,8 @@ public class EvaluatorBuilder {
       throws InvalidProtocolBufferException, CompilationException {
     List<Descriptors.OneofDescriptor> oneofs = desc.getOneofs();
     for (Descriptors.OneofDescriptor oneofDesc : oneofs) {
-      OneofConstraints oneofConstraints = resolver.resolveOneofConstraints(oneofDesc);
+      OneofConstraints oneofConstraints =
+          resolver.resolveOneofConstraints(oneofDesc, EXTENSION_REGISTRY);
       OneofEvaluator oneofEvaluatorEval =
           new OneofEvaluator(oneofDesc, oneofConstraints.getRequired());
       msgEval.append(oneofEvaluatorEval);
@@ -154,7 +156,8 @@ public class EvaluatorBuilder {
     List<FieldDescriptor> fields = desc.getFields();
     for (FieldDescriptor fieldDescriptor : fields) {
       FieldDescriptor descriptor = desc.findFieldByName(fieldDescriptor.getName());
-      FieldConstraints fieldConstraints = resolver.resolveFieldConstraints(descriptor);
+      FieldConstraints fieldConstraints =
+          resolver.resolveFieldConstraints(descriptor, EXTENSION_REGISTRY);
       FieldEvaluator fldEval = buildField(descriptor, fieldConstraints);
       msgEval.append(fldEval);
     }
@@ -204,7 +207,7 @@ public class EvaluatorBuilder {
       try {
         DynamicMessage defaultInstance =
             DynamicMessage.parseFrom(
-                fieldDescriptor.getMessageType(), new byte[0], extensionRegistry);
+                fieldDescriptor.getMessageType(), new byte[0], EXTENSION_REGISTRY);
         opts =
             Arrays.asList(
                 EnvOption.types(defaultInstance),
@@ -213,7 +216,7 @@ public class EvaluatorBuilder {
                         Variable.THIS_NAME,
                         Decls.newObjectType(fieldDescriptor.getMessageType().getFullName()))));
       } catch (InvalidProtocolBufferException e) {
-        throw new CompilationException("field descriptor type is invalid " + e.getMessage());
+        throw new CompilationException("field descriptor type is invalid " + e.getMessage(), e);
       }
     } else {
       opts =
