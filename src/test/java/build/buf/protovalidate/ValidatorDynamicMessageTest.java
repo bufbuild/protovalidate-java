@@ -20,6 +20,7 @@ import build.buf.validate.Violation;
 import com.example.noimports.validationtest.ExampleFieldConstraints;
 import com.example.noimports.validationtest.ExampleMessageConstraints;
 import com.example.noimports.validationtest.ExampleOneofConstraints;
+import com.example.noimports.validationtest.ExampleRequiredFieldConstraints;
 import com.google.protobuf.DescriptorProtos;
 import com.google.protobuf.Descriptors;
 import com.google.protobuf.DynamicMessage;
@@ -81,6 +82,31 @@ public class ValidatorDynamicMessageTest {
         Violation.newBuilder()
             .setConstraintId("secondary_email_depends_on_primary")
             .setMessage("cannot set a secondary email without setting a primary one")
+            .build();
+    assertThat(new Validator().validate(messageBuilder.build()).getViolations())
+        .containsExactly(expectedViolation);
+  }
+
+  @Test
+  public void testRequiredFieldConstraintDynamicMessage() throws Exception {
+    DynamicMessage.Builder messageBuilder =
+        createMessageWithUnknownOptions(ExampleRequiredFieldConstraints.getDefaultInstance());
+    messageBuilder.setField(
+        messageBuilder.getDescriptorForType().findFieldByName("regex_string_field"), "abc123");
+    assertThat(new Validator().validate(messageBuilder.build()).getViolations()).isEmpty();
+  }
+
+  @Test
+  public void testRequiredFieldConstraintDynamicMessageInvalid() throws Exception {
+    DynamicMessage.Builder messageBuilder =
+        createMessageWithUnknownOptions(ExampleRequiredFieldConstraints.getDefaultInstance());
+    messageBuilder.setField(
+        messageBuilder.getDescriptorForType().findFieldByName("regex_string_field"), "0123456789");
+    Violation expectedViolation =
+        Violation.newBuilder()
+            .setConstraintId("string.pattern")
+            .setFieldPath("regex_string_field")
+            .setMessage("value does not match regex pattern `^[a-z0-9]{1,9}$`")
             .build();
     assertThat(new Validator().validate(messageBuilder.build()).getViolations())
         .containsExactly(expectedViolation);

@@ -102,7 +102,7 @@ public class EvaluatorBuilder {
   private void buildMessage(Descriptor desc, MessageEvaluator msgEval) throws CompilationException {
     try {
       DynamicMessage defaultInstance =
-          DynamicMessage.parseFrom(desc, new byte[0], EXTENSION_REGISTRY);
+          DynamicMessage.newBuilder(desc).mergeFrom(new byte[0], EXTENSION_REGISTRY).buildPartial();
       Descriptor descriptor = defaultInstance.getDescriptorForType();
       MessageConstraints msgConstraints =
           resolver.resolveMessageConstraints(descriptor, EXTENSION_REGISTRY);
