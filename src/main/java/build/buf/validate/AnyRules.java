@@ -52,16 +52,16 @@ private static final long serialVersionUID = 0L;
       com.google.protobuf.LazyStringArrayList.emptyList();
   /**
    * <pre>
-   *`in` requires the field's `type_url` to be equal to one of the
+   * `in` requires the field's `type_url` to be equal to one of the
    *specified values. If it doesn't match any of the specified values, an error
-   *message is generated.
+   * message is generated.
    *
-   *```proto
-   *message MyAny {
-   *  //  The `value` field must have a `type_url` equal to one of the specified values.
+   * ```proto
+   * message MyAny {
+   *   //  The `value` field must have a `type_url` equal to one of the specified values.
    *   google.protobuf.Any value = 1 [(buf.validate.field).any.in = ["type.googleapis.com/MyType1", "type.googleapis.com/MyType2"]];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
    * <code>repeated string in = 2 [json_name = "in"];</code>
@@ -73,16 +73,16 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   *`in` requires the field's `type_url` to be equal to one of the
+   * `in` requires the field's `type_url` to be equal to one of the
    *specified values. If it doesn't match any of the specified values, an error
-   *message is generated.
+   * message is generated.
    *
-   *```proto
-   *message MyAny {
-   *  //  The `value` field must have a `type_url` equal to one of the specified values.
+   * ```proto
+   * message MyAny {
+   *   //  The `value` field must have a `type_url` equal to one of the specified values.
    *   google.protobuf.Any value = 1 [(buf.validate.field).any.in = ["type.googleapis.com/MyType1", "type.googleapis.com/MyType2"]];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
    * <code>repeated string in = 2 [json_name = "in"];</code>
@@ -93,16 +93,16 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   *`in` requires the field's `type_url` to be equal to one of the
+   * `in` requires the field's `type_url` to be equal to one of the
    *specified values. If it doesn't match any of the specified values, an error
-   *message is generated.
+   * message is generated.
    *
-   *```proto
-   *message MyAny {
-   *  //  The `value` field must have a `type_url` equal to one of the specified values.
+   * ```proto
+   * message MyAny {
+   *   //  The `value` field must have a `type_url` equal to one of the specified values.
    *   google.protobuf.Any value = 1 [(buf.validate.field).any.in = ["type.googleapis.com/MyType1", "type.googleapis.com/MyType2"]];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
    * <code>repeated string in = 2 [json_name = "in"];</code>
@@ -114,16 +114,16 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   *`in` requires the field's `type_url` to be equal to one of the
+   * `in` requires the field's `type_url` to be equal to one of the
    *specified values. If it doesn't match any of the specified values, an error
-   *message is generated.
+   * message is generated.
    *
-   *```proto
-   *message MyAny {
-   *  //  The `value` field must have a `type_url` equal to one of the specified values.
+   * ```proto
+   * message MyAny {
+   *   //  The `value` field must have a `type_url` equal to one of the specified values.
    *   google.protobuf.Any value = 1 [(buf.validate.field).any.in = ["type.googleapis.com/MyType1", "type.googleapis.com/MyType2"]];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
    * <code>repeated string in = 2 [json_name = "in"];</code>
@@ -143,12 +143,12 @@ private static final long serialVersionUID = 0L;
    * <pre>
    * requires the field's type_url to be not equal to any of the specified values. If it matches any of the specified values, an error message is generated.
    *
-   *```proto
-   *message MyAny {
-   *  // The field `value` must not have a `type_url` equal to any of the specified values.
+   * ```proto
+   * message MyAny {
+   *   // The field `value` must not have a `type_url` equal to any of the specified values.
    *   google.protobuf.Any value = 1 [(buf.validate.field).any.not_in = ["type.googleapis.com/ForbiddenType1", "type.googleapis.com/ForbiddenType2"]];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
    * <code>repeated string not_in = 3 [json_name = "notIn"];</code>
@@ -162,12 +162,12 @@ private static final long serialVersionUID = 0L;
    * <pre>
    * requires the field's type_url to be not equal to any of the specified values. If it matches any of the specified values, an error message is generated.
    *
-   *```proto
-   *message MyAny {
-   *  // The field `value` must not have a `type_url` equal to any of the specified values.
+   * ```proto
+   * message MyAny {
+   *   // The field `value` must not have a `type_url` equal to any of the specified values.
    *   google.protobuf.Any value = 1 [(buf.validate.field).any.not_in = ["type.googleapis.com/ForbiddenType1", "type.googleapis.com/ForbiddenType2"]];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
    * <code>repeated string not_in = 3 [json_name = "notIn"];</code>
@@ -180,12 +180,12 @@ private static final long serialVersionUID = 0L;
    * <pre>
    * requires the field's type_url to be not equal to any of the specified values. If it matches any of the specified values, an error message is generated.
    *
-   *```proto
-   *message MyAny {
-   *  // The field `value` must not have a `type_url` equal to any of the specified values.
+   * ```proto
+   * message MyAny {
+   *   // The field `value` must not have a `type_url` equal to any of the specified values.
    *   google.protobuf.Any value = 1 [(buf.validate.field).any.not_in = ["type.googleapis.com/ForbiddenType1", "type.googleapis.com/ForbiddenType2"]];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
    * <code>repeated string not_in = 3 [json_name = "notIn"];</code>
@@ -199,12 +199,12 @@ private static final long serialVersionUID = 0L;
    * <pre>
    * requires the field's type_url to be not equal to any of the specified values. If it matches any of the specified values, an error message is generated.
    *
-   *```proto
-   *message MyAny {
-   *  // The field `value` must not have a `type_url` equal to any of the specified values.
+   * ```proto
+   * message MyAny {
+   *   // The field `value` must not have a `type_url` equal to any of the specified values.
    *   google.protobuf.Any value = 1 [(buf.validate.field).any.not_in = ["type.googleapis.com/ForbiddenType1", "type.googleapis.com/ForbiddenType2"]];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
    * <code>repeated string not_in = 3 [json_name = "notIn"];</code>
@@ -610,16 +610,16 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     *`in` requires the field's `type_url` to be equal to one of the
+     * `in` requires the field's `type_url` to be equal to one of the
      *specified values. If it doesn't match any of the specified values, an error
-     *message is generated.
+     * message is generated.
      *
-     *```proto
-     *message MyAny {
-     *  //  The `value` field must have a `type_url` equal to one of the specified values.
+     * ```proto
+     * message MyAny {
+     *   //  The `value` field must have a `type_url` equal to one of the specified values.
      *   google.protobuf.Any value = 1 [(buf.validate.field).any.in = ["type.googleapis.com/MyType1", "type.googleapis.com/MyType2"]];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>repeated string in = 2 [json_name = "in"];</code>
@@ -632,16 +632,16 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     *`in` requires the field's `type_url` to be equal to one of the
+     * `in` requires the field's `type_url` to be equal to one of the
      *specified values. If it doesn't match any of the specified values, an error
-     *message is generated.
+     * message is generated.
      *
-     *```proto
-     *message MyAny {
-     *  //  The `value` field must have a `type_url` equal to one of the specified values.
+     * ```proto
+     * message MyAny {
+     *   //  The `value` field must have a `type_url` equal to one of the specified values.
      *   google.protobuf.Any value = 1 [(buf.validate.field).any.in = ["type.googleapis.com/MyType1", "type.googleapis.com/MyType2"]];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>repeated string in = 2 [json_name = "in"];</code>
@@ -652,16 +652,16 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     *`in` requires the field's `type_url` to be equal to one of the
+     * `in` requires the field's `type_url` to be equal to one of the
      *specified values. If it doesn't match any of the specified values, an error
-     *message is generated.
+     * message is generated.
      *
-     *```proto
-     *message MyAny {
-     *  //  The `value` field must have a `type_url` equal to one of the specified values.
+     * ```proto
+     * message MyAny {
+     *   //  The `value` field must have a `type_url` equal to one of the specified values.
      *   google.protobuf.Any value = 1 [(buf.validate.field).any.in = ["type.googleapis.com/MyType1", "type.googleapis.com/MyType2"]];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>repeated string in = 2 [json_name = "in"];</code>
@@ -673,16 +673,16 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     *`in` requires the field's `type_url` to be equal to one of the
+     * `in` requires the field's `type_url` to be equal to one of the
      *specified values. If it doesn't match any of the specified values, an error
-     *message is generated.
+     * message is generated.
      *
-     *```proto
-     *message MyAny {
-     *  //  The `value` field must have a `type_url` equal to one of the specified values.
+     * ```proto
+     * message MyAny {
+     *   //  The `value` field must have a `type_url` equal to one of the specified values.
      *   google.protobuf.Any value = 1 [(buf.validate.field).any.in = ["type.googleapis.com/MyType1", "type.googleapis.com/MyType2"]];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>repeated string in = 2 [json_name = "in"];</code>
@@ -695,16 +695,16 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     *`in` requires the field's `type_url` to be equal to one of the
+     * `in` requires the field's `type_url` to be equal to one of the
      *specified values. If it doesn't match any of the specified values, an error
-     *message is generated.
+     * message is generated.
      *
-     *```proto
-     *message MyAny {
-     *  //  The `value` field must have a `type_url` equal to one of the specified values.
+     * ```proto
+     * message MyAny {
+     *   //  The `value` field must have a `type_url` equal to one of the specified values.
      *   google.protobuf.Any value = 1 [(buf.validate.field).any.in = ["type.googleapis.com/MyType1", "type.googleapis.com/MyType2"]];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>repeated string in = 2 [json_name = "in"];</code>
@@ -723,16 +723,16 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     *`in` requires the field's `type_url` to be equal to one of the
+     * `in` requires the field's `type_url` to be equal to one of the
      *specified values. If it doesn't match any of the specified values, an error
-     *message is generated.
+     * message is generated.
      *
-     *```proto
-     *message MyAny {
-     *  //  The `value` field must have a `type_url` equal to one of the specified values.
+     * ```proto
+     * message MyAny {
+     *   //  The `value` field must have a `type_url` equal to one of the specified values.
      *   google.protobuf.Any value = 1 [(buf.validate.field).any.in = ["type.googleapis.com/MyType1", "type.googleapis.com/MyType2"]];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>repeated string in = 2 [json_name = "in"];</code>
@@ -750,16 +750,16 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     *`in` requires the field's `type_url` to be equal to one of the
+     * `in` requires the field's `type_url` to be equal to one of the
      *specified values. If it doesn't match any of the specified values, an error
-     *message is generated.
+     * message is generated.
      *
-     *```proto
-     *message MyAny {
-     *  //  The `value` field must have a `type_url` equal to one of the specified values.
+     * ```proto
+     * message MyAny {
+     *   //  The `value` field must have a `type_url` equal to one of the specified values.
      *   google.protobuf.Any value = 1 [(buf.validate.field).any.in = ["type.googleapis.com/MyType1", "type.googleapis.com/MyType2"]];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>repeated string in = 2 [json_name = "in"];</code>
@@ -777,16 +777,16 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     *`in` requires the field's `type_url` to be equal to one of the
+     * `in` requires the field's `type_url` to be equal to one of the
      *specified values. If it doesn't match any of the specified values, an error
-     *message is generated.
+     * message is generated.
      *
-     *```proto
-     *message MyAny {
-     *  //  The `value` field must have a `type_url` equal to one of the specified values.
+     * ```proto
+     * message MyAny {
+     *   //  The `value` field must have a `type_url` equal to one of the specified values.
      *   google.protobuf.Any value = 1 [(buf.validate.field).any.in = ["type.googleapis.com/MyType1", "type.googleapis.com/MyType2"]];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>repeated string in = 2 [json_name = "in"];</code>
@@ -801,16 +801,16 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     *`in` requires the field's `type_url` to be equal to one of the
+     * `in` requires the field's `type_url` to be equal to one of the
      *specified values. If it doesn't match any of the specified values, an error
-     *message is generated.
+     * message is generated.
      *
-     *```proto
-     *message MyAny {
-     *  //  The `value` field must have a `type_url` equal to one of the specified values.
+     * ```proto
+     * message MyAny {
+     *   //  The `value` field must have a `type_url` equal to one of the specified values.
      *   google.protobuf.Any value = 1 [(buf.validate.field).any.in = ["type.googleapis.com/MyType1", "type.googleapis.com/MyType2"]];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>repeated string in = 2 [json_name = "in"];</code>
@@ -840,12 +840,12 @@ private static final long serialVersionUID = 0L;
      * <pre>
      * requires the field's type_url to be not equal to any of the specified values. If it matches any of the specified values, an error message is generated.
      *
-     *```proto
-     *message MyAny {
-     *  // The field `value` must not have a `type_url` equal to any of the specified values.
+     * ```proto
+     * message MyAny {
+     *   // The field `value` must not have a `type_url` equal to any of the specified values.
      *   google.protobuf.Any value = 1 [(buf.validate.field).any.not_in = ["type.googleapis.com/ForbiddenType1", "type.googleapis.com/ForbiddenType2"]];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>repeated string not_in = 3 [json_name = "notIn"];</code>
@@ -860,12 +860,12 @@ private static final long serialVersionUID = 0L;
      * <pre>
      * requires the field's type_url to be not equal to any of the specified values. If it matches any of the specified values, an error message is generated.
      *
-     *```proto
-     *message MyAny {
-     *  // The field `value` must not have a `type_url` equal to any of the specified values.
+     * ```proto
+     * message MyAny {
+     *   // The field `value` must not have a `type_url` equal to any of the specified values.
      *   google.protobuf.Any value = 1 [(buf.validate.field).any.not_in = ["type.googleapis.com/ForbiddenType1", "type.googleapis.com/ForbiddenType2"]];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>repeated string not_in = 3 [json_name = "notIn"];</code>
@@ -878,12 +878,12 @@ private static final long serialVersionUID = 0L;
      * <pre>
      * requires the field's type_url to be not equal to any of the specified values. If it matches any of the specified values, an error message is generated.
      *
-     *```proto
-     *message MyAny {
-     *  // The field `value` must not have a `type_url` equal to any of the specified values.
+     * ```proto
+     * message MyAny {
+     *   // The field `value` must not have a `type_url` equal to any of the specified values.
      *   google.protobuf.Any value = 1 [(buf.validate.field).any.not_in = ["type.googleapis.com/ForbiddenType1", "type.googleapis.com/ForbiddenType2"]];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>repeated string not_in = 3 [json_name = "notIn"];</code>
@@ -897,12 +897,12 @@ private static final long serialVersionUID = 0L;
      * <pre>
      * requires the field's type_url to be not equal to any of the specified values. If it matches any of the specified values, an error message is generated.
      *
-     *```proto
-     *message MyAny {
-     *  // The field `value` must not have a `type_url` equal to any of the specified values.
+     * ```proto
+     * message MyAny {
+     *   // The field `value` must not have a `type_url` equal to any of the specified values.
      *   google.protobuf.Any value = 1 [(buf.validate.field).any.not_in = ["type.googleapis.com/ForbiddenType1", "type.googleapis.com/ForbiddenType2"]];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>repeated string not_in = 3 [json_name = "notIn"];</code>
@@ -917,12 +917,12 @@ private static final long serialVersionUID = 0L;
      * <pre>
      * requires the field's type_url to be not equal to any of the specified values. If it matches any of the specified values, an error message is generated.
      *
-     *```proto
-     *message MyAny {
-     *  // The field `value` must not have a `type_url` equal to any of the specified values.
+     * ```proto
+     * message MyAny {
+     *   // The field `value` must not have a `type_url` equal to any of the specified values.
      *   google.protobuf.Any value = 1 [(buf.validate.field).any.not_in = ["type.googleapis.com/ForbiddenType1", "type.googleapis.com/ForbiddenType2"]];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>repeated string not_in = 3 [json_name = "notIn"];</code>
@@ -943,12 +943,12 @@ private static final long serialVersionUID = 0L;
      * <pre>
      * requires the field's type_url to be not equal to any of the specified values. If it matches any of the specified values, an error message is generated.
      *
-     *```proto
-     *message MyAny {
-     *  // The field `value` must not have a `type_url` equal to any of the specified values.
+     * ```proto
+     * message MyAny {
+     *   // The field `value` must not have a `type_url` equal to any of the specified values.
      *   google.protobuf.Any value = 1 [(buf.validate.field).any.not_in = ["type.googleapis.com/ForbiddenType1", "type.googleapis.com/ForbiddenType2"]];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>repeated string not_in = 3 [json_name = "notIn"];</code>
@@ -968,12 +968,12 @@ private static final long serialVersionUID = 0L;
      * <pre>
      * requires the field's type_url to be not equal to any of the specified values. If it matches any of the specified values, an error message is generated.
      *
-     *```proto
-     *message MyAny {
-     *  // The field `value` must not have a `type_url` equal to any of the specified values.
+     * ```proto
+     * message MyAny {
+     *   // The field `value` must not have a `type_url` equal to any of the specified values.
      *   google.protobuf.Any value = 1 [(buf.validate.field).any.not_in = ["type.googleapis.com/ForbiddenType1", "type.googleapis.com/ForbiddenType2"]];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>repeated string not_in = 3 [json_name = "notIn"];</code>
@@ -993,12 +993,12 @@ private static final long serialVersionUID = 0L;
      * <pre>
      * requires the field's type_url to be not equal to any of the specified values. If it matches any of the specified values, an error message is generated.
      *
-     *```proto
-     *message MyAny {
-     *  // The field `value` must not have a `type_url` equal to any of the specified values.
+     * ```proto
+     * message MyAny {
+     *   // The field `value` must not have a `type_url` equal to any of the specified values.
      *   google.protobuf.Any value = 1 [(buf.validate.field).any.not_in = ["type.googleapis.com/ForbiddenType1", "type.googleapis.com/ForbiddenType2"]];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>repeated string not_in = 3 [json_name = "notIn"];</code>
@@ -1015,12 +1015,12 @@ private static final long serialVersionUID = 0L;
      * <pre>
      * requires the field's type_url to be not equal to any of the specified values. If it matches any of the specified values, an error message is generated.
      *
-     *```proto
-     *message MyAny {
-     *  // The field `value` must not have a `type_url` equal to any of the specified values.
+     * ```proto
+     * message MyAny {
+     *   // The field `value` must not have a `type_url` equal to any of the specified values.
      *   google.protobuf.Any value = 1 [(buf.validate.field).any.not_in = ["type.googleapis.com/ForbiddenType1", "type.googleapis.com/ForbiddenType2"]];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>repeated string not_in = 3 [json_name = "notIn"];</code>

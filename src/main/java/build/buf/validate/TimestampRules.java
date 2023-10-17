@@ -135,14 +135,14 @@ private static final long serialVersionUID = 0L;
   private com.google.protobuf.Timestamp const_;
   /**
    * <pre>
-   *`const` dictates that this field, of the `google.protobuf.Timestamp` type, must exactly match the specified value. If the field value doesn't correspond to the specified timestamp, an error message will be generated.
+   * `const` dictates that this field, of the `google.protobuf.Timestamp` type, must exactly match the specified value. If the field value doesn't correspond to the specified timestamp, an error message will be generated.
    *
-   *```proto
-   *message MyTimestamp {
-   *  // value must equal 2023-05-03T10:00:00Z
+   * ```proto
+   * message MyTimestamp {
+   *   // value must equal 2023-05-03T10:00:00Z
    *   google.protobuf.Timestamp created_at = 1 [(buf.validate.field).timestamp.const = {seconds: 1727998800}];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
    * <code>optional .google.protobuf.Timestamp const = 2 [json_name = "const", (.buf.validate.priv.field) = { ... }</code>
@@ -154,14 +154,14 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   *`const` dictates that this field, of the `google.protobuf.Timestamp` type, must exactly match the specified value. If the field value doesn't correspond to the specified timestamp, an error message will be generated.
+   * `const` dictates that this field, of the `google.protobuf.Timestamp` type, must exactly match the specified value. If the field value doesn't correspond to the specified timestamp, an error message will be generated.
    *
-   *```proto
-   *message MyTimestamp {
-   *  // value must equal 2023-05-03T10:00:00Z
+   * ```proto
+   * message MyTimestamp {
+   *   // value must equal 2023-05-03T10:00:00Z
    *   google.protobuf.Timestamp created_at = 1 [(buf.validate.field).timestamp.const = {seconds: 1727998800}];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
    * <code>optional .google.protobuf.Timestamp const = 2 [json_name = "const", (.buf.validate.priv.field) = { ... }</code>
@@ -173,14 +173,14 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   *`const` dictates that this field, of the `google.protobuf.Timestamp` type, must exactly match the specified value. If the field value doesn't correspond to the specified timestamp, an error message will be generated.
+   * `const` dictates that this field, of the `google.protobuf.Timestamp` type, must exactly match the specified value. If the field value doesn't correspond to the specified timestamp, an error message will be generated.
    *
-   *```proto
-   *message MyTimestamp {
-   *  // value must equal 2023-05-03T10:00:00Z
+   * ```proto
+   * message MyTimestamp {
+   *   // value must equal 2023-05-03T10:00:00Z
    *   google.protobuf.Timestamp created_at = 1 [(buf.validate.field).timestamp.const = {seconds: 1727998800}];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
    * <code>optional .google.protobuf.Timestamp const = 2 [json_name = "const", (.buf.validate.priv.field) = { ... }</code>
@@ -321,14 +321,14 @@ private static final long serialVersionUID = 0L;
   public static final int LT_NOW_FIELD_NUMBER = 7;
   /**
    * <pre>
-   *`lt_now` specifies that this field, of the `google.protobuf.Timestamp` type, must be less than the current time. `lt_now` can only be used with the `within` rule.
+   * `lt_now` specifies that this field, of the `google.protobuf.Timestamp` type, must be less than the current time. `lt_now` can only be used with the `within` rule.
    *
-   *```proto
-   *message MyTimestamp {
+   * ```proto
+   * message MyTimestamp {
    *  // value must be less than now
    *   google.protobuf.Timestamp created_at = 1 [(buf.validate.field).timestamp.lt_now = true];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
    * <code>bool lt_now = 7 [json_name = "ltNow", (.buf.validate.priv.field) = { ... }</code>
@@ -340,14 +340,14 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   *`lt_now` specifies that this field, of the `google.protobuf.Timestamp` type, must be less than the current time. `lt_now` can only be used with the `within` rule.
+   * `lt_now` specifies that this field, of the `google.protobuf.Timestamp` type, must be less than the current time. `lt_now` can only be used with the `within` rule.
    *
-   *```proto
-   *message MyTimestamp {
+   * ```proto
+   * message MyTimestamp {
    *  // value must be less than now
    *   google.protobuf.Timestamp created_at = 1 [(buf.validate.field).timestamp.lt_now = true];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
    * <code>bool lt_now = 7 [json_name = "ltNow", (.buf.validate.priv.field) = { ... }</code>
@@ -364,24 +364,24 @@ private static final long serialVersionUID = 0L;
   public static final int GT_FIELD_NUMBER = 5;
   /**
    * <pre>
-   *`gt` requires the timestamp field value to be greater than the specified
+   * `gt` requires the timestamp field value to be greater than the specified
    * value (exclusive). If the value of `gt` is larger than a specified `lt`
    * or `lte`, the range is reversed, and the field value must be outside the
    * specified range. If the field value doesn't meet the required conditions,
    * an error message is generated.
    *
-   *```proto
-   *message MyTimestamp {
-   *  // timestamp must be greater than '2023-01-01T00:00:00Z' [timestamp.gt]
-   *  google.protobuf.Timestamp value = 1 [(buf.validate.field).timestamp.gt = { seconds: 1672444800 }];
+   * ```proto
+   * message MyTimestamp {
+   *   // timestamp must be greater than '2023-01-01T00:00:00Z' [timestamp.gt]
+   *   google.protobuf.Timestamp value = 1 [(buf.validate.field).timestamp.gt = { seconds: 1672444800 }];
    *
-   *  // timestamp must be greater than '2023-01-01T00:00:00Z' and less than '2023-01-02T00:00:00Z' [timestamp.gt_lt]
-   *  google.protobuf.Timestamp another_value = 2 [(buf.validate.field).timestamp = { gt: { seconds: 1672444800 }, lt: { seconds: 1672531200 } }];
+   *   // timestamp must be greater than '2023-01-01T00:00:00Z' and less than '2023-01-02T00:00:00Z' [timestamp.gt_lt]
+   *   google.protobuf.Timestamp another_value = 2 [(buf.validate.field).timestamp = { gt: { seconds: 1672444800 }, lt: { seconds: 1672531200 } }];
    *
-   *  // timestamp must be greater than '2023-01-02T00:00:00Z' or less than '2023-01-01T00:00:00Z' [timestamp.gt_lt_exclusive]
-   *  google.protobuf.Timestamp other_value = 3 [(buf.validate.field).timestamp = { gt: { seconds: 1672531200 }, lt: { seconds: 1672444800 } }];
-   *}
-   *```
+   *   // timestamp must be greater than '2023-01-02T00:00:00Z' or less than '2023-01-01T00:00:00Z' [timestamp.gt_lt_exclusive]
+   *   google.protobuf.Timestamp other_value = 3 [(buf.validate.field).timestamp = { gt: { seconds: 1672531200 }, lt: { seconds: 1672444800 } }];
+   * }
+   * ```
    * </pre>
    *
    * <code>.google.protobuf.Timestamp gt = 5 [json_name = "gt", (.buf.validate.priv.field) = { ... }</code>
@@ -393,24 +393,24 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   *`gt` requires the timestamp field value to be greater than the specified
+   * `gt` requires the timestamp field value to be greater than the specified
    * value (exclusive). If the value of `gt` is larger than a specified `lt`
    * or `lte`, the range is reversed, and the field value must be outside the
    * specified range. If the field value doesn't meet the required conditions,
    * an error message is generated.
    *
-   *```proto
-   *message MyTimestamp {
-   *  // timestamp must be greater than '2023-01-01T00:00:00Z' [timestamp.gt]
-   *  google.protobuf.Timestamp value = 1 [(buf.validate.field).timestamp.gt = { seconds: 1672444800 }];
+   * ```proto
+   * message MyTimestamp {
+   *   // timestamp must be greater than '2023-01-01T00:00:00Z' [timestamp.gt]
+   *   google.protobuf.Timestamp value = 1 [(buf.validate.field).timestamp.gt = { seconds: 1672444800 }];
    *
-   *  // timestamp must be greater than '2023-01-01T00:00:00Z' and less than '2023-01-02T00:00:00Z' [timestamp.gt_lt]
-   *  google.protobuf.Timestamp another_value = 2 [(buf.validate.field).timestamp = { gt: { seconds: 1672444800 }, lt: { seconds: 1672531200 } }];
+   *   // timestamp must be greater than '2023-01-01T00:00:00Z' and less than '2023-01-02T00:00:00Z' [timestamp.gt_lt]
+   *   google.protobuf.Timestamp another_value = 2 [(buf.validate.field).timestamp = { gt: { seconds: 1672444800 }, lt: { seconds: 1672531200 } }];
    *
-   *  // timestamp must be greater than '2023-01-02T00:00:00Z' or less than '2023-01-01T00:00:00Z' [timestamp.gt_lt_exclusive]
-   *  google.protobuf.Timestamp other_value = 3 [(buf.validate.field).timestamp = { gt: { seconds: 1672531200 }, lt: { seconds: 1672444800 } }];
-   *}
-   *```
+   *   // timestamp must be greater than '2023-01-02T00:00:00Z' or less than '2023-01-01T00:00:00Z' [timestamp.gt_lt_exclusive]
+   *   google.protobuf.Timestamp other_value = 3 [(buf.validate.field).timestamp = { gt: { seconds: 1672531200 }, lt: { seconds: 1672444800 } }];
+   * }
+   * ```
    * </pre>
    *
    * <code>.google.protobuf.Timestamp gt = 5 [json_name = "gt", (.buf.validate.priv.field) = { ... }</code>
@@ -425,24 +425,24 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   *`gt` requires the timestamp field value to be greater than the specified
+   * `gt` requires the timestamp field value to be greater than the specified
    * value (exclusive). If the value of `gt` is larger than a specified `lt`
    * or `lte`, the range is reversed, and the field value must be outside the
    * specified range. If the field value doesn't meet the required conditions,
    * an error message is generated.
    *
-   *```proto
-   *message MyTimestamp {
-   *  // timestamp must be greater than '2023-01-01T00:00:00Z' [timestamp.gt]
-   *  google.protobuf.Timestamp value = 1 [(buf.validate.field).timestamp.gt = { seconds: 1672444800 }];
+   * ```proto
+   * message MyTimestamp {
+   *   // timestamp must be greater than '2023-01-01T00:00:00Z' [timestamp.gt]
+   *   google.protobuf.Timestamp value = 1 [(buf.validate.field).timestamp.gt = { seconds: 1672444800 }];
    *
-   *  // timestamp must be greater than '2023-01-01T00:00:00Z' and less than '2023-01-02T00:00:00Z' [timestamp.gt_lt]
-   *  google.protobuf.Timestamp another_value = 2 [(buf.validate.field).timestamp = { gt: { seconds: 1672444800 }, lt: { seconds: 1672531200 } }];
+   *   // timestamp must be greater than '2023-01-01T00:00:00Z' and less than '2023-01-02T00:00:00Z' [timestamp.gt_lt]
+   *   google.protobuf.Timestamp another_value = 2 [(buf.validate.field).timestamp = { gt: { seconds: 1672444800 }, lt: { seconds: 1672531200 } }];
    *
-   *  // timestamp must be greater than '2023-01-02T00:00:00Z' or less than '2023-01-01T00:00:00Z' [timestamp.gt_lt_exclusive]
-   *  google.protobuf.Timestamp other_value = 3 [(buf.validate.field).timestamp = { gt: { seconds: 1672531200 }, lt: { seconds: 1672444800 } }];
-   *}
-   *```
+   *   // timestamp must be greater than '2023-01-02T00:00:00Z' or less than '2023-01-01T00:00:00Z' [timestamp.gt_lt_exclusive]
+   *   google.protobuf.Timestamp other_value = 3 [(buf.validate.field).timestamp = { gt: { seconds: 1672531200 }, lt: { seconds: 1672444800 } }];
+   * }
+   * ```
    * </pre>
    *
    * <code>.google.protobuf.Timestamp gt = 5 [json_name = "gt", (.buf.validate.priv.field) = { ... }</code>
@@ -458,24 +458,24 @@ private static final long serialVersionUID = 0L;
   public static final int GTE_FIELD_NUMBER = 6;
   /**
    * <pre>
-   *`gte` requires the timestamp field value to be greater than or equal to the
+   * `gte` requires the timestamp field value to be greater than or equal to the
    * specified value (exclusive). If the value of `gte` is larger than a
    * specified `lt` or `lte`, the range is reversed, and the field value
    * must be outside the specified range. If the field value doesn't meet
    * the required conditions, an error message is generated.
    *
-   *```proto
-   *message MyTimestamp {
-   *  // timestamp must be greater than or equal to '2023-01-01T00:00:00Z' [timestamp.gte]
-   *  google.protobuf.Timestamp value = 1 [(buf.validate.field).timestamp.gte = { seconds: 1672444800 }];
+   * ```proto
+   * message MyTimestamp {
+   *   // timestamp must be greater than or equal to '2023-01-01T00:00:00Z' [timestamp.gte]
+   *   google.protobuf.Timestamp value = 1 [(buf.validate.field).timestamp.gte = { seconds: 1672444800 }];
    *
-   *  // timestamp must be greater than or equal to '2023-01-01T00:00:00Z' and less than '2023-01-02T00:00:00Z' [timestamp.gte_lt]
-   *  google.protobuf.Timestamp another_value = 2 [(buf.validate.field).timestamp = { gte: { seconds: 1672444800 }, lt: { seconds: 1672531200 } }];
+   *   // timestamp must be greater than or equal to '2023-01-01T00:00:00Z' and less than '2023-01-02T00:00:00Z' [timestamp.gte_lt]
+   *   google.protobuf.Timestamp another_value = 2 [(buf.validate.field).timestamp = { gte: { seconds: 1672444800 }, lt: { seconds: 1672531200 } }];
    *
-   *  // timestamp must be greater than or equal to '2023-01-02T00:00:00Z' or less than '2023-01-01T00:00:00Z' [timestamp.gte_lt_exclusive]
-   *  google.protobuf.Timestamp other_value = 3 [(buf.validate.field).timestamp = { gte: { seconds: 1672531200 }, lt: { seconds: 1672444800 } }];
-   *}
-   *```
+   *   // timestamp must be greater than or equal to '2023-01-02T00:00:00Z' or less than '2023-01-01T00:00:00Z' [timestamp.gte_lt_exclusive]
+   *   google.protobuf.Timestamp other_value = 3 [(buf.validate.field).timestamp = { gte: { seconds: 1672531200 }, lt: { seconds: 1672444800 } }];
+   * }
+   * ```
    * </pre>
    *
    * <code>.google.protobuf.Timestamp gte = 6 [json_name = "gte", (.buf.validate.priv.field) = { ... }</code>
@@ -487,24 +487,24 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   *`gte` requires the timestamp field value to be greater than or equal to the
+   * `gte` requires the timestamp field value to be greater than or equal to the
    * specified value (exclusive). If the value of `gte` is larger than a
    * specified `lt` or `lte`, the range is reversed, and the field value
    * must be outside the specified range. If the field value doesn't meet
    * the required conditions, an error message is generated.
    *
-   *```proto
-   *message MyTimestamp {
-   *  // timestamp must be greater than or equal to '2023-01-01T00:00:00Z' [timestamp.gte]
-   *  google.protobuf.Timestamp value = 1 [(buf.validate.field).timestamp.gte = { seconds: 1672444800 }];
+   * ```proto
+   * message MyTimestamp {
+   *   // timestamp must be greater than or equal to '2023-01-01T00:00:00Z' [timestamp.gte]
+   *   google.protobuf.Timestamp value = 1 [(buf.validate.field).timestamp.gte = { seconds: 1672444800 }];
    *
-   *  // timestamp must be greater than or equal to '2023-01-01T00:00:00Z' and less than '2023-01-02T00:00:00Z' [timestamp.gte_lt]
-   *  google.protobuf.Timestamp another_value = 2 [(buf.validate.field).timestamp = { gte: { seconds: 1672444800 }, lt: { seconds: 1672531200 } }];
+   *   // timestamp must be greater than or equal to '2023-01-01T00:00:00Z' and less than '2023-01-02T00:00:00Z' [timestamp.gte_lt]
+   *   google.protobuf.Timestamp another_value = 2 [(buf.validate.field).timestamp = { gte: { seconds: 1672444800 }, lt: { seconds: 1672531200 } }];
    *
-   *  // timestamp must be greater than or equal to '2023-01-02T00:00:00Z' or less than '2023-01-01T00:00:00Z' [timestamp.gte_lt_exclusive]
-   *  google.protobuf.Timestamp other_value = 3 [(buf.validate.field).timestamp = { gte: { seconds: 1672531200 }, lt: { seconds: 1672444800 } }];
-   *}
-   *```
+   *   // timestamp must be greater than or equal to '2023-01-02T00:00:00Z' or less than '2023-01-01T00:00:00Z' [timestamp.gte_lt_exclusive]
+   *   google.protobuf.Timestamp other_value = 3 [(buf.validate.field).timestamp = { gte: { seconds: 1672531200 }, lt: { seconds: 1672444800 } }];
+   * }
+   * ```
    * </pre>
    *
    * <code>.google.protobuf.Timestamp gte = 6 [json_name = "gte", (.buf.validate.priv.field) = { ... }</code>
@@ -519,24 +519,24 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   *`gte` requires the timestamp field value to be greater than or equal to the
+   * `gte` requires the timestamp field value to be greater than or equal to the
    * specified value (exclusive). If the value of `gte` is larger than a
    * specified `lt` or `lte`, the range is reversed, and the field value
    * must be outside the specified range. If the field value doesn't meet
    * the required conditions, an error message is generated.
    *
-   *```proto
-   *message MyTimestamp {
-   *  // timestamp must be greater than or equal to '2023-01-01T00:00:00Z' [timestamp.gte]
-   *  google.protobuf.Timestamp value = 1 [(buf.validate.field).timestamp.gte = { seconds: 1672444800 }];
+   * ```proto
+   * message MyTimestamp {
+   *   // timestamp must be greater than or equal to '2023-01-01T00:00:00Z' [timestamp.gte]
+   *   google.protobuf.Timestamp value = 1 [(buf.validate.field).timestamp.gte = { seconds: 1672444800 }];
    *
-   *  // timestamp must be greater than or equal to '2023-01-01T00:00:00Z' and less than '2023-01-02T00:00:00Z' [timestamp.gte_lt]
-   *  google.protobuf.Timestamp another_value = 2 [(buf.validate.field).timestamp = { gte: { seconds: 1672444800 }, lt: { seconds: 1672531200 } }];
+   *   // timestamp must be greater than or equal to '2023-01-01T00:00:00Z' and less than '2023-01-02T00:00:00Z' [timestamp.gte_lt]
+   *   google.protobuf.Timestamp another_value = 2 [(buf.validate.field).timestamp = { gte: { seconds: 1672444800 }, lt: { seconds: 1672531200 } }];
    *
-   *  // timestamp must be greater than or equal to '2023-01-02T00:00:00Z' or less than '2023-01-01T00:00:00Z' [timestamp.gte_lt_exclusive]
-   *  google.protobuf.Timestamp other_value = 3 [(buf.validate.field).timestamp = { gte: { seconds: 1672531200 }, lt: { seconds: 1672444800 } }];
-   *}
-   *```
+   *   // timestamp must be greater than or equal to '2023-01-02T00:00:00Z' or less than '2023-01-01T00:00:00Z' [timestamp.gte_lt_exclusive]
+   *   google.protobuf.Timestamp other_value = 3 [(buf.validate.field).timestamp = { gte: { seconds: 1672531200 }, lt: { seconds: 1672444800 } }];
+   * }
+   * ```
    * </pre>
    *
    * <code>.google.protobuf.Timestamp gte = 6 [json_name = "gte", (.buf.validate.priv.field) = { ... }</code>
@@ -552,14 +552,14 @@ private static final long serialVersionUID = 0L;
   public static final int GT_NOW_FIELD_NUMBER = 8;
   /**
    * <pre>
-   *`gt_now` specifies that this field, of the `google.protobuf.Timestamp` type, must be greater than the current time. `gt_now` can only be used with the `within` rule.
+   * `gt_now` specifies that this field, of the `google.protobuf.Timestamp` type, must be greater than the current time. `gt_now` can only be used with the `within` rule.
    *
-   *```proto
-   *message MyTimestamp {
-   *  // value must be greater than now
+   * ```proto
+   * message MyTimestamp {
+   *   // value must be greater than now
    *   google.protobuf.Timestamp created_at = 1 [(buf.validate.field).timestamp.gt_now = true];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
    * <code>bool gt_now = 8 [json_name = "gtNow", (.buf.validate.priv.field) = { ... }</code>
@@ -571,14 +571,14 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   *`gt_now` specifies that this field, of the `google.protobuf.Timestamp` type, must be greater than the current time. `gt_now` can only be used with the `within` rule.
+   * `gt_now` specifies that this field, of the `google.protobuf.Timestamp` type, must be greater than the current time. `gt_now` can only be used with the `within` rule.
    *
-   *```proto
-   *message MyTimestamp {
-   *  // value must be greater than now
+   * ```proto
+   * message MyTimestamp {
+   *   // value must be greater than now
    *   google.protobuf.Timestamp created_at = 1 [(buf.validate.field).timestamp.gt_now = true];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
    * <code>bool gt_now = 8 [json_name = "gtNow", (.buf.validate.priv.field) = { ... }</code>
@@ -598,12 +598,12 @@ private static final long serialVersionUID = 0L;
    * <pre>
    * `within` specifies that this field, of the `google.protobuf.Timestamp` type, must be within the specified duration of the current time. If the field value isn't within the duration, an error message is generated.
    *
-   *```proto
-   *message MyTimestamp {
-   *  // value must be within 1 hour of now
+   * ```proto
+   * message MyTimestamp {
+   *   // value must be within 1 hour of now
    *   google.protobuf.Timestamp created_at = 1 [(buf.validate.field).timestamp.within = {seconds: 3600}];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
    * <code>optional .google.protobuf.Duration within = 9 [json_name = "within", (.buf.validate.priv.field) = { ... }</code>
@@ -617,12 +617,12 @@ private static final long serialVersionUID = 0L;
    * <pre>
    * `within` specifies that this field, of the `google.protobuf.Timestamp` type, must be within the specified duration of the current time. If the field value isn't within the duration, an error message is generated.
    *
-   *```proto
-   *message MyTimestamp {
-   *  // value must be within 1 hour of now
+   * ```proto
+   * message MyTimestamp {
+   *   // value must be within 1 hour of now
    *   google.protobuf.Timestamp created_at = 1 [(buf.validate.field).timestamp.within = {seconds: 3600}];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
    * <code>optional .google.protobuf.Duration within = 9 [json_name = "within", (.buf.validate.priv.field) = { ... }</code>
@@ -636,12 +636,12 @@ private static final long serialVersionUID = 0L;
    * <pre>
    * `within` specifies that this field, of the `google.protobuf.Timestamp` type, must be within the specified duration of the current time. If the field value isn't within the duration, an error message is generated.
    *
-   *```proto
-   *message MyTimestamp {
-   *  // value must be within 1 hour of now
+   * ```proto
+   * message MyTimestamp {
+   *   // value must be within 1 hour of now
    *   google.protobuf.Timestamp created_at = 1 [(buf.validate.field).timestamp.within = {seconds: 3600}];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
    * <code>optional .google.protobuf.Duration within = 9 [json_name = "within", (.buf.validate.priv.field) = { ... }</code>
@@ -1301,14 +1301,14 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder> constBuilder_;
     /**
      * <pre>
-     *`const` dictates that this field, of the `google.protobuf.Timestamp` type, must exactly match the specified value. If the field value doesn't correspond to the specified timestamp, an error message will be generated.
+     * `const` dictates that this field, of the `google.protobuf.Timestamp` type, must exactly match the specified value. If the field value doesn't correspond to the specified timestamp, an error message will be generated.
      *
-     *```proto
-     *message MyTimestamp {
-     *  // value must equal 2023-05-03T10:00:00Z
+     * ```proto
+     * message MyTimestamp {
+     *   // value must equal 2023-05-03T10:00:00Z
      *   google.protobuf.Timestamp created_at = 1 [(buf.validate.field).timestamp.const = {seconds: 1727998800}];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>optional .google.protobuf.Timestamp const = 2 [json_name = "const", (.buf.validate.priv.field) = { ... }</code>
@@ -1319,14 +1319,14 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     *`const` dictates that this field, of the `google.protobuf.Timestamp` type, must exactly match the specified value. If the field value doesn't correspond to the specified timestamp, an error message will be generated.
+     * `const` dictates that this field, of the `google.protobuf.Timestamp` type, must exactly match the specified value. If the field value doesn't correspond to the specified timestamp, an error message will be generated.
      *
-     *```proto
-     *message MyTimestamp {
-     *  // value must equal 2023-05-03T10:00:00Z
+     * ```proto
+     * message MyTimestamp {
+     *   // value must equal 2023-05-03T10:00:00Z
      *   google.protobuf.Timestamp created_at = 1 [(buf.validate.field).timestamp.const = {seconds: 1727998800}];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>optional .google.protobuf.Timestamp const = 2 [json_name = "const", (.buf.validate.priv.field) = { ... }</code>
@@ -1341,14 +1341,14 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     *`const` dictates that this field, of the `google.protobuf.Timestamp` type, must exactly match the specified value. If the field value doesn't correspond to the specified timestamp, an error message will be generated.
+     * `const` dictates that this field, of the `google.protobuf.Timestamp` type, must exactly match the specified value. If the field value doesn't correspond to the specified timestamp, an error message will be generated.
      *
-     *```proto
-     *message MyTimestamp {
-     *  // value must equal 2023-05-03T10:00:00Z
+     * ```proto
+     * message MyTimestamp {
+     *   // value must equal 2023-05-03T10:00:00Z
      *   google.protobuf.Timestamp created_at = 1 [(buf.validate.field).timestamp.const = {seconds: 1727998800}];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>optional .google.protobuf.Timestamp const = 2 [json_name = "const", (.buf.validate.priv.field) = { ... }</code>
@@ -1368,14 +1368,14 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     *`const` dictates that this field, of the `google.protobuf.Timestamp` type, must exactly match the specified value. If the field value doesn't correspond to the specified timestamp, an error message will be generated.
+     * `const` dictates that this field, of the `google.protobuf.Timestamp` type, must exactly match the specified value. If the field value doesn't correspond to the specified timestamp, an error message will be generated.
      *
-     *```proto
-     *message MyTimestamp {
-     *  // value must equal 2023-05-03T10:00:00Z
+     * ```proto
+     * message MyTimestamp {
+     *   // value must equal 2023-05-03T10:00:00Z
      *   google.protobuf.Timestamp created_at = 1 [(buf.validate.field).timestamp.const = {seconds: 1727998800}];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>optional .google.protobuf.Timestamp const = 2 [json_name = "const", (.buf.validate.priv.field) = { ... }</code>
@@ -1393,14 +1393,14 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     *`const` dictates that this field, of the `google.protobuf.Timestamp` type, must exactly match the specified value. If the field value doesn't correspond to the specified timestamp, an error message will be generated.
+     * `const` dictates that this field, of the `google.protobuf.Timestamp` type, must exactly match the specified value. If the field value doesn't correspond to the specified timestamp, an error message will be generated.
      *
-     *```proto
-     *message MyTimestamp {
-     *  // value must equal 2023-05-03T10:00:00Z
+     * ```proto
+     * message MyTimestamp {
+     *   // value must equal 2023-05-03T10:00:00Z
      *   google.protobuf.Timestamp created_at = 1 [(buf.validate.field).timestamp.const = {seconds: 1727998800}];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>optional .google.protobuf.Timestamp const = 2 [json_name = "const", (.buf.validate.priv.field) = { ... }</code>
@@ -1425,14 +1425,14 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     *`const` dictates that this field, of the `google.protobuf.Timestamp` type, must exactly match the specified value. If the field value doesn't correspond to the specified timestamp, an error message will be generated.
+     * `const` dictates that this field, of the `google.protobuf.Timestamp` type, must exactly match the specified value. If the field value doesn't correspond to the specified timestamp, an error message will be generated.
      *
-     *```proto
-     *message MyTimestamp {
-     *  // value must equal 2023-05-03T10:00:00Z
+     * ```proto
+     * message MyTimestamp {
+     *   // value must equal 2023-05-03T10:00:00Z
      *   google.protobuf.Timestamp created_at = 1 [(buf.validate.field).timestamp.const = {seconds: 1727998800}];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>optional .google.protobuf.Timestamp const = 2 [json_name = "const", (.buf.validate.priv.field) = { ... }</code>
@@ -1449,14 +1449,14 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     *`const` dictates that this field, of the `google.protobuf.Timestamp` type, must exactly match the specified value. If the field value doesn't correspond to the specified timestamp, an error message will be generated.
+     * `const` dictates that this field, of the `google.protobuf.Timestamp` type, must exactly match the specified value. If the field value doesn't correspond to the specified timestamp, an error message will be generated.
      *
-     *```proto
-     *message MyTimestamp {
-     *  // value must equal 2023-05-03T10:00:00Z
+     * ```proto
+     * message MyTimestamp {
+     *   // value must equal 2023-05-03T10:00:00Z
      *   google.protobuf.Timestamp created_at = 1 [(buf.validate.field).timestamp.const = {seconds: 1727998800}];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>optional .google.protobuf.Timestamp const = 2 [json_name = "const", (.buf.validate.priv.field) = { ... }</code>
@@ -1468,14 +1468,14 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     *`const` dictates that this field, of the `google.protobuf.Timestamp` type, must exactly match the specified value. If the field value doesn't correspond to the specified timestamp, an error message will be generated.
+     * `const` dictates that this field, of the `google.protobuf.Timestamp` type, must exactly match the specified value. If the field value doesn't correspond to the specified timestamp, an error message will be generated.
      *
-     *```proto
-     *message MyTimestamp {
-     *  // value must equal 2023-05-03T10:00:00Z
+     * ```proto
+     * message MyTimestamp {
+     *   // value must equal 2023-05-03T10:00:00Z
      *   google.protobuf.Timestamp created_at = 1 [(buf.validate.field).timestamp.const = {seconds: 1727998800}];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>optional .google.protobuf.Timestamp const = 2 [json_name = "const", (.buf.validate.priv.field) = { ... }</code>
@@ -1490,14 +1490,14 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     *`const` dictates that this field, of the `google.protobuf.Timestamp` type, must exactly match the specified value. If the field value doesn't correspond to the specified timestamp, an error message will be generated.
+     * `const` dictates that this field, of the `google.protobuf.Timestamp` type, must exactly match the specified value. If the field value doesn't correspond to the specified timestamp, an error message will be generated.
      *
-     *```proto
-     *message MyTimestamp {
-     *  // value must equal 2023-05-03T10:00:00Z
+     * ```proto
+     * message MyTimestamp {
+     *   // value must equal 2023-05-03T10:00:00Z
      *   google.protobuf.Timestamp created_at = 1 [(buf.validate.field).timestamp.const = {seconds: 1727998800}];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>optional .google.protobuf.Timestamp const = 2 [json_name = "const", (.buf.validate.priv.field) = { ... }</code>
@@ -2000,14 +2000,14 @@ private static final long serialVersionUID = 0L;
 
     /**
      * <pre>
-     *`lt_now` specifies that this field, of the `google.protobuf.Timestamp` type, must be less than the current time. `lt_now` can only be used with the `within` rule.
+     * `lt_now` specifies that this field, of the `google.protobuf.Timestamp` type, must be less than the current time. `lt_now` can only be used with the `within` rule.
      *
-     *```proto
-     *message MyTimestamp {
+     * ```proto
+     * message MyTimestamp {
      *  // value must be less than now
      *   google.protobuf.Timestamp created_at = 1 [(buf.validate.field).timestamp.lt_now = true];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>bool lt_now = 7 [json_name = "ltNow", (.buf.validate.priv.field) = { ... }</code>
@@ -2018,14 +2018,14 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     *`lt_now` specifies that this field, of the `google.protobuf.Timestamp` type, must be less than the current time. `lt_now` can only be used with the `within` rule.
+     * `lt_now` specifies that this field, of the `google.protobuf.Timestamp` type, must be less than the current time. `lt_now` can only be used with the `within` rule.
      *
-     *```proto
-     *message MyTimestamp {
+     * ```proto
+     * message MyTimestamp {
      *  // value must be less than now
      *   google.protobuf.Timestamp created_at = 1 [(buf.validate.field).timestamp.lt_now = true];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>bool lt_now = 7 [json_name = "ltNow", (.buf.validate.priv.field) = { ... }</code>
@@ -2039,14 +2039,14 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     *`lt_now` specifies that this field, of the `google.protobuf.Timestamp` type, must be less than the current time. `lt_now` can only be used with the `within` rule.
+     * `lt_now` specifies that this field, of the `google.protobuf.Timestamp` type, must be less than the current time. `lt_now` can only be used with the `within` rule.
      *
-     *```proto
-     *message MyTimestamp {
+     * ```proto
+     * message MyTimestamp {
      *  // value must be less than now
      *   google.protobuf.Timestamp created_at = 1 [(buf.validate.field).timestamp.lt_now = true];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>bool lt_now = 7 [json_name = "ltNow", (.buf.validate.priv.field) = { ... }</code>
@@ -2062,14 +2062,14 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     *`lt_now` specifies that this field, of the `google.protobuf.Timestamp` type, must be less than the current time. `lt_now` can only be used with the `within` rule.
+     * `lt_now` specifies that this field, of the `google.protobuf.Timestamp` type, must be less than the current time. `lt_now` can only be used with the `within` rule.
      *
-     *```proto
-     *message MyTimestamp {
+     * ```proto
+     * message MyTimestamp {
      *  // value must be less than now
      *   google.protobuf.Timestamp created_at = 1 [(buf.validate.field).timestamp.lt_now = true];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>bool lt_now = 7 [json_name = "ltNow", (.buf.validate.priv.field) = { ... }</code>
@@ -2088,24 +2088,24 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder> gtBuilder_;
     /**
      * <pre>
-     *`gt` requires the timestamp field value to be greater than the specified
+     * `gt` requires the timestamp field value to be greater than the specified
      * value (exclusive). If the value of `gt` is larger than a specified `lt`
      * or `lte`, the range is reversed, and the field value must be outside the
      * specified range. If the field value doesn't meet the required conditions,
      * an error message is generated.
      *
-     *```proto
-     *message MyTimestamp {
-     *  // timestamp must be greater than '2023-01-01T00:00:00Z' [timestamp.gt]
-     *  google.protobuf.Timestamp value = 1 [(buf.validate.field).timestamp.gt = { seconds: 1672444800 }];
+     * ```proto
+     * message MyTimestamp {
+     *   // timestamp must be greater than '2023-01-01T00:00:00Z' [timestamp.gt]
+     *   google.protobuf.Timestamp value = 1 [(buf.validate.field).timestamp.gt = { seconds: 1672444800 }];
      *
-     *  // timestamp must be greater than '2023-01-01T00:00:00Z' and less than '2023-01-02T00:00:00Z' [timestamp.gt_lt]
-     *  google.protobuf.Timestamp another_value = 2 [(buf.validate.field).timestamp = { gt: { seconds: 1672444800 }, lt: { seconds: 1672531200 } }];
+     *   // timestamp must be greater than '2023-01-01T00:00:00Z' and less than '2023-01-02T00:00:00Z' [timestamp.gt_lt]
+     *   google.protobuf.Timestamp another_value = 2 [(buf.validate.field).timestamp = { gt: { seconds: 1672444800 }, lt: { seconds: 1672531200 } }];
      *
-     *  // timestamp must be greater than '2023-01-02T00:00:00Z' or less than '2023-01-01T00:00:00Z' [timestamp.gt_lt_exclusive]
-     *  google.protobuf.Timestamp other_value = 3 [(buf.validate.field).timestamp = { gt: { seconds: 1672531200 }, lt: { seconds: 1672444800 } }];
-     *}
-     *```
+     *   // timestamp must be greater than '2023-01-02T00:00:00Z' or less than '2023-01-01T00:00:00Z' [timestamp.gt_lt_exclusive]
+     *   google.protobuf.Timestamp other_value = 3 [(buf.validate.field).timestamp = { gt: { seconds: 1672531200 }, lt: { seconds: 1672444800 } }];
+     * }
+     * ```
      * </pre>
      *
      * <code>.google.protobuf.Timestamp gt = 5 [json_name = "gt", (.buf.validate.priv.field) = { ... }</code>
@@ -2117,24 +2117,24 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     *`gt` requires the timestamp field value to be greater than the specified
+     * `gt` requires the timestamp field value to be greater than the specified
      * value (exclusive). If the value of `gt` is larger than a specified `lt`
      * or `lte`, the range is reversed, and the field value must be outside the
      * specified range. If the field value doesn't meet the required conditions,
      * an error message is generated.
      *
-     *```proto
-     *message MyTimestamp {
-     *  // timestamp must be greater than '2023-01-01T00:00:00Z' [timestamp.gt]
-     *  google.protobuf.Timestamp value = 1 [(buf.validate.field).timestamp.gt = { seconds: 1672444800 }];
+     * ```proto
+     * message MyTimestamp {
+     *   // timestamp must be greater than '2023-01-01T00:00:00Z' [timestamp.gt]
+     *   google.protobuf.Timestamp value = 1 [(buf.validate.field).timestamp.gt = { seconds: 1672444800 }];
      *
-     *  // timestamp must be greater than '2023-01-01T00:00:00Z' and less than '2023-01-02T00:00:00Z' [timestamp.gt_lt]
-     *  google.protobuf.Timestamp another_value = 2 [(buf.validate.field).timestamp = { gt: { seconds: 1672444800 }, lt: { seconds: 1672531200 } }];
+     *   // timestamp must be greater than '2023-01-01T00:00:00Z' and less than '2023-01-02T00:00:00Z' [timestamp.gt_lt]
+     *   google.protobuf.Timestamp another_value = 2 [(buf.validate.field).timestamp = { gt: { seconds: 1672444800 }, lt: { seconds: 1672531200 } }];
      *
-     *  // timestamp must be greater than '2023-01-02T00:00:00Z' or less than '2023-01-01T00:00:00Z' [timestamp.gt_lt_exclusive]
-     *  google.protobuf.Timestamp other_value = 3 [(buf.validate.field).timestamp = { gt: { seconds: 1672531200 }, lt: { seconds: 1672444800 } }];
-     *}
-     *```
+     *   // timestamp must be greater than '2023-01-02T00:00:00Z' or less than '2023-01-01T00:00:00Z' [timestamp.gt_lt_exclusive]
+     *   google.protobuf.Timestamp other_value = 3 [(buf.validate.field).timestamp = { gt: { seconds: 1672531200 }, lt: { seconds: 1672444800 } }];
+     * }
+     * ```
      * </pre>
      *
      * <code>.google.protobuf.Timestamp gt = 5 [json_name = "gt", (.buf.validate.priv.field) = { ... }</code>
@@ -2156,24 +2156,24 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     *`gt` requires the timestamp field value to be greater than the specified
+     * `gt` requires the timestamp field value to be greater than the specified
      * value (exclusive). If the value of `gt` is larger than a specified `lt`
      * or `lte`, the range is reversed, and the field value must be outside the
      * specified range. If the field value doesn't meet the required conditions,
      * an error message is generated.
      *
-     *```proto
-     *message MyTimestamp {
-     *  // timestamp must be greater than '2023-01-01T00:00:00Z' [timestamp.gt]
-     *  google.protobuf.Timestamp value = 1 [(buf.validate.field).timestamp.gt = { seconds: 1672444800 }];
+     * ```proto
+     * message MyTimestamp {
+     *   // timestamp must be greater than '2023-01-01T00:00:00Z' [timestamp.gt]
+     *   google.protobuf.Timestamp value = 1 [(buf.validate.field).timestamp.gt = { seconds: 1672444800 }];
      *
-     *  // timestamp must be greater than '2023-01-01T00:00:00Z' and less than '2023-01-02T00:00:00Z' [timestamp.gt_lt]
-     *  google.protobuf.Timestamp another_value = 2 [(buf.validate.field).timestamp = { gt: { seconds: 1672444800 }, lt: { seconds: 1672531200 } }];
+     *   // timestamp must be greater than '2023-01-01T00:00:00Z' and less than '2023-01-02T00:00:00Z' [timestamp.gt_lt]
+     *   google.protobuf.Timestamp another_value = 2 [(buf.validate.field).timestamp = { gt: { seconds: 1672444800 }, lt: { seconds: 1672531200 } }];
      *
-     *  // timestamp must be greater than '2023-01-02T00:00:00Z' or less than '2023-01-01T00:00:00Z' [timestamp.gt_lt_exclusive]
-     *  google.protobuf.Timestamp other_value = 3 [(buf.validate.field).timestamp = { gt: { seconds: 1672531200 }, lt: { seconds: 1672444800 } }];
-     *}
-     *```
+     *   // timestamp must be greater than '2023-01-02T00:00:00Z' or less than '2023-01-01T00:00:00Z' [timestamp.gt_lt_exclusive]
+     *   google.protobuf.Timestamp other_value = 3 [(buf.validate.field).timestamp = { gt: { seconds: 1672531200 }, lt: { seconds: 1672444800 } }];
+     * }
+     * ```
      * </pre>
      *
      * <code>.google.protobuf.Timestamp gt = 5 [json_name = "gt", (.buf.validate.priv.field) = { ... }</code>
@@ -2193,24 +2193,24 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     *`gt` requires the timestamp field value to be greater than the specified
+     * `gt` requires the timestamp field value to be greater than the specified
      * value (exclusive). If the value of `gt` is larger than a specified `lt`
      * or `lte`, the range is reversed, and the field value must be outside the
      * specified range. If the field value doesn't meet the required conditions,
      * an error message is generated.
      *
-     *```proto
-     *message MyTimestamp {
-     *  // timestamp must be greater than '2023-01-01T00:00:00Z' [timestamp.gt]
-     *  google.protobuf.Timestamp value = 1 [(buf.validate.field).timestamp.gt = { seconds: 1672444800 }];
+     * ```proto
+     * message MyTimestamp {
+     *   // timestamp must be greater than '2023-01-01T00:00:00Z' [timestamp.gt]
+     *   google.protobuf.Timestamp value = 1 [(buf.validate.field).timestamp.gt = { seconds: 1672444800 }];
      *
-     *  // timestamp must be greater than '2023-01-01T00:00:00Z' and less than '2023-01-02T00:00:00Z' [timestamp.gt_lt]
-     *  google.protobuf.Timestamp another_value = 2 [(buf.validate.field).timestamp = { gt: { seconds: 1672444800 }, lt: { seconds: 1672531200 } }];
+     *   // timestamp must be greater than '2023-01-01T00:00:00Z' and less than '2023-01-02T00:00:00Z' [timestamp.gt_lt]
+     *   google.protobuf.Timestamp another_value = 2 [(buf.validate.field).timestamp = { gt: { seconds: 1672444800 }, lt: { seconds: 1672531200 } }];
      *
-     *  // timestamp must be greater than '2023-01-02T00:00:00Z' or less than '2023-01-01T00:00:00Z' [timestamp.gt_lt_exclusive]
-     *  google.protobuf.Timestamp other_value = 3 [(buf.validate.field).timestamp = { gt: { seconds: 1672531200 }, lt: { seconds: 1672444800 } }];
-     *}
-     *```
+     *   // timestamp must be greater than '2023-01-02T00:00:00Z' or less than '2023-01-01T00:00:00Z' [timestamp.gt_lt_exclusive]
+     *   google.protobuf.Timestamp other_value = 3 [(buf.validate.field).timestamp = { gt: { seconds: 1672531200 }, lt: { seconds: 1672444800 } }];
+     * }
+     * ```
      * </pre>
      *
      * <code>.google.protobuf.Timestamp gt = 5 [json_name = "gt", (.buf.validate.priv.field) = { ... }</code>
@@ -2228,24 +2228,24 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     *`gt` requires the timestamp field value to be greater than the specified
+     * `gt` requires the timestamp field value to be greater than the specified
      * value (exclusive). If the value of `gt` is larger than a specified `lt`
      * or `lte`, the range is reversed, and the field value must be outside the
      * specified range. If the field value doesn't meet the required conditions,
      * an error message is generated.
      *
-     *```proto
-     *message MyTimestamp {
-     *  // timestamp must be greater than '2023-01-01T00:00:00Z' [timestamp.gt]
-     *  google.protobuf.Timestamp value = 1 [(buf.validate.field).timestamp.gt = { seconds: 1672444800 }];
+     * ```proto
+     * message MyTimestamp {
+     *   // timestamp must be greater than '2023-01-01T00:00:00Z' [timestamp.gt]
+     *   google.protobuf.Timestamp value = 1 [(buf.validate.field).timestamp.gt = { seconds: 1672444800 }];
      *
-     *  // timestamp must be greater than '2023-01-01T00:00:00Z' and less than '2023-01-02T00:00:00Z' [timestamp.gt_lt]
-     *  google.protobuf.Timestamp another_value = 2 [(buf.validate.field).timestamp = { gt: { seconds: 1672444800 }, lt: { seconds: 1672531200 } }];
+     *   // timestamp must be greater than '2023-01-01T00:00:00Z' and less than '2023-01-02T00:00:00Z' [timestamp.gt_lt]
+     *   google.protobuf.Timestamp another_value = 2 [(buf.validate.field).timestamp = { gt: { seconds: 1672444800 }, lt: { seconds: 1672531200 } }];
      *
-     *  // timestamp must be greater than '2023-01-02T00:00:00Z' or less than '2023-01-01T00:00:00Z' [timestamp.gt_lt_exclusive]
-     *  google.protobuf.Timestamp other_value = 3 [(buf.validate.field).timestamp = { gt: { seconds: 1672531200 }, lt: { seconds: 1672444800 } }];
-     *}
-     *```
+     *   // timestamp must be greater than '2023-01-02T00:00:00Z' or less than '2023-01-01T00:00:00Z' [timestamp.gt_lt_exclusive]
+     *   google.protobuf.Timestamp other_value = 3 [(buf.validate.field).timestamp = { gt: { seconds: 1672531200 }, lt: { seconds: 1672444800 } }];
+     * }
+     * ```
      * </pre>
      *
      * <code>.google.protobuf.Timestamp gt = 5 [json_name = "gt", (.buf.validate.priv.field) = { ... }</code>
@@ -2272,24 +2272,24 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     *`gt` requires the timestamp field value to be greater than the specified
+     * `gt` requires the timestamp field value to be greater than the specified
      * value (exclusive). If the value of `gt` is larger than a specified `lt`
      * or `lte`, the range is reversed, and the field value must be outside the
      * specified range. If the field value doesn't meet the required conditions,
      * an error message is generated.
      *
-     *```proto
-     *message MyTimestamp {
-     *  // timestamp must be greater than '2023-01-01T00:00:00Z' [timestamp.gt]
-     *  google.protobuf.Timestamp value = 1 [(buf.validate.field).timestamp.gt = { seconds: 1672444800 }];
+     * ```proto
+     * message MyTimestamp {
+     *   // timestamp must be greater than '2023-01-01T00:00:00Z' [timestamp.gt]
+     *   google.protobuf.Timestamp value = 1 [(buf.validate.field).timestamp.gt = { seconds: 1672444800 }];
      *
-     *  // timestamp must be greater than '2023-01-01T00:00:00Z' and less than '2023-01-02T00:00:00Z' [timestamp.gt_lt]
-     *  google.protobuf.Timestamp another_value = 2 [(buf.validate.field).timestamp = { gt: { seconds: 1672444800 }, lt: { seconds: 1672531200 } }];
+     *   // timestamp must be greater than '2023-01-01T00:00:00Z' and less than '2023-01-02T00:00:00Z' [timestamp.gt_lt]
+     *   google.protobuf.Timestamp another_value = 2 [(buf.validate.field).timestamp = { gt: { seconds: 1672444800 }, lt: { seconds: 1672531200 } }];
      *
-     *  // timestamp must be greater than '2023-01-02T00:00:00Z' or less than '2023-01-01T00:00:00Z' [timestamp.gt_lt_exclusive]
-     *  google.protobuf.Timestamp other_value = 3 [(buf.validate.field).timestamp = { gt: { seconds: 1672531200 }, lt: { seconds: 1672444800 } }];
-     *}
-     *```
+     *   // timestamp must be greater than '2023-01-02T00:00:00Z' or less than '2023-01-01T00:00:00Z' [timestamp.gt_lt_exclusive]
+     *   google.protobuf.Timestamp other_value = 3 [(buf.validate.field).timestamp = { gt: { seconds: 1672531200 }, lt: { seconds: 1672444800 } }];
+     * }
+     * ```
      * </pre>
      *
      * <code>.google.protobuf.Timestamp gt = 5 [json_name = "gt", (.buf.validate.priv.field) = { ... }</code>
@@ -2312,24 +2312,24 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     *`gt` requires the timestamp field value to be greater than the specified
+     * `gt` requires the timestamp field value to be greater than the specified
      * value (exclusive). If the value of `gt` is larger than a specified `lt`
      * or `lte`, the range is reversed, and the field value must be outside the
      * specified range. If the field value doesn't meet the required conditions,
      * an error message is generated.
      *
-     *```proto
-     *message MyTimestamp {
-     *  // timestamp must be greater than '2023-01-01T00:00:00Z' [timestamp.gt]
-     *  google.protobuf.Timestamp value = 1 [(buf.validate.field).timestamp.gt = { seconds: 1672444800 }];
+     * ```proto
+     * message MyTimestamp {
+     *   // timestamp must be greater than '2023-01-01T00:00:00Z' [timestamp.gt]
+     *   google.protobuf.Timestamp value = 1 [(buf.validate.field).timestamp.gt = { seconds: 1672444800 }];
      *
-     *  // timestamp must be greater than '2023-01-01T00:00:00Z' and less than '2023-01-02T00:00:00Z' [timestamp.gt_lt]
-     *  google.protobuf.Timestamp another_value = 2 [(buf.validate.field).timestamp = { gt: { seconds: 1672444800 }, lt: { seconds: 1672531200 } }];
+     *   // timestamp must be greater than '2023-01-01T00:00:00Z' and less than '2023-01-02T00:00:00Z' [timestamp.gt_lt]
+     *   google.protobuf.Timestamp another_value = 2 [(buf.validate.field).timestamp = { gt: { seconds: 1672444800 }, lt: { seconds: 1672531200 } }];
      *
-     *  // timestamp must be greater than '2023-01-02T00:00:00Z' or less than '2023-01-01T00:00:00Z' [timestamp.gt_lt_exclusive]
-     *  google.protobuf.Timestamp other_value = 3 [(buf.validate.field).timestamp = { gt: { seconds: 1672531200 }, lt: { seconds: 1672444800 } }];
-     *}
-     *```
+     *   // timestamp must be greater than '2023-01-02T00:00:00Z' or less than '2023-01-01T00:00:00Z' [timestamp.gt_lt_exclusive]
+     *   google.protobuf.Timestamp other_value = 3 [(buf.validate.field).timestamp = { gt: { seconds: 1672531200 }, lt: { seconds: 1672444800 } }];
+     * }
+     * ```
      * </pre>
      *
      * <code>.google.protobuf.Timestamp gt = 5 [json_name = "gt", (.buf.validate.priv.field) = { ... }</code>
@@ -2339,24 +2339,24 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     *`gt` requires the timestamp field value to be greater than the specified
+     * `gt` requires the timestamp field value to be greater than the specified
      * value (exclusive). If the value of `gt` is larger than a specified `lt`
      * or `lte`, the range is reversed, and the field value must be outside the
      * specified range. If the field value doesn't meet the required conditions,
      * an error message is generated.
      *
-     *```proto
-     *message MyTimestamp {
-     *  // timestamp must be greater than '2023-01-01T00:00:00Z' [timestamp.gt]
-     *  google.protobuf.Timestamp value = 1 [(buf.validate.field).timestamp.gt = { seconds: 1672444800 }];
+     * ```proto
+     * message MyTimestamp {
+     *   // timestamp must be greater than '2023-01-01T00:00:00Z' [timestamp.gt]
+     *   google.protobuf.Timestamp value = 1 [(buf.validate.field).timestamp.gt = { seconds: 1672444800 }];
      *
-     *  // timestamp must be greater than '2023-01-01T00:00:00Z' and less than '2023-01-02T00:00:00Z' [timestamp.gt_lt]
-     *  google.protobuf.Timestamp another_value = 2 [(buf.validate.field).timestamp = { gt: { seconds: 1672444800 }, lt: { seconds: 1672531200 } }];
+     *   // timestamp must be greater than '2023-01-01T00:00:00Z' and less than '2023-01-02T00:00:00Z' [timestamp.gt_lt]
+     *   google.protobuf.Timestamp another_value = 2 [(buf.validate.field).timestamp = { gt: { seconds: 1672444800 }, lt: { seconds: 1672531200 } }];
      *
-     *  // timestamp must be greater than '2023-01-02T00:00:00Z' or less than '2023-01-01T00:00:00Z' [timestamp.gt_lt_exclusive]
-     *  google.protobuf.Timestamp other_value = 3 [(buf.validate.field).timestamp = { gt: { seconds: 1672531200 }, lt: { seconds: 1672444800 } }];
-     *}
-     *```
+     *   // timestamp must be greater than '2023-01-02T00:00:00Z' or less than '2023-01-01T00:00:00Z' [timestamp.gt_lt_exclusive]
+     *   google.protobuf.Timestamp other_value = 3 [(buf.validate.field).timestamp = { gt: { seconds: 1672531200 }, lt: { seconds: 1672444800 } }];
+     * }
+     * ```
      * </pre>
      *
      * <code>.google.protobuf.Timestamp gt = 5 [json_name = "gt", (.buf.validate.priv.field) = { ... }</code>
@@ -2374,24 +2374,24 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     *`gt` requires the timestamp field value to be greater than the specified
+     * `gt` requires the timestamp field value to be greater than the specified
      * value (exclusive). If the value of `gt` is larger than a specified `lt`
      * or `lte`, the range is reversed, and the field value must be outside the
      * specified range. If the field value doesn't meet the required conditions,
      * an error message is generated.
      *
-     *```proto
-     *message MyTimestamp {
-     *  // timestamp must be greater than '2023-01-01T00:00:00Z' [timestamp.gt]
-     *  google.protobuf.Timestamp value = 1 [(buf.validate.field).timestamp.gt = { seconds: 1672444800 }];
+     * ```proto
+     * message MyTimestamp {
+     *   // timestamp must be greater than '2023-01-01T00:00:00Z' [timestamp.gt]
+     *   google.protobuf.Timestamp value = 1 [(buf.validate.field).timestamp.gt = { seconds: 1672444800 }];
      *
-     *  // timestamp must be greater than '2023-01-01T00:00:00Z' and less than '2023-01-02T00:00:00Z' [timestamp.gt_lt]
-     *  google.protobuf.Timestamp another_value = 2 [(buf.validate.field).timestamp = { gt: { seconds: 1672444800 }, lt: { seconds: 1672531200 } }];
+     *   // timestamp must be greater than '2023-01-01T00:00:00Z' and less than '2023-01-02T00:00:00Z' [timestamp.gt_lt]
+     *   google.protobuf.Timestamp another_value = 2 [(buf.validate.field).timestamp = { gt: { seconds: 1672444800 }, lt: { seconds: 1672531200 } }];
      *
-     *  // timestamp must be greater than '2023-01-02T00:00:00Z' or less than '2023-01-01T00:00:00Z' [timestamp.gt_lt_exclusive]
-     *  google.protobuf.Timestamp other_value = 3 [(buf.validate.field).timestamp = { gt: { seconds: 1672531200 }, lt: { seconds: 1672444800 } }];
-     *}
-     *```
+     *   // timestamp must be greater than '2023-01-02T00:00:00Z' or less than '2023-01-01T00:00:00Z' [timestamp.gt_lt_exclusive]
+     *   google.protobuf.Timestamp other_value = 3 [(buf.validate.field).timestamp = { gt: { seconds: 1672531200 }, lt: { seconds: 1672444800 } }];
+     * }
+     * ```
      * </pre>
      *
      * <code>.google.protobuf.Timestamp gt = 5 [json_name = "gt", (.buf.validate.priv.field) = { ... }</code>
@@ -2419,24 +2419,24 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder> gteBuilder_;
     /**
      * <pre>
-     *`gte` requires the timestamp field value to be greater than or equal to the
+     * `gte` requires the timestamp field value to be greater than or equal to the
      * specified value (exclusive). If the value of `gte` is larger than a
      * specified `lt` or `lte`, the range is reversed, and the field value
      * must be outside the specified range. If the field value doesn't meet
      * the required conditions, an error message is generated.
      *
-     *```proto
-     *message MyTimestamp {
-     *  // timestamp must be greater than or equal to '2023-01-01T00:00:00Z' [timestamp.gte]
-     *  google.protobuf.Timestamp value = 1 [(buf.validate.field).timestamp.gte = { seconds: 1672444800 }];
+     * ```proto
+     * message MyTimestamp {
+     *   // timestamp must be greater than or equal to '2023-01-01T00:00:00Z' [timestamp.gte]
+     *   google.protobuf.Timestamp value = 1 [(buf.validate.field).timestamp.gte = { seconds: 1672444800 }];
      *
-     *  // timestamp must be greater than or equal to '2023-01-01T00:00:00Z' and less than '2023-01-02T00:00:00Z' [timestamp.gte_lt]
-     *  google.protobuf.Timestamp another_value = 2 [(buf.validate.field).timestamp = { gte: { seconds: 1672444800 }, lt: { seconds: 1672531200 } }];
+     *   // timestamp must be greater than or equal to '2023-01-01T00:00:00Z' and less than '2023-01-02T00:00:00Z' [timestamp.gte_lt]
+     *   google.protobuf.Timestamp another_value = 2 [(buf.validate.field).timestamp = { gte: { seconds: 1672444800 }, lt: { seconds: 1672531200 } }];
      *
-     *  // timestamp must be greater than or equal to '2023-01-02T00:00:00Z' or less than '2023-01-01T00:00:00Z' [timestamp.gte_lt_exclusive]
-     *  google.protobuf.Timestamp other_value = 3 [(buf.validate.field).timestamp = { gte: { seconds: 1672531200 }, lt: { seconds: 1672444800 } }];
-     *}
-     *```
+     *   // timestamp must be greater than or equal to '2023-01-02T00:00:00Z' or less than '2023-01-01T00:00:00Z' [timestamp.gte_lt_exclusive]
+     *   google.protobuf.Timestamp other_value = 3 [(buf.validate.field).timestamp = { gte: { seconds: 1672531200 }, lt: { seconds: 1672444800 } }];
+     * }
+     * ```
      * </pre>
      *
      * <code>.google.protobuf.Timestamp gte = 6 [json_name = "gte", (.buf.validate.priv.field) = { ... }</code>
@@ -2448,24 +2448,24 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     *`gte` requires the timestamp field value to be greater than or equal to the
+     * `gte` requires the timestamp field value to be greater than or equal to the
      * specified value (exclusive). If the value of `gte` is larger than a
      * specified `lt` or `lte`, the range is reversed, and the field value
      * must be outside the specified range. If the field value doesn't meet
      * the required conditions, an error message is generated.
      *
-     *```proto
-     *message MyTimestamp {
-     *  // timestamp must be greater than or equal to '2023-01-01T00:00:00Z' [timestamp.gte]
-     *  google.protobuf.Timestamp value = 1 [(buf.validate.field).timestamp.gte = { seconds: 1672444800 }];
+     * ```proto
+     * message MyTimestamp {
+     *   // timestamp must be greater than or equal to '2023-01-01T00:00:00Z' [timestamp.gte]
+     *   google.protobuf.Timestamp value = 1 [(buf.validate.field).timestamp.gte = { seconds: 1672444800 }];
      *
-     *  // timestamp must be greater than or equal to '2023-01-01T00:00:00Z' and less than '2023-01-02T00:00:00Z' [timestamp.gte_lt]
-     *  google.protobuf.Timestamp another_value = 2 [(buf.validate.field).timestamp = { gte: { seconds: 1672444800 }, lt: { seconds: 1672531200 } }];
+     *   // timestamp must be greater than or equal to '2023-01-01T00:00:00Z' and less than '2023-01-02T00:00:00Z' [timestamp.gte_lt]
+     *   google.protobuf.Timestamp another_value = 2 [(buf.validate.field).timestamp = { gte: { seconds: 1672444800 }, lt: { seconds: 1672531200 } }];
      *
-     *  // timestamp must be greater than or equal to '2023-01-02T00:00:00Z' or less than '2023-01-01T00:00:00Z' [timestamp.gte_lt_exclusive]
-     *  google.protobuf.Timestamp other_value = 3 [(buf.validate.field).timestamp = { gte: { seconds: 1672531200 }, lt: { seconds: 1672444800 } }];
-     *}
-     *```
+     *   // timestamp must be greater than or equal to '2023-01-02T00:00:00Z' or less than '2023-01-01T00:00:00Z' [timestamp.gte_lt_exclusive]
+     *   google.protobuf.Timestamp other_value = 3 [(buf.validate.field).timestamp = { gte: { seconds: 1672531200 }, lt: { seconds: 1672444800 } }];
+     * }
+     * ```
      * </pre>
      *
      * <code>.google.protobuf.Timestamp gte = 6 [json_name = "gte", (.buf.validate.priv.field) = { ... }</code>
@@ -2487,24 +2487,24 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     *`gte` requires the timestamp field value to be greater than or equal to the
+     * `gte` requires the timestamp field value to be greater than or equal to the
      * specified value (exclusive). If the value of `gte` is larger than a
      * specified `lt` or `lte`, the range is reversed, and the field value
      * must be outside the specified range. If the field value doesn't meet
      * the required conditions, an error message is generated.
      *
-     *```proto
-     *message MyTimestamp {
-     *  // timestamp must be greater than or equal to '2023-01-01T00:00:00Z' [timestamp.gte]
-     *  google.protobuf.Timestamp value = 1 [(buf.validate.field).timestamp.gte = { seconds: 1672444800 }];
+     * ```proto
+     * message MyTimestamp {
+     *   // timestamp must be greater than or equal to '2023-01-01T00:00:00Z' [timestamp.gte]
+     *   google.protobuf.Timestamp value = 1 [(buf.validate.field).timestamp.gte = { seconds: 1672444800 }];
      *
-     *  // timestamp must be greater than or equal to '2023-01-01T00:00:00Z' and less than '2023-01-02T00:00:00Z' [timestamp.gte_lt]
-     *  google.protobuf.Timestamp another_value = 2 [(buf.validate.field).timestamp = { gte: { seconds: 1672444800 }, lt: { seconds: 1672531200 } }];
+     *   // timestamp must be greater than or equal to '2023-01-01T00:00:00Z' and less than '2023-01-02T00:00:00Z' [timestamp.gte_lt]
+     *   google.protobuf.Timestamp another_value = 2 [(buf.validate.field).timestamp = { gte: { seconds: 1672444800 }, lt: { seconds: 1672531200 } }];
      *
-     *  // timestamp must be greater than or equal to '2023-01-02T00:00:00Z' or less than '2023-01-01T00:00:00Z' [timestamp.gte_lt_exclusive]
-     *  google.protobuf.Timestamp other_value = 3 [(buf.validate.field).timestamp = { gte: { seconds: 1672531200 }, lt: { seconds: 1672444800 } }];
-     *}
-     *```
+     *   // timestamp must be greater than or equal to '2023-01-02T00:00:00Z' or less than '2023-01-01T00:00:00Z' [timestamp.gte_lt_exclusive]
+     *   google.protobuf.Timestamp other_value = 3 [(buf.validate.field).timestamp = { gte: { seconds: 1672531200 }, lt: { seconds: 1672444800 } }];
+     * }
+     * ```
      * </pre>
      *
      * <code>.google.protobuf.Timestamp gte = 6 [json_name = "gte", (.buf.validate.priv.field) = { ... }</code>
@@ -2524,24 +2524,24 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     *`gte` requires the timestamp field value to be greater than or equal to the
+     * `gte` requires the timestamp field value to be greater than or equal to the
      * specified value (exclusive). If the value of `gte` is larger than a
      * specified `lt` or `lte`, the range is reversed, and the field value
      * must be outside the specified range. If the field value doesn't meet
      * the required conditions, an error message is generated.
      *
-     *```proto
-     *message MyTimestamp {
-     *  // timestamp must be greater than or equal to '2023-01-01T00:00:00Z' [timestamp.gte]
-     *  google.protobuf.Timestamp value = 1 [(buf.validate.field).timestamp.gte = { seconds: 1672444800 }];
+     * ```proto
+     * message MyTimestamp {
+     *   // timestamp must be greater than or equal to '2023-01-01T00:00:00Z' [timestamp.gte]
+     *   google.protobuf.Timestamp value = 1 [(buf.validate.field).timestamp.gte = { seconds: 1672444800 }];
      *
-     *  // timestamp must be greater than or equal to '2023-01-01T00:00:00Z' and less than '2023-01-02T00:00:00Z' [timestamp.gte_lt]
-     *  google.protobuf.Timestamp another_value = 2 [(buf.validate.field).timestamp = { gte: { seconds: 1672444800 }, lt: { seconds: 1672531200 } }];
+     *   // timestamp must be greater than or equal to '2023-01-01T00:00:00Z' and less than '2023-01-02T00:00:00Z' [timestamp.gte_lt]
+     *   google.protobuf.Timestamp another_value = 2 [(buf.validate.field).timestamp = { gte: { seconds: 1672444800 }, lt: { seconds: 1672531200 } }];
      *
-     *  // timestamp must be greater than or equal to '2023-01-02T00:00:00Z' or less than '2023-01-01T00:00:00Z' [timestamp.gte_lt_exclusive]
-     *  google.protobuf.Timestamp other_value = 3 [(buf.validate.field).timestamp = { gte: { seconds: 1672531200 }, lt: { seconds: 1672444800 } }];
-     *}
-     *```
+     *   // timestamp must be greater than or equal to '2023-01-02T00:00:00Z' or less than '2023-01-01T00:00:00Z' [timestamp.gte_lt_exclusive]
+     *   google.protobuf.Timestamp other_value = 3 [(buf.validate.field).timestamp = { gte: { seconds: 1672531200 }, lt: { seconds: 1672444800 } }];
+     * }
+     * ```
      * </pre>
      *
      * <code>.google.protobuf.Timestamp gte = 6 [json_name = "gte", (.buf.validate.priv.field) = { ... }</code>
@@ -2559,24 +2559,24 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     *`gte` requires the timestamp field value to be greater than or equal to the
+     * `gte` requires the timestamp field value to be greater than or equal to the
      * specified value (exclusive). If the value of `gte` is larger than a
      * specified `lt` or `lte`, the range is reversed, and the field value
      * must be outside the specified range. If the field value doesn't meet
      * the required conditions, an error message is generated.
      *
-     *```proto
-     *message MyTimestamp {
-     *  // timestamp must be greater than or equal to '2023-01-01T00:00:00Z' [timestamp.gte]
-     *  google.protobuf.Timestamp value = 1 [(buf.validate.field).timestamp.gte = { seconds: 1672444800 }];
+     * ```proto
+     * message MyTimestamp {
+     *   // timestamp must be greater than or equal to '2023-01-01T00:00:00Z' [timestamp.gte]
+     *   google.protobuf.Timestamp value = 1 [(buf.validate.field).timestamp.gte = { seconds: 1672444800 }];
      *
-     *  // timestamp must be greater than or equal to '2023-01-01T00:00:00Z' and less than '2023-01-02T00:00:00Z' [timestamp.gte_lt]
-     *  google.protobuf.Timestamp another_value = 2 [(buf.validate.field).timestamp = { gte: { seconds: 1672444800 }, lt: { seconds: 1672531200 } }];
+     *   // timestamp must be greater than or equal to '2023-01-01T00:00:00Z' and less than '2023-01-02T00:00:00Z' [timestamp.gte_lt]
+     *   google.protobuf.Timestamp another_value = 2 [(buf.validate.field).timestamp = { gte: { seconds: 1672444800 }, lt: { seconds: 1672531200 } }];
      *
-     *  // timestamp must be greater than or equal to '2023-01-02T00:00:00Z' or less than '2023-01-01T00:00:00Z' [timestamp.gte_lt_exclusive]
-     *  google.protobuf.Timestamp other_value = 3 [(buf.validate.field).timestamp = { gte: { seconds: 1672531200 }, lt: { seconds: 1672444800 } }];
-     *}
-     *```
+     *   // timestamp must be greater than or equal to '2023-01-02T00:00:00Z' or less than '2023-01-01T00:00:00Z' [timestamp.gte_lt_exclusive]
+     *   google.protobuf.Timestamp other_value = 3 [(buf.validate.field).timestamp = { gte: { seconds: 1672531200 }, lt: { seconds: 1672444800 } }];
+     * }
+     * ```
      * </pre>
      *
      * <code>.google.protobuf.Timestamp gte = 6 [json_name = "gte", (.buf.validate.priv.field) = { ... }</code>
@@ -2603,24 +2603,24 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     *`gte` requires the timestamp field value to be greater than or equal to the
+     * `gte` requires the timestamp field value to be greater than or equal to the
      * specified value (exclusive). If the value of `gte` is larger than a
      * specified `lt` or `lte`, the range is reversed, and the field value
      * must be outside the specified range. If the field value doesn't meet
      * the required conditions, an error message is generated.
      *
-     *```proto
-     *message MyTimestamp {
-     *  // timestamp must be greater than or equal to '2023-01-01T00:00:00Z' [timestamp.gte]
-     *  google.protobuf.Timestamp value = 1 [(buf.validate.field).timestamp.gte = { seconds: 1672444800 }];
+     * ```proto
+     * message MyTimestamp {
+     *   // timestamp must be greater than or equal to '2023-01-01T00:00:00Z' [timestamp.gte]
+     *   google.protobuf.Timestamp value = 1 [(buf.validate.field).timestamp.gte = { seconds: 1672444800 }];
      *
-     *  // timestamp must be greater than or equal to '2023-01-01T00:00:00Z' and less than '2023-01-02T00:00:00Z' [timestamp.gte_lt]
-     *  google.protobuf.Timestamp another_value = 2 [(buf.validate.field).timestamp = { gte: { seconds: 1672444800 }, lt: { seconds: 1672531200 } }];
+     *   // timestamp must be greater than or equal to '2023-01-01T00:00:00Z' and less than '2023-01-02T00:00:00Z' [timestamp.gte_lt]
+     *   google.protobuf.Timestamp another_value = 2 [(buf.validate.field).timestamp = { gte: { seconds: 1672444800 }, lt: { seconds: 1672531200 } }];
      *
-     *  // timestamp must be greater than or equal to '2023-01-02T00:00:00Z' or less than '2023-01-01T00:00:00Z' [timestamp.gte_lt_exclusive]
-     *  google.protobuf.Timestamp other_value = 3 [(buf.validate.field).timestamp = { gte: { seconds: 1672531200 }, lt: { seconds: 1672444800 } }];
-     *}
-     *```
+     *   // timestamp must be greater than or equal to '2023-01-02T00:00:00Z' or less than '2023-01-01T00:00:00Z' [timestamp.gte_lt_exclusive]
+     *   google.protobuf.Timestamp other_value = 3 [(buf.validate.field).timestamp = { gte: { seconds: 1672531200 }, lt: { seconds: 1672444800 } }];
+     * }
+     * ```
      * </pre>
      *
      * <code>.google.protobuf.Timestamp gte = 6 [json_name = "gte", (.buf.validate.priv.field) = { ... }</code>
@@ -2643,24 +2643,24 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     *`gte` requires the timestamp field value to be greater than or equal to the
+     * `gte` requires the timestamp field value to be greater than or equal to the
      * specified value (exclusive). If the value of `gte` is larger than a
      * specified `lt` or `lte`, the range is reversed, and the field value
      * must be outside the specified range. If the field value doesn't meet
      * the required conditions, an error message is generated.
      *
-     *```proto
-     *message MyTimestamp {
-     *  // timestamp must be greater than or equal to '2023-01-01T00:00:00Z' [timestamp.gte]
-     *  google.protobuf.Timestamp value = 1 [(buf.validate.field).timestamp.gte = { seconds: 1672444800 }];
+     * ```proto
+     * message MyTimestamp {
+     *   // timestamp must be greater than or equal to '2023-01-01T00:00:00Z' [timestamp.gte]
+     *   google.protobuf.Timestamp value = 1 [(buf.validate.field).timestamp.gte = { seconds: 1672444800 }];
      *
-     *  // timestamp must be greater than or equal to '2023-01-01T00:00:00Z' and less than '2023-01-02T00:00:00Z' [timestamp.gte_lt]
-     *  google.protobuf.Timestamp another_value = 2 [(buf.validate.field).timestamp = { gte: { seconds: 1672444800 }, lt: { seconds: 1672531200 } }];
+     *   // timestamp must be greater than or equal to '2023-01-01T00:00:00Z' and less than '2023-01-02T00:00:00Z' [timestamp.gte_lt]
+     *   google.protobuf.Timestamp another_value = 2 [(buf.validate.field).timestamp = { gte: { seconds: 1672444800 }, lt: { seconds: 1672531200 } }];
      *
-     *  // timestamp must be greater than or equal to '2023-01-02T00:00:00Z' or less than '2023-01-01T00:00:00Z' [timestamp.gte_lt_exclusive]
-     *  google.protobuf.Timestamp other_value = 3 [(buf.validate.field).timestamp = { gte: { seconds: 1672531200 }, lt: { seconds: 1672444800 } }];
-     *}
-     *```
+     *   // timestamp must be greater than or equal to '2023-01-02T00:00:00Z' or less than '2023-01-01T00:00:00Z' [timestamp.gte_lt_exclusive]
+     *   google.protobuf.Timestamp other_value = 3 [(buf.validate.field).timestamp = { gte: { seconds: 1672531200 }, lt: { seconds: 1672444800 } }];
+     * }
+     * ```
      * </pre>
      *
      * <code>.google.protobuf.Timestamp gte = 6 [json_name = "gte", (.buf.validate.priv.field) = { ... }</code>
@@ -2670,24 +2670,24 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     *`gte` requires the timestamp field value to be greater than or equal to the
+     * `gte` requires the timestamp field value to be greater than or equal to the
      * specified value (exclusive). If the value of `gte` is larger than a
      * specified `lt` or `lte`, the range is reversed, and the field value
      * must be outside the specified range. If the field value doesn't meet
      * the required conditions, an error message is generated.
      *
-     *```proto
-     *message MyTimestamp {
-     *  // timestamp must be greater than or equal to '2023-01-01T00:00:00Z' [timestamp.gte]
-     *  google.protobuf.Timestamp value = 1 [(buf.validate.field).timestamp.gte = { seconds: 1672444800 }];
+     * ```proto
+     * message MyTimestamp {
+     *   // timestamp must be greater than or equal to '2023-01-01T00:00:00Z' [timestamp.gte]
+     *   google.protobuf.Timestamp value = 1 [(buf.validate.field).timestamp.gte = { seconds: 1672444800 }];
      *
-     *  // timestamp must be greater than or equal to '2023-01-01T00:00:00Z' and less than '2023-01-02T00:00:00Z' [timestamp.gte_lt]
-     *  google.protobuf.Timestamp another_value = 2 [(buf.validate.field).timestamp = { gte: { seconds: 1672444800 }, lt: { seconds: 1672531200 } }];
+     *   // timestamp must be greater than or equal to '2023-01-01T00:00:00Z' and less than '2023-01-02T00:00:00Z' [timestamp.gte_lt]
+     *   google.protobuf.Timestamp another_value = 2 [(buf.validate.field).timestamp = { gte: { seconds: 1672444800 }, lt: { seconds: 1672531200 } }];
      *
-     *  // timestamp must be greater than or equal to '2023-01-02T00:00:00Z' or less than '2023-01-01T00:00:00Z' [timestamp.gte_lt_exclusive]
-     *  google.protobuf.Timestamp other_value = 3 [(buf.validate.field).timestamp = { gte: { seconds: 1672531200 }, lt: { seconds: 1672444800 } }];
-     *}
-     *```
+     *   // timestamp must be greater than or equal to '2023-01-02T00:00:00Z' or less than '2023-01-01T00:00:00Z' [timestamp.gte_lt_exclusive]
+     *   google.protobuf.Timestamp other_value = 3 [(buf.validate.field).timestamp = { gte: { seconds: 1672531200 }, lt: { seconds: 1672444800 } }];
+     * }
+     * ```
      * </pre>
      *
      * <code>.google.protobuf.Timestamp gte = 6 [json_name = "gte", (.buf.validate.priv.field) = { ... }</code>
@@ -2705,24 +2705,24 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     *`gte` requires the timestamp field value to be greater than or equal to the
+     * `gte` requires the timestamp field value to be greater than or equal to the
      * specified value (exclusive). If the value of `gte` is larger than a
      * specified `lt` or `lte`, the range is reversed, and the field value
      * must be outside the specified range. If the field value doesn't meet
      * the required conditions, an error message is generated.
      *
-     *```proto
-     *message MyTimestamp {
-     *  // timestamp must be greater than or equal to '2023-01-01T00:00:00Z' [timestamp.gte]
-     *  google.protobuf.Timestamp value = 1 [(buf.validate.field).timestamp.gte = { seconds: 1672444800 }];
+     * ```proto
+     * message MyTimestamp {
+     *   // timestamp must be greater than or equal to '2023-01-01T00:00:00Z' [timestamp.gte]
+     *   google.protobuf.Timestamp value = 1 [(buf.validate.field).timestamp.gte = { seconds: 1672444800 }];
      *
-     *  // timestamp must be greater than or equal to '2023-01-01T00:00:00Z' and less than '2023-01-02T00:00:00Z' [timestamp.gte_lt]
-     *  google.protobuf.Timestamp another_value = 2 [(buf.validate.field).timestamp = { gte: { seconds: 1672444800 }, lt: { seconds: 1672531200 } }];
+     *   // timestamp must be greater than or equal to '2023-01-01T00:00:00Z' and less than '2023-01-02T00:00:00Z' [timestamp.gte_lt]
+     *   google.protobuf.Timestamp another_value = 2 [(buf.validate.field).timestamp = { gte: { seconds: 1672444800 }, lt: { seconds: 1672531200 } }];
      *
-     *  // timestamp must be greater than or equal to '2023-01-02T00:00:00Z' or less than '2023-01-01T00:00:00Z' [timestamp.gte_lt_exclusive]
-     *  google.protobuf.Timestamp other_value = 3 [(buf.validate.field).timestamp = { gte: { seconds: 1672531200 }, lt: { seconds: 1672444800 } }];
-     *}
-     *```
+     *   // timestamp must be greater than or equal to '2023-01-02T00:00:00Z' or less than '2023-01-01T00:00:00Z' [timestamp.gte_lt_exclusive]
+     *   google.protobuf.Timestamp other_value = 3 [(buf.validate.field).timestamp = { gte: { seconds: 1672531200 }, lt: { seconds: 1672444800 } }];
+     * }
+     * ```
      * </pre>
      *
      * <code>.google.protobuf.Timestamp gte = 6 [json_name = "gte", (.buf.validate.priv.field) = { ... }</code>
@@ -2748,14 +2748,14 @@ private static final long serialVersionUID = 0L;
 
     /**
      * <pre>
-     *`gt_now` specifies that this field, of the `google.protobuf.Timestamp` type, must be greater than the current time. `gt_now` can only be used with the `within` rule.
+     * `gt_now` specifies that this field, of the `google.protobuf.Timestamp` type, must be greater than the current time. `gt_now` can only be used with the `within` rule.
      *
-     *```proto
-     *message MyTimestamp {
-     *  // value must be greater than now
+     * ```proto
+     * message MyTimestamp {
+     *   // value must be greater than now
      *   google.protobuf.Timestamp created_at = 1 [(buf.validate.field).timestamp.gt_now = true];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>bool gt_now = 8 [json_name = "gtNow", (.buf.validate.priv.field) = { ... }</code>
@@ -2766,14 +2766,14 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     *`gt_now` specifies that this field, of the `google.protobuf.Timestamp` type, must be greater than the current time. `gt_now` can only be used with the `within` rule.
+     * `gt_now` specifies that this field, of the `google.protobuf.Timestamp` type, must be greater than the current time. `gt_now` can only be used with the `within` rule.
      *
-     *```proto
-     *message MyTimestamp {
-     *  // value must be greater than now
+     * ```proto
+     * message MyTimestamp {
+     *   // value must be greater than now
      *   google.protobuf.Timestamp created_at = 1 [(buf.validate.field).timestamp.gt_now = true];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>bool gt_now = 8 [json_name = "gtNow", (.buf.validate.priv.field) = { ... }</code>
@@ -2787,14 +2787,14 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     *`gt_now` specifies that this field, of the `google.protobuf.Timestamp` type, must be greater than the current time. `gt_now` can only be used with the `within` rule.
+     * `gt_now` specifies that this field, of the `google.protobuf.Timestamp` type, must be greater than the current time. `gt_now` can only be used with the `within` rule.
      *
-     *```proto
-     *message MyTimestamp {
-     *  // value must be greater than now
+     * ```proto
+     * message MyTimestamp {
+     *   // value must be greater than now
      *   google.protobuf.Timestamp created_at = 1 [(buf.validate.field).timestamp.gt_now = true];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>bool gt_now = 8 [json_name = "gtNow", (.buf.validate.priv.field) = { ... }</code>
@@ -2810,14 +2810,14 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     *`gt_now` specifies that this field, of the `google.protobuf.Timestamp` type, must be greater than the current time. `gt_now` can only be used with the `within` rule.
+     * `gt_now` specifies that this field, of the `google.protobuf.Timestamp` type, must be greater than the current time. `gt_now` can only be used with the `within` rule.
      *
-     *```proto
-     *message MyTimestamp {
-     *  // value must be greater than now
+     * ```proto
+     * message MyTimestamp {
+     *   // value must be greater than now
      *   google.protobuf.Timestamp created_at = 1 [(buf.validate.field).timestamp.gt_now = true];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>bool gt_now = 8 [json_name = "gtNow", (.buf.validate.priv.field) = { ... }</code>
@@ -2839,12 +2839,12 @@ private static final long serialVersionUID = 0L;
      * <pre>
      * `within` specifies that this field, of the `google.protobuf.Timestamp` type, must be within the specified duration of the current time. If the field value isn't within the duration, an error message is generated.
      *
-     *```proto
-     *message MyTimestamp {
-     *  // value must be within 1 hour of now
+     * ```proto
+     * message MyTimestamp {
+     *   // value must be within 1 hour of now
      *   google.protobuf.Timestamp created_at = 1 [(buf.validate.field).timestamp.within = {seconds: 3600}];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>optional .google.protobuf.Duration within = 9 [json_name = "within", (.buf.validate.priv.field) = { ... }</code>
@@ -2857,12 +2857,12 @@ private static final long serialVersionUID = 0L;
      * <pre>
      * `within` specifies that this field, of the `google.protobuf.Timestamp` type, must be within the specified duration of the current time. If the field value isn't within the duration, an error message is generated.
      *
-     *```proto
-     *message MyTimestamp {
-     *  // value must be within 1 hour of now
+     * ```proto
+     * message MyTimestamp {
+     *   // value must be within 1 hour of now
      *   google.protobuf.Timestamp created_at = 1 [(buf.validate.field).timestamp.within = {seconds: 3600}];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>optional .google.protobuf.Duration within = 9 [json_name = "within", (.buf.validate.priv.field) = { ... }</code>
@@ -2879,12 +2879,12 @@ private static final long serialVersionUID = 0L;
      * <pre>
      * `within` specifies that this field, of the `google.protobuf.Timestamp` type, must be within the specified duration of the current time. If the field value isn't within the duration, an error message is generated.
      *
-     *```proto
-     *message MyTimestamp {
-     *  // value must be within 1 hour of now
+     * ```proto
+     * message MyTimestamp {
+     *   // value must be within 1 hour of now
      *   google.protobuf.Timestamp created_at = 1 [(buf.validate.field).timestamp.within = {seconds: 3600}];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>optional .google.protobuf.Duration within = 9 [json_name = "within", (.buf.validate.priv.field) = { ... }</code>
@@ -2906,12 +2906,12 @@ private static final long serialVersionUID = 0L;
      * <pre>
      * `within` specifies that this field, of the `google.protobuf.Timestamp` type, must be within the specified duration of the current time. If the field value isn't within the duration, an error message is generated.
      *
-     *```proto
-     *message MyTimestamp {
-     *  // value must be within 1 hour of now
+     * ```proto
+     * message MyTimestamp {
+     *   // value must be within 1 hour of now
      *   google.protobuf.Timestamp created_at = 1 [(buf.validate.field).timestamp.within = {seconds: 3600}];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>optional .google.protobuf.Duration within = 9 [json_name = "within", (.buf.validate.priv.field) = { ... }</code>
@@ -2931,12 +2931,12 @@ private static final long serialVersionUID = 0L;
      * <pre>
      * `within` specifies that this field, of the `google.protobuf.Timestamp` type, must be within the specified duration of the current time. If the field value isn't within the duration, an error message is generated.
      *
-     *```proto
-     *message MyTimestamp {
-     *  // value must be within 1 hour of now
+     * ```proto
+     * message MyTimestamp {
+     *   // value must be within 1 hour of now
      *   google.protobuf.Timestamp created_at = 1 [(buf.validate.field).timestamp.within = {seconds: 3600}];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>optional .google.protobuf.Duration within = 9 [json_name = "within", (.buf.validate.priv.field) = { ... }</code>
@@ -2963,12 +2963,12 @@ private static final long serialVersionUID = 0L;
      * <pre>
      * `within` specifies that this field, of the `google.protobuf.Timestamp` type, must be within the specified duration of the current time. If the field value isn't within the duration, an error message is generated.
      *
-     *```proto
-     *message MyTimestamp {
-     *  // value must be within 1 hour of now
+     * ```proto
+     * message MyTimestamp {
+     *   // value must be within 1 hour of now
      *   google.protobuf.Timestamp created_at = 1 [(buf.validate.field).timestamp.within = {seconds: 3600}];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>optional .google.protobuf.Duration within = 9 [json_name = "within", (.buf.validate.priv.field) = { ... }</code>
@@ -2987,12 +2987,12 @@ private static final long serialVersionUID = 0L;
      * <pre>
      * `within` specifies that this field, of the `google.protobuf.Timestamp` type, must be within the specified duration of the current time. If the field value isn't within the duration, an error message is generated.
      *
-     *```proto
-     *message MyTimestamp {
-     *  // value must be within 1 hour of now
+     * ```proto
+     * message MyTimestamp {
+     *   // value must be within 1 hour of now
      *   google.protobuf.Timestamp created_at = 1 [(buf.validate.field).timestamp.within = {seconds: 3600}];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>optional .google.protobuf.Duration within = 9 [json_name = "within", (.buf.validate.priv.field) = { ... }</code>
@@ -3006,12 +3006,12 @@ private static final long serialVersionUID = 0L;
      * <pre>
      * `within` specifies that this field, of the `google.protobuf.Timestamp` type, must be within the specified duration of the current time. If the field value isn't within the duration, an error message is generated.
      *
-     *```proto
-     *message MyTimestamp {
-     *  // value must be within 1 hour of now
+     * ```proto
+     * message MyTimestamp {
+     *   // value must be within 1 hour of now
      *   google.protobuf.Timestamp created_at = 1 [(buf.validate.field).timestamp.within = {seconds: 3600}];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>optional .google.protobuf.Duration within = 9 [json_name = "within", (.buf.validate.priv.field) = { ... }</code>
@@ -3028,12 +3028,12 @@ private static final long serialVersionUID = 0L;
      * <pre>
      * `within` specifies that this field, of the `google.protobuf.Timestamp` type, must be within the specified duration of the current time. If the field value isn't within the duration, an error message is generated.
      *
-     *```proto
-     *message MyTimestamp {
-     *  // value must be within 1 hour of now
+     * ```proto
+     * message MyTimestamp {
+     *   // value must be within 1 hour of now
      *   google.protobuf.Timestamp created_at = 1 [(buf.validate.field).timestamp.within = {seconds: 3600}];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>optional .google.protobuf.Duration within = 9 [json_name = "within", (.buf.validate.priv.field) = { ... }</code>

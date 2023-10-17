@@ -134,15 +134,15 @@ private static final long serialVersionUID = 0L;
   private int const_ = 0;
   /**
    * <pre>
-   *`const` requires the field value to exactly match the specified value. If
+   * `const` requires the field value to exactly match the specified value. If
    * the field value doesn't match, an error message is generated.
    *
-   *```proto
-   *message MyInt32 {
-   *  // value must equal 42
+   * ```proto
+   * message MyInt32 {
+   *   // value must equal 42
    *   int32 value = 1 [(buf.validate.field).int32.const = 42];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
    * <code>optional int32 const = 1 [json_name = "const", (.buf.validate.priv.field) = { ... }</code>
@@ -154,15 +154,15 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   *`const` requires the field value to exactly match the specified value. If
+   * `const` requires the field value to exactly match the specified value. If
    * the field value doesn't match, an error message is generated.
    *
-   *```proto
-   *message MyInt32 {
-   *  // value must equal 42
+   * ```proto
+   * message MyInt32 {
+   *   // value must equal 42
    *   int32 value = 1 [(buf.validate.field).int32.const = 42];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
    * <code>optional int32 const = 1 [json_name = "const", (.buf.validate.priv.field) = { ... }</code>
@@ -180,12 +180,12 @@ private static final long serialVersionUID = 0L;
    * &lt; value). If the field value is equal to or greater than the specified
    * value, an error message is generated.
    *
-   *```proto
-   *message MyInt32 {
-   *  // value must be less than 10
+   * ```proto
+   * message MyInt32 {
+   *   // value must be less than 10
    *   int32 value = 1 [(buf.validate.field).int32.lt = 10];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
    * <code>int32 lt = 2 [json_name = "lt", (.buf.validate.priv.field) = { ... }</code>
@@ -201,12 +201,12 @@ private static final long serialVersionUID = 0L;
    * &lt; value). If the field value is equal to or greater than the specified
    * value, an error message is generated.
    *
-   *```proto
-   *message MyInt32 {
-   *  // value must be less than 10
+   * ```proto
+   * message MyInt32 {
+   *   // value must be less than 10
    *   int32 value = 1 [(buf.validate.field).int32.lt = 10];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
    * <code>int32 lt = 2 [json_name = "lt", (.buf.validate.priv.field) = { ... }</code>
@@ -223,16 +223,16 @@ private static final long serialVersionUID = 0L;
   public static final int LTE_FIELD_NUMBER = 3;
   /**
    * <pre>
-   *`lte` requires the field value to be less than or equal to the specified
+   * `lte` requires the field value to be less than or equal to the specified
    * value (field &lt;= value). If the field value is greater than the specified
    * value, an error message is generated.
    *
-   *```proto
-   *message MyInt32 {
-   *  // value must be less than or equal to 10
+   * ```proto
+   * message MyInt32 {
+   *   // value must be less than or equal to 10
    *   int32 value = 1 [(buf.validate.field).int32.lte = 10];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
    * <code>int32 lte = 3 [json_name = "lte", (.buf.validate.priv.field) = { ... }</code>
@@ -244,16 +244,16 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   *`lte` requires the field value to be less than or equal to the specified
+   * `lte` requires the field value to be less than or equal to the specified
    * value (field &lt;= value). If the field value is greater than the specified
    * value, an error message is generated.
    *
-   *```proto
-   *message MyInt32 {
-   *  // value must be less than or equal to 10
+   * ```proto
+   * message MyInt32 {
+   *   // value must be less than or equal to 10
    *   int32 value = 1 [(buf.validate.field).int32.lte = 10];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
    * <code>int32 lte = 3 [json_name = "lte", (.buf.validate.priv.field) = { ... }</code>
@@ -270,24 +270,24 @@ private static final long serialVersionUID = 0L;
   public static final int GT_FIELD_NUMBER = 4;
   /**
    * <pre>
-   *`gt` requires the field value to be greater than the specified value
+   * `gt` requires the field value to be greater than the specified value
    * (exclusive). If the value of `gt` is larger than a specified `lt` or
    * `lte`, the range is reversed, and the field value must be outside the
    * specified range. If the field value doesn't meet the required conditions,
    * an error message is generated.
    *
-   *```proto
-   *message MyInt32 {
-   *  // value must be greater than 5 [int32.gt]
-   *  int32 value = 1 [(buf.validate.field).int32.gt = 5];
+   * ```proto
+   * message MyInt32 {
+   *   // value must be greater than 5 [int32.gt]
+   *   int32 value = 1 [(buf.validate.field).int32.gt = 5];
    *
-   *  // value must be greater than 5 and less than 10 [int32.gt_lt]
-   *  int32 other_value = 2 [(buf.validate.field).int32 = { gt: 5, lt: 10 }];
+   *   // value must be greater than 5 and less than 10 [int32.gt_lt]
+   *   int32 other_value = 2 [(buf.validate.field).int32 = { gt: 5, lt: 10 }];
    *
-   *  // value must be greater than 10 or less than 5 [int32.gt_lt_exclusive]
-   *  int32 another_value = 3 [(buf.validate.field).int32 = { gt: 10, lt: 5 }];
-   *}
-   *```
+   *   // value must be greater than 10 or less than 5 [int32.gt_lt_exclusive]
+   *   int32 another_value = 3 [(buf.validate.field).int32 = { gt: 10, lt: 5 }];
+   * }
+   * ```
    * </pre>
    *
    * <code>int32 gt = 4 [json_name = "gt", (.buf.validate.priv.field) = { ... }</code>
@@ -299,24 +299,24 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   *`gt` requires the field value to be greater than the specified value
+   * `gt` requires the field value to be greater than the specified value
    * (exclusive). If the value of `gt` is larger than a specified `lt` or
    * `lte`, the range is reversed, and the field value must be outside the
    * specified range. If the field value doesn't meet the required conditions,
    * an error message is generated.
    *
-   *```proto
-   *message MyInt32 {
-   *  // value must be greater than 5 [int32.gt]
-   *  int32 value = 1 [(buf.validate.field).int32.gt = 5];
+   * ```proto
+   * message MyInt32 {
+   *   // value must be greater than 5 [int32.gt]
+   *   int32 value = 1 [(buf.validate.field).int32.gt = 5];
    *
-   *  // value must be greater than 5 and less than 10 [int32.gt_lt]
-   *  int32 other_value = 2 [(buf.validate.field).int32 = { gt: 5, lt: 10 }];
+   *   // value must be greater than 5 and less than 10 [int32.gt_lt]
+   *   int32 other_value = 2 [(buf.validate.field).int32 = { gt: 5, lt: 10 }];
    *
-   *  // value must be greater than 10 or less than 5 [int32.gt_lt_exclusive]
-   *  int32 another_value = 3 [(buf.validate.field).int32 = { gt: 10, lt: 5 }];
-   *}
-   *```
+   *   // value must be greater than 10 or less than 5 [int32.gt_lt_exclusive]
+   *   int32 another_value = 3 [(buf.validate.field).int32 = { gt: 10, lt: 5 }];
+   * }
+   * ```
    * </pre>
    *
    * <code>int32 gt = 4 [json_name = "gt", (.buf.validate.priv.field) = { ... }</code>
@@ -333,24 +333,24 @@ private static final long serialVersionUID = 0L;
   public static final int GTE_FIELD_NUMBER = 5;
   /**
    * <pre>
-   *`gte` requires the field value to be greater than or equal to the specified value
+   * `gte` requires the field value to be greater than or equal to the specified value
    * (exclusive). If the value of `gte` is larger than a specified `lt` or
    * `lte`, the range is reversed, and the field value must be outside the
    * specified range. If the field value doesn't meet the required conditions,
    * an error message is generated.
    *
-   *```proto
-   *message MyInt32 {
-   *  // value must be greater than or equal to 5 [int32.gte]
-   *  int32 value = 1 [(buf.validate.field).int32.gte = 5];
+   * ```proto
+   * message MyInt32 {
+   *   // value must be greater than or equal to 5 [int32.gte]
+   *   int32 value = 1 [(buf.validate.field).int32.gte = 5];
    *
-   *  // value must be greater than or equal to 5 and less than 10 [int32.gte_lt]
-   *  int32 other_value = 2 [(buf.validate.field).int32 = { gte: 5, lt: 10 }];
+   *   // value must be greater than or equal to 5 and less than 10 [int32.gte_lt]
+   *   int32 other_value = 2 [(buf.validate.field).int32 = { gte: 5, lt: 10 }];
    *
-   *  // value must be greater than or equal to 10 or less than 5 [int32.gte_lt_exclusive]
-   *  int32 another_value = 3 [(buf.validate.field).int32 = { gte: 10, lt: 5 }];
-   *}
-   *```
+   *   // value must be greater than or equal to 10 or less than 5 [int32.gte_lt_exclusive]
+   *   int32 another_value = 3 [(buf.validate.field).int32 = { gte: 10, lt: 5 }];
+   * }
+   * ```
    * </pre>
    *
    * <code>int32 gte = 5 [json_name = "gte", (.buf.validate.priv.field) = { ... }</code>
@@ -362,24 +362,24 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   *`gte` requires the field value to be greater than or equal to the specified value
+   * `gte` requires the field value to be greater than or equal to the specified value
    * (exclusive). If the value of `gte` is larger than a specified `lt` or
    * `lte`, the range is reversed, and the field value must be outside the
    * specified range. If the field value doesn't meet the required conditions,
    * an error message is generated.
    *
-   *```proto
-   *message MyInt32 {
-   *  // value must be greater than or equal to 5 [int32.gte]
-   *  int32 value = 1 [(buf.validate.field).int32.gte = 5];
+   * ```proto
+   * message MyInt32 {
+   *   // value must be greater than or equal to 5 [int32.gte]
+   *   int32 value = 1 [(buf.validate.field).int32.gte = 5];
    *
-   *  // value must be greater than or equal to 5 and less than 10 [int32.gte_lt]
-   *  int32 other_value = 2 [(buf.validate.field).int32 = { gte: 5, lt: 10 }];
+   *   // value must be greater than or equal to 5 and less than 10 [int32.gte_lt]
+   *   int32 other_value = 2 [(buf.validate.field).int32 = { gte: 5, lt: 10 }];
    *
-   *  // value must be greater than or equal to 10 or less than 5 [int32.gte_lt_exclusive]
-   *  int32 another_value = 3 [(buf.validate.field).int32 = { gte: 10, lt: 5 }];
-   *}
-   *```
+   *   // value must be greater than or equal to 10 or less than 5 [int32.gte_lt_exclusive]
+   *   int32 another_value = 3 [(buf.validate.field).int32 = { gte: 10, lt: 5 }];
+   * }
+   * ```
    * </pre>
    *
    * <code>int32 gte = 5 [json_name = "gte", (.buf.validate.priv.field) = { ... }</code>
@@ -399,16 +399,16 @@ private static final long serialVersionUID = 0L;
       emptyIntList();
   /**
    * <pre>
-   *`in` requires the field value to be equal to one of the specified values.
+   * `in` requires the field value to be equal to one of the specified values.
    * If the field value isn't one of the specified values, an error message is
    * generated.
    *
-   *```proto
-   *message MyInt32 {
-   *  // value must be in list [1, 2, 3]
-   *  repeated int32 value = 1 (buf.validate.field).int32 = { in: [1, 2, 3] };
-   *}
-   *```
+   * ```proto
+   * message MyInt32 {
+   *   // value must be in list [1, 2, 3]
+   *   repeated int32 value = 1 (buf.validate.field).int32 = { in: [1, 2, 3] };
+   * }
+   * ```
    * </pre>
    *
    * <code>repeated int32 in = 6 [json_name = "in", (.buf.validate.priv.field) = { ... }</code>
@@ -421,16 +421,16 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   *`in` requires the field value to be equal to one of the specified values.
+   * `in` requires the field value to be equal to one of the specified values.
    * If the field value isn't one of the specified values, an error message is
    * generated.
    *
-   *```proto
-   *message MyInt32 {
-   *  // value must be in list [1, 2, 3]
-   *  repeated int32 value = 1 (buf.validate.field).int32 = { in: [1, 2, 3] };
-   *}
-   *```
+   * ```proto
+   * message MyInt32 {
+   *   // value must be in list [1, 2, 3]
+   *   repeated int32 value = 1 (buf.validate.field).int32 = { in: [1, 2, 3] };
+   * }
+   * ```
    * </pre>
    *
    * <code>repeated int32 in = 6 [json_name = "in", (.buf.validate.priv.field) = { ... }</code>
@@ -441,16 +441,16 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   *`in` requires the field value to be equal to one of the specified values.
+   * `in` requires the field value to be equal to one of the specified values.
    * If the field value isn't one of the specified values, an error message is
    * generated.
    *
-   *```proto
-   *message MyInt32 {
-   *  // value must be in list [1, 2, 3]
-   *  repeated int32 value = 1 (buf.validate.field).int32 = { in: [1, 2, 3] };
-   *}
-   *```
+   * ```proto
+   * message MyInt32 {
+   *   // value must be in list [1, 2, 3]
+   *   repeated int32 value = 1 (buf.validate.field).int32 = { in: [1, 2, 3] };
+   * }
+   * ```
    * </pre>
    *
    * <code>repeated int32 in = 6 [json_name = "in", (.buf.validate.priv.field) = { ... }</code>
@@ -468,16 +468,16 @@ private static final long serialVersionUID = 0L;
       emptyIntList();
   /**
    * <pre>
-   *`not_in` requires the field value to not be equal to any of the specified
+   * `not_in` requires the field value to not be equal to any of the specified
    * values. If the field value is one of the specified values, an error message
    * is generated.
    *
-   *```proto
-   *message MyInt32 {
-   *  // value must not be in list [1, 2, 3]
-   *  repeated int32 value = 1 (buf.validate.field).int32 = { not_in: [1, 2, 3] };
-   *}
-   *```
+   * ```proto
+   * message MyInt32 {
+   *   // value must not be in list [1, 2, 3]
+   *   repeated int32 value = 1 (buf.validate.field).int32 = { not_in: [1, 2, 3] };
+   * }
+   * ```
    * </pre>
    *
    * <code>repeated int32 not_in = 7 [json_name = "notIn", (.buf.validate.priv.field) = { ... }</code>
@@ -490,16 +490,16 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   *`not_in` requires the field value to not be equal to any of the specified
+   * `not_in` requires the field value to not be equal to any of the specified
    * values. If the field value is one of the specified values, an error message
    * is generated.
    *
-   *```proto
-   *message MyInt32 {
-   *  // value must not be in list [1, 2, 3]
-   *  repeated int32 value = 1 (buf.validate.field).int32 = { not_in: [1, 2, 3] };
-   *}
-   *```
+   * ```proto
+   * message MyInt32 {
+   *   // value must not be in list [1, 2, 3]
+   *   repeated int32 value = 1 (buf.validate.field).int32 = { not_in: [1, 2, 3] };
+   * }
+   * ```
    * </pre>
    *
    * <code>repeated int32 not_in = 7 [json_name = "notIn", (.buf.validate.priv.field) = { ... }</code>
@@ -510,16 +510,16 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   *`not_in` requires the field value to not be equal to any of the specified
+   * `not_in` requires the field value to not be equal to any of the specified
    * values. If the field value is one of the specified values, an error message
    * is generated.
    *
-   *```proto
-   *message MyInt32 {
-   *  // value must not be in list [1, 2, 3]
-   *  repeated int32 value = 1 (buf.validate.field).int32 = { not_in: [1, 2, 3] };
-   *}
-   *```
+   * ```proto
+   * message MyInt32 {
+   *   // value must not be in list [1, 2, 3]
+   *   repeated int32 value = 1 (buf.validate.field).int32 = { not_in: [1, 2, 3] };
+   * }
+   * ```
    * </pre>
    *
    * <code>repeated int32 not_in = 7 [json_name = "notIn", (.buf.validate.priv.field) = { ... }</code>
@@ -1165,15 +1165,15 @@ private static final long serialVersionUID = 0L;
     private int const_ ;
     /**
      * <pre>
-     *`const` requires the field value to exactly match the specified value. If
+     * `const` requires the field value to exactly match the specified value. If
      * the field value doesn't match, an error message is generated.
      *
-     *```proto
-     *message MyInt32 {
-     *  // value must equal 42
+     * ```proto
+     * message MyInt32 {
+     *   // value must equal 42
      *   int32 value = 1 [(buf.validate.field).int32.const = 42];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>optional int32 const = 1 [json_name = "const", (.buf.validate.priv.field) = { ... }</code>
@@ -1185,15 +1185,15 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     *`const` requires the field value to exactly match the specified value. If
+     * `const` requires the field value to exactly match the specified value. If
      * the field value doesn't match, an error message is generated.
      *
-     *```proto
-     *message MyInt32 {
-     *  // value must equal 42
+     * ```proto
+     * message MyInt32 {
+     *   // value must equal 42
      *   int32 value = 1 [(buf.validate.field).int32.const = 42];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>optional int32 const = 1 [json_name = "const", (.buf.validate.priv.field) = { ... }</code>
@@ -1205,15 +1205,15 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     *`const` requires the field value to exactly match the specified value. If
+     * `const` requires the field value to exactly match the specified value. If
      * the field value doesn't match, an error message is generated.
      *
-     *```proto
-     *message MyInt32 {
-     *  // value must equal 42
+     * ```proto
+     * message MyInt32 {
+     *   // value must equal 42
      *   int32 value = 1 [(buf.validate.field).int32.const = 42];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>optional int32 const = 1 [json_name = "const", (.buf.validate.priv.field) = { ... }</code>
@@ -1229,15 +1229,15 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     *`const` requires the field value to exactly match the specified value. If
+     * `const` requires the field value to exactly match the specified value. If
      * the field value doesn't match, an error message is generated.
      *
-     *```proto
-     *message MyInt32 {
-     *  // value must equal 42
+     * ```proto
+     * message MyInt32 {
+     *   // value must equal 42
      *   int32 value = 1 [(buf.validate.field).int32.const = 42];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>optional int32 const = 1 [json_name = "const", (.buf.validate.priv.field) = { ... }</code>
@@ -1256,12 +1256,12 @@ private static final long serialVersionUID = 0L;
      * &lt; value). If the field value is equal to or greater than the specified
      * value, an error message is generated.
      *
-     *```proto
-     *message MyInt32 {
-     *  // value must be less than 10
+     * ```proto
+     * message MyInt32 {
+     *   // value must be less than 10
      *   int32 value = 1 [(buf.validate.field).int32.lt = 10];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>int32 lt = 2 [json_name = "lt", (.buf.validate.priv.field) = { ... }</code>
@@ -1276,12 +1276,12 @@ private static final long serialVersionUID = 0L;
      * &lt; value). If the field value is equal to or greater than the specified
      * value, an error message is generated.
      *
-     *```proto
-     *message MyInt32 {
-     *  // value must be less than 10
+     * ```proto
+     * message MyInt32 {
+     *   // value must be less than 10
      *   int32 value = 1 [(buf.validate.field).int32.lt = 10];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>int32 lt = 2 [json_name = "lt", (.buf.validate.priv.field) = { ... }</code>
@@ -1299,12 +1299,12 @@ private static final long serialVersionUID = 0L;
      * &lt; value). If the field value is equal to or greater than the specified
      * value, an error message is generated.
      *
-     *```proto
-     *message MyInt32 {
-     *  // value must be less than 10
+     * ```proto
+     * message MyInt32 {
+     *   // value must be less than 10
      *   int32 value = 1 [(buf.validate.field).int32.lt = 10];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>int32 lt = 2 [json_name = "lt", (.buf.validate.priv.field) = { ... }</code>
@@ -1324,12 +1324,12 @@ private static final long serialVersionUID = 0L;
      * &lt; value). If the field value is equal to or greater than the specified
      * value, an error message is generated.
      *
-     *```proto
-     *message MyInt32 {
-     *  // value must be less than 10
+     * ```proto
+     * message MyInt32 {
+     *   // value must be less than 10
      *   int32 value = 1 [(buf.validate.field).int32.lt = 10];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>int32 lt = 2 [json_name = "lt", (.buf.validate.priv.field) = { ... }</code>
@@ -1346,16 +1346,16 @@ private static final long serialVersionUID = 0L;
 
     /**
      * <pre>
-     *`lte` requires the field value to be less than or equal to the specified
+     * `lte` requires the field value to be less than or equal to the specified
      * value (field &lt;= value). If the field value is greater than the specified
      * value, an error message is generated.
      *
-     *```proto
-     *message MyInt32 {
-     *  // value must be less than or equal to 10
+     * ```proto
+     * message MyInt32 {
+     *   // value must be less than or equal to 10
      *   int32 value = 1 [(buf.validate.field).int32.lte = 10];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>int32 lte = 3 [json_name = "lte", (.buf.validate.priv.field) = { ... }</code>
@@ -1366,16 +1366,16 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     *`lte` requires the field value to be less than or equal to the specified
+     * `lte` requires the field value to be less than or equal to the specified
      * value (field &lt;= value). If the field value is greater than the specified
      * value, an error message is generated.
      *
-     *```proto
-     *message MyInt32 {
-     *  // value must be less than or equal to 10
+     * ```proto
+     * message MyInt32 {
+     *   // value must be less than or equal to 10
      *   int32 value = 1 [(buf.validate.field).int32.lte = 10];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>int32 lte = 3 [json_name = "lte", (.buf.validate.priv.field) = { ... }</code>
@@ -1389,16 +1389,16 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     *`lte` requires the field value to be less than or equal to the specified
+     * `lte` requires the field value to be less than or equal to the specified
      * value (field &lt;= value). If the field value is greater than the specified
      * value, an error message is generated.
      *
-     *```proto
-     *message MyInt32 {
-     *  // value must be less than or equal to 10
+     * ```proto
+     * message MyInt32 {
+     *   // value must be less than or equal to 10
      *   int32 value = 1 [(buf.validate.field).int32.lte = 10];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>int32 lte = 3 [json_name = "lte", (.buf.validate.priv.field) = { ... }</code>
@@ -1414,16 +1414,16 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     *`lte` requires the field value to be less than or equal to the specified
+     * `lte` requires the field value to be less than or equal to the specified
      * value (field &lt;= value). If the field value is greater than the specified
      * value, an error message is generated.
      *
-     *```proto
-     *message MyInt32 {
-     *  // value must be less than or equal to 10
+     * ```proto
+     * message MyInt32 {
+     *   // value must be less than or equal to 10
      *   int32 value = 1 [(buf.validate.field).int32.lte = 10];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>int32 lte = 3 [json_name = "lte", (.buf.validate.priv.field) = { ... }</code>
@@ -1440,24 +1440,24 @@ private static final long serialVersionUID = 0L;
 
     /**
      * <pre>
-     *`gt` requires the field value to be greater than the specified value
+     * `gt` requires the field value to be greater than the specified value
      * (exclusive). If the value of `gt` is larger than a specified `lt` or
      * `lte`, the range is reversed, and the field value must be outside the
      * specified range. If the field value doesn't meet the required conditions,
      * an error message is generated.
      *
-     *```proto
-     *message MyInt32 {
-     *  // value must be greater than 5 [int32.gt]
-     *  int32 value = 1 [(buf.validate.field).int32.gt = 5];
+     * ```proto
+     * message MyInt32 {
+     *   // value must be greater than 5 [int32.gt]
+     *   int32 value = 1 [(buf.validate.field).int32.gt = 5];
      *
-     *  // value must be greater than 5 and less than 10 [int32.gt_lt]
-     *  int32 other_value = 2 [(buf.validate.field).int32 = { gt: 5, lt: 10 }];
+     *   // value must be greater than 5 and less than 10 [int32.gt_lt]
+     *   int32 other_value = 2 [(buf.validate.field).int32 = { gt: 5, lt: 10 }];
      *
-     *  // value must be greater than 10 or less than 5 [int32.gt_lt_exclusive]
-     *  int32 another_value = 3 [(buf.validate.field).int32 = { gt: 10, lt: 5 }];
-     *}
-     *```
+     *   // value must be greater than 10 or less than 5 [int32.gt_lt_exclusive]
+     *   int32 another_value = 3 [(buf.validate.field).int32 = { gt: 10, lt: 5 }];
+     * }
+     * ```
      * </pre>
      *
      * <code>int32 gt = 4 [json_name = "gt", (.buf.validate.priv.field) = { ... }</code>
@@ -1468,24 +1468,24 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     *`gt` requires the field value to be greater than the specified value
+     * `gt` requires the field value to be greater than the specified value
      * (exclusive). If the value of `gt` is larger than a specified `lt` or
      * `lte`, the range is reversed, and the field value must be outside the
      * specified range. If the field value doesn't meet the required conditions,
      * an error message is generated.
      *
-     *```proto
-     *message MyInt32 {
-     *  // value must be greater than 5 [int32.gt]
-     *  int32 value = 1 [(buf.validate.field).int32.gt = 5];
+     * ```proto
+     * message MyInt32 {
+     *   // value must be greater than 5 [int32.gt]
+     *   int32 value = 1 [(buf.validate.field).int32.gt = 5];
      *
-     *  // value must be greater than 5 and less than 10 [int32.gt_lt]
-     *  int32 other_value = 2 [(buf.validate.field).int32 = { gt: 5, lt: 10 }];
+     *   // value must be greater than 5 and less than 10 [int32.gt_lt]
+     *   int32 other_value = 2 [(buf.validate.field).int32 = { gt: 5, lt: 10 }];
      *
-     *  // value must be greater than 10 or less than 5 [int32.gt_lt_exclusive]
-     *  int32 another_value = 3 [(buf.validate.field).int32 = { gt: 10, lt: 5 }];
-     *}
-     *```
+     *   // value must be greater than 10 or less than 5 [int32.gt_lt_exclusive]
+     *   int32 another_value = 3 [(buf.validate.field).int32 = { gt: 10, lt: 5 }];
+     * }
+     * ```
      * </pre>
      *
      * <code>int32 gt = 4 [json_name = "gt", (.buf.validate.priv.field) = { ... }</code>
@@ -1499,24 +1499,24 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     *`gt` requires the field value to be greater than the specified value
+     * `gt` requires the field value to be greater than the specified value
      * (exclusive). If the value of `gt` is larger than a specified `lt` or
      * `lte`, the range is reversed, and the field value must be outside the
      * specified range. If the field value doesn't meet the required conditions,
      * an error message is generated.
      *
-     *```proto
-     *message MyInt32 {
-     *  // value must be greater than 5 [int32.gt]
-     *  int32 value = 1 [(buf.validate.field).int32.gt = 5];
+     * ```proto
+     * message MyInt32 {
+     *   // value must be greater than 5 [int32.gt]
+     *   int32 value = 1 [(buf.validate.field).int32.gt = 5];
      *
-     *  // value must be greater than 5 and less than 10 [int32.gt_lt]
-     *  int32 other_value = 2 [(buf.validate.field).int32 = { gt: 5, lt: 10 }];
+     *   // value must be greater than 5 and less than 10 [int32.gt_lt]
+     *   int32 other_value = 2 [(buf.validate.field).int32 = { gt: 5, lt: 10 }];
      *
-     *  // value must be greater than 10 or less than 5 [int32.gt_lt_exclusive]
-     *  int32 another_value = 3 [(buf.validate.field).int32 = { gt: 10, lt: 5 }];
-     *}
-     *```
+     *   // value must be greater than 10 or less than 5 [int32.gt_lt_exclusive]
+     *   int32 another_value = 3 [(buf.validate.field).int32 = { gt: 10, lt: 5 }];
+     * }
+     * ```
      * </pre>
      *
      * <code>int32 gt = 4 [json_name = "gt", (.buf.validate.priv.field) = { ... }</code>
@@ -1532,24 +1532,24 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     *`gt` requires the field value to be greater than the specified value
+     * `gt` requires the field value to be greater than the specified value
      * (exclusive). If the value of `gt` is larger than a specified `lt` or
      * `lte`, the range is reversed, and the field value must be outside the
      * specified range. If the field value doesn't meet the required conditions,
      * an error message is generated.
      *
-     *```proto
-     *message MyInt32 {
-     *  // value must be greater than 5 [int32.gt]
-     *  int32 value = 1 [(buf.validate.field).int32.gt = 5];
+     * ```proto
+     * message MyInt32 {
+     *   // value must be greater than 5 [int32.gt]
+     *   int32 value = 1 [(buf.validate.field).int32.gt = 5];
      *
-     *  // value must be greater than 5 and less than 10 [int32.gt_lt]
-     *  int32 other_value = 2 [(buf.validate.field).int32 = { gt: 5, lt: 10 }];
+     *   // value must be greater than 5 and less than 10 [int32.gt_lt]
+     *   int32 other_value = 2 [(buf.validate.field).int32 = { gt: 5, lt: 10 }];
      *
-     *  // value must be greater than 10 or less than 5 [int32.gt_lt_exclusive]
-     *  int32 another_value = 3 [(buf.validate.field).int32 = { gt: 10, lt: 5 }];
-     *}
-     *```
+     *   // value must be greater than 10 or less than 5 [int32.gt_lt_exclusive]
+     *   int32 another_value = 3 [(buf.validate.field).int32 = { gt: 10, lt: 5 }];
+     * }
+     * ```
      * </pre>
      *
      * <code>int32 gt = 4 [json_name = "gt", (.buf.validate.priv.field) = { ... }</code>
@@ -1566,24 +1566,24 @@ private static final long serialVersionUID = 0L;
 
     /**
      * <pre>
-     *`gte` requires the field value to be greater than or equal to the specified value
+     * `gte` requires the field value to be greater than or equal to the specified value
      * (exclusive). If the value of `gte` is larger than a specified `lt` or
      * `lte`, the range is reversed, and the field value must be outside the
      * specified range. If the field value doesn't meet the required conditions,
      * an error message is generated.
      *
-     *```proto
-     *message MyInt32 {
-     *  // value must be greater than or equal to 5 [int32.gte]
-     *  int32 value = 1 [(buf.validate.field).int32.gte = 5];
+     * ```proto
+     * message MyInt32 {
+     *   // value must be greater than or equal to 5 [int32.gte]
+     *   int32 value = 1 [(buf.validate.field).int32.gte = 5];
      *
-     *  // value must be greater than or equal to 5 and less than 10 [int32.gte_lt]
-     *  int32 other_value = 2 [(buf.validate.field).int32 = { gte: 5, lt: 10 }];
+     *   // value must be greater than or equal to 5 and less than 10 [int32.gte_lt]
+     *   int32 other_value = 2 [(buf.validate.field).int32 = { gte: 5, lt: 10 }];
      *
-     *  // value must be greater than or equal to 10 or less than 5 [int32.gte_lt_exclusive]
-     *  int32 another_value = 3 [(buf.validate.field).int32 = { gte: 10, lt: 5 }];
-     *}
-     *```
+     *   // value must be greater than or equal to 10 or less than 5 [int32.gte_lt_exclusive]
+     *   int32 another_value = 3 [(buf.validate.field).int32 = { gte: 10, lt: 5 }];
+     * }
+     * ```
      * </pre>
      *
      * <code>int32 gte = 5 [json_name = "gte", (.buf.validate.priv.field) = { ... }</code>
@@ -1594,24 +1594,24 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     *`gte` requires the field value to be greater than or equal to the specified value
+     * `gte` requires the field value to be greater than or equal to the specified value
      * (exclusive). If the value of `gte` is larger than a specified `lt` or
      * `lte`, the range is reversed, and the field value must be outside the
      * specified range. If the field value doesn't meet the required conditions,
      * an error message is generated.
      *
-     *```proto
-     *message MyInt32 {
-     *  // value must be greater than or equal to 5 [int32.gte]
-     *  int32 value = 1 [(buf.validate.field).int32.gte = 5];
+     * ```proto
+     * message MyInt32 {
+     *   // value must be greater than or equal to 5 [int32.gte]
+     *   int32 value = 1 [(buf.validate.field).int32.gte = 5];
      *
-     *  // value must be greater than or equal to 5 and less than 10 [int32.gte_lt]
-     *  int32 other_value = 2 [(buf.validate.field).int32 = { gte: 5, lt: 10 }];
+     *   // value must be greater than or equal to 5 and less than 10 [int32.gte_lt]
+     *   int32 other_value = 2 [(buf.validate.field).int32 = { gte: 5, lt: 10 }];
      *
-     *  // value must be greater than or equal to 10 or less than 5 [int32.gte_lt_exclusive]
-     *  int32 another_value = 3 [(buf.validate.field).int32 = { gte: 10, lt: 5 }];
-     *}
-     *```
+     *   // value must be greater than or equal to 10 or less than 5 [int32.gte_lt_exclusive]
+     *   int32 another_value = 3 [(buf.validate.field).int32 = { gte: 10, lt: 5 }];
+     * }
+     * ```
      * </pre>
      *
      * <code>int32 gte = 5 [json_name = "gte", (.buf.validate.priv.field) = { ... }</code>
@@ -1625,24 +1625,24 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     *`gte` requires the field value to be greater than or equal to the specified value
+     * `gte` requires the field value to be greater than or equal to the specified value
      * (exclusive). If the value of `gte` is larger than a specified `lt` or
      * `lte`, the range is reversed, and the field value must be outside the
      * specified range. If the field value doesn't meet the required conditions,
      * an error message is generated.
      *
-     *```proto
-     *message MyInt32 {
-     *  // value must be greater than or equal to 5 [int32.gte]
-     *  int32 value = 1 [(buf.validate.field).int32.gte = 5];
+     * ```proto
+     * message MyInt32 {
+     *   // value must be greater than or equal to 5 [int32.gte]
+     *   int32 value = 1 [(buf.validate.field).int32.gte = 5];
      *
-     *  // value must be greater than or equal to 5 and less than 10 [int32.gte_lt]
-     *  int32 other_value = 2 [(buf.validate.field).int32 = { gte: 5, lt: 10 }];
+     *   // value must be greater than or equal to 5 and less than 10 [int32.gte_lt]
+     *   int32 other_value = 2 [(buf.validate.field).int32 = { gte: 5, lt: 10 }];
      *
-     *  // value must be greater than or equal to 10 or less than 5 [int32.gte_lt_exclusive]
-     *  int32 another_value = 3 [(buf.validate.field).int32 = { gte: 10, lt: 5 }];
-     *}
-     *```
+     *   // value must be greater than or equal to 10 or less than 5 [int32.gte_lt_exclusive]
+     *   int32 another_value = 3 [(buf.validate.field).int32 = { gte: 10, lt: 5 }];
+     * }
+     * ```
      * </pre>
      *
      * <code>int32 gte = 5 [json_name = "gte", (.buf.validate.priv.field) = { ... }</code>
@@ -1658,24 +1658,24 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     *`gte` requires the field value to be greater than or equal to the specified value
+     * `gte` requires the field value to be greater than or equal to the specified value
      * (exclusive). If the value of `gte` is larger than a specified `lt` or
      * `lte`, the range is reversed, and the field value must be outside the
      * specified range. If the field value doesn't meet the required conditions,
      * an error message is generated.
      *
-     *```proto
-     *message MyInt32 {
-     *  // value must be greater than or equal to 5 [int32.gte]
-     *  int32 value = 1 [(buf.validate.field).int32.gte = 5];
+     * ```proto
+     * message MyInt32 {
+     *   // value must be greater than or equal to 5 [int32.gte]
+     *   int32 value = 1 [(buf.validate.field).int32.gte = 5];
      *
-     *  // value must be greater than or equal to 5 and less than 10 [int32.gte_lt]
-     *  int32 other_value = 2 [(buf.validate.field).int32 = { gte: 5, lt: 10 }];
+     *   // value must be greater than or equal to 5 and less than 10 [int32.gte_lt]
+     *   int32 other_value = 2 [(buf.validate.field).int32 = { gte: 5, lt: 10 }];
      *
-     *  // value must be greater than or equal to 10 or less than 5 [int32.gte_lt_exclusive]
-     *  int32 another_value = 3 [(buf.validate.field).int32 = { gte: 10, lt: 5 }];
-     *}
-     *```
+     *   // value must be greater than or equal to 10 or less than 5 [int32.gte_lt_exclusive]
+     *   int32 another_value = 3 [(buf.validate.field).int32 = { gte: 10, lt: 5 }];
+     * }
+     * ```
      * </pre>
      *
      * <code>int32 gte = 5 [json_name = "gte", (.buf.validate.priv.field) = { ... }</code>
@@ -1699,16 +1699,16 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     *`in` requires the field value to be equal to one of the specified values.
+     * `in` requires the field value to be equal to one of the specified values.
      * If the field value isn't one of the specified values, an error message is
      * generated.
      *
-     *```proto
-     *message MyInt32 {
-     *  // value must be in list [1, 2, 3]
-     *  repeated int32 value = 1 (buf.validate.field).int32 = { in: [1, 2, 3] };
-     *}
-     *```
+     * ```proto
+     * message MyInt32 {
+     *   // value must be in list [1, 2, 3]
+     *   repeated int32 value = 1 (buf.validate.field).int32 = { in: [1, 2, 3] };
+     * }
+     * ```
      * </pre>
      *
      * <code>repeated int32 in = 6 [json_name = "in", (.buf.validate.priv.field) = { ... }</code>
@@ -1721,16 +1721,16 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     *`in` requires the field value to be equal to one of the specified values.
+     * `in` requires the field value to be equal to one of the specified values.
      * If the field value isn't one of the specified values, an error message is
      * generated.
      *
-     *```proto
-     *message MyInt32 {
-     *  // value must be in list [1, 2, 3]
-     *  repeated int32 value = 1 (buf.validate.field).int32 = { in: [1, 2, 3] };
-     *}
-     *```
+     * ```proto
+     * message MyInt32 {
+     *   // value must be in list [1, 2, 3]
+     *   repeated int32 value = 1 (buf.validate.field).int32 = { in: [1, 2, 3] };
+     * }
+     * ```
      * </pre>
      *
      * <code>repeated int32 in = 6 [json_name = "in", (.buf.validate.priv.field) = { ... }</code>
@@ -1741,16 +1741,16 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     *`in` requires the field value to be equal to one of the specified values.
+     * `in` requires the field value to be equal to one of the specified values.
      * If the field value isn't one of the specified values, an error message is
      * generated.
      *
-     *```proto
-     *message MyInt32 {
-     *  // value must be in list [1, 2, 3]
-     *  repeated int32 value = 1 (buf.validate.field).int32 = { in: [1, 2, 3] };
-     *}
-     *```
+     * ```proto
+     * message MyInt32 {
+     *   // value must be in list [1, 2, 3]
+     *   repeated int32 value = 1 (buf.validate.field).int32 = { in: [1, 2, 3] };
+     * }
+     * ```
      * </pre>
      *
      * <code>repeated int32 in = 6 [json_name = "in", (.buf.validate.priv.field) = { ... }</code>
@@ -1762,16 +1762,16 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     *`in` requires the field value to be equal to one of the specified values.
+     * `in` requires the field value to be equal to one of the specified values.
      * If the field value isn't one of the specified values, an error message is
      * generated.
      *
-     *```proto
-     *message MyInt32 {
-     *  // value must be in list [1, 2, 3]
-     *  repeated int32 value = 1 (buf.validate.field).int32 = { in: [1, 2, 3] };
-     *}
-     *```
+     * ```proto
+     * message MyInt32 {
+     *   // value must be in list [1, 2, 3]
+     *   repeated int32 value = 1 (buf.validate.field).int32 = { in: [1, 2, 3] };
+     * }
+     * ```
      * </pre>
      *
      * <code>repeated int32 in = 6 [json_name = "in", (.buf.validate.priv.field) = { ... }</code>
@@ -1790,16 +1790,16 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     *`in` requires the field value to be equal to one of the specified values.
+     * `in` requires the field value to be equal to one of the specified values.
      * If the field value isn't one of the specified values, an error message is
      * generated.
      *
-     *```proto
-     *message MyInt32 {
-     *  // value must be in list [1, 2, 3]
-     *  repeated int32 value = 1 (buf.validate.field).int32 = { in: [1, 2, 3] };
-     *}
-     *```
+     * ```proto
+     * message MyInt32 {
+     *   // value must be in list [1, 2, 3]
+     *   repeated int32 value = 1 (buf.validate.field).int32 = { in: [1, 2, 3] };
+     * }
+     * ```
      * </pre>
      *
      * <code>repeated int32 in = 6 [json_name = "in", (.buf.validate.priv.field) = { ... }</code>
@@ -1816,16 +1816,16 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     *`in` requires the field value to be equal to one of the specified values.
+     * `in` requires the field value to be equal to one of the specified values.
      * If the field value isn't one of the specified values, an error message is
      * generated.
      *
-     *```proto
-     *message MyInt32 {
-     *  // value must be in list [1, 2, 3]
-     *  repeated int32 value = 1 (buf.validate.field).int32 = { in: [1, 2, 3] };
-     *}
-     *```
+     * ```proto
+     * message MyInt32 {
+     *   // value must be in list [1, 2, 3]
+     *   repeated int32 value = 1 (buf.validate.field).int32 = { in: [1, 2, 3] };
+     * }
+     * ```
      * </pre>
      *
      * <code>repeated int32 in = 6 [json_name = "in", (.buf.validate.priv.field) = { ... }</code>
@@ -1843,16 +1843,16 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     *`in` requires the field value to be equal to one of the specified values.
+     * `in` requires the field value to be equal to one of the specified values.
      * If the field value isn't one of the specified values, an error message is
      * generated.
      *
-     *```proto
-     *message MyInt32 {
-     *  // value must be in list [1, 2, 3]
-     *  repeated int32 value = 1 (buf.validate.field).int32 = { in: [1, 2, 3] };
-     *}
-     *```
+     * ```proto
+     * message MyInt32 {
+     *   // value must be in list [1, 2, 3]
+     *   repeated int32 value = 1 (buf.validate.field).int32 = { in: [1, 2, 3] };
+     * }
+     * ```
      * </pre>
      *
      * <code>repeated int32 in = 6 [json_name = "in", (.buf.validate.priv.field) = { ... }</code>
@@ -1874,16 +1874,16 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     *`not_in` requires the field value to not be equal to any of the specified
+     * `not_in` requires the field value to not be equal to any of the specified
      * values. If the field value is one of the specified values, an error message
      * is generated.
      *
-     *```proto
-     *message MyInt32 {
-     *  // value must not be in list [1, 2, 3]
-     *  repeated int32 value = 1 (buf.validate.field).int32 = { not_in: [1, 2, 3] };
-     *}
-     *```
+     * ```proto
+     * message MyInt32 {
+     *   // value must not be in list [1, 2, 3]
+     *   repeated int32 value = 1 (buf.validate.field).int32 = { not_in: [1, 2, 3] };
+     * }
+     * ```
      * </pre>
      *
      * <code>repeated int32 not_in = 7 [json_name = "notIn", (.buf.validate.priv.field) = { ... }</code>
@@ -1896,16 +1896,16 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     *`not_in` requires the field value to not be equal to any of the specified
+     * `not_in` requires the field value to not be equal to any of the specified
      * values. If the field value is one of the specified values, an error message
      * is generated.
      *
-     *```proto
-     *message MyInt32 {
-     *  // value must not be in list [1, 2, 3]
-     *  repeated int32 value = 1 (buf.validate.field).int32 = { not_in: [1, 2, 3] };
-     *}
-     *```
+     * ```proto
+     * message MyInt32 {
+     *   // value must not be in list [1, 2, 3]
+     *   repeated int32 value = 1 (buf.validate.field).int32 = { not_in: [1, 2, 3] };
+     * }
+     * ```
      * </pre>
      *
      * <code>repeated int32 not_in = 7 [json_name = "notIn", (.buf.validate.priv.field) = { ... }</code>
@@ -1916,16 +1916,16 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     *`not_in` requires the field value to not be equal to any of the specified
+     * `not_in` requires the field value to not be equal to any of the specified
      * values. If the field value is one of the specified values, an error message
      * is generated.
      *
-     *```proto
-     *message MyInt32 {
-     *  // value must not be in list [1, 2, 3]
-     *  repeated int32 value = 1 (buf.validate.field).int32 = { not_in: [1, 2, 3] };
-     *}
-     *```
+     * ```proto
+     * message MyInt32 {
+     *   // value must not be in list [1, 2, 3]
+     *   repeated int32 value = 1 (buf.validate.field).int32 = { not_in: [1, 2, 3] };
+     * }
+     * ```
      * </pre>
      *
      * <code>repeated int32 not_in = 7 [json_name = "notIn", (.buf.validate.priv.field) = { ... }</code>
@@ -1937,16 +1937,16 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     *`not_in` requires the field value to not be equal to any of the specified
+     * `not_in` requires the field value to not be equal to any of the specified
      * values. If the field value is one of the specified values, an error message
      * is generated.
      *
-     *```proto
-     *message MyInt32 {
-     *  // value must not be in list [1, 2, 3]
-     *  repeated int32 value = 1 (buf.validate.field).int32 = { not_in: [1, 2, 3] };
-     *}
-     *```
+     * ```proto
+     * message MyInt32 {
+     *   // value must not be in list [1, 2, 3]
+     *   repeated int32 value = 1 (buf.validate.field).int32 = { not_in: [1, 2, 3] };
+     * }
+     * ```
      * </pre>
      *
      * <code>repeated int32 not_in = 7 [json_name = "notIn", (.buf.validate.priv.field) = { ... }</code>
@@ -1965,16 +1965,16 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     *`not_in` requires the field value to not be equal to any of the specified
+     * `not_in` requires the field value to not be equal to any of the specified
      * values. If the field value is one of the specified values, an error message
      * is generated.
      *
-     *```proto
-     *message MyInt32 {
-     *  // value must not be in list [1, 2, 3]
-     *  repeated int32 value = 1 (buf.validate.field).int32 = { not_in: [1, 2, 3] };
-     *}
-     *```
+     * ```proto
+     * message MyInt32 {
+     *   // value must not be in list [1, 2, 3]
+     *   repeated int32 value = 1 (buf.validate.field).int32 = { not_in: [1, 2, 3] };
+     * }
+     * ```
      * </pre>
      *
      * <code>repeated int32 not_in = 7 [json_name = "notIn", (.buf.validate.priv.field) = { ... }</code>
@@ -1991,16 +1991,16 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     *`not_in` requires the field value to not be equal to any of the specified
+     * `not_in` requires the field value to not be equal to any of the specified
      * values. If the field value is one of the specified values, an error message
      * is generated.
      *
-     *```proto
-     *message MyInt32 {
-     *  // value must not be in list [1, 2, 3]
-     *  repeated int32 value = 1 (buf.validate.field).int32 = { not_in: [1, 2, 3] };
-     *}
-     *```
+     * ```proto
+     * message MyInt32 {
+     *   // value must not be in list [1, 2, 3]
+     *   repeated int32 value = 1 (buf.validate.field).int32 = { not_in: [1, 2, 3] };
+     * }
+     * ```
      * </pre>
      *
      * <code>repeated int32 not_in = 7 [json_name = "notIn", (.buf.validate.priv.field) = { ... }</code>
@@ -2018,16 +2018,16 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     *`not_in` requires the field value to not be equal to any of the specified
+     * `not_in` requires the field value to not be equal to any of the specified
      * values. If the field value is one of the specified values, an error message
      * is generated.
      *
-     *```proto
-     *message MyInt32 {
-     *  // value must not be in list [1, 2, 3]
-     *  repeated int32 value = 1 (buf.validate.field).int32 = { not_in: [1, 2, 3] };
-     *}
-     *```
+     * ```proto
+     * message MyInt32 {
+     *   // value must not be in list [1, 2, 3]
+     *   repeated int32 value = 1 (buf.validate.field).int32 = { not_in: [1, 2, 3] };
+     * }
+     * ```
      * </pre>
      *
      * <code>repeated int32 not_in = 7 [json_name = "notIn", (.buf.validate.priv.field) = { ... }</code>

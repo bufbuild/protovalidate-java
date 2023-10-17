@@ -9,20 +9,20 @@ public interface FieldConstraintsOrBuilder extends
 
   /**
    * <pre>
-   * `Constraint` is a repeated field used to represent a textual expression
+   * `cel` is a repeated field used to represent a textual expression
    * in the Common Expression Language (CEL) syntax. For more information on
    * CEL, [see our documentation](https://github.com/bufbuild/protovalidate/blob/main/docs/cel.md).
    *
-   *```proto
-   *message MyMessage {
-   *  // The field `value` must be greater than 42.
-   *  optional int32 value = 1 [(buf.validate.field).cel = {
-   *    id: "my_message.value",
-   *    message: "value must be greater than 42",
-   *    expression: "this &gt; 42",
-   *  }];
-   *}
-   *```
+   * ```proto
+   * message MyMessage {
+   *   // The field `value` must be greater than 42.
+   *   optional int32 value = 1 [(buf.validate.field).cel = {
+   *     id: "my_message.value",
+   *     message: "value must be greater than 42",
+   *     expression: "this &gt; 42",
+   *   }];
+   * }
+   * ```
    * </pre>
    *
    * <code>repeated .buf.validate.Constraint cel = 23 [json_name = "cel"];</code>
@@ -31,20 +31,20 @@ public interface FieldConstraintsOrBuilder extends
       getCelList();
   /**
    * <pre>
-   * `Constraint` is a repeated field used to represent a textual expression
+   * `cel` is a repeated field used to represent a textual expression
    * in the Common Expression Language (CEL) syntax. For more information on
    * CEL, [see our documentation](https://github.com/bufbuild/protovalidate/blob/main/docs/cel.md).
    *
-   *```proto
-   *message MyMessage {
-   *  // The field `value` must be greater than 42.
-   *  optional int32 value = 1 [(buf.validate.field).cel = {
-   *    id: "my_message.value",
-   *    message: "value must be greater than 42",
-   *    expression: "this &gt; 42",
-   *  }];
-   *}
-   *```
+   * ```proto
+   * message MyMessage {
+   *   // The field `value` must be greater than 42.
+   *   optional int32 value = 1 [(buf.validate.field).cel = {
+   *     id: "my_message.value",
+   *     message: "value must be greater than 42",
+   *     expression: "this &gt; 42",
+   *   }];
+   * }
+   * ```
    * </pre>
    *
    * <code>repeated .buf.validate.Constraint cel = 23 [json_name = "cel"];</code>
@@ -52,20 +52,20 @@ public interface FieldConstraintsOrBuilder extends
   build.buf.validate.Constraint getCel(int index);
   /**
    * <pre>
-   * `Constraint` is a repeated field used to represent a textual expression
+   * `cel` is a repeated field used to represent a textual expression
    * in the Common Expression Language (CEL) syntax. For more information on
    * CEL, [see our documentation](https://github.com/bufbuild/protovalidate/blob/main/docs/cel.md).
    *
-   *```proto
-   *message MyMessage {
-   *  // The field `value` must be greater than 42.
-   *  optional int32 value = 1 [(buf.validate.field).cel = {
-   *    id: "my_message.value",
-   *    message: "value must be greater than 42",
-   *    expression: "this &gt; 42",
-   *  }];
-   *}
-   *```
+   * ```proto
+   * message MyMessage {
+   *   // The field `value` must be greater than 42.
+   *   optional int32 value = 1 [(buf.validate.field).cel = {
+   *     id: "my_message.value",
+   *     message: "value must be greater than 42",
+   *     expression: "this &gt; 42",
+   *   }];
+   * }
+   * ```
    * </pre>
    *
    * <code>repeated .buf.validate.Constraint cel = 23 [json_name = "cel"];</code>
@@ -73,20 +73,20 @@ public interface FieldConstraintsOrBuilder extends
   int getCelCount();
   /**
    * <pre>
-   * `Constraint` is a repeated field used to represent a textual expression
+   * `cel` is a repeated field used to represent a textual expression
    * in the Common Expression Language (CEL) syntax. For more information on
    * CEL, [see our documentation](https://github.com/bufbuild/protovalidate/blob/main/docs/cel.md).
    *
-   *```proto
-   *message MyMessage {
-   *  // The field `value` must be greater than 42.
-   *  optional int32 value = 1 [(buf.validate.field).cel = {
-   *    id: "my_message.value",
-   *    message: "value must be greater than 42",
-   *    expression: "this &gt; 42",
-   *  }];
-   *}
-   *```
+   * ```proto
+   * message MyMessage {
+   *   // The field `value` must be greater than 42.
+   *   optional int32 value = 1 [(buf.validate.field).cel = {
+   *     id: "my_message.value",
+   *     message: "value must be greater than 42",
+   *     expression: "this &gt; 42",
+   *   }];
+   * }
+   * ```
    * </pre>
    *
    * <code>repeated .buf.validate.Constraint cel = 23 [json_name = "cel"];</code>
@@ -95,20 +95,20 @@ public interface FieldConstraintsOrBuilder extends
       getCelOrBuilderList();
   /**
    * <pre>
-   * `Constraint` is a repeated field used to represent a textual expression
+   * `cel` is a repeated field used to represent a textual expression
    * in the Common Expression Language (CEL) syntax. For more information on
    * CEL, [see our documentation](https://github.com/bufbuild/protovalidate/blob/main/docs/cel.md).
    *
-   *```proto
-   *message MyMessage {
-   *  // The field `value` must be greater than 42.
-   *  optional int32 value = 1 [(buf.validate.field).cel = {
-   *    id: "my_message.value",
-   *    message: "value must be greater than 42",
-   *    expression: "this &gt; 42",
-   *  }];
-   *}
-   *```
+   * ```proto
+   * message MyMessage {
+   *   // The field `value` must be greater than 42.
+   *   optional int32 value = 1 [(buf.validate.field).cel = {
+   *     id: "my_message.value",
+   *     message: "value must be greater than 42",
+   *     expression: "this &gt; 42",
+   *   }];
+   * }
+   * ```
    * </pre>
    *
    * <code>repeated .buf.validate.Constraint cel = 23 [json_name = "cel"];</code>
@@ -118,16 +118,16 @@ public interface FieldConstraintsOrBuilder extends
 
   /**
    * <pre>
-   *`skipped` is an optional boolean attribute that specifies that the
-   *validation rules of this field should not be evaluated. If skipped is set to
-   *true, any validation rules set for the field will be ignored.
+   * `skipped` is an optional boolean attribute that specifies that the
+   * validation rules of this field should not be evaluated. If skipped is set to
+   * true, any validation rules set for the field will be ignored.
    *
-   *```proto
-   *message MyMessage {
-   *  // The field `value` must not be set.
-   *  optional MyOtherMessage value = 1 [(buf.validate.field).skipped = true];
-   *}
-   *```
+   * ```proto
+   * message MyMessage {
+   *   // The field `value` must not be set.
+   *   optional MyOtherMessage value = 1 [(buf.validate.field).skipped = true];
+   * }
+   * ```
    * </pre>
    *
    * <code>bool skipped = 24 [json_name = "skipped"];</code>
@@ -137,16 +137,19 @@ public interface FieldConstraintsOrBuilder extends
 
   /**
    * <pre>
-   *`required` is an optional boolean attribute that specifies that
-   *this field must be set. If required is set to true, the field value must
-   *not be empty; otherwise, an error message will be generated.
+   * `required` is an optional boolean attribute that specifies that
+   * this field must be set. If required is set to true, the field value must
+   * not be empty; otherwise, an error message will be generated.
    *
-   *```proto
-   *message MyMessage {
-   *  // The field `value` must be set.
-   *  optional MyOtherMessage value = 1 [(buf.validate.field).required = true];
-   *}
-   *```
+   * Note that `required` validates that `repeated` fields are non-empty, that is
+   * setting a `repeated` field as `required` is equivalent to `repeated.min_items = 1`.
+   *
+   * ```proto
+   * message MyMessage {
+   *   // The field `value` must be set.
+   *   optional MyOtherMessage value = 1 [(buf.validate.field).required = true];
+   * }
+   * ```
    * </pre>
    *
    * <code>bool required = 25 [json_name = "required"];</code>
@@ -156,16 +159,16 @@ public interface FieldConstraintsOrBuilder extends
 
   /**
    * <pre>
-   *`ignore_empty` specifies that the validation rules of this field should be
-   *evaluated only if the field isn't empty. If the field is empty, no validation
-   *rules are applied.
+   * `ignore_empty` specifies that the validation rules of this field should be
+   * evaluated only if the field isn't empty. If the field is empty, no validation
+   * rules are applied.
    *
-   *```proto
-   *message MyRepeated {
-   *  // The field `value` validation rules should be evaluated only if the field isn't empty.
-   *  repeated string value = 1 [(buf.validate.field).ignore_empty = true];
-   *}
-   *```
+   * ```proto
+   * message MyRepeated {
+   *   // The field `value` validation rules should be evaluated only if the field isn't empty.
+   *   repeated string value = 1 [(buf.validate.field).ignore_empty = true];
+   * }
+   * ```
    * </pre>
    *
    * <code>bool ignore_empty = 26 [json_name = "ignoreEmpty"];</code>

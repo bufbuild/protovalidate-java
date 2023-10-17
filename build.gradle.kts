@@ -6,10 +6,9 @@ import net.ltgt.gradle.errorprone.CheckSeverity
 import net.ltgt.gradle.errorprone.errorprone
 
 plugins {
-    `version-catalog`
-
     `java-library`
     alias(libs.plugins.errorprone)
+    alias(libs.plugins.git)
     alias(libs.plugins.maven)
 }
 
@@ -17,6 +16,20 @@ java {
     sourceCompatibility = JavaVersion.VERSION_1_8
     targetCompatibility = JavaVersion.VERSION_1_8
 }
+
+// The releaseVersion property is set on official releases in the release.yml workflow.
+// If not specified, we attempt to calculate a snapshot version based on the last tagged release.
+// So if the local build's last tag was v0.1.9, this will set snapshotVersion to 0.1.10-SNAPSHOT.
+// If this fails for any reason, we'll fall back to using 0.0.0-SNAPSHOT version.
+val versionDetails: groovy.lang.Closure<com.palantir.gradle.gitversion.VersionDetails> by extra
+val details = versionDetails()
+var snapshotVersion = "0.0.0-SNAPSHOT"
+val matchResult = """^v(\d+)\.(\d+)\.(\d+)$""".toRegex().matchEntire(details.lastTag)
+if (matchResult != null) {
+    val (major, minor, patch) = matchResult.destructured
+    snapshotVersion = "$major.$minor.${patch.toInt() + 1}-SNAPSHOT"
+}
+val releaseVersion = project.findProperty("releaseVersion") as String? ?: snapshotVersion
 
 val bufCLIFile = project.layout.buildDirectory.file("gobin/buf").get().asFile
 val bufCLIPath: String = bufCLIFile.absolutePath
@@ -176,6 +189,7 @@ configure<SpotlessExtension> {
 }
 
 allprojects {
+    version = releaseVersion
     repositories {
         mavenCentral()
         maven {
@@ -194,6 +208,13 @@ allprojects {
             trimTrailingWhitespace()
         }
     }
+    tasks.withType<Jar>().configureEach {
+        if (name == "jar") {
+            manifest {
+                attributes("Implementation-Version" to releaseVersion)
+            }
+        }
+    }
 }
 
 mavenPublishing {
@@ -202,8 +223,7 @@ mavenPublishing {
     if (isAutoReleased) {
         signAllPublications()
     }
-    val releaseVersion = project.findProperty("releaseVersion") as String? ?: System.getenv("VERSION")
-    coordinates("build.buf", "protovalidate", releaseVersion ?: "0.0.0-SNAPSHOT")
+    coordinates("build.buf", "protovalidate", releaseVersion)
     pomFromGradleProperties()
     configure(
         JavaLibrary(
@@ -219,8 +239,6 @@ mavenPublishing {
     pom {
         name.set("protovalidate-java")
         group = "build.buf"
-        // Default to snapshot versioning for local publishing.
-        version = releaseVersion ?: "0.0.0-SNAPSHOT"
         description.set("Protocol Buffer Validation")
         url.set("https://github.com/bufbuild/protovalidate-java")
         licenses {
