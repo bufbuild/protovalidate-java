@@ -133,16 +133,16 @@ private static final long serialVersionUID = 0L;
   private com.google.protobuf.Duration const_;
   /**
    * <pre>
-   *`const` dictates that the field must match the specified value of the `google.protobuf.Duration` type exactly.
-   *If the field's value deviates from the specified value, an error message
-   *will be generated.
+   * `const` dictates that the field must match the specified value of the `google.protobuf.Duration` type exactly.
+   * If the field's value deviates from the specified value, an error message
+   * will be generated.
    *
-   *```proto
-   *message MyDuration {
-   *  // value must equal 5s
+   * ```proto
+   * message MyDuration {
+   *   // value must equal 5s
    *   google.protobuf.Duration value = 1 [(buf.validate.field).duration.const = "5s"];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
    * <code>optional .google.protobuf.Duration const = 2 [json_name = "const", (.buf.validate.priv.field) = { ... }</code>
@@ -154,16 +154,16 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   *`const` dictates that the field must match the specified value of the `google.protobuf.Duration` type exactly.
-   *If the field's value deviates from the specified value, an error message
-   *will be generated.
+   * `const` dictates that the field must match the specified value of the `google.protobuf.Duration` type exactly.
+   * If the field's value deviates from the specified value, an error message
+   * will be generated.
    *
-   *```proto
-   *message MyDuration {
-   *  // value must equal 5s
+   * ```proto
+   * message MyDuration {
+   *   // value must equal 5s
    *   google.protobuf.Duration value = 1 [(buf.validate.field).duration.const = "5s"];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
    * <code>optional .google.protobuf.Duration const = 2 [json_name = "const", (.buf.validate.priv.field) = { ... }</code>
@@ -175,16 +175,16 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   *`const` dictates that the field must match the specified value of the `google.protobuf.Duration` type exactly.
-   *If the field's value deviates from the specified value, an error message
-   *will be generated.
+   * `const` dictates that the field must match the specified value of the `google.protobuf.Duration` type exactly.
+   * If the field's value deviates from the specified value, an error message
+   * will be generated.
    *
-   *```proto
-   *message MyDuration {
-   *  // value must equal 5s
+   * ```proto
+   * message MyDuration {
+   *   // value must equal 5s
    *   google.protobuf.Duration value = 1 [(buf.validate.field).duration.const = "5s"];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
    * <code>optional .google.protobuf.Duration const = 2 [json_name = "const", (.buf.validate.priv.field) = { ... }</code>
@@ -197,16 +197,16 @@ private static final long serialVersionUID = 0L;
   public static final int LT_FIELD_NUMBER = 3;
   /**
    * <pre>
-   *`lt` stipulates that the field must be less than the specified value of the `google.protobuf.Duration` type,
-   *exclusive. If the field's value is greater than or equal to the specified
-   *value, an error message will be generated.
+   * `lt` stipulates that the field must be less than the specified value of the `google.protobuf.Duration` type,
+   * exclusive. If the field's value is greater than or equal to the specified
+   * value, an error message will be generated.
    *
-   *```proto
-   *message MyDuration {
-   *  // value must be less than 5s
+   * ```proto
+   * message MyDuration {
+   *   // value must be less than 5s
    *   google.protobuf.Duration value = 1 [(buf.validate.field).duration.lt = "5s"];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
    * <code>.google.protobuf.Duration lt = 3 [json_name = "lt", (.buf.validate.priv.field) = { ... }</code>
@@ -218,16 +218,16 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   *`lt` stipulates that the field must be less than the specified value of the `google.protobuf.Duration` type,
-   *exclusive. If the field's value is greater than or equal to the specified
-   *value, an error message will be generated.
+   * `lt` stipulates that the field must be less than the specified value of the `google.protobuf.Duration` type,
+   * exclusive. If the field's value is greater than or equal to the specified
+   * value, an error message will be generated.
    *
-   *```proto
-   *message MyDuration {
-   *  // value must be less than 5s
+   * ```proto
+   * message MyDuration {
+   *   // value must be less than 5s
    *   google.protobuf.Duration value = 1 [(buf.validate.field).duration.lt = "5s"];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
    * <code>.google.protobuf.Duration lt = 3 [json_name = "lt", (.buf.validate.priv.field) = { ... }</code>
@@ -242,16 +242,16 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   *`lt` stipulates that the field must be less than the specified value of the `google.protobuf.Duration` type,
-   *exclusive. If the field's value is greater than or equal to the specified
-   *value, an error message will be generated.
+   * `lt` stipulates that the field must be less than the specified value of the `google.protobuf.Duration` type,
+   * exclusive. If the field's value is greater than or equal to the specified
+   * value, an error message will be generated.
    *
-   *```proto
-   *message MyDuration {
-   *  // value must be less than 5s
+   * ```proto
+   * message MyDuration {
+   *   // value must be less than 5s
    *   google.protobuf.Duration value = 1 [(buf.validate.field).duration.lt = "5s"];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
    * <code>.google.protobuf.Duration lt = 3 [json_name = "lt", (.buf.validate.priv.field) = { ... }</code>
@@ -267,16 +267,16 @@ private static final long serialVersionUID = 0L;
   public static final int LTE_FIELD_NUMBER = 4;
   /**
    * <pre>
-   *`lte` indicates that the field must be less than or equal to the specified
-   *value of the `google.protobuf.Duration` type, inclusive. If the field's value is greater than the specified value,
-   *an error message will be generated.
+   * `lte` indicates that the field must be less than or equal to the specified
+   * value of the `google.protobuf.Duration` type, inclusive. If the field's value is greater than the specified value,
+   * an error message will be generated.
    *
-   *```proto
-   *message MyDuration {
-   *  // value must be less than or equal to 10s
+   * ```proto
+   * message MyDuration {
+   *   // value must be less than or equal to 10s
    *   google.protobuf.Duration value = 1 [(buf.validate.field).duration.lte = "10s"];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
    * <code>.google.protobuf.Duration lte = 4 [json_name = "lte", (.buf.validate.priv.field) = { ... }</code>
@@ -288,16 +288,16 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   *`lte` indicates that the field must be less than or equal to the specified
-   *value of the `google.protobuf.Duration` type, inclusive. If the field's value is greater than the specified value,
-   *an error message will be generated.
+   * `lte` indicates that the field must be less than or equal to the specified
+   * value of the `google.protobuf.Duration` type, inclusive. If the field's value is greater than the specified value,
+   * an error message will be generated.
    *
-   *```proto
-   *message MyDuration {
-   *  // value must be less than or equal to 10s
+   * ```proto
+   * message MyDuration {
+   *   // value must be less than or equal to 10s
    *   google.protobuf.Duration value = 1 [(buf.validate.field).duration.lte = "10s"];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
    * <code>.google.protobuf.Duration lte = 4 [json_name = "lte", (.buf.validate.priv.field) = { ... }</code>
@@ -312,16 +312,16 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   *`lte` indicates that the field must be less than or equal to the specified
-   *value of the `google.protobuf.Duration` type, inclusive. If the field's value is greater than the specified value,
-   *an error message will be generated.
+   * `lte` indicates that the field must be less than or equal to the specified
+   * value of the `google.protobuf.Duration` type, inclusive. If the field's value is greater than the specified value,
+   * an error message will be generated.
    *
-   *```proto
-   *message MyDuration {
-   *  // value must be less than or equal to 10s
+   * ```proto
+   * message MyDuration {
+   *   // value must be less than or equal to 10s
    *   google.protobuf.Duration value = 1 [(buf.validate.field).duration.lte = "10s"];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
    * <code>.google.protobuf.Duration lte = 4 [json_name = "lte", (.buf.validate.priv.field) = { ... }</code>
@@ -343,18 +343,18 @@ private static final long serialVersionUID = 0L;
    * specified range. If the field value doesn't meet the required conditions,
    * an error message is generated.
    *
-   *```proto
-   *message MyDuration {
-   *  // duration must be greater than 5s [duration.gt]
-   *  google.protobuf.Duration value = 1 [(buf.validate.field).duration.gt = { seconds: 5 }];
+   * ```proto
+   * message MyDuration {
+   *   // duration must be greater than 5s [duration.gt]
+   *   google.protobuf.Duration value = 1 [(buf.validate.field).duration.gt = { seconds: 5 }];
    *
-   *  // duration must be greater than 5s and less than 10s [duration.gt_lt]
-   *  google.protobuf.Duration another_value = 2 [(buf.validate.field).duration = { gt: { seconds: 5 }, lt: { seconds: 10 } }];
+   *   // duration must be greater than 5s and less than 10s [duration.gt_lt]
+   *   google.protobuf.Duration another_value = 2 [(buf.validate.field).duration = { gt: { seconds: 5 }, lt: { seconds: 10 } }];
    *
-   *  // duration must be greater than 10s or less than 5s [duration.gt_lt_exclusive]
-   *  google.protobuf.Duration other_value = 3 [(buf.validate.field).duration = { gt: { seconds: 10 }, lt: { seconds: 5 } }];
-   *}
-   *```
+   *   // duration must be greater than 10s or less than 5s [duration.gt_lt_exclusive]
+   *   google.protobuf.Duration other_value = 3 [(buf.validate.field).duration = { gt: { seconds: 10 }, lt: { seconds: 5 } }];
+   * }
+   * ```
    * </pre>
    *
    * <code>.google.protobuf.Duration gt = 5 [json_name = "gt", (.buf.validate.priv.field) = { ... }</code>
@@ -372,18 +372,18 @@ private static final long serialVersionUID = 0L;
    * specified range. If the field value doesn't meet the required conditions,
    * an error message is generated.
    *
-   *```proto
-   *message MyDuration {
-   *  // duration must be greater than 5s [duration.gt]
-   *  google.protobuf.Duration value = 1 [(buf.validate.field).duration.gt = { seconds: 5 }];
+   * ```proto
+   * message MyDuration {
+   *   // duration must be greater than 5s [duration.gt]
+   *   google.protobuf.Duration value = 1 [(buf.validate.field).duration.gt = { seconds: 5 }];
    *
-   *  // duration must be greater than 5s and less than 10s [duration.gt_lt]
-   *  google.protobuf.Duration another_value = 2 [(buf.validate.field).duration = { gt: { seconds: 5 }, lt: { seconds: 10 } }];
+   *   // duration must be greater than 5s and less than 10s [duration.gt_lt]
+   *   google.protobuf.Duration another_value = 2 [(buf.validate.field).duration = { gt: { seconds: 5 }, lt: { seconds: 10 } }];
    *
-   *  // duration must be greater than 10s or less than 5s [duration.gt_lt_exclusive]
-   *  google.protobuf.Duration other_value = 3 [(buf.validate.field).duration = { gt: { seconds: 10 }, lt: { seconds: 5 } }];
-   *}
-   *```
+   *   // duration must be greater than 10s or less than 5s [duration.gt_lt_exclusive]
+   *   google.protobuf.Duration other_value = 3 [(buf.validate.field).duration = { gt: { seconds: 10 }, lt: { seconds: 5 } }];
+   * }
+   * ```
    * </pre>
    *
    * <code>.google.protobuf.Duration gt = 5 [json_name = "gt", (.buf.validate.priv.field) = { ... }</code>
@@ -404,18 +404,18 @@ private static final long serialVersionUID = 0L;
    * specified range. If the field value doesn't meet the required conditions,
    * an error message is generated.
    *
-   *```proto
-   *message MyDuration {
-   *  // duration must be greater than 5s [duration.gt]
-   *  google.protobuf.Duration value = 1 [(buf.validate.field).duration.gt = { seconds: 5 }];
+   * ```proto
+   * message MyDuration {
+   *   // duration must be greater than 5s [duration.gt]
+   *   google.protobuf.Duration value = 1 [(buf.validate.field).duration.gt = { seconds: 5 }];
    *
-   *  // duration must be greater than 5s and less than 10s [duration.gt_lt]
-   *  google.protobuf.Duration another_value = 2 [(buf.validate.field).duration = { gt: { seconds: 5 }, lt: { seconds: 10 } }];
+   *   // duration must be greater than 5s and less than 10s [duration.gt_lt]
+   *   google.protobuf.Duration another_value = 2 [(buf.validate.field).duration = { gt: { seconds: 5 }, lt: { seconds: 10 } }];
    *
-   *  // duration must be greater than 10s or less than 5s [duration.gt_lt_exclusive]
-   *  google.protobuf.Duration other_value = 3 [(buf.validate.field).duration = { gt: { seconds: 10 }, lt: { seconds: 5 } }];
-   *}
-   *```
+   *   // duration must be greater than 10s or less than 5s [duration.gt_lt_exclusive]
+   *   google.protobuf.Duration other_value = 3 [(buf.validate.field).duration = { gt: { seconds: 10 }, lt: { seconds: 5 } }];
+   * }
+   * ```
    * </pre>
    *
    * <code>.google.protobuf.Duration gt = 5 [json_name = "gt", (.buf.validate.priv.field) = { ... }</code>
@@ -437,8 +437,8 @@ private static final long serialVersionUID = 0L;
    * be outside the specified range. If the field value doesn't meet the
    * required conditions, an error message is generated.
    *
-   *```proto
-   *message MyDuration {
+   * ```proto
+   * message MyDuration {
    *  // duration must be greater than or equal to 5s [duration.gte]
    *  google.protobuf.Duration value = 1 [(buf.validate.field).duration.gte = { seconds: 5 }];
    *
@@ -447,8 +447,8 @@ private static final long serialVersionUID = 0L;
    *
    *  // duration must be greater than or equal to 10s or less than 5s [duration.gte_lt_exclusive]
    *  google.protobuf.Duration other_value = 3 [(buf.validate.field).duration = { gte: { seconds: 10 }, lt: { seconds: 5 } }];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
    * <code>.google.protobuf.Duration gte = 6 [json_name = "gte", (.buf.validate.priv.field) = { ... }</code>
@@ -466,8 +466,8 @@ private static final long serialVersionUID = 0L;
    * be outside the specified range. If the field value doesn't meet the
    * required conditions, an error message is generated.
    *
-   *```proto
-   *message MyDuration {
+   * ```proto
+   * message MyDuration {
    *  // duration must be greater than or equal to 5s [duration.gte]
    *  google.protobuf.Duration value = 1 [(buf.validate.field).duration.gte = { seconds: 5 }];
    *
@@ -476,8 +476,8 @@ private static final long serialVersionUID = 0L;
    *
    *  // duration must be greater than or equal to 10s or less than 5s [duration.gte_lt_exclusive]
    *  google.protobuf.Duration other_value = 3 [(buf.validate.field).duration = { gte: { seconds: 10 }, lt: { seconds: 5 } }];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
    * <code>.google.protobuf.Duration gte = 6 [json_name = "gte", (.buf.validate.priv.field) = { ... }</code>
@@ -498,8 +498,8 @@ private static final long serialVersionUID = 0L;
    * be outside the specified range. If the field value doesn't meet the
    * required conditions, an error message is generated.
    *
-   *```proto
-   *message MyDuration {
+   * ```proto
+   * message MyDuration {
    *  // duration must be greater than or equal to 5s [duration.gte]
    *  google.protobuf.Duration value = 1 [(buf.validate.field).duration.gte = { seconds: 5 }];
    *
@@ -508,8 +508,8 @@ private static final long serialVersionUID = 0L;
    *
    *  // duration must be greater than or equal to 10s or less than 5s [duration.gte_lt_exclusive]
    *  google.protobuf.Duration other_value = 3 [(buf.validate.field).duration = { gte: { seconds: 10 }, lt: { seconds: 5 } }];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
    * <code>.google.protobuf.Duration gte = 6 [json_name = "gte", (.buf.validate.priv.field) = { ... }</code>
@@ -527,16 +527,16 @@ private static final long serialVersionUID = 0L;
   private java.util.List<com.google.protobuf.Duration> in_;
   /**
    * <pre>
-   *`in` asserts that the field must be equal to one of the specified values of the `google.protobuf.Duration` type.
-   *If the field's value doesn't correspond to any of the specified values,
-   *an error message will be generated.
+   * `in` asserts that the field must be equal to one of the specified values of the `google.protobuf.Duration` type.
+   * If the field's value doesn't correspond to any of the specified values,
+   * an error message will be generated.
    *
-   *```proto
-   *message MyDuration {
-   *  // value must be in list [1s, 2s, 3s]
+   * ```proto
+   * message MyDuration {
+   *   // value must be in list [1s, 2s, 3s]
    *   google.protobuf.Duration value = 1 [(buf.validate.field).duration.in = ["1s", "2s", "3s"]];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
    * <code>repeated .google.protobuf.Duration in = 7 [json_name = "in", (.buf.validate.priv.field) = { ... }</code>
@@ -547,16 +547,16 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   *`in` asserts that the field must be equal to one of the specified values of the `google.protobuf.Duration` type.
-   *If the field's value doesn't correspond to any of the specified values,
-   *an error message will be generated.
+   * `in` asserts that the field must be equal to one of the specified values of the `google.protobuf.Duration` type.
+   * If the field's value doesn't correspond to any of the specified values,
+   * an error message will be generated.
    *
-   *```proto
-   *message MyDuration {
-   *  // value must be in list [1s, 2s, 3s]
+   * ```proto
+   * message MyDuration {
+   *   // value must be in list [1s, 2s, 3s]
    *   google.protobuf.Duration value = 1 [(buf.validate.field).duration.in = ["1s", "2s", "3s"]];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
    * <code>repeated .google.protobuf.Duration in = 7 [json_name = "in", (.buf.validate.priv.field) = { ... }</code>
@@ -568,16 +568,16 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   *`in` asserts that the field must be equal to one of the specified values of the `google.protobuf.Duration` type.
-   *If the field's value doesn't correspond to any of the specified values,
-   *an error message will be generated.
+   * `in` asserts that the field must be equal to one of the specified values of the `google.protobuf.Duration` type.
+   * If the field's value doesn't correspond to any of the specified values,
+   * an error message will be generated.
    *
-   *```proto
-   *message MyDuration {
-   *  // value must be in list [1s, 2s, 3s]
+   * ```proto
+   * message MyDuration {
+   *   // value must be in list [1s, 2s, 3s]
    *   google.protobuf.Duration value = 1 [(buf.validate.field).duration.in = ["1s", "2s", "3s"]];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
    * <code>repeated .google.protobuf.Duration in = 7 [json_name = "in", (.buf.validate.priv.field) = { ... }</code>
@@ -588,16 +588,16 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   *`in` asserts that the field must be equal to one of the specified values of the `google.protobuf.Duration` type.
-   *If the field's value doesn't correspond to any of the specified values,
-   *an error message will be generated.
+   * `in` asserts that the field must be equal to one of the specified values of the `google.protobuf.Duration` type.
+   * If the field's value doesn't correspond to any of the specified values,
+   * an error message will be generated.
    *
-   *```proto
-   *message MyDuration {
-   *  // value must be in list [1s, 2s, 3s]
+   * ```proto
+   * message MyDuration {
+   *   // value must be in list [1s, 2s, 3s]
    *   google.protobuf.Duration value = 1 [(buf.validate.field).duration.in = ["1s", "2s", "3s"]];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
    * <code>repeated .google.protobuf.Duration in = 7 [json_name = "in", (.buf.validate.priv.field) = { ... }</code>
@@ -608,16 +608,16 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   *`in` asserts that the field must be equal to one of the specified values of the `google.protobuf.Duration` type.
-   *If the field's value doesn't correspond to any of the specified values,
-   *an error message will be generated.
+   * `in` asserts that the field must be equal to one of the specified values of the `google.protobuf.Duration` type.
+   * If the field's value doesn't correspond to any of the specified values,
+   * an error message will be generated.
    *
-   *```proto
-   *message MyDuration {
-   *  // value must be in list [1s, 2s, 3s]
+   * ```proto
+   * message MyDuration {
+   *   // value must be in list [1s, 2s, 3s]
    *   google.protobuf.Duration value = 1 [(buf.validate.field).duration.in = ["1s", "2s", "3s"]];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
    * <code>repeated .google.protobuf.Duration in = 7 [json_name = "in", (.buf.validate.priv.field) = { ... }</code>
@@ -633,17 +633,17 @@ private static final long serialVersionUID = 0L;
   private java.util.List<com.google.protobuf.Duration> notIn_;
   /**
    * <pre>
-   *`not_in` denotes that the field must not be equal to
-   *any of the specified values of the `google.protobuf.Duration` type.
-   *If the field's value matches any of these values, an error message will be
-   *generated.
+   * `not_in` denotes that the field must not be equal to
+   * any of the specified values of the `google.protobuf.Duration` type.
+   * If the field's value matches any of these values, an error message will be
+   * generated.
    *
-   *```proto
-   *message MyDuration {
-   *  // value must not be in list [1s, 2s, 3s]
+   * ```proto
+   * message MyDuration {
+   *   // value must not be in list [1s, 2s, 3s]
    *   google.protobuf.Duration value = 1 [(buf.validate.field).duration.not_in = ["1s", "2s", "3s"]];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
    * <code>repeated .google.protobuf.Duration not_in = 8 [json_name = "notIn", (.buf.validate.priv.field) = { ... }</code>
@@ -654,17 +654,17 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   *`not_in` denotes that the field must not be equal to
-   *any of the specified values of the `google.protobuf.Duration` type.
-   *If the field's value matches any of these values, an error message will be
-   *generated.
+   * `not_in` denotes that the field must not be equal to
+   * any of the specified values of the `google.protobuf.Duration` type.
+   * If the field's value matches any of these values, an error message will be
+   * generated.
    *
-   *```proto
-   *message MyDuration {
-   *  // value must not be in list [1s, 2s, 3s]
+   * ```proto
+   * message MyDuration {
+   *   // value must not be in list [1s, 2s, 3s]
    *   google.protobuf.Duration value = 1 [(buf.validate.field).duration.not_in = ["1s", "2s", "3s"]];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
    * <code>repeated .google.protobuf.Duration not_in = 8 [json_name = "notIn", (.buf.validate.priv.field) = { ... }</code>
@@ -676,17 +676,17 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   *`not_in` denotes that the field must not be equal to
-   *any of the specified values of the `google.protobuf.Duration` type.
-   *If the field's value matches any of these values, an error message will be
-   *generated.
+   * `not_in` denotes that the field must not be equal to
+   * any of the specified values of the `google.protobuf.Duration` type.
+   * If the field's value matches any of these values, an error message will be
+   * generated.
    *
-   *```proto
-   *message MyDuration {
-   *  // value must not be in list [1s, 2s, 3s]
+   * ```proto
+   * message MyDuration {
+   *   // value must not be in list [1s, 2s, 3s]
    *   google.protobuf.Duration value = 1 [(buf.validate.field).duration.not_in = ["1s", "2s", "3s"]];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
    * <code>repeated .google.protobuf.Duration not_in = 8 [json_name = "notIn", (.buf.validate.priv.field) = { ... }</code>
@@ -697,17 +697,17 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   *`not_in` denotes that the field must not be equal to
-   *any of the specified values of the `google.protobuf.Duration` type.
-   *If the field's value matches any of these values, an error message will be
-   *generated.
+   * `not_in` denotes that the field must not be equal to
+   * any of the specified values of the `google.protobuf.Duration` type.
+   * If the field's value matches any of these values, an error message will be
+   * generated.
    *
-   *```proto
-   *message MyDuration {
-   *  // value must not be in list [1s, 2s, 3s]
+   * ```proto
+   * message MyDuration {
+   *   // value must not be in list [1s, 2s, 3s]
    *   google.protobuf.Duration value = 1 [(buf.validate.field).duration.not_in = ["1s", "2s", "3s"]];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
    * <code>repeated .google.protobuf.Duration not_in = 8 [json_name = "notIn", (.buf.validate.priv.field) = { ... }</code>
@@ -718,17 +718,17 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   *`not_in` denotes that the field must not be equal to
-   *any of the specified values of the `google.protobuf.Duration` type.
-   *If the field's value matches any of these values, an error message will be
-   *generated.
+   * `not_in` denotes that the field must not be equal to
+   * any of the specified values of the `google.protobuf.Duration` type.
+   * If the field's value matches any of these values, an error message will be
+   * generated.
    *
-   *```proto
-   *message MyDuration {
-   *  // value must not be in list [1s, 2s, 3s]
+   * ```proto
+   * message MyDuration {
+   *   // value must not be in list [1s, 2s, 3s]
    *   google.protobuf.Duration value = 1 [(buf.validate.field).duration.not_in = ["1s", "2s", "3s"]];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
    * <code>repeated .google.protobuf.Duration not_in = 8 [json_name = "notIn", (.buf.validate.priv.field) = { ... }</code>
@@ -1439,16 +1439,16 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.Duration, com.google.protobuf.Duration.Builder, com.google.protobuf.DurationOrBuilder> constBuilder_;
     /**
      * <pre>
-     *`const` dictates that the field must match the specified value of the `google.protobuf.Duration` type exactly.
-     *If the field's value deviates from the specified value, an error message
-     *will be generated.
+     * `const` dictates that the field must match the specified value of the `google.protobuf.Duration` type exactly.
+     * If the field's value deviates from the specified value, an error message
+     * will be generated.
      *
-     *```proto
-     *message MyDuration {
-     *  // value must equal 5s
+     * ```proto
+     * message MyDuration {
+     *   // value must equal 5s
      *   google.protobuf.Duration value = 1 [(buf.validate.field).duration.const = "5s"];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>optional .google.protobuf.Duration const = 2 [json_name = "const", (.buf.validate.priv.field) = { ... }</code>
@@ -1459,16 +1459,16 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     *`const` dictates that the field must match the specified value of the `google.protobuf.Duration` type exactly.
-     *If the field's value deviates from the specified value, an error message
-     *will be generated.
+     * `const` dictates that the field must match the specified value of the `google.protobuf.Duration` type exactly.
+     * If the field's value deviates from the specified value, an error message
+     * will be generated.
      *
-     *```proto
-     *message MyDuration {
-     *  // value must equal 5s
+     * ```proto
+     * message MyDuration {
+     *   // value must equal 5s
      *   google.protobuf.Duration value = 1 [(buf.validate.field).duration.const = "5s"];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>optional .google.protobuf.Duration const = 2 [json_name = "const", (.buf.validate.priv.field) = { ... }</code>
@@ -1483,16 +1483,16 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     *`const` dictates that the field must match the specified value of the `google.protobuf.Duration` type exactly.
-     *If the field's value deviates from the specified value, an error message
-     *will be generated.
+     * `const` dictates that the field must match the specified value of the `google.protobuf.Duration` type exactly.
+     * If the field's value deviates from the specified value, an error message
+     * will be generated.
      *
-     *```proto
-     *message MyDuration {
-     *  // value must equal 5s
+     * ```proto
+     * message MyDuration {
+     *   // value must equal 5s
      *   google.protobuf.Duration value = 1 [(buf.validate.field).duration.const = "5s"];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>optional .google.protobuf.Duration const = 2 [json_name = "const", (.buf.validate.priv.field) = { ... }</code>
@@ -1512,16 +1512,16 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     *`const` dictates that the field must match the specified value of the `google.protobuf.Duration` type exactly.
-     *If the field's value deviates from the specified value, an error message
-     *will be generated.
+     * `const` dictates that the field must match the specified value of the `google.protobuf.Duration` type exactly.
+     * If the field's value deviates from the specified value, an error message
+     * will be generated.
      *
-     *```proto
-     *message MyDuration {
-     *  // value must equal 5s
+     * ```proto
+     * message MyDuration {
+     *   // value must equal 5s
      *   google.protobuf.Duration value = 1 [(buf.validate.field).duration.const = "5s"];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>optional .google.protobuf.Duration const = 2 [json_name = "const", (.buf.validate.priv.field) = { ... }</code>
@@ -1539,16 +1539,16 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     *`const` dictates that the field must match the specified value of the `google.protobuf.Duration` type exactly.
-     *If the field's value deviates from the specified value, an error message
-     *will be generated.
+     * `const` dictates that the field must match the specified value of the `google.protobuf.Duration` type exactly.
+     * If the field's value deviates from the specified value, an error message
+     * will be generated.
      *
-     *```proto
-     *message MyDuration {
-     *  // value must equal 5s
+     * ```proto
+     * message MyDuration {
+     *   // value must equal 5s
      *   google.protobuf.Duration value = 1 [(buf.validate.field).duration.const = "5s"];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>optional .google.protobuf.Duration const = 2 [json_name = "const", (.buf.validate.priv.field) = { ... }</code>
@@ -1573,16 +1573,16 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     *`const` dictates that the field must match the specified value of the `google.protobuf.Duration` type exactly.
-     *If the field's value deviates from the specified value, an error message
-     *will be generated.
+     * `const` dictates that the field must match the specified value of the `google.protobuf.Duration` type exactly.
+     * If the field's value deviates from the specified value, an error message
+     * will be generated.
      *
-     *```proto
-     *message MyDuration {
-     *  // value must equal 5s
+     * ```proto
+     * message MyDuration {
+     *   // value must equal 5s
      *   google.protobuf.Duration value = 1 [(buf.validate.field).duration.const = "5s"];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>optional .google.protobuf.Duration const = 2 [json_name = "const", (.buf.validate.priv.field) = { ... }</code>
@@ -1599,16 +1599,16 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     *`const` dictates that the field must match the specified value of the `google.protobuf.Duration` type exactly.
-     *If the field's value deviates from the specified value, an error message
-     *will be generated.
+     * `const` dictates that the field must match the specified value of the `google.protobuf.Duration` type exactly.
+     * If the field's value deviates from the specified value, an error message
+     * will be generated.
      *
-     *```proto
-     *message MyDuration {
-     *  // value must equal 5s
+     * ```proto
+     * message MyDuration {
+     *   // value must equal 5s
      *   google.protobuf.Duration value = 1 [(buf.validate.field).duration.const = "5s"];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>optional .google.protobuf.Duration const = 2 [json_name = "const", (.buf.validate.priv.field) = { ... }</code>
@@ -1620,16 +1620,16 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     *`const` dictates that the field must match the specified value of the `google.protobuf.Duration` type exactly.
-     *If the field's value deviates from the specified value, an error message
-     *will be generated.
+     * `const` dictates that the field must match the specified value of the `google.protobuf.Duration` type exactly.
+     * If the field's value deviates from the specified value, an error message
+     * will be generated.
      *
-     *```proto
-     *message MyDuration {
-     *  // value must equal 5s
+     * ```proto
+     * message MyDuration {
+     *   // value must equal 5s
      *   google.protobuf.Duration value = 1 [(buf.validate.field).duration.const = "5s"];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>optional .google.protobuf.Duration const = 2 [json_name = "const", (.buf.validate.priv.field) = { ... }</code>
@@ -1644,16 +1644,16 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     *`const` dictates that the field must match the specified value of the `google.protobuf.Duration` type exactly.
-     *If the field's value deviates from the specified value, an error message
-     *will be generated.
+     * `const` dictates that the field must match the specified value of the `google.protobuf.Duration` type exactly.
+     * If the field's value deviates from the specified value, an error message
+     * will be generated.
      *
-     *```proto
-     *message MyDuration {
-     *  // value must equal 5s
+     * ```proto
+     * message MyDuration {
+     *   // value must equal 5s
      *   google.protobuf.Duration value = 1 [(buf.validate.field).duration.const = "5s"];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>optional .google.protobuf.Duration const = 2 [json_name = "const", (.buf.validate.priv.field) = { ... }</code>
@@ -1676,16 +1676,16 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.Duration, com.google.protobuf.Duration.Builder, com.google.protobuf.DurationOrBuilder> ltBuilder_;
     /**
      * <pre>
-     *`lt` stipulates that the field must be less than the specified value of the `google.protobuf.Duration` type,
-     *exclusive. If the field's value is greater than or equal to the specified
-     *value, an error message will be generated.
+     * `lt` stipulates that the field must be less than the specified value of the `google.protobuf.Duration` type,
+     * exclusive. If the field's value is greater than or equal to the specified
+     * value, an error message will be generated.
      *
-     *```proto
-     *message MyDuration {
-     *  // value must be less than 5s
+     * ```proto
+     * message MyDuration {
+     *   // value must be less than 5s
      *   google.protobuf.Duration value = 1 [(buf.validate.field).duration.lt = "5s"];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>.google.protobuf.Duration lt = 3 [json_name = "lt", (.buf.validate.priv.field) = { ... }</code>
@@ -1697,16 +1697,16 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     *`lt` stipulates that the field must be less than the specified value of the `google.protobuf.Duration` type,
-     *exclusive. If the field's value is greater than or equal to the specified
-     *value, an error message will be generated.
+     * `lt` stipulates that the field must be less than the specified value of the `google.protobuf.Duration` type,
+     * exclusive. If the field's value is greater than or equal to the specified
+     * value, an error message will be generated.
      *
-     *```proto
-     *message MyDuration {
-     *  // value must be less than 5s
+     * ```proto
+     * message MyDuration {
+     *   // value must be less than 5s
      *   google.protobuf.Duration value = 1 [(buf.validate.field).duration.lt = "5s"];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>.google.protobuf.Duration lt = 3 [json_name = "lt", (.buf.validate.priv.field) = { ... }</code>
@@ -1728,16 +1728,16 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     *`lt` stipulates that the field must be less than the specified value of the `google.protobuf.Duration` type,
-     *exclusive. If the field's value is greater than or equal to the specified
-     *value, an error message will be generated.
+     * `lt` stipulates that the field must be less than the specified value of the `google.protobuf.Duration` type,
+     * exclusive. If the field's value is greater than or equal to the specified
+     * value, an error message will be generated.
      *
-     *```proto
-     *message MyDuration {
-     *  // value must be less than 5s
+     * ```proto
+     * message MyDuration {
+     *   // value must be less than 5s
      *   google.protobuf.Duration value = 1 [(buf.validate.field).duration.lt = "5s"];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>.google.protobuf.Duration lt = 3 [json_name = "lt", (.buf.validate.priv.field) = { ... }</code>
@@ -1757,16 +1757,16 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     *`lt` stipulates that the field must be less than the specified value of the `google.protobuf.Duration` type,
-     *exclusive. If the field's value is greater than or equal to the specified
-     *value, an error message will be generated.
+     * `lt` stipulates that the field must be less than the specified value of the `google.protobuf.Duration` type,
+     * exclusive. If the field's value is greater than or equal to the specified
+     * value, an error message will be generated.
      *
-     *```proto
-     *message MyDuration {
-     *  // value must be less than 5s
+     * ```proto
+     * message MyDuration {
+     *   // value must be less than 5s
      *   google.protobuf.Duration value = 1 [(buf.validate.field).duration.lt = "5s"];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>.google.protobuf.Duration lt = 3 [json_name = "lt", (.buf.validate.priv.field) = { ... }</code>
@@ -1784,16 +1784,16 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     *`lt` stipulates that the field must be less than the specified value of the `google.protobuf.Duration` type,
-     *exclusive. If the field's value is greater than or equal to the specified
-     *value, an error message will be generated.
+     * `lt` stipulates that the field must be less than the specified value of the `google.protobuf.Duration` type,
+     * exclusive. If the field's value is greater than or equal to the specified
+     * value, an error message will be generated.
      *
-     *```proto
-     *message MyDuration {
-     *  // value must be less than 5s
+     * ```proto
+     * message MyDuration {
+     *   // value must be less than 5s
      *   google.protobuf.Duration value = 1 [(buf.validate.field).duration.lt = "5s"];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>.google.protobuf.Duration lt = 3 [json_name = "lt", (.buf.validate.priv.field) = { ... }</code>
@@ -1820,16 +1820,16 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     *`lt` stipulates that the field must be less than the specified value of the `google.protobuf.Duration` type,
-     *exclusive. If the field's value is greater than or equal to the specified
-     *value, an error message will be generated.
+     * `lt` stipulates that the field must be less than the specified value of the `google.protobuf.Duration` type,
+     * exclusive. If the field's value is greater than or equal to the specified
+     * value, an error message will be generated.
      *
-     *```proto
-     *message MyDuration {
-     *  // value must be less than 5s
+     * ```proto
+     * message MyDuration {
+     *   // value must be less than 5s
      *   google.protobuf.Duration value = 1 [(buf.validate.field).duration.lt = "5s"];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>.google.protobuf.Duration lt = 3 [json_name = "lt", (.buf.validate.priv.field) = { ... }</code>
@@ -1852,16 +1852,16 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     *`lt` stipulates that the field must be less than the specified value of the `google.protobuf.Duration` type,
-     *exclusive. If the field's value is greater than or equal to the specified
-     *value, an error message will be generated.
+     * `lt` stipulates that the field must be less than the specified value of the `google.protobuf.Duration` type,
+     * exclusive. If the field's value is greater than or equal to the specified
+     * value, an error message will be generated.
      *
-     *```proto
-     *message MyDuration {
-     *  // value must be less than 5s
+     * ```proto
+     * message MyDuration {
+     *   // value must be less than 5s
      *   google.protobuf.Duration value = 1 [(buf.validate.field).duration.lt = "5s"];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>.google.protobuf.Duration lt = 3 [json_name = "lt", (.buf.validate.priv.field) = { ... }</code>
@@ -1871,16 +1871,16 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     *`lt` stipulates that the field must be less than the specified value of the `google.protobuf.Duration` type,
-     *exclusive. If the field's value is greater than or equal to the specified
-     *value, an error message will be generated.
+     * `lt` stipulates that the field must be less than the specified value of the `google.protobuf.Duration` type,
+     * exclusive. If the field's value is greater than or equal to the specified
+     * value, an error message will be generated.
      *
-     *```proto
-     *message MyDuration {
-     *  // value must be less than 5s
+     * ```proto
+     * message MyDuration {
+     *   // value must be less than 5s
      *   google.protobuf.Duration value = 1 [(buf.validate.field).duration.lt = "5s"];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>.google.protobuf.Duration lt = 3 [json_name = "lt", (.buf.validate.priv.field) = { ... }</code>
@@ -1898,16 +1898,16 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     *`lt` stipulates that the field must be less than the specified value of the `google.protobuf.Duration` type,
-     *exclusive. If the field's value is greater than or equal to the specified
-     *value, an error message will be generated.
+     * `lt` stipulates that the field must be less than the specified value of the `google.protobuf.Duration` type,
+     * exclusive. If the field's value is greater than or equal to the specified
+     * value, an error message will be generated.
      *
-     *```proto
-     *message MyDuration {
-     *  // value must be less than 5s
+     * ```proto
+     * message MyDuration {
+     *   // value must be less than 5s
      *   google.protobuf.Duration value = 1 [(buf.validate.field).duration.lt = "5s"];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>.google.protobuf.Duration lt = 3 [json_name = "lt", (.buf.validate.priv.field) = { ... }</code>
@@ -1935,16 +1935,16 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.Duration, com.google.protobuf.Duration.Builder, com.google.protobuf.DurationOrBuilder> lteBuilder_;
     /**
      * <pre>
-     *`lte` indicates that the field must be less than or equal to the specified
-     *value of the `google.protobuf.Duration` type, inclusive. If the field's value is greater than the specified value,
-     *an error message will be generated.
+     * `lte` indicates that the field must be less than or equal to the specified
+     * value of the `google.protobuf.Duration` type, inclusive. If the field's value is greater than the specified value,
+     * an error message will be generated.
      *
-     *```proto
-     *message MyDuration {
-     *  // value must be less than or equal to 10s
+     * ```proto
+     * message MyDuration {
+     *   // value must be less than or equal to 10s
      *   google.protobuf.Duration value = 1 [(buf.validate.field).duration.lte = "10s"];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>.google.protobuf.Duration lte = 4 [json_name = "lte", (.buf.validate.priv.field) = { ... }</code>
@@ -1956,16 +1956,16 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     *`lte` indicates that the field must be less than or equal to the specified
-     *value of the `google.protobuf.Duration` type, inclusive. If the field's value is greater than the specified value,
-     *an error message will be generated.
+     * `lte` indicates that the field must be less than or equal to the specified
+     * value of the `google.protobuf.Duration` type, inclusive. If the field's value is greater than the specified value,
+     * an error message will be generated.
      *
-     *```proto
-     *message MyDuration {
-     *  // value must be less than or equal to 10s
+     * ```proto
+     * message MyDuration {
+     *   // value must be less than or equal to 10s
      *   google.protobuf.Duration value = 1 [(buf.validate.field).duration.lte = "10s"];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>.google.protobuf.Duration lte = 4 [json_name = "lte", (.buf.validate.priv.field) = { ... }</code>
@@ -1987,16 +1987,16 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     *`lte` indicates that the field must be less than or equal to the specified
-     *value of the `google.protobuf.Duration` type, inclusive. If the field's value is greater than the specified value,
-     *an error message will be generated.
+     * `lte` indicates that the field must be less than or equal to the specified
+     * value of the `google.protobuf.Duration` type, inclusive. If the field's value is greater than the specified value,
+     * an error message will be generated.
      *
-     *```proto
-     *message MyDuration {
-     *  // value must be less than or equal to 10s
+     * ```proto
+     * message MyDuration {
+     *   // value must be less than or equal to 10s
      *   google.protobuf.Duration value = 1 [(buf.validate.field).duration.lte = "10s"];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>.google.protobuf.Duration lte = 4 [json_name = "lte", (.buf.validate.priv.field) = { ... }</code>
@@ -2016,16 +2016,16 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     *`lte` indicates that the field must be less than or equal to the specified
-     *value of the `google.protobuf.Duration` type, inclusive. If the field's value is greater than the specified value,
-     *an error message will be generated.
+     * `lte` indicates that the field must be less than or equal to the specified
+     * value of the `google.protobuf.Duration` type, inclusive. If the field's value is greater than the specified value,
+     * an error message will be generated.
      *
-     *```proto
-     *message MyDuration {
-     *  // value must be less than or equal to 10s
+     * ```proto
+     * message MyDuration {
+     *   // value must be less than or equal to 10s
      *   google.protobuf.Duration value = 1 [(buf.validate.field).duration.lte = "10s"];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>.google.protobuf.Duration lte = 4 [json_name = "lte", (.buf.validate.priv.field) = { ... }</code>
@@ -2043,16 +2043,16 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     *`lte` indicates that the field must be less than or equal to the specified
-     *value of the `google.protobuf.Duration` type, inclusive. If the field's value is greater than the specified value,
-     *an error message will be generated.
+     * `lte` indicates that the field must be less than or equal to the specified
+     * value of the `google.protobuf.Duration` type, inclusive. If the field's value is greater than the specified value,
+     * an error message will be generated.
      *
-     *```proto
-     *message MyDuration {
-     *  // value must be less than or equal to 10s
+     * ```proto
+     * message MyDuration {
+     *   // value must be less than or equal to 10s
      *   google.protobuf.Duration value = 1 [(buf.validate.field).duration.lte = "10s"];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>.google.protobuf.Duration lte = 4 [json_name = "lte", (.buf.validate.priv.field) = { ... }</code>
@@ -2079,16 +2079,16 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     *`lte` indicates that the field must be less than or equal to the specified
-     *value of the `google.protobuf.Duration` type, inclusive. If the field's value is greater than the specified value,
-     *an error message will be generated.
+     * `lte` indicates that the field must be less than or equal to the specified
+     * value of the `google.protobuf.Duration` type, inclusive. If the field's value is greater than the specified value,
+     * an error message will be generated.
      *
-     *```proto
-     *message MyDuration {
-     *  // value must be less than or equal to 10s
+     * ```proto
+     * message MyDuration {
+     *   // value must be less than or equal to 10s
      *   google.protobuf.Duration value = 1 [(buf.validate.field).duration.lte = "10s"];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>.google.protobuf.Duration lte = 4 [json_name = "lte", (.buf.validate.priv.field) = { ... }</code>
@@ -2111,16 +2111,16 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     *`lte` indicates that the field must be less than or equal to the specified
-     *value of the `google.protobuf.Duration` type, inclusive. If the field's value is greater than the specified value,
-     *an error message will be generated.
+     * `lte` indicates that the field must be less than or equal to the specified
+     * value of the `google.protobuf.Duration` type, inclusive. If the field's value is greater than the specified value,
+     * an error message will be generated.
      *
-     *```proto
-     *message MyDuration {
-     *  // value must be less than or equal to 10s
+     * ```proto
+     * message MyDuration {
+     *   // value must be less than or equal to 10s
      *   google.protobuf.Duration value = 1 [(buf.validate.field).duration.lte = "10s"];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>.google.protobuf.Duration lte = 4 [json_name = "lte", (.buf.validate.priv.field) = { ... }</code>
@@ -2130,16 +2130,16 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     *`lte` indicates that the field must be less than or equal to the specified
-     *value of the `google.protobuf.Duration` type, inclusive. If the field's value is greater than the specified value,
-     *an error message will be generated.
+     * `lte` indicates that the field must be less than or equal to the specified
+     * value of the `google.protobuf.Duration` type, inclusive. If the field's value is greater than the specified value,
+     * an error message will be generated.
      *
-     *```proto
-     *message MyDuration {
-     *  // value must be less than or equal to 10s
+     * ```proto
+     * message MyDuration {
+     *   // value must be less than or equal to 10s
      *   google.protobuf.Duration value = 1 [(buf.validate.field).duration.lte = "10s"];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>.google.protobuf.Duration lte = 4 [json_name = "lte", (.buf.validate.priv.field) = { ... }</code>
@@ -2157,16 +2157,16 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     *`lte` indicates that the field must be less than or equal to the specified
-     *value of the `google.protobuf.Duration` type, inclusive. If the field's value is greater than the specified value,
-     *an error message will be generated.
+     * `lte` indicates that the field must be less than or equal to the specified
+     * value of the `google.protobuf.Duration` type, inclusive. If the field's value is greater than the specified value,
+     * an error message will be generated.
      *
-     *```proto
-     *message MyDuration {
-     *  // value must be less than or equal to 10s
+     * ```proto
+     * message MyDuration {
+     *   // value must be less than or equal to 10s
      *   google.protobuf.Duration value = 1 [(buf.validate.field).duration.lte = "10s"];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>.google.protobuf.Duration lte = 4 [json_name = "lte", (.buf.validate.priv.field) = { ... }</code>
@@ -2200,18 +2200,18 @@ private static final long serialVersionUID = 0L;
      * specified range. If the field value doesn't meet the required conditions,
      * an error message is generated.
      *
-     *```proto
-     *message MyDuration {
-     *  // duration must be greater than 5s [duration.gt]
-     *  google.protobuf.Duration value = 1 [(buf.validate.field).duration.gt = { seconds: 5 }];
+     * ```proto
+     * message MyDuration {
+     *   // duration must be greater than 5s [duration.gt]
+     *   google.protobuf.Duration value = 1 [(buf.validate.field).duration.gt = { seconds: 5 }];
      *
-     *  // duration must be greater than 5s and less than 10s [duration.gt_lt]
-     *  google.protobuf.Duration another_value = 2 [(buf.validate.field).duration = { gt: { seconds: 5 }, lt: { seconds: 10 } }];
+     *   // duration must be greater than 5s and less than 10s [duration.gt_lt]
+     *   google.protobuf.Duration another_value = 2 [(buf.validate.field).duration = { gt: { seconds: 5 }, lt: { seconds: 10 } }];
      *
-     *  // duration must be greater than 10s or less than 5s [duration.gt_lt_exclusive]
-     *  google.protobuf.Duration other_value = 3 [(buf.validate.field).duration = { gt: { seconds: 10 }, lt: { seconds: 5 } }];
-     *}
-     *```
+     *   // duration must be greater than 10s or less than 5s [duration.gt_lt_exclusive]
+     *   google.protobuf.Duration other_value = 3 [(buf.validate.field).duration = { gt: { seconds: 10 }, lt: { seconds: 5 } }];
+     * }
+     * ```
      * </pre>
      *
      * <code>.google.protobuf.Duration gt = 5 [json_name = "gt", (.buf.validate.priv.field) = { ... }</code>
@@ -2229,18 +2229,18 @@ private static final long serialVersionUID = 0L;
      * specified range. If the field value doesn't meet the required conditions,
      * an error message is generated.
      *
-     *```proto
-     *message MyDuration {
-     *  // duration must be greater than 5s [duration.gt]
-     *  google.protobuf.Duration value = 1 [(buf.validate.field).duration.gt = { seconds: 5 }];
+     * ```proto
+     * message MyDuration {
+     *   // duration must be greater than 5s [duration.gt]
+     *   google.protobuf.Duration value = 1 [(buf.validate.field).duration.gt = { seconds: 5 }];
      *
-     *  // duration must be greater than 5s and less than 10s [duration.gt_lt]
-     *  google.protobuf.Duration another_value = 2 [(buf.validate.field).duration = { gt: { seconds: 5 }, lt: { seconds: 10 } }];
+     *   // duration must be greater than 5s and less than 10s [duration.gt_lt]
+     *   google.protobuf.Duration another_value = 2 [(buf.validate.field).duration = { gt: { seconds: 5 }, lt: { seconds: 10 } }];
      *
-     *  // duration must be greater than 10s or less than 5s [duration.gt_lt_exclusive]
-     *  google.protobuf.Duration other_value = 3 [(buf.validate.field).duration = { gt: { seconds: 10 }, lt: { seconds: 5 } }];
-     *}
-     *```
+     *   // duration must be greater than 10s or less than 5s [duration.gt_lt_exclusive]
+     *   google.protobuf.Duration other_value = 3 [(buf.validate.field).duration = { gt: { seconds: 10 }, lt: { seconds: 5 } }];
+     * }
+     * ```
      * </pre>
      *
      * <code>.google.protobuf.Duration gt = 5 [json_name = "gt", (.buf.validate.priv.field) = { ... }</code>
@@ -2268,18 +2268,18 @@ private static final long serialVersionUID = 0L;
      * specified range. If the field value doesn't meet the required conditions,
      * an error message is generated.
      *
-     *```proto
-     *message MyDuration {
-     *  // duration must be greater than 5s [duration.gt]
-     *  google.protobuf.Duration value = 1 [(buf.validate.field).duration.gt = { seconds: 5 }];
+     * ```proto
+     * message MyDuration {
+     *   // duration must be greater than 5s [duration.gt]
+     *   google.protobuf.Duration value = 1 [(buf.validate.field).duration.gt = { seconds: 5 }];
      *
-     *  // duration must be greater than 5s and less than 10s [duration.gt_lt]
-     *  google.protobuf.Duration another_value = 2 [(buf.validate.field).duration = { gt: { seconds: 5 }, lt: { seconds: 10 } }];
+     *   // duration must be greater than 5s and less than 10s [duration.gt_lt]
+     *   google.protobuf.Duration another_value = 2 [(buf.validate.field).duration = { gt: { seconds: 5 }, lt: { seconds: 10 } }];
      *
-     *  // duration must be greater than 10s or less than 5s [duration.gt_lt_exclusive]
-     *  google.protobuf.Duration other_value = 3 [(buf.validate.field).duration = { gt: { seconds: 10 }, lt: { seconds: 5 } }];
-     *}
-     *```
+     *   // duration must be greater than 10s or less than 5s [duration.gt_lt_exclusive]
+     *   google.protobuf.Duration other_value = 3 [(buf.validate.field).duration = { gt: { seconds: 10 }, lt: { seconds: 5 } }];
+     * }
+     * ```
      * </pre>
      *
      * <code>.google.protobuf.Duration gt = 5 [json_name = "gt", (.buf.validate.priv.field) = { ... }</code>
@@ -2305,18 +2305,18 @@ private static final long serialVersionUID = 0L;
      * specified range. If the field value doesn't meet the required conditions,
      * an error message is generated.
      *
-     *```proto
-     *message MyDuration {
-     *  // duration must be greater than 5s [duration.gt]
-     *  google.protobuf.Duration value = 1 [(buf.validate.field).duration.gt = { seconds: 5 }];
+     * ```proto
+     * message MyDuration {
+     *   // duration must be greater than 5s [duration.gt]
+     *   google.protobuf.Duration value = 1 [(buf.validate.field).duration.gt = { seconds: 5 }];
      *
-     *  // duration must be greater than 5s and less than 10s [duration.gt_lt]
-     *  google.protobuf.Duration another_value = 2 [(buf.validate.field).duration = { gt: { seconds: 5 }, lt: { seconds: 10 } }];
+     *   // duration must be greater than 5s and less than 10s [duration.gt_lt]
+     *   google.protobuf.Duration another_value = 2 [(buf.validate.field).duration = { gt: { seconds: 5 }, lt: { seconds: 10 } }];
      *
-     *  // duration must be greater than 10s or less than 5s [duration.gt_lt_exclusive]
-     *  google.protobuf.Duration other_value = 3 [(buf.validate.field).duration = { gt: { seconds: 10 }, lt: { seconds: 5 } }];
-     *}
-     *```
+     *   // duration must be greater than 10s or less than 5s [duration.gt_lt_exclusive]
+     *   google.protobuf.Duration other_value = 3 [(buf.validate.field).duration = { gt: { seconds: 10 }, lt: { seconds: 5 } }];
+     * }
+     * ```
      * </pre>
      *
      * <code>.google.protobuf.Duration gt = 5 [json_name = "gt", (.buf.validate.priv.field) = { ... }</code>
@@ -2340,18 +2340,18 @@ private static final long serialVersionUID = 0L;
      * specified range. If the field value doesn't meet the required conditions,
      * an error message is generated.
      *
-     *```proto
-     *message MyDuration {
-     *  // duration must be greater than 5s [duration.gt]
-     *  google.protobuf.Duration value = 1 [(buf.validate.field).duration.gt = { seconds: 5 }];
+     * ```proto
+     * message MyDuration {
+     *   // duration must be greater than 5s [duration.gt]
+     *   google.protobuf.Duration value = 1 [(buf.validate.field).duration.gt = { seconds: 5 }];
      *
-     *  // duration must be greater than 5s and less than 10s [duration.gt_lt]
-     *  google.protobuf.Duration another_value = 2 [(buf.validate.field).duration = { gt: { seconds: 5 }, lt: { seconds: 10 } }];
+     *   // duration must be greater than 5s and less than 10s [duration.gt_lt]
+     *   google.protobuf.Duration another_value = 2 [(buf.validate.field).duration = { gt: { seconds: 5 }, lt: { seconds: 10 } }];
      *
-     *  // duration must be greater than 10s or less than 5s [duration.gt_lt_exclusive]
-     *  google.protobuf.Duration other_value = 3 [(buf.validate.field).duration = { gt: { seconds: 10 }, lt: { seconds: 5 } }];
-     *}
-     *```
+     *   // duration must be greater than 10s or less than 5s [duration.gt_lt_exclusive]
+     *   google.protobuf.Duration other_value = 3 [(buf.validate.field).duration = { gt: { seconds: 10 }, lt: { seconds: 5 } }];
+     * }
+     * ```
      * </pre>
      *
      * <code>.google.protobuf.Duration gt = 5 [json_name = "gt", (.buf.validate.priv.field) = { ... }</code>
@@ -2384,18 +2384,18 @@ private static final long serialVersionUID = 0L;
      * specified range. If the field value doesn't meet the required conditions,
      * an error message is generated.
      *
-     *```proto
-     *message MyDuration {
-     *  // duration must be greater than 5s [duration.gt]
-     *  google.protobuf.Duration value = 1 [(buf.validate.field).duration.gt = { seconds: 5 }];
+     * ```proto
+     * message MyDuration {
+     *   // duration must be greater than 5s [duration.gt]
+     *   google.protobuf.Duration value = 1 [(buf.validate.field).duration.gt = { seconds: 5 }];
      *
-     *  // duration must be greater than 5s and less than 10s [duration.gt_lt]
-     *  google.protobuf.Duration another_value = 2 [(buf.validate.field).duration = { gt: { seconds: 5 }, lt: { seconds: 10 } }];
+     *   // duration must be greater than 5s and less than 10s [duration.gt_lt]
+     *   google.protobuf.Duration another_value = 2 [(buf.validate.field).duration = { gt: { seconds: 5 }, lt: { seconds: 10 } }];
      *
-     *  // duration must be greater than 10s or less than 5s [duration.gt_lt_exclusive]
-     *  google.protobuf.Duration other_value = 3 [(buf.validate.field).duration = { gt: { seconds: 10 }, lt: { seconds: 5 } }];
-     *}
-     *```
+     *   // duration must be greater than 10s or less than 5s [duration.gt_lt_exclusive]
+     *   google.protobuf.Duration other_value = 3 [(buf.validate.field).duration = { gt: { seconds: 10 }, lt: { seconds: 5 } }];
+     * }
+     * ```
      * </pre>
      *
      * <code>.google.protobuf.Duration gt = 5 [json_name = "gt", (.buf.validate.priv.field) = { ... }</code>
@@ -2424,18 +2424,18 @@ private static final long serialVersionUID = 0L;
      * specified range. If the field value doesn't meet the required conditions,
      * an error message is generated.
      *
-     *```proto
-     *message MyDuration {
-     *  // duration must be greater than 5s [duration.gt]
-     *  google.protobuf.Duration value = 1 [(buf.validate.field).duration.gt = { seconds: 5 }];
+     * ```proto
+     * message MyDuration {
+     *   // duration must be greater than 5s [duration.gt]
+     *   google.protobuf.Duration value = 1 [(buf.validate.field).duration.gt = { seconds: 5 }];
      *
-     *  // duration must be greater than 5s and less than 10s [duration.gt_lt]
-     *  google.protobuf.Duration another_value = 2 [(buf.validate.field).duration = { gt: { seconds: 5 }, lt: { seconds: 10 } }];
+     *   // duration must be greater than 5s and less than 10s [duration.gt_lt]
+     *   google.protobuf.Duration another_value = 2 [(buf.validate.field).duration = { gt: { seconds: 5 }, lt: { seconds: 10 } }];
      *
-     *  // duration must be greater than 10s or less than 5s [duration.gt_lt_exclusive]
-     *  google.protobuf.Duration other_value = 3 [(buf.validate.field).duration = { gt: { seconds: 10 }, lt: { seconds: 5 } }];
-     *}
-     *```
+     *   // duration must be greater than 10s or less than 5s [duration.gt_lt_exclusive]
+     *   google.protobuf.Duration other_value = 3 [(buf.validate.field).duration = { gt: { seconds: 10 }, lt: { seconds: 5 } }];
+     * }
+     * ```
      * </pre>
      *
      * <code>.google.protobuf.Duration gt = 5 [json_name = "gt", (.buf.validate.priv.field) = { ... }</code>
@@ -2451,18 +2451,18 @@ private static final long serialVersionUID = 0L;
      * specified range. If the field value doesn't meet the required conditions,
      * an error message is generated.
      *
-     *```proto
-     *message MyDuration {
-     *  // duration must be greater than 5s [duration.gt]
-     *  google.protobuf.Duration value = 1 [(buf.validate.field).duration.gt = { seconds: 5 }];
+     * ```proto
+     * message MyDuration {
+     *   // duration must be greater than 5s [duration.gt]
+     *   google.protobuf.Duration value = 1 [(buf.validate.field).duration.gt = { seconds: 5 }];
      *
-     *  // duration must be greater than 5s and less than 10s [duration.gt_lt]
-     *  google.protobuf.Duration another_value = 2 [(buf.validate.field).duration = { gt: { seconds: 5 }, lt: { seconds: 10 } }];
+     *   // duration must be greater than 5s and less than 10s [duration.gt_lt]
+     *   google.protobuf.Duration another_value = 2 [(buf.validate.field).duration = { gt: { seconds: 5 }, lt: { seconds: 10 } }];
      *
-     *  // duration must be greater than 10s or less than 5s [duration.gt_lt_exclusive]
-     *  google.protobuf.Duration other_value = 3 [(buf.validate.field).duration = { gt: { seconds: 10 }, lt: { seconds: 5 } }];
-     *}
-     *```
+     *   // duration must be greater than 10s or less than 5s [duration.gt_lt_exclusive]
+     *   google.protobuf.Duration other_value = 3 [(buf.validate.field).duration = { gt: { seconds: 10 }, lt: { seconds: 5 } }];
+     * }
+     * ```
      * </pre>
      *
      * <code>.google.protobuf.Duration gt = 5 [json_name = "gt", (.buf.validate.priv.field) = { ... }</code>
@@ -2486,18 +2486,18 @@ private static final long serialVersionUID = 0L;
      * specified range. If the field value doesn't meet the required conditions,
      * an error message is generated.
      *
-     *```proto
-     *message MyDuration {
-     *  // duration must be greater than 5s [duration.gt]
-     *  google.protobuf.Duration value = 1 [(buf.validate.field).duration.gt = { seconds: 5 }];
+     * ```proto
+     * message MyDuration {
+     *   // duration must be greater than 5s [duration.gt]
+     *   google.protobuf.Duration value = 1 [(buf.validate.field).duration.gt = { seconds: 5 }];
      *
-     *  // duration must be greater than 5s and less than 10s [duration.gt_lt]
-     *  google.protobuf.Duration another_value = 2 [(buf.validate.field).duration = { gt: { seconds: 5 }, lt: { seconds: 10 } }];
+     *   // duration must be greater than 5s and less than 10s [duration.gt_lt]
+     *   google.protobuf.Duration another_value = 2 [(buf.validate.field).duration = { gt: { seconds: 5 }, lt: { seconds: 10 } }];
      *
-     *  // duration must be greater than 10s or less than 5s [duration.gt_lt_exclusive]
-     *  google.protobuf.Duration other_value = 3 [(buf.validate.field).duration = { gt: { seconds: 10 }, lt: { seconds: 5 } }];
-     *}
-     *```
+     *   // duration must be greater than 10s or less than 5s [duration.gt_lt_exclusive]
+     *   google.protobuf.Duration other_value = 3 [(buf.validate.field).duration = { gt: { seconds: 10 }, lt: { seconds: 5 } }];
+     * }
+     * ```
      * </pre>
      *
      * <code>.google.protobuf.Duration gt = 5 [json_name = "gt", (.buf.validate.priv.field) = { ... }</code>
@@ -2531,8 +2531,8 @@ private static final long serialVersionUID = 0L;
      * be outside the specified range. If the field value doesn't meet the
      * required conditions, an error message is generated.
      *
-     *```proto
-     *message MyDuration {
+     * ```proto
+     * message MyDuration {
      *  // duration must be greater than or equal to 5s [duration.gte]
      *  google.protobuf.Duration value = 1 [(buf.validate.field).duration.gte = { seconds: 5 }];
      *
@@ -2541,8 +2541,8 @@ private static final long serialVersionUID = 0L;
      *
      *  // duration must be greater than or equal to 10s or less than 5s [duration.gte_lt_exclusive]
      *  google.protobuf.Duration other_value = 3 [(buf.validate.field).duration = { gte: { seconds: 10 }, lt: { seconds: 5 } }];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>.google.protobuf.Duration gte = 6 [json_name = "gte", (.buf.validate.priv.field) = { ... }</code>
@@ -2560,8 +2560,8 @@ private static final long serialVersionUID = 0L;
      * be outside the specified range. If the field value doesn't meet the
      * required conditions, an error message is generated.
      *
-     *```proto
-     *message MyDuration {
+     * ```proto
+     * message MyDuration {
      *  // duration must be greater than or equal to 5s [duration.gte]
      *  google.protobuf.Duration value = 1 [(buf.validate.field).duration.gte = { seconds: 5 }];
      *
@@ -2570,8 +2570,8 @@ private static final long serialVersionUID = 0L;
      *
      *  // duration must be greater than or equal to 10s or less than 5s [duration.gte_lt_exclusive]
      *  google.protobuf.Duration other_value = 3 [(buf.validate.field).duration = { gte: { seconds: 10 }, lt: { seconds: 5 } }];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>.google.protobuf.Duration gte = 6 [json_name = "gte", (.buf.validate.priv.field) = { ... }</code>
@@ -2599,8 +2599,8 @@ private static final long serialVersionUID = 0L;
      * be outside the specified range. If the field value doesn't meet the
      * required conditions, an error message is generated.
      *
-     *```proto
-     *message MyDuration {
+     * ```proto
+     * message MyDuration {
      *  // duration must be greater than or equal to 5s [duration.gte]
      *  google.protobuf.Duration value = 1 [(buf.validate.field).duration.gte = { seconds: 5 }];
      *
@@ -2609,8 +2609,8 @@ private static final long serialVersionUID = 0L;
      *
      *  // duration must be greater than or equal to 10s or less than 5s [duration.gte_lt_exclusive]
      *  google.protobuf.Duration other_value = 3 [(buf.validate.field).duration = { gte: { seconds: 10 }, lt: { seconds: 5 } }];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>.google.protobuf.Duration gte = 6 [json_name = "gte", (.buf.validate.priv.field) = { ... }</code>
@@ -2636,8 +2636,8 @@ private static final long serialVersionUID = 0L;
      * be outside the specified range. If the field value doesn't meet the
      * required conditions, an error message is generated.
      *
-     *```proto
-     *message MyDuration {
+     * ```proto
+     * message MyDuration {
      *  // duration must be greater than or equal to 5s [duration.gte]
      *  google.protobuf.Duration value = 1 [(buf.validate.field).duration.gte = { seconds: 5 }];
      *
@@ -2646,8 +2646,8 @@ private static final long serialVersionUID = 0L;
      *
      *  // duration must be greater than or equal to 10s or less than 5s [duration.gte_lt_exclusive]
      *  google.protobuf.Duration other_value = 3 [(buf.validate.field).duration = { gte: { seconds: 10 }, lt: { seconds: 5 } }];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>.google.protobuf.Duration gte = 6 [json_name = "gte", (.buf.validate.priv.field) = { ... }</code>
@@ -2671,8 +2671,8 @@ private static final long serialVersionUID = 0L;
      * be outside the specified range. If the field value doesn't meet the
      * required conditions, an error message is generated.
      *
-     *```proto
-     *message MyDuration {
+     * ```proto
+     * message MyDuration {
      *  // duration must be greater than or equal to 5s [duration.gte]
      *  google.protobuf.Duration value = 1 [(buf.validate.field).duration.gte = { seconds: 5 }];
      *
@@ -2681,8 +2681,8 @@ private static final long serialVersionUID = 0L;
      *
      *  // duration must be greater than or equal to 10s or less than 5s [duration.gte_lt_exclusive]
      *  google.protobuf.Duration other_value = 3 [(buf.validate.field).duration = { gte: { seconds: 10 }, lt: { seconds: 5 } }];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>.google.protobuf.Duration gte = 6 [json_name = "gte", (.buf.validate.priv.field) = { ... }</code>
@@ -2715,8 +2715,8 @@ private static final long serialVersionUID = 0L;
      * be outside the specified range. If the field value doesn't meet the
      * required conditions, an error message is generated.
      *
-     *```proto
-     *message MyDuration {
+     * ```proto
+     * message MyDuration {
      *  // duration must be greater than or equal to 5s [duration.gte]
      *  google.protobuf.Duration value = 1 [(buf.validate.field).duration.gte = { seconds: 5 }];
      *
@@ -2725,8 +2725,8 @@ private static final long serialVersionUID = 0L;
      *
      *  // duration must be greater than or equal to 10s or less than 5s [duration.gte_lt_exclusive]
      *  google.protobuf.Duration other_value = 3 [(buf.validate.field).duration = { gte: { seconds: 10 }, lt: { seconds: 5 } }];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>.google.protobuf.Duration gte = 6 [json_name = "gte", (.buf.validate.priv.field) = { ... }</code>
@@ -2755,8 +2755,8 @@ private static final long serialVersionUID = 0L;
      * be outside the specified range. If the field value doesn't meet the
      * required conditions, an error message is generated.
      *
-     *```proto
-     *message MyDuration {
+     * ```proto
+     * message MyDuration {
      *  // duration must be greater than or equal to 5s [duration.gte]
      *  google.protobuf.Duration value = 1 [(buf.validate.field).duration.gte = { seconds: 5 }];
      *
@@ -2765,8 +2765,8 @@ private static final long serialVersionUID = 0L;
      *
      *  // duration must be greater than or equal to 10s or less than 5s [duration.gte_lt_exclusive]
      *  google.protobuf.Duration other_value = 3 [(buf.validate.field).duration = { gte: { seconds: 10 }, lt: { seconds: 5 } }];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>.google.protobuf.Duration gte = 6 [json_name = "gte", (.buf.validate.priv.field) = { ... }</code>
@@ -2782,8 +2782,8 @@ private static final long serialVersionUID = 0L;
      * be outside the specified range. If the field value doesn't meet the
      * required conditions, an error message is generated.
      *
-     *```proto
-     *message MyDuration {
+     * ```proto
+     * message MyDuration {
      *  // duration must be greater than or equal to 5s [duration.gte]
      *  google.protobuf.Duration value = 1 [(buf.validate.field).duration.gte = { seconds: 5 }];
      *
@@ -2792,8 +2792,8 @@ private static final long serialVersionUID = 0L;
      *
      *  // duration must be greater than or equal to 10s or less than 5s [duration.gte_lt_exclusive]
      *  google.protobuf.Duration other_value = 3 [(buf.validate.field).duration = { gte: { seconds: 10 }, lt: { seconds: 5 } }];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>.google.protobuf.Duration gte = 6 [json_name = "gte", (.buf.validate.priv.field) = { ... }</code>
@@ -2817,8 +2817,8 @@ private static final long serialVersionUID = 0L;
      * be outside the specified range. If the field value doesn't meet the
      * required conditions, an error message is generated.
      *
-     *```proto
-     *message MyDuration {
+     * ```proto
+     * message MyDuration {
      *  // duration must be greater than or equal to 5s [duration.gte]
      *  google.protobuf.Duration value = 1 [(buf.validate.field).duration.gte = { seconds: 5 }];
      *
@@ -2827,8 +2827,8 @@ private static final long serialVersionUID = 0L;
      *
      *  // duration must be greater than or equal to 10s or less than 5s [duration.gte_lt_exclusive]
      *  google.protobuf.Duration other_value = 3 [(buf.validate.field).duration = { gte: { seconds: 10 }, lt: { seconds: 5 } }];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>.google.protobuf.Duration gte = 6 [json_name = "gte", (.buf.validate.priv.field) = { ... }</code>
@@ -2866,16 +2866,16 @@ private static final long serialVersionUID = 0L;
 
     /**
      * <pre>
-     *`in` asserts that the field must be equal to one of the specified values of the `google.protobuf.Duration` type.
-     *If the field's value doesn't correspond to any of the specified values,
-     *an error message will be generated.
+     * `in` asserts that the field must be equal to one of the specified values of the `google.protobuf.Duration` type.
+     * If the field's value doesn't correspond to any of the specified values,
+     * an error message will be generated.
      *
-     *```proto
-     *message MyDuration {
-     *  // value must be in list [1s, 2s, 3s]
+     * ```proto
+     * message MyDuration {
+     *   // value must be in list [1s, 2s, 3s]
      *   google.protobuf.Duration value = 1 [(buf.validate.field).duration.in = ["1s", "2s", "3s"]];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>repeated .google.protobuf.Duration in = 7 [json_name = "in", (.buf.validate.priv.field) = { ... }</code>
@@ -2889,16 +2889,16 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     *`in` asserts that the field must be equal to one of the specified values of the `google.protobuf.Duration` type.
-     *If the field's value doesn't correspond to any of the specified values,
-     *an error message will be generated.
+     * `in` asserts that the field must be equal to one of the specified values of the `google.protobuf.Duration` type.
+     * If the field's value doesn't correspond to any of the specified values,
+     * an error message will be generated.
      *
-     *```proto
-     *message MyDuration {
-     *  // value must be in list [1s, 2s, 3s]
+     * ```proto
+     * message MyDuration {
+     *   // value must be in list [1s, 2s, 3s]
      *   google.protobuf.Duration value = 1 [(buf.validate.field).duration.in = ["1s", "2s", "3s"]];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>repeated .google.protobuf.Duration in = 7 [json_name = "in", (.buf.validate.priv.field) = { ... }</code>
@@ -2912,16 +2912,16 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     *`in` asserts that the field must be equal to one of the specified values of the `google.protobuf.Duration` type.
-     *If the field's value doesn't correspond to any of the specified values,
-     *an error message will be generated.
+     * `in` asserts that the field must be equal to one of the specified values of the `google.protobuf.Duration` type.
+     * If the field's value doesn't correspond to any of the specified values,
+     * an error message will be generated.
      *
-     *```proto
-     *message MyDuration {
-     *  // value must be in list [1s, 2s, 3s]
+     * ```proto
+     * message MyDuration {
+     *   // value must be in list [1s, 2s, 3s]
      *   google.protobuf.Duration value = 1 [(buf.validate.field).duration.in = ["1s", "2s", "3s"]];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>repeated .google.protobuf.Duration in = 7 [json_name = "in", (.buf.validate.priv.field) = { ... }</code>
@@ -2935,16 +2935,16 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     *`in` asserts that the field must be equal to one of the specified values of the `google.protobuf.Duration` type.
-     *If the field's value doesn't correspond to any of the specified values,
-     *an error message will be generated.
+     * `in` asserts that the field must be equal to one of the specified values of the `google.protobuf.Duration` type.
+     * If the field's value doesn't correspond to any of the specified values,
+     * an error message will be generated.
      *
-     *```proto
-     *message MyDuration {
-     *  // value must be in list [1s, 2s, 3s]
+     * ```proto
+     * message MyDuration {
+     *   // value must be in list [1s, 2s, 3s]
      *   google.protobuf.Duration value = 1 [(buf.validate.field).duration.in = ["1s", "2s", "3s"]];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>repeated .google.protobuf.Duration in = 7 [json_name = "in", (.buf.validate.priv.field) = { ... }</code>
@@ -2965,16 +2965,16 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     *`in` asserts that the field must be equal to one of the specified values of the `google.protobuf.Duration` type.
-     *If the field's value doesn't correspond to any of the specified values,
-     *an error message will be generated.
+     * `in` asserts that the field must be equal to one of the specified values of the `google.protobuf.Duration` type.
+     * If the field's value doesn't correspond to any of the specified values,
+     * an error message will be generated.
      *
-     *```proto
-     *message MyDuration {
-     *  // value must be in list [1s, 2s, 3s]
+     * ```proto
+     * message MyDuration {
+     *   // value must be in list [1s, 2s, 3s]
      *   google.protobuf.Duration value = 1 [(buf.validate.field).duration.in = ["1s", "2s", "3s"]];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>repeated .google.protobuf.Duration in = 7 [json_name = "in", (.buf.validate.priv.field) = { ... }</code>
@@ -2992,16 +2992,16 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     *`in` asserts that the field must be equal to one of the specified values of the `google.protobuf.Duration` type.
-     *If the field's value doesn't correspond to any of the specified values,
-     *an error message will be generated.
+     * `in` asserts that the field must be equal to one of the specified values of the `google.protobuf.Duration` type.
+     * If the field's value doesn't correspond to any of the specified values,
+     * an error message will be generated.
      *
-     *```proto
-     *message MyDuration {
-     *  // value must be in list [1s, 2s, 3s]
+     * ```proto
+     * message MyDuration {
+     *   // value must be in list [1s, 2s, 3s]
      *   google.protobuf.Duration value = 1 [(buf.validate.field).duration.in = ["1s", "2s", "3s"]];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>repeated .google.protobuf.Duration in = 7 [json_name = "in", (.buf.validate.priv.field) = { ... }</code>
@@ -3021,16 +3021,16 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     *`in` asserts that the field must be equal to one of the specified values of the `google.protobuf.Duration` type.
-     *If the field's value doesn't correspond to any of the specified values,
-     *an error message will be generated.
+     * `in` asserts that the field must be equal to one of the specified values of the `google.protobuf.Duration` type.
+     * If the field's value doesn't correspond to any of the specified values,
+     * an error message will be generated.
      *
-     *```proto
-     *message MyDuration {
-     *  // value must be in list [1s, 2s, 3s]
+     * ```proto
+     * message MyDuration {
+     *   // value must be in list [1s, 2s, 3s]
      *   google.protobuf.Duration value = 1 [(buf.validate.field).duration.in = ["1s", "2s", "3s"]];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>repeated .google.protobuf.Duration in = 7 [json_name = "in", (.buf.validate.priv.field) = { ... }</code>
@@ -3051,16 +3051,16 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     *`in` asserts that the field must be equal to one of the specified values of the `google.protobuf.Duration` type.
-     *If the field's value doesn't correspond to any of the specified values,
-     *an error message will be generated.
+     * `in` asserts that the field must be equal to one of the specified values of the `google.protobuf.Duration` type.
+     * If the field's value doesn't correspond to any of the specified values,
+     * an error message will be generated.
      *
-     *```proto
-     *message MyDuration {
-     *  // value must be in list [1s, 2s, 3s]
+     * ```proto
+     * message MyDuration {
+     *   // value must be in list [1s, 2s, 3s]
      *   google.protobuf.Duration value = 1 [(buf.validate.field).duration.in = ["1s", "2s", "3s"]];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>repeated .google.protobuf.Duration in = 7 [json_name = "in", (.buf.validate.priv.field) = { ... }</code>
@@ -3078,16 +3078,16 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     *`in` asserts that the field must be equal to one of the specified values of the `google.protobuf.Duration` type.
-     *If the field's value doesn't correspond to any of the specified values,
-     *an error message will be generated.
+     * `in` asserts that the field must be equal to one of the specified values of the `google.protobuf.Duration` type.
+     * If the field's value doesn't correspond to any of the specified values,
+     * an error message will be generated.
      *
-     *```proto
-     *message MyDuration {
-     *  // value must be in list [1s, 2s, 3s]
+     * ```proto
+     * message MyDuration {
+     *   // value must be in list [1s, 2s, 3s]
      *   google.protobuf.Duration value = 1 [(buf.validate.field).duration.in = ["1s", "2s", "3s"]];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>repeated .google.protobuf.Duration in = 7 [json_name = "in", (.buf.validate.priv.field) = { ... }</code>
@@ -3105,16 +3105,16 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     *`in` asserts that the field must be equal to one of the specified values of the `google.protobuf.Duration` type.
-     *If the field's value doesn't correspond to any of the specified values,
-     *an error message will be generated.
+     * `in` asserts that the field must be equal to one of the specified values of the `google.protobuf.Duration` type.
+     * If the field's value doesn't correspond to any of the specified values,
+     * an error message will be generated.
      *
-     *```proto
-     *message MyDuration {
-     *  // value must be in list [1s, 2s, 3s]
+     * ```proto
+     * message MyDuration {
+     *   // value must be in list [1s, 2s, 3s]
      *   google.protobuf.Duration value = 1 [(buf.validate.field).duration.in = ["1s", "2s", "3s"]];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>repeated .google.protobuf.Duration in = 7 [json_name = "in", (.buf.validate.priv.field) = { ... }</code>
@@ -3133,16 +3133,16 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     *`in` asserts that the field must be equal to one of the specified values of the `google.protobuf.Duration` type.
-     *If the field's value doesn't correspond to any of the specified values,
-     *an error message will be generated.
+     * `in` asserts that the field must be equal to one of the specified values of the `google.protobuf.Duration` type.
+     * If the field's value doesn't correspond to any of the specified values,
+     * an error message will be generated.
      *
-     *```proto
-     *message MyDuration {
-     *  // value must be in list [1s, 2s, 3s]
+     * ```proto
+     * message MyDuration {
+     *   // value must be in list [1s, 2s, 3s]
      *   google.protobuf.Duration value = 1 [(buf.validate.field).duration.in = ["1s", "2s", "3s"]];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>repeated .google.protobuf.Duration in = 7 [json_name = "in", (.buf.validate.priv.field) = { ... }</code>
@@ -3159,16 +3159,16 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     *`in` asserts that the field must be equal to one of the specified values of the `google.protobuf.Duration` type.
-     *If the field's value doesn't correspond to any of the specified values,
-     *an error message will be generated.
+     * `in` asserts that the field must be equal to one of the specified values of the `google.protobuf.Duration` type.
+     * If the field's value doesn't correspond to any of the specified values,
+     * an error message will be generated.
      *
-     *```proto
-     *message MyDuration {
-     *  // value must be in list [1s, 2s, 3s]
+     * ```proto
+     * message MyDuration {
+     *   // value must be in list [1s, 2s, 3s]
      *   google.protobuf.Duration value = 1 [(buf.validate.field).duration.in = ["1s", "2s", "3s"]];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>repeated .google.protobuf.Duration in = 7 [json_name = "in", (.buf.validate.priv.field) = { ... }</code>
@@ -3185,16 +3185,16 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     *`in` asserts that the field must be equal to one of the specified values of the `google.protobuf.Duration` type.
-     *If the field's value doesn't correspond to any of the specified values,
-     *an error message will be generated.
+     * `in` asserts that the field must be equal to one of the specified values of the `google.protobuf.Duration` type.
+     * If the field's value doesn't correspond to any of the specified values,
+     * an error message will be generated.
      *
-     *```proto
-     *message MyDuration {
-     *  // value must be in list [1s, 2s, 3s]
+     * ```proto
+     * message MyDuration {
+     *   // value must be in list [1s, 2s, 3s]
      *   google.protobuf.Duration value = 1 [(buf.validate.field).duration.in = ["1s", "2s", "3s"]];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>repeated .google.protobuf.Duration in = 7 [json_name = "in", (.buf.validate.priv.field) = { ... }</code>
@@ -3205,16 +3205,16 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     *`in` asserts that the field must be equal to one of the specified values of the `google.protobuf.Duration` type.
-     *If the field's value doesn't correspond to any of the specified values,
-     *an error message will be generated.
+     * `in` asserts that the field must be equal to one of the specified values of the `google.protobuf.Duration` type.
+     * If the field's value doesn't correspond to any of the specified values,
+     * an error message will be generated.
      *
-     *```proto
-     *message MyDuration {
-     *  // value must be in list [1s, 2s, 3s]
+     * ```proto
+     * message MyDuration {
+     *   // value must be in list [1s, 2s, 3s]
      *   google.protobuf.Duration value = 1 [(buf.validate.field).duration.in = ["1s", "2s", "3s"]];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>repeated .google.protobuf.Duration in = 7 [json_name = "in", (.buf.validate.priv.field) = { ... }</code>
@@ -3228,16 +3228,16 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     *`in` asserts that the field must be equal to one of the specified values of the `google.protobuf.Duration` type.
-     *If the field's value doesn't correspond to any of the specified values,
-     *an error message will be generated.
+     * `in` asserts that the field must be equal to one of the specified values of the `google.protobuf.Duration` type.
+     * If the field's value doesn't correspond to any of the specified values,
+     * an error message will be generated.
      *
-     *```proto
-     *message MyDuration {
-     *  // value must be in list [1s, 2s, 3s]
+     * ```proto
+     * message MyDuration {
+     *   // value must be in list [1s, 2s, 3s]
      *   google.protobuf.Duration value = 1 [(buf.validate.field).duration.in = ["1s", "2s", "3s"]];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>repeated .google.protobuf.Duration in = 7 [json_name = "in", (.buf.validate.priv.field) = { ... }</code>
@@ -3252,16 +3252,16 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     *`in` asserts that the field must be equal to one of the specified values of the `google.protobuf.Duration` type.
-     *If the field's value doesn't correspond to any of the specified values,
-     *an error message will be generated.
+     * `in` asserts that the field must be equal to one of the specified values of the `google.protobuf.Duration` type.
+     * If the field's value doesn't correspond to any of the specified values,
+     * an error message will be generated.
      *
-     *```proto
-     *message MyDuration {
-     *  // value must be in list [1s, 2s, 3s]
+     * ```proto
+     * message MyDuration {
+     *   // value must be in list [1s, 2s, 3s]
      *   google.protobuf.Duration value = 1 [(buf.validate.field).duration.in = ["1s", "2s", "3s"]];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>repeated .google.protobuf.Duration in = 7 [json_name = "in", (.buf.validate.priv.field) = { ... }</code>
@@ -3272,16 +3272,16 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     *`in` asserts that the field must be equal to one of the specified values of the `google.protobuf.Duration` type.
-     *If the field's value doesn't correspond to any of the specified values,
-     *an error message will be generated.
+     * `in` asserts that the field must be equal to one of the specified values of the `google.protobuf.Duration` type.
+     * If the field's value doesn't correspond to any of the specified values,
+     * an error message will be generated.
      *
-     *```proto
-     *message MyDuration {
-     *  // value must be in list [1s, 2s, 3s]
+     * ```proto
+     * message MyDuration {
+     *   // value must be in list [1s, 2s, 3s]
      *   google.protobuf.Duration value = 1 [(buf.validate.field).duration.in = ["1s", "2s", "3s"]];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>repeated .google.protobuf.Duration in = 7 [json_name = "in", (.buf.validate.priv.field) = { ... }</code>
@@ -3293,16 +3293,16 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     *`in` asserts that the field must be equal to one of the specified values of the `google.protobuf.Duration` type.
-     *If the field's value doesn't correspond to any of the specified values,
-     *an error message will be generated.
+     * `in` asserts that the field must be equal to one of the specified values of the `google.protobuf.Duration` type.
+     * If the field's value doesn't correspond to any of the specified values,
+     * an error message will be generated.
      *
-     *```proto
-     *message MyDuration {
-     *  // value must be in list [1s, 2s, 3s]
+     * ```proto
+     * message MyDuration {
+     *   // value must be in list [1s, 2s, 3s]
      *   google.protobuf.Duration value = 1 [(buf.validate.field).duration.in = ["1s", "2s", "3s"]];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>repeated .google.protobuf.Duration in = 7 [json_name = "in", (.buf.validate.priv.field) = { ... }</code>
@@ -3340,17 +3340,17 @@ private static final long serialVersionUID = 0L;
 
     /**
      * <pre>
-     *`not_in` denotes that the field must not be equal to
-     *any of the specified values of the `google.protobuf.Duration` type.
-     *If the field's value matches any of these values, an error message will be
-     *generated.
+     * `not_in` denotes that the field must not be equal to
+     * any of the specified values of the `google.protobuf.Duration` type.
+     * If the field's value matches any of these values, an error message will be
+     * generated.
      *
-     *```proto
-     *message MyDuration {
-     *  // value must not be in list [1s, 2s, 3s]
+     * ```proto
+     * message MyDuration {
+     *   // value must not be in list [1s, 2s, 3s]
      *   google.protobuf.Duration value = 1 [(buf.validate.field).duration.not_in = ["1s", "2s", "3s"]];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>repeated .google.protobuf.Duration not_in = 8 [json_name = "notIn", (.buf.validate.priv.field) = { ... }</code>
@@ -3364,17 +3364,17 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     *`not_in` denotes that the field must not be equal to
-     *any of the specified values of the `google.protobuf.Duration` type.
-     *If the field's value matches any of these values, an error message will be
-     *generated.
+     * `not_in` denotes that the field must not be equal to
+     * any of the specified values of the `google.protobuf.Duration` type.
+     * If the field's value matches any of these values, an error message will be
+     * generated.
      *
-     *```proto
-     *message MyDuration {
-     *  // value must not be in list [1s, 2s, 3s]
+     * ```proto
+     * message MyDuration {
+     *   // value must not be in list [1s, 2s, 3s]
      *   google.protobuf.Duration value = 1 [(buf.validate.field).duration.not_in = ["1s", "2s", "3s"]];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>repeated .google.protobuf.Duration not_in = 8 [json_name = "notIn", (.buf.validate.priv.field) = { ... }</code>
@@ -3388,17 +3388,17 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     *`not_in` denotes that the field must not be equal to
-     *any of the specified values of the `google.protobuf.Duration` type.
-     *If the field's value matches any of these values, an error message will be
-     *generated.
+     * `not_in` denotes that the field must not be equal to
+     * any of the specified values of the `google.protobuf.Duration` type.
+     * If the field's value matches any of these values, an error message will be
+     * generated.
      *
-     *```proto
-     *message MyDuration {
-     *  // value must not be in list [1s, 2s, 3s]
+     * ```proto
+     * message MyDuration {
+     *   // value must not be in list [1s, 2s, 3s]
      *   google.protobuf.Duration value = 1 [(buf.validate.field).duration.not_in = ["1s", "2s", "3s"]];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>repeated .google.protobuf.Duration not_in = 8 [json_name = "notIn", (.buf.validate.priv.field) = { ... }</code>
@@ -3412,17 +3412,17 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     *`not_in` denotes that the field must not be equal to
-     *any of the specified values of the `google.protobuf.Duration` type.
-     *If the field's value matches any of these values, an error message will be
-     *generated.
+     * `not_in` denotes that the field must not be equal to
+     * any of the specified values of the `google.protobuf.Duration` type.
+     * If the field's value matches any of these values, an error message will be
+     * generated.
      *
-     *```proto
-     *message MyDuration {
-     *  // value must not be in list [1s, 2s, 3s]
+     * ```proto
+     * message MyDuration {
+     *   // value must not be in list [1s, 2s, 3s]
      *   google.protobuf.Duration value = 1 [(buf.validate.field).duration.not_in = ["1s", "2s", "3s"]];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>repeated .google.protobuf.Duration not_in = 8 [json_name = "notIn", (.buf.validate.priv.field) = { ... }</code>
@@ -3443,17 +3443,17 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     *`not_in` denotes that the field must not be equal to
-     *any of the specified values of the `google.protobuf.Duration` type.
-     *If the field's value matches any of these values, an error message will be
-     *generated.
+     * `not_in` denotes that the field must not be equal to
+     * any of the specified values of the `google.protobuf.Duration` type.
+     * If the field's value matches any of these values, an error message will be
+     * generated.
      *
-     *```proto
-     *message MyDuration {
-     *  // value must not be in list [1s, 2s, 3s]
+     * ```proto
+     * message MyDuration {
+     *   // value must not be in list [1s, 2s, 3s]
      *   google.protobuf.Duration value = 1 [(buf.validate.field).duration.not_in = ["1s", "2s", "3s"]];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>repeated .google.protobuf.Duration not_in = 8 [json_name = "notIn", (.buf.validate.priv.field) = { ... }</code>
@@ -3471,17 +3471,17 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     *`not_in` denotes that the field must not be equal to
-     *any of the specified values of the `google.protobuf.Duration` type.
-     *If the field's value matches any of these values, an error message will be
-     *generated.
+     * `not_in` denotes that the field must not be equal to
+     * any of the specified values of the `google.protobuf.Duration` type.
+     * If the field's value matches any of these values, an error message will be
+     * generated.
      *
-     *```proto
-     *message MyDuration {
-     *  // value must not be in list [1s, 2s, 3s]
+     * ```proto
+     * message MyDuration {
+     *   // value must not be in list [1s, 2s, 3s]
      *   google.protobuf.Duration value = 1 [(buf.validate.field).duration.not_in = ["1s", "2s", "3s"]];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>repeated .google.protobuf.Duration not_in = 8 [json_name = "notIn", (.buf.validate.priv.field) = { ... }</code>
@@ -3501,17 +3501,17 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     *`not_in` denotes that the field must not be equal to
-     *any of the specified values of the `google.protobuf.Duration` type.
-     *If the field's value matches any of these values, an error message will be
-     *generated.
+     * `not_in` denotes that the field must not be equal to
+     * any of the specified values of the `google.protobuf.Duration` type.
+     * If the field's value matches any of these values, an error message will be
+     * generated.
      *
-     *```proto
-     *message MyDuration {
-     *  // value must not be in list [1s, 2s, 3s]
+     * ```proto
+     * message MyDuration {
+     *   // value must not be in list [1s, 2s, 3s]
      *   google.protobuf.Duration value = 1 [(buf.validate.field).duration.not_in = ["1s", "2s", "3s"]];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>repeated .google.protobuf.Duration not_in = 8 [json_name = "notIn", (.buf.validate.priv.field) = { ... }</code>
@@ -3532,17 +3532,17 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     *`not_in` denotes that the field must not be equal to
-     *any of the specified values of the `google.protobuf.Duration` type.
-     *If the field's value matches any of these values, an error message will be
-     *generated.
+     * `not_in` denotes that the field must not be equal to
+     * any of the specified values of the `google.protobuf.Duration` type.
+     * If the field's value matches any of these values, an error message will be
+     * generated.
      *
-     *```proto
-     *message MyDuration {
-     *  // value must not be in list [1s, 2s, 3s]
+     * ```proto
+     * message MyDuration {
+     *   // value must not be in list [1s, 2s, 3s]
      *   google.protobuf.Duration value = 1 [(buf.validate.field).duration.not_in = ["1s", "2s", "3s"]];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>repeated .google.protobuf.Duration not_in = 8 [json_name = "notIn", (.buf.validate.priv.field) = { ... }</code>
@@ -3560,17 +3560,17 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     *`not_in` denotes that the field must not be equal to
-     *any of the specified values of the `google.protobuf.Duration` type.
-     *If the field's value matches any of these values, an error message will be
-     *generated.
+     * `not_in` denotes that the field must not be equal to
+     * any of the specified values of the `google.protobuf.Duration` type.
+     * If the field's value matches any of these values, an error message will be
+     * generated.
      *
-     *```proto
-     *message MyDuration {
-     *  // value must not be in list [1s, 2s, 3s]
+     * ```proto
+     * message MyDuration {
+     *   // value must not be in list [1s, 2s, 3s]
      *   google.protobuf.Duration value = 1 [(buf.validate.field).duration.not_in = ["1s", "2s", "3s"]];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>repeated .google.protobuf.Duration not_in = 8 [json_name = "notIn", (.buf.validate.priv.field) = { ... }</code>
@@ -3588,17 +3588,17 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     *`not_in` denotes that the field must not be equal to
-     *any of the specified values of the `google.protobuf.Duration` type.
-     *If the field's value matches any of these values, an error message will be
-     *generated.
+     * `not_in` denotes that the field must not be equal to
+     * any of the specified values of the `google.protobuf.Duration` type.
+     * If the field's value matches any of these values, an error message will be
+     * generated.
      *
-     *```proto
-     *message MyDuration {
-     *  // value must not be in list [1s, 2s, 3s]
+     * ```proto
+     * message MyDuration {
+     *   // value must not be in list [1s, 2s, 3s]
      *   google.protobuf.Duration value = 1 [(buf.validate.field).duration.not_in = ["1s", "2s", "3s"]];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>repeated .google.protobuf.Duration not_in = 8 [json_name = "notIn", (.buf.validate.priv.field) = { ... }</code>
@@ -3617,17 +3617,17 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     *`not_in` denotes that the field must not be equal to
-     *any of the specified values of the `google.protobuf.Duration` type.
-     *If the field's value matches any of these values, an error message will be
-     *generated.
+     * `not_in` denotes that the field must not be equal to
+     * any of the specified values of the `google.protobuf.Duration` type.
+     * If the field's value matches any of these values, an error message will be
+     * generated.
      *
-     *```proto
-     *message MyDuration {
-     *  // value must not be in list [1s, 2s, 3s]
+     * ```proto
+     * message MyDuration {
+     *   // value must not be in list [1s, 2s, 3s]
      *   google.protobuf.Duration value = 1 [(buf.validate.field).duration.not_in = ["1s", "2s", "3s"]];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>repeated .google.protobuf.Duration not_in = 8 [json_name = "notIn", (.buf.validate.priv.field) = { ... }</code>
@@ -3644,17 +3644,17 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     *`not_in` denotes that the field must not be equal to
-     *any of the specified values of the `google.protobuf.Duration` type.
-     *If the field's value matches any of these values, an error message will be
-     *generated.
+     * `not_in` denotes that the field must not be equal to
+     * any of the specified values of the `google.protobuf.Duration` type.
+     * If the field's value matches any of these values, an error message will be
+     * generated.
      *
-     *```proto
-     *message MyDuration {
-     *  // value must not be in list [1s, 2s, 3s]
+     * ```proto
+     * message MyDuration {
+     *   // value must not be in list [1s, 2s, 3s]
      *   google.protobuf.Duration value = 1 [(buf.validate.field).duration.not_in = ["1s", "2s", "3s"]];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>repeated .google.protobuf.Duration not_in = 8 [json_name = "notIn", (.buf.validate.priv.field) = { ... }</code>
@@ -3671,17 +3671,17 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     *`not_in` denotes that the field must not be equal to
-     *any of the specified values of the `google.protobuf.Duration` type.
-     *If the field's value matches any of these values, an error message will be
-     *generated.
+     * `not_in` denotes that the field must not be equal to
+     * any of the specified values of the `google.protobuf.Duration` type.
+     * If the field's value matches any of these values, an error message will be
+     * generated.
      *
-     *```proto
-     *message MyDuration {
-     *  // value must not be in list [1s, 2s, 3s]
+     * ```proto
+     * message MyDuration {
+     *   // value must not be in list [1s, 2s, 3s]
      *   google.protobuf.Duration value = 1 [(buf.validate.field).duration.not_in = ["1s", "2s", "3s"]];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>repeated .google.protobuf.Duration not_in = 8 [json_name = "notIn", (.buf.validate.priv.field) = { ... }</code>
@@ -3692,17 +3692,17 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     *`not_in` denotes that the field must not be equal to
-     *any of the specified values of the `google.protobuf.Duration` type.
-     *If the field's value matches any of these values, an error message will be
-     *generated.
+     * `not_in` denotes that the field must not be equal to
+     * any of the specified values of the `google.protobuf.Duration` type.
+     * If the field's value matches any of these values, an error message will be
+     * generated.
      *
-     *```proto
-     *message MyDuration {
-     *  // value must not be in list [1s, 2s, 3s]
+     * ```proto
+     * message MyDuration {
+     *   // value must not be in list [1s, 2s, 3s]
      *   google.protobuf.Duration value = 1 [(buf.validate.field).duration.not_in = ["1s", "2s", "3s"]];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>repeated .google.protobuf.Duration not_in = 8 [json_name = "notIn", (.buf.validate.priv.field) = { ... }</code>
@@ -3716,17 +3716,17 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     *`not_in` denotes that the field must not be equal to
-     *any of the specified values of the `google.protobuf.Duration` type.
-     *If the field's value matches any of these values, an error message will be
-     *generated.
+     * `not_in` denotes that the field must not be equal to
+     * any of the specified values of the `google.protobuf.Duration` type.
+     * If the field's value matches any of these values, an error message will be
+     * generated.
      *
-     *```proto
-     *message MyDuration {
-     *  // value must not be in list [1s, 2s, 3s]
+     * ```proto
+     * message MyDuration {
+     *   // value must not be in list [1s, 2s, 3s]
      *   google.protobuf.Duration value = 1 [(buf.validate.field).duration.not_in = ["1s", "2s", "3s"]];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>repeated .google.protobuf.Duration not_in = 8 [json_name = "notIn", (.buf.validate.priv.field) = { ... }</code>
@@ -3741,17 +3741,17 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     *`not_in` denotes that the field must not be equal to
-     *any of the specified values of the `google.protobuf.Duration` type.
-     *If the field's value matches any of these values, an error message will be
-     *generated.
+     * `not_in` denotes that the field must not be equal to
+     * any of the specified values of the `google.protobuf.Duration` type.
+     * If the field's value matches any of these values, an error message will be
+     * generated.
      *
-     *```proto
-     *message MyDuration {
-     *  // value must not be in list [1s, 2s, 3s]
+     * ```proto
+     * message MyDuration {
+     *   // value must not be in list [1s, 2s, 3s]
      *   google.protobuf.Duration value = 1 [(buf.validate.field).duration.not_in = ["1s", "2s", "3s"]];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>repeated .google.protobuf.Duration not_in = 8 [json_name = "notIn", (.buf.validate.priv.field) = { ... }</code>
@@ -3762,17 +3762,17 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     *`not_in` denotes that the field must not be equal to
-     *any of the specified values of the `google.protobuf.Duration` type.
-     *If the field's value matches any of these values, an error message will be
-     *generated.
+     * `not_in` denotes that the field must not be equal to
+     * any of the specified values of the `google.protobuf.Duration` type.
+     * If the field's value matches any of these values, an error message will be
+     * generated.
      *
-     *```proto
-     *message MyDuration {
-     *  // value must not be in list [1s, 2s, 3s]
+     * ```proto
+     * message MyDuration {
+     *   // value must not be in list [1s, 2s, 3s]
      *   google.protobuf.Duration value = 1 [(buf.validate.field).duration.not_in = ["1s", "2s", "3s"]];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>repeated .google.protobuf.Duration not_in = 8 [json_name = "notIn", (.buf.validate.priv.field) = { ... }</code>
@@ -3784,17 +3784,17 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     *`not_in` denotes that the field must not be equal to
-     *any of the specified values of the `google.protobuf.Duration` type.
-     *If the field's value matches any of these values, an error message will be
-     *generated.
+     * `not_in` denotes that the field must not be equal to
+     * any of the specified values of the `google.protobuf.Duration` type.
+     * If the field's value matches any of these values, an error message will be
+     * generated.
      *
-     *```proto
-     *message MyDuration {
-     *  // value must not be in list [1s, 2s, 3s]
+     * ```proto
+     * message MyDuration {
+     *   // value must not be in list [1s, 2s, 3s]
      *   google.protobuf.Duration value = 1 [(buf.validate.field).duration.not_in = ["1s", "2s", "3s"]];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>repeated .google.protobuf.Duration not_in = 8 [json_name = "notIn", (.buf.validate.priv.field) = { ... }</code>

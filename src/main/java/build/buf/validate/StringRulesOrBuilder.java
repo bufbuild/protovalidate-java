@@ -9,15 +9,15 @@ public interface StringRulesOrBuilder extends
 
   /**
    * <pre>
-   *`const` requires the field value to exactly match the specified value. If
-   *the field value doesn't match, an error message is generated.
+   * `const` requires the field value to exactly match the specified value. If
+   * the field value doesn't match, an error message is generated.
    *
-   *```proto
-   *message MyString {
-   *  // value must equal `hello`
+   * ```proto
+   * message MyString {
+   *   // value must equal `hello`
    *   string value = 1 [(buf.validate.field).string.const = "hello"];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
    * <code>optional string const = 1 [json_name = "const", (.buf.validate.priv.field) = { ... }</code>
@@ -26,15 +26,15 @@ public interface StringRulesOrBuilder extends
   boolean hasConst();
   /**
    * <pre>
-   *`const` requires the field value to exactly match the specified value. If
-   *the field value doesn't match, an error message is generated.
+   * `const` requires the field value to exactly match the specified value. If
+   * the field value doesn't match, an error message is generated.
    *
-   *```proto
-   *message MyString {
-   *  // value must equal `hello`
+   * ```proto
+   * message MyString {
+   *   // value must equal `hello`
    *   string value = 1 [(buf.validate.field).string.const = "hello"];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
    * <code>optional string const = 1 [json_name = "const", (.buf.validate.priv.field) = { ... }</code>
@@ -43,15 +43,15 @@ public interface StringRulesOrBuilder extends
   java.lang.String getConst();
   /**
    * <pre>
-   *`const` requires the field value to exactly match the specified value. If
-   *the field value doesn't match, an error message is generated.
+   * `const` requires the field value to exactly match the specified value. If
+   * the field value doesn't match, an error message is generated.
    *
-   *```proto
-   *message MyString {
-   *  // value must equal `hello`
+   * ```proto
+   * message MyString {
+   *   // value must equal `hello`
    *   string value = 1 [(buf.validate.field).string.const = "hello"];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
    * <code>optional string const = 1 [json_name = "const", (.buf.validate.priv.field) = { ... }</code>
@@ -62,17 +62,17 @@ public interface StringRulesOrBuilder extends
 
   /**
    * <pre>
-   *`len` dictates that the field value must have the specified
-   *number of characters (Unicode code points), which may differ from the number
-   *of bytes in the string. If the field value does not meet the specified
-   *length, an error message will be generated.
+   * `len` dictates that the field value must have the specified
+   * number of characters (Unicode code points), which may differ from the number
+   * of bytes in the string. If the field value does not meet the specified
+   * length, an error message will be generated.
    *
-   *```proto
-   *message MyString {
-   *  // value length must be 5 characters
+   * ```proto
+   * message MyString {
+   *   // value length must be 5 characters
    *   string value = 1 [(buf.validate.field).string.len = 5];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
    * <code>optional uint64 len = 19 [json_name = "len", (.buf.validate.priv.field) = { ... }</code>
@@ -81,17 +81,17 @@ public interface StringRulesOrBuilder extends
   boolean hasLen();
   /**
    * <pre>
-   *`len` dictates that the field value must have the specified
-   *number of characters (Unicode code points), which may differ from the number
-   *of bytes in the string. If the field value does not meet the specified
-   *length, an error message will be generated.
+   * `len` dictates that the field value must have the specified
+   * number of characters (Unicode code points), which may differ from the number
+   * of bytes in the string. If the field value does not meet the specified
+   * length, an error message will be generated.
    *
-   *```proto
-   *message MyString {
-   *  // value length must be 5 characters
+   * ```proto
+   * message MyString {
+   *   // value length must be 5 characters
    *   string value = 1 [(buf.validate.field).string.len = 5];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
    * <code>optional uint64 len = 19 [json_name = "len", (.buf.validate.priv.field) = { ... }</code>
@@ -101,17 +101,17 @@ public interface StringRulesOrBuilder extends
 
   /**
    * <pre>
-   *`min_len` specifies that the field value must have at least the specified
-   *number of characters (Unicode code points), which may differ from the number
-   *of bytes in the string. If the field value contains fewer characters, an error
-   *message will be generated.
+   * `min_len` specifies that the field value must have at least the specified
+   * number of characters (Unicode code points), which may differ from the number
+   * of bytes in the string. If the field value contains fewer characters, an error
+   * message will be generated.
    *
-   *```proto
-   *message MyString {
-   *  // value length must be at least 3 characters
+   * ```proto
+   * message MyString {
+   *   // value length must be at least 3 characters
    *   string value = 1 [(buf.validate.field).string.min_len = 3];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
    * <code>optional uint64 min_len = 2 [json_name = "minLen", (.buf.validate.priv.field) = { ... }</code>
@@ -120,17 +120,17 @@ public interface StringRulesOrBuilder extends
   boolean hasMinLen();
   /**
    * <pre>
-   *`min_len` specifies that the field value must have at least the specified
-   *number of characters (Unicode code points), which may differ from the number
-   *of bytes in the string. If the field value contains fewer characters, an error
-   *message will be generated.
+   * `min_len` specifies that the field value must have at least the specified
+   * number of characters (Unicode code points), which may differ from the number
+   * of bytes in the string. If the field value contains fewer characters, an error
+   * message will be generated.
    *
-   *```proto
-   *message MyString {
-   *  // value length must be at least 3 characters
+   * ```proto
+   * message MyString {
+   *   // value length must be at least 3 characters
    *   string value = 1 [(buf.validate.field).string.min_len = 3];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
    * <code>optional uint64 min_len = 2 [json_name = "minLen", (.buf.validate.priv.field) = { ... }</code>
@@ -140,17 +140,17 @@ public interface StringRulesOrBuilder extends
 
   /**
    * <pre>
-   *`max_len` specifies that the field value must have no more than the specified
-   *number of characters (Unicode code points), which may differ from the
-   *number of bytes in the string. If the field value contains more characters,
-   *an error message will be generated.
+   * `max_len` specifies that the field value must have no more than the specified
+   * number of characters (Unicode code points), which may differ from the
+   * number of bytes in the string. If the field value contains more characters,
+   * an error message will be generated.
    *
-   *```proto
-   *message MyString {
-   *  // value length must be at most 10 characters
+   * ```proto
+   * message MyString {
+   *   // value length must be at most 10 characters
    *   string value = 1 [(buf.validate.field).string.max_len = 10];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
    * <code>optional uint64 max_len = 3 [json_name = "maxLen", (.buf.validate.priv.field) = { ... }</code>
@@ -159,17 +159,17 @@ public interface StringRulesOrBuilder extends
   boolean hasMaxLen();
   /**
    * <pre>
-   *`max_len` specifies that the field value must have no more than the specified
-   *number of characters (Unicode code points), which may differ from the
-   *number of bytes in the string. If the field value contains more characters,
-   *an error message will be generated.
+   * `max_len` specifies that the field value must have no more than the specified
+   * number of characters (Unicode code points), which may differ from the
+   * number of bytes in the string. If the field value contains more characters,
+   * an error message will be generated.
    *
-   *```proto
-   *message MyString {
-   *  // value length must be at most 10 characters
+   * ```proto
+   * message MyString {
+   *   // value length must be at most 10 characters
    *   string value = 1 [(buf.validate.field).string.max_len = 10];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
    * <code>optional uint64 max_len = 3 [json_name = "maxLen", (.buf.validate.priv.field) = { ... }</code>
@@ -179,16 +179,16 @@ public interface StringRulesOrBuilder extends
 
   /**
    * <pre>
-   *`len_bytes` dictates that the field value must have the specified number of
-   *bytes. If the field value does not match the specified length in bytes,
-   *an error message will be generated.
+   * `len_bytes` dictates that the field value must have the specified number of
+   * bytes. If the field value does not match the specified length in bytes,
+   * an error message will be generated.
    *
-   *```proto
-   *message MyString {
-   *  // value length must be 6 bytes
+   * ```proto
+   * message MyString {
+   *   // value length must be 6 bytes
    *   string value = 1 [(buf.validate.field).string.len_bytes = 6];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
    * <code>optional uint64 len_bytes = 20 [json_name = "lenBytes", (.buf.validate.priv.field) = { ... }</code>
@@ -197,16 +197,16 @@ public interface StringRulesOrBuilder extends
   boolean hasLenBytes();
   /**
    * <pre>
-   *`len_bytes` dictates that the field value must have the specified number of
-   *bytes. If the field value does not match the specified length in bytes,
-   *an error message will be generated.
+   * `len_bytes` dictates that the field value must have the specified number of
+   * bytes. If the field value does not match the specified length in bytes,
+   * an error message will be generated.
    *
-   *```proto
-   *message MyString {
-   *  // value length must be 6 bytes
+   * ```proto
+   * message MyString {
+   *   // value length must be 6 bytes
    *   string value = 1 [(buf.validate.field).string.len_bytes = 6];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
    * <code>optional uint64 len_bytes = 20 [json_name = "lenBytes", (.buf.validate.priv.field) = { ... }</code>
@@ -216,17 +216,17 @@ public interface StringRulesOrBuilder extends
 
   /**
    * <pre>
-   *`min_bytes` specifies that the field value must have at least the specified
-   *number of bytes. If the field value contains fewer bytes, an error message
-   *will be generated.
+   * `min_bytes` specifies that the field value must have at least the specified
+   * number of bytes. If the field value contains fewer bytes, an error message
+   * will be generated.
    *
-   *```proto
-   *message MyString {
-   *  // value length must be at least 4 bytes
+   * ```proto
+   * message MyString {
+   *   // value length must be at least 4 bytes
    *   string value = 1 [(buf.validate.field).string.min_bytes = 4];
-   *}
+   * }
    *
-   *```
+   * ```
    * </pre>
    *
    * <code>optional uint64 min_bytes = 4 [json_name = "minBytes", (.buf.validate.priv.field) = { ... }</code>
@@ -235,17 +235,17 @@ public interface StringRulesOrBuilder extends
   boolean hasMinBytes();
   /**
    * <pre>
-   *`min_bytes` specifies that the field value must have at least the specified
-   *number of bytes. If the field value contains fewer bytes, an error message
-   *will be generated.
+   * `min_bytes` specifies that the field value must have at least the specified
+   * number of bytes. If the field value contains fewer bytes, an error message
+   * will be generated.
    *
-   *```proto
-   *message MyString {
-   *  // value length must be at least 4 bytes
+   * ```proto
+   * message MyString {
+   *   // value length must be at least 4 bytes
    *   string value = 1 [(buf.validate.field).string.min_bytes = 4];
-   *}
+   * }
    *
-   *```
+   * ```
    * </pre>
    *
    * <code>optional uint64 min_bytes = 4 [json_name = "minBytes", (.buf.validate.priv.field) = { ... }</code>
@@ -255,16 +255,16 @@ public interface StringRulesOrBuilder extends
 
   /**
    * <pre>
-   *`max_bytes` specifies that the field value must have no more than the
+   * `max_bytes` specifies that the field value must have no more than the
    *specified number of bytes. If the field value contains more bytes, an
-   *error message will be generated.
+   * error message will be generated.
    *
-   *```proto
-   *message MyString {
-   *  // value length must be at most 8 bytes
+   * ```proto
+   * message MyString {
+   *   // value length must be at most 8 bytes
    *   string value = 1 [(buf.validate.field).string.max_bytes = 8];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
    * <code>optional uint64 max_bytes = 5 [json_name = "maxBytes", (.buf.validate.priv.field) = { ... }</code>
@@ -273,16 +273,16 @@ public interface StringRulesOrBuilder extends
   boolean hasMaxBytes();
   /**
    * <pre>
-   *`max_bytes` specifies that the field value must have no more than the
+   * `max_bytes` specifies that the field value must have no more than the
    *specified number of bytes. If the field value contains more bytes, an
-   *error message will be generated.
+   * error message will be generated.
    *
-   *```proto
-   *message MyString {
-   *  // value length must be at most 8 bytes
+   * ```proto
+   * message MyString {
+   *   // value length must be at most 8 bytes
    *   string value = 1 [(buf.validate.field).string.max_bytes = 8];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
    * <code>optional uint64 max_bytes = 5 [json_name = "maxBytes", (.buf.validate.priv.field) = { ... }</code>
@@ -292,17 +292,17 @@ public interface StringRulesOrBuilder extends
 
   /**
    * <pre>
-   *`pattern` specifies that the field value must match the specified
-   *regular expression (RE2 syntax), with the expression provided without any
-   *delimiters. If the field value doesn't match the regular expression, an
-   *error message will be generated.
+   * `pattern` specifies that the field value must match the specified
+   * regular expression (RE2 syntax), with the expression provided without any
+   * delimiters. If the field value doesn't match the regular expression, an
+   * error message will be generated.
    *
-   *```proto
-   *message MyString {
-   *  // value does not match regex pattern `^[a-zA-Z]//$`
+   * ```proto
+   * message MyString {
+   *   // value does not match regex pattern `^[a-zA-Z]//$`
    *   string value = 1 [(buf.validate.field).string.pattern = "^[a-zA-Z]//$"];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
    * <code>optional string pattern = 6 [json_name = "pattern", (.buf.validate.priv.field) = { ... }</code>
@@ -311,17 +311,17 @@ public interface StringRulesOrBuilder extends
   boolean hasPattern();
   /**
    * <pre>
-   *`pattern` specifies that the field value must match the specified
-   *regular expression (RE2 syntax), with the expression provided without any
-   *delimiters. If the field value doesn't match the regular expression, an
-   *error message will be generated.
+   * `pattern` specifies that the field value must match the specified
+   * regular expression (RE2 syntax), with the expression provided without any
+   * delimiters. If the field value doesn't match the regular expression, an
+   * error message will be generated.
    *
-   *```proto
-   *message MyString {
-   *  // value does not match regex pattern `^[a-zA-Z]//$`
+   * ```proto
+   * message MyString {
+   *   // value does not match regex pattern `^[a-zA-Z]//$`
    *   string value = 1 [(buf.validate.field).string.pattern = "^[a-zA-Z]//$"];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
    * <code>optional string pattern = 6 [json_name = "pattern", (.buf.validate.priv.field) = { ... }</code>
@@ -330,17 +330,17 @@ public interface StringRulesOrBuilder extends
   java.lang.String getPattern();
   /**
    * <pre>
-   *`pattern` specifies that the field value must match the specified
-   *regular expression (RE2 syntax), with the expression provided without any
-   *delimiters. If the field value doesn't match the regular expression, an
-   *error message will be generated.
+   * `pattern` specifies that the field value must match the specified
+   * regular expression (RE2 syntax), with the expression provided without any
+   * delimiters. If the field value doesn't match the regular expression, an
+   * error message will be generated.
    *
-   *```proto
-   *message MyString {
-   *  // value does not match regex pattern `^[a-zA-Z]//$`
+   * ```proto
+   * message MyString {
+   *   // value does not match regex pattern `^[a-zA-Z]//$`
    *   string value = 1 [(buf.validate.field).string.pattern = "^[a-zA-Z]//$"];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
    * <code>optional string pattern = 6 [json_name = "pattern", (.buf.validate.priv.field) = { ... }</code>
@@ -351,17 +351,17 @@ public interface StringRulesOrBuilder extends
 
   /**
    * <pre>
-   *`prefix` specifies that the field value must have the
+   * `prefix` specifies that the field value must have the
    *specified substring at the beginning of the string. If the field value
-   *doesn't start with the specified prefix, an error message will be
-   *generated.
+   * doesn't start with the specified prefix, an error message will be
+   * generated.
    *
-   *```proto
-   *message MyString {
-   *  // value does not have prefix `pre`
+   * ```proto
+   * message MyString {
+   *   // value does not have prefix `pre`
    *   string value = 1 [(buf.validate.field).string.prefix = "pre"];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
    * <code>optional string prefix = 7 [json_name = "prefix", (.buf.validate.priv.field) = { ... }</code>
@@ -370,17 +370,17 @@ public interface StringRulesOrBuilder extends
   boolean hasPrefix();
   /**
    * <pre>
-   *`prefix` specifies that the field value must have the
+   * `prefix` specifies that the field value must have the
    *specified substring at the beginning of the string. If the field value
-   *doesn't start with the specified prefix, an error message will be
-   *generated.
+   * doesn't start with the specified prefix, an error message will be
+   * generated.
    *
-   *```proto
-   *message MyString {
-   *  // value does not have prefix `pre`
+   * ```proto
+   * message MyString {
+   *   // value does not have prefix `pre`
    *   string value = 1 [(buf.validate.field).string.prefix = "pre"];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
    * <code>optional string prefix = 7 [json_name = "prefix", (.buf.validate.priv.field) = { ... }</code>
@@ -389,17 +389,17 @@ public interface StringRulesOrBuilder extends
   java.lang.String getPrefix();
   /**
    * <pre>
-   *`prefix` specifies that the field value must have the
+   * `prefix` specifies that the field value must have the
    *specified substring at the beginning of the string. If the field value
-   *doesn't start with the specified prefix, an error message will be
-   *generated.
+   * doesn't start with the specified prefix, an error message will be
+   * generated.
    *
-   *```proto
-   *message MyString {
-   *  // value does not have prefix `pre`
+   * ```proto
+   * message MyString {
+   *   // value does not have prefix `pre`
    *   string value = 1 [(buf.validate.field).string.prefix = "pre"];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
    * <code>optional string prefix = 7 [json_name = "prefix", (.buf.validate.priv.field) = { ... }</code>
@@ -410,16 +410,16 @@ public interface StringRulesOrBuilder extends
 
   /**
    * <pre>
-   *`suffix` specifies that the field value must have the
+   * `suffix` specifies that the field value must have the
    *specified substring at the end of the string. If the field value doesn't
-   *end with the specified suffix, an error message will be generated.
+   * end with the specified suffix, an error message will be generated.
    *
-   *```proto
-   *message MyString {
-   *  // value does not have suffix `post`
+   * ```proto
+   * message MyString {
+   *   // value does not have suffix `post`
    *   string value = 1 [(buf.validate.field).string.suffix = "post"];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
    * <code>optional string suffix = 8 [json_name = "suffix", (.buf.validate.priv.field) = { ... }</code>
@@ -428,16 +428,16 @@ public interface StringRulesOrBuilder extends
   boolean hasSuffix();
   /**
    * <pre>
-   *`suffix` specifies that the field value must have the
+   * `suffix` specifies that the field value must have the
    *specified substring at the end of the string. If the field value doesn't
-   *end with the specified suffix, an error message will be generated.
+   * end with the specified suffix, an error message will be generated.
    *
-   *```proto
-   *message MyString {
-   *  // value does not have suffix `post`
+   * ```proto
+   * message MyString {
+   *   // value does not have suffix `post`
    *   string value = 1 [(buf.validate.field).string.suffix = "post"];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
    * <code>optional string suffix = 8 [json_name = "suffix", (.buf.validate.priv.field) = { ... }</code>
@@ -446,16 +446,16 @@ public interface StringRulesOrBuilder extends
   java.lang.String getSuffix();
   /**
    * <pre>
-   *`suffix` specifies that the field value must have the
+   * `suffix` specifies that the field value must have the
    *specified substring at the end of the string. If the field value doesn't
-   *end with the specified suffix, an error message will be generated.
+   * end with the specified suffix, an error message will be generated.
    *
-   *```proto
-   *message MyString {
-   *  // value does not have suffix `post`
+   * ```proto
+   * message MyString {
+   *   // value does not have suffix `post`
    *   string value = 1 [(buf.validate.field).string.suffix = "post"];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
    * <code>optional string suffix = 8 [json_name = "suffix", (.buf.validate.priv.field) = { ... }</code>
@@ -466,16 +466,16 @@ public interface StringRulesOrBuilder extends
 
   /**
    * <pre>
-   *`contains` specifies that the field value must have the
+   * `contains` specifies that the field value must have the
    *specified substring anywhere in the string. If the field value doesn't
-   *contain the specified substring, an error message will be generated.
+   * contain the specified substring, an error message will be generated.
    *
-   *```proto
-   *message MyString {
-   *  // value does not contain substring `inside`.
+   * ```proto
+   * message MyString {
+   *   // value does not contain substring `inside`.
    *   string value = 1 [(buf.validate.field).string.contains = "inside"];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
    * <code>optional string contains = 9 [json_name = "contains", (.buf.validate.priv.field) = { ... }</code>
@@ -484,16 +484,16 @@ public interface StringRulesOrBuilder extends
   boolean hasContains();
   /**
    * <pre>
-   *`contains` specifies that the field value must have the
+   * `contains` specifies that the field value must have the
    *specified substring anywhere in the string. If the field value doesn't
-   *contain the specified substring, an error message will be generated.
+   * contain the specified substring, an error message will be generated.
    *
-   *```proto
-   *message MyString {
-   *  // value does not contain substring `inside`.
+   * ```proto
+   * message MyString {
+   *   // value does not contain substring `inside`.
    *   string value = 1 [(buf.validate.field).string.contains = "inside"];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
    * <code>optional string contains = 9 [json_name = "contains", (.buf.validate.priv.field) = { ... }</code>
@@ -502,16 +502,16 @@ public interface StringRulesOrBuilder extends
   java.lang.String getContains();
   /**
    * <pre>
-   *`contains` specifies that the field value must have the
+   * `contains` specifies that the field value must have the
    *specified substring anywhere in the string. If the field value doesn't
-   *contain the specified substring, an error message will be generated.
+   * contain the specified substring, an error message will be generated.
    *
-   *```proto
-   *message MyString {
-   *  // value does not contain substring `inside`.
+   * ```proto
+   * message MyString {
+   *   // value does not contain substring `inside`.
    *   string value = 1 [(buf.validate.field).string.contains = "inside"];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
    * <code>optional string contains = 9 [json_name = "contains", (.buf.validate.priv.field) = { ... }</code>
@@ -522,16 +522,16 @@ public interface StringRulesOrBuilder extends
 
   /**
    * <pre>
-   *`not_contains` specifies that the field value must not have the
+   * `not_contains` specifies that the field value must not have the
    *specified substring anywhere in the string. If the field value contains
-   *the specified substring, an error message will be generated.
+   * the specified substring, an error message will be generated.
    *
-   *```proto
-   *message MyString {
-   *  // value contains substring `inside`.
+   * ```proto
+   * message MyString {
+   *   // value contains substring `inside`.
    *   string value = 1 [(buf.validate.field).string.not_contains = "inside"];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
    * <code>optional string not_contains = 23 [json_name = "notContains", (.buf.validate.priv.field) = { ... }</code>
@@ -540,16 +540,16 @@ public interface StringRulesOrBuilder extends
   boolean hasNotContains();
   /**
    * <pre>
-   *`not_contains` specifies that the field value must not have the
+   * `not_contains` specifies that the field value must not have the
    *specified substring anywhere in the string. If the field value contains
-   *the specified substring, an error message will be generated.
+   * the specified substring, an error message will be generated.
    *
-   *```proto
-   *message MyString {
-   *  // value contains substring `inside`.
+   * ```proto
+   * message MyString {
+   *   // value contains substring `inside`.
    *   string value = 1 [(buf.validate.field).string.not_contains = "inside"];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
    * <code>optional string not_contains = 23 [json_name = "notContains", (.buf.validate.priv.field) = { ... }</code>
@@ -558,16 +558,16 @@ public interface StringRulesOrBuilder extends
   java.lang.String getNotContains();
   /**
    * <pre>
-   *`not_contains` specifies that the field value must not have the
+   * `not_contains` specifies that the field value must not have the
    *specified substring anywhere in the string. If the field value contains
-   *the specified substring, an error message will be generated.
+   * the specified substring, an error message will be generated.
    *
-   *```proto
-   *message MyString {
-   *  // value contains substring `inside`.
+   * ```proto
+   * message MyString {
+   *   // value contains substring `inside`.
    *   string value = 1 [(buf.validate.field).string.not_contains = "inside"];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
    * <code>optional string not_contains = 23 [json_name = "notContains", (.buf.validate.priv.field) = { ... }</code>
@@ -578,16 +578,16 @@ public interface StringRulesOrBuilder extends
 
   /**
    * <pre>
-   *`in` specifies that the field value must be equal to one of the specified
-   *values. If the field value isn't one of the specified values, an error
-   *message will be generated.
+   * `in` specifies that the field value must be equal to one of the specified
+   * values. If the field value isn't one of the specified values, an error
+   * message will be generated.
    *
-   *```proto
-   *message MyString {
-   *  // value must be in list ["apple", "banana"]
-   *  repeated string value = 1 [(buf.validate.field).string.in = "apple", (buf.validate.field).string.in = "banana"];
-   *}
-   *```
+   * ```proto
+   * message MyString {
+   *   // value must be in list ["apple", "banana"]
+   *   repeated string value = 1 [(buf.validate.field).string.in = "apple", (buf.validate.field).string.in = "banana"];
+   * }
+   * ```
    * </pre>
    *
    * <code>repeated string in = 10 [json_name = "in", (.buf.validate.priv.field) = { ... }</code>
@@ -597,16 +597,16 @@ public interface StringRulesOrBuilder extends
       getInList();
   /**
    * <pre>
-   *`in` specifies that the field value must be equal to one of the specified
-   *values. If the field value isn't one of the specified values, an error
-   *message will be generated.
+   * `in` specifies that the field value must be equal to one of the specified
+   * values. If the field value isn't one of the specified values, an error
+   * message will be generated.
    *
-   *```proto
-   *message MyString {
-   *  // value must be in list ["apple", "banana"]
-   *  repeated string value = 1 [(buf.validate.field).string.in = "apple", (buf.validate.field).string.in = "banana"];
-   *}
-   *```
+   * ```proto
+   * message MyString {
+   *   // value must be in list ["apple", "banana"]
+   *   repeated string value = 1 [(buf.validate.field).string.in = "apple", (buf.validate.field).string.in = "banana"];
+   * }
+   * ```
    * </pre>
    *
    * <code>repeated string in = 10 [json_name = "in", (.buf.validate.priv.field) = { ... }</code>
@@ -615,16 +615,16 @@ public interface StringRulesOrBuilder extends
   int getInCount();
   /**
    * <pre>
-   *`in` specifies that the field value must be equal to one of the specified
-   *values. If the field value isn't one of the specified values, an error
-   *message will be generated.
+   * `in` specifies that the field value must be equal to one of the specified
+   * values. If the field value isn't one of the specified values, an error
+   * message will be generated.
    *
-   *```proto
-   *message MyString {
-   *  // value must be in list ["apple", "banana"]
-   *  repeated string value = 1 [(buf.validate.field).string.in = "apple", (buf.validate.field).string.in = "banana"];
-   *}
-   *```
+   * ```proto
+   * message MyString {
+   *   // value must be in list ["apple", "banana"]
+   *   repeated string value = 1 [(buf.validate.field).string.in = "apple", (buf.validate.field).string.in = "banana"];
+   * }
+   * ```
    * </pre>
    *
    * <code>repeated string in = 10 [json_name = "in", (.buf.validate.priv.field) = { ... }</code>
@@ -634,16 +634,16 @@ public interface StringRulesOrBuilder extends
   java.lang.String getIn(int index);
   /**
    * <pre>
-   *`in` specifies that the field value must be equal to one of the specified
-   *values. If the field value isn't one of the specified values, an error
-   *message will be generated.
+   * `in` specifies that the field value must be equal to one of the specified
+   * values. If the field value isn't one of the specified values, an error
+   * message will be generated.
    *
-   *```proto
-   *message MyString {
-   *  // value must be in list ["apple", "banana"]
-   *  repeated string value = 1 [(buf.validate.field).string.in = "apple", (buf.validate.field).string.in = "banana"];
-   *}
-   *```
+   * ```proto
+   * message MyString {
+   *   // value must be in list ["apple", "banana"]
+   *   repeated string value = 1 [(buf.validate.field).string.in = "apple", (buf.validate.field).string.in = "banana"];
+   * }
+   * ```
    * </pre>
    *
    * <code>repeated string in = 10 [json_name = "in", (.buf.validate.priv.field) = { ... }</code>
@@ -655,15 +655,15 @@ public interface StringRulesOrBuilder extends
 
   /**
    * <pre>
-   *`not_in` specifies that the field value cannot be equal to any
-   *of the specified values. If the field value is one of the specified values,
-   *an error message will be generated.
-   *```proto
-   *message MyString {
-   *  // value must not be in list ["orange", "grape"]
-   *  repeated string value = 1 [(buf.validate.field).string.not_in = "orange", (buf.validate.field).string.not_in = "grape"];
-   *}
-   *```
+   * `not_in` specifies that the field value cannot be equal to any
+   * of the specified values. If the field value is one of the specified values,
+   * an error message will be generated.
+   * ```proto
+   * message MyString {
+   *   // value must not be in list ["orange", "grape"]
+   *   repeated string value = 1 [(buf.validate.field).string.not_in = "orange", (buf.validate.field).string.not_in = "grape"];
+   * }
+   * ```
    * </pre>
    *
    * <code>repeated string not_in = 11 [json_name = "notIn", (.buf.validate.priv.field) = { ... }</code>
@@ -673,15 +673,15 @@ public interface StringRulesOrBuilder extends
       getNotInList();
   /**
    * <pre>
-   *`not_in` specifies that the field value cannot be equal to any
-   *of the specified values. If the field value is one of the specified values,
-   *an error message will be generated.
-   *```proto
-   *message MyString {
-   *  // value must not be in list ["orange", "grape"]
-   *  repeated string value = 1 [(buf.validate.field).string.not_in = "orange", (buf.validate.field).string.not_in = "grape"];
-   *}
-   *```
+   * `not_in` specifies that the field value cannot be equal to any
+   * of the specified values. If the field value is one of the specified values,
+   * an error message will be generated.
+   * ```proto
+   * message MyString {
+   *   // value must not be in list ["orange", "grape"]
+   *   repeated string value = 1 [(buf.validate.field).string.not_in = "orange", (buf.validate.field).string.not_in = "grape"];
+   * }
+   * ```
    * </pre>
    *
    * <code>repeated string not_in = 11 [json_name = "notIn", (.buf.validate.priv.field) = { ... }</code>
@@ -690,15 +690,15 @@ public interface StringRulesOrBuilder extends
   int getNotInCount();
   /**
    * <pre>
-   *`not_in` specifies that the field value cannot be equal to any
-   *of the specified values. If the field value is one of the specified values,
-   *an error message will be generated.
-   *```proto
-   *message MyString {
-   *  // value must not be in list ["orange", "grape"]
-   *  repeated string value = 1 [(buf.validate.field).string.not_in = "orange", (buf.validate.field).string.not_in = "grape"];
-   *}
-   *```
+   * `not_in` specifies that the field value cannot be equal to any
+   * of the specified values. If the field value is one of the specified values,
+   * an error message will be generated.
+   * ```proto
+   * message MyString {
+   *   // value must not be in list ["orange", "grape"]
+   *   repeated string value = 1 [(buf.validate.field).string.not_in = "orange", (buf.validate.field).string.not_in = "grape"];
+   * }
+   * ```
    * </pre>
    *
    * <code>repeated string not_in = 11 [json_name = "notIn", (.buf.validate.priv.field) = { ... }</code>
@@ -708,15 +708,15 @@ public interface StringRulesOrBuilder extends
   java.lang.String getNotIn(int index);
   /**
    * <pre>
-   *`not_in` specifies that the field value cannot be equal to any
-   *of the specified values. If the field value is one of the specified values,
-   *an error message will be generated.
-   *```proto
-   *message MyString {
-   *  // value must not be in list ["orange", "grape"]
-   *  repeated string value = 1 [(buf.validate.field).string.not_in = "orange", (buf.validate.field).string.not_in = "grape"];
-   *}
-   *```
+   * `not_in` specifies that the field value cannot be equal to any
+   * of the specified values. If the field value is one of the specified values,
+   * an error message will be generated.
+   * ```proto
+   * message MyString {
+   *   // value must not be in list ["orange", "grape"]
+   *   repeated string value = 1 [(buf.validate.field).string.not_in = "orange", (buf.validate.field).string.not_in = "grape"];
+   * }
+   * ```
    * </pre>
    *
    * <code>repeated string not_in = 11 [json_name = "notIn", (.buf.validate.priv.field) = { ... }</code>
@@ -728,16 +728,16 @@ public interface StringRulesOrBuilder extends
 
   /**
    * <pre>
-   *`email` specifies that the field value must be a valid email address
-   *(addr-spec only) as defined by [RFC 5322](https://tools.ietf.org/html/rfc5322#section-3.4.1).
-   *If the field value isn't a valid email address, an error message will be generated.
+   * `email` specifies that the field value must be a valid email address
+   * (addr-spec only) as defined by [RFC 5322](https://tools.ietf.org/html/rfc5322#section-3.4.1).
+   * If the field value isn't a valid email address, an error message will be generated.
    *
-   *```proto
-   *message MyString {
-   *  // value must be a valid email address
+   * ```proto
+   * message MyString {
+   *   // value must be a valid email address
    *   string value = 1 [(buf.validate.field).string.email = true];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
    * <code>bool email = 12 [json_name = "email", (.buf.validate.priv.field) = { ... }</code>
@@ -746,16 +746,16 @@ public interface StringRulesOrBuilder extends
   boolean hasEmail();
   /**
    * <pre>
-   *`email` specifies that the field value must be a valid email address
-   *(addr-spec only) as defined by [RFC 5322](https://tools.ietf.org/html/rfc5322#section-3.4.1).
-   *If the field value isn't a valid email address, an error message will be generated.
+   * `email` specifies that the field value must be a valid email address
+   * (addr-spec only) as defined by [RFC 5322](https://tools.ietf.org/html/rfc5322#section-3.4.1).
+   * If the field value isn't a valid email address, an error message will be generated.
    *
-   *```proto
-   *message MyString {
-   *  // value must be a valid email address
+   * ```proto
+   * message MyString {
+   *   // value must be a valid email address
    *   string value = 1 [(buf.validate.field).string.email = true];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
    * <code>bool email = 12 [json_name = "email", (.buf.validate.priv.field) = { ... }</code>
@@ -765,17 +765,17 @@ public interface StringRulesOrBuilder extends
 
   /**
    * <pre>
-   *`hostname` specifies that the field value must be a valid
-   *hostname as defined by [RFC 1034](https://tools.ietf.org/html/rfc1034#section-3.5). This constraint doesn't support
-   *internationalized domain names (IDNs). If the field value isn't a
-   *valid hostname, an error message will be generated.
+   * `hostname` specifies that the field value must be a valid
+   * hostname as defined by [RFC 1034](https://tools.ietf.org/html/rfc1034#section-3.5). This constraint doesn't support
+   * internationalized domain names (IDNs). If the field value isn't a
+   * valid hostname, an error message will be generated.
    *
-   *```proto
-   *message MyString {
-   *  // value must be a valid hostname
+   * ```proto
+   * message MyString {
+   *   // value must be a valid hostname
    *   string value = 1 [(buf.validate.field).string.hostname = true];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
    * <code>bool hostname = 13 [json_name = "hostname", (.buf.validate.priv.field) = { ... }</code>
@@ -784,17 +784,17 @@ public interface StringRulesOrBuilder extends
   boolean hasHostname();
   /**
    * <pre>
-   *`hostname` specifies that the field value must be a valid
-   *hostname as defined by [RFC 1034](https://tools.ietf.org/html/rfc1034#section-3.5). This constraint doesn't support
-   *internationalized domain names (IDNs). If the field value isn't a
-   *valid hostname, an error message will be generated.
+   * `hostname` specifies that the field value must be a valid
+   * hostname as defined by [RFC 1034](https://tools.ietf.org/html/rfc1034#section-3.5). This constraint doesn't support
+   * internationalized domain names (IDNs). If the field value isn't a
+   * valid hostname, an error message will be generated.
    *
-   *```proto
-   *message MyString {
-   *  // value must be a valid hostname
+   * ```proto
+   * message MyString {
+   *   // value must be a valid hostname
    *   string value = 1 [(buf.validate.field).string.hostname = true];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
    * <code>bool hostname = 13 [json_name = "hostname", (.buf.validate.priv.field) = { ... }</code>
@@ -804,17 +804,17 @@ public interface StringRulesOrBuilder extends
 
   /**
    * <pre>
-   *`ip` specifies that the field value must be a valid IP
-   *(v4 or v6) address, without surrounding square brackets for IPv6 addresses.
-   *If the field value isn't a valid IP address, an error message will be
-   *generated.
+   * `ip` specifies that the field value must be a valid IP
+   * (v4 or v6) address, without surrounding square brackets for IPv6 addresses.
+   * If the field value isn't a valid IP address, an error message will be
+   * generated.
    *
-   *```proto
-   *message MyString {
-   *  // value must be a valid IP address
+   * ```proto
+   * message MyString {
+   *   // value must be a valid IP address
    *   string value = 1 [(buf.validate.field).string.ip = true];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
    * <code>bool ip = 14 [json_name = "ip", (.buf.validate.priv.field) = { ... }</code>
@@ -823,17 +823,17 @@ public interface StringRulesOrBuilder extends
   boolean hasIp();
   /**
    * <pre>
-   *`ip` specifies that the field value must be a valid IP
-   *(v4 or v6) address, without surrounding square brackets for IPv6 addresses.
-   *If the field value isn't a valid IP address, an error message will be
-   *generated.
+   * `ip` specifies that the field value must be a valid IP
+   * (v4 or v6) address, without surrounding square brackets for IPv6 addresses.
+   * If the field value isn't a valid IP address, an error message will be
+   * generated.
    *
-   *```proto
-   *message MyString {
-   *  // value must be a valid IP address
+   * ```proto
+   * message MyString {
+   *   // value must be a valid IP address
    *   string value = 1 [(buf.validate.field).string.ip = true];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
    * <code>bool ip = 14 [json_name = "ip", (.buf.validate.priv.field) = { ... }</code>
@@ -843,16 +843,16 @@ public interface StringRulesOrBuilder extends
 
   /**
    * <pre>
-   *`ipv4` specifies that the field value must be a valid IPv4
-   *address. If the field value isn't a valid IPv4 address, an error message
-   *will be generated.
+   * `ipv4` specifies that the field value must be a valid IPv4
+   * address. If the field value isn't a valid IPv4 address, an error message
+   * will be generated.
    *
-   *```proto
-   *message MyString {
-   *  // value must be a valid IPv4 address
+   * ```proto
+   * message MyString {
+   *   // value must be a valid IPv4 address
    *   string value = 1 [(buf.validate.field).string.ipv4 = true];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
    * <code>bool ipv4 = 15 [json_name = "ipv4", (.buf.validate.priv.field) = { ... }</code>
@@ -861,16 +861,16 @@ public interface StringRulesOrBuilder extends
   boolean hasIpv4();
   /**
    * <pre>
-   *`ipv4` specifies that the field value must be a valid IPv4
-   *address. If the field value isn't a valid IPv4 address, an error message
-   *will be generated.
+   * `ipv4` specifies that the field value must be a valid IPv4
+   * address. If the field value isn't a valid IPv4 address, an error message
+   * will be generated.
    *
-   *```proto
-   *message MyString {
-   *  // value must be a valid IPv4 address
+   * ```proto
+   * message MyString {
+   *   // value must be a valid IPv4 address
    *   string value = 1 [(buf.validate.field).string.ipv4 = true];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
    * <code>bool ipv4 = 15 [json_name = "ipv4", (.buf.validate.priv.field) = { ... }</code>
@@ -880,16 +880,16 @@ public interface StringRulesOrBuilder extends
 
   /**
    * <pre>
-   *`ipv6` specifies that the field value must be a valid
-   *IPv6 address, without surrounding square brackets. If the field value is
-   *not a valid IPv6 address, an error message will be generated.
+   * `ipv6` specifies that the field value must be a valid
+   * IPv6 address, without surrounding square brackets. If the field value is
+   * not a valid IPv6 address, an error message will be generated.
    *
-   *```proto
-   *message MyString {
-   *  // value must be a valid IPv6 address
+   * ```proto
+   * message MyString {
+   *   // value must be a valid IPv6 address
    *   string value = 1 [(buf.validate.field).string.ipv6 = true];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
    * <code>bool ipv6 = 16 [json_name = "ipv6", (.buf.validate.priv.field) = { ... }</code>
@@ -898,16 +898,16 @@ public interface StringRulesOrBuilder extends
   boolean hasIpv6();
   /**
    * <pre>
-   *`ipv6` specifies that the field value must be a valid
-   *IPv6 address, without surrounding square brackets. If the field value is
-   *not a valid IPv6 address, an error message will be generated.
+   * `ipv6` specifies that the field value must be a valid
+   * IPv6 address, without surrounding square brackets. If the field value is
+   * not a valid IPv6 address, an error message will be generated.
    *
-   *```proto
-   *message MyString {
-   *  // value must be a valid IPv6 address
+   * ```proto
+   * message MyString {
+   *   // value must be a valid IPv6 address
    *   string value = 1 [(buf.validate.field).string.ipv6 = true];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
    * <code>bool ipv6 = 16 [json_name = "ipv6", (.buf.validate.priv.field) = { ... }</code>
@@ -917,16 +917,16 @@ public interface StringRulesOrBuilder extends
 
   /**
    * <pre>
-   *`uri` specifies that the field value must be a valid,
-   *absolute URI as defined by [RFC 3986](https://tools.ietf.org/html/rfc3986#section-3). If the field value isn't a valid,
-   *absolute URI, an error message will be generated.
+   * `uri` specifies that the field value must be a valid,
+   * absolute URI as defined by [RFC 3986](https://tools.ietf.org/html/rfc3986#section-3). If the field value isn't a valid,
+   * absolute URI, an error message will be generated.
    *
-   *```proto
-   *message MyString {
-   *  // value must be a valid URI
+   * ```proto
+   * message MyString {
+   *   // value must be a valid URI
    *   string value = 1 [(buf.validate.field).string.uri = true];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
    * <code>bool uri = 17 [json_name = "uri", (.buf.validate.priv.field) = { ... }</code>
@@ -935,16 +935,16 @@ public interface StringRulesOrBuilder extends
   boolean hasUri();
   /**
    * <pre>
-   *`uri` specifies that the field value must be a valid,
-   *absolute URI as defined by [RFC 3986](https://tools.ietf.org/html/rfc3986#section-3). If the field value isn't a valid,
-   *absolute URI, an error message will be generated.
+   * `uri` specifies that the field value must be a valid,
+   * absolute URI as defined by [RFC 3986](https://tools.ietf.org/html/rfc3986#section-3). If the field value isn't a valid,
+   * absolute URI, an error message will be generated.
    *
-   *```proto
-   *message MyString {
-   *  // value must be a valid URI
+   * ```proto
+   * message MyString {
+   *   // value must be a valid URI
    *   string value = 1 [(buf.validate.field).string.uri = true];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
    * <code>bool uri = 17 [json_name = "uri", (.buf.validate.priv.field) = { ... }</code>
@@ -954,16 +954,16 @@ public interface StringRulesOrBuilder extends
 
   /**
    * <pre>
-   *`uri_ref` specifies that the field value must be a valid URI
-   *as defined by [RFC 3986](https://tools.ietf.org/html/rfc3986#section-3) and may be either relative or absolute. If the
-   *field value isn't a valid URI, an error message will be generated.
+   * `uri_ref` specifies that the field value must be a valid URI
+   * as defined by [RFC 3986](https://tools.ietf.org/html/rfc3986#section-3) and may be either relative or absolute. If the
+   * field value isn't a valid URI, an error message will be generated.
    *
-   *```proto
-   *message MyString {
-   *  // value must be a valid URI
+   * ```proto
+   * message MyString {
+   *   // value must be a valid URI
    *   string value = 1 [(buf.validate.field).string.uri_ref = true];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
    * <code>bool uri_ref = 18 [json_name = "uriRef", (.buf.validate.priv.field) = { ... }</code>
@@ -972,16 +972,16 @@ public interface StringRulesOrBuilder extends
   boolean hasUriRef();
   /**
    * <pre>
-   *`uri_ref` specifies that the field value must be a valid URI
-   *as defined by [RFC 3986](https://tools.ietf.org/html/rfc3986#section-3) and may be either relative or absolute. If the
-   *field value isn't a valid URI, an error message will be generated.
+   * `uri_ref` specifies that the field value must be a valid URI
+   * as defined by [RFC 3986](https://tools.ietf.org/html/rfc3986#section-3) and may be either relative or absolute. If the
+   * field value isn't a valid URI, an error message will be generated.
    *
-   *```proto
-   *message MyString {
-   *  // value must be a valid URI
+   * ```proto
+   * message MyString {
+   *   // value must be a valid URI
    *   string value = 1 [(buf.validate.field).string.uri_ref = true];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
    * <code>bool uri_ref = 18 [json_name = "uriRef", (.buf.validate.priv.field) = { ... }</code>
@@ -991,18 +991,18 @@ public interface StringRulesOrBuilder extends
 
   /**
    * <pre>
-   *`address` specifies that the field value must be either a valid hostname
-   *as defined by [RFC 1034](https://tools.ietf.org/html/rfc1034#section-3.5)
-   *(which doesn't support internationalized domain names or IDNs) or a valid
-   *IP (v4 or v6). If the field value isn't a valid hostname or IP, an error
-   *message will be generated.
+   * `address` specifies that the field value must be either a valid hostname
+   * as defined by [RFC 1034](https://tools.ietf.org/html/rfc1034#section-3.5)
+   * (which doesn't support internationalized domain names or IDNs) or a valid
+   * IP (v4 or v6). If the field value isn't a valid hostname or IP, an error
+   * message will be generated.
    *
-   *```proto
-   *message MyString {
-   *  // value must be a valid hostname, or ip address
+   * ```proto
+   * message MyString {
+   *   // value must be a valid hostname, or ip address
    *   string value = 1 [(buf.validate.field).string.address = true];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
    * <code>bool address = 21 [json_name = "address", (.buf.validate.priv.field) = { ... }</code>
@@ -1011,18 +1011,18 @@ public interface StringRulesOrBuilder extends
   boolean hasAddress();
   /**
    * <pre>
-   *`address` specifies that the field value must be either a valid hostname
-   *as defined by [RFC 1034](https://tools.ietf.org/html/rfc1034#section-3.5)
-   *(which doesn't support internationalized domain names or IDNs) or a valid
-   *IP (v4 or v6). If the field value isn't a valid hostname or IP, an error
-   *message will be generated.
+   * `address` specifies that the field value must be either a valid hostname
+   * as defined by [RFC 1034](https://tools.ietf.org/html/rfc1034#section-3.5)
+   * (which doesn't support internationalized domain names or IDNs) or a valid
+   * IP (v4 or v6). If the field value isn't a valid hostname or IP, an error
+   * message will be generated.
    *
-   *```proto
-   *message MyString {
-   *  // value must be a valid hostname, or ip address
+   * ```proto
+   * message MyString {
+   *   // value must be a valid hostname, or ip address
    *   string value = 1 [(buf.validate.field).string.address = true];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
    * <code>bool address = 21 [json_name = "address", (.buf.validate.priv.field) = { ... }</code>
@@ -1032,16 +1032,16 @@ public interface StringRulesOrBuilder extends
 
   /**
    * <pre>
-   *`uuid` specifies that the field value must be a valid UUID as defined by
-   *[RFC 4122](https://tools.ietf.org/html/rfc4122#section-4.1.2). If the
-   *field value isn't a valid UUID, an error message will be generated.
+   * `uuid` specifies that the field value must be a valid UUID as defined by
+   * [RFC 4122](https://tools.ietf.org/html/rfc4122#section-4.1.2). If the
+   * field value isn't a valid UUID, an error message will be generated.
    *
-   *```proto
-   *message MyString {
-   *  // value must be a valid UUID
+   * ```proto
+   * message MyString {
+   *   // value must be a valid UUID
    *   string value = 1 [(buf.validate.field).string.uuid = true];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
    * <code>bool uuid = 22 [json_name = "uuid", (.buf.validate.priv.field) = { ... }</code>
@@ -1050,16 +1050,16 @@ public interface StringRulesOrBuilder extends
   boolean hasUuid();
   /**
    * <pre>
-   *`uuid` specifies that the field value must be a valid UUID as defined by
-   *[RFC 4122](https://tools.ietf.org/html/rfc4122#section-4.1.2). If the
-   *field value isn't a valid UUID, an error message will be generated.
+   * `uuid` specifies that the field value must be a valid UUID as defined by
+   * [RFC 4122](https://tools.ietf.org/html/rfc4122#section-4.1.2). If the
+   * field value isn't a valid UUID, an error message will be generated.
    *
-   *```proto
-   *message MyString {
-   *  // value must be a valid UUID
+   * ```proto
+   * message MyString {
+   *   // value must be a valid UUID
    *   string value = 1 [(buf.validate.field).string.uuid = true];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
    * <code>bool uuid = 22 [json_name = "uuid", (.buf.validate.priv.field) = { ... }</code>
@@ -1069,26 +1069,26 @@ public interface StringRulesOrBuilder extends
 
   /**
    * <pre>
-   *`well_known_regex` specifies a common well-known pattern
-   *defined as a regex. If the field value doesn't match the well-known
-   *regex, an error message will be generated.
+   * `well_known_regex` specifies a common well-known pattern
+   * defined as a regex. If the field value doesn't match the well-known
+   * regex, an error message will be generated.
    *
-   *```proto
-   *message MyString {
-   *  // value must be a valid HTTP header value
+   * ```proto
+   * message MyString {
+   *   // value must be a valid HTTP header value
    *   string value = 1 [(buf.validate.field).string.well_known_regex = 2];
-   *}
-   *```
+   * }
+   * ```
    *
-   *#### KnownRegex
+   * #### KnownRegex
    *
-   *`well_known_regex` contains some well-known patterns.
+   * `well_known_regex` contains some well-known patterns.
    *
-   *| Name                          | Number | Description                               |
-   *|-------------------------------|--------|-------------------------------------------|
-   *| KNOWN_REGEX_UNSPECIFIED       | 0      |                                           |
-   *| KNOWN_REGEX_HTTP_HEADER_NAME  | 1      | HTTP header name as defined by [RFC 7230](https://tools.ietf.org/html/rfc7230#section-3.2)  |
-   *| KNOWN_REGEX_HTTP_HEADER_VALUE | 2      | HTTP header value as defined by [RFC 7230](https://tools.ietf.org/html/rfc7230#section-3.2.4) |
+   * | Name                          | Number | Description                               |
+   * |-------------------------------|--------|-------------------------------------------|
+   * | KNOWN_REGEX_UNSPECIFIED       | 0      |                                           |
+   * | KNOWN_REGEX_HTTP_HEADER_NAME  | 1      | HTTP header name as defined by [RFC 7230](https://tools.ietf.org/html/rfc7230#section-3.2)  |
+   * | KNOWN_REGEX_HTTP_HEADER_VALUE | 2      | HTTP header value as defined by [RFC 7230](https://tools.ietf.org/html/rfc7230#section-3.2.4) |
    * </pre>
    *
    * <code>.buf.validate.KnownRegex well_known_regex = 24 [json_name = "wellKnownRegex", (.buf.validate.priv.field) = { ... }</code>
@@ -1097,26 +1097,26 @@ public interface StringRulesOrBuilder extends
   boolean hasWellKnownRegex();
   /**
    * <pre>
-   *`well_known_regex` specifies a common well-known pattern
-   *defined as a regex. If the field value doesn't match the well-known
-   *regex, an error message will be generated.
+   * `well_known_regex` specifies a common well-known pattern
+   * defined as a regex. If the field value doesn't match the well-known
+   * regex, an error message will be generated.
    *
-   *```proto
-   *message MyString {
-   *  // value must be a valid HTTP header value
+   * ```proto
+   * message MyString {
+   *   // value must be a valid HTTP header value
    *   string value = 1 [(buf.validate.field).string.well_known_regex = 2];
-   *}
-   *```
+   * }
+   * ```
    *
-   *#### KnownRegex
+   * #### KnownRegex
    *
-   *`well_known_regex` contains some well-known patterns.
+   * `well_known_regex` contains some well-known patterns.
    *
-   *| Name                          | Number | Description                               |
-   *|-------------------------------|--------|-------------------------------------------|
-   *| KNOWN_REGEX_UNSPECIFIED       | 0      |                                           |
-   *| KNOWN_REGEX_HTTP_HEADER_NAME  | 1      | HTTP header name as defined by [RFC 7230](https://tools.ietf.org/html/rfc7230#section-3.2)  |
-   *| KNOWN_REGEX_HTTP_HEADER_VALUE | 2      | HTTP header value as defined by [RFC 7230](https://tools.ietf.org/html/rfc7230#section-3.2.4) |
+   * | Name                          | Number | Description                               |
+   * |-------------------------------|--------|-------------------------------------------|
+   * | KNOWN_REGEX_UNSPECIFIED       | 0      |                                           |
+   * | KNOWN_REGEX_HTTP_HEADER_NAME  | 1      | HTTP header name as defined by [RFC 7230](https://tools.ietf.org/html/rfc7230#section-3.2)  |
+   * | KNOWN_REGEX_HTTP_HEADER_VALUE | 2      | HTTP header value as defined by [RFC 7230](https://tools.ietf.org/html/rfc7230#section-3.2.4) |
    * </pre>
    *
    * <code>.buf.validate.KnownRegex well_known_regex = 24 [json_name = "wellKnownRegex", (.buf.validate.priv.field) = { ... }</code>
@@ -1125,26 +1125,26 @@ public interface StringRulesOrBuilder extends
   int getWellKnownRegexValue();
   /**
    * <pre>
-   *`well_known_regex` specifies a common well-known pattern
-   *defined as a regex. If the field value doesn't match the well-known
-   *regex, an error message will be generated.
+   * `well_known_regex` specifies a common well-known pattern
+   * defined as a regex. If the field value doesn't match the well-known
+   * regex, an error message will be generated.
    *
-   *```proto
-   *message MyString {
-   *  // value must be a valid HTTP header value
+   * ```proto
+   * message MyString {
+   *   // value must be a valid HTTP header value
    *   string value = 1 [(buf.validate.field).string.well_known_regex = 2];
-   *}
-   *```
+   * }
+   * ```
    *
-   *#### KnownRegex
+   * #### KnownRegex
    *
-   *`well_known_regex` contains some well-known patterns.
+   * `well_known_regex` contains some well-known patterns.
    *
-   *| Name                          | Number | Description                               |
-   *|-------------------------------|--------|-------------------------------------------|
-   *| KNOWN_REGEX_UNSPECIFIED       | 0      |                                           |
-   *| KNOWN_REGEX_HTTP_HEADER_NAME  | 1      | HTTP header name as defined by [RFC 7230](https://tools.ietf.org/html/rfc7230#section-3.2)  |
-   *| KNOWN_REGEX_HTTP_HEADER_VALUE | 2      | HTTP header value as defined by [RFC 7230](https://tools.ietf.org/html/rfc7230#section-3.2.4) |
+   * | Name                          | Number | Description                               |
+   * |-------------------------------|--------|-------------------------------------------|
+   * | KNOWN_REGEX_UNSPECIFIED       | 0      |                                           |
+   * | KNOWN_REGEX_HTTP_HEADER_NAME  | 1      | HTTP header name as defined by [RFC 7230](https://tools.ietf.org/html/rfc7230#section-3.2)  |
+   * | KNOWN_REGEX_HTTP_HEADER_VALUE | 2      | HTTP header value as defined by [RFC 7230](https://tools.ietf.org/html/rfc7230#section-3.2.4) |
    * </pre>
    *
    * <code>.buf.validate.KnownRegex well_known_regex = 24 [json_name = "wellKnownRegex", (.buf.validate.priv.field) = { ... }</code>
@@ -1154,18 +1154,18 @@ public interface StringRulesOrBuilder extends
 
   /**
    * <pre>
-   *This applies to regexes `HTTP_HEADER_NAME` and `HTTP_HEADER_VALUE` to
-   *enable strict header validation. By default, this is true, and HTTP header
-   *validations are [RFC-compliant](https://tools.ietf.org/html/rfc7230#section-3). Setting to false will enable looser
-   *validations that only disallow `&#92;r&#92;n&#92;0` characters, which can be used to
-   *bypass header matching rules.
+   * This applies to regexes `HTTP_HEADER_NAME` and `HTTP_HEADER_VALUE` to
+   * enable strict header validation. By default, this is true, and HTTP header
+   * validations are [RFC-compliant](https://tools.ietf.org/html/rfc7230#section-3). Setting to false will enable looser
+   * validations that only disallow `&#92;r&#92;n&#92;0` characters, which can be used to
+   * bypass header matching rules.
    *
-   *```proto
-   *message MyString {
+   * ```proto
+   * message MyString {
    *   // The field `value` must have be a valid HTTP headers, but not enforced with strict rules.
    *   string value = 1 [(buf.validate.field).string.strict = false];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
    * <code>optional bool strict = 25 [json_name = "strict"];</code>
@@ -1174,18 +1174,18 @@ public interface StringRulesOrBuilder extends
   boolean hasStrict();
   /**
    * <pre>
-   *This applies to regexes `HTTP_HEADER_NAME` and `HTTP_HEADER_VALUE` to
-   *enable strict header validation. By default, this is true, and HTTP header
-   *validations are [RFC-compliant](https://tools.ietf.org/html/rfc7230#section-3). Setting to false will enable looser
-   *validations that only disallow `&#92;r&#92;n&#92;0` characters, which can be used to
-   *bypass header matching rules.
+   * This applies to regexes `HTTP_HEADER_NAME` and `HTTP_HEADER_VALUE` to
+   * enable strict header validation. By default, this is true, and HTTP header
+   * validations are [RFC-compliant](https://tools.ietf.org/html/rfc7230#section-3). Setting to false will enable looser
+   * validations that only disallow `&#92;r&#92;n&#92;0` characters, which can be used to
+   * bypass header matching rules.
    *
-   *```proto
-   *message MyString {
+   * ```proto
+   * message MyString {
    *   // The field `value` must have be a valid HTTP headers, but not enforced with strict rules.
    *   string value = 1 [(buf.validate.field).string.strict = false];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
    * <code>optional bool strict = 25 [json_name = "strict"];</code>

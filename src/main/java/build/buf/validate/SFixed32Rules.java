@@ -133,15 +133,15 @@ private static final long serialVersionUID = 0L;
   private int const_ = 0;
   /**
    * <pre>
-   *`const` requires the field value to exactly match the specified value. If
+   * `const` requires the field value to exactly match the specified value. If
    * the field value doesn't match, an error message is generated.
    *
-   *```proto
-   *message MySFixed32 {
-   *  // value must equal 42
+   * ```proto
+   * message MySFixed32 {
+   *   // value must equal 42
    *   sfixed32 value = 1 [(buf.validate.field).sfixed32.const = 42];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
    * <code>optional sfixed32 const = 1 [json_name = "const", (.buf.validate.priv.field) = { ... }</code>
@@ -153,15 +153,15 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   *`const` requires the field value to exactly match the specified value. If
+   * `const` requires the field value to exactly match the specified value. If
    * the field value doesn't match, an error message is generated.
    *
-   *```proto
-   *message MySFixed32 {
-   *  // value must equal 42
+   * ```proto
+   * message MySFixed32 {
+   *   // value must equal 42
    *   sfixed32 value = 1 [(buf.validate.field).sfixed32.const = 42];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
    * <code>optional sfixed32 const = 1 [json_name = "const", (.buf.validate.priv.field) = { ... }</code>
@@ -175,16 +175,16 @@ private static final long serialVersionUID = 0L;
   public static final int LT_FIELD_NUMBER = 2;
   /**
    * <pre>
-   *`lt` requires the field value to be less than the specified value (field &lt;
+   * `lt` requires the field value to be less than the specified value (field &lt;
    * value). If the field value is equal to or greater than the specified value,
    * an error message is generated.
    *
-   *```proto
-   *message MySFixed32 {
-   *  // value must be less than 10
+   * ```proto
+   * message MySFixed32 {
+   *   // value must be less than 10
    *   sfixed32 value = 1 [(buf.validate.field).sfixed32.lt = 10];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
    * <code>sfixed32 lt = 2 [json_name = "lt", (.buf.validate.priv.field) = { ... }</code>
@@ -196,16 +196,16 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   *`lt` requires the field value to be less than the specified value (field &lt;
+   * `lt` requires the field value to be less than the specified value (field &lt;
    * value). If the field value is equal to or greater than the specified value,
    * an error message is generated.
    *
-   *```proto
-   *message MySFixed32 {
-   *  // value must be less than 10
+   * ```proto
+   * message MySFixed32 {
+   *   // value must be less than 10
    *   sfixed32 value = 1 [(buf.validate.field).sfixed32.lt = 10];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
    * <code>sfixed32 lt = 2 [json_name = "lt", (.buf.validate.priv.field) = { ... }</code>
@@ -222,16 +222,16 @@ private static final long serialVersionUID = 0L;
   public static final int LTE_FIELD_NUMBER = 3;
   /**
    * <pre>
-   *`lte` requires the field value to be less than or equal to the specified
+   * `lte` requires the field value to be less than or equal to the specified
    * value (field &lt;= value). If the field value is greater than the specified
    * value, an error message is generated.
    *
-   *```proto
-   *message MySFixed32 {
-   *  // value must be less than or equal to 10
+   * ```proto
+   * message MySFixed32 {
+   *   // value must be less than or equal to 10
    *   sfixed32 value = 1 [(buf.validate.field).sfixed32.lte = 10];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
    * <code>sfixed32 lte = 3 [json_name = "lte", (.buf.validate.priv.field) = { ... }</code>
@@ -243,16 +243,16 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   *`lte` requires the field value to be less than or equal to the specified
+   * `lte` requires the field value to be less than or equal to the specified
    * value (field &lt;= value). If the field value is greater than the specified
    * value, an error message is generated.
    *
-   *```proto
-   *message MySFixed32 {
-   *  // value must be less than or equal to 10
+   * ```proto
+   * message MySFixed32 {
+   *   // value must be less than or equal to 10
    *   sfixed32 value = 1 [(buf.validate.field).sfixed32.lte = 10];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
    * <code>sfixed32 lte = 3 [json_name = "lte", (.buf.validate.priv.field) = { ... }</code>
@@ -269,24 +269,24 @@ private static final long serialVersionUID = 0L;
   public static final int GT_FIELD_NUMBER = 4;
   /**
    * <pre>
-   *`gt` requires the field value to be greater than the specified value
+   * `gt` requires the field value to be greater than the specified value
    * (exclusive). If the value of `gt` is larger than a specified `lt` or
    * `lte`, the range is reversed, and the field value must be outside the
    * specified range. If the field value doesn't meet the required conditions,
    * an error message is generated.
    *
-   *```proto
-   *message MySFixed32 {
-   *  // value must be greater than 5 [sfixed32.gt]
-   *  sfixed32 value = 1 [(buf.validate.field).sfixed32.gt = 5];
+   * ```proto
+   * message MySFixed32 {
+   *   // value must be greater than 5 [sfixed32.gt]
+   *   sfixed32 value = 1 [(buf.validate.field).sfixed32.gt = 5];
    *
-   *  // value must be greater than 5 and less than 10 [sfixed32.gt_lt]
-   *  sfixed32 other_value = 2 [(buf.validate.field).sfixed32 = { gt: 5, lt: 10 }];
+   *   // value must be greater than 5 and less than 10 [sfixed32.gt_lt]
+   *   sfixed32 other_value = 2 [(buf.validate.field).sfixed32 = { gt: 5, lt: 10 }];
    *
-   *  // value must be greater than 10 or less than 5 [sfixed32.gt_lt_exclusive]
-   *  sfixed32 another_value = 3 [(buf.validate.field).sfixed32 = { gt: 10, lt: 5 }];
-   *}
-   *```
+   *   // value must be greater than 10 or less than 5 [sfixed32.gt_lt_exclusive]
+   *   sfixed32 another_value = 3 [(buf.validate.field).sfixed32 = { gt: 10, lt: 5 }];
+   * }
+   * ```
    * </pre>
    *
    * <code>sfixed32 gt = 4 [json_name = "gt", (.buf.validate.priv.field) = { ... }</code>
@@ -298,24 +298,24 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   *`gt` requires the field value to be greater than the specified value
+   * `gt` requires the field value to be greater than the specified value
    * (exclusive). If the value of `gt` is larger than a specified `lt` or
    * `lte`, the range is reversed, and the field value must be outside the
    * specified range. If the field value doesn't meet the required conditions,
    * an error message is generated.
    *
-   *```proto
-   *message MySFixed32 {
-   *  // value must be greater than 5 [sfixed32.gt]
-   *  sfixed32 value = 1 [(buf.validate.field).sfixed32.gt = 5];
+   * ```proto
+   * message MySFixed32 {
+   *   // value must be greater than 5 [sfixed32.gt]
+   *   sfixed32 value = 1 [(buf.validate.field).sfixed32.gt = 5];
    *
-   *  // value must be greater than 5 and less than 10 [sfixed32.gt_lt]
-   *  sfixed32 other_value = 2 [(buf.validate.field).sfixed32 = { gt: 5, lt: 10 }];
+   *   // value must be greater than 5 and less than 10 [sfixed32.gt_lt]
+   *   sfixed32 other_value = 2 [(buf.validate.field).sfixed32 = { gt: 5, lt: 10 }];
    *
-   *  // value must be greater than 10 or less than 5 [sfixed32.gt_lt_exclusive]
-   *  sfixed32 another_value = 3 [(buf.validate.field).sfixed32 = { gt: 10, lt: 5 }];
-   *}
-   *```
+   *   // value must be greater than 10 or less than 5 [sfixed32.gt_lt_exclusive]
+   *   sfixed32 another_value = 3 [(buf.validate.field).sfixed32 = { gt: 10, lt: 5 }];
+   * }
+   * ```
    * </pre>
    *
    * <code>sfixed32 gt = 4 [json_name = "gt", (.buf.validate.priv.field) = { ... }</code>
@@ -332,24 +332,24 @@ private static final long serialVersionUID = 0L;
   public static final int GTE_FIELD_NUMBER = 5;
   /**
    * <pre>
-   *`gte` requires the field value to be greater than or equal to the specified
+   * `gte` requires the field value to be greater than or equal to the specified
    * value (exclusive). If the value of `gte` is larger than a specified `lt`
    * or `lte`, the range is reversed, and the field value must be outside the
    * specified range. If the field value doesn't meet the required conditions,
    * an error message is generated.
    *
-   *```proto
-   *message MySFixed32 {
-   *  // value must be greater than or equal to 5 [sfixed32.gte]
-   *  sfixed32 value = 1 [(buf.validate.field).sfixed32.gte = 5];
+   * ```proto
+   * message MySFixed32 {
+   *   // value must be greater than or equal to 5 [sfixed32.gte]
+   *   sfixed32 value = 1 [(buf.validate.field).sfixed32.gte = 5];
    *
-   *  // value must be greater than or equal to 5 and less than 10 [sfixed32.gte_lt]
-   *  sfixed32 other_value = 2 [(buf.validate.field).sfixed32 = { gte: 5, lt: 10 }];
+   *   // value must be greater than or equal to 5 and less than 10 [sfixed32.gte_lt]
+   *   sfixed32 other_value = 2 [(buf.validate.field).sfixed32 = { gte: 5, lt: 10 }];
    *
-   *  // value must be greater than or equal to 10 or less than 5 [sfixed32.gte_lt_exclusive]
-   *  sfixed32 another_value = 3 [(buf.validate.field).sfixed32 = { gte: 10, lt: 5 }];
-   *}
-   *```
+   *   // value must be greater than or equal to 10 or less than 5 [sfixed32.gte_lt_exclusive]
+   *   sfixed32 another_value = 3 [(buf.validate.field).sfixed32 = { gte: 10, lt: 5 }];
+   * }
+   * ```
    * </pre>
    *
    * <code>sfixed32 gte = 5 [json_name = "gte", (.buf.validate.priv.field) = { ... }</code>
@@ -361,24 +361,24 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   *`gte` requires the field value to be greater than or equal to the specified
+   * `gte` requires the field value to be greater than or equal to the specified
    * value (exclusive). If the value of `gte` is larger than a specified `lt`
    * or `lte`, the range is reversed, and the field value must be outside the
    * specified range. If the field value doesn't meet the required conditions,
    * an error message is generated.
    *
-   *```proto
-   *message MySFixed32 {
-   *  // value must be greater than or equal to 5 [sfixed32.gte]
-   *  sfixed32 value = 1 [(buf.validate.field).sfixed32.gte = 5];
+   * ```proto
+   * message MySFixed32 {
+   *   // value must be greater than or equal to 5 [sfixed32.gte]
+   *   sfixed32 value = 1 [(buf.validate.field).sfixed32.gte = 5];
    *
-   *  // value must be greater than or equal to 5 and less than 10 [sfixed32.gte_lt]
-   *  sfixed32 other_value = 2 [(buf.validate.field).sfixed32 = { gte: 5, lt: 10 }];
+   *   // value must be greater than or equal to 5 and less than 10 [sfixed32.gte_lt]
+   *   sfixed32 other_value = 2 [(buf.validate.field).sfixed32 = { gte: 5, lt: 10 }];
    *
-   *  // value must be greater than or equal to 10 or less than 5 [sfixed32.gte_lt_exclusive]
-   *  sfixed32 another_value = 3 [(buf.validate.field).sfixed32 = { gte: 10, lt: 5 }];
-   *}
-   *```
+   *   // value must be greater than or equal to 10 or less than 5 [sfixed32.gte_lt_exclusive]
+   *   sfixed32 another_value = 3 [(buf.validate.field).sfixed32 = { gte: 10, lt: 5 }];
+   * }
+   * ```
    * </pre>
    *
    * <code>sfixed32 gte = 5 [json_name = "gte", (.buf.validate.priv.field) = { ... }</code>
@@ -398,16 +398,16 @@ private static final long serialVersionUID = 0L;
       emptyIntList();
   /**
    * <pre>
-   *`in` requires the field value to be equal to one of the specified values.
+   * `in` requires the field value to be equal to one of the specified values.
    * If the field value isn't one of the specified values, an error message is
    * generated.
    *
-   *```proto
-   *message MySFixed32 {
-   *  // value must be in list [1, 2, 3]
-   *  repeated sfixed32 value = 1 (buf.validate.field).sfixed32 = { in: [1, 2, 3] };
-   *}
-   *```
+   * ```proto
+   * message MySFixed32 {
+   *   // value must be in list [1, 2, 3]
+   *   repeated sfixed32 value = 1 (buf.validate.field).sfixed32 = { in: [1, 2, 3] };
+   * }
+   * ```
    * </pre>
    *
    * <code>repeated sfixed32 in = 6 [json_name = "in", (.buf.validate.priv.field) = { ... }</code>
@@ -420,16 +420,16 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   *`in` requires the field value to be equal to one of the specified values.
+   * `in` requires the field value to be equal to one of the specified values.
    * If the field value isn't one of the specified values, an error message is
    * generated.
    *
-   *```proto
-   *message MySFixed32 {
-   *  // value must be in list [1, 2, 3]
-   *  repeated sfixed32 value = 1 (buf.validate.field).sfixed32 = { in: [1, 2, 3] };
-   *}
-   *```
+   * ```proto
+   * message MySFixed32 {
+   *   // value must be in list [1, 2, 3]
+   *   repeated sfixed32 value = 1 (buf.validate.field).sfixed32 = { in: [1, 2, 3] };
+   * }
+   * ```
    * </pre>
    *
    * <code>repeated sfixed32 in = 6 [json_name = "in", (.buf.validate.priv.field) = { ... }</code>
@@ -440,16 +440,16 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   *`in` requires the field value to be equal to one of the specified values.
+   * `in` requires the field value to be equal to one of the specified values.
    * If the field value isn't one of the specified values, an error message is
    * generated.
    *
-   *```proto
-   *message MySFixed32 {
-   *  // value must be in list [1, 2, 3]
-   *  repeated sfixed32 value = 1 (buf.validate.field).sfixed32 = { in: [1, 2, 3] };
-   *}
-   *```
+   * ```proto
+   * message MySFixed32 {
+   *   // value must be in list [1, 2, 3]
+   *   repeated sfixed32 value = 1 (buf.validate.field).sfixed32 = { in: [1, 2, 3] };
+   * }
+   * ```
    * </pre>
    *
    * <code>repeated sfixed32 in = 6 [json_name = "in", (.buf.validate.priv.field) = { ... }</code>
@@ -467,16 +467,16 @@ private static final long serialVersionUID = 0L;
       emptyIntList();
   /**
    * <pre>
-   *`not_in` requires the field value to not be equal to any of the specified
+   * `not_in` requires the field value to not be equal to any of the specified
    * values. If the field value is one of the specified values, an error
    * message is generated.
    *
-   *```proto
-   *message MySFixed32 {
-   *  // value must not be in list [1, 2, 3]
-   *  repeated sfixed32 value = 1 (buf.validate.field).sfixed32 = { not_in: [1, 2, 3] };
-   *}
-   *```
+   * ```proto
+   * message MySFixed32 {
+   *   // value must not be in list [1, 2, 3]
+   *   repeated sfixed32 value = 1 (buf.validate.field).sfixed32 = { not_in: [1, 2, 3] };
+   * }
+   * ```
    * </pre>
    *
    * <code>repeated sfixed32 not_in = 7 [json_name = "notIn", (.buf.validate.priv.field) = { ... }</code>
@@ -489,16 +489,16 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   *`not_in` requires the field value to not be equal to any of the specified
+   * `not_in` requires the field value to not be equal to any of the specified
    * values. If the field value is one of the specified values, an error
    * message is generated.
    *
-   *```proto
-   *message MySFixed32 {
-   *  // value must not be in list [1, 2, 3]
-   *  repeated sfixed32 value = 1 (buf.validate.field).sfixed32 = { not_in: [1, 2, 3] };
-   *}
-   *```
+   * ```proto
+   * message MySFixed32 {
+   *   // value must not be in list [1, 2, 3]
+   *   repeated sfixed32 value = 1 (buf.validate.field).sfixed32 = { not_in: [1, 2, 3] };
+   * }
+   * ```
    * </pre>
    *
    * <code>repeated sfixed32 not_in = 7 [json_name = "notIn", (.buf.validate.priv.field) = { ... }</code>
@@ -509,16 +509,16 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   *`not_in` requires the field value to not be equal to any of the specified
+   * `not_in` requires the field value to not be equal to any of the specified
    * values. If the field value is one of the specified values, an error
    * message is generated.
    *
-   *```proto
-   *message MySFixed32 {
-   *  // value must not be in list [1, 2, 3]
-   *  repeated sfixed32 value = 1 (buf.validate.field).sfixed32 = { not_in: [1, 2, 3] };
-   *}
-   *```
+   * ```proto
+   * message MySFixed32 {
+   *   // value must not be in list [1, 2, 3]
+   *   repeated sfixed32 value = 1 (buf.validate.field).sfixed32 = { not_in: [1, 2, 3] };
+   * }
+   * ```
    * </pre>
    *
    * <code>repeated sfixed32 not_in = 7 [json_name = "notIn", (.buf.validate.priv.field) = { ... }</code>
@@ -1159,15 +1159,15 @@ private static final long serialVersionUID = 0L;
     private int const_ ;
     /**
      * <pre>
-     *`const` requires the field value to exactly match the specified value. If
+     * `const` requires the field value to exactly match the specified value. If
      * the field value doesn't match, an error message is generated.
      *
-     *```proto
-     *message MySFixed32 {
-     *  // value must equal 42
+     * ```proto
+     * message MySFixed32 {
+     *   // value must equal 42
      *   sfixed32 value = 1 [(buf.validate.field).sfixed32.const = 42];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>optional sfixed32 const = 1 [json_name = "const", (.buf.validate.priv.field) = { ... }</code>
@@ -1179,15 +1179,15 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     *`const` requires the field value to exactly match the specified value. If
+     * `const` requires the field value to exactly match the specified value. If
      * the field value doesn't match, an error message is generated.
      *
-     *```proto
-     *message MySFixed32 {
-     *  // value must equal 42
+     * ```proto
+     * message MySFixed32 {
+     *   // value must equal 42
      *   sfixed32 value = 1 [(buf.validate.field).sfixed32.const = 42];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>optional sfixed32 const = 1 [json_name = "const", (.buf.validate.priv.field) = { ... }</code>
@@ -1199,15 +1199,15 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     *`const` requires the field value to exactly match the specified value. If
+     * `const` requires the field value to exactly match the specified value. If
      * the field value doesn't match, an error message is generated.
      *
-     *```proto
-     *message MySFixed32 {
-     *  // value must equal 42
+     * ```proto
+     * message MySFixed32 {
+     *   // value must equal 42
      *   sfixed32 value = 1 [(buf.validate.field).sfixed32.const = 42];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>optional sfixed32 const = 1 [json_name = "const", (.buf.validate.priv.field) = { ... }</code>
@@ -1223,15 +1223,15 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     *`const` requires the field value to exactly match the specified value. If
+     * `const` requires the field value to exactly match the specified value. If
      * the field value doesn't match, an error message is generated.
      *
-     *```proto
-     *message MySFixed32 {
-     *  // value must equal 42
+     * ```proto
+     * message MySFixed32 {
+     *   // value must equal 42
      *   sfixed32 value = 1 [(buf.validate.field).sfixed32.const = 42];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>optional sfixed32 const = 1 [json_name = "const", (.buf.validate.priv.field) = { ... }</code>
@@ -1246,16 +1246,16 @@ private static final long serialVersionUID = 0L;
 
     /**
      * <pre>
-     *`lt` requires the field value to be less than the specified value (field &lt;
+     * `lt` requires the field value to be less than the specified value (field &lt;
      * value). If the field value is equal to or greater than the specified value,
      * an error message is generated.
      *
-     *```proto
-     *message MySFixed32 {
-     *  // value must be less than 10
+     * ```proto
+     * message MySFixed32 {
+     *   // value must be less than 10
      *   sfixed32 value = 1 [(buf.validate.field).sfixed32.lt = 10];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>sfixed32 lt = 2 [json_name = "lt", (.buf.validate.priv.field) = { ... }</code>
@@ -1266,16 +1266,16 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     *`lt` requires the field value to be less than the specified value (field &lt;
+     * `lt` requires the field value to be less than the specified value (field &lt;
      * value). If the field value is equal to or greater than the specified value,
      * an error message is generated.
      *
-     *```proto
-     *message MySFixed32 {
-     *  // value must be less than 10
+     * ```proto
+     * message MySFixed32 {
+     *   // value must be less than 10
      *   sfixed32 value = 1 [(buf.validate.field).sfixed32.lt = 10];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>sfixed32 lt = 2 [json_name = "lt", (.buf.validate.priv.field) = { ... }</code>
@@ -1289,16 +1289,16 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     *`lt` requires the field value to be less than the specified value (field &lt;
+     * `lt` requires the field value to be less than the specified value (field &lt;
      * value). If the field value is equal to or greater than the specified value,
      * an error message is generated.
      *
-     *```proto
-     *message MySFixed32 {
-     *  // value must be less than 10
+     * ```proto
+     * message MySFixed32 {
+     *   // value must be less than 10
      *   sfixed32 value = 1 [(buf.validate.field).sfixed32.lt = 10];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>sfixed32 lt = 2 [json_name = "lt", (.buf.validate.priv.field) = { ... }</code>
@@ -1314,16 +1314,16 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     *`lt` requires the field value to be less than the specified value (field &lt;
+     * `lt` requires the field value to be less than the specified value (field &lt;
      * value). If the field value is equal to or greater than the specified value,
      * an error message is generated.
      *
-     *```proto
-     *message MySFixed32 {
-     *  // value must be less than 10
+     * ```proto
+     * message MySFixed32 {
+     *   // value must be less than 10
      *   sfixed32 value = 1 [(buf.validate.field).sfixed32.lt = 10];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>sfixed32 lt = 2 [json_name = "lt", (.buf.validate.priv.field) = { ... }</code>
@@ -1340,16 +1340,16 @@ private static final long serialVersionUID = 0L;
 
     /**
      * <pre>
-     *`lte` requires the field value to be less than or equal to the specified
+     * `lte` requires the field value to be less than or equal to the specified
      * value (field &lt;= value). If the field value is greater than the specified
      * value, an error message is generated.
      *
-     *```proto
-     *message MySFixed32 {
-     *  // value must be less than or equal to 10
+     * ```proto
+     * message MySFixed32 {
+     *   // value must be less than or equal to 10
      *   sfixed32 value = 1 [(buf.validate.field).sfixed32.lte = 10];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>sfixed32 lte = 3 [json_name = "lte", (.buf.validate.priv.field) = { ... }</code>
@@ -1360,16 +1360,16 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     *`lte` requires the field value to be less than or equal to the specified
+     * `lte` requires the field value to be less than or equal to the specified
      * value (field &lt;= value). If the field value is greater than the specified
      * value, an error message is generated.
      *
-     *```proto
-     *message MySFixed32 {
-     *  // value must be less than or equal to 10
+     * ```proto
+     * message MySFixed32 {
+     *   // value must be less than or equal to 10
      *   sfixed32 value = 1 [(buf.validate.field).sfixed32.lte = 10];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>sfixed32 lte = 3 [json_name = "lte", (.buf.validate.priv.field) = { ... }</code>
@@ -1383,16 +1383,16 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     *`lte` requires the field value to be less than or equal to the specified
+     * `lte` requires the field value to be less than or equal to the specified
      * value (field &lt;= value). If the field value is greater than the specified
      * value, an error message is generated.
      *
-     *```proto
-     *message MySFixed32 {
-     *  // value must be less than or equal to 10
+     * ```proto
+     * message MySFixed32 {
+     *   // value must be less than or equal to 10
      *   sfixed32 value = 1 [(buf.validate.field).sfixed32.lte = 10];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>sfixed32 lte = 3 [json_name = "lte", (.buf.validate.priv.field) = { ... }</code>
@@ -1408,16 +1408,16 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     *`lte` requires the field value to be less than or equal to the specified
+     * `lte` requires the field value to be less than or equal to the specified
      * value (field &lt;= value). If the field value is greater than the specified
      * value, an error message is generated.
      *
-     *```proto
-     *message MySFixed32 {
-     *  // value must be less than or equal to 10
+     * ```proto
+     * message MySFixed32 {
+     *   // value must be less than or equal to 10
      *   sfixed32 value = 1 [(buf.validate.field).sfixed32.lte = 10];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>sfixed32 lte = 3 [json_name = "lte", (.buf.validate.priv.field) = { ... }</code>
@@ -1434,24 +1434,24 @@ private static final long serialVersionUID = 0L;
 
     /**
      * <pre>
-     *`gt` requires the field value to be greater than the specified value
+     * `gt` requires the field value to be greater than the specified value
      * (exclusive). If the value of `gt` is larger than a specified `lt` or
      * `lte`, the range is reversed, and the field value must be outside the
      * specified range. If the field value doesn't meet the required conditions,
      * an error message is generated.
      *
-     *```proto
-     *message MySFixed32 {
-     *  // value must be greater than 5 [sfixed32.gt]
-     *  sfixed32 value = 1 [(buf.validate.field).sfixed32.gt = 5];
+     * ```proto
+     * message MySFixed32 {
+     *   // value must be greater than 5 [sfixed32.gt]
+     *   sfixed32 value = 1 [(buf.validate.field).sfixed32.gt = 5];
      *
-     *  // value must be greater than 5 and less than 10 [sfixed32.gt_lt]
-     *  sfixed32 other_value = 2 [(buf.validate.field).sfixed32 = { gt: 5, lt: 10 }];
+     *   // value must be greater than 5 and less than 10 [sfixed32.gt_lt]
+     *   sfixed32 other_value = 2 [(buf.validate.field).sfixed32 = { gt: 5, lt: 10 }];
      *
-     *  // value must be greater than 10 or less than 5 [sfixed32.gt_lt_exclusive]
-     *  sfixed32 another_value = 3 [(buf.validate.field).sfixed32 = { gt: 10, lt: 5 }];
-     *}
-     *```
+     *   // value must be greater than 10 or less than 5 [sfixed32.gt_lt_exclusive]
+     *   sfixed32 another_value = 3 [(buf.validate.field).sfixed32 = { gt: 10, lt: 5 }];
+     * }
+     * ```
      * </pre>
      *
      * <code>sfixed32 gt = 4 [json_name = "gt", (.buf.validate.priv.field) = { ... }</code>
@@ -1462,24 +1462,24 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     *`gt` requires the field value to be greater than the specified value
+     * `gt` requires the field value to be greater than the specified value
      * (exclusive). If the value of `gt` is larger than a specified `lt` or
      * `lte`, the range is reversed, and the field value must be outside the
      * specified range. If the field value doesn't meet the required conditions,
      * an error message is generated.
      *
-     *```proto
-     *message MySFixed32 {
-     *  // value must be greater than 5 [sfixed32.gt]
-     *  sfixed32 value = 1 [(buf.validate.field).sfixed32.gt = 5];
+     * ```proto
+     * message MySFixed32 {
+     *   // value must be greater than 5 [sfixed32.gt]
+     *   sfixed32 value = 1 [(buf.validate.field).sfixed32.gt = 5];
      *
-     *  // value must be greater than 5 and less than 10 [sfixed32.gt_lt]
-     *  sfixed32 other_value = 2 [(buf.validate.field).sfixed32 = { gt: 5, lt: 10 }];
+     *   // value must be greater than 5 and less than 10 [sfixed32.gt_lt]
+     *   sfixed32 other_value = 2 [(buf.validate.field).sfixed32 = { gt: 5, lt: 10 }];
      *
-     *  // value must be greater than 10 or less than 5 [sfixed32.gt_lt_exclusive]
-     *  sfixed32 another_value = 3 [(buf.validate.field).sfixed32 = { gt: 10, lt: 5 }];
-     *}
-     *```
+     *   // value must be greater than 10 or less than 5 [sfixed32.gt_lt_exclusive]
+     *   sfixed32 another_value = 3 [(buf.validate.field).sfixed32 = { gt: 10, lt: 5 }];
+     * }
+     * ```
      * </pre>
      *
      * <code>sfixed32 gt = 4 [json_name = "gt", (.buf.validate.priv.field) = { ... }</code>
@@ -1493,24 +1493,24 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     *`gt` requires the field value to be greater than the specified value
+     * `gt` requires the field value to be greater than the specified value
      * (exclusive). If the value of `gt` is larger than a specified `lt` or
      * `lte`, the range is reversed, and the field value must be outside the
      * specified range. If the field value doesn't meet the required conditions,
      * an error message is generated.
      *
-     *```proto
-     *message MySFixed32 {
-     *  // value must be greater than 5 [sfixed32.gt]
-     *  sfixed32 value = 1 [(buf.validate.field).sfixed32.gt = 5];
+     * ```proto
+     * message MySFixed32 {
+     *   // value must be greater than 5 [sfixed32.gt]
+     *   sfixed32 value = 1 [(buf.validate.field).sfixed32.gt = 5];
      *
-     *  // value must be greater than 5 and less than 10 [sfixed32.gt_lt]
-     *  sfixed32 other_value = 2 [(buf.validate.field).sfixed32 = { gt: 5, lt: 10 }];
+     *   // value must be greater than 5 and less than 10 [sfixed32.gt_lt]
+     *   sfixed32 other_value = 2 [(buf.validate.field).sfixed32 = { gt: 5, lt: 10 }];
      *
-     *  // value must be greater than 10 or less than 5 [sfixed32.gt_lt_exclusive]
-     *  sfixed32 another_value = 3 [(buf.validate.field).sfixed32 = { gt: 10, lt: 5 }];
-     *}
-     *```
+     *   // value must be greater than 10 or less than 5 [sfixed32.gt_lt_exclusive]
+     *   sfixed32 another_value = 3 [(buf.validate.field).sfixed32 = { gt: 10, lt: 5 }];
+     * }
+     * ```
      * </pre>
      *
      * <code>sfixed32 gt = 4 [json_name = "gt", (.buf.validate.priv.field) = { ... }</code>
@@ -1526,24 +1526,24 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     *`gt` requires the field value to be greater than the specified value
+     * `gt` requires the field value to be greater than the specified value
      * (exclusive). If the value of `gt` is larger than a specified `lt` or
      * `lte`, the range is reversed, and the field value must be outside the
      * specified range. If the field value doesn't meet the required conditions,
      * an error message is generated.
      *
-     *```proto
-     *message MySFixed32 {
-     *  // value must be greater than 5 [sfixed32.gt]
-     *  sfixed32 value = 1 [(buf.validate.field).sfixed32.gt = 5];
+     * ```proto
+     * message MySFixed32 {
+     *   // value must be greater than 5 [sfixed32.gt]
+     *   sfixed32 value = 1 [(buf.validate.field).sfixed32.gt = 5];
      *
-     *  // value must be greater than 5 and less than 10 [sfixed32.gt_lt]
-     *  sfixed32 other_value = 2 [(buf.validate.field).sfixed32 = { gt: 5, lt: 10 }];
+     *   // value must be greater than 5 and less than 10 [sfixed32.gt_lt]
+     *   sfixed32 other_value = 2 [(buf.validate.field).sfixed32 = { gt: 5, lt: 10 }];
      *
-     *  // value must be greater than 10 or less than 5 [sfixed32.gt_lt_exclusive]
-     *  sfixed32 another_value = 3 [(buf.validate.field).sfixed32 = { gt: 10, lt: 5 }];
-     *}
-     *```
+     *   // value must be greater than 10 or less than 5 [sfixed32.gt_lt_exclusive]
+     *   sfixed32 another_value = 3 [(buf.validate.field).sfixed32 = { gt: 10, lt: 5 }];
+     * }
+     * ```
      * </pre>
      *
      * <code>sfixed32 gt = 4 [json_name = "gt", (.buf.validate.priv.field) = { ... }</code>
@@ -1560,24 +1560,24 @@ private static final long serialVersionUID = 0L;
 
     /**
      * <pre>
-     *`gte` requires the field value to be greater than or equal to the specified
+     * `gte` requires the field value to be greater than or equal to the specified
      * value (exclusive). If the value of `gte` is larger than a specified `lt`
      * or `lte`, the range is reversed, and the field value must be outside the
      * specified range. If the field value doesn't meet the required conditions,
      * an error message is generated.
      *
-     *```proto
-     *message MySFixed32 {
-     *  // value must be greater than or equal to 5 [sfixed32.gte]
-     *  sfixed32 value = 1 [(buf.validate.field).sfixed32.gte = 5];
+     * ```proto
+     * message MySFixed32 {
+     *   // value must be greater than or equal to 5 [sfixed32.gte]
+     *   sfixed32 value = 1 [(buf.validate.field).sfixed32.gte = 5];
      *
-     *  // value must be greater than or equal to 5 and less than 10 [sfixed32.gte_lt]
-     *  sfixed32 other_value = 2 [(buf.validate.field).sfixed32 = { gte: 5, lt: 10 }];
+     *   // value must be greater than or equal to 5 and less than 10 [sfixed32.gte_lt]
+     *   sfixed32 other_value = 2 [(buf.validate.field).sfixed32 = { gte: 5, lt: 10 }];
      *
-     *  // value must be greater than or equal to 10 or less than 5 [sfixed32.gte_lt_exclusive]
-     *  sfixed32 another_value = 3 [(buf.validate.field).sfixed32 = { gte: 10, lt: 5 }];
-     *}
-     *```
+     *   // value must be greater than or equal to 10 or less than 5 [sfixed32.gte_lt_exclusive]
+     *   sfixed32 another_value = 3 [(buf.validate.field).sfixed32 = { gte: 10, lt: 5 }];
+     * }
+     * ```
      * </pre>
      *
      * <code>sfixed32 gte = 5 [json_name = "gte", (.buf.validate.priv.field) = { ... }</code>
@@ -1588,24 +1588,24 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     *`gte` requires the field value to be greater than or equal to the specified
+     * `gte` requires the field value to be greater than or equal to the specified
      * value (exclusive). If the value of `gte` is larger than a specified `lt`
      * or `lte`, the range is reversed, and the field value must be outside the
      * specified range. If the field value doesn't meet the required conditions,
      * an error message is generated.
      *
-     *```proto
-     *message MySFixed32 {
-     *  // value must be greater than or equal to 5 [sfixed32.gte]
-     *  sfixed32 value = 1 [(buf.validate.field).sfixed32.gte = 5];
+     * ```proto
+     * message MySFixed32 {
+     *   // value must be greater than or equal to 5 [sfixed32.gte]
+     *   sfixed32 value = 1 [(buf.validate.field).sfixed32.gte = 5];
      *
-     *  // value must be greater than or equal to 5 and less than 10 [sfixed32.gte_lt]
-     *  sfixed32 other_value = 2 [(buf.validate.field).sfixed32 = { gte: 5, lt: 10 }];
+     *   // value must be greater than or equal to 5 and less than 10 [sfixed32.gte_lt]
+     *   sfixed32 other_value = 2 [(buf.validate.field).sfixed32 = { gte: 5, lt: 10 }];
      *
-     *  // value must be greater than or equal to 10 or less than 5 [sfixed32.gte_lt_exclusive]
-     *  sfixed32 another_value = 3 [(buf.validate.field).sfixed32 = { gte: 10, lt: 5 }];
-     *}
-     *```
+     *   // value must be greater than or equal to 10 or less than 5 [sfixed32.gte_lt_exclusive]
+     *   sfixed32 another_value = 3 [(buf.validate.field).sfixed32 = { gte: 10, lt: 5 }];
+     * }
+     * ```
      * </pre>
      *
      * <code>sfixed32 gte = 5 [json_name = "gte", (.buf.validate.priv.field) = { ... }</code>
@@ -1619,24 +1619,24 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     *`gte` requires the field value to be greater than or equal to the specified
+     * `gte` requires the field value to be greater than or equal to the specified
      * value (exclusive). If the value of `gte` is larger than a specified `lt`
      * or `lte`, the range is reversed, and the field value must be outside the
      * specified range. If the field value doesn't meet the required conditions,
      * an error message is generated.
      *
-     *```proto
-     *message MySFixed32 {
-     *  // value must be greater than or equal to 5 [sfixed32.gte]
-     *  sfixed32 value = 1 [(buf.validate.field).sfixed32.gte = 5];
+     * ```proto
+     * message MySFixed32 {
+     *   // value must be greater than or equal to 5 [sfixed32.gte]
+     *   sfixed32 value = 1 [(buf.validate.field).sfixed32.gte = 5];
      *
-     *  // value must be greater than or equal to 5 and less than 10 [sfixed32.gte_lt]
-     *  sfixed32 other_value = 2 [(buf.validate.field).sfixed32 = { gte: 5, lt: 10 }];
+     *   // value must be greater than or equal to 5 and less than 10 [sfixed32.gte_lt]
+     *   sfixed32 other_value = 2 [(buf.validate.field).sfixed32 = { gte: 5, lt: 10 }];
      *
-     *  // value must be greater than or equal to 10 or less than 5 [sfixed32.gte_lt_exclusive]
-     *  sfixed32 another_value = 3 [(buf.validate.field).sfixed32 = { gte: 10, lt: 5 }];
-     *}
-     *```
+     *   // value must be greater than or equal to 10 or less than 5 [sfixed32.gte_lt_exclusive]
+     *   sfixed32 another_value = 3 [(buf.validate.field).sfixed32 = { gte: 10, lt: 5 }];
+     * }
+     * ```
      * </pre>
      *
      * <code>sfixed32 gte = 5 [json_name = "gte", (.buf.validate.priv.field) = { ... }</code>
@@ -1652,24 +1652,24 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     *`gte` requires the field value to be greater than or equal to the specified
+     * `gte` requires the field value to be greater than or equal to the specified
      * value (exclusive). If the value of `gte` is larger than a specified `lt`
      * or `lte`, the range is reversed, and the field value must be outside the
      * specified range. If the field value doesn't meet the required conditions,
      * an error message is generated.
      *
-     *```proto
-     *message MySFixed32 {
-     *  // value must be greater than or equal to 5 [sfixed32.gte]
-     *  sfixed32 value = 1 [(buf.validate.field).sfixed32.gte = 5];
+     * ```proto
+     * message MySFixed32 {
+     *   // value must be greater than or equal to 5 [sfixed32.gte]
+     *   sfixed32 value = 1 [(buf.validate.field).sfixed32.gte = 5];
      *
-     *  // value must be greater than or equal to 5 and less than 10 [sfixed32.gte_lt]
-     *  sfixed32 other_value = 2 [(buf.validate.field).sfixed32 = { gte: 5, lt: 10 }];
+     *   // value must be greater than or equal to 5 and less than 10 [sfixed32.gte_lt]
+     *   sfixed32 other_value = 2 [(buf.validate.field).sfixed32 = { gte: 5, lt: 10 }];
      *
-     *  // value must be greater than or equal to 10 or less than 5 [sfixed32.gte_lt_exclusive]
-     *  sfixed32 another_value = 3 [(buf.validate.field).sfixed32 = { gte: 10, lt: 5 }];
-     *}
-     *```
+     *   // value must be greater than or equal to 10 or less than 5 [sfixed32.gte_lt_exclusive]
+     *   sfixed32 another_value = 3 [(buf.validate.field).sfixed32 = { gte: 10, lt: 5 }];
+     * }
+     * ```
      * </pre>
      *
      * <code>sfixed32 gte = 5 [json_name = "gte", (.buf.validate.priv.field) = { ... }</code>
@@ -1699,16 +1699,16 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     *`in` requires the field value to be equal to one of the specified values.
+     * `in` requires the field value to be equal to one of the specified values.
      * If the field value isn't one of the specified values, an error message is
      * generated.
      *
-     *```proto
-     *message MySFixed32 {
-     *  // value must be in list [1, 2, 3]
-     *  repeated sfixed32 value = 1 (buf.validate.field).sfixed32 = { in: [1, 2, 3] };
-     *}
-     *```
+     * ```proto
+     * message MySFixed32 {
+     *   // value must be in list [1, 2, 3]
+     *   repeated sfixed32 value = 1 (buf.validate.field).sfixed32 = { in: [1, 2, 3] };
+     * }
+     * ```
      * </pre>
      *
      * <code>repeated sfixed32 in = 6 [json_name = "in", (.buf.validate.priv.field) = { ... }</code>
@@ -1721,16 +1721,16 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     *`in` requires the field value to be equal to one of the specified values.
+     * `in` requires the field value to be equal to one of the specified values.
      * If the field value isn't one of the specified values, an error message is
      * generated.
      *
-     *```proto
-     *message MySFixed32 {
-     *  // value must be in list [1, 2, 3]
-     *  repeated sfixed32 value = 1 (buf.validate.field).sfixed32 = { in: [1, 2, 3] };
-     *}
-     *```
+     * ```proto
+     * message MySFixed32 {
+     *   // value must be in list [1, 2, 3]
+     *   repeated sfixed32 value = 1 (buf.validate.field).sfixed32 = { in: [1, 2, 3] };
+     * }
+     * ```
      * </pre>
      *
      * <code>repeated sfixed32 in = 6 [json_name = "in", (.buf.validate.priv.field) = { ... }</code>
@@ -1741,16 +1741,16 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     *`in` requires the field value to be equal to one of the specified values.
+     * `in` requires the field value to be equal to one of the specified values.
      * If the field value isn't one of the specified values, an error message is
      * generated.
      *
-     *```proto
-     *message MySFixed32 {
-     *  // value must be in list [1, 2, 3]
-     *  repeated sfixed32 value = 1 (buf.validate.field).sfixed32 = { in: [1, 2, 3] };
-     *}
-     *```
+     * ```proto
+     * message MySFixed32 {
+     *   // value must be in list [1, 2, 3]
+     *   repeated sfixed32 value = 1 (buf.validate.field).sfixed32 = { in: [1, 2, 3] };
+     * }
+     * ```
      * </pre>
      *
      * <code>repeated sfixed32 in = 6 [json_name = "in", (.buf.validate.priv.field) = { ... }</code>
@@ -1762,16 +1762,16 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     *`in` requires the field value to be equal to one of the specified values.
+     * `in` requires the field value to be equal to one of the specified values.
      * If the field value isn't one of the specified values, an error message is
      * generated.
      *
-     *```proto
-     *message MySFixed32 {
-     *  // value must be in list [1, 2, 3]
-     *  repeated sfixed32 value = 1 (buf.validate.field).sfixed32 = { in: [1, 2, 3] };
-     *}
-     *```
+     * ```proto
+     * message MySFixed32 {
+     *   // value must be in list [1, 2, 3]
+     *   repeated sfixed32 value = 1 (buf.validate.field).sfixed32 = { in: [1, 2, 3] };
+     * }
+     * ```
      * </pre>
      *
      * <code>repeated sfixed32 in = 6 [json_name = "in", (.buf.validate.priv.field) = { ... }</code>
@@ -1790,16 +1790,16 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     *`in` requires the field value to be equal to one of the specified values.
+     * `in` requires the field value to be equal to one of the specified values.
      * If the field value isn't one of the specified values, an error message is
      * generated.
      *
-     *```proto
-     *message MySFixed32 {
-     *  // value must be in list [1, 2, 3]
-     *  repeated sfixed32 value = 1 (buf.validate.field).sfixed32 = { in: [1, 2, 3] };
-     *}
-     *```
+     * ```proto
+     * message MySFixed32 {
+     *   // value must be in list [1, 2, 3]
+     *   repeated sfixed32 value = 1 (buf.validate.field).sfixed32 = { in: [1, 2, 3] };
+     * }
+     * ```
      * </pre>
      *
      * <code>repeated sfixed32 in = 6 [json_name = "in", (.buf.validate.priv.field) = { ... }</code>
@@ -1816,16 +1816,16 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     *`in` requires the field value to be equal to one of the specified values.
+     * `in` requires the field value to be equal to one of the specified values.
      * If the field value isn't one of the specified values, an error message is
      * generated.
      *
-     *```proto
-     *message MySFixed32 {
-     *  // value must be in list [1, 2, 3]
-     *  repeated sfixed32 value = 1 (buf.validate.field).sfixed32 = { in: [1, 2, 3] };
-     *}
-     *```
+     * ```proto
+     * message MySFixed32 {
+     *   // value must be in list [1, 2, 3]
+     *   repeated sfixed32 value = 1 (buf.validate.field).sfixed32 = { in: [1, 2, 3] };
+     * }
+     * ```
      * </pre>
      *
      * <code>repeated sfixed32 in = 6 [json_name = "in", (.buf.validate.priv.field) = { ... }</code>
@@ -1843,16 +1843,16 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     *`in` requires the field value to be equal to one of the specified values.
+     * `in` requires the field value to be equal to one of the specified values.
      * If the field value isn't one of the specified values, an error message is
      * generated.
      *
-     *```proto
-     *message MySFixed32 {
-     *  // value must be in list [1, 2, 3]
-     *  repeated sfixed32 value = 1 (buf.validate.field).sfixed32 = { in: [1, 2, 3] };
-     *}
-     *```
+     * ```proto
+     * message MySFixed32 {
+     *   // value must be in list [1, 2, 3]
+     *   repeated sfixed32 value = 1 (buf.validate.field).sfixed32 = { in: [1, 2, 3] };
+     * }
+     * ```
      * </pre>
      *
      * <code>repeated sfixed32 in = 6 [json_name = "in", (.buf.validate.priv.field) = { ... }</code>
@@ -1880,16 +1880,16 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     *`not_in` requires the field value to not be equal to any of the specified
+     * `not_in` requires the field value to not be equal to any of the specified
      * values. If the field value is one of the specified values, an error
      * message is generated.
      *
-     *```proto
-     *message MySFixed32 {
-     *  // value must not be in list [1, 2, 3]
-     *  repeated sfixed32 value = 1 (buf.validate.field).sfixed32 = { not_in: [1, 2, 3] };
-     *}
-     *```
+     * ```proto
+     * message MySFixed32 {
+     *   // value must not be in list [1, 2, 3]
+     *   repeated sfixed32 value = 1 (buf.validate.field).sfixed32 = { not_in: [1, 2, 3] };
+     * }
+     * ```
      * </pre>
      *
      * <code>repeated sfixed32 not_in = 7 [json_name = "notIn", (.buf.validate.priv.field) = { ... }</code>
@@ -1902,16 +1902,16 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     *`not_in` requires the field value to not be equal to any of the specified
+     * `not_in` requires the field value to not be equal to any of the specified
      * values. If the field value is one of the specified values, an error
      * message is generated.
      *
-     *```proto
-     *message MySFixed32 {
-     *  // value must not be in list [1, 2, 3]
-     *  repeated sfixed32 value = 1 (buf.validate.field).sfixed32 = { not_in: [1, 2, 3] };
-     *}
-     *```
+     * ```proto
+     * message MySFixed32 {
+     *   // value must not be in list [1, 2, 3]
+     *   repeated sfixed32 value = 1 (buf.validate.field).sfixed32 = { not_in: [1, 2, 3] };
+     * }
+     * ```
      * </pre>
      *
      * <code>repeated sfixed32 not_in = 7 [json_name = "notIn", (.buf.validate.priv.field) = { ... }</code>
@@ -1922,16 +1922,16 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     *`not_in` requires the field value to not be equal to any of the specified
+     * `not_in` requires the field value to not be equal to any of the specified
      * values. If the field value is one of the specified values, an error
      * message is generated.
      *
-     *```proto
-     *message MySFixed32 {
-     *  // value must not be in list [1, 2, 3]
-     *  repeated sfixed32 value = 1 (buf.validate.field).sfixed32 = { not_in: [1, 2, 3] };
-     *}
-     *```
+     * ```proto
+     * message MySFixed32 {
+     *   // value must not be in list [1, 2, 3]
+     *   repeated sfixed32 value = 1 (buf.validate.field).sfixed32 = { not_in: [1, 2, 3] };
+     * }
+     * ```
      * </pre>
      *
      * <code>repeated sfixed32 not_in = 7 [json_name = "notIn", (.buf.validate.priv.field) = { ... }</code>
@@ -1943,16 +1943,16 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     *`not_in` requires the field value to not be equal to any of the specified
+     * `not_in` requires the field value to not be equal to any of the specified
      * values. If the field value is one of the specified values, an error
      * message is generated.
      *
-     *```proto
-     *message MySFixed32 {
-     *  // value must not be in list [1, 2, 3]
-     *  repeated sfixed32 value = 1 (buf.validate.field).sfixed32 = { not_in: [1, 2, 3] };
-     *}
-     *```
+     * ```proto
+     * message MySFixed32 {
+     *   // value must not be in list [1, 2, 3]
+     *   repeated sfixed32 value = 1 (buf.validate.field).sfixed32 = { not_in: [1, 2, 3] };
+     * }
+     * ```
      * </pre>
      *
      * <code>repeated sfixed32 not_in = 7 [json_name = "notIn", (.buf.validate.priv.field) = { ... }</code>
@@ -1971,16 +1971,16 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     *`not_in` requires the field value to not be equal to any of the specified
+     * `not_in` requires the field value to not be equal to any of the specified
      * values. If the field value is one of the specified values, an error
      * message is generated.
      *
-     *```proto
-     *message MySFixed32 {
-     *  // value must not be in list [1, 2, 3]
-     *  repeated sfixed32 value = 1 (buf.validate.field).sfixed32 = { not_in: [1, 2, 3] };
-     *}
-     *```
+     * ```proto
+     * message MySFixed32 {
+     *   // value must not be in list [1, 2, 3]
+     *   repeated sfixed32 value = 1 (buf.validate.field).sfixed32 = { not_in: [1, 2, 3] };
+     * }
+     * ```
      * </pre>
      *
      * <code>repeated sfixed32 not_in = 7 [json_name = "notIn", (.buf.validate.priv.field) = { ... }</code>
@@ -1997,16 +1997,16 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     *`not_in` requires the field value to not be equal to any of the specified
+     * `not_in` requires the field value to not be equal to any of the specified
      * values. If the field value is one of the specified values, an error
      * message is generated.
      *
-     *```proto
-     *message MySFixed32 {
-     *  // value must not be in list [1, 2, 3]
-     *  repeated sfixed32 value = 1 (buf.validate.field).sfixed32 = { not_in: [1, 2, 3] };
-     *}
-     *```
+     * ```proto
+     * message MySFixed32 {
+     *   // value must not be in list [1, 2, 3]
+     *   repeated sfixed32 value = 1 (buf.validate.field).sfixed32 = { not_in: [1, 2, 3] };
+     * }
+     * ```
      * </pre>
      *
      * <code>repeated sfixed32 not_in = 7 [json_name = "notIn", (.buf.validate.priv.field) = { ... }</code>
@@ -2024,16 +2024,16 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     *`not_in` requires the field value to not be equal to any of the specified
+     * `not_in` requires the field value to not be equal to any of the specified
      * values. If the field value is one of the specified values, an error
      * message is generated.
      *
-     *```proto
-     *message MySFixed32 {
-     *  // value must not be in list [1, 2, 3]
-     *  repeated sfixed32 value = 1 (buf.validate.field).sfixed32 = { not_in: [1, 2, 3] };
-     *}
-     *```
+     * ```proto
+     * message MySFixed32 {
+     *   // value must not be in list [1, 2, 3]
+     *   repeated sfixed32 value = 1 (buf.validate.field).sfixed32 = { not_in: [1, 2, 3] };
+     * }
+     * ```
      * </pre>
      *
      * <code>repeated sfixed32 not_in = 7 [json_name = "notIn", (.buf.validate.priv.field) = { ... }</code>

@@ -48,15 +48,15 @@ private static final long serialVersionUID = 0L;
   private boolean const_ = false;
   /**
    * <pre>
-   *`const` requires the field value to exactly match the specified boolean value.
-   *If the field value doesn't match, an error message is generated.
+   * `const` requires the field value to exactly match the specified boolean value.
+   * If the field value doesn't match, an error message is generated.
    *
-   *```proto
-   *message MyBool {
-   *  // value must equal true
+   * ```proto
+   * message MyBool {
+   *   // value must equal true
    *   bool value = 1 [(buf.validate.field).bool.const = true];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
    * <code>optional bool const = 1 [json_name = "const", (.buf.validate.priv.field) = { ... }</code>
@@ -68,15 +68,15 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   *`const` requires the field value to exactly match the specified boolean value.
-   *If the field value doesn't match, an error message is generated.
+   * `const` requires the field value to exactly match the specified boolean value.
+   * If the field value doesn't match, an error message is generated.
    *
-   *```proto
-   *message MyBool {
-   *  // value must equal true
+   * ```proto
+   * message MyBool {
+   *   // value must equal true
    *   bool value = 1 [(buf.validate.field).bool.const = true];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
    * <code>optional bool const = 1 [json_name = "const", (.buf.validate.priv.field) = { ... }</code>
@@ -429,15 +429,15 @@ private static final long serialVersionUID = 0L;
     private boolean const_ ;
     /**
      * <pre>
-     *`const` requires the field value to exactly match the specified boolean value.
-     *If the field value doesn't match, an error message is generated.
+     * `const` requires the field value to exactly match the specified boolean value.
+     * If the field value doesn't match, an error message is generated.
      *
-     *```proto
-     *message MyBool {
-     *  // value must equal true
+     * ```proto
+     * message MyBool {
+     *   // value must equal true
      *   bool value = 1 [(buf.validate.field).bool.const = true];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>optional bool const = 1 [json_name = "const", (.buf.validate.priv.field) = { ... }</code>
@@ -449,15 +449,15 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     *`const` requires the field value to exactly match the specified boolean value.
-     *If the field value doesn't match, an error message is generated.
+     * `const` requires the field value to exactly match the specified boolean value.
+     * If the field value doesn't match, an error message is generated.
      *
-     *```proto
-     *message MyBool {
-     *  // value must equal true
+     * ```proto
+     * message MyBool {
+     *   // value must equal true
      *   bool value = 1 [(buf.validate.field).bool.const = true];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>optional bool const = 1 [json_name = "const", (.buf.validate.priv.field) = { ... }</code>
@@ -469,15 +469,15 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     *`const` requires the field value to exactly match the specified boolean value.
-     *If the field value doesn't match, an error message is generated.
+     * `const` requires the field value to exactly match the specified boolean value.
+     * If the field value doesn't match, an error message is generated.
      *
-     *```proto
-     *message MyBool {
-     *  // value must equal true
+     * ```proto
+     * message MyBool {
+     *   // value must equal true
      *   bool value = 1 [(buf.validate.field).bool.const = true];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>optional bool const = 1 [json_name = "const", (.buf.validate.priv.field) = { ... }</code>
@@ -493,15 +493,15 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     *`const` requires the field value to exactly match the specified boolean value.
-     *If the field value doesn't match, an error message is generated.
+     * `const` requires the field value to exactly match the specified boolean value.
+     * If the field value doesn't match, an error message is generated.
      *
-     *```proto
-     *message MyBool {
-     *  // value must equal true
+     * ```proto
+     * message MyBool {
+     *   // value must equal true
      *   bool value = 1 [(buf.validate.field).bool.const = true];
-     *}
-     *```
+     * }
+     * ```
      * </pre>
      *
      * <code>optional bool const = 1 [json_name = "const", (.buf.validate.priv.field) = { ... }</code>

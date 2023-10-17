@@ -9,21 +9,21 @@ public interface EnumRulesOrBuilder extends
 
   /**
    * <pre>
-   *`const` requires the field value to exactly match the specified enum value.
-   *If the field value doesn't match, an error message is generated.
+   * `const` requires the field value to exactly match the specified enum value.
+   * If the field value doesn't match, an error message is generated.
    *
-   *```proto
-   *enum MyEnum {
-   *  MY_ENUM_UNSPECIFIED = 0;
-   *  MY_ENUM_VALUE1 = 1;
-   *  MY_ENUM_VALUE2 = 2;
-   *}
+   * ```proto
+   * enum MyEnum {
+   *   MY_ENUM_UNSPECIFIED = 0;
+   *   MY_ENUM_VALUE1 = 1;
+   *   MY_ENUM_VALUE2 = 2;
+   * }
    *
-   *message MyMessage {
-   *  // The field `value` must be exactly MY_ENUM_VALUE1.
+   * message MyMessage {
+   *   // The field `value` must be exactly MY_ENUM_VALUE1.
    *   MyEnum value = 1 [(buf.validate.field).enum.const = 1];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
    * <code>optional int32 const = 1 [json_name = "const", (.buf.validate.priv.field) = { ... }</code>
@@ -32,21 +32,21 @@ public interface EnumRulesOrBuilder extends
   boolean hasConst();
   /**
    * <pre>
-   *`const` requires the field value to exactly match the specified enum value.
-   *If the field value doesn't match, an error message is generated.
+   * `const` requires the field value to exactly match the specified enum value.
+   * If the field value doesn't match, an error message is generated.
    *
-   *```proto
-   *enum MyEnum {
-   *  MY_ENUM_UNSPECIFIED = 0;
-   *  MY_ENUM_VALUE1 = 1;
-   *  MY_ENUM_VALUE2 = 2;
-   *}
+   * ```proto
+   * enum MyEnum {
+   *   MY_ENUM_UNSPECIFIED = 0;
+   *   MY_ENUM_VALUE1 = 1;
+   *   MY_ENUM_VALUE2 = 2;
+   * }
    *
-   *message MyMessage {
-   *  // The field `value` must be exactly MY_ENUM_VALUE1.
+   * message MyMessage {
+   *   // The field `value` must be exactly MY_ENUM_VALUE1.
    *   MyEnum value = 1 [(buf.validate.field).enum.const = 1];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
    * <code>optional int32 const = 1 [json_name = "const", (.buf.validate.priv.field) = { ... }</code>
@@ -56,21 +56,21 @@ public interface EnumRulesOrBuilder extends
 
   /**
    * <pre>
-   *`defined_only` requires the field value to be one of the defined values for
+   * `defined_only` requires the field value to be one of the defined values for
    * this enum, failing on any undefined value.
    *
-   *```proto
-   *enum MyEnum {
-   *  MY_ENUM_UNSPECIFIED = 0;
-   *  MY_ENUM_VALUE1 = 1;
-   *  MY_ENUM_VALUE2 = 2;
-   *}
+   * ```proto
+   * enum MyEnum {
+   *   MY_ENUM_UNSPECIFIED = 0;
+   *   MY_ENUM_VALUE1 = 1;
+   *   MY_ENUM_VALUE2 = 2;
+   * }
    *
-   *message MyMessage {
-   *  // The field `value` must be a defined value of MyEnum.
+   * message MyMessage {
+   *   // The field `value` must be a defined value of MyEnum.
    *   MyEnum value = 1 [(buf.validate.field).enum.defined_only = true];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
    * <code>optional bool defined_only = 2 [json_name = "definedOnly"];</code>
@@ -79,21 +79,21 @@ public interface EnumRulesOrBuilder extends
   boolean hasDefinedOnly();
   /**
    * <pre>
-   *`defined_only` requires the field value to be one of the defined values for
+   * `defined_only` requires the field value to be one of the defined values for
    * this enum, failing on any undefined value.
    *
-   *```proto
-   *enum MyEnum {
-   *  MY_ENUM_UNSPECIFIED = 0;
-   *  MY_ENUM_VALUE1 = 1;
-   *  MY_ENUM_VALUE2 = 2;
-   *}
+   * ```proto
+   * enum MyEnum {
+   *   MY_ENUM_UNSPECIFIED = 0;
+   *   MY_ENUM_VALUE1 = 1;
+   *   MY_ENUM_VALUE2 = 2;
+   * }
    *
-   *message MyMessage {
-   *  // The field `value` must be a defined value of MyEnum.
+   * message MyMessage {
+   *   // The field `value` must be a defined value of MyEnum.
    *   MyEnum value = 1 [(buf.validate.field).enum.defined_only = true];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
    * <code>optional bool defined_only = 2 [json_name = "definedOnly"];</code>
@@ -103,22 +103,22 @@ public interface EnumRulesOrBuilder extends
 
   /**
    * <pre>
-   *`in` requires the field value to be equal to one of the
+   * `in` requires the field value to be equal to one of the
    *specified enum values. If the field value doesn't match any of the
    *specified values, an error message is generated.
    *
-   *```proto
-   *enum MyEnum {
-   *  MY_ENUM_UNSPECIFIED = 0;
-   *  MY_ENUM_VALUE1 = 1;
-   *  MY_ENUM_VALUE2 = 2;
-   *}
+   * ```proto
+   * enum MyEnum {
+   *   MY_ENUM_UNSPECIFIED = 0;
+   *   MY_ENUM_VALUE1 = 1;
+   *   MY_ENUM_VALUE2 = 2;
+   * }
    *
-   *message MyMessage {
-   *  // The field `value` must be equal to one of the specified values.
+   * message MyMessage {
+   *   // The field `value` must be equal to one of the specified values.
    *   MyEnum value = 1 [(buf.validate.field).enum.in = {1, 2}];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
    * <code>repeated int32 in = 3 [json_name = "in", (.buf.validate.priv.field) = { ... }</code>
@@ -127,22 +127,22 @@ public interface EnumRulesOrBuilder extends
   java.util.List<java.lang.Integer> getInList();
   /**
    * <pre>
-   *`in` requires the field value to be equal to one of the
+   * `in` requires the field value to be equal to one of the
    *specified enum values. If the field value doesn't match any of the
    *specified values, an error message is generated.
    *
-   *```proto
-   *enum MyEnum {
-   *  MY_ENUM_UNSPECIFIED = 0;
-   *  MY_ENUM_VALUE1 = 1;
-   *  MY_ENUM_VALUE2 = 2;
-   *}
+   * ```proto
+   * enum MyEnum {
+   *   MY_ENUM_UNSPECIFIED = 0;
+   *   MY_ENUM_VALUE1 = 1;
+   *   MY_ENUM_VALUE2 = 2;
+   * }
    *
-   *message MyMessage {
-   *  // The field `value` must be equal to one of the specified values.
+   * message MyMessage {
+   *   // The field `value` must be equal to one of the specified values.
    *   MyEnum value = 1 [(buf.validate.field).enum.in = {1, 2}];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
    * <code>repeated int32 in = 3 [json_name = "in", (.buf.validate.priv.field) = { ... }</code>
@@ -151,22 +151,22 @@ public interface EnumRulesOrBuilder extends
   int getInCount();
   /**
    * <pre>
-   *`in` requires the field value to be equal to one of the
+   * `in` requires the field value to be equal to one of the
    *specified enum values. If the field value doesn't match any of the
    *specified values, an error message is generated.
    *
-   *```proto
-   *enum MyEnum {
-   *  MY_ENUM_UNSPECIFIED = 0;
-   *  MY_ENUM_VALUE1 = 1;
-   *  MY_ENUM_VALUE2 = 2;
-   *}
+   * ```proto
+   * enum MyEnum {
+   *   MY_ENUM_UNSPECIFIED = 0;
+   *   MY_ENUM_VALUE1 = 1;
+   *   MY_ENUM_VALUE2 = 2;
+   * }
    *
-   *message MyMessage {
-   *  // The field `value` must be equal to one of the specified values.
+   * message MyMessage {
+   *   // The field `value` must be equal to one of the specified values.
    *   MyEnum value = 1 [(buf.validate.field).enum.in = {1, 2}];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
    * <code>repeated int32 in = 3 [json_name = "in", (.buf.validate.priv.field) = { ... }</code>
@@ -177,22 +177,22 @@ public interface EnumRulesOrBuilder extends
 
   /**
    * <pre>
-   *`not_in` requires the field value to be not equal to any of the
+   * `not_in` requires the field value to be not equal to any of the
    *specified enum values. If the field value matches one of the specified
-   *values, an error message is generated.
+   * values, an error message is generated.
    *
-   *```proto
-   *enum MyEnum {
-   *  MY_ENUM_UNSPECIFIED = 0;
-   *  MY_ENUM_VALUE1 = 1;
-   *  MY_ENUM_VALUE2 = 2;
-   *}
+   * ```proto
+   * enum MyEnum {
+   *   MY_ENUM_UNSPECIFIED = 0;
+   *   MY_ENUM_VALUE1 = 1;
+   *   MY_ENUM_VALUE2 = 2;
+   * }
    *
-   *message MyMessage {
-   *  // The field `value` must not be equal to any of the specified values.
+   * message MyMessage {
+   *   // The field `value` must not be equal to any of the specified values.
    *   MyEnum value = 1 [(buf.validate.field).enum.not_in = {1, 2}];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
    * <code>repeated int32 not_in = 4 [json_name = "notIn", (.buf.validate.priv.field) = { ... }</code>
@@ -201,22 +201,22 @@ public interface EnumRulesOrBuilder extends
   java.util.List<java.lang.Integer> getNotInList();
   /**
    * <pre>
-   *`not_in` requires the field value to be not equal to any of the
+   * `not_in` requires the field value to be not equal to any of the
    *specified enum values. If the field value matches one of the specified
-   *values, an error message is generated.
+   * values, an error message is generated.
    *
-   *```proto
-   *enum MyEnum {
-   *  MY_ENUM_UNSPECIFIED = 0;
-   *  MY_ENUM_VALUE1 = 1;
-   *  MY_ENUM_VALUE2 = 2;
-   *}
+   * ```proto
+   * enum MyEnum {
+   *   MY_ENUM_UNSPECIFIED = 0;
+   *   MY_ENUM_VALUE1 = 1;
+   *   MY_ENUM_VALUE2 = 2;
+   * }
    *
-   *message MyMessage {
-   *  // The field `value` must not be equal to any of the specified values.
+   * message MyMessage {
+   *   // The field `value` must not be equal to any of the specified values.
    *   MyEnum value = 1 [(buf.validate.field).enum.not_in = {1, 2}];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
    * <code>repeated int32 not_in = 4 [json_name = "notIn", (.buf.validate.priv.field) = { ... }</code>
@@ -225,22 +225,22 @@ public interface EnumRulesOrBuilder extends
   int getNotInCount();
   /**
    * <pre>
-   *`not_in` requires the field value to be not equal to any of the
+   * `not_in` requires the field value to be not equal to any of the
    *specified enum values. If the field value matches one of the specified
-   *values, an error message is generated.
+   * values, an error message is generated.
    *
-   *```proto
-   *enum MyEnum {
-   *  MY_ENUM_UNSPECIFIED = 0;
-   *  MY_ENUM_VALUE1 = 1;
-   *  MY_ENUM_VALUE2 = 2;
-   *}
+   * ```proto
+   * enum MyEnum {
+   *   MY_ENUM_UNSPECIFIED = 0;
+   *   MY_ENUM_VALUE1 = 1;
+   *   MY_ENUM_VALUE2 = 2;
+   * }
    *
-   *message MyMessage {
-   *  // The field `value` must not be equal to any of the specified values.
+   * message MyMessage {
+   *   // The field `value` must not be equal to any of the specified values.
    *   MyEnum value = 1 [(buf.validate.field).enum.not_in = {1, 2}];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
    * <code>repeated int32 not_in = 4 [json_name = "notIn", (.buf.validate.priv.field) = { ... }</code>
