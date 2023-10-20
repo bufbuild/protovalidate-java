@@ -421,6 +421,16 @@ public interface TimestampRulesOrBuilder extends
    */
   com.google.protobuf.DurationOrBuilder getWithinOrBuilder();
 
+  /**
+   * <pre>
+   * some comments
+   * </pre>
+   *
+   * <code>bool valid = 10 [json_name = "valid"];</code>
+   * @return The valid.
+   */
+  boolean getValid();
+
   build.buf.validate.TimestampRules.LessThanCase getLessThanCase();
 
   build.buf.validate.TimestampRules.GreaterThanCase getGreaterThanCase();

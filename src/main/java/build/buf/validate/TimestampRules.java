@@ -651,6 +651,21 @@ private static final long serialVersionUID = 0L;
     return within_ == null ? com.google.protobuf.Duration.getDefaultInstance() : within_;
   }
 
+  public static final int VALID_FIELD_NUMBER = 10;
+  private boolean valid_ = false;
+  /**
+   * <pre>
+   * some comments
+   * </pre>
+   *
+   * <code>bool valid = 10 [json_name = "valid"];</code>
+   * @return The valid.
+   */
+  @java.lang.Override
+  public boolean getValid() {
+    return valid_;
+  }
+
   private byte memoizedIsInitialized = -1;
   @java.lang.Override
   public final boolean isInitialized() {
@@ -690,6 +705,9 @@ private static final long serialVersionUID = 0L;
     }
     if (((bitField0_ & 0x00000002) != 0)) {
       output.writeMessage(9, getWithin());
+    }
+    if (valid_ != false) {
+      output.writeBool(10, valid_);
     }
     getUnknownFields().writeTo(output);
   }
@@ -734,6 +752,10 @@ private static final long serialVersionUID = 0L;
       size += com.google.protobuf.CodedOutputStream
         .computeMessageSize(9, getWithin());
     }
+    if (valid_ != false) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeBoolSize(10, valid_);
+    }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
     return size;
@@ -759,6 +781,8 @@ private static final long serialVersionUID = 0L;
       if (!getWithin()
           .equals(other.getWithin())) return false;
     }
+    if (getValid()
+        != other.getValid()) return false;
     if (!getLessThanCase().equals(other.getLessThanCase())) return false;
     switch (lessThanCase_) {
       case 3:
@@ -812,6 +836,9 @@ private static final long serialVersionUID = 0L;
       hash = (37 * hash) + WITHIN_FIELD_NUMBER;
       hash = (53 * hash) + getWithin().hashCode();
     }
+    hash = (37 * hash) + VALID_FIELD_NUMBER;
+    hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+        getValid());
     switch (lessThanCase_) {
       case 3:
         hash = (37 * hash) + LT_FIELD_NUMBER;
@@ -1010,6 +1037,7 @@ private static final long serialVersionUID = 0L;
         withinBuilder_.dispose();
         withinBuilder_ = null;
       }
+      valid_ = false;
       lessThanCase_ = 0;
       lessThan_ = null;
       greaterThanCase_ = 0;
@@ -1060,6 +1088,9 @@ private static final long serialVersionUID = 0L;
             ? within_
             : withinBuilder_.build();
         to_bitField0_ |= 0x00000002;
+      }
+      if (((from_bitField0_ & 0x00000100) != 0)) {
+        result.valid_ = valid_;
       }
       result.bitField0_ |= to_bitField0_;
     }
@@ -1136,6 +1167,9 @@ private static final long serialVersionUID = 0L;
       }
       if (other.hasWithin()) {
         mergeWithin(other.getWithin());
+      }
+      if (other.getValid() != false) {
+        setValid(other.getValid());
       }
       switch (other.getLessThanCase()) {
         case LT: {
@@ -1249,6 +1283,11 @@ private static final long serialVersionUID = 0L;
               bitField0_ |= 0x00000080;
               break;
             } // case 74
+            case 80: {
+              valid_ = input.readBool();
+              bitField0_ |= 0x00000100;
+              break;
+            } // case 80
             default: {
               if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                 done = true; // was an endgroup tag
@@ -3050,6 +3089,50 @@ private static final long serialVersionUID = 0L;
         within_ = null;
       }
       return withinBuilder_;
+    }
+
+    private boolean valid_ ;
+    /**
+     * <pre>
+     * some comments
+     * </pre>
+     *
+     * <code>bool valid = 10 [json_name = "valid"];</code>
+     * @return The valid.
+     */
+    @java.lang.Override
+    public boolean getValid() {
+      return valid_;
+    }
+    /**
+     * <pre>
+     * some comments
+     * </pre>
+     *
+     * <code>bool valid = 10 [json_name = "valid"];</code>
+     * @param value The valid to set.
+     * @return This builder for chaining.
+     */
+    public Builder setValid(boolean value) {
+
+      valid_ = value;
+      bitField0_ |= 0x00000100;
+      onChanged();
+      return this;
+    }
+    /**
+     * <pre>
+     * some comments
+     * </pre>
+     *
+     * <code>bool valid = 10 [json_name = "valid"];</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearValid() {
+      bitField0_ = (bitField0_ & ~0x00000100);
+      valid_ = false;
+      onChanged();
+      return this;
     }
     @java.lang.Override
     public final Builder setUnknownFields(
