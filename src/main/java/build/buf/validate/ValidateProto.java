@@ -1316,7 +1316,7 @@ public final class ValidateProto {
       "_in\032Qthis in rules.not_in ? \'value must " +
       "not be in list %s\'.format([rules.not_in]" +
       ") : \'\'R\005notInB\013\n\tless_thanB\016\n\014greater_th" +
-      "anB\010\n\006_const\"\312\027\n\016TimestampRules\022\225\001\n\005cons" +
+      "anB\010\n\006_const\"\340\027\n\016TimestampRules\022\225\001\n\005cons" +
       "t\030\002 \001(\0132\032.google.protobuf.TimestampB^\302H[" +
       "\nY\n\017timestamp.const\032Fthis != rules.const" +
       " ? \'value must equal %s\'.format([rules.c" +
@@ -1390,21 +1390,22 @@ public final class ValidateProto {
       "imestamp.within\032qthis < now-rules.within" +
       " || this > now+rules.within ? \'value mus" +
       "t be within %s of now\'.format([rules.wit" +
-      "hin]) : \'\'H\003R\006within\210\001\001B\013\n\tless_thanB\016\n\014" +
-      "greater_thanB\010\n\006_constB\t\n\007_within*n\n\nKno" +
-      "wnRegex\022\033\n\027KNOWN_REGEX_UNSPECIFIED\020\000\022 \n\034" +
-      "KNOWN_REGEX_HTTP_HEADER_NAME\020\001\022!\n\035KNOWN_",
-      "REGEX_HTTP_HEADER_VALUE\020\002:_\n\007message\022\037.g" +
-      "oogle.protobuf.MessageOptions\030\207\t \001(\0132 .b" +
-      "uf.validate.MessageConstraintsR\007message\210" +
-      "\001\001:W\n\005oneof\022\035.google.protobuf.OneofOptio" +
-      "ns\030\207\t \001(\0132\036.buf.validate.OneofConstraint" +
-      "sR\005oneof\210\001\001:W\n\005field\022\035.google.protobuf.F" +
-      "ieldOptions\030\207\t \001(\0132\036.buf.validate.FieldC" +
-      "onstraintsR\005field\210\001\001Bn\n\022build.buf.valida" +
-      "teB\rValidateProtoP\001ZGbuf.build/gen/go/bu" +
-      "fbuild/protovalidate/protocolbuffers/go/" +
-      "buf/validateb\006proto3"
+      "hin]) : \'\'H\003R\006within\210\001\001\022\024\n\005valid\030\n \001(\010R\005" +
+      "validB\013\n\tless_thanB\016\n\014greater_thanB\010\n\006_c" +
+      "onstB\t\n\007_within*n\n\nKnownRegex\022\033\n\027KNOWN_R" +
+      "EGEX_UNSPECIFIED\020\000\022 \n\034KNOWN_REGEX_HTTP_H",
+      "EADER_NAME\020\001\022!\n\035KNOWN_REGEX_HTTP_HEADER_" +
+      "VALUE\020\002:_\n\007message\022\037.google.protobuf.Mes" +
+      "sageOptions\030\207\t \001(\0132 .buf.validate.Messag" +
+      "eConstraintsR\007message\210\001\001:W\n\005oneof\022\035.goog" +
+      "le.protobuf.OneofOptions\030\207\t \001(\0132\036.buf.va" +
+      "lidate.OneofConstraintsR\005oneof\210\001\001:W\n\005fie" +
+      "ld\022\035.google.protobuf.FieldOptions\030\207\t \001(\013" +
+      "2\036.buf.validate.FieldConstraintsR\005field\210" +
+      "\001\001Bn\n\022build.buf.validateB\rValidateProtoP" +
+      "\001ZGbuf.build/gen/go/bufbuild/protovalida" +
+      "te/protocolbuffers/go/buf/validateb\006prot" +
+      "o3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -1558,7 +1559,7 @@ public final class ValidateProto {
     internal_static_buf_validate_TimestampRules_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_buf_validate_TimestampRules_descriptor,
-        new java.lang.String[] { "Const", "Lt", "Lte", "LtNow", "Gt", "Gte", "GtNow", "Within", "LessThan", "GreaterThan", "Const", "Within", });
+        new java.lang.String[] { "Const", "Lt", "Lte", "LtNow", "Gt", "Gte", "GtNow", "Within", "Valid", "LessThan", "GreaterThan", "Const", "Within", });
     message.internalInit(descriptor.getExtensions().get(0));
     oneof.internalInit(descriptor.getExtensions().get(1));
     field.internalInit(descriptor.getExtensions().get(2));

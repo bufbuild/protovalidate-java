@@ -191,6 +191,7 @@ public class EvaluatorBuilder {
     processEnumConstraints(fieldDescriptor, fieldConstraints, valueEvaluator);
     processMapConstraints(fieldDescriptor, fieldConstraints, valueEvaluator);
     processRepeatedConstraints(fieldDescriptor, fieldConstraints, forItems, valueEvaluator);
+    processTimestampConstraints(fieldDescriptor, fieldConstraints, valueEvaluator);
   }
 
   private void processFieldExpressions(
@@ -358,6 +359,21 @@ public class EvaluatorBuilder {
     buildValue(
         fieldDescriptor, fieldConstraints.getRepeated().getItems(), true, listEval.itemConstraints);
     valueEvaluatorEval.append(listEval);
+  }
+
+  private void processTimestampConstraints(
+      FieldDescriptor fieldDescriptor,
+      FieldConstraints fieldConstraints,
+      ValueEvaluator valueEvaluatorEval) {
+    if (fieldDescriptor.getType() != FieldDescriptor.Type.MESSAGE
+        || !fieldDescriptor.getMessageType().getFullName().equals("google.protobuf.Timestamp")) {
+      return;
+    }
+    FieldDescriptor secondsDesc = fieldDescriptor.getMessageType().findFieldByName("seconds");
+    FieldDescriptor nanosDesc = fieldDescriptor.getMessageType().findFieldByName("nanos");
+    TimestampEvaluator timestampEvaluatorEval =
+        new TimestampEvaluator(secondsDesc, nanosDesc, fieldConstraints.getTimestamp().getValid());
+    valueEvaluatorEval.append(timestampEvaluatorEval);
   }
 
   private static List<CompiledProgram> compileConstraints(List<Constraint> constraints, Env env)
