@@ -1,8 +1,0 @@
-version: v1
-managed:
-  enabled: true
-  java_package_prefix:
-    default: com.example.imports
-plugins:
-  - plugin: buf.build/protocolbuffers/java:v24.4
-    out: build/generated/test-sources/bufgen
