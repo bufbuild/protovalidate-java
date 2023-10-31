@@ -9,15 +9,15 @@ public interface BytesRulesOrBuilder extends
 
   /**
    * <pre>
-   *`const` requires the field value to exactly match the specified bytes
-   *value. If the field value doesn't match, an error message is generated.
+   * `const` requires the field value to exactly match the specified bytes
+   * value. If the field value doesn't match, an error message is generated.
    *
-   *```proto
-   *message MyBytes {
-   *  // value must be "&#92;x01&#92;x02&#92;x03&#92;x04"
+   * ```proto
+   * message MyBytes {
+   *   // value must be "&#92;x01&#92;x02&#92;x03&#92;x04"
    *   bytes value = 1 [(buf.validate.field).bytes.const = "&#92;x01&#92;x02&#92;x03&#92;x04"];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
    * <code>optional bytes const = 1 [json_name = "const", (.buf.validate.priv.field) = { ... }</code>
@@ -26,15 +26,15 @@ public interface BytesRulesOrBuilder extends
   boolean hasConst();
   /**
    * <pre>
-   *`const` requires the field value to exactly match the specified bytes
-   *value. If the field value doesn't match, an error message is generated.
+   * `const` requires the field value to exactly match the specified bytes
+   * value. If the field value doesn't match, an error message is generated.
    *
-   *```proto
-   *message MyBytes {
-   *  // value must be "&#92;x01&#92;x02&#92;x03&#92;x04"
+   * ```proto
+   * message MyBytes {
+   *   // value must be "&#92;x01&#92;x02&#92;x03&#92;x04"
    *   bytes value = 1 [(buf.validate.field).bytes.const = "&#92;x01&#92;x02&#92;x03&#92;x04"];
-   *}
-   *```
+   * }
+   * ```
    * </pre>
    *
    * <code>optional bytes const = 1 [json_name = "const", (.buf.validate.priv.field) = { ... }</code>
@@ -44,15 +44,15 @@ public interface BytesRulesOrBuilder extends
 
   /**
    * <pre>
-   *`len` requires the field value to have the specified length in bytes.
-   *If the field value doesn't match, an error message is generated.
+   * `len` requires the field value to have the specified length in bytes.
+   * If the field value doesn't match, an error message is generated.
    *
-   *```proto
-   *message MyBytes {
-   *      // value length must be 4 bytes.
-   *      optional bytes value = 1 [(buf.validate.field).bytes.len = 4];
-   *}
-   *```
+   * ```proto
+   * message MyBytes {
+   *   // value length must be 4 bytes.
+   *   optional bytes value = 1 [(buf.validate.field).bytes.len = 4];
+   * }
+   * ```
    * </pre>
    *
    * <code>optional uint64 len = 13 [json_name = "len", (.buf.validate.priv.field) = { ... }</code>
@@ -61,15 +61,15 @@ public interface BytesRulesOrBuilder extends
   boolean hasLen();
   /**
    * <pre>
-   *`len` requires the field value to have the specified length in bytes.
-   *If the field value doesn't match, an error message is generated.
+   * `len` requires the field value to have the specified length in bytes.
+   * If the field value doesn't match, an error message is generated.
    *
-   *```proto
-   *message MyBytes {
-   *      // value length must be 4 bytes.
-   *      optional bytes value = 1 [(buf.validate.field).bytes.len = 4];
-   *}
-   *```
+   * ```proto
+   * message MyBytes {
+   *   // value length must be 4 bytes.
+   *   optional bytes value = 1 [(buf.validate.field).bytes.len = 4];
+   * }
+   * ```
    * </pre>
    *
    * <code>optional uint64 len = 13 [json_name = "len", (.buf.validate.priv.field) = { ... }</code>
@@ -79,16 +79,16 @@ public interface BytesRulesOrBuilder extends
 
   /**
    * <pre>
-   *`min_len` requires the field value to have at least the specified minimum
-   *length in bytes.
-   *If the field value doesn't meet the requirement, an error message is generated.
+   * `min_len` requires the field value to have at least the specified minimum
+   * length in bytes.
+   * If the field value doesn't meet the requirement, an error message is generated.
    *
-   *```proto
-   *message MyBytes {
-   * // value length must be at least 2 bytes.
-   * optional bytes value = 1 [(buf.validate.field).bytes.min_len = 2];
-   *}
-   *```
+   * ```proto
+   * message MyBytes {
+   *   // value length must be at least 2 bytes.
+   *   optional bytes value = 1 [(buf.validate.field).bytes.min_len = 2];
+   * }
+   * ```
    * </pre>
    *
    * <code>optional uint64 min_len = 2 [json_name = "minLen", (.buf.validate.priv.field) = { ... }</code>
@@ -97,16 +97,16 @@ public interface BytesRulesOrBuilder extends
   boolean hasMinLen();
   /**
    * <pre>
-   *`min_len` requires the field value to have at least the specified minimum
-   *length in bytes.
-   *If the field value doesn't meet the requirement, an error message is generated.
+   * `min_len` requires the field value to have at least the specified minimum
+   * length in bytes.
+   * If the field value doesn't meet the requirement, an error message is generated.
    *
-   *```proto
-   *message MyBytes {
-   * // value length must be at least 2 bytes.
-   * optional bytes value = 1 [(buf.validate.field).bytes.min_len = 2];
-   *}
-   *```
+   * ```proto
+   * message MyBytes {
+   *   // value length must be at least 2 bytes.
+   *   optional bytes value = 1 [(buf.validate.field).bytes.min_len = 2];
+   * }
+   * ```
    * </pre>
    *
    * <code>optional uint64 min_len = 2 [json_name = "minLen", (.buf.validate.priv.field) = { ... }</code>
@@ -116,16 +116,16 @@ public interface BytesRulesOrBuilder extends
 
   /**
    * <pre>
-   *`max_len` requires the field value to have at most the specified maximum
-   *length in bytes.
-   *If the field value exceeds the requirement, an error message is generated.
+   * `max_len` requires the field value to have at most the specified maximum
+   * length in bytes.
+   * If the field value exceeds the requirement, an error message is generated.
    *
-   *```proto
-   *message MyBytes {
-   * // value must be at most 6 bytes.
-   * optional bytes value = 1 [(buf.validate.field).bytes.max_len = 6];
-   *}
-   *```
+   * ```proto
+   * message MyBytes {
+   *   // value must be at most 6 bytes.
+   *   optional bytes value = 1 [(buf.validate.field).bytes.max_len = 6];
+   * }
+   * ```
    * </pre>
    *
    * <code>optional uint64 max_len = 3 [json_name = "maxLen", (.buf.validate.priv.field) = { ... }</code>
@@ -134,16 +134,16 @@ public interface BytesRulesOrBuilder extends
   boolean hasMaxLen();
   /**
    * <pre>
-   *`max_len` requires the field value to have at most the specified maximum
-   *length in bytes.
-   *If the field value exceeds the requirement, an error message is generated.
+   * `max_len` requires the field value to have at most the specified maximum
+   * length in bytes.
+   * If the field value exceeds the requirement, an error message is generated.
    *
-   *```proto
-   *message MyBytes {
-   * // value must be at most 6 bytes.
-   * optional bytes value = 1 [(buf.validate.field).bytes.max_len = 6];
-   *}
-   *```
+   * ```proto
+   * message MyBytes {
+   *   // value must be at most 6 bytes.
+   *   optional bytes value = 1 [(buf.validate.field).bytes.max_len = 6];
+   * }
+   * ```
    * </pre>
    *
    * <code>optional uint64 max_len = 3 [json_name = "maxLen", (.buf.validate.priv.field) = { ... }</code>
@@ -153,18 +153,18 @@ public interface BytesRulesOrBuilder extends
 
   /**
    * <pre>
-   *`pattern` requires the field value to match the specified regular
-   *expression ([RE2 syntax](https://github.com/google/re2/wiki/Syntax)).
-   *The value of the field must be valid UTF-8 or validation will fail with a
-   *runtime error.
-   *If the field value doesn't match the pattern, an error message is generated.
+   * `pattern` requires the field value to match the specified regular
+   * expression ([RE2 syntax](https://github.com/google/re2/wiki/Syntax)).
+   * The value of the field must be valid UTF-8 or validation will fail with a
+   * runtime error.
+   * If the field value doesn't match the pattern, an error message is generated.
    *
-   *```proto
-   *message MyBytes {
-   * // value must match regex pattern "^[a-zA-Z0-9]+$".
-   * optional bytes value = 1 [(buf.validate.field).bytes.pattern = "^[a-zA-Z0-9]+$"];
-   *}
-   *```
+   * ```proto
+   * message MyBytes {
+   *   // value must match regex pattern "^[a-zA-Z0-9]+$".
+   *   optional bytes value = 1 [(buf.validate.field).bytes.pattern = "^[a-zA-Z0-9]+$"];
+   * }
+   * ```
    * </pre>
    *
    * <code>optional string pattern = 4 [json_name = "pattern", (.buf.validate.priv.field) = { ... }</code>
@@ -173,18 +173,18 @@ public interface BytesRulesOrBuilder extends
   boolean hasPattern();
   /**
    * <pre>
-   *`pattern` requires the field value to match the specified regular
-   *expression ([RE2 syntax](https://github.com/google/re2/wiki/Syntax)).
-   *The value of the field must be valid UTF-8 or validation will fail with a
-   *runtime error.
-   *If the field value doesn't match the pattern, an error message is generated.
+   * `pattern` requires the field value to match the specified regular
+   * expression ([RE2 syntax](https://github.com/google/re2/wiki/Syntax)).
+   * The value of the field must be valid UTF-8 or validation will fail with a
+   * runtime error.
+   * If the field value doesn't match the pattern, an error message is generated.
    *
-   *```proto
-   *message MyBytes {
-   * // value must match regex pattern "^[a-zA-Z0-9]+$".
-   * optional bytes value = 1 [(buf.validate.field).bytes.pattern = "^[a-zA-Z0-9]+$"];
-   *}
-   *```
+   * ```proto
+   * message MyBytes {
+   *   // value must match regex pattern "^[a-zA-Z0-9]+$".
+   *   optional bytes value = 1 [(buf.validate.field).bytes.pattern = "^[a-zA-Z0-9]+$"];
+   * }
+   * ```
    * </pre>
    *
    * <code>optional string pattern = 4 [json_name = "pattern", (.buf.validate.priv.field) = { ... }</code>
@@ -193,18 +193,18 @@ public interface BytesRulesOrBuilder extends
   java.lang.String getPattern();
   /**
    * <pre>
-   *`pattern` requires the field value to match the specified regular
-   *expression ([RE2 syntax](https://github.com/google/re2/wiki/Syntax)).
-   *The value of the field must be valid UTF-8 or validation will fail with a
-   *runtime error.
-   *If the field value doesn't match the pattern, an error message is generated.
+   * `pattern` requires the field value to match the specified regular
+   * expression ([RE2 syntax](https://github.com/google/re2/wiki/Syntax)).
+   * The value of the field must be valid UTF-8 or validation will fail with a
+   * runtime error.
+   * If the field value doesn't match the pattern, an error message is generated.
    *
-   *```proto
-   *message MyBytes {
-   * // value must match regex pattern "^[a-zA-Z0-9]+$".
-   * optional bytes value = 1 [(buf.validate.field).bytes.pattern = "^[a-zA-Z0-9]+$"];
-   *}
-   *```
+   * ```proto
+   * message MyBytes {
+   *   // value must match regex pattern "^[a-zA-Z0-9]+$".
+   *   optional bytes value = 1 [(buf.validate.field).bytes.pattern = "^[a-zA-Z0-9]+$"];
+   * }
+   * ```
    * </pre>
    *
    * <code>optional string pattern = 4 [json_name = "pattern", (.buf.validate.priv.field) = { ... }</code>
@@ -215,16 +215,16 @@ public interface BytesRulesOrBuilder extends
 
   /**
    * <pre>
-   *`prefix` requires the field value to have the specified bytes at the
-   *beginning of the string.
-   *If the field value doesn't meet the requirement, an error message is generated.
+   * `prefix` requires the field value to have the specified bytes at the
+   * beginning of the string.
+   * If the field value doesn't meet the requirement, an error message is generated.
    *
-   *```proto
-   *message MyBytes {
-   * // value does not have prefix &#92;x01&#92;x02
-   *optional bytes value = 1 [(buf.validate.field).bytes.prefix = "&#92;x01&#92;x02"];
-   *}
-   *```
+   * ```proto
+   * message MyBytes {
+   *   // value does not have prefix &#92;x01&#92;x02
+   *   optional bytes value = 1 [(buf.validate.field).bytes.prefix = "&#92;x01&#92;x02"];
+   * }
+   * ```
    * </pre>
    *
    * <code>optional bytes prefix = 5 [json_name = "prefix", (.buf.validate.priv.field) = { ... }</code>
@@ -233,16 +233,16 @@ public interface BytesRulesOrBuilder extends
   boolean hasPrefix();
   /**
    * <pre>
-   *`prefix` requires the field value to have the specified bytes at the
-   *beginning of the string.
-   *If the field value doesn't meet the requirement, an error message is generated.
+   * `prefix` requires the field value to have the specified bytes at the
+   * beginning of the string.
+   * If the field value doesn't meet the requirement, an error message is generated.
    *
-   *```proto
-   *message MyBytes {
-   * // value does not have prefix &#92;x01&#92;x02
-   *optional bytes value = 1 [(buf.validate.field).bytes.prefix = "&#92;x01&#92;x02"];
-   *}
-   *```
+   * ```proto
+   * message MyBytes {
+   *   // value does not have prefix &#92;x01&#92;x02
+   *   optional bytes value = 1 [(buf.validate.field).bytes.prefix = "&#92;x01&#92;x02"];
+   * }
+   * ```
    * </pre>
    *
    * <code>optional bytes prefix = 5 [json_name = "prefix", (.buf.validate.priv.field) = { ... }</code>
@@ -252,16 +252,16 @@ public interface BytesRulesOrBuilder extends
 
   /**
    * <pre>
-   *`suffix` requires the field value to have the specified bytes at the end
-   *of the string.
-   *If the field value doesn't meet the requirement, an error message is generated.
+   * `suffix` requires the field value to have the specified bytes at the end
+   * of the string.
+   * If the field value doesn't meet the requirement, an error message is generated.
    *
-   *```proto
-   *message MyBytes {
-   * // value does not have suffix &#92;x03&#92;x04
-   * optional bytes value = 1 [(buf.validate.field).bytes.suffix = "&#92;x03&#92;x04"];
-   *}
-   *```
+   * ```proto
+   * message MyBytes {
+   *   // value does not have suffix &#92;x03&#92;x04
+   *   optional bytes value = 1 [(buf.validate.field).bytes.suffix = "&#92;x03&#92;x04"];
+   * }
+   * ```
    * </pre>
    *
    * <code>optional bytes suffix = 6 [json_name = "suffix", (.buf.validate.priv.field) = { ... }</code>
@@ -270,16 +270,16 @@ public interface BytesRulesOrBuilder extends
   boolean hasSuffix();
   /**
    * <pre>
-   *`suffix` requires the field value to have the specified bytes at the end
-   *of the string.
-   *If the field value doesn't meet the requirement, an error message is generated.
+   * `suffix` requires the field value to have the specified bytes at the end
+   * of the string.
+   * If the field value doesn't meet the requirement, an error message is generated.
    *
-   *```proto
-   *message MyBytes {
-   * // value does not have suffix &#92;x03&#92;x04
-   * optional bytes value = 1 [(buf.validate.field).bytes.suffix = "&#92;x03&#92;x04"];
-   *}
-   *```
+   * ```proto
+   * message MyBytes {
+   *   // value does not have suffix &#92;x03&#92;x04
+   *   optional bytes value = 1 [(buf.validate.field).bytes.suffix = "&#92;x03&#92;x04"];
+   * }
+   * ```
    * </pre>
    *
    * <code>optional bytes suffix = 6 [json_name = "suffix", (.buf.validate.priv.field) = { ... }</code>
@@ -289,16 +289,16 @@ public interface BytesRulesOrBuilder extends
 
   /**
    * <pre>
-   *`contains` requires the field value to have the specified bytes anywhere in
-   *the string.
-   *If the field value doesn't meet the requirement, an error message is generated.
+   * `contains` requires the field value to have the specified bytes anywhere in
+   * the string.
+   * If the field value doesn't meet the requirement, an error message is generated.
    *
-   *```protobuf
-   *message MyBytes {
-   * // value does not contain &#92;x02&#92;x03
-   * optional bytes value = 1 [(buf.validate.field).bytes.contains = "&#92;x02&#92;x03"];
-   *}
-   *```
+   * ```protobuf
+   * message MyBytes {
+   *   // value does not contain &#92;x02&#92;x03
+   *   optional bytes value = 1 [(buf.validate.field).bytes.contains = "&#92;x02&#92;x03"];
+   * }
+   * ```
    * </pre>
    *
    * <code>optional bytes contains = 7 [json_name = "contains", (.buf.validate.priv.field) = { ... }</code>
@@ -307,16 +307,16 @@ public interface BytesRulesOrBuilder extends
   boolean hasContains();
   /**
    * <pre>
-   *`contains` requires the field value to have the specified bytes anywhere in
-   *the string.
-   *If the field value doesn't meet the requirement, an error message is generated.
+   * `contains` requires the field value to have the specified bytes anywhere in
+   * the string.
+   * If the field value doesn't meet the requirement, an error message is generated.
    *
-   *```protobuf
-   *message MyBytes {
-   * // value does not contain &#92;x02&#92;x03
-   * optional bytes value = 1 [(buf.validate.field).bytes.contains = "&#92;x02&#92;x03"];
-   *}
-   *```
+   * ```protobuf
+   * message MyBytes {
+   *   // value does not contain &#92;x02&#92;x03
+   *   optional bytes value = 1 [(buf.validate.field).bytes.contains = "&#92;x02&#92;x03"];
+   * }
+   * ```
    * </pre>
    *
    * <code>optional bytes contains = 7 [json_name = "contains", (.buf.validate.priv.field) = { ... }</code>
@@ -326,16 +326,16 @@ public interface BytesRulesOrBuilder extends
 
   /**
    * <pre>
-   *`in` requires the field value to be equal to one of the specified
-   *values. If the field value doesn't match any of the specified values, an
-   *error message is generated.
+   * `in` requires the field value to be equal to one of the specified
+   * values. If the field value doesn't match any of the specified values, an
+   * error message is generated.
    *
-   *```protobuf
-   *message MyBytes {
-   * // value must in ["&#92;x01&#92;x02", "&#92;x02&#92;x03", "&#92;x03&#92;x04"]
-   * optional bytes value = 1 [(buf.validate.field).bytes.in = {"&#92;x01&#92;x02", "&#92;x02&#92;x03", "&#92;x03&#92;x04"}];
-   *}
-   *```
+   * ```protobuf
+   * message MyBytes {
+   *   // value must in ["&#92;x01&#92;x02", "&#92;x02&#92;x03", "&#92;x03&#92;x04"]
+   *   optional bytes value = 1 [(buf.validate.field).bytes.in = {"&#92;x01&#92;x02", "&#92;x02&#92;x03", "&#92;x03&#92;x04"}];
+   * }
+   * ```
    * </pre>
    *
    * <code>repeated bytes in = 8 [json_name = "in", (.buf.validate.priv.field) = { ... }</code>
@@ -344,16 +344,16 @@ public interface BytesRulesOrBuilder extends
   java.util.List<com.google.protobuf.ByteString> getInList();
   /**
    * <pre>
-   *`in` requires the field value to be equal to one of the specified
-   *values. If the field value doesn't match any of the specified values, an
-   *error message is generated.
+   * `in` requires the field value to be equal to one of the specified
+   * values. If the field value doesn't match any of the specified values, an
+   * error message is generated.
    *
-   *```protobuf
-   *message MyBytes {
-   * // value must in ["&#92;x01&#92;x02", "&#92;x02&#92;x03", "&#92;x03&#92;x04"]
-   * optional bytes value = 1 [(buf.validate.field).bytes.in = {"&#92;x01&#92;x02", "&#92;x02&#92;x03", "&#92;x03&#92;x04"}];
-   *}
-   *```
+   * ```protobuf
+   * message MyBytes {
+   *   // value must in ["&#92;x01&#92;x02", "&#92;x02&#92;x03", "&#92;x03&#92;x04"]
+   *   optional bytes value = 1 [(buf.validate.field).bytes.in = {"&#92;x01&#92;x02", "&#92;x02&#92;x03", "&#92;x03&#92;x04"}];
+   * }
+   * ```
    * </pre>
    *
    * <code>repeated bytes in = 8 [json_name = "in", (.buf.validate.priv.field) = { ... }</code>
@@ -362,16 +362,16 @@ public interface BytesRulesOrBuilder extends
   int getInCount();
   /**
    * <pre>
-   *`in` requires the field value to be equal to one of the specified
-   *values. If the field value doesn't match any of the specified values, an
-   *error message is generated.
+   * `in` requires the field value to be equal to one of the specified
+   * values. If the field value doesn't match any of the specified values, an
+   * error message is generated.
    *
-   *```protobuf
-   *message MyBytes {
-   * // value must in ["&#92;x01&#92;x02", "&#92;x02&#92;x03", "&#92;x03&#92;x04"]
-   * optional bytes value = 1 [(buf.validate.field).bytes.in = {"&#92;x01&#92;x02", "&#92;x02&#92;x03", "&#92;x03&#92;x04"}];
-   *}
-   *```
+   * ```protobuf
+   * message MyBytes {
+   *   // value must in ["&#92;x01&#92;x02", "&#92;x02&#92;x03", "&#92;x03&#92;x04"]
+   *   optional bytes value = 1 [(buf.validate.field).bytes.in = {"&#92;x01&#92;x02", "&#92;x02&#92;x03", "&#92;x03&#92;x04"}];
+   * }
+   * ```
    * </pre>
    *
    * <code>repeated bytes in = 8 [json_name = "in", (.buf.validate.priv.field) = { ... }</code>
@@ -382,17 +382,17 @@ public interface BytesRulesOrBuilder extends
 
   /**
    * <pre>
-   *`not_in` requires the field value to be not equal to any of the specified
-   *values.
-   *If the field value matches any of the specified values, an error message is
-   *generated.
+   * `not_in` requires the field value to be not equal to any of the specified
+   * values.
+   * If the field value matches any of the specified values, an error message is
+   * generated.
    *
-   *```proto
-   *message MyBytes {
-   * // value must not in ["&#92;x01&#92;x02", "&#92;x02&#92;x03", "&#92;x03&#92;x04"]
-   * optional bytes value = 1 [(buf.validate.field).bytes.not_in = {"&#92;x01&#92;x02", "&#92;x02&#92;x03", "&#92;x03&#92;x04"}];
-   *}
-   *```
+   * ```proto
+   * message MyBytes {
+   *   // value must not in ["&#92;x01&#92;x02", "&#92;x02&#92;x03", "&#92;x03&#92;x04"]
+   *   optional bytes value = 1 [(buf.validate.field).bytes.not_in = {"&#92;x01&#92;x02", "&#92;x02&#92;x03", "&#92;x03&#92;x04"}];
+   * }
+   * ```
    * </pre>
    *
    * <code>repeated bytes not_in = 9 [json_name = "notIn", (.buf.validate.priv.field) = { ... }</code>
@@ -401,17 +401,17 @@ public interface BytesRulesOrBuilder extends
   java.util.List<com.google.protobuf.ByteString> getNotInList();
   /**
    * <pre>
-   *`not_in` requires the field value to be not equal to any of the specified
-   *values.
-   *If the field value matches any of the specified values, an error message is
-   *generated.
+   * `not_in` requires the field value to be not equal to any of the specified
+   * values.
+   * If the field value matches any of the specified values, an error message is
+   * generated.
    *
-   *```proto
-   *message MyBytes {
-   * // value must not in ["&#92;x01&#92;x02", "&#92;x02&#92;x03", "&#92;x03&#92;x04"]
-   * optional bytes value = 1 [(buf.validate.field).bytes.not_in = {"&#92;x01&#92;x02", "&#92;x02&#92;x03", "&#92;x03&#92;x04"}];
-   *}
-   *```
+   * ```proto
+   * message MyBytes {
+   *   // value must not in ["&#92;x01&#92;x02", "&#92;x02&#92;x03", "&#92;x03&#92;x04"]
+   *   optional bytes value = 1 [(buf.validate.field).bytes.not_in = {"&#92;x01&#92;x02", "&#92;x02&#92;x03", "&#92;x03&#92;x04"}];
+   * }
+   * ```
    * </pre>
    *
    * <code>repeated bytes not_in = 9 [json_name = "notIn", (.buf.validate.priv.field) = { ... }</code>
@@ -420,17 +420,17 @@ public interface BytesRulesOrBuilder extends
   int getNotInCount();
   /**
    * <pre>
-   *`not_in` requires the field value to be not equal to any of the specified
-   *values.
-   *If the field value matches any of the specified values, an error message is
-   *generated.
+   * `not_in` requires the field value to be not equal to any of the specified
+   * values.
+   * If the field value matches any of the specified values, an error message is
+   * generated.
    *
-   *```proto
-   *message MyBytes {
-   * // value must not in ["&#92;x01&#92;x02", "&#92;x02&#92;x03", "&#92;x03&#92;x04"]
-   * optional bytes value = 1 [(buf.validate.field).bytes.not_in = {"&#92;x01&#92;x02", "&#92;x02&#92;x03", "&#92;x03&#92;x04"}];
-   *}
-   *```
+   * ```proto
+   * message MyBytes {
+   *   // value must not in ["&#92;x01&#92;x02", "&#92;x02&#92;x03", "&#92;x03&#92;x04"]
+   *   optional bytes value = 1 [(buf.validate.field).bytes.not_in = {"&#92;x01&#92;x02", "&#92;x02&#92;x03", "&#92;x03&#92;x04"}];
+   * }
+   * ```
    * </pre>
    *
    * <code>repeated bytes not_in = 9 [json_name = "notIn", (.buf.validate.priv.field) = { ... }</code>
@@ -441,15 +441,15 @@ public interface BytesRulesOrBuilder extends
 
   /**
    * <pre>
-   *`ip` ensures that the field `value` is a valid IP address (v4 or v6) in byte format.
-   *If the field value doesn't meet this constraint, an error message is generated.
+   * `ip` ensures that the field `value` is a valid IP address (v4 or v6) in byte format.
+   * If the field value doesn't meet this constraint, an error message is generated.
    *
-   *```proto
-   *message MyBytes {
-   * // value must be a valid IP address
-   * optional bytes value = 1 [(buf.validate.field).bytes.ip = true];
-   *}
-   *```
+   * ```proto
+   * message MyBytes {
+   *   // value must be a valid IP address
+   *   optional bytes value = 1 [(buf.validate.field).bytes.ip = true];
+   * }
+   * ```
    * </pre>
    *
    * <code>bool ip = 10 [json_name = "ip", (.buf.validate.priv.field) = { ... }</code>
@@ -458,15 +458,15 @@ public interface BytesRulesOrBuilder extends
   boolean hasIp();
   /**
    * <pre>
-   *`ip` ensures that the field `value` is a valid IP address (v4 or v6) in byte format.
-   *If the field value doesn't meet this constraint, an error message is generated.
+   * `ip` ensures that the field `value` is a valid IP address (v4 or v6) in byte format.
+   * If the field value doesn't meet this constraint, an error message is generated.
    *
-   *```proto
-   *message MyBytes {
-   * // value must be a valid IP address
-   * optional bytes value = 1 [(buf.validate.field).bytes.ip = true];
-   *}
-   *```
+   * ```proto
+   * message MyBytes {
+   *   // value must be a valid IP address
+   *   optional bytes value = 1 [(buf.validate.field).bytes.ip = true];
+   * }
+   * ```
    * </pre>
    *
    * <code>bool ip = 10 [json_name = "ip", (.buf.validate.priv.field) = { ... }</code>
@@ -476,15 +476,15 @@ public interface BytesRulesOrBuilder extends
 
   /**
    * <pre>
-   *`ipv4` ensures that the field `value` is a valid IPv4 address in byte format.
-   *If the field value doesn't meet this constraint, an error message is generated.
+   * `ipv4` ensures that the field `value` is a valid IPv4 address in byte format.
+   * If the field value doesn't meet this constraint, an error message is generated.
    *
-   *```proto
-   *message MyBytes {
-   * // value must be a valid IPv4 address
-   * optional bytes value = 1 [(buf.validate.field).bytes.ipv4 = true];
-   *}
-   *```
+   * ```proto
+   * message MyBytes {
+   *   // value must be a valid IPv4 address
+   *   optional bytes value = 1 [(buf.validate.field).bytes.ipv4 = true];
+   * }
+   * ```
    * </pre>
    *
    * <code>bool ipv4 = 11 [json_name = "ipv4", (.buf.validate.priv.field) = { ... }</code>
@@ -493,15 +493,15 @@ public interface BytesRulesOrBuilder extends
   boolean hasIpv4();
   /**
    * <pre>
-   *`ipv4` ensures that the field `value` is a valid IPv4 address in byte format.
-   *If the field value doesn't meet this constraint, an error message is generated.
+   * `ipv4` ensures that the field `value` is a valid IPv4 address in byte format.
+   * If the field value doesn't meet this constraint, an error message is generated.
    *
-   *```proto
-   *message MyBytes {
-   * // value must be a valid IPv4 address
-   * optional bytes value = 1 [(buf.validate.field).bytes.ipv4 = true];
-   *}
-   *```
+   * ```proto
+   * message MyBytes {
+   *   // value must be a valid IPv4 address
+   *   optional bytes value = 1 [(buf.validate.field).bytes.ipv4 = true];
+   * }
+   * ```
    * </pre>
    *
    * <code>bool ipv4 = 11 [json_name = "ipv4", (.buf.validate.priv.field) = { ... }</code>
@@ -511,14 +511,14 @@ public interface BytesRulesOrBuilder extends
 
   /**
    * <pre>
-   *`ipv6` ensures that the field `value` is a valid IPv6 address in byte format.
-   *If the field value doesn't meet this constraint, an error message is generated.
-   *```proto
-   *message MyBytes {
-   * // value must be a valid IPv6 address
-   * optional bytes value = 1 [(buf.validate.field).bytes.ipv6 = true];
-   *}
-   *```
+   * `ipv6` ensures that the field `value` is a valid IPv6 address in byte format.
+   * If the field value doesn't meet this constraint, an error message is generated.
+   * ```proto
+   * message MyBytes {
+   *   // value must be a valid IPv6 address
+   *   optional bytes value = 1 [(buf.validate.field).bytes.ipv6 = true];
+   * }
+   * ```
    * </pre>
    *
    * <code>bool ipv6 = 12 [json_name = "ipv6", (.buf.validate.priv.field) = { ... }</code>
@@ -527,14 +527,14 @@ public interface BytesRulesOrBuilder extends
   boolean hasIpv6();
   /**
    * <pre>
-   *`ipv6` ensures that the field `value` is a valid IPv6 address in byte format.
-   *If the field value doesn't meet this constraint, an error message is generated.
-   *```proto
-   *message MyBytes {
-   * // value must be a valid IPv6 address
-   * optional bytes value = 1 [(buf.validate.field).bytes.ipv6 = true];
-   *}
-   *```
+   * `ipv6` ensures that the field `value` is a valid IPv6 address in byte format.
+   * If the field value doesn't meet this constraint, an error message is generated.
+   * ```proto
+   * message MyBytes {
+   *   // value must be a valid IPv6 address
+   *   optional bytes value = 1 [(buf.validate.field).bytes.ipv6 = true];
+   * }
+   * ```
    * </pre>
    *
    * <code>bool ipv6 = 12 [json_name = "ipv6", (.buf.validate.priv.field) = { ... }</code>

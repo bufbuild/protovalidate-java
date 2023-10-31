@@ -14,12 +14,13 @@
 
 package build.buf.protovalidate.exceptions;
 
-/**
- * {@link CompilationException} extends {@link ValidationException} is returned when a constraint
- * fails to compile. This is a fatal error.
- */
+/** CompilationException is returned when a constraint fails to compile. This is a fatal error. */
 public class CompilationException extends ValidationException {
   public CompilationException(String message) {
     super(message);
+  }
+
+  public CompilationException(String message, Throwable cause) {
+    super(message, cause);
   }
 }

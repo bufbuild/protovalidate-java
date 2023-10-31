@@ -6,20 +6,6 @@ SHELL := bash
 MAKEFLAGS += --warn-undefined-variables
 MAKEFLAGS += --no-builtin-rules
 MAKEFLAGS += --no-print-directory
-BIN := .tmp/bin
-COPYRIGHT_YEARS := 2023
-LICENSE_IGNORE := --ignore src/main/java/build/buf/validate/ --ignore conformance/src/main/java/build/buf/validate/conformance/
-JAVA_VERSION = 20
-JAVAC = javac
-JAVA = java
-GO ?= go
-ARGS ?= --strict_message
-JAVA_COMPILE_OPTIONS = --enable-preview --release $(JAVA_VERSION)
-JAVA_OPTIONS = --enable-preview
-PROTOVALIDATE_VERSION ?= v0.4.2
-JAVA_MAIN_CLASS = build.buf.protovalidate
-JAVA_SOURCES = $(wildcard src/main/java/**/**/**/*.java, src/main/java/**/**/*.java)
-JAVA_CLASSES = $(patsubst src/main/java/%.java, target/classes/%.class, $(JAVA_SOURCES))
 
 .PHONY: all
 all: lint generate build docs conformance  ## Run all tests and lint (default)
@@ -39,30 +25,19 @@ checkgenerate: generate  ## Checks if `make generate` produces a diff.
 
 .PHONY: clean
 clean:  ## Delete intermediate build artifacts
-	@# -X only removes untracked files, -d recurses into directories, -f actually removes files/dirs
-	git clean -Xdf
+	./gradlew clean
 
 .PHONY: conformance
-conformance: build $(BIN)/protovalidate-conformance  ## Execute conformance tests.
-	./gradlew conformance:jar
-	$(BIN)/protovalidate-conformance $(ARGS) ./conformance/conformance.sh
-
-.PHONY: generate-license
-generate-license: $(BIN)/license-header  ## Generates license headers for all source files.
-	$(BIN)/license-header \
-		--license-type apache \
-		--copyright-holder "Buf Technologies, Inc." \
-		--year-range "$(COPYRIGHT_YEARS)" $(LICENSE_IGNORE)
+conformance: ## Execute conformance tests.
+	./gradlew conformance:conformance
 
 .PHONY: help
-help:  ## Describe useful make targets
+help: ## Describe useful make targets
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "%-15s %s\n", $$1, $$2}'
 
 .PHONY: generate
-generate: $(BIN)/buf generate-license  ## Regenerate code and license headers
-	$(BIN)/buf export buf.build/bufbuild/protovalidate:$(PROTOVALIDATE_VERSION) --output src/main/resources
-	$(BIN)/buf generate --template buf.gen.yaml src/main/resources
-	$(BIN)/buf generate --template conformance/buf.gen.yaml -o conformance/ buf.build/bufbuild/protovalidate-testing:$(PROTOVALIDATE_VERSION)
+generate: ## Regenerate code and license headers
+	./gradlew generate
 
 .PHONY: lint
 lint: ## Lint code
@@ -84,19 +59,3 @@ releaselocal: ## Release artifacts to local maven repository.
 .PHONY: test
 test:  ## Run all tests.
 	./gradlew test
-
-$(BIN):
-	@mkdir -p $(BIN)
-
-$(BIN)/buf: $(BIN) Makefile
-	GOBIN=$(abspath $(@D)) $(GO) install \
-		  github.com/bufbuild/buf/cmd/buf@latest
-
-$(BIN)/license-header: $(BIN) Makefile
-	GOBIN=$(abspath $(@D)) $(GO) install \
-		  github.com/bufbuild/buf/private/pkg/licenseheader/cmd/license-header@latest
-
-$(BIN)/protovalidate-conformance: $(BIN) Makefile
-	GOBIN=$(abspath $(BIN)) $(GO) install \
-		github.com/bufbuild/protovalidate/tools/protovalidate-conformance@$(PROTOVALIDATE_VERSION)
-

@@ -3,25 +3,27 @@ assertj = "3.24.2"
 cel = "0.3.21"
 ipaddress = "5.4.0"
 junit = "4.13.2"
-# When updating, make sure to update buf.gen.yaml version to match and regenerate code with 'make generate'.
-protobuf = "3.24.3"
+# When updating, make sure to update buf.gen.yaml and src/test/resources/proto/buf.gen.*.yaml versions to match
+# and regenerate code with 'make generate'.
+protobuf = "3.24.4"
 
 [libraries]
 assertj = { module = "org.assertj:assertj-core", version.ref = "assertj" }
 cel = { module = "org.projectnessie.cel:cel-bom", version.ref = "cel" }
 cel-core = { module = "org.projectnessie.cel:cel-core" }
-errorprone = { module = "com.google.errorprone:error_prone_core", version = "2.22.0" }
-guava = { module = "com.google.guava:guava", version = "32.1.2-jre" }
+errorprone = { module = "com.google.errorprone:error_prone_core", version = "2.23.0" }
+guava = { module = "com.google.guava:guava", version = "32.1.3-jre" }
 ipaddress = { module = "com.github.seancfoley:ipaddress", version.ref = "ipaddress" }
 jakarta-mail-api = { module = "jakarta.mail:jakarta.mail-api", version = "2.1.2" }
 junit = { module = "junit:junit", version.ref = "junit" }
 maven-plugin = { module = "com.vanniktech:gradle-maven-publish-plugin", version = "0.25.3" }
 mail = { module = "javax.mail:mail", version = "1.4.7"}
-nullaway = { module = "com.uber.nullaway:nullaway", version = "0.10.14" }
+nullaway = { module = "com.uber.nullaway:nullaway", version = "0.10.15" }
 protobuf-java = { module = "com.google.protobuf:protobuf-java", version.ref = "protobuf" }
 protobuf-java-util = { module = "com.google.protobuf:protobuf-java-util", version.ref = "protobuf" }
-spotless = { module = "com.diffplug.spotless:spotless-plugin-gradle", version = "6.21.0" }
+spotless = { module = "com.diffplug.spotless:spotless-plugin-gradle", version = "6.22.0" }
 
 [plugins]
 errorprone = { id = "net.ltgt.errorprone", version = "3.1.0" }
+git = { id = "com.palantir.git-version", version = "3.0.0" }
 maven = { id = "com.vanniktech.maven.publish.base", version = "0.25.3" }
