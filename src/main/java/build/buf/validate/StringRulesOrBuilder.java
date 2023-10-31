@@ -1069,6 +1069,240 @@ public interface StringRulesOrBuilder extends
 
   /**
    * <pre>
+   * `ip_with_prefixlen` specifies that the field value must be a valid IP (v4 or v6)
+   * address with prefix length. If the field value isn't a valid IP with prefix
+   * length, an error message will be generated.
+   *
+   *
+   * ```proto
+   * message MyString {
+   *   // value must be a valid IP with prefix length
+   *    string value = 1 [(buf.validate.field).string.ip_with_prefixlen = true];
+   * }
+   * ```
+   * </pre>
+   *
+   * <code>bool ip_with_prefixlen = 26 [json_name = "ipWithPrefixlen", (.buf.validate.priv.field) = { ... }</code>
+   * @return Whether the ipWithPrefixlen field is set.
+   */
+  boolean hasIpWithPrefixlen();
+  /**
+   * <pre>
+   * `ip_with_prefixlen` specifies that the field value must be a valid IP (v4 or v6)
+   * address with prefix length. If the field value isn't a valid IP with prefix
+   * length, an error message will be generated.
+   *
+   *
+   * ```proto
+   * message MyString {
+   *   // value must be a valid IP with prefix length
+   *    string value = 1 [(buf.validate.field).string.ip_with_prefixlen = true];
+   * }
+   * ```
+   * </pre>
+   *
+   * <code>bool ip_with_prefixlen = 26 [json_name = "ipWithPrefixlen", (.buf.validate.priv.field) = { ... }</code>
+   * @return The ipWithPrefixlen.
+   */
+  boolean getIpWithPrefixlen();
+
+  /**
+   * <pre>
+   * `ipv4_with_prefixlen` specifies that the field value must be a valid
+   * IPv4 address with prefix.
+   * If the field value isn't a valid IPv4 address with prefix length,
+   * an error message will be generated.
+   *
+   * ```proto
+   * message MyString {
+   *   // value must be a valid IPv4 address with prefix lentgh
+   *    string value = 1 [(buf.validate.field).string.ipv4_with_prefixlen = true];
+   * }
+   * ```
+   * </pre>
+   *
+   * <code>bool ipv4_with_prefixlen = 27 [json_name = "ipv4WithPrefixlen", (.buf.validate.priv.field) = { ... }</code>
+   * @return Whether the ipv4WithPrefixlen field is set.
+   */
+  boolean hasIpv4WithPrefixlen();
+  /**
+   * <pre>
+   * `ipv4_with_prefixlen` specifies that the field value must be a valid
+   * IPv4 address with prefix.
+   * If the field value isn't a valid IPv4 address with prefix length,
+   * an error message will be generated.
+   *
+   * ```proto
+   * message MyString {
+   *   // value must be a valid IPv4 address with prefix lentgh
+   *    string value = 1 [(buf.validate.field).string.ipv4_with_prefixlen = true];
+   * }
+   * ```
+   * </pre>
+   *
+   * <code>bool ipv4_with_prefixlen = 27 [json_name = "ipv4WithPrefixlen", (.buf.validate.priv.field) = { ... }</code>
+   * @return The ipv4WithPrefixlen.
+   */
+  boolean getIpv4WithPrefixlen();
+
+  /**
+   * <pre>
+   * `ipv6_with_prefixlen` specifies that the field value must be a valid
+   * IPv6 address with prefix length.
+   * If the field value is not a valid IPv6 address with prefix length,
+   * an error message will be generated.
+   *
+   * ```proto
+   * message MyString {
+   *   // value must be a valid IPv6 address prefix length
+   *    string value = 1 [(buf.validate.field).string.ipv6_with_prefixlen = true];
+   * }
+   * ```
+   * </pre>
+   *
+   * <code>bool ipv6_with_prefixlen = 28 [json_name = "ipv6WithPrefixlen", (.buf.validate.priv.field) = { ... }</code>
+   * @return Whether the ipv6WithPrefixlen field is set.
+   */
+  boolean hasIpv6WithPrefixlen();
+  /**
+   * <pre>
+   * `ipv6_with_prefixlen` specifies that the field value must be a valid
+   * IPv6 address with prefix length.
+   * If the field value is not a valid IPv6 address with prefix length,
+   * an error message will be generated.
+   *
+   * ```proto
+   * message MyString {
+   *   // value must be a valid IPv6 address prefix length
+   *    string value = 1 [(buf.validate.field).string.ipv6_with_prefixlen = true];
+   * }
+   * ```
+   * </pre>
+   *
+   * <code>bool ipv6_with_prefixlen = 28 [json_name = "ipv6WithPrefixlen", (.buf.validate.priv.field) = { ... }</code>
+   * @return The ipv6WithPrefixlen.
+   */
+  boolean getIpv6WithPrefixlen();
+
+  /**
+   * <pre>
+   * `ip_prefix` specifies that the field value must be a valid IP (v4 or v6) prefix.
+   * If the field value isn't a valid IP prefix, an error message will be
+   * generated. The prefix must have all zeros for the masked bits of the prefix (e.g.,
+   * `127.0.0.0/16`, not `127.0.0.1/16`).
+   *
+   * ```proto
+   * message MyString {
+   *   // value must be a valid IP prefix
+   *    string value = 1 [(buf.validate.field).string.ip_prefix = true];
+   * }
+   * ```
+   * </pre>
+   *
+   * <code>bool ip_prefix = 29 [json_name = "ipPrefix", (.buf.validate.priv.field) = { ... }</code>
+   * @return Whether the ipPrefix field is set.
+   */
+  boolean hasIpPrefix();
+  /**
+   * <pre>
+   * `ip_prefix` specifies that the field value must be a valid IP (v4 or v6) prefix.
+   * If the field value isn't a valid IP prefix, an error message will be
+   * generated. The prefix must have all zeros for the masked bits of the prefix (e.g.,
+   * `127.0.0.0/16`, not `127.0.0.1/16`).
+   *
+   * ```proto
+   * message MyString {
+   *   // value must be a valid IP prefix
+   *    string value = 1 [(buf.validate.field).string.ip_prefix = true];
+   * }
+   * ```
+   * </pre>
+   *
+   * <code>bool ip_prefix = 29 [json_name = "ipPrefix", (.buf.validate.priv.field) = { ... }</code>
+   * @return The ipPrefix.
+   */
+  boolean getIpPrefix();
+
+  /**
+   * <pre>
+   * `ipv4_prefix` specifies that the field value must be a valid IPv4
+   * prefix. If the field value isn't a valid IPv4 prefix, an error message
+   * will be generated. The prefix must have all zeros for the masked bits of
+   * the prefix (e.g., `127.0.0.0/16`, not `127.0.0.1/16`).
+   *
+   * ```proto
+   * message MyString {
+   *   // value must be a valid IPv4 prefix
+   *    string value = 1 [(buf.validate.field).string.ipv4_prefix = true];
+   * }
+   * ```
+   * </pre>
+   *
+   * <code>bool ipv4_prefix = 30 [json_name = "ipv4Prefix", (.buf.validate.priv.field) = { ... }</code>
+   * @return Whether the ipv4Prefix field is set.
+   */
+  boolean hasIpv4Prefix();
+  /**
+   * <pre>
+   * `ipv4_prefix` specifies that the field value must be a valid IPv4
+   * prefix. If the field value isn't a valid IPv4 prefix, an error message
+   * will be generated. The prefix must have all zeros for the masked bits of
+   * the prefix (e.g., `127.0.0.0/16`, not `127.0.0.1/16`).
+   *
+   * ```proto
+   * message MyString {
+   *   // value must be a valid IPv4 prefix
+   *    string value = 1 [(buf.validate.field).string.ipv4_prefix = true];
+   * }
+   * ```
+   * </pre>
+   *
+   * <code>bool ipv4_prefix = 30 [json_name = "ipv4Prefix", (.buf.validate.priv.field) = { ... }</code>
+   * @return The ipv4Prefix.
+   */
+  boolean getIpv4Prefix();
+
+  /**
+   * <pre>
+   * `ipv6_prefix` specifies that the field value must be a valid IPv6 prefix.
+   * If the field value is not a valid IPv6 prefix, an error message will be
+   * generated. The prefix must have all zeros for the masked bits of the prefix
+   * (e.g., `2001:db8::/48`, not `2001:db8::1/48`).
+   *
+   * ```proto
+   * message MyString {
+   *   // value must be a valid IPv6 prefix
+   *    string value = 1 [(buf.validate.field).string.ipv6_prefix = true];
+   * }
+   * ```
+   * </pre>
+   *
+   * <code>bool ipv6_prefix = 31 [json_name = "ipv6Prefix", (.buf.validate.priv.field) = { ... }</code>
+   * @return Whether the ipv6Prefix field is set.
+   */
+  boolean hasIpv6Prefix();
+  /**
+   * <pre>
+   * `ipv6_prefix` specifies that the field value must be a valid IPv6 prefix.
+   * If the field value is not a valid IPv6 prefix, an error message will be
+   * generated. The prefix must have all zeros for the masked bits of the prefix
+   * (e.g., `2001:db8::/48`, not `2001:db8::1/48`).
+   *
+   * ```proto
+   * message MyString {
+   *   // value must be a valid IPv6 prefix
+   *    string value = 1 [(buf.validate.field).string.ipv6_prefix = true];
+   * }
+   * ```
+   * </pre>
+   *
+   * <code>bool ipv6_prefix = 31 [json_name = "ipv6Prefix", (.buf.validate.priv.field) = { ... }</code>
+   * @return The ipv6Prefix.
+   */
+  boolean getIpv6Prefix();
+
+  /**
+   * <pre>
    * `well_known_regex` specifies a common well-known pattern
    * defined as a regex. If the field value doesn't match the well-known
    * regex, an error message will be generated.
