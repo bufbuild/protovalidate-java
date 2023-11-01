@@ -50,9 +50,14 @@ final class CustomDeclarations {
     decls.add(
         Decls.newFunction(
             "isIpPrefix",
-            Decls.newInstanceOverload("is_ip_prefix_int_bool", Arrays.asList(Decls.String, Decls.Int, Decls.Bool), Decls.Bool),
-            Decls.newInstanceOverload("is_ip_prefix_int", Arrays.asList(Decls.String, Decls.Int), Decls.Bool),
-            Decls.newInstanceOverload("is_ip_prefix_bool", Arrays.asList(Decls.String, Decls.Bool), Decls.Bool),
+            Decls.newInstanceOverload(
+                "is_ip_prefix_int_bool",
+                Arrays.asList(Decls.String, Decls.Int, Decls.Bool),
+                Decls.Bool),
+            Decls.newInstanceOverload(
+                "is_ip_prefix_int", Arrays.asList(Decls.String, Decls.Int), Decls.Bool),
+            Decls.newInstanceOverload(
+                "is_ip_prefix_bool", Arrays.asList(Decls.String, Decls.Bool), Decls.Bool),
             Decls.newInstanceOverload(
                 "is_ip_prefix", Collections.singletonList(Decls.String), Decls.Bool)));
 

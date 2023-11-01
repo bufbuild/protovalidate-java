@@ -298,7 +298,8 @@ final class CustomOverload {
         OVERLOAD_IS_IP_PREFIX,
         null,
         value -> {
-          if (value.type().typeEnum() != TypeEnum.String && value.type().typeEnum() != TypeEnum.Bool ) {
+          if (value.type().typeEnum() != TypeEnum.String
+              && value.type().typeEnum() != TypeEnum.Bool) {
             return Err.noSuchOverload(value, OVERLOAD_IS_IP_PREFIX, null);
           }
           String prefix = (String) value.value();
@@ -308,7 +309,9 @@ final class CustomOverload {
           return Types.boolOf(validateIPPrefix(prefix, 0L, false));
         },
         (lhs, rhs) -> {
-          if (lhs.type().typeEnum() != TypeEnum.String || (rhs.type().typeEnum() != TypeEnum.Int && rhs.type().typeEnum() != TypeEnum.Bool)) {
+          if (lhs.type().typeEnum() != TypeEnum.String
+              || (rhs.type().typeEnum() != TypeEnum.Int
+                  && rhs.type().typeEnum() != TypeEnum.Bool)) {
             return Err.noSuchOverload(lhs, OVERLOAD_IS_IP_PREFIX, rhs);
           }
           String prefix = (String) lhs.value();
@@ -317,22 +320,20 @@ final class CustomOverload {
           }
           if (rhs.type().typeEnum() == TypeEnum.Int) {
             return Types.boolOf(validateIPPrefix(prefix, rhs.intValue(), false));
-          } else if (rhs.type().typeEnum() == TypeEnum.Bool) {
-            return Types.boolOf(validateIPPrefix(prefix, 0L, rhs.booleanValue()));
           }
-          return BoolT.False;
+          return Types.boolOf(validateIPPrefix(prefix, 0L, rhs.booleanValue()));
         },
         (values) -> {
-          if (values[0].type().typeEnum() != TypeEnum.String || values[1].type().typeEnum() != TypeEnum.Int || values[2].type().typeEnum() != TypeEnum.Bool) {
-            return Err.noSuchOverload(values[0], OVERLOAD_IS_IP_PREFIX, "", new Val[]{values[1], values[2]});
+          if (values.length != 3) {
+            return Err.noSuchOverload(values[0], OVERLOAD_IS_IP_PREFIX, "", values);
           }
           String prefix = (String) values[0].value();
           if (prefix.isEmpty()) {
             return BoolT.False;
           }
-          return Types.boolOf(validateIPPrefix(prefix, values[1].intValue(), values[2].booleanValue()));
-        }
-    );
+          return Types.boolOf(
+              validateIPPrefix(prefix, values[1].intValue(), values[2].booleanValue()));
+        });
   }
 
   /**
@@ -551,7 +552,8 @@ final class CustomOverload {
    *
    * @param prefix The input string to validate as an IP prefix.
    * @param ver The IP version to validate against (0 for any version, 4 for IPv4, 6 for IPv6).
-   * @param strict If strict is true and host bits are set in the supplied address, then false is returned.
+   * @param strict If strict is true and host bits are set in the supplied address, then false is
+   *     returned.
    * @return {@code true} if the input string is a valid IP prefix of the specified version, {@code
    *     false} otherwise.
    */

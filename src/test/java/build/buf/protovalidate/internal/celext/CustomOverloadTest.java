@@ -162,6 +162,18 @@ public class CustomOverloadTest {
     }
   }
 
+  @Test
+  public void testIsIpPrefixUnsupported() {
+    List<String> testCases = ImmutableList.of("1.isIpPrefix()");
+    for (String testCase : testCases) {
+      Program.EvalResult result = eval(testCase);
+      Val val = result.getVal();
+      assertThat(Err.isError(val)).isTrue();
+      assertThatThrownBy(() -> val.convertToNative(Exception.class))
+          .isInstanceOf(UnsupportedOperationException.class);
+    }
+  }
+
   private Program.EvalResult eval(String source) {
     return eval(source, Activation.emptyActivation());
   }
