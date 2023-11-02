@@ -324,7 +324,10 @@ final class CustomOverload {
           return Types.boolOf(validateIPPrefix(prefix, 0L, rhs.booleanValue()));
         },
         (values) -> {
-          if (values.length != 3) {
+          if (values.length != 3
+              || values[0].type().typeEnum() != TypeEnum.String
+              || values[1].type().typeEnum() != TypeEnum.Int
+              || values[2].type().typeEnum() != TypeEnum.Bool) {
             return Err.noSuchOverload(values[0], OVERLOAD_IS_IP_PREFIX, "", values);
           }
           String prefix = (String) values[0].value();

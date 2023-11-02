@@ -164,7 +164,12 @@ public class CustomOverloadTest {
 
   @Test
   public void testIsIpPrefixUnsupported() {
-    List<String> testCases = ImmutableList.of("1.isIpPrefix()");
+    List<String> testCases =
+        ImmutableList.of(
+            "1.isIpPrefix()",
+            "'1.2.3.0/24'.isIpPrefix('foo')",
+            "'1.2.3.0/24'.isIpPrefix(4,'foo')",
+            "'1.2.3.0/24'.isIpPrefix('foo',true)");
     for (String testCase : testCases) {
       Program.EvalResult result = eval(testCase);
       Val val = result.getVal();
