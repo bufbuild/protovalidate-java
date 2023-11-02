@@ -7,6 +7,7 @@
 *.iml
 /.idea
 /.tmp
+/bin/
 # Cache of project
 /.gradletasknamecache
 # Ignore Gradle GUI config

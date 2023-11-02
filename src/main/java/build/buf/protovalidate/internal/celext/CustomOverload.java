@@ -18,6 +18,8 @@ import com.google.common.base.Ascii;
 import com.google.common.base.Splitter;
 import com.google.common.net.InetAddresses;
 import com.google.common.primitives.Bytes;
+import inet.ipaddr.IPAddress;
+import inet.ipaddr.IPAddressString;
 import jakarta.mail.internet.AddressException;
 import jakarta.mail.internet.InternetAddress;
 import java.net.Inet4Address;
@@ -50,6 +52,7 @@ final class CustomOverload {
   private static final String OVERLOAD_IS_HOSTNAME = "isHostname";
   private static final String OVERLOAD_IS_EMAIL = "isEmail";
   private static final String OVERLOAD_IS_IP = "isIp";
+  private static final String OVERLOAD_IS_IP_PREFIX = "isIpPrefix";
   private static final String OVERLOAD_IS_URI = "isUri";
   private static final String OVERLOAD_IS_URI_REF = "isUriRef";
   private static final String OVERLOAD_IS_NAN = "isNan";
@@ -70,6 +73,7 @@ final class CustomOverload {
       isHostname(),
       isEmail(),
       isIp(),
+      isIpPrefix(),
       isUri(),
       isUriRef(),
       isNan(),
@@ -285,6 +289,57 @@ final class CustomOverload {
   }
 
   /**
+   * Creates a custom function overload for the "isIpPrefix" operation.
+   *
+   * @return The {@link Overload} instance for the "isIpPrefix" operation.
+   */
+  private static Overload isIpPrefix() {
+    return Overload.overload(
+        OVERLOAD_IS_IP_PREFIX,
+        null,
+        value -> {
+          if (value.type().typeEnum() != TypeEnum.String
+              && value.type().typeEnum() != TypeEnum.Bool) {
+            return Err.noSuchOverload(value, OVERLOAD_IS_IP_PREFIX, null);
+          }
+          String prefix = (String) value.value();
+          if (prefix.isEmpty()) {
+            return BoolT.False;
+          }
+          return Types.boolOf(validateIPPrefix(prefix, 0L, false));
+        },
+        (lhs, rhs) -> {
+          if (lhs.type().typeEnum() != TypeEnum.String
+              || (rhs.type().typeEnum() != TypeEnum.Int
+                  && rhs.type().typeEnum() != TypeEnum.Bool)) {
+            return Err.noSuchOverload(lhs, OVERLOAD_IS_IP_PREFIX, rhs);
+          }
+          String prefix = (String) lhs.value();
+          if (prefix.isEmpty()) {
+            return BoolT.False;
+          }
+          if (rhs.type().typeEnum() == TypeEnum.Int) {
+            return Types.boolOf(validateIPPrefix(prefix, rhs.intValue(), false));
+          }
+          return Types.boolOf(validateIPPrefix(prefix, 0L, rhs.booleanValue()));
+        },
+        (values) -> {
+          if (values.length != 3
+              || values[0].type().typeEnum() != TypeEnum.String
+              || values[1].type().typeEnum() != TypeEnum.Int
+              || values[2].type().typeEnum() != TypeEnum.Bool) {
+            return Err.noSuchOverload(values[0], OVERLOAD_IS_IP_PREFIX, "", values);
+          }
+          String prefix = (String) values[0].value();
+          if (prefix.isEmpty()) {
+            return BoolT.False;
+          }
+          return Types.boolOf(
+              validateIPPrefix(prefix, values[1].intValue(), values[2].booleanValue()));
+        });
+  }
+
+  /**
    * Creates a custom unary function overload for the "isUri" operation.
    *
    * @return The {@link Overload} instance for the "isUri" operation.
@@ -491,6 +546,44 @@ final class CustomOverload {
       return address instanceof Inet4Address;
     } else if (ver == 6L) {
       return address instanceof Inet6Address;
+    }
+    return false;
+  }
+
+  /**
+   * Validates if the input string is a valid IP prefix.
+   *
+   * @param prefix The input string to validate as an IP prefix.
+   * @param ver The IP version to validate against (0 for any version, 4 for IPv4, 6 for IPv6).
+   * @param strict If strict is true and host bits are set in the supplied address, then false is
+   *     returned.
+   * @return {@code true} if the input string is a valid IP prefix of the specified version, {@code
+   *     false} otherwise.
+   */
+  private static boolean validateIPPrefix(String prefix, long ver, boolean strict) {
+    IPAddressString str;
+    IPAddress addr;
+    try {
+      str = new IPAddressString(prefix);
+      addr = str.toAddress();
+    } catch (Exception e) {
+      return false;
+    }
+    if (!addr.isPrefixed()) {
+      return false;
+    }
+    if (strict) {
+      IPAddress mask = addr.getNetworkMask().withoutPrefixLength();
+      if (!addr.mask(mask).equals(str.getHostAddress())) {
+        return false;
+      }
+    }
+    if (ver == 0L) {
+      return true;
+    } else if (ver == 4L) {
+      return addr.isIPv4();
+    } else if (ver == 6L) {
+      return addr.isIPv6();
     }
     return false;
   }

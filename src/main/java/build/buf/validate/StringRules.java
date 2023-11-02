@@ -69,6 +69,12 @@ private static final long serialVersionUID = 0L;
     URI_REF(18),
     ADDRESS(21),
     UUID(22),
+    IP_WITH_PREFIXLEN(26),
+    IPV4_WITH_PREFIXLEN(27),
+    IPV6_WITH_PREFIXLEN(28),
+    IP_PREFIX(29),
+    IPV4_PREFIX(30),
+    IPV6_PREFIX(31),
     WELL_KNOWN_REGEX(24),
     WELLKNOWN_NOT_SET(0);
     private final int value;
@@ -96,6 +102,12 @@ private static final long serialVersionUID = 0L;
         case 18: return URI_REF;
         case 21: return ADDRESS;
         case 22: return UUID;
+        case 26: return IP_WITH_PREFIXLEN;
+        case 27: return IPV4_WITH_PREFIXLEN;
+        case 28: return IPV6_WITH_PREFIXLEN;
+        case 29: return IP_PREFIX;
+        case 30: return IPV4_PREFIX;
+        case 31: return IPV6_PREFIX;
         case 24: return WELL_KNOWN_REGEX;
         case 0: return WELLKNOWN_NOT_SET;
         default: return null;
@@ -1514,6 +1526,300 @@ private static final long serialVersionUID = 0L;
     return false;
   }
 
+  public static final int IP_WITH_PREFIXLEN_FIELD_NUMBER = 26;
+  /**
+   * <pre>
+   * `ip_with_prefixlen` specifies that the field value must be a valid IP (v4 or v6)
+   * address with prefix length. If the field value isn't a valid IP with prefix
+   * length, an error message will be generated.
+   *
+   *
+   * ```proto
+   * message MyString {
+   *   // value must be a valid IP with prefix length
+   *    string value = 1 [(buf.validate.field).string.ip_with_prefixlen = true];
+   * }
+   * ```
+   * </pre>
+   *
+   * <code>bool ip_with_prefixlen = 26 [json_name = "ipWithPrefixlen", (.buf.validate.priv.field) = { ... }</code>
+   * @return Whether the ipWithPrefixlen field is set.
+   */
+  @java.lang.Override
+  public boolean hasIpWithPrefixlen() {
+    return wellKnownCase_ == 26;
+  }
+  /**
+   * <pre>
+   * `ip_with_prefixlen` specifies that the field value must be a valid IP (v4 or v6)
+   * address with prefix length. If the field value isn't a valid IP with prefix
+   * length, an error message will be generated.
+   *
+   *
+   * ```proto
+   * message MyString {
+   *   // value must be a valid IP with prefix length
+   *    string value = 1 [(buf.validate.field).string.ip_with_prefixlen = true];
+   * }
+   * ```
+   * </pre>
+   *
+   * <code>bool ip_with_prefixlen = 26 [json_name = "ipWithPrefixlen", (.buf.validate.priv.field) = { ... }</code>
+   * @return The ipWithPrefixlen.
+   */
+  @java.lang.Override
+  public boolean getIpWithPrefixlen() {
+    if (wellKnownCase_ == 26) {
+      return (java.lang.Boolean) wellKnown_;
+    }
+    return false;
+  }
+
+  public static final int IPV4_WITH_PREFIXLEN_FIELD_NUMBER = 27;
+  /**
+   * <pre>
+   * `ipv4_with_prefixlen` specifies that the field value must be a valid
+   * IPv4 address with prefix.
+   * If the field value isn't a valid IPv4 address with prefix length,
+   * an error message will be generated.
+   *
+   * ```proto
+   * message MyString {
+   *   // value must be a valid IPv4 address with prefix lentgh
+   *    string value = 1 [(buf.validate.field).string.ipv4_with_prefixlen = true];
+   * }
+   * ```
+   * </pre>
+   *
+   * <code>bool ipv4_with_prefixlen = 27 [json_name = "ipv4WithPrefixlen", (.buf.validate.priv.field) = { ... }</code>
+   * @return Whether the ipv4WithPrefixlen field is set.
+   */
+  @java.lang.Override
+  public boolean hasIpv4WithPrefixlen() {
+    return wellKnownCase_ == 27;
+  }
+  /**
+   * <pre>
+   * `ipv4_with_prefixlen` specifies that the field value must be a valid
+   * IPv4 address with prefix.
+   * If the field value isn't a valid IPv4 address with prefix length,
+   * an error message will be generated.
+   *
+   * ```proto
+   * message MyString {
+   *   // value must be a valid IPv4 address with prefix lentgh
+   *    string value = 1 [(buf.validate.field).string.ipv4_with_prefixlen = true];
+   * }
+   * ```
+   * </pre>
+   *
+   * <code>bool ipv4_with_prefixlen = 27 [json_name = "ipv4WithPrefixlen", (.buf.validate.priv.field) = { ... }</code>
+   * @return The ipv4WithPrefixlen.
+   */
+  @java.lang.Override
+  public boolean getIpv4WithPrefixlen() {
+    if (wellKnownCase_ == 27) {
+      return (java.lang.Boolean) wellKnown_;
+    }
+    return false;
+  }
+
+  public static final int IPV6_WITH_PREFIXLEN_FIELD_NUMBER = 28;
+  /**
+   * <pre>
+   * `ipv6_with_prefixlen` specifies that the field value must be a valid
+   * IPv6 address with prefix length.
+   * If the field value is not a valid IPv6 address with prefix length,
+   * an error message will be generated.
+   *
+   * ```proto
+   * message MyString {
+   *   // value must be a valid IPv6 address prefix length
+   *    string value = 1 [(buf.validate.field).string.ipv6_with_prefixlen = true];
+   * }
+   * ```
+   * </pre>
+   *
+   * <code>bool ipv6_with_prefixlen = 28 [json_name = "ipv6WithPrefixlen", (.buf.validate.priv.field) = { ... }</code>
+   * @return Whether the ipv6WithPrefixlen field is set.
+   */
+  @java.lang.Override
+  public boolean hasIpv6WithPrefixlen() {
+    return wellKnownCase_ == 28;
+  }
+  /**
+   * <pre>
+   * `ipv6_with_prefixlen` specifies that the field value must be a valid
+   * IPv6 address with prefix length.
+   * If the field value is not a valid IPv6 address with prefix length,
+   * an error message will be generated.
+   *
+   * ```proto
+   * message MyString {
+   *   // value must be a valid IPv6 address prefix length
+   *    string value = 1 [(buf.validate.field).string.ipv6_with_prefixlen = true];
+   * }
+   * ```
+   * </pre>
+   *
+   * <code>bool ipv6_with_prefixlen = 28 [json_name = "ipv6WithPrefixlen", (.buf.validate.priv.field) = { ... }</code>
+   * @return The ipv6WithPrefixlen.
+   */
+  @java.lang.Override
+  public boolean getIpv6WithPrefixlen() {
+    if (wellKnownCase_ == 28) {
+      return (java.lang.Boolean) wellKnown_;
+    }
+    return false;
+  }
+
+  public static final int IP_PREFIX_FIELD_NUMBER = 29;
+  /**
+   * <pre>
+   * `ip_prefix` specifies that the field value must be a valid IP (v4 or v6) prefix.
+   * If the field value isn't a valid IP prefix, an error message will be
+   * generated. The prefix must have all zeros for the masked bits of the prefix (e.g.,
+   * `127.0.0.0/16`, not `127.0.0.1/16`).
+   *
+   * ```proto
+   * message MyString {
+   *   // value must be a valid IP prefix
+   *    string value = 1 [(buf.validate.field).string.ip_prefix = true];
+   * }
+   * ```
+   * </pre>
+   *
+   * <code>bool ip_prefix = 29 [json_name = "ipPrefix", (.buf.validate.priv.field) = { ... }</code>
+   * @return Whether the ipPrefix field is set.
+   */
+  @java.lang.Override
+  public boolean hasIpPrefix() {
+    return wellKnownCase_ == 29;
+  }
+  /**
+   * <pre>
+   * `ip_prefix` specifies that the field value must be a valid IP (v4 or v6) prefix.
+   * If the field value isn't a valid IP prefix, an error message will be
+   * generated. The prefix must have all zeros for the masked bits of the prefix (e.g.,
+   * `127.0.0.0/16`, not `127.0.0.1/16`).
+   *
+   * ```proto
+   * message MyString {
+   *   // value must be a valid IP prefix
+   *    string value = 1 [(buf.validate.field).string.ip_prefix = true];
+   * }
+   * ```
+   * </pre>
+   *
+   * <code>bool ip_prefix = 29 [json_name = "ipPrefix", (.buf.validate.priv.field) = { ... }</code>
+   * @return The ipPrefix.
+   */
+  @java.lang.Override
+  public boolean getIpPrefix() {
+    if (wellKnownCase_ == 29) {
+      return (java.lang.Boolean) wellKnown_;
+    }
+    return false;
+  }
+
+  public static final int IPV4_PREFIX_FIELD_NUMBER = 30;
+  /**
+   * <pre>
+   * `ipv4_prefix` specifies that the field value must be a valid IPv4
+   * prefix. If the field value isn't a valid IPv4 prefix, an error message
+   * will be generated. The prefix must have all zeros for the masked bits of
+   * the prefix (e.g., `127.0.0.0/16`, not `127.0.0.1/16`).
+   *
+   * ```proto
+   * message MyString {
+   *   // value must be a valid IPv4 prefix
+   *    string value = 1 [(buf.validate.field).string.ipv4_prefix = true];
+   * }
+   * ```
+   * </pre>
+   *
+   * <code>bool ipv4_prefix = 30 [json_name = "ipv4Prefix", (.buf.validate.priv.field) = { ... }</code>
+   * @return Whether the ipv4Prefix field is set.
+   */
+  @java.lang.Override
+  public boolean hasIpv4Prefix() {
+    return wellKnownCase_ == 30;
+  }
+  /**
+   * <pre>
+   * `ipv4_prefix` specifies that the field value must be a valid IPv4
+   * prefix. If the field value isn't a valid IPv4 prefix, an error message
+   * will be generated. The prefix must have all zeros for the masked bits of
+   * the prefix (e.g., `127.0.0.0/16`, not `127.0.0.1/16`).
+   *
+   * ```proto
+   * message MyString {
+   *   // value must be a valid IPv4 prefix
+   *    string value = 1 [(buf.validate.field).string.ipv4_prefix = true];
+   * }
+   * ```
+   * </pre>
+   *
+   * <code>bool ipv4_prefix = 30 [json_name = "ipv4Prefix", (.buf.validate.priv.field) = { ... }</code>
+   * @return The ipv4Prefix.
+   */
+  @java.lang.Override
+  public boolean getIpv4Prefix() {
+    if (wellKnownCase_ == 30) {
+      return (java.lang.Boolean) wellKnown_;
+    }
+    return false;
+  }
+
+  public static final int IPV6_PREFIX_FIELD_NUMBER = 31;
+  /**
+   * <pre>
+   * `ipv6_prefix` specifies that the field value must be a valid IPv6 prefix.
+   * If the field value is not a valid IPv6 prefix, an error message will be
+   * generated. The prefix must have all zeros for the masked bits of the prefix
+   * (e.g., `2001:db8::/48`, not `2001:db8::1/48`).
+   *
+   * ```proto
+   * message MyString {
+   *   // value must be a valid IPv6 prefix
+   *    string value = 1 [(buf.validate.field).string.ipv6_prefix = true];
+   * }
+   * ```
+   * </pre>
+   *
+   * <code>bool ipv6_prefix = 31 [json_name = "ipv6Prefix", (.buf.validate.priv.field) = { ... }</code>
+   * @return Whether the ipv6Prefix field is set.
+   */
+  @java.lang.Override
+  public boolean hasIpv6Prefix() {
+    return wellKnownCase_ == 31;
+  }
+  /**
+   * <pre>
+   * `ipv6_prefix` specifies that the field value must be a valid IPv6 prefix.
+   * If the field value is not a valid IPv6 prefix, an error message will be
+   * generated. The prefix must have all zeros for the masked bits of the prefix
+   * (e.g., `2001:db8::/48`, not `2001:db8::1/48`).
+   *
+   * ```proto
+   * message MyString {
+   *   // value must be a valid IPv6 prefix
+   *    string value = 1 [(buf.validate.field).string.ipv6_prefix = true];
+   * }
+   * ```
+   * </pre>
+   *
+   * <code>bool ipv6_prefix = 31 [json_name = "ipv6Prefix", (.buf.validate.priv.field) = { ... }</code>
+   * @return The ipv6Prefix.
+   */
+  @java.lang.Override
+  public boolean getIpv6Prefix() {
+    if (wellKnownCase_ == 31) {
+      return (java.lang.Boolean) wellKnown_;
+    }
+    return false;
+  }
+
   public static final int WELL_KNOWN_REGEX_FIELD_NUMBER = 24;
   /**
    * <pre>
@@ -1761,6 +2067,30 @@ private static final long serialVersionUID = 0L;
     if (((bitField0_ & 0x00001000) != 0)) {
       output.writeBool(25, strict_);
     }
+    if (wellKnownCase_ == 26) {
+      output.writeBool(
+          26, (boolean)((java.lang.Boolean) wellKnown_));
+    }
+    if (wellKnownCase_ == 27) {
+      output.writeBool(
+          27, (boolean)((java.lang.Boolean) wellKnown_));
+    }
+    if (wellKnownCase_ == 28) {
+      output.writeBool(
+          28, (boolean)((java.lang.Boolean) wellKnown_));
+    }
+    if (wellKnownCase_ == 29) {
+      output.writeBool(
+          29, (boolean)((java.lang.Boolean) wellKnown_));
+    }
+    if (wellKnownCase_ == 30) {
+      output.writeBool(
+          30, (boolean)((java.lang.Boolean) wellKnown_));
+    }
+    if (wellKnownCase_ == 31) {
+      output.writeBool(
+          31, (boolean)((java.lang.Boolean) wellKnown_));
+    }
     getUnknownFields().writeTo(output);
   }
 
@@ -1880,6 +2210,36 @@ private static final long serialVersionUID = 0L;
     if (((bitField0_ & 0x00001000) != 0)) {
       size += com.google.protobuf.CodedOutputStream
         .computeBoolSize(25, strict_);
+    }
+    if (wellKnownCase_ == 26) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeBoolSize(
+            26, (boolean)((java.lang.Boolean) wellKnown_));
+    }
+    if (wellKnownCase_ == 27) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeBoolSize(
+            27, (boolean)((java.lang.Boolean) wellKnown_));
+    }
+    if (wellKnownCase_ == 28) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeBoolSize(
+            28, (boolean)((java.lang.Boolean) wellKnown_));
+    }
+    if (wellKnownCase_ == 29) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeBoolSize(
+            29, (boolean)((java.lang.Boolean) wellKnown_));
+    }
+    if (wellKnownCase_ == 30) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeBoolSize(
+            30, (boolean)((java.lang.Boolean) wellKnown_));
+    }
+    if (wellKnownCase_ == 31) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeBoolSize(
+            31, (boolean)((java.lang.Boolean) wellKnown_));
     }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
@@ -2002,6 +2362,30 @@ private static final long serialVersionUID = 0L;
       case 22:
         if (getUuid()
             != other.getUuid()) return false;
+        break;
+      case 26:
+        if (getIpWithPrefixlen()
+            != other.getIpWithPrefixlen()) return false;
+        break;
+      case 27:
+        if (getIpv4WithPrefixlen()
+            != other.getIpv4WithPrefixlen()) return false;
+        break;
+      case 28:
+        if (getIpv6WithPrefixlen()
+            != other.getIpv6WithPrefixlen()) return false;
+        break;
+      case 29:
+        if (getIpPrefix()
+            != other.getIpPrefix()) return false;
+        break;
+      case 30:
+        if (getIpv4Prefix()
+            != other.getIpv4Prefix()) return false;
+        break;
+      case 31:
+        if (getIpv6Prefix()
+            != other.getIpv6Prefix()) return false;
         break;
       case 24:
         if (getWellKnownRegexValue()
@@ -2133,6 +2517,36 @@ private static final long serialVersionUID = 0L;
         hash = (37 * hash) + UUID_FIELD_NUMBER;
         hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
             getUuid());
+        break;
+      case 26:
+        hash = (37 * hash) + IP_WITH_PREFIXLEN_FIELD_NUMBER;
+        hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+            getIpWithPrefixlen());
+        break;
+      case 27:
+        hash = (37 * hash) + IPV4_WITH_PREFIXLEN_FIELD_NUMBER;
+        hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+            getIpv4WithPrefixlen());
+        break;
+      case 28:
+        hash = (37 * hash) + IPV6_WITH_PREFIXLEN_FIELD_NUMBER;
+        hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+            getIpv6WithPrefixlen());
+        break;
+      case 29:
+        hash = (37 * hash) + IP_PREFIX_FIELD_NUMBER;
+        hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+            getIpPrefix());
+        break;
+      case 30:
+        hash = (37 * hash) + IPV4_PREFIX_FIELD_NUMBER;
+        hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+            getIpv4Prefix());
+        break;
+      case 31:
+        hash = (37 * hash) + IPV6_PREFIX_FIELD_NUMBER;
+        hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+            getIpv6Prefix());
         break;
       case 24:
         hash = (37 * hash) + WELL_KNOWN_REGEX_FIELD_NUMBER;
@@ -2387,7 +2801,7 @@ private static final long serialVersionUID = 0L;
         notIn_.makeImmutable();
         result.notIn_ = notIn_;
       }
-      if (((from_bitField0_ & 0x01000000) != 0)) {
+      if (((from_bitField0_ & 0x40000000) != 0)) {
         result.strict_ = strict_;
         to_bitField0_ |= 0x00001000;
       }
@@ -2551,6 +2965,30 @@ private static final long serialVersionUID = 0L;
           setUuid(other.getUuid());
           break;
         }
+        case IP_WITH_PREFIXLEN: {
+          setIpWithPrefixlen(other.getIpWithPrefixlen());
+          break;
+        }
+        case IPV4_WITH_PREFIXLEN: {
+          setIpv4WithPrefixlen(other.getIpv4WithPrefixlen());
+          break;
+        }
+        case IPV6_WITH_PREFIXLEN: {
+          setIpv6WithPrefixlen(other.getIpv6WithPrefixlen());
+          break;
+        }
+        case IP_PREFIX: {
+          setIpPrefix(other.getIpPrefix());
+          break;
+        }
+        case IPV4_PREFIX: {
+          setIpv4Prefix(other.getIpv4Prefix());
+          break;
+        }
+        case IPV6_PREFIX: {
+          setIpv6Prefix(other.getIpv6Prefix());
+          break;
+        }
         case WELL_KNOWN_REGEX: {
           setWellKnownRegexValue(other.getWellKnownRegexValue());
           break;
@@ -2710,9 +3148,39 @@ private static final long serialVersionUID = 0L;
             } // case 192
             case 200: {
               strict_ = input.readBool();
-              bitField0_ |= 0x01000000;
+              bitField0_ |= 0x40000000;
               break;
             } // case 200
+            case 208: {
+              wellKnown_ = input.readBool();
+              wellKnownCase_ = 26;
+              break;
+            } // case 208
+            case 216: {
+              wellKnown_ = input.readBool();
+              wellKnownCase_ = 27;
+              break;
+            } // case 216
+            case 224: {
+              wellKnown_ = input.readBool();
+              wellKnownCase_ = 28;
+              break;
+            } // case 224
+            case 232: {
+              wellKnown_ = input.readBool();
+              wellKnownCase_ = 29;
+              break;
+            } // case 232
+            case 240: {
+              wellKnown_ = input.readBool();
+              wellKnownCase_ = 30;
+              break;
+            } // case 240
+            case 248: {
+              wellKnown_ = input.readBool();
+              wellKnownCase_ = 31;
+              break;
+            } // case 248
             default: {
               if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                 done = true; // was an endgroup tag
@@ -5572,6 +6040,594 @@ private static final long serialVersionUID = 0L;
 
     /**
      * <pre>
+     * `ip_with_prefixlen` specifies that the field value must be a valid IP (v4 or v6)
+     * address with prefix length. If the field value isn't a valid IP with prefix
+     * length, an error message will be generated.
+     *
+     *
+     * ```proto
+     * message MyString {
+     *   // value must be a valid IP with prefix length
+     *    string value = 1 [(buf.validate.field).string.ip_with_prefixlen = true];
+     * }
+     * ```
+     * </pre>
+     *
+     * <code>bool ip_with_prefixlen = 26 [json_name = "ipWithPrefixlen", (.buf.validate.priv.field) = { ... }</code>
+     * @return Whether the ipWithPrefixlen field is set.
+     */
+    public boolean hasIpWithPrefixlen() {
+      return wellKnownCase_ == 26;
+    }
+    /**
+     * <pre>
+     * `ip_with_prefixlen` specifies that the field value must be a valid IP (v4 or v6)
+     * address with prefix length. If the field value isn't a valid IP with prefix
+     * length, an error message will be generated.
+     *
+     *
+     * ```proto
+     * message MyString {
+     *   // value must be a valid IP with prefix length
+     *    string value = 1 [(buf.validate.field).string.ip_with_prefixlen = true];
+     * }
+     * ```
+     * </pre>
+     *
+     * <code>bool ip_with_prefixlen = 26 [json_name = "ipWithPrefixlen", (.buf.validate.priv.field) = { ... }</code>
+     * @return The ipWithPrefixlen.
+     */
+    public boolean getIpWithPrefixlen() {
+      if (wellKnownCase_ == 26) {
+        return (java.lang.Boolean) wellKnown_;
+      }
+      return false;
+    }
+    /**
+     * <pre>
+     * `ip_with_prefixlen` specifies that the field value must be a valid IP (v4 or v6)
+     * address with prefix length. If the field value isn't a valid IP with prefix
+     * length, an error message will be generated.
+     *
+     *
+     * ```proto
+     * message MyString {
+     *   // value must be a valid IP with prefix length
+     *    string value = 1 [(buf.validate.field).string.ip_with_prefixlen = true];
+     * }
+     * ```
+     * </pre>
+     *
+     * <code>bool ip_with_prefixlen = 26 [json_name = "ipWithPrefixlen", (.buf.validate.priv.field) = { ... }</code>
+     * @param value The ipWithPrefixlen to set.
+     * @return This builder for chaining.
+     */
+    public Builder setIpWithPrefixlen(boolean value) {
+
+      wellKnownCase_ = 26;
+      wellKnown_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <pre>
+     * `ip_with_prefixlen` specifies that the field value must be a valid IP (v4 or v6)
+     * address with prefix length. If the field value isn't a valid IP with prefix
+     * length, an error message will be generated.
+     *
+     *
+     * ```proto
+     * message MyString {
+     *   // value must be a valid IP with prefix length
+     *    string value = 1 [(buf.validate.field).string.ip_with_prefixlen = true];
+     * }
+     * ```
+     * </pre>
+     *
+     * <code>bool ip_with_prefixlen = 26 [json_name = "ipWithPrefixlen", (.buf.validate.priv.field) = { ... }</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearIpWithPrefixlen() {
+      if (wellKnownCase_ == 26) {
+        wellKnownCase_ = 0;
+        wellKnown_ = null;
+        onChanged();
+      }
+      return this;
+    }
+
+    /**
+     * <pre>
+     * `ipv4_with_prefixlen` specifies that the field value must be a valid
+     * IPv4 address with prefix.
+     * If the field value isn't a valid IPv4 address with prefix length,
+     * an error message will be generated.
+     *
+     * ```proto
+     * message MyString {
+     *   // value must be a valid IPv4 address with prefix lentgh
+     *    string value = 1 [(buf.validate.field).string.ipv4_with_prefixlen = true];
+     * }
+     * ```
+     * </pre>
+     *
+     * <code>bool ipv4_with_prefixlen = 27 [json_name = "ipv4WithPrefixlen", (.buf.validate.priv.field) = { ... }</code>
+     * @return Whether the ipv4WithPrefixlen field is set.
+     */
+    public boolean hasIpv4WithPrefixlen() {
+      return wellKnownCase_ == 27;
+    }
+    /**
+     * <pre>
+     * `ipv4_with_prefixlen` specifies that the field value must be a valid
+     * IPv4 address with prefix.
+     * If the field value isn't a valid IPv4 address with prefix length,
+     * an error message will be generated.
+     *
+     * ```proto
+     * message MyString {
+     *   // value must be a valid IPv4 address with prefix lentgh
+     *    string value = 1 [(buf.validate.field).string.ipv4_with_prefixlen = true];
+     * }
+     * ```
+     * </pre>
+     *
+     * <code>bool ipv4_with_prefixlen = 27 [json_name = "ipv4WithPrefixlen", (.buf.validate.priv.field) = { ... }</code>
+     * @return The ipv4WithPrefixlen.
+     */
+    public boolean getIpv4WithPrefixlen() {
+      if (wellKnownCase_ == 27) {
+        return (java.lang.Boolean) wellKnown_;
+      }
+      return false;
+    }
+    /**
+     * <pre>
+     * `ipv4_with_prefixlen` specifies that the field value must be a valid
+     * IPv4 address with prefix.
+     * If the field value isn't a valid IPv4 address with prefix length,
+     * an error message will be generated.
+     *
+     * ```proto
+     * message MyString {
+     *   // value must be a valid IPv4 address with prefix lentgh
+     *    string value = 1 [(buf.validate.field).string.ipv4_with_prefixlen = true];
+     * }
+     * ```
+     * </pre>
+     *
+     * <code>bool ipv4_with_prefixlen = 27 [json_name = "ipv4WithPrefixlen", (.buf.validate.priv.field) = { ... }</code>
+     * @param value The ipv4WithPrefixlen to set.
+     * @return This builder for chaining.
+     */
+    public Builder setIpv4WithPrefixlen(boolean value) {
+
+      wellKnownCase_ = 27;
+      wellKnown_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <pre>
+     * `ipv4_with_prefixlen` specifies that the field value must be a valid
+     * IPv4 address with prefix.
+     * If the field value isn't a valid IPv4 address with prefix length,
+     * an error message will be generated.
+     *
+     * ```proto
+     * message MyString {
+     *   // value must be a valid IPv4 address with prefix lentgh
+     *    string value = 1 [(buf.validate.field).string.ipv4_with_prefixlen = true];
+     * }
+     * ```
+     * </pre>
+     *
+     * <code>bool ipv4_with_prefixlen = 27 [json_name = "ipv4WithPrefixlen", (.buf.validate.priv.field) = { ... }</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearIpv4WithPrefixlen() {
+      if (wellKnownCase_ == 27) {
+        wellKnownCase_ = 0;
+        wellKnown_ = null;
+        onChanged();
+      }
+      return this;
+    }
+
+    /**
+     * <pre>
+     * `ipv6_with_prefixlen` specifies that the field value must be a valid
+     * IPv6 address with prefix length.
+     * If the field value is not a valid IPv6 address with prefix length,
+     * an error message will be generated.
+     *
+     * ```proto
+     * message MyString {
+     *   // value must be a valid IPv6 address prefix length
+     *    string value = 1 [(buf.validate.field).string.ipv6_with_prefixlen = true];
+     * }
+     * ```
+     * </pre>
+     *
+     * <code>bool ipv6_with_prefixlen = 28 [json_name = "ipv6WithPrefixlen", (.buf.validate.priv.field) = { ... }</code>
+     * @return Whether the ipv6WithPrefixlen field is set.
+     */
+    public boolean hasIpv6WithPrefixlen() {
+      return wellKnownCase_ == 28;
+    }
+    /**
+     * <pre>
+     * `ipv6_with_prefixlen` specifies that the field value must be a valid
+     * IPv6 address with prefix length.
+     * If the field value is not a valid IPv6 address with prefix length,
+     * an error message will be generated.
+     *
+     * ```proto
+     * message MyString {
+     *   // value must be a valid IPv6 address prefix length
+     *    string value = 1 [(buf.validate.field).string.ipv6_with_prefixlen = true];
+     * }
+     * ```
+     * </pre>
+     *
+     * <code>bool ipv6_with_prefixlen = 28 [json_name = "ipv6WithPrefixlen", (.buf.validate.priv.field) = { ... }</code>
+     * @return The ipv6WithPrefixlen.
+     */
+    public boolean getIpv6WithPrefixlen() {
+      if (wellKnownCase_ == 28) {
+        return (java.lang.Boolean) wellKnown_;
+      }
+      return false;
+    }
+    /**
+     * <pre>
+     * `ipv6_with_prefixlen` specifies that the field value must be a valid
+     * IPv6 address with prefix length.
+     * If the field value is not a valid IPv6 address with prefix length,
+     * an error message will be generated.
+     *
+     * ```proto
+     * message MyString {
+     *   // value must be a valid IPv6 address prefix length
+     *    string value = 1 [(buf.validate.field).string.ipv6_with_prefixlen = true];
+     * }
+     * ```
+     * </pre>
+     *
+     * <code>bool ipv6_with_prefixlen = 28 [json_name = "ipv6WithPrefixlen", (.buf.validate.priv.field) = { ... }</code>
+     * @param value The ipv6WithPrefixlen to set.
+     * @return This builder for chaining.
+     */
+    public Builder setIpv6WithPrefixlen(boolean value) {
+
+      wellKnownCase_ = 28;
+      wellKnown_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <pre>
+     * `ipv6_with_prefixlen` specifies that the field value must be a valid
+     * IPv6 address with prefix length.
+     * If the field value is not a valid IPv6 address with prefix length,
+     * an error message will be generated.
+     *
+     * ```proto
+     * message MyString {
+     *   // value must be a valid IPv6 address prefix length
+     *    string value = 1 [(buf.validate.field).string.ipv6_with_prefixlen = true];
+     * }
+     * ```
+     * </pre>
+     *
+     * <code>bool ipv6_with_prefixlen = 28 [json_name = "ipv6WithPrefixlen", (.buf.validate.priv.field) = { ... }</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearIpv6WithPrefixlen() {
+      if (wellKnownCase_ == 28) {
+        wellKnownCase_ = 0;
+        wellKnown_ = null;
+        onChanged();
+      }
+      return this;
+    }
+
+    /**
+     * <pre>
+     * `ip_prefix` specifies that the field value must be a valid IP (v4 or v6) prefix.
+     * If the field value isn't a valid IP prefix, an error message will be
+     * generated. The prefix must have all zeros for the masked bits of the prefix (e.g.,
+     * `127.0.0.0/16`, not `127.0.0.1/16`).
+     *
+     * ```proto
+     * message MyString {
+     *   // value must be a valid IP prefix
+     *    string value = 1 [(buf.validate.field).string.ip_prefix = true];
+     * }
+     * ```
+     * </pre>
+     *
+     * <code>bool ip_prefix = 29 [json_name = "ipPrefix", (.buf.validate.priv.field) = { ... }</code>
+     * @return Whether the ipPrefix field is set.
+     */
+    public boolean hasIpPrefix() {
+      return wellKnownCase_ == 29;
+    }
+    /**
+     * <pre>
+     * `ip_prefix` specifies that the field value must be a valid IP (v4 or v6) prefix.
+     * If the field value isn't a valid IP prefix, an error message will be
+     * generated. The prefix must have all zeros for the masked bits of the prefix (e.g.,
+     * `127.0.0.0/16`, not `127.0.0.1/16`).
+     *
+     * ```proto
+     * message MyString {
+     *   // value must be a valid IP prefix
+     *    string value = 1 [(buf.validate.field).string.ip_prefix = true];
+     * }
+     * ```
+     * </pre>
+     *
+     * <code>bool ip_prefix = 29 [json_name = "ipPrefix", (.buf.validate.priv.field) = { ... }</code>
+     * @return The ipPrefix.
+     */
+    public boolean getIpPrefix() {
+      if (wellKnownCase_ == 29) {
+        return (java.lang.Boolean) wellKnown_;
+      }
+      return false;
+    }
+    /**
+     * <pre>
+     * `ip_prefix` specifies that the field value must be a valid IP (v4 or v6) prefix.
+     * If the field value isn't a valid IP prefix, an error message will be
+     * generated. The prefix must have all zeros for the masked bits of the prefix (e.g.,
+     * `127.0.0.0/16`, not `127.0.0.1/16`).
+     *
+     * ```proto
+     * message MyString {
+     *   // value must be a valid IP prefix
+     *    string value = 1 [(buf.validate.field).string.ip_prefix = true];
+     * }
+     * ```
+     * </pre>
+     *
+     * <code>bool ip_prefix = 29 [json_name = "ipPrefix", (.buf.validate.priv.field) = { ... }</code>
+     * @param value The ipPrefix to set.
+     * @return This builder for chaining.
+     */
+    public Builder setIpPrefix(boolean value) {
+
+      wellKnownCase_ = 29;
+      wellKnown_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <pre>
+     * `ip_prefix` specifies that the field value must be a valid IP (v4 or v6) prefix.
+     * If the field value isn't a valid IP prefix, an error message will be
+     * generated. The prefix must have all zeros for the masked bits of the prefix (e.g.,
+     * `127.0.0.0/16`, not `127.0.0.1/16`).
+     *
+     * ```proto
+     * message MyString {
+     *   // value must be a valid IP prefix
+     *    string value = 1 [(buf.validate.field).string.ip_prefix = true];
+     * }
+     * ```
+     * </pre>
+     *
+     * <code>bool ip_prefix = 29 [json_name = "ipPrefix", (.buf.validate.priv.field) = { ... }</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearIpPrefix() {
+      if (wellKnownCase_ == 29) {
+        wellKnownCase_ = 0;
+        wellKnown_ = null;
+        onChanged();
+      }
+      return this;
+    }
+
+    /**
+     * <pre>
+     * `ipv4_prefix` specifies that the field value must be a valid IPv4
+     * prefix. If the field value isn't a valid IPv4 prefix, an error message
+     * will be generated. The prefix must have all zeros for the masked bits of
+     * the prefix (e.g., `127.0.0.0/16`, not `127.0.0.1/16`).
+     *
+     * ```proto
+     * message MyString {
+     *   // value must be a valid IPv4 prefix
+     *    string value = 1 [(buf.validate.field).string.ipv4_prefix = true];
+     * }
+     * ```
+     * </pre>
+     *
+     * <code>bool ipv4_prefix = 30 [json_name = "ipv4Prefix", (.buf.validate.priv.field) = { ... }</code>
+     * @return Whether the ipv4Prefix field is set.
+     */
+    public boolean hasIpv4Prefix() {
+      return wellKnownCase_ == 30;
+    }
+    /**
+     * <pre>
+     * `ipv4_prefix` specifies that the field value must be a valid IPv4
+     * prefix. If the field value isn't a valid IPv4 prefix, an error message
+     * will be generated. The prefix must have all zeros for the masked bits of
+     * the prefix (e.g., `127.0.0.0/16`, not `127.0.0.1/16`).
+     *
+     * ```proto
+     * message MyString {
+     *   // value must be a valid IPv4 prefix
+     *    string value = 1 [(buf.validate.field).string.ipv4_prefix = true];
+     * }
+     * ```
+     * </pre>
+     *
+     * <code>bool ipv4_prefix = 30 [json_name = "ipv4Prefix", (.buf.validate.priv.field) = { ... }</code>
+     * @return The ipv4Prefix.
+     */
+    public boolean getIpv4Prefix() {
+      if (wellKnownCase_ == 30) {
+        return (java.lang.Boolean) wellKnown_;
+      }
+      return false;
+    }
+    /**
+     * <pre>
+     * `ipv4_prefix` specifies that the field value must be a valid IPv4
+     * prefix. If the field value isn't a valid IPv4 prefix, an error message
+     * will be generated. The prefix must have all zeros for the masked bits of
+     * the prefix (e.g., `127.0.0.0/16`, not `127.0.0.1/16`).
+     *
+     * ```proto
+     * message MyString {
+     *   // value must be a valid IPv4 prefix
+     *    string value = 1 [(buf.validate.field).string.ipv4_prefix = true];
+     * }
+     * ```
+     * </pre>
+     *
+     * <code>bool ipv4_prefix = 30 [json_name = "ipv4Prefix", (.buf.validate.priv.field) = { ... }</code>
+     * @param value The ipv4Prefix to set.
+     * @return This builder for chaining.
+     */
+    public Builder setIpv4Prefix(boolean value) {
+
+      wellKnownCase_ = 30;
+      wellKnown_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <pre>
+     * `ipv4_prefix` specifies that the field value must be a valid IPv4
+     * prefix. If the field value isn't a valid IPv4 prefix, an error message
+     * will be generated. The prefix must have all zeros for the masked bits of
+     * the prefix (e.g., `127.0.0.0/16`, not `127.0.0.1/16`).
+     *
+     * ```proto
+     * message MyString {
+     *   // value must be a valid IPv4 prefix
+     *    string value = 1 [(buf.validate.field).string.ipv4_prefix = true];
+     * }
+     * ```
+     * </pre>
+     *
+     * <code>bool ipv4_prefix = 30 [json_name = "ipv4Prefix", (.buf.validate.priv.field) = { ... }</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearIpv4Prefix() {
+      if (wellKnownCase_ == 30) {
+        wellKnownCase_ = 0;
+        wellKnown_ = null;
+        onChanged();
+      }
+      return this;
+    }
+
+    /**
+     * <pre>
+     * `ipv6_prefix` specifies that the field value must be a valid IPv6 prefix.
+     * If the field value is not a valid IPv6 prefix, an error message will be
+     * generated. The prefix must have all zeros for the masked bits of the prefix
+     * (e.g., `2001:db8::/48`, not `2001:db8::1/48`).
+     *
+     * ```proto
+     * message MyString {
+     *   // value must be a valid IPv6 prefix
+     *    string value = 1 [(buf.validate.field).string.ipv6_prefix = true];
+     * }
+     * ```
+     * </pre>
+     *
+     * <code>bool ipv6_prefix = 31 [json_name = "ipv6Prefix", (.buf.validate.priv.field) = { ... }</code>
+     * @return Whether the ipv6Prefix field is set.
+     */
+    public boolean hasIpv6Prefix() {
+      return wellKnownCase_ == 31;
+    }
+    /**
+     * <pre>
+     * `ipv6_prefix` specifies that the field value must be a valid IPv6 prefix.
+     * If the field value is not a valid IPv6 prefix, an error message will be
+     * generated. The prefix must have all zeros for the masked bits of the prefix
+     * (e.g., `2001:db8::/48`, not `2001:db8::1/48`).
+     *
+     * ```proto
+     * message MyString {
+     *   // value must be a valid IPv6 prefix
+     *    string value = 1 [(buf.validate.field).string.ipv6_prefix = true];
+     * }
+     * ```
+     * </pre>
+     *
+     * <code>bool ipv6_prefix = 31 [json_name = "ipv6Prefix", (.buf.validate.priv.field) = { ... }</code>
+     * @return The ipv6Prefix.
+     */
+    public boolean getIpv6Prefix() {
+      if (wellKnownCase_ == 31) {
+        return (java.lang.Boolean) wellKnown_;
+      }
+      return false;
+    }
+    /**
+     * <pre>
+     * `ipv6_prefix` specifies that the field value must be a valid IPv6 prefix.
+     * If the field value is not a valid IPv6 prefix, an error message will be
+     * generated. The prefix must have all zeros for the masked bits of the prefix
+     * (e.g., `2001:db8::/48`, not `2001:db8::1/48`).
+     *
+     * ```proto
+     * message MyString {
+     *   // value must be a valid IPv6 prefix
+     *    string value = 1 [(buf.validate.field).string.ipv6_prefix = true];
+     * }
+     * ```
+     * </pre>
+     *
+     * <code>bool ipv6_prefix = 31 [json_name = "ipv6Prefix", (.buf.validate.priv.field) = { ... }</code>
+     * @param value The ipv6Prefix to set.
+     * @return This builder for chaining.
+     */
+    public Builder setIpv6Prefix(boolean value) {
+
+      wellKnownCase_ = 31;
+      wellKnown_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <pre>
+     * `ipv6_prefix` specifies that the field value must be a valid IPv6 prefix.
+     * If the field value is not a valid IPv6 prefix, an error message will be
+     * generated. The prefix must have all zeros for the masked bits of the prefix
+     * (e.g., `2001:db8::/48`, not `2001:db8::1/48`).
+     *
+     * ```proto
+     * message MyString {
+     *   // value must be a valid IPv6 prefix
+     *    string value = 1 [(buf.validate.field).string.ipv6_prefix = true];
+     * }
+     * ```
+     * </pre>
+     *
+     * <code>bool ipv6_prefix = 31 [json_name = "ipv6Prefix", (.buf.validate.priv.field) = { ... }</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearIpv6Prefix() {
+      if (wellKnownCase_ == 31) {
+        wellKnownCase_ = 0;
+        wellKnown_ = null;
+        onChanged();
+      }
+      return this;
+    }
+
+    /**
+     * <pre>
      * `well_known_regex` specifies a common well-known pattern
      * defined as a regex. If the field value doesn't match the well-known
      * regex, an error message will be generated.
@@ -5800,7 +6856,7 @@ private static final long serialVersionUID = 0L;
      */
     @java.lang.Override
     public boolean hasStrict() {
-      return ((bitField0_ & 0x01000000) != 0);
+      return ((bitField0_ & 0x40000000) != 0);
     }
     /**
      * <pre>
@@ -5848,7 +6904,7 @@ private static final long serialVersionUID = 0L;
     public Builder setStrict(boolean value) {
 
       strict_ = value;
-      bitField0_ |= 0x01000000;
+      bitField0_ |= 0x40000000;
       onChanged();
       return this;
     }
@@ -5872,7 +6928,7 @@ private static final long serialVersionUID = 0L;
      * @return This builder for chaining.
      */
     public Builder clearStrict() {
-      bitField0_ = (bitField0_ & ~0x01000000);
+      bitField0_ = (bitField0_ & ~0x40000000);
       strict_ = false;
       onChanged();
       return this;
