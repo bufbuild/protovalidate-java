@@ -6,5 +6,5 @@ managed:
     except:
       - buf.build/bufbuild/protovalidate
 plugins:
-  - plugin: buf.build/protocolbuffers/java:v24.4
+  - plugin: buf.build/protocolbuffers/java:v25.0
     out: build/generated/test-sources/bufgen
