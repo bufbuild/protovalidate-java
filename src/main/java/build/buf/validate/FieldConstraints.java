@@ -279,16 +279,20 @@ private static final long serialVersionUID = 0L;
   private boolean required_ = false;
   /**
    * <pre>
-   * `required` is an optional boolean attribute that specifies that
-   * this field must be set. If required is set to true, the field value must
-   * not be empty; otherwise, an error message will be generated.
+   * If `required` is true, the field must be populated. Field presence can be
+   * described as "serialized in the wire format," which follows the following rules:
    *
-   * Note that `required` validates that `repeated` fields are non-empty, that is
-   * setting a `repeated` field as `required` is equivalent to `repeated.min_items = 1`.
+   * - the following "nullable" fields must be explicitly set to be considered present:
+   *   - singular message fields (may be their empty value)
+   *   - member fields of a oneof (may be their default value)
+   *   - proto3 optional fields (may be their default value)
+   *   - proto2 scalar fields
+   * - proto3 scalar fields must be non-zero to be considered present
+   * - repeated and map fields must be non-empty to be considered present
    *
    * ```proto
    * message MyMessage {
-   *   // The field `value` must be set.
+   *   // The field `value` must be set to a non-null value.
    *   optional MyOtherMessage value = 1 [(buf.validate.field).required = true];
    * }
    * ```
@@ -306,14 +310,19 @@ private static final long serialVersionUID = 0L;
   private boolean ignoreEmpty_ = false;
   /**
    * <pre>
-   * `ignore_empty` specifies that the validation rules of this field should be
-   * evaluated only if the field isn't empty. If the field is empty, no validation
-   * rules are applied.
+   * If `ignore_empty` is true and applied to a non-nullable field (see
+   * `required` for more details), validation is skipped on the field if it is
+   * the default or empty value. Adding `ignore_empty` to a "nullable" field is
+   * a noop as these unset fields already skip validation (with the exception
+   * of `required`).
    *
    * ```proto
    * message MyRepeated {
-   *   // The field `value` validation rules should be evaluated only if the field isn't empty.
-   *   repeated string value = 1 [(buf.validate.field).ignore_empty = true];
+   *   // The field `value` min_len rule is only applied if the field isn't empty.
+   *   repeated string value = 1 [
+   *     (buf.validate.field).ignore_empty = true,
+   *     (buf.validate.field).min_len = 5
+   *   ];
    * }
    * ```
    * </pre>
@@ -2814,16 +2823,20 @@ private static final long serialVersionUID = 0L;
     private boolean required_ ;
     /**
      * <pre>
-     * `required` is an optional boolean attribute that specifies that
-     * this field must be set. If required is set to true, the field value must
-     * not be empty; otherwise, an error message will be generated.
+     * If `required` is true, the field must be populated. Field presence can be
+     * described as "serialized in the wire format," which follows the following rules:
      *
-     * Note that `required` validates that `repeated` fields are non-empty, that is
-     * setting a `repeated` field as `required` is equivalent to `repeated.min_items = 1`.
+     * - the following "nullable" fields must be explicitly set to be considered present:
+     *   - singular message fields (may be their empty value)
+     *   - member fields of a oneof (may be their default value)
+     *   - proto3 optional fields (may be their default value)
+     *   - proto2 scalar fields
+     * - proto3 scalar fields must be non-zero to be considered present
+     * - repeated and map fields must be non-empty to be considered present
      *
      * ```proto
      * message MyMessage {
-     *   // The field `value` must be set.
+     *   // The field `value` must be set to a non-null value.
      *   optional MyOtherMessage value = 1 [(buf.validate.field).required = true];
      * }
      * ```
@@ -2838,16 +2851,20 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * `required` is an optional boolean attribute that specifies that
-     * this field must be set. If required is set to true, the field value must
-     * not be empty; otherwise, an error message will be generated.
+     * If `required` is true, the field must be populated. Field presence can be
+     * described as "serialized in the wire format," which follows the following rules:
      *
-     * Note that `required` validates that `repeated` fields are non-empty, that is
-     * setting a `repeated` field as `required` is equivalent to `repeated.min_items = 1`.
+     * - the following "nullable" fields must be explicitly set to be considered present:
+     *   - singular message fields (may be their empty value)
+     *   - member fields of a oneof (may be their default value)
+     *   - proto3 optional fields (may be their default value)
+     *   - proto2 scalar fields
+     * - proto3 scalar fields must be non-zero to be considered present
+     * - repeated and map fields must be non-empty to be considered present
      *
      * ```proto
      * message MyMessage {
-     *   // The field `value` must be set.
+     *   // The field `value` must be set to a non-null value.
      *   optional MyOtherMessage value = 1 [(buf.validate.field).required = true];
      * }
      * ```
@@ -2866,16 +2883,20 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * `required` is an optional boolean attribute that specifies that
-     * this field must be set. If required is set to true, the field value must
-     * not be empty; otherwise, an error message will be generated.
+     * If `required` is true, the field must be populated. Field presence can be
+     * described as "serialized in the wire format," which follows the following rules:
      *
-     * Note that `required` validates that `repeated` fields are non-empty, that is
-     * setting a `repeated` field as `required` is equivalent to `repeated.min_items = 1`.
+     * - the following "nullable" fields must be explicitly set to be considered present:
+     *   - singular message fields (may be their empty value)
+     *   - member fields of a oneof (may be their default value)
+     *   - proto3 optional fields (may be their default value)
+     *   - proto2 scalar fields
+     * - proto3 scalar fields must be non-zero to be considered present
+     * - repeated and map fields must be non-empty to be considered present
      *
      * ```proto
      * message MyMessage {
-     *   // The field `value` must be set.
+     *   // The field `value` must be set to a non-null value.
      *   optional MyOtherMessage value = 1 [(buf.validate.field).required = true];
      * }
      * ```
@@ -2894,14 +2915,19 @@ private static final long serialVersionUID = 0L;
     private boolean ignoreEmpty_ ;
     /**
      * <pre>
-     * `ignore_empty` specifies that the validation rules of this field should be
-     * evaluated only if the field isn't empty. If the field is empty, no validation
-     * rules are applied.
+     * If `ignore_empty` is true and applied to a non-nullable field (see
+     * `required` for more details), validation is skipped on the field if it is
+     * the default or empty value. Adding `ignore_empty` to a "nullable" field is
+     * a noop as these unset fields already skip validation (with the exception
+     * of `required`).
      *
      * ```proto
      * message MyRepeated {
-     *   // The field `value` validation rules should be evaluated only if the field isn't empty.
-     *   repeated string value = 1 [(buf.validate.field).ignore_empty = true];
+     *   // The field `value` min_len rule is only applied if the field isn't empty.
+     *   repeated string value = 1 [
+     *     (buf.validate.field).ignore_empty = true,
+     *     (buf.validate.field).min_len = 5
+     *   ];
      * }
      * ```
      * </pre>
@@ -2915,14 +2941,19 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * `ignore_empty` specifies that the validation rules of this field should be
-     * evaluated only if the field isn't empty. If the field is empty, no validation
-     * rules are applied.
+     * If `ignore_empty` is true and applied to a non-nullable field (see
+     * `required` for more details), validation is skipped on the field if it is
+     * the default or empty value. Adding `ignore_empty` to a "nullable" field is
+     * a noop as these unset fields already skip validation (with the exception
+     * of `required`).
      *
      * ```proto
      * message MyRepeated {
-     *   // The field `value` validation rules should be evaluated only if the field isn't empty.
-     *   repeated string value = 1 [(buf.validate.field).ignore_empty = true];
+     *   // The field `value` min_len rule is only applied if the field isn't empty.
+     *   repeated string value = 1 [
+     *     (buf.validate.field).ignore_empty = true,
+     *     (buf.validate.field).min_len = 5
+     *   ];
      * }
      * ```
      * </pre>
@@ -2940,14 +2971,19 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * `ignore_empty` specifies that the validation rules of this field should be
-     * evaluated only if the field isn't empty. If the field is empty, no validation
-     * rules are applied.
+     * If `ignore_empty` is true and applied to a non-nullable field (see
+     * `required` for more details), validation is skipped on the field if it is
+     * the default or empty value. Adding `ignore_empty` to a "nullable" field is
+     * a noop as these unset fields already skip validation (with the exception
+     * of `required`).
      *
      * ```proto
      * message MyRepeated {
-     *   // The field `value` validation rules should be evaluated only if the field isn't empty.
-     *   repeated string value = 1 [(buf.validate.field).ignore_empty = true];
+     *   // The field `value` min_len rule is only applied if the field isn't empty.
+     *   repeated string value = 1 [
+     *     (buf.validate.field).ignore_empty = true,
+     *     (buf.validate.field).min_len = 5
+     *   ];
      * }
      * ```
      * </pre>

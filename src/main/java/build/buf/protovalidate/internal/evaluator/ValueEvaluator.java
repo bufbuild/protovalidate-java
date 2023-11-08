@@ -16,23 +16,19 @@ package build.buf.protovalidate.internal.evaluator;
 
 import build.buf.protovalidate.ValidationResult;
 import build.buf.protovalidate.exceptions.ExecutionException;
-import build.buf.validate.FieldConstraints;
 import build.buf.validate.Violation;
-import com.google.protobuf.Descriptors;
-import com.google.protobuf.DynamicMessage;
 import java.util.ArrayList;
 import java.util.List;
-import org.projectnessie.cel.common.ULong;
+import java.util.Objects;
+import javax.annotation.Nullable;
 
 /**
  * {@link ValueEvaluator} performs validation on any concrete value contained within a singular
  * field, repeated elements, or the keys/values of a map.
  */
 class ValueEvaluator implements Evaluator {
-  private static final ULong ULONG_ZERO = ULong.valueOf(0L);
-
   /** The default or zero-value for this value's type. */
-  private final Object zero;
+  @Nullable private Object zero;
 
   /** The evaluators applied to a value. */
   private final List<Evaluator> evaluators = new ArrayList<>();
@@ -41,37 +37,10 @@ class ValueEvaluator implements Evaluator {
    * Indicates that the Constraints should not be applied if the field is unset or the default
    * (typically zero) value.
    */
-  private final boolean ignoreEmpty;
+  private boolean ignoreEmpty;
 
   /** Constructs a {@link ValueEvaluator}. */
-  ValueEvaluator(FieldConstraints fieldConstraints, Descriptors.FieldDescriptor fieldDescriptor) {
-    Descriptors.FieldDescriptor.Type type = fieldDescriptor.getType();
-    if (type == Descriptors.FieldDescriptor.Type.MESSAGE) {
-      DynamicMessage message =
-          DynamicMessage.getDefaultInstance(fieldDescriptor.getContainingType());
-      this.zero = message.getField(fieldDescriptor);
-    } else {
-      if (!fieldDescriptor.isRepeated()
-          && (type == Descriptors.FieldDescriptor.Type.UINT32
-              || type == Descriptors.FieldDescriptor.Type.UINT64
-              || type == Descriptors.FieldDescriptor.Type.FIXED32
-              || type == Descriptors.FieldDescriptor.Type.FIXED64)) {
-        this.zero = ULONG_ZERO;
-      } else {
-        this.zero = fieldDescriptor.getDefaultValue();
-      }
-    }
-    this.ignoreEmpty = fieldConstraints.getIgnoreEmpty();
-  }
-
-  /**
-   * Gets the value of the ignoreEmpty property.
-   *
-   * @return true if empty values should be ignored, false otherwise.
-   */
-  public boolean getIgnoreEmpty() {
-    return ignoreEmpty;
-  }
+  ValueEvaluator() {}
 
   @Override
   public boolean tautology() {
@@ -80,7 +49,7 @@ class ValueEvaluator implements Evaluator {
 
   @Override
   public ValidationResult evaluate(Value val, boolean failFast) throws ExecutionException {
-    if (ignoreEmpty && isZero(val)) {
+    if (this.shouldIgnore(val.value(Object.class))) {
       return ValidationResult.EMPTY;
     }
     List<Violation> violations = new ArrayList<>();
@@ -108,13 +77,12 @@ class ValueEvaluator implements Evaluator {
     }
   }
 
-  private boolean isZero(Value val) {
-    if (val == null) {
-      return false;
-    }
-    if (zero == null) {
-      return val.value(Object.class) == null;
-    }
-    return zero.equals(val.value(zero.getClass()));
+  public void setIgnoreEmpty(Object zero) {
+    this.ignoreEmpty = true;
+    this.zero = zero;
+  }
+
+  private boolean shouldIgnore(Object value) {
+    return this.ignoreEmpty && Objects.equals(value, this.zero);
   }
 }

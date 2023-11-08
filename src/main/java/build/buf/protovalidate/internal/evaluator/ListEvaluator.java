@@ -16,9 +16,7 @@ package build.buf.protovalidate.internal.evaluator;
 
 import build.buf.protovalidate.ValidationResult;
 import build.buf.protovalidate.exceptions.ExecutionException;
-import build.buf.validate.FieldConstraints;
 import build.buf.validate.Violation;
-import com.google.protobuf.Descriptors;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,14 +26,9 @@ class ListEvaluator implements Evaluator {
   /** Constraints are checked on every item of the list. */
   final ValueEvaluator itemConstraints;
 
-  /**
-   * Constructs a {@link ListEvaluator}.
-   *
-   * @param fieldConstraints The field constraints to apply to each item in the list.
-   * @param fieldDescriptor The descriptor of the repeated field being evaluated.
-   */
-  ListEvaluator(FieldConstraints fieldConstraints, Descriptors.FieldDescriptor fieldDescriptor) {
-    this.itemConstraints = new ValueEvaluator(fieldConstraints, fieldDescriptor);
+  /** Constructs a {@link ListEvaluator}. */
+  ListEvaluator() {
+    this.itemConstraints = new ValueEvaluator();
   }
 
   @Override

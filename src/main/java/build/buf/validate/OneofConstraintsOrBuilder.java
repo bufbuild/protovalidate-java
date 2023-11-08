@@ -10,17 +10,20 @@ public interface OneofConstraintsOrBuilder extends
 
   /**
    * <pre>
-   * `required` is an optional boolean attribute that ensures that
-   * exactly one of the field options in a oneof is set; validation fails if
-   * no fields in the oneof are set.
+   * If `required` is true, exactly one field of the oneof must be present. A
+   * validation error is returned if no fields in the oneof are present. The
+   * field itself may still be a default value; further constraints
+   * should be placed on the fields themselves to ensure they are valid values,
+   * such as `min_len` or `gt`.
    *
    * ```proto
    * message MyMessage {
    *   oneof value {
-   *     // The field `a` or `b` must be set.
+   *     // Either `a` or `b` must be set. If `a` is set, it must also be
+   *     // non-empty; whereas if `b` is set, it can still be an empty string.
    *     option (buf.validate.oneof).required = true;
-   *     optional string a = 1;
-   *     optional string b = 2;
+   *     string a = 1 [(buf.validate.field).string.min_len = 1];
+   *     string b = 2;
    *   }
    * }
    * ```
@@ -32,17 +35,20 @@ public interface OneofConstraintsOrBuilder extends
   boolean hasRequired();
   /**
    * <pre>
-   * `required` is an optional boolean attribute that ensures that
-   * exactly one of the field options in a oneof is set; validation fails if
-   * no fields in the oneof are set.
+   * If `required` is true, exactly one field of the oneof must be present. A
+   * validation error is returned if no fields in the oneof are present. The
+   * field itself may still be a default value; further constraints
+   * should be placed on the fields themselves to ensure they are valid values,
+   * such as `min_len` or `gt`.
    *
    * ```proto
    * message MyMessage {
    *   oneof value {
-   *     // The field `a` or `b` must be set.
+   *     // Either `a` or `b` must be set. If `a` is set, it must also be
+   *     // non-empty; whereas if `b` is set, it can still be an empty string.
    *     option (buf.validate.oneof).required = true;
-   *     optional string a = 1;
-   *     optional string b = 2;
+   *     string a = 1 [(buf.validate.field).string.min_len = 1];
+   *     string b = 2;
    *   }
    * }
    * ```

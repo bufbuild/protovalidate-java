@@ -27,6 +27,7 @@ import build.buf.validate.FieldConstraints;
 import build.buf.validate.MessageConstraints;
 import build.buf.validate.OneofConstraints;
 import build.buf.validate.ValidateProto;
+import com.google.protobuf.ByteString;
 import com.google.protobuf.Descriptors;
 import com.google.protobuf.Descriptors.Descriptor;
 import com.google.protobuf.Descriptors.FieldDescriptor;
@@ -166,13 +167,13 @@ public class EvaluatorBuilder {
   private FieldEvaluator buildField(
       FieldDescriptor fieldDescriptor, FieldConstraints fieldConstraints)
       throws CompilationException {
-    ValueEvaluator valueEvaluatorEval = new ValueEvaluator(fieldConstraints, fieldDescriptor);
+    ValueEvaluator valueEvaluatorEval = new ValueEvaluator();
     FieldEvaluator fieldEvaluator =
         new FieldEvaluator(
             valueEvaluatorEval,
             fieldDescriptor,
             fieldConstraints.getRequired(),
-            fieldDescriptor.hasPresence());
+            fieldConstraints.getIgnoreEmpty() || fieldDescriptor.hasPresence());
     buildValue(fieldDescriptor, fieldConstraints, false, fieldEvaluator.valueEvaluator);
     return fieldEvaluator;
   }
@@ -183,6 +184,7 @@ public class EvaluatorBuilder {
       boolean forItems,
       ValueEvaluator valueEvaluator)
       throws CompilationException {
+    processIgnoreEmpty(fieldDescriptor, fieldConstraints, forItems, valueEvaluator);
     processFieldExpressions(fieldDescriptor, fieldConstraints, valueEvaluator);
     processEmbeddedMessage(fieldDescriptor, fieldConstraints, forItems, valueEvaluator);
     processWrapperConstraints(fieldDescriptor, fieldConstraints, forItems, valueEvaluator);
@@ -191,6 +193,49 @@ public class EvaluatorBuilder {
     processEnumConstraints(fieldDescriptor, fieldConstraints, valueEvaluator);
     processMapConstraints(fieldDescriptor, fieldConstraints, valueEvaluator);
     processRepeatedConstraints(fieldDescriptor, fieldConstraints, forItems, valueEvaluator);
+  }
+
+  private void processIgnoreEmpty(
+      FieldDescriptor fieldDescriptor,
+      FieldConstraints fieldConstraints,
+      boolean forItems,
+      ValueEvaluator valueEvaluatorEval) {
+    if (forItems
+        && fieldConstraints.getIgnoreEmpty()
+        && fieldDescriptor.getType() != FieldDescriptor.Type.MESSAGE) {
+      Object zero = fieldDescriptor.getDefaultValue();
+      if (fieldDescriptor.isRepeated()) {
+        switch (fieldDescriptor.getType().getJavaType()) {
+          case INT:
+            zero = 0;
+            break;
+          case LONG:
+            zero = 0L;
+            break;
+          case FLOAT:
+            zero = 0F;
+            break;
+          case DOUBLE:
+            zero = 0D;
+            break;
+          case BOOLEAN:
+            zero = false;
+            break;
+          case STRING:
+            zero = "";
+            break;
+          case BYTE_STRING:
+            zero = ByteString.EMPTY;
+            break;
+          case ENUM:
+            zero = fieldDescriptor.getEnumType().getValues().get(0);
+            break;
+          default:
+            // noop
+        }
+      }
+      valueEvaluatorEval.setIgnoreEmpty(zero);
+    }
   }
 
   private void processFieldExpressions(
@@ -268,7 +313,7 @@ public class EvaluatorBuilder {
         || !fieldConstraints.hasField(expectedWrapperDescriptor)) {
       return;
     }
-    ValueEvaluator unwrapped = new ValueEvaluator(fieldConstraints, fieldDescriptor);
+    ValueEvaluator unwrapped = new ValueEvaluator();
     buildValue(
         fieldDescriptor.getMessageType().findFieldByName("value"),
         fieldConstraints,
@@ -354,7 +399,7 @@ public class EvaluatorBuilder {
     if (fieldDescriptor.isMapField() || !fieldDescriptor.isRepeated() || forItems) {
       return;
     }
-    ListEvaluator listEval = new ListEvaluator(fieldConstraints, fieldDescriptor);
+    ListEvaluator listEval = new ListEvaluator();
     buildValue(
         fieldDescriptor, fieldConstraints.getRepeated().getItems(), true, listEval.itemConstraints);
     valueEvaluatorEval.append(listEval);

@@ -17,7 +17,6 @@ package build.buf.protovalidate.internal.evaluator;
 import build.buf.protovalidate.ValidationResult;
 import build.buf.protovalidate.exceptions.ExecutionException;
 import build.buf.validate.FieldConstraints;
-import build.buf.validate.MapRules;
 import build.buf.validate.Violation;
 import com.google.protobuf.Descriptors;
 import java.util.ArrayList;
@@ -40,11 +39,8 @@ class MapEvaluator implements Evaluator {
    * @param fieldDescriptor The descriptor of the map field being evaluated.
    */
   MapEvaluator(FieldConstraints fieldConstraints, Descriptors.FieldDescriptor fieldDescriptor) {
-    MapRules map = fieldConstraints.getMap();
-    this.keyEvaluator =
-        new ValueEvaluator(map.getKeys(), fieldDescriptor.getMessageType().findFieldByNumber(1));
-    this.valueEvaluator =
-        new ValueEvaluator(map.getValues(), fieldDescriptor.getMessageType().findFieldByNumber(2));
+    this.keyEvaluator = new ValueEvaluator();
+    this.valueEvaluator = new ValueEvaluator();
   }
 
   /**
