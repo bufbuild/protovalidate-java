@@ -27,9 +27,13 @@ import build.buf.validate.FieldConstraints;
 import build.buf.validate.MessageConstraints;
 import build.buf.validate.OneofConstraints;
 import build.buf.validate.ValidateProto;
-import com.google.protobuf.*;
+import com.google.protobuf.ByteString;
+import com.google.protobuf.Descriptors;
 import com.google.protobuf.Descriptors.Descriptor;
 import com.google.protobuf.Descriptors.FieldDescriptor;
+import com.google.protobuf.DynamicMessage;
+import com.google.protobuf.ExtensionRegistry;
+import com.google.protobuf.InvalidProtocolBufferException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -195,29 +199,42 @@ public class EvaluatorBuilder {
       FieldDescriptor fieldDescriptor,
       FieldConstraints fieldConstraints,
       boolean forItems,
-      ValueEvaluator valueEvaluatorEval)
-      throws CompilationException {
+      ValueEvaluator valueEvaluatorEval) {
     if (forItems
         && fieldConstraints.getIgnoreEmpty()
         && fieldDescriptor.getType() != FieldDescriptor.Type.MESSAGE) {
-      FieldDescriptor desc = fieldDescriptor;
-      if (desc.isRepeated()) {
-        DescriptorProtos.FileDescriptorProto.Builder bldr =
-            DescriptorProtos.FileDescriptorProto.newBuilder().setName("tmp");
-        bldr.addMessageTypeBuilder()
-            .setName(desc.getContainingType().getName())
-            .addField(desc.toProto().toBuilder().clearLabel());
-        Descriptors.FileDescriptor[] deps = {};
-        try {
-          desc =
-              Descriptors.FileDescriptor.buildFrom(bldr.build(), deps)
-                  .findMessageTypeByName(desc.getContainingType().getName())
-                  .findFieldByNumber(desc.getNumber());
-        } catch (Descriptors.DescriptorValidationException e) {
-          throw new CompilationException(e.toString());
+      Object zero = fieldDescriptor.getDefaultValue();
+      if (fieldDescriptor.isRepeated()) {
+        switch (fieldDescriptor.getType().getJavaType()) {
+          case INT:
+            zero = 0;
+            break;
+          case LONG:
+            zero = 0L;
+            break;
+          case FLOAT:
+            zero = 0F;
+            break;
+          case DOUBLE:
+            zero = 0D;
+            break;
+          case BOOLEAN:
+            zero = false;
+            break;
+          case STRING:
+            zero = "";
+            break;
+          case BYTE_STRING:
+            zero = ByteString.EMPTY;
+            break;
+          case ENUM:
+            zero = fieldDescriptor.getEnumType().getValues().get(0);
+            break;
+          default:
+            // noop
         }
       }
-      valueEvaluatorEval.setIgnoreEmpty(desc.getDefaultValue());
+      valueEvaluatorEval.setIgnoreEmpty(zero);
     }
   }
 

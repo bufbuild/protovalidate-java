@@ -92,11 +92,6 @@ public final class ObjectValue implements Value {
   }
 
   @Override
-  public Object raw() {
-    return value;
-  }
-
-  @Override
   public Map<Value, Value> mapValue() {
     List<AbstractMessage> input =
         value instanceof List

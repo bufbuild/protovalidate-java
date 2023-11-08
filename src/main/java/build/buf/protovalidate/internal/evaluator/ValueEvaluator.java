@@ -19,7 +19,8 @@ import build.buf.protovalidate.exceptions.ExecutionException;
 import build.buf.validate.Violation;
 import java.util.ArrayList;
 import java.util.List;
-import org.checkerframework.checker.nullness.qual.Nullable;
+import java.util.Objects;
+import javax.annotation.Nullable;
 
 /**
  * {@link ValueEvaluator} performs validation on any concrete value contained within a singular
@@ -48,7 +49,7 @@ class ValueEvaluator implements Evaluator {
 
   @Override
   public ValidationResult evaluate(Value val, boolean failFast) throws ExecutionException {
-    if (this.shouldIgnore(val.raw())) {
+    if (this.shouldIgnore(val.value(Object.class))) {
       return ValidationResult.EMPTY;
     }
     List<Violation> violations = new ArrayList<>();
@@ -82,6 +83,6 @@ class ValueEvaluator implements Evaluator {
   }
 
   private boolean shouldIgnore(Object value) {
-    return this.ignoreEmpty && value == this.zero;
+    return this.ignoreEmpty && Objects.equals(value, this.zero);
   }
 }

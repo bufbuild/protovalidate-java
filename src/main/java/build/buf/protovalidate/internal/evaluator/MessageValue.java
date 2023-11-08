@@ -56,9 +56,4 @@ public final class MessageValue implements Value {
   public Map<Value, Value> mapValue() {
     return Collections.emptyMap();
   }
-
-  @Override
-  public Object raw() {
-    return value;
-  }
 }

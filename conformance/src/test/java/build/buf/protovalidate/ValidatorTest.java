@@ -28,7 +28,6 @@ import build.buf.validate.conformance.cases.EnumDefined;
 import build.buf.validate.conformance.cases.Fixed32LT;
 import build.buf.validate.conformance.cases.Int32In;
 import build.buf.validate.conformance.cases.MapRecursive;
-import build.buf.validate.conformance.cases.OneofIgnoreEmpty;
 import build.buf.validate.conformance.cases.RepeatedEnumIn;
 import build.buf.validate.conformance.cases.RepeatedExact;
 import build.buf.validate.conformance.cases.RepeatedExactIgnore;
@@ -107,15 +106,6 @@ public class ValidatorTest {
   public void timestampcost() throws Exception {
     TimestampConst invalid =
         TimestampConst.newBuilder().setVal(Timestamp.newBuilder().setSeconds(3).build()).build();
-    ValidationResult validate = validator.validate(invalid);
-    assertThat(validate.getViolations()).isEmpty();
-    assertThat(validate.isSuccess()).isTrue();
-  }
-
-  @Test
-  public void oneofIgnoreEmpty() throws Exception {
-    OneofIgnoreEmpty invalid =
-        OneofIgnoreEmpty.newBuilder().setY(ByteString.copyFromUtf8("")).build();
     ValidationResult validate = validator.validate(invalid);
     assertThat(validate.getViolations()).isEmpty();
     assertThat(validate.isSuccess()).isTrue();

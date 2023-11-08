@@ -35,10 +35,10 @@ public final class OneofsProto {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_buf_validate_conformance_cases_OneofRequired_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_buf_validate_conformance_cases_OneofIgnoreEmpty_descriptor;
+    internal_static_buf_validate_conformance_cases_OneofRequiredWithRequiredField_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_buf_validate_conformance_cases_OneofIgnoreEmpty_fieldAccessorTable;
+      internal_static_buf_validate_conformance_cases_OneofRequiredWithRequiredField_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -60,15 +60,14 @@ public final class OneofsProto {
       "\001x\022\016\n\001y\030\002 \001(\005H\000R\001y\0224\n\025name_with_undersco" +
       "res\030\003 \001(\005H\000R\023nameWithUnderscores\022-\n\022unde" +
       "r_and_1_number\030\004 \001(\005H\000R\017underAnd1NumberB" +
-      "\n\n\001o\022\005\272H\002\010\001\"s\n\020OneofIgnoreEmpty\022\034\n\001x\030\001 \001" +
-      "(\tB\014\272H\tr\004\020\003\030\005\320\001\001H\000R\001x\022\034\n\001y\030\002 \001(\014B\014\272H\tz\004\020" +
-      "\003\030\005\320\001\001H\000R\001y\022\036\n\001z\030\003 \001(\005B\016\272H\013\032\006\030\200\001(\200\002\320\001\001H\000" +
-      "R\001zB\003\n\001oB\317\001\n$build.buf.validate.conforma" +
-      "nce.casesB\013OneofsProtoP\001\242\002\004BVCC\252\002\036Buf.Va" +
-      "lidate.Conformance.Cases\312\002\036Buf\\Validate\\" +
-      "Conformance\\Cases\342\002*Buf\\Validate\\Conform" +
-      "ance\\Cases\\GPBMetadata\352\002!Buf::Validate::" +
-      "Conformance::Casesb\006proto3"
+      "\n\n\001o\022\005\272H\002\010\001\"T\n\036OneofRequiredWithRequired" +
+      "Field\022\026\n\001a\030\001 \001(\tB\006\272H\003\310\001\001H\000R\001a\022\016\n\001b\030\002 \001(\t" +
+      "H\000R\001bB\n\n\001o\022\005\272H\002\010\001B\317\001\n$build.buf.validate" +
+      ".conformance.casesB\013OneofsProtoP\001\242\002\004BVCC" +
+      "\252\002\036Buf.Validate.Conformance.Cases\312\002\036Buf\\" +
+      "Validate\\Conformance\\Cases\342\002*Buf\\Validat" +
+      "e\\Conformance\\Cases\\GPBMetadata\352\002!Buf::V" +
+      "alidate::Conformance::Casesb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -99,12 +98,12 @@ public final class OneofsProto {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_OneofRequired_descriptor,
         new java.lang.String[] { "X", "Y", "NameWithUnderscores", "UnderAnd1Number", "O", });
-    internal_static_buf_validate_conformance_cases_OneofIgnoreEmpty_descriptor =
+    internal_static_buf_validate_conformance_cases_OneofRequiredWithRequiredField_descriptor =
       getDescriptor().getMessageTypes().get(4);
-    internal_static_buf_validate_conformance_cases_OneofIgnoreEmpty_fieldAccessorTable = new
+    internal_static_buf_validate_conformance_cases_OneofRequiredWithRequiredField_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_buf_validate_conformance_cases_OneofIgnoreEmpty_descriptor,
-        new java.lang.String[] { "X", "Y", "Z", "O", });
+        internal_static_buf_validate_conformance_cases_OneofRequiredWithRequiredField_descriptor,
+        new java.lang.String[] { "A", "B", "O", });
     com.google.protobuf.ExtensionRegistry registry =
         com.google.protobuf.ExtensionRegistry.newInstance();
     registry.add(build.buf.validate.ValidateProto.field);
