@@ -57,4 +57,6 @@ public interface Value {
    *     list.
    */
   Map<Value, Value> mapValue();
+
+  Object raw();
 }

@@ -27,12 +27,9 @@ import build.buf.validate.FieldConstraints;
 import build.buf.validate.MessageConstraints;
 import build.buf.validate.OneofConstraints;
 import build.buf.validate.ValidateProto;
-import com.google.protobuf.Descriptors;
+import com.google.protobuf.*;
 import com.google.protobuf.Descriptors.Descriptor;
 import com.google.protobuf.Descriptors.FieldDescriptor;
-import com.google.protobuf.DynamicMessage;
-import com.google.protobuf.ExtensionRegistry;
-import com.google.protobuf.InvalidProtocolBufferException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -166,13 +163,13 @@ public class EvaluatorBuilder {
   private FieldEvaluator buildField(
       FieldDescriptor fieldDescriptor, FieldConstraints fieldConstraints)
       throws CompilationException {
-    ValueEvaluator valueEvaluatorEval = new ValueEvaluator(fieldConstraints, fieldDescriptor);
+    ValueEvaluator valueEvaluatorEval = new ValueEvaluator();
     FieldEvaluator fieldEvaluator =
         new FieldEvaluator(
             valueEvaluatorEval,
             fieldDescriptor,
             fieldConstraints.getRequired(),
-            fieldDescriptor.hasPresence());
+            fieldConstraints.getIgnoreEmpty() || fieldDescriptor.hasPresence());
     buildValue(fieldDescriptor, fieldConstraints, false, fieldEvaluator.valueEvaluator);
     return fieldEvaluator;
   }
@@ -183,6 +180,7 @@ public class EvaluatorBuilder {
       boolean forItems,
       ValueEvaluator valueEvaluator)
       throws CompilationException {
+    processIgnoreEmpty(fieldDescriptor, fieldConstraints, forItems, valueEvaluator);
     processFieldExpressions(fieldDescriptor, fieldConstraints, valueEvaluator);
     processEmbeddedMessage(fieldDescriptor, fieldConstraints, forItems, valueEvaluator);
     processWrapperConstraints(fieldDescriptor, fieldConstraints, forItems, valueEvaluator);
@@ -191,6 +189,36 @@ public class EvaluatorBuilder {
     processEnumConstraints(fieldDescriptor, fieldConstraints, valueEvaluator);
     processMapConstraints(fieldDescriptor, fieldConstraints, valueEvaluator);
     processRepeatedConstraints(fieldDescriptor, fieldConstraints, forItems, valueEvaluator);
+  }
+
+  private void processIgnoreEmpty(
+      FieldDescriptor fieldDescriptor,
+      FieldConstraints fieldConstraints,
+      boolean forItems,
+      ValueEvaluator valueEvaluatorEval)
+      throws CompilationException {
+    if (forItems
+        && fieldConstraints.getIgnoreEmpty()
+        && fieldDescriptor.getType() != FieldDescriptor.Type.MESSAGE) {
+      FieldDescriptor desc = fieldDescriptor;
+      if (desc.isRepeated()) {
+        DescriptorProtos.FileDescriptorProto.Builder bldr =
+            DescriptorProtos.FileDescriptorProto.newBuilder().setName("tmp");
+        bldr.addMessageTypeBuilder()
+            .setName(desc.getContainingType().getName())
+            .addField(desc.toProto().toBuilder().clearLabel());
+        Descriptors.FileDescriptor[] deps = {};
+        try {
+          desc =
+              Descriptors.FileDescriptor.buildFrom(bldr.build(), deps)
+                  .findMessageTypeByName(desc.getContainingType().getName())
+                  .findFieldByNumber(desc.getNumber());
+        } catch (Descriptors.DescriptorValidationException e) {
+          throw new CompilationException(e.toString());
+        }
+      }
+      valueEvaluatorEval.setIgnoreEmpty(desc.getDefaultValue());
+    }
   }
 
   private void processFieldExpressions(
@@ -268,7 +296,7 @@ public class EvaluatorBuilder {
         || !fieldConstraints.hasField(expectedWrapperDescriptor)) {
       return;
     }
-    ValueEvaluator unwrapped = new ValueEvaluator(fieldConstraints, fieldDescriptor);
+    ValueEvaluator unwrapped = new ValueEvaluator();
     buildValue(
         fieldDescriptor.getMessageType().findFieldByName("value"),
         fieldConstraints,
@@ -354,7 +382,7 @@ public class EvaluatorBuilder {
     if (fieldDescriptor.isMapField() || !fieldDescriptor.isRepeated() || forItems) {
       return;
     }
-    ListEvaluator listEval = new ListEvaluator(fieldConstraints, fieldDescriptor);
+    ListEvaluator listEval = new ListEvaluator();
     buildValue(
         fieldDescriptor, fieldConstraints.getRepeated().getItems(), true, listEval.itemConstraints);
     valueEvaluatorEval.append(listEval);

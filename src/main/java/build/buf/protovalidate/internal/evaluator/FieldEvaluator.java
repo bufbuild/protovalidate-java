@@ -34,22 +34,21 @@ class FieldEvaluator implements Evaluator {
   private final boolean required;
 
   /**
-   * Indicates that the evaluators should not be applied to this field if the value is unset. Fields
-   * that contain messages, are prefixed with `optional`, or are part of a oneof are considered
-   * optional. evaluators will still be applied if the field is set as the zero value.
+   * IgnoreEmpty indicates if a field should skip validation on its zero value. This field is
+   * generally true for nullable fields or fields with the ignore_empty constraint explicitly set.
    */
-  private final boolean optional;
+  private final boolean ignoreEmpty;
 
   /** Constructs a new {@link FieldEvaluator} */
   FieldEvaluator(
       ValueEvaluator valueEvaluator,
       FieldDescriptor descriptor,
       boolean required,
-      boolean optional) {
+      boolean ignoreEmpty) {
     this.valueEvaluator = valueEvaluator;
     this.descriptor = descriptor;
     this.required = required;
-    this.optional = optional;
+    this.ignoreEmpty = ignoreEmpty;
   }
 
   @Override
@@ -78,7 +77,7 @@ class FieldEvaluator implements Evaluator {
                   .setMessage("value is required")
                   .build()));
     }
-    if ((optional || valueEvaluator.getIgnoreEmpty()) && !hasField) {
+    if (ignoreEmpty && !hasField) {
       return ValidationResult.EMPTY;
     }
     Object fieldValue = message.getField(descriptor);
