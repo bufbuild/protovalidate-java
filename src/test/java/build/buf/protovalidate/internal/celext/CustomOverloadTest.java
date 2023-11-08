@@ -21,7 +21,7 @@ import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
 import java.util.List;
 import java.util.Map;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.projectnessie.cel.Ast;
 import org.projectnessie.cel.Env;
 import org.projectnessie.cel.Library;

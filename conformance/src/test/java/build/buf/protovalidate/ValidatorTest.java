@@ -15,6 +15,7 @@
 package build.buf.protovalidate;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import build.buf.protovalidate.exceptions.ExecutionException;
 import build.buf.protovalidate.exceptions.ValidationException;
@@ -47,14 +48,14 @@ import com.google.protobuf.DoubleValue;
 import com.google.protobuf.Duration;
 import com.google.protobuf.Timestamp;
 import java.util.Arrays;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 public class ValidatorTest {
 
   private Validator validator;
 
-  @Before
+  @BeforeEach
   public void setUp() {
     Config config = Config.newBuilder().build();
     validator = new Validator(config);
@@ -219,10 +220,10 @@ public class ValidatorTest {
     assertThat(validate.getViolations()).hasSize(1);
   }
 
-  @Test(expected = ExecutionException.class)
-  public void testDynRuntimeError() throws Exception {
+  @Test
+  public void testDynRuntimeError() {
     DynRuntimeError invalid = DynRuntimeError.newBuilder().setA(123).build();
-    validator.validate(invalid);
+    assertThatThrownBy(() -> validator.validate(invalid)).isInstanceOf(ExecutionException.class);
   }
 
   @Test

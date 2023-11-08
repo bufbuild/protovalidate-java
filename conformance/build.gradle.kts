@@ -82,7 +82,8 @@ dependencies {
     implementation(libs.protobuf.java)
 
     implementation(libs.assertj)
-    implementation(libs.junit)
+    implementation(platform(libs.junit.bom))
+    testImplementation("org.junit.jupiter:junit-jupiter")
 
     errorprone(libs.errorprone)
 }

@@ -203,6 +203,7 @@ allprojects {
         java {
             importOrder()
             removeUnusedImports()
+            replaceRegex("Remove wildcard imports", "import\\s+[^\\*\\s]+\\*;(\\r\\n|\\r|\\n)", "$1")
             googleJavaFormat()
             endWithNewline()
             trimTrailingWhitespace()
@@ -214,6 +215,9 @@ allprojects {
                 attributes("Implementation-Version" to releaseVersion)
             }
         }
+    }
+    tasks.withType<Test>().configureEach {
+        useJUnitPlatform()
     }
 }
 
@@ -272,7 +276,8 @@ dependencies {
     implementation(libs.jakarta.mail.api)
 
     testImplementation(libs.assertj)
-    testImplementation(libs.junit)
+    testImplementation(platform(libs.junit.bom))
+    testImplementation("org.junit.jupiter:junit-jupiter")
 
     errorprone(libs.errorprone)
 }
