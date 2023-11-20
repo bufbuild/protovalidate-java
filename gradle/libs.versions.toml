@@ -5,7 +5,7 @@ ipaddress = "5.4.0"
 junit = "5.10.1"
 # When updating, make sure to update buf.gen.yaml and src/test/resources/proto/buf.gen.*.yaml versions to match
 # and regenerate code with 'make generate'.
-protobuf = "3.25.0"
+protobuf = "3.25.1"
 
 [libraries]
 assertj = { module = "org.assertj:assertj-core", version.ref = "assertj" }
