@@ -1,6 +1,6 @@
 [versions]
 assertj = "3.24.2"
-cel = "0.4.1"
+cel = "0.4.3"
 ipaddress = "5.4.0"
 junit = "5.10.1"
 # When updating, make sure to update buf.gen.yaml and src/test/resources/proto/buf.gen.*.yaml versions to match
