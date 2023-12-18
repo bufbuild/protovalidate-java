@@ -248,20 +248,6 @@ final class Format {
   }
 
   /**
-   * Formats an integer value.
-   *
-   * @param builder the StringBuilder to append the formatted integer value to.
-   * @param value the value to format.
-   */
-  private static void formatInteger(StringBuilder builder, int value) {
-    if (value < 0) {
-      builder.append("-");
-      value = -value;
-    }
-    builder.append(value);
-  }
-
-  /**
    * Formats a hexadecimal value.
    *
    * @param builder the StringBuilder to append the formatted hexadecimal value to.
