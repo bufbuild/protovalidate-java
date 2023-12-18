@@ -157,7 +157,7 @@ final class Format {
     if (type == TypeEnum.Bool) {
       builder.append(val.booleanValue());
     } else if (type == TypeEnum.Int || type == TypeEnum.Uint) {
-      formatInteger(builder, Long.valueOf(val.intValue()).intValue());
+      formatDecimal(builder, val);
     } else if (type == TypeEnum.Double) {
       DecimalFormat format = new DecimalFormat("0.#");
       builder.append(format.format(val.value()));
