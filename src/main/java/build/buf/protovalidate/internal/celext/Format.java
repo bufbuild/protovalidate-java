@@ -157,7 +157,7 @@ final class Format {
     if (type == TypeEnum.Bool) {
       builder.append(val.booleanValue());
     } else if (type == TypeEnum.Int || type == TypeEnum.Uint) {
-      formatInteger(builder, Long.valueOf(val.intValue()).intValue());
+      formatDecimal(builder, val);
     } else if (type == TypeEnum.Double) {
       DecimalFormat format = new DecimalFormat("0.#");
       builder.append(format.format(val.value()));
@@ -245,20 +245,6 @@ final class Format {
         .append("\"")
         .append(new String((byte[]) val.value(), StandardCharsets.UTF_8))
         .append("\"");
-  }
-
-  /**
-   * Formats an integer value.
-   *
-   * @param builder the StringBuilder to append the formatted integer value to.
-   * @param value the value to format.
-   */
-  private static void formatInteger(StringBuilder builder, int value) {
-    if (value < 0) {
-      builder.append("-");
-      value = -value;
-    }
-    builder.append(value);
   }
 
   /**
