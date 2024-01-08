@@ -16,7 +16,7 @@ guava = { module = "com.google.guava:guava", version = "33.0.0-jre" }
 ipaddress = { module = "com.github.seancfoley:ipaddress", version.ref = "ipaddress" }
 jakarta-mail-api = { module = "jakarta.mail:jakarta.mail-api", version = "2.1.2" }
 junit-bom = { module = "org.junit:junit-bom", version.ref = "junit" }
-maven-plugin = { module = "com.vanniktech:gradle-maven-publish-plugin", version = "0.26.0" }
+maven-plugin = { module = "com.vanniktech:gradle-maven-publish-plugin", version = "0.27.0" }
 mail = { module = "javax.mail:mail", version = "1.4.7"}
 nullaway = { module = "com.uber.nullaway:nullaway", version = "0.10.19" }
 protobuf-java = { module = "com.google.protobuf:protobuf-java", version.ref = "protobuf" }
