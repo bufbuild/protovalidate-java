@@ -1,6 +1,6 @@
 [versions]
 assertj = "3.25.1"
-cel = "0.4.3"
+cel = "0.4.4"
 ipaddress = "5.4.0"
 junit = "5.10.1"
 maven-publish = "0.27.0"
