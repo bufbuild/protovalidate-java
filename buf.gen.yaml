@@ -2,5 +2,5 @@ version: v1
 managed:
   enabled: false
 plugins:
-  - plugin: buf.build/protocolbuffers/java:v25.1
+  - plugin: buf.build/protocolbuffers/java:v25.2
     out: src/main/java
