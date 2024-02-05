@@ -1,7 +1,7 @@
 [versions]
 assertj = "3.25.2"
 cel = "0.4.4"
-ipaddress = "5.4.1"
+ipaddress = "5.4.2"
 junit = "5.10.1"
 maven-publish = "0.27.0"
 # When updating, make sure to update buf.gen.yaml and src/test/resources/proto/buf.gen.*.yaml versions to match
