@@ -1,5 +1,5 @@
 [versions]
-assertj = "3.25.2"
+assertj = "3.25.3"
 cel = "0.4.4"
 ipaddress = "5.4.2"
 junit = "5.10.1"
