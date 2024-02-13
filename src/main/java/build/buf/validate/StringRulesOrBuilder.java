@@ -1116,7 +1116,7 @@ public interface StringRulesOrBuilder extends
    *
    * ```proto
    * message MyString {
-   *   // value must be a valid IPv4 address with prefix lentgh
+   *   // value must be a valid IPv4 address with prefix length
    *    string value = 1 [(buf.validate.field).string.ipv4_with_prefixlen = true];
    * }
    * ```
@@ -1135,7 +1135,7 @@ public interface StringRulesOrBuilder extends
    *
    * ```proto
    * message MyString {
-   *   // value must be a valid IPv4 address with prefix lentgh
+   *   // value must be a valid IPv4 address with prefix length
    *    string value = 1 [(buf.validate.field).string.ipv4_with_prefixlen = true];
    * }
    * ```
@@ -1304,6 +1304,31 @@ public interface StringRulesOrBuilder extends
 
   /**
    * <pre>
+   * `host_and_port` specifies the field value must be a valid host and port
+   * pair. The host must be a valid hostname or IP address while the port
+   * must be in the range of 0-65535, inclusive. IPv6 addresses must be delimited
+   * with square brackets (e.g., `[::1]:1234`).
+   * </pre>
+   *
+   * <code>bool host_and_port = 32 [json_name = "hostAndPort", (.buf.validate.priv.field) = { ... }</code>
+   * @return Whether the hostAndPort field is set.
+   */
+  boolean hasHostAndPort();
+  /**
+   * <pre>
+   * `host_and_port` specifies the field value must be a valid host and port
+   * pair. The host must be a valid hostname or IP address while the port
+   * must be in the range of 0-65535, inclusive. IPv6 addresses must be delimited
+   * with square brackets (e.g., `[::1]:1234`).
+   * </pre>
+   *
+   * <code>bool host_and_port = 32 [json_name = "hostAndPort", (.buf.validate.priv.field) = { ... }</code>
+   * @return The hostAndPort.
+   */
+  boolean getHostAndPort();
+
+  /**
+   * <pre>
    * `well_known_regex` specifies a common well-known pattern
    * defined as a regex. If the field value doesn't match the well-known
    * regex, an error message will be generated.
@@ -1311,7 +1336,7 @@ public interface StringRulesOrBuilder extends
    * ```proto
    * message MyString {
    *   // value must be a valid HTTP header value
-   *   string value = 1 [(buf.validate.field).string.well_known_regex = 2];
+   *   string value = 1 [(buf.validate.field).string.well_known_regex = KNOWN_REGEX_HTTP_HEADER_VALUE];
    * }
    * ```
    *
@@ -1339,7 +1364,7 @@ public interface StringRulesOrBuilder extends
    * ```proto
    * message MyString {
    *   // value must be a valid HTTP header value
-   *   string value = 1 [(buf.validate.field).string.well_known_regex = 2];
+   *   string value = 1 [(buf.validate.field).string.well_known_regex = KNOWN_REGEX_HTTP_HEADER_VALUE];
    * }
    * ```
    *
@@ -1367,7 +1392,7 @@ public interface StringRulesOrBuilder extends
    * ```proto
    * message MyString {
    *   // value must be a valid HTTP header value
-   *   string value = 1 [(buf.validate.field).string.well_known_regex = 2];
+   *   string value = 1 [(buf.validate.field).string.well_known_regex = KNOWN_REGEX_HTTP_HEADER_VALUE];
    * }
    * ```
    *

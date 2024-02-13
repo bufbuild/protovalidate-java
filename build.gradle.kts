@@ -153,9 +153,10 @@ tasks.withType<JavaCompile> {
 }
 
 tasks.withType<Javadoc> {
-    // TODO: Enable when Javadoc changes are final
-//    val stdOptions = options as StandardJavadocDocletOptions
-//    stdOptions.addBooleanOption("Xwerror", true)
+    val stdOptions = options as StandardJavadocDocletOptions
+    stdOptions.addBooleanOption("Xwerror", true)
+    // Ignore warnings for generated code.
+    stdOptions.addBooleanOption("Xdoclint/package:-build.buf.validate,-build.buf.validate.priv", true)
 }
 
 tasks.withType<GenerateModuleMetadata> {

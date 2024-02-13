@@ -117,7 +117,7 @@ public interface EnumRulesOrBuilder extends
    *
    * message MyMessage {
    *   // The field `value` must be equal to one of the specified values.
-   *   MyEnum value = 1 [(buf.validate.field).enum.in = {1, 2}];
+   *   MyEnum value = 1 [(buf.validate.field).enum = { in: [1, 2]}];
    * }
    * ```
    * </pre>
@@ -141,7 +141,7 @@ public interface EnumRulesOrBuilder extends
    *
    * message MyMessage {
    *   // The field `value` must be equal to one of the specified values.
-   *   MyEnum value = 1 [(buf.validate.field).enum.in = {1, 2}];
+   *   MyEnum value = 1 [(buf.validate.field).enum = { in: [1, 2]}];
    * }
    * ```
    * </pre>
@@ -165,7 +165,7 @@ public interface EnumRulesOrBuilder extends
    *
    * message MyMessage {
    *   // The field `value` must be equal to one of the specified values.
-   *   MyEnum value = 1 [(buf.validate.field).enum.in = {1, 2}];
+   *   MyEnum value = 1 [(buf.validate.field).enum = { in: [1, 2]}];
    * }
    * ```
    * </pre>
@@ -191,7 +191,7 @@ public interface EnumRulesOrBuilder extends
    *
    * message MyMessage {
    *   // The field `value` must not be equal to any of the specified values.
-   *   MyEnum value = 1 [(buf.validate.field).enum.not_in = {1, 2}];
+   *   MyEnum value = 1 [(buf.validate.field).enum = { not_in: [1, 2]}];
    * }
    * ```
    * </pre>
@@ -215,7 +215,7 @@ public interface EnumRulesOrBuilder extends
    *
    * message MyMessage {
    *   // The field `value` must not be equal to any of the specified values.
-   *   MyEnum value = 1 [(buf.validate.field).enum.not_in = {1, 2}];
+   *   MyEnum value = 1 [(buf.validate.field).enum = { not_in: [1, 2]}];
    * }
    * ```
    * </pre>
@@ -239,7 +239,7 @@ public interface EnumRulesOrBuilder extends
    *
    * message MyMessage {
    *   // The field `value` must not be equal to any of the specified values.
-   *   MyEnum value = 1 [(buf.validate.field).enum.not_in = {1, 2}];
+   *   MyEnum value = 1 [(buf.validate.field).enum = { not_in: [1, 2]}];
    * }
    * ```
    * </pre>

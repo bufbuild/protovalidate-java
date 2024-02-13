@@ -24,6 +24,7 @@ import build.buf.protovalidate.internal.expression.Expression;
 import build.buf.protovalidate.internal.expression.Variable;
 import build.buf.validate.Constraint;
 import build.buf.validate.FieldConstraints;
+import build.buf.validate.Ignore;
 import build.buf.validate.MessageConstraints;
 import build.buf.validate.OneofConstraints;
 import build.buf.validate.ValidateProto;
@@ -35,12 +36,14 @@ import com.google.protobuf.Descriptors.FieldDescriptor;
 import com.google.protobuf.DynamicMessage;
 import com.google.protobuf.ExtensionRegistry;
 import com.google.protobuf.InvalidProtocolBufferException;
+import com.google.protobuf.Message;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Objects;
+import javax.annotation.Nullable;
 import org.projectnessie.cel.Env;
 import org.projectnessie.cel.EnvOption;
 import org.projectnessie.cel.checker.Decls;
@@ -76,6 +79,10 @@ public class EvaluatorBuilder {
   /**
    * Returns a pre-cached {@link Evaluator} for the given descriptor or, if the descriptor is
    * unknown, returns an evaluator that always throws a {@link CompilationException}.
+   *
+   * @param desc Protobuf descriptor type.
+   * @return An evaluator for the descriptor type.
+   * @throws CompilationException If an evaluator can't be created for the specified descriptor.
    */
   public Evaluator load(Descriptor desc) throws CompilationException {
     Evaluator evaluator = evaluatorCache.get(desc);
@@ -226,14 +233,38 @@ public class EvaluatorBuilder {
         FieldDescriptor fieldDescriptor, FieldConstraints fieldConstraints)
         throws CompilationException {
       ValueEvaluator valueEvaluatorEval = new ValueEvaluator();
+      boolean ignoreDefault =
+          fieldDescriptor.hasPresence() && shouldIgnoreDefault(fieldConstraints);
+      Object zero = null;
+      if (ignoreDefault) {
+        zero = zeroValue(fieldDescriptor, false);
+      }
       FieldEvaluator fieldEvaluator =
           new FieldEvaluator(
               valueEvaluatorEval,
               fieldDescriptor,
               fieldConstraints.getRequired(),
-              fieldConstraints.getIgnoreEmpty() || fieldDescriptor.hasPresence());
+              fieldDescriptor.hasPresence() || shouldIgnoreEmpty(fieldConstraints),
+              fieldDescriptor.hasPresence() && shouldIgnoreDefault(fieldConstraints),
+              zero);
       buildValue(fieldDescriptor, fieldConstraints, false, fieldEvaluator.valueEvaluator);
       return fieldEvaluator;
+    }
+
+    @SuppressWarnings("deprecation")
+    private boolean shouldSkip(FieldConstraints constraints) {
+      return constraints.getSkipped() || constraints.getIgnore() == Ignore.IGNORE_ALWAYS;
+    }
+
+    @SuppressWarnings("deprecation")
+    private static boolean shouldIgnoreEmpty(FieldConstraints constraints) {
+      return constraints.getIgnoreEmpty()
+          || constraints.getIgnore() == Ignore.IGNORE_IF_UNPOPULATED
+          || constraints.getIgnore() == Ignore.IGNORE_IF_DEFAULT_VALUE;
+    }
+
+    private static boolean shouldIgnoreDefault(FieldConstraints constraints) {
+      return constraints.getIgnore() == Ignore.IGNORE_IF_DEFAULT_VALUE;
     }
 
     private void buildValue(
@@ -257,42 +288,63 @@ public class EvaluatorBuilder {
         FieldDescriptor fieldDescriptor,
         FieldConstraints fieldConstraints,
         boolean forItems,
-        ValueEvaluator valueEvaluatorEval) {
-      if (forItems
-          && fieldConstraints.getIgnoreEmpty()
-          && fieldDescriptor.getType() != FieldDescriptor.Type.MESSAGE) {
-        Object zero = fieldDescriptor.getDefaultValue();
-        if (fieldDescriptor.isRepeated()) {
-          switch (fieldDescriptor.getType().getJavaType()) {
-            case INT:
-              zero = 0;
-              break;
-            case LONG:
-              zero = 0L;
-              break;
-            case FLOAT:
-              zero = 0F;
-              break;
-            case DOUBLE:
-              zero = 0D;
-              break;
-            case BOOLEAN:
-              zero = false;
-              break;
-            case STRING:
-              zero = "";
-              break;
-            case BYTE_STRING:
-              zero = ByteString.EMPTY;
-              break;
-            case ENUM:
-              zero = fieldDescriptor.getEnumType().getValues().get(0);
-              break;
-            default:
-              // noop
-          }
+        ValueEvaluator valueEvaluatorEval)
+        throws CompilationException {
+      if (forItems && shouldIgnoreEmpty(fieldConstraints)) {
+        valueEvaluatorEval.setIgnoreEmpty(zeroValue(fieldDescriptor, true));
+      }
+    }
+
+    private @Nullable Object zeroValue(FieldDescriptor fieldDescriptor, boolean forItems)
+        throws CompilationException {
+      final Object zero;
+      if (forItems && fieldDescriptor.isRepeated()) {
+        switch (fieldDescriptor.getType().getJavaType()) {
+          case INT:
+            zero = 0;
+            break;
+          case LONG:
+            zero = 0L;
+            break;
+          case FLOAT:
+            zero = 0F;
+            break;
+          case DOUBLE:
+            zero = 0D;
+            break;
+          case BOOLEAN:
+            zero = false;
+            break;
+          case STRING:
+            zero = "";
+            break;
+          case BYTE_STRING:
+            zero = ByteString.EMPTY;
+            break;
+          case ENUM:
+            zero = fieldDescriptor.getEnumType().getValues().get(0);
+            break;
+          case MESSAGE:
+            zero = createMessageForType(fieldDescriptor.getMessageType());
+            break;
+          default:
+            zero = fieldDescriptor.getDefaultValue();
+            break;
         }
-        valueEvaluatorEval.setIgnoreEmpty(zero);
+      } else if (fieldDescriptor.getJavaType() == FieldDescriptor.JavaType.MESSAGE
+          && !fieldDescriptor.isRepeated()) {
+        zero = createMessageForType(fieldDescriptor.getMessageType());
+      } else {
+        zero = fieldDescriptor.getDefaultValue();
+      }
+      return zero;
+    }
+
+    private Message createMessageForType(Descriptor messageType) throws CompilationException {
+      try {
+        return DynamicMessage.parseFrom(messageType, new byte[0], EXTENSION_REGISTRY);
+      } catch (InvalidProtocolBufferException e) {
+        throw new CompilationException("field descriptor type is invalid " + e.getMessage(), e);
       }
     }
 
@@ -343,7 +395,7 @@ public class EvaluatorBuilder {
         ValueEvaluator valueEvaluatorEval)
         throws CompilationException {
       if (fieldDescriptor.getType() != FieldDescriptor.Type.MESSAGE
-          || fieldConstraints.getSkipped()
+          || shouldSkip(fieldConstraints)
           || fieldDescriptor.isMapField()
           || (fieldDescriptor.isRepeated() && !forItems)) {
         return;
@@ -359,7 +411,7 @@ public class EvaluatorBuilder {
         ValueEvaluator valueEvaluatorEval)
         throws CompilationException {
       if (fieldDescriptor.getType() != FieldDescriptor.Type.MESSAGE
-          || fieldConstraints.getSkipped()
+          || shouldSkip(fieldConstraints)
           || fieldDescriptor.isMapField()
           || (fieldDescriptor.isRepeated() && !forItems)) {
         return;

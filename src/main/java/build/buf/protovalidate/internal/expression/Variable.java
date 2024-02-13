@@ -23,7 +23,10 @@ import org.projectnessie.cel.interpreter.ResolvedValue;
  * lightweight named variable to cel.Program executions.
  */
 public class Variable implements Activation {
+  /** The {@value} variable in CEL. */
   public static final String THIS_NAME = "this";
+
+  /** The {@value} variable in CEL. */
   public static final String RULES_NAME = "rules";
 
   /** The parent activation */

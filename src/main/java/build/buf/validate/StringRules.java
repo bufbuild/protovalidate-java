@@ -76,6 +76,7 @@ private static final long serialVersionUID = 0L;
     IP_PREFIX(29),
     IPV4_PREFIX(30),
     IPV6_PREFIX(31),
+    HOST_AND_PORT(32),
     WELL_KNOWN_REGEX(24),
     WELLKNOWN_NOT_SET(0);
     private final int value;
@@ -109,6 +110,7 @@ private static final long serialVersionUID = 0L;
         case 29: return IP_PREFIX;
         case 30: return IPV4_PREFIX;
         case 31: return IPV6_PREFIX;
+        case 32: return HOST_AND_PORT;
         case 24: return WELL_KNOWN_REGEX;
         case 0: return WELLKNOWN_NOT_SET;
         default: return null;
@@ -1586,7 +1588,7 @@ private static final long serialVersionUID = 0L;
    *
    * ```proto
    * message MyString {
-   *   // value must be a valid IPv4 address with prefix lentgh
+   *   // value must be a valid IPv4 address with prefix length
    *    string value = 1 [(buf.validate.field).string.ipv4_with_prefixlen = true];
    * }
    * ```
@@ -1608,7 +1610,7 @@ private static final long serialVersionUID = 0L;
    *
    * ```proto
    * message MyString {
-   *   // value must be a valid IPv4 address with prefix lentgh
+   *   // value must be a valid IPv4 address with prefix length
    *    string value = 1 [(buf.validate.field).string.ipv4_with_prefixlen = true];
    * }
    * ```
@@ -1821,6 +1823,41 @@ private static final long serialVersionUID = 0L;
     return false;
   }
 
+  public static final int HOST_AND_PORT_FIELD_NUMBER = 32;
+  /**
+   * <pre>
+   * `host_and_port` specifies the field value must be a valid host and port
+   * pair. The host must be a valid hostname or IP address while the port
+   * must be in the range of 0-65535, inclusive. IPv6 addresses must be delimited
+   * with square brackets (e.g., `[::1]:1234`).
+   * </pre>
+   *
+   * <code>bool host_and_port = 32 [json_name = "hostAndPort", (.buf.validate.priv.field) = { ... }</code>
+   * @return Whether the hostAndPort field is set.
+   */
+  @java.lang.Override
+  public boolean hasHostAndPort() {
+    return wellKnownCase_ == 32;
+  }
+  /**
+   * <pre>
+   * `host_and_port` specifies the field value must be a valid host and port
+   * pair. The host must be a valid hostname or IP address while the port
+   * must be in the range of 0-65535, inclusive. IPv6 addresses must be delimited
+   * with square brackets (e.g., `[::1]:1234`).
+   * </pre>
+   *
+   * <code>bool host_and_port = 32 [json_name = "hostAndPort", (.buf.validate.priv.field) = { ... }</code>
+   * @return The hostAndPort.
+   */
+  @java.lang.Override
+  public boolean getHostAndPort() {
+    if (wellKnownCase_ == 32) {
+      return (java.lang.Boolean) wellKnown_;
+    }
+    return false;
+  }
+
   public static final int WELL_KNOWN_REGEX_FIELD_NUMBER = 24;
   /**
    * <pre>
@@ -1831,7 +1868,7 @@ private static final long serialVersionUID = 0L;
    * ```proto
    * message MyString {
    *   // value must be a valid HTTP header value
-   *   string value = 1 [(buf.validate.field).string.well_known_regex = 2];
+   *   string value = 1 [(buf.validate.field).string.well_known_regex = KNOWN_REGEX_HTTP_HEADER_VALUE];
    * }
    * ```
    *
@@ -1861,7 +1898,7 @@ private static final long serialVersionUID = 0L;
    * ```proto
    * message MyString {
    *   // value must be a valid HTTP header value
-   *   string value = 1 [(buf.validate.field).string.well_known_regex = 2];
+   *   string value = 1 [(buf.validate.field).string.well_known_regex = KNOWN_REGEX_HTTP_HEADER_VALUE];
    * }
    * ```
    *
@@ -1894,7 +1931,7 @@ private static final long serialVersionUID = 0L;
    * ```proto
    * message MyString {
    *   // value must be a valid HTTP header value
-   *   string value = 1 [(buf.validate.field).string.well_known_regex = 2];
+   *   string value = 1 [(buf.validate.field).string.well_known_regex = KNOWN_REGEX_HTTP_HEADER_VALUE];
    * }
    * ```
    *
@@ -2092,6 +2129,10 @@ private static final long serialVersionUID = 0L;
       output.writeBool(
           31, (boolean)((java.lang.Boolean) wellKnown_));
     }
+    if (wellKnownCase_ == 32) {
+      output.writeBool(
+          32, (boolean)((java.lang.Boolean) wellKnown_));
+    }
     getUnknownFields().writeTo(output);
   }
 
@@ -2242,6 +2283,11 @@ private static final long serialVersionUID = 0L;
         .computeBoolSize(
             31, (boolean)((java.lang.Boolean) wellKnown_));
     }
+    if (wellKnownCase_ == 32) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeBoolSize(
+            32, (boolean)((java.lang.Boolean) wellKnown_));
+    }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
     return size;
@@ -2387,6 +2433,10 @@ private static final long serialVersionUID = 0L;
       case 31:
         if (getIpv6Prefix()
             != other.getIpv6Prefix()) return false;
+        break;
+      case 32:
+        if (getHostAndPort()
+            != other.getHostAndPort()) return false;
         break;
       case 24:
         if (getWellKnownRegexValue()
@@ -2548,6 +2598,11 @@ private static final long serialVersionUID = 0L;
         hash = (37 * hash) + IPV6_PREFIX_FIELD_NUMBER;
         hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
             getIpv6Prefix());
+        break;
+      case 32:
+        hash = (37 * hash) + HOST_AND_PORT_FIELD_NUMBER;
+        hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+            getHostAndPort());
         break;
       case 24:
         hash = (37 * hash) + WELL_KNOWN_REGEX_FIELD_NUMBER;
@@ -2802,7 +2857,7 @@ private static final long serialVersionUID = 0L;
         notIn_.makeImmutable();
         result.notIn_ = notIn_;
       }
-      if (((from_bitField0_ & 0x40000000) != 0)) {
+      if (((from_bitField0_ & 0x80000000) != 0)) {
         result.strict_ = strict_;
         to_bitField0_ |= 0x00001000;
       }
@@ -2990,6 +3045,10 @@ private static final long serialVersionUID = 0L;
           setIpv6Prefix(other.getIpv6Prefix());
           break;
         }
+        case HOST_AND_PORT: {
+          setHostAndPort(other.getHostAndPort());
+          break;
+        }
         case WELL_KNOWN_REGEX: {
           setWellKnownRegexValue(other.getWellKnownRegexValue());
           break;
@@ -3149,7 +3208,7 @@ private static final long serialVersionUID = 0L;
             } // case 192
             case 200: {
               strict_ = input.readBool();
-              bitField0_ |= 0x40000000;
+              bitField0_ |= 0x80000000;
               break;
             } // case 200
             case 208: {
@@ -3182,6 +3241,11 @@ private static final long serialVersionUID = 0L;
               wellKnownCase_ = 31;
               break;
             } // case 248
+            case 256: {
+              wellKnown_ = input.readBool();
+              wellKnownCase_ = 32;
+              break;
+            } // case 256
             default: {
               if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                 done = true; // was an endgroup tag
@@ -6146,7 +6210,7 @@ private static final long serialVersionUID = 0L;
      *
      * ```proto
      * message MyString {
-     *   // value must be a valid IPv4 address with prefix lentgh
+     *   // value must be a valid IPv4 address with prefix length
      *    string value = 1 [(buf.validate.field).string.ipv4_with_prefixlen = true];
      * }
      * ```
@@ -6167,7 +6231,7 @@ private static final long serialVersionUID = 0L;
      *
      * ```proto
      * message MyString {
-     *   // value must be a valid IPv4 address with prefix lentgh
+     *   // value must be a valid IPv4 address with prefix length
      *    string value = 1 [(buf.validate.field).string.ipv4_with_prefixlen = true];
      * }
      * ```
@@ -6191,7 +6255,7 @@ private static final long serialVersionUID = 0L;
      *
      * ```proto
      * message MyString {
-     *   // value must be a valid IPv4 address with prefix lentgh
+     *   // value must be a valid IPv4 address with prefix length
      *    string value = 1 [(buf.validate.field).string.ipv4_with_prefixlen = true];
      * }
      * ```
@@ -6217,7 +6281,7 @@ private static final long serialVersionUID = 0L;
      *
      * ```proto
      * message MyString {
-     *   // value must be a valid IPv4 address with prefix lentgh
+     *   // value must be a valid IPv4 address with prefix length
      *    string value = 1 [(buf.validate.field).string.ipv4_with_prefixlen = true];
      * }
      * ```
@@ -6629,6 +6693,76 @@ private static final long serialVersionUID = 0L;
 
     /**
      * <pre>
+     * `host_and_port` specifies the field value must be a valid host and port
+     * pair. The host must be a valid hostname or IP address while the port
+     * must be in the range of 0-65535, inclusive. IPv6 addresses must be delimited
+     * with square brackets (e.g., `[::1]:1234`).
+     * </pre>
+     *
+     * <code>bool host_and_port = 32 [json_name = "hostAndPort", (.buf.validate.priv.field) = { ... }</code>
+     * @return Whether the hostAndPort field is set.
+     */
+    public boolean hasHostAndPort() {
+      return wellKnownCase_ == 32;
+    }
+    /**
+     * <pre>
+     * `host_and_port` specifies the field value must be a valid host and port
+     * pair. The host must be a valid hostname or IP address while the port
+     * must be in the range of 0-65535, inclusive. IPv6 addresses must be delimited
+     * with square brackets (e.g., `[::1]:1234`).
+     * </pre>
+     *
+     * <code>bool host_and_port = 32 [json_name = "hostAndPort", (.buf.validate.priv.field) = { ... }</code>
+     * @return The hostAndPort.
+     */
+    public boolean getHostAndPort() {
+      if (wellKnownCase_ == 32) {
+        return (java.lang.Boolean) wellKnown_;
+      }
+      return false;
+    }
+    /**
+     * <pre>
+     * `host_and_port` specifies the field value must be a valid host and port
+     * pair. The host must be a valid hostname or IP address while the port
+     * must be in the range of 0-65535, inclusive. IPv6 addresses must be delimited
+     * with square brackets (e.g., `[::1]:1234`).
+     * </pre>
+     *
+     * <code>bool host_and_port = 32 [json_name = "hostAndPort", (.buf.validate.priv.field) = { ... }</code>
+     * @param value The hostAndPort to set.
+     * @return This builder for chaining.
+     */
+    public Builder setHostAndPort(boolean value) {
+
+      wellKnownCase_ = 32;
+      wellKnown_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <pre>
+     * `host_and_port` specifies the field value must be a valid host and port
+     * pair. The host must be a valid hostname or IP address while the port
+     * must be in the range of 0-65535, inclusive. IPv6 addresses must be delimited
+     * with square brackets (e.g., `[::1]:1234`).
+     * </pre>
+     *
+     * <code>bool host_and_port = 32 [json_name = "hostAndPort", (.buf.validate.priv.field) = { ... }</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearHostAndPort() {
+      if (wellKnownCase_ == 32) {
+        wellKnownCase_ = 0;
+        wellKnown_ = null;
+        onChanged();
+      }
+      return this;
+    }
+
+    /**
+     * <pre>
      * `well_known_regex` specifies a common well-known pattern
      * defined as a regex. If the field value doesn't match the well-known
      * regex, an error message will be generated.
@@ -6636,7 +6770,7 @@ private static final long serialVersionUID = 0L;
      * ```proto
      * message MyString {
      *   // value must be a valid HTTP header value
-     *   string value = 1 [(buf.validate.field).string.well_known_regex = 2];
+     *   string value = 1 [(buf.validate.field).string.well_known_regex = KNOWN_REGEX_HTTP_HEADER_VALUE];
      * }
      * ```
      *
@@ -6667,7 +6801,7 @@ private static final long serialVersionUID = 0L;
      * ```proto
      * message MyString {
      *   // value must be a valid HTTP header value
-     *   string value = 1 [(buf.validate.field).string.well_known_regex = 2];
+     *   string value = 1 [(buf.validate.field).string.well_known_regex = KNOWN_REGEX_HTTP_HEADER_VALUE];
      * }
      * ```
      *
@@ -6701,7 +6835,7 @@ private static final long serialVersionUID = 0L;
      * ```proto
      * message MyString {
      *   // value must be a valid HTTP header value
-     *   string value = 1 [(buf.validate.field).string.well_known_regex = 2];
+     *   string value = 1 [(buf.validate.field).string.well_known_regex = KNOWN_REGEX_HTTP_HEADER_VALUE];
      * }
      * ```
      *
@@ -6735,7 +6869,7 @@ private static final long serialVersionUID = 0L;
      * ```proto
      * message MyString {
      *   // value must be a valid HTTP header value
-     *   string value = 1 [(buf.validate.field).string.well_known_regex = 2];
+     *   string value = 1 [(buf.validate.field).string.well_known_regex = KNOWN_REGEX_HTTP_HEADER_VALUE];
      * }
      * ```
      *
@@ -6771,7 +6905,7 @@ private static final long serialVersionUID = 0L;
      * ```proto
      * message MyString {
      *   // value must be a valid HTTP header value
-     *   string value = 1 [(buf.validate.field).string.well_known_regex = 2];
+     *   string value = 1 [(buf.validate.field).string.well_known_regex = KNOWN_REGEX_HTTP_HEADER_VALUE];
      * }
      * ```
      *
@@ -6808,7 +6942,7 @@ private static final long serialVersionUID = 0L;
      * ```proto
      * message MyString {
      *   // value must be a valid HTTP header value
-     *   string value = 1 [(buf.validate.field).string.well_known_regex = 2];
+     *   string value = 1 [(buf.validate.field).string.well_known_regex = KNOWN_REGEX_HTTP_HEADER_VALUE];
      * }
      * ```
      *
@@ -6857,7 +6991,7 @@ private static final long serialVersionUID = 0L;
      */
     @java.lang.Override
     public boolean hasStrict() {
-      return ((bitField0_ & 0x40000000) != 0);
+      return ((bitField0_ & 0x80000000) != 0);
     }
     /**
      * <pre>
@@ -6905,7 +7039,7 @@ private static final long serialVersionUID = 0L;
     public Builder setStrict(boolean value) {
 
       strict_ = value;
-      bitField0_ |= 0x40000000;
+      bitField0_ |= 0x80000000;
       onChanged();
       return this;
     }
@@ -6929,7 +7063,7 @@ private static final long serialVersionUID = 0L;
      * @return This builder for chaining.
      */
     public Builder clearStrict() {
-      bitField0_ = (bitField0_ & ~0x40000000);
+      bitField0_ = (bitField0_ & ~0x80000000);
       strict_ = false;
       onChanged();
       return this;

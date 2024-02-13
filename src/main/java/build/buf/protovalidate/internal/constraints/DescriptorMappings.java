@@ -27,7 +27,7 @@ import org.projectnessie.cel.checker.Decls;
 /**
  * DescriptorMappings provides mappings between protocol buffer descriptors and CEL declarations.
  */
-public class DescriptorMappings {
+public final class DescriptorMappings {
   /** Provides a {@link Descriptor} for {@link FieldConstraints}. */
   static final Descriptor FIELD_CONSTRAINTS_DESC = FieldConstraints.getDescriptor();
 
@@ -96,9 +96,14 @@ public class DescriptorMappings {
         "google.protobuf.Timestamp", FIELD_CONSTRAINTS_DESC.findFieldByName("timestamp"));
   }
 
+  private DescriptorMappings() {}
+
   /**
    * Returns the {@link FieldConstraints} field that is expected for the given protocol buffer field
    * kind.
+   *
+   * @param fqn Fully qualified name of protobuf value wrapper.
+   * @return The constraints field descriptor for the specified wrapper fully qualified name.
    */
   @Nullable
   public static FieldDescriptor expectedWrapperConstraints(String fqn) {
@@ -128,6 +133,9 @@ public class DescriptorMappings {
 
   /**
    * Maps a {@link FieldDescriptor.Type} to a compatible {@link com.google.api.expr.v1alpha1.Type}.
+   *
+   * @param kind The protobuf field type.
+   * @return The corresponding CEL type for the protobuf field.
    */
   public static Type protoKindToCELType(FieldDescriptor.Type kind) {
     switch (kind) {

@@ -115,7 +115,7 @@ public enum KnownRegex
   }
   public static final com.google.protobuf.Descriptors.EnumDescriptor
       getDescriptor() {
-    return build.buf.validate.ValidateProto.getDescriptor().getEnumTypes().get(0);
+    return build.buf.validate.ValidateProto.getDescriptor().getEnumTypes().get(1);
   }
 
   private static final KnownRegex[] VALUES = values();

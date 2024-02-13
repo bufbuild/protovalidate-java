@@ -16,10 +16,21 @@ package build.buf.protovalidate.exceptions;
 
 /** CompilationException is returned when a constraint fails to compile. This is a fatal error. */
 public class CompilationException extends ValidationException {
+  /**
+   * Creates a CompilationException with the specified message.
+   *
+   * @param message Exception message.
+   */
   public CompilationException(String message) {
     super(message);
   }
 
+  /**
+   * Creates a CompilationException with the specified message and cause.
+   *
+   * @param message Exception message.
+   * @param cause Underlying cause of the exception.
+   */
   public CompilationException(String message, Throwable cause) {
     super(message, cause);
   }

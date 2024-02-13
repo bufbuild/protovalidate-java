@@ -89,6 +89,14 @@ final class CustomDeclarations {
             Decls.newInstanceOverload(
                 "is_hostname", Collections.singletonList(Decls.String), Decls.Bool)));
 
+    decls.add(
+        Decls.newFunction(
+            "isHostAndPort",
+            Decls.newInstanceOverload(
+                "string_bool_is_host_and_port_bool",
+                Arrays.asList(Decls.String, Decls.Bool),
+                Decls.Bool)));
+
     // Add 'startsWith' function declaration
     decls.add(
         Decls.newFunction(

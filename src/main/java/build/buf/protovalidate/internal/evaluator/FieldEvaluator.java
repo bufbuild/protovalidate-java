@@ -21,6 +21,8 @@ import com.google.protobuf.Descriptors.FieldDescriptor;
 import com.google.protobuf.Message;
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
+import javax.annotation.Nullable;
 
 /** Performs validation on a single message field, defined by its descriptor. */
 class FieldEvaluator implements Evaluator {
@@ -34,21 +36,29 @@ class FieldEvaluator implements Evaluator {
   private final boolean required;
 
   /**
-   * IgnoreEmpty indicates if a field should skip validation on its zero value. This field is
+   * ignoreEmpty indicates if a field should skip validation on its zero value. This field is
    * generally true for nullable fields or fields with the ignore_empty constraint explicitly set.
    */
   private final boolean ignoreEmpty;
+
+  private final boolean ignoreDefault;
+
+  @Nullable private final Object zero;
 
   /** Constructs a new {@link FieldEvaluator} */
   FieldEvaluator(
       ValueEvaluator valueEvaluator,
       FieldDescriptor descriptor,
       boolean required,
-      boolean ignoreEmpty) {
+      boolean ignoreEmpty,
+      boolean ignoreDefault,
+      @Nullable Object zero) {
     this.valueEvaluator = valueEvaluator;
     this.descriptor = descriptor;
     this.required = required;
     this.ignoreEmpty = ignoreEmpty;
+    this.ignoreDefault = ignoreDefault;
+    this.zero = zero;
   }
 
   @Override
@@ -81,6 +91,9 @@ class FieldEvaluator implements Evaluator {
       return ValidationResult.EMPTY;
     }
     Object fieldValue = message.getField(descriptor);
+    if (ignoreDefault && Objects.equals(zero, fieldValue)) {
+      return ValidationResult.EMPTY;
+    }
     ValidationResult evalResult =
         valueEvaluator.evaluate(new ObjectValue(descriptor, fieldValue), failFast);
     List<Violation> violations =

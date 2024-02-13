@@ -77,7 +77,7 @@ class ValueEvaluator implements Evaluator {
     }
   }
 
-  public void setIgnoreEmpty(Object zero) {
+  public void setIgnoreEmpty(@Nullable Object zero) {
     this.ignoreEmpty = true;
     this.zero = zero;
   }

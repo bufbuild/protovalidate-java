@@ -59,7 +59,11 @@ public class ConstraintCache {
   /** The environment to use for evaluation. */
   private final Env env;
 
-  /** Constructs a new build-through cache for the standard constraints. */
+  /**
+   * Constructs a new build-through cache for the standard constraints.
+   *
+   * @param env The CEL environment for evaluation.
+   */
   public ConstraintCache(Env env) {
     this.env = env;
   }
