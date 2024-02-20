@@ -4,5 +4,5 @@ managed:
   java_package_prefix:
     default: com.example.imports
 plugins:
-  - plugin: buf.build/protocolbuffers/java:v25.2
+  - plugin: buf.build/protocolbuffers/java:v25.3
     out: build/generated/test-sources/bufgen
