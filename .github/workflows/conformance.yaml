@@ -17,12 +17,21 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+      - name: Cache Go Modules
+        uses: actions/cache@v4
         with:
-          fetch-depth: 1
+          path: |
+            ~/.cache/go-build
+            ~/go/pkg/mod
+          key: ${{ runner.os }}-gomod-conformance-${{ hashFiles('gradle.properties', 'gradle/libs.versions.toml') }}
+          restore-keys:
+            ${{ runner.os }}-gomod-conformance-
       - uses: actions/setup-java@v4
         with:
           distribution: 'temurin'
-          java-version: '17'
+          java-version: '21'
           cache: 'gradle'
+      - name: Validate Gradle Wrapper
+        uses: gradle/wrapper-validation-action@v2
       - name: Test conformance
         run: make conformance

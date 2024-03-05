@@ -10,6 +10,7 @@ plugins {
     alias(libs.plugins.errorprone)
     alias(libs.plugins.git)
     alias(libs.plugins.maven)
+    alias(libs.plugins.osdetector)
 }
 
 java {
@@ -31,23 +32,20 @@ if (matchResult != null) {
 }
 val releaseVersion = project.findProperty("releaseVersion") as String? ?: snapshotVersion
 
-val bufCLIFile = project.layout.buildDirectory.file("gobin/buf").get().asFile
-val bufCLIPath: String = bufCLIFile.absolutePath
+val buf: Configuration by configurations.creating
 val bufLicenseHeaderCLIFile = project.layout.buildDirectory.file("gobin/license-header").get().asFile
 val bufLicenseHeaderCLIPath: String = bufLicenseHeaderCLIFile.absolutePath
 
-tasks.register<Exec>("installBuf") {
+tasks.register("configureBuf") {
     description = "Installs the Buf CLI."
-    environment("GOBIN", bufCLIFile.parentFile.absolutePath)
-    outputs.file(bufCLIFile)
-    commandLine("go", "install", "github.com/bufbuild/buf/cmd/buf@latest")
+    File(buf.asPath).setExecutable(true)
 }
 
 tasks.register<Exec>("installLicenseHeader") {
     description = "Installs the Buf license-header CLI."
     environment("GOBIN", bufLicenseHeaderCLIFile.parentFile.absolutePath)
     outputs.file(bufLicenseHeaderCLIFile)
-    commandLine("go", "install", "github.com/bufbuild/buf/private/pkg/licenseheader/cmd/license-header@latest")
+    commandLine("go", "install", "github.com/bufbuild/buf/private/pkg/licenseheader/cmd/license-header@v${libs.versions.buf.get()}")
 }
 
 tasks.register<Exec>("licenseHeader") {
@@ -69,10 +67,10 @@ tasks.register<Exec>("licenseHeader") {
 }
 
 tasks.register<Exec>("generateTestSourcesImports") {
-    dependsOn("installBuf")
+    dependsOn("configureBuf")
     description = "Generates code with buf generate --include-imports for unit tests."
     commandLine(
-        bufCLIPath,
+        buf.asPath,
         "generate",
         "--template",
         "src/test/resources/proto/buf.gen.imports.yaml",
@@ -82,9 +80,9 @@ tasks.register<Exec>("generateTestSourcesImports") {
 }
 
 tasks.register<Exec>("generateTestSourcesNoImports") {
-    dependsOn("installBuf")
+    dependsOn("configureBuf")
     description = "Generates code with buf generate --include-imports for unit tests."
-    commandLine(bufCLIPath, "generate", "--template", "src/test/resources/proto/buf.gen.noimports.yaml", "src/test/resources/proto")
+    commandLine(buf.asPath, "generate", "--template", "src/test/resources/proto/buf.gen.noimports.yaml", "src/test/resources/proto")
 }
 
 tasks.register("generateTestSources") {
@@ -93,10 +91,10 @@ tasks.register("generateTestSources") {
 }
 
 tasks.register<Exec>("exportProtovalidateModule") {
-    dependsOn("installBuf")
+    dependsOn("configureBuf")
     description = "Exports the bufbuild/protovalidate module sources to src/main/resources."
     commandLine(
-        bufCLIPath,
+        buf.asPath,
         "export",
         "buf.build/bufbuild/protovalidate:${project.findProperty("protovalidate.version")}",
         "--output",
@@ -105,16 +103,16 @@ tasks.register<Exec>("exportProtovalidateModule") {
 }
 
 tasks.register<Exec>("generateSources") {
-    dependsOn("installBuf")
+    dependsOn("configureBuf")
     description = "Generates sources for the bufbuild/protovalidate module sources to src/main/java."
-    commandLine(bufCLIPath, "generate", "--template", "buf.gen.yaml", "src/main/resources")
+    commandLine(buf.asPath, "generate", "--template", "buf.gen.yaml", "src/main/resources")
 }
 
 tasks.register<Exec>("generateConformance") {
-    dependsOn("installBuf")
+    dependsOn("configureBuf")
     description = "Generates sources for the bufbuild/protovalidate-testing module to conformance/src/main/java."
     commandLine(
-        bufCLIPath,
+        buf.asPath,
         "generate",
         "--template",
         "conformance/buf.gen.yaml",
@@ -193,14 +191,10 @@ allprojects {
     version = releaseVersion
     repositories {
         mavenCentral()
-        maven {
-            name = "buf"
-            url = uri("https://buf.build/gen/maven")
-        }
     }
     apply(plugin = "com.diffplug.spotless")
     configure<SpotlessExtension> {
-        setEnforceCheck(false) // Disables lint on gradle builds.
+        isEnforceCheck = false // Disables lint on gradle builds.
         java {
             importOrder()
             removeUnusedImports()
@@ -276,9 +270,12 @@ dependencies {
     implementation(libs.ipaddress)
     implementation(libs.jakarta.mail.api)
 
+    buf("build.buf:buf:${libs.versions.buf.get()}:${osdetector.classifier}@exe")
+
     testImplementation(libs.assertj)
     testImplementation(platform(libs.junit.bom))
     testImplementation("org.junit.jupiter:junit-jupiter")
+    testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 
     errorprone(libs.errorprone)
 }

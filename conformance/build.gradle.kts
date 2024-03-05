@@ -84,6 +84,7 @@ dependencies {
     implementation(libs.assertj)
     implementation(platform(libs.junit.bom))
     testImplementation("org.junit.jupiter:junit-jupiter")
+    testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 
     errorprone(libs.errorprone)
 }
