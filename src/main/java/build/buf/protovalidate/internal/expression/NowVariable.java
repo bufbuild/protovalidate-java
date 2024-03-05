@@ -31,7 +31,7 @@ public class NowVariable implements Activation {
   /** The resolved value of the 'now' variable. */
   @Nullable private ResolvedValue resolvedValue;
 
-  /** Creates a new instance of a "now" variable. */
+  /** Creates an instance of a "now" variable. */
   public NowVariable() {}
 
   @Override

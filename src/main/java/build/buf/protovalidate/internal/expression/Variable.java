@@ -38,7 +38,7 @@ public class Variable implements Activation {
   /** The value for this variable */
   @Nullable private final Object val;
 
-  /** Creates a new variable with the given name and value. */
+  /** Creates a variable with the given name and value. */
   private Variable(Activation activation, String name, @Nullable Object val) {
     this.next = activation;
     this.name = name;
@@ -46,7 +46,7 @@ public class Variable implements Activation {
   }
 
   /**
-   * Creates a new "this" variable.
+   * Creates a "this" variable.
    *
    * @param val the value.
    * @return {@link Variable}.
@@ -56,7 +56,7 @@ public class Variable implements Activation {
   }
 
   /**
-   * Creates a new "rules" variable.
+   * Creates a "rules" variable.
    *
    * @param val the value.
    * @return {@link Variable}.

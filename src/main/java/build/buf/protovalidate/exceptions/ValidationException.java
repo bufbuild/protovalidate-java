@@ -17,7 +17,7 @@ package build.buf.protovalidate.exceptions;
 /** ValidationException is the base exception for all validation errors. */
 public class ValidationException extends Exception {
   /**
-   * Creates a new ValidationException with the specified message.
+   * Creates a ValidationException with the specified message.
    *
    * @param message Exception message.
    */
@@ -26,7 +26,7 @@ public class ValidationException extends Exception {
   }
 
   /**
-   * Creates a new ValidationException with the specified message and cause.
+   * Creates a ValidationException with the specified message and cause.
    *
    * @param message Exception message.
    * @param cause Underlying cause of the exception.

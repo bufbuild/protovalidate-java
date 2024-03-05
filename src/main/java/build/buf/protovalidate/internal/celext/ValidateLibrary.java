@@ -29,7 +29,7 @@ import org.projectnessie.cel.ProgramOption;
  */
 public class ValidateLibrary implements Library {
 
-  /** Creates a new ValidateLibrary, with all custom declarations and overloads. */
+  /** Creates a ValidateLibrary with all custom declarations and overloads. */
   public ValidateLibrary() {}
 
   /**

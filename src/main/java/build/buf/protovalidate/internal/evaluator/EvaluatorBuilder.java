@@ -136,7 +136,7 @@ public class EvaluatorBuilder {
     }
 
     /**
-     * Creates a new immutable cache containing the descriptor (and any other descriptors it
+     * Creates an immutable cache containing the descriptor (and any other descriptors it
      * references).
      *
      * @param descriptor Descriptor used to build the cache.
