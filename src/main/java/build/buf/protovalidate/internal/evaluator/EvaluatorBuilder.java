@@ -43,7 +43,6 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Objects;
-import javax.annotation.Nullable;
 import org.projectnessie.cel.Env;
 import org.projectnessie.cel.EnvOption;
 import org.projectnessie.cel.checker.Decls;
@@ -295,7 +294,7 @@ public class EvaluatorBuilder {
       }
     }
 
-    private @Nullable Object zeroValue(FieldDescriptor fieldDescriptor, boolean forItems)
+    private Object zeroValue(FieldDescriptor fieldDescriptor, boolean forItems)
         throws CompilationException {
       final Object zero;
       if (forItems && fieldDescriptor.isRepeated()) {
