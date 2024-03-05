@@ -22,14 +22,22 @@ import build.buf.protovalidate.exceptions.ExecutionException;
  * checking of the passed in value, as the types have been guaranteed during the build phase.
  */
 public interface Evaluator {
-  /** Returns true if the evaluator always succeeds. */
+  /**
+   * Tautology returns true if the evaluator always succeeds.
+   *
+   * @return True if the evaluator always succeeds.
+   */
   boolean tautology();
 
   /**
    * Checks that the provided val is valid. Unless failFast is true, evaluation attempts to find all
    * {@link build.buf.validate.Violations} present in val instead of returning a {@link
-   * ValidationResult} on the first {@link build.buf.validate.Violation}. An {@link
-   * ExecutionException} is thrown if evaluation fails to complete.
+   * ValidationResult} on the first {@link build.buf.validate.Violation}.
+   *
+   * @param val The value to validate.
+   * @param failFast If true, validation stops after the first failure.
+   * @return The result of validation on the specified value.
+   * @throws ExecutionException If evaluation fails to complete.
    */
   ValidationResult evaluate(Value val, boolean failFast) throws ExecutionException;
 }

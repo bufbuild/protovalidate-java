@@ -219,6 +219,16 @@ public final class StringsProto {
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_buf_validate_conformance_cases_StringInOneof_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_buf_validate_conformance_cases_StringHostAndPort_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_buf_validate_conformance_cases_StringHostAndPort_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_buf_validate_conformance_cases_StringHostAndOptionalPort_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_buf_validate_conformance_cases_StringHostAndOptionalPort_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -280,12 +290,17 @@ public final class StringsProto {
       "\010r\006\300\001\002\310\001\000R\003val\"1\n\020StringUUIDIgnore\022\035\n\003va" +
       "l\030\001 \001(\tB\013\272H\010r\003\260\001\001\320\001\001R\003val\"7\n\rStringInOne" +
       "of\022\037\n\003bar\030\001 \001(\tB\013\272H\010r\006R\001aR\001bH\000R\003barB\005\n\003f" +
-      "ooB\320\001\n$build.buf.validate.conformance.ca" +
-      "sesB\014StringsProtoP\001\242\002\004BVCC\252\002\036Buf.Validat" +
-      "e.Conformance.Cases\312\002\036Buf\\Validate\\Confo" +
-      "rmance\\Cases\342\002*Buf\\Validate\\Conformance\\" +
-      "Cases\\GPBMetadata\352\002!Buf::Validate::Confo" +
-      "rmance::Casesb\006proto3"
+      "oo\"/\n\021StringHostAndPort\022\032\n\003val\030\001 \001(\tB\010\272H" +
+      "\005r\003\200\002\001R\003val\"\244\001\n\031StringHostAndOptionalPor" +
+      "t\022\206\001\n\003val\030\001 \001(\tBt\272Hq\272\001n\n\"string.host_and" +
+      "_port.optional_port\022-value must be a hos" +
+      "t and (optional) port pair\032\031this.isHostA" +
+      "ndPort(false)R\003valB\320\001\n$build.buf.validat" +
+      "e.conformance.casesB\014StringsProtoP\001\242\002\004BV" +
+      "CC\252\002\036Buf.Validate.Conformance.Cases\312\002\036Bu" +
+      "f\\Validate\\Conformance\\Cases\342\002*Buf\\Valid" +
+      "ate\\Conformance\\Cases\\GPBMetadata\352\002!Buf:" +
+      ":Validate::Conformance::Casesb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -538,6 +553,18 @@ public final class StringsProto {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_StringInOneof_descriptor,
         new java.lang.String[] { "Bar", "Foo", });
+    internal_static_buf_validate_conformance_cases_StringHostAndPort_descriptor =
+      getDescriptor().getMessageTypes().get(41);
+    internal_static_buf_validate_conformance_cases_StringHostAndPort_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_buf_validate_conformance_cases_StringHostAndPort_descriptor,
+        new java.lang.String[] { "Val", });
+    internal_static_buf_validate_conformance_cases_StringHostAndOptionalPort_descriptor =
+      getDescriptor().getMessageTypes().get(42);
+    internal_static_buf_validate_conformance_cases_StringHostAndOptionalPort_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_buf_validate_conformance_cases_StringHostAndOptionalPort_descriptor,
+        new java.lang.String[] { "Val", });
     com.google.protobuf.ExtensionRegistry registry =
         com.google.protobuf.ExtensionRegistry.newInstance();
     registry.add(build.buf.validate.ValidateProto.field);

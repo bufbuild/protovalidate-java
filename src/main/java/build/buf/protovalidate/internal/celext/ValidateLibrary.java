@@ -29,6 +29,9 @@ import org.projectnessie.cel.ProgramOption;
  */
 public class ValidateLibrary implements Library {
 
+  /** Creates a ValidateLibrary with all custom declarations and overloads. */
+  public ValidateLibrary() {}
+
   /**
    * Returns the compile options for the CEL environment.
    *

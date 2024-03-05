@@ -119,35 +119,16 @@ public interface FieldConstraintsOrBuilder extends
 
   /**
    * <pre>
-   * `skipped` is an optional boolean attribute that specifies that the
-   * validation rules of this field should not be evaluated. If skipped is set to
-   * true, any validation rules set for the field will be ignored.
+   * If `required` is true, the field must be populated. A populated field can be
+   * described as "serialized in the wire format," which includes:
    *
-   * ```proto
-   * message MyMessage {
-   *   // The field `value` must not be set.
-   *   optional MyOtherMessage value = 1 [(buf.validate.field).skipped = true];
-   * }
-   * ```
-   * </pre>
-   *
-   * <code>bool skipped = 24 [json_name = "skipped"];</code>
-   * @return The skipped.
-   */
-  boolean getSkipped();
-
-  /**
-   * <pre>
-   * If `required` is true, the field must be populated. Field presence can be
-   * described as "serialized in the wire format," which follows the following rules:
-   *
-   * - the following "nullable" fields must be explicitly set to be considered present:
-   *   - singular message fields (may be their empty value)
+   * - the following "nullable" fields must be explicitly set to be considered populated:
+   *   - singular message fields (whose fields may be unpopulated/default values)
    *   - member fields of a oneof (may be their default value)
    *   - proto3 optional fields (may be their default value)
-   *   - proto2 scalar fields
-   * - proto3 scalar fields must be non-zero to be considered present
-   * - repeated and map fields must be non-empty to be considered present
+   *   - proto2 scalar fields (both optional and required)
+   * - proto3 scalar fields must be non-zero to be considered populated
+   * - repeated and map fields must be non-empty to be considered populated
    *
    * ```proto
    * message MyMessage {
@@ -164,27 +145,46 @@ public interface FieldConstraintsOrBuilder extends
 
   /**
    * <pre>
-   * If `ignore_empty` is true and applied to a non-nullable field (see
-   * `required` for more details), validation is skipped on the field if it is
-   * the default or empty value. Adding `ignore_empty` to a "nullable" field is
-   * a noop as these unset fields already skip validation (with the exception
-   * of `required`).
+   * Skip validation on the field if its value matches the specified criteria.
+   * See Ignore enum for details.
    *
    * ```proto
-   * message MyRepeated {
-   *   // The field `value` min_len rule is only applied if the field isn't empty.
-   *   repeated string value = 1 [
-   *     (buf.validate.field).ignore_empty = true,
-   *     (buf.validate.field).min_len = 5
+   * message UpdateRequest {
+   *   // The uri rule only applies if the field is populated and not an empty
+   *   // string.
+   *   optional string url = 1 [
+   *     (buf.validate.field).ignore = IGNORE_IF_DEFAULT_VALUE,
+   *     (buf.validate.field).string.uri = true,
    *   ];
    * }
    * ```
    * </pre>
    *
-   * <code>bool ignore_empty = 26 [json_name = "ignoreEmpty"];</code>
-   * @return The ignoreEmpty.
+   * <code>.buf.validate.Ignore ignore = 27 [json_name = "ignore"];</code>
+   * @return The enum numeric value on the wire for ignore.
    */
-  boolean getIgnoreEmpty();
+  int getIgnoreValue();
+  /**
+   * <pre>
+   * Skip validation on the field if its value matches the specified criteria.
+   * See Ignore enum for details.
+   *
+   * ```proto
+   * message UpdateRequest {
+   *   // The uri rule only applies if the field is populated and not an empty
+   *   // string.
+   *   optional string url = 1 [
+   *     (buf.validate.field).ignore = IGNORE_IF_DEFAULT_VALUE,
+   *     (buf.validate.field).string.uri = true,
+   *   ];
+   * }
+   * ```
+   * </pre>
+   *
+   * <code>.buf.validate.Ignore ignore = 27 [json_name = "ignore"];</code>
+   * @return The ignore.
+   */
+  build.buf.validate.Ignore getIgnore();
 
   /**
    * <pre>
@@ -536,6 +536,30 @@ public interface FieldConstraintsOrBuilder extends
    * <code>.buf.validate.TimestampRules timestamp = 22 [json_name = "timestamp"];</code>
    */
   build.buf.validate.TimestampRulesOrBuilder getTimestampOrBuilder();
+
+  /**
+   * <pre>
+   * DEPRECATED: use ignore=IGNORE_ALWAYS instead. TODO: remove this field pre-v1.
+   * </pre>
+   *
+   * <code>bool skipped = 24 [json_name = "skipped", deprecated = true];</code>
+   * @deprecated buf.validate.FieldConstraints.skipped is deprecated.
+   *     See buf/validate/validate.proto;l=196
+   * @return The skipped.
+   */
+  @java.lang.Deprecated boolean getSkipped();
+
+  /**
+   * <pre>
+   * DEPRECATED: use ignore=IGNORE_IF_UNPOPULATED instead. TODO: remove this field pre-v1.
+   * </pre>
+   *
+   * <code>bool ignore_empty = 26 [json_name = "ignoreEmpty", deprecated = true];</code>
+   * @deprecated buf.validate.FieldConstraints.ignore_empty is deprecated.
+   *     See buf/validate/validate.proto;l=198
+   * @return The ignoreEmpty.
+   */
+  @java.lang.Deprecated boolean getIgnoreEmpty();
 
   build.buf.validate.FieldConstraints.TypeCase getTypeCase();
 }

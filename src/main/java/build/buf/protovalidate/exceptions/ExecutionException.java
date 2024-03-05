@@ -16,6 +16,11 @@ package build.buf.protovalidate.exceptions;
 
 /** ExecutionException is returned when a constraint fails to execute. This is a fatal error. */
 public class ExecutionException extends ValidationException {
+  /**
+   * Creates an ExecutionException with the specified message.
+   *
+   * @param message Exception message.
+   */
   public ExecutionException(String message) {
     super(message);
   }

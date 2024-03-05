@@ -31,6 +31,9 @@ public class NowVariable implements Activation {
   /** The resolved value of the 'now' variable. */
   @Nullable private ResolvedValue resolvedValue;
 
+  /** Creates an instance of a "now" variable. */
+  public NowVariable() {}
+
   @Override
   public ResolvedValue resolveName(String name) {
     if (!name.equals(NOW_NAME)) {

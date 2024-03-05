@@ -57,6 +57,7 @@ final class CustomOverload {
   private static final String OVERLOAD_IS_URI_REF = "isUriRef";
   private static final String OVERLOAD_IS_NAN = "isNan";
   private static final String OVERLOAD_IS_INF = "isInf";
+  private static final String OVERLOAD_IS_HOST_AND_PORT = "isHostAndPort";
 
   /**
    * Create custom function overload list.
@@ -78,6 +79,7 @@ final class CustomOverload {
       isUriRef(),
       isNan(),
       isInf(),
+      isHostAndPort(),
     };
   }
 
@@ -438,6 +440,55 @@ final class CustomOverload {
         null);
   }
 
+  private static Overload isHostAndPort() {
+    return Overload.overload(
+        OVERLOAD_IS_HOST_AND_PORT,
+        null,
+        null,
+        (lhs, rhs) -> {
+          if (lhs.type().typeEnum() != TypeEnum.String || rhs.type().typeEnum() != TypeEnum.Bool) {
+            return Err.noSuchOverload(lhs, OVERLOAD_IS_HOST_AND_PORT, rhs);
+          }
+          String value = (String) lhs.value();
+          boolean portRequired = rhs.booleanValue();
+          return Types.boolOf(hostAndPort(value, portRequired));
+        },
+        null);
+  }
+
+  private static boolean hostAndPort(String value, boolean portRequired) {
+    if (value.isEmpty()) {
+      return false;
+    }
+    int splitIdx = value.lastIndexOf(':');
+    if (value.charAt(0) == '[') { // ipv6
+      int end = value.indexOf(']');
+      if (end + 1 == value.length()) { // no port
+        return !portRequired && validateIP(value.substring(1, end), 6);
+      }
+      if (end + 1 == splitIdx) { // port
+        return validateIP(value.substring(1, end), 6)
+            && validatePort(value.substring(splitIdx + 1));
+      }
+      return false; // malformed
+    }
+    if (splitIdx < 0) {
+      return !portRequired && (validateHostname(value) || validateIP(value, 4));
+    }
+    String host = value.substring(0, splitIdx);
+    String port = value.substring(splitIdx + 1);
+    return (validateHostname(host) || validateIP(host, 4)) && validatePort(port);
+  }
+
+  private static boolean validatePort(String value) {
+    try {
+      int portNum = Integer.parseInt(value);
+      return portNum >= 0 && portNum <= 65535;
+    } catch (NumberFormatException nfe) {
+      return false;
+    }
+  }
+
   /**
    * Determines if the input list contains unique values. If the list contains duplicate values, it
    * returns {@link BoolT#False}. If the list contains unique values, it returns {@link BoolT#True}.
@@ -484,7 +535,7 @@ final class CustomOverload {
     try {
       InternetAddress emailAddr = new InternetAddress(addr);
       emailAddr.validate();
-      if (addr.contains("<")) {
+      if (addr.contains("<") || !emailAddr.getAddress().equals(addr)) {
         return false;
       }
       addr = emailAddr.getAddress();
@@ -510,19 +561,27 @@ final class CustomOverload {
     }
     String s = Ascii.toLowerCase(host.endsWith(".") ? host.substring(0, host.length() - 1) : host);
     Iterable<String> parts = Splitter.on('.').split(s);
+    boolean allDigits = false;
     for (String part : parts) {
+      allDigits = true;
       int l = part.length();
       if (l == 0 || l > 63 || part.charAt(0) == '-' || part.charAt(l - 1) == '-') {
         return false;
       }
       for (int i = 0; i < l; i++) {
         char ch = part.charAt(i);
-        if ((ch < 'a' || ch > 'z') && (ch < '0' || ch > '9') && ch != '-') {
+        if (!Ascii.isLowerCase(ch) && !isDigit(ch) && ch != '-') {
           return false;
         }
+        allDigits = allDigits && isDigit(ch);
       }
     }
-    return true;
+    // the last part cannot be all numbers
+    return !allDigits;
+  }
+
+  private static boolean isDigit(char c) {
+    return c >= '0' && c <= '9';
   }
 
   /**

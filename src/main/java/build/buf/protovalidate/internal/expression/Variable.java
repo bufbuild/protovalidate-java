@@ -23,7 +23,10 @@ import org.projectnessie.cel.interpreter.ResolvedValue;
  * lightweight named variable to cel.Program executions.
  */
 public class Variable implements Activation {
+  /** The {@value} variable in CEL. */
   public static final String THIS_NAME = "this";
+
+  /** The {@value} variable in CEL. */
   public static final String RULES_NAME = "rules";
 
   /** The parent activation */
@@ -35,7 +38,7 @@ public class Variable implements Activation {
   /** The value for this variable */
   @Nullable private final Object val;
 
-  /** Creates a new variable with the given name and value. */
+  /** Creates a variable with the given name and value. */
   private Variable(Activation activation, String name, @Nullable Object val) {
     this.next = activation;
     this.name = name;
@@ -43,7 +46,7 @@ public class Variable implements Activation {
   }
 
   /**
-   * Creates a new "this" variable.
+   * Creates a "this" variable.
    *
    * @param val the value.
    * @return {@link Variable}.
@@ -53,7 +56,7 @@ public class Variable implements Activation {
   }
 
   /**
-   * Creates a new "rules" variable.
+   * Creates a "rules" variable.
    *
    * @param val the value.
    * @return {@link Variable}.

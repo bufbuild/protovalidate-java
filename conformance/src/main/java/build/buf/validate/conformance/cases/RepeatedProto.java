@@ -173,7 +173,7 @@ public final class RepeatedProto {
       "atedItemPattern\022-\n\003val\030\001 \003(\tB\033\272H\030\222\001\025\"\023r\021" +
       "2\017(?i)^[a-z0-9]+$R\003val\"Y\n\021RepeatedEmbedS" +
       "kip\022D\n\003val\030\001 \003(\0132%.buf.validate.conforma" +
-      "nce.cases.EmbedB\013\272H\010\222\001\005\"\003\300\001\001R\003val\"8\n\016Rep" +
+      "nce.cases.EmbedB\013\272H\010\222\001\005\"\003\330\001\003R\003val\"8\n\016Rep" +
       "eatedItemIn\022&\n\003val\030\001 \003(\tB\024\272H\021\222\001\016\"\014r\nR\003fo" +
       "oR\003barR\003val\";\n\021RepeatedItemNotIn\022&\n\003val\030" +
       "\001 \003(\tB\024\272H\021\222\001\016\"\014r\nZ\003fooZ\003barR\003val\"Z\n\016Repe" +

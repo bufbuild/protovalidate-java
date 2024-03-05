@@ -27,7 +27,11 @@ public class CelPrograms implements Evaluator {
   /** A list of {@link CompiledProgram} that will be executed against the input message. */
   private final List<CompiledProgram> programs;
 
-  /** Constructs a new {@link CelPrograms}. */
+  /**
+   * Constructs a new {@link CelPrograms}.
+   *
+   * @param compiledPrograms The programs to execute.
+   */
   public CelPrograms(List<CompiledProgram> compiledPrograms) {
     this.programs = compiledPrograms;
   }

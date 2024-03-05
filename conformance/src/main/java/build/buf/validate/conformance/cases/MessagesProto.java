@@ -94,7 +94,7 @@ public final class MessagesProto {
       "E\n\003val\030\001 \001(\01323.buf.validate.conformance." +
       "cases.other_package.EmbedR\003val\"P\n\013Messag" +
       "eSkip\022A\n\003val\030\001 \001(\0132\'.buf.validate.confor" +
-      "mance.cases.TestMsgB\006\272H\003\300\001\001R\003val\"T\n\017Mess" +
+      "mance.cases.TestMsgB\006\272H\003\330\001\003R\003val\"T\n\017Mess" +
       "ageRequired\022A\n\003val\030\001 \001(\0132\'.buf.validate." +
       "conformance.cases.TestMsgB\006\272H\003\310\001\001R\003val\"l" +
       "\n\032MessageRequiredButOptional\022F\n\003val\030\001 \001(" +
