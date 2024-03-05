@@ -570,14 +570,18 @@ final class CustomOverload {
       }
       for (int i = 0; i < l; i++) {
         char ch = part.charAt(i);
-        if ((ch < 'a' || ch > 'z') && (ch < '0' || ch > '9') && ch != '-') {
+        if (!Ascii.isLowerCase(ch) && !isDigit(ch) && ch != '-') {
           return false;
         }
-        allDigits = allDigits && ch >= '0' && ch <= '9';
+        allDigits = allDigits && isDigit(ch);
       }
     }
     // the last part cannot be all numbers
     return !allDigits;
+  }
+
+  private static boolean isDigit(char c) {
+    return c >= '0' && c <= '9';
   }
 
   /**
