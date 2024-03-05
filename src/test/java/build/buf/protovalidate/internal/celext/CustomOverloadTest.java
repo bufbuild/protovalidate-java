@@ -179,6 +179,42 @@ public class CustomOverloadTest {
     }
   }
 
+  @Test
+  public void testIsHostname() {
+    Map<String, Boolean> testCases =
+        ImmutableMap.<String, Boolean>builder()
+            .put("'example.com'.isHostname()", true)
+            .put("'example.123'.isHostname()", false)
+            .build();
+    for (Map.Entry<String, Boolean> testCase : testCases.entrySet()) {
+      Program.EvalResult result = eval(testCase.getKey());
+      assertThat(result.getVal().booleanValue())
+          .as(
+              "expected %s=%s, got=%s",
+              testCase.getKey(), testCase.getValue(), !testCase.getValue())
+          .isEqualTo(testCase.getValue());
+    }
+  }
+
+  @Test
+  public void testIsEmail() {
+    Map<String, Boolean> testCases =
+        ImmutableMap.<String, Boolean>builder()
+            .put("'foo@example.com'.isEmail()", true)
+            .put("'<foo@example.com>'.isEmail()", false)
+            .put("'  foo@example.com'.isEmail()", false)
+            .put("'foo@example.com    '.isEmail()", false)
+            .build();
+    for (Map.Entry<String, Boolean> testCase : testCases.entrySet()) {
+      Program.EvalResult result = eval(testCase.getKey());
+      assertThat(result.getVal().booleanValue())
+          .as(
+              "expected %s=%s, got=%s",
+              testCase.getKey(), testCase.getValue(), !testCase.getValue())
+          .isEqualTo(testCase.getValue());
+    }
+  }
+
   private Program.EvalResult eval(String source) {
     return eval(source, Activation.emptyActivation());
   }
