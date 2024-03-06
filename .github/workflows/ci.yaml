@@ -17,17 +17,22 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+      - name: Cache Go Modules
+        uses: actions/cache@v4
         with:
-          fetch-depth: 1
+          path: |
+            ~/.cache/go-build
+            ~/go/pkg/mod
+          key: ${{ runner.os }}-gomod-ci-${{ hashFiles('gradle.properties', 'gradle/libs.versions.toml') }}
+          restore-keys:
+            ${{ runner.os }}-gomod-ci-
       - uses: actions/setup-java@v4
         with:
           distribution: 'temurin'
-          java-version: '17'
+          java-version: '21'
           cache: 'gradle'
-      - uses: actions/checkout@v4
-      - uses: bufbuild/buf-setup-action@v1
-        with:
-          github_token: ${{ github.token }}
+      - name: Validate Gradle Wrapper
+        uses: gradle/wrapper-validation-action@v2
       - name: Lint
         run: make lint
       - name: Generate
