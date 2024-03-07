@@ -11,7 +11,7 @@ protobuf = "3.25.3"
 
 [libraries]
 assertj = { module = "org.assertj:assertj-core", version.ref = "assertj" }
-buf = { module = "buf.build:buf", version.ref = "buf" }
+buf = { module = "build.buf:buf", version.ref = "buf" }
 cel = { module = "org.projectnessie.cel:cel-bom", version.ref = "cel" }
 cel-core = { module = "org.projectnessie.cel:cel-core" }
 errorprone = { module = "com.google.errorprone:error_prone_core", version = "2.25.0" }
