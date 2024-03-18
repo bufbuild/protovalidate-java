@@ -50,7 +50,7 @@ lintfix:  ## Applies the lint changes.
 .PHONY: release
 release: ## Upload artifacts to Sonatype Nexus.
 	./gradlew --info publish --stacktrace --no-daemon --no-parallel
-	./gradlew --info closeAndReleaseRepository
+	./gradlew --info releaseRepository
 
 .PHONY: releaselocal
 releaselocal: ## Release artifacts to local maven repository.
