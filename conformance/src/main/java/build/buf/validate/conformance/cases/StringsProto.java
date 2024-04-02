@@ -190,6 +190,11 @@ public final class StringsProto {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_buf_validate_conformance_cases_StringUUID_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_buf_validate_conformance_cases_StringTUUID_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_buf_validate_conformance_cases_StringTUUID_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
     internal_static_buf_validate_conformance_cases_StringHttpHeaderName_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
@@ -281,26 +286,27 @@ public final class StringsProto {
       "\030\001 \001(\tB\010\272H\005r\003\370\001\001R\003val\"\'\n\tStringURI\022\032\n\003va" +
       "l\030\001 \001(\tB\010\272H\005r\003\210\001\001R\003val\"*\n\014StringURIRef\022\032" +
       "\n\003val\030\001 \001(\tB\010\272H\005r\003\220\001\001R\003val\"(\n\nStringUUID" +
-      "\022\032\n\003val\030\001 \001(\tB\010\272H\005r\003\260\001\001R\003val\"2\n\024StringHt" +
-      "tpHeaderName\022\032\n\003val\030\001 \001(\tB\010\272H\005r\003\300\001\001R\003val" +
-      "\"3\n\025StringHttpHeaderValue\022\032\n\003val\030\001 \001(\tB\010" +
-      "\272H\005r\003\300\001\002R\003val\":\n\031StringHttpHeaderNameLoo" +
-      "se\022\035\n\003val\030\001 \001(\tB\013\272H\010r\006\300\001\001\310\001\000R\003val\";\n\032Str" +
-      "ingHttpHeaderValueLoose\022\035\n\003val\030\001 \001(\tB\013\272H" +
-      "\010r\006\300\001\002\310\001\000R\003val\"1\n\020StringUUIDIgnore\022\035\n\003va" +
-      "l\030\001 \001(\tB\013\272H\010r\003\260\001\001\320\001\001R\003val\"7\n\rStringInOne" +
-      "of\022\037\n\003bar\030\001 \001(\tB\013\272H\010r\006R\001aR\001bH\000R\003barB\005\n\003f" +
-      "oo\"/\n\021StringHostAndPort\022\032\n\003val\030\001 \001(\tB\010\272H" +
-      "\005r\003\200\002\001R\003val\"\244\001\n\031StringHostAndOptionalPor" +
-      "t\022\206\001\n\003val\030\001 \001(\tBt\272Hq\272\001n\n\"string.host_and" +
-      "_port.optional_port\022-value must be a hos" +
-      "t and (optional) port pair\032\031this.isHostA" +
-      "ndPort(false)R\003valB\320\001\n$build.buf.validat" +
-      "e.conformance.casesB\014StringsProtoP\001\242\002\004BV" +
-      "CC\252\002\036Buf.Validate.Conformance.Cases\312\002\036Bu" +
-      "f\\Validate\\Conformance\\Cases\342\002*Buf\\Valid" +
-      "ate\\Conformance\\Cases\\GPBMetadata\352\002!Buf:" +
-      ":Validate::Conformance::Casesb\006proto3"
+      "\022\032\n\003val\030\001 \001(\tB\010\272H\005r\003\260\001\001R\003val\")\n\013StringTU" +
+      "UID\022\032\n\003val\030\001 \001(\tB\010\272H\005r\003\210\002\001R\003val\"2\n\024Strin" +
+      "gHttpHeaderName\022\032\n\003val\030\001 \001(\tB\010\272H\005r\003\300\001\001R\003" +
+      "val\"3\n\025StringHttpHeaderValue\022\032\n\003val\030\001 \001(" +
+      "\tB\010\272H\005r\003\300\001\002R\003val\":\n\031StringHttpHeaderName" +
+      "Loose\022\035\n\003val\030\001 \001(\tB\013\272H\010r\006\300\001\001\310\001\000R\003val\";\n\032" +
+      "StringHttpHeaderValueLoose\022\035\n\003val\030\001 \001(\tB" +
+      "\013\272H\010r\006\300\001\002\310\001\000R\003val\"1\n\020StringUUIDIgnore\022\035\n" +
+      "\003val\030\001 \001(\tB\013\272H\010r\003\260\001\001\320\001\001R\003val\"7\n\rStringIn" +
+      "Oneof\022\037\n\003bar\030\001 \001(\tB\013\272H\010r\006R\001aR\001bH\000R\003barB\005" +
+      "\n\003foo\"/\n\021StringHostAndPort\022\032\n\003val\030\001 \001(\tB" +
+      "\010\272H\005r\003\200\002\001R\003val\"\244\001\n\031StringHostAndOptional" +
+      "Port\022\206\001\n\003val\030\001 \001(\tBt\272Hq\272\001n\n\"string.host_" +
+      "and_port.optional_port\022-value must be a " +
+      "host and (optional) port pair\032\031this.isHo" +
+      "stAndPort(false)R\003valB\320\001\n$build.buf.vali" +
+      "date.conformance.casesB\014StringsProtoP\001\242\002" +
+      "\004BVCC\252\002\036Buf.Validate.Conformance.Cases\312\002" +
+      "\036Buf\\Validate\\Conformance\\Cases\342\002*Buf\\Va" +
+      "lidate\\Conformance\\Cases\\GPBMetadata\352\002!B" +
+      "uf::Validate::Conformance::Casesb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -517,50 +523,56 @@ public final class StringsProto {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_StringUUID_descriptor,
         new java.lang.String[] { "Val", });
-    internal_static_buf_validate_conformance_cases_StringHttpHeaderName_descriptor =
+    internal_static_buf_validate_conformance_cases_StringTUUID_descriptor =
       getDescriptor().getMessageTypes().get(35);
+    internal_static_buf_validate_conformance_cases_StringTUUID_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_buf_validate_conformance_cases_StringTUUID_descriptor,
+        new java.lang.String[] { "Val", });
+    internal_static_buf_validate_conformance_cases_StringHttpHeaderName_descriptor =
+      getDescriptor().getMessageTypes().get(36);
     internal_static_buf_validate_conformance_cases_StringHttpHeaderName_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_StringHttpHeaderName_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_StringHttpHeaderValue_descriptor =
-      getDescriptor().getMessageTypes().get(36);
+      getDescriptor().getMessageTypes().get(37);
     internal_static_buf_validate_conformance_cases_StringHttpHeaderValue_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_StringHttpHeaderValue_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_StringHttpHeaderNameLoose_descriptor =
-      getDescriptor().getMessageTypes().get(37);
+      getDescriptor().getMessageTypes().get(38);
     internal_static_buf_validate_conformance_cases_StringHttpHeaderNameLoose_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_StringHttpHeaderNameLoose_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_StringHttpHeaderValueLoose_descriptor =
-      getDescriptor().getMessageTypes().get(38);
+      getDescriptor().getMessageTypes().get(39);
     internal_static_buf_validate_conformance_cases_StringHttpHeaderValueLoose_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_StringHttpHeaderValueLoose_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_StringUUIDIgnore_descriptor =
-      getDescriptor().getMessageTypes().get(39);
+      getDescriptor().getMessageTypes().get(40);
     internal_static_buf_validate_conformance_cases_StringUUIDIgnore_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_StringUUIDIgnore_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_StringInOneof_descriptor =
-      getDescriptor().getMessageTypes().get(40);
+      getDescriptor().getMessageTypes().get(41);
     internal_static_buf_validate_conformance_cases_StringInOneof_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_StringInOneof_descriptor,
         new java.lang.String[] { "Bar", "Foo", });
     internal_static_buf_validate_conformance_cases_StringHostAndPort_descriptor =
-      getDescriptor().getMessageTypes().get(41);
+      getDescriptor().getMessageTypes().get(42);
     internal_static_buf_validate_conformance_cases_StringHostAndPort_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_StringHostAndPort_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_StringHostAndOptionalPort_descriptor =
-      getDescriptor().getMessageTypes().get(42);
+      getDescriptor().getMessageTypes().get(43);
     internal_static_buf_validate_conformance_cases_StringHostAndOptionalPort_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_StringHostAndOptionalPort_descriptor,

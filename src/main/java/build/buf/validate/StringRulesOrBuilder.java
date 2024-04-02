@@ -1070,6 +1070,45 @@ public interface StringRulesOrBuilder extends
 
   /**
    * <pre>
+   * `tuuid` (trimmed UUID) specifies that the field value must be a valid UUID as
+   * defined by [RFC 4122](https://tools.ietf.org/html/rfc4122#section-4.1.2) with all dashes
+   * omitted. If the field value isn't a valid UUID without dashes, an error message
+   * will be generated.
+   *
+   * ```proto
+   * message MyString {
+   *   // value must be a valid trimmed UUID
+   *   string value = 1 [(buf.validate.field).string.tuuid = true];
+   * }
+   * ```
+   * </pre>
+   *
+   * <code>bool tuuid = 33 [json_name = "tuuid", (.buf.validate.priv.field) = { ... }</code>
+   * @return Whether the tuuid field is set.
+   */
+  boolean hasTuuid();
+  /**
+   * <pre>
+   * `tuuid` (trimmed UUID) specifies that the field value must be a valid UUID as
+   * defined by [RFC 4122](https://tools.ietf.org/html/rfc4122#section-4.1.2) with all dashes
+   * omitted. If the field value isn't a valid UUID without dashes, an error message
+   * will be generated.
+   *
+   * ```proto
+   * message MyString {
+   *   // value must be a valid trimmed UUID
+   *   string value = 1 [(buf.validate.field).string.tuuid = true];
+   * }
+   * ```
+   * </pre>
+   *
+   * <code>bool tuuid = 33 [json_name = "tuuid", (.buf.validate.priv.field) = { ... }</code>
+   * @return The tuuid.
+   */
+  boolean getTuuid();
+
+  /**
+   * <pre>
    * `ip_with_prefixlen` specifies that the field value must be a valid IP (v4 or v6)
    * address with prefix length. If the field value isn't a valid IP with prefix
    * length, an error message will be generated.

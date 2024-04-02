@@ -70,6 +70,7 @@ private static final long serialVersionUID = 0L;
     URI_REF(18),
     ADDRESS(21),
     UUID(22),
+    TUUID(33),
     IP_WITH_PREFIXLEN(26),
     IPV4_WITH_PREFIXLEN(27),
     IPV6_WITH_PREFIXLEN(28),
@@ -104,6 +105,7 @@ private static final long serialVersionUID = 0L;
         case 18: return URI_REF;
         case 21: return ADDRESS;
         case 22: return UUID;
+        case 33: return TUUID;
         case 26: return IP_WITH_PREFIXLEN;
         case 27: return IPV4_WITH_PREFIXLEN;
         case 28: return IPV6_WITH_PREFIXLEN;
@@ -1529,6 +1531,55 @@ private static final long serialVersionUID = 0L;
     return false;
   }
 
+  public static final int TUUID_FIELD_NUMBER = 33;
+  /**
+   * <pre>
+   * `tuuid` (trimmed UUID) specifies that the field value must be a valid UUID as
+   * defined by [RFC 4122](https://tools.ietf.org/html/rfc4122#section-4.1.2) with all dashes
+   * omitted. If the field value isn't a valid UUID without dashes, an error message
+   * will be generated.
+   *
+   * ```proto
+   * message MyString {
+   *   // value must be a valid trimmed UUID
+   *   string value = 1 [(buf.validate.field).string.tuuid = true];
+   * }
+   * ```
+   * </pre>
+   *
+   * <code>bool tuuid = 33 [json_name = "tuuid", (.buf.validate.priv.field) = { ... }</code>
+   * @return Whether the tuuid field is set.
+   */
+  @java.lang.Override
+  public boolean hasTuuid() {
+    return wellKnownCase_ == 33;
+  }
+  /**
+   * <pre>
+   * `tuuid` (trimmed UUID) specifies that the field value must be a valid UUID as
+   * defined by [RFC 4122](https://tools.ietf.org/html/rfc4122#section-4.1.2) with all dashes
+   * omitted. If the field value isn't a valid UUID without dashes, an error message
+   * will be generated.
+   *
+   * ```proto
+   * message MyString {
+   *   // value must be a valid trimmed UUID
+   *   string value = 1 [(buf.validate.field).string.tuuid = true];
+   * }
+   * ```
+   * </pre>
+   *
+   * <code>bool tuuid = 33 [json_name = "tuuid", (.buf.validate.priv.field) = { ... }</code>
+   * @return The tuuid.
+   */
+  @java.lang.Override
+  public boolean getTuuid() {
+    if (wellKnownCase_ == 33) {
+      return (java.lang.Boolean) wellKnown_;
+    }
+    return false;
+  }
+
   public static final int IP_WITH_PREFIXLEN_FIELD_NUMBER = 26;
   /**
    * <pre>
@@ -2133,6 +2184,10 @@ private static final long serialVersionUID = 0L;
       output.writeBool(
           32, (boolean)((java.lang.Boolean) wellKnown_));
     }
+    if (wellKnownCase_ == 33) {
+      output.writeBool(
+          33, (boolean)((java.lang.Boolean) wellKnown_));
+    }
     getUnknownFields().writeTo(output);
   }
 
@@ -2288,6 +2343,11 @@ private static final long serialVersionUID = 0L;
         .computeBoolSize(
             32, (boolean)((java.lang.Boolean) wellKnown_));
     }
+    if (wellKnownCase_ == 33) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeBoolSize(
+            33, (boolean)((java.lang.Boolean) wellKnown_));
+    }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
     return size;
@@ -2409,6 +2469,10 @@ private static final long serialVersionUID = 0L;
       case 22:
         if (getUuid()
             != other.getUuid()) return false;
+        break;
+      case 33:
+        if (getTuuid()
+            != other.getTuuid()) return false;
         break;
       case 26:
         if (getIpWithPrefixlen()
@@ -2568,6 +2632,11 @@ private static final long serialVersionUID = 0L;
         hash = (37 * hash) + UUID_FIELD_NUMBER;
         hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
             getUuid());
+        break;
+      case 33:
+        hash = (37 * hash) + TUUID_FIELD_NUMBER;
+        hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+            getTuuid());
         break;
       case 26:
         hash = (37 * hash) + IP_WITH_PREFIXLEN_FIELD_NUMBER;
@@ -2747,6 +2816,7 @@ private static final long serialVersionUID = 0L;
     public Builder clear() {
       super.clear();
       bitField0_ = 0;
+      bitField1_ = 0;
       const_ = "";
       len_ = 0L;
       minLen_ = 0L;
@@ -2793,6 +2863,7 @@ private static final long serialVersionUID = 0L;
     public build.buf.validate.StringRules buildPartial() {
       build.buf.validate.StringRules result = new build.buf.validate.StringRules(this);
       if (bitField0_ != 0) { buildPartial0(result); }
+      if (bitField1_ != 0) { buildPartial1(result); }
       buildPartialOneofs(result);
       onBuilt();
       return result;
@@ -2857,7 +2928,13 @@ private static final long serialVersionUID = 0L;
         notIn_.makeImmutable();
         result.notIn_ = notIn_;
       }
-      if (((from_bitField0_ & 0x80000000) != 0)) {
+      result.bitField0_ |= to_bitField0_;
+    }
+
+    private void buildPartial1(build.buf.validate.StringRules result) {
+      int from_bitField1_ = bitField1_;
+      int to_bitField0_ = 0;
+      if (((from_bitField1_ & 0x00000001) != 0)) {
         result.strict_ = strict_;
         to_bitField0_ |= 0x00001000;
       }
@@ -3019,6 +3096,10 @@ private static final long serialVersionUID = 0L;
         }
         case UUID: {
           setUuid(other.getUuid());
+          break;
+        }
+        case TUUID: {
+          setTuuid(other.getTuuid());
           break;
         }
         case IP_WITH_PREFIXLEN: {
@@ -3208,7 +3289,7 @@ private static final long serialVersionUID = 0L;
             } // case 192
             case 200: {
               strict_ = input.readBool();
-              bitField0_ |= 0x80000000;
+              bitField1_ |= 0x00000001;
               break;
             } // case 200
             case 208: {
@@ -3246,6 +3327,11 @@ private static final long serialVersionUID = 0L;
               wellKnownCase_ = 32;
               break;
             } // case 256
+            case 264: {
+              wellKnown_ = input.readBool();
+              wellKnownCase_ = 33;
+              break;
+            } // case 264
             default: {
               if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                 done = true; // was an endgroup tag
@@ -3277,6 +3363,7 @@ private static final long serialVersionUID = 0L;
     }
 
     private int bitField0_;
+    private int bitField1_;
 
     private java.lang.Object const_ = "";
     /**
@@ -6105,6 +6192,104 @@ private static final long serialVersionUID = 0L;
 
     /**
      * <pre>
+     * `tuuid` (trimmed UUID) specifies that the field value must be a valid UUID as
+     * defined by [RFC 4122](https://tools.ietf.org/html/rfc4122#section-4.1.2) with all dashes
+     * omitted. If the field value isn't a valid UUID without dashes, an error message
+     * will be generated.
+     *
+     * ```proto
+     * message MyString {
+     *   // value must be a valid trimmed UUID
+     *   string value = 1 [(buf.validate.field).string.tuuid = true];
+     * }
+     * ```
+     * </pre>
+     *
+     * <code>bool tuuid = 33 [json_name = "tuuid", (.buf.validate.priv.field) = { ... }</code>
+     * @return Whether the tuuid field is set.
+     */
+    public boolean hasTuuid() {
+      return wellKnownCase_ == 33;
+    }
+    /**
+     * <pre>
+     * `tuuid` (trimmed UUID) specifies that the field value must be a valid UUID as
+     * defined by [RFC 4122](https://tools.ietf.org/html/rfc4122#section-4.1.2) with all dashes
+     * omitted. If the field value isn't a valid UUID without dashes, an error message
+     * will be generated.
+     *
+     * ```proto
+     * message MyString {
+     *   // value must be a valid trimmed UUID
+     *   string value = 1 [(buf.validate.field).string.tuuid = true];
+     * }
+     * ```
+     * </pre>
+     *
+     * <code>bool tuuid = 33 [json_name = "tuuid", (.buf.validate.priv.field) = { ... }</code>
+     * @return The tuuid.
+     */
+    public boolean getTuuid() {
+      if (wellKnownCase_ == 33) {
+        return (java.lang.Boolean) wellKnown_;
+      }
+      return false;
+    }
+    /**
+     * <pre>
+     * `tuuid` (trimmed UUID) specifies that the field value must be a valid UUID as
+     * defined by [RFC 4122](https://tools.ietf.org/html/rfc4122#section-4.1.2) with all dashes
+     * omitted. If the field value isn't a valid UUID without dashes, an error message
+     * will be generated.
+     *
+     * ```proto
+     * message MyString {
+     *   // value must be a valid trimmed UUID
+     *   string value = 1 [(buf.validate.field).string.tuuid = true];
+     * }
+     * ```
+     * </pre>
+     *
+     * <code>bool tuuid = 33 [json_name = "tuuid", (.buf.validate.priv.field) = { ... }</code>
+     * @param value The tuuid to set.
+     * @return This builder for chaining.
+     */
+    public Builder setTuuid(boolean value) {
+
+      wellKnownCase_ = 33;
+      wellKnown_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <pre>
+     * `tuuid` (trimmed UUID) specifies that the field value must be a valid UUID as
+     * defined by [RFC 4122](https://tools.ietf.org/html/rfc4122#section-4.1.2) with all dashes
+     * omitted. If the field value isn't a valid UUID without dashes, an error message
+     * will be generated.
+     *
+     * ```proto
+     * message MyString {
+     *   // value must be a valid trimmed UUID
+     *   string value = 1 [(buf.validate.field).string.tuuid = true];
+     * }
+     * ```
+     * </pre>
+     *
+     * <code>bool tuuid = 33 [json_name = "tuuid", (.buf.validate.priv.field) = { ... }</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearTuuid() {
+      if (wellKnownCase_ == 33) {
+        wellKnownCase_ = 0;
+        wellKnown_ = null;
+        onChanged();
+      }
+      return this;
+    }
+
+    /**
+     * <pre>
      * `ip_with_prefixlen` specifies that the field value must be a valid IP (v4 or v6)
      * address with prefix length. If the field value isn't a valid IP with prefix
      * length, an error message will be generated.
@@ -6991,7 +7176,7 @@ private static final long serialVersionUID = 0L;
      */
     @java.lang.Override
     public boolean hasStrict() {
-      return ((bitField0_ & 0x80000000) != 0);
+      return ((bitField1_ & 0x00000001) != 0);
     }
     /**
      * <pre>
@@ -7039,7 +7224,7 @@ private static final long serialVersionUID = 0L;
     public Builder setStrict(boolean value) {
 
       strict_ = value;
-      bitField0_ |= 0x80000000;
+      bitField1_ |= 0x00000001;
       onChanged();
       return this;
     }
@@ -7063,7 +7248,7 @@ private static final long serialVersionUID = 0L;
      * @return This builder for chaining.
      */
     public Builder clearStrict() {
-      bitField0_ = (bitField0_ & ~0x80000000);
+      bitField1_ = (bitField1_ & ~0x00000001);
       strict_ = false;
       onChanged();
       return this;

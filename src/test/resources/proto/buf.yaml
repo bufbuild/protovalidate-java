@@ -3,7 +3,7 @@ breaking:
   use:
     - FILE
 deps:
-  - buf.build/bufbuild/protovalidate:v0.6.1
+  - buf.build/bufbuild/protovalidate:v0.6.3
 lint:
   use:
     - DEFAULT
