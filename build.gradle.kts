@@ -63,26 +63,27 @@ tasks.register<Exec>("licenseHeader") {
         "src/main/java/build/buf/validate/",
         "--ignore",
         "conformance/src/main/java/build/buf/validate/conformance/",
+        "--ignore",
+        "src/main/resources/buf/validate/",
     )
 }
 
 tasks.register<Exec>("generateTestSourcesImports") {
-    dependsOn("configureBuf")
+    dependsOn("exportProtovalidateModule")
     description = "Generates code with buf generate --include-imports for unit tests."
     commandLine(
         buf.asPath,
         "generate",
         "--template",
         "src/test/resources/proto/buf.gen.imports.yaml",
-        "src/test/resources/proto",
         "--include-imports",
     )
 }
 
 tasks.register<Exec>("generateTestSourcesNoImports") {
-    dependsOn("configureBuf")
+    dependsOn("exportProtovalidateModule")
     description = "Generates code with buf generate --include-imports for unit tests."
-    commandLine(buf.asPath, "generate", "--template", "src/test/resources/proto/buf.gen.noimports.yaml", "src/test/resources/proto")
+    commandLine(buf.asPath, "generate", "--template", "src/test/resources/proto/buf.gen.noimports.yaml")
 }
 
 tasks.register("generateTestSources") {
@@ -103,7 +104,7 @@ tasks.register<Exec>("exportProtovalidateModule") {
 }
 
 tasks.register<Exec>("generateSources") {
-    dependsOn("configureBuf")
+    dependsOn("exportProtovalidateModule")
     description = "Generates sources for the bufbuild/protovalidate module sources to src/main/java."
     commandLine(buf.asPath, "generate", "--template", "buf.gen.yaml", "src/main/resources")
 }
@@ -126,7 +127,6 @@ tasks.register("generate") {
     description = "Generates sources with buf generate and buf export."
     dependsOn(
         "generateTestSources",
-        "exportProtovalidateModule",
         "generateSources",
         "generateConformance",
         "licenseHeader",

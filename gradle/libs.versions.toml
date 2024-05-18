@@ -5,8 +5,11 @@ cel = "0.4.4"
 ipaddress = "5.5.0"
 junit = "5.10.2"
 maven-publish = "0.28.0"
-# When updating, make sure to update buf.gen.yaml and src/test/resources/proto/buf.gen.*.yaml versions to match
-# and regenerate code with 'make generate'.
+# When updating, make sure to update versions in the following files to match and regenerate code with 'make generate'.
+# - buf.gen.yaml
+# - conformance/buf.gen.yaml
+# - src/test/resources/proto/buf.gen.imports.yaml
+# - src/test/resources/proto/buf.gen.noimports.yaml
 protobuf = "3.25.3"
 
 [libraries]
