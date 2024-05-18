@@ -1,0 +1,10 @@
+version: v2
+modules:
+  - path: src/main/resources
+  - path: src/test/resources/proto
+lint:
+  use:
+    - DEFAULT
+breaking:
+  use:
+    - FILE

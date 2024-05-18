@@ -1,7 +1,9 @@
-version: v1
+version: v2
 managed:
   enabled: true
-  java_package_prefix: "build"
+  override:
+    - file_option: java_package_prefix
+      value: build
 plugins:
-  - plugin: buf.build/protocolbuffers/java:v24.3
+  - remote: buf.build/protocolbuffers/java:v25.3
     out: src/main/java
