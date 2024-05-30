@@ -62,11 +62,8 @@ class EnumEvaluator implements Evaluator {
    */
   @Override
   public ValidationResult evaluate(Value val, boolean failFast) throws ExecutionException {
-    Descriptors.EnumValueDescriptor enumValue = val.value(Descriptors.EnumValueDescriptor.class);
-    if (enumValue == null) {
-      return ValidationResult.EMPTY;
-    }
-    if (!values.contains(enumValue.getNumber())) {
+    Integer enumValue = val.jvmValue(Integer.class);
+    if (!values.contains(enumValue)) {
       return new ValidationResult(
           Collections.singletonList(
               Violation.newBuilder()

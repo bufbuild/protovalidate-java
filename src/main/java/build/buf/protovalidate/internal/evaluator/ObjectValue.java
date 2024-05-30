@@ -22,7 +22,6 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import javax.annotation.Nullable;
 import org.projectnessie.cel.common.ULong;
 
 /**
@@ -50,17 +49,25 @@ public final class ObjectValue implements Value {
     this.value = value;
   }
 
-  @Nullable
   @Override
-  public Message messageValue() {
-    if (fieldDescriptor.getType() == Descriptors.FieldDescriptor.Type.MESSAGE) {
-      return (Message) value;
-    }
-    return null;
+  public MessageLike messageValue() {
+    return new ProtobufMessageLike((Message) value);
   }
 
   @Override
-  public <T> T value(Class<T> clazz) {
+  public <T> T jvmValue(Class<T> clazz) {
+    if (value instanceof Descriptors.EnumValueDescriptor) {
+      return clazz.cast(((Descriptors.EnumValueDescriptor) value).getNumber());
+    } else {
+      return clazz.cast(value);
+    }
+  }
+
+  @Override
+  public Object celValue() {
+    if (value instanceof Descriptors.EnumValueDescriptor) {
+      return ((Descriptors.EnumValueDescriptor) value).getNumber();
+    }
     Descriptors.FieldDescriptor.Type type = fieldDescriptor.getType();
     if (!fieldDescriptor.isRepeated()
         && (type == Descriptors.FieldDescriptor.Type.UINT32
@@ -74,9 +81,9 @@ public final class ObjectValue implements Value {
        * When using uint32/uint64 in your protobuf objects or CEL expressions in Java,
        * wrap them with the org.projectnessie.cel.common.ULong type.
        */
-      return clazz.cast(ULong.valueOf(((Number) value).longValue()));
+      return ULong.valueOf(((Number) value).longValue());
     }
-    return clazz.cast(value);
+    return value;
   }
 
   @Override

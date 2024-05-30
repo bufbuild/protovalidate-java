@@ -18,7 +18,6 @@ import build.buf.protovalidate.ValidationResult;
 import build.buf.protovalidate.exceptions.ExecutionException;
 import build.buf.validate.Violation;
 import com.google.protobuf.Descriptors;
-import com.google.protobuf.Message;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
@@ -45,12 +44,12 @@ class AnyEvaluator implements Evaluator {
 
   @Override
   public ValidationResult evaluate(Value val, boolean failFast) throws ExecutionException {
-    Message anyValue = val.messageValue();
+    MessageLike anyValue = val.messageValue();
     if (anyValue == null) {
       return ValidationResult.EMPTY;
     }
     List<Violation> violationList = new ArrayList<>();
-    String typeURL = (String) anyValue.getField(typeURLDescriptor);
+    String typeURL = anyValue.getField(typeURLDescriptor).jvmValue(String.class);
     if (!in.isEmpty() && !in.contains(typeURL)) {
       Violation violation =
           Violation.newBuilder()

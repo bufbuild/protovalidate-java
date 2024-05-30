@@ -18,7 +18,6 @@ import build.buf.protovalidate.ValidationResult;
 import build.buf.protovalidate.exceptions.ExecutionException;
 import build.buf.validate.Violation;
 import com.google.protobuf.Descriptors.OneofDescriptor;
-import com.google.protobuf.Message;
 import java.util.Collections;
 
 /** {@link OneofEvaluator} performs validation on a oneof union. */
@@ -47,11 +46,12 @@ public class OneofEvaluator implements Evaluator {
 
   @Override
   public ValidationResult evaluate(Value val, boolean failFast) throws ExecutionException {
-    Message message = val.messageValue();
+    MessageLike message = val.messageValue();
     if (message == null) {
       return ValidationResult.EMPTY;
     }
-    if (required && (message.getOneofFieldDescriptor(descriptor) == null)) {
+    boolean hasField = descriptor.getFields().stream().anyMatch(message::hasField);
+    if (required && !hasField) {
       return new ValidationResult(
           Collections.singletonList(
               Violation.newBuilder()

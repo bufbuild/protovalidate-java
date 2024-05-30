@@ -100,7 +100,7 @@ class MapEvaluator implements Evaluator {
     violations.addAll(keyViolations);
     violations.addAll(valueViolations);
 
-    Object keyName = key.value(Object.class);
+    Object keyName = key.jvmValue(Object.class);
     if (keyName == null) {
       return Collections.emptyList();
     }
