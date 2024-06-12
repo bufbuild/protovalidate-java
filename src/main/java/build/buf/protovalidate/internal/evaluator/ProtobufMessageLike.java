@@ -14,6 +14,8 @@
 
 package build.buf.protovalidate.internal.evaluator;
 
+import build.buf.protovalidate.MessageLike;
+import build.buf.protovalidate.Value;
 import com.google.protobuf.Descriptors.FieldDescriptor;
 import com.google.protobuf.Message;
 

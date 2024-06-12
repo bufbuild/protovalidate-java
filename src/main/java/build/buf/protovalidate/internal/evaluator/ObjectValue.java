@@ -14,6 +14,8 @@
 
 package build.buf.protovalidate.internal.evaluator;
 
+import build.buf.protovalidate.MessageLike;
+import build.buf.protovalidate.Value;
 import com.google.protobuf.AbstractMessage;
 import com.google.protobuf.Descriptors;
 import com.google.protobuf.Message;
@@ -24,10 +26,7 @@ import java.util.List;
 import java.util.Map;
 import org.projectnessie.cel.common.ULong;
 
-/**
- * The {@link build.buf.protovalidate.internal.evaluator.Value} type that contains a field
- * descriptor and its value.
- */
+/** The {@link Value} type that contains a field descriptor and its value. */
 public final class ObjectValue implements Value {
 
   /**
@@ -51,16 +50,18 @@ public final class ObjectValue implements Value {
 
   @Override
   public MessageLike messageValue() {
-    return new ProtobufMessageLike((Message) value);
+    if (fieldDescriptor.getType() == Descriptors.FieldDescriptor.Type.MESSAGE) {
+      return new ProtobufMessageLike((Message) value);
+    }
+    return null;
   }
 
   @Override
   public <T> T jvmValue(Class<T> clazz) {
     if (value instanceof Descriptors.EnumValueDescriptor) {
       return clazz.cast(((Descriptors.EnumValueDescriptor) value).getNumber());
-    } else {
-      return clazz.cast(value);
     }
+    return clazz.cast(value);
   }
 
   @Override

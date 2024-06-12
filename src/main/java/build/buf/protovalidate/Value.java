@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package build.buf.protovalidate.internal.evaluator;
+package build.buf.protovalidate;
 
 import java.util.List;
 import java.util.Map;

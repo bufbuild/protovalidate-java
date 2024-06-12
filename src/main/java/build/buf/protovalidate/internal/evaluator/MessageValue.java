@@ -14,16 +14,15 @@
 
 package build.buf.protovalidate.internal.evaluator;
 
+import build.buf.protovalidate.MessageLike;
+import build.buf.protovalidate.Value;
 import com.google.protobuf.Message;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import javax.annotation.Nullable;
 
-/**
- * The {@link build.buf.protovalidate.internal.evaluator.Value} type that contains a {@link
- * com.google.protobuf.Message}.
- */
+/** The {@link Value} type that contains a {@link com.google.protobuf.Message}. */
 public final class MessageValue implements Value {
 
   private final ProtobufMessageLike value;

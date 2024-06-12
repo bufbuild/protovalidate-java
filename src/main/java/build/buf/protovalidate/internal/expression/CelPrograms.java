@@ -15,9 +15,9 @@
 package build.buf.protovalidate.internal.expression;
 
 import build.buf.protovalidate.ValidationResult;
+import build.buf.protovalidate.Value;
 import build.buf.protovalidate.exceptions.ExecutionException;
 import build.buf.protovalidate.internal.evaluator.Evaluator;
-import build.buf.protovalidate.internal.evaluator.Value;
 import build.buf.validate.Violation;
 import java.util.ArrayList;
 import java.util.List;
