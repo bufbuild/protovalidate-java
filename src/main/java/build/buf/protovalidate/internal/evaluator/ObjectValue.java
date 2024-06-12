@@ -26,6 +26,8 @@ import java.util.List;
 import java.util.Map;
 import org.projectnessie.cel.common.ULong;
 
+import javax.annotation.Nullable;
+
 /** The {@link Value} type that contains a field descriptor and its value. */
 public final class ObjectValue implements Value {
 
@@ -49,6 +51,7 @@ public final class ObjectValue implements Value {
   }
 
   @Override
+  @Nullable
   public MessageLike messageValue() {
     if (fieldDescriptor.getType() == Descriptors.FieldDescriptor.Type.MESSAGE) {
       return new ProtobufMessageLike((Message) value);
