@@ -24,9 +24,8 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import org.projectnessie.cel.common.ULong;
-
 import javax.annotation.Nullable;
+import org.projectnessie.cel.common.ULong;
 
 /** The {@link Value} type that contains a field descriptor and its value. */
 public final class ObjectValue implements Value {
