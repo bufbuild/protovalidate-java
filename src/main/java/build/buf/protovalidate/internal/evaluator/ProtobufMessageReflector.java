@@ -14,15 +14,15 @@
 
 package build.buf.protovalidate.internal.evaluator;
 
-import build.buf.protovalidate.MessageLike;
+import build.buf.protovalidate.MessageReflector;
 import build.buf.protovalidate.Value;
 import com.google.protobuf.Descriptors.FieldDescriptor;
 import com.google.protobuf.Message;
 
-class ProtobufMessageLike implements MessageLike {
+class ProtobufMessageReflector implements MessageReflector {
   private final Message message;
 
-  ProtobufMessageLike(Message message) {
+  ProtobufMessageReflector(Message message) {
     this.message = message;
   }
 
@@ -37,6 +37,6 @@ class ProtobufMessageLike implements MessageLike {
 
   @Override
   public Value getField(FieldDescriptor field) {
-    return new ObjectValue(field, message.getField(field));
+    return new FieldValue(field, message.getField(field));
   }
 }

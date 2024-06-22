@@ -14,7 +14,7 @@
 
 package build.buf.protovalidate.internal.evaluator;
 
-import build.buf.protovalidate.MessageLike;
+import build.buf.protovalidate.MessageReflector;
 import build.buf.protovalidate.ValidationResult;
 import build.buf.protovalidate.Value;
 import build.buf.protovalidate.exceptions.ExecutionException;
@@ -48,7 +48,7 @@ public class OneofEvaluator implements Evaluator {
 
   @Override
   public ValidationResult evaluate(Value val, boolean failFast) throws ExecutionException {
-    MessageLike message = val.messageValue();
+    MessageReflector message = val.messageValue();
     if (message == null) {
       return ValidationResult.EMPTY;
     }

@@ -17,14 +17,14 @@ package build.buf.protovalidate;
 import com.google.protobuf.Descriptors.FieldDescriptor;
 
 /**
- * {@link MessageLike} is a wrapper around a protobuf message that provides reflective access to the
- * underlying message.
+ * {@link MessageReflector} is a wrapper around a protobuf message that provides reflective access
+ * to the underlying message.
  *
- * <p>{@link MessageLike} is a runtime-independent interface. Any protobuf runtime that implements
- * this interface can wrap its messages and, along with their {@link
+ * <p>{@link MessageReflector} is a runtime-independent interface. Any protobuf runtime that
+ * implements this interface can wrap its messages and, along with their {@link
  * com.google.protobuf.Descriptors.Descriptor}s, protovalidate-java will be able to validate them.
  */
-public interface MessageLike {
+public interface MessageReflector {
   /**
    * Whether the wrapped message has the field described by the provided field descriptor.
    *

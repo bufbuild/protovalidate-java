@@ -24,13 +24,13 @@ import javax.annotation.Nullable;
  */
 public interface Value {
   /**
-   * Get the underlying value as a {@link MessageLike} type.
+   * Get the underlying value as a {@link MessageReflector} type.
    *
-   * @return The underlying {@link MessageLike} value. null if the underlying value is not a {@link
-   *     MessageLike} type.
+   * @return The underlying {@link MessageReflector} value. null if the underlying value is not a
+   *     {@link MessageReflector} type.
    */
   @Nullable
-  MessageLike messageValue();
+  MessageReflector messageValue();
 
   /**
    * Get the underlying value as a list.

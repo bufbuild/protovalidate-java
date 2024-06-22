@@ -14,7 +14,7 @@
 
 package build.buf.protovalidate.internal.evaluator;
 
-import build.buf.protovalidate.MessageLike;
+import build.buf.protovalidate.MessageReflector;
 import build.buf.protovalidate.Value;
 import com.google.protobuf.AbstractMessage;
 import com.google.protobuf.Descriptors;
@@ -28,7 +28,7 @@ import javax.annotation.Nullable;
 import org.projectnessie.cel.common.ULong;
 
 /** The {@link Value} type that contains a field descriptor and its value. */
-public final class ObjectValue implements Value {
+public final class FieldValue implements Value {
 
   /**
    * {@link com.google.protobuf.Descriptors.FieldDescriptor} is the field descriptor for the value.
@@ -39,21 +39,21 @@ public final class ObjectValue implements Value {
   private final Object value;
 
   /**
-   * Constructs a new {@link build.buf.protovalidate.internal.evaluator.ObjectValue}.
+   * Constructs a new {@link FieldValue}.
    *
    * @param fieldDescriptor The field descriptor for the value.
    * @param value The value associated with the field descriptor.
    */
-  ObjectValue(Descriptors.FieldDescriptor fieldDescriptor, Object value) {
+  FieldValue(Descriptors.FieldDescriptor fieldDescriptor, Object value) {
     this.fieldDescriptor = fieldDescriptor;
     this.value = value;
   }
 
   @Override
   @Nullable
-  public MessageLike messageValue() {
+  public MessageReflector messageValue() {
     if (fieldDescriptor.getType() == Descriptors.FieldDescriptor.Type.MESSAGE) {
-      return new ProtobufMessageLike((Message) value);
+      return new ProtobufMessageReflector((Message) value);
     }
     return null;
   }
@@ -95,7 +95,7 @@ public final class ObjectValue implements Value {
     if (fieldDescriptor.isRepeated()) {
       List<?> list = (List<?>) value;
       for (Object o : list) {
-        out.add(new build.buf.protovalidate.internal.evaluator.ObjectValue(fieldDescriptor, o));
+        out.add(new FieldValue(fieldDescriptor, o));
       }
     }
     return out;
@@ -113,12 +113,10 @@ public final class ObjectValue implements Value {
     Map<Value, Value> out = new HashMap<>(input.size());
     for (AbstractMessage entry : input) {
       Object keyValue = entry.getField(keyDesc);
-      Value keyJavaValue =
-          new build.buf.protovalidate.internal.evaluator.ObjectValue(keyDesc, keyValue);
+      Value keyJavaValue = new FieldValue(keyDesc, keyValue);
 
       Object valValue = entry.getField(valDesc);
-      Value valJavaValue =
-          new build.buf.protovalidate.internal.evaluator.ObjectValue(valDesc, valValue);
+      Value valJavaValue = new FieldValue(valDesc, valValue);
 
       out.put(keyJavaValue, valJavaValue);
     }

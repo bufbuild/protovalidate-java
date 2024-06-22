@@ -14,7 +14,7 @@
 
 package build.buf.protovalidate.internal.evaluator;
 
-import build.buf.protovalidate.MessageLike;
+import build.buf.protovalidate.MessageReflector;
 import build.buf.protovalidate.Value;
 import com.google.protobuf.Message;
 import java.util.Collections;
@@ -25,7 +25,7 @@ import javax.annotation.Nullable;
 /** The {@link Value} type that contains a {@link com.google.protobuf.Message}. */
 public final class MessageValue implements Value {
 
-  private final ProtobufMessageLike value;
+  private final ProtobufMessageReflector value;
 
   /**
    * Constructs a {@link MessageValue} with the provided message value.
@@ -33,11 +33,11 @@ public final class MessageValue implements Value {
    * @param value The message value.
    */
   public MessageValue(Message value) {
-    this.value = new ProtobufMessageLike(value);
+    this.value = new ProtobufMessageReflector(value);
   }
 
   @Override
-  public MessageLike messageValue() {
+  public MessageReflector messageValue() {
     return value;
   }
 
