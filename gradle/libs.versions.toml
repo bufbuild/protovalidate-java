@@ -3,7 +3,7 @@ assertj = "3.26.0"
 buf = "1.34.0"
 cel = "0.4.4"
 ipaddress = "5.5.0"
-junit = "5.10.2"
+junit = "5.10.3"
 maven-publish = "0.29.0"
 # When updating, make sure to update versions in the following files to match and regenerate code with 'make generate'.
 # - buf.gen.yaml
