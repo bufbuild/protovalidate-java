@@ -15,6 +15,7 @@
 package build.buf.protovalidate.internal.evaluator;
 
 import build.buf.protovalidate.ValidationResult;
+import build.buf.protovalidate.Value;
 import build.buf.protovalidate.exceptions.ExecutionException;
 import build.buf.validate.FieldConstraints;
 import build.buf.validate.Violation;
@@ -100,7 +101,7 @@ class MapEvaluator implements Evaluator {
     violations.addAll(keyViolations);
     violations.addAll(valueViolations);
 
-    Object keyName = key.value(Object.class);
+    Object keyName = key.jvmValue(Object.class);
     if (keyName == null) {
       return Collections.emptyList();
     }
