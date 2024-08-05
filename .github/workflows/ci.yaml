@@ -32,7 +32,7 @@ jobs:
           java-version: '21'
           cache: 'gradle'
       - name: Validate Gradle Wrapper
-        uses: gradle/actions/wrapper-validation@v3
+        uses: gradle/actions/wrapper-validation@v4
       - name: Lint
         run: make lint
       - name: Generate
