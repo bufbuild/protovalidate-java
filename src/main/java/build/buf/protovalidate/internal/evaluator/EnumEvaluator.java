@@ -15,6 +15,7 @@
 package build.buf.protovalidate.internal.evaluator;
 
 import build.buf.protovalidate.ValidationResult;
+import build.buf.protovalidate.Value;
 import build.buf.protovalidate.exceptions.ExecutionException;
 import build.buf.validate.Violation;
 import com.google.protobuf.Descriptors;
@@ -62,11 +63,11 @@ class EnumEvaluator implements Evaluator {
    */
   @Override
   public ValidationResult evaluate(Value val, boolean failFast) throws ExecutionException {
-    Descriptors.EnumValueDescriptor enumValue = val.value(Descriptors.EnumValueDescriptor.class);
+    Integer enumValue = val.jvmValue(Integer.class);
     if (enumValue == null) {
       return ValidationResult.EMPTY;
     }
-    if (!values.contains(enumValue.getNumber())) {
+    if (!values.contains(enumValue)) {
       return new ValidationResult(
           Collections.singletonList(
               Violation.newBuilder()

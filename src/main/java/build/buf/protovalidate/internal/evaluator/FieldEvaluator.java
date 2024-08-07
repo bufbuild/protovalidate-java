@@ -14,11 +14,12 @@
 
 package build.buf.protovalidate.internal.evaluator;
 
+import build.buf.protovalidate.MessageReflector;
 import build.buf.protovalidate.ValidationResult;
+import build.buf.protovalidate.Value;
 import build.buf.protovalidate.exceptions.ExecutionException;
 import build.buf.validate.Violation;
 import com.google.protobuf.Descriptors.FieldDescriptor;
-import com.google.protobuf.Message;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
@@ -68,13 +69,17 @@ class FieldEvaluator implements Evaluator {
 
   @Override
   public ValidationResult evaluate(Value val, boolean failFast) throws ExecutionException {
-    Message message = val.messageValue();
+    MessageReflector message = val.messageValue();
     if (message == null) {
       return ValidationResult.EMPTY;
     }
     boolean hasField;
     if (descriptor.isRepeated()) {
-      hasField = message.getRepeatedFieldCount(descriptor) != 0;
+      if (descriptor.isMapField()) {
+        hasField = !message.getField(descriptor).mapValue().isEmpty();
+      } else {
+        hasField = !message.getField(descriptor).repeatedValue().isEmpty();
+      }
     } else {
       hasField = message.hasField(descriptor);
     }
@@ -90,12 +95,11 @@ class FieldEvaluator implements Evaluator {
     if (ignoreEmpty && !hasField) {
       return ValidationResult.EMPTY;
     }
-    Object fieldValue = message.getField(descriptor);
-    if (ignoreDefault && Objects.equals(zero, fieldValue)) {
+    Value fieldValue = message.getField(descriptor);
+    if (ignoreDefault && Objects.equals(zero, fieldValue.jvmValue(Object.class))) {
       return ValidationResult.EMPTY;
     }
-    ValidationResult evalResult =
-        valueEvaluator.evaluate(new ObjectValue(descriptor, fieldValue), failFast);
+    ValidationResult evalResult = valueEvaluator.evaluate(fieldValue, failFast);
     List<Violation> violations =
         ErrorPathUtils.prefixErrorPaths(evalResult.getViolations(), "%s", descriptor.getName());
     return new ValidationResult(violations);
