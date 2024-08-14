@@ -53,7 +53,7 @@ public final class ObjectValue implements Value {
   @Nullable
   @Override
   public Message messageValue() {
-    if (fieldDescriptor.getType() == Descriptors.FieldDescriptor.Type.MESSAGE) {
+    if (fieldDescriptor.getJavaType() == Descriptors.FieldDescriptor.JavaType.MESSAGE) {
       return (Message) value;
     }
     return null;
