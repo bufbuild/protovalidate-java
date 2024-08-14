@@ -357,7 +357,7 @@ public class EvaluatorBuilder {
         return;
       }
       List<EnvOption> opts;
-      if (fieldDescriptor.getType() == FieldDescriptor.Type.MESSAGE) {
+      if (fieldDescriptor.getJavaType() == FieldDescriptor.JavaType.MESSAGE) {
         try {
           DynamicMessage defaultInstance =
               DynamicMessage.parseFrom(
@@ -393,7 +393,7 @@ public class EvaluatorBuilder {
         boolean forItems,
         ValueEvaluator valueEvaluatorEval)
         throws CompilationException {
-      if (fieldDescriptor.getType() != FieldDescriptor.Type.MESSAGE
+      if (fieldDescriptor.getJavaType() != FieldDescriptor.JavaType.MESSAGE
           || shouldSkip(fieldConstraints)
           || fieldDescriptor.isMapField()
           || (fieldDescriptor.isRepeated() && !forItems)) {
@@ -409,7 +409,7 @@ public class EvaluatorBuilder {
         boolean forItems,
         ValueEvaluator valueEvaluatorEval)
         throws CompilationException {
-      if (fieldDescriptor.getType() != FieldDescriptor.Type.MESSAGE
+      if (fieldDescriptor.getJavaType() != FieldDescriptor.JavaType.MESSAGE
           || shouldSkip(fieldConstraints)
           || fieldDescriptor.isMapField()
           || (fieldDescriptor.isRepeated() && !forItems)) {
@@ -451,7 +451,7 @@ public class EvaluatorBuilder {
         boolean forItems,
         ValueEvaluator valueEvaluatorEval) {
       if ((fieldDescriptor.isRepeated() && !forItems)
-          || fieldDescriptor.getType() != FieldDescriptor.Type.MESSAGE
+          || fieldDescriptor.getJavaType() != FieldDescriptor.JavaType.MESSAGE
           || !fieldDescriptor.getMessageType().getFullName().equals("google.protobuf.Any")) {
         return;
       }

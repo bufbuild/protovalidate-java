@@ -206,7 +206,7 @@ public final class DescriptorMappings {
       }
     }
 
-    if (fieldDescriptor.getType() == FieldDescriptor.Type.MESSAGE) {
+    if (fieldDescriptor.getJavaType() == FieldDescriptor.JavaType.MESSAGE) {
       String fqn = fieldDescriptor.getMessageType().getFullName();
       switch (fqn) {
         case "google.protobuf.Any":
