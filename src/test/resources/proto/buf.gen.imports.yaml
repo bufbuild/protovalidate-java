@@ -5,7 +5,7 @@ managed:
     - file_option: java_package_prefix
       value: com.example.imports
 plugins:
-  - remote: buf.build/protocolbuffers/java:v27.4
+  - remote: buf.build/protocolbuffers/java:v28.0
     out: build/generated/test-sources/bufgen
 inputs:
   - directory: src/test/resources/proto
