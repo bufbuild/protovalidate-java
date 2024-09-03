@@ -108,7 +108,7 @@ public class Main {
         ValidationResult result = validator.validate(transaction);
 
         // Check if there are any validation violations
-        if (result.violations.isEmpty()) {
+        if (result.getViolations().isEmpty()) {
             // No violations, validation successful
             System.out.println("Validation succeeded");
         } else {
