@@ -5,5 +5,5 @@ managed:
     - file_option: java_package_prefix
       value: build
 plugins:
-  - remote: buf.build/protocolbuffers/java:v27.4
+  - remote: buf.build/protocolbuffers/java:v28.0
     out: src/main/java
