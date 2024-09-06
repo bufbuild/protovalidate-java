@@ -71,7 +71,8 @@ public class Variable implements Activation {
   /**
    * Creates a "rule" variable.
    *
-   * @param val the value.
+   * @param rules the value of the "rules" variable.
+   * @param val the value of the "rule" variable.
    * @return {@link Variable}.
    */
   public static Variable newRuleVariable(Object rules, Object val) {

@@ -61,6 +61,8 @@ public class EvaluatorBuilder {
    *
    * @param env The CEL environment for evaluation.
    * @param disableLazy Determines whether lazy loading of evaluators is disabled.
+   * @param typeRegistry Type registry used for resolving unknown messages.
+   * @param extensionRegistry Extension registry used for resolving unknown extensions.
    */
   public EvaluatorBuilder(
       Env env,
