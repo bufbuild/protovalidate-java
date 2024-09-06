@@ -58,6 +58,12 @@ public class ConstraintCache {
     }
   }
 
+  private static final ExtensionRegistry EXTENSION_REGISTRY = ExtensionRegistry.newInstance();
+
+  static {
+    EXTENSION_REGISTRY.add(PrivateProto.field);
+  }
+
   /** Partial eval options for evaluating the constraint's expression. */
   private static final ProgramOption PARTIAL_EVAL_OPTIONS =
       ProgramOption.evalOptions(
@@ -177,12 +183,11 @@ public class ConstraintCache {
   private @Nullable build.buf.validate.priv.FieldConstraints getFieldConstraints(
       FieldDescriptor constraintFieldDesc) throws CompilationException {
     DescriptorProtos.FieldOptions options = constraintFieldDesc.getOptions();
-    // If the protovalidate field option is unknown, reparse using extension registry.
+    // If the protovalidate field option is unknown, reparse options using our extension registry.
     if (options.getUnknownFields().hasField(PrivateProto.field.getNumber())) {
       try {
-        ExtensionRegistry registry = ExtensionRegistry.newInstance();
-        registry.add(PrivateProto.field);
-        options = DescriptorProtos.FieldOptions.parseFrom(options.toByteString(), registry);
+        options =
+            DescriptorProtos.FieldOptions.parseFrom(options.toByteString(), EXTENSION_REGISTRY);
       } catch (InvalidProtocolBufferException e) {
         throw new CompilationException("Failed to parse field options", e);
       }

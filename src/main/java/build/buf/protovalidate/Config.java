@@ -14,7 +14,6 @@
 
 package build.buf.protovalidate;
 
-import build.buf.validate.ValidateProto;
 import com.google.protobuf.ExtensionRegistry;
 import com.google.protobuf.TypeRegistry;
 
@@ -23,12 +22,6 @@ public final class Config {
   private static final TypeRegistry DEFAULT_TYPE_REGISTRY = TypeRegistry.getEmptyTypeRegistry();
   private static final ExtensionRegistry DEFAULT_EXTENSION_REGISTRY =
       ExtensionRegistry.newInstance();
-
-  static {
-    DEFAULT_EXTENSION_REGISTRY.add(ValidateProto.message);
-    DEFAULT_EXTENSION_REGISTRY.add(ValidateProto.field);
-    DEFAULT_EXTENSION_REGISTRY.add(ValidateProto.oneof);
-  }
 
   private final boolean failFast;
   private final boolean disableLazy;

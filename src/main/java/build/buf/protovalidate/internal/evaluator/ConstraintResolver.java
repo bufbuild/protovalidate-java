@@ -29,6 +29,13 @@ import com.google.protobuf.MessageLite;
 
 /** Manages the resolution of protovalidate constraints. */
 class ConstraintResolver {
+  private static final ExtensionRegistry EXTENSION_REGISTRY = ExtensionRegistry.newInstance();
+
+  static {
+    EXTENSION_REGISTRY.add(ValidateProto.message);
+    EXTENSION_REGISTRY.add(ValidateProto.oneof);
+    EXTENSION_REGISTRY.add(ValidateProto.field);
+  }
 
   /**
    * Resolves the constraints for a message descriptor.
@@ -41,9 +48,8 @@ class ConstraintResolver {
     DescriptorProtos.MessageOptions options = desc.getOptions();
     // If the protovalidate message extension is unknown, reparse using extension registry.
     if (options.getUnknownFields().hasField(ValidateProto.message.getNumber())) {
-      ExtensionRegistry registry = ExtensionRegistry.newInstance();
-      registry.add(ValidateProto.message);
-      options = DescriptorProtos.MessageOptions.parseFrom(options.toByteString(), registry);
+      options =
+          DescriptorProtos.MessageOptions.parseFrom(options.toByteString(), EXTENSION_REGISTRY);
     }
     if (!options.hasExtension(ValidateProto.message)) {
       return MessageConstraints.getDefaultInstance();
@@ -73,9 +79,7 @@ class ConstraintResolver {
     DescriptorProtos.OneofOptions options = desc.getOptions();
     // If the protovalidate oneof extension is unknown, reparse using extension registry.
     if (options.getUnknownFields().hasField(ValidateProto.oneof.getNumber())) {
-      ExtensionRegistry registry = ExtensionRegistry.newInstance();
-      registry.add(ValidateProto.oneof);
-      options = DescriptorProtos.OneofOptions.parseFrom(options.toByteString(), registry);
+      options = DescriptorProtos.OneofOptions.parseFrom(options.toByteString(), EXTENSION_REGISTRY);
     }
     if (!options.hasExtension(ValidateProto.oneof)) {
       return OneofConstraints.getDefaultInstance();
@@ -105,9 +109,7 @@ class ConstraintResolver {
     DescriptorProtos.FieldOptions options = desc.getOptions();
     // If the protovalidate field option is unknown, reparse using extension registry.
     if (options.getUnknownFields().hasField(ValidateProto.field.getNumber())) {
-      ExtensionRegistry registry = ExtensionRegistry.newInstance();
-      registry.add(ValidateProto.field);
-      options = DescriptorProtos.FieldOptions.parseFrom(options.toByteString(), registry);
+      options = DescriptorProtos.FieldOptions.parseFrom(options.toByteString(), EXTENSION_REGISTRY);
     }
     if (!options.hasExtension(ValidateProto.field)) {
       return FieldConstraints.getDefaultInstance();
