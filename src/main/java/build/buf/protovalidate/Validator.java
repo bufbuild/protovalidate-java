@@ -43,7 +43,9 @@ public class Validator {
    */
   public Validator(Config config) {
     Env env = Env.newEnv(Library.Lib(new ValidateLibrary()));
-    this.evaluatorBuilder = new EvaluatorBuilder(env, config.isDisableLazy());
+    this.evaluatorBuilder =
+        new EvaluatorBuilder(
+            env, config.isDisableLazy(), config.getTypeRegistry(), config.getExtensionRegistry());
     this.failFast = config.isFailFast();
   }
 
@@ -51,7 +53,9 @@ public class Validator {
   public Validator() {
     Config config = Config.newBuilder().build();
     Env env = Env.newEnv(Library.Lib(new ValidateLibrary()));
-    this.evaluatorBuilder = new EvaluatorBuilder(env, config.isDisableLazy());
+    this.evaluatorBuilder =
+        new EvaluatorBuilder(
+            env, config.isDisableLazy(), config.getTypeRegistry(), config.getExtensionRegistry());
     this.failFast = config.isFailFast();
   }
 

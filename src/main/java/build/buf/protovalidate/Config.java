@@ -14,14 +14,36 @@
 
 package build.buf.protovalidate;
 
+import build.buf.validate.ValidateProto;
+import com.google.protobuf.ExtensionRegistry;
+import com.google.protobuf.TypeRegistry;
+
 /** Config is the configuration for a Validator. */
 public final class Config {
+  private static final TypeRegistry DEFAULT_TYPE_REGISTRY = TypeRegistry.getEmptyTypeRegistry();
+  private static final ExtensionRegistry DEFAULT_EXTENSION_REGISTRY =
+      ExtensionRegistry.newInstance();
+
+  static {
+    DEFAULT_EXTENSION_REGISTRY.add(ValidateProto.message);
+    DEFAULT_EXTENSION_REGISTRY.add(ValidateProto.field);
+    DEFAULT_EXTENSION_REGISTRY.add(ValidateProto.oneof);
+  }
+
   private final boolean failFast;
   private final boolean disableLazy;
+  private final TypeRegistry typeRegistry;
+  private final ExtensionRegistry extensionRegistry;
 
-  private Config(boolean failFast, boolean disableLazy) {
+  private Config(
+      boolean failFast,
+      boolean disableLazy,
+      TypeRegistry typeRegistry,
+      ExtensionRegistry extensionRegistry) {
     this.failFast = failFast;
     this.disableLazy = disableLazy;
+    this.typeRegistry = typeRegistry;
+    this.extensionRegistry = extensionRegistry;
   }
 
   /**
@@ -51,10 +73,30 @@ public final class Config {
     return disableLazy;
   }
 
+  /**
+   * Gets the registry used for resolving unknown protobuf fields and messages.
+   *
+   * @return a type registry
+   */
+  public TypeRegistry getTypeRegistry() {
+    return typeRegistry;
+  }
+
+  /**
+   * Gets the registry used for resolving unknown protobuf extensions.
+   *
+   * @return an extension registry
+   */
+  public ExtensionRegistry getExtensionRegistry() {
+    return extensionRegistry;
+  }
+
   /** Builder for configuration. Provides a forward compatible API for users. */
   public static final class Builder {
     private boolean failFast;
     private boolean disableLazy;
+    private TypeRegistry typeRegistry = DEFAULT_TYPE_REGISTRY;
+    private ExtensionRegistry extensionRegistry = DEFAULT_EXTENSION_REGISTRY;
 
     private Builder() {}
 
@@ -81,12 +123,34 @@ public final class Config {
     }
 
     /**
+     * Set the type registry for resolving unknown messages.
+     *
+     * @param typeRegistry the type registry to use
+     * @return this builder
+     */
+    public Builder setTypeRegistry(TypeRegistry typeRegistry) {
+      this.typeRegistry = typeRegistry;
+      return this;
+    }
+
+    /**
+     * Set the extension registry for resolving unknown extensions.
+     *
+     * @param extensionRegistry the extension registry to use
+     * @return this builder
+     */
+    public Builder setExtensionRegistry(ExtensionRegistry extensionRegistry) {
+      this.extensionRegistry = extensionRegistry;
+      return this;
+    }
+
+    /**
      * Build the corresponding {@link Config}.
      *
      * @return the configuration.
      */
     public Config build() {
-      return new Config(failFast, disableLazy);
+      return new Config(failFast, disableLazy, typeRegistry, extensionRegistry);
     }
   }
 }

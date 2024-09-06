@@ -27,16 +27,9 @@ import build.buf.validate.FieldConstraints;
 import build.buf.validate.Ignore;
 import build.buf.validate.MessageConstraints;
 import build.buf.validate.OneofConstraints;
-import build.buf.validate.ValidateProto;
 import com.google.common.collect.ImmutableMap;
-import com.google.protobuf.ByteString;
-import com.google.protobuf.Descriptors;
 import com.google.protobuf.Descriptors.Descriptor;
 import com.google.protobuf.Descriptors.FieldDescriptor;
-import com.google.protobuf.DynamicMessage;
-import com.google.protobuf.ExtensionRegistry;
-import com.google.protobuf.InvalidProtocolBufferException;
-import com.google.protobuf.Message;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -49,19 +42,12 @@ import org.projectnessie.cel.checker.Decls;
 
 /** A build-through cache of message evaluators keyed off the provided descriptor. */
 public class EvaluatorBuilder {
-  private static final ExtensionRegistry EXTENSION_REGISTRY = ExtensionRegistry.newInstance();
-
-  static {
-    EXTENSION_REGISTRY.add(ValidateProto.message);
-    EXTENSION_REGISTRY.add(ValidateProto.field);
-    EXTENSION_REGISTRY.add(ValidateProto.oneof);
-  }
-
   private volatile ImmutableMap<Descriptor, Evaluator> evaluatorCache = ImmutableMap.of();
 
   private final Env env;
   private final boolean disableLazy;
   private final ConstraintCache constraints;
+  private final ExtensionRegistry extensionRegistry;
 
   /**
    * Constructs a new {@link EvaluatorBuilder}.
@@ -69,10 +55,15 @@ public class EvaluatorBuilder {
    * @param env The CEL environment for evaluation.
    * @param disableLazy Determines whether lazy loading of evaluators is disabled.
    */
-  public EvaluatorBuilder(Env env, boolean disableLazy) {
+  public EvaluatorBuilder(
+      Env env,
+      boolean disableLazy,
+      TypeRegistry typeRegistry,
+      ExtensionRegistry extensionRegistry) {
     this.env = env;
     this.disableLazy = disableLazy;
-    this.constraints = new ConstraintCache(env);
+    this.constraints = new ConstraintCache(env, typeRegistry, extensionRegistry);
+    this.extensionRegistry = extensionRegistry;
   }
 
   /**
@@ -109,7 +100,8 @@ public class EvaluatorBuilder {
       }
       // Rebuild cache with this descriptor (and any of its dependencies).
       ImmutableMap<Descriptor, Evaluator> updatedCache =
-          new DescriptorCacheBuilder(env, constraints, evaluatorCache).build(desc);
+          new DescriptorCacheBuilder(env, constraints, evaluatorCache, extensionRegistry)
+              .build(desc);
       evaluatorCache = updatedCache;
       eval = updatedCache.get(desc);
       if (eval == null) {
@@ -125,14 +117,17 @@ public class EvaluatorBuilder {
     private final Env env;
     private final ConstraintCache constraintCache;
     private final HashMap<Descriptor, Evaluator> cache;
+    private final ExtensionRegistry extensionRegistry;
 
     private DescriptorCacheBuilder(
         Env env,
         ConstraintCache constraintCache,
-        ImmutableMap<Descriptor, Evaluator> previousCache) {
+        ImmutableMap<Descriptor, Evaluator> previousCache,
+        ExtensionRegistry extensionRegistry) {
       this.env = Objects.requireNonNull(env, "env");
       this.constraintCache = Objects.requireNonNull(constraintCache, "constraintCache");
       this.cache = new HashMap<>(previousCache);
+      this.extensionRegistry = Objects.requireNonNull(extensionRegistry, "extensionRegistry");
     }
 
     /**
@@ -165,11 +160,10 @@ public class EvaluatorBuilder {
       try {
         DynamicMessage defaultInstance =
             DynamicMessage.newBuilder(desc)
-                .mergeFrom(new byte[0], EXTENSION_REGISTRY)
+                .mergeFrom(new byte[0], extensionRegistry)
                 .buildPartial();
         Descriptor descriptor = defaultInstance.getDescriptorForType();
-        MessageConstraints msgConstraints =
-            resolver.resolveMessageConstraints(descriptor, EXTENSION_REGISTRY);
+        MessageConstraints msgConstraints = resolver.resolveMessageConstraints(descriptor);
         if (msgConstraints.getDisabled()) {
           return;
         }
@@ -208,8 +202,7 @@ public class EvaluatorBuilder {
         throws InvalidProtocolBufferException, CompilationException {
       List<Descriptors.OneofDescriptor> oneofs = desc.getOneofs();
       for (Descriptors.OneofDescriptor oneofDesc : oneofs) {
-        OneofConstraints oneofConstraints =
-            resolver.resolveOneofConstraints(oneofDesc, EXTENSION_REGISTRY);
+        OneofConstraints oneofConstraints = resolver.resolveOneofConstraints(oneofDesc);
         OneofEvaluator oneofEvaluatorEval =
             new OneofEvaluator(oneofDesc, oneofConstraints.getRequired());
         msgEval.append(oneofEvaluatorEval);
@@ -221,8 +214,7 @@ public class EvaluatorBuilder {
       List<FieldDescriptor> fields = desc.getFields();
       for (FieldDescriptor fieldDescriptor : fields) {
         FieldDescriptor descriptor = desc.findFieldByName(fieldDescriptor.getName());
-        FieldConstraints fieldConstraints =
-            resolver.resolveFieldConstraints(descriptor, EXTENSION_REGISTRY);
+        FieldConstraints fieldConstraints = resolver.resolveFieldConstraints(descriptor);
         FieldEvaluator fldEval = buildField(descriptor, fieldConstraints);
         msgEval.append(fldEval);
       }
@@ -341,7 +333,7 @@ public class EvaluatorBuilder {
 
     private Message createMessageForType(Descriptor messageType) throws CompilationException {
       try {
-        return DynamicMessage.parseFrom(messageType, new byte[0], EXTENSION_REGISTRY);
+        return DynamicMessage.parseFrom(messageType, new byte[0], extensionRegistry);
       } catch (InvalidProtocolBufferException e) {
         throw new CompilationException("field descriptor type is invalid " + e.getMessage(), e);
       }
@@ -361,7 +353,7 @@ public class EvaluatorBuilder {
         try {
           DynamicMessage defaultInstance =
               DynamicMessage.parseFrom(
-                  fieldDescriptor.getMessageType(), new byte[0], EXTENSION_REGISTRY);
+                  fieldDescriptor.getMessageType(), new byte[0], extensionRegistry);
           opts =
               Arrays.asList(
                   EnvOption.types(defaultInstance),

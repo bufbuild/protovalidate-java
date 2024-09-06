@@ -14,8 +14,6 @@
 
 package build.buf.protovalidate.conformance;
 
-import com.google.protobuf.DescriptorProtos;
-import com.google.protobuf.Descriptors;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -69,5 +67,30 @@ class FileDescriptorUtil {
               fileDescriptorProto, dependencies.toArray(new Descriptors.FileDescriptor[0]), false));
     }
     return fileDescriptorMap;
+  }
+
+  static TypeRegistry createTypeRegistry(
+      Iterable<? extends Descriptors.FileDescriptor> fileDescriptors) {
+    TypeRegistry.Builder registryBuilder = TypeRegistry.newBuilder();
+    for (Descriptors.FileDescriptor fileDescriptor : fileDescriptors) {
+      registryBuilder.add(fileDescriptor.getMessageTypes());
+    }
+    return registryBuilder.build();
+  }
+
+  static ExtensionRegistry createExtensionRegistry(
+      Iterable<? extends Descriptors.FileDescriptor> fileDescriptors) {
+    ExtensionRegistry registry = ExtensionRegistry.newInstance();
+    for (Descriptors.FileDescriptor fileDescriptor : fileDescriptors) {
+      for (Descriptors.FieldDescriptor fieldDescriptor : fileDescriptor.getExtensions()) {
+        if (fieldDescriptor.getJavaType() == Descriptors.FieldDescriptor.JavaType.MESSAGE) {
+          registry.add(
+              fieldDescriptor, DynamicMessage.getDefaultInstance(fieldDescriptor.getMessageType()));
+        } else {
+          registry.add(fieldDescriptor);
+        }
+      }
+    }
+    return registry;
   }
 }

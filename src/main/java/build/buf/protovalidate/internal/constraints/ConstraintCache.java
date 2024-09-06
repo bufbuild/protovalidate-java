@@ -22,7 +22,6 @@ import build.buf.protovalidate.internal.expression.Variable;
 import build.buf.validate.FieldConstraints;
 import build.buf.validate.priv.PrivateProto;
 import com.google.protobuf.Descriptors.FieldDescriptor;
-import com.google.protobuf.Message;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -41,6 +40,16 @@ import org.projectnessie.cel.interpreter.Activation;
 
 /** A build-through cache for computed standard constraints. */
 public class ConstraintCache {
+  private static class CelRule {
+    public final AstExpression astExpression;
+    public final FieldDescriptor field;
+
+    public CelRule(AstExpression astExpression, FieldDescriptor field) {
+      this.astExpression = astExpression;
+      this.field = field;
+    }
+  }
+
   /** Partial eval options for evaluating the constraint's expression. */
   private static final ProgramOption PARTIAL_EVAL_OPTIONS =
       ProgramOption.evalOptions(
@@ -53,19 +62,30 @@ public class ConstraintCache {
    * Concurrent map for caching {@link FieldDescriptor} and their associated List of {@link
    * AstExpression}.
    */
-  private static final Map<FieldDescriptor, List<AstExpression>> descriptorMap =
+  private static final Map<FieldDescriptor, List<CelRule>> descriptorMap =
       new ConcurrentHashMap<>();
 
   /** The environment to use for evaluation. */
   private final Env env;
 
+  /** Registry used to resolve dynamic messages. */
+  private final TypeRegistry typeRegistry;
+
+  /** Registry used to resolve dynamic extensions. */
+  private final ExtensionRegistry extensionRegistry;
+
   /**
-   * Constructs a new build-through cache for the standard constraints.
+   * Constructs a new build-through cache for the standard constraints, with a provided registry to
+   * resolve dynamic extensions.
    *
    * @param env The CEL environment for evaluation.
+   * @param typeRegistry A type registry to resolve messages.
+   * @param extensionRegistry An extension registry to resolve extensions.
    */
-  public ConstraintCache(Env env) {
+  public ConstraintCache(Env env, TypeRegistry typeRegistry, ExtensionRegistry extensionRegistry) {
     this.env = env;
+    this.typeRegistry = typeRegistry;
+    this.extensionRegistry = extensionRegistry;
   }
 
   /**
@@ -86,36 +106,21 @@ public class ConstraintCache {
       // Message null means there were no constraints resolved.
       return Collections.emptyList();
     }
-    Env finalEnv =
-        env.extend(
-            EnvOption.types(message.getDefaultInstanceForType()),
-            EnvOption.declarations(
-                Decls.newVar(
-                    Variable.THIS_NAME, DescriptorMappings.getCELType(fieldDescriptor, forItems)),
-                Decls.newVar(
-                    Variable.RULES_NAME,
-                    Decls.newObjectType(message.getDescriptorForType().getFullName()))));
-    ProgramOption rulesOption = ProgramOption.globals(Variable.newRulesVariable(message));
-    List<AstExpression> completeProgramList = new ArrayList<>();
+    List<CelRule> completeProgramList = new ArrayList<>();
     for (Map.Entry<FieldDescriptor, Object> entry : message.getAllFields().entrySet()) {
       FieldDescriptor constraintFieldDesc = entry.getKey();
-      if (!descriptorMap.containsKey(constraintFieldDesc)) {
-        build.buf.validate.priv.FieldConstraints constraints =
-            constraintFieldDesc.getOptions().getExtension(PrivateProto.field);
-        List<Expression> expressions = Expression.fromPrivConstraints(constraints.getCelList());
-        List<AstExpression> astExpressions = new ArrayList<>();
-        for (Expression expression : expressions) {
-          astExpressions.add(AstExpression.newAstExpression(finalEnv, expression));
-        }
-        descriptorMap.put(constraintFieldDesc, astExpressions);
-      }
-      List<AstExpression> programList = descriptorMap.get(constraintFieldDesc);
+      List<CelRule> programList =
+          compileRule(fieldDescriptor, forItems, constraintFieldDesc, message);
+      if (programList == null) continue;
       completeProgramList.addAll(programList);
     }
     List<CompiledProgram> programs = new ArrayList<>();
-    for (AstExpression astExpression : completeProgramList) {
+    for (CelRule rule : completeProgramList) {
+      Env ruleEnv = getRuleEnv(fieldDescriptor, message, rule.field, forItems);
+      Variable ruleVar = Variable.newRuleVariable(message, message.getField(rule.field));
+      ProgramOption globals = ProgramOption.globals(ruleVar);
       try {
-        Program program = finalEnv.program(astExpression.ast, rulesOption, PARTIAL_EVAL_OPTIONS);
+        Program program = ruleEnv.program(rule.astExpression.ast, globals, PARTIAL_EVAL_OPTIONS);
         Program.EvalResult evalResult = program.eval(Activation.emptyActivation());
         Val value = evalResult.getVal();
         if (value != null) {
@@ -127,16 +132,100 @@ public class ConstraintCache {
             continue;
           }
         }
-        Ast residual = finalEnv.residualAst(astExpression.ast, evalResult.getEvalDetails());
+        Ast residual = ruleEnv.residualAst(rule.astExpression.ast, evalResult.getEvalDetails());
         programs.add(
-            new CompiledProgram(finalEnv.program(residual, rulesOption), astExpression.source));
+            new CompiledProgram(ruleEnv.program(residual, globals), rule.astExpression.source));
       } catch (Exception e) {
         programs.add(
             new CompiledProgram(
-                finalEnv.program(astExpression.ast, rulesOption), astExpression.source));
+                ruleEnv.program(rule.astExpression.ast, globals), rule.astExpression.source));
       }
     }
     return Collections.unmodifiableList(programs);
+  }
+
+  private @Nullable List<CelRule> compileRule(
+      FieldDescriptor fieldDescriptor,
+      boolean forItems,
+      FieldDescriptor constraintFieldDesc,
+      Message message)
+      throws CompilationException {
+    if (descriptorMap.containsKey(constraintFieldDesc)) {
+      return descriptorMap.get(constraintFieldDesc);
+    }
+    build.buf.validate.priv.FieldConstraints constraints = getFieldConstraints(constraintFieldDesc);
+    if (constraints == null) return null;
+    List<Expression> expressions = Expression.fromPrivConstraints(constraints.getCelList());
+    List<CelRule> celRules = new ArrayList<>();
+    Env ruleEnv = getRuleEnv(fieldDescriptor, message, constraintFieldDesc, forItems);
+    for (Expression expression : expressions) {
+      celRules.add(
+          new CelRule(AstExpression.newAstExpression(ruleEnv, expression), constraintFieldDesc));
+    }
+    descriptorMap.put(constraintFieldDesc, celRules);
+    return celRules;
+  }
+
+  private @Nullable build.buf.validate.priv.FieldConstraints getFieldConstraints(
+      FieldDescriptor constraintFieldDesc) throws CompilationException {
+    DescriptorProtos.FieldOptions options = constraintFieldDesc.getOptions();
+    // If the protovalidate field option is unknown, reparse using extension registry.
+    if (options.getUnknownFields().hasField(PrivateProto.field.getNumber())) {
+      try {
+        ExtensionRegistry registry = ExtensionRegistry.newInstance();
+        registry.add(PrivateProto.field);
+        options = DescriptorProtos.FieldOptions.parseFrom(options.toByteString(), registry);
+      } catch (InvalidProtocolBufferException e) {
+        throw new CompilationException("Failed to parse field options", e);
+      }
+    }
+    if (!options.hasExtension(PrivateProto.field)) {
+      return null;
+    }
+    Object extensionValue = options.getField(PrivateProto.field.getDescriptor());
+    build.buf.validate.priv.FieldConstraints constraints;
+    if (extensionValue instanceof build.buf.validate.priv.FieldConstraints) {
+      constraints = (build.buf.validate.priv.FieldConstraints) extensionValue;
+    } else if (extensionValue instanceof MessageLite) {
+      // Extension is parsed but with different gencode. We need to reparse it.
+      try {
+        constraints =
+            build.buf.validate.priv.FieldConstraints.parseFrom(
+                ((MessageLite) extensionValue).toByteString(), extensionRegistry);
+      } catch (InvalidProtocolBufferException e) {
+        throw new CompilationException("Failed to parse field constraints", e);
+      }
+    } else {
+      // Extension was not a message, just discard it.
+      return null;
+    }
+    return constraints;
+  }
+
+  /**
+   * Calculates the environment for a specific rule invocation.
+   *
+   * @param fieldDescriptor The field descriptor of the field with the constraint.
+   * @param constraintMessage The message of the standard constraints.
+   * @param constraintFieldDesc The field descriptor of the constraint.
+   * @param forItems Whether the field is a list type or not.
+   * @return An environment with requisite declarations and types added.
+   */
+  private Env getRuleEnv(
+      FieldDescriptor fieldDescriptor,
+      Message constraintMessage,
+      FieldDescriptor constraintFieldDesc,
+      boolean forItems) {
+    return env.extend(
+        EnvOption.types(constraintMessage.getDefaultInstanceForType()),
+        EnvOption.declarations(
+            Decls.newVar(
+                Variable.THIS_NAME, DescriptorMappings.getCELType(fieldDescriptor, forItems)),
+            Decls.newVar(
+                Variable.RULES_NAME,
+                Decls.newObjectType(constraintMessage.getDescriptorForType().getFullName())),
+            Decls.newVar(
+                Variable.RULE_NAME, DescriptorMappings.getCELType(constraintFieldDesc, forItems))));
   }
 
   /**
@@ -179,8 +268,25 @@ public class ConstraintCache {
       return null;
     }
 
-    // Return the field from the field constraints identified by the oneof field descriptor, casted
+    // Get the field from the field constraints identified by the oneof field descriptor, casted
     // as a Message.
-    return (Message) fieldConstraints.getField(oneofFieldDescriptor);
+    Message typeConstraints = (Message) fieldConstraints.getField(oneofFieldDescriptor);
+    if (!typeConstraints.getUnknownFields().isEmpty()) {
+      // If there are unknown fields, try to resolve them using the provided TypeRegistry.
+      Descriptors.Descriptor expectedConstraintDynamicDescriptor =
+          typeRegistry.find(expectedConstraintDescriptor.getMessageType().getFullName());
+      if (expectedConstraintDynamicDescriptor != null) {
+        try {
+          typeConstraints =
+              DynamicMessage.parseFrom(
+                  expectedConstraintDynamicDescriptor,
+                  typeConstraints.toByteString(),
+                  extensionRegistry);
+        } catch (InvalidProtocolBufferException e) {
+          throw new RuntimeException(e);
+        }
+      }
+    }
+    return typeConstraints;
   }
 }
