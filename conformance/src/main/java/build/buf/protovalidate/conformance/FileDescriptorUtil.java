@@ -14,6 +14,11 @@
 
 package build.buf.protovalidate.conformance;
 
+import com.google.protobuf.DescriptorProtos;
+import com.google.protobuf.Descriptors;
+import com.google.protobuf.DynamicMessage;
+import com.google.protobuf.ExtensionRegistry;
+import com.google.protobuf.TypeRegistry;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
