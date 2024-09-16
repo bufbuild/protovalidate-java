@@ -8,7 +8,7 @@ managed:
     - file_option: java_package_prefix
       value: com.example.noimports
 plugins:
-  - remote: buf.build/protocolbuffers/java:v28.0
+  - remote: buf.build/protocolbuffers/java:v28.1
     out: build/generated/test-sources/bufgen
 inputs:
   - directory: src/main/resources
