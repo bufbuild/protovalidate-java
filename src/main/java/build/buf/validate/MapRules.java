@@ -13,7 +13,8 @@ package build.buf.validate;
  * Protobuf type {@code buf.validate.MapRules}
  */
 public final class MapRules extends
-    com.google.protobuf.GeneratedMessage implements
+    com.google.protobuf.GeneratedMessage.ExtendableMessage<
+      MapRules> implements
     // @@protoc_insertion_point(message_implements:buf.validate.MapRules)
     MapRulesOrBuilder {
 private static final long serialVersionUID = 0L;
@@ -27,7 +28,7 @@ private static final long serialVersionUID = 0L;
       MapRules.class.getName());
   }
   // Use MapRules.newBuilder() to construct.
-  private MapRules(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+  private MapRules(com.google.protobuf.GeneratedMessage.ExtendableBuilder<build.buf.validate.MapRules, ?> builder) {
     super(builder);
   }
   private MapRules() {
@@ -62,7 +63,7 @@ private static final long serialVersionUID = 0L;
    * ```
    * </pre>
    *
-   * <code>optional uint64 min_pairs = 1 [json_name = "minPairs", (.buf.validate.priv.field) = { ... }</code>
+   * <code>optional uint64 min_pairs = 1 [json_name = "minPairs", (.buf.validate.predefined) = { ... }</code>
    * @return Whether the minPairs field is set.
    */
   @java.lang.Override
@@ -82,7 +83,7 @@ private static final long serialVersionUID = 0L;
    * ```
    * </pre>
    *
-   * <code>optional uint64 min_pairs = 1 [json_name = "minPairs", (.buf.validate.priv.field) = { ... }</code>
+   * <code>optional uint64 min_pairs = 1 [json_name = "minPairs", (.buf.validate.predefined) = { ... }</code>
    * @return The minPairs.
    */
   @java.lang.Override
@@ -105,7 +106,7 @@ private static final long serialVersionUID = 0L;
    * ```
    * </pre>
    *
-   * <code>optional uint64 max_pairs = 2 [json_name = "maxPairs", (.buf.validate.priv.field) = { ... }</code>
+   * <code>optional uint64 max_pairs = 2 [json_name = "maxPairs", (.buf.validate.predefined) = { ... }</code>
    * @return Whether the maxPairs field is set.
    */
   @java.lang.Override
@@ -125,7 +126,7 @@ private static final long serialVersionUID = 0L;
    * ```
    * </pre>
    *
-   * <code>optional uint64 max_pairs = 2 [json_name = "maxPairs", (.buf.validate.priv.field) = { ... }</code>
+   * <code>optional uint64 max_pairs = 2 [json_name = "maxPairs", (.buf.validate.predefined) = { ... }</code>
    * @return The maxPairs.
    */
   @java.lang.Override
@@ -294,6 +295,22 @@ private static final long serialVersionUID = 0L;
     if (isInitialized == 1) return true;
     if (isInitialized == 0) return false;
 
+    if (hasKeys()) {
+      if (!getKeys().isInitialized()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+    }
+    if (hasValues()) {
+      if (!getValues().isInitialized()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+    }
+    if (!extensionsAreInitialized()) {
+      memoizedIsInitialized = 0;
+      return false;
+    }
     memoizedIsInitialized = 1;
     return true;
   }
@@ -301,6 +318,9 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
+    com.google.protobuf.GeneratedMessage
+      .ExtendableMessage.ExtensionSerializer
+        extensionWriter = newExtensionSerializer();
     if (((bitField0_ & 0x00000001) != 0)) {
       output.writeUInt64(1, minPairs_);
     }
@@ -313,6 +333,7 @@ private static final long serialVersionUID = 0L;
     if (((bitField0_ & 0x00000008) != 0)) {
       output.writeMessage(5, getValues());
     }
+    extensionWriter.writeUntil(536870912, output);
     getUnknownFields().writeTo(output);
   }
 
@@ -338,6 +359,7 @@ private static final long serialVersionUID = 0L;
       size += com.google.protobuf.CodedOutputStream
         .computeMessageSize(5, getValues());
     }
+    size += extensionsSerializedSize();
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
     return size;
@@ -374,6 +396,8 @@ private static final long serialVersionUID = 0L;
           .equals(other.getValues())) return false;
     }
     if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+    if (!getExtensionFields().equals(other.getExtensionFields()))
+      return false;
     return true;
   }
 
@@ -402,6 +426,7 @@ private static final long serialVersionUID = 0L;
       hash = (37 * hash) + VALUES_FIELD_NUMBER;
       hash = (53 * hash) + getValues().hashCode();
     }
+    hash = hashFields(hash, getExtensionFields());
     hash = (29 * hash) + getUnknownFields().hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -507,7 +532,8 @@ private static final long serialVersionUID = 0L;
    * Protobuf type {@code buf.validate.MapRules}
    */
   public static final class Builder extends
-      com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+      com.google.protobuf.GeneratedMessage.ExtendableBuilder<
+        build.buf.validate.MapRules, Builder> implements
       // @@protoc_insertion_point(builder_implements:buf.validate.MapRules)
       build.buf.validate.MapRulesOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
@@ -637,6 +663,7 @@ private static final long serialVersionUID = 0L;
       if (other.hasValues()) {
         mergeValues(other.getValues());
       }
+      this.mergeExtensionFields(other);
       this.mergeUnknownFields(other.getUnknownFields());
       onChanged();
       return this;
@@ -644,6 +671,19 @@ private static final long serialVersionUID = 0L;
 
     @java.lang.Override
     public final boolean isInitialized() {
+      if (hasKeys()) {
+        if (!getKeys().isInitialized()) {
+          return false;
+        }
+      }
+      if (hasValues()) {
+        if (!getValues().isInitialized()) {
+          return false;
+        }
+      }
+      if (!extensionsAreInitialized()) {
+        return false;
+      }
       return true;
     }
 
@@ -718,7 +758,7 @@ private static final long serialVersionUID = 0L;
      * ```
      * </pre>
      *
-     * <code>optional uint64 min_pairs = 1 [json_name = "minPairs", (.buf.validate.priv.field) = { ... }</code>
+     * <code>optional uint64 min_pairs = 1 [json_name = "minPairs", (.buf.validate.predefined) = { ... }</code>
      * @return Whether the minPairs field is set.
      */
     @java.lang.Override
@@ -738,7 +778,7 @@ private static final long serialVersionUID = 0L;
      * ```
      * </pre>
      *
-     * <code>optional uint64 min_pairs = 1 [json_name = "minPairs", (.buf.validate.priv.field) = { ... }</code>
+     * <code>optional uint64 min_pairs = 1 [json_name = "minPairs", (.buf.validate.predefined) = { ... }</code>
      * @return The minPairs.
      */
     @java.lang.Override
@@ -758,7 +798,7 @@ private static final long serialVersionUID = 0L;
      * ```
      * </pre>
      *
-     * <code>optional uint64 min_pairs = 1 [json_name = "minPairs", (.buf.validate.priv.field) = { ... }</code>
+     * <code>optional uint64 min_pairs = 1 [json_name = "minPairs", (.buf.validate.predefined) = { ... }</code>
      * @param value The minPairs to set.
      * @return This builder for chaining.
      */
@@ -782,7 +822,7 @@ private static final long serialVersionUID = 0L;
      * ```
      * </pre>
      *
-     * <code>optional uint64 min_pairs = 1 [json_name = "minPairs", (.buf.validate.priv.field) = { ... }</code>
+     * <code>optional uint64 min_pairs = 1 [json_name = "minPairs", (.buf.validate.predefined) = { ... }</code>
      * @return This builder for chaining.
      */
     public Builder clearMinPairs() {
@@ -806,7 +846,7 @@ private static final long serialVersionUID = 0L;
      * ```
      * </pre>
      *
-     * <code>optional uint64 max_pairs = 2 [json_name = "maxPairs", (.buf.validate.priv.field) = { ... }</code>
+     * <code>optional uint64 max_pairs = 2 [json_name = "maxPairs", (.buf.validate.predefined) = { ... }</code>
      * @return Whether the maxPairs field is set.
      */
     @java.lang.Override
@@ -826,7 +866,7 @@ private static final long serialVersionUID = 0L;
      * ```
      * </pre>
      *
-     * <code>optional uint64 max_pairs = 2 [json_name = "maxPairs", (.buf.validate.priv.field) = { ... }</code>
+     * <code>optional uint64 max_pairs = 2 [json_name = "maxPairs", (.buf.validate.predefined) = { ... }</code>
      * @return The maxPairs.
      */
     @java.lang.Override
@@ -846,7 +886,7 @@ private static final long serialVersionUID = 0L;
      * ```
      * </pre>
      *
-     * <code>optional uint64 max_pairs = 2 [json_name = "maxPairs", (.buf.validate.priv.field) = { ... }</code>
+     * <code>optional uint64 max_pairs = 2 [json_name = "maxPairs", (.buf.validate.predefined) = { ... }</code>
      * @param value The maxPairs to set.
      * @return This builder for chaining.
      */
@@ -870,7 +910,7 @@ private static final long serialVersionUID = 0L;
      * ```
      * </pre>
      *
-     * <code>optional uint64 max_pairs = 2 [json_name = "maxPairs", (.buf.validate.priv.field) = { ... }</code>
+     * <code>optional uint64 max_pairs = 2 [json_name = "maxPairs", (.buf.validate.predefined) = { ... }</code>
      * @return This builder for chaining.
      */
     public Builder clearMaxPairs() {

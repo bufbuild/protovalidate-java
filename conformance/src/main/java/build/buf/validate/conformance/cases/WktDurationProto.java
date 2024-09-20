@@ -95,6 +95,11 @@ public final class WktDurationProto {
   static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_buf_validate_conformance_cases_DurationFieldWithOtherFields_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_buf_validate_conformance_cases_DurationExample_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_buf_validate_conformance_cases_DurationExample_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -135,12 +140,14 @@ public final class WktDurationProto {
       "ithOtherFields\022H\n\014duration_val\030\001 \001(\0132\031.g" +
       "oogle.protobuf.DurationB\n\272H\007\252\001\004\"\002\010\001R\013dur" +
       "ationVal\022 \n\007int_val\030\002 \001(\005B\007\272H\004\032\002 \020R\006intV" +
-      "alB\324\001\n$build.buf.validate.conformance.ca" +
-      "sesB\020WktDurationProtoP\001\242\002\004BVCC\252\002\036Buf.Val" +
-      "idate.Conformance.Cases\312\002\036Buf\\Validate\\C" +
-      "onformance\\Cases\342\002*Buf\\Validate\\Conforma" +
-      "nce\\Cases\\GPBMetadata\352\002!Buf::Validate::C" +
-      "onformance::Casesb\006proto3"
+      "al\"J\n\017DurationExample\0227\n\003val\030\001 \001(\0132\031.goo" +
+      "gle.protobuf.DurationB\n\272H\007\252\001\004J\002\010\003R\003valB\324" +
+      "\001\n$build.buf.validate.conformance.casesB" +
+      "\020WktDurationProtoP\001\242\002\004BVCC\252\002\036Buf.Validat" +
+      "e.Conformance.Cases\312\002\036Buf\\Validate\\Confo" +
+      "rmance\\Cases\342\002*Buf\\Validate\\Conformance\\" +
+      "Cases\\GPBMetadata\352\002!Buf::Validate::Confo" +
+      "rmance::Casesb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -232,6 +239,12 @@ public final class WktDurationProto {
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_DurationFieldWithOtherFields_descriptor,
         new java.lang.String[] { "DurationVal", "IntVal", });
+    internal_static_buf_validate_conformance_cases_DurationExample_descriptor =
+      getDescriptor().getMessageTypes().get(14);
+    internal_static_buf_validate_conformance_cases_DurationExample_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_buf_validate_conformance_cases_DurationExample_descriptor,
+        new java.lang.String[] { "Val", });
     descriptor.resolveAllFeaturesImmutable();
     build.buf.validate.ValidateProto.getDescriptor();
     com.google.protobuf.DurationProto.getDescriptor();

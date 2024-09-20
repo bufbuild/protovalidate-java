@@ -40,6 +40,11 @@ public final class BoolProto {
   static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_buf_validate_conformance_cases_BoolConstFalse_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_buf_validate_conformance_cases_BoolExample_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_buf_validate_conformance_cases_BoolExample_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -54,12 +59,14 @@ public final class BoolProto {
       "/validate/validate.proto\"\034\n\010BoolNone\022\020\n\003" +
       "val\030\001 \001(\010R\003val\"*\n\rBoolConstTrue\022\031\n\003val\030\001" +
       " \001(\010B\007\272H\004j\002\010\001R\003val\"+\n\016BoolConstFalse\022\031\n\003" +
-      "val\030\001 \001(\010B\007\272H\004j\002\010\000R\003valB\315\001\n$build.buf.va" +
-      "lidate.conformance.casesB\tBoolProtoP\001\242\002\004" +
-      "BVCC\252\002\036Buf.Validate.Conformance.Cases\312\002\036" +
-      "Buf\\Validate\\Conformance\\Cases\342\002*Buf\\Val" +
-      "idate\\Conformance\\Cases\\GPBMetadata\352\002!Bu" +
-      "f::Validate::Conformance::Casesb\006proto3"
+      "val\030\001 \001(\010B\007\272H\004j\002\010\000R\003val\"(\n\013BoolExample\022\031" +
+      "\n\003val\030\001 \001(\010B\007\272H\004j\002\020\001R\003valB\315\001\n$build.buf." +
+      "validate.conformance.casesB\tBoolProtoP\001\242" +
+      "\002\004BVCC\252\002\036Buf.Validate.Conformance.Cases\312" +
+      "\002\036Buf\\Validate\\Conformance\\Cases\342\002*Buf\\V" +
+      "alidate\\Conformance\\Cases\\GPBMetadata\352\002!" +
+      "Buf::Validate::Conformance::Casesb\006proto" +
+      "3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -83,6 +90,12 @@ public final class BoolProto {
     internal_static_buf_validate_conformance_cases_BoolConstFalse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_BoolConstFalse_descriptor,
+        new java.lang.String[] { "Val", });
+    internal_static_buf_validate_conformance_cases_BoolExample_descriptor =
+      getDescriptor().getMessageTypes().get(3);
+    internal_static_buf_validate_conformance_cases_BoolExample_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_buf_validate_conformance_cases_BoolExample_descriptor,
         new java.lang.String[] { "Val", });
     descriptor.resolveAllFeaturesImmutable();
     build.buf.validate.ValidateProto.getDescriptor();

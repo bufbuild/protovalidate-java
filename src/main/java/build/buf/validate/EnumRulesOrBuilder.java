@@ -7,7 +7,8 @@ package build.buf.validate;
 
 public interface EnumRulesOrBuilder extends
     // @@protoc_insertion_point(interface_extends:buf.validate.EnumRules)
-    com.google.protobuf.MessageOrBuilder {
+    com.google.protobuf.GeneratedMessage.
+        ExtendableMessageOrBuilder<EnumRules> {
 
   /**
    * <pre>
@@ -28,7 +29,7 @@ public interface EnumRulesOrBuilder extends
    * ```
    * </pre>
    *
-   * <code>optional int32 const = 1 [json_name = "const", (.buf.validate.priv.field) = { ... }</code>
+   * <code>optional int32 const = 1 [json_name = "const", (.buf.validate.predefined) = { ... }</code>
    * @return Whether the const field is set.
    */
   boolean hasConst();
@@ -51,7 +52,7 @@ public interface EnumRulesOrBuilder extends
    * ```
    * </pre>
    *
-   * <code>optional int32 const = 1 [json_name = "const", (.buf.validate.priv.field) = { ... }</code>
+   * <code>optional int32 const = 1 [json_name = "const", (.buf.validate.predefined) = { ... }</code>
    * @return The const.
    */
   int getConst();
@@ -123,7 +124,7 @@ public interface EnumRulesOrBuilder extends
    * ```
    * </pre>
    *
-   * <code>repeated int32 in = 3 [json_name = "in", (.buf.validate.priv.field) = { ... }</code>
+   * <code>repeated int32 in = 3 [json_name = "in", (.buf.validate.predefined) = { ... }</code>
    * @return A list containing the in.
    */
   java.util.List<java.lang.Integer> getInList();
@@ -147,7 +148,7 @@ public interface EnumRulesOrBuilder extends
    * ```
    * </pre>
    *
-   * <code>repeated int32 in = 3 [json_name = "in", (.buf.validate.priv.field) = { ... }</code>
+   * <code>repeated int32 in = 3 [json_name = "in", (.buf.validate.predefined) = { ... }</code>
    * @return The count of in.
    */
   int getInCount();
@@ -171,7 +172,7 @@ public interface EnumRulesOrBuilder extends
    * ```
    * </pre>
    *
-   * <code>repeated int32 in = 3 [json_name = "in", (.buf.validate.priv.field) = { ... }</code>
+   * <code>repeated int32 in = 3 [json_name = "in", (.buf.validate.predefined) = { ... }</code>
    * @param index The index of the element to return.
    * @return The in at the given index.
    */
@@ -197,7 +198,7 @@ public interface EnumRulesOrBuilder extends
    * ```
    * </pre>
    *
-   * <code>repeated int32 not_in = 4 [json_name = "notIn", (.buf.validate.priv.field) = { ... }</code>
+   * <code>repeated int32 not_in = 4 [json_name = "notIn", (.buf.validate.predefined) = { ... }</code>
    * @return A list containing the notIn.
    */
   java.util.List<java.lang.Integer> getNotInList();
@@ -221,7 +222,7 @@ public interface EnumRulesOrBuilder extends
    * ```
    * </pre>
    *
-   * <code>repeated int32 not_in = 4 [json_name = "notIn", (.buf.validate.priv.field) = { ... }</code>
+   * <code>repeated int32 not_in = 4 [json_name = "notIn", (.buf.validate.predefined) = { ... }</code>
    * @return The count of notIn.
    */
   int getNotInCount();
@@ -245,9 +246,83 @@ public interface EnumRulesOrBuilder extends
    * ```
    * </pre>
    *
-   * <code>repeated int32 not_in = 4 [json_name = "notIn", (.buf.validate.priv.field) = { ... }</code>
+   * <code>repeated int32 not_in = 4 [json_name = "notIn", (.buf.validate.predefined) = { ... }</code>
    * @param index The index of the element to return.
    * @return The notIn at the given index.
    */
   int getNotIn(int index);
+
+  /**
+   * <pre>
+   * `example` specifies values that the field may have. These values SHOULD
+   * conform to other constraints. `example` values will not impact validation
+   * but may be used as helpful guidance on how to populate the given field.
+   *
+   * ```proto
+   * enum MyEnum {
+   * MY_ENUM_UNSPECIFIED = 0;
+   * MY_ENUM_VALUE1 = 1;
+   * MY_ENUM_VALUE2 = 2;
+   * }
+   *
+   * message MyMessage {
+   * (buf.validate.field).enum.example = 1,
+   * (buf.validate.field).enum.example = 2
+   * }
+   * ```
+   * </pre>
+   *
+   * <code>repeated int32 example = 5 [json_name = "example", (.buf.validate.predefined) = { ... }</code>
+   * @return A list containing the example.
+   */
+  java.util.List<java.lang.Integer> getExampleList();
+  /**
+   * <pre>
+   * `example` specifies values that the field may have. These values SHOULD
+   * conform to other constraints. `example` values will not impact validation
+   * but may be used as helpful guidance on how to populate the given field.
+   *
+   * ```proto
+   * enum MyEnum {
+   * MY_ENUM_UNSPECIFIED = 0;
+   * MY_ENUM_VALUE1 = 1;
+   * MY_ENUM_VALUE2 = 2;
+   * }
+   *
+   * message MyMessage {
+   * (buf.validate.field).enum.example = 1,
+   * (buf.validate.field).enum.example = 2
+   * }
+   * ```
+   * </pre>
+   *
+   * <code>repeated int32 example = 5 [json_name = "example", (.buf.validate.predefined) = { ... }</code>
+   * @return The count of example.
+   */
+  int getExampleCount();
+  /**
+   * <pre>
+   * `example` specifies values that the field may have. These values SHOULD
+   * conform to other constraints. `example` values will not impact validation
+   * but may be used as helpful guidance on how to populate the given field.
+   *
+   * ```proto
+   * enum MyEnum {
+   * MY_ENUM_UNSPECIFIED = 0;
+   * MY_ENUM_VALUE1 = 1;
+   * MY_ENUM_VALUE2 = 2;
+   * }
+   *
+   * message MyMessage {
+   * (buf.validate.field).enum.example = 1,
+   * (buf.validate.field).enum.example = 2
+   * }
+   * ```
+   * </pre>
+   *
+   * <code>repeated int32 example = 5 [json_name = "example", (.buf.validate.predefined) = { ... }</code>
+   * @param index The index of the element to return.
+   * @return The example at the given index.
+   */
+  int getExample(int index);
 }

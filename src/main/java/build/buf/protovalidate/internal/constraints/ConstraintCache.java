@@ -20,7 +20,7 @@ import build.buf.protovalidate.internal.expression.CompiledProgram;
 import build.buf.protovalidate.internal.expression.Expression;
 import build.buf.protovalidate.internal.expression.Variable;
 import build.buf.validate.FieldConstraints;
-import build.buf.validate.priv.PrivateProto;
+import build.buf.validate.ValidateProto;
 import com.google.protobuf.DescriptorProtos;
 import com.google.protobuf.Descriptors;
 import com.google.protobuf.Descriptors.FieldDescriptor;
@@ -61,7 +61,7 @@ public class ConstraintCache {
   private static final ExtensionRegistry EXTENSION_REGISTRY = ExtensionRegistry.newInstance();
 
   static {
-    EXTENSION_REGISTRY.add(PrivateProto.field);
+    EXTENSION_REGISTRY.add(ValidateProto.predefined);
   }
 
   /** Partial eval options for evaluating the constraint's expression. */
@@ -167,9 +167,9 @@ public class ConstraintCache {
     if (descriptorMap.containsKey(constraintFieldDesc)) {
       return descriptorMap.get(constraintFieldDesc);
     }
-    build.buf.validate.priv.FieldConstraints constraints = getFieldConstraints(constraintFieldDesc);
+    build.buf.validate.PredefinedConstraints constraints = getFieldConstraints(constraintFieldDesc);
     if (constraints == null) return null;
-    List<Expression> expressions = Expression.fromPrivConstraints(constraints.getCelList());
+    List<Expression> expressions = Expression.fromConstraints(constraints.getCelList());
     List<CelRule> celRules = new ArrayList<>();
     Env ruleEnv = getRuleEnv(fieldDescriptor, message, constraintFieldDesc, forItems);
     for (Expression expression : expressions) {
@@ -180,11 +180,11 @@ public class ConstraintCache {
     return celRules;
   }
 
-  private @Nullable build.buf.validate.priv.FieldConstraints getFieldConstraints(
+  private @Nullable build.buf.validate.PredefinedConstraints getFieldConstraints(
       FieldDescriptor constraintFieldDesc) throws CompilationException {
     DescriptorProtos.FieldOptions options = constraintFieldDesc.getOptions();
     // If the protovalidate field option is unknown, reparse options using our extension registry.
-    if (options.getUnknownFields().hasField(PrivateProto.field.getNumber())) {
+    if (options.getUnknownFields().hasField(ValidateProto.predefined.getNumber())) {
       try {
         options =
             DescriptorProtos.FieldOptions.parseFrom(options.toByteString(), EXTENSION_REGISTRY);
@@ -192,18 +192,18 @@ public class ConstraintCache {
         throw new CompilationException("Failed to parse field options", e);
       }
     }
-    if (!options.hasExtension(PrivateProto.field)) {
+    if (!options.hasExtension(ValidateProto.predefined)) {
       return null;
     }
-    Object extensionValue = options.getField(PrivateProto.field.getDescriptor());
-    build.buf.validate.priv.FieldConstraints constraints;
-    if (extensionValue instanceof build.buf.validate.priv.FieldConstraints) {
-      constraints = (build.buf.validate.priv.FieldConstraints) extensionValue;
+    Object extensionValue = options.getField(ValidateProto.predefined.getDescriptor());
+    build.buf.validate.PredefinedConstraints constraints;
+    if (extensionValue instanceof build.buf.validate.PredefinedConstraints) {
+      constraints = (build.buf.validate.PredefinedConstraints) extensionValue;
     } else if (extensionValue instanceof MessageLite) {
       // Extension is parsed but with different gencode. We need to reparse it.
       try {
         constraints =
-            build.buf.validate.priv.FieldConstraints.parseFrom(
+            build.buf.validate.PredefinedConstraints.parseFrom(
                 ((MessageLite) extensionValue).toByteString(), extensionRegistry);
       } catch (InvalidProtocolBufferException e) {
         throw new CompilationException("Failed to parse field constraints", e);

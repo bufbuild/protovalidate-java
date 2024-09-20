@@ -86,10 +86,20 @@ public final class WktTimestampProto {
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_buf_validate_conformance_cases_TimestampLTNow_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_buf_validate_conformance_cases_TimestampNotLTNow_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_buf_validate_conformance_cases_TimestampNotLTNow_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
     internal_static_buf_validate_conformance_cases_TimestampGTNow_descriptor;
   static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_buf_validate_conformance_cases_TimestampGTNow_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_buf_validate_conformance_cases_TimestampNotGTNow_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_buf_validate_conformance_cases_TimestampNotGTNow_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
     internal_static_buf_validate_conformance_cases_TimestampWithin_descriptor;
   static final 
@@ -105,6 +115,11 @@ public final class WktTimestampProto {
   static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_buf_validate_conformance_cases_TimestampGTNowWithin_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_buf_validate_conformance_cases_TimestampExample_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_buf_validate_conformance_cases_TimestampExample_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -140,20 +155,26 @@ public final class WktTimestampProto {
       "l\030\001 \001(\0132\032.google.protobuf.TimestampB\017\272H\014" +
       "\262\001\t\"\002\010<2\003\010\220\034R\003val\"H\n\016TimestampLTNow\0226\n\003v" +
       "al\030\001 \001(\0132\032.google.protobuf.TimestampB\010\272H" +
-      "\005\262\001\0028\001R\003val\"H\n\016TimestampGTNow\0226\n\003val\030\001 \001" +
-      "(\0132\032.google.protobuf.TimestampB\010\272H\005\262\001\002@\001" +
-      "R\003val\"L\n\017TimestampWithin\0229\n\003val\030\001 \001(\0132\032." +
-      "google.protobuf.TimestampB\013\272H\010\262\001\005J\003\010\220\034R\003" +
-      "val\"S\n\024TimestampLTNowWithin\022;\n\003val\030\001 \001(\013" +
-      "2\032.google.protobuf.TimestampB\r\272H\n\262\001\0078\001J\003" +
-      "\010\220\034R\003val\"S\n\024TimestampGTNowWithin\022;\n\003val\030" +
-      "\001 \001(\0132\032.google.protobuf.TimestampB\r\272H\n\262\001" +
-      "\007@\001J\003\010\220\034R\003valB\325\001\n$build.buf.validate.con" +
-      "formance.casesB\021WktTimestampProtoP\001\242\002\004BV" +
-      "CC\252\002\036Buf.Validate.Conformance.Cases\312\002\036Bu" +
-      "f\\Validate\\Conformance\\Cases\342\002*Buf\\Valid" +
-      "ate\\Conformance\\Cases\\GPBMetadata\352\002!Buf:" +
-      ":Validate::Conformance::Casesb\006proto3"
+      "\005\262\001\0028\001R\003val\"K\n\021TimestampNotLTNow\0226\n\003val\030" +
+      "\001 \001(\0132\032.google.protobuf.TimestampB\010\272H\005\262\001" +
+      "\0028\000R\003val\"H\n\016TimestampGTNow\0226\n\003val\030\001 \001(\0132" +
+      "\032.google.protobuf.TimestampB\010\272H\005\262\001\002@\001R\003v" +
+      "al\"K\n\021TimestampNotGTNow\0226\n\003val\030\001 \001(\0132\032.g" +
+      "oogle.protobuf.TimestampB\010\272H\005\262\001\002@\000R\003val\"" +
+      "L\n\017TimestampWithin\0229\n\003val\030\001 \001(\0132\032.google" +
+      ".protobuf.TimestampB\013\272H\010\262\001\005J\003\010\220\034R\003val\"S\n" +
+      "\024TimestampLTNowWithin\022;\n\003val\030\001 \001(\0132\032.goo" +
+      "gle.protobuf.TimestampB\r\272H\n\262\001\0078\001J\003\010\220\034R\003v" +
+      "al\"S\n\024TimestampGTNowWithin\022;\n\003val\030\001 \001(\0132" +
+      "\032.google.protobuf.TimestampB\r\272H\n\262\001\007@\001J\003\010" +
+      "\220\034R\003val\"L\n\020TimestampExample\0228\n\003val\030\001 \001(\013" +
+      "2\032.google.protobuf.TimestampB\n\272H\007\262\001\004R\002\010\003" +
+      "R\003valB\325\001\n$build.buf.validate.conformance" +
+      ".casesB\021WktTimestampProtoP\001\242\002\004BVCC\252\002\036Buf" +
+      ".Validate.Conformance.Cases\312\002\036Buf\\Valida" +
+      "te\\Conformance\\Cases\342\002*Buf\\Validate\\Conf" +
+      "ormance\\Cases\\GPBMetadata\352\002!Buf::Validat" +
+      "e::Conformance::Casesb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -233,29 +254,47 @@ public final class WktTimestampProto {
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_TimestampLTNow_descriptor,
         new java.lang.String[] { "Val", });
-    internal_static_buf_validate_conformance_cases_TimestampGTNow_descriptor =
+    internal_static_buf_validate_conformance_cases_TimestampNotLTNow_descriptor =
       getDescriptor().getMessageTypes().get(12);
+    internal_static_buf_validate_conformance_cases_TimestampNotLTNow_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_buf_validate_conformance_cases_TimestampNotLTNow_descriptor,
+        new java.lang.String[] { "Val", });
+    internal_static_buf_validate_conformance_cases_TimestampGTNow_descriptor =
+      getDescriptor().getMessageTypes().get(13);
     internal_static_buf_validate_conformance_cases_TimestampGTNow_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_TimestampGTNow_descriptor,
         new java.lang.String[] { "Val", });
+    internal_static_buf_validate_conformance_cases_TimestampNotGTNow_descriptor =
+      getDescriptor().getMessageTypes().get(14);
+    internal_static_buf_validate_conformance_cases_TimestampNotGTNow_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_buf_validate_conformance_cases_TimestampNotGTNow_descriptor,
+        new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_TimestampWithin_descriptor =
-      getDescriptor().getMessageTypes().get(13);
+      getDescriptor().getMessageTypes().get(15);
     internal_static_buf_validate_conformance_cases_TimestampWithin_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_TimestampWithin_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_TimestampLTNowWithin_descriptor =
-      getDescriptor().getMessageTypes().get(14);
+      getDescriptor().getMessageTypes().get(16);
     internal_static_buf_validate_conformance_cases_TimestampLTNowWithin_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_TimestampLTNowWithin_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_TimestampGTNowWithin_descriptor =
-      getDescriptor().getMessageTypes().get(15);
+      getDescriptor().getMessageTypes().get(17);
     internal_static_buf_validate_conformance_cases_TimestampGTNowWithin_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_TimestampGTNowWithin_descriptor,
+        new java.lang.String[] { "Val", });
+    internal_static_buf_validate_conformance_cases_TimestampExample_descriptor =
+      getDescriptor().getMessageTypes().get(18);
+    internal_static_buf_validate_conformance_cases_TimestampExample_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_buf_validate_conformance_cases_TimestampExample_descriptor,
         new java.lang.String[] { "Val", });
     descriptor.resolveAllFeaturesImmutable();
     build.buf.validate.ValidateProto.getDescriptor();

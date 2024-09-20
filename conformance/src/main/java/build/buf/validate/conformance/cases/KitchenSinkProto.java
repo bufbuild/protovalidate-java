@@ -68,7 +68,7 @@ public final class KitchenSinkProto {
       "\022H\n\007another\030\010 \001(\0132..buf.validate.conform" +
       "ance.cases.ComplexTestMsgR\007another\022+\n\013fl" +
       "oat_const\030\t \001(\002B\n\272H\007\n\005\025\000\000\000AR\nfloatConst\022" +
-      "4\n\tdouble_in\030\n \001(\001B\027\272H\024\022\0222\020\264\310v\276\237\214|@\000\000\000\000\000" +
+      "4\n\tdouble_in\030\n \001(\001B\027\272H\024\022\0221\264\310v\276\237\214|@1\000\000\000\000\000" +
       "\300^@R\010doubleIn\022X\n\nenum_const\030\013 \001(\0162/.buf." +
       "validate.conformance.cases.ComplexTestEn" +
       "umB\010\272H\005\202\001\002\010\002R\tenumConst\022c\n\007any_val\030\014 \001(\013" +

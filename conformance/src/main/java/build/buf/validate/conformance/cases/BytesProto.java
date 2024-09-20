@@ -96,20 +96,40 @@ public final class BytesProto {
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_buf_validate_conformance_cases_BytesIP_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_buf_validate_conformance_cases_BytesNotIP_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_buf_validate_conformance_cases_BytesNotIP_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
     internal_static_buf_validate_conformance_cases_BytesIPv4_descriptor;
   static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_buf_validate_conformance_cases_BytesIPv4_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_buf_validate_conformance_cases_BytesNotIPv4_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_buf_validate_conformance_cases_BytesNotIPv4_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
     internal_static_buf_validate_conformance_cases_BytesIPv6_descriptor;
   static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_buf_validate_conformance_cases_BytesIPv6_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_buf_validate_conformance_cases_BytesNotIPv6_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_buf_validate_conformance_cases_BytesNotIPv6_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
     internal_static_buf_validate_conformance_cases_BytesIPv6Ignore_descriptor;
   static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_buf_validate_conformance_cases_BytesIPv6Ignore_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_buf_validate_conformance_cases_BytesExample_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_buf_validate_conformance_cases_BytesExample_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -137,15 +157,20 @@ public final class BytesProto {
       "-\n\rBytesContains\022\034\n\003val\030\001 \001(\014B\n\272H\007z\005:\003ba" +
       "rR\003val\",\n\013BytesSuffix\022\035\n\003val\030\001 \001(\014B\013\272H\010z" +
       "\0062\004buzzR\003val\"$\n\007BytesIP\022\031\n\003val\030\001 \001(\014B\007\272H" +
-      "\004z\002P\001R\003val\"&\n\tBytesIPv4\022\031\n\003val\030\001 \001(\014B\007\272H" +
-      "\004z\002X\001R\003val\"&\n\tBytesIPv6\022\031\n\003val\030\001 \001(\014B\007\272H" +
-      "\004z\002`\001R\003val\"/\n\017BytesIPv6Ignore\022\034\n\003val\030\001 \001" +
-      "(\014B\n\272H\007z\002`\001\320\001\001R\003valB\316\001\n$build.buf.valida" +
-      "te.conformance.casesB\nBytesProtoP\001\242\002\004BVC" +
-      "C\252\002\036Buf.Validate.Conformance.Cases\312\002\036Buf" +
-      "\\Validate\\Conformance\\Cases\342\002*Buf\\Valida" +
-      "te\\Conformance\\Cases\\GPBMetadata\352\002!Buf::" +
-      "Validate::Conformance::Casesb\006proto3"
+      "\004z\002P\001R\003val\"\'\n\nBytesNotIP\022\031\n\003val\030\001 \001(\014B\007\272" +
+      "H\004z\002P\000R\003val\"&\n\tBytesIPv4\022\031\n\003val\030\001 \001(\014B\007\272" +
+      "H\004z\002X\001R\003val\")\n\014BytesNotIPv4\022\031\n\003val\030\001 \001(\014" +
+      "B\007\272H\004z\002X\000R\003val\"&\n\tBytesIPv6\022\031\n\003val\030\001 \001(\014" +
+      "B\007\272H\004z\002`\001R\003val\")\n\014BytesNotIPv6\022\031\n\003val\030\001 " +
+      "\001(\014B\007\272H\004z\002`\000R\003val\"/\n\017BytesIPv6Ignore\022\034\n\003" +
+      "val\030\001 \001(\014B\n\272H\007z\002`\001\320\001\001R\003val\"*\n\014BytesExamp" +
+      "le\022\032\n\003val\030\001 \001(\014B\010\272H\005z\003r\001\231R\003valB\316\001\n$build" +
+      ".buf.validate.conformance.casesB\nBytesPr" +
+      "otoP\001\242\002\004BVCC\252\002\036Buf.Validate.Conformance." +
+      "Cases\312\002\036Buf\\Validate\\Conformance\\Cases\342\002" +
+      "*Buf\\Validate\\Conformance\\Cases\\GPBMetad" +
+      "ata\352\002!Buf::Validate::Conformance::Casesb" +
+      "\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -236,23 +261,47 @@ public final class BytesProto {
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_BytesIP_descriptor,
         new java.lang.String[] { "Val", });
-    internal_static_buf_validate_conformance_cases_BytesIPv4_descriptor =
+    internal_static_buf_validate_conformance_cases_BytesNotIP_descriptor =
       getDescriptor().getMessageTypes().get(14);
+    internal_static_buf_validate_conformance_cases_BytesNotIP_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_buf_validate_conformance_cases_BytesNotIP_descriptor,
+        new java.lang.String[] { "Val", });
+    internal_static_buf_validate_conformance_cases_BytesIPv4_descriptor =
+      getDescriptor().getMessageTypes().get(15);
     internal_static_buf_validate_conformance_cases_BytesIPv4_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_BytesIPv4_descriptor,
         new java.lang.String[] { "Val", });
+    internal_static_buf_validate_conformance_cases_BytesNotIPv4_descriptor =
+      getDescriptor().getMessageTypes().get(16);
+    internal_static_buf_validate_conformance_cases_BytesNotIPv4_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_buf_validate_conformance_cases_BytesNotIPv4_descriptor,
+        new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_BytesIPv6_descriptor =
-      getDescriptor().getMessageTypes().get(15);
+      getDescriptor().getMessageTypes().get(17);
     internal_static_buf_validate_conformance_cases_BytesIPv6_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_BytesIPv6_descriptor,
         new java.lang.String[] { "Val", });
+    internal_static_buf_validate_conformance_cases_BytesNotIPv6_descriptor =
+      getDescriptor().getMessageTypes().get(18);
+    internal_static_buf_validate_conformance_cases_BytesNotIPv6_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_buf_validate_conformance_cases_BytesNotIPv6_descriptor,
+        new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_BytesIPv6Ignore_descriptor =
-      getDescriptor().getMessageTypes().get(16);
+      getDescriptor().getMessageTypes().get(19);
     internal_static_buf_validate_conformance_cases_BytesIPv6Ignore_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_BytesIPv6Ignore_descriptor,
+        new java.lang.String[] { "Val", });
+    internal_static_buf_validate_conformance_cases_BytesExample_descriptor =
+      getDescriptor().getMessageTypes().get(20);
+    internal_static_buf_validate_conformance_cases_BytesExample_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_buf_validate_conformance_cases_BytesExample_descriptor,
         new java.lang.String[] { "Val", });
     descriptor.resolveAllFeaturesImmutable();
     build.buf.validate.ValidateProto.getDescriptor();

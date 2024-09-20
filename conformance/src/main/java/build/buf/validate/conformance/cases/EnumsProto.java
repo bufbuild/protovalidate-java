@@ -120,6 +120,11 @@ public final class EnumsProto {
   static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_buf_validate_conformance_cases_EnumInsideOneof_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_buf_validate_conformance_cases_EnumExample_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_buf_validate_conformance_cases_EnumExample_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -147,57 +152,59 @@ public final class EnumsProto {
       ".validate.conformance.cases.TestEnumAlia" +
       "sB\010\272H\005\202\001\002\020\001R\003val\"P\n\006EnumIn\022F\n\003val\030\001 \001(\0162" +
       "(.buf.validate.conformance.cases.TestEnu" +
-      "mB\n\272H\007\202\001\004\032\002\000\002R\003val\"Z\n\013EnumAliasIn\022K\n\003val" +
+      "mB\n\272H\007\202\001\004\030\000\030\002R\003val\"Z\n\013EnumAliasIn\022K\n\003val" +
       "\030\001 \001(\0162-.buf.validate.conformance.cases." +
-      "TestEnumAliasB\n\272H\007\202\001\004\032\002\000\002R\003val\"R\n\tEnumNo" +
-      "tIn\022E\n\003val\030\001 \001(\0162(.buf.validate.conforma" +
-      "nce.cases.TestEnumB\t\272H\006\202\001\003\"\001\001R\003val\"\\\n\016En" +
-      "umAliasNotIn\022J\n\003val\030\001 \001(\0162-.buf.validate" +
-      ".conformance.cases.TestEnumAliasB\t\272H\006\202\001\003" +
-      "\"\001\001R\003val\"j\n\014EnumExternal\022Z\n\003val\030\001 \001(\0162>." +
-      "buf.validate.conformance.cases.other_pac" +
-      "kage.Embed.EnumeratedB\010\272H\005\202\001\002\020\001R\003val\"}\n\r" +
-      "EnumExternal2\022l\n\003val\030\001 \001(\0162P.buf.validat" +
-      "e.conformance.cases.other_package.Embed." +
-      "DoubleEmbed.DoubleEnumeratedB\010\272H\005\202\001\002\020\001R\003" +
-      "val\"`\n\023RepeatedEnumDefined\022I\n\003val\030\001 \003(\0162" +
-      "(.buf.validate.conformance.cases.TestEnu" +
-      "mB\r\272H\n\222\001\007\"\005\202\001\002\020\001R\003val\"~\n\033RepeatedExterna" +
-      "lEnumDefined\022_\n\003val\030\001 \003(\0162>.buf.validate" +
-      ".conformance.cases.other_package.Embed.E" +
-      "numeratedB\r\272H\n\222\001\007\"\005\202\001\002\020\001R\003val\"\216\001\n%Repeat" +
-      "edYetAnotherExternalEnumDefined\022e\n\003val\030\001" +
-      " \003(\0162D.buf.validate.conformance.cases.ye" +
-      "t_another_package.Embed.EnumeratedB\r\272H\n\222" +
-      "\001\007\"\005\202\001\002\020\001R\003val\"\314\001\n\016MapEnumDefined\022X\n\003val" +
-      "\030\001 \003(\01327.buf.validate.conformance.cases." +
-      "MapEnumDefined.ValEntryB\r\272H\n\232\001\007*\005\202\001\002\020\001R\003" +
-      "val\032`\n\010ValEntry\022\020\n\003key\030\001 \001(\tR\003key\022>\n\005val" +
-      "ue\030\002 \001(\0162(.buf.validate.conformance.case" +
-      "s.TestEnumR\005value:\0028\001\"\362\001\n\026MapExternalEnu" +
-      "mDefined\022`\n\003val\030\001 \003(\0132?.buf.validate.con" +
-      "formance.cases.MapExternalEnumDefined.Va" +
-      "lEntryB\r\272H\n\232\001\007*\005\202\001\002\020\001R\003val\032v\n\010ValEntry\022\020" +
-      "\n\003key\030\001 \001(\tR\003key\022T\n\005value\030\002 \001(\0162>.buf.va" +
-      "lidate.conformance.cases.other_package.E" +
-      "mbed.EnumeratedR\005value:\0028\001\"\264\001\n\017EnumInsid" +
-      "eOneof\022F\n\003val\030\001 \001(\0162(.buf.validate.confo" +
-      "rmance.cases.TestEnumB\010\272H\005\202\001\002\020\001H\000R\003val\022K" +
-      "\n\004val2\030\002 \001(\0162(.buf.validate.conformance." +
-      "cases.TestEnumB\013\272H\010\202\001\005\020\001\"\001\000H\001R\004val2B\005\n\003f" +
-      "ooB\005\n\003bar*K\n\010TestEnum\022\031\n\025TEST_ENUM_UNSPE" +
-      "CIFIED\020\000\022\021\n\rTEST_ENUM_ONE\020\001\022\021\n\rTEST_ENUM" +
-      "_TWO\020\002*\311\001\n\rTestEnumAlias\022\037\n\033TEST_ENUM_AL" +
-      "IAS_UNSPECIFIED\020\000\022\025\n\021TEST_ENUM_ALIAS_A\020\001" +
-      "\022\025\n\021TEST_ENUM_ALIAS_B\020\002\022\025\n\021TEST_ENUM_ALI" +
-      "AS_C\020\003\022\031\n\025TEST_ENUM_ALIAS_ALPHA\020\001\022\030\n\024TES" +
-      "T_ENUM_ALIAS_BETA\020\002\022\031\n\025TEST_ENUM_ALIAS_G" +
-      "AMMA\020\003\032\002\020\001B\316\001\n$build.buf.validate.confor" +
-      "mance.casesB\nEnumsProtoP\001\242\002\004BVCC\252\002\036Buf.V" +
-      "alidate.Conformance.Cases\312\002\036Buf\\Validate" +
-      "\\Conformance\\Cases\342\002*Buf\\Validate\\Confor" +
-      "mance\\Cases\\GPBMetadata\352\002!Buf::Validate:" +
-      ":Conformance::Casesb\006proto3"
+      "TestEnumAliasB\n\272H\007\202\001\004\030\000\030\002R\003val\"Q\n\tEnumNo" +
+      "tIn\022D\n\003val\030\001 \001(\0162(.buf.validate.conforma" +
+      "nce.cases.TestEnumB\010\272H\005\202\001\002 \001R\003val\"[\n\016Enu" +
+      "mAliasNotIn\022I\n\003val\030\001 \001(\0162-.buf.validate." +
+      "conformance.cases.TestEnumAliasB\010\272H\005\202\001\002 " +
+      "\001R\003val\"j\n\014EnumExternal\022Z\n\003val\030\001 \001(\0162>.bu" +
+      "f.validate.conformance.cases.other_packa" +
+      "ge.Embed.EnumeratedB\010\272H\005\202\001\002\020\001R\003val\"}\n\rEn" +
+      "umExternal2\022l\n\003val\030\001 \001(\0162P.buf.validate." +
+      "conformance.cases.other_package.Embed.Do" +
+      "ubleEmbed.DoubleEnumeratedB\010\272H\005\202\001\002\020\001R\003va" +
+      "l\"`\n\023RepeatedEnumDefined\022I\n\003val\030\001 \003(\0162(." +
+      "buf.validate.conformance.cases.TestEnumB" +
+      "\r\272H\n\222\001\007\"\005\202\001\002\020\001R\003val\"~\n\033RepeatedExternalE" +
+      "numDefined\022_\n\003val\030\001 \003(\0162>.buf.validate.c" +
+      "onformance.cases.other_package.Embed.Enu" +
+      "meratedB\r\272H\n\222\001\007\"\005\202\001\002\020\001R\003val\"\216\001\n%Repeated" +
+      "YetAnotherExternalEnumDefined\022e\n\003val\030\001 \003" +
+      "(\0162D.buf.validate.conformance.cases.yet_" +
+      "another_package.Embed.EnumeratedB\r\272H\n\222\001\007" +
+      "\"\005\202\001\002\020\001R\003val\"\314\001\n\016MapEnumDefined\022X\n\003val\030\001" +
+      " \003(\01327.buf.validate.conformance.cases.Ma" +
+      "pEnumDefined.ValEntryB\r\272H\n\232\001\007*\005\202\001\002\020\001R\003va" +
+      "l\032`\n\010ValEntry\022\020\n\003key\030\001 \001(\tR\003key\022>\n\005value" +
+      "\030\002 \001(\0162(.buf.validate.conformance.cases." +
+      "TestEnumR\005value:\0028\001\"\362\001\n\026MapExternalEnumD" +
+      "efined\022`\n\003val\030\001 \003(\0132?.buf.validate.confo" +
+      "rmance.cases.MapExternalEnumDefined.ValE" +
+      "ntryB\r\272H\n\232\001\007*\005\202\001\002\020\001R\003val\032v\n\010ValEntry\022\020\n\003" +
+      "key\030\001 \001(\tR\003key\022T\n\005value\030\002 \001(\0162>.buf.vali" +
+      "date.conformance.cases.other_package.Emb" +
+      "ed.EnumeratedR\005value:\0028\001\"\263\001\n\017EnumInsideO" +
+      "neof\022F\n\003val\030\001 \001(\0162(.buf.validate.conform" +
+      "ance.cases.TestEnumB\010\272H\005\202\001\002\020\001H\000R\003val\022J\n\004" +
+      "val2\030\002 \001(\0162(.buf.validate.conformance.ca" +
+      "ses.TestEnumB\n\272H\007\202\001\004\020\001 \000H\001R\004val2B\005\n\003fooB" +
+      "\005\n\003bar\"S\n\013EnumExample\022D\n\003val\030\001 \001(\0162(.buf" +
+      ".validate.conformance.cases.TestEnumB\010\272H" +
+      "\005\202\001\002(\002R\003val*K\n\010TestEnum\022\031\n\025TEST_ENUM_UNS" +
+      "PECIFIED\020\000\022\021\n\rTEST_ENUM_ONE\020\001\022\021\n\rTEST_EN" +
+      "UM_TWO\020\002*\311\001\n\rTestEnumAlias\022\037\n\033TEST_ENUM_" +
+      "ALIAS_UNSPECIFIED\020\000\022\025\n\021TEST_ENUM_ALIAS_A" +
+      "\020\001\022\025\n\021TEST_ENUM_ALIAS_B\020\002\022\025\n\021TEST_ENUM_A" +
+      "LIAS_C\020\003\022\031\n\025TEST_ENUM_ALIAS_ALPHA\020\001\022\030\n\024T" +
+      "EST_ENUM_ALIAS_BETA\020\002\022\031\n\025TEST_ENUM_ALIAS" +
+      "_GAMMA\020\003\032\002\020\001B\316\001\n$build.buf.validate.conf" +
+      "ormance.casesB\nEnumsProtoP\001\242\002\004BVCC\252\002\036Buf" +
+      ".Validate.Conformance.Cases\312\002\036Buf\\Valida" +
+      "te\\Conformance\\Cases\342\002*Buf\\Validate\\Conf" +
+      "ormance\\Cases\\GPBMetadata\352\002!Buf::Validat" +
+      "e::Conformance::Casesb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -320,6 +327,12 @@ public final class EnumsProto {
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_EnumInsideOneof_descriptor,
         new java.lang.String[] { "Val", "Val2", "Foo", "Bar", });
+    internal_static_buf_validate_conformance_cases_EnumExample_descriptor =
+      getDescriptor().getMessageTypes().get(17);
+    internal_static_buf_validate_conformance_cases_EnumExample_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_buf_validate_conformance_cases_EnumExample_descriptor,
+        new java.lang.String[] { "Val", });
     descriptor.resolveAllFeaturesImmutable();
     build.buf.validate.conformance.cases.other_package.EmbedProto.getDescriptor();
     build.buf.validate.conformance.cases.yet_another_package.Embed2Proto.getDescriptor();

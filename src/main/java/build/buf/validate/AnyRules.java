@@ -544,15 +544,15 @@ private static final long serialVersionUID = 0L;
               done = true;
               break;
             case 18: {
-              java.lang.String s = input.readStringRequireUtf8();
+              com.google.protobuf.ByteString bs = input.readBytes();
               ensureInIsMutable();
-              in_.add(s);
+              in_.add(bs);
               break;
             } // case 18
             case 26: {
-              java.lang.String s = input.readStringRequireUtf8();
+              com.google.protobuf.ByteString bs = input.readBytes();
               ensureNotInIsMutable();
-              notIn_.add(s);
+              notIn_.add(bs);
               break;
             } // case 26
             default: {
@@ -792,7 +792,6 @@ private static final long serialVersionUID = 0L;
     public Builder addInBytes(
         com.google.protobuf.ByteString value) {
       if (value == null) { throw new NullPointerException(); }
-      checkByteStringIsUtf8(value);
       ensureInIsMutable();
       in_.add(value);
       bitField0_ |= 0x00000001;
@@ -1002,7 +1001,6 @@ private static final long serialVersionUID = 0L;
     public Builder addNotInBytes(
         com.google.protobuf.ByteString value) {
       if (value == null) { throw new NullPointerException(); }
-      checkByteStringIsUtf8(value);
       ensureNotInIsMutable();
       notIn_.add(value);
       bitField0_ |= 0x00000002;
