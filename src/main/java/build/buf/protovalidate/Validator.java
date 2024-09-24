@@ -45,7 +45,11 @@ public class Validator {
     Env env = Env.newEnv(Library.Lib(new ValidateLibrary()));
     this.evaluatorBuilder =
         new EvaluatorBuilder(
-            env, config.isDisableLazy(), config.getTypeRegistry(), config.getExtensionRegistry());
+            env,
+            config.isDisableLazy(),
+            config.getTypeRegistry(),
+            config.getExtensionRegistry(),
+            config.isAllowUnknownFieldsEnabled());
     this.failFast = config.isFailFast();
   }
 
@@ -55,7 +59,11 @@ public class Validator {
     Env env = Env.newEnv(Library.Lib(new ValidateLibrary()));
     this.evaluatorBuilder =
         new EvaluatorBuilder(
-            env, config.isDisableLazy(), config.getTypeRegistry(), config.getExtensionRegistry());
+            env,
+            config.isDisableLazy(),
+            config.getTypeRegistry(),
+            config.getExtensionRegistry(),
+            config.isAllowUnknownFieldsEnabled());
     this.failFast = config.isFailFast();
   }
 

@@ -14,9 +14,11 @@
 
 package build.buf.protovalidate;
 
+import static com.example.imports.validationtest.PredefinedProto.isIdent;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import build.buf.validate.Violation;
+import com.example.imports.validationtest.ExamplePredefinedFieldConstraints;
 import com.example.noimports.validationtest.ExampleFieldConstraints;
 import com.example.noimports.validationtest.ExampleMessageConstraints;
 import com.example.noimports.validationtest.ExampleOneofConstraints;
@@ -24,8 +26,10 @@ import com.example.noimports.validationtest.ExampleRequiredFieldConstraints;
 import com.google.protobuf.DescriptorProtos;
 import com.google.protobuf.Descriptors;
 import com.google.protobuf.DynamicMessage;
+import com.google.protobuf.ExtensionRegistry;
 import com.google.protobuf.InvalidProtocolBufferException;
 import com.google.protobuf.Message;
+import com.google.protobuf.TypeRegistry;
 import java.util.LinkedHashSet;
 import java.util.Map;
 import java.util.Set;
@@ -109,6 +113,43 @@ public class ValidatorDynamicMessageTest {
             .setMessage("value does not match regex pattern `^[a-z0-9]{1,9}$`")
             .build();
     assertThat(new Validator().validate(messageBuilder.build()).getViolations())
+        .containsExactly(expectedViolation);
+  }
+
+  @Test
+  public void testPredefinedFieldConstraintDynamicMessage() throws Exception {
+    DynamicMessage.Builder messageBuilder =
+        createMessageWithUnknownOptions(ExamplePredefinedFieldConstraints.getDefaultInstance());
+    messageBuilder.setField(
+        messageBuilder.getDescriptorForType().findFieldByName("ident_field"), "abc123");
+    ExtensionRegistry registry = ExtensionRegistry.newInstance();
+    registry.add(isIdent);
+    TypeRegistry typeRegistry =
+        TypeRegistry.newBuilder().add(isIdent.getDescriptor().getContainingType()).build();
+    Config config =
+        Config.newBuilder().setExtensionRegistry(registry).setTypeRegistry(typeRegistry).build();
+    assertThat(new Validator(config).validate(messageBuilder.build()).getViolations()).isEmpty();
+  }
+
+  @Test
+  public void testPredefinedFieldConstraintDynamicMessageInvalid() throws Exception {
+    DynamicMessage.Builder messageBuilder =
+        createMessageWithUnknownOptions(ExamplePredefinedFieldConstraints.getDefaultInstance());
+    messageBuilder.setField(
+        messageBuilder.getDescriptorForType().findFieldByName("ident_field"), "0123456789");
+    Violation expectedViolation =
+        Violation.newBuilder()
+            .setConstraintId("string.is_ident")
+            .setFieldPath("ident_field")
+            .setMessage("invalid identifier")
+            .build();
+    ExtensionRegistry registry = ExtensionRegistry.newInstance();
+    registry.add(isIdent);
+    TypeRegistry typeRegistry =
+        TypeRegistry.newBuilder().add(isIdent.getDescriptor().getContainingType()).build();
+    Config config =
+        Config.newBuilder().setExtensionRegistry(registry).setTypeRegistry(typeRegistry).build();
+    assertThat(new Validator(config).validate(messageBuilder.build()).getViolations())
         .containsExactly(expectedViolation);
   }
 

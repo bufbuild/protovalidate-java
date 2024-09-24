@@ -88,6 +88,9 @@ public class ConstraintCache {
   /** Registry used to resolve dynamic extensions. */
   private final ExtensionRegistry extensionRegistry;
 
+  /** Whether to allow unknown constraint fields or not. */
+  private final boolean allowUnknownFields;
+
   /**
    * Constructs a new build-through cache for the standard constraints, with a provided registry to
    * resolve dynamic extensions.
@@ -95,11 +98,17 @@ public class ConstraintCache {
    * @param env The CEL environment for evaluation.
    * @param typeRegistry A type registry to resolve messages.
    * @param extensionRegistry An extension registry to resolve extensions.
+   * @param allowUnknownFields Whether to allow unknown constraint fields or not.
    */
-  public ConstraintCache(Env env, TypeRegistry typeRegistry, ExtensionRegistry extensionRegistry) {
+  public ConstraintCache(
+      Env env,
+      TypeRegistry typeRegistry,
+      ExtensionRegistry extensionRegistry,
+      boolean allowUnknownFields) {
     this.env = env;
     this.typeRegistry = typeRegistry;
     this.extensionRegistry = extensionRegistry;
+    this.allowUnknownFields = allowUnknownFields;
   }
 
   /**
@@ -285,20 +294,24 @@ public class ConstraintCache {
     // as a Message.
     Message typeConstraints = (Message) fieldConstraints.getField(oneofFieldDescriptor);
     if (!typeConstraints.getUnknownFields().isEmpty()) {
-      // If there are unknown fields, try to resolve them using the provided TypeRegistry.
-      Descriptors.Descriptor expectedConstraintDynamicDescriptor =
+      // If there are unknown fields, try to resolve them using the provided registries.
+      Descriptors.Descriptor expectedConstraintMessageDescriptor =
           typeRegistry.find(expectedConstraintDescriptor.getMessageType().getFullName());
-      if (expectedConstraintDynamicDescriptor != null) {
-        try {
-          typeConstraints =
-              DynamicMessage.parseFrom(
-                  expectedConstraintDynamicDescriptor,
-                  typeConstraints.toByteString(),
-                  extensionRegistry);
-        } catch (InvalidProtocolBufferException e) {
-          throw new RuntimeException(e);
-        }
+      if (expectedConstraintMessageDescriptor == null) {
+        expectedConstraintMessageDescriptor = expectedConstraintDescriptor.getMessageType();
       }
+      try {
+        typeConstraints =
+            DynamicMessage.parseFrom(
+                expectedConstraintMessageDescriptor,
+                typeConstraints.toByteString(),
+                extensionRegistry);
+      } catch (InvalidProtocolBufferException e) {
+        throw new RuntimeException(e);
+      }
+    }
+    if (!allowUnknownFields && !typeConstraints.getUnknownFields().isEmpty()) {
+      throw new CompilationException("unrecognized field constraints");
     }
     return typeConstraints;
   }
