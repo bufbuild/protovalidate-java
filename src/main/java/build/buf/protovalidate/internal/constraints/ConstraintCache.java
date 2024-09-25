@@ -14,6 +14,7 @@
 
 package build.buf.protovalidate.internal.constraints;
 
+import build.buf.protovalidate.Config;
 import build.buf.protovalidate.exceptions.CompilationException;
 import build.buf.protovalidate.internal.expression.AstExpression;
 import build.buf.protovalidate.internal.expression.CompiledProgram;
@@ -96,19 +97,13 @@ public class ConstraintCache {
    * resolve dynamic extensions.
    *
    * @param env The CEL environment for evaluation.
-   * @param typeRegistry A type registry to resolve messages.
-   * @param extensionRegistry An extension registry to resolve extensions.
-   * @param allowUnknownFields Whether to allow unknown constraint fields or not.
+   * @param config The configuration to use for the constraint cache.
    */
-  public ConstraintCache(
-      Env env,
-      TypeRegistry typeRegistry,
-      ExtensionRegistry extensionRegistry,
-      boolean allowUnknownFields) {
+  public ConstraintCache(Env env, Config config) {
     this.env = env;
-    this.typeRegistry = typeRegistry;
-    this.extensionRegistry = extensionRegistry;
-    this.allowUnknownFields = allowUnknownFields;
+    this.typeRegistry = config.getTypeRegistry();
+    this.extensionRegistry = config.getExtensionRegistry();
+    this.allowUnknownFields = config.isAllowingUnknownFields();
   }
 
   /**
@@ -173,13 +168,14 @@ public class ConstraintCache {
       FieldDescriptor constraintFieldDesc,
       Message message)
       throws CompilationException {
-    if (descriptorMap.containsKey(constraintFieldDesc)) {
-      return descriptorMap.get(constraintFieldDesc);
+    List<CelRule> celRules = descriptorMap.get(fieldDescriptor);
+    if (celRules != null) {
+      return celRules;
     }
     build.buf.validate.PredefinedConstraints constraints = getFieldConstraints(constraintFieldDesc);
     if (constraints == null) return null;
     List<Expression> expressions = Expression.fromConstraints(constraints.getCelList());
-    List<CelRule> celRules = new ArrayList<>();
+    celRules = new ArrayList<>(expressions.size());
     Env ruleEnv = getRuleEnv(fieldDescriptor, message, constraintFieldDesc, forItems);
     for (Expression expression : expressions) {
       celRules.add(
@@ -213,7 +209,7 @@ public class ConstraintCache {
       try {
         constraints =
             build.buf.validate.PredefinedConstraints.parseFrom(
-                ((MessageLite) extensionValue).toByteString(), extensionRegistry);
+                ((MessageLite) extensionValue).toByteString());
       } catch (InvalidProtocolBufferException e) {
         throw new CompilationException("Failed to parse field constraints", e);
       }
@@ -294,7 +290,11 @@ public class ConstraintCache {
     // as a Message.
     Message typeConstraints = (Message) fieldConstraints.getField(oneofFieldDescriptor);
     if (!typeConstraints.getUnknownFields().isEmpty()) {
-      // If there are unknown fields, try to resolve them using the provided registries.
+      // If there are unknown fields, try to resolve them using the provided registries. Note that
+      // we use the type registry to resolve the message descriptor. This is because Java protobuf
+      // extension resolution relies on descriptor identity. The user's provided type registry can
+      // provide matching message descriptors for the user's provided extension registry. See the
+      // documentation for Options.setTypeRegistry for more information.
       Descriptors.Descriptor expectedConstraintMessageDescriptor =
           typeRegistry.find(expectedConstraintDescriptor.getMessageType().getFullName());
       if (expectedConstraintMessageDescriptor == null) {

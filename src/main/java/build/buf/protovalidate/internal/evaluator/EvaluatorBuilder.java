@@ -14,6 +14,7 @@
 
 package build.buf.protovalidate.internal.evaluator;
 
+import build.buf.protovalidate.Config;
 import build.buf.protovalidate.exceptions.CompilationException;
 import build.buf.protovalidate.internal.constraints.ConstraintCache;
 import build.buf.protovalidate.internal.constraints.DescriptorMappings;
@@ -33,10 +34,8 @@ import com.google.protobuf.Descriptors;
 import com.google.protobuf.Descriptors.Descriptor;
 import com.google.protobuf.Descriptors.FieldDescriptor;
 import com.google.protobuf.DynamicMessage;
-import com.google.protobuf.ExtensionRegistry;
 import com.google.protobuf.InvalidProtocolBufferException;
 import com.google.protobuf.Message;
-import com.google.protobuf.TypeRegistry;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -54,28 +53,17 @@ public class EvaluatorBuilder {
   private final Env env;
   private final boolean disableLazy;
   private final ConstraintCache constraints;
-  private final ExtensionRegistry extensionRegistry;
 
   /**
    * Constructs a new {@link EvaluatorBuilder}.
    *
    * @param env The CEL environment for evaluation.
-   * @param disableLazy Determines whether lazy loading of evaluators is disabled.
-   * @param allowUnknownFields Determines whether unknown constraint fields are allowed.
-   * @param typeRegistry Type registry used for resolving unknown extensions.
-   * @param extensionRegistry Extension registry used for resolving unknown extensions.
+   * @param config The configuration to use for the evaluation.
    */
-  public EvaluatorBuilder(
-      Env env,
-      boolean disableLazy,
-      TypeRegistry typeRegistry,
-      ExtensionRegistry extensionRegistry,
-      boolean allowUnknownFields) {
+  public EvaluatorBuilder(Env env, Config config) {
     this.env = env;
-    this.disableLazy = disableLazy;
-    this.constraints =
-        new ConstraintCache(env, typeRegistry, extensionRegistry, allowUnknownFields);
-    this.extensionRegistry = extensionRegistry;
+    this.disableLazy = config.isDisableLazy();
+    this.constraints = new ConstraintCache(env, config);
   }
 
   /**
@@ -112,8 +100,7 @@ public class EvaluatorBuilder {
       }
       // Rebuild cache with this descriptor (and any of its dependencies).
       ImmutableMap<Descriptor, Evaluator> updatedCache =
-          new DescriptorCacheBuilder(env, constraints, evaluatorCache, extensionRegistry)
-              .build(desc);
+          new DescriptorCacheBuilder(env, constraints, evaluatorCache).build(desc);
       evaluatorCache = updatedCache;
       eval = updatedCache.get(desc);
       if (eval == null) {
@@ -129,17 +116,14 @@ public class EvaluatorBuilder {
     private final Env env;
     private final ConstraintCache constraintCache;
     private final HashMap<Descriptor, Evaluator> cache;
-    private final ExtensionRegistry extensionRegistry;
 
     private DescriptorCacheBuilder(
         Env env,
         ConstraintCache constraintCache,
-        ImmutableMap<Descriptor, Evaluator> previousCache,
-        ExtensionRegistry extensionRegistry) {
+        ImmutableMap<Descriptor, Evaluator> previousCache) {
       this.env = Objects.requireNonNull(env, "env");
       this.constraintCache = Objects.requireNonNull(constraintCache, "constraintCache");
       this.cache = new HashMap<>(previousCache);
-      this.extensionRegistry = Objects.requireNonNull(extensionRegistry, "extensionRegistry");
     }
 
     /**
@@ -170,10 +154,7 @@ public class EvaluatorBuilder {
     private void buildMessage(Descriptor desc, MessageEvaluator msgEval)
         throws CompilationException {
       try {
-        DynamicMessage defaultInstance =
-            DynamicMessage.newBuilder(desc)
-                .mergeFrom(new byte[0], extensionRegistry)
-                .buildPartial();
+        DynamicMessage defaultInstance = DynamicMessage.newBuilder(desc).buildPartial();
         Descriptor descriptor = defaultInstance.getDescriptorForType();
         MessageConstraints msgConstraints = resolver.resolveMessageConstraints(descriptor);
         if (msgConstraints.getDisabled()) {
@@ -345,7 +326,7 @@ public class EvaluatorBuilder {
 
     private Message createMessageForType(Descriptor messageType) throws CompilationException {
       try {
-        return DynamicMessage.parseFrom(messageType, new byte[0], extensionRegistry);
+        return DynamicMessage.parseFrom(messageType, new byte[0]);
       } catch (InvalidProtocolBufferException e) {
         throw new CompilationException("field descriptor type is invalid " + e.getMessage(), e);
       }
@@ -364,8 +345,7 @@ public class EvaluatorBuilder {
       if (fieldDescriptor.getJavaType() == FieldDescriptor.JavaType.MESSAGE) {
         try {
           DynamicMessage defaultInstance =
-              DynamicMessage.parseFrom(
-                  fieldDescriptor.getMessageType(), new byte[0], extensionRegistry);
+              DynamicMessage.parseFrom(fieldDescriptor.getMessageType(), new byte[0]);
           opts =
               Arrays.asList(
                   EnvOption.types(defaultInstance),

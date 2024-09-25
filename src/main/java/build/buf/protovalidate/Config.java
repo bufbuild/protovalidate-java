@@ -21,7 +21,7 @@ import com.google.protobuf.TypeRegistry;
 public final class Config {
   private static final TypeRegistry DEFAULT_TYPE_REGISTRY = TypeRegistry.getEmptyTypeRegistry();
   private static final ExtensionRegistry DEFAULT_EXTENSION_REGISTRY =
-      ExtensionRegistry.newInstance();
+      ExtensionRegistry.getEmptyRegistry();
 
   private final boolean failFast;
   private final boolean disableLazy;
@@ -92,7 +92,7 @@ public final class Config {
    *
    * @return if allowing unknown constraint fields is enabled
    */
-  public boolean isAllowUnknownFieldsEnabled() {
+  public boolean isAllowingUnknownFields() {
     return allowUnknownFields;
   }
 
