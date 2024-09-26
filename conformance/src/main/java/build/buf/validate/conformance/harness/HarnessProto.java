@@ -61,38 +61,38 @@ public final class HarnessProto {
     java.lang.String[] descriptorData = {
       "\n.buf/validate/conformance/harness/harne" +
       "ss.proto\022 buf.validate.conformance.harne" +
-      "ss\032\035buf/validate/expression.proto\032\031googl" +
-      "e/protobuf/any.proto\032 google/protobuf/de" +
-      "scriptor.proto\"\375\001\n\026TestConformanceReques" +
-      "t\0228\n\005fdset\030\002 \001(\0132\".google.protobuf.FileD" +
-      "escriptorSetR\005fdset\022Y\n\005cases\030\003 \003(\0132C.buf" +
-      ".validate.conformance.harness.TestConfor" +
-      "manceRequest.CasesEntryR\005cases\032N\n\nCasesE" +
-      "ntry\022\020\n\003key\030\001 \001(\tR\003key\022*\n\005value\030\002 \001(\0132\024." +
-      "google.protobuf.AnyR\005value:\0028\001\"\345\001\n\027TestC" +
-      "onformanceResponse\022`\n\007results\030\001 \003(\0132F.bu" +
-      "f.validate.conformance.harness.TestConfo" +
-      "rmanceResponse.ResultsEntryR\007results\032h\n\014" +
-      "ResultsEntry\022\020\n\003key\030\001 \001(\tR\003key\022B\n\005value\030" +
-      "\002 \001(\0132,.buf.validate.conformance.harness" +
-      ".TestResultR\005value:\0028\001\"\374\001\n\nTestResult\022\032\n" +
-      "\007success\030\001 \001(\010H\000R\007success\022E\n\020validation_" +
-      "error\030\002 \001(\0132\030.buf.validate.ViolationsH\000R" +
-      "\017validationError\022-\n\021compilation_error\030\003 " +
-      "\001(\tH\000R\020compilationError\022%\n\rruntime_error" +
-      "\030\004 \001(\tH\000R\014runtimeError\022+\n\020unexpected_err" +
-      "or\030\005 \001(\tH\000R\017unexpectedErrorB\010\n\006resultB\332\001" +
-      "\n&build.buf.validate.conformance.harness" +
-      "B\014HarnessProtoP\001\242\002\004BVCH\252\002 Buf.Validate.C" +
-      "onformance.Harness\312\002 Buf\\Validate\\Confor" +
-      "mance\\Harness\342\002,Buf\\Validate\\Conformance" +
-      "\\Harness\\GPBMetadata\352\002#Buf::Validate::Co" +
-      "nformance::Harnessb\006proto3"
+      "ss\032\033buf/validate/validate.proto\032\031google/" +
+      "protobuf/any.proto\032 google/protobuf/desc" +
+      "riptor.proto\"\375\001\n\026TestConformanceRequest\022" +
+      "8\n\005fdset\030\002 \001(\0132\".google.protobuf.FileDes" +
+      "criptorSetR\005fdset\022Y\n\005cases\030\003 \003(\0132C.buf.v" +
+      "alidate.conformance.harness.TestConforma" +
+      "nceRequest.CasesEntryR\005cases\032N\n\nCasesEnt" +
+      "ry\022\020\n\003key\030\001 \001(\tR\003key\022*\n\005value\030\002 \001(\0132\024.go" +
+      "ogle.protobuf.AnyR\005value:\0028\001\"\345\001\n\027TestCon" +
+      "formanceResponse\022`\n\007results\030\001 \003(\0132F.buf." +
+      "validate.conformance.harness.TestConform" +
+      "anceResponse.ResultsEntryR\007results\032h\n\014Re" +
+      "sultsEntry\022\020\n\003key\030\001 \001(\tR\003key\022B\n\005value\030\002 " +
+      "\001(\0132,.buf.validate.conformance.harness.T" +
+      "estResultR\005value:\0028\001\"\374\001\n\nTestResult\022\032\n\007s" +
+      "uccess\030\001 \001(\010H\000R\007success\022E\n\020validation_er" +
+      "ror\030\002 \001(\0132\030.buf.validate.ViolationsH\000R\017v" +
+      "alidationError\022-\n\021compilation_error\030\003 \001(" +
+      "\tH\000R\020compilationError\022%\n\rruntime_error\030\004" +
+      " \001(\tH\000R\014runtimeError\022+\n\020unexpected_error" +
+      "\030\005 \001(\tH\000R\017unexpectedErrorB\010\n\006resultB\332\001\n&" +
+      "build.buf.validate.conformance.harnessB\014" +
+      "HarnessProtoP\001\242\002\004BVCH\252\002 Buf.Validate.Con" +
+      "formance.Harness\312\002 Buf\\Validate\\Conforma" +
+      "nce\\Harness\342\002,Buf\\Validate\\Conformance\\H" +
+      "arness\\GPBMetadata\352\002#Buf::Validate::Conf" +
+      "ormance::Harnessb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
-          build.buf.validate.ExpressionProto.getDescriptor(),
+          build.buf.validate.ValidateProto.getDescriptor(),
           com.google.protobuf.AnyProto.getDescriptor(),
           com.google.protobuf.DescriptorProtos.getDescriptor(),
         });
@@ -127,7 +127,7 @@ public final class HarnessProto {
         internal_static_buf_validate_conformance_harness_TestResult_descriptor,
         new java.lang.String[] { "Success", "ValidationError", "CompilationError", "RuntimeError", "UnexpectedError", "Result", });
     descriptor.resolveAllFeaturesImmutable();
-    build.buf.validate.ExpressionProto.getDescriptor();
+    build.buf.validate.ValidateProto.getDescriptor();
     com.google.protobuf.AnyProto.getDescriptor();
     com.google.protobuf.DescriptorProtos.getDescriptor();
   }

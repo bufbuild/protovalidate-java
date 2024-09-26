@@ -29,6 +29,13 @@ import com.google.protobuf.MessageLite;
 
 /** Manages the resolution of protovalidate constraints. */
 class ConstraintResolver {
+  private static final ExtensionRegistry EXTENSION_REGISTRY = ExtensionRegistry.newInstance();
+
+  static {
+    EXTENSION_REGISTRY.add(ValidateProto.message);
+    EXTENSION_REGISTRY.add(ValidateProto.oneof);
+    EXTENSION_REGISTRY.add(ValidateProto.field);
+  }
 
   /**
    * Resolves the constraints for a message descriptor.
@@ -36,12 +43,13 @@ class ConstraintResolver {
    * @param desc the message descriptor.
    * @return the resolved {@link MessageConstraints}.
    */
-  MessageConstraints resolveMessageConstraints(Descriptor desc, ExtensionRegistry registry)
+  MessageConstraints resolveMessageConstraints(Descriptor desc)
       throws InvalidProtocolBufferException, CompilationException {
     DescriptorProtos.MessageOptions options = desc.getOptions();
     // If the protovalidate message extension is unknown, reparse using extension registry.
     if (options.getUnknownFields().hasField(ValidateProto.message.getNumber())) {
-      options = DescriptorProtos.MessageOptions.parseFrom(options.toByteString(), registry);
+      options =
+          DescriptorProtos.MessageOptions.parseFrom(options.toByteString(), EXTENSION_REGISTRY);
     }
     if (!options.hasExtension(ValidateProto.message)) {
       return MessageConstraints.getDefaultInstance();
@@ -66,12 +74,12 @@ class ConstraintResolver {
    * @param desc the oneof descriptor.
    * @return the resolved {@link OneofConstraints}.
    */
-  OneofConstraints resolveOneofConstraints(OneofDescriptor desc, ExtensionRegistry registry)
+  OneofConstraints resolveOneofConstraints(OneofDescriptor desc)
       throws InvalidProtocolBufferException, CompilationException {
     DescriptorProtos.OneofOptions options = desc.getOptions();
     // If the protovalidate oneof extension is unknown, reparse using extension registry.
     if (options.getUnknownFields().hasField(ValidateProto.oneof.getNumber())) {
-      options = DescriptorProtos.OneofOptions.parseFrom(options.toByteString(), registry);
+      options = DescriptorProtos.OneofOptions.parseFrom(options.toByteString(), EXTENSION_REGISTRY);
     }
     if (!options.hasExtension(ValidateProto.oneof)) {
       return OneofConstraints.getDefaultInstance();
@@ -96,12 +104,12 @@ class ConstraintResolver {
    * @param desc the field descriptor.
    * @return the resolved {@link FieldConstraints}.
    */
-  FieldConstraints resolveFieldConstraints(FieldDescriptor desc, ExtensionRegistry registry)
+  FieldConstraints resolveFieldConstraints(FieldDescriptor desc)
       throws InvalidProtocolBufferException, CompilationException {
     DescriptorProtos.FieldOptions options = desc.getOptions();
     // If the protovalidate field option is unknown, reparse using extension registry.
     if (options.getUnknownFields().hasField(ValidateProto.field.getNumber())) {
-      options = DescriptorProtos.FieldOptions.parseFrom(options.toByteString(), registry);
+      options = DescriptorProtos.FieldOptions.parseFrom(options.toByteString(), EXTENSION_REGISTRY);
     }
     if (!options.hasExtension(ValidateProto.field)) {
       return FieldConstraints.getDefaultInstance();

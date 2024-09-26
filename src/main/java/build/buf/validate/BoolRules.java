@@ -14,7 +14,8 @@ package build.buf.validate;
  * Protobuf type {@code buf.validate.BoolRules}
  */
 public final class BoolRules extends
-    com.google.protobuf.GeneratedMessage implements
+    com.google.protobuf.GeneratedMessage.ExtendableMessage<
+      BoolRules> implements
     // @@protoc_insertion_point(message_implements:buf.validate.BoolRules)
     BoolRulesOrBuilder {
 private static final long serialVersionUID = 0L;
@@ -28,10 +29,11 @@ private static final long serialVersionUID = 0L;
       BoolRules.class.getName());
   }
   // Use BoolRules.newBuilder() to construct.
-  private BoolRules(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+  private BoolRules(com.google.protobuf.GeneratedMessage.ExtendableBuilder<build.buf.validate.BoolRules, ?> builder) {
     super(builder);
   }
   private BoolRules() {
+    example_ = emptyBooleanList();
   }
 
   public static final com.google.protobuf.Descriptors.Descriptor
@@ -63,7 +65,7 @@ private static final long serialVersionUID = 0L;
    * ```
    * </pre>
    *
-   * <code>optional bool const = 1 [json_name = "const", (.buf.validate.priv.field) = { ... }</code>
+   * <code>optional bool const = 1 [json_name = "const", (.buf.validate.predefined) = { ... }</code>
    * @return Whether the const field is set.
    */
   @java.lang.Override
@@ -83,12 +85,86 @@ private static final long serialVersionUID = 0L;
    * ```
    * </pre>
    *
-   * <code>optional bool const = 1 [json_name = "const", (.buf.validate.priv.field) = { ... }</code>
+   * <code>optional bool const = 1 [json_name = "const", (.buf.validate.predefined) = { ... }</code>
    * @return The const.
    */
   @java.lang.Override
   public boolean getConst() {
     return const_;
+  }
+
+  public static final int EXAMPLE_FIELD_NUMBER = 2;
+  @SuppressWarnings("serial")
+  private com.google.protobuf.Internal.BooleanList example_ =
+      emptyBooleanList();
+  /**
+   * <pre>
+   * `example` specifies values that the field may have. These values SHOULD
+   * conform to other constraints. `example` values will not impact validation
+   * but may be used as helpful guidance on how to populate the given field.
+   *
+   * ```proto
+   * message MyBool {
+   * bool value = 1 [
+   * (buf.validate.field).bool.example = 1,
+   * (buf.validate.field).bool.example = 2
+   * ];
+   * }
+   * ```
+   * </pre>
+   *
+   * <code>repeated bool example = 2 [json_name = "example", (.buf.validate.predefined) = { ... }</code>
+   * @return A list containing the example.
+   */
+  @java.lang.Override
+  public java.util.List<java.lang.Boolean>
+      getExampleList() {
+    return example_;
+  }
+  /**
+   * <pre>
+   * `example` specifies values that the field may have. These values SHOULD
+   * conform to other constraints. `example` values will not impact validation
+   * but may be used as helpful guidance on how to populate the given field.
+   *
+   * ```proto
+   * message MyBool {
+   * bool value = 1 [
+   * (buf.validate.field).bool.example = 1,
+   * (buf.validate.field).bool.example = 2
+   * ];
+   * }
+   * ```
+   * </pre>
+   *
+   * <code>repeated bool example = 2 [json_name = "example", (.buf.validate.predefined) = { ... }</code>
+   * @return The count of example.
+   */
+  public int getExampleCount() {
+    return example_.size();
+  }
+  /**
+   * <pre>
+   * `example` specifies values that the field may have. These values SHOULD
+   * conform to other constraints. `example` values will not impact validation
+   * but may be used as helpful guidance on how to populate the given field.
+   *
+   * ```proto
+   * message MyBool {
+   * bool value = 1 [
+   * (buf.validate.field).bool.example = 1,
+   * (buf.validate.field).bool.example = 2
+   * ];
+   * }
+   * ```
+   * </pre>
+   *
+   * <code>repeated bool example = 2 [json_name = "example", (.buf.validate.predefined) = { ... }</code>
+   * @param index The index of the element to return.
+   * @return The example at the given index.
+   */
+  public boolean getExample(int index) {
+    return example_.getBoolean(index);
   }
 
   private byte memoizedIsInitialized = -1;
@@ -98,6 +174,10 @@ private static final long serialVersionUID = 0L;
     if (isInitialized == 1) return true;
     if (isInitialized == 0) return false;
 
+    if (!extensionsAreInitialized()) {
+      memoizedIsInitialized = 0;
+      return false;
+    }
     memoizedIsInitialized = 1;
     return true;
   }
@@ -105,9 +185,16 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
+    com.google.protobuf.GeneratedMessage
+      .ExtendableMessage.ExtensionSerializer
+        extensionWriter = newExtensionSerializer();
     if (((bitField0_ & 0x00000001) != 0)) {
       output.writeBool(1, const_);
     }
+    for (int i = 0; i < example_.size(); i++) {
+      output.writeBool(2, example_.getBoolean(i));
+    }
+    extensionWriter.writeUntil(536870912, output);
     getUnknownFields().writeTo(output);
   }
 
@@ -121,6 +208,13 @@ private static final long serialVersionUID = 0L;
       size += com.google.protobuf.CodedOutputStream
         .computeBoolSize(1, const_);
     }
+    {
+      int dataSize = 0;
+      dataSize = 1 * getExampleList().size();
+      size += dataSize;
+      size += 1 * getExampleList().size();
+    }
+    size += extensionsSerializedSize();
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
     return size;
@@ -141,7 +235,11 @@ private static final long serialVersionUID = 0L;
       if (getConst()
           != other.getConst()) return false;
     }
+    if (!getExampleList()
+        .equals(other.getExampleList())) return false;
     if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+    if (!getExtensionFields().equals(other.getExtensionFields()))
+      return false;
     return true;
   }
 
@@ -157,6 +255,11 @@ private static final long serialVersionUID = 0L;
       hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
           getConst());
     }
+    if (getExampleCount() > 0) {
+      hash = (37 * hash) + EXAMPLE_FIELD_NUMBER;
+      hash = (53 * hash) + getExampleList().hashCode();
+    }
+    hash = hashFields(hash, getExtensionFields());
     hash = (29 * hash) + getUnknownFields().hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -263,7 +366,8 @@ private static final long serialVersionUID = 0L;
    * Protobuf type {@code buf.validate.BoolRules}
    */
   public static final class Builder extends
-      com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+      com.google.protobuf.GeneratedMessage.ExtendableBuilder<
+        build.buf.validate.BoolRules, Builder> implements
       // @@protoc_insertion_point(builder_implements:buf.validate.BoolRules)
       build.buf.validate.BoolRulesOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
@@ -294,6 +398,7 @@ private static final long serialVersionUID = 0L;
       super.clear();
       bitField0_ = 0;
       const_ = false;
+      example_ = emptyBooleanList();
       return this;
     }
 
@@ -332,6 +437,10 @@ private static final long serialVersionUID = 0L;
         result.const_ = const_;
         to_bitField0_ |= 0x00000001;
       }
+      if (((from_bitField0_ & 0x00000002) != 0)) {
+        example_.makeImmutable();
+        result.example_ = example_;
+      }
       result.bitField0_ |= to_bitField0_;
     }
 
@@ -350,6 +459,18 @@ private static final long serialVersionUID = 0L;
       if (other.hasConst()) {
         setConst(other.getConst());
       }
+      if (!other.example_.isEmpty()) {
+        if (example_.isEmpty()) {
+          example_ = other.example_;
+          example_.makeImmutable();
+          bitField0_ |= 0x00000002;
+        } else {
+          ensureExampleIsMutable();
+          example_.addAll(other.example_);
+        }
+        onChanged();
+      }
+      this.mergeExtensionFields(other);
       this.mergeUnknownFields(other.getUnknownFields());
       onChanged();
       return this;
@@ -357,6 +478,9 @@ private static final long serialVersionUID = 0L;
 
     @java.lang.Override
     public final boolean isInitialized() {
+      if (!extensionsAreInitialized()) {
+        return false;
+      }
       return true;
     }
 
@@ -381,6 +505,23 @@ private static final long serialVersionUID = 0L;
               bitField0_ |= 0x00000001;
               break;
             } // case 8
+            case 16: {
+              boolean v = input.readBool();
+              ensureExampleIsMutable();
+              example_.addBoolean(v);
+              break;
+            } // case 16
+            case 18: {
+              int length = input.readRawVarint32();
+              int limit = input.pushLimit(length);
+              int alloc = length > 4096 ? 4096 : length;
+              ensureExampleIsMutable(alloc / 1);
+              while (input.getBytesUntilLimit() > 0) {
+                example_.addBoolean(input.readBool());
+              }
+              input.popLimit(limit);
+              break;
+            } // case 18
             default: {
               if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                 done = true; // was an endgroup tag
@@ -412,7 +553,7 @@ private static final long serialVersionUID = 0L;
      * ```
      * </pre>
      *
-     * <code>optional bool const = 1 [json_name = "const", (.buf.validate.priv.field) = { ... }</code>
+     * <code>optional bool const = 1 [json_name = "const", (.buf.validate.predefined) = { ... }</code>
      * @return Whether the const field is set.
      */
     @java.lang.Override
@@ -432,7 +573,7 @@ private static final long serialVersionUID = 0L;
      * ```
      * </pre>
      *
-     * <code>optional bool const = 1 [json_name = "const", (.buf.validate.priv.field) = { ... }</code>
+     * <code>optional bool const = 1 [json_name = "const", (.buf.validate.predefined) = { ... }</code>
      * @return The const.
      */
     @java.lang.Override
@@ -452,7 +593,7 @@ private static final long serialVersionUID = 0L;
      * ```
      * </pre>
      *
-     * <code>optional bool const = 1 [json_name = "const", (.buf.validate.priv.field) = { ... }</code>
+     * <code>optional bool const = 1 [json_name = "const", (.buf.validate.predefined) = { ... }</code>
      * @param value The const to set.
      * @return This builder for chaining.
      */
@@ -476,12 +617,207 @@ private static final long serialVersionUID = 0L;
      * ```
      * </pre>
      *
-     * <code>optional bool const = 1 [json_name = "const", (.buf.validate.priv.field) = { ... }</code>
+     * <code>optional bool const = 1 [json_name = "const", (.buf.validate.predefined) = { ... }</code>
      * @return This builder for chaining.
      */
     public Builder clearConst() {
       bitField0_ = (bitField0_ & ~0x00000001);
       const_ = false;
+      onChanged();
+      return this;
+    }
+
+    private com.google.protobuf.Internal.BooleanList example_ = emptyBooleanList();
+    private void ensureExampleIsMutable() {
+      if (!example_.isModifiable()) {
+        example_ = makeMutableCopy(example_);
+      }
+      bitField0_ |= 0x00000002;
+    }
+    private void ensureExampleIsMutable(int capacity) {
+      if (!example_.isModifiable()) {
+        example_ = makeMutableCopy(example_, capacity);
+      }
+      bitField0_ |= 0x00000002;
+    }
+    /**
+     * <pre>
+     * `example` specifies values that the field may have. These values SHOULD
+     * conform to other constraints. `example` values will not impact validation
+     * but may be used as helpful guidance on how to populate the given field.
+     *
+     * ```proto
+     * message MyBool {
+     * bool value = 1 [
+     * (buf.validate.field).bool.example = 1,
+     * (buf.validate.field).bool.example = 2
+     * ];
+     * }
+     * ```
+     * </pre>
+     *
+     * <code>repeated bool example = 2 [json_name = "example", (.buf.validate.predefined) = { ... }</code>
+     * @return A list containing the example.
+     */
+    public java.util.List<java.lang.Boolean>
+        getExampleList() {
+      example_.makeImmutable();
+      return example_;
+    }
+    /**
+     * <pre>
+     * `example` specifies values that the field may have. These values SHOULD
+     * conform to other constraints. `example` values will not impact validation
+     * but may be used as helpful guidance on how to populate the given field.
+     *
+     * ```proto
+     * message MyBool {
+     * bool value = 1 [
+     * (buf.validate.field).bool.example = 1,
+     * (buf.validate.field).bool.example = 2
+     * ];
+     * }
+     * ```
+     * </pre>
+     *
+     * <code>repeated bool example = 2 [json_name = "example", (.buf.validate.predefined) = { ... }</code>
+     * @return The count of example.
+     */
+    public int getExampleCount() {
+      return example_.size();
+    }
+    /**
+     * <pre>
+     * `example` specifies values that the field may have. These values SHOULD
+     * conform to other constraints. `example` values will not impact validation
+     * but may be used as helpful guidance on how to populate the given field.
+     *
+     * ```proto
+     * message MyBool {
+     * bool value = 1 [
+     * (buf.validate.field).bool.example = 1,
+     * (buf.validate.field).bool.example = 2
+     * ];
+     * }
+     * ```
+     * </pre>
+     *
+     * <code>repeated bool example = 2 [json_name = "example", (.buf.validate.predefined) = { ... }</code>
+     * @param index The index of the element to return.
+     * @return The example at the given index.
+     */
+    public boolean getExample(int index) {
+      return example_.getBoolean(index);
+    }
+    /**
+     * <pre>
+     * `example` specifies values that the field may have. These values SHOULD
+     * conform to other constraints. `example` values will not impact validation
+     * but may be used as helpful guidance on how to populate the given field.
+     *
+     * ```proto
+     * message MyBool {
+     * bool value = 1 [
+     * (buf.validate.field).bool.example = 1,
+     * (buf.validate.field).bool.example = 2
+     * ];
+     * }
+     * ```
+     * </pre>
+     *
+     * <code>repeated bool example = 2 [json_name = "example", (.buf.validate.predefined) = { ... }</code>
+     * @param index The index to set the value at.
+     * @param value The example to set.
+     * @return This builder for chaining.
+     */
+    public Builder setExample(
+        int index, boolean value) {
+
+      ensureExampleIsMutable();
+      example_.setBoolean(index, value);
+      bitField0_ |= 0x00000002;
+      onChanged();
+      return this;
+    }
+    /**
+     * <pre>
+     * `example` specifies values that the field may have. These values SHOULD
+     * conform to other constraints. `example` values will not impact validation
+     * but may be used as helpful guidance on how to populate the given field.
+     *
+     * ```proto
+     * message MyBool {
+     * bool value = 1 [
+     * (buf.validate.field).bool.example = 1,
+     * (buf.validate.field).bool.example = 2
+     * ];
+     * }
+     * ```
+     * </pre>
+     *
+     * <code>repeated bool example = 2 [json_name = "example", (.buf.validate.predefined) = { ... }</code>
+     * @param value The example to add.
+     * @return This builder for chaining.
+     */
+    public Builder addExample(boolean value) {
+
+      ensureExampleIsMutable();
+      example_.addBoolean(value);
+      bitField0_ |= 0x00000002;
+      onChanged();
+      return this;
+    }
+    /**
+     * <pre>
+     * `example` specifies values that the field may have. These values SHOULD
+     * conform to other constraints. `example` values will not impact validation
+     * but may be used as helpful guidance on how to populate the given field.
+     *
+     * ```proto
+     * message MyBool {
+     * bool value = 1 [
+     * (buf.validate.field).bool.example = 1,
+     * (buf.validate.field).bool.example = 2
+     * ];
+     * }
+     * ```
+     * </pre>
+     *
+     * <code>repeated bool example = 2 [json_name = "example", (.buf.validate.predefined) = { ... }</code>
+     * @param values The example to add.
+     * @return This builder for chaining.
+     */
+    public Builder addAllExample(
+        java.lang.Iterable<? extends java.lang.Boolean> values) {
+      ensureExampleIsMutable();
+      com.google.protobuf.AbstractMessageLite.Builder.addAll(
+          values, example_);
+      bitField0_ |= 0x00000002;
+      onChanged();
+      return this;
+    }
+    /**
+     * <pre>
+     * `example` specifies values that the field may have. These values SHOULD
+     * conform to other constraints. `example` values will not impact validation
+     * but may be used as helpful guidance on how to populate the given field.
+     *
+     * ```proto
+     * message MyBool {
+     * bool value = 1 [
+     * (buf.validate.field).bool.example = 1,
+     * (buf.validate.field).bool.example = 2
+     * ];
+     * }
+     * ```
+     * </pre>
+     *
+     * <code>repeated bool example = 2 [json_name = "example", (.buf.validate.predefined) = { ... }</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearExample() {
+      example_ = emptyBooleanList();
+      bitField0_ = (bitField0_ & ~0x00000002);
       onChanged();
       return this;
     }

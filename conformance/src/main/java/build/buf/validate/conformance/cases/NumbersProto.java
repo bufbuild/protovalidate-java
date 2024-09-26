@@ -91,6 +91,11 @@ public final class NumbersProto {
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_buf_validate_conformance_cases_FloatFinite_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_buf_validate_conformance_cases_FloatNotFinite_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_buf_validate_conformance_cases_FloatNotFinite_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
     internal_static_buf_validate_conformance_cases_FloatIgnore_descriptor;
   static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
@@ -100,6 +105,11 @@ public final class NumbersProto {
   static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_buf_validate_conformance_cases_FloatIncorrectType_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_buf_validate_conformance_cases_FloatExample_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_buf_validate_conformance_cases_FloatExample_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
     internal_static_buf_validate_conformance_cases_DoubleNone_descriptor;
   static final 
@@ -166,6 +176,11 @@ public final class NumbersProto {
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_buf_validate_conformance_cases_DoubleFinite_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_buf_validate_conformance_cases_DoubleNotFinite_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_buf_validate_conformance_cases_DoubleNotFinite_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
     internal_static_buf_validate_conformance_cases_DoubleIgnore_descriptor;
   static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
@@ -175,6 +190,11 @@ public final class NumbersProto {
   static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_buf_validate_conformance_cases_DoubleIncorrectType_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_buf_validate_conformance_cases_DoubleExample_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_buf_validate_conformance_cases_DoubleExample_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
     internal_static_buf_validate_conformance_cases_Int32None_descriptor;
   static final 
@@ -245,6 +265,11 @@ public final class NumbersProto {
   static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_buf_validate_conformance_cases_Int32IncorrectType_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_buf_validate_conformance_cases_Int32Example_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_buf_validate_conformance_cases_Int32Example_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
     internal_static_buf_validate_conformance_cases_Int64None_descriptor;
   static final 
@@ -321,6 +346,11 @@ public final class NumbersProto {
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_buf_validate_conformance_cases_Int64IncorrectType_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_buf_validate_conformance_cases_Int64Example_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_buf_validate_conformance_cases_Int64Example_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
     internal_static_buf_validate_conformance_cases_UInt32None_descriptor;
   static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
@@ -390,6 +420,11 @@ public final class NumbersProto {
   static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_buf_validate_conformance_cases_UInt32IncorrectType_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_buf_validate_conformance_cases_UInt32Example_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_buf_validate_conformance_cases_UInt32Example_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
     internal_static_buf_validate_conformance_cases_UInt64None_descriptor;
   static final 
@@ -461,6 +496,11 @@ public final class NumbersProto {
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_buf_validate_conformance_cases_UInt64IncorrectType_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_buf_validate_conformance_cases_UInt64Example_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_buf_validate_conformance_cases_UInt64Example_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
     internal_static_buf_validate_conformance_cases_SInt32None_descriptor;
   static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
@@ -530,6 +570,11 @@ public final class NumbersProto {
   static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_buf_validate_conformance_cases_SInt32IncorrectType_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_buf_validate_conformance_cases_SInt32Example_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_buf_validate_conformance_cases_SInt32Example_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
     internal_static_buf_validate_conformance_cases_SInt64None_descriptor;
   static final 
@@ -601,6 +646,11 @@ public final class NumbersProto {
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_buf_validate_conformance_cases_SInt64IncorrectType_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_buf_validate_conformance_cases_SInt64Example_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_buf_validate_conformance_cases_SInt64Example_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
     internal_static_buf_validate_conformance_cases_Fixed32None_descriptor;
   static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
@@ -670,6 +720,11 @@ public final class NumbersProto {
   static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_buf_validate_conformance_cases_Fixed32IncorrectType_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_buf_validate_conformance_cases_Fixed32Example_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_buf_validate_conformance_cases_Fixed32Example_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
     internal_static_buf_validate_conformance_cases_Fixed64None_descriptor;
   static final 
@@ -741,6 +796,11 @@ public final class NumbersProto {
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_buf_validate_conformance_cases_Fixed64IncorrectType_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_buf_validate_conformance_cases_Fixed64Example_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_buf_validate_conformance_cases_Fixed64Example_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
     internal_static_buf_validate_conformance_cases_SFixed32None_descriptor;
   static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
@@ -810,6 +870,11 @@ public final class NumbersProto {
   static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_buf_validate_conformance_cases_SFixed32IncorrectType_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_buf_validate_conformance_cases_SFixed32Example_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_buf_validate_conformance_cases_SFixed32Example_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
     internal_static_buf_validate_conformance_cases_SFixed64None_descriptor;
   static final 
@@ -881,6 +946,11 @@ public final class NumbersProto {
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_buf_validate_conformance_cases_SFixed64IncorrectType_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_buf_validate_conformance_cases_SFixed64Example_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_buf_validate_conformance_cases_SFixed64Example_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
     internal_static_buf_validate_conformance_cases_Int64LTEOptional_descriptor;
   static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
@@ -899,221 +969,237 @@ public final class NumbersProto {
       "buf/validate/validate.proto\"\035\n\tFloatNone" +
       "\022\020\n\003val\030\001 \001(\002R\003val\"*\n\nFloatConst\022\034\n\003val\030" +
       "\001 \001(\002B\n\272H\007\n\005\r\244p\235?R\003val\",\n\007FloatIn\022!\n\003val" +
-      "\030\001 \001(\002B\017\272H\014\n\n2\010\205\353\221@\341z\374@R\003val\"+\n\nFloatNot" +
-      "In\022\035\n\003val\030\001 \001(\002B\013\272H\010\n\006:\004\000\000\000\000R\003val\"\'\n\007Flo" +
-      "atLT\022\034\n\003val\030\001 \001(\002B\n\272H\007\n\005\025\000\000\000\000R\003val\"(\n\010Fl" +
-      "oatLTE\022\034\n\003val\030\001 \001(\002B\n\272H\007\n\005\035\000\000\200BR\003val\"\'\n\007" +
-      "FloatGT\022\034\n\003val\030\001 \001(\002B\n\272H\007\n\005%\000\000\200AR\003val\"(\n" +
-      "\010FloatGTE\022\034\n\003val\030\001 \001(\002B\n\272H\007\n\005-\000\000\000AR\003val\"" +
-      ".\n\tFloatGTLT\022!\n\003val\030\001 \001(\002B\017\272H\014\n\n\025\000\000 A%\000\000" +
-      "\000\000R\003val\"0\n\013FloatExLTGT\022!\n\003val\030\001 \001(\002B\017\272H\014" +
-      "\n\n\025\000\000\000\000%\000\000 AR\003val\"0\n\013FloatGTELTE\022!\n\003val\030" +
-      "\001 \001(\002B\017\272H\014\n\n\035\000\000\200C-\000\000\000CR\003val\"2\n\rFloatExGT" +
-      "ELTE\022!\n\003val\030\001 \001(\002B\017\272H\014\n\n\035\000\000\000C-\000\000\200CR\003val\"" +
-      "(\n\013FloatFinite\022\031\n\003val\030\001 \001(\002B\007\272H\004\n\002@\001R\003va" +
-      "l\"3\n\013FloatIgnore\022$\n\003val\030\001 \001(\002B\022\272H\017\n\n\035\000\000\200" +
-      "C-\000\000\000C\320\001\001R\003val\"6\n\022FloatIncorrectType\022 \n\003" +
-      "val\030\001 \001(\002B\016\272H\013\022\t!\000\000\000\000\000\000\000\000R\003val\"\036\n\nDouble" +
-      "None\022\020\n\003val\030\001 \001(\001R\003val\"/\n\013DoubleConst\022 \n" +
-      "\003val\030\001 \001(\001B\016\272H\013\022\t\t\256G\341z\024\256\363?R\003val\"5\n\010Doubl" +
-      "eIn\022)\n\003val\030\001 \001(\001B\027\272H\024\022\0222\020=\n\327\243p=\022@\217\302\365(\\\217\037" +
-      "@R\003val\"0\n\013DoubleNotIn\022!\n\003val\030\001 \001(\001B\017\272H\014\022" +
-      "\n:\010\000\000\000\000\000\000\000\000R\003val\",\n\010DoubleLT\022 \n\003val\030\001 \001(" +
-      "\001B\016\272H\013\022\t\021\000\000\000\000\000\000\000\000R\003val\"-\n\tDoubleLTE\022 \n\003v" +
-      "al\030\001 \001(\001B\016\272H\013\022\t\031\000\000\000\000\000\000P@R\003val\",\n\010DoubleG" +
-      "T\022 \n\003val\030\001 \001(\001B\016\272H\013\022\t!\000\000\000\000\000\0000@R\003val\"-\n\tD" +
-      "oubleGTE\022 \n\003val\030\001 \001(\001B\016\272H\013\022\t)\000\000\000\000\000\000 @R\003v" +
-      "al\"7\n\nDoubleGTLT\022)\n\003val\030\001 \001(\001B\027\272H\024\022\022\021\000\000\000" +
-      "\000\000\000$@!\000\000\000\000\000\000\000\000R\003val\"9\n\014DoubleExLTGT\022)\n\003v" +
-      "al\030\001 \001(\001B\027\272H\024\022\022\021\000\000\000\000\000\000\000\000!\000\000\000\000\000\000$@R\003val\"9" +
-      "\n\014DoubleGTELTE\022)\n\003val\030\001 \001(\001B\027\272H\024\022\022\031\000\000\000\000\000" +
-      "\000p@)\000\000\000\000\000\000`@R\003val\";\n\016DoubleExGTELTE\022)\n\003v" +
-      "al\030\001 \001(\001B\027\272H\024\022\022\031\000\000\000\000\000\000`@)\000\000\000\000\000\000p@R\003val\")" +
-      "\n\014DoubleFinite\022\031\n\003val\030\001 \001(\001B\007\272H\004\022\002@\001R\003va" +
-      "l\"<\n\014DoubleIgnore\022,\n\003val\030\001 \001(\001B\032\272H\027\022\022\031\000\000" +
-      "\000\000\000\000p@)\000\000\000\000\000\000`@\320\001\001R\003val\"3\n\023DoubleIncorre" +
-      "ctType\022\034\n\003val\030\001 \001(\001B\n\272H\007\n\005%\000\000\000\000R\003val\"\035\n\t" +
-      "Int32None\022\020\n\003val\030\001 \001(\005R\003val\"\'\n\nInt32Cons" +
-      "t\022\031\n\003val\030\001 \001(\005B\007\272H\004\032\002\010\001R\003val\"&\n\007Int32In\022" +
-      "\033\n\003val\030\001 \001(\005B\t\272H\006\032\0042\002\002\003R\003val\"(\n\nInt32Not" +
-      "In\022\032\n\003val\030\001 \001(\005B\010\272H\005\032\003:\001\000R\003val\"$\n\007Int32L" +
-      "T\022\031\n\003val\030\001 \001(\005B\007\272H\004\032\002\020\000R\003val\"%\n\010Int32LTE" +
-      "\022\031\n\003val\030\001 \001(\005B\007\272H\004\032\002\030@R\003val\"$\n\007Int32GT\022\031" +
-      "\n\003val\030\001 \001(\005B\007\272H\004\032\002 \020R\003val\"%\n\010Int32GTE\022\031\n" +
-      "\003val\030\001 \001(\005B\007\272H\004\032\002(\010R\003val\"(\n\tInt32GTLT\022\033\n" +
-      "\003val\030\001 \001(\005B\t\272H\006\032\004\020\n \000R\003val\"*\n\013Int32ExLTG" +
-      "T\022\033\n\003val\030\001 \001(\005B\t\272H\006\032\004\020\000 \nR\003val\",\n\013Int32G" +
-      "TELTE\022\035\n\003val\030\001 \001(\005B\013\272H\010\032\006\030\200\002(\200\001R\003val\".\n\r" +
-      "Int32ExGTELTE\022\035\n\003val\030\001 \001(\005B\013\272H\010\032\006\030\200\001(\200\002R" +
-      "\003val\"/\n\013Int32Ignore\022 \n\003val\030\001 \001(\005B\016\272H\013\032\006\030" +
-      "\200\002(\200\001\320\001\001R\003val\"2\n\022Int32IncorrectType\022\034\n\003v" +
-      "al\030\001 \001(\005B\n\272H\007\n\005%\000\000\000\000R\003val\"\035\n\tInt64None\022\020" +
-      "\n\003val\030\001 \001(\003R\003val\"\'\n\nInt64Const\022\031\n\003val\030\001 " +
-      "\001(\003B\007\272H\004\"\002\010\001R\003val\"&\n\007Int64In\022\033\n\003val\030\001 \001(" +
-      "\003B\t\272H\006\"\0042\002\002\003R\003val\"(\n\nInt64NotIn\022\032\n\003val\030\001" +
-      " \001(\003B\010\272H\005\"\003:\001\000R\003val\"$\n\007Int64LT\022\031\n\003val\030\001 " +
-      "\001(\003B\007\272H\004\"\002\020\000R\003val\"%\n\010Int64LTE\022\031\n\003val\030\001 \001" +
-      "(\003B\007\272H\004\"\002\030@R\003val\"$\n\007Int64GT\022\031\n\003val\030\001 \001(\003" +
-      "B\007\272H\004\"\002 \020R\003val\"%\n\010Int64GTE\022\031\n\003val\030\001 \001(\003B" +
-      "\007\272H\004\"\002(\010R\003val\"(\n\tInt64GTLT\022\033\n\003val\030\001 \001(\003B" +
-      "\t\272H\006\"\004\020\n \000R\003val\"*\n\013Int64ExLTGT\022\033\n\003val\030\001 " +
-      "\001(\003B\t\272H\006\"\004\020\000 \nR\003val\",\n\013Int64GTELTE\022\035\n\003va" +
-      "l\030\001 \001(\003B\013\272H\010\"\006\030\200\002(\200\001R\003val\".\n\rInt64ExGTEL" +
-      "TE\022\035\n\003val\030\001 \001(\003B\013\272H\010\"\006\030\200\001(\200\002R\003val\"/\n\013Int" +
-      "64Ignore\022 \n\003val\030\001 \001(\003B\016\272H\013\"\006\030\200\002(\200\001\320\001\001R\003v" +
-      "al\"\214\004\n\023Int64BigConstraints\022\"\n\006lt_pos\030\001 \001" +
-      "(\003B\013\272H\010\"\006\020\246\335\207\244\024R\005ltPos\022\'\n\006lt_neg\030\002 \001(\003B\020" +
-      "\272H\r\"\013\020\332\242\370\333\353\377\377\377\377\001R\005ltNeg\022\"\n\006gt_pos\030\003 \001(\003B" +
-      "\013\272H\010\"\006 \246\335\207\244\024R\005gtPos\022\'\n\006gt_neg\030\004 \001(\003B\020\272H\r" +
-      "\"\013 \332\242\370\333\353\377\377\377\377\001R\005gtNeg\022$\n\007lte_pos\030\005 \001(\003B\013\272" +
-      "H\010\"\006\030\246\335\207\244\024R\006ltePos\022)\n\007lte_neg\030\006 \001(\003B\020\272H\r" +
-      "\"\013\030\332\242\370\333\353\377\377\377\377\001R\006lteNeg\022$\n\007gte_pos\030\007 \001(\003B\013" +
-      "\272H\010\"\006(\246\335\207\244\024R\006gtePos\022)\n\007gte_neg\030\010 \001(\003B\020\272H" +
-      "\r\"\013(\332\242\370\333\353\377\377\377\377\001R\006gteNeg\022.\n\014constant_pos\030\t" +
-      " \001(\003B\013\272H\010\"\006\010\246\335\207\244\024R\013constantPos\0223\n\014consta" +
-      "nt_neg\030\n \001(\003B\020\272H\r\"\013\010\332\242\370\333\353\377\377\377\377\001R\013constant" +
-      "Neg\022&\n\002in\030\013 \001(\003B\026\272H\023\"\0212\017\246\335\207\244\024\332\242\370\333\353\377\377\377\377\001R" +
-      "\002in\022,\n\005notin\030\014 \001(\003B\026\272H\023\"\021:\017\246\335\207\244\024\332\242\370\333\353\377\377\377" +
-      "\377\001R\005notin\"2\n\022Int64IncorrectType\022\034\n\003val\030\001" +
-      " \001(\003B\n\272H\007\n\005%\000\000\000\000R\003val\"\036\n\nUInt32None\022\020\n\003v" +
-      "al\030\001 \001(\rR\003val\"(\n\013UInt32Const\022\031\n\003val\030\001 \001(" +
-      "\rB\007\272H\004*\002\010\001R\003val\"\'\n\010UInt32In\022\033\n\003val\030\001 \001(\r" +
-      "B\t\272H\006*\0042\002\002\003R\003val\")\n\013UInt32NotIn\022\032\n\003val\030\001" +
-      " \001(\rB\010\272H\005*\003:\001\000R\003val\"%\n\010UInt32LT\022\031\n\003val\030\001" +
-      " \001(\rB\007\272H\004*\002\020\005R\003val\"&\n\tUInt32LTE\022\031\n\003val\030\001" +
-      " \001(\rB\007\272H\004*\002\030@R\003val\"%\n\010UInt32GT\022\031\n\003val\030\001 " +
-      "\001(\rB\007\272H\004*\002 \020R\003val\"&\n\tUInt32GTE\022\031\n\003val\030\001 " +
-      "\001(\rB\007\272H\004*\002(\010R\003val\")\n\nUInt32GTLT\022\033\n\003val\030\001" +
-      " \001(\rB\t\272H\006*\004\020\n \005R\003val\"+\n\014UInt32ExLTGT\022\033\n\003" +
-      "val\030\001 \001(\rB\t\272H\006*\004\020\005 \nR\003val\"-\n\014UInt32GTELT" +
-      "E\022\035\n\003val\030\001 \001(\rB\013\272H\010*\006\030\200\002(\200\001R\003val\"/\n\016UInt" +
-      "32ExGTELTE\022\035\n\003val\030\001 \001(\rB\013\272H\010*\006\030\200\001(\200\002R\003va" +
-      "l\"0\n\014UInt32Ignore\022 \n\003val\030\001 \001(\rB\016\272H\013*\006\030\200\002" +
-      "(\200\001\320\001\001R\003val\"3\n\023UInt32IncorrectType\022\034\n\003va" +
-      "l\030\001 \001(\rB\n\272H\007\n\005%\000\000\000\000R\003val\"\036\n\nUInt64None\022\020" +
-      "\n\003val\030\001 \001(\004R\003val\"(\n\013UInt64Const\022\031\n\003val\030\001" +
-      " \001(\004B\007\272H\0042\002\010\001R\003val\"\'\n\010UInt64In\022\033\n\003val\030\001 " +
-      "\001(\004B\t\272H\0062\0042\002\002\003R\003val\")\n\013UInt64NotIn\022\032\n\003va" +
-      "l\030\001 \001(\004B\010\272H\0052\003:\001\000R\003val\"%\n\010UInt64LT\022\031\n\003va" +
-      "l\030\001 \001(\004B\007\272H\0042\002\020\005R\003val\"&\n\tUInt64LTE\022\031\n\003va" +
-      "l\030\001 \001(\004B\007\272H\0042\002\030@R\003val\"%\n\010UInt64GT\022\031\n\003val" +
-      "\030\001 \001(\004B\007\272H\0042\002 \020R\003val\"&\n\tUInt64GTE\022\031\n\003val" +
-      "\030\001 \001(\004B\007\272H\0042\002(\010R\003val\")\n\nUInt64GTLT\022\033\n\003va" +
-      "l\030\001 \001(\004B\t\272H\0062\004\020\n \005R\003val\"+\n\014UInt64ExLTGT\022" +
-      "\033\n\003val\030\001 \001(\004B\t\272H\0062\004\020\005 \nR\003val\"-\n\014UInt64GT" +
-      "ELTE\022\035\n\003val\030\001 \001(\004B\013\272H\0102\006\030\200\002(\200\001R\003val\"/\n\016U" +
-      "Int64ExGTELTE\022\035\n\003val\030\001 \001(\004B\013\272H\0102\006\030\200\001(\200\002R" +
-      "\003val\"0\n\014UInt64Ignore\022 \n\003val\030\001 \001(\004B\016\272H\0132\006" +
-      "\030\200\002(\200\001\320\001\001R\003val\"3\n\023UInt64IncorrectType\022\034\n" +
-      "\003val\030\001 \001(\004B\n\272H\007\n\005%\000\000\000\000R\003val\"\036\n\nSInt32Non" +
-      "e\022\020\n\003val\030\001 \001(\021R\003val\"(\n\013SInt32Const\022\031\n\003va" +
-      "l\030\001 \001(\021B\007\272H\004:\002\010\002R\003val\"\'\n\010SInt32In\022\033\n\003val" +
-      "\030\001 \001(\021B\t\272H\006:\0042\002\004\006R\003val\")\n\013SInt32NotIn\022\032\n" +
-      "\003val\030\001 \001(\021B\010\272H\005:\003:\001\000R\003val\"%\n\010SInt32LT\022\031\n" +
-      "\003val\030\001 \001(\021B\007\272H\004:\002\020\000R\003val\"\'\n\tSInt32LTE\022\032\n" +
-      "\003val\030\001 \001(\021B\010\272H\005:\003\030\200\001R\003val\"%\n\010SInt32GT\022\031\n" +
-      "\003val\030\001 \001(\021B\007\272H\004:\002  R\003val\"&\n\tSInt32GTE\022\031\n" +
-      "\003val\030\001 \001(\021B\007\272H\004:\002(\020R\003val\")\n\nSInt32GTLT\022\033" +
-      "\n\003val\030\001 \001(\021B\t\272H\006:\004\020\024 \000R\003val\"+\n\014SInt32ExL" +
-      "TGT\022\033\n\003val\030\001 \001(\021B\t\272H\006:\004\020\000 \024R\003val\"-\n\014SInt" +
-      "32GTELTE\022\035\n\003val\030\001 \001(\021B\013\272H\010:\006\030\200\004(\200\002R\003val\"" +
-      "/\n\016SInt32ExGTELTE\022\035\n\003val\030\001 \001(\021B\013\272H\010:\006\030\200\002" +
-      "(\200\004R\003val\"0\n\014SInt32Ignore\022 \n\003val\030\001 \001(\021B\016\272" +
-      "H\013:\006\030\200\004(\200\002\320\001\001R\003val\"3\n\023SInt32IncorrectTyp" +
-      "e\022\034\n\003val\030\001 \001(\021B\n\272H\007\n\005%\000\000\000\000R\003val\"\036\n\nSInt6" +
-      "4None\022\020\n\003val\030\001 \001(\022R\003val\"(\n\013SInt64Const\022\031" +
-      "\n\003val\030\001 \001(\022B\007\272H\004B\002\010\002R\003val\"\'\n\010SInt64In\022\033\n" +
-      "\003val\030\001 \001(\022B\t\272H\006B\0042\002\004\006R\003val\")\n\013SInt64NotI" +
-      "n\022\032\n\003val\030\001 \001(\022B\010\272H\005B\003:\001\000R\003val\"%\n\010SInt64L" +
-      "T\022\031\n\003val\030\001 \001(\022B\007\272H\004B\002\020\000R\003val\"\'\n\tSInt64LT" +
-      "E\022\032\n\003val\030\001 \001(\022B\010\272H\005B\003\030\200\001R\003val\"%\n\010SInt64G" +
-      "T\022\031\n\003val\030\001 \001(\022B\007\272H\004B\002  R\003val\"&\n\tSInt64GT" +
-      "E\022\031\n\003val\030\001 \001(\022B\007\272H\004B\002(\020R\003val\")\n\nSInt64GT" +
-      "LT\022\033\n\003val\030\001 \001(\022B\t\272H\006B\004\020\024 \000R\003val\"+\n\014SInt6" +
-      "4ExLTGT\022\033\n\003val\030\001 \001(\022B\t\272H\006B\004\020\000 \024R\003val\"-\n\014" +
-      "SInt64GTELTE\022\035\n\003val\030\001 \001(\022B\013\272H\010B\006\030\200\004(\200\002R\003" +
-      "val\"/\n\016SInt64ExGTELTE\022\035\n\003val\030\001 \001(\022B\013\272H\010B" +
-      "\006\030\200\002(\200\004R\003val\"0\n\014SInt64Ignore\022 \n\003val\030\001 \001(" +
-      "\022B\016\272H\013B\006\030\200\004(\200\002\320\001\001R\003val\"3\n\023SInt64Incorrec" +
-      "tType\022\034\n\003val\030\001 \001(\022B\n\272H\007\n\005%\000\000\000\000R\003val\"\037\n\013F" +
-      "ixed32None\022\020\n\003val\030\001 \001(\007R\003val\",\n\014Fixed32C" +
-      "onst\022\034\n\003val\030\001 \001(\007B\n\272H\007J\005\r\001\000\000\000R\003val\".\n\tFi" +
-      "xed32In\022!\n\003val\030\001 \001(\007B\017\272H\014J\n2\010\002\000\000\000\003\000\000\000R\003v" +
-      "al\"-\n\014Fixed32NotIn\022\035\n\003val\030\001 \001(\007B\013\272H\010J\006:\004" +
-      "\000\000\000\000R\003val\")\n\tFixed32LT\022\034\n\003val\030\001 \001(\007B\n\272H\007" +
-      "J\005\025\005\000\000\000R\003val\"*\n\nFixed32LTE\022\034\n\003val\030\001 \001(\007B" +
-      "\n\272H\007J\005\035@\000\000\000R\003val\")\n\tFixed32GT\022\034\n\003val\030\001 \001" +
-      "(\007B\n\272H\007J\005%\020\000\000\000R\003val\"*\n\nFixed32GTE\022\034\n\003val" +
-      "\030\001 \001(\007B\n\272H\007J\005-\010\000\000\000R\003val\"0\n\013Fixed32GTLT\022!" +
-      "\n\003val\030\001 \001(\007B\017\272H\014J\n\025\n\000\000\000%\005\000\000\000R\003val\"2\n\rFix" +
-      "ed32ExLTGT\022!\n\003val\030\001 \001(\007B\017\272H\014J\n\025\005\000\000\000%\n\000\000\000" +
-      "R\003val\"2\n\rFixed32GTELTE\022!\n\003val\030\001 \001(\007B\017\272H\014" +
-      "J\n\035\000\001\000\000-\200\000\000\000R\003val\"4\n\017Fixed32ExGTELTE\022!\n\003" +
-      "val\030\001 \001(\007B\017\272H\014J\n\035\200\000\000\000-\000\001\000\000R\003val\"5\n\rFixed" +
-      "32Ignore\022$\n\003val\030\001 \001(\007B\022\272H\017J\n\035\000\001\000\000-\200\000\000\000\320\001" +
-      "\001R\003val\"4\n\024Fixed32IncorrectType\022\034\n\003val\030\001 " +
-      "\001(\007B\n\272H\007\n\005%\000\000\000\000R\003val\"\037\n\013Fixed64None\022\020\n\003v" +
-      "al\030\001 \001(\006R\003val\"0\n\014Fixed64Const\022 \n\003val\030\001 \001" +
-      "(\006B\016\272H\013R\t\t\001\000\000\000\000\000\000\000R\003val\"6\n\tFixed64In\022)\n\003" +
-      "val\030\001 \001(\006B\027\272H\024R\0222\020\002\000\000\000\000\000\000\000\003\000\000\000\000\000\000\000R\003val\"" +
-      "1\n\014Fixed64NotIn\022!\n\003val\030\001 \001(\006B\017\272H\014R\n:\010\000\000\000" +
-      "\000\000\000\000\000R\003val\"-\n\tFixed64LT\022 \n\003val\030\001 \001(\006B\016\272H" +
-      "\013R\t\021\005\000\000\000\000\000\000\000R\003val\".\n\nFixed64LTE\022 \n\003val\030\001" +
-      " \001(\006B\016\272H\013R\t\031@\000\000\000\000\000\000\000R\003val\"-\n\tFixed64GT\022 " +
-      "\n\003val\030\001 \001(\006B\016\272H\013R\t!\020\000\000\000\000\000\000\000R\003val\".\n\nFixe" +
-      "d64GTE\022 \n\003val\030\001 \001(\006B\016\272H\013R\t)\010\000\000\000\000\000\000\000R\003val" +
-      "\"8\n\013Fixed64GTLT\022)\n\003val\030\001 \001(\006B\027\272H\024R\022\021\n\000\000\000" +
-      "\000\000\000\000!\005\000\000\000\000\000\000\000R\003val\":\n\rFixed64ExLTGT\022)\n\003v" +
-      "al\030\001 \001(\006B\027\272H\024R\022\021\005\000\000\000\000\000\000\000!\n\000\000\000\000\000\000\000R\003val\":" +
-      "\n\rFixed64GTELTE\022)\n\003val\030\001 \001(\006B\027\272H\024R\022\031\000\001\000\000" +
-      "\000\000\000\000)\200\000\000\000\000\000\000\000R\003val\"<\n\017Fixed64ExGTELTE\022)\n" +
-      "\003val\030\001 \001(\006B\027\272H\024R\022\031\200\000\000\000\000\000\000\000)\000\001\000\000\000\000\000\000R\003val" +
-      "\"=\n\rFixed64Ignore\022,\n\003val\030\001 \001(\006B\032\272H\027R\022\031\000\001" +
-      "\000\000\000\000\000\000)\200\000\000\000\000\000\000\000\320\001\001R\003val\"4\n\024Fixed64Incorr" +
-      "ectType\022\034\n\003val\030\001 \001(\006B\n\272H\007\n\005%\000\000\000\000R\003val\" \n" +
-      "\014SFixed32None\022\020\n\003val\030\001 \001(\017R\003val\"-\n\rSFixe" +
-      "d32Const\022\034\n\003val\030\001 \001(\017B\n\272H\007Z\005\r\001\000\000\000R\003val\"/" +
-      "\n\nSFixed32In\022!\n\003val\030\001 \001(\017B\017\272H\014Z\n2\010\002\000\000\000\003\000" +
-      "\000\000R\003val\".\n\rSFixed32NotIn\022\035\n\003val\030\001 \001(\017B\013\272" +
-      "H\010Z\006:\004\000\000\000\000R\003val\"*\n\nSFixed32LT\022\034\n\003val\030\001 \001" +
-      "(\017B\n\272H\007Z\005\025\000\000\000\000R\003val\"+\n\013SFixed32LTE\022\034\n\003va" +
-      "l\030\001 \001(\017B\n\272H\007Z\005\035@\000\000\000R\003val\"*\n\nSFixed32GT\022\034" +
-      "\n\003val\030\001 \001(\017B\n\272H\007Z\005%\020\000\000\000R\003val\"+\n\013SFixed32" +
-      "GTE\022\034\n\003val\030\001 \001(\017B\n\272H\007Z\005-\010\000\000\000R\003val\"1\n\014SFi" +
-      "xed32GTLT\022!\n\003val\030\001 \001(\017B\017\272H\014Z\n\025\n\000\000\000%\000\000\000\000R" +
-      "\003val\"3\n\016SFixed32ExLTGT\022!\n\003val\030\001 \001(\017B\017\272H\014" +
-      "Z\n\025\000\000\000\000%\n\000\000\000R\003val\"3\n\016SFixed32GTELTE\022!\n\003v" +
-      "al\030\001 \001(\017B\017\272H\014Z\n\035\000\001\000\000-\200\000\000\000R\003val\"5\n\020SFixed" +
-      "32ExGTELTE\022!\n\003val\030\001 \001(\017B\017\272H\014Z\n\035\200\000\000\000-\000\001\000\000" +
-      "R\003val\"6\n\016SFixed32Ignore\022$\n\003val\030\001 \001(\017B\022\272H" +
-      "\017Z\n\035\000\001\000\000-\200\000\000\000\320\001\001R\003val\"5\n\025SFixed32Incorre" +
-      "ctType\022\034\n\003val\030\001 \001(\017B\n\272H\007\n\005%\000\000\000\000R\003val\" \n\014" +
-      "SFixed64None\022\020\n\003val\030\001 \001(\020R\003val\"1\n\rSFixed" +
-      "64Const\022 \n\003val\030\001 \001(\020B\016\272H\013b\t\t\001\000\000\000\000\000\000\000R\003va" +
-      "l\"7\n\nSFixed64In\022)\n\003val\030\001 \001(\020B\027\272H\024b\0222\020\002\000\000" +
-      "\000\000\000\000\000\003\000\000\000\000\000\000\000R\003val\"2\n\rSFixed64NotIn\022!\n\003v" +
-      "al\030\001 \001(\020B\017\272H\014b\n:\010\000\000\000\000\000\000\000\000R\003val\".\n\nSFixed" +
-      "64LT\022 \n\003val\030\001 \001(\020B\016\272H\013b\t\021\000\000\000\000\000\000\000\000R\003val\"/" +
-      "\n\013SFixed64LTE\022 \n\003val\030\001 \001(\020B\016\272H\013b\t\031@\000\000\000\000\000" +
-      "\000\000R\003val\".\n\nSFixed64GT\022 \n\003val\030\001 \001(\020B\016\272H\013b" +
-      "\t!\020\000\000\000\000\000\000\000R\003val\"/\n\013SFixed64GTE\022 \n\003val\030\001 " +
-      "\001(\020B\016\272H\013b\t)\010\000\000\000\000\000\000\000R\003val\"9\n\014SFixed64GTLT" +
-      "\022)\n\003val\030\001 \001(\020B\027\272H\024b\022\021\n\000\000\000\000\000\000\000!\000\000\000\000\000\000\000\000R\003" +
-      "val\";\n\016SFixed64ExLTGT\022)\n\003val\030\001 \001(\020B\027\272H\024b" +
-      "\022\021\000\000\000\000\000\000\000\000!\n\000\000\000\000\000\000\000R\003val\";\n\016SFixed64GTEL" +
-      "TE\022)\n\003val\030\001 \001(\020B\027\272H\024b\022\031\000\001\000\000\000\000\000\000)\200\000\000\000\000\000\000\000" +
-      "R\003val\"=\n\020SFixed64ExGTELTE\022)\n\003val\030\001 \001(\020B\027" +
-      "\272H\024b\022\031\200\000\000\000\000\000\000\000)\000\001\000\000\000\000\000\000R\003val\">\n\016SFixed64" +
-      "Ignore\022,\n\003val\030\001 \001(\020B\032\272H\027b\022\031\000\001\000\000\000\000\000\000)\200\000\000\000" +
-      "\000\000\000\000\320\001\001R\003val\"5\n\025SFixed64IncorrectType\022\034\n" +
-      "\003val\030\001 \001(\020B\n\272H\007\n\005%\000\000\000\000R\003val\":\n\020Int64LTEO" +
-      "ptional\022\036\n\003val\030\001 \001(\003B\007\272H\004\"\002\030@H\000R\003val\210\001\001B" +
-      "\006\n\004_valB\320\001\n$build.buf.validate.conforman" +
-      "ce.casesB\014NumbersProtoP\001\242\002\004BVCC\252\002\036Buf.Va" +
-      "lidate.Conformance.Cases\312\002\036Buf\\Validate\\" +
-      "Conformance\\Cases\342\002*Buf\\Validate\\Conform" +
-      "ance\\Cases\\GPBMetadata\352\002!Buf::Validate::" +
-      "Conformance::Casesb\006proto3"
+      "\030\001 \001(\002B\017\272H\014\n\n5\205\353\221@5\341z\374@R\003val\"*\n\nFloatNot" +
+      "In\022\034\n\003val\030\001 \001(\002B\n\272H\007\n\005=\000\000\000\000R\003val\"\'\n\007Floa" +
+      "tLT\022\034\n\003val\030\001 \001(\002B\n\272H\007\n\005\025\000\000\000\000R\003val\"(\n\010Flo" +
+      "atLTE\022\034\n\003val\030\001 \001(\002B\n\272H\007\n\005\035\000\000\200BR\003val\"\'\n\007F" +
+      "loatGT\022\034\n\003val\030\001 \001(\002B\n\272H\007\n\005%\000\000\200AR\003val\"(\n\010" +
+      "FloatGTE\022\034\n\003val\030\001 \001(\002B\n\272H\007\n\005-\000\000\000AR\003val\"." +
+      "\n\tFloatGTLT\022!\n\003val\030\001 \001(\002B\017\272H\014\n\n\025\000\000 A%\000\000\000" +
+      "\000R\003val\"0\n\013FloatExLTGT\022!\n\003val\030\001 \001(\002B\017\272H\014\n" +
+      "\n\025\000\000\000\000%\000\000 AR\003val\"0\n\013FloatGTELTE\022!\n\003val\030\001" +
+      " \001(\002B\017\272H\014\n\n\035\000\000\200C-\000\000\000CR\003val\"2\n\rFloatExGTE" +
+      "LTE\022!\n\003val\030\001 \001(\002B\017\272H\014\n\n\035\000\000\000C-\000\000\200CR\003val\"(" +
+      "\n\013FloatFinite\022\031\n\003val\030\001 \001(\002B\007\272H\004\n\002@\001R\003val" +
+      "\")\n\016FloatNotFinite\022\027\n\003val\030\001 \001(\002B\005\272H\002\n\000R\003" +
+      "val\"3\n\013FloatIgnore\022$\n\003val\030\001 \001(\002B\022\272H\017\n\n\035\000" +
+      "\000\200C-\000\000\000C\320\001\001R\003val\"6\n\022FloatIncorrectType\022 " +
+      "\n\003val\030\001 \001(\002B\016\272H\013\022\t!\000\000\000\000\000\000\000\000R\003val\",\n\014Floa" +
+      "tExample\022\034\n\003val\030\001 \001(\002B\n\272H\007\n\005M\000\000\000AR\003val\"\036" +
+      "\n\nDoubleNone\022\020\n\003val\030\001 \001(\001R\003val\"/\n\013Double" +
+      "Const\022 \n\003val\030\001 \001(\001B\016\272H\013\022\t\t\256G\341z\024\256\363?R\003val\"" +
+      "5\n\010DoubleIn\022)\n\003val\030\001 \001(\001B\027\272H\024\022\0221=\n\327\243p=\022@" +
+      "1\217\302\365(\\\217\037@R\003val\"/\n\013DoubleNotIn\022 \n\003val\030\001 \001" +
+      "(\001B\016\272H\013\022\t9\000\000\000\000\000\000\000\000R\003val\",\n\010DoubleLT\022 \n\003v" +
+      "al\030\001 \001(\001B\016\272H\013\022\t\021\000\000\000\000\000\000\000\000R\003val\"-\n\tDoubleL" +
+      "TE\022 \n\003val\030\001 \001(\001B\016\272H\013\022\t\031\000\000\000\000\000\000P@R\003val\",\n\010" +
+      "DoubleGT\022 \n\003val\030\001 \001(\001B\016\272H\013\022\t!\000\000\000\000\000\0000@R\003v" +
+      "al\"-\n\tDoubleGTE\022 \n\003val\030\001 \001(\001B\016\272H\013\022\t)\000\000\000\000" +
+      "\000\000 @R\003val\"7\n\nDoubleGTLT\022)\n\003val\030\001 \001(\001B\027\272H" +
+      "\024\022\022\021\000\000\000\000\000\000$@!\000\000\000\000\000\000\000\000R\003val\"9\n\014DoubleExLT" +
+      "GT\022)\n\003val\030\001 \001(\001B\027\272H\024\022\022\021\000\000\000\000\000\000\000\000!\000\000\000\000\000\000$@" +
+      "R\003val\"9\n\014DoubleGTELTE\022)\n\003val\030\001 \001(\001B\027\272H\024\022" +
+      "\022\031\000\000\000\000\000\000p@)\000\000\000\000\000\000`@R\003val\";\n\016DoubleExGTEL" +
+      "TE\022)\n\003val\030\001 \001(\001B\027\272H\024\022\022\031\000\000\000\000\000\000`@)\000\000\000\000\000\000p@" +
+      "R\003val\")\n\014DoubleFinite\022\031\n\003val\030\001 \001(\001B\007\272H\004\022" +
+      "\002@\001R\003val\"*\n\017DoubleNotFinite\022\027\n\003val\030\001 \001(\001" +
+      "B\005\272H\002\022\000R\003val\"<\n\014DoubleIgnore\022,\n\003val\030\001 \001(" +
+      "\001B\032\272H\027\022\022\031\000\000\000\000\000\000p@)\000\000\000\000\000\000`@\320\001\001R\003val\"3\n\023Do" +
+      "ubleIncorrectType\022\034\n\003val\030\001 \001(\001B\n\272H\007\n\005%\000\000" +
+      "\000\000R\003val\"1\n\rDoubleExample\022 \n\003val\030\001 \001(\001B\016\272" +
+      "H\013\022\tI\000\000\000\000\000\000\000\000R\003val\"\035\n\tInt32None\022\020\n\003val\030\001" +
+      " \001(\005R\003val\"\'\n\nInt32Const\022\031\n\003val\030\001 \001(\005B\007\272H" +
+      "\004\032\002\010\001R\003val\"&\n\007Int32In\022\033\n\003val\030\001 \001(\005B\t\272H\006\032" +
+      "\0040\0020\003R\003val\"\'\n\nInt32NotIn\022\031\n\003val\030\001 \001(\005B\007\272" +
+      "H\004\032\0028\000R\003val\"$\n\007Int32LT\022\031\n\003val\030\001 \001(\005B\007\272H\004" +
+      "\032\002\020\000R\003val\"%\n\010Int32LTE\022\031\n\003val\030\001 \001(\005B\007\272H\004\032" +
+      "\002\030@R\003val\"$\n\007Int32GT\022\031\n\003val\030\001 \001(\005B\007\272H\004\032\002 " +
+      "\020R\003val\"%\n\010Int32GTE\022\031\n\003val\030\001 \001(\005B\007\272H\004\032\002(\010" +
+      "R\003val\"(\n\tInt32GTLT\022\033\n\003val\030\001 \001(\005B\t\272H\006\032\004\020\n" +
+      " \000R\003val\"*\n\013Int32ExLTGT\022\033\n\003val\030\001 \001(\005B\t\272H\006" +
+      "\032\004\020\000 \nR\003val\",\n\013Int32GTELTE\022\035\n\003val\030\001 \001(\005B" +
+      "\013\272H\010\032\006\030\200\002(\200\001R\003val\".\n\rInt32ExGTELTE\022\035\n\003va" +
+      "l\030\001 \001(\005B\013\272H\010\032\006\030\200\001(\200\002R\003val\"/\n\013Int32Ignore" +
+      "\022 \n\003val\030\001 \001(\005B\016\272H\013\032\006\030\200\002(\200\001\320\001\001R\003val\"2\n\022In" +
+      "t32IncorrectType\022\034\n\003val\030\001 \001(\005B\n\272H\007\n\005%\000\000\000" +
+      "\000R\003val\")\n\014Int32Example\022\031\n\003val\030\001 \001(\005B\007\272H\004" +
+      "\032\002@\nR\003val\"\035\n\tInt64None\022\020\n\003val\030\001 \001(\003R\003val" +
+      "\"\'\n\nInt64Const\022\031\n\003val\030\001 \001(\003B\007\272H\004\"\002\010\001R\003va" +
+      "l\"&\n\007Int64In\022\033\n\003val\030\001 \001(\003B\t\272H\006\"\0040\0020\003R\003va" +
+      "l\"\'\n\nInt64NotIn\022\031\n\003val\030\001 \001(\003B\007\272H\004\"\0028\000R\003v" +
+      "al\"$\n\007Int64LT\022\031\n\003val\030\001 \001(\003B\007\272H\004\"\002\020\000R\003val" +
+      "\"%\n\010Int64LTE\022\031\n\003val\030\001 \001(\003B\007\272H\004\"\002\030@R\003val\"" +
+      "$\n\007Int64GT\022\031\n\003val\030\001 \001(\003B\007\272H\004\"\002 \020R\003val\"%\n" +
+      "\010Int64GTE\022\031\n\003val\030\001 \001(\003B\007\272H\004\"\002(\010R\003val\"(\n\t" +
+      "Int64GTLT\022\033\n\003val\030\001 \001(\003B\t\272H\006\"\004\020\n \000R\003val\"*" +
+      "\n\013Int64ExLTGT\022\033\n\003val\030\001 \001(\003B\t\272H\006\"\004\020\000 \nR\003v" +
+      "al\",\n\013Int64GTELTE\022\035\n\003val\030\001 \001(\003B\013\272H\010\"\006\030\200\002" +
+      "(\200\001R\003val\".\n\rInt64ExGTELTE\022\035\n\003val\030\001 \001(\003B\013" +
+      "\272H\010\"\006\030\200\001(\200\002R\003val\"/\n\013Int64Ignore\022 \n\003val\030\001" +
+      " \001(\003B\016\272H\013\"\006\030\200\002(\200\001\320\001\001R\003val\"\214\004\n\023Int64BigCo" +
+      "nstraints\022\"\n\006lt_pos\030\001 \001(\003B\013\272H\010\"\006\020\246\335\207\244\024R\005" +
+      "ltPos\022\'\n\006lt_neg\030\002 \001(\003B\020\272H\r\"\013\020\332\242\370\333\353\377\377\377\377\001R" +
+      "\005ltNeg\022\"\n\006gt_pos\030\003 \001(\003B\013\272H\010\"\006 \246\335\207\244\024R\005gtP" +
+      "os\022\'\n\006gt_neg\030\004 \001(\003B\020\272H\r\"\013 \332\242\370\333\353\377\377\377\377\001R\005gt" +
+      "Neg\022$\n\007lte_pos\030\005 \001(\003B\013\272H\010\"\006\030\246\335\207\244\024R\006ltePo" +
+      "s\022)\n\007lte_neg\030\006 \001(\003B\020\272H\r\"\013\030\332\242\370\333\353\377\377\377\377\001R\006lt" +
+      "eNeg\022$\n\007gte_pos\030\007 \001(\003B\013\272H\010\"\006(\246\335\207\244\024R\006gteP" +
+      "os\022)\n\007gte_neg\030\010 \001(\003B\020\272H\r\"\013(\332\242\370\333\353\377\377\377\377\001R\006g" +
+      "teNeg\022.\n\014constant_pos\030\t \001(\003B\013\272H\010\"\006\010\246\335\207\244\024" +
+      "R\013constantPos\0223\n\014constant_neg\030\n \001(\003B\020\272H\r" +
+      "\"\013\010\332\242\370\333\353\377\377\377\377\001R\013constantNeg\022&\n\002in\030\013 \001(\003B\026" +
+      "\272H\023\"\0210\246\335\207\244\0240\332\242\370\333\353\377\377\377\377\001R\002in\022,\n\005notin\030\014 \001(" +
+      "\003B\026\272H\023\"\0218\246\335\207\244\0248\332\242\370\333\353\377\377\377\377\001R\005notin\"2\n\022Int6" +
+      "4IncorrectType\022\034\n\003val\030\001 \001(\003B\n\272H\007\n\005%\000\000\000\000R" +
+      "\003val\")\n\014Int64Example\022\031\n\003val\030\001 \001(\003B\007\272H\004\"\002" +
+      "H\nR\003val\"\036\n\nUInt32None\022\020\n\003val\030\001 \001(\rR\003val\"" +
+      "(\n\013UInt32Const\022\031\n\003val\030\001 \001(\rB\007\272H\004*\002\010\001R\003va" +
+      "l\"\'\n\010UInt32In\022\033\n\003val\030\001 \001(\rB\t\272H\006*\0040\0020\003R\003v" +
+      "al\"(\n\013UInt32NotIn\022\031\n\003val\030\001 \001(\rB\007\272H\004*\0028\000R" +
+      "\003val\"%\n\010UInt32LT\022\031\n\003val\030\001 \001(\rB\007\272H\004*\002\020\005R\003" +
+      "val\"&\n\tUInt32LTE\022\031\n\003val\030\001 \001(\rB\007\272H\004*\002\030@R\003" +
+      "val\"%\n\010UInt32GT\022\031\n\003val\030\001 \001(\rB\007\272H\004*\002 \020R\003v" +
+      "al\"&\n\tUInt32GTE\022\031\n\003val\030\001 \001(\rB\007\272H\004*\002(\010R\003v" +
+      "al\")\n\nUInt32GTLT\022\033\n\003val\030\001 \001(\rB\t\272H\006*\004\020\n \005" +
+      "R\003val\"+\n\014UInt32ExLTGT\022\033\n\003val\030\001 \001(\rB\t\272H\006*" +
+      "\004\020\005 \nR\003val\"-\n\014UInt32GTELTE\022\035\n\003val\030\001 \001(\rB" +
+      "\013\272H\010*\006\030\200\002(\200\001R\003val\"/\n\016UInt32ExGTELTE\022\035\n\003v" +
+      "al\030\001 \001(\rB\013\272H\010*\006\030\200\001(\200\002R\003val\"0\n\014UInt32Igno" +
+      "re\022 \n\003val\030\001 \001(\rB\016\272H\013*\006\030\200\002(\200\001\320\001\001R\003val\"3\n\023" +
+      "UInt32IncorrectType\022\034\n\003val\030\001 \001(\rB\n\272H\007\n\005%" +
+      "\000\000\000\000R\003val\"*\n\rUInt32Example\022\031\n\003val\030\001 \001(\rB" +
+      "\007\272H\004*\002@\000R\003val\"\036\n\nUInt64None\022\020\n\003val\030\001 \001(\004" +
+      "R\003val\"(\n\013UInt64Const\022\031\n\003val\030\001 \001(\004B\007\272H\0042\002" +
+      "\010\001R\003val\"\'\n\010UInt64In\022\033\n\003val\030\001 \001(\004B\t\272H\0062\0040" +
+      "\0020\003R\003val\"(\n\013UInt64NotIn\022\031\n\003val\030\001 \001(\004B\007\272H" +
+      "\0042\0028\000R\003val\"%\n\010UInt64LT\022\031\n\003val\030\001 \001(\004B\007\272H\004" +
+      "2\002\020\005R\003val\"&\n\tUInt64LTE\022\031\n\003val\030\001 \001(\004B\007\272H\004" +
+      "2\002\030@R\003val\"%\n\010UInt64GT\022\031\n\003val\030\001 \001(\004B\007\272H\0042" +
+      "\002 \020R\003val\"&\n\tUInt64GTE\022\031\n\003val\030\001 \001(\004B\007\272H\0042" +
+      "\002(\010R\003val\")\n\nUInt64GTLT\022\033\n\003val\030\001 \001(\004B\t\272H\006" +
+      "2\004\020\n \005R\003val\"+\n\014UInt64ExLTGT\022\033\n\003val\030\001 \001(\004" +
+      "B\t\272H\0062\004\020\005 \nR\003val\"-\n\014UInt64GTELTE\022\035\n\003val\030" +
+      "\001 \001(\004B\013\272H\0102\006\030\200\002(\200\001R\003val\"/\n\016UInt64ExGTELT" +
+      "E\022\035\n\003val\030\001 \001(\004B\013\272H\0102\006\030\200\001(\200\002R\003val\"0\n\014UInt" +
+      "64Ignore\022 \n\003val\030\001 \001(\004B\016\272H\0132\006\030\200\002(\200\001\320\001\001R\003v" +
+      "al\"3\n\023UInt64IncorrectType\022\034\n\003val\030\001 \001(\004B\n" +
+      "\272H\007\n\005%\000\000\000\000R\003val\"*\n\rUInt64Example\022\031\n\003val\030" +
+      "\001 \001(\004B\007\272H\0042\002@\000R\003val\"\036\n\nSInt32None\022\020\n\003val" +
+      "\030\001 \001(\021R\003val\"(\n\013SInt32Const\022\031\n\003val\030\001 \001(\021B" +
+      "\007\272H\004:\002\010\002R\003val\"\'\n\010SInt32In\022\033\n\003val\030\001 \001(\021B\t" +
+      "\272H\006:\0040\0040\006R\003val\"(\n\013SInt32NotIn\022\031\n\003val\030\001 \001" +
+      "(\021B\007\272H\004:\0028\000R\003val\"%\n\010SInt32LT\022\031\n\003val\030\001 \001(" +
+      "\021B\007\272H\004:\002\020\000R\003val\"\'\n\tSInt32LTE\022\032\n\003val\030\001 \001(" +
+      "\021B\010\272H\005:\003\030\200\001R\003val\"%\n\010SInt32GT\022\031\n\003val\030\001 \001(" +
+      "\021B\007\272H\004:\002  R\003val\"&\n\tSInt32GTE\022\031\n\003val\030\001 \001(" +
+      "\021B\007\272H\004:\002(\020R\003val\")\n\nSInt32GTLT\022\033\n\003val\030\001 \001" +
+      "(\021B\t\272H\006:\004\020\024 \000R\003val\"+\n\014SInt32ExLTGT\022\033\n\003va" +
+      "l\030\001 \001(\021B\t\272H\006:\004\020\000 \024R\003val\"-\n\014SInt32GTELTE\022" +
+      "\035\n\003val\030\001 \001(\021B\013\272H\010:\006\030\200\004(\200\002R\003val\"/\n\016SInt32" +
+      "ExGTELTE\022\035\n\003val\030\001 \001(\021B\013\272H\010:\006\030\200\002(\200\004R\003val\"" +
+      "0\n\014SInt32Ignore\022 \n\003val\030\001 \001(\021B\016\272H\013:\006\030\200\004(\200" +
+      "\002\320\001\001R\003val\"3\n\023SInt32IncorrectType\022\034\n\003val\030" +
+      "\001 \001(\021B\n\272H\007\n\005%\000\000\000\000R\003val\"*\n\rSInt32Example\022" +
+      "\031\n\003val\030\001 \001(\021B\007\272H\004:\002@\000R\003val\"\036\n\nSInt64None" +
+      "\022\020\n\003val\030\001 \001(\022R\003val\"(\n\013SInt64Const\022\031\n\003val" +
+      "\030\001 \001(\022B\007\272H\004B\002\010\002R\003val\"\'\n\010SInt64In\022\033\n\003val\030" +
+      "\001 \001(\022B\t\272H\006B\0040\0040\006R\003val\"(\n\013SInt64NotIn\022\031\n\003" +
+      "val\030\001 \001(\022B\007\272H\004B\0028\000R\003val\"%\n\010SInt64LT\022\031\n\003v" +
+      "al\030\001 \001(\022B\007\272H\004B\002\020\000R\003val\"\'\n\tSInt64LTE\022\032\n\003v" +
+      "al\030\001 \001(\022B\010\272H\005B\003\030\200\001R\003val\"%\n\010SInt64GT\022\031\n\003v" +
+      "al\030\001 \001(\022B\007\272H\004B\002  R\003val\"&\n\tSInt64GTE\022\031\n\003v" +
+      "al\030\001 \001(\022B\007\272H\004B\002(\020R\003val\")\n\nSInt64GTLT\022\033\n\003" +
+      "val\030\001 \001(\022B\t\272H\006B\004\020\024 \000R\003val\"+\n\014SInt64ExLTG" +
+      "T\022\033\n\003val\030\001 \001(\022B\t\272H\006B\004\020\000 \024R\003val\"-\n\014SInt64" +
+      "GTELTE\022\035\n\003val\030\001 \001(\022B\013\272H\010B\006\030\200\004(\200\002R\003val\"/\n" +
+      "\016SInt64ExGTELTE\022\035\n\003val\030\001 \001(\022B\013\272H\010B\006\030\200\002(\200" +
+      "\004R\003val\"0\n\014SInt64Ignore\022 \n\003val\030\001 \001(\022B\016\272H\013" +
+      "B\006\030\200\004(\200\002\320\001\001R\003val\"3\n\023SInt64IncorrectType\022" +
+      "\034\n\003val\030\001 \001(\022B\n\272H\007\n\005%\000\000\000\000R\003val\"*\n\rSInt64E" +
+      "xample\022\031\n\003val\030\001 \001(\022B\007\272H\004B\002@\000R\003val\"\037\n\013Fix" +
+      "ed32None\022\020\n\003val\030\001 \001(\007R\003val\",\n\014Fixed32Con" +
+      "st\022\034\n\003val\030\001 \001(\007B\n\272H\007J\005\r\001\000\000\000R\003val\".\n\tFixe" +
+      "d32In\022!\n\003val\030\001 \001(\007B\017\272H\014J\n5\002\000\000\0005\003\000\000\000R\003val" +
+      "\",\n\014Fixed32NotIn\022\034\n\003val\030\001 \001(\007B\n\272H\007J\005=\000\000\000" +
+      "\000R\003val\")\n\tFixed32LT\022\034\n\003val\030\001 \001(\007B\n\272H\007J\005\025" +
+      "\005\000\000\000R\003val\"*\n\nFixed32LTE\022\034\n\003val\030\001 \001(\007B\n\272H" +
+      "\007J\005\035@\000\000\000R\003val\")\n\tFixed32GT\022\034\n\003val\030\001 \001(\007B" +
+      "\n\272H\007J\005%\020\000\000\000R\003val\"*\n\nFixed32GTE\022\034\n\003val\030\001 " +
+      "\001(\007B\n\272H\007J\005-\010\000\000\000R\003val\"0\n\013Fixed32GTLT\022!\n\003v" +
+      "al\030\001 \001(\007B\017\272H\014J\n\025\n\000\000\000%\005\000\000\000R\003val\"2\n\rFixed3" +
+      "2ExLTGT\022!\n\003val\030\001 \001(\007B\017\272H\014J\n\025\005\000\000\000%\n\000\000\000R\003v" +
+      "al\"2\n\rFixed32GTELTE\022!\n\003val\030\001 \001(\007B\017\272H\014J\n\035" +
+      "\000\001\000\000-\200\000\000\000R\003val\"4\n\017Fixed32ExGTELTE\022!\n\003val" +
+      "\030\001 \001(\007B\017\272H\014J\n\035\200\000\000\000-\000\001\000\000R\003val\"5\n\rFixed32I" +
+      "gnore\022$\n\003val\030\001 \001(\007B\022\272H\017J\n\035\000\001\000\000-\200\000\000\000\320\001\001R\003" +
+      "val\"4\n\024Fixed32IncorrectType\022\034\n\003val\030\001 \001(\007" +
+      "B\n\272H\007\n\005%\000\000\000\000R\003val\".\n\016Fixed32Example\022\034\n\003v" +
+      "al\030\001 \001(\007B\n\272H\007J\005E\000\000\000\000R\003val\"\037\n\013Fixed64None" +
+      "\022\020\n\003val\030\001 \001(\006R\003val\"0\n\014Fixed64Const\022 \n\003va" +
+      "l\030\001 \001(\006B\016\272H\013R\t\t\001\000\000\000\000\000\000\000R\003val\"6\n\tFixed64I" +
+      "n\022)\n\003val\030\001 \001(\006B\027\272H\024R\0221\002\000\000\000\000\000\000\0001\003\000\000\000\000\000\000\000R" +
+      "\003val\"0\n\014Fixed64NotIn\022 \n\003val\030\001 \001(\006B\016\272H\013R\t" +
+      "9\000\000\000\000\000\000\000\000R\003val\"-\n\tFixed64LT\022 \n\003val\030\001 \001(\006" +
+      "B\016\272H\013R\t\021\005\000\000\000\000\000\000\000R\003val\".\n\nFixed64LTE\022 \n\003v" +
+      "al\030\001 \001(\006B\016\272H\013R\t\031@\000\000\000\000\000\000\000R\003val\"-\n\tFixed64" +
+      "GT\022 \n\003val\030\001 \001(\006B\016\272H\013R\t!\020\000\000\000\000\000\000\000R\003val\".\n\n" +
+      "Fixed64GTE\022 \n\003val\030\001 \001(\006B\016\272H\013R\t)\010\000\000\000\000\000\000\000R" +
+      "\003val\"8\n\013Fixed64GTLT\022)\n\003val\030\001 \001(\006B\027\272H\024R\022\021" +
+      "\n\000\000\000\000\000\000\000!\005\000\000\000\000\000\000\000R\003val\":\n\rFixed64ExLTGT\022" +
+      ")\n\003val\030\001 \001(\006B\027\272H\024R\022\021\005\000\000\000\000\000\000\000!\n\000\000\000\000\000\000\000R\003v" +
+      "al\":\n\rFixed64GTELTE\022)\n\003val\030\001 \001(\006B\027\272H\024R\022\031" +
+      "\000\001\000\000\000\000\000\000)\200\000\000\000\000\000\000\000R\003val\"<\n\017Fixed64ExGTELT" +
+      "E\022)\n\003val\030\001 \001(\006B\027\272H\024R\022\031\200\000\000\000\000\000\000\000)\000\001\000\000\000\000\000\000R" +
+      "\003val\"=\n\rFixed64Ignore\022,\n\003val\030\001 \001(\006B\032\272H\027R" +
+      "\022\031\000\001\000\000\000\000\000\000)\200\000\000\000\000\000\000\000\320\001\001R\003val\"4\n\024Fixed64In" +
+      "correctType\022\034\n\003val\030\001 \001(\006B\n\272H\007\n\005%\000\000\000\000R\003va" +
+      "l\"2\n\016Fixed64Example\022 \n\003val\030\001 \001(\006B\016\272H\013R\tA" +
+      "\000\000\000\000\000\000\000\000R\003val\" \n\014SFixed32None\022\020\n\003val\030\001 \001" +
+      "(\017R\003val\"-\n\rSFixed32Const\022\034\n\003val\030\001 \001(\017B\n\272" +
+      "H\007Z\005\r\001\000\000\000R\003val\"/\n\nSFixed32In\022!\n\003val\030\001 \001(" +
+      "\017B\017\272H\014Z\n5\002\000\000\0005\003\000\000\000R\003val\"-\n\rSFixed32NotIn" +
+      "\022\034\n\003val\030\001 \001(\017B\n\272H\007Z\005=\000\000\000\000R\003val\"*\n\nSFixed" +
+      "32LT\022\034\n\003val\030\001 \001(\017B\n\272H\007Z\005\025\000\000\000\000R\003val\"+\n\013SF" +
+      "ixed32LTE\022\034\n\003val\030\001 \001(\017B\n\272H\007Z\005\035@\000\000\000R\003val\"" +
+      "*\n\nSFixed32GT\022\034\n\003val\030\001 \001(\017B\n\272H\007Z\005%\020\000\000\000R\003" +
+      "val\"+\n\013SFixed32GTE\022\034\n\003val\030\001 \001(\017B\n\272H\007Z\005-\010" +
+      "\000\000\000R\003val\"1\n\014SFixed32GTLT\022!\n\003val\030\001 \001(\017B\017\272" +
+      "H\014Z\n\025\n\000\000\000%\000\000\000\000R\003val\"3\n\016SFixed32ExLTGT\022!\n" +
+      "\003val\030\001 \001(\017B\017\272H\014Z\n\025\000\000\000\000%\n\000\000\000R\003val\"3\n\016SFix" +
+      "ed32GTELTE\022!\n\003val\030\001 \001(\017B\017\272H\014Z\n\035\000\001\000\000-\200\000\000\000" +
+      "R\003val\"5\n\020SFixed32ExGTELTE\022!\n\003val\030\001 \001(\017B\017" +
+      "\272H\014Z\n\035\200\000\000\000-\000\001\000\000R\003val\"6\n\016SFixed32Ignore\022$" +
+      "\n\003val\030\001 \001(\017B\022\272H\017Z\n\035\000\001\000\000-\200\000\000\000\320\001\001R\003val\"5\n\025" +
+      "SFixed32IncorrectType\022\034\n\003val\030\001 \001(\017B\n\272H\007\n" +
+      "\005%\000\000\000\000R\003val\"/\n\017SFixed32Example\022\034\n\003val\030\001 " +
+      "\001(\017B\n\272H\007Z\005E\000\000\000\000R\003val\" \n\014SFixed64None\022\020\n\003" +
+      "val\030\001 \001(\020R\003val\"1\n\rSFixed64Const\022 \n\003val\030\001" +
+      " \001(\020B\016\272H\013b\t\t\001\000\000\000\000\000\000\000R\003val\"7\n\nSFixed64In\022" +
+      ")\n\003val\030\001 \001(\020B\027\272H\024b\0221\002\000\000\000\000\000\000\0001\003\000\000\000\000\000\000\000R\003v" +
+      "al\"1\n\rSFixed64NotIn\022 \n\003val\030\001 \001(\020B\016\272H\013b\t9" +
+      "\000\000\000\000\000\000\000\000R\003val\".\n\nSFixed64LT\022 \n\003val\030\001 \001(\020" +
+      "B\016\272H\013b\t\021\000\000\000\000\000\000\000\000R\003val\"/\n\013SFixed64LTE\022 \n\003" +
+      "val\030\001 \001(\020B\016\272H\013b\t\031@\000\000\000\000\000\000\000R\003val\".\n\nSFixed" +
+      "64GT\022 \n\003val\030\001 \001(\020B\016\272H\013b\t!\020\000\000\000\000\000\000\000R\003val\"/" +
+      "\n\013SFixed64GTE\022 \n\003val\030\001 \001(\020B\016\272H\013b\t)\010\000\000\000\000\000" +
+      "\000\000R\003val\"9\n\014SFixed64GTLT\022)\n\003val\030\001 \001(\020B\027\272H" +
+      "\024b\022\021\n\000\000\000\000\000\000\000!\000\000\000\000\000\000\000\000R\003val\";\n\016SFixed64Ex" +
+      "LTGT\022)\n\003val\030\001 \001(\020B\027\272H\024b\022\021\000\000\000\000\000\000\000\000!\n\000\000\000\000\000" +
+      "\000\000R\003val\";\n\016SFixed64GTELTE\022)\n\003val\030\001 \001(\020B\027" +
+      "\272H\024b\022\031\000\001\000\000\000\000\000\000)\200\000\000\000\000\000\000\000R\003val\"=\n\020SFixed64" +
+      "ExGTELTE\022)\n\003val\030\001 \001(\020B\027\272H\024b\022\031\200\000\000\000\000\000\000\000)\000\001" +
+      "\000\000\000\000\000\000R\003val\">\n\016SFixed64Ignore\022,\n\003val\030\001 \001" +
+      "(\020B\032\272H\027b\022\031\000\001\000\000\000\000\000\000)\200\000\000\000\000\000\000\000\320\001\001R\003val\"5\n\025S" +
+      "Fixed64IncorrectType\022\034\n\003val\030\001 \001(\020B\n\272H\007\n\005" +
+      "%\000\000\000\000R\003val\"3\n\017SFixed64Example\022 \n\003val\030\001 \001" +
+      "(\020B\016\272H\013b\tA\000\000\000\000\000\000\000\000R\003val\":\n\020Int64LTEOptio" +
+      "nal\022\036\n\003val\030\001 \001(\003B\007\272H\004\"\002\030@H\000R\003val\210\001\001B\006\n\004_" +
+      "valB\320\001\n$build.buf.validate.conformance.c" +
+      "asesB\014NumbersProtoP\001\242\002\004BVCC\252\002\036Buf.Valida" +
+      "te.Conformance.Cases\312\002\036Buf\\Validate\\Conf" +
+      "ormance\\Cases\342\002*Buf\\Validate\\Conformance" +
+      "\\Cases\\GPBMetadata\352\002!Buf::Validate::Conf" +
+      "ormance::Casesb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -1198,956 +1284,1040 @@ public final class NumbersProto {
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_FloatFinite_descriptor,
         new java.lang.String[] { "Val", });
-    internal_static_buf_validate_conformance_cases_FloatIgnore_descriptor =
+    internal_static_buf_validate_conformance_cases_FloatNotFinite_descriptor =
       getDescriptor().getMessageTypes().get(13);
+    internal_static_buf_validate_conformance_cases_FloatNotFinite_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_buf_validate_conformance_cases_FloatNotFinite_descriptor,
+        new java.lang.String[] { "Val", });
+    internal_static_buf_validate_conformance_cases_FloatIgnore_descriptor =
+      getDescriptor().getMessageTypes().get(14);
     internal_static_buf_validate_conformance_cases_FloatIgnore_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_FloatIgnore_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_FloatIncorrectType_descriptor =
-      getDescriptor().getMessageTypes().get(14);
+      getDescriptor().getMessageTypes().get(15);
     internal_static_buf_validate_conformance_cases_FloatIncorrectType_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_FloatIncorrectType_descriptor,
         new java.lang.String[] { "Val", });
+    internal_static_buf_validate_conformance_cases_FloatExample_descriptor =
+      getDescriptor().getMessageTypes().get(16);
+    internal_static_buf_validate_conformance_cases_FloatExample_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_buf_validate_conformance_cases_FloatExample_descriptor,
+        new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_DoubleNone_descriptor =
-      getDescriptor().getMessageTypes().get(15);
+      getDescriptor().getMessageTypes().get(17);
     internal_static_buf_validate_conformance_cases_DoubleNone_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_DoubleNone_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_DoubleConst_descriptor =
-      getDescriptor().getMessageTypes().get(16);
+      getDescriptor().getMessageTypes().get(18);
     internal_static_buf_validate_conformance_cases_DoubleConst_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_DoubleConst_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_DoubleIn_descriptor =
-      getDescriptor().getMessageTypes().get(17);
+      getDescriptor().getMessageTypes().get(19);
     internal_static_buf_validate_conformance_cases_DoubleIn_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_DoubleIn_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_DoubleNotIn_descriptor =
-      getDescriptor().getMessageTypes().get(18);
+      getDescriptor().getMessageTypes().get(20);
     internal_static_buf_validate_conformance_cases_DoubleNotIn_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_DoubleNotIn_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_DoubleLT_descriptor =
-      getDescriptor().getMessageTypes().get(19);
+      getDescriptor().getMessageTypes().get(21);
     internal_static_buf_validate_conformance_cases_DoubleLT_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_DoubleLT_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_DoubleLTE_descriptor =
-      getDescriptor().getMessageTypes().get(20);
+      getDescriptor().getMessageTypes().get(22);
     internal_static_buf_validate_conformance_cases_DoubleLTE_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_DoubleLTE_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_DoubleGT_descriptor =
-      getDescriptor().getMessageTypes().get(21);
+      getDescriptor().getMessageTypes().get(23);
     internal_static_buf_validate_conformance_cases_DoubleGT_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_DoubleGT_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_DoubleGTE_descriptor =
-      getDescriptor().getMessageTypes().get(22);
+      getDescriptor().getMessageTypes().get(24);
     internal_static_buf_validate_conformance_cases_DoubleGTE_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_DoubleGTE_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_DoubleGTLT_descriptor =
-      getDescriptor().getMessageTypes().get(23);
+      getDescriptor().getMessageTypes().get(25);
     internal_static_buf_validate_conformance_cases_DoubleGTLT_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_DoubleGTLT_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_DoubleExLTGT_descriptor =
-      getDescriptor().getMessageTypes().get(24);
+      getDescriptor().getMessageTypes().get(26);
     internal_static_buf_validate_conformance_cases_DoubleExLTGT_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_DoubleExLTGT_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_DoubleGTELTE_descriptor =
-      getDescriptor().getMessageTypes().get(25);
+      getDescriptor().getMessageTypes().get(27);
     internal_static_buf_validate_conformance_cases_DoubleGTELTE_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_DoubleGTELTE_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_DoubleExGTELTE_descriptor =
-      getDescriptor().getMessageTypes().get(26);
+      getDescriptor().getMessageTypes().get(28);
     internal_static_buf_validate_conformance_cases_DoubleExGTELTE_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_DoubleExGTELTE_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_DoubleFinite_descriptor =
-      getDescriptor().getMessageTypes().get(27);
+      getDescriptor().getMessageTypes().get(29);
     internal_static_buf_validate_conformance_cases_DoubleFinite_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_DoubleFinite_descriptor,
         new java.lang.String[] { "Val", });
+    internal_static_buf_validate_conformance_cases_DoubleNotFinite_descriptor =
+      getDescriptor().getMessageTypes().get(30);
+    internal_static_buf_validate_conformance_cases_DoubleNotFinite_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_buf_validate_conformance_cases_DoubleNotFinite_descriptor,
+        new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_DoubleIgnore_descriptor =
-      getDescriptor().getMessageTypes().get(28);
+      getDescriptor().getMessageTypes().get(31);
     internal_static_buf_validate_conformance_cases_DoubleIgnore_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_DoubleIgnore_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_DoubleIncorrectType_descriptor =
-      getDescriptor().getMessageTypes().get(29);
+      getDescriptor().getMessageTypes().get(32);
     internal_static_buf_validate_conformance_cases_DoubleIncorrectType_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_DoubleIncorrectType_descriptor,
         new java.lang.String[] { "Val", });
+    internal_static_buf_validate_conformance_cases_DoubleExample_descriptor =
+      getDescriptor().getMessageTypes().get(33);
+    internal_static_buf_validate_conformance_cases_DoubleExample_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_buf_validate_conformance_cases_DoubleExample_descriptor,
+        new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_Int32None_descriptor =
-      getDescriptor().getMessageTypes().get(30);
+      getDescriptor().getMessageTypes().get(34);
     internal_static_buf_validate_conformance_cases_Int32None_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_Int32None_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_Int32Const_descriptor =
-      getDescriptor().getMessageTypes().get(31);
+      getDescriptor().getMessageTypes().get(35);
     internal_static_buf_validate_conformance_cases_Int32Const_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_Int32Const_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_Int32In_descriptor =
-      getDescriptor().getMessageTypes().get(32);
+      getDescriptor().getMessageTypes().get(36);
     internal_static_buf_validate_conformance_cases_Int32In_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_Int32In_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_Int32NotIn_descriptor =
-      getDescriptor().getMessageTypes().get(33);
+      getDescriptor().getMessageTypes().get(37);
     internal_static_buf_validate_conformance_cases_Int32NotIn_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_Int32NotIn_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_Int32LT_descriptor =
-      getDescriptor().getMessageTypes().get(34);
+      getDescriptor().getMessageTypes().get(38);
     internal_static_buf_validate_conformance_cases_Int32LT_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_Int32LT_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_Int32LTE_descriptor =
-      getDescriptor().getMessageTypes().get(35);
+      getDescriptor().getMessageTypes().get(39);
     internal_static_buf_validate_conformance_cases_Int32LTE_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_Int32LTE_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_Int32GT_descriptor =
-      getDescriptor().getMessageTypes().get(36);
+      getDescriptor().getMessageTypes().get(40);
     internal_static_buf_validate_conformance_cases_Int32GT_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_Int32GT_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_Int32GTE_descriptor =
-      getDescriptor().getMessageTypes().get(37);
+      getDescriptor().getMessageTypes().get(41);
     internal_static_buf_validate_conformance_cases_Int32GTE_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_Int32GTE_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_Int32GTLT_descriptor =
-      getDescriptor().getMessageTypes().get(38);
+      getDescriptor().getMessageTypes().get(42);
     internal_static_buf_validate_conformance_cases_Int32GTLT_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_Int32GTLT_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_Int32ExLTGT_descriptor =
-      getDescriptor().getMessageTypes().get(39);
+      getDescriptor().getMessageTypes().get(43);
     internal_static_buf_validate_conformance_cases_Int32ExLTGT_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_Int32ExLTGT_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_Int32GTELTE_descriptor =
-      getDescriptor().getMessageTypes().get(40);
+      getDescriptor().getMessageTypes().get(44);
     internal_static_buf_validate_conformance_cases_Int32GTELTE_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_Int32GTELTE_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_Int32ExGTELTE_descriptor =
-      getDescriptor().getMessageTypes().get(41);
+      getDescriptor().getMessageTypes().get(45);
     internal_static_buf_validate_conformance_cases_Int32ExGTELTE_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_Int32ExGTELTE_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_Int32Ignore_descriptor =
-      getDescriptor().getMessageTypes().get(42);
+      getDescriptor().getMessageTypes().get(46);
     internal_static_buf_validate_conformance_cases_Int32Ignore_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_Int32Ignore_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_Int32IncorrectType_descriptor =
-      getDescriptor().getMessageTypes().get(43);
+      getDescriptor().getMessageTypes().get(47);
     internal_static_buf_validate_conformance_cases_Int32IncorrectType_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_Int32IncorrectType_descriptor,
         new java.lang.String[] { "Val", });
+    internal_static_buf_validate_conformance_cases_Int32Example_descriptor =
+      getDescriptor().getMessageTypes().get(48);
+    internal_static_buf_validate_conformance_cases_Int32Example_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_buf_validate_conformance_cases_Int32Example_descriptor,
+        new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_Int64None_descriptor =
-      getDescriptor().getMessageTypes().get(44);
+      getDescriptor().getMessageTypes().get(49);
     internal_static_buf_validate_conformance_cases_Int64None_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_Int64None_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_Int64Const_descriptor =
-      getDescriptor().getMessageTypes().get(45);
+      getDescriptor().getMessageTypes().get(50);
     internal_static_buf_validate_conformance_cases_Int64Const_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_Int64Const_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_Int64In_descriptor =
-      getDescriptor().getMessageTypes().get(46);
+      getDescriptor().getMessageTypes().get(51);
     internal_static_buf_validate_conformance_cases_Int64In_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_Int64In_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_Int64NotIn_descriptor =
-      getDescriptor().getMessageTypes().get(47);
+      getDescriptor().getMessageTypes().get(52);
     internal_static_buf_validate_conformance_cases_Int64NotIn_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_Int64NotIn_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_Int64LT_descriptor =
-      getDescriptor().getMessageTypes().get(48);
+      getDescriptor().getMessageTypes().get(53);
     internal_static_buf_validate_conformance_cases_Int64LT_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_Int64LT_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_Int64LTE_descriptor =
-      getDescriptor().getMessageTypes().get(49);
+      getDescriptor().getMessageTypes().get(54);
     internal_static_buf_validate_conformance_cases_Int64LTE_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_Int64LTE_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_Int64GT_descriptor =
-      getDescriptor().getMessageTypes().get(50);
+      getDescriptor().getMessageTypes().get(55);
     internal_static_buf_validate_conformance_cases_Int64GT_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_Int64GT_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_Int64GTE_descriptor =
-      getDescriptor().getMessageTypes().get(51);
+      getDescriptor().getMessageTypes().get(56);
     internal_static_buf_validate_conformance_cases_Int64GTE_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_Int64GTE_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_Int64GTLT_descriptor =
-      getDescriptor().getMessageTypes().get(52);
+      getDescriptor().getMessageTypes().get(57);
     internal_static_buf_validate_conformance_cases_Int64GTLT_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_Int64GTLT_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_Int64ExLTGT_descriptor =
-      getDescriptor().getMessageTypes().get(53);
+      getDescriptor().getMessageTypes().get(58);
     internal_static_buf_validate_conformance_cases_Int64ExLTGT_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_Int64ExLTGT_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_Int64GTELTE_descriptor =
-      getDescriptor().getMessageTypes().get(54);
+      getDescriptor().getMessageTypes().get(59);
     internal_static_buf_validate_conformance_cases_Int64GTELTE_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_Int64GTELTE_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_Int64ExGTELTE_descriptor =
-      getDescriptor().getMessageTypes().get(55);
+      getDescriptor().getMessageTypes().get(60);
     internal_static_buf_validate_conformance_cases_Int64ExGTELTE_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_Int64ExGTELTE_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_Int64Ignore_descriptor =
-      getDescriptor().getMessageTypes().get(56);
+      getDescriptor().getMessageTypes().get(61);
     internal_static_buf_validate_conformance_cases_Int64Ignore_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_Int64Ignore_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_Int64BigConstraints_descriptor =
-      getDescriptor().getMessageTypes().get(57);
+      getDescriptor().getMessageTypes().get(62);
     internal_static_buf_validate_conformance_cases_Int64BigConstraints_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_Int64BigConstraints_descriptor,
         new java.lang.String[] { "LtPos", "LtNeg", "GtPos", "GtNeg", "LtePos", "LteNeg", "GtePos", "GteNeg", "ConstantPos", "ConstantNeg", "In", "Notin", });
     internal_static_buf_validate_conformance_cases_Int64IncorrectType_descriptor =
-      getDescriptor().getMessageTypes().get(58);
+      getDescriptor().getMessageTypes().get(63);
     internal_static_buf_validate_conformance_cases_Int64IncorrectType_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_Int64IncorrectType_descriptor,
         new java.lang.String[] { "Val", });
+    internal_static_buf_validate_conformance_cases_Int64Example_descriptor =
+      getDescriptor().getMessageTypes().get(64);
+    internal_static_buf_validate_conformance_cases_Int64Example_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_buf_validate_conformance_cases_Int64Example_descriptor,
+        new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_UInt32None_descriptor =
-      getDescriptor().getMessageTypes().get(59);
+      getDescriptor().getMessageTypes().get(65);
     internal_static_buf_validate_conformance_cases_UInt32None_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_UInt32None_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_UInt32Const_descriptor =
-      getDescriptor().getMessageTypes().get(60);
+      getDescriptor().getMessageTypes().get(66);
     internal_static_buf_validate_conformance_cases_UInt32Const_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_UInt32Const_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_UInt32In_descriptor =
-      getDescriptor().getMessageTypes().get(61);
+      getDescriptor().getMessageTypes().get(67);
     internal_static_buf_validate_conformance_cases_UInt32In_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_UInt32In_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_UInt32NotIn_descriptor =
-      getDescriptor().getMessageTypes().get(62);
+      getDescriptor().getMessageTypes().get(68);
     internal_static_buf_validate_conformance_cases_UInt32NotIn_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_UInt32NotIn_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_UInt32LT_descriptor =
-      getDescriptor().getMessageTypes().get(63);
+      getDescriptor().getMessageTypes().get(69);
     internal_static_buf_validate_conformance_cases_UInt32LT_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_UInt32LT_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_UInt32LTE_descriptor =
-      getDescriptor().getMessageTypes().get(64);
+      getDescriptor().getMessageTypes().get(70);
     internal_static_buf_validate_conformance_cases_UInt32LTE_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_UInt32LTE_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_UInt32GT_descriptor =
-      getDescriptor().getMessageTypes().get(65);
+      getDescriptor().getMessageTypes().get(71);
     internal_static_buf_validate_conformance_cases_UInt32GT_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_UInt32GT_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_UInt32GTE_descriptor =
-      getDescriptor().getMessageTypes().get(66);
+      getDescriptor().getMessageTypes().get(72);
     internal_static_buf_validate_conformance_cases_UInt32GTE_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_UInt32GTE_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_UInt32GTLT_descriptor =
-      getDescriptor().getMessageTypes().get(67);
+      getDescriptor().getMessageTypes().get(73);
     internal_static_buf_validate_conformance_cases_UInt32GTLT_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_UInt32GTLT_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_UInt32ExLTGT_descriptor =
-      getDescriptor().getMessageTypes().get(68);
+      getDescriptor().getMessageTypes().get(74);
     internal_static_buf_validate_conformance_cases_UInt32ExLTGT_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_UInt32ExLTGT_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_UInt32GTELTE_descriptor =
-      getDescriptor().getMessageTypes().get(69);
+      getDescriptor().getMessageTypes().get(75);
     internal_static_buf_validate_conformance_cases_UInt32GTELTE_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_UInt32GTELTE_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_UInt32ExGTELTE_descriptor =
-      getDescriptor().getMessageTypes().get(70);
+      getDescriptor().getMessageTypes().get(76);
     internal_static_buf_validate_conformance_cases_UInt32ExGTELTE_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_UInt32ExGTELTE_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_UInt32Ignore_descriptor =
-      getDescriptor().getMessageTypes().get(71);
+      getDescriptor().getMessageTypes().get(77);
     internal_static_buf_validate_conformance_cases_UInt32Ignore_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_UInt32Ignore_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_UInt32IncorrectType_descriptor =
-      getDescriptor().getMessageTypes().get(72);
+      getDescriptor().getMessageTypes().get(78);
     internal_static_buf_validate_conformance_cases_UInt32IncorrectType_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_UInt32IncorrectType_descriptor,
         new java.lang.String[] { "Val", });
+    internal_static_buf_validate_conformance_cases_UInt32Example_descriptor =
+      getDescriptor().getMessageTypes().get(79);
+    internal_static_buf_validate_conformance_cases_UInt32Example_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_buf_validate_conformance_cases_UInt32Example_descriptor,
+        new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_UInt64None_descriptor =
-      getDescriptor().getMessageTypes().get(73);
+      getDescriptor().getMessageTypes().get(80);
     internal_static_buf_validate_conformance_cases_UInt64None_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_UInt64None_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_UInt64Const_descriptor =
-      getDescriptor().getMessageTypes().get(74);
+      getDescriptor().getMessageTypes().get(81);
     internal_static_buf_validate_conformance_cases_UInt64Const_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_UInt64Const_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_UInt64In_descriptor =
-      getDescriptor().getMessageTypes().get(75);
+      getDescriptor().getMessageTypes().get(82);
     internal_static_buf_validate_conformance_cases_UInt64In_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_UInt64In_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_UInt64NotIn_descriptor =
-      getDescriptor().getMessageTypes().get(76);
+      getDescriptor().getMessageTypes().get(83);
     internal_static_buf_validate_conformance_cases_UInt64NotIn_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_UInt64NotIn_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_UInt64LT_descriptor =
-      getDescriptor().getMessageTypes().get(77);
+      getDescriptor().getMessageTypes().get(84);
     internal_static_buf_validate_conformance_cases_UInt64LT_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_UInt64LT_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_UInt64LTE_descriptor =
-      getDescriptor().getMessageTypes().get(78);
+      getDescriptor().getMessageTypes().get(85);
     internal_static_buf_validate_conformance_cases_UInt64LTE_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_UInt64LTE_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_UInt64GT_descriptor =
-      getDescriptor().getMessageTypes().get(79);
+      getDescriptor().getMessageTypes().get(86);
     internal_static_buf_validate_conformance_cases_UInt64GT_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_UInt64GT_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_UInt64GTE_descriptor =
-      getDescriptor().getMessageTypes().get(80);
+      getDescriptor().getMessageTypes().get(87);
     internal_static_buf_validate_conformance_cases_UInt64GTE_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_UInt64GTE_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_UInt64GTLT_descriptor =
-      getDescriptor().getMessageTypes().get(81);
+      getDescriptor().getMessageTypes().get(88);
     internal_static_buf_validate_conformance_cases_UInt64GTLT_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_UInt64GTLT_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_UInt64ExLTGT_descriptor =
-      getDescriptor().getMessageTypes().get(82);
+      getDescriptor().getMessageTypes().get(89);
     internal_static_buf_validate_conformance_cases_UInt64ExLTGT_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_UInt64ExLTGT_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_UInt64GTELTE_descriptor =
-      getDescriptor().getMessageTypes().get(83);
+      getDescriptor().getMessageTypes().get(90);
     internal_static_buf_validate_conformance_cases_UInt64GTELTE_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_UInt64GTELTE_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_UInt64ExGTELTE_descriptor =
-      getDescriptor().getMessageTypes().get(84);
+      getDescriptor().getMessageTypes().get(91);
     internal_static_buf_validate_conformance_cases_UInt64ExGTELTE_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_UInt64ExGTELTE_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_UInt64Ignore_descriptor =
-      getDescriptor().getMessageTypes().get(85);
+      getDescriptor().getMessageTypes().get(92);
     internal_static_buf_validate_conformance_cases_UInt64Ignore_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_UInt64Ignore_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_UInt64IncorrectType_descriptor =
-      getDescriptor().getMessageTypes().get(86);
+      getDescriptor().getMessageTypes().get(93);
     internal_static_buf_validate_conformance_cases_UInt64IncorrectType_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_UInt64IncorrectType_descriptor,
         new java.lang.String[] { "Val", });
+    internal_static_buf_validate_conformance_cases_UInt64Example_descriptor =
+      getDescriptor().getMessageTypes().get(94);
+    internal_static_buf_validate_conformance_cases_UInt64Example_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_buf_validate_conformance_cases_UInt64Example_descriptor,
+        new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_SInt32None_descriptor =
-      getDescriptor().getMessageTypes().get(87);
+      getDescriptor().getMessageTypes().get(95);
     internal_static_buf_validate_conformance_cases_SInt32None_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_SInt32None_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_SInt32Const_descriptor =
-      getDescriptor().getMessageTypes().get(88);
+      getDescriptor().getMessageTypes().get(96);
     internal_static_buf_validate_conformance_cases_SInt32Const_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_SInt32Const_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_SInt32In_descriptor =
-      getDescriptor().getMessageTypes().get(89);
+      getDescriptor().getMessageTypes().get(97);
     internal_static_buf_validate_conformance_cases_SInt32In_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_SInt32In_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_SInt32NotIn_descriptor =
-      getDescriptor().getMessageTypes().get(90);
+      getDescriptor().getMessageTypes().get(98);
     internal_static_buf_validate_conformance_cases_SInt32NotIn_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_SInt32NotIn_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_SInt32LT_descriptor =
-      getDescriptor().getMessageTypes().get(91);
+      getDescriptor().getMessageTypes().get(99);
     internal_static_buf_validate_conformance_cases_SInt32LT_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_SInt32LT_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_SInt32LTE_descriptor =
-      getDescriptor().getMessageTypes().get(92);
+      getDescriptor().getMessageTypes().get(100);
     internal_static_buf_validate_conformance_cases_SInt32LTE_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_SInt32LTE_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_SInt32GT_descriptor =
-      getDescriptor().getMessageTypes().get(93);
+      getDescriptor().getMessageTypes().get(101);
     internal_static_buf_validate_conformance_cases_SInt32GT_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_SInt32GT_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_SInt32GTE_descriptor =
-      getDescriptor().getMessageTypes().get(94);
+      getDescriptor().getMessageTypes().get(102);
     internal_static_buf_validate_conformance_cases_SInt32GTE_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_SInt32GTE_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_SInt32GTLT_descriptor =
-      getDescriptor().getMessageTypes().get(95);
+      getDescriptor().getMessageTypes().get(103);
     internal_static_buf_validate_conformance_cases_SInt32GTLT_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_SInt32GTLT_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_SInt32ExLTGT_descriptor =
-      getDescriptor().getMessageTypes().get(96);
+      getDescriptor().getMessageTypes().get(104);
     internal_static_buf_validate_conformance_cases_SInt32ExLTGT_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_SInt32ExLTGT_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_SInt32GTELTE_descriptor =
-      getDescriptor().getMessageTypes().get(97);
+      getDescriptor().getMessageTypes().get(105);
     internal_static_buf_validate_conformance_cases_SInt32GTELTE_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_SInt32GTELTE_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_SInt32ExGTELTE_descriptor =
-      getDescriptor().getMessageTypes().get(98);
+      getDescriptor().getMessageTypes().get(106);
     internal_static_buf_validate_conformance_cases_SInt32ExGTELTE_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_SInt32ExGTELTE_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_SInt32Ignore_descriptor =
-      getDescriptor().getMessageTypes().get(99);
+      getDescriptor().getMessageTypes().get(107);
     internal_static_buf_validate_conformance_cases_SInt32Ignore_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_SInt32Ignore_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_SInt32IncorrectType_descriptor =
-      getDescriptor().getMessageTypes().get(100);
+      getDescriptor().getMessageTypes().get(108);
     internal_static_buf_validate_conformance_cases_SInt32IncorrectType_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_SInt32IncorrectType_descriptor,
         new java.lang.String[] { "Val", });
+    internal_static_buf_validate_conformance_cases_SInt32Example_descriptor =
+      getDescriptor().getMessageTypes().get(109);
+    internal_static_buf_validate_conformance_cases_SInt32Example_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_buf_validate_conformance_cases_SInt32Example_descriptor,
+        new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_SInt64None_descriptor =
-      getDescriptor().getMessageTypes().get(101);
+      getDescriptor().getMessageTypes().get(110);
     internal_static_buf_validate_conformance_cases_SInt64None_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_SInt64None_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_SInt64Const_descriptor =
-      getDescriptor().getMessageTypes().get(102);
+      getDescriptor().getMessageTypes().get(111);
     internal_static_buf_validate_conformance_cases_SInt64Const_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_SInt64Const_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_SInt64In_descriptor =
-      getDescriptor().getMessageTypes().get(103);
+      getDescriptor().getMessageTypes().get(112);
     internal_static_buf_validate_conformance_cases_SInt64In_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_SInt64In_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_SInt64NotIn_descriptor =
-      getDescriptor().getMessageTypes().get(104);
+      getDescriptor().getMessageTypes().get(113);
     internal_static_buf_validate_conformance_cases_SInt64NotIn_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_SInt64NotIn_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_SInt64LT_descriptor =
-      getDescriptor().getMessageTypes().get(105);
+      getDescriptor().getMessageTypes().get(114);
     internal_static_buf_validate_conformance_cases_SInt64LT_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_SInt64LT_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_SInt64LTE_descriptor =
-      getDescriptor().getMessageTypes().get(106);
+      getDescriptor().getMessageTypes().get(115);
     internal_static_buf_validate_conformance_cases_SInt64LTE_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_SInt64LTE_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_SInt64GT_descriptor =
-      getDescriptor().getMessageTypes().get(107);
+      getDescriptor().getMessageTypes().get(116);
     internal_static_buf_validate_conformance_cases_SInt64GT_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_SInt64GT_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_SInt64GTE_descriptor =
-      getDescriptor().getMessageTypes().get(108);
+      getDescriptor().getMessageTypes().get(117);
     internal_static_buf_validate_conformance_cases_SInt64GTE_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_SInt64GTE_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_SInt64GTLT_descriptor =
-      getDescriptor().getMessageTypes().get(109);
+      getDescriptor().getMessageTypes().get(118);
     internal_static_buf_validate_conformance_cases_SInt64GTLT_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_SInt64GTLT_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_SInt64ExLTGT_descriptor =
-      getDescriptor().getMessageTypes().get(110);
+      getDescriptor().getMessageTypes().get(119);
     internal_static_buf_validate_conformance_cases_SInt64ExLTGT_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_SInt64ExLTGT_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_SInt64GTELTE_descriptor =
-      getDescriptor().getMessageTypes().get(111);
+      getDescriptor().getMessageTypes().get(120);
     internal_static_buf_validate_conformance_cases_SInt64GTELTE_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_SInt64GTELTE_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_SInt64ExGTELTE_descriptor =
-      getDescriptor().getMessageTypes().get(112);
+      getDescriptor().getMessageTypes().get(121);
     internal_static_buf_validate_conformance_cases_SInt64ExGTELTE_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_SInt64ExGTELTE_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_SInt64Ignore_descriptor =
-      getDescriptor().getMessageTypes().get(113);
+      getDescriptor().getMessageTypes().get(122);
     internal_static_buf_validate_conformance_cases_SInt64Ignore_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_SInt64Ignore_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_SInt64IncorrectType_descriptor =
-      getDescriptor().getMessageTypes().get(114);
+      getDescriptor().getMessageTypes().get(123);
     internal_static_buf_validate_conformance_cases_SInt64IncorrectType_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_SInt64IncorrectType_descriptor,
         new java.lang.String[] { "Val", });
+    internal_static_buf_validate_conformance_cases_SInt64Example_descriptor =
+      getDescriptor().getMessageTypes().get(124);
+    internal_static_buf_validate_conformance_cases_SInt64Example_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_buf_validate_conformance_cases_SInt64Example_descriptor,
+        new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_Fixed32None_descriptor =
-      getDescriptor().getMessageTypes().get(115);
+      getDescriptor().getMessageTypes().get(125);
     internal_static_buf_validate_conformance_cases_Fixed32None_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_Fixed32None_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_Fixed32Const_descriptor =
-      getDescriptor().getMessageTypes().get(116);
+      getDescriptor().getMessageTypes().get(126);
     internal_static_buf_validate_conformance_cases_Fixed32Const_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_Fixed32Const_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_Fixed32In_descriptor =
-      getDescriptor().getMessageTypes().get(117);
+      getDescriptor().getMessageTypes().get(127);
     internal_static_buf_validate_conformance_cases_Fixed32In_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_Fixed32In_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_Fixed32NotIn_descriptor =
-      getDescriptor().getMessageTypes().get(118);
+      getDescriptor().getMessageTypes().get(128);
     internal_static_buf_validate_conformance_cases_Fixed32NotIn_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_Fixed32NotIn_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_Fixed32LT_descriptor =
-      getDescriptor().getMessageTypes().get(119);
+      getDescriptor().getMessageTypes().get(129);
     internal_static_buf_validate_conformance_cases_Fixed32LT_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_Fixed32LT_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_Fixed32LTE_descriptor =
-      getDescriptor().getMessageTypes().get(120);
+      getDescriptor().getMessageTypes().get(130);
     internal_static_buf_validate_conformance_cases_Fixed32LTE_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_Fixed32LTE_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_Fixed32GT_descriptor =
-      getDescriptor().getMessageTypes().get(121);
+      getDescriptor().getMessageTypes().get(131);
     internal_static_buf_validate_conformance_cases_Fixed32GT_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_Fixed32GT_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_Fixed32GTE_descriptor =
-      getDescriptor().getMessageTypes().get(122);
+      getDescriptor().getMessageTypes().get(132);
     internal_static_buf_validate_conformance_cases_Fixed32GTE_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_Fixed32GTE_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_Fixed32GTLT_descriptor =
-      getDescriptor().getMessageTypes().get(123);
+      getDescriptor().getMessageTypes().get(133);
     internal_static_buf_validate_conformance_cases_Fixed32GTLT_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_Fixed32GTLT_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_Fixed32ExLTGT_descriptor =
-      getDescriptor().getMessageTypes().get(124);
+      getDescriptor().getMessageTypes().get(134);
     internal_static_buf_validate_conformance_cases_Fixed32ExLTGT_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_Fixed32ExLTGT_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_Fixed32GTELTE_descriptor =
-      getDescriptor().getMessageTypes().get(125);
+      getDescriptor().getMessageTypes().get(135);
     internal_static_buf_validate_conformance_cases_Fixed32GTELTE_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_Fixed32GTELTE_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_Fixed32ExGTELTE_descriptor =
-      getDescriptor().getMessageTypes().get(126);
+      getDescriptor().getMessageTypes().get(136);
     internal_static_buf_validate_conformance_cases_Fixed32ExGTELTE_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_Fixed32ExGTELTE_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_Fixed32Ignore_descriptor =
-      getDescriptor().getMessageTypes().get(127);
+      getDescriptor().getMessageTypes().get(137);
     internal_static_buf_validate_conformance_cases_Fixed32Ignore_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_Fixed32Ignore_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_Fixed32IncorrectType_descriptor =
-      getDescriptor().getMessageTypes().get(128);
+      getDescriptor().getMessageTypes().get(138);
     internal_static_buf_validate_conformance_cases_Fixed32IncorrectType_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_Fixed32IncorrectType_descriptor,
         new java.lang.String[] { "Val", });
+    internal_static_buf_validate_conformance_cases_Fixed32Example_descriptor =
+      getDescriptor().getMessageTypes().get(139);
+    internal_static_buf_validate_conformance_cases_Fixed32Example_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_buf_validate_conformance_cases_Fixed32Example_descriptor,
+        new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_Fixed64None_descriptor =
-      getDescriptor().getMessageTypes().get(129);
+      getDescriptor().getMessageTypes().get(140);
     internal_static_buf_validate_conformance_cases_Fixed64None_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_Fixed64None_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_Fixed64Const_descriptor =
-      getDescriptor().getMessageTypes().get(130);
+      getDescriptor().getMessageTypes().get(141);
     internal_static_buf_validate_conformance_cases_Fixed64Const_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_Fixed64Const_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_Fixed64In_descriptor =
-      getDescriptor().getMessageTypes().get(131);
+      getDescriptor().getMessageTypes().get(142);
     internal_static_buf_validate_conformance_cases_Fixed64In_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_Fixed64In_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_Fixed64NotIn_descriptor =
-      getDescriptor().getMessageTypes().get(132);
+      getDescriptor().getMessageTypes().get(143);
     internal_static_buf_validate_conformance_cases_Fixed64NotIn_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_Fixed64NotIn_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_Fixed64LT_descriptor =
-      getDescriptor().getMessageTypes().get(133);
+      getDescriptor().getMessageTypes().get(144);
     internal_static_buf_validate_conformance_cases_Fixed64LT_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_Fixed64LT_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_Fixed64LTE_descriptor =
-      getDescriptor().getMessageTypes().get(134);
+      getDescriptor().getMessageTypes().get(145);
     internal_static_buf_validate_conformance_cases_Fixed64LTE_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_Fixed64LTE_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_Fixed64GT_descriptor =
-      getDescriptor().getMessageTypes().get(135);
+      getDescriptor().getMessageTypes().get(146);
     internal_static_buf_validate_conformance_cases_Fixed64GT_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_Fixed64GT_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_Fixed64GTE_descriptor =
-      getDescriptor().getMessageTypes().get(136);
+      getDescriptor().getMessageTypes().get(147);
     internal_static_buf_validate_conformance_cases_Fixed64GTE_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_Fixed64GTE_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_Fixed64GTLT_descriptor =
-      getDescriptor().getMessageTypes().get(137);
+      getDescriptor().getMessageTypes().get(148);
     internal_static_buf_validate_conformance_cases_Fixed64GTLT_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_Fixed64GTLT_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_Fixed64ExLTGT_descriptor =
-      getDescriptor().getMessageTypes().get(138);
+      getDescriptor().getMessageTypes().get(149);
     internal_static_buf_validate_conformance_cases_Fixed64ExLTGT_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_Fixed64ExLTGT_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_Fixed64GTELTE_descriptor =
-      getDescriptor().getMessageTypes().get(139);
+      getDescriptor().getMessageTypes().get(150);
     internal_static_buf_validate_conformance_cases_Fixed64GTELTE_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_Fixed64GTELTE_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_Fixed64ExGTELTE_descriptor =
-      getDescriptor().getMessageTypes().get(140);
+      getDescriptor().getMessageTypes().get(151);
     internal_static_buf_validate_conformance_cases_Fixed64ExGTELTE_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_Fixed64ExGTELTE_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_Fixed64Ignore_descriptor =
-      getDescriptor().getMessageTypes().get(141);
+      getDescriptor().getMessageTypes().get(152);
     internal_static_buf_validate_conformance_cases_Fixed64Ignore_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_Fixed64Ignore_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_Fixed64IncorrectType_descriptor =
-      getDescriptor().getMessageTypes().get(142);
+      getDescriptor().getMessageTypes().get(153);
     internal_static_buf_validate_conformance_cases_Fixed64IncorrectType_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_Fixed64IncorrectType_descriptor,
         new java.lang.String[] { "Val", });
+    internal_static_buf_validate_conformance_cases_Fixed64Example_descriptor =
+      getDescriptor().getMessageTypes().get(154);
+    internal_static_buf_validate_conformance_cases_Fixed64Example_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_buf_validate_conformance_cases_Fixed64Example_descriptor,
+        new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_SFixed32None_descriptor =
-      getDescriptor().getMessageTypes().get(143);
+      getDescriptor().getMessageTypes().get(155);
     internal_static_buf_validate_conformance_cases_SFixed32None_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_SFixed32None_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_SFixed32Const_descriptor =
-      getDescriptor().getMessageTypes().get(144);
+      getDescriptor().getMessageTypes().get(156);
     internal_static_buf_validate_conformance_cases_SFixed32Const_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_SFixed32Const_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_SFixed32In_descriptor =
-      getDescriptor().getMessageTypes().get(145);
+      getDescriptor().getMessageTypes().get(157);
     internal_static_buf_validate_conformance_cases_SFixed32In_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_SFixed32In_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_SFixed32NotIn_descriptor =
-      getDescriptor().getMessageTypes().get(146);
+      getDescriptor().getMessageTypes().get(158);
     internal_static_buf_validate_conformance_cases_SFixed32NotIn_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_SFixed32NotIn_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_SFixed32LT_descriptor =
-      getDescriptor().getMessageTypes().get(147);
+      getDescriptor().getMessageTypes().get(159);
     internal_static_buf_validate_conformance_cases_SFixed32LT_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_SFixed32LT_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_SFixed32LTE_descriptor =
-      getDescriptor().getMessageTypes().get(148);
+      getDescriptor().getMessageTypes().get(160);
     internal_static_buf_validate_conformance_cases_SFixed32LTE_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_SFixed32LTE_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_SFixed32GT_descriptor =
-      getDescriptor().getMessageTypes().get(149);
+      getDescriptor().getMessageTypes().get(161);
     internal_static_buf_validate_conformance_cases_SFixed32GT_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_SFixed32GT_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_SFixed32GTE_descriptor =
-      getDescriptor().getMessageTypes().get(150);
+      getDescriptor().getMessageTypes().get(162);
     internal_static_buf_validate_conformance_cases_SFixed32GTE_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_SFixed32GTE_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_SFixed32GTLT_descriptor =
-      getDescriptor().getMessageTypes().get(151);
+      getDescriptor().getMessageTypes().get(163);
     internal_static_buf_validate_conformance_cases_SFixed32GTLT_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_SFixed32GTLT_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_SFixed32ExLTGT_descriptor =
-      getDescriptor().getMessageTypes().get(152);
+      getDescriptor().getMessageTypes().get(164);
     internal_static_buf_validate_conformance_cases_SFixed32ExLTGT_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_SFixed32ExLTGT_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_SFixed32GTELTE_descriptor =
-      getDescriptor().getMessageTypes().get(153);
+      getDescriptor().getMessageTypes().get(165);
     internal_static_buf_validate_conformance_cases_SFixed32GTELTE_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_SFixed32GTELTE_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_SFixed32ExGTELTE_descriptor =
-      getDescriptor().getMessageTypes().get(154);
+      getDescriptor().getMessageTypes().get(166);
     internal_static_buf_validate_conformance_cases_SFixed32ExGTELTE_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_SFixed32ExGTELTE_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_SFixed32Ignore_descriptor =
-      getDescriptor().getMessageTypes().get(155);
+      getDescriptor().getMessageTypes().get(167);
     internal_static_buf_validate_conformance_cases_SFixed32Ignore_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_SFixed32Ignore_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_SFixed32IncorrectType_descriptor =
-      getDescriptor().getMessageTypes().get(156);
+      getDescriptor().getMessageTypes().get(168);
     internal_static_buf_validate_conformance_cases_SFixed32IncorrectType_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_SFixed32IncorrectType_descriptor,
         new java.lang.String[] { "Val", });
+    internal_static_buf_validate_conformance_cases_SFixed32Example_descriptor =
+      getDescriptor().getMessageTypes().get(169);
+    internal_static_buf_validate_conformance_cases_SFixed32Example_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_buf_validate_conformance_cases_SFixed32Example_descriptor,
+        new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_SFixed64None_descriptor =
-      getDescriptor().getMessageTypes().get(157);
+      getDescriptor().getMessageTypes().get(170);
     internal_static_buf_validate_conformance_cases_SFixed64None_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_SFixed64None_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_SFixed64Const_descriptor =
-      getDescriptor().getMessageTypes().get(158);
+      getDescriptor().getMessageTypes().get(171);
     internal_static_buf_validate_conformance_cases_SFixed64Const_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_SFixed64Const_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_SFixed64In_descriptor =
-      getDescriptor().getMessageTypes().get(159);
+      getDescriptor().getMessageTypes().get(172);
     internal_static_buf_validate_conformance_cases_SFixed64In_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_SFixed64In_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_SFixed64NotIn_descriptor =
-      getDescriptor().getMessageTypes().get(160);
+      getDescriptor().getMessageTypes().get(173);
     internal_static_buf_validate_conformance_cases_SFixed64NotIn_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_SFixed64NotIn_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_SFixed64LT_descriptor =
-      getDescriptor().getMessageTypes().get(161);
+      getDescriptor().getMessageTypes().get(174);
     internal_static_buf_validate_conformance_cases_SFixed64LT_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_SFixed64LT_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_SFixed64LTE_descriptor =
-      getDescriptor().getMessageTypes().get(162);
+      getDescriptor().getMessageTypes().get(175);
     internal_static_buf_validate_conformance_cases_SFixed64LTE_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_SFixed64LTE_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_SFixed64GT_descriptor =
-      getDescriptor().getMessageTypes().get(163);
+      getDescriptor().getMessageTypes().get(176);
     internal_static_buf_validate_conformance_cases_SFixed64GT_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_SFixed64GT_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_SFixed64GTE_descriptor =
-      getDescriptor().getMessageTypes().get(164);
+      getDescriptor().getMessageTypes().get(177);
     internal_static_buf_validate_conformance_cases_SFixed64GTE_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_SFixed64GTE_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_SFixed64GTLT_descriptor =
-      getDescriptor().getMessageTypes().get(165);
+      getDescriptor().getMessageTypes().get(178);
     internal_static_buf_validate_conformance_cases_SFixed64GTLT_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_SFixed64GTLT_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_SFixed64ExLTGT_descriptor =
-      getDescriptor().getMessageTypes().get(166);
+      getDescriptor().getMessageTypes().get(179);
     internal_static_buf_validate_conformance_cases_SFixed64ExLTGT_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_SFixed64ExLTGT_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_SFixed64GTELTE_descriptor =
-      getDescriptor().getMessageTypes().get(167);
+      getDescriptor().getMessageTypes().get(180);
     internal_static_buf_validate_conformance_cases_SFixed64GTELTE_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_SFixed64GTELTE_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_SFixed64ExGTELTE_descriptor =
-      getDescriptor().getMessageTypes().get(168);
+      getDescriptor().getMessageTypes().get(181);
     internal_static_buf_validate_conformance_cases_SFixed64ExGTELTE_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_SFixed64ExGTELTE_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_SFixed64Ignore_descriptor =
-      getDescriptor().getMessageTypes().get(169);
+      getDescriptor().getMessageTypes().get(182);
     internal_static_buf_validate_conformance_cases_SFixed64Ignore_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_SFixed64Ignore_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_SFixed64IncorrectType_descriptor =
-      getDescriptor().getMessageTypes().get(170);
+      getDescriptor().getMessageTypes().get(183);
     internal_static_buf_validate_conformance_cases_SFixed64IncorrectType_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_SFixed64IncorrectType_descriptor,
         new java.lang.String[] { "Val", });
+    internal_static_buf_validate_conformance_cases_SFixed64Example_descriptor =
+      getDescriptor().getMessageTypes().get(184);
+    internal_static_buf_validate_conformance_cases_SFixed64Example_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_buf_validate_conformance_cases_SFixed64Example_descriptor,
+        new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_Int64LTEOptional_descriptor =
-      getDescriptor().getMessageTypes().get(171);
+      getDescriptor().getMessageTypes().get(185);
     internal_static_buf_validate_conformance_cases_Int64LTEOptional_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_Int64LTEOptional_descriptor,

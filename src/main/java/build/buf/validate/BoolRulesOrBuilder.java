@@ -7,7 +7,8 @@ package build.buf.validate;
 
 public interface BoolRulesOrBuilder extends
     // @@protoc_insertion_point(interface_extends:buf.validate.BoolRules)
-    com.google.protobuf.MessageOrBuilder {
+    com.google.protobuf.GeneratedMessage.
+        ExtendableMessageOrBuilder<BoolRules> {
 
   /**
    * <pre>
@@ -22,7 +23,7 @@ public interface BoolRulesOrBuilder extends
    * ```
    * </pre>
    *
-   * <code>optional bool const = 1 [json_name = "const", (.buf.validate.priv.field) = { ... }</code>
+   * <code>optional bool const = 1 [json_name = "const", (.buf.validate.predefined) = { ... }</code>
    * @return Whether the const field is set.
    */
   boolean hasConst();
@@ -39,8 +40,70 @@ public interface BoolRulesOrBuilder extends
    * ```
    * </pre>
    *
-   * <code>optional bool const = 1 [json_name = "const", (.buf.validate.priv.field) = { ... }</code>
+   * <code>optional bool const = 1 [json_name = "const", (.buf.validate.predefined) = { ... }</code>
    * @return The const.
    */
   boolean getConst();
+
+  /**
+   * <pre>
+   * `example` specifies values that the field may have. These values SHOULD
+   * conform to other constraints. `example` values will not impact validation
+   * but may be used as helpful guidance on how to populate the given field.
+   *
+   * ```proto
+   * message MyBool {
+   * bool value = 1 [
+   * (buf.validate.field).bool.example = 1,
+   * (buf.validate.field).bool.example = 2
+   * ];
+   * }
+   * ```
+   * </pre>
+   *
+   * <code>repeated bool example = 2 [json_name = "example", (.buf.validate.predefined) = { ... }</code>
+   * @return A list containing the example.
+   */
+  java.util.List<java.lang.Boolean> getExampleList();
+  /**
+   * <pre>
+   * `example` specifies values that the field may have. These values SHOULD
+   * conform to other constraints. `example` values will not impact validation
+   * but may be used as helpful guidance on how to populate the given field.
+   *
+   * ```proto
+   * message MyBool {
+   * bool value = 1 [
+   * (buf.validate.field).bool.example = 1,
+   * (buf.validate.field).bool.example = 2
+   * ];
+   * }
+   * ```
+   * </pre>
+   *
+   * <code>repeated bool example = 2 [json_name = "example", (.buf.validate.predefined) = { ... }</code>
+   * @return The count of example.
+   */
+  int getExampleCount();
+  /**
+   * <pre>
+   * `example` specifies values that the field may have. These values SHOULD
+   * conform to other constraints. `example` values will not impact validation
+   * but may be used as helpful guidance on how to populate the given field.
+   *
+   * ```proto
+   * message MyBool {
+   * bool value = 1 [
+   * (buf.validate.field).bool.example = 1,
+   * (buf.validate.field).bool.example = 2
+   * ];
+   * }
+   * ```
+   * </pre>
+   *
+   * <code>repeated bool example = 2 [json_name = "example", (.buf.validate.predefined) = { ... }</code>
+   * @param index The index of the element to return.
+   * @return The example at the given index.
+   */
+  boolean getExample(int index);
 }

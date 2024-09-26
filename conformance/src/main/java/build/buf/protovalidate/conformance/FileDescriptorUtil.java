@@ -16,6 +16,9 @@ package build.buf.protovalidate.conformance;
 
 import com.google.protobuf.DescriptorProtos;
 import com.google.protobuf.Descriptors;
+import com.google.protobuf.DynamicMessage;
+import com.google.protobuf.ExtensionRegistry;
+import com.google.protobuf.TypeRegistry;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -69,5 +72,51 @@ class FileDescriptorUtil {
               fileDescriptorProto, dependencies.toArray(new Descriptors.FileDescriptor[0]), false));
     }
     return fileDescriptorMap;
+  }
+
+  static TypeRegistry createTypeRegistry(
+      Iterable<? extends Descriptors.FileDescriptor> fileDescriptors) {
+    TypeRegistry.Builder registryBuilder = TypeRegistry.newBuilder();
+    for (Descriptors.FileDescriptor fileDescriptor : fileDescriptors) {
+      registryBuilder.add(fileDescriptor.getMessageTypes());
+    }
+    return registryBuilder.build();
+  }
+
+  static ExtensionRegistry createExtensionRegistry(
+      Iterable<? extends Descriptors.FileDescriptor> fileDescriptors) {
+    ExtensionRegistry registry = ExtensionRegistry.newInstance();
+    for (Descriptors.FileDescriptor fileDescriptor : fileDescriptors) {
+      registerFileExtensions(registry, fileDescriptor);
+    }
+    return registry;
+  }
+
+  private static void registerFileExtensions(
+      ExtensionRegistry registry, Descriptors.FileDescriptor fileDescriptor) {
+    registerExtensions(registry, fileDescriptor.getExtensions());
+    for (Descriptors.Descriptor descriptor : fileDescriptor.getMessageTypes()) {
+      registerMessageExtensions(registry, descriptor);
+    }
+  }
+
+  private static void registerMessageExtensions(
+      ExtensionRegistry registry, Descriptors.Descriptor descriptor) {
+    registerExtensions(registry, descriptor.getExtensions());
+    for (Descriptors.Descriptor nestedDescriptor : descriptor.getNestedTypes()) {
+      registerMessageExtensions(registry, nestedDescriptor);
+    }
+  }
+
+  private static void registerExtensions(
+      ExtensionRegistry registry, List<Descriptors.FieldDescriptor> extensions) {
+    for (Descriptors.FieldDescriptor fieldDescriptor : extensions) {
+      if (fieldDescriptor.getJavaType() == Descriptors.FieldDescriptor.JavaType.MESSAGE) {
+        registry.add(
+            fieldDescriptor, DynamicMessage.getDefaultInstance(fieldDescriptor.getMessageType()));
+      } else {
+        registry.add(fieldDescriptor);
+      }
+    }
   }
 }

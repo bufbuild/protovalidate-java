@@ -7,7 +7,8 @@ package build.buf.validate;
 
 public interface UInt32RulesOrBuilder extends
     // @@protoc_insertion_point(interface_extends:buf.validate.UInt32Rules)
-    com.google.protobuf.MessageOrBuilder {
+    com.google.protobuf.GeneratedMessage.
+        ExtendableMessageOrBuilder<UInt32Rules> {
 
   /**
    * <pre>
@@ -22,7 +23,7 @@ public interface UInt32RulesOrBuilder extends
    * ```
    * </pre>
    *
-   * <code>optional uint32 const = 1 [json_name = "const", (.buf.validate.priv.field) = { ... }</code>
+   * <code>optional uint32 const = 1 [json_name = "const", (.buf.validate.predefined) = { ... }</code>
    * @return Whether the const field is set.
    */
   boolean hasConst();
@@ -39,7 +40,7 @@ public interface UInt32RulesOrBuilder extends
    * ```
    * </pre>
    *
-   * <code>optional uint32 const = 1 [json_name = "const", (.buf.validate.priv.field) = { ... }</code>
+   * <code>optional uint32 const = 1 [json_name = "const", (.buf.validate.predefined) = { ... }</code>
    * @return The const.
    */
   int getConst();
@@ -58,7 +59,7 @@ public interface UInt32RulesOrBuilder extends
    * ```
    * </pre>
    *
-   * <code>uint32 lt = 2 [json_name = "lt", (.buf.validate.priv.field) = { ... }</code>
+   * <code>uint32 lt = 2 [json_name = "lt", (.buf.validate.predefined) = { ... }</code>
    * @return Whether the lt field is set.
    */
   boolean hasLt();
@@ -76,7 +77,7 @@ public interface UInt32RulesOrBuilder extends
    * ```
    * </pre>
    *
-   * <code>uint32 lt = 2 [json_name = "lt", (.buf.validate.priv.field) = { ... }</code>
+   * <code>uint32 lt = 2 [json_name = "lt", (.buf.validate.predefined) = { ... }</code>
    * @return The lt.
    */
   int getLt();
@@ -95,7 +96,7 @@ public interface UInt32RulesOrBuilder extends
    * ```
    * </pre>
    *
-   * <code>uint32 lte = 3 [json_name = "lte", (.buf.validate.priv.field) = { ... }</code>
+   * <code>uint32 lte = 3 [json_name = "lte", (.buf.validate.predefined) = { ... }</code>
    * @return Whether the lte field is set.
    */
   boolean hasLte();
@@ -113,7 +114,7 @@ public interface UInt32RulesOrBuilder extends
    * ```
    * </pre>
    *
-   * <code>uint32 lte = 3 [json_name = "lte", (.buf.validate.priv.field) = { ... }</code>
+   * <code>uint32 lte = 3 [json_name = "lte", (.buf.validate.predefined) = { ... }</code>
    * @return The lte.
    */
   int getLte();
@@ -140,7 +141,7 @@ public interface UInt32RulesOrBuilder extends
    * ```
    * </pre>
    *
-   * <code>uint32 gt = 4 [json_name = "gt", (.buf.validate.priv.field) = { ... }</code>
+   * <code>uint32 gt = 4 [json_name = "gt", (.buf.validate.predefined) = { ... }</code>
    * @return Whether the gt field is set.
    */
   boolean hasGt();
@@ -166,7 +167,7 @@ public interface UInt32RulesOrBuilder extends
    * ```
    * </pre>
    *
-   * <code>uint32 gt = 4 [json_name = "gt", (.buf.validate.priv.field) = { ... }</code>
+   * <code>uint32 gt = 4 [json_name = "gt", (.buf.validate.predefined) = { ... }</code>
    * @return The gt.
    */
   int getGt();
@@ -193,7 +194,7 @@ public interface UInt32RulesOrBuilder extends
    * ```
    * </pre>
    *
-   * <code>uint32 gte = 5 [json_name = "gte", (.buf.validate.priv.field) = { ... }</code>
+   * <code>uint32 gte = 5 [json_name = "gte", (.buf.validate.predefined) = { ... }</code>
    * @return Whether the gte field is set.
    */
   boolean hasGte();
@@ -219,7 +220,7 @@ public interface UInt32RulesOrBuilder extends
    * ```
    * </pre>
    *
-   * <code>uint32 gte = 5 [json_name = "gte", (.buf.validate.priv.field) = { ... }</code>
+   * <code>uint32 gte = 5 [json_name = "gte", (.buf.validate.predefined) = { ... }</code>
    * @return The gte.
    */
   int getGte();
@@ -238,7 +239,7 @@ public interface UInt32RulesOrBuilder extends
    * ```
    * </pre>
    *
-   * <code>repeated uint32 in = 6 [json_name = "in", (.buf.validate.priv.field) = { ... }</code>
+   * <code>repeated uint32 in = 6 [json_name = "in", (.buf.validate.predefined) = { ... }</code>
    * @return A list containing the in.
    */
   java.util.List<java.lang.Integer> getInList();
@@ -256,7 +257,7 @@ public interface UInt32RulesOrBuilder extends
    * ```
    * </pre>
    *
-   * <code>repeated uint32 in = 6 [json_name = "in", (.buf.validate.priv.field) = { ... }</code>
+   * <code>repeated uint32 in = 6 [json_name = "in", (.buf.validate.predefined) = { ... }</code>
    * @return The count of in.
    */
   int getInCount();
@@ -274,7 +275,7 @@ public interface UInt32RulesOrBuilder extends
    * ```
    * </pre>
    *
-   * <code>repeated uint32 in = 6 [json_name = "in", (.buf.validate.priv.field) = { ... }</code>
+   * <code>repeated uint32 in = 6 [json_name = "in", (.buf.validate.predefined) = { ... }</code>
    * @param index The index of the element to return.
    * @return The in at the given index.
    */
@@ -294,7 +295,7 @@ public interface UInt32RulesOrBuilder extends
    * ```
    * </pre>
    *
-   * <code>repeated uint32 not_in = 7 [json_name = "notIn", (.buf.validate.priv.field) = { ... }</code>
+   * <code>repeated uint32 not_in = 7 [json_name = "notIn", (.buf.validate.predefined) = { ... }</code>
    * @return A list containing the notIn.
    */
   java.util.List<java.lang.Integer> getNotInList();
@@ -312,7 +313,7 @@ public interface UInt32RulesOrBuilder extends
    * ```
    * </pre>
    *
-   * <code>repeated uint32 not_in = 7 [json_name = "notIn", (.buf.validate.priv.field) = { ... }</code>
+   * <code>repeated uint32 not_in = 7 [json_name = "notIn", (.buf.validate.predefined) = { ... }</code>
    * @return The count of notIn.
    */
   int getNotInCount();
@@ -330,11 +331,73 @@ public interface UInt32RulesOrBuilder extends
    * ```
    * </pre>
    *
-   * <code>repeated uint32 not_in = 7 [json_name = "notIn", (.buf.validate.priv.field) = { ... }</code>
+   * <code>repeated uint32 not_in = 7 [json_name = "notIn", (.buf.validate.predefined) = { ... }</code>
    * @param index The index of the element to return.
    * @return The notIn at the given index.
    */
   int getNotIn(int index);
+
+  /**
+   * <pre>
+   * `example` specifies values that the field may have. These values SHOULD
+   * conform to other constraints. `example` values will not impact validation
+   * but may be used as helpful guidance on how to populate the given field.
+   *
+   * ```proto
+   * message MyUInt32 {
+   * uint32 value = 1 [
+   * (buf.validate.field).uint32.example = 1,
+   * (buf.validate.field).uint32.example = 10
+   * ];
+   * }
+   * ```
+   * </pre>
+   *
+   * <code>repeated uint32 example = 8 [json_name = "example", (.buf.validate.predefined) = { ... }</code>
+   * @return A list containing the example.
+   */
+  java.util.List<java.lang.Integer> getExampleList();
+  /**
+   * <pre>
+   * `example` specifies values that the field may have. These values SHOULD
+   * conform to other constraints. `example` values will not impact validation
+   * but may be used as helpful guidance on how to populate the given field.
+   *
+   * ```proto
+   * message MyUInt32 {
+   * uint32 value = 1 [
+   * (buf.validate.field).uint32.example = 1,
+   * (buf.validate.field).uint32.example = 10
+   * ];
+   * }
+   * ```
+   * </pre>
+   *
+   * <code>repeated uint32 example = 8 [json_name = "example", (.buf.validate.predefined) = { ... }</code>
+   * @return The count of example.
+   */
+  int getExampleCount();
+  /**
+   * <pre>
+   * `example` specifies values that the field may have. These values SHOULD
+   * conform to other constraints. `example` values will not impact validation
+   * but may be used as helpful guidance on how to populate the given field.
+   *
+   * ```proto
+   * message MyUInt32 {
+   * uint32 value = 1 [
+   * (buf.validate.field).uint32.example = 1,
+   * (buf.validate.field).uint32.example = 10
+   * ];
+   * }
+   * ```
+   * </pre>
+   *
+   * <code>repeated uint32 example = 8 [json_name = "example", (.buf.validate.predefined) = { ... }</code>
+   * @param index The index of the element to return.
+   * @return The example at the given index.
+   */
+  int getExample(int index);
 
   build.buf.validate.UInt32Rules.LessThanCase getLessThanCase();
 

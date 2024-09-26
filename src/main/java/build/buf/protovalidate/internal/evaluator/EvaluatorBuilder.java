@@ -14,6 +14,7 @@
 
 package build.buf.protovalidate.internal.evaluator;
 
+import build.buf.protovalidate.Config;
 import build.buf.protovalidate.exceptions.CompilationException;
 import build.buf.protovalidate.internal.constraints.ConstraintCache;
 import build.buf.protovalidate.internal.constraints.DescriptorMappings;
@@ -27,14 +28,12 @@ import build.buf.validate.FieldConstraints;
 import build.buf.validate.Ignore;
 import build.buf.validate.MessageConstraints;
 import build.buf.validate.OneofConstraints;
-import build.buf.validate.ValidateProto;
 import com.google.common.collect.ImmutableMap;
 import com.google.protobuf.ByteString;
 import com.google.protobuf.Descriptors;
 import com.google.protobuf.Descriptors.Descriptor;
 import com.google.protobuf.Descriptors.FieldDescriptor;
 import com.google.protobuf.DynamicMessage;
-import com.google.protobuf.ExtensionRegistry;
 import com.google.protobuf.InvalidProtocolBufferException;
 import com.google.protobuf.Message;
 import java.util.ArrayList;
@@ -49,14 +48,6 @@ import org.projectnessie.cel.checker.Decls;
 
 /** A build-through cache of message evaluators keyed off the provided descriptor. */
 public class EvaluatorBuilder {
-  private static final ExtensionRegistry EXTENSION_REGISTRY = ExtensionRegistry.newInstance();
-
-  static {
-    EXTENSION_REGISTRY.add(ValidateProto.message);
-    EXTENSION_REGISTRY.add(ValidateProto.field);
-    EXTENSION_REGISTRY.add(ValidateProto.oneof);
-  }
-
   private volatile ImmutableMap<Descriptor, Evaluator> evaluatorCache = ImmutableMap.of();
 
   private final Env env;
@@ -67,12 +58,12 @@ public class EvaluatorBuilder {
    * Constructs a new {@link EvaluatorBuilder}.
    *
    * @param env The CEL environment for evaluation.
-   * @param disableLazy Determines whether lazy loading of evaluators is disabled.
+   * @param config The configuration to use for the evaluation.
    */
-  public EvaluatorBuilder(Env env, boolean disableLazy) {
+  public EvaluatorBuilder(Env env, Config config) {
     this.env = env;
-    this.disableLazy = disableLazy;
-    this.constraints = new ConstraintCache(env);
+    this.disableLazy = config.isDisableLazy();
+    this.constraints = new ConstraintCache(env, config);
   }
 
   /**
@@ -163,13 +154,9 @@ public class EvaluatorBuilder {
     private void buildMessage(Descriptor desc, MessageEvaluator msgEval)
         throws CompilationException {
       try {
-        DynamicMessage defaultInstance =
-            DynamicMessage.newBuilder(desc)
-                .mergeFrom(new byte[0], EXTENSION_REGISTRY)
-                .buildPartial();
+        DynamicMessage defaultInstance = DynamicMessage.newBuilder(desc).buildPartial();
         Descriptor descriptor = defaultInstance.getDescriptorForType();
-        MessageConstraints msgConstraints =
-            resolver.resolveMessageConstraints(descriptor, EXTENSION_REGISTRY);
+        MessageConstraints msgConstraints = resolver.resolveMessageConstraints(descriptor);
         if (msgConstraints.getDisabled()) {
           return;
         }
@@ -208,8 +195,7 @@ public class EvaluatorBuilder {
         throws InvalidProtocolBufferException, CompilationException {
       List<Descriptors.OneofDescriptor> oneofs = desc.getOneofs();
       for (Descriptors.OneofDescriptor oneofDesc : oneofs) {
-        OneofConstraints oneofConstraints =
-            resolver.resolveOneofConstraints(oneofDesc, EXTENSION_REGISTRY);
+        OneofConstraints oneofConstraints = resolver.resolveOneofConstraints(oneofDesc);
         OneofEvaluator oneofEvaluatorEval =
             new OneofEvaluator(oneofDesc, oneofConstraints.getRequired());
         msgEval.append(oneofEvaluatorEval);
@@ -221,8 +207,7 @@ public class EvaluatorBuilder {
       List<FieldDescriptor> fields = desc.getFields();
       for (FieldDescriptor fieldDescriptor : fields) {
         FieldDescriptor descriptor = desc.findFieldByName(fieldDescriptor.getName());
-        FieldConstraints fieldConstraints =
-            resolver.resolveFieldConstraints(descriptor, EXTENSION_REGISTRY);
+        FieldConstraints fieldConstraints = resolver.resolveFieldConstraints(descriptor);
         FieldEvaluator fldEval = buildField(descriptor, fieldConstraints);
         msgEval.append(fldEval);
       }
@@ -341,7 +326,7 @@ public class EvaluatorBuilder {
 
     private Message createMessageForType(Descriptor messageType) throws CompilationException {
       try {
-        return DynamicMessage.parseFrom(messageType, new byte[0], EXTENSION_REGISTRY);
+        return DynamicMessage.parseFrom(messageType, new byte[0]);
       } catch (InvalidProtocolBufferException e) {
         throw new CompilationException("field descriptor type is invalid " + e.getMessage(), e);
       }
@@ -360,8 +345,7 @@ public class EvaluatorBuilder {
       if (fieldDescriptor.getJavaType() == FieldDescriptor.JavaType.MESSAGE) {
         try {
           DynamicMessage defaultInstance =
-              DynamicMessage.parseFrom(
-                  fieldDescriptor.getMessageType(), new byte[0], EXTENSION_REGISTRY);
+              DynamicMessage.parseFrom(fieldDescriptor.getMessageType(), new byte[0]);
           opts =
               Arrays.asList(
                   EnvOption.types(defaultInstance),

@@ -139,7 +139,32 @@ public interface FieldConstraintsOrBuilder extends
    * ```
    * </pre>
    *
-   * <code>bool required = 25 [json_name = "required"];</code>
+   * <code>optional bool required = 25 [json_name = "required"];</code>
+   * @return Whether the required field is set.
+   */
+  boolean hasRequired();
+  /**
+   * <pre>
+   * If `required` is true, the field must be populated. A populated field can be
+   * described as "serialized in the wire format," which includes:
+   *
+   * - the following "nullable" fields must be explicitly set to be considered populated:
+   * - singular message fields (whose fields may be unpopulated/default values)
+   * - member fields of a oneof (may be their default value)
+   * - proto3 optional fields (may be their default value)
+   * - proto2 scalar fields (both optional and required)
+   * - proto3 scalar fields must be non-zero to be considered populated
+   * - repeated and map fields must be non-empty to be considered populated
+   *
+   * ```proto
+   * message MyMessage {
+   * // The field `value` must be set to a non-null value.
+   * optional MyOtherMessage value = 1 [(buf.validate.field).required = true];
+   * }
+   * ```
+   * </pre>
+   *
+   * <code>optional bool required = 25 [json_name = "required"];</code>
    * @return The required.
    */
   boolean getRequired();
@@ -161,10 +186,10 @@ public interface FieldConstraintsOrBuilder extends
    * ```
    * </pre>
    *
-   * <code>.buf.validate.Ignore ignore = 27 [json_name = "ignore"];</code>
-   * @return The enum numeric value on the wire for ignore.
+   * <code>optional .buf.validate.Ignore ignore = 27 [json_name = "ignore"];</code>
+   * @return Whether the ignore field is set.
    */
-  int getIgnoreValue();
+  boolean hasIgnore();
   /**
    * <pre>
    * Skip validation on the field if its value matches the specified criteria.
@@ -182,7 +207,7 @@ public interface FieldConstraintsOrBuilder extends
    * ```
    * </pre>
    *
-   * <code>.buf.validate.Ignore ignore = 27 [json_name = "ignore"];</code>
+   * <code>optional .buf.validate.Ignore ignore = 27 [json_name = "ignore"];</code>
    * @return The ignore.
    */
   build.buf.validate.Ignore getIgnore();
@@ -543,9 +568,20 @@ public interface FieldConstraintsOrBuilder extends
    * DEPRECATED: use ignore=IGNORE_ALWAYS instead. TODO: remove this field pre-v1.
    * </pre>
    *
-   * <code>bool skipped = 24 [json_name = "skipped", deprecated = true];</code>
+   * <code>optional bool skipped = 24 [json_name = "skipped", deprecated = true];</code>
    * @deprecated buf.validate.FieldConstraints.skipped is deprecated.
-   *     See buf/validate/validate.proto;l=196
+   *     See buf/validate/validate.proto;l=245
+   * @return Whether the skipped field is set.
+   */
+  @java.lang.Deprecated boolean hasSkipped();
+  /**
+   * <pre>
+   * DEPRECATED: use ignore=IGNORE_ALWAYS instead. TODO: remove this field pre-v1.
+   * </pre>
+   *
+   * <code>optional bool skipped = 24 [json_name = "skipped", deprecated = true];</code>
+   * @deprecated buf.validate.FieldConstraints.skipped is deprecated.
+   *     See buf/validate/validate.proto;l=245
    * @return The skipped.
    */
   @java.lang.Deprecated boolean getSkipped();
@@ -555,9 +591,20 @@ public interface FieldConstraintsOrBuilder extends
    * DEPRECATED: use ignore=IGNORE_IF_UNPOPULATED instead. TODO: remove this field pre-v1.
    * </pre>
    *
-   * <code>bool ignore_empty = 26 [json_name = "ignoreEmpty", deprecated = true];</code>
+   * <code>optional bool ignore_empty = 26 [json_name = "ignoreEmpty", deprecated = true];</code>
    * @deprecated buf.validate.FieldConstraints.ignore_empty is deprecated.
-   *     See buf/validate/validate.proto;l=198
+   *     See buf/validate/validate.proto;l=247
+   * @return Whether the ignoreEmpty field is set.
+   */
+  @java.lang.Deprecated boolean hasIgnoreEmpty();
+  /**
+   * <pre>
+   * DEPRECATED: use ignore=IGNORE_IF_UNPOPULATED instead. TODO: remove this field pre-v1.
+   * </pre>
+   *
+   * <code>optional bool ignore_empty = 26 [json_name = "ignoreEmpty", deprecated = true];</code>
+   * @deprecated buf.validate.FieldConstraints.ignore_empty is deprecated.
+   *     See buf/validate/validate.proto;l=247
    * @return The ignoreEmpty.
    */
   @java.lang.Deprecated boolean getIgnoreEmpty();

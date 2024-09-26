@@ -49,6 +49,7 @@ private static final long serialVersionUID = 0L;
             build.buf.validate.FieldConstraints.class, build.buf.validate.FieldConstraints.Builder.class);
   }
 
+  private int bitField0_;
   private int typeCase_ = 0;
   @SuppressWarnings("serial")
   private java.lang.Object type_;
@@ -278,7 +279,35 @@ private static final long serialVersionUID = 0L;
    * ```
    * </pre>
    *
-   * <code>bool required = 25 [json_name = "required"];</code>
+   * <code>optional bool required = 25 [json_name = "required"];</code>
+   * @return Whether the required field is set.
+   */
+  @java.lang.Override
+  public boolean hasRequired() {
+    return ((bitField0_ & 0x00000001) != 0);
+  }
+  /**
+   * <pre>
+   * If `required` is true, the field must be populated. A populated field can be
+   * described as "serialized in the wire format," which includes:
+   *
+   * - the following "nullable" fields must be explicitly set to be considered populated:
+   * - singular message fields (whose fields may be unpopulated/default values)
+   * - member fields of a oneof (may be their default value)
+   * - proto3 optional fields (may be their default value)
+   * - proto2 scalar fields (both optional and required)
+   * - proto3 scalar fields must be non-zero to be considered populated
+   * - repeated and map fields must be non-empty to be considered populated
+   *
+   * ```proto
+   * message MyMessage {
+   * // The field `value` must be set to a non-null value.
+   * optional MyOtherMessage value = 1 [(buf.validate.field).required = true];
+   * }
+   * ```
+   * </pre>
+   *
+   * <code>optional bool required = 25 [json_name = "required"];</code>
    * @return The required.
    */
   @java.lang.Override
@@ -305,11 +334,11 @@ private static final long serialVersionUID = 0L;
    * ```
    * </pre>
    *
-   * <code>.buf.validate.Ignore ignore = 27 [json_name = "ignore"];</code>
-   * @return The enum numeric value on the wire for ignore.
+   * <code>optional .buf.validate.Ignore ignore = 27 [json_name = "ignore"];</code>
+   * @return Whether the ignore field is set.
    */
-  @java.lang.Override public int getIgnoreValue() {
-    return ignore_;
+  @java.lang.Override public boolean hasIgnore() {
+    return ((bitField0_ & 0x00000002) != 0);
   }
   /**
    * <pre>
@@ -328,12 +357,12 @@ private static final long serialVersionUID = 0L;
    * ```
    * </pre>
    *
-   * <code>.buf.validate.Ignore ignore = 27 [json_name = "ignore"];</code>
+   * <code>optional .buf.validate.Ignore ignore = 27 [json_name = "ignore"];</code>
    * @return The ignore.
    */
   @java.lang.Override public build.buf.validate.Ignore getIgnore() {
     build.buf.validate.Ignore result = build.buf.validate.Ignore.forNumber(ignore_);
-    return result == null ? build.buf.validate.Ignore.UNRECOGNIZED : result;
+    return result == null ? build.buf.validate.Ignore.IGNORE_UNSPECIFIED : result;
   }
 
   public static final int FLOAT_FIELD_NUMBER = 1;
@@ -1030,9 +1059,23 @@ private static final long serialVersionUID = 0L;
    * DEPRECATED: use ignore=IGNORE_ALWAYS instead. TODO: remove this field pre-v1.
    * </pre>
    *
-   * <code>bool skipped = 24 [json_name = "skipped", deprecated = true];</code>
+   * <code>optional bool skipped = 24 [json_name = "skipped", deprecated = true];</code>
    * @deprecated buf.validate.FieldConstraints.skipped is deprecated.
-   *     See buf/validate/validate.proto;l=196
+   *     See buf/validate/validate.proto;l=245
+   * @return Whether the skipped field is set.
+   */
+  @java.lang.Override
+  @java.lang.Deprecated public boolean hasSkipped() {
+    return ((bitField0_ & 0x00000004) != 0);
+  }
+  /**
+   * <pre>
+   * DEPRECATED: use ignore=IGNORE_ALWAYS instead. TODO: remove this field pre-v1.
+   * </pre>
+   *
+   * <code>optional bool skipped = 24 [json_name = "skipped", deprecated = true];</code>
+   * @deprecated buf.validate.FieldConstraints.skipped is deprecated.
+   *     See buf/validate/validate.proto;l=245
    * @return The skipped.
    */
   @java.lang.Override
@@ -1047,9 +1090,23 @@ private static final long serialVersionUID = 0L;
    * DEPRECATED: use ignore=IGNORE_IF_UNPOPULATED instead. TODO: remove this field pre-v1.
    * </pre>
    *
-   * <code>bool ignore_empty = 26 [json_name = "ignoreEmpty", deprecated = true];</code>
+   * <code>optional bool ignore_empty = 26 [json_name = "ignoreEmpty", deprecated = true];</code>
    * @deprecated buf.validate.FieldConstraints.ignore_empty is deprecated.
-   *     See buf/validate/validate.proto;l=198
+   *     See buf/validate/validate.proto;l=247
+   * @return Whether the ignoreEmpty field is set.
+   */
+  @java.lang.Override
+  @java.lang.Deprecated public boolean hasIgnoreEmpty() {
+    return ((bitField0_ & 0x00000008) != 0);
+  }
+  /**
+   * <pre>
+   * DEPRECATED: use ignore=IGNORE_IF_UNPOPULATED instead. TODO: remove this field pre-v1.
+   * </pre>
+   *
+   * <code>optional bool ignore_empty = 26 [json_name = "ignoreEmpty", deprecated = true];</code>
+   * @deprecated buf.validate.FieldConstraints.ignore_empty is deprecated.
+   *     See buf/validate/validate.proto;l=247
    * @return The ignoreEmpty.
    */
   @java.lang.Override
@@ -1064,6 +1121,126 @@ private static final long serialVersionUID = 0L;
     if (isInitialized == 1) return true;
     if (isInitialized == 0) return false;
 
+    if (hasFloat()) {
+      if (!getFloat().isInitialized()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+    }
+    if (hasDouble()) {
+      if (!getDouble().isInitialized()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+    }
+    if (hasInt32()) {
+      if (!getInt32().isInitialized()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+    }
+    if (hasInt64()) {
+      if (!getInt64().isInitialized()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+    }
+    if (hasUint32()) {
+      if (!getUint32().isInitialized()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+    }
+    if (hasUint64()) {
+      if (!getUint64().isInitialized()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+    }
+    if (hasSint32()) {
+      if (!getSint32().isInitialized()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+    }
+    if (hasSint64()) {
+      if (!getSint64().isInitialized()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+    }
+    if (hasFixed32()) {
+      if (!getFixed32().isInitialized()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+    }
+    if (hasFixed64()) {
+      if (!getFixed64().isInitialized()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+    }
+    if (hasSfixed32()) {
+      if (!getSfixed32().isInitialized()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+    }
+    if (hasSfixed64()) {
+      if (!getSfixed64().isInitialized()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+    }
+    if (hasBool()) {
+      if (!getBool().isInitialized()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+    }
+    if (hasString()) {
+      if (!getString().isInitialized()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+    }
+    if (hasBytes()) {
+      if (!getBytes().isInitialized()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+    }
+    if (hasEnum()) {
+      if (!getEnum().isInitialized()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+    }
+    if (hasRepeated()) {
+      if (!getRepeated().isInitialized()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+    }
+    if (hasMap()) {
+      if (!getMap().isInitialized()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+    }
+    if (hasDuration()) {
+      if (!getDuration().isInitialized()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+    }
+    if (hasTimestamp()) {
+      if (!getTimestamp().isInitialized()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+    }
     memoizedIsInitialized = 1;
     return true;
   }
@@ -1137,16 +1314,16 @@ private static final long serialVersionUID = 0L;
     for (int i = 0; i < cel_.size(); i++) {
       output.writeMessage(23, cel_.get(i));
     }
-    if (skipped_ != false) {
+    if (((bitField0_ & 0x00000004) != 0)) {
       output.writeBool(24, skipped_);
     }
-    if (required_ != false) {
+    if (((bitField0_ & 0x00000001) != 0)) {
       output.writeBool(25, required_);
     }
-    if (ignoreEmpty_ != false) {
+    if (((bitField0_ & 0x00000008) != 0)) {
       output.writeBool(26, ignoreEmpty_);
     }
-    if (ignore_ != build.buf.validate.Ignore.IGNORE_UNSPECIFIED.getNumber()) {
+    if (((bitField0_ & 0x00000002) != 0)) {
       output.writeEnum(27, ignore_);
     }
     getUnknownFields().writeTo(output);
@@ -1246,19 +1423,19 @@ private static final long serialVersionUID = 0L;
       size += com.google.protobuf.CodedOutputStream
         .computeMessageSize(23, cel_.get(i));
     }
-    if (skipped_ != false) {
+    if (((bitField0_ & 0x00000004) != 0)) {
       size += com.google.protobuf.CodedOutputStream
         .computeBoolSize(24, skipped_);
     }
-    if (required_ != false) {
+    if (((bitField0_ & 0x00000001) != 0)) {
       size += com.google.protobuf.CodedOutputStream
         .computeBoolSize(25, required_);
     }
-    if (ignoreEmpty_ != false) {
+    if (((bitField0_ & 0x00000008) != 0)) {
       size += com.google.protobuf.CodedOutputStream
         .computeBoolSize(26, ignoreEmpty_);
     }
-    if (ignore_ != build.buf.validate.Ignore.IGNORE_UNSPECIFIED.getNumber()) {
+    if (((bitField0_ & 0x00000002) != 0)) {
       size += com.google.protobuf.CodedOutputStream
         .computeEnumSize(27, ignore_);
     }
@@ -1279,13 +1456,25 @@ private static final long serialVersionUID = 0L;
 
     if (!getCelList()
         .equals(other.getCelList())) return false;
-    if (getRequired()
-        != other.getRequired()) return false;
-    if (ignore_ != other.ignore_) return false;
-    if (getSkipped()
-        != other.getSkipped()) return false;
-    if (getIgnoreEmpty()
-        != other.getIgnoreEmpty()) return false;
+    if (hasRequired() != other.hasRequired()) return false;
+    if (hasRequired()) {
+      if (getRequired()
+          != other.getRequired()) return false;
+    }
+    if (hasIgnore() != other.hasIgnore()) return false;
+    if (hasIgnore()) {
+      if (ignore_ != other.ignore_) return false;
+    }
+    if (hasSkipped() != other.hasSkipped()) return false;
+    if (hasSkipped()) {
+      if (getSkipped()
+          != other.getSkipped()) return false;
+    }
+    if (hasIgnoreEmpty() != other.hasIgnoreEmpty()) return false;
+    if (hasIgnoreEmpty()) {
+      if (getIgnoreEmpty()
+          != other.getIgnoreEmpty()) return false;
+    }
     if (!getTypeCase().equals(other.getTypeCase())) return false;
     switch (typeCase_) {
       case 1:
@@ -1390,17 +1579,25 @@ private static final long serialVersionUID = 0L;
       hash = (37 * hash) + CEL_FIELD_NUMBER;
       hash = (53 * hash) + getCelList().hashCode();
     }
-    hash = (37 * hash) + REQUIRED_FIELD_NUMBER;
-    hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
-        getRequired());
-    hash = (37 * hash) + IGNORE_FIELD_NUMBER;
-    hash = (53 * hash) + ignore_;
-    hash = (37 * hash) + SKIPPED_FIELD_NUMBER;
-    hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
-        getSkipped());
-    hash = (37 * hash) + IGNORE_EMPTY_FIELD_NUMBER;
-    hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
-        getIgnoreEmpty());
+    if (hasRequired()) {
+      hash = (37 * hash) + REQUIRED_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+          getRequired());
+    }
+    if (hasIgnore()) {
+      hash = (37 * hash) + IGNORE_FIELD_NUMBER;
+      hash = (53 * hash) + ignore_;
+    }
+    if (hasSkipped()) {
+      hash = (37 * hash) + SKIPPED_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+          getSkipped());
+    }
+    if (hasIgnoreEmpty()) {
+      hash = (37 * hash) + IGNORE_EMPTY_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+          getIgnoreEmpty());
+    }
     switch (typeCase_) {
       case 1:
         hash = (37 * hash) + FLOAT_FIELD_NUMBER;
@@ -1748,18 +1945,24 @@ private static final long serialVersionUID = 0L;
 
     private void buildPartial0(build.buf.validate.FieldConstraints result) {
       int from_bitField0_ = bitField0_;
+      int to_bitField0_ = 0;
       if (((from_bitField0_ & 0x00000002) != 0)) {
         result.required_ = required_;
+        to_bitField0_ |= 0x00000001;
       }
       if (((from_bitField0_ & 0x00000004) != 0)) {
         result.ignore_ = ignore_;
+        to_bitField0_ |= 0x00000002;
       }
       if (((from_bitField0_ & 0x01000000) != 0)) {
         result.skipped_ = skipped_;
+        to_bitField0_ |= 0x00000004;
       }
       if (((from_bitField0_ & 0x02000000) != 0)) {
         result.ignoreEmpty_ = ignoreEmpty_;
+        to_bitField0_ |= 0x00000008;
       }
+      result.bitField0_ |= to_bitField0_;
     }
 
     private void buildPartialOneofs(build.buf.validate.FieldConstraints result) {
@@ -1889,16 +2092,16 @@ private static final long serialVersionUID = 0L;
           }
         }
       }
-      if (other.getRequired() != false) {
+      if (other.hasRequired()) {
         setRequired(other.getRequired());
       }
-      if (other.ignore_ != 0) {
-        setIgnoreValue(other.getIgnoreValue());
+      if (other.hasIgnore()) {
+        setIgnore(other.getIgnore());
       }
-      if (other.getSkipped() != false) {
+      if (other.hasSkipped()) {
         setSkipped(other.getSkipped());
       }
-      if (other.getIgnoreEmpty() != false) {
+      if (other.hasIgnoreEmpty()) {
         setIgnoreEmpty(other.getIgnoreEmpty());
       }
       switch (other.getTypeCase()) {
@@ -1997,6 +2200,106 @@ private static final long serialVersionUID = 0L;
 
     @java.lang.Override
     public final boolean isInitialized() {
+      if (hasFloat()) {
+        if (!getFloat().isInitialized()) {
+          return false;
+        }
+      }
+      if (hasDouble()) {
+        if (!getDouble().isInitialized()) {
+          return false;
+        }
+      }
+      if (hasInt32()) {
+        if (!getInt32().isInitialized()) {
+          return false;
+        }
+      }
+      if (hasInt64()) {
+        if (!getInt64().isInitialized()) {
+          return false;
+        }
+      }
+      if (hasUint32()) {
+        if (!getUint32().isInitialized()) {
+          return false;
+        }
+      }
+      if (hasUint64()) {
+        if (!getUint64().isInitialized()) {
+          return false;
+        }
+      }
+      if (hasSint32()) {
+        if (!getSint32().isInitialized()) {
+          return false;
+        }
+      }
+      if (hasSint64()) {
+        if (!getSint64().isInitialized()) {
+          return false;
+        }
+      }
+      if (hasFixed32()) {
+        if (!getFixed32().isInitialized()) {
+          return false;
+        }
+      }
+      if (hasFixed64()) {
+        if (!getFixed64().isInitialized()) {
+          return false;
+        }
+      }
+      if (hasSfixed32()) {
+        if (!getSfixed32().isInitialized()) {
+          return false;
+        }
+      }
+      if (hasSfixed64()) {
+        if (!getSfixed64().isInitialized()) {
+          return false;
+        }
+      }
+      if (hasBool()) {
+        if (!getBool().isInitialized()) {
+          return false;
+        }
+      }
+      if (hasString()) {
+        if (!getString().isInitialized()) {
+          return false;
+        }
+      }
+      if (hasBytes()) {
+        if (!getBytes().isInitialized()) {
+          return false;
+        }
+      }
+      if (hasEnum()) {
+        if (!getEnum().isInitialized()) {
+          return false;
+        }
+      }
+      if (hasRepeated()) {
+        if (!getRepeated().isInitialized()) {
+          return false;
+        }
+      }
+      if (hasMap()) {
+        if (!getMap().isInitialized()) {
+          return false;
+        }
+      }
+      if (hasDuration()) {
+        if (!getDuration().isInitialized()) {
+          return false;
+        }
+      }
+      if (hasTimestamp()) {
+        if (!getTimestamp().isInitialized()) {
+          return false;
+        }
+      }
       return true;
     }
 
@@ -2192,8 +2495,15 @@ private static final long serialVersionUID = 0L;
               break;
             } // case 208
             case 216: {
-              ignore_ = input.readEnum();
-              bitField0_ |= 0x00000004;
+              int tmpRaw = input.readEnum();
+              build.buf.validate.Ignore tmpValue =
+                  build.buf.validate.Ignore.forNumber(tmpRaw);
+              if (tmpValue == null) {
+                mergeUnknownVarintField(27, tmpRaw);
+              } else {
+                ignore_ = tmpRaw;
+                bitField0_ |= 0x00000004;
+              }
               break;
             } // case 216
             default: {
@@ -2796,7 +3106,35 @@ private static final long serialVersionUID = 0L;
      * ```
      * </pre>
      *
-     * <code>bool required = 25 [json_name = "required"];</code>
+     * <code>optional bool required = 25 [json_name = "required"];</code>
+     * @return Whether the required field is set.
+     */
+    @java.lang.Override
+    public boolean hasRequired() {
+      return ((bitField0_ & 0x00000002) != 0);
+    }
+    /**
+     * <pre>
+     * If `required` is true, the field must be populated. A populated field can be
+     * described as "serialized in the wire format," which includes:
+     *
+     * - the following "nullable" fields must be explicitly set to be considered populated:
+     * - singular message fields (whose fields may be unpopulated/default values)
+     * - member fields of a oneof (may be their default value)
+     * - proto3 optional fields (may be their default value)
+     * - proto2 scalar fields (both optional and required)
+     * - proto3 scalar fields must be non-zero to be considered populated
+     * - repeated and map fields must be non-empty to be considered populated
+     *
+     * ```proto
+     * message MyMessage {
+     * // The field `value` must be set to a non-null value.
+     * optional MyOtherMessage value = 1 [(buf.validate.field).required = true];
+     * }
+     * ```
+     * </pre>
+     *
+     * <code>optional bool required = 25 [json_name = "required"];</code>
      * @return The required.
      */
     @java.lang.Override
@@ -2824,7 +3162,7 @@ private static final long serialVersionUID = 0L;
      * ```
      * </pre>
      *
-     * <code>bool required = 25 [json_name = "required"];</code>
+     * <code>optional bool required = 25 [json_name = "required"];</code>
      * @param value The required to set.
      * @return This builder for chaining.
      */
@@ -2856,7 +3194,7 @@ private static final long serialVersionUID = 0L;
      * ```
      * </pre>
      *
-     * <code>bool required = 25 [json_name = "required"];</code>
+     * <code>optional bool required = 25 [json_name = "required"];</code>
      * @return This builder for chaining.
      */
     public Builder clearRequired() {
@@ -2884,11 +3222,11 @@ private static final long serialVersionUID = 0L;
      * ```
      * </pre>
      *
-     * <code>.buf.validate.Ignore ignore = 27 [json_name = "ignore"];</code>
-     * @return The enum numeric value on the wire for ignore.
+     * <code>optional .buf.validate.Ignore ignore = 27 [json_name = "ignore"];</code>
+     * @return Whether the ignore field is set.
      */
-    @java.lang.Override public int getIgnoreValue() {
-      return ignore_;
+    @java.lang.Override public boolean hasIgnore() {
+      return ((bitField0_ & 0x00000004) != 0);
     }
     /**
      * <pre>
@@ -2907,40 +3245,13 @@ private static final long serialVersionUID = 0L;
      * ```
      * </pre>
      *
-     * <code>.buf.validate.Ignore ignore = 27 [json_name = "ignore"];</code>
-     * @param value The enum numeric value on the wire for ignore to set.
-     * @return This builder for chaining.
-     */
-    public Builder setIgnoreValue(int value) {
-      ignore_ = value;
-      bitField0_ |= 0x00000004;
-      onChanged();
-      return this;
-    }
-    /**
-     * <pre>
-     * Skip validation on the field if its value matches the specified criteria.
-     * See Ignore enum for details.
-     *
-     * ```proto
-     * message UpdateRequest {
-     * // The uri rule only applies if the field is populated and not an empty
-     * // string.
-     * optional string url = 1 [
-     * (buf.validate.field).ignore = IGNORE_IF_DEFAULT_VALUE,
-     * (buf.validate.field).string.uri = true,
-     * ];
-     * }
-     * ```
-     * </pre>
-     *
-     * <code>.buf.validate.Ignore ignore = 27 [json_name = "ignore"];</code>
+     * <code>optional .buf.validate.Ignore ignore = 27 [json_name = "ignore"];</code>
      * @return The ignore.
      */
     @java.lang.Override
     public build.buf.validate.Ignore getIgnore() {
       build.buf.validate.Ignore result = build.buf.validate.Ignore.forNumber(ignore_);
-      return result == null ? build.buf.validate.Ignore.UNRECOGNIZED : result;
+      return result == null ? build.buf.validate.Ignore.IGNORE_UNSPECIFIED : result;
     }
     /**
      * <pre>
@@ -2959,7 +3270,7 @@ private static final long serialVersionUID = 0L;
      * ```
      * </pre>
      *
-     * <code>.buf.validate.Ignore ignore = 27 [json_name = "ignore"];</code>
+     * <code>optional .buf.validate.Ignore ignore = 27 [json_name = "ignore"];</code>
      * @param value The ignore to set.
      * @return This builder for chaining.
      */
@@ -2989,7 +3300,7 @@ private static final long serialVersionUID = 0L;
      * ```
      * </pre>
      *
-     * <code>.buf.validate.Ignore ignore = 27 [json_name = "ignore"];</code>
+     * <code>optional .buf.validate.Ignore ignore = 27 [json_name = "ignore"];</code>
      * @return This builder for chaining.
      */
     public Builder clearIgnore() {
@@ -6095,9 +6406,23 @@ private static final long serialVersionUID = 0L;
      * DEPRECATED: use ignore=IGNORE_ALWAYS instead. TODO: remove this field pre-v1.
      * </pre>
      *
-     * <code>bool skipped = 24 [json_name = "skipped", deprecated = true];</code>
+     * <code>optional bool skipped = 24 [json_name = "skipped", deprecated = true];</code>
      * @deprecated buf.validate.FieldConstraints.skipped is deprecated.
-     *     See buf/validate/validate.proto;l=196
+     *     See buf/validate/validate.proto;l=245
+     * @return Whether the skipped field is set.
+     */
+    @java.lang.Override
+    @java.lang.Deprecated public boolean hasSkipped() {
+      return ((bitField0_ & 0x01000000) != 0);
+    }
+    /**
+     * <pre>
+     * DEPRECATED: use ignore=IGNORE_ALWAYS instead. TODO: remove this field pre-v1.
+     * </pre>
+     *
+     * <code>optional bool skipped = 24 [json_name = "skipped", deprecated = true];</code>
+     * @deprecated buf.validate.FieldConstraints.skipped is deprecated.
+     *     See buf/validate/validate.proto;l=245
      * @return The skipped.
      */
     @java.lang.Override
@@ -6109,9 +6434,9 @@ private static final long serialVersionUID = 0L;
      * DEPRECATED: use ignore=IGNORE_ALWAYS instead. TODO: remove this field pre-v1.
      * </pre>
      *
-     * <code>bool skipped = 24 [json_name = "skipped", deprecated = true];</code>
+     * <code>optional bool skipped = 24 [json_name = "skipped", deprecated = true];</code>
      * @deprecated buf.validate.FieldConstraints.skipped is deprecated.
-     *     See buf/validate/validate.proto;l=196
+     *     See buf/validate/validate.proto;l=245
      * @param value The skipped to set.
      * @return This builder for chaining.
      */
@@ -6127,9 +6452,9 @@ private static final long serialVersionUID = 0L;
      * DEPRECATED: use ignore=IGNORE_ALWAYS instead. TODO: remove this field pre-v1.
      * </pre>
      *
-     * <code>bool skipped = 24 [json_name = "skipped", deprecated = true];</code>
+     * <code>optional bool skipped = 24 [json_name = "skipped", deprecated = true];</code>
      * @deprecated buf.validate.FieldConstraints.skipped is deprecated.
-     *     See buf/validate/validate.proto;l=196
+     *     See buf/validate/validate.proto;l=245
      * @return This builder for chaining.
      */
     @java.lang.Deprecated public Builder clearSkipped() {
@@ -6145,9 +6470,23 @@ private static final long serialVersionUID = 0L;
      * DEPRECATED: use ignore=IGNORE_IF_UNPOPULATED instead. TODO: remove this field pre-v1.
      * </pre>
      *
-     * <code>bool ignore_empty = 26 [json_name = "ignoreEmpty", deprecated = true];</code>
+     * <code>optional bool ignore_empty = 26 [json_name = "ignoreEmpty", deprecated = true];</code>
      * @deprecated buf.validate.FieldConstraints.ignore_empty is deprecated.
-     *     See buf/validate/validate.proto;l=198
+     *     See buf/validate/validate.proto;l=247
+     * @return Whether the ignoreEmpty field is set.
+     */
+    @java.lang.Override
+    @java.lang.Deprecated public boolean hasIgnoreEmpty() {
+      return ((bitField0_ & 0x02000000) != 0);
+    }
+    /**
+     * <pre>
+     * DEPRECATED: use ignore=IGNORE_IF_UNPOPULATED instead. TODO: remove this field pre-v1.
+     * </pre>
+     *
+     * <code>optional bool ignore_empty = 26 [json_name = "ignoreEmpty", deprecated = true];</code>
+     * @deprecated buf.validate.FieldConstraints.ignore_empty is deprecated.
+     *     See buf/validate/validate.proto;l=247
      * @return The ignoreEmpty.
      */
     @java.lang.Override
@@ -6159,9 +6498,9 @@ private static final long serialVersionUID = 0L;
      * DEPRECATED: use ignore=IGNORE_IF_UNPOPULATED instead. TODO: remove this field pre-v1.
      * </pre>
      *
-     * <code>bool ignore_empty = 26 [json_name = "ignoreEmpty", deprecated = true];</code>
+     * <code>optional bool ignore_empty = 26 [json_name = "ignoreEmpty", deprecated = true];</code>
      * @deprecated buf.validate.FieldConstraints.ignore_empty is deprecated.
-     *     See buf/validate/validate.proto;l=198
+     *     See buf/validate/validate.proto;l=247
      * @param value The ignoreEmpty to set.
      * @return This builder for chaining.
      */
@@ -6177,9 +6516,9 @@ private static final long serialVersionUID = 0L;
      * DEPRECATED: use ignore=IGNORE_IF_UNPOPULATED instead. TODO: remove this field pre-v1.
      * </pre>
      *
-     * <code>bool ignore_empty = 26 [json_name = "ignoreEmpty", deprecated = true];</code>
+     * <code>optional bool ignore_empty = 26 [json_name = "ignoreEmpty", deprecated = true];</code>
      * @deprecated buf.validate.FieldConstraints.ignore_empty is deprecated.
-     *     See buf/validate/validate.proto;l=198
+     *     See buf/validate/validate.proto;l=247
      * @return This builder for chaining.
      */
     @java.lang.Deprecated public Builder clearIgnoreEmpty() {

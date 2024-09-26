@@ -33,6 +33,7 @@ import com.google.protobuf.Descriptors;
 import com.google.protobuf.DynamicMessage;
 import com.google.protobuf.ExtensionRegistry;
 import com.google.protobuf.InvalidProtocolBufferException;
+import com.google.protobuf.TypeRegistry;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -57,7 +58,17 @@ public class Main {
     try {
       Map<String, Descriptors.Descriptor> descriptorMap =
           FileDescriptorUtil.parse(request.getFdset());
-      Validator validator = new Validator(Config.newBuilder().build());
+      Map<String, Descriptors.FileDescriptor> fileDescriptorMap =
+          FileDescriptorUtil.parseFileDescriptors(request.getFdset());
+      TypeRegistry typeRegistry = FileDescriptorUtil.createTypeRegistry(fileDescriptorMap.values());
+      ExtensionRegistry extensionRegistry =
+          FileDescriptorUtil.createExtensionRegistry(fileDescriptorMap.values());
+      Validator validator =
+          new Validator(
+              Config.newBuilder()
+                  .setTypeRegistry(typeRegistry)
+                  .setExtensionRegistry(extensionRegistry)
+                  .build());
       TestConformanceResponse.Builder responseBuilder = TestConformanceResponse.newBuilder();
       Map<String, TestResult> resultsMap = new HashMap<>();
       for (Map.Entry<String, Any> entry : request.getCasesMap().entrySet()) {

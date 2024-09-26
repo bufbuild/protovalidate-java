@@ -131,80 +131,160 @@ public final class StringsProto {
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_buf_validate_conformance_cases_StringEmail_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_buf_validate_conformance_cases_StringNotEmail_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_buf_validate_conformance_cases_StringNotEmail_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
     internal_static_buf_validate_conformance_cases_StringAddress_descriptor;
   static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_buf_validate_conformance_cases_StringAddress_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_buf_validate_conformance_cases_StringNotAddress_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_buf_validate_conformance_cases_StringNotAddress_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
     internal_static_buf_validate_conformance_cases_StringHostname_descriptor;
   static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_buf_validate_conformance_cases_StringHostname_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_buf_validate_conformance_cases_StringNotHostname_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_buf_validate_conformance_cases_StringNotHostname_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
     internal_static_buf_validate_conformance_cases_StringIP_descriptor;
   static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_buf_validate_conformance_cases_StringIP_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_buf_validate_conformance_cases_StringNotIP_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_buf_validate_conformance_cases_StringNotIP_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
     internal_static_buf_validate_conformance_cases_StringIPv4_descriptor;
   static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_buf_validate_conformance_cases_StringIPv4_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_buf_validate_conformance_cases_StringNotIPv4_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_buf_validate_conformance_cases_StringNotIPv4_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
     internal_static_buf_validate_conformance_cases_StringIPv6_descriptor;
   static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_buf_validate_conformance_cases_StringIPv6_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_buf_validate_conformance_cases_StringNotIPv6_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_buf_validate_conformance_cases_StringNotIPv6_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
     internal_static_buf_validate_conformance_cases_StringIPWithPrefixLen_descriptor;
   static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_buf_validate_conformance_cases_StringIPWithPrefixLen_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_buf_validate_conformance_cases_StringNotIPWithPrefixLen_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_buf_validate_conformance_cases_StringNotIPWithPrefixLen_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
     internal_static_buf_validate_conformance_cases_StringIPv4WithPrefixLen_descriptor;
   static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_buf_validate_conformance_cases_StringIPv4WithPrefixLen_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_buf_validate_conformance_cases_StringNotIPv4WithPrefixLen_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_buf_validate_conformance_cases_StringNotIPv4WithPrefixLen_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
     internal_static_buf_validate_conformance_cases_StringIPv6WithPrefixLen_descriptor;
   static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_buf_validate_conformance_cases_StringIPv6WithPrefixLen_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_buf_validate_conformance_cases_StringNotIPv6WithPrefixLen_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_buf_validate_conformance_cases_StringNotIPv6WithPrefixLen_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
     internal_static_buf_validate_conformance_cases_StringIPPrefix_descriptor;
   static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_buf_validate_conformance_cases_StringIPPrefix_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_buf_validate_conformance_cases_StringNotIPPrefix_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_buf_validate_conformance_cases_StringNotIPPrefix_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
     internal_static_buf_validate_conformance_cases_StringIPv4Prefix_descriptor;
   static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_buf_validate_conformance_cases_StringIPv4Prefix_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_buf_validate_conformance_cases_StringNotIPv4Prefix_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_buf_validate_conformance_cases_StringNotIPv4Prefix_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
     internal_static_buf_validate_conformance_cases_StringIPv6Prefix_descriptor;
   static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_buf_validate_conformance_cases_StringIPv6Prefix_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_buf_validate_conformance_cases_StringNotIPv6Prefix_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_buf_validate_conformance_cases_StringNotIPv6Prefix_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
     internal_static_buf_validate_conformance_cases_StringURI_descriptor;
   static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_buf_validate_conformance_cases_StringURI_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_buf_validate_conformance_cases_StringNotURI_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_buf_validate_conformance_cases_StringNotURI_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
     internal_static_buf_validate_conformance_cases_StringURIRef_descriptor;
   static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_buf_validate_conformance_cases_StringURIRef_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_buf_validate_conformance_cases_StringNotURIRef_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_buf_validate_conformance_cases_StringNotURIRef_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
     internal_static_buf_validate_conformance_cases_StringUUID_descriptor;
   static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_buf_validate_conformance_cases_StringUUID_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_buf_validate_conformance_cases_StringNotUUID_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_buf_validate_conformance_cases_StringNotUUID_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
     internal_static_buf_validate_conformance_cases_StringTUUID_descriptor;
   static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_buf_validate_conformance_cases_StringTUUID_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_buf_validate_conformance_cases_StringNotTUUID_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_buf_validate_conformance_cases_StringNotTUUID_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
     internal_static_buf_validate_conformance_cases_StringHttpHeaderName_descriptor;
   static final 
@@ -245,6 +325,11 @@ public final class StringsProto {
   static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_buf_validate_conformance_cases_StringHostAndOptionalPort_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_buf_validate_conformance_cases_StringExample_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_buf_validate_conformance_cases_StringExample_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -281,43 +366,64 @@ public final class StringsProto {
       "\003val\"2\n\021StringNotContains\022\035\n\003val\030\001 \001(\tB\013" +
       "\272H\010r\006\272\001\003barR\003val\",\n\014StringSuffix\022\034\n\003val\030" +
       "\001 \001(\tB\n\272H\007r\005B\003bazR\003val\"(\n\013StringEmail\022\031\n" +
-      "\003val\030\001 \001(\tB\007\272H\004r\002`\001R\003val\"+\n\rStringAddres" +
-      "s\022\032\n\003val\030\001 \001(\tB\010\272H\005r\003\250\001\001R\003val\"+\n\016StringH" +
-      "ostname\022\031\n\003val\030\001 \001(\tB\007\272H\004r\002h\001R\003val\"%\n\010St" +
-      "ringIP\022\031\n\003val\030\001 \001(\tB\007\272H\004r\002p\001R\003val\"\'\n\nStr" +
-      "ingIPv4\022\031\n\003val\030\001 \001(\tB\007\272H\004r\002x\001R\003val\"(\n\nSt" +
-      "ringIPv6\022\032\n\003val\030\001 \001(\tB\010\272H\005r\003\200\001\001R\003val\"3\n\025" +
-      "StringIPWithPrefixLen\022\032\n\003val\030\001 \001(\tB\010\272H\005r" +
-      "\003\320\001\001R\003val\"5\n\027StringIPv4WithPrefixLen\022\032\n\003" +
-      "val\030\001 \001(\tB\010\272H\005r\003\330\001\001R\003val\"5\n\027StringIPv6Wi" +
-      "thPrefixLen\022\032\n\003val\030\001 \001(\tB\010\272H\005r\003\340\001\001R\003val\"" +
-      ",\n\016StringIPPrefix\022\032\n\003val\030\001 \001(\tB\010\272H\005r\003\350\001\001" +
-      "R\003val\".\n\020StringIPv4Prefix\022\032\n\003val\030\001 \001(\tB\010" +
-      "\272H\005r\003\360\001\001R\003val\".\n\020StringIPv6Prefix\022\032\n\003val" +
-      "\030\001 \001(\tB\010\272H\005r\003\370\001\001R\003val\"\'\n\tStringURI\022\032\n\003va" +
-      "l\030\001 \001(\tB\010\272H\005r\003\210\001\001R\003val\"*\n\014StringURIRef\022\032" +
-      "\n\003val\030\001 \001(\tB\010\272H\005r\003\220\001\001R\003val\"(\n\nStringUUID" +
-      "\022\032\n\003val\030\001 \001(\tB\010\272H\005r\003\260\001\001R\003val\")\n\013StringTU" +
-      "UID\022\032\n\003val\030\001 \001(\tB\010\272H\005r\003\210\002\001R\003val\"2\n\024Strin" +
-      "gHttpHeaderName\022\032\n\003val\030\001 \001(\tB\010\272H\005r\003\300\001\001R\003" +
-      "val\"3\n\025StringHttpHeaderValue\022\032\n\003val\030\001 \001(" +
-      "\tB\010\272H\005r\003\300\001\002R\003val\":\n\031StringHttpHeaderName" +
-      "Loose\022\035\n\003val\030\001 \001(\tB\013\272H\010r\006\300\001\001\310\001\000R\003val\";\n\032" +
-      "StringHttpHeaderValueLoose\022\035\n\003val\030\001 \001(\tB" +
-      "\013\272H\010r\006\300\001\002\310\001\000R\003val\"1\n\020StringUUIDIgnore\022\035\n" +
-      "\003val\030\001 \001(\tB\013\272H\010r\003\260\001\001\320\001\001R\003val\"7\n\rStringIn" +
-      "Oneof\022\037\n\003bar\030\001 \001(\tB\013\272H\010r\006R\001aR\001bH\000R\003barB\005" +
-      "\n\003foo\"/\n\021StringHostAndPort\022\032\n\003val\030\001 \001(\tB" +
-      "\010\272H\005r\003\200\002\001R\003val\"\244\001\n\031StringHostAndOptional" +
-      "Port\022\206\001\n\003val\030\001 \001(\tBt\272Hq\272\001n\n\"string.host_" +
-      "and_port.optional_port\022-value must be a " +
-      "host and (optional) port pair\032\031this.isHo" +
-      "stAndPort(false)R\003valB\320\001\n$build.buf.vali" +
-      "date.conformance.casesB\014StringsProtoP\001\242\002" +
-      "\004BVCC\252\002\036Buf.Validate.Conformance.Cases\312\002" +
-      "\036Buf\\Validate\\Conformance\\Cases\342\002*Buf\\Va" +
-      "lidate\\Conformance\\Cases\\GPBMetadata\352\002!B" +
-      "uf::Validate::Conformance::Casesb\006proto3"
+      "\003val\030\001 \001(\tB\007\272H\004r\002`\001R\003val\"+\n\016StringNotEma" +
+      "il\022\031\n\003val\030\001 \001(\tB\007\272H\004r\002`\000R\003val\"+\n\rStringA" +
+      "ddress\022\032\n\003val\030\001 \001(\tB\010\272H\005r\003\250\001\001R\003val\".\n\020St" +
+      "ringNotAddress\022\032\n\003val\030\001 \001(\tB\010\272H\005r\003\250\001\000R\003v" +
+      "al\"+\n\016StringHostname\022\031\n\003val\030\001 \001(\tB\007\272H\004r\002" +
+      "h\001R\003val\".\n\021StringNotHostname\022\031\n\003val\030\001 \001(" +
+      "\tB\007\272H\004r\002h\000R\003val\"%\n\010StringIP\022\031\n\003val\030\001 \001(\t" +
+      "B\007\272H\004r\002p\001R\003val\"(\n\013StringNotIP\022\031\n\003val\030\001 \001" +
+      "(\tB\007\272H\004r\002p\000R\003val\"\'\n\nStringIPv4\022\031\n\003val\030\001 " +
+      "\001(\tB\007\272H\004r\002x\001R\003val\"*\n\rStringNotIPv4\022\031\n\003va" +
+      "l\030\001 \001(\tB\007\272H\004r\002x\000R\003val\"(\n\nStringIPv6\022\032\n\003v" +
+      "al\030\001 \001(\tB\010\272H\005r\003\200\001\001R\003val\"+\n\rStringNotIPv6" +
+      "\022\032\n\003val\030\001 \001(\tB\010\272H\005r\003\200\001\000R\003val\"3\n\025StringIP" +
+      "WithPrefixLen\022\032\n\003val\030\001 \001(\tB\010\272H\005r\003\320\001\001R\003va" +
+      "l\"6\n\030StringNotIPWithPrefixLen\022\032\n\003val\030\001 \001" +
+      "(\tB\010\272H\005r\003\320\001\000R\003val\"5\n\027StringIPv4WithPrefi" +
+      "xLen\022\032\n\003val\030\001 \001(\tB\010\272H\005r\003\330\001\001R\003val\"8\n\032Stri" +
+      "ngNotIPv4WithPrefixLen\022\032\n\003val\030\001 \001(\tB\010\272H\005" +
+      "r\003\330\001\000R\003val\"5\n\027StringIPv6WithPrefixLen\022\032\n" +
+      "\003val\030\001 \001(\tB\010\272H\005r\003\340\001\001R\003val\"8\n\032StringNotIP" +
+      "v6WithPrefixLen\022\032\n\003val\030\001 \001(\tB\010\272H\005r\003\340\001\000R\003" +
+      "val\",\n\016StringIPPrefix\022\032\n\003val\030\001 \001(\tB\010\272H\005r" +
+      "\003\350\001\001R\003val\"/\n\021StringNotIPPrefix\022\032\n\003val\030\001 " +
+      "\001(\tB\010\272H\005r\003\350\001\000R\003val\".\n\020StringIPv4Prefix\022\032" +
+      "\n\003val\030\001 \001(\tB\010\272H\005r\003\360\001\001R\003val\"1\n\023StringNotI" +
+      "Pv4Prefix\022\032\n\003val\030\001 \001(\tB\010\272H\005r\003\360\001\000R\003val\".\n" +
+      "\020StringIPv6Prefix\022\032\n\003val\030\001 \001(\tB\010\272H\005r\003\370\001\001" +
+      "R\003val\"1\n\023StringNotIPv6Prefix\022\032\n\003val\030\001 \001(" +
+      "\tB\010\272H\005r\003\370\001\000R\003val\"\'\n\tStringURI\022\032\n\003val\030\001 \001" +
+      "(\tB\010\272H\005r\003\210\001\001R\003val\"*\n\014StringNotURI\022\032\n\003val" +
+      "\030\001 \001(\tB\010\272H\005r\003\210\001\000R\003val\"*\n\014StringURIRef\022\032\n" +
+      "\003val\030\001 \001(\tB\010\272H\005r\003\220\001\001R\003val\"-\n\017StringNotUR" +
+      "IRef\022\032\n\003val\030\001 \001(\tB\010\272H\005r\003\220\001\000R\003val\"(\n\nStri" +
+      "ngUUID\022\032\n\003val\030\001 \001(\tB\010\272H\005r\003\260\001\001R\003val\"+\n\rSt" +
+      "ringNotUUID\022\032\n\003val\030\001 \001(\tB\010\272H\005r\003\260\001\000R\003val\"" +
+      ")\n\013StringTUUID\022\032\n\003val\030\001 \001(\tB\010\272H\005r\003\210\002\001R\003v" +
+      "al\",\n\016StringNotTUUID\022\032\n\003val\030\001 \001(\tB\010\272H\005r\003" +
+      "\210\002\000R\003val\"2\n\024StringHttpHeaderName\022\032\n\003val\030" +
+      "\001 \001(\tB\010\272H\005r\003\300\001\001R\003val\"3\n\025StringHttpHeader" +
+      "Value\022\032\n\003val\030\001 \001(\tB\010\272H\005r\003\300\001\002R\003val\":\n\031Str" +
+      "ingHttpHeaderNameLoose\022\035\n\003val\030\001 \001(\tB\013\272H\010" +
+      "r\006\300\001\001\310\001\000R\003val\";\n\032StringHttpHeaderValueLo" +
+      "ose\022\035\n\003val\030\001 \001(\tB\013\272H\010r\006\300\001\002\310\001\000R\003val\"1\n\020St" +
+      "ringUUIDIgnore\022\035\n\003val\030\001 \001(\tB\013\272H\010r\003\260\001\001\320\001\001" +
+      "R\003val\"7\n\rStringInOneof\022\037\n\003bar\030\001 \001(\tB\013\272H\010" +
+      "r\006R\001aR\001bH\000R\003barB\005\n\003foo\"/\n\021StringHostAndP" +
+      "ort\022\032\n\003val\030\001 \001(\tB\010\272H\005r\003\200\002\001R\003val\"\244\001\n\031Stri" +
+      "ngHostAndOptionalPort\022\206\001\n\003val\030\001 \001(\tBt\272Hq" +
+      "\272\001n\n\"string.host_and_port.optional_port\022" +
+      "-value must be a host and (optional) por" +
+      "t pair\032\031this.isHostAndPort(false)R\003val\"." +
+      "\n\rStringExample\022\035\n\003val\030\001 \001(\tB\013\272H\010r\006\222\002\003fo" +
+      "oR\003valB\320\001\n$build.buf.validate.conformanc" +
+      "e.casesB\014StringsProtoP\001\242\002\004BVCC\252\002\036Buf.Val" +
+      "idate.Conformance.Cases\312\002\036Buf\\Validate\\C" +
+      "onformance\\Cases\342\002*Buf\\Validate\\Conforma" +
+      "nce\\Cases\\GPBMetadata\352\002!Buf::Validate::C" +
+      "onformance::Casesb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -450,143 +556,245 @@ public final class StringsProto {
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_StringEmail_descriptor,
         new java.lang.String[] { "Val", });
-    internal_static_buf_validate_conformance_cases_StringAddress_descriptor =
+    internal_static_buf_validate_conformance_cases_StringNotEmail_descriptor =
       getDescriptor().getMessageTypes().get(21);
+    internal_static_buf_validate_conformance_cases_StringNotEmail_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_buf_validate_conformance_cases_StringNotEmail_descriptor,
+        new java.lang.String[] { "Val", });
+    internal_static_buf_validate_conformance_cases_StringAddress_descriptor =
+      getDescriptor().getMessageTypes().get(22);
     internal_static_buf_validate_conformance_cases_StringAddress_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_StringAddress_descriptor,
         new java.lang.String[] { "Val", });
+    internal_static_buf_validate_conformance_cases_StringNotAddress_descriptor =
+      getDescriptor().getMessageTypes().get(23);
+    internal_static_buf_validate_conformance_cases_StringNotAddress_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_buf_validate_conformance_cases_StringNotAddress_descriptor,
+        new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_StringHostname_descriptor =
-      getDescriptor().getMessageTypes().get(22);
+      getDescriptor().getMessageTypes().get(24);
     internal_static_buf_validate_conformance_cases_StringHostname_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_StringHostname_descriptor,
         new java.lang.String[] { "Val", });
+    internal_static_buf_validate_conformance_cases_StringNotHostname_descriptor =
+      getDescriptor().getMessageTypes().get(25);
+    internal_static_buf_validate_conformance_cases_StringNotHostname_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_buf_validate_conformance_cases_StringNotHostname_descriptor,
+        new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_StringIP_descriptor =
-      getDescriptor().getMessageTypes().get(23);
+      getDescriptor().getMessageTypes().get(26);
     internal_static_buf_validate_conformance_cases_StringIP_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_StringIP_descriptor,
         new java.lang.String[] { "Val", });
+    internal_static_buf_validate_conformance_cases_StringNotIP_descriptor =
+      getDescriptor().getMessageTypes().get(27);
+    internal_static_buf_validate_conformance_cases_StringNotIP_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_buf_validate_conformance_cases_StringNotIP_descriptor,
+        new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_StringIPv4_descriptor =
-      getDescriptor().getMessageTypes().get(24);
+      getDescriptor().getMessageTypes().get(28);
     internal_static_buf_validate_conformance_cases_StringIPv4_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_StringIPv4_descriptor,
         new java.lang.String[] { "Val", });
+    internal_static_buf_validate_conformance_cases_StringNotIPv4_descriptor =
+      getDescriptor().getMessageTypes().get(29);
+    internal_static_buf_validate_conformance_cases_StringNotIPv4_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_buf_validate_conformance_cases_StringNotIPv4_descriptor,
+        new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_StringIPv6_descriptor =
-      getDescriptor().getMessageTypes().get(25);
+      getDescriptor().getMessageTypes().get(30);
     internal_static_buf_validate_conformance_cases_StringIPv6_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_StringIPv6_descriptor,
         new java.lang.String[] { "Val", });
+    internal_static_buf_validate_conformance_cases_StringNotIPv6_descriptor =
+      getDescriptor().getMessageTypes().get(31);
+    internal_static_buf_validate_conformance_cases_StringNotIPv6_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_buf_validate_conformance_cases_StringNotIPv6_descriptor,
+        new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_StringIPWithPrefixLen_descriptor =
-      getDescriptor().getMessageTypes().get(26);
+      getDescriptor().getMessageTypes().get(32);
     internal_static_buf_validate_conformance_cases_StringIPWithPrefixLen_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_StringIPWithPrefixLen_descriptor,
         new java.lang.String[] { "Val", });
+    internal_static_buf_validate_conformance_cases_StringNotIPWithPrefixLen_descriptor =
+      getDescriptor().getMessageTypes().get(33);
+    internal_static_buf_validate_conformance_cases_StringNotIPWithPrefixLen_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_buf_validate_conformance_cases_StringNotIPWithPrefixLen_descriptor,
+        new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_StringIPv4WithPrefixLen_descriptor =
-      getDescriptor().getMessageTypes().get(27);
+      getDescriptor().getMessageTypes().get(34);
     internal_static_buf_validate_conformance_cases_StringIPv4WithPrefixLen_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_StringIPv4WithPrefixLen_descriptor,
         new java.lang.String[] { "Val", });
+    internal_static_buf_validate_conformance_cases_StringNotIPv4WithPrefixLen_descriptor =
+      getDescriptor().getMessageTypes().get(35);
+    internal_static_buf_validate_conformance_cases_StringNotIPv4WithPrefixLen_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_buf_validate_conformance_cases_StringNotIPv4WithPrefixLen_descriptor,
+        new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_StringIPv6WithPrefixLen_descriptor =
-      getDescriptor().getMessageTypes().get(28);
+      getDescriptor().getMessageTypes().get(36);
     internal_static_buf_validate_conformance_cases_StringIPv6WithPrefixLen_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_StringIPv6WithPrefixLen_descriptor,
         new java.lang.String[] { "Val", });
+    internal_static_buf_validate_conformance_cases_StringNotIPv6WithPrefixLen_descriptor =
+      getDescriptor().getMessageTypes().get(37);
+    internal_static_buf_validate_conformance_cases_StringNotIPv6WithPrefixLen_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_buf_validate_conformance_cases_StringNotIPv6WithPrefixLen_descriptor,
+        new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_StringIPPrefix_descriptor =
-      getDescriptor().getMessageTypes().get(29);
+      getDescriptor().getMessageTypes().get(38);
     internal_static_buf_validate_conformance_cases_StringIPPrefix_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_StringIPPrefix_descriptor,
         new java.lang.String[] { "Val", });
+    internal_static_buf_validate_conformance_cases_StringNotIPPrefix_descriptor =
+      getDescriptor().getMessageTypes().get(39);
+    internal_static_buf_validate_conformance_cases_StringNotIPPrefix_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_buf_validate_conformance_cases_StringNotIPPrefix_descriptor,
+        new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_StringIPv4Prefix_descriptor =
-      getDescriptor().getMessageTypes().get(30);
+      getDescriptor().getMessageTypes().get(40);
     internal_static_buf_validate_conformance_cases_StringIPv4Prefix_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_StringIPv4Prefix_descriptor,
         new java.lang.String[] { "Val", });
+    internal_static_buf_validate_conformance_cases_StringNotIPv4Prefix_descriptor =
+      getDescriptor().getMessageTypes().get(41);
+    internal_static_buf_validate_conformance_cases_StringNotIPv4Prefix_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_buf_validate_conformance_cases_StringNotIPv4Prefix_descriptor,
+        new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_StringIPv6Prefix_descriptor =
-      getDescriptor().getMessageTypes().get(31);
+      getDescriptor().getMessageTypes().get(42);
     internal_static_buf_validate_conformance_cases_StringIPv6Prefix_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_StringIPv6Prefix_descriptor,
         new java.lang.String[] { "Val", });
+    internal_static_buf_validate_conformance_cases_StringNotIPv6Prefix_descriptor =
+      getDescriptor().getMessageTypes().get(43);
+    internal_static_buf_validate_conformance_cases_StringNotIPv6Prefix_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_buf_validate_conformance_cases_StringNotIPv6Prefix_descriptor,
+        new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_StringURI_descriptor =
-      getDescriptor().getMessageTypes().get(32);
+      getDescriptor().getMessageTypes().get(44);
     internal_static_buf_validate_conformance_cases_StringURI_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_StringURI_descriptor,
         new java.lang.String[] { "Val", });
+    internal_static_buf_validate_conformance_cases_StringNotURI_descriptor =
+      getDescriptor().getMessageTypes().get(45);
+    internal_static_buf_validate_conformance_cases_StringNotURI_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_buf_validate_conformance_cases_StringNotURI_descriptor,
+        new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_StringURIRef_descriptor =
-      getDescriptor().getMessageTypes().get(33);
+      getDescriptor().getMessageTypes().get(46);
     internal_static_buf_validate_conformance_cases_StringURIRef_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_StringURIRef_descriptor,
         new java.lang.String[] { "Val", });
+    internal_static_buf_validate_conformance_cases_StringNotURIRef_descriptor =
+      getDescriptor().getMessageTypes().get(47);
+    internal_static_buf_validate_conformance_cases_StringNotURIRef_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_buf_validate_conformance_cases_StringNotURIRef_descriptor,
+        new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_StringUUID_descriptor =
-      getDescriptor().getMessageTypes().get(34);
+      getDescriptor().getMessageTypes().get(48);
     internal_static_buf_validate_conformance_cases_StringUUID_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_StringUUID_descriptor,
         new java.lang.String[] { "Val", });
+    internal_static_buf_validate_conformance_cases_StringNotUUID_descriptor =
+      getDescriptor().getMessageTypes().get(49);
+    internal_static_buf_validate_conformance_cases_StringNotUUID_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_buf_validate_conformance_cases_StringNotUUID_descriptor,
+        new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_StringTUUID_descriptor =
-      getDescriptor().getMessageTypes().get(35);
+      getDescriptor().getMessageTypes().get(50);
     internal_static_buf_validate_conformance_cases_StringTUUID_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_StringTUUID_descriptor,
         new java.lang.String[] { "Val", });
+    internal_static_buf_validate_conformance_cases_StringNotTUUID_descriptor =
+      getDescriptor().getMessageTypes().get(51);
+    internal_static_buf_validate_conformance_cases_StringNotTUUID_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_buf_validate_conformance_cases_StringNotTUUID_descriptor,
+        new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_StringHttpHeaderName_descriptor =
-      getDescriptor().getMessageTypes().get(36);
+      getDescriptor().getMessageTypes().get(52);
     internal_static_buf_validate_conformance_cases_StringHttpHeaderName_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_StringHttpHeaderName_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_StringHttpHeaderValue_descriptor =
-      getDescriptor().getMessageTypes().get(37);
+      getDescriptor().getMessageTypes().get(53);
     internal_static_buf_validate_conformance_cases_StringHttpHeaderValue_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_StringHttpHeaderValue_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_StringHttpHeaderNameLoose_descriptor =
-      getDescriptor().getMessageTypes().get(38);
+      getDescriptor().getMessageTypes().get(54);
     internal_static_buf_validate_conformance_cases_StringHttpHeaderNameLoose_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_StringHttpHeaderNameLoose_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_StringHttpHeaderValueLoose_descriptor =
-      getDescriptor().getMessageTypes().get(39);
+      getDescriptor().getMessageTypes().get(55);
     internal_static_buf_validate_conformance_cases_StringHttpHeaderValueLoose_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_StringHttpHeaderValueLoose_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_StringUUIDIgnore_descriptor =
-      getDescriptor().getMessageTypes().get(40);
+      getDescriptor().getMessageTypes().get(56);
     internal_static_buf_validate_conformance_cases_StringUUIDIgnore_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_StringUUIDIgnore_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_StringInOneof_descriptor =
-      getDescriptor().getMessageTypes().get(41);
+      getDescriptor().getMessageTypes().get(57);
     internal_static_buf_validate_conformance_cases_StringInOneof_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_StringInOneof_descriptor,
         new java.lang.String[] { "Bar", "Foo", });
     internal_static_buf_validate_conformance_cases_StringHostAndPort_descriptor =
-      getDescriptor().getMessageTypes().get(42);
+      getDescriptor().getMessageTypes().get(58);
     internal_static_buf_validate_conformance_cases_StringHostAndPort_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_StringHostAndPort_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_StringHostAndOptionalPort_descriptor =
-      getDescriptor().getMessageTypes().get(43);
+      getDescriptor().getMessageTypes().get(59);
     internal_static_buf_validate_conformance_cases_StringHostAndOptionalPort_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_StringHostAndOptionalPort_descriptor,
+        new java.lang.String[] { "Val", });
+    internal_static_buf_validate_conformance_cases_StringExample_descriptor =
+      getDescriptor().getMessageTypes().get(60);
+    internal_static_buf_validate_conformance_cases_StringExample_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_buf_validate_conformance_cases_StringExample_descriptor,
         new java.lang.String[] { "Val", });
     descriptor.resolveAllFeaturesImmutable();
     build.buf.validate.ValidateProto.getDescriptor();

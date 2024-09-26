@@ -13,7 +13,8 @@ package build.buf.validate;
  * Protobuf type {@code buf.validate.RepeatedRules}
  */
 public final class RepeatedRules extends
-    com.google.protobuf.GeneratedMessage implements
+    com.google.protobuf.GeneratedMessage.ExtendableMessage<
+      RepeatedRules> implements
     // @@protoc_insertion_point(message_implements:buf.validate.RepeatedRules)
     RepeatedRulesOrBuilder {
 private static final long serialVersionUID = 0L;
@@ -27,7 +28,7 @@ private static final long serialVersionUID = 0L;
       RepeatedRules.class.getName());
   }
   // Use RepeatedRules.newBuilder() to construct.
-  private RepeatedRules(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+  private RepeatedRules(com.google.protobuf.GeneratedMessage.ExtendableBuilder<build.buf.validate.RepeatedRules, ?> builder) {
     super(builder);
   }
   private RepeatedRules() {
@@ -64,7 +65,7 @@ private static final long serialVersionUID = 0L;
    * ```
    * </pre>
    *
-   * <code>optional uint64 min_items = 1 [json_name = "minItems", (.buf.validate.priv.field) = { ... }</code>
+   * <code>optional uint64 min_items = 1 [json_name = "minItems", (.buf.validate.predefined) = { ... }</code>
    * @return Whether the minItems field is set.
    */
   @java.lang.Override
@@ -86,7 +87,7 @@ private static final long serialVersionUID = 0L;
    * ```
    * </pre>
    *
-   * <code>optional uint64 min_items = 1 [json_name = "minItems", (.buf.validate.priv.field) = { ... }</code>
+   * <code>optional uint64 min_items = 1 [json_name = "minItems", (.buf.validate.predefined) = { ... }</code>
    * @return The minItems.
    */
   @java.lang.Override
@@ -111,7 +112,7 @@ private static final long serialVersionUID = 0L;
    * ```
    * </pre>
    *
-   * <code>optional uint64 max_items = 2 [json_name = "maxItems", (.buf.validate.priv.field) = { ... }</code>
+   * <code>optional uint64 max_items = 2 [json_name = "maxItems", (.buf.validate.predefined) = { ... }</code>
    * @return Whether the maxItems field is set.
    */
   @java.lang.Override
@@ -133,7 +134,7 @@ private static final long serialVersionUID = 0L;
    * ```
    * </pre>
    *
-   * <code>optional uint64 max_items = 2 [json_name = "maxItems", (.buf.validate.priv.field) = { ... }</code>
+   * <code>optional uint64 max_items = 2 [json_name = "maxItems", (.buf.validate.predefined) = { ... }</code>
    * @return The maxItems.
    */
   @java.lang.Override
@@ -157,7 +158,7 @@ private static final long serialVersionUID = 0L;
    * ```
    * </pre>
    *
-   * <code>optional bool unique = 3 [json_name = "unique", (.buf.validate.priv.field) = { ... }</code>
+   * <code>optional bool unique = 3 [json_name = "unique", (.buf.validate.predefined) = { ... }</code>
    * @return Whether the unique field is set.
    */
   @java.lang.Override
@@ -178,7 +179,7 @@ private static final long serialVersionUID = 0L;
    * ```
    * </pre>
    *
-   * <code>optional bool unique = 3 [json_name = "unique", (.buf.validate.priv.field) = { ... }</code>
+   * <code>optional bool unique = 3 [json_name = "unique", (.buf.validate.predefined) = { ... }</code>
    * @return The unique.
    */
   @java.lang.Override
@@ -273,6 +274,16 @@ private static final long serialVersionUID = 0L;
     if (isInitialized == 1) return true;
     if (isInitialized == 0) return false;
 
+    if (hasItems()) {
+      if (!getItems().isInitialized()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+    }
+    if (!extensionsAreInitialized()) {
+      memoizedIsInitialized = 0;
+      return false;
+    }
     memoizedIsInitialized = 1;
     return true;
   }
@@ -280,6 +291,9 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
+    com.google.protobuf.GeneratedMessage
+      .ExtendableMessage.ExtensionSerializer
+        extensionWriter = newExtensionSerializer();
     if (((bitField0_ & 0x00000001) != 0)) {
       output.writeUInt64(1, minItems_);
     }
@@ -292,6 +306,7 @@ private static final long serialVersionUID = 0L;
     if (((bitField0_ & 0x00000008) != 0)) {
       output.writeMessage(4, getItems());
     }
+    extensionWriter.writeUntil(536870912, output);
     getUnknownFields().writeTo(output);
   }
 
@@ -317,6 +332,7 @@ private static final long serialVersionUID = 0L;
       size += com.google.protobuf.CodedOutputStream
         .computeMessageSize(4, getItems());
     }
+    size += extensionsSerializedSize();
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
     return size;
@@ -353,6 +369,8 @@ private static final long serialVersionUID = 0L;
           .equals(other.getItems())) return false;
     }
     if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+    if (!getExtensionFields().equals(other.getExtensionFields()))
+      return false;
     return true;
   }
 
@@ -382,6 +400,7 @@ private static final long serialVersionUID = 0L;
       hash = (37 * hash) + ITEMS_FIELD_NUMBER;
       hash = (53 * hash) + getItems().hashCode();
     }
+    hash = hashFields(hash, getExtensionFields());
     hash = (29 * hash) + getUnknownFields().hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -487,7 +506,8 @@ private static final long serialVersionUID = 0L;
    * Protobuf type {@code buf.validate.RepeatedRules}
    */
   public static final class Builder extends
-      com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+      com.google.protobuf.GeneratedMessage.ExtendableBuilder<
+        build.buf.validate.RepeatedRules, Builder> implements
       // @@protoc_insertion_point(builder_implements:buf.validate.RepeatedRules)
       build.buf.validate.RepeatedRulesOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
@@ -610,6 +630,7 @@ private static final long serialVersionUID = 0L;
       if (other.hasItems()) {
         mergeItems(other.getItems());
       }
+      this.mergeExtensionFields(other);
       this.mergeUnknownFields(other.getUnknownFields());
       onChanged();
       return this;
@@ -617,6 +638,14 @@ private static final long serialVersionUID = 0L;
 
     @java.lang.Override
     public final boolean isInitialized() {
+      if (hasItems()) {
+        if (!getItems().isInitialized()) {
+          return false;
+        }
+      }
+      if (!extensionsAreInitialized()) {
+        return false;
+      }
       return true;
     }
 
@@ -691,7 +720,7 @@ private static final long serialVersionUID = 0L;
      * ```
      * </pre>
      *
-     * <code>optional uint64 min_items = 1 [json_name = "minItems", (.buf.validate.priv.field) = { ... }</code>
+     * <code>optional uint64 min_items = 1 [json_name = "minItems", (.buf.validate.predefined) = { ... }</code>
      * @return Whether the minItems field is set.
      */
     @java.lang.Override
@@ -713,7 +742,7 @@ private static final long serialVersionUID = 0L;
      * ```
      * </pre>
      *
-     * <code>optional uint64 min_items = 1 [json_name = "minItems", (.buf.validate.priv.field) = { ... }</code>
+     * <code>optional uint64 min_items = 1 [json_name = "minItems", (.buf.validate.predefined) = { ... }</code>
      * @return The minItems.
      */
     @java.lang.Override
@@ -735,7 +764,7 @@ private static final long serialVersionUID = 0L;
      * ```
      * </pre>
      *
-     * <code>optional uint64 min_items = 1 [json_name = "minItems", (.buf.validate.priv.field) = { ... }</code>
+     * <code>optional uint64 min_items = 1 [json_name = "minItems", (.buf.validate.predefined) = { ... }</code>
      * @param value The minItems to set.
      * @return This builder for chaining.
      */
@@ -761,7 +790,7 @@ private static final long serialVersionUID = 0L;
      * ```
      * </pre>
      *
-     * <code>optional uint64 min_items = 1 [json_name = "minItems", (.buf.validate.priv.field) = { ... }</code>
+     * <code>optional uint64 min_items = 1 [json_name = "minItems", (.buf.validate.predefined) = { ... }</code>
      * @return This builder for chaining.
      */
     public Builder clearMinItems() {
@@ -787,7 +816,7 @@ private static final long serialVersionUID = 0L;
      * ```
      * </pre>
      *
-     * <code>optional uint64 max_items = 2 [json_name = "maxItems", (.buf.validate.priv.field) = { ... }</code>
+     * <code>optional uint64 max_items = 2 [json_name = "maxItems", (.buf.validate.predefined) = { ... }</code>
      * @return Whether the maxItems field is set.
      */
     @java.lang.Override
@@ -809,7 +838,7 @@ private static final long serialVersionUID = 0L;
      * ```
      * </pre>
      *
-     * <code>optional uint64 max_items = 2 [json_name = "maxItems", (.buf.validate.priv.field) = { ... }</code>
+     * <code>optional uint64 max_items = 2 [json_name = "maxItems", (.buf.validate.predefined) = { ... }</code>
      * @return The maxItems.
      */
     @java.lang.Override
@@ -831,7 +860,7 @@ private static final long serialVersionUID = 0L;
      * ```
      * </pre>
      *
-     * <code>optional uint64 max_items = 2 [json_name = "maxItems", (.buf.validate.priv.field) = { ... }</code>
+     * <code>optional uint64 max_items = 2 [json_name = "maxItems", (.buf.validate.predefined) = { ... }</code>
      * @param value The maxItems to set.
      * @return This builder for chaining.
      */
@@ -857,7 +886,7 @@ private static final long serialVersionUID = 0L;
      * ```
      * </pre>
      *
-     * <code>optional uint64 max_items = 2 [json_name = "maxItems", (.buf.validate.priv.field) = { ... }</code>
+     * <code>optional uint64 max_items = 2 [json_name = "maxItems", (.buf.validate.predefined) = { ... }</code>
      * @return This builder for chaining.
      */
     public Builder clearMaxItems() {
@@ -882,7 +911,7 @@ private static final long serialVersionUID = 0L;
      * ```
      * </pre>
      *
-     * <code>optional bool unique = 3 [json_name = "unique", (.buf.validate.priv.field) = { ... }</code>
+     * <code>optional bool unique = 3 [json_name = "unique", (.buf.validate.predefined) = { ... }</code>
      * @return Whether the unique field is set.
      */
     @java.lang.Override
@@ -903,7 +932,7 @@ private static final long serialVersionUID = 0L;
      * ```
      * </pre>
      *
-     * <code>optional bool unique = 3 [json_name = "unique", (.buf.validate.priv.field) = { ... }</code>
+     * <code>optional bool unique = 3 [json_name = "unique", (.buf.validate.predefined) = { ... }</code>
      * @return The unique.
      */
     @java.lang.Override
@@ -924,7 +953,7 @@ private static final long serialVersionUID = 0L;
      * ```
      * </pre>
      *
-     * <code>optional bool unique = 3 [json_name = "unique", (.buf.validate.priv.field) = { ... }</code>
+     * <code>optional bool unique = 3 [json_name = "unique", (.buf.validate.predefined) = { ... }</code>
      * @param value The unique to set.
      * @return This builder for chaining.
      */
@@ -949,7 +978,7 @@ private static final long serialVersionUID = 0L;
      * ```
      * </pre>
      *
-     * <code>optional bool unique = 3 [json_name = "unique", (.buf.validate.priv.field) = { ... }</code>
+     * <code>optional bool unique = 3 [json_name = "unique", (.buf.validate.predefined) = { ... }</code>
      * @return This builder for chaining.
      */
     public Builder clearUnique() {

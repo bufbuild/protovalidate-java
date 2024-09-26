@@ -29,6 +29,9 @@ public class Variable implements Activation {
   /** The {@value} variable in CEL. */
   public static final String RULES_NAME = "rules";
 
+  /** The {@value} variable in CEL. */
+  public static final String RULE_NAME = "rule";
+
   /** The parent activation */
   private final Activation next;
 
@@ -63,6 +66,17 @@ public class Variable implements Activation {
    */
   public static Variable newRulesVariable(Object val) {
     return new Variable(new NowVariable(), RULES_NAME, val);
+  }
+
+  /**
+   * Creates a "rule" variable.
+   *
+   * @param rules the value of the "rules" variable.
+   * @param val the value of the "rule" variable.
+   * @return {@link Variable}.
+   */
+  public static Variable newRuleVariable(Object rules, Object val) {
+    return new Variable(newRulesVariable(rules), RULE_NAME, val);
   }
 
   @Override
