@@ -130,17 +130,17 @@ public final class WktWrappersProto {
       ".protobuf.StringValueB\r\272H\nr\005\n\003bar\310\001\001R\003va" +
       "l\"X\n\032WrapperRequiredEmptyString\022:\n\003val\030\001" +
       " \001(\0132\034.google.protobuf.StringValueB\n\272H\007r" +
-      "\002\n\000\310\001\001R\003val\"U\n\031WrapperOptionalUuidString" +
-      "\0228\n\003val\030\001 \001(\0132\034.google.protobuf.StringVa" +
-      "lueB\010\272H\005r\003\260\001\001R\003val\"T\n\024WrapperRequiredFlo" +
-      "at\022<\n\003val\030\001 \001(\0132\033.google.protobuf.FloatV" +
-      "alueB\r\272H\n\n\005%\000\000\000\000\310\001\001R\003valB\324\001\n$build.buf.v" +
-      "alidate.conformance.casesB\020WktWrappersPr" +
-      "otoP\001\242\002\004BVCC\252\002\036Buf.Validate.Conformance." +
-      "Cases\312\002\036Buf\\Validate\\Conformance\\Cases\342\002" +
-      "*Buf\\Validate\\Conformance\\Cases\\GPBMetad" +
-      "ata\352\002!Buf::Validate::Conformance::Casesb" +
-      "\006proto3"
+      "\002\n\000\310\001\001R\003val\"X\n\031WrapperOptionalUuidString" +
+      "\022;\n\003val\030\001 \001(\0132\034.google.protobuf.StringVa" +
+      "lueB\013\272H\010r\003\260\001\001\310\001\000R\003val\"T\n\024WrapperRequired" +
+      "Float\022<\n\003val\030\001 \001(\0132\033.google.protobuf.Flo" +
+      "atValueB\r\272H\n\n\005%\000\000\000\000\310\001\001R\003valB\324\001\n$build.bu" +
+      "f.validate.conformance.casesB\020WktWrapper" +
+      "sProtoP\001\242\002\004BVCC\252\002\036Buf.Validate.Conforman" +
+      "ce.Cases\312\002\036Buf\\Validate\\Conformance\\Case" +
+      "s\342\002*Buf\\Validate\\Conformance\\Cases\\GPBMe" +
+      "tadata\352\002!Buf::Validate::Conformance::Cas" +
+      "esb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,

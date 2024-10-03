@@ -55,7 +55,7 @@ public class Variable implements Activation {
    * @return {@link Variable}.
    */
   public static Variable newThisVariable(@Nullable Object val) {
-    return new Variable(Activation.emptyActivation(), THIS_NAME, val);
+    return new Variable(new NowVariable(), THIS_NAME, val);
   }
 
   /**
@@ -65,7 +65,7 @@ public class Variable implements Activation {
    * @return {@link Variable}.
    */
   public static Variable newRulesVariable(Object val) {
-    return new Variable(new NowVariable(), RULES_NAME, val);
+    return new Variable(Activation.emptyActivation(), RULES_NAME, val);
   }
 
   /**
