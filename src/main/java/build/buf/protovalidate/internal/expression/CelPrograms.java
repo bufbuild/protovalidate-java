@@ -15,9 +15,9 @@
 package build.buf.protovalidate.internal.expression;
 
 import build.buf.protovalidate.ValidationResult;
+import build.buf.protovalidate.Value;
 import build.buf.protovalidate.exceptions.ExecutionException;
 import build.buf.protovalidate.internal.evaluator.Evaluator;
-import build.buf.protovalidate.internal.evaluator.Value;
 import build.buf.validate.Violation;
 import java.util.ArrayList;
 import java.util.List;
@@ -43,7 +43,7 @@ public class CelPrograms implements Evaluator {
 
   @Override
   public ValidationResult evaluate(Value val, boolean failFast) throws ExecutionException {
-    Variable activation = Variable.newThisVariable(val.value(Object.class));
+    Variable activation = Variable.newThisVariable(val.celValue());
     List<Violation> violationList = new ArrayList<>();
     for (CompiledProgram program : programs) {
       Violation violation = program.eval(activation);

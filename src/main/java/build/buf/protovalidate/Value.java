@@ -12,9 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package build.buf.protovalidate.internal.evaluator;
+package build.buf.protovalidate;
 
-import com.google.protobuf.Message;
 import java.util.List;
 import java.util.Map;
 import javax.annotation.Nullable;
@@ -25,22 +24,13 @@ import javax.annotation.Nullable;
  */
 public interface Value {
   /**
-   * Get the underlying value as a {@link Message} type.
+   * Get the underlying value as a {@link MessageReflector} type.
    *
-   * @return The underlying {@link Message} value. null if the underlying value is not a {@link
-   *     Message} type.
+   * @return The underlying {@link MessageReflector} value. null if the underlying value is not a
+   *     {@link MessageReflector} type.
    */
   @Nullable
-  Message messageValue();
-
-  /**
-   * Get the underlying value and cast it to the class type.
-   *
-   * @param clazz The inferred class.
-   * @return The value casted to the inferred class type.
-   * @param <T> The class type.
-   */
-  <T> T value(Class<T> clazz);
+  MessageReflector messageValue();
 
   /**
    * Get the underlying value as a list.
@@ -57,4 +47,22 @@ public interface Value {
    *     list.
    */
   Map<Value, Value> mapValue();
+
+  /**
+   * Get the underlying value as it should be provided to CEL.
+   *
+   * @return The underlying value as a CEL-compatible type.
+   */
+  Object celValue();
+
+  /**
+   * Get the underlying value and cast it to the class type, which will be a type checkable
+   * internally by protovalidate-java.
+   *
+   * @param clazz The inferred class.
+   * @return The value cast to the inferred class type.
+   * @param <T> The class type.
+   */
+  @Nullable
+  <T> T jvmValue(Class<T> clazz);
 }
