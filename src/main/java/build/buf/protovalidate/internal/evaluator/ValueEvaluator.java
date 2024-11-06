@@ -15,6 +15,7 @@
 package build.buf.protovalidate.internal.evaluator;
 
 import build.buf.protovalidate.ValidationResult;
+import build.buf.protovalidate.Value;
 import build.buf.protovalidate.exceptions.ExecutionException;
 import build.buf.validate.Violation;
 import java.util.ArrayList;
@@ -49,7 +50,7 @@ class ValueEvaluator implements Evaluator {
 
   @Override
   public ValidationResult evaluate(Value val, boolean failFast) throws ExecutionException {
-    if (this.shouldIgnore(val.value(Object.class))) {
+    if (this.shouldIgnore(val.jvmValue(Object.class))) {
       return ValidationResult.EMPTY;
     }
     List<Violation> violations = new ArrayList<>();
@@ -82,7 +83,7 @@ class ValueEvaluator implements Evaluator {
     this.zero = zero;
   }
 
-  private boolean shouldIgnore(Object value) {
+  private boolean shouldIgnore(@Nullable Object value) {
     return this.ignoreEmpty && Objects.equals(value, this.zero);
   }
 }

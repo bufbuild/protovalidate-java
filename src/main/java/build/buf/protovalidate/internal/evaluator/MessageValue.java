@@ -14,19 +14,18 @@
 
 package build.buf.protovalidate.internal.evaluator;
 
+import build.buf.protovalidate.MessageReflector;
+import build.buf.protovalidate.Value;
 import com.google.protobuf.Message;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
+import javax.annotation.Nullable;
 
-/**
- * The {@link build.buf.protovalidate.internal.evaluator.Value} type that contains a {@link
- * com.google.protobuf.Message}.
- */
+/** The {@link Value} type that contains a {@link com.google.protobuf.Message}. */
 public final class MessageValue implements Value {
 
-  /** Object type since the object type is inferred from the field descriptor. */
-  private final Object value;
+  private final ProtobufMessageReflector value;
 
   /**
    * Constructs a {@link MessageValue} with the provided message value.
@@ -34,17 +33,23 @@ public final class MessageValue implements Value {
    * @param value The message value.
    */
   public MessageValue(Message value) {
-    this.value = value;
+    this.value = new ProtobufMessageReflector(value);
   }
 
   @Override
-  public Message messageValue() {
-    return (Message) value;
+  public MessageReflector messageValue() {
+    return value;
   }
 
   @Override
-  public <T> T value(Class<T> clazz) {
-    return clazz.cast(value);
+  @Nullable
+  public <T> T jvmValue(Class<T> clazz) {
+    return null;
+  }
+
+  @Override
+  public Object celValue() {
+    return value.getMessage();
   }
 
   @Override

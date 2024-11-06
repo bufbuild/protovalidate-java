@@ -14,6 +14,8 @@
 
 package build.buf.protovalidate.internal.evaluator;
 
+import build.buf.protovalidate.MessageReflector;
+import build.buf.protovalidate.Value;
 import com.google.protobuf.AbstractMessage;
 import com.google.protobuf.Descriptors;
 import com.google.protobuf.Message;
@@ -25,11 +27,8 @@ import java.util.Map;
 import javax.annotation.Nullable;
 import org.projectnessie.cel.common.ULong;
 
-/**
- * The {@link build.buf.protovalidate.internal.evaluator.Value} type that contains a field
- * descriptor and its value.
- */
-public final class ObjectValue implements Value {
+/** The {@link Value} type that contains a field descriptor and its value. */
+public final class FieldValue implements Value {
 
   /**
    * {@link com.google.protobuf.Descriptors.FieldDescriptor} is the field descriptor for the value.
@@ -40,27 +39,38 @@ public final class ObjectValue implements Value {
   private final Object value;
 
   /**
-   * Constructs a new {@link build.buf.protovalidate.internal.evaluator.ObjectValue}.
+   * Constructs a new {@link FieldValue}.
    *
    * @param fieldDescriptor The field descriptor for the value.
    * @param value The value associated with the field descriptor.
    */
-  ObjectValue(Descriptors.FieldDescriptor fieldDescriptor, Object value) {
+  FieldValue(Descriptors.FieldDescriptor fieldDescriptor, Object value) {
     this.fieldDescriptor = fieldDescriptor;
     this.value = value;
   }
 
-  @Nullable
   @Override
-  public Message messageValue() {
-    if (fieldDescriptor.getJavaType() == Descriptors.FieldDescriptor.JavaType.MESSAGE) {
-      return (Message) value;
+  @Nullable
+  public MessageReflector messageValue() {
+    if (fieldDescriptor.getType() == Descriptors.FieldDescriptor.Type.MESSAGE) {
+      return new ProtobufMessageReflector((Message) value);
     }
     return null;
   }
 
   @Override
-  public <T> T value(Class<T> clazz) {
+  public <T> T jvmValue(Class<T> clazz) {
+    if (value instanceof Descriptors.EnumValueDescriptor) {
+      return clazz.cast(((Descriptors.EnumValueDescriptor) value).getNumber());
+    }
+    return clazz.cast(value);
+  }
+
+  @Override
+  public Object celValue() {
+    if (value instanceof Descriptors.EnumValueDescriptor) {
+      return ((Descriptors.EnumValueDescriptor) value).getNumber();
+    }
     Descriptors.FieldDescriptor.Type type = fieldDescriptor.getType();
     if (!fieldDescriptor.isRepeated()
         && (type == Descriptors.FieldDescriptor.Type.UINT32
@@ -74,9 +84,9 @@ public final class ObjectValue implements Value {
        * When using uint32/uint64 in your protobuf objects or CEL expressions in Java,
        * wrap them with the org.projectnessie.cel.common.ULong type.
        */
-      return clazz.cast(ULong.valueOf(((Number) value).longValue()));
+      return ULong.valueOf(((Number) value).longValue());
     }
-    return clazz.cast(value);
+    return value;
   }
 
   @Override
@@ -85,7 +95,7 @@ public final class ObjectValue implements Value {
     if (fieldDescriptor.isRepeated()) {
       List<?> list = (List<?>) value;
       for (Object o : list) {
-        out.add(new build.buf.protovalidate.internal.evaluator.ObjectValue(fieldDescriptor, o));
+        out.add(new FieldValue(fieldDescriptor, o));
       }
     }
     return out;
@@ -103,12 +113,10 @@ public final class ObjectValue implements Value {
     Map<Value, Value> out = new HashMap<>(input.size());
     for (AbstractMessage entry : input) {
       Object keyValue = entry.getField(keyDesc);
-      Value keyJavaValue =
-          new build.buf.protovalidate.internal.evaluator.ObjectValue(keyDesc, keyValue);
+      Value keyJavaValue = new FieldValue(keyDesc, keyValue);
 
       Object valValue = entry.getField(valDesc);
-      Value valJavaValue =
-          new build.buf.protovalidate.internal.evaluator.ObjectValue(valDesc, valValue);
+      Value valJavaValue = new FieldValue(valDesc, valValue);
 
       out.put(keyJavaValue, valJavaValue);
     }
