@@ -47,12 +47,12 @@ private static final long serialVersionUID = 0L;
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional int32 c = 1 [json_name = "c", (.buf.validate.field) = { ... }</code>
+     * <code>optional sint32 c = 1 [json_name = "c", (.buf.validate.field) = { ... }</code>
      * @return Whether the c field is set.
      */
     boolean hasC();
     /**
-     * <code>optional int32 c = 1 [json_name = "c", (.buf.validate.field) = { ... }</code>
+     * <code>optional sint32 c = 1 [json_name = "c", (.buf.validate.field) = { ... }</code>
      * @return The c.
      */
     int getC();
@@ -98,7 +98,7 @@ private static final long serialVersionUID = 0L;
     public static final int C_FIELD_NUMBER = 1;
     private int c_ = 0;
     /**
-     * <code>optional int32 c = 1 [json_name = "c", (.buf.validate.field) = { ... }</code>
+     * <code>optional sint32 c = 1 [json_name = "c", (.buf.validate.field) = { ... }</code>
      * @return Whether the c field is set.
      */
     @java.lang.Override
@@ -106,7 +106,7 @@ private static final long serialVersionUID = 0L;
       return ((bitField0_ & 0x00000001) != 0);
     }
     /**
-     * <code>optional int32 c = 1 [json_name = "c", (.buf.validate.field) = { ... }</code>
+     * <code>optional sint32 c = 1 [json_name = "c", (.buf.validate.field) = { ... }</code>
      * @return The c.
      */
     @java.lang.Override
@@ -129,7 +129,7 @@ private static final long serialVersionUID = 0L;
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       if (((bitField0_ & 0x00000001) != 0)) {
-        output.writeInt32(1, c_);
+        output.writeSInt32(1, c_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -142,7 +142,7 @@ private static final long serialVersionUID = 0L;
       size = 0;
       if (((bitField0_ & 0x00000001) != 0)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(1, c_);
+          .computeSInt32Size(1, c_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
@@ -394,7 +394,7 @@ private static final long serialVersionUID = 0L;
                 done = true;
                 break;
               case 8: {
-                c_ = input.readInt32();
+                c_ = input.readSInt32();
                 bitField0_ |= 0x00000001;
                 break;
               } // case 8
@@ -417,7 +417,7 @@ private static final long serialVersionUID = 0L;
 
       private int c_ ;
       /**
-       * <code>optional int32 c = 1 [json_name = "c", (.buf.validate.field) = { ... }</code>
+       * <code>optional sint32 c = 1 [json_name = "c", (.buf.validate.field) = { ... }</code>
        * @return Whether the c field is set.
        */
       @java.lang.Override
@@ -425,7 +425,7 @@ private static final long serialVersionUID = 0L;
         return ((bitField0_ & 0x00000001) != 0);
       }
       /**
-       * <code>optional int32 c = 1 [json_name = "c", (.buf.validate.field) = { ... }</code>
+       * <code>optional sint32 c = 1 [json_name = "c", (.buf.validate.field) = { ... }</code>
        * @return The c.
        */
       @java.lang.Override
@@ -433,7 +433,7 @@ private static final long serialVersionUID = 0L;
         return c_;
       }
       /**
-       * <code>optional int32 c = 1 [json_name = "c", (.buf.validate.field) = { ... }</code>
+       * <code>optional sint32 c = 1 [json_name = "c", (.buf.validate.field) = { ... }</code>
        * @param value The c to set.
        * @return This builder for chaining.
        */
@@ -445,7 +445,7 @@ private static final long serialVersionUID = 0L;
         return this;
       }
       /**
-       * <code>optional int32 c = 1 [json_name = "c", (.buf.validate.field) = { ... }</code>
+       * <code>optional sint32 c = 1 [json_name = "c", (.buf.validate.field) = { ... }</code>
        * @return This builder for chaining.
        */
       public Builder clearC() {
@@ -510,7 +510,7 @@ private static final long serialVersionUID = 0L;
   public static final int A_FIELD_NUMBER = 1;
   private int a_ = 0;
   /**
-   * <code>optional int32 a = 1 [json_name = "a", (.buf.validate.field) = { ... }</code>
+   * <code>optional sint32 a = 1 [json_name = "a", (.buf.validate.field) = { ... }</code>
    * @return Whether the a field is set.
    */
   @java.lang.Override
@@ -518,7 +518,7 @@ private static final long serialVersionUID = 0L;
     return ((bitField0_ & 0x00000001) != 0);
   }
   /**
-   * <code>optional int32 a = 1 [json_name = "a", (.buf.validate.field) = { ... }</code>
+   * <code>optional sint32 a = 1 [json_name = "a", (.buf.validate.field) = { ... }</code>
    * @return The a.
    */
   @java.lang.Override
@@ -567,7 +567,7 @@ private static final long serialVersionUID = 0L;
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
     if (((bitField0_ & 0x00000001) != 0)) {
-      output.writeInt32(1, a_);
+      output.writeSInt32(1, a_);
     }
     if (((bitField0_ & 0x00000002) != 0)) {
       output.writeMessage(2, getB());
@@ -583,7 +583,7 @@ private static final long serialVersionUID = 0L;
     size = 0;
     if (((bitField0_ & 0x00000001) != 0)) {
       size += com.google.protobuf.CodedOutputStream
-        .computeInt32Size(1, a_);
+        .computeSInt32Size(1, a_);
     }
     if (((bitField0_ & 0x00000002) != 0)) {
       size += com.google.protobuf.CodedOutputStream
@@ -868,7 +868,7 @@ private static final long serialVersionUID = 0L;
               done = true;
               break;
             case 8: {
-              a_ = input.readInt32();
+              a_ = input.readSInt32();
               bitField0_ |= 0x00000001;
               break;
             } // case 8
@@ -898,7 +898,7 @@ private static final long serialVersionUID = 0L;
 
     private int a_ ;
     /**
-     * <code>optional int32 a = 1 [json_name = "a", (.buf.validate.field) = { ... }</code>
+     * <code>optional sint32 a = 1 [json_name = "a", (.buf.validate.field) = { ... }</code>
      * @return Whether the a field is set.
      */
     @java.lang.Override
@@ -906,7 +906,7 @@ private static final long serialVersionUID = 0L;
       return ((bitField0_ & 0x00000001) != 0);
     }
     /**
-     * <code>optional int32 a = 1 [json_name = "a", (.buf.validate.field) = { ... }</code>
+     * <code>optional sint32 a = 1 [json_name = "a", (.buf.validate.field) = { ... }</code>
      * @return The a.
      */
     @java.lang.Override
@@ -914,7 +914,7 @@ private static final long serialVersionUID = 0L;
       return a_;
     }
     /**
-     * <code>optional int32 a = 1 [json_name = "a", (.buf.validate.field) = { ... }</code>
+     * <code>optional sint32 a = 1 [json_name = "a", (.buf.validate.field) = { ... }</code>
      * @param value The a to set.
      * @return This builder for chaining.
      */
@@ -926,7 +926,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>optional int32 a = 1 [json_name = "a", (.buf.validate.field) = { ... }</code>
+     * <code>optional sint32 a = 1 [json_name = "a", (.buf.validate.field) = { ... }</code>
      * @return This builder for chaining.
      */
     public Builder clearA() {

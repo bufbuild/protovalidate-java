@@ -10,12 +10,12 @@ public interface StandardPredefinedAndCustomRuleProto2OrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>optional int32 a = 1 [json_name = "a", (.buf.validate.field) = { ... }</code>
+   * <code>optional sint32 a = 1 [json_name = "a", (.buf.validate.field) = { ... }</code>
    * @return Whether the a field is set.
    */
   boolean hasA();
   /**
-   * <code>optional int32 a = 1 [json_name = "a", (.buf.validate.field) = { ... }</code>
+   * <code>optional sint32 a = 1 [json_name = "a", (.buf.validate.field) = { ... }</code>
    * @return The a.
    */
   int getA();
