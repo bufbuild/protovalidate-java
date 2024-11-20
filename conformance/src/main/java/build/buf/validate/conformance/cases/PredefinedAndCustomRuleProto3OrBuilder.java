@@ -10,7 +10,7 @@ public interface PredefinedAndCustomRuleProto3OrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>int32 a = 1 [json_name = "a", (.buf.validate.field) = { ... }</code>
+   * <code>sint32 a = 1 [json_name = "a", (.buf.validate.field) = { ... }</code>
    * @return The a.
    */
   int getA();

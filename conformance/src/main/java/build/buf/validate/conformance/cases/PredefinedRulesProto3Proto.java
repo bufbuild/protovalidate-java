@@ -131,6 +131,96 @@ public final class PredefinedRulesProto3Proto {
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_buf_validate_conformance_cases_PredefinedTimestampRuleProto3_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_buf_validate_conformance_cases_PredefinedWrappedFloatRuleProto3_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_buf_validate_conformance_cases_PredefinedWrappedFloatRuleProto3_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_buf_validate_conformance_cases_PredefinedWrappedDoubleRuleProto3_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_buf_validate_conformance_cases_PredefinedWrappedDoubleRuleProto3_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_buf_validate_conformance_cases_PredefinedWrappedInt32RuleProto3_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_buf_validate_conformance_cases_PredefinedWrappedInt32RuleProto3_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_buf_validate_conformance_cases_PredefinedWrappedInt64RuleProto3_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_buf_validate_conformance_cases_PredefinedWrappedInt64RuleProto3_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_buf_validate_conformance_cases_PredefinedWrappedUInt32RuleProto3_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_buf_validate_conformance_cases_PredefinedWrappedUInt32RuleProto3_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_buf_validate_conformance_cases_PredefinedWrappedUInt64RuleProto3_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_buf_validate_conformance_cases_PredefinedWrappedUInt64RuleProto3_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_buf_validate_conformance_cases_PredefinedWrappedBoolRuleProto3_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_buf_validate_conformance_cases_PredefinedWrappedBoolRuleProto3_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_buf_validate_conformance_cases_PredefinedWrappedStringRuleProto3_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_buf_validate_conformance_cases_PredefinedWrappedStringRuleProto3_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_buf_validate_conformance_cases_PredefinedWrappedBytesRuleProto3_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_buf_validate_conformance_cases_PredefinedWrappedBytesRuleProto3_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_buf_validate_conformance_cases_PredefinedRepeatedWrappedFloatRuleProto3_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_buf_validate_conformance_cases_PredefinedRepeatedWrappedFloatRuleProto3_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_buf_validate_conformance_cases_PredefinedRepeatedWrappedDoubleRuleProto3_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_buf_validate_conformance_cases_PredefinedRepeatedWrappedDoubleRuleProto3_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_buf_validate_conformance_cases_PredefinedRepeatedWrappedInt32RuleProto3_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_buf_validate_conformance_cases_PredefinedRepeatedWrappedInt32RuleProto3_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_buf_validate_conformance_cases_PredefinedRepeatedWrappedInt64RuleProto3_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_buf_validate_conformance_cases_PredefinedRepeatedWrappedInt64RuleProto3_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_buf_validate_conformance_cases_PredefinedRepeatedWrappedUInt32RuleProto3_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_buf_validate_conformance_cases_PredefinedRepeatedWrappedUInt32RuleProto3_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_buf_validate_conformance_cases_PredefinedRepeatedWrappedUInt64RuleProto3_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_buf_validate_conformance_cases_PredefinedRepeatedWrappedUInt64RuleProto3_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_buf_validate_conformance_cases_PredefinedRepeatedWrappedBoolRuleProto3_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_buf_validate_conformance_cases_PredefinedRepeatedWrappedBoolRuleProto3_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_buf_validate_conformance_cases_PredefinedRepeatedWrappedStringRuleProto3_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_buf_validate_conformance_cases_PredefinedRepeatedWrappedStringRuleProto3_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_buf_validate_conformance_cases_PredefinedRepeatedWrappedBytesRuleProto3_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_buf_validate_conformance_cases_PredefinedRepeatedWrappedBytesRuleProto3_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
     internal_static_buf_validate_conformance_cases_PredefinedAndCustomRuleProto3_descriptor;
   static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
@@ -167,72 +257,119 @@ public final class PredefinedRulesProto3Proto {
       "rules_proto_editions.proto\032\033buf/validate" +
       "/validate.proto\032\036google/protobuf/duratio" +
       "n.proto\032\037google/protobuf/timestamp.proto" +
-      "\":\n\031PredefinedFloatRuleProto3\022\035\n\003val\030\001 \001" +
-      "(\002B\013\272H\010\n\006\315H\000\000\200?R\003val\"?\n\032PredefinedDouble" +
-      "RuleProto3\022!\n\003val\030\001 \001(\001B\017\272H\014\022\n\311H\000\000\000\000\000\000\360?" +
-      "R\003val\"7\n\031PredefinedInt32RuleProto3\022\032\n\003va" +
-      "l\030\001 \001(\005B\010\272H\005\032\003\310H\001R\003val\"7\n\031PredefinedInt6" +
-      "4RuleProto3\022\032\n\003val\030\001 \001(\003B\010\272H\005\"\003\310H\001R\003val\"" +
-      "8\n\032PredefinedUInt32RuleProto3\022\032\n\003val\030\001 \001" +
-      "(\rB\010\272H\005*\003\310H\001R\003val\"8\n\032PredefinedUInt64Rul" +
-      "eProto3\022\032\n\003val\030\001 \001(\004B\010\272H\0052\003\310H\001R\003val\"8\n\032P" +
-      "redefinedSInt32RuleProto3\022\032\n\003val\030\001 \001(\021B\010" +
-      "\272H\005:\003\310H\001R\003val\"8\n\032PredefinedSInt64RulePro" +
-      "to3\022\032\n\003val\030\001 \001(\022B\010\272H\005B\003\310H\001R\003val\"9\n\033Prede" +
-      "finedFixed32RuleProto3\022\032\n\003val\030\001 \001(\007B\010\272H\005" +
-      "J\003\310H\001R\003val\"9\n\033PredefinedFixed64RuleProto" +
-      "3\022\032\n\003val\030\001 \001(\006B\010\272H\005R\003\310H\001R\003val\":\n\034Predefi" +
-      "nedSFixed32RuleProto3\022\032\n\003val\030\001 \001(\017B\010\272H\005Z" +
-      "\003\310H\001R\003val\":\n\034PredefinedSFixed64RuleProto" +
-      "3\022\032\n\003val\030\001 \001(\020B\010\272H\005b\003\310H\001R\003val\"6\n\030Predefi" +
-      "nedBoolRuleProto3\022\032\n\003val\030\001 \001(\010B\010\272H\005j\003\310H\001" +
-      "R\003val\"8\n\032PredefinedStringRuleProto3\022\032\n\003v" +
-      "al\030\001 \001(\tB\010\272H\005r\003\310H\001R\003val\"7\n\031PredefinedByt" +
-      "esRuleProto3\022\032\n\003val\030\001 \001(\014B\010\272H\005z\003\310H\001R\003val" +
-      "\"\301\001\n\030PredefinedEnumRuleProto3\022`\n\003val\030\001 \001" +
-      "(\0162C.buf.validate.conformance.cases.Pred" +
-      "efinedEnumRuleProto3.EnumProto3B\t\272H\006\202\001\003\310" +
-      "H\001R\003val\"C\n\nEnumProto3\022 \n\034ENUM_PROTO3_ZER" +
-      "O_UNSPECIFIED\020\000\022\023\n\017ENUM_PROTO3_ONE\020\001\"\260\001\n" +
-      "\027PredefinedMapRuleProto3\022]\n\003val\030\001 \003(\0132@." +
-      "buf.validate.conformance.cases.Predefine" +
-      "dMapRuleProto3.ValEntryB\t\272H\006\232\001\003\320H\001R\003val\032" +
-      "6\n\010ValEntry\022\020\n\003key\030\001 \001(\004R\003key\022\024\n\005value\030\002" +
-      " \001(\004R\005value:\0028\001\";\n\034PredefinedRepeatedRul" +
-      "eProto3\022\033\n\003val\030\001 \003(\004B\t\272H\006\222\001\003\310H\001R\003val\"V\n\034" +
-      "PredefinedDurationRuleProto3\0226\n\003val\030\001 \001(" +
-      "\0132\031.google.protobuf.DurationB\t\272H\006\252\001\003\310H\001R" +
-      "\003val\"X\n\035PredefinedTimestampRuleProto3\0227\n" +
-      "\003val\030\001 \001(\0132\032.google.protobuf.TimestampB\t" +
-      "\272H\006\262\001\003\310H\001R\003val\"\311\003\n\035PredefinedAndCustomRu" +
-      "leProto3\022q\n\001a\030\001 \001(\005Bc\272H`\032\003\320H\001\272\001X\n(predef" +
-      "ined_and_custom_rule_scalar_proto3\032,this" +
-      " > 24 ? \'\' : \'a must be greater than 24\'" +
-      "R\001a\022\271\001\n\001b\030\002 \001(\0132D.buf.validate.conforman" +
-      "ce.cases.PredefinedAndCustomRuleProto3.N" +
-      "estedB`\272H]\272\001Z\n*predefined_and_custom_rul" +
-      "e_embedded_proto3\022\033b.c must be a multipl" +
-      "e of 3\032\017this.c % 3 == 0H\000R\001b\210\001\001\032s\n\006Neste" +
-      "d\022i\n\001c\030\001 \001(\005B[\272HX\032\003\320H\001\272\001P\n(predefined_an" +
-      "d_custom_rule_nested_proto3\032$this > 0 ? " +
-      "\'\' : \'c must be positive\'R\001cB\004\n\002_b\"\245\001\n%S" +
-      "tandardPredefinedAndCustomRuleProto3\022|\n\001" +
-      "a\030\001 \001(\005Bn\272Hk\032\005\020\034\310H\001\272\001a\n1standard_predefi" +
-      "ned_and_custom_rule_scalar_proto3\032,this " +
-      "> 24 ? \'\' : \'a must be greater than 24\'R" +
-      "\001a\"\365\001\n.PredefinedRulesProto3UnusedImport" +
-      "BugWorkaround\022^\n\007dummy_1\030\001 \001(\0132E.buf.val" +
-      "idate.conformance.cases.StandardPredefin" +
-      "edAndCustomRuleProto2R\006dummy1\022c\n\007dummy_2" +
-      "\030\002 \001(\0132J.buf.validate.conformance.cases." +
-      "StandardPredefinedAndCustomRuleEdition20" +
-      "23R\006dummy2B\336\001\n$build.buf.validate.confor" +
-      "mance.casesB\032PredefinedRulesProto3ProtoP" +
-      "\001\242\002\004BVCC\252\002\036Buf.Validate.Conformance.Case" +
-      "s\312\002\036Buf\\Validate\\Conformance\\Cases\342\002*Buf" +
-      "\\Validate\\Conformance\\Cases\\GPBMetadata\352" +
-      "\002!Buf::Validate::Conformance::Casesb\006pro" +
-      "to3"
+      "\032\036google/protobuf/wrappers.proto\":\n\031Pred" +
+      "efinedFloatRuleProto3\022\035\n\003val\030\001 \001(\002B\013\272H\010\n" +
+      "\006\315H\000\000\200?R\003val\"?\n\032PredefinedDoubleRuleProt" +
+      "o3\022!\n\003val\030\001 \001(\001B\017\272H\014\022\n\311H\000\000\000\000\000\000\360?R\003val\"@\n" +
+      "\031PredefinedInt32RuleProto3\022#\n\003val\030\001 \001(\005B" +
+      "\021\272H\016\032\014\310H\376\377\377\377\377\377\377\377\377\001R\003val\"B\n\031PredefinedInt" +
+      "64RuleProto3\022%\n\003val\030\001 \001(\003B\023\272H\020\"\016\322H\013\010\376\377\377\377" +
+      "\377\377\377\377\377\001R\003val\"8\n\032PredefinedUInt32RuleProto" +
+      "3\022\032\n\003val\030\001 \001(\rB\010\272H\005*\003\310H\001R\003val\"8\n\032Predefi" +
+      "nedUInt64RuleProto3\022\032\n\003val\030\001 \001(\004B\010\272H\0052\003\310" +
+      "H\001R\003val\"8\n\032PredefinedSInt32RuleProto3\022\032\n" +
+      "\003val\030\001 \001(\021B\010\272H\005:\003\310H\001R\003val\"8\n\032PredefinedS" +
+      "Int64RuleProto3\022\032\n\003val\030\001 \001(\022B\010\272H\005B\003\310H\001R\003" +
+      "val\"9\n\033PredefinedFixed32RuleProto3\022\032\n\003va" +
+      "l\030\001 \001(\007B\010\272H\005J\003\310H\001R\003val\"9\n\033PredefinedFixe" +
+      "d64RuleProto3\022\032\n\003val\030\001 \001(\006B\010\272H\005R\003\310H\001R\003va" +
+      "l\":\n\034PredefinedSFixed32RuleProto3\022\032\n\003val" +
+      "\030\001 \001(\017B\010\272H\005Z\003\310H\001R\003val\":\n\034PredefinedSFixe" +
+      "d64RuleProto3\022\032\n\003val\030\001 \001(\020B\010\272H\005b\003\310H\001R\003va" +
+      "l\"6\n\030PredefinedBoolRuleProto3\022\032\n\003val\030\001 \001" +
+      "(\010B\010\272H\005j\003\310H\001R\003val\"8\n\032PredefinedStringRul" +
+      "eProto3\022\032\n\003val\030\001 \001(\tB\010\272H\005r\003\310H\001R\003val\"7\n\031P" +
+      "redefinedBytesRuleProto3\022\032\n\003val\030\001 \001(\014B\010\272" +
+      "H\005z\003\310H\001R\003val\"\301\001\n\030PredefinedEnumRuleProto" +
+      "3\022`\n\003val\030\001 \001(\0162C.buf.validate.conformanc" +
+      "e.cases.PredefinedEnumRuleProto3.EnumPro" +
+      "to3B\t\272H\006\202\001\003\310H\001R\003val\"C\n\nEnumProto3\022 \n\034ENU" +
+      "M_PROTO3_ZERO_UNSPECIFIED\020\000\022\023\n\017ENUM_PROT" +
+      "O3_ONE\020\001\"\260\001\n\027PredefinedMapRuleProto3\022]\n\003" +
+      "val\030\001 \003(\0132@.buf.validate.conformance.cas" +
+      "es.PredefinedMapRuleProto3.ValEntryB\t\272H\006" +
+      "\232\001\003\320H\001R\003val\0326\n\010ValEntry\022\020\n\003key\030\001 \001(\004R\003ke" +
+      "y\022\024\n\005value\030\002 \001(\004R\005value:\0028\001\";\n\034Predefine" +
+      "dRepeatedRuleProto3\022\033\n\003val\030\001 \003(\004B\t\272H\006\222\001\003" +
+      "\310H\001R\003val\"V\n\034PredefinedDurationRuleProto3" +
+      "\0226\n\003val\030\001 \001(\0132\031.google.protobuf.Duration" +
+      "B\t\272H\006\252\001\003\310H\001R\003val\"X\n\035PredefinedTimestampR" +
+      "uleProto3\0227\n\003val\030\001 \001(\0132\032.google.protobuf" +
+      ".TimestampB\t\272H\006\262\001\003\310H\001R\003val\"^\n Predefined" +
+      "WrappedFloatRuleProto3\022:\n\003val\030\001 \001(\0132\033.go" +
+      "ogle.protobuf.FloatValueB\013\272H\010\n\006\315H\000\000\200?R\003v" +
+      "al\"d\n!PredefinedWrappedDoubleRuleProto3\022" +
+      "?\n\003val\030\001 \001(\0132\034.google.protobuf.DoubleVal" +
+      "ueB\017\272H\014\022\n\311H\000\000\000\000\000\000\360?R\003val\"d\n PredefinedWr" +
+      "appedInt32RuleProto3\022@\n\003val\030\001 \001(\0132\033.goog" +
+      "le.protobuf.Int32ValueB\021\272H\016\032\014\310H\376\377\377\377\377\377\377\377\377" +
+      "\001R\003val\"f\n PredefinedWrappedInt64RuleProt" +
+      "o3\022B\n\003val\030\001 \001(\0132\033.google.protobuf.Int64V" +
+      "alueB\023\272H\020\"\016\312H\013\010\376\377\377\377\377\377\377\377\377\001R\003val\"]\n!Predef" +
+      "inedWrappedUInt32RuleProto3\0228\n\003val\030\001 \001(\013" +
+      "2\034.google.protobuf.UInt32ValueB\010\272H\005*\003\310H\001" +
+      "R\003val\"]\n!PredefinedWrappedUInt64RuleProt" +
+      "o3\0228\n\003val\030\001 \001(\0132\034.google.protobuf.UInt64" +
+      "ValueB\010\272H\0052\003\310H\001R\003val\"Y\n\037PredefinedWrappe" +
+      "dBoolRuleProto3\0226\n\003val\030\001 \001(\0132\032.google.pr" +
+      "otobuf.BoolValueB\010\272H\005j\003\310H\001R\003val\"]\n!Prede" +
+      "finedWrappedStringRuleProto3\0228\n\003val\030\001 \001(" +
+      "\0132\034.google.protobuf.StringValueB\010\272H\005r\003\310H" +
+      "\001R\003val\"[\n PredefinedWrappedBytesRuleProt" +
+      "o3\0227\n\003val\030\001 \001(\0132\033.google.protobuf.BytesV" +
+      "alueB\010\272H\005z\003\310H\001R\003val\"k\n(PredefinedRepeate" +
+      "dWrappedFloatRuleProto3\022?\n\003val\030\001 \003(\0132\033.g" +
+      "oogle.protobuf.FloatValueB\020\272H\r\222\001\n\"\010\n\006\315H\000" +
+      "\000\200?R\003val\"q\n)PredefinedRepeatedWrappedDou" +
+      "bleRuleProto3\022D\n\003val\030\001 \003(\0132\034.google.prot" +
+      "obuf.DoubleValueB\024\272H\021\222\001\016\"\014\022\n\311H\000\000\000\000\000\000\360?R\003" +
+      "val\"q\n(PredefinedRepeatedWrappedInt32Rul" +
+      "eProto3\022E\n\003val\030\001 \003(\0132\033.google.protobuf.I" +
+      "nt32ValueB\026\272H\023\222\001\020\"\016\032\014\310H\376\377\377\377\377\377\377\377\377\001R\003val\"s" +
+      "\n(PredefinedRepeatedWrappedInt64RuleProt" +
+      "o3\022G\n\003val\030\001 \003(\0132\033.google.protobuf.Int64V" +
+      "alueB\030\272H\025\222\001\022\"\020\"\016\312H\013\010\376\377\377\377\377\377\377\377\377\001R\003val\"j\n)P" +
+      "redefinedRepeatedWrappedUInt32RuleProto3" +
+      "\022=\n\003val\030\001 \003(\0132\034.google.protobuf.UInt32Va" +
+      "lueB\r\272H\n\222\001\007\"\005*\003\310H\001R\003val\"j\n)PredefinedRep" +
+      "eatedWrappedUInt64RuleProto3\022=\n\003val\030\001 \003(" +
+      "\0132\034.google.protobuf.UInt64ValueB\r\272H\n\222\001\007\"" +
+      "\0052\003\310H\001R\003val\"f\n\'PredefinedRepeatedWrapped" +
+      "BoolRuleProto3\022;\n\003val\030\001 \003(\0132\032.google.pro" +
+      "tobuf.BoolValueB\r\272H\n\222\001\007\"\005j\003\310H\001R\003val\"j\n)P" +
+      "redefinedRepeatedWrappedStringRuleProto3" +
+      "\022=\n\003val\030\001 \003(\0132\034.google.protobuf.StringVa" +
+      "lueB\r\272H\n\222\001\007\"\005r\003\310H\001R\003val\"h\n(PredefinedRep" +
+      "eatedWrappedBytesRuleProto3\022<\n\003val\030\001 \003(\013" +
+      "2\033.google.protobuf.BytesValueB\r\272H\n\222\001\007\"\005z" +
+      "\003\310H\001R\003val\"\311\003\n\035PredefinedAndCustomRulePro" +
+      "to3\022q\n\001a\030\001 \001(\021Bc\272H`:\003\320H\001\272\001X\n(predefined_" +
+      "and_custom_rule_scalar_proto3\032,this > 24" +
+      " ? \'\' : \'a must be greater than 24\'R\001a\022\271" +
+      "\001\n\001b\030\002 \001(\0132D.buf.validate.conformance.ca" +
+      "ses.PredefinedAndCustomRuleProto3.Nested" +
+      "B`\272H]\272\001Z\n*predefined_and_custom_rule_emb" +
+      "edded_proto3\022\033b.c must be a multiple of " +
+      "3\032\017this.c % 3 == 0H\000R\001b\210\001\001\032s\n\006Nested\022i\n\001" +
+      "c\030\001 \001(\021B[\272HX:\003\320H\001\272\001P\n(predefined_and_cus" +
+      "tom_rule_nested_proto3\032$this > 0 ? \'\' : " +
+      "\'c must be positive\'R\001cB\004\n\002_b\"\245\001\n%Standa" +
+      "rdPredefinedAndCustomRuleProto3\022|\n\001a\030\001 \001" +
+      "(\021Bn\272Hk:\005\0208\310H\001\272\001a\n1standard_predefined_a" +
+      "nd_custom_rule_scalar_proto3\032,this > 24 " +
+      "? \'\' : \'a must be greater than 24\'R\001a\"\365\001" +
+      "\n.PredefinedRulesProto3UnusedImportBugWo" +
+      "rkaround\022^\n\007dummy_1\030\001 \001(\0132E.buf.validate" +
+      ".conformance.cases.StandardPredefinedAnd" +
+      "CustomRuleProto2R\006dummy1\022c\n\007dummy_2\030\002 \001(" +
+      "\0132J.buf.validate.conformance.cases.Stand" +
+      "ardPredefinedAndCustomRuleEdition2023R\006d" +
+      "ummy2B\336\001\n$build.buf.validate.conformance" +
+      ".casesB\032PredefinedRulesProto3ProtoP\001\242\002\004B" +
+      "VCC\252\002\036Buf.Validate.Conformance.Cases\312\002\036B" +
+      "uf\\Validate\\Conformance\\Cases\342\002*Buf\\Vali" +
+      "date\\Conformance\\Cases\\GPBMetadata\352\002!Buf" +
+      "::Validate::Conformance::Casesb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -242,6 +379,7 @@ public final class PredefinedRulesProto3Proto {
           build.buf.validate.ValidateProto.getDescriptor(),
           com.google.protobuf.DurationProto.getDescriptor(),
           com.google.protobuf.TimestampProto.getDescriptor(),
+          com.google.protobuf.WrappersProto.getDescriptor(),
         });
     internal_static_buf_validate_conformance_cases_PredefinedFloatRuleProto3_descriptor =
       getDescriptor().getMessageTypes().get(0);
@@ -369,8 +507,116 @@ public final class PredefinedRulesProto3Proto {
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_PredefinedTimestampRuleProto3_descriptor,
         new java.lang.String[] { "Val", });
-    internal_static_buf_validate_conformance_cases_PredefinedAndCustomRuleProto3_descriptor =
+    internal_static_buf_validate_conformance_cases_PredefinedWrappedFloatRuleProto3_descriptor =
       getDescriptor().getMessageTypes().get(20);
+    internal_static_buf_validate_conformance_cases_PredefinedWrappedFloatRuleProto3_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_buf_validate_conformance_cases_PredefinedWrappedFloatRuleProto3_descriptor,
+        new java.lang.String[] { "Val", });
+    internal_static_buf_validate_conformance_cases_PredefinedWrappedDoubleRuleProto3_descriptor =
+      getDescriptor().getMessageTypes().get(21);
+    internal_static_buf_validate_conformance_cases_PredefinedWrappedDoubleRuleProto3_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_buf_validate_conformance_cases_PredefinedWrappedDoubleRuleProto3_descriptor,
+        new java.lang.String[] { "Val", });
+    internal_static_buf_validate_conformance_cases_PredefinedWrappedInt32RuleProto3_descriptor =
+      getDescriptor().getMessageTypes().get(22);
+    internal_static_buf_validate_conformance_cases_PredefinedWrappedInt32RuleProto3_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_buf_validate_conformance_cases_PredefinedWrappedInt32RuleProto3_descriptor,
+        new java.lang.String[] { "Val", });
+    internal_static_buf_validate_conformance_cases_PredefinedWrappedInt64RuleProto3_descriptor =
+      getDescriptor().getMessageTypes().get(23);
+    internal_static_buf_validate_conformance_cases_PredefinedWrappedInt64RuleProto3_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_buf_validate_conformance_cases_PredefinedWrappedInt64RuleProto3_descriptor,
+        new java.lang.String[] { "Val", });
+    internal_static_buf_validate_conformance_cases_PredefinedWrappedUInt32RuleProto3_descriptor =
+      getDescriptor().getMessageTypes().get(24);
+    internal_static_buf_validate_conformance_cases_PredefinedWrappedUInt32RuleProto3_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_buf_validate_conformance_cases_PredefinedWrappedUInt32RuleProto3_descriptor,
+        new java.lang.String[] { "Val", });
+    internal_static_buf_validate_conformance_cases_PredefinedWrappedUInt64RuleProto3_descriptor =
+      getDescriptor().getMessageTypes().get(25);
+    internal_static_buf_validate_conformance_cases_PredefinedWrappedUInt64RuleProto3_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_buf_validate_conformance_cases_PredefinedWrappedUInt64RuleProto3_descriptor,
+        new java.lang.String[] { "Val", });
+    internal_static_buf_validate_conformance_cases_PredefinedWrappedBoolRuleProto3_descriptor =
+      getDescriptor().getMessageTypes().get(26);
+    internal_static_buf_validate_conformance_cases_PredefinedWrappedBoolRuleProto3_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_buf_validate_conformance_cases_PredefinedWrappedBoolRuleProto3_descriptor,
+        new java.lang.String[] { "Val", });
+    internal_static_buf_validate_conformance_cases_PredefinedWrappedStringRuleProto3_descriptor =
+      getDescriptor().getMessageTypes().get(27);
+    internal_static_buf_validate_conformance_cases_PredefinedWrappedStringRuleProto3_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_buf_validate_conformance_cases_PredefinedWrappedStringRuleProto3_descriptor,
+        new java.lang.String[] { "Val", });
+    internal_static_buf_validate_conformance_cases_PredefinedWrappedBytesRuleProto3_descriptor =
+      getDescriptor().getMessageTypes().get(28);
+    internal_static_buf_validate_conformance_cases_PredefinedWrappedBytesRuleProto3_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_buf_validate_conformance_cases_PredefinedWrappedBytesRuleProto3_descriptor,
+        new java.lang.String[] { "Val", });
+    internal_static_buf_validate_conformance_cases_PredefinedRepeatedWrappedFloatRuleProto3_descriptor =
+      getDescriptor().getMessageTypes().get(29);
+    internal_static_buf_validate_conformance_cases_PredefinedRepeatedWrappedFloatRuleProto3_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_buf_validate_conformance_cases_PredefinedRepeatedWrappedFloatRuleProto3_descriptor,
+        new java.lang.String[] { "Val", });
+    internal_static_buf_validate_conformance_cases_PredefinedRepeatedWrappedDoubleRuleProto3_descriptor =
+      getDescriptor().getMessageTypes().get(30);
+    internal_static_buf_validate_conformance_cases_PredefinedRepeatedWrappedDoubleRuleProto3_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_buf_validate_conformance_cases_PredefinedRepeatedWrappedDoubleRuleProto3_descriptor,
+        new java.lang.String[] { "Val", });
+    internal_static_buf_validate_conformance_cases_PredefinedRepeatedWrappedInt32RuleProto3_descriptor =
+      getDescriptor().getMessageTypes().get(31);
+    internal_static_buf_validate_conformance_cases_PredefinedRepeatedWrappedInt32RuleProto3_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_buf_validate_conformance_cases_PredefinedRepeatedWrappedInt32RuleProto3_descriptor,
+        new java.lang.String[] { "Val", });
+    internal_static_buf_validate_conformance_cases_PredefinedRepeatedWrappedInt64RuleProto3_descriptor =
+      getDescriptor().getMessageTypes().get(32);
+    internal_static_buf_validate_conformance_cases_PredefinedRepeatedWrappedInt64RuleProto3_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_buf_validate_conformance_cases_PredefinedRepeatedWrappedInt64RuleProto3_descriptor,
+        new java.lang.String[] { "Val", });
+    internal_static_buf_validate_conformance_cases_PredefinedRepeatedWrappedUInt32RuleProto3_descriptor =
+      getDescriptor().getMessageTypes().get(33);
+    internal_static_buf_validate_conformance_cases_PredefinedRepeatedWrappedUInt32RuleProto3_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_buf_validate_conformance_cases_PredefinedRepeatedWrappedUInt32RuleProto3_descriptor,
+        new java.lang.String[] { "Val", });
+    internal_static_buf_validate_conformance_cases_PredefinedRepeatedWrappedUInt64RuleProto3_descriptor =
+      getDescriptor().getMessageTypes().get(34);
+    internal_static_buf_validate_conformance_cases_PredefinedRepeatedWrappedUInt64RuleProto3_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_buf_validate_conformance_cases_PredefinedRepeatedWrappedUInt64RuleProto3_descriptor,
+        new java.lang.String[] { "Val", });
+    internal_static_buf_validate_conformance_cases_PredefinedRepeatedWrappedBoolRuleProto3_descriptor =
+      getDescriptor().getMessageTypes().get(35);
+    internal_static_buf_validate_conformance_cases_PredefinedRepeatedWrappedBoolRuleProto3_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_buf_validate_conformance_cases_PredefinedRepeatedWrappedBoolRuleProto3_descriptor,
+        new java.lang.String[] { "Val", });
+    internal_static_buf_validate_conformance_cases_PredefinedRepeatedWrappedStringRuleProto3_descriptor =
+      getDescriptor().getMessageTypes().get(36);
+    internal_static_buf_validate_conformance_cases_PredefinedRepeatedWrappedStringRuleProto3_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_buf_validate_conformance_cases_PredefinedRepeatedWrappedStringRuleProto3_descriptor,
+        new java.lang.String[] { "Val", });
+    internal_static_buf_validate_conformance_cases_PredefinedRepeatedWrappedBytesRuleProto3_descriptor =
+      getDescriptor().getMessageTypes().get(37);
+    internal_static_buf_validate_conformance_cases_PredefinedRepeatedWrappedBytesRuleProto3_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_buf_validate_conformance_cases_PredefinedRepeatedWrappedBytesRuleProto3_descriptor,
+        new java.lang.String[] { "Val", });
+    internal_static_buf_validate_conformance_cases_PredefinedAndCustomRuleProto3_descriptor =
+      getDescriptor().getMessageTypes().get(38);
     internal_static_buf_validate_conformance_cases_PredefinedAndCustomRuleProto3_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_PredefinedAndCustomRuleProto3_descriptor,
@@ -382,13 +628,13 @@ public final class PredefinedRulesProto3Proto {
         internal_static_buf_validate_conformance_cases_PredefinedAndCustomRuleProto3_Nested_descriptor,
         new java.lang.String[] { "C", });
     internal_static_buf_validate_conformance_cases_StandardPredefinedAndCustomRuleProto3_descriptor =
-      getDescriptor().getMessageTypes().get(21);
+      getDescriptor().getMessageTypes().get(39);
     internal_static_buf_validate_conformance_cases_StandardPredefinedAndCustomRuleProto3_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_StandardPredefinedAndCustomRuleProto3_descriptor,
         new java.lang.String[] { "A", });
     internal_static_buf_validate_conformance_cases_PredefinedRulesProto3UnusedImportBugWorkaround_descriptor =
-      getDescriptor().getMessageTypes().get(22);
+      getDescriptor().getMessageTypes().get(40);
     internal_static_buf_validate_conformance_cases_PredefinedRulesProto3UnusedImportBugWorkaround_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_PredefinedRulesProto3UnusedImportBugWorkaround_descriptor,
@@ -399,6 +645,7 @@ public final class PredefinedRulesProto3Proto {
     build.buf.validate.ValidateProto.getDescriptor();
     com.google.protobuf.DurationProto.getDescriptor();
     com.google.protobuf.TimestampProto.getDescriptor();
+    com.google.protobuf.WrappersProto.getDescriptor();
     com.google.protobuf.ExtensionRegistry registry =
         com.google.protobuf.ExtensionRegistry.newInstance();
     registry.add(build.buf.validate.conformance.cases.PredefinedRulesProto2Proto.boolFalseProto2);
@@ -409,13 +656,14 @@ public final class PredefinedRulesProto3Proto {
     registry.add(build.buf.validate.conformance.cases.PredefinedRulesProto2Proto.fixed32EvenProto2);
     registry.add(build.buf.validate.conformance.cases.PredefinedRulesProto2Proto.fixed64EvenProto2);
     registry.add(build.buf.validate.conformance.cases.PredefinedRulesProto2Proto.floatAbsRangeProto2);
-    registry.add(build.buf.validate.conformance.cases.PredefinedRulesProtoEditionsProto.int32EvenEdition2023);
-    registry.add(build.buf.validate.conformance.cases.PredefinedRulesProto2Proto.int32EvenProto2);
-    registry.add(build.buf.validate.conformance.cases.PredefinedRulesProto2Proto.int64EvenProto2);
+    registry.add(build.buf.validate.conformance.cases.PredefinedRulesProto2Proto.int32AbsInProto2);
+    registry.add(build.buf.validate.conformance.cases.PredefinedRulesProtoEditionsProto.int64AbsInEdition2023);
+    registry.add(build.buf.validate.conformance.cases.PredefinedRulesProto2Proto.int64AbsInProto2);
     registry.add(build.buf.validate.conformance.cases.PredefinedRulesProtoEditionsProto.mapAtLeastFiveEdition2023);
     registry.add(build.buf.validate.conformance.cases.PredefinedRulesProto2Proto.repeatedAtLeastFiveProto2);
     registry.add(build.buf.validate.conformance.cases.PredefinedRulesProto2Proto.sfixed32EvenProto2);
     registry.add(build.buf.validate.conformance.cases.PredefinedRulesProto2Proto.sfixed64EvenProto2);
+    registry.add(build.buf.validate.conformance.cases.PredefinedRulesProtoEditionsProto.sint32EvenEdition2023);
     registry.add(build.buf.validate.conformance.cases.PredefinedRulesProto2Proto.sint32EvenProto2);
     registry.add(build.buf.validate.conformance.cases.PredefinedRulesProto2Proto.sint64EvenProto2);
     registry.add(build.buf.validate.conformance.cases.PredefinedRulesProto2Proto.stringValidPathProto2);

@@ -243,7 +243,7 @@ public class ConstraintCache {
                 Variable.RULES_NAME,
                 Decls.newObjectType(constraintMessage.getDescriptorForType().getFullName())),
             Decls.newVar(
-                Variable.RULE_NAME, DescriptorMappings.getCELType(constraintFieldDesc, forItems))));
+                Variable.RULE_NAME, DescriptorMappings.getCELType(constraintFieldDesc, false))));
   }
 
   /**

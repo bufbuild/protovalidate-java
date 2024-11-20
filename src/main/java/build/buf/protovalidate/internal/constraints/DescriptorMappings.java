@@ -215,8 +215,21 @@ public final class DescriptorMappings {
           return Decls.newWellKnownType(Type.WellKnownType.DURATION);
         case "google.protobuf.Timestamp":
           return Decls.newWellKnownType(Type.WellKnownType.TIMESTAMP);
+        case "google.protobuf.BytesValue":
+          return Decls.newWrapperType(Decls.Bytes);
+        case "google.protobuf.DoubleValue":
+        case "google.protobuf.FloatValue":
+          return Decls.newWrapperType(Decls.Double);
+        case "google.protobuf.Int32Value":
+        case "google.protobuf.Int64Value":
+          return Decls.newWrapperType(Decls.Int);
+        case "google.protobuf.StringValue":
+          return Decls.newWrapperType(Decls.String);
+        case "google.protobuf.UInt32Value":
+        case "google.protobuf.UInt64Value":
+          return Decls.newWrapperType(Decls.Uint);
         default:
-          return Decls.newObjectType(fieldDescriptor.getFullName());
+          return Decls.newObjectType(fqn);
       }
     }
     return DescriptorMappings.protoKindToCELType(fieldDescriptor.getType());
