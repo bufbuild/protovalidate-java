@@ -23,6 +23,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 /** Performs validation on a map field's key-value pairs. */
 class MapEvaluator implements Evaluator {
@@ -84,7 +85,10 @@ class MapEvaluator implements Evaluator {
 
   private List<Violation> evalPairs(Value key, Value value, boolean failFast)
       throws ExecutionException {
-    List<Violation> keyViolations = keyEvaluator.evaluate(key, failFast).getViolations();
+    List<Violation> keyViolations =
+        keyEvaluator.evaluate(key, failFast).getViolations().stream()
+            .map(violation -> violation.toBuilder().setForKey(true).build())
+            .collect(Collectors.toList());
     final List<Violation> valueViolations;
     if (failFast && !keyViolations.isEmpty()) {
       // Don't evaluate value constraints if failFast is enabled and keys failed validation.
