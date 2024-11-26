@@ -16,6 +16,7 @@ package build.buf.protovalidate.internal.celext;
 
 import com.google.protobuf.Duration;
 import com.google.protobuf.Timestamp;
+import com.google.protobuf.util.Timestamps;
 import java.nio.charset.StandardCharsets;
 import java.text.DecimalFormat;
 import java.util.List;
@@ -139,7 +140,10 @@ final class Format {
     if (val.type().typeEnum() == TypeEnum.String) {
       builder.append(val.value());
     } else if (val.type().typeEnum() == TypeEnum.Bytes) {
-      builder.append(val.value());
+      builder.append(new String((byte[]) val.value(), StandardCharsets.UTF_8));
+    } else if (val.type().typeEnum() == TypeEnum.Double) {
+      DecimalFormat format = new DecimalFormat();
+      builder.append(format.format(val.value()));
     } else {
       formatStringSafe(builder, val, false);
     }
@@ -159,7 +163,11 @@ final class Format {
     } else if (type == TypeEnum.Int || type == TypeEnum.Uint) {
       formatDecimal(builder, val);
     } else if (type == TypeEnum.Double) {
-      DecimalFormat format = new DecimalFormat("0.#");
+      // When a double is nested in another type (e.g. a list) it will have a minimum of 6 decimal
+      // digits. This is to maintain consistency with the Go CEL runtime.
+      DecimalFormat format = new DecimalFormat();
+      format.setMaximumFractionDigits(Integer.MAX_VALUE);
+      format.setMinimumFractionDigits(6);
       builder.append(format.format(val.value()));
     } else if (type == TypeEnum.String) {
       builder.append("\"").append(val.value().toString()).append("\"");
@@ -205,10 +213,8 @@ final class Format {
    * @param val the value to format.
    */
   private static void formatTimestamp(StringBuilder builder, Val val) {
-    builder.append("timestamp(");
     Timestamp timestamp = val.convertToNative(Timestamp.class);
-    builder.append(timestamp.toString());
-    builder.append(")");
+    builder.append(Timestamps.toString(timestamp));
   }
 
   /**

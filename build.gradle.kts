@@ -264,6 +264,7 @@ mavenPublishing {
 dependencies {
     annotationProcessor(libs.nullaway)
     api(libs.protobuf.java)
+    implementation(libs.protobuf.java.util)
     implementation(enforcedPlatform(libs.cel))
     implementation(libs.cel.core)
     implementation(libs.guava)
