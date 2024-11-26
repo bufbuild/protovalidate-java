@@ -14,11 +14,13 @@
 
 package build.buf.protovalidate.internal.celext;
 
+import static java.time.format.DateTimeFormatter.ISO_INSTANT;
+
 import com.google.protobuf.Duration;
 import com.google.protobuf.Timestamp;
-import com.google.protobuf.util.Timestamps;
 import java.nio.charset.StandardCharsets;
 import java.text.DecimalFormat;
+import java.time.Instant;
 import java.util.List;
 import org.projectnessie.cel.common.types.Err.ErrException;
 import org.projectnessie.cel.common.types.IntT;
@@ -214,7 +216,8 @@ final class Format {
    */
   private static void formatTimestamp(StringBuilder builder, Val val) {
     Timestamp timestamp = val.convertToNative(Timestamp.class);
-    builder.append(Timestamps.toString(timestamp));
+    Instant instant = Instant.ofEpochSecond(timestamp.getSeconds(), timestamp.getNanos());
+    builder.append(ISO_INSTANT.format(instant));
   }
 
   /**
