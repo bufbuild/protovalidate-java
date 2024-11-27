@@ -40,4 +40,10 @@ public interface FieldExpressionsOrBuilder extends
    * <code>.buf.validate.conformance.cases.custom_constraints.FieldExpressions.Nested c = 3 [json_name = "c", (.buf.validate.field) = { ... }</code>
    */
   build.buf.validate.conformance.cases.custom_constraints.FieldExpressions.NestedOrBuilder getCOrBuilder();
+
+  /**
+   * <code>int32 d = 4 [json_name = "d", (.buf.validate.field) = { ... }</code>
+   * @return The d.
+   */
+  int getD();
 }

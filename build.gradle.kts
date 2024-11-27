@@ -97,8 +97,7 @@ tasks.register<Exec>("exportProtovalidateModule") {
     commandLine(
         buf.asPath,
         "export",
-        // TODO: DO NOT MERGE
-        "buf.build/jchadwick-buf/protovalidate:fd74cad4128d4294812fe3ad3fac0e2f",
+        "buf.build/bufbuild/protovalidate:${project.findProperty("protovalidate.version")}",
         "--output",
         "src/main/resources",
     )
@@ -120,8 +119,7 @@ tasks.register<Exec>("generateConformance") {
         "conformance/buf.gen.yaml",
         "-o",
         "conformance/",
-        // TODO: DO NOT MERGE
-        "buf.build/bufbuild/protovalidate-testing:v0.8.2",
+        "buf.build/bufbuild/protovalidate-testing:${project.findProperty("protovalidate.version")}",
     )
 }
 
