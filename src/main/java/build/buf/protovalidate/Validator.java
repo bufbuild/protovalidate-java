@@ -17,6 +17,7 @@ package build.buf.protovalidate;
 import build.buf.protovalidate.exceptions.CompilationException;
 import build.buf.protovalidate.exceptions.ValidationException;
 import build.buf.protovalidate.internal.celext.ValidateLibrary;
+import build.buf.protovalidate.internal.errors.FieldPathUtils;
 import build.buf.protovalidate.internal.evaluator.Evaluator;
 import build.buf.protovalidate.internal.evaluator.EvaluatorBuilder;
 import build.buf.protovalidate.internal.evaluator.MessageValue;
@@ -74,7 +75,11 @@ public class Validator {
     }
     Descriptor descriptor = msg.getDescriptorForType();
     Evaluator evaluator = evaluatorBuilder.load(descriptor);
-    return evaluator.evaluate(new MessageValue(msg), failFast);
+    ValidationResult result = evaluator.evaluate(new MessageValue(msg), failFast);
+    if (result.isSuccess()) {
+      return result;
+    }
+    return new ValidationResult(FieldPathUtils.calculateFieldPathStrings(result.getViolations()));
   }
 
   /**

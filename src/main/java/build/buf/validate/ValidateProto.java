@@ -247,6 +247,16 @@ public final class ValidateProto {
   static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_buf_validate_Violation_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_buf_validate_FieldPath_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_buf_validate_FieldPath_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_buf_validate_FieldPathElement_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_buf_validate_FieldPathElement_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -1572,29 +1582,45 @@ public final class ValidateProto {
       "B\036\302H\033\n\031\n\021timestamp.example\032\004trueR\007exampl" +
       "e*\t\010\350\007\020\200\200\200\200\002B\013\n\tless_thanB\016\n\014greater_tha" +
       "n\"E\n\nViolations\0227\n\nviolations\030\001 \003(\0132\027.bu" +
-      "f.validate.ViolationR\nviolations\"\202\001\n\tVio" +
-      "lation\022\035\n\nfield_path\030\001 \001(\tR\tfieldPath\022#\n" +
-      "\rconstraint_id\030\002 \001(\tR\014constraintId\022\030\n\007me" +
-      "ssage\030\003 \001(\tR\007message\022\027\n\007for_key\030\004 \001(\010R\006f" +
-      "orKey*\235\001\n\006Ignore\022\026\n\022IGNORE_UNSPECIFIED\020\000" +
-      "\022\031\n\025IGNORE_IF_UNPOPULATED\020\001\022\033\n\027IGNORE_IF" +
-      "_DEFAULT_VALUE\020\002\022\021\n\rIGNORE_ALWAYS\020\003\022\024\n\014I" +
-      "GNORE_EMPTY\020\001\032\002\010\001\022\026\n\016IGNORE_DEFAULT\020\002\032\002\010" +
-      "\001\032\002\020\001*n\n\nKnownRegex\022\033\n\027KNOWN_REGEX_UNSPE" +
-      "CIFIED\020\000\022 \n\034KNOWN_REGEX_HTTP_HEADER_NAME" +
-      "\020\001\022!\n\035KNOWN_REGEX_HTTP_HEADER_VALUE\020\002:\\\n" +
-      "\007message\022\037.google.protobuf.MessageOption" +
-      "s\030\207\t \001(\0132 .buf.validate.MessageConstrain" +
-      "tsR\007message:T\n\005oneof\022\035.google.protobuf.O" +
-      "neofOptions\030\207\t \001(\0132\036.buf.validate.OneofC" +
-      "onstraintsR\005oneof:T\n\005field\022\035.google.prot" +
-      "obuf.FieldOptions\030\207\t \001(\0132\036.buf.validate." +
-      "FieldConstraintsR\005field:c\n\npredefined\022\035." +
-      "google.protobuf.FieldOptions\030\210\t \001(\0132#.bu" +
-      "f.validate.PredefinedConstraintsR\npredef" +
-      "inedBn\n\022build.buf.validateB\rValidateProt" +
-      "oP\001ZGbuf.build/gen/go/bufbuild/protovali" +
-      "date/protocolbuffers/go/buf/validate"
+      "f.validate.ViolationR\nviolations\"\342\001\n\tVio" +
+      "lation\022-\n\005field\030\005 \001(\0132\027.buf.validate.Fie" +
+      "ldPathR\005field\022+\n\004rule\030\006 \001(\0132\027.buf.valida" +
+      "te.FieldPathR\004rule\022!\n\nfield_path\030\001 \001(\tB\002" +
+      "\030\001R\tfieldPath\022#\n\rconstraint_id\030\002 \001(\tR\014co" +
+      "nstraintId\022\030\n\007message\030\003 \001(\tR\007message\022\027\n\007" +
+      "for_key\030\004 \001(\010R\006forKey\"G\n\tFieldPath\022:\n\010el" +
+      "ements\030\001 \003(\0132\036.buf.validate.FieldPathEle" +
+      "mentR\010elements\"\314\003\n\020FieldPathElement\022!\n\014f" +
+      "ield_number\030\001 \001(\005R\013fieldNumber\022\035\n\nfield_" +
+      "name\030\002 \001(\tR\tfieldName\022I\n\nfield_type\030\003 \001(" +
+      "\0162*.google.protobuf.FieldDescriptorProto" +
+      ".TypeR\tfieldType\022E\n\010key_type\030\004 \001(\0162*.goo" +
+      "gle.protobuf.FieldDescriptorProto.TypeR\007" +
+      "keyType\022I\n\nvalue_type\030\005 \001(\0162*.google.pro" +
+      "tobuf.FieldDescriptorProto.TypeR\tvalueTy" +
+      "pe\022\026\n\005index\030\006 \001(\004H\000R\005index\022\033\n\010bool_key\030\007" +
+      " \001(\010H\000R\007boolKey\022\031\n\007int_key\030\010 \001(\003H\000R\006intK" +
+      "ey\022\033\n\010uint_key\030\t \001(\004H\000R\007uintKey\022\037\n\nstrin" +
+      "g_key\030\n \001(\tH\000R\tstringKeyB\013\n\tsubscript*\235\001" +
+      "\n\006Ignore\022\026\n\022IGNORE_UNSPECIFIED\020\000\022\031\n\025IGNO" +
+      "RE_IF_UNPOPULATED\020\001\022\033\n\027IGNORE_IF_DEFAULT" +
+      "_VALUE\020\002\022\021\n\rIGNORE_ALWAYS\020\003\022\024\n\014IGNORE_EM" +
+      "PTY\020\001\032\002\010\001\022\026\n\016IGNORE_DEFAULT\020\002\032\002\010\001\032\002\020\001*n\n" +
+      "\nKnownRegex\022\033\n\027KNOWN_REGEX_UNSPECIFIED\020\000" +
+      "\022 \n\034KNOWN_REGEX_HTTP_HEADER_NAME\020\001\022!\n\035KN" +
+      "OWN_REGEX_HTTP_HEADER_VALUE\020\002:\\\n\007message" +
+      "\022\037.google.protobuf.MessageOptions\030\207\t \001(\013" +
+      "2 .buf.validate.MessageConstraintsR\007mess" +
+      "age:T\n\005oneof\022\035.google.protobuf.OneofOpti" +
+      "ons\030\207\t \001(\0132\036.buf.validate.OneofConstrain" +
+      "tsR\005oneof:T\n\005field\022\035.google.protobuf.Fie" +
+      "ldOptions\030\207\t \001(\0132\036.buf.validate.FieldCon" +
+      "straintsR\005field:c\n\npredefined\022\035.google.p" +
+      "rotobuf.FieldOptions\030\210\t \001(\0132#.buf.valida" +
+      "te.PredefinedConstraintsR\npredefinedBn\n\022" +
+      "build.buf.validateB\rValidateProtoP\001ZGbuf" +
+      ".build/gen/go/bufbuild/protovalidate/pro" +
+      "tocolbuffers/go/buf/validate"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -1770,7 +1796,19 @@ public final class ValidateProto {
     internal_static_buf_validate_Violation_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_Violation_descriptor,
-        new java.lang.String[] { "FieldPath", "ConstraintId", "Message", "ForKey", });
+        new java.lang.String[] { "Field", "Rule", "FieldPath", "ConstraintId", "Message", "ForKey", });
+    internal_static_buf_validate_FieldPath_descriptor =
+      getDescriptor().getMessageTypes().get(28);
+    internal_static_buf_validate_FieldPath_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_buf_validate_FieldPath_descriptor,
+        new java.lang.String[] { "Elements", });
+    internal_static_buf_validate_FieldPathElement_descriptor =
+      getDescriptor().getMessageTypes().get(29);
+    internal_static_buf_validate_FieldPathElement_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_buf_validate_FieldPathElement_descriptor,
+        new java.lang.String[] { "FieldNumber", "FieldName", "FieldType", "KeyType", "ValueType", "Index", "BoolKey", "IntKey", "UintKey", "StringKey", "Subscript", });
     message.internalInit(descriptor.getExtensions().get(0));
     oneof.internalInit(descriptor.getExtensions().get(1));
     field.internalInit(descriptor.getExtensions().get(2));

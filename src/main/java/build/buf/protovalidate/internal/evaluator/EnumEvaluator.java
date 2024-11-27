@@ -16,6 +16,10 @@ package build.buf.protovalidate.internal.evaluator;
 
 import build.buf.protovalidate.ValidationResult;
 import build.buf.protovalidate.exceptions.ExecutionException;
+import build.buf.protovalidate.internal.errors.FieldPathUtils;
+import build.buf.validate.EnumRules;
+import build.buf.validate.FieldConstraints;
+import build.buf.validate.FieldPath;
 import build.buf.validate.Violation;
 import com.google.protobuf.Descriptors;
 import java.util.Collections;
@@ -30,6 +34,17 @@ import java.util.stream.Collectors;
 class EnumEvaluator implements Evaluator {
   /** Captures all the defined values for this enum */
   private final Set<Integer> values;
+
+  private static final FieldPath DEFINED_ONLY_RULE_PATH =
+      FieldPath.newBuilder()
+          .addElements(
+              FieldPathUtils.fieldPathElement(
+                  FieldConstraints.getDescriptor()
+                      .findFieldByNumber(FieldConstraints.ENUM_FIELD_NUMBER)))
+          .addElements(
+              FieldPathUtils.fieldPathElement(
+                  EnumRules.getDescriptor().findFieldByNumber(EnumRules.DEFINED_ONLY_FIELD_NUMBER)))
+          .build();
 
   /**
    * Constructs a new evaluator for enum values.
@@ -70,6 +85,7 @@ class EnumEvaluator implements Evaluator {
       return new ValidationResult(
           Collections.singletonList(
               Violation.newBuilder()
+                  .setRule(DEFINED_ONLY_RULE_PATH)
                   .setConstraintId("enum.defined_only")
                   .setMessage("value must be one of the defined enum values")
                   .build()));

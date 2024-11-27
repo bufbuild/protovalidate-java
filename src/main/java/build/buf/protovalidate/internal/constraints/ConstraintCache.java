@@ -16,11 +16,13 @@ package build.buf.protovalidate.internal.constraints;
 
 import build.buf.protovalidate.Config;
 import build.buf.protovalidate.exceptions.CompilationException;
+import build.buf.protovalidate.internal.errors.FieldPathUtils;
 import build.buf.protovalidate.internal.expression.AstExpression;
 import build.buf.protovalidate.internal.expression.CompiledProgram;
 import build.buf.protovalidate.internal.expression.Expression;
 import build.buf.protovalidate.internal.expression.Variable;
 import build.buf.validate.FieldConstraints;
+import build.buf.validate.FieldPath;
 import build.buf.validate.ValidateProto;
 import com.google.protobuf.DescriptorProtos;
 import com.google.protobuf.Descriptors;
@@ -52,10 +54,12 @@ public class ConstraintCache {
   private static class CelRule {
     public final AstExpression astExpression;
     public final FieldDescriptor field;
+    public final FieldPath rulePath;
 
-    public CelRule(AstExpression astExpression, FieldDescriptor field) {
+    public CelRule(AstExpression astExpression, FieldDescriptor field, FieldPath rulePath) {
       this.astExpression = astExpression;
       this.field = field;
+      this.rulePath = rulePath;
     }
   }
 
@@ -119,16 +123,17 @@ public class ConstraintCache {
   public List<CompiledProgram> compile(
       FieldDescriptor fieldDescriptor, FieldConstraints fieldConstraints, boolean forItems)
       throws CompilationException {
-    Message message = resolveConstraints(fieldDescriptor, fieldConstraints, forItems);
-    if (message == null) {
+    ResolvedConstraint resolved = resolveConstraints(fieldDescriptor, fieldConstraints, forItems);
+    if (resolved == null) {
       // Message null means there were no constraints resolved.
       return Collections.emptyList();
     }
+    Message message = resolved.message;
     List<CelRule> completeProgramList = new ArrayList<>();
     for (Map.Entry<FieldDescriptor, Object> entry : message.getAllFields().entrySet()) {
       FieldDescriptor constraintFieldDesc = entry.getKey();
       List<CelRule> programList =
-          compileRule(fieldDescriptor, forItems, constraintFieldDesc, message);
+          compileRule(fieldDescriptor, forItems, resolved.setOneof, constraintFieldDesc, message);
       if (programList == null) continue;
       completeProgramList.addAll(programList);
     }
@@ -152,11 +157,14 @@ public class ConstraintCache {
         }
         Ast residual = ruleEnv.residualAst(rule.astExpression.ast, evalResult.getEvalDetails());
         programs.add(
-            new CompiledProgram(ruleEnv.program(residual, globals), rule.astExpression.source));
+            new CompiledProgram(
+                ruleEnv.program(residual, globals), rule.astExpression.source, rule.rulePath));
       } catch (Exception e) {
         programs.add(
             new CompiledProgram(
-                ruleEnv.program(rule.astExpression.ast, globals), rule.astExpression.source));
+                ruleEnv.program(rule.astExpression.ast, globals),
+                rule.astExpression.source,
+                rule.rulePath));
       }
     }
     return Collections.unmodifiableList(programs);
@@ -165,6 +173,7 @@ public class ConstraintCache {
   private @Nullable List<CelRule> compileRule(
       FieldDescriptor fieldDescriptor,
       boolean forItems,
+      FieldDescriptor setOneof,
       FieldDescriptor constraintFieldDesc,
       Message message)
       throws CompilationException {
@@ -178,8 +187,14 @@ public class ConstraintCache {
     celRules = new ArrayList<>(expressions.size());
     Env ruleEnv = getRuleEnv(fieldDescriptor, message, constraintFieldDesc, forItems);
     for (Expression expression : expressions) {
+      FieldPath rulePath =
+          FieldPath.newBuilder()
+              .addElements(FieldPathUtils.fieldPathElement(setOneof))
+              .addElements(FieldPathUtils.fieldPathElement(constraintFieldDesc))
+              .build();
       celRules.add(
-          new CelRule(AstExpression.newAstExpression(ruleEnv, expression), constraintFieldDesc));
+          new CelRule(
+              AstExpression.newAstExpression(ruleEnv, expression), constraintFieldDesc, rulePath));
     }
     descriptorMap.put(constraintFieldDesc, celRules);
     return celRules;
@@ -246,13 +261,23 @@ public class ConstraintCache {
                 Variable.RULE_NAME, DescriptorMappings.getCELType(constraintFieldDesc, false))));
   }
 
+  private static class ResolvedConstraint {
+    final Message message;
+    final FieldDescriptor setOneof;
+
+    ResolvedConstraint(Message message, FieldDescriptor setOneof) {
+      this.message = message;
+      this.setOneof = setOneof;
+    }
+  }
+
   /**
    * Extracts the standard constraints for the specified field. An exception is thrown if the wrong
    * constraints are applied to a field (typically if there is a type-mismatch). Null is returned if
    * there are no standard constraints to apply to this field.
    */
   @Nullable
-  private Message resolveConstraints(
+  private ResolvedConstraint resolveConstraints(
       FieldDescriptor fieldDescriptor, FieldConstraints fieldConstraints, boolean forItems)
       throws CompilationException {
     // Get the oneof field descriptor from the field constraints.
@@ -313,6 +338,6 @@ public class ConstraintCache {
     if (!allowUnknownFields && !typeConstraints.getUnknownFields().isEmpty()) {
       throw new CompilationException("unrecognized field constraints");
     }
-    return typeConstraints;
+    return new ResolvedConstraint(typeConstraints, oneofFieldDescriptor);
   }
 }
