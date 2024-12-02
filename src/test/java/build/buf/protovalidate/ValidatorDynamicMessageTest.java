@@ -17,12 +17,18 @@ package build.buf.protovalidate;
 import static com.example.imports.validationtest.PredefinedProto.isIdent;
 import static org.assertj.core.api.Assertions.assertThat;
 
+import build.buf.protovalidate.internal.errors.FieldPathUtils;
+import build.buf.validate.FieldConstraints;
+import build.buf.validate.FieldPath;
+import build.buf.validate.FieldPathElement;
 import build.buf.validate.Violation;
+import com.example.imports.buf.validate.StringRules;
 import com.example.imports.validationtest.ExamplePredefinedFieldConstraints;
 import com.example.noimports.validationtest.ExampleFieldConstraints;
 import com.example.noimports.validationtest.ExampleMessageConstraints;
 import com.example.noimports.validationtest.ExampleOneofConstraints;
 import com.example.noimports.validationtest.ExampleRequiredFieldConstraints;
+import com.example.noimports.validationtest.PredefinedProto;
 import com.google.protobuf.DescriptorProtos;
 import com.google.protobuf.Descriptors;
 import com.google.protobuf.DynamicMessage;
@@ -53,6 +59,23 @@ public class ValidatorDynamicMessageTest {
         messageBuilder.getDescriptorForType().findFieldByName("regex_string_field"), "0123456789");
     Violation expectedViolation =
         Violation.newBuilder()
+            .setField(
+                FieldPath.newBuilder()
+                    .addElements(
+                        FieldPathUtils.fieldPathElement(
+                            messageBuilder
+                                .getDescriptorForType()
+                                .findFieldByName("regex_string_field"))))
+            .setRule(
+                FieldPath.newBuilder()
+                    .addElements(
+                        FieldPathUtils.fieldPathElement(
+                            FieldConstraints.getDescriptor()
+                                .findFieldByNumber(FieldConstraints.STRING_FIELD_NUMBER)))
+                    .addElements(
+                        FieldPathUtils.fieldPathElement(
+                            StringRules.getDescriptor()
+                                .findFieldByNumber(StringRules.PATTERN_FIELD_NUMBER))))
             .setConstraintId("string.pattern")
             .setFieldPath("regex_string_field")
             .setMessage("value does not match regex pattern `^[a-z0-9]{1,9}$`")
@@ -67,6 +90,9 @@ public class ValidatorDynamicMessageTest {
         createMessageWithUnknownOptions(ExampleOneofConstraints.getDefaultInstance());
     Violation expectedViolation =
         Violation.newBuilder()
+            .setField(
+                FieldPath.newBuilder()
+                    .addElements(FieldPathElement.newBuilder().setFieldName("contact_info")))
             .setFieldPath("contact_info")
             .setConstraintId("required")
             .setMessage("exactly one field is required in oneof")
@@ -108,6 +134,23 @@ public class ValidatorDynamicMessageTest {
         messageBuilder.getDescriptorForType().findFieldByName("regex_string_field"), "0123456789");
     Violation expectedViolation =
         Violation.newBuilder()
+            .setField(
+                FieldPath.newBuilder()
+                    .addElements(
+                        FieldPathUtils.fieldPathElement(
+                            messageBuilder
+                                .getDescriptorForType()
+                                .findFieldByName("regex_string_field"))))
+            .setRule(
+                FieldPath.newBuilder()
+                    .addElements(
+                        FieldPathUtils.fieldPathElement(
+                            FieldConstraints.getDescriptor()
+                                .findFieldByNumber(FieldConstraints.STRING_FIELD_NUMBER)))
+                    .addElements(
+                        FieldPathUtils.fieldPathElement(
+                            StringRules.getDescriptor()
+                                .findFieldByNumber(StringRules.PATTERN_FIELD_NUMBER))))
             .setConstraintId("string.pattern")
             .setFieldPath("regex_string_field")
             .setMessage("value does not match regex pattern `^[a-z0-9]{1,9}$`")
@@ -139,6 +182,19 @@ public class ValidatorDynamicMessageTest {
         messageBuilder.getDescriptorForType().findFieldByName("ident_field"), "0123456789");
     Violation expectedViolation =
         Violation.newBuilder()
+            .setField(
+                FieldPath.newBuilder()
+                    .addElements(
+                        FieldPathUtils.fieldPathElement(
+                            messageBuilder.getDescriptorForType().findFieldByName("ident_field"))))
+            .setRule(
+                FieldPath.newBuilder()
+                    .addElements(
+                        FieldPathUtils.fieldPathElement(
+                            FieldConstraints.getDescriptor()
+                                .findFieldByNumber(FieldConstraints.STRING_FIELD_NUMBER)))
+                    .addElements(
+                        FieldPathUtils.fieldPathElement(PredefinedProto.isIdent.getDescriptor())))
             .setConstraintId("string.is_ident")
             .setFieldPath("ident_field")
             .setMessage("invalid identifier")

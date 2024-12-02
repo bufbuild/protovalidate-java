@@ -533,6 +533,17 @@ private static final long serialVersionUID = 0L;
     return c_ == null ? build.buf.validate.conformance.cases.custom_constraints.FieldExpressions.Nested.getDefaultInstance() : c_;
   }
 
+  public static final int D_FIELD_NUMBER = 4;
+  private int d_ = 0;
+  /**
+   * <code>int32 d = 4 [json_name = "d", (.buf.validate.field) = { ... }</code>
+   * @return The d.
+   */
+  @java.lang.Override
+  public int getD() {
+    return d_;
+  }
+
   private byte memoizedIsInitialized = -1;
   @java.lang.Override
   public final boolean isInitialized() {
@@ -556,6 +567,9 @@ private static final long serialVersionUID = 0L;
     if (((bitField0_ & 0x00000001) != 0)) {
       output.writeMessage(3, getC());
     }
+    if (d_ != 0) {
+      output.writeInt32(4, d_);
+    }
     getUnknownFields().writeTo(output);
   }
 
@@ -576,6 +590,10 @@ private static final long serialVersionUID = 0L;
     if (((bitField0_ & 0x00000001) != 0)) {
       size += com.google.protobuf.CodedOutputStream
         .computeMessageSize(3, getC());
+    }
+    if (d_ != 0) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeInt32Size(4, d_);
     }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
@@ -600,6 +618,8 @@ private static final long serialVersionUID = 0L;
       if (!getC()
           .equals(other.getC())) return false;
     }
+    if (getD()
+        != other.getD()) return false;
     if (!getUnknownFields().equals(other.getUnknownFields())) return false;
     return true;
   }
@@ -619,6 +639,8 @@ private static final long serialVersionUID = 0L;
       hash = (37 * hash) + C_FIELD_NUMBER;
       hash = (53 * hash) + getC().hashCode();
     }
+    hash = (37 * hash) + D_FIELD_NUMBER;
+    hash = (53 * hash) + getD();
     hash = (29 * hash) + getUnknownFields().hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -763,6 +785,7 @@ private static final long serialVersionUID = 0L;
         cBuilder_.dispose();
         cBuilder_ = null;
       }
+      d_ = 0;
       return this;
     }
 
@@ -809,6 +832,9 @@ private static final long serialVersionUID = 0L;
             : cBuilder_.build();
         to_bitField0_ |= 0x00000001;
       }
+      if (((from_bitField0_ & 0x00000008) != 0)) {
+        result.d_ = d_;
+      }
       result.bitField0_ |= to_bitField0_;
     }
 
@@ -832,6 +858,9 @@ private static final long serialVersionUID = 0L;
       }
       if (other.hasC()) {
         mergeC(other.getC());
+      }
+      if (other.getD() != 0) {
+        setD(other.getD());
       }
       this.mergeUnknownFields(other.getUnknownFields());
       onChanged();
@@ -876,6 +905,11 @@ private static final long serialVersionUID = 0L;
               bitField0_ |= 0x00000004;
               break;
             } // case 26
+            case 32: {
+              d_ = input.readInt32();
+              bitField0_ |= 0x00000008;
+              break;
+            } // case 32
             default: {
               if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                 done = true; // was an endgroup tag
@@ -1097,6 +1131,38 @@ private static final long serialVersionUID = 0L;
         c_ = null;
       }
       return cBuilder_;
+    }
+
+    private int d_ ;
+    /**
+     * <code>int32 d = 4 [json_name = "d", (.buf.validate.field) = { ... }</code>
+     * @return The d.
+     */
+    @java.lang.Override
+    public int getD() {
+      return d_;
+    }
+    /**
+     * <code>int32 d = 4 [json_name = "d", (.buf.validate.field) = { ... }</code>
+     * @param value The d to set.
+     * @return This builder for chaining.
+     */
+    public Builder setD(int value) {
+
+      d_ = value;
+      bitField0_ |= 0x00000008;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>int32 d = 4 [json_name = "d", (.buf.validate.field) = { ... }</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearD() {
+      bitField0_ = (bitField0_ & ~0x00000008);
+      d_ = 0;
+      onChanged();
+      return this;
     }
 
     // @@protoc_insertion_point(builder_scope:buf.validate.conformance.cases.custom_constraints.FieldExpressions)

@@ -15,6 +15,7 @@
 package build.buf.protovalidate.internal.expression;
 
 import build.buf.protovalidate.exceptions.ExecutionException;
+import build.buf.validate.FieldPath;
 import build.buf.validate.Violation;
 import javax.annotation.Nullable;
 import org.projectnessie.cel.Program;
@@ -32,15 +33,20 @@ public class CompiledProgram {
   /** The original expression that was compiled into the program from the proto file. */
   private final Expression source;
 
+  /** The field path from FieldConstraints to the constraint rule value. */
+  @Nullable private final FieldPath rulePath;
+
   /**
    * Constructs a new {@link CompiledProgram}.
    *
    * @param program The compiled CEL program.
    * @param source The original expression that was compiled into the program.
+   * @param rulePath The field path from the FieldConstraints to the rule value.
    */
-  public CompiledProgram(Program program, Expression source) {
+  public CompiledProgram(Program program, Expression source, @Nullable FieldPath rulePath) {
     this.program = program;
     this.source = source;
+    this.rulePath = rulePath;
   }
 
   /**
@@ -63,18 +69,22 @@ public class CompiledProgram {
       if ("".equals(value)) {
         return null;
       }
-      return Violation.newBuilder()
-          .setConstraintId(this.source.id)
-          .setMessage(value.toString())
-          .build();
+      Violation.Builder violation =
+          Violation.newBuilder().setConstraintId(this.source.id).setMessage(value.toString());
+      if (rulePath != null) {
+        violation.setRule(rulePath);
+      }
+      return violation.build();
     } else if (value instanceof Boolean) {
       if (val.booleanValue()) {
         return null;
       }
-      return Violation.newBuilder()
-          .setConstraintId(this.source.id)
-          .setMessage(this.source.message)
-          .build();
+      Violation.Builder violation =
+          Violation.newBuilder().setConstraintId(this.source.id).setMessage(this.source.message);
+      if (rulePath != null) {
+        violation.setRule(rulePath);
+      }
+      return violation.build();
     } else {
       throw new ExecutionException(String.format("resolved to an unexpected type %s", val));
     }

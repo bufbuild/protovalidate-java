@@ -16,6 +16,8 @@ package build.buf.protovalidate.internal.evaluator;
 
 import build.buf.protovalidate.ValidationResult;
 import build.buf.protovalidate.exceptions.ExecutionException;
+import build.buf.validate.FieldPath;
+import build.buf.validate.FieldPathElement;
 import build.buf.validate.Violation;
 import com.google.protobuf.Descriptors.OneofDescriptor;
 import com.google.protobuf.Message;
@@ -55,7 +57,10 @@ public class OneofEvaluator implements Evaluator {
       return new ValidationResult(
           Collections.singletonList(
               Violation.newBuilder()
-                  .setFieldPath(descriptor.getName())
+                  .setField(
+                      FieldPath.newBuilder()
+                          .addElements(
+                              FieldPathElement.newBuilder().setFieldName(descriptor.getName())))
                   .setConstraintId("required")
                   .setMessage("exactly one field is required in oneof")
                   .build()));

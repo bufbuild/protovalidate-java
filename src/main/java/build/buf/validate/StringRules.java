@@ -2056,8 +2056,8 @@ private static final long serialVersionUID = 0L;
    * ```proto
    * message MyString {
    * string value = 1 [
-   * (buf.validate.field).string.example = 1,
-   * (buf.validate.field).string.example = 2
+   * (buf.validate.field).string.example = "hello",
+   * (buf.validate.field).string.example = "world"
    * ];
    * }
    * ```
@@ -2079,8 +2079,8 @@ private static final long serialVersionUID = 0L;
    * ```proto
    * message MyString {
    * string value = 1 [
-   * (buf.validate.field).string.example = 1,
-   * (buf.validate.field).string.example = 2
+   * (buf.validate.field).string.example = "hello",
+   * (buf.validate.field).string.example = "world"
    * ];
    * }
    * ```
@@ -2101,8 +2101,8 @@ private static final long serialVersionUID = 0L;
    * ```proto
    * message MyString {
    * string value = 1 [
-   * (buf.validate.field).string.example = 1,
-   * (buf.validate.field).string.example = 2
+   * (buf.validate.field).string.example = "hello",
+   * (buf.validate.field).string.example = "world"
    * ];
    * }
    * ```
@@ -2124,8 +2124,8 @@ private static final long serialVersionUID = 0L;
    * ```proto
    * message MyString {
    * string value = 1 [
-   * (buf.validate.field).string.example = 1,
-   * (buf.validate.field).string.example = 2
+   * (buf.validate.field).string.example = "hello",
+   * (buf.validate.field).string.example = "world"
    * ];
    * }
    * ```
@@ -7319,8 +7319,8 @@ private static final long serialVersionUID = 0L;
      * ```proto
      * message MyString {
      * string value = 1 [
-     * (buf.validate.field).string.example = 1,
-     * (buf.validate.field).string.example = 2
+     * (buf.validate.field).string.example = "hello",
+     * (buf.validate.field).string.example = "world"
      * ];
      * }
      * ```
@@ -7343,8 +7343,8 @@ private static final long serialVersionUID = 0L;
      * ```proto
      * message MyString {
      * string value = 1 [
-     * (buf.validate.field).string.example = 1,
-     * (buf.validate.field).string.example = 2
+     * (buf.validate.field).string.example = "hello",
+     * (buf.validate.field).string.example = "world"
      * ];
      * }
      * ```
@@ -7365,8 +7365,8 @@ private static final long serialVersionUID = 0L;
      * ```proto
      * message MyString {
      * string value = 1 [
-     * (buf.validate.field).string.example = 1,
-     * (buf.validate.field).string.example = 2
+     * (buf.validate.field).string.example = "hello",
+     * (buf.validate.field).string.example = "world"
      * ];
      * }
      * ```
@@ -7388,8 +7388,8 @@ private static final long serialVersionUID = 0L;
      * ```proto
      * message MyString {
      * string value = 1 [
-     * (buf.validate.field).string.example = 1,
-     * (buf.validate.field).string.example = 2
+     * (buf.validate.field).string.example = "hello",
+     * (buf.validate.field).string.example = "world"
      * ];
      * }
      * ```
@@ -7412,8 +7412,8 @@ private static final long serialVersionUID = 0L;
      * ```proto
      * message MyString {
      * string value = 1 [
-     * (buf.validate.field).string.example = 1,
-     * (buf.validate.field).string.example = 2
+     * (buf.validate.field).string.example = "hello",
+     * (buf.validate.field).string.example = "world"
      * ];
      * }
      * ```
@@ -7442,8 +7442,8 @@ private static final long serialVersionUID = 0L;
      * ```proto
      * message MyString {
      * string value = 1 [
-     * (buf.validate.field).string.example = 1,
-     * (buf.validate.field).string.example = 2
+     * (buf.validate.field).string.example = "hello",
+     * (buf.validate.field).string.example = "world"
      * ];
      * }
      * ```
@@ -7471,8 +7471,8 @@ private static final long serialVersionUID = 0L;
      * ```proto
      * message MyString {
      * string value = 1 [
-     * (buf.validate.field).string.example = 1,
-     * (buf.validate.field).string.example = 2
+     * (buf.validate.field).string.example = "hello",
+     * (buf.validate.field).string.example = "world"
      * ];
      * }
      * ```
@@ -7500,8 +7500,8 @@ private static final long serialVersionUID = 0L;
      * ```proto
      * message MyString {
      * string value = 1 [
-     * (buf.validate.field).string.example = 1,
-     * (buf.validate.field).string.example = 2
+     * (buf.validate.field).string.example = "hello",
+     * (buf.validate.field).string.example = "world"
      * ];
      * }
      * ```
@@ -7526,8 +7526,8 @@ private static final long serialVersionUID = 0L;
      * ```proto
      * message MyString {
      * string value = 1 [
-     * (buf.validate.field).string.example = 1,
-     * (buf.validate.field).string.example = 2
+     * (buf.validate.field).string.example = "hello",
+     * (buf.validate.field).string.example = "world"
      * ];
      * }
      * ```

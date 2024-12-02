@@ -16,6 +16,9 @@ package build.buf.protovalidate.internal.evaluator;
 
 import build.buf.protovalidate.ValidationResult;
 import build.buf.protovalidate.exceptions.ExecutionException;
+import build.buf.protovalidate.internal.errors.FieldPathUtils;
+import build.buf.validate.FieldConstraints;
+import build.buf.validate.FieldPath;
 import build.buf.validate.Violation;
 import com.google.protobuf.Descriptors.FieldDescriptor;
 import com.google.protobuf.Message;
@@ -26,6 +29,14 @@ import javax.annotation.Nullable;
 
 /** Performs validation on a single message field, defined by its descriptor. */
 class FieldEvaluator implements Evaluator {
+  private static final FieldPath requiredFieldRulePath =
+      FieldPath.newBuilder()
+          .addElements(
+              FieldPathUtils.fieldPathElement(
+                  FieldConstraints.getDescriptor()
+                      .findFieldByNumber(FieldConstraints.REQUIRED_FIELD_NUMBER)))
+          .build();
+
   /** The {@link ValueEvaluator} to apply to the field's value */
   public final ValueEvaluator valueEvaluator;
 
@@ -82,7 +93,11 @@ class FieldEvaluator implements Evaluator {
       return new ValidationResult(
           Collections.singletonList(
               Violation.newBuilder()
-                  .setFieldPath(descriptor.getName())
+                  .setField(
+                      FieldPath.newBuilder()
+                          .addElements(FieldPathUtils.fieldPathElement(descriptor))
+                          .build())
+                  .setRule(requiredFieldRulePath)
                   .setConstraintId("required")
                   .setMessage("value is required")
                   .build()));
@@ -97,7 +112,10 @@ class FieldEvaluator implements Evaluator {
     ValidationResult evalResult =
         valueEvaluator.evaluate(new ObjectValue(descriptor, fieldValue), failFast);
     List<Violation> violations =
-        ErrorPathUtils.prefixErrorPaths(evalResult.getViolations(), "%s", descriptor.getName());
+        FieldPathUtils.prependFieldPaths(
+            evalResult.getViolations(),
+            FieldPathUtils.fieldPathElement(descriptor).build(),
+            descriptor.isRepeated());
     return new ValidationResult(violations);
   }
 }

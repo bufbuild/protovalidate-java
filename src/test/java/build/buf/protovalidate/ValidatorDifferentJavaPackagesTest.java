@@ -17,7 +17,13 @@ package build.buf.protovalidate;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import build.buf.protovalidate.exceptions.ValidationException;
+import build.buf.protovalidate.internal.errors.FieldPathUtils;
+import build.buf.validate.FieldConstraints;
+import build.buf.validate.FieldPath;
+import build.buf.validate.FieldPathElement;
 import build.buf.validate.Violation;
+import com.example.imports.buf.validate.StringRules;
+import com.example.imports.validationtest.ExampleFieldConstraints;
 import com.google.protobuf.InvalidProtocolBufferException;
 import com.google.protobuf.Message;
 import java.util.Collections;
@@ -76,6 +82,24 @@ public class ValidatorDifferentJavaPackagesTest {
             .build();
     Violation expectedViolation =
         Violation.newBuilder()
+            .setField(
+                FieldPath.newBuilder()
+                    .addElements(
+                        FieldPathUtils.fieldPathElement(
+                            com.example.imports.validationtest.ExampleFieldConstraints
+                                .getDescriptor()
+                                .findFieldByNumber(
+                                    ExampleFieldConstraints.REGEX_STRING_FIELD_FIELD_NUMBER))))
+            .setRule(
+                FieldPath.newBuilder()
+                    .addElements(
+                        FieldPathUtils.fieldPathElement(
+                            FieldConstraints.getDescriptor()
+                                .findFieldByNumber(FieldConstraints.STRING_FIELD_NUMBER)))
+                    .addElements(
+                        FieldPathUtils.fieldPathElement(
+                            StringRules.getDescriptor()
+                                .findFieldByNumber(StringRules.PATTERN_FIELD_NUMBER))))
             .setConstraintId("string.pattern")
             .setFieldPath("regex_string_field")
             .setMessage("value does not match regex pattern `^[a-z0-9]{1,9}$`")
@@ -110,6 +134,9 @@ public class ValidatorDifferentJavaPackagesTest {
         com.example.imports.validationtest.ExampleOneofConstraints.getDefaultInstance();
     Violation expectedViolation =
         Violation.newBuilder()
+            .setField(
+                FieldPath.newBuilder()
+                    .addElements(FieldPathElement.newBuilder().setFieldName("contact_info")))
             .setFieldPath("contact_info")
             .setConstraintId("required")
             .setMessage("exactly one field is required in oneof")

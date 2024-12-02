@@ -16,6 +16,10 @@ package build.buf.protovalidate.internal.evaluator;
 
 import build.buf.protovalidate.ValidationResult;
 import build.buf.protovalidate.exceptions.ExecutionException;
+import build.buf.protovalidate.internal.errors.FieldPathUtils;
+import build.buf.validate.AnyRules;
+import build.buf.validate.FieldConstraints;
+import build.buf.validate.FieldPath;
 import build.buf.validate.Violation;
 import com.google.protobuf.Descriptors;
 import com.google.protobuf.Message;
@@ -36,6 +40,28 @@ class AnyEvaluator implements Evaluator {
   private final Set<String> in;
   private final Set<String> notIn;
 
+  private static final FieldPath IN_RULE_PATH =
+      FieldPath.newBuilder()
+          .addElements(
+              FieldPathUtils.fieldPathElement(
+                  FieldConstraints.getDescriptor()
+                      .findFieldByNumber(FieldConstraints.ANY_FIELD_NUMBER)))
+          .addElements(
+              FieldPathUtils.fieldPathElement(
+                  AnyRules.getDescriptor().findFieldByNumber(AnyRules.IN_FIELD_NUMBER)))
+          .build();
+
+  private static final FieldPath NOT_IN_RULE_PATH =
+      FieldPath.newBuilder()
+          .addElements(
+              FieldPathUtils.fieldPathElement(
+                  FieldConstraints.getDescriptor()
+                      .findFieldByNumber(FieldConstraints.ANY_FIELD_NUMBER)))
+          .addElements(
+              FieldPathUtils.fieldPathElement(
+                  AnyRules.getDescriptor().findFieldByNumber(AnyRules.NOT_IN_FIELD_NUMBER)))
+          .build();
+
   /** Constructs a new evaluator for {@link build.buf.validate.AnyRules} messages. */
   AnyEvaluator(Descriptors.FieldDescriptor typeURLDescriptor, List<String> in, List<String> notIn) {
     this.typeURLDescriptor = typeURLDescriptor;
@@ -54,6 +80,7 @@ class AnyEvaluator implements Evaluator {
     if (!in.isEmpty() && !in.contains(typeURL)) {
       Violation violation =
           Violation.newBuilder()
+              .setRule(IN_RULE_PATH)
               .setConstraintId("any.in")
               .setMessage("type URL must be in the allow list")
               .build();
@@ -65,6 +92,7 @@ class AnyEvaluator implements Evaluator {
     if (!notIn.isEmpty() && notIn.contains(typeURL)) {
       Violation violation =
           Violation.newBuilder()
+              .setRule(NOT_IN_RULE_PATH)
               .setConstraintId("any.not_in")
               .setMessage("type URL must not be in the block list")
               .build();
