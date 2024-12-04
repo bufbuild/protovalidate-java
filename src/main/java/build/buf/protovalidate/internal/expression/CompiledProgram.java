@@ -14,9 +14,9 @@
 
 package build.buf.protovalidate.internal.expression;
 
+import build.buf.protovalidate.Violation;
 import build.buf.protovalidate.exceptions.ExecutionException;
 import build.buf.validate.FieldPath;
-import build.buf.validate.Violation;
 import javax.annotation.Nullable;
 import org.projectnessie.cel.Program;
 import org.projectnessie.cel.common.types.Err;
@@ -69,22 +69,26 @@ public class CompiledProgram {
       if ("".equals(value)) {
         return null;
       }
-      Violation.Builder violation =
-          Violation.newBuilder().setConstraintId(this.source.id).setMessage(value.toString());
+      build.buf.validate.Violation.Builder violation =
+          build.buf.validate.Violation.newBuilder()
+              .setConstraintId(this.source.id)
+              .setMessage(value.toString());
       if (rulePath != null) {
         violation.setRule(rulePath);
       }
-      return violation.build();
+      return Violation.newBuilder().setProto(violation.build()).build();
     } else if (value instanceof Boolean) {
       if (val.booleanValue()) {
         return null;
       }
-      Violation.Builder violation =
-          Violation.newBuilder().setConstraintId(this.source.id).setMessage(this.source.message);
+      build.buf.validate.Violation.Builder violation =
+          build.buf.validate.Violation.newBuilder()
+              .setConstraintId(this.source.id)
+              .setMessage(this.source.message);
       if (rulePath != null) {
         violation.setRule(rulePath);
       }
-      return violation.build();
+      return Violation.newBuilder().setProto(violation.build()).build();
     } else {
       throw new ExecutionException(String.format("resolved to an unexpected type %s", val));
     }

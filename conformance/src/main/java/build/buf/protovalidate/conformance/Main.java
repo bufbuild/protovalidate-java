@@ -20,7 +20,6 @@ import build.buf.protovalidate.Validator;
 import build.buf.protovalidate.exceptions.CompilationException;
 import build.buf.protovalidate.exceptions.ExecutionException;
 import build.buf.validate.ValidateProto;
-import build.buf.validate.Violation;
 import build.buf.validate.Violations;
 import build.buf.validate.conformance.harness.TestConformanceRequest;
 import build.buf.validate.conformance.harness.TestConformanceResponse;
@@ -100,11 +99,11 @@ public class Main {
   private static TestResult validate(Validator validator, DynamicMessage dynamicMessage) {
     try {
       ValidationResult result = validator.validate(dynamicMessage);
-      List<Violation> violations = result.getViolations();
-      if (violations.isEmpty()) {
+      if (result.isSuccess()) {
         return TestResult.newBuilder().setSuccess(true).build();
       }
-      Violations error = Violations.newBuilder().addAllViolations(violations).build();
+      Violations error =
+          Violations.newBuilder().addAllViolations(result.toProto().getViolationsList()).build();
       return TestResult.newBuilder().setValidationError(error).build();
     } catch (CompilationException e) {
       return TestResult.newBuilder().setCompilationError(e.getMessage()).build();

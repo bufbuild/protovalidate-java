@@ -15,13 +15,13 @@
 package build.buf.protovalidate.internal.evaluator;
 
 import build.buf.protovalidate.ValidationResult;
+import build.buf.protovalidate.Violation;
 import build.buf.protovalidate.exceptions.ExecutionException;
 import build.buf.protovalidate.internal.errors.FieldPathUtils;
 import build.buf.validate.FieldConstraints;
 import build.buf.validate.FieldPath;
 import build.buf.validate.FieldPathElement;
 import build.buf.validate.MapRules;
-import build.buf.validate.Violation;
 import com.google.protobuf.Descriptors;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -194,7 +194,11 @@ class MapEvaluator implements Evaluator {
       throws ExecutionException {
     List<Violation> keyViolations =
         keyEvaluator.evaluate(key, failFast).getViolations().stream()
-            .map(violation -> violation.toBuilder().setForKey(true).build())
+            .map(
+                violation ->
+                    violation.toBuilder()
+                        .setProto(violation.getProto().toBuilder().setForKey(true).build())
+                        .build())
             .collect(Collectors.toList());
     final List<Violation> valueViolations;
     if (failFast && !keyViolations.isEmpty()) {

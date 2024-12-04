@@ -15,11 +15,11 @@
 package build.buf.protovalidate.internal.evaluator;
 
 import build.buf.protovalidate.ValidationResult;
+import build.buf.protovalidate.Violation;
 import build.buf.protovalidate.exceptions.ExecutionException;
 import build.buf.protovalidate.internal.errors.FieldPathUtils;
 import build.buf.validate.FieldConstraints;
 import build.buf.validate.FieldPath;
-import build.buf.validate.Violation;
 import com.google.protobuf.Descriptors.FieldDescriptor;
 import com.google.protobuf.Message;
 import java.util.Collections;
@@ -93,13 +93,16 @@ class FieldEvaluator implements Evaluator {
       return new ValidationResult(
           Collections.singletonList(
               Violation.newBuilder()
-                  .setField(
-                      FieldPath.newBuilder()
-                          .addElements(FieldPathUtils.fieldPathElement(descriptor))
+                  .setProto(
+                      build.buf.validate.Violation.newBuilder()
+                          .setField(
+                              FieldPath.newBuilder()
+                                  .addElements(FieldPathUtils.fieldPathElement(descriptor))
+                                  .build())
+                          .setRule(requiredFieldRulePath)
+                          .setConstraintId("required")
+                          .setMessage("value is required")
                           .build())
-                  .setRule(requiredFieldRulePath)
-                  .setConstraintId("required")
-                  .setMessage("value is required")
                   .build()));
     }
     if (ignoreEmpty && !hasField) {

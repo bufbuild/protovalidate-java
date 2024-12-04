@@ -14,9 +14,9 @@
 
 package build.buf.protovalidate.internal.errors;
 
+import build.buf.protovalidate.Violation;
 import build.buf.validate.FieldPath;
 import build.buf.validate.FieldPathElement;
-import build.buf.validate.Violation;
 import com.google.protobuf.Descriptors;
 import java.util.ArrayList;
 import java.util.List;
@@ -41,18 +41,21 @@ public final class FieldPathUtils {
       // special case that makes it significantly simpler to handle reverse-constructing paths with
       // maps and repeated fields.
       if (skipSubscript
-          && violation.getField().getElementsCount() > 0
-          && violation.getField().getElements(0).getSubscriptCase()
+          && violation.getProto().getField().getElementsCount() > 0
+          && violation.getProto().getField().getElements(0).getSubscriptCase()
               != FieldPathElement.SubscriptCase.SUBSCRIPT_NOT_SET) {
         result.add(violation);
         continue;
       }
       result.add(
           violation.toBuilder()
-              .setField(
-                  FieldPath.newBuilder()
-                      .addElements(element)
-                      .addAllElements(violation.getField().getElementsList())
+              .setProto(
+                  violation.getProto().toBuilder()
+                      .setField(
+                          FieldPath.newBuilder()
+                              .addElements(element)
+                              .addAllElements(violation.getProto().getField().getElementsList())
+                              .build())
                       .build())
               .build());
     }
@@ -72,10 +75,13 @@ public final class FieldPathUtils {
     for (Violation violation : violations) {
       result.add(
           violation.toBuilder()
-              .setRule(
-                  FieldPath.newBuilder()
-                      .addAllElements(elements)
-                      .addAllElements(violation.getRule().getElementsList())
+              .setProto(
+                  violation.getProto().toBuilder()
+                      .setRule(
+                          FieldPath.newBuilder()
+                              .addAllElements(elements)
+                              .addAllElements(violation.getProto().getRule().getElementsList())
+                              .build())
                       .build())
               .build());
     }
@@ -91,9 +97,14 @@ public final class FieldPathUtils {
   public static List<Violation> calculateFieldPathStrings(List<Violation> violations) {
     List<Violation> result = new ArrayList<>();
     for (Violation violation : violations) {
-      if (violation.getField().getElementsCount() > 0) {
+      if (violation.getProto().getField().getElementsCount() > 0) {
         result.add(
-            violation.toBuilder().setFieldPath(fieldPathString(violation.getField())).build());
+            violation.toBuilder()
+                .setProto(
+                    violation.getProto().toBuilder()
+                        .setFieldPath(fieldPathString(violation.getProto().getField()))
+                        .build())
+                .build());
       } else {
         result.add(violation);
       }

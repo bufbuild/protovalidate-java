@@ -15,12 +15,12 @@
 package build.buf.protovalidate.internal.evaluator;
 
 import build.buf.protovalidate.ValidationResult;
+import build.buf.protovalidate.Violation;
 import build.buf.protovalidate.exceptions.ExecutionException;
 import build.buf.protovalidate.internal.errors.FieldPathUtils;
 import build.buf.validate.AnyRules;
 import build.buf.validate.FieldConstraints;
 import build.buf.validate.FieldPath;
-import build.buf.validate.Violation;
 import com.google.protobuf.Descriptors;
 import com.google.protobuf.Message;
 import java.util.ArrayList;
@@ -80,9 +80,12 @@ class AnyEvaluator implements Evaluator {
     if (!in.isEmpty() && !in.contains(typeURL)) {
       Violation violation =
           Violation.newBuilder()
-              .setRule(IN_RULE_PATH)
-              .setConstraintId("any.in")
-              .setMessage("type URL must be in the allow list")
+              .setProto(
+                  build.buf.validate.Violation.newBuilder()
+                      .setRule(IN_RULE_PATH)
+                      .setConstraintId("any.in")
+                      .setMessage("type URL must be in the allow list")
+                      .build())
               .build();
       violationList.add(violation);
       if (failFast) {
@@ -92,9 +95,12 @@ class AnyEvaluator implements Evaluator {
     if (!notIn.isEmpty() && notIn.contains(typeURL)) {
       Violation violation =
           Violation.newBuilder()
-              .setRule(NOT_IN_RULE_PATH)
-              .setConstraintId("any.not_in")
-              .setMessage("type URL must not be in the block list")
+              .setProto(
+                  build.buf.validate.Violation.newBuilder()
+                      .setRule(NOT_IN_RULE_PATH)
+                      .setConstraintId("any.not_in")
+                      .setMessage("type URL must not be in the block list")
+                      .build())
               .build();
       violationList.add(violation);
     }

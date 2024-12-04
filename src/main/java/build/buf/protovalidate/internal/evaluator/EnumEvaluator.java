@@ -15,12 +15,12 @@
 package build.buf.protovalidate.internal.evaluator;
 
 import build.buf.protovalidate.ValidationResult;
+import build.buf.protovalidate.Violation;
 import build.buf.protovalidate.exceptions.ExecutionException;
 import build.buf.protovalidate.internal.errors.FieldPathUtils;
 import build.buf.validate.EnumRules;
 import build.buf.validate.FieldConstraints;
 import build.buf.validate.FieldPath;
-import build.buf.validate.Violation;
 import com.google.protobuf.Descriptors;
 import java.util.Collections;
 import java.util.List;
@@ -85,9 +85,12 @@ class EnumEvaluator implements Evaluator {
       return new ValidationResult(
           Collections.singletonList(
               Violation.newBuilder()
-                  .setRule(DEFINED_ONLY_RULE_PATH)
-                  .setConstraintId("enum.defined_only")
-                  .setMessage("value must be one of the defined enum values")
+                  .setProto(
+                      build.buf.validate.Violation.newBuilder()
+                          .setRule(DEFINED_ONLY_RULE_PATH)
+                          .setConstraintId("enum.defined_only")
+                          .setMessage("value must be one of the defined enum values")
+                          .build())
                   .build()));
     }
     return ValidationResult.EMPTY;
