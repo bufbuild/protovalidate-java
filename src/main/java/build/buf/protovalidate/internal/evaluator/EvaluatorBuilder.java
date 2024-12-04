@@ -529,7 +529,11 @@ public class EvaluatorBuilder {
                   .build();
         }
         compiledPrograms.add(
-            new CompiledProgram(env.program(astExpression.ast), astExpression.source, rulePath));
+            new CompiledProgram(
+                env.program(astExpression.ast),
+                astExpression.source,
+                rulePath,
+                new MessageValue(constraints.get(i))));
       }
       return compiledPrograms;
     }

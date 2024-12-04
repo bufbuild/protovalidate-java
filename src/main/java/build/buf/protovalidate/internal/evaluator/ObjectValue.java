@@ -43,7 +43,7 @@ public final class ObjectValue implements Value {
    * @param fieldDescriptor The field descriptor for the value.
    * @param value The value associated with the field descriptor.
    */
-  ObjectValue(Descriptors.FieldDescriptor fieldDescriptor, Object value) {
+  public ObjectValue(Descriptors.FieldDescriptor fieldDescriptor, Object value) {
     this.fieldDescriptor = fieldDescriptor;
     this.value = value;
   }

@@ -14,6 +14,7 @@
 
 package build.buf.protovalidate.internal.expression;
 
+import build.buf.protovalidate.Value;
 import build.buf.protovalidate.Violation;
 import build.buf.protovalidate.exceptions.ExecutionException;
 import build.buf.validate.FieldPath;
@@ -36,29 +37,36 @@ public class CompiledProgram {
   /** The field path from FieldConstraints to the constraint rule value. */
   @Nullable private final FieldPath rulePath;
 
+  /** The rule value. */
+  @Nullable private final Value ruleValue;
+
   /**
    * Constructs a new {@link CompiledProgram}.
    *
    * @param program The compiled CEL program.
    * @param source The original expression that was compiled into the program.
    * @param rulePath The field path from the FieldConstraints to the rule value.
+   * @param ruleValue The rule value.
    */
-  public CompiledProgram(Program program, Expression source, @Nullable FieldPath rulePath) {
+  public CompiledProgram(
+      Program program, Expression source, @Nullable FieldPath rulePath, @Nullable Value ruleValue) {
     this.program = program;
     this.source = source;
     this.rulePath = rulePath;
+    this.ruleValue = ruleValue;
   }
 
   /**
    * Evaluate the compiled program with a given set of {@link Variable} bindings.
    *
    * @param bindings Variable bindings used for the evaluation.
+   * @param fieldValue Field value to return in violations.
    * @return The {@link build.buf.validate.Violation} from the evaluation, or null if there are no
    *     violations.
    * @throws ExecutionException If the evaluation of the CEL program fails with an error.
    */
   @Nullable
-  public Violation eval(Variable bindings) throws ExecutionException {
+  public Violation eval(Value fieldValue, Variable bindings) throws ExecutionException {
     Program.EvalResult evalResult = program.eval(bindings);
     Val val = evalResult.getVal();
     if (val instanceof Err) {
@@ -76,7 +84,11 @@ public class CompiledProgram {
       if (rulePath != null) {
         violation.setRule(rulePath);
       }
-      return Violation.newBuilder().setProto(violation.build()).build();
+      return Violation.newBuilder()
+          .setProto(violation.build())
+          .setFieldValue(fieldValue)
+          .setRuleValue(ruleValue)
+          .build();
     } else if (value instanceof Boolean) {
       if (val.booleanValue()) {
         return null;
@@ -88,7 +100,11 @@ public class CompiledProgram {
       if (rulePath != null) {
         violation.setRule(rulePath);
       }
-      return Violation.newBuilder().setProto(violation.build()).build();
+      return Violation.newBuilder()
+          .setProto(violation.build())
+          .setFieldValue(fieldValue)
+          .setRuleValue(ruleValue)
+          .build();
     } else {
       throw new ExecutionException(String.format("resolved to an unexpected type %s", val));
     }

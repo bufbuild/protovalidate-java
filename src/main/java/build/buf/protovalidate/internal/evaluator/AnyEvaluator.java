@@ -39,35 +39,38 @@ import java.util.Set;
 class AnyEvaluator implements Evaluator {
   private final Descriptors.FieldDescriptor typeURLDescriptor;
   private final Set<String> in;
+  private final List<String> inValue;
   private final Set<String> notIn;
+  private final List<String> notInValue;
+
+  private static final Descriptors.FieldDescriptor ANY_DESCRIPTOR =
+      FieldConstraints.getDescriptor().findFieldByNumber(FieldConstraints.ANY_FIELD_NUMBER);
+
+  private static final Descriptors.FieldDescriptor IN_DESCRIPTOR =
+      AnyRules.getDescriptor().findFieldByNumber(AnyRules.IN_FIELD_NUMBER);
+
+  private static final Descriptors.FieldDescriptor NOT_IN_DESCRIPTOR =
+      AnyRules.getDescriptor().findFieldByNumber(AnyRules.NOT_IN_FIELD_NUMBER);
 
   private static final FieldPath IN_RULE_PATH =
       FieldPath.newBuilder()
-          .addElements(
-              FieldPathUtils.fieldPathElement(
-                  FieldConstraints.getDescriptor()
-                      .findFieldByNumber(FieldConstraints.ANY_FIELD_NUMBER)))
-          .addElements(
-              FieldPathUtils.fieldPathElement(
-                  AnyRules.getDescriptor().findFieldByNumber(AnyRules.IN_FIELD_NUMBER)))
+          .addElements(FieldPathUtils.fieldPathElement(ANY_DESCRIPTOR))
+          .addElements(FieldPathUtils.fieldPathElement(IN_DESCRIPTOR))
           .build();
 
   private static final FieldPath NOT_IN_RULE_PATH =
       FieldPath.newBuilder()
-          .addElements(
-              FieldPathUtils.fieldPathElement(
-                  FieldConstraints.getDescriptor()
-                      .findFieldByNumber(FieldConstraints.ANY_FIELD_NUMBER)))
-          .addElements(
-              FieldPathUtils.fieldPathElement(
-                  AnyRules.getDescriptor().findFieldByNumber(AnyRules.NOT_IN_FIELD_NUMBER)))
+          .addElements(FieldPathUtils.fieldPathElement(ANY_DESCRIPTOR))
+          .addElements(FieldPathUtils.fieldPathElement(NOT_IN_DESCRIPTOR))
           .build();
 
   /** Constructs a new evaluator for {@link build.buf.validate.AnyRules} messages. */
   AnyEvaluator(Descriptors.FieldDescriptor typeURLDescriptor, List<String> in, List<String> notIn) {
     this.typeURLDescriptor = typeURLDescriptor;
     this.in = stringsToSet(in);
+    this.inValue = in;
     this.notIn = stringsToSet(notIn);
+    this.notInValue = notIn;
   }
 
   @Override
@@ -87,6 +90,8 @@ class AnyEvaluator implements Evaluator {
                       .setConstraintId("any.in")
                       .setMessage("type URL must be in the allow list")
                       .build())
+              .setFieldValue(val)
+              .setRuleValue(new ObjectValue(IN_DESCRIPTOR, this.inValue))
               .build();
       violationList.add(violation);
       if (failFast) {
@@ -102,6 +107,8 @@ class AnyEvaluator implements Evaluator {
                       .setConstraintId("any.not_in")
                       .setMessage("type URL must not be in the block list")
                       .build())
+              .setFieldValue(val)
+              .setRuleValue(new ObjectValue(NOT_IN_DESCRIPTOR, this.notInValue))
               .build();
       violationList.add(violation);
     }

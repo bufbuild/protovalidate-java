@@ -80,8 +80,12 @@ public class ValidatorDynamicMessageTest {
             .setFieldPath("regex_string_field")
             .setMessage("value does not match regex pattern `^[a-z0-9]{1,9}$`")
             .build();
-    assertThat(new Validator().validate(messageBuilder.build()).toProto().getViolationsList())
-        .containsExactly(expectedViolation);
+    ValidationResult result = new Validator().validate(messageBuilder.build());
+    assertThat(result.toProto().getViolationsList()).containsExactly(expectedViolation);
+    assertThat(result.getViolations().get(0).getFieldValue().value(String.class))
+        .isEqualTo("0123456789");
+    assertThat(result.getViolations().get(0).getRuleValue().value(String.class))
+        .isEqualTo("^[a-z0-9]{1,9}$");
   }
 
   @Test

@@ -30,12 +30,12 @@ import javax.annotation.Nullable;
 
 /** Performs validation on a single message field, defined by its descriptor. */
 class FieldEvaluator implements Evaluator {
-  private static final FieldPath requiredFieldRulePath =
+  private static final FieldDescriptor REQUIRED_DESCRIPTOR =
+      FieldConstraints.getDescriptor().findFieldByNumber(FieldConstraints.REQUIRED_FIELD_NUMBER);
+
+  private static final FieldPath REQUIRED_RULE_PATH =
       FieldPath.newBuilder()
-          .addElements(
-              FieldPathUtils.fieldPathElement(
-                  FieldConstraints.getDescriptor()
-                      .findFieldByNumber(FieldConstraints.REQUIRED_FIELD_NUMBER)))
+          .addElements(FieldPathUtils.fieldPathElement(REQUIRED_DESCRIPTOR))
           .build();
 
   /** The {@link ValueEvaluator} to apply to the field's value */
@@ -100,10 +100,12 @@ class FieldEvaluator implements Evaluator {
                               FieldPath.newBuilder()
                                   .addElements(FieldPathUtils.fieldPathElement(descriptor))
                                   .build())
-                          .setRule(requiredFieldRulePath)
+                          .setRule(REQUIRED_RULE_PATH)
                           .setConstraintId("required")
                           .setMessage("value is required")
                           .build())
+                  .setFieldValue(val)
+                  .setRuleValue(new ObjectValue(REQUIRED_DESCRIPTOR, true))
                   .build()));
     }
     if (ignoreEmpty && !hasField) {

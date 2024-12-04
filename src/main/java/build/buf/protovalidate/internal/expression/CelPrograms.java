@@ -46,7 +46,7 @@ public class CelPrograms implements Evaluator {
     Variable activation = Variable.newThisVariable(val.value(Object.class));
     List<Violation> violationList = new ArrayList<>();
     for (CompiledProgram program : programs) {
-      Violation violation = program.eval(activation);
+      Violation violation = program.eval(val, activation);
       if (violation != null) {
         violationList.add(violation);
         if (failFast) {

@@ -23,10 +23,14 @@ import javax.annotation.Nullable;
  */
 public class Violation {
   private final build.buf.validate.Violation proto;
+  @Nullable Value fieldValue;
+  @Nullable Value ruleValue;
 
   /** Builds a Violation instance. */
   public static class Builder {
     @Nullable private build.buf.validate.Violation proto;
+    @Nullable Value fieldValue;
+    @Nullable Value ruleValue;
 
     /**
      * Sets the underlying protobuf message that corresponds to the violation.
@@ -40,12 +44,34 @@ public class Violation {
     }
 
     /**
+     * Sets the field value that corresponds to the violation.
+     *
+     * @param fieldValue The field value corresponding to this violation.
+     * @return The builder.
+     */
+    public Builder setFieldValue(@Nullable Value fieldValue) {
+      this.fieldValue = fieldValue;
+      return this;
+    }
+
+    /**
+     * Sets the rule value that corresponds to the violation.
+     *
+     * @param ruleValue The rule value corresponding to this violation.
+     * @return The builder.
+     */
+    public Builder setRuleValue(@Nullable Value ruleValue) {
+      this.ruleValue = ruleValue;
+      return this;
+    }
+
+    /**
      * Builds a Violation instance with the provided parameters.
      *
      * @return A Violation instance.
      */
     public Violation build() {
-      return new Violation(Objects.requireNonNull(proto));
+      return new Violation(Objects.requireNonNull(proto), fieldValue, ruleValue);
     }
 
     private Builder() {}
@@ -60,8 +86,11 @@ public class Violation {
     return new Builder();
   }
 
-  Violation(build.buf.validate.Violation proto) {
+  Violation(
+      build.buf.validate.Violation proto, @Nullable Value fieldValue, @Nullable Value ruleValue) {
     this.proto = proto;
+    this.fieldValue = fieldValue;
+    this.ruleValue = ruleValue;
   }
 
   /**
@@ -74,13 +103,29 @@ public class Violation {
   }
 
   /**
+   * Gets the field value that corresponds to the violation.
+   *
+   * @return The field value corresponding to this violation.
+   */
+  public @Nullable Value getFieldValue() {
+    return fieldValue;
+  }
+
+  /**
+   * Gets the rule value that corresponds to the violation.
+   *
+   * @return The rule value corresponding to this violation.
+   */
+  public @Nullable Value getRuleValue() {
+    return ruleValue;
+  }
+
+  /**
    * Constructs a {@link Builder} with all fields set to match this {@link Violation}.
    *
    * @return A new {@link Builder} instance.
    */
   public Builder toBuilder() {
-    Builder builder = new Builder();
-    builder.setProto(proto);
-    return builder;
+    return new Builder().setProto(proto).setFieldValue(fieldValue).setRuleValue(ruleValue);
   }
 }

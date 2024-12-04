@@ -36,15 +36,16 @@ class EnumEvaluator implements Evaluator {
   /** Captures all the defined values for this enum */
   private final Set<Integer> values;
 
+  private static final Descriptors.FieldDescriptor DEFINED_ONLY_DESCRIPTOR =
+      EnumRules.getDescriptor().findFieldByNumber(EnumRules.DEFINED_ONLY_FIELD_NUMBER);
+
   private static final FieldPath DEFINED_ONLY_RULE_PATH =
       FieldPath.newBuilder()
           .addElements(
               FieldPathUtils.fieldPathElement(
                   FieldConstraints.getDescriptor()
                       .findFieldByNumber(FieldConstraints.ENUM_FIELD_NUMBER)))
-          .addElements(
-              FieldPathUtils.fieldPathElement(
-                  EnumRules.getDescriptor().findFieldByNumber(EnumRules.DEFINED_ONLY_FIELD_NUMBER)))
+          .addElements(FieldPathUtils.fieldPathElement(DEFINED_ONLY_DESCRIPTOR))
           .build();
 
   /**
@@ -92,6 +93,8 @@ class EnumEvaluator implements Evaluator {
                           .setConstraintId("enum.defined_only")
                           .setMessage("value must be one of the defined enum values")
                           .build())
+                  .setFieldValue(val)
+                  .setRuleValue(new ObjectValue(DEFINED_ONLY_DESCRIPTOR, true))
                   .build()));
     }
     return ValidationResult.EMPTY;
