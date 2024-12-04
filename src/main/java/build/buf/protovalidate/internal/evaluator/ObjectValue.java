@@ -14,6 +14,7 @@
 
 package build.buf.protovalidate.internal.evaluator;
 
+import build.buf.protovalidate.Value;
 import com.google.protobuf.AbstractMessage;
 import com.google.protobuf.Descriptors;
 import com.google.protobuf.Message;
@@ -25,10 +26,7 @@ import java.util.Map;
 import javax.annotation.Nullable;
 import org.projectnessie.cel.common.ULong;
 
-/**
- * The {@link build.buf.protovalidate.internal.evaluator.Value} type that contains a field
- * descriptor and its value.
- */
+/** The {@link Value} type that contains a field descriptor and its value. */
 public final class ObjectValue implements Value {
 
   /**
