@@ -198,7 +198,7 @@ class MapEvaluator implements Evaluator {
             .map(
                 violation ->
                     violation.toBuilder()
-                        .setProto(violation.getProto().toBuilder().setForKey(true).build())
+                        .setProto(violation.toProto().toBuilder().setForKey(true).build())
                         .build())
             .collect(Collectors.toList());
     final List<Violation> valueViolations;

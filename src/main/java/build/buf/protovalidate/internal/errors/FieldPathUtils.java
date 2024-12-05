@@ -41,8 +41,8 @@ public final class FieldPathUtils {
       // special case that makes it significantly simpler to handle reverse-constructing paths with
       // maps and repeated fields.
       if (skipSubscript
-          && violation.getProto().getField().getElementsCount() > 0
-          && violation.getProto().getField().getElements(0).getSubscriptCase()
+          && violation.toProto().getField().getElementsCount() > 0
+          && violation.toProto().getField().getElements(0).getSubscriptCase()
               != FieldPathElement.SubscriptCase.SUBSCRIPT_NOT_SET) {
         result.add(violation);
         continue;
@@ -50,11 +50,11 @@ public final class FieldPathUtils {
       result.add(
           violation.toBuilder()
               .setProto(
-                  violation.getProto().toBuilder()
+                  violation.toProto().toBuilder()
                       .setField(
                           FieldPath.newBuilder()
                               .addElements(element)
-                              .addAllElements(violation.getProto().getField().getElementsList())
+                              .addAllElements(violation.toProto().getField().getElementsList())
                               .build())
                       .build())
               .build());
@@ -76,11 +76,11 @@ public final class FieldPathUtils {
       result.add(
           violation.toBuilder()
               .setProto(
-                  violation.getProto().toBuilder()
+                  violation.toProto().toBuilder()
                       .setRule(
                           FieldPath.newBuilder()
                               .addAllElements(elements)
-                              .addAllElements(violation.getProto().getRule().getElementsList())
+                              .addAllElements(violation.toProto().getRule().getElementsList())
                               .build())
                       .build())
               .build());
@@ -97,12 +97,12 @@ public final class FieldPathUtils {
   public static List<Violation> calculateFieldPathStrings(List<Violation> violations) {
     List<Violation> result = new ArrayList<>();
     for (Violation violation : violations) {
-      if (violation.getProto().getField().getElementsCount() > 0) {
+      if (violation.toProto().getField().getElementsCount() > 0) {
         result.add(
             violation.toBuilder()
                 .setProto(
-                    violation.getProto().toBuilder()
-                        .setFieldPath(fieldPathString(violation.getProto().getField()))
+                    violation.toProto().toBuilder()
+                        .setFieldPath(fieldPathString(violation.toProto().getField()))
                         .build())
                 .build());
       } else {

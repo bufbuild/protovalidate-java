@@ -100,7 +100,7 @@ public class Violation {
    *
    * @return The protobuf violation data.
    */
-  public build.buf.validate.Violation getProto() {
+  public build.buf.validate.Violation toProto() {
     return proto;
   }
 
