@@ -15,7 +15,6 @@
 package build.buf.protovalidate.internal.evaluator;
 
 import build.buf.protovalidate.ValidationResult;
-import build.buf.protovalidate.Value;
 import build.buf.protovalidate.exceptions.ExecutionException;
 
 /**

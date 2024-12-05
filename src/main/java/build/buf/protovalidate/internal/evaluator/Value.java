@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package build.buf.protovalidate;
+package build.buf.protovalidate.internal.evaluator;
 
 import com.google.protobuf.Message;
 import java.util.List;
