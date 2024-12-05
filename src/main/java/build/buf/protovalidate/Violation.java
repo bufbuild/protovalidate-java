@@ -25,12 +25,16 @@ public class Violation {
   private final build.buf.validate.Violation proto;
   @Nullable Value fieldValue;
   @Nullable Value ruleValue;
+  private final @Nullable Value fieldValue;
+  private final @Nullable Value ruleValue;
 
   /** Builds a Violation instance. */
   public static class Builder {
     @Nullable private build.buf.validate.Violation proto;
     @Nullable Value fieldValue;
     @Nullable Value ruleValue;
+    private @Nullable Value fieldValue;
+    private @Nullable Value ruleValue;
 
     /**
      * Sets the underlying protobuf message that corresponds to the violation.
@@ -86,7 +90,7 @@ public class Violation {
     return new Builder();
   }
 
-  Violation(
+  private Violation(
       build.buf.validate.Violation proto, @Nullable Value fieldValue, @Nullable Value ruleValue) {
     this.proto = proto;
     this.fieldValue = fieldValue;
