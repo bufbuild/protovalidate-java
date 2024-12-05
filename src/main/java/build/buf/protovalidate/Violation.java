@@ -14,6 +14,7 @@
 
 package build.buf.protovalidate;
 
+import com.google.protobuf.Descriptors;
 import javax.annotation.Nullable;
 
 /**
@@ -22,14 +23,18 @@ import javax.annotation.Nullable;
  */
 public class Violation {
   private final build.buf.validate.Violation proto;
-  private final @Nullable Value fieldValue;
-  private final @Nullable Value ruleValue;
+  private final @Nullable Object fieldValue;
+  private final @Nullable Descriptors.FieldDescriptor fieldDescriptor;
+  private final @Nullable Object ruleValue;
+  private final @Nullable Descriptors.FieldDescriptor ruleDescriptor;
 
   /** Builds a Violation instance. */
   public static class Builder {
     private build.buf.validate.Violation proto;
-    private @Nullable Value fieldValue;
-    private @Nullable Value ruleValue;
+    private @Nullable Object fieldValue;
+    private @Nullable Descriptors.FieldDescriptor fieldDescriptor;
+    private @Nullable Object ruleValue;
+    private @Nullable Descriptors.FieldDescriptor ruleDescriptor;
 
     /**
      * Sets the underlying protobuf message that corresponds to the violation.
@@ -46,10 +51,13 @@ public class Violation {
      * Sets the field value that corresponds to the violation.
      *
      * @param fieldValue The field value corresponding to this violation.
+     * @param fieldDescriptor The field descriptor corresponding to the field value.
      * @return The builder.
      */
-    public Builder setFieldValue(@Nullable Value fieldValue) {
+    public Builder setFieldValue(
+        @Nullable Object fieldValue, @Nullable Descriptors.FieldDescriptor fieldDescriptor) {
       this.fieldValue = fieldValue;
+      this.fieldDescriptor = fieldDescriptor;
       return this;
     }
 
@@ -57,10 +65,13 @@ public class Violation {
      * Sets the rule value that corresponds to the violation.
      *
      * @param ruleValue The rule value corresponding to this violation.
+     * @param ruleDescriptor The field descriptor corresponding to the rule value.
      * @return The builder.
      */
-    public Builder setRuleValue(@Nullable Value ruleValue) {
+    public Builder setRuleValue(
+        @Nullable Object ruleValue, @Nullable Descriptors.FieldDescriptor ruleDescriptor) {
       this.ruleValue = ruleValue;
+      this.ruleDescriptor = ruleDescriptor;
       return this;
     }
 
@@ -70,7 +81,7 @@ public class Violation {
      * @return A Violation instance.
      */
     public Violation build() {
-      return new Violation(proto, fieldValue, ruleValue);
+      return new Violation(proto, fieldValue, fieldDescriptor, ruleValue, ruleDescriptor);
     }
 
     private Builder(build.buf.validate.Violation proto) {
@@ -89,10 +100,16 @@ public class Violation {
   }
 
   private Violation(
-      build.buf.validate.Violation proto, @Nullable Value fieldValue, @Nullable Value ruleValue) {
+      build.buf.validate.Violation proto,
+      @Nullable Object fieldValue,
+      @Nullable Descriptors.FieldDescriptor fieldDescriptor,
+      @Nullable Object ruleValue,
+      @Nullable Descriptors.FieldDescriptor ruleDescriptor) {
     this.proto = proto;
     this.fieldValue = fieldValue;
+    this.fieldDescriptor = fieldDescriptor;
     this.ruleValue = ruleValue;
+    this.ruleDescriptor = ruleDescriptor;
   }
 
   /**
@@ -109,8 +126,17 @@ public class Violation {
    *
    * @return The field value corresponding to this violation.
    */
-  public @Nullable Value getFieldValue() {
+  public @Nullable Object getFieldValue() {
     return fieldValue;
+  }
+
+  /**
+   * Gets the field descriptor that corresponds to the field value.
+   *
+   * @return The field descriptor that corresponds to the field value.
+   */
+  public @Nullable Descriptors.FieldDescriptor getFieldDescriptor() {
+    return fieldDescriptor;
   }
 
   /**
@@ -118,8 +144,17 @@ public class Violation {
    *
    * @return The rule value corresponding to this violation.
    */
-  public @Nullable Value getRuleValue() {
+  public @Nullable Object getRuleValue() {
     return ruleValue;
+  }
+
+  /**
+   * Gets the field descriptor that corresponds to the rule value.
+   *
+   * @return The field descriptor that corresponds to the rule value.
+   */
+  public @Nullable Descriptors.FieldDescriptor getRuleDescriptor() {
+    return ruleDescriptor;
   }
 
   /**
@@ -128,6 +163,8 @@ public class Violation {
    * @return A new {@link Builder} instance.
    */
   public Builder toBuilder() {
-    return new Builder(proto).setFieldValue(fieldValue).setRuleValue(ruleValue);
+    return new Builder(proto)
+        .setFieldValue(fieldValue, fieldDescriptor)
+        .setRuleValue(ruleValue, ruleDescriptor);
   }
 }

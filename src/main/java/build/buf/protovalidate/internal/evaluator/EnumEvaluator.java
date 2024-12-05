@@ -91,8 +91,8 @@ class EnumEvaluator implements Evaluator {
                           .setConstraintId("enum.defined_only")
                           .setMessage("value must be one of the defined enum values")
                           .build())
-                  .setFieldValue(val)
-                  .setRuleValue(new ObjectValue(DEFINED_ONLY_DESCRIPTOR, true))
+                  .setFieldValue(val.value(Object.class), val.fieldDescriptor())
+                  .setRuleValue(true, DEFINED_ONLY_DESCRIPTOR)
                   .build()));
     }
     return ValidationResult.EMPTY;

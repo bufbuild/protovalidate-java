@@ -14,9 +14,9 @@
 
 package build.buf.protovalidate.internal.expression;
 
-import build.buf.protovalidate.Value;
 import build.buf.protovalidate.Violation;
 import build.buf.protovalidate.exceptions.ExecutionException;
+import build.buf.protovalidate.internal.evaluator.Value;
 import build.buf.validate.FieldPath;
 import javax.annotation.Nullable;
 import org.projectnessie.cel.Program;
@@ -84,10 +84,13 @@ public class CompiledProgram {
       if (rulePath != null) {
         violation.setRule(rulePath);
       }
-      return Violation.newBuilder(violation.build())
-          .setFieldValue(fieldValue)
-          .setRuleValue(ruleValue)
-          .build();
+      Violation.Builder builder =
+          Violation.newBuilder(violation.build())
+              .setFieldValue(fieldValue.value(Object.class), fieldValue.fieldDescriptor());
+      if (ruleValue != null) {
+        builder.setRuleValue(ruleValue.value(Object.class), ruleValue.fieldDescriptor());
+      }
+      return builder.build();
     } else if (value instanceof Boolean) {
       if (val.booleanValue()) {
         return null;
@@ -99,10 +102,13 @@ public class CompiledProgram {
       if (rulePath != null) {
         violation.setRule(rulePath);
       }
-      return Violation.newBuilder(violation.build())
-          .setFieldValue(fieldValue)
-          .setRuleValue(ruleValue)
-          .build();
+      Violation.Builder builder =
+          Violation.newBuilder(violation.build())
+              .setFieldValue(fieldValue.value(Object.class), fieldValue.fieldDescriptor());
+      if (ruleValue != null) {
+        builder.setRuleValue(ruleValue.value(Object.class), ruleValue.fieldDescriptor());
+      }
+      return builder.build();
     } else {
       throw new ExecutionException(String.format("resolved to an unexpected type %s", val));
     }

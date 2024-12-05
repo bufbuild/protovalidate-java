@@ -15,10 +15,10 @@
 package build.buf.protovalidate.internal.constraints;
 
 import build.buf.protovalidate.Config;
-import build.buf.protovalidate.Value;
 import build.buf.protovalidate.exceptions.CompilationException;
 import build.buf.protovalidate.internal.errors.FieldPathUtils;
 import build.buf.protovalidate.internal.evaluator.ObjectValue;
+import build.buf.protovalidate.internal.evaluator.Value;
 import build.buf.protovalidate.internal.expression.AstExpression;
 import build.buf.protovalidate.internal.expression.CompiledProgram;
 import build.buf.protovalidate.internal.expression.Expression;

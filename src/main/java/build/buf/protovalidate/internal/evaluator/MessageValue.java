@@ -14,10 +14,12 @@
 
 package build.buf.protovalidate.internal.evaluator;
 
+import com.google.protobuf.Descriptors;
 import com.google.protobuf.Message;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
+import javax.annotation.Nullable;
 
 /**
  * The {@link build.buf.protovalidate.internal.evaluator.Value} type that contains a {@link
@@ -35,6 +37,11 @@ public final class MessageValue implements Value {
    */
   public MessageValue(Message value) {
     this.value = value;
+  }
+
+  @Override
+  public @Nullable Descriptors.FieldDescriptor fieldDescriptor() {
+    return null;
   }
 
   @Override

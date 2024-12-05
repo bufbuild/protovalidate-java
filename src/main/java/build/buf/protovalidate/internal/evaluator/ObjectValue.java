@@ -50,6 +50,11 @@ public final class ObjectValue implements Value {
     this.value = value;
   }
 
+  @Override
+  public Descriptors.FieldDescriptor fieldDescriptor() {
+    return fieldDescriptor;
+  }
+
   @Nullable
   @Override
   public Message messageValue() {

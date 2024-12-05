@@ -102,8 +102,8 @@ class FieldEvaluator implements Evaluator {
                           .setConstraintId("required")
                           .setMessage("value is required")
                           .build())
-                  .setFieldValue(val)
-                  .setRuleValue(new ObjectValue(REQUIRED_DESCRIPTOR, true))
+                  .setFieldValue(val.value(Object.class), val.fieldDescriptor())
+                  .setRuleValue(true, REQUIRED_DESCRIPTOR)
                   .build()));
     }
     if (ignoreEmpty && !hasField) {

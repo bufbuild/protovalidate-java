@@ -88,8 +88,8 @@ class AnyEvaluator implements Evaluator {
                       .setConstraintId("any.in")
                       .setMessage("type URL must be in the allow list")
                       .build())
-              .setFieldValue(val)
-              .setRuleValue(new ObjectValue(IN_DESCRIPTOR, this.inValue))
+              .setFieldValue(val.value(Object.class), val.fieldDescriptor())
+              .setRuleValue(this.inValue, IN_DESCRIPTOR)
               .build();
       violationList.add(violation);
       if (failFast) {
@@ -104,8 +104,8 @@ class AnyEvaluator implements Evaluator {
                       .setConstraintId("any.not_in")
                       .setMessage("type URL must not be in the block list")
                       .build())
-              .setFieldValue(val)
-              .setRuleValue(new ObjectValue(NOT_IN_DESCRIPTOR, this.notInValue))
+              .setFieldValue(val.value(Object.class), val.fieldDescriptor())
+              .setRuleValue(this.notInValue, NOT_IN_DESCRIPTOR)
               .build();
       violationList.add(violation);
     }
