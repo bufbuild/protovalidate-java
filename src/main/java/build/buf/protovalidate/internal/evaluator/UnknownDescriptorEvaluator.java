@@ -43,8 +43,7 @@ class UnknownDescriptorEvaluator implements Evaluator {
   public ValidationResult evaluate(Value val, boolean failFast) throws ExecutionException {
     return new ValidationResult(
         Collections.singletonList(
-            Violation.newBuilder()
-                .setProto(
+            Violation.newBuilder(
                     build.buf.validate.Violation.newBuilder()
                         .setMessage("No evaluator available for " + desc.getFullName())
                         .build())

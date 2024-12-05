@@ -84,8 +84,7 @@ public class CompiledProgram {
       if (rulePath != null) {
         violation.setRule(rulePath);
       }
-      return Violation.newBuilder()
-          .setProto(violation.build())
+      return Violation.newBuilder(violation.build())
           .setFieldValue(fieldValue)
           .setRuleValue(ruleValue)
           .build();
@@ -100,8 +99,7 @@ public class CompiledProgram {
       if (rulePath != null) {
         violation.setRule(rulePath);
       }
-      return Violation.newBuilder()
-          .setProto(violation.build())
+      return Violation.newBuilder(violation.build())
           .setFieldValue(fieldValue)
           .setRuleValue(ruleValue)
           .build();

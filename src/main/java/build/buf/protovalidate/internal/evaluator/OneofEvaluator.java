@@ -57,8 +57,7 @@ public class OneofEvaluator implements Evaluator {
     if (required && (message.getOneofFieldDescriptor(descriptor) == null)) {
       return new ValidationResult(
           Collections.singletonList(
-              Violation.newBuilder()
-                  .setProto(
+              Violation.newBuilder(
                       build.buf.validate.Violation.newBuilder()
                           .setField(
                               FieldPath.newBuilder()

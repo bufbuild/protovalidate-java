@@ -86,8 +86,7 @@ class EnumEvaluator implements Evaluator {
     if (!values.contains(enumValue.getNumber())) {
       return new ValidationResult(
           Collections.singletonList(
-              Violation.newBuilder()
-                  .setProto(
+              Violation.newBuilder(
                       build.buf.validate.Violation.newBuilder()
                           .setRule(DEFINED_ONLY_RULE_PATH)
                           .setConstraintId("enum.defined_only")

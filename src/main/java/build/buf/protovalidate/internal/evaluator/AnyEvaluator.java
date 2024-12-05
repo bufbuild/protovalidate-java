@@ -83,8 +83,7 @@ class AnyEvaluator implements Evaluator {
     String typeURL = (String) anyValue.getField(typeURLDescriptor);
     if (!in.isEmpty() && !in.contains(typeURL)) {
       Violation violation =
-          Violation.newBuilder()
-              .setProto(
+          Violation.newBuilder(
                   build.buf.validate.Violation.newBuilder()
                       .setRule(IN_RULE_PATH)
                       .setConstraintId("any.in")
@@ -100,8 +99,7 @@ class AnyEvaluator implements Evaluator {
     }
     if (!notIn.isEmpty() && notIn.contains(typeURL)) {
       Violation violation =
-          Violation.newBuilder()
-              .setProto(
+          Violation.newBuilder(
                   build.buf.validate.Violation.newBuilder()
                       .setRule(NOT_IN_RULE_PATH)
                       .setConstraintId("any.not_in")

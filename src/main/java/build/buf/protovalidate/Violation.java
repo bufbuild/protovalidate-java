@@ -14,7 +14,6 @@
 
 package build.buf.protovalidate;
 
-import java.util.Objects;
 import javax.annotation.Nullable;
 
 /**
@@ -23,16 +22,12 @@ import javax.annotation.Nullable;
  */
 public class Violation {
   private final build.buf.validate.Violation proto;
-  @Nullable Value fieldValue;
-  @Nullable Value ruleValue;
   private final @Nullable Value fieldValue;
   private final @Nullable Value ruleValue;
 
   /** Builds a Violation instance. */
   public static class Builder {
-    @Nullable private build.buf.validate.Violation proto;
-    @Nullable Value fieldValue;
-    @Nullable Value ruleValue;
+    private build.buf.validate.Violation proto;
     private @Nullable Value fieldValue;
     private @Nullable Value ruleValue;
 
@@ -75,19 +70,22 @@ public class Violation {
      * @return A Violation instance.
      */
     public Violation build() {
-      return new Violation(Objects.requireNonNull(proto), fieldValue, ruleValue);
+      return new Violation(proto, fieldValue, ruleValue);
     }
 
-    private Builder() {}
+    private Builder(build.buf.validate.Violation proto) {
+      this.proto = proto;
+    }
   }
 
   /**
    * Constructs a new empty builder.
    *
+   * @param proto The proto Violation to wrap.
    * @return A new empty builder instance.
    */
-  public static Builder newBuilder() {
-    return new Builder();
+  public static Builder newBuilder(build.buf.validate.Violation proto) {
+    return new Builder(proto);
   }
 
   private Violation(
@@ -130,6 +128,6 @@ public class Violation {
    * @return A new {@link Builder} instance.
    */
   public Builder toBuilder() {
-    return new Builder().setProto(proto).setFieldValue(fieldValue).setRuleValue(ruleValue);
+    return new Builder(proto).setFieldValue(fieldValue).setRuleValue(ruleValue);
   }
 }

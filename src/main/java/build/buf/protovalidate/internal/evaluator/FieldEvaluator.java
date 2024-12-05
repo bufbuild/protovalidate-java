@@ -93,8 +93,7 @@ class FieldEvaluator implements Evaluator {
     if (required && !hasField) {
       return new ValidationResult(
           Collections.singletonList(
-              Violation.newBuilder()
-                  .setProto(
+              Violation.newBuilder(
                       build.buf.validate.Violation.newBuilder()
                           .setField(
                               FieldPath.newBuilder()
