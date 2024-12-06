@@ -17,12 +17,14 @@ package build.buf.protovalidate;
 import build.buf.protovalidate.exceptions.CompilationException;
 import build.buf.protovalidate.exceptions.ValidationException;
 import build.buf.protovalidate.internal.celext.ValidateLibrary;
-import build.buf.protovalidate.internal.errors.FieldPathUtils;
+import build.buf.protovalidate.internal.errors.ConstraintViolation;
 import build.buf.protovalidate.internal.evaluator.Evaluator;
 import build.buf.protovalidate.internal.evaluator.EvaluatorBuilder;
 import build.buf.protovalidate.internal.evaluator.MessageValue;
 import com.google.protobuf.Descriptors.Descriptor;
 import com.google.protobuf.Message;
+import java.util.ArrayList;
+import java.util.List;
 import org.projectnessie.cel.Env;
 import org.projectnessie.cel.Library;
 
@@ -75,11 +77,15 @@ public class Validator {
     }
     Descriptor descriptor = msg.getDescriptorForType();
     Evaluator evaluator = evaluatorBuilder.load(descriptor);
-    ValidationResult result = evaluator.evaluate(new MessageValue(msg), failFast);
-    if (result.isSuccess()) {
-      return result;
+    List<ConstraintViolation.Builder> result = evaluator.evaluate(new MessageValue(msg), failFast);
+    if (result.isEmpty()) {
+      return ValidationResult.EMPTY;
     }
-    return new ValidationResult(FieldPathUtils.calculateFieldPathStrings(result.getViolations()));
+    List<Violation> violations = new ArrayList<>();
+    for (ConstraintViolation.Builder builder : result) {
+      violations.add(builder.build());
+    }
+    return new ValidationResult(violations);
   }
 
   /**

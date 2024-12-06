@@ -80,8 +80,11 @@ public class ValidatorDynamicMessageTest {
             .setFieldPath("regex_string_field")
             .setMessage("value does not match regex pattern `^[a-z0-9]{1,9}$`")
             .build();
-    assertThat(new Validator().validate(messageBuilder.build()).getViolations())
-        .containsExactly(expectedViolation);
+    ValidationResult result = new Validator().validate(messageBuilder.build());
+    assertThat(result.toProto().getViolationsList()).containsExactly(expectedViolation);
+    assertThat(result.getViolations().get(0).getFieldValue().getValue()).isEqualTo("0123456789");
+    assertThat(result.getViolations().get(0).getRuleValue().getValue())
+        .isEqualTo("^[a-z0-9]{1,9}$");
   }
 
   @Test
@@ -97,7 +100,7 @@ public class ValidatorDynamicMessageTest {
             .setConstraintId("required")
             .setMessage("exactly one field is required in oneof")
             .build();
-    assertThat(new Validator().validate(messageBuilder.build()).getViolations())
+    assertThat(new Validator().validate(messageBuilder.build()).toProto().getViolationsList())
         .containsExactly(expectedViolation);
   }
 
@@ -113,7 +116,7 @@ public class ValidatorDynamicMessageTest {
             .setConstraintId("secondary_email_depends_on_primary")
             .setMessage("cannot set a secondary email without setting a primary one")
             .build();
-    assertThat(new Validator().validate(messageBuilder.build()).getViolations())
+    assertThat(new Validator().validate(messageBuilder.build()).toProto().getViolationsList())
         .containsExactly(expectedViolation);
   }
 
@@ -155,7 +158,7 @@ public class ValidatorDynamicMessageTest {
             .setFieldPath("regex_string_field")
             .setMessage("value does not match regex pattern `^[a-z0-9]{1,9}$`")
             .build();
-    assertThat(new Validator().validate(messageBuilder.build()).getViolations())
+    assertThat(new Validator().validate(messageBuilder.build()).toProto().getViolationsList())
         .containsExactly(expectedViolation);
   }
 
@@ -205,7 +208,7 @@ public class ValidatorDynamicMessageTest {
         TypeRegistry.newBuilder().add(isIdent.getDescriptor().getContainingType()).build();
     Config config =
         Config.newBuilder().setExtensionRegistry(registry).setTypeRegistry(typeRegistry).build();
-    assertThat(new Validator(config).validate(messageBuilder.build()).getViolations())
+    assertThat(new Validator(config).validate(messageBuilder.build()).toProto().getViolationsList())
         .containsExactly(expectedViolation);
   }
 

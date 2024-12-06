@@ -14,7 +14,8 @@
 
 package build.buf.protovalidate;
 
-import build.buf.validate.Violation;
+import build.buf.validate.Violations;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -71,12 +72,27 @@ public class ValidationResult {
     builder.append("Validation error:");
     for (Violation violation : violations) {
       builder.append("\n - ");
-      if (!violation.getFieldPath().isEmpty()) {
-        builder.append(violation.getFieldPath());
+      if (!violation.toProto().getFieldPath().isEmpty()) {
+        builder.append(violation.toProto().getFieldPath());
         builder.append(": ");
       }
-      builder.append(String.format("%s [%s]", violation.getMessage(), violation.getConstraintId()));
+      builder.append(
+          String.format(
+              "%s [%s]", violation.toProto().getMessage(), violation.toProto().getConstraintId()));
     }
     return builder.toString();
+  }
+
+  /**
+   * Converts the validation result to its equivalent protobuf form.
+   *
+   * @return The protobuf form of this validation result.
+   */
+  public build.buf.validate.Violations toProto() {
+    List<build.buf.validate.Violation> protoViolations = new ArrayList<>();
+    for (Violation violation : violations) {
+      protoViolations.add(violation.toProto());
+    }
+    return Violations.newBuilder().addAllViolations(protoViolations).build();
   }
 }
