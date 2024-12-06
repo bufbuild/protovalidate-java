@@ -14,9 +14,8 @@
 
 package build.buf.protovalidate.internal.evaluator;
 
-import build.buf.protovalidate.ValidationResult;
-import build.buf.protovalidate.Violation;
 import build.buf.protovalidate.exceptions.ExecutionException;
+import build.buf.protovalidate.internal.errors.ConstraintViolation;
 import build.buf.protovalidate.internal.errors.FieldPathUtils;
 import build.buf.validate.FieldConstraints;
 import build.buf.validate.FieldPath;
@@ -27,12 +26,13 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 /** Performs validation on a map field's key-value pairs. */
-class MapEvaluator implements Evaluator {
+class MapEvaluator extends EvaluatorBase implements Evaluator {
   /** Rule path to map key rules */
-  private static final List<FieldPathElement> MAP_KEYS_RULE_PATH =
+  private static final FieldPath MAP_KEYS_RULE_PATH =
       FieldPath.newBuilder()
           .addElements(
               FieldPathUtils.fieldPathElement(
@@ -41,11 +41,10 @@ class MapEvaluator implements Evaluator {
           .addElements(
               FieldPathUtils.fieldPathElement(
                   MapRules.getDescriptor().findFieldByNumber(MapRules.KEYS_FIELD_NUMBER)))
-          .build()
-          .getElementsList();
+          .build();
 
   /** Rule path to map value rules */
-  private static final List<FieldPathElement> MAP_VALUES_RULE_PATH =
+  private static final FieldPath MAP_VALUES_RULE_PATH =
       FieldPath.newBuilder()
           .addElements(
               FieldPathUtils.fieldPathElement(
@@ -54,74 +53,7 @@ class MapEvaluator implements Evaluator {
           .addElements(
               FieldPathUtils.fieldPathElement(
                   MapRules.getDescriptor().findFieldByNumber(MapRules.VALUES_FIELD_NUMBER)))
-          .build()
-          .getElementsList();
-
-  public static final EvaluatorWrapper KEYS_WRAPPER = new KeysWrapper();
-
-  public static final EvaluatorWrapper VALUES_WRAPPER = new ValuesWrapper();
-
-  private static class KeysEvaluator implements Evaluator {
-    /** Evaluator to wrap */
-    private final Evaluator evaluator;
-
-    public KeysEvaluator(Evaluator evaluator) {
-      this.evaluator = evaluator;
-    }
-
-    @Override
-    public boolean tautology() {
-      return this.evaluator.tautology();
-    }
-
-    @Override
-    public ValidationResult evaluate(Value val, boolean failFast) throws ExecutionException {
-      ValidationResult result = evaluator.evaluate(val, failFast);
-      if (result.isSuccess()) {
-        return result;
-      }
-      return new ValidationResult(
-          FieldPathUtils.prependRulePaths(result.getViolations(), MAP_KEYS_RULE_PATH));
-    }
-  }
-
-  private static class KeysWrapper implements EvaluatorWrapper {
-    @Override
-    public Evaluator wrap(Evaluator evaluator) {
-      return new KeysEvaluator(evaluator);
-    }
-  }
-
-  private static class ValuesEvaluator implements Evaluator {
-    /** Evaluator to wrap */
-    private final Evaluator evaluator;
-
-    public ValuesEvaluator(Evaluator evaluator) {
-      this.evaluator = evaluator;
-    }
-
-    @Override
-    public boolean tautology() {
-      return this.evaluator.tautology();
-    }
-
-    @Override
-    public ValidationResult evaluate(Value val, boolean failFast) throws ExecutionException {
-      ValidationResult result = evaluator.evaluate(val, failFast);
-      if (result.isSuccess()) {
-        return result;
-      }
-      return new ValidationResult(
-          FieldPathUtils.prependRulePaths(result.getViolations(), MAP_VALUES_RULE_PATH));
-    }
-  }
-
-  private static class ValuesWrapper implements EvaluatorWrapper {
-    @Override
-    public Evaluator wrap(Evaluator evaluator) {
-      return new ValuesEvaluator(evaluator);
-    }
-  }
+          .build();
 
   /** Constraint for checking the map keys */
   private final ValueEvaluator keyEvaluator;
@@ -141,11 +73,12 @@ class MapEvaluator implements Evaluator {
   /**
    * Constructs a {@link MapEvaluator}.
    *
-   * @param fieldDescriptor The descriptor of the map field being evaluated.
+   * @param valueEvaluator The value evaluator this constraint exists under.
    */
-  MapEvaluator(Descriptors.FieldDescriptor fieldDescriptor) {
-    this.keyEvaluator = new ValueEvaluator();
-    this.valueEvaluator = new ValueEvaluator();
+  MapEvaluator(ValueEvaluator valueEvaluator, Descriptors.FieldDescriptor fieldDescriptor) {
+    super(valueEvaluator);
+    this.keyEvaluator = new ValueEvaluator(null, MAP_KEYS_RULE_PATH);
+    this.valueEvaluator = new ValueEvaluator(null, MAP_VALUES_RULE_PATH);
     this.fieldDescriptor = fieldDescriptor;
     this.keyFieldDescriptor = fieldDescriptor.getMessageType().findFieldByNumber(1);
     this.valueFieldDescriptor = fieldDescriptor.getMessageType().findFieldByNumber(2);
@@ -175,49 +108,48 @@ class MapEvaluator implements Evaluator {
   }
 
   @Override
-  public ValidationResult evaluate(Value val, boolean failFast) throws ExecutionException {
-    List<Violation> violations = new ArrayList<>();
+  public List<ConstraintViolation.Builder> evaluate(Value val, boolean failFast)
+      throws ExecutionException {
+    List<ConstraintViolation.Builder> violations = new ArrayList<>();
     Map<Value, Value> mapValue = val.mapValue();
     for (Map.Entry<Value, Value> entry : mapValue.entrySet()) {
       violations.addAll(evalPairs(entry.getKey(), entry.getValue(), failFast));
       if (failFast && !violations.isEmpty()) {
-        return new ValidationResult(violations);
+        return violations;
       }
     }
     if (violations.isEmpty()) {
-      return ValidationResult.EMPTY;
+      return ConstraintViolation.NO_VIOLATIONS;
     }
-    return new ValidationResult(violations);
+    return violations;
   }
 
-  private List<Violation> evalPairs(Value key, Value value, boolean failFast)
+  private List<ConstraintViolation.Builder> evalPairs(Value key, Value value, boolean failFast)
       throws ExecutionException {
-    List<Violation> keyViolations =
-        keyEvaluator.evaluate(key, failFast).getViolations().stream()
-            .map(
-                violation ->
-                    violation.toBuilder()
-                        .setProto(violation.toProto().toBuilder().setForKey(true).build())
-                        .build())
+    List<ConstraintViolation.Builder> keyViolations =
+        keyEvaluator.evaluate(key, failFast).stream()
+            .map(violation -> violation.setForKey(true))
             .collect(Collectors.toList());
-    final List<Violation> valueViolations;
+    final List<ConstraintViolation.Builder> valueViolations;
     if (failFast && !keyViolations.isEmpty()) {
       // Don't evaluate value constraints if failFast is enabled and keys failed validation.
       // We still need to continue execution to the end to properly prefix violation field paths.
-      valueViolations = Collections.emptyList();
+      valueViolations = ConstraintViolation.NO_VIOLATIONS;
     } else {
-      valueViolations = valueEvaluator.evaluate(value, failFast).getViolations();
+      valueViolations = valueEvaluator.evaluate(value, failFast);
     }
     if (keyViolations.isEmpty() && valueViolations.isEmpty()) {
       return Collections.emptyList();
     }
-    List<Violation> violations = new ArrayList<>(keyViolations.size() + valueViolations.size());
+    List<ConstraintViolation.Builder> violations =
+        new ArrayList<>(keyViolations.size() + valueViolations.size());
     violations.addAll(keyViolations);
     violations.addAll(valueViolations);
 
-    FieldPathElement.Builder fieldPathElement = FieldPathUtils.fieldPathElement(fieldDescriptor);
-    fieldPathElement.setKeyType(keyFieldDescriptor.getType().toProto());
-    fieldPathElement.setValueType(valueFieldDescriptor.getType().toProto());
+    FieldPathElement.Builder fieldPathElementBuilder =
+        Objects.requireNonNull(getFieldPathElement()).toBuilder();
+    fieldPathElementBuilder.setKeyType(keyFieldDescriptor.getType().toProto());
+    fieldPathElementBuilder.setValueType(valueFieldDescriptor.getType().toProto());
     switch (keyFieldDescriptor.getType().toProto()) {
       case TYPE_INT64:
       case TYPE_INT32:
@@ -225,23 +157,24 @@ class MapEvaluator implements Evaluator {
       case TYPE_SINT64:
       case TYPE_SFIXED32:
       case TYPE_SFIXED64:
-        fieldPathElement.setIntKey(key.value(Number.class).longValue());
+        fieldPathElementBuilder.setIntKey(key.value(Number.class).longValue());
         break;
       case TYPE_UINT32:
       case TYPE_UINT64:
       case TYPE_FIXED32:
       case TYPE_FIXED64:
-        fieldPathElement.setUintKey(key.value(Number.class).longValue());
+        fieldPathElementBuilder.setUintKey(key.value(Number.class).longValue());
         break;
       case TYPE_BOOL:
-        fieldPathElement.setBoolKey(key.value(Boolean.class));
+        fieldPathElementBuilder.setBoolKey(key.value(Boolean.class));
         break;
       case TYPE_STRING:
-        fieldPathElement.setStringKey(key.value(String.class));
+        fieldPathElementBuilder.setStringKey(key.value(String.class));
         break;
       default:
         throw new ExecutionException("Unexpected map key type");
     }
-    return FieldPathUtils.prependFieldPaths(violations, fieldPathElement.build(), false);
+    FieldPathElement fieldPathElement = fieldPathElementBuilder.build();
+    return FieldPathUtils.updatePaths(violations, fieldPathElement, getRulePrefixElements());
   }
 }

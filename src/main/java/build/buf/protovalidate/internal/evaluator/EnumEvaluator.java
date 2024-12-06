@@ -15,8 +15,8 @@
 package build.buf.protovalidate.internal.evaluator;
 
 import build.buf.protovalidate.ValidationResult;
-import build.buf.protovalidate.Violation;
 import build.buf.protovalidate.exceptions.ExecutionException;
+import build.buf.protovalidate.internal.errors.ConstraintViolation;
 import build.buf.protovalidate.internal.errors.FieldPathUtils;
 import build.buf.validate.EnumRules;
 import build.buf.validate.FieldConstraints;
@@ -31,7 +31,7 @@ import java.util.stream.Collectors;
  * {@link EnumEvaluator} checks an enum value being a member of the defined values exclusively. This
  * check is handled outside CEL as enums are completely type erased to integers.
  */
-class EnumEvaluator implements Evaluator {
+class EnumEvaluator extends EvaluatorBase implements Evaluator {
   /** Captures all the defined values for this enum */
   private final Set<Integer> values;
 
@@ -52,7 +52,9 @@ class EnumEvaluator implements Evaluator {
    *
    * @param valueDescriptors the list of {@link Descriptors.EnumValueDescriptor} for the enum.
    */
-  EnumEvaluator(List<Descriptors.EnumValueDescriptor> valueDescriptors) {
+  EnumEvaluator(
+      ValueEvaluator valueEvaluator, List<Descriptors.EnumValueDescriptor> valueDescriptors) {
+    super(valueEvaluator);
     if (valueDescriptors.isEmpty()) {
       this.values = Collections.emptySet();
     } else {
@@ -77,24 +79,23 @@ class EnumEvaluator implements Evaluator {
    * @throws ExecutionException if an error occurs during the evaluation.
    */
   @Override
-  public ValidationResult evaluate(Value val, boolean failFast) throws ExecutionException {
+  public List<ConstraintViolation.Builder> evaluate(Value val, boolean failFast)
+      throws ExecutionException {
     Descriptors.EnumValueDescriptor enumValue = val.value(Descriptors.EnumValueDescriptor.class);
     if (enumValue == null) {
-      return ValidationResult.EMPTY;
+      return ConstraintViolation.NO_VIOLATIONS;
     }
     if (!values.contains(enumValue.getNumber())) {
-      return new ValidationResult(
-          Collections.singletonList(
-              Violation.newBuilder(
-                      build.buf.validate.Violation.newBuilder()
-                          .setRule(DEFINED_ONLY_RULE_PATH)
-                          .setConstraintId("enum.defined_only")
-                          .setMessage("value must be one of the defined enum values")
-                          .build())
-                  .setFieldValue(val.value(Object.class), val.fieldDescriptor())
-                  .setRuleValue(true, DEFINED_ONLY_DESCRIPTOR)
-                  .build()));
+      return Collections.singletonList(
+          ConstraintViolation.newBuilder()
+              .addAllRulePathElements(getRulePrefixElements())
+              .addAllRulePathElements(DEFINED_ONLY_RULE_PATH.getElementsList())
+              .addFirstFieldPathElement(getFieldPathElement())
+              .setConstraintId("enum.defined_only")
+              .setMessage("value must be one of the defined enum values")
+              .setFieldValue(new ConstraintViolation.FieldValue(val))
+              .setRuleValue(new ConstraintViolation.FieldValue(true, DEFINED_ONLY_DESCRIPTOR)));
     }
-    return ValidationResult.EMPTY;
+    return ConstraintViolation.NO_VIOLATIONS;
   }
 }

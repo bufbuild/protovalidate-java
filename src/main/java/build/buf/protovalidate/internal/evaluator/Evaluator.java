@@ -14,8 +14,9 @@
 
 package build.buf.protovalidate.internal.evaluator;
 
-import build.buf.protovalidate.ValidationResult;
 import build.buf.protovalidate.exceptions.ExecutionException;
+import build.buf.protovalidate.internal.errors.ConstraintViolation;
+import java.util.List;
 
 /**
  * {@link Evaluator} defines a validation evaluator. evaluator implementations may elide type
@@ -31,13 +32,13 @@ public interface Evaluator {
 
   /**
    * Checks that the provided val is valid. Unless failFast is true, evaluation attempts to find all
-   * {@link build.buf.validate.Violations} present in val instead of returning a {@link
-   * ValidationResult} on the first {@link build.buf.validate.Violation}.
+   * {@link ConstraintViolation} present in val instead of returning only the first {@link
+   * ConstraintViolation}.
    *
    * @param val The value to validate.
    * @param failFast If true, validation stops after the first failure.
    * @return The result of validation on the specified value.
    * @throws ExecutionException If evaluation fails to complete.
    */
-  ValidationResult evaluate(Value val, boolean failFast) throws ExecutionException;
+  List<ConstraintViolation.Builder> evaluate(Value val, boolean failFast) throws ExecutionException;
 }

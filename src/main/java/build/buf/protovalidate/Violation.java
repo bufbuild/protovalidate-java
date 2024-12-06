@@ -18,153 +18,48 @@ import com.google.protobuf.Descriptors;
 import javax.annotation.Nullable;
 
 /**
- * {@link Violation} contains all of the collected information about an individual constraint
+ * {@link Violation} provides all of the collected information about an individual constraint
  * violation.
  */
-public class Violation {
-  private final build.buf.validate.Violation proto;
-  private final @Nullable Object fieldValue;
-  private final @Nullable Descriptors.FieldDescriptor fieldDescriptor;
-  private final @Nullable Object ruleValue;
-  private final @Nullable Descriptors.FieldDescriptor ruleDescriptor;
-
-  /** Builds a Violation instance. */
-  public static class Builder {
-    private build.buf.validate.Violation proto;
-    private @Nullable Object fieldValue;
-    private @Nullable Descriptors.FieldDescriptor fieldDescriptor;
-    private @Nullable Object ruleValue;
-    private @Nullable Descriptors.FieldDescriptor ruleDescriptor;
+public interface Violation {
+  /** {@link FieldValue} represents a Protobuf field value inside a Protobuf message. */
+  interface FieldValue {
+    /**
+     * Gets the value of the field, which may be null, a primitive, a Map or a List.
+     *
+     * @return The value of the protobuf field.
+     */
+    @Nullable
+    Object getValue();
 
     /**
-     * Sets the underlying protobuf message that corresponds to the violation.
+     * Gets the field descriptor of the field this value is from.
      *
-     * @param proto The value to set for this field.
-     * @return The builder.
+     * @return A FieldDescriptor pertaining to this field.
      */
-    public Builder setProto(build.buf.validate.Violation proto) {
-      this.proto = proto;
-      return this;
-    }
-
-    /**
-     * Sets the field value that corresponds to the violation.
-     *
-     * @param fieldValue The field value corresponding to this violation.
-     * @param fieldDescriptor The field descriptor corresponding to the field value.
-     * @return The builder.
-     */
-    public Builder setFieldValue(
-        @Nullable Object fieldValue, @Nullable Descriptors.FieldDescriptor fieldDescriptor) {
-      this.fieldValue = fieldValue;
-      this.fieldDescriptor = fieldDescriptor;
-      return this;
-    }
-
-    /**
-     * Sets the rule value that corresponds to the violation.
-     *
-     * @param ruleValue The rule value corresponding to this violation.
-     * @param ruleDescriptor The field descriptor corresponding to the rule value.
-     * @return The builder.
-     */
-    public Builder setRuleValue(
-        @Nullable Object ruleValue, @Nullable Descriptors.FieldDescriptor ruleDescriptor) {
-      this.ruleValue = ruleValue;
-      this.ruleDescriptor = ruleDescriptor;
-      return this;
-    }
-
-    /**
-     * Builds a Violation instance with the provided parameters.
-     *
-     * @return A Violation instance.
-     */
-    public Violation build() {
-      return new Violation(proto, fieldValue, fieldDescriptor, ruleValue, ruleDescriptor);
-    }
-
-    private Builder(build.buf.validate.Violation proto) {
-      this.proto = proto;
-    }
+    Descriptors.FieldDescriptor getDescriptor();
   }
 
   /**
-   * Constructs a new empty builder.
+   * Gets the protobuf form of this violation.
    *
-   * @param proto The proto Violation to wrap.
-   * @return A new empty builder instance.
+   * @return The protobuf form of this violation.
    */
-  public static Builder newBuilder(build.buf.validate.Violation proto) {
-    return new Builder(proto);
-  }
-
-  private Violation(
-      build.buf.validate.Violation proto,
-      @Nullable Object fieldValue,
-      @Nullable Descriptors.FieldDescriptor fieldDescriptor,
-      @Nullable Object ruleValue,
-      @Nullable Descriptors.FieldDescriptor ruleDescriptor) {
-    this.proto = proto;
-    this.fieldValue = fieldValue;
-    this.fieldDescriptor = fieldDescriptor;
-    this.ruleValue = ruleValue;
-    this.ruleDescriptor = ruleDescriptor;
-  }
+  build.buf.validate.Violation toProto();
 
   /**
-   * Gets the protobuf data that corresponds to this constraint violation.
+   * Gets the value of the field this violation pertains to, or null if there is none.
    *
-   * @return The protobuf violation data.
+   * @return Value of the field associated with the violation, or null if there is none.
    */
-  public build.buf.validate.Violation toProto() {
-    return proto;
-  }
+  @Nullable
+  FieldValue getFieldValue();
 
   /**
-   * Gets the field value that corresponds to the violation.
+   * Gets the value of the rule this violation pertains to, or null if there is none.
    *
-   * @return The field value corresponding to this violation.
+   * @return Value of the rule associated with the violation, or null if there is none.
    */
-  public @Nullable Object getFieldValue() {
-    return fieldValue;
-  }
-
-  /**
-   * Gets the field descriptor that corresponds to the field value.
-   *
-   * @return The field descriptor that corresponds to the field value.
-   */
-  public @Nullable Descriptors.FieldDescriptor getFieldDescriptor() {
-    return fieldDescriptor;
-  }
-
-  /**
-   * Gets the rule value that corresponds to the violation.
-   *
-   * @return The rule value corresponding to this violation.
-   */
-  public @Nullable Object getRuleValue() {
-    return ruleValue;
-  }
-
-  /**
-   * Gets the field descriptor that corresponds to the rule value.
-   *
-   * @return The field descriptor that corresponds to the rule value.
-   */
-  public @Nullable Descriptors.FieldDescriptor getRuleDescriptor() {
-    return ruleDescriptor;
-  }
-
-  /**
-   * Constructs a {@link Builder} with all fields set to match this {@link Violation}.
-   *
-   * @return A new {@link Builder} instance.
-   */
-  public Builder toBuilder() {
-    return new Builder(proto)
-        .setFieldValue(fieldValue, fieldDescriptor)
-        .setRuleValue(ruleValue, ruleDescriptor);
-  }
+  @Nullable
+  FieldValue getRuleValue();
 }

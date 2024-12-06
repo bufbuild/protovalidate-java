@@ -14,14 +14,13 @@
 
 package build.buf.protovalidate.internal.evaluator;
 
-import build.buf.protovalidate.ValidationResult;
-import build.buf.protovalidate.Violation;
 import build.buf.protovalidate.exceptions.ExecutionException;
-import build.buf.validate.FieldPath;
+import build.buf.protovalidate.internal.errors.ConstraintViolation;
 import build.buf.validate.FieldPathElement;
 import com.google.protobuf.Descriptors.OneofDescriptor;
 import com.google.protobuf.Message;
 import java.util.Collections;
+import java.util.List;
 
 /** {@link OneofEvaluator} performs validation on a oneof union. */
 public class OneofEvaluator implements Evaluator {
@@ -48,26 +47,17 @@ public class OneofEvaluator implements Evaluator {
   }
 
   @Override
-  public ValidationResult evaluate(Value val, boolean failFast) throws ExecutionException {
+  public List<ConstraintViolation.Builder> evaluate(Value val, boolean failFast)
+      throws ExecutionException {
     Message message = val.messageValue();
-    if (message == null) {
-      return ValidationResult.EMPTY;
+    if (message == null || !required || (message.getOneofFieldDescriptor(descriptor) != null)) {
+      return ConstraintViolation.NO_VIOLATIONS;
     }
-    if (required && (message.getOneofFieldDescriptor(descriptor) == null)) {
-      return new ValidationResult(
-          Collections.singletonList(
-              Violation.newBuilder(
-                      build.buf.validate.Violation.newBuilder()
-                          .setField(
-                              FieldPath.newBuilder()
-                                  .addElements(
-                                      FieldPathElement.newBuilder()
-                                          .setFieldName(descriptor.getName())))
-                          .setConstraintId("required")
-                          .setMessage("exactly one field is required in oneof")
-                          .build())
-                  .build()));
-    }
-    return ValidationResult.EMPTY;
+    return Collections.singletonList(
+        ConstraintViolation.newBuilder()
+            .addFirstFieldPathElement(
+                FieldPathElement.newBuilder().setFieldName(descriptor.getName()).build())
+            .setConstraintId("required")
+            .setMessage("exactly one field is required in oneof"));
   }
 }

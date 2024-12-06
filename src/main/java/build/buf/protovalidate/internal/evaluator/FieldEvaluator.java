@@ -14,9 +14,8 @@
 
 package build.buf.protovalidate.internal.evaluator;
 
-import build.buf.protovalidate.ValidationResult;
-import build.buf.protovalidate.Violation;
 import build.buf.protovalidate.exceptions.ExecutionException;
+import build.buf.protovalidate.internal.errors.ConstraintViolation;
 import build.buf.protovalidate.internal.errors.FieldPathUtils;
 import build.buf.validate.FieldConstraints;
 import build.buf.validate.FieldPath;
@@ -28,7 +27,7 @@ import java.util.Objects;
 import javax.annotation.Nullable;
 
 /** Performs validation on a single message field, defined by its descriptor. */
-class FieldEvaluator implements Evaluator {
+class FieldEvaluator extends EvaluatorBase implements Evaluator {
   private static final FieldDescriptor REQUIRED_DESCRIPTOR =
       FieldConstraints.getDescriptor().findFieldByNumber(FieldConstraints.REQUIRED_FIELD_NUMBER);
 
@@ -64,6 +63,7 @@ class FieldEvaluator implements Evaluator {
       boolean ignoreEmpty,
       boolean ignoreDefault,
       @Nullable Object zero) {
+    super(valueEvaluator);
     this.valueEvaluator = valueEvaluator;
     this.descriptor = descriptor;
     this.required = required;
@@ -78,10 +78,11 @@ class FieldEvaluator implements Evaluator {
   }
 
   @Override
-  public ValidationResult evaluate(Value val, boolean failFast) throws ExecutionException {
+  public List<ConstraintViolation.Builder> evaluate(Value val, boolean failFast)
+      throws ExecutionException {
     Message message = val.messageValue();
     if (message == null) {
-      return ValidationResult.EMPTY;
+      return ConstraintViolation.NO_VIOLATIONS;
     }
     boolean hasField;
     if (descriptor.isRepeated()) {
@@ -90,36 +91,22 @@ class FieldEvaluator implements Evaluator {
       hasField = message.hasField(descriptor);
     }
     if (required && !hasField) {
-      return new ValidationResult(
-          Collections.singletonList(
-              Violation.newBuilder(
-                      build.buf.validate.Violation.newBuilder()
-                          .setField(
-                              FieldPath.newBuilder()
-                                  .addElements(FieldPathUtils.fieldPathElement(descriptor))
-                                  .build())
-                          .setRule(REQUIRED_RULE_PATH)
-                          .setConstraintId("required")
-                          .setMessage("value is required")
-                          .build())
-                  .setFieldValue(val.value(Object.class), val.fieldDescriptor())
-                  .setRuleValue(true, REQUIRED_DESCRIPTOR)
-                  .build()));
+      return Collections.singletonList(
+          ConstraintViolation.newBuilder()
+              .addFirstFieldPathElement(FieldPathUtils.fieldPathElement(descriptor))
+              .addAllRulePathElements(getRulePrefixElements())
+              .addAllRulePathElements(REQUIRED_RULE_PATH.getElementsList())
+              .setConstraintId("required")
+              .setMessage("value is required")
+              .setRuleValue(new ConstraintViolation.FieldValue(true, REQUIRED_DESCRIPTOR)));
     }
     if (ignoreEmpty && !hasField) {
-      return ValidationResult.EMPTY;
+      return ConstraintViolation.NO_VIOLATIONS;
     }
     Object fieldValue = message.getField(descriptor);
     if (ignoreDefault && Objects.equals(zero, fieldValue)) {
-      return ValidationResult.EMPTY;
+      return ConstraintViolation.NO_VIOLATIONS;
     }
-    ValidationResult evalResult =
-        valueEvaluator.evaluate(new ObjectValue(descriptor, fieldValue), failFast);
-    List<Violation> violations =
-        FieldPathUtils.prependFieldPaths(
-            evalResult.getViolations(),
-            FieldPathUtils.fieldPathElement(descriptor).build(),
-            descriptor.isRepeated());
-    return new ValidationResult(violations);
+    return valueEvaluator.evaluate(new ObjectValue(descriptor, fieldValue), failFast);
   }
 }

@@ -82,8 +82,9 @@ public class ValidatorDynamicMessageTest {
             .build();
     ValidationResult result = new Validator().validate(messageBuilder.build());
     assertThat(result.toProto().getViolationsList()).containsExactly(expectedViolation);
-    assertThat(result.getViolations().get(0).getFieldValue()).isEqualTo("0123456789");
-    assertThat(result.getViolations().get(0).getRuleValue()).isEqualTo("^[a-z0-9]{1,9}$");
+    assertThat(result.getViolations().get(0).getFieldValue().getValue()).isEqualTo("0123456789");
+    assertThat(result.getViolations().get(0).getRuleValue().getValue())
+        .isEqualTo("^[a-z0-9]{1,9}$");
   }
 
   @Test

@@ -20,7 +20,6 @@ import build.buf.protovalidate.internal.constraints.ConstraintCache;
 import build.buf.protovalidate.internal.constraints.DescriptorMappings;
 import build.buf.protovalidate.internal.errors.FieldPathUtils;
 import build.buf.protovalidate.internal.expression.AstExpression;
-import build.buf.protovalidate.internal.expression.CelPrograms;
 import build.buf.protovalidate.internal.expression.CompiledProgram;
 import build.buf.protovalidate.internal.expression.Expression;
 import build.buf.protovalidate.internal.expression.Variable;
@@ -54,10 +53,9 @@ import org.projectnessie.cel.checker.Decls;
 public class EvaluatorBuilder {
   private static final FieldPathElement CEL_FIELD_PATH_ELEMENT =
       FieldPathUtils.fieldPathElement(
-              FieldConstraints.getDescriptor().findFieldByNumber(FieldConstraints.CEL_FIELD_NUMBER))
-          .build();
+          FieldConstraints.getDescriptor().findFieldByNumber(FieldConstraints.CEL_FIELD_NUMBER));
 
-  private volatile ImmutableMap<Descriptor, Evaluator> evaluatorCache = ImmutableMap.of();
+  private volatile ImmutableMap<Descriptor, MessageEvaluator> evaluatorCache = ImmutableMap.of();
 
   private final Env env;
   private final boolean disableLazy;
@@ -108,7 +106,7 @@ public class EvaluatorBuilder {
         return eval;
       }
       // Rebuild cache with this descriptor (and any of its dependencies).
-      ImmutableMap<Descriptor, Evaluator> updatedCache =
+      ImmutableMap<Descriptor, MessageEvaluator> updatedCache =
           new DescriptorCacheBuilder(env, constraints, evaluatorCache).build(desc);
       evaluatorCache = updatedCache;
       eval = updatedCache.get(desc);
@@ -124,12 +122,12 @@ public class EvaluatorBuilder {
     private final ConstraintResolver resolver = new ConstraintResolver();
     private final Env env;
     private final ConstraintCache constraintCache;
-    private final HashMap<Descriptor, Evaluator> cache;
+    private final HashMap<Descriptor, MessageEvaluator> cache;
 
     private DescriptorCacheBuilder(
         Env env,
         ConstraintCache constraintCache,
-        ImmutableMap<Descriptor, Evaluator> previousCache) {
+        ImmutableMap<Descriptor, MessageEvaluator> previousCache) {
       this.env = Objects.requireNonNull(env, "env");
       this.constraintCache = Objects.requireNonNull(constraintCache, "constraintCache");
       this.cache = new HashMap<>(previousCache);
@@ -143,14 +141,14 @@ public class EvaluatorBuilder {
      * @return Immutable map of descriptors to evaluators.
      * @throws CompilationException If an error occurs compiling a constraint on the cache.
      */
-    public ImmutableMap<Descriptor, Evaluator> build(Descriptor descriptor)
+    public ImmutableMap<Descriptor, MessageEvaluator> build(Descriptor descriptor)
         throws CompilationException {
       createMessageEvaluator(descriptor);
       return ImmutableMap.copyOf(cache);
     }
 
-    private Evaluator createMessageEvaluator(Descriptor desc) throws CompilationException {
-      Evaluator eval = cache.get(desc);
+    private MessageEvaluator createMessageEvaluator(Descriptor desc) throws CompilationException {
+      MessageEvaluator eval = cache.get(desc);
       if (eval != null) {
         return eval;
       }
@@ -197,7 +195,7 @@ public class EvaluatorBuilder {
       if (compiledPrograms.isEmpty()) {
         throw new CompilationException("compile returned null");
       }
-      msgEval.append(new CelPrograms(compiledPrograms));
+      msgEval.append(new CelPrograms(null, compiledPrograms));
     }
 
     private void processOneofConstraints(Descriptor desc, MessageEvaluator msgEval)
@@ -225,7 +223,7 @@ public class EvaluatorBuilder {
     private FieldEvaluator buildField(
         FieldDescriptor fieldDescriptor, FieldConstraints fieldConstraints)
         throws CompilationException {
-      ValueEvaluator valueEvaluatorEval = new ValueEvaluator();
+      ValueEvaluator valueEvaluatorEval = new ValueEvaluator(fieldDescriptor, null);
       boolean ignoreDefault =
           fieldDescriptor.hasPresence() && shouldIgnoreDefault(fieldConstraints);
       Object zero = null;
@@ -240,7 +238,7 @@ public class EvaluatorBuilder {
               fieldDescriptor.hasPresence() || shouldIgnoreEmpty(fieldConstraints),
               fieldDescriptor.hasPresence() && shouldIgnoreDefault(fieldConstraints),
               zero);
-      buildValue(fieldDescriptor, fieldConstraints, null, fieldEvaluator.valueEvaluator);
+      buildValue(fieldDescriptor, fieldConstraints, fieldEvaluator.valueEvaluator);
       return fieldEvaluator;
     }
 
@@ -263,27 +261,25 @@ public class EvaluatorBuilder {
     private void buildValue(
         FieldDescriptor fieldDescriptor,
         FieldConstraints fieldConstraints,
-        @Nullable EvaluatorWrapper itemsWrapper,
         ValueEvaluator valueEvaluator)
         throws CompilationException {
-      processIgnoreEmpty(fieldDescriptor, fieldConstraints, itemsWrapper, valueEvaluator);
+      processIgnoreEmpty(fieldDescriptor, fieldConstraints, valueEvaluator);
       processFieldExpressions(fieldDescriptor, fieldConstraints, valueEvaluator);
-      processEmbeddedMessage(fieldDescriptor, fieldConstraints, itemsWrapper, valueEvaluator);
-      processWrapperConstraints(fieldDescriptor, fieldConstraints, itemsWrapper, valueEvaluator);
-      processStandardConstraints(fieldDescriptor, fieldConstraints, itemsWrapper, valueEvaluator);
-      processAnyConstraints(fieldDescriptor, fieldConstraints, itemsWrapper, valueEvaluator);
-      processEnumConstraints(fieldDescriptor, fieldConstraints, itemsWrapper, valueEvaluator);
-      processMapConstraints(fieldDescriptor, fieldConstraints, itemsWrapper, valueEvaluator);
-      processRepeatedConstraints(fieldDescriptor, fieldConstraints, itemsWrapper, valueEvaluator);
+      processEmbeddedMessage(fieldDescriptor, fieldConstraints, valueEvaluator);
+      processWrapperConstraints(fieldDescriptor, fieldConstraints, valueEvaluator);
+      processStandardConstraints(fieldDescriptor, fieldConstraints, valueEvaluator);
+      processAnyConstraints(fieldDescriptor, fieldConstraints, valueEvaluator);
+      processEnumConstraints(fieldDescriptor, fieldConstraints, valueEvaluator);
+      processMapConstraints(fieldDescriptor, fieldConstraints, valueEvaluator);
+      processRepeatedConstraints(fieldDescriptor, fieldConstraints, valueEvaluator);
     }
 
     private void processIgnoreEmpty(
         FieldDescriptor fieldDescriptor,
         FieldConstraints fieldConstraints,
-        @Nullable EvaluatorWrapper itemsWrapper,
         ValueEvaluator valueEvaluatorEval)
         throws CompilationException {
-      if (itemsWrapper != null && shouldIgnoreEmpty(fieldConstraints)) {
+      if (valueEvaluatorEval.getNestedRule() != null && shouldIgnoreEmpty(fieldConstraints)) {
         valueEvaluatorEval.setIgnoreEmpty(zeroValue(fieldDescriptor, true));
       }
     }
@@ -377,36 +373,36 @@ public class EvaluatorBuilder {
       List<CompiledProgram> compiledPrograms =
           compileConstraints(constraintsCelList, finalEnv, true);
       if (!compiledPrograms.isEmpty()) {
-        valueEvaluatorEval.append(new CelPrograms(compiledPrograms));
+        valueEvaluatorEval.append(new CelPrograms(valueEvaluatorEval, compiledPrograms));
       }
     }
 
     private void processEmbeddedMessage(
         FieldDescriptor fieldDescriptor,
         FieldConstraints fieldConstraints,
-        @Nullable EvaluatorWrapper itemsWrapper,
         ValueEvaluator valueEvaluatorEval)
         throws CompilationException {
       if (fieldDescriptor.getJavaType() != FieldDescriptor.JavaType.MESSAGE
           || shouldSkip(fieldConstraints)
           || fieldDescriptor.isMapField()
-          || (fieldDescriptor.isRepeated() && itemsWrapper == null)) {
+          || (fieldDescriptor.isRepeated() && valueEvaluatorEval.getNestedRule() == null)) {
         return;
       }
-      Evaluator embedEval = createMessageEvaluator(fieldDescriptor.getMessageType());
+      Evaluator embedEval =
+          new EmbeddedMessageEvaluator(
+              valueEvaluatorEval, createMessageEvaluator(fieldDescriptor.getMessageType()));
       valueEvaluatorEval.append(embedEval);
     }
 
     private void processWrapperConstraints(
         FieldDescriptor fieldDescriptor,
         FieldConstraints fieldConstraints,
-        @Nullable EvaluatorWrapper itemsWrapper,
         ValueEvaluator valueEvaluatorEval)
         throws CompilationException {
       if (fieldDescriptor.getJavaType() != FieldDescriptor.JavaType.MESSAGE
           || shouldSkip(fieldConstraints)
           || fieldDescriptor.isMapField()
-          || (fieldDescriptor.isRepeated() && itemsWrapper == null)) {
+          || (fieldDescriptor.isRepeated() && valueEvaluatorEval.getNestedRule() == null)) {
         return;
       }
       FieldDescriptor expectedWrapperDescriptor =
@@ -416,102 +412,94 @@ public class EvaluatorBuilder {
           || !fieldConstraints.hasField(expectedWrapperDescriptor)) {
         return;
       }
-      ValueEvaluator unwrapped = new ValueEvaluator();
+      ValueEvaluator unwrapped =
+          new ValueEvaluator(
+              valueEvaluatorEval.getDescriptor(), valueEvaluatorEval.getNestedRule());
       buildValue(
-          fieldDescriptor.getMessageType().findFieldByName("value"),
-          fieldConstraints,
-          itemsWrapper,
-          unwrapped);
+          fieldDescriptor.getMessageType().findFieldByName("value"), fieldConstraints, unwrapped);
       valueEvaluatorEval.append(unwrapped);
     }
 
     private void processStandardConstraints(
         FieldDescriptor fieldDescriptor,
         FieldConstraints fieldConstraints,
-        @Nullable EvaluatorWrapper itemsWrapper,
         ValueEvaluator valueEvaluatorEval)
         throws CompilationException {
       List<CompiledProgram> compile =
-          constraintCache.compile(fieldDescriptor, fieldConstraints, itemsWrapper != null);
+          constraintCache.compile(
+              fieldDescriptor, fieldConstraints, valueEvaluatorEval.getNestedRule() != null);
       if (compile.isEmpty()) {
         return;
       }
-      appendEvaluator(valueEvaluatorEval, new CelPrograms(compile), itemsWrapper);
+      valueEvaluatorEval.append(new CelPrograms(valueEvaluatorEval, compile));
     }
 
     private void processAnyConstraints(
         FieldDescriptor fieldDescriptor,
         FieldConstraints fieldConstraints,
-        @Nullable EvaluatorWrapper itemsWrapper,
         ValueEvaluator valueEvaluatorEval) {
-      if ((fieldDescriptor.isRepeated() && itemsWrapper == null)
+      if ((fieldDescriptor.isRepeated() && valueEvaluatorEval.getNestedRule() == null)
           || fieldDescriptor.getJavaType() != FieldDescriptor.JavaType.MESSAGE
           || !fieldDescriptor.getMessageType().getFullName().equals("google.protobuf.Any")) {
         return;
       }
       FieldDescriptor typeURLDesc = fieldDescriptor.getMessageType().findFieldByName("type_url");
-      AnyEvaluator anyEvaluatorEval =
+      valueEvaluatorEval.append(
           new AnyEvaluator(
+              valueEvaluatorEval,
               typeURLDesc,
               fieldConstraints.getAny().getInList(),
-              fieldConstraints.getAny().getNotInList());
-      appendEvaluator(valueEvaluatorEval, anyEvaluatorEval, itemsWrapper);
+              fieldConstraints.getAny().getNotInList()));
     }
 
     private void processEnumConstraints(
         FieldDescriptor fieldDescriptor,
         FieldConstraints fieldConstraints,
-        @Nullable EvaluatorWrapper itemsWrapper,
         ValueEvaluator valueEvaluatorEval) {
       if (fieldDescriptor.getJavaType() != FieldDescriptor.JavaType.ENUM) {
         return;
       }
       if (fieldConstraints.getEnum().getDefinedOnly()) {
         Descriptors.EnumDescriptor enumDescriptor = fieldDescriptor.getEnumType();
-        appendEvaluator(
-            valueEvaluatorEval, new EnumEvaluator(enumDescriptor.getValues()), itemsWrapper);
+        valueEvaluatorEval.append(
+            new EnumEvaluator(valueEvaluatorEval, enumDescriptor.getValues()));
       }
     }
 
     private void processMapConstraints(
         FieldDescriptor fieldDescriptor,
         FieldConstraints fieldConstraints,
-        @Nullable EvaluatorWrapper itemsWrapper,
         ValueEvaluator valueEvaluatorEval)
         throws CompilationException {
       if (!fieldDescriptor.isMapField()) {
         return;
       }
-      MapEvaluator mapEval = new MapEvaluator(fieldDescriptor);
+      MapEvaluator mapEval = new MapEvaluator(valueEvaluatorEval, fieldDescriptor);
       buildValue(
           fieldDescriptor.getMessageType().findFieldByNumber(1),
           fieldConstraints.getMap().getKeys(),
-          MapEvaluator.KEYS_WRAPPER,
           mapEval.getKeyEvaluator());
       buildValue(
           fieldDescriptor.getMessageType().findFieldByNumber(2),
           fieldConstraints.getMap().getValues(),
-          MapEvaluator.VALUES_WRAPPER,
           mapEval.getValueEvaluator());
-      appendEvaluator(valueEvaluatorEval, mapEval, itemsWrapper);
+      valueEvaluatorEval.append(mapEval);
     }
 
     private void processRepeatedConstraints(
         FieldDescriptor fieldDescriptor,
         FieldConstraints fieldConstraints,
-        @Nullable EvaluatorWrapper itemsWrapper,
         ValueEvaluator valueEvaluatorEval)
         throws CompilationException {
-      if (fieldDescriptor.isMapField() || !fieldDescriptor.isRepeated() || itemsWrapper != null) {
+      if (fieldDescriptor.isMapField()
+          || !fieldDescriptor.isRepeated()
+          || valueEvaluatorEval.getNestedRule() != null) {
         return;
       }
-      ListEvaluator listEval = new ListEvaluator(fieldDescriptor);
+      ListEvaluator listEval = new ListEvaluator(valueEvaluatorEval);
       buildValue(
-          fieldDescriptor,
-          fieldConstraints.getRepeated().getItems(),
-          ListEvaluator.ITEMS_WRAPPER,
-          listEval.itemConstraints);
-      appendEvaluator(valueEvaluatorEval, listEval, itemsWrapper);
+          fieldDescriptor, fieldConstraints.getRepeated().getItems(), listEval.itemConstraints);
+      valueEvaluatorEval.append(listEval);
     }
 
     private static List<CompiledProgram> compileConstraints(
@@ -537,13 +525,5 @@ public class EvaluatorBuilder {
       }
       return compiledPrograms;
     }
-  }
-
-  private static void appendEvaluator(
-      ValueEvaluator valueEvaluatorEval, Evaluator embedEval, @Nullable EvaluatorWrapper wrapper) {
-    if (wrapper != null) {
-      embedEval = wrapper.wrap(embedEval);
-    }
-    valueEvaluatorEval.append(embedEval);
   }
 }

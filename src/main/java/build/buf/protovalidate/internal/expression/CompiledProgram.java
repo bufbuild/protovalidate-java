@@ -14,8 +14,8 @@
 
 package build.buf.protovalidate.internal.expression;
 
-import build.buf.protovalidate.Violation;
 import build.buf.protovalidate.exceptions.ExecutionException;
+import build.buf.protovalidate.internal.errors.ConstraintViolation;
 import build.buf.protovalidate.internal.evaluator.Value;
 import build.buf.validate.FieldPath;
 import javax.annotation.Nullable;
@@ -66,7 +66,8 @@ public class CompiledProgram {
    * @throws ExecutionException If the evaluation of the CEL program fails with an error.
    */
   @Nullable
-  public Violation eval(Value fieldValue, Variable bindings) throws ExecutionException {
+  public ConstraintViolation.Builder eval(Value fieldValue, Variable bindings)
+      throws ExecutionException {
     Program.EvalResult evalResult = program.eval(bindings);
     Val val = evalResult.getVal();
     if (val instanceof Err) {
@@ -77,38 +78,35 @@ public class CompiledProgram {
       if ("".equals(value)) {
         return null;
       }
-      build.buf.validate.Violation.Builder violation =
-          build.buf.validate.Violation.newBuilder()
+      ConstraintViolation.Builder builder =
+          ConstraintViolation.newBuilder()
               .setConstraintId(this.source.id)
               .setMessage(value.toString());
+      if (fieldValue.fieldDescriptor() != null) {
+        builder.setFieldValue(new ConstraintViolation.FieldValue(fieldValue));
+      }
       if (rulePath != null) {
-        violation.setRule(rulePath);
+        builder.addAllRulePathElements(rulePath.getElementsList());
       }
-      Violation.Builder builder =
-          Violation.newBuilder(violation.build())
-              .setFieldValue(fieldValue.value(Object.class), fieldValue.fieldDescriptor());
-      if (ruleValue != null) {
-        builder.setRuleValue(ruleValue.value(Object.class), ruleValue.fieldDescriptor());
+      if (ruleValue != null && ruleValue.fieldDescriptor() != null) {
+        builder.setRuleValue(new ConstraintViolation.FieldValue(ruleValue));
       }
-      return builder.build();
+      return builder;
     } else if (value instanceof Boolean) {
       if (val.booleanValue()) {
         return null;
       }
-      build.buf.validate.Violation.Builder violation =
-          build.buf.validate.Violation.newBuilder()
+      ConstraintViolation.Builder builder =
+          ConstraintViolation.newBuilder()
               .setConstraintId(this.source.id)
               .setMessage(this.source.message);
       if (rulePath != null) {
-        violation.setRule(rulePath);
+        builder.addAllRulePathElements(rulePath.getElementsList());
       }
-      Violation.Builder builder =
-          Violation.newBuilder(violation.build())
-              .setFieldValue(fieldValue.value(Object.class), fieldValue.fieldDescriptor());
-      if (ruleValue != null) {
-        builder.setRuleValue(ruleValue.value(Object.class), ruleValue.fieldDescriptor());
+      if (ruleValue != null && ruleValue.fieldDescriptor() != null) {
+        builder.setRuleValue(new ConstraintViolation.FieldValue(ruleValue));
       }
-      return builder.build();
+      return builder;
     } else {
       throw new ExecutionException(String.format("resolved to an unexpected type %s", val));
     }

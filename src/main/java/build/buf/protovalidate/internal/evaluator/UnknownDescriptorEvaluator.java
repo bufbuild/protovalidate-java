@@ -14,11 +14,11 @@
 
 package build.buf.protovalidate.internal.evaluator;
 
-import build.buf.protovalidate.ValidationResult;
-import build.buf.protovalidate.Violation;
 import build.buf.protovalidate.exceptions.ExecutionException;
+import build.buf.protovalidate.internal.errors.ConstraintViolation;
 import com.google.protobuf.Descriptors.Descriptor;
 import java.util.Collections;
+import java.util.List;
 
 /**
  * An {@link Evaluator} for an unknown descriptor. This is returned only if lazy-building of
@@ -39,13 +39,10 @@ class UnknownDescriptorEvaluator implements Evaluator {
   }
 
   @Override
-  public ValidationResult evaluate(Value val, boolean failFast) throws ExecutionException {
-    return new ValidationResult(
-        Collections.singletonList(
-            Violation.newBuilder(
-                    build.buf.validate.Violation.newBuilder()
-                        .setMessage("No evaluator available for " + desc.getFullName())
-                        .build())
-                .build()));
+  public List<ConstraintViolation.Builder> evaluate(Value val, boolean failFast)
+      throws ExecutionException {
+    return Collections.singletonList(
+        ConstraintViolation.newBuilder()
+            .setMessage("No evaluator available for " + desc.getFullName()));
   }
 }

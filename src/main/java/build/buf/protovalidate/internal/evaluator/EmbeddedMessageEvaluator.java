@@ -16,47 +16,27 @@ package build.buf.protovalidate.internal.evaluator;
 
 import build.buf.protovalidate.exceptions.ExecutionException;
 import build.buf.protovalidate.internal.errors.ConstraintViolation;
+import build.buf.protovalidate.internal.errors.FieldPathUtils;
 import java.util.ArrayList;
 import java.util.List;
 
-/** Performs validation on a {@link com.google.protobuf.Message}. */
-class MessageEvaluator implements Evaluator {
-  /** List of {@link Evaluator}s that are applied to a message. */
-  private final List<Evaluator> evaluators = new ArrayList<>();
+class EmbeddedMessageEvaluator extends EvaluatorBase implements Evaluator {
+  private final MessageEvaluator messageEvaluator;
+
+  EmbeddedMessageEvaluator(ValueEvaluator valueEvaluator, MessageEvaluator messageEvaluator) {
+    super(valueEvaluator);
+    this.messageEvaluator = messageEvaluator;
+  }
 
   @Override
   public boolean tautology() {
-    for (Evaluator evaluator : evaluators) {
-      if (!evaluator.tautology()) {
-        return false;
-      }
-    }
-    return true;
+    return messageEvaluator.tautology();
   }
 
   @Override
   public List<ConstraintViolation.Builder> evaluate(Value val, boolean failFast)
       throws ExecutionException {
-    List<ConstraintViolation.Builder> allViolations = new ArrayList<>();
-    for (Evaluator evaluator : evaluators) {
-      List<ConstraintViolation.Builder> violations = evaluator.evaluate(val, failFast);
-      if (failFast && !violations.isEmpty()) {
-        return violations;
-      }
-      allViolations.addAll(violations);
-    }
-    if (allViolations.isEmpty()) {
-      return ConstraintViolation.NO_VIOLATIONS;
-    }
-    return allViolations;
-  }
-
-  /**
-   * Appends an {@link Evaluator} to the list of evaluators.
-   *
-   * @param eval The evaluator to append.
-   */
-  public void append(Evaluator eval) {
-    evaluators.add(eval);
+    return FieldPathUtils.updatePaths(
+        messageEvaluator.evaluate(val, failFast), getFieldPathElement(), new ArrayList<>());
   }
 }
