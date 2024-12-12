@@ -36,7 +36,7 @@ class FieldEvaluator implements Evaluator {
           .addElements(FieldPathUtils.fieldPathElement(REQUIRED_DESCRIPTOR))
           .build();
 
-  private final ConstraintViolationHelper constraintViolationHelper;
+  private final ConstraintViolationHelper helper;
 
   /** The {@link ValueEvaluator} to apply to the field's value */
   public final ValueEvaluator valueEvaluator;
@@ -65,7 +65,7 @@ class FieldEvaluator implements Evaluator {
       boolean ignoreEmpty,
       boolean ignoreDefault,
       @Nullable Object zero) {
-    this.constraintViolationHelper = new ConstraintViolationHelper(valueEvaluator);
+    this.helper = new ConstraintViolationHelper(valueEvaluator);
     this.valueEvaluator = valueEvaluator;
     this.descriptor = descriptor;
     this.required = required;
@@ -96,7 +96,7 @@ class FieldEvaluator implements Evaluator {
       return Collections.singletonList(
           ConstraintViolation.newBuilder()
               .addFirstFieldPathElement(FieldPathUtils.fieldPathElement(descriptor))
-              .addAllRulePathElements(constraintViolationHelper.getRulePrefixElements())
+              .addAllRulePathElements(helper.getRulePrefixElements())
               .addAllRulePathElements(REQUIRED_RULE_PATH.getElementsList())
               .setConstraintId("required")
               .setMessage("value is required")

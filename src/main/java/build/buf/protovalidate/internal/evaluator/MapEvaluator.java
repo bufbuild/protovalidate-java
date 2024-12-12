@@ -55,7 +55,7 @@ class MapEvaluator implements Evaluator {
                   MapRules.getDescriptor().findFieldByNumber(MapRules.VALUES_FIELD_NUMBER)))
           .build();
 
-  private final ConstraintViolationHelper constraintViolationHelper;
+  private final ConstraintViolationHelper helper;
 
   /** Constraint for checking the map keys */
   private final ValueEvaluator keyEvaluator;
@@ -78,7 +78,7 @@ class MapEvaluator implements Evaluator {
    * @param valueEvaluator The value evaluator this constraint exists under.
    */
   MapEvaluator(ValueEvaluator valueEvaluator, Descriptors.FieldDescriptor fieldDescriptor) {
-    this.constraintViolationHelper = new ConstraintViolationHelper(valueEvaluator);
+    this.helper = new ConstraintViolationHelper(valueEvaluator);
     this.keyEvaluator = new ValueEvaluator(null, MAP_KEYS_RULE_PATH);
     this.valueEvaluator = new ValueEvaluator(null, MAP_VALUES_RULE_PATH);
     this.fieldDescriptor = fieldDescriptor;
@@ -149,7 +149,7 @@ class MapEvaluator implements Evaluator {
     violations.addAll(valueViolations);
 
     FieldPathElement.Builder fieldPathElementBuilder =
-        Objects.requireNonNull(constraintViolationHelper.getFieldPathElement()).toBuilder();
+        Objects.requireNonNull(helper.getFieldPathElement()).toBuilder();
     fieldPathElementBuilder.setKeyType(keyFieldDescriptor.getType().toProto());
     fieldPathElementBuilder.setValueType(valueFieldDescriptor.getType().toProto());
     switch (keyFieldDescriptor.getType().toProto()) {
@@ -177,7 +177,6 @@ class MapEvaluator implements Evaluator {
         throw new ExecutionException("Unexpected map key type");
     }
     FieldPathElement fieldPathElement = fieldPathElementBuilder.build();
-    return FieldPathUtils.updatePaths(
-        violations, fieldPathElement, constraintViolationHelper.getRulePrefixElements());
+    return FieldPathUtils.updatePaths(violations, fieldPathElement, helper.getRulePrefixElements());
   }
 }

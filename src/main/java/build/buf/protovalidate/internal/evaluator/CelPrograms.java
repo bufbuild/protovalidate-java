@@ -25,7 +25,7 @@ import javax.annotation.Nullable;
 
 /** Evaluator that executes a {@link CompiledProgram}. */
 class CelPrograms implements Evaluator {
-  private final ConstraintViolationHelper constraintViolationHelper;
+  private final ConstraintViolationHelper helper;
 
   /** A list of {@link CompiledProgram} that will be executed against the input message. */
   private final List<CompiledProgram> programs;
@@ -36,7 +36,7 @@ class CelPrograms implements Evaluator {
    * @param compiledPrograms The programs to execute.
    */
   CelPrograms(@Nullable ValueEvaluator valueEvaluator, List<CompiledProgram> compiledPrograms) {
-    this.constraintViolationHelper = new ConstraintViolationHelper(valueEvaluator);
+    this.helper = new ConstraintViolationHelper(valueEvaluator);
     this.programs = compiledPrograms;
   }
 
@@ -60,8 +60,6 @@ class CelPrograms implements Evaluator {
       }
     }
     return FieldPathUtils.updatePaths(
-        violations,
-        constraintViolationHelper.getFieldPathElement(),
-        constraintViolationHelper.getRulePrefixElements());
+        violations, helper.getFieldPathElement(), helper.getRulePrefixElements());
   }
 }

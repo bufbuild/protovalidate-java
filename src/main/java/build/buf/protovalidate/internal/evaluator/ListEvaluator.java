@@ -40,14 +40,14 @@ class ListEvaluator implements Evaluator {
                       .findFieldByNumber(RepeatedRules.ITEMS_FIELD_NUMBER)))
           .build();
 
-  private final ConstraintViolationHelper constraintViolationHelper;
+  private final ConstraintViolationHelper helper;
 
   /** Constraints are checked on every item of the list. */
   final ValueEvaluator itemConstraints;
 
   /** Constructs a {@link ListEvaluator}. */
   ListEvaluator(ValueEvaluator valueEvaluator) {
-    this.constraintViolationHelper = new ConstraintViolationHelper(valueEvaluator);
+    this.helper = new ConstraintViolationHelper(valueEvaluator);
     this.itemConstraints = new ValueEvaluator(null, REPEATED_ITEMS_RULE_PATH);
   }
 
@@ -68,11 +68,8 @@ class ListEvaluator implements Evaluator {
         continue;
       }
       FieldPathElement fieldPathElement =
-          Objects.requireNonNull(constraintViolationHelper.getFieldPathElement()).toBuilder()
-              .setIndex(i)
-              .build();
-      FieldPathUtils.updatePaths(
-          violations, fieldPathElement, constraintViolationHelper.getRulePrefixElements());
+          Objects.requireNonNull(helper.getFieldPathElement()).toBuilder().setIndex(i).build();
+      FieldPathUtils.updatePaths(violations, fieldPathElement, helper.getRulePrefixElements());
       if (failFast && !violations.isEmpty()) {
         return violations;
       }

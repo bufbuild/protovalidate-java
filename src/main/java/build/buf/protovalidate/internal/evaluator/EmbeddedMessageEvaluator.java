@@ -21,11 +21,11 @@ import java.util.Collections;
 import java.util.List;
 
 class EmbeddedMessageEvaluator implements Evaluator {
-  private final ConstraintViolationHelper constraintViolationHelper;
+  private final ConstraintViolationHelper helper;
   private final MessageEvaluator messageEvaluator;
 
   EmbeddedMessageEvaluator(ValueEvaluator valueEvaluator, MessageEvaluator messageEvaluator) {
-    this.constraintViolationHelper = new ConstraintViolationHelper(valueEvaluator);
+    this.helper = new ConstraintViolationHelper(valueEvaluator);
     this.messageEvaluator = messageEvaluator;
   }
 
@@ -39,7 +39,7 @@ class EmbeddedMessageEvaluator implements Evaluator {
       throws ExecutionException {
     return FieldPathUtils.updatePaths(
         messageEvaluator.evaluate(val, failFast),
-        constraintViolationHelper.getFieldPathElement(),
+        helper.getFieldPathElement(),
         Collections.emptyList());
   }
 }
