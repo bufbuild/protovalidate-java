@@ -17,14 +17,15 @@ package build.buf.protovalidate.internal.evaluator;
 import build.buf.protovalidate.exceptions.ExecutionException;
 import build.buf.protovalidate.internal.errors.ConstraintViolation;
 import build.buf.protovalidate.internal.errors.FieldPathUtils;
-import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
-class EmbeddedMessageEvaluator extends EvaluatorBase implements Evaluator {
+class EmbeddedMessageEvaluator implements Evaluator {
+  private final ConstraintViolationHelper constraintViolationHelper;
   private final MessageEvaluator messageEvaluator;
 
   EmbeddedMessageEvaluator(ValueEvaluator valueEvaluator, MessageEvaluator messageEvaluator) {
-    super(valueEvaluator);
+    this.constraintViolationHelper = new ConstraintViolationHelper(valueEvaluator);
     this.messageEvaluator = messageEvaluator;
   }
 
@@ -37,6 +38,8 @@ class EmbeddedMessageEvaluator extends EvaluatorBase implements Evaluator {
   public List<ConstraintViolation.Builder> evaluate(Value val, boolean failFast)
       throws ExecutionException {
     return FieldPathUtils.updatePaths(
-        messageEvaluator.evaluate(val, failFast), getFieldPathElement(), new ArrayList<>());
+        messageEvaluator.evaluate(val, failFast),
+        constraintViolationHelper.getFieldPathElement(),
+        Collections.emptyList());
   }
 }

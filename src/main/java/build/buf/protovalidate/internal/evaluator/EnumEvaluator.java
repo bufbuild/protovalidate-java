@@ -31,7 +31,9 @@ import java.util.stream.Collectors;
  * {@link EnumEvaluator} checks an enum value being a member of the defined values exclusively. This
  * check is handled outside CEL as enums are completely type erased to integers.
  */
-class EnumEvaluator extends EvaluatorBase implements Evaluator {
+class EnumEvaluator implements Evaluator {
+  private final ConstraintViolationHelper constraintViolationHelper;
+
   /** Captures all the defined values for this enum */
   private final Set<Integer> values;
 
@@ -54,7 +56,7 @@ class EnumEvaluator extends EvaluatorBase implements Evaluator {
    */
   EnumEvaluator(
       ValueEvaluator valueEvaluator, List<Descriptors.EnumValueDescriptor> valueDescriptors) {
-    super(valueEvaluator);
+    this.constraintViolationHelper = new ConstraintViolationHelper(valueEvaluator);
     if (valueDescriptors.isEmpty()) {
       this.values = Collections.emptySet();
     } else {
@@ -88,9 +90,9 @@ class EnumEvaluator extends EvaluatorBase implements Evaluator {
     if (!values.contains(enumValue.getNumber())) {
       return Collections.singletonList(
           ConstraintViolation.newBuilder()
-              .addAllRulePathElements(getRulePrefixElements())
+              .addAllRulePathElements(constraintViolationHelper.getRulePrefixElements())
               .addAllRulePathElements(DEFINED_ONLY_RULE_PATH.getElementsList())
-              .addFirstFieldPathElement(getFieldPathElement())
+              .addFirstFieldPathElement(constraintViolationHelper.getFieldPathElement())
               .setConstraintId("enum.defined_only")
               .setMessage("value must be one of the defined enum values")
               .setFieldValue(new ConstraintViolation.FieldValue(val))

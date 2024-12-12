@@ -27,7 +27,7 @@ import java.util.Objects;
 import javax.annotation.Nullable;
 
 /** Performs validation on a single message field, defined by its descriptor. */
-class FieldEvaluator extends EvaluatorBase implements Evaluator {
+class FieldEvaluator implements Evaluator {
   private static final FieldDescriptor REQUIRED_DESCRIPTOR =
       FieldConstraints.getDescriptor().findFieldByNumber(FieldConstraints.REQUIRED_FIELD_NUMBER);
 
@@ -35,6 +35,8 @@ class FieldEvaluator extends EvaluatorBase implements Evaluator {
       FieldPath.newBuilder()
           .addElements(FieldPathUtils.fieldPathElement(REQUIRED_DESCRIPTOR))
           .build();
+
+  private final ConstraintViolationHelper constraintViolationHelper;
 
   /** The {@link ValueEvaluator} to apply to the field's value */
   public final ValueEvaluator valueEvaluator;
@@ -63,7 +65,7 @@ class FieldEvaluator extends EvaluatorBase implements Evaluator {
       boolean ignoreEmpty,
       boolean ignoreDefault,
       @Nullable Object zero) {
-    super(valueEvaluator);
+    this.constraintViolationHelper = new ConstraintViolationHelper(valueEvaluator);
     this.valueEvaluator = valueEvaluator;
     this.descriptor = descriptor;
     this.required = required;
@@ -94,7 +96,7 @@ class FieldEvaluator extends EvaluatorBase implements Evaluator {
       return Collections.singletonList(
           ConstraintViolation.newBuilder()
               .addFirstFieldPathElement(FieldPathUtils.fieldPathElement(descriptor))
-              .addAllRulePathElements(getRulePrefixElements())
+              .addAllRulePathElements(constraintViolationHelper.getRulePrefixElements())
               .addAllRulePathElements(REQUIRED_RULE_PATH.getElementsList())
               .setConstraintId("required")
               .setMessage("value is required")

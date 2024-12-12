@@ -26,7 +26,7 @@ import java.util.List;
 import java.util.Objects;
 
 /** Performs validation on the elements of a repeated field. */
-class ListEvaluator extends EvaluatorBase implements Evaluator {
+class ListEvaluator implements Evaluator {
   /** Rule path to repeated rules */
   private static final FieldPath REPEATED_ITEMS_RULE_PATH =
       FieldPath.newBuilder()
@@ -40,12 +40,14 @@ class ListEvaluator extends EvaluatorBase implements Evaluator {
                       .findFieldByNumber(RepeatedRules.ITEMS_FIELD_NUMBER)))
           .build();
 
+  private final ConstraintViolationHelper constraintViolationHelper;
+
   /** Constraints are checked on every item of the list. */
   final ValueEvaluator itemConstraints;
 
   /** Constructs a {@link ListEvaluator}. */
   ListEvaluator(ValueEvaluator valueEvaluator) {
-    super(valueEvaluator);
+    this.constraintViolationHelper = new ConstraintViolationHelper(valueEvaluator);
     this.itemConstraints = new ValueEvaluator(null, REPEATED_ITEMS_RULE_PATH);
   }
 
@@ -66,8 +68,11 @@ class ListEvaluator extends EvaluatorBase implements Evaluator {
         continue;
       }
       FieldPathElement fieldPathElement =
-          Objects.requireNonNull(getFieldPathElement()).toBuilder().setIndex(i).build();
-      FieldPathUtils.updatePaths(violations, fieldPathElement, getRulePrefixElements());
+          Objects.requireNonNull(constraintViolationHelper.getFieldPathElement()).toBuilder()
+              .setIndex(i)
+              .build();
+      FieldPathUtils.updatePaths(
+          violations, fieldPathElement, constraintViolationHelper.getRulePrefixElements());
       if (failFast && !violations.isEmpty()) {
         return violations;
       }

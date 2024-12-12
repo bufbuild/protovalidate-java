@@ -34,7 +34,8 @@ import java.util.Set;
  * com.google.protobuf.Any}'s within an expression, breaking evaluation if the type is unknown at
  * runtime.
  */
-class AnyEvaluator extends EvaluatorBase implements Evaluator {
+class AnyEvaluator implements Evaluator {
+  private final ConstraintViolationHelper constraintViolationHelper;
   private final Descriptors.FieldDescriptor typeURLDescriptor;
   private final Set<String> in;
   private final List<String> inValue;
@@ -68,7 +69,7 @@ class AnyEvaluator extends EvaluatorBase implements Evaluator {
       Descriptors.FieldDescriptor typeURLDescriptor,
       List<String> in,
       List<String> notIn) {
-    super(valueEvaluator);
+    this.constraintViolationHelper = new ConstraintViolationHelper(valueEvaluator);
     this.typeURLDescriptor = typeURLDescriptor;
     this.in = stringsToSet(in);
     this.inValue = in;
@@ -88,9 +89,9 @@ class AnyEvaluator extends EvaluatorBase implements Evaluator {
     if (!in.isEmpty() && !in.contains(typeURL)) {
       ConstraintViolation.Builder violation =
           ConstraintViolation.newBuilder()
-              .addAllRulePathElements(getRulePrefixElements())
+              .addAllRulePathElements(constraintViolationHelper.getRulePrefixElements())
               .addAllRulePathElements(IN_RULE_PATH.getElementsList())
-              .addFirstFieldPathElement(getFieldPathElement())
+              .addFirstFieldPathElement(constraintViolationHelper.getFieldPathElement())
               .setConstraintId("any.in")
               .setMessage("type URL must be in the allow list")
               .setFieldValue(new ConstraintViolation.FieldValue(val))
@@ -103,9 +104,9 @@ class AnyEvaluator extends EvaluatorBase implements Evaluator {
     if (!notIn.isEmpty() && notIn.contains(typeURL)) {
       ConstraintViolation.Builder violation =
           ConstraintViolation.newBuilder()
-              .addAllRulePathElements(getRulePrefixElements())
+              .addAllRulePathElements(constraintViolationHelper.getRulePrefixElements())
               .addAllRulePathElements(NOT_IN_RULE_PATH.getElementsList())
-              .addFirstFieldPathElement(getFieldPathElement())
+              .addFirstFieldPathElement(constraintViolationHelper.getFieldPathElement())
               .setConstraintId("any.not_in")
               .setMessage("type URL must not be in the block list")
               .setFieldValue(new ConstraintViolation.FieldValue(val))

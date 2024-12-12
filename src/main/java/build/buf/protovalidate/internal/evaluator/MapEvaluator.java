@@ -30,7 +30,7 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 
 /** Performs validation on a map field's key-value pairs. */
-class MapEvaluator extends EvaluatorBase implements Evaluator {
+class MapEvaluator implements Evaluator {
   /** Rule path to map key rules */
   private static final FieldPath MAP_KEYS_RULE_PATH =
       FieldPath.newBuilder()
@@ -55,6 +55,8 @@ class MapEvaluator extends EvaluatorBase implements Evaluator {
                   MapRules.getDescriptor().findFieldByNumber(MapRules.VALUES_FIELD_NUMBER)))
           .build();
 
+  private final ConstraintViolationHelper constraintViolationHelper;
+
   /** Constraint for checking the map keys */
   private final ValueEvaluator keyEvaluator;
 
@@ -76,7 +78,7 @@ class MapEvaluator extends EvaluatorBase implements Evaluator {
    * @param valueEvaluator The value evaluator this constraint exists under.
    */
   MapEvaluator(ValueEvaluator valueEvaluator, Descriptors.FieldDescriptor fieldDescriptor) {
-    super(valueEvaluator);
+    this.constraintViolationHelper = new ConstraintViolationHelper(valueEvaluator);
     this.keyEvaluator = new ValueEvaluator(null, MAP_KEYS_RULE_PATH);
     this.valueEvaluator = new ValueEvaluator(null, MAP_VALUES_RULE_PATH);
     this.fieldDescriptor = fieldDescriptor;
@@ -147,7 +149,7 @@ class MapEvaluator extends EvaluatorBase implements Evaluator {
     violations.addAll(valueViolations);
 
     FieldPathElement.Builder fieldPathElementBuilder =
-        Objects.requireNonNull(getFieldPathElement()).toBuilder();
+        Objects.requireNonNull(constraintViolationHelper.getFieldPathElement()).toBuilder();
     fieldPathElementBuilder.setKeyType(keyFieldDescriptor.getType().toProto());
     fieldPathElementBuilder.setValueType(valueFieldDescriptor.getType().toProto());
     switch (keyFieldDescriptor.getType().toProto()) {
@@ -175,6 +177,7 @@ class MapEvaluator extends EvaluatorBase implements Evaluator {
         throw new ExecutionException("Unexpected map key type");
     }
     FieldPathElement fieldPathElement = fieldPathElementBuilder.build();
-    return FieldPathUtils.updatePaths(violations, fieldPathElement, getRulePrefixElements());
+    return FieldPathUtils.updatePaths(
+        violations, fieldPathElement, constraintViolationHelper.getRulePrefixElements());
   }
 }

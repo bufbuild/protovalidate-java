@@ -81,7 +81,7 @@ public class Validator {
     if (result.isEmpty()) {
       return ValidationResult.EMPTY;
     }
-    List<Violation> violations = new ArrayList<>();
+    List<Violation> violations = new ArrayList<>(result.size());
     for (ConstraintViolation.Builder builder : result) {
       violations.add(builder.build());
     }
