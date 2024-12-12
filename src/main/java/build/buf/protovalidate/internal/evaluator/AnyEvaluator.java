@@ -14,13 +14,12 @@
 
 package build.buf.protovalidate.internal.evaluator;
 
-import build.buf.protovalidate.ValidationResult;
 import build.buf.protovalidate.exceptions.ExecutionException;
+import build.buf.protovalidate.internal.errors.ConstraintViolation;
 import build.buf.protovalidate.internal.errors.FieldPathUtils;
 import build.buf.validate.AnyRules;
 import build.buf.validate.FieldConstraints;
 import build.buf.validate.FieldPath;
-import build.buf.validate.Violation;
 import com.google.protobuf.Descriptors;
 import com.google.protobuf.Message;
 import java.util.ArrayList;
@@ -36,69 +35,85 @@ import java.util.Set;
  * runtime.
  */
 class AnyEvaluator implements Evaluator {
+  private final ConstraintViolationHelper helper;
   private final Descriptors.FieldDescriptor typeURLDescriptor;
   private final Set<String> in;
+  private final List<String> inValue;
   private final Set<String> notIn;
+  private final List<String> notInValue;
+
+  private static final Descriptors.FieldDescriptor ANY_DESCRIPTOR =
+      FieldConstraints.getDescriptor().findFieldByNumber(FieldConstraints.ANY_FIELD_NUMBER);
+
+  private static final Descriptors.FieldDescriptor IN_DESCRIPTOR =
+      AnyRules.getDescriptor().findFieldByNumber(AnyRules.IN_FIELD_NUMBER);
+
+  private static final Descriptors.FieldDescriptor NOT_IN_DESCRIPTOR =
+      AnyRules.getDescriptor().findFieldByNumber(AnyRules.NOT_IN_FIELD_NUMBER);
 
   private static final FieldPath IN_RULE_PATH =
       FieldPath.newBuilder()
-          .addElements(
-              FieldPathUtils.fieldPathElement(
-                  FieldConstraints.getDescriptor()
-                      .findFieldByNumber(FieldConstraints.ANY_FIELD_NUMBER)))
-          .addElements(
-              FieldPathUtils.fieldPathElement(
-                  AnyRules.getDescriptor().findFieldByNumber(AnyRules.IN_FIELD_NUMBER)))
+          .addElements(FieldPathUtils.fieldPathElement(ANY_DESCRIPTOR))
+          .addElements(FieldPathUtils.fieldPathElement(IN_DESCRIPTOR))
           .build();
 
   private static final FieldPath NOT_IN_RULE_PATH =
       FieldPath.newBuilder()
-          .addElements(
-              FieldPathUtils.fieldPathElement(
-                  FieldConstraints.getDescriptor()
-                      .findFieldByNumber(FieldConstraints.ANY_FIELD_NUMBER)))
-          .addElements(
-              FieldPathUtils.fieldPathElement(
-                  AnyRules.getDescriptor().findFieldByNumber(AnyRules.NOT_IN_FIELD_NUMBER)))
+          .addElements(FieldPathUtils.fieldPathElement(ANY_DESCRIPTOR))
+          .addElements(FieldPathUtils.fieldPathElement(NOT_IN_DESCRIPTOR))
           .build();
 
   /** Constructs a new evaluator for {@link build.buf.validate.AnyRules} messages. */
-  AnyEvaluator(Descriptors.FieldDescriptor typeURLDescriptor, List<String> in, List<String> notIn) {
+  AnyEvaluator(
+      ValueEvaluator valueEvaluator,
+      Descriptors.FieldDescriptor typeURLDescriptor,
+      List<String> in,
+      List<String> notIn) {
+    this.helper = new ConstraintViolationHelper(valueEvaluator);
     this.typeURLDescriptor = typeURLDescriptor;
     this.in = stringsToSet(in);
+    this.inValue = in;
     this.notIn = stringsToSet(notIn);
+    this.notInValue = notIn;
   }
 
   @Override
-  public ValidationResult evaluate(Value val, boolean failFast) throws ExecutionException {
+  public List<ConstraintViolation.Builder> evaluate(Value val, boolean failFast)
+      throws ExecutionException {
     Message anyValue = val.messageValue();
     if (anyValue == null) {
-      return ValidationResult.EMPTY;
+      return ConstraintViolation.NO_VIOLATIONS;
     }
-    List<Violation> violationList = new ArrayList<>();
+    List<ConstraintViolation.Builder> violationList = new ArrayList<>();
     String typeURL = (String) anyValue.getField(typeURLDescriptor);
     if (!in.isEmpty() && !in.contains(typeURL)) {
-      Violation violation =
-          Violation.newBuilder()
-              .setRule(IN_RULE_PATH)
+      ConstraintViolation.Builder violation =
+          ConstraintViolation.newBuilder()
+              .addAllRulePathElements(helper.getRulePrefixElements())
+              .addAllRulePathElements(IN_RULE_PATH.getElementsList())
+              .addFirstFieldPathElement(helper.getFieldPathElement())
               .setConstraintId("any.in")
               .setMessage("type URL must be in the allow list")
-              .build();
+              .setFieldValue(new ConstraintViolation.FieldValue(val))
+              .setRuleValue(new ConstraintViolation.FieldValue(this.inValue, IN_DESCRIPTOR));
       violationList.add(violation);
       if (failFast) {
-        return new ValidationResult(violationList);
+        return violationList;
       }
     }
     if (!notIn.isEmpty() && notIn.contains(typeURL)) {
-      Violation violation =
-          Violation.newBuilder()
-              .setRule(NOT_IN_RULE_PATH)
+      ConstraintViolation.Builder violation =
+          ConstraintViolation.newBuilder()
+              .addAllRulePathElements(helper.getRulePrefixElements())
+              .addAllRulePathElements(NOT_IN_RULE_PATH.getElementsList())
+              .addFirstFieldPathElement(helper.getFieldPathElement())
               .setConstraintId("any.not_in")
               .setMessage("type URL must not be in the block list")
-              .build();
+              .setFieldValue(new ConstraintViolation.FieldValue(val))
+              .setRuleValue(new ConstraintViolation.FieldValue(this.notInValue, NOT_IN_DESCRIPTOR));
       violationList.add(violation);
     }
-    return new ValidationResult(violationList);
+    return violationList;
   }
 
   @Override

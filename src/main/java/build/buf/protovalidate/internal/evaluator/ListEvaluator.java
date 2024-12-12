@@ -14,22 +14,21 @@
 
 package build.buf.protovalidate.internal.evaluator;
 
-import build.buf.protovalidate.ValidationResult;
 import build.buf.protovalidate.exceptions.ExecutionException;
+import build.buf.protovalidate.internal.errors.ConstraintViolation;
 import build.buf.protovalidate.internal.errors.FieldPathUtils;
 import build.buf.validate.FieldConstraints;
 import build.buf.validate.FieldPath;
 import build.buf.validate.FieldPathElement;
 import build.buf.validate.RepeatedRules;
-import build.buf.validate.Violation;
-import com.google.protobuf.Descriptors;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 /** Performs validation on the elements of a repeated field. */
 class ListEvaluator implements Evaluator {
-  /** Rule path to repeated items rules */
-  private static final List<FieldPathElement> REPEATED_ITEMS_RULE_PATH =
+  /** Rule path to repeated rules */
+  private static final FieldPath REPEATED_ITEMS_RULE_PATH =
       FieldPath.newBuilder()
           .addElements(
               FieldPathUtils.fieldPathElement(
@@ -39,52 +38,17 @@ class ListEvaluator implements Evaluator {
               FieldPathUtils.fieldPathElement(
                   RepeatedRules.getDescriptor()
                       .findFieldByNumber(RepeatedRules.ITEMS_FIELD_NUMBER)))
-          .build()
-          .getElementsList();
+          .build();
 
-  public static final EvaluatorWrapper ITEMS_WRAPPER = new ItemsWrapper();
-
-  private static class ItemsEvaluator implements Evaluator {
-    /** Evaluator to wrap */
-    private final Evaluator evaluator;
-
-    public ItemsEvaluator(Evaluator evaluator) {
-      this.evaluator = evaluator;
-    }
-
-    @Override
-    public boolean tautology() {
-      return this.evaluator.tautology();
-    }
-
-    @Override
-    public ValidationResult evaluate(Value val, boolean failFast) throws ExecutionException {
-      ValidationResult result = evaluator.evaluate(val, failFast);
-      if (result.isSuccess()) {
-        return result;
-      }
-      return new ValidationResult(
-          FieldPathUtils.prependRulePaths(result.getViolations(), REPEATED_ITEMS_RULE_PATH));
-    }
-  }
-
-  private static class ItemsWrapper implements EvaluatorWrapper {
-    @Override
-    public Evaluator wrap(Evaluator evaluator) {
-      return new ItemsEvaluator(evaluator);
-    }
-  }
+  private final ConstraintViolationHelper helper;
 
   /** Constraints are checked on every item of the list. */
   final ValueEvaluator itemConstraints;
 
-  /** Field descriptor of the list field. */
-  final Descriptors.FieldDescriptor fieldDescriptor;
-
   /** Constructs a {@link ListEvaluator}. */
-  ListEvaluator(Descriptors.FieldDescriptor fieldDescriptor) {
-    this.itemConstraints = new ValueEvaluator();
-    this.fieldDescriptor = fieldDescriptor;
+  ListEvaluator(ValueEvaluator valueEvaluator) {
+    this.helper = new ConstraintViolationHelper(valueEvaluator);
+    this.itemConstraints = new ValueEvaluator(null, REPEATED_ITEMS_RULE_PATH);
   }
 
   @Override
@@ -93,24 +57,24 @@ class ListEvaluator implements Evaluator {
   }
 
   @Override
-  public ValidationResult evaluate(Value val, boolean failFast) throws ExecutionException {
-    List<Violation> allViolations = new ArrayList<>();
+  public List<ConstraintViolation.Builder> evaluate(Value val, boolean failFast)
+      throws ExecutionException {
+    List<ConstraintViolation.Builder> allViolations = new ArrayList<>();
     List<Value> repeatedValues = val.repeatedValue();
     for (int i = 0; i < repeatedValues.size(); i++) {
-      ValidationResult evalResult = itemConstraints.evaluate(repeatedValues.get(i), failFast);
-      if (evalResult.getViolations().isEmpty()) {
+      List<ConstraintViolation.Builder> violations =
+          itemConstraints.evaluate(repeatedValues.get(i), failFast);
+      if (violations.isEmpty()) {
         continue;
       }
-      List<Violation> violations =
-          FieldPathUtils.prependFieldPaths(
-              evalResult.getViolations(),
-              FieldPathUtils.fieldPathElement(fieldDescriptor).setIndex(i).build(),
-              false);
+      FieldPathElement fieldPathElement =
+          Objects.requireNonNull(helper.getFieldPathElement()).toBuilder().setIndex(i).build();
+      FieldPathUtils.updatePaths(violations, fieldPathElement, helper.getRulePrefixElements());
       if (failFast && !violations.isEmpty()) {
-        return evalResult;
+        return violations;
       }
       allViolations.addAll(violations);
     }
-    return new ValidationResult(allViolations);
+    return allViolations;
   }
 }

@@ -14,9 +14,8 @@
 
 package build.buf.protovalidate.internal.evaluator;
 
-import build.buf.protovalidate.ValidationResult;
 import build.buf.protovalidate.exceptions.ExecutionException;
-import build.buf.validate.Violation;
+import build.buf.protovalidate.internal.errors.ConstraintViolation;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,19 +35,20 @@ class MessageEvaluator implements Evaluator {
   }
 
   @Override
-  public ValidationResult evaluate(Value val, boolean failFast) throws ExecutionException {
-    List<Violation> violations = new ArrayList<>();
+  public List<ConstraintViolation.Builder> evaluate(Value val, boolean failFast)
+      throws ExecutionException {
+    List<ConstraintViolation.Builder> allViolations = new ArrayList<>();
     for (Evaluator evaluator : evaluators) {
-      ValidationResult evalResult = evaluator.evaluate(val, failFast);
-      if (failFast && !evalResult.getViolations().isEmpty()) {
-        return evalResult;
+      List<ConstraintViolation.Builder> violations = evaluator.evaluate(val, failFast);
+      if (failFast && !violations.isEmpty()) {
+        return violations;
       }
-      violations.addAll(evalResult.getViolations());
+      allViolations.addAll(violations);
     }
-    if (violations.isEmpty()) {
-      return ValidationResult.EMPTY;
+    if (allViolations.isEmpty()) {
+      return ConstraintViolation.NO_VIOLATIONS;
     }
-    return new ValidationResult(violations);
+    return allViolations;
   }
 
   /**

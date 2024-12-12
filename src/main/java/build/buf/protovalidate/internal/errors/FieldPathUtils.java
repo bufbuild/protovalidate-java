@@ -16,90 +16,13 @@ package build.buf.protovalidate.internal.errors;
 
 import build.buf.validate.FieldPath;
 import build.buf.validate.FieldPathElement;
-import build.buf.validate.Violation;
 import com.google.protobuf.Descriptors;
-import java.util.ArrayList;
 import java.util.List;
+import javax.annotation.Nullable;
 
 /** Utility class for manipulating error paths in violations. */
 public final class FieldPathUtils {
   private FieldPathUtils() {}
-
-  /**
-   * Prepends the field paths of the given violations with the provided element.
-   *
-   * @param violations The list of violations to operate on.
-   * @param element The element to prefix to each field path.
-   * @param skipSubscript Skips prepending a field path if the first element has a subscript.
-   * @return The modified violations with prepended field paths.
-   */
-  public static List<Violation> prependFieldPaths(
-      List<Violation> violations, FieldPathElement element, boolean skipSubscript) {
-    List<Violation> result = new ArrayList<>();
-    for (Violation violation : violations) {
-      // Special case: Here we skip prepending if the first element has a subscript. This is a weird
-      // special case that makes it significantly simpler to handle reverse-constructing paths with
-      // maps and repeated fields.
-      if (skipSubscript
-          && violation.getField().getElementsCount() > 0
-          && violation.getField().getElements(0).getSubscriptCase()
-              != FieldPathElement.SubscriptCase.SUBSCRIPT_NOT_SET) {
-        result.add(violation);
-        continue;
-      }
-      result.add(
-          violation.toBuilder()
-              .setField(
-                  FieldPath.newBuilder()
-                      .addElements(element)
-                      .addAllElements(violation.getField().getElementsList())
-                      .build())
-              .build());
-    }
-    return result;
-  }
-
-  /**
-   * Prepends the rule paths of the given violations with the provided elements.
-   *
-   * @param violations The list of violations to operate on.
-   * @param elements The elements to prefix to each rule path.
-   * @return The modified violations with prepended rule paths.
-   */
-  public static List<Violation> prependRulePaths(
-      List<Violation> violations, Iterable<FieldPathElement> elements) {
-    List<Violation> result = new ArrayList<>();
-    for (Violation violation : violations) {
-      result.add(
-          violation.toBuilder()
-              .setRule(
-                  FieldPath.newBuilder()
-                      .addAllElements(elements)
-                      .addAllElements(violation.getRule().getElementsList())
-                      .build())
-              .build());
-    }
-    return result;
-  }
-
-  /**
-   * Calculates the field path strings for each violation.
-   *
-   * @param violations The list of violations to operate on.
-   * @return The modified violations with field path strings.
-   */
-  public static List<Violation> calculateFieldPathStrings(List<Violation> violations) {
-    List<Violation> result = new ArrayList<>();
-    for (Violation violation : violations) {
-      if (violation.getField().getElementsCount() > 0) {
-        result.add(
-            violation.toBuilder().setFieldPath(fieldPathString(violation.getField())).build());
-      } else {
-        result.add(violation);
-      }
-    }
-    return result;
-  }
 
   /**
    * Converts the provided field path to a string.
@@ -155,8 +78,7 @@ public final class FieldPathUtils {
    * @param fieldDescriptor The field descriptor to generate a field path element for.
    * @return The field path element that corresponds to the provided field descriptor.
    */
-  public static FieldPathElement.Builder fieldPathElement(
-      Descriptors.FieldDescriptor fieldDescriptor) {
+  public static FieldPathElement fieldPathElement(Descriptors.FieldDescriptor fieldDescriptor) {
     String name;
     if (fieldDescriptor.isExtension()) {
       name = "[" + fieldDescriptor.getFullName() + "]";
@@ -166,6 +88,32 @@ public final class FieldPathUtils {
     return FieldPathElement.newBuilder()
         .setFieldNumber(fieldDescriptor.getNumber())
         .setFieldName(name)
-        .setFieldType(fieldDescriptor.getType().toProto());
+        .setFieldType(fieldDescriptor.getType().toProto())
+        .build();
+  }
+
+  /**
+   * Provided a list of violations, adjusts it by prepending rule and field path elements.
+   *
+   * @param violations A list of violations.
+   * @param fieldPathElement A field path element to prepend, or null.
+   * @param rulePathElements Rule path elements to prepend.
+   * @return For convenience, the list of violations passed into the violations parameter.
+   */
+  public static List<ConstraintViolation.Builder> updatePaths(
+      List<ConstraintViolation.Builder> violations,
+      @Nullable FieldPathElement fieldPathElement,
+      List<FieldPathElement> rulePathElements) {
+    if (fieldPathElement != null || !rulePathElements.isEmpty()) {
+      for (ConstraintViolation.Builder violation : violations) {
+        for (int i = rulePathElements.size() - 1; i >= 0; i--) {
+          violation.addFirstRulePathElement(rulePathElements.get(i));
+        }
+        if (fieldPathElement != null) {
+          violation.addFirstFieldPathElement(fieldPathElement);
+        }
+      }
+    }
+    return violations;
   }
 }

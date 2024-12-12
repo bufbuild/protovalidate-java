@@ -17,6 +17,8 @@ package build.buf.protovalidate.internal.constraints;
 import build.buf.protovalidate.Config;
 import build.buf.protovalidate.exceptions.CompilationException;
 import build.buf.protovalidate.internal.errors.FieldPathUtils;
+import build.buf.protovalidate.internal.evaluator.ObjectValue;
+import build.buf.protovalidate.internal.evaluator.Value;
 import build.buf.protovalidate.internal.expression.AstExpression;
 import build.buf.protovalidate.internal.expression.CompiledProgram;
 import build.buf.protovalidate.internal.expression.Expression;
@@ -142,6 +144,7 @@ public class ConstraintCache {
       Env ruleEnv = getRuleEnv(fieldDescriptor, message, rule.field, forItems);
       Variable ruleVar = Variable.newRuleVariable(message, message.getField(rule.field));
       ProgramOption globals = ProgramOption.globals(ruleVar);
+      Value ruleValue = new ObjectValue(rule.field, message.getField(rule.field));
       try {
         Program program = ruleEnv.program(rule.astExpression.ast, globals, PARTIAL_EVAL_OPTIONS);
         Program.EvalResult evalResult = program.eval(Activation.emptyActivation());
@@ -158,13 +161,17 @@ public class ConstraintCache {
         Ast residual = ruleEnv.residualAst(rule.astExpression.ast, evalResult.getEvalDetails());
         programs.add(
             new CompiledProgram(
-                ruleEnv.program(residual, globals), rule.astExpression.source, rule.rulePath));
+                ruleEnv.program(residual, globals),
+                rule.astExpression.source,
+                rule.rulePath,
+                ruleValue));
       } catch (Exception e) {
         programs.add(
             new CompiledProgram(
                 ruleEnv.program(rule.astExpression.ast, globals),
                 rule.astExpression.source,
-                rule.rulePath));
+                rule.rulePath,
+                ruleValue));
       }
     }
     return Collections.unmodifiableList(programs);

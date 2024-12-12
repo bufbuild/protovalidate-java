@@ -12,18 +12,21 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package build.buf.protovalidate.internal.expression;
+package build.buf.protovalidate.internal.evaluator;
 
-import build.buf.protovalidate.ValidationResult;
 import build.buf.protovalidate.exceptions.ExecutionException;
-import build.buf.protovalidate.internal.evaluator.Evaluator;
-import build.buf.protovalidate.internal.evaluator.Value;
-import build.buf.validate.Violation;
+import build.buf.protovalidate.internal.errors.ConstraintViolation;
+import build.buf.protovalidate.internal.errors.FieldPathUtils;
+import build.buf.protovalidate.internal.expression.CompiledProgram;
+import build.buf.protovalidate.internal.expression.Variable;
 import java.util.ArrayList;
 import java.util.List;
+import javax.annotation.Nullable;
 
 /** Evaluator that executes a {@link CompiledProgram}. */
-public class CelPrograms implements Evaluator {
+class CelPrograms implements Evaluator {
+  private final ConstraintViolationHelper helper;
+
   /** A list of {@link CompiledProgram} that will be executed against the input message. */
   private final List<CompiledProgram> programs;
 
@@ -32,7 +35,8 @@ public class CelPrograms implements Evaluator {
    *
    * @param compiledPrograms The programs to execute.
    */
-  public CelPrograms(List<CompiledProgram> compiledPrograms) {
+  CelPrograms(@Nullable ValueEvaluator valueEvaluator, List<CompiledProgram> compiledPrograms) {
+    this.helper = new ConstraintViolationHelper(valueEvaluator);
     this.programs = compiledPrograms;
   }
 
@@ -42,18 +46,20 @@ public class CelPrograms implements Evaluator {
   }
 
   @Override
-  public ValidationResult evaluate(Value val, boolean failFast) throws ExecutionException {
+  public List<ConstraintViolation.Builder> evaluate(Value val, boolean failFast)
+      throws ExecutionException {
     Variable activation = Variable.newThisVariable(val.value(Object.class));
-    List<Violation> violationList = new ArrayList<>();
+    List<ConstraintViolation.Builder> violations = new ArrayList<>();
     for (CompiledProgram program : programs) {
-      Violation violation = program.eval(activation);
+      ConstraintViolation.Builder violation = program.eval(val, activation);
       if (violation != null) {
-        violationList.add(violation);
+        violations.add(violation);
         if (failFast) {
           break;
         }
       }
     }
-    return new ValidationResult(violationList);
+    return FieldPathUtils.updatePaths(
+        violations, helper.getFieldPathElement(), helper.getRulePrefixElements());
   }
 }

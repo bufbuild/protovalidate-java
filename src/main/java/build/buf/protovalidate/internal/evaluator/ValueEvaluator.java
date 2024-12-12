@@ -14,9 +14,10 @@
 
 package build.buf.protovalidate.internal.evaluator;
 
-import build.buf.protovalidate.ValidationResult;
 import build.buf.protovalidate.exceptions.ExecutionException;
-import build.buf.validate.Violation;
+import build.buf.protovalidate.internal.errors.ConstraintViolation;
+import build.buf.validate.FieldPath;
+import com.google.protobuf.Descriptors;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -27,6 +28,12 @@ import javax.annotation.Nullable;
  * field, repeated elements, or the keys/values of a map.
  */
 class ValueEvaluator implements Evaluator {
+  /** The {@link Descriptors.FieldDescriptor} targeted by this evaluator */
+  @Nullable private final Descriptors.FieldDescriptor descriptor;
+
+  /** The nested rule path that this value evaluator is for */
+  @Nullable private final FieldPath nestedRule;
+
   /** The default or zero-value for this value's type. */
   @Nullable private Object zero;
 
@@ -40,7 +47,18 @@ class ValueEvaluator implements Evaluator {
   private boolean ignoreEmpty;
 
   /** Constructs a {@link ValueEvaluator}. */
-  ValueEvaluator() {}
+  ValueEvaluator(@Nullable Descriptors.FieldDescriptor descriptor, @Nullable FieldPath nestedRule) {
+    this.descriptor = descriptor;
+    this.nestedRule = nestedRule;
+  }
+
+  public @Nullable Descriptors.FieldDescriptor getDescriptor() {
+    return descriptor;
+  }
+
+  public @Nullable FieldPath getNestedRule() {
+    return nestedRule;
+  }
 
   @Override
   public boolean tautology() {
@@ -48,22 +66,23 @@ class ValueEvaluator implements Evaluator {
   }
 
   @Override
-  public ValidationResult evaluate(Value val, boolean failFast) throws ExecutionException {
+  public List<ConstraintViolation.Builder> evaluate(Value val, boolean failFast)
+      throws ExecutionException {
     if (this.shouldIgnore(val.value(Object.class))) {
-      return ValidationResult.EMPTY;
+      return ConstraintViolation.NO_VIOLATIONS;
     }
-    List<Violation> violations = new ArrayList<>();
+    List<ConstraintViolation.Builder> allViolations = new ArrayList<>();
     for (Evaluator evaluator : evaluators) {
-      ValidationResult evalResult = evaluator.evaluate(val, failFast);
-      if (failFast && !evalResult.getViolations().isEmpty()) {
-        return evalResult;
+      List<ConstraintViolation.Builder> violations = evaluator.evaluate(val, failFast);
+      if (failFast && !violations.isEmpty()) {
+        return violations;
       }
-      violations.addAll(evalResult.getViolations());
+      allViolations.addAll(violations);
     }
-    if (violations.isEmpty()) {
-      return ValidationResult.EMPTY;
+    if (allViolations.isEmpty()) {
+      return ConstraintViolation.NO_VIOLATIONS;
     }
-    return new ValidationResult(violations);
+    return allViolations;
   }
 
   /**
