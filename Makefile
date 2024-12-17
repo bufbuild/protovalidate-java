@@ -6,17 +6,18 @@ SHELL := bash
 MAKEFLAGS += --warn-undefined-variables
 MAKEFLAGS += --no-builtin-rules
 MAKEFLAGS += --no-print-directory
+GRADLE ?= ./gradlew
 
 .PHONY: all
 all: lint generate build docs conformance  ## Run all tests and lint (default)
 
 .PHONY: build
 build:  ## Build the entire project.
-	./gradlew build
+	$(GRADLE) build
 
 .PHONY: docs
 docs:  ## Build javadocs for the project.
-	./gradlew javadoc
+	$(GRADLE) javadoc
 
 .PHONY: checkgenerate
 checkgenerate: generate  ## Checks if `make generate` produces a diff.
@@ -25,11 +26,11 @@ checkgenerate: generate  ## Checks if `make generate` produces a diff.
 
 .PHONY: clean
 clean:  ## Delete intermediate build artifacts
-	./gradlew clean
+	$(GRADLE) clean
 
 .PHONY: conformance
 conformance: ## Execute conformance tests.
-	./gradlew conformance:conformance
+	$(GRADLE) conformance:conformance
 
 .PHONY: help
 help: ## Describe useful make targets
@@ -37,25 +38,25 @@ help: ## Describe useful make targets
 
 .PHONY: generate
 generate: ## Regenerate code and license headers
-	./gradlew generate
+	$(GRADLE) generate
 
 .PHONY: lint
 lint: ## Lint code
-	./gradlew spotlessCheck
+	$(GRADLE) spotlessCheck
 
 .PHONY: lintfix
 lintfix:  ## Applies the lint changes.
-	./gradlew spotlessApply
+	$(GRADLE) spotlessApply
 
 .PHONY: release
 release: ## Upload artifacts to Sonatype Nexus.
-	./gradlew --info publish --stacktrace --no-daemon --no-parallel
-	./gradlew --info releaseRepository
+	$(GRADLE) --info publish --stacktrace --no-daemon --no-parallel
+	$(GRADLE) --info releaseRepository
 
 .PHONY: releaselocal
 releaselocal: ## Release artifacts to local maven repository.
-	./gradlew --info publishToMavenLocal
+	$(GRADLE) --info publishToMavenLocal
 
 .PHONY: test
 test:  ## Run all tests.
-	./gradlew test
+	$(GRADLE) test
