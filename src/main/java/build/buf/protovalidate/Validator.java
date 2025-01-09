@@ -14,13 +14,6 @@
 
 package build.buf.protovalidate;
 
-import build.buf.protovalidate.exceptions.CompilationException;
-import build.buf.protovalidate.exceptions.ValidationException;
-import build.buf.protovalidate.internal.celext.ValidateLibrary;
-import build.buf.protovalidate.internal.errors.ConstraintViolation;
-import build.buf.protovalidate.internal.evaluator.Evaluator;
-import build.buf.protovalidate.internal.evaluator.EvaluatorBuilder;
-import build.buf.protovalidate.internal.evaluator.MessageValue;
 import com.google.protobuf.Descriptors.Descriptor;
 import com.google.protobuf.Message;
 import java.util.ArrayList;
@@ -65,7 +58,7 @@ public class Validator {
    * message is invalid. An exception is thrown if the message cannot be validated because the
    * evaluation logic for the message cannot be built ({@link CompilationException}), or there is a
    * type error when attempting to evaluate a CEL expression associated with the message ({@link
-   * build.buf.protovalidate.exceptions.ExecutionException}).
+   * ExecutionException}).
    *
    * @param msg the {@link Message} to be validated.
    * @return the {@link ValidationResult} from the evaluation.
