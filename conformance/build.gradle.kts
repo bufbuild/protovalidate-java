@@ -9,9 +9,17 @@ plugins {
     alias(libs.plugins.errorprone)
 }
 
-val conformanceCLIFile = project.layout.buildDirectory.file("gobin/protovalidate-conformance").get().asFile
+val conformanceCLIFile =
+    project.layout.buildDirectory
+        .file("gobin/protovalidate-conformance")
+        .get()
+        .asFile
 val conformanceCLIPath: String = conformanceCLIFile.absolutePath
-val conformanceAppScript: String = project.layout.buildDirectory.file("install/conformance/bin/conformance").get().asFile.absolutePath
+val conformanceAppScript: String =
+    project.layout.buildDirectory
+        .file("install/conformance/bin/conformance")
+        .get()
+        .asFile.absolutePath
 val conformanceArgs = (project.findProperty("protovalidate.conformance.args")?.toString() ?: "").split("\\s+".toRegex())
 
 tasks.register<Exec>("installProtovalidateConformance") {
@@ -62,7 +70,8 @@ tasks {
         // files or particular types at will
         val sourcesMain = sourceSets.main.get()
         val contents =
-            configurations.runtimeClasspath.get()
+            configurations.runtimeClasspath
+                .get()
                 .map { if (it.isDirectory) it else zipTree(it) } +
                 sourcesMain.output
         from(contents)
