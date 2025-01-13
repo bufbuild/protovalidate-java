@@ -33,7 +33,11 @@ if (matchResult != null) {
 val releaseVersion = project.findProperty("releaseVersion") as String? ?: snapshotVersion
 
 val buf: Configuration by configurations.creating
-val bufLicenseHeaderCLIFile = project.layout.buildDirectory.file("gobin/license-header").get().asFile
+val bufLicenseHeaderCLIFile =
+    project.layout.buildDirectory
+        .file("gobin/license-header")
+        .get()
+        .asFile
 val bufLicenseHeaderCLIPath: String = bufLicenseHeaderCLIFile.absolutePath
 
 tasks.register("configureBuf") {
