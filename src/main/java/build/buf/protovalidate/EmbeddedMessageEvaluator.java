@@ -15,7 +15,6 @@
 package build.buf.protovalidate;
 
 import build.buf.protovalidate.exceptions.ExecutionException;
-
 import java.util.Collections;
 import java.util.List;
 
