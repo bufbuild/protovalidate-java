@@ -16,6 +16,7 @@ package build.buf.protovalidate;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import build.buf.protovalidate.exceptions.ValidationException;
 import build.buf.validate.FieldConstraints;
 import build.buf.validate.FieldPath;
 import build.buf.validate.FieldPathElement;

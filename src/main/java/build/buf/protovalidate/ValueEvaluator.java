@@ -14,6 +14,7 @@
 
 package build.buf.protovalidate;
 
+import build.buf.protovalidate.exceptions.ExecutionException;
 import build.buf.validate.FieldPath;
 import com.google.protobuf.Descriptors;
 import java.util.ArrayList;

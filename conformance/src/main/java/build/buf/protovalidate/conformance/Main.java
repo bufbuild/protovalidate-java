@@ -14,9 +14,9 @@
 
 package build.buf.protovalidate.conformance;
 
-import build.buf.protovalidate.CompilationException;
+import build.buf.protovalidate.exceptions.CompilationException;
 import build.buf.protovalidate.Config;
-import build.buf.protovalidate.ExecutionException;
+import build.buf.protovalidate.exceptions.ExecutionException;
 import build.buf.protovalidate.ValidationResult;
 import build.buf.protovalidate.Validator;
 import build.buf.validate.ValidateProto;

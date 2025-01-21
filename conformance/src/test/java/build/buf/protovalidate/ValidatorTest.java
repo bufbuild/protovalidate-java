@@ -17,6 +17,8 @@ package build.buf.protovalidate;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+import build.buf.protovalidate.exceptions.ExecutionException;
+import build.buf.protovalidate.exceptions.ValidationException;
 import build.buf.validate.conformance.cases.AnEnum;
 import build.buf.validate.conformance.cases.BoolConstTrue;
 import build.buf.validate.conformance.cases.BytesContains;

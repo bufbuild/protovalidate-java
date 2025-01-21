@@ -14,6 +14,8 @@
 
 package build.buf.protovalidate;
 
+import build.buf.protovalidate.exceptions.ExecutionException;
+
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.Nullable;

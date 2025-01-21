@@ -14,6 +14,7 @@
 
 package build.buf.protovalidate;
 
+import build.buf.protovalidate.exceptions.CompilationException;
 import build.buf.validate.Constraint;
 import build.buf.validate.FieldConstraints;
 import build.buf.validate.FieldPath;

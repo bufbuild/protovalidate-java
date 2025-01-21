@@ -14,6 +14,7 @@
 
 package build.buf.protovalidate;
 
+import build.buf.protovalidate.exceptions.CompilationException;
 import com.google.api.expr.v1alpha1.Type;
 import org.projectnessie.cel.Ast;
 import org.projectnessie.cel.Env;

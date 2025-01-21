@@ -14,6 +14,7 @@
 
 package build.buf.protovalidate;
 
+import build.buf.protovalidate.exceptions.ExecutionException;
 import build.buf.validate.FieldPath;
 import javax.annotation.Nullable;
 import org.projectnessie.cel.Program;

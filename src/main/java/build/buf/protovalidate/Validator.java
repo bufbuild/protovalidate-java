@@ -14,6 +14,9 @@
 
 package build.buf.protovalidate;
 
+import build.buf.protovalidate.exceptions.CompilationException;
+import build.buf.protovalidate.exceptions.ExecutionException;
+import build.buf.protovalidate.exceptions.ValidationException;
 import com.google.protobuf.Descriptors.Descriptor;
 import com.google.protobuf.Message;
 import java.util.ArrayList;

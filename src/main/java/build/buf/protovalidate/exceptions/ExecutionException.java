@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package build.buf.protovalidate;
+package build.buf.protovalidate.exceptions;
 
 /** ExecutionException is returned when a constraint fails to execute. This is a fatal error. */
 public class ExecutionException extends ValidationException {
