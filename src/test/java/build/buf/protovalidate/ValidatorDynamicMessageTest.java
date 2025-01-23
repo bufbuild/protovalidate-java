@@ -17,7 +17,6 @@ package build.buf.protovalidate;
 import static com.example.imports.validationtest.PredefinedProto.isIdent;
 import static org.assertj.core.api.Assertions.assertThat;
 
-import build.buf.protovalidate.internal.errors.FieldPathUtils;
 import build.buf.validate.FieldConstraints;
 import build.buf.validate.FieldPath;
 import build.buf.validate.FieldPathElement;
