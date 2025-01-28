@@ -83,22 +83,22 @@ public final class IgnoreEmptyProto2Proto {
       "empty_proto2.proto\022\036buf.validate.conform" +
       "ance.cases\032\033buf/validate/validate.proto\"" +
       "?\n\037IgnoreEmptyProto2ScalarOptional\022\034\n\003va" +
-      "l\030\001 \001(\005B\n\272H\007\032\002 \000\320\001\001R\003val\"N\n*IgnoreEmptyP" +
+      "l\030\001 \001(\005B\n\272H\007\032\002 \000\330\001\001R\003val\"N\n*IgnoreEmptyP" +
       "roto2ScalarOptionalWithDefault\022 \n\003val\030\001 " +
-      "\001(\005:\00242B\n\272H\007\032\002 \000\320\001\001R\003val\"?\n\037IgnoreEmptyP" +
+      "\001(\005:\00242B\n\272H\007\032\002 \000\330\001\001R\003val\"?\n\037IgnoreEmptyP" +
       "roto2ScalarRequired\022\034\n\003val\030\001 \002(\005B\n\272H\007\032\002 " +
-      "\000\320\001\001R\003val\"\307\001\n\030IgnoreEmptyProto2Message\022\221" +
+      "\000\330\001\001R\003val\"\307\001\n\030IgnoreEmptyProto2Message\022\221" +
       "\001\n\003val\030\001 \001(\0132<.buf.validate.conformance." +
       "cases.IgnoreEmptyProto2Message.MsgBA\272H>\272" +
       "\0018\n\033ignore_empty.proto2.message\022\006foobar\032" +
-      "\021this.val == \'foo\'\320\001\001R\003val\032\027\n\003Msg\022\020\n\003val" +
+      "\021this.val == \'foo\'\330\001\001R\003val\032\027\n\003Msg\022\020\n\003val" +
       "\030\001 \001(\tR\003val\"=\n\026IgnoreEmptyProto2Oneof\022\036\n" +
-      "\003val\030\001 \001(\005B\n\272H\007\032\002 \000\320\001\001H\000R\003valB\003\n\001o\":\n\031Ig" +
+      "\003val\030\001 \001(\005B\n\272H\007\032\002 \000\330\001\001H\000R\003valB\003\n\001o\":\n\031Ig" +
       "noreEmptyProto2Repeated\022\035\n\003val\030\001 \003(\005B\013\272H" +
-      "\010\222\001\002\010\003\320\001\001R\003val\"\254\001\n\024IgnoreEmptyProto2Map\022" +
+      "\010\222\001\002\010\003\330\001\001R\003val\"\254\001\n\024IgnoreEmptyProto2Map\022" +
       "\\\n\003val\030\001 \003(\0132=.buf.validate.conformance." +
       "cases.IgnoreEmptyProto2Map.ValEntryB\013\272H\010" +
-      "\232\001\002\010\003\320\001\001R\003val\0326\n\010ValEntry\022\020\n\003key\030\001 \001(\005R\003" +
+      "\232\001\002\010\003\330\001\001R\003val\0326\n\010ValEntry\022\020\n\003key\030\001 \001(\005R\003" +
       "key\022\024\n\005value\030\002 \001(\005R\005value:\0028\001B\332\001\n$build." +
       "buf.validate.conformance.casesB\026IgnoreEm" +
       "ptyProto2ProtoP\001\242\002\004BVCC\252\002\036Buf.Validate.C" +

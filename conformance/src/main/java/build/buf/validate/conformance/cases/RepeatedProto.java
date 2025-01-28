@@ -222,7 +222,7 @@ public final class RepeatedProto {
       "\n\272H\007\222\001\004\010\001\020\003R\003val\"R\n\020RepeatedDuration\022>\n\003" +
       "val\030\001 \003(\0132\031.google.protobuf.DurationB\021\272H" +
       "\016\222\001\013\"\t\252\001\0062\004\020\300\204=R\003val\"6\n\023RepeatedExactIgn" +
-      "ore\022\037\n\003val\030\001 \003(\rB\r\272H\n\222\001\004\010\003\020\003\320\001\001R\003val*?\n\006" +
+      "ore\022\037\n\003val\030\001 \003(\rB\r\272H\n\222\001\004\010\003\020\003\330\001\001R\003val*?\n\006" +
       "AnEnum\022\027\n\023AN_ENUM_UNSPECIFIED\020\000\022\r\n\tAN_EN" +
       "UM_X\020\001\022\r\n\tAN_ENUM_Y\020\002B\321\001\n$build.buf.vali" +
       "date.conformance.casesB\rRepeatedProtoP\001\242" +

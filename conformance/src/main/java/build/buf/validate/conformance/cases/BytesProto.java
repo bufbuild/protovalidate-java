@@ -163,7 +163,7 @@ public final class BytesProto {
       "B\007\272H\004z\002X\000R\003val\"&\n\tBytesIPv6\022\031\n\003val\030\001 \001(\014" +
       "B\007\272H\004z\002`\001R\003val\")\n\014BytesNotIPv6\022\031\n\003val\030\001 " +
       "\001(\014B\007\272H\004z\002`\000R\003val\"/\n\017BytesIPv6Ignore\022\034\n\003" +
-      "val\030\001 \001(\014B\n\272H\007z\002`\001\320\001\001R\003val\"*\n\014BytesExamp" +
+      "val\030\001 \001(\014B\n\272H\007z\002`\001\330\001\001R\003val\"*\n\014BytesExamp" +
       "le\022\032\n\003val\030\001 \001(\014B\010\272H\005z\003r\001\231R\003valB\316\001\n$build" +
       ".buf.validate.conformance.casesB\nBytesPr" +
       "otoP\001\242\002\004BVCC\252\002\036Buf.Validate.Conformance." +

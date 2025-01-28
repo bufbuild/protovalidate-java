@@ -200,50 +200,6 @@ public interface ViolationOrBuilder extends
 
   /**
    * <pre>
-   * `field_path` is a human-readable identifier that points to the specific field that failed the validation.
-   * This could be a nested field, in which case the path will include all the parent fields leading to the actual field that caused the violation.
-   *
-   * Deprecated: use the `field` instead.
-   * </pre>
-   *
-   * <code>optional string field_path = 1 [json_name = "fieldPath", deprecated = true];</code>
-   * @deprecated buf.validate.Violation.field_path is deprecated.
-   *     See buf/validate/validate.proto;l=4827
-   * @return Whether the fieldPath field is set.
-   */
-  @java.lang.Deprecated boolean hasFieldPath();
-  /**
-   * <pre>
-   * `field_path` is a human-readable identifier that points to the specific field that failed the validation.
-   * This could be a nested field, in which case the path will include all the parent fields leading to the actual field that caused the violation.
-   *
-   * Deprecated: use the `field` instead.
-   * </pre>
-   *
-   * <code>optional string field_path = 1 [json_name = "fieldPath", deprecated = true];</code>
-   * @deprecated buf.validate.Violation.field_path is deprecated.
-   *     See buf/validate/validate.proto;l=4827
-   * @return The fieldPath.
-   */
-  @java.lang.Deprecated java.lang.String getFieldPath();
-  /**
-   * <pre>
-   * `field_path` is a human-readable identifier that points to the specific field that failed the validation.
-   * This could be a nested field, in which case the path will include all the parent fields leading to the actual field that caused the violation.
-   *
-   * Deprecated: use the `field` instead.
-   * </pre>
-   *
-   * <code>optional string field_path = 1 [json_name = "fieldPath", deprecated = true];</code>
-   * @deprecated buf.validate.Violation.field_path is deprecated.
-   *     See buf/validate/validate.proto;l=4827
-   * @return The bytes for fieldPath.
-   */
-  @java.lang.Deprecated com.google.protobuf.ByteString
-      getFieldPathBytes();
-
-  /**
-   * <pre>
    * `constraint_id` is the unique identifier of the `Constraint` that was not fulfilled.
    * This is the same `id` that was specified in the `Constraint` message, allowing easy tracing of which rule was violated.
    * </pre>

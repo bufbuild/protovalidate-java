@@ -76,7 +76,6 @@ public class ValidatorDynamicMessageTest {
                             StringRules.getDescriptor()
                                 .findFieldByNumber(StringRules.PATTERN_FIELD_NUMBER))))
             .setConstraintId("string.pattern")
-            .setFieldPath("regex_string_field")
             .setMessage("value does not match regex pattern `^[a-z0-9]{1,9}$`")
             .build();
     ValidationResult result = new Validator().validate(messageBuilder.build());
@@ -95,7 +94,6 @@ public class ValidatorDynamicMessageTest {
             .setField(
                 FieldPath.newBuilder()
                     .addElements(FieldPathElement.newBuilder().setFieldName("contact_info")))
-            .setFieldPath("contact_info")
             .setConstraintId("required")
             .setMessage("exactly one field is required in oneof")
             .build();
@@ -154,7 +152,6 @@ public class ValidatorDynamicMessageTest {
                             StringRules.getDescriptor()
                                 .findFieldByNumber(StringRules.PATTERN_FIELD_NUMBER))))
             .setConstraintId("string.pattern")
-            .setFieldPath("regex_string_field")
             .setMessage("value does not match regex pattern `^[a-z0-9]{1,9}$`")
             .build();
     assertThat(new Validator().validate(messageBuilder.build()).toProto().getViolationsList())
@@ -198,7 +195,6 @@ public class ValidatorDynamicMessageTest {
                     .addElements(
                         FieldPathUtils.fieldPathElement(PredefinedProto.isIdent.getDescriptor())))
             .setConstraintId("string.is_ident")
-            .setFieldPath("ident_field")
             .setMessage("invalid identifier")
             .build();
     ExtensionRegistry registry = ExtensionRegistry.newInstance();

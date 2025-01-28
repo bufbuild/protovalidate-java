@@ -409,7 +409,7 @@ public final class StringsProto {
       "ingHttpHeaderNameLoose\022\035\n\003val\030\001 \001(\tB\013\272H\010" +
       "r\006\300\001\001\310\001\000R\003val\";\n\032StringHttpHeaderValueLo" +
       "ose\022\035\n\003val\030\001 \001(\tB\013\272H\010r\006\300\001\002\310\001\000R\003val\"1\n\020St" +
-      "ringUUIDIgnore\022\035\n\003val\030\001 \001(\tB\013\272H\010r\003\260\001\001\320\001\001" +
+      "ringUUIDIgnore\022\035\n\003val\030\001 \001(\tB\013\272H\010r\003\260\001\001\330\001\001" +
       "R\003val\"7\n\rStringInOneof\022\037\n\003bar\030\001 \001(\tB\013\272H\010" +
       "r\006R\001aR\001bH\000R\003barB\005\n\003foo\"/\n\021StringHostAndP" +
       "ort\022\032\n\003val\030\001 \001(\tB\010\272H\005r\003\200\002\001R\003val\"\244\001\n\031Stri" +

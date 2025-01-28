@@ -214,7 +214,7 @@ public final class MapsProto {
       "gR\005value:\0028\001\032 \n\003Msg\022\031\n\003val\030\001 \001(\tB\007\272H\004r\002\020" +
       "\003R\003val\"\242\001\n\016MapExactIgnore\022X\n\003val\030\001 \003(\01327" +
       ".buf.validate.conformance.cases.MapExact" +
-      "Ignore.ValEntryB\r\272H\n\232\001\004\010\003\020\003\320\001\001R\003val\0326\n\010V" +
+      "Ignore.ValEntryB\r\272H\n\232\001\004\010\003\020\003\330\001\001R\003val\0326\n\010V" +
       "alEntry\022\020\n\003key\030\001 \001(\004R\003key\022\024\n\005value\030\002 \001(\t" +
       "R\005value:\0028\001\"\327\003\n\014MultipleMaps\022[\n\005first\030\001 " +
       "\003(\01327.buf.validate.conformance.cases.Mul" +

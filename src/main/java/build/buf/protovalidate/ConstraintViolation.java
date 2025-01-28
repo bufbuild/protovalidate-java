@@ -204,8 +204,7 @@ class ConstraintViolation implements Violation {
         protoBuilder.setForKey(true);
       }
       if (!fieldPath.isEmpty()) {
-        FieldPath field = FieldPath.newBuilder().addAllElements(fieldPath).build();
-        protoBuilder.setField(field).setFieldPath(FieldPathUtils.fieldPathString(field));
+        protoBuilder.setField(FieldPath.newBuilder().addAllElements(fieldPath));
       }
       if (!rulePath.isEmpty()) {
         protoBuilder.setRule(FieldPath.newBuilder().addAllElements(rulePath));

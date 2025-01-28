@@ -100,7 +100,6 @@ public class ValidatorDifferentJavaPackagesTest {
                             StringRules.getDescriptor()
                                 .findFieldByNumber(StringRules.PATTERN_FIELD_NUMBER))))
             .setConstraintId("string.pattern")
-            .setFieldPath("regex_string_field")
             .setMessage("value does not match regex pattern `^[a-z0-9]{1,9}$`")
             .build();
     expectViolation(invalidMsgImports, expectedViolation);
@@ -136,7 +135,6 @@ public class ValidatorDifferentJavaPackagesTest {
             .setField(
                 FieldPath.newBuilder()
                     .addElements(FieldPathElement.newBuilder().setFieldName("contact_info")))
-            .setFieldPath("contact_info")
             .setConstraintId("required")
             .setMessage("exactly one field is required in oneof")
             .build();
