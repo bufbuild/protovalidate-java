@@ -34,7 +34,7 @@ tasks.register<Exec>("installProtovalidateConformance") {
 }
 
 tasks.register<Exec>("conformance") {
-    dependsOn("installDist", "installProtovalidateConformance")
+    dependsOn("installDist")
     description = "Runs protovalidate conformance tests."
     commandLine(*(listOf(conformanceCLIPath) + conformanceArgs + listOf(conformanceAppScript)).toTypedArray())
 }
