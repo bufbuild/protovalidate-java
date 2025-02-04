@@ -25,8 +25,8 @@ import jakarta.mail.internet.InternetAddress;
 import java.net.Inet4Address;
 import java.net.Inet6Address;
 import java.net.InetAddress;
-import java.net.URISyntaxException;
 import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.HashSet;
 import java.util.Set;
 import org.projectnessie.cel.common.types.BoolT;
@@ -608,7 +608,7 @@ final class CustomOverload {
     try {
       URI uri = new URI(val);
       if (checkAbsolute) {
-          return uri.isAbsolute();
+        return uri.isAbsolute();
       }
       return true;
     } catch (URISyntaxException e) {
