@@ -25,9 +25,8 @@ import jakarta.mail.internet.InternetAddress;
 import java.net.Inet4Address;
 import java.net.Inet6Address;
 import java.net.InetAddress;
-import java.net.MalformedURLException;
+import java.net.URI;
 import java.net.URISyntaxException;
-import java.net.URL;
 import java.util.HashSet;
 import java.util.Set;
 import org.projectnessie.cel.common.types.BoolT;
@@ -357,11 +356,7 @@ final class CustomOverload {
           if (addr.isEmpty()) {
             return BoolT.False;
           }
-          try {
-            return Types.boolOf(new URL(addr).toURI().isAbsolute());
-          } catch (MalformedURLException | URISyntaxException e) {
-            return BoolT.False;
-          }
+          return Types.boolOf(validateURI(addr, true));
         });
   }
 
@@ -381,14 +376,7 @@ final class CustomOverload {
           if (addr.isEmpty()) {
             return BoolT.False;
           }
-          try {
-            // TODO: The URL api requires a host or it always fails.
-            String host = "http://protovalidate.buf.build";
-            URL url = new URL(host + addr);
-            return Types.boolOf(url.getPath() != null && !url.getPath().isEmpty());
-          } catch (MalformedURLException e) {
-            return BoolT.False;
-          }
+          return Types.boolOf(validateURI(addr, false));
         });
   }
 
@@ -607,6 +595,25 @@ final class CustomOverload {
       return address instanceof Inet6Address;
     }
     return false;
+  }
+
+  /**
+   * Validates if the input string is a valid URI, which can be a URL or a URN.
+   *
+   * @param val The input string to validate as a URI.
+   * @param checkAbsolute Whether to check if this URI is absolute (i.e. has a scheme component)
+   * @return {@code true} if the input string is a valid URI, {@code false} otherwise.
+   */
+  private static boolean validateURI(String val, boolean checkAbsolute) {
+    try {
+      URI uri = new URI(val);
+      if (checkAbsolute) {
+        return uri.isAbsolute();
+      }
+      return true;
+    } catch (URISyntaxException e) {
+      return false;
+    }
   }
 
   /**
