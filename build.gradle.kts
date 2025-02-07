@@ -101,8 +101,7 @@ tasks.register<Exec>("exportProtovalidateModule") {
     commandLine(
         buf.asPath,
         "export",
-        // TODO: DO NOT MERGE: Temporary.
-        "https://github.com/bufbuild/protovalidate.git#branch=jchadwick/remove-deprecated,subdir=proto/protovalidate",
+        "buf.build/bufbuild/protovalidate:${project.findProperty("protovalidate.version")}",
         "--output",
         "src/main/resources",
     )
@@ -124,8 +123,7 @@ tasks.register<Exec>("generateConformance") {
         "conformance/buf.gen.yaml",
         "-o",
         "conformance/",
-        // TODO: DO NOT MERGE: Temporary.
-        "https://github.com/bufbuild/protovalidate.git#branch=jchadwick/remove-deprecated,subdir=proto/protovalidate-testing",
+        "buf.build/bufbuild/protovalidate-testing:${project.findProperty("protovalidate.version")}",
     )
 }
 
