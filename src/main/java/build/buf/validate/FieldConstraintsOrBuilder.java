@@ -563,51 +563,5 @@ public interface FieldConstraintsOrBuilder extends
    */
   build.buf.validate.TimestampRulesOrBuilder getTimestampOrBuilder();
 
-  /**
-   * <pre>
-   * DEPRECATED: use ignore=IGNORE_ALWAYS instead. TODO: remove this field pre-v1.
-   * </pre>
-   *
-   * <code>optional bool skipped = 24 [json_name = "skipped", deprecated = true];</code>
-   * @deprecated buf.validate.FieldConstraints.skipped is deprecated.
-   *     See buf/validate/validate.proto;l=245
-   * @return Whether the skipped field is set.
-   */
-  @java.lang.Deprecated boolean hasSkipped();
-  /**
-   * <pre>
-   * DEPRECATED: use ignore=IGNORE_ALWAYS instead. TODO: remove this field pre-v1.
-   * </pre>
-   *
-   * <code>optional bool skipped = 24 [json_name = "skipped", deprecated = true];</code>
-   * @deprecated buf.validate.FieldConstraints.skipped is deprecated.
-   *     See buf/validate/validate.proto;l=245
-   * @return The skipped.
-   */
-  @java.lang.Deprecated boolean getSkipped();
-
-  /**
-   * <pre>
-   * DEPRECATED: use ignore=IGNORE_IF_UNPOPULATED instead. TODO: remove this field pre-v1.
-   * </pre>
-   *
-   * <code>optional bool ignore_empty = 26 [json_name = "ignoreEmpty", deprecated = true];</code>
-   * @deprecated buf.validate.FieldConstraints.ignore_empty is deprecated.
-   *     See buf/validate/validate.proto;l=247
-   * @return Whether the ignoreEmpty field is set.
-   */
-  @java.lang.Deprecated boolean hasIgnoreEmpty();
-  /**
-   * <pre>
-   * DEPRECATED: use ignore=IGNORE_IF_UNPOPULATED instead. TODO: remove this field pre-v1.
-   * </pre>
-   *
-   * <code>optional bool ignore_empty = 26 [json_name = "ignoreEmpty", deprecated = true];</code>
-   * @deprecated buf.validate.FieldConstraints.ignore_empty is deprecated.
-   *     See buf/validate/validate.proto;l=247
-   * @return The ignoreEmpty.
-   */
-  @java.lang.Deprecated boolean getIgnoreEmpty();
-
   build.buf.validate.FieldConstraints.TypeCase getTypeCase();
 }

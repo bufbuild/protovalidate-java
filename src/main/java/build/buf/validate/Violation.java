@@ -42,7 +42,6 @@ private static final long serialVersionUID = 0L;
     super(builder);
   }
   private Violation() {
-    fieldPath_ = "";
     constraintId_ = "";
     message_ = "";
   }
@@ -272,82 +271,6 @@ private static final long serialVersionUID = 0L;
     return rule_ == null ? build.buf.validate.FieldPath.getDefaultInstance() : rule_;
   }
 
-  public static final int FIELD_PATH_FIELD_NUMBER = 1;
-  @SuppressWarnings("serial")
-  private volatile java.lang.Object fieldPath_ = "";
-  /**
-   * <pre>
-   * `field_path` is a human-readable identifier that points to the specific field that failed the validation.
-   * This could be a nested field, in which case the path will include all the parent fields leading to the actual field that caused the violation.
-   *
-   * Deprecated: use the `field` instead.
-   * </pre>
-   *
-   * <code>optional string field_path = 1 [json_name = "fieldPath", deprecated = true];</code>
-   * @deprecated buf.validate.Violation.field_path is deprecated.
-   *     See buf/validate/validate.proto;l=4827
-   * @return Whether the fieldPath field is set.
-   */
-  @java.lang.Override
-  @java.lang.Deprecated public boolean hasFieldPath() {
-    return ((bitField0_ & 0x00000004) != 0);
-  }
-  /**
-   * <pre>
-   * `field_path` is a human-readable identifier that points to the specific field that failed the validation.
-   * This could be a nested field, in which case the path will include all the parent fields leading to the actual field that caused the violation.
-   *
-   * Deprecated: use the `field` instead.
-   * </pre>
-   *
-   * <code>optional string field_path = 1 [json_name = "fieldPath", deprecated = true];</code>
-   * @deprecated buf.validate.Violation.field_path is deprecated.
-   *     See buf/validate/validate.proto;l=4827
-   * @return The fieldPath.
-   */
-  @java.lang.Override
-  @java.lang.Deprecated public java.lang.String getFieldPath() {
-    java.lang.Object ref = fieldPath_;
-    if (ref instanceof java.lang.String) {
-      return (java.lang.String) ref;
-    } else {
-      com.google.protobuf.ByteString bs = 
-          (com.google.protobuf.ByteString) ref;
-      java.lang.String s = bs.toStringUtf8();
-      if (bs.isValidUtf8()) {
-        fieldPath_ = s;
-      }
-      return s;
-    }
-  }
-  /**
-   * <pre>
-   * `field_path` is a human-readable identifier that points to the specific field that failed the validation.
-   * This could be a nested field, in which case the path will include all the parent fields leading to the actual field that caused the violation.
-   *
-   * Deprecated: use the `field` instead.
-   * </pre>
-   *
-   * <code>optional string field_path = 1 [json_name = "fieldPath", deprecated = true];</code>
-   * @deprecated buf.validate.Violation.field_path is deprecated.
-   *     See buf/validate/validate.proto;l=4827
-   * @return The bytes for fieldPath.
-   */
-  @java.lang.Override
-  @java.lang.Deprecated public com.google.protobuf.ByteString
-      getFieldPathBytes() {
-    java.lang.Object ref = fieldPath_;
-    if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b = 
-          com.google.protobuf.ByteString.copyFromUtf8(
-              (java.lang.String) ref);
-      fieldPath_ = b;
-      return b;
-    } else {
-      return (com.google.protobuf.ByteString) ref;
-    }
-  }
-
   public static final int CONSTRAINT_ID_FIELD_NUMBER = 2;
   @SuppressWarnings("serial")
   private volatile java.lang.Object constraintId_ = "";
@@ -362,7 +285,7 @@ private static final long serialVersionUID = 0L;
    */
   @java.lang.Override
   public boolean hasConstraintId() {
-    return ((bitField0_ & 0x00000008) != 0);
+    return ((bitField0_ & 0x00000004) != 0);
   }
   /**
    * <pre>
@@ -426,7 +349,7 @@ private static final long serialVersionUID = 0L;
    */
   @java.lang.Override
   public boolean hasMessage() {
-    return ((bitField0_ & 0x00000010) != 0);
+    return ((bitField0_ & 0x00000008) != 0);
   }
   /**
    * <pre>
@@ -488,7 +411,7 @@ private static final long serialVersionUID = 0L;
    */
   @java.lang.Override
   public boolean hasForKey() {
-    return ((bitField0_ & 0x00000020) != 0);
+    return ((bitField0_ & 0x00000010) != 0);
   }
   /**
    * <pre>
@@ -518,15 +441,12 @@ private static final long serialVersionUID = 0L;
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
     if (((bitField0_ & 0x00000004) != 0)) {
-      com.google.protobuf.GeneratedMessage.writeString(output, 1, fieldPath_);
-    }
-    if (((bitField0_ & 0x00000008) != 0)) {
       com.google.protobuf.GeneratedMessage.writeString(output, 2, constraintId_);
     }
-    if (((bitField0_ & 0x00000010) != 0)) {
+    if (((bitField0_ & 0x00000008) != 0)) {
       com.google.protobuf.GeneratedMessage.writeString(output, 3, message_);
     }
-    if (((bitField0_ & 0x00000020) != 0)) {
+    if (((bitField0_ & 0x00000010) != 0)) {
       output.writeBool(4, forKey_);
     }
     if (((bitField0_ & 0x00000001) != 0)) {
@@ -545,15 +465,12 @@ private static final long serialVersionUID = 0L;
 
     size = 0;
     if (((bitField0_ & 0x00000004) != 0)) {
-      size += com.google.protobuf.GeneratedMessage.computeStringSize(1, fieldPath_);
-    }
-    if (((bitField0_ & 0x00000008) != 0)) {
       size += com.google.protobuf.GeneratedMessage.computeStringSize(2, constraintId_);
     }
-    if (((bitField0_ & 0x00000010) != 0)) {
+    if (((bitField0_ & 0x00000008) != 0)) {
       size += com.google.protobuf.GeneratedMessage.computeStringSize(3, message_);
     }
-    if (((bitField0_ & 0x00000020) != 0)) {
+    if (((bitField0_ & 0x00000010) != 0)) {
       size += com.google.protobuf.CodedOutputStream
         .computeBoolSize(4, forKey_);
     }
@@ -590,11 +507,6 @@ private static final long serialVersionUID = 0L;
       if (!getRule()
           .equals(other.getRule())) return false;
     }
-    if (hasFieldPath() != other.hasFieldPath()) return false;
-    if (hasFieldPath()) {
-      if (!getFieldPath()
-          .equals(other.getFieldPath())) return false;
-    }
     if (hasConstraintId() != other.hasConstraintId()) return false;
     if (hasConstraintId()) {
       if (!getConstraintId()
@@ -628,10 +540,6 @@ private static final long serialVersionUID = 0L;
     if (hasRule()) {
       hash = (37 * hash) + RULE_FIELD_NUMBER;
       hash = (53 * hash) + getRule().hashCode();
-    }
-    if (hasFieldPath()) {
-      hash = (37 * hash) + FIELD_PATH_FIELD_NUMBER;
-      hash = (53 * hash) + getFieldPath().hashCode();
     }
     if (hasConstraintId()) {
       hash = (37 * hash) + CONSTRAINT_ID_FIELD_NUMBER;
@@ -809,7 +717,6 @@ private static final long serialVersionUID = 0L;
         ruleBuilder_.dispose();
         ruleBuilder_ = null;
       }
-      fieldPath_ = "";
       constraintId_ = "";
       message_ = "";
       forKey_ = false;
@@ -860,20 +767,16 @@ private static final long serialVersionUID = 0L;
         to_bitField0_ |= 0x00000002;
       }
       if (((from_bitField0_ & 0x00000004) != 0)) {
-        result.fieldPath_ = fieldPath_;
+        result.constraintId_ = constraintId_;
         to_bitField0_ |= 0x00000004;
       }
       if (((from_bitField0_ & 0x00000008) != 0)) {
-        result.constraintId_ = constraintId_;
+        result.message_ = message_;
         to_bitField0_ |= 0x00000008;
       }
       if (((from_bitField0_ & 0x00000010) != 0)) {
-        result.message_ = message_;
-        to_bitField0_ |= 0x00000010;
-      }
-      if (((from_bitField0_ & 0x00000020) != 0)) {
         result.forKey_ = forKey_;
-        to_bitField0_ |= 0x00000020;
+        to_bitField0_ |= 0x00000010;
       }
       result.bitField0_ |= to_bitField0_;
     }
@@ -896,19 +799,14 @@ private static final long serialVersionUID = 0L;
       if (other.hasRule()) {
         mergeRule(other.getRule());
       }
-      if (other.hasFieldPath()) {
-        fieldPath_ = other.fieldPath_;
-        bitField0_ |= 0x00000004;
-        onChanged();
-      }
       if (other.hasConstraintId()) {
         constraintId_ = other.constraintId_;
-        bitField0_ |= 0x00000008;
+        bitField0_ |= 0x00000004;
         onChanged();
       }
       if (other.hasMessage()) {
         message_ = other.message_;
-        bitField0_ |= 0x00000010;
+        bitField0_ |= 0x00000008;
         onChanged();
       }
       if (other.hasForKey()) {
@@ -940,24 +838,19 @@ private static final long serialVersionUID = 0L;
             case 0:
               done = true;
               break;
-            case 10: {
-              fieldPath_ = input.readBytes();
-              bitField0_ |= 0x00000004;
-              break;
-            } // case 10
             case 18: {
               constraintId_ = input.readBytes();
-              bitField0_ |= 0x00000008;
+              bitField0_ |= 0x00000004;
               break;
             } // case 18
             case 26: {
               message_ = input.readBytes();
-              bitField0_ |= 0x00000010;
+              bitField0_ |= 0x00000008;
               break;
             } // case 26
             case 32: {
               forKey_ = input.readBool();
-              bitField0_ |= 0x00000020;
+              bitField0_ |= 0x00000010;
               break;
             } // case 32
             case 42: {
@@ -1710,140 +1603,6 @@ private static final long serialVersionUID = 0L;
       return ruleBuilder_;
     }
 
-    private java.lang.Object fieldPath_ = "";
-    /**
-     * <pre>
-     * `field_path` is a human-readable identifier that points to the specific field that failed the validation.
-     * This could be a nested field, in which case the path will include all the parent fields leading to the actual field that caused the violation.
-     *
-     * Deprecated: use the `field` instead.
-     * </pre>
-     *
-     * <code>optional string field_path = 1 [json_name = "fieldPath", deprecated = true];</code>
-     * @deprecated buf.validate.Violation.field_path is deprecated.
-     *     See buf/validate/validate.proto;l=4827
-     * @return Whether the fieldPath field is set.
-     */
-    @java.lang.Deprecated public boolean hasFieldPath() {
-      return ((bitField0_ & 0x00000004) != 0);
-    }
-    /**
-     * <pre>
-     * `field_path` is a human-readable identifier that points to the specific field that failed the validation.
-     * This could be a nested field, in which case the path will include all the parent fields leading to the actual field that caused the violation.
-     *
-     * Deprecated: use the `field` instead.
-     * </pre>
-     *
-     * <code>optional string field_path = 1 [json_name = "fieldPath", deprecated = true];</code>
-     * @deprecated buf.validate.Violation.field_path is deprecated.
-     *     See buf/validate/validate.proto;l=4827
-     * @return The fieldPath.
-     */
-    @java.lang.Deprecated public java.lang.String getFieldPath() {
-      java.lang.Object ref = fieldPath_;
-      if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs =
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        if (bs.isValidUtf8()) {
-          fieldPath_ = s;
-        }
-        return s;
-      } else {
-        return (java.lang.String) ref;
-      }
-    }
-    /**
-     * <pre>
-     * `field_path` is a human-readable identifier that points to the specific field that failed the validation.
-     * This could be a nested field, in which case the path will include all the parent fields leading to the actual field that caused the violation.
-     *
-     * Deprecated: use the `field` instead.
-     * </pre>
-     *
-     * <code>optional string field_path = 1 [json_name = "fieldPath", deprecated = true];</code>
-     * @deprecated buf.validate.Violation.field_path is deprecated.
-     *     See buf/validate/validate.proto;l=4827
-     * @return The bytes for fieldPath.
-     */
-    @java.lang.Deprecated public com.google.protobuf.ByteString
-        getFieldPathBytes() {
-      java.lang.Object ref = fieldPath_;
-      if (ref instanceof String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        fieldPath_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-    /**
-     * <pre>
-     * `field_path` is a human-readable identifier that points to the specific field that failed the validation.
-     * This could be a nested field, in which case the path will include all the parent fields leading to the actual field that caused the violation.
-     *
-     * Deprecated: use the `field` instead.
-     * </pre>
-     *
-     * <code>optional string field_path = 1 [json_name = "fieldPath", deprecated = true];</code>
-     * @deprecated buf.validate.Violation.field_path is deprecated.
-     *     See buf/validate/validate.proto;l=4827
-     * @param value The fieldPath to set.
-     * @return This builder for chaining.
-     */
-    @java.lang.Deprecated public Builder setFieldPath(
-        java.lang.String value) {
-      if (value == null) { throw new NullPointerException(); }
-      fieldPath_ = value;
-      bitField0_ |= 0x00000004;
-      onChanged();
-      return this;
-    }
-    /**
-     * <pre>
-     * `field_path` is a human-readable identifier that points to the specific field that failed the validation.
-     * This could be a nested field, in which case the path will include all the parent fields leading to the actual field that caused the violation.
-     *
-     * Deprecated: use the `field` instead.
-     * </pre>
-     *
-     * <code>optional string field_path = 1 [json_name = "fieldPath", deprecated = true];</code>
-     * @deprecated buf.validate.Violation.field_path is deprecated.
-     *     See buf/validate/validate.proto;l=4827
-     * @return This builder for chaining.
-     */
-    @java.lang.Deprecated public Builder clearFieldPath() {
-      fieldPath_ = getDefaultInstance().getFieldPath();
-      bitField0_ = (bitField0_ & ~0x00000004);
-      onChanged();
-      return this;
-    }
-    /**
-     * <pre>
-     * `field_path` is a human-readable identifier that points to the specific field that failed the validation.
-     * This could be a nested field, in which case the path will include all the parent fields leading to the actual field that caused the violation.
-     *
-     * Deprecated: use the `field` instead.
-     * </pre>
-     *
-     * <code>optional string field_path = 1 [json_name = "fieldPath", deprecated = true];</code>
-     * @deprecated buf.validate.Violation.field_path is deprecated.
-     *     See buf/validate/validate.proto;l=4827
-     * @param value The bytes for fieldPath to set.
-     * @return This builder for chaining.
-     */
-    @java.lang.Deprecated public Builder setFieldPathBytes(
-        com.google.protobuf.ByteString value) {
-      if (value == null) { throw new NullPointerException(); }
-      fieldPath_ = value;
-      bitField0_ |= 0x00000004;
-      onChanged();
-      return this;
-    }
-
     private java.lang.Object constraintId_ = "";
     /**
      * <pre>
@@ -1855,7 +1614,7 @@ private static final long serialVersionUID = 0L;
      * @return Whether the constraintId field is set.
      */
     public boolean hasConstraintId() {
-      return ((bitField0_ & 0x00000008) != 0);
+      return ((bitField0_ & 0x00000004) != 0);
     }
     /**
      * <pre>
@@ -1916,7 +1675,7 @@ private static final long serialVersionUID = 0L;
         java.lang.String value) {
       if (value == null) { throw new NullPointerException(); }
       constraintId_ = value;
-      bitField0_ |= 0x00000008;
+      bitField0_ |= 0x00000004;
       onChanged();
       return this;
     }
@@ -1931,7 +1690,7 @@ private static final long serialVersionUID = 0L;
      */
     public Builder clearConstraintId() {
       constraintId_ = getDefaultInstance().getConstraintId();
-      bitField0_ = (bitField0_ & ~0x00000008);
+      bitField0_ = (bitField0_ & ~0x00000004);
       onChanged();
       return this;
     }
@@ -1949,7 +1708,7 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.ByteString value) {
       if (value == null) { throw new NullPointerException(); }
       constraintId_ = value;
-      bitField0_ |= 0x00000008;
+      bitField0_ |= 0x00000004;
       onChanged();
       return this;
     }
@@ -1965,7 +1724,7 @@ private static final long serialVersionUID = 0L;
      * @return Whether the message field is set.
      */
     public boolean hasMessage() {
-      return ((bitField0_ & 0x00000010) != 0);
+      return ((bitField0_ & 0x00000008) != 0);
     }
     /**
      * <pre>
@@ -2026,7 +1785,7 @@ private static final long serialVersionUID = 0L;
         java.lang.String value) {
       if (value == null) { throw new NullPointerException(); }
       message_ = value;
-      bitField0_ |= 0x00000010;
+      bitField0_ |= 0x00000008;
       onChanged();
       return this;
     }
@@ -2041,7 +1800,7 @@ private static final long serialVersionUID = 0L;
      */
     public Builder clearMessage() {
       message_ = getDefaultInstance().getMessage();
-      bitField0_ = (bitField0_ & ~0x00000010);
+      bitField0_ = (bitField0_ & ~0x00000008);
       onChanged();
       return this;
     }
@@ -2059,7 +1818,7 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.ByteString value) {
       if (value == null) { throw new NullPointerException(); }
       message_ = value;
-      bitField0_ |= 0x00000010;
+      bitField0_ |= 0x00000008;
       onChanged();
       return this;
     }
@@ -2075,7 +1834,7 @@ private static final long serialVersionUID = 0L;
      */
     @java.lang.Override
     public boolean hasForKey() {
-      return ((bitField0_ & 0x00000020) != 0);
+      return ((bitField0_ & 0x00000010) != 0);
     }
     /**
      * <pre>
@@ -2101,7 +1860,7 @@ private static final long serialVersionUID = 0L;
     public Builder setForKey(boolean value) {
 
       forKey_ = value;
-      bitField0_ |= 0x00000020;
+      bitField0_ |= 0x00000010;
       onChanged();
       return this;
     }
@@ -2114,7 +1873,7 @@ private static final long serialVersionUID = 0L;
      * @return This builder for chaining.
      */
     public Builder clearForKey() {
-      bitField0_ = (bitField0_ & ~0x00000020);
+      bitField0_ = (bitField0_ & ~0x00000010);
       forKey_ = false;
       onChanged();
       return this;

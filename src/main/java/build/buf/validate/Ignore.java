@@ -54,8 +54,7 @@ public enum Ignore
   /**
    * <pre>
    * Validation is skipped if the field is unpopulated. This rule is redundant
-   * if the field is already nullable. This value is equivalent behavior to the
-   * deprecated ignore_empty rule.
+   * if the field is already nullable.
    *
    * ```proto
    * syntax="proto3
@@ -191,22 +190,6 @@ public enum Ignore
   }
   /**
    * <pre>
-   * Deprecated: Use IGNORE_IF_UNPOPULATED instead. TODO: Remove this value pre-v1.
-   * </pre>
-   *
-   * <code>IGNORE_EMPTY = 1 [deprecated = true];</code>
-   */
-  public static final Ignore IGNORE_EMPTY = IGNORE_IF_UNPOPULATED;
-  /**
-   * <pre>
-   * Deprecated: Use IGNORE_IF_DEFAULT_VALUE. TODO: Remove this value pre-v1.
-   * </pre>
-   *
-   * <code>IGNORE_DEFAULT = 2 [deprecated = true];</code>
-   */
-  public static final Ignore IGNORE_DEFAULT = IGNORE_IF_DEFAULT_VALUE;
-  /**
-   * <pre>
    * Validation is only skipped if it's an unpopulated nullable fields.
    *
    * ```proto
@@ -244,8 +227,7 @@ public enum Ignore
   /**
    * <pre>
    * Validation is skipped if the field is unpopulated. This rule is redundant
-   * if the field is already nullable. This value is equivalent behavior to the
-   * deprecated ignore_empty rule.
+   * if the field is already nullable.
    *
    * ```proto
    * syntax="proto3
@@ -368,22 +350,6 @@ public enum Ignore
    * <code>IGNORE_ALWAYS = 3;</code>
    */
   public static final int IGNORE_ALWAYS_VALUE = 3;
-  /**
-   * <pre>
-   * Deprecated: Use IGNORE_IF_UNPOPULATED instead. TODO: Remove this value pre-v1.
-   * </pre>
-   *
-   * <code>IGNORE_EMPTY = 1 [deprecated = true];</code>
-   */
-  @java.lang.Deprecated public static final int IGNORE_EMPTY_VALUE = 1;
-  /**
-   * <pre>
-   * Deprecated: Use IGNORE_IF_DEFAULT_VALUE. TODO: Remove this value pre-v1.
-   * </pre>
-   *
-   * <code>IGNORE_DEFAULT = 2 [deprecated = true];</code>
-   */
-  @java.lang.Deprecated public static final int IGNORE_DEFAULT_VALUE = 2;
 
 
   public final int getNumber() {
@@ -439,12 +405,8 @@ public enum Ignore
     return build.buf.validate.ValidateProto.getDescriptor().getEnumTypes().get(0);
   }
 
-  private static final Ignore[] VALUES = getStaticValuesArray();
-  private static Ignore[] getStaticValuesArray() {
-    return new Ignore[] {
-    IGNORE_UNSPECIFIED, IGNORE_IF_UNPOPULATED, IGNORE_IF_DEFAULT_VALUE, IGNORE_ALWAYS, IGNORE_EMPTY, IGNORE_DEFAULT, 
-    };
-  }
+  private static final Ignore[] VALUES = values();
+
   public static Ignore valueOf(
       com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
     if (desc.getType() != getDescriptor()) {

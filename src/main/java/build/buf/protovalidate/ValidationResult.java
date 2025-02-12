@@ -72,8 +72,8 @@ public class ValidationResult {
     builder.append("Validation error:");
     for (Violation violation : violations) {
       builder.append("\n - ");
-      if (!violation.toProto().getFieldPath().isEmpty()) {
-        builder.append(violation.toProto().getFieldPath());
+      if (!violation.toProto().hasField()) {
+        builder.append(FieldPathUtils.fieldPathString(violation.toProto().getField()));
         builder.append(": ");
       }
       builder.append(

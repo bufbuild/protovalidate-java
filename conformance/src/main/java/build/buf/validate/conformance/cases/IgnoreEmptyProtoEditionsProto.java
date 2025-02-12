@@ -128,49 +128,49 @@ public final class IgnoreEmptyProtoEditionsProto {
       "empty_proto_editions.proto\022\036buf.validate" +
       ".conformance.cases\032\033buf/validate/validat" +
       "e.proto\"I\n)IgnoreEmptyEditionsScalarExpl" +
-      "icitPresence\022\034\n\003val\030\001 \001(\005B\n\272H\007\032\002 \000\320\001\001R\003v" +
+      "icitPresence\022\034\n\003val\030\001 \001(\005B\n\272H\007\032\002 \000\330\001\001R\003v" +
       "al\"X\n4IgnoreEmptyEditionsScalarExplicitP" +
       "resenceWithDefault\022 \n\003val\030\001 \001(\005:\00242B\n\272H\007" +
-      "\032\002 \000\320\001\001R\003val\"N\n)IgnoreEmptyEditionsScala" +
+      "\032\002 \000\330\001\001R\003val\"N\n)IgnoreEmptyEditionsScala" +
       "rImplicitPresence\022!\n\003val\030\001 \001(\005B\017\252\001\002\010\002\272H\007" +
-      "\032\002 \000\320\001\001R\003val\"L\n\'IgnoreEmptyEditionsScala" +
+      "\032\002 \000\330\001\001R\003val\"L\n\'IgnoreEmptyEditionsScala" +
       "rLegacyRequired\022!\n\003val\030\001 \001(\005B\017\252\001\002\010\003\272H\007\032\002" +
-      " \000\320\001\001R\003val\"[\n2IgnoreEmptyEditionsScalarL" +
+      " \000\330\001\001R\003val\"[\n2IgnoreEmptyEditionsScalarL" +
       "egacyRequiredWithDefault\022%\n\003val\030\001 \001(\005:\0024" +
-      "2B\017\252\001\002\010\003\272H\007\032\002 \000\320\001\001R\003val\"\355\001\n*IgnoreEmptyE" +
+      "2B\017\252\001\002\010\003\272H\007\032\002 \000\330\001\001R\003val\"\355\001\n*IgnoreEmptyE" +
       "ditionsMessageExplicitPresence\022\245\001\n\003val\030\001" +
       " \001(\0132N.buf.validate.conformance.cases.Ig" +
       "noreEmptyEditionsMessageExplicitPresence" +
       ".MsgBC\272H@\272\001:\n\035ignore_empty.editions.mess" +
-      "age\022\006foobar\032\021this.val == \'foo\'\320\001\001R\003val\032\027" +
+      "age\022\006foobar\032\021this.val == \'foo\'\330\001\001R\003val\032\027" +
       "\n\003Msg\022\020\n\003val\030\001 \001(\tR\003val\"\204\002\n3IgnoreEmptyE" +
       "ditionsMessageExplicitPresenceDelimited\022" +
       "\263\001\n\003val\030\001 \001(\0132W.buf.validate.conformance" +
       ".cases.IgnoreEmptyEditionsMessageExplici" +
       "tPresenceDelimited.MsgBH\252\001\002(\002\272H@\272\001:\n\035ign" +
       "ore_empty.editions.message\022\006foobar\032\021this" +
-      ".val == \'foo\'\320\001\001R\003val\032\027\n\003Msg\022\020\n\003val\030\001 \001(" +
+      ".val == \'foo\'\330\001\001R\003val\032\027\n\003Msg\022\020\n\003val\030\001 \001(" +
       "\tR\003val\"\356\001\n(IgnoreEmptyEditionsMessageLeg" +
       "acyRequired\022\250\001\n\003val\030\001 \001(\0132L.buf.validate" +
       ".conformance.cases.IgnoreEmptyEditionsMe" +
       "ssageLegacyRequired.MsgBH\252\001\002\010\003\272H@\272\001:\n\035ig" +
       "nore_empty.editions.message\022\006foobar\032\021thi" +
-      "s.val == \'foo\'\320\001\001R\003val\032\027\n\003Msg\022\020\n\003val\030\001 \001" +
+      "s.val == \'foo\'\330\001\001R\003val\032\027\n\003Msg\022\020\n\003val\030\001 \001" +
       "(\tR\003val\"\202\002\n1IgnoreEmptyEditionsMessageLe" +
       "gacyRequiredDelimited\022\263\001\n\003val\030\001 \001(\0132U.bu" +
       "f.validate.conformance.cases.IgnoreEmpty" +
       "EditionsMessageLegacyRequiredDelimited.M" +
       "sgBJ\252\001\004\010\003(\002\272H@\272\001:\n\035ignore_empty.editions" +
-      ".message\022\006foobar\032\021this.val == \'foo\'\320\001\001R\003" +
+      ".message\022\006foobar\032\021this.val == \'foo\'\330\001\001R\003" +
       "val\032\027\n\003Msg\022\020\n\003val\030\001 \001(\tR\003val\"?\n\030IgnoreEm" +
-      "ptyEditionsOneof\022\036\n\003val\030\001 \001(\005B\n\272H\007\032\002 \000\320\001" +
+      "ptyEditionsOneof\022\036\n\003val\030\001 \001(\005B\n\272H\007\032\002 \000\330\001" +
       "\001H\000R\003valB\003\n\001o\"<\n\033IgnoreEmptyEditionsRepe" +
-      "ated\022\035\n\003val\030\001 \003(\005B\013\272H\010\222\001\002\010\003\320\001\001R\003val\"I\n#I" +
+      "ated\022\035\n\003val\030\001 \003(\005B\013\272H\010\222\001\002\010\003\330\001\001R\003val\"I\n#I" +
       "gnoreEmptyEditionsRepeatedExpanded\022\"\n\003va" +
-      "l\030\001 \003(\005B\020\252\001\002\030\002\272H\010\222\001\002\010\003\320\001\001R\003val\"\260\001\n\026Ignor" +
+      "l\030\001 \003(\005B\020\252\001\002\030\002\272H\010\222\001\002\010\003\330\001\001R\003val\"\260\001\n\026Ignor" +
       "eEmptyEditionsMap\022^\n\003val\030\001 \003(\0132?.buf.val" +
       "idate.conformance.cases.IgnoreEmptyEditi" +
-      "onsMap.ValEntryB\013\272H\010\232\001\002\010\003\320\001\001R\003val\0326\n\010Val" +
+      "onsMap.ValEntryB\013\272H\010\232\001\002\010\003\330\001\001R\003val\0326\n\010Val" +
       "Entry\022\020\n\003key\030\001 \001(\005R\003key\022\024\n\005value\030\002 \001(\005R\005" +
       "value:\0028\001B\341\001\n$build.buf.validate.conform" +
       "ance.casesB\035IgnoreEmptyProtoEditionsProt" +

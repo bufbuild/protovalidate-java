@@ -236,13 +236,12 @@ class EvaluatorBuilder {
 
     @SuppressWarnings("deprecation")
     private boolean shouldSkip(FieldConstraints constraints) {
-      return constraints.getSkipped() || constraints.getIgnore() == Ignore.IGNORE_ALWAYS;
+      return constraints.getIgnore() == Ignore.IGNORE_ALWAYS;
     }
 
     @SuppressWarnings("deprecation")
     private static boolean shouldIgnoreEmpty(FieldConstraints constraints) {
-      return constraints.getIgnoreEmpty()
-          || constraints.getIgnore() == Ignore.IGNORE_IF_UNPOPULATED
+      return constraints.getIgnore() == Ignore.IGNORE_IF_UNPOPULATED
           || constraints.getIgnore() == Ignore.IGNORE_IF_DEFAULT_VALUE;
     }
 

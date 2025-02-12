@@ -1052,68 +1052,6 @@ private static final long serialVersionUID = 0L;
     return build.buf.validate.TimestampRules.getDefaultInstance();
   }
 
-  public static final int SKIPPED_FIELD_NUMBER = 24;
-  private boolean skipped_ = false;
-  /**
-   * <pre>
-   * DEPRECATED: use ignore=IGNORE_ALWAYS instead. TODO: remove this field pre-v1.
-   * </pre>
-   *
-   * <code>optional bool skipped = 24 [json_name = "skipped", deprecated = true];</code>
-   * @deprecated buf.validate.FieldConstraints.skipped is deprecated.
-   *     See buf/validate/validate.proto;l=245
-   * @return Whether the skipped field is set.
-   */
-  @java.lang.Override
-  @java.lang.Deprecated public boolean hasSkipped() {
-    return ((bitField0_ & 0x00000004) != 0);
-  }
-  /**
-   * <pre>
-   * DEPRECATED: use ignore=IGNORE_ALWAYS instead. TODO: remove this field pre-v1.
-   * </pre>
-   *
-   * <code>optional bool skipped = 24 [json_name = "skipped", deprecated = true];</code>
-   * @deprecated buf.validate.FieldConstraints.skipped is deprecated.
-   *     See buf/validate/validate.proto;l=245
-   * @return The skipped.
-   */
-  @java.lang.Override
-  @java.lang.Deprecated public boolean getSkipped() {
-    return skipped_;
-  }
-
-  public static final int IGNORE_EMPTY_FIELD_NUMBER = 26;
-  private boolean ignoreEmpty_ = false;
-  /**
-   * <pre>
-   * DEPRECATED: use ignore=IGNORE_IF_UNPOPULATED instead. TODO: remove this field pre-v1.
-   * </pre>
-   *
-   * <code>optional bool ignore_empty = 26 [json_name = "ignoreEmpty", deprecated = true];</code>
-   * @deprecated buf.validate.FieldConstraints.ignore_empty is deprecated.
-   *     See buf/validate/validate.proto;l=247
-   * @return Whether the ignoreEmpty field is set.
-   */
-  @java.lang.Override
-  @java.lang.Deprecated public boolean hasIgnoreEmpty() {
-    return ((bitField0_ & 0x00000008) != 0);
-  }
-  /**
-   * <pre>
-   * DEPRECATED: use ignore=IGNORE_IF_UNPOPULATED instead. TODO: remove this field pre-v1.
-   * </pre>
-   *
-   * <code>optional bool ignore_empty = 26 [json_name = "ignoreEmpty", deprecated = true];</code>
-   * @deprecated buf.validate.FieldConstraints.ignore_empty is deprecated.
-   *     See buf/validate/validate.proto;l=247
-   * @return The ignoreEmpty.
-   */
-  @java.lang.Override
-  @java.lang.Deprecated public boolean getIgnoreEmpty() {
-    return ignoreEmpty_;
-  }
-
   private byte memoizedIsInitialized = -1;
   @java.lang.Override
   public final boolean isInitialized() {
@@ -1314,14 +1252,8 @@ private static final long serialVersionUID = 0L;
     for (int i = 0; i < cel_.size(); i++) {
       output.writeMessage(23, cel_.get(i));
     }
-    if (((bitField0_ & 0x00000004) != 0)) {
-      output.writeBool(24, skipped_);
-    }
     if (((bitField0_ & 0x00000001) != 0)) {
       output.writeBool(25, required_);
-    }
-    if (((bitField0_ & 0x00000008) != 0)) {
-      output.writeBool(26, ignoreEmpty_);
     }
     if (((bitField0_ & 0x00000002) != 0)) {
       output.writeEnum(27, ignore_);
@@ -1423,17 +1355,9 @@ private static final long serialVersionUID = 0L;
       size += com.google.protobuf.CodedOutputStream
         .computeMessageSize(23, cel_.get(i));
     }
-    if (((bitField0_ & 0x00000004) != 0)) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeBoolSize(24, skipped_);
-    }
     if (((bitField0_ & 0x00000001) != 0)) {
       size += com.google.protobuf.CodedOutputStream
         .computeBoolSize(25, required_);
-    }
-    if (((bitField0_ & 0x00000008) != 0)) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeBoolSize(26, ignoreEmpty_);
     }
     if (((bitField0_ & 0x00000002) != 0)) {
       size += com.google.protobuf.CodedOutputStream
@@ -1464,16 +1388,6 @@ private static final long serialVersionUID = 0L;
     if (hasIgnore() != other.hasIgnore()) return false;
     if (hasIgnore()) {
       if (ignore_ != other.ignore_) return false;
-    }
-    if (hasSkipped() != other.hasSkipped()) return false;
-    if (hasSkipped()) {
-      if (getSkipped()
-          != other.getSkipped()) return false;
-    }
-    if (hasIgnoreEmpty() != other.hasIgnoreEmpty()) return false;
-    if (hasIgnoreEmpty()) {
-      if (getIgnoreEmpty()
-          != other.getIgnoreEmpty()) return false;
     }
     if (!getTypeCase().equals(other.getTypeCase())) return false;
     switch (typeCase_) {
@@ -1587,16 +1501,6 @@ private static final long serialVersionUID = 0L;
     if (hasIgnore()) {
       hash = (37 * hash) + IGNORE_FIELD_NUMBER;
       hash = (53 * hash) + ignore_;
-    }
-    if (hasSkipped()) {
-      hash = (37 * hash) + SKIPPED_FIELD_NUMBER;
-      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
-          getSkipped());
-    }
-    if (hasIgnoreEmpty()) {
-      hash = (37 * hash) + IGNORE_EMPTY_FIELD_NUMBER;
-      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
-          getIgnoreEmpty());
     }
     switch (typeCase_) {
       case 1:
@@ -1894,8 +1798,6 @@ private static final long serialVersionUID = 0L;
       if (timestampBuilder_ != null) {
         timestampBuilder_.clear();
       }
-      skipped_ = false;
-      ignoreEmpty_ = false;
       typeCase_ = 0;
       type_ = null;
       return this;
@@ -1953,14 +1855,6 @@ private static final long serialVersionUID = 0L;
       if (((from_bitField0_ & 0x00000004) != 0)) {
         result.ignore_ = ignore_;
         to_bitField0_ |= 0x00000002;
-      }
-      if (((from_bitField0_ & 0x01000000) != 0)) {
-        result.skipped_ = skipped_;
-        to_bitField0_ |= 0x00000004;
-      }
-      if (((from_bitField0_ & 0x02000000) != 0)) {
-        result.ignoreEmpty_ = ignoreEmpty_;
-        to_bitField0_ |= 0x00000008;
       }
       result.bitField0_ |= to_bitField0_;
     }
@@ -2097,12 +1991,6 @@ private static final long serialVersionUID = 0L;
       }
       if (other.hasIgnore()) {
         setIgnore(other.getIgnore());
-      }
-      if (other.hasSkipped()) {
-        setSkipped(other.getSkipped());
-      }
-      if (other.hasIgnoreEmpty()) {
-        setIgnoreEmpty(other.getIgnoreEmpty());
       }
       switch (other.getTypeCase()) {
         case FLOAT: {
@@ -2479,21 +2367,11 @@ private static final long serialVersionUID = 0L;
               }
               break;
             } // case 186
-            case 192: {
-              skipped_ = input.readBool();
-              bitField0_ |= 0x01000000;
-              break;
-            } // case 192
             case 200: {
               required_ = input.readBool();
               bitField0_ |= 0x00000002;
               break;
             } // case 200
-            case 208: {
-              ignoreEmpty_ = input.readBool();
-              bitField0_ |= 0x02000000;
-              break;
-            } // case 208
             case 216: {
               int tmpRaw = input.readEnum();
               build.buf.validate.Ignore tmpValue =
@@ -6398,134 +6276,6 @@ private static final long serialVersionUID = 0L;
       typeCase_ = 22;
       onChanged();
       return timestampBuilder_;
-    }
-
-    private boolean skipped_ ;
-    /**
-     * <pre>
-     * DEPRECATED: use ignore=IGNORE_ALWAYS instead. TODO: remove this field pre-v1.
-     * </pre>
-     *
-     * <code>optional bool skipped = 24 [json_name = "skipped", deprecated = true];</code>
-     * @deprecated buf.validate.FieldConstraints.skipped is deprecated.
-     *     See buf/validate/validate.proto;l=245
-     * @return Whether the skipped field is set.
-     */
-    @java.lang.Override
-    @java.lang.Deprecated public boolean hasSkipped() {
-      return ((bitField0_ & 0x01000000) != 0);
-    }
-    /**
-     * <pre>
-     * DEPRECATED: use ignore=IGNORE_ALWAYS instead. TODO: remove this field pre-v1.
-     * </pre>
-     *
-     * <code>optional bool skipped = 24 [json_name = "skipped", deprecated = true];</code>
-     * @deprecated buf.validate.FieldConstraints.skipped is deprecated.
-     *     See buf/validate/validate.proto;l=245
-     * @return The skipped.
-     */
-    @java.lang.Override
-    @java.lang.Deprecated public boolean getSkipped() {
-      return skipped_;
-    }
-    /**
-     * <pre>
-     * DEPRECATED: use ignore=IGNORE_ALWAYS instead. TODO: remove this field pre-v1.
-     * </pre>
-     *
-     * <code>optional bool skipped = 24 [json_name = "skipped", deprecated = true];</code>
-     * @deprecated buf.validate.FieldConstraints.skipped is deprecated.
-     *     See buf/validate/validate.proto;l=245
-     * @param value The skipped to set.
-     * @return This builder for chaining.
-     */
-    @java.lang.Deprecated public Builder setSkipped(boolean value) {
-
-      skipped_ = value;
-      bitField0_ |= 0x01000000;
-      onChanged();
-      return this;
-    }
-    /**
-     * <pre>
-     * DEPRECATED: use ignore=IGNORE_ALWAYS instead. TODO: remove this field pre-v1.
-     * </pre>
-     *
-     * <code>optional bool skipped = 24 [json_name = "skipped", deprecated = true];</code>
-     * @deprecated buf.validate.FieldConstraints.skipped is deprecated.
-     *     See buf/validate/validate.proto;l=245
-     * @return This builder for chaining.
-     */
-    @java.lang.Deprecated public Builder clearSkipped() {
-      bitField0_ = (bitField0_ & ~0x01000000);
-      skipped_ = false;
-      onChanged();
-      return this;
-    }
-
-    private boolean ignoreEmpty_ ;
-    /**
-     * <pre>
-     * DEPRECATED: use ignore=IGNORE_IF_UNPOPULATED instead. TODO: remove this field pre-v1.
-     * </pre>
-     *
-     * <code>optional bool ignore_empty = 26 [json_name = "ignoreEmpty", deprecated = true];</code>
-     * @deprecated buf.validate.FieldConstraints.ignore_empty is deprecated.
-     *     See buf/validate/validate.proto;l=247
-     * @return Whether the ignoreEmpty field is set.
-     */
-    @java.lang.Override
-    @java.lang.Deprecated public boolean hasIgnoreEmpty() {
-      return ((bitField0_ & 0x02000000) != 0);
-    }
-    /**
-     * <pre>
-     * DEPRECATED: use ignore=IGNORE_IF_UNPOPULATED instead. TODO: remove this field pre-v1.
-     * </pre>
-     *
-     * <code>optional bool ignore_empty = 26 [json_name = "ignoreEmpty", deprecated = true];</code>
-     * @deprecated buf.validate.FieldConstraints.ignore_empty is deprecated.
-     *     See buf/validate/validate.proto;l=247
-     * @return The ignoreEmpty.
-     */
-    @java.lang.Override
-    @java.lang.Deprecated public boolean getIgnoreEmpty() {
-      return ignoreEmpty_;
-    }
-    /**
-     * <pre>
-     * DEPRECATED: use ignore=IGNORE_IF_UNPOPULATED instead. TODO: remove this field pre-v1.
-     * </pre>
-     *
-     * <code>optional bool ignore_empty = 26 [json_name = "ignoreEmpty", deprecated = true];</code>
-     * @deprecated buf.validate.FieldConstraints.ignore_empty is deprecated.
-     *     See buf/validate/validate.proto;l=247
-     * @param value The ignoreEmpty to set.
-     * @return This builder for chaining.
-     */
-    @java.lang.Deprecated public Builder setIgnoreEmpty(boolean value) {
-
-      ignoreEmpty_ = value;
-      bitField0_ |= 0x02000000;
-      onChanged();
-      return this;
-    }
-    /**
-     * <pre>
-     * DEPRECATED: use ignore=IGNORE_IF_UNPOPULATED instead. TODO: remove this field pre-v1.
-     * </pre>
-     *
-     * <code>optional bool ignore_empty = 26 [json_name = "ignoreEmpty", deprecated = true];</code>
-     * @deprecated buf.validate.FieldConstraints.ignore_empty is deprecated.
-     *     See buf/validate/validate.proto;l=247
-     * @return This builder for chaining.
-     */
-    @java.lang.Deprecated public Builder clearIgnoreEmpty() {
-      bitField0_ = (bitField0_ & ~0x02000000);
-      ignoreEmpty_ = false;
-      onChanged();
-      return this;
     }
 
     // @@protoc_insertion_point(builder_scope:buf.validate.FieldConstraints)
