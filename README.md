@@ -4,30 +4,52 @@
 [![Conformance](https://github.com/bufbuild/protovalidate-java/actions/workflows/conformance.yaml/badge.svg)](https://github.com/bufbuild/protovalidate-java/actions/workflows/conformance.yaml)
 [![BSR](https://img.shields.io/badge/BSR-Module-0C65EC)][buf-mod]
 
-`protovalidate-java` is the Java language implementation of [`protovalidate`](https://github.com/bufbuild/protovalidate) designed to validate Protobuf messages at runtime based on user-defined validation constraints. Powered by Google's Common Expression Language ([CEL](https://github.com/google/cel-spec)), it provides a flexible and efficient foundation for defining and evaluating custom validation rules. The primary goal of `protovalidate` is to help developers ensure data consistency and integrity across the network without requiring generated code.
+[Protovalidate][protovalidate] provides standard annotations to validate common constraints on messages and fields, as well as the ability to use [CEL][cel] to write custom constraints. It's the next generation of [protoc-gen-validate][protoc-gen-validate], the only widely used validation library for Protobuf.
 
-## The `protovalidate` project
+With Protovalidate, you can annotate your Protobuf messages with both standard and custom validation rules:
 
-Head over to the core [`protovalidate`](https://github.com/bufbuild/protovalidate/) repository for:
+```protobuf
+syntax = "proto3";
 
-- [The API definition](https://github.com/bufbuild/protovalidate/tree/main/proto/protovalidate/buf/validate/validate.proto): used to describe validation constraints
-- [Documentation](https://github.com/bufbuild/protovalidate/tree/main/docs): how to apply `protovalidate` effectively
-- [Migration tooling](https://github.com/bufbuild/protovalidate/tree/main/docs/migrate.md): incrementally migrate from `protoc-gen-validate`
-- [Conformance testing utilities](https://github.com/bufbuild/protovalidate/tree/main/docs/conformance.md): for acceptance testing of `protovalidate` implementations
+package banking.v1;
 
-Other `protovalidate` runtime implementations include:
+import "buf/validate/validate.proto";
 
-- C++: [`protovalidate-cc`](https://github.com/bufbuild/protovalidate-cc)
-- Go: [`protovalidate-go`](https://github.com/bufbuild/protovalidate-go)
-- Python: [`protovalidate-python`](https://github.com/bufbuild/protovalidate-python)
+message MoneyTransfer {
+  string to_account_id = 1 [
+    // Standard rule: `to_account_id` must be a UUID
+    (buf.validate.field).string.uuid = true
+  ];
 
-And others coming soon:
+  string from_account_id = 2 [
+    // Standard rule: `from_account_id` must be a UUID
+    (buf.validate.field).string.uuid = true
+  ];
 
-- TypeScript: `protovalidate-ts`
+  // Custom rule: `to_account_id` and `from_account_id` can't be the same.
+  option (buf.validate.message).cel = {
+    id: "to_account_id.not.from_account_id"
+    message: "to_account_id and from_account_id should not be the same value"
+    expression: "this.to_account_id != this.from_account_id"
+  };
+}
+```
+
+Once you've added `protovalidate-java` to your project, validation is idiomatic Java:
+
+```java
+ValidationResult result = validator.validate(message);
+if (!result.isSuccess()) {
+    // Handle failure.
+}
+```
 
 ## Installation
 
-To include `protovalidate-java` in your project, add the following to your build file:
+> [!TIP]
+> The easiest way to get started with Protovalidate for RPC APIs are the how-to's in Buf's documentation. There's one available for [Java and gRPC][grpc-java].
+
+`protovalidate-java` is listed in [Maven Central][maven], which provides installation snippets for Gradle, Maven, and other package managers. In Gradle, it's:
 
 ```gradle
 dependencies {
@@ -35,104 +57,63 @@ dependencies {
 }
 ```
 
-Remember to always check for the latest version of `protovalidate-java` on the project's [GitHub releases page](https://github.com/bufbuild/protovalidate-java/releases) to ensure you're using the most up-to-date version.
+# Documentation
 
-## Usage
+Comprehensive documentation for Protovalidate is available in [Buf's documentation library][protovalidate].
 
-### Implementing validation constraints
+Highlights for Java developers include:
 
-Validation constraints are defined directly within `.proto` files. Documentation for adding constraints can be found in the `protovalidate` project [README](https://github.com/bufbuild/protovalidate) and its [comprehensive docs](https://github.com/bufbuild/protovalidate/tree/main/docs).
+* The [developer quickstart][quickstart]
+* A comprehensive RPC how-to's for [Java and gRPC][grpc-java]
+* A [migration guide for protoc-gen-validate][migration-guide] users
 
-```protobuf
-syntax = "proto3";
+# Additional Languages and Repositories
 
-package my.package;
+Protovalidate isn't just for Java! You might be interested in sibling repositories for other languages:
 
-import "google/protobuf/timestamp.proto";
-import "buf/validate/validate.proto";
+- [`protovalidate-go`][pv-go] (Go)
+- [`protovalidate-python`][pv-python] (Python)
+- [`protovalidate-cc`][pv-cc] (C++)
+- `protovalidate-ts` (TypeScript, coming soon!)
 
-message Transaction {
-  uint64 id = 1 [(buf.validate.field).uint64.gt = 999];
-  google.protobuf.Timestamp purchase_date = 2;
-  google.protobuf.Timestamp delivery_date = 3;
-  
-  string price = 4 [(buf.validate.field).cel = {
-    id: "transaction.price",
-    message: "price must be positive and include a valid currency symbol ($ or £)",
-    expression: "(this.startsWith('$') || this.startsWith('£')) && double(this.substring(1)) > 0"
-  }];
-  
-  option (buf.validate.message).cel = {
-    id: "transaction.delivery_date",
-    message: "delivery date must be after purchase date",
-    expression: "this.delivery_date > this.purchase_date"
-  };
-}
-```
+For a peek into how Protovalidate works, you might also want to check out [`protovalidate's core repository`](https://github.com/bufbuild/protovalidate), where `validate.proto` defines the entire cross-language API.
 
-### Example
+## Related Sites
 
-In your Java code, create an instance of the `Validator` class and use the `validate` method to validate your messages.
+- [Buf][buf] - Enterprise-grade Kafka and gRPC for the modern age
+- [Common Expression Language (CEL)][cel] - The open-source technology at the core of Protovalidate
 
-```java
-// Import the required packages
-package build.buf;
+# Contribution
 
-import build.buf.protovalidate.results.ValidationException;
-import build.buf.protovalidate.results.ValidationResult;
-import com.my.package.Transaction;
-import com.google.protobuf.Timestamp;
+We genuinely appreciate any help! If you'd like to contribute, the following will be of interest:
 
-import build.buf.protovalidate.Validator;
-import build.buf.protovalidate.Config;
+- [Contributing Guidelines][contributing] - Guidelines to make your contribution process straightforward and meaningful
+- [Conformance testing utilities](https://github.com/bufbuild/protovalidate/tree/main/docs/conformance.md) - Utilities providing acceptance testing of `protovalidate` implementations
 
-public class Main {
-
-    // Create timestamps for purchase and delivery date
-    Timestamp purchaseDate = Timestamp.newBuilder().build();
-    Timestamp deliveryDate = Timestamp.newBuilder().build();
-
-    // Create a transaction object using the Builder pattern
-    Transaction transaction =
-            Transaction.newBuilder()
-                    .setId(1234)
-                    .setPrice("$5.67")
-                    .setPurchaseDate(purchaseDate)
-                    .setDeliveryDate(deliveryDate)
-                    .build();
-
-    // Create a validator object with the default Configuration
-    Validator validator = new Validator();
-    // Validate the transaction object using the validator
-    try {
-        ValidationResult result = validator.validate(transaction);
-
-        // Check if there are any validation violations
-        if (result.getViolations().isEmpty()) {
-            // No violations, validation successful
-            System.out.println("Validation succeeded");
-        } else {
-            // Print the violations if any found
-            System.out.println(result.toString());
-        }
-    } catch (ValidationException e) {
-        // Catch and print any ValidationExceptions thrown during the validation process
-        System.out.println("Validation failed: " + e.getMessage());
-    }
-}
-```
-
-### Ecosystem
-
-- [`protovalidate`](https://github.com/bufbuild/protovalidate) core repository
-- [Buf][buf]
-- [CEL Spec][cel-spec]
-
-## Legal
+# Legal
 
 Offered under the [Apache 2 license][license].
 
-[license]: LICENSE
 [buf]: https://buf.build
+[cel]: https://cel.dev
+
+[pv-go]: https://github.com/bufbuild/protovalidate-go
+[pv-java]: https://github.com/bufbuild/protovalidate-java
+[pv-python]: https://github.com/bufbuild/protovalidate-python
+[pv-cc]: https://github.com/bufbuild/protovalidate-cc
+
+[license]: LICENSE
+[contributing]: .github/CONTRIBUTING.md
 [buf-mod]: https://buf.build/bufbuild/protovalidate
-[cel-spec]: https://github.com/google/cel-spec
+
+[protoc-gen-validate]: https://github.com/bufbuild/protoc-gen-validate
+
+[protovalidate]: https://buf.build/docs/protovalidate/overview/
+[quickstart]: https://buf.build/docs/protovalidate/quickstart/
+[connect-go]: https://buf.build/docs/protovalidate/how-to/connect-go/
+[grpc-go]: https://buf.build/docs/protovalidate/how-to/grpc-go/
+[grpc-java]: https://buf.build/docs/protovalidate/how-to/grpc-java/
+[grpc-python]: https://buf.build/docs/protovalidate/how-to/grpc-python/
+[migration-guide]: https://buf.build/docs/migration-guides/migrate-from-protoc-gen-validate/
+
+[maven]: https://central.sonatype.com/artifact/build.buf/protovalidate/overview
