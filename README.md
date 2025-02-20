@@ -64,7 +64,7 @@ Comprehensive documentation for Protovalidate is available in [Buf's documentati
 Highlights for Java developers include:
 
 * The [developer quickstart][quickstart]
-* A comprehensive RPC how-to's for [Java and gRPC][grpc-java]
+* A comprehensive RPC how-to for [Java and gRPC][grpc-java]
 * A [migration guide for protoc-gen-validate][migration-guide] users
 
 # Additional Languages and Repositories
