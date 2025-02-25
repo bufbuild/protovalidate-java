@@ -76,19 +76,25 @@ Protovalidate isn't just for Java! You might be interested in sibling repositori
 - [`protovalidate-cc`][pv-cc] (C++)
 - `protovalidate-ts` (TypeScript, coming soon!)
 
-For a peek into how Protovalidate works, you might also want to check out [`protovalidate's core repository`](https://github.com/bufbuild/protovalidate), where `validate.proto` defines the entire cross-language API.
+Additionally, [protovalidate's core repository](https://github.com/bufbuild/protovalidate) provides:
 
-# Related Sites
+- [Protovalidate's Protobuf API][validate-proto]
+- [Migration tooling][migrate] for `protoc-gen-validate` users
+- [Example][examples] `.proto` files using `protovalidate`
+- [Conformance testing utilities][conformance] for acceptance testing of `protovalidate` implementations
 
-- [Buf][buf] - Enterprise-grade Kafka and gRPC for the modern age
-- [Common Expression Language (CEL)][cel] - The open-source technology at the core of Protovalidate
 
 # Contribution
 
 We genuinely appreciate any help! If you'd like to contribute, the following will be of interest:
 
-- [Contributing Guidelines][contributing] - Guidelines to make your contribution process straightforward and meaningful
-- [Conformance testing utilities](https://github.com/bufbuild/protovalidate/tree/main/docs/conformance.md) - Utilities providing acceptance testing of `protovalidate` implementations
+- [Contributing Guidelines][contributing]: Guidelines to make your contribution process straightforward and meaningful
+- [Conformance testing utilities](https://github.com/bufbuild/protovalidate/tree/main/docs/conformance.md): Utilities providing acceptance testing of `protovalidate` implementations
+
+# Related Sites
+
+- [Buf][buf]: Enterprise-grade Kafka and gRPC for the modern age
+- [Common Expression Language (CEL)][cel]: The open-source technology at the core of Protovalidate
 
 # Legal
 
@@ -117,3 +123,9 @@ Offered under the [Apache 2 license][license].
 [migration-guide]: https://buf.build/docs/migration-guides/migrate-from-protoc-gen-validate/
 
 [maven]: https://central.sonatype.com/artifact/build.buf/protovalidate/overview
+[pkg-go]: https://pkg.go.dev/github.com/bufbuild/protovalidate-go
+
+[validate-proto]: https://buf.build/bufbuild/protovalidate/docs/main:buf.validate
+[conformance]: https://github.com/bufbuild/protovalidate/blob/main/docs/conformance.md
+[examples]: https://github.com/bufbuild/protovalidate/tree/main/examples
+[migrate]: https://buf.build/docs/migration-guides/migrate-from-protoc-gen-validate/
