@@ -27,66 +27,6 @@ import org.junit.jupiter.api.Test;
  * This test verifies that custom (CEL-based) field and/or message constraints evaluate as expected.
  */
 public class ValidatorCelExpressionTest {
-  /*
-  @Test
-  public void testRepeatedNestedFieldCelExpression() throws Exception {
-    // Nested message wrapping the int 1
-    com.example.imports.validationtest.ExampleNestedIntMessage one =
-        com.example.imports.validationtest.ExampleNestedIntMessage.newBuilder()
-            .setIntValue(1)
-            .build();
-
-    // Nested message wrapping the int 2
-    com.example.imports.validationtest.ExampleNestedIntMessage two =
-        com.example.imports.validationtest.ExampleNestedIntMessage.newBuilder()
-            .setIntValue(2)
-            .build();
-
-    // Create a valid message (1, 2)
-    com.example.imports.validationtest.ExampleCelExpressionRepeatedNestedMessage validMsg =
-        com.example.imports.validationtest.ExampleCelExpressionRepeatedNestedMessage.newBuilder()
-            .addAllShouldBeUnique(Arrays.asList(one, two))
-            .build();
-
-    // Create an invalid message (1, 1)
-    com.example.imports.validationtest.ExampleCelExpressionRepeatedNestedMessage invalidMsg =
-        com.example.imports.validationtest.ExampleCelExpressionRepeatedNestedMessage.newBuilder()
-            .addAllShouldBeUnique(Arrays.asList(one, one))
-            .build();
-
-    // Build a model of the expected violation
-    Violation expectedViolation =
-        Violation.newBuilder()
-            .setField(
-                FieldPath.newBuilder()
-                    .addElements(
-                        FieldPathUtils.fieldPathElement(
-                            invalidMsg.getDescriptorForType().findFieldByName("should_be_unique"))))
-            .setRule(
-                FieldPath.newBuilder()
-                    .addElements(
-                        FieldPathUtils.fieldPathElement(
-                                FieldConstraints.getDescriptor()
-                                    .findFieldByNumber(FieldConstraints.CEL_FIELD_NUMBER))
-                            .toBuilder()
-                            .setIndex(0)
-                            .build()))
-            .setConstraintId("unique.message.int_values")
-            .setMessage("all nested message int_value values should be unique")
-            .build();
-
-    Validator validator = new Validator();
-
-    // Valid message checks
-    ValidationResult validResult = validator.validate(validMsg);
-    assertThat(validResult.isSuccess()).isTrue();
-
-    // Invalid message checks
-    ValidationResult invalidResult = validator.validate(invalidMsg);
-    assertThat(invalidResult.isSuccess()).isFalse();
-    assertThat(invalidResult.toProto().getViolationsList()).containsExactly(expectedViolation);
-  }
-    */
 
   @Test
   public void testFieldExpressionRepeatedMessage() throws Exception {

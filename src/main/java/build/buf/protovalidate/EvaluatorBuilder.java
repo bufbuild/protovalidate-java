@@ -334,7 +334,6 @@ class EvaluatorBuilder {
         ValueEvaluator valueEvaluatorEval)
         throws CompilationException {
       List<Constraint> constraintsCelList = fieldConstraints.getCelList();
-      boolean forItems = valueEvaluatorEval.hasNestedRule();
       if (constraintsCelList.isEmpty()) {
         return;
       }
@@ -349,7 +348,8 @@ class EvaluatorBuilder {
                   EnvOption.declarations(
                       Decls.newVar(
                           Variable.THIS_NAME,
-                          DescriptorMappings.getCELType(fieldDescriptor, forItems))));
+                          DescriptorMappings.getCELType(
+                              fieldDescriptor, valueEvaluatorEval.hasNestedRule()))));
         } catch (InvalidProtocolBufferException e) {
           throw new CompilationException("field descriptor type is invalid " + e.getMessage(), e);
         }
