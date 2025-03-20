@@ -59,6 +59,10 @@ class ValueEvaluator implements Evaluator {
     return nestedRule;
   }
 
+  public boolean hasNestedRule() {
+    return this.nestedRule != null;
+  }
+
   @Override
   public boolean tautology() {
     return evaluators.isEmpty();

@@ -89,24 +89,6 @@ custom_constraints:
   #ERROR: <input>:1:1: expression of type 'int' cannot be range of a comprehension (must be list, map, or dynamic)
   # | this.all(e, e == 1)
   # | ^
-  - field_expression/repeated/message/invalid
-  #       input: [type.googleapis.com/buf.validate.conformance.cases.custom_constraints.FieldExpressionRepeatedMessage]:{val:{a:1}  val:{a:2}  val:{a:1}}
-  #        want: validation error (1 violation)
-  #          1. constraint_id: "field_expression.repeated.message"
-  #             message: "test message field_expression.repeated.message"
-  #             field: "val" elements:{field_number:1  field_name:"val"  field_type:TYPE_MESSAGE}
-  #             rule: "cel[0]" elements:{field_number:23  field_name:"cel"  field_type:TYPE_MESSAGE  index:0}
-  #         got: compilation err: Failed to compile expression field_expression.repeated.message:
-  #ERROR: <input>:1:1: expression of type 'buf.validate.conformance.cases.custom_constraints.FieldExpressionRepeatedMessage.Msg' cannot be range of a comprehension (must be list, map, or dynamic)
-  # | this.all(e, e.a == 1)
-  # | ^
-  - field_expression/repeated/message/valid
-  #       input: [type.googleapis.com/buf.validate.conformance.cases.custom_constraints.FieldExpressionRepeatedMessage]:{val:{a:1}  val:{a:1}}
-  #        want: valid
-  #         got: compilation err: Failed to compile expression field_expression.repeated.message:
-  #ERROR: <input>:1:1: expression of type 'buf.validate.conformance.cases.custom_constraints.FieldExpressionRepeatedMessage.Msg' cannot be range of a comprehension (must be list, map, or dynamic)
-  # | this.all(e, e.a == 1)
-  # | ^
   - field_expression/repeated/scalar/invalid
   #       input: [type.googleapis.com/buf.validate.conformance.cases.custom_constraints.FieldExpressionRepeatedScalar]:{val:1  val:2  val:1}
   #        want: validation error (1 violation)
