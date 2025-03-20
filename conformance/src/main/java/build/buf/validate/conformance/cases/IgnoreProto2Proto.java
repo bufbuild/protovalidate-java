@@ -56,6 +56,16 @@ public final class IgnoreProto2Proto {
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_buf_validate_conformance_cases_Proto2ScalarOptionalIgnoreDefaultWithDefault_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_buf_validate_conformance_cases_Proto2ScalarOptionalIgnoreAlways_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_buf_validate_conformance_cases_Proto2ScalarOptionalIgnoreAlways_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_buf_validate_conformance_cases_Proto2ScalarOptionalIgnoreAlwaysWithDefault_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_buf_validate_conformance_cases_Proto2ScalarOptionalIgnoreAlwaysWithDefault_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
     internal_static_buf_validate_conformance_cases_Proto2ScalarRequiredIgnoreUnspecified_descriptor;
   static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
@@ -85,6 +95,16 @@ public final class IgnoreProto2Proto {
   static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_buf_validate_conformance_cases_Proto2ScalarRequiredIgnoreDefaultWithDefault_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_buf_validate_conformance_cases_Proto2ScalarRequiredIgnoreAlways_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_buf_validate_conformance_cases_Proto2ScalarRequiredIgnoreAlways_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_buf_validate_conformance_cases_Proto2ScalarRequiredIgnoreAlwaysWithDefault_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_buf_validate_conformance_cases_Proto2ScalarRequiredIgnoreAlwaysWithDefault_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
     internal_static_buf_validate_conformance_cases_Proto2MessageOptionalIgnoreUnspecified_descriptor;
   static final 
@@ -116,6 +136,16 @@ public final class IgnoreProto2Proto {
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_buf_validate_conformance_cases_Proto2MessageOptionalIgnoreDefault_Msg_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_buf_validate_conformance_cases_Proto2MessageOptionalIgnoreAlways_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_buf_validate_conformance_cases_Proto2MessageOptionalIgnoreAlways_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_buf_validate_conformance_cases_Proto2MessageOptionalIgnoreAlways_Msg_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_buf_validate_conformance_cases_Proto2MessageOptionalIgnoreAlways_Msg_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
     internal_static_buf_validate_conformance_cases_Proto2MessageRequiredIgnoreUnspecified_descriptor;
   static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
@@ -145,6 +175,16 @@ public final class IgnoreProto2Proto {
   static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_buf_validate_conformance_cases_Proto2MessageRequiredIgnoreDefault_Msg_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_buf_validate_conformance_cases_Proto2MessageRequiredIgnoreAlways_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_buf_validate_conformance_cases_Proto2MessageRequiredIgnoreAlways_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_buf_validate_conformance_cases_Proto2MessageRequiredIgnoreAlways_Msg_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_buf_validate_conformance_cases_Proto2MessageRequiredIgnoreAlways_Msg_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
     internal_static_buf_validate_conformance_cases_Proto2OneofIgnoreUnspecified_descriptor;
   static final 
@@ -176,6 +216,16 @@ public final class IgnoreProto2Proto {
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_buf_validate_conformance_cases_Proto2OneofIgnoreDefaultWithDefault_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_buf_validate_conformance_cases_Proto2OneofIgnoreAlways_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_buf_validate_conformance_cases_Proto2OneofIgnoreAlways_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_buf_validate_conformance_cases_Proto2OneofIgnoreAlwaysWithDefault_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_buf_validate_conformance_cases_Proto2OneofIgnoreAlwaysWithDefault_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
     internal_static_buf_validate_conformance_cases_Proto2RepeatedIgnoreUnspecified_descriptor;
   static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
@@ -190,6 +240,11 @@ public final class IgnoreProto2Proto {
   static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_buf_validate_conformance_cases_Proto2RepeatedIgnoreDefault_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_buf_validate_conformance_cases_Proto2RepeatedIgnoreAlways_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_buf_validate_conformance_cases_Proto2RepeatedIgnoreAlways_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
     internal_static_buf_validate_conformance_cases_Proto2MapIgnoreUnspecified_descriptor;
   static final 
@@ -221,6 +276,16 @@ public final class IgnoreProto2Proto {
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_buf_validate_conformance_cases_Proto2MapIgnoreDefault_ValEntry_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_buf_validate_conformance_cases_Proto2MapIgnoreAlways_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_buf_validate_conformance_cases_Proto2MapIgnoreAlways_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_buf_validate_conformance_cases_Proto2MapIgnoreAlways_ValEntry_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_buf_validate_conformance_cases_Proto2MapIgnoreAlways_ValEntry_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
     internal_static_buf_validate_conformance_cases_Proto2RepeatedItemIgnoreUnspecified_descriptor;
   static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
@@ -235,6 +300,11 @@ public final class IgnoreProto2Proto {
   static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_buf_validate_conformance_cases_Proto2RepeatedItemIgnoreDefault_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_buf_validate_conformance_cases_Proto2RepeatedItemIgnoreAlways_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_buf_validate_conformance_cases_Proto2RepeatedItemIgnoreAlways_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
     internal_static_buf_validate_conformance_cases_Proto2MapKeyIgnoreUnspecified_descriptor;
   static final 
@@ -266,6 +336,16 @@ public final class IgnoreProto2Proto {
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_buf_validate_conformance_cases_Proto2MapKeyIgnoreDefault_ValEntry_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_buf_validate_conformance_cases_Proto2MapKeyIgnoreAlways_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_buf_validate_conformance_cases_Proto2MapKeyIgnoreAlways_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_buf_validate_conformance_cases_Proto2MapKeyIgnoreAlways_ValEntry_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_buf_validate_conformance_cases_Proto2MapKeyIgnoreAlways_ValEntry_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
     internal_static_buf_validate_conformance_cases_Proto2MapValueIgnoreUnspecified_descriptor;
   static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
@@ -295,6 +375,16 @@ public final class IgnoreProto2Proto {
   static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_buf_validate_conformance_cases_Proto2MapValueIgnoreDefault_ValEntry_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_buf_validate_conformance_cases_Proto2MapValueIgnoreAlways_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_buf_validate_conformance_cases_Proto2MapValueIgnoreAlways_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_buf_validate_conformance_cases_Proto2MapValueIgnoreAlways_ValEntry_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_buf_validate_conformance_cases_Proto2MapValueIgnoreAlways_ValEntry_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -318,119 +408,159 @@ public final class IgnoreProto2Proto {
       "eDefault\022\034\n\003val\030\001 \001(\005B\n\272H\007\032\002 \000\330\001\002R\003val\"Q" +
       "\n,Proto2ScalarOptionalIgnoreDefaultWithD" +
       "efault\022!\n\003val\030\001 \001(\005:\003-42B\n\272H\007\032\002 \000\330\001\002R\003va" +
-      "l\"B\n%Proto2ScalarRequiredIgnoreUnspecifi" +
-      "ed\022\031\n\003val\030\001 \002(\005B\007\272H\004\032\002 \000R\003val\"R\n0Proto2S" +
-      "calarRequiredIgnoreUnspecifiedWithDefaul" +
-      "t\022\036\n\003val\030\001 \002(\005:\003-42B\007\272H\004\032\002 \000R\003val\"?\n\037Pro" +
-      "to2ScalarRequiredIgnoreEmpty\022\034\n\003val\030\001 \002(" +
-      "\005B\n\272H\007\032\002 \000\330\001\001R\003val\"O\n*Proto2ScalarRequir" +
-      "edIgnoreEmptyWithDefault\022!\n\003val\030\001 \002(\005:\003-" +
-      "42B\n\272H\007\032\002 \000\330\001\001R\003val\"A\n!Proto2ScalarRequi" +
-      "redIgnoreDefault\022\034\n\003val\030\001 \002(\005B\n\272H\007\032\002 \000\330\001" +
-      "\002R\003val\"Q\n,Proto2ScalarRequiredIgnoreDefa" +
-      "ultWithDefault\022!\n\003val\030\001 \002(\005:\003-42B\n\272H\007\032\002 " +
-      "\000\330\001\002R\003val\"\340\001\n&Proto2MessageOptionalIgnor" +
-      "eUnspecified\022\234\001\n\003val\030\001 \001(\0132J.buf.validat" +
-      "e.conformance.cases.Proto2MessageOptiona" +
-      "lIgnoreUnspecified.MsgB>\272H;\272\0018\n\033proto2.m" +
-      "essage.ignore.empty\022\006foobar\032\021this.val ==" +
-      " \'foo\'R\003val\032\027\n\003Msg\022\020\n\003val\030\001 \001(\tR\003val\"\327\001\n" +
-      " Proto2MessageOptionalIgnoreEmpty\022\231\001\n\003va" +
-      "l\030\001 \001(\0132D.buf.validate.conformance.cases" +
-      ".Proto2MessageOptionalIgnoreEmpty.MsgBA\272" +
-      "H>\272\0018\n\033proto2.message.ignore.empty\022\006foob" +
-      "ar\032\021this.val == \'foo\'\330\001\001R\003val\032\027\n\003Msg\022\020\n\003" +
-      "val\030\001 \001(\tR\003val\"\333\001\n\"Proto2MessageOptional" +
-      "IgnoreDefault\022\233\001\n\003val\030\001 \001(\0132F.buf.valida" +
-      "te.conformance.cases.Proto2MessageOption" +
-      "alIgnoreDefault.MsgBA\272H>\272\0018\n\033proto2.mess" +
-      "age.ignore.empty\022\006foobar\032\021this.val == \'f" +
-      "oo\'\330\001\002R\003val\032\027\n\003Msg\022\020\n\003val\030\001 \001(\tR\003val\"\340\001\n" +
-      "&Proto2MessageRequiredIgnoreUnspecified\022" +
-      "\234\001\n\003val\030\001 \002(\0132J.buf.validate.conformance" +
-      ".cases.Proto2MessageRequiredIgnoreUnspec" +
-      "ified.MsgB>\272H;\272\0018\n\033proto2.message.ignore" +
-      ".empty\022\006foobar\032\021this.val == \'foo\'R\003val\032\027" +
-      "\n\003Msg\022\020\n\003val\030\001 \001(\tR\003val\"\327\001\n Proto2Messag" +
-      "eRequiredIgnoreEmpty\022\231\001\n\003val\030\001 \002(\0132D.buf" +
-      ".validate.conformance.cases.Proto2Messag" +
-      "eRequiredIgnoreEmpty.MsgBA\272H>\272\0018\n\033proto2" +
-      ".message.ignore.empty\022\006foobar\032\021this.val " +
-      "== \'foo\'\330\001\001R\003val\032\027\n\003Msg\022\020\n\003val\030\001 \001(\tR\003va" +
-      "l\"\333\001\n\"Proto2MessageRequiredIgnoreDefault" +
-      "\022\233\001\n\003val\030\001 \002(\0132F.buf.validate.conformanc" +
-      "e.cases.Proto2MessageRequiredIgnoreDefau" +
-      "lt.MsgBA\272H>\272\0018\n\033proto2.message.ignore.em" +
-      "pty\022\006foobar\032\021this.val == \'foo\'\330\001\002R\003val\032\027" +
-      "\n\003Msg\022\020\n\003val\030\001 \001(\tR\003val\"@\n\034Proto2OneofIg" +
-      "noreUnspecified\022\033\n\003val\030\001 \001(\005B\007\272H\004\032\002 \000H\000R" +
-      "\003valB\003\n\001o\"P\n\'Proto2OneofIgnoreUnspecifie" +
-      "dWithDefault\022 \n\003val\030\001 \001(\005:\003-42B\007\272H\004\032\002 \000H" +
-      "\000R\003valB\003\n\001o\"=\n\026Proto2OneofIgnoreEmpty\022\036\n" +
-      "\003val\030\001 \001(\005B\n\272H\007\032\002 \000\330\001\001H\000R\003valB\003\n\001o\"M\n!Pr" +
-      "oto2OneofIgnoreEmptyWithDefault\022#\n\003val\030\001" +
-      " \001(\005:\003-42B\n\272H\007\032\002 \000\330\001\001H\000R\003valB\003\n\001o\"?\n\030Pro" +
-      "to2OneofIgnoreDefault\022\036\n\003val\030\001 \001(\005B\n\272H\007\032" +
-      "\002 \000\330\001\002H\000R\003valB\003\n\001o\"O\n#Proto2OneofIgnoreD" +
-      "efaultWithDefault\022#\n\003val\030\001 \001(\005:\003-42B\n\272H\007" +
-      "\032\002 \000\330\001\002H\000R\003valB\003\n\001o\"=\n\037Proto2RepeatedIgn" +
-      "oreUnspecified\022\032\n\003val\030\001 \003(\005B\010\272H\005\222\001\002\010\003R\003v" +
-      "al\":\n\031Proto2RepeatedIgnoreEmpty\022\035\n\003val\030\001" +
-      " \003(\005B\013\272H\010\222\001\002\010\003\330\001\001R\003val\"<\n\033Proto2Repeated" +
-      "IgnoreDefault\022\035\n\003val\030\001 \003(\005B\013\272H\010\222\001\002\010\003\330\001\002R" +
-      "\003val\"\265\001\n\032Proto2MapIgnoreUnspecified\022_\n\003v" +
-      "al\030\001 \003(\0132C.buf.validate.conformance.case" +
-      "s.Proto2MapIgnoreUnspecified.ValEntryB\010\272" +
-      "H\005\232\001\002\010\003R\003val\0326\n\010ValEntry\022\020\n\003key\030\001 \001(\005R\003k" +
-      "ey\022\024\n\005value\030\002 \001(\005R\005value:\0028\001\"\254\001\n\024Proto2M" +
-      "apIgnoreEmpty\022\\\n\003val\030\001 \003(\0132=.buf.validat" +
-      "e.conformance.cases.Proto2MapIgnoreEmpty" +
-      ".ValEntryB\013\272H\010\232\001\002\010\003\330\001\001R\003val\0326\n\010ValEntry\022" +
-      "\020\n\003key\030\001 \001(\005R\003key\022\024\n\005value\030\002 \001(\005R\005value:" +
-      "\0028\001\"\260\001\n\026Proto2MapIgnoreDefault\022^\n\003val\030\001 " +
-      "\003(\0132?.buf.validate.conformance.cases.Pro" +
-      "to2MapIgnoreDefault.ValEntryB\013\272H\010\232\001\002\010\003\330\001" +
-      "\002R\003val\0326\n\010ValEntry\022\020\n\003key\030\001 \001(\005R\003key\022\024\n\005" +
+      "l\"@\n Proto2ScalarOptionalIgnoreAlways\022\034\n" +
+      "\003val\030\001 \001(\005B\n\272H\007\032\002 \000\330\001\003R\003val\"P\n+Proto2Sca" +
+      "larOptionalIgnoreAlwaysWithDefault\022!\n\003va" +
+      "l\030\001 \001(\005:\003-42B\n\272H\007\032\002 \000\330\001\003R\003val\"B\n%Proto2S" +
+      "calarRequiredIgnoreUnspecified\022\031\n\003val\030\001 " +
+      "\002(\005B\007\272H\004\032\002 \000R\003val\"R\n0Proto2ScalarRequire" +
+      "dIgnoreUnspecifiedWithDefault\022\036\n\003val\030\001 \002" +
+      "(\005:\003-42B\007\272H\004\032\002 \000R\003val\"?\n\037Proto2ScalarReq" +
+      "uiredIgnoreEmpty\022\034\n\003val\030\001 \002(\005B\n\272H\007\032\002 \000\330\001" +
+      "\001R\003val\"O\n*Proto2ScalarRequiredIgnoreEmpt" +
+      "yWithDefault\022!\n\003val\030\001 \002(\005:\003-42B\n\272H\007\032\002 \000\330" +
+      "\001\001R\003val\"A\n!Proto2ScalarRequiredIgnoreDef" +
+      "ault\022\034\n\003val\030\001 \002(\005B\n\272H\007\032\002 \000\330\001\002R\003val\"Q\n,Pr" +
+      "oto2ScalarRequiredIgnoreDefaultWithDefau" +
+      "lt\022!\n\003val\030\001 \002(\005:\003-42B\n\272H\007\032\002 \000\330\001\002R\003val\"@\n" +
+      " Proto2ScalarRequiredIgnoreAlways\022\034\n\003val" +
+      "\030\001 \002(\005B\n\272H\007\032\002 \000\330\001\003R\003val\"P\n+Proto2ScalarR" +
+      "equiredIgnoreAlwaysWithDefault\022!\n\003val\030\001 " +
+      "\002(\005:\003-42B\n\272H\007\032\002 \000\330\001\003R\003val\"\340\001\n&Proto2Mess" +
+      "ageOptionalIgnoreUnspecified\022\234\001\n\003val\030\001 \001" +
+      "(\0132J.buf.validate.conformance.cases.Prot" +
+      "o2MessageOptionalIgnoreUnspecified.MsgB>" +
+      "\272H;\272\0018\n\033proto2.message.ignore.empty\022\006foo" +
+      "bar\032\021this.val == \'foo\'R\003val\032\027\n\003Msg\022\020\n\003va" +
+      "l\030\001 \001(\tR\003val\"\327\001\n Proto2MessageOptionalIg" +
+      "noreEmpty\022\231\001\n\003val\030\001 \001(\0132D.buf.validate.c" +
+      "onformance.cases.Proto2MessageOptionalIg" +
+      "noreEmpty.MsgBA\272H>\272\0018\n\033proto2.message.ig" +
+      "nore.empty\022\006foobar\032\021this.val == \'foo\'\330\001\001" +
+      "R\003val\032\027\n\003Msg\022\020\n\003val\030\001 \001(\tR\003val\"\333\001\n\"Proto" +
+      "2MessageOptionalIgnoreDefault\022\233\001\n\003val\030\001 " +
+      "\001(\0132F.buf.validate.conformance.cases.Pro" +
+      "to2MessageOptionalIgnoreDefault.MsgBA\272H>" +
+      "\272\0018\n\033proto2.message.ignore.empty\022\006foobar" +
+      "\032\021this.val == \'foo\'\330\001\002R\003val\032\027\n\003Msg\022\020\n\003va" +
+      "l\030\001 \001(\tR\003val\"\332\001\n!Proto2MessageOptionalIg" +
+      "noreAlways\022\233\001\n\003val\030\001 \001(\0132E.buf.validate." +
+      "conformance.cases.Proto2MessageOptionalI" +
+      "gnoreAlways.MsgBB\272H?\272\0019\n\034proto2.message." +
+      "ignore.always\022\006foobar\032\021this.val == \'foo\'" +
+      "\330\001\003R\003val\032\027\n\003Msg\022\020\n\003val\030\001 \001(\tR\003val\"\340\001\n&Pr" +
+      "oto2MessageRequiredIgnoreUnspecified\022\234\001\n" +
+      "\003val\030\001 \002(\0132J.buf.validate.conformance.ca" +
+      "ses.Proto2MessageRequiredIgnoreUnspecifi" +
+      "ed.MsgB>\272H;\272\0018\n\033proto2.message.ignore.em" +
+      "pty\022\006foobar\032\021this.val == \'foo\'R\003val\032\027\n\003M" +
+      "sg\022\020\n\003val\030\001 \001(\tR\003val\"\327\001\n Proto2MessageRe" +
+      "quiredIgnoreEmpty\022\231\001\n\003val\030\001 \002(\0132D.buf.va" +
+      "lidate.conformance.cases.Proto2MessageRe" +
+      "quiredIgnoreEmpty.MsgBA\272H>\272\0018\n\033proto2.me" +
+      "ssage.ignore.empty\022\006foobar\032\021this.val == " +
+      "\'foo\'\330\001\001R\003val\032\027\n\003Msg\022\020\n\003val\030\001 \001(\tR\003val\"\333" +
+      "\001\n\"Proto2MessageRequiredIgnoreDefault\022\233\001" +
+      "\n\003val\030\001 \002(\0132F.buf.validate.conformance.c" +
+      "ases.Proto2MessageRequiredIgnoreDefault." +
+      "MsgBA\272H>\272\0018\n\033proto2.message.ignore.empty" +
+      "\022\006foobar\032\021this.val == \'foo\'\330\001\002R\003val\032\027\n\003M" +
+      "sg\022\020\n\003val\030\001 \001(\tR\003val\"\332\001\n!Proto2MessageRe" +
+      "quiredIgnoreAlways\022\233\001\n\003val\030\001 \002(\0132E.buf.v" +
+      "alidate.conformance.cases.Proto2MessageR" +
+      "equiredIgnoreAlways.MsgBB\272H?\272\0019\n\034proto2." +
+      "message.ignore.always\022\006foobar\032\021this.val " +
+      "== \'foo\'\330\001\003R\003val\032\027\n\003Msg\022\020\n\003val\030\001 \001(\tR\003va" +
+      "l\"@\n\034Proto2OneofIgnoreUnspecified\022\033\n\003val" +
+      "\030\001 \001(\005B\007\272H\004\032\002 \000H\000R\003valB\003\n\001o\"P\n\'Proto2One" +
+      "ofIgnoreUnspecifiedWithDefault\022 \n\003val\030\001 " +
+      "\001(\005:\003-42B\007\272H\004\032\002 \000H\000R\003valB\003\n\001o\"=\n\026Proto2O" +
+      "neofIgnoreEmpty\022\036\n\003val\030\001 \001(\005B\n\272H\007\032\002 \000\330\001\001" +
+      "H\000R\003valB\003\n\001o\"M\n!Proto2OneofIgnoreEmptyWi" +
+      "thDefault\022#\n\003val\030\001 \001(\005:\003-42B\n\272H\007\032\002 \000\330\001\001H" +
+      "\000R\003valB\003\n\001o\"?\n\030Proto2OneofIgnoreDefault\022" +
+      "\036\n\003val\030\001 \001(\005B\n\272H\007\032\002 \000\330\001\002H\000R\003valB\003\n\001o\"O\n#" +
+      "Proto2OneofIgnoreDefaultWithDefault\022#\n\003v" +
+      "al\030\001 \001(\005:\003-42B\n\272H\007\032\002 \000\330\001\002H\000R\003valB\003\n\001o\">\n" +
+      "\027Proto2OneofIgnoreAlways\022\036\n\003val\030\001 \001(\005B\n\272" +
+      "H\007\032\002 \000\330\001\003H\000R\003valB\003\n\001o\"N\n\"Proto2OneofIgno" +
+      "reAlwaysWithDefault\022#\n\003val\030\001 \001(\005:\003-42B\n\272" +
+      "H\007\032\002 \000\330\001\003H\000R\003valB\003\n\001o\"=\n\037Proto2RepeatedI" +
+      "gnoreUnspecified\022\032\n\003val\030\001 \003(\005B\010\272H\005\222\001\002\010\003R" +
+      "\003val\":\n\031Proto2RepeatedIgnoreEmpty\022\035\n\003val" +
+      "\030\001 \003(\005B\013\272H\010\222\001\002\010\003\330\001\001R\003val\"<\n\033Proto2Repeat" +
+      "edIgnoreDefault\022\035\n\003val\030\001 \003(\005B\013\272H\010\222\001\002\010\003\330\001" +
+      "\002R\003val\";\n\032Proto2RepeatedIgnoreAlways\022\035\n\003" +
+      "val\030\001 \003(\005B\013\272H\010\222\001\002\010\003\330\001\003R\003val\"\265\001\n\032Proto2Ma" +
+      "pIgnoreUnspecified\022_\n\003val\030\001 \003(\0132C.buf.va" +
+      "lidate.conformance.cases.Proto2MapIgnore" +
+      "Unspecified.ValEntryB\010\272H\005\232\001\002\010\003R\003val\0326\n\010V" +
+      "alEntry\022\020\n\003key\030\001 \001(\005R\003key\022\024\n\005value\030\002 \001(\005" +
+      "R\005value:\0028\001\"\254\001\n\024Proto2MapIgnoreEmpty\022\\\n\003" +
+      "val\030\001 \003(\0132=.buf.validate.conformance.cas" +
+      "es.Proto2MapIgnoreEmpty.ValEntryB\013\272H\010\232\001\002" +
+      "\010\003\330\001\001R\003val\0326\n\010ValEntry\022\020\n\003key\030\001 \001(\005R\003key" +
+      "\022\024\n\005value\030\002 \001(\005R\005value:\0028\001\"\260\001\n\026Proto2Map" +
+      "IgnoreDefault\022^\n\003val\030\001 \003(\0132?.buf.validat" +
+      "e.conformance.cases.Proto2MapIgnoreDefau" +
+      "lt.ValEntryB\013\272H\010\232\001\002\010\003\330\001\002R\003val\0326\n\010ValEntr" +
+      "y\022\020\n\003key\030\001 \001(\005R\003key\022\024\n\005value\030\002 \001(\005R\005valu" +
+      "e:\0028\001\"\256\001\n\025Proto2MapIgnoreAlways\022]\n\003val\030\001" +
+      " \003(\0132>.buf.validate.conformance.cases.Pr" +
+      "oto2MapIgnoreAlways.ValEntryB\013\272H\010\232\001\002\010\003\330\001" +
+      "\003R\003val\0326\n\010ValEntry\022\020\n\003key\030\001 \001(\005R\003key\022\024\n\005" +
       "value\030\002 \001(\005R\005value:\0028\001\"E\n#Proto2Repeated" +
       "ItemIgnoreUnspecified\022\036\n\003val\030\001 \003(\005B\014\272H\t\222" +
       "\001\006\"\004\032\002 \000R\003val\"B\n\035Proto2RepeatedItemIgnor" +
       "eEmpty\022!\n\003val\030\001 \003(\005B\017\272H\014\222\001\t\"\007\032\002 \000\330\001\001R\003va" +
       "l\"D\n\037Proto2RepeatedItemIgnoreDefault\022!\n\003" +
-      "val\030\001 \003(\005B\017\272H\014\222\001\t\"\007\032\002 \000\330\001\002R\003val\"\277\001\n\035Prot" +
-      "o2MapKeyIgnoreUnspecified\022f\n\003val\030\001 \003(\0132F" +
-      ".buf.validate.conformance.cases.Proto2Ma" +
-      "pKeyIgnoreUnspecified.ValEntryB\014\272H\t\232\001\006\"\004" +
-      "\032\002 \000R\003val\0326\n\010ValEntry\022\020\n\003key\030\001 \001(\005R\003key\022" +
-      "\024\n\005value\030\002 \001(\005R\005value:\0028\001\"\266\001\n\027Proto2MapK" +
-      "eyIgnoreEmpty\022c\n\003val\030\001 \003(\0132@.buf.validat" +
-      "e.conformance.cases.Proto2MapKeyIgnoreEm" +
-      "pty.ValEntryB\017\272H\014\232\001\t\"\007\032\002 \000\330\001\001R\003val\0326\n\010Va" +
-      "lEntry\022\020\n\003key\030\001 \001(\005R\003key\022\024\n\005value\030\002 \001(\005R" +
-      "\005value:\0028\001\"\272\001\n\031Proto2MapKeyIgnoreDefault" +
-      "\022e\n\003val\030\001 \003(\0132B.buf.validate.conformance" +
-      ".cases.Proto2MapKeyIgnoreDefault.ValEntr" +
-      "yB\017\272H\014\232\001\t\"\007\032\002 \000\330\001\002R\003val\0326\n\010ValEntry\022\020\n\003k" +
+      "val\030\001 \003(\005B\017\272H\014\222\001\t\"\007\032\002 \000\330\001\002R\003val\"C\n\036Proto" +
+      "2RepeatedItemIgnoreAlways\022!\n\003val\030\001 \003(\005B\017" +
+      "\272H\014\222\001\t\"\007\032\002 \000\330\001\003R\003val\"\277\001\n\035Proto2MapKeyIgn" +
+      "oreUnspecified\022f\n\003val\030\001 \003(\0132F.buf.valida" +
+      "te.conformance.cases.Proto2MapKeyIgnoreU" +
+      "nspecified.ValEntryB\014\272H\t\232\001\006\"\004\032\002 \000R\003val\0326" +
+      "\n\010ValEntry\022\020\n\003key\030\001 \001(\005R\003key\022\024\n\005value\030\002 " +
+      "\001(\005R\005value:\0028\001\"\266\001\n\027Proto2MapKeyIgnoreEmp" +
+      "ty\022c\n\003val\030\001 \003(\0132@.buf.validate.conforman" +
+      "ce.cases.Proto2MapKeyIgnoreEmpty.ValEntr" +
+      "yB\017\272H\014\232\001\t\"\007\032\002 \000\330\001\001R\003val\0326\n\010ValEntry\022\020\n\003k" +
       "ey\030\001 \001(\005R\003key\022\024\n\005value\030\002 \001(\005R\005value:\0028\001\"" +
-      "\303\001\n\037Proto2MapValueIgnoreUnspecified\022h\n\003v" +
-      "al\030\001 \003(\0132H.buf.validate.conformance.case" +
-      "s.Proto2MapValueIgnoreUnspecified.ValEnt" +
-      "ryB\014\272H\t\232\001\006*\004\032\002 \000R\003val\0326\n\010ValEntry\022\020\n\003key" +
-      "\030\001 \001(\005R\003key\022\024\n\005value\030\002 \001(\005R\005value:\0028\001\"\272\001" +
-      "\n\031Proto2MapValueIgnoreEmpty\022e\n\003val\030\001 \003(\013" +
-      "2B.buf.validate.conformance.cases.Proto2" +
-      "MapValueIgnoreEmpty.ValEntryB\017\272H\014\232\001\t*\007\032\002" +
-      " \000\330\001\001R\003val\0326\n\010ValEntry\022\020\n\003key\030\001 \001(\005R\003key" +
-      "\022\024\n\005value\030\002 \001(\005R\005value:\0028\001\"\276\001\n\033Proto2Map" +
-      "ValueIgnoreDefault\022g\n\003val\030\001 \003(\0132D.buf.va" +
-      "lidate.conformance.cases.Proto2MapValueI" +
-      "gnoreDefault.ValEntryB\017\272H\014\232\001\t*\007\032\002 \000\330\001\002R\003" +
-      "val\0326\n\010ValEntry\022\020\n\003key\030\001 \001(\005R\003key\022\024\n\005val" +
-      "ue\030\002 \001(\005R\005value:\0028\001B\325\001\n$build.buf.valida" +
-      "te.conformance.casesB\021IgnoreProto2ProtoP" +
-      "\001\242\002\004BVCC\252\002\036Buf.Validate.Conformance.Case" +
-      "s\312\002\036Buf\\Validate\\Conformance\\Cases\342\002*Buf" +
-      "\\Validate\\Conformance\\Cases\\GPBMetadata\352" +
-      "\002!Buf::Validate::Conformance::Cases"
+      "\272\001\n\031Proto2MapKeyIgnoreDefault\022e\n\003val\030\001 \003" +
+      "(\0132B.buf.validate.conformance.cases.Prot" +
+      "o2MapKeyIgnoreDefault.ValEntryB\017\272H\014\232\001\t\"\007" +
+      "\032\002 \000\330\001\002R\003val\0326\n\010ValEntry\022\020\n\003key\030\001 \001(\005R\003k" +
+      "ey\022\024\n\005value\030\002 \001(\005R\005value:\0028\001\"\270\001\n\030Proto2M" +
+      "apKeyIgnoreAlways\022d\n\003val\030\001 \003(\0132A.buf.val" +
+      "idate.conformance.cases.Proto2MapKeyIgno" +
+      "reAlways.ValEntryB\017\272H\014\232\001\t\"\007\032\002 \000\330\001\003R\003val\032" +
+      "6\n\010ValEntry\022\020\n\003key\030\001 \001(\005R\003key\022\024\n\005value\030\002" +
+      " \001(\005R\005value:\0028\001\"\303\001\n\037Proto2MapValueIgnore" +
+      "Unspecified\022h\n\003val\030\001 \003(\0132H.buf.validate." +
+      "conformance.cases.Proto2MapValueIgnoreUn" +
+      "specified.ValEntryB\014\272H\t\232\001\006*\004\032\002 \000R\003val\0326\n" +
+      "\010ValEntry\022\020\n\003key\030\001 \001(\005R\003key\022\024\n\005value\030\002 \001" +
+      "(\005R\005value:\0028\001\"\272\001\n\031Proto2MapValueIgnoreEm" +
+      "pty\022e\n\003val\030\001 \003(\0132B.buf.validate.conforma" +
+      "nce.cases.Proto2MapValueIgnoreEmpty.ValE" +
+      "ntryB\017\272H\014\232\001\t*\007\032\002 \000\330\001\001R\003val\0326\n\010ValEntry\022\020" +
+      "\n\003key\030\001 \001(\005R\003key\022\024\n\005value\030\002 \001(\005R\005value:\002" +
+      "8\001\"\276\001\n\033Proto2MapValueIgnoreDefault\022g\n\003va" +
+      "l\030\001 \003(\0132D.buf.validate.conformance.cases" +
+      ".Proto2MapValueIgnoreDefault.ValEntryB\017\272" +
+      "H\014\232\001\t*\007\032\002 \000\330\001\002R\003val\0326\n\010ValEntry\022\020\n\003key\030\001" +
+      " \001(\005R\003key\022\024\n\005value\030\002 \001(\005R\005value:\0028\001\"\274\001\n\032" +
+      "Proto2MapValueIgnoreAlways\022f\n\003val\030\001 \003(\0132" +
+      "C.buf.validate.conformance.cases.Proto2M" +
+      "apValueIgnoreAlways.ValEntryB\017\272H\014\232\001\t*\007\032\002" +
+      " \000\330\001\003R\003val\0326\n\010ValEntry\022\020\n\003key\030\001 \001(\005R\003key" +
+      "\022\024\n\005value\030\002 \001(\005R\005value:\0028\001B\325\001\n$build.buf" +
+      ".validate.conformance.casesB\021IgnoreProto" +
+      "2ProtoP\001\242\002\004BVCC\252\002\036Buf.Validate.Conforman" +
+      "ce.Cases\312\002\036Buf\\Validate\\Conformance\\Case" +
+      "s\342\002*Buf\\Validate\\Conformance\\Cases\\GPBMe" +
+      "tadata\352\002!Buf::Validate::Conformance::Cas" +
+      "es"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -473,44 +603,68 @@ public final class IgnoreProto2Proto {
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_Proto2ScalarOptionalIgnoreDefaultWithDefault_descriptor,
         new java.lang.String[] { "Val", });
-    internal_static_buf_validate_conformance_cases_Proto2ScalarRequiredIgnoreUnspecified_descriptor =
+    internal_static_buf_validate_conformance_cases_Proto2ScalarOptionalIgnoreAlways_descriptor =
       getDescriptor().getMessageTypes().get(6);
+    internal_static_buf_validate_conformance_cases_Proto2ScalarOptionalIgnoreAlways_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_buf_validate_conformance_cases_Proto2ScalarOptionalIgnoreAlways_descriptor,
+        new java.lang.String[] { "Val", });
+    internal_static_buf_validate_conformance_cases_Proto2ScalarOptionalIgnoreAlwaysWithDefault_descriptor =
+      getDescriptor().getMessageTypes().get(7);
+    internal_static_buf_validate_conformance_cases_Proto2ScalarOptionalIgnoreAlwaysWithDefault_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_buf_validate_conformance_cases_Proto2ScalarOptionalIgnoreAlwaysWithDefault_descriptor,
+        new java.lang.String[] { "Val", });
+    internal_static_buf_validate_conformance_cases_Proto2ScalarRequiredIgnoreUnspecified_descriptor =
+      getDescriptor().getMessageTypes().get(8);
     internal_static_buf_validate_conformance_cases_Proto2ScalarRequiredIgnoreUnspecified_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_Proto2ScalarRequiredIgnoreUnspecified_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_Proto2ScalarRequiredIgnoreUnspecifiedWithDefault_descriptor =
-      getDescriptor().getMessageTypes().get(7);
+      getDescriptor().getMessageTypes().get(9);
     internal_static_buf_validate_conformance_cases_Proto2ScalarRequiredIgnoreUnspecifiedWithDefault_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_Proto2ScalarRequiredIgnoreUnspecifiedWithDefault_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_Proto2ScalarRequiredIgnoreEmpty_descriptor =
-      getDescriptor().getMessageTypes().get(8);
+      getDescriptor().getMessageTypes().get(10);
     internal_static_buf_validate_conformance_cases_Proto2ScalarRequiredIgnoreEmpty_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_Proto2ScalarRequiredIgnoreEmpty_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_Proto2ScalarRequiredIgnoreEmptyWithDefault_descriptor =
-      getDescriptor().getMessageTypes().get(9);
+      getDescriptor().getMessageTypes().get(11);
     internal_static_buf_validate_conformance_cases_Proto2ScalarRequiredIgnoreEmptyWithDefault_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_Proto2ScalarRequiredIgnoreEmptyWithDefault_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_Proto2ScalarRequiredIgnoreDefault_descriptor =
-      getDescriptor().getMessageTypes().get(10);
+      getDescriptor().getMessageTypes().get(12);
     internal_static_buf_validate_conformance_cases_Proto2ScalarRequiredIgnoreDefault_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_Proto2ScalarRequiredIgnoreDefault_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_Proto2ScalarRequiredIgnoreDefaultWithDefault_descriptor =
-      getDescriptor().getMessageTypes().get(11);
+      getDescriptor().getMessageTypes().get(13);
     internal_static_buf_validate_conformance_cases_Proto2ScalarRequiredIgnoreDefaultWithDefault_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_Proto2ScalarRequiredIgnoreDefaultWithDefault_descriptor,
         new java.lang.String[] { "Val", });
+    internal_static_buf_validate_conformance_cases_Proto2ScalarRequiredIgnoreAlways_descriptor =
+      getDescriptor().getMessageTypes().get(14);
+    internal_static_buf_validate_conformance_cases_Proto2ScalarRequiredIgnoreAlways_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_buf_validate_conformance_cases_Proto2ScalarRequiredIgnoreAlways_descriptor,
+        new java.lang.String[] { "Val", });
+    internal_static_buf_validate_conformance_cases_Proto2ScalarRequiredIgnoreAlwaysWithDefault_descriptor =
+      getDescriptor().getMessageTypes().get(15);
+    internal_static_buf_validate_conformance_cases_Proto2ScalarRequiredIgnoreAlwaysWithDefault_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_buf_validate_conformance_cases_Proto2ScalarRequiredIgnoreAlwaysWithDefault_descriptor,
+        new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_Proto2MessageOptionalIgnoreUnspecified_descriptor =
-      getDescriptor().getMessageTypes().get(12);
+      getDescriptor().getMessageTypes().get(16);
     internal_static_buf_validate_conformance_cases_Proto2MessageOptionalIgnoreUnspecified_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_Proto2MessageOptionalIgnoreUnspecified_descriptor,
@@ -522,7 +676,7 @@ public final class IgnoreProto2Proto {
         internal_static_buf_validate_conformance_cases_Proto2MessageOptionalIgnoreUnspecified_Msg_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_Proto2MessageOptionalIgnoreEmpty_descriptor =
-      getDescriptor().getMessageTypes().get(13);
+      getDescriptor().getMessageTypes().get(17);
     internal_static_buf_validate_conformance_cases_Proto2MessageOptionalIgnoreEmpty_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_Proto2MessageOptionalIgnoreEmpty_descriptor,
@@ -534,7 +688,7 @@ public final class IgnoreProto2Proto {
         internal_static_buf_validate_conformance_cases_Proto2MessageOptionalIgnoreEmpty_Msg_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_Proto2MessageOptionalIgnoreDefault_descriptor =
-      getDescriptor().getMessageTypes().get(14);
+      getDescriptor().getMessageTypes().get(18);
     internal_static_buf_validate_conformance_cases_Proto2MessageOptionalIgnoreDefault_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_Proto2MessageOptionalIgnoreDefault_descriptor,
@@ -545,8 +699,20 @@ public final class IgnoreProto2Proto {
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_Proto2MessageOptionalIgnoreDefault_Msg_descriptor,
         new java.lang.String[] { "Val", });
+    internal_static_buf_validate_conformance_cases_Proto2MessageOptionalIgnoreAlways_descriptor =
+      getDescriptor().getMessageTypes().get(19);
+    internal_static_buf_validate_conformance_cases_Proto2MessageOptionalIgnoreAlways_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_buf_validate_conformance_cases_Proto2MessageOptionalIgnoreAlways_descriptor,
+        new java.lang.String[] { "Val", });
+    internal_static_buf_validate_conformance_cases_Proto2MessageOptionalIgnoreAlways_Msg_descriptor =
+      internal_static_buf_validate_conformance_cases_Proto2MessageOptionalIgnoreAlways_descriptor.getNestedTypes().get(0);
+    internal_static_buf_validate_conformance_cases_Proto2MessageOptionalIgnoreAlways_Msg_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_buf_validate_conformance_cases_Proto2MessageOptionalIgnoreAlways_Msg_descriptor,
+        new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_Proto2MessageRequiredIgnoreUnspecified_descriptor =
-      getDescriptor().getMessageTypes().get(15);
+      getDescriptor().getMessageTypes().get(20);
     internal_static_buf_validate_conformance_cases_Proto2MessageRequiredIgnoreUnspecified_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_Proto2MessageRequiredIgnoreUnspecified_descriptor,
@@ -558,7 +724,7 @@ public final class IgnoreProto2Proto {
         internal_static_buf_validate_conformance_cases_Proto2MessageRequiredIgnoreUnspecified_Msg_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_Proto2MessageRequiredIgnoreEmpty_descriptor =
-      getDescriptor().getMessageTypes().get(16);
+      getDescriptor().getMessageTypes().get(21);
     internal_static_buf_validate_conformance_cases_Proto2MessageRequiredIgnoreEmpty_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_Proto2MessageRequiredIgnoreEmpty_descriptor,
@@ -570,7 +736,7 @@ public final class IgnoreProto2Proto {
         internal_static_buf_validate_conformance_cases_Proto2MessageRequiredIgnoreEmpty_Msg_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_Proto2MessageRequiredIgnoreDefault_descriptor =
-      getDescriptor().getMessageTypes().get(17);
+      getDescriptor().getMessageTypes().get(22);
     internal_static_buf_validate_conformance_cases_Proto2MessageRequiredIgnoreDefault_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_Proto2MessageRequiredIgnoreDefault_descriptor,
@@ -581,62 +747,92 @@ public final class IgnoreProto2Proto {
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_Proto2MessageRequiredIgnoreDefault_Msg_descriptor,
         new java.lang.String[] { "Val", });
+    internal_static_buf_validate_conformance_cases_Proto2MessageRequiredIgnoreAlways_descriptor =
+      getDescriptor().getMessageTypes().get(23);
+    internal_static_buf_validate_conformance_cases_Proto2MessageRequiredIgnoreAlways_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_buf_validate_conformance_cases_Proto2MessageRequiredIgnoreAlways_descriptor,
+        new java.lang.String[] { "Val", });
+    internal_static_buf_validate_conformance_cases_Proto2MessageRequiredIgnoreAlways_Msg_descriptor =
+      internal_static_buf_validate_conformance_cases_Proto2MessageRequiredIgnoreAlways_descriptor.getNestedTypes().get(0);
+    internal_static_buf_validate_conformance_cases_Proto2MessageRequiredIgnoreAlways_Msg_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_buf_validate_conformance_cases_Proto2MessageRequiredIgnoreAlways_Msg_descriptor,
+        new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_Proto2OneofIgnoreUnspecified_descriptor =
-      getDescriptor().getMessageTypes().get(18);
+      getDescriptor().getMessageTypes().get(24);
     internal_static_buf_validate_conformance_cases_Proto2OneofIgnoreUnspecified_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_Proto2OneofIgnoreUnspecified_descriptor,
         new java.lang.String[] { "Val", "O", });
     internal_static_buf_validate_conformance_cases_Proto2OneofIgnoreUnspecifiedWithDefault_descriptor =
-      getDescriptor().getMessageTypes().get(19);
+      getDescriptor().getMessageTypes().get(25);
     internal_static_buf_validate_conformance_cases_Proto2OneofIgnoreUnspecifiedWithDefault_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_Proto2OneofIgnoreUnspecifiedWithDefault_descriptor,
         new java.lang.String[] { "Val", "O", });
     internal_static_buf_validate_conformance_cases_Proto2OneofIgnoreEmpty_descriptor =
-      getDescriptor().getMessageTypes().get(20);
+      getDescriptor().getMessageTypes().get(26);
     internal_static_buf_validate_conformance_cases_Proto2OneofIgnoreEmpty_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_Proto2OneofIgnoreEmpty_descriptor,
         new java.lang.String[] { "Val", "O", });
     internal_static_buf_validate_conformance_cases_Proto2OneofIgnoreEmptyWithDefault_descriptor =
-      getDescriptor().getMessageTypes().get(21);
+      getDescriptor().getMessageTypes().get(27);
     internal_static_buf_validate_conformance_cases_Proto2OneofIgnoreEmptyWithDefault_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_Proto2OneofIgnoreEmptyWithDefault_descriptor,
         new java.lang.String[] { "Val", "O", });
     internal_static_buf_validate_conformance_cases_Proto2OneofIgnoreDefault_descriptor =
-      getDescriptor().getMessageTypes().get(22);
+      getDescriptor().getMessageTypes().get(28);
     internal_static_buf_validate_conformance_cases_Proto2OneofIgnoreDefault_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_Proto2OneofIgnoreDefault_descriptor,
         new java.lang.String[] { "Val", "O", });
     internal_static_buf_validate_conformance_cases_Proto2OneofIgnoreDefaultWithDefault_descriptor =
-      getDescriptor().getMessageTypes().get(23);
+      getDescriptor().getMessageTypes().get(29);
     internal_static_buf_validate_conformance_cases_Proto2OneofIgnoreDefaultWithDefault_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_Proto2OneofIgnoreDefaultWithDefault_descriptor,
         new java.lang.String[] { "Val", "O", });
+    internal_static_buf_validate_conformance_cases_Proto2OneofIgnoreAlways_descriptor =
+      getDescriptor().getMessageTypes().get(30);
+    internal_static_buf_validate_conformance_cases_Proto2OneofIgnoreAlways_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_buf_validate_conformance_cases_Proto2OneofIgnoreAlways_descriptor,
+        new java.lang.String[] { "Val", "O", });
+    internal_static_buf_validate_conformance_cases_Proto2OneofIgnoreAlwaysWithDefault_descriptor =
+      getDescriptor().getMessageTypes().get(31);
+    internal_static_buf_validate_conformance_cases_Proto2OneofIgnoreAlwaysWithDefault_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_buf_validate_conformance_cases_Proto2OneofIgnoreAlwaysWithDefault_descriptor,
+        new java.lang.String[] { "Val", "O", });
     internal_static_buf_validate_conformance_cases_Proto2RepeatedIgnoreUnspecified_descriptor =
-      getDescriptor().getMessageTypes().get(24);
+      getDescriptor().getMessageTypes().get(32);
     internal_static_buf_validate_conformance_cases_Proto2RepeatedIgnoreUnspecified_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_Proto2RepeatedIgnoreUnspecified_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_Proto2RepeatedIgnoreEmpty_descriptor =
-      getDescriptor().getMessageTypes().get(25);
+      getDescriptor().getMessageTypes().get(33);
     internal_static_buf_validate_conformance_cases_Proto2RepeatedIgnoreEmpty_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_Proto2RepeatedIgnoreEmpty_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_Proto2RepeatedIgnoreDefault_descriptor =
-      getDescriptor().getMessageTypes().get(26);
+      getDescriptor().getMessageTypes().get(34);
     internal_static_buf_validate_conformance_cases_Proto2RepeatedIgnoreDefault_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_Proto2RepeatedIgnoreDefault_descriptor,
         new java.lang.String[] { "Val", });
+    internal_static_buf_validate_conformance_cases_Proto2RepeatedIgnoreAlways_descriptor =
+      getDescriptor().getMessageTypes().get(35);
+    internal_static_buf_validate_conformance_cases_Proto2RepeatedIgnoreAlways_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_buf_validate_conformance_cases_Proto2RepeatedIgnoreAlways_descriptor,
+        new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_Proto2MapIgnoreUnspecified_descriptor =
-      getDescriptor().getMessageTypes().get(27);
+      getDescriptor().getMessageTypes().get(36);
     internal_static_buf_validate_conformance_cases_Proto2MapIgnoreUnspecified_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_Proto2MapIgnoreUnspecified_descriptor,
@@ -648,7 +844,7 @@ public final class IgnoreProto2Proto {
         internal_static_buf_validate_conformance_cases_Proto2MapIgnoreUnspecified_ValEntry_descriptor,
         new java.lang.String[] { "Key", "Value", });
     internal_static_buf_validate_conformance_cases_Proto2MapIgnoreEmpty_descriptor =
-      getDescriptor().getMessageTypes().get(28);
+      getDescriptor().getMessageTypes().get(37);
     internal_static_buf_validate_conformance_cases_Proto2MapIgnoreEmpty_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_Proto2MapIgnoreEmpty_descriptor,
@@ -660,7 +856,7 @@ public final class IgnoreProto2Proto {
         internal_static_buf_validate_conformance_cases_Proto2MapIgnoreEmpty_ValEntry_descriptor,
         new java.lang.String[] { "Key", "Value", });
     internal_static_buf_validate_conformance_cases_Proto2MapIgnoreDefault_descriptor =
-      getDescriptor().getMessageTypes().get(29);
+      getDescriptor().getMessageTypes().get(38);
     internal_static_buf_validate_conformance_cases_Proto2MapIgnoreDefault_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_Proto2MapIgnoreDefault_descriptor,
@@ -671,26 +867,44 @@ public final class IgnoreProto2Proto {
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_Proto2MapIgnoreDefault_ValEntry_descriptor,
         new java.lang.String[] { "Key", "Value", });
+    internal_static_buf_validate_conformance_cases_Proto2MapIgnoreAlways_descriptor =
+      getDescriptor().getMessageTypes().get(39);
+    internal_static_buf_validate_conformance_cases_Proto2MapIgnoreAlways_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_buf_validate_conformance_cases_Proto2MapIgnoreAlways_descriptor,
+        new java.lang.String[] { "Val", });
+    internal_static_buf_validate_conformance_cases_Proto2MapIgnoreAlways_ValEntry_descriptor =
+      internal_static_buf_validate_conformance_cases_Proto2MapIgnoreAlways_descriptor.getNestedTypes().get(0);
+    internal_static_buf_validate_conformance_cases_Proto2MapIgnoreAlways_ValEntry_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_buf_validate_conformance_cases_Proto2MapIgnoreAlways_ValEntry_descriptor,
+        new java.lang.String[] { "Key", "Value", });
     internal_static_buf_validate_conformance_cases_Proto2RepeatedItemIgnoreUnspecified_descriptor =
-      getDescriptor().getMessageTypes().get(30);
+      getDescriptor().getMessageTypes().get(40);
     internal_static_buf_validate_conformance_cases_Proto2RepeatedItemIgnoreUnspecified_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_Proto2RepeatedItemIgnoreUnspecified_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_Proto2RepeatedItemIgnoreEmpty_descriptor =
-      getDescriptor().getMessageTypes().get(31);
+      getDescriptor().getMessageTypes().get(41);
     internal_static_buf_validate_conformance_cases_Proto2RepeatedItemIgnoreEmpty_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_Proto2RepeatedItemIgnoreEmpty_descriptor,
         new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_Proto2RepeatedItemIgnoreDefault_descriptor =
-      getDescriptor().getMessageTypes().get(32);
+      getDescriptor().getMessageTypes().get(42);
     internal_static_buf_validate_conformance_cases_Proto2RepeatedItemIgnoreDefault_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_Proto2RepeatedItemIgnoreDefault_descriptor,
         new java.lang.String[] { "Val", });
+    internal_static_buf_validate_conformance_cases_Proto2RepeatedItemIgnoreAlways_descriptor =
+      getDescriptor().getMessageTypes().get(43);
+    internal_static_buf_validate_conformance_cases_Proto2RepeatedItemIgnoreAlways_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_buf_validate_conformance_cases_Proto2RepeatedItemIgnoreAlways_descriptor,
+        new java.lang.String[] { "Val", });
     internal_static_buf_validate_conformance_cases_Proto2MapKeyIgnoreUnspecified_descriptor =
-      getDescriptor().getMessageTypes().get(33);
+      getDescriptor().getMessageTypes().get(44);
     internal_static_buf_validate_conformance_cases_Proto2MapKeyIgnoreUnspecified_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_Proto2MapKeyIgnoreUnspecified_descriptor,
@@ -702,7 +916,7 @@ public final class IgnoreProto2Proto {
         internal_static_buf_validate_conformance_cases_Proto2MapKeyIgnoreUnspecified_ValEntry_descriptor,
         new java.lang.String[] { "Key", "Value", });
     internal_static_buf_validate_conformance_cases_Proto2MapKeyIgnoreEmpty_descriptor =
-      getDescriptor().getMessageTypes().get(34);
+      getDescriptor().getMessageTypes().get(45);
     internal_static_buf_validate_conformance_cases_Proto2MapKeyIgnoreEmpty_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_Proto2MapKeyIgnoreEmpty_descriptor,
@@ -714,7 +928,7 @@ public final class IgnoreProto2Proto {
         internal_static_buf_validate_conformance_cases_Proto2MapKeyIgnoreEmpty_ValEntry_descriptor,
         new java.lang.String[] { "Key", "Value", });
     internal_static_buf_validate_conformance_cases_Proto2MapKeyIgnoreDefault_descriptor =
-      getDescriptor().getMessageTypes().get(35);
+      getDescriptor().getMessageTypes().get(46);
     internal_static_buf_validate_conformance_cases_Proto2MapKeyIgnoreDefault_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_Proto2MapKeyIgnoreDefault_descriptor,
@@ -725,8 +939,20 @@ public final class IgnoreProto2Proto {
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_Proto2MapKeyIgnoreDefault_ValEntry_descriptor,
         new java.lang.String[] { "Key", "Value", });
+    internal_static_buf_validate_conformance_cases_Proto2MapKeyIgnoreAlways_descriptor =
+      getDescriptor().getMessageTypes().get(47);
+    internal_static_buf_validate_conformance_cases_Proto2MapKeyIgnoreAlways_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_buf_validate_conformance_cases_Proto2MapKeyIgnoreAlways_descriptor,
+        new java.lang.String[] { "Val", });
+    internal_static_buf_validate_conformance_cases_Proto2MapKeyIgnoreAlways_ValEntry_descriptor =
+      internal_static_buf_validate_conformance_cases_Proto2MapKeyIgnoreAlways_descriptor.getNestedTypes().get(0);
+    internal_static_buf_validate_conformance_cases_Proto2MapKeyIgnoreAlways_ValEntry_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_buf_validate_conformance_cases_Proto2MapKeyIgnoreAlways_ValEntry_descriptor,
+        new java.lang.String[] { "Key", "Value", });
     internal_static_buf_validate_conformance_cases_Proto2MapValueIgnoreUnspecified_descriptor =
-      getDescriptor().getMessageTypes().get(36);
+      getDescriptor().getMessageTypes().get(48);
     internal_static_buf_validate_conformance_cases_Proto2MapValueIgnoreUnspecified_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_Proto2MapValueIgnoreUnspecified_descriptor,
@@ -738,7 +964,7 @@ public final class IgnoreProto2Proto {
         internal_static_buf_validate_conformance_cases_Proto2MapValueIgnoreUnspecified_ValEntry_descriptor,
         new java.lang.String[] { "Key", "Value", });
     internal_static_buf_validate_conformance_cases_Proto2MapValueIgnoreEmpty_descriptor =
-      getDescriptor().getMessageTypes().get(37);
+      getDescriptor().getMessageTypes().get(49);
     internal_static_buf_validate_conformance_cases_Proto2MapValueIgnoreEmpty_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_Proto2MapValueIgnoreEmpty_descriptor,
@@ -750,7 +976,7 @@ public final class IgnoreProto2Proto {
         internal_static_buf_validate_conformance_cases_Proto2MapValueIgnoreEmpty_ValEntry_descriptor,
         new java.lang.String[] { "Key", "Value", });
     internal_static_buf_validate_conformance_cases_Proto2MapValueIgnoreDefault_descriptor =
-      getDescriptor().getMessageTypes().get(38);
+      getDescriptor().getMessageTypes().get(50);
     internal_static_buf_validate_conformance_cases_Proto2MapValueIgnoreDefault_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_Proto2MapValueIgnoreDefault_descriptor,
@@ -760,6 +986,18 @@ public final class IgnoreProto2Proto {
     internal_static_buf_validate_conformance_cases_Proto2MapValueIgnoreDefault_ValEntry_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_buf_validate_conformance_cases_Proto2MapValueIgnoreDefault_ValEntry_descriptor,
+        new java.lang.String[] { "Key", "Value", });
+    internal_static_buf_validate_conformance_cases_Proto2MapValueIgnoreAlways_descriptor =
+      getDescriptor().getMessageTypes().get(51);
+    internal_static_buf_validate_conformance_cases_Proto2MapValueIgnoreAlways_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_buf_validate_conformance_cases_Proto2MapValueIgnoreAlways_descriptor,
+        new java.lang.String[] { "Val", });
+    internal_static_buf_validate_conformance_cases_Proto2MapValueIgnoreAlways_ValEntry_descriptor =
+      internal_static_buf_validate_conformance_cases_Proto2MapValueIgnoreAlways_descriptor.getNestedTypes().get(0);
+    internal_static_buf_validate_conformance_cases_Proto2MapValueIgnoreAlways_ValEntry_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_buf_validate_conformance_cases_Proto2MapValueIgnoreAlways_ValEntry_descriptor,
         new java.lang.String[] { "Key", "Value", });
     descriptor.resolveAllFeaturesImmutable();
     build.buf.validate.ValidateProto.getDescriptor();

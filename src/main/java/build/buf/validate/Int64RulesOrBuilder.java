@@ -234,7 +234,7 @@ public interface Int64RulesOrBuilder extends
    * ```proto
    * message MyInt64 {
    * // value must be in list [1, 2, 3]
-   * repeated int64 value = 1 (buf.validate.field).int64 = { in: [1, 2, 3] };
+   * int64 value = 1 [(buf.validate.field).int64 = { in: [1, 2, 3] }];
    * }
    * ```
    * </pre>
@@ -252,7 +252,7 @@ public interface Int64RulesOrBuilder extends
    * ```proto
    * message MyInt64 {
    * // value must be in list [1, 2, 3]
-   * repeated int64 value = 1 (buf.validate.field).int64 = { in: [1, 2, 3] };
+   * int64 value = 1 [(buf.validate.field).int64 = { in: [1, 2, 3] }];
    * }
    * ```
    * </pre>
@@ -270,7 +270,7 @@ public interface Int64RulesOrBuilder extends
    * ```proto
    * message MyInt64 {
    * // value must be in list [1, 2, 3]
-   * repeated int64 value = 1 (buf.validate.field).int64 = { in: [1, 2, 3] };
+   * int64 value = 1 [(buf.validate.field).int64 = { in: [1, 2, 3] }];
    * }
    * ```
    * </pre>
@@ -290,7 +290,7 @@ public interface Int64RulesOrBuilder extends
    * ```proto
    * message MyInt64 {
    * // value must not be in list [1, 2, 3]
-   * repeated int64 value = 1 (buf.validate.field).int64 = { not_in: [1, 2, 3] };
+   * int64 value = 1 [(buf.validate.field).int64 = { not_in: [1, 2, 3] }];
    * }
    * ```
    * </pre>
@@ -308,7 +308,7 @@ public interface Int64RulesOrBuilder extends
    * ```proto
    * message MyInt64 {
    * // value must not be in list [1, 2, 3]
-   * repeated int64 value = 1 (buf.validate.field).int64 = { not_in: [1, 2, 3] };
+   * int64 value = 1 [(buf.validate.field).int64 = { not_in: [1, 2, 3] }];
    * }
    * ```
    * </pre>
@@ -326,7 +326,7 @@ public interface Int64RulesOrBuilder extends
    * ```proto
    * message MyInt64 {
    * // value must not be in list [1, 2, 3]
-   * repeated int64 value = 1 (buf.validate.field).int64 = { not_in: [1, 2, 3] };
+   * int64 value = 1 [(buf.validate.field).int64 = { not_in: [1, 2, 3] }];
    * }
    * ```
    * </pre>
