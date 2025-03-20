@@ -234,7 +234,7 @@ public interface FloatRulesOrBuilder extends
    * ```proto
    * message MyFloat {
    * // value must be in list [1.0, 2.0, 3.0]
-   * repeated float value = 1 (buf.validate.field).float = { in: [1.0, 2.0, 3.0] };
+   * float value = 1 [(buf.validate.field).float = { in: [1.0, 2.0, 3.0] }];
    * }
    * ```
    * </pre>
@@ -252,7 +252,7 @@ public interface FloatRulesOrBuilder extends
    * ```proto
    * message MyFloat {
    * // value must be in list [1.0, 2.0, 3.0]
-   * repeated float value = 1 (buf.validate.field).float = { in: [1.0, 2.0, 3.0] };
+   * float value = 1 [(buf.validate.field).float = { in: [1.0, 2.0, 3.0] }];
    * }
    * ```
    * </pre>
@@ -270,7 +270,7 @@ public interface FloatRulesOrBuilder extends
    * ```proto
    * message MyFloat {
    * // value must be in list [1.0, 2.0, 3.0]
-   * repeated float value = 1 (buf.validate.field).float = { in: [1.0, 2.0, 3.0] };
+   * float value = 1 [(buf.validate.field).float = { in: [1.0, 2.0, 3.0] }];
    * }
    * ```
    * </pre>
@@ -290,7 +290,7 @@ public interface FloatRulesOrBuilder extends
    * ```proto
    * message MyFloat {
    * // value must not be in list [1.0, 2.0, 3.0]
-   * repeated float value = 1 (buf.validate.field).float = { not_in: [1.0, 2.0, 3.0] };
+   * float value = 1 [(buf.validate.field).float = { not_in: [1.0, 2.0, 3.0] }];
    * }
    * ```
    * </pre>
@@ -308,7 +308,7 @@ public interface FloatRulesOrBuilder extends
    * ```proto
    * message MyFloat {
    * // value must not be in list [1.0, 2.0, 3.0]
-   * repeated float value = 1 (buf.validate.field).float = { not_in: [1.0, 2.0, 3.0] };
+   * float value = 1 [(buf.validate.field).float = { not_in: [1.0, 2.0, 3.0] }];
    * }
    * ```
    * </pre>
@@ -326,7 +326,7 @@ public interface FloatRulesOrBuilder extends
    * ```proto
    * message MyFloat {
    * // value must not be in list [1.0, 2.0, 3.0]
-   * repeated float value = 1 (buf.validate.field).float = { not_in: [1.0, 2.0, 3.0] };
+   * float value = 1 [(buf.validate.field).float = { not_in: [1.0, 2.0, 3.0] }];
    * }
    * ```
    * </pre>

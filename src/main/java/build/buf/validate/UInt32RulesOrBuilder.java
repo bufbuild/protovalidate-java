@@ -234,7 +234,7 @@ public interface UInt32RulesOrBuilder extends
    * ```proto
    * message MyUInt32 {
    * // value must be in list [1, 2, 3]
-   * repeated uint32 value = 1 (buf.validate.field).uint32 = { in: [1, 2, 3] };
+   * uint32 value = 1 [(buf.validate.field).uint32 = { in: [1, 2, 3] }];
    * }
    * ```
    * </pre>
@@ -252,7 +252,7 @@ public interface UInt32RulesOrBuilder extends
    * ```proto
    * message MyUInt32 {
    * // value must be in list [1, 2, 3]
-   * repeated uint32 value = 1 (buf.validate.field).uint32 = { in: [1, 2, 3] };
+   * uint32 value = 1 [(buf.validate.field).uint32 = { in: [1, 2, 3] }];
    * }
    * ```
    * </pre>
@@ -270,7 +270,7 @@ public interface UInt32RulesOrBuilder extends
    * ```proto
    * message MyUInt32 {
    * // value must be in list [1, 2, 3]
-   * repeated uint32 value = 1 (buf.validate.field).uint32 = { in: [1, 2, 3] };
+   * uint32 value = 1 [(buf.validate.field).uint32 = { in: [1, 2, 3] }];
    * }
    * ```
    * </pre>
@@ -290,7 +290,7 @@ public interface UInt32RulesOrBuilder extends
    * ```proto
    * message MyUInt32 {
    * // value must not be in list [1, 2, 3]
-   * repeated uint32 value = 1 (buf.validate.field).uint32 = { not_in: [1, 2, 3] };
+   * uint32 value = 1 [(buf.validate.field).uint32 = { not_in: [1, 2, 3] }];
    * }
    * ```
    * </pre>
@@ -308,7 +308,7 @@ public interface UInt32RulesOrBuilder extends
    * ```proto
    * message MyUInt32 {
    * // value must not be in list [1, 2, 3]
-   * repeated uint32 value = 1 (buf.validate.field).uint32 = { not_in: [1, 2, 3] };
+   * uint32 value = 1 [(buf.validate.field).uint32 = { not_in: [1, 2, 3] }];
    * }
    * ```
    * </pre>
@@ -326,7 +326,7 @@ public interface UInt32RulesOrBuilder extends
    * ```proto
    * message MyUInt32 {
    * // value must not be in list [1, 2, 3]
-   * repeated uint32 value = 1 (buf.validate.field).uint32 = { not_in: [1, 2, 3] };
+   * uint32 value = 1 [(buf.validate.field).uint32 = { not_in: [1, 2, 3] }];
    * }
    * ```
    * </pre>

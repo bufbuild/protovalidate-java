@@ -412,7 +412,7 @@ private static final long serialVersionUID = 0L;
    * ```proto
    * message MyDouble {
    * // value must be in list [1.0, 2.0, 3.0]
-   * repeated double value = 1 (buf.validate.field).double = { in: [1.0, 2.0, 3.0] };
+   * double value = 1 [(buf.validate.field).double = { in: [1.0, 2.0, 3.0] }];
    * }
    * ```
    * </pre>
@@ -434,7 +434,7 @@ private static final long serialVersionUID = 0L;
    * ```proto
    * message MyDouble {
    * // value must be in list [1.0, 2.0, 3.0]
-   * repeated double value = 1 (buf.validate.field).double = { in: [1.0, 2.0, 3.0] };
+   * double value = 1 [(buf.validate.field).double = { in: [1.0, 2.0, 3.0] }];
    * }
    * ```
    * </pre>
@@ -454,7 +454,7 @@ private static final long serialVersionUID = 0L;
    * ```proto
    * message MyDouble {
    * // value must be in list [1.0, 2.0, 3.0]
-   * repeated double value = 1 (buf.validate.field).double = { in: [1.0, 2.0, 3.0] };
+   * double value = 1 [(buf.validate.field).double = { in: [1.0, 2.0, 3.0] }];
    * }
    * ```
    * </pre>
@@ -480,7 +480,7 @@ private static final long serialVersionUID = 0L;
    * ```proto
    * message MyDouble {
    * // value must not be in list [1.0, 2.0, 3.0]
-   * repeated double value = 1 (buf.validate.field).double = { not_in: [1.0, 2.0, 3.0] };
+   * double value = 1 [(buf.validate.field).double = { not_in: [1.0, 2.0, 3.0] }];
    * }
    * ```
    * </pre>
@@ -502,7 +502,7 @@ private static final long serialVersionUID = 0L;
    * ```proto
    * message MyDouble {
    * // value must not be in list [1.0, 2.0, 3.0]
-   * repeated double value = 1 (buf.validate.field).double = { not_in: [1.0, 2.0, 3.0] };
+   * double value = 1 [(buf.validate.field).double = { not_in: [1.0, 2.0, 3.0] }];
    * }
    * ```
    * </pre>
@@ -522,7 +522,7 @@ private static final long serialVersionUID = 0L;
    * ```proto
    * message MyDouble {
    * // value must not be in list [1.0, 2.0, 3.0]
-   * repeated double value = 1 (buf.validate.field).double = { not_in: [1.0, 2.0, 3.0] };
+   * double value = 1 [(buf.validate.field).double = { not_in: [1.0, 2.0, 3.0] }];
    * }
    * ```
    * </pre>
@@ -1869,7 +1869,7 @@ private static final long serialVersionUID = 0L;
      * ```proto
      * message MyDouble {
      * // value must be in list [1.0, 2.0, 3.0]
-     * repeated double value = 1 (buf.validate.field).double = { in: [1.0, 2.0, 3.0] };
+     * double value = 1 [(buf.validate.field).double = { in: [1.0, 2.0, 3.0] }];
      * }
      * ```
      * </pre>
@@ -1891,7 +1891,7 @@ private static final long serialVersionUID = 0L;
      * ```proto
      * message MyDouble {
      * // value must be in list [1.0, 2.0, 3.0]
-     * repeated double value = 1 (buf.validate.field).double = { in: [1.0, 2.0, 3.0] };
+     * double value = 1 [(buf.validate.field).double = { in: [1.0, 2.0, 3.0] }];
      * }
      * ```
      * </pre>
@@ -1911,7 +1911,7 @@ private static final long serialVersionUID = 0L;
      * ```proto
      * message MyDouble {
      * // value must be in list [1.0, 2.0, 3.0]
-     * repeated double value = 1 (buf.validate.field).double = { in: [1.0, 2.0, 3.0] };
+     * double value = 1 [(buf.validate.field).double = { in: [1.0, 2.0, 3.0] }];
      * }
      * ```
      * </pre>
@@ -1932,7 +1932,7 @@ private static final long serialVersionUID = 0L;
      * ```proto
      * message MyDouble {
      * // value must be in list [1.0, 2.0, 3.0]
-     * repeated double value = 1 (buf.validate.field).double = { in: [1.0, 2.0, 3.0] };
+     * double value = 1 [(buf.validate.field).double = { in: [1.0, 2.0, 3.0] }];
      * }
      * ```
      * </pre>
@@ -1960,7 +1960,7 @@ private static final long serialVersionUID = 0L;
      * ```proto
      * message MyDouble {
      * // value must be in list [1.0, 2.0, 3.0]
-     * repeated double value = 1 (buf.validate.field).double = { in: [1.0, 2.0, 3.0] };
+     * double value = 1 [(buf.validate.field).double = { in: [1.0, 2.0, 3.0] }];
      * }
      * ```
      * </pre>
@@ -1986,7 +1986,7 @@ private static final long serialVersionUID = 0L;
      * ```proto
      * message MyDouble {
      * // value must be in list [1.0, 2.0, 3.0]
-     * repeated double value = 1 (buf.validate.field).double = { in: [1.0, 2.0, 3.0] };
+     * double value = 1 [(buf.validate.field).double = { in: [1.0, 2.0, 3.0] }];
      * }
      * ```
      * </pre>
@@ -2013,7 +2013,7 @@ private static final long serialVersionUID = 0L;
      * ```proto
      * message MyDouble {
      * // value must be in list [1.0, 2.0, 3.0]
-     * repeated double value = 1 (buf.validate.field).double = { in: [1.0, 2.0, 3.0] };
+     * double value = 1 [(buf.validate.field).double = { in: [1.0, 2.0, 3.0] }];
      * }
      * ```
      * </pre>
@@ -2050,7 +2050,7 @@ private static final long serialVersionUID = 0L;
      * ```proto
      * message MyDouble {
      * // value must not be in list [1.0, 2.0, 3.0]
-     * repeated double value = 1 (buf.validate.field).double = { not_in: [1.0, 2.0, 3.0] };
+     * double value = 1 [(buf.validate.field).double = { not_in: [1.0, 2.0, 3.0] }];
      * }
      * ```
      * </pre>
@@ -2072,7 +2072,7 @@ private static final long serialVersionUID = 0L;
      * ```proto
      * message MyDouble {
      * // value must not be in list [1.0, 2.0, 3.0]
-     * repeated double value = 1 (buf.validate.field).double = { not_in: [1.0, 2.0, 3.0] };
+     * double value = 1 [(buf.validate.field).double = { not_in: [1.0, 2.0, 3.0] }];
      * }
      * ```
      * </pre>
@@ -2092,7 +2092,7 @@ private static final long serialVersionUID = 0L;
      * ```proto
      * message MyDouble {
      * // value must not be in list [1.0, 2.0, 3.0]
-     * repeated double value = 1 (buf.validate.field).double = { not_in: [1.0, 2.0, 3.0] };
+     * double value = 1 [(buf.validate.field).double = { not_in: [1.0, 2.0, 3.0] }];
      * }
      * ```
      * </pre>
@@ -2113,7 +2113,7 @@ private static final long serialVersionUID = 0L;
      * ```proto
      * message MyDouble {
      * // value must not be in list [1.0, 2.0, 3.0]
-     * repeated double value = 1 (buf.validate.field).double = { not_in: [1.0, 2.0, 3.0] };
+     * double value = 1 [(buf.validate.field).double = { not_in: [1.0, 2.0, 3.0] }];
      * }
      * ```
      * </pre>
@@ -2141,7 +2141,7 @@ private static final long serialVersionUID = 0L;
      * ```proto
      * message MyDouble {
      * // value must not be in list [1.0, 2.0, 3.0]
-     * repeated double value = 1 (buf.validate.field).double = { not_in: [1.0, 2.0, 3.0] };
+     * double value = 1 [(buf.validate.field).double = { not_in: [1.0, 2.0, 3.0] }];
      * }
      * ```
      * </pre>
@@ -2167,7 +2167,7 @@ private static final long serialVersionUID = 0L;
      * ```proto
      * message MyDouble {
      * // value must not be in list [1.0, 2.0, 3.0]
-     * repeated double value = 1 (buf.validate.field).double = { not_in: [1.0, 2.0, 3.0] };
+     * double value = 1 [(buf.validate.field).double = { not_in: [1.0, 2.0, 3.0] }];
      * }
      * ```
      * </pre>
@@ -2194,7 +2194,7 @@ private static final long serialVersionUID = 0L;
      * ```proto
      * message MyDouble {
      * // value must not be in list [1.0, 2.0, 3.0]
-     * repeated double value = 1 (buf.validate.field).double = { not_in: [1.0, 2.0, 3.0] };
+     * double value = 1 [(buf.validate.field).double = { not_in: [1.0, 2.0, 3.0] }];
      * }
      * ```
      * </pre>

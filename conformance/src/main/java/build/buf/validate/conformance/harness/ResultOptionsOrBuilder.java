@@ -61,16 +61,6 @@ public interface ResultOptionsOrBuilder extends
 
   /**
    * <pre>
-   * If the violation type must be an exact match.
-   * </pre>
-   *
-   * <code>bool strict = 4 [json_name = "strict"];</code>
-   * @return The strict.
-   */
-  boolean getStrict();
-
-  /**
-   * <pre>
    * If the violation message must be an exact match.
    * </pre>
    *
