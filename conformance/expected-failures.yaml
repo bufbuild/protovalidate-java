@@ -107,46 +107,6 @@ custom_constraints:
   #ERROR: <input>:1:1: expression of type 'int' cannot be range of a comprehension (must be list, map, or dynamic)
   # | this.all(e, e == 1)
   # | ^
-library/is_email:
-  - invalid/non_ascii
-  #       input: [type.googleapis.com/buf.validate.conformance.cases.IsEmail]:{val:"µ@example.com"}
-  #        want: validation error (1 violation)
-  #          1. constraint_id: "library.is_email"
-  #         got: valid
-  - invalid/quoted-string/a
-  #       input: [type.googleapis.com/buf.validate.conformance.cases.IsEmail]:{val:"\"foo bar\"@example.com"}
-  #        want: validation error (1 violation)
-  #          1. constraint_id: "library.is_email"
-  #         got: valid
-  - invalid/quoted-string/b
-  #       input: [type.googleapis.com/buf.validate.conformance.cases.IsEmail]:{val:"\"foo..bar\"@example.com"}
-  #        want: validation error (1 violation)
-  #          1. constraint_id: "library.is_email"
-  #         got: valid
-  - valid/empty_atext
-  #       input: [type.googleapis.com/buf.validate.conformance.cases.IsEmail]:{val:".@example.com"}
-  #        want: valid
-  #         got: validation error (1 violation)
-  #          1. constraint_id: "library.is_email"
-  #             message: ""
-  - valid/exhaust_atext
-  #       input: [type.googleapis.com/buf.validate.conformance.cases.IsEmail]:{val:"0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!#$%&'*+-/=?^_`{|}~@example.com"}
-  #        want: valid
-  #         got: validation error (1 violation)
-  #          1. constraint_id: "library.is_email"
-  #             message: ""
-  - valid/label_all_digits
-  #       input: [type.googleapis.com/buf.validate.conformance.cases.IsEmail]:{val:"foo@0.1.2.3.4.5.6.7.8.9"}
-  #        want: valid
-  #         got: validation error (1 violation)
-  #          1. constraint_id: "library.is_email"
-  #             message: ""
-  - valid/multiple_empty_atext
-  #       input: [type.googleapis.com/buf.validate.conformance.cases.IsEmail]:{val:"...@example.com"}
-  #        want: valid
-  #         got: validation error (1 violation)
-  #          1. constraint_id: "library.is_email"
-  #             message: ""
 library/is_host_and_port:
   - port_required/false/invalid/ipv6_zone-id_too_short
   #       input: [type.googleapis.com/buf.validate.conformance.cases.IsHostAndPort]:{val:"[::1%]"}
