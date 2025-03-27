@@ -27,7 +27,6 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.HashSet;
 import java.util.Set;
-import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import org.projectnessie.cel.common.types.BoolT;
 import org.projectnessie.cel.common.types.Err;
@@ -529,9 +528,7 @@ final class CustomOverload {
    * @return {@code true} if the input string is a valid email address, {@code false} otherwise.
    */
   private static boolean validateEmail(String addr) {
-    Matcher m = EMAIL_REGEX.matcher(addr);
-
-    return m.matches();
+    return EMAIL_REGEX.matcher(addr).matches();
   }
 
   /**
