@@ -20,8 +20,6 @@ import com.google.common.net.InetAddresses;
 import com.google.common.primitives.Bytes;
 import inet.ipaddr.IPAddress;
 import inet.ipaddr.IPAddressString;
-import jakarta.mail.internet.AddressException;
-import jakarta.mail.internet.InternetAddress;
 import java.net.Inet4Address;
 import java.net.Inet6Address;
 import java.net.InetAddress;
@@ -29,6 +27,7 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.regex.Pattern;
 import org.projectnessie.cel.common.types.BoolT;
 import org.projectnessie.cel.common.types.Err;
 import org.projectnessie.cel.common.types.IntT;
@@ -57,6 +56,11 @@ final class CustomOverload {
   private static final String OVERLOAD_IS_NAN = "isNan";
   private static final String OVERLOAD_IS_INF = "isInf";
   private static final String OVERLOAD_IS_HOST_AND_PORT = "isHostAndPort";
+
+  // See https://html.spec.whatwg.org/multipage/input.html#valid-e-mail-address
+  private static final Pattern EMAIL_REGEX =
+      Pattern.compile(
+          "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$");
 
   /**
    * Create custom function overload list.
@@ -514,27 +518,17 @@ final class CustomOverload {
   }
 
   /**
-   * Validates if the input string is a valid email address.
+   * validateEmail returns true if addr is a valid email address.
+   *
+   * <p>This regex conforms to the definition for a valid email address from the HTML standard. Note
+   * that this standard willfully deviates from RFC 5322, which allows many unexpected forms of
+   * email addresses and will easily match a typographical error.
    *
    * @param addr The input string to validate as an email address.
    * @return {@code true} if the input string is a valid email address, {@code false} otherwise.
    */
   private static boolean validateEmail(String addr) {
-    try {
-      InternetAddress emailAddr = new InternetAddress(addr);
-      emailAddr.validate();
-      if (addr.contains("<") || !emailAddr.getAddress().equals(addr)) {
-        return false;
-      }
-      addr = emailAddr.getAddress();
-      if (addr.length() > 254) {
-        return false;
-      }
-      String[] parts = addr.split("@", 2);
-      return parts[0].length() < 64 && validateHostname(parts[1]);
-    } catch (AddressException ex) {
-      return false;
-    }
+    return EMAIL_REGEX.matcher(addr).matches();
   }
 
   /**
