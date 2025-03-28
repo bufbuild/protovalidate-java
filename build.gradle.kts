@@ -272,7 +272,6 @@ dependencies {
     implementation(libs.cel.core)
     implementation(libs.guava)
     implementation(libs.ipaddress)
-    implementation(libs.jakarta.mail.api)
 
     buf("build.buf:buf:${libs.versions.buf.get()}:${osdetector.classifier}@exe")
 
