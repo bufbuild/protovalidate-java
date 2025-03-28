@@ -1,29 +1,29 @@
 [versions]
 assertj = "3.27.3"
-buf = "1.50.0"
+buf = "1.50.1"
 cel = "0.5.1"
 ipaddress = "5.5.1"
-junit = "5.12.0"
-maven-publish = "0.30.0"
+junit = "5.12.1"
+maven-publish = "0.31.0"
 # When updating, make sure to update versions in the following files to match and regenerate code with 'make generate'.
 # - buf.gen.yaml
 # - conformance/buf.gen.yaml
 # - src/test/resources/proto/buf.gen.imports.yaml
 # - src/test/resources/proto/buf.gen.noimports.yaml
-protobuf = "4.29.3"
+protobuf = "4.30.1"
 
 [libraries]
 assertj = { module = "org.assertj:assertj-core", version.ref = "assertj" }
 buf = { module = "build.buf:buf", version.ref = "buf" }
 cel = { module = "org.projectnessie.cel:cel-bom", version.ref = "cel" }
 cel-core = { module = "org.projectnessie.cel:cel-core" }
-errorprone = { module = "com.google.errorprone:error_prone_core", version = "2.36.0" }
+errorprone = { module = "com.google.errorprone:error_prone_core", version = "2.37.0" }
 guava = { module = "com.google.guava:guava", version = "33.4.0-jre" }
 ipaddress = { module = "com.github.seancfoley:ipaddress", version.ref = "ipaddress" }
 jakarta-mail-api = { module = "jakarta.mail:jakarta.mail-api", version = "2.1.3" }
 junit-bom = { module = "org.junit:junit-bom", version.ref = "junit" }
 maven-plugin = { module = "com.vanniktech:gradle-maven-publish-plugin", version.ref = "maven-publish" }
-nullaway = { module = "com.uber.nullaway:nullaway", version = "0.12.3" }
+nullaway = { module = "com.uber.nullaway:nullaway", version = "0.12.4" }
 protobuf-java = { module = "com.google.protobuf:protobuf-java", version.ref = "protobuf" }
 spotless = { module = "com.diffplug.spotless:spotless-plugin-gradle", version = "7.0.2" }
 

@@ -270,7 +270,7 @@ class EvaluatorBuilder {
         FieldConstraints fieldConstraints,
         ValueEvaluator valueEvaluatorEval)
         throws CompilationException {
-      if (valueEvaluatorEval.getNestedRule() != null && shouldIgnoreEmpty(fieldConstraints)) {
+      if (valueEvaluatorEval.hasNestedRule() && shouldIgnoreEmpty(fieldConstraints)) {
         valueEvaluatorEval.setIgnoreEmpty(zeroValue(fieldDescriptor, true));
       }
     }
@@ -348,7 +348,8 @@ class EvaluatorBuilder {
                   EnvOption.declarations(
                       Decls.newVar(
                           Variable.THIS_NAME,
-                          Decls.newObjectType(fieldDescriptor.getMessageType().getFullName()))));
+                          DescriptorMappings.getCELType(
+                              fieldDescriptor, valueEvaluatorEval.hasNestedRule()))));
         } catch (InvalidProtocolBufferException e) {
           throw new CompilationException("field descriptor type is invalid " + e.getMessage(), e);
         }
@@ -376,7 +377,7 @@ class EvaluatorBuilder {
       if (fieldDescriptor.getJavaType() != FieldDescriptor.JavaType.MESSAGE
           || shouldSkip(fieldConstraints)
           || fieldDescriptor.isMapField()
-          || (fieldDescriptor.isRepeated() && valueEvaluatorEval.getNestedRule() == null)) {
+          || (fieldDescriptor.isRepeated() && !valueEvaluatorEval.hasNestedRule())) {
         return;
       }
       Evaluator embedEval =
@@ -393,7 +394,7 @@ class EvaluatorBuilder {
       if (fieldDescriptor.getJavaType() != FieldDescriptor.JavaType.MESSAGE
           || shouldSkip(fieldConstraints)
           || fieldDescriptor.isMapField()
-          || (fieldDescriptor.isRepeated() && valueEvaluatorEval.getNestedRule() == null)) {
+          || (fieldDescriptor.isRepeated() && !valueEvaluatorEval.hasNestedRule())) {
         return;
       }
       FieldDescriptor expectedWrapperDescriptor =
@@ -418,7 +419,7 @@ class EvaluatorBuilder {
         throws CompilationException {
       List<CompiledProgram> compile =
           constraintCache.compile(
-              fieldDescriptor, fieldConstraints, valueEvaluatorEval.getNestedRule() != null);
+              fieldDescriptor, fieldConstraints, valueEvaluatorEval.hasNestedRule());
       if (compile.isEmpty()) {
         return;
       }
@@ -429,7 +430,7 @@ class EvaluatorBuilder {
         FieldDescriptor fieldDescriptor,
         FieldConstraints fieldConstraints,
         ValueEvaluator valueEvaluatorEval) {
-      if ((fieldDescriptor.isRepeated() && valueEvaluatorEval.getNestedRule() == null)
+      if ((fieldDescriptor.isRepeated() && !valueEvaluatorEval.hasNestedRule())
           || fieldDescriptor.getJavaType() != FieldDescriptor.JavaType.MESSAGE
           || !fieldDescriptor.getMessageType().getFullName().equals("google.protobuf.Any")) {
         return;
@@ -484,7 +485,7 @@ class EvaluatorBuilder {
         throws CompilationException {
       if (fieldDescriptor.isMapField()
           || !fieldDescriptor.isRepeated()
-          || valueEvaluatorEval.getNestedRule() != null) {
+          || valueEvaluatorEval.hasNestedRule()) {
         return;
       }
       ListEvaluator listEval = new ListEvaluator(valueEvaluatorEval);

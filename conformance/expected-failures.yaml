@@ -1,0 +1,1022 @@
+custom_constraints:
+  - field_expression/map/enum/invalid
+  #       input: [type.googleapis.com/buf.validate.conformance.cases.custom_constraints.FieldExpressionMapEnum]:{val:{key:4  value:ENUM_ONE}  val:{key:8  value:ENUM_UNSPECIFIED}  val:{key:12  value:ENUM_ONE}}
+  #        want: validation error (1 violation)
+  #          1. constraint_id: "field_expression.map.enum"
+  #             message: "test message field_expression.map.enum"
+  #             field: "val" elements:{field_number:1  field_name:"val"  field_type:TYPE_MESSAGE}
+  #             rule: "cel[0]" elements:{field_number:23  field_name:"cel"  field_type:TYPE_MESSAGE  index:0}
+  #         got: compilation err: Failed to compile expression field_expression.map.enum:
+  #ERROR: <input>:1:1: expression of type 'buf.validate.conformance.cases.custom_constraints.FieldExpressionMapEnum.ValEntry' cannot be range of a comprehension (must be list, map, or dynamic)
+  # | this.all(k, this[k] == 1)
+  # | ^
+  #ERROR: <input>:1:17: found no matching overload for '_[_]' applied to '(buf.validate.conformance.cases.custom_constraints.FieldExpressionMapEnum.ValEntry, !error!)'
+  # | this.all(k, this[k] == 1)
+  # | ................^
+  - field_expression/map/enum/valid
+  #       input: [type.googleapis.com/buf.validate.conformance.cases.custom_constraints.FieldExpressionMapEnum]:{val:{key:4  value:ENUM_ONE}  val:{key:8  value:ENUM_ONE}}
+  #        want: valid
+  #         got: compilation err: Failed to compile expression field_expression.map.enum:
+  #ERROR: <input>:1:1: expression of type 'buf.validate.conformance.cases.custom_constraints.FieldExpressionMapEnum.ValEntry' cannot be range of a comprehension (must be list, map, or dynamic)
+  # | this.all(k, this[k] == 1)
+  # | ^
+  #ERROR: <input>:1:17: found no matching overload for '_[_]' applied to '(buf.validate.conformance.cases.custom_constraints.FieldExpressionMapEnum.ValEntry, !error!)'
+  # | this.all(k, this[k] == 1)
+  # | ................^
+  - field_expression/map/message/invalid
+  #       input: [type.googleapis.com/buf.validate.conformance.cases.custom_constraints.FieldExpressionMapMessage]:{val:{key:4  value:{a:1}}  val:{key:8  value:{a:2}}  val:{key:12  value:{a:1}}}
+  #        want: validation error (1 violation)
+  #          1. constraint_id: "field_expression.map.message"
+  #             message: "test message field_expression.map.message"
+  #             field: "val" elements:{field_number:1  field_name:"val"  field_type:TYPE_MESSAGE}
+  #             rule: "cel[0]" elements:{field_number:23  field_name:"cel"  field_type:TYPE_MESSAGE  index:0}
+  #         got: compilation err: Failed to compile expression field_expression.map.message:
+  #ERROR: <input>:1:1: expression of type 'buf.validate.conformance.cases.custom_constraints.FieldExpressionMapMessage.ValEntry' cannot be range of a comprehension (must be list, map, or dynamic)
+  # | this.all(k, this[k].a == 1)
+  # | ^
+  #ERROR: <input>:1:17: found no matching overload for '_[_]' applied to '(buf.validate.conformance.cases.custom_constraints.FieldExpressionMapMessage.ValEntry, !error!)'
+  # | this.all(k, this[k].a == 1)
+  # | ................^
+  - field_expression/map/message/valid
+  #       input: [type.googleapis.com/buf.validate.conformance.cases.custom_constraints.FieldExpressionMapMessage]:{val:{key:4  value:{a:1}}  val:{key:8  value:{a:1}}}
+  #        want: valid
+  #         got: compilation err: Failed to compile expression field_expression.map.message:
+  #ERROR: <input>:1:1: expression of type 'buf.validate.conformance.cases.custom_constraints.FieldExpressionMapMessage.ValEntry' cannot be range of a comprehension (must be list, map, or dynamic)
+  # | this.all(k, this[k].a == 1)
+  # | ^
+  #ERROR: <input>:1:17: found no matching overload for '_[_]' applied to '(buf.validate.conformance.cases.custom_constraints.FieldExpressionMapMessage.ValEntry, !error!)'
+  # | this.all(k, this[k].a == 1)
+  # | ................^
+  - field_expression/map/scalar/invalid
+  #       input: [type.googleapis.com/buf.validate.conformance.cases.custom_constraints.FieldExpressionMapScalar]:{val:{key:1  value:1}  val:{key:2  value:2}  val:{key:3  value:1}}
+  #        want: validation error (1 violation)
+  #          1. constraint_id: "field_expression.map.scalar"
+  #             message: "test message field_expression.map.scalar"
+  #             field: "val" elements:{field_number:1  field_name:"val"  field_type:TYPE_MESSAGE}
+  #             rule: "cel[0]" elements:{field_number:23  field_name:"cel"  field_type:TYPE_MESSAGE  index:0}
+  #         got: compilation err: Failed to compile expression field_expression.map.scalar:
+  #ERROR: <input>:1:1: expression of type 'buf.validate.conformance.cases.custom_constraints.FieldExpressionMapScalar.ValEntry' cannot be range of a comprehension (must be list, map, or dynamic)
+  # | this.all(k, this[k] == 1)
+  # | ^
+  #ERROR: <input>:1:17: found no matching overload for '_[_]' applied to '(buf.validate.conformance.cases.custom_constraints.FieldExpressionMapScalar.ValEntry, !error!)'
+  # | this.all(k, this[k] == 1)
+  # | ................^
+  - field_expression/map/scalar/valid
+  #       input: [type.googleapis.com/buf.validate.conformance.cases.custom_constraints.FieldExpressionMapScalar]:{val:{key:1  value:1}}
+  #        want: valid
+  #         got: compilation err: Failed to compile expression field_expression.map.scalar:
+  #ERROR: <input>:1:1: expression of type 'buf.validate.conformance.cases.custom_constraints.FieldExpressionMapScalar.ValEntry' cannot be range of a comprehension (must be list, map, or dynamic)
+  # | this.all(k, this[k] == 1)
+  # | ^
+  #ERROR: <input>:1:17: found no matching overload for '_[_]' applied to '(buf.validate.conformance.cases.custom_constraints.FieldExpressionMapScalar.ValEntry, !error!)'
+  # | this.all(k, this[k] == 1)
+  # | ................^
+  - field_expression/repeated/enum/invalid
+  #       input: [type.googleapis.com/buf.validate.conformance.cases.custom_constraints.FieldExpressionRepeatedEnum]:{val:ENUM_ONE  val:ENUM_UNSPECIFIED  val:ENUM_ONE}
+  #        want: validation error (1 violation)
+  #          1. constraint_id: "field_expression.repeated.enum"
+  #             message: "test message field_expression.repeated.enum"
+  #             field: "val" elements:{field_number:1  field_name:"val"  field_type:TYPE_ENUM}
+  #             rule: "cel[0]" elements:{field_number:23  field_name:"cel"  field_type:TYPE_MESSAGE  index:0}
+  #         got: compilation err: Failed to compile expression field_expression.repeated.enum:
+  #ERROR: <input>:1:1: expression of type 'int' cannot be range of a comprehension (must be list, map, or dynamic)
+  # | this.all(e, e == 1)
+  # | ^
+  - field_expression/repeated/enum/valid
+  #       input: [type.googleapis.com/buf.validate.conformance.cases.custom_constraints.FieldExpressionRepeatedEnum]:{val:ENUM_ONE  val:ENUM_ONE}
+  #        want: valid
+  #         got: compilation err: Failed to compile expression field_expression.repeated.enum:
+  #ERROR: <input>:1:1: expression of type 'int' cannot be range of a comprehension (must be list, map, or dynamic)
+  # | this.all(e, e == 1)
+  # | ^
+  - field_expression/repeated/scalar/invalid
+  #       input: [type.googleapis.com/buf.validate.conformance.cases.custom_constraints.FieldExpressionRepeatedScalar]:{val:1  val:2  val:1}
+  #        want: validation error (1 violation)
+  #          1. constraint_id: "field_expression.repeated.scalar"
+  #             message: "test message field_expression.repeated.scalar"
+  #             field: "val" elements:{field_number:1  field_name:"val"  field_type:TYPE_INT32}
+  #             rule: "cel[0]" elements:{field_number:23  field_name:"cel"  field_type:TYPE_MESSAGE  index:0}
+  #         got: compilation err: Failed to compile expression field_expression.repeated.scalar:
+  #ERROR: <input>:1:1: expression of type 'int' cannot be range of a comprehension (must be list, map, or dynamic)
+  # | this.all(e, e == 1)
+  # | ^
+  - field_expression/repeated/scalar/valid
+  #       input: [type.googleapis.com/buf.validate.conformance.cases.custom_constraints.FieldExpressionRepeatedScalar]:{val:1  val:1}
+  #        want: valid
+  #         got: compilation err: Failed to compile expression field_expression.repeated.scalar:
+  #ERROR: <input>:1:1: expression of type 'int' cannot be range of a comprehension (must be list, map, or dynamic)
+  # | this.all(e, e == 1)
+  # | ^
+library/is_email:
+  - invalid/non_ascii
+  #       input: [type.googleapis.com/buf.validate.conformance.cases.IsEmail]:{val:"µ@example.com"}
+  #        want: validation error (1 violation)
+  #          1. constraint_id: "library.is_email"
+  #         got: valid
+  - invalid/quoted-string/a
+  #       input: [type.googleapis.com/buf.validate.conformance.cases.IsEmail]:{val:"\"foo bar\"@example.com"}
+  #        want: validation error (1 violation)
+  #          1. constraint_id: "library.is_email"
+  #         got: valid
+  - invalid/quoted-string/b
+  #       input: [type.googleapis.com/buf.validate.conformance.cases.IsEmail]:{val:"\"foo..bar\"@example.com"}
+  #        want: validation error (1 violation)
+  #          1. constraint_id: "library.is_email"
+  #         got: valid
+  - valid/empty_atext
+  #       input: [type.googleapis.com/buf.validate.conformance.cases.IsEmail]:{val:".@example.com"}
+  #        want: valid
+  #         got: validation error (1 violation)
+  #          1. constraint_id: "library.is_email"
+  #             message: ""
+  - valid/exhaust_atext
+  #       input: [type.googleapis.com/buf.validate.conformance.cases.IsEmail]:{val:"0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!#$%&'*+-/=?^_`{|}~@example.com"}
+  #        want: valid
+  #         got: validation error (1 violation)
+  #          1. constraint_id: "library.is_email"
+  #             message: ""
+  - valid/label_all_digits
+  #       input: [type.googleapis.com/buf.validate.conformance.cases.IsEmail]:{val:"foo@0.1.2.3.4.5.6.7.8.9"}
+  #        want: valid
+  #         got: validation error (1 violation)
+  #          1. constraint_id: "library.is_email"
+  #             message: ""
+  - valid/multiple_empty_atext
+  #       input: [type.googleapis.com/buf.validate.conformance.cases.IsEmail]:{val:"...@example.com"}
+  #        want: valid
+  #         got: validation error (1 violation)
+  #          1. constraint_id: "library.is_email"
+  #             message: ""
+library/is_host_and_port:
+  - port_required/false/invalid/ipv6_zone-id_too_short
+  #       input: [type.googleapis.com/buf.validate.conformance.cases.IsHostAndPort]:{val:"[::1%]"}
+  #        want: validation error (1 violation)
+  #          1. constraint_id: "library.is_host_and_port"
+  #         got: valid
+  - port_required/false/invalid/port_number_sign
+  #       input: [type.googleapis.com/buf.validate.conformance.cases.IsHostAndPort]:{val:"example.com:+0"}
+  #        want: validation error (1 violation)
+  #          1. constraint_id: "library.is_host_and_port"
+  #         got: valid
+  - port_required/false/valid/ipv6_embedded_ipv4
+  #       input: [type.googleapis.com/buf.validate.conformance.cases.IsHostAndPort]:{val:"[0:0:0:0:0:ffff:192.1.56.10]"}
+  #        want: valid
+  #         got: validation error (1 violation)
+  #          1. constraint_id: "library.is_host_and_port"
+  #             message: ""
+  - port_required/false/valid/ipv6_with_zone-id
+  #       input: [type.googleapis.com/buf.validate.conformance.cases.IsHostAndPort]:{val:"[::1%foo]"}
+  #        want: valid
+  #         got: validation error (1 violation)
+  #          1. constraint_id: "library.is_host_and_port"
+  #             message: ""
+  - port_required/false/valid/ipv6_zone-id_any_non_null_character
+  #       input: [type.googleapis.com/buf.validate.conformance.cases.IsHostAndPort]:{val:"[::1%% :x\x1f]"}
+  #        want: valid
+  #         got: validation error (1 violation)
+  #          1. constraint_id: "library.is_host_and_port"
+  #             message: ""
+  - port_required/true/invalid/port_number_sign
+  #       input: [type.googleapis.com/buf.validate.conformance.cases.IsHostAndPort]:{val:"example.com:+0"  port_required:true}
+  #        want: validation error (1 violation)
+  #          1. constraint_id: "library.is_host_and_port"
+  #         got: valid
+library/is_ip:
+  - version/omitted/invalid/ipv6_zone-id
+  #       input: [type.googleapis.com/buf.validate.conformance.cases.IsIp]:{val:"::1%"}
+  #        want: validation error (1 violation)
+  #          1. constraint_id: "library.is_ip"
+  #         got: valid
+  - version/omitted/valid/ipv6_zone-id
+  #       input: [type.googleapis.com/buf.validate.conformance.cases.IsIp]:{val:"::1%foo"}
+  #        want: valid
+  #         got: validation error (1 violation)
+  #          1. constraint_id: "library.is_ip"
+  #             message: ""
+  - version/omitted/valid/ipv6_zone-id_any_non_null_character
+  #       input: [type.googleapis.com/buf.validate.conformance.cases.IsIp]:{val:"::1%% :x\x1f"}
+  #        want: valid
+  #         got: validation error (1 violation)
+  #          1. constraint_id: "library.is_ip"
+  #             message: ""
+library/is_ip_prefix:
+  - version/omitted/strict/omitted/invalid/ipv4_bad_leading_zero_in_prefix-length
+  #       input: [type.googleapis.com/buf.validate.conformance.cases.IsIpPrefix]:{val:"192.168.1.0/024"}
+  #        want: validation error (1 violation)
+  #          1. constraint_id: "library.is_ip_prefix"
+  #         got: valid
+  - version/omitted/strict/omitted/invalid/ipv4_prefix_leading_space
+  #       input: [type.googleapis.com/buf.validate.conformance.cases.IsIpPrefix]:{val:" 127.0.0.1/16"}
+  #        want: validation error (1 violation)
+  #          1. constraint_id: "library.is_ip_prefix"
+  #         got: valid
+  - version/omitted/strict/omitted/invalid/ipv4_prefix_trailing_space
+  #       input: [type.googleapis.com/buf.validate.conformance.cases.IsIpPrefix]:{val:"127.0.0.1/16 "}
+  #        want: validation error (1 violation)
+  #          1. constraint_id: "library.is_ip_prefix"
+  #         got: valid
+  - version/omitted/strict/omitted/invalid/ipv6_bad_leading_zero_in_prefix-length
+  #       input: [type.googleapis.com/buf.validate.conformance.cases.IsIpPrefix]:{val:"2001:0DB8:ABCD:0012:FFFF:FFFF:FFFF:FFFF/024"}
+  #        want: validation error (1 violation)
+  #          1. constraint_id: "library.is_ip_prefix"
+  #         got: valid
+  - version/omitted/strict/omitted/invalid/ipv6_prefix_leading_space
+  #       input: [type.googleapis.com/buf.validate.conformance.cases.IsIpPrefix]:{val:" ::1/64"}
+  #        want: validation error (1 violation)
+  #          1. constraint_id: "library.is_ip_prefix"
+  #         got: valid
+  - version/omitted/strict/omitted/invalid/ipv6_prefix_trailing_space
+  #       input: [type.googleapis.com/buf.validate.conformance.cases.IsIpPrefix]:{val:"::1/64 "}
+  #        want: validation error (1 violation)
+  #          1. constraint_id: "library.is_ip_prefix"
+  #         got: valid
+  - version/omitted/strict/omitted/invalid/ipv6_zone-id/a
+  #       input: [type.googleapis.com/buf.validate.conformance.cases.IsIpPrefix]:{val:"::1%en1/64"}
+  #        want: validation error (1 violation)
+  #          1. constraint_id: "library.is_ip_prefix"
+  #         got: valid
+library/is_uri:
+  - invalid/host/c
+  #       input: [type.googleapis.com/buf.validate.conformance.cases.IsUri]:{val:"https://foo@你好.com"}
+  #        want: validation error (1 violation)
+  #          1. constraint_id: "library.is_uri"
+  #         got: valid
+  - invalid/host_ipv6/a
+  #       input: [type.googleapis.com/buf.validate.conformance.cases.IsUri]:{val:"https://2001:0db8:85a3:0000:0000:8a2e:0370:7334"}
+  #        want: validation error (1 violation)
+  #          1. constraint_id: "library.is_uri"
+  #         got: valid
+  - invalid/host_ipv6_zone-id_empty
+  #       input: [type.googleapis.com/buf.validate.conformance.cases.IsUri]:{val:"https://[::1%25]"}
+  #        want: validation error (1 violation)
+  #          1. constraint_id: "library.is_uri"
+  #         got: valid
+  - invalid/host_ipv6_zone-id_unquoted
+  #       input: [type.googleapis.com/buf.validate.conformance.cases.IsUri]:{val:"https://[::1%eth0]"}
+  #        want: validation error (1 violation)
+  #          1. constraint_id: "library.is_uri"
+  #         got: valid
+  - invalid/host_reg-name_pct-encoded_invalid_utf8
+  #       input: [type.googleapis.com/buf.validate.conformance.cases.IsUri]:{val:"https://foo%c3x%96"}
+  #        want: validation error (1 violation)
+  #          1. constraint_id: "library.is_uri"
+  #         got: valid
+  - invalid/port/a
+  #       input: [type.googleapis.com/buf.validate.conformance.cases.IsUri]:{val:"https://example.com:8a"}
+  #        want: validation error (1 violation)
+  #          1. constraint_id: "library.is_uri"
+  #         got: valid
+  - invalid/port/b
+  #       input: [type.googleapis.com/buf.validate.conformance.cases.IsUri]:{val:"https://example.com:x"}
+  #        want: validation error (1 violation)
+  #          1. constraint_id: "library.is_uri"
+  #         got: valid
+  - invalid/userinfo_reserved_at
+  #       input: [type.googleapis.com/buf.validate.conformance.cases.IsUri]:{val:"https://@@example.com"}
+  #        want: validation error (1 violation)
+  #          1. constraint_id: "library.is_uri"
+  #         got: valid
+  - valid/host_ipfuture_exhaust
+  #       input: [type.googleapis.com/buf.validate.conformance.cases.IsUri]:{val:"https://[vF.-!$&'()*+,;=._~0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ]"}
+  #        want: valid
+  #         got: validation error (1 violation)
+  #          1. constraint_id: "library.is_uri"
+  #             message: ""
+  - valid/host_ipfuture_long
+  #       input: [type.googleapis.com/buf.validate.conformance.cases.IsUri]:{val:"https://[v1234AF.x]"}
+  #        want: valid
+  #         got: validation error (1 violation)
+  #          1. constraint_id: "library.is_uri"
+  #             message: ""
+  - valid/host_ipfuture_short
+  #       input: [type.googleapis.com/buf.validate.conformance.cases.IsUri]:{val:"https://[v1.x]"}
+  #        want: valid
+  #         got: validation error (1 violation)
+  #          1. constraint_id: "library.is_uri"
+  #             message: ""
+  - valid/host_ipv6_zone-id_pct-encoded_ascii
+  #       input: [type.googleapis.com/buf.validate.conformance.cases.IsUri]:{val:"https://[::1%25foo%61%20%23]"}
+  #        want: valid
+  #         got: validation error (1 violation)
+  #          1. constraint_id: "library.is_uri"
+  #             message: ""
+  - valid/host_ipv6_zone-id_pct-encoded_utf8
+  #       input: [type.googleapis.com/buf.validate.conformance.cases.IsUri]:{val:"https://[::1%25foo%c3%96]"}
+  #        want: valid
+  #         got: validation error (1 violation)
+  #          1. constraint_id: "library.is_uri"
+  #             message: ""
+  - valid/path-empty
+  #       input: [type.googleapis.com/buf.validate.conformance.cases.IsUri]:{val:"foo:"}
+  #        want: valid
+  #         got: validation error (1 violation)
+  #          1. constraint_id: "library.is_uri"
+  #             message: ""
+library/is_uri_ref:
+  - valid/empty_string
+  #       input: [type.googleapis.com/buf.validate.conformance.cases.IsUriRef]:{}
+  #        want: valid
+  #         got: validation error (1 violation)
+  #          1. constraint_id: "library.is_uri_ref"
+  #             message: ""
+  - valid/path-empty
+  #       input: [type.googleapis.com/buf.validate.conformance.cases.IsUriRef]:{}
+  #        want: valid
+  #         got: validation error (1 violation)
+  #          1. constraint_id: "library.is_uri_ref"
+  #             message: ""
+standard_constraints/ignore:
+  - proto/2023/map/ignore_always/invalid/populated
+  #       input: [type.googleapis.com/buf.validate.conformance.cases.EditionsMapIgnoreAlways]:{val:{key:1  value:1}}
+  #        want: valid
+  #         got: validation error (1 violation)
+  #          1. constraint_id: "map.min_pairs"
+  #             message: "map must be at least 3 entries"
+  #             field: "val" elements:{field_number:1  field_name:"val"  field_type:TYPE_MESSAGE}
+  #             rule: "map.min_pairs" elements:{field_number:19  field_name:"map"  field_type:TYPE_MESSAGE}  elements:{field_number:1  field_name:"min_pairs"  field_type:TYPE_UINT64}
+  - proto/2023/map/ignore_always/valid/unpopulated
+  #       input: [type.googleapis.com/buf.validate.conformance.cases.EditionsMapIgnoreAlways]:{}
+  #        want: valid
+  #         got: validation error (1 violation)
+  #          1. constraint_id: "map.min_pairs"
+  #             message: "map must be at least 3 entries"
+  #             field: "val" elements:{field_number:1  field_name:"val"  field_type:TYPE_MESSAGE}
+  #             rule: "map.min_pairs" elements:{field_number:19  field_name:"map"  field_type:TYPE_MESSAGE}  elements:{field_number:1  field_name:"min_pairs"  field_type:TYPE_UINT64}
+  - proto/2023/map/keys/ignore_always/valid/populated_invalid_value
+  #       input: [type.googleapis.com/buf.validate.conformance.cases.EditionsMapKeyIgnoreAlways]:{val:{key:-42  value:-42}}
+  #        want: valid
+  #         got: validation error (1 violation)
+  #          1. constraint_id: "int32.gt"
+  #             message: "value must be greater than 0"
+  #             field: "val[-42]" elements:{field_number:1  field_name:"val"  field_type:TYPE_MESSAGE  key_type:TYPE_INT32  value_type:TYPE_INT32  int_key:-42}
+  #             for_key: true
+  #             rule: "map.keys.int32.gt" elements:{field_number:19  field_name:"map"  field_type:TYPE_MESSAGE}  elements:{field_number:4  field_name:"keys"  field_type:TYPE_MESSAGE}  elements:{field_number:3  field_name:"int32"  field_type:TYPE_MESSAGE}  elements:{field_number:4  field_name:"gt"  field_type:TYPE_INT32}
+  - proto/2023/map/keys/ignore_always/valid/zero_invalid_value
+  #       input: [type.googleapis.com/buf.validate.conformance.cases.EditionsMapKeyIgnoreAlways]:{val:{key:0  value:0}}
+  #        want: valid
+  #         got: validation error (1 violation)
+  #          1. constraint_id: "int32.gt"
+  #             message: "value must be greater than 0"
+  #             field: "val[0]" elements:{field_number:1  field_name:"val"  field_type:TYPE_MESSAGE  key_type:TYPE_INT32  value_type:TYPE_INT32  int_key:0}
+  #             for_key: true
+  #             rule: "map.keys.int32.gt" elements:{field_number:19  field_name:"map"  field_type:TYPE_MESSAGE}  elements:{field_number:4  field_name:"keys"  field_type:TYPE_MESSAGE}  elements:{field_number:3  field_name:"int32"  field_type:TYPE_MESSAGE}  elements:{field_number:4  field_name:"gt"  field_type:TYPE_INT32}
+  - proto/2023/map/values/ignore_always/valid/populated_invalid_value
+  #       input: [type.googleapis.com/buf.validate.conformance.cases.EditionsMapValueIgnoreAlways]:{val:{key:-42  value:-42}}
+  #        want: valid
+  #         got: validation error (1 violation)
+  #          1. constraint_id: "int32.gt"
+  #             message: "value must be greater than 0"
+  #             field: "val[-42]" elements:{field_number:1  field_name:"val"  field_type:TYPE_MESSAGE  key_type:TYPE_INT32  value_type:TYPE_INT32  int_key:-42}
+  #             rule: "map.values.int32.gt" elements:{field_number:19  field_name:"map"  field_type:TYPE_MESSAGE}  elements:{field_number:5  field_name:"values"  field_type:TYPE_MESSAGE}  elements:{field_number:3  field_name:"int32"  field_type:TYPE_MESSAGE}  elements:{field_number:4  field_name:"gt"  field_type:TYPE_INT32}
+  - proto/2023/map/values/ignore_always/valid/zero_invalid_value
+  #       input: [type.googleapis.com/buf.validate.conformance.cases.EditionsMapValueIgnoreAlways]:{val:{key:0  value:0}}
+  #        want: valid
+  #         got: validation error (1 violation)
+  #          1. constraint_id: "int32.gt"
+  #             message: "value must be greater than 0"
+  #             field: "val[0]" elements:{field_number:1  field_name:"val"  field_type:TYPE_MESSAGE  key_type:TYPE_INT32  value_type:TYPE_INT32  int_key:0}
+  #             rule: "map.values.int32.gt" elements:{field_number:19  field_name:"map"  field_type:TYPE_MESSAGE}  elements:{field_number:5  field_name:"values"  field_type:TYPE_MESSAGE}  elements:{field_number:3  field_name:"int32"  field_type:TYPE_MESSAGE}  elements:{field_number:4  field_name:"gt"  field_type:TYPE_INT32}
+  - proto/2023/message/explicit_presence/delimited/ignore_always/valid/default_invalid_value
+  #       input: [type.googleapis.com/buf.validate.conformance.cases.EditionsMessageExplicitPresenceDelimitedIgnoreAlways]:{val:{}}
+  #        want: valid
+  #         got: validation error (1 violation)
+  #          1. constraint_id: "proto.editions.message.ignore.always"
+  #             message: "foobar"
+  #             field: "val" elements:{field_number:1  field_name:"val"  field_type:TYPE_GROUP}
+  #             rule: "cel[0]" elements:{field_number:23  field_name:"cel"  field_type:TYPE_MESSAGE  index:0}
+  - proto/2023/message/explicit_presence/delimited/ignore_always/valid/populated_invalid_value
+  #       input: [type.googleapis.com/buf.validate.conformance.cases.EditionsMessageExplicitPresenceDelimitedIgnoreAlways]:{val:{val:"bar"}}
+  #        want: valid
+  #         got: validation error (1 violation)
+  #          1. constraint_id: "proto.editions.message.ignore.always"
+  #             message: "foobar"
+  #             field: "val" elements:{field_number:1  field_name:"val"  field_type:TYPE_GROUP}
+  #             rule: "cel[0]" elements:{field_number:23  field_name:"cel"  field_type:TYPE_MESSAGE  index:0}
+  - proto/2023/message/explicit_presence/length_prefixed/ignore_always/valid/default_invalid_value
+  #       input: [type.googleapis.com/buf.validate.conformance.cases.EditionsMessageExplicitPresenceIgnoreAlways]:{val:{}}
+  #        want: valid
+  #         got: validation error (1 violation)
+  #          1. constraint_id: "proto.editions.message.ignore.always"
+  #             message: "foobar"
+  #             field: "val" elements:{field_number:1  field_name:"val"  field_type:TYPE_MESSAGE}
+  #             rule: "cel[0]" elements:{field_number:23  field_name:"cel"  field_type:TYPE_MESSAGE  index:0}
+  - proto/2023/message/explicit_presence/length_prefixed/ignore_always/valid/populated_invalid_value
+  #       input: [type.googleapis.com/buf.validate.conformance.cases.EditionsMessageExplicitPresenceIgnoreAlways]:{val:{val:"bar"}}
+  #        want: valid
+  #         got: validation error (1 violation)
+  #          1. constraint_id: "proto.editions.message.ignore.always"
+  #             message: "foobar"
+  #             field: "val" elements:{field_number:1  field_name:"val"  field_type:TYPE_MESSAGE}
+  #             rule: "cel[0]" elements:{field_number:23  field_name:"cel"  field_type:TYPE_MESSAGE  index:0}
+  - proto/2023/message/legacy_required/delimited/ignore_always/valid/default_invalid_value
+  #       input: [type.googleapis.com/buf.validate.conformance.cases.EditionsMessageLegacyRequiredDelimitedIgnoreAlways]:{val:{}}
+  #        want: valid
+  #         got: validation error (1 violation)
+  #          1. constraint_id: "proto.editions.message.ignore.empty"
+  #             message: "foobar"
+  #             field: "val" elements:{field_number:1  field_name:"val"  field_type:TYPE_GROUP}
+  #             rule: "cel[0]" elements:{field_number:23  field_name:"cel"  field_type:TYPE_MESSAGE  index:0}
+  - proto/2023/message/legacy_required/delimited/ignore_always/valid/populated_invalid_value
+  #       input: [type.googleapis.com/buf.validate.conformance.cases.EditionsMessageLegacyRequiredDelimitedIgnoreAlways]:{val:{val:"bar"}}
+  #        want: valid
+  #         got: validation error (1 violation)
+  #          1. constraint_id: "proto.editions.message.ignore.empty"
+  #             message: "foobar"
+  #             field: "val" elements:{field_number:1  field_name:"val"  field_type:TYPE_GROUP}
+  #             rule: "cel[0]" elements:{field_number:23  field_name:"cel"  field_type:TYPE_MESSAGE  index:0}
+  - proto/2023/message/legacy_required/length_prefixed/ignore_always/valid/default_invalid_value
+  #       input: [type.googleapis.com/buf.validate.conformance.cases.EditionsMessageLegacyRequiredIgnoreAlways]:{val:{}}
+  #        want: valid
+  #         got: validation error (1 violation)
+  #          1. constraint_id: "proto.editions.message.ignore.empty"
+  #             message: "foobar"
+  #             field: "val" elements:{field_number:1  field_name:"val"  field_type:TYPE_MESSAGE}
+  #             rule: "cel[0]" elements:{field_number:23  field_name:"cel"  field_type:TYPE_MESSAGE  index:0}
+  - proto/2023/message/legacy_required/length_prefixed/ignore_always/valid/populated_invalid_value
+  #       input: [type.googleapis.com/buf.validate.conformance.cases.EditionsMessageLegacyRequiredIgnoreAlways]:{val:{val:"bar"}}
+  #        want: valid
+  #         got: validation error (1 violation)
+  #          1. constraint_id: "proto.editions.message.ignore.empty"
+  #             message: "foobar"
+  #             field: "val" elements:{field_number:1  field_name:"val"  field_type:TYPE_MESSAGE}
+  #             rule: "cel[0]" elements:{field_number:23  field_name:"cel"  field_type:TYPE_MESSAGE  index:0}
+  - proto/2023/oneof/ignore_always/valid/default_invalid_value
+  #       input: [type.googleapis.com/buf.validate.conformance.cases.EditionsOneofIgnoreAlways]:{val:0}
+  #        want: valid
+  #         got: validation error (1 violation)
+  #          1. constraint_id: "int32.gt"
+  #             message: "value must be greater than 0"
+  #             field: "val" elements:{field_number:1  field_name:"val"  field_type:TYPE_INT32}
+  #             rule: "int32.gt" elements:{field_number:3  field_name:"int32"  field_type:TYPE_MESSAGE}  elements:{field_number:4  field_name:"gt"  field_type:TYPE_INT32}
+  - proto/2023/oneof/ignore_always/valid/populated_invalid_value
+  #       input: [type.googleapis.com/buf.validate.conformance.cases.EditionsOneofIgnoreAlways]:{val:-123}
+  #        want: valid
+  #         got: validation error (1 violation)
+  #          1. constraint_id: "int32.gt"
+  #             message: "value must be greater than 0"
+  #             field: "val" elements:{field_number:1  field_name:"val"  field_type:TYPE_INT32}
+  #             rule: "int32.gt" elements:{field_number:3  field_name:"int32"  field_type:TYPE_MESSAGE}  elements:{field_number:4  field_name:"gt"  field_type:TYPE_INT32}
+  - proto/2023/oneof_with_default/ignore_always/valid/default_invalid_value
+  #       input: [type.googleapis.com/buf.validate.conformance.cases.EditionsOneofIgnoreAlwaysWithDefault]:{val:-42}
+  #        want: valid
+  #         got: validation error (1 violation)
+  #          1. constraint_id: "int32.gt"
+  #             message: "value must be greater than 0"
+  #             field: "val" elements:{field_number:1  field_name:"val"  field_type:TYPE_INT32}
+  #             rule: "int32.gt" elements:{field_number:3  field_name:"int32"  field_type:TYPE_MESSAGE}  elements:{field_number:4  field_name:"gt"  field_type:TYPE_INT32}
+  - proto/2023/oneof_with_default/ignore_always/valid/populated_invalid_value
+  #       input: [type.googleapis.com/buf.validate.conformance.cases.EditionsOneofIgnoreAlwaysWithDefault]:{val:-123}
+  #        want: valid
+  #         got: validation error (1 violation)
+  #          1. constraint_id: "int32.gt"
+  #             message: "value must be greater than 0"
+  #             field: "val" elements:{field_number:1  field_name:"val"  field_type:TYPE_INT32}
+  #             rule: "int32.gt" elements:{field_number:3  field_name:"int32"  field_type:TYPE_MESSAGE}  elements:{field_number:4  field_name:"gt"  field_type:TYPE_INT32}
+  - proto/2023/oneof_with_default/ignore_always/valid/zero_invalid_value
+  #       input: [type.googleapis.com/buf.validate.conformance.cases.EditionsOneofIgnoreAlwaysWithDefault]:{val:0}
+  #        want: valid
+  #         got: validation error (1 violation)
+  #          1. constraint_id: "int32.gt"
+  #             message: "value must be greater than 0"
+  #             field: "val" elements:{field_number:1  field_name:"val"  field_type:TYPE_INT32}
+  #             rule: "int32.gt" elements:{field_number:3  field_name:"int32"  field_type:TYPE_MESSAGE}  elements:{field_number:4  field_name:"gt"  field_type:TYPE_INT32}
+  - proto/2023/repeated/compact/ignore_always/valid/populated_valid_value
+  #       input: [type.googleapis.com/buf.validate.conformance.cases.EditionsRepeatedIgnoreAlways]:{val:1}
+  #        want: valid
+  #         got: validation error (1 violation)
+  #          1. constraint_id: "repeated.min_items"
+  #             message: "value must contain at least 3 item(s)"
+  #             field: "val" elements:{field_number:1  field_name:"val"  field_type:TYPE_INT32}
+  #             rule: "repeated.min_items" elements:{field_number:18  field_name:"repeated"  field_type:TYPE_MESSAGE}  elements:{field_number:1  field_name:"min_items"  field_type:TYPE_UINT64}
+  - proto/2023/repeated/compact/ignore_always/valid/unpopulated
+  #       input: [type.googleapis.com/buf.validate.conformance.cases.EditionsRepeatedIgnoreAlways]:{}
+  #        want: valid
+  #         got: validation error (1 violation)
+  #          1. constraint_id: "repeated.min_items"
+  #             message: "value must contain at least 3 item(s)"
+  #             field: "val" elements:{field_number:1  field_name:"val"  field_type:TYPE_INT32}
+  #             rule: "repeated.min_items" elements:{field_number:18  field_name:"repeated"  field_type:TYPE_MESSAGE}  elements:{field_number:1  field_name:"min_items"  field_type:TYPE_UINT64}
+  - proto/2023/repeated/compact/items/ignore_always/valid/populated_invalid_value
+  #       input: [type.googleapis.com/buf.validate.conformance.cases.EditionsRepeatedItemIgnoreAlways]:{val:-42}
+  #        want: valid
+  #         got: validation error (1 violation)
+  #          1. constraint_id: "int32.gt"
+  #             message: "value must be greater than 0"
+  #             field: "val[0]" elements:{field_number:1  field_name:"val"  field_type:TYPE_INT32  index:0}
+  #             rule: "repeated.items.int32.gt" elements:{field_number:18  field_name:"repeated"  field_type:TYPE_MESSAGE}  elements:{field_number:4  field_name:"items"  field_type:TYPE_MESSAGE}  elements:{field_number:3  field_name:"int32"  field_type:TYPE_MESSAGE}  elements:{field_number:4  field_name:"gt"  field_type:TYPE_INT32}
+  - proto/2023/repeated/compact/items/ignore_always/valid/zero_invalid_value
+  #       input: [type.googleapis.com/buf.validate.conformance.cases.EditionsRepeatedItemIgnoreAlways]:{val:0}
+  #        want: valid
+  #         got: validation error (1 violation)
+  #          1. constraint_id: "int32.gt"
+  #             message: "value must be greater than 0"
+  #             field: "val[0]" elements:{field_number:1  field_name:"val"  field_type:TYPE_INT32  index:0}
+  #             rule: "repeated.items.int32.gt" elements:{field_number:18  field_name:"repeated"  field_type:TYPE_MESSAGE}  elements:{field_number:4  field_name:"items"  field_type:TYPE_MESSAGE}  elements:{field_number:3  field_name:"int32"  field_type:TYPE_MESSAGE}  elements:{field_number:4  field_name:"gt"  field_type:TYPE_INT32}
+  - proto/2023/repeated/expanded/ignore_always/valid/populated_valid_value
+  #       input: [type.googleapis.com/buf.validate.conformance.cases.EditionsRepeatedExpandedIgnoreAlways]:{val:1}
+  #        want: valid
+  #         got: validation error (1 violation)
+  #          1. constraint_id: "repeated.min_items"
+  #             message: "value must contain at least 3 item(s)"
+  #             field: "val" elements:{field_number:1  field_name:"val"  field_type:TYPE_INT32}
+  #             rule: "repeated.min_items" elements:{field_number:18  field_name:"repeated"  field_type:TYPE_MESSAGE}  elements:{field_number:1  field_name:"min_items"  field_type:TYPE_UINT64}
+  - proto/2023/repeated/expanded/ignore_always/valid/unpopulated
+  #       input: [type.googleapis.com/buf.validate.conformance.cases.EditionsRepeatedExpandedIgnoreAlways]:{}
+  #        want: valid
+  #         got: validation error (1 violation)
+  #          1. constraint_id: "repeated.min_items"
+  #             message: "value must contain at least 3 item(s)"
+  #             field: "val" elements:{field_number:1  field_name:"val"  field_type:TYPE_INT32}
+  #             rule: "repeated.min_items" elements:{field_number:18  field_name:"repeated"  field_type:TYPE_MESSAGE}  elements:{field_number:1  field_name:"min_items"  field_type:TYPE_UINT64}
+  - proto/2023/repeated/expanded/items/ignore_always/valid/populated_invalid_value
+  #       input: [type.googleapis.com/buf.validate.conformance.cases.EditionsRepeatedExpandedItemIgnoreAlways]:{val:-42}
+  #        want: valid
+  #         got: validation error (1 violation)
+  #          1. constraint_id: "int32.gt"
+  #             message: "value must be greater than 0"
+  #             field: "val[0]" elements:{field_number:1  field_name:"val"  field_type:TYPE_INT32  index:0}
+  #             rule: "repeated.items.int32.gt" elements:{field_number:18  field_name:"repeated"  field_type:TYPE_MESSAGE}  elements:{field_number:4  field_name:"items"  field_type:TYPE_MESSAGE}  elements:{field_number:3  field_name:"int32"  field_type:TYPE_MESSAGE}  elements:{field_number:4  field_name:"gt"  field_type:TYPE_INT32}
+  - proto/2023/repeated/expanded/items/ignore_always/valid/zero_invalid_value
+  #       input: [type.googleapis.com/buf.validate.conformance.cases.EditionsRepeatedExpandedItemIgnoreAlways]:{val:0}
+  #        want: valid
+  #         got: validation error (1 violation)
+  #          1. constraint_id: "int32.gt"
+  #             message: "value must be greater than 0"
+  #             field: "val[0]" elements:{field_number:1  field_name:"val"  field_type:TYPE_INT32  index:0}
+  #             rule: "repeated.items.int32.gt" elements:{field_number:18  field_name:"repeated"  field_type:TYPE_MESSAGE}  elements:{field_number:4  field_name:"items"  field_type:TYPE_MESSAGE}  elements:{field_number:3  field_name:"int32"  field_type:TYPE_MESSAGE}  elements:{field_number:4  field_name:"gt"  field_type:TYPE_INT32}
+  - proto/2023/scalar/explicit_presence/ignore_always/valid/default_invalid_value
+  #       input: [type.googleapis.com/buf.validate.conformance.cases.EditionsScalarExplicitPresenceIgnoreAlways]:{val:0}
+  #        want: valid
+  #         got: validation error (1 violation)
+  #          1. constraint_id: "int32.gt"
+  #             message: "value must be greater than 0"
+  #             field: "val" elements:{field_number:1  field_name:"val"  field_type:TYPE_INT32}
+  #             rule: "int32.gt" elements:{field_number:3  field_name:"int32"  field_type:TYPE_MESSAGE}  elements:{field_number:4  field_name:"gt"  field_type:TYPE_INT32}
+  - proto/2023/scalar/explicit_presence/ignore_always/valid/populated_invalid_value
+  #       input: [type.googleapis.com/buf.validate.conformance.cases.EditionsScalarExplicitPresenceIgnoreAlways]:{val:-123}
+  #        want: valid
+  #         got: validation error (1 violation)
+  #          1. constraint_id: "int32.gt"
+  #             message: "value must be greater than 0"
+  #             field: "val" elements:{field_number:1  field_name:"val"  field_type:TYPE_INT32}
+  #             rule: "int32.gt" elements:{field_number:3  field_name:"int32"  field_type:TYPE_MESSAGE}  elements:{field_number:4  field_name:"gt"  field_type:TYPE_INT32}
+  - proto/2023/scalar/explicit_presence_with_default/ignore_always/valid/default_invalid_value
+  #       input: [type.googleapis.com/buf.validate.conformance.cases.EditionsScalarExplicitPresenceIgnoreAlwaysWithDefault]:{val:-42}
+  #        want: valid
+  #         got: validation error (1 violation)
+  #          1. constraint_id: "int32.gt"
+  #             message: "value must be greater than 0"
+  #             field: "val" elements:{field_number:1  field_name:"val"  field_type:TYPE_INT32}
+  #             rule: "int32.gt" elements:{field_number:3  field_name:"int32"  field_type:TYPE_MESSAGE}  elements:{field_number:4  field_name:"gt"  field_type:TYPE_INT32}
+  - proto/2023/scalar/explicit_presence_with_default/ignore_always/valid/populated_invalid_value
+  #       input: [type.googleapis.com/buf.validate.conformance.cases.EditionsScalarExplicitPresenceIgnoreAlwaysWithDefault]:{val:-123}
+  #        want: valid
+  #         got: validation error (1 violation)
+  #          1. constraint_id: "int32.gt"
+  #             message: "value must be greater than 0"
+  #             field: "val" elements:{field_number:1  field_name:"val"  field_type:TYPE_INT32}
+  #             rule: "int32.gt" elements:{field_number:3  field_name:"int32"  field_type:TYPE_MESSAGE}  elements:{field_number:4  field_name:"gt"  field_type:TYPE_INT32}
+  - proto/2023/scalar/explicit_presence_with_default/ignore_always/valid/zero_invalid_value
+  #       input: [type.googleapis.com/buf.validate.conformance.cases.EditionsScalarExplicitPresenceIgnoreAlwaysWithDefault]:{val:0}
+  #        want: valid
+  #         got: validation error (1 violation)
+  #          1. constraint_id: "int32.gt"
+  #             message: "value must be greater than 0"
+  #             field: "val" elements:{field_number:1  field_name:"val"  field_type:TYPE_INT32}
+  #             rule: "int32.gt" elements:{field_number:3  field_name:"int32"  field_type:TYPE_MESSAGE}  elements:{field_number:4  field_name:"gt"  field_type:TYPE_INT32}
+  - proto/2023/scalar/implicit_presence/ignore_always/valid/default_invalid_value
+  #       input: [type.googleapis.com/buf.validate.conformance.cases.EditionsScalarImplicitPresenceIgnoreAlways]:{}
+  #        want: valid
+  #         got: validation error (1 violation)
+  #          1. constraint_id: "int32.gt"
+  #             message: "value must be greater than 0"
+  #             field: "val" elements:{field_number:1  field_name:"val"  field_type:TYPE_INT32}
+  #             rule: "int32.gt" elements:{field_number:3  field_name:"int32"  field_type:TYPE_MESSAGE}  elements:{field_number:4  field_name:"gt"  field_type:TYPE_INT32}
+  - proto/2023/scalar/implicit_presence/ignore_always/valid/populated_invalid_value
+  #       input: [type.googleapis.com/buf.validate.conformance.cases.EditionsScalarImplicitPresenceIgnoreAlways]:{val:-123}
+  #        want: valid
+  #         got: validation error (1 violation)
+  #          1. constraint_id: "int32.gt"
+  #             message: "value must be greater than 0"
+  #             field: "val" elements:{field_number:1  field_name:"val"  field_type:TYPE_INT32}
+  #             rule: "int32.gt" elements:{field_number:3  field_name:"int32"  field_type:TYPE_MESSAGE}  elements:{field_number:4  field_name:"gt"  field_type:TYPE_INT32}
+  - proto/2023/scalar/legacy_required/ignore_always/valid/default_invalid_value
+  #       input: [type.googleapis.com/buf.validate.conformance.cases.EditionsScalarLegacyRequiredIgnoreAlways]:{val:0}
+  #        want: valid
+  #         got: validation error (1 violation)
+  #          1. constraint_id: "int32.gt"
+  #             message: "value must be greater than 0"
+  #             field: "val" elements:{field_number:1  field_name:"val"  field_type:TYPE_INT32}
+  #             rule: "int32.gt" elements:{field_number:3  field_name:"int32"  field_type:TYPE_MESSAGE}  elements:{field_number:4  field_name:"gt"  field_type:TYPE_INT32}
+  - proto/2023/scalar/legacy_required/ignore_always/valid/populated_invalid_value
+  #       input: [type.googleapis.com/buf.validate.conformance.cases.EditionsScalarLegacyRequiredIgnoreAlways]:{val:-123}
+  #        want: valid
+  #         got: validation error (1 violation)
+  #          1. constraint_id: "int32.gt"
+  #             message: "value must be greater than 0"
+  #             field: "val" elements:{field_number:1  field_name:"val"  field_type:TYPE_INT32}
+  #             rule: "int32.gt" elements:{field_number:3  field_name:"int32"  field_type:TYPE_MESSAGE}  elements:{field_number:4  field_name:"gt"  field_type:TYPE_INT32}
+  - proto/2023/scalar/required_with_default/ignore_always/valid/default_invalid_value
+  #       input: [type.googleapis.com/buf.validate.conformance.cases.EditionsScalarLegacyRequiredIgnoreAlwaysWithDefault]:{val:-42}
+  #        want: valid
+  #         got: validation error (1 violation)
+  #          1. constraint_id: "int32.gt"
+  #             message: "value must be greater than 0"
+  #             field: "val" elements:{field_number:1  field_name:"val"  field_type:TYPE_INT32}
+  #             rule: "int32.gt" elements:{field_number:3  field_name:"int32"  field_type:TYPE_MESSAGE}  elements:{field_number:4  field_name:"gt"  field_type:TYPE_INT32}
+  - proto/2023/scalar/required_with_default/ignore_always/valid/populated_invalid_value
+  #       input: [type.googleapis.com/buf.validate.conformance.cases.EditionsScalarLegacyRequiredIgnoreAlwaysWithDefault]:{val:-123}
+  #        want: valid
+  #         got: validation error (1 violation)
+  #          1. constraint_id: "int32.gt"
+  #             message: "value must be greater than 0"
+  #             field: "val" elements:{field_number:1  field_name:"val"  field_type:TYPE_INT32}
+  #             rule: "int32.gt" elements:{field_number:3  field_name:"int32"  field_type:TYPE_MESSAGE}  elements:{field_number:4  field_name:"gt"  field_type:TYPE_INT32}
+  - proto/2023/scalar/required_with_default/ignore_always/valid/zero_invalid_value
+  #       input: [type.googleapis.com/buf.validate.conformance.cases.EditionsScalarLegacyRequiredIgnoreAlwaysWithDefault]:{val:0}
+  #        want: valid
+  #         got: validation error (1 violation)
+  #          1. constraint_id: "int32.gt"
+  #             message: "value must be greater than 0"
+  #             field: "val" elements:{field_number:1  field_name:"val"  field_type:TYPE_INT32}
+  #             rule: "int32.gt" elements:{field_number:3  field_name:"int32"  field_type:TYPE_MESSAGE}  elements:{field_number:4  field_name:"gt"  field_type:TYPE_INT32}
+  - proto2/map/ignore_always/valid/populated_invalid_value
+  #       input: [type.googleapis.com/buf.validate.conformance.cases.Proto2MapIgnoreAlways]:{val:{key:1  value:1}}
+  #        want: valid
+  #         got: validation error (1 violation)
+  #          1. constraint_id: "map.min_pairs"
+  #             message: "map must be at least 3 entries"
+  #             field: "val" elements:{field_number:1  field_name:"val"  field_type:TYPE_MESSAGE}
+  #             rule: "map.min_pairs" elements:{field_number:19  field_name:"map"  field_type:TYPE_MESSAGE}  elements:{field_number:1  field_name:"min_pairs"  field_type:TYPE_UINT64}
+  - proto2/map/ignore_always/valid/unpopulated
+  #       input: [type.googleapis.com/buf.validate.conformance.cases.Proto2MapIgnoreAlways]:{}
+  #        want: valid
+  #         got: validation error (1 violation)
+  #          1. constraint_id: "map.min_pairs"
+  #             message: "map must be at least 3 entries"
+  #             field: "val" elements:{field_number:1  field_name:"val"  field_type:TYPE_MESSAGE}
+  #             rule: "map.min_pairs" elements:{field_number:19  field_name:"map"  field_type:TYPE_MESSAGE}  elements:{field_number:1  field_name:"min_pairs"  field_type:TYPE_UINT64}
+  - proto2/map/keys/ignore_always/valid/populated_invalid_value
+  #       input: [type.googleapis.com/buf.validate.conformance.cases.Proto2MapKeyIgnoreAlways]:{val:{key:-42  value:-42}}
+  #        want: valid
+  #         got: validation error (1 violation)
+  #          1. constraint_id: "int32.gt"
+  #             message: "value must be greater than 0"
+  #             field: "val[-42]" elements:{field_number:1  field_name:"val"  field_type:TYPE_MESSAGE  key_type:TYPE_INT32  value_type:TYPE_INT32  int_key:-42}
+  #             for_key: true
+  #             rule: "map.keys.int32.gt" elements:{field_number:19  field_name:"map"  field_type:TYPE_MESSAGE}  elements:{field_number:4  field_name:"keys"  field_type:TYPE_MESSAGE}  elements:{field_number:3  field_name:"int32"  field_type:TYPE_MESSAGE}  elements:{field_number:4  field_name:"gt"  field_type:TYPE_INT32}
+  - proto2/map/keys/ignore_always/valid/zero_invalid_value
+  #       input: [type.googleapis.com/buf.validate.conformance.cases.Proto2MapKeyIgnoreAlways]:{val:{key:0  value:0}}
+  #        want: valid
+  #         got: validation error (1 violation)
+  #          1. constraint_id: "int32.gt"
+  #             message: "value must be greater than 0"
+  #             field: "val[0]" elements:{field_number:1  field_name:"val"  field_type:TYPE_MESSAGE  key_type:TYPE_INT32  value_type:TYPE_INT32  int_key:0}
+  #             for_key: true
+  #             rule: "map.keys.int32.gt" elements:{field_number:19  field_name:"map"  field_type:TYPE_MESSAGE}  elements:{field_number:4  field_name:"keys"  field_type:TYPE_MESSAGE}  elements:{field_number:3  field_name:"int32"  field_type:TYPE_MESSAGE}  elements:{field_number:4  field_name:"gt"  field_type:TYPE_INT32}
+  - proto2/map/values/ignore_always/valid/populated_invalid_value
+  #       input: [type.googleapis.com/buf.validate.conformance.cases.Proto2MapValueIgnoreAlways]:{val:{key:-42  value:-42}}
+  #        want: valid
+  #         got: validation error (1 violation)
+  #          1. constraint_id: "int32.gt"
+  #             message: "value must be greater than 0"
+  #             field: "val[-42]" elements:{field_number:1  field_name:"val"  field_type:TYPE_MESSAGE  key_type:TYPE_INT32  value_type:TYPE_INT32  int_key:-42}
+  #             rule: "map.values.int32.gt" elements:{field_number:19  field_name:"map"  field_type:TYPE_MESSAGE}  elements:{field_number:5  field_name:"values"  field_type:TYPE_MESSAGE}  elements:{field_number:3  field_name:"int32"  field_type:TYPE_MESSAGE}  elements:{field_number:4  field_name:"gt"  field_type:TYPE_INT32}
+  - proto2/map/values/ignore_always/valid/zero_valid_value
+  #       input: [type.googleapis.com/buf.validate.conformance.cases.Proto2MapValueIgnoreAlways]:{val:{key:0  value:0}}
+  #        want: valid
+  #         got: validation error (1 violation)
+  #          1. constraint_id: "int32.gt"
+  #             message: "value must be greater than 0"
+  #             field: "val[0]" elements:{field_number:1  field_name:"val"  field_type:TYPE_MESSAGE  key_type:TYPE_INT32  value_type:TYPE_INT32  int_key:0}
+  #             rule: "map.values.int32.gt" elements:{field_number:19  field_name:"map"  field_type:TYPE_MESSAGE}  elements:{field_number:5  field_name:"values"  field_type:TYPE_MESSAGE}  elements:{field_number:3  field_name:"int32"  field_type:TYPE_MESSAGE}  elements:{field_number:4  field_name:"gt"  field_type:TYPE_INT32}
+  - proto2/message/optional/ignore_always/valid/default_invalid_value
+  #       input: [type.googleapis.com/buf.validate.conformance.cases.Proto2MessageOptionalIgnoreAlways]:{val:{}}
+  #        want: valid
+  #         got: validation error (1 violation)
+  #          1. constraint_id: "proto2.message.ignore.always"
+  #             message: "foobar"
+  #             field: "val" elements:{field_number:1  field_name:"val"  field_type:TYPE_MESSAGE}
+  #             rule: "cel[0]" elements:{field_number:23  field_name:"cel"  field_type:TYPE_MESSAGE  index:0}
+  - proto2/message/optional/ignore_always/valid/populated_invalid_value
+  #       input: [type.googleapis.com/buf.validate.conformance.cases.Proto2MessageOptionalIgnoreAlways]:{val:{val:"bar"}}
+  #        want: valid
+  #         got: validation error (1 violation)
+  #          1. constraint_id: "proto2.message.ignore.always"
+  #             message: "foobar"
+  #             field: "val" elements:{field_number:1  field_name:"val"  field_type:TYPE_MESSAGE}
+  #             rule: "cel[0]" elements:{field_number:23  field_name:"cel"  field_type:TYPE_MESSAGE  index:0}
+  - proto2/message/required/ignore_always/valid/default_invalid_value
+  #       input: [type.googleapis.com/buf.validate.conformance.cases.Proto2MessageRequiredIgnoreAlways]:{val:{}}
+  #        want: valid
+  #         got: validation error (1 violation)
+  #          1. constraint_id: "proto2.message.ignore.always"
+  #             message: "foobar"
+  #             field: "val" elements:{field_number:1  field_name:"val"  field_type:TYPE_MESSAGE}
+  #             rule: "cel[0]" elements:{field_number:23  field_name:"cel"  field_type:TYPE_MESSAGE  index:0}
+  - proto2/message/required/ignore_always/valid/populated_invalid_value
+  #       input: [type.googleapis.com/buf.validate.conformance.cases.Proto2MessageRequiredIgnoreAlways]:{val:{val:"bar"}}
+  #        want: valid
+  #         got: validation error (1 violation)
+  #          1. constraint_id: "proto2.message.ignore.always"
+  #             message: "foobar"
+  #             field: "val" elements:{field_number:1  field_name:"val"  field_type:TYPE_MESSAGE}
+  #             rule: "cel[0]" elements:{field_number:23  field_name:"cel"  field_type:TYPE_MESSAGE  index:0}
+  - proto2/oneof/ignore_always/valid/default_invalid_value
+  #       input: [type.googleapis.com/buf.validate.conformance.cases.Proto2OneofIgnoreAlways]:{val:0}
+  #        want: valid
+  #         got: validation error (1 violation)
+  #          1. constraint_id: "int32.gt"
+  #             message: "value must be greater than 0"
+  #             field: "val" elements:{field_number:1  field_name:"val"  field_type:TYPE_INT32}
+  #             rule: "int32.gt" elements:{field_number:3  field_name:"int32"  field_type:TYPE_MESSAGE}  elements:{field_number:4  field_name:"gt"  field_type:TYPE_INT32}
+  - proto2/oneof/ignore_always/valid/populated_invalid_value
+  #       input: [type.googleapis.com/buf.validate.conformance.cases.Proto2OneofIgnoreAlways]:{val:-123}
+  #        want: valid
+  #         got: validation error (1 violation)
+  #          1. constraint_id: "int32.gt"
+  #             message: "value must be greater than 0"
+  #             field: "val" elements:{field_number:1  field_name:"val"  field_type:TYPE_INT32}
+  #             rule: "int32.gt" elements:{field_number:3  field_name:"int32"  field_type:TYPE_MESSAGE}  elements:{field_number:4  field_name:"gt"  field_type:TYPE_INT32}
+  - proto2/oneof_with_default/ignore_always/valid/default_invalid_value
+  #       input: [type.googleapis.com/buf.validate.conformance.cases.Proto2OneofIgnoreAlwaysWithDefault]:{val:-42}
+  #        want: valid
+  #         got: validation error (1 violation)
+  #          1. constraint_id: "int32.gt"
+  #             message: "value must be greater than 0"
+  #             field: "val" elements:{field_number:1  field_name:"val"  field_type:TYPE_INT32}
+  #             rule: "int32.gt" elements:{field_number:3  field_name:"int32"  field_type:TYPE_MESSAGE}  elements:{field_number:4  field_name:"gt"  field_type:TYPE_INT32}
+  - proto2/oneof_with_default/ignore_always/valid/populated_invalid_value
+  #       input: [type.googleapis.com/buf.validate.conformance.cases.Proto2OneofIgnoreAlwaysWithDefault]:{val:-123}
+  #        want: valid
+  #         got: validation error (1 violation)
+  #          1. constraint_id: "int32.gt"
+  #             message: "value must be greater than 0"
+  #             field: "val" elements:{field_number:1  field_name:"val"  field_type:TYPE_INT32}
+  #             rule: "int32.gt" elements:{field_number:3  field_name:"int32"  field_type:TYPE_MESSAGE}  elements:{field_number:4  field_name:"gt"  field_type:TYPE_INT32}
+  - proto2/oneof_with_default/ignore_always/valid/zero_invalid_value
+  #       input: [type.googleapis.com/buf.validate.conformance.cases.Proto2OneofIgnoreAlwaysWithDefault]:{val:0}
+  #        want: valid
+  #         got: validation error (1 violation)
+  #          1. constraint_id: "int32.gt"
+  #             message: "value must be greater than 0"
+  #             field: "val" elements:{field_number:1  field_name:"val"  field_type:TYPE_INT32}
+  #             rule: "int32.gt" elements:{field_number:3  field_name:"int32"  field_type:TYPE_MESSAGE}  elements:{field_number:4  field_name:"gt"  field_type:TYPE_INT32}
+  - proto2/repeated/ignore_always/valid/populated_invalid_value
+  #       input: [type.googleapis.com/buf.validate.conformance.cases.Proto2RepeatedIgnoreAlways]:{val:1}
+  #        want: valid
+  #         got: validation error (1 violation)
+  #          1. constraint_id: "repeated.min_items"
+  #             message: "value must contain at least 3 item(s)"
+  #             field: "val" elements:{field_number:1  field_name:"val"  field_type:TYPE_INT32}
+  #             rule: "repeated.min_items" elements:{field_number:18  field_name:"repeated"  field_type:TYPE_MESSAGE}  elements:{field_number:1  field_name:"min_items"  field_type:TYPE_UINT64}
+  - proto2/repeated/ignore_always/valid/unpopulated
+  #       input: [type.googleapis.com/buf.validate.conformance.cases.Proto2RepeatedIgnoreAlways]:{}
+  #        want: valid
+  #         got: validation error (1 violation)
+  #          1. constraint_id: "repeated.min_items"
+  #             message: "value must contain at least 3 item(s)"
+  #             field: "val" elements:{field_number:1  field_name:"val"  field_type:TYPE_INT32}
+  #             rule: "repeated.min_items" elements:{field_number:18  field_name:"repeated"  field_type:TYPE_MESSAGE}  elements:{field_number:1  field_name:"min_items"  field_type:TYPE_UINT64}
+  - proto2/repeated/items/ignore_always/valid/populated_invalid_value
+  #       input: [type.googleapis.com/buf.validate.conformance.cases.Proto2RepeatedItemIgnoreAlways]:{val:-42}
+  #        want: valid
+  #         got: validation error (1 violation)
+  #          1. constraint_id: "int32.gt"
+  #             message: "value must be greater than 0"
+  #             field: "val[0]" elements:{field_number:1  field_name:"val"  field_type:TYPE_INT32  index:0}
+  #             rule: "repeated.items.int32.gt" elements:{field_number:18  field_name:"repeated"  field_type:TYPE_MESSAGE}  elements:{field_number:4  field_name:"items"  field_type:TYPE_MESSAGE}  elements:{field_number:3  field_name:"int32"  field_type:TYPE_MESSAGE}  elements:{field_number:4  field_name:"gt"  field_type:TYPE_INT32}
+  - proto2/repeated/items/ignore_always/valid/zero_invalid_value
+  #       input: [type.googleapis.com/buf.validate.conformance.cases.Proto2RepeatedItemIgnoreAlways]:{val:0}
+  #        want: valid
+  #         got: validation error (1 violation)
+  #          1. constraint_id: "int32.gt"
+  #             message: "value must be greater than 0"
+  #             field: "val[0]" elements:{field_number:1  field_name:"val"  field_type:TYPE_INT32  index:0}
+  #             rule: "repeated.items.int32.gt" elements:{field_number:18  field_name:"repeated"  field_type:TYPE_MESSAGE}  elements:{field_number:4  field_name:"items"  field_type:TYPE_MESSAGE}  elements:{field_number:3  field_name:"int32"  field_type:TYPE_MESSAGE}  elements:{field_number:4  field_name:"gt"  field_type:TYPE_INT32}
+  - proto2/scalar/optional/ignore_always/valid/default_invalid_value
+  #       input: [type.googleapis.com/buf.validate.conformance.cases.Proto2ScalarOptionalIgnoreAlways]:{val:0}
+  #        want: valid
+  #         got: validation error (1 violation)
+  #          1. constraint_id: "int32.gt"
+  #             message: "value must be greater than 0"
+  #             field: "val" elements:{field_number:1  field_name:"val"  field_type:TYPE_INT32}
+  #             rule: "int32.gt" elements:{field_number:3  field_name:"int32"  field_type:TYPE_MESSAGE}  elements:{field_number:4  field_name:"gt"  field_type:TYPE_INT32}
+  - proto2/scalar/optional/ignore_always/valid/populated_invalid_value
+  #       input: [type.googleapis.com/buf.validate.conformance.cases.Proto2ScalarOptionalIgnoreAlways]:{val:-123}
+  #        want: valid
+  #         got: validation error (1 violation)
+  #          1. constraint_id: "int32.gt"
+  #             message: "value must be greater than 0"
+  #             field: "val" elements:{field_number:1  field_name:"val"  field_type:TYPE_INT32}
+  #             rule: "int32.gt" elements:{field_number:3  field_name:"int32"  field_type:TYPE_MESSAGE}  elements:{field_number:4  field_name:"gt"  field_type:TYPE_INT32}
+  - proto2/scalar/optional_with_default/ignore_always/invalid/default_invalid_value
+  #       input: [type.googleapis.com/buf.validate.conformance.cases.Proto2ScalarOptionalIgnoreAlwaysWithDefault]:{val:-42}
+  #        want: valid
+  #         got: validation error (1 violation)
+  #          1. constraint_id: "int32.gt"
+  #             message: "value must be greater than 0"
+  #             field: "val" elements:{field_number:1  field_name:"val"  field_type:TYPE_INT32}
+  #             rule: "int32.gt" elements:{field_number:3  field_name:"int32"  field_type:TYPE_MESSAGE}  elements:{field_number:4  field_name:"gt"  field_type:TYPE_INT32}
+  - proto2/scalar/optional_with_default/ignore_always/invalid/zero_invalid_value
+  #       input: [type.googleapis.com/buf.validate.conformance.cases.Proto2ScalarOptionalIgnoreAlwaysWithDefault]:{val:0}
+  #        want: valid
+  #         got: validation error (1 violation)
+  #          1. constraint_id: "int32.gt"
+  #             message: "value must be greater than 0"
+  #             field: "val" elements:{field_number:1  field_name:"val"  field_type:TYPE_INT32}
+  #             rule: "int32.gt" elements:{field_number:3  field_name:"int32"  field_type:TYPE_MESSAGE}  elements:{field_number:4  field_name:"gt"  field_type:TYPE_INT32}
+  - proto2/scalar/optional_with_default/ignore_always/valid/populated_invalid_value
+  #       input: [type.googleapis.com/buf.validate.conformance.cases.Proto2ScalarOptionalIgnoreAlwaysWithDefault]:{val:-123}
+  #        want: valid
+  #         got: validation error (1 violation)
+  #          1. constraint_id: "int32.gt"
+  #             message: "value must be greater than 0"
+  #             field: "val" elements:{field_number:1  field_name:"val"  field_type:TYPE_INT32}
+  #             rule: "int32.gt" elements:{field_number:3  field_name:"int32"  field_type:TYPE_MESSAGE}  elements:{field_number:4  field_name:"gt"  field_type:TYPE_INT32}
+  - proto2/scalar/required/ignore_always/valid/default_invalid_value
+  #       input: [type.googleapis.com/buf.validate.conformance.cases.Proto2ScalarRequiredIgnoreAlways]:{val:0}
+  #        want: valid
+  #         got: validation error (1 violation)
+  #          1. constraint_id: "int32.gt"
+  #             message: "value must be greater than 0"
+  #             field: "val" elements:{field_number:1  field_name:"val"  field_type:TYPE_INT32}
+  #             rule: "int32.gt" elements:{field_number:3  field_name:"int32"  field_type:TYPE_MESSAGE}  elements:{field_number:4  field_name:"gt"  field_type:TYPE_INT32}
+  - proto2/scalar/required/ignore_always/valid/populated_invalid_value
+  #       input: [type.googleapis.com/buf.validate.conformance.cases.Proto2ScalarRequiredIgnoreAlways]:{val:-123}
+  #        want: valid
+  #         got: validation error (1 violation)
+  #          1. constraint_id: "int32.gt"
+  #             message: "value must be greater than 0"
+  #             field: "val" elements:{field_number:1  field_name:"val"  field_type:TYPE_INT32}
+  #             rule: "int32.gt" elements:{field_number:3  field_name:"int32"  field_type:TYPE_MESSAGE}  elements:{field_number:4  field_name:"gt"  field_type:TYPE_INT32}
+  - proto2/scalar/required_with_default/ignore_always/valid/default_invalid_value
+  #       input: [type.googleapis.com/buf.validate.conformance.cases.Proto2ScalarRequiredIgnoreAlwaysWithDefault]:{val:-42}
+  #        want: valid
+  #         got: validation error (1 violation)
+  #          1. constraint_id: "int32.gt"
+  #             message: "value must be greater than 0"
+  #             field: "val" elements:{field_number:1  field_name:"val"  field_type:TYPE_INT32}
+  #             rule: "int32.gt" elements:{field_number:3  field_name:"int32"  field_type:TYPE_MESSAGE}  elements:{field_number:4  field_name:"gt"  field_type:TYPE_INT32}
+  - proto2/scalar/required_with_default/ignore_always/valid/populated_invalid_value
+  #       input: [type.googleapis.com/buf.validate.conformance.cases.Proto2ScalarRequiredIgnoreAlwaysWithDefault]:{val:-123}
+  #        want: valid
+  #         got: validation error (1 violation)
+  #          1. constraint_id: "int32.gt"
+  #             message: "value must be greater than 0"
+  #             field: "val" elements:{field_number:1  field_name:"val"  field_type:TYPE_INT32}
+  #             rule: "int32.gt" elements:{field_number:3  field_name:"int32"  field_type:TYPE_MESSAGE}  elements:{field_number:4  field_name:"gt"  field_type:TYPE_INT32}
+  - proto2/scalar/required_with_default/ignore_always/valid/zero_invalid_value
+  #       input: [type.googleapis.com/buf.validate.conformance.cases.Proto2ScalarRequiredIgnoreAlwaysWithDefault]:{val:0}
+  #        want: valid
+  #         got: validation error (1 violation)
+  #          1. constraint_id: "int32.gt"
+  #             message: "value must be greater than 0"
+  #             field: "val" elements:{field_number:1  field_name:"val"  field_type:TYPE_INT32}
+  #             rule: "int32.gt" elements:{field_number:3  field_name:"int32"  field_type:TYPE_MESSAGE}  elements:{field_number:4  field_name:"gt"  field_type:TYPE_INT32}
+  - proto3/map/ignore_always/valid/populated_invalid_value
+  #       input: [type.googleapis.com/buf.validate.conformance.cases.Proto3MapIgnoreAlways]:{val:{key:1  value:1}}
+  #        want: valid
+  #         got: validation error (1 violation)
+  #          1. constraint_id: "map.min_pairs"
+  #             message: "map must be at least 3 entries"
+  #             field: "val" elements:{field_number:1  field_name:"val"  field_type:TYPE_MESSAGE}
+  #             rule: "map.min_pairs" elements:{field_number:19  field_name:"map"  field_type:TYPE_MESSAGE}  elements:{field_number:1  field_name:"min_pairs"  field_type:TYPE_UINT64}
+  - proto3/map/ignore_always/valid/unpopulated
+  #       input: [type.googleapis.com/buf.validate.conformance.cases.Proto3MapIgnoreAlways]:{}
+  #        want: valid
+  #         got: validation error (1 violation)
+  #          1. constraint_id: "map.min_pairs"
+  #             message: "map must be at least 3 entries"
+  #             field: "val" elements:{field_number:1  field_name:"val"  field_type:TYPE_MESSAGE}
+  #             rule: "map.min_pairs" elements:{field_number:19  field_name:"map"  field_type:TYPE_MESSAGE}  elements:{field_number:1  field_name:"min_pairs"  field_type:TYPE_UINT64}
+  - proto3/map/keys/ignore_always/valid/populated_invalid_value
+  #       input: [type.googleapis.com/buf.validate.conformance.cases.Proto3MapKeyIgnoreAlways]:{val:{key:-42  value:-42}}
+  #        want: valid
+  #         got: validation error (1 violation)
+  #          1. constraint_id: "int32.gt"
+  #             message: "value must be greater than 0"
+  #             field: "val[-42]" elements:{field_number:1  field_name:"val"  field_type:TYPE_MESSAGE  key_type:TYPE_INT32  value_type:TYPE_INT32  int_key:-42}
+  #             for_key: true
+  #             rule: "map.keys.int32.gt" elements:{field_number:19  field_name:"map"  field_type:TYPE_MESSAGE}  elements:{field_number:4  field_name:"keys"  field_type:TYPE_MESSAGE}  elements:{field_number:3  field_name:"int32"  field_type:TYPE_MESSAGE}  elements:{field_number:4  field_name:"gt"  field_type:TYPE_INT32}
+  - proto3/map/keys/ignore_always/valid/zero_invalid_value
+  #       input: [type.googleapis.com/buf.validate.conformance.cases.Proto3MapKeyIgnoreAlways]:{val:{key:0  value:0}}
+  #        want: valid
+  #         got: validation error (1 violation)
+  #          1. constraint_id: "int32.gt"
+  #             message: "value must be greater than 0"
+  #             field: "val[0]" elements:{field_number:1  field_name:"val"  field_type:TYPE_MESSAGE  key_type:TYPE_INT32  value_type:TYPE_INT32  int_key:0}
+  #             for_key: true
+  #             rule: "map.keys.int32.gt" elements:{field_number:19  field_name:"map"  field_type:TYPE_MESSAGE}  elements:{field_number:4  field_name:"keys"  field_type:TYPE_MESSAGE}  elements:{field_number:3  field_name:"int32"  field_type:TYPE_MESSAGE}  elements:{field_number:4  field_name:"gt"  field_type:TYPE_INT32}
+  - proto3/map/values/ignore_always/valid/populated_invalid_value
+  #       input: [type.googleapis.com/buf.validate.conformance.cases.Proto3MapValueIgnoreAlways]:{val:{key:-42  value:-42}}
+  #        want: valid
+  #         got: validation error (1 violation)
+  #          1. constraint_id: "int32.gt"
+  #             message: "value must be greater than 0"
+  #             field: "val[-42]" elements:{field_number:1  field_name:"val"  field_type:TYPE_MESSAGE  key_type:TYPE_INT32  value_type:TYPE_INT32  int_key:-42}
+  #             rule: "map.values.int32.gt" elements:{field_number:19  field_name:"map"  field_type:TYPE_MESSAGE}  elements:{field_number:5  field_name:"values"  field_type:TYPE_MESSAGE}  elements:{field_number:3  field_name:"int32"  field_type:TYPE_MESSAGE}  elements:{field_number:4  field_name:"gt"  field_type:TYPE_INT32}
+  - proto3/map/values/ignore_always/valid/zero_invalid_value
+  #       input: [type.googleapis.com/buf.validate.conformance.cases.Proto3MapValueIgnoreAlways]:{val:{key:0  value:0}}
+  #        want: valid
+  #         got: validation error (1 violation)
+  #          1. constraint_id: "int32.gt"
+  #             message: "value must be greater than 0"
+  #             field: "val[0]" elements:{field_number:1  field_name:"val"  field_type:TYPE_MESSAGE  key_type:TYPE_INT32  value_type:TYPE_INT32  int_key:0}
+  #             rule: "map.values.int32.gt" elements:{field_number:19  field_name:"map"  field_type:TYPE_MESSAGE}  elements:{field_number:5  field_name:"values"  field_type:TYPE_MESSAGE}  elements:{field_number:3  field_name:"int32"  field_type:TYPE_MESSAGE}  elements:{field_number:4  field_name:"gt"  field_type:TYPE_INT32}
+  - proto3/message/optional/ignore_always/valid/default_invalid_value
+  #       input: [type.googleapis.com/buf.validate.conformance.cases.Proto3MessageOptionalIgnoreAlways]:{val:{}}
+  #        want: valid
+  #         got: validation error (1 violation)
+  #          1. constraint_id: "proto3.message.ignore.always"
+  #             message: "foobar"
+  #             field: "val" elements:{field_number:1  field_name:"val"  field_type:TYPE_MESSAGE}
+  #             rule: "cel[0]" elements:{field_number:23  field_name:"cel"  field_type:TYPE_MESSAGE  index:0}
+  - proto3/message/optional/ignore_always/valid/populated_invalid_value
+  #       input: [type.googleapis.com/buf.validate.conformance.cases.Proto3MessageOptionalIgnoreAlways]:{val:{val:"bar"}}
+  #        want: valid
+  #         got: validation error (1 violation)
+  #          1. constraint_id: "proto3.message.ignore.always"
+  #             message: "foobar"
+  #             field: "val" elements:{field_number:1  field_name:"val"  field_type:TYPE_MESSAGE}
+  #             rule: "cel[0]" elements:{field_number:23  field_name:"cel"  field_type:TYPE_MESSAGE  index:0}
+  - proto3/oneof/ignore_always/valid/default_invalid_value
+  #       input: [type.googleapis.com/buf.validate.conformance.cases.Proto3OneofIgnoreAlways]:{val:0}
+  #        want: valid
+  #         got: validation error (1 violation)
+  #          1. constraint_id: "int32.gt"
+  #             message: "value must be greater than 0"
+  #             field: "val" elements:{field_number:1  field_name:"val"  field_type:TYPE_INT32}
+  #             rule: "int32.gt" elements:{field_number:3  field_name:"int32"  field_type:TYPE_MESSAGE}  elements:{field_number:4  field_name:"gt"  field_type:TYPE_INT32}
+  - proto3/oneof/ignore_always/valid/populated_invalid_value
+  #       input: [type.googleapis.com/buf.validate.conformance.cases.Proto3OneofIgnoreAlways]:{val:-123}
+  #        want: valid
+  #         got: validation error (1 violation)
+  #          1. constraint_id: "int32.gt"
+  #             message: "value must be greater than 0"
+  #             field: "val" elements:{field_number:1  field_name:"val"  field_type:TYPE_INT32}
+  #             rule: "int32.gt" elements:{field_number:3  field_name:"int32"  field_type:TYPE_MESSAGE}  elements:{field_number:4  field_name:"gt"  field_type:TYPE_INT32}
+  - proto3/repeated/ignore_always/valid/populated_invalid_value
+  #       input: [type.googleapis.com/buf.validate.conformance.cases.Proto3RepeatedIgnoreAlways]:{val:1}
+  #        want: valid
+  #         got: validation error (1 violation)
+  #          1. constraint_id: "repeated.min_items"
+  #             message: "value must contain at least 3 item(s)"
+  #             field: "val" elements:{field_number:1  field_name:"val"  field_type:TYPE_INT32}
+  #             rule: "repeated.min_items" elements:{field_number:18  field_name:"repeated"  field_type:TYPE_MESSAGE}  elements:{field_number:1  field_name:"min_items"  field_type:TYPE_UINT64}
+  - proto3/repeated/ignore_always/valid/unpopulated
+  #       input: [type.googleapis.com/buf.validate.conformance.cases.Proto3RepeatedIgnoreAlways]:{}
+  #        want: valid
+  #         got: validation error (1 violation)
+  #          1. constraint_id: "repeated.min_items"
+  #             message: "value must contain at least 3 item(s)"
+  #             field: "val" elements:{field_number:1  field_name:"val"  field_type:TYPE_INT32}
+  #             rule: "repeated.min_items" elements:{field_number:18  field_name:"repeated"  field_type:TYPE_MESSAGE}  elements:{field_number:1  field_name:"min_items"  field_type:TYPE_UINT64}
+  - proto3/repeated/items/ignore_always/valid/populated_invalid_value
+  #       input: [type.googleapis.com/buf.validate.conformance.cases.Proto3RepeatedItemIgnoreAlways]:{val:-42}
+  #        want: valid
+  #         got: validation error (1 violation)
+  #          1. constraint_id: "int32.gt"
+  #             message: "value must be greater than 0"
+  #             field: "val[0]" elements:{field_number:1  field_name:"val"  field_type:TYPE_INT32  index:0}
+  #             rule: "repeated.items.int32.gt" elements:{field_number:18  field_name:"repeated"  field_type:TYPE_MESSAGE}  elements:{field_number:4  field_name:"items"  field_type:TYPE_MESSAGE}  elements:{field_number:3  field_name:"int32"  field_type:TYPE_MESSAGE}  elements:{field_number:4  field_name:"gt"  field_type:TYPE_INT32}
+  - proto3/repeated/items/ignore_always/valid/zero_invalid_value
+  #       input: [type.googleapis.com/buf.validate.conformance.cases.Proto3RepeatedItemIgnoreAlways]:{val:0}
+  #        want: valid
+  #         got: validation error (1 violation)
+  #          1. constraint_id: "int32.gt"
+  #             message: "value must be greater than 0"
+  #             field: "val[0]" elements:{field_number:1  field_name:"val"  field_type:TYPE_INT32  index:0}
+  #             rule: "repeated.items.int32.gt" elements:{field_number:18  field_name:"repeated"  field_type:TYPE_MESSAGE}  elements:{field_number:4  field_name:"items"  field_type:TYPE_MESSAGE}  elements:{field_number:3  field_name:"int32"  field_type:TYPE_MESSAGE}  elements:{field_number:4  field_name:"gt"  field_type:TYPE_INT32}
+  - proto3/scalar/ignore_always/valid/default_invalid_value
+  #       input: [type.googleapis.com/buf.validate.conformance.cases.Proto3ScalarIgnoreAlways]:{}
+  #        want: valid
+  #         got: validation error (1 violation)
+  #          1. constraint_id: "int32.gt"
+  #             message: "value must be greater than 0"
+  #             field: "val" elements:{field_number:1  field_name:"val"  field_type:TYPE_INT32}
+  #             rule: "int32.gt" elements:{field_number:3  field_name:"int32"  field_type:TYPE_MESSAGE}  elements:{field_number:4  field_name:"gt"  field_type:TYPE_INT32}
+  - proto3/scalar/ignore_always/valid/populated_invalid_value
+  #       input: [type.googleapis.com/buf.validate.conformance.cases.Proto3ScalarIgnoreAlways]:{val:-123}
+  #        want: valid
+  #         got: validation error (1 violation)
+  #          1. constraint_id: "int32.gt"
+  #             message: "value must be greater than 0"
+  #             field: "val" elements:{field_number:1  field_name:"val"  field_type:TYPE_INT32}
+  #             rule: "int32.gt" elements:{field_number:3  field_name:"int32"  field_type:TYPE_MESSAGE}  elements:{field_number:4  field_name:"gt"  field_type:TYPE_INT32}
+  - proto3/scalar/optional/ignore_always/valid/default_invalid_value
+  #       input: [type.googleapis.com/buf.validate.conformance.cases.Proto3ScalarOptionalIgnoreAlways]:{val:0}
+  #        want: valid
+  #         got: validation error (1 violation)
+  #          1. constraint_id: "int32.gt"
+  #             message: "value must be greater than 0"
+  #             field: "val" elements:{field_number:1  field_name:"val"  field_type:TYPE_INT32}
+  #             rule: "int32.gt" elements:{field_number:3  field_name:"int32"  field_type:TYPE_MESSAGE}  elements:{field_number:4  field_name:"gt"  field_type:TYPE_INT32}
+  - proto3/scalar/optional/ignore_always/valid/populated_invalid_value
+  #       input: [type.googleapis.com/buf.validate.conformance.cases.Proto3ScalarOptionalIgnoreAlways]:{val:-123}
+  #        want: valid
+  #         got: validation error (1 violation)
+  #          1. constraint_id: "int32.gt"
+  #             message: "value must be greater than 0"
+  #             field: "val" elements:{field_number:1  field_name:"val"  field_type:TYPE_INT32}
+  #             rule: "int32.gt" elements:{field_number:3  field_name:"int32"  field_type:TYPE_MESSAGE}  elements:{field_number:4  field_name:"gt"  field_type:TYPE_INT32}
