@@ -698,21 +698,10 @@ final class Ipv4 {
   }
 
   /**
-
-
-  0000000000000000000000000000000010011000101100001001101010111001
-  
-  0000000000000000111111111111111111111111111111111111111111111111
-
-  */
-
-
-
-  /**
    * Returns the 32-bit value of an address parsed through address() or addressPrefix().
-   * 
-   * Note Java does not support unsigned numeric types, so to handle unsigned
-   * 32-bit values, we need to use a 64-bit long type instead of the 32-bit (signed) Integer type.
+   *
+   * <p>Note Java does not support unsigned numeric types, so to handle unsigned 32-bit values, we
+   * need to use a 64-bit long type instead of the 32-bit (signed) Integer type.
    *
    * <p>Returns 0 if no address was parsed successfully.
    */
@@ -736,7 +725,7 @@ final class Ipv4 {
 
     int mask = 0;
     if (this.prefixLen == 32) {
-			mask = 0xffffffff;
+      mask = 0xffffffff;
     } else {
       mask = ~(0xffffffff >>> this.prefixLen) >>> 0;
     }
@@ -922,9 +911,9 @@ final class Ipv6 {
       // right-most 32 bits
       long dotted32 = this.dottedAddr.getBits();
       // high 16 bits
-      p16.add((int)(dotted32 >> 16));
+      p16.add((int) (dotted32 >> 16));
       // low 16 bits
-      p16.add((int)dotted32);
+      p16.add((int) dotted32);
     }
 
     // handle double colon, fill pieces with 0
@@ -963,11 +952,11 @@ final class Ipv6 {
 
       long mask = 0L;
       if (size >= 64) {
-			mask = 0xFFFFFFFFFFFFFFFFL;
+        mask = 0xFFFFFFFFFFFFFFFFL;
       } else if (size < 0) {
         mask = 0x0;
       } else {
-          mask = ~(0xFFFFFFFFFFFFFFFFL >>> size) >>> 0;
+        mask = ~(0xFFFFFFFFFFFFFFFFL >>> size) >>> 0;
       }
       long masked = (p64 & mask) >>> 0;
       if (p64 != masked) {
