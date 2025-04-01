@@ -271,7 +271,6 @@ dependencies {
     implementation(enforcedPlatform(libs.cel))
     implementation(libs.cel.core)
     implementation(libs.guava)
-    implementation(libs.ipaddress)
 
     buf("build.buf:buf:${libs.versions.buf.get()}:${osdetector.classifier}@exe")
 
