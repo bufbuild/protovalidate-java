@@ -486,7 +486,7 @@ final class CustomOverload {
     return ((isHostname(host) || isIP(host, 4)) && isPort(port));
   }
 
-  // isPort returns true if the string is a valid port for isHostAndPort.
+  // Returns true if the string is a valid port for isHostAndPort.
   private static boolean isPort(String str) {
     if (str.length() == 0) {
       return false;
@@ -672,7 +672,7 @@ final class CustomOverload {
    * <p>The same principle applies to IPv4 addresses. "192.168.1.0/24" designates the first 24 bits
    * of the 32-bit IPv4 as the network prefix.
    */
-  public static boolean isIPPrefix(String str, long version, boolean strict) {
+  static boolean isIPPrefix(String str, long version, boolean strict) {
     if (version == 6L) {
       Ipv6 ip = new Ipv6(str);
       return ip.addressPrefix() && (!strict || ip.isPrefixOnly());
@@ -705,7 +705,7 @@ final class Ipv4 {
    *
    * <p>Returns 0 if no address was parsed successfully.
    */
-  public int getBits() {
+  int getBits() {
     if (this.octets.size() != 4) {
       return -1;
     }
@@ -720,7 +720,7 @@ final class Ipv4 {
    *
    * <p>Behavior is undefined if addressPrefix() has not been called before, or has returned false.
    */
-  public boolean isPrefixOnly() {
+  boolean isPrefixOnly() {
     int bits = this.getBits();
 
     int mask = 0;
@@ -736,18 +736,19 @@ final class Ipv4 {
   }
 
   // Parses an IPv4 Address in dotted decimal notation.
-  public boolean address() {
+  boolean address() {
     return this.addressPart() && this.index == this.str.length();
   }
 
   // Parses an IPv4 Address prefix.
-  public boolean addressPrefix() {
+  boolean addressPrefix() {
     return this.addressPart()
         && this.take('/')
         && this.prefixLength()
         && this.index == this.str.length();
   }
 
+  // Stores value in `prefixLen`
   private boolean prefixLength() {
     int start = this.index;
 
@@ -851,6 +852,13 @@ final class Ipv4 {
     }
   }
 
+  /**
+   * Reports whether the current position is a digit.
+   *
+   * <p>Method parses the rule:
+   *
+   * <p>DIGIT = %x30-39 ; 0-9
+   */
   private boolean digit() {
     char c = this.str.charAt(this.index);
     if ('0' <= c && c <= '9') {
@@ -860,6 +868,11 @@ final class Ipv4 {
     return false;
   }
 
+  /**
+   * Take the given char at the current index.
+   *
+   * <p>If char is at the current index, increment the index.
+   */
   private boolean take(char c) {
     if (this.index >= this.str.length()) {
       return false;
@@ -943,7 +956,7 @@ final class Ipv6 {
     };
   }
 
-  public boolean isPrefixOnly() {
+  boolean isPrefixOnly() {
     // For each 64-bit piece of the address, require that values to the right of the prefix are zero
     long[] bits = this.getBits();
     for (int i = 0; i < bits.length; i++) {
@@ -968,11 +981,12 @@ final class Ipv6 {
   }
 
   // Parses an IPv6 Address following RFC 4291, with optional zone id following RFC 4007.
-  public boolean address() {
+  boolean address() {
     return this.addressPart() && this.index == this.str.length();
   }
 
-  public boolean addressPrefix() {
+  // Parse IPv6 Address Prefix following RFC 4291. Zone id is not permitted.
+  boolean addressPrefix() {
     return this.addressPart()
         && !this.zoneIDFound
         && this.take('/')
@@ -980,6 +994,7 @@ final class Ipv6 {
         && this.index == this.str.length();
   }
 
+  // Stores value in `prefixLen`
   private boolean prefixLength() {
     int start = this.index;
 
@@ -1023,6 +1038,7 @@ final class Ipv6 {
     }
   }
 
+  // Stores dotted notation for right-most 32 bits in `dottedRaw` / `dottedAddr` if found.
   private boolean addressPart() {
     while (true) {
       if (this.index >= this.str.length()) {
@@ -1067,6 +1083,12 @@ final class Ipv6 {
     return this.doubleColonSeen || this.pieces.size() == 8;
   }
 
+  /**
+   * There is no definition for the character set allowed in the zone identifier. RFC 4007 permits
+   * basically any non-null string.
+   *
+   * <p>RFC 6874: ZoneID = 1*( unreserved / pct-encoded )
+   */
   private boolean zoneID() {
     int start = this.index;
 
@@ -1086,6 +1108,15 @@ final class Ipv6 {
     return false;
   }
 
+  /**
+   * Determines whether string contains a dotted address.
+   *
+   * <p>Method parses the rule:
+   *
+   * <p>1*3DIGIT "." 1*3DIGIT "." 1*3DIGIT "." 1*3DIGIT
+   *
+   * <p>Stores match in dottedRaw.
+   */
   private boolean dotted() {
     int start = this.index;
 
@@ -1109,6 +1140,15 @@ final class Ipv6 {
     return false;
   }
 
+  /**
+   * Determine whether string contains an h16.
+   *
+   * <p>Method parses the rule:
+   *
+   * <p>h16 = 1*4HEXDIG
+   *
+   * <p>Stores 16-bit value in pieces.
+   */
   private boolean h16() {
     int start = this.index;
 
@@ -1143,6 +1183,13 @@ final class Ipv6 {
     }
   }
 
+  /**
+   * Reports whether the current position is a hex digit.
+   *
+   * <p>Method parses the rule:
+   *
+   * <p>HEXDIG = DIGIT / "A" / "B" / "C" / "D" / "E" / "F"
+   */
   private boolean hexDig() {
     char c = this.str.charAt(this.index);
 
@@ -1155,6 +1202,13 @@ final class Ipv6 {
     return false;
   }
 
+  /**
+   * Reports whether the current position is a digit.
+   *
+   * <p>Method parses the rule:
+   *
+   * <p>DIGIT = %x30-39 ; 0-9
+   */
   private boolean digit() {
     char c = this.str.charAt(this.index);
     if ('0' <= c && c <= '9') {
@@ -1164,6 +1218,11 @@ final class Ipv6 {
     return false;
   }
 
+  /**
+   * Take the given char at the current index.
+   *
+   * <p>If char is at the current index, increment the index.
+   */
   private boolean take(char c) {
     if (this.index >= this.str.length()) {
       return false;
