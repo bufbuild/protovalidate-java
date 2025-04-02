@@ -615,24 +615,22 @@ final class CustomOverload {
   }
 
   /**
-   * Returns true if the string is a URI, for example "https://example.com/foo/bar?baz=quux#frag".
+   * Validates if the input string is a valid URI, which can be a URL or a URN.
    *
-   * <p>URI is defined in the internet standard RFC 3986. Zone Identifiers in IPv6 address literals
-   * are supported (RFC 6874).
+   * @param val The input string to validate as a URI.
+   * @param checkAbsolute Whether to check if this URI is absolute (i.e. has a scheme component)
+   * @return {@code true} if the input string is a valid URI, {@code false} otherwise.
    */
-  public static boolean isURI(String str) {
-    return new Uri(str).uri();
-  }
-
-  /**
-   * Returns true if the string is a URI Reference - a URI such as
-   * "https://example.com/foo/bar?baz=quux#frag", or a Relative Reference such as "./foo/bar?query".
-   *
-   * <p>URI, URI Reference, and Relative Reference are defined in the internet standard RFC 3986.
-   * Zone Identifiers in IPv6 address literals are supported (RFC 6874).
-   */
-  private static boolean isURIRef(String str) {
-    return new Uri(str).uriReference();
+  private static boolean validateURI(String val, boolean checkAbsolute) {
+    try {
+      URI uri = new URI(val);
+      if (checkAbsolute) {
+        return uri.isAbsolute();
+      }
+      return true;
+    } catch (URISyntaxException e) {
+      return false;
+    }
   }
 
   /**
