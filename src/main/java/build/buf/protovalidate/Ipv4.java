@@ -80,11 +80,7 @@ final class Ipv4 {
   private boolean prefixLength() {
     int start = this.index;
 
-    while (true) {
-      if (this.index >= this.str.length() || !this.digit()) {
-        break;
-      }
-
+    while (this.index < this.str.length() && this.digit()) {
       if (this.index - start > 2) {
         // max prefix-length is 32 bits, so anything more than 2 digits is invalid
         return false;
@@ -138,11 +134,7 @@ final class Ipv4 {
   private boolean decOctet() {
     int start = this.index;
 
-    while (true) {
-      if (this.index >= this.str.length() || !this.digit()) {
-        break;
-      }
-
+    while (this.index < this.str.length() && this.digit()) {
       if (this.index - start > 3) {
         // decimal octet can be three characters at most
         return false;

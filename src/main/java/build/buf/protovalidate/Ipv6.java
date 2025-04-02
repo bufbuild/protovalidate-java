@@ -62,10 +62,7 @@ final class Ipv6 {
 
     // handle double colon, fill pieces with 0
     if (this.doubleColonSeen) {
-      while (true) {
-        if (p16.size() >= 8) {
-          break;
-        }
+      while (p16.size() < 8) {
         p16.add(this.doubleColonAt, 0x00000000);
       }
     }
@@ -128,10 +125,7 @@ final class Ipv6 {
   private boolean prefixLength() {
     int start = this.index;
 
-    while (true) {
-      if (this.index >= this.str.length() || !this.digit()) {
-        break;
-      }
+    while (this.index < this.str.length() && this.digit()) {
       if (this.index - start > 3) {
         return false;
       }
@@ -167,10 +161,7 @@ final class Ipv6 {
 
   // Stores dotted notation for right-most 32 bits in `dottedRaw` / `dottedAddr` if found.
   private boolean addressPart() {
-    while (true) {
-      if (this.index >= this.str.length()) {
-        break;
-      }
+    while (this.index < this.str.length()) {
       // dotted notation for right-most 32 bits, e.g. 0:0:0:0:0:ffff:192.1.56.10
       if ((this.doubleColonSeen || this.pieces.size() == 6) && this.dotted()) {
         Ipv4 dotted = new Ipv4(this.dottedRaw);
@@ -249,12 +240,7 @@ final class Ipv6 {
 
     this.dottedRaw = "";
 
-    while (true) {
-      if (this.index < this.str.length() && (this.digit() || this.take('.'))) {
-        continue;
-      }
-      break;
-    }
+    while (this.index < this.str.length() && (this.digit() || this.take('.'))) {}
 
     if (this.index - start >= 7) {
       this.dottedRaw = this.str.substring(start, this.index);
@@ -279,11 +265,7 @@ final class Ipv6 {
   private boolean h16() {
     int start = this.index;
 
-    while (true) {
-      if (this.index >= this.str.length() || !this.hexDig()) {
-        break;
-      }
-    }
+    while (this.index < this.str.length() && this.hexDig()) {}
 
     String str = this.str.substring(start, this.index);
 
