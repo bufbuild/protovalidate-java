@@ -328,6 +328,9 @@ final class CustomOverload {
             return Err.noSuchOverload(value, OVERLOAD_IS_URI, null);
           }
           String addr = (String) value.value();
+          if (addr.isEmpty()) {
+            return BoolT.False;
+          }
           return Types.boolOf(validateURI(addr, true));
         });
   }
@@ -345,6 +348,9 @@ final class CustomOverload {
             return Err.noSuchOverload(value, OVERLOAD_IS_URI_REF, null);
           }
           String addr = (String) value.value();
+          if (addr.isEmpty()) {
+            return BoolT.False;
+          }
           return Types.boolOf(validateURI(addr, false));
         });
   }
