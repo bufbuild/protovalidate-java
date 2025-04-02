@@ -55,10 +55,10 @@ final class Ipv4 {
     if (this.prefixLen == 32) {
       mask = 0xffffffff;
     } else {
-      mask = ~(0xffffffff >>> this.prefixLen) >>> 0;
+      mask = ~(0xffffffff >>> this.prefixLen);
     }
 
-    int masked = (bits & mask) >>> 0;
+    int masked = bits & mask;
 
     return bits == masked;
   }

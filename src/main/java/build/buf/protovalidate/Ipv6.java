@@ -96,9 +96,9 @@ final class Ipv6 {
       } else if (size < 0) {
         mask = 0x0;
       } else {
-        mask = ~(0xFFFFFFFFFFFFFFFFL >>> size) >>> 0;
+        mask = ~(0xFFFFFFFFFFFFFFFFL >>> size);
       }
-      long masked = (p64 & mask) >>> 0;
+      long masked = p64 & mask;
       if (p64 != masked) {
         return false;
       }
