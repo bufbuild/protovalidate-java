@@ -348,7 +348,7 @@ final class CustomOverload {
             return Err.noSuchOverload(value, OVERLOAD_IS_URI_REF, null);
           }
           String addr = (String) value.value();
-          return Types.boolOf(validateURIRef(addr, false));
+          return Types.boolOf(validateURI(addr, false));
         });
   }
 
@@ -668,7 +668,7 @@ final class Ipv4 {
   private String str;
   private int index;
   private List<Short> octets;
-  private long prefixLen;
+  private int prefixLen;
 
   Ipv4(String str) {
     this.str = str;
@@ -872,7 +872,7 @@ final class Ipv6 {
   @Nullable private Ipv4 dottedAddr;
   private boolean zoneIDFound;
   // 0 - 128
-  private long prefixLen;
+  private int prefixLen;
 
   Ipv6(String str) {
     this.str = str;
@@ -969,7 +969,10 @@ final class Ipv6 {
   private boolean prefixLength() {
     int start = this.index;
 
-    while (this.index >= this.str.length() || !this.digit()) {
+    while (true) {
+        if (this.index >= this.str.length() || !this.digit()) {
+            break;
+        }
       if (this.index - start > 3) {
         return false;
       }
