@@ -15,8 +15,6 @@
 package build.buf.protovalidate;
 
 import com.google.common.primitives.Bytes;
-import java.net.URI;
-import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -74,8 +72,8 @@ final class CustomOverload {
       celIsEmail(),
       celIsIp(),
       celIsIpPrefix(),
-      isUri(),
-      isUriRef(),
+      celIsUri(),
+      celIsUriRef(),
       isNan(),
       isInf(),
       celIsHostAndPort(),
@@ -230,9 +228,6 @@ final class CustomOverload {
             return Err.noSuchOverload(value, OVERLOAD_IS_HOSTNAME, null);
           }
           String host = (String) value.value();
-          if (host.isEmpty()) {
-            return BoolT.False;
-          }
           return Types.boolOf(isHostname(host));
         });
   }
@@ -250,9 +245,6 @@ final class CustomOverload {
             return Err.noSuchOverload(value, OVERLOAD_IS_EMAIL, null);
           }
           String addr = (String) value.value();
-          if (addr.isEmpty()) {
-            return BoolT.False;
-          }
           return Types.boolOf(isEmail(addr));
         });
   }
@@ -271,9 +263,6 @@ final class CustomOverload {
             return Err.noSuchOverload(value, OVERLOAD_IS_IP, null);
           }
           String addr = (String) value.value();
-          if (addr.isEmpty()) {
-            return BoolT.False;
-          }
           return Types.boolOf(isIP(addr, 0L));
         },
         (lhs, rhs) -> {
@@ -281,9 +270,6 @@ final class CustomOverload {
             return Err.noSuchOverload(lhs, OVERLOAD_IS_IP, rhs);
           }
           String address = (String) lhs.value();
-          if (address.isEmpty()) {
-            return BoolT.False;
-          }
           return Types.boolOf(isIP(address, rhs.intValue()));
         },
         null);
@@ -304,9 +290,6 @@ final class CustomOverload {
             return Err.noSuchOverload(value, OVERLOAD_IS_IP_PREFIX, null);
           }
           String prefix = (String) value.value();
-          if (prefix.isEmpty()) {
-            return BoolT.False;
-          }
           return Types.boolOf(isIPPrefix(prefix, 0L, false));
         },
         (lhs, rhs) -> {
@@ -316,9 +299,6 @@ final class CustomOverload {
             return Err.noSuchOverload(lhs, OVERLOAD_IS_IP_PREFIX, rhs);
           }
           String prefix = (String) lhs.value();
-          if (prefix.isEmpty()) {
-            return BoolT.False;
-          }
           if (rhs.type().typeEnum() == TypeEnum.Int) {
             return Types.boolOf(isIPPrefix(prefix, rhs.intValue(), false));
           }
@@ -332,9 +312,6 @@ final class CustomOverload {
             return Err.noSuchOverload(values[0], OVERLOAD_IS_IP_PREFIX, "", values);
           }
           String prefix = (String) values[0].value();
-          if (prefix.isEmpty()) {
-            return BoolT.False;
-          }
           return Types.boolOf(isIPPrefix(prefix, values[1].intValue(), values[2].booleanValue()));
         });
   }
@@ -344,7 +321,7 @@ final class CustomOverload {
    *
    * @return The {@link Overload} instance for the "isUri" operation.
    */
-  private static Overload isUri() {
+  private static Overload celIsUri() {
     return Overload.unary(
         OVERLOAD_IS_URI,
         value -> {
@@ -352,10 +329,7 @@ final class CustomOverload {
             return Err.noSuchOverload(value, OVERLOAD_IS_URI, null);
           }
           String addr = (String) value.value();
-          if (addr.isEmpty()) {
-            return BoolT.False;
-          }
-          return Types.boolOf(validateURI(addr, true));
+          return Types.boolOf(isURI(addr));
         });
   }
 
@@ -364,7 +338,7 @@ final class CustomOverload {
    *
    * @return The {@link Overload} instance for the "isUriRef" operation.
    */
-  private static Overload isUriRef() {
+  private static Overload celIsUriRef() {
     return Overload.unary(
         OVERLOAD_IS_URI_REF,
         value -> {
@@ -372,10 +346,7 @@ final class CustomOverload {
             return Err.noSuchOverload(value, OVERLOAD_IS_URI_REF, null);
           }
           String addr = (String) value.value();
-          if (addr.isEmpty()) {
-            return BoolT.False;
-          }
-          return Types.boolOf(validateURI(addr, false));
+          return Types.boolOf(isURIRef(addr));
         });
   }
 
@@ -449,15 +420,19 @@ final class CustomOverload {
    * <p>If the argument portRequired is true, the port is required. If the argument is false, the
    * port is optional.
    *
-   * <p>The host can be one of: - An IPv4 address in dotted decimal format, for example
-   * "192.168.0.1". - An IPv6 address enclosed in square brackets, for example "[::1]". - A
-   * hostname, for example "example.com".
+   * <p>The host can be one of:
+   *
+   * <ul>
+   *   <li>An IPv4 address in dotted decimal format, for example "192.168.0.1".
+   *   <li>An IPv6 address enclosed in square brackets, for example "[::1]".
+   *   <li>A hostname, for example "example.com".
+   * </ul>
    *
    * <p>The port is separated by a colon. It must be non-empty, with a decimal number in the range
    * of 0-65535, inclusive.
    */
   private static boolean isHostAndPort(String str, boolean portRequired) {
-    if (str.length() == 0) {
+    if (str.isEmpty()) {
       return false;
     }
 
@@ -471,9 +446,8 @@ final class CustomOverload {
         return !portRequired && isIP(str.substring(1, end), 6);
       } else if (endPlus == splitIdx) { // port
         return isIP(str.substring(1, end), 6) && isPort(str.substring(splitIdx + 1));
-      } else { // malformed
-        return false;
       }
+      return false; // malformed
     }
 
     if (splitIdx < 0) {
@@ -488,7 +462,7 @@ final class CustomOverload {
 
   // Returns true if the string is a valid port for isHostAndPort.
   private static boolean isPort(String str) {
-    if (str.length() == 0) {
+    if (str.isEmpty()) {
       return false;
     }
 
@@ -502,11 +476,8 @@ final class CustomOverload {
 
     try {
       int val = Integer.parseInt(str);
-
       return val <= 65535;
-
     } catch (NumberFormatException nfe) {
-      // Error converting to number
       return false;
     }
   }
@@ -564,11 +535,16 @@ final class CustomOverload {
   /**
    * Returns true if the string is a valid hostname, for example "foo.example.com".
    *
-   * <p>A valid hostname follows the rules below: - The name consists of one or more labels,
-   * separated by a dot ("."). - Each label can be 1 to 63 alphanumeric characters. - A label can
-   * contain hyphens ("-"), but must not start or end with a hyphen. - The right-most label must not
-   * be digits only. - The name can have a trailing dot, for example "foo.example.com.". - The name
-   * can be 253 characters at most, excluding the optional trailing dot.
+   * <p>A valid hostname follows the rules below:
+   *
+   * <ul>
+   *   <li>The name consists of one or more labels, separated by a dot (".").
+   *   <li>Each label can be 1 to 63 alphanumeric characters.
+   *   <li>A label can contain hyphens ("-"), but must not start or end with a hyphen.
+   *   <li>The right-most label must not be digits only.
+   *   <li>The name can have a trailing dot, for example "foo.example.com.".
+   *   <li>The name can be 253 characters at most, excluding the optional trailing dot.
+   * </ul>
    */
   private static boolean isHostname(String val) {
     if (val.length() > 253) {
@@ -625,7 +601,7 @@ final class CustomOverload {
    * <p>Both formats are well-defined in the internet standard RFC 3986. Zone identifiers for IPv6
    * addresses (for example "fe80::a%en1") are supported.
    */
-  private static boolean isIP(String addr, long ver) {
+  static boolean isIP(String addr, long ver) {
     if (ver == 6L) {
       return new Ipv6(addr).address();
     } else if (ver == 4L) {
@@ -637,22 +613,24 @@ final class CustomOverload {
   }
 
   /**
-   * Validates if the input string is a valid URI, which can be a URL or a URN.
+   * Returns true if the string is a URI, for example "https://example.com/foo/bar?baz=quux#frag".
    *
-   * @param val The input string to validate as a URI.
-   * @param checkAbsolute Whether to check if this URI is absolute (i.e. has a scheme component)
-   * @return {@code true} if the input string is a valid URI, {@code false} otherwise.
+   * <p>URI is defined in the internet standard RFC 3986. Zone Identifiers in IPv6 address literals
+   * are supported (RFC 6874).
    */
-  private static boolean validateURI(String val, boolean checkAbsolute) {
-    try {
-      URI uri = new URI(val);
-      if (checkAbsolute) {
-        return uri.isAbsolute();
-      }
-      return true;
-    } catch (URISyntaxException e) {
-      return false;
-    }
+  public static boolean isURI(String str) {
+    return new Uri(str).uri();
+  }
+
+  /**
+   * Returns true if the string is a URI Reference - a URI such as
+   * "https://example.com/foo/bar?baz=quux#frag", or a Relative Reference such as "./foo/bar?query".
+   *
+   * <p>URI, URI Reference, and Relative Reference are defined in the internet standard RFC 3986.
+   * Zone Identifiers in IPv6 address literals are supported (RFC 6874).
+   */
+  private static boolean isURIRef(String str) {
+    return new Uri(str).uriReference();
   }
 
   /**
@@ -672,7 +650,7 @@ final class CustomOverload {
    * <p>The same principle applies to IPv4 addresses. "192.168.1.0/24" designates the first 24 bits
    * of the 32-bit IPv4 as the network prefix.
    */
-  static boolean isIPPrefix(String str, long version, boolean strict) {
+  private static boolean isIPPrefix(String str, long version, boolean strict) {
     if (version == 6L) {
       Ipv6 ip = new Ipv6(str);
       return ip.addressPrefix() && (!strict || ip.isPrefixOnly());
@@ -700,10 +678,7 @@ final class Ipv4 {
   /**
    * Returns the 32-bit value of an address parsed through address() or addressPrefix().
    *
-   * <p>Note Java does not support unsigned numeric types, so to handle unsigned 32-bit values, we
-   * need to use a 64-bit long type instead of the 32-bit (signed) Integer type.
-   *
-   * <p>Returns 0 if no address was parsed successfully.
+   * <p>Returns -1 if no address was parsed successfully.
    */
   int getBits() {
     if (this.octets.size() != 4) {
@@ -764,7 +739,7 @@ final class Ipv4 {
     }
 
     String str = this.str.substring(start, this.index);
-    if (str.length() == 0) {
+    if (str.isEmpty()) {
       // too short
       return false;
     }
@@ -783,11 +758,8 @@ final class Ipv4 {
       }
 
       this.prefixLen = val;
-
       return true;
-
     } catch (NumberFormatException nfe) {
-      // Error converting to number
       return false;
     }
   }
@@ -825,7 +797,7 @@ final class Ipv4 {
     }
 
     String str = this.str.substring(start, this.index);
-    if (str.length() == 0) {
+    if (str.isEmpty()) {
       // too short
       return false;
     }
@@ -845,7 +817,6 @@ final class Ipv4 {
       this.octets.add((short) val);
 
       return true;
-
     } catch (NumberFormatException nfe) {
       // Error converting to number
       return false;
@@ -857,7 +828,7 @@ final class Ipv4 {
    *
    * <p>Method parses the rule:
    *
-   * <p>DIGIT = %x30-39 ; 0-9
+   * <pre>DIGIT = %x30-39 ; 0-9
    */
   private boolean digit() {
     char c = this.str.charAt(this.index);
@@ -900,7 +871,7 @@ final class Ipv6 {
   // dotted notation successfully parsed as IPv4
   @Nullable private Ipv4 dottedAddr;
   private boolean zoneIDFound;
-  // 0 -128
+  // 0 - 128
   private long prefixLen;
 
   Ipv6(String str) {
@@ -998,11 +969,7 @@ final class Ipv6 {
   private boolean prefixLength() {
     int start = this.index;
 
-    while (true) {
-      if (this.index >= this.str.length() || !this.digit()) {
-        break;
-      }
-
+    while (this.index >= this.str.length() || !this.digit()) {
       if (this.index - start > 3) {
         return false;
       }
@@ -1010,7 +977,7 @@ final class Ipv6 {
 
     String str = this.str.substring(start, this.index);
 
-    if (str.length() == 0) {
+    if (str.isEmpty()) {
       // too short
       return false;
     }
@@ -1029,9 +996,7 @@ final class Ipv6 {
       }
 
       this.prefixLen = val;
-
       return true;
-
     } catch (NumberFormatException nfe) {
       // Error converting to number
       return false;
@@ -1087,7 +1052,7 @@ final class Ipv6 {
    * There is no definition for the character set allowed in the zone identifier. RFC 4007 permits
    * basically any non-null string.
    *
-   * <p>RFC 6874: ZoneID = 1*( unreserved / pct-encoded )
+   * <pre>RFC 6874: ZoneID = 1*( unreserved / pct-encoded )
    */
   private boolean zoneID() {
     int start = this.index;
@@ -1113,7 +1078,7 @@ final class Ipv6 {
    *
    * <p>Method parses the rule:
    *
-   * <p>1*3DIGIT "." 1*3DIGIT "." 1*3DIGIT "." 1*3DIGIT
+   * <pre>1*3DIGIT "." 1*3DIGIT "." 1*3DIGIT "." 1*3DIGIT
    *
    * <p>Stores match in dottedRaw.
    */
@@ -1145,7 +1110,7 @@ final class Ipv6 {
    *
    * <p>Method parses the rule:
    *
-   * <p>h16 = 1*4HEXDIG
+   * <pre>h16 = 1*4HEXDIG
    *
    * <p>Stores 16-bit value in pieces.
    */
@@ -1160,7 +1125,7 @@ final class Ipv6 {
 
     String str = this.str.substring(start, this.index);
 
-    if (str.length() == 0) {
+    if (str.isEmpty()) {
       // too short
       return false;
     }
@@ -1174,9 +1139,7 @@ final class Ipv6 {
       int val = Integer.parseInt(str, 16);
 
       this.pieces.add(val);
-
       return true;
-
     } catch (NumberFormatException nfe) {
       // Error converting to number
       return false;
@@ -1188,7 +1151,7 @@ final class Ipv6 {
    *
    * <p>Method parses the rule:
    *
-   * <p>HEXDIG = DIGIT / "A" / "B" / "C" / "D" / "E" / "F"
+   * <pre>HEXDIG = DIGIT / "A" / "B" / "C" / "D" / "E" / "F"
    */
   private boolean hexDig() {
     char c = this.str.charAt(this.index);
@@ -1207,7 +1170,7 @@ final class Ipv6 {
    *
    * <p>Method parses the rule:
    *
-   * <p>DIGIT = %x30-39 ; 0-9
+   * <pre>DIGIT = %x30-39 ; 0-9
    */
   private boolean digit() {
     char c = this.str.charAt(this.index);
