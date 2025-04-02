@@ -15,6 +15,8 @@
 package build.buf.protovalidate;
 
 import com.google.common.primitives.Bytes;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
