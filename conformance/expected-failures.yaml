@@ -107,14 +107,6 @@ custom_constraints:
   #ERROR: <input>:1:1: expression of type 'int' cannot be range of a comprehension (must be list, map, or dynamic)
   # | this.all(e, e == 1)
   # | ^
-library/is_uri:
-  # - valid/host_reg-name_pct-encoded_ascii
-  - valid/host_ipv6_zone-id_pct-encoded_ascii
-  - valid/host_reg-name_pct-encoded_utf8
-  - valid/host_ipv6_zone-id_pct-encoded_utf8
-library/is_uri_ref:
-  - valid/empty_string
-  - valid/path-empty
 standard_constraints/ignore:
   - proto/2023/map/ignore_always/invalid/populated
   #       input: [type.googleapis.com/buf.validate.conformance.cases.EditionsMapIgnoreAlways]:{val:{key:1  value:1}}
