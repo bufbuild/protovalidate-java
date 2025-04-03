@@ -14,8 +14,8 @@ plugins {
 }
 
 java {
-    sourceCompatibility = JavaVersion.VERSION_11
-    targetCompatibility = JavaVersion.VERSION_11
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
 }
 
 // The releaseVersion property is set on official releases in the release.yml workflow.
@@ -141,7 +141,7 @@ tasks.withType<JavaCompile> {
     dependsOn("generateTestSources")
     if (JavaVersion.current().isJava9Compatible) {
         doFirst {
-            options.compilerArgs = mutableListOf("--release", "11")
+            options.compilerArgs = mutableListOf("--release", "8")
         }
     }
     // Disable errorprone on generated code
@@ -217,9 +217,6 @@ allprojects {
     }
     tasks.withType<Test>().configureEach {
         useJUnitPlatform()
-        this.testLogging {
-            this.showStandardStreams = true
-        }
     }
 }
 

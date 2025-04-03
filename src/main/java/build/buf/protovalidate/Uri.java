@@ -167,9 +167,7 @@ final class Uri {
     int start = this.index;
 
     if (this.alpha()) {
-      while (this.alpha() || this.digit() || this.take('+') || this.take('-') || this.take('.')) {
-        // continue
-      }
+      while (this.alpha() || this.digit() || this.take('+') || this.take('-') || this.take('.')) {}
 
       if (this.str.charAt(this.index) == ':') {
         return true;
@@ -274,7 +272,17 @@ final class Uri {
     int unhex(char c);
   }
 
-  /** Verifies that str is correctly percent-encoded. */
+  /** 
+   * Verifies that str is correctly percent-encoded. 
+   *
+   * Note that we essentially want to mimic the behavior of decodeURIComponent, 
+   * which would fail on malformed URLs. Java does have various methods for 
+   * decoding URLs, but none behave consistently with decodeURIComponent.
+   *
+   * The code below is a combination of `checkHostPctEncoded` from the
+   * protovalidate-go implementation and Java's java.net.URI#decode methods.
+   *
+   **/
   private boolean checkHostPctEncoded(String str) {
     UnhexOperation fn =
         c -> {
@@ -435,9 +443,7 @@ final class Uri {
   private boolean ipv6Address() {
     int start = this.index;
 
-    while (this.hexDig() || this.take(':')) {
-      // continue
-    }
+    while (this.hexDig() || this.take(':')) {}
 
     if (CustomOverload.isIp(this.str.substring(start, this.index), 6)) {
       return true;
@@ -477,9 +483,7 @@ final class Uri {
   private boolean zoneID() {
     int start = this.index;
 
-    while (this.unreserved() || this.pctEncoded()) {
-      // continue
-    }
+    while (this.unreserved() || this.pctEncoded()) {}
 
     if (this.index - start > 0) {
       return true;
@@ -501,9 +505,7 @@ final class Uri {
     int start = this.index;
 
     if (this.take('v') && this.hexDig()) {
-      while (this.hexDig()) {
-        // continue;
-      }
+      while (this.hexDig()) {}
 
       if (this.take('.')) {
         int j = 0;
@@ -588,9 +590,7 @@ final class Uri {
   private boolean pathAbempty() {
     int start = this.index;
 
-    while (this.take('/') && this.segment()) {
-      // continue
-    }
+    while (this.take('/') && this.segment()) {}
 
     if (this.isPathEnd()) {
       return true;
@@ -615,9 +615,7 @@ final class Uri {
 
     if (this.take('/')) {
       if (this.segmentNz()) {
-        while (this.take('/') && this.segment()) {
-          // continue
-        }
+        while (this.take('/') && this.segment()) {}
       }
 
       if (this.isPathEnd()) {
@@ -643,9 +641,7 @@ final class Uri {
     int start = this.index;
 
     if (this.segmentNzNc()) {
-      while (this.take('/') && this.segment()) {
-        // continue
-      }
+      while (this.take('/') && this.segment()) {}
 
       if (this.isPathEnd()) {
         return true;
@@ -670,9 +666,7 @@ final class Uri {
     int start = this.index;
 
     if (this.segmentNz()) {
-      while (this.take('/') && this.segment()) {
-        // continue
-      }
+      while (this.take('/') && this.segment()) {}
 
       if (this.isPathEnd()) {
         return true;
