@@ -14,6 +14,20 @@
 
 package build.buf.protovalidate;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
+import java.net.URLEncoder;
+import java.nio.ByteBuffer;
+import java.nio.CharBuffer;
+import java.nio.charset.CoderResult;
+import java.nio.charset.CharacterCodingException;
+import java.nio.charset.Charset;
+import java.nio.charset.CharsetDecoder;
+import java.nio.charset.CodingErrorAction;
+import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
+import java.util.List;
+
 final class Uri {
   private String str;
   private int index;
@@ -35,22 +49,18 @@ final class Uri {
 
     if (!(this.scheme() && this.take(':') && this.hierPart())) {
       this.index = start;
-      System.err.println("failed hier");
       return false;
     }
 
     if (this.take('?') && !this.query()) {
-      System.err.println("failed cuir");
       return false;
     }
 
     if (this.take('#') && !this.fragment()) {
-      System.err.println("failed fragomen");
       return false;
     }
 
     if (this.index != this.str.length()) {
-      System.err.println("failed index");
       this.index = start;
       return false;
     }
@@ -71,7 +81,6 @@ final class Uri {
     int start = this.index;
 
     if (this.take('/') && this.take('/') && this.authority() && this.pathAbempty()) {
-      System.err.println("trooby");
       return true;
     }
 
@@ -154,28 +163,24 @@ final class Uri {
     if (this.userinfo()) {
       if (!this.take('@')) {
         this.index = start;
-        System.err.println("auth1 fail");
         return false;
       }
     }
 
     if (!this.host()) {
       this.index = start;
-      System.err.println("auth2 fail");
       return false;
     }
 
     if (this.take(':')) {
       if (!this.port()) {
         this.index = start;
-        System.err.println("auth3 fail");
         return false;
       }
     }
 
     if (!this.isAuthorityEnd()) {
       this.index = start;
-      System.err.println("auth4 fail");
       return false;
     }
 
@@ -215,49 +220,69 @@ final class Uri {
     int unhex(char c);
   }
 
-  // private boolean checkHostPctEncoded(String str) {
+  private boolean checkHostPctEncoded(String str) {
 
-  //   UnhexOperation fn =
-  //       c -> {
-  //         if ('0' <= c && c <= '9') {
-  //           return c - '0';
-  //         } else if ('a' <= c && c <= 'f') {
-  //           return c - 'a' + 10;
-  //         } else if ('A' <= c && c <= 'F') {
-  //           return c - 'A' + 10;
-  //         }
+    UnhexOperation fn =
+        c -> {
+          if ('0' <= c && c <= '9') {
+            return c - '0';
+          } else if ('a' <= c && c <= 'f') {
+            return c - 'a' + 10;
+          } else if ('A' <= c && c <= 'F') {
+            return c - 'A' + 10;
+          }
 
-  //         return 0;
-  //       };
+          return 0;
+        };
 
-  //   List<Integer> escaped = new ArrayList<Integer>();
+    try {
+    ByteBuffer buffer = ByteBuffer.allocate(str.getBytes(StandardCharsets.UTF_8.toString()).length * Integer.BYTES);
 
-  //   for (int i = 0; i < str.length(); ) {
-  //     if (str.charAt(i) == '%') {
-  //       escaped.add(fn.unhex(str.charAt(i + 1)) << 4 | fn.unhex(str.charAt(i + 2)));
-  //       i += 3;
-  //     } else {
-  //       escaped.add((int) str.charAt(i));
-  //       i++;
-  //     }
-  //   }
+    for (int i = 0; i < str.length(); ) {
+      if (str.charAt(i) == '%') {
+        buffer.putInt(fn.unhex(str.charAt(i + 1)) << 4 | fn.unhex(str.charAt(i + 2)));
+        i += 3;
+      } else {
+        buffer.putInt((int) str.charAt(i));
+        i++;
+      }
+    }
 
-  //   CharsetDecoder decoder = Charset.forName(StandardCharsets.UTF_8.toString()).newDecoder();
+    System.err.println(buffer);
+    System.err.println(buffer);
+    CharsetDecoder decoder = Charset.forName(StandardCharsets.UTF_8.toString()).newDecoder();
+    // decoder.onMalformedInput(CodingErrorAction.REPORT); // Reject invalid input
+    // decoder.onUnmappableCharacter(CodingErrorAction.REPORT);
 
-  //   decoder.onMalformedInput(CodingErrorAction.REPORT); // Reject invalid input
-  //   decoder.onUnmappableCharacter(CodingErrorAction.REPORT);
+    CharBuffer out = CharBuffer.allocate(1024);
 
-  //   try {
-  //     decoder.decode(java.nio.ByteBuffer.wrap(escaped)); // Attempt to decode
-  //     return true; // No errors means valid UTF-8
-  //   } catch (Exception e) {
-  //     return false; // Exception means invalid UTF-8
-  //   }
+    CoderResult f = decoder.decode(buffer, out, true);
+    System.err.println(f.isMalformed());
+    CoderResult fl = decoder.flush(out);
 
-  //   System.err.println(escaped);
+    System.err.println(fl.isMalformed());
+    } catch (UnsupportedEncodingException uee) {
+        System.err.println("excepsh uee");
+    }
 
-  //   return true;
-  // }
+    return true;
+
+
+
+    // System.err.println("dag af");
+    // System.err.println(buffer);
+
+    // try {
+    // System.err.println("bout to get it");
+    //   CharBuffer buf = decoder.decode(buffer); // Attempt to decode
+    // System.err.println("done got it");
+    // System.err.println(buf);
+    //   return true; // No errors means valid UTF-8
+    // } catch (Exception e) {
+    // System.err.println("no fail");
+    //   return false; // Exception means invalid UTF-8
+    // }
+  }
 
   private boolean host() {
     if (this.index >= this.str.length()) {
@@ -337,7 +362,6 @@ final class Uri {
 
     this.index = start;
 
-    System.err.println("litch fail");
     return false;
   }
 
@@ -441,7 +465,6 @@ final class Uri {
 
     char c = this.str.charAt(this.index);
 
-    System.err.println("path ned fail");
     return (c == '?' || c == '#');
   }
 
@@ -478,7 +501,6 @@ final class Uri {
 
     this.index = start;
 
-    System.err.println("path abs fail");
     return false;
   }
 
@@ -515,7 +537,6 @@ final class Uri {
 
     this.index = start;
 
-    System.err.println("path root fail");
     return false;
   }
 
