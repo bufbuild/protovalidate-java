@@ -2,7 +2,6 @@
 assertj = "3.27.3"
 buf = "1.50.1"
 cel = "0.5.1"
-ipaddress = "5.5.1"
 junit = "5.12.1"
 maven-publish = "0.31.0"
 # When updating, make sure to update versions in the following files to match and regenerate code with 'make generate'.
@@ -19,7 +18,6 @@ cel = { module = "org.projectnessie.cel:cel-bom", version.ref = "cel" }
 cel-core = { module = "org.projectnessie.cel:cel-core" }
 errorprone = { module = "com.google.errorprone:error_prone_core", version = "2.37.0" }
 guava = { module = "com.google.guava:guava", version = "33.4.0-jre" }
-ipaddress = { module = "com.github.seancfoley:ipaddress", version.ref = "ipaddress" }
 junit-bom = { module = "org.junit:junit-bom", version.ref = "junit" }
 maven-plugin = { module = "com.vanniktech:gradle-maven-publish-plugin", version.ref = "maven-publish" }
 nullaway = { module = "com.uber.nullaway:nullaway", version = "0.12.4" }
