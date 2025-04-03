@@ -272,17 +272,16 @@ final class Uri {
     int unhex(char c);
   }
 
-  /** 
-   * Verifies that str is correctly percent-encoded. 
+  /**
+   * Verifies that str is correctly percent-encoded.
    *
-   * Note that we essentially want to mimic the behavior of decodeURIComponent, 
-   * which would fail on malformed URLs. Java does have various methods for 
-   * decoding URLs, but none behave consistently with decodeURIComponent.
+   * <p>Note that we essentially want to mimic the behavior of decodeURIComponent, which would fail
+   * on malformed URLs. Java does have various methods for decoding URLs, but none behave
+   * consistently with decodeURIComponent.
    *
-   * The code below is a combination of `checkHostPctEncoded` from the
-   * protovalidate-go implementation and Java's java.net.URI#decode methods.
-   *
-   **/
+   * <p>The code below is a combination of `checkHostPctEncoded` from the protovalidate-go
+   * implementation and Java's java.net.URI#decode methods.
+   */
   private boolean checkHostPctEncoded(String str) {
     UnhexOperation fn =
         c -> {
@@ -324,7 +323,7 @@ final class Uri {
     }
 
     // Attempt to decode the byte buffer as UTF-8.
-    CoderResult f = this.utf8Decoder.decode(buffer.flip(), out, true);
+    CoderResult f = this.utf8Decoder.decode((ByteBuffer)buffer.flip(), out, true);
 
     // If an error occurred, return false as invalid.
     if (f.isError()) {

@@ -60,19 +60,19 @@ final class CustomOverload {
    */
   static Overload[] create() {
     return new Overload[] {
-      format(),
-      unique(),
-      startsWith(),
-      endsWith(),
-      contains(),
+      celFormat(),
+      celUnique(),
+      celStartsWith(),
+      celEndsWith(),
+      celContains(),
       celIsHostname(),
       celIsEmail(),
       celIsIp(),
       celIsIpPrefix(),
       celIsUri(),
       celIsUriRef(),
-      isNan(),
-      isInf(),
+      celIsNan(),
+      celIsInf(),
       celIsHostAndPort(),
     };
   }
@@ -82,7 +82,7 @@ final class CustomOverload {
    *
    * @return The {@link Overload} instance for the "format" operation.
    */
-  private static Overload format() {
+  private static Overload celFormat() {
     return Overload.binary(
         OVERLOAD_FORMAT,
         (lhs, rhs) -> {
@@ -104,7 +104,7 @@ final class CustomOverload {
    *
    * @return The {@link Overload} instance for the "unique" operation.
    */
-  private static Overload unique() {
+  private static Overload celUnique() {
     return Overload.unary(
         OVERLOAD_UNIQUE,
         (val) -> {
@@ -120,7 +120,7 @@ final class CustomOverload {
    *
    * @return The {@link Overload} instance for the "startsWith" operation.
    */
-  private static Overload startsWith() {
+  private static Overload celStartsWith() {
     return Overload.binary(
         OVERLOAD_STARTS_WITH,
         (lhs, rhs) -> {
@@ -155,7 +155,7 @@ final class CustomOverload {
    *
    * @return The {@link Overload} instance for the "endsWith" operation.
    */
-  private static Overload endsWith() {
+  private static Overload celEndsWith() {
     return Overload.binary(
         OVERLOAD_ENDS_WITH,
         (lhs, rhs) -> {
@@ -190,7 +190,7 @@ final class CustomOverload {
    *
    * @return The {@link Overload} instance for the "contains" operation.
    */
-  private static Overload contains() {
+  private static Overload celContains() {
     return Overload.binary(
         OVERLOAD_CONTAINS,
         (lhs, rhs) -> {
@@ -352,7 +352,7 @@ final class CustomOverload {
    *
    * @return The {@link Overload} instance for the "isNan" operation.
    */
-  private static Overload isNan() {
+  private static Overload celIsNan() {
     return Overload.unary(
         OVERLOAD_IS_NAN,
         value -> {
@@ -369,7 +369,7 @@ final class CustomOverload {
    *
    * @return The {@link Overload} instance for the "isInf" operation.
    */
-  private static Overload isInf() {
+  private static Overload celIsInf() {
     return Overload.overload(
         OVERLOAD_IS_INF,
         null,
