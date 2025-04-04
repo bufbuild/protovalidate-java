@@ -15,8 +15,6 @@
 package build.buf.protovalidate;
 
 import com.google.common.primitives.Bytes;
-import java.net.URI;
-import java.net.URISyntaxException;
 import java.util.HashSet;
 import java.util.Locale;
 import java.util.Set;
@@ -62,19 +60,19 @@ final class CustomOverload {
    */
   static Overload[] create() {
     return new Overload[] {
-      format(),
-      unique(),
-      startsWith(),
-      endsWith(),
-      contains(),
+      celFormat(),
+      celUnique(),
+      celStartsWith(),
+      celEndsWith(),
+      celContains(),
       celIsHostname(),
       celIsEmail(),
       celIsIp(),
       celIsIpPrefix(),
       celIsUri(),
       celIsUriRef(),
-      isNan(),
-      isInf(),
+      celIsNan(),
+      celIsInf(),
       celIsHostAndPort(),
     };
   }
@@ -84,7 +82,7 @@ final class CustomOverload {
    *
    * @return The {@link Overload} instance for the "format" operation.
    */
-  private static Overload format() {
+  private static Overload celFormat() {
     return Overload.binary(
         OVERLOAD_FORMAT,
         (lhs, rhs) -> {
@@ -106,7 +104,7 @@ final class CustomOverload {
    *
    * @return The {@link Overload} instance for the "unique" operation.
    */
-  private static Overload unique() {
+  private static Overload celUnique() {
     return Overload.unary(
         OVERLOAD_UNIQUE,
         (val) -> {
@@ -122,7 +120,7 @@ final class CustomOverload {
    *
    * @return The {@link Overload} instance for the "startsWith" operation.
    */
-  private static Overload startsWith() {
+  private static Overload celStartsWith() {
     return Overload.binary(
         OVERLOAD_STARTS_WITH,
         (lhs, rhs) -> {
@@ -157,7 +155,7 @@ final class CustomOverload {
    *
    * @return The {@link Overload} instance for the "endsWith" operation.
    */
-  private static Overload endsWith() {
+  private static Overload celEndsWith() {
     return Overload.binary(
         OVERLOAD_ENDS_WITH,
         (lhs, rhs) -> {
@@ -192,7 +190,7 @@ final class CustomOverload {
    *
    * @return The {@link Overload} instance for the "contains" operation.
    */
-  private static Overload contains() {
+  private static Overload celContains() {
     return Overload.binary(
         OVERLOAD_CONTAINS,
         (lhs, rhs) -> {
@@ -262,14 +260,14 @@ final class CustomOverload {
             return Err.noSuchOverload(value, OVERLOAD_IS_IP, null);
           }
           String addr = (String) value.value();
-          return Types.boolOf(isIP(addr, 0L));
+          return Types.boolOf(isIp(addr, 0L));
         },
         (lhs, rhs) -> {
           if (lhs.type().typeEnum() != TypeEnum.String || rhs.type().typeEnum() != TypeEnum.Int) {
             return Err.noSuchOverload(lhs, OVERLOAD_IS_IP, rhs);
           }
           String address = (String) lhs.value();
-          return Types.boolOf(isIP(address, rhs.intValue()));
+          return Types.boolOf(isIp(address, rhs.intValue()));
         },
         null);
   }
@@ -289,7 +287,7 @@ final class CustomOverload {
             return Err.noSuchOverload(value, OVERLOAD_IS_IP_PREFIX, null);
           }
           String prefix = (String) value.value();
-          return Types.boolOf(isIPPrefix(prefix, 0L, false));
+          return Types.boolOf(isIpPrefix(prefix, 0L, false));
         },
         (lhs, rhs) -> {
           if (lhs.type().typeEnum() != TypeEnum.String
@@ -299,9 +297,9 @@ final class CustomOverload {
           }
           String prefix = (String) lhs.value();
           if (rhs.type().typeEnum() == TypeEnum.Int) {
-            return Types.boolOf(isIPPrefix(prefix, rhs.intValue(), false));
+            return Types.boolOf(isIpPrefix(prefix, rhs.intValue(), false));
           }
-          return Types.boolOf(isIPPrefix(prefix, 0L, rhs.booleanValue()));
+          return Types.boolOf(isIpPrefix(prefix, 0L, rhs.booleanValue()));
         },
         (values) -> {
           if (values.length != 3
@@ -311,7 +309,7 @@ final class CustomOverload {
             return Err.noSuchOverload(values[0], OVERLOAD_IS_IP_PREFIX, "", values);
           }
           String prefix = (String) values[0].value();
-          return Types.boolOf(isIPPrefix(prefix, values[1].intValue(), values[2].booleanValue()));
+          return Types.boolOf(isIpPrefix(prefix, values[1].intValue(), values[2].booleanValue()));
         });
   }
 
@@ -328,10 +326,7 @@ final class CustomOverload {
             return Err.noSuchOverload(value, OVERLOAD_IS_URI, null);
           }
           String addr = (String) value.value();
-          if (addr.isEmpty()) {
-            return BoolT.False;
-          }
-          return Types.boolOf(validateURI(addr, true));
+          return Types.boolOf(isUri(addr));
         });
   }
 
@@ -348,10 +343,7 @@ final class CustomOverload {
             return Err.noSuchOverload(value, OVERLOAD_IS_URI_REF, null);
           }
           String addr = (String) value.value();
-          if (addr.isEmpty()) {
-            return BoolT.False;
-          }
-          return Types.boolOf(validateURI(addr, false));
+          return Types.boolOf(isUriRef(addr));
         });
   }
 
@@ -360,7 +352,7 @@ final class CustomOverload {
    *
    * @return The {@link Overload} instance for the "isNan" operation.
    */
-  private static Overload isNan() {
+  private static Overload celIsNan() {
     return Overload.unary(
         OVERLOAD_IS_NAN,
         value -> {
@@ -377,7 +369,7 @@ final class CustomOverload {
    *
    * @return The {@link Overload} instance for the "isInf" operation.
    */
-  private static Overload isInf() {
+  private static Overload celIsInf() {
     return Overload.overload(
         OVERLOAD_IS_INF,
         null,
@@ -448,21 +440,21 @@ final class CustomOverload {
 
       int endPlus = end + 1;
       if (endPlus == str.length()) { // no port
-        return !portRequired && isIP(str.substring(1, end), 6);
+        return !portRequired && isIp(str.substring(1, end), 6);
       } else if (endPlus == splitIdx) { // port
-        return isIP(str.substring(1, end), 6) && isPort(str.substring(splitIdx + 1));
+        return isIp(str.substring(1, end), 6) && isPort(str.substring(splitIdx + 1));
       }
       return false; // malformed
     }
 
     if (splitIdx < 0) {
-      return !portRequired && (isHostname(str) || isIP(str, 4));
+      return !portRequired && (isHostname(str) || isIp(str, 4));
     }
 
     String host = str.substring(0, splitIdx);
     String port = str.substring(splitIdx + 1);
 
-    return ((isHostname(host) || isIP(host, 4)) && isPort(port));
+    return ((isHostname(host) || isIp(host, 4)) && isPort(port));
   }
 
   // Returns true if the string is a valid port for isHostAndPort.
@@ -606,7 +598,7 @@ final class CustomOverload {
    * <p>Both formats are well-defined in the internet standard RFC 3986. Zone identifiers for IPv6
    * addresses (for example "fe80::a%en1") are supported.
    */
-  private static boolean isIP(String addr, long ver) {
+  static boolean isIp(String addr, long ver) {
     if (ver == 6L) {
       return new Ipv6(addr).address();
     } else if (ver == 4L) {
@@ -618,22 +610,24 @@ final class CustomOverload {
   }
 
   /**
-   * Validates if the input string is a valid URI, which can be a URL or a URN.
+   * Returns true if the string is a URI, for example "https://example.com/foo/bar?baz=quux#frag".
    *
-   * @param val The input string to validate as a URI.
-   * @param checkAbsolute Whether to check if this URI is absolute (i.e. has a scheme component)
-   * @return {@code true} if the input string is a valid URI, {@code false} otherwise.
+   * <p>URI is defined in the internet standard RFC 3986. Zone Identifiers in IPv6 address literals
+   * are supported (RFC 6874).
    */
-  private static boolean validateURI(String val, boolean checkAbsolute) {
-    try {
-      URI uri = new URI(val);
-      if (checkAbsolute) {
-        return uri.isAbsolute();
-      }
-      return true;
-    } catch (URISyntaxException e) {
-      return false;
-    }
+  private static boolean isUri(String str) {
+    return new Uri(str).uri();
+  }
+
+  /**
+   * Returns true if the string is a URI Reference - a URI such as
+   * "https://example.com/foo/bar?baz=quux#frag", or a Relative Reference such as "./foo/bar?query".
+   *
+   * <p>URI, URI Reference, and Relative Reference are defined in the internet standard RFC 3986.
+   * Zone Identifiers in IPv6 address literals are supported (RFC 6874).
+   */
+  private static boolean isUriRef(String str) {
+    return new Uri(str).uriReference();
   }
 
   /**
@@ -653,7 +647,7 @@ final class CustomOverload {
    * <p>The same principle applies to IPv4 addresses. "192.168.1.0/24" designates the first 24 bits
    * of the 32-bit IPv4 as the network prefix.
    */
-  private static boolean isIPPrefix(String str, long version, boolean strict) {
+  private static boolean isIpPrefix(String str, long version, boolean strict) {
     if (version == 6L) {
       Ipv6 ip = new Ipv6(str);
       return ip.addressPrefix() && (!strict || ip.isPrefixOnly());
@@ -661,7 +655,7 @@ final class CustomOverload {
       Ipv4 ip = new Ipv4(str);
       return ip.addressPrefix() && (!strict || ip.isPrefixOnly());
     } else if (version == 0L) {
-      return isIPPrefix(str, 6, strict) || isIPPrefix(str, 4, strict);
+      return isIpPrefix(str, 6, strict) || isIpPrefix(str, 4, strict);
     }
     return false;
   }

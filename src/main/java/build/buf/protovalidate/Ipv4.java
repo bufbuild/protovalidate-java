@@ -17,6 +17,9 @@ package build.buf.protovalidate;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Ipv4 is a class used to parse a given string to determine if it is an IPv4 address or address prefix.
+ */
 final class Ipv4 {
   private String str;
   private int index;
@@ -76,7 +79,7 @@ final class Ipv4 {
         && this.index == this.str.length();
   }
 
-  // Stores value in `prefixLen`
+  // Store value in prefixLen
   private boolean prefixLength() {
     int start = this.index;
 
@@ -169,9 +172,9 @@ final class Ipv4 {
   }
 
   /**
-   * Reports whether the current position is a digit.
+   * Determines whether the current position is a digit.
    *
-   * <p>Method parses the rule:
+   * <p>Parses the rule:
    *
    * <pre>DIGIT = %x30-39 ; 0-9
    */
@@ -185,9 +188,7 @@ final class Ipv4 {
   }
 
   /**
-   * Take the given char at the current index.
-   *
-   * <p>If char is at the current index, increment the index.
+   * Take the given char at the current position, incrementing the index if necessary.
    */
   private boolean take(char c) {
     if (this.index >= this.str.length()) {
