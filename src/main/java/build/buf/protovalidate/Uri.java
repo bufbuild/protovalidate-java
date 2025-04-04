@@ -16,7 +16,6 @@ package build.buf.protovalidate;
 
 import java.nio.ByteBuffer;
 import java.nio.CharBuffer;
-import java.nio.charset.Charset;
 import java.nio.charset.CharsetDecoder;
 import java.nio.charset.CoderResult;
 import java.nio.charset.StandardCharsets;
@@ -26,12 +25,8 @@ final class Uri {
   private int index;
   private boolean pctEncodedFound;
 
-  private CharsetDecoder utf8Decoder;
-
   Uri(String str) {
     this.str = str;
-    // By default, CharsetDecoders will report on malformed input and unmappable characters.
-    this.utf8Decoder = Charset.forName(StandardCharsets.UTF_8.toString()).newDecoder();
   }
 
   /**
@@ -75,12 +70,10 @@ final class Uri {
    *                / path-rootless
    *                / path-empty
    */
-  // The multiple take('/') invocations are intended.
-  @SuppressWarnings("IdentityBinaryExpression")
   private boolean hierPart() {
     int start = this.index;
 
-    if (this.take('/') && this.take('/') && this.authority() && this.pathAbempty()) {
+    if (this.takeDoubleSlash() && this.authority() && this.pathAbempty()) {
       return true;
     }
 
@@ -142,18 +135,22 @@ final class Uri {
    *                    / path-noscheme
    *                    / path-empty
    */
-  // The multiple take('/') invocations are intended.
-  @SuppressWarnings("IdentityBinaryExpression")
   private boolean relativePart() {
     int start = this.index;
 
-    if (this.take('/') && this.take('/') && this.authority() && this.pathAbempty()) {
+    if (this.takeDoubleSlash() && this.authority() && this.pathAbempty()) {
       return true;
     }
 
     this.index = start;
 
     return this.pathAbsolute() || this.pathNoscheme() || this.pathEmpty();
+  }
+
+  private boolean takeDoubleSlash() {
+      boolean isSlash = take('/');
+
+      return isSlash && take('/');
   }
 
   /**
@@ -267,9 +264,16 @@ final class Uri {
     }
   }
 
-  @FunctionalInterface
-  interface UnhexOperation {
-    int unhex(char c);
+  private static int unhex(char c) {
+    if ('0' <= c && c <= '9') {
+      return c - '0';
+    } else if ('a' <= c && c <= 'f') {
+      return c - 'a' + 10;
+    } else if ('A' <= c && c <= 'F') {
+      return c - 'A' + 10;
+    }
+
+    return 0;
   }
 
   /**
@@ -283,21 +287,7 @@ final class Uri {
    * implementation and Java's java.net.URI#decode methods.
    */
   private boolean checkHostPctEncoded(String str) {
-    UnhexOperation fn =
-        c -> {
-          if ('0' <= c && c <= '9') {
-            return c - '0';
-          } else if ('a' <= c && c <= 'f') {
-            return c - 'a' + 10;
-          } else if ('A' <= c && c <= 'F') {
-            return c - 'A' + 10;
-          }
-
-          return 0;
-        };
-
-    // Reset the decoder before use.
-    this.utf8Decoder.reset();
+     CharsetDecoder decoder = StandardCharsets.UTF_8.newDecoder();
 
     int strLen = str.length();
     ByteBuffer buffer = ByteBuffer.allocate(strLen);
@@ -310,8 +300,7 @@ final class Uri {
         // last 4 bits, cast to a byte.
         byte b =
             (byte)
-                (((fn.unhex(str.charAt(i + 1)) & 0xf) << 4)
-                    | ((fn.unhex(str.charAt(i + 2)) & 0xf) << 0));
+                (((unhex(str.charAt(i + 1)) & 0xf) << 4) | ((unhex(str.charAt(i + 2)) & 0xf) << 0));
         buffer.put(b);
         i += 3;
       } else {
@@ -323,14 +312,14 @@ final class Uri {
     }
 
     // Attempt to decode the byte buffer as UTF-8.
-    CoderResult f = this.utf8Decoder.decode((ByteBuffer)buffer.flip(), out, true);
+    CoderResult f = decoder.decode((ByteBuffer) buffer.flip(), out, true);
 
     // If an error occurred, return false as invalid.
     if (f.isError()) {
       return false;
     }
     // Flush the buffer
-    f = this.utf8Decoder.flush(out);
+    f = decoder.flush(out);
 
     // If an error occurred, return false as invalid.
     // Otherwise return true.
