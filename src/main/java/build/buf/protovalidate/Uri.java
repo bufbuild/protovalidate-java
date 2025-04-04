@@ -148,9 +148,9 @@ final class Uri {
   }
 
   private boolean takeDoubleSlash() {
-      boolean isSlash = take('/');
+    boolean isSlash = take('/');
 
-      return isSlash && take('/');
+    return isSlash && take('/');
   }
 
   /**
@@ -287,7 +287,7 @@ final class Uri {
    * implementation and Java's java.net.URI#decode methods.
    */
   private boolean checkHostPctEncoded(String str) {
-     CharsetDecoder decoder = StandardCharsets.UTF_8.newDecoder();
+    CharsetDecoder decoder = StandardCharsets.UTF_8.newDecoder();
 
     int strLen = str.length();
     ByteBuffer buffer = ByteBuffer.allocate(strLen);
