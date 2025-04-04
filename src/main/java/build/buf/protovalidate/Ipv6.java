@@ -18,6 +18,9 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.Nullable;
 
+/**
+ * Ipv6 is a class used to parse a given string to determine if it is an IPv6 address or address prefix.
+ */
 final class Ipv6 {
   private String str;
   private int index;
@@ -121,7 +124,7 @@ final class Ipv6 {
         && this.index == this.str.length();
   }
 
-  // Stores value in `prefixLen`
+  // Stores value in prefixLen
   private boolean prefixLength() {
     int start = this.index;
 
@@ -159,7 +162,7 @@ final class Ipv6 {
     }
   }
 
-  // Stores dotted notation for right-most 32 bits in `dottedRaw` / `dottedAddr` if found.
+  // Stores dotted notation for right-most 32 bits in dottedRaw / dottedAddr if found.
   private boolean addressPart() {
     while (this.index < this.str.length()) {
       // dotted notation for right-most 32 bits, e.g. 0:0:0:0:0:ffff:192.1.56.10
@@ -227,9 +230,9 @@ final class Ipv6 {
   }
 
   /**
-   * Determines whether string contains a dotted address.
+   * Determines whether the current position is a dotted address.
    *
-   * <p>Method parses the rule:
+   * <p>Parses the rule:
    *
    * <pre>1*3DIGIT "." 1*3DIGIT "." 1*3DIGIT "." 1*3DIGIT
    *
@@ -254,9 +257,9 @@ final class Ipv6 {
   }
 
   /**
-   * Determine whether string contains an h16.
+   * Determines whether the current position is an h16.
    *
-   * <p>Method parses the rule:
+   * <p>Parses the rule:
    *
    * <pre>h16 = 1*4HEXDIG
    *
@@ -291,9 +294,9 @@ final class Ipv6 {
   }
 
   /**
-   * Reports whether the current position is a hex digit.
+   * Determines whether the current position is a hex digit.
    *
-   * <p>Method parses the rule:
+   * <p>Parses the rule:
    *
    * <pre>HEXDIG = DIGIT / "A" / "B" / "C" / "D" / "E" / "F"
    */
@@ -310,9 +313,9 @@ final class Ipv6 {
   }
 
   /**
-   * Reports whether the current position is a digit.
+   * Determines whether the current position is a digit.
    *
-   * <p>Method parses the rule:
+   * <p>Parses the rule:
    *
    * <pre>DIGIT = %x30-39 ; 0-9
    */
@@ -326,9 +329,7 @@ final class Ipv6 {
   }
 
   /**
-   * Take the given char at the current index.
-   *
-   * <p>If char is at the current index, increment the index.
+   * Take the given char at the current position, incrementing the index if necessary.
    */
   private boolean take(char c) {
     if (this.index >= this.str.length()) {

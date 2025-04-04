@@ -20,6 +20,9 @@ import java.nio.charset.CharsetDecoder;
 import java.nio.charset.CoderResult;
 import java.nio.charset.StandardCharsets;
 
+/**
+ * Ipv6 is a class used to parse a given string to determine if it is a URI or URI reference.
+ */
 final class Uri {
   private String str;
   private int index;
@@ -30,9 +33,9 @@ final class Uri {
   }
 
   /**
-   * Reports whether string is a valid URI.
+   * Determines whether string is a valid URI.
    *
-   * <p>Method parses the rule:
+   * <p>Parses the rule:
    *
    * <pre>URI = scheme ":" hier-part [ "?" query ] [ "#" fragment ]
    */
@@ -61,9 +64,9 @@ final class Uri {
   }
 
   /**
-   * Reports whether string contains a valid hier-part.
+   * Determines whether the current position is a valid hier-part.
    *
-   * <p>Method parses the rule:
+   * <p>Parses the rule:
    *
    * <pre>hier-part = "//" authority path-abempty
    *                / path-absolute
@@ -83,9 +86,9 @@ final class Uri {
   }
 
   /**
-   * Reports whether string is a valid URI reference.
+   * Determines whether string is a valid URI reference.
    *
-   * <p>Method parses the rule:
+   * <p>Parses the rule:
    *
    * <pre>URI-reference = URI / relative-ref
    */
@@ -94,9 +97,9 @@ final class Uri {
   }
 
   /**
-   * Reports whether string contains a valid relative reference.
+   * Determines whether the current position is a valid relative reference.
    *
-   * <p>Method parses the rule:
+   * <p>Parses the rule:
    *
    * <pre>relative-ref = relative-part [ "?" query ] [ "#" fragment ].
    */
@@ -126,9 +129,9 @@ final class Uri {
   }
 
   /**
-   * Reports whether string contains a valid relative part.
+   * Determines whether the current position is a valid relative part.
    *
-   * <p>Method parses the rule:
+   * <p>Parses the rule:
    *
    * <pre>relative-part = "//" authority path-abempty
    *                    / path-absolute
@@ -154,9 +157,9 @@ final class Uri {
   }
 
   /**
-   * Reports whether string contains a valid scheme.
+   * Determines whether the current position is a valid scheme.
    *
-   * <p>Method parses the rule:
+   * <p>Parses the rule:
    *
    * <pre>scheme = ALPHA *( ALPHA / DIGIT / "+" / "-" / "." )
    */
@@ -177,9 +180,9 @@ final class Uri {
   }
 
   /**
-   * Reports whether string contains a valid authority.
+   * Determines whether the current position is a valid authority.
    *
-   * <p>Method parses the rule:
+   * <p>Parses the rule:
    *
    * <pre>authority = [ userinfo "@" ] host [ ":" port ]
    *
@@ -216,7 +219,7 @@ final class Uri {
   }
 
   /**
-   * Reports whether the current position is the end of the authority.
+   * Determines whether the current position is the end of the authority.
    *
    * <p>The authority component [...] is terminated by one of the following:
    *
@@ -236,9 +239,9 @@ final class Uri {
   }
 
   /**
-   * Reports whether string contains a valid userinfo.
+   * Determines whether the current position is a valid userinfo.
    *
-   * <p>Method parses the rule:
+   * <p>Parses the rule:
    *
    * <pre>userinfo = *( unreserved / pct-encoded / sub-delims / ":" )
    *
@@ -327,9 +330,9 @@ final class Uri {
   }
 
   /**
-   * Reports whether string contains a valid host.
+   * Determines whether the current position is a valid host.
    *
-   * <p>Method parses the rule:
+   * <p>Parses the rule:
    *
    * <pre>host = IP-literal / IPv4address / reg-name.
    */
@@ -360,9 +363,9 @@ final class Uri {
   }
 
   /**
-   * Reports whether string contains a valid port.
+   * Determines whether the current position is a valid port.
    *
-   * <p>Method parses the rule:
+   * <p>Parses the rule:
    *
    * <pre>port = *DIGIT
    *
@@ -387,9 +390,9 @@ final class Uri {
   }
 
   /**
-   * Reports whether string contains a valid IP literal.
+   * Determines whether the current position is a valid IP literal.
    *
-   * <p>Method parses the rule from RFC 6874:
+   * <p>Parses the rule from RFC 6874:
    *
    * <pre>IP-literal = "[" ( IPv6address / IPv6addrz / IPvFuture  ) "]"
    */
@@ -422,7 +425,7 @@ final class Uri {
   }
 
   /**
-   * Reports whether string contains a valid ipv6 address.
+   * Determines whether the current position is a valid ipv6 address.
    *
    * <p>ipv6Address parses the rule "IPv6address".
    *
@@ -443,9 +446,9 @@ final class Uri {
   }
 
   /**
-   * Reports whether string contains a valid IPv6addrz.
+   * Determines whether the current position is a valid IPv6addrz.
    *
-   * Method parses the rule:
+   * Parses the rule:
    *
    * <pre>IPv6addrz = IPv6address "%25" ZoneID
    */
@@ -462,9 +465,9 @@ final class Uri {
   }
 
   /**
-   * Reports whether string contains a valid zone ID.
+   * Determines whether the current position is a valid zone ID.
    *
-   * Method parses the rule:
+   * Parses the rule:
    *
    * <pre>ZoneID = 1*( unreserved / pct-encoded )
    */
@@ -483,9 +486,9 @@ final class Uri {
   }
 
   /**
-   * Reports whether string contains a valid IPvFuture.
+   * Determines whether the current position is a valid IPvFuture.
    *
-   * Method parses the rule:
+   * Parses the rule:
    *
    * <pre>IPvFuture  = "v" 1*HEXDIG "." 1*( unreserved / sub-delims / ":" )
    */
@@ -514,9 +517,9 @@ final class Uri {
   }
 
   /**
-   * Reports whether string contains a valid reg-name.
+   * Determines whether the current position is a valid reg-name.
    *
-   * Method parses the rule:
+   * Parses the rule:
    *
    * <pre>reg-name = *( unreserved / pct-encoded / sub-delims )
    *
@@ -546,7 +549,7 @@ final class Uri {
   }
 
   /**
-   * Reports whether the current position is the end of the path.
+   * Determines whether the current position is the end of the path.
    *
    * <p>The path is terminated by one of the following:
    *
@@ -567,9 +570,9 @@ final class Uri {
   }
 
   /**
-   * Reports whether string contains a valid path-abempty.
+   * Determines whether the current position is a valid path-abempty.
    *
-   * Method parses the rule:
+   * Parses the rule:
    *
    * <pre>path-abempty = *( "/" segment )
    *
@@ -590,9 +593,9 @@ final class Uri {
   }
 
   /**
-   * Reports whether string contains a valid path-absolute.
+   * Determines whether the current position is a valid path-absolute.
    *
-   * Method parses the rule:
+   * Parses the rule:
    *
    * <pre>path-absolute = "/" [ segment-nz *( "/" segment ) ]
    *
@@ -617,9 +620,9 @@ final class Uri {
   }
 
   /**
-   * Reports whether string contains a valid path-noscheme.
+   * Determines whether the current position is a valid path-noscheme.
    *
-   * Method parses the rule:
+   * Parses the rule:
    *
    * <pre>path-noscheme = segment-nz-nc *( "/" segment )
    *
@@ -642,9 +645,9 @@ final class Uri {
   }
 
   /**
-   * Reports whether string contains a valid path-rootless.
+   * Determines whether the current position is a valid path-rootless.
    *
-   * Method parses the rule:
+   * Parses the rule:
    *
    * <pre>path-rootless = segment-nz *( "/" segment )
    *
@@ -667,9 +670,9 @@ final class Uri {
   }
 
   /**
-   * Reports whether string contains a valid path-empty.
+   * Determines whether the current position is a valid path-empty.
    *
-   * Method parses the rule:
+   * Parses the rule:
    *
    * <pre>path-empty = 0<pchar>
    *
@@ -680,9 +683,9 @@ final class Uri {
   }
 
   /**
-   * Reports whether string contains a valid segment.
+   * Determines whether the current position is a valid segment.
    *
-   * Method parses the rule:
+   * Parses the rule:
    *
    * <pre>segment = *pchar
    */
@@ -693,9 +696,9 @@ final class Uri {
   }
 
   /**
-   * Reports whether string contains a valid segment-nz.
+   * Determines whether the current position is a valid segment-nz.
    *
-   * Method parses the rule:
+   * Parses the rule:
    *
    * <pre>segment-nz = 1*pchar
    */
@@ -713,9 +716,9 @@ final class Uri {
   }
 
   /**
-   * Reports whether string contains a valid segment-nz-nc.
+   * Determines whether the current position is a valid segment-nz-nc.
    *
-   * Method parses the rule:
+   * Parses the rule:
    *
    * <pre>segment-nz-nc = 1*( unreserved / pct-encoded / sub-delims / "@" )
    *                   ; non-zero-length segment without any colon ":"
@@ -735,9 +738,9 @@ final class Uri {
   }
 
   /**
-   * Reports whether string contains a valid pchar.
+   * Determines whether the current position is a valid pchar.
    *
-   * Method parses the rule:
+   * Parses the rule:
    *
    * <pre>pchar = unreserved / pct-encoded / sub-delims / ":" / "@"
    */
@@ -750,9 +753,9 @@ final class Uri {
   }
 
   /**
-   * Reports whether string contains a valid query.
+   * Determines whether the current position is a valid query.
    *
-   * Method parses the rule:
+   * Parses the rule:
    *
    * <pre>query = *( pchar / "/" / "?" )
    *
@@ -777,9 +780,9 @@ final class Uri {
   }
 
   /**
-   * Reports whether string contains a valid fragment.
+   * Determines whether the current position is a valid fragment.
    *
-   * Method parses the rule:
+   * Parses the rule:
    *
    * <pre>fragment = *( pchar / "/" / "?" )
    *
@@ -804,9 +807,9 @@ final class Uri {
   }
 
   /**
-   * Reports whether string contains a valid pct-encoded.
+   * Determines whether the current position is a valid pct-encoded.
    *
-   * Method parses the rule:
+   * Parses the rule:
    *
    * <pre>pct-encoded = "%"+HEXDIG+HEXDIG
    *
@@ -827,9 +830,9 @@ final class Uri {
   }
 
   /**
-   * Reports whether current position is an unreserved character.
+   * Determines whether the current position is an unreserved character.
    *
-   * Method parses the rule:
+   * Parses the rule:
    *
    * <pre>unreserved = ALPHA / DIGIT / "-" / "." / "_" / "~"
    */
@@ -843,9 +846,9 @@ final class Uri {
   }
 
   /**
-   * Reports whether current position is a sub-delim.
+   * Determines whether the current position is a sub-delim.
    *
-   * Method parses the rule:
+   * Parses the rule:
    *
    * <pre>sub-delims  = "!" / "$" / "&" / "'" / "(" / ")"
    *                  / "*" / "+" / "," / ";" / "="
@@ -865,9 +868,9 @@ final class Uri {
   }
 
   /**
-   * Reports whether current position is an alpha character.
+   * Determines whether the current position is an alpha character.
    *
-   * Method parses the rule:
+   * Parses the rule:
    *
    * <pre>ALPHA =  %x41-5A / %x61-7A ; A-Z / a-z
    */
@@ -887,9 +890,9 @@ final class Uri {
   }
 
   /**
-   * Reports whether the current position is a hex digit.
+   * Determines whether the current position is a hex digit.
    *
-   * <p>Method parses the rule:
+   * <p>Parses the rule:
    *
    * <pre>HEXDIG = DIGIT / "A" / "B" / "C" / "D" / "E" / "F"
    */
@@ -909,9 +912,9 @@ final class Uri {
   }
 
   /**
-   * Reports whether the current position is a digit.
+   * Determines whether the current position is a digit.
    *
-   * <p>Method parses the rule:
+   * <p>Parses the rule:
    *
    * <pre>DIGIT = %x30-39 ; 0-9
    */
@@ -929,9 +932,7 @@ final class Uri {
   }
 
   /**
-   * Take the given char at the current index.
-   *
-   * <p>If char is at the current index, increment the index.
+   * Take the given char at the current position, incrementing the index if necessary.
    */
   private boolean take(char c) {
     if (this.index >= this.str.length()) {
