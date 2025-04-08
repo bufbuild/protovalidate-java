@@ -23,7 +23,7 @@ ipaddress = { module = "com.github.seancfoley:ipaddress", version.ref = "ipaddre
 jakarta-mail-api = { module = "jakarta.mail:jakarta.mail-api", version = "2.1.3" }
 junit-bom = { module = "org.junit:junit-bom", version.ref = "junit" }
 maven-plugin = { module = "com.vanniktech:gradle-maven-publish-plugin", version.ref = "maven-publish" }
-nullaway = { module = "com.uber.nullaway:nullaway", version = "0.12.4" }
+nullaway = { module = "com.uber.nullaway:nullaway", version = "0.12.6" }
 protobuf-java = { module = "com.google.protobuf:protobuf-java", version.ref = "protobuf" }
 spotless = { module = "com.diffplug.spotless:spotless-plugin-gradle", version = "7.0.2" }
 
