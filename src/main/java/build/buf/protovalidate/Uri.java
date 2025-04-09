@@ -20,9 +20,7 @@ import java.nio.charset.CharsetDecoder;
 import java.nio.charset.CoderResult;
 import java.nio.charset.StandardCharsets;
 
-/**
- * Ipv6 is a class used to parse a given string to determine if it is a URI or URI reference.
- */
+/** Ipv6 is a class used to parse a given string to determine if it is a URI or URI reference. */
 final class Uri {
   private String str;
   private int index;
@@ -931,9 +929,7 @@ final class Uri {
     return false;
   }
 
-  /**
-   * Take the given char at the current position, incrementing the index if necessary.
-   */
+  /** Take the given char at the current position, incrementing the index if necessary. */
   private boolean take(char c) {
     if (this.index >= this.str.length()) {
       return false;

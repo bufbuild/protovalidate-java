@@ -19,7 +19,8 @@ import java.util.List;
 import javax.annotation.Nullable;
 
 /**
- * Ipv6 is a class used to parse a given string to determine if it is an IPv6 address or address prefix.
+ * Ipv6 is a class used to parse a given string to determine if it is an IPv6 address or address
+ * prefix.
  */
 final class Ipv6 {
   private String str;
@@ -328,9 +329,7 @@ final class Ipv6 {
     return false;
   }
 
-  /**
-   * Take the given char at the current position, incrementing the index if necessary.
-   */
+  /** Take the given char at the current position, incrementing the index if necessary. */
   private boolean take(char c) {
     if (this.index >= this.str.length()) {
       return false;

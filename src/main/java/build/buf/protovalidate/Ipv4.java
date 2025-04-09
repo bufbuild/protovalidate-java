@@ -18,7 +18,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Ipv4 is a class used to parse a given string to determine if it is an IPv4 address or address prefix.
+ * Ipv4 is a class used to parse a given string to determine if it is an IPv4 address or address
+ * prefix.
  */
 final class Ipv4 {
   private String str;
@@ -187,9 +188,7 @@ final class Ipv4 {
     return false;
   }
 
-  /**
-   * Take the given char at the current position, incrementing the index if necessary.
-   */
+  /** Take the given char at the current position, incrementing the index if necessary. */
   private boolean take(char c) {
     if (this.index >= this.str.length()) {
       return false;
