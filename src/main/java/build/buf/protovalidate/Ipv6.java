@@ -14,6 +14,7 @@
 
 package build.buf.protovalidate;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.Nullable;
@@ -176,8 +177,12 @@ final class Ipv6 {
         return false;
       }
 
-      if (this.h16()) {
-        continue;
+      try {
+        if (this.h16()) {
+          continue;
+        }
+      } catch (ParseException | NumberFormatException e) {
+        return false;
       }
 
       if (this.take(':')) {
@@ -191,6 +196,9 @@ final class Ipv6 {
           if (this.take(':')) {
             return false;
           }
+        } else if (this.index == 1 || this.index == this.str.length()) {
+          // invalid - string cannot start or end on single colon
+          return false;
         }
         continue;
       }
@@ -264,9 +272,13 @@ final class Ipv6 {
    *
    * <pre>h16 = 1*4HEXDIG
    *
-   * <p>Stores 16-bit value in pieces.
+   * If 1-4 hex digits are found, the parsed 16-bit unsigned integer is stored
+   * in pieces and true is returned.
+   * If 0 hex digits are found, returns false.
+   * If more than 4 hex digits are found, a ParseException is thrown.
+   * If the found hex digits cannot be converted to an int, a NumberFormatException is raised.
    */
-  private boolean h16() {
+  private boolean h16() throws ParseException, NumberFormatException {
     int start = this.index;
 
     while (this.index < this.str.length() && this.hexDig()) {}
@@ -274,24 +286,25 @@ final class Ipv6 {
     String str = this.str.substring(start, this.index);
 
     if (str.isEmpty()) {
-      // too short
+      // too short, just return false
+      // this is not an error condition, it just means we didn't find any
+      // hex digits at the current position.
       return false;
     }
 
     if (str.length() > 4) {
       // too long
-      return false;
+      // this is an error condition, it means we found a string of more than
+      // four valid hex digits, which is invalid in ipv6 addresses.
+      throw new ParseException("invalid hex", this.index);
     }
 
-    try {
-      int val = Integer.parseInt(str, 16);
+    // Note that this will throw a NumberFormatException if string cannot be
+    // converted to an int.
+    int val = Integer.parseInt(str, 16);
 
-      this.pieces.add(val);
-      return true;
-    } catch (NumberFormatException nfe) {
-      // Error converting to number
-      return false;
-    }
+    this.pieces.add(val);
+    return true;
   }
 
   /**
