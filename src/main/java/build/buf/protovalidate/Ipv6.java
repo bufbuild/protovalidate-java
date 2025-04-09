@@ -14,6 +14,7 @@
 
 package build.buf.protovalidate;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.Nullable;
@@ -176,8 +177,12 @@ final class Ipv6 {
         return false;
       }
 
-      if (this.h16()) {
-        continue;
+      try {
+        if (this.h16()) {
+          continue;
+        }
+      } catch (ParseException | NumberFormatException e) {
+        return false;
       }
 
       if (this.take(':')) {
@@ -191,6 +196,9 @@ final class Ipv6 {
           if (this.take(':')) {
             return false;
           }
+        } else if (this.index == 1 || this.index == this.str.length()) {
+          // invalid - string cannot start or end on single colon
+          return false;
         }
         continue;
       }
@@ -266,7 +274,7 @@ final class Ipv6 {
    *
    * <p>Stores 16-bit value in pieces.
    */
-  private boolean h16() {
+  private boolean h16() throws ParseException, NumberFormatException {
     int start = this.index;
 
     while (this.index < this.str.length() && this.hexDig()) {}
@@ -280,18 +288,13 @@ final class Ipv6 {
 
     if (str.length() > 4) {
       // too long
-      return false;
+      throw new ParseException("invalid hex", this.index);
     }
 
-    try {
-      int val = Integer.parseInt(str, 16);
+    int val = Integer.parseInt(str, 16);
 
-      this.pieces.add(val);
-      return true;
-    } catch (NumberFormatException nfe) {
-      // Error converting to number
-      return false;
-    }
+    this.pieces.add(val);
+    return true;
   }
 
   /**
