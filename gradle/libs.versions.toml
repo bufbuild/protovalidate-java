@@ -10,7 +10,7 @@ maven-publish = "0.31.0"
 # - conformance/buf.gen.yaml
 # - src/test/resources/proto/buf.gen.imports.yaml
 # - src/test/resources/proto/buf.gen.noimports.yaml
-protobuf = "4.30.1"
+protobuf = "4.30.2"
 
 [libraries]
 assertj = { module = "org.assertj:assertj-core", version.ref = "assertj" }
