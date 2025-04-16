@@ -181,7 +181,7 @@ final class Ipv6 {
         if (this.h16()) {
           continue;
         }
-      } catch (ParseException | NumberFormatException e) {
+      } catch (IllegalStateException | NumberFormatException e) {
         return false;
       }
 
@@ -275,10 +275,10 @@ final class Ipv6 {
    * If 1-4 hex digits are found, the parsed 16-bit unsigned integer is stored
    * in pieces and true is returned.
    * If 0 hex digits are found, returns false.
-   * If more than 4 hex digits are found, a ParseException is thrown.
+   * If more than 4 hex digits are found, an IllegalStateException is thrown.
    * If the found hex digits cannot be converted to an int, a NumberFormatException is raised.
    */
-  private boolean h16() throws ParseException, NumberFormatException {
+  private boolean h16() throws IllegalStateException, NumberFormatException {
     int start = this.index;
 
     while (this.index < this.str.length() && this.hexDig()) {}
@@ -296,7 +296,7 @@ final class Ipv6 {
       // too long
       // this is an error condition, it means we found a string of more than
       // four valid hex digits, which is invalid in ipv6 addresses.
-      throw new ParseException("invalid hex", this.index);
+      throw new IllegalStateException("invalid hex");
     }
 
     // Note that this will throw a NumberFormatException if string cannot be
