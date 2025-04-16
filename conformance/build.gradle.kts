@@ -39,6 +39,14 @@ tasks.register<Exec>("conformance") {
     commandLine(*(listOf(conformanceCLIPath) + conformanceArgs + listOf(conformanceAppScript)).toTypedArray())
 }
 
+sourceSets {
+    main {
+        java {
+            srcDir(layout.buildDirectory.dir("generated/sources/bufgen"))
+        }
+    }
+}
+
 tasks.withType<JavaCompile> {
     if (JavaVersion.current().isJava9Compatible) {
         doFirst {
@@ -46,7 +54,7 @@ tasks.withType<JavaCompile> {
         }
     }
     // Disable errorprone on generated code
-    options.errorprone.excludedPaths.set(".*/src/main/java/build/buf/validate/conformance/.*")
+    options.errorprone.excludedPaths.set(".*/build/generated/sources/bufgen/.*")
 }
 
 // Disable javadoc for conformance tests
@@ -81,7 +89,7 @@ tasks {
 apply(plugin = "com.diffplug.spotless")
 configure<SpotlessExtension> {
     java {
-        targetExclude("src/main/java/build/buf/validate/**/*.java")
+        targetExclude("build/generated/sources/bufgen/**/*.java")
     }
 }
 

@@ -64,9 +64,9 @@ tasks.register<Exec>("licenseHeader") {
         "--year-range",
         project.findProperty("license-header.years")!!.toString(),
         "--ignore",
-        "src/main/java/build/buf/validate/",
+        "build/generated/sources/bufgen/",
         "--ignore",
-        "conformance/src/main/java/build/buf/validate/conformance/",
+        "conformance/build/generated/sources/bufgen/",
         "--ignore",
         "src/main/resources/buf/validate/",
     )
@@ -109,13 +109,13 @@ tasks.register<Exec>("exportProtovalidateModule") {
 
 tasks.register<Exec>("generateSources") {
     dependsOn("exportProtovalidateModule")
-    description = "Generates sources for the bufbuild/protovalidate module sources to src/main/java."
+    description = "Generates sources for the bufbuild/protovalidate module sources to build/generated/sources/bufgen."
     commandLine(buf.asPath, "generate", "--template", "buf.gen.yaml", "src/main/resources")
 }
 
 tasks.register<Exec>("generateConformance") {
     dependsOn("configureBuf")
-    description = "Generates sources for the bufbuild/protovalidate-testing module to conformance/src/main/java."
+    description = "Generates sources for the bufbuild/protovalidate-testing module to conformance/build/generated/sources/bufgen."
     commandLine(
         buf.asPath,
         "generate",
@@ -145,7 +145,7 @@ tasks.withType<JavaCompile> {
         }
     }
     // Disable errorprone on generated code
-    options.errorprone.excludedPaths.set("(.*/src/main/java/build/buf/validate/.*|.*/build/generated/.*)")
+    options.errorprone.excludedPaths.set(".*/build/generated/.*")
     if (!name.lowercase().contains("test")) {
         options.errorprone {
             check("NullAway", CheckSeverity.ERROR)
@@ -173,6 +173,11 @@ buildscript {
 }
 
 sourceSets {
+    main {
+        java {
+            srcDir(layout.buildDirectory.dir("generated/sources/bufgen"))
+        }
+    }
     test {
         java {
             srcDir(layout.buildDirectory.dir("generated/test-sources/bufgen"))
@@ -183,7 +188,7 @@ sourceSets {
 apply(plugin = "com.diffplug.spotless")
 configure<SpotlessExtension> {
     java {
-        targetExclude("src/main/java/build/buf/validate/**/*.java", "build/generated/test-sources/bufgen/**/*.java")
+        targetExclude("build/generated/sources/bufgen/build/buf/validate/**/*.java", "build/generated/test-sources/bufgen/**/*.java")
     }
     kotlinGradle {
         ktlint()

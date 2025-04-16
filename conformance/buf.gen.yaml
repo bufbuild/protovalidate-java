@@ -1,4 +1,5 @@
 version: v2
+clean: true
 managed:
   enabled: true
   override:
@@ -6,4 +7,4 @@ managed:
       value: build
 plugins:
   - remote: buf.build/protocolbuffers/java:v30.2
-    out: src/main/java
+    out: build/generated/sources/bufgen
