@@ -440,7 +440,7 @@ final class Uri {
   /**
    * Determines whether the current position is a valid IPv6addrz.
    *
-   * Parses the rule:
+   * <p>Parses the rule:
    *
    * <pre>IPv6addrz = IPv6address "%25" ZoneID
    */
@@ -459,7 +459,7 @@ final class Uri {
   /**
    * Determines whether the current position is a valid zone ID.
    *
-   * Parses the rule:
+   * <p>Parses the rule:
    *
    * <pre>ZoneID = 1*( unreserved / pct-encoded )
    */
@@ -480,7 +480,7 @@ final class Uri {
   /**
    * Determines whether the current position is a valid IPvFuture.
    *
-   * Parses the rule:
+   * <p>Parses the rule:
    *
    * <pre>IPvFuture  = "v" 1*HEXDIG "." 1*( unreserved / sub-delims / ":" )
    */
@@ -511,7 +511,7 @@ final class Uri {
   /**
    * Determines whether the current position is a valid reg-name.
    *
-   * Parses the rule:
+   * <p>Parses the rule:
    *
    * <pre>reg-name = *( unreserved / pct-encoded / sub-delims )
    *
@@ -564,7 +564,7 @@ final class Uri {
   /**
    * Determines whether the current position is a valid path-abempty.
    *
-   * Parses the rule:
+   * <p>Parses the rule:
    *
    * <pre>path-abempty = *( "/" segment )
    *
@@ -587,7 +587,7 @@ final class Uri {
   /**
    * Determines whether the current position is a valid path-absolute.
    *
-   * Parses the rule:
+   * <p>Parses the rule:
    *
    * <pre>path-absolute = "/" [ segment-nz *( "/" segment ) ]
    *
@@ -614,7 +614,7 @@ final class Uri {
   /**
    * Determines whether the current position is a valid path-noscheme.
    *
-   * Parses the rule:
+   * <p>Parses the rule:
    *
    * <pre>path-noscheme = segment-nz-nc *( "/" segment )
    *
@@ -639,7 +639,7 @@ final class Uri {
   /**
    * Determines whether the current position is a valid path-rootless.
    *
-   * Parses the rule:
+   * <p>Parses the rule:
    *
    * <pre>path-rootless = segment-nz *( "/" segment )
    *
@@ -664,7 +664,7 @@ final class Uri {
   /**
    * Determines whether the current position is a valid path-empty.
    *
-   * Parses the rule:
+   * <p>Parses the rule:
    *
    * <pre>path-empty = 0<pchar>
    *
@@ -677,7 +677,7 @@ final class Uri {
   /**
    * Determines whether the current position is a valid segment.
    *
-   * Parses the rule:
+   * <p>Parses the rule:
    *
    * <pre>segment = *pchar
    */
@@ -690,7 +690,7 @@ final class Uri {
   /**
    * Determines whether the current position is a valid segment-nz.
    *
-   * Parses the rule:
+   * <p>Parses the rule:
    *
    * <pre>segment-nz = 1*pchar
    */
@@ -710,7 +710,7 @@ final class Uri {
   /**
    * Determines whether the current position is a valid segment-nz-nc.
    *
-   * Parses the rule:
+   * <p>Parses the rule:
    *
    * <pre>segment-nz-nc = 1*( unreserved / pct-encoded / sub-delims / "@" )
    *                   ; non-zero-length segment without any colon ":"
@@ -732,7 +732,7 @@ final class Uri {
   /**
    * Determines whether the current position is a valid pchar.
    *
-   * Parses the rule:
+   * <p>Parses the rule:
    *
    * <pre>pchar = unreserved / pct-encoded / sub-delims / ":" / "@"
    */
@@ -747,7 +747,7 @@ final class Uri {
   /**
    * Determines whether the current position is a valid query.
    *
-   * Parses the rule:
+   * <p>Parses the rule:
    *
    * <pre>query = *( pchar / "/" / "?" )
    *
@@ -774,7 +774,7 @@ final class Uri {
   /**
    * Determines whether the current position is a valid fragment.
    *
-   * Parses the rule:
+   * <p>Parses the rule:
    *
    * <pre>fragment = *( pchar / "/" / "?" )
    *
@@ -801,7 +801,7 @@ final class Uri {
   /**
    * Determines whether the current position is a valid pct-encoded.
    *
-   * Parses the rule:
+   * <p>Parses the rule:
    *
    * <pre>pct-encoded = "%"+HEXDIG+HEXDIG
    *
@@ -824,7 +824,7 @@ final class Uri {
   /**
    * Determines whether the current position is an unreserved character.
    *
-   * Parses the rule:
+   * <p>Parses the rule:
    *
    * <pre>unreserved = ALPHA / DIGIT / "-" / "." / "_" / "~"
    */
@@ -840,7 +840,7 @@ final class Uri {
   /**
    * Determines whether the current position is a sub-delim.
    *
-   * Parses the rule:
+   * <p>Parses the rule:
    *
    * <pre>sub-delims  = "!" / "$" / "&" / "'" / "(" / ")"
    *                  / "*" / "+" / "," / ";" / "="
@@ -862,7 +862,7 @@ final class Uri {
   /**
    * Determines whether the current position is an alpha character.
    *
-   * Parses the rule:
+   * <p>Parses the rule:
    *
    * <pre>ALPHA =  %x41-5A / %x61-7A ; A-Z / a-z
    */
