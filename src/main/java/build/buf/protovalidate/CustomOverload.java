@@ -16,7 +16,6 @@ package build.buf.protovalidate;
 
 import com.google.common.primitives.Bytes;
 import java.util.HashSet;
-import java.util.Locale;
 import java.util.Set;
 import java.util.regex.Pattern;
 import org.projectnessie.cel.common.types.BoolT;
@@ -463,6 +462,10 @@ final class CustomOverload {
       return false;
     }
 
+    if (str.length() > 1 && str.charAt(0) == '0') {
+      return false;
+    }
+
     for (int i = 0; i < str.length(); i++) {
       char c = str.charAt(i);
       if ('0' <= c && c <= '9') {
@@ -557,7 +560,7 @@ final class CustomOverload {
 
     boolean allDigits = false;
 
-    String[] parts = str.toLowerCase(Locale.getDefault()).split("\\.", -1);
+    String[] parts = str.split("\\.", -1);
 
     // split hostname on '.' and validate each part
     for (String part : parts) {
@@ -572,8 +575,8 @@ final class CustomOverload {
       // for each character in part
       for (int i = 0; i < part.length(); i++) {
         char c = part.charAt(i);
-        // if the character is not a-z, 0-9, or '-', it is invalid
-        if ((c < 'a' || c > 'z') && (c < '0' || c > '9') && c != '-') {
+        // if the character is not a-z, A-Z, 0-9, or '-', it is invalid
+        if ((c < 'a' || c > 'z') && (c < 'A' || c > 'Z') && (c < '0' || c > '9') && c != '-') {
           return false;
         }
 
