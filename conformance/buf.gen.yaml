@@ -1,9 +1,10 @@
 version: v2
+clean: true
 managed:
   enabled: true
   override:
     - file_option: java_package_prefix
       value: build
 plugins:
-  - remote: buf.build/protocolbuffers/java:v30.1
-    out: src/main/java
+  - remote: buf.build/protocolbuffers/java:v30.2
+    out: build/generated/sources/bufgen
