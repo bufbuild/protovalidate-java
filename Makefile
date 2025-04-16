@@ -29,7 +29,7 @@ clean:  ## Delete intermediate build artifacts
 	$(GRADLE) clean
 
 .PHONY: conformance
-conformance: ## Execute conformance tests.
+conformance: generate ## Execute conformance tests.
 	$(GRADLE) conformance:conformance
 
 .PHONY: help
