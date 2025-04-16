@@ -167,7 +167,7 @@ final class Uri {
     if (this.alpha()) {
       while (this.alpha() || this.digit() || this.take('+') || this.take('-') || this.take('.')) {}
 
-      if (this.str.charAt(this.index) == ':') {
+      if (this.peek(':')) {
         return true;
       }
     }
@@ -253,10 +253,8 @@ final class Uri {
         continue;
       }
 
-      if (this.index < this.str.length()) {
-        if (this.str.charAt(this.index) == '@') {
-          return true;
-        }
+      if (this.peek('@')) {
+        return true;
       }
 
       this.index = start;
@@ -335,15 +333,11 @@ final class Uri {
    * <pre>host = IP-literal / IPv4address / reg-name.
    */
   private boolean host() {
-    if (this.index >= this.str.length()) {
-      return true;
-    }
-
     int start = this.index;
     this.pctEncodedFound = false;
 
     // Note: IPv4address is a subset of reg-name
-    if ((this.str.charAt(this.index) == '[' && this.ipLiteral()) || this.regName()) {
+    if ((this.peek('[') && this.ipLiteral()) || this.regName()) {
       if (this.pctEncodedFound) {
         String rawHost = this.str.substring(start, this.index);
         // RFC 3986:
@@ -536,7 +530,7 @@ final class Uri {
         return true;
       }
 
-      if (this.str.charAt(this.index) == ':') {
+      if (this.peek(':')) {
         return true;
       }
 
@@ -767,7 +761,7 @@ final class Uri {
         continue;
       }
 
-      if (this.index == this.str.length() || this.str.charAt(this.index) == '#') {
+      if (this.peek('#') || this.index == this.str.length()) {
         return true;
       }
 
@@ -941,5 +935,9 @@ final class Uri {
     }
 
     return false;
+  }
+
+  private boolean peek(char c) {
+    return this.index < this.str.length() && this.str.charAt(this.index) == c;
   }
 }
