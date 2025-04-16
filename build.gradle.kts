@@ -113,32 +113,17 @@ tasks.register<Exec>("generateSources") {
     commandLine(buf.asPath, "generate", "--template", "buf.gen.yaml", "src/main/resources")
 }
 
-tasks.register<Exec>("generateConformance") {
-    dependsOn("configureBuf")
-    description = "Generates sources for the bufbuild/protovalidate-testing module to conformance/build/generated/sources/bufgen."
-    commandLine(
-        buf.asPath,
-        "generate",
-        "--template",
-        "conformance/buf.gen.yaml",
-        "-o",
-        "conformance/",
-        "buf.build/bufbuild/protovalidate-testing:${project.findProperty("protovalidate.version")}",
-    )
-}
-
 tasks.register("generate") {
     description = "Generates sources with buf generate and buf export."
     dependsOn(
         "generateTestSources",
         "generateSources",
-        "generateConformance",
         "licenseHeader",
     )
 }
 
 tasks.withType<JavaCompile> {
-    dependsOn("generateTestSources")
+    dependsOn("generate")
     if (JavaVersion.current().isJava9Compatible) {
         doFirst {
             options.compilerArgs = mutableListOf("--release", "8")

@@ -41,8 +41,6 @@ jobs:
         uses: gradle/actions/wrapper-validation@v4
       - name: Lint
         run: make lint
-      - name: Generate
-        run: make checkgenerate
       - name: Build
         run: make build
       - name: Docs

@@ -7,6 +7,14 @@ plugins {
     application
     java
     alias(libs.plugins.errorprone)
+    alias(libs.plugins.osdetector)
+}
+
+val buf: Configuration by configurations.creating
+
+tasks.register("configureBuf") {
+    description = "Installs the Buf CLI."
+    File(buf.asPath).setExecutable(true)
 }
 
 val conformanceCLIFile =
@@ -39,6 +47,18 @@ tasks.register<Exec>("conformance") {
     commandLine(*(listOf(conformanceCLIPath) + conformanceArgs + listOf(conformanceAppScript)).toTypedArray())
 }
 
+tasks.register<Exec>("generateConformance") {
+    dependsOn("configureBuf")
+    description = "Generates sources for the bufbuild/protovalidate-testing module to build/generated/sources/bufgen."
+    commandLine(
+        buf.asPath,
+        "generate",
+        "--template",
+        "buf.gen.yaml",
+        "buf.build/bufbuild/protovalidate-testing:${project.findProperty("protovalidate.version")}",
+    )
+}
+
 sourceSets {
     main {
         java {
@@ -48,6 +68,7 @@ sourceSets {
 }
 
 tasks.withType<JavaCompile> {
+    dependsOn("generateConformance")
     if (JavaVersion.current().isJava9Compatible) {
         doFirst {
             options.compilerArgs = mutableListOf("--release", "8")
@@ -100,6 +121,9 @@ dependencies {
 
     implementation(libs.assertj)
     implementation(platform(libs.junit.bom))
+
+    buf("build.buf:buf:${libs.versions.buf.get()}:${osdetector.classifier}@exe")
+
     testImplementation("org.junit.jupiter:junit-jupiter")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 
