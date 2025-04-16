@@ -14,7 +14,6 @@
 
 package build.buf.protovalidate;
 
-import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.Nullable;
