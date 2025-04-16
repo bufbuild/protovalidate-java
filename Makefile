@@ -9,7 +9,7 @@ MAKEFLAGS += --no-print-directory
 GRADLE ?= ./gradlew
 
 .PHONY: all
-all: lint build docs conformance  ## Run all tests and lint (default)
+all: lint generate build docs conformance  ## Run all tests and lint (default)
 
 .PHONY: build
 build:  ## Build the entire project.
@@ -18,6 +18,11 @@ build:  ## Build the entire project.
 .PHONY: docs
 docs:  ## Build javadocs for the project.
 	$(GRADLE) javadoc
+
+.PHONY: checkgenerate
+checkgenerate: generate  ## Checks if `make generate` produces a diff.
+	@# Used in CI to verify that `make generate` doesn't produce a diff.
+	test -z "$$(git status --porcelain | tee /dev/stderr)"
 
 .PHONY: clean
 clean:  ## Delete intermediate build artifacts
@@ -30,6 +35,10 @@ conformance: ## Execute conformance tests.
 .PHONY: help
 help: ## Describe useful make targets
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "%-15s %s\n", $$1, $$2}'
+
+.PHONY: generate
+generate: ## Regenerate code and license headers
+	$(GRADLE) generate
 
 .PHONY: lint
 lint: ## Lint code
