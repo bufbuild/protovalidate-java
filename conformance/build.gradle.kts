@@ -7,6 +7,14 @@ plugins {
     application
     java
     alias(libs.plugins.errorprone)
+    alias(libs.plugins.osdetector)
+}
+
+val buf: Configuration by configurations.creating
+
+tasks.register("configureBuf") {
+    description = "Installs the Buf CLI."
+    File(buf.asPath).setExecutable(true)
 }
 
 val conformanceCLIFile =
@@ -39,14 +47,35 @@ tasks.register<Exec>("conformance") {
     commandLine(*(listOf(conformanceCLIPath) + conformanceArgs + listOf(conformanceAppScript)).toTypedArray())
 }
 
+tasks.register<Exec>("generateConformance") {
+    dependsOn("configureBuf")
+    description = "Generates sources for the bufbuild/protovalidate-testing module to build/generated/sources/bufgen."
+    commandLine(
+        buf.asPath,
+        "generate",
+        "--template",
+        "buf.gen.yaml",
+        "buf.build/bufbuild/protovalidate-testing:${project.findProperty("protovalidate.version")}",
+    )
+}
+
+sourceSets {
+    main {
+        java {
+            srcDir(layout.buildDirectory.dir("generated/sources/bufgen"))
+        }
+    }
+}
+
 tasks.withType<JavaCompile> {
+    dependsOn("generateConformance")
     if (JavaVersion.current().isJava9Compatible) {
         doFirst {
             options.compilerArgs = mutableListOf("--release", "8")
         }
     }
     // Disable errorprone on generated code
-    options.errorprone.excludedPaths.set(".*/src/main/java/build/buf/validate/conformance/.*")
+    options.errorprone.excludedPaths.set(".*/build/generated/sources/bufgen/.*")
 }
 
 // Disable javadoc for conformance tests
@@ -81,7 +110,7 @@ tasks {
 apply(plugin = "com.diffplug.spotless")
 configure<SpotlessExtension> {
     java {
-        targetExclude("src/main/java/build/buf/validate/**/*.java")
+        targetExclude("build/generated/sources/bufgen/**/*.java")
     }
 }
 
@@ -92,6 +121,9 @@ dependencies {
 
     implementation(libs.assertj)
     implementation(platform(libs.junit.bom))
+
+    buf("build.buf:buf:${libs.versions.buf.get()}:${osdetector.classifier}@exe")
+
     testImplementation("org.junit.jupiter:junit-jupiter")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 
