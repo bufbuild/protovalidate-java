@@ -16,7 +16,7 @@ package build.buf.protovalidate;
 
 import java.util.ArrayList;
 import java.util.List;
-import javax.annotation.Nullable;
+import org.jspecify.annotations.Nullable;
 
 /**
  * Ipv6 is a class used to parse a given string to determine if it is an IPv6 address or address

@@ -14,7 +14,6 @@
 
 package build.buf.protovalidate;
 
-import com.google.common.primitives.Bytes;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.regex.Pattern;
@@ -205,10 +204,32 @@ final class CustomOverload {
           if (lhsType == TypeEnum.Bytes) {
             byte[] receiver = (byte[]) lhs.value();
             byte[] param = (byte[]) rhs.value();
-            return Types.boolOf(Bytes.indexOf(receiver, param) != -1);
+            return Types.boolOf(bytesContains(receiver, param));
           }
           return Err.noSuchOverload(lhs, OVERLOAD_CONTAINS, rhs);
         });
+  }
+
+  static boolean bytesContains(byte[] arr, byte[] subArr) {
+    if (subArr.length == 0) {
+      return true;
+    }
+    if (subArr.length > arr.length) {
+      return false;
+    }
+    for (int i = 0; i < arr.length - subArr.length + 1; i++) {
+      boolean found = true;
+      for (int j = 0; j < subArr.length; j++) {
+        if (arr[i + j] != subArr[j]) {
+          found = false;
+          break;
+        }
+      }
+      if (found) {
+        return true;
+      }
+    }
+    return false;
   }
 
   /**

@@ -22,7 +22,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import javax.annotation.Nullable;
+import org.jspecify.annotations.Nullable;
 import org.projectnessie.cel.common.ULong;
 
 /** The {@link Value} type that contains a field descriptor and its value. */

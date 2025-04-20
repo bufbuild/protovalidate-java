@@ -22,7 +22,6 @@ import build.buf.validate.FieldPathElement;
 import build.buf.validate.Ignore;
 import build.buf.validate.MessageConstraints;
 import build.buf.validate.OneofConstraints;
-import com.google.common.collect.ImmutableMap;
 import com.google.protobuf.ByteString;
 import com.google.protobuf.Descriptors;
 import com.google.protobuf.Descriptors.Descriptor;
@@ -35,8 +34,9 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
-import javax.annotation.Nullable;
+import org.jspecify.annotations.Nullable;
 import org.projectnessie.cel.Env;
 import org.projectnessie.cel.EnvOption;
 import org.projectnessie.cel.checker.Decls;
@@ -47,7 +47,7 @@ class EvaluatorBuilder {
       FieldPathUtils.fieldPathElement(
           FieldConstraints.getDescriptor().findFieldByNumber(FieldConstraints.CEL_FIELD_NUMBER));
 
-  private volatile ImmutableMap<Descriptor, MessageEvaluator> evaluatorCache = ImmutableMap.of();
+  private volatile Map<Descriptor, MessageEvaluator> evaluatorCache = Collections.emptyMap();
 
   private final Env env;
   private final boolean disableLazy;
@@ -98,7 +98,7 @@ class EvaluatorBuilder {
         return eval;
       }
       // Rebuild cache with this descriptor (and any of its dependencies).
-      ImmutableMap<Descriptor, MessageEvaluator> updatedCache =
+      Map<Descriptor, MessageEvaluator> updatedCache =
           new DescriptorCacheBuilder(env, constraints, evaluatorCache).build(desc);
       evaluatorCache = updatedCache;
       eval = updatedCache.get(desc);
@@ -117,9 +117,7 @@ class EvaluatorBuilder {
     private final HashMap<Descriptor, MessageEvaluator> cache;
 
     private DescriptorCacheBuilder(
-        Env env,
-        ConstraintCache constraintCache,
-        ImmutableMap<Descriptor, MessageEvaluator> previousCache) {
+        Env env, ConstraintCache constraintCache, Map<Descriptor, MessageEvaluator> previousCache) {
       this.env = Objects.requireNonNull(env, "env");
       this.constraintCache = Objects.requireNonNull(constraintCache, "constraintCache");
       this.cache = new HashMap<>(previousCache);
@@ -130,13 +128,13 @@ class EvaluatorBuilder {
      * references).
      *
      * @param descriptor Descriptor used to build the cache.
-     * @return Immutable map of descriptors to evaluators.
+     * @return Unmodifiable map of descriptors to evaluators.
      * @throws CompilationException If an error occurs compiling a constraint on the cache.
      */
-    public ImmutableMap<Descriptor, MessageEvaluator> build(Descriptor descriptor)
+    public Map<Descriptor, MessageEvaluator> build(Descriptor descriptor)
         throws CompilationException {
       createMessageEvaluator(descriptor);
-      return ImmutableMap.copyOf(cache);
+      return Collections.unmodifiableMap(cache);
     }
 
     private MessageEvaluator createMessageEvaluator(Descriptor desc) throws CompilationException {
@@ -234,12 +232,10 @@ class EvaluatorBuilder {
       return fieldEvaluator;
     }
 
-    @SuppressWarnings("deprecation")
     private boolean shouldSkip(FieldConstraints constraints) {
       return constraints.getIgnore() == Ignore.IGNORE_ALWAYS;
     }
 
-    @SuppressWarnings("deprecation")
     private static boolean shouldIgnoreEmpty(FieldConstraints constraints) {
       return constraints.getIgnore() == Ignore.IGNORE_IF_UNPOPULATED
           || constraints.getIgnore() == Ignore.IGNORE_IF_DEFAULT_VALUE;

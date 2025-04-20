@@ -17,7 +17,7 @@ package build.buf.protovalidate;
 import build.buf.protovalidate.exceptions.ExecutionException;
 import java.util.ArrayList;
 import java.util.List;
-import javax.annotation.Nullable;
+import org.jspecify.annotations.Nullable;
 
 /** Evaluator that executes a {@link CompiledProgram}. */
 class CelPrograms implements Evaluator {

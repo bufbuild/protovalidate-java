@@ -257,10 +257,10 @@ mavenPublishing {
 
 dependencies {
     annotationProcessor(libs.nullaway)
+    api(libs.jspecify)
     api(libs.protobuf.java)
     implementation(enforcedPlatform(libs.cel))
     implementation(libs.cel.core)
-    implementation(libs.guava)
 
     buf("build.buf:buf:${libs.versions.buf.get()}:${osdetector.classifier}@exe")
 
@@ -269,5 +269,5 @@ dependencies {
     testImplementation("org.junit.jupiter:junit-jupiter")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 
-    errorprone(libs.errorprone)
+    errorprone(libs.errorprone.core)
 }

@@ -17,10 +17,8 @@ package build.buf.protovalidate;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableMap;
-import java.util.List;
-import java.util.Map;
+import java.util.Arrays;
+import java.util.Collections;
 import org.junit.jupiter.api.Test;
 import org.projectnessie.cel.Ast;
 import org.projectnessie.cel.Env;
@@ -36,28 +34,20 @@ public class CustomOverloadTest {
 
   @Test
   public void testIsInf() {
-    Map<String, Boolean> testCases =
-        ImmutableMap.<String, Boolean>builder()
-            .put("0.0.isInf()", false)
-            .put("(1.0/0.0).isInf()", true)
-            .put("(1.0/0.0).isInf(0)", true)
-            .put("(1.0/0.0).isInf(1)", true)
-            .put("(1.0/0.0).isInf(-1)", false)
-            .put("(-1.0/0.0).isInf()", true)
-            .put("(-1.0/0.0).isInf(0)", true)
-            .put("(-1.0/0.0).isInf(1)", false)
-            .put("(-1.0/0.0).isInf(-1)", true)
-            .build();
-    for (Map.Entry<String, Boolean> testCase : testCases.entrySet()) {
-      Program.EvalResult result = eval(testCase.getKey());
-      assertThat(result.getVal().booleanValue()).isEqualTo(testCase.getValue());
-    }
+    assertThat(evalToBool("0.0.isInf()")).isFalse();
+    assertThat(evalToBool("(1.0/0.0).isInf()")).isTrue();
+    assertThat(evalToBool("(1.0/0.0).isInf(0)")).isTrue();
+    assertThat(evalToBool("(1.0/0.0).isInf(1)")).isTrue();
+    assertThat(evalToBool("(1.0/0.0).isInf(-1)")).isFalse();
+    assertThat(evalToBool("(-1.0/0.0).isInf()")).isTrue();
+    assertThat(evalToBool("(-1.0/0.0).isInf(0)")).isTrue();
+    assertThat(evalToBool("(-1.0/0.0).isInf(1)")).isFalse();
+    assertThat(evalToBool("(-1.0/0.0).isInf(-1)")).isTrue();
   }
 
   @Test
   public void testIsInfUnsupported() {
-    List<String> testCases = ImmutableList.of("'abc'.isInf()", "0.0.isInf('abc')");
-    for (String testCase : testCases) {
+    for (String testCase : Arrays.asList("'abc'.isInf()", "0.0.isInf('abc')")) {
       Val val = eval(testCase).getVal();
       assertThat(Err.isError(val)).isTrue();
       assertThatThrownBy(() -> val.convertToNative(Exception.class))
@@ -67,22 +57,14 @@ public class CustomOverloadTest {
 
   @Test
   public void testIsNan() {
-    Map<String, Boolean> testCases =
-        ImmutableMap.<String, Boolean>builder()
-            .put("0.0.isNan()", false)
-            .put("(0.0/0.0).isNan()", true)
-            .put("(1.0/0.0).isNan()", false)
-            .build();
-    for (Map.Entry<String, Boolean> testCase : testCases.entrySet()) {
-      Program.EvalResult result = eval(testCase.getKey());
-      assertThat(result.getVal().booleanValue()).isEqualTo(testCase.getValue());
-    }
+    assertThat(evalToBool("0.0.isNan()")).isFalse();
+    assertThat(evalToBool("(0.0/0.0).isNan()")).isTrue();
+    assertThat(evalToBool("(1.0/0.0).isNan()")).isFalse();
   }
 
   @Test
   public void testIsNanUnsupported() {
-    List<String> testCases = ImmutableList.of("'foo'.isNan()");
-    for (String testCase : testCases) {
+    for (String testCase : Collections.singletonList("'foo'.isNan()")) {
       Val val = eval(testCase).getVal();
       assertThat(Err.isError(val)).isTrue();
       assertThatThrownBy(() -> val.convertToNative(Exception.class))
@@ -92,37 +74,29 @@ public class CustomOverloadTest {
 
   @Test
   public void testUnique() {
-    Map<String, Boolean> testCases =
-        ImmutableMap.<String, Boolean>builder()
-            .put("[].unique()", true)
-            .put("[true].unique()", true)
-            .put("[true, false].unique()", true)
-            .put("[true, true].unique()", false)
-            .put("[1, 2, 3].unique()", true)
-            .put("[1, 2, 1].unique()", false)
-            .put("[1u, 2u, 3u].unique()", true)
-            .put("[1u, 2u, 2u].unique()", false)
-            .put("[1.0, 2.0, 3.0].unique()", true)
-            .put("[3.0,2.0,3.0].unique()", false)
-            .put("['abc', 'def'].unique()", true)
-            .put("['abc', 'abc'].unique()", false)
-            .put("[b'abc', b'123'].unique()", true)
-            .put("[b'123', b'123'].unique()", false)
-            // Previously, the unique() method returned false here as both bytes were converted
-            // to UTF-8. Since both contain invalid UTF-8, this would lead to them treated as equal
-            // because they'd have the same substitution character.
-            .put("[b'\\xFF', b'\\xFE'].unique()", true)
-            .build();
-    for (Map.Entry<String, Boolean> testCase : testCases.entrySet()) {
-      Program.EvalResult result = eval(testCase.getKey());
-      assertThat(result.getVal().booleanValue()).isEqualTo(testCase.getValue());
-    }
+    assertThat(evalToBool("[].unique()")).isTrue();
+    assertThat(evalToBool("[true].unique()")).isTrue();
+    assertThat(evalToBool("[true, false].unique()")).isTrue();
+    assertThat(evalToBool("[true, true].unique()")).isFalse();
+    assertThat(evalToBool("[1, 2, 3].unique()")).isTrue();
+    assertThat(evalToBool("[1, 2, 1].unique()")).isFalse();
+    assertThat(evalToBool("[1u, 2u, 3u].unique()")).isTrue();
+    assertThat(evalToBool("[1u, 2u, 2u].unique()")).isFalse();
+    assertThat(evalToBool("[1.0, 2.0, 3.0].unique()")).isTrue();
+    assertThat(evalToBool("[3.0,2.0,3.0].unique()")).isFalse();
+    assertThat(evalToBool("['abc', 'def'].unique()")).isTrue();
+    assertThat(evalToBool("['abc', 'abc'].unique()")).isFalse();
+    assertThat(evalToBool("[b'abc', b'123'].unique()")).isTrue();
+    assertThat(evalToBool("[b'123', b'123'].unique()")).isFalse();
+    // Previously, the unique() method returned false here as both bytes were converted
+    // to UTF-8. Since both contain invalid UTF-8, this would lead to them treated as equal
+    // because they'd have the same substitution character.
+    assertThat(evalToBool("[b'\\xFF', b'\\xFE'].unique()")).isTrue();
   }
 
   @Test
   public void testUniqueUnsupported() {
-    List<String> testCases = ImmutableList.of("1.unique()");
-    for (String testCase : testCases) {
+    for (String testCase : Collections.singletonList("1.unique()")) {
       Program.EvalResult result = eval(testCase);
       Val val = result.getVal();
       assertThat(Err.isError(val)).isTrue();
@@ -133,44 +107,40 @@ public class CustomOverloadTest {
 
   @Test
   public void testIsIpPrefix() {
-    Map<String, Boolean> testCases =
-        ImmutableMap.<String, Boolean>builder()
-            .put("'1.2.3.0/24'.isIpPrefix()", true)
-            .put("'1.2.3.4/24'.isIpPrefix()", true)
-            .put("'1.2.3.0/24'.isIpPrefix(true)", true)
-            .put("'1.2.3.4/24'.isIpPrefix(true)", false)
-            .put("'fd7a:115c:a1e0:ab12:4843:cd96:626b:4000/118'.isIpPrefix()", true)
-            .put("'fd7a:115c:a1e0:ab12:4843:cd96:626b:430b/118'.isIpPrefix()", true)
-            .put("'fd7a:115c:a1e0:ab12:4843:cd96:626b:4000/118'.isIpPrefix(true)", true)
-            .put("'fd7a:115c:a1e0:ab12:4843:cd96:626b:430b/118'.isIpPrefix(true)", false)
-            .put("'1.2.3.4'.isIpPrefix()", false)
-            .put("'fd7a:115c:a1e0:ab12:4843:cd96:626b:430b'.isIpPrefix()", false)
-            .put("'1.2.3.0/24'.isIpPrefix(4)", true)
-            .put("'1.2.3.4/24'.isIpPrefix(4)", true)
-            .put("'1.2.3.0/24'.isIpPrefix(4,true)", true)
-            .put("'1.2.3.4/24'.isIpPrefix(4,true)", false)
-            .put("'fd7a:115c:a1e0:ab12:4843:cd96:626b:4000/118'.isIpPrefix(4)", false)
-            .put("'fd7a:115c:a1e0:ab12:4843:cd96:626b:4000/118'.isIpPrefix(6)", true)
-            .put("'fd7a:115c:a1e0:ab12:4843:cd96:626b:430b/118'.isIpPrefix(6)", true)
-            .put("'fd7a:115c:a1e0:ab12:4843:cd96:626b:4000/118'.isIpPrefix(6,true)", true)
-            .put("'fd7a:115c:a1e0:ab12:4843:cd96:626b:430b/118'.isIpPrefix(6,true)", false)
-            .put("'1.2.3.0/24'.isIpPrefix(6)", false)
-            .build();
-    for (Map.Entry<String, Boolean> testCase : testCases.entrySet()) {
-      Program.EvalResult result = eval(testCase.getKey());
-      assertThat(result.getVal().booleanValue()).isEqualTo(testCase.getValue());
-    }
+    assertThat(evalToBool("'1.2.3.0/24'.isIpPrefix()")).isTrue();
+    assertThat(evalToBool("'1.2.3.4/24'.isIpPrefix()")).isTrue();
+    assertThat(evalToBool("'1.2.3.0/24'.isIpPrefix(true)")).isTrue();
+    assertThat(evalToBool("'1.2.3.4/24'.isIpPrefix(true)")).isFalse();
+    assertThat(evalToBool("'fd7a:115c:a1e0:ab12:4843:cd96:626b:4000/118'.isIpPrefix()")).isTrue();
+    assertThat(evalToBool("'fd7a:115c:a1e0:ab12:4843:cd96:626b:430b/118'.isIpPrefix()")).isTrue();
+    assertThat(evalToBool("'fd7a:115c:a1e0:ab12:4843:cd96:626b:4000/118'.isIpPrefix(true)"))
+        .isTrue();
+    assertThat(evalToBool("'fd7a:115c:a1e0:ab12:4843:cd96:626b:430b/118'.isIpPrefix(true)"))
+        .isFalse();
+    assertThat(evalToBool("'1.2.3.4'.isIpPrefix()")).isFalse();
+    assertThat(evalToBool("'fd7a:115c:a1e0:ab12:4843:cd96:626b:430b'.isIpPrefix()")).isFalse();
+    assertThat(evalToBool("'1.2.3.0/24'.isIpPrefix(4)")).isTrue();
+    assertThat(evalToBool("'1.2.3.4/24'.isIpPrefix(4)")).isTrue();
+    assertThat(evalToBool("'1.2.3.0/24'.isIpPrefix(4,true)")).isTrue();
+    assertThat(evalToBool("'1.2.3.4/24'.isIpPrefix(4,true)")).isFalse();
+    assertThat(evalToBool("'fd7a:115c:a1e0:ab12:4843:cd96:626b:4000/118'.isIpPrefix(4)")).isFalse();
+    assertThat(evalToBool("'fd7a:115c:a1e0:ab12:4843:cd96:626b:4000/118'.isIpPrefix(6)")).isTrue();
+    assertThat(evalToBool("'fd7a:115c:a1e0:ab12:4843:cd96:626b:430b/118'.isIpPrefix(6)")).isTrue();
+    assertThat(evalToBool("'fd7a:115c:a1e0:ab12:4843:cd96:626b:4000/118'.isIpPrefix(6,true)"))
+        .isTrue();
+    assertThat(evalToBool("'fd7a:115c:a1e0:ab12:4843:cd96:626b:430b/118'.isIpPrefix(6,true)"))
+        .isFalse();
+    assertThat(evalToBool("'1.2.3.0/24'.isIpPrefix(6)")).isFalse();
   }
 
   @Test
   public void testIsIpPrefixUnsupported() {
-    List<String> testCases =
-        ImmutableList.of(
+    for (String testCase :
+        Arrays.asList(
             "1.isIpPrefix()",
             "'1.2.3.0/24'.isIpPrefix('foo')",
             "'1.2.3.0/24'.isIpPrefix(4,'foo')",
-            "'1.2.3.0/24'.isIpPrefix('foo',true)");
-    for (String testCase : testCases) {
+            "'1.2.3.0/24'.isIpPrefix('foo',true)")) {
       Program.EvalResult result = eval(testCase);
       Val val = result.getVal();
       assertThat(Err.isError(val)).isTrue();
@@ -181,38 +151,32 @@ public class CustomOverloadTest {
 
   @Test
   public void testIsHostname() {
-    Map<String, Boolean> testCases =
-        ImmutableMap.<String, Boolean>builder()
-            .put("'example.com'.isHostname()", true)
-            .put("'example.123'.isHostname()", false)
-            .build();
-    for (Map.Entry<String, Boolean> testCase : testCases.entrySet()) {
-      Program.EvalResult result = eval(testCase.getKey());
-      assertThat(result.getVal().booleanValue())
-          .as(
-              "expected %s=%s, got=%s",
-              testCase.getKey(), testCase.getValue(), !testCase.getValue())
-          .isEqualTo(testCase.getValue());
-    }
+    assertThat(evalToBool("'example.com'.isHostname()")).isTrue();
+    assertThat(evalToBool("'example.123'.isHostname()")).isFalse();
   }
 
   @Test
   public void testIsEmail() {
-    Map<String, Boolean> testCases =
-        ImmutableMap.<String, Boolean>builder()
-            .put("'foo@example.com'.isEmail()", true)
-            .put("'<foo@example.com>'.isEmail()", false)
-            .put("'  foo@example.com'.isEmail()", false)
-            .put("'foo@example.com    '.isEmail()", false)
-            .build();
-    for (Map.Entry<String, Boolean> testCase : testCases.entrySet()) {
-      Program.EvalResult result = eval(testCase.getKey());
-      assertThat(result.getVal().booleanValue())
-          .as(
-              "expected %s=%s, got=%s",
-              testCase.getKey(), testCase.getValue(), !testCase.getValue())
-          .isEqualTo(testCase.getValue());
-    }
+    assertThat(evalToBool("'foo@example.com'.isEmail()")).isTrue();
+    assertThat(evalToBool("'<foo@example.com>'.isEmail()")).isFalse();
+    assertThat(evalToBool("'  foo@example.com'.isEmail()")).isFalse();
+    assertThat(evalToBool("'foo@example.com    '.isEmail()")).isFalse();
+  }
+
+  @Test
+  public void testBytesContains() {
+    assertThat(evalToBool("bytes('12345').contains(bytes(''))")).isTrue();
+    assertThat(evalToBool("bytes('12345').contains(bytes('1'))")).isTrue();
+    assertThat(evalToBool("bytes('12345').contains(bytes('5'))")).isTrue();
+    assertThat(evalToBool("bytes('12345').contains(bytes('123'))")).isTrue();
+    assertThat(evalToBool("bytes('12345').contains(bytes('234'))")).isTrue();
+    assertThat(evalToBool("bytes('12345').contains(bytes('345'))")).isTrue();
+    assertThat(evalToBool("bytes('12345').contains(bytes('12345'))")).isTrue();
+
+    assertThat(evalToBool("bytes('12345').contains(bytes('6'))")).isFalse();
+    assertThat(evalToBool("bytes('12345').contains(bytes('13'))")).isFalse();
+    assertThat(evalToBool("bytes('12345').contains(bytes('35'))")).isFalse();
+    assertThat(evalToBool("bytes('12345').contains(bytes('123456'))")).isFalse();
   }
 
   private Program.EvalResult eval(String source) {
@@ -224,5 +188,10 @@ public class CustomOverloadTest {
     assertThat(parsed.hasIssues()).isFalse();
     Ast ast = parsed.getAst();
     return env.program(ast).eval(vars);
+  }
+
+  private boolean evalToBool(String source) {
+    Program.EvalResult result = eval(source);
+    return result.getVal().booleanValue();
   }
 }
