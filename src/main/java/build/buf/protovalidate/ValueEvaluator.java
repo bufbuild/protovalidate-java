@@ -20,7 +20,7 @@ import com.google.protobuf.Descriptors;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import javax.annotation.Nullable;
+import org.jspecify.annotations.Nullable;
 
 /**
  * {@link ValueEvaluator} performs validation on any concrete value contained within a singular
@@ -28,7 +28,7 @@ import javax.annotation.Nullable;
  */
 class ValueEvaluator implements Evaluator {
   /** The {@link Descriptors.FieldDescriptor} targeted by this evaluator */
-  @Nullable private final Descriptors.FieldDescriptor descriptor;
+  private final Descriptors.@Nullable FieldDescriptor descriptor;
 
   /** The nested rule path that this value evaluator is for */
   @Nullable private final FieldPath nestedRule;
@@ -46,12 +46,12 @@ class ValueEvaluator implements Evaluator {
   private boolean ignoreEmpty;
 
   /** Constructs a {@link ValueEvaluator}. */
-  ValueEvaluator(@Nullable Descriptors.FieldDescriptor descriptor, @Nullable FieldPath nestedRule) {
+  ValueEvaluator(Descriptors.@Nullable FieldDescriptor descriptor, @Nullable FieldPath nestedRule) {
     this.descriptor = descriptor;
     this.nestedRule = nestedRule;
   }
 
-  public @Nullable Descriptors.FieldDescriptor getDescriptor() {
+  public Descriptors.@Nullable FieldDescriptor getDescriptor() {
     return descriptor;
   }
 

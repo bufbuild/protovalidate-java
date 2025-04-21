@@ -15,7 +15,7 @@
 package build.buf.protovalidate;
 
 import java.time.Instant;
-import javax.annotation.Nullable;
+import org.jspecify.annotations.Nullable;
 import org.projectnessie.cel.common.types.TimestampT;
 import org.projectnessie.cel.interpreter.Activation;
 import org.projectnessie.cel.interpreter.ResolvedValue;

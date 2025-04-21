@@ -19,7 +19,7 @@ import com.google.protobuf.Message;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
-import javax.annotation.Nullable;
+import org.jspecify.annotations.Nullable;
 
 /** The {@link Value} type that contains a {@link com.google.protobuf.Message}. */
 final class MessageValue implements Value {
@@ -37,7 +37,7 @@ final class MessageValue implements Value {
   }
 
   @Override
-  public @Nullable Descriptors.FieldDescriptor fieldDescriptor() {
+  public Descriptors.@Nullable FieldDescriptor fieldDescriptor() {
     return null;
   }
 
