@@ -27,7 +27,7 @@ protobuf-java = { module = "com.google.protobuf:protobuf-java", version.ref = "p
 spotless = { module = "com.diffplug.spotless:spotless-plugin-gradle", version = "7.0.2" }
 
 [plugins]
-errorprone = { id = "net.ltgt.errorprone", version = "4.1.0" }
+errorprone = { id = "net.ltgt.errorprone", version = "4.2.0" }
 git = { id = "com.palantir.git-version", version = "3.2.0" }
 maven = { id = "com.vanniktech.maven.publish.base", version.ref = "maven-publish" }
 osdetector = { id = "com.google.osdetector", version = "1.7.3" }
