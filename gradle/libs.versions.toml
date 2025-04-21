@@ -24,7 +24,7 @@ junit-bom = { module = "org.junit:junit-bom", version.ref = "junit" }
 maven-plugin = { module = "com.vanniktech:gradle-maven-publish-plugin", version.ref = "maven-publish" }
 nullaway = { module = "com.uber.nullaway:nullaway", version = "0.12.6" }
 protobuf-java = { module = "com.google.protobuf:protobuf-java", version.ref = "protobuf" }
-spotless = { module = "com.diffplug.spotless:spotless-plugin-gradle", version = "7.0.2" }
+spotless = { module = "com.diffplug.spotless:spotless-plugin-gradle", version = "7.0.3" }
 
 [plugins]
 errorprone = { id = "net.ltgt.errorprone", version = "4.2.0" }
