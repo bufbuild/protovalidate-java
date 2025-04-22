@@ -46,16 +46,10 @@ class FieldEvaluator implements Evaluator {
   /** Indicates that the field must have a set value. */
   private final boolean required;
 
-  /**
-   * ignoreEmpty indicates if a field should skip validation on its zero value. This field is
-   * generally true for nullable fields or fields with the ignore_empty constraint explicitly set.
-   */
-  // private final boolean ignoreEmpty;
-
-  // private final boolean ignoreDefault;
-
+  /** Whether validation should be ignored for certain conditions */
   private final Ignore ignore;
 
+  /** Whether the field distinguishes between unpopulated and default values. */
   private final boolean hasPresence;
 
   @Nullable private final Object zero;
@@ -82,16 +76,31 @@ class FieldEvaluator implements Evaluator {
     return !required && valueEvaluator.tautology();
   }
 
+  /**
+   * Returns whether a field should always skip validation.
+   *
+   * <p>If true, this will take precedence and all checks are skipped.
+   */
   private boolean shouldIgnoreAlways() {
     return this.ignore == Ignore.IGNORE_ALWAYS;
   }
 
+  /**
+   * Returns whether a field should skip validation on its zero value.
+   *
+   * <p>This is generally true for nullable fields or fields with the ignore_empty constraint
+   * explicitly set.
+   */
   private boolean shouldIgnoreEmpty() {
     return this.hasPresence
         || this.ignore == Ignore.IGNORE_IF_UNPOPULATED
         || this.ignore == Ignore.IGNORE_IF_DEFAULT_VALUE;
   }
 
+  /**
+   * Returns whether a field should skip validation on its zero value, including for fields which
+   * have field presence and are set to the zero value.
+   */
   private boolean shouldIgnoreDefault() {
     return this.hasPresence && this.ignore == Ignore.IGNORE_IF_DEFAULT_VALUE;
   }
