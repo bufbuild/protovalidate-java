@@ -18,6 +18,8 @@ import com.google.common.base.Ascii;
 import com.google.common.base.Splitter;
 import com.google.common.net.InetAddresses;
 import com.google.common.primitives.Bytes;
+import com.google.protobuf.Descriptors;
+import com.google.protobuf.Message;
 import inet.ipaddr.IPAddress;
 import inet.ipaddr.IPAddressString;
 import jakarta.mail.internet.AddressException;
@@ -35,6 +37,7 @@ import org.projectnessie.cel.common.types.IntT;
 import org.projectnessie.cel.common.types.ListT;
 import org.projectnessie.cel.common.types.StringT;
 import org.projectnessie.cel.common.types.Types;
+import org.projectnessie.cel.common.types.pb.DefaultTypeAdapter;
 import org.projectnessie.cel.common.types.ref.TypeEnum;
 import org.projectnessie.cel.common.types.ref.Val;
 import org.projectnessie.cel.common.types.traits.Lister;
@@ -43,6 +46,7 @@ import org.projectnessie.cel.interpreter.functions.Overload;
 /** Defines custom function overloads (the implementation). */
 final class CustomOverload {
 
+  private static final String OVERLOAD_GET_FIELD = "getField";
   private static final String OVERLOAD_FORMAT = "format";
   private static final String OVERLOAD_UNIQUE = "unique";
   private static final String OVERLOAD_STARTS_WITH = "startsWith";
@@ -65,6 +69,7 @@ final class CustomOverload {
    */
   static Overload[] create() {
     return new Overload[] {
+      getField(),
       format(),
       unique(),
       startsWith(),
@@ -80,6 +85,30 @@ final class CustomOverload {
       isInf(),
       isHostAndPort(),
     };
+  }
+
+  /**
+   * Creates a custom function overload for the "getField" operation.
+   *
+   * @return The {@link Overload} instance for the "getField" operation.
+   */
+  private static Overload getField() {
+    return Overload.binary(
+        OVERLOAD_GET_FIELD,
+        (msgarg, namearg) -> {
+          if (msgarg.type().typeEnum() != TypeEnum.Object
+              || namearg.type().typeEnum() != TypeEnum.String) {
+            return Err.newErr("no such overload");
+          }
+          Message message = msgarg.convertToNative(Message.class);
+          String fieldName = namearg.convertToNative(String.class);
+          Descriptors.FieldDescriptor field =
+              message.getDescriptorForType().findFieldByName(fieldName);
+          if (field == null) {
+            return Err.newErr("no such field: " + fieldName);
+          }
+          return DefaultTypeAdapter.Instance.nativeToValue(message.getField(field));
+        });
   }
 
   /**

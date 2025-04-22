@@ -38,6 +38,13 @@ final class CustomDeclarations {
     // Add 'now' variable declaration
     decls.add(Decls.newVar("now", Decls.newObjectType(TimestampT.TimestampType.typeName())));
 
+    // Add 'getField' function declaration
+    decls.add(
+        Decls.newFunction(
+            "getField",
+            Decls.newOverload(
+                "get_field_any_string", Arrays.asList(Decls.Any, Decls.String), Decls.Any)));
+
     // Add 'isIp' function declaration
     decls.add(
         Decls.newFunction(
