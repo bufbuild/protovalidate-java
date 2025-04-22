@@ -5,7 +5,6 @@ cel = "0.5.1"
 error-prone = "2.38.0"
 junit = "5.12.2"
 maven-publish = "0.31.0"
-jspecify = "1.0.0"
 # When updating, make sure to update versions in the following files to match and regenerate code with 'make generate'.
 # - buf.gen.yaml
 # - conformance/buf.gen.yaml
@@ -20,6 +19,7 @@ cel = { module = "org.projectnessie.cel:cel-bom", version.ref = "cel" }
 cel-core = { module = "org.projectnessie.cel:cel-core" }
 errorprone-annotations = { module = "com.google.errorprone:error_prone_annotations", version.ref = "error-prone" }
 errorprone-core = { module = "com.google.errorprone:error_prone_core", version.ref = "error-prone" }
+jspecify = { module ="org.jspecify:jspecify", version = "1.0.0" }
 junit-bom = { module = "org.junit:junit-bom", version.ref = "junit" }
 maven-plugin = { module = "com.vanniktech:gradle-maven-publish-plugin", version.ref = "maven-publish" }
 nullaway = { module = "com.uber.nullaway:nullaway", version = "0.12.6" }
