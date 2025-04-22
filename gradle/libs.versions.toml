@@ -2,7 +2,7 @@
 assertj = "3.27.3"
 buf = "1.52.1"
 cel = "0.5.1"
-ipaddress = "5.5.1"
+error-prone = "2.38.0"
 junit = "5.12.2"
 maven-publish = "0.31.0"
 # When updating, make sure to update versions in the following files to match and regenerate code with 'make generate'.
@@ -17,10 +17,9 @@ assertj = { module = "org.assertj:assertj-core", version.ref = "assertj" }
 buf = { module = "build.buf:buf", version.ref = "buf" }
 cel = { module = "org.projectnessie.cel:cel-bom", version.ref = "cel" }
 cel-core = { module = "org.projectnessie.cel:cel-core" }
-errorprone = { module = "com.google.errorprone:error_prone_core", version = "2.38.0" }
-guava = { module = "com.google.guava:guava", version = "33.4.0-jre" }
-ipaddress = { module = "com.github.seancfoley:ipaddress", version.ref = "ipaddress" }
-jakarta-mail-api = { module = "jakarta.mail:jakarta.mail-api", version = "2.1.3" }
+errorprone-annotations = { module = "com.google.errorprone:error_prone_annotations", version.ref = "error-prone" }
+errorprone-core = { module = "com.google.errorprone:error_prone_core", version.ref = "error-prone" }
+jspecify = { module ="org.jspecify:jspecify", version = "1.0.0" }
 junit-bom = { module = "org.junit:junit-bom", version.ref = "junit" }
 maven-plugin = { module = "com.vanniktech:gradle-maven-publish-plugin", version.ref = "maven-publish" }
 nullaway = { module = "com.uber.nullaway:nullaway", version = "0.12.6" }

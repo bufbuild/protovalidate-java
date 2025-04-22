@@ -16,7 +16,7 @@ package build.buf.protovalidate;
 
 import build.buf.protovalidate.exceptions.ExecutionException;
 import build.buf.validate.FieldPath;
-import javax.annotation.Nullable;
+import org.jspecify.annotations.Nullable;
 import org.projectnessie.cel.Program;
 import org.projectnessie.cel.common.types.Err;
 import org.projectnessie.cel.common.types.ref.Val;
@@ -63,8 +63,7 @@ class CompiledProgram {
    *     violations.
    * @throws ExecutionException If the evaluation of the CEL program fails with an error.
    */
-  @Nullable
-  public ConstraintViolation.Builder eval(Value fieldValue, Variable bindings)
+  public ConstraintViolation.@Nullable Builder eval(Value fieldValue, Variable bindings)
       throws ExecutionException {
     Program.EvalResult evalResult = program.eval(bindings);
     Val val = evalResult.getVal();

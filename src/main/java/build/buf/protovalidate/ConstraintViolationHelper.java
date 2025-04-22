@@ -18,7 +18,7 @@ import build.buf.validate.FieldPath;
 import build.buf.validate.FieldPathElement;
 import java.util.ArrayList;
 import java.util.List;
-import javax.annotation.Nullable;
+import org.jspecify.annotations.Nullable;
 
 class ConstraintViolationHelper {
   private static final List<FieldPathElement> EMPTY_PREFIX = new ArrayList<>();
@@ -46,8 +46,7 @@ class ConstraintViolationHelper {
     this.fieldPathElement = null;
   }
 
-  @Nullable
-  FieldPathElement getFieldPathElement() {
+  @Nullable FieldPathElement getFieldPathElement() {
     return fieldPathElement;
   }
 

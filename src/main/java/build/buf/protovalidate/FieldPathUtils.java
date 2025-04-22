@@ -18,7 +18,7 @@ import build.buf.validate.FieldPath;
 import build.buf.validate.FieldPathElement;
 import com.google.protobuf.Descriptors;
 import java.util.List;
-import javax.annotation.Nullable;
+import org.jspecify.annotations.Nullable;
 
 /** Utility class for manipulating error paths in violations. */
 final class FieldPathUtils {
