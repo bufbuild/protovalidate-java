@@ -225,8 +225,8 @@ class EvaluatorBuilder {
               valueEvaluatorEval,
               fieldDescriptor,
               fieldConstraints.getRequired(),
-              fieldDescriptor.hasPresence() || shouldIgnoreEmpty(fieldConstraints),
-              fieldDescriptor.hasPresence() && shouldIgnoreDefault(fieldConstraints),
+              fieldDescriptor.hasPresence(),
+              fieldConstraints.getIgnore(),
               zero);
       buildValue(fieldDescriptor, fieldConstraints, fieldEvaluator.valueEvaluator);
       return fieldEvaluator;

@@ -17,6 +17,7 @@ package build.buf.protovalidate;
 import build.buf.protovalidate.exceptions.ExecutionException;
 import build.buf.validate.FieldConstraints;
 import build.buf.validate.FieldPath;
+import build.buf.validate.Ignore;
 import com.google.protobuf.Descriptors.FieldDescriptor;
 import com.google.protobuf.Message;
 import java.util.Collections;
@@ -49,9 +50,13 @@ class FieldEvaluator implements Evaluator {
    * ignoreEmpty indicates if a field should skip validation on its zero value. This field is
    * generally true for nullable fields or fields with the ignore_empty constraint explicitly set.
    */
-  private final boolean ignoreEmpty;
+  // private final boolean ignoreEmpty;
 
-  private final boolean ignoreDefault;
+  // private final boolean ignoreDefault;
+
+  private final Ignore ignore;
+
+  private final boolean hasPresence;
 
   @Nullable private final Object zero;
 
@@ -60,15 +65,15 @@ class FieldEvaluator implements Evaluator {
       ValueEvaluator valueEvaluator,
       FieldDescriptor descriptor,
       boolean required,
-      boolean ignoreEmpty,
-      boolean ignoreDefault,
+      boolean hasPresence,
+      Ignore ignore,
       @Nullable Object zero) {
     this.helper = new ConstraintViolationHelper(valueEvaluator);
     this.valueEvaluator = valueEvaluator;
     this.descriptor = descriptor;
     this.required = required;
-    this.ignoreEmpty = ignoreEmpty;
-    this.ignoreDefault = ignoreDefault;
+    this.hasPresence = hasPresence;
+    this.ignore = ignore;
     this.zero = zero;
   }
 
@@ -77,9 +82,26 @@ class FieldEvaluator implements Evaluator {
     return !required && valueEvaluator.tautology();
   }
 
+  private boolean shouldIgnoreAlways() {
+    return this.ignore == Ignore.IGNORE_ALWAYS;
+  }
+
+  private boolean shouldIgnoreEmpty() {
+    return this.hasPresence
+        || this.ignore == Ignore.IGNORE_IF_UNPOPULATED
+        || this.ignore == Ignore.IGNORE_IF_DEFAULT_VALUE;
+  }
+
+  private boolean shouldIgnoreDefault() {
+    return this.hasPresence && this.ignore == Ignore.IGNORE_IF_DEFAULT_VALUE;
+  }
+
   @Override
   public List<ConstraintViolation.Builder> evaluate(Value val, boolean failFast)
       throws ExecutionException {
+    if (this.shouldIgnoreAlways()) {
+      return ConstraintViolation.NO_VIOLATIONS;
+    }
     Message message = val.messageValue();
     if (message == null) {
       return ConstraintViolation.NO_VIOLATIONS;
@@ -100,11 +122,11 @@ class FieldEvaluator implements Evaluator {
               .setMessage("value is required")
               .setRuleValue(new ConstraintViolation.FieldValue(true, REQUIRED_DESCRIPTOR)));
     }
-    if (ignoreEmpty && !hasField) {
+    if (this.shouldIgnoreEmpty() && !hasField) {
       return ConstraintViolation.NO_VIOLATIONS;
     }
     Object fieldValue = message.getField(descriptor);
-    if (ignoreDefault && Objects.equals(zero, fieldValue)) {
+    if (this.shouldIgnoreDefault() && Objects.equals(zero, fieldValue)) {
       return ConstraintViolation.NO_VIOLATIONS;
     }
     return valueEvaluator.evaluate(new ObjectValue(descriptor, fieldValue), failFast);
