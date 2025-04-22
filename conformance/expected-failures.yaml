@@ -107,24 +107,3 @@ custom_constraints:
   #ERROR: <input>:1:1: expression of type 'int' cannot be range of a comprehension (must be list, map, or dynamic)
   # | this.all(e, e == 1)
   # | ^
-standard_constraints/ignore:
-  - proto3/repeated/items/ignore_always/valid/zero_invalid_value
-  - proto3/map/values/ignore_always/valid/populated_invalid_value
-  - proto3/repeated/items/ignore_always/valid/populated_invalid_value
-  - proto2/map/keys/ignore_always/valid/zero_invalid_value
-  - proto/2023/map/values/ignore_always/valid/populated_invalid_value
-  - proto3/map/keys/ignore_always/valid/zero_invalid_value
-  - proto3/map/values/ignore_always/valid/zero_invalid_value
-  - proto2/map/values/ignore_always/valid/zero_valid_value
-  - proto/2023/repeated/expanded/items/ignore_always/valid/zero_invalid_value
-  - proto/2023/repeated/expanded/items/ignore_always/valid/populated_invalid_value
-  - proto/2023/map/keys/ignore_always/valid/zero_invalid_value
-  - proto2/map/values/ignore_always/valid/populated_invalid_value
-  - proto/2023/map/values/ignore_always/valid/zero_invalid_value
-  - proto2/repeated/items/ignore_always/valid/populated_invalid_value
-  - proto/2023/repeated/compact/items/ignore_always/valid/zero_invalid_value
-  - proto3/map/keys/ignore_always/valid/populated_invalid_value
-  - proto/2023/repeated/compact/items/ignore_always/valid/populated_invalid_value
-  - proto2/map/keys/ignore_always/valid/populated_invalid_value
-  - proto/2023/map/keys/ignore_always/valid/populated_invalid_value
-  - proto2/repeated/items/ignore_always/valid/zero_invalid_value
