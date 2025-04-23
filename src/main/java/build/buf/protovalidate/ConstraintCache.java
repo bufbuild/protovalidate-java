@@ -32,7 +32,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
-import javax.annotation.Nullable;
+import org.jspecify.annotations.Nullable;
 import org.projectnessie.cel.Ast;
 import org.projectnessie.cel.Env;
 import org.projectnessie.cel.EnvOption;
@@ -199,7 +199,7 @@ class ConstraintCache {
     return celRules;
   }
 
-  private @Nullable build.buf.validate.PredefinedConstraints getFieldConstraints(
+  private build.buf.validate.@Nullable PredefinedConstraints getFieldConstraints(
       FieldDescriptor constraintFieldDesc) throws CompilationException {
     DescriptorProtos.FieldOptions options = constraintFieldDesc.getOptions();
     // If the protovalidate field option is unknown, reparse options using our extension registry.

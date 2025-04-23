@@ -23,7 +23,7 @@ import java.util.Collection;
 import java.util.Deque;
 import java.util.List;
 import java.util.Objects;
-import javax.annotation.Nullable;
+import org.jspecify.annotations.Nullable;
 
 /**
  * {@link ConstraintViolation} contains all of the collected information about an individual

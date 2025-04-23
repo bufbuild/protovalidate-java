@@ -14,23 +14,11 @@
 
 package build.buf.protovalidate;
 
-import com.google.common.base.Ascii;
-import com.google.common.base.Splitter;
-import com.google.common.net.InetAddresses;
-import com.google.common.primitives.Bytes;
 import com.google.protobuf.Descriptors;
 import com.google.protobuf.Message;
-import inet.ipaddr.IPAddress;
-import inet.ipaddr.IPAddressString;
-import jakarta.mail.internet.AddressException;
-import jakarta.mail.internet.InternetAddress;
-import java.net.Inet4Address;
-import java.net.Inet6Address;
-import java.net.InetAddress;
-import java.net.URI;
-import java.net.URISyntaxException;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.regex.Pattern;
 import org.projectnessie.cel.common.types.BoolT;
 import org.projectnessie.cel.common.types.Err;
 import org.projectnessie.cel.common.types.IntT;
@@ -62,6 +50,11 @@ final class CustomOverload {
   private static final String OVERLOAD_IS_INF = "isInf";
   private static final String OVERLOAD_IS_HOST_AND_PORT = "isHostAndPort";
 
+  // See https://html.spec.whatwg.org/multipage/input.html#valid-e-mail-address
+  private static final Pattern EMAIL_REGEX =
+      Pattern.compile(
+          "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$");
+
   /**
    * Create custom function overload list.
    *
@@ -69,21 +62,21 @@ final class CustomOverload {
    */
   static Overload[] create() {
     return new Overload[] {
-      getField(),
-      format(),
-      unique(),
-      startsWith(),
-      endsWith(),
-      contains(),
-      isHostname(),
-      isEmail(),
-      isIp(),
-      isIpPrefix(),
-      isUri(),
-      isUriRef(),
-      isNan(),
-      isInf(),
-      isHostAndPort(),
+      celGetField(),
+      celFormat(),
+      celUnique(),
+      celStartsWith(),
+      celEndsWith(),
+      celContains(),
+      celIsHostname(),
+      celIsEmail(),
+      celIsIp(),
+      celIsIpPrefix(),
+      celIsUri(),
+      celIsUriRef(),
+      celIsNan(),
+      celIsInf(),
+      celIsHostAndPort(),
     };
   }
 
@@ -92,7 +85,7 @@ final class CustomOverload {
    *
    * @return The {@link Overload} instance for the "getField" operation.
    */
-  private static Overload getField() {
+  private static Overload celGetField() {
     return Overload.binary(
         OVERLOAD_GET_FIELD,
         (msgarg, namearg) -> {
@@ -116,7 +109,7 @@ final class CustomOverload {
    *
    * @return The {@link Overload} instance for the "format" operation.
    */
-  private static Overload format() {
+  private static Overload celFormat() {
     return Overload.binary(
         OVERLOAD_FORMAT,
         (lhs, rhs) -> {
@@ -138,7 +131,7 @@ final class CustomOverload {
    *
    * @return The {@link Overload} instance for the "unique" operation.
    */
-  private static Overload unique() {
+  private static Overload celUnique() {
     return Overload.unary(
         OVERLOAD_UNIQUE,
         (val) -> {
@@ -154,7 +147,7 @@ final class CustomOverload {
    *
    * @return The {@link Overload} instance for the "startsWith" operation.
    */
-  private static Overload startsWith() {
+  private static Overload celStartsWith() {
     return Overload.binary(
         OVERLOAD_STARTS_WITH,
         (lhs, rhs) -> {
@@ -189,7 +182,7 @@ final class CustomOverload {
    *
    * @return The {@link Overload} instance for the "endsWith" operation.
    */
-  private static Overload endsWith() {
+  private static Overload celEndsWith() {
     return Overload.binary(
         OVERLOAD_ENDS_WITH,
         (lhs, rhs) -> {
@@ -224,7 +217,7 @@ final class CustomOverload {
    *
    * @return The {@link Overload} instance for the "contains" operation.
    */
-  private static Overload contains() {
+  private static Overload celContains() {
     return Overload.binary(
         OVERLOAD_CONTAINS,
         (lhs, rhs) -> {
@@ -240,10 +233,32 @@ final class CustomOverload {
           if (lhsType == TypeEnum.Bytes) {
             byte[] receiver = (byte[]) lhs.value();
             byte[] param = (byte[]) rhs.value();
-            return Types.boolOf(Bytes.indexOf(receiver, param) != -1);
+            return Types.boolOf(bytesContains(receiver, param));
           }
           return Err.noSuchOverload(lhs, OVERLOAD_CONTAINS, rhs);
         });
+  }
+
+  static boolean bytesContains(byte[] arr, byte[] subArr) {
+    if (subArr.length == 0) {
+      return true;
+    }
+    if (subArr.length > arr.length) {
+      return false;
+    }
+    for (int i = 0; i < arr.length - subArr.length + 1; i++) {
+      boolean found = true;
+      for (int j = 0; j < subArr.length; j++) {
+        if (arr[i + j] != subArr[j]) {
+          found = false;
+          break;
+        }
+      }
+      if (found) {
+        return true;
+      }
+    }
+    return false;
   }
 
   /**
@@ -251,7 +266,7 @@ final class CustomOverload {
    *
    * @return The {@link Overload} instance for the "isHostname" operation.
    */
-  private static Overload isHostname() {
+  private static Overload celIsHostname() {
     return Overload.unary(
         OVERLOAD_IS_HOSTNAME,
         value -> {
@@ -259,10 +274,7 @@ final class CustomOverload {
             return Err.noSuchOverload(value, OVERLOAD_IS_HOSTNAME, null);
           }
           String host = (String) value.value();
-          if (host.isEmpty()) {
-            return BoolT.False;
-          }
-          return Types.boolOf(validateHostname(host));
+          return Types.boolOf(isHostname(host));
         });
   }
 
@@ -271,7 +283,7 @@ final class CustomOverload {
    *
    * @return The {@link Overload} instance for the "isEmail" operation.
    */
-  private static Overload isEmail() {
+  private static Overload celIsEmail() {
     return Overload.unary(
         OVERLOAD_IS_EMAIL,
         value -> {
@@ -279,10 +291,7 @@ final class CustomOverload {
             return Err.noSuchOverload(value, OVERLOAD_IS_EMAIL, null);
           }
           String addr = (String) value.value();
-          if (addr.isEmpty()) {
-            return BoolT.False;
-          }
-          return Types.boolOf(validateEmail(addr));
+          return Types.boolOf(isEmail(addr));
         });
   }
 
@@ -291,7 +300,7 @@ final class CustomOverload {
    *
    * @return The {@link Overload} instance for the "isIp" operation.
    */
-  private static Overload isIp() {
+  private static Overload celIsIp() {
     return Overload.overload(
         OVERLOAD_IS_IP,
         null,
@@ -300,20 +309,14 @@ final class CustomOverload {
             return Err.noSuchOverload(value, OVERLOAD_IS_IP, null);
           }
           String addr = (String) value.value();
-          if (addr.isEmpty()) {
-            return BoolT.False;
-          }
-          return Types.boolOf(validateIP(addr, 0L));
+          return Types.boolOf(isIp(addr, 0L));
         },
         (lhs, rhs) -> {
           if (lhs.type().typeEnum() != TypeEnum.String || rhs.type().typeEnum() != TypeEnum.Int) {
             return Err.noSuchOverload(lhs, OVERLOAD_IS_IP, rhs);
           }
           String address = (String) lhs.value();
-          if (address.isEmpty()) {
-            return BoolT.False;
-          }
-          return Types.boolOf(validateIP(address, rhs.intValue()));
+          return Types.boolOf(isIp(address, rhs.intValue()));
         },
         null);
   }
@@ -323,7 +326,7 @@ final class CustomOverload {
    *
    * @return The {@link Overload} instance for the "isIpPrefix" operation.
    */
-  private static Overload isIpPrefix() {
+  private static Overload celIsIpPrefix() {
     return Overload.overload(
         OVERLOAD_IS_IP_PREFIX,
         null,
@@ -333,10 +336,7 @@ final class CustomOverload {
             return Err.noSuchOverload(value, OVERLOAD_IS_IP_PREFIX, null);
           }
           String prefix = (String) value.value();
-          if (prefix.isEmpty()) {
-            return BoolT.False;
-          }
-          return Types.boolOf(validateIPPrefix(prefix, 0L, false));
+          return Types.boolOf(isIpPrefix(prefix, 0L, false));
         },
         (lhs, rhs) -> {
           if (lhs.type().typeEnum() != TypeEnum.String
@@ -345,13 +345,10 @@ final class CustomOverload {
             return Err.noSuchOverload(lhs, OVERLOAD_IS_IP_PREFIX, rhs);
           }
           String prefix = (String) lhs.value();
-          if (prefix.isEmpty()) {
-            return BoolT.False;
-          }
           if (rhs.type().typeEnum() == TypeEnum.Int) {
-            return Types.boolOf(validateIPPrefix(prefix, rhs.intValue(), false));
+            return Types.boolOf(isIpPrefix(prefix, rhs.intValue(), false));
           }
-          return Types.boolOf(validateIPPrefix(prefix, 0L, rhs.booleanValue()));
+          return Types.boolOf(isIpPrefix(prefix, 0L, rhs.booleanValue()));
         },
         (values) -> {
           if (values.length != 3
@@ -361,11 +358,7 @@ final class CustomOverload {
             return Err.noSuchOverload(values[0], OVERLOAD_IS_IP_PREFIX, "", values);
           }
           String prefix = (String) values[0].value();
-          if (prefix.isEmpty()) {
-            return BoolT.False;
-          }
-          return Types.boolOf(
-              validateIPPrefix(prefix, values[1].intValue(), values[2].booleanValue()));
+          return Types.boolOf(isIpPrefix(prefix, values[1].intValue(), values[2].booleanValue()));
         });
   }
 
@@ -374,7 +367,7 @@ final class CustomOverload {
    *
    * @return The {@link Overload} instance for the "isUri" operation.
    */
-  private static Overload isUri() {
+  private static Overload celIsUri() {
     return Overload.unary(
         OVERLOAD_IS_URI,
         value -> {
@@ -382,10 +375,7 @@ final class CustomOverload {
             return Err.noSuchOverload(value, OVERLOAD_IS_URI, null);
           }
           String addr = (String) value.value();
-          if (addr.isEmpty()) {
-            return BoolT.False;
-          }
-          return Types.boolOf(validateURI(addr, true));
+          return Types.boolOf(isUri(addr));
         });
   }
 
@@ -394,7 +384,7 @@ final class CustomOverload {
    *
    * @return The {@link Overload} instance for the "isUriRef" operation.
    */
-  private static Overload isUriRef() {
+  private static Overload celIsUriRef() {
     return Overload.unary(
         OVERLOAD_IS_URI_REF,
         value -> {
@@ -402,10 +392,7 @@ final class CustomOverload {
             return Err.noSuchOverload(value, OVERLOAD_IS_URI_REF, null);
           }
           String addr = (String) value.value();
-          if (addr.isEmpty()) {
-            return BoolT.False;
-          }
-          return Types.boolOf(validateURI(addr, false));
+          return Types.boolOf(isUriRef(addr));
         });
   }
 
@@ -414,7 +401,7 @@ final class CustomOverload {
    *
    * @return The {@link Overload} instance for the "isNan" operation.
    */
-  private static Overload isNan() {
+  private static Overload celIsNan() {
     return Overload.unary(
         OVERLOAD_IS_NAN,
         value -> {
@@ -431,7 +418,7 @@ final class CustomOverload {
    *
    * @return The {@link Overload} instance for the "isInf" operation.
    */
-  private static Overload isInf() {
+  private static Overload celIsInf() {
     return Overload.overload(
         OVERLOAD_IS_INF,
         null,
@@ -457,7 +444,7 @@ final class CustomOverload {
         null);
   }
 
-  private static Overload isHostAndPort() {
+  private static Overload celIsHostAndPort() {
     return Overload.overload(
         OVERLOAD_IS_HOST_AND_PORT,
         null,
@@ -468,39 +455,78 @@ final class CustomOverload {
           }
           String value = (String) lhs.value();
           boolean portRequired = rhs.booleanValue();
-          return Types.boolOf(hostAndPort(value, portRequired));
+          return Types.boolOf(isHostAndPort(value, portRequired));
         },
         null);
   }
 
-  private static boolean hostAndPort(String value, boolean portRequired) {
-    if (value.isEmpty()) {
+  /**
+   * Returns true if the string is a valid host/port pair, for example "example.com:8080".
+   *
+   * <p>If the argument portRequired is true, the port is required. If the argument is false, the
+   * port is optional.
+   *
+   * <p>The host can be one of:
+   *
+   * <ul>
+   *   <li>An IPv4 address in dotted decimal format, for example "192.168.0.1".
+   *   <li>An IPv6 address enclosed in square brackets, for example "[::1]".
+   *   <li>A hostname, for example "example.com".
+   * </ul>
+   *
+   * <p>The port is separated by a colon. It must be non-empty, with a decimal number in the range
+   * of 0-65535, inclusive.
+   */
+  private static boolean isHostAndPort(String str, boolean portRequired) {
+    if (str.isEmpty()) {
       return false;
     }
-    int splitIdx = value.lastIndexOf(':');
-    if (value.charAt(0) == '[') { // ipv6
-      int end = value.indexOf(']');
-      if (end + 1 == value.length()) { // no port
-        return !portRequired && validateIP(value.substring(1, end), 6);
-      }
-      if (end + 1 == splitIdx) { // port
-        return validateIP(value.substring(1, end), 6)
-            && validatePort(value.substring(splitIdx + 1));
+
+    int splitIdx = str.lastIndexOf(':');
+
+    if (str.charAt(0) == '[') {
+      int end = str.lastIndexOf(']');
+
+      int endPlus = end + 1;
+      if (endPlus == str.length()) { // no port
+        return !portRequired && isIp(str.substring(1, end), 6);
+      } else if (endPlus == splitIdx) { // port
+        return isIp(str.substring(1, end), 6) && isPort(str.substring(splitIdx + 1));
       }
       return false; // malformed
     }
+
     if (splitIdx < 0) {
-      return !portRequired && (validateHostname(value) || validateIP(value, 4));
+      return !portRequired && (isHostname(str) || isIp(str, 4));
     }
-    String host = value.substring(0, splitIdx);
-    String port = value.substring(splitIdx + 1);
-    return (validateHostname(host) || validateIP(host, 4)) && validatePort(port);
+
+    String host = str.substring(0, splitIdx);
+    String port = str.substring(splitIdx + 1);
+
+    return ((isHostname(host) || isIp(host, 4)) && isPort(port));
   }
 
-  private static boolean validatePort(String value) {
+  // Returns true if the string is a valid port for isHostAndPort.
+  private static boolean isPort(String str) {
+    if (str.isEmpty()) {
+      return false;
+    }
+
+    if (str.length() > 1 && str.charAt(0) == '0') {
+      return false;
+    }
+
+    for (int i = 0; i < str.length(); i++) {
+      char c = str.charAt(i);
+      if ('0' <= c && c <= '9') {
+        continue;
+      }
+      return false;
+    }
+
     try {
-      int portNum = Integer.parseInt(value);
-      return portNum >= 0 && portNum <= 65535;
+      int val = Integer.parseInt(str);
+      return val <= 65535;
     } catch (NumberFormatException nfe) {
       return false;
     }
@@ -543,142 +569,146 @@ final class CustomOverload {
   }
 
   /**
-   * Validates if the input string is a valid email address.
+   * isEmail returns true if addr is a valid email address.
+   *
+   * <p>This regex conforms to the definition for a valid email address from the HTML standard. Note
+   * that this standard willfully deviates from RFC 5322, which allows many unexpected forms of
+   * email addresses and will easily match a typographical error.
    *
    * @param addr The input string to validate as an email address.
    * @return {@code true} if the input string is a valid email address, {@code false} otherwise.
    */
-  private static boolean validateEmail(String addr) {
-    try {
-      InternetAddress emailAddr = new InternetAddress(addr);
-      emailAddr.validate();
-      if (addr.contains("<") || !emailAddr.getAddress().equals(addr)) {
-        return false;
-      }
-      addr = emailAddr.getAddress();
-      if (addr.length() > 254) {
-        return false;
-      }
-      String[] parts = addr.split("@", 2);
-      return parts[0].length() < 64 && validateHostname(parts[1]);
-    } catch (AddressException ex) {
-      return false;
-    }
+  private static boolean isEmail(String addr) {
+    return EMAIL_REGEX.matcher(addr).matches();
   }
 
   /**
-   * Validates if the input string is a valid hostname.
+   * Returns true if the string is a valid hostname, for example "foo.example.com".
    *
-   * @param host The input string to validate as a hostname.
-   * @return {@code true} if the input string is a valid hostname, {@code false} otherwise.
+   * <p>A valid hostname follows the rules below:
+   *
+   * <ul>
+   *   <li>The name consists of one or more labels, separated by a dot (".").
+   *   <li>Each label can be 1 to 63 alphanumeric characters.
+   *   <li>A label can contain hyphens ("-"), but must not start or end with a hyphen.
+   *   <li>The right-most label must not be digits only.
+   *   <li>The name can have a trailing dot, for example "foo.example.com.".
+   *   <li>The name can be 253 characters at most, excluding the optional trailing dot.
+   * </ul>
    */
-  private static boolean validateHostname(String host) {
-    if (host.length() > 253) {
+  private static boolean isHostname(String val) {
+    if (val.length() > 253) {
       return false;
     }
-    String s = Ascii.toLowerCase(host.endsWith(".") ? host.substring(0, host.length() - 1) : host);
-    Iterable<String> parts = Splitter.on('.').split(s);
+
+    String str;
+    if (val.endsWith(".")) {
+      str = val.substring(0, val.length() - 1);
+    } else {
+      str = val;
+    }
+
     boolean allDigits = false;
+
+    String[] parts = str.split("\\.", -1);
+
+    // split hostname on '.' and validate each part
     for (String part : parts) {
       allDigits = true;
-      int l = part.length();
-      if (l == 0 || l > 63 || part.charAt(0) == '-' || part.charAt(l - 1) == '-') {
+
+      // if part is empty, longer than 63 chars, or starts/ends with '-', it is invalid
+      int len = part.length();
+      if (len == 0 || len > 63 || part.startsWith("-") || part.endsWith("-")) {
         return false;
       }
-      for (int i = 0; i < l; i++) {
-        char ch = part.charAt(i);
-        if (!Ascii.isLowerCase(ch) && !isDigit(ch) && ch != '-') {
+
+      // for each character in part
+      for (int i = 0; i < part.length(); i++) {
+        char c = part.charAt(i);
+        // if the character is not a-z, A-Z, 0-9, or '-', it is invalid
+        if ((c < 'a' || c > 'z') && (c < 'A' || c > 'Z') && (c < '0' || c > '9') && c != '-') {
           return false;
         }
-        allDigits = allDigits && isDigit(ch);
+
+        allDigits = allDigits && c >= '0' && c <= '9';
       }
     }
+
     // the last part cannot be all numbers
     return !allDigits;
   }
 
-  private static boolean isDigit(char c) {
-    return c >= '0' && c <= '9';
-  }
-
   /**
-   * Validates if the input string is a valid IP address.
+   * Returns true if the string is an IPv4 or IPv6 address, optionally limited to a specific
+   * version.
    *
-   * @param addr The input string to validate as an IP address.
-   * @param ver The IP version to validate against (0 for any version, 4 for IPv4, 6 for IPv6).
-   * @return {@code true} if the input string is a valid IP address of the specified version, {@code
-   *     false} otherwise.
+   * <p>Version 0 means either 4 or 6. Passing a version other than 0, 4, or 6 always returns false.
+   *
+   * <p>IPv4 addresses are expected in the dotted decimal format, for example "192.168.5.21". IPv6
+   * addresses are expected in their text representation, for example "::1", or
+   * "2001:0DB8:ABCD:0012::0".
+   *
+   * <p>Both formats are well-defined in the internet standard RFC 3986. Zone identifiers for IPv6
+   * addresses (for example "fe80::a%en1") are supported.
    */
-  private static boolean validateIP(String addr, long ver) {
-    InetAddress address;
-    try {
-      address = InetAddresses.forString(addr);
-    } catch (Exception e) {
-      return false;
-    }
-    if (ver == 0L) {
-      return true;
+  static boolean isIp(String addr, long ver) {
+    if (ver == 6L) {
+      return new Ipv6(addr).address();
     } else if (ver == 4L) {
-      return address instanceof Inet4Address;
-    } else if (ver == 6L) {
-      return address instanceof Inet6Address;
+      return new Ipv4(addr).address();
+    } else if (ver == 0L) {
+      return new Ipv4(addr).address() || new Ipv6(addr).address();
     }
     return false;
   }
 
   /**
-   * Validates if the input string is a valid URI, which can be a URL or a URN.
+   * Returns true if the string is a URI, for example "https://example.com/foo/bar?baz=quux#frag".
    *
-   * @param val The input string to validate as a URI.
-   * @param checkAbsolute Whether to check if this URI is absolute (i.e. has a scheme component)
-   * @return {@code true} if the input string is a valid URI, {@code false} otherwise.
+   * <p>URI is defined in the internet standard RFC 3986. Zone Identifiers in IPv6 address literals
+   * are supported (RFC 6874).
    */
-  private static boolean validateURI(String val, boolean checkAbsolute) {
-    try {
-      URI uri = new URI(val);
-      if (checkAbsolute) {
-        return uri.isAbsolute();
-      }
-      return true;
-    } catch (URISyntaxException e) {
-      return false;
-    }
+  private static boolean isUri(String str) {
+    return new Uri(str).uri();
   }
 
   /**
-   * Validates if the input string is a valid IP prefix.
+   * Returns true if the string is a URI Reference - a URI such as
+   * "https://example.com/foo/bar?baz=quux#frag", or a Relative Reference such as "./foo/bar?query".
    *
-   * @param prefix The input string to validate as an IP prefix.
-   * @param ver The IP version to validate against (0 for any version, 4 for IPv4, 6 for IPv6).
-   * @param strict If strict is true and host bits are set in the supplied address, then false is
-   *     returned.
-   * @return {@code true} if the input string is a valid IP prefix of the specified version, {@code
-   *     false} otherwise.
+   * <p>URI, URI Reference, and Relative Reference are defined in the internet standard RFC 3986.
+   * Zone Identifiers in IPv6 address literals are supported (RFC 6874).
    */
-  private static boolean validateIPPrefix(String prefix, long ver, boolean strict) {
-    IPAddressString str;
-    IPAddress addr;
-    try {
-      str = new IPAddressString(prefix);
-      addr = str.toAddress();
-    } catch (Exception e) {
-      return false;
-    }
-    if (!addr.isPrefixed()) {
-      return false;
-    }
-    if (strict) {
-      IPAddress mask = addr.getNetworkMask().withoutPrefixLength();
-      if (!addr.mask(mask).equals(str.getHostAddress())) {
-        return false;
-      }
-    }
-    if (ver == 0L) {
-      return true;
-    } else if (ver == 4L) {
-      return addr.isIPv4();
-    } else if (ver == 6L) {
-      return addr.isIPv6();
+  private static boolean isUriRef(String str) {
+    return new Uri(str).uriReference();
+  }
+
+  /**
+   * Returns true if the string is a valid IP with prefix length, optionally limited to a specific
+   * version (v4 or v6), and optionally requiring the host portion to be all zeros.
+   *
+   * <p>An address prefix divides an IP address into a network portion, and a host portion. The
+   * prefix length specifies how many bits the network portion has. For example, the IPv6 prefix
+   * "2001:db8:abcd:0012::0/64" designates the left-most 64 bits as the network prefix. The range of
+   * the network is 2**64 addresses, from 2001:db8:abcd:0012::0 to
+   * 2001:db8:abcd:0012:ffff:ffff:ffff:ffff.
+   *
+   * <p>An address prefix may include a specific host address, for example
+   * "2001:db8:abcd:0012::1f/64". With strict = true, this is not permitted. The host portion must
+   * be all zeros, as in "2001:db8:abcd:0012::0/64".
+   *
+   * <p>The same principle applies to IPv4 addresses. "192.168.1.0/24" designates the first 24 bits
+   * of the 32-bit IPv4 as the network prefix.
+   */
+  private static boolean isIpPrefix(String str, long version, boolean strict) {
+    if (version == 6L) {
+      Ipv6 ip = new Ipv6(str);
+      return ip.addressPrefix() && (!strict || ip.isPrefixOnly());
+    } else if (version == 4L) {
+      Ipv4 ip = new Ipv4(str);
+      return ip.addressPrefix() && (!strict || ip.isPrefixOnly());
+    } else if (version == 0L) {
+      return isIpPrefix(str, 6, strict) || isIpPrefix(str, 4, strict);
     }
     return false;
   }

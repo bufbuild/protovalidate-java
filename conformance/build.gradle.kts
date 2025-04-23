@@ -10,6 +10,12 @@ plugins {
     alias(libs.plugins.osdetector)
 }
 
+// Conformance tests aren't bound by lowest common library version.
+java {
+    sourceCompatibility = JavaVersion.VERSION_21
+    targetCompatibility = JavaVersion.VERSION_21
+}
+
 val buf: Configuration by configurations.creating
 
 tasks.register("configureBuf") {
@@ -116,7 +122,7 @@ configure<SpotlessExtension> {
 
 dependencies {
     implementation(project(":"))
-    implementation(libs.guava)
+    implementation(libs.errorprone.annotations)
     implementation(libs.protobuf.java)
 
     implementation(libs.assertj)
@@ -127,5 +133,5 @@ dependencies {
     testImplementation("org.junit.jupiter:junit-jupiter")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 
-    errorprone(libs.errorprone)
+    errorprone(libs.errorprone.core)
 }

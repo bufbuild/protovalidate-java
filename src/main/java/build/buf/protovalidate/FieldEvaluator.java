@@ -22,7 +22,7 @@ import com.google.protobuf.Message;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
-import javax.annotation.Nullable;
+import org.jspecify.annotations.Nullable;
 
 /** Performs validation on a single message field, defined by its descriptor. */
 class FieldEvaluator implements Evaluator {

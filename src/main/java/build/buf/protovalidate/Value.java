@@ -18,7 +18,7 @@ import com.google.protobuf.Descriptors;
 import com.google.protobuf.Message;
 import java.util.List;
 import java.util.Map;
-import javax.annotation.Nullable;
+import org.jspecify.annotations.Nullable;
 
 /**
  * {@link Value} is a wrapper around a protobuf value that provides helper methods for accessing the
@@ -31,8 +31,7 @@ interface Value {
    * @return The underlying {@link Descriptors.FieldDescriptor}. null if the underlying value is not
    *     a message field.
    */
-  @Nullable
-  Descriptors.FieldDescriptor fieldDescriptor();
+  Descriptors.@Nullable FieldDescriptor fieldDescriptor();
 
   /**
    * Get the underlying value as a {@link Message} type.
@@ -40,8 +39,7 @@ interface Value {
    * @return The underlying {@link Message} value. null if the underlying value is not a {@link
    *     Message} type.
    */
-  @Nullable
-  Message messageValue();
+  @Nullable Message messageValue();
 
   /**
    * Get the underlying value and cast it to the class type.

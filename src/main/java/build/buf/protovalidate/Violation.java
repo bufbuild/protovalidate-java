@@ -15,7 +15,7 @@
 package build.buf.protovalidate;
 
 import com.google.protobuf.Descriptors;
-import javax.annotation.Nullable;
+import org.jspecify.annotations.Nullable;
 
 /**
  * {@link Violation} provides all of the collected information about an individual constraint
@@ -29,8 +29,7 @@ public interface Violation {
      *
      * @return The value of the protobuf field.
      */
-    @Nullable
-    Object getValue();
+    @Nullable Object getValue();
 
     /**
      * Gets the field descriptor of the field this value is from.
@@ -52,14 +51,12 @@ public interface Violation {
    *
    * @return Value of the field associated with the violation, or null if there is none.
    */
-  @Nullable
-  FieldValue getFieldValue();
+  @Nullable FieldValue getFieldValue();
 
   /**
    * Gets the value of the rule this violation pertains to, or null if there is none.
    *
    * @return Value of the rule associated with the violation, or null if there is none.
    */
-  @Nullable
-  FieldValue getRuleValue();
+  @Nullable FieldValue getRuleValue();
 }
