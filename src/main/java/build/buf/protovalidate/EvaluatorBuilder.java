@@ -225,15 +225,11 @@ class EvaluatorBuilder {
               valueEvaluatorEval,
               fieldDescriptor,
               fieldConstraints.getRequired(),
-              fieldDescriptor.hasPresence() || shouldIgnoreEmpty(fieldConstraints),
-              fieldDescriptor.hasPresence() && shouldIgnoreDefault(fieldConstraints),
+              fieldDescriptor.hasPresence(),
+              fieldConstraints.getIgnore(),
               zero);
       buildValue(fieldDescriptor, fieldConstraints, fieldEvaluator.valueEvaluator);
       return fieldEvaluator;
-    }
-
-    private boolean shouldSkip(FieldConstraints constraints) {
-      return constraints.getIgnore() == Ignore.IGNORE_ALWAYS;
     }
 
     private static boolean shouldIgnoreEmpty(FieldConstraints constraints) {
@@ -250,6 +246,11 @@ class EvaluatorBuilder {
         FieldConstraints fieldConstraints,
         ValueEvaluator valueEvaluator)
         throws CompilationException {
+
+      if (fieldConstraints.getIgnore() == Ignore.IGNORE_ALWAYS) {
+        return;
+      }
+
       processIgnoreEmpty(fieldDescriptor, fieldConstraints, valueEvaluator);
       processFieldExpressions(fieldDescriptor, fieldConstraints, valueEvaluator);
       processEmbeddedMessage(fieldDescriptor, fieldConstraints, valueEvaluator);
@@ -371,7 +372,6 @@ class EvaluatorBuilder {
         ValueEvaluator valueEvaluatorEval)
         throws CompilationException {
       if (fieldDescriptor.getJavaType() != FieldDescriptor.JavaType.MESSAGE
-          || shouldSkip(fieldConstraints)
           || fieldDescriptor.isMapField()
           || (fieldDescriptor.isRepeated() && !valueEvaluatorEval.hasNestedRule())) {
         return;
@@ -388,7 +388,6 @@ class EvaluatorBuilder {
         ValueEvaluator valueEvaluatorEval)
         throws CompilationException {
       if (fieldDescriptor.getJavaType() != FieldDescriptor.JavaType.MESSAGE
-          || shouldSkip(fieldConstraints)
           || fieldDescriptor.isMapField()
           || (fieldDescriptor.isRepeated() && !valueEvaluatorEval.hasNestedRule())) {
         return;
