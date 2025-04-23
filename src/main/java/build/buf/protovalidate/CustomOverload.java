@@ -14,6 +14,8 @@
 
 package build.buf.protovalidate;
 
+import com.google.protobuf.Descriptors;
+import com.google.protobuf.Message;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.regex.Pattern;
@@ -23,6 +25,7 @@ import org.projectnessie.cel.common.types.IntT;
 import org.projectnessie.cel.common.types.ListT;
 import org.projectnessie.cel.common.types.StringT;
 import org.projectnessie.cel.common.types.Types;
+import org.projectnessie.cel.common.types.pb.DefaultTypeAdapter;
 import org.projectnessie.cel.common.types.ref.TypeEnum;
 import org.projectnessie.cel.common.types.ref.Val;
 import org.projectnessie.cel.common.types.traits.Lister;
@@ -31,6 +34,7 @@ import org.projectnessie.cel.interpreter.functions.Overload;
 /** Defines custom function overloads (the implementation). */
 final class CustomOverload {
 
+  private static final String OVERLOAD_GET_FIELD = "getField";
   private static final String OVERLOAD_FORMAT = "format";
   private static final String OVERLOAD_UNIQUE = "unique";
   private static final String OVERLOAD_STARTS_WITH = "startsWith";
@@ -58,6 +62,7 @@ final class CustomOverload {
    */
   static Overload[] create() {
     return new Overload[] {
+      celGetField(),
       celFormat(),
       celUnique(),
       celStartsWith(),
@@ -73,6 +78,30 @@ final class CustomOverload {
       celIsInf(),
       celIsHostAndPort(),
     };
+  }
+
+  /**
+   * Creates a custom function overload for the "getField" operation.
+   *
+   * @return The {@link Overload} instance for the "getField" operation.
+   */
+  private static Overload celGetField() {
+    return Overload.binary(
+        OVERLOAD_GET_FIELD,
+        (msgarg, namearg) -> {
+          if (msgarg.type().typeEnum() != TypeEnum.Object
+              || namearg.type().typeEnum() != TypeEnum.String) {
+            return Err.newErr("no such overload");
+          }
+          Message message = msgarg.convertToNative(Message.class);
+          String fieldName = namearg.convertToNative(String.class);
+          Descriptors.FieldDescriptor field =
+              message.getDescriptorForType().findFieldByName(fieldName);
+          if (field == null) {
+            return Err.newErr("no such field: " + fieldName);
+          }
+          return DefaultTypeAdapter.Instance.nativeToValue(message.getField(field));
+        });
   }
 
   /**
