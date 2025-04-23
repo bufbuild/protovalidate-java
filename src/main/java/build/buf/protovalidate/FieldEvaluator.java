@@ -17,6 +17,7 @@ package build.buf.protovalidate;
 import build.buf.protovalidate.exceptions.ExecutionException;
 import build.buf.validate.FieldPath;
 import build.buf.validate.FieldRules;
+import build.buf.validate.Ignore;
 import com.google.protobuf.Descriptors.FieldDescriptor;
 import com.google.protobuf.Message;
 import java.util.Collections;
@@ -45,13 +46,11 @@ class FieldEvaluator implements Evaluator {
   /** Indicates that the field must have a set value. */
   private final boolean required;
 
-  /**
-   * ignoreEmpty indicates if a field should skip validation on its zero value. This field is
-   * generally true for nullable fields or fields with the ignore_empty rule explicitly set.
-   */
-  private final boolean ignoreEmpty;
+  /** Whether validation should be ignored for certain conditions */
+  private final Ignore ignore;
 
-  private final boolean ignoreDefault;
+  /** Whether the field distinguishes between unpopulated and default values. */
+  private final boolean hasPresence;
 
   @Nullable private final Object zero;
 
@@ -60,15 +59,15 @@ class FieldEvaluator implements Evaluator {
       ValueEvaluator valueEvaluator,
       FieldDescriptor descriptor,
       boolean required,
-      boolean ignoreEmpty,
-      boolean ignoreDefault,
+      boolean hasPresence,
+      Ignore ignore,
       @Nullable Object zero) {
     this.helper = new RuleViolationHelper(valueEvaluator);
     this.valueEvaluator = valueEvaluator;
     this.descriptor = descriptor;
     this.required = required;
-    this.ignoreEmpty = ignoreEmpty;
-    this.ignoreDefault = ignoreDefault;
+    this.hasPresence = hasPresence;
+    this.ignore = ignore;
     this.zero = zero;
   }
 
@@ -77,9 +76,41 @@ class FieldEvaluator implements Evaluator {
     return !required && valueEvaluator.tautology();
   }
 
+  /**
+   * Returns whether a field should always skip validation.
+   *
+   * <p>If true, this will take precedence and all checks are skipped.
+   */
+  private boolean shouldIgnoreAlways() {
+    return this.ignore == Ignore.IGNORE_ALWAYS;
+  }
+
+  /**
+   * Returns whether a field should skip validation on its zero value.
+   *
+   * <p>This is generally true for nullable fields or fields with the ignore_empty rule
+   * explicitly set.
+   */
+  private boolean shouldIgnoreEmpty() {
+    return this.hasPresence
+        || this.ignore == Ignore.IGNORE_IF_UNPOPULATED
+        || this.ignore == Ignore.IGNORE_IF_DEFAULT_VALUE;
+  }
+
+  /**
+   * Returns whether a field should skip validation on its zero value, including for fields which
+   * have field presence and are set to the zero value.
+   */
+  private boolean shouldIgnoreDefault() {
+    return this.hasPresence && this.ignore == Ignore.IGNORE_IF_DEFAULT_VALUE;
+  }
+
   @Override
   public List<RuleViolation.Builder> evaluate(Value val, boolean failFast)
       throws ExecutionException {
+    if (this.shouldIgnoreAlways()) {
+      return RuleViolation.NO_VIOLATIONS;
+    }
     Message message = val.messageValue();
     if (message == null) {
       return RuleViolation.NO_VIOLATIONS;
@@ -100,11 +131,11 @@ class FieldEvaluator implements Evaluator {
               .setMessage("value is required")
               .setRuleValue(new RuleViolation.FieldValue(true, REQUIRED_DESCRIPTOR)));
     }
-    if (ignoreEmpty && !hasField) {
+    if (this.shouldIgnoreEmpty() && !hasField) {
       return RuleViolation.NO_VIOLATIONS;
     }
     Object fieldValue = message.getField(descriptor);
-    if (ignoreDefault && Objects.equals(zero, fieldValue)) {
+    if (this.shouldIgnoreDefault() && Objects.equals(zero, fieldValue)) {
       return RuleViolation.NO_VIOLATIONS;
     }
     return valueEvaluator.evaluate(new ObjectValue(descriptor, fieldValue), failFast);

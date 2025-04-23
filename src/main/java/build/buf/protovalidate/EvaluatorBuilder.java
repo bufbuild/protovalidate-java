@@ -219,15 +219,11 @@ class EvaluatorBuilder {
               valueEvaluatorEval,
               fieldDescriptor,
               fieldRules.getRequired(),
-              fieldDescriptor.hasPresence() || shouldIgnoreEmpty(fieldRules),
-              fieldDescriptor.hasPresence() && shouldIgnoreDefault(fieldRules),
+              fieldDescriptor.hasPresence(),
+              fieldRules.getIgnore(),
               zero);
       buildValue(fieldDescriptor, fieldRules, fieldEvaluator.valueEvaluator);
       return fieldEvaluator;
-    }
-
-    private boolean shouldSkip(FieldRules rules) {
-      return rules.getIgnore() == Ignore.IGNORE_ALWAYS;
     }
 
     private static boolean shouldIgnoreEmpty(FieldRules rules) {
@@ -242,6 +238,10 @@ class EvaluatorBuilder {
     private void buildValue(
         FieldDescriptor fieldDescriptor, FieldRules fieldRules, ValueEvaluator valueEvaluator)
         throws CompilationException {
+      if (fieldRules.getIgnore() == Ignore.IGNORE_ALWAYS) {
+        return;
+      }
+
       processIgnoreEmpty(fieldDescriptor, fieldRules, valueEvaluator);
       processFieldExpressions(fieldDescriptor, fieldRules, valueEvaluator);
       processEmbeddedMessage(fieldDescriptor, fieldRules, valueEvaluator);
@@ -356,7 +356,10 @@ class EvaluatorBuilder {
         FieldDescriptor fieldDescriptor, FieldRules fieldRules, ValueEvaluator valueEvaluatorEval)
         throws CompilationException {
       if (fieldDescriptor.getJavaType() != FieldDescriptor.JavaType.MESSAGE
+<<<<<<< HEAD
           || shouldSkip(fieldRules)
+=======
+>>>>>>> main
           || fieldDescriptor.isMapField()
           || (fieldDescriptor.isRepeated() && !valueEvaluatorEval.hasNestedRule())) {
         return;
@@ -371,7 +374,10 @@ class EvaluatorBuilder {
         FieldDescriptor fieldDescriptor, FieldRules fieldRules, ValueEvaluator valueEvaluatorEval)
         throws CompilationException {
       if (fieldDescriptor.getJavaType() != FieldDescriptor.JavaType.MESSAGE
+<<<<<<< HEAD
           || shouldSkip(fieldRules)
+=======
+>>>>>>> main
           || fieldDescriptor.isMapField()
           || (fieldDescriptor.isRepeated() && !valueEvaluatorEval.hasNestedRule())) {
         return;
