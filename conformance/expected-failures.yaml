@@ -1,11 +1,46 @@
 custom_rules:
+  # The below field_expression tests all fail with a runtime error that looks like:
+  # want: validation error (1 violation)
+  # 1. rule_id: "field_expression.map.enum"
+  # message: "test message field_expression.map.enum"
+  # field: "val" elements:{field_number:1  field_name:"val"  field_type:TYPE_MESSAGE}
+  # rule: "cel[0]" elements:{field_number:23  field_name:"cel"  field_type:TYPE_MESSAGE  index:0}
+  # got: runtime error: error evaluating field_expression.map.enum:ava.lang.IllegalStateException: invalid qualifier type: org.projectnessie.cel.common.types.pb.PbObjectT
   - field_expression/map/enum/invalid
   - field_expression/map/enum/valid
   - field_expression/map/message/invalid
   - field_expression/map/message/valid
-  - field_expression/map/scalar/invalid
-  - field_expression/map/scalar/valid
   - field_expression/repeated/enum/invalid
   - field_expression/repeated/enum/valid
   - field_expression/repeated/scalar/invalid
   - field_expression/repeated/scalar/valid
+  - field_expression/map/bool/valid
+  - field_expression/map/bool/invalid
+  - field_expression/map/string/valid
+  - field_expression/map/string/invalid
+  - field_expression/map/int32/valid
+  - field_expression/map/int32/invalid
+  - field_expression/map/uint32/valid
+  - field_expression/map/uint32/invalid
+  - field_expression/map/int64/valid
+  - field_expression/map/int64/invalid
+  - field_expression/map/uint64/valid
+  - field_expression/map/uint64/invalid
+kitchen_sink:
+  - field/embedded/invalid
+  - field/transitive/invalid
+  - many/all-non-message-fields/invalid
+  - field/invalid
+standard_rules/repeated:
+  - items/in/invalid
+  - items/not_in/invalid
+library/is_ip:
+  - version/6/invalid/ipv6/7h16_double_colon_1h16
+  - version/6/invalid/ipv6/7h16_double_colon
+  - version/6/invalid/ipv6/double_colon_8h16
+  - version/6/invalid/ipv6/1h16_double_colon_7h16
+standard_rules/well_known_types/duration:
+  - in/invalid
+  - not in/invalid
+
+

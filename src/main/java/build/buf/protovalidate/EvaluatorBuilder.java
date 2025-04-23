@@ -244,7 +244,7 @@ class EvaluatorBuilder {
 
       processIgnoreEmpty(fieldDescriptor, fieldRules, valueEvaluator);
       processFieldExpressions(fieldDescriptor, fieldRules, valueEvaluator);
-      processEmbeddedMessage(fieldDescriptor, fieldRules, valueEvaluator);
+      processEmbeddedMessage(fieldDescriptor, valueEvaluator);
       processWrapperRules(fieldDescriptor, fieldRules, valueEvaluator);
       processStandardRules(fieldDescriptor, fieldRules, valueEvaluator);
       processAnyRules(fieldDescriptor, fieldRules, valueEvaluator);
@@ -353,13 +353,9 @@ class EvaluatorBuilder {
     }
 
     private void processEmbeddedMessage(
-        FieldDescriptor fieldDescriptor, FieldRules fieldRules, ValueEvaluator valueEvaluatorEval)
+        FieldDescriptor fieldDescriptor, ValueEvaluator valueEvaluatorEval)
         throws CompilationException {
       if (fieldDescriptor.getJavaType() != FieldDescriptor.JavaType.MESSAGE
-<<<<<<< HEAD
-          || shouldSkip(fieldRules)
-=======
->>>>>>> main
           || fieldDescriptor.isMapField()
           || (fieldDescriptor.isRepeated() && !valueEvaluatorEval.hasNestedRule())) {
         return;
@@ -374,10 +370,6 @@ class EvaluatorBuilder {
         FieldDescriptor fieldDescriptor, FieldRules fieldRules, ValueEvaluator valueEvaluatorEval)
         throws CompilationException {
       if (fieldDescriptor.getJavaType() != FieldDescriptor.JavaType.MESSAGE
-<<<<<<< HEAD
-          || shouldSkip(fieldRules)
-=======
->>>>>>> main
           || fieldDescriptor.isMapField()
           || (fieldDescriptor.isRepeated() && !valueEvaluatorEval.hasNestedRule())) {
         return;

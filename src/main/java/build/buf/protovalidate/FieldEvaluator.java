@@ -88,8 +88,8 @@ class FieldEvaluator implements Evaluator {
   /**
    * Returns whether a field should skip validation on its zero value.
    *
-   * <p>This is generally true for nullable fields or fields with the ignore_empty rule
-   * explicitly set.
+   * <p>This is generally true for nullable fields or fields with the ignore_empty rule explicitly
+   * set.
    */
   private boolean shouldIgnoreEmpty() {
     return this.hasPresence
