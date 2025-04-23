@@ -21,7 +21,7 @@ import org.jspecify.annotations.Nullable;
 
 /** Evaluator that executes a {@link CompiledProgram}. */
 class CelPrograms implements Evaluator {
-  private final ConstraintViolationHelper helper;
+  private final RuleViolationHelper helper;
 
   /** A list of {@link CompiledProgram} that will be executed against the input message. */
   private final List<CompiledProgram> programs;
@@ -32,7 +32,7 @@ class CelPrograms implements Evaluator {
    * @param compiledPrograms The programs to execute.
    */
   CelPrograms(@Nullable ValueEvaluator valueEvaluator, List<CompiledProgram> compiledPrograms) {
-    this.helper = new ConstraintViolationHelper(valueEvaluator);
+    this.helper = new RuleViolationHelper(valueEvaluator);
     this.programs = compiledPrograms;
   }
 
@@ -42,12 +42,12 @@ class CelPrograms implements Evaluator {
   }
 
   @Override
-  public List<ConstraintViolation.Builder> evaluate(Value val, boolean failFast)
+  public List<RuleViolation.Builder> evaluate(Value val, boolean failFast)
       throws ExecutionException {
     Variable activation = Variable.newThisVariable(val.value(Object.class));
-    List<ConstraintViolation.Builder> violations = new ArrayList<>();
+    List<RuleViolation.Builder> violations = new ArrayList<>();
     for (CompiledProgram program : programs) {
-      ConstraintViolation.Builder violation = program.eval(val, activation);
+      RuleViolation.Builder violation = program.eval(val, activation);
       if (violation != null) {
         violations.add(violation);
         if (failFast) {

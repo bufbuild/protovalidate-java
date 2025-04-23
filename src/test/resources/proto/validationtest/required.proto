@@ -18,7 +18,7 @@ package validationtest;
 
 import "buf/validate/validate.proto";
 
-message ExampleRequiredFieldConstraints {
+message ExampleRequiredFieldRules {
   required string regex_string_field = 1 [(buf.validate.field).string.pattern = "^[a-z0-9]{1,9}$"];
   optional string unconstrained = 2;
 }

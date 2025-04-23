@@ -27,6 +27,6 @@ extend buf.validate.StringRules {
   ];
 }
 
-message ExamplePredefinedFieldConstraints {
+message ExamplePredefinedFieldRules {
   optional string ident_field = 1 [(buf.validate.field).string.(is_ident) = true];
 }

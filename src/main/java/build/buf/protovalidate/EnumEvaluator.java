@@ -16,8 +16,8 @@ package build.buf.protovalidate;
 
 import build.buf.protovalidate.exceptions.ExecutionException;
 import build.buf.validate.EnumRules;
-import build.buf.validate.FieldConstraints;
 import build.buf.validate.FieldPath;
+import build.buf.validate.FieldRules;
 import com.google.protobuf.Descriptors;
 import java.util.Collections;
 import java.util.List;
@@ -29,7 +29,7 @@ import java.util.stream.Collectors;
  * check is handled outside CEL as enums are completely type erased to integers.
  */
 class EnumEvaluator implements Evaluator {
-  private final ConstraintViolationHelper helper;
+  private final RuleViolationHelper helper;
 
   /** Captures all the defined values for this enum */
   private final Set<Integer> values;
@@ -41,8 +41,7 @@ class EnumEvaluator implements Evaluator {
       FieldPath.newBuilder()
           .addElements(
               FieldPathUtils.fieldPathElement(
-                  FieldConstraints.getDescriptor()
-                      .findFieldByNumber(FieldConstraints.ENUM_FIELD_NUMBER)))
+                  FieldRules.getDescriptor().findFieldByNumber(FieldRules.ENUM_FIELD_NUMBER)))
           .addElements(FieldPathUtils.fieldPathElement(DEFINED_ONLY_DESCRIPTOR))
           .build();
 
@@ -53,7 +52,7 @@ class EnumEvaluator implements Evaluator {
    */
   EnumEvaluator(
       ValueEvaluator valueEvaluator, List<Descriptors.EnumValueDescriptor> valueDescriptors) {
-    this.helper = new ConstraintViolationHelper(valueEvaluator);
+    this.helper = new RuleViolationHelper(valueEvaluator);
     if (valueDescriptors.isEmpty()) {
       this.values = Collections.emptySet();
     } else {
@@ -78,23 +77,23 @@ class EnumEvaluator implements Evaluator {
    * @throws ExecutionException if an error occurs during the evaluation.
    */
   @Override
-  public List<ConstraintViolation.Builder> evaluate(Value val, boolean failFast)
+  public List<RuleViolation.Builder> evaluate(Value val, boolean failFast)
       throws ExecutionException {
     Descriptors.EnumValueDescriptor enumValue = val.value(Descriptors.EnumValueDescriptor.class);
     if (enumValue == null) {
-      return ConstraintViolation.NO_VIOLATIONS;
+      return RuleViolation.NO_VIOLATIONS;
     }
     if (!values.contains(enumValue.getNumber())) {
       return Collections.singletonList(
-          ConstraintViolation.newBuilder()
+          RuleViolation.newBuilder()
               .addAllRulePathElements(helper.getRulePrefixElements())
               .addAllRulePathElements(DEFINED_ONLY_RULE_PATH.getElementsList())
               .addFirstFieldPathElement(helper.getFieldPathElement())
-              .setConstraintId("enum.defined_only")
+              .setRuleId("enum.defined_only")
               .setMessage("value must be one of the defined enum values")
-              .setFieldValue(new ConstraintViolation.FieldValue(val))
-              .setRuleValue(new ConstraintViolation.FieldValue(true, DEFINED_ONLY_DESCRIPTOR)));
+              .setFieldValue(new RuleViolation.FieldValue(val))
+              .setRuleValue(new RuleViolation.FieldValue(true, DEFINED_ONLY_DESCRIPTOR)));
     }
-    return ConstraintViolation.NO_VIOLATIONS;
+    return RuleViolation.NO_VIOLATIONS;
   }
 }

@@ -30,7 +30,7 @@ public class Validator {
   private final EvaluatorBuilder evaluatorBuilder;
 
   /**
-   * failFast indicates whether the validator should stop evaluating constraints after the first
+   * failFast indicates whether the validator should stop evaluating rules after the first
    * violation.
    */
   private final boolean failFast;
@@ -55,12 +55,12 @@ public class Validator {
   }
 
   /**
-   * Checks that message satisfies its constraints. Constraints are defined within the Protobuf file
-   * as options from the buf.validate package. A {@link ValidationResult} is returned which contains
-   * a list of violations. If the list is empty, the message is valid. If the list is non-empty, the
-   * message is invalid. An exception is thrown if the message cannot be validated because the
-   * evaluation logic for the message cannot be built ({@link CompilationException}), or there is a
-   * type error when attempting to evaluate a CEL expression associated with the message ({@link
+   * Checks that message satisfies its rules. Rules are defined within the Protobuf file as options
+   * from the buf.validate package. A {@link ValidationResult} is returned which contains a list of
+   * violations. If the list is empty, the message is valid. If the list is non-empty, the message
+   * is invalid. An exception is thrown if the message cannot be validated because the evaluation
+   * logic for the message cannot be built ({@link CompilationException}), or there is a type error
+   * when attempting to evaluate a CEL expression associated with the message ({@link
    * ExecutionException}).
    *
    * @param msg the {@link Message} to be validated.
@@ -73,12 +73,12 @@ public class Validator {
     }
     Descriptor descriptor = msg.getDescriptorForType();
     Evaluator evaluator = evaluatorBuilder.load(descriptor);
-    List<ConstraintViolation.Builder> result = evaluator.evaluate(new MessageValue(msg), failFast);
+    List<RuleViolation.Builder> result = evaluator.evaluate(new MessageValue(msg), failFast);
     if (result.isEmpty()) {
       return ValidationResult.EMPTY;
     }
     List<Violation> violations = new ArrayList<>(result.size());
-    for (ConstraintViolation.Builder builder : result) {
+    for (RuleViolation.Builder builder : result) {
       violations.add(builder.build());
     }
     return new ValidationResult(violations);

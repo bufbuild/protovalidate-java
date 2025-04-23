@@ -15,8 +15,8 @@
 package build.buf.protovalidate;
 
 import build.buf.protovalidate.exceptions.ExecutionException;
-import build.buf.validate.FieldConstraints;
 import build.buf.validate.FieldPath;
+import build.buf.validate.FieldRules;
 import com.google.protobuf.Descriptors.FieldDescriptor;
 import com.google.protobuf.Message;
 import java.util.Collections;
@@ -27,14 +27,14 @@ import org.jspecify.annotations.Nullable;
 /** Performs validation on a single message field, defined by its descriptor. */
 class FieldEvaluator implements Evaluator {
   private static final FieldDescriptor REQUIRED_DESCRIPTOR =
-      FieldConstraints.getDescriptor().findFieldByNumber(FieldConstraints.REQUIRED_FIELD_NUMBER);
+      FieldRules.getDescriptor().findFieldByNumber(FieldRules.REQUIRED_FIELD_NUMBER);
 
   private static final FieldPath REQUIRED_RULE_PATH =
       FieldPath.newBuilder()
           .addElements(FieldPathUtils.fieldPathElement(REQUIRED_DESCRIPTOR))
           .build();
 
-  private final ConstraintViolationHelper helper;
+  private final RuleViolationHelper helper;
 
   /** The {@link ValueEvaluator} to apply to the field's value */
   public final ValueEvaluator valueEvaluator;
@@ -47,7 +47,7 @@ class FieldEvaluator implements Evaluator {
 
   /**
    * ignoreEmpty indicates if a field should skip validation on its zero value. This field is
-   * generally true for nullable fields or fields with the ignore_empty constraint explicitly set.
+   * generally true for nullable fields or fields with the ignore_empty rule explicitly set.
    */
   private final boolean ignoreEmpty;
 
@@ -63,7 +63,7 @@ class FieldEvaluator implements Evaluator {
       boolean ignoreEmpty,
       boolean ignoreDefault,
       @Nullable Object zero) {
-    this.helper = new ConstraintViolationHelper(valueEvaluator);
+    this.helper = new RuleViolationHelper(valueEvaluator);
     this.valueEvaluator = valueEvaluator;
     this.descriptor = descriptor;
     this.required = required;
@@ -78,11 +78,11 @@ class FieldEvaluator implements Evaluator {
   }
 
   @Override
-  public List<ConstraintViolation.Builder> evaluate(Value val, boolean failFast)
+  public List<RuleViolation.Builder> evaluate(Value val, boolean failFast)
       throws ExecutionException {
     Message message = val.messageValue();
     if (message == null) {
-      return ConstraintViolation.NO_VIOLATIONS;
+      return RuleViolation.NO_VIOLATIONS;
     }
     boolean hasField;
     if (descriptor.isRepeated()) {
@@ -92,20 +92,20 @@ class FieldEvaluator implements Evaluator {
     }
     if (required && !hasField) {
       return Collections.singletonList(
-          ConstraintViolation.newBuilder()
+          RuleViolation.newBuilder()
               .addFirstFieldPathElement(FieldPathUtils.fieldPathElement(descriptor))
               .addAllRulePathElements(helper.getRulePrefixElements())
               .addAllRulePathElements(REQUIRED_RULE_PATH.getElementsList())
-              .setConstraintId("required")
+              .setRuleId("required")
               .setMessage("value is required")
-              .setRuleValue(new ConstraintViolation.FieldValue(true, REQUIRED_DESCRIPTOR)));
+              .setRuleValue(new RuleViolation.FieldValue(true, REQUIRED_DESCRIPTOR)));
     }
     if (ignoreEmpty && !hasField) {
-      return ConstraintViolation.NO_VIOLATIONS;
+      return RuleViolation.NO_VIOLATIONS;
     }
     Object fieldValue = message.getField(descriptor);
     if (ignoreDefault && Objects.equals(zero, fieldValue)) {
-      return ConstraintViolation.NO_VIOLATIONS;
+      return RuleViolation.NO_VIOLATIONS;
     }
     return valueEvaluator.evaluate(new ObjectValue(descriptor, fieldValue), failFast);
   }

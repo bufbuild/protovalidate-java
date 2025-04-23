@@ -18,8 +18,7 @@ import com.google.protobuf.Descriptors;
 import org.jspecify.annotations.Nullable;
 
 /**
- * {@link Violation} provides all of the collected information about an individual constraint
- * violation.
+ * {@link Violation} provides all of the collected information about an individual rule violation.
  */
 public interface Violation {
   /** {@link FieldValue} represents a Protobuf field value inside a Protobuf message. */

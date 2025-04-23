@@ -15,8 +15,8 @@
 package build.buf.protovalidate;
 
 import build.buf.protovalidate.exceptions.CompilationException;
-import build.buf.validate.FieldConstraints;
 import build.buf.validate.FieldPath;
+import build.buf.validate.FieldRules;
 import build.buf.validate.ValidateProto;
 import com.google.protobuf.DescriptorProtos;
 import com.google.protobuf.Descriptors;
@@ -43,8 +43,8 @@ import org.projectnessie.cel.checker.Decls;
 import org.projectnessie.cel.common.types.ref.Val;
 import org.projectnessie.cel.interpreter.Activation;
 
-/** A build-through cache for computed standard constraints. */
-class ConstraintCache {
+/** A build-through cache for computed standard rules. */
+class RuleCache {
   private static class CelRule {
     public final AstExpression astExpression;
     public final FieldDescriptor field;
@@ -63,7 +63,7 @@ class ConstraintCache {
     EXTENSION_REGISTRY.add(ValidateProto.predefined);
   }
 
-  /** Partial eval options for evaluating the constraint's expression. */
+  /** Partial eval options for evaluating the rule's expression. */
   private static final ProgramOption PARTIAL_EVAL_OPTIONS =
       ProgramOption.evalOptions(
           EvalOption.OptTrackState,
@@ -87,17 +87,17 @@ class ConstraintCache {
   /** Registry used to resolve dynamic extensions. */
   private final ExtensionRegistry extensionRegistry;
 
-  /** Whether to allow unknown constraint fields or not. */
+  /** Whether to allow unknown rule fields or not. */
   private final boolean allowUnknownFields;
 
   /**
-   * Constructs a new build-through cache for the standard constraints, with a provided registry to
+   * Constructs a new build-through cache for the standard rules, with a provided registry to
    * resolve dynamic extensions.
    *
    * @param env The CEL environment for evaluation.
-   * @param config The configuration to use for the constraint cache.
+   * @param config The configuration to use for the rule cache.
    */
-  public ConstraintCache(Env env, Config config) {
+  public RuleCache(Env env, Config config) {
     this.env = env;
     this.typeRegistry = config.getTypeRegistry();
     this.extensionRegistry = config.getExtensionRegistry();
@@ -105,29 +105,29 @@ class ConstraintCache {
   }
 
   /**
-   * Creates the standard constraints for the given field. If forItems is true, the constraints for
-   * repeated list items is built instead of the constraints on the list itself.
+   * Creates the standard rules for the given field. If forItems is true, the rules for repeated
+   * list items is built instead of the rules on the list itself.
    *
    * @param fieldDescriptor The field descriptor to be validated.
-   * @param fieldConstraints The field constraint that is used for validation.
+   * @param fieldRules The field rule that is used for validation.
    * @param forItems The field is an item list type.
    * @return The list of compiled programs.
-   * @throws CompilationException If the constraints fail to compile.
+   * @throws CompilationException If the rules fail to compile.
    */
   public List<CompiledProgram> compile(
-      FieldDescriptor fieldDescriptor, FieldConstraints fieldConstraints, boolean forItems)
+      FieldDescriptor fieldDescriptor, FieldRules fieldRules, boolean forItems)
       throws CompilationException {
-    ResolvedConstraint resolved = resolveConstraints(fieldDescriptor, fieldConstraints, forItems);
+    ResolvedRule resolved = resolveRules(fieldDescriptor, fieldRules, forItems);
     if (resolved == null) {
-      // Message null means there were no constraints resolved.
+      // Message null means there were no rules resolved.
       return Collections.emptyList();
     }
     Message message = resolved.message;
     List<CelRule> completeProgramList = new ArrayList<>();
     for (Map.Entry<FieldDescriptor, Object> entry : message.getAllFields().entrySet()) {
-      FieldDescriptor constraintFieldDesc = entry.getKey();
+      FieldDescriptor ruleFieldDesc = entry.getKey();
       List<CelRule> programList =
-          compileRule(fieldDescriptor, forItems, resolved.setOneof, constraintFieldDesc, message);
+          compileRule(fieldDescriptor, forItems, resolved.setOneof, ruleFieldDesc, message);
       if (programList == null) continue;
       completeProgramList.addAll(programList);
     }
@@ -173,35 +173,35 @@ class ConstraintCache {
       FieldDescriptor fieldDescriptor,
       boolean forItems,
       FieldDescriptor setOneof,
-      FieldDescriptor constraintFieldDesc,
+      FieldDescriptor ruleFieldDesc,
       Message message)
       throws CompilationException {
     List<CelRule> celRules = descriptorMap.get(fieldDescriptor);
     if (celRules != null) {
       return celRules;
     }
-    build.buf.validate.PredefinedConstraints constraints = getFieldConstraints(constraintFieldDesc);
-    if (constraints == null) return null;
-    List<Expression> expressions = Expression.fromConstraints(constraints.getCelList());
+    build.buf.validate.PredefinedRules rules = getFieldRules(ruleFieldDesc);
+    if (rules == null) return null;
+    List<Expression> expressions = Expression.fromRules(rules.getCelList());
     celRules = new ArrayList<>(expressions.size());
-    Env ruleEnv = getRuleEnv(fieldDescriptor, message, constraintFieldDesc, forItems);
+    Env ruleEnv = getRuleEnv(fieldDescriptor, message, ruleFieldDesc, forItems);
     for (Expression expression : expressions) {
       FieldPath rulePath =
           FieldPath.newBuilder()
               .addElements(FieldPathUtils.fieldPathElement(setOneof))
-              .addElements(FieldPathUtils.fieldPathElement(constraintFieldDesc))
+              .addElements(FieldPathUtils.fieldPathElement(ruleFieldDesc))
               .build();
       celRules.add(
           new CelRule(
-              AstExpression.newAstExpression(ruleEnv, expression), constraintFieldDesc, rulePath));
+              AstExpression.newAstExpression(ruleEnv, expression), ruleFieldDesc, rulePath));
     }
-    descriptorMap.put(constraintFieldDesc, celRules);
+    descriptorMap.put(ruleFieldDesc, celRules);
     return celRules;
   }
 
-  private build.buf.validate.@Nullable PredefinedConstraints getFieldConstraints(
-      FieldDescriptor constraintFieldDesc) throws CompilationException {
-    DescriptorProtos.FieldOptions options = constraintFieldDesc.getOptions();
+  private build.buf.validate.@Nullable PredefinedRules getFieldRules(FieldDescriptor ruleFieldDesc)
+      throws CompilationException {
+    DescriptorProtos.FieldOptions options = ruleFieldDesc.getOptions();
     // If the protovalidate field option is unknown, reparse options using our extension registry.
     if (options.getUnknownFields().hasField(ValidateProto.predefined.getNumber())) {
       try {
@@ -215,128 +215,125 @@ class ConstraintCache {
       return null;
     }
     Object extensionValue = options.getField(ValidateProto.predefined.getDescriptor());
-    build.buf.validate.PredefinedConstraints constraints;
-    if (extensionValue instanceof build.buf.validate.PredefinedConstraints) {
-      constraints = (build.buf.validate.PredefinedConstraints) extensionValue;
+    build.buf.validate.PredefinedRules rules;
+    if (extensionValue instanceof build.buf.validate.PredefinedRules) {
+      rules = (build.buf.validate.PredefinedRules) extensionValue;
     } else if (extensionValue instanceof MessageLite) {
       // Extension is parsed but with different gencode. We need to reparse it.
       try {
-        constraints =
-            build.buf.validate.PredefinedConstraints.parseFrom(
+        rules =
+            build.buf.validate.PredefinedRules.parseFrom(
                 ((MessageLite) extensionValue).toByteString());
       } catch (InvalidProtocolBufferException e) {
-        throw new CompilationException("Failed to parse field constraints", e);
+        throw new CompilationException("Failed to parse field rules", e);
       }
     } else {
       // Extension was not a message, just discard it.
       return null;
     }
-    return constraints;
+    return rules;
   }
 
   /**
    * Calculates the environment for a specific rule invocation.
    *
-   * @param fieldDescriptor The field descriptor of the field with the constraint.
-   * @param constraintMessage The message of the standard constraints.
-   * @param constraintFieldDesc The field descriptor of the constraint.
+   * @param fieldDescriptor The field descriptor of the field with the rule.
+   * @param ruleMessage The message of the standard rules.
+   * @param ruleFieldDesc The field descriptor of the rule.
    * @param forItems Whether the field is a list type or not.
    * @return An environment with requisite declarations and types added.
    */
   private Env getRuleEnv(
       FieldDescriptor fieldDescriptor,
-      Message constraintMessage,
-      FieldDescriptor constraintFieldDesc,
+      Message ruleMessage,
+      FieldDescriptor ruleFieldDesc,
       boolean forItems) {
     return env.extend(
-        EnvOption.types(constraintMessage.getDefaultInstanceForType()),
+        EnvOption.types(ruleMessage.getDefaultInstanceForType()),
         EnvOption.declarations(
             Decls.newVar(
                 Variable.THIS_NAME, DescriptorMappings.getCELType(fieldDescriptor, forItems)),
             Decls.newVar(
                 Variable.RULES_NAME,
-                Decls.newObjectType(constraintMessage.getDescriptorForType().getFullName())),
-            Decls.newVar(
-                Variable.RULE_NAME, DescriptorMappings.getCELType(constraintFieldDesc, false))));
+                Decls.newObjectType(ruleMessage.getDescriptorForType().getFullName())),
+            Decls.newVar(Variable.RULE_NAME, DescriptorMappings.getCELType(ruleFieldDesc, false))));
   }
 
-  private static class ResolvedConstraint {
+  private static class ResolvedRule {
     final Message message;
     final FieldDescriptor setOneof;
 
-    ResolvedConstraint(Message message, FieldDescriptor setOneof) {
+    ResolvedRule(Message message, FieldDescriptor setOneof) {
       this.message = message;
       this.setOneof = setOneof;
     }
   }
 
   /**
-   * Extracts the standard constraints for the specified field. An exception is thrown if the wrong
-   * constraints are applied to a field (typically if there is a type-mismatch). Null is returned if
-   * there are no standard constraints to apply to this field.
+   * Extracts the standard rules for the specified field. An exception is thrown if the wrong rules
+   * are applied to a field (typically if there is a type-mismatch). Null is returned if there are
+   * no standard rules to apply to this field.
    */
   @Nullable
-  private ResolvedConstraint resolveConstraints(
-      FieldDescriptor fieldDescriptor, FieldConstraints fieldConstraints, boolean forItems)
+  private ResolvedRule resolveRules(
+      FieldDescriptor fieldDescriptor, FieldRules fieldRules, boolean forItems)
       throws CompilationException {
-    // Get the oneof field descriptor from the field constraints.
+    // Get the oneof field descriptor from the field rules.
     FieldDescriptor oneofFieldDescriptor =
-        fieldConstraints.getOneofFieldDescriptor(DescriptorMappings.FIELD_CONSTRAINTS_ONEOF_DESC);
+        fieldRules.getOneofFieldDescriptor(DescriptorMappings.FIELD_RULES_ONEOF_DESC);
     if (oneofFieldDescriptor == null) {
-      // If the oneof field descriptor is null there are no constraints to resolve.
+      // If the oneof field descriptor is null there are no rules to resolve.
       return null;
     }
 
-    // Get the expected constraint descriptor based on the provided field descriptor and the flag
+    // Get the expected rule descriptor based on the provided field descriptor and the flag
     // indicating whether it is for items.
-    FieldDescriptor expectedConstraintDescriptor =
-        DescriptorMappings.getExpectedConstraintDescriptor(fieldDescriptor, forItems);
-    if (expectedConstraintDescriptor != null
-        && !oneofFieldDescriptor.getFullName().equals(expectedConstraintDescriptor.getFullName())) {
-      // If the expected constraint does not match the actual oneof constraint, throw a
+    FieldDescriptor expectedRuleDescriptor =
+        DescriptorMappings.getExpectedRuleDescriptor(fieldDescriptor, forItems);
+    if (expectedRuleDescriptor != null
+        && !oneofFieldDescriptor.getFullName().equals(expectedRuleDescriptor.getFullName())) {
+      // If the expected rule does not match the actual oneof rule, throw a
       // CompilationError.
       throw new CompilationException(
           String.format(
-              "expected constraint %s, got %s on field %s",
-              expectedConstraintDescriptor.getName(),
+              "expected rule %s, got %s on field %s",
+              expectedRuleDescriptor.getName(),
               oneofFieldDescriptor.getName(),
               fieldDescriptor.getName()));
     }
 
-    // If the expected constraint descriptor is null or if the field constraints do not have the
+    // If the expected rule descriptor is null or if the field rules do not have the
     // oneof field descriptor
-    // there are no constraints to resolve, so return null.
-    if (expectedConstraintDescriptor == null || !fieldConstraints.hasField(oneofFieldDescriptor)) {
+    // there are no rules to resolve, so return null.
+    if (expectedRuleDescriptor == null || !fieldRules.hasField(oneofFieldDescriptor)) {
       return null;
     }
 
-    // Get the field from the field constraints identified by the oneof field descriptor, casted
+    // Get the field from the field rules identified by the oneof field descriptor, casted
     // as a Message.
-    Message typeConstraints = (Message) fieldConstraints.getField(oneofFieldDescriptor);
-    if (!typeConstraints.getUnknownFields().isEmpty()) {
+    Message typeRules = (Message) fieldRules.getField(oneofFieldDescriptor);
+    if (!typeRules.getUnknownFields().isEmpty()) {
       // If there are unknown fields, try to resolve them using the provided registries. Note that
       // we use the type registry to resolve the message descriptor. This is because Java protobuf
       // extension resolution relies on descriptor identity. The user's provided type registry can
       // provide matching message descriptors for the user's provided extension registry. See the
       // documentation for Options.setTypeRegistry for more information.
-      Descriptors.Descriptor expectedConstraintMessageDescriptor =
-          typeRegistry.find(expectedConstraintDescriptor.getMessageType().getFullName());
-      if (expectedConstraintMessageDescriptor == null) {
-        expectedConstraintMessageDescriptor = expectedConstraintDescriptor.getMessageType();
+      Descriptors.Descriptor expectedRuleMessageDescriptor =
+          typeRegistry.find(expectedRuleDescriptor.getMessageType().getFullName());
+      if (expectedRuleMessageDescriptor == null) {
+        expectedRuleMessageDescriptor = expectedRuleDescriptor.getMessageType();
       }
       try {
-        typeConstraints =
+        typeRules =
             DynamicMessage.parseFrom(
-                expectedConstraintMessageDescriptor,
-                typeConstraints.toByteString(),
-                extensionRegistry);
+                expectedRuleMessageDescriptor, typeRules.toByteString(), extensionRegistry);
       } catch (InvalidProtocolBufferException e) {
         throw new RuntimeException(e);
       }
     }
-    if (!allowUnknownFields && !typeConstraints.getUnknownFields().isEmpty()) {
-      throw new CompilationException("unrecognized field constraints");
+    if (!allowUnknownFields && !typeRules.getUnknownFields().isEmpty()) {
+      throw new CompilationException("unrecognized field rules");
     }
-    return new ResolvedConstraint(typeConstraints, oneofFieldDescriptor);
+    return new ResolvedRule(typeRules, oneofFieldDescriptor);
   }
 }

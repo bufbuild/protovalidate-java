@@ -18,12 +18,12 @@ package validationtest;
 
 import "buf/validate/validate.proto";
 
-message ExampleFieldConstraints {
+message ExampleFieldRules {
   string regex_string_field = 1 [(buf.validate.field).string.pattern = "^[a-z0-9]{1,9}$"];
   string unconstrained = 2;
 }
 
-message ExampleOneofConstraints {
+message ExampleOneofRules {
   // contact_info is the user's contact information
   oneof contact_info {
     // required ensures that exactly one field in oneof is set. Without this
@@ -40,7 +40,7 @@ message ExampleOneofConstraints {
   }
 }
 
-message ExampleMessageConstraints {
+message ExampleMessageRules {
   option (buf.validate.message).cel = {
     id: "secondary_email_depends_on_primary",
     expression:

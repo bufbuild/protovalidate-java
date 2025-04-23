@@ -1,80 +1,80 @@
-custom_constraints:
+custom_rules:
   - field_expression/map/enum/invalid
-  #       input: [type.googleapis.com/buf.validate.conformance.cases.custom_constraints.FieldExpressionMapEnum]:{val:{key:4  value:ENUM_ONE}  val:{key:8  value:ENUM_UNSPECIFIED}  val:{key:12  value:ENUM_ONE}}
+  #       input: [type.googleapis.com/buf.validate.conformance.cases.custom_rules.FieldExpressionMapEnum]:{val:{key:4  value:ENUM_ONE}  val:{key:8  value:ENUM_UNSPECIFIED}  val:{key:12  value:ENUM_ONE}}
   #        want: validation error (1 violation)
-  #          1. constraint_id: "field_expression.map.enum"
+  #          1. rule_id: "field_expression.map.enum"
   #             message: "test message field_expression.map.enum"
   #             field: "val" elements:{field_number:1  field_name:"val"  field_type:TYPE_MESSAGE}
   #             rule: "cel[0]" elements:{field_number:23  field_name:"cel"  field_type:TYPE_MESSAGE  index:0}
   #         got: compilation err: Failed to compile expression field_expression.map.enum:
-  #ERROR: <input>:1:1: expression of type 'buf.validate.conformance.cases.custom_constraints.FieldExpressionMapEnum.ValEntry' cannot be range of a comprehension (must be list, map, or dynamic)
+  #ERROR: <input>:1:1: expression of type 'buf.validate.conformance.cases.custom_rules.FieldExpressionMapEnum.ValEntry' cannot be range of a comprehension (must be list, map, or dynamic)
   # | this.all(k, this[k] == 1)
   # | ^
-  #ERROR: <input>:1:17: found no matching overload for '_[_]' applied to '(buf.validate.conformance.cases.custom_constraints.FieldExpressionMapEnum.ValEntry, !error!)'
+  #ERROR: <input>:1:17: found no matching overload for '_[_]' applied to '(buf.validate.conformance.cases.custom_rules.FieldExpressionMapEnum.ValEntry, !error!)'
   # | this.all(k, this[k] == 1)
   # | ................^
   - field_expression/map/enum/valid
-  #       input: [type.googleapis.com/buf.validate.conformance.cases.custom_constraints.FieldExpressionMapEnum]:{val:{key:4  value:ENUM_ONE}  val:{key:8  value:ENUM_ONE}}
+  #       input: [type.googleapis.com/buf.validate.conformance.cases.custom_rules.FieldExpressionMapEnum]:{val:{key:4  value:ENUM_ONE}  val:{key:8  value:ENUM_ONE}}
   #        want: valid
   #         got: compilation err: Failed to compile expression field_expression.map.enum:
-  #ERROR: <input>:1:1: expression of type 'buf.validate.conformance.cases.custom_constraints.FieldExpressionMapEnum.ValEntry' cannot be range of a comprehension (must be list, map, or dynamic)
+  #ERROR: <input>:1:1: expression of type 'buf.validate.conformance.cases.custom_rules.FieldExpressionMapEnum.ValEntry' cannot be range of a comprehension (must be list, map, or dynamic)
   # | this.all(k, this[k] == 1)
   # | ^
-  #ERROR: <input>:1:17: found no matching overload for '_[_]' applied to '(buf.validate.conformance.cases.custom_constraints.FieldExpressionMapEnum.ValEntry, !error!)'
+  #ERROR: <input>:1:17: found no matching overload for '_[_]' applied to '(buf.validate.conformance.cases.custom_rules.FieldExpressionMapEnum.ValEntry, !error!)'
   # | this.all(k, this[k] == 1)
   # | ................^
   - field_expression/map/message/invalid
-  #       input: [type.googleapis.com/buf.validate.conformance.cases.custom_constraints.FieldExpressionMapMessage]:{val:{key:4  value:{a:1}}  val:{key:8  value:{a:2}}  val:{key:12  value:{a:1}}}
+  #       input: [type.googleapis.com/buf.validate.conformance.cases.custom_rules.FieldExpressionMapMessage]:{val:{key:4  value:{a:1}}  val:{key:8  value:{a:2}}  val:{key:12  value:{a:1}}}
   #        want: validation error (1 violation)
-  #          1. constraint_id: "field_expression.map.message"
+  #          1. rule_id: "field_expression.map.message"
   #             message: "test message field_expression.map.message"
   #             field: "val" elements:{field_number:1  field_name:"val"  field_type:TYPE_MESSAGE}
   #             rule: "cel[0]" elements:{field_number:23  field_name:"cel"  field_type:TYPE_MESSAGE  index:0}
   #         got: compilation err: Failed to compile expression field_expression.map.message:
-  #ERROR: <input>:1:1: expression of type 'buf.validate.conformance.cases.custom_constraints.FieldExpressionMapMessage.ValEntry' cannot be range of a comprehension (must be list, map, or dynamic)
+  #ERROR: <input>:1:1: expression of type 'buf.validate.conformance.cases.custom_rules.FieldExpressionMapMessage.ValEntry' cannot be range of a comprehension (must be list, map, or dynamic)
   # | this.all(k, this[k].a == 1)
   # | ^
-  #ERROR: <input>:1:17: found no matching overload for '_[_]' applied to '(buf.validate.conformance.cases.custom_constraints.FieldExpressionMapMessage.ValEntry, !error!)'
+  #ERROR: <input>:1:17: found no matching overload for '_[_]' applied to '(buf.validate.conformance.cases.custom_rules.FieldExpressionMapMessage.ValEntry, !error!)'
   # | this.all(k, this[k].a == 1)
   # | ................^
   - field_expression/map/message/valid
-  #       input: [type.googleapis.com/buf.validate.conformance.cases.custom_constraints.FieldExpressionMapMessage]:{val:{key:4  value:{a:1}}  val:{key:8  value:{a:1}}}
+  #       input: [type.googleapis.com/buf.validate.conformance.cases.custom_rules.FieldExpressionMapMessage]:{val:{key:4  value:{a:1}}  val:{key:8  value:{a:1}}}
   #        want: valid
   #         got: compilation err: Failed to compile expression field_expression.map.message:
-  #ERROR: <input>:1:1: expression of type 'buf.validate.conformance.cases.custom_constraints.FieldExpressionMapMessage.ValEntry' cannot be range of a comprehension (must be list, map, or dynamic)
+  #ERROR: <input>:1:1: expression of type 'buf.validate.conformance.cases.custom_rules.FieldExpressionMapMessage.ValEntry' cannot be range of a comprehension (must be list, map, or dynamic)
   # | this.all(k, this[k].a == 1)
   # | ^
-  #ERROR: <input>:1:17: found no matching overload for '_[_]' applied to '(buf.validate.conformance.cases.custom_constraints.FieldExpressionMapMessage.ValEntry, !error!)'
+  #ERROR: <input>:1:17: found no matching overload for '_[_]' applied to '(buf.validate.conformance.cases.custom_rules.FieldExpressionMapMessage.ValEntry, !error!)'
   # | this.all(k, this[k].a == 1)
   # | ................^
   - field_expression/map/scalar/invalid
-  #       input: [type.googleapis.com/buf.validate.conformance.cases.custom_constraints.FieldExpressionMapScalar]:{val:{key:1  value:1}  val:{key:2  value:2}  val:{key:3  value:1}}
+  #       input: [type.googleapis.com/buf.validate.conformance.cases.custom_rules.FieldExpressionMapScalar]:{val:{key:1  value:1}  val:{key:2  value:2}  val:{key:3  value:1}}
   #        want: validation error (1 violation)
-  #          1. constraint_id: "field_expression.map.scalar"
+  #          1. rule_id: "field_expression.map.scalar"
   #             message: "test message field_expression.map.scalar"
   #             field: "val" elements:{field_number:1  field_name:"val"  field_type:TYPE_MESSAGE}
   #             rule: "cel[0]" elements:{field_number:23  field_name:"cel"  field_type:TYPE_MESSAGE  index:0}
   #         got: compilation err: Failed to compile expression field_expression.map.scalar:
-  #ERROR: <input>:1:1: expression of type 'buf.validate.conformance.cases.custom_constraints.FieldExpressionMapScalar.ValEntry' cannot be range of a comprehension (must be list, map, or dynamic)
+  #ERROR: <input>:1:1: expression of type 'buf.validate.conformance.cases.custom_rules.FieldExpressionMapScalar.ValEntry' cannot be range of a comprehension (must be list, map, or dynamic)
   # | this.all(k, this[k] == 1)
   # | ^
-  #ERROR: <input>:1:17: found no matching overload for '_[_]' applied to '(buf.validate.conformance.cases.custom_constraints.FieldExpressionMapScalar.ValEntry, !error!)'
+  #ERROR: <input>:1:17: found no matching overload for '_[_]' applied to '(buf.validate.conformance.cases.custom_rules.FieldExpressionMapScalar.ValEntry, !error!)'
   # | this.all(k, this[k] == 1)
   # | ................^
   - field_expression/map/scalar/valid
-  #       input: [type.googleapis.com/buf.validate.conformance.cases.custom_constraints.FieldExpressionMapScalar]:{val:{key:1  value:1}}
+  #       input: [type.googleapis.com/buf.validate.conformance.cases.custom_rules.FieldExpressionMapScalar]:{val:{key:1  value:1}}
   #        want: valid
   #         got: compilation err: Failed to compile expression field_expression.map.scalar:
-  #ERROR: <input>:1:1: expression of type 'buf.validate.conformance.cases.custom_constraints.FieldExpressionMapScalar.ValEntry' cannot be range of a comprehension (must be list, map, or dynamic)
+  #ERROR: <input>:1:1: expression of type 'buf.validate.conformance.cases.custom_rules.FieldExpressionMapScalar.ValEntry' cannot be range of a comprehension (must be list, map, or dynamic)
   # | this.all(k, this[k] == 1)
   # | ^
-  #ERROR: <input>:1:17: found no matching overload for '_[_]' applied to '(buf.validate.conformance.cases.custom_constraints.FieldExpressionMapScalar.ValEntry, !error!)'
+  #ERROR: <input>:1:17: found no matching overload for '_[_]' applied to '(buf.validate.conformance.cases.custom_rules.FieldExpressionMapScalar.ValEntry, !error!)'
   # | this.all(k, this[k] == 1)
   # | ................^
   - field_expression/repeated/enum/invalid
-  #       input: [type.googleapis.com/buf.validate.conformance.cases.custom_constraints.FieldExpressionRepeatedEnum]:{val:ENUM_ONE  val:ENUM_UNSPECIFIED  val:ENUM_ONE}
+  #       input: [type.googleapis.com/buf.validate.conformance.cases.custom_rules.FieldExpressionRepeatedEnum]:{val:ENUM_ONE  val:ENUM_UNSPECIFIED  val:ENUM_ONE}
   #        want: validation error (1 violation)
-  #          1. constraint_id: "field_expression.repeated.enum"
+  #          1. rule_id: "field_expression.repeated.enum"
   #             message: "test message field_expression.repeated.enum"
   #             field: "val" elements:{field_number:1  field_name:"val"  field_type:TYPE_ENUM}
   #             rule: "cel[0]" elements:{field_number:23  field_name:"cel"  field_type:TYPE_MESSAGE  index:0}
@@ -83,16 +83,16 @@ custom_constraints:
   # | this.all(e, e == 1)
   # | ^
   - field_expression/repeated/enum/valid
-  #       input: [type.googleapis.com/buf.validate.conformance.cases.custom_constraints.FieldExpressionRepeatedEnum]:{val:ENUM_ONE  val:ENUM_ONE}
+  #       input: [type.googleapis.com/buf.validate.conformance.cases.custom_rules.FieldExpressionRepeatedEnum]:{val:ENUM_ONE  val:ENUM_ONE}
   #        want: valid
   #         got: compilation err: Failed to compile expression field_expression.repeated.enum:
   #ERROR: <input>:1:1: expression of type 'int' cannot be range of a comprehension (must be list, map, or dynamic)
   # | this.all(e, e == 1)
   # | ^
   - field_expression/repeated/scalar/invalid
-  #       input: [type.googleapis.com/buf.validate.conformance.cases.custom_constraints.FieldExpressionRepeatedScalar]:{val:1  val:2  val:1}
+  #       input: [type.googleapis.com/buf.validate.conformance.cases.custom_rules.FieldExpressionRepeatedScalar]:{val:1  val:2  val:1}
   #        want: validation error (1 violation)
-  #          1. constraint_id: "field_expression.repeated.scalar"
+  #          1. rule_id: "field_expression.repeated.scalar"
   #             message: "test message field_expression.repeated.scalar"
   #             field: "val" elements:{field_number:1  field_name:"val"  field_type:TYPE_INT32}
   #             rule: "cel[0]" elements:{field_number:23  field_name:"cel"  field_type:TYPE_MESSAGE  index:0}
@@ -101,18 +101,18 @@ custom_constraints:
   # | this.all(e, e == 1)
   # | ^
   - field_expression/repeated/scalar/valid
-  #       input: [type.googleapis.com/buf.validate.conformance.cases.custom_constraints.FieldExpressionRepeatedScalar]:{val:1  val:1}
+  #       input: [type.googleapis.com/buf.validate.conformance.cases.custom_rules.FieldExpressionRepeatedScalar]:{val:1  val:1}
   #        want: valid
   #         got: compilation err: Failed to compile expression field_expression.repeated.scalar:
   #ERROR: <input>:1:1: expression of type 'int' cannot be range of a comprehension (must be list, map, or dynamic)
   # | this.all(e, e == 1)
   # | ^
-standard_constraints/ignore:
+standard_rules/ignore:
   - proto/2023/map/ignore_always/invalid/populated
   #       input: [type.googleapis.com/buf.validate.conformance.cases.EditionsMapIgnoreAlways]:{val:{key:1  value:1}}
   #        want: valid
   #         got: validation error (1 violation)
-  #          1. constraint_id: "map.min_pairs"
+  #          1. rule_id: "map.min_pairs"
   #             message: "map must be at least 3 entries"
   #             field: "val" elements:{field_number:1  field_name:"val"  field_type:TYPE_MESSAGE}
   #             rule: "map.min_pairs" elements:{field_number:19  field_name:"map"  field_type:TYPE_MESSAGE}  elements:{field_number:1  field_name:"min_pairs"  field_type:TYPE_UINT64}
@@ -120,7 +120,7 @@ standard_constraints/ignore:
   #       input: [type.googleapis.com/buf.validate.conformance.cases.EditionsMapIgnoreAlways]:{}
   #        want: valid
   #         got: validation error (1 violation)
-  #          1. constraint_id: "map.min_pairs"
+  #          1. rule_id: "map.min_pairs"
   #             message: "map must be at least 3 entries"
   #             field: "val" elements:{field_number:1  field_name:"val"  field_type:TYPE_MESSAGE}
   #             rule: "map.min_pairs" elements:{field_number:19  field_name:"map"  field_type:TYPE_MESSAGE}  elements:{field_number:1  field_name:"min_pairs"  field_type:TYPE_UINT64}
@@ -128,7 +128,7 @@ standard_constraints/ignore:
   #       input: [type.googleapis.com/buf.validate.conformance.cases.EditionsMapKeyIgnoreAlways]:{val:{key:-42  value:-42}}
   #        want: valid
   #         got: validation error (1 violation)
-  #          1. constraint_id: "int32.gt"
+  #          1. rule_id: "int32.gt"
   #             message: "value must be greater than 0"
   #             field: "val[-42]" elements:{field_number:1  field_name:"val"  field_type:TYPE_MESSAGE  key_type:TYPE_INT32  value_type:TYPE_INT32  int_key:-42}
   #             for_key: true
@@ -137,7 +137,7 @@ standard_constraints/ignore:
   #       input: [type.googleapis.com/buf.validate.conformance.cases.EditionsMapKeyIgnoreAlways]:{val:{key:0  value:0}}
   #        want: valid
   #         got: validation error (1 violation)
-  #          1. constraint_id: "int32.gt"
+  #          1. rule_id: "int32.gt"
   #             message: "value must be greater than 0"
   #             field: "val[0]" elements:{field_number:1  field_name:"val"  field_type:TYPE_MESSAGE  key_type:TYPE_INT32  value_type:TYPE_INT32  int_key:0}
   #             for_key: true
@@ -146,7 +146,7 @@ standard_constraints/ignore:
   #       input: [type.googleapis.com/buf.validate.conformance.cases.EditionsMapValueIgnoreAlways]:{val:{key:-42  value:-42}}
   #        want: valid
   #         got: validation error (1 violation)
-  #          1. constraint_id: "int32.gt"
+  #          1. rule_id: "int32.gt"
   #             message: "value must be greater than 0"
   #             field: "val[-42]" elements:{field_number:1  field_name:"val"  field_type:TYPE_MESSAGE  key_type:TYPE_INT32  value_type:TYPE_INT32  int_key:-42}
   #             rule: "map.values.int32.gt" elements:{field_number:19  field_name:"map"  field_type:TYPE_MESSAGE}  elements:{field_number:5  field_name:"values"  field_type:TYPE_MESSAGE}  elements:{field_number:3  field_name:"int32"  field_type:TYPE_MESSAGE}  elements:{field_number:4  field_name:"gt"  field_type:TYPE_INT32}
@@ -154,7 +154,7 @@ standard_constraints/ignore:
   #       input: [type.googleapis.com/buf.validate.conformance.cases.EditionsMapValueIgnoreAlways]:{val:{key:0  value:0}}
   #        want: valid
   #         got: validation error (1 violation)
-  #          1. constraint_id: "int32.gt"
+  #          1. rule_id: "int32.gt"
   #             message: "value must be greater than 0"
   #             field: "val[0]" elements:{field_number:1  field_name:"val"  field_type:TYPE_MESSAGE  key_type:TYPE_INT32  value_type:TYPE_INT32  int_key:0}
   #             rule: "map.values.int32.gt" elements:{field_number:19  field_name:"map"  field_type:TYPE_MESSAGE}  elements:{field_number:5  field_name:"values"  field_type:TYPE_MESSAGE}  elements:{field_number:3  field_name:"int32"  field_type:TYPE_MESSAGE}  elements:{field_number:4  field_name:"gt"  field_type:TYPE_INT32}
@@ -162,7 +162,7 @@ standard_constraints/ignore:
   #       input: [type.googleapis.com/buf.validate.conformance.cases.EditionsMessageExplicitPresenceDelimitedIgnoreAlways]:{val:{}}
   #        want: valid
   #         got: validation error (1 violation)
-  #          1. constraint_id: "proto.editions.message.ignore.always"
+  #          1. rule_id: "proto.editions.message.ignore.always"
   #             message: "foobar"
   #             field: "val" elements:{field_number:1  field_name:"val"  field_type:TYPE_GROUP}
   #             rule: "cel[0]" elements:{field_number:23  field_name:"cel"  field_type:TYPE_MESSAGE  index:0}
@@ -170,7 +170,7 @@ standard_constraints/ignore:
   #       input: [type.googleapis.com/buf.validate.conformance.cases.EditionsMessageExplicitPresenceDelimitedIgnoreAlways]:{val:{val:"bar"}}
   #        want: valid
   #         got: validation error (1 violation)
-  #          1. constraint_id: "proto.editions.message.ignore.always"
+  #          1. rule_id: "proto.editions.message.ignore.always"
   #             message: "foobar"
   #             field: "val" elements:{field_number:1  field_name:"val"  field_type:TYPE_GROUP}
   #             rule: "cel[0]" elements:{field_number:23  field_name:"cel"  field_type:TYPE_MESSAGE  index:0}
@@ -178,7 +178,7 @@ standard_constraints/ignore:
   #       input: [type.googleapis.com/buf.validate.conformance.cases.EditionsMessageExplicitPresenceIgnoreAlways]:{val:{}}
   #        want: valid
   #         got: validation error (1 violation)
-  #          1. constraint_id: "proto.editions.message.ignore.always"
+  #          1. rule_id: "proto.editions.message.ignore.always"
   #             message: "foobar"
   #             field: "val" elements:{field_number:1  field_name:"val"  field_type:TYPE_MESSAGE}
   #             rule: "cel[0]" elements:{field_number:23  field_name:"cel"  field_type:TYPE_MESSAGE  index:0}
@@ -186,7 +186,7 @@ standard_constraints/ignore:
   #       input: [type.googleapis.com/buf.validate.conformance.cases.EditionsMessageExplicitPresenceIgnoreAlways]:{val:{val:"bar"}}
   #        want: valid
   #         got: validation error (1 violation)
-  #          1. constraint_id: "proto.editions.message.ignore.always"
+  #          1. rule_id: "proto.editions.message.ignore.always"
   #             message: "foobar"
   #             field: "val" elements:{field_number:1  field_name:"val"  field_type:TYPE_MESSAGE}
   #             rule: "cel[0]" elements:{field_number:23  field_name:"cel"  field_type:TYPE_MESSAGE  index:0}
@@ -194,7 +194,7 @@ standard_constraints/ignore:
   #       input: [type.googleapis.com/buf.validate.conformance.cases.EditionsMessageLegacyRequiredDelimitedIgnoreAlways]:{val:{}}
   #        want: valid
   #         got: validation error (1 violation)
-  #          1. constraint_id: "proto.editions.message.ignore.empty"
+  #          1. rule_id: "proto.editions.message.ignore.empty"
   #             message: "foobar"
   #             field: "val" elements:{field_number:1  field_name:"val"  field_type:TYPE_GROUP}
   #             rule: "cel[0]" elements:{field_number:23  field_name:"cel"  field_type:TYPE_MESSAGE  index:0}
@@ -202,7 +202,7 @@ standard_constraints/ignore:
   #       input: [type.googleapis.com/buf.validate.conformance.cases.EditionsMessageLegacyRequiredDelimitedIgnoreAlways]:{val:{val:"bar"}}
   #        want: valid
   #         got: validation error (1 violation)
-  #          1. constraint_id: "proto.editions.message.ignore.empty"
+  #          1. rule_id: "proto.editions.message.ignore.empty"
   #             message: "foobar"
   #             field: "val" elements:{field_number:1  field_name:"val"  field_type:TYPE_GROUP}
   #             rule: "cel[0]" elements:{field_number:23  field_name:"cel"  field_type:TYPE_MESSAGE  index:0}
@@ -210,7 +210,7 @@ standard_constraints/ignore:
   #       input: [type.googleapis.com/buf.validate.conformance.cases.EditionsMessageLegacyRequiredIgnoreAlways]:{val:{}}
   #        want: valid
   #         got: validation error (1 violation)
-  #          1. constraint_id: "proto.editions.message.ignore.empty"
+  #          1. rule_id: "proto.editions.message.ignore.empty"
   #             message: "foobar"
   #             field: "val" elements:{field_number:1  field_name:"val"  field_type:TYPE_MESSAGE}
   #             rule: "cel[0]" elements:{field_number:23  field_name:"cel"  field_type:TYPE_MESSAGE  index:0}
@@ -218,7 +218,7 @@ standard_constraints/ignore:
   #       input: [type.googleapis.com/buf.validate.conformance.cases.EditionsMessageLegacyRequiredIgnoreAlways]:{val:{val:"bar"}}
   #        want: valid
   #         got: validation error (1 violation)
-  #          1. constraint_id: "proto.editions.message.ignore.empty"
+  #          1. rule_id: "proto.editions.message.ignore.empty"
   #             message: "foobar"
   #             field: "val" elements:{field_number:1  field_name:"val"  field_type:TYPE_MESSAGE}
   #             rule: "cel[0]" elements:{field_number:23  field_name:"cel"  field_type:TYPE_MESSAGE  index:0}
@@ -226,7 +226,7 @@ standard_constraints/ignore:
   #       input: [type.googleapis.com/buf.validate.conformance.cases.EditionsOneofIgnoreAlways]:{val:0}
   #        want: valid
   #         got: validation error (1 violation)
-  #          1. constraint_id: "int32.gt"
+  #          1. rule_id: "int32.gt"
   #             message: "value must be greater than 0"
   #             field: "val" elements:{field_number:1  field_name:"val"  field_type:TYPE_INT32}
   #             rule: "int32.gt" elements:{field_number:3  field_name:"int32"  field_type:TYPE_MESSAGE}  elements:{field_number:4  field_name:"gt"  field_type:TYPE_INT32}
@@ -234,7 +234,7 @@ standard_constraints/ignore:
   #       input: [type.googleapis.com/buf.validate.conformance.cases.EditionsOneofIgnoreAlways]:{val:-123}
   #        want: valid
   #         got: validation error (1 violation)
-  #          1. constraint_id: "int32.gt"
+  #          1. rule_id: "int32.gt"
   #             message: "value must be greater than 0"
   #             field: "val" elements:{field_number:1  field_name:"val"  field_type:TYPE_INT32}
   #             rule: "int32.gt" elements:{field_number:3  field_name:"int32"  field_type:TYPE_MESSAGE}  elements:{field_number:4  field_name:"gt"  field_type:TYPE_INT32}
@@ -242,7 +242,7 @@ standard_constraints/ignore:
   #       input: [type.googleapis.com/buf.validate.conformance.cases.EditionsOneofIgnoreAlwaysWithDefault]:{val:-42}
   #        want: valid
   #         got: validation error (1 violation)
-  #          1. constraint_id: "int32.gt"
+  #          1. rule_id: "int32.gt"
   #             message: "value must be greater than 0"
   #             field: "val" elements:{field_number:1  field_name:"val"  field_type:TYPE_INT32}
   #             rule: "int32.gt" elements:{field_number:3  field_name:"int32"  field_type:TYPE_MESSAGE}  elements:{field_number:4  field_name:"gt"  field_type:TYPE_INT32}
@@ -250,7 +250,7 @@ standard_constraints/ignore:
   #       input: [type.googleapis.com/buf.validate.conformance.cases.EditionsOneofIgnoreAlwaysWithDefault]:{val:-123}
   #        want: valid
   #         got: validation error (1 violation)
-  #          1. constraint_id: "int32.gt"
+  #          1. rule_id: "int32.gt"
   #             message: "value must be greater than 0"
   #             field: "val" elements:{field_number:1  field_name:"val"  field_type:TYPE_INT32}
   #             rule: "int32.gt" elements:{field_number:3  field_name:"int32"  field_type:TYPE_MESSAGE}  elements:{field_number:4  field_name:"gt"  field_type:TYPE_INT32}
@@ -258,7 +258,7 @@ standard_constraints/ignore:
   #       input: [type.googleapis.com/buf.validate.conformance.cases.EditionsOneofIgnoreAlwaysWithDefault]:{val:0}
   #        want: valid
   #         got: validation error (1 violation)
-  #          1. constraint_id: "int32.gt"
+  #          1. rule_id: "int32.gt"
   #             message: "value must be greater than 0"
   #             field: "val" elements:{field_number:1  field_name:"val"  field_type:TYPE_INT32}
   #             rule: "int32.gt" elements:{field_number:3  field_name:"int32"  field_type:TYPE_MESSAGE}  elements:{field_number:4  field_name:"gt"  field_type:TYPE_INT32}
@@ -266,7 +266,7 @@ standard_constraints/ignore:
   #       input: [type.googleapis.com/buf.validate.conformance.cases.EditionsRepeatedIgnoreAlways]:{val:1}
   #        want: valid
   #         got: validation error (1 violation)
-  #          1. constraint_id: "repeated.min_items"
+  #          1. rule_id: "repeated.min_items"
   #             message: "value must contain at least 3 item(s)"
   #             field: "val" elements:{field_number:1  field_name:"val"  field_type:TYPE_INT32}
   #             rule: "repeated.min_items" elements:{field_number:18  field_name:"repeated"  field_type:TYPE_MESSAGE}  elements:{field_number:1  field_name:"min_items"  field_type:TYPE_UINT64}
@@ -274,7 +274,7 @@ standard_constraints/ignore:
   #       input: [type.googleapis.com/buf.validate.conformance.cases.EditionsRepeatedIgnoreAlways]:{}
   #        want: valid
   #         got: validation error (1 violation)
-  #          1. constraint_id: "repeated.min_items"
+  #          1. rule_id: "repeated.min_items"
   #             message: "value must contain at least 3 item(s)"
   #             field: "val" elements:{field_number:1  field_name:"val"  field_type:TYPE_INT32}
   #             rule: "repeated.min_items" elements:{field_number:18  field_name:"repeated"  field_type:TYPE_MESSAGE}  elements:{field_number:1  field_name:"min_items"  field_type:TYPE_UINT64}
@@ -282,7 +282,7 @@ standard_constraints/ignore:
   #       input: [type.googleapis.com/buf.validate.conformance.cases.EditionsRepeatedItemIgnoreAlways]:{val:-42}
   #        want: valid
   #         got: validation error (1 violation)
-  #          1. constraint_id: "int32.gt"
+  #          1. rule_id: "int32.gt"
   #             message: "value must be greater than 0"
   #             field: "val[0]" elements:{field_number:1  field_name:"val"  field_type:TYPE_INT32  index:0}
   #             rule: "repeated.items.int32.gt" elements:{field_number:18  field_name:"repeated"  field_type:TYPE_MESSAGE}  elements:{field_number:4  field_name:"items"  field_type:TYPE_MESSAGE}  elements:{field_number:3  field_name:"int32"  field_type:TYPE_MESSAGE}  elements:{field_number:4  field_name:"gt"  field_type:TYPE_INT32}
@@ -290,7 +290,7 @@ standard_constraints/ignore:
   #       input: [type.googleapis.com/buf.validate.conformance.cases.EditionsRepeatedItemIgnoreAlways]:{val:0}
   #        want: valid
   #         got: validation error (1 violation)
-  #          1. constraint_id: "int32.gt"
+  #          1. rule_id: "int32.gt"
   #             message: "value must be greater than 0"
   #             field: "val[0]" elements:{field_number:1  field_name:"val"  field_type:TYPE_INT32  index:0}
   #             rule: "repeated.items.int32.gt" elements:{field_number:18  field_name:"repeated"  field_type:TYPE_MESSAGE}  elements:{field_number:4  field_name:"items"  field_type:TYPE_MESSAGE}  elements:{field_number:3  field_name:"int32"  field_type:TYPE_MESSAGE}  elements:{field_number:4  field_name:"gt"  field_type:TYPE_INT32}
@@ -298,7 +298,7 @@ standard_constraints/ignore:
   #       input: [type.googleapis.com/buf.validate.conformance.cases.EditionsRepeatedExpandedIgnoreAlways]:{val:1}
   #        want: valid
   #         got: validation error (1 violation)
-  #          1. constraint_id: "repeated.min_items"
+  #          1. rule_id: "repeated.min_items"
   #             message: "value must contain at least 3 item(s)"
   #             field: "val" elements:{field_number:1  field_name:"val"  field_type:TYPE_INT32}
   #             rule: "repeated.min_items" elements:{field_number:18  field_name:"repeated"  field_type:TYPE_MESSAGE}  elements:{field_number:1  field_name:"min_items"  field_type:TYPE_UINT64}
@@ -306,7 +306,7 @@ standard_constraints/ignore:
   #       input: [type.googleapis.com/buf.validate.conformance.cases.EditionsRepeatedExpandedIgnoreAlways]:{}
   #        want: valid
   #         got: validation error (1 violation)
-  #          1. constraint_id: "repeated.min_items"
+  #          1. rule_id: "repeated.min_items"
   #             message: "value must contain at least 3 item(s)"
   #             field: "val" elements:{field_number:1  field_name:"val"  field_type:TYPE_INT32}
   #             rule: "repeated.min_items" elements:{field_number:18  field_name:"repeated"  field_type:TYPE_MESSAGE}  elements:{field_number:1  field_name:"min_items"  field_type:TYPE_UINT64}
@@ -314,7 +314,7 @@ standard_constraints/ignore:
   #       input: [type.googleapis.com/buf.validate.conformance.cases.EditionsRepeatedExpandedItemIgnoreAlways]:{val:-42}
   #        want: valid
   #         got: validation error (1 violation)
-  #          1. constraint_id: "int32.gt"
+  #          1. rule_id: "int32.gt"
   #             message: "value must be greater than 0"
   #             field: "val[0]" elements:{field_number:1  field_name:"val"  field_type:TYPE_INT32  index:0}
   #             rule: "repeated.items.int32.gt" elements:{field_number:18  field_name:"repeated"  field_type:TYPE_MESSAGE}  elements:{field_number:4  field_name:"items"  field_type:TYPE_MESSAGE}  elements:{field_number:3  field_name:"int32"  field_type:TYPE_MESSAGE}  elements:{field_number:4  field_name:"gt"  field_type:TYPE_INT32}
@@ -322,7 +322,7 @@ standard_constraints/ignore:
   #       input: [type.googleapis.com/buf.validate.conformance.cases.EditionsRepeatedExpandedItemIgnoreAlways]:{val:0}
   #        want: valid
   #         got: validation error (1 violation)
-  #          1. constraint_id: "int32.gt"
+  #          1. rule_id: "int32.gt"
   #             message: "value must be greater than 0"
   #             field: "val[0]" elements:{field_number:1  field_name:"val"  field_type:TYPE_INT32  index:0}
   #             rule: "repeated.items.int32.gt" elements:{field_number:18  field_name:"repeated"  field_type:TYPE_MESSAGE}  elements:{field_number:4  field_name:"items"  field_type:TYPE_MESSAGE}  elements:{field_number:3  field_name:"int32"  field_type:TYPE_MESSAGE}  elements:{field_number:4  field_name:"gt"  field_type:TYPE_INT32}
@@ -330,7 +330,7 @@ standard_constraints/ignore:
   #       input: [type.googleapis.com/buf.validate.conformance.cases.EditionsScalarExplicitPresenceIgnoreAlways]:{val:0}
   #        want: valid
   #         got: validation error (1 violation)
-  #          1. constraint_id: "int32.gt"
+  #          1. rule_id: "int32.gt"
   #             message: "value must be greater than 0"
   #             field: "val" elements:{field_number:1  field_name:"val"  field_type:TYPE_INT32}
   #             rule: "int32.gt" elements:{field_number:3  field_name:"int32"  field_type:TYPE_MESSAGE}  elements:{field_number:4  field_name:"gt"  field_type:TYPE_INT32}
@@ -338,7 +338,7 @@ standard_constraints/ignore:
   #       input: [type.googleapis.com/buf.validate.conformance.cases.EditionsScalarExplicitPresenceIgnoreAlways]:{val:-123}
   #        want: valid
   #         got: validation error (1 violation)
-  #          1. constraint_id: "int32.gt"
+  #          1. rule_id: "int32.gt"
   #             message: "value must be greater than 0"
   #             field: "val" elements:{field_number:1  field_name:"val"  field_type:TYPE_INT32}
   #             rule: "int32.gt" elements:{field_number:3  field_name:"int32"  field_type:TYPE_MESSAGE}  elements:{field_number:4  field_name:"gt"  field_type:TYPE_INT32}
@@ -346,7 +346,7 @@ standard_constraints/ignore:
   #       input: [type.googleapis.com/buf.validate.conformance.cases.EditionsScalarExplicitPresenceIgnoreAlwaysWithDefault]:{val:-42}
   #        want: valid
   #         got: validation error (1 violation)
-  #          1. constraint_id: "int32.gt"
+  #          1. rule_id: "int32.gt"
   #             message: "value must be greater than 0"
   #             field: "val" elements:{field_number:1  field_name:"val"  field_type:TYPE_INT32}
   #             rule: "int32.gt" elements:{field_number:3  field_name:"int32"  field_type:TYPE_MESSAGE}  elements:{field_number:4  field_name:"gt"  field_type:TYPE_INT32}
@@ -354,7 +354,7 @@ standard_constraints/ignore:
   #       input: [type.googleapis.com/buf.validate.conformance.cases.EditionsScalarExplicitPresenceIgnoreAlwaysWithDefault]:{val:-123}
   #        want: valid
   #         got: validation error (1 violation)
-  #          1. constraint_id: "int32.gt"
+  #          1. rule_id: "int32.gt"
   #             message: "value must be greater than 0"
   #             field: "val" elements:{field_number:1  field_name:"val"  field_type:TYPE_INT32}
   #             rule: "int32.gt" elements:{field_number:3  field_name:"int32"  field_type:TYPE_MESSAGE}  elements:{field_number:4  field_name:"gt"  field_type:TYPE_INT32}
@@ -362,7 +362,7 @@ standard_constraints/ignore:
   #       input: [type.googleapis.com/buf.validate.conformance.cases.EditionsScalarExplicitPresenceIgnoreAlwaysWithDefault]:{val:0}
   #        want: valid
   #         got: validation error (1 violation)
-  #          1. constraint_id: "int32.gt"
+  #          1. rule_id: "int32.gt"
   #             message: "value must be greater than 0"
   #             field: "val" elements:{field_number:1  field_name:"val"  field_type:TYPE_INT32}
   #             rule: "int32.gt" elements:{field_number:3  field_name:"int32"  field_type:TYPE_MESSAGE}  elements:{field_number:4  field_name:"gt"  field_type:TYPE_INT32}
@@ -370,7 +370,7 @@ standard_constraints/ignore:
   #       input: [type.googleapis.com/buf.validate.conformance.cases.EditionsScalarImplicitPresenceIgnoreAlways]:{}
   #        want: valid
   #         got: validation error (1 violation)
-  #          1. constraint_id: "int32.gt"
+  #          1. rule_id: "int32.gt"
   #             message: "value must be greater than 0"
   #             field: "val" elements:{field_number:1  field_name:"val"  field_type:TYPE_INT32}
   #             rule: "int32.gt" elements:{field_number:3  field_name:"int32"  field_type:TYPE_MESSAGE}  elements:{field_number:4  field_name:"gt"  field_type:TYPE_INT32}
@@ -378,7 +378,7 @@ standard_constraints/ignore:
   #       input: [type.googleapis.com/buf.validate.conformance.cases.EditionsScalarImplicitPresenceIgnoreAlways]:{val:-123}
   #        want: valid
   #         got: validation error (1 violation)
-  #          1. constraint_id: "int32.gt"
+  #          1. rule_id: "int32.gt"
   #             message: "value must be greater than 0"
   #             field: "val" elements:{field_number:1  field_name:"val"  field_type:TYPE_INT32}
   #             rule: "int32.gt" elements:{field_number:3  field_name:"int32"  field_type:TYPE_MESSAGE}  elements:{field_number:4  field_name:"gt"  field_type:TYPE_INT32}
@@ -386,7 +386,7 @@ standard_constraints/ignore:
   #       input: [type.googleapis.com/buf.validate.conformance.cases.EditionsScalarLegacyRequiredIgnoreAlways]:{val:0}
   #        want: valid
   #         got: validation error (1 violation)
-  #          1. constraint_id: "int32.gt"
+  #          1. rule_id: "int32.gt"
   #             message: "value must be greater than 0"
   #             field: "val" elements:{field_number:1  field_name:"val"  field_type:TYPE_INT32}
   #             rule: "int32.gt" elements:{field_number:3  field_name:"int32"  field_type:TYPE_MESSAGE}  elements:{field_number:4  field_name:"gt"  field_type:TYPE_INT32}
@@ -394,7 +394,7 @@ standard_constraints/ignore:
   #       input: [type.googleapis.com/buf.validate.conformance.cases.EditionsScalarLegacyRequiredIgnoreAlways]:{val:-123}
   #        want: valid
   #         got: validation error (1 violation)
-  #          1. constraint_id: "int32.gt"
+  #          1. rule_id: "int32.gt"
   #             message: "value must be greater than 0"
   #             field: "val" elements:{field_number:1  field_name:"val"  field_type:TYPE_INT32}
   #             rule: "int32.gt" elements:{field_number:3  field_name:"int32"  field_type:TYPE_MESSAGE}  elements:{field_number:4  field_name:"gt"  field_type:TYPE_INT32}
@@ -402,7 +402,7 @@ standard_constraints/ignore:
   #       input: [type.googleapis.com/buf.validate.conformance.cases.EditionsScalarLegacyRequiredIgnoreAlwaysWithDefault]:{val:-42}
   #        want: valid
   #         got: validation error (1 violation)
-  #          1. constraint_id: "int32.gt"
+  #          1. rule_id: "int32.gt"
   #             message: "value must be greater than 0"
   #             field: "val" elements:{field_number:1  field_name:"val"  field_type:TYPE_INT32}
   #             rule: "int32.gt" elements:{field_number:3  field_name:"int32"  field_type:TYPE_MESSAGE}  elements:{field_number:4  field_name:"gt"  field_type:TYPE_INT32}
@@ -410,7 +410,7 @@ standard_constraints/ignore:
   #       input: [type.googleapis.com/buf.validate.conformance.cases.EditionsScalarLegacyRequiredIgnoreAlwaysWithDefault]:{val:-123}
   #        want: valid
   #         got: validation error (1 violation)
-  #          1. constraint_id: "int32.gt"
+  #          1. rule_id: "int32.gt"
   #             message: "value must be greater than 0"
   #             field: "val" elements:{field_number:1  field_name:"val"  field_type:TYPE_INT32}
   #             rule: "int32.gt" elements:{field_number:3  field_name:"int32"  field_type:TYPE_MESSAGE}  elements:{field_number:4  field_name:"gt"  field_type:TYPE_INT32}
@@ -418,7 +418,7 @@ standard_constraints/ignore:
   #       input: [type.googleapis.com/buf.validate.conformance.cases.EditionsScalarLegacyRequiredIgnoreAlwaysWithDefault]:{val:0}
   #        want: valid
   #         got: validation error (1 violation)
-  #          1. constraint_id: "int32.gt"
+  #          1. rule_id: "int32.gt"
   #             message: "value must be greater than 0"
   #             field: "val" elements:{field_number:1  field_name:"val"  field_type:TYPE_INT32}
   #             rule: "int32.gt" elements:{field_number:3  field_name:"int32"  field_type:TYPE_MESSAGE}  elements:{field_number:4  field_name:"gt"  field_type:TYPE_INT32}
@@ -426,7 +426,7 @@ standard_constraints/ignore:
   #       input: [type.googleapis.com/buf.validate.conformance.cases.Proto2MapIgnoreAlways]:{val:{key:1  value:1}}
   #        want: valid
   #         got: validation error (1 violation)
-  #          1. constraint_id: "map.min_pairs"
+  #          1. rule_id: "map.min_pairs"
   #             message: "map must be at least 3 entries"
   #             field: "val" elements:{field_number:1  field_name:"val"  field_type:TYPE_MESSAGE}
   #             rule: "map.min_pairs" elements:{field_number:19  field_name:"map"  field_type:TYPE_MESSAGE}  elements:{field_number:1  field_name:"min_pairs"  field_type:TYPE_UINT64}
@@ -434,7 +434,7 @@ standard_constraints/ignore:
   #       input: [type.googleapis.com/buf.validate.conformance.cases.Proto2MapIgnoreAlways]:{}
   #        want: valid
   #         got: validation error (1 violation)
-  #          1. constraint_id: "map.min_pairs"
+  #          1. rule_id: "map.min_pairs"
   #             message: "map must be at least 3 entries"
   #             field: "val" elements:{field_number:1  field_name:"val"  field_type:TYPE_MESSAGE}
   #             rule: "map.min_pairs" elements:{field_number:19  field_name:"map"  field_type:TYPE_MESSAGE}  elements:{field_number:1  field_name:"min_pairs"  field_type:TYPE_UINT64}
@@ -442,7 +442,7 @@ standard_constraints/ignore:
   #       input: [type.googleapis.com/buf.validate.conformance.cases.Proto2MapKeyIgnoreAlways]:{val:{key:-42  value:-42}}
   #        want: valid
   #         got: validation error (1 violation)
-  #          1. constraint_id: "int32.gt"
+  #          1. rule_id: "int32.gt"
   #             message: "value must be greater than 0"
   #             field: "val[-42]" elements:{field_number:1  field_name:"val"  field_type:TYPE_MESSAGE  key_type:TYPE_INT32  value_type:TYPE_INT32  int_key:-42}
   #             for_key: true
@@ -451,7 +451,7 @@ standard_constraints/ignore:
   #       input: [type.googleapis.com/buf.validate.conformance.cases.Proto2MapKeyIgnoreAlways]:{val:{key:0  value:0}}
   #        want: valid
   #         got: validation error (1 violation)
-  #          1. constraint_id: "int32.gt"
+  #          1. rule_id: "int32.gt"
   #             message: "value must be greater than 0"
   #             field: "val[0]" elements:{field_number:1  field_name:"val"  field_type:TYPE_MESSAGE  key_type:TYPE_INT32  value_type:TYPE_INT32  int_key:0}
   #             for_key: true
@@ -460,7 +460,7 @@ standard_constraints/ignore:
   #       input: [type.googleapis.com/buf.validate.conformance.cases.Proto2MapValueIgnoreAlways]:{val:{key:-42  value:-42}}
   #        want: valid
   #         got: validation error (1 violation)
-  #          1. constraint_id: "int32.gt"
+  #          1. rule_id: "int32.gt"
   #             message: "value must be greater than 0"
   #             field: "val[-42]" elements:{field_number:1  field_name:"val"  field_type:TYPE_MESSAGE  key_type:TYPE_INT32  value_type:TYPE_INT32  int_key:-42}
   #             rule: "map.values.int32.gt" elements:{field_number:19  field_name:"map"  field_type:TYPE_MESSAGE}  elements:{field_number:5  field_name:"values"  field_type:TYPE_MESSAGE}  elements:{field_number:3  field_name:"int32"  field_type:TYPE_MESSAGE}  elements:{field_number:4  field_name:"gt"  field_type:TYPE_INT32}
@@ -468,7 +468,7 @@ standard_constraints/ignore:
   #       input: [type.googleapis.com/buf.validate.conformance.cases.Proto2MapValueIgnoreAlways]:{val:{key:0  value:0}}
   #        want: valid
   #         got: validation error (1 violation)
-  #          1. constraint_id: "int32.gt"
+  #          1. rule_id: "int32.gt"
   #             message: "value must be greater than 0"
   #             field: "val[0]" elements:{field_number:1  field_name:"val"  field_type:TYPE_MESSAGE  key_type:TYPE_INT32  value_type:TYPE_INT32  int_key:0}
   #             rule: "map.values.int32.gt" elements:{field_number:19  field_name:"map"  field_type:TYPE_MESSAGE}  elements:{field_number:5  field_name:"values"  field_type:TYPE_MESSAGE}  elements:{field_number:3  field_name:"int32"  field_type:TYPE_MESSAGE}  elements:{field_number:4  field_name:"gt"  field_type:TYPE_INT32}
@@ -476,7 +476,7 @@ standard_constraints/ignore:
   #       input: [type.googleapis.com/buf.validate.conformance.cases.Proto2MessageOptionalIgnoreAlways]:{val:{}}
   #        want: valid
   #         got: validation error (1 violation)
-  #          1. constraint_id: "proto2.message.ignore.always"
+  #          1. rule_id: "proto2.message.ignore.always"
   #             message: "foobar"
   #             field: "val" elements:{field_number:1  field_name:"val"  field_type:TYPE_MESSAGE}
   #             rule: "cel[0]" elements:{field_number:23  field_name:"cel"  field_type:TYPE_MESSAGE  index:0}
@@ -484,7 +484,7 @@ standard_constraints/ignore:
   #       input: [type.googleapis.com/buf.validate.conformance.cases.Proto2MessageOptionalIgnoreAlways]:{val:{val:"bar"}}
   #        want: valid
   #         got: validation error (1 violation)
-  #          1. constraint_id: "proto2.message.ignore.always"
+  #          1. rule_id: "proto2.message.ignore.always"
   #             message: "foobar"
   #             field: "val" elements:{field_number:1  field_name:"val"  field_type:TYPE_MESSAGE}
   #             rule: "cel[0]" elements:{field_number:23  field_name:"cel"  field_type:TYPE_MESSAGE  index:0}
@@ -492,7 +492,7 @@ standard_constraints/ignore:
   #       input: [type.googleapis.com/buf.validate.conformance.cases.Proto2MessageRequiredIgnoreAlways]:{val:{}}
   #        want: valid
   #         got: validation error (1 violation)
-  #          1. constraint_id: "proto2.message.ignore.always"
+  #          1. rule_id: "proto2.message.ignore.always"
   #             message: "foobar"
   #             field: "val" elements:{field_number:1  field_name:"val"  field_type:TYPE_MESSAGE}
   #             rule: "cel[0]" elements:{field_number:23  field_name:"cel"  field_type:TYPE_MESSAGE  index:0}
@@ -500,7 +500,7 @@ standard_constraints/ignore:
   #       input: [type.googleapis.com/buf.validate.conformance.cases.Proto2MessageRequiredIgnoreAlways]:{val:{val:"bar"}}
   #        want: valid
   #         got: validation error (1 violation)
-  #          1. constraint_id: "proto2.message.ignore.always"
+  #          1. rule_id: "proto2.message.ignore.always"
   #             message: "foobar"
   #             field: "val" elements:{field_number:1  field_name:"val"  field_type:TYPE_MESSAGE}
   #             rule: "cel[0]" elements:{field_number:23  field_name:"cel"  field_type:TYPE_MESSAGE  index:0}
@@ -508,7 +508,7 @@ standard_constraints/ignore:
   #       input: [type.googleapis.com/buf.validate.conformance.cases.Proto2OneofIgnoreAlways]:{val:0}
   #        want: valid
   #         got: validation error (1 violation)
-  #          1. constraint_id: "int32.gt"
+  #          1. rule_id: "int32.gt"
   #             message: "value must be greater than 0"
   #             field: "val" elements:{field_number:1  field_name:"val"  field_type:TYPE_INT32}
   #             rule: "int32.gt" elements:{field_number:3  field_name:"int32"  field_type:TYPE_MESSAGE}  elements:{field_number:4  field_name:"gt"  field_type:TYPE_INT32}
@@ -516,7 +516,7 @@ standard_constraints/ignore:
   #       input: [type.googleapis.com/buf.validate.conformance.cases.Proto2OneofIgnoreAlways]:{val:-123}
   #        want: valid
   #         got: validation error (1 violation)
-  #          1. constraint_id: "int32.gt"
+  #          1. rule_id: "int32.gt"
   #             message: "value must be greater than 0"
   #             field: "val" elements:{field_number:1  field_name:"val"  field_type:TYPE_INT32}
   #             rule: "int32.gt" elements:{field_number:3  field_name:"int32"  field_type:TYPE_MESSAGE}  elements:{field_number:4  field_name:"gt"  field_type:TYPE_INT32}
@@ -524,7 +524,7 @@ standard_constraints/ignore:
   #       input: [type.googleapis.com/buf.validate.conformance.cases.Proto2OneofIgnoreAlwaysWithDefault]:{val:-42}
   #        want: valid
   #         got: validation error (1 violation)
-  #          1. constraint_id: "int32.gt"
+  #          1. rule_id: "int32.gt"
   #             message: "value must be greater than 0"
   #             field: "val" elements:{field_number:1  field_name:"val"  field_type:TYPE_INT32}
   #             rule: "int32.gt" elements:{field_number:3  field_name:"int32"  field_type:TYPE_MESSAGE}  elements:{field_number:4  field_name:"gt"  field_type:TYPE_INT32}
@@ -532,7 +532,7 @@ standard_constraints/ignore:
   #       input: [type.googleapis.com/buf.validate.conformance.cases.Proto2OneofIgnoreAlwaysWithDefault]:{val:-123}
   #        want: valid
   #         got: validation error (1 violation)
-  #          1. constraint_id: "int32.gt"
+  #          1. rule_id: "int32.gt"
   #             message: "value must be greater than 0"
   #             field: "val" elements:{field_number:1  field_name:"val"  field_type:TYPE_INT32}
   #             rule: "int32.gt" elements:{field_number:3  field_name:"int32"  field_type:TYPE_MESSAGE}  elements:{field_number:4  field_name:"gt"  field_type:TYPE_INT32}
@@ -540,7 +540,7 @@ standard_constraints/ignore:
   #       input: [type.googleapis.com/buf.validate.conformance.cases.Proto2OneofIgnoreAlwaysWithDefault]:{val:0}
   #        want: valid
   #         got: validation error (1 violation)
-  #          1. constraint_id: "int32.gt"
+  #          1. rule_id: "int32.gt"
   #             message: "value must be greater than 0"
   #             field: "val" elements:{field_number:1  field_name:"val"  field_type:TYPE_INT32}
   #             rule: "int32.gt" elements:{field_number:3  field_name:"int32"  field_type:TYPE_MESSAGE}  elements:{field_number:4  field_name:"gt"  field_type:TYPE_INT32}
@@ -548,7 +548,7 @@ standard_constraints/ignore:
   #       input: [type.googleapis.com/buf.validate.conformance.cases.Proto2RepeatedIgnoreAlways]:{val:1}
   #        want: valid
   #         got: validation error (1 violation)
-  #          1. constraint_id: "repeated.min_items"
+  #          1. rule_id: "repeated.min_items"
   #             message: "value must contain at least 3 item(s)"
   #             field: "val" elements:{field_number:1  field_name:"val"  field_type:TYPE_INT32}
   #             rule: "repeated.min_items" elements:{field_number:18  field_name:"repeated"  field_type:TYPE_MESSAGE}  elements:{field_number:1  field_name:"min_items"  field_type:TYPE_UINT64}
@@ -556,7 +556,7 @@ standard_constraints/ignore:
   #       input: [type.googleapis.com/buf.validate.conformance.cases.Proto2RepeatedIgnoreAlways]:{}
   #        want: valid
   #         got: validation error (1 violation)
-  #          1. constraint_id: "repeated.min_items"
+  #          1. rule_id: "repeated.min_items"
   #             message: "value must contain at least 3 item(s)"
   #             field: "val" elements:{field_number:1  field_name:"val"  field_type:TYPE_INT32}
   #             rule: "repeated.min_items" elements:{field_number:18  field_name:"repeated"  field_type:TYPE_MESSAGE}  elements:{field_number:1  field_name:"min_items"  field_type:TYPE_UINT64}
@@ -564,7 +564,7 @@ standard_constraints/ignore:
   #       input: [type.googleapis.com/buf.validate.conformance.cases.Proto2RepeatedItemIgnoreAlways]:{val:-42}
   #        want: valid
   #         got: validation error (1 violation)
-  #          1. constraint_id: "int32.gt"
+  #          1. rule_id: "int32.gt"
   #             message: "value must be greater than 0"
   #             field: "val[0]" elements:{field_number:1  field_name:"val"  field_type:TYPE_INT32  index:0}
   #             rule: "repeated.items.int32.gt" elements:{field_number:18  field_name:"repeated"  field_type:TYPE_MESSAGE}  elements:{field_number:4  field_name:"items"  field_type:TYPE_MESSAGE}  elements:{field_number:3  field_name:"int32"  field_type:TYPE_MESSAGE}  elements:{field_number:4  field_name:"gt"  field_type:TYPE_INT32}
@@ -572,7 +572,7 @@ standard_constraints/ignore:
   #       input: [type.googleapis.com/buf.validate.conformance.cases.Proto2RepeatedItemIgnoreAlways]:{val:0}
   #        want: valid
   #         got: validation error (1 violation)
-  #          1. constraint_id: "int32.gt"
+  #          1. rule_id: "int32.gt"
   #             message: "value must be greater than 0"
   #             field: "val[0]" elements:{field_number:1  field_name:"val"  field_type:TYPE_INT32  index:0}
   #             rule: "repeated.items.int32.gt" elements:{field_number:18  field_name:"repeated"  field_type:TYPE_MESSAGE}  elements:{field_number:4  field_name:"items"  field_type:TYPE_MESSAGE}  elements:{field_number:3  field_name:"int32"  field_type:TYPE_MESSAGE}  elements:{field_number:4  field_name:"gt"  field_type:TYPE_INT32}
@@ -580,7 +580,7 @@ standard_constraints/ignore:
   #       input: [type.googleapis.com/buf.validate.conformance.cases.Proto2ScalarOptionalIgnoreAlways]:{val:0}
   #        want: valid
   #         got: validation error (1 violation)
-  #          1. constraint_id: "int32.gt"
+  #          1. rule_id: "int32.gt"
   #             message: "value must be greater than 0"
   #             field: "val" elements:{field_number:1  field_name:"val"  field_type:TYPE_INT32}
   #             rule: "int32.gt" elements:{field_number:3  field_name:"int32"  field_type:TYPE_MESSAGE}  elements:{field_number:4  field_name:"gt"  field_type:TYPE_INT32}
@@ -588,7 +588,7 @@ standard_constraints/ignore:
   #       input: [type.googleapis.com/buf.validate.conformance.cases.Proto2ScalarOptionalIgnoreAlways]:{val:-123}
   #        want: valid
   #         got: validation error (1 violation)
-  #          1. constraint_id: "int32.gt"
+  #          1. rule_id: "int32.gt"
   #             message: "value must be greater than 0"
   #             field: "val" elements:{field_number:1  field_name:"val"  field_type:TYPE_INT32}
   #             rule: "int32.gt" elements:{field_number:3  field_name:"int32"  field_type:TYPE_MESSAGE}  elements:{field_number:4  field_name:"gt"  field_type:TYPE_INT32}
@@ -596,7 +596,7 @@ standard_constraints/ignore:
   #       input: [type.googleapis.com/buf.validate.conformance.cases.Proto2ScalarOptionalIgnoreAlwaysWithDefault]:{val:-42}
   #        want: valid
   #         got: validation error (1 violation)
-  #          1. constraint_id: "int32.gt"
+  #          1. rule_id: "int32.gt"
   #             message: "value must be greater than 0"
   #             field: "val" elements:{field_number:1  field_name:"val"  field_type:TYPE_INT32}
   #             rule: "int32.gt" elements:{field_number:3  field_name:"int32"  field_type:TYPE_MESSAGE}  elements:{field_number:4  field_name:"gt"  field_type:TYPE_INT32}
@@ -604,7 +604,7 @@ standard_constraints/ignore:
   #       input: [type.googleapis.com/buf.validate.conformance.cases.Proto2ScalarOptionalIgnoreAlwaysWithDefault]:{val:0}
   #        want: valid
   #         got: validation error (1 violation)
-  #          1. constraint_id: "int32.gt"
+  #          1. rule_id: "int32.gt"
   #             message: "value must be greater than 0"
   #             field: "val" elements:{field_number:1  field_name:"val"  field_type:TYPE_INT32}
   #             rule: "int32.gt" elements:{field_number:3  field_name:"int32"  field_type:TYPE_MESSAGE}  elements:{field_number:4  field_name:"gt"  field_type:TYPE_INT32}
@@ -612,7 +612,7 @@ standard_constraints/ignore:
   #       input: [type.googleapis.com/buf.validate.conformance.cases.Proto2ScalarOptionalIgnoreAlwaysWithDefault]:{val:-123}
   #        want: valid
   #         got: validation error (1 violation)
-  #          1. constraint_id: "int32.gt"
+  #          1. rule_id: "int32.gt"
   #             message: "value must be greater than 0"
   #             field: "val" elements:{field_number:1  field_name:"val"  field_type:TYPE_INT32}
   #             rule: "int32.gt" elements:{field_number:3  field_name:"int32"  field_type:TYPE_MESSAGE}  elements:{field_number:4  field_name:"gt"  field_type:TYPE_INT32}
@@ -620,7 +620,7 @@ standard_constraints/ignore:
   #       input: [type.googleapis.com/buf.validate.conformance.cases.Proto2ScalarRequiredIgnoreAlways]:{val:0}
   #        want: valid
   #         got: validation error (1 violation)
-  #          1. constraint_id: "int32.gt"
+  #          1. rule_id: "int32.gt"
   #             message: "value must be greater than 0"
   #             field: "val" elements:{field_number:1  field_name:"val"  field_type:TYPE_INT32}
   #             rule: "int32.gt" elements:{field_number:3  field_name:"int32"  field_type:TYPE_MESSAGE}  elements:{field_number:4  field_name:"gt"  field_type:TYPE_INT32}
@@ -628,7 +628,7 @@ standard_constraints/ignore:
   #       input: [type.googleapis.com/buf.validate.conformance.cases.Proto2ScalarRequiredIgnoreAlways]:{val:-123}
   #        want: valid
   #         got: validation error (1 violation)
-  #          1. constraint_id: "int32.gt"
+  #          1. rule_id: "int32.gt"
   #             message: "value must be greater than 0"
   #             field: "val" elements:{field_number:1  field_name:"val"  field_type:TYPE_INT32}
   #             rule: "int32.gt" elements:{field_number:3  field_name:"int32"  field_type:TYPE_MESSAGE}  elements:{field_number:4  field_name:"gt"  field_type:TYPE_INT32}
@@ -636,7 +636,7 @@ standard_constraints/ignore:
   #       input: [type.googleapis.com/buf.validate.conformance.cases.Proto2ScalarRequiredIgnoreAlwaysWithDefault]:{val:-42}
   #        want: valid
   #         got: validation error (1 violation)
-  #          1. constraint_id: "int32.gt"
+  #          1. rule_id: "int32.gt"
   #             message: "value must be greater than 0"
   #             field: "val" elements:{field_number:1  field_name:"val"  field_type:TYPE_INT32}
   #             rule: "int32.gt" elements:{field_number:3  field_name:"int32"  field_type:TYPE_MESSAGE}  elements:{field_number:4  field_name:"gt"  field_type:TYPE_INT32}
@@ -644,7 +644,7 @@ standard_constraints/ignore:
   #       input: [type.googleapis.com/buf.validate.conformance.cases.Proto2ScalarRequiredIgnoreAlwaysWithDefault]:{val:-123}
   #        want: valid
   #         got: validation error (1 violation)
-  #          1. constraint_id: "int32.gt"
+  #          1. rule_id: "int32.gt"
   #             message: "value must be greater than 0"
   #             field: "val" elements:{field_number:1  field_name:"val"  field_type:TYPE_INT32}
   #             rule: "int32.gt" elements:{field_number:3  field_name:"int32"  field_type:TYPE_MESSAGE}  elements:{field_number:4  field_name:"gt"  field_type:TYPE_INT32}
@@ -652,7 +652,7 @@ standard_constraints/ignore:
   #       input: [type.googleapis.com/buf.validate.conformance.cases.Proto2ScalarRequiredIgnoreAlwaysWithDefault]:{val:0}
   #        want: valid
   #         got: validation error (1 violation)
-  #          1. constraint_id: "int32.gt"
+  #          1. rule_id: "int32.gt"
   #             message: "value must be greater than 0"
   #             field: "val" elements:{field_number:1  field_name:"val"  field_type:TYPE_INT32}
   #             rule: "int32.gt" elements:{field_number:3  field_name:"int32"  field_type:TYPE_MESSAGE}  elements:{field_number:4  field_name:"gt"  field_type:TYPE_INT32}
@@ -660,7 +660,7 @@ standard_constraints/ignore:
   #       input: [type.googleapis.com/buf.validate.conformance.cases.Proto3MapIgnoreAlways]:{val:{key:1  value:1}}
   #        want: valid
   #         got: validation error (1 violation)
-  #          1. constraint_id: "map.min_pairs"
+  #          1. rule_id: "map.min_pairs"
   #             message: "map must be at least 3 entries"
   #             field: "val" elements:{field_number:1  field_name:"val"  field_type:TYPE_MESSAGE}
   #             rule: "map.min_pairs" elements:{field_number:19  field_name:"map"  field_type:TYPE_MESSAGE}  elements:{field_number:1  field_name:"min_pairs"  field_type:TYPE_UINT64}
@@ -668,7 +668,7 @@ standard_constraints/ignore:
   #       input: [type.googleapis.com/buf.validate.conformance.cases.Proto3MapIgnoreAlways]:{}
   #        want: valid
   #         got: validation error (1 violation)
-  #          1. constraint_id: "map.min_pairs"
+  #          1. rule_id: "map.min_pairs"
   #             message: "map must be at least 3 entries"
   #             field: "val" elements:{field_number:1  field_name:"val"  field_type:TYPE_MESSAGE}
   #             rule: "map.min_pairs" elements:{field_number:19  field_name:"map"  field_type:TYPE_MESSAGE}  elements:{field_number:1  field_name:"min_pairs"  field_type:TYPE_UINT64}
@@ -676,7 +676,7 @@ standard_constraints/ignore:
   #       input: [type.googleapis.com/buf.validate.conformance.cases.Proto3MapKeyIgnoreAlways]:{val:{key:-42  value:-42}}
   #        want: valid
   #         got: validation error (1 violation)
-  #          1. constraint_id: "int32.gt"
+  #          1. rule_id: "int32.gt"
   #             message: "value must be greater than 0"
   #             field: "val[-42]" elements:{field_number:1  field_name:"val"  field_type:TYPE_MESSAGE  key_type:TYPE_INT32  value_type:TYPE_INT32  int_key:-42}
   #             for_key: true
@@ -685,7 +685,7 @@ standard_constraints/ignore:
   #       input: [type.googleapis.com/buf.validate.conformance.cases.Proto3MapKeyIgnoreAlways]:{val:{key:0  value:0}}
   #        want: valid
   #         got: validation error (1 violation)
-  #          1. constraint_id: "int32.gt"
+  #          1. rule_id: "int32.gt"
   #             message: "value must be greater than 0"
   #             field: "val[0]" elements:{field_number:1  field_name:"val"  field_type:TYPE_MESSAGE  key_type:TYPE_INT32  value_type:TYPE_INT32  int_key:0}
   #             for_key: true
@@ -694,7 +694,7 @@ standard_constraints/ignore:
   #       input: [type.googleapis.com/buf.validate.conformance.cases.Proto3MapValueIgnoreAlways]:{val:{key:-42  value:-42}}
   #        want: valid
   #         got: validation error (1 violation)
-  #          1. constraint_id: "int32.gt"
+  #          1. rule_id: "int32.gt"
   #             message: "value must be greater than 0"
   #             field: "val[-42]" elements:{field_number:1  field_name:"val"  field_type:TYPE_MESSAGE  key_type:TYPE_INT32  value_type:TYPE_INT32  int_key:-42}
   #             rule: "map.values.int32.gt" elements:{field_number:19  field_name:"map"  field_type:TYPE_MESSAGE}  elements:{field_number:5  field_name:"values"  field_type:TYPE_MESSAGE}  elements:{field_number:3  field_name:"int32"  field_type:TYPE_MESSAGE}  elements:{field_number:4  field_name:"gt"  field_type:TYPE_INT32}
@@ -702,7 +702,7 @@ standard_constraints/ignore:
   #       input: [type.googleapis.com/buf.validate.conformance.cases.Proto3MapValueIgnoreAlways]:{val:{key:0  value:0}}
   #        want: valid
   #         got: validation error (1 violation)
-  #          1. constraint_id: "int32.gt"
+  #          1. rule_id: "int32.gt"
   #             message: "value must be greater than 0"
   #             field: "val[0]" elements:{field_number:1  field_name:"val"  field_type:TYPE_MESSAGE  key_type:TYPE_INT32  value_type:TYPE_INT32  int_key:0}
   #             rule: "map.values.int32.gt" elements:{field_number:19  field_name:"map"  field_type:TYPE_MESSAGE}  elements:{field_number:5  field_name:"values"  field_type:TYPE_MESSAGE}  elements:{field_number:3  field_name:"int32"  field_type:TYPE_MESSAGE}  elements:{field_number:4  field_name:"gt"  field_type:TYPE_INT32}
@@ -710,7 +710,7 @@ standard_constraints/ignore:
   #       input: [type.googleapis.com/buf.validate.conformance.cases.Proto3MessageOptionalIgnoreAlways]:{val:{}}
   #        want: valid
   #         got: validation error (1 violation)
-  #          1. constraint_id: "proto3.message.ignore.always"
+  #          1. rule_id: "proto3.message.ignore.always"
   #             message: "foobar"
   #             field: "val" elements:{field_number:1  field_name:"val"  field_type:TYPE_MESSAGE}
   #             rule: "cel[0]" elements:{field_number:23  field_name:"cel"  field_type:TYPE_MESSAGE  index:0}
@@ -718,7 +718,7 @@ standard_constraints/ignore:
   #       input: [type.googleapis.com/buf.validate.conformance.cases.Proto3MessageOptionalIgnoreAlways]:{val:{val:"bar"}}
   #        want: valid
   #         got: validation error (1 violation)
-  #          1. constraint_id: "proto3.message.ignore.always"
+  #          1. rule_id: "proto3.message.ignore.always"
   #             message: "foobar"
   #             field: "val" elements:{field_number:1  field_name:"val"  field_type:TYPE_MESSAGE}
   #             rule: "cel[0]" elements:{field_number:23  field_name:"cel"  field_type:TYPE_MESSAGE  index:0}
@@ -726,7 +726,7 @@ standard_constraints/ignore:
   #       input: [type.googleapis.com/buf.validate.conformance.cases.Proto3OneofIgnoreAlways]:{val:0}
   #        want: valid
   #         got: validation error (1 violation)
-  #          1. constraint_id: "int32.gt"
+  #          1. rule_id: "int32.gt"
   #             message: "value must be greater than 0"
   #             field: "val" elements:{field_number:1  field_name:"val"  field_type:TYPE_INT32}
   #             rule: "int32.gt" elements:{field_number:3  field_name:"int32"  field_type:TYPE_MESSAGE}  elements:{field_number:4  field_name:"gt"  field_type:TYPE_INT32}
@@ -734,7 +734,7 @@ standard_constraints/ignore:
   #       input: [type.googleapis.com/buf.validate.conformance.cases.Proto3OneofIgnoreAlways]:{val:-123}
   #        want: valid
   #         got: validation error (1 violation)
-  #          1. constraint_id: "int32.gt"
+  #          1. rule_id: "int32.gt"
   #             message: "value must be greater than 0"
   #             field: "val" elements:{field_number:1  field_name:"val"  field_type:TYPE_INT32}
   #             rule: "int32.gt" elements:{field_number:3  field_name:"int32"  field_type:TYPE_MESSAGE}  elements:{field_number:4  field_name:"gt"  field_type:TYPE_INT32}
@@ -742,7 +742,7 @@ standard_constraints/ignore:
   #       input: [type.googleapis.com/buf.validate.conformance.cases.Proto3RepeatedIgnoreAlways]:{val:1}
   #        want: valid
   #         got: validation error (1 violation)
-  #          1. constraint_id: "repeated.min_items"
+  #          1. rule_id: "repeated.min_items"
   #             message: "value must contain at least 3 item(s)"
   #             field: "val" elements:{field_number:1  field_name:"val"  field_type:TYPE_INT32}
   #             rule: "repeated.min_items" elements:{field_number:18  field_name:"repeated"  field_type:TYPE_MESSAGE}  elements:{field_number:1  field_name:"min_items"  field_type:TYPE_UINT64}
@@ -750,7 +750,7 @@ standard_constraints/ignore:
   #       input: [type.googleapis.com/buf.validate.conformance.cases.Proto3RepeatedIgnoreAlways]:{}
   #        want: valid
   #         got: validation error (1 violation)
-  #          1. constraint_id: "repeated.min_items"
+  #          1. rule_id: "repeated.min_items"
   #             message: "value must contain at least 3 item(s)"
   #             field: "val" elements:{field_number:1  field_name:"val"  field_type:TYPE_INT32}
   #             rule: "repeated.min_items" elements:{field_number:18  field_name:"repeated"  field_type:TYPE_MESSAGE}  elements:{field_number:1  field_name:"min_items"  field_type:TYPE_UINT64}
@@ -758,7 +758,7 @@ standard_constraints/ignore:
   #       input: [type.googleapis.com/buf.validate.conformance.cases.Proto3RepeatedItemIgnoreAlways]:{val:-42}
   #        want: valid
   #         got: validation error (1 violation)
-  #          1. constraint_id: "int32.gt"
+  #          1. rule_id: "int32.gt"
   #             message: "value must be greater than 0"
   #             field: "val[0]" elements:{field_number:1  field_name:"val"  field_type:TYPE_INT32  index:0}
   #             rule: "repeated.items.int32.gt" elements:{field_number:18  field_name:"repeated"  field_type:TYPE_MESSAGE}  elements:{field_number:4  field_name:"items"  field_type:TYPE_MESSAGE}  elements:{field_number:3  field_name:"int32"  field_type:TYPE_MESSAGE}  elements:{field_number:4  field_name:"gt"  field_type:TYPE_INT32}
@@ -766,7 +766,7 @@ standard_constraints/ignore:
   #       input: [type.googleapis.com/buf.validate.conformance.cases.Proto3RepeatedItemIgnoreAlways]:{val:0}
   #        want: valid
   #         got: validation error (1 violation)
-  #          1. constraint_id: "int32.gt"
+  #          1. rule_id: "int32.gt"
   #             message: "value must be greater than 0"
   #             field: "val[0]" elements:{field_number:1  field_name:"val"  field_type:TYPE_INT32  index:0}
   #             rule: "repeated.items.int32.gt" elements:{field_number:18  field_name:"repeated"  field_type:TYPE_MESSAGE}  elements:{field_number:4  field_name:"items"  field_type:TYPE_MESSAGE}  elements:{field_number:3  field_name:"int32"  field_type:TYPE_MESSAGE}  elements:{field_number:4  field_name:"gt"  field_type:TYPE_INT32}
@@ -774,7 +774,7 @@ standard_constraints/ignore:
   #       input: [type.googleapis.com/buf.validate.conformance.cases.Proto3ScalarIgnoreAlways]:{}
   #        want: valid
   #         got: validation error (1 violation)
-  #          1. constraint_id: "int32.gt"
+  #          1. rule_id: "int32.gt"
   #             message: "value must be greater than 0"
   #             field: "val" elements:{field_number:1  field_name:"val"  field_type:TYPE_INT32}
   #             rule: "int32.gt" elements:{field_number:3  field_name:"int32"  field_type:TYPE_MESSAGE}  elements:{field_number:4  field_name:"gt"  field_type:TYPE_INT32}
@@ -782,7 +782,7 @@ standard_constraints/ignore:
   #       input: [type.googleapis.com/buf.validate.conformance.cases.Proto3ScalarIgnoreAlways]:{val:-123}
   #        want: valid
   #         got: validation error (1 violation)
-  #          1. constraint_id: "int32.gt"
+  #          1. rule_id: "int32.gt"
   #             message: "value must be greater than 0"
   #             field: "val" elements:{field_number:1  field_name:"val"  field_type:TYPE_INT32}
   #             rule: "int32.gt" elements:{field_number:3  field_name:"int32"  field_type:TYPE_MESSAGE}  elements:{field_number:4  field_name:"gt"  field_type:TYPE_INT32}
@@ -790,7 +790,7 @@ standard_constraints/ignore:
   #       input: [type.googleapis.com/buf.validate.conformance.cases.Proto3ScalarOptionalIgnoreAlways]:{val:0}
   #        want: valid
   #         got: validation error (1 violation)
-  #          1. constraint_id: "int32.gt"
+  #          1. rule_id: "int32.gt"
   #             message: "value must be greater than 0"
   #             field: "val" elements:{field_number:1  field_name:"val"  field_type:TYPE_INT32}
   #             rule: "int32.gt" elements:{field_number:3  field_name:"int32"  field_type:TYPE_MESSAGE}  elements:{field_number:4  field_name:"gt"  field_type:TYPE_INT32}
@@ -798,11 +798,11 @@ standard_constraints/ignore:
   #       input: [type.googleapis.com/buf.validate.conformance.cases.Proto3ScalarOptionalIgnoreAlways]:{val:-123}
   #        want: valid
   #         got: validation error (1 violation)
-  #          1. constraint_id: "int32.gt"
+  #          1. rule_id: "int32.gt"
   #             message: "value must be greater than 0"
   #             field: "val" elements:{field_number:1  field_name:"val"  field_type:TYPE_INT32}
   #             rule: "int32.gt" elements:{field_number:3  field_name:"int32"  field_type:TYPE_MESSAGE}  elements:{field_number:4  field_name:"gt"  field_type:TYPE_INT32}
-standard_constraints/required:
+standard_rules/required:
   - proto/2023/message/explicit_presence/delimited/unset/ignore_always
   - proto2/scalar/optional/unset/ignore_always
   - proto3/scalar/optional/unset/ignore_always

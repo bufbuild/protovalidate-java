@@ -14,7 +14,7 @@
 
 package build.buf.protovalidate.exceptions;
 
-/** CompilationException is returned when a constraint fails to compile. This is a fatal error. */
+/** CompilationException is returned when a rule fails to compile. This is a fatal error. */
 public class CompilationException extends ValidationException {
   /**
    * Creates a CompilationException with the specified message.

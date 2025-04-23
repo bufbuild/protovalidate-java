@@ -46,17 +46,17 @@ class OneofEvaluator implements Evaluator {
   }
 
   @Override
-  public List<ConstraintViolation.Builder> evaluate(Value val, boolean failFast)
+  public List<RuleViolation.Builder> evaluate(Value val, boolean failFast)
       throws ExecutionException {
     Message message = val.messageValue();
     if (message == null || !required || (message.getOneofFieldDescriptor(descriptor) != null)) {
-      return ConstraintViolation.NO_VIOLATIONS;
+      return RuleViolation.NO_VIOLATIONS;
     }
     return Collections.singletonList(
-        ConstraintViolation.newBuilder()
+        RuleViolation.newBuilder()
             .addFirstFieldPathElement(
                 FieldPathElement.newBuilder().setFieldName(descriptor.getName()).build())
-            .setConstraintId("required")
+            .setRuleId("required")
             .setMessage("exactly one field is required in oneof"));
   }
 }

@@ -26,10 +26,10 @@ import java.util.Objects;
 import org.jspecify.annotations.Nullable;
 
 /**
- * {@link ConstraintViolation} contains all of the collected information about an individual
- * constraint violation.
+ * {@link RuleViolation} contains all of the collected information about an individual rule
+ * violation.
  */
-class ConstraintViolation implements Violation {
+class RuleViolation implements Violation {
   /** Static value to return when there are no violations. */
   public static final List<Builder> NO_VIOLATIONS = new ArrayList<>();
 
@@ -77,7 +77,7 @@ class ConstraintViolation implements Violation {
 
   /** Builds a Violation instance. */
   public static class Builder {
-    private @Nullable String constraintId;
+    private @Nullable String ruleId;
     private @Nullable String message;
     private boolean forKey = false;
     private final Deque<FieldPathElement> fieldPath = new ArrayDeque<>();
@@ -86,13 +86,13 @@ class ConstraintViolation implements Violation {
     private @Nullable FieldValue ruleValue;
 
     /**
-     * Sets the constraint ID field of the resulting violation.
+     * Sets the rule ID field of the resulting violation.
      *
-     * @param constraintId Constraint ID value to use.
+     * @param ruleId Rule ID value to use.
      * @return The builder.
      */
-    public Builder setConstraintId(String constraintId) {
-      this.constraintId = constraintId;
+    public Builder setRuleId(String ruleId) {
+      this.ruleId = ruleId;
       return this;
     }
 
@@ -192,10 +192,10 @@ class ConstraintViolation implements Violation {
      *
      * @return A Violation instance.
      */
-    public ConstraintViolation build() {
+    public RuleViolation build() {
       build.buf.validate.Violation.Builder protoBuilder = build.buf.validate.Violation.newBuilder();
-      if (constraintId != null) {
-        protoBuilder.setConstraintId(constraintId);
+      if (ruleId != null) {
+        protoBuilder.setRuleId(ruleId);
       }
       if (message != null) {
         protoBuilder.setMessage(message);
@@ -209,14 +209,14 @@ class ConstraintViolation implements Violation {
       if (!rulePath.isEmpty()) {
         protoBuilder.setRule(FieldPath.newBuilder().addAllElements(rulePath));
       }
-      return new ConstraintViolation(protoBuilder.build(), fieldValue, ruleValue);
+      return new RuleViolation(protoBuilder.build(), fieldValue, ruleValue);
     }
 
     private Builder() {}
   }
 
   /**
-   * Creates a new empty builder for building a {@link ConstraintViolation}.
+   * Creates a new empty builder for building a {@link RuleViolation}.
    *
    * @return A new, empty {@link Builder}.
    */
@@ -224,7 +224,7 @@ class ConstraintViolation implements Violation {
     return new Builder();
   }
 
-  private ConstraintViolation(
+  private RuleViolation(
       build.buf.validate.Violation proto,
       @Nullable FieldValue fieldValue,
       @Nullable FieldValue ruleValue) {
@@ -234,7 +234,7 @@ class ConstraintViolation implements Violation {
   }
 
   /**
-   * Gets the protobuf data that corresponds to this constraint violation.
+   * Gets the protobuf data that corresponds to this rule violation.
    *
    * @return The protobuf violation data.
    */

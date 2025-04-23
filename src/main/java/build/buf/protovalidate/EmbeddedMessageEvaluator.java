@@ -19,11 +19,11 @@ import java.util.Collections;
 import java.util.List;
 
 class EmbeddedMessageEvaluator implements Evaluator {
-  private final ConstraintViolationHelper helper;
+  private final RuleViolationHelper helper;
   private final MessageEvaluator messageEvaluator;
 
   EmbeddedMessageEvaluator(ValueEvaluator valueEvaluator, MessageEvaluator messageEvaluator) {
-    this.helper = new ConstraintViolationHelper(valueEvaluator);
+    this.helper = new RuleViolationHelper(valueEvaluator);
     this.messageEvaluator = messageEvaluator;
   }
 
@@ -33,7 +33,7 @@ class EmbeddedMessageEvaluator implements Evaluator {
   }
 
   @Override
-  public List<ConstraintViolation.Builder> evaluate(Value val, boolean failFast)
+  public List<RuleViolation.Builder> evaluate(Value val, boolean failFast)
       throws ExecutionException {
     return FieldPathUtils.updatePaths(
         messageEvaluator.evaluate(val, failFast),

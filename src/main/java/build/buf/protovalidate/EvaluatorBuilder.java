@@ -15,13 +15,13 @@
 package build.buf.protovalidate;
 
 import build.buf.protovalidate.exceptions.CompilationException;
-import build.buf.validate.Constraint;
-import build.buf.validate.FieldConstraints;
 import build.buf.validate.FieldPath;
 import build.buf.validate.FieldPathElement;
+import build.buf.validate.FieldRules;
 import build.buf.validate.Ignore;
-import build.buf.validate.MessageConstraints;
-import build.buf.validate.OneofConstraints;
+import build.buf.validate.MessageRules;
+import build.buf.validate.OneofRules;
+import build.buf.validate.Rule;
 import com.google.protobuf.ByteString;
 import com.google.protobuf.Descriptors;
 import com.google.protobuf.Descriptors.Descriptor;
@@ -45,13 +45,13 @@ import org.projectnessie.cel.checker.Decls;
 class EvaluatorBuilder {
   private static final FieldPathElement CEL_FIELD_PATH_ELEMENT =
       FieldPathUtils.fieldPathElement(
-          FieldConstraints.getDescriptor().findFieldByNumber(FieldConstraints.CEL_FIELD_NUMBER));
+          FieldRules.getDescriptor().findFieldByNumber(FieldRules.CEL_FIELD_NUMBER));
 
   private volatile Map<Descriptor, MessageEvaluator> evaluatorCache = Collections.emptyMap();
 
   private final Env env;
   private final boolean disableLazy;
-  private final ConstraintCache constraints;
+  private final RuleCache rules;
 
   /**
    * Constructs a new {@link EvaluatorBuilder}.
@@ -62,7 +62,7 @@ class EvaluatorBuilder {
   public EvaluatorBuilder(Env env, Config config) {
     this.env = env;
     this.disableLazy = config.isDisableLazy();
-    this.constraints = new ConstraintCache(env, config);
+    this.rules = new RuleCache(env, config);
   }
 
   /**
@@ -99,7 +99,7 @@ class EvaluatorBuilder {
       }
       // Rebuild cache with this descriptor (and any of its dependencies).
       Map<Descriptor, MessageEvaluator> updatedCache =
-          new DescriptorCacheBuilder(env, constraints, evaluatorCache).build(desc);
+          new DescriptorCacheBuilder(env, rules, evaluatorCache).build(desc);
       evaluatorCache = updatedCache;
       eval = updatedCache.get(desc);
       if (eval == null) {
@@ -111,15 +111,15 @@ class EvaluatorBuilder {
   }
 
   private static class DescriptorCacheBuilder {
-    private final ConstraintResolver resolver = new ConstraintResolver();
+    private final RuleResolver resolver = new RuleResolver();
     private final Env env;
-    private final ConstraintCache constraintCache;
+    private final RuleCache ruleCache;
     private final HashMap<Descriptor, MessageEvaluator> cache;
 
     private DescriptorCacheBuilder(
-        Env env, ConstraintCache constraintCache, Map<Descriptor, MessageEvaluator> previousCache) {
+        Env env, RuleCache ruleCache, Map<Descriptor, MessageEvaluator> previousCache) {
       this.env = Objects.requireNonNull(env, "env");
-      this.constraintCache = Objects.requireNonNull(constraintCache, "constraintCache");
+      this.ruleCache = Objects.requireNonNull(ruleCache, "ruleCache");
       this.cache = new HashMap<>(previousCache);
     }
 
@@ -129,7 +129,7 @@ class EvaluatorBuilder {
      *
      * @param descriptor Descriptor used to build the cache.
      * @return Unmodifiable map of descriptors to evaluators.
-     * @throws CompilationException If an error occurs compiling a constraint on the cache.
+     * @throws CompilationException If an error occurs compiling a rule on the cache.
      */
     public Map<Descriptor, MessageEvaluator> build(Descriptor descriptor)
         throws CompilationException {
@@ -153,12 +153,12 @@ class EvaluatorBuilder {
       try {
         DynamicMessage defaultInstance = DynamicMessage.newBuilder(desc).buildPartial();
         Descriptor descriptor = defaultInstance.getDescriptorForType();
-        MessageConstraints msgConstraints = resolver.resolveMessageConstraints(descriptor);
-        if (msgConstraints.getDisabled()) {
+        MessageRules msgRules = resolver.resolveMessageRules(descriptor);
+        if (msgRules.getDisabled()) {
           return;
         }
-        processMessageExpressions(descriptor, msgConstraints, msgEval, defaultInstance);
-        processOneofConstraints(descriptor, msgEval);
+        processMessageExpressions(descriptor, msgRules, msgEval, defaultInstance);
+        processOneofRules(descriptor, msgEval);
         processFields(descriptor, msgEval);
       } catch (InvalidProtocolBufferException e) {
         throw new CompilationException(
@@ -167,12 +167,9 @@ class EvaluatorBuilder {
     }
 
     private void processMessageExpressions(
-        Descriptor desc,
-        MessageConstraints msgConstraints,
-        MessageEvaluator msgEval,
-        DynamicMessage message)
+        Descriptor desc, MessageRules msgRules, MessageEvaluator msgEval, DynamicMessage message)
         throws CompilationException {
-      List<Constraint> celList = msgConstraints.getCelList();
+      List<Rule> celList = msgRules.getCelList();
       if (celList.isEmpty()) {
         return;
       }
@@ -181,20 +178,19 @@ class EvaluatorBuilder {
               EnvOption.types(message),
               EnvOption.declarations(
                   Decls.newVar(Variable.THIS_NAME, Decls.newObjectType(desc.getFullName()))));
-      List<CompiledProgram> compiledPrograms = compileConstraints(celList, finalEnv, false);
+      List<CompiledProgram> compiledPrograms = compileRules(celList, finalEnv, false);
       if (compiledPrograms.isEmpty()) {
         throw new CompilationException("compile returned null");
       }
       msgEval.append(new CelPrograms(null, compiledPrograms));
     }
 
-    private void processOneofConstraints(Descriptor desc, MessageEvaluator msgEval)
+    private void processOneofRules(Descriptor desc, MessageEvaluator msgEval)
         throws InvalidProtocolBufferException, CompilationException {
       List<Descriptors.OneofDescriptor> oneofs = desc.getOneofs();
       for (Descriptors.OneofDescriptor oneofDesc : oneofs) {
-        OneofConstraints oneofConstraints = resolver.resolveOneofConstraints(oneofDesc);
-        OneofEvaluator oneofEvaluatorEval =
-            new OneofEvaluator(oneofDesc, oneofConstraints.getRequired());
+        OneofRules oneofRules = resolver.resolveOneofRules(oneofDesc);
+        OneofEvaluator oneofEvaluatorEval = new OneofEvaluator(oneofDesc, oneofRules.getRequired());
         msgEval.append(oneofEvaluatorEval);
       }
     }
@@ -204,18 +200,16 @@ class EvaluatorBuilder {
       List<FieldDescriptor> fields = desc.getFields();
       for (FieldDescriptor fieldDescriptor : fields) {
         FieldDescriptor descriptor = desc.findFieldByName(fieldDescriptor.getName());
-        FieldConstraints fieldConstraints = resolver.resolveFieldConstraints(descriptor);
-        FieldEvaluator fldEval = buildField(descriptor, fieldConstraints);
+        FieldRules fieldRules = resolver.resolveFieldRules(descriptor);
+        FieldEvaluator fldEval = buildField(descriptor, fieldRules);
         msgEval.append(fldEval);
       }
     }
 
-    private FieldEvaluator buildField(
-        FieldDescriptor fieldDescriptor, FieldConstraints fieldConstraints)
+    private FieldEvaluator buildField(FieldDescriptor fieldDescriptor, FieldRules fieldRules)
         throws CompilationException {
       ValueEvaluator valueEvaluatorEval = new ValueEvaluator(fieldDescriptor, null);
-      boolean ignoreDefault =
-          fieldDescriptor.hasPresence() && shouldIgnoreDefault(fieldConstraints);
+      boolean ignoreDefault = fieldDescriptor.hasPresence() && shouldIgnoreDefault(fieldRules);
       Object zero = null;
       if (ignoreDefault) {
         zero = zeroValue(fieldDescriptor, false);
@@ -224,49 +218,45 @@ class EvaluatorBuilder {
           new FieldEvaluator(
               valueEvaluatorEval,
               fieldDescriptor,
-              fieldConstraints.getRequired(),
-              fieldDescriptor.hasPresence() || shouldIgnoreEmpty(fieldConstraints),
-              fieldDescriptor.hasPresence() && shouldIgnoreDefault(fieldConstraints),
+              fieldRules.getRequired(),
+              fieldDescriptor.hasPresence() || shouldIgnoreEmpty(fieldRules),
+              fieldDescriptor.hasPresence() && shouldIgnoreDefault(fieldRules),
               zero);
-      buildValue(fieldDescriptor, fieldConstraints, fieldEvaluator.valueEvaluator);
+      buildValue(fieldDescriptor, fieldRules, fieldEvaluator.valueEvaluator);
       return fieldEvaluator;
     }
 
-    private boolean shouldSkip(FieldConstraints constraints) {
-      return constraints.getIgnore() == Ignore.IGNORE_ALWAYS;
+    private boolean shouldSkip(FieldRules rules) {
+      return rules.getIgnore() == Ignore.IGNORE_ALWAYS;
     }
 
-    private static boolean shouldIgnoreEmpty(FieldConstraints constraints) {
-      return constraints.getIgnore() == Ignore.IGNORE_IF_UNPOPULATED
-          || constraints.getIgnore() == Ignore.IGNORE_IF_DEFAULT_VALUE;
+    private static boolean shouldIgnoreEmpty(FieldRules rules) {
+      return rules.getIgnore() == Ignore.IGNORE_IF_UNPOPULATED
+          || rules.getIgnore() == Ignore.IGNORE_IF_DEFAULT_VALUE;
     }
 
-    private static boolean shouldIgnoreDefault(FieldConstraints constraints) {
-      return constraints.getIgnore() == Ignore.IGNORE_IF_DEFAULT_VALUE;
+    private static boolean shouldIgnoreDefault(FieldRules rules) {
+      return rules.getIgnore() == Ignore.IGNORE_IF_DEFAULT_VALUE;
     }
 
     private void buildValue(
-        FieldDescriptor fieldDescriptor,
-        FieldConstraints fieldConstraints,
-        ValueEvaluator valueEvaluator)
+        FieldDescriptor fieldDescriptor, FieldRules fieldRules, ValueEvaluator valueEvaluator)
         throws CompilationException {
-      processIgnoreEmpty(fieldDescriptor, fieldConstraints, valueEvaluator);
-      processFieldExpressions(fieldDescriptor, fieldConstraints, valueEvaluator);
-      processEmbeddedMessage(fieldDescriptor, fieldConstraints, valueEvaluator);
-      processWrapperConstraints(fieldDescriptor, fieldConstraints, valueEvaluator);
-      processStandardConstraints(fieldDescriptor, fieldConstraints, valueEvaluator);
-      processAnyConstraints(fieldDescriptor, fieldConstraints, valueEvaluator);
-      processEnumConstraints(fieldDescriptor, fieldConstraints, valueEvaluator);
-      processMapConstraints(fieldDescriptor, fieldConstraints, valueEvaluator);
-      processRepeatedConstraints(fieldDescriptor, fieldConstraints, valueEvaluator);
+      processIgnoreEmpty(fieldDescriptor, fieldRules, valueEvaluator);
+      processFieldExpressions(fieldDescriptor, fieldRules, valueEvaluator);
+      processEmbeddedMessage(fieldDescriptor, fieldRules, valueEvaluator);
+      processWrapperRules(fieldDescriptor, fieldRules, valueEvaluator);
+      processStandardRules(fieldDescriptor, fieldRules, valueEvaluator);
+      processAnyRules(fieldDescriptor, fieldRules, valueEvaluator);
+      processEnumRules(fieldDescriptor, fieldRules, valueEvaluator);
+      processMapRules(fieldDescriptor, fieldRules, valueEvaluator);
+      processRepeatedRules(fieldDescriptor, fieldRules, valueEvaluator);
     }
 
     private void processIgnoreEmpty(
-        FieldDescriptor fieldDescriptor,
-        FieldConstraints fieldConstraints,
-        ValueEvaluator valueEvaluatorEval)
+        FieldDescriptor fieldDescriptor, FieldRules fieldRules, ValueEvaluator valueEvaluatorEval)
         throws CompilationException {
-      if (valueEvaluatorEval.hasNestedRule() && shouldIgnoreEmpty(fieldConstraints)) {
+      if (valueEvaluatorEval.hasNestedRule() && shouldIgnoreEmpty(fieldRules)) {
         valueEvaluatorEval.setIgnoreEmpty(zeroValue(fieldDescriptor, true));
       }
     }
@@ -325,12 +315,10 @@ class EvaluatorBuilder {
     }
 
     private void processFieldExpressions(
-        FieldDescriptor fieldDescriptor,
-        FieldConstraints fieldConstraints,
-        ValueEvaluator valueEvaluatorEval)
+        FieldDescriptor fieldDescriptor, FieldRules fieldRules, ValueEvaluator valueEvaluatorEval)
         throws CompilationException {
-      List<Constraint> constraintsCelList = fieldConstraints.getCelList();
-      if (constraintsCelList.isEmpty()) {
+      List<Rule> rulesCelList = fieldRules.getCelList();
+      if (rulesCelList.isEmpty()) {
         return;
       }
       List<EnvOption> opts;
@@ -358,20 +346,17 @@ class EvaluatorBuilder {
                         DescriptorMappings.protoKindToCELType(fieldDescriptor.getType()))));
       }
       Env finalEnv = env.extend(opts.toArray(new EnvOption[0]));
-      List<CompiledProgram> compiledPrograms =
-          compileConstraints(constraintsCelList, finalEnv, true);
+      List<CompiledProgram> compiledPrograms = compileRules(rulesCelList, finalEnv, true);
       if (!compiledPrograms.isEmpty()) {
         valueEvaluatorEval.append(new CelPrograms(valueEvaluatorEval, compiledPrograms));
       }
     }
 
     private void processEmbeddedMessage(
-        FieldDescriptor fieldDescriptor,
-        FieldConstraints fieldConstraints,
-        ValueEvaluator valueEvaluatorEval)
+        FieldDescriptor fieldDescriptor, FieldRules fieldRules, ValueEvaluator valueEvaluatorEval)
         throws CompilationException {
       if (fieldDescriptor.getJavaType() != FieldDescriptor.JavaType.MESSAGE
-          || shouldSkip(fieldConstraints)
+          || shouldSkip(fieldRules)
           || fieldDescriptor.isMapField()
           || (fieldDescriptor.isRepeated() && !valueEvaluatorEval.hasNestedRule())) {
         return;
@@ -382,50 +367,40 @@ class EvaluatorBuilder {
       valueEvaluatorEval.append(embedEval);
     }
 
-    private void processWrapperConstraints(
-        FieldDescriptor fieldDescriptor,
-        FieldConstraints fieldConstraints,
-        ValueEvaluator valueEvaluatorEval)
+    private void processWrapperRules(
+        FieldDescriptor fieldDescriptor, FieldRules fieldRules, ValueEvaluator valueEvaluatorEval)
         throws CompilationException {
       if (fieldDescriptor.getJavaType() != FieldDescriptor.JavaType.MESSAGE
-          || shouldSkip(fieldConstraints)
+          || shouldSkip(fieldRules)
           || fieldDescriptor.isMapField()
           || (fieldDescriptor.isRepeated() && !valueEvaluatorEval.hasNestedRule())) {
         return;
       }
       FieldDescriptor expectedWrapperDescriptor =
-          DescriptorMappings.expectedWrapperConstraints(
-              fieldDescriptor.getMessageType().getFullName());
-      if (expectedWrapperDescriptor == null
-          || !fieldConstraints.hasField(expectedWrapperDescriptor)) {
+          DescriptorMappings.expectedWrapperRules(fieldDescriptor.getMessageType().getFullName());
+      if (expectedWrapperDescriptor == null || !fieldRules.hasField(expectedWrapperDescriptor)) {
         return;
       }
       ValueEvaluator unwrapped =
           new ValueEvaluator(
               valueEvaluatorEval.getDescriptor(), valueEvaluatorEval.getNestedRule());
-      buildValue(
-          fieldDescriptor.getMessageType().findFieldByName("value"), fieldConstraints, unwrapped);
+      buildValue(fieldDescriptor.getMessageType().findFieldByName("value"), fieldRules, unwrapped);
       valueEvaluatorEval.append(unwrapped);
     }
 
-    private void processStandardConstraints(
-        FieldDescriptor fieldDescriptor,
-        FieldConstraints fieldConstraints,
-        ValueEvaluator valueEvaluatorEval)
+    private void processStandardRules(
+        FieldDescriptor fieldDescriptor, FieldRules fieldRules, ValueEvaluator valueEvaluatorEval)
         throws CompilationException {
       List<CompiledProgram> compile =
-          constraintCache.compile(
-              fieldDescriptor, fieldConstraints, valueEvaluatorEval.hasNestedRule());
+          ruleCache.compile(fieldDescriptor, fieldRules, valueEvaluatorEval.hasNestedRule());
       if (compile.isEmpty()) {
         return;
       }
       valueEvaluatorEval.append(new CelPrograms(valueEvaluatorEval, compile));
     }
 
-    private void processAnyConstraints(
-        FieldDescriptor fieldDescriptor,
-        FieldConstraints fieldConstraints,
-        ValueEvaluator valueEvaluatorEval) {
+    private void processAnyRules(
+        FieldDescriptor fieldDescriptor, FieldRules fieldRules, ValueEvaluator valueEvaluatorEval) {
       if ((fieldDescriptor.isRepeated() && !valueEvaluatorEval.hasNestedRule())
           || fieldDescriptor.getJavaType() != FieldDescriptor.JavaType.MESSAGE
           || !fieldDescriptor.getMessageType().getFullName().equals("google.protobuf.Any")) {
@@ -436,28 +411,24 @@ class EvaluatorBuilder {
           new AnyEvaluator(
               valueEvaluatorEval,
               typeURLDesc,
-              fieldConstraints.getAny().getInList(),
-              fieldConstraints.getAny().getNotInList()));
+              fieldRules.getAny().getInList(),
+              fieldRules.getAny().getNotInList()));
     }
 
-    private void processEnumConstraints(
-        FieldDescriptor fieldDescriptor,
-        FieldConstraints fieldConstraints,
-        ValueEvaluator valueEvaluatorEval) {
+    private void processEnumRules(
+        FieldDescriptor fieldDescriptor, FieldRules fieldRules, ValueEvaluator valueEvaluatorEval) {
       if (fieldDescriptor.getJavaType() != FieldDescriptor.JavaType.ENUM) {
         return;
       }
-      if (fieldConstraints.getEnum().getDefinedOnly()) {
+      if (fieldRules.getEnum().getDefinedOnly()) {
         Descriptors.EnumDescriptor enumDescriptor = fieldDescriptor.getEnumType();
         valueEvaluatorEval.append(
             new EnumEvaluator(valueEvaluatorEval, enumDescriptor.getValues()));
       }
     }
 
-    private void processMapConstraints(
-        FieldDescriptor fieldDescriptor,
-        FieldConstraints fieldConstraints,
-        ValueEvaluator valueEvaluatorEval)
+    private void processMapRules(
+        FieldDescriptor fieldDescriptor, FieldRules fieldRules, ValueEvaluator valueEvaluatorEval)
         throws CompilationException {
       if (!fieldDescriptor.isMapField()) {
         return;
@@ -465,19 +436,17 @@ class EvaluatorBuilder {
       MapEvaluator mapEval = new MapEvaluator(valueEvaluatorEval, fieldDescriptor);
       buildValue(
           fieldDescriptor.getMessageType().findFieldByNumber(1),
-          fieldConstraints.getMap().getKeys(),
+          fieldRules.getMap().getKeys(),
           mapEval.getKeyEvaluator());
       buildValue(
           fieldDescriptor.getMessageType().findFieldByNumber(2),
-          fieldConstraints.getMap().getValues(),
+          fieldRules.getMap().getValues(),
           mapEval.getValueEvaluator());
       valueEvaluatorEval.append(mapEval);
     }
 
-    private void processRepeatedConstraints(
-        FieldDescriptor fieldDescriptor,
-        FieldConstraints fieldConstraints,
-        ValueEvaluator valueEvaluatorEval)
+    private void processRepeatedRules(
+        FieldDescriptor fieldDescriptor, FieldRules fieldRules, ValueEvaluator valueEvaluatorEval)
         throws CompilationException {
       if (fieldDescriptor.isMapField()
           || !fieldDescriptor.isRepeated()
@@ -485,14 +454,13 @@ class EvaluatorBuilder {
         return;
       }
       ListEvaluator listEval = new ListEvaluator(valueEvaluatorEval);
-      buildValue(
-          fieldDescriptor, fieldConstraints.getRepeated().getItems(), listEval.itemConstraints);
+      buildValue(fieldDescriptor, fieldRules.getRepeated().getItems(), listEval.itemRules);
       valueEvaluatorEval.append(listEval);
     }
 
-    private static List<CompiledProgram> compileConstraints(
-        List<Constraint> constraints, Env env, boolean isField) throws CompilationException {
-      List<Expression> expressions = Expression.fromConstraints(constraints);
+    private static List<CompiledProgram> compileRules(List<Rule> rules, Env env, boolean isField)
+        throws CompilationException {
+      List<Expression> expressions = Expression.fromRules(rules);
       List<CompiledProgram> compiledPrograms = new ArrayList<>();
       for (int i = 0; i < expressions.size(); i++) {
         Expression expression = expressions.get(i);
@@ -509,7 +477,7 @@ class EvaluatorBuilder {
                 env.program(astExpression.ast),
                 astExpression.source,
                 rulePath,
-                new MessageValue(constraints.get(i))));
+                new MessageValue(rules.get(i))));
       }
       return compiledPrograms;
     }

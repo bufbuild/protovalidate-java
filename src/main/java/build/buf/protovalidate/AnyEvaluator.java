@@ -16,8 +16,8 @@ package build.buf.protovalidate;
 
 import build.buf.protovalidate.exceptions.ExecutionException;
 import build.buf.validate.AnyRules;
-import build.buf.validate.FieldConstraints;
 import build.buf.validate.FieldPath;
+import build.buf.validate.FieldRules;
 import com.google.protobuf.Descriptors;
 import com.google.protobuf.Message;
 import java.util.ArrayList;
@@ -33,7 +33,7 @@ import java.util.Set;
  * runtime.
  */
 class AnyEvaluator implements Evaluator {
-  private final ConstraintViolationHelper helper;
+  private final RuleViolationHelper helper;
   private final Descriptors.FieldDescriptor typeURLDescriptor;
   private final Set<String> in;
   private final List<String> inValue;
@@ -41,7 +41,7 @@ class AnyEvaluator implements Evaluator {
   private final List<String> notInValue;
 
   private static final Descriptors.FieldDescriptor ANY_DESCRIPTOR =
-      FieldConstraints.getDescriptor().findFieldByNumber(FieldConstraints.ANY_FIELD_NUMBER);
+      FieldRules.getDescriptor().findFieldByNumber(FieldRules.ANY_FIELD_NUMBER);
 
   private static final Descriptors.FieldDescriptor IN_DESCRIPTOR =
       AnyRules.getDescriptor().findFieldByNumber(AnyRules.IN_FIELD_NUMBER);
@@ -67,7 +67,7 @@ class AnyEvaluator implements Evaluator {
       Descriptors.FieldDescriptor typeURLDescriptor,
       List<String> in,
       List<String> notIn) {
-    this.helper = new ConstraintViolationHelper(valueEvaluator);
+    this.helper = new RuleViolationHelper(valueEvaluator);
     this.typeURLDescriptor = typeURLDescriptor;
     this.in = stringsToSet(in);
     this.inValue = in;
@@ -76,39 +76,39 @@ class AnyEvaluator implements Evaluator {
   }
 
   @Override
-  public List<ConstraintViolation.Builder> evaluate(Value val, boolean failFast)
+  public List<RuleViolation.Builder> evaluate(Value val, boolean failFast)
       throws ExecutionException {
     Message anyValue = val.messageValue();
     if (anyValue == null) {
-      return ConstraintViolation.NO_VIOLATIONS;
+      return RuleViolation.NO_VIOLATIONS;
     }
-    List<ConstraintViolation.Builder> violationList = new ArrayList<>();
+    List<RuleViolation.Builder> violationList = new ArrayList<>();
     String typeURL = (String) anyValue.getField(typeURLDescriptor);
     if (!in.isEmpty() && !in.contains(typeURL)) {
-      ConstraintViolation.Builder violation =
-          ConstraintViolation.newBuilder()
+      RuleViolation.Builder violation =
+          RuleViolation.newBuilder()
               .addAllRulePathElements(helper.getRulePrefixElements())
               .addAllRulePathElements(IN_RULE_PATH.getElementsList())
               .addFirstFieldPathElement(helper.getFieldPathElement())
-              .setConstraintId("any.in")
+              .setRuleId("any.in")
               .setMessage("type URL must be in the allow list")
-              .setFieldValue(new ConstraintViolation.FieldValue(val))
-              .setRuleValue(new ConstraintViolation.FieldValue(this.inValue, IN_DESCRIPTOR));
+              .setFieldValue(new RuleViolation.FieldValue(val))
+              .setRuleValue(new RuleViolation.FieldValue(this.inValue, IN_DESCRIPTOR));
       violationList.add(violation);
       if (failFast) {
         return violationList;
       }
     }
     if (!notIn.isEmpty() && notIn.contains(typeURL)) {
-      ConstraintViolation.Builder violation =
-          ConstraintViolation.newBuilder()
+      RuleViolation.Builder violation =
+          RuleViolation.newBuilder()
               .addAllRulePathElements(helper.getRulePrefixElements())
               .addAllRulePathElements(NOT_IN_RULE_PATH.getElementsList())
               .addFirstFieldPathElement(helper.getFieldPathElement())
-              .setConstraintId("any.not_in")
+              .setRuleId("any.not_in")
               .setMessage("type URL must not be in the block list")
-              .setFieldValue(new ConstraintViolation.FieldValue(val))
-              .setRuleValue(new ConstraintViolation.FieldValue(this.notInValue, NOT_IN_DESCRIPTOR));
+              .setFieldValue(new RuleViolation.FieldValue(val))
+              .setRuleValue(new RuleViolation.FieldValue(this.notInValue, NOT_IN_DESCRIPTOR));
       violationList.add(violation);
     }
     return violationList;

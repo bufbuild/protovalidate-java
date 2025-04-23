@@ -14,27 +14,27 @@
 
 package build.buf.protovalidate;
 
-import build.buf.validate.Constraint;
+import build.buf.validate.Rule;
 import java.util.ArrayList;
 import java.util.List;
 
 /** Expression represents a single CEL expression. */
 class Expression {
-  /** The id of the constraint. */
+  /** The id of the rule. */
   public final String id;
 
-  /** The message of the constraint. */
+  /** The message of the rule. */
   public final String message;
 
-  /** The expression of the constraint. */
+  /** The expression of the rule. */
   public final String expression;
 
   /**
    * Constructs a new Expression.
    *
-   * @param id The ID of the constraint.
-   * @param message The message of the constraint.
-   * @param expression The expression of the constraint.
+   * @param id The ID of the rule.
+   * @param message The message of the rule.
+   * @param expression The expression of the rule.
    */
   private Expression(String id, String message, String expression) {
     this.id = id;
@@ -43,24 +43,24 @@ class Expression {
   }
 
   /**
-   * Constructs a new Expression from the given constraint.
+   * Constructs a new Expression from the given rule.
    *
-   * @param constraint The constraint to create the expression from.
+   * @param rule The rule to create the expression from.
    */
-  private Expression(Constraint constraint) {
-    this(constraint.getId(), constraint.getMessage(), constraint.getExpression());
+  private Expression(Rule rule) {
+    this(rule.getId(), rule.getMessage(), rule.getExpression());
   }
 
   /**
-   * Constructs a new list of {@link Expression} from the given list of constraints.
+   * Constructs a new list of {@link Expression} from the given list of rules.
    *
-   * @param constraints The list of constraints.
+   * @param rules The list of rules.
    * @return The list of expressions.
    */
-  public static List<Expression> fromConstraints(List<build.buf.validate.Constraint> constraints) {
+  public static List<Expression> fromRules(List<build.buf.validate.Rule> rules) {
     List<Expression> expressions = new ArrayList<>();
-    for (build.buf.validate.Constraint constraint : constraints) {
-      expressions.add(new Expression(constraint));
+    for (build.buf.validate.Rule rule : rules) {
+      expressions.add(new Expression(rule));
     }
     return expressions;
   }
