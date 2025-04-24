@@ -27,13 +27,6 @@ kitchen_sink:
 standard_rules/repeated:
   - items/in/invalid
   - items/not_in/invalid
-library/is_ip:
-  - version/6/invalid/ipv6/7h16_double_colon_1h16
-  - version/6/invalid/ipv6/7h16_double_colon
-  - version/6/invalid/ipv6/double_colon_8h16
-  - version/6/invalid/ipv6/1h16_double_colon_7h16
 standard_rules/well_known_types/duration:
   - in/invalid
   - not in/invalid
-
-

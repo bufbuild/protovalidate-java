@@ -209,7 +209,11 @@ final class Ipv6 {
       break;
     }
 
-    return this.doubleColonSeen || this.pieces.size() == 8;
+    int totalPieces = this.pieces.size();
+    if (this.doubleColonSeen) {
+      return totalPieces < 8;
+    }
+    return totalPieces == 8;
   }
 
   /**
