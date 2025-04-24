@@ -20,9 +20,8 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * {@link ValidationResult} is returned when a constraint is executed. It contains a list of
- * violations. This is non-fatal. If there are no violations, the constraint is considered to have
- * passed.
+ * {@link ValidationResult} is returned when a rule is executed. It contains a list of violations.
+ * This is non-fatal. If there are no violations, the rule is considered to have passed.
  */
 public class ValidationResult {
 
@@ -78,7 +77,7 @@ public class ValidationResult {
       }
       builder.append(
           String.format(
-              "%s [%s]", violation.toProto().getMessage(), violation.toProto().getConstraintId()));
+              "%s [%s]", violation.toProto().getMessage(), violation.toProto().getRuleId()));
     }
     return builder.toString();
   }

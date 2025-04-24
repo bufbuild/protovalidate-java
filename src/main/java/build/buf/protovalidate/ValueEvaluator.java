@@ -40,8 +40,8 @@ class ValueEvaluator implements Evaluator {
   private final List<Evaluator> evaluators = new ArrayList<>();
 
   /**
-   * Indicates that the Constraints should not be applied if the field is unset or the default
-   * (typically zero) value.
+   * Indicates that the Rules should not be applied if the field is unset or the default (typically
+   * zero) value.
    */
   private boolean ignoreEmpty;
 
@@ -69,21 +69,21 @@ class ValueEvaluator implements Evaluator {
   }
 
   @Override
-  public List<ConstraintViolation.Builder> evaluate(Value val, boolean failFast)
+  public List<RuleViolation.Builder> evaluate(Value val, boolean failFast)
       throws ExecutionException {
     if (this.shouldIgnore(val.value(Object.class))) {
-      return ConstraintViolation.NO_VIOLATIONS;
+      return RuleViolation.NO_VIOLATIONS;
     }
-    List<ConstraintViolation.Builder> allViolations = new ArrayList<>();
+    List<RuleViolation.Builder> allViolations = new ArrayList<>();
     for (Evaluator evaluator : evaluators) {
-      List<ConstraintViolation.Builder> violations = evaluator.evaluate(val, failFast);
+      List<RuleViolation.Builder> violations = evaluator.evaluate(val, failFast);
       if (failFast && !violations.isEmpty()) {
         return violations;
       }
       allViolations.addAll(violations);
     }
     if (allViolations.isEmpty()) {
-      return ConstraintViolation.NO_VIOLATIONS;
+      return RuleViolation.NO_VIOLATIONS;
     }
     return allViolations;
   }

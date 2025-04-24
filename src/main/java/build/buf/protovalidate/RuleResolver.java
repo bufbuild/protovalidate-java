@@ -15,9 +15,9 @@
 package build.buf.protovalidate;
 
 import build.buf.protovalidate.exceptions.CompilationException;
-import build.buf.validate.FieldConstraints;
-import build.buf.validate.MessageConstraints;
-import build.buf.validate.OneofConstraints;
+import build.buf.validate.FieldRules;
+import build.buf.validate.MessageRules;
+import build.buf.validate.OneofRules;
 import build.buf.validate.ValidateProto;
 import com.google.protobuf.DescriptorProtos;
 import com.google.protobuf.Descriptors.Descriptor;
@@ -27,8 +27,8 @@ import com.google.protobuf.ExtensionRegistry;
 import com.google.protobuf.InvalidProtocolBufferException;
 import com.google.protobuf.MessageLite;
 
-/** Manages the resolution of protovalidate constraints. */
-class ConstraintResolver {
+/** Manages the resolution of protovalidate rules. */
+class RuleResolver {
   private static final ExtensionRegistry EXTENSION_REGISTRY = ExtensionRegistry.newInstance();
 
   static {
@@ -38,12 +38,12 @@ class ConstraintResolver {
   }
 
   /**
-   * Resolves the constraints for a message descriptor.
+   * Resolves the rules for a message descriptor.
    *
    * @param desc the message descriptor.
-   * @return the resolved {@link MessageConstraints}.
+   * @return the resolved {@link MessageRules}.
    */
-  MessageConstraints resolveMessageConstraints(Descriptor desc)
+  MessageRules resolveMessageRules(Descriptor desc)
       throws InvalidProtocolBufferException, CompilationException {
     DescriptorProtos.MessageOptions options = desc.getOptions();
     // If the protovalidate message extension is unknown, reparse using extension registry.
@@ -52,29 +52,29 @@ class ConstraintResolver {
           DescriptorProtos.MessageOptions.parseFrom(options.toByteString(), EXTENSION_REGISTRY);
     }
     if (!options.hasExtension(ValidateProto.message)) {
-      return MessageConstraints.getDefaultInstance();
+      return MessageRules.getDefaultInstance();
     }
     // Don't use getExtension here to avoid exception if descriptor types don't match.
     // This can occur if the extension is generated to a different Java package.
     Object value = options.getField(ValidateProto.message.getDescriptor());
-    if (value instanceof MessageConstraints) {
-      return ((MessageConstraints) value);
+    if (value instanceof MessageRules) {
+      return ((MessageRules) value);
     }
     if (value instanceof MessageLite) {
-      // Possible that this represents the same constraint type, just generated to a different
+      // Possible that this represents the same rule type, just generated to a different
       // java_package.
-      return MessageConstraints.parseFrom(((MessageLite) value).toByteString());
+      return MessageRules.parseFrom(((MessageLite) value).toByteString());
     }
-    throw new CompilationException("unexpected message constraint option type: " + value);
+    throw new CompilationException("unexpected message rule option type: " + value);
   }
 
   /**
-   * Resolves the constraints for a oneof descriptor.
+   * Resolves the rules for a oneof descriptor.
    *
    * @param desc the oneof descriptor.
-   * @return the resolved {@link OneofConstraints}.
+   * @return the resolved {@link OneofRules}.
    */
-  OneofConstraints resolveOneofConstraints(OneofDescriptor desc)
+  OneofRules resolveOneofRules(OneofDescriptor desc)
       throws InvalidProtocolBufferException, CompilationException {
     DescriptorProtos.OneofOptions options = desc.getOptions();
     // If the protovalidate oneof extension is unknown, reparse using extension registry.
@@ -82,29 +82,29 @@ class ConstraintResolver {
       options = DescriptorProtos.OneofOptions.parseFrom(options.toByteString(), EXTENSION_REGISTRY);
     }
     if (!options.hasExtension(ValidateProto.oneof)) {
-      return OneofConstraints.getDefaultInstance();
+      return OneofRules.getDefaultInstance();
     }
     // Don't use getExtension here to avoid exception if descriptor types don't match.
     // This can occur if the extension is generated to a different Java package.
     Object value = options.getField(ValidateProto.oneof.getDescriptor());
-    if (value instanceof OneofConstraints) {
-      return ((OneofConstraints) value);
+    if (value instanceof OneofRules) {
+      return ((OneofRules) value);
     }
     if (value instanceof MessageLite) {
-      // Possible that this represents the same constraint type, just generated to a different
+      // Possible that this represents the same rule type, just generated to a different
       // java_package.
-      return OneofConstraints.parseFrom(((MessageLite) value).toByteString());
+      return OneofRules.parseFrom(((MessageLite) value).toByteString());
     }
-    throw new CompilationException("unexpected oneof constraint option type: " + value);
+    throw new CompilationException("unexpected oneof rule option type: " + value);
   }
 
   /**
-   * Resolves the constraints for a field descriptor.
+   * Resolves the rules for a field descriptor.
    *
    * @param desc the field descriptor.
-   * @return the resolved {@link FieldConstraints}.
+   * @return the resolved {@link FieldRules}.
    */
-  FieldConstraints resolveFieldConstraints(FieldDescriptor desc)
+  FieldRules resolveFieldRules(FieldDescriptor desc)
       throws InvalidProtocolBufferException, CompilationException {
     DescriptorProtos.FieldOptions options = desc.getOptions();
     // If the protovalidate field option is unknown, reparse using extension registry.
@@ -112,19 +112,19 @@ class ConstraintResolver {
       options = DescriptorProtos.FieldOptions.parseFrom(options.toByteString(), EXTENSION_REGISTRY);
     }
     if (!options.hasExtension(ValidateProto.field)) {
-      return FieldConstraints.getDefaultInstance();
+      return FieldRules.getDefaultInstance();
     }
     // Don't use getExtension here to avoid exception if descriptor types don't match.
     // This can occur if the extension is generated to a different Java package.
     Object value = options.getField(ValidateProto.field.getDescriptor());
-    if (value instanceof FieldConstraints) {
-      return ((FieldConstraints) value);
+    if (value instanceof FieldRules) {
+      return ((FieldRules) value);
     }
     if (value instanceof MessageLite) {
-      // Possible that this represents the same constraint type, just generated to a different
+      // Possible that this represents the same rule type, just generated to a different
       // java_package.
-      return FieldConstraints.parseFrom(((MessageLite) value).toByteString());
+      return FieldRules.parseFrom(((MessageLite) value).toByteString());
     }
-    throw new CompilationException("unexpected field constraint option type: " + value);
+    throw new CompilationException("unexpected field rule option type: " + value);
   }
 }

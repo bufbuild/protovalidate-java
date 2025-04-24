@@ -17,12 +17,12 @@ package build.buf.protovalidate;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import build.buf.protovalidate.exceptions.ValidationException;
-import build.buf.validate.FieldConstraints;
 import build.buf.validate.FieldPath;
 import build.buf.validate.FieldPathElement;
+import build.buf.validate.FieldRules;
 import build.buf.validate.Violation;
 import com.example.imports.buf.validate.StringRules;
-import com.example.imports.validationtest.ExampleFieldConstraints;
+import com.example.imports.validationtest.ExampleFieldRules;
 import com.google.protobuf.InvalidProtocolBufferException;
 import com.google.protobuf.Message;
 import java.util.Collections;
@@ -60,23 +60,23 @@ import org.junit.jupiter.api.Test;
  */
 public class ValidatorDifferentJavaPackagesTest {
   @Test
-  public void testValidationFieldConstraints() throws Exception {
+  public void testValidationFieldRules() throws Exception {
     // Valid message - matches regex
-    com.example.imports.validationtest.ExampleFieldConstraints validMsgImports =
-        com.example.imports.validationtest.ExampleFieldConstraints.newBuilder()
+    com.example.imports.validationtest.ExampleFieldRules validMsgImports =
+        com.example.imports.validationtest.ExampleFieldRules.newBuilder()
             .setRegexStringField("abc123")
             .build();
     expectNoViolations(validMsgImports);
 
     // Create same message under noimports package. Validation behavior should match.
-    com.example.noimports.validationtest.ExampleFieldConstraints validMsgNoImports =
-        com.example.noimports.validationtest.ExampleFieldConstraints.parseFrom(
+    com.example.noimports.validationtest.ExampleFieldRules validMsgNoImports =
+        com.example.noimports.validationtest.ExampleFieldRules.parseFrom(
             validMsgImports.toByteString());
     expectNoViolations(validMsgNoImports);
 
     // 10 chars long - regex requires 1-9 chars
-    com.example.imports.validationtest.ExampleFieldConstraints invalidMsgImports =
-        com.example.imports.validationtest.ExampleFieldConstraints.newBuilder()
+    com.example.imports.validationtest.ExampleFieldRules invalidMsgImports =
+        com.example.imports.validationtest.ExampleFieldRules.newBuilder()
             .setRegexStringField("0123456789")
             .build();
     Violation expectedViolation =
@@ -85,96 +85,94 @@ public class ValidatorDifferentJavaPackagesTest {
                 FieldPath.newBuilder()
                     .addElements(
                         FieldPathUtils.fieldPathElement(
-                            com.example.imports.validationtest.ExampleFieldConstraints
-                                .getDescriptor()
+                            com.example.imports.validationtest.ExampleFieldRules.getDescriptor()
                                 .findFieldByNumber(
-                                    ExampleFieldConstraints.REGEX_STRING_FIELD_FIELD_NUMBER))))
+                                    ExampleFieldRules.REGEX_STRING_FIELD_FIELD_NUMBER))))
             .setRule(
                 FieldPath.newBuilder()
                     .addElements(
                         FieldPathUtils.fieldPathElement(
-                            FieldConstraints.getDescriptor()
-                                .findFieldByNumber(FieldConstraints.STRING_FIELD_NUMBER)))
+                            FieldRules.getDescriptor()
+                                .findFieldByNumber(FieldRules.STRING_FIELD_NUMBER)))
                     .addElements(
                         FieldPathUtils.fieldPathElement(
                             StringRules.getDescriptor()
                                 .findFieldByNumber(StringRules.PATTERN_FIELD_NUMBER))))
-            .setConstraintId("string.pattern")
+            .setRuleId("string.pattern")
             .setMessage("value does not match regex pattern `^[a-z0-9]{1,9}$`")
             .build();
     expectViolation(invalidMsgImports, expectedViolation);
 
     // Create same message under noimports package. Validation behavior should match.
-    com.example.noimports.validationtest.ExampleFieldConstraints invalidMsgNoImports =
-        com.example.noimports.validationtest.ExampleFieldConstraints.newBuilder()
+    com.example.noimports.validationtest.ExampleFieldRules invalidMsgNoImports =
+        com.example.noimports.validationtest.ExampleFieldRules.newBuilder()
             .setRegexStringField("0123456789")
             .build();
     expectViolation(invalidMsgNoImports, expectedViolation);
   }
 
   @Test
-  public void testValidationOneofConstraints()
+  public void testValidationOneofRules()
       throws ValidationException, InvalidProtocolBufferException {
-    // Valid message - matches oneof constraint
-    com.example.imports.validationtest.ExampleOneofConstraints validMsgImports =
-        com.example.imports.validationtest.ExampleOneofConstraints.newBuilder()
+    // Valid message - matches oneof rule
+    com.example.imports.validationtest.ExampleOneofRules validMsgImports =
+        com.example.imports.validationtest.ExampleOneofRules.newBuilder()
             .setEmail("foo@bar.com")
             .build();
     expectNoViolations(validMsgImports);
 
     // Create same message under noimports package. Validation behavior should match.
-    com.example.noimports.validationtest.ExampleOneofConstraints validMsgNoImports =
-        com.example.noimports.validationtest.ExampleOneofConstraints.parseFrom(
+    com.example.noimports.validationtest.ExampleOneofRules validMsgNoImports =
+        com.example.noimports.validationtest.ExampleOneofRules.parseFrom(
             validMsgImports.toByteString());
     expectNoViolations(validMsgNoImports);
 
-    com.example.imports.validationtest.ExampleOneofConstraints invalidMsgImports =
-        com.example.imports.validationtest.ExampleOneofConstraints.getDefaultInstance();
+    com.example.imports.validationtest.ExampleOneofRules invalidMsgImports =
+        com.example.imports.validationtest.ExampleOneofRules.getDefaultInstance();
     Violation expectedViolation =
         Violation.newBuilder()
             .setField(
                 FieldPath.newBuilder()
                     .addElements(FieldPathElement.newBuilder().setFieldName("contact_info")))
-            .setConstraintId("required")
+            .setRuleId("required")
             .setMessage("exactly one field is required in oneof")
             .build();
     expectViolation(invalidMsgImports, expectedViolation);
 
     // Create same message under noimports package. Validation behavior should match.
-    com.example.noimports.validationtest.ExampleOneofConstraints invalidMsgNoImports =
-        com.example.noimports.validationtest.ExampleOneofConstraints.parseFrom(
+    com.example.noimports.validationtest.ExampleOneofRules invalidMsgNoImports =
+        com.example.noimports.validationtest.ExampleOneofRules.parseFrom(
             invalidMsgImports.toByteString());
     expectViolation(invalidMsgNoImports, expectedViolation);
   }
 
   @Test
-  public void testValidationMessageConstraintsDifferentJavaPackage() throws Exception {
-    com.example.imports.validationtest.ExampleMessageConstraints validMsg =
-        com.example.imports.validationtest.ExampleMessageConstraints.newBuilder()
+  public void testValidationMessageRulesDifferentJavaPackage() throws Exception {
+    com.example.imports.validationtest.ExampleMessageRules validMsg =
+        com.example.imports.validationtest.ExampleMessageRules.newBuilder()
             .setPrimaryEmail("foo@bar.com")
             .build();
     expectNoViolations(validMsg);
 
     // Create same message under noimports package. Validation behavior should match.
-    com.example.noimports.validationtest.ExampleMessageConstraints validMsgNoImports =
-        com.example.noimports.validationtest.ExampleMessageConstraints.parseFrom(
-            validMsg.toByteString());
+    com.example.noimports.validationtest.ExampleMessageRules validMsgNoImports =
+        com.example.noimports.validationtest.ExampleMessageRules.parseFrom(validMsg.toByteString());
     expectNoViolations(validMsgNoImports);
 
-    com.example.imports.validationtest.ExampleMessageConstraints invalidMsgImports =
-        com.example.imports.validationtest.ExampleMessageConstraints.newBuilder()
+    com.example.imports.validationtest.ExampleMessageRules invalidMsgImports =
+        com.example.imports.validationtest.ExampleMessageRules.newBuilder()
             .setSecondaryEmail("foo@bar.com")
             .build();
     Violation expectedViolation =
         Violation.newBuilder()
-            .setConstraintId("secondary_email_depends_on_primary")
+            .setRuleId("secondary_email_depends_on_primary")
             .setMessage("cannot set a secondary email without setting a primary one")
             .build();
     expectViolation(invalidMsgImports, expectedViolation);
 
     // Create same message under noimports package. Validation behavior should match.
-    com.example.noimports.validationtest.ExampleMessageConstraints invalidMsgNoImports =
-        com.example.noimports.validationtest.ExampleMessageConstraints.parseFrom(
+    com.example.noimports.validationtest.ExampleMessageRules invalidMsgNoImports =
+        com.example.noimports.validationtest.ExampleMessageRules.parseFrom(
             invalidMsgImports.toByteString());
     expectViolation(invalidMsgNoImports, expectedViolation);
   }

@@ -31,13 +31,12 @@ interface Evaluator {
 
   /**
    * Checks that the provided val is valid. Unless failFast is true, evaluation attempts to find all
-   * {@link ConstraintViolation} present in val instead of returning only the first {@link
-   * ConstraintViolation}.
+   * {@link RuleViolation} present in val instead of returning only the first {@link RuleViolation}.
    *
    * @param val The value to validate.
    * @param failFast If true, validation stops after the first failure.
    * @return The result of validation on the specified value.
    * @throws ExecutionException If evaluation fails to complete.
    */
-  List<ConstraintViolation.Builder> evaluate(Value val, boolean failFast) throws ExecutionException;
+  List<RuleViolation.Builder> evaluate(Value val, boolean failFast) throws ExecutionException;
 }

@@ -100,12 +100,12 @@ final class FieldPathUtils {
    * @param rulePathElements Rule path elements to prepend.
    * @return For convenience, the list of violations passed into the violations parameter.
    */
-  public static List<ConstraintViolation.Builder> updatePaths(
-      List<ConstraintViolation.Builder> violations,
+  public static List<RuleViolation.Builder> updatePaths(
+      List<RuleViolation.Builder> violations,
       @Nullable FieldPathElement fieldPathElement,
       List<FieldPathElement> rulePathElements) {
     if (fieldPathElement != null || !rulePathElements.isEmpty()) {
-      for (ConstraintViolation.Builder violation : violations) {
+      for (RuleViolation.Builder violation : violations) {
         for (int i = rulePathElements.size() - 1; i >= 0; i--) {
           violation.addFirstRulePathElement(rulePathElements.get(i));
         }

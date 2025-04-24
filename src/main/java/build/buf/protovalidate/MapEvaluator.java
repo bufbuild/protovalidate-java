@@ -15,9 +15,9 @@
 package build.buf.protovalidate;
 
 import build.buf.protovalidate.exceptions.ExecutionException;
-import build.buf.validate.FieldConstraints;
 import build.buf.validate.FieldPath;
 import build.buf.validate.FieldPathElement;
+import build.buf.validate.FieldRules;
 import build.buf.validate.MapRules;
 import com.google.protobuf.Descriptors;
 import java.util.ArrayList;
@@ -34,8 +34,7 @@ class MapEvaluator implements Evaluator {
       FieldPath.newBuilder()
           .addElements(
               FieldPathUtils.fieldPathElement(
-                  FieldConstraints.getDescriptor()
-                      .findFieldByNumber(FieldConstraints.MAP_FIELD_NUMBER)))
+                  FieldRules.getDescriptor().findFieldByNumber(FieldRules.MAP_FIELD_NUMBER)))
           .addElements(
               FieldPathUtils.fieldPathElement(
                   MapRules.getDescriptor().findFieldByNumber(MapRules.KEYS_FIELD_NUMBER)))
@@ -46,19 +45,18 @@ class MapEvaluator implements Evaluator {
       FieldPath.newBuilder()
           .addElements(
               FieldPathUtils.fieldPathElement(
-                  FieldConstraints.getDescriptor()
-                      .findFieldByNumber(FieldConstraints.MAP_FIELD_NUMBER)))
+                  FieldRules.getDescriptor().findFieldByNumber(FieldRules.MAP_FIELD_NUMBER)))
           .addElements(
               FieldPathUtils.fieldPathElement(
                   MapRules.getDescriptor().findFieldByNumber(MapRules.VALUES_FIELD_NUMBER)))
           .build();
 
-  private final ConstraintViolationHelper helper;
+  private final RuleViolationHelper helper;
 
-  /** Constraint for checking the map keys */
+  /** Rule for checking the map keys */
   private final ValueEvaluator keyEvaluator;
 
-  /** Constraint for checking the map values */
+  /** Rule for checking the map values */
   private final ValueEvaluator valueEvaluator;
 
   /** Field descriptor of the map field */
@@ -73,10 +71,10 @@ class MapEvaluator implements Evaluator {
   /**
    * Constructs a {@link MapEvaluator}.
    *
-   * @param valueEvaluator The value evaluator this constraint exists under.
+   * @param valueEvaluator The value evaluator this rule exists under.
    */
   MapEvaluator(ValueEvaluator valueEvaluator, Descriptors.FieldDescriptor fieldDescriptor) {
-    this.helper = new ConstraintViolationHelper(valueEvaluator);
+    this.helper = new RuleViolationHelper(valueEvaluator);
     this.keyEvaluator = new ValueEvaluator(null, MAP_KEYS_RULE_PATH);
     this.valueEvaluator = new ValueEvaluator(null, MAP_VALUES_RULE_PATH);
     this.fieldDescriptor = fieldDescriptor;
@@ -108,9 +106,9 @@ class MapEvaluator implements Evaluator {
   }
 
   @Override
-  public List<ConstraintViolation.Builder> evaluate(Value val, boolean failFast)
+  public List<RuleViolation.Builder> evaluate(Value val, boolean failFast)
       throws ExecutionException {
-    List<ConstraintViolation.Builder> violations = new ArrayList<>();
+    List<RuleViolation.Builder> violations = new ArrayList<>();
     Map<Value, Value> mapValue = val.mapValue();
     for (Map.Entry<Value, Value> entry : mapValue.entrySet()) {
       violations.addAll(evalPairs(entry.getKey(), entry.getValue(), failFast));
@@ -119,29 +117,29 @@ class MapEvaluator implements Evaluator {
       }
     }
     if (violations.isEmpty()) {
-      return ConstraintViolation.NO_VIOLATIONS;
+      return RuleViolation.NO_VIOLATIONS;
     }
     return violations;
   }
 
-  private List<ConstraintViolation.Builder> evalPairs(Value key, Value value, boolean failFast)
+  private List<RuleViolation.Builder> evalPairs(Value key, Value value, boolean failFast)
       throws ExecutionException {
-    List<ConstraintViolation.Builder> keyViolations =
+    List<RuleViolation.Builder> keyViolations =
         keyEvaluator.evaluate(key, failFast).stream()
             .map(violation -> violation.setForKey(true))
             .collect(Collectors.toList());
-    final List<ConstraintViolation.Builder> valueViolations;
+    final List<RuleViolation.Builder> valueViolations;
     if (failFast && !keyViolations.isEmpty()) {
-      // Don't evaluate value constraints if failFast is enabled and keys failed validation.
+      // Don't evaluate value rules if failFast is enabled and keys failed validation.
       // We still need to continue execution to the end to properly prefix violation field paths.
-      valueViolations = ConstraintViolation.NO_VIOLATIONS;
+      valueViolations = RuleViolation.NO_VIOLATIONS;
     } else {
       valueViolations = valueEvaluator.evaluate(value, failFast);
     }
     if (keyViolations.isEmpty() && valueViolations.isEmpty()) {
       return Collections.emptyList();
     }
-    List<ConstraintViolation.Builder> violations =
+    List<RuleViolation.Builder> violations =
         new ArrayList<>(keyViolations.size() + valueViolations.size());
     violations.addAll(keyViolations);
     violations.addAll(valueViolations);

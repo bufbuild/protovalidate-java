@@ -16,16 +16,14 @@ package build.buf.protovalidate;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import build.buf.validate.FieldConstraints;
 import build.buf.validate.FieldPath;
+import build.buf.validate.FieldRules;
 import build.buf.validate.Violation;
 import com.example.imports.buf.validate.RepeatedRules;
 import java.util.Arrays;
 import org.junit.jupiter.api.Test;
 
-/**
- * This test verifies that custom (CEL-based) field and/or message constraints evaluate as expected.
- */
+/** This test verifies that custom (CEL-based) field and/or message rules evaluate as expected. */
 public class ValidatorCelExpressionTest {
 
   @Test
@@ -68,12 +66,12 @@ public class ValidatorCelExpressionTest {
                 FieldPath.newBuilder()
                     .addElements(
                         FieldPathUtils.fieldPathElement(
-                                FieldConstraints.getDescriptor()
-                                    .findFieldByNumber(FieldConstraints.CEL_FIELD_NUMBER))
+                                FieldRules.getDescriptor()
+                                    .findFieldByNumber(FieldRules.CEL_FIELD_NUMBER))
                             .toBuilder()
                             .setIndex(0)
                             .build()))
-            .setConstraintId("field_expression.repeated.message")
+            .setRuleId("field_expression.repeated.message")
             .setMessage("test message field_expression.repeated.message")
             .build();
 
@@ -130,19 +128,19 @@ public class ValidatorCelExpressionTest {
                 FieldPath.newBuilder()
                     .addElements(
                         FieldPathUtils.fieldPathElement(
-                            FieldConstraints.getDescriptor()
-                                .findFieldByNumber(FieldConstraints.REPEATED_FIELD_NUMBER)))
+                            FieldRules.getDescriptor()
+                                .findFieldByNumber(FieldRules.REPEATED_FIELD_NUMBER)))
                     .addElements(
                         FieldPathUtils.fieldPathElement(
                             RepeatedRules.getDescriptor().findFieldByName("items")))
                     .addElements(
                         FieldPathUtils.fieldPathElement(
-                                FieldConstraints.getDescriptor()
-                                    .findFieldByNumber(FieldConstraints.CEL_FIELD_NUMBER))
+                                FieldRules.getDescriptor()
+                                    .findFieldByNumber(FieldRules.CEL_FIELD_NUMBER))
                             .toBuilder()
                             .setIndex(0)
                             .build()))
-            .setConstraintId("field_expression.repeated.message.items")
+            .setRuleId("field_expression.repeated.message.items")
             .setMessage("test message field_expression.repeated.message.items")
             .build();
 

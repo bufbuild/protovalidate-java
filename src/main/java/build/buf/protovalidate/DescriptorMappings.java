@@ -14,7 +14,7 @@
 
 package build.buf.protovalidate;
 
-import build.buf.validate.FieldConstraints;
+import build.buf.validate.FieldRules;
 import com.google.api.expr.v1alpha1.Type;
 import com.google.protobuf.Descriptors.Descriptor;
 import com.google.protobuf.Descriptors.FieldDescriptor;
@@ -28,104 +28,98 @@ import org.projectnessie.cel.checker.Decls;
  * DescriptorMappings provides mappings between protocol buffer descriptors and CEL declarations.
  */
 final class DescriptorMappings {
-  /** Provides a {@link Descriptor} for {@link FieldConstraints}. */
-  static final Descriptor FIELD_CONSTRAINTS_DESC = FieldConstraints.getDescriptor();
+  /** Provides a {@link Descriptor} for {@link FieldRules}. */
+  static final Descriptor FIELD_RULES_DESC = FieldRules.getDescriptor();
 
-  /** Provides the {@link OneofDescriptor} for the type union in {@link FieldConstraints}. */
-  static final OneofDescriptor FIELD_CONSTRAINTS_ONEOF_DESC =
-      FIELD_CONSTRAINTS_DESC.getOneofs().get(0);
+  /** Provides the {@link OneofDescriptor} for the type union in {@link FieldRules}. */
+  static final OneofDescriptor FIELD_RULES_ONEOF_DESC = FIELD_RULES_DESC.getOneofs().get(0);
 
-  /** Provides the {@link FieldDescriptor} for the map standard constraints. */
-  static final FieldDescriptor MAP_FIELD_CONSTRAINTS_DESC =
-      FIELD_CONSTRAINTS_DESC.findFieldByName("map");
+  /** Provides the {@link FieldDescriptor} for the map standard rules. */
+  static final FieldDescriptor MAP_FIELD_RULES_DESC = FIELD_RULES_DESC.findFieldByName("map");
 
-  /** Provides the {@link FieldDescriptor} for the repeated standard constraints. */
-  static final FieldDescriptor REPEATED_FIELD_CONSTRAINTS_DESC =
-      FIELD_CONSTRAINTS_DESC.findFieldByName("repeated");
+  /** Provides the {@link FieldDescriptor} for the repeated standard rules. */
+  static final FieldDescriptor REPEATED_FIELD_RULES_DESC =
+      FIELD_RULES_DESC.findFieldByName("repeated");
 
-  /** Maps protocol buffer field kinds to their expected field constraints. */
-  static final Map<FieldDescriptor.Type, FieldDescriptor> EXPECTED_STANDARD_CONSTRAINTS =
-      new HashMap<>();
+  /** Maps protocol buffer field kinds to their expected field rules. */
+  static final Map<FieldDescriptor.Type, FieldDescriptor> EXPECTED_STANDARD_RULES = new HashMap<>();
 
   /**
-   * Returns the {@link build.buf.validate.FieldConstraints} field that is expected for the given
-   * wrapper well-known type's full name. If ok is false, no standard constraints exist for that
-   * type.
+   * Returns the {@link build.buf.validate.FieldRules} field that is expected for the given wrapper
+   * well-known type's full name. If ok is false, no standard rules exist for that type.
    */
-  static final Map<String, FieldDescriptor> EXPECTED_WKT_CONSTRAINTS = new HashMap<>();
+  static final Map<String, FieldDescriptor> EXPECTED_WKT_RULES = new HashMap<>();
 
   static {
-    EXPECTED_STANDARD_CONSTRAINTS.put(
-        FieldDescriptor.Type.FLOAT, FIELD_CONSTRAINTS_DESC.findFieldByName("float"));
-    EXPECTED_STANDARD_CONSTRAINTS.put(
-        FieldDescriptor.Type.DOUBLE, FIELD_CONSTRAINTS_DESC.findFieldByName("double"));
-    EXPECTED_STANDARD_CONSTRAINTS.put(
-        FieldDescriptor.Type.INT32, FIELD_CONSTRAINTS_DESC.findFieldByName("int32"));
-    EXPECTED_STANDARD_CONSTRAINTS.put(
-        FieldDescriptor.Type.INT64, FIELD_CONSTRAINTS_DESC.findFieldByName("int64"));
-    EXPECTED_STANDARD_CONSTRAINTS.put(
-        FieldDescriptor.Type.UINT32, FIELD_CONSTRAINTS_DESC.findFieldByName("uint32"));
-    EXPECTED_STANDARD_CONSTRAINTS.put(
-        FieldDescriptor.Type.UINT64, FIELD_CONSTRAINTS_DESC.findFieldByName("uint64"));
-    EXPECTED_STANDARD_CONSTRAINTS.put(
-        FieldDescriptor.Type.SINT32, FIELD_CONSTRAINTS_DESC.findFieldByName("sint32"));
-    EXPECTED_STANDARD_CONSTRAINTS.put(
-        FieldDescriptor.Type.SINT64, FIELD_CONSTRAINTS_DESC.findFieldByName("sint64"));
-    EXPECTED_STANDARD_CONSTRAINTS.put(
-        FieldDescriptor.Type.FIXED32, FIELD_CONSTRAINTS_DESC.findFieldByName("fixed32"));
-    EXPECTED_STANDARD_CONSTRAINTS.put(
-        FieldDescriptor.Type.FIXED64, FIELD_CONSTRAINTS_DESC.findFieldByName("fixed64"));
-    EXPECTED_STANDARD_CONSTRAINTS.put(
-        FieldDescriptor.Type.SFIXED32, FIELD_CONSTRAINTS_DESC.findFieldByName("sfixed32"));
-    EXPECTED_STANDARD_CONSTRAINTS.put(
-        FieldDescriptor.Type.SFIXED64, FIELD_CONSTRAINTS_DESC.findFieldByName("sfixed64"));
-    EXPECTED_STANDARD_CONSTRAINTS.put(
-        FieldDescriptor.Type.BOOL, FIELD_CONSTRAINTS_DESC.findFieldByName("bool"));
-    EXPECTED_STANDARD_CONSTRAINTS.put(
-        FieldDescriptor.Type.STRING, FIELD_CONSTRAINTS_DESC.findFieldByName("string"));
-    EXPECTED_STANDARD_CONSTRAINTS.put(
-        FieldDescriptor.Type.BYTES, FIELD_CONSTRAINTS_DESC.findFieldByName("bytes"));
-    EXPECTED_STANDARD_CONSTRAINTS.put(
-        FieldDescriptor.Type.ENUM, FIELD_CONSTRAINTS_DESC.findFieldByName("enum"));
+    EXPECTED_STANDARD_RULES.put(
+        FieldDescriptor.Type.FLOAT, FIELD_RULES_DESC.findFieldByName("float"));
+    EXPECTED_STANDARD_RULES.put(
+        FieldDescriptor.Type.DOUBLE, FIELD_RULES_DESC.findFieldByName("double"));
+    EXPECTED_STANDARD_RULES.put(
+        FieldDescriptor.Type.INT32, FIELD_RULES_DESC.findFieldByName("int32"));
+    EXPECTED_STANDARD_RULES.put(
+        FieldDescriptor.Type.INT64, FIELD_RULES_DESC.findFieldByName("int64"));
+    EXPECTED_STANDARD_RULES.put(
+        FieldDescriptor.Type.UINT32, FIELD_RULES_DESC.findFieldByName("uint32"));
+    EXPECTED_STANDARD_RULES.put(
+        FieldDescriptor.Type.UINT64, FIELD_RULES_DESC.findFieldByName("uint64"));
+    EXPECTED_STANDARD_RULES.put(
+        FieldDescriptor.Type.SINT32, FIELD_RULES_DESC.findFieldByName("sint32"));
+    EXPECTED_STANDARD_RULES.put(
+        FieldDescriptor.Type.SINT64, FIELD_RULES_DESC.findFieldByName("sint64"));
+    EXPECTED_STANDARD_RULES.put(
+        FieldDescriptor.Type.FIXED32, FIELD_RULES_DESC.findFieldByName("fixed32"));
+    EXPECTED_STANDARD_RULES.put(
+        FieldDescriptor.Type.FIXED64, FIELD_RULES_DESC.findFieldByName("fixed64"));
+    EXPECTED_STANDARD_RULES.put(
+        FieldDescriptor.Type.SFIXED32, FIELD_RULES_DESC.findFieldByName("sfixed32"));
+    EXPECTED_STANDARD_RULES.put(
+        FieldDescriptor.Type.SFIXED64, FIELD_RULES_DESC.findFieldByName("sfixed64"));
+    EXPECTED_STANDARD_RULES.put(
+        FieldDescriptor.Type.BOOL, FIELD_RULES_DESC.findFieldByName("bool"));
+    EXPECTED_STANDARD_RULES.put(
+        FieldDescriptor.Type.STRING, FIELD_RULES_DESC.findFieldByName("string"));
+    EXPECTED_STANDARD_RULES.put(
+        FieldDescriptor.Type.BYTES, FIELD_RULES_DESC.findFieldByName("bytes"));
+    EXPECTED_STANDARD_RULES.put(
+        FieldDescriptor.Type.ENUM, FIELD_RULES_DESC.findFieldByName("enum"));
 
-    EXPECTED_WKT_CONSTRAINTS.put(
-        "google.protobuf.Any", FIELD_CONSTRAINTS_DESC.findFieldByName("any"));
-    EXPECTED_WKT_CONSTRAINTS.put(
-        "google.protobuf.Duration", FIELD_CONSTRAINTS_DESC.findFieldByName("duration"));
-    EXPECTED_WKT_CONSTRAINTS.put(
-        "google.protobuf.Timestamp", FIELD_CONSTRAINTS_DESC.findFieldByName("timestamp"));
+    EXPECTED_WKT_RULES.put("google.protobuf.Any", FIELD_RULES_DESC.findFieldByName("any"));
+    EXPECTED_WKT_RULES.put(
+        "google.protobuf.Duration", FIELD_RULES_DESC.findFieldByName("duration"));
+    EXPECTED_WKT_RULES.put(
+        "google.protobuf.Timestamp", FIELD_RULES_DESC.findFieldByName("timestamp"));
   }
 
   private DescriptorMappings() {}
 
   /**
-   * Returns the {@link FieldConstraints} field that is expected for the given protocol buffer field
-   * kind.
+   * Returns the {@link FieldRules} field that is expected for the given protocol buffer field kind.
    *
    * @param fqn Fully qualified name of protobuf value wrapper.
-   * @return The constraints field descriptor for the specified wrapper fully qualified name.
+   * @return The rules field descriptor for the specified wrapper fully qualified name.
    */
   @Nullable
-  public static FieldDescriptor expectedWrapperConstraints(String fqn) {
+  public static FieldDescriptor expectedWrapperRules(String fqn) {
     switch (fqn) {
       case "google.protobuf.BoolValue":
-        return EXPECTED_STANDARD_CONSTRAINTS.get(FieldDescriptor.Type.BOOL);
+        return EXPECTED_STANDARD_RULES.get(FieldDescriptor.Type.BOOL);
       case "google.protobuf.BytesValue":
-        return EXPECTED_STANDARD_CONSTRAINTS.get(FieldDescriptor.Type.BYTES);
+        return EXPECTED_STANDARD_RULES.get(FieldDescriptor.Type.BYTES);
       case "google.protobuf.DoubleValue":
-        return EXPECTED_STANDARD_CONSTRAINTS.get(FieldDescriptor.Type.DOUBLE);
+        return EXPECTED_STANDARD_RULES.get(FieldDescriptor.Type.DOUBLE);
       case "google.protobuf.FloatValue":
-        return EXPECTED_STANDARD_CONSTRAINTS.get(FieldDescriptor.Type.FLOAT);
+        return EXPECTED_STANDARD_RULES.get(FieldDescriptor.Type.FLOAT);
       case "google.protobuf.Int32Value":
-        return EXPECTED_STANDARD_CONSTRAINTS.get(FieldDescriptor.Type.INT32);
+        return EXPECTED_STANDARD_RULES.get(FieldDescriptor.Type.INT32);
       case "google.protobuf.Int64Value":
-        return EXPECTED_STANDARD_CONSTRAINTS.get(FieldDescriptor.Type.INT64);
+        return EXPECTED_STANDARD_RULES.get(FieldDescriptor.Type.INT64);
       case "google.protobuf.StringValue":
-        return EXPECTED_STANDARD_CONSTRAINTS.get(FieldDescriptor.Type.STRING);
+        return EXPECTED_STANDARD_RULES.get(FieldDescriptor.Type.STRING);
       case "google.protobuf.UInt32Value":
-        return EXPECTED_STANDARD_CONSTRAINTS.get(FieldDescriptor.Type.UINT32);
+        return EXPECTED_STANDARD_RULES.get(FieldDescriptor.Type.UINT32);
       case "google.protobuf.UInt64Value":
-        return EXPECTED_STANDARD_CONSTRAINTS.get(FieldDescriptor.Type.UINT64);
+        return EXPECTED_STANDARD_RULES.get(FieldDescriptor.Type.UINT64);
       default:
         return null;
     }
@@ -172,22 +166,22 @@ final class DescriptorMappings {
   }
 
   /**
-   * Produces the field descriptor from the {@link FieldConstraints} 'type' oneof that matches the
+   * Produces the field descriptor from the {@link FieldRules} 'type' oneof that matches the
    * provided target field descriptor. If the returned value is null, the field does not expect any
-   * standard constraints.
+   * standard rules.
    */
   @Nullable
-  static FieldDescriptor getExpectedConstraintDescriptor(
+  static FieldDescriptor getExpectedRuleDescriptor(
       FieldDescriptor fieldDescriptor, boolean forItems) {
     if (fieldDescriptor.isMapField()) {
-      return DescriptorMappings.MAP_FIELD_CONSTRAINTS_DESC;
+      return DescriptorMappings.MAP_FIELD_RULES_DESC;
     } else if (fieldDescriptor.isRepeated() && !forItems) {
-      return DescriptorMappings.REPEATED_FIELD_CONSTRAINTS_DESC;
+      return DescriptorMappings.REPEATED_FIELD_RULES_DESC;
     } else if (fieldDescriptor.getJavaType() == FieldDescriptor.JavaType.MESSAGE) {
-      return DescriptorMappings.EXPECTED_WKT_CONSTRAINTS.get(
+      return DescriptorMappings.EXPECTED_WKT_RULES.get(
           fieldDescriptor.getMessageType().getFullName());
     } else {
-      return DescriptorMappings.EXPECTED_STANDARD_CONSTRAINTS.get(fieldDescriptor.getType());
+      return DescriptorMappings.EXPECTED_STANDARD_RULES.get(fieldDescriptor.getType());
     }
   }
 

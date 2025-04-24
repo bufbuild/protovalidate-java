@@ -20,14 +20,14 @@ import java.util.ArrayList;
 import java.util.List;
 import org.jspecify.annotations.Nullable;
 
-class ConstraintViolationHelper {
+class RuleViolationHelper {
   private static final List<FieldPathElement> EMPTY_PREFIX = new ArrayList<>();
 
   private final @Nullable FieldPath rulePrefix;
 
   private final @Nullable FieldPathElement fieldPathElement;
 
-  ConstraintViolationHelper(@Nullable ValueEvaluator evaluator) {
+  RuleViolationHelper(@Nullable ValueEvaluator evaluator) {
     if (evaluator != null) {
       this.rulePrefix = evaluator.getNestedRule();
       if (evaluator.getDescriptor() != null) {
@@ -41,7 +41,7 @@ class ConstraintViolationHelper {
     }
   }
 
-  ConstraintViolationHelper(@Nullable FieldPath rulePrefix) {
+  RuleViolationHelper(@Nullable FieldPath rulePrefix) {
     this.rulePrefix = rulePrefix;
     this.fieldPathElement = null;
   }

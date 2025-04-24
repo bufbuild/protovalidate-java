@@ -32,7 +32,7 @@ class CompiledProgram {
   /** The original expression that was compiled into the program from the proto file. */
   private final Expression source;
 
-  /** The field path from FieldConstraints to the constraint rule value. */
+  /** The field path from FieldRules to the rule value. */
   @Nullable private final FieldPath rulePath;
 
   /** The rule value. */
@@ -43,7 +43,7 @@ class CompiledProgram {
    *
    * @param program The compiled CEL program.
    * @param source The original expression that was compiled into the program.
-   * @param rulePath The field path from the FieldConstraints to the rule value.
+   * @param rulePath The field path from the FieldRules to the rule value.
    * @param ruleValue The rule value.
    */
   public CompiledProgram(
@@ -63,7 +63,7 @@ class CompiledProgram {
    *     violations.
    * @throws ExecutionException If the evaluation of the CEL program fails with an error.
    */
-  public ConstraintViolation.@Nullable Builder eval(Value fieldValue, Variable bindings)
+  public RuleViolation.@Nullable Builder eval(Value fieldValue, Variable bindings)
       throws ExecutionException {
     Program.EvalResult evalResult = program.eval(bindings);
     Val val = evalResult.getVal();
@@ -75,33 +75,29 @@ class CompiledProgram {
       if ("".equals(value)) {
         return null;
       }
-      ConstraintViolation.Builder builder =
-          ConstraintViolation.newBuilder()
-              .setConstraintId(this.source.id)
-              .setMessage(value.toString());
+      RuleViolation.Builder builder =
+          RuleViolation.newBuilder().setRuleId(this.source.id).setMessage(value.toString());
       if (fieldValue.fieldDescriptor() != null) {
-        builder.setFieldValue(new ConstraintViolation.FieldValue(fieldValue));
+        builder.setFieldValue(new RuleViolation.FieldValue(fieldValue));
       }
       if (rulePath != null) {
         builder.addAllRulePathElements(rulePath.getElementsList());
       }
       if (ruleValue != null && ruleValue.fieldDescriptor() != null) {
-        builder.setRuleValue(new ConstraintViolation.FieldValue(ruleValue));
+        builder.setRuleValue(new RuleViolation.FieldValue(ruleValue));
       }
       return builder;
     } else if (value instanceof Boolean) {
       if (val.booleanValue()) {
         return null;
       }
-      ConstraintViolation.Builder builder =
-          ConstraintViolation.newBuilder()
-              .setConstraintId(this.source.id)
-              .setMessage(this.source.message);
+      RuleViolation.Builder builder =
+          RuleViolation.newBuilder().setRuleId(this.source.id).setMessage(this.source.message);
       if (rulePath != null) {
         builder.addAllRulePathElements(rulePath.getElementsList());
       }
       if (ruleValue != null && ruleValue.fieldDescriptor() != null) {
-        builder.setRuleValue(new ConstraintViolation.FieldValue(ruleValue));
+        builder.setRuleValue(new RuleViolation.FieldValue(ruleValue));
       }
       return builder;
     } else {

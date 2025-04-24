@@ -38,10 +38,9 @@ class UnknownDescriptorEvaluator implements Evaluator {
   }
 
   @Override
-  public List<ConstraintViolation.Builder> evaluate(Value val, boolean failFast)
+  public List<RuleViolation.Builder> evaluate(Value val, boolean failFast)
       throws ExecutionException {
     return Collections.singletonList(
-        ConstraintViolation.newBuilder()
-            .setMessage("No evaluator available for " + desc.getFullName()));
+        RuleViolation.newBuilder().setMessage("No evaluator available for " + desc.getFullName()));
   }
 }

@@ -15,9 +15,9 @@
 package build.buf.protovalidate;
 
 import build.buf.protovalidate.exceptions.ExecutionException;
-import build.buf.validate.FieldConstraints;
 import build.buf.validate.FieldPath;
 import build.buf.validate.FieldPathElement;
+import build.buf.validate.FieldRules;
 import build.buf.validate.RepeatedRules;
 import java.util.ArrayList;
 import java.util.List;
@@ -30,38 +30,36 @@ class ListEvaluator implements Evaluator {
       FieldPath.newBuilder()
           .addElements(
               FieldPathUtils.fieldPathElement(
-                  FieldConstraints.getDescriptor()
-                      .findFieldByNumber(FieldConstraints.REPEATED_FIELD_NUMBER)))
+                  FieldRules.getDescriptor().findFieldByNumber(FieldRules.REPEATED_FIELD_NUMBER)))
           .addElements(
               FieldPathUtils.fieldPathElement(
                   RepeatedRules.getDescriptor()
                       .findFieldByNumber(RepeatedRules.ITEMS_FIELD_NUMBER)))
           .build();
 
-  private final ConstraintViolationHelper helper;
+  private final RuleViolationHelper helper;
 
-  /** Constraints are checked on every item of the list. */
-  final ValueEvaluator itemConstraints;
+  /** Rules are checked on every item of the list. */
+  final ValueEvaluator itemRules;
 
   /** Constructs a {@link ListEvaluator}. */
   ListEvaluator(ValueEvaluator valueEvaluator) {
-    this.helper = new ConstraintViolationHelper(valueEvaluator);
-    this.itemConstraints = new ValueEvaluator(null, REPEATED_ITEMS_RULE_PATH);
+    this.helper = new RuleViolationHelper(valueEvaluator);
+    this.itemRules = new ValueEvaluator(null, REPEATED_ITEMS_RULE_PATH);
   }
 
   @Override
   public boolean tautology() {
-    return itemConstraints.tautology();
+    return itemRules.tautology();
   }
 
   @Override
-  public List<ConstraintViolation.Builder> evaluate(Value val, boolean failFast)
+  public List<RuleViolation.Builder> evaluate(Value val, boolean failFast)
       throws ExecutionException {
-    List<ConstraintViolation.Builder> allViolations = new ArrayList<>();
+    List<RuleViolation.Builder> allViolations = new ArrayList<>();
     List<Value> repeatedValues = val.repeatedValue();
     for (int i = 0; i < repeatedValues.size(); i++) {
-      List<ConstraintViolation.Builder> violations =
-          itemConstraints.evaluate(repeatedValues.get(i), failFast);
+      List<RuleViolation.Builder> violations = itemRules.evaluate(repeatedValues.get(i), failFast);
       if (violations.isEmpty()) {
         continue;
       }
