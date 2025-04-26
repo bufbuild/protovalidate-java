@@ -1,12 +1,9 @@
 custom_rules:
+  # got: runtime error: error evaluating field_expression.map.enum:ava.lang.IllegalStateException: invalid qualifier type: org.projectnessie.cel.common.types.pb.PbObjectT
   - field_expression/map/enum/invalid
   - field_expression/map/enum/valid
   - field_expression/map/message/invalid
   - field_expression/map/message/valid
-  - field_expression/repeated/enum/invalid
-  - field_expression/repeated/enum/valid
-  - field_expression/repeated/scalar/invalid
-  - field_expression/repeated/scalar/valid
   - field_expression/map/bool/valid
   - field_expression/map/bool/invalid
   - field_expression/map/string/valid
@@ -19,14 +16,38 @@ custom_rules:
   - field_expression/map/int64/invalid
   - field_expression/map/uint64/valid
   - field_expression/map/uint64/invalid
+  # got: compilation err: Failed to compile expression field_expression.repeated.enum:
+  #   ERROR: <input>:1:1: expression of type 'int' cannot be range of a comprehension (must be list, map, or dynamic)
+  #       | this.all(e, e == 1)
+  #       | ^
+  - field_expression/repeated/enum/invalid
+  - field_expression/repeated/enum/valid
+  - field_expression/repeated/scalar/invalid
+  - field_expression/repeated/scalar/valid
 kitchen_sink:
+  # rule_id: "double.in"
+  # message: "value must be in list [456.789000, 123.000000]"
+  # field: "val.double_in" elements:{field_number:1  field_name:"val"  field_type:TYPE_MESSAGE}  elements:{field_number:10  field_name:"double_in"  field_type:TYPE_DOUBLE}
+  # rule: "double.in" elements:{field_number:2  field_name:"double"  field_type:TYPE_MESSAGE}  elements:{field_number:6  field_name:"in"  field_type:TYPE_DOUBLE}
+  #
+  # expecting message "value must be in list [456.789, 123]
+  #
+  # This is prob bc of getField bc it now uses descriptors
   - field/embedded/invalid
   - field/transitive/invalid
   - many/all-non-message-fields/invalid
   - field/invalid
 standard_rules/repeated:
+  # Failure due to string format not adhering to spec
+  #
+  # This is prob bc of getField bc it now uses descriptors
   - items/in/invalid
   - items/not_in/invalid
 standard_rules/well_known_types/duration:
+  # Failure due to string format not adhering to spec
+  #
+  # This is prob bc of getField bc it now uses descriptors
   - in/invalid
   - not in/invalid
+
+
