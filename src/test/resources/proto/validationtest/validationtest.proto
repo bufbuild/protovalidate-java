@@ -59,3 +59,12 @@ message FieldExpressionMapInt32 {
     expression: "this.all(k, this[k] == 1)"
   }];
 }
+
+message FieldExpressionRepeatedScalar {
+    repeated int32 val = 1 [(buf.validate.field).cel = {
+        id: "field_expression.repeated.scalar"
+        message: "test message field_expression.repeated.scalar"
+        expression: "this.all(e, e == 1)"
+    }];
+}
+

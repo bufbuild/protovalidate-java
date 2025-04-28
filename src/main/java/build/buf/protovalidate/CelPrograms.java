@@ -44,6 +44,7 @@ class CelPrograms implements Evaluator {
   @Override
   public List<RuleViolation.Builder> evaluate(Value val, boolean failFast)
       throws ExecutionException {
+    System.err.println("newing this");
     Variable activation = Variable.newThisVariable(val.value(Object.class));
 
     System.err.println("oh ouh oh");

@@ -2,14 +2,14 @@ custom_rules:
   # got: runtime error: error evaluating field_expression.map.enum:ava.lang.IllegalStateException: invalid qualifier type: org.projectnessie.cel.common.types.pb.PbObjectT
   - field_expression/map/enum/invalid
   - field_expression/map/enum/valid
-  # - field_expression/map/message/invalid
-  # - field_expression/map/message/valid
+  - field_expression/map/message/invalid
+  - field_expression/map/message/valid
   - field_expression/map/bool/valid
   - field_expression/map/bool/invalid
   - field_expression/map/string/valid
   - field_expression/map/string/invalid
-  # - field_expression/map/int32/valid
-  # - field_expression/map/int32/invalid
+  - field_expression/map/int32/valid
+  - field_expression/map/int32/invalid
   - field_expression/map/uint32/valid
   - field_expression/map/uint32/invalid
   - field_expression/map/int64/valid
