@@ -22,6 +22,7 @@ import build.buf.validate.Ignore;
 import build.buf.validate.MessageRules;
 import build.buf.validate.OneofRules;
 import build.buf.validate.Rule;
+import com.google.api.expr.v1alpha1.Decl;
 import com.google.protobuf.ByteString;
 import com.google.protobuf.Descriptors;
 import com.google.protobuf.Descriptors.Descriptor;
@@ -138,6 +139,7 @@ class EvaluatorBuilder {
     }
 
     private MessageEvaluator createMessageEvaluator(Descriptor desc) throws CompilationException {
+      System.err.println("all day");
       MessageEvaluator eval = cache.get(desc);
       if (eval != null) {
         return eval;
@@ -157,9 +159,13 @@ class EvaluatorBuilder {
         if (msgRules.getDisabled()) {
           return;
         }
+        System.err.println("process mess ex");
         processMessageExpressions(descriptor, msgRules, msgEval, defaultInstance);
+        System.err.println("process mess ex1");
         processOneofRules(descriptor, msgEval);
+        System.err.println("process mess ex2");
         processFields(descriptor, msgEval);
+        System.err.println("process mess ex DONE");
       } catch (InvalidProtocolBufferException e) {
         throw new CompilationException(
             "failed to parse proto definition: " + desc.getFullName(), e);
@@ -173,12 +179,15 @@ class EvaluatorBuilder {
       if (celList.isEmpty()) {
         return;
       }
+      System.err.println("Compiled ass presidency1");
       Env finalEnv =
           env.extend(
               EnvOption.types(message),
               EnvOption.declarations(
                   Decls.newVar(Variable.THIS_NAME, Decls.newObjectType(desc.getFullName()))));
+      System.err.println("Compiled ass presidency");
       List<CompiledProgram> compiledPrograms = compileRules(celList, finalEnv, false);
+      System.err.println("Bangarang");
       if (compiledPrograms.isEmpty()) {
         throw new CompilationException("compile returned null");
       }
@@ -201,7 +210,9 @@ class EvaluatorBuilder {
       for (FieldDescriptor fieldDescriptor : fields) {
         FieldDescriptor descriptor = desc.findFieldByName(fieldDescriptor.getName());
         FieldRules fieldRules = resolver.resolveFieldRules(descriptor);
+        System.err.println("build field");
         FieldEvaluator fldEval = buildField(descriptor, fieldRules);
+        System.err.println("build field DONE");
         msgEval.append(fldEval);
       }
     }
@@ -321,31 +332,24 @@ class EvaluatorBuilder {
       if (rulesCelList.isEmpty()) {
         return;
       }
-      List<EnvOption> opts;
+
+      Decl celType =
+          Decls.newVar(
+              Variable.THIS_NAME,
+              DescriptorMappings.getCELType(fieldDescriptor, valueEvaluatorEval.hasNestedRule()));
+
+      List<EnvOption> opts = Arrays.asList(EnvOption.declarations(celType));
       if (fieldDescriptor.getJavaType() == FieldDescriptor.JavaType.MESSAGE) {
         try {
           DynamicMessage defaultInstance =
               DynamicMessage.parseFrom(fieldDescriptor.getMessageType(), new byte[0]);
-          opts =
-              Arrays.asList(
-                  EnvOption.types(defaultInstance),
-                  EnvOption.declarations(
-                      Decls.newVar(
-                          Variable.THIS_NAME,
-                          DescriptorMappings.getCELType(
-                              fieldDescriptor, valueEvaluatorEval.hasNestedRule()))));
+          opts.add(EnvOption.types(defaultInstance));
         } catch (InvalidProtocolBufferException e) {
           throw new CompilationException("field descriptor type is invalid " + e.getMessage(), e);
         }
-      } else {
-        opts =
-            Collections.singletonList(
-                EnvOption.declarations(
-                    Decls.newVar(
-                        Variable.THIS_NAME,
-                        DescriptorMappings.protoKindToCELType(fieldDescriptor.getType()))));
       }
-      Env finalEnv = env.extend(opts.toArray(new EnvOption[0]));
+
+      Env finalEnv = env.extend(opts.toArray(new EnvOption[opts.size()]));
       List<CompiledProgram> compiledPrograms = compileRules(rulesCelList, finalEnv, true);
       if (!compiledPrograms.isEmpty()) {
         valueEvaluatorEval.append(new CelPrograms(valueEvaluatorEval, compiledPrograms));

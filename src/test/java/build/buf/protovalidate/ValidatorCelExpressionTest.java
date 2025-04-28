@@ -23,11 +23,11 @@ import build.buf.validate.Violation;
 import com.example.imports.buf.validate.RepeatedRules;
 import com.example.imports.validationtest.FieldExpressionMapInt32;
 import com.example.imports.validationtest.FieldExpressionRepeatedScalar;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
-import java.util.Map;
 import java.util.List;
-import java.util.ArrayList;
+import java.util.Map;
 import org.junit.jupiter.api.Test;
 
 /** This test verifies that custom (CEL-based) field and/or message rules evaluate as expected. */
@@ -35,14 +35,14 @@ public class ValidatorCelExpressionTest {
 
   @Test
   public void testMap() {
-  Map<Integer, Integer> testMap = new HashMap<Integer, Integer>();
-  testMap.put(42, 1);
+    Map<Integer, Integer> testMap = new HashMap<Integer, Integer>();
+    testMap.put(42, 1);
     FieldExpressionMapInt32 msg = FieldExpressionMapInt32.newBuilder().putAllVal(testMap).build();
     Validator validator = new Validator();
     try {
       ValidationResult result = validator.validate(msg);
       System.err.println("Bitch: " + result);
-    // assertThat(false).isTrue();
+      // assertThat(false).isTrue();
     } catch (ValidationException ve) {
       assertThat(ve).isNull();
     }
@@ -50,14 +50,15 @@ public class ValidatorCelExpressionTest {
 
   @Test
   public void testList() {
-  List<Integer> testList = new ArrayList<Integer>();
-  testList.add(1);
-    FieldExpressionRepeatedScalar msg = FieldExpressionRepeatedScalar.newBuilder().addAllVal(testList).build();
+    List<Integer> testList = new ArrayList<Integer>();
+    testList.add(1);
+    FieldExpressionRepeatedScalar msg =
+        FieldExpressionRepeatedScalar.newBuilder().addAllVal(testList).build();
     Validator validator = new Validator();
     try {
       ValidationResult result = validator.validate(msg);
       System.err.println("Bitch: " + result);
-    // assertThat(false).isTrue();
+      // assertThat(false).isTrue();
     } catch (ValidationException ve) {
       assertThat(ve).isNull();
     }

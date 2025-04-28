@@ -50,10 +50,10 @@ class CelPrograms implements Evaluator {
     System.err.println("oh ouh oh");
     List<RuleViolation.Builder> violations = new ArrayList<>();
     for (CompiledProgram program : programs) {
-    System.err.println("Bout to eval");
-    System.err.println(val.toString());
+      System.err.println("Bout to eval");
+      System.err.println(val.toString());
       RuleViolation.Builder violation = program.eval(val, activation);
-    System.err.println("Done evaled");
+      System.err.println("Done evaled");
       if (violation != null) {
         violations.add(violation);
         if (failFast) {
