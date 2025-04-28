@@ -207,6 +207,14 @@ allprojects {
     }
     tasks.withType<Test>().configureEach {
         useJUnitPlatform()
+        this.testLogging {
+            this.showStandardStreams = true
+            events("failed")
+            exceptionFormat = org.gradle.api.tasks.testing.logging.TestExceptionFormat.FULL
+            showExceptions = true
+            showCauses = true
+            showStackTraces = true
+        }
     }
 }
 

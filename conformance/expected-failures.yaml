@@ -2,14 +2,14 @@ custom_rules:
   # got: runtime error: error evaluating field_expression.map.enum:ava.lang.IllegalStateException: invalid qualifier type: org.projectnessie.cel.common.types.pb.PbObjectT
   - field_expression/map/enum/invalid
   - field_expression/map/enum/valid
-  - field_expression/map/message/invalid
-  - field_expression/map/message/valid
+  # - field_expression/map/message/invalid
+  # - field_expression/map/message/valid
   - field_expression/map/bool/valid
   - field_expression/map/bool/invalid
   - field_expression/map/string/valid
   - field_expression/map/string/invalid
-  - field_expression/map/int32/valid
-  - field_expression/map/int32/invalid
+  # - field_expression/map/int32/valid
+  # - field_expression/map/int32/invalid
   - field_expression/map/uint32/valid
   - field_expression/map/uint32/invalid
   - field_expression/map/int64/valid
@@ -20,10 +20,18 @@ custom_rules:
   #   ERROR: <input>:1:1: expression of type 'int' cannot be range of a comprehension (must be list, map, or dynamic)
   #       | this.all(e, e == 1)
   #       | ^
+  #
+  # The above all used to be under this but splitting them out pushed them into another pboject category
+  # and ballooned from the scalar failures
   - field_expression/repeated/enum/invalid
   - field_expression/repeated/enum/valid
   - field_expression/repeated/scalar/invalid
   - field_expression/repeated/scalar/valid
+
+
+  # All the other fixed ones are from the ignore always fixes
+
+
 kitchen_sink:
   # rule_id: "double.in"
   # message: "value must be in list [456.789000, 123.000000]"
@@ -33,6 +41,7 @@ kitchen_sink:
   # expecting message "value must be in list [456.789, 123]
   #
   # This is prob bc of getField bc it now uses descriptors
+  # The way java is returning the values for doubles is adding six units of precision
   - field/embedded/invalid
   - field/transitive/invalid
   - many/all-non-message-fields/invalid
@@ -41,12 +50,14 @@ standard_rules/repeated:
   # Failure due to string format not adhering to spec
   #
   # This is prob bc of getField bc it now uses descriptors
+  # "value must be in list [\"foo\", \"bar\"]"
   - items/in/invalid
   - items/not_in/invalid
 standard_rules/well_known_types/duration:
   # Failure due to string format not adhering to spec
   #
   # This is prob bc of getField bc it now uses descriptors
+  # duration(0, ms) format
   - in/invalid
   - not in/invalid
 

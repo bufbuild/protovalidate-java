@@ -16,15 +16,34 @@ package build.buf.protovalidate;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import build.buf.protovalidate.exceptions.ValidationException;
 import build.buf.validate.FieldPath;
 import build.buf.validate.FieldRules;
 import build.buf.validate.Violation;
 import com.example.imports.buf.validate.RepeatedRules;
+import com.example.imports.validationtest.FieldExpressionMapInt32;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 import org.junit.jupiter.api.Test;
 
 /** This test verifies that custom (CEL-based) field and/or message rules evaluate as expected. */
 public class ValidatorCelExpressionTest {
+
+  @Test
+  public void testBanger() {
+  Map<Integer, Integer> testMap = new HashMap<Integer, Integer>();
+  testMap.put(42, 1);
+    FieldExpressionMapInt32 msg = FieldExpressionMapInt32.newBuilder().putAllVal(testMap).build();
+    Validator validator = new Validator();
+    try {
+      ValidationResult result = validator.validate(msg);
+      System.err.println("Bitch: " + result);
+    // assertThat(false).isTrue();
+    } catch (ValidationException ve) {
+      assertThat(ve).isNull();
+    }
+  }
 
   @Test
   public void testFieldExpressionRepeatedMessage() throws Exception {
