@@ -24,9 +24,3 @@ kitchen_sink:
   - field/transitive/invalid
   - many/all-non-message-fields/invalid
   - field/invalid
-standard_rules/repeated:
-  - items/in/invalid
-  - items/not_in/invalid
-standard_rules/well_known_types/duration:
-  - in/invalid
-  - not in/invalid

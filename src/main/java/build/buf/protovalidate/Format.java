@@ -147,7 +147,7 @@ final class Format {
       DecimalFormat format = new DecimalFormat();
       builder.append(format.format(val.value()));
     } else {
-      formatStringSafe(builder, val, false);
+      formatStringSafe(builder, val);
     }
   }
 
@@ -158,7 +158,7 @@ final class Format {
    * @param val the value to format.
    * @param listType indicates if the value type is a list.
    */
-  private static void formatStringSafe(StringBuilder builder, Val val, boolean listType) {
+  private static void formatStringSafe(StringBuilder builder, Val val) {
     TypeEnum type = val.type().typeEnum();
     if (type == TypeEnum.Bool) {
       builder.append(val.booleanValue());
@@ -172,7 +172,7 @@ final class Format {
       format.setMinimumFractionDigits(6);
       builder.append(format.format(val.value()));
     } else if (type == TypeEnum.String) {
-      builder.append("\"").append(val.value().toString()).append("\"");
+      builder.append(val.value());
     } else if (type == TypeEnum.Bytes) {
       formatBytes(builder, val);
     } else if (type == TypeEnum.Duration) {
@@ -200,7 +200,7 @@ final class Format {
     List list = val.convertToNative(List.class);
     for (int i = 0; i < list.size(); i++) {
       Object obj = list.get(i);
-      formatStringSafe(builder, DefaultTypeAdapter.nativeToValue(Db.newDb(), null, obj), true);
+      formatStringSafe(builder, DefaultTypeAdapter.nativeToValue(Db.newDb(), null, obj));
       if (i != list.size() - 1) {
         builder.append(", ");
       }
