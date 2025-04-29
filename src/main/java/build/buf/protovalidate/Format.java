@@ -176,7 +176,7 @@ final class Format {
     } else if (type == TypeEnum.Bytes) {
       formatBytes(builder, val);
     } else if (type == TypeEnum.Duration) {
-      formatDuration(builder, val, listType);
+      formatDuration(builder, val);
     } else if (type == TypeEnum.Timestamp) {
       formatTimestamp(builder, val);
     } else if (type == TypeEnum.List) {
@@ -225,12 +225,8 @@ final class Format {
    *
    * @param builder the StringBuilder to append the formatted duration value to.
    * @param val the value to format.
-   * @param listType indicates if the value type is a list.
    */
-  private static void formatDuration(StringBuilder builder, Val val, boolean listType) {
-    if (listType) {
-      builder.append("duration(\"");
-    }
+  private static void formatDuration(StringBuilder builder, Val val) {
     Duration duration = val.convertToNative(Duration.class);
 
     double totalSeconds = duration.getSeconds() + (duration.getNanos() / 1_000_000_000.0);
@@ -238,9 +234,6 @@ final class Format {
     DecimalFormat format = new DecimalFormat("0.#########");
     builder.append(format.format(totalSeconds));
     builder.append("s");
-    if (listType) {
-      builder.append("\")");
-    }
   }
 
   /**

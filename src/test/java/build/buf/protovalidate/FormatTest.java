@@ -29,4 +29,12 @@ class FormatTest {
     String formatted = Format.format("%s", val);
     assertThat(formatted).isEqualTo("999999999999");
   }
+
+  @Test
+  void testDurationSecondsOnly() {
+    UintT largeDecimal = UintT.uintOf(999999999999L);
+    ListT val = (ListT) ListT.newValArrayList(null, new Val[] {largeDecimal});
+    String formatted = Format.format("%s", val);
+    assertThat(formatted).isEqualTo("999999999999");
+  }
 }
