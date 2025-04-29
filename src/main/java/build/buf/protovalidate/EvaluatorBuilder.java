@@ -22,6 +22,7 @@ import build.buf.validate.Ignore;
 import build.buf.validate.MessageRules;
 import build.buf.validate.OneofRules;
 import build.buf.validate.Rule;
+import com.google.api.expr.v1alpha1.Decl;
 import com.google.protobuf.ByteString;
 import com.google.protobuf.Descriptors;
 import com.google.protobuf.Descriptors.Descriptor;
@@ -30,7 +31,6 @@ import com.google.protobuf.DynamicMessage;
 import com.google.protobuf.InvalidProtocolBufferException;
 import com.google.protobuf.Message;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
@@ -321,31 +321,23 @@ class EvaluatorBuilder {
       if (rulesCelList.isEmpty()) {
         return;
       }
-      List<EnvOption> opts;
+      Decl celType =
+          Decls.newVar(
+              Variable.THIS_NAME,
+              DescriptorMappings.getCELType(fieldDescriptor, valueEvaluatorEval.hasNestedRule()));
+
+      List<EnvOption> opts = new ArrayList<EnvOption>();
+      opts.add(EnvOption.declarations(celType));
       if (fieldDescriptor.getJavaType() == FieldDescriptor.JavaType.MESSAGE) {
         try {
           DynamicMessage defaultInstance =
               DynamicMessage.parseFrom(fieldDescriptor.getMessageType(), new byte[0]);
-          opts =
-              Arrays.asList(
-                  EnvOption.types(defaultInstance),
-                  EnvOption.declarations(
-                      Decls.newVar(
-                          Variable.THIS_NAME,
-                          DescriptorMappings.getCELType(
-                              fieldDescriptor, valueEvaluatorEval.hasNestedRule()))));
+          opts.add(EnvOption.types(defaultInstance));
         } catch (InvalidProtocolBufferException e) {
           throw new CompilationException("field descriptor type is invalid " + e.getMessage(), e);
         }
-      } else {
-        opts =
-            Collections.singletonList(
-                EnvOption.declarations(
-                    Decls.newVar(
-                        Variable.THIS_NAME,
-                        DescriptorMappings.protoKindToCELType(fieldDescriptor.getType()))));
       }
-      Env finalEnv = env.extend(opts.toArray(new EnvOption[0]));
+      Env finalEnv = env.extend(opts.toArray(new EnvOption[opts.size()]));
       List<CompiledProgram> compiledPrograms = compileRules(rulesCelList, finalEnv, true);
       if (!compiledPrograms.isEmpty()) {
         valueEvaluatorEval.append(new CelPrograms(valueEvaluatorEval, compiledPrograms));
