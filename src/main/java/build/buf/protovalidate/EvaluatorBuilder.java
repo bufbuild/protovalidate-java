@@ -31,7 +31,6 @@ import com.google.protobuf.DynamicMessage;
 import com.google.protobuf.InvalidProtocolBufferException;
 import com.google.protobuf.Message;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
@@ -327,20 +326,18 @@ class EvaluatorBuilder {
               Variable.THIS_NAME,
               DescriptorMappings.getCELType(fieldDescriptor, valueEvaluatorEval.hasNestedRule()));
 
-      List<EnvOption> opts;
+      List<EnvOption> opts = new ArrayList<EnvOption>();
+      opts.add(EnvOption.declarations(celType));
       if (fieldDescriptor.getJavaType() == FieldDescriptor.JavaType.MESSAGE) {
-
         try {
           DynamicMessage defaultInstance =
               DynamicMessage.parseFrom(fieldDescriptor.getMessageType(), new byte[0]);
-          opts = Arrays.asList(EnvOption.types(defaultInstance), EnvOption.declarations(celType));
+          opts.add(EnvOption.types(defaultInstance));
         } catch (InvalidProtocolBufferException e) {
           throw new CompilationException("field descriptor type is invalid " + e.getMessage(), e);
         }
-      } else {
-        opts = Arrays.asList(EnvOption.declarations(celType));
       }
-      Env finalEnv = env.extend(opts.toArray(new EnvOption[0]));
+      Env finalEnv = env.extend(opts.toArray(new EnvOption[opts.size()]));
       List<CompiledProgram> compiledPrograms = compileRules(rulesCelList, finalEnv, true);
       if (!compiledPrograms.isEmpty()) {
         valueEvaluatorEval.append(new CelPrograms(valueEvaluatorEval, compiledPrograms));
