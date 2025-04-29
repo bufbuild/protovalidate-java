@@ -133,9 +133,6 @@ final class DescriptorMappings {
    */
   public static Type protoKindToCELType(FieldDescriptor.Type kind) {
 
-
-
-
     switch (kind) {
       case FLOAT:
       case DOUBLE:

@@ -22,6 +22,7 @@ import build.buf.validate.Ignore;
 import build.buf.validate.MessageRules;
 import build.buf.validate.OneofRules;
 import build.buf.validate.Rule;
+import com.google.api.expr.v1alpha1.Decl;
 import com.google.protobuf.ByteString;
 import com.google.protobuf.Descriptors;
 import com.google.protobuf.Descriptors.Descriptor;
@@ -39,7 +40,6 @@ import java.util.Objects;
 import org.jspecify.annotations.Nullable;
 import org.projectnessie.cel.Env;
 import org.projectnessie.cel.EnvOption;
-import com.google.api.expr.v1alpha1.Decl;
 import org.projectnessie.cel.checker.Decls;
 
 /** A build-through cache of message evaluators keyed off the provided descriptor. */
@@ -322,9 +322,10 @@ class EvaluatorBuilder {
       if (rulesCelList.isEmpty()) {
         return;
       }
-      Decl celType = Decls.newVar(
-                        Variable.THIS_NAME,
-                        DescriptorMappings.getCELType(fieldDescriptor, valueEvaluatorEval.hasNestedRule()));
+      Decl celType =
+          Decls.newVar(
+              Variable.THIS_NAME,
+              DescriptorMappings.getCELType(fieldDescriptor, valueEvaluatorEval.hasNestedRule()));
 
       List<EnvOption> opts;
       if (fieldDescriptor.getJavaType() == FieldDescriptor.JavaType.MESSAGE) {
@@ -332,17 +333,12 @@ class EvaluatorBuilder {
         try {
           DynamicMessage defaultInstance =
               DynamicMessage.parseFrom(fieldDescriptor.getMessageType(), new byte[0]);
-          opts =
-              Arrays.asList(
-                  EnvOption.types(defaultInstance),
-                  EnvOption.declarations(celType));
+          opts = Arrays.asList(EnvOption.types(defaultInstance), EnvOption.declarations(celType));
         } catch (InvalidProtocolBufferException e) {
           throw new CompilationException("field descriptor type is invalid " + e.getMessage(), e);
         }
       } else {
-          opts =
-              Arrays.asList(
-                  EnvOption.declarations(celType));
+        opts = Arrays.asList(EnvOption.declarations(celType));
       }
       Env finalEnv = env.extend(opts.toArray(new EnvOption[0]));
       List<CompiledProgram> compiledPrograms = compileRules(rulesCelList, finalEnv, true);

@@ -17,8 +17,6 @@ package build.buf.protovalidate;
 import org.jspecify.annotations.Nullable;
 import org.projectnessie.cel.interpreter.Activation;
 import org.projectnessie.cel.interpreter.ResolvedValue;
-import java.util.Map;
-import java.util.HashMap;
 
 /**
  * {@link Variable} implements {@link org.projectnessie.cel.interpreter.Activation}, providing a
@@ -58,7 +56,7 @@ class Variable implements Activation {
    */
   public static Variable newThisVariable(@Nullable Value val) {
     if (val == null) {
-    return new Variable(new NowVariable(), THIS_NAME, null);
+      return new Variable(new NowVariable(), THIS_NAME, null);
     }
 
     return new Variable(new NowVariable(), THIS_NAME, val.value(Object.class));

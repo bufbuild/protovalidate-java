@@ -64,9 +64,9 @@ final class ObjectValue implements Value {
   @Override
   public <T> T value(Class<T> clazz) {
     Descriptors.FieldDescriptor.Type type = fieldDescriptor.getType();
-      if (fieldDescriptor.isMapField()) {
-          return clazz.cast(mapValueNew());
-      }
+    if (fieldDescriptor.isMapField()) {
+      return clazz.cast(mapValueNew());
+    }
     if (!fieldDescriptor.isRepeated()
         && (type == Descriptors.FieldDescriptor.Type.UINT32
             || type == Descriptors.FieldDescriptor.Type.UINT64
@@ -106,7 +106,6 @@ final class ObjectValue implements Value {
     Descriptors.FieldDescriptor valDesc = fieldDescriptor.getMessageType().findFieldByNumber(2);
     Map<Object, Object> out = new HashMap<>(input.size());
 
-    
     for (AbstractMessage entry : input) {
       Object keyValue = entry.getField(keyDesc);
       Object valValue = entry.getField(valDesc);
@@ -127,8 +126,6 @@ final class ObjectValue implements Value {
     Descriptors.FieldDescriptor keyDesc = fieldDescriptor.getMessageType().findFieldByNumber(1);
     Descriptors.FieldDescriptor valDesc = fieldDescriptor.getMessageType().findFieldByNumber(2);
     Map<Value, Value> out = new HashMap<>(input.size());
-
-    
     for (AbstractMessage entry : input) {
       Object keyValue = entry.getField(keyDesc);
       Value keyJavaValue = new ObjectValue(keyDesc, keyValue);
