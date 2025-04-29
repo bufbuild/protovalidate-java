@@ -16,9 +16,11 @@ package build.buf.protovalidate;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import com.google.protobuf.Duration;
 import org.junit.jupiter.api.Test;
 import org.projectnessie.cel.common.types.ListT;
 import org.projectnessie.cel.common.types.UintT;
+import org.projectnessie.cel.common.types.pb.DefaultTypeAdapter;
 import org.projectnessie.cel.common.types.ref.Val;
 
 class FormatTest {
@@ -31,10 +33,41 @@ class FormatTest {
   }
 
   @Test
-  void testDurationSecondsOnly() {
-    UintT largeDecimal = UintT.uintOf(999999999999L);
-    ListT val = (ListT) ListT.newValArrayList(null, new Val[] {largeDecimal});
+  void testDuration() {
+    Duration duration = Duration.newBuilder().setSeconds(123).setNanos(45678).build();
+
+    ListT val =
+        (ListT) ListT.newGenericArrayList(DefaultTypeAdapter.Instance, new Duration[] {duration});
     String formatted = Format.format("%s", val);
-    assertThat(formatted).isEqualTo("999999999999");
+    assertThat(formatted).isEqualTo("123.000045678s");
+  }
+
+  @Test
+  void testEmptyDuration() {
+    Duration duration = Duration.newBuilder().build();
+    ListT val =
+        (ListT) ListT.newGenericArrayList(DefaultTypeAdapter.Instance, new Duration[] {duration});
+    String formatted = Format.format("%s", val);
+    assertThat(formatted).isEqualTo("0s");
+  }
+
+  @Test
+  void testDurationSecondsOnly() {
+    Duration duration = Duration.newBuilder().setSeconds(123).build();
+
+    ListT val =
+        (ListT) ListT.newGenericArrayList(DefaultTypeAdapter.Instance, new Duration[] {duration});
+    String formatted = Format.format("%s", val);
+    assertThat(formatted).isEqualTo("123s");
+  }
+
+  @Test
+  void testDurationNanosOnly() {
+    Duration duration = Duration.newBuilder().setNanos(42).build();
+
+    ListT val =
+        (ListT) ListT.newGenericArrayList(DefaultTypeAdapter.Instance, new Duration[] {duration});
+    String formatted = Format.format("%s", val);
+    assertThat(formatted).isEqualTo("0.000000042s");
   }
 }
