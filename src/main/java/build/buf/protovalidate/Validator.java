@@ -71,7 +71,6 @@ public class Validator {
     if (msg == null) {
       return ValidationResult.EMPTY;
     }
-    System.err.println("Validayshun");
     Descriptor descriptor = msg.getDescriptorForType();
     Evaluator evaluator = evaluatorBuilder.load(descriptor);
     List<RuleViolation.Builder> result = evaluator.evaluate(new MessageValue(msg), failFast);

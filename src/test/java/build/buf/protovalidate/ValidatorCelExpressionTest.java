@@ -41,7 +41,7 @@ public class ValidatorCelExpressionTest {
     Validator validator = new Validator();
     try {
       ValidationResult result = validator.validate(msg);
-      System.err.println("Bitch: " + result);
+      System.err.println(result);
       // assertThat(false).isTrue();
     } catch (ValidationException ve) {
       assertThat(ve).isNull();
@@ -57,7 +57,6 @@ public class ValidatorCelExpressionTest {
     Validator validator = new Validator();
     try {
       ValidationResult result = validator.validate(msg);
-      System.err.println("Bitch: " + result);
       // assertThat(false).isTrue();
     } catch (ValidationException ve) {
       assertThat(ve).isNull();

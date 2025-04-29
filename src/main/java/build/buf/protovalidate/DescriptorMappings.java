@@ -132,6 +132,10 @@ final class DescriptorMappings {
    * @return The corresponding CEL type for the protobuf field.
    */
   public static Type protoKindToCELType(FieldDescriptor.Type kind) {
+
+
+
+
     switch (kind) {
       case FLOAT:
       case DOUBLE:

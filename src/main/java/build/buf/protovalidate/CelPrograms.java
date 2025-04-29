@@ -44,16 +44,13 @@ class CelPrograms implements Evaluator {
   @Override
   public List<RuleViolation.Builder> evaluate(Value val, boolean failFast)
       throws ExecutionException {
-    System.err.println("newing this");
-    Variable activation = Variable.newThisVariable(val.value(Object.class));
+    
+    // Variable activation = Variable.newThisVariable(val.value(Object.class));
+    Variable activation = Variable.newThisVariable(val);
 
-    System.err.println("oh ouh oh");
     List<RuleViolation.Builder> violations = new ArrayList<>();
     for (CompiledProgram program : programs) {
-      System.err.println("Bout to eval");
-      System.err.println(val.toString());
       RuleViolation.Builder violation = program.eval(val, activation);
-      System.err.println("Done evaled");
       if (violation != null) {
         violations.add(violation);
         if (failFast) {

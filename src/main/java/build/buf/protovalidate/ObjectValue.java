@@ -64,6 +64,9 @@ final class ObjectValue implements Value {
   @Override
   public <T> T value(Class<T> clazz) {
     Descriptors.FieldDescriptor.Type type = fieldDescriptor.getType();
+      if (fieldDescriptor.isMapField()) {
+          return clazz.cast(mapValueNew());
+      }
     if (!fieldDescriptor.isRepeated()
         && (type == Descriptors.FieldDescriptor.Type.UINT32
             || type == Descriptors.FieldDescriptor.Type.UINT64
@@ -93,6 +96,27 @@ final class ObjectValue implements Value {
     return out;
   }
 
+  public Map<Object, Object> mapValueNew() {
+    List<AbstractMessage> input =
+        value instanceof List
+            ? (List<AbstractMessage>) value
+            : Collections.singletonList((AbstractMessage) value);
+
+    Descriptors.FieldDescriptor keyDesc = fieldDescriptor.getMessageType().findFieldByNumber(1);
+    Descriptors.FieldDescriptor valDesc = fieldDescriptor.getMessageType().findFieldByNumber(2);
+    Map<Object, Object> out = new HashMap<>(input.size());
+
+    
+    for (AbstractMessage entry : input) {
+      Object keyValue = entry.getField(keyDesc);
+      Object valValue = entry.getField(valDesc);
+
+      out.put(keyValue, valValue);
+    }
+
+    return out;
+  }
+
   @Override
   public Map<Value, Value> mapValue() {
     List<AbstractMessage> input =
@@ -103,6 +127,8 @@ final class ObjectValue implements Value {
     Descriptors.FieldDescriptor keyDesc = fieldDescriptor.getMessageType().findFieldByNumber(1);
     Descriptors.FieldDescriptor valDesc = fieldDescriptor.getMessageType().findFieldByNumber(2);
     Map<Value, Value> out = new HashMap<>(input.size());
+
+    
     for (AbstractMessage entry : input) {
       Object keyValue = entry.getField(keyDesc);
       Value keyJavaValue = new ObjectValue(keyDesc, keyValue);
