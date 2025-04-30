@@ -15,17 +15,62 @@
 package build.buf.protovalidate;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import com.google.protobuf.Duration;
 import org.junit.jupiter.api.Test;
+import org.projectnessie.cel.common.types.DoubleT;
+import org.projectnessie.cel.common.types.Err.ErrException;
 import org.projectnessie.cel.common.types.ListT;
+import org.projectnessie.cel.common.types.StringT;
 import org.projectnessie.cel.common.types.UintT;
 import org.projectnessie.cel.common.types.pb.DefaultTypeAdapter;
 import org.projectnessie.cel.common.types.ref.Val;
 
 class FormatTest {
   @Test
-  void largeDecimalValuesAreProperlyFormatted() {
+  void testNotEnoughArgumentsThrows() {
+    StringT one = StringT.stringOf("one");
+    ListT val = (ListT) ListT.newValArrayList(null, new Val[] {one});
+
+    assertThatThrownBy(
+            () -> {
+              Format.format("first value: %s and  %s", val);
+            })
+        .isInstanceOf(ErrException.class)
+        .hasMessageContaining("format: not enough arguments");
+  }
+
+  @Test
+  void testDouble() {
+    ListT val =
+        (ListT)
+            ListT.newValArrayList(
+                null,
+                new Val[] {
+                  DoubleT.doubleOf(-1.20000000000),
+                  DoubleT.doubleOf(-1.2),
+                  DoubleT.doubleOf(-1.230),
+                  DoubleT.doubleOf(-1.002),
+                  DoubleT.doubleOf(-0.1),
+                  DoubleT.doubleOf(-.1),
+                  DoubleT.doubleOf(-1),
+                  DoubleT.doubleOf(-0.0),
+                  DoubleT.doubleOf(0),
+                  DoubleT.doubleOf(0.0),
+                  DoubleT.doubleOf(1),
+                  DoubleT.doubleOf(0.1),
+                  DoubleT.doubleOf(.1),
+                  DoubleT.doubleOf(1.002),
+                  DoubleT.doubleOf(1.230),
+                  DoubleT.doubleOf(1.20000000000)
+                });
+    String formatted = Format.format("%d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d", val);
+    assertThat(formatted).isEqualTo("-1.2, -1.2, -1.23, -1.002, -0.1, -0.1, -1, -0, 0, 0, 1, 0.1, 0.1, 1.002, 1.23, 1.2");
+  }
+
+  @Test
+  void testLargeDecimalValuesAreProperlyFormatted() {
     UintT largeDecimal = UintT.uintOf(999999999999L);
     ListT val = (ListT) ListT.newValArrayList(null, new Val[] {largeDecimal});
     String formatted = Format.format("%s", val);
