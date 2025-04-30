@@ -98,9 +98,9 @@ final class ObjectValue implements Value {
 
   // TODO - This is essentially the same functionality as `mapValue` except that it 
   // returns a Map of Objects rather than a Map of protovalidate-java Value. 
-  // Trying to bind to a variable (i.e. `this`) using a Map of Values does not work
-  // because CEL-Java doesn't know how to interpret a
-  private Map<Object, Object> getMapBinding() {
+  // Trying to bind a Map of Values to a CEL variable (i.e. `this`) does not work
+  // because CEL-Java doesn't know how to interpret that proprietary Value object. 
+  private Map<Object, Object> mapValueAsObject() {
     List<AbstractMessage> input =
         value instanceof List
             ? (List<AbstractMessage>) value
