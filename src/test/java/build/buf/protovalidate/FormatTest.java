@@ -65,8 +65,11 @@ class FormatTest {
                   DoubleT.doubleOf(1.230),
                   DoubleT.doubleOf(1.20000000000)
                 });
-    String formatted = Format.format("%d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d", val);
-    assertThat(formatted).isEqualTo("-1.2, -1.2, -1.23, -1.002, -0.1, -0.1, -1, -0, 0, 0, 1, 0.1, 0.1, 1.002, 1.23, 1.2");
+    String formatted =
+        Format.format("%d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d", val);
+    assertThat(formatted)
+        .isEqualTo(
+            "-1.2, -1.2, -1.23, -1.002, -0.1, -0.1, -1, -0, 0, 0, 1, 0.1, 0.1, 1.002, 1.23, 1.2");
   }
 
   @Test

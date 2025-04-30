@@ -34,7 +34,7 @@ import org.projectnessie.cel.common.types.ref.Val;
 final class Format {
   private static final char[] HEX_ARRAY = "0123456789ABCDEF".toCharArray();
   private static final char[] LOWER_HEX_ARRAY = "0123456789abcdef".toCharArray();
-private static final DecimalFormat decimalFormat = new DecimalFormat("0.#########");
+  private static final DecimalFormat decimalFormat = new DecimalFormat("0.#########");
 
   /**
    * Format the string with a {@link ListT}.
@@ -146,7 +146,7 @@ private static final DecimalFormat decimalFormat = new DecimalFormat("0.########
     } else if (type == TypeEnum.String) {
       builder.append(val.value());
     } else if (type == TypeEnum.Bytes) {
-        builder.append(new String((byte[]) val.value(), StandardCharsets.UTF_8));
+      builder.append(new String((byte[]) val.value(), StandardCharsets.UTF_8));
     } else if (type == TypeEnum.Int || type == TypeEnum.Uint || type == TypeEnum.Double) {
       formatDecimal(builder, val);
     } else if (type == TypeEnum.Duration) {
@@ -239,6 +239,6 @@ private static final DecimalFormat decimalFormat = new DecimalFormat("0.########
    * @param val the value to format.
    */
   private static void formatDecimal(StringBuilder builder, Val val) {
-      builder.append(decimalFormat.format(val.value()));
+    builder.append(decimalFormat.format(val.value()));
   }
 }
