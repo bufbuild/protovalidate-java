@@ -15,8 +15,3 @@ custom_rules:
   - field_expression/map/int64/invalid
   - field_expression/map/uint64/valid
   - field_expression/map/uint64/invalid
-kitchen_sink:
-  - field/embedded/invalid
-  - field/transitive/invalid
-  - many/all-non-message-fields/invalid
-  - field/invalid
