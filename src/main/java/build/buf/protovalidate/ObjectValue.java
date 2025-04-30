@@ -64,6 +64,9 @@ final class ObjectValue implements Value {
   @Override
   public <T> T value(Class<T> clazz) {
     Descriptors.FieldDescriptor.Type type = fieldDescriptor.getType();
+    if (fieldDescriptor.isMapField()) {
+      return clazz.cast(getMapBinding());
+    }
     if (!fieldDescriptor.isRepeated()
         && (type == Descriptors.FieldDescriptor.Type.UINT32
             || type == Descriptors.FieldDescriptor.Type.UINT64
@@ -90,6 +93,30 @@ final class ObjectValue implements Value {
         out.add(new ObjectValue(fieldDescriptor, o));
       }
     }
+    return out;
+  }
+
+  // TODO - This is essentially the same functionality as `mapValue` except that it 
+  // returns a Map of Objects rather than a Map of protovalidate-java Value. 
+  // Trying to bind to a variable (i.e. `this`) using a Map of Values does not work
+  // because CEL-Java doesn't know how to interpret a
+  private Map<Object, Object> getMapBinding() {
+    List<AbstractMessage> input =
+        value instanceof List
+            ? (List<AbstractMessage>) value
+            : Collections.singletonList((AbstractMessage) value);
+
+    Descriptors.FieldDescriptor keyDesc = fieldDescriptor.getMessageType().findFieldByNumber(1);
+    Descriptors.FieldDescriptor valDesc = fieldDescriptor.getMessageType().findFieldByNumber(2);
+    Map<Object, Object> out = new HashMap<>(input.size());
+
+    for (AbstractMessage entry : input) {
+      Object keyValue = entry.getField(keyDesc);
+      Object valValue = entry.getField(valDesc);
+
+      out.put(keyValue, valValue);
+    }
+
     return out;
   }
 
