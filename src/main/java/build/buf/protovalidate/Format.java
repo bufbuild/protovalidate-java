@@ -139,52 +139,25 @@ final class Format {
    * @param val the value to format.
    */
   private static void formatString(StringBuilder builder, Val val) {
-    if (val.type().typeEnum() == TypeEnum.String) {
-      builder.append(val.value());
-    } else if (val.type().typeEnum() == TypeEnum.Bytes) {
-      builder.append(new String((byte[]) val.value(), StandardCharsets.UTF_8));
-    } else if (val.type().typeEnum() == TypeEnum.Double) {
-      DecimalFormat format = new DecimalFormat();
-      builder.append(format.format(val.value()));
-    } else {
-      formatStringSafe(builder, val, false);
-    }
-  }
-
-  /**
-   * Formats a string value safely for other value types.
-   *
-   * @param builder the StringBuilder to append the formatted string to.
-   * @param val the value to format.
-   * @param listType indicates if the value type is a list.
-   */
-  private static void formatStringSafe(StringBuilder builder, Val val, boolean listType) {
     TypeEnum type = val.type().typeEnum();
     if (type == TypeEnum.Bool) {
       builder.append(val.booleanValue());
-    } else if (type == TypeEnum.Int || type == TypeEnum.Uint) {
-      formatDecimal(builder, val);
-    } else if (type == TypeEnum.Double) {
-      // When a double is nested in another type (e.g. a list) it will have a minimum of 6 decimal
-      // digits. This is to maintain consistency with the Go CEL runtime.
-      DecimalFormat format = new DecimalFormat();
-      format.setMaximumFractionDigits(Integer.MAX_VALUE);
-      format.setMinimumFractionDigits(6);
-      builder.append(format.format(val.value()));
-    } else if (type == TypeEnum.String) {
-      builder.append("\"").append(val.value().toString()).append("\"");
+    } else if (type == TypeEnum.String || type == TypeEnum.Int || type == TypeEnum.Uint) {
+      builder.append(val.value());
     } else if (type == TypeEnum.Bytes) {
-      formatBytes(builder, val);
+      builder.append(new String((byte[]) val.value(), StandardCharsets.UTF_8));
+    } else if (type == TypeEnum.Double) {
+      formatDecimal(builder, val);
     } else if (type == TypeEnum.Duration) {
-      formatDuration(builder, val, listType);
+      formatDuration(builder, val);
     } else if (type == TypeEnum.Timestamp) {
       formatTimestamp(builder, val);
     } else if (type == TypeEnum.List) {
       formatList(builder, val);
     } else if (type == TypeEnum.Map) {
-      throw new ErrException("unimplemented stringSafe map type");
+      throw new ErrException("unimplemented string map type");
     } else if (type == TypeEnum.Null) {
-      throw new ErrException("unimplemented stringSafe null type");
+      throw new ErrException("unimplemented string null type");
     }
   }
 
@@ -200,7 +173,7 @@ final class Format {
     List list = val.convertToNative(List.class);
     for (int i = 0; i < list.size(); i++) {
       Object obj = list.get(i);
-      formatStringSafe(builder, DefaultTypeAdapter.nativeToValue(Db.newDb(), null, obj), true);
+      formatString(builder, DefaultTypeAdapter.nativeToValue(Db.newDb(), null, obj));
       if (i != list.size() - 1) {
         builder.append(", ");
       }
@@ -225,35 +198,15 @@ final class Format {
    *
    * @param builder the StringBuilder to append the formatted duration value to.
    * @param val the value to format.
-   * @param listType indicates if the value type is a list.
    */
-  private static void formatDuration(StringBuilder builder, Val val, boolean listType) {
-    if (listType) {
-      builder.append("duration(\"");
-    }
+  private static void formatDuration(StringBuilder builder, Val val) {
     Duration duration = val.convertToNative(Duration.class);
 
     double totalSeconds = duration.getSeconds() + (duration.getNanos() / 1_000_000_000.0);
 
-    DecimalFormat format = new DecimalFormat("0.#########");
-    builder.append(format.format(totalSeconds));
+    DecimalFormat formatter = new DecimalFormat("0.#########");
+    builder.append(formatter.format(totalSeconds));
     builder.append("s");
-    if (listType) {
-      builder.append("\")");
-    }
-  }
-
-  /**
-   * Formats a byte array value.
-   *
-   * @param builder the StringBuilder to append the formatted byte array value to.
-   * @param val the value to format.
-   */
-  private static void formatBytes(StringBuilder builder, Val val) {
-    builder
-        .append("\"")
-        .append(new String((byte[]) val.value(), StandardCharsets.UTF_8))
-        .append("\"");
   }
 
   /**
@@ -283,9 +236,10 @@ final class Format {
    * Formats a decimal value.
    *
    * @param builder the StringBuilder to append the formatted decimal value to.
-   * @param arg the value to format.
+   * @param val the value to format.
    */
-  private static void formatDecimal(StringBuilder builder, Val arg) {
-    builder.append(arg.value());
+  private static void formatDecimal(StringBuilder builder, Val val) {
+    DecimalFormat formatter = new DecimalFormat("0.#########");
+    builder.append(formatter.format(val.value()));
   }
 }
