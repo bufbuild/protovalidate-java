@@ -34,7 +34,6 @@ import org.projectnessie.cel.common.types.ref.Val;
 final class Format {
   private static final char[] HEX_ARRAY = "0123456789ABCDEF".toCharArray();
   private static final char[] LOWER_HEX_ARRAY = "0123456789abcdef".toCharArray();
-  private static final DecimalFormat decimalFormat = new DecimalFormat("0.#########");
 
   /**
    * Format the string with a {@link ListT}.
@@ -143,11 +142,11 @@ final class Format {
     TypeEnum type = val.type().typeEnum();
     if (type == TypeEnum.Bool) {
       builder.append(val.booleanValue());
-    } else if (type == TypeEnum.String) {
+    } else if (type == TypeEnum.String || type == TypeEnum.Int || type == TypeEnum.Uint) {
       builder.append(val.value());
     } else if (type == TypeEnum.Bytes) {
       builder.append(new String((byte[]) val.value(), StandardCharsets.UTF_8));
-    } else if (type == TypeEnum.Int || type == TypeEnum.Uint || type == TypeEnum.Double) {
+    } else if (type == TypeEnum.Double) {
       formatDecimal(builder, val);
     } else if (type == TypeEnum.Duration) {
       formatDuration(builder, val);
@@ -205,7 +204,8 @@ final class Format {
 
     double totalSeconds = duration.getSeconds() + (duration.getNanos() / 1_000_000_000.0);
 
-    builder.append(decimalFormat.format(totalSeconds));
+    DecimalFormat formatter = new DecimalFormat("0.#########");
+    builder.append(formatter.format(totalSeconds));
     builder.append("s");
   }
 
@@ -239,6 +239,7 @@ final class Format {
    * @param val the value to format.
    */
   private static void formatDecimal(StringBuilder builder, Val val) {
-    builder.append(decimalFormat.format(val.value()));
+    DecimalFormat formatter = new DecimalFormat("0.#########");
+    builder.append(formatter.format(val.value()));
   }
 }
