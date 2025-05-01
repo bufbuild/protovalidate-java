@@ -64,6 +64,9 @@ final class ObjectValue implements Value {
   @Override
   public <T> T value(Class<T> clazz) {
     Descriptors.FieldDescriptor.Type type = fieldDescriptor.getType();
+    if (fieldDescriptor.isMapField()) {
+      return clazz.cast(mapValueAsObject());
+    }
     if (!fieldDescriptor.isRepeated()
         && (type == Descriptors.FieldDescriptor.Type.UINT32
             || type == Descriptors.FieldDescriptor.Type.UINT64
@@ -90,6 +93,38 @@ final class ObjectValue implements Value {
         out.add(new ObjectValue(fieldDescriptor, o));
       }
     }
+    return out;
+  }
+
+  // TODO - This should be refactored at some point.
+  //
+  // This is essentially the same functionality as `mapValue` except that it
+  // returns a Map of Objects rather than a Map of protovalidate-java Values.
+  // It is used for binding to a CEL variable (i.e. `this`).
+  // Trying to bind a Map of Values to a CEL variable does not work because
+  // CEL-Java doesn't know how to interpret that proprietary Value object.
+  //
+  // Ideally, we should be using CEL-Java's org.projectnessie.cel.common.types.ref.Val
+  // type instead of our own custom Value abstraction. However, since we are evaluating
+  // Java CEL implementations, we should probably wait until that decision is made before
+  // making such a large refactor. This should suffice as a stopgap until then.
+  private Map<Object, Object> mapValueAsObject() {
+    List<AbstractMessage> input =
+        value instanceof List
+            ? (List<AbstractMessage>) value
+            : Collections.singletonList((AbstractMessage) value);
+
+    Descriptors.FieldDescriptor keyDesc = fieldDescriptor.getMessageType().findFieldByNumber(1);
+    Descriptors.FieldDescriptor valDesc = fieldDescriptor.getMessageType().findFieldByNumber(2);
+    Map<Object, Object> out = new HashMap<>(input.size());
+
+    for (AbstractMessage entry : input) {
+      Object keyValue = entry.getField(keyDesc);
+      Object valValue = entry.getField(valDesc);
+
+      out.put(keyValue, valValue);
+    }
+
     return out;
   }
 
