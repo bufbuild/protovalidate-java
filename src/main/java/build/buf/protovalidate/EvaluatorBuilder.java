@@ -51,6 +51,7 @@ class EvaluatorBuilder {
 
   private final Env env;
   private final boolean disableLazy;
+  private final List<Descriptor> descriptors;
   private final RuleCache rules;
 
   /**
@@ -61,8 +62,27 @@ class EvaluatorBuilder {
    */
   public EvaluatorBuilder(Env env, Config config) {
     this.env = env;
-    this.disableLazy = config.isDisableLazy();
+    this.descriptors = new ArrayList<Descriptor>();
+    this.disableLazy = false;
     this.rules = new RuleCache(env, config);
+  }
+
+  /**
+   * Constructs a new {@link EvaluatorBuilder}.
+   *
+   * @param env The CEL environment for evaluation.
+   * @param config The configuration to use for the evaluation.
+   */
+  public EvaluatorBuilder(Env env, Config config, List<Descriptor> descriptors, boolean disableLazy)
+      throws CompilationException {
+    this.env = env;
+    this.descriptors = descriptors;
+    this.disableLazy = disableLazy;
+    this.rules = new RuleCache(env, config);
+
+    for (Descriptor descriptor : this.descriptors) {
+      this.build(descriptor);
+    }
   }
 
   /**

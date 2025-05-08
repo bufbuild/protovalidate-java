@@ -20,14 +20,29 @@ import build.buf.protovalidate.exceptions.ValidationException;
 import com.google.protobuf.Descriptors.Descriptor;
 import com.google.protobuf.Message;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import org.jspecify.annotations.Nullable;
 import org.projectnessie.cel.Env;
 import org.projectnessie.cel.Library;
 
-/** Performs validation on any proto.Message values. The Validator is safe for concurrent use. */
-public class Validator {
+public class Validator implements IValidator {
   /** evaluatorBuilder is the builder used to construct the evaluator for a given message. */
   private final EvaluatorBuilder evaluatorBuilder;
+
+
+  // For convenience
+  public static IValidator defaultInstance() {
+    return newBuilder().build();
+  }
+
+  public static SafeBuilder newBuilder() {
+    return new SafeBuilder();
+  }
+
+  public static EagerBuilder newBuilder(List<Descriptor> descriptors, boolean disableLazy) {
+    return new EagerBuilder(descriptors, disableLazy);
+  }
 
   /**
    * failFast indicates whether the validator should stop evaluating rules after the first
@@ -35,20 +50,7 @@ public class Validator {
    */
   private final boolean failFast;
 
-  /**
-   * Constructs a new {@link Validator}.
-   *
-   * @param config specified configuration.
-   */
-  public Validator(Config config) {
-    Env env = Env.newEnv(Library.Lib(new ValidateLibrary()));
-    this.evaluatorBuilder = new EvaluatorBuilder(env, config);
-    this.failFast = config.isFailFast();
-  }
-
-  /** Constructs a new {@link Validator} with a default configuration. */
-  public Validator() {
-    Config config = Config.newBuilder().build();
+  Validator(Config config) {
     Env env = Env.newEnv(Library.Lib(new ValidateLibrary()));
     this.evaluatorBuilder = new EvaluatorBuilder(env, config);
     this.failFast = config.isFailFast();
@@ -73,7 +75,7 @@ public class Validator {
     }
     Descriptor descriptor = msg.getDescriptorForType();
     Evaluator evaluator = evaluatorBuilder.load(descriptor);
-    List<RuleViolation.Builder> result = evaluator.evaluate(new MessageValue(msg), failFast);
+    List<RuleViolation.Builder> result = evaluator.evaluate(new MessageValue(msg), this.failFast);
     if (result.isEmpty()) {
       return ValidationResult.EMPTY;
     }
@@ -83,31 +85,65 @@ public class Validator {
     }
     return new ValidationResult(violations);
   }
+}
 
-  /**
-   * Loads messages that are expected to be validated, allowing the {@link Validator} to warm up.
-   * Messages included transitively (i.e., fields with message values) are automatically handled.
-   *
-   * @param messages the list of {@link Message} to load.
-   * @throws CompilationException if there are any compilation errors during warm-up.
-   */
-  public void loadMessages(Message... messages) throws CompilationException {
-    for (Message message : messages) {
-      this.evaluatorBuilder.load(message.getDescriptorForType());
-    }
+abstract class Builder<T extends Builder<T>> {
+  @Nullable protected Config config;
+
+  public T withConfig(Config config) {
+    this.config = config;
+    return self();
   }
 
-  /**
-   * Loads message descriptors that are expected to be validated, allowing the {@link Validator} to
-   * warm up. Messages included transitively (i.e., fields with message values) are automatically
-   * handled.
-   *
-   * @param descriptors the list of {@link Descriptor} to load.
-   * @throws CompilationException if there are any compilation errors during warm-up.
-   */
-  public void loadDescriptors(Descriptor... descriptors) throws CompilationException {
-    for (Descriptor descriptor : descriptors) {
-      this.evaluatorBuilder.load(descriptor);
+  abstract T self();
+}
+
+public class EagerBuilder extends Builder<EagerBuilder> {
+  private final List<Descriptor> descriptors;
+  private final boolean disableLazy;
+
+  EagerBuilder(List<Descriptor> descriptors, boolean disableLazy) {
+    this.descriptors = Collections.unmodifiableList(descriptors);
+    this.disableLazy = disableLazy;
+  }
+
+  IValidator build() throws CompilationException, IllegalStateException {
+    if (disableLazy && this.descriptors.size() == 0) {
+      throw new IllegalStateException();
     }
+
+    Config cfg = this.config;
+    if (cfg == null) {
+      cfg = Config.newBuilder().build();
+    }
+    return new Validator(cfg);
+  }
+
+  @Override
+  EagerBuilder self() {
+    return this;
+  }
+
+  boolean getDisableLazy() {
+    return this.disableLazy;
+  }
+
+  List<Descriptor> getDescriptors() {
+    return this.descriptors;
+  }
+}
+
+public class SafeBuilder extends Builder<SafeBuilder> {
+  public IValidator build() {
+    Config cfg = this.config;
+    if (cfg == null) {
+      cfg = Config.newBuilder().build();
+    }
+    return new Validator(cfg);
+  }
+
+  @Override
+  SafeBuilder self() {
+    return this;
   }
 }

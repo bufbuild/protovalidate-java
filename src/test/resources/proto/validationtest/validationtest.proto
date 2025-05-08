@@ -17,6 +17,7 @@ syntax = "proto3";
 package validationtest;
 
 import "buf/validate/validate.proto";
+import "google/protobuf/duration.proto";
 
 message ExampleFieldRules {
   string regex_string_field = 1 [(buf.validate.field).string.pattern = "^[a-z0-9]{1,9}$"];
@@ -51,3 +52,20 @@ message ExampleMessageRules {
   string primary_email = 1;
   string secondary_email = 2;
 }
+
+message FieldExpressionMapInt32 {
+  map<int32, int32> val = 1 [(buf.validate.field).cel = {
+    id: "field_expression.map.int32"
+    message: "all map values must equal 1"
+    expression: "this.all(k, this[k] == 1)"
+  }];
+}
+
+message FieldExpressionRepeatedScalar {
+    repeated int32 val = 1 [(buf.validate.field).cel = {
+        id: "field_expression.repeated.scalar"
+        message: "test message field_expression.repeated.scalar"
+        expression: "this.all(e, e == 1)"
+    }];
+}
+

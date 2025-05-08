@@ -60,12 +60,11 @@ public class Main {
       TypeRegistry typeRegistry = FileDescriptorUtil.createTypeRegistry(fileDescriptorMap.values());
       ExtensionRegistry extensionRegistry =
           FileDescriptorUtil.createExtensionRegistry(fileDescriptorMap.values());
-      Validator validator =
-          new Validator(
-              Config.newBuilder()
+    Config cfg = Config.newBuilder()
                   .setTypeRegistry(typeRegistry)
                   .setExtensionRegistry(extensionRegistry)
-                  .build());
+                  .build();
+      Validator validator = Validator.newBuilder().withConfig(cfg).build();
       TestConformanceResponse.Builder responseBuilder = TestConformanceResponse.newBuilder();
       Map<String, TestResult> resultsMap = new HashMap<>();
       for (Map.Entry<String, Any> entry : request.getCasesMap().entrySet()) {
