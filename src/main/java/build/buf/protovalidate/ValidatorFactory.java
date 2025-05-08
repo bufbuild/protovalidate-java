@@ -46,7 +46,8 @@ public class ValidatorFactory {
      */
     public Validator build() throws CompilationException, IllegalStateException {
       if (disableLazy && this.descriptors.size() == 0) {
-        throw new IllegalStateException();
+        throw new IllegalStateException(
+            "a list of descriptors is required when disableLazy is true");
       }
 
       Config cfg = this.config;
@@ -85,20 +86,20 @@ public class ValidatorFactory {
     }
   }
 
-  /** 
-   * A convenience function for creating a new validator with a default configuration. 
+  /**
+   * A convenience function for creating a new validator with a default configuration.
    *
    * @return A Validator instance
-   **/
+   */
   public static Validator defaultInstance() {
     return newBuilder().build();
   }
 
-  /** 
-   * Creates a new builder for a validator. 
+  /**
+   * Creates a new builder for a validator.
    *
    * @return A Validator instance
-   **/
+   */
   public static Builder newBuilder() {
     return new Builder();
   }

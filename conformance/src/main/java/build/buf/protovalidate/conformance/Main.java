@@ -73,6 +73,7 @@ public class Main {
         TestResult testResult = testCase(validator, descriptorMap, entry.getValue());
         resultsMap.put(entry.getKey(), testResult);
       }
+      
       responseBuilder.putAllResults(resultsMap);
       return responseBuilder.build();
     } catch (Exception e) {

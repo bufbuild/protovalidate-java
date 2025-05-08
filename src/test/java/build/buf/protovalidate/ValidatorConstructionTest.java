@@ -15,11 +15,12 @@
 package build.buf.protovalidate;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 import static org.assertj.core.api.Assertions.fail;
 
+import build.buf.protovalidate.exceptions.ValidationException;
 import com.example.imports.validationtest.FieldExpressionMapInt32;
 import com.google.protobuf.Descriptors.Descriptor;
-import build.buf.protovalidate.exceptions.ValidationException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -27,6 +28,24 @@ import java.util.Map;
 import org.junit.jupiter.api.Test;
 
 public class ValidatorConstructionTest {
+  @Test
+  public void testDefaultInstance() {
+    Map<Integer, Integer> testMap = new HashMap<Integer, Integer>();
+    testMap.put(42, 42);
+    FieldExpressionMapInt32 msg = FieldExpressionMapInt32.newBuilder().putAllVal(testMap).build();
+
+    Validator validator = ValidatorFactory.defaultInstance();
+    try {
+      ValidationResult result = validator.validate(msg);
+      assertThat(result.isSuccess()).isFalse();
+      assertThat(result.getViolations().size()).isEqualTo(1);
+      assertThat(result.getViolations().get(0).toProto().getMessage())
+          .isEqualTo("all map values must equal 1");
+    } catch (ValidationException e) {
+      fail("unexpected exception thrown", e);
+    }
+  }
+
   @Test
   public void testLazyBuilderWithConfig() {
     Map<Integer, Integer> testMap = new HashMap<Integer, Integer>();
@@ -39,18 +58,19 @@ public class ValidatorConstructionTest {
       ValidationResult result = validator.validate(msg);
       assertThat(result.isSuccess()).isFalse();
       assertThat(result.getViolations().size()).isEqualTo(1);
+      assertThat(result.getViolations().get(0).toProto().getMessage())
+          .isEqualTo("all map values must equal 1");
     } catch (ValidationException e) {
-        fail("unexpected exception thrown", e);
+      fail("unexpected exception thrown", e);
     }
   }
 
   @Test
-  public void testWarmup() {
+  public void testEagerBuilderWithConfig() {
     Map<Integer, Integer> testMap = new HashMap<Integer, Integer>();
     testMap.put(42, 42);
     FieldExpressionMapInt32 msg = FieldExpressionMapInt32.newBuilder().putAllVal(testMap).build();
 
-    // Config cfg = Config.newBuilder().setFailFast(true).build();
     List<Descriptor> seedDescriptors = new ArrayList<Descriptor>();
     FieldExpressionMapInt32 reg = FieldExpressionMapInt32.newBuilder().build();
     seedDescriptors.add(reg.getDescriptorForType());
@@ -59,13 +79,24 @@ public class ValidatorConstructionTest {
     try {
       Validator validator =
           ValidatorFactory.newBuilder(seedDescriptors, true).withConfig(cfg).build();
-      validator.validate(msg);
-      // assertThat(result.isSuccess()).isFalse();
-      // assertThat(result.getViolations().size()).isEqualTo(1);
-      // System.err.println(result);
-    } catch (Exception e) {
-      System.err.println("AAAAAAAAAAAAAAAAAAAAAAAAAa");
+      ValidationResult result = validator.validate(msg);
+      assertThat(result.isSuccess()).isFalse();
+      assertThat(result.getViolations().size()).isEqualTo(1);
+      assertThat(result.getViolations().get(0).toProto().getMessage())
+          .isEqualTo("all map values must equal 1");
+    } catch (ValidationException e) {
+      fail("unexpected exception thrown", e);
     }
+  }
+
+  @Test
+  public void testEagerBuilderWithInvalidState() {
+    List<Descriptor> seedDescriptors = new ArrayList<Descriptor>();
+    assertThatExceptionOfType(IllegalStateException.class)
+        .isThrownBy(
+            () -> {
+              ValidatorFactory.newBuilder(seedDescriptors, true).build();
+            });
   }
 
   // @Test
