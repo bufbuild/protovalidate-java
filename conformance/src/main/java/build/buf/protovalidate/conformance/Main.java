@@ -17,6 +17,7 @@ package build.buf.protovalidate.conformance;
 import build.buf.protovalidate.Config;
 import build.buf.protovalidate.ValidationResult;
 import build.buf.protovalidate.Validator;
+import build.buf.protovalidate.ValidatorFactory;
 import build.buf.protovalidate.exceptions.CompilationException;
 import build.buf.protovalidate.exceptions.ExecutionException;
 import build.buf.validate.ValidateProto;
@@ -60,11 +61,12 @@ public class Main {
       TypeRegistry typeRegistry = FileDescriptorUtil.createTypeRegistry(fileDescriptorMap.values());
       ExtensionRegistry extensionRegistry =
           FileDescriptorUtil.createExtensionRegistry(fileDescriptorMap.values());
-    Config cfg = Config.newBuilder()
-                  .setTypeRegistry(typeRegistry)
-                  .setExtensionRegistry(extensionRegistry)
-                  .build();
-      Validator validator = Validator.newBuilder().withConfig(cfg).build();
+      Config cfg =
+          Config.newBuilder()
+              .setTypeRegistry(typeRegistry)
+              .setExtensionRegistry(extensionRegistry)
+              .build();
+      Validator validator = ValidatorFactory.newBuilder().withConfig(cfg).build();
       TestConformanceResponse.Builder responseBuilder = TestConformanceResponse.newBuilder();
       Map<String, TestResult> resultsMap = new HashMap<>();
       for (Map.Entry<String, Any> entry : request.getCasesMap().entrySet()) {

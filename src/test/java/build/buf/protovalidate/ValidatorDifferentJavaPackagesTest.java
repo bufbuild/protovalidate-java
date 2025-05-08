@@ -186,7 +186,7 @@ public class ValidatorDifferentJavaPackagesTest {
   }
 
   private void expectViolations(Message msg, List<Violation> expected) throws ValidationException {
-    Validator validator = Validator.defaultInstance();
+    Validator validator = ValidatorFactory.defaultInstance();
     List<Violation> violations = validator.validate(msg).toProto().getViolationsList();
     assertThat(violations).containsExactlyInAnyOrderElementsOf(expected);
   }

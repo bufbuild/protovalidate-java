@@ -14,10 +14,32 @@
 
 package build.buf.protovalidate;
 
+import build.buf.protovalidate.exceptions.CompilationException;
+import build.buf.protovalidate.exceptions.ExecutionException;
 import build.buf.protovalidate.exceptions.ValidationException;
+import com.google.protobuf.Descriptors.Descriptor;
 import com.google.protobuf.Message;
+import java.util.ArrayList;
+import java.util.List;
+import org.projectnessie.cel.Env;
+import org.projectnessie.cel.Library;
 
-interface IValidator {
+class ValidatorImpl implements Validator {
+  /** evaluatorBuilder is the builder used to construct the evaluator for a given message. */
+  private final EvaluatorBuilder evaluatorBuilder;
+
+  /**
+   * failFast indicates whether the validator should stop evaluating rules after the first
+   * violation.
+   */
+  private final boolean failFast;
+
+  ValidatorImpl(Config config) {
+    Env env = Env.newEnv(Library.Lib(new ValidateLibrary()));
+    this.evaluatorBuilder = new EvaluatorBuilder(env, config);
+    this.failFast = config.isFailFast();
+  }
+
   /**
    * Checks that message satisfies its rules. Rules are defined within the Protobuf file as options
    * from the buf.validate package. A {@link ValidationResult} is returned which contains a list of
@@ -31,5 +53,21 @@ interface IValidator {
    * @return the {@link ValidationResult} from the evaluation.
    * @throws ValidationException if there are any compilation or validation execution errors.
    */
-  ValidationResult validate(Message msg) throws ValidationException;
+  @Override
+  public ValidationResult validate(Message msg) throws ValidationException {
+    if (msg == null) {
+      return ValidationResult.EMPTY;
+    }
+    Descriptor descriptor = msg.getDescriptorForType();
+    Evaluator evaluator = evaluatorBuilder.load(descriptor);
+    List<RuleViolation.Builder> result = evaluator.evaluate(new MessageValue(msg), this.failFast);
+    if (result.isEmpty()) {
+      return ValidationResult.EMPTY;
+    }
+    List<Violation> violations = new ArrayList<>(result.size());
+    for (RuleViolation.Builder builder : result) {
+      violations.add(builder.build());
+    }
+    return new ValidationResult(violations);
+  }
 }

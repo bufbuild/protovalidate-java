@@ -60,7 +60,7 @@ public class ValidatorTest {
   @BeforeEach
   public void setUp() {
     Config config = Config.newBuilder().build();
-    validator = new Validator(config);
+    validator = ValidatorFactory.newBuilder().withConfig(config).build();
   }
 
   @Test

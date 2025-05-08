@@ -78,7 +78,7 @@ public class ValidatorDynamicMessageTest {
             .setRuleId("string.pattern")
             .setMessage("value does not match regex pattern `^[a-z0-9]{1,9}$`")
             .build();
-    ValidationResult result = Validator.defaultInstance().validate(messageBuilder.build());
+    ValidationResult result = ValidatorFactory.defaultInstance().validate(messageBuilder.build());
     assertThat(result.toProto().getViolationsList()).containsExactly(expectedViolation);
     assertThat(result.getViolations().get(0).getFieldValue().getValue()).isEqualTo("0123456789");
     assertThat(result.getViolations().get(0).getRuleValue().getValue())
@@ -97,7 +97,11 @@ public class ValidatorDynamicMessageTest {
             .setRuleId("required")
             .setMessage("exactly one field is required in oneof")
             .build();
-    assertThat(Validator.defaultInstance().validate(messageBuilder.build()).toProto().getViolationsList())
+    assertThat(
+            ValidatorFactory.defaultInstance()
+                .validate(messageBuilder.build())
+                .toProto()
+                .getViolationsList())
         .containsExactly(expectedViolation);
   }
 
@@ -113,7 +117,11 @@ public class ValidatorDynamicMessageTest {
             .setRuleId("secondary_email_depends_on_primary")
             .setMessage("cannot set a secondary email without setting a primary one")
             .build();
-    assertThat(Validator.defaultInstance().validate(messageBuilder.build()).toProto().getViolationsList())
+    assertThat(
+            ValidatorFactory.defaultInstance()
+                .validate(messageBuilder.build())
+                .toProto()
+                .getViolationsList())
         .containsExactly(expectedViolation);
   }
 
@@ -123,7 +131,8 @@ public class ValidatorDynamicMessageTest {
         createMessageWithUnknownOptions(ExampleRequiredFieldRules.getDefaultInstance());
     messageBuilder.setField(
         messageBuilder.getDescriptorForType().findFieldByName("regex_string_field"), "abc123");
-    assertThat(Validator.defaultInstance().validate(messageBuilder.build()).getViolations()).isEmpty();
+    assertThat(ValidatorFactory.defaultInstance().validate(messageBuilder.build()).getViolations())
+        .isEmpty();
   }
 
   @Test
@@ -154,7 +163,11 @@ public class ValidatorDynamicMessageTest {
             .setRuleId("string.pattern")
             .setMessage("value does not match regex pattern `^[a-z0-9]{1,9}$`")
             .build();
-    assertThat(Validator.defaultInstance().validate(messageBuilder.build()).toProto().getViolationsList())
+    assertThat(
+            ValidatorFactory.defaultInstance()
+                .validate(messageBuilder.build())
+                .toProto()
+                .getViolationsList())
         .containsExactly(expectedViolation);
   }
 
@@ -170,7 +183,13 @@ public class ValidatorDynamicMessageTest {
         TypeRegistry.newBuilder().add(isIdent.getDescriptor().getContainingType()).build();
     Config config =
         Config.newBuilder().setExtensionRegistry(registry).setTypeRegistry(typeRegistry).build();
-    assertThat(Validator.newBuilder().withConfig(config).build().validate(messageBuilder.build()).getViolations()).isEmpty();
+    assertThat(
+            ValidatorFactory.newBuilder()
+                .withConfig(config)
+                .build()
+                .validate(messageBuilder.build())
+                .getViolations())
+        .isEmpty();
   }
 
   @Test
@@ -203,7 +222,13 @@ public class ValidatorDynamicMessageTest {
         TypeRegistry.newBuilder().add(isIdent.getDescriptor().getContainingType()).build();
     Config config =
         Config.newBuilder().setExtensionRegistry(registry).setTypeRegistry(typeRegistry).build();
-    assertThat(Validator.newBuilder().withConfig(config).build().validate(messageBuilder.build()).toProto().getViolationsList())
+    assertThat(
+            ValidatorFactory.newBuilder()
+                .withConfig(config)
+                .build()
+                .validate(messageBuilder.build())
+                .toProto()
+                .getViolationsList())
         .containsExactly(expectedViolation);
   }
 
