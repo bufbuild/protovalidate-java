@@ -40,6 +40,13 @@ class ValidatorImpl implements Validator {
     this.failFast = config.isFailFast();
   }
 
+  ValidatorImpl(Config config, List<Descriptor> descriptors, boolean disableLazy)
+      throws CompilationException {
+    Env env = Env.newEnv(Library.Lib(new ValidateLibrary()));
+    this.evaluatorBuilder = new EvaluatorBuilder(env, config, descriptors, disableLazy);
+    this.failFast = config.isFailFast();
+  }
+
   /**
    * Checks that message satisfies its rules. Rules are defined within the Protobuf file as options
    * from the buf.validate package. A {@link ValidationResult} is returned which contains a list of

@@ -19,6 +19,7 @@ import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 import static org.assertj.core.api.Assertions.fail;
 
 import build.buf.protovalidate.exceptions.ValidationException;
+import com.example.imports.validationtest.ExampleFieldRules;
 import com.example.imports.validationtest.FieldExpressionMapInt32;
 import com.google.protobuf.Descriptors.Descriptor;
 import java.util.ArrayList;
@@ -66,7 +67,7 @@ public class ValidatorConstructionTest {
   }
 
   @Test
-  public void testEagerBuilderWithConfig() {
+  public void testSeedDescriptorsLazyDisabled() {
     Map<Integer, Integer> testMap = new HashMap<Integer, Integer>();
     testMap.put(42, 42);
     FieldExpressionMapInt32 msg = FieldExpressionMapInt32.newBuilder().putAllVal(testMap).build();
@@ -90,13 +91,58 @@ public class ValidatorConstructionTest {
   }
 
   @Test
-  public void testEagerBuilderWithInvalidState() {
+  public void testSeedDescriptorsWithWrongDescriptorAndLazyDisabled() {
+    Map<Integer, Integer> testMap = new HashMap<Integer, Integer>();
+    testMap.put(42, 42);
+    FieldExpressionMapInt32 msg = FieldExpressionMapInt32.newBuilder().putAllVal(testMap).build();
+
+    List<Descriptor> seedDescriptors = new ArrayList<Descriptor>();
+    ExampleFieldRules wrong = ExampleFieldRules.newBuilder().build();
+    seedDescriptors.add(wrong.getDescriptorForType());
+
+    Config cfg = Config.newBuilder().setFailFast(true).build();
+    try {
+      Validator validator =
+          ValidatorFactory.newBuilder(seedDescriptors, true).withConfig(cfg).build();
+      ValidationResult result = validator.validate(msg);
+      assertThat(result.isSuccess()).isFalse();
+      assertThat(result.getViolations().size()).isEqualTo(1);
+      assertThat(result.getViolations().get(0).toProto().getMessage())
+          .isEqualTo("No evaluator available for " + msg.getDescriptorForType().getFullName());
+    } catch (ValidationException e) {
+      fail("unexpected exception thrown", e);
+    }
+  }
+
+  @Test
+  public void testSeedDescriptorsWithInvalidState() {
     List<Descriptor> seedDescriptors = new ArrayList<Descriptor>();
     assertThatExceptionOfType(IllegalStateException.class)
         .isThrownBy(
             () -> {
               ValidatorFactory.newBuilder(seedDescriptors, true).build();
             });
+  }
+
+  @Test
+  public void testEmptySeedDescriptorsLazyEnabled() {
+    Map<Integer, Integer> testMap = new HashMap<Integer, Integer>();
+    testMap.put(42, 42);
+    FieldExpressionMapInt32 msg = FieldExpressionMapInt32.newBuilder().putAllVal(testMap).build();
+
+    List<Descriptor> seedDescriptors = new ArrayList<Descriptor>();
+    Config cfg = Config.newBuilder().setFailFast(true).build();
+    try {
+      Validator validator =
+          ValidatorFactory.newBuilder(seedDescriptors, false).withConfig(cfg).build();
+      ValidationResult result = validator.validate(msg);
+      assertThat(result.isSuccess()).isFalse();
+      assertThat(result.getViolations().size()).isEqualTo(1);
+      assertThat(result.getViolations().get(0).toProto().getMessage())
+          .isEqualTo("all map values must equal 1");
+    } catch (ValidationException e) {
+      fail("unexpected exception thrown", e);
+    }
   }
 
   // @Test

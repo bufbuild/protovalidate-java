@@ -67,13 +67,14 @@ public class Main {
               .setExtensionRegistry(extensionRegistry)
               .build();
       Validator validator = ValidatorFactory.newBuilder().withConfig(cfg).build();
+
       TestConformanceResponse.Builder responseBuilder = TestConformanceResponse.newBuilder();
       Map<String, TestResult> resultsMap = new HashMap<>();
       for (Map.Entry<String, Any> entry : request.getCasesMap().entrySet()) {
         TestResult testResult = testCase(validator, descriptorMap, entry.getValue());
         resultsMap.put(entry.getKey(), testResult);
       }
-      
+
       responseBuilder.putAllResults(resultsMap);
       return responseBuilder.build();
     } catch (Exception e) {
