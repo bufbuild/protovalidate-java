@@ -219,7 +219,7 @@ allprojects {
 
 mavenPublishing {
     val isAutoReleased = project.hasProperty("signingInMemoryKey")
-    publishToMavenCentral(SonatypeHost.S01)
+    publishToMavenCentral(SonatypeHost.CENTRAL_PORTAL)
     if (isAutoReleased) {
         signAllPublications()
     }
