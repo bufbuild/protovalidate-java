@@ -27,10 +27,10 @@ import org.jspecify.annotations.Nullable;
  * be created with a list of seed descriptors to warmup the validator cache ahead of time as well as
  * an indicator to lazily-load any descriptors not provided into the cache.
  */
-public class ValidatorFactory {
+public final class ValidatorFactory {
   // Prevent instantiation
   private ValidatorFactory() {}
-  ;
+  
 
   /**
    * An eager builder behaves the same as a regular Builder, but attempts to warmup the validator
@@ -54,7 +54,7 @@ public class ValidatorFactory {
      * @throws IllegalStateException If disableLazy is set to true and no descriptors are passed.
      */
     public Validator build() throws CompilationException, IllegalStateException {
-      if (disableLazy && this.descriptors.size() == 0) {
+      if (disableLazy && this.descriptors.isEmpty()) {
         throw new IllegalStateException(
             "a list of descriptors is required when disableLazy is true");
       }
@@ -102,15 +102,6 @@ public class ValidatorFactory {
     Builder self() {
       return this;
     }
-  }
-
-  /**
-   * A convenience function for creating a new validator with a default configuration.
-   *
-   * @return A Validator instance
-   */
-  public static Validator defaultInstance() {
-    return newBuilder().build();
   }
 
   /**
