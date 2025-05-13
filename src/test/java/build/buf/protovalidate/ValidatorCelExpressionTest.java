@@ -84,7 +84,6 @@ public class ValidatorCelExpressionTest {
     // Invalid message checks
     ValidationResult invalidResult = validator.validate(invalidMsg);
     assertThat(invalidResult.isSuccess()).isFalse();
-
     assertThat(invalidResult.toProto().getViolationsList()).containsExactly(expectedViolation);
   }
 
