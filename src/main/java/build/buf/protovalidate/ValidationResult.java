@@ -68,18 +68,22 @@ public class ValidationResult {
   @Override
   public String toString() {
     StringBuilder builder = new StringBuilder();
-    builder.append("Validation error:");
-    for (Violation violation : violations) {
-      builder.append("\n - ");
-      if (!violation.toProto().hasField()) {
-        builder.append(FieldPathUtils.fieldPathString(violation.toProto().getField()));
-        builder.append(": ");
+    if (isSuccess()) {
+      builder.append("Validation OK");
+    } else {
+      builder.append("Validation error:");
+      for (Violation violation : violations) {
+        builder.append("\n - ");
+        if (violation.toProto().hasField()) {
+          builder.append(FieldPathUtils.fieldPathString(violation.toProto().getField()));
+          builder.append(": ");
+        }
+        builder.append(
+            String.format(
+                "%s [%s]", violation.toProto().getMessage(), violation.toProto().getRuleId()));
       }
-      builder.append(
-          String.format(
-              "%s [%s]", violation.toProto().getMessage(), violation.toProto().getRuleId()));
     }
-    return builder.toString();
+      return builder.toString();
   }
 
   /**
