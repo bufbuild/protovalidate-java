@@ -75,7 +75,8 @@ class ValidationResultTest {
     ValidationResult result = new ValidationResult(violations);
 
     assertThat(result.toString())
-        .isEqualTo("Validation error:\n - test_field_name: value must equal 42 [int32.const]\n - test_field_name: value is required [int32.required]");
+        .isEqualTo(
+            "Validation error:\n - test_field_name: value must equal 42 [int32.const]\n - test_field_name: value is required [int32.required]");
   }
 
   @Test
@@ -101,7 +102,8 @@ class ValidationResultTest {
     ValidationResult result = new ValidationResult(violations);
 
     assertThat(result.toString())
-        .isEqualTo("Validation error:\n - test_field_name.nested_name: value must equal 42 [int32.const]");
+        .isEqualTo(
+            "Validation error:\n - test_field_name.nested_name: value must equal 42 [int32.const]");
   }
 
   @Test

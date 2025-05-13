@@ -83,7 +83,7 @@ public class ValidationResult {
                 "%s [%s]", violation.toProto().getMessage(), violation.toProto().getRuleId()));
       }
     }
-      return builder.toString();
+    return builder.toString();
   }
 
   /**
