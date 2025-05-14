@@ -33,7 +33,7 @@ public final class ValidatorFactory {
   /** A builder class used for building a validator. */
   public static class ValidatorBuilder {
     /** The config object to use for instantiating a validator. */
-    @Nullable protected Config config;
+    @Nullable private Config config;
 
     /**
      * Create a validator with the given config
