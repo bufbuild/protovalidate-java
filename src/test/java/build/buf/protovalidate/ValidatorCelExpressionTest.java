@@ -75,7 +75,7 @@ public class ValidatorCelExpressionTest {
             .setMessage("test message field_expression.repeated.message")
             .build();
 
-    Validator validator = ValidatorFactory.defaultInstance();
+    Validator validator = ValidatorFactory.newBuilder().build();
 
     // Valid message checks
     ValidationResult validResult = validator.validate(validMsg);
@@ -144,7 +144,7 @@ public class ValidatorCelExpressionTest {
             .setMessage("test message field_expression.repeated.message.items")
             .build();
 
-    Validator validator = ValidatorFactory.defaultInstance();
+    Validator validator = ValidatorFactory.newBuilder().build();
 
     // Valid message checks
     ValidationResult validResult = validator.validate(validMsg);

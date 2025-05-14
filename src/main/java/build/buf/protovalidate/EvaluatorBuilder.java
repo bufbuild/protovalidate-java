@@ -77,8 +77,10 @@ class EvaluatorBuilder {
     this.disableLazy = disableLazy;
     this.rules = new RuleCache(env, config);
 
-    for (Descriptor descriptor : descriptors) {
-      this.build(descriptor);
+    if (descriptors != null) {
+      for (Descriptor descriptor : descriptors) {
+        this.build(descriptor);
+      }
     }
   }
 

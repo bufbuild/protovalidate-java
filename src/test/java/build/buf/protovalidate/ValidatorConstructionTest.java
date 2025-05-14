@@ -31,14 +31,14 @@ import org.junit.jupiter.api.Test;
 
 public class ValidatorConstructionTest {
 
-  // Tests validation works as planned with default instance.
+  // Tests validation works as planned with default builder.
   @Test
-  public void testDefaultInstance() {
+  public void testDefaultBuilder() {
     Map<Integer, Integer> testMap = new HashMap<Integer, Integer>();
     testMap.put(42, 42);
     FieldExpressionMapInt32 msg = FieldExpressionMapInt32.newBuilder().putAllVal(testMap).build();
 
-    Validator validator = ValidatorFactory.defaultInstance();
+    Validator validator = ValidatorFactory.newBuilder().build();
     try {
       ValidationResult result = validator.validate(msg);
       assertThat(result.isSuccess()).isFalse();
@@ -50,9 +50,9 @@ public class ValidatorConstructionTest {
     }
   }
 
-  // Tests validation works as planned with normal builder and config
+  // Tests validation works as planned with default builder and config
   @Test
-  public void testNormalBuilderWithConfig() {
+  public void testDefaultBuilderWithConfig() {
     Map<Integer, Integer> testMap = new HashMap<Integer, Integer>();
     testMap.put(42, 42);
     FieldExpressionMapInt32 msg = FieldExpressionMapInt32.newBuilder().putAllVal(testMap).build();
@@ -83,9 +83,12 @@ public class ValidatorConstructionTest {
     seedDescriptors.add(reg.getDescriptorForType());
 
     Config cfg = Config.newBuilder().setFailFast(true).build();
+
+    // Note that buildWithDescriptors throws the exception so the validator builder
+    // can be created ahead of time without having to catch an exception.
+    ValidatorFactory.ValidatorBuilder bldr = ValidatorFactory.newBuilder().withConfig(cfg);
     try {
-      Validator validator =
-          ValidatorFactory.newBuilder(seedDescriptors, true).withConfig(cfg).build();
+      Validator validator = bldr.buildWithDescriptors(seedDescriptors, true);
       ValidationResult result = validator.validate(msg);
       assertThat(result.isSuccess()).isFalse();
       assertThat(result.getViolations().size()).isEqualTo(1);
@@ -111,7 +114,7 @@ public class ValidatorConstructionTest {
     Config cfg = Config.newBuilder().setFailFast(true).build();
     try {
       Validator validator =
-          ValidatorFactory.newBuilder(seedDescriptors, true).withConfig(cfg).build();
+          ValidatorFactory.newBuilder().withConfig(cfg).buildWithDescriptors(seedDescriptors, true);
 
       // Remove descriptor from list after the validator is created to verify validation still works
       seedDescriptors.clear();
@@ -142,7 +145,7 @@ public class ValidatorConstructionTest {
     Config cfg = Config.newBuilder().setFailFast(true).build();
     try {
       Validator validator =
-          ValidatorFactory.newBuilder(seedDescriptors, true).withConfig(cfg).build();
+          ValidatorFactory.newBuilder().withConfig(cfg).buildWithDescriptors(seedDescriptors, true);
       ValidationResult result = validator.validate(msg);
       assertThat(result.isSuccess()).isFalse();
       assertThat(result.getViolations().size()).isEqualTo(1);
@@ -156,12 +159,23 @@ public class ValidatorConstructionTest {
   // Tests that an IllegalStateException is thrown if an empty descriptor list is given
   // and lazy is disabled.
   @Test
-  public void testSeedDescriptorsWithInvalidState() {
+  public void testEmptySeedDescriptorsInvalidState() {
     List<Descriptor> seedDescriptors = new ArrayList<Descriptor>();
     assertThatExceptionOfType(IllegalStateException.class)
         .isThrownBy(
             () -> {
-              ValidatorFactory.newBuilder(seedDescriptors, true).build();
+              ValidatorFactory.newBuilder().buildWithDescriptors(seedDescriptors, true);
+            });
+  }
+
+  // Tests that an IllegalStateException is thrown if a null descriptor list is given
+  // and lazy is disabled.
+  @Test
+  public void testNullSeedDescriptorsInvalidState() {
+    assertThatExceptionOfType(IllegalStateException.class)
+        .isThrownBy(
+            () -> {
+              ValidatorFactory.newBuilder().buildWithDescriptors(null, true);
             });
   }
 
@@ -177,7 +191,31 @@ public class ValidatorConstructionTest {
     Config cfg = Config.newBuilder().setFailFast(true).build();
     try {
       Validator validator =
-          ValidatorFactory.newBuilder(seedDescriptors, false).withConfig(cfg).build();
+          ValidatorFactory.newBuilder()
+              .withConfig(cfg)
+              .buildWithDescriptors(seedDescriptors, false);
+      ValidationResult result = validator.validate(msg);
+      assertThat(result.isSuccess()).isFalse();
+      assertThat(result.getViolations().size()).isEqualTo(1);
+      assertThat(result.getViolations().get(0).toProto().getMessage())
+          .isEqualTo("all map values must equal 1");
+    } catch (ValidationException e) {
+      fail("unexpected exception thrown", e);
+    }
+  }
+
+  // Tests that when a null list of seed descriptors is provided and lazy is enabled
+  // that the missing message descriptor is successfully built and validation works as planned.
+  @Test
+  public void testNullSeedDescriptorsLazyEnabled() {
+    Map<Integer, Integer> testMap = new HashMap<Integer, Integer>();
+    testMap.put(42, 42);
+    FieldExpressionMapInt32 msg = FieldExpressionMapInt32.newBuilder().putAllVal(testMap).build();
+
+    Config cfg = Config.newBuilder().setFailFast(true).build();
+    try {
+      Validator validator =
+          ValidatorFactory.newBuilder().withConfig(cfg).buildWithDescriptors(null, false);
       ValidationResult result = validator.validate(msg);
       assertThat(result.isSuccess()).isFalse();
       assertThat(result.getViolations().size()).isEqualTo(1);
@@ -222,7 +260,9 @@ public class ValidatorConstructionTest {
     Config cfg = Config.newBuilder().setFailFast(true).build();
     try {
       Validator validator =
-          ValidatorFactory.newBuilder(seedDescriptors, false).withConfig(cfg).build();
+          ValidatorFactory.newBuilder()
+              .withConfig(cfg)
+              .buildWithDescriptors(seedDescriptors, false);
       ValidationResult result = validator.validate(msg);
       assertThat(result.isSuccess()).isFalse();
       assertThat(result.getViolations().size()).isEqualTo(1);

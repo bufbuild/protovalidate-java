@@ -78,7 +78,8 @@ public class ValidatorDynamicMessageTest {
             .setRuleId("string.pattern")
             .setMessage("value does not match regex pattern `^[a-z0-9]{1,9}$`")
             .build();
-    ValidationResult result = ValidatorFactory.defaultInstance().validate(messageBuilder.build());
+    ValidationResult result =
+        ValidatorFactory.newBuilder().build().validate(messageBuilder.build());
     assertThat(result.toProto().getViolationsList()).containsExactly(expectedViolation);
     assertThat(result.getViolations().get(0).getFieldValue().getValue()).isEqualTo("0123456789");
     assertThat(result.getViolations().get(0).getRuleValue().getValue())
@@ -98,7 +99,8 @@ public class ValidatorDynamicMessageTest {
             .setMessage("exactly one field is required in oneof")
             .build();
     assertThat(
-            ValidatorFactory.defaultInstance()
+            ValidatorFactory.newBuilder()
+                .build()
                 .validate(messageBuilder.build())
                 .toProto()
                 .getViolationsList())
@@ -118,7 +120,8 @@ public class ValidatorDynamicMessageTest {
             .setMessage("cannot set a secondary email without setting a primary one")
             .build();
     assertThat(
-            ValidatorFactory.defaultInstance()
+            ValidatorFactory.newBuilder()
+                .build()
                 .validate(messageBuilder.build())
                 .toProto()
                 .getViolationsList())
@@ -131,7 +134,8 @@ public class ValidatorDynamicMessageTest {
         createMessageWithUnknownOptions(ExampleRequiredFieldRules.getDefaultInstance());
     messageBuilder.setField(
         messageBuilder.getDescriptorForType().findFieldByName("regex_string_field"), "abc123");
-    assertThat(ValidatorFactory.defaultInstance().validate(messageBuilder.build()).getViolations())
+    assertThat(
+            ValidatorFactory.newBuilder().build().validate(messageBuilder.build()).getViolations())
         .isEmpty();
   }
 
@@ -164,7 +168,8 @@ public class ValidatorDynamicMessageTest {
             .setMessage("value does not match regex pattern `^[a-z0-9]{1,9}$`")
             .build();
     assertThat(
-            ValidatorFactory.defaultInstance()
+            ValidatorFactory.newBuilder()
+                .build()
                 .validate(messageBuilder.build())
                 .toProto()
                 .getViolationsList())

@@ -16,7 +16,6 @@ package build.buf.protovalidate;
 
 import build.buf.protovalidate.exceptions.CompilationException;
 import com.google.protobuf.Descriptors.Descriptor;
-import java.util.Collections;
 import java.util.List;
 import org.jspecify.annotations.Nullable;
 
@@ -30,60 +29,25 @@ import org.jspecify.annotations.Nullable;
 public final class ValidatorFactory {
   // Prevent instantiation
   private ValidatorFactory() {}
-  
 
-  /**
-   * An eager builder behaves the same as a regular Builder, but attempts to warmup the validator
-   * cache with a given list of Descriptors.
-   */
-  public static class EagerBuilder extends BaseBuilder<EagerBuilder> {
-    private final List<Descriptor> descriptors;
-    private final boolean disableLazy;
-
-    EagerBuilder(List<Descriptor> descriptors, boolean disableLazy) {
-      this.descriptors = Collections.unmodifiableList(descriptors);
-      this.disableLazy = disableLazy;
-    }
+  /** A builder class used for building a validator. */
+  public static class ValidatorBuilder {
+    /** The config object to use for instantiating a validator. */
+    @Nullable protected Config config;
 
     /**
-     * Build the validator, warming up the cache with any provided descriptors.
+     * Create a validator with the given config
      *
-     * @return A Validator instance
-     * @throws CompilationException If any of the given descriptors' validation rules fail
-     *     processing while warming up the cache.
-     * @throws IllegalStateException If disableLazy is set to true and no descriptors are passed.
+     * @param config The {@link Config} to configure the validator.
+     * @return T the builder instance
      */
-    public Validator build() throws CompilationException, IllegalStateException {
-      if (disableLazy && this.descriptors.isEmpty()) {
-        throw new IllegalStateException(
-            "a list of descriptors is required when disableLazy is true");
-      }
-
-      Config cfg = this.config;
-      if (cfg == null) {
-        cfg = Config.newBuilder().build();
-      }
-      return new ValidatorImpl(cfg, this.descriptors, this.disableLazy);
-    }
-
-    @Override
-    EagerBuilder self() {
+    public ValidatorBuilder withConfig(Config config) {
+      this.config = config;
       return this;
     }
 
-    boolean getDisableLazy() {
-      return this.disableLazy;
-    }
-
-    List<Descriptor> getDescriptors() {
-      return this.descriptors;
-    }
-  }
-
-  /** A builder class used for building a validator. */
-  public static class Builder extends BaseBuilder<Builder> {
-    // Default constructor
-    private Builder() {}
+    // Prevent instantiation
+    private ValidatorBuilder() {}
 
     /**
      * Build a new validator
@@ -98,9 +62,32 @@ public final class ValidatorFactory {
       return new ValidatorImpl(cfg);
     }
 
-    @Override
-    Builder self() {
-      return this;
+    /**
+     * Build the validator, warming up the cache with any provided descriptors.
+     *
+     * @param descriptors the list of descriptors to warm up the cache.
+     * @param disableLazy whether to disable lazy loading of validation rules. When validation is
+     *     performed, a message's rules will be looked up in a cache. If they are not found, by
+     *     default they will be processed and lazily-loaded into the cache. Setting this to false
+     *     will not attempt to lazily-load descriptor information not found in the cache and
+     *     essentially makes the entire cache read-only, eliminating thread contention.
+     * @return A new {@link Validator} instance.
+     * @throws CompilationException If any of the given descriptors' validation rules fail
+     *     processing while warming up the cache.
+     * @throws IllegalStateException If disableLazy is set to true and no descriptors are passed.
+     */
+    public Validator buildWithDescriptors(List<Descriptor> descriptors, boolean disableLazy)
+        throws CompilationException, IllegalStateException {
+      if (disableLazy && (descriptors == null || descriptors.isEmpty())) {
+        throw new IllegalStateException(
+            "a list of descriptors is required when disableLazy is true");
+      }
+
+      Config cfg = this.config;
+      if (cfg == null) {
+        cfg = Config.newBuilder().build();
+      }
+      return new ValidatorImpl(cfg, descriptors, disableLazy);
     }
   }
 
@@ -109,42 +96,7 @@ public final class ValidatorFactory {
    *
    * @return A Validator builder
    */
-  public static Builder newBuilder() {
-    return new Builder();
+  public static ValidatorBuilder newBuilder() {
+    return new ValidatorBuilder();
   }
-
-  /**
-   * Creates a new builder for a validator.
-   *
-   * @param descriptors the list of descriptors to warm up the cache.
-   * @param disableLazy whether to disable lazy loading of validation rules. When validation is
-   *     performed, a message's rules will be looked up in a cache. If they are not found, by
-   *     default they will be processed and lazily-loaded into the cache. Setting this to false will
-   *     not attempt to lazily-load descriptor information not found in the cache and essentially
-   *     makes the entire cache read-only, eliminating thread contention.
-   * @return A Validator builder
-   */
-  public static EagerBuilder newBuilder(List<Descriptor> descriptors, boolean disableLazy) {
-    return new EagerBuilder(descriptors, disableLazy);
-  }
-}
-
-/** An abstract class that all validator builders should extend. */
-abstract class BaseBuilder<T extends BaseBuilder<T>> {
-  /** The config object to use for instantiating a validator. */
-  @Nullable protected Config config;
-
-  /**
-   * Create a validator with the given config
-   *
-   * @param config The {@link Config} to configure the validator.
-   * @return T the builder instance
-   */
-  public T withConfig(Config config) {
-    this.config = config;
-    return self();
-  }
-
-  // Subclasses must specify their identity.
-  abstract T self();
 }
