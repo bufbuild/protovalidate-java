@@ -39,7 +39,7 @@ public final class ValidatorFactory {
      * Create a validator with the given config
      *
      * @param config The {@link Config} to configure the validator.
-     * @return T the builder instance
+     * @return The builder instance
      */
     public ValidatorBuilder withConfig(Config config) {
       this.config = config;
