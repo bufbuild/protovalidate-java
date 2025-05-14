@@ -204,26 +204,17 @@ public class ValidatorConstructionTest {
     }
   }
 
-  // Tests that when a null list of seed descriptors is provided and lazy is enabled
-  // that the missing message descriptor is successfully built and validation works as planned.
+  // Tests that when a null list of seed descriptors is provided, a NullPointerException
+  // is thrown with a message that descriptors cannot be null.
   @Test
   public void testNullSeedDescriptorsLazyEnabled() {
-    Map<Integer, Integer> testMap = new HashMap<Integer, Integer>();
-    testMap.put(42, 42);
-    FieldExpressionMapInt32 msg = FieldExpressionMapInt32.newBuilder().putAllVal(testMap).build();
-
-    Config cfg = Config.newBuilder().setFailFast(true).build();
-    try {
-      Validator validator =
-          ValidatorFactory.newBuilder().withConfig(cfg).buildWithDescriptors(null, false);
-      ValidationResult result = validator.validate(msg);
-      assertThat(result.isSuccess()).isFalse();
-      assertThat(result.getViolations().size()).isEqualTo(1);
-      assertThat(result.getViolations().get(0).toProto().getMessage())
-          .isEqualTo("all map values must equal 1");
-    } catch (ValidationException e) {
-      fail("unexpected exception thrown", e);
-    }
+    assertThatExceptionOfType(NullPointerException.class)
+        .isThrownBy(
+            () -> {
+              ValidatorFactory.newBuilder().buildWithDescriptors(null, false);
+            })
+        .withMessageContaining("descriptors must not be null");
+    ;
   }
 
   // Tests that the config is applied when building a validator.

@@ -73,14 +73,13 @@ class EvaluatorBuilder {
    */
   EvaluatorBuilder(Env env, Config config, List<Descriptor> descriptors, boolean disableLazy)
       throws CompilationException {
+    Objects.requireNonNull(descriptors, "descriptors must not be null");
     this.env = env;
     this.disableLazy = disableLazy;
     this.rules = new RuleCache(env, config);
 
-    if (descriptors != null) {
-      for (Descriptor descriptor : descriptors) {
-        this.build(descriptor);
-      }
+    for (Descriptor descriptor : descriptors) {
+      this.build(descriptor);
     }
   }
 
