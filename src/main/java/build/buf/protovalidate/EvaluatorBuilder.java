@@ -59,10 +59,28 @@ class EvaluatorBuilder {
    * @param env The CEL environment for evaluation.
    * @param config The configuration to use for the evaluation.
    */
-  public EvaluatorBuilder(Env env, Config config) {
+  EvaluatorBuilder(Env env, Config config) {
     this.env = env;
-    this.disableLazy = config.isDisableLazy();
+    this.disableLazy = false;
     this.rules = new RuleCache(env, config);
+  }
+
+  /**
+   * Constructs a new {@link EvaluatorBuilder}.
+   *
+   * @param env The CEL environment for evaluation.
+   * @param config The configuration to use for the evaluation.
+   */
+  EvaluatorBuilder(Env env, Config config, List<Descriptor> descriptors, boolean disableLazy)
+      throws CompilationException {
+    Objects.requireNonNull(descriptors, "descriptors must not be null");
+    this.env = env;
+    this.disableLazy = disableLazy;
+    this.rules = new RuleCache(env, config);
+
+    for (Descriptor descriptor : descriptors) {
+      this.build(descriptor);
+    }
   }
 
   /**
@@ -73,7 +91,7 @@ class EvaluatorBuilder {
    * @return An evaluator for the descriptor type.
    * @throws CompilationException If an evaluator can't be created for the specified descriptor.
    */
-  public Evaluator load(Descriptor desc) throws CompilationException {
+  Evaluator load(Descriptor desc) throws CompilationException {
     Evaluator evaluator = evaluatorCache.get(desc);
     if (evaluator == null && disableLazy) {
       return new UnknownDescriptorEvaluator(desc);

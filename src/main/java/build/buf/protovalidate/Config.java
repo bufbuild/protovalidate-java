@@ -24,19 +24,16 @@ public final class Config {
       ExtensionRegistry.getEmptyRegistry();
 
   private final boolean failFast;
-  private final boolean disableLazy;
   private final TypeRegistry typeRegistry;
   private final ExtensionRegistry extensionRegistry;
   private final boolean allowUnknownFields;
 
   private Config(
       boolean failFast,
-      boolean disableLazy,
       TypeRegistry typeRegistry,
       ExtensionRegistry extensionRegistry,
       boolean allowUnknownFields) {
     this.failFast = failFast;
-    this.disableLazy = disableLazy;
     this.typeRegistry = typeRegistry;
     this.extensionRegistry = extensionRegistry;
     this.allowUnknownFields = allowUnknownFields;
@@ -58,15 +55,6 @@ public final class Config {
    */
   public boolean isFailFast() {
     return failFast;
-  }
-
-  /**
-   * Checks if the configuration for disabling lazy evaluation is enabled.
-   *
-   * @return if disabling lazy evaluation is enabled
-   */
-  public boolean isDisableLazy() {
-    return disableLazy;
   }
 
   /**
@@ -99,7 +87,6 @@ public final class Config {
   /** Builder for configuration. Provides a forward compatible API for users. */
   public static final class Builder {
     private boolean failFast;
-    private boolean disableLazy;
     private TypeRegistry typeRegistry = DEFAULT_TYPE_REGISTRY;
     private ExtensionRegistry extensionRegistry = DEFAULT_EXTENSION_REGISTRY;
     private boolean allowUnknownFields;
@@ -114,17 +101,6 @@ public final class Config {
      */
     public Builder setFailFast(boolean failFast) {
       this.failFast = failFast;
-      return this;
-    }
-
-    /**
-     * Set the configuration for disabling lazy evaluation.
-     *
-     * @param disableLazy the boolean for enabling
-     * @return this builder
-     */
-    public Builder setDisableLazy(boolean disableLazy) {
-      this.disableLazy = disableLazy;
       return this;
     }
 
@@ -187,7 +163,7 @@ public final class Config {
      * @return the configuration.
      */
     public Config build() {
-      return new Config(failFast, disableLazy, typeRegistry, extensionRegistry, allowUnknownFields);
+      return new Config(failFast, typeRegistry, extensionRegistry, allowUnknownFields);
     }
   }
 }

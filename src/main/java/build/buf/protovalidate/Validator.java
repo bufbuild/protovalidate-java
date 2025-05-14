@@ -17,43 +17,10 @@ package build.buf.protovalidate;
 import build.buf.protovalidate.exceptions.CompilationException;
 import build.buf.protovalidate.exceptions.ExecutionException;
 import build.buf.protovalidate.exceptions.ValidationException;
-import com.google.protobuf.Descriptors.Descriptor;
 import com.google.protobuf.Message;
-import java.util.ArrayList;
-import java.util.List;
-import org.projectnessie.cel.Env;
-import org.projectnessie.cel.Library;
 
-/** Performs validation on any proto.Message values. The Validator is safe for concurrent use. */
-public class Validator {
-  /** evaluatorBuilder is the builder used to construct the evaluator for a given message. */
-  private final EvaluatorBuilder evaluatorBuilder;
-
-  /**
-   * failFast indicates whether the validator should stop evaluating rules after the first
-   * violation.
-   */
-  private final boolean failFast;
-
-  /**
-   * Constructs a new {@link Validator}.
-   *
-   * @param config specified configuration.
-   */
-  public Validator(Config config) {
-    Env env = Env.newEnv(Library.Lib(new ValidateLibrary()));
-    this.evaluatorBuilder = new EvaluatorBuilder(env, config);
-    this.failFast = config.isFailFast();
-  }
-
-  /** Constructs a new {@link Validator} with a default configuration. */
-  public Validator() {
-    Config config = Config.newBuilder().build();
-    Env env = Env.newEnv(Library.Lib(new ValidateLibrary()));
-    this.evaluatorBuilder = new EvaluatorBuilder(env, config);
-    this.failFast = config.isFailFast();
-  }
-
+/** A validator that can be used to validate messages */
+public interface Validator {
   /**
    * Checks that message satisfies its rules. Rules are defined within the Protobuf file as options
    * from the buf.validate package. A {@link ValidationResult} is returned which contains a list of
@@ -67,47 +34,5 @@ public class Validator {
    * @return the {@link ValidationResult} from the evaluation.
    * @throws ValidationException if there are any compilation or validation execution errors.
    */
-  public ValidationResult validate(Message msg) throws ValidationException {
-    if (msg == null) {
-      return ValidationResult.EMPTY;
-    }
-    Descriptor descriptor = msg.getDescriptorForType();
-    Evaluator evaluator = evaluatorBuilder.load(descriptor);
-    List<RuleViolation.Builder> result = evaluator.evaluate(new MessageValue(msg), failFast);
-    if (result.isEmpty()) {
-      return ValidationResult.EMPTY;
-    }
-    List<Violation> violations = new ArrayList<>(result.size());
-    for (RuleViolation.Builder builder : result) {
-      violations.add(builder.build());
-    }
-    return new ValidationResult(violations);
-  }
-
-  /**
-   * Loads messages that are expected to be validated, allowing the {@link Validator} to warm up.
-   * Messages included transitively (i.e., fields with message values) are automatically handled.
-   *
-   * @param messages the list of {@link Message} to load.
-   * @throws CompilationException if there are any compilation errors during warm-up.
-   */
-  public void loadMessages(Message... messages) throws CompilationException {
-    for (Message message : messages) {
-      this.evaluatorBuilder.load(message.getDescriptorForType());
-    }
-  }
-
-  /**
-   * Loads message descriptors that are expected to be validated, allowing the {@link Validator} to
-   * warm up. Messages included transitively (i.e., fields with message values) are automatically
-   * handled.
-   *
-   * @param descriptors the list of {@link Descriptor} to load.
-   * @throws CompilationException if there are any compilation errors during warm-up.
-   */
-  public void loadDescriptors(Descriptor... descriptors) throws CompilationException {
-    for (Descriptor descriptor : descriptors) {
-      this.evaluatorBuilder.load(descriptor);
-    }
-  }
+  ValidationResult validate(Message msg) throws ValidationException;
 }
