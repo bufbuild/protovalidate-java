@@ -4,7 +4,7 @@ buf = "1.54.0"
 cel = "0.5.3"
 error-prone = "2.38.0"
 junit = "5.12.2"
-maven-publish = "0.31.0"
+maven-publish = "0.32.0"
 # When updating, make sure to update versions in the following files to match and regenerate code with 'make generate'.
 # - buf.gen.yaml
 # - conformance/buf.gen.yaml
