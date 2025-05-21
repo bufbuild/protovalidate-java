@@ -97,7 +97,7 @@ tasks.register<Exec>("generateCelConformance") {
         buf.asPath,
         "generate",
         "--template",
-        "buf.gen.yaml",
+        "src/test/resources/proto/buf.gen.cel.yaml",
         "buf.build/google/cel-spec:${project.findProperty("cel.spec.version")}",
         "--exclude-path",
         "cel/expr/conformance/proto2",
@@ -106,29 +106,28 @@ tasks.register<Exec>("generateCelConformance") {
     )
 }
 
-var getCelTestData = tasks.register<Exec>("getCelTestData") {
-    val outputDir = layout.buildDirectory.dir("resources/testdata")
-    val celVersion = project.findProperty("cel.spec.version")
-    val outputFile = outputDir.map { it.file("string_ext_$celVersion.textproto") }
-    description = "Downloads the CEL conformance test data textproto file"
-    outputs.file(outputFile)
-    onlyIf {
-        // Only run the curl if file doesn't exist
-        val file = outputFile.get().asFile
-        !file.exists()
+var getCelTestData =
+    tasks.register<Exec>("getCelTestData") {
+        val celVersion = project.findProperty("cel.spec.version")
+        val fileUrl = "https://raw.githubusercontent.com/google/cel-spec/refs/tags/$celVersion/tests/simple/testdata/string_ext.textproto"
+        val targetDir = File("${project.projectDir}/src/test/resources/testdata")
+        val file = File(targetDir, "string_ext_$celVersion.textproto")
+
+        onlyIf {
+            // Only run curl if file doesn't exist
+            !file.exists()
+        }
+        doFirst {
+            file.parentFile.mkdirs()
+            commandLine(
+                "curl",
+                "-fsSL",
+                "-o",
+                file.absolutePath,
+                fileUrl,
+            )
+        }
     }
-    doFirst {
-        val file = outputFile.get().asFile
-        file.parentFile.mkdirs()
-        commandLine(
-            "curl",
-            "-fsSL",
-            "-o",
-            file.absolutePath,
-            "https://raw.githubusercontent.com/google/cel-spec/refs/tags/$celVersion/tests/simple/testdata/string_ext.textproto",
-        )
-    }
-}
 
 tasks.register("generateTestSources") {
     dependsOn("generateTestSourcesImports", "generateTestSourcesNoImports", "generateCelConformance")
@@ -246,7 +245,7 @@ allprojects {
         }
     }
     tasks.withType<Test>().configureEach {
-        // dependsOn(getCelTestData)
+        dependsOn(getCelTestData)
         useJUnitPlatform()
         this.testLogging {
             events("failed")
@@ -254,6 +253,7 @@ allprojects {
             showExceptions = true
             showCauses = true
             showStackTraces = true
+            showStandardStreams = true
         }
     }
 }
