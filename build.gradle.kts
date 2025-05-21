@@ -90,8 +90,48 @@ tasks.register<Exec>("generateTestSourcesNoImports") {
     commandLine(buf.asPath, "generate", "--template", "src/test/resources/proto/buf.gen.noimports.yaml")
 }
 
+tasks.register<Exec>("generateCelConformance") {
+    dependsOn("exportProtovalidateModule")
+    description = "Generates CEL conformance code with buf generate for unit tests."
+    commandLine(
+        buf.asPath,
+        "generate",
+        "--template",
+        "buf.gen.yaml",
+        "buf.build/google/cel-spec:${project.findProperty("cel.spec.version")}",
+        "--exclude-path",
+        "cel/expr/conformance/proto2",
+        "--exclude-path",
+        "cel/expr/conformance/proto3",
+    )
+}
+
+var getCelTestData = tasks.register<Exec>("getCelTestData") {
+    val outputDir = layout.buildDirectory.dir("resources/testdata")
+    val celVersion = project.findProperty("cel.spec.version")
+    val outputFile = outputDir.map { it.file("string_ext_$celVersion.textproto") }
+    description = "Downloads the CEL conformance test data textproto file"
+    outputs.file(outputFile)
+    onlyIf {
+        // Only run the curl if file doesn't exist
+        val file = outputFile.get().asFile
+        !file.exists()
+    }
+    doFirst {
+        val file = outputFile.get().asFile
+        file.parentFile.mkdirs()
+        commandLine(
+            "curl",
+            "-fsSL",
+            "-o",
+            file.absolutePath,
+            "https://raw.githubusercontent.com/google/cel-spec/refs/tags/$celVersion/tests/simple/testdata/string_ext.textproto",
+        )
+    }
+}
+
 tasks.register("generateTestSources") {
-    dependsOn("generateTestSourcesImports", "generateTestSourcesNoImports")
+    dependsOn("generateTestSourcesImports", "generateTestSourcesNoImports", "generateCelConformance")
     description = "Generates code with buf generate for unit tests"
 }
 
@@ -206,6 +246,7 @@ allprojects {
         }
     }
     tasks.withType<Test>().configureEach {
+        // dependsOn(getCelTestData)
         useJUnitPlatform()
         this.testLogging {
             events("failed")
