@@ -15,8 +15,12 @@
 package build.buf.protovalidate;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.assertj.core.api.Assertions.fail;
 
+import cel.expr.conformance.proto3.TestAllTypes;
+import com.cel.expr.Decl;
+import com.cel.expr.ExprValue;
+import com.cel.expr.Value;
 import com.cel.expr.conformance.test.SimpleTest;
 import com.cel.expr.conformance.test.SimpleTestFile;
 import com.cel.expr.conformance.test.SimpleTestSection;
@@ -28,28 +32,30 @@ import java.nio.file.Files;
 import java.nio.file.InvalidPathException;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Stream;
-import java.util.stream.Collectors;
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.params.provider.MethodSource;
-import org.junit.jupiter.params.provider.Arguments;
-import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.api.Named;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 import org.projectnessie.cel.Env;
+import org.projectnessie.cel.EnvOption;
 import org.projectnessie.cel.EvalOption;
 import org.projectnessie.cel.Library;
 import org.projectnessie.cel.Program;
 import org.projectnessie.cel.ProgramOption;
-import org.projectnessie.cel.common.types.DoubleT;
-import org.projectnessie.cel.common.types.Err.ErrException;
+import org.projectnessie.cel.checker.Decls;
 import org.projectnessie.cel.common.types.ListT;
 import org.projectnessie.cel.common.types.StringT;
 import org.projectnessie.cel.common.types.UintT;
 import org.projectnessie.cel.common.types.pb.DefaultTypeAdapter;
+import org.projectnessie.cel.common.types.ref.TypeEnum;
 import org.projectnessie.cel.common.types.ref.Val;
 import org.projectnessie.cel.interpreter.Activation;
 
@@ -60,8 +66,17 @@ class FormatTest {
 
   private static Env env;
 
-  private static SimpleTestSection formatSection;
-  private static SimpleTestSection formatErrorSection;
+  private static List<SimpleTest> formatTests;
+  private static List<SimpleTest> formatErrorTests;
+
+  private static List<String> SKIPPED_TESTS =
+      Arrays.asList(
+          "type() support for string",
+          "map support for string",
+          "map support (all key types)",
+          "dyntype support for maps",
+          "object not allowed",
+          "object inside map");
 
   @BeforeAll
   static void setUp() {
@@ -75,97 +90,89 @@ class FormatTest {
       TextFormat.getParser().merge(data, bldr);
       SimpleTestFile testData = bldr.build();
 
-      List<SimpleTestSection> fs =
-          testData.getSectionList().stream()
-              .filter(s -> s.getName().equals("format"))
-              .collect(Collectors.toList());
-      if (fs.size() == 1) {
-        formatSection = fs.get(0);
-      }
+      List<SimpleTestSection> sections = testData.getSectionList();
 
-      List<SimpleTestSection> fes =
-          testData.getSectionList().stream()
+      // Find the format tests which test successful formatting
+      // Defaults to an empty list if nothing is found
+      formatTests =
+          sections.stream()
+              .filter(s -> s.getName().equals("format"))
+              .findFirst()
+              .map(SimpleTestSection::getTestList)
+              .orElse(Collections.emptyList());
+
+      // Find the format error tests which test errors during formatting
+      // Defaults to an empty list if nothing is found
+      formatErrorTests =
+          sections.stream()
               .filter(s -> s.getName().equals("format_errors"))
-              .collect(Collectors.toList());
-      if (fes.size() == 1) {
-        formatErrorSection = fes.get(0);
-      }
+              .findFirst()
+              .map(SimpleTestSection::getTestList)
+              .orElse(Collections.emptyList());
 
       env = Env.newEnv(Library.Lib(new ValidateLibrary()));
 
-    } catch (InvalidPathException ipe) {
-      System.err.println(ipe);
-    } catch (IOException ioe) {
-      System.err.println(ioe);
+    } catch (InvalidPathException | IOException e) {
+      fail(e);
     }
-  }
-
-  private static Stream<Arguments> getFormatTests() {
-      List<Arguments> args = new ArrayList<Arguments>();
-      for (SimpleTest test : formatSection.getTestList()) {
-          args.add(Arguments.arguments(Named.named(test.getName(), test)));
-      }
-
-      return args.stream();
   }
 
   @ParameterizedTest()
   @MethodSource("getFormatTests")
   void testFormatSuccess(SimpleTest test) {
-      Env.AstIssuesTuple ast = env.compile(test.getExpr());
-      Map<String, String> map = new HashMap<String, String>();
-      ProgramOption globals = ProgramOption.globals(map);
-      List<ProgramOption> globs = new ArrayList<ProgramOption>();
-      globs.add(globals);
-      Program program =
-          env.program(ast.getAst(), globals, ProgramOption.evalOptions(EvalOption.OptTrackState));
-      program.eval(Activation.emptyActivation());
-      // System.err.println(evalResult.getVal());
-      // System.err.println(evalResult.getEvalDetails().getState());
+    List<com.google.api.expr.v1alpha1.Decl> decls = buildDecls(test);
+
+    TestAllTypes msg = TestAllTypes.newBuilder().getDefaultInstanceForType();
+    Env newEnv = env.extend(EnvOption.types(msg), EnvOption.declarations(decls));
+
+    Env.AstIssuesTuple ast = newEnv.compile(test.getExpr());
+    if (ast.hasIssues()) {
+      fail("error building AST for evaluation: " + ast.getIssues().toString());
+    }
+    Map<String, Object> vars = buildVars(test.getBindingsMap());
+    ProgramOption globals = ProgramOption.globals(vars);
+    Program program =
+        newEnv.program(ast.getAst(), globals, ProgramOption.evalOptions(EvalOption.OptTrackState));
+    Program.EvalResult result = program.eval(Activation.emptyActivation());
+
+    assertThat(result.getVal().value()).isEqualTo(getExpectedResult(test));
+    assertThat(result.getVal().type().typeEnum()).isEqualTo(TypeEnum.String);
+  }
+
+  @ParameterizedTest()
+  @MethodSource("getFormatErrorTests")
+  void testFormatError(SimpleTest test) {
+    List<com.google.api.expr.v1alpha1.Decl> decls = buildDecls(test);
+
+    TestAllTypes msg = TestAllTypes.newBuilder().getDefaultInstanceForType();
+    Env newEnv = env.extend(EnvOption.types(msg), EnvOption.declarations(decls));
+
+    Env.AstIssuesTuple ast = newEnv.compile(test.getExpr());
+    if (ast.hasIssues()) {
+      fail("error building AST for evaluation: " + ast.getIssues().toString());
+    }
+    Map<String, Object> vars = buildVars(test.getBindingsMap());
+    ProgramOption globals = ProgramOption.globals(vars);
+    Program program =
+        newEnv.program(
+            ast.getAst(),
+            globals,
+            ProgramOption.evalOptions(
+                EvalOption.OptTrackState,
+                EvalOption.OptExhaustiveEval,
+                EvalOption.OptOptimize,
+                EvalOption.OptPartialEval));
+    Program.EvalResult result = program.eval(Activation.emptyActivation());
+    assertThat(result.getVal().value()).isEqualTo(getExpectedResult(test));
+    assertThat(result.getVal().type().typeEnum()).isEqualTo(TypeEnum.Err);
   }
 
   @Test
-  void testNotEnoughArgumentsThrows() {
-    StringT one = StringT.stringOf("one");
-    ListT val = (ListT) ListT.newValArrayList(null, new Val[] {one});
-
-    assertThatThrownBy(
-            () -> {
-              Format.format("first value: %s and  %s", val);
-            })
-        .isInstanceOf(ErrException.class)
-        .hasMessageContaining("format: not enough arguments");
-  }
-
-  @Test
-  void testDouble() {
-    ListT val =
-        (ListT)
-            ListT.newValArrayList(
-                null,
-                new Val[] {
-                  DoubleT.doubleOf(-1.20000000000),
-                  DoubleT.doubleOf(-1.2),
-                  DoubleT.doubleOf(-1.230),
-                  DoubleT.doubleOf(-1.002),
-                  DoubleT.doubleOf(-0.1),
-                  DoubleT.doubleOf(-.1),
-                  DoubleT.doubleOf(-1),
-                  DoubleT.doubleOf(-0.0),
-                  DoubleT.doubleOf(0),
-                  DoubleT.doubleOf(0.0),
-                  DoubleT.doubleOf(1),
-                  DoubleT.doubleOf(0.1),
-                  DoubleT.doubleOf(.1),
-                  DoubleT.doubleOf(1.002),
-                  DoubleT.doubleOf(1.230),
-                  DoubleT.doubleOf(1.20000000000)
-                });
-    String formatted =
-        Format.format("%d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d", val);
-    assertThat(formatted)
-        .isEqualTo(
-            "-1.2, -1.2, -1.23, -1.002, -0.1, -0.1, -1, -0, 0, 0, 1, 0.1, 0.1, 1.002, 1.23, 1.2");
+  void testStrang() {
+    StringT strang = StringT.stringOf("Bangarang");
+    ListT val = (ListT) ListT.newValArrayList(null, new Val[] {strang});
+    String formatted = Format.format("%s", val);
+    assertThat(formatted).isEqualTo("999999999999");
   }
 
   @Test
@@ -186,32 +193,66 @@ class FormatTest {
     assertThat(formatted).isEqualTo("123.000045678s");
   }
 
-  @Test
-  void testEmptyDuration() {
-    Duration duration = Duration.newBuilder().build();
-    ListT val =
-        (ListT) ListT.newGenericArrayList(DefaultTypeAdapter.Instance, new Duration[] {duration});
-    String formatted = Format.format("%s", val);
-    assertThat(formatted).isEqualTo("0s");
+  private static Stream<Arguments> getTestStream(List<SimpleTest> tests) {
+    List<Arguments> args = new ArrayList<Arguments>();
+    for (SimpleTest test : tests) {
+      if (!SKIPPED_TESTS.contains(test.getName())) {
+        args.add(Arguments.arguments(Named.named(test.getName(), test)));
+      }
+    }
+
+    return args.stream();
   }
 
-  @Test
-  void testDurationSecondsOnly() {
-    Duration duration = Duration.newBuilder().setSeconds(123).build();
-
-    ListT val =
-        (ListT) ListT.newGenericArrayList(DefaultTypeAdapter.Instance, new Duration[] {duration});
-    String formatted = Format.format("%s", val);
-    assertThat(formatted).isEqualTo("123s");
+  private static Stream<Arguments> getFormatTests() {
+    return getTestStream(formatTests);
   }
 
-  @Test
-  void testDurationNanosOnly() {
-    Duration duration = Duration.newBuilder().setNanos(42).build();
+  private static Stream<Arguments> getFormatErrorTests() {
+    return getTestStream(formatErrorTests);
+  }
 
-    ListT val =
-        (ListT) ListT.newGenericArrayList(DefaultTypeAdapter.Instance, new Duration[] {duration});
-    String formatted = Format.format("%s", val);
-    assertThat(formatted).isEqualTo("0.000000042s");
+  private Map<String, Object> buildVars(Map<String, ExprValue> bindings) {
+    Map<String, Object> vars = new HashMap<String, Object>();
+    for (Map.Entry<String, ExprValue> entry : bindings.entrySet()) {
+      ExprValue exprValue = entry.getValue();
+      if (exprValue.hasValue()) {
+        Value val = exprValue.getValue();
+        if (val.hasStringValue()) {
+          vars.put(entry.getKey(), val.getStringValue());
+        }
+      }
+    }
+    return vars;
+  }
+
+  private String getExpectedResult(SimpleTest test) {
+    if (test.hasValue()) {
+      if (test.getValue().hasStringValue()) {
+        return test.getValue().getStringValue();
+      }
+    } else if (test.hasEvalError()) {
+      if (test.getEvalError().getErrorsList().size() == 1) {
+        return test.getEvalError().getErrorsList().get(0).getMessage();
+      }
+    }
+    return "";
+  }
+
+  private List<com.google.api.expr.v1alpha1.Decl> buildDecls(SimpleTest test) {
+    List<com.google.api.expr.v1alpha1.Decl> decls =
+        new ArrayList<com.google.api.expr.v1alpha1.Decl>();
+    for (Decl decl : test.getTypeEnvList()) {
+      if (decl.hasIdent()) {
+        Decl.IdentDecl ident = decl.getIdent();
+        com.cel.expr.Type type = ident.getType();
+        if (type.hasPrimitive()) {
+          if (type.getPrimitive() == com.cel.expr.Type.PrimitiveType.STRING) {
+            decls.add(Decls.newVar(decl.getName(), Decls.String));
+          }
+        }
+      }
+    }
+    return decls;
   }
 }

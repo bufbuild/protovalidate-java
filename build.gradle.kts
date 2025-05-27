@@ -106,6 +106,20 @@ tasks.register<Exec>("generateCelConformance") {
     )
 }
 
+tasks.register<Exec>("generateCelConformanceTestTypes") {
+    dependsOn("exportProtovalidateModule")
+    description = "Generates CEL conformance code with buf generate for unit tests."
+    commandLine(
+        buf.asPath,
+        "generate",
+        "--template",
+        "src/test/resources/proto/buf.gen.cel.proto3.yaml",
+        "buf.build/google/cel-spec:${project.findProperty("cel.spec.version")}",
+        "--path",
+        "cel/expr/conformance/proto3",
+    )
+}
+
 var getCelTestData =
     tasks.register<Exec>("getCelTestData") {
         val celVersion = project.findProperty("cel.spec.version")
@@ -130,7 +144,7 @@ var getCelTestData =
     }
 
 tasks.register("generateTestSources") {
-    dependsOn("generateTestSourcesImports", "generateTestSourcesNoImports", "generateCelConformance")
+    dependsOn("generateTestSourcesImports", "generateTestSourcesNoImports", "generateCelConformance", "generateCelConformanceTestTypes")
     description = "Generates code with buf generate for unit tests"
 }
 

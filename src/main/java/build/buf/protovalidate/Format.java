@@ -18,23 +18,22 @@ import static java.time.format.DateTimeFormatter.ISO_INSTANT;
 
 import com.google.protobuf.Duration;
 import com.google.protobuf.Timestamp;
+import java.math.BigInteger;
 import java.nio.charset.StandardCharsets;
 import java.text.DecimalFormat;
 import java.time.Instant;
-import java.util.List;
+import java.util.Locale;
+import java.util.Optional;
 import org.projectnessie.cel.common.types.Err.ErrException;
 import org.projectnessie.cel.common.types.IntT;
+import org.projectnessie.cel.common.types.IteratorT;
 import org.projectnessie.cel.common.types.ListT;
-import org.projectnessie.cel.common.types.pb.Db;
-import org.projectnessie.cel.common.types.pb.DefaultTypeAdapter;
+import org.projectnessie.cel.common.types.MapT;
 import org.projectnessie.cel.common.types.ref.TypeEnum;
 import org.projectnessie.cel.common.types.ref.Val;
 
 /** String formatter for CEL evaluation. */
 final class Format {
-  private static final char[] HEX_ARRAY = "0123456789ABCDEF".toCharArray();
-  private static final char[] LOWER_HEX_ARRAY = "0123456789abcdef".toCharArray();
-
   /**
    * Format the string with a {@link ListT}.
    *
@@ -72,7 +71,7 @@ final class Format {
         continue;
       }
       if (argIndex >= list.size().intValue()) {
-        throw new ErrException("format: not enough arguments");
+        throw new ErrException("index " + argIndex + " out of range");
       }
       Val arg = list.get(IntT.intOf(argIndex++));
       c = fmtString.charAt(index++);
@@ -93,113 +92,143 @@ final class Format {
 
       switch (c) {
         case 'd':
-          formatDecimal(builder, arg);
+          builder.append(formatDecimal(arg));
           break;
         case 'x':
-          formatHex(builder, arg, LOWER_HEX_ARRAY);
+          builder.append(formatHex(arg));
           break;
         case 'X':
-          formatHex(builder, arg, HEX_ARRAY);
+          // We can use a root locale, because the only characters are hex (A-F).
+          builder.append(formatHex(arg).toUpperCase(Locale.ROOT));
           break;
         case 's':
-          formatString(builder, arg);
+          builder.append(formatString(arg));
           break;
         case 'e':
+          builder.append(formatExponential(arg, precision));
+          break;
         case 'f':
+          builder.append(formatFloat(arg, precision));
+          break;
         case 'b':
+          builder.append(formatBinary(arg));
+          break;
         case 'o':
+          builder.append(formatOctal(arg));
+          break;
         default:
-          throw new ErrException("format: unparsable format specifier %s", c);
+          throw new ErrException(
+              "could not parse formatting clause: unrecognized formatting clause \"" + c + "\"");
       }
     }
     return builder.toString();
   }
 
   /**
-   * Converts a byte array to a hexadecimal string representation.
-   *
-   * @param bytes the byte array to convert.
-   * @param digits the array of hexadecimal digits.
-   * @return the hexadecimal string representation.
-   */
-  private static String bytesToHex(byte[] bytes, char[] digits) {
-    char[] hexChars = new char[bytes.length * 2];
-    for (int j = 0; j < bytes.length; j++) {
-      int v = bytes[j] & 0xFF;
-      hexChars[j * 2] = digits[v >>> 4];
-      hexChars[j * 2 + 1] = digits[v & 0x0F];
-    }
-    return new String(hexChars);
-  }
-
-  /**
    * Formats a string value.
    *
-   * @param builder the StringBuilder to append the formatted string to.
    * @param val the value to format.
    */
-  private static void formatString(StringBuilder builder, Val val) {
+  private static String formatString(Val val) {
     TypeEnum type = val.type().typeEnum();
-    if (type == TypeEnum.Bool) {
-      builder.append(val.booleanValue());
-    } else if (type == TypeEnum.String || type == TypeEnum.Int || type == TypeEnum.Uint) {
-      builder.append(val.value());
-    } else if (type == TypeEnum.Bytes) {
-      builder.append(new String((byte[]) val.value(), StandardCharsets.UTF_8));
-    } else if (type == TypeEnum.Double) {
-      formatDecimal(builder, val);
-    } else if (type == TypeEnum.Duration) {
-      formatDuration(builder, val);
-    } else if (type == TypeEnum.Timestamp) {
-      formatTimestamp(builder, val);
-    } else if (type == TypeEnum.List) {
-      formatList(builder, val);
-    } else if (type == TypeEnum.Map) {
-      throw new ErrException("unimplemented string map type");
-    } else if (type == TypeEnum.Null) {
-      throw new ErrException("unimplemented string null type");
+    switch (type) {
+      case Bool:
+        return Boolean.toString(val.booleanValue());
+      case String:
+        return val.value().toString();
+      case Int:
+      case Uint:
+        Optional<String> str = validateNumber(val);
+        if (str.isPresent()) {
+          return str.get();
+        }
+        return val.value().toString();
+      case Bytes:
+        return new String((byte[]) val.value(), StandardCharsets.UTF_8);
+      case Double:
+        Optional<String> result = validateNumber(val);
+        if (result.isPresent()) {
+          return result.get();
+        }
+        return formatDecimal(val);
+      case Duration:
+        return formatDuration(val);
+      case Timestamp:
+        return formatTimestamp(val);
+      case List:
+        return formatList((ListT) val);
+      case Map:
+        return formatMap((MapT) val);
+      case Null:
+        return "null";
+      default:
+        throw new ErrException(
+            "error during formatting: string clause can only be used on strings, bools, bytes, ints, doubles, maps, lists, types, durations, and timestamps, was given "
+                + val.type());
     }
   }
 
   /**
    * Formats a list value.
    *
-   * @param builder the StringBuilder to append the formatted list value to.
    * @param val the value to format.
    */
-  @SuppressWarnings("rawtypes")
-  private static void formatList(StringBuilder builder, Val val) {
+  private static String formatList(ListT val) {
+    StringBuilder builder = new StringBuilder();
     builder.append('[');
-    List list = val.convertToNative(List.class);
-    for (int i = 0; i < list.size(); i++) {
-      Object obj = list.get(i);
-      formatString(builder, DefaultTypeAdapter.nativeToValue(Db.newDb(), null, obj));
-      if (i != list.size() - 1) {
+
+    IteratorT iter = val.iterator();
+    int index = 0;
+    while (iter.hasNext().booleanValue()) {
+      Val v = iter.next();
+      builder.append(formatString(v));
+      if (index != val.size().intValue() - 1) {
         builder.append(", ");
       }
+      index++;
     }
     builder.append(']');
+    return builder.toString();
+  }
+
+  private static String formatMap(MapT val) {
+    StringBuilder builder = new StringBuilder();
+    builder.append('{');
+
+    IteratorT iter = val.iterator();
+    int index = 0;
+    while (iter.hasNext().booleanValue()) {
+      Val key = iter.next();
+      String mapKey = formatString(key);
+      String mapVal = formatString(val.find(key));
+      builder.append(mapKey).append(": ").append(mapVal);
+      if (index != val.size().intValue() - 1) {
+        builder.append(", ");
+      }
+      index++;
+    }
+    builder.append('}');
+    return builder.toString();
   }
 
   /**
    * Formats a timestamp value.
    *
-   * @param builder the StringBuilder to append the formatted timestamp value to.
    * @param val the value to format.
    */
-  private static void formatTimestamp(StringBuilder builder, Val val) {
+  private static String formatTimestamp(Val val) {
     Timestamp timestamp = val.convertToNative(Timestamp.class);
     Instant instant = Instant.ofEpochSecond(timestamp.getSeconds(), timestamp.getNanos());
-    builder.append(ISO_INSTANT.format(instant));
+    return ISO_INSTANT.format(instant);
   }
 
   /**
    * Formats a duration value.
    *
-   * @param builder the StringBuilder to append the formatted duration value to.
    * @param val the value to format.
    */
-  private static void formatDuration(StringBuilder builder, Val val) {
+  private static String formatDuration(Val val) {
+    StringBuilder builder = new StringBuilder();
     Duration duration = val.convertToNative(Duration.class);
 
     double totalSeconds = duration.getSeconds() + (duration.getNanos() / 1_000_000_000.0);
@@ -207,39 +236,131 @@ final class Format {
     DecimalFormat formatter = new DecimalFormat("0.#########");
     builder.append(formatter.format(totalSeconds));
     builder.append("s");
+
+    return builder.toString();
   }
 
   /**
    * Formats a hexadecimal value.
    *
-   * @param builder the StringBuilder to append the formatted hexadecimal value to.
    * @param val the value to format.
-   * @param digits the array of hexadecimal digits.
    */
-  private static void formatHex(StringBuilder builder, Val val, char[] digits) {
-    String hexString;
+  private static String formatHex(Val val) {
     TypeEnum type = val.type().typeEnum();
     if (type == TypeEnum.Int || type == TypeEnum.Uint) {
-      hexString = Long.toHexString(val.intValue());
+      return Long.toHexString(val.intValue());
     } else if (type == TypeEnum.Bytes) {
-      byte[] bytes = (byte[]) val.value();
-      hexString = bytesToHex(bytes, digits);
+      StringBuilder hexString = new StringBuilder();
+      for (byte b : (byte[]) val.value()) {
+        hexString.append(String.format("%02x", b));
+      }
+      return hexString.toString();
     } else if (type == TypeEnum.String) {
-      hexString = val.value().toString();
+      String arg = val.value().toString();
+      return String.format("%x", new BigInteger(1, arg.getBytes(StandardCharsets.UTF_8)));
     } else {
-      throw new ErrException("formatHex: expected int or string");
+      throw new ErrException(
+          "error during formatting: only integers, byte buffers, and strings can be formatted as hex, was given "
+              + typeToString(val));
     }
-    builder.append(hexString);
   }
 
   /**
    * Formats a decimal value.
    *
-   * @param builder the StringBuilder to append the formatted decimal value to.
    * @param val the value to format.
    */
-  private static void formatDecimal(StringBuilder builder, Val val) {
-    DecimalFormat formatter = new DecimalFormat("0.#########");
-    builder.append(formatter.format(val.value()));
+  private static String formatDecimal(Val val) {
+    TypeEnum type = val.type().typeEnum();
+    if (type == TypeEnum.Int || type == TypeEnum.Uint || type == TypeEnum.Double) {
+      Optional<String> str = validateNumber(val);
+      if (str.isPresent()) {
+        return str.get();
+      }
+      DecimalFormat formatter = new DecimalFormat("0.#########");
+      return formatter.format(val.value());
+    } else {
+      throw new ErrException(
+          "error during formatting: decimal clause can only be used on integers, was given "
+              + typeToString(val));
+    }
+  }
+
+  private static String formatOctal(Val val) {
+    TypeEnum type = val.type().typeEnum();
+    if (type == TypeEnum.Int || type == TypeEnum.Uint) {
+      return Long.toOctalString(Long.valueOf(val.intValue()));
+    } else {
+      throw new ErrException(
+          "error during formatting: octal clause can only be used on integers, was given "
+              + typeToString(val));
+    }
+  }
+
+  private static String formatBinary(Val val) {
+    TypeEnum type = val.type().typeEnum();
+    if (type == TypeEnum.Int || type == TypeEnum.Uint) {
+      return Long.toBinaryString(Long.valueOf(val.intValue()));
+    } else if (type == TypeEnum.Bool) {
+      return val.booleanValue() ? "1" : "0";
+    } else {
+      throw new ErrException(
+          "error during formatting: only integers and bools can be formatted as binary, was given "
+              + typeToString(val));
+    }
+  }
+
+  private static String formatExponential(Val val, int precision) {
+    TypeEnum type = val.type().typeEnum();
+    if (type == TypeEnum.Double) {
+      Optional<String> str = validateNumber(val);
+      if (str.isPresent()) {
+        return str.get();
+      }
+      String pattern = "%." + precision + "e";
+      return String.format(pattern.toString(), val.doubleValue());
+    } else {
+      throw new ErrException(
+          "error during formatting: scientific clause can only be used on doubles, was given "
+              + typeToString(val));
+    }
+  }
+
+  private static String formatFloat(Val val, int precision) {
+    TypeEnum type = val.type().typeEnum();
+    if (type == TypeEnum.Double) {
+      Optional<String> str = validateNumber(val);
+      if (str.isPresent()) {
+        return str.get();
+      }
+      StringBuilder pattern = new StringBuilder("0.");
+      if (precision > 0) {
+        for (int i = 0; i < precision; i++) {
+          pattern.append("0");
+        }
+      } else {
+        pattern.append("########");
+      }
+      DecimalFormat formatter = new DecimalFormat(pattern.toString());
+      return formatter.format(val.value());
+    } else {
+      throw new ErrException(
+          "error during formatting: fixed-point clause can only be used on doubles, was given "
+              + typeToString(val));
+    }
+  }
+
+  private static Optional<String> validateNumber(Val val) {
+    if (val.doubleValue() == Double.POSITIVE_INFINITY) {
+      return Optional.of("Infinity");
+    } else if (val.doubleValue() == Double.NEGATIVE_INFINITY) {
+      return Optional.of("-Infinity");
+    }
+    return Optional.empty();
+  }
+
+  private static String typeToString(Val val) {
+    TypeEnum type = val.type().typeEnum();
+    return type.getName();
   }
 }
