@@ -7,10 +7,6 @@ MAKEFLAGS += --warn-undefined-variables
 MAKEFLAGS += --no-builtin-rules
 MAKEFLAGS += --no-print-directory
 GRADLE ?= ./gradlew
-# Version of the cel-spec that this implementation is conformant with
-# This should be kept in sync with the version in format_test.py
-CEL_SPEC_VERSION ?= v0.24.0
-TESTDATA_FILE := tests/testdata/string_ext_$(CEL_SPEC_VERSION).textproto
 
 .PHONY: all
 all: lint generate build docs conformance  ## Run all tests and lint (default)

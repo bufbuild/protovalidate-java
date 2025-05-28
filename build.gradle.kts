@@ -91,7 +91,7 @@ tasks.register<Exec>("generateTestSourcesNoImports") {
 }
 
 tasks.register<Exec>("generateCelConformance") {
-    dependsOn("exportProtovalidateModule")
+    dependsOn("generateCelConformanceTestTypes")
     description = "Generates CEL conformance code with buf generate for unit tests."
     commandLine(
         buf.asPath,
@@ -106,14 +106,19 @@ tasks.register<Exec>("generateCelConformance") {
     )
 }
 
+// The conformance tests use the Protobuf package path for tests that use these types.
+// i.e. cel.expr.conformance.proto3.TestAllTypes. But, if we use managed mode it adds 'com'
+// to the prefix. Additionally, we can't disable managed mode because the java_package option
+// specified in these proto files is "dev.cel.expr.conformance.proto3". So, to get around this,
+// we're generating these separately and specifying a java_package override of the package we need.
 tasks.register<Exec>("generateCelConformanceTestTypes") {
     dependsOn("exportProtovalidateModule")
-    description = "Generates CEL conformance code with buf generate for unit tests."
+    description = "Generates CEL conformance test types with buf generate for unit tests using a Java package override."
     commandLine(
         buf.asPath,
         "generate",
         "--template",
-        "src/test/resources/proto/buf.gen.cel.proto3.yaml",
+        "src/test/resources/proto/buf.gen.cel.testtypes.yaml",
         "buf.build/google/cel-spec:${project.findProperty("cel.spec.version")}",
         "--path",
         "cel/expr/conformance/proto3",
@@ -144,7 +149,7 @@ var getCelTestData =
     }
 
 tasks.register("generateTestSources") {
-    dependsOn("generateTestSourcesImports", "generateTestSourcesNoImports", "generateCelConformance", "generateCelConformanceTestTypes")
+    dependsOn("generateTestSourcesImports", "generateTestSourcesNoImports", "generateCelConformance")
     description = "Generates code with buf generate for unit tests"
 }
 
