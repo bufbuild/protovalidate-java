@@ -1,0 +1,6 @@
+version: v2
+managed:
+  enabled: true
+plugins:
+  - remote: buf.build/protocolbuffers/java:v31.0
+    out: build/generated/test-sources/bufgen

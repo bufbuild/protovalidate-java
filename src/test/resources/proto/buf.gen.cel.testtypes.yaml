@@ -1,0 +1,9 @@
+version: v2
+managed:
+  enabled: true
+  override:
+    - file_option: java_package
+      value: cel.expr.conformance.proto3
+plugins:
+  - remote: buf.build/protocolbuffers/java:v31.0
+    out: build/generated/test-sources/bufgen
