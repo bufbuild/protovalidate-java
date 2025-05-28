@@ -25,10 +25,8 @@ import com.cel.expr.conformance.test.SimpleTest;
 import com.cel.expr.conformance.test.SimpleTestFile;
 import com.cel.expr.conformance.test.SimpleTestSection;
 import com.google.protobuf.TextFormat;
-import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
-import java.nio.file.InvalidPathException;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -81,42 +79,36 @@ class FormatTest {
           "object inside map");
 
   @BeforeAll
-  static void setUp() {
-    try {
-      byte[] encoded =
-          Files.readAllBytes(
-              Paths.get(
-                  "src/test/resources/testdata/string_ext_" + CEL_SPEC_VERSION + ".textproto"));
-      String data = new String(encoded, StandardCharsets.UTF_8);
-      SimpleTestFile.Builder bldr = SimpleTestFile.newBuilder();
-      TextFormat.getParser().merge(data, bldr);
-      SimpleTestFile testData = bldr.build();
+  static void setUp() throws Exception {
+    byte[] encoded =
+        Files.readAllBytes(
+            Paths.get("src/test/resources/testdata/string_ext_" + CEL_SPEC_VERSION + ".textproto"));
+    String data = new String(encoded, StandardCharsets.UTF_8);
+    SimpleTestFile.Builder bldr = SimpleTestFile.newBuilder();
+    TextFormat.getParser().merge(data, bldr);
+    SimpleTestFile testData = bldr.build();
 
-      List<SimpleTestSection> sections = testData.getSectionList();
+    List<SimpleTestSection> sections = testData.getSectionList();
 
-      // Find the format tests which test successful formatting
-      // Defaults to an empty list if nothing is found
-      formatTests =
-          sections.stream()
-              .filter(s -> s.getName().equals("format"))
-              .findFirst()
-              .map(SimpleTestSection::getTestList)
-              .orElse(Collections.emptyList());
+    // Find the format tests which test successful formatting
+    // Defaults to an empty list if nothing is found
+    formatTests =
+        sections.stream()
+            .filter(s -> s.getName().equals("format"))
+            .findFirst()
+            .map(SimpleTestSection::getTestList)
+            .orElse(Collections.emptyList());
 
-      // Find the format error tests which test errors during formatting
-      // Defaults to an empty list if nothing is found
-      formatErrorTests =
-          sections.stream()
-              .filter(s -> s.getName().equals("format_errors"))
-              .findFirst()
-              .map(SimpleTestSection::getTestList)
-              .orElse(Collections.emptyList());
+    // Find the format error tests which test errors during formatting
+    // Defaults to an empty list if nothing is found
+    formatErrorTests =
+        sections.stream()
+            .filter(s -> s.getName().equals("format_errors"))
+            .findFirst()
+            .map(SimpleTestSection::getTestList)
+            .orElse(Collections.emptyList());
 
-      env = Env.newEnv(Library.Lib(new ValidateLibrary()));
-
-    } catch (InvalidPathException | IOException e) {
-      fail(e);
-    }
+    env = Env.newEnv(Library.Lib(new ValidateLibrary()));
   }
 
   @ParameterizedTest()

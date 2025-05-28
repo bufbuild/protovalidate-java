@@ -178,14 +178,12 @@ final class Format {
     builder.append('[');
 
     IteratorT iter = val.iterator();
-    int index = 0;
     while (iter.hasNext().booleanValue()) {
       Val v = iter.next();
       builder.append(formatString(v));
-      if (index != val.size().intValue() - 1) {
+      if (iter.hasNext().booleanValue()) {
         builder.append(", ");
       }
-      index++;
     }
     builder.append(']');
     return builder.toString();
@@ -196,16 +194,14 @@ final class Format {
     builder.append('{');
 
     IteratorT iter = val.iterator();
-    int index = 0;
     while (iter.hasNext().booleanValue()) {
       Val key = iter.next();
       String mapKey = formatString(key);
       String mapVal = formatString(val.find(key));
       builder.append(mapKey).append(": ").append(mapVal);
-      if (index != val.size().intValue() - 1) {
+      if (iter.hasNext().booleanValue()) {
         builder.append(", ");
       }
-      index++;
     }
     builder.append('}');
     return builder.toString();
