@@ -24,7 +24,6 @@ import com.cel.expr.Value;
 import com.cel.expr.conformance.test.SimpleTest;
 import com.cel.expr.conformance.test.SimpleTestFile;
 import com.cel.expr.conformance.test.SimpleTestSection;
-import com.google.protobuf.Duration;
 import com.google.protobuf.TextFormat;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
@@ -40,7 +39,6 @@ import java.util.Map;
 import java.util.stream.Stream;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Named;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -51,12 +49,7 @@ import org.projectnessie.cel.Library;
 import org.projectnessie.cel.Program;
 import org.projectnessie.cel.ProgramOption;
 import org.projectnessie.cel.checker.Decls;
-import org.projectnessie.cel.common.types.ListT;
-import org.projectnessie.cel.common.types.StringT;
-import org.projectnessie.cel.common.types.UintT;
-import org.projectnessie.cel.common.types.pb.DefaultTypeAdapter;
 import org.projectnessie.cel.common.types.ref.TypeEnum;
-import org.projectnessie.cel.common.types.ref.Val;
 import org.projectnessie.cel.interpreter.Activation;
 
 class FormatTest {
@@ -174,32 +167,6 @@ class FormatTest {
     Program.EvalResult result = program.eval(Activation.emptyActivation());
     assertThat(result.getVal().value()).isEqualTo(getExpectedResult(test));
     assertThat(result.getVal().type().typeEnum()).isEqualTo(TypeEnum.Err);
-  }
-
-  @Test
-  void testStrang() {
-    StringT strang = StringT.stringOf("Bangarang");
-    ListT val = (ListT) ListT.newValArrayList(null, new Val[] {strang});
-    String formatted = Format.format("%s", val);
-    assertThat(formatted).isEqualTo("999999999999");
-  }
-
-  @Test
-  void testLargeDecimalValuesAreProperlyFormatted() {
-    UintT largeDecimal = UintT.uintOf(999999999999L);
-    ListT val = (ListT) ListT.newValArrayList(null, new Val[] {largeDecimal});
-    String formatted = Format.format("%s", val);
-    assertThat(formatted).isEqualTo("999999999999");
-  }
-
-  @Test
-  void testDuration() {
-    Duration duration = Duration.newBuilder().setSeconds(123).setNanos(45678).build();
-
-    ListT val =
-        (ListT) ListT.newGenericArrayList(DefaultTypeAdapter.Instance, new Duration[] {duration});
-    String formatted = Format.format("%s", val);
-    assertThat(formatted).isEqualTo("123.000045678s");
   }
 
   private static Stream<Arguments> getTestStream(List<SimpleTest> tests) {

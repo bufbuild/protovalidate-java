@@ -63,6 +63,6 @@ message FieldExpressionMapInt32 {
   map<int32, int32> val = 1 [(buf.validate.field).cel = {
     id: "field_expression.map.int32"
     message: "all map values must equal 1"
-    expression: "'%s'.format([type('test string')])"
+    expression: "this.all(k, this[k] == 1)"
   }];
 }

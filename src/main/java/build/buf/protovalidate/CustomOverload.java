@@ -110,25 +110,20 @@ final class CustomOverload {
    * @return The {@link Overload} instance for the "format" operation.
    */
   private static Overload celFormat() {
-    Overload ol =
-        Overload.binary(
-            OVERLOAD_FORMAT,
-            (lhs, rhs) -> {
-              if (lhs.type().typeEnum() != TypeEnum.String
-                  || rhs.type().typeEnum() != TypeEnum.List) {
-                return Err.noSuchOverload(lhs, OVERLOAD_FORMAT, rhs);
-              }
-              ListT list = (ListT) rhs.convertToType(ListT.ListType);
-              String formatString = (String) lhs.value();
-              try {
-                return StringT.stringOf(Format.format(formatString, list));
-              } catch (Err.ErrException e) {
-                return e.getErr();
-              }
-            });
-
-    System.err.println(ol);
-    return ol;
+    return Overload.binary(
+        OVERLOAD_FORMAT,
+        (lhs, rhs) -> {
+          if (lhs.type().typeEnum() != TypeEnum.String || rhs.type().typeEnum() != TypeEnum.List) {
+            return Err.noSuchOverload(lhs, OVERLOAD_FORMAT, rhs);
+          }
+          ListT list = (ListT) rhs.convertToType(ListT.ListType);
+          String formatString = (String) lhs.value();
+          try {
+            return StringT.stringOf(Format.format(formatString, list));
+          } catch (Err.ErrException e) {
+            return e.getErr();
+          }
+        });
   }
 
   /**
