@@ -20,6 +20,8 @@ import com.google.protobuf.Duration;
 import com.google.protobuf.Timestamp;
 import java.math.BigInteger;
 import java.nio.charset.StandardCharsets;
+import java.nio.ByteBuffer;
+import java.nio.CharBuffer;
 import java.text.DecimalFormat;
 import java.time.Instant;
 import java.util.Locale;
@@ -144,7 +146,9 @@ final class Format {
         }
         return val.value().toString();
       case Bytes:
-        return new String((byte[]) val.value(), StandardCharsets.UTF_8);
+        String byteStr = new String((byte[]) val.value(), StandardCharsets.UTF_8);
+        // Collapse any contiguous placeholders into one
+        return byteStr.replaceAll("\\ufffd+", "\ufffd");
       case Double:
         Optional<String> result = validateNumber(val);
         if (result.isPresent()) {
