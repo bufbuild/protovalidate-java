@@ -318,7 +318,7 @@ final class Format {
         return str.get();
       }
       String pattern = "%." + precision + "e";
-      return String.format(pattern.toString(), val.doubleValue());
+      return String.format(pattern, val.doubleValue());
     } else {
       throw new ErrException(
           "error during formatting: scientific clause can only be used on doubles, was given "

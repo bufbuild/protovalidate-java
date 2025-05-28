@@ -131,12 +131,12 @@ class FormatTest {
     if (ast.hasIssues()) {
       fail("error building AST for evaluation: " + ast.getIssues().toString());
     }
-    Map<String, Object> vars = buildVars(test.getBindingsMap());
+    Map<String, Object> vars = buildVariables(test.getBindingsMap());
     ProgramOption globals = ProgramOption.globals(vars);
     Program program =
         newEnv.program(ast.getAst(), globals, ProgramOption.evalOptions(EvalOption.OptTrackState));
-    Program.EvalResult result = program.eval(Activation.emptyActivation());
 
+    Program.EvalResult result = program.eval(Activation.emptyActivation());
     assertThat(result.getVal().value()).isEqualTo(getExpectedResult(test));
     assertThat(result.getVal().type().typeEnum()).isEqualTo(TypeEnum.String);
   }
@@ -153,17 +153,11 @@ class FormatTest {
     if (ast.hasIssues()) {
       fail("error building AST for evaluation: " + ast.getIssues().toString());
     }
-    Map<String, Object> vars = buildVars(test.getBindingsMap());
+    Map<String, Object> vars = buildVariables(test.getBindingsMap());
     ProgramOption globals = ProgramOption.globals(vars);
     Program program =
-        newEnv.program(
-            ast.getAst(),
-            globals,
-            ProgramOption.evalOptions(
-                EvalOption.OptTrackState,
-                EvalOption.OptExhaustiveEval,
-                EvalOption.OptOptimize,
-                EvalOption.OptPartialEval));
+        newEnv.program(ast.getAst(), globals, ProgramOption.evalOptions(EvalOption.OptTrackState));
+
     Program.EvalResult result = program.eval(Activation.emptyActivation());
     assertThat(result.getVal().value()).isEqualTo(getExpectedResult(test));
     assertThat(result.getVal().type().typeEnum()).isEqualTo(TypeEnum.Err);
@@ -188,7 +182,8 @@ class FormatTest {
     return getTestStream(formatErrorTests);
   }
 
-  private Map<String, Object> buildVars(Map<String, ExprValue> bindings) {
+  // Builds the variable definitions to be used during evaluation
+  private Map<String, Object> buildVariables(Map<String, ExprValue> bindings) {
     Map<String, Object> vars = new HashMap<String, Object>();
     for (Map.Entry<String, ExprValue> entry : bindings.entrySet()) {
       ExprValue exprValue = entry.getValue();
@@ -202,12 +197,14 @@ class FormatTest {
     return vars;
   }
 
+  // Gets the expected result for a given test
   private String getExpectedResult(SimpleTest test) {
     if (test.hasValue()) {
       if (test.getValue().hasStringValue()) {
         return test.getValue().getStringValue();
       }
     } else if (test.hasEvalError()) {
+        // Note that we only expect a single eval error for all the conformance tests
       if (test.getEvalError().getErrorsList().size() == 1) {
         return test.getEvalError().getErrorsList().get(0).getMessage();
       }
@@ -215,6 +212,7 @@ class FormatTest {
     return "";
   }
 
+  // Builds the declarations for a given test
   private List<com.google.api.expr.v1alpha1.Decl> buildDecls(SimpleTest test) {
     List<com.google.api.expr.v1alpha1.Decl> decls =
         new ArrayList<com.google.api.expr.v1alpha1.Decl>();
