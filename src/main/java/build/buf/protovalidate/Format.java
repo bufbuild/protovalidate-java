@@ -144,7 +144,9 @@ final class Format {
         }
         return val.value().toString();
       case Bytes:
-        return new String((byte[]) val.value(), StandardCharsets.UTF_8);
+        String byteStr = new String((byte[]) val.value(), StandardCharsets.UTF_8);
+        // Collapse any contiguous placeholders into one
+        return byteStr.replaceAll("\\ufffd+", "\ufffd");
       case Double:
         Optional<String> result = validateNumber(val);
         if (result.isPresent()) {

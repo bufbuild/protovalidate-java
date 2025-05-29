@@ -30,10 +30,10 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Named;
@@ -79,34 +79,33 @@ class FormatTest {
           "object inside map");
 
   @BeforeAll
-  static void setUp() throws Exception {
-    byte[] encoded =
-        Files.readAllBytes(
-            Paths.get("src/test/resources/testdata/string_ext_" + CEL_SPEC_VERSION + ".textproto"));
-    String data = new String(encoded, StandardCharsets.UTF_8);
-    SimpleTestFile.Builder bldr = SimpleTestFile.newBuilder();
-    TextFormat.getParser().merge(data, bldr);
-    SimpleTestFile testData = bldr.build();
+  private static void setUp() throws Exception {
+    // The test data from the cel-spec conformance tests
+    List<SimpleTestSection> celSpecSections =
+        loadTestData("src/test/resources/testdata/string_ext_" + CEL_SPEC_VERSION + ".textproto");
+    // Our supplemental tests of functionality not in the cel conformance file, but defined in the
+    // spec.
+    List<SimpleTestSection> supplementalSections =
+        loadTestData("src/test/resources/testdata/string_ext_supplemental.textproto");
 
-    List<SimpleTestSection> sections = testData.getSectionList();
+    // Combine the test data from both files into one
+    List<SimpleTestSection> sections =
+        Stream.concat(celSpecSections.stream(), supplementalSections.stream())
+            .collect(Collectors.toList());
 
     // Find the format tests which test successful formatting
-    // Defaults to an empty list if nothing is found
     formatTests =
         sections.stream()
             .filter(s -> s.getName().equals("format"))
-            .findFirst()
-            .map(SimpleTestSection::getTestList)
-            .orElse(Collections.emptyList());
+            .flatMap(s -> s.getTestList().stream())
+            .collect(Collectors.toList());
 
     // Find the format error tests which test errors during formatting
-    // Defaults to an empty list if nothing is found
     formatErrorTests =
         sections.stream()
             .filter(s -> s.getName().equals("format_errors"))
-            .findFirst()
-            .map(SimpleTestSection::getTestList)
-            .orElse(Collections.emptyList());
+            .flatMap(s -> s.getTestList().stream())
+            .collect(Collectors.toList());
 
     env = Env.newEnv(Library.Lib(new ValidateLibrary()));
   }
@@ -125,6 +124,17 @@ class FormatTest {
     Program.EvalResult result = evaluate(test);
     assertThat(result.getVal().value()).isEqualTo(getExpectedResult(test));
     assertThat(result.getVal().type().typeEnum()).isEqualTo(TypeEnum.Err);
+  }
+
+  // Loads test data from the given text format file
+  private static List<SimpleTestSection> loadTestData(String fileName) throws Exception {
+    byte[] encoded = Files.readAllBytes(Paths.get(fileName));
+    String data = new String(encoded, StandardCharsets.UTF_8);
+    SimpleTestFile.Builder bldr = SimpleTestFile.newBuilder();
+    TextFormat.getParser().merge(data, bldr);
+    SimpleTestFile testData = bldr.build();
+
+    return testData.getSectionList();
   }
 
   // Runs a test by extending the cel environment with the specified
