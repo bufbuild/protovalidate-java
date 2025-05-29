@@ -79,24 +79,14 @@ class FormatTest {
           // found no matching overload for 'format' applied to 'string.(list(map(int, dyn)))'
           "object inside map");
 
-  private static List<SimpleTestSection> loadTestData(String fileName) throws Exception {
-    byte[] encoded =
-        Files.readAllBytes(
-            Paths.get(fileName));
-    String data = new String(encoded, StandardCharsets.UTF_8);
-    SimpleTestFile.Builder bldr = SimpleTestFile.newBuilder();
-    TextFormat.getParser().merge(data, bldr);
-    SimpleTestFile testData = bldr.build();
-
-    return testData.getSectionList();
-  }
-
   @BeforeAll
   private static void setUp() throws Exception {
-
+      // The test data from the cel-spec conformance tests
     List<SimpleTestSection> celSpecSections = loadTestData("src/test/resources/testdata/string_ext_" + CEL_SPEC_VERSION + ".textproto");
+    // Our supplemental tests of functionality not in the cel conformance file, but defined in the spec.
     List<SimpleTestSection> supplementalSections = loadTestData("src/test/resources/testdata/string_ext_supplemental.textproto");
 
+    // Combine the test data from both files into one
     List<SimpleTestSection> sections = Stream.concat(celSpecSections.stream(), supplementalSections.stream())
                                      .collect(Collectors.toList());
 
@@ -131,6 +121,19 @@ class FormatTest {
     Program.EvalResult result = evaluate(test);
     assertThat(result.getVal().value()).isEqualTo(getExpectedResult(test));
     assertThat(result.getVal().type().typeEnum()).isEqualTo(TypeEnum.Err);
+  }
+
+  // Loads test data from the given text format file
+  private static List<SimpleTestSection> loadTestData(String fileName) throws Exception {
+    byte[] encoded =
+        Files.readAllBytes(
+            Paths.get(fileName));
+    String data = new String(encoded, StandardCharsets.UTF_8);
+    SimpleTestFile.Builder bldr = SimpleTestFile.newBuilder();
+    TextFormat.getParser().merge(data, bldr);
+    SimpleTestFile testData = bldr.build();
+
+    return testData.getSectionList();
   }
 
   // Runs a test by extending the cel environment with the specified
