@@ -30,12 +30,11 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Stream;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Named;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -81,14 +80,18 @@ class FormatTest {
 
   @BeforeAll
   private static void setUp() throws Exception {
-      // The test data from the cel-spec conformance tests
-    List<SimpleTestSection> celSpecSections = loadTestData("src/test/resources/testdata/string_ext_" + CEL_SPEC_VERSION + ".textproto");
-    // Our supplemental tests of functionality not in the cel conformance file, but defined in the spec.
-    List<SimpleTestSection> supplementalSections = loadTestData("src/test/resources/testdata/string_ext_supplemental.textproto");
+    // The test data from the cel-spec conformance tests
+    List<SimpleTestSection> celSpecSections =
+        loadTestData("src/test/resources/testdata/string_ext_" + CEL_SPEC_VERSION + ".textproto");
+    // Our supplemental tests of functionality not in the cel conformance file, but defined in the
+    // spec.
+    List<SimpleTestSection> supplementalSections =
+        loadTestData("src/test/resources/testdata/string_ext_supplemental.textproto");
 
     // Combine the test data from both files into one
-    List<SimpleTestSection> sections = Stream.concat(celSpecSections.stream(), supplementalSections.stream())
-                                     .collect(Collectors.toList());
+    List<SimpleTestSection> sections =
+        Stream.concat(celSpecSections.stream(), supplementalSections.stream())
+            .collect(Collectors.toList());
 
     // Find the format tests which test successful formatting
     formatTests =
@@ -125,9 +128,7 @@ class FormatTest {
 
   // Loads test data from the given text format file
   private static List<SimpleTestSection> loadTestData(String fileName) throws Exception {
-    byte[] encoded =
-        Files.readAllBytes(
-            Paths.get(fileName));
+    byte[] encoded = Files.readAllBytes(Paths.get(fileName));
     String data = new String(encoded, StandardCharsets.UTF_8);
     SimpleTestFile.Builder bldr = SimpleTestFile.newBuilder();
     TextFormat.getParser().merge(data, bldr);
