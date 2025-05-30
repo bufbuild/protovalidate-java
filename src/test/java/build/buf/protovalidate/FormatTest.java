@@ -60,23 +60,7 @@ class FormatTest {
   private static List<SimpleTest> formatTests;
   private static List<SimpleTest> formatErrorTests;
 
-  private static List<String> SKIPPED_TESTS =
-      Arrays.asList(
-          // Success Tests
-          // found no matching overload for 'format' applied to 'string.(list(type(string)))'
-          "type() support for string",
-          // found no matching overload for 'format' applied to 'string.(list(map(string, dyn)))'
-          "map support for string",
-          // found no matching overload for 'format' applied to 'string.(list(map(dyn, dyn)))'
-          "map support (all key types)",
-          // found no matching overload for 'format' applied to 'string.(list(map(dyn, dyn)))'
-          "dyntype support for maps",
-          // Error Tests
-          // found no matching overload for 'format' applied to
-          // 'string.(list(cel.expr.conformance.proto3.TestAllTypes))'
-          "object not allowed",
-          // found no matching overload for 'format' applied to 'string.(list(map(int, dyn)))'
-          "object inside map");
+  private static List<String> SKIPPED_TESTS = Arrays.asList();
 
   @BeforeAll
   private static void setUp() throws Exception {

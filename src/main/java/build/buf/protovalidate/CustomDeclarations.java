@@ -160,39 +160,12 @@ final class CustomDeclarations {
 
     // Add 'format' function declaration
     List<Decl.FunctionDecl.Overload> formatOverloads = new ArrayList<>();
-    for (com.google.api.expr.v1alpha1.Type type :
-        Arrays.asList(
-            Decls.String,
-            Decls.Int,
-            Decls.Uint,
-            Decls.Double,
-            Decls.Bytes,
-            Decls.Bool,
-            Decls.Duration,
-            Decls.Timestamp)) {
-      formatOverloads.add(
-          Decls.newInstanceOverload(
-              String.format("format_%s", Types.formatCheckedType(type).toLowerCase(Locale.US)),
-              Arrays.asList(Decls.String, Decls.newListType(type)),
-              Decls.String));
-      formatOverloads.add(
-          Decls.newInstanceOverload(
-              String.format("format_list_%s", Types.formatCheckedType(type).toLowerCase(Locale.US)),
-              Arrays.asList(Decls.String, Decls.newListType(Decls.newListType(type))),
-              Decls.String));
-      formatOverloads.add(
-          Decls.newInstanceOverload(
-              String.format(
-                  "format_bytes_%s", Types.formatCheckedType(type).toLowerCase(Locale.US)),
-              Arrays.asList(Decls.Bytes, Decls.newListType(type)),
-              Decls.Bytes));
-      formatOverloads.add(
-          Decls.newInstanceOverload(
-              String.format(
-                  "format_bytes_list_%s", Types.formatCheckedType(type).toLowerCase(Locale.US)),
-              Arrays.asList(Decls.Bytes, Decls.newListType(Decls.newListType(type))),
-              Decls.Bytes));
-    }
+    formatOverloads.add(
+        Decls.newInstanceOverload(
+            "format_list_dyn",
+            Arrays.asList(Decls.String, Decls.newListType(Decls.Dyn)),
+            Decls.String));
+
     decls.add(Decls.newFunction("format", formatOverloads));
 
     return Collections.unmodifiableList(decls);

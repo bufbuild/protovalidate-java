@@ -22,6 +22,9 @@ import java.math.BigInteger;
 import java.nio.charset.StandardCharsets;
 import java.text.DecimalFormat;
 import java.time.Instant;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import java.util.Locale;
 import java.util.Optional;
 import org.projectnessie.cel.common.types.Err.ErrException;
@@ -132,10 +135,11 @@ final class Format {
   private static String formatString(Val val) {
     TypeEnum type = val.type().typeEnum();
     switch (type) {
-      case Bool:
-        return Boolean.toString(val.booleanValue());
+      case Type:
       case String:
         return val.value().toString();
+      case Bool:
+        return Boolean.toString(val.booleanValue());
       case Int:
       case Uint:
         Optional<String> str = validateNumber(val);
@@ -195,17 +199,21 @@ final class Format {
     StringBuilder builder = new StringBuilder();
     builder.append('{');
 
+    List<String> entries = new ArrayList<String>();
+
     IteratorT iter = val.iterator();
     while (iter.hasNext().booleanValue()) {
       Val key = iter.next();
       String mapKey = formatString(key);
       String mapVal = formatString(val.find(key));
-      builder.append(mapKey).append(": ").append(mapVal);
-      if (iter.hasNext().booleanValue()) {
-        builder.append(", ");
-      }
+      entries.add(mapKey + ": " + mapVal);
     }
-    builder.append('}');
+
+    // The formatted string should be sorted by keys
+    Collections.sort(entries);
+
+    builder.append(String.join(", ", entries)).append('}');
+
     return builder.toString();
   }
 
