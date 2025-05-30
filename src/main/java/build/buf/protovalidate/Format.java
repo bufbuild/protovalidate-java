@@ -267,7 +267,7 @@ final class Format {
     } else {
       throw new ErrException(
           "error during formatting: only integers, byte buffers, and strings can be formatted as hex, was given "
-              + typeToString(val));
+              + val.type());
     }
   }
 
@@ -288,7 +288,7 @@ final class Format {
     } else {
       throw new ErrException(
           "error during formatting: decimal clause can only be used on integers, was given "
-              + typeToString(val));
+              + val.type());
     }
   }
 
@@ -299,7 +299,7 @@ final class Format {
     } else {
       throw new ErrException(
           "error during formatting: octal clause can only be used on integers, was given "
-              + typeToString(val));
+              + val.type());
     }
   }
 
@@ -312,7 +312,7 @@ final class Format {
     } else {
       throw new ErrException(
           "error during formatting: only integers and bools can be formatted as binary, was given "
-              + typeToString(val));
+              + val.type());
     }
   }
 
@@ -328,7 +328,7 @@ final class Format {
     } else {
       throw new ErrException(
           "error during formatting: scientific clause can only be used on doubles, was given "
-              + typeToString(val));
+              + val.type());
     }
   }
 
@@ -352,7 +352,7 @@ final class Format {
     } else {
       throw new ErrException(
           "error during formatting: fixed-point clause can only be used on doubles, was given "
-              + typeToString(val));
+              + val.type());
     }
   }
 
@@ -363,10 +363,5 @@ final class Format {
       return Optional.of("-Infinity");
     }
     return Optional.empty();
-  }
-
-  private static String typeToString(Val val) {
-    TypeEnum type = val.type().typeEnum();
-    return type.getName();
   }
 }
