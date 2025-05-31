@@ -22,8 +22,13 @@ import java.math.BigInteger;
 import java.nio.charset.StandardCharsets;
 import java.text.DecimalFormat;
 import java.time.Instant;
+import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 import java.util.Optional;
+import java.util.SortedMap;
+import java.util.TreeMap;
+import java.util.stream.Collectors;
 import org.projectnessie.cel.common.types.Err.ErrException;
 import org.projectnessie.cel.common.types.IntT;
 import org.projectnessie.cel.common.types.IteratorT;
@@ -132,10 +137,11 @@ final class Format {
   private static String formatString(Val val) {
     TypeEnum type = val.type().typeEnum();
     switch (type) {
-      case Bool:
-        return Boolean.toString(val.booleanValue());
+      case Type:
       case String:
         return val.value().toString();
+      case Bool:
+        return Boolean.toString(val.booleanValue());
       case Int:
       case Uint:
         Optional<String> str = validateNumber(val);
@@ -195,17 +201,23 @@ final class Format {
     StringBuilder builder = new StringBuilder();
     builder.append('{');
 
+    SortedMap<String, String> sorted = new TreeMap<>();
+
     IteratorT iter = val.iterator();
     while (iter.hasNext().booleanValue()) {
       Val key = iter.next();
       String mapKey = formatString(key);
       String mapVal = formatString(val.find(key));
-      builder.append(mapKey).append(": ").append(mapVal);
-      if (iter.hasNext().booleanValue()) {
-        builder.append(", ");
-      }
+      sorted.put(mapKey, mapVal);
     }
-    builder.append('}');
+
+    String result =
+        sorted.entrySet().stream()
+            .map(entry -> entry.getKey() + ": " + entry.getValue())
+            .collect(Collectors.joining(", "));
+
+    builder.append(result).append('}');
+
     return builder.toString();
   }
 
@@ -259,7 +271,7 @@ final class Format {
     } else {
       throw new ErrException(
           "error during formatting: only integers, byte buffers, and strings can be formatted as hex, was given "
-              + typeToString(val));
+              + val.type());
     }
   }
 
@@ -280,7 +292,7 @@ final class Format {
     } else {
       throw new ErrException(
           "error during formatting: decimal clause can only be used on integers, was given "
-              + typeToString(val));
+              + val.type());
     }
   }
 
@@ -291,7 +303,7 @@ final class Format {
     } else {
       throw new ErrException(
           "error during formatting: octal clause can only be used on integers, was given "
-              + typeToString(val));
+              + val.type());
     }
   }
 
@@ -304,7 +316,7 @@ final class Format {
     } else {
       throw new ErrException(
           "error during formatting: only integers and bools can be formatted as binary, was given "
-              + typeToString(val));
+              + val.type());
     }
   }
 
@@ -320,7 +332,7 @@ final class Format {
     } else {
       throw new ErrException(
           "error during formatting: scientific clause can only be used on doubles, was given "
-              + typeToString(val));
+              + val.type());
     }
   }
 
@@ -344,7 +356,7 @@ final class Format {
     } else {
       throw new ErrException(
           "error during formatting: fixed-point clause can only be used on doubles, was given "
-              + typeToString(val));
+              + val.type());
     }
   }
 
@@ -355,10 +367,5 @@ final class Format {
       return Optional.of("-Infinity");
     }
     return Optional.empty();
-  }
-
-  private static String typeToString(Val val) {
-    TypeEnum type = val.type().typeEnum();
-    return type.getName();
   }
 }

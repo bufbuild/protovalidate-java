@@ -29,7 +29,6 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -59,24 +58,6 @@ class FormatTest {
 
   private static List<SimpleTest> formatTests;
   private static List<SimpleTest> formatErrorTests;
-
-  private static List<String> SKIPPED_TESTS =
-      Arrays.asList(
-          // Success Tests
-          // found no matching overload for 'format' applied to 'string.(list(type(string)))'
-          "type() support for string",
-          // found no matching overload for 'format' applied to 'string.(list(map(string, dyn)))'
-          "map support for string",
-          // found no matching overload for 'format' applied to 'string.(list(map(dyn, dyn)))'
-          "map support (all key types)",
-          // found no matching overload for 'format' applied to 'string.(list(map(dyn, dyn)))'
-          "dyntype support for maps",
-          // Error Tests
-          // found no matching overload for 'format' applied to
-          // 'string.(list(cel.expr.conformance.proto3.TestAllTypes))'
-          "object not allowed",
-          // found no matching overload for 'format' applied to 'string.(list(map(int, dyn)))'
-          "object inside map");
 
   @BeforeAll
   private static void setUp() throws Exception {
@@ -158,11 +139,9 @@ class FormatTest {
   }
 
   private static Stream<Arguments> getTestStream(List<SimpleTest> tests) {
-    List<Arguments> args = new ArrayList<Arguments>();
+    List<Arguments> args = new ArrayList<>();
     for (SimpleTest test : tests) {
-      if (!SKIPPED_TESTS.contains(test.getName())) {
-        args.add(Arguments.arguments(Named.named(test.getName(), test)));
-      }
+      args.add(Arguments.arguments(Named.named(test.getName(), test)));
     }
 
     return args.stream();
@@ -178,7 +157,7 @@ class FormatTest {
 
   // Builds the variable definitions to be used during evaluation
   private static Map<String, Object> buildVariables(Map<String, ExprValue> bindings) {
-    Map<String, Object> vars = new HashMap<String, Object>();
+    Map<String, Object> vars = new HashMap<>();
     for (Map.Entry<String, ExprValue> entry : bindings.entrySet()) {
       ExprValue exprValue = entry.getValue();
       if (exprValue.hasValue()) {
@@ -208,8 +187,7 @@ class FormatTest {
 
   // Builds the declarations for a given test
   private static List<com.google.api.expr.v1alpha1.Decl> buildDecls(SimpleTest test) {
-    List<com.google.api.expr.v1alpha1.Decl> decls =
-        new ArrayList<com.google.api.expr.v1alpha1.Decl>();
+    List<com.google.api.expr.v1alpha1.Decl> decls = new ArrayList<>();
     for (Decl decl : test.getTypeEnvList()) {
       if (decl.hasIdent()) {
         Decl.IdentDecl ident = decl.getIdent();
