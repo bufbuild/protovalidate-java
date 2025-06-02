@@ -6,5 +6,5 @@ managed:
     - file_option: java_package_prefix
       value: build
 plugins:
-  - remote: buf.build/protocolbuffers/java:v31.1
+  - remote: buf.build/protocolbuffers/java:$protocJavaPluginVersion
     out: build/generated/sources/bufgen
