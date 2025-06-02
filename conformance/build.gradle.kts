@@ -53,14 +53,23 @@ tasks.register<Exec>("conformance") {
     commandLine(*(listOf(conformanceCLIPath) + conformanceArgs + listOf(conformanceAppScript)).toTypedArray())
 }
 
+tasks.register<Copy>("filterBufGenYaml") {
+    from(".")
+    include("buf.gen.yaml")
+    includeEmptyDirs = false
+    into(layout.buildDirectory.dir("buf-gen-templates"))
+    expand("protocJavaPluginVersion" to "v${libs.versions.protobuf.get().substringAfter('.')}")
+    filteringCharset = "UTF-8"
+}
+
 tasks.register<Exec>("generateConformance") {
-    dependsOn("configureBuf")
+    dependsOn("configureBuf", "filterBufGenYaml")
     description = "Generates sources for the bufbuild/protovalidate-testing module to build/generated/sources/bufgen."
     commandLine(
         buf.asPath,
         "generate",
         "--template",
-        "buf.gen.yaml",
+        "${layout.buildDirectory.get()}/buf-gen-templates/buf.gen.yaml",
         "buf.build/bufbuild/protovalidate-testing:${project.findProperty("protovalidate.version")}",
     )
 }

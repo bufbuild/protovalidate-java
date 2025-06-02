@@ -72,32 +72,46 @@ tasks.register<Exec>("licenseHeader") {
     )
 }
 
+tasks.register<Copy>("filterBufGenYaml") {
+    from(".")
+    include("buf.gen.yaml", "src/**/buf*gen*.yaml")
+    includeEmptyDirs = false
+    into(layout.buildDirectory.dir("buf-gen-templates"))
+    expand("protocJavaPluginVersion" to "v${libs.versions.protobuf.get().substringAfter('.')}")
+    filteringCharset = "UTF-8"
+}
+
 tasks.register<Exec>("generateTestSourcesImports") {
-    dependsOn("exportProtovalidateModule")
+    dependsOn("exportProtovalidateModule", "filterBufGenYaml")
     description = "Generates code with buf generate --include-imports for unit tests."
     commandLine(
         buf.asPath,
         "generate",
         "--template",
-        "src/test/resources/proto/buf.gen.imports.yaml",
+        "${layout.buildDirectory.get()}/buf-gen-templates/src/test/resources/proto/buf.gen.imports.yaml",
         "--include-imports",
     )
 }
 
 tasks.register<Exec>("generateTestSourcesNoImports") {
-    dependsOn("exportProtovalidateModule")
+    dependsOn("exportProtovalidateModule", "filterBufGenYaml")
     description = "Generates code with buf generate --include-imports for unit tests."
-    commandLine(buf.asPath, "generate", "--template", "src/test/resources/proto/buf.gen.noimports.yaml")
+    commandLine(
+        buf.asPath,
+        "generate",
+        "--template",
+        "${layout.buildDirectory.get()}/buf-gen-templates/src/test/resources/proto/buf.gen.noimports.yaml",
+    )
 }
 
 tasks.register<Exec>("generateCelConformance") {
-    dependsOn("generateCelConformanceTestTypes")
+    dependsOn("generateCelConformanceTestTypes", "filterBufGenYaml")
     description = "Generates CEL conformance code with buf generate for unit tests."
     commandLine(
         buf.asPath,
         "generate",
         "--template",
-        "src/test/resources/proto/buf.gen.cel.yaml",
+        "${layout.buildDirectory.get()}/buf-gen-templates/src/test/resources/proto/buf.gen.cel.yaml",
         "buf.build/google/cel-spec:${project.findProperty("cel.spec.version")}",
         "--exclude-path",
         "cel/expr/conformance/proto2",
@@ -112,13 +126,13 @@ tasks.register<Exec>("generateCelConformance") {
 // specified in these proto files is "dev.cel.expr.conformance.proto3". So, to get around this,
 // we're generating these separately and specifying a java_package override of the package we need.
 tasks.register<Exec>("generateCelConformanceTestTypes") {
-    dependsOn("exportProtovalidateModule")
+    dependsOn("exportProtovalidateModule", "filterBufGenYaml")
     description = "Generates CEL conformance test types with buf generate for unit tests using a Java package override."
     commandLine(
         buf.asPath,
         "generate",
         "--template",
-        "src/test/resources/proto/buf.gen.cel.testtypes.yaml",
+        "${layout.buildDirectory.get()}/buf-gen-templates/src/test/resources/proto/buf.gen.cel.testtypes.yaml",
         "buf.build/google/cel-spec:${project.findProperty("cel.spec.version")}",
         "--path",
         "cel/expr/conformance/proto3",
@@ -166,9 +180,9 @@ tasks.register<Exec>("exportProtovalidateModule") {
 }
 
 tasks.register<Exec>("generateSources") {
-    dependsOn("exportProtovalidateModule")
+    dependsOn("exportProtovalidateModule", "filterBufGenYaml")
     description = "Generates sources for the bufbuild/protovalidate module sources to build/generated/sources/bufgen."
-    commandLine(buf.asPath, "generate", "--template", "buf.gen.yaml", "src/main/resources")
+    commandLine(buf.asPath, "generate", "--template", "${layout.buildDirectory.get()}/buf-gen-templates/buf.gen.yaml", "src/main/resources")
 }
 
 tasks.register("generate") {
@@ -177,6 +191,7 @@ tasks.register("generate") {
         "generateTestSources",
         "generateSources",
         "licenseHeader",
+        "filterBufGenYaml",
     )
 }
 
