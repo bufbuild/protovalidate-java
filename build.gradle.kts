@@ -191,7 +191,6 @@ tasks.register("generate") {
         "generateTestSources",
         "generateSources",
         "licenseHeader",
-        "filterBufGenYaml",
     )
 }
 
