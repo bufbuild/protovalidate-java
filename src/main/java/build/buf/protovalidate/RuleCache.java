@@ -290,6 +290,7 @@ class RuleCache {
     // indicating whether it is for items.
     FieldDescriptor expectedRuleDescriptor =
         DescriptorMappings.getExpectedRuleDescriptor(fieldDescriptor, forItems);
+
     if (expectedRuleDescriptor != null
         && !oneofFieldDescriptor.getFullName().equals(expectedRuleDescriptor.getFullName())) {
       // If the expected rule does not match the actual oneof rule, throw a
@@ -303,9 +304,19 @@ class RuleCache {
     }
 
     // If the expected rule descriptor is null or if the field rules do not have the
-    // oneof field descriptor
-    // there are no rules to resolve, so return null.
+    // oneof field descriptor there are no rules to resolve, so return null.
     if (expectedRuleDescriptor == null || !fieldRules.hasField(oneofFieldDescriptor)) {
+      if (expectedRuleDescriptor == null) {
+        // The only expected rule descriptor for message fields is for well known types.
+        // If we didn't find a descriptor and this is a message, there must be a mismatch.
+        if (fieldDescriptor.getJavaType() == FieldDescriptor.JavaType.MESSAGE) {
+          throw new CompilationException(
+              String.format(
+                  "mismatched message rules, %s is not a valid rule for field %s",
+                  oneofFieldDescriptor.getName(), fieldDescriptor.getName()));
+        }
+      }
+
       return null;
     }
 

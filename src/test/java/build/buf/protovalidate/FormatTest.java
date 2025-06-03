@@ -60,7 +60,7 @@ class FormatTest {
   private static List<SimpleTest> formatErrorTests;
 
   @BeforeAll
-  private static void setUp() throws Exception {
+  public static void setUp() throws Exception {
     // The test data from the cel-spec conformance tests
     List<SimpleTestSection> celSpecSections =
         loadTestData("src/test/resources/testdata/string_ext_" + CEL_SPEC_VERSION + ".textproto");
