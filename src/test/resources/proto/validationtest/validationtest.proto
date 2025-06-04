@@ -94,3 +94,30 @@ message ExampleImportMessageFieldRule {
     }
   ];
 }
+
+message ExampleImportMessageInMap {
+  option (buf.validate.message) = {
+    cel: {
+      id: "imported_submessage_must_not_be_null"
+      expression: "this.imported_submessage[0] != null"
+    }
+    cel: {
+      id: "hex_string_must_not_be_empty"
+      expression: "this.imported_submessage[0].hex_string != ''"
+    }
+  };
+  map<int64, ExampleImportedMessage> imported_submessage = 1;
+}
+
+message ExampleImportMessageInMapFieldRule {
+  ExampleImportMessageInMap message_with_import = 1 [
+    (buf.validate.field).cel = {
+      id: "field_must_not_be_null"
+      expression: "this.imported_submessage[0] != null"
+    },
+    (buf.validate.field).cel = {
+      id: "field_string_must_not_be_empty"
+      expression: "this.imported_submessage[0].hex_string != ''"
+    }
+  ];
+}

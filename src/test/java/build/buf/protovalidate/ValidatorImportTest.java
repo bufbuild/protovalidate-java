@@ -18,6 +18,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import com.example.imports.validationtest.ExampleImportMessage;
 import com.example.imports.validationtest.ExampleImportMessageFieldRule;
+import com.example.imports.validationtest.ExampleImportMessageInMap;
+import com.example.imports.validationtest.ExampleImportMessageInMapFieldRule;
 import com.example.imports.validationtest.ExampleImportedMessage;
 import org.junit.jupiter.api.Test;
 
@@ -79,6 +81,77 @@ public class ValidatorImportTest {
                 ExampleImportMessage.newBuilder()
                     .setImportedSubmessage(
                         ExampleImportedMessage.newBuilder().setHexString("zyx").build())
+                    .build())
+            .build();
+    assertThat(
+            ValidatorFactory.newBuilder()
+                .build()
+                .validate(invalid)
+                .toProto()
+                .getViolationsList()
+                .size())
+        .isEqualTo(1);
+  }
+
+  @Test
+  public void testImportedMessageFromAnotherFileInMap() throws Exception {
+    com.example.imports.validationtest.ExampleImportMessageInMap valid =
+        ExampleImportMessageInMap.newBuilder()
+            .putImportedSubmessage(
+                0, ExampleImportedMessage.newBuilder().setHexString("0123456789abcdef").build())
+            .build();
+    assertThat(
+            ValidatorFactory.newBuilder()
+                .build()
+                .validate(valid)
+                .toProto()
+                .getViolationsList()
+                .size())
+        .isEqualTo(0);
+
+    com.example.imports.validationtest.ExampleImportMessageInMap invalid =
+        ExampleImportMessageInMap.newBuilder()
+            .putImportedSubmessage(
+                0, ExampleImportedMessage.newBuilder().setHexString("zyx").build())
+            .build();
+    assertThat(
+            ValidatorFactory.newBuilder()
+                .build()
+                .validate(invalid)
+                .toProto()
+                .getViolationsList()
+                .size())
+        .isEqualTo(1);
+  }
+
+  @Test
+  public void testImportedMessageFromAnotherFileInMapInField() throws Exception {
+    com.example.imports.validationtest.ExampleImportMessageInMapFieldRule valid =
+        ExampleImportMessageInMapFieldRule.newBuilder()
+            .setMessageWithImport(
+                ExampleImportMessageInMap.newBuilder()
+                    .putImportedSubmessage(
+                        0,
+                        ExampleImportedMessage.newBuilder()
+                            .setHexString("0123456789abcdef")
+                            .build())
+                    .build())
+            .build();
+    assertThat(
+            ValidatorFactory.newBuilder()
+                .build()
+                .validate(valid)
+                .toProto()
+                .getViolationsList()
+                .size())
+        .isEqualTo(0);
+
+    com.example.imports.validationtest.ExampleImportMessageInMapFieldRule invalid =
+        ExampleImportMessageInMapFieldRule.newBuilder()
+            .setMessageWithImport(
+                ExampleImportMessageInMap.newBuilder()
+                    .putImportedSubmessage(
+                        0, ExampleImportedMessage.newBuilder().setHexString("zyx").build())
                     .build())
             .build();
     assertThat(
