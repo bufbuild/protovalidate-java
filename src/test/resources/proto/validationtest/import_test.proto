@@ -12,19 +12,12 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-syntax = "proto2";
+syntax = "proto3";
 
 package validationtest;
 
 import "buf/validate/validate.proto";
 
-extend buf.validate.StringRules {
-  optional bool is_ident = 1161 [(buf.validate.predefined).cel = {
-    id: "string.is_ident"
-    expression: "(rule && !this.matches('^[a-z0-9]{1,9}$')) ? 'invalid identifier' : ''"
-  }];
-}
-
-message ExamplePredefinedFieldRules {
-  optional string ident_field = 1 [(buf.validate.field).string.(is_ident) = true];
+message ExampleImportedMessage {
+  string hex_string = 1 [(buf.validate.field).string.pattern = "^[0-9a-fA-F]+$"];
 }

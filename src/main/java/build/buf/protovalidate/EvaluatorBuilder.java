@@ -33,9 +33,11 @@ import com.google.protobuf.Message;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
 import org.jspecify.annotations.Nullable;
 import org.projectnessie.cel.Env;
 import org.projectnessie.cel.EnvOption;
@@ -184,6 +186,31 @@ class EvaluatorBuilder {
       }
     }
 
+    private void collectDependencies(Set<Descriptor> dependencyTypes, Descriptor desc) {
+      dependencyTypes.add(desc);
+      for (FieldDescriptor field : desc.getFields()) {
+        if (field.getJavaType() != FieldDescriptor.JavaType.MESSAGE) {
+          continue;
+        }
+        Descriptor submessageDesc = field.getMessageType();
+        if (dependencyTypes.contains(submessageDesc)) {
+          continue;
+        }
+        collectDependencies(dependencyTypes, submessageDesc);
+      }
+    }
+
+    private Message[] getTypesForMessage(Message message) {
+      Set<Descriptor> dependencyTypes = new HashSet<>();
+      collectDependencies(dependencyTypes, message.getDescriptorForType());
+      Message[] dependencyTypeMessages = new Message[dependencyTypes.size()];
+      int i = 0;
+      for (Descriptor dependencyType : dependencyTypes) {
+        dependencyTypeMessages[i++] = DynamicMessage.newBuilder(dependencyType).buildPartial();
+      }
+      return dependencyTypeMessages;
+    }
+
     private void processMessageExpressions(
         Descriptor desc, MessageRules msgRules, MessageEvaluator msgEval, DynamicMessage message)
         throws CompilationException {
@@ -193,7 +220,7 @@ class EvaluatorBuilder {
       }
       Env finalEnv =
           env.extend(
-              EnvOption.types(message),
+              EnvOption.types((Object[]) getTypesForMessage(message)),
               EnvOption.declarations(
                   Decls.newVar(Variable.THIS_NAME, Decls.newObjectType(desc.getFullName()))));
       List<CompiledProgram> compiledPrograms = compileRules(celList, finalEnv, false);
@@ -350,7 +377,7 @@ class EvaluatorBuilder {
         try {
           DynamicMessage defaultInstance =
               DynamicMessage.parseFrom(fieldDescriptor.getMessageType(), new byte[0]);
-          opts.add(EnvOption.types(defaultInstance));
+          opts.add(EnvOption.types((Object[]) getTypesForMessage(defaultInstance)));
         } catch (InvalidProtocolBufferException e) {
           throw new CompilationException("field descriptor type is invalid " + e.getMessage(), e);
         }
