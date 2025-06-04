@@ -17,6 +17,7 @@ syntax = "proto3";
 package validationtest;
 
 import "buf/validate/validate.proto";
+import "validationtest/import_test.proto";
 
 message ExampleFieldRules {
   string regex_string_field = 1 [(buf.validate.field).string.pattern = "^[a-z0-9]{1,9}$"];
@@ -42,7 +43,7 @@ message ExampleOneofRules {
 
 message ExampleMessageRules {
   option (buf.validate.message).cel = {
-    id: "secondary_email_depends_on_primary",
+    id: "secondary_email_depends_on_primary"
     expression:
       "has(this.secondary_email) && !has(this.primary_email)"
       "? 'cannot set a secondary email without setting a primary one'"
@@ -65,4 +66,31 @@ message FieldExpressionMapInt32 {
     message: "all map values must equal 1"
     expression: "this.all(k, this[k] == 1)"
   }];
+}
+
+message ExampleImportMessage {
+  option (buf.validate.message) = {
+    cel: {
+      id: "imported_submessage_must_not_be_null"
+      expression: "this.imported_submessage != null"
+    }
+    cel: {
+      id: "hex_string_must_not_be_empty"
+      expression: "this.imported_submessage.hex_string != ''"
+    }
+  };
+  ExampleImportedMessage imported_submessage = 1;
+}
+
+message ExampleImportMessageFieldRule {
+  ExampleImportMessage message_with_import = 1 [
+    (buf.validate.field).cel = {
+      id: "field_must_not_be_null"
+      expression: "this.imported_submessage != null"
+    },
+    (buf.validate.field).cel = {
+      id: "field_string_must_not_be_empty"
+      expression: "this.imported_submessage.hex_string != ''"
+    }
+  ];
 }
