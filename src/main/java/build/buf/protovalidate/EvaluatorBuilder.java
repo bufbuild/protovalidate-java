@@ -379,6 +379,7 @@ class EvaluatorBuilder {
     private void processWrapperRules(
         FieldDescriptor fieldDescriptor, FieldRules fieldRules, ValueEvaluator valueEvaluatorEval)
         throws CompilationException {
+
       if (fieldDescriptor.getJavaType() != FieldDescriptor.JavaType.MESSAGE
           || fieldDescriptor.isMapField()
           || (fieldDescriptor.isRepeated() && !valueEvaluatorEval.hasNestedRule())) {
@@ -386,9 +387,30 @@ class EvaluatorBuilder {
       }
       FieldDescriptor expectedWrapperDescriptor =
           DescriptorMappings.expectedWrapperRules(fieldDescriptor.getMessageType().getFullName());
+
+      // Verify that the expected wrapper rules for this field are equal to the rules specified on
+      // the field
+      if (expectedWrapperDescriptor != null) {
+        FieldDescriptor oneofFieldDescriptor =
+            fieldRules.getOneofFieldDescriptor(DescriptorMappings.FIELD_RULES_ONEOF_DESC);
+        // If there are no field rules set, just return
+        if (oneofFieldDescriptor == null) {
+          return;
+        }
+        if (!expectedWrapperDescriptor
+            .getMessageType()
+            .getFullName()
+            .equals(oneofFieldDescriptor.getMessageType().getFullName())) {
+          throw new CompilationException(
+              String.format(
+                  "mismatched message rules, %s is not a valid rule for field %s",
+                  oneofFieldDescriptor.getName(), fieldDescriptor.getName()));
+        }
+      }
       if (expectedWrapperDescriptor == null || !fieldRules.hasField(expectedWrapperDescriptor)) {
         return;
       }
+
       ValueEvaluator unwrapped =
           new ValueEvaluator(
               valueEvaluatorEval.getDescriptor(), valueEvaluatorEval.getNestedRule());
@@ -399,6 +421,17 @@ class EvaluatorBuilder {
     private void processStandardRules(
         FieldDescriptor fieldDescriptor, FieldRules fieldRules, ValueEvaluator valueEvaluatorEval)
         throws CompilationException {
+
+      // If this is a wrapper field, just return. Wrapper fields are handled by
+      // processWrapperRules and their unwrapped values are passed through the process gauntlet.
+      if (fieldDescriptor.getJavaType() == FieldDescriptor.JavaType.MESSAGE) {
+        FieldDescriptor expectedWrapperDescriptor =
+            DescriptorMappings.expectedWrapperRules(fieldDescriptor.getMessageType().getFullName());
+        if (expectedWrapperDescriptor != null) {
+          return;
+        }
+      }
+
       List<CompiledProgram> compile =
           ruleCache.compile(fieldDescriptor, fieldRules, valueEvaluatorEval.hasNestedRule());
       if (compile.isEmpty()) {
