@@ -170,8 +170,7 @@ class RuleCache {
   private build.buf.validate.@Nullable PredefinedRules getFieldRules(FieldDescriptor ruleFieldDesc)
       throws CompilationException {
     DescriptorProtos.FieldOptions options = ruleFieldDesc.getOptions();
-    // If the protovalidate field option is unknown, reparse options using our
-    // extension registry.
+    // If the protovalidate field option is unknown, reparse options using our extension registry.
     if (options.getUnknownFields().hasField(ValidateProto.predefined.getNumber())) {
       try {
         options =
@@ -276,8 +275,7 @@ class RuleCache {
     if (expectedRuleDescriptor == null || !fieldRules.hasField(oneofFieldDescriptor)) {
       if (expectedRuleDescriptor == null) {
         // The only expected rule descriptor for message fields is for well known types.
-        // If we didn't find a descriptor and this is a message, there must be a
-        // mismatch.
+        // If we didn't find a descriptor and this is a message, there must be a mismatch.
         if (fieldDescriptor.getJavaType() == FieldDescriptor.JavaType.MESSAGE) {
           throw new CompilationException(
               String.format(
