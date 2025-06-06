@@ -68,7 +68,7 @@ class CompiledProgram {
   /**
    * Evaluate the compiled program with a given set of {@link Variable} variables.
    *
-   * @param variables Variable variables used for the evaluation.
+   * @param variables Variables used for the evaluation.
    * @param fieldValue Field value to return in violations.
    * @return The {@link build.buf.validate.Violation} from the evaluation, or null if there are no
    *     violations.
