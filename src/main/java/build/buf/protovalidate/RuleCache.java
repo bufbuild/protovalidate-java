@@ -254,8 +254,7 @@ class RuleCache {
       return null;
     }
 
-    // Get the expected rule descriptor based on the provided field descriptor and
-    // the flag
+    // Get the expected rule descriptor based on the provided field descriptor and the flag
     // indicating whether it is for items.
     FieldDescriptor expectedRuleDescriptor =
         DescriptorMappings.getExpectedRuleDescriptor(fieldDescriptor, forItems);
@@ -290,19 +289,14 @@ class RuleCache {
       return null;
     }
 
-    // Get the field from the field rules identified by the oneof field descriptor,
-    // casted
+    // Get the field from the field rules identified by the oneof field descriptor, casted
     // as a Message.
     Message typeRules = (Message) fieldRules.getField(oneofFieldDescriptor);
     if (!typeRules.getUnknownFields().isEmpty()) {
-      // If there are unknown fields, try to resolve them using the provided
-      // registries. Note that
-      // we use the type registry to resolve the message descriptor. This is because
-      // Java protobuf
-      // extension resolution relies on descriptor identity. The user's provided type
-      // registry can
-      // provide matching message descriptors for the user's provided extension
-      // registry. See the
+      // If there are unknown fields, try to resolve them using the provided registries. Note that
+      // we use the type registry to resolve the message descriptor. This is because Java protobuf
+      // extension resolution relies on descriptor identity. The user's provided type registry can
+      // provide matching message descriptors for the user's provided extension registry. See the
       // documentation for Options.setTypeRegistry for more information.
       Descriptors.Descriptor expectedRuleMessageDescriptor =
           typeRegistry.find(expectedRuleDescriptor.getMessageType().getFullName());
