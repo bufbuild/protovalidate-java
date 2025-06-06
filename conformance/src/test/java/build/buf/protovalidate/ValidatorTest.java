@@ -213,7 +213,10 @@ public class ValidatorTest {
   @Test
   public void strictRepeatedMin() throws Exception {
     RepeatedMin invalid =
-        RepeatedMin.newBuilder().addVal(Embed.newBuilder().setVal(1).build()).build();
+        RepeatedMin.newBuilder()
+            .addVal(Embed.newBuilder().setVal(1).build())
+            .addVal(Embed.newBuilder().setVal(-1).build())
+            .build();
     ValidationResult validate = validator.validate(invalid);
     assertThat(validate.isSuccess()).isFalse();
     assertThat(validate.getViolations()).hasSize(1);
