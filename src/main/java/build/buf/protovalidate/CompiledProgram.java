@@ -16,10 +16,10 @@ package build.buf.protovalidate;
 
 import build.buf.protovalidate.exceptions.ExecutionException;
 import build.buf.validate.FieldPath;
+import dev.cel.runtime.CelEvaluationException;
+import dev.cel.runtime.CelRuntime.Program;
+import dev.cel.runtime.CelVariableResolver;
 import org.jspecify.annotations.Nullable;
-import org.projectnessie.cel.Program;
-import org.projectnessie.cel.common.types.Err;
-import org.projectnessie.cel.common.types.ref.Val;
 
 /**
  * {@link CompiledProgram} is a parsed and type-checked {@link Program} along with the source {@link
@@ -39,6 +39,12 @@ class CompiledProgram {
   @Nullable private final Value ruleValue;
 
   /**
+   * Global variables to pass to the evaluation step. Program/CelRuntime doesn't have a concept of
+   * global variables.
+   */
+  @Nullable private final CelVariableResolver globals;
+
+  /**
    * Constructs a new {@link CompiledProgram}.
    *
    * @param program The compiled CEL program.
@@ -47,30 +53,38 @@ class CompiledProgram {
    * @param ruleValue The rule value.
    */
   public CompiledProgram(
-      Program program, Expression source, @Nullable FieldPath rulePath, @Nullable Value ruleValue) {
+      Program program,
+      Expression source,
+      @Nullable FieldPath rulePath,
+      @Nullable Value ruleValue,
+      @Nullable CelVariableResolver globals) {
     this.program = program;
     this.source = source;
     this.rulePath = rulePath;
     this.ruleValue = ruleValue;
+    this.globals = globals;
   }
 
   /**
-   * Evaluate the compiled program with a given set of {@link Variable} bindings.
+   * Evaluate the compiled program with a given set of {@link Variable} variables.
    *
-   * @param bindings Variable bindings used for the evaluation.
+   * @param variables Variable variables used for the evaluation.
    * @param fieldValue Field value to return in violations.
    * @return The {@link build.buf.validate.Violation} from the evaluation, or null if there are no
    *     violations.
    * @throws ExecutionException If the evaluation of the CEL program fails with an error.
    */
-  public RuleViolation.@Nullable Builder eval(Value fieldValue, Variable bindings)
+  public RuleViolation.@Nullable Builder eval(Value fieldValue, CelVariableResolver variables)
       throws ExecutionException {
-    Program.EvalResult evalResult = program.eval(bindings);
-    Val val = evalResult.getVal();
-    if (val instanceof Err) {
-      throw new ExecutionException(String.format("error evaluating %s: %s", source.id, val));
+    Object value;
+    try {
+      if (this.globals != null) {
+        variables = CelVariableResolver.hierarchicalVariableResolver(variables, this.globals);
+      }
+      value = program.eval(variables);
+    } catch (CelEvaluationException e) {
+      throw new ExecutionException(String.format("error evaluating %s: %s", source.id, e));
     }
-    Object value = val.value();
     if (value instanceof String) {
       if ("".equals(value)) {
         return null;
@@ -88,7 +102,7 @@ class CompiledProgram {
       }
       return builder;
     } else if (value instanceof Boolean) {
-      if (val.booleanValue()) {
+      if (Boolean.TRUE.equals(value)) {
         return null;
       }
       RuleViolation.Builder builder =
@@ -101,7 +115,7 @@ class CompiledProgram {
       }
       return builder;
     } else {
-      throw new ExecutionException(String.format("resolved to an unexpected type %s", val));
+      throw new ExecutionException(String.format("resolved to an unexpected type %s", value));
     }
   }
 }

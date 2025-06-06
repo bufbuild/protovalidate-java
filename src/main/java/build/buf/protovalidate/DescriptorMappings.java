@@ -15,14 +15,19 @@
 package build.buf.protovalidate;
 
 import build.buf.validate.FieldRules;
-import com.google.api.expr.v1alpha1.Type;
 import com.google.protobuf.Descriptors.Descriptor;
 import com.google.protobuf.Descriptors.FieldDescriptor;
 import com.google.protobuf.Descriptors.OneofDescriptor;
+import dev.cel.common.types.CelType;
+import dev.cel.common.types.CelTypes;
+import dev.cel.common.types.ListType;
+import dev.cel.common.types.MapType;
+import dev.cel.common.types.SimpleType;
+import dev.cel.common.types.StructTypeReference;
+import dev.cel.common.types.UnspecifiedType;
 import java.util.HashMap;
 import java.util.Map;
 import org.jspecify.annotations.Nullable;
-import org.projectnessie.cel.checker.Decls;
 
 /**
  * DescriptorMappings provides mappings between protocol buffer descriptors and CEL declarations.
@@ -131,11 +136,11 @@ final class DescriptorMappings {
    * @param kind The protobuf field type.
    * @return The corresponding CEL type for the protobuf field.
    */
-  public static Type protoKindToCELType(FieldDescriptor.Type kind) {
+  public static CelType protoKindToCELType(FieldDescriptor.Type kind) {
     switch (kind) {
       case FLOAT:
       case DOUBLE:
-        return Decls.newPrimitiveType(Type.PrimitiveType.DOUBLE);
+        return SimpleType.DOUBLE;
       case INT32:
       case INT64:
       case SINT32:
@@ -143,25 +148,23 @@ final class DescriptorMappings {
       case SFIXED32:
       case SFIXED64:
       case ENUM:
-        return Decls.newPrimitiveType(Type.PrimitiveType.INT64);
+        return SimpleType.INT;
       case UINT32:
       case UINT64:
       case FIXED32:
       case FIXED64:
-        return Decls.newPrimitiveType(Type.PrimitiveType.UINT64);
+        return SimpleType.UINT;
       case BOOL:
-        return Decls.newPrimitiveType(Type.PrimitiveType.BOOL);
+        return SimpleType.BOOL;
       case STRING:
-        return Decls.newPrimitiveType(Type.PrimitiveType.STRING);
+        return SimpleType.STRING;
       case BYTES:
-        return Decls.newPrimitiveType(Type.PrimitiveType.BYTES);
+        return SimpleType.BYTES;
       case MESSAGE:
       case GROUP:
-        return Type.newBuilder().setMessageType(kind.getJavaType().name()).build();
+        return StructTypeReference.create(kind.getJavaType().name());
       default:
-        return Type.newBuilder()
-            .setPrimitive(Type.PrimitiveType.PRIMITIVE_TYPE_UNSPECIFIED)
-            .build();
+        return UnspecifiedType.create();
     }
   }
 
@@ -189,42 +192,20 @@ final class DescriptorMappings {
    * Resolves the CEL value type for the provided {@link FieldDescriptor}. If forItems is true, the
    * type for the repeated list items is returned instead of the list type itself.
    */
-  static Type getCELType(FieldDescriptor fieldDescriptor, boolean forItems) {
+  static CelType getCELType(FieldDescriptor fieldDescriptor, boolean forItems) {
     if (!forItems) {
       if (fieldDescriptor.isMapField()) {
-        return Decls.newMapType(
+        return MapType.create(
             getCELType(fieldDescriptor.getMessageType().findFieldByNumber(1), true),
             getCELType(fieldDescriptor.getMessageType().findFieldByNumber(2), true));
       } else if (fieldDescriptor.isRepeated()) {
-        return Decls.newListType(getCELType(fieldDescriptor, true));
+        return ListType.create(getCELType(fieldDescriptor, true));
       }
     }
 
     if (fieldDescriptor.getJavaType() == FieldDescriptor.JavaType.MESSAGE) {
       String fqn = fieldDescriptor.getMessageType().getFullName();
-      switch (fqn) {
-        case "google.protobuf.Any":
-          return Decls.newWellKnownType(Type.WellKnownType.ANY);
-        case "google.protobuf.Duration":
-          return Decls.newWellKnownType(Type.WellKnownType.DURATION);
-        case "google.protobuf.Timestamp":
-          return Decls.newWellKnownType(Type.WellKnownType.TIMESTAMP);
-        case "google.protobuf.BytesValue":
-          return Decls.newWrapperType(Decls.Bytes);
-        case "google.protobuf.DoubleValue":
-        case "google.protobuf.FloatValue":
-          return Decls.newWrapperType(Decls.Double);
-        case "google.protobuf.Int32Value":
-        case "google.protobuf.Int64Value":
-          return Decls.newWrapperType(Decls.Int);
-        case "google.protobuf.StringValue":
-          return Decls.newWrapperType(Decls.String);
-        case "google.protobuf.UInt32Value":
-        case "google.protobuf.UInt64Value":
-          return Decls.newWrapperType(Decls.Uint);
-        default:
-          return Decls.newObjectType(fqn);
-      }
+      return CelTypes.getWellKnownCelType(fqn).orElse(StructTypeReference.create(fqn));
     }
     return DescriptorMappings.protoKindToCELType(fieldDescriptor.getType());
   }

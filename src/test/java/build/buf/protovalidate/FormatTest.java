@@ -14,8 +14,7 @@
 
 package build.buf.protovalidate;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.fail;
+import static org.assertj.core.api.Assertions.*;
 
 import cel.expr.conformance.proto3.TestAllTypes;
 import com.cel.expr.Decl;
@@ -25,6 +24,14 @@ import com.cel.expr.conformance.test.SimpleTest;
 import com.cel.expr.conformance.test.SimpleTestFile;
 import com.cel.expr.conformance.test.SimpleTestSection;
 import com.google.protobuf.TextFormat;
+import dev.cel.bundle.Cel;
+import dev.cel.bundle.CelBuilder;
+import dev.cel.bundle.CelFactory;
+import dev.cel.common.CelValidationException;
+import dev.cel.common.CelValidationResult;
+import dev.cel.common.types.SimpleType;
+import dev.cel.runtime.CelEvaluationException;
+import dev.cel.runtime.CelRuntime.Program;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -39,22 +46,13 @@ import org.junit.jupiter.api.Named;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
-import org.projectnessie.cel.Env;
-import org.projectnessie.cel.EnvOption;
-import org.projectnessie.cel.EvalOption;
-import org.projectnessie.cel.Library;
-import org.projectnessie.cel.Program;
-import org.projectnessie.cel.ProgramOption;
-import org.projectnessie.cel.checker.Decls;
-import org.projectnessie.cel.common.types.ref.TypeEnum;
-import org.projectnessie.cel.interpreter.Activation;
 
 class FormatTest {
   // Version of the cel-spec that this implementation is conformant with
   // This should be kept in sync with the version in gradle.properties
   private static String CEL_SPEC_VERSION = "v0.24.0";
 
-  private static Env env;
+  private static Cel cel;
 
   private static List<SimpleTest> formatTests;
   private static List<SimpleTest> formatErrorTests;
@@ -88,23 +86,26 @@ class FormatTest {
             .flatMap(s -> s.getTestList().stream())
             .collect(Collectors.toList());
 
-    env = Env.newEnv(Library.Lib(new ValidateLibrary()));
+    ValidateLibrary validateLibrary = new ValidateLibrary();
+    cel =
+        CelFactory.standardCelBuilder()
+            .addCompilerLibraries(validateLibrary)
+            .addRuntimeLibraries(validateLibrary)
+            .build();
   }
 
   @ParameterizedTest()
   @MethodSource("getFormatTests")
-  void testFormatSuccess(SimpleTest test) {
-    Program.EvalResult result = evaluate(test);
-    assertThat(result.getVal().value()).isEqualTo(getExpectedResult(test));
-    assertThat(result.getVal().type().typeEnum()).isEqualTo(TypeEnum.String);
+  void testFormatSuccess(SimpleTest test) throws CelValidationException, CelEvaluationException {
+    Object result = evaluate(test);
+    assertThat(result).isEqualTo(getExpectedResult(test));
+    assertThat(result).isInstanceOf(String.class);
   }
 
   @ParameterizedTest()
   @MethodSource("getFormatErrorTests")
   void testFormatError(SimpleTest test) {
-    Program.EvalResult result = evaluate(test);
-    assertThat(result.getVal().value()).isEqualTo(getExpectedResult(test));
-    assertThat(result.getVal().type().typeEnum()).isEqualTo(TypeEnum.Err);
+    assertThatThrownBy(() -> evaluate(test)).isInstanceOf(CelEvaluationException.class);
   }
 
   // Loads test data from the given text format file
@@ -120,22 +121,19 @@ class FormatTest {
 
   // Runs a test by extending the cel environment with the specified
   // types, variables and declarations, then evaluating it with the cel runtime.
-  private static Program.EvalResult evaluate(SimpleTest test) {
-    List<com.google.api.expr.v1alpha1.Decl> decls = buildDecls(test);
+  private static Object evaluate(SimpleTest test)
+      throws CelValidationException, CelEvaluationException {
 
-    TestAllTypes msg = TestAllTypes.newBuilder().getDefaultInstanceForType();
-    Env newEnv = env.extend(EnvOption.types(msg), EnvOption.declarations(decls));
+    CelBuilder builder = cel.toCelBuilder().addMessageTypes(TestAllTypes.getDescriptor());
+    addDecls(builder, test);
+    Cel newCel = builder.build();
 
-    Env.AstIssuesTuple ast = newEnv.compile(test.getExpr());
-    if (ast.hasIssues()) {
-      fail("error building AST for evaluation: " + ast.getIssues().toString());
+    CelValidationResult validationResult = newCel.compile(test.getExpr());
+    if (!validationResult.getAllIssues().isEmpty()) {
+      fail("error building AST for evaluation: " + validationResult.getIssueString());
     }
-    Map<String, Object> vars = buildVariables(test.getBindingsMap());
-    ProgramOption globals = ProgramOption.globals(vars);
-    Program program =
-        newEnv.program(ast.getAst(), globals, ProgramOption.evalOptions(EvalOption.OptTrackState));
-
-    return program.eval(Activation.emptyActivation());
+    Program program = newCel.createProgram(validationResult.getAst());
+    return program.eval(buildVariables(test.getBindingsMap()));
   }
 
   private static Stream<Arguments> getTestStream(List<SimpleTest> tests) {
@@ -186,19 +184,17 @@ class FormatTest {
   }
 
   // Builds the declarations for a given test
-  private static List<com.google.api.expr.v1alpha1.Decl> buildDecls(SimpleTest test) {
-    List<com.google.api.expr.v1alpha1.Decl> decls = new ArrayList<>();
+  private static void addDecls(CelBuilder builder, SimpleTest test) {
     for (Decl decl : test.getTypeEnvList()) {
       if (decl.hasIdent()) {
         Decl.IdentDecl ident = decl.getIdent();
         com.cel.expr.Type type = ident.getType();
         if (type.hasPrimitive()) {
           if (type.getPrimitive() == com.cel.expr.Type.PrimitiveType.STRING) {
-            decls.add(Decls.newVar(decl.getName(), Decls.String));
+            builder.addVar(decl.getName(), SimpleType.STRING);
           }
         }
       }
     }
-    return decls;
   }
 }

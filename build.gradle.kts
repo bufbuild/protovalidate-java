@@ -339,12 +339,12 @@ dependencies {
     annotationProcessor(libs.nullaway)
     api(libs.jspecify)
     api(libs.protobuf.java)
-    implementation(enforcedPlatform(libs.cel))
-    implementation(libs.cel.core)
+    implementation(libs.cel)
 
     buf("build.buf:buf:${libs.versions.buf.get()}:${osdetector.classifier}@exe")
 
     testImplementation(libs.assertj)
+    testImplementation(libs.grpc.protobuf)
     testImplementation(platform(libs.junit.bom))
     testImplementation("org.junit.jupiter:junit-jupiter")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")

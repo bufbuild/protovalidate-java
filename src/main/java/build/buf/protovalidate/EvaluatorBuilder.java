@@ -22,7 +22,6 @@ import build.buf.validate.Ignore;
 import build.buf.validate.MessageRules;
 import build.buf.validate.OneofRules;
 import build.buf.validate.Rule;
-import com.google.api.expr.v1alpha1.Decl;
 import com.google.protobuf.ByteString;
 import com.google.protobuf.Descriptors;
 import com.google.protobuf.Descriptors.Descriptor;
@@ -30,18 +29,17 @@ import com.google.protobuf.Descriptors.FieldDescriptor;
 import com.google.protobuf.DynamicMessage;
 import com.google.protobuf.InvalidProtocolBufferException;
 import com.google.protobuf.Message;
+import dev.cel.bundle.Cel;
+import dev.cel.bundle.CelBuilder;
+import dev.cel.common.types.StructTypeReference;
+import dev.cel.runtime.CelEvaluationException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
-import java.util.Set;
 import org.jspecify.annotations.Nullable;
-import org.projectnessie.cel.Env;
-import org.projectnessie.cel.EnvOption;
-import org.projectnessie.cel.checker.Decls;
 
 /** A build-through cache of message evaluators keyed off the provided descriptor. */
 class EvaluatorBuilder {
@@ -51,34 +49,34 @@ class EvaluatorBuilder {
 
   private volatile Map<Descriptor, MessageEvaluator> evaluatorCache = Collections.emptyMap();
 
-  private final Env env;
+  private final Cel cel;
   private final boolean disableLazy;
   private final RuleCache rules;
 
   /**
    * Constructs a new {@link EvaluatorBuilder}.
    *
-   * @param env The CEL environment for evaluation.
+   * @param cel The CEL environment for evaluation.
    * @param config The configuration to use for the evaluation.
    */
-  EvaluatorBuilder(Env env, Config config) {
-    this.env = env;
+  EvaluatorBuilder(Cel cel, Config config) {
+    this.cel = cel;
     this.disableLazy = false;
-    this.rules = new RuleCache(env, config);
+    this.rules = new RuleCache(cel, config);
   }
 
   /**
    * Constructs a new {@link EvaluatorBuilder}.
    *
-   * @param env The CEL environment for evaluation.
+   * @param cel The CEL environment for evaluation.
    * @param config The configuration to use for the evaluation.
    */
-  EvaluatorBuilder(Env env, Config config, List<Descriptor> descriptors, boolean disableLazy)
+  EvaluatorBuilder(Cel cel, Config config, List<Descriptor> descriptors, boolean disableLazy)
       throws CompilationException {
     Objects.requireNonNull(descriptors, "descriptors must not be null");
-    this.env = env;
+    this.cel = cel;
     this.disableLazy = disableLazy;
-    this.rules = new RuleCache(env, config);
+    this.rules = new RuleCache(cel, config);
 
     for (Descriptor descriptor : descriptors) {
       this.build(descriptor);
@@ -119,7 +117,7 @@ class EvaluatorBuilder {
       }
       // Rebuild cache with this descriptor (and any of its dependencies).
       Map<Descriptor, MessageEvaluator> updatedCache =
-          new DescriptorCacheBuilder(env, rules, evaluatorCache).build(desc);
+          new DescriptorCacheBuilder(cel, rules, evaluatorCache).build(desc);
       evaluatorCache = updatedCache;
       eval = updatedCache.get(desc);
       if (eval == null) {
@@ -132,13 +130,13 @@ class EvaluatorBuilder {
 
   private static class DescriptorCacheBuilder {
     private final RuleResolver resolver = new RuleResolver();
-    private final Env env;
+    private final Cel cel;
     private final RuleCache ruleCache;
     private final HashMap<Descriptor, MessageEvaluator> cache;
 
     private DescriptorCacheBuilder(
-        Env env, RuleCache ruleCache, Map<Descriptor, MessageEvaluator> previousCache) {
-      this.env = Objects.requireNonNull(env, "env");
+        Cel cel, RuleCache ruleCache, Map<Descriptor, MessageEvaluator> previousCache) {
+      this.cel = Objects.requireNonNull(cel, "cel");
       this.ruleCache = Objects.requireNonNull(ruleCache, "ruleCache");
       this.cache = new HashMap<>(previousCache);
     }
@@ -186,31 +184,6 @@ class EvaluatorBuilder {
       }
     }
 
-    private void collectDependencies(Set<Descriptor> dependencyTypes, Descriptor desc) {
-      dependencyTypes.add(desc);
-      for (FieldDescriptor field : desc.getFields()) {
-        if (field.getJavaType() != FieldDescriptor.JavaType.MESSAGE) {
-          continue;
-        }
-        Descriptor submessageDesc = field.getMessageType();
-        if (dependencyTypes.contains(submessageDesc)) {
-          continue;
-        }
-        collectDependencies(dependencyTypes, submessageDesc);
-      }
-    }
-
-    private Message[] getTypesForMessage(Message message) {
-      Set<Descriptor> dependencyTypes = new HashSet<>();
-      collectDependencies(dependencyTypes, message.getDescriptorForType());
-      Message[] dependencyTypeMessages = new Message[dependencyTypes.size()];
-      int i = 0;
-      for (Descriptor dependencyType : dependencyTypes) {
-        dependencyTypeMessages[i++] = DynamicMessage.newBuilder(dependencyType).buildPartial();
-      }
-      return dependencyTypeMessages;
-    }
-
     private void processMessageExpressions(
         Descriptor desc, MessageRules msgRules, MessageEvaluator msgEval, DynamicMessage message)
         throws CompilationException {
@@ -218,12 +191,12 @@ class EvaluatorBuilder {
       if (celList.isEmpty()) {
         return;
       }
-      Env finalEnv =
-          env.extend(
-              EnvOption.types((Object[]) getTypesForMessage(message)),
-              EnvOption.declarations(
-                  Decls.newVar(Variable.THIS_NAME, Decls.newObjectType(desc.getFullName()))));
-      List<CompiledProgram> compiledPrograms = compileRules(celList, finalEnv, false);
+      Cel finalCel =
+          cel.toCelBuilder()
+              .addMessageTypes(message.getDescriptorForType())
+              .addVar(Variable.THIS_NAME, StructTypeReference.create(desc.getFullName()))
+              .build();
+      List<CompiledProgram> compiledPrograms = compileRules(celList, finalCel, false);
       if (compiledPrograms.isEmpty()) {
         throw new CompilationException("compile returned null");
       }
@@ -312,14 +285,10 @@ class EvaluatorBuilder {
       if (forItems && fieldDescriptor.isRepeated()) {
         switch (fieldDescriptor.getType().getJavaType()) {
           case INT:
-            zero = 0;
-            break;
           case LONG:
             zero = 0L;
             break;
           case FLOAT:
-            zero = 0F;
-            break;
           case DOUBLE:
             zero = 0D;
             break;
@@ -333,7 +302,7 @@ class EvaluatorBuilder {
             zero = ByteString.EMPTY;
             break;
           case ENUM:
-            zero = fieldDescriptor.getEnumType().getValues().get(0);
+            zero = (long) fieldDescriptor.getEnumType().getValues().get(0).getNumber();
             break;
           case MESSAGE:
             zero = createMessageForType(fieldDescriptor.getMessageType());
@@ -346,7 +315,8 @@ class EvaluatorBuilder {
           && !fieldDescriptor.isRepeated()) {
         zero = createMessageForType(fieldDescriptor.getMessageType());
       } else {
-        zero = fieldDescriptor.getDefaultValue();
+        zero =
+            ProtoAdapter.scalarToCel(fieldDescriptor.getType(), fieldDescriptor.getDefaultValue());
       }
       return zero;
     }
@@ -366,24 +336,17 @@ class EvaluatorBuilder {
       if (rulesCelList.isEmpty()) {
         return;
       }
-      Decl celType =
-          Decls.newVar(
+      CelBuilder builder = cel.toCelBuilder();
+      builder =
+          builder.addVar(
               Variable.THIS_NAME,
               DescriptorMappings.getCELType(fieldDescriptor, valueEvaluatorEval.hasNestedRule()));
 
-      List<EnvOption> opts = new ArrayList<EnvOption>();
-      opts.add(EnvOption.declarations(celType));
       if (fieldDescriptor.getJavaType() == FieldDescriptor.JavaType.MESSAGE) {
-        try {
-          DynamicMessage defaultInstance =
-              DynamicMessage.parseFrom(fieldDescriptor.getMessageType(), new byte[0]);
-          opts.add(EnvOption.types((Object[]) getTypesForMessage(defaultInstance)));
-        } catch (InvalidProtocolBufferException e) {
-          throw new CompilationException("field descriptor type is invalid " + e.getMessage(), e);
-        }
+        builder = builder.addMessageTypes(fieldDescriptor.getMessageType());
       }
-      Env finalEnv = env.extend(opts.toArray(new EnvOption[opts.size()]));
-      List<CompiledProgram> compiledPrograms = compileRules(rulesCelList, finalEnv, true);
+      Cel finalCel = builder.build();
+      List<CompiledProgram> compiledPrograms = compileRules(rulesCelList, finalCel, true);
       if (!compiledPrograms.isEmpty()) {
         valueEvaluatorEval.append(new CelPrograms(valueEvaluatorEval, compiledPrograms));
       }
@@ -526,13 +489,13 @@ class EvaluatorBuilder {
       valueEvaluatorEval.append(listEval);
     }
 
-    private static List<CompiledProgram> compileRules(List<Rule> rules, Env env, boolean isField)
+    private static List<CompiledProgram> compileRules(List<Rule> rules, Cel cel, boolean isField)
         throws CompilationException {
       List<Expression> expressions = Expression.fromRules(rules);
       List<CompiledProgram> compiledPrograms = new ArrayList<>();
       for (int i = 0; i < expressions.size(); i++) {
         Expression expression = expressions.get(i);
-        AstExpression astExpression = AstExpression.newAstExpression(env, expression);
+        AstExpression astExpression = AstExpression.newAstExpression(cel, expression);
         @Nullable FieldPath rulePath = null;
         if (isField) {
           rulePath =
@@ -540,12 +503,17 @@ class EvaluatorBuilder {
                   .addElements(CEL_FIELD_PATH_ELEMENT.toBuilder().setIndex(i))
                   .build();
         }
-        compiledPrograms.add(
-            new CompiledProgram(
-                env.program(astExpression.ast),
-                astExpression.source,
-                rulePath,
-                new MessageValue(rules.get(i))));
+        try {
+          compiledPrograms.add(
+              new CompiledProgram(
+                  cel.createProgram(astExpression.ast),
+                  astExpression.source,
+                  rulePath,
+                  new MessageValue(rules.get(i)),
+                  null));
+        } catch (CelEvaluationException e) {
+          throw new CompilationException("failed to evaluate rule " + rules.get(i).getId(), e);
+        }
       }
       return compiledPrograms;
     }

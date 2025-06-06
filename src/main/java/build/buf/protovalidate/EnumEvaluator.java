@@ -32,7 +32,7 @@ class EnumEvaluator implements Evaluator {
   private final RuleViolationHelper helper;
 
   /** Captures all the defined values for this enum */
-  private final Set<Integer> values;
+  private final Set<Long> values;
 
   private static final Descriptors.FieldDescriptor DEFINED_ONLY_DESCRIPTOR =
       EnumRules.getDescriptor().findFieldByNumber(EnumRules.DEFINED_ONLY_FIELD_NUMBER);
@@ -57,9 +57,7 @@ class EnumEvaluator implements Evaluator {
       this.values = Collections.emptySet();
     } else {
       this.values =
-          valueDescriptors.stream()
-              .map(Descriptors.EnumValueDescriptor::getNumber)
-              .collect(Collectors.toSet());
+          valueDescriptors.stream().map(it -> (long) it.getNumber()).collect(Collectors.toSet());
     }
   }
 
@@ -79,11 +77,11 @@ class EnumEvaluator implements Evaluator {
   @Override
   public List<RuleViolation.Builder> evaluate(Value val, boolean failFast)
       throws ExecutionException {
-    Descriptors.EnumValueDescriptor enumValue = val.value(Descriptors.EnumValueDescriptor.class);
+    Object enumValue = val.value(Object.class);
     if (enumValue == null) {
       return RuleViolation.NO_VIOLATIONS;
     }
-    if (!values.contains(enumValue.getNumber())) {
+    if (!values.contains(enumValue)) {
       return Collections.singletonList(
           RuleViolation.newBuilder()
               .addAllRulePathElements(helper.getRulePrefixElements())

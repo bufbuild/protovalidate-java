@@ -1,0 +1,9 @@
+standard_rules/bytes:
+  - pattern/invalid/not_utf8
+#        input: [ type.googleapis.com/buf.validate.conformance.cases.BytesPattern ]:{val:"\x99"}
+#        want: runtime error: value must be valid UTF-8 to apply regexp
+#        got: validation error (1 violation)
+#         1. rule_id: "bytes.pattern"
+#           message: "value must match regex pattern `^[\\x00-\\x7F]+$`"
+#           field: "val" elements:{field_number:1 field_name:"val" field_type:TYPE_BYTES}
+#           rule: "bytes.pattern" elements:{field_number:15 field_name:"bytes" field_type:TYPE_MESSAGE} elements:{field_number:4 field_name:"pattern" field_type:TYPE_STRING}

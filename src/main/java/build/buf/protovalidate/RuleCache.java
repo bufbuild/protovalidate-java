@@ -27,21 +27,15 @@ import com.google.protobuf.InvalidProtocolBufferException;
 import com.google.protobuf.Message;
 import com.google.protobuf.MessageLite;
 import com.google.protobuf.TypeRegistry;
+import dev.cel.bundle.Cel;
+import dev.cel.common.types.StructTypeReference;
+import dev.cel.runtime.CelEvaluationException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import org.jspecify.annotations.Nullable;
-import org.projectnessie.cel.Ast;
-import org.projectnessie.cel.Env;
-import org.projectnessie.cel.EnvOption;
-import org.projectnessie.cel.EvalOption;
-import org.projectnessie.cel.Program;
-import org.projectnessie.cel.ProgramOption;
-import org.projectnessie.cel.checker.Decls;
-import org.projectnessie.cel.common.types.ref.Val;
-import org.projectnessie.cel.interpreter.Activation;
 
 /** A build-through cache for computed standard rules. */
 class RuleCache {
@@ -63,14 +57,6 @@ class RuleCache {
     EXTENSION_REGISTRY.add(ValidateProto.predefined);
   }
 
-  /** Partial eval options for evaluating the rule's expression. */
-  private static final ProgramOption PARTIAL_EVAL_OPTIONS =
-      ProgramOption.evalOptions(
-          EvalOption.OptTrackState,
-          EvalOption.OptExhaustiveEval,
-          EvalOption.OptOptimize,
-          EvalOption.OptPartialEval);
-
   /**
    * Concurrent map for caching {@link FieldDescriptor} and their associated List of {@link
    * AstExpression}.
@@ -79,7 +65,7 @@ class RuleCache {
       new ConcurrentHashMap<>();
 
   /** The environment to use for evaluation. */
-  private final Env env;
+  private final Cel cel;
 
   /** Registry used to resolve dynamic messages. */
   private final TypeRegistry typeRegistry;
@@ -94,11 +80,11 @@ class RuleCache {
    * Constructs a new build-through cache for the standard rules, with a provided registry to
    * resolve dynamic extensions.
    *
-   * @param env The CEL environment for evaluation.
+   * @param cel The CEL environment for evaluation.
    * @param config The configuration to use for the rule cache.
    */
-  public RuleCache(Env env, Config config) {
-    this.env = env;
+  public RuleCache(Cel cel, Config config) {
+    this.cel = cel;
     this.typeRegistry = config.getTypeRegistry();
     this.extensionRegistry = config.getExtensionRegistry();
     this.allowUnknownFields = config.isAllowingUnknownFields();
@@ -133,37 +119,19 @@ class RuleCache {
     }
     List<CompiledProgram> programs = new ArrayList<>();
     for (CelRule rule : completeProgramList) {
-      Env ruleEnv = getRuleEnv(fieldDescriptor, message, rule.field, forItems);
-      Variable ruleVar = Variable.newRuleVariable(message, message.getField(rule.field));
-      ProgramOption globals = ProgramOption.globals(ruleVar);
-      Value ruleValue = new ObjectValue(rule.field, message.getField(rule.field));
+      Cel ruleCel = getRuleCel(fieldDescriptor, message, rule.field, forItems);
       try {
-        Program program = ruleEnv.program(rule.astExpression.ast, globals, PARTIAL_EVAL_OPTIONS);
-        Program.EvalResult evalResult = program.eval(Activation.emptyActivation());
-        Val value = evalResult.getVal();
-        if (value != null) {
-          Object val = value.value();
-          if (val instanceof Boolean && value.booleanValue()) {
-            continue;
-          }
-          if (val instanceof String && val.equals("")) {
-            continue;
-          }
-        }
-        Ast residual = ruleEnv.residualAst(rule.astExpression.ast, evalResult.getEvalDetails());
         programs.add(
             new CompiledProgram(
-                ruleEnv.program(residual, globals),
+                ruleCel.createProgram(rule.astExpression.ast),
                 rule.astExpression.source,
                 rule.rulePath,
-                ruleValue));
-      } catch (Exception e) {
-        programs.add(
-            new CompiledProgram(
-                ruleEnv.program(rule.astExpression.ast, globals),
-                rule.astExpression.source,
-                rule.rulePath,
-                ruleValue));
+                new ObjectValue(rule.field, message.getField(rule.field)),
+                Variable.newRuleVariable(
+                    message, ProtoAdapter.toCel(rule.field, message.getField(rule.field)))));
+      } catch (CelEvaluationException e) {
+        throw new CompilationException(
+            "failed to evaluate rule " + rule.astExpression.source.id, e);
       }
     }
     return Collections.unmodifiableList(programs);
@@ -184,7 +152,7 @@ class RuleCache {
     if (rules == null) return null;
     List<Expression> expressions = Expression.fromRules(rules.getCelList());
     celRules = new ArrayList<>(expressions.size());
-    Env ruleEnv = getRuleEnv(fieldDescriptor, message, ruleFieldDesc, forItems);
+    Cel ruleCel = getRuleCel(fieldDescriptor, message, ruleFieldDesc, forItems);
     for (Expression expression : expressions) {
       FieldPath rulePath =
           FieldPath.newBuilder()
@@ -193,7 +161,7 @@ class RuleCache {
               .build();
       celRules.add(
           new CelRule(
-              AstExpression.newAstExpression(ruleEnv, expression), ruleFieldDesc, rulePath));
+              AstExpression.newAstExpression(ruleCel, expression), ruleFieldDesc, rulePath));
     }
     descriptorMap.put(ruleFieldDesc, celRules);
     return celRules;
@@ -202,7 +170,8 @@ class RuleCache {
   private build.buf.validate.@Nullable PredefinedRules getFieldRules(FieldDescriptor ruleFieldDesc)
       throws CompilationException {
     DescriptorProtos.FieldOptions options = ruleFieldDesc.getOptions();
-    // If the protovalidate field option is unknown, reparse options using our extension registry.
+    // If the protovalidate field option is unknown, reparse options using our
+    // extension registry.
     if (options.getUnknownFields().hasField(ValidateProto.predefined.getNumber())) {
       try {
         options =
@@ -243,20 +212,19 @@ class RuleCache {
    * @param forItems Whether the field is a list type or not.
    * @return An environment with requisite declarations and types added.
    */
-  private Env getRuleEnv(
+  private Cel getRuleCel(
       FieldDescriptor fieldDescriptor,
       Message ruleMessage,
       FieldDescriptor ruleFieldDesc,
       boolean forItems) {
-    return env.extend(
-        EnvOption.types(ruleMessage.getDefaultInstanceForType()),
-        EnvOption.declarations(
-            Decls.newVar(
-                Variable.THIS_NAME, DescriptorMappings.getCELType(fieldDescriptor, forItems)),
-            Decls.newVar(
-                Variable.RULES_NAME,
-                Decls.newObjectType(ruleMessage.getDescriptorForType().getFullName())),
-            Decls.newVar(Variable.RULE_NAME, DescriptorMappings.getCELType(ruleFieldDesc, false))));
+    return cel.toCelBuilder()
+        .addMessageTypes(ruleMessage.getDescriptorForType())
+        .addVar(Variable.THIS_NAME, DescriptorMappings.getCELType(fieldDescriptor, forItems))
+        .addVar(
+            Variable.RULES_NAME,
+            StructTypeReference.create(ruleMessage.getDescriptorForType().getFullName()))
+        .addVar(Variable.RULE_NAME, DescriptorMappings.getCELType(ruleFieldDesc, false))
+        .build();
   }
 
   private static class ResolvedRule {
@@ -286,7 +254,8 @@ class RuleCache {
       return null;
     }
 
-    // Get the expected rule descriptor based on the provided field descriptor and the flag
+    // Get the expected rule descriptor based on the provided field descriptor and
+    // the flag
     // indicating whether it is for items.
     FieldDescriptor expectedRuleDescriptor =
         DescriptorMappings.getExpectedRuleDescriptor(fieldDescriptor, forItems);
@@ -308,7 +277,8 @@ class RuleCache {
     if (expectedRuleDescriptor == null || !fieldRules.hasField(oneofFieldDescriptor)) {
       if (expectedRuleDescriptor == null) {
         // The only expected rule descriptor for message fields is for well known types.
-        // If we didn't find a descriptor and this is a message, there must be a mismatch.
+        // If we didn't find a descriptor and this is a message, there must be a
+        // mismatch.
         if (fieldDescriptor.getJavaType() == FieldDescriptor.JavaType.MESSAGE) {
           throw new CompilationException(
               String.format(
@@ -320,14 +290,19 @@ class RuleCache {
       return null;
     }
 
-    // Get the field from the field rules identified by the oneof field descriptor, casted
+    // Get the field from the field rules identified by the oneof field descriptor,
+    // casted
     // as a Message.
     Message typeRules = (Message) fieldRules.getField(oneofFieldDescriptor);
     if (!typeRules.getUnknownFields().isEmpty()) {
-      // If there are unknown fields, try to resolve them using the provided registries. Note that
-      // we use the type registry to resolve the message descriptor. This is because Java protobuf
-      // extension resolution relies on descriptor identity. The user's provided type registry can
-      // provide matching message descriptors for the user's provided extension registry. See the
+      // If there are unknown fields, try to resolve them using the provided
+      // registries. Note that
+      // we use the type registry to resolve the message descriptor. This is because
+      // Java protobuf
+      // extension resolution relies on descriptor identity. The user's provided type
+      // registry can
+      // provide matching message descriptors for the user's provided extension
+      // registry. See the
       // documentation for Options.setTypeRegistry for more information.
       Descriptors.Descriptor expectedRuleMessageDescriptor =
           typeRegistry.find(expectedRuleDescriptor.getMessageType().getFullName());

@@ -14,41 +14,24 @@
 
 package build.buf.protovalidate;
 
+import com.google.protobuf.ByteString;
 import com.google.protobuf.Descriptors;
 import com.google.protobuf.Message;
+import dev.cel.common.types.CelType;
+import dev.cel.common.types.SimpleType;
+import dev.cel.runtime.CelEvaluationException;
+import dev.cel.runtime.CelRuntime.CelFunctionBinding;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashSet;
+import java.util.List;
+import java.util.Locale;
 import java.util.Set;
 import java.util.regex.Pattern;
-import org.projectnessie.cel.common.types.BoolT;
-import org.projectnessie.cel.common.types.Err;
-import org.projectnessie.cel.common.types.IntT;
-import org.projectnessie.cel.common.types.ListT;
-import org.projectnessie.cel.common.types.StringT;
-import org.projectnessie.cel.common.types.Types;
-import org.projectnessie.cel.common.types.pb.DefaultTypeAdapter;
-import org.projectnessie.cel.common.types.ref.TypeEnum;
-import org.projectnessie.cel.common.types.ref.Val;
-import org.projectnessie.cel.common.types.traits.Lister;
-import org.projectnessie.cel.interpreter.functions.Overload;
 
 /** Defines custom function overloads (the implementation). */
 final class CustomOverload {
-
-  private static final String OVERLOAD_GET_FIELD = "getField";
-  private static final String OVERLOAD_FORMAT = "format";
-  private static final String OVERLOAD_UNIQUE = "unique";
-  private static final String OVERLOAD_STARTS_WITH = "startsWith";
-  private static final String OVERLOAD_ENDS_WITH = "endsWith";
-  private static final String OVERLOAD_CONTAINS = "contains";
-  private static final String OVERLOAD_IS_HOSTNAME = "isHostname";
-  private static final String OVERLOAD_IS_EMAIL = "isEmail";
-  private static final String OVERLOAD_IS_IP = "isIp";
-  private static final String OVERLOAD_IS_IP_PREFIX = "isIpPrefix";
-  private static final String OVERLOAD_IS_URI = "isUri";
-  private static final String OVERLOAD_IS_URI_REF = "isUriRef";
-  private static final String OVERLOAD_IS_NAN = "isNan";
-  private static final String OVERLOAD_IS_INF = "isInf";
-  private static final String OVERLOAD_IS_HOST_AND_PORT = "isHostAndPort";
 
   // See https://html.spec.whatwg.org/multipage/input.html#valid-e-mail-address
   private static final Pattern EMAIL_REGEX =
@@ -58,184 +41,146 @@ final class CustomOverload {
   /**
    * Create custom function overload list.
    *
-   * @return an array of overloaded functions.
+   * @return a list of overloaded functions.
    */
-  static Overload[] create() {
-    return new Overload[] {
-      celGetField(),
-      celFormat(),
-      celUnique(),
-      celStartsWith(),
-      celEndsWith(),
-      celContains(),
-      celIsHostname(),
-      celIsEmail(),
-      celIsIp(),
-      celIsIpPrefix(),
-      celIsUri(),
-      celIsUriRef(),
-      celIsNan(),
-      celIsInf(),
-      celIsHostAndPort(),
-    };
+  static List<CelFunctionBinding> create() {
+    ArrayList<CelFunctionBinding> bindings = new ArrayList<>();
+    bindings.addAll(
+        Arrays.asList(
+            celGetField(),
+            celFormat(),
+            celStartsWithBytes(),
+            celEndsWithBytes(),
+            celContainsBytes(),
+            celIsHostname(),
+            celIsEmail(),
+            celIsIpUnary(),
+            celIsIp(),
+            celIsIpPrefix(),
+            celIsIpPrefixInt(),
+            celIsIpPrefixBool(),
+            celIsIpPrefixIntBool(),
+            celIsUri(),
+            celIsUriRef(),
+            celIsNan(),
+            celIsInfUnary(),
+            celIsInfBinary(),
+            celIsHostAndPort()));
+    bindings.addAll(celUnique());
+    return Collections.unmodifiableList(bindings);
   }
 
   /**
    * Creates a custom function overload for the "getField" operation.
    *
-   * @return The {@link Overload} instance for the "getField" operation.
+   * @return The {@link CelFunctionBinding} instance for the "getField" operation.
    */
-  private static Overload celGetField() {
-    return Overload.binary(
-        OVERLOAD_GET_FIELD,
-        (msgarg, namearg) -> {
-          if (msgarg.type().typeEnum() != TypeEnum.Object
-              || namearg.type().typeEnum() != TypeEnum.String) {
-            return Err.newErr("no such overload");
-          }
-          Message message = msgarg.convertToNative(Message.class);
-          String fieldName = namearg.convertToNative(String.class);
+  private static CelFunctionBinding celGetField() {
+    return CelFunctionBinding.from(
+        "get_field_any_string",
+        Message.class,
+        String.class,
+        (message, fieldName) -> {
           Descriptors.FieldDescriptor field =
               message.getDescriptorForType().findFieldByName(fieldName);
           if (field == null) {
-            return Err.newErr("no such field: " + fieldName);
+            throw new CelEvaluationException("no such field: " + fieldName);
           }
-          return DefaultTypeAdapter.Instance.nativeToValue(message.getField(field));
+          return ProtoAdapter.toCel(field, message.getField(field));
         });
   }
 
   /**
    * Creates a custom binary function overload for the "format" operation.
    *
-   * @return The {@link Overload} instance for the "format" operation.
+   * @return The {@link CelFunctionBinding} instance for the "format" operation.
    */
-  private static Overload celFormat() {
-    return Overload.binary(
-        OVERLOAD_FORMAT,
-        (lhs, rhs) -> {
-          if (lhs.type().typeEnum() != TypeEnum.String || rhs.type().typeEnum() != TypeEnum.List) {
-            return Err.noSuchOverload(lhs, OVERLOAD_FORMAT, rhs);
-          }
-          ListT list = (ListT) rhs.convertToType(ListT.ListType);
-          String formatString = (String) lhs.value();
-          try {
-            return StringT.stringOf(Format.format(formatString, list));
-          } catch (Err.ErrException e) {
-            return e.getErr();
-          }
-        });
+  private static CelFunctionBinding celFormat() {
+    return CelFunctionBinding.from("format_list_dyn", String.class, List.class, Format::format);
   }
 
   /**
    * Creates a custom unary function overload for the "unique" operation.
    *
-   * @return The {@link Overload} instance for the "unique" operation.
+   * @return The {@link CelFunctionBinding} instance for the "unique" operation.
    */
-  private static Overload celUnique() {
-    return Overload.unary(
-        OVERLOAD_UNIQUE,
-        (val) -> {
-          if (val.type().typeEnum() != TypeEnum.List) {
-            return Err.noSuchOverload(val, OVERLOAD_UNIQUE, null);
-          }
-          return uniqueList((Lister) val);
-        });
+  private static List<CelFunctionBinding> celUnique() {
+    List<CelFunctionBinding> uniqueOverloads = new ArrayList<>();
+    for (CelType type :
+        Arrays.asList(
+            SimpleType.STRING,
+            SimpleType.INT,
+            SimpleType.UINT,
+            SimpleType.DOUBLE,
+            SimpleType.BYTES,
+            SimpleType.BOOL)) {
+      uniqueOverloads.add(
+          CelFunctionBinding.from(
+              String.format("unique_list_%s", type.name().toLowerCase(Locale.US)),
+              List.class,
+              CustomOverload::uniqueList));
+    }
+    return Collections.unmodifiableList(uniqueOverloads);
   }
 
   /**
    * Creates a custom binary function overload for the "startsWith" operation.
    *
-   * @return The {@link Overload} instance for the "startsWith" operation.
+   * @return The {@link CelFunctionBinding} instance for the "startsWith" operation.
    */
-  private static Overload celStartsWith() {
-    return Overload.binary(
-        OVERLOAD_STARTS_WITH,
-        (lhs, rhs) -> {
-          TypeEnum lhsType = lhs.type().typeEnum();
-          if (lhsType != rhs.type().typeEnum()) {
-            return Err.noSuchOverload(lhs, OVERLOAD_STARTS_WITH, rhs);
+  private static CelFunctionBinding celStartsWithBytes() {
+    return CelFunctionBinding.from(
+        "starts_with_bytes",
+        ByteString.class,
+        ByteString.class,
+        (receiver, param) -> {
+          if (receiver.size() < param.size()) {
+            return false;
           }
-          if (lhsType == TypeEnum.String) {
-            String receiver = lhs.value().toString();
-            String param = rhs.value().toString();
-            return Types.boolOf(receiver.startsWith(param));
-          }
-          if (lhsType == TypeEnum.Bytes) {
-            byte[] receiver = (byte[]) lhs.value();
-            byte[] param = (byte[]) rhs.value();
-            if (receiver.length < param.length) {
-              return BoolT.False;
+          for (int i = 0; i < param.size(); i++) {
+            if (param.byteAt(i) != receiver.byteAt(i)) {
+              return false;
             }
-            for (int i = 0; i < param.length; i++) {
-              if (param[i] != receiver[i]) {
-                return BoolT.False;
-              }
-            }
-            return BoolT.True;
           }
-          return Err.noSuchOverload(lhs, OVERLOAD_STARTS_WITH, rhs);
+          return true;
         });
   }
 
   /**
    * Creates a custom binary function overload for the "endsWith" operation.
    *
-   * @return The {@link Overload} instance for the "endsWith" operation.
+   * @return The {@link CelFunctionBinding} instance for the "endsWith" operation.
    */
-  private static Overload celEndsWith() {
-    return Overload.binary(
-        OVERLOAD_ENDS_WITH,
-        (lhs, rhs) -> {
-          TypeEnum lhsType = lhs.type().typeEnum();
-          if (lhsType != rhs.type().typeEnum()) {
-            return Err.noSuchOverload(lhs, OVERLOAD_ENDS_WITH, rhs);
+  private static CelFunctionBinding celEndsWithBytes() {
+    return CelFunctionBinding.from(
+        "ends_with_bytes",
+        ByteString.class,
+        ByteString.class,
+        (receiver, param) -> {
+          if (receiver.size() < param.size()) {
+            return false;
           }
-          if (lhsType == TypeEnum.String) {
-            String receiver = (String) lhs.value();
-            String param = (String) rhs.value();
-            return Types.boolOf(receiver.endsWith(param));
-          }
-          if (lhsType == TypeEnum.Bytes) {
-            byte[] receiver = (byte[]) lhs.value();
-            byte[] param = (byte[]) rhs.value();
-            if (receiver.length < param.length) {
-              return BoolT.False;
+          for (int i = 0; i < param.size(); i++) {
+            if (param.byteAt(param.size() - i - 1) != receiver.byteAt(receiver.size() - i - 1)) {
+              return false;
             }
-            for (int i = 0; i < param.length; i++) {
-              if (param[param.length - i - 1] != receiver[receiver.length - i - 1]) {
-                return BoolT.False;
-              }
-            }
-            return BoolT.True;
           }
-          return Err.noSuchOverload(lhs, OVERLOAD_ENDS_WITH, rhs);
+          return true;
         });
   }
 
   /**
    * Creates a custom binary function overload for the "contains" operation.
    *
-   * @return The {@link Overload} instance for the "contains" operation.
+   * @return The {@link CelFunctionBinding} instance for the "contains" operation.
    */
-  private static Overload celContains() {
-    return Overload.binary(
-        OVERLOAD_CONTAINS,
-        (lhs, rhs) -> {
-          TypeEnum lhsType = lhs.type().typeEnum();
-          if (lhsType != rhs.type().typeEnum()) {
-            return Err.noSuchOverload(lhs, OVERLOAD_CONTAINS, rhs);
-          }
-          if (lhsType == TypeEnum.String) {
-            String receiver = lhs.value().toString();
-            String param = rhs.value().toString();
-            return Types.boolOf(receiver.contains(param));
-          }
-          if (lhsType == TypeEnum.Bytes) {
-            byte[] receiver = (byte[]) lhs.value();
-            byte[] param = (byte[]) rhs.value();
-            return Types.boolOf(bytesContains(receiver, param));
-          }
-          return Err.noSuchOverload(lhs, OVERLOAD_CONTAINS, rhs);
+  private static CelFunctionBinding celContainsBytes() {
+    return CelFunctionBinding.from(
+        "contains_bytes",
+        ByteString.class,
+        ByteString.class,
+        (receiver, param) -> {
+          return bytesContains(receiver.toByteArray(), param.toByteArray());
         });
   }
 
@@ -264,200 +209,153 @@ final class CustomOverload {
   /**
    * Creates a custom binary function overload for the "isHostname" operation.
    *
-   * @return The {@link Overload} instance for the "isHostname" operation.
+   * @return The {@link CelFunctionBinding} instance for the "isHostname" operation.
    */
-  private static Overload celIsHostname() {
-    return Overload.unary(
-        OVERLOAD_IS_HOSTNAME,
-        value -> {
-          if (value.type().typeEnum() != TypeEnum.String) {
-            return Err.noSuchOverload(value, OVERLOAD_IS_HOSTNAME, null);
-          }
-          String host = (String) value.value();
-          return Types.boolOf(isHostname(host));
-        });
+  private static CelFunctionBinding celIsHostname() {
+    return CelFunctionBinding.from("is_hostname", String.class, CustomOverload::isHostname);
   }
 
   /**
    * Creates a custom unary function overload for the "isEmail" operation.
    *
-   * @return The {@link Overload} instance for the "isEmail" operation.
+   * @return The {@link CelFunctionBinding} instance for the "isEmail" operation.
    */
-  private static Overload celIsEmail() {
-    return Overload.unary(
-        OVERLOAD_IS_EMAIL,
-        value -> {
-          if (value.type().typeEnum() != TypeEnum.String) {
-            return Err.noSuchOverload(value, OVERLOAD_IS_EMAIL, null);
-          }
-          String addr = (String) value.value();
-          return Types.boolOf(isEmail(addr));
-        });
+  private static CelFunctionBinding celIsEmail() {
+    return CelFunctionBinding.from("is_email", String.class, CustomOverload::isEmail);
   }
 
   /**
    * Creates a custom function overload for the "isIp" operation.
    *
-   * @return The {@link Overload} instance for the "isIp" operation.
+   * @return The {@link CelFunctionBinding} instance for the "isIp" operation.
    */
-  private static Overload celIsIp() {
-    return Overload.overload(
-        OVERLOAD_IS_IP,
-        null,
-        value -> {
-          if (value.type().typeEnum() != TypeEnum.String) {
-            return Err.noSuchOverload(value, OVERLOAD_IS_IP, null);
-          }
-          String addr = (String) value.value();
-          return Types.boolOf(isIp(addr, 0L));
-        },
-        (lhs, rhs) -> {
-          if (lhs.type().typeEnum() != TypeEnum.String || rhs.type().typeEnum() != TypeEnum.Int) {
-            return Err.noSuchOverload(lhs, OVERLOAD_IS_IP, rhs);
-          }
-          String address = (String) lhs.value();
-          return Types.boolOf(isIp(address, rhs.intValue()));
-        },
-        null);
+  private static CelFunctionBinding celIsIpUnary() {
+    return CelFunctionBinding.from("is_ip_unary", String.class, value -> isIp(value, 0L));
+  }
+
+  /**
+   * Creates a custom function overload for the "isIp" operation that also accepts a port.
+   *
+   * @return The {@link CelFunctionBinding} instance for the "isIp" operation.
+   */
+  private static CelFunctionBinding celIsIp() {
+    return CelFunctionBinding.from("is_ip", String.class, Long.class, CustomOverload::isIp);
   }
 
   /**
    * Creates a custom function overload for the "isIpPrefix" operation.
    *
-   * @return The {@link Overload} instance for the "isIpPrefix" operation.
+   * @return The {@link CelFunctionBinding} instance for the "isIpPrefix" operation.
    */
-  private static Overload celIsIpPrefix() {
-    return Overload.overload(
-        OVERLOAD_IS_IP_PREFIX,
-        null,
-        value -> {
-          if (value.type().typeEnum() != TypeEnum.String
-              && value.type().typeEnum() != TypeEnum.Bool) {
-            return Err.noSuchOverload(value, OVERLOAD_IS_IP_PREFIX, null);
-          }
-          String prefix = (String) value.value();
-          return Types.boolOf(isIpPrefix(prefix, 0L, false));
-        },
-        (lhs, rhs) -> {
-          if (lhs.type().typeEnum() != TypeEnum.String
-              || (rhs.type().typeEnum() != TypeEnum.Int
-                  && rhs.type().typeEnum() != TypeEnum.Bool)) {
-            return Err.noSuchOverload(lhs, OVERLOAD_IS_IP_PREFIX, rhs);
-          }
-          String prefix = (String) lhs.value();
-          if (rhs.type().typeEnum() == TypeEnum.Int) {
-            return Types.boolOf(isIpPrefix(prefix, rhs.intValue(), false));
-          }
-          return Types.boolOf(isIpPrefix(prefix, 0L, rhs.booleanValue()));
-        },
-        (values) -> {
-          if (values.length != 3
-              || values[0].type().typeEnum() != TypeEnum.String
-              || values[1].type().typeEnum() != TypeEnum.Int
-              || values[2].type().typeEnum() != TypeEnum.Bool) {
-            return Err.noSuchOverload(values[0], OVERLOAD_IS_IP_PREFIX, "", values);
-          }
-          String prefix = (String) values[0].value();
-          return Types.boolOf(isIpPrefix(prefix, values[1].intValue(), values[2].booleanValue()));
+  private static CelFunctionBinding celIsIpPrefix() {
+    return CelFunctionBinding.from(
+        "is_ip_prefix", String.class, prefix -> isIpPrefix(prefix, 0L, false));
+  }
+
+  /**
+   * Creates a custom function overload for the "isIpPrefix" operation that accepts a version.
+   *
+   * @return The {@link CelFunctionBinding} instance for the "isIpPrefix" operation.
+   */
+  private static CelFunctionBinding celIsIpPrefixInt() {
+    return CelFunctionBinding.from(
+        "is_ip_prefix_int",
+        String.class,
+        Long.class,
+        (prefix, version) -> {
+          return isIpPrefix(prefix, version, false);
         });
+  }
+
+  /**
+   * Creates a custom function overload for the "isIpPrefix" operation that accepts a strict flag.
+   *
+   * @return The {@link CelFunctionBinding} instance for the "isIpPrefix" operation.
+   */
+  private static CelFunctionBinding celIsIpPrefixBool() {
+    return CelFunctionBinding.from(
+        "is_ip_prefix_bool",
+        String.class,
+        Boolean.class,
+        (prefix, strict) -> {
+          return isIpPrefix(prefix, 0L, strict);
+        });
+  }
+
+  /**
+   * Creates a custom function overload for the "isIpPrefix" operation that accepts both version and
+   * strict flag.
+   *
+   * @return The {@link CelFunctionBinding} instance for the "isIpPrefix" operation.
+   */
+  private static CelFunctionBinding celIsIpPrefixIntBool() {
+    return CelFunctionBinding.from(
+        "is_ip_prefix_int_bool",
+        Arrays.asList(String.class, Long.class, Boolean.class),
+        (args) -> isIpPrefix((String) args[0], (Long) args[1], (Boolean) args[2]));
   }
 
   /**
    * Creates a custom unary function overload for the "isUri" operation.
    *
-   * @return The {@link Overload} instance for the "isUri" operation.
+   * @return The {@link CelFunctionBinding} instance for the "isUri" operation.
    */
-  private static Overload celIsUri() {
-    return Overload.unary(
-        OVERLOAD_IS_URI,
-        value -> {
-          if (value.type().typeEnum() != TypeEnum.String) {
-            return Err.noSuchOverload(value, OVERLOAD_IS_URI, null);
-          }
-          String addr = (String) value.value();
-          return Types.boolOf(isUri(addr));
-        });
+  private static CelFunctionBinding celIsUri() {
+    return CelFunctionBinding.from("is_uri", String.class, CustomOverload::isUri);
   }
 
   /**
    * Creates a custom unary function overload for the "isUriRef" operation.
    *
-   * @return The {@link Overload} instance for the "isUriRef" operation.
+   * @return The {@link CelFunctionBinding} instance for the "isUriRef" operation.
    */
-  private static Overload celIsUriRef() {
-    return Overload.unary(
-        OVERLOAD_IS_URI_REF,
-        value -> {
-          if (value.type().typeEnum() != TypeEnum.String) {
-            return Err.noSuchOverload(value, OVERLOAD_IS_URI_REF, null);
-          }
-          String addr = (String) value.value();
-          return Types.boolOf(isUriRef(addr));
-        });
+  private static CelFunctionBinding celIsUriRef() {
+    return CelFunctionBinding.from("is_uri_ref", String.class, CustomOverload::isUriRef);
   }
 
   /**
    * Creates a custom unary function overload for the "isNan" operation.
    *
-   * @return The {@link Overload} instance for the "isNan" operation.
+   * @return The {@link CelFunctionBinding} instance for the "isNan" operation.
    */
-  private static Overload celIsNan() {
-    return Overload.unary(
-        OVERLOAD_IS_NAN,
-        value -> {
-          if (value.type().typeEnum() != TypeEnum.Double) {
-            return Err.noSuchOverload(value, OVERLOAD_IS_NAN, null);
-          }
-          Double doubleVal = (Double) value.value();
-          return Types.boolOf(doubleVal.isNaN());
-        });
+  private static CelFunctionBinding celIsNan() {
+    return CelFunctionBinding.from("is_nan", Double.class, value -> Double.isNaN(value));
   }
 
   /**
    * Creates a custom unary function overload for the "isInf" operation.
    *
-   * @return The {@link Overload} instance for the "isInf" operation.
+   * @return The {@link CelFunctionBinding} instance for the "isInf" operation.
    */
-  private static Overload celIsInf() {
-    return Overload.overload(
-        OVERLOAD_IS_INF,
-        null,
-        value -> {
-          if (value.type().typeEnum() != TypeEnum.Double) {
-            return Err.noSuchOverload(value, OVERLOAD_IS_INF, null);
-          }
-          Double doubleVal = (Double) value.value();
-          return Types.boolOf(doubleVal.isInfinite());
-        },
-        (lhs, rhs) -> {
-          if (lhs.type().typeEnum() != TypeEnum.Double || rhs.type().typeEnum() != TypeEnum.Int) {
-            return Err.noSuchOverload(lhs, OVERLOAD_IS_INF, rhs);
-          }
-          Double value = (Double) lhs.value();
-          long sign = rhs.intValue();
-          if (sign == 0) {
-            return Types.boolOf(value.isInfinite());
-          }
-          double expectedValue = (sign > 0) ? Double.POSITIVE_INFINITY : Double.NEGATIVE_INFINITY;
-          return Types.boolOf(value == expectedValue);
-        },
-        null);
+  private static CelFunctionBinding celIsInfUnary() {
+    return CelFunctionBinding.from("is_inf_unary", Double.class, value -> value.isInfinite());
   }
 
-  private static Overload celIsHostAndPort() {
-    return Overload.overload(
-        OVERLOAD_IS_HOST_AND_PORT,
-        null,
-        null,
-        (lhs, rhs) -> {
-          if (lhs.type().typeEnum() != TypeEnum.String || rhs.type().typeEnum() != TypeEnum.Bool) {
-            return Err.noSuchOverload(lhs, OVERLOAD_IS_HOST_AND_PORT, rhs);
+  /**
+   * Creates a custom unary function overload for the "isInf" operation with sign option.
+   *
+   * @return The {@link CelFunctionBinding} instance for the "isInf" operation.
+   */
+  private static CelFunctionBinding celIsInfBinary() {
+    return CelFunctionBinding.from(
+        "is_inf_binary",
+        Double.class,
+        Long.class,
+        (value, sign) -> {
+          if (sign == 0) {
+            return value.isInfinite();
           }
-          String value = (String) lhs.value();
-          boolean portRequired = rhs.booleanValue();
-          return Types.boolOf(isHostAndPort(value, portRequired));
-        },
-        null);
+          double expectedValue = (sign > 0) ? Double.POSITIVE_INFINITY : Double.NEGATIVE_INFINITY;
+          return value == expectedValue;
+        });
+  }
+
+  private static CelFunctionBinding celIsHostAndPort() {
+    return CelFunctionBinding.from(
+        "string_bool_is_host_and_port_bool",
+        String.class,
+        Boolean.class,
+        CustomOverload::isHostAndPort);
   }
 
   /**
@@ -534,38 +432,23 @@ final class CustomOverload {
 
   /**
    * Determines if the input list contains unique values. If the list contains duplicate values, it
-   * returns {@link BoolT#False}. If the list contains unique values, it returns {@link BoolT#True}.
+   * returns {@code false}. If the list contains unique values, it returns {@code true}.
    *
    * @param list The input list to check for uniqueness.
-   * @return {@link BoolT#True} if the list contains unique scalar values, {@link BoolT#False}
-   *     otherwise.
+   * @return {@code true} if the list contains unique scalar values, {@code false} otherwise.
    */
-  private static Val uniqueList(Lister list) {
-    long size = list.size().intValue();
+  private static boolean uniqueList(List<?> list) throws CelEvaluationException {
+    long size = list.size();
     if (size == 0) {
-      return BoolT.True;
+      return true;
     }
-    Set<Val> exist = new HashSet<>((int) size);
-    Val firstVal = list.get(IntT.intOf(0));
-    switch (firstVal.type().typeEnum()) {
-      case Bool:
-      case Int:
-      case Uint:
-      case Double:
-      case String:
-      case Bytes:
-        break;
-      default:
-        return Err.noSuchOverload(list, OVERLOAD_UNIQUE, null);
-    }
-    exist.add(firstVal);
-    for (int i = 1; i < size; i++) {
-      Val val = list.get(IntT.intOf(i));
+    Set<Object> exist = new HashSet<>((int) size);
+    for (Object val : list) {
       if (!exist.add(val)) {
-        return BoolT.False;
+        return false;
       }
     }
-    return BoolT.True;
+    return true;
   }
 
   /**
@@ -616,7 +499,8 @@ final class CustomOverload {
     for (String part : parts) {
       allDigits = true;
 
-      // if part is empty, longer than 63 chars, or starts/ends with '-', it is invalid
+      // if part is empty, longer than 63 chars, or starts/ends with '-', it is
+      // invalid
       int len = part.length();
       if (len == 0 || len > 63 || part.startsWith("-") || part.endsWith("-")) {
         return false;

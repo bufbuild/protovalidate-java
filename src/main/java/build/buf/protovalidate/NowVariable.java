@@ -14,41 +14,39 @@
 
 package build.buf.protovalidate;
 
+import com.google.protobuf.Timestamp;
+import dev.cel.runtime.CelVariableResolver;
 import java.time.Instant;
+import java.util.Optional;
 import org.jspecify.annotations.Nullable;
-import org.projectnessie.cel.common.types.TimestampT;
-import org.projectnessie.cel.interpreter.Activation;
-import org.projectnessie.cel.interpreter.ResolvedValue;
 
 /**
- * {@link NowVariable} implements {@link Activation}, providing a lazily produced timestamp for
- * accessing the variable `now` that's constant within an evaluation.
+ * {@link NowVariable} implements {@link CelVariableResolver}, providing a lazily produced timestamp
+ * for accessing the variable `now` that's constant within an evaluation.
  */
-class NowVariable implements Activation {
+class NowVariable implements CelVariableResolver {
   /** The name of the 'now' variable. */
-  private static final String NOW_NAME = "now";
+  public static final String NOW_NAME = "now";
 
   /** The resolved value of the 'now' variable. */
-  @Nullable private ResolvedValue resolvedValue;
+  @Nullable private Timestamp now;
 
   /** Creates an instance of a "now" variable. */
   public NowVariable() {}
 
   @Override
-  public ResolvedValue resolveName(String name) {
+  public Optional<Object> find(String name) {
     if (!name.equals(NOW_NAME)) {
-      return ResolvedValue.ABSENT;
-    } else if (resolvedValue != null) {
-      return resolvedValue;
+      return Optional.empty();
     }
-    Instant instant = Instant.now(); // UTC.
-    TimestampT value = TimestampT.timestampOf(instant);
-    resolvedValue = ResolvedValue.resolvedValue(value);
-    return resolvedValue;
-  }
-
-  @Override
-  public Activation parent() {
-    return Activation.emptyActivation();
+    if (this.now == null) {
+      Instant nowInstant = Instant.now();
+      now =
+          Timestamp.newBuilder()
+              .setSeconds(nowInstant.getEpochSecond())
+              .setNanos(nowInstant.getNano())
+              .build();
+    }
+    return Optional.of(this.now);
   }
 }

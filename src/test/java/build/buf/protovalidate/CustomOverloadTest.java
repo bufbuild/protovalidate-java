@@ -17,23 +17,28 @@ package build.buf.protovalidate;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+import dev.cel.bundle.Cel;
+import dev.cel.bundle.CelFactory;
+import dev.cel.common.CelAbstractSyntaxTree;
+import dev.cel.common.CelValidationException;
+import dev.cel.common.CelValidationResult;
+import dev.cel.runtime.CelEvaluationException;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.Map;
 import org.junit.jupiter.api.Test;
-import org.projectnessie.cel.Ast;
-import org.projectnessie.cel.Env;
-import org.projectnessie.cel.Library;
-import org.projectnessie.cel.Program;
-import org.projectnessie.cel.common.types.Err;
-import org.projectnessie.cel.common.types.ref.Val;
-import org.projectnessie.cel.interpreter.Activation;
 
 public class CustomOverloadTest {
 
-  private final Env env = Env.newEnv(Library.Lib(new ValidateLibrary()));
+  private final ValidateLibrary validateLibrary = new ValidateLibrary();
+  private final Cel cel =
+      CelFactory.standardCelBuilder()
+          .addCompilerLibraries(validateLibrary)
+          .addRuntimeLibraries(validateLibrary)
+          .build();
 
   @Test
-  public void testIsInf() {
+  public void testIsInf() throws Exception {
     assertThat(evalToBool("0.0.isInf()")).isFalse();
     assertThat(evalToBool("(1.0/0.0).isInf()")).isTrue();
     assertThat(evalToBool("(1.0/0.0).isInf(0)")).isTrue();
@@ -48,15 +53,12 @@ public class CustomOverloadTest {
   @Test
   public void testIsInfUnsupported() {
     for (String testCase : Arrays.asList("'abc'.isInf()", "0.0.isInf('abc')")) {
-      Val val = eval(testCase).getVal();
-      assertThat(Err.isError(val)).isTrue();
-      assertThatThrownBy(() -> val.convertToNative(Exception.class))
-          .isInstanceOf(UnsupportedOperationException.class);
+      assertThatThrownBy(() -> evalToBool(testCase)).isInstanceOf(CelValidationException.class);
     }
   }
 
   @Test
-  public void testIsNan() {
+  public void testIsNan() throws Exception {
     assertThat(evalToBool("0.0.isNan()")).isFalse();
     assertThat(evalToBool("(0.0/0.0).isNan()")).isTrue();
     assertThat(evalToBool("(1.0/0.0).isNan()")).isFalse();
@@ -65,15 +67,12 @@ public class CustomOverloadTest {
   @Test
   public void testIsNanUnsupported() {
     for (String testCase : Collections.singletonList("'foo'.isNan()")) {
-      Val val = eval(testCase).getVal();
-      assertThat(Err.isError(val)).isTrue();
-      assertThatThrownBy(() -> val.convertToNative(Exception.class))
-          .isInstanceOf(UnsupportedOperationException.class);
+      assertThatThrownBy(() -> evalToBool(testCase)).isInstanceOf(CelValidationException.class);
     }
   }
 
   @Test
-  public void testUnique() {
+  public void testUnique() throws Exception {
     assertThat(evalToBool("[].unique()")).isTrue();
     assertThat(evalToBool("[true].unique()")).isTrue();
     assertThat(evalToBool("[true, false].unique()")).isTrue();
@@ -97,16 +96,12 @@ public class CustomOverloadTest {
   @Test
   public void testUniqueUnsupported() {
     for (String testCase : Collections.singletonList("1.unique()")) {
-      Program.EvalResult result = eval(testCase);
-      Val val = result.getVal();
-      assertThat(Err.isError(val)).isTrue();
-      assertThatThrownBy(() -> val.convertToNative(Exception.class))
-          .isInstanceOf(UnsupportedOperationException.class);
+      assertThatThrownBy(() -> evalToBool(testCase)).isInstanceOf(CelValidationException.class);
     }
   }
 
   @Test
-  public void testIsIpPrefix() {
+  public void testIsIpPrefix() throws Exception {
     assertThat(evalToBool("'1.2.3.0/24'.isIpPrefix()")).isTrue();
     assertThat(evalToBool("'1.2.3.4/24'.isIpPrefix()")).isTrue();
     assertThat(evalToBool("'1.2.3.0/24'.isIpPrefix(true)")).isTrue();
@@ -141,22 +136,18 @@ public class CustomOverloadTest {
             "'1.2.3.0/24'.isIpPrefix('foo')",
             "'1.2.3.0/24'.isIpPrefix(4,'foo')",
             "'1.2.3.0/24'.isIpPrefix('foo',true)")) {
-      Program.EvalResult result = eval(testCase);
-      Val val = result.getVal();
-      assertThat(Err.isError(val)).isTrue();
-      assertThatThrownBy(() -> val.convertToNative(Exception.class))
-          .isInstanceOf(UnsupportedOperationException.class);
+      assertThatThrownBy(() -> eval(testCase)).isInstanceOf(CelValidationException.class);
     }
   }
 
   @Test
-  public void testIsHostname() {
+  public void testIsHostname() throws Exception {
     assertThat(evalToBool("'example.com'.isHostname()")).isTrue();
     assertThat(evalToBool("'example.123'.isHostname()")).isFalse();
   }
 
   @Test
-  public void testIsEmail() {
+  public void testIsEmail() throws Exception {
     assertThat(evalToBool("'foo@example.com'.isEmail()")).isTrue();
     assertThat(evalToBool("'<foo@example.com>'.isEmail()")).isFalse();
     assertThat(evalToBool("'  foo@example.com'.isEmail()")).isFalse();
@@ -164,7 +155,7 @@ public class CustomOverloadTest {
   }
 
   @Test
-  public void testBytesContains() {
+  public void testBytesContains() throws Exception {
     assertThat(evalToBool("bytes('12345').contains(bytes(''))")).isTrue();
     assertThat(evalToBool("bytes('12345').contains(bytes('1'))")).isTrue();
     assertThat(evalToBool("bytes('12345').contains(bytes('5'))")).isTrue();
@@ -179,19 +170,18 @@ public class CustomOverloadTest {
     assertThat(evalToBool("bytes('12345').contains(bytes('123456'))")).isFalse();
   }
 
-  private Program.EvalResult eval(String source) {
-    return eval(source, Activation.emptyActivation());
+  private Object eval(String source) throws Exception {
+    return eval(source, Collections.emptyMap());
   }
 
-  private Program.EvalResult eval(String source, Object vars) {
-    Env.AstIssuesTuple parsed = env.parse(source);
-    assertThat(parsed.hasIssues()).isFalse();
-    Ast ast = parsed.getAst();
-    return env.program(ast).eval(vars);
+  private Object eval(String source, Map<String, ?> vars)
+      throws CelEvaluationException, CelValidationException {
+    CelValidationResult parsed = cel.compile(source);
+    CelAbstractSyntaxTree ast = parsed.getAst();
+    return cel.createProgram(ast).eval(vars);
   }
 
-  private boolean evalToBool(String source) {
-    Program.EvalResult result = eval(source);
-    return result.getVal().booleanValue();
+  private boolean evalToBool(String source) throws Exception {
+    return (Boolean) eval(source);
   }
 }
