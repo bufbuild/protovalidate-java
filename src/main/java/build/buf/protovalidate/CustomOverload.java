@@ -21,6 +21,9 @@ import dev.cel.common.types.CelType;
 import dev.cel.common.types.SimpleType;
 import dev.cel.runtime.CelEvaluationException;
 import dev.cel.runtime.CelRuntime.CelFunctionBinding;
+import java.nio.charset.CharsetDecoder;
+import java.nio.charset.CodingErrorAction;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -47,6 +50,7 @@ final class CustomOverload {
     ArrayList<CelFunctionBinding> bindings = new ArrayList<>();
     bindings.addAll(
         Arrays.asList(
+            celBytesToString(),
             celGetField(),
             celFormat(),
             celStartsWithBytes(),
@@ -68,6 +72,26 @@ final class CustomOverload {
             celIsHostAndPort()));
     bindings.addAll(celUnique());
     return Collections.unmodifiableList(bindings);
+  }
+
+  /**
+   * This implementes that standard {@code bytes_to_string} function. We override it because the CEL
+   * library doesn't validate that the bytes are valid utf-8.
+   */
+  private static CelFunctionBinding celBytesToString() {
+    return CelFunctionBinding.from(
+        "bytes_to_string",
+        ByteString.class,
+        v -> {
+          CharsetDecoder dec = StandardCharsets.UTF_8.newDecoder();
+          dec.onMalformedInput(CodingErrorAction.REPORT);
+          dec.onUnmappableCharacter(CodingErrorAction.REPORT);
+          try {
+            return dec.decode(v.asReadOnlyByteBuffer()).toString();
+          } catch (Exception e) {
+            throw new CelEvaluationException("invalid UTF-8 in bytes, cannot convert to string", e);
+          }
+        });
   }
 
   /**
