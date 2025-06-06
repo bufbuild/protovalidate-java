@@ -15,20 +15,22 @@
 package build.buf.protovalidate;
 
 import build.buf.protovalidate.exceptions.CompilationException;
-import com.google.api.expr.v1alpha1.Type;
-import org.projectnessie.cel.Ast;
-import org.projectnessie.cel.Env;
+import dev.cel.common.CelAbstractSyntaxTree;
+import dev.cel.common.CelValidationException;
+import dev.cel.common.CelValidationResult;
+import dev.cel.common.types.CelKind;
+import dev.cel.compiler.CelCompiler;
 
-/** {@link AstExpression} is a compiled CEL {@link Ast}. */
+/** {@link AstExpression} is a compiled CEL {@link CelAbstractSyntaxTree}. */
 class AstExpression {
   /** The compiled CEL AST. */
-  public final Ast ast;
+  public final CelAbstractSyntaxTree ast;
 
   /** Contains the original expression from the proto file. */
   public final Expression source;
 
   /** Constructs a new {@link AstExpression}. */
-  private AstExpression(Ast ast, Expression source) {
+  private AstExpression(CelAbstractSyntaxTree ast, Expression source) {
     this.ast = ast;
     this.source = source;
   }
@@ -36,25 +38,32 @@ class AstExpression {
   /**
    * Compiles the given expression to a {@link AstExpression}.
    *
-   * @param env The CEL environment.
+   * @param cel The CEL compiler.
    * @param expr The expression to compile.
    * @return The compiled {@link AstExpression}.
    * @throws CompilationException if the expression compilation fails.
    */
-  public static AstExpression newAstExpression(Env env, Expression expr)
+  public static AstExpression newAstExpression(CelCompiler cel, Expression expr)
       throws CompilationException {
-    Env.AstIssuesTuple astIssuesTuple = env.compile(expr.expression);
-    if (astIssuesTuple.hasIssues()) {
+    CelValidationResult compileResult = cel.compile(expr.expression);
+    if (!compileResult.getAllIssues().isEmpty()) {
       throw new CompilationException(
-          "Failed to compile expression " + expr.id + ":\n" + astIssuesTuple.getIssues());
+          "Failed to compile expression " + expr.id + ":\n" + compileResult.getIssueString());
     }
-    Ast ast = astIssuesTuple.getAst();
-    Type outType = ast.getResultType();
-    if (outType.getPrimitive() != Type.PrimitiveType.BOOL
-        && outType.getPrimitive() != Type.PrimitiveType.STRING) {
+    CelAbstractSyntaxTree ast;
+    try {
+      ast = compileResult.getAst();
+    } catch (CelValidationException e) {
+      // This will not happen as we checked for issues, and it only throws when
+      // it has at least one issue of error severity.
+      throw new CompilationException(
+          "Failed to compile expression " + expr.id + ":\n" + compileResult.getIssueString());
+    }
+    CelKind outKind = ast.getResultType().kind();
+    if (outKind != CelKind.BOOL && outKind != CelKind.STRING) {
       throw new CompilationException(
           String.format(
-              "Expression outputs, wanted either bool or string: %s %s", expr.id, outType));
+              "Expression outputs, wanted either bool or string: %s %s", expr.id, outKind));
     }
     return new AstExpression(ast, expr);
   }

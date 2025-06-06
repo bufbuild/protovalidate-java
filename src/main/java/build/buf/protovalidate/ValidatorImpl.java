@@ -18,10 +18,10 @@ import build.buf.protovalidate.exceptions.CompilationException;
 import build.buf.protovalidate.exceptions.ValidationException;
 import com.google.protobuf.Descriptors.Descriptor;
 import com.google.protobuf.Message;
+import dev.cel.bundle.Cel;
+import dev.cel.bundle.CelFactory;
 import java.util.ArrayList;
 import java.util.List;
-import org.projectnessie.cel.Env;
-import org.projectnessie.cel.Library;
 
 class ValidatorImpl implements Validator {
   /** evaluatorBuilder is the builder used to construct the evaluator for a given message. */
@@ -34,15 +34,25 @@ class ValidatorImpl implements Validator {
   private final boolean failFast;
 
   ValidatorImpl(Config config) {
-    Env env = Env.newEnv(Library.Lib(new ValidateLibrary()));
-    this.evaluatorBuilder = new EvaluatorBuilder(env, config);
+    ValidateLibrary validateLibrary = new ValidateLibrary();
+    Cel cel =
+        CelFactory.standardCelBuilder()
+            .addCompilerLibraries(validateLibrary)
+            .addRuntimeLibraries(validateLibrary)
+            .build();
+    this.evaluatorBuilder = new EvaluatorBuilder(cel, config);
     this.failFast = config.isFailFast();
   }
 
   ValidatorImpl(Config config, List<Descriptor> descriptors, boolean disableLazy)
       throws CompilationException {
-    Env env = Env.newEnv(Library.Lib(new ValidateLibrary()));
-    this.evaluatorBuilder = new EvaluatorBuilder(env, config, descriptors, disableLazy);
+    ValidateLibrary validateLibrary = new ValidateLibrary();
+    Cel cel =
+        CelFactory.standardCelBuilder()
+            .addCompilerLibraries(validateLibrary)
+            .addRuntimeLibraries(validateLibrary)
+            .build();
+    this.evaluatorBuilder = new EvaluatorBuilder(cel, config, descriptors, disableLazy);
     this.failFast = config.isFailFast();
   }
 

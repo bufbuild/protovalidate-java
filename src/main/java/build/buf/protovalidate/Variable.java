@@ -14,15 +14,15 @@
 
 package build.buf.protovalidate;
 
+import dev.cel.runtime.CelVariableResolver;
+import java.util.Optional;
 import org.jspecify.annotations.Nullable;
-import org.projectnessie.cel.interpreter.Activation;
-import org.projectnessie.cel.interpreter.ResolvedValue;
 
 /**
- * {@link Variable} implements {@link org.projectnessie.cel.interpreter.Activation}, providing a
- * lightweight named variable to cel.Program executions.
+ * {@link Variable} implements {@link CelVariableResolver}, providing a lightweight named variable
+ * to cel.Program executions.
  */
-class Variable implements Activation {
+class Variable implements CelVariableResolver {
   /** The {@value} variable in CEL. */
   public static final String THIS_NAME = "this";
 
@@ -32,8 +32,8 @@ class Variable implements Activation {
   /** The {@value} variable in CEL. */
   public static final String RULE_NAME = "rule";
 
-  /** The parent activation */
-  private final Activation next;
+  /** The {@value} variable in CEL. */
+  public static final String NOW_NAME = "now";
 
   /** The variable's name */
   private final String name;
@@ -42,8 +42,7 @@ class Variable implements Activation {
   @Nullable private final Object val;
 
   /** Creates a variable with the given name and value. */
-  private Variable(Activation activation, String name, @Nullable Object val) {
-    this.next = activation;
+  private Variable(String name, @Nullable Object val) {
     this.name = name;
     this.val = val;
   }
@@ -54,8 +53,9 @@ class Variable implements Activation {
    * @param val the value.
    * @return {@link Variable}.
    */
-  public static Variable newThisVariable(@Nullable Object val) {
-    return new Variable(new NowVariable(), THIS_NAME, val);
+  public static CelVariableResolver newThisVariable(@Nullable Object val) {
+    return CelVariableResolver.hierarchicalVariableResolver(
+        new NowVariable(), new Variable(THIS_NAME, val));
   }
 
   /**
@@ -64,8 +64,8 @@ class Variable implements Activation {
    * @param val the value.
    * @return {@link Variable}.
    */
-  public static Variable newRulesVariable(Object val) {
-    return new Variable(Activation.emptyActivation(), RULES_NAME, val);
+  public static CelVariableResolver newRulesVariable(Object val) {
+    return new Variable(RULES_NAME, val);
   }
 
   /**
@@ -75,22 +75,16 @@ class Variable implements Activation {
    * @param val the value of the "rule" variable.
    * @return {@link Variable}.
    */
-  public static Variable newRuleVariable(Object rules, Object val) {
-    return new Variable(newRulesVariable(rules), RULE_NAME, val);
+  public static CelVariableResolver newRuleVariable(Object rules, Object val) {
+    return CelVariableResolver.hierarchicalVariableResolver(
+        newRulesVariable(rules), new Variable(RULE_NAME, val));
   }
 
   @Override
-  public ResolvedValue resolveName(String name) {
-    if (this.name.equals(name)) {
-      return ResolvedValue.resolvedValue(val);
-    } else if (next != null) {
-      return next.resolveName(name);
+  public Optional<Object> find(String name) {
+    if (!this.name.equals(name) || val == null) {
+      return Optional.empty();
     }
-    return ResolvedValue.ABSENT;
-  }
-
-  @Override
-  public Activation parent() {
-    return next;
+    return Optional.of(val);
   }
 }

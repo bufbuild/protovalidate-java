@@ -108,8 +108,7 @@ public class ValidatorConstructionTest {
     FieldExpressionMapInt32 msg = FieldExpressionMapInt32.newBuilder().putAllVal(testMap).build();
 
     List<Descriptor> seedDescriptors = new ArrayList<Descriptor>();
-    FieldExpressionMapInt32 reg = FieldExpressionMapInt32.newBuilder().build();
-    seedDescriptors.add(reg.getDescriptorForType());
+    seedDescriptors.add(msg.getDescriptorForType());
 
     Config cfg = Config.newBuilder().setFailFast(true).build();
     try {

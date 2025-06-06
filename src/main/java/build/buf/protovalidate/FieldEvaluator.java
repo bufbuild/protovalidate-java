@@ -135,7 +135,8 @@ class FieldEvaluator implements Evaluator {
       return RuleViolation.NO_VIOLATIONS;
     }
     Object fieldValue = message.getField(descriptor);
-    if (this.shouldIgnoreDefault() && Objects.equals(zero, fieldValue)) {
+    if (this.shouldIgnoreDefault()
+        && Objects.equals(zero, ProtoAdapter.toCel(descriptor, fieldValue))) {
       return RuleViolation.NO_VIOLATIONS;
     }
     return valueEvaluator.evaluate(new ObjectValue(descriptor, fieldValue), failFast);

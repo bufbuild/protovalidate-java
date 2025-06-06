@@ -14,43 +14,46 @@
 
 package build.buf.protovalidate;
 
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-import org.projectnessie.cel.EnvOption;
-import org.projectnessie.cel.EvalOption;
-import org.projectnessie.cel.Library;
-import org.projectnessie.cel.ProgramOption;
+import dev.cel.checker.CelCheckerBuilder;
+import dev.cel.common.CelVarDecl;
+import dev.cel.common.types.SimpleType;
+import dev.cel.compiler.CelCompilerLibrary;
+import dev.cel.parser.CelParserBuilder;
+import dev.cel.parser.CelStandardMacro;
+import dev.cel.runtime.CelRuntimeBuilder;
+import dev.cel.runtime.CelRuntimeLibrary;
 
 /**
- * Custom {@link Library} for CEL. Provides all the custom extension function definitions and
- * overloads.
+ * Custom {@link CelCompilerLibrary} and {@link CelRuntimeLibrary}. Provides all the custom
+ * extension function definitions and overloads.
  */
-class ValidateLibrary implements Library {
+class ValidateLibrary implements CelCompilerLibrary, CelRuntimeLibrary {
 
   /** Creates a ValidateLibrary with all custom declarations and overloads. */
   public ValidateLibrary() {}
 
-  /**
-   * Returns the compile options for the CEL environment.
-   *
-   * @return the compile options.
-   */
   @Override
-  public List<EnvOption> getCompileOptions() {
-    return Collections.singletonList(EnvOption.declarations(CustomDeclarations.create()));
+  public void setParserOptions(CelParserBuilder parserBuilder) {
+    parserBuilder.setStandardMacros(
+        CelStandardMacro.ALL,
+        CelStandardMacro.EXISTS,
+        CelStandardMacro.EXISTS_ONE,
+        CelStandardMacro.FILTER,
+        CelStandardMacro.HAS,
+        CelStandardMacro.MAP,
+        CelStandardMacro.MAP_FILTER);
   }
 
-  /**
-   * Returns the program options for the CEL program.
-   *
-   * @return the program options.
-   */
   @Override
-  public List<ProgramOption> getProgramOptions() {
-    return Arrays.asList(
-        ProgramOption.evalOptions(EvalOption.OptOptimize),
-        ProgramOption.globals(new NowVariable()),
-        ProgramOption.functions(CustomOverload.create()));
+  public void setCheckerOptions(CelCheckerBuilder checkerBuilder) {
+    checkerBuilder
+        .addVarDeclarations(
+            CelVarDecl.newVarDeclaration(NowVariable.NOW_NAME, SimpleType.TIMESTAMP))
+        .addFunctionDeclarations(CustomDeclarations.create());
+  }
+
+  @Override
+  public void setRuntimeOptions(CelRuntimeBuilder runtimeBuilder) {
+    runtimeBuilder.addFunctionBindings(CustomOverload.create());
   }
 }

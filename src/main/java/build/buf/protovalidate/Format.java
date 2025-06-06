@@ -16,38 +16,38 @@ package build.buf.protovalidate;
 
 import static java.time.format.DateTimeFormatter.ISO_INSTANT;
 
+import com.google.common.primitives.UnsignedLong;
+import com.google.protobuf.ByteString;
 import com.google.protobuf.Duration;
+import com.google.protobuf.NullValue;
 import com.google.protobuf.Timestamp;
+import dev.cel.common.types.TypeType;
+import dev.cel.runtime.CelEvaluationException;
 import java.math.BigInteger;
 import java.nio.charset.StandardCharsets;
 import java.text.DecimalFormat;
 import java.time.Instant;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Optional;
 import java.util.SortedMap;
 import java.util.TreeMap;
 import java.util.stream.Collectors;
-import org.projectnessie.cel.common.types.Err.ErrException;
-import org.projectnessie.cel.common.types.IntT;
-import org.projectnessie.cel.common.types.IteratorT;
-import org.projectnessie.cel.common.types.ListT;
-import org.projectnessie.cel.common.types.MapT;
-import org.projectnessie.cel.common.types.ref.TypeEnum;
-import org.projectnessie.cel.common.types.ref.Val;
 
 /** String formatter for CEL evaluation. */
 final class Format {
   /**
-   * Format the string with a {@link ListT}.
+   * Format the string with a {@link List}.
    *
    * @param fmtString the string to format.
    * @param list the arguments.
    * @return the formatted string.
-   * @throws ErrException If an error occurs formatting the string.
+   * @throws CelEvaluationException If an error occurs formatting the string.
    */
-  static String format(String fmtString, ListT list) {
+  static String format(String fmtString, List<?> list) throws CelEvaluationException {
     // StringBuilder to accumulate the formatted string
     StringBuilder builder = new StringBuilder();
     int index = 0;
@@ -67,7 +67,7 @@ final class Format {
         continue;
       }
       if (index >= fmtString.length()) {
-        throw new ErrException("format: expected format specifier");
+        throw new CelEvaluationException("format: expected format specifier");
       }
       if (fmtString.charAt(index) == '%') {
         // Escaped '%', append '%' and move to the next character
@@ -75,10 +75,10 @@ final class Format {
         index++;
         continue;
       }
-      if (argIndex >= list.size().intValue()) {
-        throw new ErrException("index " + argIndex + " out of range");
+      if (argIndex >= list.size()) {
+        throw new CelEvaluationException("index " + argIndex + " out of range");
       }
-      Val arg = list.get(IntT.intOf(argIndex++));
+      Object arg = list.get(argIndex++);
       c = fmtString.charAt(index++);
       int precision = 6;
       if (c == '.') {
@@ -90,7 +90,7 @@ final class Format {
           precision = precision * 10 + (fmtString.charAt(index++) - '0');
         }
         if (index >= fmtString.length()) {
-          throw new ErrException("format: expected format specifier");
+          throw new CelEvaluationException("format: expected format specifier");
         }
         c = fmtString.charAt(index++);
       }
@@ -122,7 +122,7 @@ final class Format {
           builder.append(formatOctal(arg));
           break;
         default:
-          throw new ErrException(
+          throw new CelEvaluationException(
               "could not parse formatting clause: unrecognized formatting clause \"" + c + "\"");
       }
     }
@@ -134,46 +134,43 @@ final class Format {
    *
    * @param val the value to format.
    */
-  private static String formatString(Val val) {
-    TypeEnum type = val.type().typeEnum();
-    switch (type) {
-      case Type:
-      case String:
-        return val.value().toString();
-      case Bool:
-        return Boolean.toString(val.booleanValue());
-      case Int:
-      case Uint:
-        Optional<String> str = validateNumber(val);
-        if (str.isPresent()) {
-          return str.get();
-        }
-        return val.value().toString();
-      case Bytes:
-        String byteStr = new String((byte[]) val.value(), StandardCharsets.UTF_8);
-        // Collapse any contiguous placeholders into one
-        return byteStr.replaceAll("\\ufffd+", "\ufffd");
-      case Double:
-        Optional<String> result = validateNumber(val);
-        if (result.isPresent()) {
-          return result.get();
-        }
-        return formatDecimal(val);
-      case Duration:
-        return formatDuration(val);
-      case Timestamp:
-        return formatTimestamp(val);
-      case List:
-        return formatList((ListT) val);
-      case Map:
-        return formatMap((MapT) val);
-      case Null:
-        return "null";
-      default:
-        throw new ErrException(
-            "error during formatting: string clause can only be used on strings, bools, bytes, ints, doubles, maps, lists, types, durations, and timestamps, was given "
-                + val.type());
+  private static String formatString(Object val) throws CelEvaluationException {
+    if (val instanceof String) {
+      return (String) val;
+    } else if (val instanceof TypeType) {
+      return ((TypeType) val).containingTypeName();
+    } else if (val instanceof Boolean) {
+      return Boolean.toString((Boolean) val);
+    } else if (val instanceof Long || val instanceof UnsignedLong) {
+      Optional<String> str = validateNumber(val);
+      if (str.isPresent()) {
+        return str.get();
+      }
+      return val.toString();
+    } else if (val instanceof ByteString) {
+      String byteStr = ((ByteString) val).toStringUtf8();
+      // Collapse any contiguous placeholders into one
+      return byteStr.replaceAll("\\ufffd+", "\ufffd");
+    } else if (val instanceof Double) {
+      Optional<String> result = validateNumber(val);
+      if (result.isPresent()) {
+        return result.get();
+      }
+      return formatDecimal(val);
+    } else if (val instanceof Duration) {
+      return formatDuration((Duration) val);
+    } else if (val instanceof Timestamp) {
+      return formatTimestamp((Timestamp) val);
+    } else if (val instanceof List) {
+      return formatList((List<?>) val);
+    } else if (val instanceof Map) {
+      return formatMap((Map<?, ?>) val);
+    } else if (val == null || val instanceof NullValue) {
+      return "null";
     }
+    throw new CelEvaluationException(
+        "error during formatting: string clause can only be used on strings, bools, bytes, ints, doubles, maps, lists, types, durations, and timestamps, was given "
+            + val.getClass());
   }
 
   /**
@@ -181,15 +178,15 @@ final class Format {
    *
    * @param val the value to format.
    */
-  private static String formatList(ListT val) {
+  private static String formatList(List<?> val) throws CelEvaluationException {
     StringBuilder builder = new StringBuilder();
     builder.append('[');
 
-    IteratorT iter = val.iterator();
-    while (iter.hasNext().booleanValue()) {
-      Val v = iter.next();
+    Iterator<?> iter = val.iterator();
+    while (iter.hasNext()) {
+      Object v = iter.next();
       builder.append(formatString(v));
-      if (iter.hasNext().booleanValue()) {
+      if (iter.hasNext()) {
         builder.append(", ");
       }
     }
@@ -197,18 +194,14 @@ final class Format {
     return builder.toString();
   }
 
-  private static String formatMap(MapT val) {
+  private static String formatMap(Map<?, ?> val) throws CelEvaluationException {
     StringBuilder builder = new StringBuilder();
     builder.append('{');
 
     SortedMap<String, String> sorted = new TreeMap<>();
 
-    IteratorT iter = val.iterator();
-    while (iter.hasNext().booleanValue()) {
-      Val key = iter.next();
-      String mapKey = formatString(key);
-      String mapVal = formatString(val.find(key));
-      sorted.put(mapKey, mapVal);
+    for (Entry<?, ?> entry : val.entrySet()) {
+      sorted.put(formatString(entry.getKey()), formatString(entry.getValue()));
     }
 
     String result =
@@ -224,22 +217,19 @@ final class Format {
   /**
    * Formats a timestamp value.
    *
-   * @param val the value to format.
+   * @param timestamp the value to format.
    */
-  private static String formatTimestamp(Val val) {
-    Timestamp timestamp = val.convertToNative(Timestamp.class);
-    Instant instant = Instant.ofEpochSecond(timestamp.getSeconds(), timestamp.getNanos());
-    return ISO_INSTANT.format(instant);
+  private static String formatTimestamp(Timestamp timestamp) {
+    return ISO_INSTANT.format(Instant.ofEpochSecond(timestamp.getSeconds(), timestamp.getNanos()));
   }
 
   /**
    * Formats a duration value.
    *
-   * @param val the value to format.
+   * @param duration the value to format.
    */
-  private static String formatDuration(Val val) {
+  private static String formatDuration(Duration duration) {
     StringBuilder builder = new StringBuilder();
-    Duration duration = val.convertToNative(Duration.class);
 
     double totalSeconds = duration.getSeconds() + (duration.getNanos() / 1_000_000_000.0);
 
@@ -255,23 +245,24 @@ final class Format {
    *
    * @param val the value to format.
    */
-  private static String formatHex(Val val) {
-    TypeEnum type = val.type().typeEnum();
-    if (type == TypeEnum.Int || type == TypeEnum.Uint) {
-      return Long.toHexString(val.intValue());
-    } else if (type == TypeEnum.Bytes) {
+  private static String formatHex(Object val) throws CelEvaluationException {
+    if (val instanceof Long) {
+      return Long.toHexString((Long) val);
+    } else if (val instanceof UnsignedLong) {
+      return Long.toHexString(((UnsignedLong) val).longValue());
+    } else if (val instanceof ByteString) {
       StringBuilder hexString = new StringBuilder();
-      for (byte b : (byte[]) val.value()) {
+      for (byte b : (ByteString) val) {
         hexString.append(String.format("%02x", b));
       }
       return hexString.toString();
-    } else if (type == TypeEnum.String) {
-      String arg = val.value().toString();
+    } else if (val instanceof String) {
+      String arg = (String) val;
       return String.format("%x", new BigInteger(1, arg.getBytes(StandardCharsets.UTF_8)));
     } else {
-      throw new ErrException(
+      throw new CelEvaluationException(
           "error during formatting: only integers, byte buffers, and strings can be formatted as hex, was given "
-              + val.type());
+              + val.getClass());
     }
   }
 
@@ -280,65 +271,64 @@ final class Format {
    *
    * @param val the value to format.
    */
-  private static String formatDecimal(Val val) {
-    TypeEnum type = val.type().typeEnum();
-    if (type == TypeEnum.Int || type == TypeEnum.Uint || type == TypeEnum.Double) {
+  private static String formatDecimal(Object val) throws CelEvaluationException {
+    if (val instanceof Long || val instanceof UnsignedLong || val instanceof Double) {
       Optional<String> str = validateNumber(val);
       if (str.isPresent()) {
         return str.get();
       }
       DecimalFormat formatter = new DecimalFormat("0.#########");
-      return formatter.format(val.value());
+      return formatter.format(val);
     } else {
-      throw new ErrException(
+      throw new CelEvaluationException(
           "error during formatting: decimal clause can only be used on integers, was given "
-              + val.type());
+              + val.getClass());
     }
   }
 
-  private static String formatOctal(Val val) {
-    TypeEnum type = val.type().typeEnum();
-    if (type == TypeEnum.Int || type == TypeEnum.Uint) {
-      return Long.toOctalString(Long.valueOf(val.intValue()));
+  private static String formatOctal(Object val) throws CelEvaluationException {
+    if (val instanceof Long) {
+      return Long.toOctalString((Long) val);
+    } else if (val instanceof UnsignedLong) {
+      return Long.toOctalString(((UnsignedLong) val).longValue());
     } else {
-      throw new ErrException(
+      throw new CelEvaluationException(
           "error during formatting: octal clause can only be used on integers, was given "
-              + val.type());
+              + val.getClass());
     }
   }
 
-  private static String formatBinary(Val val) {
-    TypeEnum type = val.type().typeEnum();
-    if (type == TypeEnum.Int || type == TypeEnum.Uint) {
-      return Long.toBinaryString(Long.valueOf(val.intValue()));
-    } else if (type == TypeEnum.Bool) {
-      return val.booleanValue() ? "1" : "0";
+  private static String formatBinary(Object val) throws CelEvaluationException {
+    if (val instanceof Long) {
+      return Long.toBinaryString((Long) val);
+    } else if (val instanceof UnsignedLong) {
+      return Long.toBinaryString(((UnsignedLong) val).longValue());
+    } else if (val instanceof Boolean) {
+      return Boolean.TRUE.equals(val) ? "1" : "0";
     } else {
-      throw new ErrException(
+      throw new CelEvaluationException(
           "error during formatting: only integers and bools can be formatted as binary, was given "
-              + val.type());
+              + val.getClass());
     }
   }
 
-  private static String formatExponential(Val val, int precision) {
-    TypeEnum type = val.type().typeEnum();
-    if (type == TypeEnum.Double) {
+  private static String formatExponential(Object val, int precision) throws CelEvaluationException {
+    if (val instanceof Double) {
       Optional<String> str = validateNumber(val);
       if (str.isPresent()) {
         return str.get();
       }
       String pattern = "%." + precision + "e";
-      return String.format(pattern, val.doubleValue());
+      return String.format(pattern, (Double) val);
     } else {
-      throw new ErrException(
+      throw new CelEvaluationException(
           "error during formatting: scientific clause can only be used on doubles, was given "
-              + val.type());
+              + val.getClass());
     }
   }
 
-  private static String formatFloat(Val val, int precision) {
-    TypeEnum type = val.type().typeEnum();
-    if (type == TypeEnum.Double) {
+  private static String formatFloat(Object val, int precision) throws CelEvaluationException {
+    if (val instanceof Double) {
       Optional<String> str = validateNumber(val);
       if (str.isPresent()) {
         return str.get();
@@ -352,19 +342,21 @@ final class Format {
         pattern.append("########");
       }
       DecimalFormat formatter = new DecimalFormat(pattern.toString());
-      return formatter.format(val.value());
+      return formatter.format(val);
     } else {
-      throw new ErrException(
+      throw new CelEvaluationException(
           "error during formatting: fixed-point clause can only be used on doubles, was given "
-              + val.type());
+              + val.getClass());
     }
   }
 
-  private static Optional<String> validateNumber(Val val) {
-    if (val.doubleValue() == Double.POSITIVE_INFINITY) {
-      return Optional.of("Infinity");
-    } else if (val.doubleValue() == Double.NEGATIVE_INFINITY) {
-      return Optional.of("-Infinity");
+  private static Optional<String> validateNumber(Object val) {
+    if (val instanceof Double) {
+      if ((Double) val == Double.POSITIVE_INFINITY) {
+        return Optional.of("Infinity");
+      } else if ((Double) val == Double.NEGATIVE_INFINITY) {
+        return Optional.of("-Infinity");
+      }
     }
     return Optional.empty();
   }

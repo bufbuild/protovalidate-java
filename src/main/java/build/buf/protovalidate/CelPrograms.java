@@ -15,6 +15,7 @@
 package build.buf.protovalidate;
 
 import build.buf.protovalidate.exceptions.ExecutionException;
+import dev.cel.runtime.CelVariableResolver;
 import java.util.ArrayList;
 import java.util.List;
 import org.jspecify.annotations.Nullable;
@@ -44,10 +45,10 @@ class CelPrograms implements Evaluator {
   @Override
   public List<RuleViolation.Builder> evaluate(Value val, boolean failFast)
       throws ExecutionException {
-    Variable activation = Variable.newThisVariable(val.value(Object.class));
+    CelVariableResolver bindings = Variable.newThisVariable(val.value(Object.class));
     List<RuleViolation.Builder> violations = new ArrayList<>();
     for (CompiledProgram program : programs) {
-      RuleViolation.Builder violation = program.eval(val, activation);
+      RuleViolation.Builder violation = program.eval(val, bindings);
       if (violation != null) {
         violations.add(violation);
         if (failFast) {

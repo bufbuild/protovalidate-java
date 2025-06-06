@@ -14,15 +14,20 @@
 
 package build.buf.protovalidate;
 
-import com.google.api.expr.v1alpha1.Decl;
+import static dev.cel.common.CelFunctionDecl.newFunctionDeclaration;
+import static dev.cel.common.CelOverloadDecl.newGlobalOverload;
+import static dev.cel.common.CelOverloadDecl.newMemberOverload;
+
+import dev.cel.common.CelFunctionDecl;
+import dev.cel.common.CelOverloadDecl;
+import dev.cel.common.types.CelType;
+import dev.cel.common.types.ListType;
+import dev.cel.common.types.SimpleType;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
-import org.projectnessie.cel.checker.Decls;
-import org.projectnessie.cel.checker.Types;
-import org.projectnessie.cel.common.types.TimestampT;
 
 /** Defines custom declaration functions. */
 final class CustomDeclarations {
@@ -32,141 +37,153 @@ final class CustomDeclarations {
    *
    * @return the list of function declarations.
    */
-  static List<Decl> create() {
-    List<Decl> decls = new ArrayList<>();
-
-    // Add 'now' variable declaration
-    decls.add(Decls.newVar("now", Decls.newObjectType(TimestampT.TimestampType.typeName())));
+  static List<CelFunctionDecl> create() {
+    List<CelFunctionDecl> decls = new ArrayList<>();
 
     // Add 'getField' function declaration
     decls.add(
-        Decls.newFunction(
+        newFunctionDeclaration(
             "getField",
-            Decls.newOverload(
-                "get_field_any_string", Arrays.asList(Decls.Any, Decls.String), Decls.Any)));
-
+            newGlobalOverload(
+                "get_field_any_string",
+                SimpleType.DYN,
+                Arrays.asList(SimpleType.ANY, SimpleType.STRING))));
     // Add 'isIp' function declaration
     decls.add(
-        Decls.newFunction(
+        newFunctionDeclaration(
             "isIp",
-            Decls.newInstanceOverload("is_ip", Arrays.asList(Decls.String, Decls.Int), Decls.Bool),
-            Decls.newInstanceOverload(
-                "is_ip_unary", Collections.singletonList(Decls.String), Decls.Bool)));
+            newMemberOverload(
+                "is_ip", SimpleType.BOOL, Arrays.asList(SimpleType.STRING, SimpleType.INT)),
+            newMemberOverload(
+                "is_ip_unary", SimpleType.BOOL, Collections.singletonList(SimpleType.STRING))));
 
     // Add 'isIpPrefix' function declaration
     decls.add(
-        Decls.newFunction(
+        newFunctionDeclaration(
             "isIpPrefix",
-            Decls.newInstanceOverload(
+            newMemberOverload(
                 "is_ip_prefix_int_bool",
-                Arrays.asList(Decls.String, Decls.Int, Decls.Bool),
-                Decls.Bool),
-            Decls.newInstanceOverload(
-                "is_ip_prefix_int", Arrays.asList(Decls.String, Decls.Int), Decls.Bool),
-            Decls.newInstanceOverload(
-                "is_ip_prefix_bool", Arrays.asList(Decls.String, Decls.Bool), Decls.Bool),
-            Decls.newInstanceOverload(
-                "is_ip_prefix", Collections.singletonList(Decls.String), Decls.Bool)));
+                SimpleType.BOOL,
+                Arrays.asList(SimpleType.STRING, SimpleType.INT, SimpleType.BOOL)),
+            newMemberOverload(
+                "is_ip_prefix_int",
+                SimpleType.BOOL,
+                Arrays.asList(SimpleType.STRING, SimpleType.INT)),
+            newMemberOverload(
+                "is_ip_prefix_bool",
+                SimpleType.BOOL,
+                Arrays.asList(SimpleType.STRING, SimpleType.BOOL)),
+            newMemberOverload(
+                "is_ip_prefix", SimpleType.BOOL, Collections.singletonList(SimpleType.STRING))));
 
     // Add 'isUriRef' function declaration
     decls.add(
-        Decls.newFunction(
+        newFunctionDeclaration(
             "isUriRef",
-            Decls.newInstanceOverload(
-                "is_uri_ref", Collections.singletonList(Decls.String), Decls.Bool)));
+            newMemberOverload(
+                "is_uri_ref", SimpleType.BOOL, Collections.singletonList(SimpleType.STRING))));
 
     // Add 'isUri' function declaration
     decls.add(
-        Decls.newFunction(
+        newFunctionDeclaration(
             "isUri",
-            Decls.newInstanceOverload(
-                "is_uri", Collections.singletonList(Decls.String), Decls.Bool)));
+            newMemberOverload(
+                "is_uri", SimpleType.BOOL, Collections.singletonList(SimpleType.STRING))));
 
     // Add 'isEmail' function declaration
     decls.add(
-        Decls.newFunction(
+        newFunctionDeclaration(
             "isEmail",
-            Decls.newInstanceOverload(
-                "is_email", Collections.singletonList(Decls.String), Decls.Bool)));
+            newMemberOverload(
+                "is_email", SimpleType.BOOL, Collections.singletonList(SimpleType.STRING))));
 
     // Add 'isHostname' function declaration
     decls.add(
-        Decls.newFunction(
+        newFunctionDeclaration(
             "isHostname",
-            Decls.newInstanceOverload(
-                "is_hostname", Collections.singletonList(Decls.String), Decls.Bool)));
+            newMemberOverload(
+                "is_hostname", SimpleType.BOOL, Collections.singletonList(SimpleType.STRING))));
 
     decls.add(
-        Decls.newFunction(
+        newFunctionDeclaration(
             "isHostAndPort",
-            Decls.newInstanceOverload(
+            newMemberOverload(
                 "string_bool_is_host_and_port_bool",
-                Arrays.asList(Decls.String, Decls.Bool),
-                Decls.Bool)));
+                SimpleType.BOOL,
+                Arrays.asList(SimpleType.STRING, SimpleType.BOOL))));
 
     // Add 'startsWith' function declaration
     decls.add(
-        Decls.newFunction(
+        newFunctionDeclaration(
             "startsWith",
-            Decls.newInstanceOverload(
-                "starts_with_bytes", Arrays.asList(Decls.Bytes, Decls.Bytes), Decls.Bool)));
+            newMemberOverload(
+                "starts_with_bytes",
+                SimpleType.BOOL,
+                Arrays.asList(SimpleType.BYTES, SimpleType.BYTES))));
 
     // Add 'endsWith' function declaration
     decls.add(
-        Decls.newFunction(
+        newFunctionDeclaration(
             "endsWith",
-            Decls.newInstanceOverload(
-                "ends_with_bytes", Arrays.asList(Decls.Bytes, Decls.Bytes), Decls.Bool)));
+            newMemberOverload(
+                "ends_with_bytes",
+                SimpleType.BOOL,
+                Arrays.asList(SimpleType.BYTES, SimpleType.BYTES))));
 
     // Add 'contains' function declaration
     decls.add(
-        Decls.newFunction(
+        newFunctionDeclaration(
             "contains",
-            Decls.newInstanceOverload(
-                "contains_bytes", Arrays.asList(Decls.Bytes, Decls.Bytes), Decls.Bool)));
+            newMemberOverload(
+                "contains_bytes",
+                SimpleType.BOOL,
+                Arrays.asList(SimpleType.BYTES, SimpleType.BYTES))));
 
     // Add 'isNan' function declaration
     decls.add(
-        Decls.newFunction(
+        newFunctionDeclaration(
             "isNan",
-            Decls.newInstanceOverload(
-                "is_nan", Collections.singletonList(Decls.Double), Decls.Bool)));
+            newMemberOverload(
+                "is_nan", SimpleType.BOOL, Collections.singletonList(SimpleType.DOUBLE))));
 
     // Add 'isInf' function declaration
     decls.add(
-        Decls.newFunction(
+        newFunctionDeclaration(
             "isInf",
-            Decls.newInstanceOverload(
-                "is_inf_unary", Collections.singletonList(Decls.Double), Decls.Bool),
-            Decls.newInstanceOverload(
-                "is_inf_binary", Arrays.asList(Decls.Double, Decls.Int), Decls.Bool)));
+            newMemberOverload(
+                "is_inf_unary", SimpleType.BOOL, Collections.singletonList(SimpleType.DOUBLE)),
+            newMemberOverload(
+                "is_inf_binary",
+                SimpleType.BOOL,
+                Arrays.asList(SimpleType.DOUBLE, SimpleType.INT))));
 
     // Add 'unique' function declaration
-    List<Decl.FunctionDecl.Overload> uniqueOverloads = new ArrayList<>();
-    for (com.google.api.expr.v1alpha1.Type type :
-        Arrays.asList(Decls.String, Decls.Int, Decls.Uint, Decls.Double, Decls.Bytes, Decls.Bool)) {
+    List<CelOverloadDecl> uniqueOverloads = new ArrayList<>();
+    for (CelType type :
+        Arrays.asList(
+            SimpleType.STRING,
+            SimpleType.INT,
+            SimpleType.UINT,
+            SimpleType.DOUBLE,
+            SimpleType.BYTES,
+            SimpleType.BOOL)) {
       uniqueOverloads.add(
-          Decls.newInstanceOverload(
-              String.format("unique_%s", Types.formatCheckedType(type).toLowerCase(Locale.US)),
-              Collections.singletonList(type),
-              Decls.Bool));
-      uniqueOverloads.add(
-          Decls.newInstanceOverload(
-              String.format("unique_list_%s", Types.formatCheckedType(type).toLowerCase(Locale.US)),
-              Collections.singletonList(Decls.newListType(type)),
-              Decls.Bool));
+          newMemberOverload(
+              String.format("unique_list_%s", type.name().toLowerCase(Locale.US)),
+              SimpleType.BOOL,
+              Collections.singletonList(ListType.create(type))));
     }
-    decls.add(Decls.newFunction("unique", uniqueOverloads));
+    decls.add(newFunctionDeclaration("unique", uniqueOverloads));
 
     // Add 'format' function declaration
-    List<Decl.FunctionDecl.Overload> formatOverloads = new ArrayList<>();
+    List<CelOverloadDecl> formatOverloads = new ArrayList<>();
     formatOverloads.add(
-        Decls.newInstanceOverload(
+        newMemberOverload(
             "format_list_dyn",
-            Arrays.asList(Decls.String, Decls.newListType(Decls.Dyn)),
-            Decls.String));
+            SimpleType.STRING,
+            Arrays.asList(SimpleType.STRING, ListType.create(SimpleType.DYN))));
 
-    decls.add(Decls.newFunction("format", formatOverloads));
+    decls.add(newFunctionDeclaration("format", formatOverloads));
 
     return Collections.unmodifiableList(decls);
   }
