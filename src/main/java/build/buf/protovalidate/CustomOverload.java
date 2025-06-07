@@ -17,6 +17,8 @@ package build.buf.protovalidate;
 import com.google.protobuf.ByteString;
 import com.google.protobuf.Descriptors;
 import com.google.protobuf.Message;
+import dev.cel.common.CelErrorCode;
+import dev.cel.common.CelRuntimeException;
 import dev.cel.common.types.CelType;
 import dev.cel.common.types.SimpleType;
 import dev.cel.runtime.CelEvaluationException;
@@ -47,6 +49,7 @@ final class CustomOverload {
     ArrayList<CelFunctionBinding> bindings = new ArrayList<>();
     bindings.addAll(
         Arrays.asList(
+            celBytesToString(),
             celGetField(),
             celFormat(),
             celStartsWithBytes(),
@@ -68,6 +71,26 @@ final class CustomOverload {
             celIsHostAndPort()));
     bindings.addAll(celUnique());
     return Collections.unmodifiableList(bindings);
+  }
+
+  /**
+   * This implementes that standard {@code bytes_to_string} function. We override it because the CEL
+   * library doesn't validate that the bytes are valid utf-8.
+   *
+   * <p>Workround until https://github.com/google/cel-java/pull/717 lands.
+   */
+  private static CelFunctionBinding celBytesToString() {
+    return CelFunctionBinding.from(
+        "bytes_to_string",
+        ByteString.class,
+        v -> {
+          if (!v.isValidUtf8()) {
+            throw new CelRuntimeException(
+                new IllegalArgumentException("invalid UTF-8 in bytes, cannot convert to string"),
+                CelErrorCode.BAD_FORMAT);
+          }
+          return v.toStringUtf8();
+        });
   }
 
   /**
