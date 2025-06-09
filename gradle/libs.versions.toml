@@ -1,7 +1,7 @@
 [versions]
 assertj = "3.27.3"
 buf = "1.54.0"
-cel = "0.9.1"
+cel = "0.9.1-proto3"
 error-prone = "2.38.0"
 junit = "5.13.1"
 maven-publish = "0.32.0"
