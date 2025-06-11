@@ -397,8 +397,8 @@ class EvaluatorBuilder {
       FieldDescriptor expectedWrapperDescriptor =
           DescriptorMappings.expectedWrapperRules(fieldDescriptor.getMessageType().getFullName());
 
-      // Verify that the expected wrapper rules for this field are equal to the rules
-      // specified on the field
+      // Verify that the expected wrapper rules for this field are equal to the rules specified on
+      // the field
       if (expectedWrapperDescriptor != null) {
         FieldDescriptor oneofFieldDescriptor =
             fieldRules.getOneofFieldDescriptor(DescriptorMappings.FIELD_RULES_ONEOF_DESC);
