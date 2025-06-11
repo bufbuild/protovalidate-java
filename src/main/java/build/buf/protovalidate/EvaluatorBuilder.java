@@ -19,6 +19,7 @@ import build.buf.validate.FieldPath;
 import build.buf.validate.FieldPathElement;
 import build.buf.validate.FieldRules;
 import build.buf.validate.Ignore;
+import build.buf.validate.MessageOneofRule;
 import build.buf.validate.MessageRules;
 import build.buf.validate.OneofRules;
 import build.buf.validate.Rule;
@@ -109,7 +110,8 @@ class EvaluatorBuilder {
       return eval;
     }
     synchronized (this) {
-      // Check again (we may have lost race with another thread which populated the map with this
+      // Check again (we may have lost race with another thread which populated the
+      // map with this
       // descriptor).
       eval = evaluatorCache.get(desc);
       if (eval != null) {
@@ -176,6 +178,7 @@ class EvaluatorBuilder {
           return;
         }
         processMessageExpressions(descriptor, msgRules, msgEval, defaultInstance);
+        processMessageOneofRules(descriptor, msgRules, msgEval);
         processOneofRules(descriptor, msgEval);
         processFields(descriptor, msgEval);
       } catch (InvalidProtocolBufferException e) {
@@ -201,6 +204,23 @@ class EvaluatorBuilder {
         throw new CompilationException("compile returned null");
       }
       msgEval.append(new CelPrograms(null, compiledPrograms));
+    }
+
+    private void processMessageOneofRules(
+        Descriptor desc, MessageRules msgRules, MessageEvaluator msgEval)
+        throws CompilationException {
+      for (MessageOneofRule rule : msgRules.getOneofList()) {
+        List<FieldDescriptor> fields = new ArrayList<>(rule.getFieldsCount());
+        for (String name : rule.getFieldsList()) {
+          FieldDescriptor field = desc.findFieldByName(name);
+          if (field == null) {
+            throw new CompilationException(
+                String.format("field \"%s\" not found in %s", name, desc.getFullName()));
+          }
+          fields.add(field);
+        }
+        msgEval.append(new MessageOneofEvaluator(fields, rule.getRequired()));
+      }
     }
 
     private void processOneofRules(Descriptor desc, MessageEvaluator msgEval)
@@ -378,7 +398,8 @@ class EvaluatorBuilder {
       FieldDescriptor expectedWrapperDescriptor =
           DescriptorMappings.expectedWrapperRules(fieldDescriptor.getMessageType().getFullName());
 
-      // Verify that the expected wrapper rules for this field are equal to the rules specified on
+      // Verify that the expected wrapper rules for this field are equal to the rules
+      // specified on
       // the field
       if (expectedWrapperDescriptor != null) {
         FieldDescriptor oneofFieldDescriptor =
@@ -413,7 +434,8 @@ class EvaluatorBuilder {
         throws CompilationException {
 
       // If this is a wrapper field, just return. Wrapper fields are handled by
-      // processWrapperRules and their unwrapped values are passed through the process gauntlet.
+      // processWrapperRules and their unwrapped values are passed through the process
+      // gauntlet.
       if (fieldDescriptor.getJavaType() == FieldDescriptor.JavaType.MESSAGE) {
         FieldDescriptor expectedWrapperDescriptor =
             DescriptorMappings.expectedWrapperRules(fieldDescriptor.getMessageType().getFullName());
