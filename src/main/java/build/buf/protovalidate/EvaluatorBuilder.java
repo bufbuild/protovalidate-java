@@ -111,8 +111,7 @@ class EvaluatorBuilder {
     }
     synchronized (this) {
       // Check again (we may have lost race with another thread which populated the
-      // map with this
-      // descriptor).
+      // map with this descriptor).
       eval = evaluatorCache.get(desc);
       if (eval != null) {
         return eval;
@@ -399,8 +398,7 @@ class EvaluatorBuilder {
           DescriptorMappings.expectedWrapperRules(fieldDescriptor.getMessageType().getFullName());
 
       // Verify that the expected wrapper rules for this field are equal to the rules
-      // specified on
-      // the field
+      // specified on the field
       if (expectedWrapperDescriptor != null) {
         FieldDescriptor oneofFieldDescriptor =
             fieldRules.getOneofFieldDescriptor(DescriptorMappings.FIELD_RULES_ONEOF_DESC);
@@ -434,8 +432,7 @@ class EvaluatorBuilder {
         throws CompilationException {
 
       // If this is a wrapper field, just return. Wrapper fields are handled by
-      // processWrapperRules and their unwrapped values are passed through the process
-      // gauntlet.
+      // processWrapperRules and their unwrapped values are passed through the process gauntlet.
       if (fieldDescriptor.getJavaType() == FieldDescriptor.JavaType.MESSAGE) {
         FieldDescriptor expectedWrapperDescriptor =
             DescriptorMappings.expectedWrapperRules(fieldDescriptor.getMessageType().getFullName());
