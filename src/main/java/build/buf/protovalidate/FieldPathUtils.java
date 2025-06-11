@@ -78,7 +78,7 @@ final class FieldPathUtils {
    * @param fieldDescriptor The field descriptor to generate a field path element for.
    * @return The field path element that corresponds to the provided field descriptor.
    */
-  public static FieldPathElement fieldPathElement(Descriptors.FieldDescriptor fieldDescriptor) {
+  static FieldPathElement fieldPathElement(Descriptors.FieldDescriptor fieldDescriptor) {
     String name;
     if (fieldDescriptor.isExtension()) {
       name = "[" + fieldDescriptor.getFullName() + "]";
@@ -100,7 +100,7 @@ final class FieldPathUtils {
    * @param rulePathElements Rule path elements to prepend.
    * @return For convenience, the list of violations passed into the violations parameter.
    */
-  public static List<RuleViolation.Builder> updatePaths(
+  static List<RuleViolation.Builder> updatePaths(
       List<RuleViolation.Builder> violations,
       @Nullable FieldPathElement fieldPathElement,
       List<FieldPathElement> rulePathElements) {

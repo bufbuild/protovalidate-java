@@ -19,15 +19,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 /** Expression represents a single CEL expression. */
-class Expression {
+final class Expression {
   /** The id of the rule. */
-  public final String id;
+  final String id;
 
   /** The message of the rule. */
-  public final String message;
+  final String message;
 
   /** The expression of the rule. */
-  public final String expression;
+  final String expression;
 
   /**
    * Constructs a new Expression.
@@ -57,7 +57,7 @@ class Expression {
    * @param rules The list of rules.
    * @return The list of expressions.
    */
-  public static List<Expression> fromRules(List<build.buf.validate.Rule> rules) {
+  static List<Expression> fromRules(List<build.buf.validate.Rule> rules) {
     List<Expression> expressions = new ArrayList<>();
     for (build.buf.validate.Rule rule : rules) {
       expressions.add(new Expression(rule));

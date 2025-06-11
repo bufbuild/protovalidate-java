@@ -23,7 +23,7 @@ import dev.cel.bundle.CelFactory;
 import java.util.ArrayList;
 import java.util.List;
 
-class ValidatorImpl implements Validator {
+final class ValidatorImpl implements Validator {
   /** evaluatorBuilder is the builder used to construct the evaluator for a given message. */
   private final EvaluatorBuilder evaluatorBuilder;
 
@@ -56,7 +56,6 @@ class ValidatorImpl implements Validator {
     this.failFast = config.isFailFast();
   }
 
-  /** {@inheritDoc} */
   @Override
   public ValidationResult validate(Message msg) throws ValidationException {
     if (msg == null) {

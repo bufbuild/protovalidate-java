@@ -22,7 +22,7 @@ import java.nio.charset.StandardCharsets;
 
 /** Ipv6 is a class used to parse a given string to determine if it is a URI or URI reference. */
 final class Uri {
-  private String str;
+  private final String str;
   private int index;
   private boolean pctEncodedFound;
 
@@ -343,9 +343,7 @@ final class Uri {
         // RFC 3986:
         // > URI producing applications must not use percent-encoding in host
         // > unless it is used to represent a UTF-8 character sequence.
-        if (!this.checkHostPctEncoded(rawHost)) {
-          return false;
-        }
+        return this.checkHostPctEncoded(rawHost);
       }
 
       return true;

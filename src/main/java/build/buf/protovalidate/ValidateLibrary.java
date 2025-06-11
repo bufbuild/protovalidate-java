@@ -30,10 +30,10 @@ import dev.cel.runtime.CelStandardFunctions.StandardFunction.Overload.Conversion
  * Custom {@link CelCompilerLibrary} and {@link CelRuntimeLibrary}. Provides all the custom
  * extension function definitions and overloads.
  */
-class ValidateLibrary implements CelCompilerLibrary, CelRuntimeLibrary {
+final class ValidateLibrary implements CelCompilerLibrary, CelRuntimeLibrary {
 
   /** Creates a ValidateLibrary with all custom declarations and overloads. */
-  public ValidateLibrary() {}
+  ValidateLibrary() {}
 
   @Override
   public void setParserOptions(CelParserBuilder parserBuilder) {

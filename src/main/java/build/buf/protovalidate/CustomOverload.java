@@ -74,10 +74,11 @@ final class CustomOverload {
   }
 
   /**
-   * This implementes that standard {@code bytes_to_string} function. We override it because the CEL
+   * This implements that standard {@code bytes_to_string} function. We override it because the CEL
    * library doesn't validate that the bytes are valid utf-8.
    *
-   * <p>Workround until https://github.com/google/cel-java/pull/717 lands.
+   * <p>Workaround until <a href="https://github.com/google/cel-java/pull/717">cel-java issue
+   * 717</a> lands.
    */
   private static CelFunctionBinding celBytesToString() {
     return CelFunctionBinding.from(
@@ -390,9 +391,9 @@ final class CustomOverload {
    * <p>The host can be one of:
    *
    * <ul>
-   *   <li>An IPv4 address in dotted decimal format, for example "192.168.0.1".
-   *   <li>An IPv6 address enclosed in square brackets, for example "[::1]".
-   *   <li>A hostname, for example "example.com".
+   *   <li>An IPv4 address in dotted decimal format, for example {@code 192.168.0.1}.
+   *   <li>An IPv6 address enclosed in square brackets, for example {@code [::1]}.
+   *   <li>A hostname, for example {@code example.com}.
    * </ul>
    *
    * <p>The port is separated by a colon. It must be non-empty, with a decimal number in the range
@@ -570,7 +571,8 @@ final class CustomOverload {
   }
 
   /**
-   * Returns true if the string is a URI, for example "https://example.com/foo/bar?baz=quux#frag".
+   * Returns true if the string is a URI, for example {@code
+   * https://example.com/foo/bar?baz=quux#frag}.
    *
    * <p>URI is defined in the internet standard RFC 3986. Zone Identifiers in IPv6 address literals
    * are supported (RFC 6874).
@@ -580,8 +582,9 @@ final class CustomOverload {
   }
 
   /**
-   * Returns true if the string is a URI Reference - a URI such as
-   * "https://example.com/foo/bar?baz=quux#frag", or a Relative Reference such as "./foo/bar?query".
+   * Returns true if the string is a URI Reference - a URI such as {@code
+   * https://example.com/foo/bar?baz=quux#frag}, or a Relative Reference such as {@code
+   * ./foo/bar?query}.
    *
    * <p>URI, URI Reference, and Relative Reference are defined in the internet standard RFC 3986.
    * Zone Identifiers in IPv6 address literals are supported (RFC 6874).

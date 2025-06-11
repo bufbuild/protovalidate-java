@@ -22,12 +22,12 @@ import dev.cel.common.types.CelKind;
 import dev.cel.compiler.CelCompiler;
 
 /** {@link AstExpression} is a compiled CEL {@link CelAbstractSyntaxTree}. */
-class AstExpression {
+final class AstExpression {
   /** The compiled CEL AST. */
-  public final CelAbstractSyntaxTree ast;
+  final CelAbstractSyntaxTree ast;
 
   /** Contains the original expression from the proto file. */
-  public final Expression source;
+  final Expression source;
 
   /** Constructs a new {@link AstExpression}. */
   private AstExpression(CelAbstractSyntaxTree ast, Expression source) {
@@ -43,7 +43,7 @@ class AstExpression {
    * @return The compiled {@link AstExpression}.
    * @throws CompilationException if the expression compilation fails.
    */
-  public static AstExpression newAstExpression(CelCompiler cel, Expression expr)
+  static AstExpression newAstExpression(CelCompiler cel, Expression expr)
       throws CompilationException {
     CelValidationResult compileResult = cel.compile(expr.expression);
     if (!compileResult.getAllIssues().isEmpty()) {

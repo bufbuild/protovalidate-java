@@ -28,7 +28,7 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 
 /** Performs validation on a map field's key-value pairs. */
-class MapEvaluator implements Evaluator {
+final class MapEvaluator implements Evaluator {
   /** Rule path to map key rules */
   private static final FieldPath MAP_KEYS_RULE_PATH =
       FieldPath.newBuilder()
@@ -87,7 +87,7 @@ class MapEvaluator implements Evaluator {
    *
    * @return The key evaluator.
    */
-  public ValueEvaluator getKeyEvaluator() {
+  ValueEvaluator getKeyEvaluator() {
     return keyEvaluator;
   }
 
@@ -96,7 +96,7 @@ class MapEvaluator implements Evaluator {
    *
    * @return The value evaluator.
    */
-  public ValueEvaluator getValueEvaluator() {
+  ValueEvaluator getValueEvaluator() {
     return valueEvaluator;
   }
 

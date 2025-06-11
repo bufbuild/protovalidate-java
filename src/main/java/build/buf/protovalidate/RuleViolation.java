@@ -18,23 +18,22 @@ import build.buf.validate.FieldPath;
 import build.buf.validate.FieldPathElement;
 import com.google.protobuf.Descriptors;
 import java.util.ArrayDeque;
-import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.Deque;
 import java.util.List;
 import java.util.Objects;
 import org.jspecify.annotations.Nullable;
 
 /**
- * {@link RuleViolation} contains all of the collected information about an individual rule
- * violation.
+ * {@link RuleViolation} contains all the collected information about an individual rule violation.
  */
-class RuleViolation implements Violation {
+final class RuleViolation implements Violation {
   /** Static value to return when there are no violations. */
-  public static final List<Builder> NO_VIOLATIONS = new ArrayList<>();
+  static final List<Builder> NO_VIOLATIONS = Collections.emptyList();
 
   /** {@link FieldValue} represents a Protobuf field value inside a Protobuf message. */
-  public static class FieldValue implements Violation.FieldValue {
+  static class FieldValue implements Violation.FieldValue {
     private final @Nullable Object value;
     private final Descriptors.FieldDescriptor descriptor;
 
@@ -44,7 +43,7 @@ class RuleViolation implements Violation {
      * @param value Bare Protobuf field value of field.
      * @param descriptor Field descriptor pertaining to this field.
      */
-    public FieldValue(@Nullable Object value, Descriptors.FieldDescriptor descriptor) {
+    FieldValue(@Nullable Object value, Descriptors.FieldDescriptor descriptor) {
       this.value = value;
       this.descriptor = descriptor;
     }
@@ -55,7 +54,7 @@ class RuleViolation implements Violation {
      *
      * @param value A {@link Value} to create this {@link FieldValue} from.
      */
-    public FieldValue(Value value) {
+    FieldValue(Value value) {
       this.value = value.value(Object.class);
       this.descriptor = Objects.requireNonNull(value.fieldDescriptor());
     }
@@ -76,7 +75,7 @@ class RuleViolation implements Violation {
   private final @Nullable FieldValue ruleValue;
 
   /** Builds a Violation instance. */
-  public static class Builder {
+  static class Builder {
     private @Nullable String ruleId;
     private @Nullable String message;
     private boolean forKey = false;
@@ -91,7 +90,7 @@ class RuleViolation implements Violation {
      * @param ruleId Rule ID value to use.
      * @return The builder.
      */
-    public Builder setRuleId(String ruleId) {
+    Builder setRuleId(String ruleId) {
       this.ruleId = ruleId;
       return this;
     }
@@ -102,7 +101,7 @@ class RuleViolation implements Violation {
      * @param message Message value to use.
      * @return The builder.
      */
-    public Builder setMessage(String message) {
+    Builder setMessage(String message) {
       this.message = message;
       return this;
     }
@@ -113,7 +112,7 @@ class RuleViolation implements Violation {
      * @param forKey If true, signals that the resulting violation is for a map key.
      * @return The builder.
      */
-    public Builder setForKey(boolean forKey) {
+    Builder setForKey(boolean forKey) {
       this.forKey = forKey;
       return this;
     }
@@ -124,8 +123,7 @@ class RuleViolation implements Violation {
      * @param fieldPathElements Field path elements to add.
      * @return The builder.
      */
-    public Builder addAllFieldPathElements(
-        Collection<? extends FieldPathElement> fieldPathElements) {
+    Builder addAllFieldPathElements(Collection<? extends FieldPathElement> fieldPathElements) {
       this.fieldPath.addAll(fieldPathElements);
       return this;
     }
@@ -136,7 +134,7 @@ class RuleViolation implements Violation {
      * @param fieldPathElement A field path element to add to the beginning of the field path.
      * @return The builder.
      */
-    public Builder addFirstFieldPathElement(@Nullable FieldPathElement fieldPathElement) {
+    Builder addFirstFieldPathElement(@Nullable FieldPathElement fieldPathElement) {
       if (fieldPathElement != null) {
         fieldPath.addFirst(fieldPathElement);
       }
@@ -149,7 +147,7 @@ class RuleViolation implements Violation {
      * @param rulePathElements Field path elements to add.
      * @return The builder.
      */
-    public Builder addAllRulePathElements(Collection<? extends FieldPathElement> rulePathElements) {
+    Builder addAllRulePathElements(Collection<? extends FieldPathElement> rulePathElements) {
       rulePath.addAll(rulePathElements);
       return this;
     }
@@ -160,7 +158,7 @@ class RuleViolation implements Violation {
      * @param rulePathElements A field path element to add to the beginning of the rule path.
      * @return The builder.
      */
-    public Builder addFirstRulePathElement(FieldPathElement rulePathElements) {
+    Builder addFirstRulePathElement(FieldPathElement rulePathElements) {
       rulePath.addFirst(rulePathElements);
       return this;
     }
@@ -171,7 +169,7 @@ class RuleViolation implements Violation {
      * @param fieldValue The field value corresponding to this violation.
      * @return The builder.
      */
-    public Builder setFieldValue(@Nullable FieldValue fieldValue) {
+    Builder setFieldValue(@Nullable FieldValue fieldValue) {
       this.fieldValue = fieldValue;
       return this;
     }
@@ -182,7 +180,7 @@ class RuleViolation implements Violation {
      * @param ruleValue The rule value corresponding to this violation.
      * @return The builder.
      */
-    public Builder setRuleValue(@Nullable FieldValue ruleValue) {
+    Builder setRuleValue(@Nullable FieldValue ruleValue) {
       this.ruleValue = ruleValue;
       return this;
     }
@@ -192,7 +190,7 @@ class RuleViolation implements Violation {
      *
      * @return A Violation instance.
      */
-    public RuleViolation build() {
+    RuleViolation build() {
       build.buf.validate.Violation.Builder protoBuilder = build.buf.validate.Violation.newBuilder();
       if (ruleId != null) {
         protoBuilder.setRuleId(ruleId);
@@ -220,7 +218,7 @@ class RuleViolation implements Violation {
    *
    * @return A new, empty {@link Builder}.
    */
-  public static Builder newBuilder() {
+  static Builder newBuilder() {
     return new Builder();
   }
 

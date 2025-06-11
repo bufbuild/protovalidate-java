@@ -23,7 +23,7 @@ import java.util.List;
  * An {@link Evaluator} for an unknown descriptor. This is returned only if lazy-building of
  * evaluators has been disabled and an unknown descriptor is encountered.
  */
-class UnknownDescriptorEvaluator implements Evaluator {
+final class UnknownDescriptorEvaluator implements Evaluator {
   /** The descriptor targeted by this evaluator. */
   private final Descriptor desc;
 

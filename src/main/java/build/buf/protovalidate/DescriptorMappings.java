@@ -105,7 +105,7 @@ final class DescriptorMappings {
    * @return The rules field descriptor for the specified wrapper fully qualified name.
    */
   @Nullable
-  public static FieldDescriptor expectedWrapperRules(String fqn) {
+  static FieldDescriptor expectedWrapperRules(String fqn) {
     switch (fqn) {
       case "google.protobuf.BoolValue":
         return EXPECTED_STANDARD_RULES.get(FieldDescriptor.Type.BOOL);
@@ -136,7 +136,7 @@ final class DescriptorMappings {
    * @param kind The protobuf field type.
    * @return The corresponding CEL type for the protobuf field.
    */
-  public static CelType protoKindToCELType(FieldDescriptor.Type kind) {
+  static CelType protoKindToCELType(FieldDescriptor.Type kind) {
     switch (kind) {
       case FLOAT:
       case DOUBLE:

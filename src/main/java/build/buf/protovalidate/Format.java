@@ -319,7 +319,7 @@ final class Format {
         return str.get();
       }
       String pattern = "%." + precision + "e";
-      return String.format(pattern, (Double) val);
+      return String.format(pattern, val);
     } else {
       throw new CelEvaluationException(
           "error during formatting: scientific clause can only be used on doubles, was given "

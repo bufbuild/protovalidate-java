@@ -26,7 +26,7 @@ import org.jspecify.annotations.Nullable;
  * {@link ValueEvaluator} performs validation on any concrete value contained within a singular
  * field, repeated elements, or the keys/values of a map.
  */
-class ValueEvaluator implements Evaluator {
+final class ValueEvaluator implements Evaluator {
   /** The {@link Descriptors.FieldDescriptor} targeted by this evaluator */
   private final Descriptors.@Nullable FieldDescriptor descriptor;
 
@@ -51,15 +51,15 @@ class ValueEvaluator implements Evaluator {
     this.nestedRule = nestedRule;
   }
 
-  public Descriptors.@Nullable FieldDescriptor getDescriptor() {
+  Descriptors.@Nullable FieldDescriptor getDescriptor() {
     return descriptor;
   }
 
-  public @Nullable FieldPath getNestedRule() {
+  @Nullable FieldPath getNestedRule() {
     return nestedRule;
   }
 
-  public boolean hasNestedRule() {
+  boolean hasNestedRule() {
     return this.nestedRule != null;
   }
 
@@ -93,13 +93,13 @@ class ValueEvaluator implements Evaluator {
    *
    * @param eval The evaluator to append.
    */
-  public void append(Evaluator eval) {
+  void append(Evaluator eval) {
     if (!eval.tautology()) {
       this.evaluators.add(eval);
     }
   }
 
-  public void setIgnoreEmpty(Object zero) {
+  void setIgnoreEmpty(Object zero) {
     this.ignoreEmpty = true;
     this.zero = zero;
   }

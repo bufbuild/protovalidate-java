@@ -22,18 +22,15 @@ import org.jspecify.annotations.Nullable;
  * {@link Variable} implements {@link CelVariableResolver}, providing a lightweight named variable
  * to cel.Program executions.
  */
-class Variable implements CelVariableResolver {
+final class Variable implements CelVariableResolver {
   /** The {@value} variable in CEL. */
-  public static final String THIS_NAME = "this";
+  static final String THIS_NAME = "this";
 
   /** The {@value} variable in CEL. */
-  public static final String RULES_NAME = "rules";
+  static final String RULES_NAME = "rules";
 
   /** The {@value} variable in CEL. */
-  public static final String RULE_NAME = "rule";
-
-  /** The {@value} variable in CEL. */
-  public static final String NOW_NAME = "now";
+  static final String RULE_NAME = "rule";
 
   /** The variable's name */
   private final String name;
@@ -53,7 +50,7 @@ class Variable implements CelVariableResolver {
    * @param val the value.
    * @return {@link Variable}.
    */
-  public static CelVariableResolver newThisVariable(@Nullable Object val) {
+  static CelVariableResolver newThisVariable(@Nullable Object val) {
     return CelVariableResolver.hierarchicalVariableResolver(
         new NowVariable(), new Variable(THIS_NAME, val));
   }
@@ -64,7 +61,7 @@ class Variable implements CelVariableResolver {
    * @param val the value.
    * @return {@link Variable}.
    */
-  public static CelVariableResolver newRulesVariable(Object val) {
+  static CelVariableResolver newRulesVariable(Object val) {
     return new Variable(RULES_NAME, val);
   }
 
@@ -75,7 +72,7 @@ class Variable implements CelVariableResolver {
    * @param val the value of the "rule" variable.
    * @return {@link Variable}.
    */
-  public static CelVariableResolver newRuleVariable(Object rules, Object val) {
+  static CelVariableResolver newRuleVariable(Object rules, Object val) {
     return CelVariableResolver.hierarchicalVariableResolver(
         newRulesVariable(rules), new Variable(RULE_NAME, val));
   }

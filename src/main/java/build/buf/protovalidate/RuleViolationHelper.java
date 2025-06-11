@@ -20,7 +20,7 @@ import java.util.ArrayList;
 import java.util.List;
 import org.jspecify.annotations.Nullable;
 
-class RuleViolationHelper {
+final class RuleViolationHelper {
   private static final List<FieldPathElement> EMPTY_PREFIX = new ArrayList<>();
 
   private final @Nullable FieldPath rulePrefix;
@@ -39,11 +39,6 @@ class RuleViolationHelper {
       this.rulePrefix = null;
       this.fieldPathElement = null;
     }
-  }
-
-  RuleViolationHelper(@Nullable FieldPath rulePrefix) {
-    this.rulePrefix = rulePrefix;
-    this.fieldPathElement = null;
   }
 
   @Nullable FieldPathElement getFieldPathElement() {

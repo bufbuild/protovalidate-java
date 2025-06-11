@@ -28,7 +28,7 @@ import com.google.protobuf.InvalidProtocolBufferException;
 import com.google.protobuf.MessageLite;
 
 /** Manages the resolution of protovalidate rules. */
-class RuleResolver {
+final class RuleResolver {
   private static final ExtensionRegistry EXTENSION_REGISTRY = ExtensionRegistry.newInstance();
 
   static {

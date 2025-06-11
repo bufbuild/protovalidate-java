@@ -38,13 +38,13 @@ import java.util.concurrent.ConcurrentHashMap;
 import org.jspecify.annotations.Nullable;
 
 /** A build-through cache for computed standard rules. */
-class RuleCache {
+final class RuleCache {
   private static class CelRule {
-    public final AstExpression astExpression;
-    public final FieldDescriptor field;
-    public final FieldPath rulePath;
+    final AstExpression astExpression;
+    final FieldDescriptor field;
+    final FieldPath rulePath;
 
-    public CelRule(AstExpression astExpression, FieldDescriptor field, FieldPath rulePath) {
+    private CelRule(AstExpression astExpression, FieldDescriptor field, FieldPath rulePath) {
       this.astExpression = astExpression;
       this.field = field;
       this.rulePath = rulePath;
@@ -83,7 +83,7 @@ class RuleCache {
    * @param cel The CEL environment for evaluation.
    * @param config The configuration to use for the rule cache.
    */
-  public RuleCache(Cel cel, Config config) {
+  RuleCache(Cel cel, Config config) {
     this.cel = cel;
     this.typeRegistry = config.getTypeRegistry();
     this.extensionRegistry = config.getExtensionRegistry();
@@ -100,7 +100,7 @@ class RuleCache {
    * @return The list of compiled programs.
    * @throws CompilationException If the rules fail to compile.
    */
-  public List<CompiledProgram> compile(
+  List<CompiledProgram> compile(
       FieldDescriptor fieldDescriptor, FieldRules fieldRules, boolean forItems)
       throws CompilationException {
     ResolvedRule resolved = resolveRules(fieldDescriptor, fieldRules, forItems);

@@ -24,7 +24,7 @@ import java.util.List;
 import java.util.Objects;
 
 /** Performs validation on the elements of a repeated field. */
-class ListEvaluator implements Evaluator {
+final class ListEvaluator implements Evaluator {
   /** Rule path to repeated rules */
   private static final FieldPath REPEATED_ITEMS_RULE_PATH =
       FieldPath.newBuilder()

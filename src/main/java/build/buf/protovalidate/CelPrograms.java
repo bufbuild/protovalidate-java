@@ -21,7 +21,7 @@ import java.util.List;
 import org.jspecify.annotations.Nullable;
 
 /** Evaluator that executes a {@link CompiledProgram}. */
-class CelPrograms implements Evaluator {
+final class CelPrograms implements Evaluator {
   private final RuleViolationHelper helper;
 
   /** A list of {@link CompiledProgram} that will be executed against the input message. */
