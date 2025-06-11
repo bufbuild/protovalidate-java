@@ -19,6 +19,7 @@ import build.buf.validate.FieldPath;
 import build.buf.validate.FieldPathElement;
 import build.buf.validate.FieldRules;
 import build.buf.validate.Ignore;
+import build.buf.validate.MessageOneofRule;
 import build.buf.validate.MessageRules;
 import build.buf.validate.OneofRules;
 import build.buf.validate.Rule;
@@ -176,6 +177,7 @@ class EvaluatorBuilder {
           return;
         }
         processMessageExpressions(descriptor, msgRules, msgEval, defaultInstance);
+        processMessageOneofRules(descriptor, msgRules, msgEval);
         processOneofRules(descriptor, msgEval);
         processFields(descriptor, msgEval);
       } catch (InvalidProtocolBufferException e) {
@@ -201,6 +203,23 @@ class EvaluatorBuilder {
         throw new CompilationException("compile returned null");
       }
       msgEval.append(new CelPrograms(null, compiledPrograms));
+    }
+
+    private void processMessageOneofRules(
+        Descriptor desc, MessageRules msgRules, MessageEvaluator msgEval)
+        throws CompilationException {
+      for (MessageOneofRule rule : msgRules.getOneofList()) {
+        List<FieldDescriptor> fields = new ArrayList<>(rule.getFieldsCount());
+        for (String name : rule.getFieldsList()) {
+          FieldDescriptor field = desc.findFieldByName(name);
+          if (field == null) {
+            throw new CompilationException(
+                String.format("field \"%s\" not found in %s", name, desc.getFullName()));
+          }
+          fields.add(field);
+        }
+        msgEval.append(new MessageOneofEvaluator(fields, rule.getRequired()));
+      }
     }
 
     private void processOneofRules(Descriptor desc, MessageEvaluator msgEval)
