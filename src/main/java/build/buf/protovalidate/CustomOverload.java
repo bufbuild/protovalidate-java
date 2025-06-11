@@ -203,9 +203,7 @@ final class CustomOverload {
         "contains_bytes",
         ByteString.class,
         ByteString.class,
-        (receiver, param) -> {
-          return bytesContains(receiver.toByteArray(), param.toByteArray());
-        });
+        (receiver, param) -> bytesContains(receiver.toByteArray(), param.toByteArray()));
   }
 
   static boolean bytesContains(byte[] arr, byte[] subArr) {
@@ -286,9 +284,7 @@ final class CustomOverload {
         "is_ip_prefix_int",
         String.class,
         Long.class,
-        (prefix, version) -> {
-          return isIpPrefix(prefix, version, false);
-        });
+        (prefix, version) -> isIpPrefix(prefix, version, false));
   }
 
   /**
@@ -301,9 +297,7 @@ final class CustomOverload {
         "is_ip_prefix_bool",
         String.class,
         Boolean.class,
-        (prefix, strict) -> {
-          return isIpPrefix(prefix, 0L, strict);
-        });
+        (prefix, strict) -> isIpPrefix(prefix, 0L, strict));
   }
 
   /**

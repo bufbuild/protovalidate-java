@@ -63,7 +63,7 @@ final class ValidateLibrary implements CelCompilerLibrary, CelRuntimeLibrary {
         .setStandardFunctions(
             CelStandardFunctions.newBuilder()
                 .filterFunctions(
-                    // CEL doesn't validate, that the bytes are valid utf-8, so we provide out own
+                    // CEL doesn't validate, that the bytes are valid utf-8, so we provide our own
                     // implementation.
                     (function, overload) ->
                         function != StandardFunction.STRING
