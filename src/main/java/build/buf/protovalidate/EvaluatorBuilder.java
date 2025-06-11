@@ -110,8 +110,8 @@ class EvaluatorBuilder {
       return eval;
     }
     synchronized (this) {
-      // Check again (we may have lost race with another thread which populated the
-      // map with this descriptor).
+      // Check again (we may have lost race with another thread which populated the map with this
+      // descriptor).
       eval = evaluatorCache.get(desc);
       if (eval != null) {
         return eval;
