@@ -59,20 +59,18 @@ class MessageOneofEvaluator implements Evaluator {
       return Collections.singletonList(
           RuleViolation.newBuilder()
               .setRuleId("message.oneof")
-              .setMessage(String.format("only one of [%s] can be set", fieldNames())));
+              .setMessage(String.format("only one of %s can be set", fieldNames())));
     }
     if (this.required && hasCount == 0) {
       return Collections.singletonList(
           RuleViolation.newBuilder()
               .setRuleId("message.oneof")
-              .setMessage(String.format("one of [%s] must be set", fieldNames())));
+              .setMessage(String.format("one of %s must be set", fieldNames())));
     }
     return Collections.emptyList();
   }
 
   String fieldNames() {
-    return fields.stream()
-        .map(field -> String.format("'%s'", field.getName()))
-        .collect(Collectors.joining(", "));
+    return fields.stream().map(FieldDescriptor::getName).collect(Collectors.joining(", "));
   }
 }
