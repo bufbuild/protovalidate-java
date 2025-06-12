@@ -37,9 +37,11 @@ import dev.cel.runtime.CelEvaluationException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
 import org.jspecify.annotations.Nullable;
 
 /** A build-through cache of message evaluators keyed off the provided descriptor. */
@@ -208,16 +210,26 @@ final class EvaluatorBuilder {
         Descriptor desc, MessageRules msgRules, MessageEvaluator msgEval)
         throws CompilationException {
       for (MessageOneofRule rule : msgRules.getOneofList()) {
-        List<FieldDescriptor> fields = new ArrayList<>(rule.getFieldsCount());
+        if (rule.getFieldsCount() == 0) {
+          throw new CompilationException(
+              String.format(
+                  "at least one field must be specified in oneof rule for the message %s",
+                  desc.getFullName()));
+        }
+        Set<FieldDescriptor> fields = new LinkedHashSet<>(rule.getFieldsCount());
         for (String name : rule.getFieldsList()) {
           FieldDescriptor field = desc.findFieldByName(name);
           if (field == null) {
             throw new CompilationException(
-                String.format("field \"%s\" not found in %s", name, desc.getFullName()));
+                String.format("field %s not found in %s", name, desc.getFullName()));
           }
-          fields.add(field);
+          if (!fields.add(field)) {
+            throw new CompilationException(
+                String.format(
+                    "duplicate %s in oneof rule for the message %s", name, desc.getFullName()));
+          }
         }
-        msgEval.append(new MessageOneofEvaluator(fields, rule.getRequired()));
+        msgEval.append(new MessageOneofEvaluator(new ArrayList<>(fields), rule.getRequired()));
       }
     }
 
