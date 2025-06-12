@@ -25,7 +25,7 @@ import org.jspecify.annotations.Nullable;
  * {@link CompiledProgram} is a parsed and type-checked {@link Program} along with the source {@link
  * Expression}.
  */
-class CompiledProgram {
+final class CompiledProgram {
   /** A compiled CEL program that can be evaluated against a set of variable bindings. */
   private final Program program;
 
@@ -52,7 +52,7 @@ class CompiledProgram {
    * @param rulePath The field path from the FieldRules to the rule value.
    * @param ruleValue The rule value.
    */
-  public CompiledProgram(
+  CompiledProgram(
       Program program,
       Expression source,
       @Nullable FieldPath rulePath,
@@ -74,7 +74,7 @@ class CompiledProgram {
    *     violations.
    * @throws ExecutionException If the evaluation of the CEL program fails with an error.
    */
-  public RuleViolation.@Nullable Builder eval(Value fieldValue, CelVariableResolver variables)
+  RuleViolation.@Nullable Builder eval(Value fieldValue, CelVariableResolver variables)
       throws ExecutionException {
     Object value;
     try {

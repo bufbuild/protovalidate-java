@@ -26,7 +26,7 @@ import java.util.Objects;
 import org.jspecify.annotations.Nullable;
 
 /** Performs validation on a single message field, defined by its descriptor. */
-class FieldEvaluator implements Evaluator {
+final class FieldEvaluator implements Evaluator {
   private static final FieldDescriptor REQUIRED_DESCRIPTOR =
       FieldRules.getDescriptor().findFieldByNumber(FieldRules.REQUIRED_FIELD_NUMBER);
 
@@ -38,7 +38,7 @@ class FieldEvaluator implements Evaluator {
   private final RuleViolationHelper helper;
 
   /** The {@link ValueEvaluator} to apply to the field's value */
-  public final ValueEvaluator valueEvaluator;
+  final ValueEvaluator valueEvaluator;
 
   /** The {@link FieldDescriptor} targeted by this evaluator */
   private final FieldDescriptor descriptor;

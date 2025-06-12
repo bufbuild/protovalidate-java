@@ -43,7 +43,7 @@ import java.util.Objects;
 import org.jspecify.annotations.Nullable;
 
 /** A build-through cache of message evaluators keyed off the provided descriptor. */
-class EvaluatorBuilder {
+final class EvaluatorBuilder {
   private static final FieldPathElement CEL_FIELD_PATH_ELEMENT =
       FieldPathUtils.fieldPathElement(
           FieldRules.getDescriptor().findFieldByNumber(FieldRules.CEL_FIELD_NUMBER));
@@ -150,8 +150,7 @@ class EvaluatorBuilder {
      * @return Unmodifiable map of descriptors to evaluators.
      * @throws CompilationException If an error occurs compiling a rule on the cache.
      */
-    public Map<Descriptor, MessageEvaluator> build(Descriptor descriptor)
-        throws CompilationException {
+    Map<Descriptor, MessageEvaluator> build(Descriptor descriptor) throws CompilationException {
       createMessageEvaluator(descriptor);
       return Collections.unmodifiableMap(cache);
     }

@@ -30,10 +30,10 @@ import dev.cel.runtime.CelStandardFunctions.StandardFunction.Overload.Conversion
  * Custom {@link CelCompilerLibrary} and {@link CelRuntimeLibrary}. Provides all the custom
  * extension function definitions and overloads.
  */
-class ValidateLibrary implements CelCompilerLibrary, CelRuntimeLibrary {
+final class ValidateLibrary implements CelCompilerLibrary, CelRuntimeLibrary {
 
   /** Creates a ValidateLibrary with all custom declarations and overloads. */
-  public ValidateLibrary() {}
+  ValidateLibrary() {}
 
   @Override
   public void setParserOptions(CelParserBuilder parserBuilder) {
@@ -63,7 +63,7 @@ class ValidateLibrary implements CelCompilerLibrary, CelRuntimeLibrary {
         .setStandardFunctions(
             CelStandardFunctions.newBuilder()
                 .filterFunctions(
-                    // CEL doesn't validate, that the bytes are valid utf-8, so we provide out own
+                    // CEL doesn't validate, that the bytes are valid utf-8, so we provide our own
                     // implementation.
                     (function, overload) ->
                         function != StandardFunction.STRING

@@ -22,7 +22,7 @@ import java.util.Collections;
 import java.util.List;
 
 /** {@link OneofEvaluator} performs validation on a oneof union. */
-class OneofEvaluator implements Evaluator {
+final class OneofEvaluator implements Evaluator {
   /** The {@link OneofDescriptor} targeted by this evaluator. */
   private final OneofDescriptor descriptor;
 
@@ -35,7 +35,7 @@ class OneofEvaluator implements Evaluator {
    * @param descriptor The targeted oneof descriptor.
    * @param required Indicates whether a member of the oneof must be set.
    */
-  public OneofEvaluator(OneofDescriptor descriptor, boolean required) {
+  OneofEvaluator(OneofDescriptor descriptor, boolean required) {
     this.descriptor = descriptor;
     this.required = required;
   }

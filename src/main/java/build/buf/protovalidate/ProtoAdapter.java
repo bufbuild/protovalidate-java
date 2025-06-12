@@ -30,7 +30,7 @@ import java.util.Map;
  */
 final class ProtoAdapter {
   /** Converts a protobuf field value to CEL compatible value. */
-  public static Object toCel(Descriptors.FieldDescriptor fieldDescriptor, Object value) {
+  static Object toCel(Descriptors.FieldDescriptor fieldDescriptor, Object value) {
     Descriptors.FieldDescriptor.Type type = fieldDescriptor.getType();
     if (fieldDescriptor.isMapField()) {
       List<AbstractMessage> input =
@@ -64,7 +64,7 @@ final class ProtoAdapter {
   }
 
   /** Converts a scalar type to cel value. */
-  public static Object scalarToCel(Descriptors.FieldDescriptor.Type type, Object value) {
+  static Object scalarToCel(Descriptors.FieldDescriptor.Type type, Object value) {
     switch (type) {
       case ENUM:
         if (value instanceof Descriptors.EnumValueDescriptor) {

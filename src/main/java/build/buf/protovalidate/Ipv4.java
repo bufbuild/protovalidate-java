@@ -22,14 +22,14 @@ import java.util.List;
  * prefix.
  */
 final class Ipv4 {
-  private String str;
+  private final String str;
   private int index;
-  private List<Short> octets;
+  private final List<Short> octets;
   private int prefixLen;
 
   Ipv4(String str) {
     this.str = str;
-    this.octets = new ArrayList<Short>();
+    this.octets = new ArrayList<>();
   }
 
   /**

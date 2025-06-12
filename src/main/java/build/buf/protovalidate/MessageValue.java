@@ -32,7 +32,7 @@ final class MessageValue implements Value {
    *
    * @param value The message value.
    */
-  public MessageValue(Message value) {
+  MessageValue(Message value) {
     this.value = value;
   }
 

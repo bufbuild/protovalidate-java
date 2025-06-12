@@ -23,10 +23,10 @@ import org.jspecify.annotations.Nullable;
  * prefix.
  */
 final class Ipv6 {
-  private String str;
+  private final String str;
   private int index;
   // 16-bit pieces found
-  private List<Integer> pieces;
+  private final List<Integer> pieces;
   // number of 16-bit pieces found when double colon was found
   private int doubleColonAt;
   private boolean doubleColonSeen;
@@ -40,7 +40,7 @@ final class Ipv6 {
 
   Ipv6(String str) {
     this.str = str;
-    this.pieces = new ArrayList<Integer>();
+    this.pieces = new ArrayList<>();
     this.doubleColonAt = -1;
     this.dottedRaw = "";
   }

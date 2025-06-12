@@ -18,7 +18,7 @@ import build.buf.protovalidate.exceptions.ExecutionException;
 import java.util.Collections;
 import java.util.List;
 
-class EmbeddedMessageEvaluator implements Evaluator {
+final class EmbeddedMessageEvaluator implements Evaluator {
   private final RuleViolationHelper helper;
   private final MessageEvaluator messageEvaluator;
 

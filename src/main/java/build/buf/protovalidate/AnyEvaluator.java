@@ -32,7 +32,7 @@ import java.util.Set;
  * com.google.protobuf.Any}'s within an expression, breaking evaluation if the type is unknown at
  * runtime.
  */
-class AnyEvaluator implements Evaluator {
+final class AnyEvaluator implements Evaluator {
   private final RuleViolationHelper helper;
   private final Descriptors.FieldDescriptor typeURLDescriptor;
   private final Set<String> in;

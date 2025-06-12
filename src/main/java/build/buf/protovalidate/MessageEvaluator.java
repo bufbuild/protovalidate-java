@@ -19,7 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /** Performs validation on a {@link com.google.protobuf.Message}. */
-class MessageEvaluator implements Evaluator {
+final class MessageEvaluator implements Evaluator {
   /** List of {@link Evaluator}s that are applied to a message. */
   private final List<Evaluator> evaluators = new ArrayList<>();
 
@@ -55,7 +55,7 @@ class MessageEvaluator implements Evaluator {
    *
    * @param eval The evaluator to append.
    */
-  public void append(Evaluator eval) {
+  void append(Evaluator eval) {
     evaluators.add(eval);
   }
 }

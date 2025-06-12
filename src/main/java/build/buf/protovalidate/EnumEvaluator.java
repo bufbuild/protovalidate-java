@@ -28,7 +28,7 @@ import java.util.stream.Collectors;
  * {@link EnumEvaluator} checks an enum value being a member of the defined values exclusively. This
  * check is handled outside CEL as enums are completely type erased to integers.
  */
-class EnumEvaluator implements Evaluator {
+final class EnumEvaluator implements Evaluator {
   private final RuleViolationHelper helper;
 
   /** Captures all the defined values for this enum */

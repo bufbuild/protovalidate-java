@@ -25,12 +25,12 @@ import java.util.stream.Collectors;
  * A specialized {@link Evaluator} for applying {@code buf.validate.MessageOneofRule} to a {@link
  * com.google.protobuf.Message}.
  */
-class MessageOneofEvaluator implements Evaluator {
+final class MessageOneofEvaluator implements Evaluator {
   /** List of fields that are part of the oneof */
-  public final List<FieldDescriptor> fields;
+  final List<FieldDescriptor> fields;
 
   /** If at least one must be set. */
-  public final boolean required;
+  final boolean required;
 
   MessageOneofEvaluator(List<FieldDescriptor> fields, boolean required) {
     this.fields = fields;

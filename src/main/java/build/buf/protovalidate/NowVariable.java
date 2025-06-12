@@ -24,15 +24,15 @@ import org.jspecify.annotations.Nullable;
  * {@link NowVariable} implements {@link CelVariableResolver}, providing a lazily produced timestamp
  * for accessing the variable `now` that's constant within an evaluation.
  */
-class NowVariable implements CelVariableResolver {
+final class NowVariable implements CelVariableResolver {
   /** The name of the 'now' variable. */
-  public static final String NOW_NAME = "now";
+  static final String NOW_NAME = "now";
 
   /** The resolved value of the 'now' variable. */
   @Nullable private Timestamp now;
 
   /** Creates an instance of a "now" variable. */
-  public NowVariable() {}
+  NowVariable() {}
 
   @Override
   public Optional<Object> find(String name) {

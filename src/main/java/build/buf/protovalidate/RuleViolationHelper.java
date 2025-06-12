@@ -16,12 +16,12 @@ package build.buf.protovalidate;
 
 import build.buf.validate.FieldPath;
 import build.buf.validate.FieldPathElement;
-import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import org.jspecify.annotations.Nullable;
 
-class RuleViolationHelper {
-  private static final List<FieldPathElement> EMPTY_PREFIX = new ArrayList<>();
+final class RuleViolationHelper {
+  private static final List<FieldPathElement> EMPTY_PREFIX = Collections.emptyList();
 
   private final @Nullable FieldPath rulePrefix;
 
@@ -39,11 +39,6 @@ class RuleViolationHelper {
       this.rulePrefix = null;
       this.fieldPathElement = null;
     }
-  }
-
-  RuleViolationHelper(@Nullable FieldPath rulePrefix) {
-    this.rulePrefix = rulePrefix;
-    this.fieldPathElement = null;
   }
 
   @Nullable FieldPathElement getFieldPathElement() {
