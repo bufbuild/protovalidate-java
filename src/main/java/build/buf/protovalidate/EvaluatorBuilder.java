@@ -180,7 +180,7 @@ final class EvaluatorBuilder {
         processMessageExpressions(descriptor, msgRules, msgEval, defaultInstance);
         processMessageOneofRules(descriptor, msgRules, msgEval);
         processOneofRules(descriptor, msgEval);
-        processFields(descriptor, msgEval);
+        processFields(descriptor, msgRules, msgEval);
       } catch (InvalidProtocolBufferException e) {
         throw new CompilationException(
             "failed to parse proto definition: " + desc.getFullName(), e);
@@ -243,12 +243,17 @@ final class EvaluatorBuilder {
       }
     }
 
-    private void processFields(Descriptor desc, MessageEvaluator msgEval)
+    private void processFields(Descriptor desc, MessageRules msgRules, MessageEvaluator msgEval)
         throws CompilationException, InvalidProtocolBufferException {
       List<FieldDescriptor> fields = desc.getFields();
       for (FieldDescriptor fieldDescriptor : fields) {
         FieldDescriptor descriptor = desc.findFieldByName(fieldDescriptor.getName());
         FieldRules fieldRules = resolver.resolveFieldRules(descriptor);
+        if (!fieldRules.hasIgnore()
+            && msgRules.getOneofList().stream()
+                .anyMatch(oneof -> oneof.getFieldsList().contains(fieldDescriptor.getName()))) {
+          fieldRules = fieldRules.toBuilder().setIgnore(Ignore.IGNORE_IF_UNPOPULATED).build();
+        }
         FieldEvaluator fldEval = buildField(descriptor, fieldRules);
         msgEval.append(fldEval);
       }
