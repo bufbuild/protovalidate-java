@@ -1,4 +1,4 @@
-// Copyright 2023-2024 Buf Technologies, Inc.
+// Copyright 2023-2025 Buf Technologies, Inc.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -14,9 +14,10 @@
 
 package build.buf.protovalidate;
 
+import com.google.protobuf.Descriptors;
 import java.util.List;
 import java.util.Map;
-import javax.annotation.Nullable;
+import org.jspecify.annotations.Nullable;
 
 /**
  * {@link Value} is a wrapper around a protobuf value that provides helper methods for accessing the
@@ -24,13 +25,20 @@ import javax.annotation.Nullable;
  */
 public interface Value {
   /**
+   * Get the field descriptor that corresponds to the underlying Value, if it is a message field.
+   *
+   * @return The underlying {@link Descriptors.FieldDescriptor}. null if the underlying value is not
+   *     a message field.
+   */
+  Descriptors.@Nullable FieldDescriptor fieldDescriptor();
+
+  /**
    * Get the underlying value as a {@link MessageReflector} type.
    *
-   * @return The underlying {@link MessageReflector} value. null if the underlying value is not a
-   *     {@link MessageReflector} type.
+   * @return The underlying {@link MessageReflector} value. null if the underlying value is not a {@link
+   *     MessageReflector} type.
    */
-  @Nullable
-  MessageReflector messageValue();
+  @Nullable MessageReflector messageValue();
 
   /**
    * Get the underlying value as a list.
@@ -63,6 +71,5 @@ public interface Value {
    * @return The value cast to the inferred class type.
    * @param <T> The class type.
    */
-  @Nullable
   <T> T jvmValue(Class<T> clazz);
 }

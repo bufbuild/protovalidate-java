@@ -1,4 +1,4 @@
-// Copyright 2023-2024 Buf Technologies, Inc.
+// Copyright 2023-2025 Buf Technologies, Inc.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -41,8 +41,10 @@ import build.buf.validate.conformance.cases.StringPrefix;
 import build.buf.validate.conformance.cases.TimestampConst;
 import build.buf.validate.conformance.cases.TimestampWithin;
 import build.buf.validate.conformance.cases.WrapperDouble;
-import build.buf.validate.conformance.cases.custom_constraints.DynRuntimeError;
-import build.buf.validate.conformance.cases.custom_constraints.FieldExpressions;
+import build.buf.validate.conformance.cases.custom_rules.DynRuntimeError;
+import build.buf.validate.conformance.cases.custom_rules.FieldExpressionMultipleScalar;
+import build.buf.validate.conformance.cases.custom_rules.FieldExpressionNestedScalar;
+import build.buf.validate.conformance.cases.custom_rules.FieldExpressionScalar;
 import com.google.protobuf.ByteString;
 import com.google.protobuf.DoubleValue;
 import com.google.protobuf.Duration;
@@ -58,7 +60,7 @@ public class ValidatorTest {
   @BeforeEach
   public void setUp() {
     Config config = Config.newBuilder().build();
-    validator = new Validator(config);
+    validator = ValidatorFactory.newBuilder().withConfig(config).build();
   }
 
   @Test
@@ -139,7 +141,8 @@ public class ValidatorTest {
 
   @Test
   public void strictFieldExpressions() throws Exception {
-    FieldExpressions invalid = FieldExpressions.newBuilder().build();
+    FieldExpressionMultipleScalar invalid =
+        FieldExpressionMultipleScalar.newBuilder().setVal(1).build();
     ValidationResult validate = validator.validate(invalid);
     assertThat(validate.getViolations()).hasSize(2);
     assertThat(validate.isSuccess()).isFalse();
@@ -174,14 +177,13 @@ public class ValidatorTest {
 
   @Test
   public void strictFieldExpressionsNested() throws Exception {
-    FieldExpressions invalid =
-        FieldExpressions.newBuilder()
-            .setA(42)
-            .setC(FieldExpressions.Nested.newBuilder().setA(-3).build())
+    FieldExpressionNestedScalar invalid =
+        FieldExpressionNestedScalar.newBuilder()
+            .setNested(FieldExpressionScalar.newBuilder().setVal(2))
             .build();
     ValidationResult validate = validator.validate(invalid);
     assertThat(validate.isSuccess()).isFalse();
-    assertThat(validate.getViolations()).hasSize(4);
+    assertThat(validate.getViolations()).hasSize(1);
   }
 
   @Test

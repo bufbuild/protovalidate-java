@@ -33,7 +33,11 @@ if (matchResult != null) {
 val releaseVersion = project.findProperty("releaseVersion") as String? ?: snapshotVersion
 
 val buf: Configuration by configurations.creating
-val bufLicenseHeaderCLIFile = project.layout.buildDirectory.file("gobin/license-header").get().asFile
+val bufLicenseHeaderCLIFile =
+    project.layout.buildDirectory
+        .file("gobin/license-header")
+        .get()
+        .asFile
 val bufLicenseHeaderCLIPath: String = bufLicenseHeaderCLIFile.absolutePath
 
 tasks.register("configureBuf") {
@@ -60,34 +64,106 @@ tasks.register<Exec>("licenseHeader") {
         "--year-range",
         project.findProperty("license-header.years")!!.toString(),
         "--ignore",
-        "src/main/java/build/buf/validate/",
+        "build/generated/sources/bufgen/",
         "--ignore",
-        "conformance/src/main/java/build/buf/validate/conformance/",
+        "conformance/build/generated/sources/bufgen/",
         "--ignore",
         "src/main/resources/buf/validate/",
     )
 }
 
+tasks.register<Copy>("filterBufGenYaml") {
+    from(".")
+    include("buf.gen.yaml", "src/**/buf*gen*.yaml")
+    includeEmptyDirs = false
+    into(layout.buildDirectory.dir("buf-gen-templates"))
+    expand("protocJavaPluginVersion" to "v${libs.versions.protobuf.get().substringAfter('.')}")
+    filteringCharset = "UTF-8"
+}
+
 tasks.register<Exec>("generateTestSourcesImports") {
-    dependsOn("exportProtovalidateModule")
+    dependsOn("exportProtovalidateModule", "filterBufGenYaml")
     description = "Generates code with buf generate --include-imports for unit tests."
     commandLine(
         buf.asPath,
         "generate",
         "--template",
-        "src/test/resources/proto/buf.gen.imports.yaml",
+        "${layout.buildDirectory.get()}/buf-gen-templates/src/test/resources/proto/buf.gen.imports.yaml",
         "--include-imports",
     )
 }
 
 tasks.register<Exec>("generateTestSourcesNoImports") {
-    dependsOn("exportProtovalidateModule")
+    dependsOn("exportProtovalidateModule", "filterBufGenYaml")
     description = "Generates code with buf generate --include-imports for unit tests."
-    commandLine(buf.asPath, "generate", "--template", "src/test/resources/proto/buf.gen.noimports.yaml")
+    commandLine(
+        buf.asPath,
+        "generate",
+        "--template",
+        "${layout.buildDirectory.get()}/buf-gen-templates/src/test/resources/proto/buf.gen.noimports.yaml",
+    )
 }
 
+tasks.register<Exec>("generateCelConformance") {
+    dependsOn("generateCelConformanceTestTypes", "filterBufGenYaml")
+    description = "Generates CEL conformance code with buf generate for unit tests."
+    commandLine(
+        buf.asPath,
+        "generate",
+        "--template",
+        "${layout.buildDirectory.get()}/buf-gen-templates/src/test/resources/proto/buf.gen.cel.yaml",
+        "buf.build/google/cel-spec:${project.findProperty("cel.spec.version")}",
+        "--exclude-path",
+        "cel/expr/conformance/proto2",
+        "--exclude-path",
+        "cel/expr/conformance/proto3",
+    )
+}
+
+// The conformance tests use the Protobuf package path for tests that use these types.
+// i.e. cel.expr.conformance.proto3.TestAllTypes. But, if we use managed mode it adds 'com'
+// to the prefix. Additionally, we can't disable managed mode because the java_package option
+// specified in these proto files is "dev.cel.expr.conformance.proto3". So, to get around this,
+// we're generating these separately and specifying a java_package override of the package we need.
+tasks.register<Exec>("generateCelConformanceTestTypes") {
+    dependsOn("exportProtovalidateModule", "filterBufGenYaml")
+    description = "Generates CEL conformance test types with buf generate for unit tests using a Java package override."
+    commandLine(
+        buf.asPath,
+        "generate",
+        "--template",
+        "${layout.buildDirectory.get()}/buf-gen-templates/src/test/resources/proto/buf.gen.cel.testtypes.yaml",
+        "buf.build/google/cel-spec:${project.findProperty("cel.spec.version")}",
+        "--path",
+        "cel/expr/conformance/proto3",
+    )
+}
+
+var getCelTestData =
+    tasks.register<Exec>("getCelTestData") {
+        val celVersion = project.findProperty("cel.spec.version")
+        val fileUrl = "https://raw.githubusercontent.com/google/cel-spec/refs/tags/$celVersion/tests/simple/testdata/string_ext.textproto"
+        val targetDir = File("${project.projectDir}/src/test/resources/testdata")
+        val file = File(targetDir, "string_ext_$celVersion.textproto")
+
+        onlyIf {
+            // Only run curl if file doesn't exist
+            !file.exists()
+        }
+        doFirst {
+            file.parentFile.mkdirs()
+            commandLine(
+                "curl",
+                "-fsSL",
+                "-o",
+                file.absolutePath,
+                fileUrl,
+            )
+        }
+    }
+
 tasks.register("generateTestSources") {
-    dependsOn("generateTestSourcesImports", "generateTestSourcesNoImports")
+    dependsOn("generateTestSourcesImports", "generateTestSourcesNoImports", "generateCelConformance")
     description = "Generates code with buf generate for unit tests"
 }
 
@@ -104,23 +180,9 @@ tasks.register<Exec>("exportProtovalidateModule") {
 }
 
 tasks.register<Exec>("generateSources") {
-    dependsOn("exportProtovalidateModule")
-    description = "Generates sources for the bufbuild/protovalidate module sources to src/main/java."
-    commandLine(buf.asPath, "generate", "--template", "buf.gen.yaml", "src/main/resources")
-}
-
-tasks.register<Exec>("generateConformance") {
-    dependsOn("configureBuf")
-    description = "Generates sources for the bufbuild/protovalidate-testing module to conformance/src/main/java."
-    commandLine(
-        buf.asPath,
-        "generate",
-        "--template",
-        "conformance/buf.gen.yaml",
-        "-o",
-        "conformance/",
-        "buf.build/bufbuild/protovalidate-testing:${project.findProperty("protovalidate.version")}",
-    )
+    dependsOn("exportProtovalidateModule", "filterBufGenYaml")
+    description = "Generates sources for the bufbuild/protovalidate module sources to build/generated/sources/bufgen."
+    commandLine(buf.asPath, "generate", "--template", "${layout.buildDirectory.get()}/buf-gen-templates/buf.gen.yaml", "src/main/resources")
 }
 
 tasks.register("generate") {
@@ -128,20 +190,19 @@ tasks.register("generate") {
     dependsOn(
         "generateTestSources",
         "generateSources",
-        "generateConformance",
         "licenseHeader",
     )
 }
 
 tasks.withType<JavaCompile> {
-    dependsOn("generateTestSources")
+    dependsOn("generate")
     if (JavaVersion.current().isJava9Compatible) {
         doFirst {
             options.compilerArgs = mutableListOf("--release", "8")
         }
     }
     // Disable errorprone on generated code
-    options.errorprone.excludedPaths.set("(.*/src/main/java/build/buf/validate/.*|.*/build/generated/.*)")
+    options.errorprone.excludedPaths.set(".*/build/generated/.*")
     if (!name.lowercase().contains("test")) {
         options.errorprone {
             check("NullAway", CheckSeverity.ERROR)
@@ -169,6 +230,11 @@ buildscript {
 }
 
 sourceSets {
+    main {
+        java {
+            srcDir(layout.buildDirectory.dir("generated/sources/bufgen"))
+        }
+    }
     test {
         java {
             srcDir(layout.buildDirectory.dir("generated/test-sources/bufgen"))
@@ -179,7 +245,7 @@ sourceSets {
 apply(plugin = "com.diffplug.spotless")
 configure<SpotlessExtension> {
     java {
-        targetExclude("src/main/java/build/buf/validate/**/*.java", "build/generated/test-sources/bufgen/**/*.java")
+        targetExclude("build/generated/sources/bufgen/build/buf/validate/**/*.java", "build/generated/test-sources/bufgen/**/*.java")
     }
     kotlinGradle {
         ktlint()
@@ -212,13 +278,21 @@ allprojects {
         }
     }
     tasks.withType<Test>().configureEach {
+        dependsOn(getCelTestData)
         useJUnitPlatform()
+        this.testLogging {
+            events("failed")
+            exceptionFormat = org.gradle.api.tasks.testing.logging.TestExceptionFormat.FULL
+            showExceptions = true
+            showCauses = true
+            showStackTraces = true
+        }
     }
 }
 
 mavenPublishing {
     val isAutoReleased = project.hasProperty("signingInMemoryKey")
-    publishToMavenCentral(SonatypeHost.S01)
+    publishToMavenCentral(SonatypeHost.CENTRAL_PORTAL, automaticRelease = true)
     if (isAutoReleased) {
         signAllPublications()
     }
@@ -263,19 +337,17 @@ mavenPublishing {
 
 dependencies {
     annotationProcessor(libs.nullaway)
+    api(libs.jspecify)
     api(libs.protobuf.java)
-    implementation(enforcedPlatform(libs.cel))
-    implementation(libs.cel.core)
-    implementation(libs.guava)
-    implementation(libs.ipaddress)
-    implementation(libs.jakarta.mail.api)
+    implementation(libs.cel)
 
     buf("build.buf:buf:${libs.versions.buf.get()}:${osdetector.classifier}@exe")
 
     testImplementation(libs.assertj)
+    testImplementation(libs.grpc.protobuf)
     testImplementation(platform(libs.junit.bom))
     testImplementation("org.junit.jupiter:junit-jupiter")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 
-    errorprone(libs.errorprone)
+    errorprone(libs.errorprone.core)
 }

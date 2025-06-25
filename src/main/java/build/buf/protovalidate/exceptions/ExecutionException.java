@@ -1,4 +1,4 @@
-// Copyright 2023-2024 Buf Technologies, Inc.
+// Copyright 2023-2025 Buf Technologies, Inc.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -14,7 +14,7 @@
 
 package build.buf.protovalidate.exceptions;
 
-/** ExecutionException is returned when a constraint fails to execute. This is a fatal error. */
+/** ExecutionException is returned when a rule fails to execute. This is a fatal error. */
 public class ExecutionException extends ValidationException {
   /**
    * Creates an ExecutionException with the specified message.

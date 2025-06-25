@@ -1,4 +1,4 @@
-// Copyright 2023-2024 Buf Technologies, Inc.
+// Copyright 2023-2025 Buf Technologies, Inc.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -14,14 +14,14 @@
 
 package build.buf.protovalidate;
 
-import build.buf.validate.Violation;
+import build.buf.validate.Violations;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 /**
- * {@link ValidationResult} is returned when a constraint is executed. It contains a list of
- * violations. This is non-fatal. If there are no violations, the constraint is considered to have
- * passed.
+ * {@link ValidationResult} is returned when a rule is executed. It contains a list of violations.
+ * This is non-fatal. If there are no violations, the rule is considered to have passed.
  */
 public class ValidationResult {
 
@@ -68,15 +68,34 @@ public class ValidationResult {
   @Override
   public String toString() {
     StringBuilder builder = new StringBuilder();
-    builder.append("Validation error:");
-    for (Violation violation : violations) {
-      builder.append("\n - ");
-      if (!violation.getFieldPath().isEmpty()) {
-        builder.append(violation.getFieldPath());
-        builder.append(": ");
+    if (isSuccess()) {
+      builder.append("Validation OK");
+    } else {
+      builder.append("Validation error:");
+      for (Violation violation : violations) {
+        builder.append("\n - ");
+        if (violation.toProto().hasField()) {
+          builder.append(FieldPathUtils.fieldPathString(violation.toProto().getField()));
+          builder.append(": ");
+        }
+        builder.append(
+            String.format(
+                "%s [%s]", violation.toProto().getMessage(), violation.toProto().getRuleId()));
       }
-      builder.append(String.format("%s [%s]", violation.getMessage(), violation.getConstraintId()));
     }
     return builder.toString();
+  }
+
+  /**
+   * Converts the validation result to its equivalent protobuf form.
+   *
+   * @return The protobuf form of this validation result.
+   */
+  public build.buf.validate.Violations toProto() {
+    List<build.buf.validate.Violation> protoViolations = new ArrayList<>();
+    for (Violation violation : violations) {
+      protoViolations.add(violation.toProto());
+    }
+    return Violations.newBuilder().addAllViolations(protoViolations).build();
   }
 }

@@ -1,4 +1,4 @@
-// Copyright 2023-2024 Buf Technologies, Inc.
+// Copyright 2023-2025 Buf Technologies, Inc.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -17,15 +17,14 @@ package build.buf.protovalidate.conformance;
 import build.buf.protovalidate.Config;
 import build.buf.protovalidate.ValidationResult;
 import build.buf.protovalidate.Validator;
+import build.buf.protovalidate.ValidatorFactory;
 import build.buf.protovalidate.exceptions.CompilationException;
 import build.buf.protovalidate.exceptions.ExecutionException;
 import build.buf.validate.ValidateProto;
-import build.buf.validate.Violation;
 import build.buf.validate.Violations;
 import build.buf.validate.conformance.harness.TestConformanceRequest;
 import build.buf.validate.conformance.harness.TestConformanceResponse;
 import build.buf.validate.conformance.harness.TestResult;
-import com.google.common.base.Splitter;
 import com.google.errorprone.annotations.FormatMethod;
 import com.google.protobuf.Any;
 import com.google.protobuf.ByteString;
@@ -35,7 +34,6 @@ import com.google.protobuf.ExtensionRegistry;
 import com.google.protobuf.InvalidProtocolBufferException;
 import com.google.protobuf.TypeRegistry;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class Main {
@@ -63,12 +61,13 @@ public class Main {
       TypeRegistry typeRegistry = FileDescriptorUtil.createTypeRegistry(fileDescriptorMap.values());
       ExtensionRegistry extensionRegistry =
           FileDescriptorUtil.createExtensionRegistry(fileDescriptorMap.values());
-      Validator validator =
-          new Validator(
-              Config.newBuilder()
-                  .setTypeRegistry(typeRegistry)
-                  .setExtensionRegistry(extensionRegistry)
-                  .build());
+      Config cfg =
+          Config.newBuilder()
+              .setTypeRegistry(typeRegistry)
+              .setExtensionRegistry(extensionRegistry)
+              .build();
+      Validator validator = ValidatorFactory.newBuilder().withConfig(cfg).build();
+
       TestConformanceResponse.Builder responseBuilder = TestConformanceResponse.newBuilder();
       Map<String, TestResult> resultsMap = new HashMap<>();
       for (Map.Entry<String, Any> entry : request.getCasesMap().entrySet()) {
@@ -85,8 +84,11 @@ public class Main {
   static TestResult testCase(
       Validator validator, Map<String, Descriptors.Descriptor> fileDescriptors, Any testCase)
       throws InvalidProtocolBufferException {
-    List<String> urlParts = Splitter.on('/').limit(2).splitToList(testCase.getTypeUrl());
-    String fullName = urlParts.get(urlParts.size() - 1);
+    String fullName = testCase.getTypeUrl();
+    int slash = fullName.indexOf('/');
+    if (slash != -1) {
+      fullName = fullName.substring(slash + 1);
+    }
     Descriptors.Descriptor descriptor = fileDescriptors.get(fullName);
     if (descriptor == null) {
       return unexpectedErrorResult("Unable to find descriptor: %s", fullName);
@@ -100,11 +102,11 @@ public class Main {
   private static TestResult validate(Validator validator, DynamicMessage dynamicMessage) {
     try {
       ValidationResult result = validator.validate(dynamicMessage);
-      List<Violation> violations = result.getViolations();
-      if (violations.isEmpty()) {
+      if (result.isSuccess()) {
         return TestResult.newBuilder().setSuccess(true).build();
       }
-      Violations error = Violations.newBuilder().addAllViolations(violations).build();
+      Violations error =
+          Violations.newBuilder().addAllViolations(result.toProto().getViolationsList()).build();
       return TestResult.newBuilder().setValidationError(error).build();
     } catch (CompilationException e) {
       return TestResult.newBuilder().setCompilationError(e.getMessage()).build();

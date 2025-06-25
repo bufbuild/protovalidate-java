@@ -1,4 +1,4 @@
-// Copyright 2023-2024 Buf Technologies, Inc.
+// Copyright 2023-2025 Buf Technologies, Inc.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -24,19 +24,16 @@ public final class Config {
       ExtensionRegistry.getEmptyRegistry();
 
   private final boolean failFast;
-  private final boolean disableLazy;
   private final TypeRegistry typeRegistry;
   private final ExtensionRegistry extensionRegistry;
   private final boolean allowUnknownFields;
 
   private Config(
       boolean failFast,
-      boolean disableLazy,
       TypeRegistry typeRegistry,
       ExtensionRegistry extensionRegistry,
       boolean allowUnknownFields) {
     this.failFast = failFast;
-    this.disableLazy = disableLazy;
     this.typeRegistry = typeRegistry;
     this.extensionRegistry = extensionRegistry;
     this.allowUnknownFields = allowUnknownFields;
@@ -61,15 +58,6 @@ public final class Config {
   }
 
   /**
-   * Checks if the configuration for disabling lazy evaluation is enabled.
-   *
-   * @return if disabling lazy evaluation is enabled
-   */
-  public boolean isDisableLazy() {
-    return disableLazy;
-  }
-
-  /**
    * Gets the type registry used for reparsing protobuf messages.
    *
    * @return a type registry
@@ -88,9 +76,9 @@ public final class Config {
   }
 
   /**
-   * Checks if the configuration for allowing unknown constraint fields is enabled.
+   * Checks if the configuration for allowing unknown rule fields is enabled.
    *
-   * @return if allowing unknown constraint fields is enabled
+   * @return if allowing unknown rule fields is enabled
    */
   public boolean isAllowingUnknownFields() {
     return allowUnknownFields;
@@ -99,7 +87,6 @@ public final class Config {
   /** Builder for configuration. Provides a forward compatible API for users. */
   public static final class Builder {
     private boolean failFast;
-    private boolean disableLazy;
     private TypeRegistry typeRegistry = DEFAULT_TYPE_REGISTRY;
     private ExtensionRegistry extensionRegistry = DEFAULT_EXTENSION_REGISTRY;
     private boolean allowUnknownFields;
@@ -118,22 +105,11 @@ public final class Config {
     }
 
     /**
-     * Set the configuration for disabling lazy evaluation.
-     *
-     * @param disableLazy the boolean for enabling
-     * @return this builder
-     */
-    public Builder setDisableLazy(boolean disableLazy) {
-      this.disableLazy = disableLazy;
-      return this;
-    }
-
-    /**
      * Set the type registry for reparsing protobuf messages. This option should be set alongside
      * setExtensionRegistry to allow dynamic resolution of predefined rule extensions. It should be
      * set to a TypeRegistry with all the message types from your file descriptor set registered. By
-     * default, if any unknown field constraints are found, compilation of the constraints will
-     * fail; use setAllowUnknownFields to control this behavior.
+     * default, if any unknown field rules are found, compilation of the rules will fail; use
+     * setAllowUnknownFields to control this behavior.
      *
      * <p>Note that the message types for any extensions in setExtensionRegistry must be present in
      * the typeRegistry, and have an exactly-equal Descriptor. If the type registry is not set, the
@@ -154,8 +130,8 @@ public final class Config {
      * Set the extension registry for resolving unknown extensions. This option should be set
      * alongside setTypeRegistry to allow dynamic resolution of predefined rule extensions. It
      * should be set to an ExtensionRegistry with all the extension types from your file descriptor
-     * set registered. By default, if any unknown field constraints are found, compilation of the
-     * constraints will fail; use setAllowUnknownFields to control this behavior.
+     * set registered. By default, if any unknown field rules are found, compilation of the rules
+     * will fail; use setAllowUnknownFields to control this behavior.
      *
      * @param extensionRegistry the extension registry to use
      * @return this builder
@@ -166,13 +142,12 @@ public final class Config {
     }
 
     /**
-     * Set whether unknown constraint fields are allowed. If this setting is set to true, unknown
-     * standard predefined field constraints and predefined field constraint extensions will be
-     * ignored. This setting defaults to false, which will result in a CompilationException being
-     * thrown whenever an unknown field constraint is encountered. Setting this to true will cause
-     * some field constraints to be ignored; if the descriptor is dynamic, you can instead use
-     * setExtensionRegistry to provide dynamic type information that protovalidate can use to
-     * resolve the unknown fields.
+     * Set whether unknown rule fields are allowed. If this setting is set to true, unknown standard
+     * predefined field rules and predefined field rule extensions will be ignored. This setting
+     * defaults to false, which will result in a CompilationException being thrown whenever an
+     * unknown field rule is encountered. Setting this to true will cause some field rules to be
+     * ignored; if the descriptor is dynamic, you can instead use setExtensionRegistry to provide
+     * dynamic type information that protovalidate can use to resolve the unknown fields.
      *
      * @param allowUnknownFields setting to apply
      * @return this builder
@@ -188,7 +163,7 @@ public final class Config {
      * @return the configuration.
      */
     public Config build() {
-      return new Config(failFast, disableLazy, typeRegistry, extensionRegistry, allowUnknownFields);
+      return new Config(failFast, typeRegistry, extensionRegistry, allowUnknownFields);
     }
   }
 }

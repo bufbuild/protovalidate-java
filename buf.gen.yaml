@@ -1,4 +1,5 @@
 version: v2
+# clean: true
 plugins:
-  - remote: buf.build/protocolbuffers/java:v28.2
-    out: src/main/java
+  - remote: buf.build/protocolbuffers/java:$protocJavaPluginVersion
+    out: build/generated/sources/bufgen

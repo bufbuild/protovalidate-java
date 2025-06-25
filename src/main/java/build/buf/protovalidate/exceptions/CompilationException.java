@@ -1,4 +1,4 @@
-// Copyright 2023-2024 Buf Technologies, Inc.
+// Copyright 2023-2025 Buf Technologies, Inc.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -14,7 +14,7 @@
 
 package build.buf.protovalidate.exceptions;
 
-/** CompilationException is returned when a constraint fails to compile. This is a fatal error. */
+/** CompilationException is returned when a rule fails to compile. This is a fatal error. */
 public class CompilationException extends ValidationException {
   /**
    * Creates a CompilationException with the specified message.

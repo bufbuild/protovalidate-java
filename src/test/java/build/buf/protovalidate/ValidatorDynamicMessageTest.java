@@ -1,4 +1,4 @@
-// Copyright 2023-2024 Buf Technologies, Inc.
+// Copyright 2023-2025 Buf Technologies, Inc.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -17,12 +17,17 @@ package build.buf.protovalidate;
 import static com.example.imports.validationtest.PredefinedProto.isIdent;
 import static org.assertj.core.api.Assertions.assertThat;
 
+import build.buf.validate.FieldPath;
+import build.buf.validate.FieldPathElement;
+import build.buf.validate.FieldRules;
 import build.buf.validate.Violation;
-import com.example.imports.validationtest.ExamplePredefinedFieldConstraints;
-import com.example.noimports.validationtest.ExampleFieldConstraints;
-import com.example.noimports.validationtest.ExampleMessageConstraints;
-import com.example.noimports.validationtest.ExampleOneofConstraints;
-import com.example.noimports.validationtest.ExampleRequiredFieldConstraints;
+import com.example.imports.buf.validate.StringRules;
+import com.example.imports.validationtest.ExamplePredefinedFieldRules;
+import com.example.noimports.validationtest.ExampleFieldRules;
+import com.example.noimports.validationtest.ExampleMessageRules;
+import com.example.noimports.validationtest.ExampleOneofRules;
+import com.example.noimports.validationtest.ExampleRequiredFieldRules;
+import com.example.noimports.validationtest.PredefinedProto;
 import com.google.protobuf.DescriptorProtos;
 import com.google.protobuf.Descriptors;
 import com.google.protobuf.DynamicMessage;
@@ -41,85 +46,140 @@ import org.junit.jupiter.api.Test;
  * This test mimics the behavior when performing validation with protovalidate on a file descriptor
  * set (as created by <code>protoc --retain_options --descriptor_set_out=...</code>). These
  * descriptor types have the protovalidate extensions as unknown fields and need to be parsed with
- * an extension registry for the constraints to be recognized and validated.
+ * an extension registry for the rules to be recognized and validated.
  */
 public class ValidatorDynamicMessageTest {
 
   @Test
-  public void testFieldConstraintDynamicMessage() throws Exception {
+  public void testFieldRuleDynamicMessage() throws Exception {
     DynamicMessage.Builder messageBuilder =
-        createMessageWithUnknownOptions(ExampleFieldConstraints.getDefaultInstance());
+        createMessageWithUnknownOptions(ExampleFieldRules.getDefaultInstance());
     messageBuilder.setField(
         messageBuilder.getDescriptorForType().findFieldByName("regex_string_field"), "0123456789");
     Violation expectedViolation =
         Violation.newBuilder()
-            .setConstraintId("string.pattern")
-            .setFieldPath("regex_string_field")
+            .setField(
+                FieldPath.newBuilder()
+                    .addElements(
+                        FieldPathUtils.fieldPathElement(
+                            messageBuilder
+                                .getDescriptorForType()
+                                .findFieldByName("regex_string_field"))))
+            .setRule(
+                FieldPath.newBuilder()
+                    .addElements(
+                        FieldPathUtils.fieldPathElement(
+                            FieldRules.getDescriptor()
+                                .findFieldByNumber(FieldRules.STRING_FIELD_NUMBER)))
+                    .addElements(
+                        FieldPathUtils.fieldPathElement(
+                            StringRules.getDescriptor()
+                                .findFieldByNumber(StringRules.PATTERN_FIELD_NUMBER))))
+            .setRuleId("string.pattern")
             .setMessage("value does not match regex pattern `^[a-z0-9]{1,9}$`")
             .build();
-    assertThat(new Validator().validate(messageBuilder.build()).getViolations())
-        .containsExactly(expectedViolation);
+    ValidationResult result =
+        ValidatorFactory.newBuilder().build().validate(messageBuilder.build());
+    assertThat(result.toProto().getViolationsList()).containsExactly(expectedViolation);
+    assertThat(result.getViolations().get(0).getFieldValue().getValue()).isEqualTo("0123456789");
+    assertThat(result.getViolations().get(0).getRuleValue().getValue())
+        .isEqualTo("^[a-z0-9]{1,9}$");
   }
 
   @Test
-  public void testOneofConstraintDynamicMessage() throws Exception {
+  public void testOneofRuleDynamicMessage() throws Exception {
     DynamicMessage.Builder messageBuilder =
-        createMessageWithUnknownOptions(ExampleOneofConstraints.getDefaultInstance());
+        createMessageWithUnknownOptions(ExampleOneofRules.getDefaultInstance());
     Violation expectedViolation =
         Violation.newBuilder()
-            .setFieldPath("contact_info")
-            .setConstraintId("required")
+            .setField(
+                FieldPath.newBuilder()
+                    .addElements(FieldPathElement.newBuilder().setFieldName("contact_info")))
+            .setRuleId("required")
             .setMessage("exactly one field is required in oneof")
             .build();
-    assertThat(new Validator().validate(messageBuilder.build()).getViolations())
+    assertThat(
+            ValidatorFactory.newBuilder()
+                .build()
+                .validate(messageBuilder.build())
+                .toProto()
+                .getViolationsList())
         .containsExactly(expectedViolation);
   }
 
   @Test
-  public void testMessageConstraintDynamicMessage() throws Exception {
+  public void testMessageRuleDynamicMessage() throws Exception {
     DynamicMessage.Builder messageBuilder =
-        createMessageWithUnknownOptions(ExampleMessageConstraints.getDefaultInstance());
+        createMessageWithUnknownOptions(ExampleMessageRules.getDefaultInstance());
     messageBuilder.setField(
         messageBuilder.getDescriptorForType().findFieldByName("secondary_email"),
         "something@somewhere.com");
     Violation expectedViolation =
         Violation.newBuilder()
-            .setConstraintId("secondary_email_depends_on_primary")
+            .setRuleId("secondary_email_depends_on_primary")
             .setMessage("cannot set a secondary email without setting a primary one")
             .build();
-    assertThat(new Validator().validate(messageBuilder.build()).getViolations())
+    assertThat(
+            ValidatorFactory.newBuilder()
+                .build()
+                .validate(messageBuilder.build())
+                .toProto()
+                .getViolationsList())
         .containsExactly(expectedViolation);
   }
 
   @Test
-  public void testRequiredFieldConstraintDynamicMessage() throws Exception {
+  public void testRequiredFieldRuleDynamicMessage() throws Exception {
     DynamicMessage.Builder messageBuilder =
-        createMessageWithUnknownOptions(ExampleRequiredFieldConstraints.getDefaultInstance());
+        createMessageWithUnknownOptions(ExampleRequiredFieldRules.getDefaultInstance());
     messageBuilder.setField(
         messageBuilder.getDescriptorForType().findFieldByName("regex_string_field"), "abc123");
-    assertThat(new Validator().validate(messageBuilder.build()).getViolations()).isEmpty();
+    assertThat(
+            ValidatorFactory.newBuilder().build().validate(messageBuilder.build()).getViolations())
+        .isEmpty();
   }
 
   @Test
-  public void testRequiredFieldConstraintDynamicMessageInvalid() throws Exception {
+  public void testRequiredFieldRuleDynamicMessageInvalid() throws Exception {
     DynamicMessage.Builder messageBuilder =
-        createMessageWithUnknownOptions(ExampleRequiredFieldConstraints.getDefaultInstance());
+        createMessageWithUnknownOptions(ExampleRequiredFieldRules.getDefaultInstance());
     messageBuilder.setField(
         messageBuilder.getDescriptorForType().findFieldByName("regex_string_field"), "0123456789");
     Violation expectedViolation =
         Violation.newBuilder()
-            .setConstraintId("string.pattern")
-            .setFieldPath("regex_string_field")
+            .setField(
+                FieldPath.newBuilder()
+                    .addElements(
+                        FieldPathUtils.fieldPathElement(
+                            messageBuilder
+                                .getDescriptorForType()
+                                .findFieldByName("regex_string_field"))))
+            .setRule(
+                FieldPath.newBuilder()
+                    .addElements(
+                        FieldPathUtils.fieldPathElement(
+                            FieldRules.getDescriptor()
+                                .findFieldByNumber(FieldRules.STRING_FIELD_NUMBER)))
+                    .addElements(
+                        FieldPathUtils.fieldPathElement(
+                            StringRules.getDescriptor()
+                                .findFieldByNumber(StringRules.PATTERN_FIELD_NUMBER))))
+            .setRuleId("string.pattern")
             .setMessage("value does not match regex pattern `^[a-z0-9]{1,9}$`")
             .build();
-    assertThat(new Validator().validate(messageBuilder.build()).getViolations())
+    assertThat(
+            ValidatorFactory.newBuilder()
+                .build()
+                .validate(messageBuilder.build())
+                .toProto()
+                .getViolationsList())
         .containsExactly(expectedViolation);
   }
 
   @Test
-  public void testPredefinedFieldConstraintDynamicMessage() throws Exception {
+  public void testPredefinedFieldRuleDynamicMessage() throws Exception {
     DynamicMessage.Builder messageBuilder =
-        createMessageWithUnknownOptions(ExamplePredefinedFieldConstraints.getDefaultInstance());
+        createMessageWithUnknownOptions(ExamplePredefinedFieldRules.getDefaultInstance());
     messageBuilder.setField(
         messageBuilder.getDescriptorForType().findFieldByName("ident_field"), "abc123");
     ExtensionRegistry registry = ExtensionRegistry.newInstance();
@@ -128,19 +188,37 @@ public class ValidatorDynamicMessageTest {
         TypeRegistry.newBuilder().add(isIdent.getDescriptor().getContainingType()).build();
     Config config =
         Config.newBuilder().setExtensionRegistry(registry).setTypeRegistry(typeRegistry).build();
-    assertThat(new Validator(config).validate(messageBuilder.build()).getViolations()).isEmpty();
+    assertThat(
+            ValidatorFactory.newBuilder()
+                .withConfig(config)
+                .build()
+                .validate(messageBuilder.build())
+                .getViolations())
+        .isEmpty();
   }
 
   @Test
-  public void testPredefinedFieldConstraintDynamicMessageInvalid() throws Exception {
+  public void testPredefinedFieldRuleDynamicMessageInvalid() throws Exception {
     DynamicMessage.Builder messageBuilder =
-        createMessageWithUnknownOptions(ExamplePredefinedFieldConstraints.getDefaultInstance());
+        createMessageWithUnknownOptions(ExamplePredefinedFieldRules.getDefaultInstance());
     messageBuilder.setField(
         messageBuilder.getDescriptorForType().findFieldByName("ident_field"), "0123456789");
     Violation expectedViolation =
         Violation.newBuilder()
-            .setConstraintId("string.is_ident")
-            .setFieldPath("ident_field")
+            .setField(
+                FieldPath.newBuilder()
+                    .addElements(
+                        FieldPathUtils.fieldPathElement(
+                            messageBuilder.getDescriptorForType().findFieldByName("ident_field"))))
+            .setRule(
+                FieldPath.newBuilder()
+                    .addElements(
+                        FieldPathUtils.fieldPathElement(
+                            FieldRules.getDescriptor()
+                                .findFieldByNumber(FieldRules.STRING_FIELD_NUMBER)))
+                    .addElements(
+                        FieldPathUtils.fieldPathElement(PredefinedProto.isIdent.getDescriptor())))
+            .setRuleId("string.is_ident")
             .setMessage("invalid identifier")
             .build();
     ExtensionRegistry registry = ExtensionRegistry.newInstance();
@@ -149,7 +227,13 @@ public class ValidatorDynamicMessageTest {
         TypeRegistry.newBuilder().add(isIdent.getDescriptor().getContainingType()).build();
     Config config =
         Config.newBuilder().setExtensionRegistry(registry).setTypeRegistry(typeRegistry).build();
-    assertThat(new Validator(config).validate(messageBuilder.build()).getViolations())
+    assertThat(
+            ValidatorFactory.newBuilder()
+                .withConfig(config)
+                .build()
+                .validate(messageBuilder.build())
+                .toProto()
+                .getViolationsList())
         .containsExactly(expectedViolation);
   }
 
