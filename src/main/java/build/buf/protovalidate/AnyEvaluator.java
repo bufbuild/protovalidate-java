@@ -19,7 +19,6 @@ import build.buf.validate.AnyRules;
 import build.buf.validate.FieldPath;
 import build.buf.validate.FieldRules;
 import com.google.protobuf.Descriptors;
-import com.google.protobuf.Message;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;

@@ -17,7 +17,6 @@ package build.buf.protovalidate;
 import build.buf.protovalidate.exceptions.ExecutionException;
 import build.buf.validate.FieldPathElement;
 import com.google.protobuf.Descriptors.OneofDescriptor;
-import com.google.protobuf.Message;
 import java.util.Collections;
 import java.util.List;
 
