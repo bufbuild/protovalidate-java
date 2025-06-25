@@ -68,7 +68,7 @@ final class ObjectValue implements Value {
   @Override
   public <T> T jvmValue(Class<T> clazz) {
     if (value instanceof Descriptors.EnumValueDescriptor) {
-      return clazz.cast(((Descriptors.EnumValueDescriptor) value).getNumber());
+      return clazz.cast((long) ((Descriptors.EnumValueDescriptor) value).getNumber());
     }
     return clazz.cast(ProtoAdapter.toCel(fieldDescriptor, value));
   }

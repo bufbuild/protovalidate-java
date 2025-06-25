@@ -77,11 +77,11 @@ final class EnumEvaluator implements Evaluator {
   @Override
   public List<RuleViolation.Builder> evaluate(Value val, boolean failFast)
       throws ExecutionException {
-    Integer enumValue = val.jvmValue(Integer.class);
+    Long enumValue = val.jvmValue(Long.class);
     if (enumValue == null) {
       return RuleViolation.NO_VIOLATIONS;
     }
-    if (!values.contains(enumValue.longValue())) {
+    if (!values.contains(enumValue)) {
       return Collections.singletonList(
           RuleViolation.newBuilder()
               .addAllRulePathElements(helper.getRulePrefixElements())
