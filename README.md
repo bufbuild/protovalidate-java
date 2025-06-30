@@ -64,7 +64,7 @@ Highlights for Java developers include:
 * A comprehensive RPC quickstart for [Java and gRPC][grpc-java]
 * A [migration guide for protoc-gen-validate][migration-guide] users
 
-## Additional Languages and Repositories
+## Additional languages and repositories
 
 Protovalidate isn't just for Java! You might be interested in sibling repositories for other languages:
 
