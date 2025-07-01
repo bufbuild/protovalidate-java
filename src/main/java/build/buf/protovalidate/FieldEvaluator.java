@@ -111,13 +111,17 @@ final class FieldEvaluator implements Evaluator {
     if (this.shouldIgnoreAlways()) {
       return RuleViolation.NO_VIOLATIONS;
     }
-    Message message = val.messageValue();
+    MessageReflector message = val.messageValue();
     if (message == null) {
       return RuleViolation.NO_VIOLATIONS;
     }
     boolean hasField;
     if (descriptor.isRepeated()) {
-      hasField = message.getRepeatedFieldCount(descriptor) != 0;
+      if (descriptor.isMapField()) {
+        hasField = !message.getField(descriptor).mapValue().isEmpty();
+      } else {
+        hasField = !message.getField(descriptor).repeatedValue().isEmpty();
+      }
     } else {
       hasField = message.hasField(descriptor);
     }
@@ -134,11 +138,10 @@ final class FieldEvaluator implements Evaluator {
     if (this.shouldIgnoreEmpty() && !hasField) {
       return RuleViolation.NO_VIOLATIONS;
     }
-    Object fieldValue = message.getField(descriptor);
-    if (this.shouldIgnoreDefault()
-        && Objects.equals(zero, ProtoAdapter.toCel(descriptor, fieldValue))) {
+    Value fieldValue = message.getField(descriptor);
+    if (this.shouldIgnoreDefault() && Objects.equals(zero, fieldValue.jvmValue(Object.class))) {
       return RuleViolation.NO_VIOLATIONS;
     }
-    return valueEvaluator.evaluate(new ObjectValue(descriptor, fieldValue), failFast);
+    return valueEvaluator.evaluate(fieldValue, failFast);
   }
 }
