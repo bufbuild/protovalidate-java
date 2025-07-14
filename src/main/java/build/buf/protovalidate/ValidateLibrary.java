@@ -22,7 +22,6 @@ import dev.cel.parser.CelParserBuilder;
 import dev.cel.parser.CelStandardMacro;
 import dev.cel.runtime.CelRuntimeBuilder;
 import dev.cel.runtime.CelRuntimeLibrary;
-import dev.cel.runtime.CelStandardFunctions;
 
 /**
  * Custom {@link CelCompilerLibrary} and {@link CelRuntimeLibrary}. Provides all the custom
@@ -57,7 +56,6 @@ final class ValidateLibrary implements CelCompilerLibrary, CelRuntimeLibrary {
   public void setRuntimeOptions(CelRuntimeBuilder runtimeBuilder) {
     runtimeBuilder
         .addFunctionBindings(CustomOverload.create())
-        .setStandardEnvironmentEnabled(false)
-        .setStandardFunctions(CelStandardFunctions.newBuilder().build());
+        .setStandardEnvironmentEnabled(false);
   }
 }
