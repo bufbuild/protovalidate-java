@@ -54,8 +54,6 @@ final class ValidateLibrary implements CelCompilerLibrary, CelRuntimeLibrary {
 
   @Override
   public void setRuntimeOptions(CelRuntimeBuilder runtimeBuilder) {
-    runtimeBuilder
-        .addFunctionBindings(CustomOverload.create())
-        .setStandardEnvironmentEnabled(false);
+    runtimeBuilder.addFunctionBindings(CustomOverload.create());
   }
 }
