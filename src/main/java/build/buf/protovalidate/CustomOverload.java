@@ -22,7 +22,7 @@ import dev.cel.common.CelRuntimeException;
 import dev.cel.common.types.CelType;
 import dev.cel.common.types.SimpleType;
 import dev.cel.runtime.CelEvaluationException;
-import dev.cel.runtime.CelRuntime.CelFunctionBinding;
+import dev.cel.runtime.CelFunctionBinding;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
