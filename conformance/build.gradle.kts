@@ -43,7 +43,7 @@ tasks.register<Exec>("installProtovalidateConformance") {
     commandLine(
         "go",
         "install",
-        "github.com/bufbuild/protovalidate/tools/protovalidate-conformance@next",
+        "github.com/bufbuild/protovalidate/tools/protovalidate-conformance@${project.findProperty("protovalidate.version")}",
     )
 }
 
@@ -70,7 +70,7 @@ tasks.register<Exec>("generateConformance") {
         "generate",
         "--template",
         "${layout.buildDirectory.get()}/buf-gen-templates/buf.gen.yaml",
-        "https://github.com/bufbuild/protovalidate.git#branch=next,subdir=proto/protovalidate-testing",
+        "buf.build/bufbuild/protovalidate-testing:${project.findProperty("protovalidate.version")}",
     )
 }
 
