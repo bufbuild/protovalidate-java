@@ -3,7 +3,7 @@ assertj = "3.27.3"
 buf = "1.55.1"
 cel = "0.10.1"
 error-prone = "2.41.0"
-junit = "5.13.3"
+junit = "5.13.4"
 maven-publish = "0.34.0"
 protobuf = "4.31.1"
 
