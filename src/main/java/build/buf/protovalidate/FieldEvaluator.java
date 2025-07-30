@@ -19,7 +19,6 @@ import build.buf.validate.FieldPath;
 import build.buf.validate.FieldRules;
 import build.buf.validate.Ignore;
 import com.google.protobuf.Descriptors.FieldDescriptor;
-import com.google.protobuf.Message;
 import java.util.Collections;
 import java.util.List;
 
