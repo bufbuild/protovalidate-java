@@ -22,9 +22,6 @@ import dev.cel.parser.CelParserBuilder;
 import dev.cel.parser.CelStandardMacro;
 import dev.cel.runtime.CelRuntimeBuilder;
 import dev.cel.runtime.CelRuntimeLibrary;
-import dev.cel.runtime.CelStandardFunctions;
-import dev.cel.runtime.CelStandardFunctions.StandardFunction;
-import dev.cel.runtime.CelStandardFunctions.StandardFunction.Overload.Conversions;
 
 /**
  * Custom {@link CelCompilerLibrary} and {@link CelRuntimeLibrary}. Provides all the custom
@@ -57,17 +54,6 @@ final class ValidateLibrary implements CelCompilerLibrary, CelRuntimeLibrary {
 
   @Override
   public void setRuntimeOptions(CelRuntimeBuilder runtimeBuilder) {
-    runtimeBuilder
-        .addFunctionBindings(CustomOverload.create())
-        .setStandardEnvironmentEnabled(false)
-        .setStandardFunctions(
-            CelStandardFunctions.newBuilder()
-                .filterFunctions(
-                    // CEL doesn't validate, that the bytes are valid utf-8, so we provide our own
-                    // implementation.
-                    (function, overload) ->
-                        function != StandardFunction.STRING
-                            || !overload.equals(Conversions.BYTES_TO_STRING))
-                .build());
+    runtimeBuilder.addFunctionBindings(CustomOverload.create());
   }
 }

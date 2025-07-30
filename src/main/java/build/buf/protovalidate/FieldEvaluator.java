@@ -22,8 +22,6 @@ import com.google.protobuf.Descriptors.FieldDescriptor;
 import com.google.protobuf.Message;
 import java.util.Collections;
 import java.util.List;
-import java.util.Objects;
-import org.jspecify.annotations.Nullable;
 
 /** Performs validation on a single message field, defined by its descriptor. */
 final class FieldEvaluator implements Evaluator {
@@ -52,23 +50,19 @@ final class FieldEvaluator implements Evaluator {
   /** Whether the field distinguishes between unpopulated and default values. */
   private final boolean hasPresence;
 
-  @Nullable private final Object zero;
-
   /** Constructs a new {@link FieldEvaluator} */
   FieldEvaluator(
       ValueEvaluator valueEvaluator,
       FieldDescriptor descriptor,
       boolean required,
       boolean hasPresence,
-      Ignore ignore,
-      @Nullable Object zero) {
+      Ignore ignore) {
     this.helper = new RuleViolationHelper(valueEvaluator);
     this.valueEvaluator = valueEvaluator;
     this.descriptor = descriptor;
     this.required = required;
     this.hasPresence = hasPresence;
     this.ignore = ignore;
-    this.zero = zero;
   }
 
   @Override
@@ -92,17 +86,7 @@ final class FieldEvaluator implements Evaluator {
    * set.
    */
   private boolean shouldIgnoreEmpty() {
-    return this.hasPresence
-        || this.ignore == Ignore.IGNORE_IF_UNPOPULATED
-        || this.ignore == Ignore.IGNORE_IF_DEFAULT_VALUE;
-  }
-
-  /**
-   * Returns whether a field should skip validation on its zero value, including for fields which
-   * have field presence and are set to the zero value.
-   */
-  private boolean shouldIgnoreDefault() {
-    return this.hasPresence && this.ignore == Ignore.IGNORE_IF_DEFAULT_VALUE;
+    return this.hasPresence || this.ignore == Ignore.IGNORE_IF_ZERO_VALUE;
   }
 
   @Override
@@ -138,10 +122,6 @@ final class FieldEvaluator implements Evaluator {
     if (this.shouldIgnoreEmpty() && !hasField) {
       return RuleViolation.NO_VIOLATIONS;
     }
-    Value fieldValue = message.getField(descriptor);
-    if (this.shouldIgnoreDefault() && Objects.equals(zero, fieldValue.jvmValue(Object.class))) {
-      return RuleViolation.NO_VIOLATIONS;
-    }
-    return valueEvaluator.evaluate(fieldValue, failFast);
+    return valueEvaluator.evaluate(message.getField(descriptor), failFast);
   }
 }

@@ -94,7 +94,7 @@ class FormatTest {
             .build();
   }
 
-  @ParameterizedTest()
+  @ParameterizedTest
   @MethodSource("getFormatTests")
   void testFormatSuccess(SimpleTest test) throws CelValidationException, CelEvaluationException {
     Object result = evaluate(test);
@@ -102,7 +102,7 @@ class FormatTest {
     assertThat(result).isInstanceOf(String.class);
   }
 
-  @ParameterizedTest()
+  @ParameterizedTest
   @MethodSource("getFormatErrorTests")
   void testFormatError(SimpleTest test) {
     assertThatThrownBy(() -> evaluate(test)).isInstanceOf(CelEvaluationException.class);
