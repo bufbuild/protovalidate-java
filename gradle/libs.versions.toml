@@ -1,6 +1,6 @@
 [versions]
 assertj = "3.27.3"
-buf = "1.55.1"
+buf = "1.56.0"
 cel = "0.10.1"
 error-prone = "2.41.0"
 junit = "5.13.4"
