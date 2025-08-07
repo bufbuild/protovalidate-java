@@ -174,9 +174,6 @@ final class EvaluatorBuilder {
         DynamicMessage defaultInstance = DynamicMessage.newBuilder(desc).buildPartial();
         Descriptor descriptor = defaultInstance.getDescriptorForType();
         MessageRules msgRules = resolver.resolveMessageRules(descriptor);
-        if (msgRules.getDisabled()) {
-          return;
-        }
         processMessageExpressions(descriptor, msgRules, msgEval, defaultInstance);
         processMessageOneofRules(descriptor, msgRules, msgEval);
         processOneofRules(descriptor, msgEval);
@@ -252,7 +249,7 @@ final class EvaluatorBuilder {
         if (!fieldRules.hasIgnore()
             && msgRules.getOneofList().stream()
                 .anyMatch(oneof -> oneof.getFieldsList().contains(fieldDescriptor.getName()))) {
-          fieldRules = fieldRules.toBuilder().setIgnore(Ignore.IGNORE_IF_UNPOPULATED).build();
+          fieldRules = fieldRules.toBuilder().setIgnore(Ignore.IGNORE_IF_ZERO_VALUE).build();
         }
         FieldEvaluator fldEval = buildField(descriptor, fieldRules);
         msgEval.append(fldEval);
@@ -262,30 +259,19 @@ final class EvaluatorBuilder {
     private FieldEvaluator buildField(FieldDescriptor fieldDescriptor, FieldRules fieldRules)
         throws CompilationException {
       ValueEvaluator valueEvaluatorEval = new ValueEvaluator(fieldDescriptor, null);
-      boolean ignoreDefault = fieldDescriptor.hasPresence() && shouldIgnoreDefault(fieldRules);
-      Object zero = null;
-      if (ignoreDefault) {
-        zero = zeroValue(fieldDescriptor, false);
-      }
       FieldEvaluator fieldEvaluator =
           new FieldEvaluator(
               valueEvaluatorEval,
               fieldDescriptor,
               fieldRules.getRequired(),
               fieldDescriptor.hasPresence(),
-              fieldRules.getIgnore(),
-              zero);
+              fieldRules.getIgnore());
       buildValue(fieldDescriptor, fieldRules, fieldEvaluator.valueEvaluator);
       return fieldEvaluator;
     }
 
     private static boolean shouldIgnoreEmpty(FieldRules rules) {
-      return rules.getIgnore() == Ignore.IGNORE_IF_UNPOPULATED
-          || rules.getIgnore() == Ignore.IGNORE_IF_DEFAULT_VALUE;
-    }
-
-    private static boolean shouldIgnoreDefault(FieldRules rules) {
-      return rules.getIgnore() == Ignore.IGNORE_IF_DEFAULT_VALUE;
+      return rules.getIgnore() == Ignore.IGNORE_IF_ZERO_VALUE;
     }
 
     private void buildValue(
