@@ -77,7 +77,7 @@ final class EnumEvaluator implements Evaluator {
   @Override
   public List<RuleViolation.Builder> evaluate(Value val, boolean failFast)
       throws ExecutionException {
-    Object enumValue = val.value(Object.class);
+    Long enumValue = val.jvmValue(Long.class);
     if (enumValue == null) {
       return RuleViolation.NO_VIOLATIONS;
     }
