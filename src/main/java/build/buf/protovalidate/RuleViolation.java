@@ -260,4 +260,9 @@ final class RuleViolation implements Violation {
   public @Nullable FieldValue getRuleValue() {
     return ruleValue;
   }
+
+  @Override
+  public String toString() {
+    return proto.toString();
+  }
 }

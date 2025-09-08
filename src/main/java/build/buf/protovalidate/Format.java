@@ -22,6 +22,7 @@ import com.google.protobuf.Duration;
 import com.google.protobuf.NullValue;
 import com.google.protobuf.Timestamp;
 import dev.cel.common.types.TypeType;
+import dev.cel.common.values.CelByteString;
 import dev.cel.runtime.CelEvaluationException;
 import java.math.BigInteger;
 import java.nio.charset.StandardCharsets;
@@ -151,6 +152,10 @@ final class Format {
       String byteStr = ((ByteString) val).toStringUtf8();
       // Collapse any contiguous placeholders into one
       return byteStr.replaceAll("\\ufffd+", "\ufffd");
+    } else if (val instanceof CelByteString) {
+      String byteStr = ((CelByteString) val).toStringUtf8();
+      // Collapse any contiguous placeholders into one
+      return byteStr.replaceAll("\\ufffd+", "\ufffd");
     } else if (val instanceof Double) {
       Optional<String> result = validateNumber(val);
       if (result.isPresent()) {
@@ -165,7 +170,9 @@ final class Format {
       return formatList((List<?>) val);
     } else if (val instanceof Map) {
       return formatMap((Map<?, ?>) val);
-    } else if (val == null || val instanceof NullValue) {
+    } else if (val == null
+        || val instanceof NullValue
+        || val instanceof dev.cel.common.values.NullValue) {
       return "null";
     }
     throw new CelEvaluationException(
@@ -253,6 +260,13 @@ final class Format {
     } else if (val instanceof ByteString) {
       StringBuilder hexString = new StringBuilder();
       for (byte b : (ByteString) val) {
+        hexString.append(String.format("%02x", b));
+      }
+      return hexString.toString();
+    } else if (val instanceof CelByteString) {
+      StringBuilder hexString = new StringBuilder();
+      byte[] celBytes = ((CelByteString) val).toByteArray();
+      for (byte b : celBytes) {
         hexString.append(String.format("%02x", b));
       }
       return hexString.toString();

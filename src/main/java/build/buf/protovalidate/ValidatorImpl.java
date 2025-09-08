@@ -20,6 +20,7 @@ import com.google.protobuf.Descriptors.Descriptor;
 import com.google.protobuf.Message;
 import dev.cel.bundle.Cel;
 import dev.cel.bundle.CelFactory;
+import dev.cel.common.CelOptions;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -39,6 +40,8 @@ final class ValidatorImpl implements Validator {
         CelFactory.standardCelBuilder()
             .addCompilerLibraries(validateLibrary)
             .addRuntimeLibraries(validateLibrary)
+            .setOptions(
+                CelOptions.DEFAULT.toBuilder().evaluateCanonicalTypesToNativeValues(true).build())
             .build();
     this.evaluatorBuilder = new EvaluatorBuilder(cel, config);
     this.failFast = config.isFailFast();
@@ -51,6 +54,8 @@ final class ValidatorImpl implements Validator {
         CelFactory.standardCelBuilder()
             .addCompilerLibraries(validateLibrary)
             .addRuntimeLibraries(validateLibrary)
+            .setOptions(
+                CelOptions.DEFAULT.toBuilder().evaluateCanonicalTypesToNativeValues(true).build())
             .build();
     this.evaluatorBuilder = new EvaluatorBuilder(cel, config, descriptors, disableLazy);
     this.failFast = config.isFailFast();

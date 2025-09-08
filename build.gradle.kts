@@ -338,10 +338,7 @@ dependencies {
     annotationProcessor(libs.nullaway)
     api(libs.jspecify)
     api(libs.protobuf.java)
-    implementation(libs.cel) {
-        // https://github.com/google/cel-java/issues/748
-        exclude(group = "com.google.protobuf", module = "protobuf-javalite")
-    }
+    implementation(libs.cel)
 
     buf("build.buf:buf:${libs.versions.buf.get()}:${osdetector.classifier}@exe")
 

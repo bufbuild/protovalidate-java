@@ -27,6 +27,7 @@ import com.google.protobuf.TextFormat;
 import dev.cel.bundle.Cel;
 import dev.cel.bundle.CelBuilder;
 import dev.cel.bundle.CelFactory;
+import dev.cel.common.CelOptions;
 import dev.cel.common.CelValidationException;
 import dev.cel.common.CelValidationResult;
 import dev.cel.common.types.SimpleType;
@@ -50,7 +51,7 @@ import org.junit.jupiter.params.provider.MethodSource;
 class FormatTest {
   // Version of the cel-spec that this implementation is conformant with
   // This should be kept in sync with the version in gradle.properties
-  private static String CEL_SPEC_VERSION = "v0.24.0";
+  private static final String CEL_SPEC_VERSION = "v0.24.0";
 
   private static Cel cel;
 
@@ -91,6 +92,8 @@ class FormatTest {
         CelFactory.standardCelBuilder()
             .addCompilerLibraries(validateLibrary)
             .addRuntimeLibraries(validateLibrary)
+            .setOptions(
+                CelOptions.DEFAULT.toBuilder().evaluateCanonicalTypesToNativeValues(true).build())
             .build();
   }
 

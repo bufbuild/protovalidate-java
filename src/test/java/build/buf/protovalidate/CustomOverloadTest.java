@@ -20,6 +20,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import dev.cel.bundle.Cel;
 import dev.cel.bundle.CelFactory;
 import dev.cel.common.CelAbstractSyntaxTree;
+import dev.cel.common.CelOptions;
 import dev.cel.common.CelValidationException;
 import dev.cel.common.CelValidationResult;
 import dev.cel.runtime.CelEvaluationException;
@@ -35,6 +36,8 @@ public class CustomOverloadTest {
       CelFactory.standardCelBuilder()
           .addCompilerLibraries(validateLibrary)
           .addRuntimeLibraries(validateLibrary)
+          .setOptions(
+              CelOptions.DEFAULT.toBuilder().evaluateCanonicalTypesToNativeValues(true).build())
           .build();
 
   @Test
