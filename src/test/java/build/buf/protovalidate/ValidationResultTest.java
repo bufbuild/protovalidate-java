@@ -25,7 +25,7 @@ class ValidationResultTest {
   @Test
   void testToStringNoViolations() {
 
-    List<Violation> violations = new ArrayList<Violation>();
+    List<Violation> violations = new ArrayList<>();
     ValidationResult result = new ValidationResult(violations);
 
     assertThat(result.toString()).isEqualTo("Validation OK");
@@ -43,7 +43,7 @@ class ValidationResultTest {
             .setMessage("value must equal 42")
             .addFirstFieldPathElement(elem)
             .build();
-    List<Violation> violations = new ArrayList<Violation>();
+    List<Violation> violations = new ArrayList<>();
     violations.add(violation);
     ValidationResult result = new ValidationResult(violations);
 
@@ -69,7 +69,7 @@ class ValidationResultTest {
             .setMessage("value is required")
             .addFirstFieldPathElement(elem)
             .build();
-    List<Violation> violations = new ArrayList<Violation>();
+    List<Violation> violations = new ArrayList<>();
     violations.add(violation1);
     violations.add(violation2);
     ValidationResult result = new ValidationResult(violations);
@@ -86,7 +86,7 @@ class ValidationResultTest {
     FieldPathElement elem2 =
         FieldPathElement.newBuilder().setFieldNumber(5).setFieldName("nested_name").build();
 
-    List<FieldPathElement> elems = new ArrayList<FieldPathElement>();
+    List<FieldPathElement> elems = new ArrayList<>();
     elems.add(elem1);
     elems.add(elem2);
 
@@ -97,7 +97,7 @@ class ValidationResultTest {
             .addAllFieldPathElements(elems)
             .build();
 
-    List<Violation> violations = new ArrayList<Violation>();
+    List<Violation> violations = new ArrayList<>();
     violations.add(violation1);
     ValidationResult result = new ValidationResult(violations);
 
@@ -113,7 +113,7 @@ class ValidationResultTest {
             .setRuleId("int32.const")
             .setMessage("value must equal 42")
             .build();
-    List<Violation> violations = new ArrayList<Violation>();
+    List<Violation> violations = new ArrayList<>();
     violations.add(violation);
     ValidationResult result = new ValidationResult(violations);
 
