@@ -175,6 +175,6 @@ working together to make `protovalidate` the best it can be.
 
 [file-bug]: https://github.com/bufbuild/protovalidate-java/issues/new?assignees=&labels=Bug&template=bug_report.md&title=%5BBUG%5D
 
-[file-feature-request]: https://github.com/bufbuild/protovalidate=java/issues/new?assignees=&labels=Feature&template=feature_request.md&title=%5BFeature+Request%5D
+[file-feature-request]: https://github.com/bufbuild/protovalidate-java/issues/new?assignees=&labels=Feature&template=feature_request.md&title=%5BFeature+Request%5D
 
 [cel-spec]: https://github.com/google/cel-spec
