@@ -1,5 +1,5 @@
 [versions]
-assertj = "3.27.4"
+assertj = "3.27.6"
 buf = "1.57.2"
 cel = "0.11.0"
 error-prone = "2.42.0"
