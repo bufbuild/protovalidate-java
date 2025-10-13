@@ -23,7 +23,6 @@ import build.buf.validate.MessageOneofRule;
 import build.buf.validate.MessageRules;
 import build.buf.validate.OneofRules;
 import build.buf.validate.Rule;
-import com.google.protobuf.ByteString;
 import com.google.protobuf.Descriptors;
 import com.google.protobuf.Descriptors.Descriptor;
 import com.google.protobuf.Descriptors.FieldDescriptor;
@@ -33,6 +32,7 @@ import com.google.protobuf.Message;
 import dev.cel.bundle.Cel;
 import dev.cel.bundle.CelBuilder;
 import dev.cel.common.types.StructTypeReference;
+import dev.cel.common.values.CelByteString;
 import dev.cel.runtime.CelEvaluationException;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -320,7 +320,7 @@ final class EvaluatorBuilder {
             zero = "";
             break;
           case BYTE_STRING:
-            zero = ByteString.EMPTY;
+            zero = CelByteString.EMPTY;
             break;
           case ENUM:
             zero = (long) fieldDescriptor.getEnumType().getValues().get(0).getNumber();

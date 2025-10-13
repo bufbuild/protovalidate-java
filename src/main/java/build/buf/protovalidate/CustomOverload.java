@@ -14,11 +14,11 @@
 
 package build.buf.protovalidate;
 
-import com.google.protobuf.ByteString;
 import com.google.protobuf.Descriptors;
 import com.google.protobuf.Message;
 import dev.cel.common.types.CelType;
 import dev.cel.common.types.SimpleType;
+import dev.cel.common.values.CelByteString;
 import dev.cel.runtime.CelEvaluationException;
 import dev.cel.runtime.CelFunctionBinding;
 import java.util.ArrayList;
@@ -131,14 +131,16 @@ final class CustomOverload {
   private static CelFunctionBinding celStartsWithBytes() {
     return CelFunctionBinding.from(
         "starts_with_bytes",
-        ByteString.class,
-        ByteString.class,
+        CelByteString.class,
+        CelByteString.class,
         (receiver, param) -> {
           if (receiver.size() < param.size()) {
             return false;
           }
-          for (int i = 0; i < param.size(); i++) {
-            if (param.byteAt(i) != receiver.byteAt(i)) {
+          byte[] paramBytes = param.toByteArray();
+          byte[] receiverBytes = receiver.toByteArray();
+          for (int i = 0; i < paramBytes.length; i++) {
+            if (paramBytes[i] != receiverBytes[i]) {
               return false;
             }
           }
@@ -154,14 +156,16 @@ final class CustomOverload {
   private static CelFunctionBinding celEndsWithBytes() {
     return CelFunctionBinding.from(
         "ends_with_bytes",
-        ByteString.class,
-        ByteString.class,
+        CelByteString.class,
+        CelByteString.class,
         (receiver, param) -> {
           if (receiver.size() < param.size()) {
             return false;
           }
-          for (int i = 0; i < param.size(); i++) {
-            if (param.byteAt(param.size() - i - 1) != receiver.byteAt(receiver.size() - i - 1)) {
+          byte[] paramBytes = param.toByteArray();
+          byte[] receiverBytes = receiver.toByteArray();
+          for (int i = 0; i < paramBytes.length; i++) {
+            if (paramBytes[param.size() - i - 1] != receiverBytes[receiver.size() - i - 1]) {
               return false;
             }
           }
@@ -177,8 +181,8 @@ final class CustomOverload {
   private static CelFunctionBinding celContainsBytes() {
     return CelFunctionBinding.from(
         "contains_bytes",
-        ByteString.class,
-        ByteString.class,
+        CelByteString.class,
+        CelByteString.class,
         (receiver, param) -> bytesContains(receiver.toByteArray(), param.toByteArray()));
   }
 

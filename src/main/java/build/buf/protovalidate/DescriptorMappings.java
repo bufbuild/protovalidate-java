@@ -131,7 +131,7 @@ final class DescriptorMappings {
   }
 
   /**
-   * Maps a {@link FieldDescriptor.Type} to a compatible {@link com.google.api.expr.v1alpha1.Type}.
+   * Maps a {@link FieldDescriptor.Type} to a compatible {@link dev.cel.common.types.CelType}.
    *
    * @param kind The protobuf field type.
    * @return The corresponding CEL type for the protobuf field.

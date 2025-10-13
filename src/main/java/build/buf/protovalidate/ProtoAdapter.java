@@ -16,7 +16,9 @@ package build.buf.protovalidate;
 
 import com.google.common.primitives.UnsignedLong;
 import com.google.protobuf.AbstractMessage;
+import com.google.protobuf.ByteString;
 import com.google.protobuf.Descriptors;
+import dev.cel.common.values.CelByteString;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -66,6 +68,11 @@ final class ProtoAdapter {
   /** Converts a scalar type to cel value. */
   static Object scalarToCel(Descriptors.FieldDescriptor.Type type, Object value) {
     switch (type) {
+      case BYTES:
+        if (value instanceof ByteString) {
+          return CelByteString.of(((ByteString) value).toByteArray());
+        }
+        return value;
       case ENUM:
         if (value instanceof Descriptors.EnumValueDescriptor) {
           return (long) ((Descriptors.EnumValueDescriptor) value).getNumber();

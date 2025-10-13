@@ -1,11 +1,11 @@
 [versions]
-assertj = "3.27.3"
-buf = "1.55.1"
-cel = "0.10.1"
-error-prone = "2.41.0"
+assertj = "3.27.6"
+buf = "1.57.2"
+cel = "0.11.0"
+error-prone = "2.42.0"
 junit = "5.13.4"
 maven-publish = "0.34.0"
-protobuf = "4.31.1"
+protobuf = "4.32.1"
 
 [libraries]
 assertj = { module = "org.assertj:assertj-core", version.ref = "assertj" }
@@ -13,13 +13,13 @@ buf = { module = "build.buf:buf", version.ref = "buf" }
 cel = { module = "dev.cel:cel", version.ref = "cel" }
 errorprone-annotations = { module = "com.google.errorprone:error_prone_annotations", version.ref = "error-prone" }
 errorprone-core = { module = "com.google.errorprone:error_prone_core", version.ref = "error-prone" }
-grpc-protobuf = { module = "io.grpc:grpc-protobuf", version = "1.73.0" }
+grpc-protobuf = { module = "io.grpc:grpc-protobuf", version = "1.75.0" }
 jspecify = { module ="org.jspecify:jspecify", version = "1.0.0" }
 junit-bom = { module = "org.junit:junit-bom", version.ref = "junit" }
 maven-plugin = { module = "com.vanniktech:gradle-maven-publish-plugin", version.ref = "maven-publish" }
-nullaway = { module = "com.uber.nullaway:nullaway", version = "0.12.7" }
+nullaway = { module = "com.uber.nullaway:nullaway", version = "0.12.10" }
 protobuf-java = { module = "com.google.protobuf:protobuf-java", version.ref = "protobuf" }
-spotless = { module = "com.diffplug.spotless:spotless-plugin-gradle", version = "7.2.1" }
+spotless = { module = "com.diffplug.spotless:spotless-plugin-gradle", version = "8.0.0" }
 
 [plugins]
 errorprone = { id = "net.ltgt.errorprone", version = "4.3.0" }

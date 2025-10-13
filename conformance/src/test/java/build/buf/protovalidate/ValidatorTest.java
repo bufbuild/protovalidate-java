@@ -232,7 +232,7 @@ public class ValidatorTest {
   public void strictBytesIn() throws ValidationException {
     BytesIn invalid = BytesIn.newBuilder().setVal(ByteString.copyFromUtf8("bar")).build();
     ValidationResult validate = validator.validate(invalid);
-    assertThat(validate.isSuccess()).isTrue();
+    assertThat(validate.getViolations()).isEmpty();
   }
 
   @Test
