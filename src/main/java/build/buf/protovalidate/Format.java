@@ -128,11 +128,6 @@ final class Format {
     return builder.toString();
   }
 
-  /**
-   * Formats a string value.
-   *
-   * @param val the value to format.
-   */
   private static String formatString(Object val) throws CelEvaluationException {
     if (val instanceof String) {
       return (String) val;
@@ -142,10 +137,7 @@ final class Format {
       return Boolean.toString((Boolean) val);
     } else if (val instanceof Long || val instanceof UnsignedLong) {
       Optional<String> str = validateNumber(val);
-      if (str.isPresent()) {
-        return str.get();
-      }
-      return val.toString();
+      return str.orElseGet(val::toString);
     } else if (val instanceof CelByteString) {
       String byteStr = ((CelByteString) val).toStringUtf8();
       // Collapse any contiguous placeholders into one
@@ -158,8 +150,12 @@ final class Format {
       return formatDecimal(val);
     } else if (val instanceof Duration) {
       return formatDuration((Duration) val);
+    } else if (val instanceof java.time.Duration) {
+      return formatJavaDuration((java.time.Duration) val);
     } else if (val instanceof Timestamp) {
       return formatTimestamp((Timestamp) val);
+    } else if (val instanceof java.time.Instant) {
+      return formatInstant((java.time.Instant) val);
     } else if (val instanceof List) {
       return formatList((List<?>) val);
     } else if (val instanceof Map) {
@@ -213,20 +209,14 @@ final class Format {
     return builder.toString();
   }
 
-  /**
-   * Formats a timestamp value.
-   *
-   * @param timestamp the value to format.
-   */
   private static String formatTimestamp(Timestamp timestamp) {
     return ISO_INSTANT.format(Instant.ofEpochSecond(timestamp.getSeconds(), timestamp.getNanos()));
   }
 
-  /**
-   * Formats a duration value.
-   *
-   * @param duration the value to format.
-   */
+  private static String formatInstant(Instant instant) {
+    return ISO_INSTANT.format(instant);
+  }
+
   private static String formatDuration(Duration duration) {
     StringBuilder builder = new StringBuilder();
 
@@ -239,11 +229,17 @@ final class Format {
     return builder.toString();
   }
 
-  /**
-   * Formats a hexadecimal value.
-   *
-   * @param val the value to format.
-   */
+  private static String formatJavaDuration(java.time.Duration duration) {
+    StringBuilder builder = new StringBuilder();
+    double totalSeconds = duration.getSeconds() + (duration.getNano() / 1_000_000_000.0);
+
+    DecimalFormat formatter = new DecimalFormat("0.#########");
+    builder.append(formatter.format(totalSeconds));
+    builder.append("s");
+
+    return builder.toString();
+  }
+
   private static String formatHex(Object val) throws CelEvaluationException {
     if (val instanceof Long) {
       return Long.toHexString((Long) val);
@@ -266,11 +262,6 @@ final class Format {
     }
   }
 
-  /**
-   * Formats a decimal value.
-   *
-   * @param val the value to format.
-   */
   private static String formatDecimal(Object val) throws CelEvaluationException {
     if (val instanceof Long || val instanceof UnsignedLong || val instanceof Double) {
       Optional<String> str = validateNumber(val);

@@ -18,7 +18,11 @@ import com.google.common.primitives.UnsignedLong;
 import com.google.protobuf.AbstractMessage;
 import com.google.protobuf.ByteString;
 import com.google.protobuf.Descriptors;
+import com.google.protobuf.Message;
+import com.google.protobuf.Timestamp;
 import dev.cel.common.values.CelByteString;
+import java.time.Duration;
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -50,13 +54,9 @@ final class ProtoAdapter {
       }
       return out;
     }
-    // Cel understands protobuf message so we return as is (even if it is repeated).
-    if (type == Descriptors.FieldDescriptor.Type.MESSAGE) {
-      return value;
-    }
     if (fieldDescriptor.isRepeated()) {
-      List<Object> out = new ArrayList<>();
       List<?> list = (List<?>) value;
+      List<Object> out = new ArrayList<>(list.size());
       for (Object element : list) {
         out.add(scalarToCel(type, element));
       }
@@ -90,6 +90,18 @@ final class ProtoAdapter {
       case UINT64:
       case FIXED64:
         return UnsignedLong.fromLongBits((Long) value);
+      case MESSAGE:
+        // cel-java 0.11.1 added support for java.time.Instant and java.time.Duration.
+        Message msg = (Message) value;
+        if (msg instanceof com.google.protobuf.Timestamp) {
+          Timestamp timestamp = (Timestamp) value;
+          return Instant.ofEpochSecond(timestamp.getSeconds(), timestamp.getNanos());
+        }
+        if (msg instanceof com.google.protobuf.Duration) {
+          com.google.protobuf.Duration duration = (com.google.protobuf.Duration) value;
+          return Duration.ofSeconds(duration.getSeconds(), duration.getNanos());
+        }
+        return value;
       default:
         return value;
     }
