@@ -17,7 +17,7 @@ grpc-protobuf = { module = "io.grpc:grpc-protobuf", version = "1.76.0" }
 jspecify = { module ="org.jspecify:jspecify", version = "1.0.0" }
 junit-bom = { module = "org.junit:junit-bom", version.ref = "junit" }
 maven-plugin = { module = "com.vanniktech:gradle-maven-publish-plugin", version.ref = "maven-publish" }
-nullaway = { module = "com.uber.nullaway:nullaway", version = "0.12.10" }
+nullaway = { module = "com.uber.nullaway:nullaway", version = "0.12.11" }
 protobuf-java = { module = "com.google.protobuf:protobuf-java", version.ref = "protobuf" }
 spotless = { module = "com.diffplug.spotless:spotless-plugin-gradle", version = "8.0.0" }
 
