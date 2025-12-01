@@ -13,7 +13,7 @@ buf = { module = "build.buf:buf", version.ref = "buf" }
 cel = { module = "dev.cel:cel", version.ref = "cel" }
 errorprone-annotations = { module = "com.google.errorprone:error_prone_annotations", version.ref = "error-prone" }
 errorprone-core = { module = "com.google.errorprone:error_prone_core", version.ref = "error-prone" }
-grpc-protobuf = { module = "io.grpc:grpc-protobuf", version = "1.76.0" }
+grpc-protobuf = { module = "io.grpc:grpc-protobuf", version = "1.77.0" }
 jspecify = { module ="org.jspecify:jspecify", version = "1.0.0" }
 junit-bom = { module = "org.junit:junit-bom", version.ref = "junit" }
 maven-plugin = { module = "com.vanniktech:gradle-maven-publish-plugin", version.ref = "maven-publish" }
