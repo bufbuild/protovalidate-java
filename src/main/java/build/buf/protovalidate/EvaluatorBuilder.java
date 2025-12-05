@@ -42,6 +42,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 import org.jspecify.annotations.Nullable;
 
 /** A build-through cache of message evaluators keyed off the provided descriptor. */
@@ -49,6 +51,10 @@ final class EvaluatorBuilder {
   private static final FieldPathElement CEL_FIELD_PATH_ELEMENT =
       FieldPathUtils.fieldPathElement(
           FieldRules.getDescriptor().findFieldByNumber(FieldRules.CEL_FIELD_NUMBER));
+
+  private static final FieldPathElement CEL_EXPRESSION_FIELD_PATH_ELEMENT =
+      FieldPathUtils.fieldPathElement(
+          FieldRules.getDescriptor().findFieldByNumber(FieldRules.CEL_EXPRESSION_FIELD_NUMBER));
 
   private volatile Map<Descriptor, MessageEvaluator> evaluatorCache = Collections.emptyMap();
 
@@ -187,7 +193,11 @@ final class EvaluatorBuilder {
     private void processMessageExpressions(
         Descriptor desc, MessageRules msgRules, MessageEvaluator msgEval, DynamicMessage message)
         throws CompilationException {
-      List<Rule> celList = msgRules.getCelList();
+      List<Rule> celList =
+          Stream.concat(
+                  expressionsToRules(msgRules.getCelExpressionList()).stream(),
+                  msgRules.getCelList().stream())
+              .collect(Collectors.toList());
       if (celList.isEmpty()) {
         return;
       }
@@ -196,7 +206,7 @@ final class EvaluatorBuilder {
               .addMessageTypes(message.getDescriptorForType())
               .addVar(Variable.THIS_NAME, StructTypeReference.create(desc.getFullName()))
               .build();
-      List<CompiledProgram> compiledPrograms = compileRules(celList, finalCel, false);
+      List<CompiledProgram> compiledPrograms = compileRules(celList, finalCel, null);
       if (compiledPrograms.isEmpty()) {
         throw new CompilationException("compile returned null");
       }
@@ -354,7 +364,8 @@ final class EvaluatorBuilder {
         FieldDescriptor fieldDescriptor, FieldRules fieldRules, ValueEvaluator valueEvaluatorEval)
         throws CompilationException {
       List<Rule> rulesCelList = fieldRules.getCelList();
-      if (rulesCelList.isEmpty()) {
+      List<String> exprList = fieldRules.getCelExpressionList();
+      if (rulesCelList.isEmpty() && exprList.isEmpty()) {
         return;
       }
       CelBuilder builder = cel.toCelBuilder();
@@ -367,7 +378,16 @@ final class EvaluatorBuilder {
         builder = builder.addMessageTypes(fieldDescriptor.getMessageType());
       }
       Cel finalCel = builder.build();
-      List<CompiledProgram> compiledPrograms = compileRules(rulesCelList, finalCel, true);
+      List<CompiledProgram> compiledPrograms = new ArrayList<>();
+      if (!rulesCelList.isEmpty()) {
+        compiledPrograms.addAll(compileRules(rulesCelList, finalCel, CEL_FIELD_PATH_ELEMENT));
+      }
+      if (!exprList.isEmpty()) {
+        compiledPrograms.addAll(
+            compileRules(
+                expressionsToRules(exprList), finalCel, CEL_EXPRESSION_FIELD_PATH_ELEMENT));
+      }
+
       if (!compiledPrograms.isEmpty()) {
         valueEvaluatorEval.append(new CelPrograms(valueEvaluatorEval, compiledPrograms));
       }
@@ -510,7 +530,8 @@ final class EvaluatorBuilder {
       valueEvaluatorEval.append(listEval);
     }
 
-    private static List<CompiledProgram> compileRules(List<Rule> rules, Cel cel, boolean isField)
+    private static List<CompiledProgram> compileRules(
+        List<Rule> rules, Cel cel, @Nullable FieldPathElement fieldPathElement)
         throws CompilationException {
       List<Expression> expressions = Expression.fromRules(rules);
       List<CompiledProgram> compiledPrograms = new ArrayList<>();
@@ -518,11 +539,9 @@ final class EvaluatorBuilder {
         Expression expression = expressions.get(i);
         AstExpression astExpression = AstExpression.newAstExpression(cel, expression);
         @Nullable FieldPath rulePath = null;
-        if (isField) {
+        if (fieldPathElement != null) {
           rulePath =
-              FieldPath.newBuilder()
-                  .addElements(CEL_FIELD_PATH_ELEMENT.toBuilder().setIndex(i))
-                  .build();
+              FieldPath.newBuilder().addElements(fieldPathElement.toBuilder().setIndex(i)).build();
         }
         try {
           compiledPrograms.add(
@@ -537,6 +556,12 @@ final class EvaluatorBuilder {
         }
       }
       return compiledPrograms;
+    }
+
+    private static List<Rule> expressionsToRules(List<String> expressions) {
+      return expressions.stream()
+          .map(expr -> Rule.newBuilder().setId(expr).setExpression(expr).build())
+          .collect(Collectors.toList());
     }
   }
 }

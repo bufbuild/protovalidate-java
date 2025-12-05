@@ -172,7 +172,7 @@ tasks.register<Exec>("exportProtovalidateModule") {
     commandLine(
         buf.asPath,
         "export",
-        "buf.build/bufbuild/protovalidate:${project.findProperty("protovalidate.version")}",
+        "https://github.com/bufbuild/protovalidate.git#subdir=proto/protovalidate,ref=${project.findProperty("protovalidate.version")}",
         "--output",
         "src/main/resources",
     )
