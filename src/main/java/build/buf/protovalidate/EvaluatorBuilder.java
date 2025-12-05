@@ -560,7 +560,7 @@ final class EvaluatorBuilder {
 
     private static List<Rule> expressionsToRules(List<String> expressions) {
       return expressions.stream()
-          .map(expr -> Rule.newBuilder().setExpression(expr).build())
+          .map(expr -> Rule.newBuilder().setId(expr).setExpression(expr).build())
           .collect(Collectors.toList());
     }
   }

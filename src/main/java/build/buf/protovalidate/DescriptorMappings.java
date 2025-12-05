@@ -93,6 +93,8 @@ final class DescriptorMappings {
     EXPECTED_WKT_RULES.put(
         "google.protobuf.Duration", FIELD_RULES_DESC.findFieldByName("duration"));
     EXPECTED_WKT_RULES.put(
+        "google.protobuf.FieldMask", FIELD_RULES_DESC.findFieldByName("field_mask"));
+    EXPECTED_WKT_RULES.put(
         "google.protobuf.Timestamp", FIELD_RULES_DESC.findFieldByName("timestamp"));
   }
 
