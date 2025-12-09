@@ -70,9 +70,7 @@ tasks.register<Exec>("generateConformance") {
         "generate",
         "--template",
         "${layout.buildDirectory.get()}/buf-gen-templates/buf.gen.yaml",
-        "https://github.com/bufbuild/protovalidate.git#subdir=proto/protovalidate-testing,ref=${project.findProperty(
-            "protovalidate.version",
-        )}",
+        "buf.build/bufbuild/protovalidate-testing:${project.findProperty("protovalidate.version")}",
     )
 }
 
