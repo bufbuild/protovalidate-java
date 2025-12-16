@@ -62,15 +62,21 @@ tasks.register<Copy>("filterBufGenYaml") {
     filteringCharset = "UTF-8"
 }
 
+val semverRegex = Regex("""^v\d+\.\d+\.\d+(?:-.+)?$""")
 tasks.register<Exec>("generateConformance") {
     dependsOn("configureBuf", "filterBufGenYaml")
     description = "Generates sources for the bufbuild/protovalidate-testing module to build/generated/sources/bufgen."
+    val version = "${project.findProperty("protovalidate.version")}"
+    var input = "buf.build/bufbuild/protovalidate-testing:$version"
+    if (!semverRegex.matches(version)) {
+        input = "https://github.com/bufbuild/protovalidate.git#subdir=proto/protovalidate-testing,ref=$version"
+    }
     commandLine(
         buf.asPath,
         "generate",
         "--template",
         "${layout.buildDirectory.get()}/buf-gen-templates/buf.gen.yaml",
-        "buf.build/bufbuild/protovalidate-testing:${project.findProperty("protovalidate.version")}",
+        input,
     )
 }
 

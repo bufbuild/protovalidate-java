@@ -166,13 +166,19 @@ tasks.register("generateTestSources") {
     description = "Generates code with buf generate for unit tests"
 }
 
+val semverRegex = Regex("""^v\d+\.\d+\.\d+(?:-.+)?$""")
 tasks.register<Exec>("exportProtovalidateModule") {
     dependsOn("configureBuf")
     description = "Exports the bufbuild/protovalidate module sources to src/main/resources."
+    val version = "${project.findProperty("protovalidate.version")}"
+    var input = "buf.build/bufbuild/protovalidate:$version"
+    if (!semverRegex.matches(version)) {
+        input = "https://github.com/bufbuild/protovalidate.git#subdir=proto/protovalidate,ref=$version"
+    }
     commandLine(
         buf.asPath,
         "export",
-        "buf.build/bufbuild/protovalidate:${project.findProperty("protovalidate.version")}",
+        input,
         "--output",
         "src/main/resources",
     )
