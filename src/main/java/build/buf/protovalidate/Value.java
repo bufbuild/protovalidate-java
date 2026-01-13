@@ -15,7 +15,6 @@
 package build.buf.protovalidate;
 
 import com.google.protobuf.Descriptors;
-import com.google.protobuf.Message;
 import java.util.List;
 import java.util.Map;
 import org.jspecify.annotations.Nullable;
@@ -24,7 +23,7 @@ import org.jspecify.annotations.Nullable;
  * {@link Value} is a wrapper around a protobuf value that provides helper methods for accessing the
  * value.
  */
-interface Value {
+public interface Value {
   /**
    * Get the field descriptor that corresponds to the underlying Value, if it is a message field.
    *
@@ -34,21 +33,12 @@ interface Value {
   Descriptors.@Nullable FieldDescriptor fieldDescriptor();
 
   /**
-   * Get the underlying value as a {@link Message} type.
+   * Get the underlying value as a {@link MessageReflector} type.
    *
-   * @return The underlying {@link Message} value. null if the underlying value is not a {@link
-   *     Message} type.
+   * @return The underlying {@link MessageReflector} value. null if the underlying value is not a {@link
+   *     MessageReflector} type.
    */
-  @Nullable Message messageValue();
-
-  /**
-   * Get the underlying value and cast it to the class type.
-   *
-   * @param clazz The inferred class.
-   * @return The value casted to the inferred class type.
-   * @param <T> The class type.
-   */
-  <T> T value(Class<T> clazz);
+  @Nullable MessageReflector messageValue();
 
   /**
    * Get the underlying value as a list.
@@ -65,4 +55,21 @@ interface Value {
    *     list.
    */
   Map<Value, Value> mapValue();
+
+  /**
+   * Get the underlying value as it should be provided to CEL.
+   *
+   * @return The underlying value as a CEL-compatible type.
+   */
+  Object celValue();
+
+  /**
+   * Get the underlying value and cast it to the class type, which will be a type checkable
+   * internally by protovalidate-java.
+   *
+   * @param clazz The inferred class.
+   * @return The value cast to the inferred class type.
+   * @param <T> The class type.
+   */
+  <T> T jvmValue(Class<T> clazz);
 }

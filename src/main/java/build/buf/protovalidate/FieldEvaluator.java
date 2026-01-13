@@ -19,7 +19,6 @@ import build.buf.validate.FieldPath;
 import build.buf.validate.FieldRules;
 import build.buf.validate.Ignore;
 import com.google.protobuf.Descriptors.FieldDescriptor;
-import com.google.protobuf.Message;
 import java.util.Collections;
 import java.util.List;
 
@@ -95,13 +94,17 @@ final class FieldEvaluator implements Evaluator {
     if (this.shouldIgnoreAlways()) {
       return RuleViolation.NO_VIOLATIONS;
     }
-    Message message = val.messageValue();
+    MessageReflector message = val.messageValue();
     if (message == null) {
       return RuleViolation.NO_VIOLATIONS;
     }
     boolean hasField;
     if (descriptor.isRepeated()) {
-      hasField = message.getRepeatedFieldCount(descriptor) != 0;
+      if (descriptor.isMapField()) {
+        hasField = !message.getField(descriptor).mapValue().isEmpty();
+      } else {
+        hasField = !message.getField(descriptor).repeatedValue().isEmpty();
+      }
     } else {
       hasField = message.hasField(descriptor);
     }
@@ -118,7 +121,6 @@ final class FieldEvaluator implements Evaluator {
     if (this.shouldIgnoreEmpty() && !hasField) {
       return RuleViolation.NO_VIOLATIONS;
     }
-    return valueEvaluator.evaluate(
-        new ObjectValue(descriptor, message.getField(descriptor)), failFast);
+    return valueEvaluator.evaluate(message.getField(descriptor), failFast);
   }
 }
