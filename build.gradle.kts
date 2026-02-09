@@ -7,7 +7,6 @@ import net.ltgt.gradle.errorprone.errorprone
 plugins {
     `java-library`
     alias(libs.plugins.errorprone)
-    alias(libs.plugins.git)
     alias(libs.plugins.maven)
     alias(libs.plugins.osdetector)
 }
@@ -21,10 +20,16 @@ java {
 // If not specified, we attempt to calculate a snapshot version based on the last tagged release.
 // So if the local build's last tag was v0.1.9, this will set snapshotVersion to 0.1.10-SNAPSHOT.
 // If this fails for any reason, we'll fall back to using 0.0.0-SNAPSHOT version.
-val versionDetails: groovy.lang.Closure<com.palantir.gradle.gitversion.VersionDetails> by extra
-val details = versionDetails()
 var snapshotVersion = "0.0.0-SNAPSHOT"
-val matchResult = """^v(\d+)\.(\d+)\.(\d+)$""".toRegex().matchEntire(details.lastTag)
+val lastTag = try {
+    providers.exec {
+        commandLine("git", "describe", "--tags", "--abbrev=0")
+        isIgnoreExitValue = true
+    }.standardOutput.asText.get().trim()
+} catch (e: Exception) {
+    ""
+}
+val matchResult = """^v(\d+)\.(\d+)\.(\d+)$""".toRegex().matchEntire(lastTag)
 if (matchResult != null) {
     val (major, minor, patch) = matchResult.destructured
     snapshotVersion = "$major.$minor.${patch.toInt() + 1}-SNAPSHOT"
