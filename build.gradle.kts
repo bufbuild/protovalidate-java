@@ -21,14 +21,18 @@ java {
 // So if the local build's last tag was v0.1.9, this will set snapshotVersion to 0.1.10-SNAPSHOT.
 // If this fails for any reason, we'll fall back to using 0.0.0-SNAPSHOT version.
 var snapshotVersion = "0.0.0-SNAPSHOT"
-val lastTag = try {
-    providers.exec {
-        commandLine("git", "describe", "--tags", "--abbrev=0")
-        isIgnoreExitValue = true
-    }.standardOutput.asText.get().trim()
-} catch (e: Exception) {
-    ""
-}
+val lastTag =
+    try {
+        providers
+            .exec {
+                commandLine("git", "describe", "--tags", "--abbrev=0")
+                isIgnoreExitValue = true
+            }.standardOutput.asText
+            .get()
+            .trim()
+    } catch (e: Exception) {
+        ""
+    }
 val matchResult = """^v(\d+)\.(\d+)\.(\d+)$""".toRegex().matchEntire(lastTag)
 if (matchResult != null) {
     val (major, minor, patch) = matchResult.destructured
