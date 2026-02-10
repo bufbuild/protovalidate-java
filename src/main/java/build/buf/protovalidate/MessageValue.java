@@ -25,7 +25,7 @@ import org.jspecify.annotations.Nullable;
 final class MessageValue implements Value {
 
   /** Object type since the object type is inferred from the field descriptor. */
-  private final Object value;
+  private final ProtobufMessageReflector value;
 
   /**
    * Constructs a {@link MessageValue} with the provided message value.
@@ -33,7 +33,7 @@ final class MessageValue implements Value {
    * @param value The message value.
    */
   MessageValue(Message value) {
-    this.value = value;
+    this.value = new ProtobufMessageReflector(value);
   }
 
   @Override
@@ -42,13 +42,18 @@ final class MessageValue implements Value {
   }
 
   @Override
-  public Message messageValue() {
-    return (Message) value;
+  public MessageReflector messageValue() {
+    return value;
   }
 
   @Override
-  public <T> T value(Class<T> clazz) {
-    return clazz.cast(value);
+  public Object celValue() {
+      return value.getMessage();
+  }
+
+  @Override
+  public <T> T jvmValue(Class<T> clazz) {
+    throw new UnsupportedOperationException();
   }
 
   @Override
