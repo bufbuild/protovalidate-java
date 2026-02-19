@@ -53,15 +53,23 @@ final class ObjectValue implements Value {
 
   @Nullable
   @Override
-  public Message messageValue() {
+  public MessageReflector messageValue() {
     if (fieldDescriptor.getJavaType() == Descriptors.FieldDescriptor.JavaType.MESSAGE) {
-      return (Message) value;
+      return new ProtobufMessageReflector((Message) value);
     }
     return null;
   }
 
   @Override
-  public <T> T value(Class<T> clazz) {
+  public Object celValue() {
+      return ProtoAdapter.toCel(fieldDescriptor, value);
+  }
+
+  @Override
+  public <T> T jvmValue(Class<T> clazz) {
+    if (value instanceof Descriptors.EnumValueDescriptor) {
+      return clazz.cast((long) ((Descriptors.EnumValueDescriptor) value).getNumber());
+    }
     return clazz.cast(ProtoAdapter.toCel(fieldDescriptor, value));
   }
 
