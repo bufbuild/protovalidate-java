@@ -5,7 +5,7 @@ cel = "0.11.1"
 error-prone = "2.47.0"
 junit = "5.14.3"
 maven-publish = "0.36.0"
-protobuf = "4.33.5"
+protobuf = "4.34.0"
 
 [libraries]
 assertj = { module = "org.assertj:assertj-core", version.ref = "assertj" }
