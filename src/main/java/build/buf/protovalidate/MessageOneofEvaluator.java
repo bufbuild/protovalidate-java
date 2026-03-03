@@ -51,7 +51,7 @@ final class MessageOneofEvaluator implements Evaluator {
     }
     int hasCount = 0;
     for (FieldDescriptor field : fields) {
-      if (msg.hasField(field)) {
+      if (FieldEvaluator.isFieldSet(msg, field)) {
         hasCount++;
       }
     }

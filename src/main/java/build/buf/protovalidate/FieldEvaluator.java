@@ -99,12 +99,7 @@ final class FieldEvaluator implements Evaluator {
     if (message == null) {
       return RuleViolation.NO_VIOLATIONS;
     }
-    boolean hasField;
-    if (descriptor.isRepeated()) {
-      hasField = message.getRepeatedFieldCount(descriptor) != 0;
-    } else {
-      hasField = message.hasField(descriptor);
-    }
+    boolean hasField = isFieldSet(message, descriptor);
     if (required && !hasField) {
       return Collections.singletonList(
           RuleViolation.newBuilder()
@@ -120,5 +115,16 @@ final class FieldEvaluator implements Evaluator {
     }
     return valueEvaluator.evaluate(
         new ObjectValue(descriptor, message.getField(descriptor)), failFast);
+  }
+
+  /**
+   * Returns whether the given field is set on the message. Handles repeated and map fields, which
+   * are not supported by {@link Message#hasField}.
+   */
+  static boolean isFieldSet(Message message, FieldDescriptor field) {
+    if (field.isRepeated()) {
+      return message.getRepeatedFieldCount(field) != 0;
+    }
+    return message.hasField(field);
   }
 }
