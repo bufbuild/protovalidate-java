@@ -36,31 +36,13 @@ final class ValidatorImpl implements Validator {
   private final boolean failFast;
 
   ValidatorImpl(Config config) {
-    ValidateLibrary validateLibrary = new ValidateLibrary();
-    // NOTE: CelExtensions.strings() does not implement string.reverse() or strings.quote() which
-    // are available in protovalidate-go.
-    Cel cel =
-        CelFactory.standardCelBuilder()
-            .addCompilerLibraries(validateLibrary, CelExtensions.strings())
-            .addRuntimeLibraries(validateLibrary, CelExtensions.strings())
-            .setOptions(
-                CelOptions.DEFAULT.toBuilder().evaluateCanonicalTypesToNativeValues(true).build())
-            .build();
-    this.evaluatorBuilder = new EvaluatorBuilder(cel, config);
+    this.evaluatorBuilder = new EvaluatorBuilder(newCel(), config);
     this.failFast = config.isFailFast();
   }
 
   ValidatorImpl(Config config, List<Descriptor> descriptors, boolean disableLazy)
       throws CompilationException {
-    ValidateLibrary validateLibrary = new ValidateLibrary();
-    Cel cel =
-        CelFactory.standardCelBuilder()
-            .addCompilerLibraries(validateLibrary, CelExtensions.strings())
-            .addRuntimeLibraries(validateLibrary, CelExtensions.strings())
-            .setOptions(
-                CelOptions.DEFAULT.toBuilder().evaluateCanonicalTypesToNativeValues(true).build())
-            .build();
-    this.evaluatorBuilder = new EvaluatorBuilder(cel, config, descriptors, disableLazy);
+    this.evaluatorBuilder = new EvaluatorBuilder(newCel(), config, descriptors, disableLazy);
     this.failFast = config.isFailFast();
   }
 
@@ -80,5 +62,17 @@ final class ValidatorImpl implements Validator {
       violations.add(builder.build());
     }
     return new ValidationResult(violations);
+  }
+
+  private static Cel newCel() {
+    ValidateLibrary validateLibrary = new ValidateLibrary();
+    // NOTE: CelExtensions.strings() does not implement string.reverse() or strings.quote() which
+    // are available in protovalidate-go.
+    return CelFactory.standardCelBuilder()
+        .addCompilerLibraries(validateLibrary, CelExtensions.strings())
+        .addRuntimeLibraries(validateLibrary, CelExtensions.strings())
+        .setOptions(
+            CelOptions.DEFAULT.toBuilder().evaluateCanonicalTypesToNativeValues(true).build())
+        .build();
   }
 }
