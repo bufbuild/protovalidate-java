@@ -109,6 +109,19 @@ message ExampleImportMessageInMap {
   map<int64, ExampleImportedMessage> imported_submessage = 1;
 }
 
+message ExampleStringExtensions {
+  string parent = 1;
+  string path = 2;
+
+  option (buf.validate.message).cel = {
+    id: "path_matches_parent"
+    message: "path must be a child of parent"
+    expression:
+      "this.path.lastIndexOf('/') >= 0 && "
+      "this.path.substring(0, this.path.lastIndexOf('/')) == this.parent"
+  };
+}
+
 message ExampleImportMessageInMapFieldRule {
   ExampleImportMessageInMap message_with_import = 1 [
     (buf.validate.field).cel = {

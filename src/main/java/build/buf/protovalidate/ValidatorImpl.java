@@ -21,6 +21,7 @@ import com.google.protobuf.Message;
 import dev.cel.bundle.Cel;
 import dev.cel.bundle.CelFactory;
 import dev.cel.common.CelOptions;
+import dev.cel.extensions.CelExtensions;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,10 +37,12 @@ final class ValidatorImpl implements Validator {
 
   ValidatorImpl(Config config) {
     ValidateLibrary validateLibrary = new ValidateLibrary();
+    // NOTE: CelExtensions.strings() does not implement string.reverse() or strings.quote() which
+    // are available in protovalidate-go.
     Cel cel =
         CelFactory.standardCelBuilder()
-            .addCompilerLibraries(validateLibrary)
-            .addRuntimeLibraries(validateLibrary)
+            .addCompilerLibraries(validateLibrary, CelExtensions.strings())
+            .addRuntimeLibraries(validateLibrary, CelExtensions.strings())
             .setOptions(
                 CelOptions.DEFAULT.toBuilder().evaluateCanonicalTypesToNativeValues(true).build())
             .build();
@@ -52,8 +55,8 @@ final class ValidatorImpl implements Validator {
     ValidateLibrary validateLibrary = new ValidateLibrary();
     Cel cel =
         CelFactory.standardCelBuilder()
-            .addCompilerLibraries(validateLibrary)
-            .addRuntimeLibraries(validateLibrary)
+            .addCompilerLibraries(validateLibrary, CelExtensions.strings())
+            .addRuntimeLibraries(validateLibrary, CelExtensions.strings())
             .setOptions(
                 CelOptions.DEFAULT.toBuilder().evaluateCanonicalTypesToNativeValues(true).build())
             .build();
