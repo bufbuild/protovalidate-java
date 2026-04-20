@@ -40,7 +40,7 @@ class ValidationResultTest {
     RuleViolation violation =
         RuleViolation.newBuilder()
             .setRuleId("int32.const")
-            .setMessage("value must equal 42")
+            .setMessage("must equal 42")
             .addFirstFieldPathElement(elem)
             .build();
     List<Violation> violations = new ArrayList<>();
@@ -48,7 +48,7 @@ class ValidationResultTest {
     ValidationResult result = new ValidationResult(violations);
 
     assertThat(result.toString())
-        .isEqualTo("Validation error:\n - test_field_name: value must equal 42 [int32.const]");
+        .isEqualTo("Validation error:\n - test_field_name: must equal 42 [int32.const]");
   }
 
   @Test
@@ -59,7 +59,7 @@ class ValidationResultTest {
     RuleViolation violation1 =
         RuleViolation.newBuilder()
             .setRuleId("int32.const")
-            .setMessage("value must equal 42")
+            .setMessage("must equal 42")
             .addFirstFieldPathElement(elem)
             .build();
 
@@ -76,7 +76,7 @@ class ValidationResultTest {
 
     assertThat(result.toString())
         .isEqualTo(
-            "Validation error:\n - test_field_name: value must equal 42 [int32.const]\n - test_field_name: value is required [int32.required]");
+            "Validation error:\n - test_field_name: must equal 42 [int32.const]\n - test_field_name: value is required [int32.required]");
   }
 
   @Test
@@ -93,7 +93,7 @@ class ValidationResultTest {
     RuleViolation violation1 =
         RuleViolation.newBuilder()
             .setRuleId("int32.const")
-            .setMessage("value must equal 42")
+            .setMessage("must equal 42")
             .addAllFieldPathElements(elems)
             .build();
 
@@ -103,21 +103,17 @@ class ValidationResultTest {
 
     assertThat(result.toString())
         .isEqualTo(
-            "Validation error:\n - test_field_name.nested_name: value must equal 42 [int32.const]");
+            "Validation error:\n - test_field_name.nested_name: must equal 42 [int32.const]");
   }
 
   @Test
   void testToStringSingleViolationNoFieldPathElements() {
     RuleViolation violation =
-        RuleViolation.newBuilder()
-            .setRuleId("int32.const")
-            .setMessage("value must equal 42")
-            .build();
+        RuleViolation.newBuilder().setRuleId("int32.const").setMessage("must equal 42").build();
     List<Violation> violations = new ArrayList<>();
     violations.add(violation);
     ValidationResult result = new ValidationResult(violations);
 
-    assertThat(result.toString())
-        .isEqualTo("Validation error:\n - value must equal 42 [int32.const]");
+    assertThat(result.toString()).isEqualTo("Validation error:\n - must equal 42 [int32.const]");
   }
 }

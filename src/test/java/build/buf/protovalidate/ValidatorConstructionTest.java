@@ -193,7 +193,7 @@ public class ValidatorConstructionTest {
     assertThat(result.isSuccess()).isFalse();
     assertThat(result.getViolations().size()).isEqualTo(1);
     assertThat(result.getViolations().get(0).toProto().getMessage())
-        .isEqualTo("value length must be at most 5 characters");
+        .isEqualTo("must be at most 5 characters");
   }
 
   // Tests that the config is applied when building a validator with seed descriptors.
@@ -214,6 +214,6 @@ public class ValidatorConstructionTest {
     assertThat(result.isSuccess()).isFalse();
     assertThat(result.getViolations().size()).isEqualTo(1);
     assertThat(result.getViolations().get(0).toProto().getMessage())
-        .isEqualTo("value length must be at most 5 characters");
+        .isEqualTo("must be at most 5 characters");
   }
 }

@@ -99,7 +99,7 @@ public class ValidatorDifferentJavaPackagesTest {
                             StringRules.getDescriptor()
                                 .findFieldByNumber(StringRules.PATTERN_FIELD_NUMBER))))
             .setRuleId("string.pattern")
-            .setMessage("value does not match regex pattern `^[a-z0-9]{1,9}$`")
+            .setMessage("does not match regex pattern `^[a-z0-9]{1,9}$`")
             .build();
     expectViolation(invalidMsgImports, expectedViolation);
 

@@ -76,7 +76,7 @@ public class ValidatorDynamicMessageTest {
                             StringRules.getDescriptor()
                                 .findFieldByNumber(StringRules.PATTERN_FIELD_NUMBER))))
             .setRuleId("string.pattern")
-            .setMessage("value does not match regex pattern `^[a-z0-9]{1,9}$`")
+            .setMessage("does not match regex pattern `^[a-z0-9]{1,9}$`")
             .build();
     ValidationResult result =
         ValidatorFactory.newBuilder().build().validate(messageBuilder.build());
@@ -165,7 +165,7 @@ public class ValidatorDynamicMessageTest {
                             StringRules.getDescriptor()
                                 .findFieldByNumber(StringRules.PATTERN_FIELD_NUMBER))))
             .setRuleId("string.pattern")
-            .setMessage("value does not match regex pattern `^[a-z0-9]{1,9}$`")
+            .setMessage("does not match regex pattern `^[a-z0-9]{1,9}$`")
             .build();
     assertThat(
             ValidatorFactory.newBuilder()
