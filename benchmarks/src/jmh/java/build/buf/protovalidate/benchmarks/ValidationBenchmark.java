@@ -19,10 +19,8 @@ import build.buf.protovalidate.ValidatorFactory;
 import build.buf.protovalidate.benchmarks.gen.ManyUnruledFieldsMessage;
 import build.buf.protovalidate.benchmarks.gen.RepeatedRuleMessage;
 import build.buf.protovalidate.benchmarks.gen.SimpleStringMessage;
-import build.buf.protovalidate.exceptions.CompilationException;
 import build.buf.protovalidate.exceptions.ValidationException;
-import com.google.protobuf.Descriptors.Descriptor;
-import java.util.Collections;
+import com.google.protobuf.Descriptors.FieldDescriptor;
 import java.util.concurrent.TimeUnit;
 import org.openjdk.jmh.annotations.Benchmark;
 import org.openjdk.jmh.annotations.BenchmarkMode;
@@ -41,9 +39,7 @@ public class ValidationBenchmark {
   private Validator validator;
   private SimpleStringMessage simple;
   private ManyUnruledFieldsMessage manyUnruled;
-
-  // Descriptor captured once; cheap to reference during benchmark.
-  private static final Descriptor REPEATED_RULE_DESC = RepeatedRuleMessage.getDescriptor();
+  private RepeatedRuleMessage repeatedRule;
 
   @Setup
   public void setup() throws ValidationException {
@@ -65,13 +61,20 @@ public class ValidationBenchmark {
             .setF9("v9")
             .build();
 
+    RepeatedRuleMessage.Builder repeatedRuleBuilder = RepeatedRuleMessage.newBuilder();
+    for (FieldDescriptor fd : RepeatedRuleMessage.getDescriptor().getFields()) {
+      repeatedRuleBuilder.setField(fd, "v");
+    }
+    repeatedRule = repeatedRuleBuilder.build();
+
     // Warm evaluator cache for steady-state benchmarks.
     validator.validate(simple);
     validator.validate(manyUnruled);
+    validator.validate(repeatedRule);
   }
 
   // Steady-state validate() benchmarks. These exercise the hot path after the
-  // evaluator cache is warm. PR #451 does not affect this path.
+  // evaluator cache is warm.
 
   @Benchmark
   public void validateSimple(Blackhole bh) throws ValidationException {
@@ -83,19 +86,8 @@ public class ValidationBenchmark {
     bh.consume(validator.validate(manyUnruled));
   }
 
-  // Compile-path benchmark. Measures building a fresh validator and warming
-  // its RuleCache for RepeatedRuleMessage (20 string fields, all min_len).
-  // PR #451 affects exactly this path: without the fix, the AST is rebuilt
-  // for every field; with the fix, fields 2..20 hit the cache.
-  //
-  // Time is dominated by Cel environment construction in newCel(); the #451
-  // signal is the delta on top of that baseline.
   @Benchmark
-  @OutputTimeUnit(TimeUnit.MILLISECONDS)
-  public void compileValidatorForRepeated(Blackhole bh) throws CompilationException {
-    Validator v =
-        ValidatorFactory.newBuilder()
-            .buildWithDescriptors(Collections.singletonList(REPEATED_RULE_DESC), false);
-    bh.consume(v);
+  public void validateRepeatedRule(Blackhole bh) throws ValidationException {
+    bh.consume(validator.validate(repeatedRule));
   }
 }

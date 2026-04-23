@@ -1,3 +1,5 @@
+import com.diffplug.gradle.spotless.SpotlessExtension
+
 plugins {
     java
     alias(libs.plugins.jmh)
@@ -8,6 +10,12 @@ plugins {
 java {
     sourceCompatibility = JavaVersion.VERSION_21
     targetCompatibility = JavaVersion.VERSION_21
+}
+
+configure<SpotlessExtension> {
+    java {
+        targetExclude("build/generated/**/*.java")
+    }
 }
 
 val buf: Configuration by configurations.creating
