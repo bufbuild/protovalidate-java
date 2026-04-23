@@ -1,6 +1,7 @@
 import com.diffplug.gradle.spotless.SpotlessExtension
 import com.vanniktech.maven.publish.JavaLibrary
 import com.vanniktech.maven.publish.JavadocJar
+import com.vanniktech.maven.publish.SourcesJar
 import net.ltgt.gradle.errorprone.CheckSeverity
 import net.ltgt.gradle.errorprone.errorprone
 
@@ -56,6 +57,7 @@ tasks.register("configureBuf") {
 tasks.register<Exec>("installLicenseHeader") {
     description = "Installs the Buf license-header CLI."
     environment("GOBIN", bufLicenseHeaderCLIFile.parentFile.absolutePath)
+    inputs.property("bufVersion", libs.versions.buf.get())
     outputs.file(bufLicenseHeaderCLIFile)
     commandLine("go", "install", "github.com/bufbuild/buf/private/pkg/licenseheader/cmd/license-header@v${libs.versions.buf.get()}")
 }
@@ -81,8 +83,11 @@ tasks.register<Exec>("licenseHeader") {
 }
 
 tasks.register<Copy>("filterBufGenYaml") {
-    from(".")
-    include("buf.gen.yaml", "src/**/buf*gen*.yaml")
+    from(files("buf.gen.yaml"))
+    from("src/test/resources/proto") {
+        include("buf*gen*.yaml")
+        into("src/test/resources/proto")
+    }
     includeEmptyDirs = false
     into(layout.buildDirectory.dir("buf-gen-templates"))
     expand("protocJavaPluginVersion" to "v${libs.versions.protobuf.get().substringAfter('.')}")
@@ -92,11 +97,16 @@ tasks.register<Copy>("filterBufGenYaml") {
 tasks.register<Exec>("generateTestSourcesImports") {
     dependsOn("exportProtovalidateModule", "filterBufGenYaml")
     description = "Generates code with buf generate --include-imports for unit tests."
+    val template = layout.buildDirectory.file("buf-gen-templates/src/test/resources/proto/buf.gen.imports.yaml")
+    inputs.files(buf)
+    inputs.file(template)
+    inputs.dir("src/test/resources/proto")
+    outputs.dir(layout.buildDirectory.dir("generated/test-sources/bufgen-imports"))
     commandLine(
         buf.asPath,
         "generate",
         "--template",
-        "${layout.buildDirectory.get()}/buf-gen-templates/src/test/resources/proto/buf.gen.imports.yaml",
+        template.get().asFile.absolutePath,
         "--include-imports",
     )
 }
@@ -104,22 +114,33 @@ tasks.register<Exec>("generateTestSourcesImports") {
 tasks.register<Exec>("generateTestSourcesNoImports") {
     dependsOn("exportProtovalidateModule", "filterBufGenYaml")
     description = "Generates code with buf generate --include-imports for unit tests."
+    val template = layout.buildDirectory.file("buf-gen-templates/src/test/resources/proto/buf.gen.noimports.yaml")
+    inputs.files(buf)
+    inputs.file(template)
+    inputs.dir("src/main/resources")
+    inputs.dir("src/test/resources/proto")
+    outputs.dir(layout.buildDirectory.dir("generated/test-sources/bufgen-noimports"))
     commandLine(
         buf.asPath,
         "generate",
         "--template",
-        "${layout.buildDirectory.get()}/buf-gen-templates/src/test/resources/proto/buf.gen.noimports.yaml",
+        template.get().asFile.absolutePath,
     )
 }
 
 tasks.register<Exec>("generateCelConformance") {
     dependsOn("generateCelConformanceTestTypes", "filterBufGenYaml")
     description = "Generates CEL conformance code with buf generate for unit tests."
+    val template = layout.buildDirectory.file("buf-gen-templates/src/test/resources/proto/buf.gen.cel.yaml")
+    inputs.files(buf)
+    inputs.file(template)
+    inputs.property("celSpecVersion", project.findProperty("cel.spec.version").toString())
+    outputs.dir(layout.buildDirectory.dir("generated/test-sources/bufgen-cel"))
     commandLine(
         buf.asPath,
         "generate",
         "--template",
-        "${layout.buildDirectory.get()}/buf-gen-templates/src/test/resources/proto/buf.gen.cel.yaml",
+        template.get().asFile.absolutePath,
         "buf.build/google/cel-spec:${project.findProperty("cel.spec.version")}",
         "--exclude-path",
         "cel/expr/conformance/proto2",
@@ -136,11 +157,16 @@ tasks.register<Exec>("generateCelConformance") {
 tasks.register<Exec>("generateCelConformanceTestTypes") {
     dependsOn("exportProtovalidateModule", "filterBufGenYaml")
     description = "Generates CEL conformance test types with buf generate for unit tests using a Java package override."
+    val template = layout.buildDirectory.file("buf-gen-templates/src/test/resources/proto/buf.gen.cel.testtypes.yaml")
+    inputs.files(buf)
+    inputs.file(template)
+    inputs.property("celSpecVersion", project.findProperty("cel.spec.version").toString())
+    outputs.dir(layout.buildDirectory.dir("generated/test-sources/bufgen-cel-testtypes"))
     commandLine(
         buf.asPath,
         "generate",
         "--template",
-        "${layout.buildDirectory.get()}/buf-gen-templates/src/test/resources/proto/buf.gen.cel.testtypes.yaml",
+        template.get().asFile.absolutePath,
         "buf.build/google/cel-spec:${project.findProperty("cel.spec.version")}",
         "--path",
         "cel/expr/conformance/proto3",
@@ -184,6 +210,9 @@ tasks.register<Exec>("exportProtovalidateModule") {
     if (!semverRegex.matches(version)) {
         input = "https://github.com/bufbuild/protovalidate.git#subdir=proto/protovalidate,ref=$version"
     }
+    inputs.files(buf)
+    inputs.property("protovalidateVersion", version)
+    outputs.dir("src/main/resources/buf")
     commandLine(
         buf.asPath,
         "export",
@@ -196,7 +225,12 @@ tasks.register<Exec>("exportProtovalidateModule") {
 tasks.register<Exec>("generateSources") {
     dependsOn("exportProtovalidateModule", "filterBufGenYaml")
     description = "Generates sources for the bufbuild/protovalidate module sources to build/generated/sources/bufgen."
-    commandLine(buf.asPath, "generate", "--template", "${layout.buildDirectory.get()}/buf-gen-templates/buf.gen.yaml", "src/main/resources")
+    val template = layout.buildDirectory.file("buf-gen-templates/buf.gen.yaml")
+    inputs.files(buf)
+    inputs.file(template)
+    inputs.dir("src/main/resources/buf")
+    outputs.dir(layout.buildDirectory.dir("generated/sources/bufgen"))
+    commandLine(buf.asPath, "generate", "--template", template.get().asFile.absolutePath, "src/main/resources")
 }
 
 tasks.register("generate") {
@@ -205,7 +239,14 @@ tasks.register("generate") {
         "generateTestSources",
         "generateSources",
         "licenseHeader",
+        ":conformance:generateConformance",
     )
+}
+
+// src/main/resources and build/generated/sources/bufgen are generate-task outputs; consumers need explicit ordering.
+tasks.named("processResources") { dependsOn("exportProtovalidateModule") }
+tasks.matching { it.name == "sourcesJar" }.configureEach {
+    dependsOn("exportProtovalidateModule", "generateSources")
 }
 
 tasks.withType<JavaCompile> {
@@ -251,7 +292,10 @@ sourceSets {
     }
     test {
         java {
-            srcDir(layout.buildDirectory.dir("generated/test-sources/bufgen"))
+            srcDir(layout.buildDirectory.dir("generated/test-sources/bufgen-imports"))
+            srcDir(layout.buildDirectory.dir("generated/test-sources/bufgen-noimports"))
+            srcDir(layout.buildDirectory.dir("generated/test-sources/bufgen-cel"))
+            srcDir(layout.buildDirectory.dir("generated/test-sources/bufgen-cel-testtypes"))
         }
     }
 }
@@ -259,7 +303,7 @@ sourceSets {
 apply(plugin = "com.diffplug.spotless")
 configure<SpotlessExtension> {
     java {
-        targetExclude("build/generated/sources/bufgen/build/buf/validate/**/*.java", "build/generated/test-sources/bufgen/**/*.java")
+        targetExclude("build/generated/sources/bufgen/build/buf/validate/**/*.java", "build/generated/test-sources/bufgen-*/**/*.java")
     }
     kotlinGradle {
         ktlint()
@@ -319,8 +363,7 @@ mavenPublishing {
             // - `JavadocJar.Empty()` publish an empty jar
             // - `JavadocJar.Javadoc()` to publish standard javadocs
             javadocJar = JavadocJar.Javadoc(),
-            // whether to publish a sources jar
-            sourcesJar = true,
+            sourcesJar = SourcesJar.Sources(),
         ),
     )
     pom {
