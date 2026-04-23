@@ -1,6 +1,7 @@
 import com.diffplug.gradle.spotless.SpotlessExtension
 import com.vanniktech.maven.publish.JavaLibrary
 import com.vanniktech.maven.publish.JavadocJar
+import com.vanniktech.maven.publish.SourcesJar
 import net.ltgt.gradle.errorprone.CheckSeverity
 import net.ltgt.gradle.errorprone.errorprone
 
@@ -362,8 +363,7 @@ mavenPublishing {
             // - `JavadocJar.Empty()` publish an empty jar
             // - `JavadocJar.Javadoc()` to publish standard javadocs
             javadocJar = JavadocJar.Javadoc(),
-            // whether to publish a sources jar
-            sourcesJar = true,
+            sourcesJar = SourcesJar.Sources(),
         ),
     )
     pom {
