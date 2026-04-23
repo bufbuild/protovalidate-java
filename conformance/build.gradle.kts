@@ -39,6 +39,7 @@ val conformanceArgs = (project.findProperty("protovalidate.conformance.args")?.t
 tasks.register<Exec>("installProtovalidateConformance") {
     description = "Installs the Protovalidate Conformance CLI."
     environment("GOBIN", conformanceCLIFile.parentFile.absolutePath)
+    inputs.property("protovalidateVersion", project.findProperty("protovalidate.version").toString())
     outputs.file(conformanceCLIFile)
     commandLine(
         "go",
@@ -71,11 +72,16 @@ tasks.register<Exec>("generateConformance") {
     if (!semverRegex.matches(version)) {
         input = "https://github.com/bufbuild/protovalidate.git#subdir=proto/protovalidate-testing,ref=$version"
     }
+    val template = layout.buildDirectory.file("buf-gen-templates/buf.gen.yaml")
+    inputs.files(buf)
+    inputs.file(template)
+    inputs.property("protovalidateVersion", version)
+    outputs.dir(layout.buildDirectory.dir("generated/sources/bufgen"))
     commandLine(
         buf.asPath,
         "generate",
         "--template",
-        "${layout.buildDirectory.get()}/buf-gen-templates/buf.gen.yaml",
+        template.get().asFile.absolutePath,
         input,
     )
 }
