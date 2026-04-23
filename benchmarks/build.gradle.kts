@@ -1,7 +1,7 @@
 plugins {
     java
+    alias(libs.plugins.jmh)
     alias(libs.plugins.osdetector)
-    id("me.champeau.jmh") version "0.7.2"
 }
 
 // JMH can use modern bytecode; benchmarks aren't shipped.
