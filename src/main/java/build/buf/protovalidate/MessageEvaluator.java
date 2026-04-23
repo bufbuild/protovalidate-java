@@ -56,6 +56,9 @@ final class MessageEvaluator implements Evaluator {
    * @param eval The evaluator to append.
    */
   void append(Evaluator eval) {
+    if (eval.tautology()) {
+      return;
+    }
     evaluators.add(eval);
   }
 }
