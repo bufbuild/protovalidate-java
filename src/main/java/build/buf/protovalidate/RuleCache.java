@@ -30,6 +30,7 @@ import com.google.protobuf.TypeRegistry;
 import dev.cel.bundle.Cel;
 import dev.cel.common.types.StructTypeReference;
 import dev.cel.runtime.CelEvaluationException;
+import dev.cel.runtime.CelRuntime.Program;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -41,11 +42,14 @@ import org.jspecify.annotations.Nullable;
 final class RuleCache {
   private static class CelRule {
     final AstExpression astExpression;
+    final Program program;
     final FieldDescriptor field;
     final FieldPath rulePath;
 
-    private CelRule(AstExpression astExpression, FieldDescriptor field, FieldPath rulePath) {
+    private CelRule(
+        AstExpression astExpression, Program program, FieldDescriptor field, FieldPath rulePath) {
       this.astExpression = astExpression;
+      this.program = program;
       this.field = field;
       this.rulePath = rulePath;
     }
@@ -119,20 +123,14 @@ final class RuleCache {
     }
     List<CompiledProgram> programs = new ArrayList<>();
     for (CelRule rule : completeProgramList) {
-      Cel ruleCel = getRuleCel(fieldDescriptor, message, rule.field, forItems);
-      try {
-        programs.add(
-            new CompiledProgram(
-                ruleCel.createProgram(rule.astExpression.ast),
-                rule.astExpression.source,
-                rule.rulePath,
-                new ObjectValue(rule.field, message.getField(rule.field)),
-                Variable.newRuleVariable(
-                    message, ProtoAdapter.toCel(rule.field, message.getField(rule.field)))));
-      } catch (CelEvaluationException e) {
-        throw new CompilationException(
-            "failed to evaluate rule " + rule.astExpression.source.id, e);
-      }
+      programs.add(
+          new CompiledProgram(
+              rule.program,
+              rule.astExpression.source,
+              rule.rulePath,
+              new ObjectValue(rule.field, message.getField(rule.field)),
+              Variable.newRuleVariable(
+                  message, ProtoAdapter.toCel(rule.field, message.getField(rule.field)))));
     }
     return Collections.unmodifiableList(programs);
   }
@@ -159,9 +157,15 @@ final class RuleCache {
               .addElements(FieldPathUtils.fieldPathElement(setOneof))
               .addElements(FieldPathUtils.fieldPathElement(ruleFieldDesc))
               .build();
-      celRules.add(
-          new CelRule(
-              AstExpression.newAstExpression(ruleCel, expression), ruleFieldDesc, rulePath));
+      AstExpression astExpression = AstExpression.newAstExpression(ruleCel, expression);
+      Program program;
+      try {
+        program = ruleCel.createProgram(astExpression.ast);
+      } catch (CelEvaluationException e) {
+        throw new CompilationException(
+            "failed to create program for rule " + astExpression.source.id, e);
+      }
+      celRules.add(new CelRule(astExpression, program, ruleFieldDesc, rulePath));
     }
     descriptorMap.put(ruleFieldDesc, celRules);
     return celRules;
