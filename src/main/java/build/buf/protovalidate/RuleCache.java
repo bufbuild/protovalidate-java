@@ -64,6 +64,13 @@ final class RuleCache {
   private static final Map<FieldDescriptor, List<CelRule>> descriptorMap =
       new ConcurrentHashMap<>();
 
+  /**
+   * Concurrent map for caching compiled programs by the serialized rule message bytes. This allows
+   * fields sharing the same resolved rules (same type + same values) to reuse compiled programs.
+   */
+  private static final Map<com.google.protobuf.ByteString, List<CompiledProgram>> programCache =
+      new ConcurrentHashMap<>();
+
   /** The environment to use for evaluation. */
   private final Cel cel;
 
@@ -109,6 +116,11 @@ final class RuleCache {
       return Collections.emptyList();
     }
     Message message = resolved.message;
+    com.google.protobuf.ByteString cacheKey = message.toByteString();
+    List<CompiledProgram> cachedPrograms = programCache.get(cacheKey);
+    if (cachedPrograms != null) {
+      return cachedPrograms;
+    }
     List<CelRule> completeProgramList = new ArrayList<>();
     for (Map.Entry<FieldDescriptor, Object> entry : message.getAllFields().entrySet()) {
       FieldDescriptor ruleFieldDesc = entry.getKey();
@@ -134,7 +146,9 @@ final class RuleCache {
             "failed to evaluate rule " + rule.astExpression.source.id, e);
       }
     }
-    return Collections.unmodifiableList(programs);
+    List<CompiledProgram> result = Collections.unmodifiableList(programs);
+    programCache.putIfAbsent(cacheKey, result);
+    return result;
   }
 
   private @Nullable List<CelRule> compileRule(
