@@ -118,13 +118,16 @@ tasks.register<Copy>("jmhSaveBaseline") {
 //   ./gradlew :benchmarks:jmhCompare -Pbefore=a.json -Pafter=b.json
 tasks.register<Exec>("jmhCompare") {
     description = "Diffs two JMH result JSON files as a concise table."
-    val before = project.findProperty("before")?.toString()
-        ?: jmhBaseline.get().asFile.absolutePath
-    val after = project.findProperty("after")?.toString()
-        ?: jmhResults.get().asFile.absolutePath
+    val before =
+        project.findProperty("before")?.toString()
+            ?: jmhBaseline.get().asFile.absolutePath
+    val after =
+        project.findProperty("after")?.toString()
+            ?: jmhResults.get().asFile.absolutePath
     val jqScript = file("jmh-compare.jq").absolutePath
     commandLine(
-        "bash", "-c",
+        "bash",
+        "-c",
         "jq --slurp --raw-output --from-file \"\$1\" \"\$2\" \"\$3\" | column -t -s \$'\\t'",
         "jmh-compare", // $0
         jqScript, // $1
