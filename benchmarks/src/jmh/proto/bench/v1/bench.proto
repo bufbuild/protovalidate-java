@@ -1,0 +1,71 @@
+// Copyright 2023-2026 Buf Technologies, Inc.
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+syntax = "proto3";
+
+package bench.v1;
+
+option java_multiple_files = true;
+option java_package = "build.buf.protovalidate.benchmarks.gen";
+
+import "buf/validate/validate.proto";
+
+// Simple single-field message. Baseline for validate() overhead on a small
+// message with one cheap rule.
+message SimpleStringMessage {
+  string email = 1 [(buf.validate.field).string.email = true];
+}
+
+// One ruled field and many fields without rules. Targets the tautology skip
+// in PR #454: before the fix, no-rule fields still ran a FieldEvaluator on
+// every validate() call.
+message ManyUnruledFieldsMessage {
+  string non_empty = 1 [(buf.validate.field).string.min_len = 1];
+  string f1 = 2;
+  string f2 = 3;
+  string f3 = 4;
+  string f4 = 5;
+  string f5 = 6;
+  string f6 = 7;
+  string f7 = 8;
+  string f8 = 9;
+  string f9 = 10;
+}
+
+// Twenty fields that share the same rule shape (min_len on string). Targets
+// the AST cache fix in PR #451. The cache key lookup mismatch made
+// compileRule rebuild the AST for every field during evaluator construction.
+// With many same-shape fields, the saved work is N-1 AST builds.
+message RepeatedRuleMessage {
+  string f01 = 1 [(buf.validate.field).string.min_len = 1];
+  string f02 = 2 [(buf.validate.field).string.min_len = 1];
+  string f03 = 3 [(buf.validate.field).string.min_len = 1];
+  string f04 = 4 [(buf.validate.field).string.min_len = 1];
+  string f05 = 5 [(buf.validate.field).string.min_len = 1];
+  string f06 = 6 [(buf.validate.field).string.min_len = 1];
+  string f07 = 7 [(buf.validate.field).string.min_len = 1];
+  string f08 = 8 [(buf.validate.field).string.min_len = 1];
+  string f09 = 9 [(buf.validate.field).string.min_len = 1];
+  string f10 = 10 [(buf.validate.field).string.min_len = 1];
+  string f11 = 11 [(buf.validate.field).string.min_len = 1];
+  string f12 = 12 [(buf.validate.field).string.min_len = 1];
+  string f13 = 13 [(buf.validate.field).string.min_len = 1];
+  string f14 = 14 [(buf.validate.field).string.min_len = 1];
+  string f15 = 15 [(buf.validate.field).string.min_len = 1];
+  string f16 = 16 [(buf.validate.field).string.min_len = 1];
+  string f17 = 17 [(buf.validate.field).string.min_len = 1];
+  string f18 = 18 [(buf.validate.field).string.min_len = 1];
+  string f19 = 19 [(buf.validate.field).string.min_len = 1];
+  string f20 = 20 [(buf.validate.field).string.min_len = 1];
+}

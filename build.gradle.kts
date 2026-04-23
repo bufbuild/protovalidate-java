@@ -240,6 +240,7 @@ tasks.register("generate") {
         "generateSources",
         "licenseHeader",
         ":conformance:generateConformance",
+        ":benchmarks:generateBenchmarkSources",
     )
 }
 
