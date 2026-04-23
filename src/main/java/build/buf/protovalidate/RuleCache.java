@@ -144,7 +144,7 @@ final class RuleCache {
       FieldDescriptor ruleFieldDesc,
       Message message)
       throws CompilationException {
-    List<CelRule> celRules = descriptorMap.get(fieldDescriptor);
+    List<CelRule> celRules = descriptorMap.get(ruleFieldDesc);
     if (celRules != null) {
       return celRules;
     }
