@@ -34,9 +34,7 @@ jobs:
       - uses: bufbuild/buf-action@fd21066df7214747548607aaa45548ba2b9bc1ff # v1.4.0
         with:
           setup_only: true
-      - env:
-          BUF_TOKEN: ${{ secrets.BUF_TOKEN }}
-        run: echo ${BUF_TOKEN} | buf registry login buf.build --token-stdin
+          token: ${{ secrets.BUF_TOKEN }}
       - name: Validate Gradle Wrapper
         uses: gradle/actions/wrapper-validation@50e97c2cd7a37755bbfafc9c5b7cafaece252f6e # v6.1.0
       - name: Test conformance
