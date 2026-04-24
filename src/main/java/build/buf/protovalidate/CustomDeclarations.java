@@ -104,6 +104,17 @@ final class CustomDeclarations {
             newMemberOverload(
                 "is_hostname", SimpleType.BOOL, Collections.singletonList(SimpleType.STRING))));
 
+    // Redeclare 'matches' with the same overload ids as the stdlib.
+    decls.add(
+        newFunctionDeclaration(
+            "matches",
+            newGlobalOverload(
+                "matches", SimpleType.BOOL, Arrays.asList(SimpleType.STRING, SimpleType.STRING)),
+            newMemberOverload(
+                "matches_string",
+                SimpleType.BOOL,
+                Arrays.asList(SimpleType.STRING, SimpleType.STRING))));
+
     decls.add(
         newFunctionDeclaration(
             "isHostAndPort",

@@ -6,6 +6,7 @@ error-prone = "2.49.0"
 junit = "5.14.3"
 maven-publish = "0.36.0"
 protobuf = "4.34.1"
+re2j = "1.8"
 
 [libraries]
 assertj = { module = "org.assertj:assertj-core", version.ref = "assertj" }
@@ -19,6 +20,7 @@ junit-bom = { module = "org.junit:junit-bom", version.ref = "junit" }
 maven-plugin = { module = "com.vanniktech:gradle-maven-publish-plugin", version.ref = "maven-publish" }
 nullaway = { module = "com.uber.nullaway:nullaway", version = "0.13.3" }
 protobuf-java = { module = "com.google.protobuf:protobuf-java", version.ref = "protobuf" }
+re2j = { module = "com.google.re2j:re2j", version.ref = "re2j" }
 spotless = { module = "com.diffplug.spotless:spotless-plugin-gradle", version = "8.4.0" }
 
 [plugins]

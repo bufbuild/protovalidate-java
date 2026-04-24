@@ -18,9 +18,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import dev.cel.bundle.Cel;
-import dev.cel.bundle.CelFactory;
 import dev.cel.common.CelAbstractSyntaxTree;
-import dev.cel.common.CelOptions;
 import dev.cel.common.CelValidationException;
 import dev.cel.common.CelValidationResult;
 import dev.cel.runtime.CelEvaluationException;
@@ -31,14 +29,7 @@ import org.junit.jupiter.api.Test;
 
 public class CustomOverloadTest {
 
-  private final ValidateLibrary validateLibrary = new ValidateLibrary();
-  private final Cel cel =
-      CelFactory.standardCelBuilder()
-          .addCompilerLibraries(validateLibrary)
-          .addRuntimeLibraries(validateLibrary)
-          .setOptions(
-              CelOptions.DEFAULT.toBuilder().evaluateCanonicalTypesToNativeValues(true).build())
-          .build();
+  private final Cel cel = ValidateLibrary.newCel();
 
   @Test
   public void testIsInf() throws Exception {
@@ -171,6 +162,19 @@ public class CustomOverloadTest {
     assertThat(evalToBool("bytes('12345').contains(bytes('13'))")).isFalse();
     assertThat(evalToBool("bytes('12345').contains(bytes('35'))")).isFalse();
     assertThat(evalToBool("bytes('12345').contains(bytes('123456'))")).isFalse();
+  }
+
+  @Test
+  public void testMatchesPartialMatch() throws Exception {
+    // CelOptions.DEFAULT sets enableRegexPartialMatch(true), so an unanchored regex should
+    // match anywhere in the input (find()), not require a full-string match.
+    assertThat(evalToBool("'hello world'.matches('world')")).isTrue();
+    assertThat(evalToBool("'hello world'.matches('ell')")).isTrue();
+    // Anchored patterns still behave the same.
+    assertThat(evalToBool("'hello'.matches('^hello$')")).isTrue();
+    assertThat(evalToBool("'hello world'.matches('^hello$')")).isFalse();
+    // Global form.
+    assertThat(evalToBool("matches('hello world', 'world')")).isTrue();
   }
 
   private Object eval(String source) throws Exception {

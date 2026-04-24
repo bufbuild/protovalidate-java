@@ -17,6 +17,7 @@ package build.buf.protovalidate.benchmarks;
 import build.buf.protovalidate.Validator;
 import build.buf.protovalidate.ValidatorFactory;
 import build.buf.protovalidate.benchmarks.gen.ManyUnruledFieldsMessage;
+import build.buf.protovalidate.benchmarks.gen.RegexPatternMessage;
 import build.buf.protovalidate.benchmarks.gen.RepeatedRuleMessage;
 import build.buf.protovalidate.benchmarks.gen.SimpleStringMessage;
 import build.buf.protovalidate.exceptions.ValidationException;
@@ -40,6 +41,7 @@ public class ValidationBenchmark {
   private SimpleStringMessage simple;
   private ManyUnruledFieldsMessage manyUnruled;
   private RepeatedRuleMessage repeatedRule;
+  private RegexPatternMessage regexPattern;
 
   @Setup
   public void setup() throws ValidationException {
@@ -67,10 +69,13 @@ public class ValidationBenchmark {
     }
     repeatedRule = repeatedRuleBuilder.build();
 
+    regexPattern = RegexPatternMessage.newBuilder().setName("Alice Example").build();
+
     // Warm evaluator cache for steady-state benchmarks.
     validator.validate(simple);
     validator.validate(manyUnruled);
     validator.validate(repeatedRule);
+    validator.validate(regexPattern);
   }
 
   // Steady-state validate() benchmarks. These exercise the hot path after the
@@ -89,5 +94,10 @@ public class ValidationBenchmark {
   @Benchmark
   public void validateRepeatedRule(Blackhole bh) throws ValidationException {
     bh.consume(validator.validate(repeatedRule));
+  }
+
+  @Benchmark
+  public void validateRegexPattern(Blackhole bh) throws ValidationException {
+    bh.consume(validator.validate(regexPattern));
   }
 }
