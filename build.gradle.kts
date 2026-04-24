@@ -398,6 +398,7 @@ dependencies {
     api(libs.jspecify)
     api(libs.protobuf.java)
     implementation(libs.cel)
+    implementation(libs.re2j)
 
     buf("build.buf:buf:${libs.versions.buf.get()}:${osdetector.classifier}@exe")
 

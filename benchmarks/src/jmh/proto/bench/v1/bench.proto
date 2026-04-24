@@ -69,3 +69,13 @@ message RepeatedRuleMessage {
   string f19 = 19 [(buf.validate.field).string.min_len = 1];
   string f20 = 20 [(buf.validate.field).string.min_len = 1];
 }
+
+// Single string field with a string.pattern rule. Targets the regex
+// recompile-per-evaluation cost: the CEL runtime's matches() calls
+// Pattern.compile on every invocation.
+message RegexPatternMessage {
+  string name = 1 [(buf.validate.field).string = {
+    pattern: "^[[:alpha:]]+( [[:alpha:]]+)*$"
+    max_bytes: 256
+  }];
+}

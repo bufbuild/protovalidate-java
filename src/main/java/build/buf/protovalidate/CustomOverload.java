@@ -16,6 +16,10 @@ package build.buf.protovalidate;
 
 import com.google.protobuf.Descriptors;
 import com.google.protobuf.Message;
+import com.google.re2j.Matcher;
+import com.google.re2j.Pattern;
+import com.google.re2j.PatternSyntaxException;
+import dev.cel.common.CelOptions;
 import dev.cel.common.types.CelType;
 import dev.cel.common.types.SimpleType;
 import dev.cel.common.values.CelByteString;
@@ -28,7 +32,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
 import java.util.Set;
-import java.util.regex.Pattern;
+import java.util.concurrent.ConcurrentMap;
 
 /** Defines custom function overloads (the implementation). */
 final class CustomOverload {
@@ -39,11 +43,14 @@ final class CustomOverload {
           "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$");
 
   /**
-   * Create custom function overload list.
+   * Create a list of custom function overloads.
    *
+   * @param patternCache cache used by the {@code matches}/{@code matches_string} overrides.
+   * @param celOptions CEL options the enclosing runtime is built with.
    * @return a list of overloaded functions.
    */
-  static List<CelFunctionBinding> create() {
+  static List<CelFunctionBinding> create(
+      ConcurrentMap<String, Pattern> patternCache, CelOptions celOptions) {
     ArrayList<CelFunctionBinding> bindings = new ArrayList<>();
     bindings.addAll(
         Arrays.asList(
@@ -65,7 +72,9 @@ final class CustomOverload {
             celIsNan(),
             celIsInfUnary(),
             celIsInfBinary(),
-            celIsHostAndPort()));
+            celIsHostAndPort(),
+            celMatches(patternCache, celOptions),
+            celMatchesString(patternCache, celOptions)));
     bindings.addAll(celUnique());
     return Collections.unmodifiableList(bindings);
   }
@@ -354,6 +363,41 @@ final class CustomOverload {
         String.class,
         Boolean.class,
         CustomOverload::isHostAndPort);
+  }
+
+  /** Caching replacement for CEL's global {@code matches(string, string)}. */
+  @SuppressWarnings("Immutable")
+  private static CelFunctionBinding celMatches(
+      ConcurrentMap<String, Pattern> patternCache, CelOptions celOptions) {
+    return CelFunctionBinding.from(
+        "matches",
+        String.class,
+        String.class,
+        (value, regex) -> matches(patternCache, celOptions, value, regex));
+  }
+
+  /** Caching replacement for CEL's member-style {@code string.matches(string)}. */
+  @SuppressWarnings("Immutable")
+  private static CelFunctionBinding celMatchesString(
+      ConcurrentMap<String, Pattern> patternCache, CelOptions celOptions) {
+    return CelFunctionBinding.from(
+        "matches_string",
+        String.class,
+        String.class,
+        (value, regex) -> matches(patternCache, celOptions, value, regex));
+  }
+
+  private static boolean matches(
+      ConcurrentMap<String, Pattern> cache, CelOptions celOptions, String value, String regex)
+      throws CelEvaluationException {
+    Pattern pattern;
+    try {
+      pattern = cache.computeIfAbsent(regex, Pattern::compile);
+    } catch (PatternSyntaxException e) {
+      throw new CelEvaluationException("failed to compile regex: " + e.getMessage(), e);
+    }
+    Matcher matcher = pattern.matcher(value);
+    return celOptions.enableRegexPartialMatch() ? matcher.find() : matcher.matches();
   }
 
   /**

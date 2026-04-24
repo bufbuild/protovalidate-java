@@ -26,8 +26,6 @@ import com.cel.expr.conformance.test.SimpleTestSection;
 import com.google.protobuf.TextFormat;
 import dev.cel.bundle.Cel;
 import dev.cel.bundle.CelBuilder;
-import dev.cel.bundle.CelFactory;
-import dev.cel.common.CelOptions;
 import dev.cel.common.CelValidationException;
 import dev.cel.common.CelValidationResult;
 import dev.cel.common.types.SimpleType;
@@ -87,14 +85,7 @@ class FormatTest {
             .flatMap(s -> s.getTestList().stream())
             .collect(Collectors.toList());
 
-    ValidateLibrary validateLibrary = new ValidateLibrary();
-    cel =
-        CelFactory.standardCelBuilder()
-            .addCompilerLibraries(validateLibrary)
-            .addRuntimeLibraries(validateLibrary)
-            .setOptions(
-                CelOptions.DEFAULT.toBuilder().evaluateCanonicalTypesToNativeValues(true).build())
-            .build();
+    cel = ValidateLibrary.newCel();
   }
 
   @ParameterizedTest
