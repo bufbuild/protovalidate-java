@@ -31,6 +31,7 @@ import dev.cel.bundle.Cel;
 import dev.cel.common.types.StructTypeReference;
 import dev.cel.runtime.CelEvaluationException;
 import dev.cel.runtime.CelRuntime.Program;
+import dev.cel.runtime.CelVariableResolver;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -123,15 +124,39 @@ final class RuleCache {
     List<CompiledProgram> programs = new ArrayList<>();
     for (CelRule rule : completeProgramList) {
       Object fieldValue = message.getField(rule.field);
+      CelVariableResolver ruleResolver =
+          Variable.newRuleVariable(message, ProtoAdapter.toCel(rule.field, fieldValue));
+      if (isTautological(rule.program, ruleResolver)) {
+        continue;
+      }
       programs.add(
           new CompiledProgram(
               rule.program,
               rule.astExpression.source,
               rule.rulePath,
               new ObjectValue(rule.field, fieldValue),
-              Variable.newRuleVariable(message, ProtoAdapter.toCel(rule.field, fieldValue))));
+              ruleResolver));
     }
     return Collections.unmodifiableList(programs);
+  }
+
+  /**
+   * Evaluates the program with only rules/rule bound. If it resolves to true or "", the expression
+   * is tautological and can be eliminated (mirrors protovalidate-go's ReduceResiduals).
+   */
+  private static boolean isTautological(Program program, CelVariableResolver ruleResolver) {
+    try {
+      Object result = program.eval(ruleResolver);
+      if (result instanceof Boolean) {
+        return (Boolean) result;
+      }
+      if (result instanceof String) {
+        return ((String) result).isEmpty();
+      }
+    } catch (CelEvaluationException e) {
+      // Expression depends on unbound variables (this, now) — not tautological.
+    }
+    return false;
   }
 
   private @Nullable List<CelRule> compileRule(
