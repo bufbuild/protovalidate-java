@@ -25,6 +25,6 @@ spotless = { module = "com.diffplug.spotless:spotless-plugin-gradle", version = 
 
 [plugins]
 errorprone = { id = "net.ltgt.errorprone", version = "5.1.0" }
-jmh = { id = "me.champeau.jmh", version = "0.7.2" }
+jmh = { id = "me.champeau.jmh", version = "0.7.3" }
 maven = { id = "com.vanniktech.maven.publish.base", version.ref = "maven-publish" }
 osdetector = { id = "com.google.osdetector", version = "1.7.3" }
