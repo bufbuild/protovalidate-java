@@ -79,6 +79,22 @@ tasks.register<Exec>("licenseHeader") {
         "conformance/build/generated/sources/bufgen/",
         "--ignore",
         "src/main/resources/buf/validate/",
+        "--ignore",
+        ".github",
+        "--ignore",
+        "src/test/resources/proto/buf.gen.*.yaml",
+        "--ignore",
+        "benchmarks/buf.gen.yaml",
+        "--ignore",
+        "benchmarks/buf.yaml",
+        "--ignore",
+        "conformance/buf.gen.yaml",
+        "--ignore",
+        "conformance/expected-failures.yaml",
+        "--ignore",
+        "buf.gen.yaml",
+        "--ignore",
+        "buf.yaml",
     )
 }
 
