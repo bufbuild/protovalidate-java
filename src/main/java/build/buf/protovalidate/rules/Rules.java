@@ -62,17 +62,19 @@ public final class Rules {
       return tryBuildRepeatedRules(rulesBuilder, valueEvaluator);
     }
     if (!fieldDescriptor.isMapField() && !fieldDescriptor.isRepeated()) {
-      // Wrapper fields (google.protobuf.{Bool,Int32,...}Value) are recursed into via
-      // processWrapperRules with the inner "value" field as fieldDescriptor; the value passed
-      // to evaluate() is still the wrapper Message. CEL transparently unwraps these, but native
-      // evaluators don't get that for free. Defer wrapper support to a follow-up; CEL handles
-      // wrappers correctly today.
+      Evaluator scalar = tryBuildScalarRules(fieldDescriptor, rulesBuilder, valueEvaluator);
+      if (scalar == null) {
+        return null;
+      }
+      // When processWrapperRules recurses with the inner "value" field, the ValueEvaluator's
+      // descriptor is still the OUTER wrapper field. Detect that and wrap the scalar evaluator
+      // so it unwraps the wrapper Message at evaluation time before delegating.
       FieldDescriptor outerDescriptor = valueEvaluator.getDescriptor();
       if (outerDescriptor != null
           && outerDescriptor.getJavaType() == FieldDescriptor.JavaType.MESSAGE) {
-        return null;
+        return new WrappedValueEvaluator(fieldDescriptor, scalar);
       }
-      return tryBuildScalarRules(fieldDescriptor, rulesBuilder, valueEvaluator);
+      return scalar;
     }
     return null;
   }

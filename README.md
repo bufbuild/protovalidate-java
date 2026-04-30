@@ -75,11 +75,9 @@ Config config = Config.newBuilder().setDisableNativeRules(false).build();
 Validator validator = ValidatorFactory.newBuilder().withConfig(config).build();
 ```
 
-Native evaluators currently cover bool, all 12 numeric kinds (signed and unsigned int32/int64, float, double, etc.), enum (`const`/`in`/`not_in`; the existing `defined_only` path is unchanged), bytes, string (including all well-known formats), and repeated/map list-level rules (`min_items`/`max_items`/`unique`, `min_pairs`/`max_pairs`).
+Native evaluators currently cover bool, all 12 numeric kinds (signed and unsigned int32/int64, float, double, etc.), enum (`const`/`in`/`not_in`; the existing `defined_only` path is unchanged), bytes, string (including all well-known formats), repeated/map list-level rules (`min_items`/`max_items`/`unique`, `min_pairs`/`max_pairs`), and the `google.protobuf.{Bool,Int32,Int64,UInt32,UInt64,Float,Double,String,Bytes}Value` wrapper types — rules on wrapper-typed fields run through the same native evaluators after unwrapping.
 
 Forward compatibility is preserved by a clone-and-clear contract: when protovalidate adds a new rule that this codebase hasn't yet implemented natively, the rule remains on the residual `FieldRules` and CEL enforces it. Native evaluation is an optimization, never a replacement.
-
-Wrapper-typed scalar fields (`google.protobuf.Int32Value`, `BoolValue`, etc.) currently fall through to CEL; native wrapper unwrap is a planned follow-up.
 
 ## Additional languages and repositories
 

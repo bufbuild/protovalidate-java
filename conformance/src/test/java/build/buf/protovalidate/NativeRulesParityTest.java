@@ -33,7 +33,9 @@ import build.buf.validate.conformance.cases.SFixed64In;
 import build.buf.validate.conformance.cases.StringContains;
 import build.buf.validate.conformance.cases.StringLen;
 import build.buf.validate.conformance.cases.StringPrefix;
+import build.buf.validate.conformance.cases.WrapperDouble;
 import com.google.protobuf.ByteString;
+import com.google.protobuf.DoubleValue;
 import com.google.protobuf.Message;
 import java.util.Arrays;
 import java.util.List;
@@ -98,6 +100,9 @@ class NativeRulesParityTest {
                 .build(),
             // Repeated enum in — fails.
             RepeatedEnumIn.newBuilder().addVal(AnEnum.AN_ENUM_X).build(),
+            // Wrapper-typed double (google.protobuf.DoubleValue) — exercises the native
+            // wrapper-unwrap path. Empty wrapper = value 0.0, fails the rule.
+            WrapperDouble.newBuilder().setVal(DoubleValue.newBuilder().build()).build(),
             // KitchenSinkMessage with empty inner ComplexTestMsg — many violations.
             KitchenSinkMessage.newBuilder().setVal(ComplexTestMsg.newBuilder().build()).build());
 
