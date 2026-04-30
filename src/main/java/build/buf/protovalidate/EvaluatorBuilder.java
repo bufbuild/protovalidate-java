@@ -544,13 +544,16 @@ final class EvaluatorBuilder {
               FieldPath.newBuilder().addElements(fieldPathElement.toBuilder().setIndex(i)).build();
         }
         try {
+          boolean usesNow =
+              AstExpression.referencesIdentifier(astExpression.ast, NowVariable.NOW_NAME);
           compiledPrograms.add(
               new CompiledProgram(
                   cel.createProgram(astExpression.ast),
                   astExpression.source,
                   rulePath,
                   new MessageValue(rules.get(i)),
-                  null));
+                  null,
+                  usesNow));
         } catch (CelEvaluationException e) {
           throw new CompilationException("failed to evaluate rule " + rules.get(i).getId(), e);
         }

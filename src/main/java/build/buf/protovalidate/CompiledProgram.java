@@ -44,6 +44,9 @@ final class CompiledProgram {
    */
   @Nullable private final CelVariableResolver globals;
 
+  /** Whether the compiled expression references the {@code now} variable. */
+  private final boolean usesNow;
+
   /**
    * Constructs a new {@link CompiledProgram}.
    *
@@ -51,18 +54,25 @@ final class CompiledProgram {
    * @param source The original expression that was compiled into the program.
    * @param rulePath The field path from the FieldRules to the rule value.
    * @param ruleValue The rule value.
+   * @param usesNow Whether the source expression references the {@code now} variable.
    */
   CompiledProgram(
       Program program,
       Expression source,
       @Nullable FieldPath rulePath,
       @Nullable Value ruleValue,
-      @Nullable CelVariableResolver globals) {
+      @Nullable CelVariableResolver globals,
+      boolean usesNow) {
     this.program = program;
     this.source = source;
     this.rulePath = rulePath;
     this.ruleValue = ruleValue;
     this.globals = globals;
+    this.usesNow = usesNow;
+  }
+
+  boolean usesNow() {
+    return usesNow;
   }
 
   /**
