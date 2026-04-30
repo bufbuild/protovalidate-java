@@ -66,6 +66,11 @@ final class ObjectValue implements Value {
   }
 
   @Override
+  public Object rawValue() {
+    return value;
+  }
+
+  @Override
   public List<Value> repeatedValue() {
     List<Value> out = new ArrayList<>();
     if (fieldDescriptor.isRepeated()) {

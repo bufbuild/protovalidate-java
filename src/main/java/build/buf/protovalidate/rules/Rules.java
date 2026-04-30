@@ -77,18 +77,89 @@ public final class Rules {
     return null;
   }
 
-  // Phase 3 wires numeric, Phase 4 enum, Phase 5 bytes, Phase 6 string, Phase 7 repeated/map.
+  // Phase 4 wires enum, Phase 5 bytes, Phase 6 string, Phase 7 repeated/map.
 
   private static @Nullable Evaluator tryBuildScalarRules(
       FieldDescriptor fieldDescriptor,
       FieldRules.Builder rulesBuilder,
       ValueEvaluator valueEvaluator) {
+    RuleBase base = RuleBase.of(valueEvaluator);
     switch (fieldDescriptor.getJavaType()) {
       case BOOLEAN:
-        return BoolRulesEvaluator.tryBuild(RuleBase.of(valueEvaluator), rulesBuilder);
+        return BoolRulesEvaluator.tryBuild(base, rulesBuilder);
+      case INT:
+      case LONG:
+      case FLOAT:
+      case DOUBLE:
+        NumericTypeConfig<?> config = numericConfigFor(fieldDescriptor);
+        if (config == null) {
+          return null;
+        }
+        return numericTryBuild(base, rulesBuilder, config);
       default:
         return null;
     }
+  }
+
+  private static @Nullable NumericTypeConfig<?> numericConfigFor(FieldDescriptor fd) {
+    switch (fd.getType()) {
+      case INT32:
+        return NumericTypeConfig.INT32;
+      case SINT32:
+        return NumericTypeConfig.SINT32;
+      case SFIXED32:
+        return NumericTypeConfig.SFIXED32;
+      case UINT32:
+        return NumericTypeConfig.UINT32;
+      case FIXED32:
+        return NumericTypeConfig.FIXED32;
+      case INT64:
+        return NumericTypeConfig.INT64;
+      case SINT64:
+        return NumericTypeConfig.SINT64;
+      case SFIXED64:
+        return NumericTypeConfig.SFIXED64;
+      case UINT64:
+        return NumericTypeConfig.UINT64;
+      case FIXED64:
+        return NumericTypeConfig.FIXED64;
+      case FLOAT:
+        return NumericTypeConfig.FLOAT;
+      case DOUBLE:
+        return NumericTypeConfig.DOUBLE;
+      default:
+        return null;
+    }
+  }
+
+  /**
+   * Helper that captures the {@code <T>} on {@link NumericTypeConfig} so {@link
+   * NumericRulesEvaluator#tryBuild} compiles cleanly. The unchecked cast is sound because the
+   * config's generic parameter is the same as the evaluator's.
+   */
+  @SuppressWarnings({"rawtypes", "unchecked"})
+  private static @Nullable Evaluator numericTryBuild(
+      RuleBase base, FieldRules.Builder rulesBuilder, NumericTypeConfig<?> config) {
+    FieldDescriptor rulesField =
+        FieldRules.getDescriptor().findFieldByNumber(rulesFieldNumberFor(config));
+    return NumericRulesEvaluator.tryBuild(
+        base, rulesBuilder, (NumericTypeConfig) config, rulesField);
+  }
+
+  private static int rulesFieldNumberFor(NumericTypeConfig<?> config) {
+    if (config == NumericTypeConfig.INT32) return FieldRules.INT32_FIELD_NUMBER;
+    if (config == NumericTypeConfig.SINT32) return FieldRules.SINT32_FIELD_NUMBER;
+    if (config == NumericTypeConfig.SFIXED32) return FieldRules.SFIXED32_FIELD_NUMBER;
+    if (config == NumericTypeConfig.UINT32) return FieldRules.UINT32_FIELD_NUMBER;
+    if (config == NumericTypeConfig.FIXED32) return FieldRules.FIXED32_FIELD_NUMBER;
+    if (config == NumericTypeConfig.INT64) return FieldRules.INT64_FIELD_NUMBER;
+    if (config == NumericTypeConfig.SINT64) return FieldRules.SINT64_FIELD_NUMBER;
+    if (config == NumericTypeConfig.SFIXED64) return FieldRules.SFIXED64_FIELD_NUMBER;
+    if (config == NumericTypeConfig.UINT64) return FieldRules.UINT64_FIELD_NUMBER;
+    if (config == NumericTypeConfig.FIXED64) return FieldRules.FIXED64_FIELD_NUMBER;
+    if (config == NumericTypeConfig.FLOAT) return FieldRules.FLOAT_FIELD_NUMBER;
+    if (config == NumericTypeConfig.DOUBLE) return FieldRules.DOUBLE_FIELD_NUMBER;
+    throw new IllegalArgumentException("unknown numeric config");
   }
 
   @SuppressWarnings("unused")

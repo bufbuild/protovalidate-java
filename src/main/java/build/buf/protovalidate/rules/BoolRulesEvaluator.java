@@ -74,7 +74,7 @@ final class BoolRulesEvaluator implements Evaluator {
 
   @Override
   public List<RuleViolation.Builder> evaluate(Value val, boolean failFast) {
-    boolean actual = val.value(Boolean.class);
+    boolean actual = (Boolean) val.rawValue();
     if (actual == expected) {
       return RuleViolation.NO_VIOLATIONS;
     }

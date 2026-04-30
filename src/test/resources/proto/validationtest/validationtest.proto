@@ -138,3 +138,34 @@ message ExampleImportMessageInMapFieldRule {
 message ExampleBoolConst {
   bool flag = 1 [(buf.validate.field).bool.const = true];
 }
+
+message ExampleInt32Const {
+  int32 val = 1 [(buf.validate.field).int32.const = 5];
+}
+
+message ExampleInt32GtLt {
+  int32 val = 1 [(buf.validate.field).int32 = {
+    gt: 0
+    lt: 10
+  }];
+}
+
+message ExampleUint32Gt {
+  // Threshold above Integer.MAX_VALUE — verifies unsigned comparison: a uint32 value of
+  // 3000000000 must satisfy gt=2147483648, even though both render as negative when
+  // interpreted as signed int.
+  uint32 val = 1 [(buf.validate.field).uint32.gt = 2147483648];
+}
+
+message ExampleFloatFinite {
+  float val = 1 [(buf.validate.field).float.finite = true];
+}
+
+message ExampleDoubleIn {
+  double val = 1 [(buf.validate.field).double = {
+    in: [
+      1.5,
+      2.5
+    ]
+  }];
+}
