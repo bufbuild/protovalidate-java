@@ -16,10 +16,22 @@ package build.buf.protovalidate.benchmarks;
 
 import build.buf.protovalidate.Validator;
 import build.buf.protovalidate.ValidatorFactory;
+import build.buf.protovalidate.benchmarks.gen.BenchComplexSchema;
+import build.buf.protovalidate.benchmarks.gen.BenchGT;
+import build.buf.protovalidate.benchmarks.gen.BenchMap;
+import build.buf.protovalidate.benchmarks.gen.BenchRepeatedBytesUnique;
+import build.buf.protovalidate.benchmarks.gen.BenchRepeatedMessage;
+import build.buf.protovalidate.benchmarks.gen.BenchRepeatedScalar;
+import build.buf.protovalidate.benchmarks.gen.BenchRepeatedScalarUnique;
+import build.buf.protovalidate.benchmarks.gen.BenchScalar;
 import build.buf.protovalidate.benchmarks.gen.ManyUnruledFieldsMessage;
+import build.buf.protovalidate.benchmarks.gen.MultiRule;
 import build.buf.protovalidate.benchmarks.gen.RegexPatternMessage;
 import build.buf.protovalidate.benchmarks.gen.RepeatedRuleMessage;
 import build.buf.protovalidate.benchmarks.gen.SimpleStringMessage;
+import build.buf.protovalidate.benchmarks.gen.StringMatching;
+import build.buf.protovalidate.benchmarks.gen.TestByteMatching;
+import build.buf.protovalidate.benchmarks.gen.WrapperTesting;
 import build.buf.protovalidate.exceptions.ValidationException;
 import com.google.protobuf.Descriptors.FieldDescriptor;
 import java.util.concurrent.TimeUnit;
@@ -32,16 +44,44 @@ import org.openjdk.jmh.annotations.Setup;
 import org.openjdk.jmh.annotations.State;
 import org.openjdk.jmh.infra.Blackhole;
 
+/**
+ * Steady-state validation benchmarks. Exercises the hot path after the evaluator cache is warm.
+ *
+ * <p>The set of {@code validateBench*} methods mirrors the Go benchmark suite in
+ * protovalidate-go's {@code validator_bench_test.go} and provides the baseline against which the
+ * native-rules port measures its improvements. The original {@code validate*} methods exercise
+ * past PR fixes (tautology skip, AST cache, etc.) and remain as regression guards.
+ *
+ * <p>Phase 1 will refactor this into a {@code @Param}-driven A/B once {@code
+ * Config.disableNativeRules} exists; for now this is the single-mode pre-port baseline.
+ */
 @BenchmarkMode(Mode.AverageTime)
 @OutputTimeUnit(TimeUnit.NANOSECONDS)
 @State(Scope.Benchmark)
 public class ValidationBenchmark {
 
   private Validator validator;
+
+  // --- Existing regression-guard fixtures ---
   private SimpleStringMessage simple;
   private ManyUnruledFieldsMessage manyUnruled;
   private RepeatedRuleMessage repeatedRule;
   private RegexPatternMessage regexPattern;
+
+  // --- Native-rules port fixtures ---
+  private BenchScalar benchScalar;
+  private BenchRepeatedScalar benchRepeatedScalar;
+  private BenchRepeatedMessage benchRepeatedMessage;
+  private BenchRepeatedScalarUnique benchRepeatedScalarUnique;
+  private BenchRepeatedBytesUnique benchRepeatedBytesUnique;
+  private BenchMap benchMap;
+  private BenchComplexSchema benchComplexSchema;
+  private BenchGT benchGT;
+  private TestByteMatching testByteMatching;
+  private StringMatching stringMatching;
+  private WrapperTesting wrapperTesting;
+  private MultiRule multiRuleNoError;
+  private MultiRule multiRuleError;
 
   @Setup
   public void setup() throws ValidationException {
@@ -71,15 +111,41 @@ public class ValidationBenchmark {
 
     regexPattern = RegexPatternMessage.newBuilder().setName("Alice Example").build();
 
+    benchScalar = BenchFixtures.benchScalar();
+    benchRepeatedScalar = BenchFixtures.benchRepeatedScalar();
+    benchRepeatedMessage = BenchFixtures.benchRepeatedMessage();
+    benchRepeatedScalarUnique = BenchFixtures.benchRepeatedScalarUnique();
+    benchRepeatedBytesUnique = BenchFixtures.benchRepeatedBytesUnique();
+    benchMap = BenchFixtures.benchMap();
+    benchComplexSchema = BenchFixtures.benchComplexSchema();
+    benchGT = BenchFixtures.benchGT();
+    testByteMatching = BenchFixtures.testByteMatching();
+    stringMatching = BenchFixtures.stringMatching();
+    wrapperTesting = BenchFixtures.wrapperTesting();
+    multiRuleNoError = BenchFixtures.multiRuleNoError();
+    multiRuleError = BenchFixtures.multiRuleError();
+
     // Warm evaluator cache for steady-state benchmarks.
     validator.validate(simple);
     validator.validate(manyUnruled);
     validator.validate(repeatedRule);
     validator.validate(regexPattern);
+    validator.validate(benchScalar);
+    validator.validate(benchRepeatedScalar);
+    validator.validate(benchRepeatedMessage);
+    validator.validate(benchRepeatedScalarUnique);
+    validator.validate(benchRepeatedBytesUnique);
+    validator.validate(benchMap);
+    validator.validate(benchComplexSchema);
+    validator.validate(benchGT);
+    validator.validate(testByteMatching);
+    validator.validate(stringMatching);
+    validator.validate(wrapperTesting);
+    validator.validate(multiRuleNoError);
+    validator.validate(multiRuleError);
   }
 
-  // Steady-state validate() benchmarks. These exercise the hot path after the
-  // evaluator cache is warm.
+  // --- Existing regression-guard benchmarks ---
 
   @Benchmark
   public void validateSimple(Blackhole bh) throws ValidationException {
@@ -99,5 +165,72 @@ public class ValidationBenchmark {
   @Benchmark
   public void validateRegexPattern(Blackhole bh) throws ValidationException {
     bh.consume(validator.validate(regexPattern));
+  }
+
+  // --- Native-rules port benchmarks (mirror Go BenchmarkXxx names) ---
+
+  @Benchmark
+  public void validateBenchScalar(Blackhole bh) throws ValidationException {
+    bh.consume(validator.validate(benchScalar));
+  }
+
+  @Benchmark
+  public void validateBenchRepeatedScalar(Blackhole bh) throws ValidationException {
+    bh.consume(validator.validate(benchRepeatedScalar));
+  }
+
+  @Benchmark
+  public void validateBenchRepeatedMessage(Blackhole bh) throws ValidationException {
+    bh.consume(validator.validate(benchRepeatedMessage));
+  }
+
+  @Benchmark
+  public void validateBenchRepeatedScalarUnique(Blackhole bh) throws ValidationException {
+    bh.consume(validator.validate(benchRepeatedScalarUnique));
+  }
+
+  @Benchmark
+  public void validateBenchRepeatedBytesUnique(Blackhole bh) throws ValidationException {
+    bh.consume(validator.validate(benchRepeatedBytesUnique));
+  }
+
+  @Benchmark
+  public void validateBenchMap(Blackhole bh) throws ValidationException {
+    bh.consume(validator.validate(benchMap));
+  }
+
+  @Benchmark
+  public void validateBenchComplexSchema(Blackhole bh) throws ValidationException {
+    bh.consume(validator.validate(benchComplexSchema));
+  }
+
+  @Benchmark
+  public void validateBenchInt32GT(Blackhole bh) throws ValidationException {
+    bh.consume(validator.validate(benchGT));
+  }
+
+  @Benchmark
+  public void validateTestByteMatching(Blackhole bh) throws ValidationException {
+    bh.consume(validator.validate(testByteMatching));
+  }
+
+  @Benchmark
+  public void validateStringMatching(Blackhole bh) throws ValidationException {
+    bh.consume(validator.validate(stringMatching));
+  }
+
+  @Benchmark
+  public void validateWrapperTesting(Blackhole bh) throws ValidationException {
+    bh.consume(validator.validate(wrapperTesting));
+  }
+
+  @Benchmark
+  public void validateMultiRuleNoError(Blackhole bh) throws ValidationException {
+    bh.consume(validator.validate(multiRuleNoError));
+  }
+
+  @Benchmark
+  public void validateMultiRuleError(Blackhole bh) throws ValidationException {
+    bh.consume(validator.validate(multiRuleError));
   }
 }
