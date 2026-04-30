@@ -107,7 +107,7 @@ final class NumericRulesEvaluator<T extends Number & Comparable<T>> implements E
       return null;
     }
     Message rulesMsg = (Message) rulesBuilder.getField(rulesField);
-    if (!rulesMsg.getUnknownFields().asMap().isEmpty()) {
+    if (!rulesMsg.getUnknownFields().isEmpty()) {
       return null;
     }
 

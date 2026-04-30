@@ -56,7 +56,7 @@ final class BoolRulesEvaluator implements Evaluator {
       return null;
     }
     BoolRules boolRules = rulesBuilder.getBool();
-    if (!boolRules.getUnknownFields().asMap().isEmpty()) {
+    if (!boolRules.getUnknownFields().isEmpty()) {
       return null;
     }
     if (!boolRules.hasConst()) {

@@ -198,3 +198,28 @@ message MultiRule {
     (buf.validate.field).int64.gt = 5
   ];
 }
+
+// Phase 2 measurement target. Single bool field with a const rule so the bench has a direct
+// hit on BoolRulesEvaluator.
+message BenchBoolConst {
+  bool flag = 1 [(buf.validate.field).bool.const = true];
+}
+
+enum BenchPhaseEnum {
+  BENCH_PHASE_ENUM_UNSPECIFIED = 0;
+  BENCH_PHASE_ENUM_ONE = 1;
+  BENCH_PHASE_ENUM_TWO = 2;
+  BENCH_PHASE_ENUM_THREE = 3;
+}
+
+// Phase 4 measurement target. Single enum field with const + in rules so the bench has a direct
+// hit on EnumRulesEvaluator.
+message BenchEnumRules {
+  BenchPhaseEnum val = 1 [(buf.validate.field).enum = {
+    in: [
+      1,
+      2,
+      3
+    ]
+  }];
+}

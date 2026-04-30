@@ -169,3 +169,23 @@ message ExampleDoubleIn {
     ]
   }];
 }
+
+enum ExampleColor {
+  EXAMPLE_COLOR_UNSPECIFIED = 0;
+  EXAMPLE_COLOR_RED = 1;
+  EXAMPLE_COLOR_GREEN = 2;
+  EXAMPLE_COLOR_BLUE = 3;
+}
+
+message ExampleEnumConst {
+  ExampleColor val = 1 [(buf.validate.field).enum.const = 2];
+}
+
+message ExampleEnumIn {
+  ExampleColor val = 1 [(buf.validate.field).enum = {
+    in: [
+      1,
+      3
+    ]
+  }];
+}

@@ -14,10 +14,13 @@
 
 package build.buf.protovalidate.benchmarks;
 
+import build.buf.protovalidate.benchmarks.gen.BenchBoolConst;
 import build.buf.protovalidate.benchmarks.gen.BenchComplexSchema;
 import build.buf.protovalidate.benchmarks.gen.BenchEnum;
+import build.buf.protovalidate.benchmarks.gen.BenchEnumRules;
 import build.buf.protovalidate.benchmarks.gen.BenchGT;
 import build.buf.protovalidate.benchmarks.gen.BenchMap;
+import build.buf.protovalidate.benchmarks.gen.BenchPhaseEnum;
 import build.buf.protovalidate.benchmarks.gen.BenchRepeatedBytesUnique;
 import build.buf.protovalidate.benchmarks.gen.BenchRepeatedMessage;
 import build.buf.protovalidate.benchmarks.gen.BenchRepeatedScalar;
@@ -199,5 +202,15 @@ final class BenchFixtures {
   /** Multi-rule fixture that FAILS both rules — many=1 violates const=10 and gt=5. */
   static MultiRule multiRuleError() {
     return MultiRule.newBuilder().setMany(1).build();
+  }
+
+  /** Phase 2 measurement target — exercises BoolRulesEvaluator on bool.const. */
+  static BenchBoolConst benchBoolConst() {
+    return BenchBoolConst.newBuilder().setFlag(true).build();
+  }
+
+  /** Phase 4 measurement target — exercises EnumRulesEvaluator on enum.in. */
+  static BenchEnumRules benchEnumRules() {
+    return BenchEnumRules.newBuilder().setVal(BenchPhaseEnum.BENCH_PHASE_ENUM_TWO).build();
   }
 }

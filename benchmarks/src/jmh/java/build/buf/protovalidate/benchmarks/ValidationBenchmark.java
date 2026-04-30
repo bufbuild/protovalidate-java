@@ -17,7 +17,9 @@ package build.buf.protovalidate.benchmarks;
 import build.buf.protovalidate.Config;
 import build.buf.protovalidate.Validator;
 import build.buf.protovalidate.ValidatorFactory;
+import build.buf.protovalidate.benchmarks.gen.BenchBoolConst;
 import build.buf.protovalidate.benchmarks.gen.BenchComplexSchema;
+import build.buf.protovalidate.benchmarks.gen.BenchEnumRules;
 import build.buf.protovalidate.benchmarks.gen.BenchGT;
 import build.buf.protovalidate.benchmarks.gen.BenchMap;
 import build.buf.protovalidate.benchmarks.gen.BenchRepeatedBytesUnique;
@@ -88,6 +90,8 @@ public class ValidationBenchmark {
   private WrapperTesting wrapperTesting;
   private MultiRule multiRuleNoError;
   private MultiRule multiRuleError;
+  private BenchBoolConst benchBoolConst;
+  private BenchEnumRules benchEnumRules;
 
   @Setup
   public void setup() throws ValidationException {
@@ -131,6 +135,8 @@ public class ValidationBenchmark {
     wrapperTesting = BenchFixtures.wrapperTesting();
     multiRuleNoError = BenchFixtures.multiRuleNoError();
     multiRuleError = BenchFixtures.multiRuleError();
+    benchBoolConst = BenchFixtures.benchBoolConst();
+    benchEnumRules = BenchFixtures.benchEnumRules();
 
     // Warm evaluator cache for steady-state benchmarks.
     validator.validate(simple);
@@ -150,6 +156,8 @@ public class ValidationBenchmark {
     validator.validate(wrapperTesting);
     validator.validate(multiRuleNoError);
     validator.validate(multiRuleError);
+    validator.validate(benchBoolConst);
+    validator.validate(benchEnumRules);
   }
 
   // --- Existing regression-guard benchmarks ---
@@ -239,5 +247,15 @@ public class ValidationBenchmark {
   @Benchmark
   public void validateMultiRuleError(Blackhole bh) throws ValidationException {
     bh.consume(validator.validate(multiRuleError));
+  }
+
+  @Benchmark
+  public void validateBenchBoolConst(Blackhole bh) throws ValidationException {
+    bh.consume(validator.validate(benchBoolConst));
+  }
+
+  @Benchmark
+  public void validateBenchEnumRules(Blackhole bh) throws ValidationException {
+    bh.consume(validator.validate(benchEnumRules));
   }
 }
