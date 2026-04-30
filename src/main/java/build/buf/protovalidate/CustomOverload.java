@@ -34,8 +34,15 @@ import java.util.Locale;
 import java.util.Set;
 import java.util.concurrent.ConcurrentMap;
 
-/** Defines custom function overloads (the implementation). */
-final class CustomOverload {
+/**
+ * Defines custom function overloads (the implementation).
+ *
+ * <p>Public so that native rule evaluators in {@code build.buf.protovalidate.rules} can reuse the
+ * format-validation helpers ({@link #isEmail}, {@link #isHostname}, {@link #isIp}, etc.); not part
+ * of the supported public API.
+ */
+@Internal
+public final class CustomOverload {
 
   // See https://html.spec.whatwg.org/multipage/input.html#valid-e-mail-address
   private static final Pattern EMAIL_REGEX =
@@ -417,7 +424,7 @@ final class CustomOverload {
    * <p>The port is separated by a colon. It must be non-empty, with a decimal number in the range
    * of 0-65535, inclusive.
    */
-  private static boolean isHostAndPort(String str, boolean portRequired) {
+  public static boolean isHostAndPort(String str, boolean portRequired) {
     if (str.isEmpty()) {
       return false;
     }
@@ -503,7 +510,7 @@ final class CustomOverload {
    * @param addr The input string to validate as an email address.
    * @return {@code true} if the input string is a valid email address, {@code false} otherwise.
    */
-  private static boolean isEmail(String addr) {
+  public static boolean isEmail(String addr) {
     return EMAIL_REGEX.matcher(addr).matches();
   }
 
@@ -521,7 +528,7 @@ final class CustomOverload {
    *   <li>The name can be 253 characters at most, excluding the optional trailing dot.
    * </ul>
    */
-  private static boolean isHostname(String val) {
+  public static boolean isHostname(String val) {
     if (val.length() > 253) {
       return false;
     }
@@ -577,7 +584,7 @@ final class CustomOverload {
    * <p>Both formats are well-defined in the internet standard RFC 3986. Zone identifiers for IPv6
    * addresses (for example "fe80::a%en1") are supported.
    */
-  static boolean isIp(String addr, long ver) {
+  public static boolean isIp(String addr, long ver) {
     if (ver == 6L) {
       return new Ipv6(addr).address();
     } else if (ver == 4L) {
@@ -595,7 +602,7 @@ final class CustomOverload {
    * <p>URI is defined in the internet standard RFC 3986. Zone Identifiers in IPv6 address literals
    * are supported (RFC 6874).
    */
-  private static boolean isUri(String str) {
+  public static boolean isUri(String str) {
     return new Uri(str).uri();
   }
 
@@ -607,7 +614,7 @@ final class CustomOverload {
    * <p>URI, URI Reference, and Relative Reference are defined in the internet standard RFC 3986.
    * Zone Identifiers in IPv6 address literals are supported (RFC 6874).
    */
-  private static boolean isUriRef(String str) {
+  public static boolean isUriRef(String str) {
     return new Uri(str).uriReference();
   }
 
@@ -628,7 +635,7 @@ final class CustomOverload {
    * <p>The same principle applies to IPv4 addresses. "192.168.1.0/24" designates the first 24 bits
    * of the 32-bit IPv4 as the network prefix.
    */
-  private static boolean isIpPrefix(String str, long version, boolean strict) {
+  public static boolean isIpPrefix(String str, long version, boolean strict) {
     if (version == 6L) {
       Ipv6 ip = new Ipv6(str);
       return ip.addressPrefix() && (!strict || ip.isPrefixOnly());

@@ -201,3 +201,22 @@ message ExampleBytesPattern {
 message ExampleBytesIPv4 {
   bytes val = 1 [(buf.validate.field).bytes.ipv4 = true];
 }
+
+message ExampleStringConst {
+  string val = 1 [(buf.validate.field).string.const = "abcd"];
+}
+
+message ExampleStringEmail {
+  string val = 1 [(buf.validate.field).string.email = true];
+}
+
+message ExampleStringMinMaxLen {
+  string val = 1 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 5
+  }];
+}
+
+message ExampleStringHostAndPort {
+  string val = 1 [(buf.validate.field).string.host_and_port = true];
+}
