@@ -189,3 +189,15 @@ message ExampleEnumIn {
     ]
   }];
 }
+
+message ExampleBytesConst {
+  bytes val = 1 [(buf.validate.field).bytes.const = "\x00\x99"];
+}
+
+message ExampleBytesPattern {
+  bytes val = 1 [(buf.validate.field).bytes.pattern = "^[a-z]+$"];
+}
+
+message ExampleBytesIPv4 {
+  bytes val = 1 [(buf.validate.field).bytes.ipv4 = true];
+}

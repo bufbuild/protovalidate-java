@@ -77,7 +77,7 @@ public final class Rules {
     return null;
   }
 
-  // Phase 5 wires bytes, Phase 6 string, Phase 7 repeated/map.
+  // Phase 6 wires string, Phase 7 repeated/map.
 
   private static @Nullable Evaluator tryBuildScalarRules(
       FieldDescriptor fieldDescriptor,
@@ -89,6 +89,8 @@ public final class Rules {
         return BoolRulesEvaluator.tryBuild(base, rulesBuilder);
       case ENUM:
         return EnumRulesEvaluator.tryBuild(base, rulesBuilder);
+      case BYTE_STRING:
+        return BytesRulesEvaluator.tryBuild(base, rulesBuilder);
       case INT:
       case LONG:
       case FLOAT:
