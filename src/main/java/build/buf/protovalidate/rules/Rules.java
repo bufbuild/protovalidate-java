@@ -77,8 +77,6 @@ public final class Rules {
     return null;
   }
 
-  // Phase 7 wires repeated/map.
-
   private static @Nullable Evaluator tryBuildScalarRules(
       FieldDescriptor fieldDescriptor,
       FieldRules.Builder rulesBuilder,
@@ -168,15 +166,13 @@ public final class Rules {
     throw new IllegalArgumentException("unknown numeric config");
   }
 
-  @SuppressWarnings("unused")
   private static @Nullable Evaluator tryBuildRepeatedRules(
       FieldRules.Builder rulesBuilder, ValueEvaluator valueEvaluator) {
-    return null;
+    return RepeatedRulesEvaluator.tryBuild(RuleBase.of(valueEvaluator), rulesBuilder);
   }
 
-  @SuppressWarnings("unused")
   private static @Nullable Evaluator tryBuildMapRules(
       FieldRules.Builder rulesBuilder, ValueEvaluator valueEvaluator) {
-    return null;
+    return MapRulesEvaluator.tryBuild(RuleBase.of(valueEvaluator), rulesBuilder);
   }
 }

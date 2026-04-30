@@ -220,3 +220,21 @@ message ExampleStringMinMaxLen {
 message ExampleStringHostAndPort {
   string val = 1 [(buf.validate.field).string.host_and_port = true];
 }
+
+message ExampleRepeatedMinMax {
+  repeated int32 val = 1 [(buf.validate.field).repeated = {
+    min_items: 2
+    max_items: 5
+  }];
+}
+
+message ExampleRepeatedUnique {
+  repeated string val = 1 [(buf.validate.field).repeated.unique = true];
+}
+
+message ExampleMapMinMax {
+  map<string, string> val = 1 [(buf.validate.field).map = {
+    min_pairs: 1
+    max_pairs: 3
+  }];
+}
