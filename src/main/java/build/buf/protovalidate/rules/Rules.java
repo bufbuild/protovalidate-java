@@ -62,21 +62,33 @@ public final class Rules {
       return tryBuildRepeatedRules(rulesBuilder, valueEvaluator);
     }
     if (!fieldDescriptor.isMapField() && !fieldDescriptor.isRepeated()) {
+      // Wrapper fields (google.protobuf.{Bool,Int32,...}Value) are recursed into via
+      // processWrapperRules with the inner "value" field as fieldDescriptor; the value passed
+      // to evaluate() is still the wrapper Message. CEL transparently unwraps these, but native
+      // evaluators don't get that for free. Defer wrapper support to a follow-up; CEL handles
+      // wrappers correctly today.
+      FieldDescriptor outerDescriptor = valueEvaluator.getDescriptor();
+      if (outerDescriptor != null
+          && outerDescriptor.getJavaType() == FieldDescriptor.JavaType.MESSAGE) {
+        return null;
+      }
       return tryBuildScalarRules(fieldDescriptor, rulesBuilder, valueEvaluator);
     }
     return null;
   }
 
-  // Phase 1: dispatcher skeleton. Per-kind builders are introduced in subsequent phases.
-  // Phase 2 wires bool, Phase 3 numeric, Phase 4 enum, Phase 5 bytes, Phase 6 string,
-  // Phase 7 repeated/map.
+  // Phase 3 wires numeric, Phase 4 enum, Phase 5 bytes, Phase 6 string, Phase 7 repeated/map.
 
-  @SuppressWarnings("unused")
   private static @Nullable Evaluator tryBuildScalarRules(
       FieldDescriptor fieldDescriptor,
       FieldRules.Builder rulesBuilder,
       ValueEvaluator valueEvaluator) {
-    return null;
+    switch (fieldDescriptor.getJavaType()) {
+      case BOOLEAN:
+        return BoolRulesEvaluator.tryBuild(RuleBase.of(valueEvaluator), rulesBuilder);
+      default:
+        return null;
+    }
   }
 
   @SuppressWarnings("unused")

@@ -134,3 +134,7 @@ message ExampleImportMessageInMapFieldRule {
     }
   ];
 }
+
+message ExampleBoolConst {
+  bool flag = 1 [(buf.validate.field).bool.const = true];
+}
