@@ -71,7 +71,7 @@ The standard rules can be evaluated either through CEL or through native Java co
 Native rules are **opt-in** while the implementation matures. Enable them by configuring the validator:
 
 ```java
-Config config = Config.newBuilder().setDisableNativeRules(false).build();
+Config config = Config.newBuilder().setEnableNativeRules(true).build();
 Validator validator = ValidatorFactory.newBuilder().withConfig(config).build();
 ```
 

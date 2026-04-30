@@ -44,7 +44,7 @@ import org.junit.jupiter.api.Test;
 
 /**
  * Parity test: runs a representative slice of conformance fixtures through both modes
- * ({@code disableNativeRules=true} and {@code false}) and asserts the resulting
+ * ({@code enableNativeRules=true} and {@code false}) and asserts the resulting
  * {@code Violation} protos are byte-equal. The conformance suite proves each mode is correct in
  * isolation; this test proves they don't drift from each other on the same input.
  *
@@ -58,11 +58,11 @@ class NativeRulesParityTest {
 
   private final Validator nativeValidator =
       ValidatorFactory.newBuilder()
-          .withConfig(Config.newBuilder().setDisableNativeRules(false).build())
+          .withConfig(Config.newBuilder().setEnableNativeRules(true).build())
           .build();
   private final Validator celValidator =
       ValidatorFactory.newBuilder()
-          .withConfig(Config.newBuilder().setDisableNativeRules(true).build())
+          .withConfig(Config.newBuilder().setEnableNativeRules(false).build())
           .build();
 
   @Test

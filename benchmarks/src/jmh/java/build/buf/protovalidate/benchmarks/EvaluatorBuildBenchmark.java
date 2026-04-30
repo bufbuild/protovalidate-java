@@ -42,8 +42,8 @@ import org.openjdk.jmh.infra.Blackhole;
 @State(Scope.Benchmark)
 public class EvaluatorBuildBenchmark {
 
-  @Param({"true", "false"})
-  public boolean disableNativeRules;
+  @Param({"false", "true"})
+  public boolean enableNativeRules;
 
   private Config config;
   private Message benchComplexSchema;
@@ -51,7 +51,7 @@ public class EvaluatorBuildBenchmark {
 
   @Setup
   public void setup() {
-    config = Config.newBuilder().setDisableNativeRules(disableNativeRules).build();
+    config = Config.newBuilder().setEnableNativeRules(enableNativeRules).build();
     benchComplexSchema = BenchComplexSchema.getDefaultInstance();
     benchGT = BenchGT.getDefaultInstance();
   }

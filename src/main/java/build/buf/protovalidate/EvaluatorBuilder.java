@@ -61,7 +61,7 @@ final class EvaluatorBuilder {
 
   private final Cel cel;
   private final boolean disableLazy;
-  private final boolean disableNativeRules;
+  private final boolean enableNativeRules;
   private final RuleCache rules;
 
   /**
@@ -73,7 +73,7 @@ final class EvaluatorBuilder {
   EvaluatorBuilder(Cel cel, Config config) {
     this.cel = cel;
     this.disableLazy = false;
-    this.disableNativeRules = config.isNativeRulesDisabled();
+    this.enableNativeRules = config.isNativeRulesEnabled();
     this.rules = new RuleCache(cel, config);
   }
 
@@ -88,7 +88,7 @@ final class EvaluatorBuilder {
     Objects.requireNonNull(descriptors, "descriptors must not be null");
     this.cel = cel;
     this.disableLazy = disableLazy;
-    this.disableNativeRules = config.isNativeRulesDisabled();
+    this.enableNativeRules = config.isNativeRulesEnabled();
     this.rules = new RuleCache(cel, config);
 
     for (Descriptor descriptor : descriptors) {
@@ -130,7 +130,7 @@ final class EvaluatorBuilder {
       }
       // Rebuild cache with this descriptor (and any of its dependencies).
       Map<Descriptor, MessageEvaluator> updatedCache =
-          new DescriptorCacheBuilder(cel, rules, disableNativeRules, evaluatorCache).build(desc);
+          new DescriptorCacheBuilder(cel, rules, enableNativeRules, evaluatorCache).build(desc);
       evaluatorCache = updatedCache;
       eval = updatedCache.get(desc);
       if (eval == null) {
@@ -145,17 +145,17 @@ final class EvaluatorBuilder {
     private final RuleResolver resolver = new RuleResolver();
     private final Cel cel;
     private final RuleCache ruleCache;
-    private final boolean disableNativeRules;
+    private final boolean enableNativeRules;
     private final HashMap<Descriptor, MessageEvaluator> cache;
 
     private DescriptorCacheBuilder(
         Cel cel,
         RuleCache ruleCache,
-        boolean disableNativeRules,
+        boolean enableNativeRules,
         Map<Descriptor, MessageEvaluator> previousCache) {
       this.cel = Objects.requireNonNull(cel, "cel");
       this.ruleCache = Objects.requireNonNull(ruleCache, "ruleCache");
-      this.disableNativeRules = disableNativeRules;
+      this.enableNativeRules = enableNativeRules;
       this.cache = new HashMap<>(previousCache);
     }
 
@@ -472,9 +472,10 @@ final class EvaluatorBuilder {
         }
       }
 
-      // Try native rule evaluators (Phase 1: dispatcher always returns null). Any rule covered
-      // natively is cleared on the residual builder so CEL only compiles what's left.
-      if (!disableNativeRules) {
+      // Try native rule evaluators when opted in. Any rule covered natively is cleared on the
+      // residual builder so CEL only compiles what's left; rules without a native implementation
+      // remain on the residual and CEL handles them.
+      if (enableNativeRules) {
         FieldRules.Builder rulesBuilder = fieldRules.toBuilder();
         Evaluator nativeEval = Rules.tryBuild(fieldDescriptor, rulesBuilder, valueEvaluatorEval);
         if (nativeEval != null) {
