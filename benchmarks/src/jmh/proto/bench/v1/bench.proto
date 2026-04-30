@@ -79,3 +79,32 @@ message RegexPatternMessage {
     max_bytes: 256
   }];
 }
+
+// Twenty float fields, each with only `gt` set. The standard float.gt rule
+// expands into five CEL programs (gt, gt_lt, gt_lt_exclusive, gt_lte,
+// gt_lte_exclusive); when neither `lt` nor `lte` is set, four of those
+// short-circuit to the empty string using only the bound `rules` variable.
+// Targets the residual-reduction skip in RuleCache: those four programs
+// can be eliminated at compile time so they never run during validate().
+message NumericRangeMessage {
+  float f01 = 1 [(buf.validate.field).float.gt = 0];
+  float f02 = 2 [(buf.validate.field).float.gt = 0];
+  float f03 = 3 [(buf.validate.field).float.gt = 0];
+  float f04 = 4 [(buf.validate.field).float.gt = 0];
+  float f05 = 5 [(buf.validate.field).float.gt = 0];
+  float f06 = 6 [(buf.validate.field).float.gt = 0];
+  float f07 = 7 [(buf.validate.field).float.gt = 0];
+  float f08 = 8 [(buf.validate.field).float.gt = 0];
+  float f09 = 9 [(buf.validate.field).float.gt = 0];
+  float f10 = 10 [(buf.validate.field).float.gt = 0];
+  float f11 = 11 [(buf.validate.field).float.gt = 0];
+  float f12 = 12 [(buf.validate.field).float.gt = 0];
+  float f13 = 13 [(buf.validate.field).float.gt = 0];
+  float f14 = 14 [(buf.validate.field).float.gt = 0];
+  float f15 = 15 [(buf.validate.field).float.gt = 0];
+  float f16 = 16 [(buf.validate.field).float.gt = 0];
+  float f17 = 17 [(buf.validate.field).float.gt = 0];
+  float f18 = 18 [(buf.validate.field).float.gt = 0];
+  float f19 = 19 [(buf.validate.field).float.gt = 0];
+  float f20 = 20 [(buf.validate.field).float.gt = 0];
+}

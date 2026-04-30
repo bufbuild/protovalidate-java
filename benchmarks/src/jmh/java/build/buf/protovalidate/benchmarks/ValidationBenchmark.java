@@ -17,6 +17,7 @@ package build.buf.protovalidate.benchmarks;
 import build.buf.protovalidate.Validator;
 import build.buf.protovalidate.ValidatorFactory;
 import build.buf.protovalidate.benchmarks.gen.ManyUnruledFieldsMessage;
+import build.buf.protovalidate.benchmarks.gen.NumericRangeMessage;
 import build.buf.protovalidate.benchmarks.gen.RegexPatternMessage;
 import build.buf.protovalidate.benchmarks.gen.RepeatedRuleMessage;
 import build.buf.protovalidate.benchmarks.gen.SimpleStringMessage;
@@ -42,6 +43,7 @@ public class ValidationBenchmark {
   private ManyUnruledFieldsMessage manyUnruled;
   private RepeatedRuleMessage repeatedRule;
   private RegexPatternMessage regexPattern;
+  private NumericRangeMessage numericRange;
 
   @Setup
   public void setup() throws ValidationException {
@@ -71,11 +73,18 @@ public class ValidationBenchmark {
 
     regexPattern = RegexPatternMessage.newBuilder().setName("Alice Example").build();
 
+    NumericRangeMessage.Builder numericRangeBuilder = NumericRangeMessage.newBuilder();
+    for (FieldDescriptor fd : NumericRangeMessage.getDescriptor().getFields()) {
+      numericRangeBuilder.setField(fd, 1.0f);
+    }
+    numericRange = numericRangeBuilder.build();
+
     // Warm evaluator cache for steady-state benchmarks.
     validator.validate(simple);
     validator.validate(manyUnruled);
     validator.validate(repeatedRule);
     validator.validate(regexPattern);
+    validator.validate(numericRange);
   }
 
   // Steady-state validate() benchmarks. These exercise the hot path after the
@@ -99,5 +108,10 @@ public class ValidationBenchmark {
   @Benchmark
   public void validateRegexPattern(Blackhole bh) throws ValidationException {
     bh.consume(validator.validate(regexPattern));
+  }
+
+  @Benchmark
+  public void validateNumericRange(Blackhole bh) throws ValidationException {
+    bh.consume(validator.validate(numericRange));
   }
 }
