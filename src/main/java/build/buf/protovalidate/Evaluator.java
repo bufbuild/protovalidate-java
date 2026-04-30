@@ -20,8 +20,12 @@ import java.util.List;
 /**
  * {@link Evaluator} defines a validation evaluator. evaluator implementations may elide type
  * checking of the passed in value, as the types have been guaranteed during the build phase.
+ *
+ * <p>Public so that native rule evaluators in {@code build.buf.protovalidate.rules} can implement
+ * it; not part of the supported public API.
  */
-interface Evaluator {
+@Internal
+public interface Evaluator {
   /**
    * Tautology returns true if the evaluator always succeeds.
    *

@@ -27,13 +27,17 @@ import org.jspecify.annotations.Nullable;
 
 /**
  * {@link RuleViolation} contains all the collected information about an individual rule violation.
+ *
+ * <p>Public so that native rule evaluators in {@code build.buf.protovalidate.rules} can construct
+ * violation builders; not part of the supported public API.
  */
-final class RuleViolation implements Violation {
+@Internal
+public final class RuleViolation implements Violation {
   /** Static value to return when there are no violations. */
-  static final List<Builder> NO_VIOLATIONS = Collections.emptyList();
+  public static final List<Builder> NO_VIOLATIONS = Collections.emptyList();
 
   /** {@link FieldValue} represents a Protobuf field value inside a Protobuf message. */
-  static class FieldValue implements Violation.FieldValue {
+  public static class FieldValue implements Violation.FieldValue {
     private final @Nullable Object value;
     private final Descriptors.FieldDescriptor descriptor;
 
@@ -43,7 +47,7 @@ final class RuleViolation implements Violation {
      * @param value Bare Protobuf field value of field.
      * @param descriptor Field descriptor pertaining to this field.
      */
-    FieldValue(@Nullable Object value, Descriptors.FieldDescriptor descriptor) {
+    public FieldValue(@Nullable Object value, Descriptors.FieldDescriptor descriptor) {
       this.value = value;
       this.descriptor = descriptor;
     }
@@ -54,7 +58,7 @@ final class RuleViolation implements Violation {
      *
      * @param value A {@link Value} to create this {@link FieldValue} from.
      */
-    FieldValue(Value value) {
+    public FieldValue(Value value) {
       this.value = value.value(Object.class);
       this.descriptor = Objects.requireNonNull(value.fieldDescriptor());
     }
@@ -75,7 +79,7 @@ final class RuleViolation implements Violation {
   private final @Nullable FieldValue ruleValue;
 
   /** Builds a Violation instance. */
-  static class Builder {
+  public static class Builder {
     private @Nullable String ruleId;
     private @Nullable String message;
     private boolean forKey = false;
@@ -90,7 +94,7 @@ final class RuleViolation implements Violation {
      * @param ruleId Rule ID value to use.
      * @return The builder.
      */
-    Builder setRuleId(String ruleId) {
+    public Builder setRuleId(String ruleId) {
       this.ruleId = ruleId;
       return this;
     }
@@ -101,7 +105,7 @@ final class RuleViolation implements Violation {
      * @param message Message value to use.
      * @return The builder.
      */
-    Builder setMessage(String message) {
+    public Builder setMessage(String message) {
       this.message = message;
       return this;
     }
@@ -112,7 +116,7 @@ final class RuleViolation implements Violation {
      * @param forKey If true, signals that the resulting violation is for a map key.
      * @return The builder.
      */
-    Builder setForKey(boolean forKey) {
+    public Builder setForKey(boolean forKey) {
       this.forKey = forKey;
       return this;
     }
@@ -123,7 +127,8 @@ final class RuleViolation implements Violation {
      * @param fieldPathElements Field path elements to add.
      * @return The builder.
      */
-    Builder addAllFieldPathElements(Collection<? extends FieldPathElement> fieldPathElements) {
+    public Builder addAllFieldPathElements(
+        Collection<? extends FieldPathElement> fieldPathElements) {
       this.fieldPath.addAll(fieldPathElements);
       return this;
     }
@@ -134,7 +139,7 @@ final class RuleViolation implements Violation {
      * @param fieldPathElement A field path element to add to the beginning of the field path.
      * @return The builder.
      */
-    Builder addFirstFieldPathElement(@Nullable FieldPathElement fieldPathElement) {
+    public Builder addFirstFieldPathElement(@Nullable FieldPathElement fieldPathElement) {
       if (fieldPathElement != null) {
         fieldPath.addFirst(fieldPathElement);
       }
@@ -147,7 +152,7 @@ final class RuleViolation implements Violation {
      * @param rulePathElements Field path elements to add.
      * @return The builder.
      */
-    Builder addAllRulePathElements(Collection<? extends FieldPathElement> rulePathElements) {
+    public Builder addAllRulePathElements(Collection<? extends FieldPathElement> rulePathElements) {
       rulePath.addAll(rulePathElements);
       return this;
     }
@@ -158,7 +163,7 @@ final class RuleViolation implements Violation {
      * @param rulePathElements A field path element to add to the beginning of the rule path.
      * @return The builder.
      */
-    Builder addFirstRulePathElement(FieldPathElement rulePathElements) {
+    public Builder addFirstRulePathElement(FieldPathElement rulePathElements) {
       rulePath.addFirst(rulePathElements);
       return this;
     }
@@ -169,7 +174,7 @@ final class RuleViolation implements Violation {
      * @param fieldValue The field value corresponding to this violation.
      * @return The builder.
      */
-    Builder setFieldValue(@Nullable FieldValue fieldValue) {
+    public Builder setFieldValue(@Nullable FieldValue fieldValue) {
       this.fieldValue = fieldValue;
       return this;
     }
@@ -180,7 +185,7 @@ final class RuleViolation implements Violation {
      * @param ruleValue The rule value corresponding to this violation.
      * @return The builder.
      */
-    Builder setRuleValue(@Nullable FieldValue ruleValue) {
+    public Builder setRuleValue(@Nullable FieldValue ruleValue) {
       this.ruleValue = ruleValue;
       return this;
     }
@@ -190,7 +195,7 @@ final class RuleViolation implements Violation {
      *
      * @return A Violation instance.
      */
-    RuleViolation build() {
+    public RuleViolation build() {
       build.buf.validate.Violation.Builder protoBuilder = build.buf.validate.Violation.newBuilder();
       if (ruleId != null) {
         protoBuilder.setRuleId(ruleId);
@@ -218,7 +223,7 @@ final class RuleViolation implements Violation {
    *
    * @return A new, empty {@link Builder}.
    */
-  static Builder newBuilder() {
+  public static Builder newBuilder() {
     return new Builder();
   }
 

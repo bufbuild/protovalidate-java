@@ -14,6 +14,7 @@
 
 package build.buf.protovalidate.benchmarks;
 
+import build.buf.protovalidate.Config;
 import build.buf.protovalidate.Validator;
 import build.buf.protovalidate.ValidatorFactory;
 import build.buf.protovalidate.benchmarks.gen.BenchComplexSchema;
@@ -39,6 +40,7 @@ import org.openjdk.jmh.annotations.Benchmark;
 import org.openjdk.jmh.annotations.BenchmarkMode;
 import org.openjdk.jmh.annotations.Mode;
 import org.openjdk.jmh.annotations.OutputTimeUnit;
+import org.openjdk.jmh.annotations.Param;
 import org.openjdk.jmh.annotations.Scope;
 import org.openjdk.jmh.annotations.Setup;
 import org.openjdk.jmh.annotations.State;
@@ -47,18 +49,22 @@ import org.openjdk.jmh.infra.Blackhole;
 /**
  * Steady-state validation benchmarks. Exercises the hot path after the evaluator cache is warm.
  *
- * <p>The set of {@code validateBench*} methods mirrors the Go benchmark suite in
- * protovalidate-go's {@code validator_bench_test.go} and provides the baseline against which the
- * native-rules port measures its improvements. The original {@code validate*} methods exercise
- * past PR fixes (tautology skip, AST cache, etc.) and remain as regression guards.
+ * <p>The set of {@code validateBench*} methods mirrors the Go benchmark suite in protovalidate-go's
+ * {@code validator_bench_test.go} and provides the baseline against which the native-rules port
+ * measures its improvements. The original {@code validate*} methods exercise past PR fixes
+ * (tautology skip, AST cache, etc.) and remain as regression guards.
  *
- * <p>Phase 1 will refactor this into a {@code @Param}-driven A/B once {@code
- * Config.disableNativeRules} exists; for now this is the single-mode pre-port baseline.
+ * <p>The {@code disableNativeRules} parameter A/Bs the native-rules flag: {@code "true"} matches
+ * the Phase 0 CEL-only baseline; {@code "false"} measures native evaluation. Each subsequent phase
+ * reports the gap between the two modes for its covered benchmarks.
  */
 @BenchmarkMode(Mode.AverageTime)
 @OutputTimeUnit(TimeUnit.NANOSECONDS)
 @State(Scope.Benchmark)
 public class ValidationBenchmark {
+
+  @Param({"true", "false"})
+  public boolean disableNativeRules;
 
   private Validator validator;
 
@@ -85,7 +91,8 @@ public class ValidationBenchmark {
 
   @Setup
   public void setup() throws ValidationException {
-    validator = ValidatorFactory.newBuilder().build();
+    Config config = Config.newBuilder().setDisableNativeRules(disableNativeRules).build();
+    validator = ValidatorFactory.newBuilder().withConfig(config).build();
 
     simple = SimpleStringMessage.newBuilder().setEmail("alice@example.com").build();
 

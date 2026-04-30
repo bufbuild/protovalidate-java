@@ -14,6 +14,7 @@
 
 package build.buf.protovalidate.benchmarks;
 
+import build.buf.protovalidate.Config;
 import build.buf.protovalidate.Validator;
 import build.buf.protovalidate.ValidatorFactory;
 import build.buf.protovalidate.benchmarks.gen.BenchComplexSchema;
@@ -25,6 +26,7 @@ import org.openjdk.jmh.annotations.Benchmark;
 import org.openjdk.jmh.annotations.BenchmarkMode;
 import org.openjdk.jmh.annotations.Mode;
 import org.openjdk.jmh.annotations.OutputTimeUnit;
+import org.openjdk.jmh.annotations.Param;
 import org.openjdk.jmh.annotations.Scope;
 import org.openjdk.jmh.annotations.Setup;
 import org.openjdk.jmh.annotations.State;
@@ -40,18 +42,23 @@ import org.openjdk.jmh.infra.Blackhole;
 @State(Scope.Benchmark)
 public class EvaluatorBuildBenchmark {
 
+  @Param({"true", "false"})
+  public boolean disableNativeRules;
+
+  private Config config;
   private Message benchComplexSchema;
   private Message benchGT;
 
   @Setup
   public void setup() {
+    config = Config.newBuilder().setDisableNativeRules(disableNativeRules).build();
     benchComplexSchema = BenchComplexSchema.getDefaultInstance();
     benchGT = BenchGT.getDefaultInstance();
   }
 
   @Benchmark
   public Validator buildBenchComplexSchema(Blackhole bh) throws ValidationException {
-    Validator v = ValidatorFactory.newBuilder().build();
+    Validator v = ValidatorFactory.newBuilder().withConfig(config).build();
     // Force evaluator construction by validating the default instance.
     bh.consume(v.validate(benchComplexSchema));
     return v;
@@ -59,7 +66,7 @@ public class EvaluatorBuildBenchmark {
 
   @Benchmark
   public Validator buildBenchInt32GT(Blackhole bh) throws ValidationException {
-    Validator v = ValidatorFactory.newBuilder().build();
+    Validator v = ValidatorFactory.newBuilder().withConfig(config).build();
     bh.consume(v.validate(benchGT));
     return v;
   }

@@ -27,16 +27,19 @@ public final class Config {
   private final TypeRegistry typeRegistry;
   private final ExtensionRegistry extensionRegistry;
   private final boolean allowUnknownFields;
+  private final boolean disableNativeRules;
 
   private Config(
       boolean failFast,
       TypeRegistry typeRegistry,
       ExtensionRegistry extensionRegistry,
-      boolean allowUnknownFields) {
+      boolean allowUnknownFields,
+      boolean disableNativeRules) {
     this.failFast = failFast;
     this.typeRegistry = typeRegistry;
     this.extensionRegistry = extensionRegistry;
     this.allowUnknownFields = allowUnknownFields;
+    this.disableNativeRules = disableNativeRules;
   }
 
   /**
@@ -84,12 +87,27 @@ public final class Config {
     return allowUnknownFields;
   }
 
+  /**
+   * Checks whether native (non-CEL) rule evaluators are disabled.
+   *
+   * <p>When false, standard rules with a native Java implementation bypass CEL evaluation. When
+   * true, all rules go through CEL. Defaults to true while the native-rules port is in flight;
+   * applications opt in by calling {@link Builder#setDisableNativeRules(boolean)
+   * setDisableNativeRules(false)}.
+   *
+   * @return true if native rules are disabled (CEL handles everything).
+   */
+  public boolean isNativeRulesDisabled() {
+    return disableNativeRules;
+  }
+
   /** Builder for configuration. Provides a forward compatible API for users. */
   public static final class Builder {
     private boolean failFast;
     private TypeRegistry typeRegistry = DEFAULT_TYPE_REGISTRY;
     private ExtensionRegistry extensionRegistry = DEFAULT_EXTENSION_REGISTRY;
     private boolean allowUnknownFields;
+    private boolean disableNativeRules = true;
 
     private Builder() {}
 
@@ -158,12 +176,28 @@ public final class Config {
     }
 
     /**
+     * Set whether native (non-CEL) rule evaluators are disabled. Defaults to true while the
+     * native-rules port is in flight; pass false to opt in to native evaluation of standard rules.
+     * Forward-compatible: any rule not yet implemented natively continues to be enforced via CEL
+     * regardless of this setting.
+     *
+     * @param disableNativeRules true to disable native rules and route everything through CEL;
+     *     false to use native evaluators where available.
+     * @return this builder
+     */
+    public Builder setDisableNativeRules(boolean disableNativeRules) {
+      this.disableNativeRules = disableNativeRules;
+      return this;
+    }
+
+    /**
      * Build the corresponding {@link Config}.
      *
      * @return the configuration.
      */
     public Config build() {
-      return new Config(failFast, typeRegistry, extensionRegistry, allowUnknownFields);
+      return new Config(
+          failFast, typeRegistry, extensionRegistry, allowUnknownFields, disableNativeRules);
     }
   }
 }
