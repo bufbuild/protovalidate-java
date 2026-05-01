@@ -42,6 +42,14 @@ final class WrappedValueEvaluator implements Evaluator {
   private final Evaluator inner;
 
   WrappedValueEvaluator(FieldDescriptor innerField, Evaluator inner) {
+    // innerField must be the synthetic "value" field of a google.protobuf.*Value wrapper. Its
+    // containing message holds exactly one field at number 1 named "value"; if any of those
+    // assumptions is violated the evaluator would silently misbehave at runtime.
+    if (innerField.getNumber() != 1 || !"value".equals(innerField.getName())) {
+      throw new IllegalArgumentException(
+          "WrappedValueEvaluator requires the wrapper's inner 'value' field, got "
+              + innerField.getFullName());
+    }
     this.innerField = innerField;
     this.inner = inner;
   }

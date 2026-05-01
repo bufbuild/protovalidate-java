@@ -298,19 +298,14 @@ final class BytesRulesEvaluator implements Evaluator {
       hasRule = true;
     }
 
-    List<ByteString> inVals =
-        rules.getInList().isEmpty()
-            ? Collections.<ByteString>emptyList()
-            : new ArrayList<>(rules.getInList());
+    // Proto returns immutable views; we only read them.
+    List<ByteString> inVals = rules.getInList();
     if (!inVals.isEmpty()) {
       bb.clearIn();
       hasRule = true;
     }
 
-    List<ByteString> notInVals =
-        rules.getNotInList().isEmpty()
-            ? Collections.<ByteString>emptyList()
-            : new ArrayList<>(rules.getNotInList());
+    List<ByteString> notInVals = rules.getNotInList();
     if (!notInVals.isEmpty()) {
       bb.clearNotIn();
       hasRule = true;

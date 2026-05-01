@@ -99,10 +99,8 @@ final class NumericRulesEvaluator<T extends Number & Comparable<T>> implements E
    *     field on {@code FieldRules})
    */
   static <T extends Number & Comparable<T>> @Nullable Evaluator tryBuild(
-      RuleBase base,
-      FieldRules.Builder rulesBuilder,
-      NumericTypeConfig<T> config,
-      FieldDescriptor rulesField) {
+      RuleBase base, FieldRules.Builder rulesBuilder, NumericTypeConfig<T> config) {
+    FieldDescriptor rulesField = config.rulesField;
     if (!rulesBuilder.hasField(rulesField)) {
       return null;
     }
@@ -189,44 +187,50 @@ final class NumericRulesEvaluator<T extends Number & Comparable<T>> implements E
   @Override
   public List<RuleViolation.Builder> evaluate(Value val, boolean failFast) {
     T actual = config.valueClass.cast(val.rawValue());
-    List<RuleViolation.Builder> violations = new ArrayList<>(0);
+    List<RuleViolation.Builder> violations = null;
 
     if (constVal != null && config.comparator.compare(actual, constVal) != 0) {
-      violations.add(
-          NativeViolations.newViolation(
-              config.descriptors.constSite,
-              null,
-              "must equal " + config.formatter.apply(constVal),
-              val,
-              constVal));
+      violations =
+          add(
+              violations,
+              NativeViolations.newViolation(
+                  config.descriptors.constSite,
+                  null,
+                  "must equal " + config.formatter.apply(constVal),
+                  val,
+                  constVal));
       if (failFast) {
-        return finalize(violations.subList(0, 1));
+        return done(violations);
       }
     }
 
     if (!inVals.isEmpty() && !containsValue(inVals, actual)) {
-      violations.add(
-          NativeViolations.newViolation(
-              config.descriptors.inSite,
-              null,
-              "must be in list " + formatList(inVals),
-              val,
-              actual));
+      violations =
+          add(
+              violations,
+              NativeViolations.newViolation(
+                  config.descriptors.inSite,
+                  null,
+                  "must be in list " + formatList(inVals),
+                  val,
+                  actual));
       if (failFast) {
-        return finalize(violations.subList(0, 1));
+        return done(violations);
       }
     }
 
     if (!notInVals.isEmpty() && containsValue(notInVals, actual)) {
-      violations.add(
-          NativeViolations.newViolation(
-              config.descriptors.notInSite,
-              null,
-              "must not be in list " + formatList(notInVals),
-              val,
-              actual));
+      violations =
+          add(
+              violations,
+              NativeViolations.newViolation(
+                  config.descriptors.notInSite,
+                  null,
+                  "must not be in list " + formatList(notInVals),
+                  val,
+                  actual));
       if (failFast) {
-        return finalize(violations.subList(0, 1));
+        return done(violations);
       }
     }
 
@@ -235,23 +239,24 @@ final class NumericRulesEvaluator<T extends Number & Comparable<T>> implements E
       RuleSite site =
           Objects.requireNonNull(
               config.descriptors.finiteSite, "finiteSite must be set when finite is true");
-      violations.add(NativeViolations.newViolation(site, null, null, val, actual));
+      violations =
+          add(violations, NativeViolations.newViolation(site, null, null, val, actual));
       if (failFast) {
-        return finalize(violations.subList(0, 1));
+        return done(violations);
       }
     }
 
     if (lowerKind != LowerBound.NONE || upperKind != UpperBound.NONE) {
       RuleViolation.Builder rangeViolation = buildRangeViolation(val, actual);
       if (rangeViolation != null) {
-        violations.add(rangeViolation);
+        violations = add(violations, rangeViolation);
         if (failFast) {
-          return finalize(violations.subList(0, 1));
+          return done(violations);
         }
       }
     }
 
-    return finalize(violations);
+    return done(violations);
   }
 
   // --- Per-rule violation builders ---
@@ -411,7 +416,16 @@ final class NumericRulesEvaluator<T extends Number & Comparable<T>> implements E
 
   // --- Violation list bookkeeping ---
 
-  private List<RuleViolation.Builder> finalize(@Nullable List<RuleViolation.Builder> violations) {
+  private static List<RuleViolation.Builder> add(
+      @Nullable List<RuleViolation.Builder> violations, RuleViolation.Builder v) {
+    if (violations == null) {
+      violations = new ArrayList<>(2);
+    }
+    violations.add(v);
+    return violations;
+  }
+
+  private List<RuleViolation.Builder> done(@Nullable List<RuleViolation.Builder> violations) {
     if (violations == null || violations.isEmpty()) {
       return RuleViolation.NO_VIOLATIONS;
     }

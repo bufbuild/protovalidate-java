@@ -70,210 +70,224 @@ final class NumericTypeConfig<T extends Number & Comparable<T>> {
    */
   final boolean nanFailsRange;
 
+  /**
+   * The {@link FieldRules} field descriptor for this numeric kind (e.g. the {@code int32} field on
+   * {@code FieldRules}). Used by the dispatcher to read and clear the typed rules sub-message.
+   */
+  final FieldDescriptor rulesField;
+
   private NumericTypeConfig(
       String typeName,
       NumericDescriptors descriptors,
       Class<T> valueClass,
       Comparator<T> comparator,
       Function<T, String> formatter,
-      boolean nanFailsRange) {
+      boolean nanFailsRange,
+      FieldDescriptor rulesField) {
     this.typeName = typeName;
     this.descriptors = descriptors;
     this.valueClass = valueClass;
     this.comparator = comparator;
     this.formatter = formatter;
     this.nanFailsRange = nanFailsRange;
+    this.rulesField = rulesField;
   }
 
   // --- Static configs, one per proto numeric kind ---
+  //
+  // Class-init invariant: every static config below transitively calls FieldRules.getDescriptor()
+  // and the per-kind *Rules.getDescriptor() through frField() and NumericDescriptors.build(). For
+  // class-loading to succeed, FieldRules and the per-kind rules messages must be loadable when
+  // NumericTypeConfig is. They are — FieldRules is touched by every entry into EvaluatorBuilder,
+  // and the per-kind rules messages live in the same generated bundle. If a future change moves
+  // NumericTypeConfig's initialization earlier (e.g. via a static reference from a class loaded
+  // before FieldRules), expect NoClassDefFoundError on this class.
 
   private static FieldDescriptor frField(int number) {
     return FieldRules.getDescriptor().findFieldByNumber(number);
   }
 
+  /** Builds a NumericTypeConfig and exposes the FieldRules-level field descriptor on it. */
+  private static <T extends Number & Comparable<T>> NumericTypeConfig<T> create(
+      String typeName,
+      int fieldRulesFieldNumber,
+      com.google.protobuf.Descriptors.Descriptor rulesDescriptor,
+      Class<T> valueClass,
+      Comparator<T> comparator,
+      Function<T, String> formatter,
+      boolean nanFailsRange) {
+    FieldDescriptor rulesField = frField(fieldRulesFieldNumber);
+    return new NumericTypeConfig<>(
+        typeName,
+        NumericDescriptors.build(rulesField, rulesDescriptor, typeName, nanFailsRange),
+        valueClass,
+        comparator,
+        formatter,
+        nanFailsRange,
+        rulesField);
+  }
+
   static final NumericTypeConfig<Integer> INT32 =
-      new NumericTypeConfig<>(
+      create(
           "int32",
-          NumericDescriptors.build(
-              frField(FieldRules.INT32_FIELD_NUMBER), Int32Rules.getDescriptor(), "int32", false),
+          FieldRules.INT32_FIELD_NUMBER,
+          Int32Rules.getDescriptor(),
           Integer.class,
           Integer::compare,
           String::valueOf,
           false);
 
   static final NumericTypeConfig<Integer> SINT32 =
-      new NumericTypeConfig<>(
+      create(
           "sint32",
-          NumericDescriptors.build(
-              frField(FieldRules.SINT32_FIELD_NUMBER),
-              SInt32Rules.getDescriptor(),
-              "sint32",
-              false),
+          FieldRules.SINT32_FIELD_NUMBER,
+          SInt32Rules.getDescriptor(),
           Integer.class,
           Integer::compare,
           String::valueOf,
           false);
 
   static final NumericTypeConfig<Integer> SFIXED32 =
-      new NumericTypeConfig<>(
+      create(
           "sfixed32",
-          NumericDescriptors.build(
-              frField(FieldRules.SFIXED32_FIELD_NUMBER),
-              SFixed32Rules.getDescriptor(),
-              "sfixed32",
-              false),
+          FieldRules.SFIXED32_FIELD_NUMBER,
+          SFixed32Rules.getDescriptor(),
           Integer.class,
           Integer::compare,
           String::valueOf,
           false);
 
   static final NumericTypeConfig<Integer> UINT32 =
-      new NumericTypeConfig<>(
+      create(
           "uint32",
-          NumericDescriptors.build(
-              frField(FieldRules.UINT32_FIELD_NUMBER),
-              UInt32Rules.getDescriptor(),
-              "uint32",
-              false),
+          FieldRules.UINT32_FIELD_NUMBER,
+          UInt32Rules.getDescriptor(),
           Integer.class,
           Integer::compareUnsigned,
           Integer::toUnsignedString,
           false);
 
   static final NumericTypeConfig<Integer> FIXED32 =
-      new NumericTypeConfig<>(
+      create(
           "fixed32",
-          NumericDescriptors.build(
-              frField(FieldRules.FIXED32_FIELD_NUMBER),
-              Fixed32Rules.getDescriptor(),
-              "fixed32",
-              false),
+          FieldRules.FIXED32_FIELD_NUMBER,
+          Fixed32Rules.getDescriptor(),
           Integer.class,
           Integer::compareUnsigned,
           Integer::toUnsignedString,
           false);
 
   static final NumericTypeConfig<Long> INT64 =
-      new NumericTypeConfig<>(
+      create(
           "int64",
-          NumericDescriptors.build(
-              frField(FieldRules.INT64_FIELD_NUMBER), Int64Rules.getDescriptor(), "int64", false),
+          FieldRules.INT64_FIELD_NUMBER,
+          Int64Rules.getDescriptor(),
           Long.class,
           Long::compare,
           String::valueOf,
           false);
 
   static final NumericTypeConfig<Long> SINT64 =
-      new NumericTypeConfig<>(
+      create(
           "sint64",
-          NumericDescriptors.build(
-              frField(FieldRules.SINT64_FIELD_NUMBER),
-              SInt64Rules.getDescriptor(),
-              "sint64",
-              false),
+          FieldRules.SINT64_FIELD_NUMBER,
+          SInt64Rules.getDescriptor(),
           Long.class,
           Long::compare,
           String::valueOf,
           false);
 
   static final NumericTypeConfig<Long> SFIXED64 =
-      new NumericTypeConfig<>(
+      create(
           "sfixed64",
-          NumericDescriptors.build(
-              frField(FieldRules.SFIXED64_FIELD_NUMBER),
-              SFixed64Rules.getDescriptor(),
-              "sfixed64",
-              false),
+          FieldRules.SFIXED64_FIELD_NUMBER,
+          SFixed64Rules.getDescriptor(),
           Long.class,
           Long::compare,
           String::valueOf,
           false);
 
   static final NumericTypeConfig<Long> UINT64 =
-      new NumericTypeConfig<>(
+      create(
           "uint64",
-          NumericDescriptors.build(
-              frField(FieldRules.UINT64_FIELD_NUMBER),
-              UInt64Rules.getDescriptor(),
-              "uint64",
-              false),
+          FieldRules.UINT64_FIELD_NUMBER,
+          UInt64Rules.getDescriptor(),
           Long.class,
           Long::compareUnsigned,
           Long::toUnsignedString,
           false);
 
   static final NumericTypeConfig<Long> FIXED64 =
-      new NumericTypeConfig<>(
+      create(
           "fixed64",
-          NumericDescriptors.build(
-              frField(FieldRules.FIXED64_FIELD_NUMBER),
-              Fixed64Rules.getDescriptor(),
-              "fixed64",
-              false),
+          FieldRules.FIXED64_FIELD_NUMBER,
+          Fixed64Rules.getDescriptor(),
           Long.class,
           Long::compareUnsigned,
           Long::toUnsignedString,
           false);
 
   static final NumericTypeConfig<Float> FLOAT =
-      new NumericTypeConfig<>(
+      create(
           "float",
-          NumericDescriptors.build(
-              frField(FieldRules.FLOAT_FIELD_NUMBER), FloatRules.getDescriptor(), "float", true),
+          FieldRules.FLOAT_FIELD_NUMBER,
+          FloatRules.getDescriptor(),
           Float.class,
           NumericTypeConfig::floatCompare,
           NumericTypeConfig::floatFormatter,
           true);
 
   static final NumericTypeConfig<Double> DOUBLE =
-      new NumericTypeConfig<>(
+      create(
           "double",
-          NumericDescriptors.build(
-              frField(FieldRules.DOUBLE_FIELD_NUMBER), DoubleRules.getDescriptor(), "double", true),
+          FieldRules.DOUBLE_FIELD_NUMBER,
+          DoubleRules.getDescriptor(),
           Double.class,
           NumericTypeConfig::doubleCompare,
           NumericTypeConfig::doubleFormatter,
           true);
 
-  public static int floatCompare(Float f1, Float f2) {
-      // this makes sure 0 == -0
-      if((f1 == 0.0)&&(f2 == 0.0)) {
-          return 0;
-      }
-      return f1.compareTo(f2);
+  // Float and double comparators treat +0.0 and -0.0 as equal, matching IEEE-754. NaN keeps
+  // Java's compareTo semantics (NaN.compareTo(NaN) == 0) so behavior matches the existing
+  // protovalidate-java CEL path, which uses the same Object.equals semantics.
+
+  private static int floatCompare(Float f1, Float f2) {
+    if (f1 == 0.0f && f2 == 0.0f) {
+      return 0;
+    }
+    return f1.compareTo(f2);
   }
 
-  public static int doubleCompare(Double f1, Double f2) {
-      // this makes sure 0 == -0
-      if(f1 == 0.0 && f2 == 0.0) {
-          return 0;
-      }
-      return f1.compareTo(f2);
+  private static int doubleCompare(Double d1, Double d2) {
+    if (d1 == 0.0 && d2 == 0.0) {
+      return 0;
+    }
+    return d1.compareTo(d2);
   }
 
-  public static String floatFormatter(Float f) {
-      // if the float is -0, print it as -0
-      if (Float.floatToIntBits(f) == 1<<31) {
-          return "-0";
-      }
-      // if the float is a whole number, don't print the decimal
-      float f2 = f.intValue();
-      if (f2 == f) {
-          return String.valueOf(f.intValue());
-      }
-      return String.valueOf(f);
+  private static final int FLOAT_NEG_ZERO_BITS = Float.floatToIntBits(-0.0f);
+  private static final long DOUBLE_NEG_ZERO_BITS = Double.doubleToLongBits(-0.0);
+
+  private static String floatFormatter(Float f) {
+    if (Float.floatToIntBits(f) == FLOAT_NEG_ZERO_BITS) {
+      return "-0";
+    }
+    // Whole-number short-circuit: print "5" rather than "5.0" to match Go's %g behavior.
+    float asInt = f.intValue();
+    if (asInt == f) {
+      return String.valueOf(f.intValue());
+    }
+    return String.valueOf(f);
   }
 
-  public static String doubleFormatter(Double d) {
-      // if the double is -0, print it as -0
-      if (Double.doubleToLongBits(d) == 1L<<63) {
-          return "-0";
-      }
-      // if the double is a whole number, don't print the decimal
-      double d2 = d.intValue();
-      if (d2 == d) {
-          return String.valueOf(d.intValue());
-      }
-      return String.valueOf(d);
+  private static String doubleFormatter(Double d) {
+    if (Double.doubleToLongBits(d) == DOUBLE_NEG_ZERO_BITS) {
+      return "-0";
+    }
+    double asInt = d.intValue();
+    if (asInt == d) {
+      return String.valueOf(d.intValue());
+    }
+    return String.valueOf(d);
   }
 }

@@ -93,7 +93,10 @@ final class MapRulesEvaluator implements Evaluator {
 
   @Override
   public boolean tautology() {
-    return minPairs == null && maxPairs == null;
+    // tryBuild returns null when neither field is set, so this evaluator is never built
+    // without at least one rule active. Match the rest of the rules package by returning false
+    // unconditionally.
+    return false;
   }
 
   @Override

@@ -24,10 +24,9 @@ import build.buf.validate.KnownRegex;
 import build.buf.validate.StringRules;
 import com.google.protobuf.Descriptors.FieldDescriptor;
 import com.google.re2j.Pattern;
-import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 import org.jspecify.annotations.Nullable;
 
 /**
@@ -77,6 +76,28 @@ final class StringRulesEvaluator implements Evaluator {
   private static final FieldDescriptor WELL_KNOWN_REGEX_DESC =
       StringRules.getDescriptor().findFieldByNumber(StringRules.WELL_KNOWN_REGEX_FIELD_NUMBER);
 
+  // well_known_regex sites: pre-built once. Header-name and header-value have a normal-failure
+  // site and an empty-input site (header_name); pattern selection at evaluation time picks
+  // between strict and loose matchers.
+  private static final RuleSite HEADER_NAME_SITE =
+      RuleSite.of(
+          STRING_RULES_DESC,
+          WELL_KNOWN_REGEX_DESC,
+          "string.well_known_regex.header_name",
+          "must be a valid HTTP header name");
+  private static final RuleSite HEADER_NAME_EMPTY_SITE =
+      RuleSite.of(
+          STRING_RULES_DESC,
+          WELL_KNOWN_REGEX_DESC,
+          "string.well_known_regex.header_name_empty",
+          "value is empty, which is not a valid HTTP header name");
+  private static final RuleSite HEADER_VALUE_SITE =
+      RuleSite.of(
+          STRING_RULES_DESC,
+          WELL_KNOWN_REGEX_DESC,
+          "string.well_known_regex.header_value",
+          "must be a valid HTTP header value");
+
   private static RuleSite site(int fieldNumber, String ruleId) {
     FieldDescriptor leaf = StringRules.getDescriptor().findFieldByNumber(fieldNumber);
     return RuleSite.of(STRING_RULES_DESC, leaf, ruleId, null);
@@ -98,46 +119,77 @@ final class StringRulesEvaluator implements Evaluator {
 
   // --- Well-known string formats ---
 
-  /** Each constant carries the rule id, message, empty-value variant, and validation. */
+  /**
+   * Each constant carries the rule id, the main violation message, the empty-value variant
+   * message, and the validation. Empty messages are stored verbatim from the proto spec rather
+   * than derived by string substitution: {@code host_and_port}, for example, has a main message
+   * of {@code "must be a valid host (hostname or IP address) and port pair"} but an empty message
+   * of {@code "value is empty, which is not a valid host and port pair"} (without the
+   * parenthetical) — substring derivation produced the wrong text.
+   */
   @SuppressWarnings("ImmutableEnumChecker") // RuleSite is logically immutable; not annotated.
   enum WellKnownFormat {
-    EMAIL(StringRules.EMAIL_FIELD_NUMBER, "email", "must be a valid email address") {
+    EMAIL(
+        StringRules.EMAIL_FIELD_NUMBER,
+        "email",
+        "must be a valid email address",
+        "value is empty, which is not a valid email address") {
       @Override
       boolean validate(String s) {
         return CustomOverload.isEmail(s);
       }
     },
-    HOSTNAME(StringRules.HOSTNAME_FIELD_NUMBER, "hostname", "must be a valid hostname") {
+    HOSTNAME(
+        StringRules.HOSTNAME_FIELD_NUMBER,
+        "hostname",
+        "must be a valid hostname",
+        "value is empty, which is not a valid hostname") {
       @Override
       boolean validate(String s) {
         return CustomOverload.isHostname(s);
       }
     },
-    IP(StringRules.IP_FIELD_NUMBER, "ip", "must be a valid IP address") {
+    IP(
+        StringRules.IP_FIELD_NUMBER,
+        "ip",
+        "must be a valid IP address",
+        "value is empty, which is not a valid IP address") {
       @Override
       boolean validate(String s) {
         return CustomOverload.isIp(s, 0);
       }
     },
-    IPV4(StringRules.IPV4_FIELD_NUMBER, "ipv4", "must be a valid IPv4 address") {
+    IPV4(
+        StringRules.IPV4_FIELD_NUMBER,
+        "ipv4",
+        "must be a valid IPv4 address",
+        "value is empty, which is not a valid IPv4 address") {
       @Override
       boolean validate(String s) {
         return CustomOverload.isIp(s, 4);
       }
     },
-    IPV6(StringRules.IPV6_FIELD_NUMBER, "ipv6", "must be a valid IPv6 address") {
+    IPV6(
+        StringRules.IPV6_FIELD_NUMBER,
+        "ipv6",
+        "must be a valid IPv6 address",
+        "value is empty, which is not a valid IPv6 address") {
       @Override
       boolean validate(String s) {
         return CustomOverload.isIp(s, 6);
       }
     },
-    URI(StringRules.URI_FIELD_NUMBER, "uri", "must be a valid URI") {
+    URI(
+        StringRules.URI_FIELD_NUMBER,
+        "uri",
+        "must be a valid URI",
+        "value is empty, which is not a valid URI") {
       @Override
       boolean validate(String s) {
         return CustomOverload.isUri(s);
       }
     },
-    URI_REF(StringRules.URI_REF_FIELD_NUMBER, "uri_ref", "must be a valid URI Reference") {
+    URI_REF(StringRules.URI_REF_FIELD_NUMBER, "uri_ref", "must be a valid URI Reference", null) {
       @Override
       boolean validate(String s) {
         return CustomOverload.isUriRef(s);
@@ -149,19 +201,30 @@ final class StringRulesEvaluator implements Evaluator {
       }
     },
     ADDRESS(
-        StringRules.ADDRESS_FIELD_NUMBER, "address", "must be a valid hostname, or ip address") {
+        StringRules.ADDRESS_FIELD_NUMBER,
+        "address",
+        "must be a valid hostname, or ip address",
+        "value is empty, which is not a valid hostname, or ip address") {
       @Override
       boolean validate(String s) {
         return CustomOverload.isHostname(s) || CustomOverload.isIp(s, 0);
       }
     },
-    UUID(StringRules.UUID_FIELD_NUMBER, "uuid", "must be a valid UUID") {
+    UUID(
+        StringRules.UUID_FIELD_NUMBER,
+        "uuid",
+        "must be a valid UUID",
+        "value is empty, which is not a valid UUID") {
       @Override
       boolean validate(String s) {
         return UUID_REGEX.matches(s);
       }
     },
-    TUUID(StringRules.TUUID_FIELD_NUMBER, "tuuid", "must be a valid trimmed UUID") {
+    TUUID(
+        StringRules.TUUID_FIELD_NUMBER,
+        "tuuid",
+        "must be a valid trimmed UUID",
+        "value is empty, which is not a valid trimmed UUID") {
       @Override
       boolean validate(String s) {
         return TUUID_REGEX.matches(s);
@@ -170,7 +233,8 @@ final class StringRulesEvaluator implements Evaluator {
     IP_WITH_PREFIXLEN(
         StringRules.IP_WITH_PREFIXLEN_FIELD_NUMBER,
         "ip_with_prefixlen",
-        "must be a valid IP prefix") {
+        "must be a valid IP prefix",
+        "value is empty, which is not a valid IP prefix") {
       @Override
       boolean validate(String s) {
         return CustomOverload.isIpPrefix(s, 0, false);
@@ -179,7 +243,8 @@ final class StringRulesEvaluator implements Evaluator {
     IPV4_WITH_PREFIXLEN(
         StringRules.IPV4_WITH_PREFIXLEN_FIELD_NUMBER,
         "ipv4_with_prefixlen",
-        "must be a valid IPv4 address with prefix length") {
+        "must be a valid IPv4 address with prefix length",
+        "value is empty, which is not a valid IPv4 address with prefix length") {
       @Override
       boolean validate(String s) {
         return CustomOverload.isIpPrefix(s, 4, false);
@@ -188,27 +253,38 @@ final class StringRulesEvaluator implements Evaluator {
     IPV6_WITH_PREFIXLEN(
         StringRules.IPV6_WITH_PREFIXLEN_FIELD_NUMBER,
         "ipv6_with_prefixlen",
-        "must be a valid IPv6 address with prefix length") {
+        "must be a valid IPv6 address with prefix length",
+        "value is empty, which is not a valid IPv6 address with prefix length") {
       @Override
       boolean validate(String s) {
         return CustomOverload.isIpPrefix(s, 6, false);
       }
     },
-    IP_PREFIX(StringRules.IP_PREFIX_FIELD_NUMBER, "ip_prefix", "must be a valid IP prefix") {
+    IP_PREFIX(
+        StringRules.IP_PREFIX_FIELD_NUMBER,
+        "ip_prefix",
+        "must be a valid IP prefix",
+        "value is empty, which is not a valid IP prefix") {
       @Override
       boolean validate(String s) {
         return CustomOverload.isIpPrefix(s, 0, true);
       }
     },
     IPV4_PREFIX(
-        StringRules.IPV4_PREFIX_FIELD_NUMBER, "ipv4_prefix", "must be a valid IPv4 prefix") {
+        StringRules.IPV4_PREFIX_FIELD_NUMBER,
+        "ipv4_prefix",
+        "must be a valid IPv4 prefix",
+        "value is empty, which is not a valid IPv4 prefix") {
       @Override
       boolean validate(String s) {
         return CustomOverload.isIpPrefix(s, 4, true);
       }
     },
     IPV6_PREFIX(
-        StringRules.IPV6_PREFIX_FIELD_NUMBER, "ipv6_prefix", "must be a valid IPv6 prefix") {
+        StringRules.IPV6_PREFIX_FIELD_NUMBER,
+        "ipv6_prefix",
+        "must be a valid IPv6 prefix",
+        "value is empty, which is not a valid IPv6 prefix") {
       @Override
       boolean validate(String s) {
         return CustomOverload.isIpPrefix(s, 6, true);
@@ -217,13 +293,18 @@ final class StringRulesEvaluator implements Evaluator {
     HOST_AND_PORT(
         StringRules.HOST_AND_PORT_FIELD_NUMBER,
         "host_and_port",
-        "must be a valid host (hostname or IP address) and port pair") {
+        "must be a valid host (hostname or IP address) and port pair",
+        "value is empty, which is not a valid host and port pair") {
       @Override
       boolean validate(String s) {
         return CustomOverload.isHostAndPort(s, true);
       }
     },
-    ULID(StringRules.ULID_FIELD_NUMBER, "ulid", "must be a valid ULID") {
+    ULID(
+        StringRules.ULID_FIELD_NUMBER,
+        "ulid",
+        "must be a valid ULID",
+        "value is empty, which is not a valid ULID") {
       @Override
       boolean validate(String s) {
         return ULID_REGEX.matches(s);
@@ -231,25 +312,19 @@ final class StringRulesEvaluator implements Evaluator {
     };
 
     final FieldDescriptor field;
-    final String ruleSuffix;
     final RuleSite site;
-    final RuleSite emptySite;
+    final @Nullable RuleSite emptySite;
 
-    WellKnownFormat(int fieldNumber, String ruleSuffix, String message) {
+    WellKnownFormat(
+        int fieldNumber, String ruleSuffix, String message, @Nullable String emptyMessage) {
       FieldDescriptor leaf = StringRules.getDescriptor().findFieldByNumber(fieldNumber);
       this.field = leaf;
-      this.ruleSuffix = ruleSuffix;
       this.site = RuleSite.of(STRING_RULES_DESC, leaf, "string." + ruleSuffix, message);
-      // The empty-variant message reads "value is empty, which is not a valid <thing>"; build
-      // it from the format's display name (everything after "must be a valid " in the message,
-      // minus the trailing comma form for ADDRESS).
-      String displayName = message.replace("must be a valid ", "");
       this.emptySite =
-          RuleSite.of(
-              STRING_RULES_DESC,
-              leaf,
-              "string." + ruleSuffix + "_empty",
-              "value is empty, which is not a valid " + displayName);
+          emptyMessage == null
+              ? null
+              : RuleSite.of(
+                  STRING_RULES_DESC, leaf, "string." + ruleSuffix + "_empty", emptyMessage);
     }
 
     /** Whether this format reports an empty-value violation distinctly from the format failure. */
@@ -444,19 +519,15 @@ final class StringRulesEvaluator implements Evaluator {
       hasRule = true;
     }
 
-    List<String> inVals =
-        rules.getInList().isEmpty()
-            ? Collections.<String>emptyList()
-            : new ArrayList<>(rules.getInList());
+    // getInList()/getNotInList() return immutable views from the proto runtime; we only read
+    // them, so no defensive copy is needed.
+    List<String> inVals = rules.getInList();
     if (!inVals.isEmpty()) {
       sb.clearIn();
       hasRule = true;
     }
 
-    List<String> notInVals =
-        rules.getNotInList().isEmpty()
-            ? Collections.<String>emptyList()
-            : new ArrayList<>(rules.getNotInList());
+    List<String> notInVals = rules.getNotInList();
     if (!notInVals.isEmpty()) {
       sb.clearNotIn();
       hasRule = true;
@@ -507,7 +578,7 @@ final class StringRulesEvaluator implements Evaluator {
     }
 
     if (exactBytes != null || minBytes != null || maxBytes != null) {
-      long byteCount = strVal.getBytes(StandardCharsets.UTF_8).length;
+      long byteCount = utf8ByteLength(strVal);
       violations = applyByteLength(violations, val, byteCount, failFast);
       if (failFast && violations != null) {
         return done(violations);
@@ -594,7 +665,11 @@ final class StringRulesEvaluator implements Evaluator {
           add(
               violations,
               NativeViolations.newViolation(
-                  NOT_IN_SITE, null, "must not be in list " + formatList(notInVals), val, strVal));
+                  NOT_IN_SITE,
+                  null,
+                  "must not be in list " + formatList(notInVals),
+                  val,
+                  strVal));
       if (failFast) return done(violations);
     }
 
@@ -689,7 +764,10 @@ final class StringRulesEvaluator implements Evaluator {
       return null;
     }
     if (fmt.checksEmpty() && strVal.isEmpty()) {
-      return NativeViolations.newViolation(fmt.emptySite, null, null, val, true);
+      // checksEmpty() returning true implies emptySite is non-null (the WellKnownFormat
+      // constructor's contract).
+      RuleSite emptySite = Objects.requireNonNull(fmt.emptySite);
+      return NativeViolations.newViolation(emptySite, null, null, val, true);
     }
     if (fmt.validate(strVal)) {
       return null;
@@ -699,30 +777,19 @@ final class StringRulesEvaluator implements Evaluator {
 
   private RuleViolation.@Nullable Builder checkKnownRegex(String strVal, Value val) {
     Pattern matcher;
-    String ruleId;
-    String message;
+    RuleSite site;
     switch (knownRegex) {
       case KNOWN_REGEX_HTTP_HEADER_NAME:
         if (strVal.isEmpty()) {
           return NativeViolations.newViolation(
-              RuleSite.of(
-                  STRING_RULES_DESC,
-                  WELL_KNOWN_REGEX_DESC,
-                  "string.well_known_regex.header_name_empty",
-                  "value is empty, which is not a valid HTTP header name"),
-              null,
-              null,
-              val,
-              knownRegex.getNumber());
+              HEADER_NAME_EMPTY_SITE, null, null, val, knownRegex.getNumber());
         }
         matcher = HEADER_NAME_REGEX;
-        ruleId = "string.well_known_regex.header_name";
-        message = "must be a valid HTTP header name";
+        site = HEADER_NAME_SITE;
         break;
       case KNOWN_REGEX_HTTP_HEADER_VALUE:
         matcher = HEADER_VALUE_REGEX;
-        ruleId = "string.well_known_regex.header_value";
-        message = "must be a valid HTTP header value";
+        site = HEADER_VALUE_SITE;
         break;
       default:
         return null;
@@ -731,13 +798,42 @@ final class StringRulesEvaluator implements Evaluator {
       matcher = LOOSE_REGEX;
     }
     if (!matcher.matches(strVal)) {
-      RuleSite site = RuleSite.of(STRING_RULES_DESC, WELL_KNOWN_REGEX_DESC, ruleId, message);
       return NativeViolations.newViolation(site, null, null, val, knownRegex.getNumber());
     }
     return null;
   }
 
   // --- Helpers ---
+
+  /**
+   * Returns the number of bytes in the UTF-8 encoding of {@code s} without allocating the byte
+   * array. Counts each code point's encoded byte length: 1 for U+0000–U+007F, 2 for U+0080–U+07FF,
+   * 3 for U+0800–U+FFFF (excluding the surrogate range, which is consumed as a pair), 4 for
+   * supplementary characters (U+10000–U+10FFFF).
+   */
+  private static long utf8ByteLength(String s) {
+    long count = 0;
+    int i = 0;
+    int len = s.length();
+    while (i < len) {
+      char c = s.charAt(i);
+      if (c < 0x80) {
+        count += 1;
+        i += 1;
+      } else if (c < 0x800) {
+        count += 2;
+        i += 1;
+      } else if (Character.isHighSurrogate(c) && i + 1 < len
+          && Character.isLowSurrogate(s.charAt(i + 1))) {
+        count += 4;
+        i += 2;
+      } else {
+        count += 3;
+        i += 1;
+      }
+    }
+    return count;
+  }
 
   private static String formatList(List<String> vals) {
     StringBuilder sb = new StringBuilder("[");

@@ -23,7 +23,6 @@ import build.buf.validate.FieldRules;
 import com.google.protobuf.Descriptors.EnumValueDescriptor;
 import com.google.protobuf.Descriptors.FieldDescriptor;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import org.jspecify.annotations.Nullable;
 
@@ -86,19 +85,14 @@ final class EnumRulesEvaluator implements Evaluator {
       hasRule = true;
     }
 
-    List<Integer> inVals =
-        enumRules.getInList().isEmpty()
-            ? Collections.<Integer>emptyList()
-            : new ArrayList<>(enumRules.getInList());
+    // Proto returns immutable views; we only read them.
+    List<Integer> inVals = enumRules.getInList();
     if (!inVals.isEmpty()) {
       eb.clearIn();
       hasRule = true;
     }
 
-    List<Integer> notInVals =
-        enumRules.getNotInList().isEmpty()
-            ? Collections.<Integer>emptyList()
-            : new ArrayList<>(enumRules.getNotInList());
+    List<Integer> notInVals = enumRules.getNotInList();
     if (!notInVals.isEmpty()) {
       eb.clearNotIn();
       hasRule = true;
@@ -143,7 +137,11 @@ final class EnumRulesEvaluator implements Evaluator {
     if (!notInVals.isEmpty() && notInVals.contains(actual)) {
       RuleViolation.Builder b =
           NativeViolations.newViolation(
-              NOT_IN_SITE, null, "must not be in list " + formatList(notInVals), val, actual);
+              NOT_IN_SITE,
+              null,
+              "must not be in list " + formatList(notInVals),
+              val,
+              actual);
       violations = add(violations, b);
       if (failFast) {
         return done(violations);

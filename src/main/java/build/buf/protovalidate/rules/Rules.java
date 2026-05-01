@@ -56,10 +56,10 @@ public final class Rules {
       ValueEvaluator valueEvaluator) {
     boolean hasNestedRule = valueEvaluator.hasNestedRule();
     if (fieldDescriptor.isMapField() && !hasNestedRule) {
-      return tryBuildMapRules(rulesBuilder, valueEvaluator);
+      return MapRulesEvaluator.tryBuild(RuleBase.of(valueEvaluator), rulesBuilder);
     }
     if (fieldDescriptor.isRepeated() && !hasNestedRule) {
-      return tryBuildRepeatedRules(rulesBuilder, valueEvaluator);
+      return RepeatedRulesEvaluator.tryBuild(RuleBase.of(valueEvaluator), rulesBuilder);
     }
     if (!fieldDescriptor.isMapField() && !fieldDescriptor.isRepeated()) {
       Evaluator scalar = tryBuildScalarRules(fieldDescriptor, rulesBuilder, valueEvaluator);
@@ -146,35 +146,7 @@ public final class Rules {
   @SuppressWarnings({"rawtypes", "unchecked"})
   private static @Nullable Evaluator numericTryBuild(
       RuleBase base, FieldRules.Builder rulesBuilder, NumericTypeConfig<?> config) {
-    FieldDescriptor rulesField =
-        FieldRules.getDescriptor().findFieldByNumber(rulesFieldNumberFor(config));
-    return NumericRulesEvaluator.tryBuild(
-        base, rulesBuilder, (NumericTypeConfig) config, rulesField);
+    return NumericRulesEvaluator.tryBuild(base, rulesBuilder, (NumericTypeConfig) config);
   }
 
-  private static int rulesFieldNumberFor(NumericTypeConfig<?> config) {
-    if (config == NumericTypeConfig.INT32) return FieldRules.INT32_FIELD_NUMBER;
-    if (config == NumericTypeConfig.SINT32) return FieldRules.SINT32_FIELD_NUMBER;
-    if (config == NumericTypeConfig.SFIXED32) return FieldRules.SFIXED32_FIELD_NUMBER;
-    if (config == NumericTypeConfig.UINT32) return FieldRules.UINT32_FIELD_NUMBER;
-    if (config == NumericTypeConfig.FIXED32) return FieldRules.FIXED32_FIELD_NUMBER;
-    if (config == NumericTypeConfig.INT64) return FieldRules.INT64_FIELD_NUMBER;
-    if (config == NumericTypeConfig.SINT64) return FieldRules.SINT64_FIELD_NUMBER;
-    if (config == NumericTypeConfig.SFIXED64) return FieldRules.SFIXED64_FIELD_NUMBER;
-    if (config == NumericTypeConfig.UINT64) return FieldRules.UINT64_FIELD_NUMBER;
-    if (config == NumericTypeConfig.FIXED64) return FieldRules.FIXED64_FIELD_NUMBER;
-    if (config == NumericTypeConfig.FLOAT) return FieldRules.FLOAT_FIELD_NUMBER;
-    if (config == NumericTypeConfig.DOUBLE) return FieldRules.DOUBLE_FIELD_NUMBER;
-    throw new IllegalArgumentException("unknown numeric config");
-  }
-
-  private static @Nullable Evaluator tryBuildRepeatedRules(
-      FieldRules.Builder rulesBuilder, ValueEvaluator valueEvaluator) {
-    return RepeatedRulesEvaluator.tryBuild(RuleBase.of(valueEvaluator), rulesBuilder);
-  }
-
-  private static @Nullable Evaluator tryBuildMapRules(
-      FieldRules.Builder rulesBuilder, ValueEvaluator valueEvaluator) {
-    return MapRulesEvaluator.tryBuild(RuleBase.of(valueEvaluator), rulesBuilder);
-  }
 }
