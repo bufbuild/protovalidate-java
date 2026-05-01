@@ -15,12 +15,15 @@
 package build.buf.protovalidate.rules;
 
 import build.buf.protovalidate.FieldPathUtils;
+import build.buf.protovalidate.RuleViolation;
 import build.buf.protovalidate.ValueEvaluator;
 import build.buf.validate.FieldPath;
 import build.buf.validate.FieldPathElement;
 import com.google.protobuf.Descriptors.FieldDescriptor;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.function.Function;
 import org.jspecify.annotations.Nullable;
 
 /**
@@ -80,5 +83,53 @@ final class RuleBase {
       return EMPTY_PREFIX;
     }
     return rulePrefix.getElementsList();
+  }
+
+  // --- Shared violation-list helpers ---
+  //
+  // Every native evaluator uses the same lazy null → ArrayList growth pattern and the same
+  // tail-call to FieldPathUtils.updatePaths. These live here so each evaluator doesn't
+  // re-implement them.
+
+  /**
+   * Lazily appends {@code v} to {@code violations}, allocating an {@link ArrayList} only on the
+   * first append.
+   */
+  static List<RuleViolation.Builder> add(
+      @Nullable List<RuleViolation.Builder> violations, RuleViolation.Builder v) {
+    if (violations == null) {
+      violations = new ArrayList<>(2);
+    }
+    violations.add(v);
+    return violations;
+  }
+
+  /**
+   * Finalizes a violation list: returns the empty constant when there's nothing to report,
+   * otherwise prepends this base's field-path element and rule-prefix elements.
+   */
+  List<RuleViolation.Builder> done(@Nullable List<RuleViolation.Builder> violations) {
+    if (violations == null || violations.isEmpty()) {
+      return RuleViolation.NO_VIOLATIONS;
+    }
+    return FieldPathUtils.updatePaths(violations, fieldPathElement, getRulePrefixElements());
+  }
+
+  /** Renders a list as {@code "[a, b, c]"} using {@code toString} on each element. */
+  static String formatList(List<?> vals) {
+    return formatList(vals, Object::toString);
+  }
+
+  /** Renders a list as {@code "[a, b, c]"} using {@code formatter} on each element. */
+  static <T> String formatList(List<T> vals, Function<T, String> formatter) {
+    StringBuilder sb = new StringBuilder("[");
+    for (int i = 0; i < vals.size(); i++) {
+      if (i > 0) {
+        sb.append(", ");
+      }
+      sb.append(formatter.apply(vals.get(i)));
+    }
+    sb.append("]");
+    return sb.toString();
   }
 }

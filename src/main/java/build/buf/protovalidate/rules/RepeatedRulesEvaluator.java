@@ -15,13 +15,11 @@
 package build.buf.protovalidate.rules;
 
 import build.buf.protovalidate.Evaluator;
-import build.buf.protovalidate.FieldPathUtils;
 import build.buf.protovalidate.RuleViolation;
 import build.buf.protovalidate.Value;
 import build.buf.validate.FieldRules;
 import build.buf.validate.RepeatedRules;
 import com.google.protobuf.Descriptors.FieldDescriptor;
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -158,7 +156,7 @@ final class RepeatedRulesEvaluator implements Evaluator {
 
     if (minItems != null && size < minItems) {
       violations =
-          add(
+          RuleBase.add(
               violations,
               NativeViolations.newViolation(
                   MIN_ITEMS_SITE,
@@ -166,12 +164,12 @@ final class RepeatedRulesEvaluator implements Evaluator {
                   "must contain at least " + minItems + " item(s)",
                   val,
                   minItems));
-      if (failFast) return done(violations);
+      if (failFast) return base.done(violations);
     }
 
     if (maxItems != null && size > maxItems) {
       violations =
-          add(
+          RuleBase.add(
               violations,
               NativeViolations.newViolation(
                   MAX_ITEMS_SITE,
@@ -179,16 +177,17 @@ final class RepeatedRulesEvaluator implements Evaluator {
                   "must contain no more than " + maxItems + " item(s)",
                   val,
                   maxItems));
-      if (failFast) return done(violations);
+      if (failFast) return base.done(violations);
     }
 
     if (unique && !isUnique(list)) {
       violations =
-          add(violations, NativeViolations.newViolation(UNIQUE_SITE, null, null, val, true));
-      if (failFast) return done(violations);
+          RuleBase.add(
+              violations, NativeViolations.newViolation(UNIQUE_SITE, null, null, val, true));
+      if (failFast) return base.done(violations);
     }
 
-    return done(violations);
+    return base.done(violations);
   }
 
   /**
@@ -208,20 +207,4 @@ final class RepeatedRulesEvaluator implements Evaluator {
     return true;
   }
 
-  private static List<RuleViolation.Builder> add(
-      @Nullable List<RuleViolation.Builder> violations, RuleViolation.Builder v) {
-    if (violations == null) {
-      violations = new ArrayList<>(2);
-    }
-    violations.add(v);
-    return violations;
-  }
-
-  private List<RuleViolation.Builder> done(@Nullable List<RuleViolation.Builder> violations) {
-    if (violations == null || violations.isEmpty()) {
-      return RuleViolation.NO_VIOLATIONS;
-    }
-    return FieldPathUtils.updatePaths(
-        violations, base.getFieldPathElement(), base.getRulePrefixElements());
-  }
 }

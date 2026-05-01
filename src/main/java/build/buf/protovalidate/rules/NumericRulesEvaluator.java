@@ -15,13 +15,11 @@
 package build.buf.protovalidate.rules;
 
 import build.buf.protovalidate.Evaluator;
-import build.buf.protovalidate.FieldPathUtils;
 import build.buf.protovalidate.RuleViolation;
 import build.buf.protovalidate.Value;
 import build.buf.validate.FieldRules;
 import com.google.protobuf.Descriptors.FieldDescriptor;
 import com.google.protobuf.Message;
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
@@ -191,7 +189,7 @@ final class NumericRulesEvaluator<T extends Number & Comparable<T>> implements E
 
     if (constVal != null && config.comparator.compare(actual, constVal) != 0) {
       violations =
-          add(
+          RuleBase.add(
               violations,
               NativeViolations.newViolation(
                   config.descriptors.constSite,
@@ -200,13 +198,13 @@ final class NumericRulesEvaluator<T extends Number & Comparable<T>> implements E
                   val,
                   constVal));
       if (failFast) {
-        return done(violations);
+        return base.done(violations);
       }
     }
 
     if (!inVals.isEmpty() && !containsValue(inVals, actual)) {
       violations =
-          add(
+          RuleBase.add(
               violations,
               NativeViolations.newViolation(
                   config.descriptors.inSite,
@@ -215,13 +213,13 @@ final class NumericRulesEvaluator<T extends Number & Comparable<T>> implements E
                   val,
                   actual));
       if (failFast) {
-        return done(violations);
+        return base.done(violations);
       }
     }
 
     if (!notInVals.isEmpty() && containsValue(notInVals, actual)) {
       violations =
-          add(
+          RuleBase.add(
               violations,
               NativeViolations.newViolation(
                   config.descriptors.notInSite,
@@ -230,7 +228,7 @@ final class NumericRulesEvaluator<T extends Number & Comparable<T>> implements E
                   val,
                   actual));
       if (failFast) {
-        return done(violations);
+        return base.done(violations);
       }
     }
 
@@ -240,23 +238,23 @@ final class NumericRulesEvaluator<T extends Number & Comparable<T>> implements E
           Objects.requireNonNull(
               config.descriptors.finiteSite, "finiteSite must be set when finite is true");
       violations =
-          add(violations, NativeViolations.newViolation(site, null, null, val, actual));
+          RuleBase.add(violations, NativeViolations.newViolation(site, null, null, val, actual));
       if (failFast) {
-        return done(violations);
+        return base.done(violations);
       }
     }
 
     if (lowerKind != LowerBound.NONE || upperKind != UpperBound.NONE) {
       RuleViolation.Builder rangeViolation = buildRangeViolation(val, actual);
       if (rangeViolation != null) {
-        violations = add(violations, rangeViolation);
+        violations = RuleBase.add(violations, rangeViolation);
         if (failFast) {
-          return done(violations);
+          return base.done(violations);
         }
       }
     }
 
-    return done(violations);
+    return base.done(violations);
   }
 
   // --- Per-rule violation builders ---
@@ -402,34 +400,8 @@ final class NumericRulesEvaluator<T extends Number & Comparable<T>> implements E
     return isNormalRange() ? "and" : "or";
   }
 
+  /** Renders {@code vals} using this kind's typed formatter. */
   private String formatList(List<T> vals) {
-    StringBuilder sb = new StringBuilder("[");
-    for (int i = 0; i < vals.size(); i++) {
-      if (i > 0) {
-        sb.append(", ");
-      }
-      sb.append(config.formatter.apply(vals.get(i)));
-    }
-    sb.append("]");
-    return sb.toString();
-  }
-
-  // --- Violation list bookkeeping ---
-
-  private static List<RuleViolation.Builder> add(
-      @Nullable List<RuleViolation.Builder> violations, RuleViolation.Builder v) {
-    if (violations == null) {
-      violations = new ArrayList<>(2);
-    }
-    violations.add(v);
-    return violations;
-  }
-
-  private List<RuleViolation.Builder> done(@Nullable List<RuleViolation.Builder> violations) {
-    if (violations == null || violations.isEmpty()) {
-      return RuleViolation.NO_VIOLATIONS;
-    }
-    return FieldPathUtils.updatePaths(
-        violations, base.getFieldPathElement(), base.getRulePrefixElements());
+    return RuleBase.formatList(vals, config.formatter);
   }
 }

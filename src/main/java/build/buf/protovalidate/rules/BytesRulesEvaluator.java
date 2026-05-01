@@ -15,7 +15,6 @@
 package build.buf.protovalidate.rules;
 
 import build.buf.protovalidate.Evaluator;
-import build.buf.protovalidate.FieldPathUtils;
 import build.buf.protovalidate.RuleViolation;
 import build.buf.protovalidate.Value;
 import build.buf.protovalidate.exceptions.ExecutionException;
@@ -25,7 +24,6 @@ import com.google.protobuf.ByteString;
 import com.google.protobuf.Descriptors.FieldDescriptor;
 import com.google.re2j.Pattern;
 import com.google.re2j.PatternSyntaxException;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -345,38 +343,38 @@ final class BytesRulesEvaluator implements Evaluator {
 
     if (constVal != null && !bytesVal.equals(constVal)) {
       violations =
-          add(
+          RuleBase.add(
               violations,
               NativeViolations.newViolation(
                   CONST_SITE, null, "must be " + hex(constVal), val, constVal));
-      if (failFast) return done(violations);
+      if (failFast) return base.done(violations);
     }
 
     if (exactLen != null && byteLen != exactLen) {
       violations =
-          add(
+          RuleBase.add(
               violations,
               NativeViolations.newViolation(
                   LEN_SITE, null, "must be " + exactLen + " bytes", val, exactLen));
-      if (failFast) return done(violations);
+      if (failFast) return base.done(violations);
     }
 
     if (minLen != null && byteLen < minLen) {
       violations =
-          add(
+          RuleBase.add(
               violations,
               NativeViolations.newViolation(
                   MIN_LEN_SITE, null, "must be at least " + minLen + " bytes", val, minLen));
-      if (failFast) return done(violations);
+      if (failFast) return base.done(violations);
     }
 
     if (maxLen != null && byteLen > maxLen) {
       violations =
-          add(
+          RuleBase.add(
               violations,
               NativeViolations.newViolation(
                   MAX_LEN_SITE, null, "must be at most " + maxLen + " bytes", val, maxLen));
-      if (failFast) return done(violations);
+      if (failFast) return base.done(violations);
     }
 
     if (pattern != null) {
@@ -387,7 +385,7 @@ final class BytesRulesEvaluator implements Evaluator {
       }
       if (!pattern.matches(bytesVal.toStringUtf8())) {
         violations =
-            add(
+            RuleBase.add(
                 violations,
                 NativeViolations.newViolation(
                     PATTERN_SITE,
@@ -395,49 +393,49 @@ final class BytesRulesEvaluator implements Evaluator {
                     "must match regex pattern `" + patternStr + "`",
                     val,
                     patternStr));
-        if (failFast) return done(violations);
+        if (failFast) return base.done(violations);
       }
     }
 
     if (prefix != null && !bytesVal.startsWith(prefix)) {
       violations =
-          add(
+          RuleBase.add(
               violations,
               NativeViolations.newViolation(
                   PREFIX_SITE, null, "does not have prefix " + hex(prefix), val, prefix));
-      if (failFast) return done(violations);
+      if (failFast) return base.done(violations);
     }
 
     if (suffix != null && !bytesVal.endsWith(suffix)) {
       violations =
-          add(
+          RuleBase.add(
               violations,
               NativeViolations.newViolation(
                   SUFFIX_SITE, null, "does not have suffix " + hex(suffix), val, suffix));
-      if (failFast) return done(violations);
+      if (failFast) return base.done(violations);
     }
 
     if (contains != null && !containsBytes(bytesVal, contains)) {
       violations =
-          add(
+          RuleBase.add(
               violations,
               NativeViolations.newViolation(
                   CONTAINS_SITE, null, "does not contain " + hex(contains), val, contains));
-      if (failFast) return done(violations);
+      if (failFast) return base.done(violations);
     }
 
     if (!inVals.isEmpty() && !inVals.contains(bytesVal)) {
       violations =
-          add(
+          RuleBase.add(
               violations,
               NativeViolations.newViolation(
                   IN_SITE, null, "must be in list " + formatList(inVals), val, bytesVal));
-      if (failFast) return done(violations);
+      if (failFast) return base.done(violations);
     }
 
     if (!notInVals.isEmpty() && notInVals.contains(bytesVal)) {
       violations =
-          add(
+          RuleBase.add(
               violations,
               NativeViolations.newViolation(
                   NOT_IN_SITE,
@@ -445,18 +443,18 @@ final class BytesRulesEvaluator implements Evaluator {
                   "must not be in list " + formatList(notInVals),
                   val,
                   bytesVal));
-      if (failFast) return done(violations);
+      if (failFast) return base.done(violations);
     }
 
     if (wellKnown != null) {
       RuleViolation.Builder wkViolation = evaluateWellKnown(bytesVal, val);
       if (wkViolation != null) {
-        violations = add(violations, wkViolation);
-        if (failFast) return done(violations);
+        violations = RuleBase.add(violations, wkViolation);
+        if (failFast) return base.done(violations);
       }
     }
 
-    return done(violations);
+    return base.done(violations);
   }
 
   private RuleViolation.@Nullable Builder evaluateWellKnown(ByteString bytesVal, Value val) {
@@ -517,31 +515,7 @@ final class BytesRulesEvaluator implements Evaluator {
    * Mirrors Go's {@code formatBytesList}.
    */
   private static String formatList(List<ByteString> vals) {
-    StringBuilder sb = new StringBuilder("[");
-    for (int i = 0; i < vals.size(); i++) {
-      if (i > 0) {
-        sb.append(", ");
-      }
-      sb.append(vals.get(i).toStringUtf8());
-    }
-    sb.append("]");
-    return sb.toString();
+    return RuleBase.formatList(vals, ByteString::toStringUtf8);
   }
 
-  private static List<RuleViolation.Builder> add(
-      @Nullable List<RuleViolation.Builder> violations, RuleViolation.Builder v) {
-    if (violations == null) {
-      violations = new ArrayList<>(2);
-    }
-    violations.add(v);
-    return violations;
-  }
-
-  private List<RuleViolation.Builder> done(@Nullable List<RuleViolation.Builder> violations) {
-    if (violations == null || violations.isEmpty()) {
-      return RuleViolation.NO_VIOLATIONS;
-    }
-    return FieldPathUtils.updatePaths(
-        violations, base.getFieldPathElement(), base.getRulePrefixElements());
-  }
 }

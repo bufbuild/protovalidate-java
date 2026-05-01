@@ -16,7 +16,6 @@ package build.buf.protovalidate.rules;
 
 import build.buf.protovalidate.CustomOverload;
 import build.buf.protovalidate.Evaluator;
-import build.buf.protovalidate.FieldPathUtils;
 import build.buf.protovalidate.RuleViolation;
 import build.buf.protovalidate.Value;
 import build.buf.validate.FieldRules;
@@ -24,7 +23,6 @@ import build.buf.validate.KnownRegex;
 import build.buf.validate.StringRules;
 import com.google.protobuf.Descriptors.FieldDescriptor;
 import com.google.re2j.Pattern;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import org.jspecify.annotations.Nullable;
@@ -573,7 +571,7 @@ final class StringRulesEvaluator implements Evaluator {
       long runeCount = strVal.codePointCount(0, strVal.length());
       violations = applyLength(violations, val, runeCount, failFast);
       if (failFast && violations != null) {
-        return done(violations);
+        return base.done(violations);
       }
     }
 
@@ -581,22 +579,22 @@ final class StringRulesEvaluator implements Evaluator {
       long byteCount = utf8ByteLength(strVal);
       violations = applyByteLength(violations, val, byteCount, failFast);
       if (failFast && violations != null) {
-        return done(violations);
+        return base.done(violations);
       }
     }
 
     if (constVal != null && !strVal.equals(constVal)) {
       violations =
-          add(
+          RuleBase.add(
               violations,
               NativeViolations.newViolation(
                   CONST_SITE, null, "must equal `" + constVal + "`", val, constVal));
-      if (failFast) return done(violations);
+      if (failFast) return base.done(violations);
     }
 
     if (pattern != null && !pattern.matches(strVal)) {
       violations =
-          add(
+          RuleBase.add(
               violations,
               NativeViolations.newViolation(
                   PATTERN_SITE,
@@ -604,30 +602,30 @@ final class StringRulesEvaluator implements Evaluator {
                   "does not match regex pattern `" + patternStr + "`",
                   val,
                   patternStr));
-      if (failFast) return done(violations);
+      if (failFast) return base.done(violations);
     }
 
     if (prefix != null && !strVal.startsWith(prefix)) {
       violations =
-          add(
+          RuleBase.add(
               violations,
               NativeViolations.newViolation(
                   PREFIX_SITE, null, "does not have prefix `" + prefix + "`", val, prefix));
-      if (failFast) return done(violations);
+      if (failFast) return base.done(violations);
     }
 
     if (suffix != null && !strVal.endsWith(suffix)) {
       violations =
-          add(
+          RuleBase.add(
               violations,
               NativeViolations.newViolation(
                   SUFFIX_SITE, null, "does not have suffix `" + suffix + "`", val, suffix));
-      if (failFast) return done(violations);
+      if (failFast) return base.done(violations);
     }
 
     if (contains != null && !strVal.contains(contains)) {
       violations =
-          add(
+          RuleBase.add(
               violations,
               NativeViolations.newViolation(
                   CONTAINS_SITE,
@@ -635,12 +633,12 @@ final class StringRulesEvaluator implements Evaluator {
                   "does not contain substring `" + contains + "`",
                   val,
                   contains));
-      if (failFast) return done(violations);
+      if (failFast) return base.done(violations);
     }
 
     if (notContains != null && strVal.contains(notContains)) {
       violations =
-          add(
+          RuleBase.add(
               violations,
               NativeViolations.newViolation(
                   NOT_CONTAINS_SITE,
@@ -648,46 +646,46 @@ final class StringRulesEvaluator implements Evaluator {
                   "value contains substring `" + notContains + "`",
                   val,
                   notContains));
-      if (failFast) return done(violations);
+      if (failFast) return base.done(violations);
     }
 
     if (!inVals.isEmpty() && !inVals.contains(strVal)) {
       violations =
-          add(
+          RuleBase.add(
               violations,
               NativeViolations.newViolation(
-                  IN_SITE, null, "must be in list " + formatList(inVals), val, strVal));
-      if (failFast) return done(violations);
+                  IN_SITE, null, "must be in list " + RuleBase.formatList(inVals), val, strVal));
+      if (failFast) return base.done(violations);
     }
 
     if (!notInVals.isEmpty() && notInVals.contains(strVal)) {
       violations =
-          add(
+          RuleBase.add(
               violations,
               NativeViolations.newViolation(
                   NOT_IN_SITE,
                   null,
-                  "must not be in list " + formatList(notInVals),
+                  "must not be in list " + RuleBase.formatList(notInVals),
                   val,
                   strVal));
-      if (failFast) return done(violations);
+      if (failFast) return base.done(violations);
     }
 
     if (wellKnown != null) {
       RuleViolation.Builder wkv = checkWellKnown(strVal, val);
       if (wkv != null) {
-        violations = add(violations, wkv);
-        if (failFast) return done(violations);
+        violations = RuleBase.add(violations, wkv);
+        if (failFast) return base.done(violations);
       }
     } else if (knownRegex != KnownRegex.KNOWN_REGEX_UNSPECIFIED) {
       RuleViolation.Builder krv = checkKnownRegex(strVal, val);
       if (krv != null) {
-        violations = add(violations, krv);
-        if (failFast) return done(violations);
+        violations = RuleBase.add(violations, krv);
+        if (failFast) return base.done(violations);
       }
     }
 
-    return done(violations);
+    return base.done(violations);
   }
 
   // --- Length checks ---
@@ -699,7 +697,7 @@ final class StringRulesEvaluator implements Evaluator {
       boolean failFast) {
     if (exactLen != null && runeCount != exactLen) {
       violations =
-          add(
+          RuleBase.add(
               violations,
               NativeViolations.newViolation(
                   LEN_SITE, null, "must be " + exactLen + " characters", val, exactLen));
@@ -707,7 +705,7 @@ final class StringRulesEvaluator implements Evaluator {
     }
     if (minLen != null && runeCount < minLen) {
       violations =
-          add(
+          RuleBase.add(
               violations,
               NativeViolations.newViolation(
                   MIN_LEN_SITE, null, "must be at least " + minLen + " characters", val, minLen));
@@ -715,7 +713,7 @@ final class StringRulesEvaluator implements Evaluator {
     }
     if (maxLen != null && runeCount > maxLen) {
       violations =
-          add(
+          RuleBase.add(
               violations,
               NativeViolations.newViolation(
                   MAX_LEN_SITE, null, "must be at most " + maxLen + " characters", val, maxLen));
@@ -731,7 +729,7 @@ final class StringRulesEvaluator implements Evaluator {
       boolean failFast) {
     if (exactBytes != null && byteCount != exactBytes) {
       violations =
-          add(
+          RuleBase.add(
               violations,
               NativeViolations.newViolation(
                   LEN_BYTES_SITE, null, "must be " + exactBytes + " bytes", val, exactBytes));
@@ -739,7 +737,7 @@ final class StringRulesEvaluator implements Evaluator {
     }
     if (minBytes != null && byteCount < minBytes) {
       violations =
-          add(
+          RuleBase.add(
               violations,
               NativeViolations.newViolation(
                   MIN_BYTES_SITE, null, "must be at least " + minBytes + " bytes", val, minBytes));
@@ -747,7 +745,7 @@ final class StringRulesEvaluator implements Evaluator {
     }
     if (maxBytes != null && byteCount > maxBytes) {
       violations =
-          add(
+          RuleBase.add(
               violations,
               NativeViolations.newViolation(
                   MAX_BYTES_SITE, null, "must be at most " + maxBytes + " bytes", val, maxBytes));
@@ -835,32 +833,4 @@ final class StringRulesEvaluator implements Evaluator {
     return count;
   }
 
-  private static String formatList(List<String> vals) {
-    StringBuilder sb = new StringBuilder("[");
-    for (int i = 0; i < vals.size(); i++) {
-      if (i > 0) {
-        sb.append(", ");
-      }
-      sb.append(vals.get(i));
-    }
-    sb.append("]");
-    return sb.toString();
-  }
-
-  private static List<RuleViolation.Builder> add(
-      @Nullable List<RuleViolation.Builder> violations, RuleViolation.Builder v) {
-    if (violations == null) {
-      violations = new ArrayList<>(2);
-    }
-    violations.add(v);
-    return violations;
-  }
-
-  private List<RuleViolation.Builder> done(@Nullable List<RuleViolation.Builder> violations) {
-    if (violations == null || violations.isEmpty()) {
-      return RuleViolation.NO_VIOLATIONS;
-    }
-    return FieldPathUtils.updatePaths(
-        violations, base.getFieldPathElement(), base.getRulePrefixElements());
-  }
 }

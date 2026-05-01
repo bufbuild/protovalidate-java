@@ -15,7 +15,6 @@
 package build.buf.protovalidate.rules;
 
 import build.buf.protovalidate.Evaluator;
-import build.buf.protovalidate.FieldPathUtils;
 import build.buf.protovalidate.RuleViolation;
 import build.buf.protovalidate.Value;
 import build.buf.validate.BoolRules;
@@ -78,11 +77,9 @@ final class BoolRulesEvaluator implements Evaluator {
     if (actual == expected) {
       return RuleViolation.NO_VIOLATIONS;
     }
-    List<RuleViolation.Builder> violations =
+    return base.done(
         Collections.singletonList(
             NativeViolations.newViolation(
-                CONST_SITE, null, "must equal " + expected, val, expected));
-    return FieldPathUtils.updatePaths(
-        violations, base.getFieldPathElement(), base.getRulePrefixElements());
+                CONST_SITE, null, "must equal " + expected, val, expected)));
   }
 }

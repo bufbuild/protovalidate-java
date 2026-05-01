@@ -15,13 +15,11 @@
 package build.buf.protovalidate.rules;
 
 import build.buf.protovalidate.Evaluator;
-import build.buf.protovalidate.FieldPathUtils;
 import build.buf.protovalidate.RuleViolation;
 import build.buf.protovalidate.Value;
 import build.buf.validate.FieldRules;
 import build.buf.validate.MapRules;
 import com.google.protobuf.Descriptors.FieldDescriptor;
-import java.util.ArrayList;
 import java.util.List;
 import org.jspecify.annotations.Nullable;
 
@@ -109,7 +107,7 @@ final class MapRulesEvaluator implements Evaluator {
 
     if (minPairs != null && size < minPairs) {
       violations =
-          add(
+          RuleBase.add(
               violations,
               NativeViolations.newViolation(
                   MIN_PAIRS_SITE,
@@ -117,12 +115,12 @@ final class MapRulesEvaluator implements Evaluator {
                   "map must be at least " + minPairs + " entries",
                   val,
                   minPairs));
-      if (failFast) return done(violations);
+      if (failFast) return base.done(violations);
     }
 
     if (maxPairs != null && size > maxPairs) {
       violations =
-          add(
+          RuleBase.add(
               violations,
               NativeViolations.newViolation(
                   MAX_PAIRS_SITE,
@@ -130,26 +128,9 @@ final class MapRulesEvaluator implements Evaluator {
                   "map must be at most " + maxPairs + " entries",
                   val,
                   maxPairs));
-      if (failFast) return done(violations);
+      if (failFast) return base.done(violations);
     }
 
-    return done(violations);
-  }
-
-  private static List<RuleViolation.Builder> add(
-      @Nullable List<RuleViolation.Builder> violations, RuleViolation.Builder v) {
-    if (violations == null) {
-      violations = new ArrayList<>(2);
-    }
-    violations.add(v);
-    return violations;
-  }
-
-  private List<RuleViolation.Builder> done(@Nullable List<RuleViolation.Builder> violations) {
-    if (violations == null || violations.isEmpty()) {
-      return RuleViolation.NO_VIOLATIONS;
-    }
-    return FieldPathUtils.updatePaths(
-        violations, base.getFieldPathElement(), base.getRulePrefixElements());
+    return base.done(violations);
   }
 }

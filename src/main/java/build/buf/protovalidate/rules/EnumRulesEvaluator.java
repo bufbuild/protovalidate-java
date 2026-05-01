@@ -15,14 +15,12 @@
 package build.buf.protovalidate.rules;
 
 import build.buf.protovalidate.Evaluator;
-import build.buf.protovalidate.FieldPathUtils;
 import build.buf.protovalidate.RuleViolation;
 import build.buf.protovalidate.Value;
 import build.buf.validate.EnumRules;
 import build.buf.validate.FieldRules;
 import com.google.protobuf.Descriptors.EnumValueDescriptor;
 import com.google.protobuf.Descriptors.FieldDescriptor;
-import java.util.ArrayList;
 import java.util.List;
 import org.jspecify.annotations.Nullable;
 
@@ -118,19 +116,19 @@ final class EnumRulesEvaluator implements Evaluator {
     if (constVal != null && actual != constVal) {
       RuleViolation.Builder b =
           NativeViolations.newViolation(CONST_SITE, null, "must equal " + constVal, val, constVal);
-      violations = add(violations, b);
+      violations = RuleBase.add(violations, b);
       if (failFast) {
-        return done(violations);
+        return base.done(violations);
       }
     }
 
     if (!inVals.isEmpty() && !inVals.contains(actual)) {
       RuleViolation.Builder b =
           NativeViolations.newViolation(
-              IN_SITE, null, "must be in list " + formatList(inVals), val, actual);
-      violations = add(violations, b);
+              IN_SITE, null, "must be in list " + RuleBase.formatList(inVals), val, actual);
+      violations = RuleBase.add(violations, b);
       if (failFast) {
-        return done(violations);
+        return base.done(violations);
       }
     }
 
@@ -139,16 +137,16 @@ final class EnumRulesEvaluator implements Evaluator {
           NativeViolations.newViolation(
               NOT_IN_SITE,
               null,
-              "must not be in list " + formatList(notInVals),
+              "must not be in list " + RuleBase.formatList(notInVals),
               val,
               actual);
-      violations = add(violations, b);
+      violations = RuleBase.add(violations, b);
       if (failFast) {
-        return done(violations);
+        return base.done(violations);
       }
     }
 
-    return done(violations);
+    return base.done(violations);
   }
 
   /**
@@ -168,34 +166,5 @@ final class EnumRulesEvaluator implements Evaluator {
     }
     throw new IllegalStateException(
         "unexpected enum value representation: " + raw.getClass().getName());
-  }
-
-  private static List<RuleViolation.Builder> add(
-      @Nullable List<RuleViolation.Builder> violations, RuleViolation.Builder v) {
-    if (violations == null) {
-      violations = new ArrayList<>(2);
-    }
-    violations.add(v);
-    return violations;
-  }
-
-  private List<RuleViolation.Builder> done(@Nullable List<RuleViolation.Builder> violations) {
-    if (violations == null || violations.isEmpty()) {
-      return RuleViolation.NO_VIOLATIONS;
-    }
-    return FieldPathUtils.updatePaths(
-        violations, base.getFieldPathElement(), base.getRulePrefixElements());
-  }
-
-  private static String formatList(List<Integer> vals) {
-    StringBuilder sb = new StringBuilder("[");
-    for (int i = 0; i < vals.size(); i++) {
-      if (i > 0) {
-        sb.append(", ");
-      }
-      sb.append(vals.get(i));
-    }
-    sb.append("]");
-    return sb.toString();
   }
 }
