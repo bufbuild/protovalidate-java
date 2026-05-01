@@ -40,7 +40,10 @@ import com.google.protobuf.Message;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
-import org.junit.jupiter.api.Test;
+import java.util.stream.Stream;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 
 /**
  * Parity test: runs a representative slice of conformance fixtures through both modes
@@ -65,54 +68,71 @@ class NativeRulesParityTest {
           .withConfig(Config.newBuilder().setEnableNativeRules(false).build())
           .build();
 
-  @Test
-  void parityAcrossRuleTypes() throws ValidationException {
-    // Each fixture exercises a different rule type. Order:
-    // bool, enum, bytes, numeric (signed + unsigned), string (scalar + format), repeated, map.
-    List<Message> fixtures =
-        Arrays.asList(
-            // Bool — fails const=true.
-            BoolConstTrue.newBuilder().build(),
-            // Enum defined_only — fails (2147483647 not in defined values).
-            EnumDefined.newBuilder().setValValue(2147483647).build(),
-            // Bytes contains — pass case.
-            BytesContains.newBuilder().setVal(ByteString.copyFromUtf8("candy bars")).build(),
-            // Bytes in — pass case (empty matches none of the in list, but the field is
-            // implicit-presence so the rule is skipped on empty value).
-            BytesIn.newBuilder().setVal(ByteString.copyFromUtf8("bar")).build(),
-            // Fixed32 (unsigned) lt — fails (val=5, lt=5).
-            Fixed32LT.newBuilder().setVal(5).build(),
-            // Int32 in — fails (4 not in list).
-            Int32In.newBuilder().setVal(4).build(),
-            // SFixed64 in — fails (5 not in list).
-            SFixed64In.newBuilder().setVal(5).build(),
-            // String prefix — pass case.
-            StringPrefix.newBuilder().setVal("foo").build(),
-            // String contains — pass case.
-            StringContains.newBuilder().setVal("foobar").build(),
-            // String length with code points — emoji counts as 1 each.
-            StringLen.newBuilder().setVal("😅😄👾").build(),
-            // Repeated exact — fails (2 items, exact=3).
-            RepeatedExact.newBuilder().addAllVal(Arrays.asList(1, 2)).build(),
-            // Repeated unique — fails (duplicate "foo").
+  /**
+   * Each entry exercises a different rule type. JUnit reports per-fixture pass/fail, so adding a
+   * fixture and watching CI is a single-line change. Order:
+   * bool, enum, bytes, numeric (signed + unsigned), string (scalar + format), repeated, map.
+   */
+  static Stream<Arguments> fixtures() {
+    return Stream.of(
+        // Bool — fails const=true.
+        Arguments.of("BoolConstTrue", BoolConstTrue.newBuilder().build()),
+        // Enum defined_only — fails (2147483647 not in defined values).
+        Arguments.of(
+            "EnumDefined.undefined", EnumDefined.newBuilder().setValValue(2147483647).build()),
+        // Bytes contains — pass case.
+        Arguments.of(
+            "BytesContains.pass",
+            BytesContains.newBuilder().setVal(ByteString.copyFromUtf8("candy bars")).build()),
+        // Bytes in — pass case (empty matches none of the in list, but the field is
+        // implicit-presence so the rule is skipped on empty value).
+        Arguments.of(
+            "BytesIn.pass", BytesIn.newBuilder().setVal(ByteString.copyFromUtf8("bar")).build()),
+        // Fixed32 (unsigned) lt — fails (val=5, lt=5).
+        Arguments.of("Fixed32LT.fail", Fixed32LT.newBuilder().setVal(5).build()),
+        // Int32 in — fails (4 not in list).
+        Arguments.of("Int32In.fail", Int32In.newBuilder().setVal(4).build()),
+        // SFixed64 in — fails (5 not in list).
+        Arguments.of("SFixed64In.fail", SFixed64In.newBuilder().setVal(5).build()),
+        // String prefix — pass case.
+        Arguments.of("StringPrefix.pass", StringPrefix.newBuilder().setVal("foo").build()),
+        // String contains — pass case.
+        Arguments.of(
+            "StringContains.pass", StringContains.newBuilder().setVal("foobar").build()),
+        // String length with code points — emoji counts as 1 each.
+        Arguments.of("StringLen.emoji", StringLen.newBuilder().setVal("😅😄👾").build()),
+        // Repeated exact — fails (2 items, exact=3).
+        Arguments.of(
+            "RepeatedExact.fail",
+            RepeatedExact.newBuilder().addAllVal(Arrays.asList(1, 2)).build()),
+        // Repeated unique — fails (duplicate "foo").
+        Arguments.of(
+            "RepeatedUnique.fail",
             RepeatedUnique.newBuilder()
                 .addAllVal(Arrays.asList("foo", "bar", "foo", "baz"))
-                .build(),
-            // Repeated enum in — fails.
-            RepeatedEnumIn.newBuilder().addVal(AnEnum.AN_ENUM_X).build(),
-            // Wrapper-typed double (google.protobuf.DoubleValue) — exercises the native
-            // wrapper-unwrap path. Empty wrapper = value 0.0, fails the rule.
-            WrapperDouble.newBuilder().setVal(DoubleValue.newBuilder().build()).build(),
-            // KitchenSinkMessage with empty inner ComplexTestMsg — many violations.
-            KitchenSinkMessage.newBuilder().setVal(ComplexTestMsg.newBuilder().build()).build());
+                .build()),
+        // Repeated enum in — fails.
+        Arguments.of(
+            "RepeatedEnumIn.fail", RepeatedEnumIn.newBuilder().addVal(AnEnum.AN_ENUM_X).build()),
+        // Wrapper-typed double (google.protobuf.DoubleValue) — exercises the native
+        // wrapper-unwrap path. Empty wrapper = value 0.0, fails the rule.
+        Arguments.of(
+            "WrapperDouble.emptyInner",
+            WrapperDouble.newBuilder().setVal(DoubleValue.newBuilder().build()).build()),
+        // KitchenSinkMessage with empty inner ComplexTestMsg — many violations.
+        Arguments.of(
+            "KitchenSinkMessage.emptyInner",
+            KitchenSinkMessage.newBuilder().setVal(ComplexTestMsg.newBuilder().build()).build()));
+  }
 
-    for (Message msg : fixtures) {
-      ValidationResult nativeResult = nativeValidator.validate(msg);
-      ValidationResult celResult = celValidator.validate(msg);
-      assertThat(toProtoList(nativeResult))
-          .as("toProto() parity failed for %s", msg.getDescriptorForType().getFullName())
-          .isEqualTo(toProtoList(celResult));
-    }
+  @ParameterizedTest(name = "{0}")
+  @MethodSource("fixtures")
+  void parityForFixture(String name, Message msg) throws ValidationException {
+    ValidationResult nativeResult = nativeValidator.validate(msg);
+    ValidationResult celResult = celValidator.validate(msg);
+    assertThat(toProtoList(nativeResult))
+        .as("toProto() parity for %s", name)
+        .isEqualTo(toProtoList(celResult));
   }
 
   private static List<build.buf.validate.Violation> toProtoList(ValidationResult result) {

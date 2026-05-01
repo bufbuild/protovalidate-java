@@ -17,6 +17,7 @@ syntax = "proto3";
 package validationtest;
 
 import "buf/validate/validate.proto";
+import "google/protobuf/wrappers.proto";
 import "validationtest/import_test.proto";
 
 message ExampleFieldRules {
@@ -272,4 +273,109 @@ message FloatDoubleNaNNegZero {
   repeated double dvals = 2 [(buf.validate.field).repeated.unique = true];
   float fneg_zero = 3 [(buf.validate.field).float.const = -0.0];
   double dneg_zero = 4 [(buf.validate.field).double.const = -0.0];
+}
+
+// Multi-rule fixtures used to exercise failFast and residual-clearing semantics.
+//
+// Each field has two scalar rules (or a count + element rule) so a value that violates the
+// first rule will also violate the second. With failFast=true the validator should report only
+// one violation; with failFast=false (the default), both should be reported.
+
+// String with min_len=4 and a "must contain digit" pattern.
+message StringMultiRule {
+  string val = 1 [(buf.validate.field).string = {
+    min_len: 4
+    pattern: ".*[0-9].*"
+  }];
+}
+
+// Int with gt=10 and in=[5,15]. Default 0 violates both.
+message Int32MultiRule {
+  int32 val = 1 [(buf.validate.field).int32 = {
+    gt: 10
+    in: [
+      5,
+      15
+    ]
+  }];
+}
+
+// Bytes with min_len=4 and ipv4=true. Empty value violates both.
+message BytesMultiRule {
+  bytes val = 1 [(buf.validate.field).bytes = {
+    min_len: 4
+    ipv4: true
+  }];
+}
+
+// not_in fixtures, one per kind, used by NotInRulesTest.
+message Int32NotIn {
+  int32 val = 1 [(buf.validate.field).int32 = {
+    not_in: [
+      1,
+      2,
+      3
+    ]
+  }];
+}
+
+message Uint32NotIn {
+  uint32 val = 1 [(buf.validate.field).uint32 = {
+    not_in: [
+      1,
+      2
+    ]
+  }];
+}
+
+message StringNotIn {
+  string val = 1 [(buf.validate.field).string = {
+    not_in: [
+      "foo",
+      "bar"
+    ]
+  }];
+}
+
+message BytesNotIn {
+  bytes val = 1 [(buf.validate.field).bytes = {
+    not_in: [
+      "AA",
+      "BB"
+    ]
+  }];
+}
+
+message EnumNotIn {
+  ExampleColor val = 1 [(buf.validate.field).enum = {
+    not_in: [
+      1,
+      2
+    ]
+  }];
+}
+
+// well_known_regex fixtures.
+message HttpHeaderName {
+  string val = 1 [(buf.validate.field).string.well_known_regex = KNOWN_REGEX_HTTP_HEADER_NAME];
+}
+
+message HttpHeaderNameLoose {
+  string val = 1 [(buf.validate.field).string = {
+    well_known_regex: KNOWN_REGEX_HTTP_HEADER_NAME
+    strict: false
+  }];
+}
+
+message HttpHeaderValue {
+  string val = 1 [(buf.validate.field).string.well_known_regex = KNOWN_REGEX_HTTP_HEADER_VALUE];
+}
+
+// google.protobuf.*Value wrapper fixtures for WrappedValueEvaluator coverage.
+message Int64WrapperConst {
+  google.protobuf.Int64Value val = 1 [(buf.validate.field).int64.const = 5];
+}
+
+message StringWrapperLen {
+  google.protobuf.StringValue val = 1 [(buf.validate.field).string.min_len = 3];
 }
