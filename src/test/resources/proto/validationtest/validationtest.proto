@@ -238,3 +238,38 @@ message ExampleMapMinMax {
     max_pairs: 3
   }];
 }
+
+// --- Float/double parity fixtures ---
+//
+// See NATIVE_RULES_REVIEW.md sections B1 (fixed) and B2 (reclassified). The tests in
+// FloatBugConfirmationTest now lock in parity rather than confirm divergence.
+
+// Originally documented the floatFormatter sign-strip bug; now used by the regression test
+// asserting native and CEL both render -0.0 as "must equal -0".
+message ExampleFloatConstNegZero {
+  float val = 1 [(buf.validate.field).float.const = -0.0];
+}
+
+message ExampleDoubleConstNegZero {
+  double val = 1 [(buf.validate.field).double.const = -0.0];
+}
+
+// Originally claimed a parity divergence on repeated.unique for floats/doubles. Investigation
+// showed CustomOverload.uniqueList (the CEL-side impl in protovalidate-java) and
+// RepeatedRulesEvaluator.isUnique both use HashSet + Object.equals, so they agree — both
+// deviate from CEL's IEEE-754 spec for NaN and +/- 0 in the same direction. The agreement
+// tests pin that contract until a coordinated fix lands.
+message ExampleFloatRepeatedUnique {
+  repeated float val = 1 [(buf.validate.field).repeated.unique = true];
+}
+
+message ExampleDoubleRepeatedUnique {
+  repeated double val = 1 [(buf.validate.field).repeated.unique = true];
+}
+
+message FloatDoubleNaNNegZero {
+  repeated float fvals = 1 [(buf.validate.field).repeated.unique = true];
+  repeated double dvals = 2 [(buf.validate.field).repeated.unique = true];
+  float fneg_zero = 3 [(buf.validate.field).float.const = -0.0];
+  double dneg_zero = 4 [(buf.validate.field).double.const = -0.0];
+}

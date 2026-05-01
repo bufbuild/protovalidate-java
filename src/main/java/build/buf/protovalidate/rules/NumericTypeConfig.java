@@ -221,7 +221,7 @@ final class NumericTypeConfig<T extends Number & Comparable<T>> {
           NumericDescriptors.build(
               frField(FieldRules.FLOAT_FIELD_NUMBER), FloatRules.getDescriptor(), "float", true),
           Float.class,
-          Float::compare,
+          NumericTypeConfig::floatCompare,
           NumericTypeConfig::floatFormatter,
           true);
 
@@ -231,29 +231,49 @@ final class NumericTypeConfig<T extends Number & Comparable<T>> {
           NumericDescriptors.build(
               frField(FieldRules.DOUBLE_FIELD_NUMBER), DoubleRules.getDescriptor(), "double", true),
           Double.class,
-          Double::compare,
-          NumericTypeConfig::floatFormatter,
+          NumericTypeConfig::doubleCompare,
+          NumericTypeConfig::doubleFormatter,
           true);
 
-  public static String floatFormatter(Object obj) {
-    if (obj instanceof Float) {
+  public static int floatCompare(Float f1, Float f2) {
+      // this makes sure 0 == -0
+      if((f1 == 0.0)&&(f2 == 0.0)) {
+          return 0;
+      }
+      return f1.compareTo(f2);
+  }
+
+  public static int doubleCompare(Double f1, Double f2) {
+      // this makes sure 0 == -0
+      if(f1 == 0.0 && f2 == 0.0) {
+          return 0;
+      }
+      return f1.compareTo(f2);
+  }
+
+  public static String floatFormatter(Float f) {
+      // if the float is -0, print it as -0
+      if (Float.floatToIntBits(f) == 1<<31) {
+          return "-0";
+      }
       // if the float is a whole number, don't print the decimal
-      Float f = (Float) obj;
       float f2 = f.intValue();
       if (f2 == f) {
-        return String.valueOf(f.intValue());
+          return String.valueOf(f.intValue());
       }
       return String.valueOf(f);
-    }
-    if (obj instanceof Double) {
-      // if the float is a whole number, don't print the decimal
-      Double d = (Double) obj;
+  }
+
+  public static String doubleFormatter(Double d) {
+      // if the double is -0, print it as -0
+      if (Double.doubleToLongBits(d) == 1L<<63) {
+          return "-0";
+      }
+      // if the double is a whole number, don't print the decimal
       double d2 = d.intValue();
       if (d2 == d) {
-        return String.valueOf(d.intValue());
+          return String.valueOf(d.intValue());
       }
       return String.valueOf(d);
-    }
-    return String.valueOf(obj);
   }
 }

@@ -59,9 +59,6 @@ final class RepeatedRulesEvaluator implements Evaluator {
           "repeated.unique",
           "repeated value must contain unique items");
 
-  /** Below this list size, the linear-scan unique check beats {@link HashSet} (no allocation). */
-  private static final int UNIQUE_LINEAR_THRESHOLD = 16;
-
   private final RuleBase base;
   private final @Nullable Long minItems;
   private final @Nullable Long maxItems;
@@ -195,24 +192,11 @@ final class RepeatedRulesEvaluator implements Evaluator {
   }
 
   /**
-   * Returns true iff every element in {@code list} is distinct. Below {@link
-   * #UNIQUE_LINEAR_THRESHOLD} elements uses an O(n²) scan with no auxiliary allocation; above that
-   * uses a {@link HashSet}.
+   * Returns true iff every element in {@code list} is distinct. Uses a {@link HashSet} to test for uniqueness.
    */
   private static boolean isUnique(List<?> list) {
     int size = list.size();
     if (size <= 1) {
-      return true;
-    }
-    if (size <= UNIQUE_LINEAR_THRESHOLD) {
-      for (int i = 1; i < size; i++) {
-        Object current = list.get(i);
-        for (int j = 0; j < i; j++) {
-          if (current.equals(list.get(j))) {
-            return false;
-          }
-        }
-      }
       return true;
     }
     Set<Object> seen = new HashSet<>(size);
