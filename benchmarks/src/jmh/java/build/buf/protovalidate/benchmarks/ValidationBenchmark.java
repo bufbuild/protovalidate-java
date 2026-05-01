@@ -18,15 +18,31 @@ import build.buf.protovalidate.Config;
 import build.buf.protovalidate.Validator;
 import build.buf.protovalidate.ValidatorFactory;
 import build.buf.protovalidate.benchmarks.gen.BenchBoolConst;
+import build.buf.protovalidate.benchmarks.gen.BenchBytesConst;
+import build.buf.protovalidate.benchmarks.gen.BenchBytesIn;
 import build.buf.protovalidate.benchmarks.gen.BenchComplexSchema;
+import build.buf.protovalidate.benchmarks.gen.BenchDoubleIn;
+import build.buf.protovalidate.benchmarks.gen.BenchEnumConst;
+import build.buf.protovalidate.benchmarks.gen.BenchEnumNotIn;
 import build.buf.protovalidate.benchmarks.gen.BenchEnumRules;
 import build.buf.protovalidate.benchmarks.gen.BenchGT;
+import build.buf.protovalidate.benchmarks.gen.BenchInt64Const;
+import build.buf.protovalidate.benchmarks.gen.BenchInt64In;
 import build.buf.protovalidate.benchmarks.gen.BenchMap;
 import build.buf.protovalidate.benchmarks.gen.BenchRepeatedBytesUnique;
+import build.buf.protovalidate.benchmarks.gen.BenchRepeatedInt32Unique;
 import build.buf.protovalidate.benchmarks.gen.BenchRepeatedMessage;
 import build.buf.protovalidate.benchmarks.gen.BenchRepeatedScalar;
 import build.buf.protovalidate.benchmarks.gen.BenchRepeatedScalarUnique;
+import build.buf.protovalidate.benchmarks.gen.BenchRepeatedStringUnique;
 import build.buf.protovalidate.benchmarks.gen.BenchScalar;
+import build.buf.protovalidate.benchmarks.gen.BenchStringConst;
+import build.buf.protovalidate.benchmarks.gen.BenchStringContains;
+import build.buf.protovalidate.benchmarks.gen.BenchStringIn;
+import build.buf.protovalidate.benchmarks.gen.BenchStringLen;
+import build.buf.protovalidate.benchmarks.gen.BenchStringMinLen;
+import build.buf.protovalidate.benchmarks.gen.BenchStringPrefix;
+import build.buf.protovalidate.benchmarks.gen.BenchUint32In;
 import build.buf.protovalidate.benchmarks.gen.ManyUnruledFieldsMessage;
 import build.buf.protovalidate.benchmarks.gen.MultiRule;
 import build.buf.protovalidate.benchmarks.gen.RegexPatternMessage;
@@ -93,6 +109,24 @@ public class ValidationBenchmark {
   private BenchBoolConst benchBoolConst;
   private BenchEnumRules benchEnumRules;
 
+  // Single-rule fixtures filling earlier coverage gaps.
+  private BenchStringConst benchStringConst;
+  private BenchStringLen benchStringLen;
+  private BenchStringMinLen benchStringMinLen;
+  private BenchStringPrefix benchStringPrefix;
+  private BenchStringContains benchStringContains;
+  private BenchStringIn benchStringIn;
+  private BenchBytesConst benchBytesConst;
+  private BenchBytesIn benchBytesIn;
+  private BenchInt64Const benchInt64Const;
+  private BenchInt64In benchInt64In;
+  private BenchUint32In benchUint32In;
+  private BenchDoubleIn benchDoubleIn;
+  private BenchEnumConst benchEnumConst;
+  private BenchEnumNotIn benchEnumNotIn;
+  private BenchRepeatedStringUnique benchRepeatedStringUnique;
+  private BenchRepeatedInt32Unique benchRepeatedInt32Unique;
+
   @Setup
   public void setup() throws ValidationException {
     Config config = Config.newBuilder().setEnableNativeRules(enableNativeRules).build();
@@ -138,6 +172,23 @@ public class ValidationBenchmark {
     benchBoolConst = BenchFixtures.benchBoolConst();
     benchEnumRules = BenchFixtures.benchEnumRules();
 
+    benchStringConst = BenchFixtures.benchStringConst();
+    benchStringLen = BenchFixtures.benchStringLen();
+    benchStringMinLen = BenchFixtures.benchStringMinLen();
+    benchStringPrefix = BenchFixtures.benchStringPrefix();
+    benchStringContains = BenchFixtures.benchStringContains();
+    benchStringIn = BenchFixtures.benchStringIn();
+    benchBytesConst = BenchFixtures.benchBytesConst();
+    benchBytesIn = BenchFixtures.benchBytesIn();
+    benchInt64Const = BenchFixtures.benchInt64Const();
+    benchInt64In = BenchFixtures.benchInt64In();
+    benchUint32In = BenchFixtures.benchUint32In();
+    benchDoubleIn = BenchFixtures.benchDoubleIn();
+    benchEnumConst = BenchFixtures.benchEnumConst();
+    benchEnumNotIn = BenchFixtures.benchEnumNotIn();
+    benchRepeatedStringUnique = BenchFixtures.benchRepeatedStringUnique();
+    benchRepeatedInt32Unique = BenchFixtures.benchRepeatedInt32Unique();
+
     // Warm evaluator cache for steady-state benchmarks.
     validator.validate(simple);
     validator.validate(manyUnruled);
@@ -158,6 +209,22 @@ public class ValidationBenchmark {
     validator.validate(multiRuleError);
     validator.validate(benchBoolConst);
     validator.validate(benchEnumRules);
+    validator.validate(benchStringConst);
+    validator.validate(benchStringLen);
+    validator.validate(benchStringMinLen);
+    validator.validate(benchStringPrefix);
+    validator.validate(benchStringContains);
+    validator.validate(benchStringIn);
+    validator.validate(benchBytesConst);
+    validator.validate(benchBytesIn);
+    validator.validate(benchInt64Const);
+    validator.validate(benchInt64In);
+    validator.validate(benchUint32In);
+    validator.validate(benchDoubleIn);
+    validator.validate(benchEnumConst);
+    validator.validate(benchEnumNotIn);
+    validator.validate(benchRepeatedStringUnique);
+    validator.validate(benchRepeatedInt32Unique);
   }
 
   // --- Existing regression-guard benchmarks ---
@@ -257,5 +324,87 @@ public class ValidationBenchmark {
   @Benchmark
   public void validateBenchEnumRules(Blackhole bh) throws ValidationException {
     bh.consume(validator.validate(benchEnumRules));
+  }
+
+  // --- Single-rule fixtures filling earlier coverage gaps ---
+
+  @Benchmark
+  public void validateBenchStringConst(Blackhole bh) throws ValidationException {
+    bh.consume(validator.validate(benchStringConst));
+  }
+
+  @Benchmark
+  public void validateBenchStringLen(Blackhole bh) throws ValidationException {
+    bh.consume(validator.validate(benchStringLen));
+  }
+
+  @Benchmark
+  public void validateBenchStringMinLen(Blackhole bh) throws ValidationException {
+    bh.consume(validator.validate(benchStringMinLen));
+  }
+
+  @Benchmark
+  public void validateBenchStringPrefix(Blackhole bh) throws ValidationException {
+    bh.consume(validator.validate(benchStringPrefix));
+  }
+
+  @Benchmark
+  public void validateBenchStringContains(Blackhole bh) throws ValidationException {
+    bh.consume(validator.validate(benchStringContains));
+  }
+
+  @Benchmark
+  public void validateBenchStringIn(Blackhole bh) throws ValidationException {
+    bh.consume(validator.validate(benchStringIn));
+  }
+
+  @Benchmark
+  public void validateBenchBytesConst(Blackhole bh) throws ValidationException {
+    bh.consume(validator.validate(benchBytesConst));
+  }
+
+  @Benchmark
+  public void validateBenchBytesIn(Blackhole bh) throws ValidationException {
+    bh.consume(validator.validate(benchBytesIn));
+  }
+
+  @Benchmark
+  public void validateBenchInt64Const(Blackhole bh) throws ValidationException {
+    bh.consume(validator.validate(benchInt64Const));
+  }
+
+  @Benchmark
+  public void validateBenchInt64In(Blackhole bh) throws ValidationException {
+    bh.consume(validator.validate(benchInt64In));
+  }
+
+  @Benchmark
+  public void validateBenchUint32In(Blackhole bh) throws ValidationException {
+    bh.consume(validator.validate(benchUint32In));
+  }
+
+  @Benchmark
+  public void validateBenchDoubleIn(Blackhole bh) throws ValidationException {
+    bh.consume(validator.validate(benchDoubleIn));
+  }
+
+  @Benchmark
+  public void validateBenchEnumConst(Blackhole bh) throws ValidationException {
+    bh.consume(validator.validate(benchEnumConst));
+  }
+
+  @Benchmark
+  public void validateBenchEnumNotIn(Blackhole bh) throws ValidationException {
+    bh.consume(validator.validate(benchEnumNotIn));
+  }
+
+  @Benchmark
+  public void validateBenchRepeatedStringUnique(Blackhole bh) throws ValidationException {
+    bh.consume(validator.validate(benchRepeatedStringUnique));
+  }
+
+  @Benchmark
+  public void validateBenchRepeatedInt32Unique(Blackhole bh) throws ValidationException {
+    bh.consume(validator.validate(benchRepeatedInt32Unique));
   }
 }

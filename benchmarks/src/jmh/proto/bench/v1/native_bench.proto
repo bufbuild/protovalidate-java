@@ -223,3 +223,108 @@ message BenchEnumRules {
     ]
   }];
 }
+
+// --- Single-rule fixtures for previously unbenchmarked rules ---
+//
+// These messages each isolate a single rule so the benchmark measures that rule's per-validation
+// cost. They cover gaps identified in the second-pass review: string scalar rules (const, len,
+// min_len, prefix, contains, in), bytes scalar rules (const, in), numeric in/const for non-int32
+// kinds, enum const/not_in, and repeated.unique on string/int32.
+
+message BenchStringConst {
+  string s = 1 [(buf.validate.field).string.const = "hello"];
+}
+
+message BenchStringLen {
+  string s = 1 [(buf.validate.field).string.len = 5];
+}
+
+message BenchStringMinLen {
+  string s = 1 [(buf.validate.field).string.min_len = 1];
+}
+
+message BenchStringPrefix {
+  string s = 1 [(buf.validate.field).string.prefix = "user-"];
+}
+
+message BenchStringContains {
+  string s = 1 [(buf.validate.field).string.contains = "@"];
+}
+
+message BenchStringIn {
+  string s = 1 [(buf.validate.field).string = {
+    in: [
+      "foo",
+      "bar",
+      "baz"
+    ]
+  }];
+}
+
+message BenchBytesConst {
+  bytes b = 1 [(buf.validate.field).bytes.const = "abc"];
+}
+
+message BenchBytesIn {
+  bytes b = 1 [(buf.validate.field).bytes = {
+    in: [
+      "foo",
+      "bar"
+    ]
+  }];
+}
+
+message BenchInt64Const {
+  int64 v = 1 [(buf.validate.field).int64.const = 42];
+}
+
+message BenchInt64In {
+  int64 v = 1 [(buf.validate.field).int64 = {
+    in: [
+      1,
+      2,
+      3
+    ]
+  }];
+}
+
+message BenchUint32In {
+  uint32 v = 1 [(buf.validate.field).uint32 = {
+    in: [
+      1,
+      2,
+      3
+    ]
+  }];
+}
+
+message BenchDoubleIn {
+  double v = 1 [(buf.validate.field).double = {
+    in: [
+      1.0,
+      2.0,
+      3.0
+    ]
+  }];
+}
+
+message BenchEnumConst {
+  BenchPhaseEnum val = 1 [(buf.validate.field).enum.const = 1];
+}
+
+message BenchEnumNotIn {
+  BenchPhaseEnum val = 1 [(buf.validate.field).enum = {
+    not_in: [
+      2,
+      3
+    ]
+  }];
+}
+
+message BenchRepeatedStringUnique {
+  repeated string x = 1 [(buf.validate.field).repeated.unique = true];
+}
+
+message BenchRepeatedInt32Unique {
+  repeated int32 x = 1 [(buf.validate.field).repeated.unique = true];
+}

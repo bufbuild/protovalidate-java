@@ -15,17 +15,33 @@
 package build.buf.protovalidate.benchmarks;
 
 import build.buf.protovalidate.benchmarks.gen.BenchBoolConst;
+import build.buf.protovalidate.benchmarks.gen.BenchBytesConst;
+import build.buf.protovalidate.benchmarks.gen.BenchBytesIn;
 import build.buf.protovalidate.benchmarks.gen.BenchComplexSchema;
+import build.buf.protovalidate.benchmarks.gen.BenchDoubleIn;
 import build.buf.protovalidate.benchmarks.gen.BenchEnum;
+import build.buf.protovalidate.benchmarks.gen.BenchEnumConst;
+import build.buf.protovalidate.benchmarks.gen.BenchEnumNotIn;
 import build.buf.protovalidate.benchmarks.gen.BenchEnumRules;
 import build.buf.protovalidate.benchmarks.gen.BenchGT;
+import build.buf.protovalidate.benchmarks.gen.BenchInt64Const;
+import build.buf.protovalidate.benchmarks.gen.BenchInt64In;
 import build.buf.protovalidate.benchmarks.gen.BenchMap;
 import build.buf.protovalidate.benchmarks.gen.BenchPhaseEnum;
 import build.buf.protovalidate.benchmarks.gen.BenchRepeatedBytesUnique;
+import build.buf.protovalidate.benchmarks.gen.BenchRepeatedInt32Unique;
 import build.buf.protovalidate.benchmarks.gen.BenchRepeatedMessage;
 import build.buf.protovalidate.benchmarks.gen.BenchRepeatedScalar;
 import build.buf.protovalidate.benchmarks.gen.BenchRepeatedScalarUnique;
+import build.buf.protovalidate.benchmarks.gen.BenchRepeatedStringUnique;
 import build.buf.protovalidate.benchmarks.gen.BenchScalar;
+import build.buf.protovalidate.benchmarks.gen.BenchStringConst;
+import build.buf.protovalidate.benchmarks.gen.BenchStringContains;
+import build.buf.protovalidate.benchmarks.gen.BenchStringIn;
+import build.buf.protovalidate.benchmarks.gen.BenchStringLen;
+import build.buf.protovalidate.benchmarks.gen.BenchStringMinLen;
+import build.buf.protovalidate.benchmarks.gen.BenchStringPrefix;
+import build.buf.protovalidate.benchmarks.gen.BenchUint32In;
 import build.buf.protovalidate.benchmarks.gen.MultiRule;
 import build.buf.protovalidate.benchmarks.gen.StringMatching;
 import build.buf.protovalidate.benchmarks.gen.TestByteMatching;
@@ -212,5 +228,80 @@ final class BenchFixtures {
   /** Phase 4 measurement target — exercises EnumRulesEvaluator on enum.in. */
   static BenchEnumRules benchEnumRules() {
     return BenchEnumRules.newBuilder().setVal(BenchPhaseEnum.BENCH_PHASE_ENUM_TWO).build();
+  }
+
+  // --- Single-rule fixtures for previously unbenchmarked rules ---
+  // Each fixture's value satisfies its rule — benchmarks measure the happy path.
+
+  static BenchStringConst benchStringConst() {
+    return BenchStringConst.newBuilder().setS("hello").build();
+  }
+
+  static BenchStringLen benchStringLen() {
+    return BenchStringLen.newBuilder().setS("hello").build();
+  }
+
+  static BenchStringMinLen benchStringMinLen() {
+    return BenchStringMinLen.newBuilder().setS("x").build();
+  }
+
+  static BenchStringPrefix benchStringPrefix() {
+    return BenchStringPrefix.newBuilder().setS("user-alice").build();
+  }
+
+  static BenchStringContains benchStringContains() {
+    return BenchStringContains.newBuilder().setS("alice@example.com").build();
+  }
+
+  static BenchStringIn benchStringIn() {
+    return BenchStringIn.newBuilder().setS("bar").build();
+  }
+
+  static BenchBytesConst benchBytesConst() {
+    return BenchBytesConst.newBuilder().setB(ByteString.copyFromUtf8("abc")).build();
+  }
+
+  static BenchBytesIn benchBytesIn() {
+    return BenchBytesIn.newBuilder().setB(ByteString.copyFromUtf8("bar")).build();
+  }
+
+  static BenchInt64Const benchInt64Const() {
+    return BenchInt64Const.newBuilder().setV(42L).build();
+  }
+
+  static BenchInt64In benchInt64In() {
+    return BenchInt64In.newBuilder().setV(2L).build();
+  }
+
+  static BenchUint32In benchUint32In() {
+    return BenchUint32In.newBuilder().setV(2).build();
+  }
+
+  static BenchDoubleIn benchDoubleIn() {
+    return BenchDoubleIn.newBuilder().setV(2.0).build();
+  }
+
+  static BenchEnumConst benchEnumConst() {
+    return BenchEnumConst.newBuilder().setVal(BenchPhaseEnum.BENCH_PHASE_ENUM_ONE).build();
+  }
+
+  static BenchEnumNotIn benchEnumNotIn() {
+    return BenchEnumNotIn.newBuilder().setVal(BenchPhaseEnum.BENCH_PHASE_ENUM_ONE).build();
+  }
+
+  static BenchRepeatedStringUnique benchRepeatedStringUnique() {
+    BenchRepeatedStringUnique.Builder b = BenchRepeatedStringUnique.newBuilder();
+    for (int i = 1; i <= 8; i++) {
+      b.addX("entry-" + i);
+    }
+    return b.build();
+  }
+
+  static BenchRepeatedInt32Unique benchRepeatedInt32Unique() {
+    BenchRepeatedInt32Unique.Builder b = BenchRepeatedInt32Unique.newBuilder();
+    for (int i = 1; i <= 8; i++) {
+      b.addX(i);
+    }
+    return b.build();
   }
 }
