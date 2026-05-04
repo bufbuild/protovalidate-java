@@ -643,7 +643,7 @@ final class StringRulesEvaluator implements Evaluator {
               NativeViolations.newViolation(
                   NOT_CONTAINS_SITE,
                   null,
-                  "value contains substring `" + notContains + "`",
+                  "contains substring `" + notContains + "`",
                   val,
                   notContains));
       if (failFast) return base.done(violations);
