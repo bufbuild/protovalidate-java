@@ -61,8 +61,7 @@ class WellKnownRegexTest {
     assertThat(result.getViolations()).hasSize(1);
     build.buf.validate.Violation v = result.getViolations().get(0).toProto();
     assertThat(v.getRuleId()).isEqualTo("string.well_known_regex.header_name_empty");
-    assertThat(v.getMessage())
-        .isEqualTo("value is empty, which is not a valid HTTP header name");
+    assertThat(v.getMessage()).isEqualTo("value is empty, which is not a valid HTTP header name");
   }
 
   @Test

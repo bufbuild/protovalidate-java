@@ -71,7 +71,6 @@ final class BytesRulesEvaluator implements Evaluator {
     final RuleSite site;
     final RuleSite emptySite;
     final List<Integer> validSizes;
-    final FieldDescriptor field;
 
     WellKnown(
         String ruleId,
@@ -81,7 +80,6 @@ final class BytesRulesEvaluator implements Evaluator {
         List<Integer> validSizes,
         int fieldNumber) {
       FieldDescriptor leaf = BytesRules.getDescriptor().findFieldByNumber(fieldNumber);
-      this.field = leaf;
       this.site = RuleSite.of(BYTES_RULES_DESC, leaf, ruleId, message);
       this.emptySite = RuleSite.of(BYTES_RULES_DESC, leaf, emptyRuleId, emptyMessage);
       this.validSizes = Collections.unmodifiableList(validSizes);
@@ -517,5 +515,4 @@ final class BytesRulesEvaluator implements Evaluator {
   private static String formatList(List<ByteString> vals) {
     return RuleBase.formatList(vals, ByteString::toStringUtf8);
   }
-
 }

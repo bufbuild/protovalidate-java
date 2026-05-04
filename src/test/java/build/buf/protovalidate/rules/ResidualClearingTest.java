@@ -82,8 +82,10 @@ class ResidualClearingTest {
   private void assertExactlyOneViolation(Message msg) throws ValidationException {
     ValidationResult result = nativeValidator.validate(msg);
     assertThat(result.getViolations())
-        .as("native dispatcher must clear the rule from the residual; expected exactly one "
-            + "violation but got: %s", result.getViolations())
+        .as(
+            "native dispatcher must clear the rule from the residual; expected exactly one "
+                + "violation but got: %s",
+            result.getViolations())
         .hasSize(1);
   }
 }

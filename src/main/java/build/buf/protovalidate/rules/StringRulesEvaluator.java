@@ -118,12 +118,12 @@ final class StringRulesEvaluator implements Evaluator {
   // --- Well-known string formats ---
 
   /**
-   * Each constant carries the rule id, the main violation message, the empty-value variant
-   * message, and the validation. Empty messages are stored verbatim from the proto spec rather
-   * than derived by string substitution: {@code host_and_port}, for example, has a main message
-   * of {@code "must be a valid host (hostname or IP address) and port pair"} but an empty message
-   * of {@code "value is empty, which is not a valid host and port pair"} (without the
-   * parenthetical) — substring derivation produced the wrong text.
+   * Each constant carries the rule id, the main violation message, the empty-value variant message,
+   * and the validation. Empty messages are stored verbatim from the proto spec rather than derived
+   * by string substitution: {@code host_and_port}, for example, has a main message of {@code "must
+   * be a valid host (hostname or IP address) and port pair"} but an empty message of {@code "value
+   * is empty, which is not a valid host and port pair"} (without the parenthetical) — substring
+   * derivation produced the wrong text.
    */
   @SuppressWarnings("ImmutableEnumChecker") // RuleSite is logically immutable; not annotated.
   enum WellKnownFormat {
@@ -821,7 +821,8 @@ final class StringRulesEvaluator implements Evaluator {
       } else if (c < 0x800) {
         count += 2;
         i += 1;
-      } else if (Character.isHighSurrogate(c) && i + 1 < len
+      } else if (Character.isHighSurrogate(c)
+          && i + 1 < len
           && Character.isLowSurrogate(s.charAt(i + 1))) {
         count += 4;
         i += 2;
@@ -832,5 +833,4 @@ final class StringRulesEvaluator implements Evaluator {
     }
     return count;
   }
-
 }

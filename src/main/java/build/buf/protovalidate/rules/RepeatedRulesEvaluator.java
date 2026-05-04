@@ -191,7 +191,8 @@ final class RepeatedRulesEvaluator implements Evaluator {
   }
 
   /**
-   * Returns true iff every element in {@code list} is distinct. Uses a {@link HashSet} to test for uniqueness.
+   * Returns true iff every element in {@code list} is distinct. Uses a {@link HashSet} to test for
+   * uniqueness.
    */
   private static boolean isUnique(List<?> list) {
     int size = list.size();
@@ -206,5 +207,4 @@ final class RepeatedRulesEvaluator implements Evaluator {
     }
     return true;
   }
-
 }

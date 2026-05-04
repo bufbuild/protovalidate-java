@@ -29,9 +29,9 @@ import com.google.protobuf.Message;
 import org.junit.jupiter.api.Test;
 
 /**
- * failFast tests for the native rule evaluators. Each fixture is constructed so the input
- * violates two rules. Without failFast, both violations are reported; with failFast=true, the
- * validator must short-circuit after the first.
+ * failFast tests for the native rule evaluators. Each fixture is constructed so the input violates
+ * two rules. Without failFast, both violations are reported; with failFast=true, the validator must
+ * short-circuit after the first.
  */
 class FailFastTest {
 

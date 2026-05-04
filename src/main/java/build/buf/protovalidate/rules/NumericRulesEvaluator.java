@@ -93,8 +93,11 @@ final class NumericRulesEvaluator<T extends Number & Comparable<T>> implements E
    * carries no rule we cover. On success, clears the covered fields on the builder so CEL doesn't
    * also compile programs for them.
    *
-   * @param rulesField the {@code FieldRules} oneof field for this kind (e.g. the {@code int32}
-   *     field on {@code FieldRules})
+   * @param base the base rule evaluator.
+   * @param rulesBuilder the builder for the rules sub-message.
+   * @param config the config for the numeric type this evaluator is for.
+   * @return a new evaluator, or null if the sub-message is unset, has unknown fields, or carries no
+   *     rule we cover.
    */
   static <T extends Number & Comparable<T>> @Nullable Evaluator tryBuild(
       RuleBase base, FieldRules.Builder rulesBuilder, NumericTypeConfig<T> config) {

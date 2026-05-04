@@ -44,6 +44,9 @@ import java.util.concurrent.ConcurrentMap;
 @Internal
 public final class CustomOverload {
 
+  // Prevent instantiation.
+  private CustomOverload() {}
+
   // See https://html.spec.whatwg.org/multipage/input.html#valid-e-mail-address
   private static final Pattern EMAIL_REGEX =
       Pattern.compile(
@@ -423,6 +426,10 @@ public final class CustomOverload {
    *
    * <p>The port is separated by a colon. It must be non-empty, with a decimal number in the range
    * of 0-65535, inclusive.
+   *
+   * @param str The input string to validate as a host/port pair.
+   * @param portRequired Whether the port is required.
+   * @return {@code true} if the input string is a valid host/port pair, {@code false} otherwise.
    */
   public static boolean isHostAndPort(String str, boolean portRequired) {
     if (str.isEmpty()) {
@@ -527,6 +534,9 @@ public final class CustomOverload {
    *   <li>The name can have a trailing dot, for example "foo.example.com.".
    *   <li>The name can be 253 characters at most, excluding the optional trailing dot.
    * </ul>
+   *
+   * @param val The input string to validate as a hostname.
+   * @return {@code true} if the input string is a valid hostname, {@code false} otherwise.
    */
   public static boolean isHostname(String val) {
     if (val.length() > 253) {
@@ -583,6 +593,10 @@ public final class CustomOverload {
    *
    * <p>Both formats are well-defined in the internet standard RFC 3986. Zone identifiers for IPv6
    * addresses (for example "fe80::a%en1") are supported.
+   *
+   * @param addr The input string to validate as an IPv4 or IPv6 address.
+   * @param ver The version of the address to validate. 0 means either 4 or 6.
+   * @return {@code true} if the input string is an IPv4 or IPv6 address, {@code false} otherwise.
    */
   public static boolean isIp(String addr, long ver) {
     if (ver == 6L) {
@@ -601,6 +615,9 @@ public final class CustomOverload {
    *
    * <p>URI is defined in the internet standard RFC 3986. Zone Identifiers in IPv6 address literals
    * are supported (RFC 6874).
+   *
+   * @param str The input string to validate as a URI.
+   * @return {@code true} if the input string is a URI, {@code false} otherwise.
    */
   public static boolean isUri(String str) {
     return new Uri(str).uri();
@@ -613,6 +630,9 @@ public final class CustomOverload {
    *
    * <p>URI, URI Reference, and Relative Reference are defined in the internet standard RFC 3986.
    * Zone Identifiers in IPv6 address literals are supported (RFC 6874).
+   *
+   * @param str The input string to validate as a URI Reference.
+   * @return {@code true} if the input string is a URI Reference, {@code false} otherwise.
    */
   public static boolean isUriRef(String str) {
     return new Uri(str).uriReference();
@@ -634,6 +654,11 @@ public final class CustomOverload {
    *
    * <p>The same principle applies to IPv4 addresses. "192.168.1.0/24" designates the first 24 bits
    * of the 32-bit IPv4 as the network prefix.
+   *
+   * @param str The input string to validate as an IP with prefix length.
+   * @param version The version of the address to validate. 0 means either 4 or 6.
+   * @param strict Whether the host portion must be all zeros.
+   * @return {@code true} if the input string is a valid IP with prefix length, {@code false}
    */
   public static boolean isIpPrefix(String str, long version, boolean strict) {
     if (version == 6L) {

@@ -54,6 +54,26 @@ compileValidatorForRepeated  alloc   12950196.95 B/op  3262651.61 B/op   -74.8%
 `jmhCompare` diffs `results-before.json` against `results.json` by default.
 Pass explicit paths with `-Pbefore=<path> -Pafter=<path>`.
 
+## Comparing native rules vs CEL
+
+Benchmarks A/B the `enableNativeRules` flag via `@Param({"false", "true"})`, so a single run produces both variants.
+Diff them in place:
+
+```
+./gradlew :benchmarks:jmh
+./gradlew :benchmarks:jmhCompareParams
+```
+
+Output (`before` = CEL, `after` = native; negative delta means native is faster / allocates less):
+
+```
+benchmark              metric  cel              native           delta
+buildBenchInt32GT      time    1234567.89 ns/op  456789.01 ns/op  -63.0%
+buildBenchInt32GT      alloc   123456.78 B/op    45678.90 B/op    -63.0%
+```
+
+Override the input file with `-Presults=<path>`.
+
 ## Adding a new benchmark
 
 Benchmarks live in `src/jmh/java/...` and target proto messages in `src/jmh/proto/...`.

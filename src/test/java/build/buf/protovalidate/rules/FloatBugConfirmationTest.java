@@ -39,17 +39,16 @@ import org.junit.jupiter.api.Test;
  * <p>Outcomes after running:
  *
  * <ul>
- *   <li><b>B1 — fixed.</b> {@code floatFormatter}/{@code doubleFormatter} now check the sign bit
- *       on entry and return {@code "-0"} for negative zero, so {@code float.const = -0.0} produces
- *       the same violation message in both modes. The tests below lock in that parity.
- *   <li><b>B2 — reclassified.</b> Original review claimed native diverges from CEL on
- *       {@code repeated.unique} for {@code NaN}/{@code -0.0}. Investigation showed CEL's
- *       {@code unique()} is registered by protovalidate-java itself (see
- *       {@code CustomOverload.uniqueList}) and uses {@code Object.equals} on a {@link
- *       java.util.HashSet} — the same defect as {@code RepeatedRulesEvaluator.isUnique}. So both
- *       paths agree (both deviate from the CEL spec, which mandates IEEE-754 equality on
- *       doubles). The tests below lock in that agreement so any future fix has to touch both
- *       paths together.
+ *   <li><b>B1 — fixed.</b> {@code floatFormatter}/{@code doubleFormatter} now check the sign bit on
+ *       entry and return {@code "-0"} for negative zero, so {@code float.const = -0.0} produces the
+ *       same violation message in both modes. The tests below lock in that parity.
+ *   <li><b>B2 — reclassified.</b> Original review claimed native diverges from CEL on {@code
+ *       repeated.unique} for {@code NaN}/{@code -0.0}. Investigation showed CEL's {@code unique()}
+ *       is registered by protovalidate-java itself (see {@code CustomOverload.uniqueList}) and uses
+ *       {@code Object.equals} on a {@link java.util.HashSet} — the same defect as {@code
+ *       RepeatedRulesEvaluator.isUnique}. So both paths agree (both deviate from the CEL spec,
+ *       which mandates IEEE-754 equality on doubles). The tests below lock in that agreement so any
+ *       future fix has to touch both paths together.
  * </ul>
  */
 class FloatBugConfirmationTest {
@@ -132,31 +131,37 @@ class FloatBugConfirmationTest {
 
   @Test
   void floatDoubleNaNNegZero() throws ValidationException {
-      // these tests are also checking that an unset (zero) field is equal to -0
-      FloatDoubleNaNNegZero nanMsg = FloatDoubleNaNNegZero.newBuilder().
-              addDvals(Double.NaN).addDvals(Double.NaN).
-              addFvals(Float.NaN).addFvals(Float.NaN).
-              build();
-      // should both be no error, since NaN is not equal to itself
-      // it's not because Java CEL is broken so replicate broken behavior
-      ValidationResult nanMsgResultNative = nativeValidator.validate(nanMsg);
-      ValidationResult nanMsgResultCEL = celValidator.validate(nanMsg);
-      assertViolationsEqual(nanMsg);
-      assertThat(nanMsgResultNative.getViolations()).isNotEmpty();
-      assertThat(nanMsgResultCEL.getViolations()).isNotEmpty();
+    // these tests are also checking that an unset (zero) field is equal to -0
+    FloatDoubleNaNNegZero nanMsg =
+        FloatDoubleNaNNegZero.newBuilder()
+            .addDvals(Double.NaN)
+            .addDvals(Double.NaN)
+            .addFvals(Float.NaN)
+            .addFvals(Float.NaN)
+            .build();
+    // should both be no error, since NaN is not equal to itself
+    // it's not because Java CEL is broken so replicate broken behavior
+    ValidationResult nanMsgResultNative = nativeValidator.validate(nanMsg);
+    ValidationResult nanMsgResultCEL = celValidator.validate(nanMsg);
+    assertViolationsEqual(nanMsg);
+    assertThat(nanMsgResultNative.getViolations()).isNotEmpty();
+    assertThat(nanMsgResultCEL.getViolations()).isNotEmpty();
 
-      // now check -0 and 0 for uniqueness (should not be)
-      FloatDoubleNaNNegZero zeroMsg = FloatDoubleNaNNegZero.newBuilder().
-              addDvals(0.0).addDvals(-0.0).
-              addFvals(0.0F).addFvals(-0.0F).
-              build();
-      // should both be error, since 0 == -0
-      // but it's not because Java CEL is broken on unique tests for -0 so replicate broken behavior
-      nanMsgResultNative = nativeValidator.validate(zeroMsg);
-      nanMsgResultCEL = celValidator.validate(zeroMsg);
-      assertViolationsEqual(zeroMsg);
-      assertThat(nanMsgResultNative.getViolations()).isEmpty();
-      assertThat(nanMsgResultCEL.getViolations()).isEmpty();
+    // now check -0 and 0 for uniqueness (should not be)
+    FloatDoubleNaNNegZero zeroMsg =
+        FloatDoubleNaNNegZero.newBuilder()
+            .addDvals(0.0)
+            .addDvals(-0.0)
+            .addFvals(0.0F)
+            .addFvals(-0.0F)
+            .build();
+    // should both be error, since 0 == -0
+    // but it's not because Java CEL is broken on unique tests for -0 so replicate broken behavior
+    nanMsgResultNative = nativeValidator.validate(zeroMsg);
+    nanMsgResultCEL = celValidator.validate(zeroMsg);
+    assertViolationsEqual(zeroMsg);
+    assertThat(nanMsgResultNative.getViolations()).isEmpty();
+    assertThat(nanMsgResultCEL.getViolations()).isEmpty();
   }
 
   // --- helpers ----------------------------------------------------------------------------------

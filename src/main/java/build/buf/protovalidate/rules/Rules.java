@@ -148,5 +148,4 @@ public final class Rules {
       RuleBase base, FieldRules.Builder rulesBuilder, NumericTypeConfig<?> config) {
     return NumericRulesEvaluator.tryBuild(base, rulesBuilder, (NumericTypeConfig) config);
   }
-
 }

@@ -46,16 +46,15 @@ import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
 /**
- * Parity test: runs a representative slice of conformance fixtures through both modes
- * ({@code enableNativeRules=true} and {@code false}) and asserts the resulting
- * {@code Violation} protos are byte-equal. The conformance suite proves each mode is correct in
- * isolation; this test proves they don't drift from each other on the same input.
+ * Parity test: runs a representative slice of conformance fixtures through both modes ({@code
+ * enableNativeRules=true} and {@code false}) and asserts the resulting {@code Violation} protos are
+ * byte-equal. The conformance suite proves each mode is correct in isolation; this test proves they
+ * don't drift from each other on the same input.
  *
- * <p>Conformance message text is excluded from the suite's default comparison (only
- * {@code rule_id}, {@code field}, {@code rule}, {@code for_key} are compared unless
- * {@code --strict_message} is set), but {@code toProto()} captures all of those plus the
- * message text. Asserting full {@code toProto()} equality here is therefore stricter than
- * conformance.
+ * <p>Conformance message text is excluded from the suite's default comparison (only {@code
+ * rule_id}, {@code field}, {@code rule}, {@code for_key} are compared unless {@code
+ * --strict_message} is set), but {@code toProto()} captures all of those plus the message text.
+ * Asserting full {@code toProto()} equality here is therefore stricter than conformance.
  */
 class NativeRulesParityTest {
 
@@ -70,8 +69,8 @@ class NativeRulesParityTest {
 
   /**
    * Each entry exercises a different rule type. JUnit reports per-fixture pass/fail, so adding a
-   * fixture and watching CI is a single-line change. Order:
-   * bool, enum, bytes, numeric (signed + unsigned), string (scalar + format), repeated, map.
+   * fixture and watching CI is a single-line change. Order: bool, enum, bytes, numeric (signed +
+   * unsigned), string (scalar + format), repeated, map.
    */
   static Stream<Arguments> fixtures() {
     return Stream.of(
@@ -97,8 +96,7 @@ class NativeRulesParityTest {
         // String prefix — pass case.
         Arguments.of("StringPrefix.pass", StringPrefix.newBuilder().setVal("foo").build()),
         // String contains — pass case.
-        Arguments.of(
-            "StringContains.pass", StringContains.newBuilder().setVal("foobar").build()),
+        Arguments.of("StringContains.pass", StringContains.newBuilder().setVal("foobar").build()),
         // String length with code points — emoji counts as 1 each.
         Arguments.of("StringLen.emoji", StringLen.newBuilder().setVal("😅😄👾").build()),
         // Repeated exact — fails (2 items, exact=3).
@@ -136,8 +134,6 @@ class NativeRulesParityTest {
   }
 
   private static List<build.buf.validate.Violation> toProtoList(ValidationResult result) {
-    return result.getViolations().stream()
-        .map(Violation::toProto)
-        .collect(Collectors.toList());
+    return result.getViolations().stream().map(Violation::toProto).collect(Collectors.toList());
   }
 }

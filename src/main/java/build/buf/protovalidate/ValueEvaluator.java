@@ -56,14 +56,29 @@ public final class ValueEvaluator implements Evaluator {
     this.nestedRule = nestedRule;
   }
 
+  /**
+   * Returns the {@link Descriptors.FieldDescriptor} targeted by this evaluator.
+   *
+   * @return The {@link Descriptors.FieldDescriptor} targeted by this evaluator.
+   */
   public Descriptors.@Nullable FieldDescriptor getDescriptor() {
     return descriptor;
   }
 
+  /**
+   * Returns the nested rule path that this value evaluator is for.
+   *
+   * @return The nested rule path that this value evaluator is for.
+   */
   public @Nullable FieldPath getNestedRule() {
     return nestedRule;
   }
 
+  /**
+   * Returns true if this value evaluator is for a nested rule.
+   *
+   * @return {@code true} if this value evaluator is for a nested rule, {@code false} otherwise.
+   */
   public boolean hasNestedRule() {
     return this.nestedRule != null;
   }

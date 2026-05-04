@@ -28,9 +28,9 @@ import com.google.protobuf.StringValue;
 import org.junit.jupiter.api.Test;
 
 /**
- * Targeted tests for {@link WrappedValueEvaluator}. Mirrors the wrapper-unwrap path that the
- * native dispatcher takes for {@code google.protobuf.*Value} fields. The conformance suite covers
- * one wrapper kind (DoubleValue) via parity tests; these cover the unwrap invariant directly.
+ * Targeted tests for {@link WrappedValueEvaluator}. Mirrors the wrapper-unwrap path that the native
+ * dispatcher takes for {@code google.protobuf.*Value} fields. The conformance suite covers one
+ * wrapper kind (DoubleValue) via parity tests; these cover the unwrap invariant directly.
  */
 class WrappedValueEvaluatorTest {
 
@@ -65,7 +65,9 @@ class WrappedValueEvaluatorTest {
   @Test
   void presentWrapperWithViolatingValueProducesExpectedShape() throws ValidationException {
     StringWrapperLen msg =
-        StringWrapperLen.newBuilder().setVal(StringValue.newBuilder().setValue("ab").build()).build();
+        StringWrapperLen.newBuilder()
+            .setVal(StringValue.newBuilder().setValue("ab").build())
+            .build();
     ValidationResult result = nativeValidator.validate(msg);
     assertThat(result.getViolations()).hasSize(1);
     build.buf.validate.Violation proto = result.getViolations().get(0).toProto();
@@ -77,9 +79,7 @@ class WrappedValueEvaluatorTest {
   @Test
   void presentWrapperWithPassingValueProducesNoViolation() throws ValidationException {
     Int64WrapperConst msg =
-        Int64WrapperConst.newBuilder()
-            .setVal(Int64Value.newBuilder().setValue(5).build())
-            .build();
+        Int64WrapperConst.newBuilder().setVal(Int64Value.newBuilder().setValue(5).build()).build();
     assertThat(nativeValidator.validate(msg).isSuccess()).isTrue();
   }
 }
