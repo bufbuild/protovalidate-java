@@ -55,11 +55,11 @@ class FloatBugConfirmationTest {
 
   private final Validator nativeValidator =
       ValidatorFactory.newBuilder()
-          .withConfig(Config.newBuilder().setEnableNativeRules(true).build())
+          .withConfig(Config.newBuilder().setEnableNativeRules().build())
           .build();
   private final Validator celValidator =
       ValidatorFactory.newBuilder()
-          .withConfig(Config.newBuilder().setEnableNativeRules(false).build())
+          .withConfig(Config.newBuilder().setDisableNativeRules().build())
           .build();
 
   // --- B1: floatFormatter renders -0.0 as "0", losing the sign --------------------------------

@@ -68,7 +68,12 @@ public class Main {
       Config.Builder cfgBuilder =
           Config.newBuilder().setTypeRegistry(typeRegistry).setExtensionRegistry(extensionRegistry);
       if (envFlag != null) {
-        cfgBuilder.setEnableNativeRules(Boolean.parseBoolean(envFlag));
+        boolean enableNativeRules = Boolean.parseBoolean(envFlag);
+        if (enableNativeRules) {
+          cfgBuilder.setEnableNativeRules();
+        } else {
+          cfgBuilder.setDisableNativeRules();
+        }
       }
       Config cfg = cfgBuilder.build();
       Validator validator = ValidatorFactory.newBuilder().withConfig(cfg).build();

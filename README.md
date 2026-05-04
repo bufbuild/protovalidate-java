@@ -68,10 +68,10 @@ Highlights for Java developers include:
 
 The standard rules can be evaluated either through CEL or through native Java code. Native evaluation is functionally identical (the conformance suite passes in both modes) but skips CEL compilation and runtime overhead for the rules it covers — a single `validate()` call on a complex message can run an order of magnitude faster and allocate ~10× less.
 
-Native rules are **opt-in** while the implementation matures. Enable them by configuring the validator:
+Native rules are **opt-out**. Disable them by configuring the validator:
 
 ```java
-Config config = Config.newBuilder().setEnableNativeRules(true).build();
+Config config = Config.newBuilder().setDisableNativeRules().build();
 Validator validator = ValidatorFactory.newBuilder().withConfig(config).build();
 ```
 

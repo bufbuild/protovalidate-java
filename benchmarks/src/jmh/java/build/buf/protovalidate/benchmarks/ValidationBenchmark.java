@@ -129,7 +129,13 @@ public class ValidationBenchmark {
 
   @Setup
   public void setup() throws ValidationException {
-    Config config = Config.newBuilder().setEnableNativeRules(enableNativeRules).build();
+    Config config;
+    if (enableNativeRules) {
+      config = Config.newBuilder().setEnableNativeRules().build();
+    } else {
+      config = Config.newBuilder().setDisableNativeRules().build();
+    }
+
     validator = ValidatorFactory.newBuilder().withConfig(config).build();
 
     simple = SimpleStringMessage.newBuilder().setEmail("alice@example.com").build();

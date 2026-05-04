@@ -33,7 +33,7 @@ import org.junit.jupiter.api.Test;
 class EnumRulesEvaluatorTest {
 
   private static Validator nativeValidator() {
-    Config config = Config.newBuilder().setEnableNativeRules(true).build();
+    Config config = Config.newBuilder().setEnableNativeRules().build();
     return ValidatorFactory.newBuilder().withConfig(config).build();
   }
 
@@ -84,7 +84,7 @@ class EnumRulesEvaluatorTest {
     Validator nativeV = nativeValidator();
     Validator celV =
         ValidatorFactory.newBuilder()
-            .withConfig(Config.newBuilder().setEnableNativeRules(false).build())
+            .withConfig(Config.newBuilder().setDisableNativeRules().build())
             .build();
     assertThat(nativeV.validate(msg).getViolations().get(0).toProto())
         .isEqualTo(celV.validate(msg).getViolations().get(0).toProto());

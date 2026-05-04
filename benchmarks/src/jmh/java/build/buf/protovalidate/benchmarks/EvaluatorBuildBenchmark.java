@@ -51,7 +51,11 @@ public class EvaluatorBuildBenchmark {
 
   @Setup
   public void setup() {
-    config = Config.newBuilder().setEnableNativeRules(enableNativeRules).build();
+    if (enableNativeRules) {
+      config = Config.newBuilder().setEnableNativeRules().build();
+    } else {
+      config = Config.newBuilder().setDisableNativeRules().build();
+    }
     benchComplexSchema = BenchComplexSchema.getDefaultInstance();
     benchGT = BenchGT.getDefaultInstance();
   }

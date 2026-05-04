@@ -91,9 +91,8 @@ public final class Config {
    * Checks whether native (non-CEL) rule evaluators are enabled.
    *
    * <p>When true, standard rules with a native Java implementation bypass CEL evaluation. When
-   * false, all rules go through CEL. Defaults to false while the native-rules implementation
-   * matures; applications opt in by calling {@link Builder#setEnableNativeRules(boolean)
-   * setEnableNativeRules(true)}.
+   * false, all rules go through CEL. Defaults to true; applications opt out by calling {@link
+   * Builder#setDisableNativeRules() setDisableNativeRules()}.
    *
    * @return true if native rules are enabled.
    */
@@ -107,7 +106,8 @@ public final class Config {
     private TypeRegistry typeRegistry = DEFAULT_TYPE_REGISTRY;
     private ExtensionRegistry extensionRegistry = DEFAULT_EXTENSION_REGISTRY;
     private boolean allowUnknownFields;
-    private boolean enableNativeRules;
+    // native rules are enabled by default
+    private boolean enableNativeRules = true;
 
     private Builder() {}
 
@@ -176,17 +176,23 @@ public final class Config {
     }
 
     /**
-     * Set whether native (non-CEL) rule evaluators are enabled. Defaults to false while the
-     * native-rules implementation matures; pass true to opt in to native evaluation of standard
-     * rules. Forward-compatible: any rule not yet implemented natively continues to be enforced via
-     * CEL regardless of this setting.
+     * Enables native (non-CEL) rule evaluators. Forward-compatible: any rule not yet implemented
+     * natively continues to be enforced via CEL regardless of this setting.
      *
-     * @param enableNativeRules true to use native evaluators where available; false to route
-     *     everything through CEL.
      * @return this builder
      */
-    public Builder setEnableNativeRules(boolean enableNativeRules) {
-      this.enableNativeRules = enableNativeRules;
+    public Builder setEnableNativeRules() {
+      this.enableNativeRules = true;
+      return this;
+    }
+
+    /**
+     * Disables native (non-CEL) rule evaluators.
+     *
+     * @return this builder
+     */
+    public Builder setDisableNativeRules() {
+      this.enableNativeRules = false;
       return this;
     }
 

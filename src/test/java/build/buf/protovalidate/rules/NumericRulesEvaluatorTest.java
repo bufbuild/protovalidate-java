@@ -49,7 +49,7 @@ import org.junit.jupiter.api.Test;
 class NumericRulesEvaluatorTest {
 
   private static Validator nativeValidator() {
-    Config config = Config.newBuilder().setEnableNativeRules(true).build();
+    Config config = Config.newBuilder().setEnableNativeRules().build();
     return ValidatorFactory.newBuilder().withConfig(config).build();
   }
 
@@ -160,7 +160,7 @@ class NumericRulesEvaluatorTest {
     Validator nativeV = nativeValidator();
     Validator celV =
         ValidatorFactory.newBuilder()
-            .withConfig(Config.newBuilder().setEnableNativeRules(false).build())
+            .withConfig(Config.newBuilder().setDisableNativeRules().build())
             .build();
 
     assertThat(nativeV.validate(msg).getViolations().get(0).toProto())
