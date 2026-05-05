@@ -30,7 +30,6 @@ import org.jspecify.annotations.Nullable;
  * constructed with descriptor/nested-rule context from a {@link ValueEvaluator}; not part of the
  * supported public API.
  */
-@Internal
 public final class ValueEvaluator implements Evaluator {
   /** The {@link Descriptors.FieldDescriptor} targeted by this evaluator */
   private final Descriptors.@Nullable FieldDescriptor descriptor;

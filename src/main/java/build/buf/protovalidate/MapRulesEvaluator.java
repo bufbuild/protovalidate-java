@@ -12,11 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package build.buf.protovalidate.rules;
+package build.buf.protovalidate;
 
-import build.buf.protovalidate.Evaluator;
-import build.buf.protovalidate.RuleViolation;
-import build.buf.protovalidate.Value;
 import build.buf.validate.FieldRules;
 import build.buf.validate.MapRules;
 import com.google.protobuf.Descriptors.FieldDescriptor;

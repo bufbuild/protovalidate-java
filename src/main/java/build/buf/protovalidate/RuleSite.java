@@ -12,9 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package build.buf.protovalidate.rules;
+package build.buf.protovalidate;
 
-import build.buf.protovalidate.FieldPathUtils;
 import build.buf.validate.FieldPathElement;
 import com.google.protobuf.Descriptors.FieldDescriptor;
 import java.util.Arrays;

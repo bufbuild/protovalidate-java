@@ -20,14 +20,8 @@ import com.google.protobuf.Descriptors;
 import java.util.List;
 import org.jspecify.annotations.Nullable;
 
-/**
- * Utility class for manipulating error paths in violations.
- *
- * <p>Public so that native rule evaluators in {@code build.buf.protovalidate.rules} can build and
- * prepend field path elements; not part of the supported public API.
- */
-@Internal
-public final class FieldPathUtils {
+/** Utility class for manipulating error paths in violations. */
+final class FieldPathUtils {
   private FieldPathUtils() {}
 
   /**
@@ -36,7 +30,7 @@ public final class FieldPathUtils {
    * @param fieldPath A field path to convert to a string.
    * @return The string representation of the provided field path.
    */
-  public static String fieldPathString(FieldPath fieldPath) {
+  static String fieldPathString(FieldPath fieldPath) {
     StringBuilder builder = new StringBuilder();
     for (FieldPathElement element : fieldPath.getElementsList()) {
       if (builder.length() > 0) {
@@ -84,7 +78,7 @@ public final class FieldPathUtils {
    * @param fieldDescriptor The field descriptor to generate a field path element for.
    * @return The field path element that corresponds to the provided field descriptor.
    */
-  public static FieldPathElement fieldPathElement(Descriptors.FieldDescriptor fieldDescriptor) {
+  static FieldPathElement fieldPathElement(Descriptors.FieldDescriptor fieldDescriptor) {
     String name;
     if (fieldDescriptor.isExtension()) {
       name = "[" + fieldDescriptor.getFullName() + "]";
@@ -106,7 +100,7 @@ public final class FieldPathUtils {
    * @param rulePathElements Rule path elements to prepend.
    * @return For convenience, the list of violations passed into the violations parameter.
    */
-  public static List<RuleViolation.Builder> updatePaths(
+  static List<RuleViolation.Builder> updatePaths(
       List<RuleViolation.Builder> violations,
       @Nullable FieldPathElement fieldPathElement,
       List<FieldPathElement> rulePathElements) {

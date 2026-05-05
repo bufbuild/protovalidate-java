@@ -23,12 +23,8 @@ import org.jspecify.annotations.Nullable;
 /**
  * {@link Value} is a wrapper around a protobuf value that provides helper methods for accessing the
  * value.
- *
- * <p>Public so that native rule evaluators in {@code build.buf.protovalidate.rules} can consume it;
- * not part of the supported public API.
  */
-@Internal
-public interface Value {
+interface Value {
   /**
    * Get the field descriptor that corresponds to the underlying Value, if it is a message field.
    *

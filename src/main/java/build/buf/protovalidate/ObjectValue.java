@@ -24,15 +24,8 @@ import java.util.List;
 import java.util.Map;
 import org.jspecify.annotations.Nullable;
 
-/**
- * The {@link Value} type that contains a field descriptor and its value.
- *
- * <p>Public so that {@code WrappedValueEvaluator} in {@code build.buf.protovalidate.rules} can
- * construct one when unwrapping a {@code google.protobuf.*Value} field; not part of the supported
- * public API.
- */
-@Internal
-public final class ObjectValue implements Value {
+/** The {@link Value} type that contains a field descriptor and its value. */
+final class ObjectValue implements Value {
 
   /**
    * {@link com.google.protobuf.Descriptors.FieldDescriptor} is the field descriptor for the value.
@@ -48,7 +41,7 @@ public final class ObjectValue implements Value {
    * @param fieldDescriptor The field descriptor for the value.
    * @param value The value associated with the field descriptor.
    */
-  public ObjectValue(Descriptors.FieldDescriptor fieldDescriptor, Object value) {
+  ObjectValue(Descriptors.FieldDescriptor fieldDescriptor, Object value) {
     this.fieldDescriptor = fieldDescriptor;
     this.value = value;
   }

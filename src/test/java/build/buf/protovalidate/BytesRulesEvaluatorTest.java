@@ -12,16 +12,11 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package build.buf.protovalidate.rules;
+package build.buf.protovalidate;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-import build.buf.protovalidate.Config;
-import build.buf.protovalidate.ValidationResult;
-import build.buf.protovalidate.Validator;
-import build.buf.protovalidate.ValidatorFactory;
-import build.buf.protovalidate.Violation;
 import build.buf.protovalidate.exceptions.ExecutionException;
 import build.buf.protovalidate.exceptions.ValidationException;
 import build.buf.validate.BytesRules;

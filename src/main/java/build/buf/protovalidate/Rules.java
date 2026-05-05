@@ -12,11 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package build.buf.protovalidate.rules;
+package build.buf.protovalidate;
 
-import build.buf.protovalidate.Evaluator;
-import build.buf.protovalidate.Internal;
-import build.buf.protovalidate.ValueEvaluator;
 import build.buf.validate.FieldRules;
 import com.google.protobuf.Descriptors.FieldDescriptor;
 import org.jspecify.annotations.Nullable;
@@ -31,7 +28,6 @@ import org.jspecify.annotations.Nullable;
  * that this codebase hasn't yet implemented natively, the rule remains on the residual {@code
  * FieldRules} and CEL enforces it. Native rules are an optimization, not a replacement.
  */
-@Internal
 public final class Rules {
   private Rules() {}
 

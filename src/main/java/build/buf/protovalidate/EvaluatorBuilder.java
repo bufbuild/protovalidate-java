@@ -15,7 +15,6 @@
 package build.buf.protovalidate;
 
 import build.buf.protovalidate.exceptions.CompilationException;
-import build.buf.protovalidate.rules.Rules;
 import build.buf.validate.FieldPath;
 import build.buf.validate.FieldPathElement;
 import build.buf.validate.FieldRules;
