@@ -28,6 +28,7 @@ import build.buf.validate.SInt64Rules;
 import build.buf.validate.UInt32Rules;
 import build.buf.validate.UInt64Rules;
 import com.google.protobuf.Descriptors.FieldDescriptor;
+import java.math.BigDecimal;
 import java.util.Comparator;
 import java.util.function.Function;
 
@@ -255,6 +256,10 @@ final class NumericTypeConfig<T extends Number & Comparable<T>> {
     if (f1 == 0.0f && f2 == 0.0f) {
       return 0;
     }
+    // NaN != Nan, but Java thinks it does.
+    if (f1.isNaN() && f2.isNaN()) {
+      return -1;
+    }
     return f1.compareTo(f2);
   }
 
@@ -262,6 +267,11 @@ final class NumericTypeConfig<T extends Number & Comparable<T>> {
     if (d1 == 0.0 && d2 == 0.0) {
       return 0;
     }
+    // NaN != Nan, but Java thinks it does.
+    if (d1.isNaN() && d2.isNaN()) {
+      return -1;
+    }
+
     return d1.compareTo(d2);
   }
 
@@ -272,22 +282,43 @@ final class NumericTypeConfig<T extends Number & Comparable<T>> {
     if (Float.floatToIntBits(f) == FLOAT_NEG_ZERO_BITS) {
       return "-0";
     }
-    // Whole-number short-circuit: print "5" rather than "5.0" to match Go's %g behavior.
-    float asInt = f.intValue();
-    if (asInt == f) {
-      return String.valueOf(f.intValue());
+    if (f.isNaN()) {
+      return "NaN";
     }
-    return String.valueOf(f);
+    if (f.isInfinite()) {
+      if (Math.signum(f) < 0) {
+        return "-Infinity";
+      }
+      return "Infinity";
+    }
+    // closest way to get to strconv.FormatFloat(d, 'f', -1, 64) in Go
+    String out = BigDecimal.valueOf(f).toPlainString();
+    // cut off .0 at the end for whole numbers
+    if (out.endsWith(".0")) {
+      out = out.substring(0, out.length() - 2);
+    }
+    return out;
   }
 
   private static String doubleFormatter(Double d) {
     if (Double.doubleToLongBits(d) == DOUBLE_NEG_ZERO_BITS) {
       return "-0";
     }
-    double asInt = d.intValue();
-    if (asInt == d) {
-      return String.valueOf(d.intValue());
+    if (d.isNaN()) {
+      return "NaN";
     }
-    return String.valueOf(d);
+    if (d.isInfinite()) {
+      if (Math.signum(d) < 0) {
+        return "-Infinity";
+      }
+      return "Infinity";
+    }
+    // closest way to get to strconv.FormatFloat(d, 'f', -1, 64) in Go
+    String out = BigDecimal.valueOf(d).toPlainString();
+    // cut off .0 at the end for whole numbers
+    if (out.endsWith(".0")) {
+      out = out.substring(0, out.length() - 2);
+    }
+    return out;
   }
 }
