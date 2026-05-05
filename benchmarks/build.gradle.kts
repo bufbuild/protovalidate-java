@@ -143,3 +143,26 @@ tasks.register<Exec>("jmhCompare") {
         after, // $3
     )
 }
+
+// Diffs the two enableNativeRules variants within a single results.json.
+// `before` column is CEL (enableNativeRules=false), `after` is native
+// (enableNativeRules=true), so a negative delta means native is faster /
+// allocates less.
+//
+// Override the input file:
+//   ./gradlew :benchmarks:jmhCompareNative -Presults=path/to/results.json
+tasks.register<Exec>("jmhCompareNativeRules") {
+    description = "Diffs enableNativeRules=true vs false from a single JMH results.json."
+    val results =
+        project.findProperty("results")?.toString()
+            ?: jmhResults.get().asFile.absolutePath
+    val jqScript = file("jmh-compare-native-rules.jq").absolutePath
+    commandLine(
+        "bash",
+        "-c",
+        "jq --raw-output --from-file \"\$1\" \"\$2\" | column -t -s \$'\\t'",
+        "jmh-compare-native-rules", // $0
+        jqScript, // $1
+        results, // $2
+    )
+}

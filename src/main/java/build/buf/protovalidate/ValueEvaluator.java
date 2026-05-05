@@ -25,8 +25,12 @@ import org.jspecify.annotations.Nullable;
 /**
  * {@link ValueEvaluator} performs validation on any concrete value contained within a singular
  * field, repeated elements, or the keys/values of a map.
+ *
+ * <p>Public so that native rule evaluators in {@code build.buf.protovalidate.rules} can be
+ * constructed with descriptor/nested-rule context from a {@link ValueEvaluator}; not part of the
+ * supported public API.
  */
-final class ValueEvaluator implements Evaluator {
+public final class ValueEvaluator implements Evaluator {
   /** The {@link Descriptors.FieldDescriptor} targeted by this evaluator */
   private final Descriptors.@Nullable FieldDescriptor descriptor;
 
@@ -51,15 +55,30 @@ final class ValueEvaluator implements Evaluator {
     this.nestedRule = nestedRule;
   }
 
-  Descriptors.@Nullable FieldDescriptor getDescriptor() {
+  /**
+   * Returns the {@link Descriptors.FieldDescriptor} targeted by this evaluator.
+   *
+   * @return The {@link Descriptors.FieldDescriptor} targeted by this evaluator.
+   */
+  public Descriptors.@Nullable FieldDescriptor getDescriptor() {
     return descriptor;
   }
 
-  @Nullable FieldPath getNestedRule() {
+  /**
+   * Returns the nested rule path that this value evaluator is for.
+   *
+   * @return The nested rule path that this value evaluator is for.
+   */
+  public @Nullable FieldPath getNestedRule() {
     return nestedRule;
   }
 
-  boolean hasNestedRule() {
+  /**
+   * Returns true if this value evaluator is for a nested rule.
+   *
+   * @return {@code true} if this value evaluator is for a nested rule, {@code false} otherwise.
+   */
+  public boolean hasNestedRule() {
     return this.nestedRule != null;
   }
 

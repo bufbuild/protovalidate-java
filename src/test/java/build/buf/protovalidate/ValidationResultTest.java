@@ -18,6 +18,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import build.buf.validate.FieldPathElement;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 
@@ -25,7 +27,7 @@ class ValidationResultTest {
   @Test
   void testToStringNoViolations() {
 
-    List<Violation> violations = new ArrayList<>();
+    List<RuleViolation> violations = new ArrayList<>();
     ValidationResult result = new ValidationResult(violations);
 
     assertThat(result.toString()).isEqualTo("Validation OK");
@@ -43,9 +45,7 @@ class ValidationResultTest {
             .setMessage("must equal 42")
             .addFirstFieldPathElement(elem)
             .build();
-    List<Violation> violations = new ArrayList<>();
-    violations.add(violation);
-    ValidationResult result = new ValidationResult(violations);
+    ValidationResult result = new ValidationResult(Collections.singletonList(violation));
 
     assertThat(result.toString())
         .isEqualTo("Validation error:\n - test_field_name: must equal 42 [int32.const]");
@@ -69,10 +69,7 @@ class ValidationResultTest {
             .setMessage("value is required")
             .addFirstFieldPathElement(elem)
             .build();
-    List<Violation> violations = new ArrayList<>();
-    violations.add(violation1);
-    violations.add(violation2);
-    ValidationResult result = new ValidationResult(violations);
+    ValidationResult result = new ValidationResult(Arrays.asList(violation1, violation2));
 
     assertThat(result.toString())
         .isEqualTo(
@@ -86,20 +83,14 @@ class ValidationResultTest {
     FieldPathElement elem2 =
         FieldPathElement.newBuilder().setFieldNumber(5).setFieldName("nested_name").build();
 
-    List<FieldPathElement> elems = new ArrayList<>();
-    elems.add(elem1);
-    elems.add(elem2);
-
     RuleViolation violation1 =
         RuleViolation.newBuilder()
             .setRuleId("int32.const")
             .setMessage("must equal 42")
-            .addAllFieldPathElements(elems)
+            .addAllFieldPathElements(Arrays.asList(elem1, elem2))
             .build();
 
-    List<Violation> violations = new ArrayList<>();
-    violations.add(violation1);
-    ValidationResult result = new ValidationResult(violations);
+    ValidationResult result = new ValidationResult(Collections.singletonList(violation1));
 
     assertThat(result.toString())
         .isEqualTo(
@@ -110,9 +101,7 @@ class ValidationResultTest {
   void testToStringSingleViolationNoFieldPathElements() {
     RuleViolation violation =
         RuleViolation.newBuilder().setRuleId("int32.const").setMessage("must equal 42").build();
-    List<Violation> violations = new ArrayList<>();
-    violations.add(violation);
-    ValidationResult result = new ValidationResult(violations);
+    ValidationResult result = new ValidationResult(Collections.singletonList(violation));
 
     assertThat(result.toString()).isEqualTo("Validation error:\n - must equal 42 [int32.const]");
   }

@@ -64,6 +64,21 @@ Highlights for Java developers include:
 * A comprehensive RPC quickstart for [Java and gRPC][grpc-java]
 * A [migration guide for protoc-gen-validate][migration-guide] users
 
+## Native rule evaluators (opt-in)
+
+The standard rules can be evaluated either through CEL or through native Java code. Native evaluation is functionally identical (the conformance suite passes in both modes) but skips CEL compilation and runtime overhead for the rules it covers — a single `validate()` call on a complex message can run an order of magnitude faster and allocate ~10× less.
+
+Native rules are **opt-out**. Disable them by configuring the validator:
+
+```java
+Config config = Config.newBuilder().setEnableNativeRules(false).build();
+Validator validator = ValidatorFactory.newBuilder().withConfig(config).build();
+```
+
+Native evaluators currently cover bool, all 12 numeric kinds (signed and unsigned int32/int64, float, double, etc.), enum (`const`/`in`/`not_in`; the existing `defined_only` path is unchanged), bytes, string (including all well-known formats), repeated/map list-level rules (`min_items`/`max_items`/`unique`, `min_pairs`/`max_pairs`), and the `google.protobuf.{Bool,Int32,Int64,UInt32,UInt64,Float,Double,String,Bytes}Value` wrapper types — rules on wrapper-typed fields run through the same native evaluators after unwrapping.
+
+Forward compatibility is preserved by a clone-and-clear contract: when protovalidate adds a new rule that this codebase hasn't yet implemented natively, the rule remains on the residual `FieldRules` and CEL enforces it. Native evaluation is an optimization, never a replacement.
+
 ## Additional languages and repositories
 
 Protovalidate isn't just for Java! You might be interested in sibling repositories for other languages:

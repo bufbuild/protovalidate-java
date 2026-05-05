@@ -61,11 +61,18 @@ public class Main {
       TypeRegistry typeRegistry = FileDescriptorUtil.createTypeRegistry(fileDescriptorMap.values());
       ExtensionRegistry extensionRegistry =
           FileDescriptorUtil.createExtensionRegistry(fileDescriptorMap.values());
-      Config cfg =
-          Config.newBuilder()
-              .setTypeRegistry(typeRegistry)
-              .setExtensionRegistry(extensionRegistry)
-              .build();
+      String envFlag = System.getenv("ENABLE_NATIVE_RULES");
+      Config.Builder cfgBuilder =
+          Config.newBuilder().setTypeRegistry(typeRegistry).setExtensionRegistry(extensionRegistry);
+      if (envFlag != null) {
+        boolean enableNativeRules = Boolean.parseBoolean(envFlag);
+        if (enableNativeRules) {
+          cfgBuilder.setEnableNativeRules(true);
+        } else {
+          cfgBuilder.setEnableNativeRules(false);
+        }
+      }
+      Config cfg = cfgBuilder.build();
       Validator validator = ValidatorFactory.newBuilder().withConfig(cfg).build();
 
       TestConformanceResponse.Builder responseBuilder = TestConformanceResponse.newBuilder();

@@ -17,6 +17,7 @@ syntax = "proto3";
 package validationtest;
 
 import "buf/validate/validate.proto";
+import "google/protobuf/wrappers.proto";
 import "validationtest/import_test.proto";
 
 message ExampleFieldRules {
@@ -133,4 +134,248 @@ message ExampleImportMessageInMapFieldRule {
       expression: "this.imported_submessage[0].hex_string != ''"
     }
   ];
+}
+
+message ExampleBoolConst {
+  bool flag = 1 [(buf.validate.field).bool.const = true];
+}
+
+message ExampleInt32Const {
+  int32 val = 1 [(buf.validate.field).int32.const = 5];
+}
+
+message ExampleInt32GtLt {
+  int32 val = 1 [(buf.validate.field).int32 = {
+    gt: 0
+    lt: 10
+  }];
+}
+
+message ExampleUint32Gt {
+  // Threshold above Integer.MAX_VALUE — verifies unsigned comparison: a uint32 value of
+  // 3000000000 must satisfy gt=2147483648, even though both render as negative when
+  // interpreted as signed int.
+  uint32 val = 1 [(buf.validate.field).uint32.gt = 2147483648];
+}
+
+message ExampleFloatFinite {
+  float val = 1 [(buf.validate.field).float.finite = true];
+}
+
+message ExampleDoubleIn {
+  double val = 1 [(buf.validate.field).double = {
+    in: [
+      1.5,
+      2.5
+    ]
+  }];
+}
+
+enum ExampleColor {
+  EXAMPLE_COLOR_UNSPECIFIED = 0;
+  EXAMPLE_COLOR_RED = 1;
+  EXAMPLE_COLOR_GREEN = 2;
+  EXAMPLE_COLOR_BLUE = 3;
+}
+
+message ExampleEnumConst {
+  ExampleColor val = 1 [(buf.validate.field).enum.const = 2];
+}
+
+message ExampleEnumIn {
+  ExampleColor val = 1 [(buf.validate.field).enum = {
+    in: [
+      1,
+      3
+    ]
+  }];
+}
+
+message ExampleBytesConst {
+  bytes val = 1 [(buf.validate.field).bytes.const = "\x00\x99"];
+}
+
+message ExampleBytesPattern {
+  bytes val = 1 [(buf.validate.field).bytes.pattern = "^[a-z]+$"];
+}
+
+message ExampleBytesIPv4 {
+  bytes val = 1 [(buf.validate.field).bytes.ipv4 = true];
+}
+
+message ExampleStringConst {
+  string val = 1 [(buf.validate.field).string.const = "abcd"];
+}
+
+message ExampleStringEmail {
+  string val = 1 [(buf.validate.field).string.email = true];
+}
+
+message ExampleStringMinMaxLen {
+  string val = 1 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 5
+  }];
+}
+
+message ExampleStringHostAndPort {
+  string val = 1 [(buf.validate.field).string.host_and_port = true];
+}
+
+message ExampleRepeatedMinMax {
+  repeated int32 val = 1 [(buf.validate.field).repeated = {
+    min_items: 2
+    max_items: 5
+  }];
+}
+
+message ExampleRepeatedUnique {
+  repeated string val = 1 [(buf.validate.field).repeated.unique = true];
+}
+
+message ExampleMapMinMax {
+  map<string, string> val = 1 [(buf.validate.field).map = {
+    min_pairs: 1
+    max_pairs: 3
+  }];
+}
+
+// --- Float/double parity fixtures ---
+//
+// See NATIVE_RULES_REVIEW.md sections B1 (fixed) and B2 (reclassified). The tests in
+// FloatBugConfirmationTest now lock in parity rather than confirm divergence.
+
+// Originally documented the floatFormatter sign-strip bug; now used by the regression test
+// asserting native and CEL both render -0.0 as "must equal -0".
+message ExampleFloatConstNegZero {
+  float val = 1 [(buf.validate.field).float.const = -0.0];
+}
+
+message ExampleDoubleConstNegZero {
+  double val = 1 [(buf.validate.field).double.const = -0.0];
+}
+
+// Originally claimed a parity divergence on repeated.unique for floats/doubles. Investigation
+// showed CustomOverload.uniqueList (the CEL-side impl in protovalidate-java) and
+// RepeatedRulesEvaluator.isUnique both use HashSet + Object.equals, so they agree — both
+// deviate from CEL's IEEE-754 spec for NaN and +/- 0 in the same direction. The agreement
+// tests pin that contract until a coordinated fix lands.
+message ExampleFloatRepeatedUnique {
+  repeated float val = 1 [(buf.validate.field).repeated.unique = true];
+}
+
+message ExampleDoubleRepeatedUnique {
+  repeated double val = 1 [(buf.validate.field).repeated.unique = true];
+}
+
+message FloatDoubleNaNNegZero {
+  repeated float fvals = 1 [(buf.validate.field).repeated.unique = true];
+  repeated double dvals = 2 [(buf.validate.field).repeated.unique = true];
+  float fneg_zero = 3 [(buf.validate.field).float.const = -0.0];
+  double dneg_zero = 4 [(buf.validate.field).double.const = -0.0];
+}
+
+// Multi-rule fixtures used to exercise failFast and residual-clearing semantics.
+//
+// Each field has two scalar rules (or a count + element rule) so a value that violates the
+// first rule will also violate the second. With failFast=true the validator should report only
+// one violation; with failFast=false (the default), both should be reported.
+
+// String with min_len=4 and a "must contain digit" pattern.
+message StringMultiRule {
+  string val = 1 [(buf.validate.field).string = {
+    min_len: 4
+    pattern: ".*[0-9].*"
+  }];
+}
+
+// Int with gt=10 and in=[5,15]. Default 0 violates both.
+message Int32MultiRule {
+  int32 val = 1 [(buf.validate.field).int32 = {
+    gt: 10
+    in: [
+      5,
+      15
+    ]
+  }];
+}
+
+// Bytes with min_len=4 and ipv4=true. Empty value violates both.
+message BytesMultiRule {
+  bytes val = 1 [(buf.validate.field).bytes = {
+    min_len: 4
+    ipv4: true
+  }];
+}
+
+// not_in fixtures, one per kind, used by NotInRulesTest.
+message Int32NotIn {
+  int32 val = 1 [(buf.validate.field).int32 = {
+    not_in: [
+      1,
+      2,
+      3
+    ]
+  }];
+}
+
+message Uint32NotIn {
+  uint32 val = 1 [(buf.validate.field).uint32 = {
+    not_in: [
+      1,
+      2
+    ]
+  }];
+}
+
+message StringNotIn {
+  string val = 1 [(buf.validate.field).string = {
+    not_in: [
+      "foo",
+      "bar"
+    ]
+  }];
+}
+
+message BytesNotIn {
+  bytes val = 1 [(buf.validate.field).bytes = {
+    not_in: [
+      "AA",
+      "BB"
+    ]
+  }];
+}
+
+message EnumNotIn {
+  ExampleColor val = 1 [(buf.validate.field).enum = {
+    not_in: [
+      1,
+      2
+    ]
+  }];
+}
+
+// well_known_regex fixtures.
+message HttpHeaderName {
+  string val = 1 [(buf.validate.field).string.well_known_regex = KNOWN_REGEX_HTTP_HEADER_NAME];
+}
+
+message HttpHeaderNameLoose {
+  string val = 1 [(buf.validate.field).string = {
+    well_known_regex: KNOWN_REGEX_HTTP_HEADER_NAME
+    strict: false
+  }];
+}
+
+message HttpHeaderValue {
+  string val = 1 [(buf.validate.field).string.well_known_regex = KNOWN_REGEX_HTTP_HEADER_VALUE];
+}
+
+// google.protobuf.*Value wrapper fixtures for WrappedValueEvaluator coverage.
+message Int64WrapperConst {
+  google.protobuf.Int64Value val = 1 [(buf.validate.field).int64.const = 5];
+}
+
+message StringWrapperLen {
+  google.protobuf.StringValue val = 1 [(buf.validate.field).string.min_len = 3];
 }

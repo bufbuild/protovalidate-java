@@ -60,6 +60,7 @@ final class EvaluatorBuilder {
 
   private final Cel cel;
   private final boolean disableLazy;
+  private final boolean enableNativeRules;
   private final RuleCache rules;
 
   /**
@@ -69,8 +70,13 @@ final class EvaluatorBuilder {
    * @param config The configuration to use for the evaluation.
    */
   EvaluatorBuilder(Cel cel, Config config) {
+    this(cel, config, false);
+  }
+
+  private EvaluatorBuilder(Cel cel, Config config, boolean disableLazy) {
     this.cel = cel;
-    this.disableLazy = false;
+    this.disableLazy = disableLazy;
+    this.enableNativeRules = config.isNativeRulesEnabled();
     this.rules = new RuleCache(cel, config);
   }
 
@@ -79,14 +85,14 @@ final class EvaluatorBuilder {
    *
    * @param cel The CEL environment for evaluation.
    * @param config The configuration to use for the evaluation.
+   * @param descriptors The descriptors to build evaluators for. Must be non-null.
+   * @param disableLazy If true, the builder will not cache evaluators for descriptors that are not
+   * @throws CompilationException If an evaluator can't be built for a descriptor.
    */
   EvaluatorBuilder(Cel cel, Config config, List<Descriptor> descriptors, boolean disableLazy)
       throws CompilationException {
+    this(cel, config, disableLazy);
     Objects.requireNonNull(descriptors, "descriptors must not be null");
-    this.cel = cel;
-    this.disableLazy = disableLazy;
-    this.rules = new RuleCache(cel, config);
-
     for (Descriptor descriptor : descriptors) {
       this.build(descriptor);
     }
@@ -126,7 +132,7 @@ final class EvaluatorBuilder {
       }
       // Rebuild cache with this descriptor (and any of its dependencies).
       Map<Descriptor, MessageEvaluator> updatedCache =
-          new DescriptorCacheBuilder(cel, rules, evaluatorCache).build(desc);
+          new DescriptorCacheBuilder(cel, rules, enableNativeRules, evaluatorCache).build(desc);
       evaluatorCache = updatedCache;
       eval = updatedCache.get(desc);
       if (eval == null) {
@@ -141,12 +147,17 @@ final class EvaluatorBuilder {
     private final RuleResolver resolver = new RuleResolver();
     private final Cel cel;
     private final RuleCache ruleCache;
+    private final boolean enableNativeRules;
     private final HashMap<Descriptor, MessageEvaluator> cache;
 
     private DescriptorCacheBuilder(
-        Cel cel, RuleCache ruleCache, Map<Descriptor, MessageEvaluator> previousCache) {
+        Cel cel,
+        RuleCache ruleCache,
+        boolean enableNativeRules,
+        Map<Descriptor, MessageEvaluator> previousCache) {
       this.cel = Objects.requireNonNull(cel, "cel");
       this.ruleCache = Objects.requireNonNull(ruleCache, "ruleCache");
+      this.enableNativeRules = enableNativeRules;
       this.cache = new HashMap<>(previousCache);
     }
 
@@ -460,6 +471,18 @@ final class EvaluatorBuilder {
             DescriptorMappings.expectedWrapperRules(fieldDescriptor.getMessageType().getFullName());
         if (expectedWrapperDescriptor != null) {
           return;
+        }
+      }
+
+      // Try native rule evaluators when opted in. Any rule covered natively is cleared on the
+      // residual builder so CEL only compiles what's left; rules without a native implementation
+      // remain on the residual and CEL handles them.
+      if (enableNativeRules) {
+        FieldRules.Builder rulesBuilder = fieldRules.toBuilder();
+        Evaluator nativeEval = Rules.tryBuild(fieldDescriptor, rulesBuilder, valueEvaluatorEval);
+        if (nativeEval != null) {
+          valueEvaluatorEval.append(nativeEval);
+          fieldRules = rulesBuilder.build();
         }
       }
 
