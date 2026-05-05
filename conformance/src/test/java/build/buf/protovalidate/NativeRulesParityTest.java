@@ -17,6 +17,7 @@ package build.buf.protovalidate;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import build.buf.protovalidate.exceptions.ValidationException;
+import build.buf.validate.Violation;
 import build.buf.validate.conformance.cases.AnEnum;
 import build.buf.validate.conformance.cases.BoolConstTrue;
 import build.buf.validate.conformance.cases.BytesContains;
@@ -133,7 +134,7 @@ class NativeRulesParityTest {
         .isEqualTo(toProtoList(celResult));
   }
 
-  private static List<build.buf.validate.Violation> toProtoList(ValidationResult result) {
-    return result.getViolations().stream().map(Violation::toProto).collect(Collectors.toList());
+  private static List<Violation> toProtoList(ValidationResult result) {
+    return result.getViolations().stream().map(RuleViolation::toProto).collect(Collectors.toList());
   }
 }

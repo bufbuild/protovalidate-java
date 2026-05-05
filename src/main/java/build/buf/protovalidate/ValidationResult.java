@@ -26,9 +26,10 @@ import java.util.List;
 public class ValidationResult {
 
   /**
-   * violations is a list of {@link Violation} that occurred during the validations of a message.
+   * violations is a list of {@link RuleViolation} that occurred during the validations of a
+   * message.
    */
-  private final List<Violation> violations;
+  private final List<RuleViolation> violations;
 
   /** A violation result with an empty violation list. */
   public static final ValidationResult EMPTY = new ValidationResult(Collections.emptyList());
@@ -38,7 +39,7 @@ public class ValidationResult {
    *
    * @param violations violation list for the result.
    */
-  public ValidationResult(List<Violation> violations) {
+  public ValidationResult(List<RuleViolation> violations) {
     this.violations = violations;
   }
 
@@ -56,7 +57,7 @@ public class ValidationResult {
    *
    * @return the violation list.
    */
-  public List<Violation> getViolations() {
+  public List<RuleViolation> getViolations() {
     return violations;
   }
 
