@@ -31,7 +31,7 @@ import org.junit.jupiter.api.Test;
 class BoolRulesEvaluatorTest {
 
   private static Validator nativeValidator() {
-    Config config = Config.newBuilder().setEnableNativeRules().build();
+    Config config = Config.newBuilder().setEnableNativeRules(true).build();
     return ValidatorFactory.newBuilder().withConfig(config).build();
   }
 
@@ -88,7 +88,7 @@ class BoolRulesEvaluatorTest {
     ValidationResult nativeResult = nativeValidator().validate(msg);
     Validator celValidator =
         ValidatorFactory.newBuilder()
-            .withConfig(Config.newBuilder().setDisableNativeRules().build())
+            .withConfig(Config.newBuilder().setEnableNativeRules(false).build())
             .build();
     ValidationResult celResult = celValidator.validate(msg);
 

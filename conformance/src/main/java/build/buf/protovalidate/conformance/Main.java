@@ -70,9 +70,9 @@ public class Main {
       if (envFlag != null) {
         boolean enableNativeRules = Boolean.parseBoolean(envFlag);
         if (enableNativeRules) {
-          cfgBuilder.setEnableNativeRules();
+          cfgBuilder.setEnableNativeRules(true);
         } else {
-          cfgBuilder.setDisableNativeRules();
+          cfgBuilder.setEnableNativeRules(false);
         }
       }
       Config cfg = cfgBuilder.build();

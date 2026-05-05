@@ -37,7 +37,7 @@ class ResidualClearingTest {
 
   private final Validator nativeValidator =
       ValidatorFactory.newBuilder()
-          .withConfig(Config.newBuilder().setEnableNativeRules().build())
+          .withConfig(Config.newBuilder().setEnableNativeRules(true).build())
           .build();
 
   @Test

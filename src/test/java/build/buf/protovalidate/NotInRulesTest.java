@@ -35,7 +35,7 @@ class NotInRulesTest {
 
   private final Validator validator =
       ValidatorFactory.newBuilder()
-          .withConfig(Config.newBuilder().setEnableNativeRules().build())
+          .withConfig(Config.newBuilder().setEnableNativeRules(true).build())
           .build();
 
   @Test

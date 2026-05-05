@@ -32,7 +32,7 @@ import org.junit.jupiter.api.Test;
 class FailFastTest {
 
   private static Validator validator(boolean failFast) {
-    Config config = Config.newBuilder().setEnableNativeRules().setFailFast(failFast).build();
+    Config config = Config.newBuilder().setEnableNativeRules(true).setFailFast(failFast).build();
     return ValidatorFactory.newBuilder().withConfig(config).build();
   }
 

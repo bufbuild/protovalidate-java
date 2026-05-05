@@ -29,7 +29,7 @@ import org.junit.jupiter.api.Test;
 class StringRulesEvaluatorTest {
 
   private static Validator nativeValidator() {
-    Config config = Config.newBuilder().setEnableNativeRules().build();
+    Config config = Config.newBuilder().setEnableNativeRules(true).build();
     return ValidatorFactory.newBuilder().withConfig(config).build();
   }
 
@@ -125,7 +125,7 @@ class StringRulesEvaluatorTest {
     Validator nativeV = nativeValidator();
     Validator celV =
         ValidatorFactory.newBuilder()
-            .withConfig(Config.newBuilder().setDisableNativeRules().build())
+            .withConfig(Config.newBuilder().setEnableNativeRules(false).build())
             .build();
     assertThat(nativeV.validate(msg).getViolations().get(0).toProto())
         .isEqualTo(celV.validate(msg).getViolations().get(0).toProto());

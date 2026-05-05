@@ -92,7 +92,7 @@ public final class Config {
    *
    * <p>When true, standard rules with a native Java implementation bypass CEL evaluation. When
    * false, all rules go through CEL. Defaults to true; applications opt out by calling {@link
-   * Builder#setDisableNativeRules() setDisableNativeRules()}.
+   * Builder#setEnableNativeRules(boolean) setEnableNativeRules(false)}.
    *
    * @return true if native rules are enabled.
    */
@@ -176,23 +176,15 @@ public final class Config {
     }
 
     /**
-     * Enables native (non-CEL) rule evaluators. Forward-compatible: any rule not yet implemented
-     * natively continues to be enforced via CEL regardless of this setting.
+     * Enables or disables native (non-CEL) rule evaluators. Native rules are enabled by default.
+     * Forward-compatible: any rule not yet implemented natively continues to be enforced via CEL
+     * regardless of this setting.
      *
+     * @param enableNativeRules whether to enable native rules
      * @return this builder
      */
-    public Builder setEnableNativeRules() {
-      this.enableNativeRules = true;
-      return this;
-    }
-
-    /**
-     * Disables native (non-CEL) rule evaluators.
-     *
-     * @return this builder
-     */
-    public Builder setDisableNativeRules() {
-      this.enableNativeRules = false;
+    public Builder setEnableNativeRules(boolean enableNativeRules) {
+      this.enableNativeRules = enableNativeRules;
       return this;
     }
 

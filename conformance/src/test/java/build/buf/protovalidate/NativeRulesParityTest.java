@@ -60,11 +60,11 @@ class NativeRulesParityTest {
 
   private final Validator nativeValidator =
       ValidatorFactory.newBuilder()
-          .withConfig(Config.newBuilder().setEnableNativeRules().build())
+          .withConfig(Config.newBuilder().setEnableNativeRules(true).build())
           .build();
   private final Validator celValidator =
       ValidatorFactory.newBuilder()
-          .withConfig(Config.newBuilder().setDisableNativeRules().build())
+          .withConfig(Config.newBuilder().setEnableNativeRules(false).build())
           .build();
 
   /**

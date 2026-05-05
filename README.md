@@ -71,7 +71,7 @@ The standard rules can be evaluated either through CEL or through native Java co
 Native rules are **opt-out**. Disable them by configuring the validator:
 
 ```java
-Config config = Config.newBuilder().setDisableNativeRules().build();
+Config config = Config.newBuilder().setEnableNativeRules(false).build();
 Validator validator = ValidatorFactory.newBuilder().withConfig(config).build();
 ```
 
