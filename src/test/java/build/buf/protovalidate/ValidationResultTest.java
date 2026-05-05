@@ -27,7 +27,7 @@ class ValidationResultTest {
   @Test
   void testToStringNoViolations() {
 
-    List<RuleViolation> violations = new ArrayList<>();
+    List<Violation> violations = new ArrayList<>();
     ValidationResult result = new ValidationResult(violations);
 
     assertThat(result.toString()).isEqualTo("Validation OK");

@@ -28,7 +28,7 @@ import org.jspecify.annotations.Nullable;
  * that this codebase hasn't yet implemented natively, the rule remains on the residual {@code
  * FieldRules} and CEL enforces it. Native rules are an optimization, not a replacement.
  */
-public final class Rules {
+final class Rules {
   private Rules() {}
 
   /**
@@ -46,7 +46,7 @@ public final class Rules {
    * @return a native {@link Evaluator}, or null if no native evaluator applies (CEL handles
    *     everything)
    */
-  public static @Nullable Evaluator tryBuild(
+  static @Nullable Evaluator tryBuild(
       FieldDescriptor fieldDescriptor,
       FieldRules.Builder rulesBuilder,
       ValueEvaluator valueEvaluator) {

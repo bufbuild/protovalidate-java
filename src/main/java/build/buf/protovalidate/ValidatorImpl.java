@@ -18,8 +18,8 @@ import build.buf.protovalidate.exceptions.CompilationException;
 import build.buf.protovalidate.exceptions.ValidationException;
 import com.google.protobuf.Descriptors.Descriptor;
 import com.google.protobuf.Message;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 final class ValidatorImpl implements Validator {
   /** evaluatorBuilder is the builder used to construct the evaluator for a given message. */
@@ -54,7 +54,10 @@ final class ValidatorImpl implements Validator {
     if (result.isEmpty()) {
       return ValidationResult.EMPTY;
     }
-    return new ValidationResult(
-        result.stream().map(RuleViolation.Builder::build).collect(Collectors.toList()));
+    List<Violation> violations = new ArrayList<>(result.size());
+    for (RuleViolation.Builder builder : result) {
+      violations.add(builder.build());
+    }
+    return new ValidationResult(violations);
   }
 }
