@@ -61,7 +61,7 @@ Diff them in place:
 
 ```
 ./gradlew :benchmarks:jmh
-./gradlew :benchmarks:jmhCompareParams
+./gradlew :benchmarks:jmhCompareNativeRules
 ```
 
 Output (`before` = CEL, `after` = native; negative delta means native is faster / allocates less):

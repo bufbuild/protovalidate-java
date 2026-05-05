@@ -158,8 +158,12 @@ final class EnumRulesEvaluator implements Evaluator {
     if (raw instanceof Integer) {
       return (Integer) raw;
     }
+    // the enum wire format says that enums are encoded as though they are int32s.
+    // https://protobuf.dev/programming-guides/encoding/ I don't know if the value could
+    // end up in a Long somehow, so coding defensively around that. If a value out of
+    // 32-bit int range shows up, Math.toIntExact will throw an exception.
     if (raw instanceof Long) {
-      return ((Long) raw).intValue();
+      return Math.toIntExact((Long) raw);
     }
     throw new IllegalStateException(
         "unexpected enum value representation: " + raw.getClass().getName());

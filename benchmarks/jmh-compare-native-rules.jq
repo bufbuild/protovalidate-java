@@ -1,3 +1,8 @@
+# this script builds a comparison between runs that used the CEL interpreter for
+# protovalidate rule evaluation vs runs that used native Java code for protovalidate
+# rule evaluation. The differentiator is the value of the "native" field (true for
+# native, false for CEL) and this script groups rows that have the same benchmark
+# and metric name, but different values for native.
 def pct(a; b):
   if a == null or b == null or b == 0 then "~"
   else (((a - b) / b * 100) * 10 | round / 10) as $d

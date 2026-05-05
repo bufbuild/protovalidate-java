@@ -70,8 +70,12 @@ final class EvaluatorBuilder {
    * @param config The configuration to use for the evaluation.
    */
   EvaluatorBuilder(Cel cel, Config config) {
+    this(cel, config, false);
+  }
+
+  private EvaluatorBuilder(Cel cel, Config config, boolean disableLazy) {
     this.cel = cel;
-    this.disableLazy = false;
+    this.disableLazy = disableLazy;
     this.enableNativeRules = config.isNativeRulesEnabled();
     this.rules = new RuleCache(cel, config);
   }
@@ -81,15 +85,14 @@ final class EvaluatorBuilder {
    *
    * @param cel The CEL environment for evaluation.
    * @param config The configuration to use for the evaluation.
+   * @param descriptors The descriptors to build evaluators for. Must be non-null.
+   * @param disableLazy If true, the builder will not cache evaluators for descriptors that are not
+   * @throws CompilationException If an evaluator can't be built for a descriptor.
    */
   EvaluatorBuilder(Cel cel, Config config, List<Descriptor> descriptors, boolean disableLazy)
       throws CompilationException {
+    this(cel, config, disableLazy);
     Objects.requireNonNull(descriptors, "descriptors must not be null");
-    this.cel = cel;
-    this.disableLazy = disableLazy;
-    this.enableNativeRules = config.isNativeRulesEnabled();
-    this.rules = new RuleCache(cel, config);
-
     for (Descriptor descriptor : descriptors) {
       this.build(descriptor);
     }

@@ -61,9 +61,6 @@ public class Main {
       TypeRegistry typeRegistry = FileDescriptorUtil.createTypeRegistry(fileDescriptorMap.values());
       ExtensionRegistry extensionRegistry =
           FileDescriptorUtil.createExtensionRegistry(fileDescriptorMap.values());
-      // ENABLE_NATIVE_RULES env var lets the conformance runner exercise both rule-evaluation
-      // modes without code changes. Defaults to whatever Config's default is so a plain
-      // `gradlew :conformance:test` matches user-facing behavior.
       String envFlag = System.getenv("ENABLE_NATIVE_RULES");
       Config.Builder cfgBuilder =
           Config.newBuilder().setTypeRegistry(typeRegistry).setExtensionRegistry(extensionRegistry);

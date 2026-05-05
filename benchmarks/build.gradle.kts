@@ -150,18 +150,18 @@ tasks.register<Exec>("jmhCompare") {
 // allocates less.
 //
 // Override the input file:
-//   ./gradlew :benchmarks:jmhCompareParams -Presults=path/to/results.json
-tasks.register<Exec>("jmhCompareParams") {
+//   ./gradlew :benchmarks:jmhCompareNative -Presults=path/to/results.json
+tasks.register<Exec>("jmhCompareNativeRules") {
     description = "Diffs enableNativeRules=true vs false from a single JMH results.json."
     val results =
         project.findProperty("results")?.toString()
             ?: jmhResults.get().asFile.absolutePath
-    val jqScript = file("jmh-compare-params.jq").absolutePath
+    val jqScript = file("jmh-compare-native-rules.jq").absolutePath
     commandLine(
         "bash",
         "-c",
         "jq --raw-output --from-file \"\$1\" \"\$2\" | column -t -s \$'\\t'",
-        "jmh-compare-params", // $0
+        "jmh-compare-native-rules", // $0
         jqScript, // $1
         results, // $2
     )
