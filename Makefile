@@ -28,13 +28,10 @@ checkgenerate: generate  ## Checks if `make generate` produces a diff.
 clean:  ## Delete intermediate build artifacts
 	$(GRADLE) clean
 
-.PHONY: conformance-cel
-conformance-cel: ## Execute conformance tests with CEL-only rule evaluation.
-	ENABLE_NATIVE_RULES=false $(GRADLE) conformance:conformance
-
 .PHONY: conformance
-conformance: ## Execute conformance tests with native rule evaluators enabled.
+conformance: ## Execute conformance tests with native rule evaluators enabled and disabled.
 	ENABLE_NATIVE_RULES=true $(GRADLE) conformance:conformance
+	ENABLE_NATIVE_RULES=false $(GRADLE) conformance:conformance
 
 .PHONY: help
 help: ## Describe useful make targets

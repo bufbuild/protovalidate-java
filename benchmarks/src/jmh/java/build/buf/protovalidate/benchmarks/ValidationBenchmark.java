@@ -129,12 +129,7 @@ public class ValidationBenchmark {
 
   @Setup
   public void setup() throws ValidationException {
-    Config config;
-    if (enableNativeRules) {
-      config = Config.newBuilder().setEnableNativeRules(true).build();
-    } else {
-      config = Config.newBuilder().setEnableNativeRules(false).build();
-    }
+    Config config = Config.newBuilder().setEnableNativeRules(enableNativeRules).build();
 
     validator = ValidatorFactory.newBuilder().withConfig(config).build();
 

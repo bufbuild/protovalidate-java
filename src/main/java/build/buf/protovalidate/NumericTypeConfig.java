@@ -271,7 +271,6 @@ final class NumericTypeConfig<T extends Number & Comparable<T>> {
     if (d1.isNaN() && d2.isNaN()) {
       return -1;
     }
-
     return d1.compareTo(d2);
   }
 
