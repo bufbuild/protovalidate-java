@@ -22,8 +22,11 @@ import com.example.noimports.validationtest.ExampleStringConst;
 import com.example.noimports.validationtest.ExampleStringEmail;
 import com.example.noimports.validationtest.ExampleStringHostAndPort;
 import com.example.noimports.validationtest.ExampleStringMinMaxLen;
+import com.example.noimports.validationtest.HttpHeaderName;
 import com.google.protobuf.Descriptors.FieldDescriptor;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 /** Validator-level tests for {@link StringRulesEvaluator}. */
 class StringRulesEvaluatorTest {
@@ -129,5 +132,93 @@ class StringRulesEvaluatorTest {
             .build();
     assertThat(nativeV.validate(msg).getViolations().get(0).toProto())
         .isEqualTo(celV.validate(msg).getViolations().get(0).toProto());
+  }
+
+  @ParameterizedTest
+  @ValueSource(
+      strings = {
+        "Content-Type",
+        "Content-Length",
+        "Accept",
+        "User-Agent",
+        "X-Forwarded-For",
+        "WWW-Authenticate",
+        "If-None-Match",
+        "Cache-Control",
+        "Set-Cookie",
+        "ETag",
+        ":method",
+        ":path",
+        ":status",
+        ":authority",
+        ":scheme",
+        "!",
+        "#",
+        "$",
+        "%",
+        "&",
+        "'",
+        "*",
+        "+",
+        "-",
+        ".",
+        "^",
+        "_",
+        "`",
+        "|",
+        "~",
+        "a",
+        "0",
+        ":a",
+        "A1!#$%&'*+-.^_|~`",
+        "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "MiXeDcAsE"
+      })
+  void headerNameRegexValidationGood(String headerName) throws ValidationException {
+    HttpHeaderName msg = HttpHeaderName.newBuilder().setVal(headerName).build();
+    Validator v = nativeValidator();
+    assertThat(v.validate(msg).isSuccess()).isTrue();
+  }
+
+  @ParameterizedTest
+  @ValueSource(
+      strings = {
+        "",
+        ":",
+        " ",
+        "Content-Type ",
+        " Content-Type",
+        "Content Type",
+        "\tContent-Type",
+        "Content:Type",
+        "Content/Type",
+        "Content\\Type",
+        "Content,Type",
+        "Content;Type",
+        "Content=Type",
+        "Content(Type)",
+        "Content[Type]",
+        "Content{Type}",
+        "Content<Type>",
+        "Content\"Type",
+        "Content?Type",
+        "Content@Type",
+        "::method",
+        "method:",
+        ":method:extra",
+        "Conténg-Type",
+        "内容类型",
+        "Header™",
+        "naïve",
+        "Content\000Type",
+        "Content\177Type",
+        "Content\nType",
+        "Content\rType",
+        "Valid-Name\nAnother-Name",
+      })
+  void headerNameRegexValidationBad(String headerName) throws ValidationException {
+    HttpHeaderName msg = HttpHeaderName.newBuilder().setVal(headerName).build();
+    Validator v = nativeValidator();
+    assertThat(v.validate(msg).isSuccess()).isFalse();
   }
 }

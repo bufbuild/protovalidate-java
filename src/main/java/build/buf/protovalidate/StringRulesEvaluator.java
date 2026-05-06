@@ -106,7 +106,7 @@ final class StringRulesEvaluator implements Evaluator {
   private static final Pattern ULID_REGEX =
       Pattern.compile("^[0-7][0-9A-HJKMNP-TV-Za-hjkmnp-tv-z]{25}$");
   private static final Pattern HEADER_NAME_REGEX =
-      Pattern.compile("^:?[0-9a-zA-Z!#$%&\\\\'*+\\-.\\^_|~`]+$");
+      Pattern.compile("^:?[0-9a-zA-Z!#$%&'*+.\\-^_|~`]+$");
   private static final Pattern HEADER_VALUE_REGEX =
       Pattern.compile("^[^\\x00-\\x08\\x0A-\\x1F\\x7F]*$");
   private static final Pattern LOOSE_REGEX = Pattern.compile("^[^\\x00\\x0A\\x0D]+$");
