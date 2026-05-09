@@ -19,6 +19,7 @@ import build.buf.protovalidate.exceptions.ValidationException;
 import com.google.protobuf.Descriptors.Descriptor;
 import com.google.protobuf.Message;
 import dev.cel.bundle.Cel;
+import dev.cel.bundle.CelBuilder;
 import dev.cel.bundle.CelFactory;
 import java.util.ArrayList;
 import java.util.List;
@@ -34,26 +35,28 @@ final class ValidatorImpl implements Validator {
   private final boolean failFast;
 
   ValidatorImpl(Config config) {
-    ValidateLibrary validateLibrary = new ValidateLibrary();
-    Cel cel =
-        CelFactory.standardCelBuilder()
-            .addCompilerLibraries(validateLibrary)
-            .addRuntimeLibraries(validateLibrary)
-            .build();
+    Cel cel = buildCel(config);
     this.evaluatorBuilder = new EvaluatorBuilder(cel, config);
     this.failFast = config.isFailFast();
   }
 
   ValidatorImpl(Config config, List<Descriptor> descriptors, boolean disableLazy)
       throws CompilationException {
-    ValidateLibrary validateLibrary = new ValidateLibrary();
-    Cel cel =
-        CelFactory.standardCelBuilder()
-            .addCompilerLibraries(validateLibrary)
-            .addRuntimeLibraries(validateLibrary)
-            .build();
+    Cel cel = buildCel(config);
     this.evaluatorBuilder = new EvaluatorBuilder(cel, config, descriptors, disableLazy);
     this.failFast = config.isFailFast();
+  }
+
+  private static Cel buildCel(Config config) {
+    ValidateLibrary validateLibrary = new ValidateLibrary();
+    CelBuilder builder =
+        CelFactory.standardCelBuilder()
+            .addCompilerLibraries(validateLibrary)
+            .addRuntimeLibraries(validateLibrary);
+    if (config.getCelValueProvider() != null) {
+      builder = builder.setValueProvider(config.getCelValueProvider());
+    }
+    return builder.build();
   }
 
   @Override

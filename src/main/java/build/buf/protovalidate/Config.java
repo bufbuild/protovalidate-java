@@ -16,6 +16,8 @@ package build.buf.protovalidate;
 
 import com.google.protobuf.ExtensionRegistry;
 import com.google.protobuf.TypeRegistry;
+import dev.cel.common.values.CelValueProvider;
+import org.jspecify.annotations.Nullable;
 
 /** Config is the configuration for a Validator. */
 public final class Config {
@@ -27,16 +29,19 @@ public final class Config {
   private final TypeRegistry typeRegistry;
   private final ExtensionRegistry extensionRegistry;
   private final boolean allowUnknownFields;
+  @Nullable private final CelValueProvider celValueProvider;
 
   private Config(
       boolean failFast,
       TypeRegistry typeRegistry,
       ExtensionRegistry extensionRegistry,
-      boolean allowUnknownFields) {
+      boolean allowUnknownFields,
+      @Nullable CelValueProvider celValueProvider) {
     this.failFast = failFast;
     this.typeRegistry = typeRegistry;
     this.extensionRegistry = extensionRegistry;
     this.allowUnknownFields = allowUnknownFields;
+    this.celValueProvider = celValueProvider;
   }
 
   /**
@@ -84,12 +89,22 @@ public final class Config {
     return allowUnknownFields;
   }
 
+  /**
+   * Gets the custom CEL value provider, if one was configured.
+   *
+   * @return the custom value provider, or null if none was set
+   */
+  public @Nullable CelValueProvider getCelValueProvider() {
+    return celValueProvider;
+  }
+
   /** Builder for configuration. Provides a forward compatible API for users. */
   public static final class Builder {
     private boolean failFast;
     private TypeRegistry typeRegistry = DEFAULT_TYPE_REGISTRY;
     private ExtensionRegistry extensionRegistry = DEFAULT_EXTENSION_REGISTRY;
     private boolean allowUnknownFields;
+    @Nullable private CelValueProvider celValueProvider;
 
     private Builder() {}
 
@@ -162,8 +177,21 @@ public final class Config {
      *
      * @return the configuration.
      */
+    /**
+     * Set a custom CEL value provider for the validator. This allows alternative protobuf runtimes
+     * to provide their own message representations to CEL without converting to protobuf-java
+     * DynamicMessages.
+     *
+     * @param celValueProvider the value provider
+     * @return this builder
+     */
+    public Builder setCelValueProvider(CelValueProvider celValueProvider) {
+      this.celValueProvider = celValueProvider;
+      return this;
+    }
+
     public Config build() {
-      return new Config(failFast, typeRegistry, extensionRegistry, allowUnknownFields);
+      return new Config(failFast, typeRegistry, extensionRegistry, allowUnknownFields, celValueProvider);
     }
   }
 }
