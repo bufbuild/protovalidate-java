@@ -1,4 +1,4 @@
-// Copyright 2023-2025 Buf Technologies, Inc.
+// Copyright 2023-2026 Buf Technologies, Inc.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -36,5 +36,10 @@ class ProtobufMessageReflector implements MessageReflector {
   @Override
   public Value getField(FieldDescriptor field) {
     return new ObjectValue(field, message.getField(field));
+  }
+
+  @Override
+  public Object celValue() {
+    return message;
   }
 }

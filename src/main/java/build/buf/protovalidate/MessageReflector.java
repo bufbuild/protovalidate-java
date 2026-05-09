@@ -1,4 +1,4 @@
-// Copyright 2023-2025 Buf Technologies, Inc.
+// Copyright 2023-2026 Buf Technologies, Inc.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -40,4 +40,11 @@ public interface MessageReflector {
    * @return The value corresponding to the field descriptor.
    */
   Value getField(FieldDescriptor field);
+
+  /**
+   * Returns the representation of this message to hand to CEL for {@code this}-variable rule
+   * evaluation. Implementations return whichever form CEL can navigate for their runtime —
+   * e.g. a {@link com.google.protobuf.Message} or a {@code dev.cel.common.values.CelValue}.
+   */
+  Object celValue();
 }

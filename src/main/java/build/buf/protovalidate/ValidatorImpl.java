@@ -48,9 +48,22 @@ final class ValidatorImpl implements Validator {
     if (msg == null) {
       return ValidationResult.EMPTY;
     }
-    Descriptor descriptor = msg.getDescriptorForType();
+    return validateInternal(new MessageValue(msg), msg.getDescriptorForType());
+  }
+
+  @Override
+  public ValidationResult validate(MessageReflector message, Descriptor descriptor)
+      throws ValidationException {
+    if (message == null) {
+      return ValidationResult.EMPTY;
+    }
+    return validateInternal(new MessageReflectorValue(message), descriptor);
+  }
+
+  private ValidationResult validateInternal(Value value, Descriptor descriptor)
+      throws ValidationException {
     Evaluator evaluator = evaluatorBuilder.load(descriptor);
-    List<RuleViolation.Builder> result = evaluator.evaluate(new MessageValue(msg), this.failFast);
+    List<RuleViolation.Builder> result = evaluator.evaluate(value, this.failFast);
     if (result.isEmpty()) {
       return ValidationResult.EMPTY;
     }
