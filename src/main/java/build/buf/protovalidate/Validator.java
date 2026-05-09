@@ -17,7 +17,9 @@ package build.buf.protovalidate;
 import build.buf.protovalidate.exceptions.CompilationException;
 import build.buf.protovalidate.exceptions.ExecutionException;
 import build.buf.protovalidate.exceptions.ValidationException;
+import com.google.protobuf.Descriptors.Descriptor;
 import com.google.protobuf.Message;
+import dev.cel.common.values.CelValue;
 
 /** A validator that can be used to validate messages */
 public interface Validator {
@@ -35,4 +37,16 @@ public interface Validator {
    * @throws ValidationException if there are any compilation or validation execution errors.
    */
   ValidationResult validate(Message msg) throws ValidationException;
+
+  /**
+   * Validates a message represented as a CelValue. This allows alternative protobuf runtimes to
+   * provide their messages as StructValues that CEL can navigate directly without conversion to
+   * protobuf-java Message types.
+   *
+   * @param celValue a CelValue (typically a StructValue) representing the message
+   * @param descriptor the protobuf Descriptor for the message type
+   * @return the {@link ValidationResult} from the evaluation.
+   * @throws ValidationException if there are any compilation or validation execution errors.
+   */
+  ValidationResult validate(CelValue celValue, Descriptor descriptor) throws ValidationException;
 }

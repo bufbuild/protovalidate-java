@@ -21,6 +21,7 @@ import com.google.protobuf.Message;
 import dev.cel.bundle.Cel;
 import dev.cel.bundle.CelBuilder;
 import dev.cel.bundle.CelFactory;
+import dev.cel.common.values.CelValue;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -67,6 +68,27 @@ final class ValidatorImpl implements Validator {
     Descriptor descriptor = msg.getDescriptorForType();
     Evaluator evaluator = evaluatorBuilder.load(descriptor);
     List<RuleViolation.Builder> result = evaluator.evaluate(new MessageValue(msg), this.failFast);
+    return toResult(result);
+  }
+
+  @Override
+  public ValidationResult validate(CelValue celValue, Descriptor descriptor)
+      throws ValidationException {
+    if (celValue == null) {
+      return ValidationResult.EMPTY;
+    }
+    Object underlying = celValue.value();
+    if (!(underlying instanceof Message)) {
+      throw new ValidationException(
+          "CelValue.value() must return a protobuf Message for structural validation");
+    }
+    Evaluator evaluator = evaluatorBuilder.load(descriptor);
+    List<RuleViolation.Builder> result =
+        evaluator.evaluate(new CelBackedMessageValue(celValue, (Message) underlying), this.failFast);
+    return toResult(result);
+  }
+
+  private static ValidationResult toResult(List<RuleViolation.Builder> result) {
     if (result.isEmpty()) {
       return ValidationResult.EMPTY;
     }
