@@ -24,7 +24,6 @@ import org.jspecify.annotations.Nullable;
 /** The {@link Value} type that contains a {@link com.google.protobuf.Message}. */
 final class MessageValue implements Value {
 
-  /** Object type since the object type is inferred from the field descriptor. */
   private final ProtobufMessageReflector value;
 
   /**
