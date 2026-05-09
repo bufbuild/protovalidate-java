@@ -9,7 +9,7 @@ managed:
       value: com.example.noimports
 plugins:
   - remote: buf.build/protocolbuffers/java:$protocJavaPluginVersion
-    out: build/generated/test-sources/bufgen
+    out: build/generated/test-sources/bufgen-noimports
 inputs:
   - directory: src/main/resources
   - directory: src/test/resources/proto

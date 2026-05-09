@@ -1,4 +1,4 @@
-// Copyright 2023-2025 Buf Technologies, Inc.
+// Copyright 2023-2026 Buf Technologies, Inc.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -99,7 +99,7 @@ public class ValidatorDifferentJavaPackagesTest {
                             StringRules.getDescriptor()
                                 .findFieldByNumber(StringRules.PATTERN_FIELD_NUMBER))))
             .setRuleId("string.pattern")
-            .setMessage("value does not match regex pattern `^[a-z0-9]{1,9}$`")
+            .setMessage("does not match regex pattern `^[a-z0-9]{1,9}$`")
             .build();
     expectViolation(invalidMsgImports, expectedViolation);
 

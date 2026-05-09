@@ -1,4 +1,4 @@
-// Copyright 2023-2025 Buf Technologies, Inc.
+// Copyright 2023-2026 Buf Technologies, Inc.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -92,6 +92,8 @@ final class DescriptorMappings {
     EXPECTED_WKT_RULES.put("google.protobuf.Any", FIELD_RULES_DESC.findFieldByName("any"));
     EXPECTED_WKT_RULES.put(
         "google.protobuf.Duration", FIELD_RULES_DESC.findFieldByName("duration"));
+    EXPECTED_WKT_RULES.put(
+        "google.protobuf.FieldMask", FIELD_RULES_DESC.findFieldByName("field_mask"));
     EXPECTED_WKT_RULES.put(
         "google.protobuf.Timestamp", FIELD_RULES_DESC.findFieldByName("timestamp"));
   }

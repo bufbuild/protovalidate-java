@@ -1,0 +1,5 @@
+version: v2
+modules:
+  - path: src/jmh/proto
+deps:
+  - buf.build/bufbuild/protovalidate

@@ -1,4 +1,4 @@
-// Copyright 2023-2025 Buf Technologies, Inc.
+// Copyright 2023-2026 Buf Technologies, Inc.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -30,6 +30,7 @@ import com.google.protobuf.TypeRegistry;
 import dev.cel.bundle.Cel;
 import dev.cel.common.types.StructTypeReference;
 import dev.cel.runtime.CelEvaluationException;
+import dev.cel.runtime.CelRuntime.Program;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -41,11 +42,14 @@ import org.jspecify.annotations.Nullable;
 final class RuleCache {
   private static class CelRule {
     final AstExpression astExpression;
+    final Program program;
     final FieldDescriptor field;
     final FieldPath rulePath;
 
-    private CelRule(AstExpression astExpression, FieldDescriptor field, FieldPath rulePath) {
+    private CelRule(
+        AstExpression astExpression, Program program, FieldDescriptor field, FieldPath rulePath) {
       this.astExpression = astExpression;
+      this.program = program;
       this.field = field;
       this.rulePath = rulePath;
     }
@@ -58,11 +62,10 @@ final class RuleCache {
   }
 
   /**
-   * Concurrent map for caching {@link FieldDescriptor} and their associated List of {@link
-   * AstExpression}.
+   * Compiled rules keyed by rule field descriptor (e.g. {@code StringRules.min_len}), shared across
+   * all user fields that reference the same rule. The rule value is bound per call at eval time.
    */
-  private static final Map<FieldDescriptor, List<CelRule>> descriptorMap =
-      new ConcurrentHashMap<>();
+  private final Map<FieldDescriptor, List<CelRule>> descriptorMap = new ConcurrentHashMap<>();
 
   /** The environment to use for evaluation. */
   private final Cel cel;
@@ -119,20 +122,14 @@ final class RuleCache {
     }
     List<CompiledProgram> programs = new ArrayList<>();
     for (CelRule rule : completeProgramList) {
-      Cel ruleCel = getRuleCel(fieldDescriptor, message, rule.field, forItems);
-      try {
-        programs.add(
-            new CompiledProgram(
-                ruleCel.createProgram(rule.astExpression.ast),
-                rule.astExpression.source,
-                rule.rulePath,
-                new ObjectValue(rule.field, message.getField(rule.field)),
-                Variable.newRuleVariable(
-                    message, ProtoAdapter.toCel(rule.field, message.getField(rule.field)))));
-      } catch (CelEvaluationException e) {
-        throw new CompilationException(
-            "failed to evaluate rule " + rule.astExpression.source.id, e);
-      }
+      Object fieldValue = message.getField(rule.field);
+      programs.add(
+          new CompiledProgram(
+              rule.program,
+              rule.astExpression.source,
+              rule.rulePath,
+              new ObjectValue(rule.field, fieldValue),
+              Variable.newRuleVariable(message, ProtoAdapter.toCel(rule.field, fieldValue))));
     }
     return Collections.unmodifiableList(programs);
   }
@@ -144,14 +141,37 @@ final class RuleCache {
       FieldDescriptor ruleFieldDesc,
       Message message)
       throws CompilationException {
-    List<CelRule> celRules = descriptorMap.get(fieldDescriptor);
+    List<CelRule> celRules = descriptorMap.get(ruleFieldDesc);
     if (celRules != null) {
       return celRules;
     }
     build.buf.validate.PredefinedRules rules = getFieldRules(ruleFieldDesc);
     if (rules == null) return null;
+    try {
+      return descriptorMap.computeIfAbsent(
+          ruleFieldDesc,
+          key -> {
+            try {
+              return buildCelRules(fieldDescriptor, forItems, setOneof, key, message, rules);
+            } catch (CompilationException e) {
+              throw new UncheckedCompilationException(e);
+            }
+          });
+    } catch (UncheckedCompilationException e) {
+      throw e.getCompilationException();
+    }
+  }
+
+  private List<CelRule> buildCelRules(
+      FieldDescriptor fieldDescriptor,
+      boolean forItems,
+      FieldDescriptor setOneof,
+      FieldDescriptor ruleFieldDesc,
+      Message message,
+      build.buf.validate.PredefinedRules rules)
+      throws CompilationException {
     List<Expression> expressions = Expression.fromRules(rules.getCelList());
-    celRules = new ArrayList<>(expressions.size());
+    List<CelRule> celRules = new ArrayList<>(expressions.size());
     Cel ruleCel = getRuleCel(fieldDescriptor, message, ruleFieldDesc, forItems);
     for (Expression expression : expressions) {
       FieldPath rulePath =
@@ -159,12 +179,30 @@ final class RuleCache {
               .addElements(FieldPathUtils.fieldPathElement(setOneof))
               .addElements(FieldPathUtils.fieldPathElement(ruleFieldDesc))
               .build();
-      celRules.add(
-          new CelRule(
-              AstExpression.newAstExpression(ruleCel, expression), ruleFieldDesc, rulePath));
+      AstExpression astExpression = AstExpression.newAstExpression(ruleCel, expression);
+      Program program;
+      try {
+        program = ruleCel.createProgram(astExpression.ast);
+      } catch (CelEvaluationException e) {
+        throw new CompilationException(
+            "failed to create program for rule " + astExpression.source.id, e);
+      }
+      celRules.add(new CelRule(astExpression, program, ruleFieldDesc, rulePath));
     }
-    descriptorMap.put(ruleFieldDesc, celRules);
     return celRules;
+  }
+
+  private static final class UncheckedCompilationException extends RuntimeException {
+    private final CompilationException compilationException;
+
+    UncheckedCompilationException(CompilationException cause) {
+      super(cause);
+      this.compilationException = cause;
+    }
+
+    CompilationException getCompilationException() {
+      return compilationException;
+    }
   }
 
   private build.buf.validate.@Nullable PredefinedRules getFieldRules(FieldDescriptor ruleFieldDesc)
@@ -306,7 +344,7 @@ final class RuleCache {
             DynamicMessage.parseFrom(
                 expectedRuleMessageDescriptor, typeRules.toByteString(), extensionRegistry);
       } catch (InvalidProtocolBufferException e) {
-        throw new RuntimeException(e);
+        throw new CompilationException("failed to reparse rules with extension registry", e);
       }
     }
     if (!allowUnknownFields && !typeRules.getUnknownFields().isEmpty()) {

@@ -1,4 +1,4 @@
-// Copyright 2023-2025 Buf Technologies, Inc.
+// Copyright 2023-2026 Buf Technologies, Inc.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -56,6 +56,9 @@ final class MessageEvaluator implements Evaluator {
    * @param eval The evaluator to append.
    */
   void append(Evaluator eval) {
+    if (eval.tautology()) {
+      return;
+    }
     evaluators.add(eval);
   }
 }

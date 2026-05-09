@@ -1,4 +1,4 @@
-// Copyright 2023-2025 Buf Technologies, Inc.
+// Copyright 2023-2026 Buf Technologies, Inc.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -24,6 +24,7 @@ import build.buf.validate.conformance.cases.BoolConstTrue;
 import build.buf.validate.conformance.cases.BytesContains;
 import build.buf.validate.conformance.cases.BytesIn;
 import build.buf.validate.conformance.cases.DurationGTELTE;
+import build.buf.validate.conformance.cases.DurationIn;
 import build.buf.validate.conformance.cases.Embed;
 import build.buf.validate.conformance.cases.EnumDefined;
 import build.buf.validate.conformance.cases.Fixed32LT;
@@ -263,6 +264,14 @@ public class ValidatorTest {
   @Test
   public void testStringLenEmoji() throws ValidationException {
     StringLen test = StringLen.newBuilder().setVal("😅😄👾").build();
+    ValidationResult validate = validator.validate(test);
+    assertThat(validate.getViolations()).isEmpty();
+    assertThat(validate.isSuccess()).isTrue();
+  }
+
+  @Test
+  public void testDurationIn() throws ValidationException {
+    DurationIn test = DurationIn.newBuilder().setVal(Duration.newBuilder().setSeconds(1)).build();
     ValidationResult validate = validator.validate(test);
     assertThat(validate.getViolations()).isEmpty();
     assertThat(validate.isSuccess()).isTrue();

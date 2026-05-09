@@ -1,4 +1,4 @@
-// Copyright 2023-2025 Buf Technologies, Inc.
+// Copyright 2023-2026 Buf Technologies, Inc.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -98,16 +98,7 @@ final class FieldEvaluator implements Evaluator {
     if (message == null) {
       return RuleViolation.NO_VIOLATIONS;
     }
-    boolean hasField;
-    if (descriptor.isRepeated()) {
-      if (descriptor.isMapField()) {
-        hasField = !message.getField(descriptor).mapValue().isEmpty();
-      } else {
-        hasField = !message.getField(descriptor).repeatedValue().isEmpty();
-      }
-    } else {
-      hasField = message.hasField(descriptor);
-    }
+    boolean hasField = isFieldSet(message, descriptor);
     if (required && !hasField) {
       return Collections.singletonList(
           RuleViolation.newBuilder()
@@ -122,5 +113,19 @@ final class FieldEvaluator implements Evaluator {
       return RuleViolation.NO_VIOLATIONS;
     }
     return valueEvaluator.evaluate(message.getField(descriptor), failFast);
+  }
+
+  /**
+   * Returns whether the given field is set on the message. Handles repeated and map fields, which
+   * require inspecting the list/map contents rather than a presence bit.
+   */
+  static boolean isFieldSet(MessageReflector message, FieldDescriptor field) {
+    if (field.isRepeated()) {
+      if (field.isMapField()) {
+        return !message.getField(field).mapValue().isEmpty();
+      }
+      return !message.getField(field).repeatedValue().isEmpty();
+    }
+    return message.hasField(field);
   }
 }

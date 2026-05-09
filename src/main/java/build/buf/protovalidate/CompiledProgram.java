@@ -1,4 +1,4 @@
-// Copyright 2023-2025 Buf Technologies, Inc.
+// Copyright 2023-2026 Buf Technologies, Inc.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -105,8 +105,12 @@ final class CompiledProgram {
       if (Boolean.TRUE.equals(value)) {
         return null;
       }
+      String message = this.source.message;
+      if (message.isEmpty()) {
+        message = String.format("\"%s\" returned false", this.source.expression);
+      }
       RuleViolation.Builder builder =
-          RuleViolation.newBuilder().setRuleId(this.source.id).setMessage(this.source.message);
+          RuleViolation.newBuilder().setRuleId(this.source.id).setMessage(message);
       if (rulePath != null) {
         builder.addAllRulePathElements(rulePath.getElementsList());
       }

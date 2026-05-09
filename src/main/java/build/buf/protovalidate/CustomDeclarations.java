@@ -1,4 +1,4 @@
-// Copyright 2023-2025 Buf Technologies, Inc.
+// Copyright 2023-2026 Buf Technologies, Inc.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -103,6 +103,17 @@ final class CustomDeclarations {
             "isHostname",
             newMemberOverload(
                 "is_hostname", SimpleType.BOOL, Collections.singletonList(SimpleType.STRING))));
+
+    // Redeclare 'matches' with the same overload ids as the stdlib.
+    decls.add(
+        newFunctionDeclaration(
+            "matches",
+            newGlobalOverload(
+                "matches", SimpleType.BOOL, Arrays.asList(SimpleType.STRING, SimpleType.STRING)),
+            newMemberOverload(
+                "matches_string",
+                SimpleType.BOOL,
+                Arrays.asList(SimpleType.STRING, SimpleType.STRING))));
 
     decls.add(
         newFunctionDeclaration(

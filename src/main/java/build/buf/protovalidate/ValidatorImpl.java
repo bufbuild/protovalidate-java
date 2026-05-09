@@ -1,4 +1,4 @@
-// Copyright 2023-2025 Buf Technologies, Inc.
+// Copyright 2023-2026 Buf Technologies, Inc.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -18,9 +18,6 @@ import build.buf.protovalidate.exceptions.CompilationException;
 import build.buf.protovalidate.exceptions.ValidationException;
 import com.google.protobuf.Descriptors.Descriptor;
 import com.google.protobuf.Message;
-import dev.cel.bundle.Cel;
-import dev.cel.bundle.CelFactory;
-import dev.cel.common.CelOptions;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,29 +32,14 @@ final class ValidatorImpl implements Validator {
   private final boolean failFast;
 
   ValidatorImpl(Config config) {
-    ValidateLibrary validateLibrary = new ValidateLibrary();
-    Cel cel =
-        CelFactory.standardCelBuilder()
-            .addCompilerLibraries(validateLibrary)
-            .addRuntimeLibraries(validateLibrary)
-            .setOptions(
-                CelOptions.DEFAULT.toBuilder().evaluateCanonicalTypesToNativeValues(true).build())
-            .build();
-    this.evaluatorBuilder = new EvaluatorBuilder(cel, config);
+    this.evaluatorBuilder = new EvaluatorBuilder(ValidateLibrary.newCel(), config);
     this.failFast = config.isFailFast();
   }
 
   ValidatorImpl(Config config, List<Descriptor> descriptors, boolean disableLazy)
       throws CompilationException {
-    ValidateLibrary validateLibrary = new ValidateLibrary();
-    Cel cel =
-        CelFactory.standardCelBuilder()
-            .addCompilerLibraries(validateLibrary)
-            .addRuntimeLibraries(validateLibrary)
-            .setOptions(
-                CelOptions.DEFAULT.toBuilder().evaluateCanonicalTypesToNativeValues(true).build())
-            .build();
-    this.evaluatorBuilder = new EvaluatorBuilder(cel, config, descriptors, disableLazy);
+    this.evaluatorBuilder =
+        new EvaluatorBuilder(ValidateLibrary.newCel(), config, descriptors, disableLazy);
     this.failFast = config.isFailFast();
   }
 

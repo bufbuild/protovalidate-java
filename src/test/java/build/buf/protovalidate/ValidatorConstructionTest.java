@@ -1,4 +1,4 @@
-// Copyright 2023-2025 Buf Technologies, Inc.
+// Copyright 2023-2026 Buf Technologies, Inc.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -193,7 +193,7 @@ public class ValidatorConstructionTest {
     assertThat(result.isSuccess()).isFalse();
     assertThat(result.getViolations().size()).isEqualTo(1);
     assertThat(result.getViolations().get(0).toProto().getMessage())
-        .isEqualTo("value length must be at most 5 characters");
+        .isEqualTo("must be at most 5 characters");
   }
 
   // Tests that the config is applied when building a validator with seed descriptors.
@@ -214,6 +214,6 @@ public class ValidatorConstructionTest {
     assertThat(result.isSuccess()).isFalse();
     assertThat(result.getViolations().size()).isEqualTo(1);
     assertThat(result.getViolations().get(0).toProto().getMessage())
-        .isEqualTo("value length must be at most 5 characters");
+        .isEqualTo("must be at most 5 characters");
   }
 }
