@@ -111,16 +111,29 @@ final class NumericRulesEvaluator<T extends Number & Comparable<T>> implements E
     Message.Builder typedBuilder = rulesMsg.toBuilder();
     boolean hasRule = false;
 
+    // if a loVal or hiVal is NaN, exit out because it's not a valid rule
     T loVal = null;
     LowerBound lowerKind = LowerBound.NONE;
     if (rulesMsg.hasField(descs.gtField)) {
       lowerKind = LowerBound.GT;
       loVal = config.valueClass.cast(rulesMsg.getField(descs.gtField));
+      if (loVal instanceof Float && Float.isNaN((Float) loVal)) {
+        return null;
+      }
+      if (loVal instanceof Double && Double.isNaN((Double) loVal)) {
+        return null;
+      }
       typedBuilder.clearField(descs.gtField);
       hasRule = true;
     } else if (rulesMsg.hasField(descs.gteField)) {
       lowerKind = LowerBound.GTE;
       loVal = config.valueClass.cast(rulesMsg.getField(descs.gteField));
+      if (loVal instanceof Float && Float.isNaN((Float) loVal)) {
+        return null;
+      }
+      if (loVal instanceof Double && Double.isNaN((Double) loVal)) {
+        return null;
+      }
       typedBuilder.clearField(descs.gteField);
       hasRule = true;
     }
@@ -130,11 +143,23 @@ final class NumericRulesEvaluator<T extends Number & Comparable<T>> implements E
     if (rulesMsg.hasField(descs.ltField)) {
       upperKind = UpperBound.LT;
       hiVal = config.valueClass.cast(rulesMsg.getField(descs.ltField));
+      if (hiVal instanceof Float && Float.isNaN((Float) hiVal)) {
+        return null;
+      }
+      if (hiVal instanceof Double && Double.isNaN((Double) hiVal)) {
+        return null;
+      }
       typedBuilder.clearField(descs.ltField);
       hasRule = true;
     } else if (rulesMsg.hasField(descs.lteField)) {
       upperKind = UpperBound.LTE;
       hiVal = config.valueClass.cast(rulesMsg.getField(descs.lteField));
+      if (hiVal instanceof Float && Float.isNaN((Float) hiVal)) {
+        return null;
+      }
+      if (hiVal instanceof Double && Double.isNaN((Double) hiVal)) {
+        return null;
+      }
       typedBuilder.clearField(descs.lteField);
       hasRule = true;
     }

@@ -479,13 +479,35 @@ final class CustomOverload {
    * @param list The input list to check for uniqueness.
    * @return {@code true} if the list contains unique scalar values, {@code false} otherwise.
    */
-  private static boolean uniqueList(List<?> list) throws CelEvaluationException {
+  static boolean uniqueList(List<?> list) {
     long size = list.size();
     if (size == 0) {
       return true;
     }
     Set<Object> exist = new HashSet<>((int) size);
     for (Object val : list) {
+      // NaN corner case, ignore NaN, because each one should be treated as unique
+      // also handle 0 and -0 being equal to each other
+      if (val instanceof Double) {
+        Double valDouble = (Double) val;
+        if (valDouble.isNaN()) {
+          continue;
+        }
+        // should normalize 0 and -0
+        if (valDouble == 0.0) {
+          val = 0.0;
+        }
+      }
+      if (val instanceof Float) {
+        Float valFloat = (Float) val;
+        if (valFloat.isNaN()) {
+          continue;
+        }
+        // should normalize 0 and -0
+        if (valFloat == 0.0f) {
+          val = 0.0f;
+        }
+      }
       if (!exist.add(val)) {
         return false;
       }

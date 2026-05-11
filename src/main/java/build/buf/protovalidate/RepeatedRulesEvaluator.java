@@ -17,9 +17,7 @@ package build.buf.protovalidate;
 import build.buf.validate.FieldRules;
 import build.buf.validate.RepeatedRules;
 import com.google.protobuf.Descriptors.FieldDescriptor;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 import org.jspecify.annotations.Nullable;
 
 /**
@@ -177,7 +175,7 @@ final class RepeatedRulesEvaluator implements Evaluator {
       if (failFast) return base.done(violations);
     }
 
-    if (unique && !isUnique(list)) {
+    if (unique && !CustomOverload.uniqueList(list)) {
       violations =
           RuleBase.add(
               violations, NativeViolations.newViolation(UNIQUE_SITE, null, null, val, true));
@@ -185,23 +183,5 @@ final class RepeatedRulesEvaluator implements Evaluator {
     }
 
     return base.done(violations);
-  }
-
-  /**
-   * Returns true iff every element in {@code list} is distinct. Uses a {@link HashSet} to test for
-   * uniqueness.
-   */
-  private static boolean isUnique(List<?> list) {
-    int size = list.size();
-    if (size <= 1) {
-      return true;
-    }
-    Set<Object> seen = new HashSet<>(size);
-    for (Object element : list) {
-      if (!seen.add(element)) {
-        return false;
-      }
-    }
-    return true;
   }
 }

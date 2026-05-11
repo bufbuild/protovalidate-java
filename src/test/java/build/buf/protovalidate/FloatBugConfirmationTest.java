@@ -136,12 +136,12 @@ class FloatBugConfirmationTest {
             .addFvals(Float.NaN)
             .build();
     // should both be no error, since NaN is not equal to itself
-    // it's not because Java CEL is broken so replicate broken behavior
     ValidationResult nanMsgResultNative = nativeValidator.validate(nanMsg);
     ValidationResult nanMsgResultCEL = celValidator.validate(nanMsg);
     assertViolationsEqual(nanMsg);
-    assertThat(nanMsgResultNative.getViolations()).isNotEmpty();
-    assertThat(nanMsgResultCEL.getViolations()).isNotEmpty();
+    // works for native and CEL now
+    assertThat(nanMsgResultNative.getViolations()).isEmpty();
+    assertThat(nanMsgResultCEL.getViolations()).isEmpty();
 
     // now check -0 and 0 for uniqueness (should not be)
     FloatDoubleNaNNegZero zeroMsg =
@@ -152,12 +152,11 @@ class FloatBugConfirmationTest {
             .addFvals(-0.0F)
             .build();
     // should both be error, since 0 == -0
-    // but it's not because Java CEL is broken on unique tests for -0 so replicate broken behavior
     nanMsgResultNative = nativeValidator.validate(zeroMsg);
     nanMsgResultCEL = celValidator.validate(zeroMsg);
     assertViolationsEqual(zeroMsg);
-    assertThat(nanMsgResultNative.getViolations()).isEmpty();
-    assertThat(nanMsgResultCEL.getViolations()).isEmpty();
+    assertThat(nanMsgResultNative.getViolations()).isNotEmpty();
+    assertThat(nanMsgResultCEL.getViolations()).isNotEmpty();
   }
 
   // --- helpers ----------------------------------------------------------------------------------
