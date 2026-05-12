@@ -62,6 +62,11 @@ final class ListElementValue implements Value {
   }
 
   @Override
+  public Object rawValue() {
+    return value;
+  }
+
+  @Override
   public List<Value> repeatedValue() {
     return Collections.emptyList();
   }

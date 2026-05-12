@@ -51,6 +51,22 @@ interface Value {
   <T> T value(Class<T> clazz);
 
   /**
+   * Returns the underlying protobuf Java value without any CEL-specific adaptation.
+   *
+   * <p>{@link #value(Class)} routes scalars through {@code ProtoAdapter.toCel}, which converts
+   * {@code int32→Long}, {@code uint32→UnsignedLong}, {@code float→Double}, {@code bytes→
+   * CelByteString}, etc. — appropriate for the CEL evaluation path but lossy for native rule
+   * evaluators that compare against raw protobuf field values. Native evaluators in {@code
+   * build.buf.protovalidate.rules} use this method to obtain values they can compare directly with
+   * the values they read off the typed rule message.
+   *
+   * @return The underlying value as protobuf-java provides it. Non-null for all values produced by
+   *     the evaluator pipeline (field reads, list elements, message wrappers — all guarantee a
+   *     value).
+   */
+  Object rawValue();
+
+  /**
    * Get the underlying value as a list.
    *
    * @return The underlying value as a list. Empty list is returned if the underlying type is not a
