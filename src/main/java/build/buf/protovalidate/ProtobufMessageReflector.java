@@ -14,6 +14,7 @@
 
 package build.buf.protovalidate;
 
+import com.google.protobuf.Descriptors.Descriptor;
 import com.google.protobuf.Descriptors.FieldDescriptor;
 import com.google.protobuf.Message;
 
@@ -26,6 +27,11 @@ class ProtobufMessageReflector implements MessageReflector {
 
   public Message getMessage() {
     return message;
+  }
+
+  @Override
+  public Descriptor getDescriptorForType() {
+    return message.getDescriptorForType();
   }
 
   @Override

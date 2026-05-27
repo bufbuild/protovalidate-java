@@ -14,6 +14,7 @@
 
 package build.buf.protovalidate;
 
+import com.google.protobuf.Descriptors.Descriptor;
 import com.google.protobuf.Descriptors.FieldDescriptor;
 
 /**
@@ -21,10 +22,16 @@ import com.google.protobuf.Descriptors.FieldDescriptor;
  * to the underlying message.
  *
  * <p>{@link MessageReflector} is a runtime-independent interface. Any protobuf runtime that
- * implements this interface can wrap its messages and, along with their {@link
- * com.google.protobuf.Descriptors.Descriptor}s, protovalidate-java will be able to validate them.
+ * implements this interface can wrap its messages so that protovalidate-java can validate them.
  */
 public interface MessageReflector {
+  /**
+   * The {@link Descriptor} of the wrapped message's type.
+   *
+   * @return The descriptor.
+   */
+  Descriptor getDescriptorForType();
+
   /**
    * Whether the wrapped message has the field described by the provided field descriptor.
    *
@@ -43,8 +50,8 @@ public interface MessageReflector {
 
   /**
    * Returns the representation of this message to hand to CEL for {@code this}-variable rule
-   * evaluation. Implementations return whichever form CEL can navigate for their runtime —
-   * e.g. a {@link com.google.protobuf.Message} or a {@code dev.cel.common.values.CelValue}.
+   * evaluation. Implementations return whichever form CEL can navigate for their runtime, such as
+   * a {@link com.google.protobuf.Message} or a {@code dev.cel.common.values.CelValue}.
    */
   Object celValue();
 }

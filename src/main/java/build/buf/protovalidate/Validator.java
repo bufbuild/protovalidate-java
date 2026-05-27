@@ -17,7 +17,6 @@ package build.buf.protovalidate;
 import build.buf.protovalidate.exceptions.CompilationException;
 import build.buf.protovalidate.exceptions.ExecutionException;
 import build.buf.protovalidate.exceptions.ValidationException;
-import com.google.protobuf.Descriptors.Descriptor;
 import com.google.protobuf.Message;
 
 /** A validator that can be used to validate messages */
@@ -43,10 +42,8 @@ public interface Validator {
    * through a {@link Message}.
    *
    * @param message the {@link MessageReflector} view of the message to validate.
-   * @param descriptor the protobuf {@link Descriptor} for the message type.
    * @return the {@link ValidationResult} from the evaluation.
    * @throws ValidationException if there are any compilation or validation execution errors.
    */
-  ValidationResult validate(MessageReflector message, Descriptor descriptor)
-      throws ValidationException;
+  ValidationResult validate(MessageReflector message) throws ValidationException;
 }
