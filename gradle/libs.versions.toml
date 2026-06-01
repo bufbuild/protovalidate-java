@@ -21,7 +21,7 @@ maven-plugin = { module = "com.vanniktech:gradle-maven-publish-plugin", version.
 nullaway = { module = "com.uber.nullaway:nullaway", version = "0.13.4" }
 protobuf-java = { module = "com.google.protobuf:protobuf-java", version.ref = "protobuf" }
 re2j = { module = "com.google.re2j:re2j", version.ref = "re2j" }
-spotless = { module = "com.diffplug.spotless:spotless-plugin-gradle", version = "8.5.1" }
+spotless = { module = "com.diffplug.spotless:spotless-plugin-gradle", version = "8.6.0" }
 
 [plugins]
 errorprone = { id = "net.ltgt.errorprone", version = "5.1.0" }
