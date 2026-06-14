@@ -18,15 +18,21 @@ import com.google.re2j.Pattern;
 import dev.cel.bundle.Cel;
 import dev.cel.bundle.CelFactory;
 import dev.cel.checker.CelCheckerBuilder;
+import dev.cel.checker.CelCheckerLegacyImpl;
 import dev.cel.checker.CelStandardDeclarations;
 import dev.cel.common.CelOptions;
 import dev.cel.common.CelVarDecl;
 import dev.cel.common.types.SimpleType;
+import dev.cel.compiler.CelCompiler;
+import dev.cel.compiler.CelCompilerImpl;
 import dev.cel.compiler.CelCompilerLibrary;
 import dev.cel.extensions.CelExtensions;
 import dev.cel.parser.CelParserBuilder;
+import dev.cel.parser.CelParserImpl;
 import dev.cel.parser.CelStandardMacro;
+import dev.cel.runtime.CelRuntime;
 import dev.cel.runtime.CelRuntimeBuilder;
+import dev.cel.runtime.CelRuntimeImpl;
 import dev.cel.runtime.CelRuntimeLibrary;
 import dev.cel.runtime.CelStandardFunctions;
 import java.util.concurrent.ConcurrentHashMap;
@@ -38,7 +44,13 @@ import java.util.concurrent.ConcurrentMap;
  */
 final class ValidateLibrary implements CelCompilerLibrary, CelRuntimeLibrary {
 
-  private static final CelOptions CEL_OPTIONS = CelOptions.DEFAULT;
+  // enableHeterogeneousNumericComparisons(true) is required by CelRuntimeImpl (the planner).
+  // enableCelValue(true) lights up the CelValue (StructValue) path used by MessageReflector.
+  private static final CelOptions CEL_OPTIONS =
+      CelOptions.current()
+          .enableHeterogeneousNumericComparisons(true)
+          .enableCelValue(true)
+          .build();
 
   private final ConcurrentMap<String, Pattern> patternCache = new ConcurrentHashMap<>();
 
@@ -47,22 +59,32 @@ final class ValidateLibrary implements CelCompilerLibrary, CelRuntimeLibrary {
 
   static Cel newCel() {
     ValidateLibrary validateLibrary = new ValidateLibrary();
-    return CelFactory.standardCelBuilder()
-        .setOptions(CEL_OPTIONS)
-        // Drop stdlib matches; CustomOverload provides a caching replacement.
-        // Ref: https://github.com/google/cel-java/issues/1038
-        .setStandardEnvironmentEnabled(false)
-        .setStandardDeclarations(
-            CelStandardDeclarations.newBuilder()
-                .excludeFunctions(CelStandardDeclarations.StandardFunction.MATCHES)
-                .build())
-        .setStandardFunctions(
-            CelStandardFunctions.newBuilder()
-                .excludeFunctions(CelStandardFunctions.StandardFunction.MATCHES)
-                .build())
-        .addCompilerLibraries(validateLibrary, CelExtensions.strings())
-        .addRuntimeLibraries(validateLibrary, CelExtensions.strings())
-        .build();
+    // Wire compiler and runtime separately. plannerCelBuilder() rejects
+    // setStandardEnvironmentEnabled(false) on the runtime side, which we need to drop stdlib
+    // matches in favor of CustomOverload's caching replacement
+    // (https://github.com/google/cel-java/issues/1038). Combining via CelFactory.combine lets us
+    // configure each side as needed.
+    CelCompiler compiler =
+        CelCompilerImpl.newBuilder(
+                CelParserImpl.newBuilder(),
+                CelCheckerLegacyImpl.newBuilder().setStandardEnvironmentEnabled(false))
+            .setOptions(CEL_OPTIONS)
+            .setStandardDeclarations(
+                CelStandardDeclarations.newBuilder()
+                    .excludeFunctions(CelStandardDeclarations.StandardFunction.MATCHES)
+                    .build())
+            .addLibraries(validateLibrary, CelExtensions.strings())
+            .build();
+    CelRuntime runtime =
+        CelRuntimeImpl.newBuilder()
+            .setOptions(CEL_OPTIONS)
+            .setStandardFunctions(
+                CelStandardFunctions.newBuilder()
+                    .excludeFunctions(CelStandardFunctions.StandardFunction.MATCHES)
+                    .build())
+            .addLibraries(validateLibrary, CelExtensions.strings())
+            .build();
+    return CelFactory.combine(compiler, runtime);
   }
 
   @Override

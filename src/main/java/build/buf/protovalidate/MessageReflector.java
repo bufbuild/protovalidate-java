@@ -52,6 +52,8 @@ public interface MessageReflector {
    * Returns the representation of this message to hand to CEL for {@code this}-variable rule
    * evaluation. Implementations return whichever form CEL can navigate for their runtime, such as
    * a {@link com.google.protobuf.Message} or a {@code dev.cel.common.values.CelValue}.
+   *
+   * @return The CEL-navigable representation of this message.
    */
   Object celValue();
 }

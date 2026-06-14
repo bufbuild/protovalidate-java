@@ -40,6 +40,11 @@ final class MessageReflectorValue implements Value {
   }
 
   @Override
+  public Object rawValue() {
+    return reflector;
+  }
+
+  @Override
   public Object celValue() {
     return reflector.celValue();
   }

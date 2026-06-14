@@ -16,7 +16,6 @@ package build.buf.protovalidate;
 
 import build.buf.protovalidate.exceptions.ExecutionException;
 import com.google.protobuf.Descriptors.FieldDescriptor;
-import com.google.protobuf.Message;
 import java.util.List;
 
 /**
@@ -26,7 +25,7 @@ import java.util.List;
  *
  * <p>CEL's runtime auto-unwraps wrappers to their inner primitive type, so the CEL path doesn't
  * need this adapter. Native evaluators expect the underlying scalar (e.g. {@code Long} for {@code
- * Int64Value.value}); without unwrapping they'd see the wrapper {@link Message} and misbehave.
+ * Int64Value.value}); without unwrapping they'd see the wrapper message and misbehave.
  * Mirrors {@code wrappedValueEval} in protovalidate-go's {@code builder.go}.
  *
  * <p>The wrapped evaluator's {@link RuleBase} is constructed against the OUTER wrapper field's
@@ -58,12 +57,12 @@ final class WrappedValueEvaluator implements Evaluator {
   @Override
   public List<RuleViolation.Builder> evaluate(Value val, boolean failFast)
       throws ExecutionException {
-    Message message = val.messageValue();
+    MessageReflector message = val.messageValue();
     if (message == null) {
       // proto3 message-typed field absent — no value to validate.
       return RuleViolation.NO_VIOLATIONS;
     }
-    Object innerValue = message.getField(innerField);
-    return inner.evaluate(new ObjectValue(innerField, innerValue), failFast);
+    Value innerValue = message.getField(innerField);
+    return inner.evaluate(innerValue, failFast);
   }
 }

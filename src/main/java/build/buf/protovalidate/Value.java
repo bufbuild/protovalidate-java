@@ -43,7 +43,7 @@ public interface Value {
   /**
    * Returns the underlying protobuf Java value without any CEL-specific adaptation.
    *
-   * <p>{@link #value(Class)} routes scalars through {@code ProtoAdapter.toCel}, which converts
+   * <p>{@link #jvmValue(Class)} routes scalars through {@code ProtoAdapter.toCel}, which converts
    * {@code int32→Long}, {@code uint32→UnsignedLong}, {@code float→Double}, {@code bytes→
    * CelByteString}, etc. — appropriate for the CEL evaluation path but lossy for native rule
    * evaluators that compare against raw protobuf field values. Native evaluators in {@code
