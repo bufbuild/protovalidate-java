@@ -15,24 +15,18 @@
 package build.buf.protovalidate;
 
 import com.google.protobuf.Descriptors;
-import com.google.protobuf.Message;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import org.jspecify.annotations.Nullable;
 
-/** The {@link Value} type that contains a {@link com.google.protobuf.Message}. */
-final class MessageValue implements Value {
+/** Top-level {@link Value} backed by a user-supplied {@link MessageReflector}. */
+final class MessageReflectorValue implements Value {
 
-  private final ProtobufMessageReflector value;
+  private final MessageReflector reflector;
 
-  /**
-   * Constructs a {@link MessageValue} with the provided message value.
-   *
-   * @param value The message value.
-   */
-  MessageValue(Message value) {
-    this.value = new ProtobufMessageReflector(value);
+  MessageReflectorValue(MessageReflector reflector) {
+    this.reflector = reflector;
   }
 
   @Override
@@ -42,22 +36,22 @@ final class MessageValue implements Value {
 
   @Override
   public MessageReflector messageValue() {
-    return value;
+    return reflector;
+  }
+
+  @Override
+  public Object rawValue() {
+    return reflector;
   }
 
   @Override
   public Object celValue() {
-      return value.getMessage();
+    return reflector.celValue();
   }
 
   @Override
   public <T> T jvmValue(Class<T> clazz) {
     throw new UnsupportedOperationException();
-  }
-
-  @Override
-  public Object rawValue() {
-    return value;
   }
 
   @Override
