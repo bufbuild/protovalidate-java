@@ -417,7 +417,7 @@ final class CustomOverload {
    * <p>The port is separated by a colon. It must be non-empty, with a decimal number in the range
    * of 0-65535, inclusive.
    */
-  private static boolean isHostAndPort(String str, boolean portRequired) {
+  static boolean isHostAndPort(String str, boolean portRequired) {
     if (str.isEmpty()) {
       return false;
     }
@@ -479,13 +479,35 @@ final class CustomOverload {
    * @param list The input list to check for uniqueness.
    * @return {@code true} if the list contains unique scalar values, {@code false} otherwise.
    */
-  private static boolean uniqueList(List<?> list) throws CelEvaluationException {
+  static boolean uniqueList(List<?> list) {
     long size = list.size();
     if (size == 0) {
       return true;
     }
     Set<Object> exist = new HashSet<>((int) size);
     for (Object val : list) {
+      // NaN corner case, ignore NaN, because each one should be treated as unique
+      // also handle 0 and -0 being equal to each other
+      if (val instanceof Double) {
+        Double valDouble = (Double) val;
+        if (valDouble.isNaN()) {
+          continue;
+        }
+        // should normalize 0 and -0
+        if (valDouble == 0.0) {
+          val = 0.0;
+        }
+      }
+      if (val instanceof Float) {
+        Float valFloat = (Float) val;
+        if (valFloat.isNaN()) {
+          continue;
+        }
+        // should normalize 0 and -0
+        if (valFloat == 0.0f) {
+          val = 0.0f;
+        }
+      }
       if (!exist.add(val)) {
         return false;
       }
@@ -503,7 +525,7 @@ final class CustomOverload {
    * @param addr The input string to validate as an email address.
    * @return {@code true} if the input string is a valid email address, {@code false} otherwise.
    */
-  private static boolean isEmail(String addr) {
+  static boolean isEmail(String addr) {
     return EMAIL_REGEX.matcher(addr).matches();
   }
 
@@ -521,7 +543,7 @@ final class CustomOverload {
    *   <li>The name can be 253 characters at most, excluding the optional trailing dot.
    * </ul>
    */
-  private static boolean isHostname(String val) {
+  static boolean isHostname(String val) {
     if (val.length() > 253) {
       return false;
     }
@@ -595,7 +617,7 @@ final class CustomOverload {
    * <p>URI is defined in the internet standard RFC 3986. Zone Identifiers in IPv6 address literals
    * are supported (RFC 6874).
    */
-  private static boolean isUri(String str) {
+  static boolean isUri(String str) {
     return new Uri(str).uri();
   }
 
@@ -607,7 +629,7 @@ final class CustomOverload {
    * <p>URI, URI Reference, and Relative Reference are defined in the internet standard RFC 3986.
    * Zone Identifiers in IPv6 address literals are supported (RFC 6874).
    */
-  private static boolean isUriRef(String str) {
+  static boolean isUriRef(String str) {
     return new Uri(str).uriReference();
   }
 
@@ -628,7 +650,7 @@ final class CustomOverload {
    * <p>The same principle applies to IPv4 addresses. "192.168.1.0/24" designates the first 24 bits
    * of the 32-bit IPv4 as the network prefix.
    */
-  private static boolean isIpPrefix(String str, long version, boolean strict) {
+  static boolean isIpPrefix(String str, long version, boolean strict) {
     if (version == 6L) {
       Ipv6 ip = new Ipv6(str);
       return ip.addressPrefix() && (!strict || ip.isPrefixOnly());

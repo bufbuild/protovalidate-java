@@ -27,16 +27,19 @@ public final class Config {
   private final TypeRegistry typeRegistry;
   private final ExtensionRegistry extensionRegistry;
   private final boolean allowUnknownFields;
+  private final boolean enableNativeRules;
 
   private Config(
       boolean failFast,
       TypeRegistry typeRegistry,
       ExtensionRegistry extensionRegistry,
-      boolean allowUnknownFields) {
+      boolean allowUnknownFields,
+      boolean enableNativeRules) {
     this.failFast = failFast;
     this.typeRegistry = typeRegistry;
     this.extensionRegistry = extensionRegistry;
     this.allowUnknownFields = allowUnknownFields;
+    this.enableNativeRules = enableNativeRules;
   }
 
   /**
@@ -84,12 +87,27 @@ public final class Config {
     return allowUnknownFields;
   }
 
+  /**
+   * Checks whether native (non-CEL) rule evaluators are enabled.
+   *
+   * <p>When true, standard rules with a native Java implementation bypass CEL evaluation. When
+   * false, all rules go through CEL. Defaults to true; applications opt out by calling {@link
+   * Builder#setEnableNativeRules(boolean) setEnableNativeRules(false)}.
+   *
+   * @return true if native rules are enabled.
+   */
+  public boolean isNativeRulesEnabled() {
+    return enableNativeRules;
+  }
+
   /** Builder for configuration. Provides a forward compatible API for users. */
   public static final class Builder {
     private boolean failFast;
     private TypeRegistry typeRegistry = DEFAULT_TYPE_REGISTRY;
     private ExtensionRegistry extensionRegistry = DEFAULT_EXTENSION_REGISTRY;
     private boolean allowUnknownFields;
+    // native rules are enabled by default
+    private boolean enableNativeRules = true;
 
     private Builder() {}
 
@@ -158,12 +176,26 @@ public final class Config {
     }
 
     /**
+     * Enables or disables native (non-CEL) rule evaluators. Native rules are enabled by default.
+     * Forward-compatible: any rule not yet implemented natively continues to be enforced via CEL
+     * regardless of this setting.
+     *
+     * @param enableNativeRules whether to enable native rules
+     * @return this builder
+     */
+    public Builder setEnableNativeRules(boolean enableNativeRules) {
+      this.enableNativeRules = enableNativeRules;
+      return this;
+    }
+
+    /**
      * Build the corresponding {@link Config}.
      *
      * @return the configuration.
      */
     public Config build() {
-      return new Config(failFast, typeRegistry, extensionRegistry, allowUnknownFields);
+      return new Config(
+          failFast, typeRegistry, extensionRegistry, allowUnknownFields, enableNativeRules);
     }
   }
 }

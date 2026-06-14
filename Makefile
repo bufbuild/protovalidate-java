@@ -29,8 +29,9 @@ clean:  ## Delete intermediate build artifacts
 	$(GRADLE) clean
 
 .PHONY: conformance
-conformance: ## Execute conformance tests.
-	$(GRADLE) conformance:conformance
+conformance: ## Execute conformance tests with native rule evaluators enabled and disabled.
+	ENABLE_NATIVE_RULES=true $(GRADLE) conformance:conformance
+	ENABLE_NATIVE_RULES=false $(GRADLE) conformance:conformance
 
 .PHONY: help
 help: ## Describe useful make targets

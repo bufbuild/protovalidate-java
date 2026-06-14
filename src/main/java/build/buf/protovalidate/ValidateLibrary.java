@@ -47,8 +47,6 @@ final class ValidateLibrary implements CelCompilerLibrary, CelRuntimeLibrary {
 
   static Cel newCel() {
     ValidateLibrary validateLibrary = new ValidateLibrary();
-    // NOTE: CelExtensions.strings() does not implement string.reverse() or strings.quote() which
-    // are available in protovalidate-go. Fixed in https://github.com/google/cel-java/pull/998.
     return CelFactory.standardCelBuilder()
         .setOptions(CEL_OPTIONS)
         // Drop stdlib matches; CustomOverload provides a caching replacement.
