@@ -5,7 +5,7 @@ cel = "0.13.1"
 error-prone = "2.49.0"
 junit = "5.14.4"
 maven-publish = "0.36.0"
-protobuf = "4.35.0"
+protobuf = "4.35.1"
 re2j = "1.8"
 
 [libraries]
