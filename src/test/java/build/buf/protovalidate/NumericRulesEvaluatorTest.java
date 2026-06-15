@@ -18,6 +18,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import build.buf.protovalidate.exceptions.ValidationException;
 import build.buf.validate.DoubleRules;
+import build.buf.validate.FloatRules;
 import build.buf.validate.Int32Rules;
 import build.buf.validate.UInt32Rules;
 import com.example.noimports.validationtest.ExampleDoubleIn;
@@ -26,6 +27,7 @@ import com.example.noimports.validationtest.ExampleInt32Const;
 import com.example.noimports.validationtest.ExampleInt32GtLt;
 import com.example.noimports.validationtest.ExampleUint32Gt;
 import com.google.protobuf.Descriptors.FieldDescriptor;
+import java.util.Arrays;
 import org.junit.jupiter.api.Test;
 
 /**
@@ -137,12 +139,30 @@ class NumericRulesEvaluatorTest {
     Violation v = result.getViolations().get(0);
     assertThat(v.toProto().getRuleId()).isEqualTo("double.in");
 
-    // For in-list violations the rule_value is the failing value (matches Go's behavior).
+    // For in-list violations the rule_value is the in list itself, not the failing field value.
     Violation.FieldValue ruleValue = v.getRuleValue();
     assertThat(ruleValue).isNotNull();
-    assertThat(ruleValue.getValue()).isEqualTo(0.0);
+    assertThat(ruleValue.getValue()).isEqualTo(Arrays.asList(1.5, 2.5));
     FieldDescriptor expectedDesc =
         DoubleRules.getDescriptor().findFieldByNumber(DoubleRules.IN_FIELD_NUMBER);
+    assertThat(ruleValue.getDescriptor()).isEqualTo(expectedDesc);
+  }
+
+  @Test
+  void floatFiniteRuleValueShape() throws ValidationException {
+    ExampleFloatFinite msg =
+        ExampleFloatFinite.newBuilder().setVal(Float.POSITIVE_INFINITY).build();
+    ValidationResult result = nativeValidator().validate(msg);
+    assertThat(result.getViolations()).hasSize(1);
+    Violation v = result.getViolations().get(0);
+    assertThat(v.toProto().getRuleId()).isEqualTo("float.finite");
+
+    // For finite violations the rule_value is the rule's boolean, not the failing field value.
+    Violation.FieldValue ruleValue = v.getRuleValue();
+    assertThat(ruleValue).isNotNull();
+    assertThat(ruleValue.getValue()).isEqualTo(true);
+    FieldDescriptor expectedDesc =
+        FloatRules.getDescriptor().findFieldByNumber(FloatRules.FINITE_FIELD_NUMBER);
     assertThat(ruleValue.getDescriptor()).isEqualTo(expectedDesc);
   }
 

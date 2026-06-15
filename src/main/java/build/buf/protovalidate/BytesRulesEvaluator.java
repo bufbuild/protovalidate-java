@@ -424,7 +424,7 @@ final class BytesRulesEvaluator implements Evaluator {
           RuleBase.add(
               violations,
               NativeViolations.newViolation(
-                  IN_SITE, null, "must be in list " + formatList(inVals), val, bytesVal));
+                  IN_SITE, null, "must be in list " + formatList(inVals), val, inVals));
       if (failFast) return base.done(violations);
     }
 
@@ -437,7 +437,7 @@ final class BytesRulesEvaluator implements Evaluator {
                   null,
                   "must not be in list " + formatList(notInVals),
                   val,
-                  bytesVal));
+                  notInVals));
       if (failFast) return base.done(violations);
     }
 
