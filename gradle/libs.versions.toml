@@ -1,11 +1,11 @@
 [versions]
 assertj = "3.27.7"
 buf = "1.70.0"
-cel = "0.13.0"
-error-prone = "2.49.0"
+cel = "0.13.1"
+error-prone = "2.50.0"
 junit = "5.14.4"
 maven-publish = "0.36.0"
-protobuf = "4.35.0"
+protobuf = "4.35.1"
 re2j = "1.8"
 
 [libraries]
@@ -14,7 +14,7 @@ buf = { module = "build.buf:buf", version.ref = "buf" }
 cel = { module = "dev.cel:cel", version.ref = "cel" }
 errorprone-annotations = { module = "com.google.errorprone:error_prone_annotations", version.ref = "error-prone" }
 errorprone-core = { module = "com.google.errorprone:error_prone_core", version.ref = "error-prone" }
-grpc-protobuf = { module = "io.grpc:grpc-protobuf", version = "1.81.0" }
+grpc-protobuf = { module = "io.grpc:grpc-protobuf", version = "1.82.0" }
 jspecify = { module ="org.jspecify:jspecify", version = "1.0.0" }
 junit-bom = { module = "org.junit:junit-bom", version.ref = "junit" }
 maven-plugin = { module = "com.vanniktech:gradle-maven-publish-plugin", version.ref = "maven-publish" }
