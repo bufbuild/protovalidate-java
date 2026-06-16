@@ -650,7 +650,7 @@ final class StringRulesEvaluator implements Evaluator {
           RuleBase.add(
               violations,
               NativeViolations.newViolation(
-                  IN_SITE, null, "must be in list " + RuleBase.formatList(inVals), val, strVal));
+                  IN_SITE, null, "must be in list " + RuleBase.formatList(inVals), val, inVals));
       if (failFast) return base.done(violations);
     }
 
@@ -663,7 +663,7 @@ final class StringRulesEvaluator implements Evaluator {
                   null,
                   "must not be in list " + RuleBase.formatList(notInVals),
                   val,
-                  strVal));
+                  notInVals));
       if (failFast) return base.done(violations);
     }
 
