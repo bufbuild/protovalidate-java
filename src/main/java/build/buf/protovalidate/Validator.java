@@ -38,8 +38,8 @@ public interface Validator {
 
   /**
    * Validates a message provided as a {@link MessageReflector}. Used by alternative protobuf
-   * runtimes that reflect over their own message types via this interface rather than going
-   * through a {@link Message}.
+   * runtimes that reflect over their own message types via this interface rather than going through
+   * a {@link Message}.
    *
    * @param message the {@link MessageReflector} view of the message to validate.
    * @return the {@link ValidationResult} from the evaluation.

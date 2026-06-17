@@ -16,7 +16,6 @@ package build.buf.protovalidate;
 
 import build.buf.protovalidate.exceptions.ExecutionException;
 import com.google.protobuf.Descriptors.FieldDescriptor;
-import com.google.protobuf.Message;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;

@@ -25,8 +25,8 @@ import java.util.List;
  *
  * <p>CEL's runtime auto-unwraps wrappers to their inner primitive type, so the CEL path doesn't
  * need this adapter. Native evaluators expect the underlying scalar (e.g. {@code Long} for {@code
- * Int64Value.value}); without unwrapping they'd see the wrapper message and misbehave.
- * Mirrors {@code wrappedValueEval} in protovalidate-go's {@code builder.go}.
+ * Int64Value.value}); without unwrapping they'd see the wrapper message and misbehave. Mirrors
+ * {@code wrappedValueEval} in protovalidate-go's {@code builder.go}.
  *
  * <p>The wrapped evaluator's {@link RuleBase} is constructed against the OUTER wrapper field's
  * {@code ValueEvaluator}, so violation field paths point at the user's wrapper-typed field rather

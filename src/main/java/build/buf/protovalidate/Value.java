@@ -35,8 +35,8 @@ public interface Value {
   /**
    * Get the underlying value as a {@link MessageReflector} type.
    *
-   * @return The underlying {@link MessageReflector} value. null if the underlying value is not a {@link
-   *     MessageReflector} type.
+   * @return The underlying {@link MessageReflector} value. null if the underlying value is not a
+   *     {@link MessageReflector} type.
    */
   @Nullable MessageReflector messageValue();
 

@@ -49,7 +49,7 @@ final class OneofEvaluator implements Evaluator {
       throws ExecutionException {
     MessageReflector message = val.messageValue();
     if (message == null) {
-        return RuleViolation.NO_VIOLATIONS;
+      return RuleViolation.NO_VIOLATIONS;
     }
     boolean hasField = descriptor.getFields().stream().anyMatch(message::hasField);
     if (!required || hasField) {

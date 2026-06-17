@@ -54,7 +54,7 @@ final class ListElementValue implements Value {
 
   @Override
   public Object celValue() {
-      return ProtoAdapter.scalarToCel(fieldDescriptor.getType(), value);
+    return ProtoAdapter.scalarToCel(fieldDescriptor.getType(), value);
   }
 
   @Override

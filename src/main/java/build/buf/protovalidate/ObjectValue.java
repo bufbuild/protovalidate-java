@@ -62,7 +62,7 @@ final class ObjectValue implements Value {
 
   @Override
   public Object celValue() {
-      return ProtoAdapter.toCel(fieldDescriptor, value);
+    return ProtoAdapter.toCel(fieldDescriptor, value);
   }
 
   @Override

@@ -47,7 +47,7 @@ final class MessageValue implements Value {
 
   @Override
   public Object celValue() {
-      return value.getMessage();
+    return value.getMessage();
   }
 
   @Override
