@@ -122,7 +122,7 @@ final class EnumRulesEvaluator implements Evaluator {
     if (!inVals.isEmpty() && !inVals.contains(actual)) {
       RuleViolation.Builder b =
           NativeViolations.newViolation(
-              IN_SITE, null, "must be in list " + RuleBase.formatList(inVals), val, actual);
+              IN_SITE, null, "must be in list " + RuleBase.formatList(inVals), val, inVals);
       violations = RuleBase.add(violations, b);
       if (failFast) {
         return base.done(violations);
@@ -136,7 +136,7 @@ final class EnumRulesEvaluator implements Evaluator {
               null,
               "must not be in list " + RuleBase.formatList(notInVals),
               val,
-              actual);
+              notInVals);
       violations = RuleBase.add(violations, b);
       if (failFast) {
         return base.done(violations);

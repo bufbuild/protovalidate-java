@@ -236,7 +236,7 @@ final class NumericRulesEvaluator<T extends Number & Comparable<T>> implements E
                   null,
                   "must be in list " + formatList(inVals),
                   val,
-                  actual));
+                  inVals));
       if (failFast) {
         return base.done(violations);
       }
@@ -251,7 +251,7 @@ final class NumericRulesEvaluator<T extends Number & Comparable<T>> implements E
                   null,
                   "must not be in list " + formatList(notInVals),
                   val,
-                  actual));
+                  notInVals));
       if (failFast) {
         return base.done(violations);
       }
@@ -263,7 +263,7 @@ final class NumericRulesEvaluator<T extends Number & Comparable<T>> implements E
           Objects.requireNonNull(
               config.descriptors.finiteSite, "finiteSite must be set when finite is true");
       violations =
-          RuleBase.add(violations, NativeViolations.newViolation(site, null, null, val, actual));
+          RuleBase.add(violations, NativeViolations.newViolation(site, null, null, val, true));
       if (failFast) {
         return base.done(violations);
       }
