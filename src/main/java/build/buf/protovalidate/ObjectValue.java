@@ -53,9 +53,9 @@ final class ObjectValue implements Value {
 
   @Nullable
   @Override
-  public MessageReflector messageValue() {
+  public ValidateMessage messageValue() {
     if (fieldDescriptor.getJavaType() == Descriptors.FieldDescriptor.JavaType.MESSAGE) {
-      return new ProtobufMessageReflector((Message) value);
+      return new ProtobufValidateMessage((Message) value);
     }
     return null;
   }

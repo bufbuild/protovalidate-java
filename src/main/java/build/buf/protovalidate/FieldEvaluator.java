@@ -94,7 +94,7 @@ final class FieldEvaluator implements Evaluator {
     if (this.shouldIgnoreAlways()) {
       return RuleViolation.NO_VIOLATIONS;
     }
-    MessageReflector message = val.messageValue();
+    ValidateMessage message = val.messageValue();
     if (message == null) {
       return RuleViolation.NO_VIOLATIONS;
     }
@@ -119,7 +119,7 @@ final class FieldEvaluator implements Evaluator {
    * Returns whether the given field is set on the message. Handles repeated and map fields, which
    * require inspecting the list/map contents rather than a presence bit.
    */
-  static boolean isFieldSet(MessageReflector message, FieldDescriptor field) {
+  static boolean isFieldSet(ValidateMessage message, FieldDescriptor field) {
     if (field.isRepeated()) {
       if (field.isMapField()) {
         return !message.getField(field).mapValue().isEmpty();

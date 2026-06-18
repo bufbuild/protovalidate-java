@@ -18,13 +18,13 @@ import com.google.protobuf.Descriptors.Descriptor;
 import com.google.protobuf.Descriptors.FieldDescriptor;
 
 /**
- * {@link MessageReflector} is a wrapper around a protobuf message that provides reflective access
- * to the underlying message.
+ * {@link ValidateMessage} is a wrapper around a protobuf message that provides reflective access to
+ * the underlying message.
  *
- * <p>{@link MessageReflector} is a runtime-independent interface. Any protobuf runtime that
+ * <p>{@link ValidateMessage} is a runtime-independent interface. Any protobuf runtime that
  * implements this interface can wrap its messages so that protovalidate-java can validate them.
  */
-public interface MessageReflector {
+public interface ValidateMessage {
   /**
    * The {@link Descriptor} of the wrapped message's type.
    *

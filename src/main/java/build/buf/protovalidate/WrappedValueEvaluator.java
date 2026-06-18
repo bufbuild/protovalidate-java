@@ -57,7 +57,7 @@ final class WrappedValueEvaluator implements Evaluator {
   @Override
   public List<RuleViolation.Builder> evaluate(Value val, boolean failFast)
       throws ExecutionException {
-    MessageReflector message = val.messageValue();
+    ValidateMessage message = val.messageValue();
     if (message == null) {
       // proto3 message-typed field absent — no value to validate.
       return RuleViolation.NO_VIOLATIONS;

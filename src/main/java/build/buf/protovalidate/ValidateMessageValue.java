@@ -20,13 +20,13 @@ import java.util.List;
 import java.util.Map;
 import org.jspecify.annotations.Nullable;
 
-/** Top-level {@link Value} backed by a user-supplied {@link MessageReflector}. */
-final class MessageReflectorValue implements Value {
+/** Top-level {@link Value} backed by a user-supplied {@link ValidateMessage}. */
+final class ValidateMessageValue implements Value {
 
-  private final MessageReflector reflector;
+  private final ValidateMessage message;
 
-  MessageReflectorValue(MessageReflector reflector) {
-    this.reflector = reflector;
+  ValidateMessageValue(ValidateMessage message) {
+    this.message = message;
   }
 
   @Override
@@ -35,23 +35,26 @@ final class MessageReflectorValue implements Value {
   }
 
   @Override
-  public MessageReflector messageValue() {
-    return reflector;
+  public ValidateMessage messageValue() {
+    return message;
   }
 
   @Override
   public Object rawValue() {
-    return reflector;
+    return message;
   }
 
   @Override
   public Object celValue() {
-    return reflector.celValue();
+    return message.celValue();
   }
 
   @Override
   public <T> T jvmValue(Class<T> clazz) {
-    throw new UnsupportedOperationException();
+    throw new UnsupportedOperationException(
+        "jvmValue returns a raw scalar for native rule evaluation and is not supported on a message"
+            + " value; a ValidateMessage.getField() implementation returned a message value for a"
+            + " field evaluated as a scalar");
   }
 
   @Override

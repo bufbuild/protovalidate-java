@@ -33,12 +33,12 @@ public interface Value {
   Descriptors.@Nullable FieldDescriptor fieldDescriptor();
 
   /**
-   * Get the underlying value as a {@link MessageReflector} type.
+   * Get the underlying value as a {@link ValidateMessage} type.
    *
-   * @return The underlying {@link MessageReflector} value. null if the underlying value is not a
-   *     {@link MessageReflector} type.
+   * @return The underlying {@link ValidateMessage} value. null if the underlying value is not a
+   *     {@link ValidateMessage} type.
    */
-  @Nullable MessageReflector messageValue();
+  @Nullable ValidateMessage messageValue();
 
   /**
    * Returns the underlying protobuf Java value without any CEL-specific adaptation.

@@ -24,7 +24,7 @@ import org.jspecify.annotations.Nullable;
 /** The {@link Value} type that contains a {@link com.google.protobuf.Message}. */
 final class MessageValue implements Value {
 
-  private final ProtobufMessageReflector value;
+  private final ProtobufValidateMessage value;
 
   /**
    * Constructs a {@link MessageValue} with the provided message value.
@@ -32,7 +32,7 @@ final class MessageValue implements Value {
    * @param value The message value.
    */
   MessageValue(Message value) {
-    this.value = new ProtobufMessageReflector(value);
+    this.value = new ProtobufValidateMessage(value);
   }
 
   @Override
@@ -41,7 +41,7 @@ final class MessageValue implements Value {
   }
 
   @Override
-  public MessageReflector messageValue() {
+  public ValidateMessage messageValue() {
     return value;
   }
 
@@ -52,7 +52,9 @@ final class MessageValue implements Value {
 
   @Override
   public <T> T jvmValue(Class<T> clazz) {
-    throw new UnsupportedOperationException();
+    throw new UnsupportedOperationException(
+        "jvmValue returns a raw scalar for native rule evaluation and is not supported on a message"
+            + " value; use messageValue() or celValue() instead");
   }
 
   @Override

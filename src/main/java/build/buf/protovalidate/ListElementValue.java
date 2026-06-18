@@ -45,9 +45,9 @@ final class ListElementValue implements Value {
   }
 
   @Override
-  public @Nullable MessageReflector messageValue() {
+  public @Nullable ValidateMessage messageValue() {
     if (fieldDescriptor.getJavaType() == Descriptors.FieldDescriptor.JavaType.MESSAGE) {
-      return new ProtobufMessageReflector((Message) value);
+      return new ProtobufValidateMessage((Message) value);
     }
     return null;
   }

@@ -48,17 +48,17 @@ final class ValidatorImpl implements Validator {
     if (msg == null) {
       return ValidationResult.EMPTY;
     }
-    return validate(new ProtobufMessageReflector(msg));
+    return validate(new ProtobufValidateMessage(msg));
   }
 
   @Override
-  public ValidationResult validate(MessageReflector message) throws ValidationException {
+  public ValidationResult validate(ValidateMessage message) throws ValidationException {
     if (message == null) {
       return ValidationResult.EMPTY;
     }
     Evaluator evaluator = evaluatorBuilder.load(message.getDescriptorForType());
     List<RuleViolation.Builder> result =
-        evaluator.evaluate(new MessageReflectorValue(message), this.failFast);
+        evaluator.evaluate(new ValidateMessageValue(message), this.failFast);
     if (result.isEmpty()) {
       return ValidationResult.EMPTY;
     }

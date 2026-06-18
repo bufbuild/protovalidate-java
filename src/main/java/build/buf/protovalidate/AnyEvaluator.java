@@ -77,7 +77,7 @@ final class AnyEvaluator implements Evaluator {
   @Override
   public List<RuleViolation.Builder> evaluate(Value val, boolean failFast)
       throws ExecutionException {
-    MessageReflector anyValue = val.messageValue();
+    ValidateMessage anyValue = val.messageValue();
     if (anyValue == null) {
       return RuleViolation.NO_VIOLATIONS;
     }

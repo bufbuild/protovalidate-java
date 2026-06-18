@@ -47,7 +47,7 @@ final class OneofEvaluator implements Evaluator {
   @Override
   public List<RuleViolation.Builder> evaluate(Value val, boolean failFast)
       throws ExecutionException {
-    MessageReflector message = val.messageValue();
+    ValidateMessage message = val.messageValue();
     if (message == null) {
       return RuleViolation.NO_VIOLATIONS;
     }
