@@ -45,13 +45,19 @@ final class RuleCache {
     final Program program;
     final FieldDescriptor field;
     final FieldPath rulePath;
+    final boolean usesNow;
 
     private CelRule(
-        AstExpression astExpression, Program program, FieldDescriptor field, FieldPath rulePath) {
+        AstExpression astExpression,
+        Program program,
+        FieldDescriptor field,
+        FieldPath rulePath,
+        boolean usesNow) {
       this.astExpression = astExpression;
       this.program = program;
       this.field = field;
       this.rulePath = rulePath;
+      this.usesNow = usesNow;
     }
   }
 
@@ -129,7 +135,8 @@ final class RuleCache {
               rule.astExpression.source,
               rule.rulePath,
               new ObjectValue(rule.field, fieldValue),
-              Variable.newRuleVariable(message, ProtoAdapter.toCel(rule.field, fieldValue))));
+              Variable.newRuleVariable(message, ProtoAdapter.toCel(rule.field, fieldValue)),
+              rule.usesNow));
     }
     return Collections.unmodifiableList(programs);
   }
@@ -187,7 +194,9 @@ final class RuleCache {
         throw new CompilationException(
             "failed to create program for rule " + astExpression.source.id, e);
       }
-      celRules.add(new CelRule(astExpression, program, ruleFieldDesc, rulePath));
+      boolean usesNow =
+          AstExpression.referencesIdentifier(astExpression.ast, NowVariable.NOW_NAME);
+      celRules.add(new CelRule(astExpression, program, ruleFieldDesc, rulePath, usesNow));
     }
     return celRules;
   }
