@@ -16,7 +16,6 @@ package build.buf.protovalidate;
 
 import build.buf.protovalidate.exceptions.ExecutionException;
 import com.google.protobuf.Descriptors.FieldDescriptor;
-import com.google.protobuf.Message;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -45,7 +44,7 @@ final class MessageOneofEvaluator implements Evaluator {
   @Override
   public List<RuleViolation.Builder> evaluate(Value val, boolean failFast)
       throws ExecutionException {
-    Message msg = val.messageValue();
+    ValidateMessage msg = val.messageValue();
     if (msg == null) {
       return RuleViolation.NO_VIOLATIONS;
     }

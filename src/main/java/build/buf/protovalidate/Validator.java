@@ -35,4 +35,15 @@ public interface Validator {
    * @throws ValidationException if there are any compilation or validation execution errors.
    */
   ValidationResult validate(Message msg) throws ValidationException;
+
+  /**
+   * Validates a message provided as a {@link ValidateMessage}. Used by alternative protobuf
+   * runtimes that reflect over their own message types via this interface rather than going through
+   * a {@link Message}.
+   *
+   * @param message the {@link ValidateMessage} view of the message to validate.
+   * @return the {@link ValidationResult} from the evaluation.
+   * @throws ValidationException if there are any compilation or validation execution errors.
+   */
+  ValidationResult validate(ValidateMessage message) throws ValidationException;
 }
