@@ -45,15 +45,20 @@ final class ListElementValue implements Value {
   }
 
   @Override
-  public @Nullable Message messageValue() {
+  public @Nullable ValidateMessage messageValue() {
     if (fieldDescriptor.getJavaType() == Descriptors.FieldDescriptor.JavaType.MESSAGE) {
-      return (Message) value;
+      return new ProtobufValidateMessage((Message) value);
     }
     return null;
   }
 
   @Override
-  public <T> T value(Class<T> clazz) {
+  public Object celValue() {
+    return ProtoAdapter.scalarToCel(fieldDescriptor.getType(), value);
+  }
+
+  @Override
+  public <T> T jvmValue(Class<T> clazz) {
     Descriptors.FieldDescriptor.Type type = fieldDescriptor.getType();
     if (type == Descriptors.FieldDescriptor.Type.MESSAGE) {
       return clazz.cast(value);
