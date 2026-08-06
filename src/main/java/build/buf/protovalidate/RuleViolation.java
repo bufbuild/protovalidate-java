@@ -55,7 +55,7 @@ final class RuleViolation implements Violation {
      * @param value A {@link Value} to create this {@link FieldValue} from.
      */
     FieldValue(Value value) {
-      this.value = value.value(Object.class);
+      this.value = value.jvmValue(Object.class);
       this.descriptor = Objects.requireNonNull(value.fieldDescriptor());
     }
 
