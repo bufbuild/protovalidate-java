@@ -18,6 +18,8 @@ import build.buf.protovalidate.exceptions.CompilationException;
 import dev.cel.common.CelAbstractSyntaxTree;
 import dev.cel.common.CelValidationException;
 import dev.cel.common.CelValidationResult;
+import dev.cel.common.ast.CelExpr.ExprKind;
+import dev.cel.common.navigation.CelNavigableAst;
 import dev.cel.common.types.CelKind;
 import dev.cel.compiler.CelCompiler;
 
@@ -66,5 +68,15 @@ final class AstExpression {
               "Expression outputs, wanted either bool or string: %s %s", expr.id, outKind));
     }
     return new AstExpression(ast, expr);
+  }
+
+  /** Returns true if the AST references the given identifier name anywhere in its tree. */
+  static boolean referencesIdentifier(CelAbstractSyntaxTree ast, String name) {
+    return CelNavigableAst.fromAst(ast)
+        .getRoot()
+        .allNodes()
+        .anyMatch(
+            node ->
+                node.getKind() == ExprKind.Kind.IDENT && node.expr().ident().name().equals(name));
   }
 }
