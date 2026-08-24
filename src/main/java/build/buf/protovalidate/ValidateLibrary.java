@@ -32,7 +32,7 @@ import dev.cel.parser.CelParserImpl;
 import dev.cel.parser.CelStandardMacro;
 import dev.cel.runtime.CelRuntime;
 import dev.cel.runtime.CelRuntimeBuilder;
-import dev.cel.runtime.CelRuntimeImpl;
+import dev.cel.runtime.CelRuntimeFactory;
 import dev.cel.runtime.CelRuntimeLibrary;
 import dev.cel.runtime.CelStandardFunctions;
 import java.util.concurrent.ConcurrentHashMap;
@@ -71,7 +71,7 @@ final class ValidateLibrary implements CelCompilerLibrary, CelRuntimeLibrary {
             .addLibraries(validateLibrary, CelExtensions.strings())
             .build();
     CelRuntime runtime =
-        CelRuntimeImpl.newBuilder()
+        CelRuntimeFactory.plannerRuntimeBuilder()
             .setOptions(CEL_OPTIONS)
             .setStandardFunctions(
                 CelStandardFunctions.newBuilder()
