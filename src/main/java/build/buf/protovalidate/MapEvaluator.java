@@ -155,19 +155,19 @@ final class MapEvaluator implements Evaluator {
       case TYPE_SINT64:
       case TYPE_SFIXED32:
       case TYPE_SFIXED64:
-        fieldPathElementBuilder.setIntKey(key.value(Number.class).longValue());
+        fieldPathElementBuilder.setIntKey(key.jvmValue(Number.class).longValue());
         break;
       case TYPE_UINT32:
       case TYPE_UINT64:
       case TYPE_FIXED32:
       case TYPE_FIXED64:
-        fieldPathElementBuilder.setUintKey(key.value(Number.class).longValue());
+        fieldPathElementBuilder.setUintKey(key.jvmValue(Number.class).longValue());
         break;
       case TYPE_BOOL:
-        fieldPathElementBuilder.setBoolKey(key.value(Boolean.class));
+        fieldPathElementBuilder.setBoolKey(key.jvmValue(Boolean.class));
         break;
       case TYPE_STRING:
-        fieldPathElementBuilder.setStringKey(key.value(String.class));
+        fieldPathElementBuilder.setStringKey(key.jvmValue(String.class));
         break;
       default:
         throw new ExecutionException("Unexpected map key type");
