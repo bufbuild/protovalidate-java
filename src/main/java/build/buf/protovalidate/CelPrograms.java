@@ -45,7 +45,7 @@ final class CelPrograms implements Evaluator {
   @Override
   public List<RuleViolation.Builder> evaluate(Value val, boolean failFast)
       throws ExecutionException {
-    CelVariableResolver bindings = Variable.newThisVariable(val.value(Object.class));
+    CelVariableResolver bindings = Variable.newThisVariable(val.celValue());
     List<RuleViolation.Builder> violations = new ArrayList<>();
     for (CompiledProgram program : programs) {
       RuleViolation.Builder violation = program.eval(val, bindings);
