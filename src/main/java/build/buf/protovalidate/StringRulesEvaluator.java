@@ -109,7 +109,8 @@ final class StringRulesEvaluator implements Evaluator {
       Pattern.compile("^:?[0-9a-zA-Z!#$%&'*+.\\-^_|~`]+$");
   private static final Pattern HEADER_VALUE_REGEX =
       Pattern.compile("^[^\\x00-\\x08\\x0A-\\x1F\\x7F]*$");
-  private static final Pattern LOOSE_REGEX = Pattern.compile("^[^\\x00\\x0A\\x0D]+$");
+  private static final Pattern LOOSE_HEADER_NAME_REGEX = Pattern.compile("^[^\\x00\\x0A\\x0D]+$");
+  private static final Pattern LOOSE_HEADER_VALUE_REGEX = Pattern.compile("^[^\\x00\\x0A\\x0D]*$");
 
   // --- Well-known string formats ---
 
@@ -778,18 +779,15 @@ final class StringRulesEvaluator implements Evaluator {
           return NativeViolations.newViolation(
               HEADER_NAME_EMPTY_SITE, null, null, val, knownRegex.getNumber());
         }
-        matcher = HEADER_NAME_REGEX;
+        matcher = knownRegexStrict ? HEADER_NAME_REGEX : LOOSE_HEADER_NAME_REGEX;
         site = HEADER_NAME_SITE;
         break;
       case KNOWN_REGEX_HTTP_HEADER_VALUE:
-        matcher = HEADER_VALUE_REGEX;
+        matcher = knownRegexStrict ? HEADER_VALUE_REGEX : LOOSE_HEADER_VALUE_REGEX;
         site = HEADER_VALUE_SITE;
         break;
       default:
         return null;
-    }
-    if (!knownRegexStrict) {
-      matcher = LOOSE_REGEX;
     }
     if (!matcher.matches(strVal)) {
       return NativeViolations.newViolation(site, null, null, val, knownRegex.getNumber());
