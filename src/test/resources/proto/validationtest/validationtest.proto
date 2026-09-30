@@ -371,6 +371,13 @@ message HttpHeaderValue {
   string val = 1 [(buf.validate.field).string.well_known_regex = KNOWN_REGEX_HTTP_HEADER_VALUE];
 }
 
+message HttpHeaderValueLoose {
+  string val = 1 [(buf.validate.field).string = {
+    well_known_regex: KNOWN_REGEX_HTTP_HEADER_VALUE
+    strict: false
+  }];
+}
+
 // google.protobuf.*Value wrapper fixtures for WrappedValueEvaluator coverage.
 message Int64WrapperConst {
   google.protobuf.Int64Value val = 1 [(buf.validate.field).int64.const = 5];
