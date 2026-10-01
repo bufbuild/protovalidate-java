@@ -564,6 +564,15 @@ final class StringRulesEvaluator implements Evaluator {
     String strVal = (String) val.rawValue();
     List<RuleViolation.Builder> violations = null;
 
+    if (constVal != null && !strVal.equals(constVal)) {
+      violations =
+          RuleBase.add(
+              violations,
+              NativeViolations.newViolation(
+                  CONST_SITE, null, "must equal `" + constVal + "`", val, constVal));
+      if (failFast) return base.done(violations);
+    }
+
     if (exactLen != null || minLen != null || maxLen != null) {
       long runeCount = strVal.codePointCount(0, strVal.length());
       violations = applyLength(violations, val, runeCount, failFast);
@@ -578,15 +587,6 @@ final class StringRulesEvaluator implements Evaluator {
       if (failFast && violations != null) {
         return base.done(violations);
       }
-    }
-
-    if (constVal != null && !strVal.equals(constVal)) {
-      violations =
-          RuleBase.add(
-              violations,
-              NativeViolations.newViolation(
-                  CONST_SITE, null, "must equal `" + constVal + "`", val, constVal));
-      if (failFast) return base.done(violations);
     }
 
     if (pattern != null && !pattern.matches(strVal)) {

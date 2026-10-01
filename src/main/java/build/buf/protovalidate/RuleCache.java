@@ -33,6 +33,7 @@ import dev.cel.runtime.CelEvaluationException;
 import dev.cel.runtime.CelRuntime.Program;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -113,8 +114,7 @@ final class RuleCache {
     }
     Message message = resolved.message;
     List<CelRule> completeProgramList = new ArrayList<>();
-    for (Map.Entry<FieldDescriptor, Object> entry : message.getAllFields().entrySet()) {
-      FieldDescriptor ruleFieldDesc = entry.getKey();
+    for (FieldDescriptor ruleFieldDesc : sortedRuleFields(message)) {
       List<CelRule> programList =
           compileRule(fieldDescriptor, forItems, resolved.setOneof, ruleFieldDesc, message);
       if (programList == null) continue;
@@ -132,6 +132,16 @@ final class RuleCache {
               Variable.newRuleVariable(message, ProtoAdapter.toCel(rule.field, fieldValue))));
     }
     return Collections.unmodifiableList(programs);
+  }
+
+  // getAllFields orders by field number, but violations follow validate.proto declaration order
+  // (string.len is field 19); extensions come last, by field number.
+  private static List<FieldDescriptor> sortedRuleFields(Message message) {
+    List<FieldDescriptor> fields = new ArrayList<>(message.getAllFields().keySet());
+    fields.sort(
+        Comparator.comparing(FieldDescriptor::isExtension)
+            .thenComparingInt(field -> field.isExtension() ? field.getNumber() : field.getIndex()));
+    return fields;
   }
 
   private @Nullable List<CelRule> compileRule(

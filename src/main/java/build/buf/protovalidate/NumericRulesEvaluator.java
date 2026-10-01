@@ -227,6 +227,16 @@ final class NumericRulesEvaluator<T extends Number & Comparable<T>> implements E
       }
     }
 
+    if (lowerKind != LowerBound.NONE || upperKind != UpperBound.NONE) {
+      RuleViolation.Builder rangeViolation = buildRangeViolation(val, actual);
+      if (rangeViolation != null) {
+        violations = RuleBase.add(violations, rangeViolation);
+        if (failFast) {
+          return base.done(violations);
+        }
+      }
+    }
+
     if (!inVals.isEmpty() && !containsValue(inVals, actual)) {
       violations =
           RuleBase.add(
@@ -266,16 +276,6 @@ final class NumericRulesEvaluator<T extends Number & Comparable<T>> implements E
           RuleBase.add(violations, NativeViolations.newViolation(site, null, null, val, true));
       if (failFast) {
         return base.done(violations);
-      }
-    }
-
-    if (lowerKind != LowerBound.NONE || upperKind != UpperBound.NONE) {
-      RuleViolation.Builder rangeViolation = buildRangeViolation(val, actual);
-      if (rangeViolation != null) {
-        violations = RuleBase.add(violations, rangeViolation);
-        if (failFast) {
-          return base.done(violations);
-        }
       }
     }
 
