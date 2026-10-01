@@ -28,6 +28,13 @@ final class CelPrograms implements Evaluator {
   private final List<CompiledProgram> programs;
 
   /**
+   * Whether any program in {@link #programs} references the {@code now} variable. Computed once at
+   * construction so {@link #evaluate} can skip the {@link NowVariable} wrapper when no program
+   * needs it.
+   */
+  private final boolean anyUsesNow;
+
+  /**
    * Constructs a new {@link CelPrograms}.
    *
    * @param compiledPrograms The programs to execute.
@@ -35,6 +42,14 @@ final class CelPrograms implements Evaluator {
   CelPrograms(@Nullable ValueEvaluator valueEvaluator, List<CompiledProgram> compiledPrograms) {
     this.helper = new RuleViolationHelper(valueEvaluator);
     this.programs = compiledPrograms;
+    boolean anyUsesNow = false;
+    for (CompiledProgram program : compiledPrograms) {
+      if (program.usesNow()) {
+        anyUsesNow = true;
+        break;
+      }
+    }
+    this.anyUsesNow = anyUsesNow;
   }
 
   @Override
@@ -45,7 +60,7 @@ final class CelPrograms implements Evaluator {
   @Override
   public List<RuleViolation.Builder> evaluate(Value val, boolean failFast)
       throws ExecutionException {
-    CelVariableResolver bindings = Variable.newThisVariable(val.value(Object.class));
+    CelVariableResolver bindings = Variable.newThisVariable(val.value(Object.class), anyUsesNow);
     List<RuleViolation.Builder> violations = new ArrayList<>();
     for (CompiledProgram program : programs) {
       RuleViolation.Builder violation = program.eval(val, bindings);

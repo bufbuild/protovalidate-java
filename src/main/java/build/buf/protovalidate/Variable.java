@@ -45,14 +45,19 @@ final class Variable implements CelVariableResolver {
   }
 
   /**
-   * Creates a "this" variable.
+   * Creates a resolver for the {@code this} variable. When {@code includeNow} is false the {@code
+   * now} resolver and the hierarchical wrapper are skipped — three allocations become one.
    *
-   * @param val the value.
-   * @return {@link Variable}.
+   * @param val the value bound to {@code this}.
+   * @param includeNow whether the resolver should also expose the {@code now} variable.
+   * @return a {@link CelVariableResolver} bound to {@code this} (and {@code now} when requested).
    */
-  static CelVariableResolver newThisVariable(@Nullable Object val) {
-    return CelVariableResolver.hierarchicalVariableResolver(
-        new NowVariable(), new Variable(THIS_NAME, val));
+  static CelVariableResolver newThisVariable(@Nullable Object val, boolean includeNow) {
+    Variable thisVar = new Variable(THIS_NAME, val);
+    if (!includeNow) {
+      return thisVar;
+    }
+    return CelVariableResolver.hierarchicalVariableResolver(new NowVariable(), thisVar);
   }
 
   /**
