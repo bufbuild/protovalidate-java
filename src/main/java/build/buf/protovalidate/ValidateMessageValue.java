@@ -15,24 +15,18 @@
 package build.buf.protovalidate;
 
 import com.google.protobuf.Descriptors;
-import com.google.protobuf.Message;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import org.jspecify.annotations.Nullable;
 
-/** The {@link Value} type that contains a {@link com.google.protobuf.Message}. */
-final class MessageValue implements Value {
+/** Top-level {@link Value} backed by a user-supplied {@link ValidateMessage}. */
+final class ValidateMessageValue implements Value {
 
-  private final ProtobufValidateMessage value;
+  private final ValidateMessage message;
 
-  /**
-   * Constructs a {@link MessageValue} with the provided message value.
-   *
-   * @param value The message value.
-   */
-  MessageValue(Message value) {
-    this.value = new ProtobufValidateMessage(value);
+  ValidateMessageValue(ValidateMessage message) {
+    this.message = message;
   }
 
   @Override
@@ -42,24 +36,25 @@ final class MessageValue implements Value {
 
   @Override
   public ValidateMessage messageValue() {
-    return value;
+    return message;
+  }
+
+  @Override
+  public Object rawValue() {
+    return message;
   }
 
   @Override
   public Object celValue() {
-    return value.getMessage();
+    return message.celValue();
   }
 
   @Override
   public <T> T jvmValue(Class<T> clazz) {
     throw new UnsupportedOperationException(
         "jvmValue returns a raw scalar for native rule evaluation and is not supported on a message"
-            + " value; use messageValue() or celValue() instead");
-  }
-
-  @Override
-  public Object rawValue() {
-    return value;
+            + " value; a ValidateMessage.getField() implementation returned a message value for a"
+            + " field evaluated as a scalar");
   }
 
   @Override
