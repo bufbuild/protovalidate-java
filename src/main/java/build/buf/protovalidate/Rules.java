@@ -62,12 +62,10 @@ final class Rules {
       if (scalar == null) {
         return null;
       }
-      // When processWrapperRules recurses with the inner "value" field, the ValueEvaluator's
-      // descriptor is still the OUTER wrapper field. Detect that and wrap the scalar evaluator
-      // so it unwraps the wrapper Message at evaluation time before delegating.
-      FieldDescriptor outerDescriptor = valueEvaluator.getDescriptor();
-      if (outerDescriptor != null
-          && outerDescriptor.getJavaType() == FieldDescriptor.JavaType.MESSAGE) {
+      // For wrapper WKTs, fieldDescriptor is the inner "value" field but the runtime value is the
+      // wrapper message. valueEvaluator.getDescriptor() is null for list items and map values.
+      if (DescriptorMappings.expectedWrapperRules(fieldDescriptor.getContainingType().getFullName())
+          != null) {
         return new WrappedValueEvaluator(fieldDescriptor, scalar);
       }
       return scalar;

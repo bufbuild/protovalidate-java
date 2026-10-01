@@ -15,6 +15,7 @@
 package build.buf.protovalidate;
 
 import build.buf.protovalidate.exceptions.CompilationException;
+import build.buf.validate.EnumRules;
 import build.buf.validate.FieldPath;
 import build.buf.validate.FieldPathElement;
 import build.buf.validate.FieldRules;
@@ -308,7 +309,6 @@ final class EvaluatorBuilder {
       processWrapperRules(fieldDescriptor, fieldRules, valueEvaluator);
       processStandardRules(fieldDescriptor, fieldRules, valueEvaluator);
       processAnyRules(fieldDescriptor, fieldRules, valueEvaluator);
-      processEnumRules(fieldDescriptor, fieldRules, valueEvaluator);
       processMapRules(fieldDescriptor, fieldRules, valueEvaluator);
       processRepeatedRules(fieldDescriptor, fieldRules, valueEvaluator);
     }
@@ -456,7 +456,13 @@ final class EvaluatorBuilder {
       ValueEvaluator unwrapped =
           new ValueEvaluator(
               valueEvaluatorEval.getDescriptor(), valueEvaluatorEval.getNestedRule());
-      buildValue(fieldDescriptor.getMessageType().findFieldByName("value"), fieldRules, unwrapped);
+      // Only the type rules apply to the inner value; the outer pipeline already
+      // handled the rest (cel, cel_expression, ...), which would otherwise run twice.
+      FieldRules innerRules =
+          FieldRules.newBuilder()
+              .setField(expectedWrapperDescriptor, fieldRules.getField(expectedWrapperDescriptor))
+              .build();
+      buildValue(fieldDescriptor.getMessageType().findFieldByName("value"), innerRules, unwrapped);
       valueEvaluatorEval.append(unwrapped);
     }
 
@@ -466,7 +472,9 @@ final class EvaluatorBuilder {
 
       // If this is a wrapper field, just return. Wrapper fields are handled by
       // processWrapperRules and their unwrapped values are passed through the process gauntlet.
-      if (fieldDescriptor.getJavaType() == FieldDescriptor.JavaType.MESSAGE) {
+      // A list of wrappers still needs its list-level rules (min_items, unique).
+      if (fieldDescriptor.getJavaType() == FieldDescriptor.JavaType.MESSAGE
+          && (!fieldDescriptor.isRepeated() || valueEvaluatorEval.hasNestedRule())) {
         FieldDescriptor expectedWrapperDescriptor =
             DescriptorMappings.expectedWrapperRules(fieldDescriptor.getMessageType().getFullName());
         if (expectedWrapperDescriptor != null) {
@@ -474,6 +482,28 @@ final class EvaluatorBuilder {
         }
       }
 
+      // defined_only has its own evaluator; keep it in validate.proto order,
+      // between const and the remaining enum rules.
+      EnumRules enumRules = fieldRules.getEnum();
+      if (fieldDescriptor.getJavaType() == FieldDescriptor.JavaType.ENUM
+          && enumRules.getDefinedOnly()) {
+        if (enumRules.hasConst()) {
+          FieldRules constRules =
+              FieldRules.newBuilder()
+                  .setEnum(EnumRules.newBuilder().setConst(enumRules.getConst()))
+                  .build();
+          appendStandardRules(fieldDescriptor, constRules, valueEvaluatorEval);
+          fieldRules = fieldRules.toBuilder().setEnum(enumRules.toBuilder().clearConst()).build();
+        }
+        valueEvaluatorEval.append(
+            new EnumEvaluator(valueEvaluatorEval, fieldDescriptor.getEnumType().getValues()));
+      }
+      appendStandardRules(fieldDescriptor, fieldRules, valueEvaluatorEval);
+    }
+
+    private void appendStandardRules(
+        FieldDescriptor fieldDescriptor, FieldRules fieldRules, ValueEvaluator valueEvaluatorEval)
+        throws CompilationException {
       // Try native rule evaluators when opted in. Any rule covered natively is cleared on the
       // residual builder so CEL only compiles what's left; rules without a native implementation
       // remain on the residual and CEL handles them.
@@ -508,18 +538,6 @@ final class EvaluatorBuilder {
               typeURLDesc,
               fieldRules.getAny().getInList(),
               fieldRules.getAny().getNotInList()));
-    }
-
-    private void processEnumRules(
-        FieldDescriptor fieldDescriptor, FieldRules fieldRules, ValueEvaluator valueEvaluatorEval) {
-      if (fieldDescriptor.getJavaType() != FieldDescriptor.JavaType.ENUM) {
-        return;
-      }
-      if (fieldRules.getEnum().getDefinedOnly()) {
-        Descriptors.EnumDescriptor enumDescriptor = fieldDescriptor.getEnumType();
-        valueEvaluatorEval.append(
-            new EnumEvaluator(valueEvaluatorEval, enumDescriptor.getValues()));
-      }
     }
 
     private void processMapRules(
