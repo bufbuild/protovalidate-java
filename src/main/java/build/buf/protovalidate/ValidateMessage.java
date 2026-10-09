@@ -1,0 +1,59 @@
+// Copyright 2023-2026 Buf Technologies, Inc.
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+package build.buf.protovalidate;
+
+import com.google.protobuf.Descriptors.Descriptor;
+import com.google.protobuf.Descriptors.FieldDescriptor;
+
+/**
+ * {@link ValidateMessage} is a wrapper around a protobuf message that provides reflective access to
+ * the underlying message.
+ *
+ * <p>{@link ValidateMessage} is a runtime-independent interface. Any protobuf runtime that
+ * implements this interface can wrap its messages so that protovalidate-java can validate them.
+ */
+public interface ValidateMessage {
+  /**
+   * The {@link Descriptor} of the wrapped message's type.
+   *
+   * @return The descriptor.
+   */
+  Descriptor getDescriptorForType();
+
+  /**
+   * Whether the wrapped message has the field described by the provided field descriptor.
+   *
+   * @param field The field descriptor to check for.
+   * @return Whether the field is present.
+   */
+  boolean hasField(FieldDescriptor field);
+
+  /**
+   * Get the value described by the provided field descriptor.
+   *
+   * @param field The field descriptor for which to retrieve a value.
+   * @return The value corresponding to the field descriptor.
+   */
+  Value getField(FieldDescriptor field);
+
+  /**
+   * Returns the representation of this message to hand to CEL for {@code this}-variable rule
+   * evaluation. Implementations return whichever form CEL can navigate for their runtime, such as a
+   * {@link com.google.protobuf.Message} or a {@code dev.cel.common.values.CelValue}.
+   *
+   * @return The CEL-navigable representation of this message.
+   */
+  Object celValue();
+}
