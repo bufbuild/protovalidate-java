@@ -19,7 +19,6 @@ import build.buf.validate.FieldPath;
 import build.buf.validate.FieldRules;
 import build.buf.validate.Ignore;
 import com.google.protobuf.Descriptors.FieldDescriptor;
-import com.google.protobuf.Message;
 import java.util.Collections;
 import java.util.List;
 
@@ -95,7 +94,7 @@ final class FieldEvaluator implements Evaluator {
     if (this.shouldIgnoreAlways()) {
       return RuleViolation.NO_VIOLATIONS;
     }
-    Message message = val.messageValue();
+    ValidateMessage message = val.messageValue();
     if (message == null) {
       return RuleViolation.NO_VIOLATIONS;
     }
@@ -113,17 +112,19 @@ final class FieldEvaluator implements Evaluator {
     if (this.shouldIgnoreEmpty() && !hasField) {
       return RuleViolation.NO_VIOLATIONS;
     }
-    return valueEvaluator.evaluate(
-        new ObjectValue(descriptor, message.getField(descriptor)), failFast);
+    return valueEvaluator.evaluate(message.getField(descriptor), failFast);
   }
 
   /**
    * Returns whether the given field is set on the message. Handles repeated and map fields, which
-   * are not supported by {@link Message#hasField}.
+   * require inspecting the list/map contents rather than a presence bit.
    */
-  static boolean isFieldSet(Message message, FieldDescriptor field) {
+  static boolean isFieldSet(ValidateMessage message, FieldDescriptor field) {
     if (field.isRepeated()) {
-      return message.getRepeatedFieldCount(field) != 0;
+      if (field.isMapField()) {
+        return !message.getField(field).mapValue().isEmpty();
+      }
+      return !message.getField(field).repeatedValue().isEmpty();
     }
     return message.hasField(field);
   }
