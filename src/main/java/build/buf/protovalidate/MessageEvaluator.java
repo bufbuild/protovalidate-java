@@ -23,8 +23,22 @@ final class MessageEvaluator implements Evaluator {
   /** List of {@link Evaluator}s that are applied to a message. */
   private final List<Evaluator> evaluators = new ArrayList<>();
 
+  /**
+   * A recursive message type references its own evaluator before that evaluator is complete. Until
+   * then it must not look like a tautology, or the back-reference would be dropped for good.
+   */
+  private boolean building = true;
+
+  /** Marks the evaluator as fully built, so {@link #tautology()} can report an accurate result. */
+  void finishBuilding() {
+    building = false;
+  }
+
   @Override
   public boolean tautology() {
+    if (building) {
+      return false;
+    }
     for (Evaluator evaluator : evaluators) {
       if (!evaluator.tautology()) {
         return false;

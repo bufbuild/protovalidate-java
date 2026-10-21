@@ -15,10 +15,13 @@
 package build.buf.protovalidate;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+import build.buf.protovalidate.exceptions.CompilationException;
 import build.buf.validate.FieldRules;
 import build.buf.validate.Int32Rules;
 import build.buf.validate.RepeatedRules;
+import build.buf.validate.Rule;
 import build.buf.validate.StringRules;
 import build.buf.validate.ValidateProto;
 import com.google.protobuf.DescriptorProtos.DescriptorProto;
@@ -210,6 +213,65 @@ public class RecursiveMessageTest {
     Validator validator = ValidatorFactory.newBuilder().build();
     assertThat(validator.validate(DynamicMessage.getDefaultInstance(m0)).getViolations())
         .hasSize(2);
+  }
+
+  @Test
+  public void testCompilationErrorReportedWhenInnerIsBuiltFirst() throws Exception {
+    Map<String, Descriptor> types = compilationErrorTypes();
+    Validator validator = ValidatorFactory.newBuilder().build();
+    assertThatThrownBy(() -> validator.validate(innerWithOuter(types)))
+        .isInstanceOf(CompilationException.class);
+  }
+
+  @Test
+  public void testCompilationErrorReportedForInnerAfterOuterFailed() throws Exception {
+    Map<String, Descriptor> types = compilationErrorTypes();
+    Validator validator = ValidatorFactory.newBuilder().build();
+    DynamicMessage outer = DynamicMessage.getDefaultInstance(types.get("Outer"));
+    assertThatThrownBy(() -> validator.validate(outer)).isInstanceOf(CompilationException.class);
+    assertThatThrownBy(() -> validator.validate(innerWithOuter(types)))
+        .isInstanceOf(CompilationException.class);
+  }
+
+  @Test
+  public void testCompilationErrorReportedForOuterOnEveryValidation() throws Exception {
+    Map<String, Descriptor> types = compilationErrorTypes();
+    Validator validator = ValidatorFactory.newBuilder().build();
+    DynamicMessage outer = DynamicMessage.getDefaultInstance(types.get("Outer"));
+    for (int i = 0; i < 2; i++) {
+      assertThatThrownBy(() -> validator.validate(outer)).isInstanceOf(CompilationException.class);
+    }
+  }
+
+  /**
+   * Outer's invalid rule is on a field after its Inner field, so building Outer fails after Inner
+   * has been built against the incomplete Outer evaluator.
+   */
+  private static Map<String, Descriptor> compilationErrorTypes() throws Exception {
+    return compile(
+        "recursive",
+        DescriptorProto.newBuilder()
+            .setName("Outer")
+            .addField(messageField("inner", 1, ".recursive.Inner"))
+            .addField(
+                field("s", 2, FieldDescriptorProto.Type.TYPE_STRING)
+                    .setOptions(
+                        rules(
+                            FieldRules.newBuilder()
+                                .addCel(Rule.newBuilder().setId("bad").setExpression("this +"))))),
+        DescriptorProto.newBuilder()
+            .setName("Inner")
+            .addField(
+                messageField("outer", 1, ".recursive.Outer")
+                    .setOptions(rules(FieldRules.newBuilder().setRequired(true)))));
+  }
+
+  private static DynamicMessage innerWithOuter(Map<String, Descriptor> types) {
+    Descriptor inner = types.get("Inner");
+    return DynamicMessage.newBuilder(inner)
+        .setField(
+            inner.findFieldByName("outer"), DynamicMessage.getDefaultInstance(types.get("Outer")))
+        .build();
   }
 
   private static Map<String, Descriptor> mutuallyRecursiveTypes() throws Exception {
