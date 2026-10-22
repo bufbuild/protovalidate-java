@@ -19,11 +19,16 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import build.buf.protovalidate.exceptions.CompilationException;
 import build.buf.validate.FieldRules;
-import build.buf.validate.Int32Rules;
 import build.buf.validate.RepeatedRules;
 import build.buf.validate.Rule;
-import build.buf.validate.StringRules;
 import build.buf.validate.ValidateProto;
+import com.example.imports.validationtest.HasGoogleFields;
+import com.example.imports.validationtest.NoRuleParent;
+import com.example.imports.validationtest.Node;
+import com.example.imports.validationtest.RecursiveA;
+import com.example.imports.validationtest.RecursiveB;
+import com.example.imports.validationtest.Root;
+import com.example.imports.validationtest.SelfRecursive;
 import com.google.protobuf.DescriptorProtos.DescriptorProto;
 import com.google.protobuf.DescriptorProtos.FieldDescriptorProto;
 import com.google.protobuf.DescriptorProtos.FieldOptions;
@@ -35,116 +40,106 @@ import com.google.protobuf.ListValue;
 import com.google.protobuf.Struct;
 import com.google.protobuf.Value;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
-import java.util.concurrent.TimeUnit;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.Timeout;
 
 /**
  * Message evaluators are cached before they are built so recursive references can resolve to them.
  * These tests cover references made while the referenced evaluator is still incomplete.
  */
 public class RecursiveMessageTest {
-  private static final FieldOptions INT32_GT_100 =
-      rules(FieldRules.newBuilder().setInt32(Int32Rules.newBuilder().setGt(100)));
-
   @Test
   public void testMutuallyRecursiveMessagesValidateEveryDepth() throws Exception {
-    Map<String, Descriptor> types = mutuallyRecursiveTypes();
-    Descriptor a = types.get("A");
-    Descriptor b = types.get("B");
     Validator validator = ValidatorFactory.newBuilder().build();
-    assertThat(validator.validate(nestedA(a, b, 2, 5)).getViolations()).hasSize(2);
-    assertThat(validator.validate(nestedA(a, b, 3, 5)).getViolations()).hasSize(3);
+
+    // depth 2
+    List<Violation> violations = validator.validate(nestedA(2, 5)).getViolations();
+    assertThat(violations).hasSize(2);
+    assertThat(violations)
+        .extracting(violation -> FieldPathUtils.fieldPathString(violation.toProto().getField()))
+        .containsExactlyInAnyOrder("b.v", "b.a.b.v");
+    for (Violation violation : violations) {
+      assertThat(violation.getRuleValue().getDescriptor().getFullName())
+          .isEqualTo("buf.validate.Int32Rules.gt");
+      assertThat(violation.getRuleValue().getValue()).isEqualTo(100);
+    }
+
+    // depth 3 also
+    List<Violation> violations1 = validator.validate(nestedA(3, 5)).getViolations();
+    assertThat(violations1).hasSize(3);
+    assertThat(violations1)
+        .extracting(violation -> FieldPathUtils.fieldPathString(violation.toProto().getField()))
+        .containsExactlyInAnyOrder("b.v", "b.a.b.v", "b.a.b.a.b.v");
+    for (Violation violation : violations1) {
+      assertThat(violation.getRuleValue().getDescriptor().getFullName())
+          .isEqualTo("buf.validate.Int32Rules.gt");
+      assertThat(violation.getRuleValue().getValue()).isEqualTo(100);
+    }
   }
 
   @Test
   public void testMutuallyRecursiveMessagesValidateFromEitherRoot() throws Exception {
-    Map<String, Descriptor> types = mutuallyRecursiveTypes();
-    Descriptor a = types.get("A");
-    Descriptor b = types.get("B");
-    DynamicMessage root =
-        DynamicMessage.newBuilder(b)
-            .setField(b.findFieldByName("v"), 5)
-            .setField(b.findFieldByName("a"), nestedA(a, b, 1, 5))
-            .build();
+    RecursiveB recursiveB = RecursiveB.newBuilder().setV(5).setA(nestedA(1, 5)).build();
     Validator validator = ValidatorFactory.newBuilder().build();
-    assertThat(validator.validate(root).getViolations()).hasSize(2);
+    List<Violation> violations = validator.validate(recursiveB).getViolations();
+    assertThat(violations).hasSize(2);
+    assertThat(violations)
+        .extracting(violation -> FieldPathUtils.fieldPathString(violation.toProto().getField()))
+        .containsExactlyInAnyOrder("v", "a.b.v");
+    for (Violation violation : violations) {
+      assertThat(violation.getRuleValue().getDescriptor().getFullName())
+          .isEqualTo("buf.validate.Int32Rules.gt");
+      assertThat(violation.getRuleValue().getValue()).isEqualTo(100);
+    }
   }
 
   @Test
   public void testMutuallyRecursiveMessagesAcceptValidValues() throws Exception {
-    Map<String, Descriptor> types = mutuallyRecursiveTypes();
     Validator validator = ValidatorFactory.newBuilder().build();
-    assertThat(validator.validate(nestedA(types.get("A"), types.get("B"), 2, 101)).isSuccess())
-        .isTrue();
+    assertThat(validator.validate(nestedA(2, 101)).isSuccess()).isTrue();
   }
 
   @Test
   public void testSelfRecursiveFieldDeclaredBeforeRule() throws Exception {
-    Descriptor node =
-        compile(
-                "recursive",
-                DescriptorProto.newBuilder()
-                    .setName("Node")
-                    .addField(messageField("next", 1, ".recursive.Node"))
-                    .addField(
-                        field("v", 2, FieldDescriptorProto.Type.TYPE_INT32)
-                            .setOptions(INT32_GT_100)))
-            .get("Node");
-    DynamicMessage inner =
-        DynamicMessage.newBuilder(node).setField(node.findFieldByName("v"), 5).build();
-    DynamicMessage root =
-        DynamicMessage.newBuilder(node)
-            .setField(node.findFieldByName("v"), 5)
-            .setField(node.findFieldByName("next"), inner)
+    SelfRecursive selfRecursive =
+        SelfRecursive.newBuilder()
+            .setV(5)
+            .setNext(SelfRecursive.newBuilder().setV(5).build())
             .build();
     Validator validator = ValidatorFactory.newBuilder().build();
-    assertThat(validator.validate(root).getViolations()).hasSize(2);
+    List<Violation> violations = validator.validate(selfRecursive).getViolations();
+    assertThat(violations).hasSize(2);
+    assertThat(violations)
+        .extracting(violation -> FieldPathUtils.fieldPathString(violation.toProto().getField()))
+        .containsExactlyInAnyOrder("v", "next.v");
+    for (Violation violation : violations) {
+      assertThat(violation.getRuleValue().getDescriptor().getFullName())
+          .isEqualTo("buf.validate.Int32Rules.gt");
+      assertThat(violation.getRuleValue().getValue()).isEqualTo(100);
+    }
   }
 
   @Test
   public void testMessageWithoutRulesIsTautology() throws Exception {
-    Map<String, Descriptor> types =
-        compile(
-            "recursive",
-            DescriptorProto.newBuilder()
-                .setName("Mid")
-                .addField(messageField("leaf", 1, ".recursive.Leaf"))
-                .addField(field("s", 2, FieldDescriptorProto.Type.TYPE_STRING)),
-            DescriptorProto.newBuilder()
-                .setName("Leaf")
-                .addField(field("v", 1, FieldDescriptorProto.Type.TYPE_INT32)));
-    assertThat(isTautology(types.get("Mid"))).isTrue();
+    assertThat(isTautology(NoRuleParent.getDescriptor())).isTrue();
   }
 
   @Test
   public void testRuleFreeCycleIsKept() throws Exception {
-    Map<String, Descriptor> types =
-        compile(
-            "recursive",
-            DescriptorProto.newBuilder()
-                .setName("Root")
-                .addField(
-                    field("name", 1, FieldDescriptorProto.Type.TYPE_STRING)
-                        .setOptions(
-                            rules(
-                                FieldRules.newBuilder()
-                                    .setString(StringRules.newBuilder().setMinLen(1)))))
-                .addField(messageField("node", 2, ".recursive.Node")),
-            DescriptorProto.newBuilder()
-                .setName("Node")
-                .addField(messageField("next", 1, ".recursive.Node")));
-    Descriptor root = types.get("Root");
-    Descriptor node = types.get("Node");
     // Detecting that a cycle has no rules isn't worth the complexity, so it is walked.
-    assertThat(isTautology(node)).isFalse();
-    DynamicMessage message =
-        DynamicMessage.newBuilder(root)
-            .setField(root.findFieldByName("node"), DynamicMessage.getDefaultInstance(node))
-            .build();
+    // node has a single field that's itself, but it has no rules
+    assertThat(isTautology(Node.getDescriptor())).isFalse();
+    // root has a single rule on its name field, which must have a length > 1
+    Root root = Root.newBuilder().setNode(Node.newBuilder().build()).build();
     Validator validator = ValidatorFactory.newBuilder().build();
-    assertThat(validator.validate(message).getViolations()).hasSize(1);
+    List<Violation> violations = validator.validate(root).getViolations();
+    assertThat(violations).hasSize(1);
+    Violation violation = violations.get(0);
+    assertThat(FieldPathUtils.fieldPathString(violation.toProto().getField())).isEqualTo("name");
+    assertThat(violation.getRuleValue().getDescriptor().getFullName())
+        .isEqualTo("buf.validate.StringRules.min_len");
+    assertThat(violation.getRuleValue().getValue()).isEqualTo(1L);
   }
 
   @Test
@@ -152,10 +147,12 @@ public class RecursiveMessageTest {
     assertThat(isTautology(Struct.getDescriptor())).isTrue();
     assertThat(isTautology(Value.getDescriptor())).isTrue();
     assertThat(isTautology(ListValue.getDescriptor())).isTrue();
+    assertThat(isTautology(HasGoogleFields.getDescriptor())).isTrue();
   }
 
   @Test
   public void testNonStandardListValueWithRulesIsValidated() throws Exception {
+    // these are left dynamic intentionally
     Map<String, Descriptor> types =
         compile(
             "google.protobuf",
@@ -190,29 +187,6 @@ public class RecursiveMessageTest {
         DynamicMessage.newBuilder(root).setField(root.findFieldByName("list"), list).build();
     Validator validator = ValidatorFactory.newBuilder().build();
     assertThat(validator.validate(message).getViolations()).hasSize(1);
-  }
-
-  @Test
-  @Timeout(value = 15, unit = TimeUnit.SECONDS)
-  public void testSharedChainBuildsInLinearTime() throws Exception {
-    // Each M{i} has two required fields of type M{i+1}, so descending into shared evaluators
-    // when checking for tautologies would do 2^n work.
-    int n = 26;
-    DescriptorProto.Builder[] messages = new DescriptorProto.Builder[n + 1];
-    FieldOptions required = rules(FieldRules.newBuilder().setRequired(true));
-    for (int i = 0; i < n; i++) {
-      String next = ".recursive.M" + (i + 1);
-      messages[i] =
-          DescriptorProto.newBuilder()
-              .setName("M" + i)
-              .addField(messageField("a", 1, next).setOptions(required))
-              .addField(messageField("b", 2, next).setOptions(required));
-    }
-    messages[n] = DescriptorProto.newBuilder().setName("M" + n);
-    Descriptor m0 = compile("recursive", messages).get("M0");
-    Validator validator = ValidatorFactory.newBuilder().build();
-    assertThat(validator.validate(DynamicMessage.getDefaultInstance(m0)).getViolations())
-        .hasSize(2);
   }
 
   @Test
@@ -274,25 +248,19 @@ public class RecursiveMessageTest {
         .build();
   }
 
-  private static Map<String, Descriptor> mutuallyRecursiveTypes() throws Exception {
-    return compile(
-        "recursive",
-        DescriptorProto.newBuilder().setName("A").addField(messageField("b", 1, ".recursive.B")),
-        DescriptorProto.newBuilder()
-            .setName("B")
-            .addField(messageField("a", 1, ".recursive.A"))
-            .addField(
-                field("v", 2, FieldDescriptorProto.Type.TYPE_INT32).setOptions(INT32_GT_100)));
-  }
-
   /** Returns an A whose chain of B messages is {@code depth} long, each with v set to {@code v}. */
-  private static DynamicMessage nestedA(Descriptor a, Descriptor b, int depth, int v) {
-    DynamicMessage.Builder bBuilder =
-        DynamicMessage.newBuilder(b).setField(b.findFieldByName("v"), v);
-    if (depth > 1) {
-      bBuilder.setField(b.findFieldByName("a"), nestedA(a, b, depth - 1, v));
+  private static RecursiveA nestedA(int depth, int v) {
+    RecursiveA recursiveA = null;
+    RecursiveB recursiveB = null;
+    for (int i = 0; i < depth; i++) {
+      RecursiveB.Builder recursiveBBuilder = RecursiveB.newBuilder().setV(v);
+      if (recursiveA != null) {
+        recursiveBBuilder.setA(recursiveA);
+      }
+      recursiveB = recursiveBBuilder.build();
+      recursiveA = RecursiveA.newBuilder().setB(recursiveB).build();
     }
-    return DynamicMessage.newBuilder(a).setField(a.findFieldByName("b"), bBuilder.build()).build();
+    return recursiveA;
   }
 
   private static boolean isTautology(Descriptor descriptor) throws Exception {

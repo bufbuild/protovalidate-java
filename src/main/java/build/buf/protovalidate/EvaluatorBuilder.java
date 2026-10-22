@@ -62,9 +62,10 @@ final class EvaluatorBuilder {
           FieldRules.getDescriptor().findFieldByNumber(FieldRules.CEL_EXPRESSION_FIELD_NUMBER));
 
   private static final Set<String> STRUCT_TYPE_NAMES =
-      new HashSet<>(
-          Arrays.asList(
-              "google.protobuf.Struct", "google.protobuf.Value", "google.protobuf.ListValue"));
+      Collections.unmodifiableSet(
+          new HashSet<>(
+              Arrays.asList(
+                  "google.protobuf.Struct", "google.protobuf.Value", "google.protobuf.ListValue")));
 
   private volatile Map<Descriptor, MessageEvaluator> evaluatorCache = Collections.emptyMap();
 
