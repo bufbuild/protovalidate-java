@@ -35,9 +35,13 @@ import dev.cel.bundle.CelBuilder;
 import dev.cel.common.types.StructTypeReference;
 import dev.cel.common.values.CelByteString;
 import dev.cel.runtime.CelEvaluationException;
+import java.util.ArrayDeque;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
+import java.util.Deque;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
@@ -56,6 +60,12 @@ final class EvaluatorBuilder {
   private static final FieldPathElement CEL_EXPRESSION_FIELD_PATH_ELEMENT =
       FieldPathUtils.fieldPathElement(
           FieldRules.getDescriptor().findFieldByNumber(FieldRules.CEL_EXPRESSION_FIELD_NUMBER));
+
+  private static final Set<String> STRUCT_TYPE_NAMES =
+      Collections.unmodifiableSet(
+          new HashSet<>(
+              Arrays.asList(
+                  "google.protobuf.Struct", "google.protobuf.Value", "google.protobuf.ListValue")));
 
   private volatile Map<Descriptor, MessageEvaluator> evaluatorCache = Collections.emptyMap();
 
@@ -182,8 +192,58 @@ final class EvaluatorBuilder {
       }
       MessageEvaluator msgEval = new MessageEvaluator();
       cache.put(desc, msgEval);
-      buildMessage(desc, msgEval);
+      if (!isRuleFreeStructType(desc)) {
+        buildMessage(desc, msgEval);
+      }
+      msgEval.finishBuilding();
       return msgEval;
+    }
+
+    /**
+     * Struct, Value and ListValue form a rule-free cycle, which would otherwise be walked on every
+     * validation. Treat them as tautologies unless a non-standard descriptor adds rules.
+     */
+    private boolean isRuleFreeStructType(Descriptor desc) throws CompilationException {
+      try {
+        Set<Descriptor> seen = new HashSet<>();
+        Deque<Descriptor> pending = new ArrayDeque<>();
+        pending.push(desc);
+        while (!pending.isEmpty()) {
+          Descriptor message = pending.pop();
+          if (!seen.add(message)) {
+            continue;
+          }
+          if (!STRUCT_TYPE_NAMES.contains(message.getFullName())
+              || !resolver.resolveMessageRules(message).equals(MessageRules.getDefaultInstance())) {
+            return false;
+          }
+          for (Descriptors.OneofDescriptor oneof : message.getOneofs()) {
+            if (!resolver.resolveOneofRules(oneof).equals(OneofRules.getDefaultInstance())) {
+              return false;
+            }
+          }
+          for (FieldDescriptor field : message.getFields()) {
+            if (!resolver.resolveFieldRules(field).equals(FieldRules.getDefaultInstance())) {
+              return false;
+            }
+            if (field.getJavaType() != FieldDescriptor.JavaType.MESSAGE) {
+              continue;
+            }
+            if (field.isMapField()) {
+              FieldDescriptor mapValue = field.getMessageType().findFieldByNumber(2);
+              if (mapValue.getJavaType() == FieldDescriptor.JavaType.MESSAGE) {
+                pending.push(mapValue.getMessageType());
+              }
+            } else {
+              pending.push(field.getMessageType());
+            }
+          }
+        }
+        return true;
+      } catch (InvalidProtocolBufferException e) {
+        throw new CompilationException(
+            "failed to parse proto definition: " + desc.getFullName(), e);
+      }
     }
 
     private void buildMessage(Descriptor desc, MessageEvaluator msgEval)
