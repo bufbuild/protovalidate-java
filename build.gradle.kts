@@ -41,7 +41,7 @@ if (matchResult != null) {
 }
 val releaseVersion = project.findProperty("releaseVersion") as String? ?: snapshotVersion
 
-val buf: Configuration by configurations.creating
+val buf = configurations.create("buf")
 val bufLicenseHeaderCLIFile =
     project.layout.buildDirectory
         .file("gobin/license-header")
@@ -268,11 +268,9 @@ tasks.matching { it.name == "sourcesJar" }.configureEach {
 
 tasks.withType<JavaCompile> {
     dependsOn("generate")
-    if (JavaVersion.current().isJava9Compatible) {
-        doFirst {
-            options.compilerArgs = mutableListOf("--release", "8")
-        }
-    }
+    options.release = 8
+    // JDK 9+ javac warns that release 8 is obsolete.
+    options.compilerArgs.add("-Xlint:-options")
     // Disable errorprone on generated code
     options.errorprone.excludedPaths.set(".*/build/generated/.*")
     if (!name.lowercase().contains("test")) {

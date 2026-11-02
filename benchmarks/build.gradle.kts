@@ -18,7 +18,7 @@ configure<SpotlessExtension> {
     }
 }
 
-val buf: Configuration by configurations.creating
+val buf = configurations.create("buf")
 
 tasks.register("configureBuf") {
     description = "Installs the Buf CLI."

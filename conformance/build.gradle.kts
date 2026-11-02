@@ -16,7 +16,7 @@ java {
     targetCompatibility = JavaVersion.VERSION_21
 }
 
-val buf: Configuration by configurations.creating
+val buf = configurations.create("buf")
 
 tasks.register("configureBuf") {
     description = "Installs the Buf CLI."
@@ -96,11 +96,9 @@ sourceSets {
 
 tasks.withType<JavaCompile> {
     dependsOn("generateConformance")
-    if (JavaVersion.current().isJava9Compatible) {
-        doFirst {
-            options.compilerArgs = mutableListOf("--release", "8")
-        }
-    }
+    options.release = 8
+    // JDK 9+ javac warns that release 8 is obsolete.
+    options.compilerArgs.add("-Xlint:-options")
     // Disable errorprone on generated code
     options.errorprone.excludedPaths.set(".*/build/generated/sources/bufgen/.*")
 }
