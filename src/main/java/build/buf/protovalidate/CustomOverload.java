@@ -55,7 +55,6 @@ final class CustomOverload {
     bindings.addAll(
         Arrays.asList(
             celGetField(),
-            celFormat(),
             celStartsWithBytes(),
             celEndsWithBytes(),
             celContainsBytes(),
@@ -97,15 +96,6 @@ final class CustomOverload {
           }
           return ProtoAdapter.toCel(field, message.getField(field));
         });
-  }
-
-  /**
-   * Creates a custom binary function overload for the "format" operation.
-   *
-   * @return The {@link CelFunctionBinding} instance for the "format" operation.
-   */
-  private static CelFunctionBinding celFormat() {
-    return CelFunctionBinding.from("format_list_dyn", String.class, List.class, Format::format);
   }
 
   /**

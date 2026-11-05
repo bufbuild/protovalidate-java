@@ -144,76 +144,8 @@ tasks.register<Exec>("generateTestSourcesNoImports") {
     )
 }
 
-tasks.register<Exec>("generateCelConformance") {
-    dependsOn("generateCelConformanceTestTypes", "filterBufGenYaml")
-    description = "Generates CEL conformance code with buf generate for unit tests."
-    val template = layout.buildDirectory.file("buf-gen-templates/src/test/resources/proto/buf.gen.cel.yaml")
-    inputs.files(buf)
-    inputs.file(template)
-    inputs.property("celSpecVersion", project.findProperty("cel.spec.version").toString())
-    outputs.dir(layout.buildDirectory.dir("generated/test-sources/bufgen-cel"))
-    commandLine(
-        buf.asPath,
-        "generate",
-        "--template",
-        template.get().asFile.absolutePath,
-        "buf.build/google/cel-spec:${project.findProperty("cel.spec.version")}",
-        "--exclude-path",
-        "cel/expr/conformance/proto2",
-        "--exclude-path",
-        "cel/expr/conformance/proto3",
-    )
-}
-
-// The conformance tests use the Protobuf package path for tests that use these types.
-// i.e. cel.expr.conformance.proto3.TestAllTypes. But, if we use managed mode it adds 'com'
-// to the prefix. Additionally, we can't disable managed mode because the java_package option
-// specified in these proto files is "dev.cel.expr.conformance.proto3". So, to get around this,
-// we're generating these separately and specifying a java_package override of the package we need.
-tasks.register<Exec>("generateCelConformanceTestTypes") {
-    dependsOn("exportProtovalidateModule", "filterBufGenYaml")
-    description = "Generates CEL conformance test types with buf generate for unit tests using a Java package override."
-    val template = layout.buildDirectory.file("buf-gen-templates/src/test/resources/proto/buf.gen.cel.testtypes.yaml")
-    inputs.files(buf)
-    inputs.file(template)
-    inputs.property("celSpecVersion", project.findProperty("cel.spec.version").toString())
-    outputs.dir(layout.buildDirectory.dir("generated/test-sources/bufgen-cel-testtypes"))
-    commandLine(
-        buf.asPath,
-        "generate",
-        "--template",
-        template.get().asFile.absolutePath,
-        "buf.build/google/cel-spec:${project.findProperty("cel.spec.version")}",
-        "--path",
-        "cel/expr/conformance/proto3",
-    )
-}
-
-var getCelTestData =
-    tasks.register<Exec>("getCelTestData") {
-        val celVersion = project.findProperty("cel.spec.version")
-        val fileUrl = "https://raw.githubusercontent.com/google/cel-spec/refs/tags/$celVersion/tests/simple/testdata/string_ext.textproto"
-        val targetDir = File("${project.projectDir}/src/test/resources/testdata")
-        val file = File(targetDir, "string_ext_$celVersion.textproto")
-
-        onlyIf {
-            // Only run curl if file doesn't exist
-            !file.exists()
-        }
-        doFirst {
-            file.parentFile.mkdirs()
-            commandLine(
-                "curl",
-                "-fsSL",
-                "-o",
-                file.absolutePath,
-                fileUrl,
-            )
-        }
-    }
-
 tasks.register("generateTestSources") {
-    dependsOn("generateTestSourcesImports", "generateTestSourcesNoImports", "generateCelConformance")
+    dependsOn("generateTestSourcesImports", "generateTestSourcesNoImports")
     description = "Generates code with buf generate for unit tests"
 }
 
@@ -309,8 +241,6 @@ sourceSets {
         java {
             srcDir(layout.buildDirectory.dir("generated/test-sources/bufgen-imports"))
             srcDir(layout.buildDirectory.dir("generated/test-sources/bufgen-noimports"))
-            srcDir(layout.buildDirectory.dir("generated/test-sources/bufgen-cel"))
-            srcDir(layout.buildDirectory.dir("generated/test-sources/bufgen-cel-testtypes"))
         }
     }
 }
@@ -351,7 +281,6 @@ allprojects {
         }
     }
     tasks.withType<Test>().configureEach {
-        dependsOn(getCelTestData)
         useJUnitPlatform()
         this.testLogging {
             events("failed")

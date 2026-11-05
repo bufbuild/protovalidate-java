@@ -55,12 +55,9 @@ final class ValidateLibrary implements CelCompilerLibrary, CelRuntimeLibrary {
   static Cel newCel() {
     ValidateLibrary validateLibrary = new ValidateLibrary();
     // Wired by hand instead of via plannerCelBuilder(): CelRuntimeImpl directs callers to subset
-    // stdlib via setStandardFunctions rather than setStandardEnvironmentEnabled, so the runtime
-    // does that while the checker uses setStandardEnvironmentEnabled(false).
+    // stdlib via setStandardFunctions and the checker via setStandardDeclarations.
     CelCompiler compiler =
-        CelCompilerImpl.newBuilder(
-                CelParserImpl.newBuilder(),
-                CelCheckerLegacyImpl.newBuilder().setStandardEnvironmentEnabled(false))
+        CelCompilerImpl.newBuilder(CelParserImpl.newBuilder(), CelCheckerLegacyImpl.newBuilder())
             .setOptions(CEL_OPTIONS)
             // Drop stdlib matches; CustomOverload provides a caching replacement.
             // Ref: https://github.com/google/cel-java/issues/1038
