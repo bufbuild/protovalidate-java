@@ -186,16 +186,6 @@ final class CustomDeclarations {
     }
     decls.add(newFunctionDeclaration("unique", uniqueOverloads));
 
-    // Add 'format' function declaration
-    List<CelOverloadDecl> formatOverloads = new ArrayList<>();
-    formatOverloads.add(
-        newMemberOverload(
-            "format_list_dyn",
-            SimpleType.STRING,
-            Arrays.asList(SimpleType.STRING, ListType.create(SimpleType.DYN))));
-
-    decls.add(newFunctionDeclaration("format", formatOverloads));
-
     return Collections.unmodifiableList(decls);
   }
 }
