@@ -56,8 +56,8 @@ final class EnumRulesEvaluator implements Evaluator {
 
   /**
    * Builds a {@link EnumRulesEvaluator} for the {@code const}/{@code in}/{@code not_in} rules on
-   * the supplied {@code FieldRules.Builder}'s enum sub-message. Returns null when the enum sub-
-   * message is unset, has unknown fields, or has none of the covered rules. The {@code
+   * the supplied {@code FieldRules.Builder}'s enum sub-message. Returns null when the enum
+   * sub-message is unset, has unknown fields, or has none of the covered rules. The {@code
    * defined_only} field is left untouched on the residual so the existing {@link
    * build.buf.protovalidate.EnumEvaluator} continues to handle it.
    */

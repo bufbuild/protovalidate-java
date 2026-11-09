@@ -289,7 +289,7 @@ final class CustomOverload {
     return CelFunctionBinding.from(
         "is_ip_prefix_int_bool",
         Arrays.asList(String.class, Long.class, Boolean.class),
-        (args) -> isIpPrefix((String) args[0], (Long) args[1], (Boolean) args[2]));
+        args -> isIpPrefix((String) args[0], (Long) args[1], (Boolean) args[2]));
   }
 
   /**
